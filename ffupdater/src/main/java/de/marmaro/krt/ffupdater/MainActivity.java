@@ -41,13 +41,13 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		int apiVersion = android.os.Build.VERSION.SDK_INT;
-		String arch = System.getProperty("os.arch");
+		// int apiVersion = android.os.Build.VERSION.SDK_INT;
+		// String arch = System.getProperty("os.arch");
 
 		String baseUri = "https://ftp.mozilla.org/pub/mozilla.org/mobile/releases/latest/";
 		String updateUri = baseUri;
 
-		switch(arch) {
+		switch(System.getProperty("os.arch")) {
 			case "armv71": 	updateUri += "android-api-11/multi/";
                      		 	break;
 			case "arch64": 	updateUri += "android-api-11/multi/";
@@ -68,19 +68,18 @@ public class MainActivity extends Activity {
 
 		// File file = new File(context.getFilesDir(), filename);
 		// getCacheDir()
-		// Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-		// final String targetApk = Environment.getExternalStorageDirectory() + "/" + "firefox.apk";
-		final String targetApk = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + "firefox.apk";
+		// Environment.getExternalStorageDirectory() + "/" + "firefox.apk";
+		// Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + "firefox.apk";
 
 		DownloadManager.Request request = new DownloadManager.Request(Uri.parse(updateUri));
-		request.setDescription("Some descrition");
-		request.setTitle("Some title");
+		request.setDescription("Downloading latest Firefox...");
+		request.setTitle("FFUpdater");
 		//request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
     		request.allowScanningByMediaScanner();
     		request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 		request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "firefox.apk");
 
-		DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+		final DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 		final long downloadId = manager.enqueue(request);
 
 		IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
@@ -88,6 +87,7 @@ public class MainActivity extends Activity {
 		    @Override
 		    public void onReceive(Context context, Intent intent) {
 		        long reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+			Uri apk = manager.getUriForDownloadedFile(downloadId);
 		        if (downloadId == reference) {
 
 				String packageId = "org.mozilla.firefox";
@@ -108,7 +108,7 @@ public class MainActivity extends Activity {
 		
 				try {
 					final PackageManager pm = getPackageManager();
-					PackageInfo info = pm.getPackageArchiveInfo(targetApk, 0);
+					PackageInfo info = pm.getPackageArchiveInfo(apk.getPath(), 0);
 					downloadedVersionCode = info.versionCode;  
 					downloadedVersionName = info.versionName;
 				}
@@ -117,13 +117,14 @@ public class MainActivity extends Activity {
 			
 				if (downloadedVersionCode > installedVersionCode) {
 					Intent installIntent = new Intent(Intent.ACTION_VIEW);
-		    			installIntent.setDataAndType(Uri.fromFile(new File(targetApk)), "application/vnd.android.package-archive");
+		    			installIntent.setDataAndType(apk, "application/vnd.android.package-archive");
 					installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			    		startActivity(installIntent);
 				}
 		       }
 		    }
 		};
+
 		registerReceiver(receiver, filter);
 
 	}
