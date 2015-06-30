@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+	compile "com.android.support:support-v4:22.2.0"
+	compile "com.android.support:appcompat-v7:22.2.0"
+}
+
+android {
+	compileSdkVersion 22
+	buildToolsVersion "22.0.1"
+
+	defaultConfig {
+		versionCode 1
+		versionName "0.1"
+		minSdkVersion 9
+		targetSdkVersion 22
+	}
+
+	buildTypes {
+		release {
+			// Enable proguard with default android settings (no obfuscation)
+			minifyEnabled true
+			shrinkResources true
+			proguardFile getDefaultProguardFile('proguard-android.txt')
+		}
+	}
+
+	compileOptions {
+		encoding = "UTF-8"
+		sourceCompatibility JavaVersion.VERSION_1_7
+		targetCompatibility JavaVersion.VERSION_1_7
+	}
+}
