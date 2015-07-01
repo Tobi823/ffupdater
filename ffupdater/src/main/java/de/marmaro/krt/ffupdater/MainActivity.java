@@ -114,12 +114,19 @@ public class MainActivity extends Activity {
 				}
 				catch (Exception e) {
 				}
+
+				String strInfo = "Installed: " + installedVersionName + " (" + installedVersionCode + ") | Downloaded: " + downloadedVersionName + " (" + downloadedVersionCode + ")";
+				Toast.makeText(getApplicationContext(), strInfo , Toast.LENGTH_SHORT).show();
 			
 				if (downloadedVersionCode > installedVersionCode) {
+					Toast.makeText(getApplicationContext(), "Updating..:", Toast.LENGTH_SHORT).show();
 					Intent installIntent = new Intent(Intent.ACTION_VIEW);
 		    			installIntent.setDataAndType(apk, "application/vnd.android.package-archive");
 					installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			    		startActivity(installIntent);
+				}
+				else {
+					Toast.makeText(getApplicationContext(), "Don't update" , Toast.LENGTH_SHORT).show();
 				}
 		       }
 		    }
