@@ -1,0 +1,7 @@
+2015-07-01 Version 0.001 (1)
+ * Select location based on arch and api.
+ * Check filename via FTP.
+ * Download update file via HTTPS and DownloadManager.
+ * Log errors and status.
+ * Toast on updates.
+ * Prompt for update (if necessary).
