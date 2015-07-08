@@ -1,4 +1,4 @@
-2015-07-01 Version 0.001 (1)
+2015-07-08 Version 39.0 (1)
  * Select download uri based on arch and api.
  * Check filename via FTP.
  * Download update file via HTTPS and DownloadManager.
@@ -6,3 +6,4 @@
  * Toast on updates.
  * Prompt for update (if necessary).
  * Option to use fixed/tested download location.
+ * Add proper LICENSE (GPLv3+).
