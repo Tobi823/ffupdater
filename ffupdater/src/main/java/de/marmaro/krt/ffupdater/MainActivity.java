@@ -2,11 +2,10 @@ package de.marmaro.krt.ffupdater;
 
 // TODO: remove unused imports
 import android.os.StrictMode;
+import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.app.Activity;
-import android.os.Bundle;
-import java.io.*;
-import java.net.*;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
 import android.app.DownloadManager.Request;
@@ -17,24 +16,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
 import android.net.Uri;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Button;
 import android.view.View.OnClickListener;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-
-import android.content.Context;
-import android.os.Environment;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.apache.commons.net.ftp.FTP;

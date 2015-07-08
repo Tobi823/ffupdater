@@ -8,7 +8,7 @@
 	<TextView  
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content" 
-		android:text="This is a simple updater for Firefox. You can either choose to download the latest version of Firefox available on release or you let the app guess the newest release by looking at Mozilla's FTP server. The latter one might break, when the internal hierarchy of the FTP server changes."
+		android:text="@string/infobox"
 		android:padding="10dp"
 		android:textColor="#FFFFFF"
 		/>
