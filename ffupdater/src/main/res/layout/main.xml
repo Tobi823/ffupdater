@@ -2,12 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
+	android:orientation="vertical"
 	>
 
-      <Button
-	android:id="@+id/upgrade_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Update" />
+	<TextView  
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="This is a simple updater for Firefox. You can either choose to download the latest version of Firefox available on release or you let the app guess the newest release by looking at Mozilla's FTP server. The latter one might break, when the internal hierarchy of the FTP server changes."
+		android:padding="10dp"
+		android:textColor="#FFFFFF"
+		/>
+	
+	<Button
+		android:id="@+id/sticky_button"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sticky"
+		/>
+
+	<Button
+		android:id="@+id/lucky_button"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/lucky"
+		/>
 
 </LinearLayout>

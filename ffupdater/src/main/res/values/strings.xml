@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">FFUpdater</string>
+	<string name="sticky">Install Firefox 39.0</string>
+	<string name="lucky">I am feeling lucky...</string>
+	<string name="latest_arm">https://ftp.mozilla.org/pub/mozilla.org/mobile/releases/latest/android-api-11/multi/fennec-39.0.multi.android-arm.apk</string>
+	<string name="latest_x86">https://ftp.mozilla.org/pub/mozilla.org/mobile/releases/latest/android-x86/multi/fennec-39.0.multi.android-i386.apk</string>
 </resources>
