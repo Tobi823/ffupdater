@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 		request.setTitle("FFUpdater");
 		//request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
     		request.allowScanningByMediaScanner();
-    		request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+    		request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
 		// TODO: Make temporary filename
 		request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "temp.apk");
 
@@ -82,14 +82,14 @@ public class MainActivity extends Activity {
 				Log.i(TAG, "Update version is " + downloadedVersionName + " (" + downloadedVersionCode + ")");
 
 				if (downloadedVersionCode > installedVersionCode) {
-					Toast.makeText(getApplicationContext(), "Updating..", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "Updating Firefox...", Toast.LENGTH_SHORT).show();
 					Intent installIntent = new Intent(Intent.ACTION_VIEW);
 		    			installIntent.setDataAndType(apk, "application/vnd.android.package-archive");
 					installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			    		startActivity(installIntent);
 				}
 				else {
-					Toast.makeText(getApplicationContext(), "Don't update." , Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "No need to update Firefox." , Toast.LENGTH_SHORT).show();
 				}
 		       }
 		    }
@@ -179,7 +179,7 @@ public class MainActivity extends Activity {
 					ftp.login("anonymous", "");
 					FTPFile[] files = ftp.listFiles(Uri.parse(guessedUri).getPath());
 					for (FTPFile file : files) {
-						// TODO: This will break one multiple files!
+						// TODO: This will break on multiple files!
 						fileName = file.getName();
 					}
 					ftp.logout();
