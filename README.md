@@ -8,6 +8,11 @@ the "I am feeling lucky"-button is tapped. The other downloads the last version
 known on release date. However, the plan is to move this actually to an Android
 service to perform periodical update checks.
 
+However, Mozilla plans to shutdown the FTP server, so we cannot rely on this
+update method. I opened a ticket about non-playstore updates with Mozilla:
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1192279
+
 ## License
 
 FFUpdater -- a simple Android app to update Firefox.
