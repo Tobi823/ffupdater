@@ -11,7 +11,7 @@ android {
 
 	defaultConfig {
 		versionCode 3
-		versionName "39.0"
+		versionName "40.0"
 		minSdkVersion 9
 		targetSdkVersion 22
 	}
