@@ -22,10 +22,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import org.apache.commons.net.ftp.FTP;
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPFile;
-
 public class MainActivity extends Activity {
 
 	private static final String TAG = "MainActivity";
@@ -170,27 +166,7 @@ public class MainActivity extends Activity {
 
 		btnLuckyInstall.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				String fileName = "";
-		
-				FTPClient ftp = new FTPClient();
-				try {
-					ftp.connect(Uri.parse(guessedUri).getHost(),21);
-					ftp.enterLocalPassiveMode(); 
-					ftp.login("anonymous", "");
-					FTPFile[] files = ftp.listFiles(Uri.parse(guessedUri).getPath());
-					for (FTPFile file : files) {
-						// TODO: This will break on multiple files!
-						fileName = file.getName();
-					}
-					ftp.logout();
-					ftp.disconnect();
-				}
-				catch (Exception e) {
-					Log.e(TAG,"Cannot get update file from FTP.", e);
-					// TODO: Shutdown
-				}
-		
-				downloadAndInstall(guessedUri + fileName);
+				downloadAndInstall("");
 			}
 		});
 	}

@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 dependencies {
 	compile "com.android.support:support-v4:22.2.0"
 	compile "com.android.support:appcompat-v7:22.2.0"
-	compile "org.apache.ant:ant-commons-net:1.9.5"
 }
 
 android {
@@ -11,7 +10,7 @@ android {
 	buildToolsVersion "22.0.1"
 
 	defaultConfig {
-		versionCode 2
+		versionCode 3
 		versionName "39.0"
 		minSdkVersion 9
 		targetSdkVersion 22
