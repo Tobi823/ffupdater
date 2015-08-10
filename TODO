@@ -1,7 +1,6 @@
 TODO: Cleaning
 TODO: Switch to background service
 TODO: UI
-TODO: Setting for WIFI-only
 TODO: Check for connectivity first
-TODO: Don't poll the FTP server; it will be shutdown by Mozilla in the future
+TODO: DownloadManager exceptions: https://developer.android.com/reference/android/app/DownloadManager.html
 TODO: ...

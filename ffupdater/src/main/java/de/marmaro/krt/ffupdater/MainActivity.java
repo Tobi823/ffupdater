@@ -61,6 +61,8 @@ public class MainActivity extends ActionBarActivity {
 
 		// TODO: Maybe use context.getFilesDir() or context.getCacheDir() instead?
 
+		// TODO: Handle errors verbosly (file not found, out of space, etc.). See https://developer.android.com/reference/android/app/DownloadManager.html
+
 		final DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 		final long downloadId = manager.enqueue(request);
 

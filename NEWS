@@ -1,6 +1,9 @@
 2015-08-10 Version 40.0 (3)
  * Remove FTP lookup since Mozilla is shutting down the servers.
+ * Handle both request type by a single button.
  * "I am feeling lucky" now gets the next relase, not the latest.
+ * Add preferences to restrict connections: WiFi-only, metered, roaming.
+ * Use actionbar.
 
 2015-07-08 Version 39.0 (1)
  * Select download uri based on arch and api.
