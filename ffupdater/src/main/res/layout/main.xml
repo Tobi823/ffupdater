@@ -14,13 +14,6 @@
 		/>
 	
 	<Button
-		android:id="@+id/sticky_button"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/sticky"
-		/>
-
-	<Button
 		android:id="@+id/lucky_button"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
