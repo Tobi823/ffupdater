@@ -3,4 +3,5 @@
 	<string name="app_name">FFUpdater</string>
 	<string name="infobox">This is a simple updater for Firefox. The app guesses the next release, which might NOT be the latest version. So running the update multiple times might be necessary. If no Firefox is found, it tries to install the latest build available on release of the app.</string>
 	<string name="lucky">I am feeling lucky...</string>
+	<string name="action_prefs">Settings</string>
 </resources>
