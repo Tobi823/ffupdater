@@ -22,16 +22,36 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+
+import android.preference.PreferenceManager;
+import android.content.SharedPreferences;
+
 public class MainActivity extends Activity {
 
 	private static final String TAG = "MainActivity";
 	private static final String CV = "39.0";
 
 	public void downloadAndInstall(String uri, final int vc) {
+
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		
 		DownloadManager.Request request = new DownloadManager.Request(Uri.parse(uri));
 		request.setDescription("Downloading Firefox...");
 		request.setTitle("FFUpdater");
-		//request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+		if(prefs.getBoolean("useWifiOnly", true)) {
+			request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+		}
+		request.setAllowedOverMetered(prefs.getBoolean("useMetered", false));
+		request.setAllowedOverRoaming(prefs.getBoolean("useRoaming", false));
     		request.allowScanningByMediaScanner();
     		request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
 		// TODO: Make temporary filename
@@ -90,6 +110,8 @@ public class MainActivity extends Activity {
 
         	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         	StrictMode.setThreadPolicy(policy);
+
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
 		final Button btnLuckyInstall  = (Button) findViewById(R.id.lucky_button);
 
@@ -185,6 +207,12 @@ public class MainActivity extends Activity {
 				downloadAndInstall(guessedUri, currentVersionCode);
 			}
 		});
+
+
+
+		Intent preftest = new Intent(this, MyPreferencesActivity.class);
+		startActivity(preftest);
+
 	}
 
 }
