@@ -49,22 +49,9 @@ public class MainActivity extends Activity {
 			Uri apk = manager.getUriForDownloadedFile(downloadId);
 		        if (downloadId == reference) {
 
-				String packageId = "org.mozilla.firefox";
+		                int downloadedVersionCode = 0;
+		                String downloadedVersionName = "0";
 
-				int installedVersionCode = 0;
-                		String installedVersionName = "0";   
-
-                		int downloadedVersionCode = 0;
-                		String downloadedVersionName = "0";
-
-				try {
-					PackageInfo pinfo = getPackageManager().getPackageInfo(packageId, 0);  
-					installedVersionCode = pinfo.versionCode;  
-					installedVersionName = pinfo.versionName;
-				}
-				catch (Exception e) {
-				}
-	
 				try {
 					final PackageManager pm = getPackageManager();
 					PackageInfo info = pm.getPackageArchiveInfo(apk.getPath(), 0);
@@ -74,10 +61,12 @@ public class MainActivity extends Activity {
 				catch (Exception e) {
 				}
 
-				Log.i(TAG, "Current version is " + installedVersionName + " (" + installedVersionCode + ")");
 				Log.i(TAG, "Update version is " + downloadedVersionName + " (" + downloadedVersionCode + ")");
 
-				if (downloadedVersionCode > installedVersionCode) {
+				// TODO: Get real CVC
+				int currentVersionCode = 0;
+
+				if (downloadedVersionCode > currentVersionCode) {
 					Toast.makeText(getApplicationContext(), "Updating Firefox...", Toast.LENGTH_SHORT).show();
 					Intent installIntent = new Intent(Intent.ACTION_VIEW);
 		    			installIntent.setDataAndType(apk, "application/vnd.android.package-archive");
@@ -110,10 +99,29 @@ public class MainActivity extends Activity {
 		int apiLevel = android.os.Build.VERSION.SDK_INT;
 		String arch = System.getProperty("os.arch");
 		
-		String updateUri = "https://ftp.mozilla.org/pub/mozilla.org/mobile/releases/latest/";
+		String updateUri = "";
 		String mozApiArch = "android-api-11";
 		String mozLang = "multi";
+		String mozArch = "arm";
 		
+		String packageId = "org.mozilla.firefox";
+
+		int installedVersionCode = 0;
+          	String installedVersionName = "0";   
+
+		try {
+			PackageInfo pinfo = getPackageManager().getPackageInfo(packageId, 0);  
+			installedVersionCode = pinfo.versionCode;  
+			installedVersionName = pinfo.versionName;
+		}
+		catch (Exception e) {
+		}
+
+		Log.i(TAG, "Current version is " + installedVersionName + " (" + installedVersionCode + ")");
+
+		String guessedNextVersion = installedVersionName.split(".")[0];
+		guessedNextVersion = String.valueOf((Integer.parseInt(guessedNextVersion) + 1));
+	
 		if(apiLevel < 9) {
 			mozApiArch = "";	
 		}
@@ -127,24 +135,31 @@ public class MainActivity extends Activity {
 		switch(arch) {
 			case "armv7l":	strStickyInstallUri = getString(R.string.latest_arm);
 					mozApiArch = mozApiArch;
+					mozArch = mozArch;
 				 	break;
 			case "arch64": 	strStickyInstallUri = getString(R.string.latest_arm);
 					mozApiArch = mozApiArch;
+					mozArch = mozArch;
 					break;
 			case "mips": 	strStickyInstallUri = "";
 					mozApiArch = "";
+					mozArch = "";
 					break;
 			case "mips64": 	strStickyInstallUri = "";
 					mozApiArch = "";
+					mozArch = "";
 		                   	break;
 			case "i686": 	strStickyInstallUri = getString(R.string.latest_x86);
 					mozApiArch = "android-x86";
+					mozArch = "i386";
                      		 	break;
 			case "x86_64": 	strStickyInstallUri = getString(R.string.latest_x86);
 					mozApiArch = "android-x86";
+					mozArch = "i386";
                      		 	break;
 			default:	strStickyInstallUri = "";
 					mozApiArch= ""; 
+					mozArch = "";
 				 	break;
 		}
 		
@@ -153,20 +168,23 @@ public class MainActivity extends Activity {
 			// TODO: Shutdown
 		}
 		
-		updateUri += mozApiArch + "/" + mozLang + "/";
+		// INFO: Unfortunately mobile/releases/latest/ gives us no information on which version is used, so we cannot guess the filename.
+		updateUri = "https://archive.mozilla.org/pub/mozilla.org/mobile/releases/" + guessedNextVersion + ".0" + "/" + mozApiArch + "/" + mozLang + "/" + "fennec-" + guessedNextVersion + ".0" + "." + mozLang + "." + "android-" + mozArch + ".apk";
 
 		final String stickyUri = strStickyInstallUri;
 		final String guessedUri = updateUri;
 
 		btnStickyInstall.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				// TODO: Don't use /latest/ uris here, since they change on new releases
 				downloadAndInstall(stickyUri);
 			}
 		});
 
 		btnLuckyInstall.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				downloadAndInstall("");
+				// TODO: This might not yet be released!
+				downloadAndInstall(guessedUri);
 			}
 		});
 	}
