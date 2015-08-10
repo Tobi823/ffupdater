@@ -176,7 +176,6 @@ public class MainActivity extends Activity {
 
 		btnStickyInstall.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				// TODO: Don't use /latest/ uris here, since they change on new releases
 				downloadAndInstall(stickyUri);
 			}
 		});

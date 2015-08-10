@@ -4,6 +4,6 @@
 	<string name="infobox">This is a simple updater for Firefox. You can either choose to download the latest version of Firefox available on release or you let the app guess the next release. This might not be the latest version, so you might have to do it several times.</string>
 	<string name="sticky">Install Firefox 40.0</string>
 	<string name="lucky">I am feeling lucky...</string>
-	<string name="latest_arm">https://archive.mozilla.org/pub/mozilla.org/mobile/releases/latest/android-api-11/multi/fennec-40.0.multi.android-arm.apk</string>
-	<string name="latest_x86">https://archive.mozilla.org/pub/mozilla.org/mobile/releases/latest/android-x86/multi/fennec-40.0.multi.android-i386.apk</string>
+	<string name="latest_arm">https://archive.mozilla.org/pub/mozilla.org/mobile/releases/40.0/android-api-11/multi/fennec-40.0.multi.android-arm.apk</string>
+	<string name="latest_x86">https://archive.mozilla.org/pub/mozilla.org/mobile/releases/40.0/android-x86/multi/fennec-40.0.multi.android-i386.apk</string>
 </resources>
