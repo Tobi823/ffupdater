@@ -1,9 +1,9 @@
 ## Firefox-Updater
 
+INFO: Mozilla has discontinued FTP service as of 2015-08-05, see the
+following blog post for details:
 
-INFO: Mozilla has discontinued FTP as of 2015-08-05. See:
-https://blog.mozilla.org/it/2015/07/27/product-delivery-migration-what-is-changing-when-its-changing-and-the-impacts/
-
+* https://blog.mozilla.org/it/2015/07/27/product-delivery-migration-what-is-changing-when-its-changing-and-the-impacts/
 
 Polls Mozilla's FTP Server for latest "Firefox for Android" release, downloads
 it and -- after comparing the versionCode -- installs it (if needed).

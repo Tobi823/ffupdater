@@ -9,3 +9,4 @@ build/
 local.properties
 proguard/
 *.log
+deploy.sh

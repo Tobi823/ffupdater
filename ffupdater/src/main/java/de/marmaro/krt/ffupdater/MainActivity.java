@@ -26,9 +26,9 @@ public class MainActivity extends Activity {
 
 	private static final String TAG = "MainActivity";
 
-	public void downloadAndInstall(String uri) {
+	public void downloadAndInstall(String uri, final int vc) {
 		DownloadManager.Request request = new DownloadManager.Request(Uri.parse(uri));
-		request.setDescription("Downloading latest Firefox...");
+		request.setDescription("Downloading Firefox...");
 		request.setTitle("FFUpdater");
 		//request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
     		request.allowScanningByMediaScanner();
@@ -63,10 +63,8 @@ public class MainActivity extends Activity {
 
 				Log.i(TAG, "Update version is " + downloadedVersionName + " (" + downloadedVersionCode + ")");
 
-				// TODO: Get real CVC
-				int currentVersionCode = 0;
-
-				if (downloadedVersionCode > currentVersionCode) {
+				if (downloadedVersionCode > vc) {
+					Log.i(TAG, "Update initiated");
 					Toast.makeText(getApplicationContext(), "Updating Firefox...", Toast.LENGTH_SHORT).show();
 					Intent installIntent = new Intent(Intent.ACTION_VIEW);
 		    			installIntent.setDataAndType(apk, "application/vnd.android.package-archive");
@@ -74,6 +72,7 @@ public class MainActivity extends Activity {
 			    		startActivity(installIntent);
 				}
 				else {
+					Log.i(TAG, "No update required");
 					Toast.makeText(getApplicationContext(), "No need to update Firefox." , Toast.LENGTH_SHORT).show();
 				}
 		       }
@@ -107,7 +106,7 @@ public class MainActivity extends Activity {
 		String packageId = "org.mozilla.firefox";
 
 		int installedVersionCode = 0;
-          	String installedVersionName = "0";   
+          	String installedVersionName = "0.0";   
 
 		try {
 			PackageInfo pinfo = getPackageManager().getPackageInfo(packageId, 0);  
@@ -115,11 +114,13 @@ public class MainActivity extends Activity {
 			installedVersionName = pinfo.versionName;
 		}
 		catch (Exception e) {
+			installedVersionName = "38.0";
 		}
 
 		Log.i(TAG, "Current version is " + installedVersionName + " (" + installedVersionCode + ")");
 
-		String guessedNextVersion = installedVersionName.split(".")[0];
+		//String guessedNextVersion = installedVersionName;
+		String guessedNextVersion = installedVersionName.split("\\.")[0];
 		guessedNextVersion = String.valueOf((Integer.parseInt(guessedNextVersion) + 1));
 	
 		if(apiLevel < 9) {
@@ -173,17 +174,18 @@ public class MainActivity extends Activity {
 
 		final String stickyUri = strStickyInstallUri;
 		final String guessedUri = updateUri;
+		final int currentVersionCode = installedVersionCode;
 
 		btnStickyInstall.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				downloadAndInstall(stickyUri);
+				downloadAndInstall(stickyUri, currentVersionCode);
 			}
 		});
 
 		btnLuckyInstall.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// TODO: This might not yet be released!
-				downloadAndInstall(guessedUri);
+				downloadAndInstall(guessedUri, currentVersionCode);
 			}
 		});
 	}
