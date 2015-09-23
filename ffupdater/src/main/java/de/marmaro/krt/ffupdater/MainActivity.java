@@ -40,7 +40,7 @@ import android.content.SharedPreferences;
 public class MainActivity extends ActionBarActivity {
 
 	private static final String TAG = "MainActivity";
-	private static final String CV = "40.0.3";
+	private static final String CV = "41.0";
 
 	public void downloadAndInstall(String uri, final int vc) {
 
