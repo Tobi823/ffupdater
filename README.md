@@ -18,6 +18,10 @@ update method. I opened a ticket about non-playstore updates with Mozilla:
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1192279
 
+Another related issue is tracker at:
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1220773
+
 ## License
 
 FFUpdater -- a simple Android app to update Firefox.
