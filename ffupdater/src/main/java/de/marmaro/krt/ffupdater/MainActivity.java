@@ -40,7 +40,6 @@ import android.content.SharedPreferences;
 public class MainActivity extends ActionBarActivity {
 
 	private static final String TAG = "MainActivity";
-	private static final String CV = "43.0";
 
 	public void downloadAndInstall(String uri, final int vc) {
 
@@ -139,24 +138,10 @@ public class MainActivity extends ActionBarActivity {
 			installedVersionName = pinfo.versionName;
 			
 			Log.i(TAG, "Firefox " + installedVersionName + " (" + installedVersionCode + ") is installed.");
-
-			// INFO: Don't use Double.parseDoubel() since we might have multiple minor versions.
-			String nextMajorVersion = installedVersionName.split("\\.")[0];
-			nextMajorVersion = String.valueOf((Integer.parseInt(nextMajorVersion) + 1));
-			nextMajorVersion += ".0";
-	
-			if(new Version(installedVersionName).compareTo(new Version(CV)) < 0 ) {
-				updateVersion = CV;
-			}
-			else {
-				updateVersion = nextMajorVersion;
-			}	
 		}
 		catch (Exception e) {
 			Log.i(TAG, "Firefox is not installed.");
-			updateVersion = CV;
 		}
-
 
 		if(apiLevel < 9) {
 			mozApiArch = "";	
@@ -166,6 +151,7 @@ public class MainActivity extends ActionBarActivity {
 		}
 		if(apiLevel >= 11) {
 			mozApiArch = "android-api-11";
+			mozApiArch = "android"; // As download.mozilla.org requires.. do we need the old naming somewhere?
 		}
 		
 		switch(arch) {
@@ -193,12 +179,12 @@ public class MainActivity extends ActionBarActivity {
 		}
 		
 		if(mozApiArch.isEmpty()) {
-			Log.e(TAG, "Android-" + apiLevel + "@" + arch + " is not supported.");
+			Log.e(TAG, "android-" + apiLevel + "@" + arch + " is not supported.");
 			// TODO: Shutdown
 		}
 		
-		// INFO: Unfortunately mobile/releases/latest/ gives us no information on which version is used, so we cannot guess the filename.
-		updateUri = "https://archive.mozilla.org/pub/mozilla.org/mobile/releases/" + updateVersion + "/" + mozApiArch + "/" + mozLang + "/" + "fennec-" + updateVersion + "." + mozLang + "." + "android-" + mozArch + ".apk";
+		// INFO: Update URI as specified in https://archive.mozilla.org/pub/mobile/releases/latest/README.txt
+		updateUri = "https://download.mozilla.org/?product=fennec-latest&os=" + mozApiArch + "&lang=" + mozLang;
 
 		Log.i(TAG, "UpdateUri: " + updateUri);	
 
@@ -207,7 +193,6 @@ public class MainActivity extends ActionBarActivity {
 
 		btnLuckyInstall.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				// TODO: This might not yet be released!
 				downloadAndInstall(guessedUri, currentVersionCode);
 			}
 		});

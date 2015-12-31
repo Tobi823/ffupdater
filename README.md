@@ -22,6 +22,12 @@ Another related issue is tracker at:
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1220773
 
+
+Update: Mozilla now uses a uniform URL to point to the latest release, see
+
+https://archive.mozilla.org/pub/mobile/releases/latest/README.txt
+https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi
+
 ## License
 
 FFUpdater -- a simple Android app to update Firefox.

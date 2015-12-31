@@ -1,3 +1,8 @@
+2015-12-31 Version 43.0.x (11)
+ * Mozilla removed /latest/* downloads from archive. As recommended in
+   https://archive.mozilla.org/pub/mobile/releases/latest/README.txt
+   we use https://download.mozilla.org/?product=fennec-latest now.
+
 2015-12-25 Version 43.0 (10)
  * Update to 43.0
  * Mozilla does not populate /latest/ anymore, see
