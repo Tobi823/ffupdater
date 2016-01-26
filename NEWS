@@ -1,3 +1,7 @@
+2016-01-26 Version 44.0 (12)
+ * Update to reflect new Firefox version, but no change in
+   architecture. Mozilla "-latest" URL still works...
+
 2015-12-31 Version 43.0.x (11)
  * Mozilla removed /latest/* downloads from archive. As recommended in
    https://archive.mozilla.org/pub/mobile/releases/latest/README.txt
