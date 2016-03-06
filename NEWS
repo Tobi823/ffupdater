@@ -1,3 +1,6 @@
+2016-03-06 Version 45.0 (13)
+ * Use lower traget to qucikfix Android6 permissions
+
 2016-01-26 Version 44.0 (12)
  * Update to reflect new Firefox version, but no change in
    architecture. Mozilla "-latest" URL still works...

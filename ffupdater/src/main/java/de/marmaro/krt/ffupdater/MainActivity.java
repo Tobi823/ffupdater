@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater;
 
 // TODO: remove unused imports
+import android.Manifest;
 import android.os.StrictMode;
 import android.os.Bundle;
 import android.os.Environment;
@@ -26,6 +27,8 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -40,9 +43,18 @@ import android.content.SharedPreferences;
 public class MainActivity extends ActionBarActivity {
 
 	private static final String TAG = "MainActivity";
+	private Context mContext;
 
 	public void downloadAndInstall(String uri, final int vc) {
 
+/*
+		if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+			== PackageManager.PERMISSION_GRANTED) {
+
+       		ActivityCompat.requestPermissions(this,
+                	new String[]{Manifest.permission.READ_CONTACTS},
+                	23);
+*/
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		
 		DownloadManager.Request request = new DownloadManager.Request(Uri.parse(uri));
@@ -104,6 +116,7 @@ public class MainActivity extends ActionBarActivity {
 		};
 
 		registerReceiver(receiver, filter);
+	   //}
 	}
 
 	@Override
