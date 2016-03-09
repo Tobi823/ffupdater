@@ -1,3 +1,7 @@
+2016-03-09 Version 45.0a (14)
+ * Really, really quickfix Android6 issues..
+ * Remove version check since it's broken: Just download the APK.
+
 2016-03-06 Version 45.0 (13)
  * Use lower traget to qucikfix Android6 permissions
 

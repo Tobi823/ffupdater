@@ -47,14 +47,6 @@ public class MainActivity extends ActionBarActivity {
 
 	public void downloadAndInstall(String uri, final int vc) {
 
-/*
-		if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-			== PackageManager.PERMISSION_GRANTED) {
-
-       		ActivityCompat.requestPermissions(this,
-                	new String[]{Manifest.permission.READ_CONTACTS},
-                	23);
-*/
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		
 		DownloadManager.Request request = new DownloadManager.Request(Uri.parse(uri));
@@ -67,12 +59,8 @@ public class MainActivity extends ActionBarActivity {
 		request.setAllowedOverRoaming(prefs.getBoolean("useRoaming", false));
     		request.allowScanningByMediaScanner();
     		request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-		// TODO: Make temporary filename
-		request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "temp.apk");
-
-		// TODO: Maybe use context.getFilesDir() or context.getCacheDir() instead?
-
-		// TODO: Handle errors verbosly (file not found, out of space, etc.). See https://developer.android.com/reference/android/app/DownloadManager.html
+		request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "firefox.apk");
+		// don't set destination for cache
 
 		final DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 		final long downloadId = manager.enqueue(request);
@@ -84,39 +72,12 @@ public class MainActivity extends ActionBarActivity {
 		        long reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
 			Uri apk = manager.getUriForDownloadedFile(downloadId);
 		        if (downloadId == reference) {
-
-		                int downloadedVersionCode = 0;
-		                String downloadedVersionName = "0";
-
-				try {
-					final PackageManager pm = getPackageManager();
-					PackageInfo info = pm.getPackageArchiveInfo(apk.getPath(), 0);
-					downloadedVersionCode = info.versionCode;  
-					downloadedVersionName = info.versionName;
-				}
-				catch (Exception e) {
-				}
-
-				Log.i(TAG, "Update version is " + downloadedVersionName + " (" + downloadedVersionCode + ")");
-
-				if (downloadedVersionCode > vc) {
-					Log.i(TAG, "Update initiated");
-					Toast.makeText(getApplicationContext(), "Updating Firefox...", Toast.LENGTH_SHORT).show();
-					Intent installIntent = new Intent(Intent.ACTION_VIEW);
-		    			installIntent.setDataAndType(apk, "application/vnd.android.package-archive");
-					installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			    		startActivity(installIntent);
-				}
-				else {
-					Log.i(TAG, "No update required");
-					Toast.makeText(getApplicationContext(), "No need to update Firefox." , Toast.LENGTH_SHORT).show();
-				}
+				Toast.makeText(getApplicationContext(), "Please install apk file manually.", Toast.LENGTH_SHORT).show();
 		       }
 		    }
 		};
 
 		registerReceiver(receiver, filter);
-	   //}
 	}
 
 	@Override
@@ -127,9 +88,7 @@ public class MainActivity extends ActionBarActivity {
         	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         	StrictMode.setThreadPolicy(policy);
 
-		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-
-		final Button btnLuckyInstall  = (Button) findViewById(R.id.lucky_button);
+		final Button btnDownload  = (Button) findViewById(R.id.download_button);
 
 		int apiLevel = android.os.Build.VERSION.SDK_INT;
 		String arch = System.getProperty("os.arch");
@@ -204,33 +163,12 @@ public class MainActivity extends ActionBarActivity {
 		final String guessedUri = updateUri;
 		final int currentVersionCode = installedVersionCode;
 
-		btnLuckyInstall.setOnClickListener(new View.OnClickListener() {
+		btnDownload.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				downloadAndInstall(guessedUri, currentVersionCode);
 			}
 		});
 
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_activity_actions, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle presses on the action bar items
-		switch (item.getItemId()) {
-			case R.id.action_prefs:
-				Intent preftest = new Intent(this, MyPreferencesActivity.class);
-				startActivity(preftest);
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
-		}
 	}
 
 }

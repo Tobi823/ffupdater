@@ -14,10 +14,10 @@
 		/>
 	
 	<Button
-		android:id="@+id/lucky_button"
+		android:id="@+id/download_button"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/lucky"
+		android:text="@string/download"
 		/>
 
 </LinearLayout>
