@@ -1,3 +1,6 @@
+2016-04-06 Version 45.0.1 (15)
+ * Remove everything but URL generator and download button.
+
 2016-03-09 Version 45.0a (14)
  * Really, really quickfix Android6 issues..
  * Remove version check since it's broken: Just download the APK.

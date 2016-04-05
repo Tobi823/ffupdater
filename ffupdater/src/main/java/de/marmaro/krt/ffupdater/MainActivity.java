@@ -45,41 +45,6 @@ public class MainActivity extends ActionBarActivity {
 	private static final String TAG = "MainActivity";
 	private Context mContext;
 
-	public void downloadAndInstall(String uri, final int vc) {
-
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		
-		DownloadManager.Request request = new DownloadManager.Request(Uri.parse(uri));
-		request.setDescription("Downloading Firefox...");
-		request.setTitle("FFUpdater");
-		if(prefs.getBoolean("useWifiOnly", true)) {
-			request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
-		}
-		request.setAllowedOverMetered(prefs.getBoolean("useMetered", false));
-		request.setAllowedOverRoaming(prefs.getBoolean("useRoaming", false));
-    		request.allowScanningByMediaScanner();
-    		request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-		request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "firefox.apk");
-		// don't set destination for cache
-
-		final DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-		final long downloadId = manager.enqueue(request);
-
-		IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
-		BroadcastReceiver receiver = new BroadcastReceiver() {
-		    @Override
-		    public void onReceive(Context context, Intent intent) {
-		        long reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-			Uri apk = manager.getUriForDownloadedFile(downloadId);
-		        if (downloadId == reference) {
-				Toast.makeText(getApplicationContext(), "Please install apk file manually.", Toast.LENGTH_SHORT).show();
-		       }
-		    }
-		};
-
-		registerReceiver(receiver, filter);
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -163,9 +128,17 @@ public class MainActivity extends ActionBarActivity {
 		final String guessedUri = updateUri;
 		final int currentVersionCode = installedVersionCode;
 
+		/*
+		Intent i = new Intent(Intent.ACTION_VIEW);
+		i.setData(Uri.parse(guessedUri));
+		startActivity(i);
+		*/
+		
 		btnDownload.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				downloadAndInstall(guessedUri, currentVersionCode);
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(guessedUri));
+				startActivity(i);
 			}
 		});
 
