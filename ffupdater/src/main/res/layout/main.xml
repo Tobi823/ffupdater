@@ -14,6 +14,22 @@
 		/>
 	
 	<Button
+		android:id="@+id/checkavailable_button"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/checkavailable"
+		/>
+
+	<TextView
+		android:id="@+id/versioninfo_textview"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="@string/versioninfo"
+		android:padding="10dp"
+		android:textColor="#FFFFFF"
+		/>
+	
+	<Button
 		android:id="@+id/download_button"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"

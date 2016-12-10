@@ -2,5 +2,7 @@
 <resources>
 	<string name="app_name">FFUpdater</string>
 	<string name="infobox">This is a simple updater for Firefox. Click the button to send an HTTPS intent to whatever app you use to download, e.g. a installed version of Firefox or any other browser. Depending on your device, you might see multiple options to choose from. Most downloaders will show an icon indicating the progress. Once finished, open the resulting apk and choose the installer.\n\nThis is a rather clumsy user experience, so any help is certainly welcome!</string>
+	<string name="checkavailable">Check available version</string>
+	<string name="versioninfo">Installed Firefox version:\t(checking...)\nAvailable Firefox version:\t(checking...)</string>
 	<string name="download">Download Firefox</string>
 </resources>

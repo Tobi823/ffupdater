@@ -21,6 +21,7 @@ import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.content.Intent;
@@ -40,6 +41,8 @@ import android.view.ViewGroup;
 import android.preference.PreferenceManager;
 import android.content.SharedPreferences;
 
+import java.util.List;
+
 public class MainActivity extends ActionBarActivity {
 
 	private static final String TAG = "MainActivity";
@@ -50,10 +53,12 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        	StrictMode.setThreadPolicy(policy);
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 
-		final Button btnDownload  = (Button) findViewById(R.id.download_button);
+		final Button btnDownload        = (Button) findViewById(R.id.download_button);
+		final TextView tvwVersionInfo   = (TextView) findViewById(R.id.versioninfo_textview);
+		final Button btnCheck           = (Button) findViewById(R.id.checkavailable_button);
 
 		int apiLevel = android.os.Build.VERSION.SDK_INT;
 		String arch = System.getProperty("os.arch");
@@ -66,7 +71,7 @@ public class MainActivity extends ActionBarActivity {
 		String packageId = "org.mozilla.firefox";
 
 		int installedVersionCode = 0;
-          	String installedVersionName = "0.0";   
+		String installedVersionName = "0.0";
 		String updateVersion = "0.0";
 
 		try {
@@ -75,6 +80,7 @@ public class MainActivity extends ActionBarActivity {
 			installedVersionName = pinfo.versionName;
 			
 			Log.i(TAG, "Firefox " + installedVersionName + " (" + installedVersionCode + ") is installed.");
+			tvwVersionInfo.setText("Installed Firefox version:\t" + installedVersionName + " (" + installedVersionCode + ")\nAvailable Firefox version:\t(checking...)");
 		}
 		catch (Exception e) {
 			Log.i(TAG, "Firefox is not installed.");
@@ -139,6 +145,15 @@ public class MainActivity extends ActionBarActivity {
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(guessedUri));
 				startActivity(i);
+			}
+		});
+		
+		final String checkUri = "https://archive.mozilla.org/pub/mobile/releases/";
+		
+		btnCheck.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				List<String> versions = MozillaVersions.get(checkUri);
+				Log.d(TAG, "Found " + versions.size() + " versions:");
 			}
 		});
 
