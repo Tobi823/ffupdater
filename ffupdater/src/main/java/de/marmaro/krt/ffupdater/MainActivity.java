@@ -48,6 +48,10 @@ public class MainActivity extends ActionBarActivity {
 	private static final String TAG = "MainActivity";
 	private Context mContext;
 
+	private String installedVersionName = "0.0";
+	private String availableVersionName = "(checking...)";
+	private String installedVersionCode = "";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,7 +61,6 @@ public class MainActivity extends ActionBarActivity {
 		StrictMode.setThreadPolicy(policy);
 
 		final Button btnDownload        = (Button) findViewById(R.id.download_button);
-		final TextView tvwVersionInfo   = (TextView) findViewById(R.id.versioninfo_textview);
 		final Button btnCheck           = (Button) findViewById(R.id.checkavailable_button);
 
 		int apiLevel = android.os.Build.VERSION.SDK_INT;
@@ -70,21 +73,19 @@ public class MainActivity extends ActionBarActivity {
 		
 		String packageId = "org.mozilla.firefox";
 
-		int installedVersionCode = 0;
-		String installedVersionName = "0.0";
-		String updateVersion = "0.0";
-
 		try {
 			PackageInfo pinfo = getPackageManager().getPackageInfo(packageId, 0);  
-			installedVersionCode = pinfo.versionCode;  
+			installedVersionCode = "" + pinfo.versionCode;
 			installedVersionName = pinfo.versionName;
 			
 			Log.i(TAG, "Firefox " + installedVersionName + " (" + installedVersionCode + ") is installed.");
-			tvwVersionInfo.setText("Installed Firefox version:\t" + installedVersionName + " (" + installedVersionCode + ")\nAvailable Firefox version:\t(checking...)");
 		}
 		catch (Exception e) {
 			Log.i(TAG, "Firefox is not installed.");
+			installedVersionName = "None";
+			installedVersionCode = "Firefox is not installed";
 		}
+		displayVersions();
 
 		if(apiLevel < 9) {
 			mozApiArch = "";	
@@ -132,7 +133,6 @@ public class MainActivity extends ActionBarActivity {
 		Log.i(TAG, "UpdateUri: " + updateUri);	
 
 		final String guessedUri = updateUri;
-		final int currentVersionCode = installedVersionCode;
 
 		/*
 		Intent i = new Intent(Intent.ACTION_VIEW);
@@ -152,11 +152,19 @@ public class MainActivity extends ActionBarActivity {
 		
 		btnCheck.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				List<String> versions = MozillaVersions.get(checkUri);
-				Log.d(TAG, "Found " + versions.size() + " versions:");
+				Version version = MozillaVersions.getHighest(checkUri);
+				availableVersionName = version.get();
+				Log.d(TAG, "Found highest available version: " + availableVersionName);
+				displayVersions();
 			}
 		});
 
+	}
+	
+	private void displayVersions() {
+		final TextView tvwVersionInfo = (TextView) findViewById(R.id.versioninfo_textview);
+		tvwVersionInfo.setText("Installed Firefox version:\t" + installedVersionName + " (" + installedVersionCode + ")\n" + 
+		                       "Available Firefox version:\t" + availableVersionName);
 	}
 
 }

@@ -7,7 +7,8 @@ import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
 
 import java.util.List;
-import java.util.LinkedList;
+import java.util.Collections;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -50,20 +51,26 @@ public class MozillaVersions {
 		return null;
 	}
 	
-	private static List<String> findReleaseVersions(String site) {
-		Pattern pattern = Pattern.compile("a\\s+href=\"/pub/mobile/releases/(\\d+\\.\\d+)/\"");
+	private static List<Version> findReleaseVersions(String site) {
+		Pattern pattern = Pattern.compile("a\\s+href=\"/pub/mobile/releases/((\\d+\\.)+?\\d+)/\"");
 		Matcher matcher = pattern.matcher(site);
-		LinkedList<String> results = new LinkedList<String>();
+		ArrayList<Version> results = new ArrayList<Version>();
 		while (matcher.find()) {
-			results.add(matcher.group(1));
+			results.add(new Version(matcher.group(1)));
 		}
 		return results;
 	}
 	
-	public static List<String> get(String uri) {
+	public static List<Version> get(String uri) {
 		String site = downloadFromUrl(uri);
 		List matches = findReleaseVersions(site);
 		return matches;
+	}
+	
+	public static Version getHighest(String uri) {
+		List<Version> matches = get(uri);
+		Collections.sort(matches);
+		return matches.get(matches.size() - 1);
 	}
 
 }
