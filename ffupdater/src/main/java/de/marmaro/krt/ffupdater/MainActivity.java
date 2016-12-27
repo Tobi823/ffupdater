@@ -16,7 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +26,7 @@ import android.content.SharedPreferences;
 
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
 	private static final String TAG = "MainActivity";
 	private Context mContext;
