@@ -1,18 +1,11 @@
 package de.marmaro.krt.ffupdater;
 
-// TODO: remove unused imports
 import android.Manifest;
 import android.os.StrictMode;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.app.DownloadManager.Request;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
-import android.content.pm.*;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -22,19 +15,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -134,12 +117,6 @@ public class MainActivity extends ActionBarActivity {
 
 		final String guessedUri = updateUri;
 
-		/*
-		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setData(Uri.parse(guessedUri));
-		startActivity(i);
-		*/
-		
 		btnDownload.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent i = new Intent(Intent.ACTION_VIEW);
