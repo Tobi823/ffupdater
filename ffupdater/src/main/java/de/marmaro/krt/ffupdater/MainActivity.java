@@ -24,7 +24,7 @@ import android.view.ViewGroup;
 import android.preference.PreferenceManager;
 import android.content.SharedPreferences;
 
-import java.util.List;
+import android.os.AsyncTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -126,22 +126,47 @@ public class MainActivity extends AppCompatActivity {
 		});
 		
 		final String checkUri = "https://archive.mozilla.org/pub/mobile/releases/";
-		
+		final MainActivity parent = this;
 		btnCheck.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Version version = MozillaVersions.getHighest(checkUri);
-				availableVersionName = version.get();
-				Log.d(TAG, "Found highest available version: " + availableVersionName);
-				displayVersions();
+				CheckMozillaVersionsTask task = new CheckMozillaVersionsTask(parent);
+				task.execute(checkUri);
 			}
 		});
 
+	}
+
+	public void setAvailableVersion(Version value) {
+		availableVersionName = value.get();
+		Log.d(TAG, "Found highest available version: " + availableVersionName);
+		displayVersions();
 	}
 	
 	private void displayVersions() {
 		final TextView tvwVersionInfo = (TextView) findViewById(R.id.versioninfo_textview);
 		tvwVersionInfo.setText("Installed Firefox version:\t" + installedVersionName + " (" + installedVersionCode + ")\n" + 
 		                       "Available Firefox version:\t" + availableVersionName);
+	}
+	
+	static class CheckMozillaVersionsTask extends AsyncTask<String, Void, Version> {
+		private final java.lang.ref.WeakReference<MainActivity> weakActivity;
+		CheckMozillaVersionsTask(MainActivity parentActivity) {
+			super();
+			this.weakActivity = new java.lang.ref.WeakReference<>(parentActivity);
+		}
+		@Override
+		protected Version doInBackground(String... checkUri) {
+			return MozillaVersions.getHighest(checkUri[0]);
+		}
+		@Override
+		public void onPostExecute(Version result) {
+			MainActivity activity = weakActivity.get();
+			if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
+				// MainActivity isn't available anymore, TODO: re-create it?
+				return;
+			}
+			activity.setAvailableVersion(result);
+		}
 	}
 
 }
