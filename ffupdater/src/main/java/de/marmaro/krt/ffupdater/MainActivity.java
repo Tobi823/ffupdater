@@ -4,7 +4,6 @@ import android.Manifest;
 import android.os.StrictMode;
 import android.os.Bundle;
 import android.util.Log;
-import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -31,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 	private static final String TAG = "MainActivity";
 	private Context mContext;
 
-	private String installedVersionName = "0.0";
-	private String availableVersionName = "(checking...)";
+	private String installedVersionName;
+	private String availableVersionName;
 	private String installedVersionCode = "";
 
 	@Override
@@ -40,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
 		StrictMode.setThreadPolicy(policy);
-
-		final Button btnDownload        = (Button) findViewById(R.id.download_button);
-		final Button btnCheck           = (Button) findViewById(R.id.checkavailable_button);
-
+	
+		installedVersionName = getString(R.string.checking);
+		availableVersionName = getString(R.string.checking);
+		
 		int apiLevel = android.os.Build.VERSION.SDK_INT;
 		String arch = System.getProperty("os.arch");
 		
@@ -65,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 		}
 		catch (Exception e) {
 			Log.i(TAG, "Firefox is not installed.");
-			installedVersionName = "None";
-			installedVersionCode = "Firefox is not installed";
+			installedVersionName = getString(R.string.none);
+			installedVersionCode = getString(R.string.ff_not_installed);
 		}
 		displayVersions();
 
@@ -117,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
 		final String guessedUri = updateUri;
 
+		final Button btnDownload = (Button) findViewById(R.id.download_button);
 		btnDownload.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent i = new Intent(Intent.ACTION_VIEW);
@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 		
+		final Button btnCheck = (Button) findViewById(R.id.checkavailable_button);
 		final String checkUri = "https://archive.mozilla.org/pub/mobile/releases/";
 		final MainActivity parent = this;
 		btnCheck.setOnClickListener(new View.OnClickListener() {
@@ -143,9 +144,10 @@ public class MainActivity extends AppCompatActivity {
 	}
 	
 	private void displayVersions() {
-		final TextView tvwVersionInfo = (TextView) findViewById(R.id.versioninfo_textview);
-		tvwVersionInfo.setText("Installed Firefox version:\t" + installedVersionName + " (" + installedVersionCode + ")\n" + 
-		                       "Available Firefox version:\t" + availableVersionName);
+		TextView textView = (TextView)findViewById(R.id.installed_version);
+		textView.setText(installedVersionName + " (" + installedVersionCode + ")");
+		textView = (TextView)findViewById(R.id.available_version);
+		textView.setText(availableVersionName);
 	}
 	
 	static class CheckMozillaVersionsTask extends AsyncTask<String, Void, Version> {
