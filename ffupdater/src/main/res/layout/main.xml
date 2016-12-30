@@ -43,6 +43,7 @@
 			/>
 		
 		<TextView
+			android:visibility="gone"
 			android:id="@+id/available_version"
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content" 

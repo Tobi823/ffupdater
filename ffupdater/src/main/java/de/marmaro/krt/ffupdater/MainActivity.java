@@ -130,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
 		final MainActivity parent = this;
 		btnCheck.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				btnCheck.setVisibility(View.GONE);
+				TextView textView = (TextView)findViewById(R.id.available_version);
+				textView.setVisibility(View.VISIBLE);
 				CheckMozillaVersionsTask task = new CheckMozillaVersionsTask(parent);
 				task.execute(checkUri);
 			}
