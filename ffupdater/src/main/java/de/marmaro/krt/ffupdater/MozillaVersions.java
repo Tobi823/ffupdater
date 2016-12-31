@@ -46,9 +46,9 @@ public class MozillaVersions {
 			}
 		} catch (IOException e) {
 			Log.e(TAG, "Error: " + e);
-			return null;
+			return "";
 		}
-		return null;
+		return "";
 	}
 	
 	private static List<Version> findReleaseVersions(String site) {
@@ -69,8 +69,11 @@ public class MozillaVersions {
 	
 	public static Version getHighest(String uri) {
 		List<Version> matches = get(uri);
-		Collections.sort(matches);
-		return matches.get(matches.size() - 1);
+		if (matches.size() > 0) {
+			Collections.sort(matches);
+			return matches.get(matches.size() - 1);
+		}
+		return null;
 	}
 
 }

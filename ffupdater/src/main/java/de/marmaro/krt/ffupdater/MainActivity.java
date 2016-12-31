@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.app.AlertDialog;
 
 import android.preference.PreferenceManager;
 import android.content.SharedPreferences;
@@ -28,20 +29,28 @@ import android.os.AsyncTask;
 public class MainActivity extends AppCompatActivity {
 
 	private static final String TAG = "MainActivity";
-	private Context mContext;
 
 	private String installedVersionName;
 	private String availableVersionName;
 	private String installedVersionCode = "";
+	
+	protected TextView availableVersionTextView;
+	protected TextView installedVersionTextView;
+	protected Button downloadButton;
+	protected Button checkAvailableButton;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
 		StrictMode.setThreadPolicy(policy);
-	
+		
+		installedVersionTextView = (TextView) findViewById(R.id.installed_version);
+		availableVersionTextView = (TextView) findViewById(R.id.available_version);
+		checkAvailableButton = (Button) findViewById(R.id.checkavailable_button);
+		downloadButton = (Button) findViewById(R.id.download_button);
+		
 		installedVersionName = getString(R.string.checking);
 		availableVersionName = getString(R.string.checking);
 		
@@ -116,8 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
 		final String guessedUri = updateUri;
 
-		final Button btnDownload = (Button) findViewById(R.id.download_button);
-		btnDownload.setOnClickListener(new View.OnClickListener() {
+		downloadButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(guessedUri));
@@ -125,14 +133,12 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 		
-		final Button btnCheck = (Button) findViewById(R.id.checkavailable_button);
 		final String checkUri = "https://archive.mozilla.org/pub/mobile/releases/";
 		final MainActivity parent = this;
-		btnCheck.setOnClickListener(new View.OnClickListener() {
+		checkAvailableButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				btnCheck.setVisibility(View.GONE);
-				TextView textView = (TextView)findViewById(R.id.available_version);
-				textView.setVisibility(View.VISIBLE);
+				checkAvailableButton.setVisibility(View.GONE);
+				availableVersionTextView.setVisibility(View.VISIBLE);
 				CheckMozillaVersionsTask task = new CheckMozillaVersionsTask(parent);
 				task.execute(checkUri);
 			}
@@ -141,16 +147,24 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void setAvailableVersion(Version value) {
-		availableVersionName = value.get();
-		Log.d(TAG, "Found highest available version: " + availableVersionName);
-		displayVersions();
+		if (value == null) {
+			Log.d(TAG, "Could not determine highest available version.");
+			checkAvailableButton.setVisibility(View.VISIBLE);
+			availableVersionTextView.setVisibility(View.GONE);
+			(new AlertDialog.Builder(this))
+				.setMessage(getString(R.string.check_available_error_message))
+				.setPositiveButton(getString(R.string.ok), null)
+				.show();
+		} else {
+			availableVersionName = value.get();
+			Log.d(TAG, "Found highest available version: " + availableVersionName);
+			displayVersions();
+		}
 	}
 	
 	private void displayVersions() {
-		TextView textView = (TextView)findViewById(R.id.installed_version);
-		textView.setText(installedVersionName + " (" + installedVersionCode + ")");
-		textView = (TextView)findViewById(R.id.available_version);
-		textView.setText(availableVersionName);
+		installedVersionTextView.setText(installedVersionName + " (" + installedVersionCode + ")");
+		availableVersionTextView.setText(availableVersionName);
 	}
 	
 	static class CheckMozillaVersionsTask extends AsyncTask<String, Void, Version> {
