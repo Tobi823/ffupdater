@@ -1,18 +1,10 @@
 package de.marmaro.krt.ffupdater;
 
-// TODO: remove unused imports
 import android.Manifest;
 import android.os.StrictMode;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
-import android.app.Activity;
-import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.app.DownloadManager.Request;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
-import android.content.pm.*;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,40 +13,47 @@ import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.app.AlertDialog;
 
 import android.preference.PreferenceManager;
 import android.content.SharedPreferences;
 
-public class MainActivity extends ActionBarActivity {
+import android.os.AsyncTask;
+
+public class MainActivity extends AppCompatActivity {
 
 	private static final String TAG = "MainActivity";
-	private Context mContext;
+
+	private String installedVersionName;
+	private String availableVersionName;
+	private String installedVersionCode = "";
+	
+	protected TextView availableVersionTextView;
+	protected TextView installedVersionTextView;
+	protected Button downloadButton;
+	protected Button checkAvailableButton;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
-        	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        	StrictMode.setThreadPolicy(policy);
-
-		final Button btnDownload  = (Button) findViewById(R.id.download_button);
-
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
+		StrictMode.setThreadPolicy(policy);
+		
+		installedVersionTextView = (TextView) findViewById(R.id.installed_version);
+		availableVersionTextView = (TextView) findViewById(R.id.available_version);
+		checkAvailableButton = (Button) findViewById(R.id.checkavailable_button);
+		downloadButton = (Button) findViewById(R.id.download_button);
+		
+		installedVersionName = getString(R.string.checking);
+		availableVersionName = getString(R.string.checking);
+		
 		int apiLevel = android.os.Build.VERSION.SDK_INT;
 		String arch = System.getProperty("os.arch");
 		
@@ -65,20 +64,19 @@ public class MainActivity extends ActionBarActivity {
 		
 		String packageId = "org.mozilla.firefox";
 
-		int installedVersionCode = 0;
-          	String installedVersionName = "0.0";   
-		String updateVersion = "0.0";
-
 		try {
 			PackageInfo pinfo = getPackageManager().getPackageInfo(packageId, 0);  
-			installedVersionCode = pinfo.versionCode;  
+			installedVersionCode = "" + pinfo.versionCode;
 			installedVersionName = pinfo.versionName;
 			
 			Log.i(TAG, "Firefox " + installedVersionName + " (" + installedVersionCode + ") is installed.");
 		}
 		catch (Exception e) {
 			Log.i(TAG, "Firefox is not installed.");
+			installedVersionName = getString(R.string.none);
+			installedVersionCode = getString(R.string.ff_not_installed);
 		}
+		displayVersions();
 
 		if(apiLevel < 9) {
 			mozApiArch = "";	
@@ -126,22 +124,68 @@ public class MainActivity extends ActionBarActivity {
 		Log.i(TAG, "UpdateUri: " + updateUri);	
 
 		final String guessedUri = updateUri;
-		final int currentVersionCode = installedVersionCode;
 
-		/*
-		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setData(Uri.parse(guessedUri));
-		startActivity(i);
-		*/
-		
-		btnDownload.setOnClickListener(new View.OnClickListener() {
+		downloadButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent i = new Intent(Intent.ACTION_VIEW);
 				i.setData(Uri.parse(guessedUri));
 				startActivity(i);
 			}
 		});
+		
+		final String checkUri = "https://archive.mozilla.org/pub/mobile/releases/";
+		final MainActivity parent = this;
+		checkAvailableButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				checkAvailableButton.setVisibility(View.GONE);
+				availableVersionTextView.setVisibility(View.VISIBLE);
+				CheckMozillaVersionsTask task = new CheckMozillaVersionsTask(parent);
+				task.execute(checkUri);
+			}
+		});
 
+	}
+
+	public void setAvailableVersion(Version value) {
+		if (value == null) {
+			Log.d(TAG, "Could not determine highest available version.");
+			checkAvailableButton.setVisibility(View.VISIBLE);
+			availableVersionTextView.setVisibility(View.GONE);
+			(new AlertDialog.Builder(this))
+				.setMessage(getString(R.string.check_available_error_message))
+				.setPositiveButton(getString(R.string.ok), null)
+				.show();
+		} else {
+			availableVersionName = value.get();
+			Log.d(TAG, "Found highest available version: " + availableVersionName);
+			displayVersions();
+		}
+	}
+	
+	private void displayVersions() {
+		installedVersionTextView.setText(installedVersionName + " (" + installedVersionCode + ")");
+		availableVersionTextView.setText(availableVersionName);
+	}
+	
+	static class CheckMozillaVersionsTask extends AsyncTask<String, Void, Version> {
+		private final java.lang.ref.WeakReference<MainActivity> weakActivity;
+		CheckMozillaVersionsTask(MainActivity parentActivity) {
+			super();
+			this.weakActivity = new java.lang.ref.WeakReference<>(parentActivity);
+		}
+		@Override
+		protected Version doInBackground(String... checkUri) {
+			return MozillaVersions.getHighest(checkUri[0]);
+		}
+		@Override
+		public void onPostExecute(Version result) {
+			MainActivity activity = weakActivity.get();
+			if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
+				// MainActivity isn't available anymore, TODO: re-create it?
+				return;
+			}
+			activity.setAvailableVersion(result);
+		}
 	}
 
 }

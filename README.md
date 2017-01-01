@@ -1,20 +1,18 @@
 ## Firefox-Updater
 
-INFO: Mozilla has discontinued FTP service as of 2015-08-05, see the
-following blog post for details:
+An Android app to install and/or update Firefox for Android on your device, without using the Google Play Store.
 
-* https://blog.mozilla.org/it/2015/07/27/product-delivery-migration-what-is-changing-when-its-changing-and-the-impacts/
+Shows the currently installed Firefox version (if available) and allows to query Mozilla's [releases directory site](https://archive.mozilla.org/pub/mobile/releases/) for the latest Firefox for Android release. It also lets a user start downloading the latest release version.
 
-Polls Mozilla's FTP Server for latest "Firefox for Android" release, downloads
-it and -- after comparing the versionCode -- installs it (if needed).
+Currently the app is an activity with a two-button GUI. Checks for and displays the most current available version when
+the "Check available version"-button is tapped. The "Download Firefox" button starts an intent to download the last version
+from a URL described in Mozilla's [README.txt](https://archive.mozilla.org/pub/mobile/releases/latest/README.txt). However, the plan is to move this to an Android service to perform periodical update checks and download/install from within the app itself.
 
-Currently the app is an activity with a two-button GUI. Checks are made when
-the "I am feeling lucky"-button is tapped. The other downloads the last version
-known on release date. However, the plan is to move this actually to an Android
-service to perform periodical update checks.
+## History
 
-However, Mozilla plans to shutdown the FTP server, so we cannot rely on this
-update method. I opened a ticket about non-playstore updates with Mozilla:
+Since Mozilla [shut down their FTP server on 2015-08-05](https://blog.mozilla.org/it/2015/07/27/product-delivery-migration-what-is-changing-when-its-changing-and-the-impacts/), non-playstore updates of Firefox have to be done by third-party apps such as this one.
+
+There is a ticket about non-playstore updates with Mozilla:
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1192279
 
@@ -22,8 +20,7 @@ Another related issue is tracker at:
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1220773
 
-
-Update: Mozilla now uses a uniform URL to point to the latest release, see
+Mozilla now uses a uniform URL to point to the latest release, see
 
 https://archive.mozilla.org/pub/mobile/releases/latest/README.txt
 https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi
