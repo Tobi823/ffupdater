@@ -1,12 +1,9 @@
 package de.marmaro.krt.ffupdater;
 
-import android.Manifest;
 import android.os.StrictMode;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.pm.PackageInfo;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
@@ -16,13 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 import android.app.AlertDialog;
-
-import android.preference.PreferenceManager;
-import android.content.SharedPreferences;
 
 import android.os.AsyncTask;
 
@@ -54,16 +45,7 @@ public class MainActivity extends AppCompatActivity {
 		installedVersionName = getString(R.string.checking);
 		availableVersionName = getString(R.string.checking);
 		
-		int apiLevel = android.os.Build.VERSION.SDK_INT;
-		String arch = System.getProperty("os.arch");
-		
-		String updateUri = "";
-		String mozApiArch = "android-api-11";
-		String mozLang = "multi";
-		String mozArch = "arm";
-		
 		String packageId = "org.mozilla.firefox";
-
 		try {
 			PackageInfo pinfo = getPackageManager().getPackageInfo(packageId, 0);  
 			installedVersionCode = "" + pinfo.versionCode;
@@ -78,57 +60,34 @@ public class MainActivity extends AppCompatActivity {
 		}
 		displayVersions();
 
-		if(apiLevel < 9) {
-			mozApiArch = "";	
-		}
-		if(apiLevel >= 9) {
+		int apiLevel = android.os.Build.VERSION.SDK_INT;
+		String mozApiArch = "";
+		if (apiLevel >= 11) {
+			mozApiArch = "android"; // As download.mozilla.org requires.. do we need the old naming somewhere?
+		} else if (apiLevel >= 9) {
 			mozApiArch = "android-api-9";
 		}
-		if(apiLevel >= 11) {
-			mozApiArch = "android-api-11";
-			mozApiArch = "android"; // As download.mozilla.org requires.. do we need the old naming somewhere?
-		}
 		
-		switch(arch) {
-			case "armv7l":	mozApiArch = mozApiArch;
-					mozArch = mozArch;
-				 	break;
-			case "arch64": 	mozApiArch = mozApiArch;
-					mozArch = mozArch;
-					break;
-			case "mips": 	mozApiArch = "";
-					mozArch = "";
-					break;
-			case "mips64": 	mozApiArch = "";
-					mozArch = "";
-		                   	break;
-			case "i686": 	mozApiArch = "android-x86";
-					mozArch = "i386";
-                     		 	break;
-			case "x86_64": 	mozApiArch = "android-x86";
-					mozArch = "i386";
-                     		 	break;
-			default:	mozApiArch= ""; 
-					mozArch = "";
-				 	break;
+		String arch = System.getProperty("os.arch");
+		if (arch.equals("i686") || arch.equals("x86_64")) {
+			mozApiArch = "android-x86";
 		}
 		
 		if(mozApiArch.isEmpty()) {
 			Log.e(TAG, "android-" + apiLevel + "@" + arch + " is not supported.");
 			// TODO: Shutdown
 		}
-		
+
+		String mozLang = "multi";
+        
 		// INFO: Update URI as specified in https://archive.mozilla.org/pub/mobile/releases/latest/README.txt
-		updateUri = "https://download.mozilla.org/?product=fennec-latest&os=" + mozApiArch + "&lang=" + mozLang;
-
+		final String updateUri = "https://download.mozilla.org/?product=fennec-latest&os=" + mozApiArch + "&lang=" + mozLang;
 		Log.i(TAG, "UpdateUri: " + updateUri);	
-
-		final String guessedUri = updateUri;
 
 		downloadButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(guessedUri));
+				i.setData(Uri.parse(updateUri));
 				startActivity(i);
 			}
 		});
