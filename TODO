@@ -5,4 +5,4 @@ TODO: Check for connectivity first
 TODO: DownloadManager exceptions: https://developer.android.com/reference/android/app/DownloadManager.html
 TODO: ...
 TODO: Make Android-23 work (WRITE_EXTERNAL..)
-TODO: MozillaVersions shouldn't download in the main thread
+TODO: Refresh Installed Version display after MainActivity was in the background (because of e.g. updating FF)
