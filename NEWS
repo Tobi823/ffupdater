@@ -1,5 +1,10 @@
+2017-01-22 Version 51.0 (18)
+ * Update to 51.0
+ * Remove a lot of unused code.
+ * Re-implement actual checking.
+
 2016-04-29 Version 46.0 (16)
- * No changes, just bump to reming people
+ * No changes, just bump to remind people
 
 2016-04-06 Version 45.0.1 (15)
  * Remove everything but URL generator and download button.
