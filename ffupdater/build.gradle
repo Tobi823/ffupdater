@@ -6,22 +6,22 @@ dependencies {
 }
 
 android {
-	compileSdkVersion 23
-	buildToolsVersion "23.0.2"
+	compileSdkVersion 25
+	buildToolsVersion '25.0.3'
 
 	defaultConfig {
 		versionCode 18
 		versionName "51.0"
 		minSdkVersion 9
-		targetSdkVersion 23
+		targetSdkVersion 25
 	}
 
 	buildTypes {
 		release {
 			// Enable proguard with default android settings (no obfuscation)
-			//minifyEnabled true
-			//shrinkResources true
-			//proguardFile getDefaultProguardFile('proguard-android.txt')
+			minifyEnabled true
+			shrinkResources true
+			proguardFile getDefaultProguardFile('proguard-android.txt')
 		}
 	}
 

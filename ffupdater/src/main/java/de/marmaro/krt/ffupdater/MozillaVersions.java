@@ -40,7 +40,7 @@ public class MozillaVersions {
 				if (received == -1) {
 					is.close();
 					Log.d(TAG, "downloadFromUrl done, received " + off + " bytes.");
-					String s = new String(buffer, 0, off, java.nio.charset.StandardCharsets.UTF_8);
+					String s = new String(buffer, 0, off, "UTF-8");
 					return s;
 				}
 			}
