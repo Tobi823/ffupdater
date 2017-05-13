@@ -92,17 +92,15 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 		
-		final String checkUri = "https://archive.mozilla.org/pub/mobile/releases/";
 		final MainActivity parent = this;
 		checkAvailableButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				checkAvailableButton.setVisibility(View.GONE);
 				availableVersionTextView.setVisibility(View.VISIBLE);
 				CheckMozillaVersionsTask task = new CheckMozillaVersionsTask(parent);
-				task.execute(checkUri);
+				task.execute();
 			}
 		});
-
 	}
 
 	public void setAvailableVersion(Version value) {
@@ -126,20 +124,20 @@ public class MainActivity extends AppCompatActivity {
 		availableVersionTextView.setText(availableVersionName);
 	}
 	
-	static class CheckMozillaVersionsTask extends AsyncTask<String, Void, Version> {
+	private static class CheckMozillaVersionsTask extends AsyncTask<Void, Void, Version> {
 		private final java.lang.ref.WeakReference<MainActivity> weakActivity;
 		CheckMozillaVersionsTask(MainActivity parentActivity) {
 			super();
 			this.weakActivity = new java.lang.ref.WeakReference<>(parentActivity);
 		}
 		@Override
-		protected Version doInBackground(String... checkUri) {
-			return MozillaVersions.getHighest(checkUri[0]);
+		protected Version doInBackground(Void... params) {
+			return MozillaVersions.getVersion();
 		}
 		@Override
 		public void onPostExecute(Version result) {
 			MainActivity activity = weakActivity.get();
-			if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
+			if (activity == null || activity.isFinishing()) { // || activity.isDestroyed()) {
 				// MainActivity isn't available anymore, TODO: re-create it?
 				return;
 			}

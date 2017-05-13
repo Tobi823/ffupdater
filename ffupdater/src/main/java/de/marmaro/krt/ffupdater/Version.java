@@ -1,15 +1,15 @@
 // https://stackoverflow.com/questions/198431/how-do-you-compare-two-version-strings-in-java
 package de.marmaro.krt.ffupdater;
 
-public class Version implements Comparable<Version> {
+class Version implements Comparable<Version> {
 
     private String version;
 
-    public final String get() {
+    final String get() {
         return this.version;
     }
 
-    public Version(String version) {
+    Version(String version) {
         if(version == null)
             throw new IllegalArgumentException("Version can not be null");
         if(!version.matches("[0-9]+(\\.[0-9]+)*"))

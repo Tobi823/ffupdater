@@ -2,78 +2,57 @@ package de.marmaro.krt.ffupdater;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URLConnection;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
 
-import java.util.List;
-import java.util.Collections;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.util.Log;
 
-public class MozillaVersions {
+class MozillaVersions {
 	private static final String TAG = "ffupdater";
-	
-	private static String downloadFromUrl(String uri) {
+	private static final String checkUri = "https://product-details.mozilla.org/1.0/mobile_versions.json";
+
+	private static String downloadVersion() {
+		HttpsURLConnection urlConnection = null;
+		StringBuilder result = new StringBuilder();
 		try {
-			//Log.d(TAG, "downloadFromUrl: Creating the URL...");
-			URL url = new URL(uri);
-			//Log.d(TAG, "downloadFromUrl: Creating the HttpsURLConnection...");
-			HttpsURLConnection c = (HttpsURLConnection)url.openConnection();
-			c.setRequestMethod("GET");
-			c.setDoInput(true);
-			Log.d(TAG, "downloadFromUrl: Connecting...");
-			c.connect();
+			URL url = new URL(checkUri);
+			urlConnection = (HttpsURLConnection) url.openConnection();
+			InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-			//Log.d(TAG, "DownloadFromUrl: Obtaining the InputStream...");
-			InputStream is = c.getInputStream();
-
-			byte[] buffer = new byte[1024 * 512];
-			int received = 0;
-			int off = 0;
-			while (received != -1) {
-				received = is.read(buffer, off, buffer.length-off);
-				off += received;
-				if (received == -1) {
-					is.close();
-					Log.d(TAG, "downloadFromUrl done, received " + off + " bytes.");
-					String s = new String(buffer, 0, off, "UTF-8");
-					return s;
-				}
+			String line;
+			while ((line = reader.readLine()) != null) {
+				result.append(line);
 			}
+			return result.toString();
 		} catch (IOException e) {
 			Log.e(TAG, "Error: " + e);
 			return "";
+		} finally {
+			if (urlConnection != null) {
+            	urlConnection.disconnect();
+			}
 		}
-		return "";
-	}
-	
-	private static List<Version> findReleaseVersions(String site) {
-		Pattern pattern = Pattern.compile("a\\s+href=\"/pub/mobile/releases/((\\d+\\.)+?\\d+)/\"");
-		Matcher matcher = pattern.matcher(site);
-		ArrayList<Version> results = new ArrayList<Version>();
-		while (matcher.find()) {
-			results.add(new Version(matcher.group(1)));
-		}
-		return results;
-	}
-	
-	public static List<Version> get(String uri) {
-		String site = downloadFromUrl(uri);
-		List matches = findReleaseVersions(site);
-		return matches;
-	}
-	
-	public static Version getHighest(String uri) {
-		List<Version> matches = get(uri);
-		if (matches.size() > 0) {
-			Collections.sort(matches);
-			return matches.get(matches.size() - 1);
-		}
-		return null;
 	}
 
+	static Version getVersion() {
+		String result = downloadVersion();
+		Version version = null;
+		JSONObject jObject;
+		try {
+			jObject = new JSONObject(result);
+			String versionString = jObject.getString("version");
+			version =  new Version(versionString);
+		} catch (JSONException e) {
+			Log.e(TAG, "Error: " + e);
+		}
+		return version;
+	}
 }
