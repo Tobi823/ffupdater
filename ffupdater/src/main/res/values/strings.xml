@@ -6,7 +6,7 @@
 	<string name="available_version">Available Version:</string>
 	<string name="checking">(checking…)</string>
 	<string name="ff_not_installed">Firefox is not installed</string>
-	<string name="check_available_error_message">Could not determine the highest available Firefox version.\nPlease make you can connect to the internet.</string>
+	<string name="check_available_error_message">Could not determine the highest available Firefox version.\nPlease make sure you can connect to the internet.</string>
 	<string name="none">None</string>
 	<string name="ok">OK</string>
 	<string name="checkavailable">Check available version</string>

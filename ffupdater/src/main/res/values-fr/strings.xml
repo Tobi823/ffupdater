@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FFUpdater</string>
+    <string name="ok">D\'accord</string>
+    <string name="none">None</string>
+    <string name="installed_version">Version installée:</string>
+    <string name="ff_not_installed">Firefox n\'est pas installé</string>
+    <string name="download">Télécharger Firefox</string>
+    <string name="available_version">Version dernière:</string>
+    <string name="checkavailable">Trouver la version dernière</string>
+    <string name="check_available_error_message">Ce n\'est pas possible de trouver la dernière version de Firefox. Vérifiez votre connexion réseau.</string>
+    <string name="checking">(télécharger…)</string>
+    <string name="infobox">Cette application simple met à jour Firefox. Cliquez sur le bouton «Télecharger Firefox» pour télécharger la dernière version de Firefox sur HTTPS. Selon votre appareil il faut choisir un téléchargeur. La plupart des téléchargeurs montrent un indicateur de progression. Après la fin du téléchargement, installez le fichier APK.\n\nC\'est une procédure compliquée, donc toute aide pour améliorer cette application est certainement bienvenue!</string>
+</resources>
