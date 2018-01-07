@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">FFUpdater</string>
+	<string name="infobox">Это простая программа для обновления Firefox. Нажмите на кнопку, чтобы отправить HTTPS-запрос с помощью любого приложения для загрузки файлов, например уже установленной версии Firefox или любого другого браузера. Вы можете увидеть несколько вариантов и выбрать любой из них в зависимости от вашего устройства. Многие программы для загрузки файлов отображают значок процесса загрузки. После ее завершения откройте загруженный APK-файл и установите его.\n\nЭто не самый удобный способ обновления, так что любая помощь приветствуется!</string>
+	<string name="installed_version">Установленная версия:</string>
+	<string name="available_version">Доступная версия:</string>
+	<string name="checking">(проверка…)</string>
+	<string name="ff_not_installed">Firefox не установлен</string>
+	<string name="check_available_error_message">Не удалось определить последнюю доступную версию Firefox.\nПроверьте ваше подключение к сети Интернет.</string>
+	<string name="none">Нет</string>
+	<string name="ok">OK</string>
+	<string name="checkavailable">Проверить доступную версию</string>
+	<string name="download">Загрузить Firefox</string>
+</resources>
