@@ -12,6 +12,7 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<!--uses-permission android:name="android.permission.INSTALL_PACKAGES" /-->
 
 	<application
@@ -32,7 +33,13 @@
 			</intent-filter>
 
 		</activity>
-
+		<service android:name=".background.LatestReleaseService"/>
+        <service android:name=".background.UpdateNotifierService"/>
+        <receiver android:name=".background.DeviceBootReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 	</application>
 
 </manifest>

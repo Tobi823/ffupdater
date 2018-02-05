@@ -4,6 +4,12 @@ apply plugin: "com.jaredsburrows.license"
 dependencies {
 	compile "com.android.support:support-v4:23.2.1"
 	compile "com.android.support:appcompat-v7:23.2.1"
+	testCompile 'junit:junit:4.12'
+	testCompile 'org.mockito:mockito-core:1.10.19'
+	// I had to add this dependencies because org.json is a part of the Android platform and
+	// not available in unit tests (see "Method getString in org.json.JSONObject not mocked"
+	// http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.- )
+	testCompile 'org.json:json:20180130'
 }
 
 android {
@@ -41,4 +47,9 @@ android {
 		exclude 'META-INF/LICENSE.txt'
 	}
 
+	testOptions {
+		// workaround for the error "Method i in android.util.Log not mocked" (http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-)
+		// without PowerMockito it is impossible to mock Log.
+		unitTests.returnDefaultValues = true
+	}
 }

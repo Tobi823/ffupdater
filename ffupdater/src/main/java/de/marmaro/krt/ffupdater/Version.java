@@ -1,11 +1,13 @@
 // https://stackoverflow.com/questions/198431/how-do-you-compare-two-version-strings-in-java
 package de.marmaro.krt.ffupdater;
 
-class Version implements Comparable<Version> {
+import java.io.Serializable;
+
+public class Version implements Comparable<Version>, Serializable {
 
     private String version;
 
-    final String get() {
+    public final String get() {
         return this.version;
     }
 

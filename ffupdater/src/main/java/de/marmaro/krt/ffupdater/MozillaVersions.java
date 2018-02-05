@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-class MozillaVersions {
+public class MozillaVersions {
 	private static final String TAG = "ffupdater";
 	private static final String checkUri = "https://product-details.mozilla.org/1.0/mobile_versions.json";
 
@@ -42,7 +42,7 @@ class MozillaVersions {
 		}
 	}
 
-	static Version getVersion() {
+	public static Version getVersion() {
 		String result = downloadVersion();
 		Version version = null;
 		JSONObject jObject;
