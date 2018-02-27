@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">FFUpdater</string>
-	<string name="infobox">This is a simple updater for Firefox. Click the button to send an HTTPS intent to whatever app you use to download, e.g. a installed version of Firefox or any other browser. Depending on your device, you might see multiple options to choose from. Most downloaders will show an icon indicating the progress. Once finished, open the resulting apk and choose the installer.\n\nThis is a rather clumsy user experience, so any help is certainly welcome!</string>
+	<string name="infobox">This is a simple updater for Firefox. Click the button to send an HTTPS intent to whatever app you use to download, e.g. a installed version of Firefox or any other browser. Depending on your device, you might see multiple options to choose from. Most downloaders will show an icon indicating the progress. Once finished, open the resulting APK file and choose the installer.\n\nThis is a rather clumsy user experience, so any help is certainly welcome!\n\nWARNING!!! If you install any version of Firefox, you do it at your own risk. FFUpdater authors are not responsible for the damage that any Firefox version can make to your device or any data. Also they do not consult you about Mozilla Firefox and do not fix its bugs.</string>
+	<string name="update_channels">Update channels</string>
+	<string name="stable">Stable</string>
+	<string name="beta">Beta</string>
+	<string name="nightly">Nightly</string>
+	<string name="stable_infobox">Stable update channel provides most stable and tested Firefox versions. It recommends for common use.</string>
+	<string name="beta_infobox">Beta update channel provides beta Firefox versions with new features that are not tested properly yet. It is recommended for high-skilled users that want to test new features before release stable version.\nThis version is not recommended for common use.</string>
+	<string name="nightly_infobox">Nightly update channel provides nightly Firefox versions with new features that are not tested and have a lot of bugs. It is recommended for software engineers that want to help in Mozilla Firefox development.\nThis version is not recommended for common use.</string>
 	<string name="installed_version">Installed Version:</string>
 	<string name="available_version">Available Version:</string>
 	<string name="checking">(checking…)</string>
@@ -10,7 +17,7 @@
 	<string name="none">None</string>
 	<string name="ok">OK</string>
 	<string name="checkavailable">Check available version</string>
-	<string name="download">Download Firefox</string>
+	<string name="download">Download</string>
 	<string name="installed_version_text_format">%s (%d)</string>
 	<string name="not_installed_text_format">%s (%s)</string>
 	<string name="update_notification_title">A new firefox version was released</string>
