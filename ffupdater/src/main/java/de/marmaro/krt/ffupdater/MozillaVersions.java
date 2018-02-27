@@ -55,4 +55,32 @@ public class MozillaVersions {
 		}
 		return version;
 	}
+
+	public static BetaVersion getBetaVersion() {
+		String result = downloadVersion();
+		BetaVersion betaversion = null;
+		JSONObject jObject;
+		try {
+			jObject = new JSONObject(result);
+			String betaversionString = jObject.getString("beta_version");
+			betaversion =  new BetaVersion(betaversionString);
+		} catch (JSONException e) {
+			Log.e(TAG, "Error: " + e);
+		}
+		return betaversion;
+	}
+
+	public static NightlyVersion getNightlyVersion() {
+		String result = downloadVersion();
+		NightlyVersion nightlyversion = null;
+		JSONObject jObject;
+		try {
+			jObject = new JSONObject(result);
+			String nightlyversionString = jObject.getString("nightly_version");
+			nightlyversion =  new NightlyVersion(nightlyversionString);
+		} catch (JSONException e) {
+			Log.e(TAG, "Error: " + e);
+		}
+		return nightlyversion;
+	}
 }
