@@ -2,7 +2,7 @@
       alt="Get it on F-Droid"
       height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 
-**Since I left F-Droid (and Android/Smartphones) about a year ago, I am looking for a new maintainer to take over. Unfortunately the upstream issue I opened 3 years ago is still not solved in 2018. While Fennec F-Droid is back in the mainline repo and other binary repos do server Firefox, some might still prefer this updater, so as I said: Maintainers welcome. The main task should be to test the last view merge requests and release a new version**
+**Since I left F-Droid (and Android/Smartphones) about a year ago, I am looking for a new maintainer to take over. Unfortunately the upstream issue I opened 3 years ago is still not solved in 2018. While Fennec F-Droid is back in the mainline repo and other binary repos do serve Firefox, some might still prefer this updater. So as I said: Maintainers welcome. The main task should be to test the last few merge requests (especially the background update stuff) and release a new version**
 
 ## Firefox-Updater
 
