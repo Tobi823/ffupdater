@@ -18,8 +18,8 @@
 	<string name="ok">OK</string>
 	<string name="checkavailable">Check available version</string>
 	<string name="download">Download</string>
-	<string name="installed_version_text_format">%s (%d)</string>
-	<string name="not_installed_text_format">%s (%s)</string>
+	<string name="installed_version_text_format">%1$s (%2$d)</string>
+	<string name="not_installed_text_format">%1$s (%2$s)</string>
 	<string name="update_notification_title">A new firefox version was released</string>
 	<string name="update_notification_text">Press to open the app</string>
 	<string name="android_too_old_title">Press to open the app</string>
