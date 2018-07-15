@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,12 +28,13 @@ import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
 
 public class MainActivity extends AppCompatActivity {
 	private static final String TAG = "MainActivity";
-	private static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
+
 
 	public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
 
 	private FirefoxMetadata localFirefox;
 	private MobileVersions availableVersions;
+	private DownloadUrl downloadUrl;
 
 	protected TextView availableVersionTextView;
 	protected TextView availableBetaVersionTextView;
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
 	protected Button checkAvailableBetaButton;
 	protected Button checkAvailableNightlyButton;
 
+	protected Map<UpdateChannel, TextView> installedTextViews;
+	protected Map<UpdateChannel, TextView> availableTextViews;
+	protected Map<UpdateChannel, Button> checkAvailableButtons;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,87 +66,53 @@ public class MainActivity extends AppCompatActivity {
 		availableVersionTextView = (TextView) findViewById(R.id.available_version);
 		availableBetaVersionTextView = (TextView) findViewById(R.id.available_beta_version);
 		availableNightlyVersionTextView = (TextView) findViewById(R.id.available_nightly_version);
-		checkAvailableStableButton = (Button) findViewById(R.id.check_available_stable_button);
-		checkAvailableBetaButton = (Button) findViewById(R.id.check_available_beta_button);
-		checkAvailableNightlyButton = (Button) findViewById(R.id.check_available_nightly_button);
 		downloadStableButton = (Button) findViewById(R.id.download_stable_button);
 		downloadBetaButton = (Button) findViewById(R.id.download_beta_button);
 		downloadNightlyButton = (Button) findViewById(R.id.download_nightly_button);
 
+		installedTextViews = new HashMap<>();
+		installedTextViews.put(UpdateChannel.RELEASE, installedVersionTextView);
+		installedTextViews.put(UpdateChannel.BETA, installedBetaVersionTextView);
+		installedTextViews.put(UpdateChannel.NIGHTLY, installedNightlyVersionTextView);
+
+		availableTextViews = new HashMap<>();
+		availableTextViews.put(UpdateChannel.RELEASE, availableVersionTextView);
+		availableTextViews.put(UpdateChannel.BETA, availableBetaVersionTextView);
+		availableTextViews.put(UpdateChannel.NIGHTLY, availableNightlyVersionTextView);
+
+		checkAvailableButtons = new HashMap<>();
+		checkAvailableButtons.put(UpdateChannel.RELEASE, (Button) findViewById(R.id.check_available_stable_button));
+		checkAvailableButtons.put(UpdateChannel.BETA, (Button) findViewById(R.id.check_available_beta_button));
+		checkAvailableButtons.put(UpdateChannel.NIGHTLY, (Button) findViewById(R.id.check_available_nightly_button));
+
 		// starts the repeated update check
 		RepeatedNotifierExecuting.register(this);
 
-		// build download url
-		DownloadUrl downloadUrlObject = new DownloadUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
-		final String downloadUrl = downloadUrlObject.getUrl();
-		Log.i(TAG, "URL to the firefox download is: " + downloadUrl);
-
-		if (!downloadUrlObject.isApiLevelSupported()) {
-			Log.e(TAG, "android-" + downloadUrlObject.getApiLevel() + " is not supported.");
-			showAndroidTooOldError();
-		}
-
-		DownloadBetaUrl downloadBetaUrlObject = new DownloadBetaUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
-		final String downloadBetaUrl = downloadBetaUrlObject.getUrl();
-		Log.i(TAG, "URL to the firefox download is: " + downloadBetaUrl);
-
-		if (!downloadBetaUrlObject.isApiLevelSupported()) {
-			Log.e(TAG, "android-" + downloadBetaUrlObject.getApiLevel() + " is not supported.");
-			showAndroidTooOldError();
-		}
-
-		DownloadNightlyUrl downloadNightlyUrlObject = new DownloadNightlyUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
-		final String downloadNightlyUrl = downloadNightlyUrlObject.getUrl();
-		Log.i(TAG, "URL to the firefox download is: " + downloadNightlyUrl);
-
-		if (!downloadNightlyUrlObject.isApiLevelSupported()) {
-			Log.e(TAG, "android-" + downloadNightlyUrlObject.getApiLevel() + " is not supported.");
-			showAndroidTooOldError();
-		}
+		downloadUrl = DownloadUrl.create();
+		Log.i(TAG, "Firefox Release URL: " + downloadUrl.getUrl(UpdateChannel.RELEASE));
+		Log.i(TAG, "Firefox Beta URL: " + downloadUrl.getUrl(UpdateChannel.BETA));
 
 		// button actions
-		downloadStableButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(downloadUrl));
-				startActivity(i);
-			}
-		});
+		downloadStableButton.setOnClickListener(new DownloadOnClick(downloadUrl, UpdateChannel.RELEASE, this));
+		downloadStableButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.RELEASE));
 
-		checkAvailableStableButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				loadLatestMozillaVersion();
-			}
-		});
+		for (Map.Entry<UpdateChannel, Button> entry : checkAvailableButtons.entrySet()) {
+			Button button = entry.getValue();
+			button.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					loadLatestMozillaVersion();
+				}
+			});
+		}
 
-		downloadBetaButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(downloadBetaUrl));
-				startActivity(i);
-			}
-		});
+		downloadBetaButton.setOnClickListener(new DownloadOnClick(downloadUrl, UpdateChannel.BETA, this));
+		downloadBetaButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.BETA));
 
-		checkAvailableBetaButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				loadLatestMozillaBetaVersion();
-			}
-		});
+		downloadNightlyButton.setOnClickListener(new DownloadOnClick(downloadUrl, UpdateChannel.NIGHTLY, this));
+		downloadNightlyButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.NIGHTLY));
 
-		downloadNightlyButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(downloadNightlyUrl));
-				startActivity(i);
-			}
-		});
-
-		checkAvailableNightlyButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				loadLatestMozillaNightlyVersion();
-			}
-		});
 	}
+
 
 	/**
 	 * Listen to the broadcast from {@link LatestReleaseService} and use the transmitted {@link Version} object.
@@ -148,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			MobileVersions mobileVersions = (MobileVersions) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
+			downloadUrl.update(mobileVersions);
 			setAvailableVersions(mobileVersions);
 		}
 	};
@@ -200,30 +174,40 @@ public class MainActivity extends AppCompatActivity {
 	private void displayVersions() {
 		LocalVersions localVersions = localFirefox.getLocalVersions();
 
-		Map<UpdateChannel, TextView> map = new HashMap<>();
-		map.put(UpdateChannel.RELEASE, installedVersionTextView);
-		map.put(UpdateChannel.BETA, installedBetaVersionTextView);
-		map.put(UpdateChannel.NIGHTLY, installedNightlyVersionTextView);
-
-		for (Map.Entry<UpdateChannel, TextView> entry : map.entrySet()) {
-			String text;
-			if (localVersions.isPresent(entry.getKey())) {
-				Version version = localVersions.getVersionString(entry.getKey());
-				text = getString(R.string.installed_version_text_format, version.getName(), version.getCode());
+		for (UpdateChannel updateChannel : UpdateChannel.values()) {
+			String installedText;
+			if (localVersions.isPresent(updateChannel)) {
+				Version version = localVersions.getVersionString(updateChannel);
+				installedText = getString(R.string.installed_version_text_format, version.getName(), version.getCode());
 			} else {
-				text = getString(R.string.not_installed_text_format, getString(R.string.none), getString(R.string.ff_not_installed));
+				installedText = getString(R.string.not_installed_text_format, getString(R.string.none), getString(R.string.ff_not_installed));
 			}
-			entry.getValue().setText(text);
+			installedTextViews.get(updateChannel).setText(installedText);
+
+			String availableText = "";
+			if (null != availableVersions) {
+				availableText = availableVersions.getValueBy(updateChannel);
+			}
+			availableTextViews.get(updateChannel).setText(availableText);
 		}
+
+		downloadStableButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.RELEASE));
+		downloadBetaButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.BETA));
+		downloadNightlyButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.NIGHTLY));
 	}
 
 	/**
 	 * Set the availableVersionTextView to "(checking…)" and start the LatestReleaseService service
 	 */
 	private void loadLatestMozillaVersion() {
-		checkAvailableStableButton.setVisibility(View.GONE);
-		availableVersionTextView.setVisibility(View.VISIBLE);
-		availableVersionTextView.setText(getString(R.string.checking));
+		for (Map.Entry<UpdateChannel, Button> entry : checkAvailableButtons.entrySet()) {
+			entry.getValue().setVisibility(View.GONE);
+		}
+
+		for (Map.Entry<UpdateChannel, TextView> entry : availableTextViews.entrySet()) {
+			entry.getValue().setVisibility(View.VISIBLE);
+			entry.getValue().setText(getString(R.string.checking));
+		}
 
 		Intent checkVersions = new Intent(this, LatestReleaseService.class);
 		startService(checkVersions);
@@ -245,22 +229,6 @@ public class MainActivity extends AppCompatActivity {
 
 		Intent checkVersions = new Intent(this, LatestReleaseService.class);
 		startService(checkVersions);
-	}
-
-	/**
-	 * Display an error that the user uses a version which is not longer unsupported.
-	 */
-	private void showAndroidTooOldError() {
-		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-		alertDialog.setTitle("Your android version is too old");
-		alertDialog.setMessage("Firefox needs at least Android 4.1.");
-		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				});
-		alertDialog.show();
 	}
 
 	@Override
