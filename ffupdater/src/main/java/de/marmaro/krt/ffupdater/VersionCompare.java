@@ -26,21 +26,8 @@ public class VersionCompare {
             return false;
         }
 
-        String remote = getRemoteVersion(mobileVersions, updateChannel);
+        String remote = mobileVersions.getValueBy(updateChannel);
         String local = localVersions.getVersionString(updateChannel).getName();
         return !Objects.equals(remote, local);
-    }
-
-    private static String getRemoteVersion(MobileVersions mobileVersions, UpdateChannel updateChannel) {
-        switch (updateChannel) {
-            case RELEASE:
-                return mobileVersions.getStableVersion();
-            case BETA:
-                return mobileVersions.getBetaVersion();
-            case NIGHTLY:
-                return mobileVersions.getNightlyVersion();
-            default:
-                throw new IllegalArgumentException("An unknown UpdateChannel exists. Please add this new enum value to this switch-statement");
-        }
     }
 }
