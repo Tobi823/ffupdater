@@ -18,9 +18,11 @@ import android.widget.TextView;
 import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import de.marmaro.krt.ffupdater.background.LatestReleaseService;
 import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
-import de.marmaro.krt.ffupdater.background.UpdateNotifierService;
 
 public class MainActivity extends AppCompatActivity {
 	private static final String TAG = "MainActivity";
@@ -29,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
 	public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
 
 	private FirefoxMetadata localFirefox;
-	private Version availableVersion;
-	private Version availableBetaVersion;
-	private Version availableNightlyVersion;
+	private MobileVersions availableVersions;
 
 	protected TextView availableVersionTextView;
 	protected TextView availableBetaVersionTextView;
@@ -147,12 +147,8 @@ public class MainActivity extends AppCompatActivity {
 	private BroadcastReceiver latestReleaseServiceReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			Version version = (Version) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
-			setAvailableVersion(version);
-			/*BetaVersion betaversion = (BetaVersion) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
-			setAvailableBetaVersion(betaversion);
-			NightlyVersion nightlyversion = (NightlyVersion) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
-			setAvailableNightlyVersion(nightlyversion);*/
+			MobileVersions mobileVersions = (MobileVersions) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
+			setAvailableVersions(mobileVersions);
 		}
 	};
 
@@ -172,15 +168,9 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		// check for the version of the current installed firefox
-		localFirefox = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(getPackageManager());
+		localFirefox = FirefoxMetadata.create(getPackageManager());
+		Log.i(TAG, localFirefox.getLocalVersions().toString());
 
-		// log and display the current firefox version
-		if (localFirefox.isInstalled()) {
-			String format = "Firefox %s (%s) is installed.";
-			Log.i(TAG, String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode()));
-		} else {
-			Log.i(TAG, "Firefox is not installed.");
-		}
 		displayVersions();
 	}
 
@@ -188,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
 	 * Display the version number of the latest firefox release.
 	 * @param value version of the latest firefox release
 	 */
-	private void setAvailableVersion(Version value) {
+	private void setAvailableVersions(MobileVersions value) {
 		if (value == null) {
 			Log.d(TAG, "Could not determine highest available version.");
 			checkAvailableStableButton.setVisibility(View.VISIBLE);
@@ -198,105 +188,33 @@ public class MainActivity extends AppCompatActivity {
 					.setPositiveButton(getString(R.string.ok), null)
 					.show();
 		} else {
-			availableVersion = value;
-			Log.d(TAG, "Found highest available version: " + availableVersion.get());
+			availableVersions = value;
+			Log.d(TAG, "Found highest available version: " + availableVersions);
 			displayVersions();
 		}
 	}
-
-	/*private void setAvailableBetaVersion(BetaVersion betavalue) {
-		if (betavalue == null) {
-			Log.d(TAG, "Could not determine highest available version.");
-			checkAvailableBetaButton.setVisibility(View.VISIBLE);
-			availableBetaVersionTextView.setVisibility(View.GONE);
-			(new AlertDialog.Builder(this))
-					.setMessage(getString(R.string.check_available_error_message))
-					.setPositiveButton(getString(R.string.ok), null)
-					.show();
-		} else {
-			availableBetaVersion = betavalue;
-			Log.d(TAG, "Found highest available version: " + availableBetaVersion.get());
-			displayBetaVersions();
-		}
-	}
-
-	private void setAvailableNightlyVersion(NightlyVersion nightlyvalue) {
-		if (nightlyvalue == null) {
-			Log.d(TAG, "Could not determine highest available version.");
-			checkAvailableNightlyButton.setVisibility(View.VISIBLE);
-			availableNightlyVersionTextView.setVisibility(View.GONE);
-			(new AlertDialog.Builder(this))
-					.setMessage(getString(R.string.check_available_error_message))
-					.setPositiveButton(getString(R.string.ok), null)
-					.show();
-		} else {
-			availableNightlyVersion = nightlyvalue;
-			Log.d(TAG, "Found highest available version: " + availableVersion.get());
-			displayNightlyVersions();
-		}
-	}*/
 
 	/**
 	 * Refresh the installedVersionTextView and availableVersionTextView
 	 */
 	private void displayVersions() {
-		String installedText;
-		if (localFirefox.isInstalled()) {
-			String format = getString(R.string.installed_version_text_format);
-			installedText = String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode());
-		} else {
-			String format = getString(R.string.not_installed_text_format);
-			installedText = String.format(format, getString(R.string.none), getString(R.string.ff_not_installed));
-		}
-		installedVersionTextView.setText(installedText);
+		LocalVersions localVersions = localFirefox.getLocalVersions();
 
-		String availableText;
-		if (null == availableVersion) {
-			availableText = "";
-		} else {
-			availableText = availableVersion.get();
-		}
-		availableVersionTextView.setText(availableText);
-	}
+		Map<UpdateChannel, TextView> map = new HashMap<>();
+		map.put(UpdateChannel.RELEASE, installedVersionTextView);
+		map.put(UpdateChannel.BETA, installedBetaVersionTextView);
+		map.put(UpdateChannel.NIGHTLY, installedNightlyVersionTextView);
 
-	private void displayBetaVersions() {
-		String installedText;
-		if (localFirefox.isInstalled()) {
-			String format = getString(R.string.installed_version_text_format);
-			installedText = String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode());
-		} else {
-			String format = getString(R.string.not_installed_text_format);
-			installedText = String.format(format, getString(R.string.none), getString(R.string.ff_not_installed));
+		for (Map.Entry<UpdateChannel, TextView> entry : map.entrySet()) {
+			String text;
+			if (localVersions.isPresent(entry.getKey())) {
+				Version version = localVersions.getVersionString(entry.getKey());
+				text = getString(R.string.installed_version_text_format, version.getName(), version.getCode());
+			} else {
+				text = getString(R.string.not_installed_text_format, getString(R.string.none), getString(R.string.ff_not_installed));
+			}
+			entry.getValue().setText(text);
 		}
-		installedBetaVersionTextView.setText(installedText);
-
-		String availableText;
-		if (null == availableVersion) {
-			availableText = "";
-		} else {
-			availableText = availableBetaVersion.get();
-		}
-		availableBetaVersionTextView.setText(availableText);
-	}
-
-	private void displayNightlyVersions() {
-		String installedText;
-		if (localFirefox.isInstalled()) {
-			String format = getString(R.string.installed_version_text_format);
-			installedText = String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode());
-		} else {
-			String format = getString(R.string.not_installed_text_format);
-			installedText = String.format(format, getString(R.string.none), getString(R.string.ff_not_installed));
-		}
-		installedNightlyVersionTextView.setText(installedText);
-
-		String availableText;
-		if (null == availableNightlyVersion) {
-			availableText = "";
-		} else {
-			availableText = availableVersion.get();
-		}
-		availableNightlyVersionTextView.setText(availableText);
 	}
 
 	/**

@@ -2,6 +2,9 @@ package de.marmaro.krt.ffupdater;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import java.io.Serializable;
 
 /**
@@ -21,13 +24,13 @@ import java.io.Serializable;
  */
 public class MobileVersions implements Serializable {
     @SerializedName("nightly_version") // nightly_version is the JSON attribute name for nightlyVersion
-    private String nightlyVersion;
+    private String nightlyVersion = "";
 
     @SerializedName("beta_version") // beta_version is the JSON attribute name for betaVersion
-    private String betaVersion;
+    private String betaVersion = "";
 
     @SerializedName("version") // version is the JSON attribute name for stableVersion
-    private String stableVersion;
+    private String stableVersion = "";
 
     public String getNightlyVersion() {
         return nightlyVersion;
@@ -51,5 +54,38 @@ public class MobileVersions implements Serializable {
 
     public void setStableVersion(String stableVersion) {
         this.stableVersion = stableVersion;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MobileVersions that = (MobileVersions) o;
+
+        return new EqualsBuilder()
+                .append(nightlyVersion, that.nightlyVersion)
+                .append(betaVersion, that.betaVersion)
+                .append(stableVersion, that.stableVersion)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(nightlyVersion)
+                .append(betaVersion)
+                .append(stableVersion)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "MobileVersions{" +
+                "nightlyVersion='" + nightlyVersion + '\'' +
+                ", betaVersion='" + betaVersion + '\'' +
+                ", stableVersion='" + stableVersion + '\'' +
+                '}';
     }
 }
