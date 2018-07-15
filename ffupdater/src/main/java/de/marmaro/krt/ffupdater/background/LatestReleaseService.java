@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import de.marmaro.krt.ffupdater.MobileVersions;
 import de.marmaro.krt.ffupdater.MozillaVersions;
 import de.marmaro.krt.ffupdater.Version;
 
@@ -26,17 +27,17 @@ public class LatestReleaseService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         Log.i(TAG, "LatestReleaseService was started.");
-        Version latestVersion = getLatestVersion();
-        broadcastVersion(latestVersion);
+        MobileVersions latestMobileVersions = getLatestMobileVersions();
+        broadcastVersion(latestMobileVersions);
     }
 
-    protected Version getLatestVersion() {
-        return MozillaVersions.getVersion();
+    protected MobileVersions getLatestMobileVersions() {
+        return MozillaVersions.findCurrentMobileVersions();
     }
 
-    protected void broadcastVersion(Version version) {
-        Intent broadcastLatestVersion = new Intent(RESPONSE_ACTION);
-        broadcastLatestVersion.putExtra(EXTRA_RESPONSE_VERSION, version);
-        sendBroadcast(broadcastLatestVersion);
+    protected void broadcastVersion(MobileVersions mobileVersions) {
+        Intent broadcastLatestMobileVersions = new Intent(RESPONSE_ACTION);
+        broadcastLatestMobileVersions.putExtra(EXTRA_RESPONSE_VERSION, mobileVersions);
+        sendBroadcast(broadcastLatestMobileVersions);
     }
 }

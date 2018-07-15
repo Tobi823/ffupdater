@@ -14,10 +14,13 @@ import android.util.Log;
 
 
 import de.marmaro.krt.ffupdater.FirefoxMetadata;
+import de.marmaro.krt.ffupdater.LocalVersions;
 import de.marmaro.krt.ffupdater.MainActivity;
+import de.marmaro.krt.ffupdater.MobileVersions;
 import de.marmaro.krt.ffupdater.MozillaVersions;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.Version;
+import de.marmaro.krt.ffupdater.VersionCompare;
 
 /**
  * This class checks if a new firefox release is available.
@@ -43,16 +46,16 @@ public class UpdateNotifierService extends IntentService {
     }
 
     protected boolean isUpdateAvailable() {
-        FirefoxMetadata finder = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(getPackageManager());
+        FirefoxMetadata finder = FirefoxMetadata.create(getPackageManager());
 
-        Version current = finder.getVersion();
-        Version latest = getLatestVersion();
+        LocalVersions current = finder.getLocalVersions();
+        MobileVersions latest = getLatestMobileVersions();
 
-        return (current.compareTo(latest) == -1);
+        return !VersionCompare.getUpdatedVersions(latest, current).isEmpty();
     }
 
-    protected Version getLatestVersion() {
-        return MozillaVersions.getVersion();
+    protected MobileVersions getLatestMobileVersions() {
+        return MozillaVersions.findCurrentMobileVersions();
     }
 
     protected void showNotification() {
