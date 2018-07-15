@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class FirefoxMetadata {
     public static final String RELEASE_PACKAGE_ID = "org.mozilla.firefox";
-    public static final String BETA_PACKAGE_ID = "org.mozilla.fennec_aurora";
+    public static final String BETA_PACKAGE_ID = "org.mozilla.firefox_beta";
     public static final String NIGHTLY_PACKAGE_ID = "org.mozilla.fennec_aurora";
 
     private LocalVersions localVersions;
