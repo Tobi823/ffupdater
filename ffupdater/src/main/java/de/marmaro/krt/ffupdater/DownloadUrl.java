@@ -1,52 +1,57 @@
 package de.marmaro.krt.ffupdater;
 
-import java.security.InvalidParameterException;
+import android.support.annotation.Nullable;
 
 /**
- * This class builds (depending on the architecture) the download url.
+ * This class builds (depending on the isX86Architecture) the download url.
  * Furthermore this class can validate if the api level is high enough for running firefox.
  */
 public class DownloadUrl {
-    public static final String NON_X86_ARCHITECTURE = "android";
-    public static final String X86_ARCHITECTURE = "android-x86";
-    public static final String URL_TEMPLATE = "https://download.mozilla.org/?product=fennec-latest&os=%s&lang=multi";
+    public static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
 
-    private String architecture;
-    private int apiLevel;
+    public static final String RELEASE_URL = "https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi";
+    public static final String RELEASE_X86_URL = "https://download.mozilla.org/?product=fennec-latest&os=android-x86&lang=multi";
+    public static final String BETA_URL = "https://download.mozilla.org/?product=fennec-beta-latest&os=android&lang=multi";
+    public static final String BETA_X86_URL = "https://download.mozilla.org/?product=fennec-beta-latest&os=android-x86&lang=multi";
+    public static final String NIGHTLY_URL_TEMPLATE = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-%s.multi.android-arm.apk";
+    public static final String NIGHTLY_X86_URL_TEMPLATE = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-%s.multi.android-arm.apk";
 
-    public DownloadUrl(String architecture, int apiLevel) {
-        this.architecture = architecture;
-        this.apiLevel = apiLevel;
+    private boolean isX86Architecture;
+    private MobileVersions mobileVersions;
+
+    private DownloadUrl(boolean isX86Architecture, MobileVersions mobileVersions) {
+        this.isX86Architecture = isX86Architecture;
+        this.mobileVersions = mobileVersions;
     }
 
-    public boolean isApiLevelSupported() {
-        // https://support.mozilla.org/en-US/kb/will-firefox-work-my-mobile-device
-        return (apiLevel >= 16);
+    public static DownloadUrl create(MobileVersions mobileVersions) {
+        String osArch = System.getProperty(PROPERTY_OS_ARCHITECTURE);
+        return new DownloadUrl("i686".equals(osArch) || "x86_64".equals(osArch), mobileVersions);
     }
 
-    public String getArchitecture() {
-        return architecture;
+    public static DownloadUrl create() {
+        return create(null);
     }
 
-    public int getApiLevel() {
-        return apiLevel;
+    public void update(MobileVersions mobileVersions) {
+        this.mobileVersions = mobileVersions;
     }
 
-    public String getUrl() {
-        if (0 == apiLevel || null == architecture) {
-            throw new InvalidParameterException("Please call setApiLevel and setArchitecture before calling getUrl()");
+    public String getUrl(UpdateChannel updateChannel) {
+        switch (updateChannel) {
+            case RELEASE:
+                return isX86Architecture ? RELEASE_X86_URL : RELEASE_URL;
+            case BETA:
+                return isX86Architecture ? BETA_X86_URL : BETA_URL;
+            case NIGHTLY:
+                String template = isX86Architecture ? NIGHTLY_X86_URL_TEMPLATE : NIGHTLY_URL_TEMPLATE;
+                return String.format(template, mobileVersions.getValueBy(UpdateChannel.NIGHTLY));
+            default:
+                throw new IllegalArgumentException("An unknown UpdateChannel exists. Please add this new enum value to this switch-statement");
         }
-
-        // INFO: Update URI as specified in https://archive.mozilla.org/pub/mobile/releases/latest/README.txt
-        String mozApiArch = getMozillaApiArchitecture();
-        return String.format(URL_TEMPLATE, mozApiArch);
     }
 
-    private String getMozillaApiArchitecture() {
-        if (architecture.equals("i686") || architecture.equals("x86_64")) {
-            return X86_ARCHITECTURE;
-        }
-
-        return NON_X86_ARCHITECTURE;
+    public boolean isUrlAvailable(UpdateChannel updateChannel) {
+        return updateChannel != UpdateChannel.NIGHTLY || mobileVersions != null;
     }
 }
