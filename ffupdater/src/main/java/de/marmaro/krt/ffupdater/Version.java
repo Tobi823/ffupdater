@@ -1,51 +1,61 @@
-// https://stackoverflow.com/questions/198431/how-do-you-compare-two-version-strings-in-java
 package de.marmaro.krt.ffupdater;
 
-import java.io.Serializable;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public class Version implements Comparable<Version>, Serializable {
+/**
+ * Created by Tobiwan on 15.07.2018.
+ */
+public class Version {
+    private String name;
+    private int code;
 
-    private String version;
-
-    public final String get() {
-        return this.version;
+    public Version(String name, int code) {
+        this.name = name;
+        this.code = code;
     }
 
-    Version(String version) {
-        if(version == null)
-            throw new IllegalArgumentException("Version can not be null");
-        if(!version.matches("[0-9]+(\\.[0-9]+)*"))
-            throw new IllegalArgumentException("Invalid version format");
-        this.version = version;
+    /**
+     * @return the version name (for example 58.1)
+     */
+    public String getName() {
+        return name;
     }
 
-    @Override public int compareTo(Version that) {
-        if(that == null)
-            return 1;
-        String[] thisParts = this.get().split("\\.");
-        String[] thatParts = that.get().split("\\.");
-        int length = Math.max(thisParts.length, thatParts.length);
-        for(int i = 0; i < length; i++) {
-            int thisPart = i < thisParts.length ?
-                Integer.parseInt(thisParts[i]) : 0;
-            int thatPart = i < thatParts.length ?
-                Integer.parseInt(thatParts[i]) : 0;
-            if(thisPart < thatPart)
-                return -1;
-            if(thisPart > thatPart)
-                return 1;
-        }
-        return 0;
+    /**
+     * @return the version code (for example 2015538137)
+     */
+    public int getCode() {
+        return code;
     }
 
-    @Override public boolean equals(Object that) {
-        if(this == that)
-            return true;
-        if(that == null)
-            return false;
-        if(this.getClass() != that.getClass())
-            return false;
-        return this.compareTo((Version) that) == 0;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Version version = (Version) o;
+
+        return new EqualsBuilder()
+                .append(code, version.code)
+                .append(name, version.name)
+                .isEquals();
     }
 
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(name)
+                .append(code)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Version{" +
+                "name='" + name + '\'' +
+                ", code=" + code +
+                '}';
+    }
 }
