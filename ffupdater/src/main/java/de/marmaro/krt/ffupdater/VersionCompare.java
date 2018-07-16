@@ -5,11 +5,19 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class can compare the different version numbers from the available and local installed firefox apps.
+ *
  * Created by Tobiwan on 14.07.2018.
  */
 public class VersionCompare {
 
-    public static List<UpdateChannel> getUpdatedVersions(MobileVersions mobileVersions, LocalVersions localVersions) {
+    /**
+     * Check if for an installed firefox (release, beta, nightly) an update is available.
+     * @param mobileVersions
+     * @param localVersions
+     * @return
+     */
+    public static List<UpdateChannel> isUpdateAvailable(MobileVersions mobileVersions, LocalVersions localVersions) {
         List<UpdateChannel> updates = new ArrayList<>();
 
         for (UpdateChannel updateChannel : UpdateChannel.values()) {
@@ -21,6 +29,13 @@ public class VersionCompare {
         return updates;
     }
 
+    /**
+     * Check if for a specific update channel (release, beta, nightly) an update is available.
+     * @param mobileVersions
+     * @param localVersions
+     * @param updateChannel
+     * @return
+     */
     private static boolean isNewVersionAvailable(MobileVersions mobileVersions, LocalVersions localVersions, UpdateChannel updateChannel) {
         if (!localVersions.isPresent(updateChannel)) {
             return false;

@@ -19,7 +19,6 @@ import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.MobileVersions;
 import de.marmaro.krt.ffupdater.MozillaVersions;
 import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.Version;
 import de.marmaro.krt.ffupdater.VersionCompare;
 
 /**
@@ -51,7 +50,7 @@ public class UpdateNotifierService extends IntentService {
         LocalVersions current = finder.getLocalVersions();
         MobileVersions latest = getLatestMobileVersions();
 
-        return !VersionCompare.getUpdatedVersions(latest, current).isEmpty();
+        return !VersionCompare.isUpdateAvailable(latest, current).isEmpty();
     }
 
     protected MobileVersions getLatestMobileVersions() {
