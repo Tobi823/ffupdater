@@ -1,7 +1,5 @@
 package de.marmaro.krt.ffupdater;
 
-import android.support.annotation.Nullable;
-
 /**
  * This class builds the download url for every update channel (release, beta, nightly) depending on the
  * architecture (x86 vs ARM)
@@ -14,7 +12,7 @@ public class DownloadUrl {
     public static final String BETA_URL = "https://download.mozilla.org/?product=fennec-beta-latest&os=android&lang=multi";
     public static final String BETA_X86_URL = "https://download.mozilla.org/?product=fennec-beta-latest&os=android-x86&lang=multi";
     public static final String NIGHTLY_URL_TEMPLATE = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-%s.multi.android-arm.apk";
-    public static final String NIGHTLY_X86_URL_TEMPLATE = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-%s.multi.android-arm.apk";
+    public static final String NIGHTLY_X86_URL_TEMPLATE = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-%s.multi.android-i386.apk";
 
     private boolean isX86Architecture;
     private MobileVersions mobileVersions;
