@@ -1,53 +1,33 @@
 package de.marmaro.krt.ffupdater.background;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
+import android.app.Application;
 import android.content.Intent;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.robolectric.Shadows.shadowOf;
 
 /**
  * Created by Tobiwan on 05.02.2018.
  */
+@RunWith(RobolectricTestRunner.class)
 public class DeviceBootReceiverTest {
-	DeviceBootReceiver sut;
-	Context context;
-	Intent intent;
-	AlarmManager alarmManager;
-
-	@Before
-	public void setUp() {
-		sut = spy(new DeviceBootReceiver());
-		context = mock(Context.class);
-		intent = mock(Intent.class);
-		alarmManager = mock(AlarmManager.class);
-
-		when(context.getSystemService(Context.ALARM_SERVICE)).thenReturn(alarmManager);
-	}
 
 	@Test
-	public void onReceive_witthActionBootCompleted_registerRepeatedTimerAndStartService() throws Exception {
-		when(intent.getAction()).thenReturn(Intent.ACTION_BOOT_COMPLETED);
+	public void onReceive_callUpdateNotifierService() throws Exception {
+		Application application = RuntimeEnvironment.application;
+		Intent expectedService = new Intent(application, UpdateNotifierService.class);
 
-		sut.onReceive(context, intent);
+		DeviceBootReceiver deviceBootReceiver = new DeviceBootReceiver();
+		deviceBootReceiver.onReceive(application, new Intent(Intent.ACTION_BOOT_COMPLETED));
 
-		// verify that UpdateNotifierService was called for update checking
-		verify(context).startService(any(Intent.class));
-
-		// verify that the repeated job was started
-		verify(alarmManager).setInexactRepeating(eq(AlarmManager.ELAPSED_REALTIME), anyLong(), anyLong(), any(PendingIntent.class));
+		Intent serviceIntent = shadowOf(application).getNextStartedService();
+		assertNotNull(serviceIntent);
+		assertEquals(serviceIntent.getComponent(), expectedService.getComponent());
 	}
 }
