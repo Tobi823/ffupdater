@@ -1,8 +1,5 @@
 package de.marmaro.krt.ffupdater;
 
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
@@ -10,19 +7,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * This class contains all version numbers for every installed firefox.
  * Created by Tobiwan on 14.07.2018.
  */
-public class LocalVersions {
+public class LocalInstalledVersions {
     private Map<UpdateChannel, Version> versions = new HashMap<>();
 
+    /**
+     * Set the version number for a specific update channel
+     * @param updateChannel
+     * @param version
+     */
     public void setVersion(UpdateChannel updateChannel, Version version) {
         versions.put(updateChannel, version);
     }
 
+    /**
+     * Check if specific update channel is installed.
+     * @param updateChannel
+     * @return
+     */
     public boolean isPresent(UpdateChannel updateChannel) {
         return null != versions.get(updateChannel);
     }
 
+    /**
+     * Get the version for a specific update channel.
+     * @param updateChannel
+     * @return
+     */
     public Version getVersionString(UpdateChannel updateChannel) {
         Version version = versions.get(updateChannel);
         if (null == version) {
@@ -37,7 +50,7 @@ public class LocalVersions {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        LocalVersions that = (LocalVersions) o;
+        LocalInstalledVersions that = (LocalInstalledVersions) o;
 
         return new EqualsBuilder()
                 .append(versions, that.versions)
@@ -53,7 +66,7 @@ public class LocalVersions {
 
     @Override
     public String toString() {
-        return "LocalVersions{" +
+        return "LocalInstalledVersions{" +
                 "versions=" + versions +
                 '}';
     }

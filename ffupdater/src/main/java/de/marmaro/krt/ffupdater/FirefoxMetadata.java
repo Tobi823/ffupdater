@@ -15,14 +15,14 @@ public class FirefoxMetadata {
     public static final String BETA_PACKAGE_ID = "org.mozilla.firefox_beta";
     public static final String NIGHTLY_PACKAGE_ID = "org.mozilla.fennec_aurora";
 
-    private LocalVersions localVersions;
+    private LocalInstalledVersions localVersions;
 
-    private FirefoxMetadata(LocalVersions localVersions) {
+    private FirefoxMetadata(LocalInstalledVersions localVersions) {
         this.localVersions = localVersions;
     }
 
     public static FirefoxMetadata create(PackageManager packageManager) {
-        LocalVersions localVersions = new LocalVersions();
+        LocalInstalledVersions localVersions = new LocalInstalledVersions();
 
         Map<UpdateChannel, String> mapping = new HashMap<>();
         mapping.put(UpdateChannel.RELEASE, RELEASE_PACKAGE_ID);
@@ -49,7 +49,7 @@ public class FirefoxMetadata {
         }
     }
 
-    public LocalVersions getLocalVersions() {
+    public LocalInstalledVersions getLocalVersions() {
         return localVersions;
     }
 }

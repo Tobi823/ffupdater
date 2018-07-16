@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
      * Show the current version numbers of the current installed firefox apps
      */
     private void updateInstalledVersionTextViews() {
-        LocalVersions localVersions = localFirefox.getLocalVersions();
+        LocalInstalledVersions localVersions = localFirefox.getLocalVersions();
 
         for (UpdateChannel updateChannel : UpdateChannel.values()) {
             String installedText = getString(R.string.not_installed_text_format, getString(R.string.none), getString(R.string.ff_not_installed));

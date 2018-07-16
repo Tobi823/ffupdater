@@ -17,7 +17,7 @@ public class VersionCompare {
      * @param localVersions
      * @return
      */
-    public static List<UpdateChannel> isUpdateAvailable(MobileVersions mobileVersions, LocalVersions localVersions) {
+    public static List<UpdateChannel> isUpdateAvailable(MobileVersions mobileVersions, LocalInstalledVersions localVersions) {
         List<UpdateChannel> updates = new ArrayList<>();
 
         for (UpdateChannel updateChannel : UpdateChannel.values()) {
@@ -36,7 +36,7 @@ public class VersionCompare {
      * @param updateChannel
      * @return
      */
-    private static boolean isNewVersionAvailable(MobileVersions mobileVersions, LocalVersions localVersions, UpdateChannel updateChannel) {
+    private static boolean isNewVersionAvailable(MobileVersions mobileVersions, LocalInstalledVersions localVersions, UpdateChannel updateChannel) {
         if (!localVersions.isPresent(updateChannel)) {
             return false;
         }
