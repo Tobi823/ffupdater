@@ -17,7 +17,7 @@ import de.marmaro.krt.ffupdater.FirefoxMetadata;
 import de.marmaro.krt.ffupdater.LocalVersions;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.MobileVersions;
-import de.marmaro.krt.ffupdater.MozillaVersions;
+import de.marmaro.krt.ffupdater.MozillaApiConsumer;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.VersionCompare;
 
@@ -54,7 +54,7 @@ public class UpdateNotifierService extends IntentService {
     }
 
     protected MobileVersions getLatestMobileVersions() {
-        return MozillaVersions.findCurrentMobileVersions();
+        return MozillaApiConsumer.findCurrentMobileVersions();
     }
 
     protected void showNotification() {

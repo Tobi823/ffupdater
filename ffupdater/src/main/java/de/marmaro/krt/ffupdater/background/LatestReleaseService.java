@@ -6,8 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import de.marmaro.krt.ffupdater.MobileVersions;
-import de.marmaro.krt.ffupdater.MozillaVersions;
-import de.marmaro.krt.ffupdater.Version;
+import de.marmaro.krt.ffupdater.MozillaApiConsumer;
 
 /**
  * This class download the version number of the latest firefox release and send it
@@ -32,7 +31,7 @@ public class LatestReleaseService extends IntentService {
     }
 
     protected MobileVersions getLatestMobileVersions() {
-        return MozillaVersions.findCurrentMobileVersions();
+        return MozillaApiConsumer.findCurrentMobileVersions();
     }
 
     protected void broadcastVersion(MobileVersions mobileVersions) {

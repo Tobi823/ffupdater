@@ -16,13 +16,16 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class MozillaVersions {
+/**
+ * This class can consume the API from Mozilla and extract the latest version numbers of firefox release, beta and nightly
+ */
+public class MozillaApiConsumer {
 	private static final String TAG = "ffupdater";
-	private static final String CHECK_URL = "https://product-details.mozilla.org/1.0/mobile_versions.json";
+	public static final String CHECK_URL = "https://product-details.mozilla.org/1.0/mobile_versions.json";
 
 	/**
 	 * Download the JSON response from CHECK_URL and return it as string.
-	 * @return
+	 * @return the content of CHECK_URL as string
 	 */
 	private static String requestMobileVersionsApi() {
 		try {
@@ -38,7 +41,7 @@ public class MozillaVersions {
 
 	/**
 	 * Request the Mozilla API and request the current versions for nightly, beta and stable.
-	 * @return
+	 * @return the content of CHECK_URL as java object ({@link MobileVersions}).
 	 */
 	@Nullable
 	public static MobileVersions findCurrentMobileVersions() {
