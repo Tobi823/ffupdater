@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Mockito.doThrow;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -23,84 +23,93 @@ public class FirefoxMetadataTest {
 		packageInfo = mock(PackageInfo.class);
 	}
 
-	private void firefoxIsNotInstalled() throws Exception {
+	@Test
+	public void getVersionCode_firefoxReleaseIsNotInstalled_returnFallback() throws Exception {
 		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenThrow(new PackageManager.NameNotFoundException());
-	}
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(mock(PackageInfo.class));
 
-	private void firefoxIsInstalled() throws Exception {
-		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(packageInfo);
-	}
+		LocalInstalledVersions local = FirefoxDetector.create(packageManager).getLocalVersions();
 
-	@Test
-	public void isInstalled_firefoxIsNotInstalled_returnFalse() throws Exception {
-		firefoxIsNotInstalled();
-		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
-
-		assertEquals(false, metadata.isInstalled());
+		assertEquals(false, local.isPresent(UpdateChannel.RELEASE));
 	}
 
 	@Test
-	public void isInstalled_firefoxIsInstalled_returnTrue() throws Exception {
-		firefoxIsInstalled();
-		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
-
-		assertEquals(true, metadata.isInstalled());
-	}
-
-	@Test
-	public void getVersionCode_firefoxIsNotInstalled_returnFallback() throws Exception {
-		firefoxIsNotInstalled();
-		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
-
-		assertEquals(0, metadata.getVersionCode());
-	}
-
-	@Test
-	public void getVersionCode_firefoxIsInstalled_returnVersionCode() throws Exception {
-		firefoxIsInstalled();
-		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
-
-		int versionCode = 2015538137;
+	public void getVersionCode_firefoxReleaseIsInstalled_returnVersionCode() throws Exception {
+		PackageInfo packageInfo = mock(PackageInfo.class);
+		String versionName = "61.1";
+		int versionCode = 2015538140;
+		packageInfo.versionName = versionName;
 		packageInfo.versionCode = versionCode;
 
-		assertEquals(versionCode, metadata.getVersionCode());
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(packageInfo);
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenThrow(new PackageManager.NameNotFoundException());
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenThrow(new PackageManager.NameNotFoundException());
+
+		LocalInstalledVersions local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Version version = local.getVersionString(UpdateChannel.RELEASE);
+
+		assertEquals(versionName, version.getName());
+		assertEquals(versionCode, version.getCode());
 	}
 
 	@Test
-	public void getVersionName_firefoxIsNotInstalled_returnFallback() throws Exception {
-		firefoxIsNotInstalled();
-		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
+	public void getVersionCode_firefoxBetaIsNotInstalled_returnFallback() throws Exception {
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenThrow(new PackageManager.NameNotFoundException());
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(mock(PackageInfo.class));
 
-		assertEquals("", metadata.getVersionName());
+		LocalInstalledVersions local = FirefoxDetector.create(packageManager).getLocalVersions();
+
+		assertEquals(false, local.isPresent(UpdateChannel.BETA));
 	}
 
 	@Test
-	public void getVersionName_firefoxIsInstalled_returnVersionName() throws Exception {
-		firefoxIsInstalled();
-		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
-
-		String versionName = "58.0.1";
+	public void getVersionCode_firefoxBetaIsInstalled_returnVersionCode() throws Exception {
+		PackageInfo packageInfo = mock(PackageInfo.class);
+		String versionName = "62.0b7";
+		int versionCode = 2015569228;
 		packageInfo.versionName = versionName;
+		packageInfo.versionCode = versionCode;
 
-		assertEquals(versionName, metadata.getVersionName());
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenThrow(new PackageManager.NameNotFoundException());
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(packageInfo);
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenThrow(new PackageManager.NameNotFoundException());
+
+		LocalInstalledVersions local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Version version = local.getVersionString(UpdateChannel.BETA);
+
+		assertEquals(versionName, version.getName());
+		assertEquals(versionCode, version.getCode());
 	}
+	@Test
+	public void getVersionCode_firefoxNightlyIsNotInstalled_returnFallback() throws Exception {
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenThrow(new PackageManager.NameNotFoundException());
 
-	@Test(expected = IllegalArgumentException.class)
-	public void getVersionfirefoxIsNotInstalled_returnFallback() throws Exception {
-		firefoxIsNotInstalled();
-		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
+		LocalInstalledVersions local = FirefoxDetector.create(packageManager).getLocalVersions();
 
-		metadata.getVersion();
+		assertEquals(false, local.isPresent(UpdateChannel.NIGHTLY));
 	}
 
 	@Test
-	public void getVersionfirefoxIsInstalled_returnFallback() throws Exception {
-		firefoxIsInstalled();
-		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
-
-		String versionName = "58.0.1";
+	public void getVersionCode_firefoxNightlyIsInstalled_returnVersionCode() throws Exception {
+		PackageInfo packageInfo = mock(PackageInfo.class);
+		String versionName = "63.0a1";
+		int versionCode = 2015569428;
 		packageInfo.versionName = versionName;
+		packageInfo.versionCode = versionCode;
 
-		assertEquals(versionName, metadata.getVersion().get());
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenThrow(new PackageManager.NameNotFoundException());
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenThrow(new PackageManager.NameNotFoundException());
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(packageInfo);
+
+		LocalInstalledVersions local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Version version = local.getVersionString(UpdateChannel.NIGHTLY);
+
+		assertEquals(versionName, version.getName());
+		assertEquals(versionCode, version.getCode());
 	}
+
 }

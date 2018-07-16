@@ -1,69 +1,162 @@
 package de.marmaro.krt.ffupdater;
 
+import com.google.gson.GsonBuilder;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import java.net.URL;
-
-import static org.junit.Assert.*;
+import static de.marmaro.krt.ffupdater.DownloadUrl.PROPERTY_OS_ARCHITECTURE;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Tobiwan on 05.02.2018.
  */
 public class DownloadUrlTest {
-	@Test
-	public void isApiLevelSupported_withMinimumSupportedLevel_returnTrue() throws Exception {
-		DownloadUrl downloadUrl = new DownloadUrl("arm64", 16);
-		assertEquals(true, downloadUrl.isApiLevelSupported());
+
+	String jsonResult;
+	String nightlyVersion;
+	String betaVersion;
+	String releaseVersion;
+
+	@Before
+	public void setUp() {
+		nightlyVersion = "63.0a1";
+		betaVersion = "62.0b7";
+		releaseVersion = "61.0";
+		jsonResult = "{\n" +
+				"  'nightly_version': '" + nightlyVersion + "',\n" +
+				"  'beta_version': '" + betaVersion + "',\n" +
+				"  'version': '" + releaseVersion + "'}";
 	}
 
 	@Test
-	public void isApiLevelSupported_withSupportedLevel_returnTrue() throws Exception {
-		DownloadUrl downloadUrl = new DownloadUrl("arm", 17);
-		assertEquals(true, downloadUrl.isApiLevelSupported());
+	public void getUrl_releaseArm_returnDefaultUrl() throws Exception {
+        System.setProperty(PROPERTY_OS_ARCHITECTURE, "arm");
+		DownloadUrl downloadUrl = DownloadUrl.create();
+
+		String expected = "https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.RELEASE));
 	}
 
 	@Test
-	public void isApiLevelSupported_withUnsupportedLevel_returnTrue() throws Exception {
-		DownloadUrl downloadUrl = new DownloadUrl("arm", 15);
-		assertEquals(false, downloadUrl.isApiLevelSupported());
+	public void getUrl_releaseI686_returnX86Url() throws Exception {
+        System.setProperty(PROPERTY_OS_ARCHITECTURE, "i686");
+        DownloadUrl downloadUrl = DownloadUrl.create();
+
+		String expected = "https://download.mozilla.org/?product=fennec-latest&os=android-x86&lang=multi";
+        assertEquals(expected, downloadUrl.getUrl(UpdateChannel.RELEASE));
 	}
 
 	@Test
-	public void getArchitecture() throws Exception {
-		String architecture = "x86";
-		DownloadUrl downloadUrl = new DownloadUrl(architecture, 15);
-		assertEquals(architecture, downloadUrl.getArchitecture());
+	public void getUrl_releaseX8664_returnX86Url() throws Exception {
+        System.setProperty(PROPERTY_OS_ARCHITECTURE, "x86_64");
+        DownloadUrl downloadUrl = DownloadUrl.create();
+
+		String expected = "https://download.mozilla.org/?product=fennec-latest&os=android-x86&lang=multi";
+        assertEquals(expected, downloadUrl.getUrl(UpdateChannel.RELEASE));
 	}
 
 	@Test
-	public void getApiLevel() throws Exception {
-		int apiLevel = 18;
-		DownloadUrl downloadUrl = new DownloadUrl("x86_64", apiLevel);
-		assertEquals(apiLevel, downloadUrl.getApiLevel());
+	public void getUrl_betaArm_returnDefaultUrl() throws Exception {
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "arm");
+		DownloadUrl downloadUrl = DownloadUrl.create();
+
+		String expected = "https://download.mozilla.org/?product=fennec-beta-latest&os=android&lang=multi";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.BETA));
 	}
 
 	@Test
-	public void getUrl_forArm_returnDefaultUrl() throws Exception {
-		DownloadUrl downloadUrl = new DownloadUrl("arm", 19);
+	public void getUrl_betaI686_returnX86Url() throws Exception {
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "i686");
+		DownloadUrl downloadUrl = DownloadUrl.create();
 
-		String expected ="https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi";
-		assertEquals(expected, downloadUrl.getUrl());
+		String expected = "https://download.mozilla.org/?product=fennec-beta-latest&os=android-x86&lang=multi";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.BETA));
 	}
 
 	@Test
-	public void getUrl_forI686_returnX86Url() throws Exception {
-		DownloadUrl downloadUrl = new DownloadUrl("i686", 19);
+	public void getUrl_betaX8664_returnX86Url() throws Exception {
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "x86_64");
+		DownloadUrl downloadUrl = DownloadUrl.create();
 
-		String expected ="https://download.mozilla.org/?product=fennec-latest&os=android-x86&lang=multi";
-		assertEquals(expected, downloadUrl.getUrl());
+		String expected = "https://download.mozilla.org/?product=fennec-beta-latest&os=android-x86&lang=multi";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.BETA));
 	}
 
 	@Test
-	public void getUrl_forX8664_returnX86Url() throws Exception {
-		DownloadUrl downloadUrl = new DownloadUrl("x86_64", 19);
+	public void getUrl_nightlyArm_returnDefaultUrl() throws Exception {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		MobileVersions mobileVersions = gsonBuilder.create().fromJson(jsonResult, MobileVersions.class);
 
-		String expected ="https://download.mozilla.org/?product=fennec-latest&os=android-x86&lang=multi";
-		assertEquals(expected, downloadUrl.getUrl());
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "arm");
+		DownloadUrl downloadUrl = DownloadUrl.create(mobileVersions);
+
+		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-63.0a1.multi.android-arm.apk";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
+	}
+
+	@Test
+	public void getUrl_nightlyI686_returnX86Url() throws Exception {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		MobileVersions mobileVersions = gsonBuilder.create().fromJson(jsonResult, MobileVersions.class);
+
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "i686");
+		DownloadUrl downloadUrl = DownloadUrl.create(mobileVersions);
+
+		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-63.0a1.multi.android-i386.apk";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
+	}
+
+	@Test
+	public void getUrl_nightlyX8664_returnX86Url() throws Exception {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		MobileVersions mobileVersions = gsonBuilder.create().fromJson(jsonResult, MobileVersions.class);
+
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "x86_64");
+		DownloadUrl downloadUrl = DownloadUrl.create(mobileVersions);
+
+		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-63.0a1.multi.android-i386.apk";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
+	}
+
+
+	@Test
+	public void getUrl_nightlyArmWithUpdate_returnDefaultUrl() throws Exception {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		MobileVersions mobileVersions = gsonBuilder.create().fromJson(jsonResult, MobileVersions.class);
+
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "arm");
+		DownloadUrl downloadUrl = DownloadUrl.create();
+		downloadUrl.update(mobileVersions);
+
+		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-63.0a1.multi.android-arm.apk";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
+	}
+
+	@Test
+	public void getUrl_nightlyI686WithUpdate_returnX86Url() throws Exception {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		MobileVersions mobileVersions = gsonBuilder.create().fromJson(jsonResult, MobileVersions.class);
+
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "i686");
+		DownloadUrl downloadUrl = DownloadUrl.create();
+		downloadUrl.update(mobileVersions);
+
+		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-63.0a1.multi.android-i386.apk";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
+	}
+
+	@Test
+	public void getUrl_nightlyX8664WithUpdate_returnX86Url() throws Exception {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		MobileVersions mobileVersions = gsonBuilder.create().fromJson(jsonResult, MobileVersions.class);
+
+		System.setProperty(PROPERTY_OS_ARCHITECTURE, "x86_64");
+		DownloadUrl downloadUrl = DownloadUrl.create();
+		downloadUrl.update(mobileVersions);
+
+		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-63.0a1.multi.android-i386.apk";
+		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
 	}
 
 }
