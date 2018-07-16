@@ -3,8 +3,8 @@ package de.marmaro.krt.ffupdater;
 import android.support.annotation.Nullable;
 
 /**
- * This class builds (depending on the isX86Architecture) the download url.
- * Furthermore this class can validate if the api level is high enough for running firefox.
+ * This class builds the download url for every update channel (release, beta, nightly) depending on the
+ * architecture (x86 vs ARM)
  */
 public class DownloadUrl {
     public static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
@@ -24,19 +24,37 @@ public class DownloadUrl {
         this.mobileVersions = mobileVersions;
     }
 
+    /**
+     * @param mobileVersions must be non-null for generating the download url for nightly
+     * @return create a new {@link DownloadUrl} object and returns it.
+     */
     public static DownloadUrl create(MobileVersions mobileVersions) {
         String osArch = System.getProperty(PROPERTY_OS_ARCHITECTURE);
         return new DownloadUrl("i686".equals(osArch) || "x86_64".equals(osArch), mobileVersions);
     }
 
+    /**
+     * @return create a new {@link DownloadUrl} object which only can generate the download url for
+     * release and beta.
+     */
     public static DownloadUrl create() {
         return create(null);
     }
 
+    /**
+     * Update the internal cache of {@link MobileVersions}. If the parameter is not null, than
+     * the download URL for nightly can (again) be generated.
+     * @param mobileVersions
+     */
     public void update(MobileVersions mobileVersions) {
         this.mobileVersions = mobileVersions;
     }
 
+    /**
+     * Generate the download url for the specific {@link UpdateChannel}
+     * @param updateChannel
+     * @return
+     */
     public String getUrl(UpdateChannel updateChannel) {
         switch (updateChannel) {
             case RELEASE:
@@ -51,6 +69,11 @@ public class DownloadUrl {
         }
     }
 
+    /**
+     * Check if the download url can be generated for the given {@link UpdateChannel}
+     * @param updateChannel
+     * @return
+     */
     public boolean isUrlAvailable(UpdateChannel updateChannel) {
         return updateChannel != UpdateChannel.NIGHTLY || mobileVersions != null;
     }
