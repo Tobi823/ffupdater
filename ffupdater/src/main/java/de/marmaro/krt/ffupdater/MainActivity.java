@@ -2,14 +2,12 @@ package de.marmaro.krt.ffupdater;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.IntentFilter;
 import android.os.StrictMode;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
 //import android.content.IntentFilter;
-import android.net.Uri;
 import android.view.View;
 //import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,8 +16,6 @@ import android.widget.TextView;
 import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,213 +23,202 @@ import de.marmaro.krt.ffupdater.background.LatestReleaseService;
 import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
 
 public class MainActivity extends AppCompatActivity {
-	private static final String TAG = "MainActivity";
+    private static final String TAG = "MainActivity";
 
+    public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
 
-	public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
+    private FirefoxMetadata localFirefox;
+    private MobileVersions availableVersions;
+    private DownloadUrl downloadUrl;
 
-	private FirefoxMetadata localFirefox;
-	private MobileVersions availableVersions;
-	private DownloadUrl downloadUrl;
+    protected Map<UpdateChannel, TextView> installedTextViews;
+    protected Map<UpdateChannel, TextView> availableTextViews;
+    protected Map<UpdateChannel, Button> checkAvailableButtons;
+    protected Map<UpdateChannel, Button> downloadButtons;
 
-	protected TextView availableVersionTextView;
-	protected TextView availableBetaVersionTextView;
-	protected TextView availableNightlyVersionTextView;
-	protected TextView installedVersionTextView;
-	protected TextView installedBetaVersionTextView;
-	protected TextView installedNightlyVersionTextView;
-	protected Button downloadStableButton;
-	protected Button downloadBetaButton;
-	protected Button downloadNightlyButton;
-	protected Button checkAvailableStableButton;
-	protected Button checkAvailableBetaButton;
-	protected Button checkAvailableNightlyButton;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
+        StrictMode.setThreadPolicy(policy);
 
-	protected Map<UpdateChannel, TextView> installedTextViews;
-	protected Map<UpdateChannel, TextView> availableTextViews;
-	protected Map<UpdateChannel, Button> checkAvailableButtons;
+        installedTextViews = new HashMap<>();
+        installedTextViews.put(UpdateChannel.RELEASE, (TextView) findViewById(R.id.installed_version));
+        installedTextViews.put(UpdateChannel.BETA, (TextView) findViewById(R.id.installed_beta_version));
+        installedTextViews.put(UpdateChannel.NIGHTLY, (TextView) findViewById(R.id.installed_nightly_version));
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
-		StrictMode.setThreadPolicy(policy);
+        availableTextViews = new HashMap<>();
+        availableTextViews.put(UpdateChannel.RELEASE, (TextView) findViewById(R.id.available_version));
+        availableTextViews.put(UpdateChannel.BETA, (TextView) findViewById(R.id.available_beta_version));
+        availableTextViews.put(UpdateChannel.NIGHTLY, (TextView) findViewById(R.id.available_nightly_version));
 
-		installedVersionTextView = (TextView) findViewById(R.id.installed_version);
-		installedBetaVersionTextView = (TextView) findViewById(R.id.installed_beta_version);
-		installedNightlyVersionTextView = (TextView) findViewById(R.id.installed_nightly_version);
-		availableVersionTextView = (TextView) findViewById(R.id.available_version);
-		availableBetaVersionTextView = (TextView) findViewById(R.id.available_beta_version);
-		availableNightlyVersionTextView = (TextView) findViewById(R.id.available_nightly_version);
-		downloadStableButton = (Button) findViewById(R.id.download_stable_button);
-		downloadBetaButton = (Button) findViewById(R.id.download_beta_button);
-		downloadNightlyButton = (Button) findViewById(R.id.download_nightly_button);
+        checkAvailableButtons = new HashMap<>();
+        checkAvailableButtons.put(UpdateChannel.RELEASE, (Button) findViewById(R.id.check_available_stable_button));
+        checkAvailableButtons.put(UpdateChannel.BETA, (Button) findViewById(R.id.check_available_beta_button));
+        checkAvailableButtons.put(UpdateChannel.NIGHTLY, (Button) findViewById(R.id.check_available_nightly_button));
 
-		installedTextViews = new HashMap<>();
-		installedTextViews.put(UpdateChannel.RELEASE, installedVersionTextView);
-		installedTextViews.put(UpdateChannel.BETA, installedBetaVersionTextView);
-		installedTextViews.put(UpdateChannel.NIGHTLY, installedNightlyVersionTextView);
+        downloadButtons = new HashMap<>();
+        downloadButtons.put(UpdateChannel.RELEASE, (Button) findViewById(R.id.download_stable_button));
+        downloadButtons.put(UpdateChannel.BETA, (Button) findViewById(R.id.download_beta_button));
+        downloadButtons.put(UpdateChannel.NIGHTLY, (Button) findViewById(R.id.download_nightly_button));
 
-		availableTextViews = new HashMap<>();
-		availableTextViews.put(UpdateChannel.RELEASE, availableVersionTextView);
-		availableTextViews.put(UpdateChannel.BETA, availableBetaVersionTextView);
-		availableTextViews.put(UpdateChannel.NIGHTLY, availableNightlyVersionTextView);
+        // starts the repeated update check
+        RepeatedNotifierExecuting.register(this);
 
-		checkAvailableButtons = new HashMap<>();
-		checkAvailableButtons.put(UpdateChannel.RELEASE, (Button) findViewById(R.id.check_available_stable_button));
-		checkAvailableButtons.put(UpdateChannel.BETA, (Button) findViewById(R.id.check_available_beta_button));
-		checkAvailableButtons.put(UpdateChannel.NIGHTLY, (Button) findViewById(R.id.check_available_nightly_button));
+        downloadUrl = DownloadUrl.create();
+        Log.i(TAG, "Firefox Release URL: " + downloadUrl.getUrl(UpdateChannel.RELEASE));
+        Log.i(TAG, "Firefox Beta URL: " + downloadUrl.getUrl(UpdateChannel.BETA));
 
-		// starts the repeated update check
-		RepeatedNotifierExecuting.register(this);
+        // register onClickListener for checking the latest version numbers
+        for (Map.Entry<UpdateChannel, Button> entry : checkAvailableButtons.entrySet()) {
+            Button button = entry.getValue();
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    loadLatestFirefoxVersions();
+                }
+            });
+        }
 
-		downloadUrl = DownloadUrl.create();
-		Log.i(TAG, "Firefox Release URL: " + downloadUrl.getUrl(UpdateChannel.RELEASE));
-		Log.i(TAG, "Firefox Beta URL: " + downloadUrl.getUrl(UpdateChannel.BETA));
+        // register onClickListener for all download buttons
+        for (Map.Entry<UpdateChannel, Button> entry : downloadButtons.entrySet()) {
+            Button button = entry.getValue();
+            button.setOnClickListener(new DownloadOnClick(downloadUrl, entry.getKey(), this));
+        }
 
-		// button actions
-		downloadStableButton.setOnClickListener(new DownloadOnClick(downloadUrl, UpdateChannel.RELEASE, this));
-		downloadStableButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.RELEASE));
+        updateDownloadButtonVisibilityDependingOnUrlAvailability();
+    }
 
-		for (Map.Entry<UpdateChannel, Button> entry : checkAvailableButtons.entrySet()) {
-			Button button = entry.getValue();
-			button.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-					loadLatestMozillaVersion();
-				}
-			});
-		}
+    /**
+     * Listen to the broadcast from {@link LatestReleaseService} and use the transmitted {@link Version} object.
+     */
+    private BroadcastReceiver latestReleaseServiceReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            MobileVersions mobileVersions = (MobileVersions) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
+            downloadUrl.update(mobileVersions);
+            changeAvailableVersions(mobileVersions);
+        }
+    };
 
-		downloadBetaButton.setOnClickListener(new DownloadOnClick(downloadUrl, UpdateChannel.BETA, this));
-		downloadBetaButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.BETA));
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(latestReleaseServiceReceiver, new IntentFilter(LatestReleaseService.RESPONSE_ACTION));
 
-		downloadNightlyButton.setOnClickListener(new DownloadOnClick(downloadUrl, UpdateChannel.NIGHTLY, this));
-		downloadNightlyButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.NIGHTLY));
+        // load latest firefox version, when intent has got the "open by notification" flag
+        Bundle bundle = getIntent().getExtras();
+        if (null != bundle) {
+            if (bundle.getBoolean(OPENED_BY_NOTIFICATION, false)) {
+                bundle.putBoolean(OPENED_BY_NOTIFICATION, false);
+                getIntent().replaceExtras(bundle);
+                loadLatestFirefoxVersions();
+            }
+        }
 
-	}
+        // check for the version of the current installed firefox
+        localFirefox = FirefoxMetadata.create(getPackageManager());
+        Log.i(TAG, localFirefox.getLocalVersions().toString());
 
+        updateDownloadButtonVisibilityDependingOnUrlAvailability();
+        updateInstalledVersionTextViews();
+        updateAvailableVersionTextViews();
+    }
 
-	/**
-	 * Listen to the broadcast from {@link LatestReleaseService} and use the transmitted {@link Version} object.
-	 */
-	private BroadcastReceiver latestReleaseServiceReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			MobileVersions mobileVersions = (MobileVersions) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
-			downloadUrl.update(mobileVersions);
-			setAvailableVersions(mobileVersions);
-		}
-	};
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(latestReleaseServiceReceiver);
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		registerReceiver(latestReleaseServiceReceiver, new IntentFilter(LatestReleaseService.RESPONSE_ACTION));
+    /**
+     * Display the version number (installed and available) of the latest firefox (release, beta, nightly)
+     * and update the visibility of the download buttons.
+     *
+     * @param value version of the latest firefox release, beta, nightly
+     */
+    private void changeAvailableVersions(MobileVersions value) {
+        if (value == null) {
+            Log.d(TAG, "Could not determine highest available version.");
+            (new AlertDialog.Builder(this))
+                    .setMessage(getString(R.string.check_available_error_message))
+                    .setPositiveButton(getString(R.string.ok), null)
+                    .show();
+            changeCheckButtonVisibilityTo(true);
+            updateAvailableVersionTextViews();
+        } else {
+            availableVersions = value;
+            Log.d(TAG, "Found highest available version: " + availableVersions);
+            updateDownloadButtonVisibilityDependingOnUrlAvailability();
+            updateInstalledVersionTextViews();
+            updateAvailableVersionTextViews();
+        }
+    }
 
-		// load latest firefox version, when intent has got the "open by notification" flag
-		Bundle bundle = getIntent().getExtras();
-		if (null != bundle) {
-			if (bundle.getBoolean(OPENED_BY_NOTIFICATION, false)) {
-				bundle.putBoolean(OPENED_BY_NOTIFICATION, false);
-				getIntent().replaceExtras(bundle);
-				loadLatestMozillaVersion();
-			}
-		}
+    /**
+     * Set the availableVersionTextView to "(checking…)" and start the LatestReleaseService service
+     */
+    private void loadLatestFirefoxVersions() {
+        changeCheckButtonVisibilityTo(false);
 
-		// check for the version of the current installed firefox
-		localFirefox = FirefoxMetadata.create(getPackageManager());
-		Log.i(TAG, localFirefox.getLocalVersions().toString());
+        for (Map.Entry<UpdateChannel, TextView> entry : availableTextViews.entrySet()) {
+            entry.getValue().setText(getString(R.string.checking));
+        }
 
-		displayVersions();
-	}
+        Intent checkVersions = new Intent(this, LatestReleaseService.class);
+        startService(checkVersions);
+    }
 
-	/**
-	 * Display the version number of the latest firefox release.
-	 * @param value version of the latest firefox release
-	 */
-	private void setAvailableVersions(MobileVersions value) {
-		if (value == null) {
-			Log.d(TAG, "Could not determine highest available version.");
-			checkAvailableStableButton.setVisibility(View.VISIBLE);
-			availableVersionTextView.setVisibility(View.GONE);
-			(new AlertDialog.Builder(this))
-					.setMessage(getString(R.string.check_available_error_message))
-					.setPositiveButton(getString(R.string.ok), null)
-					.show();
-		} else {
-			availableVersions = value;
-			Log.d(TAG, "Found highest available version: " + availableVersions);
-			displayVersions();
-		}
-	}
+    /**
+     * Show or hide the download buttons when its download URL is available
+     */
+    private void updateDownloadButtonVisibilityDependingOnUrlAvailability() {
+        for (Map.Entry<UpdateChannel, Button> entry : downloadButtons.entrySet()) {
+            Button button = entry.getValue();
+            button.setVisibility(downloadUrl.isUrlAvailable(entry.getKey()) ? View.VISIBLE : View.GONE);
+        }
+    }
 
-	/**
-	 * Refresh the installedVersionTextView and availableVersionTextView
-	 */
-	private void displayVersions() {
-		LocalVersions localVersions = localFirefox.getLocalVersions();
+    /**
+     * Set the visibility of all check buttons.
+     * @param visible
+     */
+    private void changeCheckButtonVisibilityTo(boolean visible) {
+        for (Map.Entry<UpdateChannel, Button> entry : checkAvailableButtons.entrySet()) {
+            entry.getValue().setVisibility(visible ? View.VISIBLE : View.GONE);
+        }
+    }
 
-		for (UpdateChannel updateChannel : UpdateChannel.values()) {
-			String installedText;
-			if (localVersions.isPresent(updateChannel)) {
-				Version version = localVersions.getVersionString(updateChannel);
-				installedText = getString(R.string.installed_version_text_format, version.getName(), version.getCode());
-			} else {
-				installedText = getString(R.string.not_installed_text_format, getString(R.string.none), getString(R.string.ff_not_installed));
-			}
-			installedTextViews.get(updateChannel).setText(installedText);
+    /**
+     * Show the current version numbers of the current installed firefox apps
+     */
+    private void updateInstalledVersionTextViews() {
+        LocalVersions localVersions = localFirefox.getLocalVersions();
 
-			String availableText = "";
-			if (null != availableVersions) {
-				availableText = availableVersions.getValueBy(updateChannel);
-			}
-			availableTextViews.get(updateChannel).setText(availableText);
-		}
+        for (UpdateChannel updateChannel : UpdateChannel.values()) {
+            String installedText = getString(R.string.not_installed_text_format, getString(R.string.none), getString(R.string.ff_not_installed));
 
-		downloadStableButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.RELEASE));
-		downloadBetaButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.BETA));
-		downloadNightlyButton.setActivated(downloadUrl.isUrlAvailable(UpdateChannel.NIGHTLY));
-	}
+            if (localVersions.isPresent(updateChannel)) {
+                Version version = localVersions.getVersionString(updateChannel);
+                installedText = getString(R.string.installed_version_text_format, version.getName(), version.getCode());
+            }
 
-	/**
-	 * Set the availableVersionTextView to "(checking…)" and start the LatestReleaseService service
-	 */
-	private void loadLatestMozillaVersion() {
-		for (Map.Entry<UpdateChannel, Button> entry : checkAvailableButtons.entrySet()) {
-			entry.getValue().setVisibility(View.GONE);
-		}
+            installedTextViews.get(updateChannel).setText(installedText);
+        }
+    }
 
-		for (Map.Entry<UpdateChannel, TextView> entry : availableTextViews.entrySet()) {
-			entry.getValue().setVisibility(View.VISIBLE);
-			entry.getValue().setText(getString(R.string.checking));
-		}
+    /**
+     * Show the latest available versions of firefox, firefox beta, firefox nightly...
+     */
+    private void updateAvailableVersionTextViews() {
+        for (UpdateChannel updateChannel : UpdateChannel.values()) {
+            String availableText = "";
 
-		Intent checkVersions = new Intent(this, LatestReleaseService.class);
-		startService(checkVersions);
-	}
+            if (null != availableVersions) {
+                availableText = availableVersions.getValueBy(updateChannel);
+            }
 
-	private void loadLatestMozillaBetaVersion() {
-		checkAvailableBetaButton.setVisibility(View.GONE);
-		availableBetaVersionTextView.setVisibility(View.VISIBLE);
-		availableBetaVersionTextView.setText(getString(R.string.checking));
-
-		Intent checkVersions = new Intent(this, LatestReleaseService.class);
-		startService(checkVersions);
-	}
-
-	private void loadLatestMozillaNightlyVersion() {
-		checkAvailableNightlyButton.setVisibility(View.GONE);
-		availableNightlyVersionTextView.setVisibility(View.VISIBLE);
-		availableNightlyVersionTextView.setText(getString(R.string.checking));
-
-		Intent checkVersions = new Intent(this, LatestReleaseService.class);
-		startService(checkVersions);
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		unregisterReceiver(latestReleaseServiceReceiver);
-	}
+            availableTextViews.get(updateChannel).setText(availableText);
+        }
+    }
 }

@@ -91,9 +91,7 @@
 				android:layout_toEndOf="@+id/available_version_header"
 				android:layout_toRightOf="@+id/available_version_header"
 				android:layout_below="@+id/installed_version"
-				android:text="@string/checking"
 				android:textColor="#00FF00"
-				android:visibility="gone"
 				/>
 		</RelativeLayout>
 
@@ -178,9 +176,7 @@
 				android:layout_toEndOf="@+id/available_beta_version_header"
 				android:layout_toRightOf="@+id/available_beta_version_header"
 				android:layout_below="@+id/installed_beta_version"
-				android:text="@string/checking"
 				android:textColor="#FFFF00"
-				android:visibility="gone"
 				/>
 		</RelativeLayout>
 
@@ -265,9 +261,7 @@
 				android:layout_toEndOf="@+id/available_nightly_version_header"
 				android:layout_toRightOf="@+id/available_nightly_version_header"
 				android:layout_below="@+id/installed_nightly_version"
-				android:text="@string/checking"
 				android:textColor="#FF0000"
-				android:visibility="gone"
 				/>
 		</RelativeLayout>
 
