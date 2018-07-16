@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
 
-    private FirefoxMetadata localFirefox;
+    private FirefoxDetector localFirefox;
     private MobileVersions availableVersions;
     private DownloadUrl downloadUrl;
 
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // check for the version of the current installed firefox
-        localFirefox = FirefoxMetadata.create(getPackageManager());
+        localFirefox = FirefoxDetector.create(getPackageManager());
         Log.i(TAG, localFirefox.getLocalVersions().toString());
 
         updateDownloadButtonVisibilityDependingOnUrlAvailability();

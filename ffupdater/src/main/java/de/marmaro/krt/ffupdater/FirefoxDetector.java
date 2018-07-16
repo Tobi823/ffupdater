@@ -8,20 +8,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class can access the version number of the installed firefox.
+ * This class can detect the version number of the installed firefox.
  */
-public class FirefoxMetadata {
-    public static final String RELEASE_PACKAGE_ID = "org.mozilla.firefox";
-    public static final String BETA_PACKAGE_ID = "org.mozilla.firefox_beta";
-    public static final String NIGHTLY_PACKAGE_ID = "org.mozilla.fennec_aurora";
+public class FirefoxDetector {
+    private static final String RELEASE_PACKAGE_ID = "org.mozilla.firefox";
+    private static final String BETA_PACKAGE_ID = "org.mozilla.firefox_beta";
+    private static final String NIGHTLY_PACKAGE_ID = "org.mozilla.fennec_aurora";
 
     private LocalInstalledVersions localVersions;
 
-    private FirefoxMetadata(LocalInstalledVersions localVersions) {
+    private FirefoxDetector(LocalInstalledVersions localVersions) {
         this.localVersions = localVersions;
     }
 
-    public static FirefoxMetadata create(PackageManager packageManager) {
+    /**
+     * Create an instance of FirefoxDetector (because an instance of PackageManager, only accessible
+     * from {@link MainActivity}, is necessary)
+     * @param packageManager
+     * @return
+     */
+    public static FirefoxDetector create(PackageManager packageManager) {
         LocalInstalledVersions localVersions = new LocalInstalledVersions();
 
         Map<UpdateChannel, String> mapping = new HashMap<>();
@@ -36,9 +42,15 @@ public class FirefoxMetadata {
             }
         }
 
-        return new FirefoxMetadata(localVersions);
+        return new FirefoxDetector(localVersions);
     }
 
+    /**
+     * Get the version name and code for an app with the specific package name
+     * @param packageName
+     * @param packageManager
+     * @return
+     */
     @Nullable
     private static Version getVersion(String packageName, PackageManager packageManager) {
         try {
@@ -49,6 +61,9 @@ public class FirefoxMetadata {
         }
     }
 
+    /**
+     * @return Return all versions of installed firefox apps.
+     */
     public LocalInstalledVersions getLocalVersions() {
         return localVersions;
     }

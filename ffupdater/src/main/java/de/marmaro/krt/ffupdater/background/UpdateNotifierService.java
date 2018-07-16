@@ -13,7 +13,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 
-import de.marmaro.krt.ffupdater.FirefoxMetadata;
+import de.marmaro.krt.ffupdater.FirefoxDetector;
 import de.marmaro.krt.ffupdater.LocalInstalledVersions;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.MobileVersions;
@@ -45,7 +45,7 @@ public class UpdateNotifierService extends IntentService {
     }
 
     protected boolean isUpdateAvailable() {
-        FirefoxMetadata finder = FirefoxMetadata.create(getPackageManager());
+        FirefoxDetector finder = FirefoxDetector.create(getPackageManager());
 
         LocalInstalledVersions current = finder.getLocalVersions();
         MobileVersions latest = getLatestMobileVersions();

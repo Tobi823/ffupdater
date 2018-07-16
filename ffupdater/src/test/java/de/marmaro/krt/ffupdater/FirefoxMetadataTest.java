@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -35,7 +34,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void isInstalled_firefoxIsNotInstalled_returnFalse() throws Exception {
 		firefoxIsNotInstalled();
-		FirefoxMetadata metadata = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(packageManager);
+		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
 
 		assertEquals(false, metadata.isInstalled());
 	}
@@ -43,7 +42,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void isInstalled_firefoxIsInstalled_returnTrue() throws Exception {
 		firefoxIsInstalled();
-		FirefoxMetadata metadata = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(packageManager);
+		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
 
 		assertEquals(true, metadata.isInstalled());
 	}
@@ -51,7 +50,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionCode_firefoxIsNotInstalled_returnFallback() throws Exception {
 		firefoxIsNotInstalled();
-		FirefoxMetadata metadata = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(packageManager);
+		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
 
 		assertEquals(0, metadata.getVersionCode());
 	}
@@ -59,7 +58,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionCode_firefoxIsInstalled_returnVersionCode() throws Exception {
 		firefoxIsInstalled();
-		FirefoxMetadata metadata = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(packageManager);
+		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
 
 		int versionCode = 2015538137;
 		packageInfo.versionCode = versionCode;
@@ -70,7 +69,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionName_firefoxIsNotInstalled_returnFallback() throws Exception {
 		firefoxIsNotInstalled();
-		FirefoxMetadata metadata = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(packageManager);
+		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
 
 		assertEquals("", metadata.getVersionName());
 	}
@@ -78,7 +77,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionName_firefoxIsInstalled_returnVersionName() throws Exception {
 		firefoxIsInstalled();
-		FirefoxMetadata metadata = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(packageManager);
+		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
 
 		String versionName = "58.0.1";
 		packageInfo.versionName = versionName;
@@ -89,7 +88,7 @@ public class FirefoxMetadataTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void getVersionfirefoxIsNotInstalled_returnFallback() throws Exception {
 		firefoxIsNotInstalled();
-		FirefoxMetadata metadata = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(packageManager);
+		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
 
 		metadata.getVersion();
 	}
@@ -97,7 +96,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionfirefoxIsInstalled_returnFallback() throws Exception {
 		firefoxIsInstalled();
-		FirefoxMetadata metadata = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(packageManager);
+		FirefoxDetector metadata = new FirefoxDetector.Builder().checkLocalInstalledFirefox(packageManager);
 
 		String versionName = "58.0.1";
 		packageInfo.versionName = versionName;
