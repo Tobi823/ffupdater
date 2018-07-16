@@ -31,7 +31,9 @@ public class FirefoxMetadata {
 
         for (Map.Entry<UpdateChannel, String> entry : mapping.entrySet()) {
             Version version = getVersion(entry.getValue(), packageManager);
-            localVersions.setVersion(entry.getKey(), version);
+            if (null != version) {
+                localVersions.setVersion(entry.getKey(), version);
+            }
         }
 
         return new FirefoxMetadata(localVersions);

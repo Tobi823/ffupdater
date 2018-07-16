@@ -20,7 +20,7 @@ public class LocalVersions {
     }
 
     public boolean isPresent(UpdateChannel updateChannel) {
-        return versions.containsKey(updateChannel);
+        return null != versions.get(updateChannel);
     }
 
     public Version getVersionString(UpdateChannel updateChannel) {
