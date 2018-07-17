@@ -3,6 +3,8 @@ package de.marmaro.krt.ffupdater;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * This class can compare the different version numbers from the available and local installed firefox apps.
@@ -41,8 +43,28 @@ public class VersionCompare {
             return false;
         }
 
-        String remote = mobileVersions.getValueBy(updateChannel);
+        String remote = filterVersionString(mobileVersions.getValueBy(updateChannel), updateChannel);
         String local = localVersions.getVersionString(updateChannel).getName();
         return !Objects.equals(remote, local);
+    }
+
+    /**
+     * The latest version number for firefox beta is incorrect. The rest interface returns e.g "62.0b7" but
+     * the app as the version "62.0"
+     * @param version
+     * @param updateChannel
+     * @return
+     */
+    private static String filterVersionString(String version, UpdateChannel updateChannel) {
+        if (UpdateChannel.BETA == updateChannel) {
+            Pattern pattern = Pattern.compile("\\d+\\.\\d");
+            Matcher match = pattern.matcher(version);
+            if (match.find()) {
+                return match.group();
+            } else {
+                return version;
+            }
+        }
+        return version;
     }
 }
