@@ -7,6 +7,7 @@ dependencies {
 	compile group: 'commons-io', name: 'commons-io', version: '2.6'
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
 	compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
+	compile 'com.github.dmstocking:support-optional:1.2'
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.mockito:mockito-core:1.10.19'
 	testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
