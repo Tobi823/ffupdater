@@ -12,14 +12,22 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.github.dmstocking.optional.java.util.Optional;
 
+import java.util.Map;
+
+import de.marmaro.krt.ffupdater.ApiResponses;
 import de.marmaro.krt.ffupdater.FirefoxDetector;
-import de.marmaro.krt.ffupdater.LocalInstalledVersions;
 import de.marmaro.krt.ffupdater.MainActivity;
-import de.marmaro.krt.ffupdater.MobileVersions;
-import de.marmaro.krt.ffupdater.MozillaApiConsumer;
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.UpdateChannel;
+import de.marmaro.krt.ffupdater.Version;
 import de.marmaro.krt.ffupdater.VersionCompare;
+import de.marmaro.krt.ffupdater.VersionExtractor;
+import de.marmaro.krt.ffupdater.github.GithubApiConsumer;
+import de.marmaro.krt.ffupdater.github.Release;
+import de.marmaro.krt.ffupdater.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.mozilla.MozillaApiConsumer;
 
 /**
  * This class checks if a new firefox release is available.
@@ -45,16 +53,19 @@ public class UpdateNotifierService extends IntentService {
     }
 
     protected boolean isUpdateAvailable() {
+        Optional<MobileVersions> mobileVersions = MozillaApiConsumer.findCurrentMobileVersions();
+        Optional<Release> release = GithubApiConsumer.findLatestRelease();
+        if (!mobileVersions.isPresent() || !release.isPresent()) {
+            return false;
+        }
+
         FirefoxDetector finder = FirefoxDetector.create(getPackageManager());
+        Map<UpdateChannel, Version> installed = finder.getLocalVersions();
 
-        LocalInstalledVersions current = finder.getLocalVersions();
-        MobileVersions latest = getLatestMobileVersions();
+        ApiResponses apiResponses = new ApiResponses(mobileVersions.get(), release.get());
+        Map<UpdateChannel, Version> available = new VersionExtractor(apiResponses).getVersionStrings();
 
-        return !VersionCompare.isUpdateAvailable(latest, current).isEmpty();
-    }
-
-    protected MobileVersions getLatestMobileVersions() {
-        return MozillaApiConsumer.findCurrentMobileVersions();
+        return !VersionCompare.isUpdateAvailable(available, installed).isEmpty();
     }
 
     protected void showNotification() {
