@@ -7,5 +7,19 @@ package de.marmaro.krt.ffupdater;
  * Created by Tobiwan on 14.07.2018.
  */
 public enum UpdateChannel {
-	NIGHTLY, BETA, RELEASE;
+	RELEASE("release"),
+	BETA("beta"),
+	NIGHTLY("nightly"),
+	FOCUS("focus"),
+	KLAR("klar");
+
+    private String name;
+
+    UpdateChannel(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
