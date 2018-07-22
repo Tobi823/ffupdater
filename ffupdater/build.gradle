@@ -15,7 +15,6 @@ dependencies {
 	// not available in unit tests (see "Method getString in org.json.JSONObject not mocked"
 	// http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.- )
 	testCompile 'org.json:json:20180130'
-	testCompile "org.robolectric:robolectric:3.2.2"
 }
 
 android {
