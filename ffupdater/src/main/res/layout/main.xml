@@ -280,5 +280,177 @@
 			android:text="@string/download"
 			android:textColor="#FF0000"
 			/>
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/focus"
+            android:textColor="#CD2473"
+            style="?android:attr/listSeparatorTextViewStyle"
+            />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/focus_infobox"
+            android:textColor="#CD2473"
+            />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/installed_focus_version_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/installed_version"
+                android:textColor="#CD2473"
+                />
+
+            <TextView
+                android:id="@+id/installed_focus_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/installed_focus_version_header"
+                android:layout_toRightOf="@+id/installed_focus_version_header"
+                android:text="@string/checking"
+                android:textColor="#CD2473"
+                />
+
+            <TextView
+                android:id="@+id/available_focus_version_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/installed_focus_version_header"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/available_version"
+                android:textColor="#CD2473"
+                />
+
+            <TextView
+                android:id="@+id/available_focus_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/available_focus_version_header"
+                android:layout_toRightOf="@+id/available_focus_version_header"
+                android:layout_below="@+id/installed_focus_version"
+                android:textColor="#CD2473"
+                />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/check_available_focus_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/checkavailable"
+            android:textColor="#CD2473"
+            />
+
+        <Button
+            android:id="@+id/download_focus_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/download"
+            android:textColor="#CD2473"
+            />
+
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/klar"
+			android:textColor="#791A77"
+			style="?android:attr/listSeparatorTextViewStyle"
+			/>
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/klar_infobox"
+			android:textColor="#821B78"
+			/>
+
+		<RelativeLayout
+			android:id="@+id/relativeLayout5"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<TextView
+				android:id="@+id/installed_klar_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/installed_version"
+				android:textColor="#821B78"
+				/>
+
+			<TextView
+				android:id="@+id/installed_klar_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/installed_klar_version_header"
+				android:layout_toRightOf="@+id/installed_klar_version_header"
+				android:text="@string/checking"
+				android:textColor="#821B78"
+				/>
+
+			<TextView
+				android:id="@+id/available_klar_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/installed_klar_version_header"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/available_version"
+				android:textColor="#821B78"
+				/>
+
+			<TextView
+				android:id="@+id/available_klar_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/available_klar_version_header"
+				android:layout_toRightOf="@+id/available_klar_version_header"
+				android:layout_below="@+id/installed_klar_version"
+				android:textColor="#821B78"
+				/>
+		</RelativeLayout>
+
+		<Button
+			android:id="@+id/check_available_klar_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/checkavailable"
+			android:textColor="#821B78"
+			/>
+
+		<Button
+			android:id="@+id/download_klar_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/download"
+			android:textColor="#821B78"
+			/>
 	</LinearLayout>
 </ScrollView>

@@ -1,20 +1,19 @@
 package de.marmaro.krt.ffupdater;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
-import android.os.StrictMode;
-import android.os.Bundle;
-import android.util.Log;
 import android.content.Intent;
-//import android.content.IntentFilter;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-//import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import android.support.v7.app.AppCompatActivity;
-import android.app.AlertDialog;
+import com.github.dmstocking.optional.java.util.Optional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,13 +21,16 @@ import java.util.Map;
 import de.marmaro.krt.ffupdater.background.LatestReleaseService;
 import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
 
+//import android.content.IntentFilter;
+//import android.view.View.OnClickListener;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
 
-    private FirefoxDetector localFirefox;
-    private MobileVersions availableVersions;
+    private Map<UpdateChannel, Version> localFirefox = new HashMap<>();;
+    private Map<UpdateChannel, Version> availableVersions = new HashMap<>();;
     private DownloadUrl downloadUrl;
 
     protected Map<UpdateChannel, TextView> installedTextViews;
@@ -47,21 +49,29 @@ public class MainActivity extends AppCompatActivity {
         installedTextViews.put(UpdateChannel.RELEASE, (TextView) findViewById(R.id.installed_version));
         installedTextViews.put(UpdateChannel.BETA, (TextView) findViewById(R.id.installed_beta_version));
         installedTextViews.put(UpdateChannel.NIGHTLY, (TextView) findViewById(R.id.installed_nightly_version));
+        installedTextViews.put(UpdateChannel.FOCUS, (TextView) findViewById(R.id.installed_focus_version));
+        installedTextViews.put(UpdateChannel.KLAR, (TextView) findViewById(R.id.installed_klar_version));
 
         availableTextViews = new HashMap<>();
         availableTextViews.put(UpdateChannel.RELEASE, (TextView) findViewById(R.id.available_version));
         availableTextViews.put(UpdateChannel.BETA, (TextView) findViewById(R.id.available_beta_version));
         availableTextViews.put(UpdateChannel.NIGHTLY, (TextView) findViewById(R.id.available_nightly_version));
+        availableTextViews.put(UpdateChannel.FOCUS, (TextView) findViewById(R.id.available_focus_version));
+        availableTextViews.put(UpdateChannel.KLAR, (TextView) findViewById(R.id.available_klar_version));
 
         checkAvailableButtons = new HashMap<>();
         checkAvailableButtons.put(UpdateChannel.RELEASE, (Button) findViewById(R.id.check_available_stable_button));
         checkAvailableButtons.put(UpdateChannel.BETA, (Button) findViewById(R.id.check_available_beta_button));
         checkAvailableButtons.put(UpdateChannel.NIGHTLY, (Button) findViewById(R.id.check_available_nightly_button));
+        checkAvailableButtons.put(UpdateChannel.FOCUS, (Button) findViewById(R.id.check_available_focus_button));
+        checkAvailableButtons.put(UpdateChannel.KLAR, (Button) findViewById(R.id.check_available_klar_button));
 
         downloadButtons = new HashMap<>();
         downloadButtons.put(UpdateChannel.RELEASE, (Button) findViewById(R.id.download_stable_button));
         downloadButtons.put(UpdateChannel.BETA, (Button) findViewById(R.id.download_beta_button));
         downloadButtons.put(UpdateChannel.NIGHTLY, (Button) findViewById(R.id.download_nightly_button));
+        downloadButtons.put(UpdateChannel.FOCUS, (Button) findViewById(R.id.download_focus_button));
+        downloadButtons.put(UpdateChannel.KLAR, (Button) findViewById(R.id.download_klar_button));
 
         // starts the repeated update check
         RepeatedNotifierExecuting.register(this);
@@ -85,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
             Button button = entry.getValue();
             button.setOnClickListener(new DownloadOnClick(downloadUrl, entry.getKey(), this));
         }
-
-        updateDownloadButtonVisibilityDependingOnUrlAvailability();
     }
 
     /**
@@ -95,9 +103,19 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver latestReleaseServiceReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            MobileVersions mobileVersions = (MobileVersions) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
-            downloadUrl.update(mobileVersions);
-            changeAvailableVersions(mobileVersions);
+            Object raw = intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
+            Optional<ApiResponses> apiResponses = Optional.ofNullable((ApiResponses) raw);
+
+            if (apiResponses.isPresent()) {
+                downloadUrl.update(apiResponses.get());
+                availableVersions = new VersionExtractor(apiResponses.get()).getVersionStrings();
+                Log.d(TAG, "Found highest available version: " + availableVersions);
+                updateDownloadButtonVisibilityDependingOnUrlAvailability();
+                updateInstalledVersionTextViews();
+                updateAvailableVersionTextViews();
+            } else {
+                displayErrorConnectionFailure();
+            }
         }
     };
 
@@ -117,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // check for the version of the current installed firefox
-        localFirefox = FirefoxDetector.create(getPackageManager());
-        Log.i(TAG, localFirefox.getLocalVersions().toString());
+        localFirefox = FirefoxDetector.create(getPackageManager()).getLocalVersions();
+        Log.i(TAG, localFirefox.toString());
 
         updateDownloadButtonVisibilityDependingOnUrlAvailability();
         updateInstalledVersionTextViews();
@@ -131,28 +149,14 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(latestReleaseServiceReceiver);
     }
 
-    /**
-     * Display the version number (installed and available) of the latest firefox (release, beta, nightly)
-     * and update the visibility of the download buttons.
-     *
-     * @param value version of the latest firefox release, beta, nightly
-     */
-    private void changeAvailableVersions(MobileVersions value) {
-        if (value == null) {
-            Log.d(TAG, "Could not determine highest available version.");
-            (new AlertDialog.Builder(this))
-                    .setMessage(getString(R.string.check_available_error_message))
-                    .setPositiveButton(getString(R.string.ok), null)
-                    .show();
-            changeCheckButtonVisibilityTo(true);
-            updateAvailableVersionTextViews();
-        } else {
-            availableVersions = value;
-            Log.d(TAG, "Found highest available version: " + availableVersions);
-            updateDownloadButtonVisibilityDependingOnUrlAvailability();
-            updateInstalledVersionTextViews();
-            updateAvailableVersionTextViews();
-        }
+    private void displayErrorConnectionFailure() {
+        Log.d(TAG, "Could not determine highest available version.");
+        (new AlertDialog.Builder(this))
+                .setMessage(getString(R.string.check_available_error_message))
+                .setPositiveButton(getString(R.string.ok), null)
+                .show();
+        changeCheckButtonVisibilityTo(true);
+        updateAvailableVersionTextViews();
     }
 
     /**
@@ -181,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Set the visibility of all check buttons.
+     *
      * @param visible
      */
     private void changeCheckButtonVisibilityTo(boolean visible) {
@@ -193,14 +198,12 @@ public class MainActivity extends AppCompatActivity {
      * Show the current version numbers of the current installed firefox apps
      */
     private void updateInstalledVersionTextViews() {
-        LocalInstalledVersions localVersions = localFirefox.getLocalVersions();
-
         for (UpdateChannel updateChannel : UpdateChannel.values()) {
             String installedText = getString(R.string.not_installed_text_format, getString(R.string.none), getString(R.string.ff_not_installed));
 
-            if (localVersions.isPresent(updateChannel)) {
-                Version version = localVersions.getVersionString(updateChannel);
-                installedText = getString(R.string.installed_version_text_format, version.getName(), version.getCode());
+            Optional<Version> version = Optional.ofNullable(localFirefox.get(updateChannel));
+            if (version.isPresent()) {
+                installedText = getString(R.string.installed_version_text_format, version.get().getName(), version.get().getCode());
             }
 
             installedTextViews.get(updateChannel).setText(installedText);
@@ -211,14 +214,8 @@ public class MainActivity extends AppCompatActivity {
      * Show the latest available versions of firefox, firefox beta, firefox nightly...
      */
     private void updateAvailableVersionTextViews() {
-        for (UpdateChannel updateChannel : UpdateChannel.values()) {
-            String availableText = "";
-
-            if (null != availableVersions) {
-                availableText = availableVersions.getValueBy(updateChannel);
-            }
-
-            availableTextViews.get(updateChannel).setText(availableText);
+        for (Map.Entry<UpdateChannel, Version> versionStrings : availableVersions.entrySet()) {
+            availableTextViews.get(versionStrings.getKey()).setText(versionStrings.getValue().getName());
         }
     }
 }
