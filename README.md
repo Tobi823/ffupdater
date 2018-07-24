@@ -1,14 +1,24 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 
-**Since I left F-Droid (and Android/Smartphones) about a year ago, I am looking for a new maintainer to take over. Unfortunately the upstream issue I opened 3 years ago is still not solved in 2018. While Fennec F-Droid is back in the mainline repo and other binary repos do serve Firefox, some might still prefer this updater. So as I said: Maintainers welcome. The main task should be to test the last few merge requests (especially the background update stuff) and release a new version**
+[Boris Kraut:](https://gitlab.com/krt)
+> Since I left F-Droid (and Android/Smartphones) about a year ago, I am looking for a new maintainer to take over. Unfortunately the upstream issue I opened 3 years ago is still not solved in 2018. While Fennec F-Droid is back in the mainline repo and other binary repos do serve Firefox, some might still prefer this updater. So as I said: Maintainers welcome. The main task should be to test the last few merge requests (especially the background update stuff) and release a new version
 
 ## Firefox-Updater
 
-An Android app to install and/or update Firefox for Android on your device, without using the Google Play Store.
+An Android app to install and/or update:
+ - [Firefox](https://www.mozilla.org/de/firefox/mobile/)
+ - [Firefox Beta](https://www.mozilla.org/de/firefox/channel/android/)
+ - [Firefox Nightly](https://www.mozilla.org/de/firefox/channel/android/)
+ - [Firefox Klar](https://www.mozilla.org/de/firefox/mobile/#klar)
+ - [Firefox Focus](https://www.mozilla.org/en-US/firefox/mobile/#focus)
 
-Shows the currently installed Firefox version (if available) and allows to query Mozilla's [releases directory site](https://archive.mozilla.org/pub/mobile/releases/) for the latest Firefox for Android release. It also lets a user start downloading the latest release version.
+for Android on your device, without using the Google Play Store.
 
-Currently the app is an activity with a two-button GUI. Checks for and displays the most current available version when the "Check available version"-button is tapped. The "Download Firefox" button starts an intent to download the last version from a URL described in Mozilla's [README.txt](https://archive.mozilla.org/pub/mobile/releases/latest/README.txt). However, the plan is to move this to an Android service to perform periodical update checks and download/install from within the app itself.
+Shows the currently installed Firefox versions (if available) and allows to query Mozilla's [releases directory site](https://archive.mozilla.org/pub/mobile/releases/) and the [GitHub-API](https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest) of [mozilla-mobile/focus-android](https://github.com/mozilla-mobile/focus-android) for the latest Firefox releases. It also lets a user start downloading the latest release version.
+
+Every 4 hours the app checks in the background for new releases (power-efficient with [setInexactRepeating](https://developer.android.com/reference/android/app/AlarmManager.html#setInexactRepeating(int,%20long,%20long,%20android.app.PendingIntent))). If a new release is available, a notification will be shown. 
+
+Currently the app is an activity with a two-button GUI. Checks for and displays the most current available versions when the "Check available version"-button is tapped. The "Download" button starts an intent to download the last version from a URL described in Mozilla's [README.txt](https://archive.mozilla.org/pub/mobile/releases/latest/README.txt).
 
 ## History
 
@@ -17,7 +27,7 @@ Since Mozilla [shut down their FTP server on 2015-08-05](https://blog.mozilla.or
 
 Mozilla now uses a uniform URL to point to the latest release, see [their README](https://archive.mozilla.org/pub/mobile/releases/latest/README.txt) for details. The current URL for Android is: https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi
 
-I opened a ticket about non-playstore updates with Mozilla in 2015, as did others:
+[Boris Kraut](https://gitlab.com/krt) opened a ticket about non-playstore updates with Mozilla in 2015, as did others:
 
 - [ ] https://bugzilla.mozilla.org/show_bug.cgi?id=1192279
 - [x] https://bugzilla.mozilla.org/show_bug.cgi?id=1220773
