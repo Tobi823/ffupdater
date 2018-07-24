@@ -1,195 +1,221 @@
 package de.marmaro.krt.ffupdater;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.IntentFilter;
-import android.os.StrictMode;
-import android.os.Bundle;
-import android.util.Log;
 import android.content.Intent;
-//import android.content.IntentFilter;
-import android.net.Uri;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-//import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import android.support.v7.app.AppCompatActivity;
-import android.app.AlertDialog;
+import com.github.dmstocking.optional.java.util.Optional;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.marmaro.krt.ffupdater.background.LatestReleaseService;
 import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
-import de.marmaro.krt.ffupdater.background.UpdateNotifierService;
+
+//import android.content.IntentFilter;
+//import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity {
-	private static final String TAG = "MainActivity";
-	private static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
+    private static final String TAG = "MainActivity";
 
-	public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
+    public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
 
-	private FirefoxMetadata localFirefox;
-	private Version availableVersion;
+    private Map<UpdateChannel, Version> localFirefox = new HashMap<>();;
+    private Map<UpdateChannel, Version> availableVersions = new HashMap<>();;
+    private DownloadUrl downloadUrl;
 
-	protected TextView availableVersionTextView;
-	protected TextView installedVersionTextView;
-	protected Button downloadButton;
-	protected Button checkAvailableButton;
+    protected Map<UpdateChannel, TextView> installedTextViews;
+    protected Map<UpdateChannel, TextView> availableTextViews;
+    protected Map<UpdateChannel, Button> checkAvailableButtons;
+    protected Map<UpdateChannel, Button> downloadButtons;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
-		StrictMode.setThreadPolicy(policy);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
+        StrictMode.setThreadPolicy(policy);
 
-		installedVersionTextView = (TextView) findViewById(R.id.installed_version);
-		availableVersionTextView = (TextView) findViewById(R.id.available_version);
-		checkAvailableButton = (Button) findViewById(R.id.checkavailable_button);
-		downloadButton = (Button) findViewById(R.id.download_button);
+        installedTextViews = new HashMap<>();
+        installedTextViews.put(UpdateChannel.RELEASE, (TextView) findViewById(R.id.installed_version));
+        installedTextViews.put(UpdateChannel.BETA, (TextView) findViewById(R.id.installed_beta_version));
+        installedTextViews.put(UpdateChannel.NIGHTLY, (TextView) findViewById(R.id.installed_nightly_version));
+        installedTextViews.put(UpdateChannel.FOCUS, (TextView) findViewById(R.id.installed_focus_version));
+        installedTextViews.put(UpdateChannel.KLAR, (TextView) findViewById(R.id.installed_klar_version));
 
-		// starts the repeated update check
-		RepeatedNotifierExecuting.register(this);
+        availableTextViews = new HashMap<>();
+        availableTextViews.put(UpdateChannel.RELEASE, (TextView) findViewById(R.id.available_version));
+        availableTextViews.put(UpdateChannel.BETA, (TextView) findViewById(R.id.available_beta_version));
+        availableTextViews.put(UpdateChannel.NIGHTLY, (TextView) findViewById(R.id.available_nightly_version));
+        availableTextViews.put(UpdateChannel.FOCUS, (TextView) findViewById(R.id.available_focus_version));
+        availableTextViews.put(UpdateChannel.KLAR, (TextView) findViewById(R.id.available_klar_version));
 
-		// build download url
-		DownloadUrl downloadUrlObject = new DownloadUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
-		final String downloadUrl = downloadUrlObject.getUrl();
-		Log.i(TAG, "URL to the firefox download is: " + downloadUrl);
+        checkAvailableButtons = new HashMap<>();
+        checkAvailableButtons.put(UpdateChannel.RELEASE, (Button) findViewById(R.id.check_available_stable_button));
+        checkAvailableButtons.put(UpdateChannel.BETA, (Button) findViewById(R.id.check_available_beta_button));
+        checkAvailableButtons.put(UpdateChannel.NIGHTLY, (Button) findViewById(R.id.check_available_nightly_button));
+        checkAvailableButtons.put(UpdateChannel.FOCUS, (Button) findViewById(R.id.check_available_focus_button));
+        checkAvailableButtons.put(UpdateChannel.KLAR, (Button) findViewById(R.id.check_available_klar_button));
 
-		if (!downloadUrlObject.isApiLevelSupported()) {
-			Log.e(TAG, "android-" + downloadUrlObject.getApiLevel() + " is not supported.");
-			showAndroidTooOldError();
-		}
+        downloadButtons = new HashMap<>();
+        downloadButtons.put(UpdateChannel.RELEASE, (Button) findViewById(R.id.download_stable_button));
+        downloadButtons.put(UpdateChannel.BETA, (Button) findViewById(R.id.download_beta_button));
+        downloadButtons.put(UpdateChannel.NIGHTLY, (Button) findViewById(R.id.download_nightly_button));
+        downloadButtons.put(UpdateChannel.FOCUS, (Button) findViewById(R.id.download_focus_button));
+        downloadButtons.put(UpdateChannel.KLAR, (Button) findViewById(R.id.download_klar_button));
 
-		// button actions
-		downloadButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(downloadUrl));
-				startActivity(i);
-			}
-		});
+        // starts the repeated update check
+        RepeatedNotifierExecuting.register(this);
 
-		checkAvailableButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				loadLatestMozillaVersion();
-			}
-		});
-	}
+        downloadUrl = DownloadUrl.create();
+        Log.i(TAG, "Firefox Release URL: " + downloadUrl.getUrl(UpdateChannel.RELEASE));
+        Log.i(TAG, "Firefox Beta URL: " + downloadUrl.getUrl(UpdateChannel.BETA));
 
-	/**
-	 * Listen to the broadcast from {@link LatestReleaseService} and use the transmitted {@link Version} object.
-	 */
-	private BroadcastReceiver latestReleaseServiceReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			Version version = (Version) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
-			setAvailableVersion(version);
-		}
-	};
+        // register onClickListener for checking the latest version numbers
+        for (Map.Entry<UpdateChannel, Button> entry : checkAvailableButtons.entrySet()) {
+            Button button = entry.getValue();
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    loadLatestFirefoxVersions();
+                }
+            });
+        }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		registerReceiver(latestReleaseServiceReceiver, new IntentFilter(LatestReleaseService.RESPONSE_ACTION));
+        // register onClickListener for all download buttons
+        for (Map.Entry<UpdateChannel, Button> entry : downloadButtons.entrySet()) {
+            Button button = entry.getValue();
+            button.setOnClickListener(new DownloadOnClick(downloadUrl, entry.getKey(), this));
+        }
+    }
 
-		// load latest firefox version, when intent has got the "open by notification" flag
-		Bundle bundle = getIntent().getExtras();
-		if (null != bundle) {
-			if (bundle.getBoolean(OPENED_BY_NOTIFICATION, false)) {
-				bundle.putBoolean(OPENED_BY_NOTIFICATION, false);
-				getIntent().replaceExtras(bundle);
-				loadLatestMozillaVersion();
-			}
-		}
+    /**
+     * Listen to the broadcast from {@link LatestReleaseService} and use the transmitted {@link Version} object.
+     */
+    private BroadcastReceiver latestReleaseServiceReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Object raw = intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
+            Optional<ApiResponses> apiResponses = Optional.ofNullable((ApiResponses) raw);
 
-		// check for the version of the current installed firefox
-		localFirefox = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(getPackageManager());
+            if (apiResponses.isPresent()) {
+                downloadUrl.update(apiResponses.get());
+                availableVersions = new VersionExtractor(apiResponses.get()).getVersionStrings();
+                Log.d(TAG, "Found highest available version: " + availableVersions);
+                updateDownloadButtonVisibilityDependingOnUrlAvailability();
+                updateInstalledVersionTextViews();
+                updateAvailableVersionTextViews();
+            } else {
+                displayErrorConnectionFailure();
+            }
+        }
+    };
 
-		// log and display the current firefox version
-		if (localFirefox.isInstalled()) {
-			String format = "Firefox %s (%s) is installed.";
-			Log.i(TAG, String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode()));
-		} else {
-			Log.i(TAG, "Firefox is not installed.");
-		}
-		displayVersions();
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(latestReleaseServiceReceiver, new IntentFilter(LatestReleaseService.RESPONSE_ACTION));
 
-	/**
-	 * Display the version number of the latest firefox release.
-	 * @param value version of the latest firefox release
-	 */
-	private void setAvailableVersion(Version value) {
-		if (value == null) {
-			Log.d(TAG, "Could not determine highest available version.");
-			checkAvailableButton.setVisibility(View.VISIBLE);
-			availableVersionTextView.setVisibility(View.GONE);
-			(new AlertDialog.Builder(this))
-					.setMessage(getString(R.string.check_available_error_message))
-					.setPositiveButton(getString(R.string.ok), null)
-					.show();
-		} else {
-			availableVersion = value;
-			Log.d(TAG, "Found highest available version: " + availableVersion.get());
-			displayVersions();
-		}
-	}
+        // load latest firefox version, when intent has got the "open by notification" flag
+        Bundle bundle = getIntent().getExtras();
+        if (null != bundle) {
+            if (bundle.getBoolean(OPENED_BY_NOTIFICATION, false)) {
+                bundle.putBoolean(OPENED_BY_NOTIFICATION, false);
+                getIntent().replaceExtras(bundle);
+                loadLatestFirefoxVersions();
+            }
+        }
 
-	/**
-	 * Refresh the installedVersionTextView and availableVersionTextView
-	 */
-	private void displayVersions() {
-		String installedText;
-		if (localFirefox.isInstalled()) {
-			String format = getString(R.string.installed_version_text_format);
-			installedText = String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode());
-		} else {
-			String format = getString(R.string.not_installed_text_format);
-			installedText = String.format(format, getString(R.string.none), getString(R.string.ff_not_installed));
-		}
-		installedVersionTextView.setText(installedText);
+        // check for the version of the current installed firefox
+        localFirefox = FirefoxDetector.create(getPackageManager()).getLocalVersions();
+        Log.i(TAG, localFirefox.toString());
 
-		String availableText;
-		if (null == availableVersion) {
-			availableText = "";
-		} else {
-			availableText = availableVersion.get();
-		}
-		availableVersionTextView.setText(availableText);
-	}
+        updateDownloadButtonVisibilityDependingOnUrlAvailability();
+        updateInstalledVersionTextViews();
+        updateAvailableVersionTextViews();
+    }
 
-	/**
-	 * Set the availableVersionTextView to "(checking…)" and start the LatestReleaseService service
-	 */
-	private void loadLatestMozillaVersion() {
-		checkAvailableButton.setVisibility(View.GONE);
-		availableVersionTextView.setVisibility(View.VISIBLE);
-		availableVersionTextView.setText(getString(R.string.checking));
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(latestReleaseServiceReceiver);
+    }
 
-		Intent checkVersions = new Intent(this, LatestReleaseService.class);
-		startService(checkVersions);
-	}
+    private void displayErrorConnectionFailure() {
+        Log.d(TAG, "Could not determine highest available version.");
+        (new AlertDialog.Builder(this))
+                .setMessage(getString(R.string.check_available_error_message))
+                .setPositiveButton(getString(R.string.ok), null)
+                .show();
+        changeCheckButtonVisibilityTo(true);
+        updateAvailableVersionTextViews();
+    }
 
-	/**
-	 * Display an error that the user uses a version which is not longer unsupported.
-	 */
-	private void showAndroidTooOldError() {
-		AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-		alertDialog.setTitle("Your android version is too old");
-		alertDialog.setMessage("Firefox needs at least Android 4.1.");
-		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				});
-		alertDialog.show();
-	}
+    /**
+     * Set the availableVersionTextView to "(checking…)" and start the LatestReleaseService service
+     */
+    private void loadLatestFirefoxVersions() {
+        changeCheckButtonVisibilityTo(false);
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		unregisterReceiver(latestReleaseServiceReceiver);
-	}
+        for (Map.Entry<UpdateChannel, TextView> entry : availableTextViews.entrySet()) {
+            entry.getValue().setText(getString(R.string.checking));
+        }
+
+        Intent checkVersions = new Intent(this, LatestReleaseService.class);
+        startService(checkVersions);
+    }
+
+    /**
+     * Show or hide the download buttons when its download URL is available
+     */
+    private void updateDownloadButtonVisibilityDependingOnUrlAvailability() {
+        for (Map.Entry<UpdateChannel, Button> entry : downloadButtons.entrySet()) {
+            Button button = entry.getValue();
+            button.setVisibility(downloadUrl.isUrlAvailable(entry.getKey()) ? View.VISIBLE : View.GONE);
+        }
+    }
+
+    /**
+     * Set the visibility of all check buttons.
+     *
+     * @param visible
+     */
+    private void changeCheckButtonVisibilityTo(boolean visible) {
+        for (Map.Entry<UpdateChannel, Button> entry : checkAvailableButtons.entrySet()) {
+            entry.getValue().setVisibility(visible ? View.VISIBLE : View.GONE);
+        }
+    }
+
+    /**
+     * Show the current version numbers of the current installed firefox apps
+     */
+    private void updateInstalledVersionTextViews() {
+        for (UpdateChannel updateChannel : UpdateChannel.values()) {
+            String installedText = getString(R.string.not_installed_text_format, getString(R.string.none), getString(R.string.ff_not_installed));
+
+            Optional<Version> version = Optional.ofNullable(localFirefox.get(updateChannel));
+            if (version.isPresent()) {
+                installedText = getString(R.string.installed_version_text_format, version.get().getName(), version.get().getCode());
+            }
+
+            installedTextViews.get(updateChannel).setText(installedText);
+        }
+    }
+
+    /**
+     * Show the latest available versions of firefox, firefox beta, firefox nightly...
+     */
+    private void updateAvailableVersionTextViews() {
+        for (Map.Entry<UpdateChannel, Version> versionStrings : availableVersions.entrySet()) {
+            availableTextViews.get(versionStrings.getKey()).setText(versionStrings.getValue().getName());
+        }
+    }
 }

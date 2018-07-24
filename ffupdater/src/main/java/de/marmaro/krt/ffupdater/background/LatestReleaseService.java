@@ -5,8 +5,13 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import de.marmaro.krt.ffupdater.MozillaVersions;
-import de.marmaro.krt.ffupdater.Version;
+import com.github.dmstocking.optional.java.util.Optional;
+
+import de.marmaro.krt.ffupdater.ApiResponses;
+import de.marmaro.krt.ffupdater.github.GithubApiConsumer;
+import de.marmaro.krt.ffupdater.github.Release;
+import de.marmaro.krt.ffupdater.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.mozilla.MozillaApiConsumer;
 
 /**
  * This class download the version number of the latest firefox release and send it
@@ -26,17 +31,15 @@ public class LatestReleaseService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         Log.i(TAG, "LatestReleaseService was started.");
-        Version latestVersion = getLatestVersion();
-        broadcastVersion(latestVersion);
-    }
+        Optional<MobileVersions> mobileVersions = MozillaApiConsumer.findCurrentMobileVersions();
+        Optional<Release> githubRelease = GithubApiConsumer.findLatestRelease();
 
-    protected Version getLatestVersion() {
-        return MozillaVersions.getVersion();
-    }
-
-    protected void broadcastVersion(Version version) {
-        Intent broadcastLatestVersion = new Intent(RESPONSE_ACTION);
-        broadcastLatestVersion.putExtra(EXTRA_RESPONSE_VERSION, version);
-        sendBroadcast(broadcastLatestVersion);
+        Intent response = new Intent(RESPONSE_ACTION);
+        if (mobileVersions.isPresent() && githubRelease.isPresent()) {
+            response.putExtra(EXTRA_RESPONSE_VERSION, new ApiResponses(mobileVersions.get(), githubRelease.get()));
+        } else {
+            response.putExtra(EXTRA_RESPONSE_VERSION, (ApiResponses) null);
+        }
+        sendBroadcast(response);
     }
 }

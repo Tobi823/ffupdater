@@ -1,71 +1,456 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical"
 		>
 
-		<TextView  
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content" 
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
 			android:text="@string/infobox"
-			android:padding="10dp"
 			android:textColor="#FFFFFF"
 			/>
-		
+
 		<TextView
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content" 
-			android:text="@string/installed_version"
+			android:id="@+id/update_channels"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/update_channels"
 			android:padding="10dp"
+			android:textColor="#FFFFFF"
+			android:textSize="20sp"
+			/>
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/stable"
+			android:textColor="#00FF00"
 			style="?android:attr/listSeparatorTextViewStyle"
 			/>
-		
+
 		<TextView
-			android:id="@+id/installed_version"
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content" 
-			android:text="@string/checking"
-			android:padding="20dp"
-			android:textColor="#FFFFFF"
-			android:textSize="28sp"
-			/>
-		
-		<TextView
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content" 
-			android:text="@string/available_version"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
 			android:padding="10dp"
-			style="?android:attr/listSeparatorTextViewStyle"
+			android:text="@string/stable_infobox"
+			android:textColor="#00FF00"
 			/>
-		
-		<TextView
-			android:visibility="gone"
-			android:id="@+id/available_version"
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content" 
-			android:text="@string/checking"
-			android:padding="20dp"
-			android:textColor="#FFFFFF"
-			android:textSize="28sp"
-			/>
-		
+
+		<RelativeLayout
+			android:id="@+id/relativeLayout1"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<TextView
+				android:id="@+id/installed_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/installed_version"
+				android:textColor="#00FF00"
+				/>
+
+			<TextView
+				android:id="@+id/installed_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/installed_version_header"
+				android:layout_toRightOf="@+id/installed_version_header"
+				android:text="@string/checking"
+				android:textColor="#00FF00"
+				/>
+
+			<TextView
+				android:id="@+id/available_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/installed_version_header"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/available_version"
+				android:textColor="#00FF00"
+				/>
+
+			<TextView
+				android:id="@+id/available_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/available_version_header"
+				android:layout_toRightOf="@+id/available_version_header"
+				android:layout_below="@+id/installed_version"
+				android:textColor="#00FF00"
+				/>
+		</RelativeLayout>
+
 		<Button
-			android:id="@+id/checkavailable_button"
+			android:id="@+id/check_available_stable_button"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/checkavailable"
+			android:textColor="#00FF00"
 			/>
 
 		<Button
-			android:id="@+id/download_button"
+			android:id="@+id/download_stable_button"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/download"
+			android:textColor="#00FF00"
 			/>
 
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/beta"
+			android:textColor="#FFFF00"
+			style="?android:attr/listSeparatorTextViewStyle"
+			/>
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/beta_infobox"
+			android:textColor="#FFFF00"
+			/>
+
+		<RelativeLayout
+			android:id="@+id/relativeLayout2"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<TextView
+				android:id="@+id/installed_beta_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/installed_version"
+				android:textColor="#FFFF00"
+				/>
+
+			<TextView
+				android:id="@+id/installed_beta_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/installed_beta_version_header"
+				android:layout_toRightOf="@+id/installed_beta_version_header"
+				android:text="@string/checking"
+				android:textColor="#FFFF00"
+				/>
+
+			<TextView
+				android:id="@+id/available_beta_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/installed_beta_version_header"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/available_version"
+				android:textColor="#FFFF00"
+				/>
+
+			<TextView
+				android:id="@+id/available_beta_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/available_beta_version_header"
+				android:layout_toRightOf="@+id/available_beta_version_header"
+				android:layout_below="@+id/installed_beta_version"
+				android:textColor="#FFFF00"
+				/>
+		</RelativeLayout>
+
+		<Button
+			android:id="@+id/check_available_beta_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/checkavailable"
+			android:textColor="#FFFF00"
+			/>
+
+		<Button
+			android:id="@+id/download_beta_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/download"
+			android:textColor="#FFFF00"
+			/>
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/nightly"
+			android:textColor="#FF0000"
+			style="?android:attr/listSeparatorTextViewStyle"
+			/>
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/nightly_infobox"
+			android:textColor="#FF0000"
+			/>
+
+		<RelativeLayout
+			android:id="@+id/relativeLayout3"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<TextView
+				android:id="@+id/installed_nightly_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/installed_version"
+				android:textColor="#FF0000"
+				/>
+
+			<TextView
+				android:id="@+id/installed_nightly_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/installed_nightly_version_header"
+				android:layout_toRightOf="@+id/installed_nightly_version_header"
+				android:text="@string/checking"
+				android:textColor="#FF0000"
+				/>
+
+			<TextView
+				android:id="@+id/available_nightly_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/installed_nightly_version_header"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/available_version"
+				android:textColor="#FF0000"
+				/>
+
+			<TextView
+				android:id="@+id/available_nightly_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/available_nightly_version_header"
+				android:layout_toRightOf="@+id/available_nightly_version_header"
+				android:layout_below="@+id/installed_nightly_version"
+				android:textColor="#FF0000"
+				/>
+		</RelativeLayout>
+
+		<Button
+			android:id="@+id/check_available_nightly_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/checkavailable"
+			android:textColor="#FF0000"
+			/>
+
+		<Button
+			android:id="@+id/download_nightly_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/download"
+			android:textColor="#FF0000"
+			/>
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/focus"
+            android:textColor="#CD2473"
+            style="?android:attr/listSeparatorTextViewStyle"
+            />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/focus_infobox"
+            android:textColor="#CD2473"
+            />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/installed_focus_version_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/installed_version"
+                android:textColor="#CD2473"
+                />
+
+            <TextView
+                android:id="@+id/installed_focus_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/installed_focus_version_header"
+                android:layout_toRightOf="@+id/installed_focus_version_header"
+                android:text="@string/checking"
+                android:textColor="#CD2473"
+                />
+
+            <TextView
+                android:id="@+id/available_focus_version_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/installed_focus_version_header"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:paddingRight="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/available_version"
+                android:textColor="#CD2473"
+                />
+
+            <TextView
+                android:id="@+id/available_focus_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/available_focus_version_header"
+                android:layout_toRightOf="@+id/available_focus_version_header"
+                android:layout_below="@+id/installed_focus_version"
+                android:textColor="#CD2473"
+                />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/check_available_focus_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/checkavailable"
+            android:textColor="#CD2473"
+            />
+
+        <Button
+            android:id="@+id/download_focus_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/download"
+            android:textColor="#CD2473"
+            />
+
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/klar"
+			android:textColor="#791A77"
+			style="?android:attr/listSeparatorTextViewStyle"
+			/>
+
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:text="@string/klar_infobox"
+			android:textColor="#821B78"
+			/>
+
+		<RelativeLayout
+			android:id="@+id/relativeLayout5"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<TextView
+				android:id="@+id/installed_klar_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/installed_version"
+				android:textColor="#821B78"
+				/>
+
+			<TextView
+				android:id="@+id/installed_klar_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/installed_klar_version_header"
+				android:layout_toRightOf="@+id/installed_klar_version_header"
+				android:text="@string/checking"
+				android:textColor="#821B78"
+				/>
+
+			<TextView
+				android:id="@+id/available_klar_version_header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/installed_klar_version_header"
+				android:paddingLeft="10dp"
+				android:paddingStart="10dp"
+				android:paddingRight="10dp"
+				android:paddingEnd="10dp"
+				android:text="@string/available_version"
+				android:textColor="#821B78"
+				/>
+
+			<TextView
+				android:id="@+id/available_klar_version"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toEndOf="@+id/available_klar_version_header"
+				android:layout_toRightOf="@+id/available_klar_version_header"
+				android:layout_below="@+id/installed_klar_version"
+				android:textColor="#821B78"
+				/>
+		</RelativeLayout>
+
+		<Button
+			android:id="@+id/check_available_klar_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/checkavailable"
+			android:textColor="#821B78"
+			/>
+
+		<Button
+			android:id="@+id/download_klar_button"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/download"
+			android:textColor="#821B78"
+			/>
 	</LinearLayout>
 </ScrollView>

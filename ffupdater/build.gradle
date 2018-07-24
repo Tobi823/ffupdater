@@ -4,8 +4,13 @@ apply plugin: "com.jaredsburrows.license"
 dependencies {
 	compile "com.android.support:support-v4:23.2.1"
 	compile "com.android.support:appcompat-v7:23.2.1"
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+	compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
+	compile 'com.github.dmstocking:support-optional:1.2'
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.mockito:mockito-core:1.10.19'
+	testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
 	// I had to add this dependencies because org.json is a part of the Android platform and
 	// not available in unit tests (see "Method getString in org.json.JSONObject not mocked"
 	// http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.- )
@@ -17,9 +22,9 @@ android {
 	buildToolsVersion '25.0.3'
 
 	defaultConfig {
-		versionCode 22
-		versionName "57.0"
-		minSdkVersion 9
+		versionCode 23
+		versionName "58.0"
+		minSdkVersion 19
 		targetSdkVersion 25
 	}
 
@@ -45,11 +50,5 @@ android {
 		exclude 'META-INF/README.txt'
 		exclude 'META-INF/LICENSE'
 		exclude 'META-INF/LICENSE.txt'
-	}
-
-	testOptions {
-		// workaround for the error "Method i in android.util.Log not mocked" (http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-)
-		// without PowerMockito it is impossible to mock Log.
-		unitTests.returnDefaultValues = true
 	}
 }

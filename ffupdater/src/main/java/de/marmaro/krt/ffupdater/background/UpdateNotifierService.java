@@ -12,12 +12,22 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.github.dmstocking.optional.java.util.Optional;
 
-import de.marmaro.krt.ffupdater.FirefoxMetadata;
+import java.util.Map;
+
+import de.marmaro.krt.ffupdater.ApiResponses;
+import de.marmaro.krt.ffupdater.FirefoxDetector;
 import de.marmaro.krt.ffupdater.MainActivity;
-import de.marmaro.krt.ffupdater.MozillaVersions;
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.UpdateChannel;
 import de.marmaro.krt.ffupdater.Version;
+import de.marmaro.krt.ffupdater.VersionCompare;
+import de.marmaro.krt.ffupdater.VersionExtractor;
+import de.marmaro.krt.ffupdater.github.GithubApiConsumer;
+import de.marmaro.krt.ffupdater.github.Release;
+import de.marmaro.krt.ffupdater.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.mozilla.MozillaApiConsumer;
 
 /**
  * This class checks if a new firefox release is available.
@@ -43,16 +53,19 @@ public class UpdateNotifierService extends IntentService {
     }
 
     protected boolean isUpdateAvailable() {
-        FirefoxMetadata finder = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(getPackageManager());
+        Optional<MobileVersions> mobileVersions = MozillaApiConsumer.findCurrentMobileVersions();
+        Optional<Release> release = GithubApiConsumer.findLatestRelease();
+        if (!mobileVersions.isPresent() || !release.isPresent()) {
+            return false;
+        }
 
-        Version current = finder.getVersion();
-        Version latest = getLatestVersion();
+        FirefoxDetector finder = FirefoxDetector.create(getPackageManager());
+        Map<UpdateChannel, Version> installed = finder.getLocalVersions();
 
-        return (current.compareTo(latest) == -1);
-    }
+        ApiResponses apiResponses = new ApiResponses(mobileVersions.get(), release.get());
+        Map<UpdateChannel, Version> available = new VersionExtractor(apiResponses).getVersionStrings();
 
-    protected Version getLatestVersion() {
-        return MozillaVersions.getVersion();
+        return !VersionCompare.isUpdateAvailable(available, installed).isEmpty();
     }
 
     protected void showNotification() {
