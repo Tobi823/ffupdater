@@ -1,3 +1,7 @@
+2018-07-24 Version 58.0 (23)
+ * support for Firefox Beta, Firefox Nightly, Firefox Focus, Firefox Klar
+ * checks in background every 4 hours for updates + display notification when updates are available
+
 2018-01-07 Version 57.0 (22)
  * Add some translations
 
