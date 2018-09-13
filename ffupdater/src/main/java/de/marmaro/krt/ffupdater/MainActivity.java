@@ -21,6 +21,8 @@ import java.util.Map;
 import de.marmaro.krt.ffupdater.api.ApiResponses;
 import de.marmaro.krt.ffupdater.background.LatestReleaseService;
 import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
+import de.marmaro.krt.ffupdater.gui.DownloadOnClick;
+import de.marmaro.krt.ffupdater.version.Version;
 import de.marmaro.krt.ffupdater.version.VersionExtractor;
 
 //import android.content.IntentFilter;

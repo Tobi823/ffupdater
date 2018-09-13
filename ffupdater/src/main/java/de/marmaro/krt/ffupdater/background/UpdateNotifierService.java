@@ -16,18 +16,18 @@ import com.github.dmstocking.optional.java.util.Optional;
 
 import java.util.Map;
 
-import de.marmaro.krt.ffupdater.api.ApiResponses;
 import de.marmaro.krt.ffupdater.InstalledFirefoxAppService;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.UpdateChannel;
-import de.marmaro.krt.ffupdater.Version;
-import de.marmaro.krt.ffupdater.version.VersionCompare;
-import de.marmaro.krt.ffupdater.version.VersionExtractor;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
 import de.marmaro.krt.ffupdater.api.github.GithubApiConsumer;
 import de.marmaro.krt.ffupdater.api.github.Release;
 import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
 import de.marmaro.krt.ffupdater.api.mozilla.MozillaApiConsumer;
+import de.marmaro.krt.ffupdater.version.Version;
+import de.marmaro.krt.ffupdater.version.VersionCompare;
+import de.marmaro.krt.ffupdater.version.VersionExtractor;
 
 /**
  * This class checks if a new firefox release is available.

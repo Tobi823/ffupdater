@@ -36,4 +36,6 @@ public class VersionCompare {
     private static boolean isDifferent(Version available, Version installed) {
         return null != available && null != installed && !Objects.equals(available.getName(), installed.getName());
     }
+
+
 }
