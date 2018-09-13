@@ -13,6 +13,4 @@
 	<string name="download">Завантажити Firefox</string>
 	<string name="update_notification_title">Доступна нова версія firefox</string>
 	<string name="update_notification_text">Натисніть, аби відкрити додаток</string>
-	<string name="android_too_old_title">Натисніть, аби відкрити додаток</string>
-	<string name="android_too_old_text">Натисніть, аби відкрити додаток</string>
 </resources>

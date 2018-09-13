@@ -1,3 +1,7 @@
+2018-09-13 Version 59.0 (24)
+ * App now supports the new version string format (from two to three digits)
+ * Show only update notification when a new update is available (caused by misinterpreted version strings)
+
 2018-07-24 Version 58.0 (23)
  * support for Firefox Beta, Firefox Nightly, Firefox Focus, Firefox Klar
  * checks in background every 4 hours for updates + display notification when updates are available
