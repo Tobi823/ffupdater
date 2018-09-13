@@ -9,14 +9,14 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Map;
 
-import de.marmaro.krt.ffupdater.api.ApiResponses;
 import de.marmaro.krt.ffupdater.UpdateChannel;
-import de.marmaro.krt.ffupdater.Version;
-import de.marmaro.krt.ffupdater.version.VersionExtractor;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
 import de.marmaro.krt.ffupdater.api.github.GithubApiConsumer;
 import de.marmaro.krt.ffupdater.api.github.Release;
 import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
 import de.marmaro.krt.ffupdater.api.mozilla.MozillaApiConsumer;
+import de.marmaro.krt.ffupdater.version.Version;
+import de.marmaro.krt.ffupdater.version.VersionExtractor;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

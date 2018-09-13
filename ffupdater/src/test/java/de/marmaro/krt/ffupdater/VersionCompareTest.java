@@ -18,6 +18,7 @@ import java.util.Map;
 import de.marmaro.krt.ffupdater.api.ApiResponses;
 import de.marmaro.krt.ffupdater.api.github.Release;
 import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.version.Version;
 import de.marmaro.krt.ffupdater.version.VersionCompare;
 import de.marmaro.krt.ffupdater.version.VersionExtractor;
 

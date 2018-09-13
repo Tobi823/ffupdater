@@ -5,6 +5,8 @@ import com.github.dmstocking.optional.java.util.Optional;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import de.marmaro.krt.ffupdater.api.ApiConsumer;
+
 import static junit.framework.Assert.assertEquals;
 
 /**
