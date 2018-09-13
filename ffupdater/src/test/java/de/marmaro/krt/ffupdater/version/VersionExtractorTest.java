@@ -6,13 +6,10 @@ import java.util.Map;
 
 import de.marmaro.krt.ffupdater.UpdateChannel;
 import de.marmaro.krt.ffupdater.api.ApiResponses;
-import de.marmaro.krt.ffupdater.api.github.GithubApiConsumer;
 import de.marmaro.krt.ffupdater.api.github.Release;
 import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
-import de.marmaro.krt.ffupdater.api.mozilla.MozillaApiConsumer;
 
-import static de.marmaro.krt.ffupdater.version.VersionExtractor.REGEX_EXTRACT_VERSION;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class VersionExtractorTest {
 
