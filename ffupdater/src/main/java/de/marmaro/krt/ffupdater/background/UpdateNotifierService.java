@@ -16,18 +16,18 @@ import com.github.dmstocking.optional.java.util.Optional;
 
 import java.util.Map;
 
-import de.marmaro.krt.ffupdater.ApiResponses;
-import de.marmaro.krt.ffupdater.FirefoxDetector;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
+import de.marmaro.krt.ffupdater.InstalledFirefoxAppService;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.UpdateChannel;
 import de.marmaro.krt.ffupdater.Version;
-import de.marmaro.krt.ffupdater.VersionCompare;
-import de.marmaro.krt.ffupdater.VersionExtractor;
-import de.marmaro.krt.ffupdater.github.GithubApiConsumer;
-import de.marmaro.krt.ffupdater.github.Release;
-import de.marmaro.krt.ffupdater.mozilla.MobileVersions;
-import de.marmaro.krt.ffupdater.mozilla.MozillaApiConsumer;
+import de.marmaro.krt.ffupdater.version.VersionCompare;
+import de.marmaro.krt.ffupdater.version.VersionExtractor;
+import de.marmaro.krt.ffupdater.api.github.GithubApiConsumer;
+import de.marmaro.krt.ffupdater.api.github.Release;
+import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.api.mozilla.MozillaApiConsumer;
 
 /**
  * This class checks if a new firefox release is available.
@@ -59,7 +59,7 @@ public class UpdateNotifierService extends IntentService {
             return false;
         }
 
-        FirefoxDetector finder = FirefoxDetector.create(getPackageManager());
+        InstalledFirefoxAppService finder = InstalledFirefoxAppService.create(getPackageManager());
         Map<UpdateChannel, Version> installed = finder.getLocalVersions();
 
         ApiResponses apiResponses = new ApiResponses(mobileVersions.get(), release.get());

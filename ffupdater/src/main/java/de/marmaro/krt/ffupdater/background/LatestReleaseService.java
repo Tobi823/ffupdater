@@ -7,11 +7,11 @@ import android.util.Log;
 
 import com.github.dmstocking.optional.java.util.Optional;
 
-import de.marmaro.krt.ffupdater.ApiResponses;
-import de.marmaro.krt.ffupdater.github.GithubApiConsumer;
-import de.marmaro.krt.ffupdater.github.Release;
-import de.marmaro.krt.ffupdater.mozilla.MobileVersions;
-import de.marmaro.krt.ffupdater.mozilla.MozillaApiConsumer;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
+import de.marmaro.krt.ffupdater.api.github.GithubApiConsumer;
+import de.marmaro.krt.ffupdater.api.github.Release;
+import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.api.mozilla.MozillaApiConsumer;
 
 /**
  * This class download the version number of the latest firefox release and send it

@@ -10,10 +10,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import de.marmaro.krt.ffupdater.github.Release;
-import de.marmaro.krt.ffupdater.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
+import de.marmaro.krt.ffupdater.api.github.Release;
+import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
 
-import static de.marmaro.krt.ffupdater.DownloadUrl.PROPERTY_OS_ARCHITECTURE;
+import static de.marmaro.krt.ffupdater.DownloadUrlGenerator.PROPERTY_OS_ARCHITECTURE;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -50,7 +51,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_releaseArm_returnDefaultUrl() throws Exception {
         System.setProperty(PROPERTY_OS_ARCHITECTURE, "arm");
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 
 		String expected = "https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi";
 		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.RELEASE));
@@ -59,7 +60,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_releaseI686_returnX86Url() throws Exception {
         System.setProperty(PROPERTY_OS_ARCHITECTURE, "i686");
-        DownloadUrl downloadUrl = DownloadUrl.create();
+        DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 
 		String expected = "https://download.mozilla.org/?product=fennec-latest&os=android-x86&lang=multi";
         assertEquals(expected, downloadUrl.getUrl(UpdateChannel.RELEASE));
@@ -68,7 +69,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_releaseX8664_returnX86Url() throws Exception {
         System.setProperty(PROPERTY_OS_ARCHITECTURE, "x86_64");
-        DownloadUrl downloadUrl = DownloadUrl.create();
+        DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 
 		String expected = "https://download.mozilla.org/?product=fennec-latest&os=android-x86&lang=multi";
         assertEquals(expected, downloadUrl.getUrl(UpdateChannel.RELEASE));
@@ -77,7 +78,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_betaArm_returnDefaultUrl() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "arm");
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 
 		String expected = "https://download.mozilla.org/?product=fennec-beta-latest&os=android&lang=multi";
 		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.BETA));
@@ -86,7 +87,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_betaI686_returnX86Url() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "i686");
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 
 		String expected = "https://download.mozilla.org/?product=fennec-beta-latest&os=android-x86&lang=multi";
 		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.BETA));
@@ -95,7 +96,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_betaX8664_returnX86Url() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "x86_64");
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 
 		String expected = "https://download.mozilla.org/?product=fennec-beta-latest&os=android-x86&lang=multi";
 		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.BETA));
@@ -104,7 +105,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_nightlyArm_returnDefaultUrl() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "arm");
-		DownloadUrl downloadUrl = DownloadUrl.create(apiResponses);
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create(apiResponses);
 
 		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-63.0a1.multi.android-arm.apk";
 		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
@@ -113,7 +114,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_nightlyI686_returnX86Url() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "i686");
-		DownloadUrl downloadUrl = DownloadUrl.create(apiResponses);
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create(apiResponses);
 
 		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-63.0a1.multi.android-i386.apk";
 		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
@@ -122,7 +123,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_nightlyX8664_returnX86Url() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "x86_64");
-		DownloadUrl downloadUrl = DownloadUrl.create(apiResponses);
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create(apiResponses);
 
 		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-63.0a1.multi.android-i386.apk";
 		assertEquals(expected, downloadUrl.getUrl(UpdateChannel.NIGHTLY));
@@ -132,7 +133,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_nightlyArmWithUpdate_returnDefaultUrl() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "arm");
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 		downloadUrl.update(apiResponses);
 
 		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-63.0a1.multi.android-arm.apk";
@@ -142,7 +143,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_nightlyI686WithUpdate_returnX86Url() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "i686");
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 		downloadUrl.update(apiResponses);
 
 		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-63.0a1.multi.android-i386.apk";
@@ -152,7 +153,7 @@ public class DownloadUrlTest {
 	@Test
 	public void getUrl_nightlyX8664WithUpdate_returnX86Url() throws Exception {
 		System.setProperty(PROPERTY_OS_ARCHITECTURE, "x86_64");
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 		downloadUrl.update(apiResponses);
 
 		String expected = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-x86/fennec-63.0a1.multi.android-i386.apk";
@@ -161,7 +162,7 @@ public class DownloadUrlTest {
 
 	@Test
 	public void getUrl_firefoxFocus_getUrl() {
-		DownloadUrl downloadUrl = DownloadUrl.create(apiResponses);
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create(apiResponses);
 		String actual = downloadUrl.getUrl(UpdateChannel.FOCUS);
 
 		String expected = "https://github.com/mozilla-mobile/focus-android/releases/download/V6.0-RC5/Focus.apk";
@@ -170,7 +171,7 @@ public class DownloadUrlTest {
 
 	@Test
 	public void getUrl_firefoxFocusWithUpdate_getUrl() {
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 		downloadUrl.update(apiResponses);
 		String actual = downloadUrl.getUrl(UpdateChannel.FOCUS);
 
@@ -179,7 +180,7 @@ public class DownloadUrlTest {
 	}
 	@Test
 	public void getUrl_firefoxKlar_getUrl() {
-		DownloadUrl downloadUrl = DownloadUrl.create(apiResponses);
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create(apiResponses);
 		String actual = downloadUrl.getUrl(UpdateChannel.KLAR);
 
 		String expected = "https://github.com/mozilla-mobile/focus-android/releases/download/V6.0-RC5/Klar.apk";
@@ -188,7 +189,7 @@ public class DownloadUrlTest {
 
 	@Test
 	public void getUrl_firefoxKlarWithUpdate_getUrl() {
-		DownloadUrl downloadUrl = DownloadUrl.create();
+		DownloadUrlGenerator downloadUrl = DownloadUrlGenerator.create();
 		downloadUrl.update(apiResponses);
 		String actual = downloadUrl.getUrl(UpdateChannel.KLAR);
 

@@ -2,14 +2,15 @@ package de.marmaro.krt.ffupdater;
 
 import org.apache.commons.lang.StringUtils;
 
-import de.marmaro.krt.ffupdater.github.Asset;
-import de.marmaro.krt.ffupdater.github.Release;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
+import de.marmaro.krt.ffupdater.api.github.Asset;
+import de.marmaro.krt.ffupdater.api.github.Release;
 
 /**
  * This class builds the download url for every update channel (release, beta, nightly) depending on the
  * architecture (x86 vs ARM)
  */
-public class DownloadUrl {
+public class DownloadUrlGenerator {
     public static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
 
     public static final String RELEASE_URL = "https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi";
@@ -22,26 +23,26 @@ public class DownloadUrl {
     private boolean isX86Architecture;
     private ApiResponses apiResponses;
 
-    public DownloadUrl(boolean isX86Architecture, ApiResponses apiResponses) {
+    public DownloadUrlGenerator(boolean isX86Architecture, ApiResponses apiResponses) {
         this.isX86Architecture = isX86Architecture;
         this.apiResponses = apiResponses;
     }
 
     /**
      * @param apiResponses must be non-null for generating the download url for nightly
-     * @return create a new {@link DownloadUrl} object and returns it.
+     * @return create a new {@link DownloadUrlGenerator} object and returns it.
      */
-    public static DownloadUrl create(ApiResponses apiResponses) {
+    public static DownloadUrlGenerator create(ApiResponses apiResponses) {
         String osArch = System.getProperty(PROPERTY_OS_ARCHITECTURE);
         boolean isX86 = "i686".equals(osArch) || "x86_64".equals(osArch);
-        return new DownloadUrl(isX86, apiResponses);
+        return new DownloadUrlGenerator(isX86, apiResponses);
     }
 
     /**
-     * @return create a new {@link DownloadUrl} object which only can generate the download url for
+     * @return create a new {@link DownloadUrlGenerator} object which only can generate the download url for
      * release and beta.
      */
-    public static DownloadUrl create() {
+    public static DownloadUrlGenerator create() {
         return create(null);
     }
 

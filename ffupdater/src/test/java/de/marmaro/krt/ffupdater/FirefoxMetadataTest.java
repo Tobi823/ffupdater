@@ -33,7 +33,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.RELEASE));
 	}
 
@@ -51,7 +51,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		Version version = local.get(UpdateChannel.RELEASE);
 
 		assertEquals(versionName, version.getName());
@@ -66,7 +66,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.BETA));
 	}
 
@@ -84,7 +84,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		Version version = local.get(UpdateChannel.BETA);
 
 		assertEquals(versionName, version.getName());
@@ -99,7 +99,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.NIGHTLY));
 	}
 
@@ -117,7 +117,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		Version version = local.get(UpdateChannel.NIGHTLY);
 
 		assertEquals(versionName, version.getName());
@@ -132,7 +132,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenThrow(new PackageManager.NameNotFoundException());
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.FOCUS));
 	}
 
@@ -150,7 +150,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(packageInfo);
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenThrow(new PackageManager.NameNotFoundException());
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		Version version = local.get(UpdateChannel.FOCUS);
 
 		assertEquals(versionName, version.getName());
@@ -165,7 +165,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenThrow(new PackageManager.NameNotFoundException());
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.KLAR));
 	}
 
@@ -183,7 +183,7 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenThrow(new PackageManager.NameNotFoundException());
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(packageInfo);
 
-		Map<UpdateChannel, Version> local = FirefoxDetector.create(packageManager).getLocalVersions();
+		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		Version version = local.get(UpdateChannel.KLAR);
 
 		assertEquals(versionName, version.getName());

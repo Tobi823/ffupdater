@@ -1,9 +1,11 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.version;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import de.marmaro.krt.ffupdater.UpdateChannel;
 
 /**
  * This class can compare the different version numbers from the available and local installed firefox apps.

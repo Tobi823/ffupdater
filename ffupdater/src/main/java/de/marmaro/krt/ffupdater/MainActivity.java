@@ -18,8 +18,10 @@ import com.github.dmstocking.optional.java.util.Optional;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.marmaro.krt.ffupdater.api.ApiResponses;
 import de.marmaro.krt.ffupdater.background.LatestReleaseService;
 import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
+import de.marmaro.krt.ffupdater.version.VersionExtractor;
 
 //import android.content.IntentFilter;
 //import android.view.View.OnClickListener;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Map<UpdateChannel, Version> localFirefox = new HashMap<>();;
     private Map<UpdateChannel, Version> availableVersions = new HashMap<>();;
-    private DownloadUrl downloadUrl;
+    private DownloadUrlGenerator downloadUrl;
 
     protected Map<UpdateChannel, TextView> installedTextViews;
     protected Map<UpdateChannel, TextView> availableTextViews;
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         // starts the repeated update check
         RepeatedNotifierExecuting.register(this);
 
-        downloadUrl = DownloadUrl.create();
+        downloadUrl = DownloadUrlGenerator.create();
         Log.i(TAG, "Firefox Release URL: " + downloadUrl.getUrl(UpdateChannel.RELEASE));
         Log.i(TAG, "Firefox Beta URL: " + downloadUrl.getUrl(UpdateChannel.BETA));
 
@@ -135,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // check for the version of the current installed firefox
-        localFirefox = FirefoxDetector.create(getPackageManager()).getLocalVersions();
+        localFirefox = InstalledFirefoxAppService.create(getPackageManager()).getLocalVersions();
         Log.i(TAG, localFirefox.toString());
 
         updateDownloadButtonVisibilityDependingOnUrlAvailability();

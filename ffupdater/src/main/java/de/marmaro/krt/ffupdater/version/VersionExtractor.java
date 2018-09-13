@@ -1,9 +1,12 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.version;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import de.marmaro.krt.ffupdater.UpdateChannel;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
 
 import static de.marmaro.krt.ffupdater.UpdateChannel.BETA;
 import static de.marmaro.krt.ffupdater.UpdateChannel.FOCUS;

@@ -15,8 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.marmaro.krt.ffupdater.github.Release;
-import de.marmaro.krt.ffupdater.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
+import de.marmaro.krt.ffupdater.api.github.Release;
+import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.version.VersionCompare;
+import de.marmaro.krt.ffupdater.version.VersionExtractor;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;

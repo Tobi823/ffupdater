@@ -7,12 +7,14 @@ import org.junit.Test;
 
 import java.util.Map;
 
-import de.marmaro.krt.ffupdater.ApiResponses;
+import de.marmaro.krt.ffupdater.api.ApiResponses;
 import de.marmaro.krt.ffupdater.UpdateChannel;
 import de.marmaro.krt.ffupdater.Version;
-import de.marmaro.krt.ffupdater.VersionExtractor;
-import de.marmaro.krt.ffupdater.github.GithubApiConsumer;
-import de.marmaro.krt.ffupdater.github.Release;
+import de.marmaro.krt.ffupdater.version.VersionExtractor;
+import de.marmaro.krt.ffupdater.api.github.GithubApiConsumer;
+import de.marmaro.krt.ffupdater.api.github.Release;
+import de.marmaro.krt.ffupdater.api.mozilla.MobileVersions;
+import de.marmaro.krt.ffupdater.api.mozilla.MozillaApiConsumer;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
