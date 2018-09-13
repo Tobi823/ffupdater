@@ -30,10 +30,10 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionCode_firefoxReleaseIsNotInstalled_returnFallback() throws Exception {
 		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenThrow(new PackageManager.NameNotFoundException());
-		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(createDummyPackageInfo());
 
 		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.RELEASE));
@@ -50,8 +50,8 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(packageInfo);
 		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenThrow(new PackageManager.NameNotFoundException());
 		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenThrow(new PackageManager.NameNotFoundException());
-		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(createDummyPackageInfo());
 
 		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		Version version = local.get(UpdateChannel.RELEASE);
@@ -62,11 +62,11 @@ public class FirefoxMetadataTest {
 
 	@Test
 	public void getVersionCode_firefoxBetaIsNotInstalled_returnFallback() throws Exception {
-		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(createDummyPackageInfo());
 		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenThrow(new PackageManager.NameNotFoundException());
-		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(createDummyPackageInfo());
 
 		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.BETA));
@@ -75,7 +75,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionCode_firefoxBetaIsInstalled_returnVersionCode() throws Exception {
 		PackageInfo packageInfo = mock(PackageInfo.class);
-		String versionName = "62.0b7";
+		String versionName = "62.0";
 		int versionCode = 2015569228;
 		packageInfo.versionName = versionName;
 		packageInfo.versionCode = versionCode;
@@ -83,8 +83,8 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenThrow(new PackageManager.NameNotFoundException());
 		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(packageInfo);
 		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenThrow(new PackageManager.NameNotFoundException());
-		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(createDummyPackageInfo());
 
 		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		Version version = local.get(UpdateChannel.BETA);
@@ -95,11 +95,11 @@ public class FirefoxMetadataTest {
 
 	@Test
 	public void getVersionCode_firefoxNightlyIsNotInstalled_returnFallback() throws Exception {
-		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(createDummyPackageInfo());
 		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenThrow(new PackageManager.NameNotFoundException());
-		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(createDummyPackageInfo());
 
 		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.NIGHTLY));
@@ -116,23 +116,23 @@ public class FirefoxMetadataTest {
 		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenThrow(new PackageManager.NameNotFoundException());
 		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenThrow(new PackageManager.NameNotFoundException());
 		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(packageInfo);
-		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(createDummyPackageInfo());
 
 		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		Version version = local.get(UpdateChannel.NIGHTLY);
 
-		assertEquals(versionName, version.getName());
+		assertEquals("63.0", version.getName());
 		assertEquals(versionCode, version.getCode());
 	}
 
 	@Test
 	public void getVersionCode_firefoxFocusIsNotInstalled_returnFallback() throws Exception {
-		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(createDummyPackageInfo());
 		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenThrow(new PackageManager.NameNotFoundException());
-		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenReturn(createDummyPackageInfo());
 
 		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
 		assertEquals(null, local.get(UpdateChannel.FOCUS));
@@ -141,7 +141,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionCode_firefoxFocusIsInstalled_returnVersionCode() throws Exception {
 		PackageInfo packageInfo = mock(PackageInfo.class);
-		String versionName = "63.0a1";
+		String versionName = "6.1.1";
 		int versionCode = 2015569428;
 		packageInfo.versionName = versionName;
 		packageInfo.versionCode = versionCode;
@@ -161,10 +161,10 @@ public class FirefoxMetadataTest {
 
 	@Test
 	public void getVersionCode_firefoxKlarIsNotInstalled_returnFallback() throws Exception {
-		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(mock(PackageInfo.class));
-		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(mock(PackageInfo.class));
+		when(packageManager.getPackageInfo("org.mozilla.firefox", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.firefox_beta", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.fennec_aurora", 0)).thenReturn(createDummyPackageInfo());
+		when(packageManager.getPackageInfo("org.mozilla.focus", 0)).thenReturn(createDummyPackageInfo());
 		when(packageManager.getPackageInfo("org.mozilla.klar", 0)).thenThrow(new PackageManager.NameNotFoundException());
 
 		Map<UpdateChannel, Version> local = InstalledFirefoxAppService.create(packageManager).getLocalVersions();
@@ -174,7 +174,7 @@ public class FirefoxMetadataTest {
 	@Test
 	public void getVersionCode_firefoxKlarIsInstalled_returnVersionCode() throws Exception {
 		PackageInfo packageInfo = mock(PackageInfo.class);
-		String versionName = "63.0a1";
+		String versionName = "6.1.1";
 		int versionCode = 2015569428;
 		packageInfo.versionName = versionName;
 		packageInfo.versionCode = versionCode;
@@ -190,5 +190,12 @@ public class FirefoxMetadataTest {
 
 		assertEquals(versionName, version.getName());
 		assertEquals(versionCode, version.getCode());
+	}
+
+	private PackageInfo createDummyPackageInfo() {
+		PackageInfo mock = mock(PackageInfo.class);
+		mock.versionName = "0.0";
+		mock.versionCode = 0;
+		return mock;
 	}
 }

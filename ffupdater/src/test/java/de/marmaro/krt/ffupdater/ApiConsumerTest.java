@@ -45,23 +45,15 @@ public class ApiConsumerTest {
         assertEquals(false, response.isPresent());
     }
 
-    /**
-     * IOUtils.toString doesn't check for revoked certificates. As far as I know it this missing
-     * feature not critical.
-     */
-    @Ignore
     @Test
+    @Ignore("IOUtils.toString doesn't check for revoked certificates. As far as I know it this not critical.")
     public void findApiResponse_testWithRevokedCertificate_emptyResponse() {
         Optional<String> response = ApiConsumer.findRawApiResponse("https://revoked.badssl.com/");
         assertEquals(false, response.isPresent());
     }
 
-    /**
-     * IOUtils.toString doesn't check for pinned certificates. As far as I know it this missing
-     * feature not critical.
-     */
-    @Ignore
     @Test
+    @Ignore("IOUtils.toString doesn't check for pinned certificates. As far as I know it this not critical.")
     public void findApiResponse_testWithPinningTestCertificate_emptyResponse() {
         Optional<String> response = ApiConsumer.findRawApiResponse("https://pinning-test.badssl.com/");
         assertEquals(false, response.isPresent());

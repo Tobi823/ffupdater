@@ -32,8 +32,8 @@ public class VersionExtractorTest {
         Map<UpdateChannel, Version> actual = extractor.getVersionStrings();
 
         assertEquals("62.0.1", actual.get(UpdateChannel.RELEASE).getName());
-        assertEquals("63.0b5", actual.get(UpdateChannel.BETA).getName());
-        assertEquals("64.0a1", actual.get(UpdateChannel.NIGHTLY).getName());
+        assertEquals("63.0", actual.get(UpdateChannel.BETA).getName());
+        assertEquals("64.0", actual.get(UpdateChannel.NIGHTLY).getName());
         assertEquals("6.1.1", actual.get(UpdateChannel.FOCUS).getName());
         assertEquals("6.1.1", actual.get(UpdateChannel.KLAR).getName());
     }

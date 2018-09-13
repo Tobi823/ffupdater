@@ -34,7 +34,7 @@ public class VersionCompareTest {
 
     Map<UpdateChannel, Version> available;
 
-    String nightlyVersion = "63.0a1";
+    String nightlyVersion = "63.0";
     String betaVersion = "62.0";
     String releaseVersion = "61.0";
     String focusVersion = "6.0";
