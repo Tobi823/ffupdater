@@ -19,10 +19,9 @@ import static de.marmaro.krt.ffupdater.UpdateChannel.RELEASE;
  * Created by Tobiwan on 22.07.2018.
  */
 public class VersionExtractor {
+    private static final String REGEX_EXTRACT_VERSION = "\\d+(\\.\\d)+";
 
-    public static final String REGEX_EXTRACT_VERSION = "\\d+(\\.\\d)+";
-
-    private ApiResponses apiResponses;
+    private final ApiResponses apiResponses;
 
     public VersionExtractor(ApiResponses apiResponses) {
         this.apiResponses = apiResponses;
@@ -32,25 +31,30 @@ public class VersionExtractor {
         Map<UpdateChannel, Version> versionStrings = new HashMap<>();
 
         MobileVersions mozillaApiResponse = apiResponses.getMozillaApiResponse();
-        versionStrings.put(RELEASE, new Version(mozillaApiResponse.getStableVersion(), 0));
-        versionStrings.put(BETA, new Version(mozillaApiResponse.getBetaVersion(),0));
-        versionStrings.put(NIGHTLY, new Version(mozillaApiResponse.getNightlyVersion(), 0));
+        String stableVersion = extractVersion(mozillaApiResponse.getStableVersion());
+        String betaVersion = extractVersion(mozillaApiResponse.getBetaVersion());
+        String nightlyVersion = extractVersion(mozillaApiResponse.getNightlyVersion());
+
+        versionStrings.put(RELEASE, new Version(stableVersion, 0));
+        versionStrings.put(BETA, new Version(betaVersion,0));
+        versionStrings.put(NIGHTLY, new Version(nightlyVersion, 0));
 
         String githubResponse = apiResponses.getGithubApiResponse().getName();
-        String focusKlar = extractVersion(githubResponse, REGEX_EXTRACT_VERSION);
+        String focusKlar = extractVersion(githubResponse);
+
         versionStrings.put(FOCUS, new Version(focusKlar, 0));
         versionStrings.put(KLAR, new Version(focusKlar, 0));
         return versionStrings;
     }
 
     /**
-     * Get the version number from the github release name (for example "Focus / Klar - v6.1.1" => "6.1.1")
+     * Get the version number from the github/mozilla release name (for example "Focus / Klar - v6.1.1" => "6.1.1"
+     * or "63.0b5" => "63.0")
      * @param raw
-     * @param regex
-     * @returnN
+     * @return
      */
-    private static String extractVersion(String raw, String regex) {
-        Pattern pattern = Pattern.compile(regex);
+    private static String extractVersion(String raw) {
+        Pattern pattern = Pattern.compile(REGEX_EXTRACT_VERSION);
         Matcher match = pattern.matcher(raw);
         if (match.find()) {
             return match.group();
