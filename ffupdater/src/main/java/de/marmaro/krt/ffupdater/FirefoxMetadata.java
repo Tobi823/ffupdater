@@ -10,14 +10,14 @@ public class FirefoxMetadata {
     public static final String PACKAGE_ID = "org.mozilla.firefox";
 
     private boolean installed;
-	private PackageInfo packageInfo;
+    private PackageInfo packageInfo;
 
-	private FirefoxMetadata(Builder builder) {
-		this.installed = builder.installed;
-		this.packageInfo = builder.packageInfo;
-	}
+    private FirefoxMetadata(Builder builder) {
+        this.installed = builder.installed;
+        this.packageInfo = builder.packageInfo;
+    }
 
-	/**
+    /**
      * @return is the firefox installed on the android smartphone?
      */
     public boolean isInstalled() {
@@ -56,18 +56,18 @@ public class FirefoxMetadata {
     }
 
     // this class can only be build with the method checkLocalInstalledFirefox from this Builder
-	public static class Builder {
-		private boolean installed;
-		private PackageInfo packageInfo;
+    public static class Builder {
+        private boolean installed;
+        private PackageInfo packageInfo;
 
-		public FirefoxMetadata checkLocalInstalledFirefox(PackageManager packageManager){
-			try {
-				packageInfo = packageManager.getPackageInfo(PACKAGE_ID, 0);
-				installed = true;
-			} catch (PackageManager.NameNotFoundException e) {
-				installed = false;
-			}
-			return new FirefoxMetadata(this);
-		}
-	}
+        public FirefoxMetadata checkLocalInstalledFirefox(PackageManager packageManager) {
+            try {
+                packageInfo = packageManager.getPackageInfo(PACKAGE_ID, 0);
+                installed = true;
+            } catch (PackageManager.NameNotFoundException e) {
+                installed = false;
+            }
+            return new FirefoxMetadata(this);
+        }
+    }
 }

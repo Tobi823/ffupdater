@@ -2,54 +2,53 @@ apply plugin: 'com.android.application'
 apply plugin: "com.jaredsburrows.license"
 
 dependencies {
-	compile "com.android.support:support-v4:23.2.1"
-	compile "com.android.support:appcompat-v7:23.2.1"
-	testCompile 'junit:junit:4.12'
-	testCompile 'org.mockito:mockito-core:1.10.19'
-	// I had to add this dependencies because org.json is a part of the Android platform and
-	// not available in unit tests (see "Method getString in org.json.JSONObject not mocked"
-	// http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.- )
-	testCompile 'org.json:json:20180130'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    // I had to add this dependencies because org.json is a part of the Android platform and
+    // not available in unit tests (see "Method getString in org.json.JSONObject not mocked"
+    // http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.- )
+    testImplementation 'org.json:json:20180130'
 }
 
 android {
-	compileSdkVersion 25
-	buildToolsVersion '25.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
-	defaultConfig {
-		versionCode 22
-		versionName "57.0"
-		minSdkVersion 9
-		targetSdkVersion 25
-	}
+    defaultConfig {
+        versionCode 23
+        versionName "58.0"
+        minSdkVersion 9
+        targetSdkVersion 28
+    }
 
-	buildTypes {
-		release {
-			// Enable proguard with default android settings (no obfuscation)
-			minifyEnabled true
-			shrinkResources true
-			proguardFile getDefaultProguardFile('proguard-android.txt')
-		}
-	}
+    buildTypes {
+        release {
+            // Enable proguard with default android settings (no obfuscation)
+            minifyEnabled true
+            shrinkResources true
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+        }
+    }
 
-	compileOptions {
-		encoding = "UTF-8"
-		sourceCompatibility JavaVersion.VERSION_1_7
-		targetCompatibility JavaVersion.VERSION_1_7
-	}
+    compileOptions {
+        encoding = "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 
-	packagingOptions {
-		exclude 'META-INF/NOTICE'
-		exclude 'META-INF/NOTICE.txt'
-		exclude 'META-INF/README'
-		exclude 'META-INF/README.txt'
-		exclude 'META-INF/LICENSE'
-		exclude 'META-INF/LICENSE.txt'
-	}
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/README'
+        exclude 'META-INF/README.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
 
-	testOptions {
-		// workaround for the error "Method i in android.util.Log not mocked" (http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-)
-		// without PowerMockito it is impossible to mock Log.
-		unitTests.returnDefaultValues = true
-	}
+    testOptions {
+        // workaround for the error "Method i in android.util.Log not mocked" (http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-)
+        // without PowerMockito it is impossible to mock Log.
+        unitTests.returnDefaultValues = true
+    }
 }

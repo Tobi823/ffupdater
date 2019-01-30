@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.background;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.support.annotation.Nullable;
+
 import android.util.Log;
 
 import de.marmaro.krt.ffupdater.MozillaVersions;
@@ -24,7 +24,7 @@ public class LatestReleaseService extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+    protected void onHandleIntent(Intent intent) {
         Log.i(TAG, "LatestReleaseService was started.");
         Version latestVersion = getLatestVersion();
         broadcastVersion(latestVersion);

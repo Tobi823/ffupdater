@@ -8,11 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
+
 import android.util.Log;
 
-
+import androidx.core.app.NotificationCompat;
 import de.marmaro.krt.ffupdater.FirefoxMetadata;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.MozillaVersions;
@@ -35,7 +34,7 @@ public class UpdateNotifierService extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+    protected void onHandleIntent( Intent intent) {
         Log.i(TAG, "UpdateNotifierService was started.");
         if (isUpdateAvailable()) {
             showNotification();
