@@ -19,5 +19,8 @@
     <string name="firefox_version_is_too_old">Deine Android-Version ist zu alt</string>
     <string name="firefox_needs_at_least_android_41">Firefox benötigt mindestens Android 4.1</string>
     <string name="about">Über</string>
+    <string name="not_installed">Nicht installiert</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="pref_build_title">Wählen Sie den Firefox-Build-Kanal</string>
 
 </resources>

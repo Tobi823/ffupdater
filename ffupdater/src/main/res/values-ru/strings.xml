@@ -19,4 +19,7 @@
     <string name="firefox_version_is_too_old">Ваша версия для Android слишком старая</string>
     <string name="firefox_needs_at_least_android_41">Firefox нужен как минимум Android 4.1</string>
     <string name="about">Около</string>
+    <string name="not_installed">Не установлено</string>
+    <string name="title_activity_settings">настройки</string>
+	<string name="pref_build_title">Выберите канал сборки Firefox</string>
 </resources>

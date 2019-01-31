@@ -8,6 +8,9 @@ import android.content.pm.PackageManager;
  */
 public class FirefoxMetadata {
     public static final String PACKAGE_ID = "org.mozilla.firefox";
+    private static final String PACKAGE_ID_BETA="org.mozilla.firefox_beta";
+    private static final String PACKAGE_ID_NIGHTLY="org.mozilla.fennec_aurora";
+
 
     private boolean installed;
     private PackageInfo packageInfo;
@@ -62,8 +65,17 @@ public class FirefoxMetadata {
 
         public FirefoxMetadata checkLocalInstalledFirefox(PackageManager packageManager) {
             try {
-                packageInfo = packageManager.getPackageInfo(PACKAGE_ID, 0);
-                installed = true;
+                if ("beta_version".contentEquals(UpdateChannel.channel)) {
+                    packageInfo = packageManager.getPackageInfo(PACKAGE_ID_BETA, 0);
+                    installed = true;
+                } else if ("nightly_version".contentEquals(UpdateChannel.channel)) {
+                    packageInfo = packageManager.getPackageInfo(PACKAGE_ID_NIGHTLY, 0);
+                    installed = true;
+                }else {
+                    packageInfo = packageManager.getPackageInfo(PACKAGE_ID, 0);
+                    installed = true;
+                }
+
             } catch (PackageManager.NameNotFoundException e) {
                 installed = false;
             }

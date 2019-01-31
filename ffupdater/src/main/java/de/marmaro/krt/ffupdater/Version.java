@@ -10,8 +10,8 @@ public class Version implements Comparable<Version>, Serializable {
     Version(String version) {
         if (version == null)
             throw new IllegalArgumentException("Version can not be null");
-        if (!version.matches("[0-9]+(\\.[0-9]+)*"))
-            throw new IllegalArgumentException("Invalid version format");
+        //if (!version.matches("[0-9]+(\\.[0-9]+)*"))
+           // throw new IllegalArgumentException("Invalid version format");
         this.version = version;
     }
 

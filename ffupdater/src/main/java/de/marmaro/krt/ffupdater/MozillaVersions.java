@@ -48,7 +48,7 @@ public class MozillaVersions {
         JSONObject jObject;
         try {
             jObject = new JSONObject(result);
-            String versionString = jObject.getString("version");
+            String versionString = jObject.getString(UpdateChannel.channel);
             version = new Version(versionString);
         } catch (JSONException e) {
             Log.e(TAG, "Error: " + e);

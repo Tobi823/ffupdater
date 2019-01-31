@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -25,14 +27,14 @@ import android.widget.TextView;
 
 import de.marmaro.krt.ffupdater.background.LatestReleaseService;
 import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
+import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
+
     public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
     private static final String TAG = "MainActivity";
     private static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
-
     private static String mDownloadUrl = "";
-
 
     protected TextView firefoxAvailableVersionTextview, firefoxInstalledVersionTextView, subtitleTextView;
     protected FloatingActionButton downloadFirefox;
@@ -40,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
     protected ProgressBar progressBar;
     protected SwipeRefreshLayout swipeRefreshLayout;
 
+    private DownloadUrl downloadUrlObject;
+    private SharedPreferences sharedPref;
     private FirefoxMetadata localFirefox;
     private Version availableVersion;
-
     /**
      * Listen to the broadcast from {@link LatestReleaseService} and use the transmitted {@link Version} object.
      */
@@ -57,16 +60,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        UpdateChannel.channel = sharedPref.getString(getString(R.string.pref_build), "version");
         initUI();
+        initUIActions();
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
         StrictMode.setThreadPolicy(policy);
-        DownloadUrl downloadUrlObject = new DownloadUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
-        mDownloadUrl = downloadUrlObject.getUrl();
-        Log.i(TAG, "URL to the firefox download is: " + mDownloadUrl);
 
-        //always place this after initializing mDownloadUrl bcz it uses value of mDownloadUrl field
-        initUIActions();
+        downloadUrlObject = new DownloadUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
 
         // starts the repeated update check
         RepeatedNotifierExecuting.register(this);
@@ -75,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
             Log.e(TAG, "android-" + downloadUrlObject.getApiLevel() + " is not supported.");
             showAndroidTooOldError();
         }
-        //check for  latest version as soon as app instance is created: this will remove redundancy of check availability button
-        loadLatestMozillaVersion();
 
     }
 
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
+                mDownloadUrl = downloadUrlObject.getUrl(UpdateChannel.channel, availableVersion);
                 i.setData(Uri.parse(mDownloadUrl));
                 startActivity(i);
             }
@@ -101,29 +102,34 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUI() {
         setContentView(R.layout.main_avticity);
-
         firefoxAvailableVersionTextview = findViewById(R.id.firefox_available_version);
         firefoxInstalledVersionTextView = findViewById(R.id.firefox_installed_version);
         subtitleTextView = findViewById(R.id.toolbar_subtitle);
-        //product name
-        subtitleTextView.setText("Firefox for Android");
         toolbar = findViewById(R.id.toolbar);
         downloadFirefox = findViewById(R.id.fab);
+        downloadFirefox.hide();
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         progressBar = findViewById(R.id.progress_wheel);
-        //progressBar.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         registerReceiver(latestReleaseServiceReceiver, new IntentFilter(LatestReleaseService.RESPONSE_ACTION));
+        UpdateChannel.channel = sharedPref.getString(getString(R.string.pref_build), "version");
+
+        if ("version".contentEquals(UpdateChannel.channel)) {
+            subtitleTextView.setText(getString(R.string.firefox_for_android));
+        } else if ("beta_version".contentEquals(UpdateChannel.channel)) {
+            subtitleTextView.setText(getString(R.string.firefox_for_android_beta));
+        } else if ("nightly_version".contentEquals(UpdateChannel.channel)) {
+            subtitleTextView.setText(getString(R.string.firefox_nightly_for_developer));
+        }
+
         // load latest firefox version, when intent has got the "open by notification" flag
         Bundle bundle = getIntent().getExtras();
-
         if (null != bundle) {
             if (bundle.getBoolean(OPENED_BY_NOTIFICATION, false)) {
                 bundle.putBoolean(OPENED_BY_NOTIFICATION, false);
@@ -131,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 loadLatestMozillaVersion();
             }
         }
+
         // check for the version of the current installed firefox
         localFirefox = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(getPackageManager());
         // log and display the current firefox version
@@ -140,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.i(TAG, "Firefox is not installed.");
         }
+        //check for  latest version as soon as app instance is created: this will remove redundancy of check availability button
+        loadLatestMozillaVersion();
         displayVersions();
     }
 
@@ -150,8 +159,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setAvailableVersion(Version value) {
         if (value == null) {
-            Log.d(TAG, "Could not determine highest available version.");
-
             firefoxAvailableVersionTextview.setVisibility(View.GONE);
             (new AlertDialog.Builder(this))
                     .setMessage(getString(R.string.check_available_error_message))
@@ -161,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
             availableVersion = value;
             Log.d(TAG, "Found highest available version: " + availableVersion.get());
             progressBar.setVisibility(View.GONE);
+            downloadFirefox.show();
             displayVersions();
         }
     }
@@ -175,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
             installedText = String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode());
         } else {
             String format = getString(R.string.not_installed_text_format);
-            installedText = String.format(format, getString(R.string.none), getString(R.string.ff_not_installed));
+            installedText = String.format(format, getString(R.string.none), getString(R.string.not_installed));
         }
         firefoxInstalledVersionTextView.setText(installedText);
         String availableText;
@@ -194,16 +202,13 @@ public class MainActivity extends AppCompatActivity {
         firefoxAvailableVersionTextview.setVisibility(View.VISIBLE);
         firefoxAvailableVersionTextview.setText(getString(R.string.checking));
         progressBar.setVisibility(View.VISIBLE);
-        //first check for internet is available
         if (isConnectedToInternet()) {
             Intent checkVersions = new Intent(this, LatestReleaseService.class);
             progressBar.setVisibility(View.VISIBLE);
             startService(checkVersions);
         } else {
-            Log.d(TAG, "loadLatestMozillaVersion: you are not connected to internet ");
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
             progressBar.setVisibility(View.GONE);
-            //Show warning that you are not connected to internet
         }
     }
 
@@ -262,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.action_settings:
                 //start settings activity where we use select firefox product and release type;
-                //startActivity(new Intent(this,SettingsActivity.class));
+                startActivity(new Intent(this, SettingsActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
