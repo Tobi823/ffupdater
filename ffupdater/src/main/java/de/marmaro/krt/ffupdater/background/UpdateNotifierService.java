@@ -9,9 +9,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import androidx.core.app.NotificationCompat;
 import de.marmaro.krt.ffupdater.FirefoxMetadata;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.MozillaVersions;
