@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Build Channel">
+
+        <ListPreference
+            android:defaultValue="true"
+            android:entries="@array/pref_entry_build_channel"
+            android:entryValues="@array/pref_values_build_channel"
+            android:key="@string/pref_build"
+            android:title="@string/pref_build_title"/>
+    </PreferenceCategory>
+</PreferenceScreen>
