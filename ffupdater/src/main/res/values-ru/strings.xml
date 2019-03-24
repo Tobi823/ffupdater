@@ -6,20 +6,32 @@
 	<string name="available_version">Доступная версия:</string>
 	<string name="checking">(проверка…)</string>
 	<string name="ff_not_installed">Firefox не установлен</string>
-	<string name="check_available_error_message">Не удалось определить последнюю доступную версию Firefox.\nПроверьте ваше подключение к сети Интернет.</string>
+	<string name="check_available_error_message">Не удалось определить последнюю доступную версию Firefox.\nПроверьте ваше подключение к интернету.</string>
 	<string name="none">Нет</string>
-	<string name="ok">OK</string>
+	<string name="ok">ОК</string>
 	<string name="checkavailable">Проверить доступную версию</string>
 	<string name="download">Загрузить Firefox</string>
+	<string name="installed_version_text_format" translatable="false">%s (%d)</string>
+	<string name="not_installed_text_format" translatable="false">%s (%s)</string>
+	<string name="update_notification_title">Выпущена новая версия Firefox</string>
+	<string name="update_notification_text">Нажмите, чтобы открыть приложение</string>
 
-    <string name="not_connected_to_internet">Вы не подключены к интернету</string>
-    <string name="update_notification_title">Новая версия Firefox была выпущена</string>
-    <string name="update_notification_text">Нажмите, чтобы открыть приложение</string>
-    <string name="action_settings">настройки</string>
-    <string name="firefox_version_is_too_old">Ваша версия для Android слишком старая</string>
-    <string name="firefox_needs_at_least_android_41">Firefox нужен как минимум Android 4.1</string>
-    <string name="about">Около</string>
-    <string name="not_installed">Не установлено</string>
-    <string name="title_activity_settings">настройки</string>
+	<string name="action_settings">Настройки</string>
+	<string name="firefox_version_is_too_old">Ваша версия Android слишком старая</string>
+	<string name="firefox_needs_at_least_android_41">Для работы Firefox нужен Android версии 4.1 минимум</string>
+	<string name="about">О программе</string>
+	<string name="not_connected_to_internet">Вы не подключены к интернету</string>
+	<string name="not_installed">Не установлено</string>
+	<!-- Strings related to Settings -->
+	<string name="title_activity_settings">Настройки</string>
+	<string name="pref_build_channel">Канал сборки</string>
 	<string name="pref_build_title">Выберите канал сборки Firefox</string>
+	<string name="pref_build" translatable="false">pref_build</string>
+
+	<string name="firefox_for_android" translatable="false">Firefox for Android</string>
+	<string name="firefox_for_android_beta" translatable="false">Firefox for Android Beta</string>
+	<string name="firefox_nightly_for_developer" translatable="false">Firefox Nightly for Developer</string>
+
+
+
 </resources>
