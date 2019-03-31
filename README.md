@@ -2,7 +2,9 @@
       alt="Get it on F-Droid"
       height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 
-**Since I left F-Droid (and Android/Smartphones) about a year ago, I am looking for a new maintainer to take over. Unfortunately the upstream issue I opened 3 years ago is still not solved in 2018. While Fennec F-Droid is back in the mainline repo and other binary repos do serve Firefox, some might still prefer this updater. So as I said: Maintainers welcome. The main task should be to test the last few merge requests (especially the background update stuff) and release a new version**
+Since I left F-Droid (and Android/Smartphones) about a year ago, I am looking for a new maintainer to take over. Unfortunately the upstream issue I opened years ago is still not solved in 2019. While Fennec F-Droid is back in the mainline repo and other binary repos do serve Firefox, some might still prefer this updater. So as I said: Maintainers welcome. The main task should be to test the last few merge requests (especially the background update stuff) and release a new version.
+
+**New Maintainer: https://notabug.org/Tobiwan/ffupdater**
 
 ## Firefox-Updater
 
@@ -28,7 +30,7 @@ I opened a ticket about non-playstore updates with Mozilla in 2015, as did other
 
 ````
 FFUpdater -- a simple Android app to update Firefox.
-Copyright (C) 2015-2018 Boris Kraut <krt@nurfuerspam.de>
+Copyright (C) 2015-2019 Boris Kraut <krt@nurfuerspam.de>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
