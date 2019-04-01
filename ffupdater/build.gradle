@@ -2,18 +2,20 @@ apply plugin: 'com.android.application'
 apply plugin: "com.jaredsburrows.license"
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation 'com.android.support:support-v4:28.0.0'
-    implementation 'com.android.support:support-vector-drawable:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.cardview:cardview:1.0.0-beta01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.0-beta01'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:1.10.19'
     // I had to add this dependencies because org.json is a part of the Android platform and
     // not available in unit tests (see "Method getString in org.json.JSONObject not mocked"
     // http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.- )
     testImplementation 'org.json:json:20180130'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
+
+    implementation "androidx.work:work-runtime:2.0.0"
 }
 
 android {
