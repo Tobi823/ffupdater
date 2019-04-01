@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import de.marmaro.krt.ffupdater.background.LatestReleaseService;
 import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
+import de.marmaro.krt.ffupdater.background.UpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
             Log.e(TAG, "android-" + downloadUrlObject.getApiLevel() + " is not supported.");
             showAndroidTooOldError();
         }
+
+        UpdateChecker.registerWithInitialDelay(60 * 1000);
     }
 
     private void initUIActions() {
