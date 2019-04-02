@@ -34,9 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <service android:name=".background.LatestReleaseService"/>
-
         <receiver
             android:name=".background.DeviceBootReceiver"
             android:enabled="true">

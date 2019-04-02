@@ -15,6 +15,11 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.util.concurrent.ListenableFuture;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.room.util.StringUtil;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,7 +30,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import de.marmaro.krt.ffupdater.background.LatestReleaseService;
+import androidx.work.WorkInfo;
+import de.marmaro.krt.ffupdater.background.LatestReleaseFinder;
 import de.marmaro.krt.ffupdater.background.UpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
@@ -46,16 +52,6 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
     private FirefoxMetadata localFirefox;
     private Version availableVersion;
-    /**
-     * Listen to the broadcast from {@link LatestReleaseService} and use the transmitted {@link Version} object.
-     */
-    private BroadcastReceiver latestReleaseServiceReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Version version = (Version) intent.getSerializableExtra(LatestReleaseService.EXTRA_RESPONSE_VERSION);
-            setAvailableVersion(version);
-        }
-    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(latestReleaseServiceReceiver, new IntentFilter(LatestReleaseService.RESPONSE_ACTION));
         UpdateChannel.channel = sharedPref.getString(getString(R.string.pref_build), "version");
 
         if ("version".contentEquals(UpdateChannel.channel)) {
@@ -202,9 +197,16 @@ public class MainActivity extends AppCompatActivity {
         firefoxAvailableVersionTextview.setText(getString(R.string.checking));
         progressBar.setVisibility(View.VISIBLE);
         if (isConnectedToInternet()) {
-            Intent checkVersions = new Intent(this, LatestReleaseService.class);
-            progressBar.setVisibility(View.VISIBLE);
-            startService(checkVersions);
+            LiveData<WorkInfo> register = LatestReleaseFinder.register();
+            register.observe(this, new Observer<WorkInfo>() {
+                @Override
+                public void onChanged(WorkInfo workInfo) {
+                    String version = workInfo.getOutputData().getString(LatestReleaseFinder.VERSION);
+                    if (null != version && !version.isEmpty()) {
+                        setAvailableVersion(new Version(version));
+                    }
+                }
+            });
         } else {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
             progressBar.setVisibility(View.GONE);
@@ -230,7 +232,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(latestReleaseServiceReceiver);
     }
 
     private boolean isConnectedToInternet() {
