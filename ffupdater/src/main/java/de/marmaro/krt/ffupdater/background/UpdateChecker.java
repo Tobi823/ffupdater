@@ -10,6 +10,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
@@ -18,6 +21,7 @@ import androidx.work.Constraints;
 import androidx.work.Data;
 import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
@@ -28,7 +32,7 @@ import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.Version;
 
 import static androidx.work.ExistingPeriodicWorkPolicy.KEEP;
-import static de.marmaro.krt.ffupdater.background.UpdateNotifierService.REQUEST_CODE_START_MAIN_ACTIVITY;
+import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 
 /**
  * Created by Tobiwan on 01.04.2019.
@@ -41,6 +45,8 @@ public class UpdateChecker extends Worker {
     public static final String FIRST_EXECUTION_DATE_TIME = "first_execution_date_time";
     public static final String WITH_INITIAL_DELAY = "with_initial_delay";
     public static final String NOT_EXECUTED = "not_executed";
+
+    public static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
 
 
     public UpdateChecker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -70,7 +76,7 @@ public class UpdateChecker extends Worker {
                         .setInputData(startTime)
                         .build();
 
-        WorkManager.getInstance().enqueueUniquePeriodicWork(WORK_MANAGER_KEY, KEEP, saveRequest);
+        WorkManager.getInstance().enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, saveRequest);
     }
 
     @NonNull
@@ -105,7 +111,7 @@ public class UpdateChecker extends Worker {
 
     private void showNotification() {
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder builder = null;
+        NotificationCompat.Builder builder;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Update Notification";
@@ -115,6 +121,7 @@ public class UpdateChecker extends Worker {
             notificationManager.createNotificationChannel(channel);
             builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
         } else {
+            //noinspection deprecation
             builder = new NotificationCompat.Builder(getApplicationContext());
         }
 

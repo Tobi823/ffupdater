@@ -26,7 +26,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import de.marmaro.krt.ffupdater.background.LatestReleaseService;
-import de.marmaro.krt.ffupdater.background.RepeatedNotifierExecuting;
 import de.marmaro.krt.ffupdater.background.UpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
@@ -72,14 +71,12 @@ public class MainActivity extends AppCompatActivity {
         downloadUrlObject = new DownloadUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
 
         // starts the repeated update check
-        RepeatedNotifierExecuting.register(this);
+        UpdateChecker.registerWithInitialDelay(5 * 60 * 1000);
 
         if (!downloadUrlObject.isApiLevelSupported()) {
             Log.e(TAG, "android-" + downloadUrlObject.getApiLevel() + " is not supported.");
             showAndroidTooOldError();
         }
-
-        UpdateChecker.registerWithInitialDelay(60 * 1000);
     }
 
     private void initUIActions() {

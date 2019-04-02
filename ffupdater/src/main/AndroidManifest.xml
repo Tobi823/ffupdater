@@ -36,7 +36,6 @@
         </activity>
 
         <service android:name=".background.LatestReleaseService"/>
-        <service android:name=".background.UpdateNotifierService"/>
 
         <receiver
             android:name=".background.DeviceBootReceiver"

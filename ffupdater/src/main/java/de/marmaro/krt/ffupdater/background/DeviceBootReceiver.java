@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
- * After the boot process is finish, this class will start the {@link UpdateNotifierService}.
+ * After the boot process is finish, this class will start the {@link UpdateChecker}.
  */
 public class DeviceBootReceiver extends BroadcastReceiver {
     @Override
