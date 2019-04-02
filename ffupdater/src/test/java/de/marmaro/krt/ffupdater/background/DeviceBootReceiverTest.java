@@ -1,53 +1,84 @@
 package de.marmaro.krt.ffupdater.background;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
+import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import java.util.List;
+
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnitRunner;
+import androidx.work.Configuration;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
+import androidx.work.testing.SynchronousExecutor;
+import androidx.work.testing.WorkManagerTestInitHelper;
+
+import static android.content.Intent.ACTION_BOOT_COMPLETED;
+import static android.content.Intent.ACTION_SCREEN_ON;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Tobiwan on 05.02.2018.
  */
-public class DeviceBootReceiverTest {
-	DeviceBootReceiver sut;
-	Context context;
-	Intent intent;
-	AlarmManager alarmManager;
+@RunWith(AndroidJUnit4.class)
+public class DeviceBootReceiverTest extends AndroidJUnitRunner {
+    Context context;
+    Configuration config;
+    DeviceBootReceiver deviceBootReceiver;
 
-	@Before
-	public void setUp() {
-		sut = spy(new DeviceBootReceiver());
-		context = mock(Context.class);
-		intent = mock(Intent.class);
-		alarmManager = mock(AlarmManager.class);
+    @Before
+    public void setUp() {
+        // https://developer.android.com/topic/libraries/architecture/workmanager/how-to/testing#java
+        context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        config = new Configuration.Builder()
+                // Set log level to Log.DEBUG to
+                // make it easier to see why tests failed
+                .setMinimumLoggingLevel(Log.DEBUG)
+                // Use a SynchronousExecutor to make it easier to write tests
+                .setExecutor(new SynchronousExecutor())
+                .build();
 
-		when(context.getSystemService(Context.ALARM_SERVICE)).thenReturn(alarmManager);
-	}
+        WorkManagerTestInitHelper.initializeTestWorkManager(context, config);
 
-	@Test
-	public void onReceive_witthActionBootCompleted_registerRepeatedTimerAndStartService() throws Exception {
-		when(intent.getAction()).thenReturn(Intent.ACTION_BOOT_COMPLETED);
+        deviceBootReceiver = new DeviceBootReceiver();
+    }
 
-		sut.onReceive(context, intent);
+    @Test
+    public void onReceive_withActionBootCompleted_registerWorkRequest() throws Exception {
+        List<WorkInfo> preState = WorkManager.getInstance().getWorkInfosForUniqueWork(UpdateChecker.WORK_MANAGER_KEY).get();
+        assertEquals(0, preState.size());
 
-		// verify that UpdateNotifierService was called for update checking
-		verify(context).startService(any(Intent.class));
+        deviceBootReceiver.onReceive(context, new Intent(ACTION_BOOT_COMPLETED));
 
-		// verify that the repeated job was started
-		verify(alarmManager).setInexactRepeating(eq(AlarmManager.ELAPSED_REALTIME), anyLong(), anyLong(), any(PendingIntent.class));
-	}
+        List<WorkInfo> postState = WorkManager.getInstance().getWorkInfosForUniqueWork(UpdateChecker.WORK_MANAGER_KEY).get();
+        assertEquals(1, postState.size());
+    }
+
+    @Test
+    public void onReceive_withoutActionBootCompleted_noRegisterWorkRequest() throws Exception {
+        List<WorkInfo> preState = WorkManager.getInstance().getWorkInfosForUniqueWork(UpdateChecker.WORK_MANAGER_KEY).get();
+        assertEquals(0, preState.size());
+
+        deviceBootReceiver.onReceive(context, new Intent(ACTION_SCREEN_ON));
+
+        List<WorkInfo> postState = WorkManager.getInstance().getWorkInfosForUniqueWork(UpdateChecker.WORK_MANAGER_KEY).get();
+        assertEquals(0, postState.size());
+    }
+
+    @Test
+    public void onReceive_withNull_noRegisterWorkRequest() throws Exception {
+        List<WorkInfo> preState = WorkManager.getInstance().getWorkInfosForUniqueWork(UpdateChecker.WORK_MANAGER_KEY).get();
+        assertEquals(0, preState.size());
+
+        deviceBootReceiver.onReceive(context, new Intent(ACTION_SCREEN_ON));
+
+        List<WorkInfo> postState = WorkManager.getInstance().getWorkInfosForUniqueWork(UpdateChecker.WORK_MANAGER_KEY).get();
+        assertEquals(0, postState.size());
+    }
 }

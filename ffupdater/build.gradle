@@ -1,23 +1,26 @@
 apply plugin: 'com.android.application'
 apply plugin: "com.jaredsburrows.license"
 
+
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'com.google.android.material:material:1.0.0-beta01'
     implementation 'androidx.cardview:cardview:1.0.0-beta01'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
     implementation 'androidx.vectordrawable:vectordrawable:1.0.0-beta01'
-    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
+    implementation "androidx.work:work-runtime:2.0.0"
+    implementation "androidx.work:work-testing:2.0.0"
+
+//    testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'com.android.support.test:runner:1.0.2'
+    testImplementation 'org.robolectric:robolectric:4.0'
     // I had to add this dependencies because org.json is a part of the Android platform and
     // not available in unit tests (see "Method getString in org.json.JSONObject not mocked"
     // http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.- )
     testImplementation 'org.json:json:20180130'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
-
-    implementation "androidx.work:work-runtime:2.0.0"
 }
-
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -58,5 +61,6 @@ android {
         // workaround for the error "Method i in android.util.Log not mocked" (http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-)
         // without PowerMockito it is impossible to mock Log.
         unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
     }
 }
