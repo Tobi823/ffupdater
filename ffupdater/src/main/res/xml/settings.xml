@@ -2,13 +2,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:title="@string/pref_build_channel">
+        android:title="@string/pref_update_channel">
 
         <ListPreference
             android:defaultValue="true"
             android:entries="@array/pref_entry_build_channel"
             android:entryValues="@array/pref_values_build_channel"
             android:key="@string/pref_build"
-            android:title="@string/pref_build_title"/>
+            android:title="@string/pref_update_channel_title"/>
     </PreferenceCategory>
 </PreferenceScreen>
