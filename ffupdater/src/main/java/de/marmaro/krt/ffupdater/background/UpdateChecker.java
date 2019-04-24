@@ -119,7 +119,6 @@ public class UpdateChecker extends Worker {
         }
 
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra(MainActivity.OPENED_BY_NOTIFICATION, true);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), REQUEST_CODE_START_MAIN_ACTIVITY, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification notification = builder.setSmallIcon(R.mipmap.transparent, 0)

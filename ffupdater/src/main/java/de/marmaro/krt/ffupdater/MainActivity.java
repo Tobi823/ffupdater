@@ -37,7 +37,6 @@ import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String OPENED_BY_NOTIFICATION = "OpenedByNotification";
     private static final String TAG = "MainActivity";
     private static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
     private static String mDownloadUrl = "";
@@ -122,16 +121,6 @@ public class MainActivity extends AppCompatActivity {
             subtitleTextView.setText(getString(R.string.firefox_nightly_for_developer));
         }
 
-        // load latest firefox version, when intent has got the "open by notification" flag
-        Bundle bundle = getIntent().getExtras();
-        if (null != bundle) {
-            if (bundle.getBoolean(OPENED_BY_NOTIFICATION, false)) {
-                bundle.putBoolean(OPENED_BY_NOTIFICATION, false);
-                getIntent().replaceExtras(bundle);
-                loadLatestMozillaVersion();
-            }
-        }
-
         // check for the version of the current installed firefox
         localFirefox = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(getPackageManager());
         // log and display the current firefox version
@@ -141,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.i(TAG, "Firefox is not installed.");
         }
+
         //check for  latest version as soon as app instance is created: this will remove redundancy of check availability button
         loadLatestMozillaVersion();
         displayVersions();
