@@ -1,19 +1,14 @@
 package de.marmaro.krt.ffupdater.background;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -21,24 +16,25 @@ import androidx.work.Constraints;
 import androidx.work.Data;
 import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
+
+import java.util.concurrent.TimeUnit;
+
 import de.marmaro.krt.ffupdater.FirefoxMetadata;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.MozillaVersions;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.Version;
 
-import static androidx.work.ExistingPeriodicWorkPolicy.KEEP;
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 
 /**
  * Created by Tobiwan on 01.04.2019.
  */
 public class UpdateChecker extends Worker {
-    private static final String CHANNEL_ID = "update_available2";
+    private static final String CHANNEL_ID = "update_notification_channel_id";
     public static final String UPDATE_AVAILABLE_RESPONSE = "update_available";
     public static final String WORK_MANAGER_KEY = "update_checker";
     public static final String CREATION_DATE_TIME = "creation_date_time";
@@ -114,28 +110,19 @@ public class UpdateChecker extends Worker {
         NotificationCompat.Builder builder;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Update Notification";
-            String description = "Channel for new available updates";
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription(description);
-            notificationManager.createNotificationChannel(channel);
+            createNotificationChannel();
             builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
         } else {
             //noinspection deprecation
             builder = new NotificationCompat.Builder(getApplicationContext());
         }
 
-        // access the big app icon as bitmap
-        Bitmap largeIcon = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.ic_launcher);
-
-        // open main view when notification was pressed
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra(MainActivity.OPENED_BY_NOTIFICATION, true);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), REQUEST_CODE_START_MAIN_ACTIVITY, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification notification = builder.setSmallIcon(R.mipmap.transparent, 0)
-                .setSmallIcon(R.mipmap.transparent, 0)
-                .setLargeIcon(largeIcon)
+                .setLargeIcon(BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.ic_launcher))
                 .setContentTitle(getApplicationContext().getString(R.string.update_notification_title))
                 .setContentText(getApplicationContext().getString(R.string.update_notification_text))
                 .setContentIntent(pendingIntent)
@@ -145,5 +132,18 @@ public class UpdateChecker extends Worker {
         notificationManager.notify(1, notification);
     }
 
+    /**
+     * This method must be called for displaying a notification for Android 9
+     */
+    //@RequiresApi(api = Build.VERSION_CODES.O)
+    @TargetApi(Build.VERSION_CODES.O)
+    private void createNotificationChannel() {
+        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        CharSequence name = getApplicationContext().getString(R.string.update_notification_channel_name);
+        String description = getApplicationContext().getString(R.string.update_notification_channel_description);
 
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setDescription(description);
+        notificationManager.createNotificationChannel(channel);
+    }
 }
