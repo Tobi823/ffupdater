@@ -23,4 +23,5 @@
 	<string name="title_activity_settings">Налаштування</string>
 	<string name="pref_build_title">Виберіть канал поновлення Firefox</string>
     <string name="pref_build_channel">Канал поновлення</string>
+    <string name="update_notification_channel_name">Повідомлення оновлення</string>
 </resources>
