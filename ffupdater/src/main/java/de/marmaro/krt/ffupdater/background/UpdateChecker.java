@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.work.Constraints;
 import androidx.work.Data;
@@ -135,8 +136,7 @@ public class UpdateChecker extends Worker {
     /**
      * This method must be called for displaying a notification for Android 9
      */
-    //@RequiresApi(api = Build.VERSION_CODES.O)
-    @TargetApi(Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel() {
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         CharSequence name = getApplicationContext().getString(R.string.update_notification_channel_name);
