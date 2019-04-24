@@ -67,11 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         // starts the repeated update check
         UpdateChecker.registerWithInitialDelay(5 * 60 * 1000);
-
-        if (!downloadUrlObject.isApiLevelSupported()) {
-            Log.e(TAG, "android-" + downloadUrlObject.getApiLevel() + " is not supported.");
-            showAndroidTooOldError();
-        }
     }
 
     private void initUIActions() {
@@ -201,22 +196,6 @@ public class MainActivity extends AppCompatActivity {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
             progressBar.setVisibility(View.GONE);
         }
-    }
-
-    /**
-     * Display an error that the user uses a version which is not longer unsupported.
-     */
-    private void showAndroidTooOldError() {
-        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setTitle(getString(R.string.firefox_version_is_too_old));
-        alertDialog.setMessage(getString(R.string.firefox_needs_at_least_android_41));
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
     }
 
     @Override

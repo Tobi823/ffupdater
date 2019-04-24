@@ -19,8 +19,6 @@
 
     <!--TODO: These following strings translation needs verification i translated these using Google translate : i don't know about other languages  -->
     <string name="action_settings">Settings</string>
-    <string name="firefox_version_is_too_old">Your android version is too old</string>
-    <string name="firefox_needs_at_least_android_41">Firefox needs at least Android 4.1</string>
     <string name="about">About</string>
     <string name="not_connected_to_internet">You are not connected to internet</string>
     <string name="not_installed">Not Installed</string>

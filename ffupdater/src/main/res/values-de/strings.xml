@@ -16,8 +16,6 @@
     <string name="update_notification_title">Eine neue Firefox-Version wurde veröffentlicht</string>
     <string name="update_notification_text">Drücken Sie, um die App zu öffnen</string>
     <string name="action_settings">die Einstellungen</string>
-    <string name="firefox_version_is_too_old">Deine Android-Version ist zu alt</string>
-    <string name="firefox_needs_at_least_android_41">Firefox benötigt mindestens Android 4.1</string>
     <string name="about">Über</string>
     <string name="not_installed">Nicht installiert</string>
     <string name="title_activity_settings">Einstellungen</string>

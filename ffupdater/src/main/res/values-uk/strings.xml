@@ -16,9 +16,7 @@
 
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
     <string name="action_settings">Налаштування</string>
-    <string name="firefox_version_is_too_old">Ваша версія Android є занадто старою</string>
-    <string name="firefox_needs_at_least_android_41">Firefox потребує принаймні Android 4.1</string>
-    <string name="about">Про</string>
+	<string name="about">Про</string>
     <string name="not_installed">Не встановлено</string>
 	<string name="title_activity_settings">Налаштування</string>
 	<string name="pref_update_channel_title">Виберіть канал поновлення Firefox</string>

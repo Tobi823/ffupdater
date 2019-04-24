@@ -15,8 +15,6 @@
 	<string name="update_notification_text">Нажмите, чтобы открыть приложение</string>
 
 	<string name="action_settings">Настройки</string>
-	<string name="firefox_version_is_too_old">Ваша версия Android слишком старая</string>
-	<string name="firefox_needs_at_least_android_41">Для работы Firefox нужен Android версии 4.1 минимум</string>
 	<string name="about">О программе</string>
 	<string name="not_connected_to_internet">Вы не подключены к интернету</string>
 	<string name="not_installed">Не установлено</string>

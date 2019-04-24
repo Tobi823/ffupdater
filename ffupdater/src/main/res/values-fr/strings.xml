@@ -17,8 +17,6 @@
     <string name="update_notification_text">Appuyez sur pour ouvrir l\'application</string>
     <string name="action_settings">Réglages</string>
     <string name="about">Sur</string>
-    <string name="firefox_needs_at_least_android_41">Firefox nécessite au moins Android 4.1</string>
-    <string name="firefox_version_is_too_old">Votre version Android est trop ancienne</string>
     <string name="not_installed">Pas installé</string>
     <string name="title_activity_settings">Réglages</string>
     <string name="pref_update_channel_title">Sélectionnez le canal de mise à jour de Firefox</string>

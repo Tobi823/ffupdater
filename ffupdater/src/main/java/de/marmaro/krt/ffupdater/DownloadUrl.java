@@ -25,11 +25,6 @@ public class DownloadUrl {
         this.apiLevel = apiLevel;
     }
 
-    public boolean isApiLevelSupported() {
-        // https://support.mozilla.org/en-US/kb/will-firefox-work-my-mobile-device
-        return (apiLevel >= 16);
-    }
-
     public String getArchitecture() {
         return architecture;
     }
