@@ -22,7 +22,7 @@
 	<string name="not_installed">Не установлено</string>
 	<!-- Strings related to Settings -->
 	<string name="title_activity_settings">Настройки</string>
-	<string name="pref_build_channel">Канал сборки</string>
+	<string name="pref_build_channel">канал обновления</string>
 	<string name="pref_build_title">Выберите канал сборки Firefox</string>
 
 

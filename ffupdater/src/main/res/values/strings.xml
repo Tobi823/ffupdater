@@ -26,8 +26,8 @@
     <string name="not_installed">Not Installed</string>
     <!-- Strings related to Settings -->
     <string name="title_activity_settings">Settings</string>
-    <string name="pref_build_channel">Build Channel</string>
-    <string name="pref_build_title">Select Firefox Build Channel</string>
+    <string name="pref_build_channel">Update Channel</string>
+    <string name="pref_build_title">Select Firefox Update Channel</string>
     <string name="pref_build" translatable="false">pref_build</string>
 
     <string name="firefox_for_android" translatable="false">Firefox for Android</string>

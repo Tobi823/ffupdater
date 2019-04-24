@@ -22,5 +22,6 @@
     <string name="not_installed">Pas installé</string>
     <string name="title_activity_settings">Réglages</string>
     <string name="pref_build_title">Sélectionnez le canal de construction de Firefox</string>
+    <string name="pref_build_channel">Canal de mise à jour</string>
 
 </resources>
