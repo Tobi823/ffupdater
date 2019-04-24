@@ -34,7 +34,7 @@
     <string name="firefox_for_android_beta" translatable="false">Firefox for Android Beta</string>
     <string name="firefox_nightly_for_developer" translatable="false">Firefox Nightly for Developer</string>
     <string name="update_notification_channel_name">Update Notification</string>
-    <string name="update_notification_channel_description">Channel for new available updates</string>
+    <string name="update_notification_channel_description">This notification category will inform you about new available Firefox updates.</string>
 
 
 </resources>

@@ -24,4 +24,5 @@
 	<string name="pref_build_title">Виберіть канал поновлення Firefox</string>
     <string name="pref_build_channel">Канал поновлення</string>
     <string name="update_notification_channel_name">Повідомлення оновлення</string>
+	<string name="update_notification_channel_description">Ця категорія повідомлень повідомить вам про нові доступні оновлення Firefox.</string>
 </resources>
