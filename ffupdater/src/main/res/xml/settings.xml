@@ -5,7 +5,7 @@
         android:title="@string/pref_update_channel">
 
         <ListPreference
-            android:defaultValue="true"
+            android:defaultValue="version"
             android:entries="@array/pref_entry_build_channel"
             android:entryValues="@array/pref_values_build_channel"
             android:key="@string/pref_build"
