@@ -3,35 +3,35 @@
     <string name="app_name">FFUpdater</string>
     <!--TODO: This string translation needs verification bcz i changed this  -->
     <string name="infobox">This is a simple updater for Firefox. Click the button to send an HTTPS intent to whatever app you use to download, e.g. a installed version of Firefox or any other browser. Depending on your device, you might see multiple options to choose from. Most downloaders will show an icon indicating the progress. Once finished, open the resulting apk and choose the installer.  This is not a rather clumsy user experience now, if you feel it clumsy then any help is certainly welcome!</string>
-    <string name="installed_version">Installed Version:</string>
-    <string name="available_version">Available Version:</string>
+    <string name="installed_version">Installed version:</string>
+    <string name="available_version">Available version:</string>
     <string name="checking">(checking…)</string>
     <string name="ff_not_installed">Firefox is not installed</string>
-    <string name="check_available_error_message">Could not determine the highest available Firefox version.\nPlease make sure you can connect to the internet.</string>
+    <string name="check_available_error_message">Could not determine the highest available Firefox version.\nPlease make sure you can connect to the Internet.</string>
     <string name="none">None</string>
     <string name="ok">OK</string>
     <string name="checkavailable">Check available version</string>
     <string name="download">Download Firefox</string>
     <string name="installed_version_text_format" translatable="false">%s (%d)</string>
     <string name="not_installed_text_format" translatable="false">%s (%s)</string>
-    <string name="update_notification_title">A new firefox version was released</string>
+    <string name="update_notification_title">A new Firefox version was released</string>
     <string name="update_notification_text">Press to open the app</string>
 
     <!--TODO: These following strings translation needs verification i translated these using Google translate : i don't know about other languages  -->
     <string name="action_settings">Settings</string>
     <string name="about">About</string>
-    <string name="not_connected_to_internet">You are not connected to internet</string>
+    <string name="not_connected_to_internet">You are not connected to the Internet</string>
     <string name="not_installed">Not Installed</string>
     <!-- Strings related to Settings -->
     <string name="title_activity_settings">Settings</string>
-    <string name="pref_update_channel">Update Channel</string>
-    <string name="pref_update_channel_title">Select Firefox Update Channel</string>
+    <string name="pref_update_channel">Update channel</string>
+    <string name="pref_update_channel_title">Select Firefox update channel</string>
     <string name="pref_build" translatable="false">pref_build</string>
 
     <string name="firefox_for_android" translatable="false">Firefox for Android</string>
     <string name="firefox_for_android_beta" translatable="false">Firefox for Android Beta</string>
     <string name="firefox_nightly_for_developer" translatable="false">Firefox Nightly for Developer</string>
-    <string name="update_notification_channel_name">Update Notification</string>
+    <string name="update_notification_channel_name">Update notification</string>
     <string name="update_notification_channel_description">This notification category will inform you about new available Firefox updates.</string>
 
 
