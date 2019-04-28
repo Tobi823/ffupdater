@@ -14,9 +14,9 @@
 
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="update_notification_title">Une nouvelle version de Firefox a été publiée</string>
-    <string name="update_notification_text">Appuyez sur pour ouvrir l\'application</string>
+    <string name="update_notification_text">Appuyez pour ouvrir l\'application</string>
     <string name="action_settings">Réglages</string>
-    <string name="about">Sur</string>
+    <string name="about">À propos</string>
     <string name="not_installed">Pas installé</string>
     <string name="title_activity_settings">Réglages</string>
     <string name="pref_update_channel_title">Sélectionnez le canal de mise à jour de Firefox</string>
