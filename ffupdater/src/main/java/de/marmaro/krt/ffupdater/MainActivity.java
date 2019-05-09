@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         downloadUrlObject = new DownloadUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
 
         // starts the repeated update check
-        UpdateChecker.registerWithInitialDelay(5 * 60 * 1000);
+        UpdateChecker.registerWithInitialDelay(6 * 60 * 60 * 1000);
     }
 
     private void initUIActions() {
