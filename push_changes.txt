@@ -1,0 +1,9 @@
+# when the git tag was created by the web-frontend, you have to do:
+git fetch --tags
+
+# push changes with tag
+SET TAG=66.2
+git tag %TAG%
+git push origin %TAG%
+git push github %TAG%
+git push gitlab %TAG%

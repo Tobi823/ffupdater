@@ -1,3 +1,10 @@
+2019-04-25 Version 66.2 (26)
+ * Improve french translation (thanks xinxinxinxinxin)
+ * Fix "update notification will be shown every 5 minutes" (bug discovered by aplufr)
+
+2019-04-25 Version 66.1 (25)
+ * Add grammar fixes (thanks DeenHyper74)
+
 2019-04-25 Version 66.0 (24)
  * Notification (for a Firefox update) now works on Android 9
  * Replace BackgroundService with WorkManager (AndroidX) for requesting Mozilla's API
