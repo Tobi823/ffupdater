@@ -26,6 +26,25 @@
     <string name="update_notification_channel_description">Эта категория уведомлений будет информировать вас о новых доступных обновлениях Firefox.</string>
     <string name="pref_category_automatic_update_check">Автоматическая проверка обновления</string>
     <string name="pref_check_interval_title">Временной интервал</string>
+	<string name="update_interval_12h">Каждые 12 часов</string>
+	<string name="update_interval_15min">Каждые 15 минут</string>
+	<string name="update_interval_18h">Каждые 18 часов</string>
+	<string name="update_interval_1d">Каждый день</string>
+	<string name="update_interval_1h">Каждый час</string>
+	<string name="update_interval_1m">Каждый месяц</string>
+	<string name="update_interval_1w">Каждую неделю</string>
+	<string name="update_interval_2d">Каждые два дня</string>
+	<string name="update_interval_2h">Каждые два часа</string>
+	<string name="update_interval_2w">Каждые две недели</string>
+	<string name="update_interval_30min">Каждые 30 минут</string>
+	<string name="update_interval_3d">Каждые три дня</string>
+	<string name="update_interval_4d">Каждые четыре дня</string>
+	<string name="update_interval_4h">Каждые четыре часа</string>
+	<string name="update_interval_5d">Каждые пять дней</string>
+	<string name="update_interval_6d">Каждые шесть дней</string>
+	<string name="update_interval_6h">Каждые шесть часов</string>
+	<string name="update_interval_8h">Каждые восемь часов</string>
+	<string name="update_interval_never">Никогда - отключить автоматическую проверку обновлений</string>
 
 
 </resources>

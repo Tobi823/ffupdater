@@ -28,7 +28,7 @@
     <string name="update_interval_12h">Toutes les 12 heures</string>
     <string name="update_interval_15min">Toutes les 15 minutes</string>
     <string name="update_interval_18h">Toutes les 18 heures</string>
-    <string name="update_interval_1d">Tous les jours</string>
+    <string name="update_interval_1d">Chaque jour</string>
     <string name="update_interval_1h">Chaque heure</string>
     <string name="update_interval_1m">Chaque mois</string>
     <string name="update_interval_1w">Chaque semaine</string>
@@ -43,6 +43,6 @@
     <string name="update_interval_5d">Tous les cinq jours</string>
     <string name="update_interval_6h">Toutes les six heures</string>
     <string name="update_interval_8h">Toutes les huit heures</string>
-    <string name="update_interval_never">Jamais - Rendent la vérification de mise à jour automatique infirmes</string>
+    <string name="update_interval_never">Jamais - Désactiver le contrôle de mise à jour automatique</string>
 
 </resources>
