@@ -1,11 +1,8 @@
 package de.marmaro.krt.ffupdater;
 
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -15,11 +12,9 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.common.util.concurrent.ListenableFuture;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
-import androidx.room.util.StringUtil;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -90,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        setContentView(R.layout.main_avticity);
+        setContentView(R.layout.main_activity);
         firefoxAvailableVersionTextview = findViewById(R.id.firefox_available_version);
         firefoxInstalledVersionTextView = findViewById(R.id.firefox_installed_version);
         subtitleTextView = findViewById(R.id.toolbar_subtitle);

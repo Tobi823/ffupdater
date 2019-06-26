@@ -9,7 +9,6 @@ import org.mockito.ArgumentCaptor;
 
 import java.net.URL;
 
-import de.marmaro.krt.ffupdater.MozillaVersionsTest;
 import de.marmaro.krt.ffupdater.Version;
 
 import static org.junit.Assert.*;
