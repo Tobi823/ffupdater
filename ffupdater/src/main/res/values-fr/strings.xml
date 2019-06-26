@@ -44,5 +44,9 @@
     <string name="update_interval_6h">Toutes les six heures</string>
     <string name="update_interval_8h">Toutes les huit heures</string>
     <string name="update_interval_never">Jamais - Désactiver le contrôle de mise à jour automatique</string>
+    <string name="switch_to_unsafe_build_message">Ce canal de mise à jour est conçu aux promoteurs et aux contrôleurs de Mozilla Firefox. Toute version Firefox de cela peut contenir des insectes différents qui peuvent affecter votre travail ordinaire avec le navigateur. Voulez-vous vraiment échanger à ce canal ?</string>
+    <string name="switch_to_unsafe_build_negative_button">Non, retournez à \'%1$s\'</string>
+    <string name="switch_to_unsafe_build_positive_button">Oui</string>
+    <string name="switch_to_unsafe_build_title">"Avertissement "</string>
 
 </resources>

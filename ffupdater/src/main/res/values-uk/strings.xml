@@ -44,4 +44,8 @@
 	<string name="update_interval_6h">Кожні шість годин</string>
 	<string name="update_interval_8h">Кожні вісім годин</string>
 	<string name="update_interval_never">Ніколи - вимкнення перевірки автоматичного оновлення</string>
+    <string name="switch_to_unsafe_build_message">Цей канал оновлення призначений для розробників і тестувальників Mozilla Firefox. Будь-яка версія Firefox може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ви дійсно хочете перейти на цей канал?</string>
+    <string name="switch_to_unsafe_build_negative_button">Ні, поверніться до \'%1$s\'</string>
+    <string name="switch_to_unsafe_build_positive_button">Так</string>
+    <string name="switch_to_unsafe_build_title">Увага</string>
 </resources>

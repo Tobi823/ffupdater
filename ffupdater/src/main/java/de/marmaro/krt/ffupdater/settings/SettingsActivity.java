@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -58,18 +59,28 @@ public class SettingsActivity extends AppCompatActivity {
 
         private Preference.OnPreferenceChangeListener displayWarningOnSwitchingToUnsafeBuild = new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
+            public boolean onPreferenceChange(final Preference preference, Object newValue) {
                 Context context = getContext();
-                String value = (String) newValue;
-                if (context.getString(R.string.default_pref_build).equals(value)) {
+                final ListPreference currentPreference = (ListPreference) preference;
+                final String defaultBuildChannel = context.getString(R.string.default_pref_build);
+                // abort when switching not from 'Release'
+                if (!currentPreference.getValue().equals(defaultBuildChannel)) {
                     return true;
                 }
+
                 new AlertDialog.Builder(getActivity())
                         .setTitle(context.getString(R.string.switch_to_unsafe_build_title))
                         .setMessage(context.getString(R.string.switch_to_unsafe_build_message))
-                        .setPositiveButton(context.getText(R.string.ok), new DialogInterface.OnClickListener() {
+                        .setPositiveButton(context.getString(R.string.switch_to_unsafe_build_positive_button), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton(context.getString(R.string.switch_to_unsafe_build_negative_button, currentPreference.getEntry()), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                currentPreference.setValue(defaultBuildChannel);
                                 dialog.dismiss();
                             }
                         })

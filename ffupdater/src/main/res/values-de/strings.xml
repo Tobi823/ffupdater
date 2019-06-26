@@ -44,5 +44,9 @@
     <string name="update_interval_6h">Alle sechs Stunden</string>
     <string name="update_interval_8h">Alle acht Stunden</string>
     <string name="update_interval_never">Nie - Deaktivere die automatische Update-Prüfung</string>
+    <string name="switch_to_unsafe_build_message">Dieser Aktualisierungskanal wird für Entwickler und Prüfer von Mozilla Firefox entworfen. Jede Version kann verschiedene Programmfehler enthalten, die Ihre übliche Arbeit mit dem Browser betreffen können. Wollen Sie wirklich auf diesen Kanal umschalten?</string>
+    <string name="switch_to_unsafe_build_negative_button">Nein, gehe zu \'%1$s\' zurück</string>
+    <string name="switch_to_unsafe_build_positive_button">Ja</string>
+    <string name="switch_to_unsafe_build_title">"Warnung "</string>
 
 </resources>
