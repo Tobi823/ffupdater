@@ -40,10 +40,6 @@ public class UpdateChecker extends Worker {
     private static final String CHANNEL_ID = "update_notification_channel_id";
     public static final String UPDATE_AVAILABLE_RESPONSE = "update_available";
     public static final String WORK_MANAGER_KEY = "update_checker";
-    public static final String CREATION_DATE_TIME = "creation_date_time";
-    public static final String FIRST_EXECUTION_DATE_TIME = "first_execution_date_time";
-    public static final String WITH_INITIAL_DELAY = "with_initial_delay";
-    public static final String NOT_EXECUTED = "not_executed";
 
     public static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
 
@@ -66,28 +62,19 @@ public class UpdateChecker extends Worker {
         // of the ListPreference is always only a number in a string.
         int value = Integer.parseInt(valueAsString);
         if (value > 0) {
-            UpdateChecker.registerWithInitialDelay(0, value);
+            UpdateChecker.register(value);
         } else {
             UpdateChecker.unregister();
         }
     }
 
     /**
-     * Register UpdateChecker. After an initial delay, UpdateChecker will be executed regularly.
+     * Register UpdateChecker which will be executed regularly.
      *
-     * @param delayInMs
-     * @param repeatIntervalLengthInMinutes
+     * @param repeatIntervalLengthInMinutes time between each execution in minutes
      */
-    private static void registerWithInitialDelay(long delayInMs, long repeatIntervalLengthInMinutes) {
-        checkArgument(delayInMs >= 0, "delayInMs must not be negative");
+    private static void register(long repeatIntervalLengthInMinutes) {
         checkArgument(repeatIntervalLengthInMinutes >= 0, "repeatIntervalLengthInMinutes must not be negative");
-
-        long currentTimeInMillis = System.currentTimeMillis();
-        Data startTime = new Data.Builder()
-                .putBoolean(WITH_INITIAL_DELAY, delayInMs != 0)
-                .putLong(CREATION_DATE_TIME, currentTimeInMillis)
-                .putLong(FIRST_EXECUTION_DATE_TIME, currentTimeInMillis + delayInMs)
-                .build();
 
         Constraints constraints = new Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -97,7 +84,6 @@ public class UpdateChecker extends Worker {
         PeriodicWorkRequest saveRequest =
                 new PeriodicWorkRequest.Builder(UpdateChecker.class, repeatIntervalLengthInMinutes, TimeUnit.MINUTES)
                         .setConstraints(constraints)
-                        .setInputData(startTime)
                         .build();
 
         WorkManager.getInstance().enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, saveRequest);
@@ -113,25 +99,11 @@ public class UpdateChecker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        if (shouldWorkBeDelayed()) {
-            return Result.success(new Data.Builder().putBoolean(NOT_EXECUTED, true).build());
-        }
         boolean updateAvailable = isUpdateAvailable();
         if (updateAvailable) {
             showNotification();
         }
         return Result.success(new Data.Builder().putBoolean(UPDATE_AVAILABLE_RESPONSE, updateAvailable).build());
-    }
-
-    private boolean shouldWorkBeDelayed() {
-        if (getInputData().getBoolean(WITH_INITIAL_DELAY, false)) {
-            return false;
-        }
-
-        long currentTimeInMillis = System.currentTimeMillis();
-        long createdDateTime = getInputData().getLong(CREATION_DATE_TIME, 0);
-        long firstExecutionDateTime = getInputData().getLong(FIRST_EXECUTION_DATE_TIME, 0);
-        return createdDateTime <= currentTimeInMillis && currentTimeInMillis < firstExecutionDateTime;
     }
 
     private boolean isUpdateAvailable() {
