@@ -54,6 +54,8 @@
     <string name="update_interval_1m">Every month</string>
     <string name="pref_check_interval_title">Time interval</string>
     <string name="pref_category_automatic_update_check">Automatic update check</string>
+    <string name="switch_to_unsafe_build_title">Warning</string>
+    <string name="switch_to_unsafe_build_message">This update channel is designed for developers and testers of Mozilla Firefox. Any Firefox version from it may contain various bugs that can affect your usual work with the browser.</string>
 
 
 </resources>
