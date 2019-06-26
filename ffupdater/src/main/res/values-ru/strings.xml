@@ -20,7 +20,7 @@
 	<string name="not_installed">Не установлено</string>
 	<!-- Strings related to Settings -->
 	<string name="title_activity_settings">Настройки</string>
-	<string name="pref_update_channel">канал обновления</string>
+	<string name="pref_category_update_channel">канал обновления</string>
 	<string name="pref_update_channel_title">Выберите канал обновления Firefox</string>
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
     <string name="update_notification_channel_description">Эта категория уведомлений будет информировать вас о новых доступных обновлениях Firefox.</string>

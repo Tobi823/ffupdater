@@ -24,7 +24,7 @@
     <string name="not_installed">Not Installed</string>
     <!-- Strings related to Settings -->
     <string name="title_activity_settings">Settings</string>
-    <string name="pref_update_channel">Update channel</string>
+    <string name="pref_category_update_channel">Update channel</string>
     <string name="pref_update_channel_title">Select Firefox update channel</string>
 
     <string name="firefox_for_android" translatable="false">Firefox for Android</string>
@@ -52,6 +52,8 @@
     <string name="update_interval_1w">Every week</string>
     <string name="update_interval_2w">Every two weeks</string>
     <string name="update_interval_1m">Every month</string>
+    <string name="pref_check_interval_title">Time interval</string>
+    <string name="pref_category_automatic_update_check">Automatic update check</string>
 
 
 </resources>
