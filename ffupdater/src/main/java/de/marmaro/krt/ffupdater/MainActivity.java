@@ -10,14 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,13 +17,21 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.work.WorkInfo;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import de.marmaro.krt.ffupdater.background.LatestReleaseFinder;
 import de.marmaro.krt.ffupdater.background.UpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     private static final String TAG = "MainActivity";
     private static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
     private static String mDownloadUrl = "";
@@ -50,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        UpdateChannel.channel = sharedPref.getString(getString(R.string.pref_build), "version");
+        UpdateChannel.channel = sharedPref.getString(getString(R.string.pref_build), getString(R.string.default_pref_build));
         initUI();
         initUIActions();
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         downloadUrlObject = new DownloadUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
 
         // starts the repeated update check
-        UpdateChecker.registerWithInitialDelay(6 * 60 * 60 * 1000);
+        UpdateChecker.registerOrUnregister(this);
     }
 
     private void initUIActions() {

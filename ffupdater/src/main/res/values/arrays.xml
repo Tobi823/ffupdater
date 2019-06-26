@@ -4,12 +4,56 @@
         <item>Release</item>
         <item>Beta</item>
         <item>Nightly</item>
-       </string-array>
+    </string-array>
 
     <string-array name="pref_values_build_channel">
         <item>version</item>
         <item>beta_version</item>
         <item>nightly_version</item>
+    </string-array>
+
+    <string-array name="pref_entry_check_interval">
+        <item>@string/update_interval_never</item>
+        <item>@string/update_interval_15min</item>
+        <item>@string/update_interval_30min</item>
+        <item>@string/update_interval_1h</item>
+        <item>@string/update_interval_2h</item>
+        <item>@string/update_interval_4h</item>
+        <item>@string/update_interval_6h</item>
+        <item>@string/update_interval_8h</item>
+        <item>@string/update_interval_12h</item>
+        <item>@string/update_interval_18h</item>
+        <item>@string/update_interval_1d</item>
+        <item>@string/update_interval_2d</item>
+        <item>@string/update_interval_3d</item>
+        <item>@string/update_interval_4d</item>
+        <item>@string/update_interval_5d</item>
+        <item>@string/update_interval_6d</item>
+        <item>@string/update_interval_1w</item>
+        <item>@string/update_interval_2w</item>
+        <item>@string/update_interval_1m</item>
+    </string-array>
+
+    <string-array name="pref_values_check_interval">
+        <item>-1</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>240</item>
+        <item>360</item>
+        <item>480</item>
+        <item>720</item>
+        <item>1080</item>
+        <item>1440</item>
+        <item>2880</item>
+        <item>4320</item>
+        <item>5760</item>
+        <item>7200</item>
+        <item>8640</item>
+        <item>10080</item>
+        <item>20160</item>
+        <item>40320</item>
     </string-array>
 
 </resources>
