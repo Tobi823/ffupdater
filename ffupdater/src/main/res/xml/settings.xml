@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:title="@string/pref_update_channel">
+        app:title="@string/pref_update_channel">
 
         <ListPreference
-            android:defaultValue="version"
-            android:entries="@array/pref_entry_build_channel"
-            android:entryValues="@array/pref_values_build_channel"
-            android:key="@string/pref_build"
-            android:title="@string/pref_update_channel_title"/>
+            app:defaultValue="version"
+            app:entries="@array/pref_entry_build_channel"
+            app:entryValues="@array/pref_values_build_channel"
+            app:key="@string/pref_build"
+            app:title="@string/pref_update_channel_title"
+            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 </PreferenceScreen>
