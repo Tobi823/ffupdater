@@ -23,5 +23,26 @@
     <string name="pref_category_update_channel">Update-Kanal</string>
     <string name="update_notification_channel_name">Update-Benachrichtigung</string>
     <string name="update_notification_channel_description">Diese Benachrichtigungskategorie informiert Sie über neue verfügbare Firefox-Updates.</string>
+    <string name="pref_category_automatic_update_check">Automatische Update-Prüfung</string>
+    <string name="pref_check_interval_title">Zeitintervall</string>
+    <string name="update_interval_12h">"Alle 12 Stunden "</string>
+    <string name="update_interval_15min">Alle 15 Minuten</string>
+    <string name="update_interval_18h">Alle 18 Stunden</string>
+    <string name="update_interval_1d">Jeden Tag</string>
+    <string name="update_interval_1h">Jede Stunde</string>
+    <string name="update_interval_1m">Jeden Monat</string>
+    <string name="update_interval_1w">Jede Woche</string>
+    <string name="update_interval_2d">Alle zwei Tage</string>
+    <string name="update_interval_2h">Alle zwei Stunden</string>
+    <string name="update_interval_2w">Alle zwei Wochen</string>
+    <string name="update_interval_30min">Alle 30 Minuten</string>
+    <string name="update_interval_3d">Alle drei Tagen</string>
+    <string name="update_interval_4d">Alle vier Tagen</string>
+    <string name="update_interval_4h">Alle vier Stunden</string>
+    <string name="update_interval_5d">Alle fünf Tagen</string>
+    <string name="update_interval_6d">Alle sechs Tagen</string>
+    <string name="update_interval_6h">Alle sechs Stunden</string>
+    <string name="update_interval_8h">Alle acht Stunden</string>
+    <string name="update_interval_never">Nie - Deaktivere die automatische Update-Prüfung</string>
 
 </resources>

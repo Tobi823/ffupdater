@@ -24,6 +24,8 @@
 	<string name="pref_update_channel_title">Выберите канал обновления Firefox</string>
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
     <string name="update_notification_channel_description">Эта категория уведомлений будет информировать вас о новых доступных обновлениях Firefox.</string>
+    <string name="pref_category_automatic_update_check">Автоматическая проверка обновления</string>
+    <string name="pref_check_interval_title">Временной интервал</string>
 
 
 </resources>
