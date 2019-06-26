@@ -61,8 +61,18 @@ public class UpdateChecker extends Worker {
         // That's the reason why I have to parse the result string back to an int although the value
         // of the ListPreference is always only a number in a string.
         int value = Integer.parseInt(valueAsString);
-        if (value > 0) {
-            UpdateChecker.register(value);
+        registerOrUnregister(value);
+    }
+
+    /**
+     * (Re)register or unregister UpdateChecker depending on the value of pref_check_interval.
+     * If pref_check_interval is greater than 0, than UpdateChecker will be regularly executed without an initial delay.
+     *
+     * @param repeatIntervalLengthInMinutes value of pref_check_interval
+     */
+    public static void registerOrUnregister(int repeatIntervalLengthInMinutes) {
+        if (repeatIntervalLengthInMinutes > 0) {
+            UpdateChecker.register(repeatIntervalLengthInMinutes);
         } else {
             UpdateChecker.unregister();
         }
@@ -73,7 +83,7 @@ public class UpdateChecker extends Worker {
      *
      * @param repeatIntervalLengthInMinutes time between each execution in minutes
      */
-    private static void register(long repeatIntervalLengthInMinutes) {
+    private static void register(int repeatIntervalLengthInMinutes) {
         checkArgument(repeatIntervalLengthInMinutes >= 0, "repeatIntervalLengthInMinutes must not be negative");
 
         Constraints constraints = new Constraints.Builder()
@@ -99,6 +109,7 @@ public class UpdateChecker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
+        Log.d("UpdateChecker", "doWork() executed");
         boolean updateAvailable = isUpdateAvailable();
         if (updateAvailable) {
             showNotification();
