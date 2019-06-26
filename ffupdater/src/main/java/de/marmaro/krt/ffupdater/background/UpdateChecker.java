@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.background;
 
-import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -9,10 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
+import androidx.preference.PreferenceManager;
 import androidx.work.Constraints;
 import androidx.work.Data;
 import androidx.work.NetworkType;
@@ -30,6 +31,7 @@ import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.Version;
 
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
+import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * Created by Tobiwan on 01.04.2019.
@@ -45,16 +47,41 @@ public class UpdateChecker extends Worker {
 
     public static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
 
-
     public UpdateChecker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
-    public static void register() {
-        registerWithInitialDelay(0);
+    /**
+     * (Re)register or unregister UpdateChecker depending on the value of pref_check_interval.
+     * If pref_check_interval is greater than 0, than UpdateChecker will be regularly executed without an initial delay.
+     *
+     * @param context necessary context for accessing shared preferences etc.
+     */
+    public static void registerOrUnregister(Context context) {
+        int defaultValue = context.getResources().getInteger(R.integer.default_pref_check_interval);
+        String valueAsString = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(context.getString(R.string.pref_check_interval), String.valueOf(defaultValue));
+        // the ListPreference only accept string-arrays as app:entryValues.
+        // That's the reason why I have to parse the result string back to an int although the value
+        // of the ListPreference is always only a number in a string.
+        int value = Integer.parseInt(valueAsString);
+        if (value > 0) {
+            UpdateChecker.registerWithInitialDelay(0, value);
+        } else {
+            UpdateChecker.unregister();
+        }
     }
 
-    public static void registerWithInitialDelay(long delayInMs) {
+    /**
+     * Register UpdateChecker. After an initial delay, UpdateChecker will be executed regularly.
+     *
+     * @param delayInMs
+     * @param repeatIntervalLengthInMinutes
+     */
+    private static void registerWithInitialDelay(long delayInMs, long repeatIntervalLengthInMinutes) {
+        checkArgument(delayInMs >= 0, "delayInMs must not be negative");
+        checkArgument(repeatIntervalLengthInMinutes >= 0, "repeatIntervalLengthInMinutes must not be negative");
+
         long currentTimeInMillis = System.currentTimeMillis();
         Data startTime = new Data.Builder()
                 .putBoolean(WITH_INITIAL_DELAY, delayInMs != 0)
@@ -68,12 +95,19 @@ public class UpdateChecker extends Worker {
                 .build();
 
         PeriodicWorkRequest saveRequest =
-                new PeriodicWorkRequest.Builder(UpdateChecker.class, 15, TimeUnit.MINUTES)
+                new PeriodicWorkRequest.Builder(UpdateChecker.class, repeatIntervalLengthInMinutes, TimeUnit.MINUTES)
                         .setConstraints(constraints)
                         .setInputData(startTime)
                         .build();
 
         WorkManager.getInstance().enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, saveRequest);
+    }
+
+    /**
+     * Unregister UpdateChecker with the result that UpdateChecker will not be executed anymore.
+     */
+    private static void unregister() {
+        WorkManager.getInstance().cancelUniqueWork(WORK_MANAGER_KEY);
     }
 
     @NonNull

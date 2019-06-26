@@ -5,11 +5,23 @@
         app:title="@string/pref_update_channel">
 
         <ListPreference
-            app:defaultValue="version"
+            app:defaultValue="@string/default_pref_build"
             app:entries="@array/pref_entry_build_channel"
             app:entryValues="@array/pref_values_build_channel"
             app:key="@string/pref_build"
             app:title="@string/pref_update_channel_title"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Automatic update check">
+
+        <ListPreference
+            app:defaultValue="@integer/default_pref_check_interval"
+            app:entries="@array/pref_entry_check_interval"
+            app:entryValues="@array/pref_values_check_interval"
+            app:key="@string/pref_check_interval"
+            app:title="Time interval"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 </PreferenceScreen>
