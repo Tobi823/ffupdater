@@ -8,9 +8,9 @@ Periodical the app will check for updates and will display a notification when a
 
 ## Screenshots
 
-<img src="screenshot1.png" alt="Screenshot of the main screen" style="height: 50em">
+<img src="screenshot1.png" alt="Screenshot of the main screen" height="300em">
 
-<img src="screenshot2.png" alt="Screenshot of the setting screen" style="height: 50em">
+<img src="screenshot2.png" alt="Screenshot of the setting screen" height="300em">
 
 ## Technical detail
 
