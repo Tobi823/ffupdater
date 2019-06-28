@@ -20,10 +20,31 @@
 	<string name="not_installed">Не установлено</string>
 	<!-- Strings related to Settings -->
 	<string name="title_activity_settings">Настройки</string>
-	<string name="pref_update_channel">канал обновления</string>
+	<string name="pref_category_update_channel">канал обновления</string>
 	<string name="pref_update_channel_title">Выберите канал обновления Firefox</string>
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
     <string name="update_notification_channel_description">Эта категория уведомлений будет информировать вас о новых доступных обновлениях Firefox.</string>
+    <string name="pref_category_automatic_update_check">Автоматическая проверка обновления</string>
+    <string name="pref_check_interval_title">Временной интервал</string>
+	<string name="update_interval_12h">12 часов</string>
+	<string name="update_interval_15min">15 минут</string>
+	<string name="update_interval_18h">18 часов</string>
+	<string name="update_interval_1d">1 день</string>
+	<string name="update_interval_1h">1 час</string>
+	<string name="update_interval_1m">1 месяц</string>
+	<string name="update_interval_1w">1 неделя</string>
+	<string name="update_interval_2d">2 дня</string>
+	<string name="update_interval_2h">2 часа</string>
+	<string name="update_interval_2w">2 недели</string>
+	<string name="update_interval_30min">30 минут</string>
+	<string name="update_interval_3d">3 дня</string>
+	<string name="update_interval_4d">4 дня</string>
+	<string name="update_interval_4h">4 часа</string>
+	<string name="update_interval_5d">5 дней</string>
+	<string name="update_interval_6d">6 дней</string>
+	<string name="update_interval_6h">6 часов</string>
+	<string name="update_interval_8h">8 часов</string>
+	<string name="update_interval_never">Никогда (отключить автоматическую проверку обновлений)</string>
 
 
 </resources>

@@ -32,19 +32,22 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public static class MainPreferenceFragment extends PreferenceFragmentCompat {
+
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.settings, rootKey);
             Preference prefCheckInterval = findPreference(getString(R.string.pref_check_interval));
-            prefCheckInterval.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    String valueAsString = (String) newValue;
-                    int value = Integer.parseInt(valueAsString);
-                    UpdateChecker.registerOrUnregister(value);
-                    return true;
-                }
-            });
+            prefCheckInterval.setOnPreferenceChangeListener(reconfigureUpdateCheckerOnChange);
         }
+
+        private Preference.OnPreferenceChangeListener reconfigureUpdateCheckerOnChange = new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                String valueAsString = (String) newValue;
+                int value = Integer.parseInt(valueAsString);
+                UpdateChecker.registerOrUnregister(value);
+                return true;
+            }
+        };
     }
 }

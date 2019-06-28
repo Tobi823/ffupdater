@@ -20,8 +20,29 @@
     <string name="not_installed">Pas installé</string>
     <string name="title_activity_settings">Réglages</string>
     <string name="pref_update_channel_title">Sélectionnez le canal de mise à jour de Firefox</string>
-    <string name="pref_update_channel">Canal de mise à jour</string>
+    <string name="pref_category_update_channel">Canal de mise à jour</string>
     <string name="update_notification_channel_name">Notification de mise à jour</string>
     <string name="update_notification_channel_description">Cette catégorie de notification vous informera des nouvelles mises à jour Firefox disponibles.</string>
+    <string name="pref_category_automatic_update_check">Vérification automatique de la mise à jour</string>
+    <string name="pref_check_interval_title">Intervalle de temps</string>
+    <string name="update_interval_12h">12 heures</string>
+    <string name="update_interval_15min">15 minutes</string>
+    <string name="update_interval_18h">18 heures</string>
+    <string name="update_interval_1d">1 jour</string>
+    <string name="update_interval_1h">1 heure</string>
+    <string name="update_interval_1m">1 mois</string>
+    <string name="update_interval_1w">1 semaine</string>
+    <string name="update_interval_2d">2 jours</string>
+    <string name="update_interval_2h">2 heures</string>
+    <string name="update_interval_2w">2 semaines</string>
+    <string name="update_interval_30min">30 minutes</string>
+    <string name="update_interval_3d">3 jours</string>
+    <string name="update_interval_4d">4 jours</string>
+    <string name="update_interval_4h">4 heures</string>
+    <string name="update_interval_6d">6 jours</string>
+    <string name="update_interval_5d">5 jours</string>
+    <string name="update_interval_6h">6 heures</string>
+    <string name="update_interval_8h">"8 heures "</string>
+    <string name="update_interval_never">Jamais (désactiver le contrôle de mise à jour automatique)</string>
 
 </resources>
