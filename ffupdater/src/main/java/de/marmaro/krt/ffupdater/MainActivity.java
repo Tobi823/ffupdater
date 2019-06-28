@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                mDownloadUrl = downloadUrlObject.getUrl(UpdateChannel.channel, availableVersion);
+                mDownloadUrl = downloadUrlObject.getUrl(UpdateChannel.channel);
                 i.setData(Uri.parse(mDownloadUrl));
                 startActivity(i);
             }
