@@ -18,6 +18,7 @@
     <string name="action_settings">die Einstellungen</string>
     <string name="about">Über</string>
     <string name="not_installed">Nicht installiert</string>
+    <string name="title_activity_settings">Einstellungen</string>
     <string name="pref_update_channel_title">Wählen Sie den Update-Kanal für Firefox</string>
     <string name="pref_category_update_channel">Update-Kanal</string>
     <string name="update_notification_channel_name">Update-Benachrichtigung</string>
@@ -43,6 +44,8 @@
     <string name="update_interval_8h">"8 Stunden "</string>
     <string name="update_interval_never">Nie (deaktivere die automatische Update-Prüfung)</string>
     <string name="update_interval_12h">12 Stunden</string>
-    <string name="title_activity_settings">Einstellungen</string>
-
+    <string name="switch_to_unsafe_build_message">Dieser Aktualisierungskanal wird für Entwickler und Prüfer von Mozilla Firefox entworfen. Jede Version kann verschiedene Programmfehler enthalten, die Ihre übliche Arbeit mit dem Browser betreffen können. Wollen Sie wirklich auf diesen Kanal umschalten?</string>
+    <string name="switch_to_unsafe_build_negative_button">Nein, gehe zu \'%1$s\' zurück</string>
+    <string name="switch_to_unsafe_build_positive_button">Ja</string>
+    <string name="switch_to_unsafe_build_title">"Warnung "</string>
 </resources>
