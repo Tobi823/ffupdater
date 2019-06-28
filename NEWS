@@ -1,3 +1,6 @@
+2019-06-28 Version 67.1 (28)
+ * Update Russian translation (thanks DeenHyper74)
+
 2019-06-28 Version 67.0 (27)
  * Fix broken nightly download (thanks dannycolin for the info)
  * Display warning when switching from 'Release' channel to the 'Nightly' or 'Beta' channel (thanks DeenHyper74)
