@@ -11,7 +11,7 @@ public class DownloadUrl {
     public static final String X86_ARCHITECTURE = "android-x86";
 
     private static final String URL_TEMPLATE = "https://download.mozilla.org/?product=fennec-latest&os=%s&lang=multi";
-    private static final String BETA_URL_TEMPLAYE = "https://download.mozilla.org/?product=fennec-beta-latest&os=%s&lang=multi";
+    private static final String BETA_URL_TEMPLATE = "https://download.mozilla.org/?product=fennec-beta-latest&os=%s&lang=multi";
 
     //NIGHTLY BUILD HAS DIFFERENT URL
     private static final String NIGHTLY_URL_TEMPLATE = "https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-%s.multi.android-arm.apk";
@@ -42,7 +42,7 @@ public class DownloadUrl {
         if ("version".contentEquals(updateChannel)) {
             return String.format(URL_TEMPLATE, mozApiArch);
         } else if ("beta_version".contentEquals(updateChannel)) {
-            return String.format(BETA_URL_TEMPLAYE, mozApiArch);
+            return String.format(BETA_URL_TEMPLATE, mozApiArch);
         } else if ("nightly_version".contentEquals(updateChannel)) {
             if (mozApiArch.contentEquals(NON_X86_ARCHITECTURE)) {
                 return String.format(NIGHTLY_URL_TEMPLATE, version.get());
