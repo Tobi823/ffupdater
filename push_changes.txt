@@ -7,11 +7,17 @@ git fetch --tags
 - add tags
 
 # push changes with tag
-SET TAG=66.2
+SET TAG=67.1
 git tag %TAG%
 git push origin %TAG%
 git push github %TAG%
 git push gitlab %TAG%
+
+TAG=67.1
+git tag $TAG
+git push origin $TAG
+git push github $TAG
+git push gitlab $TAG
 
 # normal push
 git push origin
