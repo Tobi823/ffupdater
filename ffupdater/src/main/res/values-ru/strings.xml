@@ -20,10 +20,10 @@
 	<string name="not_installed">Не установлено</string>
 	<!-- Strings related to Settings -->
 	<string name="title_activity_settings">Настройки</string>
-	<string name="pref_category_update_channel">канал обновления</string>
+	<string name="pref_category_update_channel">Канал обновления</string>
 	<string name="pref_update_channel_title">Выберите канал обновления Firefox</string>
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
-    <string name="update_notification_channel_description">Эта категория уведомлений будет информировать вас о новых доступных обновлениях Firefox.</string>
+    <string name="update_notification_channel_description">Эта категория уведомлений будет информировать вас о доступных обновлениях Firefox.</string>
     <string name="pref_category_automatic_update_check">Автоматическая проверка обновления</string>
     <string name="pref_check_interval_title">Временной интервал</string>
 	<string name="update_interval_12h">12 часов</string>
@@ -45,8 +45,8 @@
 	<string name="update_interval_6h">6 часов</string>
 	<string name="update_interval_8h">8 часов</string>
 	<string name="update_interval_never">Никогда (отключить автоматическую проверку обновлений)</string>
-    <string name="switch_to_unsafe_build_message">Этот канал обновления разработан для разработчиков и тестеров Mozilla Firefox. Любая версия Firefox от него может содержать различные ошибки, которые могут затронуть Вашу обычную работу с браузером. Вы действительно хотите переключиться на этот канал?</string>
-    <string name="switch_to_unsafe_build_negative_button">Нет, вернитесь к \'%1$s\'</string>
+    <string name="switch_to_unsafe_build_message">Этот канал обновления создан для разработчиков и тестировщиков Mozilla Firefox. Любая версия Firefox с него может содержать различные ошибки, которые могут повлиять на Вашу обычную работу с браузером. Вы действительно хотите переключиться на этот канал?</string>
+    <string name="switch_to_unsafe_build_negative_button">Нет, вернуться к \'%1$s\'</string>
     <string name="switch_to_unsafe_build_positive_button">Да</string>
     <string name="switch_to_unsafe_build_title">"Предупреждение"</string>
 </resources>
