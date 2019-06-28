@@ -2,11 +2,23 @@
 
 ## Firefox-Updater
 
-An Android app to install and/or update Firefox for Android on your device, without using the Google Play Store.
+An Android app to install and update Firefox (and Beta/Nightly) for Android on your device, without using the Google Play Store.
 
-Shows the currently installed Firefox version (if available) and allows to query Mozilla's [releases directory site](https://archive.mozilla.org/pub/mobile/releases/) for the latest Firefox for Android release. It also lets a user start downloading the latest release version.
+Periodical the app will check for updates and will display a notification when a new update is available. The time interval of the automatic update checks can be configured.
 
-Currently the app is an activity with a two-button GUI. Checks for and displays the most current available version when the "Check available version"-button is tapped. The "Download Firefox" button starts an intent to download the last version from a URL described in Mozilla's [README.txt](https://archive.mozilla.org/pub/mobile/releases/latest/README.txt). However, the plan is to move this to an Android service to perform periodical update checks and download/install from within the app itself.
+## Screenshots
+
+![Screenshot of the main screen](screenshot1.png "Screenshot of the main screen")
+
+![Screenshot of the setting screen](screenshot2.png "Screenshot of the setting screen")
+
+## Technical detail
+
+Internally the [Mozilla API](https://archive.mozilla.org/pub/mobile/releases/) will be queried. 
+
+When an update is available, the user will be redirect to `https://download.mozilla.org/?product=[fennec-latest|fennec-beta-latest,fennec-nightly-latest]&os=[android|android-x86]&lang=multi`.
+For example `https://download.mozilla.org/?product=fennec-beta-latest&os=android-x86&lang=multi`.
+
 
 ## History
 
