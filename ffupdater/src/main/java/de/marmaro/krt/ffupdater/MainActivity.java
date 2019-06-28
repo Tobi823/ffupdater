@@ -33,7 +33,6 @@ import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private static final String PROPERTY_OS_ARCHITECTURE = "os.arch";
     private static String mDownloadUrl = "";
 
     protected TextView firefoxAvailableVersionTextview, firefoxInstalledVersionTextView, subtitleTextView;
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected ProgressBar progressBar;
     protected SwipeRefreshLayout swipeRefreshLayout;
 
-    private DownloadUrl downloadUrlObject;
     private SharedPreferences sharedPref;
     private FirefoxMetadata localFirefox;
     private Version availableVersion;
@@ -59,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
         StrictMode.setThreadPolicy(policy);
 
-        downloadUrlObject = new DownloadUrl(System.getProperty(PROPERTY_OS_ARCHITECTURE), android.os.Build.VERSION.SDK_INT);
-
         // starts the repeated update check
         UpdateChecker.registerOrUnregister(this);
     }
@@ -70,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                mDownloadUrl = downloadUrlObject.getUrl(UpdateChannel.channel);
+                mDownloadUrl = DownloadUrl.getUrl(UpdateChannel.channel);
                 i.setData(Uri.parse(mDownloadUrl));
                 startActivity(i);
             }
