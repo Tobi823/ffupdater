@@ -8,9 +8,9 @@ Periodical the app will check for updates and will display a notification when a
 
 ## Screenshots
 
-<img src="screenshot1.png" alt="Get it on F-Droid" style="width: 100em">
+<img src="screenshot1.png" alt="Screenshot of the main screen" style="height: 50em">
 
-![Screenshot of the setting screen](screenshot2.png "Screenshot of the setting screen")
+<img src="screenshot2.png" alt="Screenshot of the setting screen" style="height: 50em">
 
 ## Technical detail
 
