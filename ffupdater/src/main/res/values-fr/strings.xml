@@ -43,6 +43,6 @@
     <string name="update_interval_5d">5 jours</string>
     <string name="update_interval_6h">6 heures</string>
     <string name="update_interval_8h">"8 heures "</string>
-    <string name="update_interval_never">Jamais - Désactiver le contrôle de mise à jour automatique</string>
+    <string name="update_interval_never">Jamais (désactiver le contrôle de mise à jour automatique)</string>
 
 </resources>

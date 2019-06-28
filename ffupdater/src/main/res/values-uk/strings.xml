@@ -43,5 +43,5 @@
 	<string name="update_interval_6d">6 днів</string>
 	<string name="update_interval_6h">6 годин</string>
 	<string name="update_interval_8h">8 годин</string>
-	<string name="update_interval_never">Ніколи - вимкнення перевірки автоматичного оновлення</string>
+	<string name="update_interval_never">Ніколи (вимкнення перевірки автоматичного оновлення)</string>
 </resources>

@@ -41,7 +41,7 @@
     <string name="update_interval_6d">6 Tage</string>
     <string name="update_interval_6h">6 Stunden</string>
     <string name="update_interval_8h">"8 Stunden "</string>
-    <string name="update_interval_never">"Nie - Deaktivere die automatische Update-Prüfung "</string>
+    <string name="update_interval_never">Nie (deaktivere die automatische Update-Prüfung)</string>
     <string name="update_interval_12h">12 Stunden</string>
     <string name="title_activity_settings">Einstellungen</string>
 

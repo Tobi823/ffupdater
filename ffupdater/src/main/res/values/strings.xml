@@ -33,7 +33,7 @@
     <string name="update_notification_channel_name">Update notification</string>
     <string name="update_notification_channel_description">This notification category will inform you about new available Firefox updates.</string>
 
-    <string name="update_interval_never">Never - Disable automatic update check</string>
+    <string name="update_interval_never">Never (disable automatic update check)</string>
     <string name="update_interval_15min">15 minutes</string>
     <string name="update_interval_30min">30 minutes</string>
     <string name="update_interval_1h">1 hour</string>

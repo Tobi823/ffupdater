@@ -44,7 +44,7 @@
 	<string name="update_interval_6d">6 дней</string>
 	<string name="update_interval_6h">6 часов</string>
 	<string name="update_interval_8h">8 часов</string>
-	<string name="update_interval_never">Никогда - отключить автоматическую проверку обновлений</string>
+	<string name="update_interval_never">Никогда (отключить автоматическую проверку обновлений)</string>
 
 
 </resources>
