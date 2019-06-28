@@ -8,8 +8,7 @@ Periodical the app will check for updates and will display a notification when a
 
 ## Screenshots
 
-[<img src="screenshot1.png" alt="Screenshot of the main screen" height="640" width="360">]()
-[<img src="screenshot2.png" alt="Screenshot of the setting screen"  height="640" width="360">]()
+<img src="screenshot1.jpg" alt="Screenshot of the main screen"><img src="screenshot2.jpg" alt="Screenshot of the setting screen">
 
 ## Technical detail
 
