@@ -1,3 +1,6 @@
+2019-06-28 Version 67.4 (31)
+ * Fix warning dialogue disappears after screen rotation (thanks DeenHyper74)
+
 2019-06-28 Version 67.3 (30)
  * Fix crash when selecting an entry after rotating the channel dialog (thanks DeenHyper74)
 
