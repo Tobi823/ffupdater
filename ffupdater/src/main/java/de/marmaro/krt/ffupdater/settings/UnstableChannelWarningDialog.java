@@ -33,7 +33,7 @@ public class UnstableChannelWarningDialog extends DialogFragment {
                         dialog.dismiss();
                     }
                 })
-                .setNegativeButton(context.getString(R.string.switch_to_unsafe_build_negative_button, defaultBuildChannel), new DialogInterface.OnClickListener() {
+                .setNegativeButton(context.getString(R.string.switch_to_unsafe_build_negative_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         PreferenceManager.getDefaultSharedPreferences(context)
