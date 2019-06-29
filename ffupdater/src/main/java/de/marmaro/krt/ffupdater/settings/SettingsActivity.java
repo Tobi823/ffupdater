@@ -5,17 +5,15 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import de.marmaro.krt.ffupdater.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.settings_activity);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(android.R.id.content, new SettingsFragment())
-                .commit();
     }
 
     @Override
@@ -25,5 +23,4 @@ public class SettingsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
