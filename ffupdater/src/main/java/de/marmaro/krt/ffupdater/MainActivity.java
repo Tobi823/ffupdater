@@ -29,6 +29,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import de.marmaro.krt.ffupdater.background.LatestReleaseFinder;
 import de.marmaro.krt.ffupdater.background.UpdateChecker;
+import de.marmaro.krt.ffupdater.download.fennec.DownloadUrl;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
