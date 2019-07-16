@@ -1,8 +1,7 @@
 package de.marmaro.krt.ffupdater;
 
-import java.util.Arrays;
-
 import static android.os.Build.CPU_ABI;
+import static android.os.Build.CPU_ABI2;
 import static android.os.Build.SUPPORTED_ABIS;
 import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
@@ -34,10 +33,22 @@ public class DownloadUrl {
     }
 
     private static String getOperatingSystem() {
-        if (SDK_INT >= LOLLIPOP) {
-            return Arrays.asList(SUPPORTED_ABIS).contains(X86_ARCH) ? X86_OS : DEFAULT_OS;
+        String[] supportedAbis;
+        if (SDK_INT < LOLLIPOP) {
+            supportedAbis = new String[] {CPU_ABI, CPU_ABI2};
+        } else {
+            supportedAbis = SUPPORTED_ABIS;
         }
-        return CPU_ABI.equals(X86_ARCH) || CPU_ABI.equals(X64_ARCH) ? X86_OS : DEFAULT_OS;
+
+        for (String supportedAbi : supportedAbis) {
+            switch (supportedAbi) {
+                case "armeabi-v7a":
+                    return DEFAULT_OS;
+                case "x86":
+                    return X86_OS;
+            }
+        }
+        return DEFAULT_OS;
     }
 
     private static String getProduct(String updateChannel) {
