@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeContainer"
@@ -24,91 +23,306 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/fennecReleaseCard"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
-                        style="@style/TextAppearance.AppCompat.Title"
-                        android:layout_width="fill_parent"
+                        android:id="@+id/fennecReleaseTitle"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
                         android:fontFamily="sans-serif-light"
-                        android:gravity="center"
                         android:singleLine="true"
-                        android:text="@string/installed_version"
-
-                        android:textColor="@color/gray"/>
+                        android:text="Fennec Release"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/firefox_installed_version"
-                        style="@style/TextAppearance.AppCompat.Title"
-                        android:layout_width="fill_parent"
+                        android:id="@+id/fennecReleaseInstalledVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:textColor="@color/gray"/>
+                        android:text="Installed Version:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fennecReleaseTitle" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/fennecReleaseInstalledVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="68.0"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseInstalledVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fennecReleaseInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fennecReleaseAvailableVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="Available Version:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fennecReleaseInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fennecReleaseAvailableVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="68.1"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseAvailableVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fennecReleaseAvailableVersionText" />
+
+                    <ImageButton
+                        android:id="@+id/fennecReleaseDownloadButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Download the latest Fennec Release"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_file_download_black_24dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/fennecBetaCard"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
-                        style="@style/TextAppearance.AppCompat.Title"
-                        android:layout_width="fill_parent"
+                        android:id="@+id/fennecBetaTitle"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
                         android:fontFamily="sans-serif-light"
-                        android:gravity="center"
                         android:singleLine="true"
-                        android:text="@string/available_version"
-                        android:textColor="@color/gray"/>
+                        android:text="Fennec Beta"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/firefox_available_version"
-                        style="@style/TextAppearance.AppCompat.Title"
-                        android:layout_width="fill_parent"
+                        android:id="@+id/fennecBetaInstalledVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:textColor="@color/gray"/>
+                        android:text="Installed Version:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fennecBetaTitle" />
 
-                    <ProgressBar
-                        android:id="@+id/progress_wheel"
-                        style="?android:attr/progressBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"/>
+                    <TextView
+                        android:id="@+id/fennecBetaInstalledVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="68.0b1"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/fennecBetaInstalledVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fennecBetaInstalledVersionText" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/fennecBetaAvailableVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="Available Version:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fennecBetaInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fennecBetaAvailableVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="68.1b1"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/fennecBetaAvailableVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fennecBetaAvailableVersionText" />
+
+                    <ImageButton
+                        android:id="@+id/fennecBetaDownloadButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Download the latest Fennec Release"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_file_download_black_24dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fennecNightlyCard"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/fennecNightlyTitle"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:singleLine="true"
+                        android:text="Fennec Nightly"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/fennecNightlyInstalledVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="Installed Version:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fennecNightlyTitle" />
+
+                    <TextView
+                        android:id="@+id/fennecNightlyInstalledVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="68.0a1"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/fennecNightlyInstalledVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fennecNightlyInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fennecNightlyAvailableVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="Available Version:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fennecNightlyInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fennecNightlyAvailableVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:text="68.2a1"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/fennecNightlyAvailableVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fennecNightlyAvailableVersionText" />
+
+                    <ImageButton
+                        android:id="@+id/fennecNightlyDownloadButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Download the latest Fennec Release"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_file_download_black_24dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 

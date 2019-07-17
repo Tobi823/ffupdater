@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loadLatestMozillaVersion();
+                // loadLatestMozillaVersion(); TODO
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //check for  latest version as soon as app instance is created: this will remove redundancy of check availability button
-        loadLatestMozillaVersion();
-        displayVersions();
+        //loadLatestMozillaVersion(); TODO
+        //displayVersions(); TODO
     }
 
     /**
