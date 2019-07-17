@@ -22,6 +22,15 @@
             android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
+            <ProgressBar
+                android:id="@+id/progress_wheel"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/fennecReleaseCard"
                 android:layout_width="fill_parent"
@@ -75,7 +84,6 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="68.0"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toEndOf="@+id/fennecReleaseInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecReleaseInstalledVersionText" />
@@ -101,7 +109,6 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="68.1"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toEndOf="@+id/fennecReleaseAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecReleaseAvailableVersionText" />
@@ -114,10 +121,11 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
+                        android:onClick="fennecReleaseDownloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_file_download_black_24dp" />
+                        app:srcCompat="@drawable/ic_file_download_orange" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -176,7 +184,6 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="68.0b1"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toEndOf="@+id/fennecBetaInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecBetaInstalledVersionText" />
@@ -202,7 +209,6 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="68.1b1"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toEndOf="@+id/fennecBetaAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecBetaAvailableVersionText" />
@@ -215,10 +221,11 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
+                        android:onClick="fennecBetaDownloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_file_download_black_24dp" />
+                        app:srcCompat="@drawable/ic_file_download_orange" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -278,7 +285,6 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="68.0a1"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toEndOf="@+id/fennecNightlyInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecNightlyInstalledVersionText" />
@@ -304,7 +310,6 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="68.2a1"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toEndOf="@+id/fennecNightlyAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecNightlyAvailableVersionText" />
@@ -317,10 +322,11 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
+                        android:onClick="fennecNightlyDownloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_file_download_black_24dp" />
+                        app:srcCompat="@drawable/ic_file_download_orange" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

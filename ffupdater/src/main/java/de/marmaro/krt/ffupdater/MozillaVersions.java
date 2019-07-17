@@ -12,7 +12,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.net.URLConnection;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -29,7 +28,7 @@ public class MozillaVersions {
                 return IOUtils.toString(inputStream, UTF_8);
             }
         } catch (IOException e) {
-            Log.e(TAG, "cant get latest firefox versions", e);
+            Log.e(TAG, "cant getVersion latest firefox versions", e);
             return "";
         } finally {
             if (urlConnection != null) {
@@ -45,7 +44,19 @@ public class MozillaVersions {
         try {
             jObject = new JSONObject(result);
             String versionString = jObject.getString(UpdateChannel.channel);
-            version = new Version(versionString);
+
+            // TODO
+            switch (UpdateChannel.channel) {
+                case "version":
+                    version = new Version(versionString, Browser.FENNEC_RELEASE);
+                    break;
+                case "beta_version":
+                    version = new Version(versionString, Browser.FENNEC_BETA);
+                    break;
+                case "nigthly_version":
+                    version = new Version(versionString, Browser.FENNEC_NIGHTLY);
+                    break;
+            }
         } catch (JSONException e) {
             Log.e(TAG, "Error: " + e);
         }

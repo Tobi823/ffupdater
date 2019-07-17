@@ -120,7 +120,7 @@ public class UpdateChecker extends Worker {
     private boolean isUpdateAvailable() {
         Version current = FirefoxMetadata.create(getApplicationContext().getPackageManager()).getVersion();
         Version latest = MozillaVersions.getVersion();
-        return (current.compareTo(latest) < 0);
+        return !current.equals(latest);
     }
 
     private void showNotification() {

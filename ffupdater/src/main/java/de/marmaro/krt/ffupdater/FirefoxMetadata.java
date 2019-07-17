@@ -13,28 +13,33 @@ public class FirefoxMetadata {
 
     private boolean installed;
     private PackageInfo packageInfo;
+    private Browser browser;
 
-    private FirefoxMetadata(boolean installed, PackageInfo packageInfo) {
+    private FirefoxMetadata(boolean installed, PackageInfo packageInfo, Browser browser) {
         this.installed = installed;
         this.packageInfo = packageInfo;
+        this.browser = browser;
     }
 
     public static FirefoxMetadata create(PackageManager packageManager) {
+        return create(packageManager, UpdateChannel.channel);
+    }
+
+    public static FirefoxMetadata create(PackageManager packageManager, String updateChannel) {
         try {
-            switch (UpdateChannel.channel) {
+            switch (updateChannel) {
                 case "beta_version":
-                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID_BETA, 0));
+                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID_BETA, 0), Browser.FENNEC_BETA);
                 case "nightly_version":
-                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID_NIGHTLY, 0));
+                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID_NIGHTLY, 0), Browser.FENNEC_NIGHTLY);
                 default:
-                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID, 0));
+                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID, 0), Browser.FENNEC_RELEASE);
             }
         } catch (PackageManager.NameNotFoundException e) {
             //package not found -> firefox is not installed
         }
-        return new FirefoxMetadata(false, null);
+        return new FirefoxMetadata(false, null, Browser.FENNEC_RELEASE);
     }
-
 
     /**
      * @return is the firefox installed on the android smartphone?
@@ -70,6 +75,6 @@ public class FirefoxMetadata {
      */
     public Version getVersion() {
         String versionName = getVersionName();
-        return new Version(versionName);
+        return new Version(versionName, browser);
     }
 }

@@ -43,6 +43,6 @@ public class LatestReleaseFinder extends Worker {
     @Override
     public Result doWork() {
         Version version = MozillaVersions.getVersion();
-        return Result.success(new Data.Builder().putString(VERSION, version.get()).build());
+        return Result.success(new Data.Builder().putString(VERSION, version.getVersion()).build());
     }
 }

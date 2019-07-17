@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,24 +12,24 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.work.WorkInfo;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import de.marmaro.krt.ffupdater.background.LatestReleaseFinder;
+import java.lang.ref.WeakReference;
+
 import de.marmaro.krt.ffupdater.background.UpdateChecker;
 import de.marmaro.krt.ffupdater.download.fennec.DownloadUrl;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static String mDownloadUrl = "";
 
-    protected TextView firefoxAvailableVersionTextview, firefoxInstalledVersionTextView, subtitleTextView;
-    protected FloatingActionButton downloadFirefox;
+    protected TextView subtitleTextView;
+    protected FloatingActionButton addBrowser;
     protected Toolbar toolbar;
     protected ProgressBar progressBar;
     protected SwipeRefreshLayout swipeRefreshLayout;
@@ -46,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
     private FirefoxMetadata localFirefox;
     private Version availableVersion;
+    private TextView fennecReleaseInstalledVersion;
+    private TextView fennecBetaInstalledVersion;
+    private TextView fennecNightlyInstalledVersion;
+    private TextView fennecReleaseAvailableVersion;
+    private TextView fennecBetaAvailableVersion;
+    private TextView fennecNightlyAvailableVersion;
+    private ImageButton fennecReleaseDownloadButton;
+    private ImageButton fennecBetaDownloadButton;
+    private ImageButton fennecNightlyDownloadButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,28 +74,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUIActions() {
-        downloadFirefox.setOnClickListener(view -> {
-            Consumer<Intent> startActivity = this::startActivity;
-            new OpenDownloadLink(startActivity).execute(UpdateChannel.channel);
-        });
         //set to listen pull down of screen
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // loadLatestMozillaVersion(); TODO
-                swipeRefreshLayout.setRefreshing(false);
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            fetchLatestVersion();
+            swipeRefreshLayout.setRefreshing(false);
         });
     }
 
     private void initUI() {
         setContentView(R.layout.main_activity);
-        firefoxAvailableVersionTextview = findViewById(R.id.firefox_available_version);
-        firefoxInstalledVersionTextView = findViewById(R.id.firefox_installed_version);
+
+        fennecReleaseInstalledVersion = findViewById(R.id.fennecReleaseInstalledVersion);
+        fennecBetaInstalledVersion = findViewById(R.id.fennecBetaInstalledVersion);
+        fennecNightlyInstalledVersion = findViewById(R.id.fennecNightlyInstalledVersion);
+
+        fennecReleaseAvailableVersion = findViewById(R.id.fennecReleaseAvailableVersion);
+        fennecBetaAvailableVersion = findViewById(R.id.fennecBetaAvailableVersion);
+        fennecNightlyAvailableVersion = findViewById(R.id.fennecNightlyAvailableVersion);
+
+        fennecReleaseDownloadButton = findViewById(R.id.fennecReleaseDownloadButton);
+        fennecBetaDownloadButton = findViewById(R.id.fennecBetaDownloadButton);
+        fennecNightlyDownloadButton = findViewById(R.id.fennecNightlyDownloadButton);
+
         subtitleTextView = findViewById(R.id.toolbar_subtitle);
         toolbar = findViewById(R.id.toolbar);
-        downloadFirefox = findViewById(R.id.fab);
-        downloadFirefox.hide();
+        addBrowser = findViewById(R.id.addBrowser);
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         progressBar = findViewById(R.id.progress_wheel);
@@ -105,82 +118,54 @@ public class MainActivity extends AppCompatActivity {
             subtitleTextView.setText(getString(R.string.firefox_nightly_for_developer));
         }
 
-        // check for the version of the current installed firefox
-        localFirefox = FirefoxMetadata.create(getPackageManager());
-        // log and display the current firefox version
-        if (localFirefox.isInstalled()) {
-            String format = "Firefox %s (%s) is installed.";
-            Log.i(TAG, String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode()));
-        } else {
-            Log.i(TAG, "Firefox is not installed.");
-        }
-
-        //check for  latest version as soon as app instance is created: this will remove redundancy of check availability button
-        //loadLatestMozillaVersion(); TODO
-        //displayVersions(); TODO
+        updateGui(null);
+        fetchLatestVersion();
     }
 
-    /**
-     * Display the version number of the latest firefox release.
-     *
-     * @param value version of the latest firefox release
-     */
-    private void setAvailableVersion(Version value) {
-        if (value == null) {
-            firefoxAvailableVersionTextview.setVisibility(View.GONE);
-            (new AlertDialog.Builder(this))
-                    .setMessage(getString(R.string.check_available_error_message))
-                    .setPositiveButton(getString(R.string.ok), null)
-                    .show();
-        } else {
-            availableVersion = value;
-            Log.d(TAG, "Found highest available version: " + availableVersion.get());
-            progressBar.setVisibility(View.GONE);
-            downloadFirefox.show();
-            displayVersions();
-        }
-    }
+    private void updateGui(MozillaVersions.Response response) {
+        FirefoxMetadata fennecRelease = FirefoxMetadata.create(getPackageManager(), "version");
+//        findViewById(R.id.fennecReleaseCard).setVisibility(fennecRelease.isInstalled() ? View.VISIBLE : View.GONE);
+        fennecReleaseInstalledVersion.setText(fennecRelease.getVersionName());
 
-    /**
-     * Refresh the installedVersionTextView and availableVersionTextView
-     */
-    private void displayVersions() {
-        String installedText;
-        if (localFirefox.isInstalled()) {
-            String format = getString(R.string.installed_version_text_format);
-            installedText = String.format(format, localFirefox.getVersionName(), localFirefox.getVersionCode());
+        FirefoxMetadata fennecBeta = FirefoxMetadata.create(getPackageManager(), "beta_version");
+//        findViewById(R.id.fennecBetaCard).setVisibility(fennecBeta.isInstalled() ? View.VISIBLE : View.GONE);
+        fennecBetaInstalledVersion.setText(fennecBeta.getVersionName());
+
+        FirefoxMetadata fennecNightly = FirefoxMetadata.create(getPackageManager(), "nightly_version");
+//        findViewById(R.id.fennecNightlyCard).setVisibility(fennecNightly.isInstalled() ? View.VISIBLE : View.GONE);
+        fennecNightlyInstalledVersion.setText(fennecNightly.getVersionName());
+
+
+        if (response == null || fennecRelease.getVersion().equals(new Version(response.getReleaseVersion(), Browser.FENNEC_RELEASE))) {
+            fennecReleaseDownloadButton.setImageResource(R.drawable.ic_file_download_grey);
         } else {
-            String format = getString(R.string.not_installed_text_format);
-            installedText = String.format(format, getString(R.string.none), getString(R.string.not_installed));
+            fennecReleaseDownloadButton.setImageResource(R.drawable.ic_file_download_orange);
         }
-        firefoxInstalledVersionTextView.setText(installedText);
-        String availableText;
-        if (null == availableVersion) {
-            availableText = "";
+
+        if (response == null || fennecBeta.getVersion().equals(new Version(response.getBetaVersion(), Browser.FENNEC_BETA))) {
+            fennecBetaDownloadButton.setImageResource(R.drawable.ic_file_download_grey);
         } else {
-            availableText = availableVersion.get();
+            fennecBetaDownloadButton.setImageResource(R.drawable.ic_file_download_orange);
         }
-        firefoxAvailableVersionTextview.setText(availableText);
+
+        if (response == null || fennecNightly.getVersion().equals(new Version(response.getNightlyVersion(), Browser.FENNEC_NIGHTLY))) {
+            fennecNightlyDownloadButton.setImageResource(R.drawable.ic_file_download_grey);
+        } else {
+            fennecNightlyDownloadButton.setImageResource(R.drawable.ic_file_download_orange);
+        }
     }
 
     /**
      * Set the availableVersionTextView to "(checking…)" and start the LatestReleaseService service
      */
-    private void loadLatestMozillaVersion() {
-        firefoxAvailableVersionTextview.setVisibility(View.VISIBLE);
-        firefoxAvailableVersionTextview.setText(getString(R.string.checking));
+    private void fetchLatestVersion() {
+        fennecReleaseAvailableVersion.setText("");
+        fennecBetaAvailableVersion.setText("");
+        fennecNightlyAvailableVersion.setText("");
+
         progressBar.setVisibility(View.VISIBLE);
         if (isConnectedToInternet()) {
-            LiveData<WorkInfo> register = LatestReleaseFinder.register();
-            register.observe(this, new Observer<WorkInfo>() {
-                @Override
-                public void onChanged(WorkInfo workInfo) {
-                    String version = workInfo.getOutputData().getString(LatestReleaseFinder.VERSION);
-                    if (null != version && !version.isEmpty()) {
-                        setAvailableVersion(new Version(version));
-                    }
-                }
-            });
+            new LatestVersionFetcher(new WeakReference<>(this)).execute();
         } else {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
             progressBar.setVisibility(View.GONE);
@@ -231,12 +216,23 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private static class OpenDownloadLink extends AsyncTask<String, Void, String> {
+    public void fennecReleaseDownloadButtonClicked(View view) {
+        new DownloadLinkOpener(new WeakReference<>(this)).execute("version");
+    }
 
-        private Consumer<Intent> startActivity;
+    public void fennecBetaDownloadButtonClicked(View view) {
+        new DownloadLinkOpener(new WeakReference<>(this)).execute("beta_version");
+    }
 
-        private OpenDownloadLink(Consumer<Intent> consumer) {
-            this.startActivity = consumer;
+    public void fennecNightlyDownloadButtonClicked(View view) {
+        new DownloadLinkOpener(new WeakReference<>(this)).execute("nightly_version");
+    }
+
+    private static class DownloadLinkOpener extends AsyncTask<String, Void, String> {
+        private WeakReference<Context> context;
+
+        private DownloadLinkOpener(WeakReference<Context> context) {
+            this.context = context;
         }
 
         @Override
@@ -247,9 +243,74 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String downloadUrl) {
             super.onPostExecute(downloadUrl);
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(downloadUrl));
-            startActivity.accept(i);
+            if (context == null || context.get() == null) {
+                return;
+            }
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(downloadUrl));
+            context.get().startActivity(intent);
         }
     }
+
+    private static class LatestVersionFetcher extends AsyncTask<Void, Void, MozillaVersions.Response> {
+        private WeakReference<MainActivity> mainActivity;
+
+        private LatestVersionFetcher(WeakReference<MainActivity> mainActivity) {
+            this.mainActivity = mainActivity;
+        }
+
+        @Override
+        protected MozillaVersions.Response doInBackground(Void... voids) {
+            return MozillaVersions.getResponse();
+        }
+
+        @Override
+        protected void onPostExecute(MozillaVersions.Response response) {
+            super.onPostExecute(response);
+            if (mainActivity == null || mainActivity.get() == null) {
+                return;
+            }
+            MainActivity mainActivity = this.mainActivity.get();
+            fadeOutProgressBar();
+
+            if (response == null) {
+                (new AlertDialog.Builder(mainActivity))
+                        .setMessage(mainActivity.getString(R.string.check_available_error_message))
+                        .setPositiveButton(mainActivity.getString(R.string.ok), null)
+                        .show();
+                return;
+            }
+
+            mainActivity.fennecReleaseAvailableVersion.setText(response.getReleaseVersion());
+            mainActivity.fennecBetaAvailableVersion.setText(response.getBetaVersion());
+            mainActivity.fennecNightlyAvailableVersion.setText(response.getNightlyVersion());
+            mainActivity.updateGui(response);
+        }
+
+        private void fadeOutProgressBar() {
+            // https://stackoverflow.com/a/12343453
+            AlphaAnimation fadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
+            fadeOutAnimation.setDuration(1000);
+            fadeOutAnimation.setFillAfter(false);
+            fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    mainActivity.get().progressBar.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+            mainActivity.get().progressBar.startAnimation(fadeOutAnimation);
+        }
+    }
+
 }
