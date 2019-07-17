@@ -3,17 +3,18 @@ apply plugin: "com.jaredsburrows.license"
 
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'com.google.android.material:material:1.0.0-beta01'
-    implementation 'androidx.cardview:cardview:1.0.0-beta01'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
-    implementation 'androidx.vectordrawable:vectordrawable:1.0.0-beta01'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
-    implementation "androidx.work:work-runtime:2.0.0"
-    implementation "androidx.work:work-testing:2.0.0"
-    implementation "androidx.preference:preference:1.1.0-beta01"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation "androidx.work:work-runtime:2.1.0"
+    implementation "androidx.work:work-testing:2.1.0"
+    implementation "androidx.preference:preference:1.1.0-rc01"
     api 'com.google.guava:guava:28.0-android'
     implementation 'com.google.code.gson:gson:2.8.5'
+    //noinspection GradleDependency
     implementation 'commons-io:commons-io:2.5' //because it requires only JDK 1.6+ for old android devices
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
