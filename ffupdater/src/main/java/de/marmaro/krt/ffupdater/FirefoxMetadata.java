@@ -7,46 +7,61 @@ import android.content.pm.PackageManager;
  * This class can access the version number of the installed firefox.
  */
 public class FirefoxMetadata {
-    public static final String PACKAGE_ID = "org.mozilla.firefox";
-    private static final String PACKAGE_ID_BETA="org.mozilla.firefox_beta";
-    private static final String PACKAGE_ID_NIGHTLY="org.mozilla.fennec_aurora";
-
+    private static final String PACKAGE_ID = "org.mozilla.firefox";
+    private static final String PACKAGE_ID_BETA = "org.mozilla.firefox_beta";
+    private static final String PACKAGE_ID_NIGHTLY = "org.mozilla.fennec_aurora";
 
     private boolean installed;
     private PackageInfo packageInfo;
 
-    private FirefoxMetadata(Builder builder) {
-        this.installed = builder.installed;
-        this.packageInfo = builder.packageInfo;
+    private FirefoxMetadata(boolean installed, PackageInfo packageInfo) {
+        this.installed = installed;
+        this.packageInfo = packageInfo;
     }
+
+    public static FirefoxMetadata create(PackageManager packageManager) {
+        try {
+            switch (UpdateChannel.channel) {
+                case "beta_version":
+                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID_BETA, 0));
+                case "nightly_version":
+                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID_NIGHTLY, 0));
+                default:
+                    return new FirefoxMetadata(true, packageManager.getPackageInfo(PACKAGE_ID, 0));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            //package not found -> firefox is not installed
+        }
+        return new FirefoxMetadata(false, null);
+    }
+
 
     /**
      * @return is the firefox installed on the android smartphone?
      */
-    public boolean isInstalled() {
+    boolean isInstalled() {
         return installed;
     }
 
     /**
      * @return if firefox is installed, return the versionCode. if firefox is not installed, return 0.
      */
-    public int getVersionCode() {
-        if (null == packageInfo) {
-            return 0;
+    int getVersionCode() {
+        if (installed) {
+            return packageInfo.versionCode;
         }
+        return 0;
 
-        return packageInfo.versionCode;
     }
 
     /**
      * @return if firefox is installed, return the versionName. if firefox is not installed, return an empty string.
      */
-    public String getVersionName() {
-        if (null == packageInfo) {
-            return "";
+    String getVersionName() {
+        if (installed) {
+            return packageInfo.versionName;
         }
-
-        return packageInfo.versionName;
+        return "";
     }
 
     /**
@@ -56,30 +71,5 @@ public class FirefoxMetadata {
     public Version getVersion() {
         String versionName = getVersionName();
         return new Version(versionName);
-    }
-
-    // this class can only be build with the method checkLocalInstalledFirefox from this Builder
-    public static class Builder {
-        private boolean installed;
-        private PackageInfo packageInfo;
-
-        public FirefoxMetadata checkLocalInstalledFirefox(PackageManager packageManager) {
-            try {
-                if ("beta_version".contentEquals(UpdateChannel.channel)) {
-                    packageInfo = packageManager.getPackageInfo(PACKAGE_ID_BETA, 0);
-                    installed = true;
-                } else if ("nightly_version".contentEquals(UpdateChannel.channel)) {
-                    packageInfo = packageManager.getPackageInfo(PACKAGE_ID_NIGHTLY, 0);
-                    installed = true;
-                }else {
-                    packageInfo = packageManager.getPackageInfo(PACKAGE_ID, 0);
-                    installed = true;
-                }
-
-            } catch (PackageManager.NameNotFoundException e) {
-                installed = false;
-            }
-            return new FirefoxMetadata(this);
-        }
     }
 }
