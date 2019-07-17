@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // check for the version of the current installed firefox
-        localFirefox = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(getPackageManager());
+        localFirefox = FirefoxMetadata.create(getPackageManager());
         // log and display the current firefox version
         if (localFirefox.isInstalled()) {
             String format = "Firefox %s (%s) is installed.";

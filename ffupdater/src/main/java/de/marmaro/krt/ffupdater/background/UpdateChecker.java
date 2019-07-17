@@ -118,7 +118,7 @@ public class UpdateChecker extends Worker {
     }
 
     private boolean isUpdateAvailable() {
-        Version current = new FirefoxMetadata.Builder().checkLocalInstalledFirefox(getApplicationContext().getPackageManager()).getVersion();
+        Version current = FirefoxMetadata.create(getApplicationContext().getPackageManager()).getVersion();
         Version latest = MozillaVersions.getVersion();
         return (current.compareTo(latest) < 0);
     }
