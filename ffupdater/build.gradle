@@ -14,7 +14,7 @@ dependencies {
     implementation "androidx.preference:preference:1.1.0-beta01"
     api 'com.google.guava:guava:28.0-android'
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'commons-io:commons-io:2.6'
+    implementation 'commons-io:commons-io:2.5' //because it requires only JDK 1.6+ for old android devices
 
 //    testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:1.10.19'
