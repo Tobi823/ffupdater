@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
@@ -63,14 +64,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUIActions() {
-        downloadFirefox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                mDownloadUrl = DownloadUrl.getUrl(UpdateChannel.channel);
-                i.setData(Uri.parse(mDownloadUrl));
-                startActivity(i);
-            }
+        downloadFirefox.setOnClickListener(view -> {
+            Consumer<Intent> startActivity = this::startActivity;
+            new OpenDownloadLink(startActivity).execute(UpdateChannel.channel);
         });
         //set to listen pull down of screen
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -233,5 +229,27 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private static class OpenDownloadLink extends AsyncTask<String, Void, String> {
+
+        private Consumer<Intent> startActivity;
+
+        private OpenDownloadLink(Consumer<Intent> consumer) {
+            this.startActivity = consumer;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return DownloadUrl.getUrl(strings[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String downloadUrl) {
+            super.onPostExecute(downloadUrl);
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(downloadUrl));
+            startActivity.accept(i);
+        }
     }
 }
