@@ -54,13 +54,12 @@
                         style="@style/TextAppearance.MaterialComponents.Headline5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
                         android:text="Fennec Release"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -68,13 +67,12 @@
                         style="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
                         android:singleLine="true"
-                        android:text="Installed Version:"
+                        android:text="Installed:"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fennecReleaseTitle" />
+                        app:layout_constraintTop_toBottomOf="@+id/fennecReleaseIcon" />
 
                     <TextView
                         android:id="@+id/fennecReleaseInstalledVersion"
@@ -93,10 +91,8 @@
                         style="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="Available Version:"
+                        android:text="Available:"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecReleaseInstalledVersionText" />
@@ -117,10 +113,12 @@
                         android:id="@+id/fennecReleaseInfoButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fennecReleaseDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
@@ -133,6 +131,14 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_orange" />
+
+                    <ImageView
+                        android:id="@+id/fennecReleaseIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_firefox_logo" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -161,13 +167,12 @@
                         style="@style/TextAppearance.MaterialComponents.Headline5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
                         android:text="Fennec Beta"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/fennecBetaIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -175,13 +180,12 @@
                         style="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
                         android:singleLine="true"
-                        android:text="Installed Version:"
+                        android:text="Installed:"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fennecBetaTitle" />
+                        app:layout_constraintTop_toBottomOf="@+id/fennecBetaIcon" />
 
                     <TextView
                         android:id="@+id/fennecBetaInstalledVersion"
@@ -200,10 +204,8 @@
                         style="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="Available Version:"
+                        android:text="Available:"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecBetaInstalledVersionText" />
@@ -224,10 +226,12 @@
                         android:id="@+id/fennecBetaInfoButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fennecBetaDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
@@ -240,6 +244,14 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_orange" />
+
+                    <ImageView
+                        android:id="@+id/fennecBetaIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_firefox_logo_beta" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -269,13 +281,12 @@
                         style="@style/TextAppearance.MaterialComponents.Headline5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
                         android:text="Fennec Nightly"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/fennecNightlyIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -283,13 +294,12 @@
                         style="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
                         android:singleLine="true"
-                        android:text="Installed Version:"
+                        android:text="Installed:"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fennecNightlyTitle" />
+                        app:layout_constraintTop_toBottomOf="@+id/fennecNightlyIcon" />
 
                     <TextView
                         android:id="@+id/fennecNightlyInstalledVersion"
@@ -308,10 +318,8 @@
                         style="@style/TextAppearance.MaterialComponents.Subtitle1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
                         android:singleLine="true"
-                        android:text="Available Version:"
+                        android:text="Available:"
                         android:textColor="@color/gray"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecNightlyInstalledVersionText" />
@@ -332,10 +340,12 @@
                         android:id="@+id/fennecNigthlyInfoButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fennecNightlyDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
@@ -348,6 +358,14 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_orange" />
+
+                    <ImageView
+                        android:id="@+id/fennecNightlyIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_firefox_logo_nightly" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

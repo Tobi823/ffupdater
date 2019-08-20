@@ -30,7 +30,7 @@ import static org.junit.Assert.assertEquals;
 public class DeviceBootReceiverTest extends AndroidJUnitRunner {
     Context context;
     Configuration config;
-    DeviceBootReceiver deviceBootReceiver;
+    AutoStartUpdateChecker deviceBootReceiver;
 
     @Before
     public void setUp() {
@@ -46,7 +46,7 @@ public class DeviceBootReceiverTest extends AndroidJUnitRunner {
 
         WorkManagerTestInitHelper.initializeTestWorkManager(context, config);
 
-        deviceBootReceiver = new DeviceBootReceiver();
+        deviceBootReceiver = new AutoStartUpdateChecker();
     }
 
     @Test

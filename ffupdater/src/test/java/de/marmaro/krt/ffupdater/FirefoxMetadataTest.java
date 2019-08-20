@@ -102,6 +102,6 @@ public class FirefoxMetadataTest {
 		String versionName = "58.0.1";
 		packageInfo.versionName = versionName;
 
-		assertEquals(versionName, metadata.getVersion().get());
+		assertEquals(versionName, metadata.getVersion().getVersion());
 	}
 }

@@ -13,24 +13,24 @@ import static org.junit.Assert.assertTrue;
 public class VersionTest {
 	@Test
 	public void compareTo_withSameVersionValue_returnZero() {
-		Version local = new Version("58.0.1");
-		Version release = new Version("58.0.1");
+		Version local = new Version("58.0.1", browser);
+		Version release = new Version("58.0.1", browser);
 
 		assertEquals(0, local.compareTo(release));
 	}
 
 	@Test
 	public void compareTo_localIsNewerThanCurrentRelease_returnOne() {
-		Version local = new Version("58.0.1");
-		Version release = new Version("57.0.4");
+		Version local = new Version("58.0.1", browser);
+		Version release = new Version("57.0.4", browser);
 
 		assertEquals(1, local.compareTo(release));
 	}
 
 	@Test
 	public void compareTo_localIsOlderThanCurrentRelease_returnMinusOne() {
-		Version local = new Version("57.0.4");
-		Version release = new Version("58.0.1");
+		Version local = new Version("57.0.4", browser);
+		Version release = new Version("58.0.1", browser);
 
 		assertEquals(-1, local.compareTo(release));
 	}
@@ -45,8 +45,8 @@ public class VersionTest {
 		assertTrue(localVersionName != releaseVersionName);
 		assertEquals(localVersionName, releaseVersionName);
 
-		Version local = new Version(localVersionName);
-		Version release = new Version(releaseVersionName);
+		Version local = new Version(localVersionName, browser);
+		Version release = new Version(releaseVersionName, browser);
 		assertEquals(local, release);
 	}
 
@@ -55,8 +55,8 @@ public class VersionTest {
 		String localVersionName = "58.0.1";
 		String releaseVersionName = "57.0.4";
 
-		Version local = new Version(localVersionName);
-		Version release = new Version(releaseVersionName);
+		Version local = new Version(localVersionName, browser);
+		Version release = new Version(releaseVersionName, browser);
 
 		assertEquals(false, local.equals(release));
 	}

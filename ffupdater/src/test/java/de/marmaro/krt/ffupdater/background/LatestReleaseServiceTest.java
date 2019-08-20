@@ -48,7 +48,7 @@ public class LatestReleaseServiceTest {
 //		verify(sut).broadcastVersion(captor.capture());
 //
 //		Version actual = captor.getValue();
-//		assertEquals(MozillaVersionsTest.MozillaHttpsUrlConnection.FIREFOX_VERSION, actual.get());
+//		assertEquals(MozillaVersionsTest.MozillaHttpsUrlConnection.FIREFOX_VERSION, actual.getVersion());
 	}
 
 }
