@@ -58,7 +58,7 @@
                         android:layout_marginRight="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
-                        android:text="Fennec Release"
+                        android:text="Fennec Release A"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -117,9 +117,14 @@
                         android:id="@+id/fennecReleaseInfoButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fennecReleaseDownloadButton"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
@@ -127,11 +132,16 @@
                         android:id="@+id/fennecReleaseDownloadButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
                         android:onClick="fennecReleaseDownloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_file_download_orange" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
