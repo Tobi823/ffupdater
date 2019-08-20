@@ -236,6 +236,18 @@ public class MainActivity extends AppCompatActivity {
         // TODO implement this
     }
 
+    public void firefoxLiteDownloadButtonClicked(View view) {
+        // TODO implement this
+    }
+
+    public void fenixDownloadButtonClicked(View view) {
+        // TODO implement this
+    }
+
+    public void fenixPrereleaseDownloadButtonClicked(View view) {
+        // TODO implement this
+    }
+
     private static class DownloadLinkOpener extends AsyncTask<String, Void, String> {
         private WeakReference<Context> context;
 
