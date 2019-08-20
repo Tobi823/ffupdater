@@ -7,7 +7,7 @@ import android.content.Intent;
 /**
  * After the boot process is finish, this class will start the {@link UpdateChecker}.
  */
-public class DeviceBootReceiver extends BroadcastReceiver {
+public class AutoStartUpdateChecker extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent != null && Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {

@@ -18,11 +18,11 @@ import de.marmaro.krt.ffupdater.Version;
 /**
  * Created by Tobiwan on 02.04.2019.
  */
-public class LatestReleaseFinder extends Worker {
+public class RemoveMe extends Worker {
 
     public static final String VERSION = "version";
 
-    public LatestReleaseFinder(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public RemoveMe(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -31,7 +31,7 @@ public class LatestReleaseFinder extends Worker {
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build();
 
-        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(LatestReleaseFinder.class)
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(RemoveMe.class)
                 .setConstraints(constraints)
                 .build();
 
