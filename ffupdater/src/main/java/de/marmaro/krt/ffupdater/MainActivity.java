@@ -228,6 +228,14 @@ public class MainActivity extends AppCompatActivity {
         new DownloadLinkOpener(new WeakReference<>(this)).execute("nightly_version");
     }
 
+    public void firefoxKlarDownloadButtonClicked(View view) {
+        // TODO implement this
+    }
+
+    public void firefoxFocusDownloadButtonClicked(View view) {
+        // TODO implement this
+    }
+
     private static class DownloadLinkOpener extends AsyncTask<String, Void, String> {
         private WeakReference<Context> context;
 

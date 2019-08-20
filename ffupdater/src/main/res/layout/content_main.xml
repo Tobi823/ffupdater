@@ -371,6 +371,236 @@
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/firefoxKlarCard"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/firefoxKlarTitle"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:singleLine="true"
+                        android:text="Firefox Klar"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/firefoxKlarInstalledVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:singleLine="true"
+                        android:text="Installed:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/firefoxKlarIcon" />
+
+                    <TextView
+                        android:id="@+id/firefoxKlarInstalledVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarInstalledVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/firefoxKlarInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/firefoxKlarAvailableVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="Available:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/firefoxKlarInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/firefoxKlarAvailableVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarAvailableVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/firefoxKlarAvailableVersionText" />
+
+                    <ImageButton
+                        android:id="@+id/firefoxKlarInfoButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Info about this app"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/firefoxKlarDownloadButton"
+                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
+
+                    <ImageButton
+                        android:id="@+id/firefoxKlarDownloadButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Download the latest Fennec Release"
+                        android:onClick="firefoxKlarDownloadButtonClicked"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_file_download_orange" />
+
+                    <ImageView
+                        android:id="@+id/firefoxKlarIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="#A4007F"
+                        android:padding="3dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_firefox_logo_focus" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/firefoxFocusCard"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/firefoxFocusTitle"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:singleLine="true"
+                        android:text="Firefox Focus"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxFocusIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/firefoxFocusInstalledVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:singleLine="true"
+                        android:text="Installed:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/firefoxFocusIcon" />
+
+                    <TextView
+                        android:id="@+id/firefoxFocusInstalledVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxFocusInstalledVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/firefoxFocusInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/firefoxFocusAvailableVersionText"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="Available:"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/firefoxFocusInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/firefoxFocusAvailableVersion"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxFocusAvailableVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/firefoxFocusAvailableVersionText" />
+
+                    <ImageButton
+                        android:id="@+id/firefoxFocusInfoButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Info about this app"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/firefoxFocusDownloadButton"
+                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
+
+                    <ImageButton
+                        android:id="@+id/firefoxFocusDownloadButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Download the latest Fennec Release"
+                        android:onClick="firefoxFocusDownloadButtonClicked"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_file_download_orange" />
+
+                    <ImageView
+                        android:id="@+id/firefoxFocusIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="#A4007F"
+                        android:padding="3dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_firefox_logo_focus" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
