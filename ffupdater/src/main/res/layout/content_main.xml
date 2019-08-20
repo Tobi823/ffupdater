@@ -221,6 +221,16 @@
                         app:layout_constraintTop_toTopOf="@+id/fennecBetaAvailableVersionText" />
 
                     <ImageButton
+                        android:id="@+id/fennecBetaInfoButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Info about this app"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
+
+                    <ImageButton
                         android:id="@+id/fennecBetaDownloadButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -229,7 +239,6 @@
                         android:onClick="fennecBetaDownloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_file_download_orange" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -320,6 +329,16 @@
                         app:layout_constraintTop_toTopOf="@+id/fennecNightlyAvailableVersionText" />
 
                     <ImageButton
+                        android:id="@+id/fennecNigthlyInfoButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Info about this app"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
+
+                    <ImageButton
                         android:id="@+id/fennecNightlyDownloadButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -328,7 +347,6 @@
                         android:onClick="fennecNightlyDownloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_file_download_orange" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
