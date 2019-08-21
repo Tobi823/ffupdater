@@ -15,6 +15,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+@Deprecated
 public class MozillaVersions {
     private static final String TAG = "ffupdater";
     private static final String CHECK_URL = "https://product-details.mozilla.org/1.0/mobile_versions.json";

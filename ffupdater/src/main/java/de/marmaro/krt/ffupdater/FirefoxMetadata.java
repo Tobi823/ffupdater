@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 /**
  * This class can access the version number of the installed firefox.
  */
+@Deprecated
 public class FirefoxMetadata {
     private static final String PACKAGE_ID = "org.mozilla.firefox";
     private static final String PACKAGE_ID_BETA = "org.mozilla.firefox_beta";

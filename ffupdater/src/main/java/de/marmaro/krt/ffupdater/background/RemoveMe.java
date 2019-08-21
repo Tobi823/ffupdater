@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.Version;
 /**
  * Created by Tobiwan on 02.04.2019.
  */
+@Deprecated
 public class RemoveMe extends Worker {
 
     public static final String VERSION = "version";
