@@ -45,11 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected SwipeRefreshLayout swipeRefreshLayout;
 
     private SharedPreferences sharedPref;
-    private FirefoxMetadata localFirefox;
-    private Version availableVersion;
-    private TextView fennecReleaseInstalledVersion;
-    private TextView fennecBetaInstalledVersion;
-    private TextView fennecNightlyInstalledVersion;
     private TextView fennecReleaseAvailableVersion;
     private TextView fennecBetaAvailableVersion;
     private TextView fennecNightlyAvailableVersion;
@@ -83,10 +78,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUI() {
         setContentView(R.layout.main_activity);
-
-        fennecReleaseInstalledVersion = findViewById(R.id.fennecReleaseInstalledVersion);
-        fennecBetaInstalledVersion = findViewById(R.id.fennecBetaInstalledVersion);
-        fennecNightlyInstalledVersion = findViewById(R.id.fennecNightlyInstalledVersion);
 
         fennecReleaseAvailableVersion = findViewById(R.id.fennecReleaseAvailableVersion);
         fennecBetaAvailableVersion = findViewById(R.id.fennecBetaAvailableVersion);
@@ -124,17 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateGui(MozillaVersions.Response response) {
         FirefoxMetadata fennecRelease = FirefoxMetadata.create(getPackageManager(), "version");
-//        findViewById(R.id.fennecReleaseCard).setVisibility(fennecRelease.isInstalled() ? View.VISIBLE : View.GONE);
-        fennecReleaseInstalledVersion.setText(fennecRelease.getVersionName());
-
         FirefoxMetadata fennecBeta = FirefoxMetadata.create(getPackageManager(), "beta_version");
-//        findViewById(R.id.fennecBetaCard).setVisibility(fennecBeta.isInstalled() ? View.VISIBLE : View.GONE);
-        fennecBetaInstalledVersion.setText(fennecBeta.getVersionName());
-
         FirefoxMetadata fennecNightly = FirefoxMetadata.create(getPackageManager(), "nightly_version");
-//        findViewById(R.id.fennecNightlyCard).setVisibility(fennecNightly.isInstalled() ? View.VISIBLE : View.GONE);
-        fennecNightlyInstalledVersion.setText(fennecNightly.getVersionName());
-
 
         if (response == null || fennecRelease.getVersion().equals(new Version(response.getReleaseVersion(), Browser.FENNEC_RELEASE))) {
             fennecReleaseDownloadButton.setImageResource(R.drawable.ic_file_download_grey);
@@ -153,6 +135,25 @@ public class MainActivity extends AppCompatActivity {
         } else {
             fennecNightlyDownloadButton.setImageResource(R.drawable.ic_file_download_orange);
         }
+
+        InstalledAppsDetector detector = new InstalledAppsDetector(getPackageManager());
+        findViewById(R.id.fennecReleaseCard).setVisibility(detector.isInstalled(App.FENNEC_RELEASE) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.fennecBetaCard).setVisibility(detector.isInstalled(App.FENNEC_BETA) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.fennecNightlyCard).setVisibility(detector.isInstalled(App.FENNEC_NIGHTLY) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.firefoxKlarCard).setVisibility(detector.isInstalled(App.FIREFOX_KLAR) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.firefoxFocusCard).setVisibility(detector.isInstalled(App.FIREFOX_FOCUS) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.firefoxLiteCard).setVisibility(detector.isInstalled(App.FIREFOX_LITE) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.fenixCard).setVisibility(detector.isInstalled(App.FENIX) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.fenixPrereleaseCard).setVisibility(detector.isInstalled(App.FENIX_PRERELEASE) ? View.VISIBLE : View.GONE);
+
+        ((TextView) findViewById(R.id.fennecReleaseInstalledVersion)).setText(detector.getVersionName(App.FENNEC_RELEASE));
+        ((TextView) findViewById(R.id.fennecBetaInstalledVersion)).setText(detector.getVersionName(App.FENNEC_BETA));
+        ((TextView) findViewById(R.id.fennecNightlyInstalledVersion)).setText(detector.getVersionName(App.FENNEC_NIGHTLY));
+        ((TextView) findViewById(R.id.firefoxKlarInstalledVersion)).setText(detector.getVersionName(App.FIREFOX_KLAR));
+        ((TextView) findViewById(R.id.firefoxFocusInstalledVersion)).setText(detector.getVersionName(App.FIREFOX_FOCUS));
+        ((TextView) findViewById(R.id.firefoxLiteInstalledVersion)).setText(detector.getVersionName(App.FIREFOX_LITE));
+        ((TextView) findViewById(R.id.fenixInstalledVersion)).setText(detector.getVersionName(App.FENIX));
+        ((TextView) findViewById(R.id.fenixPrereleaseInstalledVersion)).setText(detector.getVersionName(App.FENIX_PRERELEASE));
     }
 
     /**
