@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
 
+import de.marmaro.krt.ffupdater.download.github.LatestRelease;
+
 /**
  * Created by Tobiwan on 21.08.2019.
  */

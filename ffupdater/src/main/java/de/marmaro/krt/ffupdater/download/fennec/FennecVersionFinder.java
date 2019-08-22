@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.download.fennec;
 
 import android.util.Log;
 
@@ -15,8 +15,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-@Deprecated
-public class MozillaVersions {
+public class FennecVersionFinder {
     private static final String TAG = "ffupdater";
     private static final String CHECK_URL = "https://product-details.mozilla.org/1.0/mobile_versions.json";
     private static final String UTF_8 = "UTF-8";
@@ -36,32 +35,6 @@ public class MozillaVersions {
                 urlConnection.disconnect();
             }
         }
-    }
-
-    public static Version getVersion() {
-        String result = downloadVersion();
-        Version version = null;
-        JSONObject jObject;
-        try {
-            jObject = new JSONObject(result);
-            String versionString = jObject.getString(UpdateChannel.channel);
-
-            // TODO
-            switch (UpdateChannel.channel) {
-                case "version":
-                    version = new Version(versionString, Browser.FENNEC_RELEASE);
-                    break;
-                case "beta_version":
-                    version = new Version(versionString, Browser.FENNEC_BETA);
-                    break;
-                case "nigthly_version":
-                    version = new Version(versionString, Browser.FENNEC_NIGHTLY);
-                    break;
-            }
-        } catch (JSONException e) {
-            Log.e(TAG, "Error: " + e);
-        }
-        return version;
     }
 
     public static Response getResponse() {

@@ -41,11 +41,7 @@ public class InstalledAppsDetector {
             case FIREFOX_LITE:
                 return getVersionName(findPackageInfo(FIREFOX_LITE));
             case FENIX:
-                String fenixVersionName = getVersionName(findPackageInfo(FENIX));
-                return fenixVersionName.contains("rc") ? "" : fenixVersionName;
-            case FENIX_PRERELEASE:
-                String fenixPrereleaseVersionName = getVersionName(findPackageInfo(FENIX));
-                return fenixPrereleaseVersionName.contains("rc") ? fenixPrereleaseVersionName : "";
+                return getVersionName(findPackageInfo(FENIX));
         }
         throw new IllegalArgumentException("Unknown parameter");
     }

@@ -24,11 +24,8 @@ import androidx.work.WorkerParameters;
 
 import java.util.concurrent.TimeUnit;
 
-import de.marmaro.krt.ffupdater.FirefoxMetadata;
 import de.marmaro.krt.ffupdater.MainActivity;
-import de.marmaro.krt.ffupdater.MozillaVersions;
 import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.Version;
 
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 import static com.google.common.base.Preconditions.checkArgument;
@@ -118,9 +115,11 @@ public class UpdateChecker extends Worker {
     }
 
     private boolean isUpdateAvailable() {
-        Version current = FirefoxMetadata.create(getApplicationContext().getPackageManager()).getVersion();
-        Version latest = MozillaVersions.getVersion();
-        return !current.equals(latest);
+//        Version current = FirefoxMetadata.create(getApplicationContext().getPackageManager()).getVersion();
+//        Version latest = MozillaVersions.getVersion();
+//        return !current.equals(latest);
+        // TODO
+        return false;
     }
 
     private void showNotification() {

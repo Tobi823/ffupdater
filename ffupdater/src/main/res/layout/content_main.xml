@@ -58,6 +58,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
+                        android:onClick="fennecReleaseInfoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecReleaseDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -172,6 +173,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
+                        android:onClick="fennecBetaInfoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecBetaDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -287,6 +289,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
+                        android:onClick="fennecNightlyInfoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecNightlyDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -401,6 +404,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
+                        android:onClick="firefoxKlarInfoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxKlarDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -576,6 +580,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
+                        android:onClick="firefoxFocusInfoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxFocusDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -691,6 +696,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
+                        android:onClick="firefoxLiteInfoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxLiteDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -804,6 +810,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
+                        android:onClick="fenixInfoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fenixDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -826,120 +833,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/firefox_preview" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fenixPrereleaseCard"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardUseCompatPadding="true">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
-
-                    <TextView
-                        android:id="@+id/fenixPrereleaseTitle"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="sans-serif-light"
-                        android:singleLine="true"
-                        android:text="Fenix Pre-release"
-                        app:layout_constraintStart_toEndOf="@+id/fenixPrereleaseIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/fenixPrereleaseInstalledVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:text="Installed:"
-                        android:textColor="@color/gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixPrereleaseIcon" />
-
-                    <TextView
-                        android:id="@+id/fenixPrereleaseInstalledVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
-                        app:layout_constraintStart_toEndOf="@+id/fenixPrereleaseInstalledVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixPrereleaseInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/fenixPrereleaseAvailableVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Available:"
-                        android:textColor="@color/gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixPrereleaseInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/fenixPrereleaseAvailableVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
-                        app:layout_constraintStart_toEndOf="@+id/fenixPrereleaseAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixPrereleaseAvailableVersionText" />
-
-                    <ImageButton
-                        android:id="@+id/fenixPrereleaseInfoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Info about this app"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/fenixPrereleaseDownloadButton"
-                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
-
-                    <ImageButton
-                        android:id="@+id/fenixPrereleaseDownloadButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="fenixPrereleaseDownloadButtonClicked"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/ic_file_download_orange" />
-
-                    <ImageView
-                        android:id="@+id/fenixPrereleaseIcon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/firefox_preview" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

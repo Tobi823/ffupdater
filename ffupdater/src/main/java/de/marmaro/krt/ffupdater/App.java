@@ -10,6 +10,5 @@ public enum App {
     FIREFOX_KLAR,
     FIREFOX_FOCUS,
     FIREFOX_LITE,
-    FENIX,
-    FENIX_PRERELEASE;
+    FENIX
 }
