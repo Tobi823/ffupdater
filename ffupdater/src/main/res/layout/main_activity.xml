@@ -71,6 +71,7 @@
         android:layout_height="94dp"
         android:layout_gravity="end|center"
         android:layout_margin="10dp"
+        android:onClick="addAppButtonClicked"
         android:visibility="visible"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="end|bottom"

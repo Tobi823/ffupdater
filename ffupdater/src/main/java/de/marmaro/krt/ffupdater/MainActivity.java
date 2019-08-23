@@ -27,11 +27,9 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import de.marmaro.krt.ffupdater.background.UpdateChecker;
-import de.marmaro.krt.ffupdater.download.github.LatestRelease;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 import static android.view.View.GONE;
@@ -289,7 +287,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void infoButtonClicked(App app) {
-        // TODO
-        System.out.println(app);
+        new AppInfoDialog(app).show(getSupportFragmentManager(), "app_info_dialog_"+app);
+    }
+
+
+    public void addAppButtonClicked(View view) {
+//        new UnstableChannelWarningDialog().show(getSupportFragmentManager(), "download_new_app2");
+        new DownloadNewAppDialog(availableApps).show(getSupportFragmentManager(), "download_new_app");
     }
 }

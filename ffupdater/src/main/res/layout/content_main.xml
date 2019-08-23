@@ -114,7 +114,7 @@
                         android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
-                        android:text="Fennec Release"
+                        android:text="@string/fennecReleaseTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecReleaseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -229,7 +229,7 @@
                         android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
-                        android:text="Fennec Beta"
+                        android:text="@string/fennecBetaTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecBetaIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -345,7 +345,7 @@
                         android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
-                        android:text="Fennec Nightly"
+                        android:text="@string/fennecNightlyTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecNightlyIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -462,7 +462,7 @@
                         android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
-                        android:text="Firefox Klar"
+                        android:text="@string/firefoxKlarTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxKlarIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -521,7 +521,7 @@
                         android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
-                        android:text="Firefox Focus"
+                        android:text="@string/firefoxFocusTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxFocusIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -637,7 +637,7 @@
                         android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
-                        android:text="Firefox Lite"
+                        android:text="@string/firefoxLiteTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxLiteIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -751,7 +751,7 @@
                         android:layout_marginLeft="8dp"
                         android:fontFamily="sans-serif-light"
                         android:singleLine="true"
-                        android:text="Fenix"
+                        android:text="@string/fenixTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fenixIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 

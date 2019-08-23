@@ -3,11 +3,7 @@ package de.marmaro.krt.ffupdater.download.github;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.LocalDevice;
-
-import static de.marmaro.krt.ffupdater.LocalDevice.PlatformX86orArm.ARM;
-import static de.marmaro.krt.ffupdater.LocalDevice.PlatformX86orArm.X86;
 
 /**
  * Created by Tobiwan on 22.08.2019.
@@ -15,7 +11,7 @@ import static de.marmaro.krt.ffupdater.LocalDevice.PlatformX86orArm.X86;
 public class FenixVersionFinder {
 
     public static final String OWNER = "mozilla-mobile";
-    public static final String FENIX = "fenix";
+    public static final String REPOSITORY = "fenix";
 
     private String version;
     private Map<String, String> downloadUrls = new HashMap<>();
@@ -25,11 +21,10 @@ public class FenixVersionFinder {
     }
 
     public static FenixVersionFinder create() {
-        LatestRelease.Release latestRelease = LatestRelease.findLatestRelease(OWNER, FENIX);
+        LatestReleaseSearcher.Release latestRelease = LatestReleaseSearcher.findLatestRelease(OWNER, REPOSITORY);
         FenixVersionFinder newObject = new FenixVersionFinder();
         newObject.version = latestRelease.getTagName().replace("v", "");
-
-        for (LatestRelease.Asset asset : latestRelease.getAssets()) {
+        for (LatestReleaseSearcher.Asset asset : latestRelease.getAssets()) {
             newObject.downloadUrls.put(asset.getName(), asset.getDownloadUrl());
         }
 

@@ -16,7 +16,7 @@ public class FirefoxLiteVersionFinder {
     }
 
     public static FirefoxLiteVersionFinder create() {
-        LatestRelease.Release latestRelease = LatestRelease.findLatestRelease(OWNER, REPOSITORY);
+        LatestReleaseSearcher.Release latestRelease = LatestReleaseSearcher.findLatestRelease(OWNER, REPOSITORY);
         FirefoxLiteVersionFinder newObject = new FirefoxLiteVersionFinder();
         newObject.version = latestRelease.getTagName().replace("v", "");
         newObject.downloadUrl = latestRelease.getAssets().get(0).getDownloadUrl();

@@ -5,6 +5,10 @@ import android.content.pm.PackageManager;
 
 import org.jetbrains.annotations.Contract;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 /**
@@ -48,6 +52,38 @@ public class InstalledAppsDetector {
 
     public boolean isInstalled(App app) {
         return !getVersionName(app).isEmpty();
+    }
+
+    public List<App> getInstalledApps() {
+        List<App> installedApps = new ArrayList<>();
+        if (isInstalled(App.FENNEC_RELEASE)) {
+            installedApps.add(App.FENNEC_RELEASE);
+        }
+        if (isInstalled(App.FENNEC_BETA)) {
+            installedApps.add(App.FENNEC_BETA);
+        }
+        if (isInstalled(App.FENNEC_NIGHTLY)) {
+            installedApps.add(App.FENNEC_NIGHTLY);
+        }
+        if (isInstalled(App.FIREFOX_KLAR)) {
+            installedApps.add(App.FIREFOX_KLAR);
+        }
+        if (isInstalled(App.FIREFOX_FOCUS)) {
+            installedApps.add(App.FIREFOX_FOCUS);
+        }
+        if (isInstalled(App.FIREFOX_LITE)) {
+            installedApps.add(App.FIREFOX_LITE);
+        }
+        if (isInstalled(App.FENIX)) {
+            installedApps.add(App.FENIX);
+        }
+        return installedApps;
+    }
+
+    public List<App> getNotInstalledApps() {
+        List<App> allApps = new ArrayList<>(Arrays.asList(App.values()));
+        allApps.removeAll(getInstalledApps());
+        return allApps;
     }
 
     @Contract(value = "null -> !null", pure = true)

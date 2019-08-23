@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater;
 
+import android.util.Log;
+
 import com.google.common.base.Optional;
 
 import java.util.HashMap;
@@ -26,19 +28,25 @@ public class AvailableApps {
 
     public static AvailableApps create() {
         AvailableApps newObject = new AvailableApps();
+        if (true)
+            return newObject;
 
+        Log.i("FFUpdater", "check fennec");
         FennecVersionFinder.Response response = FennecVersionFinder.getResponse();
         newObject.versions.put(App.FENNEC_RELEASE, response.getReleaseVersion());
         newObject.versions.put(App.FENNEC_BETA, response.getBetaVersion());
         newObject.versions.put(App.FENNEC_NIGHTLY, response.getNightlyVersion());
 
+        Log.i("FFUpdater", "check focus/klar");
         FocusVersionFinder focusVersionFinder = FocusVersionFinder.create();
         newObject.versions.put(App.FIREFOX_FOCUS, focusVersionFinder.getVersion());
         newObject.versions.put(App.FIREFOX_KLAR, focusVersionFinder.getVersion());
 
+        Log.i("FFUpdater", "check firefox lite");
         FirefoxLiteVersionFinder firefoxLiteVersionFinder = FirefoxLiteVersionFinder.create();
         newObject.versions.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getVersion());
 
+        Log.i("FFUpdater", "check fenix");
         FenixVersionFinder fenixVersionFinder = FenixVersionFinder.create();
         newObject.versions.put(App.FENIX, fenixVersionFinder.getVersion());
 

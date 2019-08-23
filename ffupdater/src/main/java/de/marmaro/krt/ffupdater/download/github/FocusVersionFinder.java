@@ -25,11 +25,10 @@ public class FocusVersionFinder {
     }
 
     public static FocusVersionFinder create() {
-        LatestRelease.Release latestRelease = LatestRelease.findLatestRelease(OWNER, REPOSITORY);
+        LatestReleaseSearcher.Release latestRelease = LatestReleaseSearcher.findLatestRelease(OWNER, REPOSITORY);
         FocusVersionFinder newObject = new FocusVersionFinder();
         newObject.version = latestRelease.getTagName().replace("v", "");
-
-        for (LatestRelease.Asset asset : latestRelease.getAssets()) {
+        for (LatestReleaseSearcher.Asset asset : latestRelease.getAssets()) {
             newObject.downloadUrls.put(asset.getName(), asset.getDownloadUrl());
         }
 

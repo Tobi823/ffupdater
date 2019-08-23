@@ -58,6 +58,13 @@
     <string name="switch_to_unsafe_build_message">This update channel is designed for developers and testers of Mozilla Firefox. Any Firefox version from it may contain various bugs that can affect your usual work with the browser. Do you really want to switch to this channel?</string>
     <string name="switch_to_unsafe_build_positive_button">Yes</string>
     <string name="switch_to_unsafe_build_negative_button">No, go back to \'Release\'</string>
+    <string name="fennecReleaseTitleText">Fennec Release</string>
+    <string name="fennecBetaTitleText">Fennec Beta</string>
+    <string name="fennecNightlyTitleText">Fennec Nightly</string>
+    <string name="firefoxKlarTitleText">Firefox Klar</string>
+    <string name="firefoxFocusTitleText">Firefox Focus</string>
+    <string name="firefoxLiteTitleText">Firefox Lite</string>
+    <string name="fenixTitleText">Fenix</string>
 
 
 </resources>
