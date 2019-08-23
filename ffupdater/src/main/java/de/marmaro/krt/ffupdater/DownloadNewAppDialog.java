@@ -12,18 +12,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Preconditions;
 import androidx.fragment.app.DialogFragment;
+import androidx.loader.app.LoaderManager;
 
 import java.util.List;
+
+import static de.marmaro.krt.ffupdater.MainActivity.AVAILABLE_APPS_LOADER_ID;
+import static de.marmaro.krt.ffupdater.MainActivity.TRIGGER_DOWNLOAD_FOR_APP;
 
 /**
  * Created by Tobiwan on 23.08.2019.
  */
 public class DownloadNewAppDialog extends DialogFragment {
 
-    private AvailableApps availableApps;
+    private LoaderManager.LoaderCallbacks<AvailableApps> callbacks;
 
-    public DownloadNewAppDialog(AvailableApps availableApps) {
-        this.availableApps = availableApps;
+    public DownloadNewAppDialog(LoaderManager.LoaderCallbacks<AvailableApps> callbacks) {
+        this.callbacks = callbacks;
     }
 
     @NonNull
@@ -39,11 +43,11 @@ public class DownloadNewAppDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         App selectedApp = apps.get(which);
-                        String downloadUrl = availableApps.getDownloadUrl(selectedApp);
-
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse(downloadUrl));
-                        startActivity(intent);
+                        Bundle bundle = new Bundle();
+                        bundle.putString(TRIGGER_DOWNLOAD_FOR_APP, selectedApp.name());
+                        LoaderManager.getInstance(getActivity()).restartLoader(AVAILABLE_APPS_LOADER_ID, bundle, callbacks);
+                        callbacks = null;
+                        new FetchDownloadUrlDialog().show(getFragmentManager(), FetchDownloadUrlDialog.TAG);
                     }
                 })
                 .create();
@@ -60,18 +64,25 @@ public class DownloadNewAppDialog extends DialogFragment {
             switch (notInstalledApps.get(i)) {
                 case FENNEC_RELEASE:
                     notInstalledAppNames[i] = context.getString(R.string.fennecReleaseTitleText);
+                    break;
                 case FENNEC_BETA:
                     notInstalledAppNames[i] = context.getString(R.string.fennecBetaTitleText);
+                    break;
                 case FENNEC_NIGHTLY:
                     notInstalledAppNames[i] = context.getString(R.string.fennecNightlyTitleText);
+                    break;
                 case FIREFOX_KLAR:
                     notInstalledAppNames[i] = context.getString(R.string.firefoxKlarTitleText);
+                    break;
                 case FIREFOX_FOCUS:
                     notInstalledAppNames[i] = context.getString(R.string.firefoxFocusTitleText);
+                    break;
                 case FIREFOX_LITE:
                     notInstalledAppNames[i] = context.getString(R.string.firefoxLiteTitleText);
+                    break;
                 case FENIX:
                     notInstalledAppNames[i] = context.getString(R.string.fenixTitleText);
+                    break;
             }
         }
         return new Pair<>(notInstalledApps, notInstalledAppNames);

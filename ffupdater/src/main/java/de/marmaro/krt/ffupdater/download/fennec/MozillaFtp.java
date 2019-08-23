@@ -97,12 +97,14 @@ public class MozillaFtp {
         HttpsURLConnection connection = null;
         try {
             connection = (HttpsURLConnection) new URL(url).openConnection();
-            connection.setRequestMethod("GET");
+            connection.setRequestMethod("HEAD");
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
             connection.connect();
             int code = connection.getResponseCode();
-            return 200 <= code && code < 300;
+            return code == HttpsURLConnection.HTTP_OK;
         } catch (IOException e) {
-            Log.e("", "cant validate download link", e);
+            Log.e("", "cant validate download link " + url, e);
         } finally {
             if (connection != null) {
                 connection.disconnect();

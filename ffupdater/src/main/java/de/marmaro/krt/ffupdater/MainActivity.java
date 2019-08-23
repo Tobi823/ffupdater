@@ -23,11 +23,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import de.marmaro.krt.ffupdater.background.UpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
@@ -38,11 +44,13 @@ import static android.view.View.VISIBLE;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<AvailableApps> {
     private static final String TAG = "MainActivity";
     public static final int AVAILABLE_APPS_LOADER_ID = 123;
+    public static final String TRIGGER_DOWNLOAD_FOR_APP = "trigger_download_for_app";
 
     private SharedPreferences sharedPref;
     private InstalledAppsDetector installedApps;
     private AvailableApps availableApps;
     private ProgressBar progressBar;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,6 +110,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         loadAvailableApps();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Fragment fetchDownloadUrlDialog = getSupportFragmentManager().findFragmentByTag(FetchDownloadUrlDialog.TAG);
+        if (fetchDownloadUrlDialog != null) {
+            ((DialogFragment) fetchDownloadUrlDialog).dismiss();
+        }
+    }
+
     private void loadAvailableApps() {
         // https://developer.android.com/training/monitoring-device-state/connectivity-monitoring#java
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
@@ -154,7 +171,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText("");
             ((TextView) findViewById(R.id.fenixAvailableVersion)).setText("");
             progressBar.setVisibility(VISIBLE);
-            return new AvailableAppsLoader(this);
+
+            List<App> installedApps = this.installedApps.getInstalledApps();
+            if (args != null && args.getString(TRIGGER_DOWNLOAD_FOR_APP) != null) {
+                App appToDownload = App.valueOf(args.getString(TRIGGER_DOWNLOAD_FOR_APP));
+                args.clear();
+                return AvailableAppsLoader.checkAvailableAppsAndTriggerDownload(this, installedApps, appToDownload);
+            }
+            return AvailableAppsLoader.onlyCheckAvailableApps(this, installedApps);
         }
         throw new IllegalArgumentException("id is unknown");
     }
@@ -178,6 +202,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         updateGuiDownloadButtons(R.id.firefoxLiteDownloadButton, App.FIREFOX_LITE);
         updateGuiDownloadButtons(R.id.fenixDownloadButton, App.FENIX);
 
+        if (data.isTriggerDownload()) {
+            String downloadUrl = data.getDownloadUrl(data.getAppToDownload());
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(downloadUrl));
+            startActivity(intent);
+        }
+
         fadeOutProgressBar();
     }
 
@@ -200,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private void fadeOutProgressBar() {
         // https://stackoverflow.com/a/12343453
         AlphaAnimation fadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
-        fadeOutAnimation.setDuration(1000);
+        fadeOutAnimation.setDuration(300);
         fadeOutAnimation.setFillAfter(false);
         fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -287,12 +318,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void infoButtonClicked(App app) {
-        new AppInfoDialog(app).show(getSupportFragmentManager(), "app_info_dialog_"+app);
+        new AppInfoDialog(app).show(getSupportFragmentManager(), "app_info_dialog_" + app);
     }
 
 
     public void addAppButtonClicked(View view) {
 //        new UnstableChannelWarningDialog().show(getSupportFragmentManager(), "download_new_app2");
-        new DownloadNewAppDialog(availableApps).show(getSupportFragmentManager(), "download_new_app");
+        new DownloadNewAppDialog(this).show(getSupportFragmentManager(), "download_new_app");
     }
 }
