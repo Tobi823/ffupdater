@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.download.fennec;
 
 import android.util.Log;
 
+import com.google.common.base.Optional;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
@@ -20,16 +21,16 @@ public class FennecVersionFinder {
     private static final String CHECK_URL = "https://product-details.mozilla.org/1.0/mobile_versions.json";
     private static final String UTF_8 = "UTF-8";
 
-    private static String downloadVersion() {
+    private static Optional<String> downloadVersion() {
         HttpsURLConnection urlConnection = null;
         try {
             urlConnection = (HttpsURLConnection) new URL(CHECK_URL).openConnection();
             try (InputStream inputStream = urlConnection.getInputStream()) {
-                return IOUtils.toString(inputStream, UTF_8);
+                return Optional.of(IOUtils.toString(inputStream, UTF_8));
             }
         } catch (IOException e) {
             Log.e(TAG, "cant getVersion latest firefox versions", e);
-            return "";
+            return Optional.absent();
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -37,10 +38,13 @@ public class FennecVersionFinder {
         }
     }
 
-    public static Response getResponse() {
-        String json = downloadVersion();
+    public static Optional<Response> getResponse() {
+        Optional<String> json = downloadVersion();
+        if (!json.isPresent()) {
+            return Optional.absent();
+        }
         Gson gson = new Gson();
-        return gson.fromJson(json, Response.class);
+        return Optional.of(gson.fromJson(json.get(), Response.class));
     }
 
     public static class Response {

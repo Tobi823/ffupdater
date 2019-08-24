@@ -31,11 +31,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import de.marmaro.krt.ffupdater.background.UpdateChecker;
+import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
+import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
+import de.marmaro.krt.ffupdater.dialog.FetchDownloadUrlDialog;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 import static android.view.View.GONE;

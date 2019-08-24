@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.download.github;
 
 import android.util.Log;
 
+import com.google.common.base.Optional;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
@@ -23,46 +24,56 @@ public class LatestReleaseSearcher {
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/%s/%s/releases/latest";
     private static final String ALL_RELEASES_URL = "https://api.github.com/repos/%s/%s/releases";
 
-    public static Release findLatestRelease(String owner, String repo) {
-        Release release = findLatestReleaseViaApi(owner, repo);
-        if (release != null && release.getAssets() != null && !release.getAssets().isEmpty()) {
-            return release;
+    static Optional<Release> findLatestRelease(String owner, String repo) {
+        Optional<Release> release = findLatestReleaseViaApi(owner, repo);
+        if (release.isPresent() &&
+                release.get().getAssets() != null &&
+                !release.get().getAssets().isEmpty()) {
+            return Optional.of(release.get());
         }
         return findLatestReleaseBySearchingAllReleases(owner, repo);
     }
 
-    private static Release findLatestReleaseViaApi(String owner, String repo) {
+    private static Optional<Release> findLatestReleaseViaApi(String owner, String repo) {
         String downloadUrl = String.format(LATEST_RELEASE_URL, owner, repo);
-        String json = fetchData(downloadUrl);
-        Log.i("download", "heruntergeladen: " + json.length());
+        Optional<String> json = fetchData(downloadUrl);
+        if (!json.isPresent()) {
+            return Optional.absent();
+        }
+
+        Log.i("download", "heruntergeladen: " + json.get().length());
         Gson gson = new Gson();
-        return gson.fromJson(json, Release.class);
+        return Optional.of(gson.fromJson(json.get(), Release.class));
     }
 
-    private static Release findLatestReleaseBySearchingAllReleases(String owner, String repo) {
+    private static Optional<Release> findLatestReleaseBySearchingAllReleases(String owner, String repo) {
         String downloadUrl = String.format(ALL_RELEASES_URL, owner, repo);
-        String json = fetchData(downloadUrl);
-        Log.i("download", "heruntergeladen: " + json.length());
+        Optional<String> json = fetchData(downloadUrl);
+        if (!json.isPresent()) {
+            return Optional.absent();
+        }
+
+        Log.i("download", "heruntergeladen: " + json.get().length());
         Gson gson = new Gson();
-        Release[] releases = gson.fromJson(json, Release[].class);
+        Release[] releases = gson.fromJson(json.get(), Release[].class);
         for (Release release : releases) {
             if (release.getAssets() != null && !release.getAssets().isEmpty()) {
-                return release;
+                return Optional.of(release);
             }
         }
-        throw new IllegalArgumentException("cant find a release with assets");
+        return Optional.absent();
     }
 
-    private static String fetchData(String url) {
+    private static Optional<String> fetchData(String url) {
         HttpsURLConnection urlConnection = null;
         try {
             urlConnection = (HttpsURLConnection) new URL(url).openConnection();
             try (InputStream inputStream = urlConnection.getInputStream()) {
-                return IOUtils.toString(inputStream, UTF_8);
+                return Optional.of(IOUtils.toString(inputStream, UTF_8));
             }
         } catch (IOException e) {
             Log.e(TAG, "cant get latest release from Github", e);
-            return "";
+            return Optional.absent();
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -84,7 +95,7 @@ public class LatestReleaseSearcher {
             return name;
         }
 
-        public String getDownloadUrl() {
+        String getDownloadUrl() {
             return downloadUrl;
         }
 
@@ -107,11 +118,11 @@ public class LatestReleaseSearcher {
         @SerializedName("assets")
         private List<Asset> assets;
 
-        public String getTagName() {
+        String getTagName() {
             return tagName;
         }
 
-        public List<Asset> getAssets() {
+        List<Asset> getAssets() {
             return assets;
         }
 

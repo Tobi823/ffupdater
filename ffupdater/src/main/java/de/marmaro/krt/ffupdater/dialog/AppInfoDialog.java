@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Preconditions;
 import androidx.fragment.app.DialogFragment;
+
+import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.R;
 
 /**
  * Created by Tobiwan on 23.08.2019.

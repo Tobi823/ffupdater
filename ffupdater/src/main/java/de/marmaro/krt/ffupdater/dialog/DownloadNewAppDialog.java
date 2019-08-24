@@ -1,11 +1,9 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +13,11 @@ import androidx.fragment.app.DialogFragment;
 import androidx.loader.app.LoaderManager;
 
 import java.util.List;
+
+import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.AvailableApps;
+import de.marmaro.krt.ffupdater.InstalledAppsDetector;
+import de.marmaro.krt.ffupdater.R;
 
 import static de.marmaro.krt.ffupdater.MainActivity.AVAILABLE_APPS_LOADER_ID;
 import static de.marmaro.krt.ffupdater.MainActivity.TRIGGER_DOWNLOAD_FOR_APP;

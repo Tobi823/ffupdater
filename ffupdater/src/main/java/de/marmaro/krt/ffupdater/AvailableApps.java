@@ -50,7 +50,8 @@ public class AvailableApps {
         if (appsToCheck.contains(App.FENNEC_RELEASE) ||
                 appsToCheck.contains(App.FENNEC_BETA) ||
                 appsToCheck.contains(App.FENNEC_NIGHTLY)) {
-            FennecVersionFinder.Response response = FennecVersionFinder.getResponse();
+            Optional<FennecVersionFinder.Response> response = FennecVersionFinder.getResponse();
+
             if (appsToCheck.contains(App.FENNEC_RELEASE)) {
                 newObject.versions.put(App.FENNEC_RELEASE, response.getReleaseVersion());
                 newObject.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, platform, response));
