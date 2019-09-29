@@ -24,11 +24,11 @@ public class AvailableAppsLoader extends AsyncTaskLoader<AvailableApps> {
         this.appsToCheck = appsToCheck;
     }
 
-    public static AvailableAppsLoader onlyCheckAvailableApps(@NonNull Context context, List<App> appsToCheck) {
+    static AvailableAppsLoader onlyCheckAvailableApps(@NonNull Context context, List<App> appsToCheck) {
         return new AvailableAppsLoader(context, new HashSet<>(appsToCheck));
     }
 
-    public static AvailableAppsLoader checkAvailableAppsAndTriggerDownload(@NonNull Context context, List<App> appsToCheck, App appToDownload) {
+    static AvailableAppsLoader checkAvailableAppsAndTriggerDownload(@NonNull Context context, List<App> appsToCheck, App appToDownload) {
         AvailableAppsLoader availableAppsLoader = onlyCheckAvailableApps(context, appsToCheck);
         availableAppsLoader.triggerDownload = true;
         availableAppsLoader.appToDownload = appToDownload;

@@ -12,7 +12,7 @@ public class FirefoxLiteVersionFinder {
 
     private String version;
     private String downloadUrl;
-    private boolean faulty;
+    private boolean correct = true;
 
     private FirefoxLiteVersionFinder() {
 
@@ -22,7 +22,7 @@ public class FirefoxLiteVersionFinder {
         FirefoxLiteVersionFinder newObject = new FirefoxLiteVersionFinder();
         Optional<LatestReleaseSearcher.Release> latestRelease = LatestReleaseSearcher.findLatestRelease(OWNER, REPOSITORY);
         if (!latestRelease.isPresent()) {
-            newObject.faulty = true;
+            newObject.correct = false;
             return newObject;
         }
 
@@ -31,19 +31,19 @@ public class FirefoxLiteVersionFinder {
         return newObject;
     }
 
-    public boolean isFaulty() {
-        return faulty;
+    public boolean isCorrect() {
+        return correct;
     }
 
     public String getVersion() {
-        if (faulty) {
+        if (!correct) {
             throw new IllegalArgumentException("FirefoxLiteVersionFinder is faulty");
         }
         return version;
     }
 
     public String getDownloadUrl() {
-        if (faulty) {
+        if (!correct) {
             throw new IllegalArgumentException("FirefoxLiteVersionFinder is faulty");
         }
         return downloadUrl;

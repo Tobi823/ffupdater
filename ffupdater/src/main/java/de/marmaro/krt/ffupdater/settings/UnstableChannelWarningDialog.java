@@ -23,7 +23,6 @@ public class UnstableChannelWarningDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         final Context context = getContext();
-        String defaultBuildChannel = context.getString(R.string.default_pref_build);
         return new AlertDialog.Builder(getActivity())
                 .setTitle(context.getString(R.string.switch_to_unsafe_build_title))
                 .setMessage(context.getString(R.string.switch_to_unsafe_build_message))

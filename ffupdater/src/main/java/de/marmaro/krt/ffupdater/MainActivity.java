@@ -30,6 +30,7 @@ import androidx.loader.content.Loader;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.base.Optional;
 
 import java.util.List;
 
@@ -43,7 +44,6 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<AvailableApps> {
-    private static final String TAG = "MainActivity";
     public static final int AVAILABLE_APPS_LOADER_ID = 123;
     public static final String TRIGGER_DOWNLOAD_FOR_APP = "trigger_download_for_app";
 
@@ -187,13 +187,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(@NonNull Loader<AvailableApps> loader, AvailableApps data) {
         availableApps = data;
-        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_RELEASE));
-        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_BETA));
-        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_NIGHTLY));
-        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_KLAR));
-        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_FOCUS));
-        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_LITE));
-        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText(availableApps.findVersionName(App.FENIX));
+        String error = "Network error";
+        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_RELEASE).or(error));
+        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_BETA).or(error));
+        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_NIGHTLY).or(error));
+        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_KLAR).or(error));
+        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_FOCUS).or(error));
+        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_LITE).or(error));
+        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText(availableApps.findVersionName(App.FENIX).or(error));
 
         updateGuiDownloadButtons(R.id.fennecReleaseDownloadButton, App.FENNEC_RELEASE);
         updateGuiDownloadButtons(R.id.fennecBetaDownloadButton, App.FENNEC_BETA);
@@ -204,10 +205,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         updateGuiDownloadButtons(R.id.fenixDownloadButton, App.FENIX);
 
         if (data.isTriggerDownload()) {
-            String downloadUrl = data.getDownloadUrl(data.getAppToDownload());
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(downloadUrl));
-            startActivity(intent);
+            Optional<String> downloadUrl = data.getDownloadUrl(data.getAppToDownload());
+            if (downloadUrl.isPresent()) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(downloadUrl.get()));
+                startActivity(intent);
+            } else {
+                Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
+            }
         }
 
         fadeOutProgressBar();
@@ -283,10 +288,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private void downloadButtonClicked(App app) {
         if (availableApps != null) {
-            String downloadUrl = availableApps.getDownloadUrl(app);
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(downloadUrl));
-            startActivity(intent);
+            Optional<String> downloadUrl = availableApps.getDownloadUrl(app);
+            if (downloadUrl.isPresent()) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(downloadUrl.get()));
+                startActivity(intent);
+            } else {
+                Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -321,7 +330,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private void infoButtonClicked(App app) {
         new AppInfoDialog(app).show(getSupportFragmentManager(), "app_info_dialog_" + app);
     }
-
 
     public void addAppButtonClicked(View view) {
 //        new UnstableChannelWarningDialog().show(getSupportFragmentManager(), "download_new_app2");

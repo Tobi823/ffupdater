@@ -19,7 +19,6 @@ public class FetchDownloadUrlDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        final Context context = getContext();
         return new AlertDialog.Builder(getActivity())
                 .setMessage("Fetch download url for the current app - this can take a while")
                 .create();

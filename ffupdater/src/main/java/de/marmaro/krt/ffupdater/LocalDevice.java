@@ -11,34 +11,39 @@ import static android.os.Build.VERSION_CODES.LOLLIPOP;
  */
 public class LocalDevice {
 
-    public static Platform getPlatform() {
+    private static final String ARM64_V8A = "arm64-v8a";
+    private static final String ARMEABI_V7A = "armeabi-v7a";
+    private static final String X86_64 = "x86_64";
+    private static final String X86 = "x86";
+
+    static Platform getPlatform() {
         for (String abi : getSupportedAbis()) {
             if (abi == null) {
                 continue;
             }
             switch (abi) {
-                case "arm64-v8a":
+                case ARM64_V8A:
                     return Platform.AARCH64;
-                case "armeabi-v7a":
+                case ARMEABI_V7A:
                     return Platform.ARM;
-                case "x86_64":
+                case X86_64:
                     return Platform.X86_64;
-                case "x86":
+                case X86:
                     return Platform.X86;
             }
         }
         return Platform.ARM;
     }
 
-    public static PlatformX86orArm getPlatformX86orArm() {
+    static PlatformX86orArm getPlatformX86orArm() {
         for (String abi : getSupportedAbis()) {
             if (abi == null) {
                 continue;
             }
             switch (abi) {
-                case "armeabi-v7a":
+                case ARMEABI_V7A:
                     return PlatformX86orArm.ARM;
-                case "x86":
+                case X86:
                     return PlatformX86orArm.X86;
             }
         }

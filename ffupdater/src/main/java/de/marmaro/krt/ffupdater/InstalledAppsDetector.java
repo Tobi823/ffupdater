@@ -30,7 +30,7 @@ public class InstalledAppsDetector {
         this.packageManager = packageManager;
     }
 
-    public String getVersionName(App app) {
+    String getVersionName(App app) {
         switch (app) {
             case FENNEC_RELEASE:
                 return getVersionName(findPackageInfo(FENNEC_RELEASE));
@@ -50,11 +50,11 @@ public class InstalledAppsDetector {
         throw new IllegalArgumentException("Unknown parameter");
     }
 
-    public boolean isInstalled(App app) {
+    boolean isInstalled(App app) {
         return !getVersionName(app).isEmpty();
     }
 
-    public List<App> getInstalledApps() {
+    List<App> getInstalledApps() {
         List<App> installedApps = new ArrayList<>();
         if (isInstalled(App.FENNEC_RELEASE)) {
             installedApps.add(App.FENNEC_RELEASE);

@@ -27,7 +27,6 @@ public class AppInfoDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        final Context context = getContext();
         return new AlertDialog.Builder(getActivity())
                 .setTitle(getTitle())
                 .setMessage(getText())
@@ -35,7 +34,6 @@ public class AppInfoDialog extends DialogFragment {
     }
 
     private String getText() {
-        Context context = Preconditions.checkNotNull(getContext());
         switch (app) {
             case FENNEC_RELEASE:
                 return "This is the default and well-known Firefox browser from Mozilla.\n\nThe app will be downloaded from the official Mozilla API.";

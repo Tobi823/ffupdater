@@ -36,7 +36,6 @@ public class DownloadNewAppDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        final Context context = getContext();
         Pair<List<App>, CharSequence[]> notInstalledApps = getNotInstalledApps();
         List<App> apps = notInstalledApps.getValue1();
         CharSequence[] options = notInstalledApps.getValue2();

@@ -21,7 +21,7 @@ public class FocusVersionFinder {
 
     private String version;
     private Map<String, String> downloadUrls = new HashMap<>();
-    private boolean faulty;
+    private boolean correct = true;
 
     private FocusVersionFinder() {
 
@@ -31,7 +31,7 @@ public class FocusVersionFinder {
         FocusVersionFinder newObject = new FocusVersionFinder();
         Optional<LatestReleaseSearcher.Release> latestRelease = LatestReleaseSearcher.findLatestRelease(OWNER, REPOSITORY);
         if (!latestRelease.isPresent()) {
-            newObject.faulty = true;
+            newObject.correct = false;
             return newObject;
         }
 
@@ -42,20 +42,20 @@ public class FocusVersionFinder {
         return newObject;
     }
 
-    public boolean isFaulty() {
-        return faulty;
+    public boolean isCorrect() {
+        return correct;
     }
 
     public String getVersion() {
-        if (faulty) {
-            throw new IllegalArgumentException("FocusVersionFinder is faulty");
+        if (!correct) {
+            throw new IllegalArgumentException("FocusVersionFinder is correct");
         }
         return version;
     }
 
     public String getDownloadUrl(App app, LocalDevice.PlatformX86orArm platform) {
-        if (faulty) {
-            throw new IllegalArgumentException("FocusVersionFinder is faulty");
+        if (!correct) {
+            throw new IllegalArgumentException("FocusVersionFinder is correct");
         }
         for (String name : downloadUrls.keySet()) {
             String nameLowerCase = name.toLowerCase();

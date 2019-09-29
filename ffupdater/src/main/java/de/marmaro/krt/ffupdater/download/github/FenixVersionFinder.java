@@ -12,12 +12,12 @@ import de.marmaro.krt.ffupdater.LocalDevice;
  */
 public class FenixVersionFinder {
 
-    public static final String OWNER = "mozilla-mobile";
-    public static final String REPOSITORY = "fenix";
+    private static final String OWNER = "mozilla-mobile";
+    private static final String REPOSITORY = "fenix";
 
     private String version;
     private Map<String, String> downloadUrls = new HashMap<>();
-    private boolean faulty;
+    private boolean correct = true;
 
     private FenixVersionFinder() {
 
@@ -27,7 +27,7 @@ public class FenixVersionFinder {
         FenixVersionFinder newObject = new FenixVersionFinder();
         Optional<LatestReleaseSearcher.Release> latestRelease = LatestReleaseSearcher.findLatestRelease(OWNER, REPOSITORY);
         if (!latestRelease.isPresent()) {
-            newObject.faulty = true;
+            newObject.correct = false;
             return newObject;
         }
 
@@ -38,19 +38,19 @@ public class FenixVersionFinder {
         return newObject;
     }
 
-    public boolean isFaulty() {
-        return faulty;
+    public boolean isCorrect() {
+        return correct;
     }
 
     public String getVersion() {
-        if (faulty) {
+        if (!correct) {
             throw new IllegalArgumentException("FenixVersionFinder is faulty");
         }
         return version;
     }
 
     public String getDownloadUrl(LocalDevice.Platform platform) {
-        if (faulty) {
+        if (!correct) {
             throw new IllegalArgumentException("FenixVersionFinder is faulty");
         }
         for (String name : downloadUrls.keySet()) {

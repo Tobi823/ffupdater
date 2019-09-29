@@ -1,12 +1,9 @@
 package de.marmaro.krt.ffupdater;
 
-import android.util.Log;
-
 import com.google.common.base.Optional;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,7 +28,7 @@ public class AvailableApps {
 
     }
 
-    public static AvailableApps createAndTriggerDownload(Set<App> appsToCheck, App appToDownload) {
+    static AvailableApps createAndTriggerDownload(Set<App> appsToCheck, App appToDownload) {
         HashSet<App> copiedAppsToCheck = new HashSet<>(appsToCheck);
         copiedAppsToCheck.add(appToDownload);
 
@@ -51,41 +48,48 @@ public class AvailableApps {
                 appsToCheck.contains(App.FENNEC_BETA) ||
                 appsToCheck.contains(App.FENNEC_NIGHTLY)) {
             Optional<FennecVersionFinder.Response> response = FennecVersionFinder.getResponse();
-
-            if (appsToCheck.contains(App.FENNEC_RELEASE)) {
-                newObject.versions.put(App.FENNEC_RELEASE, response.getReleaseVersion());
-                newObject.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, platform, response));
-            }
-            if (appsToCheck.contains(App.FENNEC_BETA)) {
-                newObject.versions.put(App.FENNEC_BETA, response.getBetaVersion());
-                newObject.downloadUrl.put(App.FENNEC_BETA, getDownloadUrlForFennec(App.FENNEC_BETA, platform, response));
-            }
-            if (appsToCheck.contains(App.FENNEC_NIGHTLY)) {
-                newObject.versions.put(App.FENNEC_NIGHTLY, response.getNightlyVersion());
-                newObject.downloadUrl.put(App.FENNEC_NIGHTLY, getDownloadUrlForFennec(App.FENNEC_NIGHTLY, platform, response));
+            if (response.isPresent()) {
+                if (appsToCheck.contains(App.FENNEC_RELEASE)) {
+                    newObject.versions.put(App.FENNEC_RELEASE, response.get().getReleaseVersion());
+                    newObject.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, platform, response.get()));
+                }
+                if (appsToCheck.contains(App.FENNEC_BETA)) {
+                    newObject.versions.put(App.FENNEC_BETA, response.get().getBetaVersion());
+                    newObject.downloadUrl.put(App.FENNEC_BETA, getDownloadUrlForFennec(App.FENNEC_BETA, platform, response.get()));
+                }
+                if (appsToCheck.contains(App.FENNEC_NIGHTLY)) {
+                    newObject.versions.put(App.FENNEC_NIGHTLY, response.get().getNightlyVersion());
+                    newObject.downloadUrl.put(App.FENNEC_NIGHTLY, getDownloadUrlForFennec(App.FENNEC_NIGHTLY, platform, response.get()));
+                }
             }
         }
 
         if (appsToCheck.contains(App.FIREFOX_KLAR) ||
                 appsToCheck.contains(App.FIREFOX_FOCUS)) {
             FocusVersionFinder focusVersionFinder = FocusVersionFinder.create();
-            newObject.versions.put(App.FIREFOX_FOCUS, focusVersionFinder.getVersion());
-            newObject.downloadUrl.put(App.FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(App.FIREFOX_FOCUS, platformX86orArm));
+            if (focusVersionFinder.isCorrect()) {
+                newObject.versions.put(App.FIREFOX_FOCUS, focusVersionFinder.getVersion());
+                newObject.downloadUrl.put(App.FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(App.FIREFOX_FOCUS, platformX86orArm));
 
-            newObject.versions.put(App.FIREFOX_KLAR, focusVersionFinder.getVersion());
-            newObject.downloadUrl.put(App.FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(App.FIREFOX_KLAR, platformX86orArm));
+                newObject.versions.put(App.FIREFOX_KLAR, focusVersionFinder.getVersion());
+                newObject.downloadUrl.put(App.FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(App.FIREFOX_KLAR, platformX86orArm));
+            }
         }
 
         if (appsToCheck.contains(App.FIREFOX_LITE)) {
             FirefoxLiteVersionFinder firefoxLiteVersionFinder = FirefoxLiteVersionFinder.create();
-            newObject.versions.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getVersion());
-            newObject.downloadUrl.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getDownloadUrl());
+            if (firefoxLiteVersionFinder.isCorrect()) {
+                newObject.versions.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getVersion());
+                newObject.downloadUrl.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getDownloadUrl());
+            }
         }
 
         if (appsToCheck.contains(App.FENIX)) {
             FenixVersionFinder fenixVersionFinder = FenixVersionFinder.create();
-            newObject.versions.put(App.FENIX, fenixVersionFinder.getVersion());
-            newObject.downloadUrl.put(App.FENIX, fenixVersionFinder.getDownloadUrl(platform));
+            if (fenixVersionFinder.isCorrect()) {
+                newObject.versions.put(App.FENIX, fenixVersionFinder.getVersion());
+                newObject.downloadUrl.put(App.FENIX, fenixVersionFinder.getDownloadUrl(platform));
+            }
         }
         return newObject;
     }
@@ -98,34 +102,37 @@ public class AvailableApps {
         return OfficialApi.getDownloadUrl(app, platform);
     }
 
-    public String findVersionName(App app) {
-        String versionName = versions.get(app);
-        return versionName == null ? "" : versionName;
+    Optional<String> findVersionName(App app) {
+        return Optional.fromNullable(versions.get(app));
     }
 
-    public boolean isUpdateAvailable(App app, String installedVersion) {
+    boolean isUpdateAvailable(App app, String installedVersion) {
+        Optional<String> availableVersion = findVersionName(app);
+        if (!availableVersion.isPresent()) {
+            return false;
+        }
+
         if (app == App.FENNEC_BETA) {
-            String sanitizedAvailable = findVersionName(app).split("b")[0];
+            String sanitizedAvailable = availableVersion.get().split("b")[0];
             return !sanitizedAvailable.contentEquals(installedVersion);
         }
         if (app == App.FIREFOX_LITE) {
             String sanitizedInstalled = installedVersion.split("\\(")[0];
-            return !findVersionName(app).contentEquals(sanitizedInstalled);
+            return !availableVersion.get().contentEquals(sanitizedInstalled);
         }
 
-        return !findVersionName(app).contentEquals(installedVersion);
+        return !availableVersion.get().contentEquals(installedVersion);
     }
 
-    public String getDownloadUrl(App app) {
-        String url = downloadUrl.get(app);
-        return url == null ? "" : url;
+    Optional<String> getDownloadUrl(App app) {
+        return Optional.fromNullable(downloadUrl.get(app));
     }
 
-    public boolean isTriggerDownload() {
+    boolean isTriggerDownload() {
         return triggerDownload;
     }
 
-    public App getAppToDownload() {
+    App getAppToDownload() {
         return appToDownload;
     }
 }

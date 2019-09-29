@@ -35,10 +35,10 @@ import static com.google.common.base.Preconditions.checkArgument;
  */
 public class UpdateChecker extends Worker {
     private static final String CHANNEL_ID = "update_notification_channel_id";
-    public static final String UPDATE_AVAILABLE_RESPONSE = "update_available";
-    public static final String WORK_MANAGER_KEY = "update_checker";
+    private static final String UPDATE_AVAILABLE_RESPONSE = "update_available";
+    static final String WORK_MANAGER_KEY = "update_checker";
 
-    public static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
+    private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
 
     public UpdateChecker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
