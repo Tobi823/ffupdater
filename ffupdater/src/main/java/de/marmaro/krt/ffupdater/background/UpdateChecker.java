@@ -37,15 +37,13 @@ import de.marmaro.krt.ffupdater.R;
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 
 /**
- * This class will call the {@link WorkManager} to check regularly for app updates. When an app
- * update is available, a notification will be displayed.
+ * This class will call the {@link WorkManager} to check regularly for app updates in the background.
+ * When an app update is available, a notification will be displayed.
  */
 public class UpdateChecker extends Worker {
     private static final String CHANNEL_ID = "update_notification_channel_id";
-    private static final String UPDATE_AVAILABLE_RESPONSE = "update_available";
     private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
     static final String WORK_MANAGER_KEY = "update_checker";
-
 
     private UpdateChecker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -62,19 +60,9 @@ public class UpdateChecker extends Worker {
         int defaultValue = context.getResources().getInteger(R.integer.default_pref_check_interval);
         String value = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_check_interval), String.valueOf(defaultValue));
-        register(Integer.parseInt(Objects.requireNonNull(value)));
-    }
-
-    /**
-     * Register UpdateChecker for regularly update checks.
-     * If UpdateChecker is already registered, the already registered UpdateChecker will be replaced.
-     * If repeatEveryMinutes is less or equal 0, UpdateChecker will be unregistered.
-     *
-     * @param repeatEveryMinutes time between each execution in minutes
-     */
-    private static void register(int repeatEveryMinutes) {
+        int repeatEveryMinutes = Integer.parseInt(Objects.requireNonNull(value));
         if (repeatEveryMinutes <= 0) {
-            WorkManager.getInstance().cancelUniqueWork(WORK_MANAGER_KEY);
+            WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY);
             return;
         }
 
@@ -88,23 +76,22 @@ public class UpdateChecker extends Worker {
                         .setConstraints(constraints)
                         .build();
 
-        WorkManager.getInstance().enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, saveRequest);
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, saveRequest);
     }
 
     /**
      * This method will be called by the WorkManager regularly.
      *
-     * @return
+     * @return every method call will return a Result successfully.
      */
     @NonNull
     @Override
     public Result doWork() {
         Log.d("UpdateChecker", "doWork() executed");
-        boolean updateAvailable = isUpdateAvailable();
-        if (updateAvailable) {
+        if (isUpdateAvailable()) {
             createNotification();
         }
-        return Result.success(new Data.Builder().putBoolean(UPDATE_AVAILABLE_RESPONSE, updateAvailable).build());
+        return Result.success();
     }
 
     /**
