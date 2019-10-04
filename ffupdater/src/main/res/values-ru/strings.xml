@@ -13,12 +13,10 @@
 	<string name="download">Загрузить Firefox</string>
     <string name="update_notification_title">Выпущена новая версия Firefox</string>
 	<string name="update_notification_text">Нажмите, чтобы открыть приложение</string>
-
 	<string name="action_settings">Настройки</string>
 	<string name="about">О программе</string>
 	<string name="not_connected_to_internet">Вы не подключены к интернету</string>
 	<string name="not_installed">Не установлено</string>
-	<!-- Strings related to Settings -->
 	<string name="title_activity_settings">Настройки</string>
 	<string name="pref_category_update_channel">Канал обновления</string>
 	<string name="pref_update_channel_title">Выберите канал обновления Firefox</string>

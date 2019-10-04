@@ -13,7 +13,6 @@
 	<string name="download">Завантажити Firefox</string>
 	<string name="update_notification_title">Доступна нова версія firefox</string>
 	<string name="update_notification_text">Натисніть, аби відкрити додаток</string>
-
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
     <string name="action_settings">Налаштування</string>
 	<string name="about">Про</string>
