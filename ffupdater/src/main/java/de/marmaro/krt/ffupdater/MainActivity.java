@@ -326,7 +326,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     public void addAppButtonClicked(View view) {
-//        new UnstableChannelWarningDialog().show(getSupportFragmentManager(), "download_new_app2");
         new DownloadNewAppDialog(this).show(getSupportFragmentManager(), "download_new_app");
     }
 }

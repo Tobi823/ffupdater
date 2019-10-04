@@ -44,15 +44,29 @@ public class DownloadNewAppDialog extends DialogFragment {
                 .setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        App selectedApp = apps.get(which);
-                        Bundle bundle = new Bundle();
-                        bundle.putString(TRIGGER_DOWNLOAD_FOR_APP, selectedApp.name());
-                        LoaderManager.getInstance(getActivity()).restartLoader(AVAILABLE_APPS_LOADER_ID, bundle, callbacks);
-                        callbacks = null;
-                        new FetchDownloadUrlDialog().show(getFragmentManager(), FetchDownloadUrlDialog.TAG);
+                        App app = apps.get(which);
+                        switch (app) {
+                            case FENNEC_BETA:
+                            case FENNEC_NIGHTLY:
+                                showWarning(app);
+                                break;
+                            default:
+                                triggerDownload(app);
+                        }
                     }
                 })
                 .create();
+    }
+
+    private void showWarning(App app) {
+        new WarningAppDialog(callbacks, app).show(getFragmentManager(), WarningAppDialog.TAG);
+    }
+
+    private void triggerDownload(App app) {
+        Bundle bundle = new Bundle();
+        bundle.putString(TRIGGER_DOWNLOAD_FOR_APP, app.name());
+        LoaderManager.getInstance(getActivity()).restartLoader(AVAILABLE_APPS_LOADER_ID, bundle, callbacks);
+        new FetchDownloadUrlDialog().show(getFragmentManager(), FetchDownloadUrlDialog.TAG);
     }
 
     private Pair<List<App>, CharSequence[]> getNotInstalledApps() {

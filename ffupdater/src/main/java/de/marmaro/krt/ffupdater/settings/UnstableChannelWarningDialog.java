@@ -23,15 +23,15 @@ public class UnstableChannelWarningDialog extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         final Context context = getContext();
         return new AlertDialog.Builder(getActivity())
-                .setTitle(context.getString(R.string.switch_to_unsafe_build_title))
-                .setMessage(context.getString(R.string.switch_to_unsafe_build_message))
-                .setPositiveButton(context.getString(R.string.switch_to_unsafe_build_positive_button), new DialogInterface.OnClickListener() {
+                .setTitle(context.getString(R.string.switch_to_unsafe_app_title))
+                .setMessage(context.getString(R.string.switch_to_unsafe_fennec_message))
+                .setPositiveButton(context.getString(R.string.switch_to_unsafe_app_positive_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 })
-                .setNegativeButton(context.getString(R.string.switch_to_unsafe_build_negative_button), new DialogInterface.OnClickListener() {
+                .setNegativeButton(context.getString(R.string.switch_to_unsafe_app_negative_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
