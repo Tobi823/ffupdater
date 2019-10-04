@@ -8,10 +8,9 @@ import java.util.Map;
 import de.marmaro.krt.ffupdater.LocalDevice;
 
 /**
- * Created by Tobiwan on 22.08.2019.
+ * Access the version name and the download url for Fenix from Github.
  */
 public class FenixVersionFinder {
-
     private static final String OWNER = "mozilla-mobile";
     private static final String REPOSITORY = "fenix";
 

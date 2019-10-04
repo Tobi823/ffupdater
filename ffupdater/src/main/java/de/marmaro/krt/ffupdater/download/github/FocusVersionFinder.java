@@ -12,10 +12,9 @@ import static de.marmaro.krt.ffupdater.LocalDevice.SimplifiedPlatform.ARM;
 import static de.marmaro.krt.ffupdater.LocalDevice.SimplifiedPlatform.X86;
 
 /**
- * Created by Tobiwan on 22.08.2019.
+ * Access the version name and the download url for Firefox Focus and Firefox Klar from Github.
  */
 public class FocusVersionFinder {
-
     private static final String OWNER = "mozilla-mobile";
     private static final String REPOSITORY = "focus-android";
 
@@ -24,7 +23,6 @@ public class FocusVersionFinder {
     private boolean correct = true;
 
     private FocusVersionFinder() {
-
     }
 
     public static FocusVersionFinder create() {

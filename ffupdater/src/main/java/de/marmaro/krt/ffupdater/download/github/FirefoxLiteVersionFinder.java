@@ -3,10 +3,9 @@ package de.marmaro.krt.ffupdater.download.github;
 import com.google.common.base.Optional;
 
 /**
- * Created by Tobiwan on 22.08.2019.
+ * Access the version name and the download url for Firefox Lite from Github.
  */
 public class FirefoxLiteVersionFinder {
-
     private static final String OWNER = "mozilla-tw";
     private static final String REPOSITORY = "FirefoxLite";
 
@@ -15,7 +14,6 @@ public class FirefoxLiteVersionFinder {
     private boolean correct = true;
 
     private FirefoxLiteVersionFinder() {
-
     }
 
     public static FirefoxLiteVersionFinder create() {

@@ -16,7 +16,7 @@ import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by Tobiwan on 22.08.2019.
+ * Access the version name and the download url from Github.
  */
 class LatestReleaseSearcher {
     private static final String TAG = "ffupdater";
@@ -25,7 +25,7 @@ class LatestReleaseSearcher {
     private static final String ALL_RELEASES_URL = "https://api.github.com/repos/%s/%s/releases";
 
     static Optional<Release> findLatestRelease(String owner, String repo) {
-        Optional<Release> release = findLatestReleaseViaApi(owner, repo);
+        Optional<Release> release = findLatestReleaseByApi(owner, repo);
         if (release.isPresent() &&
                 release.get().getAssets() != null &&
                 !release.get().getAssets().isEmpty()) {
@@ -34,7 +34,7 @@ class LatestReleaseSearcher {
         return findLatestReleaseBySearchingAllReleases(owner, repo);
     }
 
-    private static Optional<Release> findLatestReleaseViaApi(String owner, String repo) {
+    private static Optional<Release> findLatestReleaseByApi(String owner, String repo) {
         String downloadUrl = String.format(LATEST_RELEASE_URL, owner, repo);
         Optional<String> json = fetchData(downloadUrl);
         if (!json.isPresent()) {
