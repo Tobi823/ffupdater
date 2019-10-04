@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.background;
+package de.marmaro.krt.ffupdater;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -16,7 +16,6 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 import androidx.work.Constraints;
-import androidx.work.Data;
 import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
@@ -28,31 +27,25 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.AvailableApps;
-import de.marmaro.krt.ffupdater.InstalledAppsDetector;
-import de.marmaro.krt.ffupdater.MainActivity;
-import de.marmaro.krt.ffupdater.R;
-
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 
 /**
  * This class will call the {@link WorkManager} to check regularly for app updates in the background.
- * When an app update is available, a notification will be displayed.
+ * When an app update is available, a notification will be created and displayed.
  */
-public class UpdateChecker extends Worker {
+public class NotificationCreator extends Worker {
     private static final String CHANNEL_ID = "update_notification_channel_id";
     private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
     static final String WORK_MANAGER_KEY = "update_checker";
 
-    private UpdateChecker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    private NotificationCreator(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
     /**
-     * Register UpdateChecker for regularly update checks.
-     * If UpdateChecker is already registered, the already registered UpdateChecker will be replaced.
-     * If pref_check_interval (from default shared preferences) is less or equal 0, UpdateChecker will be unregistered.
+     * Register NotificationCreator for regularly update checks.
+     * If NotificationCreator is already registered, the already registered NotificationCreator will be replaced.
+     * If pref_check_interval (from default shared preferences) is less or equal 0, NotificationCreator will be unregistered.
      *
      * @param context necessary context for accessing default shared preferences etc.
      */
@@ -72,7 +65,7 @@ public class UpdateChecker extends Worker {
                 .build();
 
         PeriodicWorkRequest saveRequest =
-                new PeriodicWorkRequest.Builder(UpdateChecker.class, repeatEveryMinutes, TimeUnit.MINUTES)
+                new PeriodicWorkRequest.Builder(NotificationCreator.class, repeatEveryMinutes, TimeUnit.MINUTES)
                         .setConstraints(constraints)
                         .build();
 
@@ -87,7 +80,7 @@ public class UpdateChecker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        Log.d("UpdateChecker", "doWork() executed");
+        Log.d("NotificationCreator", "doWork() executed");
         if (isUpdateAvailable()) {
             createNotification();
         }

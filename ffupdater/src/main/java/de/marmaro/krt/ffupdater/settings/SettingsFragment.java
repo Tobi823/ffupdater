@@ -7,7 +7,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.background.UpdateChecker;
+import de.marmaro.krt.ffupdater.NotificationCreator;
 
 /**
  * Created by Tobiwan on 29.06.2019.
@@ -28,7 +28,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             String valueAsString = (String) newValue;
             int value = Integer.parseInt(valueAsString);
-            UpdateChecker.registerOrUnregister(value);
+            NotificationCreator.registerOrUnregister(value);
             return true;
         }
     };

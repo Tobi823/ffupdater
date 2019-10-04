@@ -34,7 +34,6 @@ import com.google.common.base.Optional;
 
 import java.util.List;
 
-import de.marmaro.krt.ffupdater.background.UpdateChecker;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
 import de.marmaro.krt.ffupdater.dialog.FetchDownloadUrlDialog;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         StrictMode.setThreadPolicy(policy);
 
         // starts the repeated update check
-        UpdateChecker.registerOrUnregister(this);
+        NotificationCreator.registerOrUnregister(this);
 
         installedApps = new InstalledAppsDetector(getPackageManager());
 
