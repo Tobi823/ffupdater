@@ -1,0 +1,4 @@
+  - test app
+  - write unit tests
+  - update translations
+  - add log messages for background tasks (for better understanding)
