@@ -106,7 +106,7 @@ public class AvailableApps {
         return Optional.fromNullable(versions.get(app));
     }
 
-    boolean isUpdateAvailable(App app, String installedVersion) {
+    public boolean isUpdateAvailable(App app, String installedVersion) {
         Optional<String> availableVersion = findVersionName(app);
         if (!availableVersion.isPresent()) {
             return false;

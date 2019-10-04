@@ -30,7 +30,7 @@ public class InstalledAppsDetector {
         this.packageManager = packageManager;
     }
 
-    String getVersionName(App app) {
+    public String getVersionName(App app) {
         switch (app) {
             case FENNEC_RELEASE:
                 return getVersionName(findPackageInfo(FENNEC_RELEASE));
@@ -54,7 +54,7 @@ public class InstalledAppsDetector {
         return !getVersionName(app).isEmpty();
     }
 
-    List<App> getInstalledApps() {
+    public List<App> getInstalledApps() {
         List<App> installedApps = new ArrayList<>();
         if (isInstalled(App.FENNEC_RELEASE)) {
             installedApps.add(App.FENNEC_RELEASE);

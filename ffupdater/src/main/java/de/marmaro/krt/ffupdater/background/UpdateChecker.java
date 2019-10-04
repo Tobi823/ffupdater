@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.util.Log;
@@ -22,8 +23,13 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.AvailableApps;
+import de.marmaro.krt.ffupdater.InstalledAppsDetector;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 
@@ -115,10 +121,17 @@ public class UpdateChecker extends Worker {
     }
 
     private boolean isUpdateAvailable() {
-//        Version current = FirefoxMetadata.create(getApplicationContext().getPackageManager()).getVersion();
-//        Version latest = MozillaVersions.getVersion();
-//        return !current.equals(latest);
-        // TODO
+        PackageManager packageManager = getApplicationContext().getPackageManager();
+        InstalledAppsDetector detector = new InstalledAppsDetector(packageManager);
+        // TODO List vs Set
+        Set<App> installedApps = new HashSet<>(detector.getInstalledApps());
+        AvailableApps availableApps = AvailableApps.create(installedApps);
+        for (App installedApp : installedApps) {
+            String versionName = detector.getVersionName(installedApp);
+            if (availableApps.isUpdateAvailable(installedApp, versionName)) {
+                return true;
+            }
+        }
         return false;
     }
 
