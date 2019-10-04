@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <receiver
-            android:name=".background.AutoStartUpdateChecker"
+            android:name=".Autostart"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
