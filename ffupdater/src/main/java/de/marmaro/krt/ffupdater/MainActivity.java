@@ -46,17 +46,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public static final int AVAILABLE_APPS_LOADER_ID = 123;
     public static final String TRIGGER_DOWNLOAD_FOR_APP = "trigger_download_for_app";
 
-    private SharedPreferences sharedPref;
     private InstalledAppsDetector installedApps;
     private AvailableApps availableApps;
     private ProgressBar progressBar;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         initUI();
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
@@ -241,7 +238,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
@@ -251,7 +247,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-
             }
         });
         progressBar.startAnimation(fadeOutAnimation);
