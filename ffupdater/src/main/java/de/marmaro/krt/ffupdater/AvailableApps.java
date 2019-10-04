@@ -15,21 +15,29 @@ import de.marmaro.krt.ffupdater.download.github.FirefoxLiteVersionFinder;
 import de.marmaro.krt.ffupdater.download.github.FocusVersionFinder;
 
 /**
- * Created by Tobiwan on 21.08.2019.
+ * Retrieve the latest version names for a specific set of apps.
+ * Get the download url for a specific app and compare version names to determine an available update.
  */
 public class AvailableApps {
-
     private Map<App, String> versions = new HashMap<>();
     private Map<App, String> downloadUrl = new HashMap<>();
     private boolean triggerDownload = false;
     private App appToDownload;
 
     private AvailableApps() {
-
     }
 
+    /**
+     * Request APIs for retrieving the latest version names for {@code appsToCheck}.
+     * Set flag to download a specific app.
+     * The app that will be downloaded will be automatically added to {@code appsToCheck}.
+     *
+     * @param appsToCheck apps for update checks
+     * @param appToDownload app for download
+     * @return object containing all version names for {@code appsToCheck}.
+     */
     static AvailableApps createAndTriggerDownload(Set<App> appsToCheck, App appToDownload) {
-        HashSet<App> copiedAppsToCheck = new HashSet<>(appsToCheck);
+        Set<App> copiedAppsToCheck = new HashSet<>(appsToCheck);
         copiedAppsToCheck.add(appToDownload);
 
         AvailableApps availableApps = create(copiedAppsToCheck);
@@ -38,9 +46,14 @@ public class AvailableApps {
         return availableApps;
     }
 
+    /**
+     * Request APIs for retrieving the latest version names for {@code appsToCheck}.
+     *
+     * @param appsToCheck apps for update check
+     * @return object containing all version names for {@code appsToCheck}.
+     */
     public static AvailableApps create(Set<App> appsToCheck) {
-        AvailableApps newObject = new AvailableApps();
-
+        AvailableApps result = new AvailableApps();
         LocalDevice.Platform platform = LocalDevice.getPlatform();
         LocalDevice.PlatformX86orArm platformX86orArm = LocalDevice.getPlatformX86orArm();
 
@@ -50,16 +63,16 @@ public class AvailableApps {
             Optional<FennecVersionFinder.Response> response = FennecVersionFinder.getResponse();
             if (response.isPresent()) {
                 if (appsToCheck.contains(App.FENNEC_RELEASE)) {
-                    newObject.versions.put(App.FENNEC_RELEASE, response.get().getReleaseVersion());
-                    newObject.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, platform, response.get()));
+                    result.versions.put(App.FENNEC_RELEASE, response.get().getReleaseVersion());
+                    result.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, platform, response.get()));
                 }
                 if (appsToCheck.contains(App.FENNEC_BETA)) {
-                    newObject.versions.put(App.FENNEC_BETA, response.get().getBetaVersion());
-                    newObject.downloadUrl.put(App.FENNEC_BETA, getDownloadUrlForFennec(App.FENNEC_BETA, platform, response.get()));
+                    result.versions.put(App.FENNEC_BETA, response.get().getBetaVersion());
+                    result.downloadUrl.put(App.FENNEC_BETA, getDownloadUrlForFennec(App.FENNEC_BETA, platform, response.get()));
                 }
                 if (appsToCheck.contains(App.FENNEC_NIGHTLY)) {
-                    newObject.versions.put(App.FENNEC_NIGHTLY, response.get().getNightlyVersion());
-                    newObject.downloadUrl.put(App.FENNEC_NIGHTLY, getDownloadUrlForFennec(App.FENNEC_NIGHTLY, platform, response.get()));
+                    result.versions.put(App.FENNEC_NIGHTLY, response.get().getNightlyVersion());
+                    result.downloadUrl.put(App.FENNEC_NIGHTLY, getDownloadUrlForFennec(App.FENNEC_NIGHTLY, platform, response.get()));
                 }
             }
         }
@@ -68,32 +81,41 @@ public class AvailableApps {
                 appsToCheck.contains(App.FIREFOX_FOCUS)) {
             FocusVersionFinder focusVersionFinder = FocusVersionFinder.create();
             if (focusVersionFinder.isCorrect()) {
-                newObject.versions.put(App.FIREFOX_FOCUS, focusVersionFinder.getVersion());
-                newObject.downloadUrl.put(App.FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(App.FIREFOX_FOCUS, platformX86orArm));
+                result.versions.put(App.FIREFOX_FOCUS, focusVersionFinder.getVersion());
+                result.downloadUrl.put(App.FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(App.FIREFOX_FOCUS, platformX86orArm));
 
-                newObject.versions.put(App.FIREFOX_KLAR, focusVersionFinder.getVersion());
-                newObject.downloadUrl.put(App.FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(App.FIREFOX_KLAR, platformX86orArm));
+                result.versions.put(App.FIREFOX_KLAR, focusVersionFinder.getVersion());
+                result.downloadUrl.put(App.FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(App.FIREFOX_KLAR, platformX86orArm));
             }
         }
 
         if (appsToCheck.contains(App.FIREFOX_LITE)) {
             FirefoxLiteVersionFinder firefoxLiteVersionFinder = FirefoxLiteVersionFinder.create();
             if (firefoxLiteVersionFinder.isCorrect()) {
-                newObject.versions.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getVersion());
-                newObject.downloadUrl.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getDownloadUrl());
+                result.versions.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getVersion());
+                result.downloadUrl.put(App.FIREFOX_LITE, firefoxLiteVersionFinder.getDownloadUrl());
             }
         }
 
         if (appsToCheck.contains(App.FENIX)) {
             FenixVersionFinder fenixVersionFinder = FenixVersionFinder.create();
             if (fenixVersionFinder.isCorrect()) {
-                newObject.versions.put(App.FENIX, fenixVersionFinder.getVersion());
-                newObject.downloadUrl.put(App.FENIX, fenixVersionFinder.getDownloadUrl(platform));
+                result.versions.put(App.FENIX, fenixVersionFinder.getVersion());
+                result.downloadUrl.put(App.FENIX, fenixVersionFinder.getDownloadUrl(platform));
             }
         }
-        return newObject;
+        return result;
     }
 
+    /**
+     * Internal method for retrieving the download url for FENNEC_RELEASE, FENNEC_BETA, FENNEC_NIGHTLY.
+     * Reason: There are two methods for retrieving the url.
+     * {@link MozillaFtp} works better but can fail. If it fails, then {@link OfficialApi} will be used.
+     * @param app
+     * @param platform
+     * @param response
+     * @return
+     */
     private static String getDownloadUrlForFennec(App app, LocalDevice.Platform platform, FennecVersionFinder.Response response) {
         Optional<String> possibleUrl = MozillaFtp.getDownloadUrl(app, platform, response);
         if (possibleUrl.isPresent()) {
@@ -102,12 +124,24 @@ public class AvailableApps {
         return OfficialApi.getDownloadUrl(app, platform);
     }
 
-    Optional<String> findVersionName(App app) {
+    /**
+     * Get the version name for the given app - if the app was in {@code appsToCheck} in the method
+     * {@code create()}
+     * @param app
+     * @return version name
+     */
+    Optional<String> getVersionName(App app) {
         return Optional.fromNullable(versions.get(app));
     }
 
-    public boolean isUpdateAvailable(App app, String installedVersion) {
-        Optional<String> availableVersion = findVersionName(app);
+    /**
+     * Check if for a given app and a given installed version a newer version is available.
+     * @param app
+     * @param installedVersion
+     * @return is update available
+     */
+    boolean isUpdateAvailable(App app, String installedVersion) {
+        Optional<String> availableVersion = getVersionName(app);
         if (!availableVersion.isPresent()) {
             return false;
         }
@@ -124,14 +158,28 @@ public class AvailableApps {
         return !availableVersion.get().contentEquals(installedVersion);
     }
 
+    /**
+     * Get the download url for the given app - if the app was in {@code appsToCheck} in the method
+     * {@code create()}
+     * @param app
+     * @return download url
+     */
     Optional<String> getDownloadUrl(App app) {
         return Optional.fromNullable(downloadUrl.get(app));
     }
 
+    /**
+     * Should an app download triggered?
+     * @return
+     */
     boolean isTriggerDownload() {
         return triggerDownload;
     }
 
+    /**
+     * Which app should be downloaded?
+     * @return
+     */
     App getAppToDownload() {
         return appToDownload;
     }

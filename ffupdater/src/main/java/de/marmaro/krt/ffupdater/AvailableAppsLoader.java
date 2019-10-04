@@ -11,10 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by Tobiwan on 21.08.2019.
+ * This class is necessary for executing {@link AvailableApps} asynchronous.
  */
 public class AvailableAppsLoader extends AsyncTaskLoader<AvailableApps> {
-
     private Set<App> appsToCheck;
     private boolean triggerDownload = false;
     private App appToDownload;
@@ -24,10 +23,23 @@ public class AvailableAppsLoader extends AsyncTaskLoader<AvailableApps> {
         this.appsToCheck = appsToCheck;
     }
 
+    /**
+     * Create a AsyncTaskLoader only for retrieving the latest version names.
+     * @param context
+     * @param appsToCheck
+     * @return
+     */
     static AvailableAppsLoader onlyCheckAvailableApps(@NonNull Context context, List<App> appsToCheck) {
         return new AvailableAppsLoader(context, new HashSet<>(appsToCheck));
     }
 
+    /**
+     * Create a AsyncTaskLoader for retrieving the latest version names and download a specific app.
+     * @param context
+     * @param appsToCheck
+     * @param appToDownload
+     * @return
+     */
     static AvailableAppsLoader checkAvailableAppsAndTriggerDownload(@NonNull Context context, List<App> appsToCheck, App appToDownload) {
         AvailableAppsLoader availableAppsLoader = onlyCheckAvailableApps(context, appsToCheck);
         availableAppsLoader.triggerDownload = true;
@@ -35,6 +47,10 @@ public class AvailableAppsLoader extends AsyncTaskLoader<AvailableApps> {
         return availableAppsLoader;
     }
 
+    /**
+     * This method will be called automatically.
+     * @return
+     */
     @Nullable
     @Override
     public AvailableApps loadInBackground() {

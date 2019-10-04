@@ -187,13 +187,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(@NonNull Loader<AvailableApps> loader, AvailableApps data) {
         availableApps = data;
         String error = "Network error";
-        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_RELEASE).or(error));
-        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_BETA).or(error));
-        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(availableApps.findVersionName(App.FENNEC_NIGHTLY).or(error));
-        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_KLAR).or(error));
-        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_FOCUS).or(error));
-        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText(availableApps.findVersionName(App.FIREFOX_LITE).or(error));
-        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText(availableApps.findVersionName(App.FENIX).or(error));
+        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_RELEASE).or(error));
+        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_BETA).or(error));
+        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_NIGHTLY).or(error));
+        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_KLAR).or(error));
+        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_FOCUS).or(error));
+        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_LITE).or(error));
+        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText(availableApps.getVersionName(App.FENIX).or(error));
 
         updateGuiDownloadButtons(R.id.fennecReleaseDownloadButton, App.FENNEC_RELEASE);
         updateGuiDownloadButtons(R.id.fennecBetaDownloadButton, App.FENNEC_BETA);
