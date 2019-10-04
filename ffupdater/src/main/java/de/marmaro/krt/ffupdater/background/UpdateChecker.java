@@ -24,6 +24,7 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -34,60 +35,48 @@ import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
-import static com.google.common.base.Preconditions.checkArgument;
 
 /**
- * Created by Tobiwan on 01.04.2019.
+ * This class will call the {@link WorkManager} to check regularly for app updates. When an app
+ * update is available, a notification will be displayed.
  */
 public class UpdateChecker extends Worker {
     private static final String CHANNEL_ID = "update_notification_channel_id";
     private static final String UPDATE_AVAILABLE_RESPONSE = "update_available";
+    private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
     static final String WORK_MANAGER_KEY = "update_checker";
 
-    private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
 
-    public UpdateChecker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    private UpdateChecker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
     /**
-     * (Re)register or unregister UpdateChecker depending on the value of pref_check_interval.
-     * If pref_check_interval is greater than 0, than UpdateChecker will be regularly executed without an initial delay.
+     * Register UpdateChecker for regularly update checks.
+     * If UpdateChecker is already registered, the already registered UpdateChecker will be replaced.
+     * If pref_check_interval (from default shared preferences) is less or equal 0, UpdateChecker will be unregistered.
      *
-     * @param context necessary context for accessing shared preferences etc.
+     * @param context necessary context for accessing default shared preferences etc.
      */
     public static void registerOrUnregister(Context context) {
         int defaultValue = context.getResources().getInteger(R.integer.default_pref_check_interval);
-        String valueAsString = PreferenceManager.getDefaultSharedPreferences(context)
+        String value = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_check_interval), String.valueOf(defaultValue));
-        // the ListPreference only accept string-arrays as app:entryValues.
-        // That's the reason why I have to parse the result string back to an int although the value
-        // of the ListPreference is always only a number in a string.
-        int value = Integer.parseInt(valueAsString);
-        registerOrUnregister(value);
+        register(Integer.parseInt(Objects.requireNonNull(value)));
     }
 
     /**
-     * (Re)register or unregister UpdateChecker depending on the value of pref_check_interval.
-     * If pref_check_interval is greater than 0, than UpdateChecker will be regularly executed without an initial delay.
+     * Register UpdateChecker for regularly update checks.
+     * If UpdateChecker is already registered, the already registered UpdateChecker will be replaced.
+     * If repeatEveryMinutes is less or equal 0, UpdateChecker will be unregistered.
      *
-     * @param repeatIntervalLengthInMinutes value of pref_check_interval
+     * @param repeatEveryMinutes time between each execution in minutes
      */
-    public static void registerOrUnregister(int repeatIntervalLengthInMinutes) {
-        if (repeatIntervalLengthInMinutes > 0) {
-            UpdateChecker.register(repeatIntervalLengthInMinutes);
-        } else {
-            UpdateChecker.unregister();
+    private static void register(int repeatEveryMinutes) {
+        if (repeatEveryMinutes <= 0) {
+            WorkManager.getInstance().cancelUniqueWork(WORK_MANAGER_KEY);
+            return;
         }
-    }
-
-    /**
-     * Register UpdateChecker which will be executed regularly.
-     *
-     * @param repeatIntervalLengthInMinutes time between each execution in minutes
-     */
-    private static void register(int repeatIntervalLengthInMinutes) {
-        checkArgument(repeatIntervalLengthInMinutes >= 0, "repeatIntervalLengthInMinutes must not be negative");
 
         Constraints constraints = new Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -95,7 +84,7 @@ public class UpdateChecker extends Worker {
                 .build();
 
         PeriodicWorkRequest saveRequest =
-                new PeriodicWorkRequest.Builder(UpdateChecker.class, repeatIntervalLengthInMinutes, TimeUnit.MINUTES)
+                new PeriodicWorkRequest.Builder(UpdateChecker.class, repeatEveryMinutes, TimeUnit.MINUTES)
                         .setConstraints(constraints)
                         .build();
 
@@ -103,23 +92,27 @@ public class UpdateChecker extends Worker {
     }
 
     /**
-     * Unregister UpdateChecker with the result that UpdateChecker will not be executed anymore.
+     * This method will be called by the WorkManager regularly.
+     *
+     * @return
      */
-    private static void unregister() {
-        WorkManager.getInstance().cancelUniqueWork(WORK_MANAGER_KEY);
-    }
-
     @NonNull
     @Override
     public Result doWork() {
         Log.d("UpdateChecker", "doWork() executed");
         boolean updateAvailable = isUpdateAvailable();
         if (updateAvailable) {
-            showNotification();
+            createNotification();
         }
         return Result.success(new Data.Builder().putBoolean(UPDATE_AVAILABLE_RESPONSE, updateAvailable).build());
     }
 
+    /**
+     * Check if a update for an installed app is available.
+     * If an API (for example Github) is not available, the method will ignore it.
+     *
+     * @return an update for at least one installed app is available.
+     */
     private boolean isUpdateAvailable() {
         PackageManager packageManager = getApplicationContext().getPackageManager();
         InstalledAppsDetector detector = new InstalledAppsDetector(packageManager);
@@ -135,10 +128,11 @@ public class UpdateChecker extends Worker {
         return false;
     }
 
-    private void showNotification() {
-        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+    /**
+     * Create a new notification about a new app update.
+     */
+    private void createNotification() {
         NotificationCompat.Builder builder;
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel();
             builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
@@ -158,20 +152,21 @@ public class UpdateChecker extends Worker {
                 .setAutoCancel(true)
                 .build();
 
+        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, notification);
     }
 
     /**
-     * This method must be called for displaying a notification for Android 9
+     * This method will create a notification channel for the "update notification".
+     * Reason: Since Android 9 notification can only be created with an existing notification channel.
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel() {
-        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        CharSequence name = getApplicationContext().getString(R.string.update_notification_channel_name);
-        String description = getApplicationContext().getString(R.string.update_notification_channel_description);
+        CharSequence channelName = getApplicationContext().getString(R.string.update_notification_channel_name);
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setDescription(getApplicationContext().getString(R.string.update_notification_channel_description));
 
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
-        channel.setDescription(description);
+        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.createNotificationChannel(channel);
     }
 }
