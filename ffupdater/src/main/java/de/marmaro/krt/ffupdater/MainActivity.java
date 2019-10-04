@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         StrictMode.setThreadPolicy(policy);
 
         // starts the repeated update check
-        NotificationCreator.registerOrUnregister(this);
+        NotificationCreator.register(this);
 
         installedApps = new InstalledAppsDetector(getPackageManager());
 

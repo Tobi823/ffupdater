@@ -13,19 +13,20 @@ import javax.net.ssl.HttpsURLConnection;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.LocalDevice;
 
+
 public class MozillaFtp {
 
-    public static Optional<String> getDownloadUrl(App app, LocalDevice.Platform platform, FennecVersionFinder.Response response) {
+    public static Optional<String> getDownloadUrl(App app, LocalDevice.Platform platform, OfficialApi.Version version) {
         String url;
         switch (app) {
             case FENNEC_RELEASE:
-                url = getReleaseDownloadUrl(platform, response);
+                url = getReleaseDownloadUrl(platform, version);
                 break;
             case FENNEC_BETA:
-                url = getBetaDownloadUrl(platform, response);
+                url = getBetaDownloadUrl(platform, version);
                 break;
             case FENNEC_NIGHTLY:
-                url = getNightlyDownloadUrl(platform, response);
+                url = getNightlyDownloadUrl(platform, version);
                 break;
             default:
                 throw new IllegalArgumentException("unsupported platform " + platform);
@@ -37,7 +38,7 @@ public class MozillaFtp {
         return Optional.absent();
     }
 
-    private static String getReleaseDownloadUrl(LocalDevice.Platform platform, FennecVersionFinder.Response response) {
+    private static String getReleaseDownloadUrl(LocalDevice.Platform platform, OfficialApi.Version response) {
         String version = response.getReleaseVersion();
         String folderName = getFolderName(platform);
         String fileSuffix = getFileSuffix(platform);
@@ -46,7 +47,7 @@ public class MozillaFtp {
         return String.format(template, version, folderName, version, fileSuffix);
     }
 
-    private static String getBetaDownloadUrl(LocalDevice.Platform platform, FennecVersionFinder.Response response) {
+    private static String getBetaDownloadUrl(LocalDevice.Platform platform, OfficialApi.Version response) {
         String version = response.getBetaVersion();
         String folderName = getFolderName(platform);
         String fileSuffix = getFileSuffix(platform);
@@ -55,7 +56,7 @@ public class MozillaFtp {
         return String.format(template, version, folderName, version, fileSuffix);
     }
 
-    private static String getNightlyDownloadUrl(LocalDevice.Platform platform, FennecVersionFinder.Response response) {
+    private static String getNightlyDownloadUrl(LocalDevice.Platform platform, OfficialApi.Version response) {
         String version = response.getNightlyVersion();
         String esr = version.split("\\.")[0];
         String folderName = getFolderName(platform);

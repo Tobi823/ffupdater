@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import de.marmaro.krt.ffupdater.download.fennec.FennecVersionFinder;
 import de.marmaro.krt.ffupdater.download.fennec.MozillaFtp;
 import de.marmaro.krt.ffupdater.download.fennec.OfficialApi;
 import de.marmaro.krt.ffupdater.download.github.FenixVersionFinder;
@@ -55,12 +54,12 @@ public class AvailableApps {
     public static AvailableApps create(Set<App> appsToCheck) {
         AvailableApps result = new AvailableApps();
         LocalDevice.Platform platform = LocalDevice.getPlatform();
-        LocalDevice.PlatformX86orArm platformX86orArm = LocalDevice.getPlatformX86orArm();
+        LocalDevice.SimplifiedPlatform simplifiedPlatform = LocalDevice.getSimplifiedPlatform();
 
         if (appsToCheck.contains(App.FENNEC_RELEASE) ||
                 appsToCheck.contains(App.FENNEC_BETA) ||
                 appsToCheck.contains(App.FENNEC_NIGHTLY)) {
-            Optional<FennecVersionFinder.Response> response = FennecVersionFinder.getResponse();
+            Optional<OfficialApi.Version> response = OfficialApi.getResponse();
             if (response.isPresent()) {
                 if (appsToCheck.contains(App.FENNEC_RELEASE)) {
                     result.versions.put(App.FENNEC_RELEASE, response.get().getReleaseVersion());
@@ -82,10 +81,10 @@ public class AvailableApps {
             FocusVersionFinder focusVersionFinder = FocusVersionFinder.create();
             if (focusVersionFinder.isCorrect()) {
                 result.versions.put(App.FIREFOX_FOCUS, focusVersionFinder.getVersion());
-                result.downloadUrl.put(App.FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(App.FIREFOX_FOCUS, platformX86orArm));
+                result.downloadUrl.put(App.FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(App.FIREFOX_FOCUS, simplifiedPlatform));
 
                 result.versions.put(App.FIREFOX_KLAR, focusVersionFinder.getVersion());
-                result.downloadUrl.put(App.FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(App.FIREFOX_KLAR, platformX86orArm));
+                result.downloadUrl.put(App.FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(App.FIREFOX_KLAR, simplifiedPlatform));
             }
         }
 
@@ -113,11 +112,11 @@ public class AvailableApps {
      * {@link MozillaFtp} works better but can fail. If it fails, then {@link OfficialApi} will be used.
      * @param app
      * @param platform
-     * @param response
+     * @param version
      * @return
      */
-    private static String getDownloadUrlForFennec(App app, LocalDevice.Platform platform, FennecVersionFinder.Response response) {
-        Optional<String> possibleUrl = MozillaFtp.getDownloadUrl(app, platform, response);
+    private static String getDownloadUrlForFennec(App app, LocalDevice.Platform platform, OfficialApi.Version version) {
+        Optional<String> possibleUrl = MozillaFtp.getDownloadUrl(app, platform, version);
         if (possibleUrl.isPresent()) {
             return possibleUrl.get();
         }

@@ -8,8 +8,8 @@ import java.util.Map;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.LocalDevice;
 
-import static de.marmaro.krt.ffupdater.LocalDevice.PlatformX86orArm.ARM;
-import static de.marmaro.krt.ffupdater.LocalDevice.PlatformX86orArm.X86;
+import static de.marmaro.krt.ffupdater.LocalDevice.SimplifiedPlatform.ARM;
+import static de.marmaro.krt.ffupdater.LocalDevice.SimplifiedPlatform.X86;
 
 /**
  * Created by Tobiwan on 22.08.2019.
@@ -53,7 +53,7 @@ public class FocusVersionFinder {
         return version;
     }
 
-    public String getDownloadUrl(App app, LocalDevice.PlatformX86orArm platform) {
+    public String getDownloadUrl(App app, LocalDevice.SimplifiedPlatform platform) {
         if (!correct) {
             throw new IllegalArgumentException("FocusVersionFinder is correct");
         }

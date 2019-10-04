@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater;
 
 /**
- * Created by Tobiwan on 21.08.2019.
+ * All supported apps.
  */
 public enum App {
     FENNEC_RELEASE,

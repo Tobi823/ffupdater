@@ -18,7 +18,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by Tobiwan on 22.08.2019.
  */
-public class LatestReleaseSearcher {
+class LatestReleaseSearcher {
     private static final String TAG = "ffupdater";
     private static final String UTF_8 = "UTF-8";
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/%s/%s/releases/latest";

@@ -7,15 +7,17 @@ import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
 /**
- * Created by Tobiwan on 21.08.2019.
+ * Detect the hardware of the Android phone.
  */
 public class LocalDevice {
-
     private static final String ARM64_V8A = "arm64-v8a";
     private static final String ARMEABI_V7A = "armeabi-v7a";
     private static final String X86_64 = "x86_64";
     private static final String X86 = "x86";
 
+    /**
+     * @return CPU type
+     */
     static Platform getPlatform() {
         for (String abi : getSupportedAbis()) {
             if (abi == null) {
@@ -35,23 +37,27 @@ public class LocalDevice {
         return Platform.ARM;
     }
 
-    static PlatformX86orArm getPlatformX86orArm() {
+    /**
+     * @return simplified CPU type (ARMEABI_V7A or X86)
+     */
+    static SimplifiedPlatform getSimplifiedPlatform() {
         for (String abi : getSupportedAbis()) {
             if (abi == null) {
                 continue;
             }
             switch (abi) {
                 case ARMEABI_V7A:
-                    return PlatformX86orArm.ARM;
+                    return SimplifiedPlatform.ARM;
                 case X86:
-                    return PlatformX86orArm.X86;
+                    return SimplifiedPlatform.X86;
             }
         }
-        return PlatformX86orArm.ARM;
+        return SimplifiedPlatform.ARM;
     }
 
     private static String[] getSupportedAbis() {
         if (SDK_INT < LOLLIPOP) {
+            //noinspection deprecation
             return new String[]{CPU_ABI, CPU_ABI2};
         }
         return SUPPORTED_ABIS;
@@ -64,7 +70,7 @@ public class LocalDevice {
         X86_64
     }
 
-    public enum PlatformX86orArm {
+    public enum SimplifiedPlatform {
         ARM,
         X86
     }

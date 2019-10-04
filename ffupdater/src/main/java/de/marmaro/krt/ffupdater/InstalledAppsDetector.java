@@ -6,16 +6,14 @@ import android.content.pm.PackageManager;
 import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
 /**
- * Created by Tobiwan on 21.08.2019.
+ * Detect installed apps and their version names.
  */
 public class InstalledAppsDetector {
-
     private static final String FENNEC_RELEASE = "org.mozilla.firefox";
     private static final String FENNEC_BETA = "org.mozilla.firefox_beta";
     private static final String FENNEC_NIGHTLY = "org.mozilla.fennec_aurora";
@@ -30,7 +28,12 @@ public class InstalledAppsDetector {
         this.packageManager = packageManager;
     }
 
-    public String getVersionName(App app) {
+    /**
+     * Get the version name of app. If the app is not installed, an empty string will be returned.
+     * @param app
+     * @return version name or empty string.
+     */
+    String getVersionName(App app) {
         switch (app) {
             case FENNEC_RELEASE:
                 return getVersionName(findPackageInfo(FENNEC_RELEASE));
@@ -50,47 +53,55 @@ public class InstalledAppsDetector {
         throw new IllegalArgumentException("Unknown parameter");
     }
 
+    /**
+     * @param app
+     * @return if the app is installed or not.
+     */
     boolean isInstalled(App app) {
         return !getVersionName(app).isEmpty();
     }
 
+    /**
+     * @return all installed apps.
+     */
     public List<App> getInstalledApps() {
         List<App> installedApps = new ArrayList<>();
-        if (isInstalled(App.FENNEC_RELEASE)) {
-            installedApps.add(App.FENNEC_RELEASE);
-        }
-        if (isInstalled(App.FENNEC_BETA)) {
-            installedApps.add(App.FENNEC_BETA);
-        }
-        if (isInstalled(App.FENNEC_NIGHTLY)) {
-            installedApps.add(App.FENNEC_NIGHTLY);
-        }
-        if (isInstalled(App.FIREFOX_KLAR)) {
-            installedApps.add(App.FIREFOX_KLAR);
-        }
-        if (isInstalled(App.FIREFOX_FOCUS)) {
-            installedApps.add(App.FIREFOX_FOCUS);
-        }
-        if (isInstalled(App.FIREFOX_LITE)) {
-            installedApps.add(App.FIREFOX_LITE);
-        }
-        if (isInstalled(App.FENIX)) {
-            installedApps.add(App.FENIX);
+        for (App app : App.values()) {
+            if (isInstalled(app)) {
+                installedApps.add(app);
+            }
         }
         return installedApps;
     }
 
+    /**
+     * @return all not installed apps.
+     */
     public List<App> getNotInstalledApps() {
-        List<App> allApps = new ArrayList<>(Arrays.asList(App.values()));
-        allApps.removeAll(getInstalledApps());
-        return allApps;
+        List<App> notInstalledApp = new ArrayList<>();
+        for (App app : App.values()) {
+            if (!isInstalled(app)) {
+                notInstalledApp.add(app);
+            }
+        }
+        return notInstalledApp;
     }
 
+    /**
+     * Internal method for getting the nonnull version name.
+     * @param packageInfo
+     * @return
+     */
     @Contract(value = "null -> !null", pure = true)
     private String getVersionName(PackageInfo packageInfo) {
         return packageInfo == null ? "" : packageInfo.versionName;
     }
 
+    /**
+     * Internal method for getting the PackageInfo of the given packageName.
+     * @param packageName
+     * @return
+     */
     @Nullable
     private PackageInfo findPackageInfo(String packageName) {
         try {

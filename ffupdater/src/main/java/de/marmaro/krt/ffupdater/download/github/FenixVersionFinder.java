@@ -20,7 +20,6 @@ public class FenixVersionFinder {
     private boolean correct = true;
 
     private FenixVersionFinder() {
-
     }
 
     public static FenixVersionFinder create() {
