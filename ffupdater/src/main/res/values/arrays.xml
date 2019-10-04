@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="pref_entry_build_channel">
-        <item>Release</item>
-        <item>Beta</item>
-        <item>Nightly</item>
-    </string-array>
-
-    <string-array name="pref_values_build_channel">
-        <item>version</item>
-        <item>beta_version</item>
-        <item>nightly_version</item>
-    </string-array>
-
     <string-array name="pref_entry_check_interval">
         <item>@string/update_interval_never</item>
         <item>@string/update_interval_15min</item>

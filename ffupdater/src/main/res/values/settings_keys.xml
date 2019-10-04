@@ -1,4 +1,3 @@
 <resources>
-    <string name="pref_build" translatable="false">pref_build</string>
     <string name="pref_check_interval" translatable="false">pref_check_interval</string>
 </resources>
