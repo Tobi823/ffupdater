@@ -282,7 +282,7 @@
                     android:layout_marginBottom="10dp">
 
                     <ImageButton
-                        android:id="@+id/fennecNigthlyInfoButton"
+                        android:id="@+id/fennecNightlyInfoButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
