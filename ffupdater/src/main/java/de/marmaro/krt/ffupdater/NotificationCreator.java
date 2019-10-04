@@ -36,7 +36,7 @@ import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 public class NotificationCreator extends Worker {
     private static final String CHANNEL_ID = "update_notification_channel_id";
     private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
-    static final String WORK_MANAGER_KEY = "update_checker";
+    private static final String WORK_MANAGER_KEY = "update_checker";
 
     private NotificationCreator(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -47,13 +47,24 @@ public class NotificationCreator extends Worker {
      * If NotificationCreator is already registered, the already registered NotificationCreator will be replaced.
      * If pref_check_interval (from default shared preferences) is less or equal 0, NotificationCreator will be unregistered.
      *
-     * @param context necessary context for accessing default shared preferences etc.
+     * @param context necessary context for accessing default shared preferences and using {@link WorkManager}.
      */
     public static void registerOrUnregister(Context context) {
         int defaultValue = context.getResources().getInteger(R.integer.default_pref_check_interval);
         String value = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_check_interval), String.valueOf(defaultValue));
-        int repeatEveryMinutes = Integer.parseInt(Objects.requireNonNull(value));
+        register(context, Integer.parseInt(Objects.requireNonNull(value)));
+    }
+
+    /**
+     * Register NotificationCreator for regularly update checks.
+     * If NotificationCreator is already registered, the already registered NotificationCreator will be replaced.
+     * If pref_check_interval (from default shared preferences) is less or equal 0, NotificationCreator will be unregistered.
+     *
+     * @param context necessary context using {@link WorkManager}.
+     * @param repeatEveryMinutes check for app update every x minutes
+     */
+    public static void register(Context context, int repeatEveryMinutes) {
         if (repeatEveryMinutes <= 0) {
             WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY);
             return;

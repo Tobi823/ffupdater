@@ -26,9 +26,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     private Preference.OnPreferenceChangeListener reconfigureUpdateCheckerOnChange = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-            String valueAsString = (String) newValue;
-            int value = Integer.parseInt(valueAsString);
-            NotificationCreator.registerOrUnregister(value);
+            NotificationCreator.register(getContext(), Integer.parseInt((String) newValue));
             return true;
         }
     };
