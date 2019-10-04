@@ -20,12 +20,12 @@ For example `https://download.mozilla.org/?product=fennec-beta-latest&os=android
 
 ## History
 
-Since Mozilla [shut down their FTP server on 2015-08-05](https://blog.mozilla.org/it/2015/07/27/product-delivery-migration-what-is-changing-when-its-changing-and-the-impacts/), non-playstore updates of Firefox have to be done by third-party apps such as this one.
+Since Mozilla [shut down their FTP server on 2015-08-05](https://blog.mozilla.org/it/2015/07/27/product-delivery-migration-what-is-changing-when-its-changing-and-the-impacts/), non-"Google Play Store" updates of Firefox have to be done by third-party apps such as this one.
 
 
 Mozilla now uses a uniform URL to point to the latest release, see [their README](https://archive.mozilla.org/pub/mobile/releases/latest/README.txt) for details. The current URL for Android is: https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi
 
-I opened a ticket about non-playstore updates with Mozilla in 2015, as did others:
+I opened a ticket about non-"Google Play Store" updates with Mozilla in 2015, as did others:
 
 - [ ] https://bugzilla.mozilla.org/show_bug.cgi?id=1192279
 - [x] https://bugzilla.mozilla.org/show_bug.cgi?id=1220773

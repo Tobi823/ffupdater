@@ -68,7 +68,7 @@
  * Remove version check since it's broken: Just download the APK.
 
 2016-03-06 Version 45.0 (13)
- * Use lower traget to qucikfix Android6 permissions
+ * Use lower target to quickfix Android6 permissions
 
 2016-01-26 Version 44.0 (12)
  * Update to reflect new Firefox version, but no change in
@@ -103,7 +103,7 @@
 2015-08-10 Version 40.0 (3)
  * Remove FTP lookup since Mozilla is shutting down the servers.
  * Handle both request type by a single button.
- * "I am feeling lucky" now gets the next relase, not the latest.
+ * "I am feeling lucky" now gets the next release, not the latest.
  * Add preferences to restrict connections: WiFi-only, metered, roaming.
  * Use actionbar.
 

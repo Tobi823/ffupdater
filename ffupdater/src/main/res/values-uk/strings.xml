@@ -9,7 +9,7 @@
 	<string name="check_available_error_message">Не вдалося визначити доступну версію Firefox.\nБудь ласка, перевірте ваше підключення до мережі інтернет.</string>
 	<string name="none">Немає</string>
 	<string name="ok">Гаразд</string>
-	<string name="checkavailable">Перевірити доступну версію</string>
+	<string name="check_available">Перевірити доступну версію</string>
 	<string name="download">Завантажити Firefox</string>
 	<string name="update_notification_title">Доступна нова версія firefox</string>
 	<string name="update_notification_text">Натисніть, аби відкрити додаток</string>

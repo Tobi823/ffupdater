@@ -9,7 +9,7 @@
 	<string name="check_available_error_message">Не удалось определить последнюю доступную версию Firefox.\nПроверьте ваше подключение к интернету.</string>
 	<string name="none">Нет</string>
 	<string name="ok">ОК</string>
-	<string name="checkavailable">Проверить доступную версию</string>
+	<string name="check_available">Проверить доступную версию</string>
 	<string name="download">Загрузить Firefox</string>
     <string name="update_notification_title">Выпущена новая версия Firefox</string>
 	<string name="update_notification_text">Нажмите, чтобы открыть приложение</string>

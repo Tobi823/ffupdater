@@ -41,7 +41,6 @@ class LatestReleaseSearcher {
             return Optional.absent();
         }
 
-        Log.i("download", "heruntergeladen: " + json.get().length());
         Gson gson = new Gson();
         return Optional.of(gson.fromJson(json.get(), Release.class));
     }
@@ -53,7 +52,6 @@ class LatestReleaseSearcher {
             return Optional.absent();
         }
 
-        Log.i("download", "heruntergeladen: " + json.get().length());
         Gson gson = new Gson();
         Release[] releases = gson.fromJson(json.get(), Release[].class);
         for (Release release : releases) {
