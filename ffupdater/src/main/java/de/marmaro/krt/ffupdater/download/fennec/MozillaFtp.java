@@ -13,9 +13,11 @@ import javax.net.ssl.HttpsURLConnection;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.LocalDevice;
 
-
+/**
+ * Get the version name and the download link for the latest Fennec release (release, beta, nightly)
+ * from their FTP service. Works a bit more better, but is not official supported.
+ */
 public class MozillaFtp {
-
     public static Optional<String> getDownloadUrl(App app, LocalDevice.Platform platform, OfficialApi.Version version) {
         String url;
         switch (app) {

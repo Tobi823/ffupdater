@@ -18,8 +18,8 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.LocalDevice;
 
 /**
- * Get the download link for the latest Fennec release (release, beta, nightly) from the official
- * Mozilla API. This API only supports
+ * Get the version name and the download link for the latest Fennec release (release, beta, nightly)
+ * from the official Mozilla API.
  */
 public class OfficialApi {
     private static final String TAG = "ffupdater";

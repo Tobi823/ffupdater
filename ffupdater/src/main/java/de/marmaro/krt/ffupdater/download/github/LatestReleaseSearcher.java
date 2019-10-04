@@ -81,9 +81,6 @@ class LatestReleaseSearcher {
         }
     }
 
-    /**
-     * Created by Tobiwan on 23.08.2019.
-     */
     public static class Asset {
         @SerializedName("name")
         private String name;
@@ -108,9 +105,6 @@ class LatestReleaseSearcher {
         }
     }
 
-    /**
-     * Created by Tobiwan on 23.08.2019.
-     */
     public static class Release {
         @SerializedName("tag_name")
         private String tagName;

@@ -60,19 +60,17 @@ public class AvailableApps {
                 appsToCheck.contains(App.FENNEC_BETA) ||
                 appsToCheck.contains(App.FENNEC_NIGHTLY)) {
             Optional<OfficialApi.Version> response = OfficialApi.getResponse();
-            if (response.isPresent()) {
-                if (appsToCheck.contains(App.FENNEC_RELEASE)) {
-                    result.versions.put(App.FENNEC_RELEASE, response.get().getReleaseVersion());
-                    result.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, platform, response.get()));
-                }
-                if (appsToCheck.contains(App.FENNEC_BETA)) {
-                    result.versions.put(App.FENNEC_BETA, response.get().getBetaVersion());
-                    result.downloadUrl.put(App.FENNEC_BETA, getDownloadUrlForFennec(App.FENNEC_BETA, platform, response.get()));
-                }
-                if (appsToCheck.contains(App.FENNEC_NIGHTLY)) {
-                    result.versions.put(App.FENNEC_NIGHTLY, response.get().getNightlyVersion());
-                    result.downloadUrl.put(App.FENNEC_NIGHTLY, getDownloadUrlForFennec(App.FENNEC_NIGHTLY, platform, response.get()));
-                }
+            if (response.isPresent() && appsToCheck.contains(App.FENNEC_RELEASE)) {
+                result.versions.put(App.FENNEC_RELEASE, response.get().getReleaseVersion());
+                result.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, platform, response.get()));
+            }
+            if (response.isPresent() && appsToCheck.contains(App.FENNEC_BETA)) {
+                result.versions.put(App.FENNEC_BETA, response.get().getBetaVersion());
+                result.downloadUrl.put(App.FENNEC_BETA, getDownloadUrlForFennec(App.FENNEC_BETA, platform, response.get()));
+            }
+            if (response.isPresent() && appsToCheck.contains(App.FENNEC_NIGHTLY)) {
+                result.versions.put(App.FENNEC_NIGHTLY, response.get().getNightlyVersion());
+                result.downloadUrl.put(App.FENNEC_NIGHTLY, getDownloadUrlForFennec(App.FENNEC_NIGHTLY, platform, response.get()));
             }
         }
 
