@@ -10,7 +10,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.preference.PreferenceManager;
 
 import de.marmaro.krt.ffupdater.R;
 
@@ -35,10 +34,6 @@ public class UnstableChannelWarningDialog extends DialogFragment {
                 .setNegativeButton(context.getString(R.string.switch_to_unsafe_build_negative_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        PreferenceManager.getDefaultSharedPreferences(context)
-                                .edit()
-                                .putString(context.getString(R.string.pref_build), context.getString(R.string.default_pref_build))
-                                .apply();
                         dialog.dismiss();
                         // force the reload of SettingsActivity
                         getActivity().finish();

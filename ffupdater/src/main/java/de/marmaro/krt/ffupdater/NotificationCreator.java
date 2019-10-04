@@ -107,7 +107,6 @@ public class NotificationCreator extends Worker {
     private boolean isUpdateAvailable() {
         PackageManager packageManager = getApplicationContext().getPackageManager();
         InstalledAppsDetector detector = new InstalledAppsDetector(packageManager);
-        // TODO List vs Set
         Set<App> installedApps = new HashSet<>(detector.getInstalledApps());
         AvailableApps availableApps = AvailableApps.create(installedApps);
         for (App installedApp : installedApps) {

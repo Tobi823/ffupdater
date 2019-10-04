@@ -20,8 +20,6 @@
     <string name="not_connected_to_internet">You are not connected to the Internet</string>
     <string name="not_installed">Not Installed</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="pref_category_update_channel">Update channel</string>
-    <string name="pref_update_channel_title">Select Firefox update channel</string>
     <string name="firefox_for_android" translatable="false">Firefox for Android</string>
     <string name="firefox_for_android_beta" translatable="false">Firefox for Android Beta</string>
     <string name="firefox_nightly_for_developer" translatable="false">Firefox Nightly for Developer</string>

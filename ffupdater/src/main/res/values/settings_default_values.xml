@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="default_pref_check_interval">480</integer>
-    <string name="default_pref_build" translatable="false">version</string>
 </resources>

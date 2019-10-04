@@ -19,8 +19,6 @@
     <string name="about">À propos</string>
     <string name="not_installed">Pas installé</string>
     <string name="title_activity_settings">Réglages</string>
-    <string name="pref_update_channel_title">Sélectionnez le canal de mise à jour de Firefox</string>
-    <string name="pref_category_update_channel">Canal de mise à jour</string>
     <string name="update_notification_channel_name">Notification de mise à jour</string>
     <string name="update_notification_channel_description">Cette catégorie de notification vous informera des nouvelles mises à jour Firefox disponibles.</string>
     <string name="pref_category_automatic_update_check">Vérification automatique de la mise à jour</string>
