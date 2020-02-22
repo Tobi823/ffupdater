@@ -6,11 +6,12 @@
     <string name="installed_version">Version installée :</string>
     <string name="ff_not_installed">Firefox n\'est pas installé</string>
     <string name="download">Télécharger Firefox</string>
+    <string name="download_started">Téléchargement démarré</string>
     <string name="available_version">Dernière version :</string>
     <string name="checkavailable">Vérifier quelle est la dernière version</string>
     <string name="check_available_error_message">Impossible de trouver la dernière version de Firefox. Vérifiez votre connexion réseau.</string>
     <string name="checking">(vérification…)</string>
-    <string name="infobox">Cette application permet de mettre à jour Firefox simplement. Cliquez sur le bouton «Télécharger Firefox» pour envoyer une demande en HTTPS vers n\'importe quelle app que vous utilisez pour télécharger, p. ex. une version installée de Firefox ou un autre navigateur. Selon votre appareil, vous aurez le choix entre plusieurs options. La plupart des app permettant de télécharger affichent une icône indiquant la progression. Après la fin du téléchargement, installez le fichier APK.  C\'est une procédure compliquée, donc toute aide pour améliorer cette application est bien sûr bienvenue !</string>
+    <string name="infobox">Cette application permet de mettre à jour Firefox simplement. Cliquez sur le bouton «Télécharger» pour télécharger le programme d\'installation. La plupart des app permettant de télécharger affichent une icône indiquant la progression. Après la fin du téléchargement, installez le fichier APK.  C\'est une procédure compliquée, donc toute aide pour améliorer cette application est bien sûr bienvenue !</string>
 
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="update_notification_title">Une nouvelle version de Firefox a été publiée</string>

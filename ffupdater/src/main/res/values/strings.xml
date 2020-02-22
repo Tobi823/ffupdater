@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">FFUpdater</string>
     <!--TODO: This string translation needs verification bcz i changed this  -->
-    <string name="infobox">This is a simple updater for Firefox. Click the button to send an HTTPS intent to whatever app you use to download, e.g. a installed version of Firefox or any other browser. Depending on your device, you might see multiple options to choose from. Most downloaders will show an icon indicating the progress. Once finished, open the resulting apk and choose the installer.  This is not a rather clumsy user experience now, if you feel it clumsy then any help is certainly welcome!</string>
+    <string name="infobox">This is a simple updater for Firefox. Click the button to begin downloading the Firefox installer. Once finished, open the resulting apk and install it.  This is not a rather clumsy user experience now, if you feel it clumsy then any help is certainly welcome!</string>
     <string name="installed_version">Installed version:</string>
     <string name="available_version">Available version:</string>
     <string name="checking">(checking…)</string>
@@ -12,6 +12,7 @@
     <string name="ok">OK</string>
     <string name="checkavailable">Check available version</string>
     <string name="download">Download Firefox</string>
+    <string name="download_started">Download started</string>
     <string name="installed_version_text_format" translatable="false">%s (%d)</string>
     <string name="not_installed_text_format" translatable="false">%s (%s)</string>
     <string name="update_notification_title">A new Firefox version was released</string>
