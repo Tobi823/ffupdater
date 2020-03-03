@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">FFUpdater</string>
-	<string name="infobox">Це простий додаток для оновлення Firefox. Натисніть кнопку, аби відправити HTTPS запит за допомогою будь-якого додатку для завантаження файлів, наприклад встановлена версія Firefox чи інший оглядач. В залежності від вашого пристрою, ви можете побачити декілька варантів та обрати один з них. Більшість додатків для завантаження показують поступ завантаження. Після завершення, відкрийте завантажений додаток та встановіть його.\n\nЦе не найзручніший метод, тому будь-яка допомога буде доречна!</string>
+	<string name="infobox">Це простий додаток для оновлення Firefox. Натисніть кнопку, аби завантажити інсталятор. Більшість додатків для завантаження показують поступ завантаження. Після завершення, відкрийте завантажений додаток та встановіть його.\n\nЦе не найзручніший метод, тому будь-яка допомога буде доречна!</string>
 	<string name="installed_version">Встановлена версія:</string>
 	<string name="available_version">Доступна версія:</string>
 	<string name="checking">(перевірка…)</string>
@@ -11,6 +11,7 @@
 	<string name="ok">Гаразд</string>
 	<string name="check_available">Перевірити доступну версію</string>
 	<string name="download">Завантажити Firefox</string>
+	<string name="download_started">Завантаження почалося</string>
 	<string name="update_notification_title">Доступна нова версія firefox</string>
 	<string name="update_notification_text">Натисніть, аби відкрити додаток</string>
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
