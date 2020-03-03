@@ -20,7 +20,7 @@
     <string name="not_installed">Pas installé</string>
     <string name="title_activity_settings">Réglages</string>
     <string name="update_notification_channel_name">Notification de mise à jour</string>
-    <string name="update_notification_channel_description">Cette catégorie de notification vous informera des nouvelles mises à jour Firefox disponibles.</string>
+    <string name="update_notification_channel_description">Cette catégorie de notification vous informera des nouvelles mises à jour de Firefox disponibles.</string>
     <string name="pref_category_automatic_update_check">Vérification automatique de la mise à jour</string>
     <string name="pref_check_interval_title">Intervalle de temps</string>
     <string name="update_interval_12h">12 heures</string>
@@ -42,8 +42,8 @@
     <string name="update_interval_6h">6 heures</string>
     <string name="update_interval_8h">"8 heures "</string>
     <string name="update_interval_never">Jamais (désactiver le contrôle de mise à jour automatique)</string>
-    <string name="switch_to_unsafe_fennec_message">Ce canal de mise à jour est conçu aux promoteurs et aux contrôleurs de Mozilla Firefox. Toute version Firefox de cela peut contenir des insectes différents qui peuvent affecter votre travail ordinaire avec le navigateur. Voulez-vous vraiment échanger à ce canal ?</string>
-    <string name="switch_to_unsafe_app_negative_button">Non, retournez à \'Release\'</string>
+    <string name="switch_to_unsafe_fennec_message">Ce canal de mise à jour est conçu pour les développeurs et testeurs de Mozilla Firefox. N\'importe quelle version de Firefox de ce canal peut contenir différents bogues qui peuvent affecter votre utilisation habituelle du navigateur. Voulez-vous vraiment passer à ce canal ?</string>
+    <string name="switch_to_unsafe_app_negative_button">Non, rester à \'Release\'</string>
     <string name="switch_to_unsafe_app_positive_button">Oui</string>
-    <string name="switch_to_unsafe_app_title">"Avertissement "</string>
+    <string name="switch_to_unsafe_app_title">"Avertissement"</string>
 </resources>
