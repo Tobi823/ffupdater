@@ -25,6 +25,7 @@ import androidx.work.WorkerParameters;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -151,7 +152,7 @@ public class NotificationCreator extends Worker {
                 .build();
 
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(1, notification);
+        Objects.requireNonNull(notificationManager).notify(1, notification);
     }
 
     /**
@@ -165,6 +166,6 @@ public class NotificationCreator extends Worker {
         channel.setDescription(getApplicationContext().getString(R.string.update_notification_channel_description));
 
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.createNotificationChannel(channel);
+        Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
     }
 }

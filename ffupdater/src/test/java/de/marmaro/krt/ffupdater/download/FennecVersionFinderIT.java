@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Tobiwan on 05.04.2020.
  */
 public class FennecVersionFinderIT {
-    FennecVersionFinder.Version version;
+    private FennecVersionFinder.Version version;
 
     @Before
     public void setUp() {

@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.DeviceABI;
 import de.marmaro.krt.ffupdater.utils.GsonApiConsumer;
@@ -13,7 +15,6 @@ import de.marmaro.krt.ffupdater.utils.GsonApiConsumer;
  * from the official Mozilla API.
  */
 public class FennecVersionFinder {
-    private static final String TAG = "ffupdater";
     private static final String DEFAULT_ABI = "android";
     private static final String X86_ABI = "android-x86";
     private static final String RELEASE_PRODUCT = "fennec-latest";
@@ -80,6 +81,7 @@ public class FennecVersionFinder {
             return nightlyVersion;
         }
 
+        @NotNull
         @Override
         public String toString() {
             return "Version{" +

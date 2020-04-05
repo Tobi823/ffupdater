@@ -6,8 +6,6 @@ import android.content.pm.PackageManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.jetbrains.annotations.Contract;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class InstalledApps {
     private static final String FIREFOX_LITE = "org.mozilla.rocket";
     private static final String FENIX = "org.mozilla.fenix";
 
-    private PackageManager packageManager;
+    private final PackageManager packageManager;
 
     public InstalledApps(PackageManager packageManager) {
         this.packageManager = packageManager;

@@ -33,6 +33,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
+import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private void loadAvailableApps() {
         // https://developer.android.com/training/monitoring-device-state/connectivity-monitoring#java
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        NetworkInfo activeNetworkInfo = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
         if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
             LoaderManager.getInstance(this).restartLoader(AVAILABLE_APPS_LOADER_ID, null, this);
         } else {
@@ -142,11 +143,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 alertDialog.setTitle(getString(R.string.about));
                 alertDialog.setMessage(getString(R.string.infobox));
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
+                        (dialog, which) -> dialog.dismiss());
                 alertDialog.show();
                 break;
             case R.id.action_settings:
@@ -184,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(@NonNull Loader<AvailableApps> loader, AvailableApps data) {
         availableApps = data;
-        String error = "Network error";
         ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_RELEASE));
         ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_BETA));
         ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_NIGHTLY));
@@ -297,7 +293,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 
             DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-            dm.enqueue(request);
+            Objects.requireNonNull(dm).enqueue(request);
 
             Toast.makeText(this, R.string.download_started, Toast.LENGTH_SHORT).show();
         }

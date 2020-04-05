@@ -18,7 +18,7 @@ public class FenixVersionFinder {
     private static final String REPOSITORY = "fenix";
 
     private String version;
-    private Map<String, String> downloadUrls = new HashMap<>();
+    private final Map<String, String> downloadUrls = new HashMap<>();
     private boolean correct = true;
 
     private FenixVersionFinder() {

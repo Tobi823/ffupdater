@@ -13,8 +13,8 @@ import java.util.Set;
 /**
  * This class is necessary for executing {@link AvailableApps} asynchronous.
  */
-public class AvailableAppsAsync extends AsyncTaskLoader<AvailableApps> {
-    private Set<App> appsToCheck;
+class AvailableAppsAsync extends AsyncTaskLoader<AvailableApps> {
+    private final Set<App> appsToCheck;
     private boolean triggerDownload = false;
     private App appToDownload;
 

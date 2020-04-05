@@ -25,8 +25,8 @@ import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
  * Get the download url for a specific app and compare version names to determine an available update.
  */
 public class AvailableApps {
-    private Map<App, String> versions = new HashMap<>();
-    private Map<App, String> downloadUrl = new HashMap<>();
+    private final Map<App, String> versions = new HashMap<>();
+    private final Map<App, String> downloadUrl = new HashMap<>();
     private boolean triggerDownload = false;
     private App appToDownload;
 
@@ -133,8 +133,6 @@ public class AvailableApps {
         result.versions.put(FENIX, fenixVersionFinder.getVersion());
         result.downloadUrl.put(FENIX, fenixVersionFinder.getDownloadUrl(DeviceABI.getAbi()));
     }
-
-
 
     /**
      * Get the version name for the given app from the local cache.

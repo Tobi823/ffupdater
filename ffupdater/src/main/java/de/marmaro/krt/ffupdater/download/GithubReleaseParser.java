@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import de.marmaro.krt.ffupdater.utils.GsonApiConsumer;
@@ -12,8 +14,6 @@ import de.marmaro.krt.ffupdater.utils.GsonApiConsumer;
  * Access the version name and the download url from Github.
  */
 class GithubReleaseParser {
-    private static final String TAG = "ffupdater";
-    private static final String UTF_8 = "UTF-8";
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/%s/%s/releases/latest";
     private static final String ALL_RELEASES_URL = "https://api.github.com/repos/%s/%s/releases";
 
@@ -63,6 +63,7 @@ class GithubReleaseParser {
             return downloadUrl;
         }
 
+        @NotNull
         @Override
         public String toString() {
             return "Asset{" +
@@ -87,6 +88,7 @@ class GithubReleaseParser {
             return assets;
         }
 
+        @NotNull
         @Override
         public String toString() {
             return "Release{" +

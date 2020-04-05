@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.core.util.Preconditions;
 import androidx.fragment.app.DialogFragment;
 
+import java.util.Objects;
+
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;
 
@@ -17,8 +19,7 @@ import de.marmaro.krt.ffupdater.R;
  * Created by Tobiwan on 23.08.2019.
  */
 public class AppInfoDialog extends DialogFragment {
-
-    private App app;
+    private final App app;
 
     public AppInfoDialog(App app) {
         this.app = app;
@@ -54,7 +55,7 @@ public class AppInfoDialog extends DialogFragment {
     }
 
     private CharSequence getTitle() {
-        Context context = Preconditions.checkNotNull(getContext());
+        Context context = Objects.requireNonNull(getContext());
         switch (app) {
             case FENNEC_RELEASE:
                 return context.getString(R.string.fennecReleaseTitleText);

@@ -19,7 +19,7 @@ public class FocusVersionFinder {
     private static final String REPOSITORY = "focus-android";
 
     private String version;
-    private Map<String, String> downloadUrls = new HashMap<>();
+    private final Map<String, String> downloadUrls = new HashMap<>();
     private boolean correct = true;
 
     private FocusVersionFinder() {
