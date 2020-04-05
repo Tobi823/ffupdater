@@ -54,7 +54,7 @@ public class FennecVersionFinder {
     }
 
     @Nullable
-    public static Version getResponse() {
+    public static Version getVersion() {
         return GsonApiConsumer.consume(CHECK_URL, Version.class);
     }
 

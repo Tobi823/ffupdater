@@ -79,7 +79,7 @@ public class AvailableApps {
     }
 
     private static void checkFennec(AvailableApps result, Set<App> appsToCheck) {
-        FennecVersionFinder.Version version = FennecVersionFinder.getResponse();
+        FennecVersionFinder.Version version = FennecVersionFinder.getVersion();
         if (version == null) {
             return;
         }

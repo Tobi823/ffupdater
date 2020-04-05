@@ -24,7 +24,7 @@ public class FennecVersionFinderIT {
 
     @Before
     public void setUp() {
-        version = FennecVersionFinder.getResponse();
+        version = FennecVersionFinder.getVersion();
     }
 
     @Test
