@@ -101,11 +101,10 @@ public class MozillaFtp {
         try {
             connection = (HttpsURLConnection) new URL(url).openConnection();
             connection.setRequestMethod("HEAD");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(1000);
+            connection.setReadTimeout(1000);
             connection.connect();
-            int code = connection.getResponseCode();
-            return code == HttpsURLConnection.HTTP_OK;
+            return connection.getResponseCode() == HttpsURLConnection.HTTP_OK;
         } catch (IOException e) {
             Log.e("", "cant validate download link " + url, e);
         } finally {
