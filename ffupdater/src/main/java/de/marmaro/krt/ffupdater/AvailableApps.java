@@ -53,8 +53,8 @@ public class AvailableApps {
      */
     public static AvailableApps create(Set<App> appsToCheck) {
         AvailableApps result = new AvailableApps();
-        LocalDevice.Platform platform = LocalDevice.getPlatform();
-        LocalDevice.SimplifiedPlatform simplifiedPlatform = LocalDevice.getSimplifiedPlatform();
+        DeviceABI.Platform platform = DeviceABI.getPlatform();
+        DeviceABI.SimplifiedPlatform simplifiedPlatform = DeviceABI.getSimplifiedPlatform();
 
         if (appsToCheck.contains(App.FENNEC_RELEASE) ||
                 appsToCheck.contains(App.FENNEC_BETA) ||
@@ -113,7 +113,7 @@ public class AvailableApps {
      * @param version
      * @return
      */
-    private static String getDownloadUrlForFennec(App app, LocalDevice.Platform platform, OfficialApi.Version version) {
+    private static String getDownloadUrlForFennec(App app, DeviceABI.Platform platform, OfficialApi.Version version) {
         Optional<String> possibleUrl = MozillaFtp.getDownloadUrl(app, platform, version);
         if (possibleUrl.isPresent()) {
             return possibleUrl.get();

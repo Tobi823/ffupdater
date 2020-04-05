@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.LocalDevice;
+import de.marmaro.krt.ffupdater.DeviceABI;
 
-import static de.marmaro.krt.ffupdater.LocalDevice.SimplifiedPlatform.ARM;
-import static de.marmaro.krt.ffupdater.LocalDevice.SimplifiedPlatform.X86;
+import static de.marmaro.krt.ffupdater.DeviceABI.SimplifiedPlatform.ARM;
+import static de.marmaro.krt.ffupdater.DeviceABI.SimplifiedPlatform.X86;
 
 /**
  * Access the version name and the download url for Firefox Focus and Firefox Klar from Github.
@@ -51,7 +51,7 @@ public class FocusVersionFinder {
         return version;
     }
 
-    public String getDownloadUrl(App app, LocalDevice.SimplifiedPlatform platform) {
+    public String getDownloadUrl(App app, DeviceABI.SimplifiedPlatform platform) {
         if (!correct) {
             throw new IllegalArgumentException("FocusVersionFinder is correct");
         }

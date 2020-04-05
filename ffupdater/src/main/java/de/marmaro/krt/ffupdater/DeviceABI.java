@@ -7,16 +7,26 @@ import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
 /**
- * Detect the hardware of the Android phone.
+ * Apps supports all, some or only one specific ABI (application binary interfaces).
+ * A smartphone only supports some or one ABI like x86, x64_64 + x86, ...
+ * This class is necessary to determine which app must be downloaded (because Firefox Fennec for
+ * x86 will not work on ARM devices).
  */
-public class LocalDevice {
+public class DeviceABI {
     private static final String ARM64_V8A = "arm64-v8a";
     private static final String ARMEABI_V7A = "armeabi-v7a";
     private static final String X86_64 = "x86_64";
     private static final String X86 = "x86";
 
     /**
-     * @return CPU type
+     * Return the best suited ABI in this order:
+     * - arm64-v8a
+     * - armeabi-v7a
+     * - x86_64
+     * - x86
+     * Reason: The majority of devices which support x86_64 support x86 and the majority of devices
+     * which support arm64-v8a support armeabi-v7a.
+     * @return ABI
      */
     static Platform getPlatform() {
         for (String abi : getSupportedAbis()) {
@@ -37,9 +47,7 @@ public class LocalDevice {
         return Platform.ARM;
     }
 
-    /**
-     * @return simplified CPU type (ARMEABI_V7A or X86)
-     */
+    @Deprecated
     static SimplifiedPlatform getSimplifiedPlatform() {
         for (String abi : getSupportedAbis()) {
             if (abi == null) {
@@ -70,6 +78,7 @@ public class LocalDevice {
         X86_64
     }
 
+    @Deprecated
     public enum SimplifiedPlatform {
         ARM,
         X86

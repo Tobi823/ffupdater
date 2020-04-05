@@ -15,7 +15,7 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.LocalDevice;
+import de.marmaro.krt.ffupdater.DeviceABI;
 
 /**
  * Get the version name and the download link for the latest Fennec release (release, beta, nightly)
@@ -33,7 +33,7 @@ public class OfficialApi {
     private static final String CHECK_URL = "https://product-details.mozilla.org/1.0/mobile_versions.json";
     private static final String DOWNLOAD_URL = "https://download.mozilla.org/?product=%s&os=%s&lang=multi";
 
-    public static String getDownloadUrl(App app, LocalDevice.Platform platform) {
+    public static String getDownloadUrl(App app, DeviceABI.Platform platform) {
         String operatingSystem;
         switch (platform) {
             case AARCH64:
