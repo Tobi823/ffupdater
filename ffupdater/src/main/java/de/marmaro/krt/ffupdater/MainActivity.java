@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public static final int AVAILABLE_APPS_LOADER_ID = 123;
     public static final String TRIGGER_DOWNLOAD_FOR_APP = "trigger_download_for_app";
 
-    private InstalledAppsDetector installedApps;
+    private InstalledApps installedApps;
     private AvailableApps availableApps;
     private ProgressBar progressBar;
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // starts the repeated update check
         NotificationCreator.register(this);
 
-        installedApps = new InstalledAppsDetector(getPackageManager());
+        installedApps = new InstalledApps(getPackageManager());
 
         if (LoaderManager.getInstance(this).getLoader(AVAILABLE_APPS_LOADER_ID) != null) {
             LoaderManager.getInstance(this).initLoader(AVAILABLE_APPS_LOADER_ID, null, this);
@@ -172,9 +172,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             if (args != null && args.getString(TRIGGER_DOWNLOAD_FOR_APP) != null) {
                 App appToDownload = App.valueOf(args.getString(TRIGGER_DOWNLOAD_FOR_APP));
                 args.clear();
-                return AvailableAppsLoader.checkAvailableAppsAndTriggerDownload(this, installedApps, appToDownload);
+                return AvailableAppsAsync.checkAvailableAppsAndTriggerDownload(this, installedApps, appToDownload);
             }
-            return AvailableAppsLoader.onlyCheckAvailableApps(this, installedApps);
+            return AvailableAppsAsync.onlyCheckAvailableApps(this, installedApps);
         }
         throw new IllegalArgumentException("id is unknown");
     }

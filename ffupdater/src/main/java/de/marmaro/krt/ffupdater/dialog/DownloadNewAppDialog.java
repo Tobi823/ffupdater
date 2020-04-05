@@ -16,7 +16,7 @@ import java.util.List;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.AvailableApps;
-import de.marmaro.krt.ffupdater.InstalledAppsDetector;
+import de.marmaro.krt.ffupdater.InstalledApps;
 import de.marmaro.krt.ffupdater.R;
 
 import static de.marmaro.krt.ffupdater.MainActivity.AVAILABLE_APPS_LOADER_ID;
@@ -72,7 +72,7 @@ public class DownloadNewAppDialog extends DialogFragment {
     private Pair<List<App>, CharSequence[]> getNotInstalledApps() {
         Context context = Preconditions.checkNotNull(getContext());
 
-        InstalledAppsDetector detector = new InstalledAppsDetector(getActivity().getPackageManager());
+        InstalledApps detector = new InstalledApps(getActivity().getPackageManager());
         List<App> notInstalledApps = detector.getNotInstalledApps();
         CharSequence[] notInstalledAppNames = new CharSequence[notInstalledApps.size()];
 

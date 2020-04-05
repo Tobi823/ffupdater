@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.AvailableApps;
-import de.marmaro.krt.ffupdater.InstalledAppsDetector;
+import de.marmaro.krt.ffupdater.InstalledApps;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 
@@ -114,7 +114,7 @@ public class NotificationCreator extends Worker {
      */
     private boolean isUpdateAvailable() {
         PackageManager packageManager = getApplicationContext().getPackageManager();
-        InstalledAppsDetector detector = new InstalledAppsDetector(packageManager);
+        InstalledApps detector = new InstalledApps(packageManager);
         Set<App> installedApps = new HashSet<>(detector.getInstalledApps());
         AvailableApps availableApps = AvailableApps.create(installedApps);
         for (App installedApp : installedApps) {

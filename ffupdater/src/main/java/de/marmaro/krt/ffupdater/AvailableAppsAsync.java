@@ -13,12 +13,12 @@ import java.util.Set;
 /**
  * This class is necessary for executing {@link AvailableApps} asynchronous.
  */
-public class AvailableAppsLoader extends AsyncTaskLoader<AvailableApps> {
+public class AvailableAppsAsync extends AsyncTaskLoader<AvailableApps> {
     private Set<App> appsToCheck;
     private boolean triggerDownload = false;
     private App appToDownload;
 
-    private AvailableAppsLoader(@NonNull Context context, Set<App> appsToCheck) {
+    private AvailableAppsAsync(@NonNull Context context, Set<App> appsToCheck) {
         super(context);
         this.appsToCheck = appsToCheck;
     }
@@ -29,8 +29,8 @@ public class AvailableAppsLoader extends AsyncTaskLoader<AvailableApps> {
      * @param appsToCheck
      * @return
      */
-    static AvailableAppsLoader onlyCheckAvailableApps(@NonNull Context context, List<App> appsToCheck) {
-        return new AvailableAppsLoader(context, new HashSet<>(appsToCheck));
+    static AvailableAppsAsync onlyCheckAvailableApps(@NonNull Context context, List<App> appsToCheck) {
+        return new AvailableAppsAsync(context, new HashSet<>(appsToCheck));
     }
 
     /**
@@ -40,11 +40,11 @@ public class AvailableAppsLoader extends AsyncTaskLoader<AvailableApps> {
      * @param appToDownload
      * @return
      */
-    static AvailableAppsLoader checkAvailableAppsAndTriggerDownload(@NonNull Context context, List<App> appsToCheck, App appToDownload) {
-        AvailableAppsLoader availableAppsLoader = onlyCheckAvailableApps(context, appsToCheck);
-        availableAppsLoader.triggerDownload = true;
-        availableAppsLoader.appToDownload = appToDownload;
-        return availableAppsLoader;
+    static AvailableAppsAsync checkAvailableAppsAndTriggerDownload(@NonNull Context context, List<App> appsToCheck, App appToDownload) {
+        AvailableAppsAsync availableAppsAsync = onlyCheckAvailableApps(context, appsToCheck);
+        availableAppsAsync.triggerDownload = true;
+        availableAppsAsync.appToDownload = appToDownload;
+        return availableAppsAsync;
     }
 
     /**

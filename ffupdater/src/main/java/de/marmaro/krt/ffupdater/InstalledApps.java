@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 /**
  * Detect installed apps and their version names.
  */
-public class InstalledAppsDetector {
+public class InstalledApps {
     private static final String FENNEC_RELEASE = "org.mozilla.firefox";
     private static final String FENNEC_BETA = "org.mozilla.firefox_beta";
     private static final String FENNEC_NIGHTLY = "org.mozilla.fennec_aurora";
@@ -24,7 +24,7 @@ public class InstalledAppsDetector {
 
     private PackageManager packageManager;
 
-    public InstalledAppsDetector(PackageManager packageManager) {
+    public InstalledApps(PackageManager packageManager) {
         this.packageManager = packageManager;
     }
 
