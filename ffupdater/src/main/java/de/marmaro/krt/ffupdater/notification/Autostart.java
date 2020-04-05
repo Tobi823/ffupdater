@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import de.marmaro.krt.ffupdater.notification.NotificationCreator;
+import static android.content.Intent.ACTION_BOOT_COMPLETED;
 
 /**
  * After the phone is booted, this class will start the {@link NotificationCreator}.
@@ -13,7 +13,7 @@ import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 public class Autostart extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent != null && Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+        if (intent != null && ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             NotificationCreator.register(context);
         }
     }

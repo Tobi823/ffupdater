@@ -22,8 +22,9 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -56,10 +57,11 @@ public class NotificationCreator extends Worker {
      * @param context necessary context for accessing default shared preferences and using {@link WorkManager}.
      */
     static void register(Context context) {
-        int defaultValue = context.getResources().getInteger(R.integer.default_pref_check_interval);
-        String value = PreferenceManager.getDefaultSharedPreferences(context)
-                .getString(context.getString(R.string.pref_check_interval), String.valueOf(defaultValue));
-        register(context, Integer.parseInt(Objects.requireNonNull(value)));
+        String userPref = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(context.getString(R.string.pref_check_interval), null);
+        int defaultPref = context.getResources().getInteger(R.integer.default_pref_check_interval);
+        int pref = NumberUtils.toInt(userPref, defaultPref);
+        register(context, pref);
     }
 
     /**
@@ -67,7 +69,7 @@ public class NotificationCreator extends Worker {
      * If NotificationCreator is already registered, the already registered NotificationCreator will be replaced.
      * If pref_check_interval (from default shared preferences) is less or equal 0, NotificationCreator will be unregistered.
      *
-     * @param context necessary context using {@link WorkManager}.
+     * @param context            necessary context using {@link WorkManager}.
      * @param repeatEveryMinutes check for app update every x minutes
      */
     public static void register(Context context, int repeatEveryMinutes) {
