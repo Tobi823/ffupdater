@@ -3,12 +3,13 @@ package de.marmaro.krt.ffupdater;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Nullable;
 
 /**
  * Detect installed apps and their version names.
@@ -92,9 +93,12 @@ public class InstalledApps {
      * @param packageInfo
      * @return
      */
-    @Contract(value = "null -> !null", pure = true)
+    @NonNull
     private String getVersionName(PackageInfo packageInfo) {
-        return packageInfo == null ? "" : packageInfo.versionName;
+        if (packageInfo == null || packageInfo.versionName == null) {
+            return "";
+        }
+        return packageInfo.versionName;
     }
 
     /**

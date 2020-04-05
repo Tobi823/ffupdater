@@ -1,7 +1,5 @@
 package de.marmaro.krt.ffupdater.download;
 
-import com.google.common.base.Optional;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,14 +27,14 @@ public class FocusVersionFinder {
 
     public static FocusVersionFinder create() {
         FocusVersionFinder newObject = new FocusVersionFinder();
-        Optional<GithubReleaseParser.Release> latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
-        if (!latestRelease.isPresent()) {
+        GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
+        if (latestRelease == null) {
             newObject.correct = false;
             return newObject;
         }
 
-        newObject.version = latestRelease.get().getTagName().replace("v", "");
-        for (GithubReleaseParser.Asset asset : latestRelease.get().getAssets()) {
+        newObject.version = latestRelease.getTagName().replace("v", "");
+        for (GithubReleaseParser.Asset asset : latestRelease.getAssets()) {
             newObject.downloadUrls.put(asset.getName(), asset.getDownloadUrl());
         }
         return newObject;

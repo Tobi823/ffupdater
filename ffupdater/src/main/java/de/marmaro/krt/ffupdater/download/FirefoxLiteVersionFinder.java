@@ -1,7 +1,5 @@
 package de.marmaro.krt.ffupdater.download;
 
-import com.google.common.base.Optional;
-
 /**
  * Access the version name and the download url for Firefox Lite from Github.
  */
@@ -18,14 +16,14 @@ public class FirefoxLiteVersionFinder {
 
     public static FirefoxLiteVersionFinder create() {
         FirefoxLiteVersionFinder newObject = new FirefoxLiteVersionFinder();
-        Optional<GithubReleaseParser.Release> latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
-        if (!latestRelease.isPresent()) {
+        GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
+        if (latestRelease == null) {
             newObject.correct = false;
             return newObject;
         }
 
-        newObject.version = latestRelease.get().getTagName().replace("v", "");
-        newObject.downloadUrl = latestRelease.get().getAssets().get(0).getDownloadUrl();
+        newObject.version = latestRelease.getTagName().replace("v", "");
+        newObject.downloadUrl = latestRelease.getAssets().get(0).getDownloadUrl();
         return newObject;
     }
 

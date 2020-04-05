@@ -1,7 +1,5 @@
 package de.marmaro.krt.ffupdater.download;
 
-import com.google.common.base.Optional;
-
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -17,7 +15,6 @@ import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static de.marmaro.krt.ffupdater.DeviceABI.ABI.ARM;
 import static de.marmaro.krt.ffupdater.DeviceABI.ABI.X86;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 /**
  * Created by Tobiwan on 05.04.2020.
@@ -27,11 +24,7 @@ public class FennecVersionFinderIT {
 
     @Before
     public void setUp() {
-        Optional<FennecVersionFinder.Version> response = FennecVersionFinder.getResponse();
-        if (!response.isPresent()) {
-            fail("response is not present");
-        }
-        version = response.get();
+        version = FennecVersionFinder.getResponse();
     }
 
     @Test

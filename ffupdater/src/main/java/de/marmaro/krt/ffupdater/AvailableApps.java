@@ -1,6 +1,6 @@
 package de.marmaro.krt.ffupdater;
 
-import com.google.common.base.Optional;
+import androidx.annotation.NonNull;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -79,12 +79,11 @@ public class AvailableApps {
     }
 
     private static void checkFennec(AvailableApps result, Set<App> appsToCheck) {
-        Optional<FennecVersionFinder.Version> response = FennecVersionFinder.getResponse();
-        if (!response.isPresent()) {
+        FennecVersionFinder.Version version = FennecVersionFinder.getResponse();
+        if (version == null) {
             return;
         }
 
-        FennecVersionFinder.Version version = response.get();
         if (appsToCheck.contains(FENNEC_RELEASE)) {
             result.versions.put(FENNEC_RELEASE, version.getReleaseVersion());
             result.downloadUrl.put(FENNEC_RELEASE, FennecVersionFinder.getDownloadUrl(FENNEC_RELEASE, DeviceABI.getAbi()));
@@ -135,15 +134,24 @@ public class AvailableApps {
         result.downloadUrl.put(FENIX, fenixVersionFinder.getDownloadUrl(DeviceABI.getAbi()));
     }
 
+
+
     /**
-     * Get the version name for the given app - if the app was in {@code appsToCheck} in the method
-     * {@code create()}
+     * Get the version name for the given app from the local cache.
+     * The local cache is only filled when {@link AvailableApps} is created.
+     * This method will never return null. If no version name for app exists, then an empty
+     * string will be returned.
      *
      * @param app
      * @return version name
      */
-    Optional<String> getVersionName(App app) {
-        return Optional.fromNullable(versions.get(app));
+    @NonNull
+    String getVersionName(App app) {
+        String versionName = versions.get(app);
+        if (versionName == null) {
+            return "";
+        }
+        return versionName;
     }
 
     /**
@@ -154,31 +162,35 @@ public class AvailableApps {
      * @return is update available
      */
     public boolean isUpdateAvailable(App app, String installedVersion) {
-        Optional<String> availableVersion = getVersionName(app);
-        if (!availableVersion.isPresent()) {
-            return false;
-        }
+        String version = getVersionName(app);
 
         if (app == FENNEC_BETA) {
-            String sanitizedAvailable = availableVersion.get().split("b")[0];
+            String sanitizedAvailable = version.split("b")[0];
             return !sanitizedAvailable.contentEquals(installedVersion);
         }
         if (app == FIREFOX_LITE) {
             String sanitizedInstalled = installedVersion.split("\\(")[0];
-            return !availableVersion.get().contentEquals(sanitizedInstalled);
+            return !version.contentEquals(sanitizedInstalled);
         }
-        return !availableVersion.get().contentEquals(installedVersion);
+        return !version.contentEquals(installedVersion);
     }
 
     /**
-     * Get the download url for the given app - if the app was in {@code appsToCheck} in the method
-     * {@code create()}
+     * Get the download url for the given app from the local cache.
+     * The local cache is only filled when {@link AvailableApps} is created.
+     * This method will never return null. If no download url for app exists, then an empty
+     * string will be returned.
      *
      * @param app
      * @return download url
      */
-    Optional<String> getDownloadUrl(App app) {
-        return Optional.fromNullable(downloadUrl.get(app));
+    @NonNull
+    String getDownloadUrl(App app) {
+        String url = downloadUrl.get(app);
+        if (url == null) {
+            return "";
+        }
+        return url;
     }
 
     /**

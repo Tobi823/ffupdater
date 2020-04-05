@@ -31,7 +31,6 @@ import androidx.loader.content.Loader;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.common.base.Optional;
 
 import java.util.List;
 
@@ -186,13 +185,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(@NonNull Loader<AvailableApps> loader, AvailableApps data) {
         availableApps = data;
         String error = "Network error";
-        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_RELEASE).or(error));
-        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_BETA).or(error));
-        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_NIGHTLY).or(error));
-        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_KLAR).or(error));
-        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_FOCUS).or(error));
-        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_LITE).or(error));
-        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText(availableApps.getVersionName(App.FENIX).or(error));
+        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_RELEASE));
+        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_BETA));
+        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_NIGHTLY));
+        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_KLAR));
+        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_FOCUS));
+        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_LITE));
+        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText(availableApps.getVersionName(App.FENIX));
 
         updateGuiDownloadButtons(R.id.fennecReleaseDownloadButton, App.FENNEC_RELEASE);
         updateGuiDownloadButtons(R.id.fennecBetaDownloadButton, App.FENNEC_BETA);
@@ -203,13 +202,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         updateGuiDownloadButtons(R.id.fenixDownloadButton, App.FENIX);
 
         if (data.isTriggerDownload()) {
-            Optional<String> downloadUrl = data.getDownloadUrl(data.getAppToDownload());
-            if (downloadUrl.isPresent()) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(downloadUrl.get()));
-                startActivity(intent);
-            } else {
+            String downloadUrl = data.getDownloadUrl(data.getAppToDownload());
+            if (downloadUrl.isEmpty()) {
                 Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
+            } else {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(downloadUrl));
+                startActivity(intent);
             }
         }
 
@@ -284,13 +283,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private void downloadButtonClicked(App app) {
         if (availableApps != null) {
-            Optional<String> downloadUrl = availableApps.getDownloadUrl(app);
-            if (!downloadUrl.isPresent()) {
+            String downloadUrl = availableApps.getDownloadUrl(app);
+            if (downloadUrl.isEmpty()) {
                 Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
                 return;
             }
 
-            Uri updateUrl = Uri.parse(downloadUrl.get());
+            Uri updateUrl = Uri.parse(downloadUrl);
             String fileName = updateUrl.getLastPathSegment();
 
             DownloadManager.Request request = new DownloadManager.Request(updateUrl);
