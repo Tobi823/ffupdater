@@ -7,10 +7,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import de.marmaro.krt.ffupdater.download.github.FenixVersionFinder;
+import de.marmaro.krt.ffupdater.download.FenixVersionFinder;
 import de.marmaro.krt.ffupdater.download.FennecVersionFinder;
-import de.marmaro.krt.ffupdater.download.github.FirefoxLiteVersionFinder;
-import de.marmaro.krt.ffupdater.download.github.FocusVersionFinder;
+import de.marmaro.krt.ffupdater.download.FirefoxLiteVersionFinder;
+import de.marmaro.krt.ffupdater.download.FocusVersionFinder;
 
 import static de.marmaro.krt.ffupdater.App.FENIX;
 import static de.marmaro.krt.ffupdater.App.FENNEC_BETA;

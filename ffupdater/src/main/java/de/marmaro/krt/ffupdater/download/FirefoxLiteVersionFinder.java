@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download.github;
+package de.marmaro.krt.ffupdater.download;
 
 import com.google.common.base.Optional;
 
