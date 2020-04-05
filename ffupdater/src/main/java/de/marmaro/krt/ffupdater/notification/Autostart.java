@@ -1,8 +1,10 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.notification;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 
 /**
  * After the phone is booted, this class will start the {@link NotificationCreator}.

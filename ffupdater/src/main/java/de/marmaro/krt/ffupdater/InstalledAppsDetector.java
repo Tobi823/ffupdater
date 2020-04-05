@@ -33,7 +33,7 @@ public class InstalledAppsDetector {
      * @param app
      * @return version name or empty string.
      */
-    String getVersionName(App app) {
+    public String getVersionName(App app) {
         switch (app) {
             case FENNEC_RELEASE:
                 return getVersionName(findPackageInfo(FENNEC_RELEASE));

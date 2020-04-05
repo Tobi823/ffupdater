@@ -137,7 +137,7 @@ public class AvailableApps {
      * @param installedVersion
      * @return is update available
      */
-    boolean isUpdateAvailable(App app, String installedVersion) {
+    public boolean isUpdateAvailable(App app, String installedVersion) {
         Optional<String> availableVersion = getVersionName(app);
         if (!availableVersion.isPresent()) {
             return false;

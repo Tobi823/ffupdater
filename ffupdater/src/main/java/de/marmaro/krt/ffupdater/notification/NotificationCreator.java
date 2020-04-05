@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.notification;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -26,6 +26,12 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.AvailableApps;
+import de.marmaro.krt.ffupdater.InstalledAppsDetector;
+import de.marmaro.krt.ffupdater.MainActivity;
+import de.marmaro.krt.ffupdater.R;
 
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 

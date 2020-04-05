@@ -2,14 +2,13 @@ package de.marmaro.krt.ffupdater.settings;
 
 import android.os.Bundle;
 
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.NotificationCreator;
+import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 
 /**
  * Created by Tobiwan on 29.06.2019.
