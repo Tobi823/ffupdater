@@ -3,6 +3,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="available_version">Aktuelle Version:</string>
     <string name="download">Firefox herunterladen</string>
+    <string name="download_started">Download gestartet</string>
     <string name="ff_not_installed">Firefox ist nicht installiert</string>
     <string name="installed_version">Installierte Version:</string>
     <string name="none">None</string>

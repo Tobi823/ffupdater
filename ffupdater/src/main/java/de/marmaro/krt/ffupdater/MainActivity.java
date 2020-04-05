@@ -1,12 +1,14 @@
 package de.marmaro.krt.ffupdater;
 
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +18,7 @@ import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -282,13 +285,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private void downloadButtonClicked(App app) {
         if (availableApps != null) {
             Optional<String> downloadUrl = availableApps.getDownloadUrl(app);
-            if (downloadUrl.isPresent()) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(downloadUrl.get()));
-                startActivity(intent);
-            } else {
+            if (!downloadUrl.isPresent()) {
                 Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
+                return;
             }
+
+            Uri updateUrl = Uri.parse(downloadUrl.get());
+            String fileName = updateUrl.getLastPathSegment();
+
+            DownloadManager.Request request = new DownloadManager.Request(updateUrl);
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+
+            DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+            dm.enqueue(request);
+
+            Toast.makeText(this, R.string.download_started, Toast.LENGTH_SHORT).show();
         }
     }
 

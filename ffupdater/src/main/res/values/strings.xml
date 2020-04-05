@@ -12,6 +12,7 @@
     <string name="ok">OK</string>
     <string name="check_available">Check available version</string>
     <string name="download">Download Firefox</string>
+    <string name="download_started">Download started</string>
     <string name="installed_version_text_format" translatable="false">%s (%d)</string>
     <string name="not_installed_text_format" translatable="false">%s (%s)</string>
     <string name="update_notification_title">A new Firefox version was released</string>
