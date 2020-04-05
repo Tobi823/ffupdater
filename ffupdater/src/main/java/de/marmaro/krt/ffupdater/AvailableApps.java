@@ -7,9 +7,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import de.marmaro.krt.ffupdater.download.fennec.MozillaFtp;
-import de.marmaro.krt.ffupdater.download.fennec.OfficialApi;
 import de.marmaro.krt.ffupdater.download.github.FenixVersionFinder;
+import de.marmaro.krt.ffupdater.download.fennec.FennecVersionFinder;
 import de.marmaro.krt.ffupdater.download.github.FirefoxLiteVersionFinder;
 import de.marmaro.krt.ffupdater.download.github.FocusVersionFinder;
 
@@ -61,22 +60,18 @@ public class AvailableApps {
      */
     public static AvailableApps create(Set<App> appsToCheck) {
         AvailableApps result = new AvailableApps();
-
         if (appsToCheck.contains(FENNEC_RELEASE) ||
                 appsToCheck.contains(FENNEC_BETA) ||
                 appsToCheck.contains(FENNEC_NIGHTLY)) {
             checkFennec(result, appsToCheck);
         }
-
         if (appsToCheck.contains(FIREFOX_KLAR) ||
                 appsToCheck.contains(FIREFOX_FOCUS)) {
             checkFocusKlar(result, appsToCheck);
         }
-
         if (appsToCheck.contains(FIREFOX_LITE)) {
             checkLite(result);
         }
-
         if (appsToCheck.contains(FENIX)) {
             checkFenix(result);
         }
@@ -84,23 +79,23 @@ public class AvailableApps {
     }
 
     private static void checkFennec(AvailableApps result, Set<App> appsToCheck) {
-        Optional<OfficialApi.Version> response = OfficialApi.getResponse();
+        Optional<FennecVersionFinder.Version> response = FennecVersionFinder.getResponse();
         if (!response.isPresent()) {
             return;
         }
 
-        OfficialApi.Version version = response.get();
+        FennecVersionFinder.Version version = response.get();
         if (appsToCheck.contains(FENNEC_RELEASE)) {
             result.versions.put(FENNEC_RELEASE, version.getReleaseVersion());
-            result.downloadUrl.put(FENNEC_RELEASE, getDownloadUrlForFennec(FENNEC_RELEASE, version));
+            result.downloadUrl.put(FENNEC_RELEASE, FennecVersionFinder.getDownloadUrl(FENNEC_RELEASE, DeviceABI.getAbi()));
         }
         if (appsToCheck.contains(FENNEC_BETA)) {
             result.versions.put(FENNEC_BETA, version.getBetaVersion());
-            result.downloadUrl.put(FENNEC_BETA, getDownloadUrlForFennec(FENNEC_BETA, version));
+            result.downloadUrl.put(FENNEC_BETA, FennecVersionFinder.getDownloadUrl(FENNEC_BETA, DeviceABI.getAbi()));
         }
         if (appsToCheck.contains(FENNEC_NIGHTLY)) {
             result.versions.put(FENNEC_NIGHTLY, version.getNightlyVersion());
-            result.downloadUrl.put(FENNEC_NIGHTLY, getDownloadUrlForFennec(FENNEC_NIGHTLY, version));
+            result.downloadUrl.put(FENNEC_NIGHTLY, FennecVersionFinder.getDownloadUrl(FENNEC_NIGHTLY, DeviceABI.getAbi()));
         }
     }
 
@@ -114,7 +109,6 @@ public class AvailableApps {
             result.versions.put(FIREFOX_FOCUS, focusVersionFinder.getVersion());
             result.downloadUrl.put(FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(FIREFOX_FOCUS, DeviceABI.getAbi()));
         }
-
         if (appsToCheck.contains(FIREFOX_KLAR)) {
             result.versions.put(FIREFOX_KLAR, focusVersionFinder.getVersion());
             result.downloadUrl.put(FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(FIREFOX_KLAR, DeviceABI.getAbi()));
@@ -139,24 +133,6 @@ public class AvailableApps {
 
         result.versions.put(FENIX, fenixVersionFinder.getVersion());
         result.downloadUrl.put(FENIX, fenixVersionFinder.getDownloadUrl(DeviceABI.getAbi()));
-    }
-
-
-    /**
-     * Internal method for retrieving the download url for FENNEC_RELEASE, FENNEC_BETA, FENNEC_NIGHTLY.
-     * Reason: There are two methods for retrieving the url.
-     * {@link MozillaFtp} works better but can fail. If it fails, then {@link OfficialApi} will be used.
-     *
-     * @param app
-     * @param version
-     * @return
-     */
-    private static String getDownloadUrlForFennec(App app, OfficialApi.Version version) {
-        Optional<String> possibleUrl = MozillaFtp.getDownloadUrl(app, DeviceABI.getAbi(), version);
-        if (possibleUrl.isPresent()) {
-            return possibleUrl.get();
-        }
-        return OfficialApi.getDownloadUrl(app, DeviceABI.getAbi());
     }
 
     /**
@@ -191,7 +167,6 @@ public class AvailableApps {
             String sanitizedInstalled = installedVersion.split("\\(")[0];
             return !availableVersion.get().contentEquals(sanitizedInstalled);
         }
-
         return !availableVersion.get().contentEquals(installedVersion);
     }
 

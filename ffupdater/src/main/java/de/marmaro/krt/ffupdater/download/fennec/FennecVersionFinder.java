@@ -21,7 +21,7 @@ import de.marmaro.krt.ffupdater.DeviceABI;
  * Get the version name and the download link for the latest Fennec release (release, beta, nightly)
  * from the official Mozilla API.
  */
-public class OfficialApi {
+public class FennecVersionFinder {
     private static final String TAG = "ffupdater";
     private static final String DEFAULT_ABI = "android";
     private static final String X86_ABI = "android-x86";
