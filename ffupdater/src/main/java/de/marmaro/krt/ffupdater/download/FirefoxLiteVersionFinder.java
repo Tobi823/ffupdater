@@ -18,7 +18,7 @@ public class FirefoxLiteVersionFinder {
 
     public static FirefoxLiteVersionFinder create() {
         FirefoxLiteVersionFinder newObject = new FirefoxLiteVersionFinder();
-        Optional<LatestReleaseSearcher.Release> latestRelease = LatestReleaseSearcher.findLatestRelease(OWNER, REPOSITORY);
+        Optional<GithubReleaseParser.Release> latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
         if (!latestRelease.isPresent()) {
             newObject.correct = false;
             return newObject;

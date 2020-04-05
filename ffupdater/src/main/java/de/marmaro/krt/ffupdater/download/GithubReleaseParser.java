@@ -18,7 +18,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Access the version name and the download url from Github.
  */
-class LatestReleaseSearcher {
+class GithubReleaseParser {
     private static final String TAG = "ffupdater";
     private static final String UTF_8 = "UTF-8";
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/%s/%s/releases/latest";

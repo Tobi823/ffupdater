@@ -29,14 +29,14 @@ public class FocusVersionFinder {
 
     public static FocusVersionFinder create() {
         FocusVersionFinder newObject = new FocusVersionFinder();
-        Optional<LatestReleaseSearcher.Release> latestRelease = LatestReleaseSearcher.findLatestRelease(OWNER, REPOSITORY);
+        Optional<GithubReleaseParser.Release> latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
         if (!latestRelease.isPresent()) {
             newObject.correct = false;
             return newObject;
         }
 
         newObject.version = latestRelease.get().getTagName().replace("v", "");
-        for (LatestReleaseSearcher.Asset asset : latestRelease.get().getAssets()) {
+        for (GithubReleaseParser.Asset asset : latestRelease.get().getAssets()) {
             newObject.downloadUrls.put(asset.getName(), asset.getDownloadUrl());
         }
         return newObject;
