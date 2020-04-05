@@ -8,8 +8,10 @@ import java.util.Map;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.DeviceABI;
 
-import static de.marmaro.krt.ffupdater.DeviceABI.SimplifiedPlatform.ARM;
-import static de.marmaro.krt.ffupdater.DeviceABI.SimplifiedPlatform.X86;
+import static de.marmaro.krt.ffupdater.DeviceABI.ABI.AARCH64;
+import static de.marmaro.krt.ffupdater.DeviceABI.ABI.ARM;
+import static de.marmaro.krt.ffupdater.DeviceABI.ABI.X86;
+import static de.marmaro.krt.ffupdater.DeviceABI.ABI.X86_64;
 
 /**
  * Access the version name and the download url for Firefox Focus and Firefox Klar from Github.
@@ -51,7 +53,7 @@ public class FocusVersionFinder {
         return version;
     }
 
-    public String getDownloadUrl(App app, DeviceABI.SimplifiedPlatform platform) {
+    public String getDownloadUrl(App app, DeviceABI.ABI abi) {
         if (!correct) {
             throw new IllegalArgumentException("FocusVersionFinder is correct");
         }
@@ -66,11 +68,11 @@ public class FocusVersionFinder {
                 continue;
             }
 
-            if (platform == ARM && !nameLowerCase.contains("arm")) {
+            if ((abi == AARCH64 || abi == ARM) && !nameLowerCase.contains("arm")) {
                 continue;
             }
 
-            if (platform == X86 && !nameLowerCase.contains("x86")) {
+            if ((abi == X86_64 || abi == X86) && !nameLowerCase.contains("x86")) {
                 continue;
             }
 

@@ -18,20 +18,20 @@ import de.marmaro.krt.ffupdater.DeviceABI;
  * from their FTP service. Works a bit more better, but is not official supported.
  */
 public class MozillaFtp {
-    public static Optional<String> getDownloadUrl(App app, DeviceABI.Platform platform, OfficialApi.Version version) {
+    public static Optional<String> getDownloadUrl(App app, DeviceABI.ABI abi, OfficialApi.Version version) {
         String url;
         switch (app) {
             case FENNEC_RELEASE:
-                url = getReleaseDownloadUrl(platform, version);
+                url = getReleaseDownloadUrl(abi, version);
                 break;
             case FENNEC_BETA:
-                url = getBetaDownloadUrl(platform, version);
+                url = getBetaDownloadUrl(abi, version);
                 break;
             case FENNEC_NIGHTLY:
-                url = getNightlyDownloadUrl(platform, version);
+                url = getNightlyDownloadUrl(abi, version);
                 break;
             default:
-                throw new IllegalArgumentException("unsupported platform " + platform);
+                throw new IllegalArgumentException("unsupported abi " + abi);
         }
 
         if (isDownloadLinkAvailable(url)) {
@@ -40,36 +40,36 @@ public class MozillaFtp {
         return Optional.absent();
     }
 
-    private static String getReleaseDownloadUrl(DeviceABI.Platform platform, OfficialApi.Version response) {
+    private static String getReleaseDownloadUrl(DeviceABI.ABI abi, OfficialApi.Version response) {
         String version = response.getReleaseVersion();
-        String folderName = getFolderName(platform);
-        String fileSuffix = getFileSuffix(platform);
+        String folderName = getFolderName(abi);
+        String fileSuffix = getFileSuffix(abi);
 
         String template = "https://ftp.mozilla.org/pub/mobile/releases/%s/android-%s/multi/fennec-%s.multi.android-%s.apk";
         return String.format(template, version, folderName, version, fileSuffix);
     }
 
-    private static String getBetaDownloadUrl(DeviceABI.Platform platform, OfficialApi.Version response) {
+    private static String getBetaDownloadUrl(DeviceABI.ABI abi, OfficialApi.Version response) {
         String version = response.getBetaVersion();
-        String folderName = getFolderName(platform);
-        String fileSuffix = getFileSuffix(platform);
+        String folderName = getFolderName(abi);
+        String fileSuffix = getFileSuffix(abi);
 
         String template = "https://ftp.mozilla.org/pub/mobile/releases/%s/android-%s/multi/fennec-%s.multi.android-%s.apk";
         return String.format(template, version, folderName, version, fileSuffix);
     }
 
-    private static String getNightlyDownloadUrl(DeviceABI.Platform platform, OfficialApi.Version response) {
+    private static String getNightlyDownloadUrl(DeviceABI.ABI abi, OfficialApi.Version response) {
         String version = response.getNightlyVersion();
         String esr = version.split("\\.")[0];
-        String folderName = getFolderName(platform);
-        String fileSuffix = getFileSuffix(platform);
+        String folderName = getFolderName(abi);
+        String fileSuffix = getFileSuffix(abi);
 
         String template = "https://ftp.mozilla.org/pub/mobile/nightly/latest-mozilla-esr%s-android-%s/fennec-%s.multi.android-%s.apk";
         return String.format(template, esr, folderName, version, fileSuffix);
     }
 
-    private static String getFolderName(DeviceABI.Platform platform) {
-        switch (platform) {
+    private static String getFolderName(DeviceABI.ABI abi) {
+        switch (abi) {
             case AARCH64:
                 return "aarch64";
             case ARM:
@@ -79,11 +79,11 @@ public class MozillaFtp {
             case X86_64:
                 return "x86_64";
         }
-        throw new IllegalArgumentException("unsupported platform " + platform);
+        throw new IllegalArgumentException("unsupported abi " + abi);
     }
 
-    private static String getFileSuffix(DeviceABI.Platform platform) {
-        switch (platform) {
+    private static String getFileSuffix(DeviceABI.ABI abi) {
+        switch (abi) {
             case AARCH64:
                 return "aarch64";
             case ARM:
@@ -93,7 +93,7 @@ public class MozillaFtp {
             case X86_64:
                 return "x86_64";
         }
-        throw new IllegalArgumentException("unsupported platform " + platform);
+        throw new IllegalArgumentException("unsupported abi " + abi);
     }
 
     private static boolean isDownloadLinkAvailable(String url) {

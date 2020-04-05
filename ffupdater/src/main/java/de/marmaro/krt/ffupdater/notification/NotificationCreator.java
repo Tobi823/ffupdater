@@ -56,7 +56,7 @@ public class NotificationCreator extends Worker {
      *
      * @param context necessary context for accessing default shared preferences and using {@link WorkManager}.
      */
-    static void register(Context context) {
+    public static void register(Context context) {
         String userPref = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_check_interval), null);
         int defaultPref = context.getResources().getInteger(R.integer.default_pref_check_interval);

@@ -53,8 +53,6 @@ public class AvailableApps {
      */
     public static AvailableApps create(Set<App> appsToCheck) {
         AvailableApps result = new AvailableApps();
-        DeviceABI.Platform platform = DeviceABI.getPlatform();
-        DeviceABI.SimplifiedPlatform simplifiedPlatform = DeviceABI.getSimplifiedPlatform();
 
         if (appsToCheck.contains(App.FENNEC_RELEASE) ||
                 appsToCheck.contains(App.FENNEC_BETA) ||
@@ -62,15 +60,15 @@ public class AvailableApps {
             Optional<OfficialApi.Version> response = OfficialApi.getResponse();
             if (response.isPresent() && appsToCheck.contains(App.FENNEC_RELEASE)) {
                 result.versions.put(App.FENNEC_RELEASE, response.get().getReleaseVersion());
-                result.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, platform, response.get()));
+                result.downloadUrl.put(App.FENNEC_RELEASE, getDownloadUrlForFennec(App.FENNEC_RELEASE, response.get()));
             }
             if (response.isPresent() && appsToCheck.contains(App.FENNEC_BETA)) {
                 result.versions.put(App.FENNEC_BETA, response.get().getBetaVersion());
-                result.downloadUrl.put(App.FENNEC_BETA, getDownloadUrlForFennec(App.FENNEC_BETA, platform, response.get()));
+                result.downloadUrl.put(App.FENNEC_BETA, getDownloadUrlForFennec(App.FENNEC_BETA, response.get()));
             }
             if (response.isPresent() && appsToCheck.contains(App.FENNEC_NIGHTLY)) {
                 result.versions.put(App.FENNEC_NIGHTLY, response.get().getNightlyVersion());
-                result.downloadUrl.put(App.FENNEC_NIGHTLY, getDownloadUrlForFennec(App.FENNEC_NIGHTLY, platform, response.get()));
+                result.downloadUrl.put(App.FENNEC_NIGHTLY, getDownloadUrlForFennec(App.FENNEC_NIGHTLY, response.get()));
             }
         }
 
@@ -79,10 +77,10 @@ public class AvailableApps {
             FocusVersionFinder focusVersionFinder = FocusVersionFinder.create();
             if (focusVersionFinder.isCorrect()) {
                 result.versions.put(App.FIREFOX_FOCUS, focusVersionFinder.getVersion());
-                result.downloadUrl.put(App.FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(App.FIREFOX_FOCUS, simplifiedPlatform));
+                result.downloadUrl.put(App.FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(App.FIREFOX_FOCUS, DeviceABI.getAbi()));
 
                 result.versions.put(App.FIREFOX_KLAR, focusVersionFinder.getVersion());
-                result.downloadUrl.put(App.FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(App.FIREFOX_KLAR, simplifiedPlatform));
+                result.downloadUrl.put(App.FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(App.FIREFOX_KLAR, DeviceABI.getAbi()));
             }
         }
 
@@ -98,7 +96,7 @@ public class AvailableApps {
             FenixVersionFinder fenixVersionFinder = FenixVersionFinder.create();
             if (fenixVersionFinder.isCorrect()) {
                 result.versions.put(App.FENIX, fenixVersionFinder.getVersion());
-                result.downloadUrl.put(App.FENIX, fenixVersionFinder.getDownloadUrl(platform));
+                result.downloadUrl.put(App.FENIX, fenixVersionFinder.getDownloadUrl(DeviceABI.getAbi()));
             }
         }
         return result;
@@ -109,16 +107,15 @@ public class AvailableApps {
      * Reason: There are two methods for retrieving the url.
      * {@link MozillaFtp} works better but can fail. If it fails, then {@link OfficialApi} will be used.
      * @param app
-     * @param platform
      * @param version
      * @return
      */
-    private static String getDownloadUrlForFennec(App app, DeviceABI.Platform platform, OfficialApi.Version version) {
-        Optional<String> possibleUrl = MozillaFtp.getDownloadUrl(app, platform, version);
+    private static String getDownloadUrlForFennec(App app, OfficialApi.Version version) {
+        Optional<String> possibleUrl = MozillaFtp.getDownloadUrl(app, DeviceABI.getAbi(), version);
         if (possibleUrl.isPresent()) {
             return possibleUrl.get();
         }
-        return OfficialApi.getDownloadUrl(app, platform);
+        return OfficialApi.getDownloadUrl(app, DeviceABI.getAbi());
     }
 
     /**

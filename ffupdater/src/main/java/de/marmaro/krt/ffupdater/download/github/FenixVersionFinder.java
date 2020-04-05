@@ -7,6 +7,11 @@ import java.util.Map;
 
 import de.marmaro.krt.ffupdater.DeviceABI;
 
+import static de.marmaro.krt.ffupdater.DeviceABI.ABI.AARCH64;
+import static de.marmaro.krt.ffupdater.DeviceABI.ABI.ARM;
+import static de.marmaro.krt.ffupdater.DeviceABI.ABI.X86;
+import static de.marmaro.krt.ffupdater.DeviceABI.ABI.X86_64;
+
 /**
  * Access the version name and the download url for Fenix from Github.
  */
@@ -47,26 +52,26 @@ public class FenixVersionFinder {
         return version;
     }
 
-    public String getDownloadUrl(DeviceABI.Platform platform) {
+    public String getDownloadUrl(DeviceABI.ABI abi) {
         if (!correct) {
             throw new IllegalArgumentException("FenixVersionFinder is faulty");
         }
         for (String name : downloadUrls.keySet()) {
             String nameLowerCase = name.toLowerCase();
 
-            if (platform == DeviceABI.Platform.AARCH64 && !nameLowerCase.contains("aarch64")) {
+            if (abi == AARCH64 && !nameLowerCase.contains("aarch64")) {
                 continue;
             }
 
-            if (platform == DeviceABI.Platform.ARM && !nameLowerCase.contains("arm")) {
+            if (abi == ARM && !nameLowerCase.contains("arm")) {
                 continue;
             }
 
-            if (platform == DeviceABI.Platform.X86 && !nameLowerCase.contains("x86")) {
+            if (abi == X86 && !nameLowerCase.contains("x86")) {
                 continue;
             }
 
-            if (platform == DeviceABI.Platform.X86_64 && !nameLowerCase.contains("x86_64")) {
+            if (abi == X86_64 && !nameLowerCase.contains("x86_64")) {
                 continue;
             }
 

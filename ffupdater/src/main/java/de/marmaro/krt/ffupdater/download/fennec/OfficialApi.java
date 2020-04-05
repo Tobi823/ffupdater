@@ -23,8 +23,8 @@ import de.marmaro.krt.ffupdater.DeviceABI;
  */
 public class OfficialApi {
     private static final String TAG = "ffupdater";
-    private static final String DEFAULT_OS = "android";
-    private static final String X86_OS = "android-x86";
+    private static final String DEFAULT_ABI = "android";
+    private static final String X86_ABI = "android-x86";
     private static final String RELEASE_PRODUCT = "fennec-latest";
     private static final String BETA_PRODUCT = "fennec-beta-latest";
     private static final String NIGHTLY_PRODUCT = "fennec-nightly-latest";
@@ -33,19 +33,19 @@ public class OfficialApi {
     private static final String CHECK_URL = "https://product-details.mozilla.org/1.0/mobile_versions.json";
     private static final String DOWNLOAD_URL = "https://download.mozilla.org/?product=%s&os=%s&lang=multi";
 
-    public static String getDownloadUrl(App app, DeviceABI.Platform platform) {
+    public static String getDownloadUrl(App app, DeviceABI.ABI abi) {
         String operatingSystem;
-        switch (platform) {
+        switch (abi) {
             case AARCH64:
             case ARM:
-                operatingSystem = DEFAULT_OS;
+                operatingSystem = DEFAULT_ABI;
                 break;
             case X86:
             case X86_64:
-                operatingSystem = X86_OS;
+                operatingSystem = X86_ABI;
                 break;
             default:
-                throw new IllegalArgumentException("unsupported platform " + platform);
+                throw new IllegalArgumentException("unsupported abi " + abi);
         }
 
         String product;

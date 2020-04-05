@@ -17,70 +17,47 @@ public class DeviceABI {
     private static final String ARMEABI_V7A = "armeabi-v7a";
     private static final String X86_64 = "x86_64";
     private static final String X86 = "x86";
+    private static final ABI abi = findAbi();
 
     /**
-     * Return the best suited ABI in this order:
+     * Return the best suited ABI for the current device in this order:
      * - arm64-v8a
      * - armeabi-v7a
      * - x86_64
      * - x86
      * Reason: The majority of devices which support x86_64 support x86 and the majority of devices
      * which support arm64-v8a support armeabi-v7a.
-     * @return ABI
+     *
+     * @return best suited ABI (cached)
      */
-    static Platform getPlatform() {
-        for (String abi : getSupportedAbis()) {
-            if (abi == null) {
-                continue;
-            }
-            switch (abi) {
-                case ARM64_V8A:
-                    return Platform.AARCH64;
-                case ARMEABI_V7A:
-                    return Platform.ARM;
-                case X86_64:
-                    return Platform.X86_64;
-                case X86:
-                    return Platform.X86;
-            }
-        }
-        return Platform.ARM;
+    public static ABI getAbi() {
+        return abi;
     }
 
-    @Deprecated
-    static SimplifiedPlatform getSimplifiedPlatform() {
-        for (String abi : getSupportedAbis()) {
-            if (abi == null) {
-                continue;
-            }
-            switch (abi) {
-                case ARMEABI_V7A:
-                    return SimplifiedPlatform.ARM;
-                case X86:
-                    return SimplifiedPlatform.X86;
-            }
-        }
-        return SimplifiedPlatform.ARM;
-    }
-
-    private static String[] getSupportedAbis() {
-        if (SDK_INT < LOLLIPOP) {
-            //noinspection deprecation
-            return new String[]{CPU_ABI, CPU_ABI2};
-        }
-        return SUPPORTED_ABIS;
-    }
-
-    public enum Platform {
+    public enum ABI {
         AARCH64,
         ARM,
         X86,
         X86_64
     }
 
-    @Deprecated
-    public enum SimplifiedPlatform {
-        ARM,
-        X86
+    private static ABI findAbi() {
+        String[] abis = SDK_INT < LOLLIPOP ? new String[]{CPU_ABI, CPU_ABI2} : SUPPORTED_ABIS;
+        for (String abi : abis) {
+            if (abi == null) {
+                continue;
+            }
+            switch (abi) {
+                case ARM64_V8A:
+                    return ABI.AARCH64;
+                case ARMEABI_V7A:
+                    return ABI.ARM;
+                case X86_64:
+                    return ABI.X86_64;
+                case X86:
+                    return ABI.X86;
+            }
+        }
+        return ABI.ARM;
     }
 }
