@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download.fennec;
+package de.marmaro.krt.ffupdater.download;
 
 import android.util.Log;
 

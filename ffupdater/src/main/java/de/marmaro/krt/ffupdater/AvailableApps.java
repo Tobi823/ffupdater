@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import de.marmaro.krt.ffupdater.download.github.FenixVersionFinder;
-import de.marmaro.krt.ffupdater.download.fennec.FennecVersionFinder;
+import de.marmaro.krt.ffupdater.download.FennecVersionFinder;
 import de.marmaro.krt.ffupdater.download.github.FirefoxLiteVersionFinder;
 import de.marmaro.krt.ffupdater.download.github.FocusVersionFinder;
 

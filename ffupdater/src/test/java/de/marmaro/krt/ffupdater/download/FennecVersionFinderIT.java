@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download.fennec;
+package de.marmaro.krt.ffupdater.download;
 
 import com.google.common.base.Optional;
 
@@ -22,12 +22,12 @@ import static org.junit.Assert.fail;
 /**
  * Created by Tobiwan on 05.04.2020.
  */
-public class OfficialApiIT {
-    OfficialApi.Version version;
+public class FennecVersionFinderIT {
+    FennecVersionFinder.Version version;
 
     @Before
     public void setUp() {
-        Optional<OfficialApi.Version> response = OfficialApi.getResponse();
+        Optional<FennecVersionFinder.Version> response = FennecVersionFinder.getResponse();
         if (!response.isPresent()) {
             fail("response is not present");
         }
@@ -36,35 +36,35 @@ public class OfficialApiIT {
 
     @Test
     public void verifyVersionNumber_ReleaseArm() {
-        System.out.println(OfficialApi.getDownloadUrl(FENNEC_NIGHTLY, ARM));
-        assertEquals("fennec-" + version.getReleaseVersion() + ".multi.android-arm.apk", getFileName(OfficialApi.getDownloadUrl(FENNEC_RELEASE, ARM)));
+        System.out.println(FennecVersionFinder.getDownloadUrl(FENNEC_NIGHTLY, ARM));
+        assertEquals("fennec-" + version.getReleaseVersion() + ".multi.android-arm.apk", getFileName(FennecVersionFinder.getDownloadUrl(FENNEC_RELEASE, ARM)));
     }
 
     @Test
     public void verifyVersionNumber_BetaArm() {
-        assertEquals("fennec-" + version.getBetaVersion() + ".multi.android-arm.apk", getFileName(OfficialApi.getDownloadUrl(FENNEC_BETA, ARM)));
+        assertEquals("fennec-" + version.getBetaVersion() + ".multi.android-arm.apk", getFileName(FennecVersionFinder.getDownloadUrl(FENNEC_BETA, ARM)));
     }
 
     @Ignore("currently broken https://bugzilla.mozilla.org/show_bug.cgi?id=1627518")
     @Test
     public void verifyVersionNumber_NightlyArm() {
-        assertEquals("fennec-" + version.getNightlyVersion() + ".multi.android-arm.apk", getFileName(OfficialApi.getDownloadUrl(FENNEC_NIGHTLY, ARM)));
+        assertEquals("fennec-" + version.getNightlyVersion() + ".multi.android-arm.apk", getFileName(FennecVersionFinder.getDownloadUrl(FENNEC_NIGHTLY, ARM)));
     }
 
     @Test
     public void verifyVersionNumber_ReleaseX86() {
-        assertEquals("fennec-" + version.getReleaseVersion() + ".multi.android-i386.apk", getFileName(OfficialApi.getDownloadUrl(FENNEC_RELEASE, X86)));
+        assertEquals("fennec-" + version.getReleaseVersion() + ".multi.android-i386.apk", getFileName(FennecVersionFinder.getDownloadUrl(FENNEC_RELEASE, X86)));
     }
 
     @Test
     public void verifyVersionNumber_BetaX86() {
-        assertEquals("fennec-" + version.getBetaVersion() + ".multi.android-i386.apk", getFileName(OfficialApi.getDownloadUrl(FENNEC_BETA, X86)));
+        assertEquals("fennec-" + version.getBetaVersion() + ".multi.android-i386.apk", getFileName(FennecVersionFinder.getDownloadUrl(FENNEC_BETA, X86)));
     }
 
     @Ignore("currently broken https://bugzilla.mozilla.org/show_bug.cgi?id=1627518")
     @Test
     public void verifyVersionNumber_NightlyX86() {
-        assertEquals("fennec-" + version.getNightlyVersion() + ".multi.android-i386.apk", getFileName(OfficialApi.getDownloadUrl(FENNEC_NIGHTLY, X86)));
+        assertEquals("fennec-" + version.getNightlyVersion() + ".multi.android-i386.apk", getFileName(FennecVersionFinder.getDownloadUrl(FENNEC_NIGHTLY, X86)));
     }
 
     private static String getFileName(String downloadUrl) {
