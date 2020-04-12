@@ -3,13 +3,10 @@ package de.marmaro.krt.ffupdater.dialog;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.util.Preconditions;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -39,13 +36,11 @@ public class DownloadNewAppDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        Pair<List<App>, CharSequence[]> notInstalledApps = getNotInstalledApps();
-        List<App> apps = notInstalledApps.getValue1();
-        CharSequence[] options = notInstalledApps.getValue2();
+        NotInstalledApps notInstalledApps = getNotInstalledApps();
         return new AlertDialog.Builder(getActivity())
                 .setTitle("Download new app")
-                .setItems(options, (dialog, which) -> {
-                    App app = apps.get(which);
+                .setItems(notInstalledApps.getAppNames(), (dialog, which) -> {
+                    App app = notInstalledApps.getApps().get(which);
                     switch (app) {
                         case FENNEC_BETA:
                         case FENNEC_NIGHTLY:
@@ -64,66 +59,70 @@ public class DownloadNewAppDialog extends DialogFragment {
     }
 
     private void triggerDownload(App app) {
-        FragmentActivity fragmentActivity = Objects.requireNonNull(getActivity());
-        FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
-
         Bundle bundle = new Bundle();
         bundle.putString(TRIGGER_DOWNLOAD_FOR_APP, app.name());
+
+        FragmentActivity fragmentActivity = Objects.requireNonNull(getActivity());
         LoaderManager.getInstance(fragmentActivity).restartLoader(AVAILABLE_APPS_LOADER_ID, bundle, callbacks);
+
+        FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
         new FetchDownloadUrlDialog().show(fragmentManager, FetchDownloadUrlDialog.TAG);
     }
 
-    private Pair<List<App>, CharSequence[]> getNotInstalledApps() {
-        Context context = Objects.requireNonNull(getContext());
+    private NotInstalledApps getNotInstalledApps() {
         Activity activity = Objects.requireNonNull(getActivity());
-
         InstalledApps detector = new InstalledApps(activity.getPackageManager());
         List<App> notInstalledApps = detector.getNotInstalledApps();
-        CharSequence[] notInstalledAppNames = new CharSequence[notInstalledApps.size()];
 
-        for (int i = 0; i < notInstalledApps.size(); i++) {
-            switch (notInstalledApps.get(i)) {
+        CharSequence[] appNames = new CharSequence[notInstalledApps.size()];
+        int arrayIndex = 0;
+        for (App notInstalledApp : notInstalledApps) {
+            String titleText;
+            switch (notInstalledApp) {
                 case FENNEC_RELEASE:
-                    notInstalledAppNames[i] = context.getString(R.string.fennecReleaseTitleText);
+                    titleText = activity.getString(R.string.fennecReleaseTitleText);
                     break;
                 case FENNEC_BETA:
-                    notInstalledAppNames[i] = context.getString(R.string.fennecBetaTitleText);
+                    titleText = activity.getString(R.string.fennecBetaTitleText);
                     break;
                 case FENNEC_NIGHTLY:
-                    notInstalledAppNames[i] = context.getString(R.string.fennecNightlyTitleText);
+                    titleText = activity.getString(R.string.fennecNightlyTitleText);
                     break;
                 case FIREFOX_KLAR:
-                    notInstalledAppNames[i] = context.getString(R.string.firefoxKlarTitleText);
+                    titleText = activity.getString(R.string.firefoxKlarTitleText);
                     break;
                 case FIREFOX_FOCUS:
-                    notInstalledAppNames[i] = context.getString(R.string.firefoxFocusTitleText);
+                    titleText = activity.getString(R.string.firefoxFocusTitleText);
                     break;
                 case FIREFOX_LITE:
-                    notInstalledAppNames[i] = context.getString(R.string.firefoxLiteTitleText);
+                    titleText = activity.getString(R.string.firefoxLiteTitleText);
                     break;
                 case FENIX:
-                    notInstalledAppNames[i] = context.getString(R.string.fenixTitleText);
+                    titleText = activity.getString(R.string.fenixTitleText);
                     break;
+                default:
+                    throw new RuntimeException("missing switch statement");
             }
+            appNames[arrayIndex++] = titleText;
         }
-        return new Pair<>(notInstalledApps, notInstalledAppNames);
+        return new NotInstalledApps(notInstalledApps, appNames);
     }
 
-    private static class Pair<A, B> {
-        private final A value1;
-        private final B value2;
+    private static class NotInstalledApps {
+        private final List<App> apps;
+        private final CharSequence[] appNames;
 
-        Pair(A value1, B value2) {
-            this.value1 = value1;
-            this.value2 = value2;
+        NotInstalledApps(List<App> apps, CharSequence[] appNames) {
+            this.apps = apps;
+            this.appNames = appNames;
         }
 
-        A getValue1() {
-            return value1;
+        List<App> getApps() {
+            return apps;
         }
 
-        B getValue2() {
-            return value2;
+        CharSequence[] getAppNames() {
+            return appNames;
         }
     }
 }
