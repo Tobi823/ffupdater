@@ -18,7 +18,6 @@ import java.util.Objects;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.AvailableApps;
 import de.marmaro.krt.ffupdater.InstalledApps;
-import de.marmaro.krt.ffupdater.R;
 
 import static de.marmaro.krt.ffupdater.MainActivity.AVAILABLE_APPS_LOADER_ID;
 import static de.marmaro.krt.ffupdater.MainActivity.TRIGGER_DOWNLOAD_FOR_APP;
@@ -47,7 +46,7 @@ public class DownloadNewAppDialog extends DialogFragment {
                             showWarning(app);
                             break;
                         default:
-                            triggerDownload(app);
+                            downloadApp(app);
                     }
                 })
                 .create();
@@ -58,7 +57,7 @@ public class DownloadNewAppDialog extends DialogFragment {
         new WarningAppDialog(callbacks, app).show(fragmentManager, WarningAppDialog.TAG);
     }
 
-    private void triggerDownload(App app) {
+    private void downloadApp(App app) {
         Bundle bundle = new Bundle();
         bundle.putString(TRIGGER_DOWNLOAD_FOR_APP, app.name());
 
@@ -74,36 +73,10 @@ public class DownloadNewAppDialog extends DialogFragment {
         InstalledApps detector = new InstalledApps(activity.getPackageManager());
         List<App> notInstalledApps = detector.getNotInstalledApps();
 
-        CharSequence[] appNames = new CharSequence[notInstalledApps.size()];
-        int arrayIndex = 0;
-        for (App notInstalledApp : notInstalledApps) {
-            String titleText;
-            switch (notInstalledApp) {
-                case FENNEC_RELEASE:
-                    titleText = activity.getString(R.string.fennecReleaseTitleText);
-                    break;
-                case FENNEC_BETA:
-                    titleText = activity.getString(R.string.fennecBetaTitleText);
-                    break;
-                case FENNEC_NIGHTLY:
-                    titleText = activity.getString(R.string.fennecNightlyTitleText);
-                    break;
-                case FIREFOX_KLAR:
-                    titleText = activity.getString(R.string.firefoxKlarTitleText);
-                    break;
-                case FIREFOX_FOCUS:
-                    titleText = activity.getString(R.string.firefoxFocusTitleText);
-                    break;
-                case FIREFOX_LITE:
-                    titleText = activity.getString(R.string.firefoxLiteTitleText);
-                    break;
-                case FENIX:
-                    titleText = activity.getString(R.string.fenixTitleText);
-                    break;
-                default:
-                    throw new RuntimeException("missing switch statement");
-            }
-            appNames[arrayIndex++] = titleText;
+        int appsCount = notInstalledApps.size();
+        CharSequence[] appNames = new CharSequence[appsCount];
+        for (int i = 0; i < appsCount; i++) {
+            appNames[i] = notInstalledApps.get(i).getTitle(activity);
         }
         return new NotInstalledApps(notInstalledApps, appNames);
     }

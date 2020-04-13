@@ -1,9 +1,7 @@
 package de.marmaro.krt.ffupdater.dialog;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -43,13 +41,13 @@ class WarningAppDialog extends DialogFragment {
                 .setMessage(getText())
                 .setPositiveButton(getString(R.string.switch_to_unsafe_app_positive_button), (dialog, which) -> {
                     dialog.dismiss();
-                    triggerDownload(app);
+                    downloadApp(app);
                 })
                 .setNegativeButton(getString(R.string.switch_to_unsafe_app_negative_button), (dialog, which) -> dialog.dismiss())
                 .create();
     }
 
-    private void triggerDownload(App app) {
+    private void downloadApp(App app) {
         FragmentActivity fragmentActivity = Objects.requireNonNull(getActivity());
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
 
