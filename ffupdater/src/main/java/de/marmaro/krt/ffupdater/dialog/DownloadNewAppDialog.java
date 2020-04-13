@@ -8,28 +8,22 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.loader.app.LoaderManager;
 
 import java.util.List;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.AvailableApps;
 import de.marmaro.krt.ffupdater.InstalledApps;
-
-import static de.marmaro.krt.ffupdater.MainActivity.AVAILABLE_APPS_LOADER_ID;
-import static de.marmaro.krt.ffupdater.MainActivity.TRIGGER_DOWNLOAD_FOR_APP;
 
 /**
  * Created by Tobiwan on 23.08.2019.
  */
 public class DownloadNewAppDialog extends DialogFragment {
-    private final LoaderManager.LoaderCallbacks<AvailableApps> callbacks;
+    private final DownloadNewAppCallback callback;
 
-    public DownloadNewAppDialog(LoaderManager.LoaderCallbacks<AvailableApps> callbacks) {
-        this.callbacks = callbacks;
+    public DownloadNewAppDialog(DownloadNewAppCallback callback) {
+        this.callback = callback;
     }
 
     @NonNull
@@ -54,18 +48,13 @@ public class DownloadNewAppDialog extends DialogFragment {
 
     private void showWarning(App app) {
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
-        new WarningAppDialog(callbacks, app).show(fragmentManager, WarningAppDialog.TAG);
+        new WarningAppDialog(callback, app).show(fragmentManager, WarningAppDialog.TAG);
     }
 
     private void downloadApp(App app) {
-        Bundle bundle = new Bundle();
-        bundle.putString(TRIGGER_DOWNLOAD_FOR_APP, app.name());
-
-        FragmentActivity fragmentActivity = Objects.requireNonNull(getActivity());
-        LoaderManager.getInstance(fragmentActivity).restartLoader(AVAILABLE_APPS_LOADER_ID, bundle, callbacks);
-
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
         new FetchDownloadUrlDialog().show(fragmentManager, FetchDownloadUrlDialog.TAG);
+        callback.run(app);
     }
 
     private NotInstalledApps getNotInstalledApps() {

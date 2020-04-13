@@ -39,11 +39,10 @@ import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
 public class AppUpdate {
     private ExecutorService executorService;
 
-    private Runnable callback;
     private InstalledApps installedApps;
     private List<Future> futures = new ArrayList<>();
-    public Map<App, String> versions = new ConcurrentHashMap<>();
-    public Map<App, String> downloadUrls = new ConcurrentHashMap<>();
+    private Map<App, String> versions = new ConcurrentHashMap<>();
+    private Map<App, String> downloadUrls = new ConcurrentHashMap<>();
 
     public static AppUpdate updateCheck(PackageManager packageManager) {
         return new AppUpdate(
@@ -62,8 +61,8 @@ public class AppUpdate {
         this.installedApps = installedApps;
     }
 
-    public void setCallback(Runnable callback) {
-        this.callback = callback;
+    public boolean isAppInstalled(App app) {
+        return installedApps.isInstalled(app);
     }
 
     public boolean isUpdateAvailable() {
@@ -93,17 +92,17 @@ public class AppUpdate {
         return !availableVersion.contentEquals(installedVersion);
     }
 
-    public void checkUpdatesForInstalledApps() {
+    public void checkUpdatesForInstalledApps(Runnable callback) {
         Objects.requireNonNull(installedApps);
-        checkUpdates(installedApps.getInstalledApps());
+        checkUpdates(installedApps.getInstalledApps(), callback);
     }
 
-    public void checkUpdatesForAllApps() {
-        checkUpdates(Arrays.asList(App.values()));
+    public void checkUpdatesForAllApps(Runnable callback) {
+        checkUpdates(Arrays.asList(App.values()), callback);
     }
 
-    public void checkUpdateForApp(App app) {
-        checkUpdates(Collections.singletonList(app));
+    public void checkUpdateForApp(App app, Runnable callback) {
+        checkUpdates(Collections.singletonList(app), callback);
     }
 
     @NotNull
@@ -115,9 +114,31 @@ public class AppUpdate {
         return downloadUrl;
     }
 
-    private void checkUpdates(List<App> apps) {
+    public boolean isDownloadUrlCached(App app) {
+        return !getDownloadUrl(app).isEmpty();
+    }
+
+    @NotNull
+    public String getInstalledVersion(App app) {
+        String version = installedApps.getVersionName(app);
+        if (version == null) {
+            return "";
+        }
+        return version;
+    }
+
+    @NotNull
+    public String getAvailableVersion(App app) {
+        String version = versions.get(app);
+        if (version == null) {
+            return "";
+        }
+        return version;
+    }
+
+    private void checkUpdates(List<App> apps, Runnable callback) {
         Objects.requireNonNull(executorService);
-        Objects.requireNonNull(callback);
+        futures.clear();
 
         if (apps.contains(FENNEC_RELEASE) ||
                 apps.contains(FENNEC_BETA) ||
@@ -150,7 +171,6 @@ public class AppUpdate {
     private void checkFennec(List<App> appsToCheck) {
         FennecVersionFinder.Version version = FennecVersionFinder.getVersion();
         if (version == null) {
-            System.out.println("version is null");
             return;
         }
 

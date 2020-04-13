@@ -9,27 +9,22 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.loader.app.LoaderManager;
 
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.AvailableApps;
 import de.marmaro.krt.ffupdater.R;
-
-import static de.marmaro.krt.ffupdater.MainActivity.AVAILABLE_APPS_LOADER_ID;
-import static de.marmaro.krt.ffupdater.MainActivity.TRIGGER_DOWNLOAD_FOR_APP;
 
 /**
  * Created by Tobiwan on 04.10.2019.
  */
 class WarningAppDialog extends DialogFragment {
     static final String TAG = "warning_app_dialog";
-    private final LoaderManager.LoaderCallbacks<AvailableApps> callbacks;
+    private final DownloadNewAppCallback callback;
     private final App app;
 
-    WarningAppDialog(LoaderManager.LoaderCallbacks<AvailableApps> callbacks, App app) {
-        this.callbacks = callbacks;
+    WarningAppDialog(DownloadNewAppCallback callback, App app) {
+        this.callback = callback;
         this.app = app;
     }
 
@@ -48,13 +43,9 @@ class WarningAppDialog extends DialogFragment {
     }
 
     private void downloadApp(App app) {
-        FragmentActivity fragmentActivity = Objects.requireNonNull(getActivity());
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
-
-        Bundle bundle = new Bundle();
-        bundle.putString(TRIGGER_DOWNLOAD_FOR_APP, app.name());
-        LoaderManager.getInstance(fragmentActivity).restartLoader(AVAILABLE_APPS_LOADER_ID, bundle, callbacks);
         new FetchDownloadUrlDialog().show(fragmentManager, FetchDownloadUrlDialog.TAG);
+        callback.run(app);
     }
 
     private String getText() {
