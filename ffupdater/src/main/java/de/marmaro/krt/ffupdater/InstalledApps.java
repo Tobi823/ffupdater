@@ -29,6 +29,7 @@ public class InstalledApps {
 
     /**
      * Get the version name of app. If the app is not installed, an empty string will be returned.
+     * TODO move to enum
      * @param app
      * @return version name or empty string.
      */
