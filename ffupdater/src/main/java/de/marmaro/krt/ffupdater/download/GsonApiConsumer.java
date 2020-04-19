@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.utils;
+package de.marmaro.krt.ffupdater.download;
 
 import android.util.Log;
 
@@ -17,11 +17,11 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by Tobiwan on 05.04.2020.
  */
-public class GsonApiConsumer {
+class GsonApiConsumer {
     private static final String TAG = "ffupdater";
 
     @Nullable
-    public static <T> T consume(String url, Class<T> clazz) {
+    static <T> T consume(String url, Class<T> clazz) {
         HttpsURLConnection urlConnection = null;
         try {
             urlConnection = (HttpsURLConnection) new URL(url).openConnection();

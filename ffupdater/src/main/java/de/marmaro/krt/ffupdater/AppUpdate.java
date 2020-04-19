@@ -7,11 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -20,6 +18,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import de.marmaro.krt.ffupdater.device.DeviceABI;
+import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.download.FenixVersionFinder;
 import de.marmaro.krt.ffupdater.download.FennecVersionFinder;
 import de.marmaro.krt.ffupdater.download.FirefoxLiteVersionFinder;
@@ -65,6 +65,7 @@ public class AppUpdate {
         return installedApps.isInstalled(app);
     }
 
+    // TODO rename
     public boolean isUpdateAvailable() {
         for (App app : installedApps.getInstalledApps()) {
             if (isUpdateAvailable(app)) {
@@ -93,7 +94,6 @@ public class AppUpdate {
     }
 
     public void checkUpdatesForInstalledApps(Runnable callback) {
-        Objects.requireNonNull(installedApps);
         checkUpdates(installedApps.getInstalledApps(), callback);
     }
 

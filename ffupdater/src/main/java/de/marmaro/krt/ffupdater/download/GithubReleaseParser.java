@@ -8,8 +8,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import de.marmaro.krt.ffupdater.utils.GsonApiConsumer;
-
 /**
  * Access the version name and the download url from Github.
  */

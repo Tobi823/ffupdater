@@ -6,7 +6,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.util.Log;
@@ -24,14 +23,10 @@ import androidx.work.WorkerParameters;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.AvailableApps;
-import de.marmaro.krt.ffupdater.InstalledApps;
+import de.marmaro.krt.ffupdater.AppUpdate;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 
@@ -101,57 +96,38 @@ public class NotificationCreator extends Worker {
     @Override
     public Result doWork() {
         Log.d("NotificationCreator", "doWork() executed");
-        if (isUpdateAvailable()) {
-            createNotification();
-        }
+        AppUpdate appUpdate = AppUpdate.updateCheck(getApplicationContext().getPackageManager());
+        appUpdate.checkUpdatesForInstalledApps(() -> {
+            if (appUpdate.isUpdateAvailable()) {
+                createNotification();
+            }
+        });
         return Result.success();
     }
 
-    /**
-     * Check if a update for an installed app is available.
-     * If an API (for example Github) is not available, the method will ignore it.
-     *
-     * @return an update for at least one installed app is available.
-     */
-    private boolean isUpdateAvailable() {
-        PackageManager packageManager = getApplicationContext().getPackageManager();
-        InstalledApps detector = new InstalledApps(packageManager);
-        Set<App> installedApps = new HashSet<>(detector.getInstalledApps());
-        AvailableApps availableApps = AvailableApps.create(installedApps);
-        for (App installedApp : installedApps) {
-            String versionName = detector.getVersionName(installedApp);
-            if (availableApps.isUpdateAvailable(installedApp, versionName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Create a new notification about a new app update.
-     */
     private void createNotification() {
+        Context context = getApplicationContext();
         NotificationCompat.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel();
-            builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+            builder = new NotificationCompat.Builder(context, CHANNEL_ID);
         } else {
             //noinspection deprecation
-            builder = new NotificationCompat.Builder(getApplicationContext());
+            builder = new NotificationCompat.Builder(context);
         }
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), REQUEST_CODE_START_MAIN_ACTIVITY, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intent = new Intent(context, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, REQUEST_CODE_START_MAIN_ACTIVITY, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification notification = builder.setSmallIcon(R.mipmap.transparent, 0)
-                .setLargeIcon(BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.ic_launcher))
-                .setContentTitle(getApplicationContext().getString(R.string.update_notification_title))
-                .setContentText(getApplicationContext().getString(R.string.update_notification_text))
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
+                .setContentTitle(context.getString(R.string.update_notification_title))
+                .setContentText(context.getString(R.string.update_notification_text))
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .build();
 
-        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Objects.requireNonNull(notificationManager).notify(1, notification);
     }
 
@@ -161,11 +137,12 @@ public class NotificationCreator extends Worker {
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel() {
-        CharSequence channelName = getApplicationContext().getString(R.string.update_notification_channel_name);
+        Context context = getApplicationContext();
+        CharSequence channelName = context.getString(R.string.update_notification_channel_name);
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_DEFAULT);
-        channel.setDescription(getApplicationContext().getString(R.string.update_notification_channel_description));
+        channel.setDescription(context.getString(R.string.update_notification_channel_description));
 
-        NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
     }
 }

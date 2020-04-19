@@ -7,8 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import org.jetbrains.annotations.NotNull;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.DeviceABI;
-import de.marmaro.krt.ffupdater.utils.GsonApiConsumer;
+import de.marmaro.krt.ffupdater.device.DeviceABI;
 
 /**
  * Get the version name and the download link for the latest Fennec release (release, beta, nightly)

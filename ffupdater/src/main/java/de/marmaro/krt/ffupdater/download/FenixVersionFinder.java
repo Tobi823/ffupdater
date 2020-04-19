@@ -3,12 +3,12 @@ package de.marmaro.krt.ffupdater.download;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.marmaro.krt.ffupdater.DeviceABI;
+import de.marmaro.krt.ffupdater.device.DeviceABI;
 
-import static de.marmaro.krt.ffupdater.DeviceABI.ABI.AARCH64;
-import static de.marmaro.krt.ffupdater.DeviceABI.ABI.ARM;
-import static de.marmaro.krt.ffupdater.DeviceABI.ABI.X86;
-import static de.marmaro.krt.ffupdater.DeviceABI.ABI.X86_64;
+import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.AARCH64;
+import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.ARM;
+import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86;
+import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86_64;
 
 /**
  * Access the version name and the download url for Fenix from Github.

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.InstalledApps;
+import de.marmaro.krt.ffupdater.device.InstalledApps;
 
 /**
  * Created by Tobiwan on 23.08.2019.

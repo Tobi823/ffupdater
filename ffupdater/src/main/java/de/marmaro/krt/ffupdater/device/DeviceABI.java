@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.device;
 
 import static android.os.Build.CPU_ABI;
 import static android.os.Build.CPU_ABI2;

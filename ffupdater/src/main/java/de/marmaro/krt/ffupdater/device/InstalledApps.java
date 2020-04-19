@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.device;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.marmaro.krt.ffupdater.App;
 
 /**
  * Detect installed apps and their version names.
@@ -57,7 +59,7 @@ public class InstalledApps {
      * @param app
      * @return if the app is installed or not.
      */
-    boolean isInstalled(App app) {
+    public boolean isInstalled(App app) {
         return !getVersionName(app).isEmpty();
     }
 
