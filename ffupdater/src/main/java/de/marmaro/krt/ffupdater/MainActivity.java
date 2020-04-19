@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
@@ -42,6 +45,8 @@ import static android.view.View.VISIBLE;
 public class MainActivity extends AppCompatActivity {
     private AppUpdate appUpdate;
     private ProgressBar progressBar;
+    private Map<App, TextView> versionTextViews = new HashMap<>();
+    private Map<App, ImageButton> buttons = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,20 @@ public class MainActivity extends AppCompatActivity {
         // starts the repeated update check
         NotificationCreator.register(this);
 
+        if (BuildConfig.DEBUG) {
+            enableDebugStrictMode();
+        } else {
+            enableReleaseStrictMode();
+        }
+
+
+        appUpdate = AppUpdate.updateCheck(getPackageManager());
+
+        loadAvailableApps();
+    }
+
+    private void enableDebugStrictMode() {
+        Log.i("MainActivity", "enable StrictMode for local development");
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .permitDiskReads() // for preferences
@@ -67,10 +86,15 @@ public class MainActivity extends AppCompatActivity {
                     .penaltyDeath()
                     .build());
         }
+    }
 
-        appUpdate = AppUpdate.updateCheck(getPackageManager());
-
-        loadAvailableApps();
+    private void enableReleaseStrictMode() {
+        Log.i("MainActivity", "enable StrictMode for everyday usage to prevent unencrypted data connection");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .penaltyDeathOnCleartextNetwork()
+                    .build());
+        }
     }
 
     private void initUI() {
@@ -87,6 +111,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         progressBar = findViewById(R.id.progress_wheel);
+
+        versionTextViews.put(App.FENNEC_RELEASE, (TextView) findViewById(R.id.fennecReleaseAvailableVersion));
+        versionTextViews.put(App.FENNEC_BETA, (TextView) findViewById(R.id.fennecBetaAvailableVersion));
+        versionTextViews.put(App.FENNEC_NIGHTLY, (TextView) findViewById(R.id.fennecNightlyAvailableVersion));
+        versionTextViews.put(App.FIREFOX_KLAR, (TextView) findViewById(R.id.firefoxKlarAvailableVersion));
+        versionTextViews.put(App.FIREFOX_FOCUS, (TextView) findViewById(R.id.firefoxFocusAvailableVersion));
+        versionTextViews.put(App.FIREFOX_LITE, (TextView) findViewById(R.id.firefoxLiteAvailableVersion));
+        versionTextViews.put(App.FENIX, (TextView) findViewById(R.id.fenixAvailableVersion));
+
+        buttons.put(App.FENNEC_RELEASE, (ImageButton) findViewById(R.id.fennecReleaseDownloadButton));
+        buttons.put(App.FENNEC_BETA, (ImageButton) findViewById(R.id.fennecBetaDownloadButton));
+        buttons.put(App.FENNEC_NIGHTLY, (ImageButton) findViewById(R.id.fennecNightlyDownloadButton));
+        buttons.put(App.FIREFOX_KLAR, (ImageButton) findViewById(R.id.firefoxKlarDownloadButton));
+        buttons.put(App.FIREFOX_FOCUS, (ImageButton) findViewById(R.id.firefoxFocusDownloadButton));
+        buttons.put(App.FIREFOX_LITE, (ImageButton) findViewById(R.id.firefoxLiteDownloadButton));
+        buttons.put(App.FENIX, (ImageButton) findViewById(R.id.fenixDownloadButton));
     }
 
     @Override
@@ -143,40 +183,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hideVersionOfApps() {
-        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText("");
-        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText("");
-        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText("");
-        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText("");
-        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText("");
-        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText("");
-        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText("");
+        for (TextView textView : versionTextViews.values()) {
+            textView.setText("");
+        }
         progressBar.setVisibility(VISIBLE);
     }
 
     public void refreshAppVersionDisplay() {
-        findViewById(R.id.fennecReleaseCard).setVisibility(appUpdate.isAppInstalled(App.FENNEC_RELEASE) ? VISIBLE : GONE);
-        findViewById(R.id.fennecBetaCard).setVisibility(appUpdate.isAppInstalled(App.FENNEC_BETA) ? VISIBLE : GONE);
-        findViewById(R.id.fennecNightlyCard).setVisibility(appUpdate.isAppInstalled(App.FENNEC_NIGHTLY) ? VISIBLE : GONE);
-        findViewById(R.id.firefoxKlarCard).setVisibility(appUpdate.isAppInstalled(App.FIREFOX_KLAR) ? VISIBLE : GONE);
-        findViewById(R.id.firefoxFocusCard).setVisibility(appUpdate.isAppInstalled(App.FIREFOX_FOCUS) ? VISIBLE : GONE);
-        findViewById(R.id.firefoxLiteCard).setVisibility(appUpdate.isAppInstalled(App.FIREFOX_LITE) ? VISIBLE : GONE);
-        findViewById(R.id.fenixCard).setVisibility(appUpdate.isAppInstalled(App.FENIX) ? VISIBLE : GONE);
+        for (Map.Entry<App, TextView> entry : versionTextViews.entrySet()) {
+            App app = entry.getKey();
+            TextView textView = entry.getValue();
+            textView.setVisibility(appUpdate.isAppInstalled(app) ? VISIBLE : GONE);
+            textView.setText(appUpdate.getInstalledVersion(app));
+        }
 
-        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(appUpdate.getInstalledVersion(App.FENNEC_RELEASE));
-        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(appUpdate.getInstalledVersion(App.FENNEC_BETA));
-        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(appUpdate.getInstalledVersion(App.FENNEC_NIGHTLY));
-        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText(appUpdate.getInstalledVersion(App.FIREFOX_KLAR));
-        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText(appUpdate.getInstalledVersion(App.FIREFOX_FOCUS));
-        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText(appUpdate.getInstalledVersion(App.FIREFOX_LITE));
-        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText(appUpdate.getInstalledVersion(App.FENIX));
-
-        updateGuiDownloadButtons(R.id.fennecReleaseDownloadButton, App.FENNEC_RELEASE);
-        updateGuiDownloadButtons(R.id.fennecBetaDownloadButton, App.FENNEC_BETA);
-        updateGuiDownloadButtons(R.id.fennecNightlyDownloadButton, App.FENNEC_NIGHTLY);
-        updateGuiDownloadButtons(R.id.firefoxKlarDownloadButton, App.FIREFOX_KLAR);
-        updateGuiDownloadButtons(R.id.firefoxFocusDownloadButton, App.FIREFOX_FOCUS);
-        updateGuiDownloadButtons(R.id.firefoxLiteDownloadButton, App.FIREFOX_LITE);
-        updateGuiDownloadButtons(R.id.fenixDownloadButton, App.FENIX);
+        for (Map.Entry<App, ImageButton> entry : buttons.entrySet()) {
+            App app = entry.getKey();
+            ImageButton imageButton = entry.getValue();
+            imageButton.setImageResource(appUpdate.isUpdateAvailable(app) ?
+                    R.drawable.ic_file_download_orange :
+                    R.drawable.ic_file_download_grey
+            );
+        }
 
         fadeOutProgressBar();
     }
@@ -237,15 +265,6 @@ public class MainActivity extends AppCompatActivity {
 //
 //        fadeOutProgressBar();
 //    }
-
-    private void updateGuiDownloadButtons(int imageButtonId, App app) {
-        ImageButton imageButton = (ImageButton) findViewById(imageButtonId);
-        if (appUpdate.isUpdateAvailable(app)) {
-            imageButton.setImageResource(R.drawable.ic_file_download_orange);
-        } else {
-            imageButton.setImageResource(R.drawable.ic_file_download_grey);
-        }
-    }
 
 //    @Override
 //    public void onLoaderReset(@NonNull Loader<AvailableApps> loader) {
