@@ -6,12 +6,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -32,6 +36,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -46,6 +52,8 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int ACTIVITY_RESULT_INSTALL_APP = 301;
+
     private AppUpdate appUpdate;
     private AppInstaller installer;
     private ProgressBar progressBar;
@@ -56,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
         initUI();
 
@@ -148,7 +158,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         refreshAppVersionDisplay();
         loadAvailableApps();
-        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
+        Log.e("res", "=" + SignatureValidator.hasInstalledAppValidSignature(getPackageManager(), App.FENNEC_RELEASE));
     }
 
     @Override
@@ -158,6 +169,11 @@ public class MainActivity extends AppCompatActivity {
         if (fetchDownloadUrlDialog != null) {
             ((DialogFragment) fetchDownloadUrlDialog).dismiss();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         unregisterReceiver(onComplete);
     }
 
@@ -345,10 +361,20 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context ctxt, Intent intent) {
             Log.e("MainActivity", "broadcast receiver");
             long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
-            installer.installApp(id, getApplication());
+            Intent installApp = installer.generateIntentForInstallingApp(id);
+            startActivityForResult(installApp, ACTIVITY_RESULT_INSTALL_APP);
         }
     };
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ACTIVITY_RESULT_INSTALL_APP) {
+
+        }
+        Log.e("result", "req: " + requestCode + " result: " + resultCode);
+    }
 
     private void installApp() {
 

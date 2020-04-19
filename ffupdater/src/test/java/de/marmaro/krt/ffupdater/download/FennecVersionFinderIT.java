@@ -12,8 +12,8 @@ import javax.net.ssl.HttpsURLConnection;
 import static de.marmaro.krt.ffupdater.App.FENNEC_BETA;
 import static de.marmaro.krt.ffupdater.App.FENNEC_NIGHTLY;
 import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
-import static de.marmaro.krt.ffupdater.DeviceABI.ABI.ARM;
-import static de.marmaro.krt.ffupdater.DeviceABI.ABI.X86;
+import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.ARM;
+import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86;
 import static org.junit.Assert.assertEquals;
 
 /**

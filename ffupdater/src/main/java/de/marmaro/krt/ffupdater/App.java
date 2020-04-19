@@ -2,26 +2,35 @@ package de.marmaro.krt.ffupdater;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 /**
  * All supported apps.
  */
 public enum App {
-    FENNEC_RELEASE(R.string.fennecReleaseTitleText),
-    FENNEC_BETA(R.string.fennecBetaTitleText),
-    FENNEC_NIGHTLY(R.string.fennecNightlyTitleText),
-    FIREFOX_KLAR(R.string.firefoxKlarTitleText),
-    FIREFOX_FOCUS(R.string.firefoxFocusTitleText),
-    FIREFOX_LITE(R.string.firefoxLiteTitleText),
-    FENIX(R.string.fenixTitleText);
+    FENNEC_RELEASE(R.string.fennecReleaseTitleText, "org.mozilla.firefox"),
+    FENNEC_BETA(R.string.fennecBetaTitleText, "org.mozilla.firefox_beta"),
+    FENNEC_NIGHTLY(R.string.fennecNightlyTitleText, "org.mozilla.fennec_aurora"),
+    FIREFOX_KLAR(R.string.firefoxKlarTitleText, "org.mozilla.klar"),
+    FIREFOX_FOCUS(R.string.firefoxFocusTitleText, "org.mozilla.focus"),
+    FIREFOX_LITE(R.string.firefoxLiteTitleText, "org.mozilla.rocket"),
+    FENIX(R.string.fenixTitleText, "org.mozilla.fenix");
 
     int titleId;
+    String packageName;
 
-    App(int titleId) {
+    App(int titleId, String packageName) {
         this.titleId = titleId;
+        this.packageName = packageName;
     }
 
     public String getTitle(Context context) {
         return context.getString(titleId);
+    }
+
+    @NonNull
+    public String getPackageName() {
+        return packageName;
     }
 
     public String getDescription(Context context) {
