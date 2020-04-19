@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
@@ -48,11 +49,24 @@ public class MainActivity extends AppCompatActivity {
 
         initUI();
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build();
-        StrictMode.setThreadPolicy(policy);
-
         // starts the repeated update check
         NotificationCreator.register(this);
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .permitDiskReads() // for preferences
+                .permitNetwork() // for checking updates
+                .penaltyLog()
+                .penaltyDeath()
+                .build());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .penaltyDeath()
+                    .build());
+        }
 
         appUpdate = AppUpdate.updateCheck(getPackageManager());
 

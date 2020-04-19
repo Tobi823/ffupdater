@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater;
 
 import android.content.pm.PackageManager;
+import android.net.TrafficStats;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,6 +38,10 @@ import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
  * Created by Tobiwan on 13.04.2020.
  */
 public class AppUpdate {
+    private static final int TRAFFIC_FENNEC = 1001;
+    private static final int TRAFFIC_FOCUS = 1002;
+    private static final int TRAFFIC_LITE = 1003;
+    private static final int TRAFFIC_FENIX = 1004;
     private ExecutorService executorService;
 
     private InstalledApps installedApps;
@@ -169,6 +174,7 @@ public class AppUpdate {
     }
 
     private void checkFennec(List<App> appsToCheck) {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
         FennecVersionFinder.Version version = FennecVersionFinder.getVersion();
         if (version == null) {
             return;
@@ -189,6 +195,7 @@ public class AppUpdate {
     }
 
     private void checkFocusKlar(List<App> appsToCheck) {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FOCUS);
         FocusVersionFinder focusVersionFinder = FocusVersionFinder.create();
         if (!focusVersionFinder.isCorrect()) {
             return;
@@ -205,6 +212,7 @@ public class AppUpdate {
     }
 
     private void checkLite() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_LITE);
         FirefoxLiteVersionFinder firefoxLiteVersionFinder = FirefoxLiteVersionFinder.create();
         if (!firefoxLiteVersionFinder.isCorrect()) {
             return;
@@ -215,6 +223,7 @@ public class AppUpdate {
     }
 
     private void checkFenix() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FENIX);
         FenixVersionFinder fenixVersionFinder = FenixVersionFinder.create();
         if (!fenixVersionFinder.isCorrect()) {
             return;
