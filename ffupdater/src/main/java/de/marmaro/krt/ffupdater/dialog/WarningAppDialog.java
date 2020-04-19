@@ -6,8 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.util.Consumer;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import java.util.Objects;
@@ -20,10 +20,10 @@ import de.marmaro.krt.ffupdater.R;
  */
 class WarningAppDialog extends DialogFragment {
     static final String TAG = "warning_app_dialog";
-    private final DownloadNewAppCallback callback;
+    private final Consumer<App> callback;
     private final App app;
 
-    WarningAppDialog(DownloadNewAppCallback callback, App app) {
+    WarningAppDialog(Consumer<App> callback, App app) {
         this.callback = callback;
         this.app = app;
     }
@@ -44,8 +44,8 @@ class WarningAppDialog extends DialogFragment {
 
     private void downloadApp(App app) {
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
+        callback.accept(app);
         new FetchDownloadUrlDialog().show(fragmentManager, FetchDownloadUrlDialog.TAG);
-        callback.run(app);
     }
 
     private String getText() {

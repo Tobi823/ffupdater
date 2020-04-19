@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.util.Consumer;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -20,9 +21,9 @@ import de.marmaro.krt.ffupdater.device.InstalledApps;
  * Created by Tobiwan on 23.08.2019.
  */
 public class DownloadNewAppDialog extends DialogFragment {
-    private final DownloadNewAppCallback callback;
+    private final Consumer<App> callback;
 
-    public DownloadNewAppDialog(DownloadNewAppCallback callback) {
+    public DownloadNewAppDialog(Consumer<App> callback) {
         this.callback = callback;
     }
 
@@ -53,8 +54,8 @@ public class DownloadNewAppDialog extends DialogFragment {
 
     private void downloadApp(App app) {
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
+        callback.accept(app);
         new FetchDownloadUrlDialog().show(fragmentManager, FetchDownloadUrlDialog.TAG);
-        callback.run(app);
     }
 
     private NotInstalledApps getNotInstalledApps() {

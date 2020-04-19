@@ -17,7 +17,7 @@ public class DeviceABI {
     private static final String ARMEABI_V7A = "armeabi-v7a";
     private static final String X86_64 = "x86_64";
     private static final String X86 = "x86";
-    private static final ABI abi = findAbi();
+    private static final ABI abi = findBestSuitedAbi();
 
     /**
      * Return the best suited ABI for the current device in this order:
@@ -46,7 +46,7 @@ public class DeviceABI {
         X86_64
     }
 
-    private static ABI findAbi() {
+    private static ABI findBestSuitedAbi() {
         String[] abis = SDK_INT < LOLLIPOP ? new String[]{CPU_ABI, CPU_ABI2} : SUPPORTED_ABIS;
         for (String abi : abis) {
             if (abi == null) {

@@ -105,6 +105,13 @@ public class NotificationCreator extends Worker {
         return Result.success();
     }
 
+    @NonNull
+    private NotificationManager getNotificationManager() {
+        Context context = getApplicationContext();
+        return Objects.requireNonNull(
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE));
+    }
+
     private void createNotification() {
         Context context = getApplicationContext();
         NotificationCompat.Builder builder;
@@ -127,8 +134,7 @@ public class NotificationCreator extends Worker {
                 .setAutoCancel(true)
                 .build();
 
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Objects.requireNonNull(notificationManager).notify(1, notification);
+        getNotificationManager().notify(1, notification);
     }
 
     /**
@@ -137,12 +143,11 @@ public class NotificationCreator extends Worker {
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel() {
-        Context context = getApplicationContext();
-        CharSequence channelName = context.getString(R.string.update_notification_channel_name);
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_DEFAULT);
-        channel.setDescription(context.getString(R.string.update_notification_channel_description));
-
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
+        NotificationChannel channel = new NotificationChannel(
+                CHANNEL_ID,
+                getApplicationContext().getString(R.string.update_notification_channel_name),
+                NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setDescription(getApplicationContext().getString(R.string.update_notification_channel_description));
+        getNotificationManager().createNotificationChannel(channel);
     }
 }
