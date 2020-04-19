@@ -31,6 +31,7 @@ public class SignatureValidator {
     public static boolean hasInstalledAppValidSignature(PackageManager packageManager, App app) {
         try {
             // https://stackoverflow.com/a/22506133
+            // https://gist.github.com/scottyab/b849701972d57cf9562e
 
             @SuppressLint("PackageManagerGetSignatures")
             PackageInfo packageInfo = packageManager.getPackageInfo(
