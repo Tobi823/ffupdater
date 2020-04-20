@@ -13,6 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * git commit: 1b7ca880bef55ce8050e0b8dd5ead26f9a41950f
  */
 
 package org.apache.commons.codec;
