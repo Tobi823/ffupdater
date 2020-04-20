@@ -19,10 +19,6 @@
 
 package org.apache.commons.codec.binary;
 
-import org.apache.commons.codec.DecoderException;
-
-import java.nio.ByteBuffer;
-
 /**
  * Converts hexadecimal Strings. The Charset used for certain operation can be set.
  *
@@ -38,10 +34,10 @@ public class Hex {
      *
      * @param data A String containing hexadecimal digits
      * @return A byte array containing binary data decoded from the supplied char array.
-     * @throws DecoderException Thrown if an odd number or illegal of characters is supplied
+     * @throws IllegalArgumentException Thrown if an odd number or illegal of characters is supplied
      * @since 1.11
      */
-    public static byte[] decodeHex(final String data) throws DecoderException {
+    public static byte[] decodeHex(final String data) throws IllegalArgumentException {
         return decodeHex(data.toCharArray());
     }
 
@@ -52,14 +48,14 @@ public class Hex {
      *
      * @param data An array of characters containing hexadecimal digits
      * @return A byte array containing binary data decoded from the supplied char array.
-     * @throws DecoderException Thrown if an odd number or illegal of characters is supplied
+     * @throws IllegalArgumentException Thrown if an odd number or illegal of characters is supplied
      */
-    public static byte[] decodeHex(final char[] data) throws DecoderException {
+    public static byte[] decodeHex(final char[] data) throws IllegalArgumentException {
 
         final int len = data.length;
 
         if ((len & 0x01) != 0) {
-            throw new DecoderException("Odd number of characters.");
+            throw new IllegalArgumentException("Odd number of characters.");
         }
 
         final byte[] out = new byte[len >> 1];
@@ -82,12 +78,12 @@ public class Hex {
      * @param ch    A character to convert to an integer digit
      * @param index The index of the character in the source
      * @return An integer
-     * @throws DecoderException Thrown if ch is an illegal hex character
+     * @throws IllegalArgumentException Thrown if ch is an illegal hex character
      */
-    protected static int toDigit(final char ch, final int index) throws DecoderException {
+    protected static int toDigit(final char ch, final int index) throws IllegalArgumentException {
         final int digit = Character.digit(ch, 16);
         if (digit == -1) {
-            throw new DecoderException("Illegal hexadecimal character " + ch + " at index " + index);
+            throw new IllegalArgumentException("Illegal hexadecimal character " + ch + " at index " + index);
         }
         return digit;
     }
