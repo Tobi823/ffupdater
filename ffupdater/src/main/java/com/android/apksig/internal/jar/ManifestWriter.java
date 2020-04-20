@@ -18,7 +18,7 @@ package com.android.apksig.internal.jar;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -82,7 +82,7 @@ public abstract class ManifestWriter {
     }
 
     private static void writeLine(OutputStream  out, String line) throws IOException {
-        byte[] lineBytes = line.getBytes(StandardCharsets.UTF_8);
+        byte[] lineBytes = line.getBytes(Charset.forName("UTF-8"));
         int offset = 0;
         int remaining = lineBytes.length;
         boolean firstLine = true;

@@ -337,7 +337,7 @@ public final class Asn1DerEncoder {
             throws Asn1EncodingException {
         try {
             return field.get(obj);
-        } catch (ReflectiveOperationException e) {
+        } catch (IllegalAccessException e) {
             throw new Asn1EncodingException(
                     "Failed to read " + obj.getClass().getName() + "." + field.getName(), e);
         }

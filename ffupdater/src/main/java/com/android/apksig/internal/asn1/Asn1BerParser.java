@@ -23,7 +23,9 @@ import com.android.apksig.internal.asn1.ber.BerEncoding;
 import com.android.apksig.internal.asn1.ber.ByteBufferBerDataValueReader;
 import com.android.apksig.internal.util.ByteBufferUtils;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
@@ -175,7 +177,7 @@ public final class Asn1BerParser {
         T obj;
         try {
             obj = containerClass.getConstructor().newInstance();
-        } catch (IllegalArgumentException | ReflectiveOperationException e) {
+        } catch (IllegalArgumentException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             throw new Asn1DecodingException("Failed to instantiate " + containerClass.getName(), e);
         }
         // Set the matching field's value from the data value
@@ -221,7 +223,7 @@ public final class Asn1BerParser {
         T t;
         try {
             t = containerClass.getConstructor().newInstance();
-        } catch (IllegalArgumentException | ReflectiveOperationException e) {
+        } catch (IllegalArgumentException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             throw new Asn1DecodingException("Failed to instantiate " + containerClass.getName(), e);
         }
 
@@ -311,7 +313,13 @@ public final class Asn1BerParser {
 
     private static Asn1Type getContainerAsn1Type(Class<?> containerClass)
             throws Asn1DecodingException {
-        Asn1Class containerAnnotation = containerClass.getDeclaredAnnotation(Asn1Class.class);
+        Asn1Class containerAnnotation = null;
+        for (Annotation element : containerClass.getDeclaredAnnotations()) {
+            if (element.annotationType() == Asn1Class.class) {
+                containerAnnotation = (Asn1Class) element;
+            }
+        }
+
         if (containerAnnotation == null) {
             throw new Asn1DecodingException(
                     containerClass.getName() + " is not annotated with "
@@ -332,7 +340,7 @@ public final class Asn1BerParser {
 
     private static Class<?> getElementType(Field field)
             throws Asn1DecodingException, ClassNotFoundException {
-        String type = field.getGenericType().getTypeName();
+        String type = field.getGenericType().toString();
         int delimiterIndex =  type.indexOf('<');
         if (delimiterIndex == -1) {
             throw new Asn1DecodingException("Not a container type: " + field.getGenericType());
@@ -508,7 +516,7 @@ public final class Asn1BerParser {
     private static int integerToInt(ByteBuffer encoded) throws Asn1DecodingException {
         BigInteger value = integerToBigInteger(encoded);
         try {
-            return value.intValueExact();
+            return value.intValue(); //TODO
         } catch (ArithmeticException e) {
             throw new Asn1DecodingException(
                     String.format("INTEGER cannot be represented as int: %1$d (0x%1$x)", value), e);
@@ -518,7 +526,7 @@ public final class Asn1BerParser {
     private static long integerToLong(ByteBuffer encoded) throws Asn1DecodingException {
         BigInteger value = integerToBigInteger(encoded);
         try {
-            return value.longValueExact();
+            return value.longValue(); //TODO
         } catch (ArithmeticException e) {
             throw new Asn1DecodingException(
                     String.format("INTEGER cannot be represented as long: %1$d (0x%1$x)", value),
@@ -531,7 +539,12 @@ public final class Asn1BerParser {
         Field[] declaredFields = containerClass.getDeclaredFields();
         List<AnnotatedField> result = new ArrayList<>(declaredFields.length);
         for (Field field : declaredFields) {
-            Asn1Field annotation = field.getDeclaredAnnotation(Asn1Field.class);
+            Asn1Field annotation = null;
+            for (Annotation element : field.getDeclaredAnnotations()) {
+                if (element.annotationType() == Asn1Field.class) {
+                    annotation = (Asn1Field) element;
+                }
+            }
             if (annotation == null) {
                 continue;
             }
@@ -575,7 +588,12 @@ public final class Asn1BerParser {
                         field.set(obj, convert(type, dataValue, field.getType()));
                         break;
                 }
-            } catch (ReflectiveOperationException e) {
+            } catch (ClassNotFoundException e) {
+                throw new Asn1DecodingException(
+                        "Failed to set value of " + obj.getClass().getName()
+                                + "." + field.getName(),
+                        e);
+            } catch (IllegalAccessException e) {
                 throw new Asn1DecodingException(
                         "Failed to set value of " + obj.getClass().getName()
                                 + "." + field.getName(),
@@ -645,8 +663,12 @@ public final class Asn1BerParser {
                     break;
                 case SEQUENCE:
                 {
-                    Asn1Class containerAnnotation =
-                            targetType.getDeclaredAnnotation(Asn1Class.class);
+                    Asn1Class containerAnnotation = null;
+                    for (Annotation element : targetType.getDeclaredAnnotations()) {
+                        if (element.annotationType() == Asn1Class.class) {
+                            containerAnnotation = (Asn1Class) element;
+                        }
+                    }
                     if ((containerAnnotation != null)
                             && (containerAnnotation.type() == Asn1Type.SEQUENCE)) {
                         return parseSequence(dataValue, targetType);
@@ -655,8 +677,12 @@ public final class Asn1BerParser {
                 }
                 case CHOICE:
                 {
-                    Asn1Class containerAnnotation =
-                            targetType.getDeclaredAnnotation(Asn1Class.class);
+                    Asn1Class containerAnnotation = null;
+                    for (Annotation element : targetType.getDeclaredAnnotations()) {
+                        if (element.annotationType() == Asn1Class.class) {
+                            containerAnnotation = (Asn1Class) element;
+                        }
+                    }
                     if ((containerAnnotation != null)
                             && (containerAnnotation.type() == Asn1Type.CHOICE)) {
                         return parseChoice(dataValue, targetType);

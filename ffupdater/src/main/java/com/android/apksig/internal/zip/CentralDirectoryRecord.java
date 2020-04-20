@@ -17,10 +17,11 @@
 package com.android.apksig.internal.zip;
 
 import com.android.apksig.zip.ZipFormatException;
+
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 import java.util.Comparator;
 
 /**
@@ -223,7 +224,7 @@ public class CentralDirectoryRecord {
             long compressedSize,
             long uncompressedSize,
             long localFileHeaderOffset) {
-        byte[] nameBytes = name.getBytes(StandardCharsets.UTF_8);
+        byte[] nameBytes = name.getBytes(Charset.forName("UTF-8"));
         short gpFlags = ZipUtils.GP_FLAG_EFS; // UTF-8 character encoding used for entry name
         short compressionMethod = ZipUtils.COMPRESSION_METHOD_DEFLATED;
         int recordSize = HEADER_SIZE_BYTES + nameBytes.length;
@@ -283,7 +284,7 @@ public class CentralDirectoryRecord {
                 record.position(originalPosition);
             }
         }
-        return new String(nameBytes, nameBytesOffset, nameLengthBytes, StandardCharsets.UTF_8);
+        return new String(nameBytes, nameBytesOffset, nameLengthBytes, Charset.forName("UTF-8"));
     }
 
     private static class ByLocalFileHeaderOffsetComparator

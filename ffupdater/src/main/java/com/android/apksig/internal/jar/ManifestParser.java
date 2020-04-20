@@ -16,7 +16,7 @@
 
 package com.android.apksig.internal.jar;
 
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -126,7 +126,7 @@ public class ManifestParser {
         } else if (bytes.length == 0) {
             return "";
         } else {
-            return new String(bytes, StandardCharsets.UTF_8);
+            return new String(bytes, Charset.forName("UTF-8"));
         }
     }
 
