@@ -26,7 +26,7 @@ package org.apache.commons.codec.binary;
  *
  * @since 1.1
  */
-public class Hex {
+public class ApacheCodecHex { // had to rename class or app crashed on Android 4.1
     /**
      * Converts a String representing hexadecimal values into an array of bytes of those same values. The returned array
      * will be half the length of the passed String, as it takes two characters to represent any given byte. An

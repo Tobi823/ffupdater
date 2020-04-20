@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.codec.binary.ApacheCodecHex;
 
 /**
  * All supported apps.
@@ -39,7 +39,7 @@ public enum App {
     App(int titleId, String packageName, String signatureHash) {
         this.titleId = titleId;
         this.packageName = packageName;
-        this.signatureHash = Hex.decodeHex(signatureHash.replaceAll(":", ""));
+        this.signatureHash = ApacheCodecHex.decodeHex(signatureHash.replaceAll(":", ""));
     }
 
     public String getTitle(Context context) {
