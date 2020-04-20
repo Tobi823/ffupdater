@@ -10,16 +10,16 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * git commit: 473b5b7339473fea887281989f20e6af22c9b07d
  */
 
 package com.google.common.base;
 
-import static com.google.common.base.Strings.lenientFormat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import static com.google.common.base.Strings.lenientFormat;
 
 /**
  * Static convenience methods that help a method or constructor check whether it was invoked
@@ -85,14 +85,14 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * which are <i>not the caller's fault</i>. Doing so is <b>not recommended</b> because it is
  * misleading to future readers of the code and of stack traces. See <a
  * href="https://github.com/google/guava/wiki/ConditionalFailuresExplained">Conditional failures
- * explained</a> in the Guava User Guide for more advice. Notably, {@link Verify} offers assertions
+ * explained</a> in the Guava User Guide for more advice. Notably, Verify offers assertions
  * similar to those in this class for non-precondition checks.
  *
  * <h3>{@code java.util.Objects.requireNonNull()}</h3>
  *
  * <p>Projects which use {@code com.google.common} should generally avoid the use of {@link
  * java.util.Objects#requireNonNull(Object)}. Instead, use whichever of {@link
- * #checkNotNull(Object)} or {@link Verify#verifyNotNull(Object)} is appropriate to the situation.
+ * #checkNotNull(Object)} or Verify#verifyNotNull(Object) is appropriate to the situation.
  * (The same goes for the message-accepting overloads.)
  *
  * <h3>Only {@code %s} is supported</h3>
@@ -113,7 +113,6 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @author Kevin Bourrillion
  * @since 2.0
  */
-@GwtCompatible
 public final class Preconditions {
     private Preconditions() {}
 
@@ -159,7 +158,7 @@ public final class Preconditions {
     public static void checkArgument(
             boolean expression,
             @Nullable String errorMessageTemplate,
-            @Nullable Object @Nullable ... errorMessageArgs) {
+            @Nullable Object ... errorMessageArgs) {
         if (!expression) {
             throw new IllegalArgumentException(lenientFormat(errorMessageTemplate, errorMessageArgs));
         }
@@ -485,7 +484,6 @@ public final class Preconditions {
      *
      * @param expression a boolean expression
      * @throws IllegalStateException if {@code expression} is false
-     * @see Verify#verify Verify.verify()
      */
     public static void checkState(boolean expression) {
         if (!expression) {
@@ -501,7 +499,6 @@ public final class Preconditions {
      * @param errorMessage the exception message to use if the check fails; will be converted to a
      *     string using {@link String#valueOf(Object)}
      * @throws IllegalStateException if {@code expression} is false
-     * @see Verify#verify Verify.verify()
      */
     public static void checkState(boolean expression, @Nullable Object errorMessage) {
         if (!expression) {
@@ -522,12 +519,11 @@ public final class Preconditions {
      * @param errorMessageArgs the arguments to be substituted into the message template. Arguments
      *     are converted to strings using {@link String#valueOf(Object)}.
      * @throws IllegalStateException if {@code expression} is false
-     * @see Verify#verify Verify.verify()
      */
     public static void checkState(
             boolean expression,
             @Nullable String errorMessageTemplate,
-            @Nullable Object @Nullable ... errorMessageArgs) {
+            @Nullable Object ... errorMessageArgs) {
         if (!expression) {
             throw new IllegalStateException(lenientFormat(errorMessageTemplate, errorMessageArgs));
         }
@@ -870,10 +866,9 @@ public final class Preconditions {
      * @param reference an object reference
      * @return the non-null reference that was validated
      * @throws NullPointerException if {@code reference} is null
-     * @see Verify#verifyNotNull Verify.verifyNotNull()
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(T reference) {
+    @NonNull
+    public static <T extends Object> T checkNotNull(T reference) {
         if (reference == null) {
             throw new NullPointerException();
         }
@@ -888,10 +883,9 @@ public final class Preconditions {
      *     string using {@link String#valueOf(Object)}
      * @return the non-null reference that was validated
      * @throws NullPointerException if {@code reference} is null
-     * @see Verify#verifyNotNull Verify.verifyNotNull()
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T reference, @Nullable Object errorMessage) {
         if (reference == null) {
             throw new NullPointerException(String.valueOf(errorMessage));
@@ -912,13 +906,12 @@ public final class Preconditions {
      *     are converted to strings using {@link String#valueOf(Object)}.
      * @return the non-null reference that was validated
      * @throws NullPointerException if {@code reference} is null
-     * @see Verify#verifyNotNull Verify.verifyNotNull()
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T reference,
             @Nullable String errorMessageTemplate,
-            @Nullable Object @Nullable ... errorMessageArgs) {
+            @Nullable Object... errorMessageArgs) {
         if (reference == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, errorMessageArgs));
         }
@@ -932,8 +925,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, char p1) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1));
@@ -948,8 +941,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, int p1) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1));
@@ -964,8 +957,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, long p1) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1));
@@ -980,8 +973,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, @Nullable Object p1) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1));
@@ -996,8 +989,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, char p1, char p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1012,8 +1005,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, char p1, int p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1028,8 +1021,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, char p1, long p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1044,8 +1037,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, char p1, @Nullable Object p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1060,8 +1053,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, int p1, char p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1076,8 +1069,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, int p1, int p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1092,8 +1085,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, int p1, long p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1108,8 +1101,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, int p1, @Nullable Object p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1124,8 +1117,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, long p1, char p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1140,8 +1133,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, long p1, int p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1156,8 +1149,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, long p1, long p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1172,8 +1165,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, long p1, @Nullable Object p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1188,8 +1181,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, @Nullable Object p1, char p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1204,8 +1197,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, @Nullable Object p1, int p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1220,8 +1213,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, @Nullable Object p1, long p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1236,8 +1229,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj, @Nullable String errorMessageTemplate, @Nullable Object p1, @Nullable Object p2) {
         if (obj == null) {
             throw new NullPointerException(lenientFormat(errorMessageTemplate, p1, p2));
@@ -1252,8 +1245,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj,
             @Nullable String errorMessageTemplate,
             @Nullable Object p1,
@@ -1272,8 +1265,8 @@ public final class Preconditions {
      *
      * @since 20.0 (varargs overload since 2.0)
      */
-    @CanIgnoreReturnValue
-    public static <T extends @NonNull Object> T checkNotNull(
+    @NonNull
+    public static <T extends Object> T checkNotNull(
             T obj,
             @Nullable String errorMessageTemplate,
             @Nullable Object p1,
@@ -1322,7 +1315,6 @@ public final class Preconditions {
      * @throws IndexOutOfBoundsException if {@code index} is negative or is not less than {@code size}
      * @throws IllegalArgumentException if {@code size} is negative
      */
-    @CanIgnoreReturnValue
     public static int checkElementIndex(int index, int size) {
         return checkElementIndex(index, size, "index");
     }
@@ -1338,7 +1330,6 @@ public final class Preconditions {
      * @throws IndexOutOfBoundsException if {@code index} is negative or is not less than {@code size}
      * @throws IllegalArgumentException if {@code size} is negative
      */
-    @CanIgnoreReturnValue
     public static int checkElementIndex(int index, int size, @Nullable String desc) {
         // Carefully optimized for execution by hotspot (explanatory comment above)
         if (index < 0 || index >= size) {
@@ -1367,7 +1358,6 @@ public final class Preconditions {
      * @throws IndexOutOfBoundsException if {@code index} is negative or is greater than {@code size}
      * @throws IllegalArgumentException if {@code size} is negative
      */
-    @CanIgnoreReturnValue
     public static int checkPositionIndex(int index, int size) {
         return checkPositionIndex(index, size, "index");
     }
@@ -1383,7 +1373,6 @@ public final class Preconditions {
      * @throws IndexOutOfBoundsException if {@code index} is negative or is greater than {@code size}
      * @throws IllegalArgumentException if {@code size} is negative
      */
-    @CanIgnoreReturnValue
     public static int checkPositionIndex(int index, int size, @Nullable String desc) {
         // Carefully optimized for execution by hotspot (explanatory comment above)
         if (index < 0 || index > size) {

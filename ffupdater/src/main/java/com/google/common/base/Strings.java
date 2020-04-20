@@ -10,18 +10,19 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * git commit: 5345f11f280c6ce8ff37065a71acd8cb0a54d660
  */
 
 package com.google.common.base;
 
+import androidx.annotation.Nullable;
+
+import java.util.logging.Logger;
+
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.util.logging.Level.WARNING;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.VisibleForTesting;
-import java.util.logging.Logger;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * Static utility methods pertaining to {@code String} or {@code CharSequence} instances.
@@ -29,9 +30,9 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @author Kevin Bourrillion
  * @since 3.0
  */
-@GwtCompatible
 public final class Strings {
-    private Strings() {}
+    private Strings() {
+    }
 
     /**
      * Returns the given string if it is non-null; the empty string otherwise.
@@ -40,7 +41,7 @@ public final class Strings {
      * @return {@code string} itself if it is non-null; {@code ""} if it is null
      */
     public static String nullToEmpty(@Nullable String string) {
-        return Platform.nullToEmpty(string);
+        return (string == null) ? "" : string;
     }
 
     /**
@@ -49,8 +50,9 @@ public final class Strings {
      * @param string the string to test and possibly return
      * @return {@code string} itself if it is nonempty; {@code null} if it is empty or null
      */
-    public static @Nullable String emptyToNull(@Nullable String string) {
-        return Platform.emptyToNull(string);
+    public static @Nullable
+    String emptyToNull(@Nullable String string) {
+        return (string == null || string.isEmpty()) ? null : string;
     }
 
     /**
@@ -65,7 +67,7 @@ public final class Strings {
      * @return {@code true} if the string is null or is the empty string
      */
     public static boolean isNullOrEmpty(@Nullable String string) {
-        return Platform.stringIsNullOrEmpty(string);
+        return string == null || string.isEmpty();
     }
 
     /**
@@ -79,11 +81,11 @@ public final class Strings {
      *
      * <p>See {@link java.util.Formatter} for a richer set of formatting capabilities.
      *
-     * @param string the string which should appear at the end of the result
+     * @param string    the string which should appear at the end of the result
      * @param minLength the minimum length the resulting string must have. Can be zero or negative, in
-     *     which case the input string is always returned.
-     * @param padChar the character to insert at the beginning of the result until the minimum length
-     *     is reached
+     *                  which case the input string is always returned.
+     * @param padChar   the character to insert at the beginning of the result until the minimum length
+     *                  is reached
      * @return the padded string
      */
     public static String padStart(String string, int minLength, char padChar) {
@@ -110,11 +112,11 @@ public final class Strings {
      *
      * <p>See {@link java.util.Formatter} for a richer set of formatting capabilities.
      *
-     * @param string the string which should appear at the beginning of the result
+     * @param string    the string which should appear at the beginning of the result
      * @param minLength the minimum length the resulting string must have. Can be zero or negative, in
-     *     which case the input string is always returned.
-     * @param padChar the character to append to the end of the result until the minimum length is
-     *     reached
+     *                  which case the input string is always returned.
+     * @param padChar   the character to append to the end of the result until the minimum length is
+     *                  reached
      * @return the padded string
      */
     public static String padEnd(String string, int minLength, char padChar) {
@@ -135,9 +137,9 @@ public final class Strings {
      * example, {@code repeat("hey", 3)} returns the string {@code "heyheyhey"}.
      *
      * @param string any non-null string
-     * @param count the number of times to repeat it; a nonnegative integer
+     * @param count  the number of times to repeat it; a nonnegative integer
      * @return a string containing {@code string} repeated {@code count} times (the empty string if
-     *     {@code count} is zero)
+     * {@code count} is zero)
      * @throws IllegalArgumentException if {@code count} is negative
      */
     public static String repeat(String string, int count) {
@@ -215,7 +217,6 @@ public final class Strings {
      * True when a valid surrogate pair starts at the given {@code index} in the given {@code string}.
      * Out-of-range indexes return false.
      */
-    @VisibleForTesting
     static boolean validSurrogatePairAt(CharSequence string, int index) {
         return index >= 0
                 && index <= (string.length() - 2)
@@ -248,20 +249,20 @@ public final class Strings {
      * recognized.
      *
      * @param template a string containing zero or more {@code "%s"} placeholder sequences. {@code
-     *     null} is treated as the four-character string {@code "null"}.
-     * @param args the arguments to be substituted into the message template. The first argument
-     *     specified is substituted for the first occurrence of {@code "%s"} in the template, and so
-     *     forth. A {@code null} argument is converted to the four-character string {@code "null"};
-     *     non-null values are converted to strings using {@link Object#toString()}.
+     *                 null} is treated as the four-character string {@code "null"}.
+     * @param args     the arguments to be substituted into the message template. The first argument
+     *                 specified is substituted for the first occurrence of {@code "%s"} in the template, and so
+     *                 forth. A {@code null} argument is converted to the four-character string {@code "null"};
+     *                 non-null values are converted to strings using {@link Object#toString()}.
      * @since 25.1
      */
     // TODO(diamondm) consider using Arrays.toString() for array parameters
     public static String lenientFormat(
-            @Nullable String template, @Nullable Object @Nullable ... args) {
+            @Nullable String template, @Nullable Object... args) {
         template = String.valueOf(template); // null -> "null"
 
         if (args == null) {
-            args = new Object[] {"(Object[])null"};
+            args = new Object[]{"(Object[])null"};
         } else {
             for (int i = 0; i < args.length; i++) {
                 args[i] = lenientToString(args[i]);
