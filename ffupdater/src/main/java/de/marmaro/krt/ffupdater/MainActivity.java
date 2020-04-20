@@ -6,15 +6,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,8 +33,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.common.base.Preconditions;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -61,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private Map<App, TextView> appVersionTextViews = new HashMap<>();
     private Map<App, ImageButton> appButtons = new HashMap<>();
     private Map<App, CardView> appCards = new HashMap<>();
+    private Map<Integer, App> infoButtonIdsToApp = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -152,6 +147,14 @@ public class MainActivity extends AppCompatActivity {
         appCards.put(App.FIREFOX_FOCUS, (CardView) findViewById(R.id.firefoxFocusCard));
         appCards.put(App.FIREFOX_LITE, (CardView) findViewById(R.id.firefoxLiteCard));
         appCards.put(App.FENIX, (CardView) findViewById(R.id.fenixCard));
+
+        infoButtonIdsToApp.put(R.id.fennecReleaseInfoButton, App.FENNEC_RELEASE);
+        infoButtonIdsToApp.put(R.id.fennecBetaInfoButton, App.FENNEC_BETA);
+        infoButtonIdsToApp.put(R.id.fennecNightlyInfoButton, App.FENNEC_NIGHTLY);
+        infoButtonIdsToApp.put(R.id.firefoxKlarInfoButton, App.FIREFOX_KLAR);
+        infoButtonIdsToApp.put(R.id.firefoxFocusInfoButton, App.FIREFOX_FOCUS);
+        infoButtonIdsToApp.put(R.id.firefoxLiteInfoButton, App.FIREFOX_LITE);
+        infoButtonIdsToApp.put(R.id.fenixInfoButton, App.FENIX);
     }
 
     @Override
@@ -381,35 +384,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void fennecReleaseInfoButtonClicked(View view) {
-        infoButtonClicked(App.FENNEC_RELEASE);
-    }
-
-    public void fennecBetaInfoButtonClicked(View view) {
-        infoButtonClicked(App.FENNEC_BETA);
-    }
-
-    public void fennecNightlyInfoButtonClicked(View view) {
-        infoButtonClicked(App.FENNEC_NIGHTLY);
-    }
-
-    public void firefoxKlarInfoButtonClicked(View view) {
-        infoButtonClicked(App.FIREFOX_KLAR);
-    }
-
-    public void firefoxFocusInfoButtonClicked(View view) {
-        infoButtonClicked(App.FIREFOX_FOCUS);
-    }
-
-    public void firefoxLiteInfoButtonClicked(View view) {
-        infoButtonClicked(App.FIREFOX_LITE);
-    }
-
-    public void fenixInfoButtonClicked(View view) {
-        infoButtonClicked(App.FENIX);
-    }
-
-    private void infoButtonClicked(App app) {
+    private void infoButtonClicked(View view) {
+        App app = Objects.requireNonNull(infoButtonIdsToApp.get(view.getId()));
         new AppInfoDialog(app).show(getSupportFragmentManager(), "app_info_dialog_" + app);
     }
 

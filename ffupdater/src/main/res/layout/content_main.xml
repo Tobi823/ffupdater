@@ -58,7 +58,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        android:onClick="fennecReleaseInfoButtonClicked"
+                        android:onClick="infoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecReleaseDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -173,7 +173,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        android:onClick="fennecBetaInfoButtonClicked"
+                        android:onClick="infoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecBetaDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -289,7 +289,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        android:onClick="fennecNightlyInfoButtonClicked"
+                        android:onClick="infoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecNightlyDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -404,7 +404,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        android:onClick="firefoxKlarInfoButtonClicked"
+                        android:onClick="infoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxKlarDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -580,7 +580,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        android:onClick="firefoxFocusInfoButtonClicked"
+                        android:onClick="infoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxFocusDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -696,7 +696,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        android:onClick="firefoxLiteInfoButtonClicked"
+                        android:onClick="infoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxLiteDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -810,7 +810,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@android:color/transparent"
                         android:contentDescription="Info about this app"
-                        android:onClick="fenixInfoButtonClicked"
+                        android:onClick="infoButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fenixDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
