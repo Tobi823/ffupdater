@@ -19,8 +19,6 @@ package com.google.common.base;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.google.common.base.Strings.lenientFormat;
-
 /**
  * Static convenience methods that help a method or constructor check whether it was invoked
  * correctly (that is, whether its <i>preconditions</i> were met).
@@ -97,7 +95,7 @@ import static com.google.common.base.Strings.lenientFormat;
  *
  * <h3>Only {@code %s} is supported</h3>
  *
- * <p>{@code Preconditions} uses {@link Strings#lenientFormat} to format error message template
+ * <p>{@code Preconditions} uses Strings#lenientFormat to format error message template
  * strings. This only supports the {@code "%s"} specifier, not the full range of {@link
  * java.util.Formatter} specifiers. However, note that if the number of arguments does not match the
  * number of occurrences of {@code "%s"} in the format string, {@code Preconditions} will still
@@ -114,7 +112,8 @@ import static com.google.common.base.Strings.lenientFormat;
  * @since 2.0
  */
 public final class Preconditions {
-    private Preconditions() {}
+    private Preconditions() {
+    }
 
     /**
      * Ensures the truth of an expression involving one or more parameters to the calling method.
@@ -131,9 +130,9 @@ public final class Preconditions {
     /**
      * Ensures the truth of an expression involving one or more parameters to the calling method.
      *
-     * @param expression a boolean expression
+     * @param expression   a boolean expression
      * @param errorMessage the exception message to use if the check fails; will be converted to a
-     *     string using {@link String#valueOf(Object)}
+     *                     string using {@link String#valueOf(Object)}
      * @throws IllegalArgumentException if {@code expression} is false
      */
     public static void checkArgument(boolean expression, @Nullable Object errorMessage) {
@@ -159,9 +158,9 @@ public final class Preconditions {
      * Ensures the truth of an expression involving the state of the calling instance, but not
      * involving any parameters to the calling method.
      *
-     * @param expression a boolean expression
+     * @param expression   a boolean expression
      * @param errorMessage the exception message to use if the check fails; will be converted to a
-     *     string using {@link String#valueOf(Object)}
+     *                     string using {@link String#valueOf(Object)}
      * @throws IllegalStateException if {@code expression} is false
      */
     public static void checkState(boolean expression, @Nullable Object errorMessage) {
@@ -188,9 +187,9 @@ public final class Preconditions {
     /**
      * Ensures that an object reference passed as a parameter to the calling method is not null.
      *
-     * @param reference an object reference
+     * @param reference    an object reference
      * @param errorMessage the exception message to use if the check fails; will be converted to a
-     *     string using {@link String#valueOf(Object)}
+     *                     string using {@link String#valueOf(Object)}
      * @return the non-null reference that was validated
      * @throws NullPointerException if {@code reference} is null
      */
@@ -234,10 +233,10 @@ public final class Preconditions {
      * {@code size}. An element index may range from zero, inclusive, to {@code size}, exclusive.
      *
      * @param index a user-supplied index identifying an element of an array, list or string
-     * @param size the size of that array, list or string
+     * @param size  the size of that array, list or string
      * @return the value of {@code index}
      * @throws IndexOutOfBoundsException if {@code index} is negative or is not less than {@code size}
-     * @throws IllegalArgumentException if {@code size} is negative
+     * @throws IllegalArgumentException  if {@code size} is negative
      */
     public static int checkElementIndex(int index, int size) {
         return checkElementIndex(index, size, "index");
@@ -248,11 +247,11 @@ public final class Preconditions {
      * {@code size}. An element index may range from zero, inclusive, to {@code size}, exclusive.
      *
      * @param index a user-supplied index identifying an element of an array, list or string
-     * @param size the size of that array, list or string
-     * @param desc the text to use to describe this index in an error message
+     * @param size  the size of that array, list or string
+     * @param desc  the text to use to describe this index in an error message
      * @return the value of {@code index}
      * @throws IndexOutOfBoundsException if {@code index} is negative or is not less than {@code size}
-     * @throws IllegalArgumentException if {@code size} is negative
+     * @throws IllegalArgumentException  if {@code size} is negative
      */
     public static int checkElementIndex(int index, int size, @Nullable String desc) {
         // Carefully optimized for execution by hotspot (explanatory comment above)
@@ -264,11 +263,11 @@ public final class Preconditions {
 
     private static String badElementIndex(int index, int size, @Nullable String desc) {
         if (index < 0) {
-            return lenientFormat("%s (%s) must not be negative", desc, index);
+            return "" + desc + " (" + index + ") must not be negative";
         } else if (size < 0) {
             throw new IllegalArgumentException("negative size: " + size);
         } else { // index >= size
-            return lenientFormat("%s (%s) must be less than size (%s)", desc, index, size);
+            return "" + desc + " (" + index + ") must be less than size (" + size + ")";
         }
     }
 
@@ -277,10 +276,10 @@ public final class Preconditions {
      * size {@code size}. A position index may range from zero to {@code size}, inclusive.
      *
      * @param index a user-supplied index identifying a position in an array, list or string
-     * @param size the size of that array, list or string
+     * @param size  the size of that array, list or string
      * @return the value of {@code index}
      * @throws IndexOutOfBoundsException if {@code index} is negative or is greater than {@code size}
-     * @throws IllegalArgumentException if {@code size} is negative
+     * @throws IllegalArgumentException  if {@code size} is negative
      */
     public static int checkPositionIndex(int index, int size) {
         return checkPositionIndex(index, size, "index");
@@ -291,11 +290,11 @@ public final class Preconditions {
      * size {@code size}. A position index may range from zero to {@code size}, inclusive.
      *
      * @param index a user-supplied index identifying a position in an array, list or string
-     * @param size the size of that array, list or string
-     * @param desc the text to use to describe this index in an error message
+     * @param size  the size of that array, list or string
+     * @param desc  the text to use to describe this index in an error message
      * @return the value of {@code index}
      * @throws IndexOutOfBoundsException if {@code index} is negative or is greater than {@code size}
-     * @throws IllegalArgumentException if {@code size} is negative
+     * @throws IllegalArgumentException  if {@code size} is negative
      */
     public static int checkPositionIndex(int index, int size, @Nullable String desc) {
         // Carefully optimized for execution by hotspot (explanatory comment above)
@@ -307,11 +306,11 @@ public final class Preconditions {
 
     private static String badPositionIndex(int index, int size, @Nullable String desc) {
         if (index < 0) {
-            return lenientFormat("%s (%s) must not be negative", desc, index);
+            return "" + desc + " (" + index + ") must not be negative";
         } else if (size < 0) {
             throw new IllegalArgumentException("negative size: " + size);
         } else { // index > size
-            return lenientFormat("%s (%s) must not be greater than size (%s)", desc, index, size);
+            return "" + desc + " (" + index + ") must not be greater than size (" + size + ")";
         }
     }
 
@@ -321,11 +320,11 @@ public final class Preconditions {
      * size}, inclusive.
      *
      * @param start a user-supplied index identifying a starting position in an array, list or string
-     * @param end a user-supplied index identifying an ending position in an array, list or string
-     * @param size the size of that array, list or string
+     * @param end   a user-supplied index identifying an ending position in an array, list or string
+     * @param size  the size of that array, list or string
      * @throws IndexOutOfBoundsException if either index is negative or is greater than {@code size},
-     *     or if {@code end} is less than {@code start}
-     * @throws IllegalArgumentException if {@code size} is negative
+     *                                   or if {@code end} is less than {@code start}
+     * @throws IllegalArgumentException  if {@code size} is negative
      */
     public static void checkPositionIndexes(int start, int end, int size) {
         // Carefully optimized for execution by hotspot (explanatory comment above)
@@ -342,6 +341,6 @@ public final class Preconditions {
             return badPositionIndex(end, size, "end index");
         }
         // end < start
-        return lenientFormat("end index (%s) must not be less than start index (%s)", end, start);
+        return "end index (" + end + ") must not be less than start index (" + start + ")";
     }
 }
