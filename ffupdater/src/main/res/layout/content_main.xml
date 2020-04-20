@@ -69,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="fennecReleaseDownloadButtonClicked"
+                        android:onClick="downloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -184,7 +184,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="fennecBetaDownloadButtonClicked"
+                        android:onClick="downloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -300,7 +300,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="fennecNightlyDownloadButtonClicked"
+                        android:onClick="downloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -415,7 +415,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="firefoxKlarDownloadButtonClicked"
+                        android:onClick="downloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -591,7 +591,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="firefoxFocusDownloadButtonClicked"
+                        android:onClick="downloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -707,7 +707,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="firefoxLiteDownloadButtonClicked"
+                        android:onClick="downloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -821,7 +821,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="fenixDownloadButtonClicked"
+                        android:onClick="downloadButtonClicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />

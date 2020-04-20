@@ -52,10 +52,12 @@ public class MainActivity extends AppCompatActivity {
     private AppUpdate appUpdate;
     private AppInstaller installer;
     private ProgressBar progressBar;
+
     private Map<App, TextView> appVersionTextViews = new HashMap<>();
     private Map<App, ImageButton> appButtons = new HashMap<>();
     private Map<App, CardView> appCards = new HashMap<>();
     private Map<Integer, App> infoButtonIdsToApp = new HashMap<>();
+    private Map<Integer, App> downloadButtonIdsToApp = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -155,6 +157,14 @@ public class MainActivity extends AppCompatActivity {
         infoButtonIdsToApp.put(R.id.firefoxFocusInfoButton, App.FIREFOX_FOCUS);
         infoButtonIdsToApp.put(R.id.firefoxLiteInfoButton, App.FIREFOX_LITE);
         infoButtonIdsToApp.put(R.id.fenixInfoButton, App.FENIX);
+
+        downloadButtonIdsToApp.put(R.id.fennecReleaseDownloadButton, App.FENNEC_RELEASE);
+        downloadButtonIdsToApp.put(R.id.fennecBetaDownloadButton, App.FENNEC_BETA);
+        downloadButtonIdsToApp.put(R.id.fennecNightlyDownloadButton, App.FENNEC_NIGHTLY);
+        downloadButtonIdsToApp.put(R.id.firefoxKlarDownloadButton, App.FIREFOX_KLAR);
+        downloadButtonIdsToApp.put(R.id.firefoxFocusDownloadButton, App.FIREFOX_FOCUS);
+        downloadButtonIdsToApp.put(R.id.firefoxLiteDownloadButton, App.FIREFOX_LITE);
+        downloadButtonIdsToApp.put(R.id.fenixDownloadButton, App.FENIX);
     }
 
     @Override
@@ -321,35 +331,9 @@ public class MainActivity extends AppCompatActivity {
         progressBar.startAnimation(fadeOutAnimation);
     }
 
-    public void fennecReleaseDownloadButtonClicked(View view) {
-        downloadButtonClicked(App.FENNEC_RELEASE);
-    }
 
-    public void fennecBetaDownloadButtonClicked(View view) {
-        downloadButtonClicked(App.FENNEC_BETA);
-    }
 
-    public void fennecNightlyDownloadButtonClicked(View view) {
-        downloadButtonClicked(App.FENNEC_NIGHTLY);
-    }
-
-    public void firefoxKlarDownloadButtonClicked(View view) {
-        downloadButtonClicked(App.FIREFOX_KLAR);
-    }
-
-    public void firefoxFocusDownloadButtonClicked(View view) {
-        downloadButtonClicked(App.FIREFOX_FOCUS);
-    }
-
-    public void firefoxLiteDownloadButtonClicked(View view) {
-        downloadButtonClicked(App.FIREFOX_LITE);
-    }
-
-    public void fenixDownloadButtonClicked(View view) {
-        downloadButtonClicked(App.FENIX);
-    }
-
-    private void downloadButtonClicked(App app) {
+    private void downloadApp(App app) {
         if (!appUpdate.isDownloadUrlCached(app)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
             return;
@@ -363,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context ctxt, Intent intent) {
             Log.d("MainAcitivity", "start installation of apk file");
             long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
-            if (installer.isSignatureOfDownloadedApkCorrect(id)) {
+            if (installer.isSignatureOfDownloadedApkCorrect(getApplicationContext(), id)) {
                 Intent installApp = installer.generateIntentForInstallingApp(id);
                 startActivityForResult(installApp, ACTIVITY_RESULT_INSTALL_APP);
             } else {
@@ -384,7 +368,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void infoButtonClicked(View view) {
+    // Listener
+
+    public void downloadButtonClicked(View view) {
+        App app = Objects.requireNonNull(downloadButtonIdsToApp.get(view.getId()));
+        downloadApp(app);
+    }
+
+    public void infoButtonClicked(View view) {
         App app = Objects.requireNonNull(infoButtonIdsToApp.get(view.getId()));
         new AppInfoDialog(app).show(getSupportFragmentManager(), "app_info_dialog_" + app);
     }
@@ -392,9 +383,9 @@ public class MainActivity extends AppCompatActivity {
     public void addAppButtonClicked(View view) {
         new DownloadNewAppDialog((App app) -> {
             if (appUpdate.isDownloadUrlCached(app)) {
-                downloadButtonClicked(app);
+                downloadApp(app);
             } else {
-                appUpdate.checkUpdateForApp(app, () -> downloadButtonClicked(app));
+                appUpdate.checkUpdateForApp(app, () -> downloadApp(app));
             }
         }).show(getSupportFragmentManager(), "download_new_app");
     }

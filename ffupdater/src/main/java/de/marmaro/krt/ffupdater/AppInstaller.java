@@ -1,11 +1,9 @@
 package de.marmaro.krt.ffupdater;
 
 import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Message;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -13,8 +11,13 @@ import androidx.annotation.NonNull;
 import com.android.apksig.ApkVerifier;
 import com.android.apksig.apk.ApkFormatException;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateEncodingException;
@@ -42,16 +45,17 @@ public class AppInstaller {
         Uri uri = Uri.parse(url);
         DownloadManager.Request request = new DownloadManager.Request(uri);
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-//        request.setTitle() TODO
         long id = downloadManager.enqueue(request);
         downloadApp.put(id, app);
     }
 
-    public boolean isSignatureOfDownloadedApkCorrect(long downloadId) {
+    public boolean isSignatureOfDownloadedApkCorrect(Context context, long downloadId) {
         Uri uri = downloadManager.getUriForDownloadedFile(downloadId);
-        File file = new File(Objects.requireNonNull(uri.getPath()));
+        Log.e(LOG_TAG, "uri: " + uri.getPath());
+        Log.e(LOG_TAG, "uri: " + uri);
         try {
-            ApkVerifier.Result result = new ApkVerifier.Builder(file).build().verify();
+            File copiedApk = copyDownloadedApk(context, uri);
+            ApkVerifier.Result result = new ApkVerifier.Builder(copiedApk).build().verify();
             if (result.isVerified()) {
                 Log.e(LOG_TAG, "APK signature is not verified");
                 return false;
@@ -63,11 +67,32 @@ public class AppInstaller {
             X509Certificate certificate = result.getSignerCertificates().get(0);
             byte[] currentHash = MessageDigest.getInstance("SHA-256").digest(certificate.getEncoded());
             byte[] expectedHash = Objects.requireNonNull(downloadApp.get(downloadId)).getSignatureHash();
+            //noinspection ResultOfMethodCallIgnored
+            copiedApk.delete();
             return MessageDigest.isEqual(expectedHash, currentHash);
         } catch (IOException | ApkFormatException | NoSuchAlgorithmException | CertificateEncodingException e) {
             Log.e(LOG_TAG, "APK signature validation failed due to an exception", e);
             return false;
         }
+    }
+
+    private File copyDownloadedApk(Context context, Uri downloadUri) throws IOException {
+        File copiedApk = File.createTempFile("appcopy", "apk", context.getCacheDir());
+        copiedApk.deleteOnExit();
+
+        try (InputStream downloadStream = context.getContentResolver().openInputStream(downloadUri);
+             InputStream input = new BufferedInputStream(Objects.requireNonNull(downloadStream));
+             OutputStream output = new BufferedOutputStream(new FileOutputStream(copiedApk))) {
+            // https://stackoverflow.com/a/10857407
+            byte[] buffer = new byte[4 * 1024]; // or other buffer size
+            int read;
+            while ((read = input.read(buffer)) != -1) {
+                output.write(buffer, 0, read);
+            }
+            output.flush();
+        }
+
+        return copiedApk;
     }
 
     public Intent generateIntentForInstallingApp(long downloadId) {
