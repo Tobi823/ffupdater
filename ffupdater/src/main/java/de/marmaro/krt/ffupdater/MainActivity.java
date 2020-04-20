@@ -35,6 +35,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.base.Preconditions;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -158,8 +159,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         refreshAppVersionDisplay();
         loadAvailableApps();
-
-        Log.e("res", "=" + SignatureValidator.hasInstalledAppValidSignature(getPackageManager(), App.FENNEC_RELEASE));
     }
 
     @Override
@@ -359,25 +358,27 @@ public class MainActivity extends AppCompatActivity {
 
     BroadcastReceiver onComplete = new BroadcastReceiver() {
         public void onReceive(Context ctxt, Intent intent) {
-            Log.e("MainActivity", "broadcast receiver");
+            Log.d("MainAcitivity", "start installation of apk file");
             long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
-            Intent installApp = installer.generateIntentForInstallingApp(id);
-            startActivityForResult(installApp, ACTIVITY_RESULT_INSTALL_APP);
+            if (installer.isSignatureOfDownloadedApkCorrect(id)) {
+                Intent installApp = installer.generateIntentForInstallingApp(id);
+                startActivityForResult(installApp, ACTIVITY_RESULT_INSTALL_APP);
+            } else {
+                Log.e("MainActivity", "TODO - signature failed");
+                //TODO
+            }
         }
     };
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == ACTIVITY_RESULT_INSTALL_APP) {
-
+            Log.d("MainAcitivity", "delete downloaded apk file");
+            long downloadId = Objects.requireNonNull(data).getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+            Preconditions.checkArgument(downloadId != -1);
+            installer.deleteDownloadedFile(downloadId);
         }
-        Log.e("result", "req: " + requestCode + " result: " + resultCode);
-    }
-
-    private void installApp() {
-
     }
 
     public void fennecReleaseInfoButtonClicked(View view) {
