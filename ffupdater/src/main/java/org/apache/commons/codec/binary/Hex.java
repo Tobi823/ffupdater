@@ -77,29 +77,6 @@ public class Hex {
     }
 
     /**
-     * Convert the byte buffer to a byte array. All bytes identified by
-     * {@link ByteBuffer#remaining()} will be used.
-     *
-     * @param byteBuffer the byte buffer
-     * @return the byte[]
-     */
-    private static byte[] toByteArray(final ByteBuffer byteBuffer) {
-        final int remaining = byteBuffer.remaining();
-        // Use the underlying buffer if possible
-        if (byteBuffer.hasArray()) {
-            final byte[] byteArray = byteBuffer.array();
-            if (remaining == byteArray.length) {
-                byteBuffer.position(remaining);
-                return byteArray;
-            }
-        }
-        // Copy the bytes
-        final byte[] byteArray = new byte[remaining];
-        byteBuffer.get(byteArray);
-        return byteArray;
-    }
-
-    /**
      * Converts a hexadecimal character to an integer.
      *
      * @param ch    A character to convert to an integer digit
