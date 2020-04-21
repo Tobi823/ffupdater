@@ -31,15 +31,23 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.common.base.Preconditions;
 
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
 
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
 import de.marmaro.krt.ffupdater.dialog.FetchDownloadUrlDialog;
+import de.marmaro.krt.ffupdater.download.TLSSocketFactory;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
@@ -63,23 +71,41 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-
-        initUI();
-
-        // starts the repeated update check
-        NotificationCreator.register(this);
-
         if (BuildConfig.DEBUG) {
             enableDebugStrictMode();
         } else {
             enableReleaseStrictMode();
         }
 
+        enableTLSv12IfNecessary();
+        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        initUI();
+        NotificationCreator.register(this);
+
         appUpdate = AppUpdate.updateCheck(getPackageManager());
         installer = new AppInstaller((DownloadManager) Objects.requireNonNull(getSystemService(DOWNLOAD_SERVICE)));
 
         loadAvailableApps();
+    }
+
+    /**
+     * Try to enable TLSv1.2 if necessary. TLSv1.2 is available since API 16 but not always enabled
+     * on older devices.
+     * - Github:  TLSv1.2+ (https://www.ssllabs.com/ssltest/analyze.html?d=api.github.com 21.04.2020)
+     * - Mozilla: TLSv1.0+ (https://www.ssllabs.com/ssltest/analyze.html?d=download%2dinstaller.cdn.mozilla.net&latest 21.04.2020)
+     * Source: https://stackoverflow.com/a/42856460
+     */
+    private void enableTLSv12IfNecessary() {
+        try {
+            List<String> protocols = Arrays.asList(SSLContext.getDefault().getDefaultSSLParameters().getProtocols());
+            if (protocols.contains("TLSv1.2") || protocols.contains("TLSv1.3")) {
+                return;
+            }
+            Log.d("MainAcitivity", "Device doesn't support TLSv1.2 or TLSv1.3 - try to enable these protocols");
+            HttpsURLConnection.setDefaultSSLSocketFactory(new TLSSocketFactory());
+        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
+            Log.e("MainActivity", "Can't enable TLSv1.2", e);
+        }
     }
 
     private void enableDebugStrictMode() {

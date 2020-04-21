@@ -26,15 +26,6 @@ class GsonApiConsumer {
 
     @Nullable
     static <T> T consume(String url, Class<T> clazz) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            try {
-                HttpsURLConnection.setDefaultSSLSocketFactory(new TLSSocketFactory());
-            } catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
-                Log.e(TAG, "fail to enable TSLv1.2 necessary for Github", e);
-                return null;
-            }
-        }
-
         HttpsURLConnection urlConnection = null;
         try {
             urlConnection = (HttpsURLConnection) new URL(url).openConnection();
