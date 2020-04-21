@@ -124,15 +124,16 @@ class FileInstaller implements InstallerInterface {
         try {
             ApkVerifier.Result result = new ApkVerifier.Builder(file).build().verify();
             if (!result.isVerified() || result.containsErrors()) {
-                Log.e(LOG_TAG, "APK signature is not verified: " + result.getErrors());
+                Log.e(LOG_TAG, "APK certificate is not verified: " + result.getErrors());
                 return false;
             }
             X509Certificate certificate = result.getSignerCertificates().get(0);
             byte[] currentHash = MessageDigest.getInstance("SHA-256").digest(certificate.getEncoded());
             byte[] expectedHash = app.getSignatureHash();
+            Log.i(LOG_TAG, "APK certificate fingerprint SHA-256 is: " + toHexString(currentHash));
             return MessageDigest.isEqual(expectedHash, currentHash);
         } catch (IOException | ApkFormatException | NoSuchAlgorithmException | CertificateEncodingException e) {
-            Log.e(LOG_TAG, "APK signature validation failed due to an exception", e);
+            Log.e(LOG_TAG, "APK certificate fingerprint validation failed due to an exception", e);
             return false;
         }
     }
@@ -143,5 +144,13 @@ class FileInstaller implements InstallerInterface {
         intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
         activity.startActivityForResult(intent, REQUEST_CODE_INSTALL);
+    }
+
+    private static String toHexString(byte[] data) {
+        final StringBuilder builder = new StringBuilder();
+        for (byte b : data) {
+            builder.append(String.format("%02x", b));
+        }
+        return builder.toString();
     }
 }

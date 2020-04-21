@@ -2,16 +2,17 @@ package de.marmaro.krt.ffupdater;
 
 import android.content.pm.PackageManager;
 import android.net.TrafficStats;
+import android.util.Log;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -45,7 +46,7 @@ public class AppUpdate {
     private ExecutorService executorService;
 
     private InstalledApps installedApps;
-    private List<Future> futures = new ArrayList<>();
+    private Queue<Future> futures = new ConcurrentLinkedQueue<>();
     private Map<App, String> versions = new ConcurrentHashMap<>();
     private Map<App, String> downloadUrls = new ConcurrentHashMap<>();
 
@@ -83,7 +84,7 @@ public class AppUpdate {
     public boolean isUpdateAvailable(App app) {
         String availableVersion = versions.get(app);
         String installedVersion = installedApps.getVersionName(app);
-        if (availableVersion == null || installedVersion == null) {
+        if (availableVersion == null) {
             return false; //TODO installedVersion should be notnull
         }
 
@@ -100,10 +101,6 @@ public class AppUpdate {
 
     public void checkUpdatesForInstalledApps(Runnable callback) {
         checkUpdates(installedApps.getInstalledApps(), callback);
-    }
-
-    public void checkUpdatesForAllApps(Runnable callback) {
-        checkUpdates(Arrays.asList(App.values()), callback);
     }
 
     public void checkUpdateForApp(App app, Runnable callback) {
@@ -139,7 +136,10 @@ public class AppUpdate {
 
     private void checkUpdates(List<App> apps, Runnable callback) {
         Objects.requireNonNull(executorService);
-        futures.clear();
+        if (!futures.isEmpty()) {
+            Log.w("AppUpdate", "skip because an update is still pending");
+            return;
+        }
 
         if (apps.contains(FENNEC_RELEASE) ||
                 apps.contains(FENNEC_BETA) ||
@@ -158,11 +158,12 @@ public class AppUpdate {
         }
 
         executorService.submit(() -> {
-            for (Future future : futures) {
+            while (!futures.isEmpty()) {
                 try {
-                    future.get(10, TimeUnit.SECONDS);
+                    futures.element().get(10, TimeUnit.SECONDS);
+                    futures.remove();
                 } catch (ExecutionException | InterruptedException | TimeoutException e) {
-                    e.printStackTrace(); //TODO
+                    Log.e("AppUpdate", "wait too long", e);
                 }
             }
             callback.run();

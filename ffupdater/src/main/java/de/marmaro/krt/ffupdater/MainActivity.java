@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
             hideVersionOfApps();
-            appUpdate.checkUpdatesForInstalledApps(this::refreshUI);
+            appUpdate.checkUpdatesForInstalledApps(() -> runOnUiThread(this::refreshUI));
         } else {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
         }

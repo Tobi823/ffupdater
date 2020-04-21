@@ -8,29 +8,30 @@ import org.apache.commons.codec.binary.ApacheCodecHex;
 
 /**
  * All supported apps.
+ * You can verify the APK certificate fingerprint on https://www.apkmirror.com and other sites.
  */
 public enum App {
     FENNEC_RELEASE(R.string.fennecReleaseTitleText,
             "org.mozilla.firefox",
-            "A7:8B:62:A5:16:5B:44:94:B2:FE:AD:9E:76:A2:80:D2:2D:93:7F:EE:62:51:AE:CE:59:94:46:B2:EA:31:9B:04"),
+            "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"),
     FENNEC_BETA(R.string.fennecBetaTitleText,
             "org.mozilla.firefox_beta",
-            "A7:8B:62:A5:16:5B:44:94:B2:FE:AD:9E:76:A2:80:D2:2D:93:7F:EE:62:51:AE:CE:59:94:46:B2:EA:31:9B:04"),
+            "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"),
     FENNEC_NIGHTLY(R.string.fennecNightlyTitleText,
             "org.mozilla.fennec_aurora",
-            "A7:8B:62:A5:16:5B:44:94:B2:FE:AD:9E:76:A2:80:D2:2D:93:7F:EE:62:51:AE:CE:59:94:46:B2:EA:31:9B:04"),
+            "bc0488838d06f4ca6bf32386daab0dd8ebcf3e7730787459f62fb3cd14a1baaa"),
     FIREFOX_KLAR(R.string.firefoxKlarTitleText,
             "org.mozilla.klar",
-            "62:03:A4:73:BE:36:D6:4E:E3:7F:87:FA:50:0E:DB:C7:9E:AB:93:06:10:AB:9B:9F:A4:CA:7D:5C:1F:1B:4F:FC"),
+            "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"),
     FIREFOX_FOCUS(R.string.firefoxFocusTitleText,
             "org.mozilla.focus",
-            "62:03:A4:73:BE:36:D6:4E:E3:7F:87:FA:50:0E:DB:C7:9E:AB:93:06:10:AB:9B:9F:A4:CA:7D:5C:1F:1B:4F:FC"),
+            "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"),
     FIREFOX_LITE(R.string.firefoxLiteTitleText,
             "org.mozilla.rocket",
-            "86:3A:46:F0:97:39:32:B7:D0:19:9B:54:91:12:74:1C:2D:27:31:AC:72:EA:11:B7:52:3A:A9:0A:11:BF:56:91"),
+            "863a46f0973932b7d0199b549112741c2d2731ac72ea11b7523aa90a11bf5691"),
     FENIX(R.string.fenixTitleText,
             "org.mozilla.fenix",
-            "50:04:77:90:88:E7:F9:88:D5:BC:5C:C5:F8:79:8F:EB:F4:F8:CD:08:4A:1B:2A:46:EF:D4:C8:EE:4A:EA:F2:11");
+            "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211");
 
     private final int titleId;
     private final String packageName;
@@ -39,7 +40,7 @@ public enum App {
     App(int titleId, String packageName, String signatureHash) {
         this.titleId = titleId;
         this.packageName = packageName;
-        this.signatureHash = ApacheCodecHex.decodeHex(signatureHash.replaceAll(":", ""));
+        this.signatureHash = ApacheCodecHex.decodeHex(signatureHash);
     }
 
     public String getTitle(Context context) {
