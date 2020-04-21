@@ -48,6 +48,7 @@ import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
 import de.marmaro.krt.ffupdater.dialog.FetchDownloadUrlDialog;
 import de.marmaro.krt.ffupdater.download.TLSSocketFactory;
+import de.marmaro.krt.ffupdater.installer.FileInstaller;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
