@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int ACTIVITY_RESULT_INSTALL_APP = 301;
 
     private AppUpdate appUpdate;
-    private AppInstaller installer;
+    private FileInstaller installer;
     private ProgressBar progressBar;
 
     private Map<App, TextView> appVersionTextViews = new HashMap<>();
@@ -83,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
         NotificationCreator.register(this);
 
         appUpdate = AppUpdate.updateCheck(getPackageManager());
-        installer = new AppInstaller((DownloadManager) Objects.requireNonNull(getSystemService(DOWNLOAD_SERVICE)));
+        installer = new FileInstaller();
+
+
 
         loadAvailableApps();
     }
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("MainAcitivity", "Device doesn't support TLSv1.2 or TLSv1.3 - try to enable these protocols");
             HttpsURLConnection.setDefaultSSLSocketFactory(new TLSSocketFactory());
         } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
-            Log.e("MainActivity", "Can't enable TLSv1.2", e);
+            throw new RuntimeException("Can't enable TLSv1.2", e);
         }
     }
 
@@ -357,29 +359,29 @@ public class MainActivity extends AppCompatActivity {
         progressBar.startAnimation(fadeOutAnimation);
     }
 
-
-
     private void downloadApp(App app) {
         if (!appUpdate.isDownloadUrlCached(app)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
             return;
         }
 
-        installer.downloadApp(appUpdate.getDownloadUrl(app), app);
+//        installer.downloadApp(appUpdate.getDownloadUrl(app), app);
+        installer.downloadApp(appUpdate.getDownloadUrl(app), app, this);
         Toast.makeText(this, R.string.download_started, Toast.LENGTH_SHORT).show();
     }
 
     BroadcastReceiver onComplete = new BroadcastReceiver() {
         public void onReceive(Context ctxt, Intent intent) {
-            Log.d("MainAcitivity", "start installation of apk file");
-            long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
-            if (installer.isSignatureOfDownloadedApkCorrect(getApplicationContext(), id)) {
-                Intent installApp = installer.generateIntentForInstallingApp(id);
-                startActivityForResult(installApp, ACTIVITY_RESULT_INSTALL_APP);
-            } else {
-                Log.e("MainActivity", "TODO - signature failed");
-                //TODO
-            }
+//            Log.d("MainAcitivity", "start installation of apk file");
+//            long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
+//            if (installer.isSignatureOfDownloadedApkCorrect(getApplicationContext(), id)) {
+//                Log.e("MainActivity", "signature good");
+//                Intent installApp = installer.generateIntentForInstallingApp(id);
+//                startActivityForResult(installApp, ACTIVITY_RESULT_INSTALL_APP);
+//            } else {
+//                Log.e("MainActivity", "TODO - signature failed");
+//                //TODO
+//            }
         }
     };
 
@@ -387,10 +389,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ACTIVITY_RESULT_INSTALL_APP) {
-            Log.d("MainAcitivity", "delete downloaded apk file");
-            long downloadId = Objects.requireNonNull(data).getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-            Preconditions.checkArgument(downloadId != -1);
-            installer.deleteDownloadedFile(downloadId);
+//            Log.d("MainAcitivity", "delete downloaded apk file");
+//            long downloadId = Objects.requireNonNull(data).getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+//            Log.e("MainActivity", "downloadId: " + downloadId);
+//            Preconditions.checkArgument(downloadId != -1);
+//            installer.deleteDownloadedFile(downloadId);
         }
     }
 
