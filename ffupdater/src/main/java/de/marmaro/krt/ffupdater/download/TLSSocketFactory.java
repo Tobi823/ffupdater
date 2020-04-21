@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater.download;
 
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 
 import java.io.IOException;
@@ -11,7 +13,9 @@ import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.List;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -25,10 +29,30 @@ import javax.net.ssl.X509TrustManager;
  */
 public class TLSSocketFactory extends SSLSocketFactory {
 
+    /**
+     * Try to enable TLSv1.2 if necessary. TLSv1.2 is available since API 16 but not always enabled
+     * on older devices.
+     * - Github:  TLSv1.2+ (https://www.ssllabs.com/ssltest/analyze.html?d=api.github.com 21.04.2020)
+     * - Mozilla: TLSv1.0+ (https://www.ssllabs.com/ssltest/analyze.html?d=download%2dinstaller.cdn.mozilla.net&latest 21.04.2020)
+     * Source: https://stackoverflow.com/a/42856460
+     */
+    public static void enableTLSv12IfNecessary() {
+        try {
+            List<String> protocols = Arrays.asList(SSLContext.getDefault().getDefaultSSLParameters().getProtocols());
+            if (protocols.contains("TLSv1.2") || protocols.contains("TLSv1.3")) {
+                return;
+            }
+            Log.d("MainAcitivity", "Device doesn't support TLSv1.2 or TLSv1.3 - try to enable these protocols");
+            HttpsURLConnection.setDefaultSSLSocketFactory(new TLSSocketFactory());
+        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
+            throw new RuntimeException("Can't enable TLSv1.2", e);
+        }
+    }
+
     private SSLSocketFactory delegate;
     private TrustManager[] trustManagers;
 
-    public TLSSocketFactory() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+    private TLSSocketFactory() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
         generateTrustManagers();
         SSLContext context = SSLContext.getInstance("TLS");
         context.init(null, trustManagers, null);

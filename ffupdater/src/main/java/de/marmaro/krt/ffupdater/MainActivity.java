@@ -4,11 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,17 +25,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
 
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
@@ -53,13 +41,14 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int ACTIVITY_RESULT_INSTALL_APP = 301;
-
     private AppUpdate appUpdate;
     private Installer installer;
     private ProgressBar progressBar;
 
-    private Map<App, TextView> appVersionTextViews = new HashMap<>();
+    private ConnectivityManager connectivityManager;
+
+    private Map<App, TextView> availableVersionTextViews = new HashMap<>();
+    private Map<App, TextView> installedVersionTextViews = new HashMap<>();
     private Map<App, ImageButton> appButtons = new HashMap<>();
     private Map<App, CardView> appCards = new HashMap<>();
     private Map<Integer, App> infoButtonIdsToApp = new HashMap<>();
@@ -69,70 +58,69 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (BuildConfig.DEBUG) {
-            enableDebugStrictMode();
-        } else {
-            enableReleaseStrictMode();
-        }
+        connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 
-        enableTLSv12IfNecessary();
+        StrictModeSetup.enable();
+        TLSSocketFactory.enableTLSv12IfNecessary();
         initUI();
         NotificationCreator.register(this);
 
         appUpdate = AppUpdate.updateCheck(getPackageManager());
         installer = new Installer(this);
         installer.onCreate();
-
-        loadAvailableApps();
     }
 
-    /**
-     * Try to enable TLSv1.2 if necessary. TLSv1.2 is available since API 16 but not always enabled
-     * on older devices.
-     * - Github:  TLSv1.2+ (https://www.ssllabs.com/ssltest/analyze.html?d=api.github.com 21.04.2020)
-     * - Mozilla: TLSv1.0+ (https://www.ssllabs.com/ssltest/analyze.html?d=download%2dinstaller.cdn.mozilla.net&latest 21.04.2020)
-     * Source: https://stackoverflow.com/a/42856460
-     */
-    private void enableTLSv12IfNecessary() {
-        try {
-            List<String> protocols = Arrays.asList(SSLContext.getDefault().getDefaultSSLParameters().getProtocols());
-            if (protocols.contains("TLSv1.2") || protocols.contains("TLSv1.3")) {
-                return;
-            }
-            Log.d("MainAcitivity", "Device doesn't support TLSv1.2 or TLSv1.3 - try to enable these protocols");
-            HttpsURLConnection.setDefaultSSLSocketFactory(new TLSSocketFactory());
-        } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
-            throw new RuntimeException("Can't enable TLSv1.2", e);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshUI();
+        fetchAvailableAppVersions();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Fragment fetchDownloadUrlDialog = getSupportFragmentManager().findFragmentByTag(FetchDownloadUrlDialog.TAG);
+        if (fetchDownloadUrlDialog != null) {
+            ((DialogFragment) fetchDownloadUrlDialog).dismiss();
         }
     }
 
-    private void enableDebugStrictMode() {
-        Log.i("MainActivity", "enable StrictMode for local development");
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .permitDiskReads() // for preferences
-                .permitDiskWrites() // for update
-                .permitNetwork() // for checking updates
-                .penaltyLog()
-                .penaltyDeath()
-                .build());
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .penaltyDeath()
-                    .build());
-        }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        installer.onDestroy();
     }
 
-    private void enableReleaseStrictMode() {
-        Log.i("MainActivity", "enable StrictMode for everyday usage to prevent unencrypted data connection");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                    .penaltyDeathOnCleartextNetwork()
-                    .build());
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                alertDialog.setTitle(getString(R.string.about));
+                alertDialog.setMessage(getString(R.string.infobox));
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
+                        (dialog, which) -> dialog.dismiss());
+                alertDialog.show();
+                break;
+            case R.id.action_settings:
+                //start settings activity where we use select firefox product and release type;
+                startActivity(new Intent(this, SettingsActivity.class));
+                break;
         }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        installer.onActivityResult(requestCode, resultCode, data);
     }
 
     private void initUI() {
@@ -144,19 +132,27 @@ public class MainActivity extends AppCompatActivity {
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            loadAvailableApps();
+            fetchAvailableAppVersions();
             swipeRefreshLayout.setRefreshing(false);
         });
 
         progressBar = findViewById(R.id.progress_wheel);
 
-        appVersionTextViews.put(App.FENNEC_RELEASE, (TextView) findViewById(R.id.fennecReleaseAvailableVersion));
-        appVersionTextViews.put(App.FENNEC_BETA, (TextView) findViewById(R.id.fennecBetaAvailableVersion));
-        appVersionTextViews.put(App.FENNEC_NIGHTLY, (TextView) findViewById(R.id.fennecNightlyAvailableVersion));
-        appVersionTextViews.put(App.FIREFOX_KLAR, (TextView) findViewById(R.id.firefoxKlarAvailableVersion));
-        appVersionTextViews.put(App.FIREFOX_FOCUS, (TextView) findViewById(R.id.firefoxFocusAvailableVersion));
-        appVersionTextViews.put(App.FIREFOX_LITE, (TextView) findViewById(R.id.firefoxLiteAvailableVersion));
-        appVersionTextViews.put(App.FENIX, (TextView) findViewById(R.id.fenixAvailableVersion));
+        availableVersionTextViews.put(App.FENNEC_RELEASE, (TextView) findViewById(R.id.fennecReleaseAvailableVersion));
+        availableVersionTextViews.put(App.FENNEC_BETA, (TextView) findViewById(R.id.fennecBetaAvailableVersion));
+        availableVersionTextViews.put(App.FENNEC_NIGHTLY, (TextView) findViewById(R.id.fennecNightlyAvailableVersion));
+        availableVersionTextViews.put(App.FIREFOX_KLAR, (TextView) findViewById(R.id.firefoxKlarAvailableVersion));
+        availableVersionTextViews.put(App.FIREFOX_FOCUS, (TextView) findViewById(R.id.firefoxFocusAvailableVersion));
+        availableVersionTextViews.put(App.FIREFOX_LITE, (TextView) findViewById(R.id.firefoxLiteAvailableVersion));
+        availableVersionTextViews.put(App.FENIX, (TextView) findViewById(R.id.fenixAvailableVersion));
+
+        installedVersionTextViews.put(App.FENNEC_RELEASE, (TextView) findViewById(R.id.fennecReleaseInstalledVersion));
+        installedVersionTextViews.put(App.FENNEC_BETA, (TextView) findViewById(R.id.fennecBetaInstalledVersion));
+        installedVersionTextViews.put(App.FENNEC_NIGHTLY, (TextView) findViewById(R.id.fennecNightlyInstalledVersion));
+        installedVersionTextViews.put(App.FIREFOX_KLAR, (TextView) findViewById(R.id.firefoxKlarInstalledVersion));
+        installedVersionTextViews.put(App.FIREFOX_FOCUS, (TextView) findViewById(R.id.firefoxFocusInstalledVersion));
+        installedVersionTextViews.put(App.FIREFOX_LITE, (TextView) findViewById(R.id.firefoxLiteInstalledVersion));
+        installedVersionTextViews.put(App.FENIX, (TextView) findViewById(R.id.fenixInstalledVersion));
 
         appButtons.put(App.FENNEC_RELEASE, (ImageButton) findViewById(R.id.fennecReleaseDownloadButton));
         appButtons.put(App.FENNEC_BETA, (ImageButton) findViewById(R.id.fennecBetaDownloadButton));
@@ -191,83 +187,24 @@ public class MainActivity extends AppCompatActivity {
         downloadButtonIdsToApp.put(R.id.fenixDownloadButton, App.FENIX);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        refreshAppVersionDisplay();
-        loadAvailableApps();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Fragment fetchDownloadUrlDialog = getSupportFragmentManager().findFragmentByTag(FetchDownloadUrlDialog.TAG);
-        if (fetchDownloadUrlDialog != null) {
-            ((DialogFragment) fetchDownloadUrlDialog).dismiss();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        installer.onDestroy();
-    }
-
-    private void loadAvailableApps() {
-        // https://developer.android.com/training/monitoring-device-state/connectivity-monitoring#java
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
-        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
-            hideVersionOfApps();
-            appUpdate.checkUpdatesForInstalledApps(this::refreshAppVersionDisplay);
-        } else {
-            Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_about:
-                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setTitle(getString(R.string.about));
-                alertDialog.setMessage(getString(R.string.infobox));
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
-                        (dialog, which) -> dialog.dismiss());
-                alertDialog.show();
-                break;
-            case R.id.action_settings:
-                //start settings activity where we use select firefox product and release type;
-                startActivity(new Intent(this, SettingsActivity.class));
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void hideVersionOfApps() {
-        for (App app : App.values()) {
-            Objects.requireNonNull(appVersionTextViews.get(app)).setText("");
-        }
-        progressBar.setVisibility(VISIBLE);
-    }
-
-    public void refreshAppVersionDisplay() {
+    private void refreshUI() {
         for (App app : App.values()) {
             Objects.requireNonNull(appCards.get(app)).setVisibility(appUpdate.isAppInstalled(app) ? VISIBLE : GONE);
-            Objects.requireNonNull(appVersionTextViews.get(app)).setText(appUpdate.getInstalledVersion(app));
+            Objects.requireNonNull(availableVersionTextViews.get(app)).setText(appUpdate.getAvailableVersion(app));
+            Objects.requireNonNull(installedVersionTextViews.get(app)).setText(appUpdate.getInstalledVersion(app));
             Objects.requireNonNull(appButtons.get(app)).setImageResource(appUpdate.isUpdateAvailable(app) ?
                     R.drawable.ic_file_download_orange :
                     R.drawable.ic_file_download_grey
             );
         }
-
         fadeOutProgressBar();
+    }
+
+    private void hideVersionOfApps() {
+        for (App app : App.values()) {
+            Objects.requireNonNull(availableVersionTextViews.get(app)).setText("");
+        }
+        progressBar.setVisibility(VISIBLE);
     }
 
     private void fadeOutProgressBar() {
@@ -292,6 +229,17 @@ public class MainActivity extends AppCompatActivity {
         progressBar.startAnimation(fadeOutAnimation);
     }
 
+    private void fetchAvailableAppVersions() {
+        // https://developer.android.com/training/monitoring-device-state/connectivity-monitoring#java
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
+            hideVersionOfApps();
+            appUpdate.checkUpdatesForInstalledApps(this::refreshUI);
+        } else {
+            Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
+        }
+    }
+
     private void downloadApp(App app) {
         if (!appUpdate.isDownloadUrlCached(app)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
@@ -300,12 +248,6 @@ public class MainActivity extends AppCompatActivity {
 
         installer.installApp(appUpdate.getDownloadUrl(app), app);
         Toast.makeText(this, R.string.download_started, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        installer.onActivityResult(requestCode, resultCode, data);
     }
 
     // Listener
