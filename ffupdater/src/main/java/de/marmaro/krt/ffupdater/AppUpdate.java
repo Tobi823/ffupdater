@@ -125,11 +125,7 @@ public class AppUpdate {
 
     @NotNull
     public String getInstalledVersion(App app) {
-        String version = installedApps.getVersionName(app);
-        if (version == null) {
-            return "";
-        }
-        return version;
+        return installedApps.getVersionName(app);
     }
 
     @NotNull
