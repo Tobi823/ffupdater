@@ -20,6 +20,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import de.marmaro.krt.ffupdater.App;
 
@@ -34,6 +37,7 @@ class FileInstaller implements InstallerInterface {
     public static final int REQUEST_CODE_INSTALL = 401;
 
     private Activity activity;
+    private Queue<File> files = new ConcurrentLinkedQueue<>();
 
     public FileInstaller(Activity activity) {
         this.activity = activity;
@@ -57,22 +61,23 @@ class FileInstaller implements InstallerInterface {
 
         new Thread(() -> {
             File file = download(url, getCacheFolder(activity));
+            Preconditions.checkArgument(files.add(file));
             if (isSignatureOk(file, app)) {
+                Log.d(LOG_TAG, "start installing app");
                 Preconditions.checkArgument(file.exists());
                 install(file, activity);
             } else {
-                Log.e("AppInstaller", "Failed signature check");
-                throw new RuntimeException("aa");
+                Log.e(LOG_TAG, "failed signature check");
+                Preconditions.checkArgument(Objects.requireNonNull(files.poll()).delete());
+                throw new RuntimeException(""); // TODO show better error
             }
-//            Preconditions.checkArgument(file.delete());
         }).start();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_INSTALL) {
-            Log.d(LOG_TAG, "resultCode: " + resultCode);
-            Log.d(LOG_TAG, "data: " + data);
+            Preconditions.checkArgument(Objects.requireNonNull(files.poll()).delete());
         }
     }
 

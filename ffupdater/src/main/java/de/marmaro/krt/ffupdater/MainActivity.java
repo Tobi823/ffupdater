@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
         installer = new Installer(this);
         installer.onCreate();
 
-        Log.e("MainActivity", Uri.parse("https://stackoverflow.com/questions/40653625/uri-parse-always-returns-null-in-unit-test").getScheme());
-
         loadAvailableApps();
     }
 
@@ -307,13 +305,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ACTIVITY_RESULT_INSTALL_APP) {
-//            Log.d("MainAcitivity", "delete downloaded apk file");
-//            long downloadId = Objects.requireNonNull(data).getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-//            Log.e("MainActivity", "downloadId: " + downloadId);
-//            Preconditions.checkArgument(downloadId != -1);
-//            installer.deleteDownloadedFile(downloadId);
-        }
+        installer.onActivityResult(requestCode, resultCode, data);
     }
 
     // Listener

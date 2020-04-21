@@ -23,9 +23,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
-import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import de.marmaro.krt.ffupdater.App;
 
@@ -36,7 +36,10 @@ class SchemeInstaller implements InstallerInterface {
     public static final String LOG_TAG = "SchemeInstaller";
     public static final int REQUEST_CODE_INSTALL = 501;
 
-    private Map<Long, App> downloads = new ConcurrentHashMap<>();
+    private long currentDownloadId = -1;
+    private App currentApp = null;
+    private Queue<File> files = new ConcurrentLinkedQueue<>();
+
     private Activity activity;
     private DownloadManager downloadManager;
 
@@ -58,6 +61,9 @@ class SchemeInstaller implements InstallerInterface {
 
     @Override
     public void installApp(String urlString, App app) {
+        // cleanup previous running or finished downloads
+        downloadManager.remove(currentDownloadId);
+
         Uri uri = Uri.parse(urlString);
         Preconditions.checkArgument("https".equals(uri.getScheme()));
 
@@ -65,15 +71,15 @@ class SchemeInstaller implements InstallerInterface {
         request.setTitle(app.getTitle(activity));
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
 
-        long id = downloadManager.enqueue(request);
-        downloads.put(id, app);
+        currentDownloadId = downloadManager.enqueue(request);
+        currentApp = app;
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_INSTALL) {
-            Log.d(LOG_TAG, "resultCode: " + resultCode);
-            Log.d(LOG_TAG, "data: " + data);
+            downloadManager.remove(currentDownloadId);
+            Preconditions.checkArgument(Objects.requireNonNull(files.poll()).delete());
         }
     }
 
@@ -125,20 +131,27 @@ class SchemeInstaller implements InstallerInterface {
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+        intent.putExtra(DownloadManager.EXTRA_DOWNLOAD_ID, id);
         activity.startActivityForResult(intent, REQUEST_CODE_INSTALL);
     }
 
     private BroadcastReceiver onDownloadComplete = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
-            long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-            Preconditions.checkArgument(id != -1);
-            App app = Objects.requireNonNull(downloads.get(id));
+            long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
+            if (id != currentDownloadId) {
+                // received an older message - skip
+                return;
+            }
+
             File file = createCopyOfDownload(id);
-            if (isSignatureOk(file, app)) {
+            Preconditions.checkArgument(files.add(file));
+            if (isSignatureOk(file, Objects.requireNonNull(currentApp))) {
+                Log.d(LOG_TAG, "start installing app");
                 install(id);
             } else {
-                Log.e("MainActivity", "APK signature is wrong");
-                //TODO
+                Log.e(LOG_TAG, "failed signature check");
+                Preconditions.checkArgument(Objects.requireNonNull(files.poll()).delete());
+                throw new RuntimeException(""); // TODO show better error
             }
         }
     };
