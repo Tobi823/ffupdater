@@ -41,7 +41,7 @@ public class NotificationCreator extends Worker {
     private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
     private static final String WORK_MANAGER_KEY = "update_checker";
 
-    private NotificationCreator(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public NotificationCreator(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
