@@ -29,30 +29,51 @@ import de.marmaro.krt.ffupdater.App;
  * https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/content/InstallApkSessionApi.java
  * https://github.com/f-droid/fdroidclient/blob/ce37822bb7b44c13690d9a86e2c21aac3dd35e5b/app/src/main/java/org/fdroid/fdroid/installer/DefaultInstallerActivity.java
  */
-public class FileInstaller {
-    public static final String LOG_TAG = "AppInstaller";
+class FileInstaller implements InstallerInterface {
+    public static final String LOG_TAG = "FileInstaller";
     public static final int REQUEST_CODE_INSTALL = 401;
 
-    public void downloadApp(String urlString, App app, Activity activity) {
+    private Activity activity;
+
+    public FileInstaller(Activity activity) {
+        this.activity = activity;
+    }
+
+    @Override
+    public void onCreate() {}
+
+    @Override
+    public void onDestroy() {}
+
+    @Override
+    public void installApp(String urlString, App app) {
         URL url;
         try {
             url = new URL(urlString);
         } catch (MalformedURLException e) {
             throw new RuntimeException("Invalid URL for download", e);
         }
+        Preconditions.checkArgument(url.getProtocol().equals("https"));
 
         new Thread(() -> {
             File file = download(url, getCacheFolder(activity));
             if (isSignatureOk(file, app)) {
                 Preconditions.checkArgument(file.exists());
-                Log.e("AppInstaller", "isSignatureOk");
-                install(file, app, activity);
+                install(file, activity);
             } else {
                 Log.e("AppInstaller", "Failed signature check");
                 throw new RuntimeException("aa");
             }
 //            Preconditions.checkArgument(file.delete());
         }).start();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_INSTALL) {
+            Log.d(LOG_TAG, "resultCode: " + resultCode);
+            Log.d(LOG_TAG, "data: " + data);
+        }
     }
 
     /**
@@ -72,7 +93,6 @@ public class FileInstaller {
     }
 
     private File download(URL url, File cacheDir) {
-        Preconditions.checkArgument(url.getProtocol().equals("https"));
         File file;
         try {
             file = File.createTempFile("download", ".apk", cacheDir);
@@ -112,7 +132,7 @@ public class FileInstaller {
         }
     }
 
-    private void install(File file, App app, Activity activity) {
+    private void install(File file, Activity activity) {
         Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
         intent.setData(Uri.fromFile(file));
         intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);

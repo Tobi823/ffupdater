@@ -1,13 +1,10 @@
 package de.marmaro.krt.ffupdater;
 
 import android.app.AlertDialog;
-import android.app.DownloadManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -48,7 +45,7 @@ import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
 import de.marmaro.krt.ffupdater.dialog.FetchDownloadUrlDialog;
 import de.marmaro.krt.ffupdater.download.TLSSocketFactory;
-import de.marmaro.krt.ffupdater.installer.FileInstaller;
+import de.marmaro.krt.ffupdater.installer.Installer;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int ACTIVITY_RESULT_INSTALL_APP = 301;
 
     private AppUpdate appUpdate;
-    private FileInstaller installer;
+    private Installer installer;
     private ProgressBar progressBar;
 
     private Map<App, TextView> appVersionTextViews = new HashMap<>();
@@ -79,14 +76,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         enableTLSv12IfNecessary();
-        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         initUI();
         NotificationCreator.register(this);
 
         appUpdate = AppUpdate.updateCheck(getPackageManager());
-        installer = new FileInstaller();
+        installer = new Installer(this);
+        installer.onCreate();
 
-
+        Log.e("MainActivity", Uri.parse("https://stackoverflow.com/questions/40653625/uri-parse-always-returns-null-in-unit-test").getScheme());
 
         loadAvailableApps();
     }
@@ -215,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(onComplete);
+        installer.onDestroy();
     }
 
     private void loadAvailableApps() {
@@ -275,69 +272,6 @@ public class MainActivity extends AppCompatActivity {
         fadeOutProgressBar();
     }
 
-//    @NonNull
-//    @Override
-//    public Loader<AvailableApps> onCreateLoader(int id, @Nullable Bundle args) {
-//        if (id == AVAILABLE_APPS_LOADER_ID) {
-//            ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText("");
-//            ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText("");
-//            ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText("");
-//            ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText("");
-//            ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText("");
-//            ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText("");
-//            ((TextView) findViewById(R.id.fenixAvailableVersion)).setText("");
-//            progressBar.setVisibility(VISIBLE);
-//
-//            List<App> installedApps = this.installedApps.getInstalledApps();
-//            if (args != null && args.getString(TRIGGER_DOWNLOAD_FOR_APP) != null) {
-//                App appToDownload = App.valueOf(args.getString(TRIGGER_DOWNLOAD_FOR_APP));
-//                args.clear();
-//                return AvailableAppsAsync.checkAvailableAppsAndTriggerDownload(this, installedApps, appToDownload);
-//            }
-//            return AvailableAppsAsync.onlyCheckAvailableApps(this, installedApps);
-//        }
-//        throw new IllegalArgumentException("id is unknown");
-//    }
-//
-//    @Override
-//    public void onLoadFinished(@NonNull Loader<AvailableApps> loader, AvailableApps data) {
-//        availableApps = data;
-//        ((TextView) findViewById(R.id.fennecReleaseAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_RELEASE));
-//        ((TextView) findViewById(R.id.fennecBetaAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_BETA));
-//        ((TextView) findViewById(R.id.fennecNightlyAvailableVersion)).setText(availableApps.getVersionName(App.FENNEC_NIGHTLY));
-//        ((TextView) findViewById(R.id.firefoxKlarAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_KLAR));
-//        ((TextView) findViewById(R.id.firefoxFocusAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_FOCUS));
-//        ((TextView) findViewById(R.id.firefoxLiteAvailableVersion)).setText(availableApps.getVersionName(App.FIREFOX_LITE));
-//        ((TextView) findViewById(R.id.fenixAvailableVersion)).setText(availableApps.getVersionName(App.FENIX));
-//
-//        updateGuiDownloadButtons(R.id.fennecReleaseDownloadButton, App.FENNEC_RELEASE);
-//        updateGuiDownloadButtons(R.id.fennecBetaDownloadButton, App.FENNEC_BETA);
-//        updateGuiDownloadButtons(R.id.fennecNightlyDownloadButton, App.FENNEC_NIGHTLY);
-//        updateGuiDownloadButtons(R.id.firefoxKlarDownloadButton, App.FIREFOX_KLAR);
-//        updateGuiDownloadButtons(R.id.firefoxFocusDownloadButton, App.FIREFOX_FOCUS);
-//        updateGuiDownloadButtons(R.id.firefoxLiteDownloadButton, App.FIREFOX_LITE);
-//        updateGuiDownloadButtons(R.id.fenixDownloadButton, App.FENIX);
-//
-//        if (data.isTriggerDownload()) {
-//            String downloadUrl = data.getDownloadUrl(data.getAppToDownload());
-//            if (downloadUrl.isEmpty()) {
-//                Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
-//            } else {
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setData(Uri.parse(downloadUrl));
-//                startActivity(intent);
-//            }
-//        }
-//
-//        fadeOutProgressBar();
-//    }
-
-//    @Override
-//    public void onLoaderReset(@NonNull Loader<AvailableApps> loader) {
-//        availableApps = null;
-//        progressBar.setVisibility(GONE);
-//    }
-
     private void fadeOutProgressBar() {
         // https://stackoverflow.com/a/12343453
         AlphaAnimation fadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
@@ -366,25 +300,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-//        installer.downloadApp(appUpdate.getDownloadUrl(app), app);
-        installer.downloadApp(appUpdate.getDownloadUrl(app), app, this);
+        installer.installApp(appUpdate.getDownloadUrl(app), app);
         Toast.makeText(this, R.string.download_started, Toast.LENGTH_SHORT).show();
     }
-
-    BroadcastReceiver onComplete = new BroadcastReceiver() {
-        public void onReceive(Context ctxt, Intent intent) {
-//            Log.d("MainAcitivity", "start installation of apk file");
-//            long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
-//            if (installer.isSignatureOfDownloadedApkCorrect(getApplicationContext(), id)) {
-//                Log.e("MainActivity", "signature good");
-//                Intent installApp = installer.generateIntentForInstallingApp(id);
-//                startActivityForResult(installApp, ACTIVITY_RESULT_INSTALL_APP);
-//            } else {
-//                Log.e("MainActivity", "TODO - signature failed");
-//                //TODO
-//            }
-        }
-    };
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
