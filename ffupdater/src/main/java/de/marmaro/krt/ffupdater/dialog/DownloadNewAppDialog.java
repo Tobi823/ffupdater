@@ -15,7 +15,11 @@ import java.util.List;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
+
+import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.AARCH64;
+import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.ARM;
 
 /**
  * Created by Tobiwan on 23.08.2019.
@@ -40,6 +44,14 @@ public class DownloadNewAppDialog extends DialogFragment {
                         case FENNEC_NIGHTLY:
                             showWarning(app);
                             break;
+                        case FIREFOX_KLAR:
+                        case FIREFOX_FOCUS:
+                            if (DeviceABI.getAbi().equals(AARCH64) || DeviceABI.getAbi().equals(ARM)) {
+                                downloadApp(app);
+                            } else {
+                                showUnsupportedAbiWarning(app);
+                            }
+                            break;
                         default:
                             downloadApp(app);
                     }
@@ -50,6 +62,11 @@ public class DownloadNewAppDialog extends DialogFragment {
     private void showWarning(App app) {
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
         new WarningAppDialog(callback, app).show(fragmentManager, WarningAppDialog.TAG);
+    }
+
+    private void showUnsupportedAbiWarning(App app) {
+        FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
+        new UnsupportedAbiDialog().show(fragmentManager, UnsupportedAbiDialog.TAG);
     }
 
     private void downloadApp(App app) {

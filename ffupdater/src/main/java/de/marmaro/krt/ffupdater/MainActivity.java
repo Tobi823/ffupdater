@@ -4,7 +4,10 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +40,7 @@ import de.marmaro.krt.ffupdater.installer.Installer;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
+import static android.os.Build.SUPPORTED_ABIS;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
@@ -68,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
         appUpdate = AppUpdate.updateCheck(getPackageManager());
         installer = new Installer(this);
         installer.onCreate();
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Log.e("MainActivity", TextUtils.join(", ", SUPPORTED_ABIS));
+        }
     }
 
     @Override
