@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.download;
 
-import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -11,12 +10,8 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by Tobiwan on 05.04.2020.
@@ -25,23 +20,21 @@ class GsonApiConsumer {
     private static final String TAG = "ffupdater";
 
     @Nullable
-    static <T> T consume(String url, Class<T> clazz) {
-        HttpsURLConnection urlConnection = null;
+    static <T> T consume(String urlString, Class<T> clazz) {
+        URL url;
         try {
-            urlConnection = (HttpsURLConnection) new URL(url).openConnection();
-            try (InputStream is = urlConnection.getInputStream();
-                 BufferedInputStream buffered = new BufferedInputStream(is);
-                 InputStreamReader reader = new InputStreamReader(buffered)) {
-                Gson gson = new Gson();
-                return gson.fromJson(reader, clazz);
-            }
-        } catch (IOException e) {
-            Log.e(TAG, "can't consume api", e);
+            url = new URL(urlString);
+        } catch (MalformedURLException e) {
+            Log.e(TAG, "Invalid URL for API request", e);
             return null;
-        } finally {
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
+        }
+        try (InputStream raw = url.openStream();
+             BufferedInputStream buffered = new BufferedInputStream(raw);
+             InputStreamReader reader = new InputStreamReader(buffered)) {
+            return new Gson().fromJson(reader, clazz);
+        } catch (IOException e) {
+            Log.e(TAG, "Can't consume API", e);
+            return null;
         }
     }
 }
