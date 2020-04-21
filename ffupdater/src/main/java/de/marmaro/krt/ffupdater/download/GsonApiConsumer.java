@@ -28,9 +28,7 @@ class GsonApiConsumer {
             Log.e(TAG, "Invalid URL for API request", e);
             return null;
         }
-        try (InputStream raw = url.openStream();
-             BufferedInputStream buffered = new BufferedInputStream(raw);
-             InputStreamReader reader = new InputStreamReader(buffered)) {
+        try (InputStreamReader reader = new InputStreamReader(new BufferedInputStream(url.openStream()))) {
             return new Gson().fromJson(reader, clazz);
         } catch (IOException e) {
             Log.e(TAG, "Can't consume API", e);
