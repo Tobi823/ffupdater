@@ -18,7 +18,7 @@ import de.marmaro.krt.ffupdater.R;
 /**
  * Created by Tobiwan on 04.10.2019.
  */
-class WarningAppDialog extends DialogFragment {
+public class WarningAppDialog extends DialogFragment {
     static final String TAG = "warning_app_dialog";
     private final Consumer<App> callback;
     private final App app;
