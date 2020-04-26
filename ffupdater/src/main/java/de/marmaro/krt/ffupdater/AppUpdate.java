@@ -1,8 +1,11 @@
 package de.marmaro.krt.ffupdater;
 
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.net.TrafficStats;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -99,12 +102,12 @@ public class AppUpdate {
         return !availableVersion.contentEquals(installedVersion);
     }
 
-    public void checkUpdatesForInstalledApps(Runnable callback) {
-        checkUpdates(installedApps.getInstalledApps(), callback);
+    public void checkUpdatesForInstalledApps(@Nullable Activity activity, Runnable callback) {
+        checkUpdates(installedApps.getInstalledApps(), activity, callback);
     }
 
-    public void checkUpdateForApp(App app, Runnable callback) {
-        checkUpdates(Collections.singletonList(app), callback);
+    public void checkUpdateForApp(App app, @Nullable Activity activity, Runnable callback) {
+        checkUpdates(Collections.singletonList(app), activity, callback);
     }
 
     @NotNull
@@ -134,7 +137,7 @@ public class AppUpdate {
         return version;
     }
 
-    private void checkUpdates(List<App> apps, Runnable callback) {
+    private void checkUpdates(List<App> apps, @Nullable Activity activity, Runnable callback) {
         Objects.requireNonNull(executorService);
         if (!futures.isEmpty()) {
             Log.w("AppUpdate", "skip because an update is still pending");
@@ -166,7 +169,12 @@ public class AppUpdate {
                     Log.e("AppUpdate", "wait too long", e);
                 }
             }
-            callback.run();
+            // TODO doc that activity must be not null when running on ui thread
+            if (activity == null) {
+                callback.run();
+            } else {
+                activity.runOnUiThread(callback);
+            }
         });
     }
 

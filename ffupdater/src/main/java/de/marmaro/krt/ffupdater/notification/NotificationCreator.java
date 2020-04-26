@@ -97,7 +97,7 @@ public class NotificationCreator extends Worker {
     public Result doWork() {
         Log.d("NotificationCreator", "doWork() executed");
         AppUpdate appUpdate = AppUpdate.updateCheck(getApplicationContext().getPackageManager());
-        appUpdate.checkUpdatesForInstalledApps(() -> {
+        appUpdate.checkUpdatesForInstalledApps(null, () -> {
             if (appUpdate.isUpdateAvailable()) {
                 createNotification();
             }

@@ -6,8 +6,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,9 +14,7 @@ import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -36,17 +32,14 @@ import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
 import de.marmaro.krt.ffupdater.dialog.FetchDownloadUrlDialog;
 import de.marmaro.krt.ffupdater.download.TLSSocketFactory;
-import de.marmaro.krt.ffupdater.installer.Installer;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
-import static android.os.Build.SUPPORTED_ABIS;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
     private AppUpdate appUpdate;
-    private Installer installer;
     private ProgressBar progressBar;
 
     private ConnectivityManager connectivityManager;
@@ -70,13 +63,6 @@ public class MainActivity extends AppCompatActivity {
         NotificationCreator.register(this);
 
         appUpdate = AppUpdate.updateCheck(getPackageManager());
-        installer = new Installer(this);
-        installer.onCreate();
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Log.e("MainActivity", TextUtils.join(", ", SUPPORTED_ABIS));
-        }
     }
 
     @Override
@@ -98,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        installer.onDestroy();
+        appUpdate.shutdown();
     }
 
     @Override
@@ -124,12 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        installer.onActivityResult(requestCode, resultCode, data);
     }
 
     private void initUI() {
@@ -243,20 +223,25 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
             hideVersionOfApps();
-            appUpdate.checkUpdatesForInstalledApps(() -> runOnUiThread(this::refreshUI));
+            appUpdate.checkUpdatesForInstalledApps(this, this::refreshUI);
         } else {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
         }
     }
 
     private void downloadApp(App app) {
-        if (!appUpdate.isDownloadUrlCached(app)) {
-            Snackbar.make(findViewById(R.id.coordinatorLayout), "Cant download app due to a network error.", Snackbar.LENGTH_LONG).show();
-            return;
+        Intent intent;
+        if (Build.VERSION.SDK_INT < 24) {
+            intent = new Intent(this, FileDownloadActivity.class);
+        } else {
+            intent = new Intent(this, SchemeDownloadActivity.class);
         }
-
-        installer.installApp(appUpdate.getDownloadUrl(app), app);
-        Toast.makeText(this, R.string.download_started, Toast.LENGTH_SHORT).show();
+        intent.putExtra(FileDownloadActivity.EXTRA_APP_NAME, app.name());
+        intent.putExtra(FileDownloadActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
+        startActivity(intent);
+//
+//        installer.installApp(appUpdate.getDownloadUrl(app), app);
+//        Toast.makeText(this, R.string.download_started, Toast.LENGTH_SHORT).show();
     }
 
     // Listener
@@ -272,12 +257,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addAppButtonClicked(View view) {
-        new DownloadNewAppDialog((App app) -> {
-            if (appUpdate.isDownloadUrlCached(app)) {
-                downloadApp(app);
-            } else {
-                appUpdate.checkUpdateForApp(app, () -> downloadApp(app));
-            }
-        }).show(getSupportFragmentManager(), "download_new_app");
+        new DownloadNewAppDialog(this::downloadApp).show(getSupportFragmentManager(), "download_new_app");
     }
 }
