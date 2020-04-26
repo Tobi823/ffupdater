@@ -79,4 +79,11 @@ public enum App {
                 throw new RuntimeException("missing switch statement");
         }
     }
+
+    public String getDownloadSource() {
+        if (this == FENNEC_RELEASE || this == FENNEC_BETA || this == FENNEC_NIGHTLY) {
+            return "Mozilla";
+        }
+        return "Github";
+    }
 }

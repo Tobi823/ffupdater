@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.common.base.Preconditions;
 
 import org.apache.commons.codec.binary.ApacheCodecHex;
+import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -93,6 +94,8 @@ public class SchemeDownloadActivity extends AppCompatActivity {
 
     private void hideAllEntries() {
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
+        findViewById(R.id.fetchedUrlSuccess).setVisibility(View.GONE);
+        findViewById(R.id.fetchedUrlFailure).setVisibility(View.GONE);
         findViewById(R.id.downloadFileV1).setVisibility(View.GONE);
         findViewById(R.id.downloadFileV2).setVisibility(View.GONE);
         findViewById(R.id.successfulDownloadedFile).setVisibility(View.GONE);
@@ -104,21 +107,26 @@ public class SchemeDownloadActivity extends AppCompatActivity {
     }
 
     private void fetchUrlForDownload() {
-        if (!downloadUrl.isEmpty()) {
-            downloadApplication();
-            return;
-        }
-
-        if (!appUpdate.getDownloadUrl(app).isEmpty()) {
+        if (!downloadUrl.isEmpty() || appUpdate.getDownloadUrl(app).isEmpty()) {
+            findViewById(R.id.fetchedUrlSuccess).setVisibility(View.VISIBLE);
+            findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(R.string.fetched_url_for_download_successfully, app.getDownloadSource()));
             downloadApplication();
             return;
         }
 
         findViewById(R.id.fetchUrl).setVisibility(View.VISIBLE);
+        findTextViewById(R.id.fetchUrlTextView).setText(getString(R.string.fetch_url_for_download, app.getDownloadSource()));
         appUpdate.checkUpdateForApp(app, this, () -> {
             findViewById(R.id.fetchUrl).setVisibility(View.GONE);
-            downloadUrl = appUpdate.getDownloadUrl(app);
-            downloadApplication();
+            if (appUpdate.isDownloadUrlCached(app)) {
+                findViewById(R.id.fetchedUrlSuccess).setVisibility(View.VISIBLE);
+                findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(R.string.fetched_url_for_download_successfully, app.getDownloadSource()));
+                downloadUrl = appUpdate.getDownloadUrl(app);
+                downloadApplication();
+            } else {
+                findViewById(R.id.fetchedUrlFailure).setVisibility(View.VISIBLE);
+                findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(R.string.fetched_url_for_download_unsuccessfully, app.getDownloadSource()));
+            }
         });
     }
 
@@ -224,6 +232,7 @@ public class SchemeDownloadActivity extends AppCompatActivity {
 
     private void actionDownloadBegin() {
         findViewById(R.id.downloadFileV2).setVisibility(View.VISIBLE);
+        findTextViewById(R.id.downloadFileV2Url).setText(downloadUrl);
     }
 
     private void actionDownloadUpdateProgressBar(int percent) {
@@ -232,26 +241,25 @@ public class SchemeDownloadActivity extends AppCompatActivity {
 
     private void actionDownloadUpdateStatus(int status) {
         runOnUiThread(() -> {
-            switch (status) {
-                case DownloadManager.STATUS_RUNNING:
-                    ((TextView) findViewById(R.id.downloadFileV2Text)).setText("RUNNING");
-                    break;
-                case DownloadManager.STATUS_SUCCESSFUL:
-                    ((TextView) findViewById(R.id.downloadFileV2Text)).setText("SUCCESS");
-                    break;
-                case DownloadManager.STATUS_FAILED:
-                    ((TextView) findViewById(R.id.downloadFileV2Text)).setText("FAILED");
-                    break;
-                case DownloadManager.STATUS_PAUSED:
-                    ((TextView) findViewById(R.id.downloadFileV2Text)).setText("PAUSED");
-                    break;
-                case DownloadManager.STATUS_PENDING:
-                    ((TextView) findViewById(R.id.downloadFileV2Text)).setText("PENDING");
-                    break;
-
-            }
+            String text = getString(R.string.download_application_from, getDownloadStatusAsString(status));
+            findTextViewById(R.id.downloadFileV2Text).setText(text);
         });
+    }
 
+    private String getDownloadStatusAsString(int status) {
+        switch (status) {
+            case DownloadManager.STATUS_RUNNING:
+                return "running";
+            case DownloadManager.STATUS_SUCCESSFUL:
+                return "success";
+            case DownloadManager.STATUS_FAILED:
+                return "failed";
+            case DownloadManager.STATUS_PAUSED:
+                return "paused";
+            case DownloadManager.STATUS_PENDING:
+                return "pending";
+        }
+        return "";
     }
 
     private void actionDownloadFinished() {
@@ -282,5 +290,9 @@ public class SchemeDownloadActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.downloadedFileInvalidActual)).setText(hash);
         ((TextView) findViewById(R.id.downloadedFileInvalidExpected)).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
         findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
+    }
+
+    private TextView findTextViewById(int id) {
+        return findViewById(id);
     }
 }

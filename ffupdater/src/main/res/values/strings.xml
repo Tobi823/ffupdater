@@ -62,4 +62,19 @@
     <string name="firefoxFocusTitleText">Firefox Focus</string>
     <string name="firefoxLiteTitleText">Firefox Lite</string>
     <string name="fenixTitleText">Fenix</string>
+    <string name="fetch_url_for_download">Fetch download url from %1$s</string>
+    <string name="fetched_url_for_download_successfully">Fetched download url from %1$s</string>
+    <string name="fetched_url_for_download_unsuccessfully">Failed to fetch the download url from %1$s</string>
+    <string name="application_installation_was_unsuccessful">Application installation was unsuccessful</string>
+    <string name="application_successful_installed">Application successful installed</string>
+    <string name="back_to_application_overview">Back to application overview</string>
+    <string name="invalid_certificate_fingerprint_explanation">Either an attacker replace the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
+    <string name="but_was">But was:</string>
+    <string name="expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
+    <string name="verification_of_the_application_certificate_failed">Verification of the application certificate FAILED.</string>
+    <string name="sha_256_certificate_fingerprint_of_the_download">SHA-256 certificate fingerprint of the download:</string>
+    <string name="application_certificate_is_successful_verified">Application certificate is successful verified</string>
+    <string name="verify_application_certificate">Verify application certificate</string>
+    <string name="downloaded_application_from">Downloaded application from:</string>
+    <string name="download_application_from">Download application (%1$s)</string>
 </resources>
