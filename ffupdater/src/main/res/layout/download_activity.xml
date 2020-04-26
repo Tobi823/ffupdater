@@ -28,8 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/fetch_url_for_download" />
+                android:text="@string/fetch_url_for_download"
+                android:textStyle="bold" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -51,8 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/fetched_url_for_download_successfully" />
+                android:text="@string/fetched_url_for_download_successfully"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -68,13 +68,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/fetched_url_for_download_unsuccessfully" />
+                android:text="@string/fetched_url_for_download_unsuccessfully"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/downloadFileV1"
+            android:id="@+id/downloadingFileV1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -84,11 +84,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/download_application_from" />
+                android:text="@string/download_application_from"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/downloadingFileV1Url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textIsSelectable="true"
+                android:typeface="monospace" />
 
             <ProgressBar
-                android:id="@+id/downloadFileV1ProgressBar"
+                android:id="@+id/downloadingFileV1ProgressBar"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -97,22 +105,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/downloadFileV2"
+            android:id="@+id/downloadingFileV2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/downloadFileV2Text"
+                android:id="@+id/downloadingFileV2Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/download_application_from" />
+                android:text="@string/download_application_from_with_status"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/downloadFileV2Url"
+                android:id="@+id/downloadingFileV2Url"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -120,7 +128,7 @@
                 android:typeface="monospace" />
 
             <ProgressBar
-                android:id="@+id/downloadFileV2ProgressBar"
+                android:id="@+id/downloadingFileV2ProgressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,7 +137,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/successfulDownloadedFile"
+            android:id="@+id/downloadedFile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -139,11 +147,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/downloaded_application_from" />
+                android:text="@string/downloaded_application_from"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/successfulDownloadedFileUrl"
+                android:id="@+id/downloadedFileUrl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -153,7 +161,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/verifyingDownloadedFile"
+            android:id="@+id/verifyFingerprint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -163,8 +171,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/verify_application_certificate" />
+                android:text="@string/verifying_application_certificate"
+                android:textStyle="bold" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -175,7 +183,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/downloadedFileVerified"
+            android:id="@+id/fingerprintGood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -187,8 +195,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/application_certificate_is_successful_verified" />
+                android:text="@string/application_certificate_is_successful_verified"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -197,7 +205,7 @@
                 android:text="@string/sha_256_certificate_fingerprint_of_the_download" />
 
             <TextView
-                android:id="@+id/downloadedFileVerifiedFingerprint"
+                android:id="@+id/fingerprintGoodHash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -207,7 +215,23 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/downloadedFileInvalid"
+            android:id="@+id/installConfirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/installConfirmationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Install application" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fingerprintBad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -219,8 +243,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/verification_of_the_application_certificate_failed" />
+                android:text="@string/verification_of_the_application_certificate_failed"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -229,7 +253,7 @@
                 android:text="@string/expected_sha_256_certificate_fingerprint" />
 
             <TextView
-                android:id="@+id/downloadedFileInvalidExpected"
+                android:id="@+id/fingerprintBadHashExpected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -243,7 +267,7 @@
                 android:text="@string/but_was" />
 
             <TextView
-                android:id="@+id/downloadedFileInvalidActual"
+                android:id="@+id/fingerprintBadHashActual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -271,15 +295,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/application_successful_installed" />
+                android:text="@string/application_successful_installed"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/installerSuccessButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/back_to_application_overview"/>
+                android:text="@string/back_to_application_overview" />
 
         </LinearLayout>
 
@@ -294,15 +318,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
-                android:text="@string/application_installation_was_unsuccessful" />
+                android:text="@string/application_installation_was_unsuccessful"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/installerFailedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/back_to_application_overview"/>
+                android:text="@string/back_to_application_overview" />
 
         </LinearLayout>
 

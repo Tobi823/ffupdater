@@ -76,5 +76,7 @@
     <string name="application_certificate_is_successful_verified">Application certificate is successful verified</string>
     <string name="verify_application_certificate">Verify application certificate</string>
     <string name="downloaded_application_from">Downloaded application from:</string>
-    <string name="download_application_from">Download application (%1$s)</string>
+    <string name="download_application_from_with_status">Download application (%1$s)</string>
+    <string name="download_application_from">Download application</string>
+    <string name="verifying_application_certificate">Verifying application certificate</string>
 </resources>
