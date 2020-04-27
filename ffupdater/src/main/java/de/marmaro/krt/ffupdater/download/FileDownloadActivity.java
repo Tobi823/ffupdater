@@ -1,12 +1,10 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.download;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Pair;
-
-import androidx.annotation.Nullable;
 
 import com.google.common.base.Preconditions;
 

@@ -1,8 +1,10 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.security;
 
 import android.os.Build;
 import android.os.StrictMode;
 import android.util.Log;
+
+import de.marmaro.krt.ffupdater.BuildConfig;
 
 /**
  * Created by Tobiwan on 21.04.2020.

@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.download;
 
 import android.app.Activity;
 import android.app.DownloadManager;
@@ -14,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.apache.commons.codec.binary.ApacheCodecHex;
 
 import java.util.Objects;
+
+import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.AppUpdate;
+import de.marmaro.krt.ffupdater.R;
 
 /**
  * Created by Tobiwan on 27.04.2020.

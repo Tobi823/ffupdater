@@ -34,8 +34,11 @@ import java.util.Set;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
 import de.marmaro.krt.ffupdater.dialog.FetchDownloadUrlDialog;
+import de.marmaro.krt.ffupdater.download.FileDownloadActivity;
+import de.marmaro.krt.ffupdater.download.SchemeDownloadActivity;
 import de.marmaro.krt.ffupdater.download.TLSSocketFactory;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
+import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 import static android.view.View.GONE;

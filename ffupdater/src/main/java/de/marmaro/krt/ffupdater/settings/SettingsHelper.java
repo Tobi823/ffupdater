@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
-import org.apache.commons.lang3.math.NumberUtils;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +14,7 @@ import de.marmaro.krt.ffupdater.App;
  * Created by Tobiwan on 27.04.2020.
  */
 public class SettingsHelper {
+    private static final int CHECK_INTERVAL_DEFAULT_VALUE = 15;
 
     public static boolean isAutomaticCheck(Context context) {
         return getSharedPreferences(context).getBoolean("disableApps", true);
@@ -23,7 +22,14 @@ public class SettingsHelper {
 
     public static int getCheckInterval(Context context) {
         String checkInterval = getSharedPreferences(context).getString("checkInterval", null);
-        return NumberUtils.toInt(checkInterval, 15);
+        if (checkInterval == null) {
+            return CHECK_INTERVAL_DEFAULT_VALUE;
+        }
+        try {
+            return Integer.parseInt(checkInterval);
+        } catch (final NumberFormatException nfe) {
+            return CHECK_INTERVAL_DEFAULT_VALUE;
+        }
     }
 
     public static Set<App> getDisableApps(Context context) {

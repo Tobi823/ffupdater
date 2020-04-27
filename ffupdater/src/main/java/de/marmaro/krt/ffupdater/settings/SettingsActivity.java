@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -22,6 +23,12 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        NotificationCreator.register(this);
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {

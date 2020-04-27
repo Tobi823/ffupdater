@@ -24,8 +24,8 @@
         <activity
             android:name=".settings.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
-        <activity android:name=".FileDownloadActivity"></activity>
-        <activity android:name=".SchemeDownloadActivity"></activity>
+        <activity android:name=".download.FileDownloadActivity"></activity>
+        <activity android:name=".download.SchemeDownloadActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
