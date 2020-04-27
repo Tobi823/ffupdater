@@ -84,7 +84,6 @@ public class SchemeDownloadActivity extends DownloadActivity {
                     //TODO what to do when failure?
                     if (status == DownloadManager.STATUS_FAILED ||
                             status == DownloadManager.STATUS_SUCCESSFUL) {
-                        Log.e(LOG_TAG, "download ready " + status);
                         return;
                     }
 

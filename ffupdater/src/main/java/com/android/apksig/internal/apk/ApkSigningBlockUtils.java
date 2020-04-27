@@ -18,6 +18,7 @@ package com.android.apksig.internal.apk;
 
 import com.android.apksig.ApkVerifier;
 import com.android.apksig.SigningCertificateLineage;
+import com.android.apksig.Supplier;
 import com.android.apksig.apk.ApkFormatException;
 import com.android.apksig.apk.ApkSigningBlockNotFoundException;
 import com.android.apksig.apk.ApkUtils;
@@ -53,6 +54,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -63,7 +65,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
-import java.util.function.Supplier;
+
 import java.util.stream.Collectors;
 
 public class ApkSigningBlockUtils {
@@ -415,10 +417,14 @@ public class ApkSigningBlockUtils {
             DataSource centralDir,
             DataSource eocd) throws IOException, NoSuchAlgorithmException, DigestException {
         Map<ContentDigestAlgorithm, byte[]> contentDigests = new HashMap<>();
-        Set<ContentDigestAlgorithm> oneMbChunkBasedAlgorithm = digestAlgorithms.stream()
-                .filter(a -> a == ContentDigestAlgorithm.CHUNKED_SHA256 ||
-                             a == ContentDigestAlgorithm.CHUNKED_SHA512)
-                .collect(Collectors.toSet());
+
+        Set<ContentDigestAlgorithm> oneMbChunkBasedAlgorithm = new HashSet<>();
+        if (digestAlgorithms.contains(ContentDigestAlgorithm.CHUNKED_SHA256)) {
+            oneMbChunkBasedAlgorithm.add(ContentDigestAlgorithm.CHUNKED_SHA256);
+        }
+        if (digestAlgorithms.contains(ContentDigestAlgorithm.CHUNKED_SHA512)) {
+            oneMbChunkBasedAlgorithm.add(ContentDigestAlgorithm.CHUNKED_SHA512);
+        }
         computeOneMbChunkContentDigests(
                 executor,
                 oneMbChunkBasedAlgorithm,
@@ -1100,10 +1106,10 @@ public class ApkSigningBlockUtils {
         if (bestSigAlgorithmOnSdkVersion.isEmpty()) {
             throw new NoSupportedSignaturesException("No supported signature");
         }
-        return bestSigAlgorithmOnSdkVersion.values().stream()
-                .sorted((sig1, sig2) -> Integer.compare(
-                        sig1.algorithm.getId(), sig2.algorithm.getId()))
-                .collect(Collectors.toList());
+        List<SupportedSignature> tempList = new ArrayList<>(bestSigAlgorithmOnSdkVersion.values());
+        Collections.sort(tempList, (sig1, sig2) -> Integer.compare(
+                sig1.algorithm.getId(), sig2.algorithm.getId()));
+        return tempList;
     }
 
     public static class NoSupportedSignaturesException extends Exception {
