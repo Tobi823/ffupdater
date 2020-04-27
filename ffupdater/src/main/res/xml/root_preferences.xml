@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Application Update Check">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="automaticCheck"
+            app:title="Automatic in Background" />
+
+        <ListPreference
+            app:defaultValue="15"
+            app:dependency="automaticCheck"
+            app:entries="@array/checkIntervalEntries"
+            app:entryValues="@array/checkIntervalValues"
+            app:key="checkInterval"
+            app:summary="How often should the app check for updates?"
+            app:title="Check Interval"
+            app:useSimpleSummaryProvider="true" />
+
+        <MultiSelectListPreference
+            app:dependency="automaticCheck"
+            app:entries="@array/disabledAppEntries"
+            app:entryValues="@array/disabledAppEntryValues"
+            app:key="disableApps"
+            app:summary="These applications are not automatically checked for updates"
+            app:title="Excluded applications" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
