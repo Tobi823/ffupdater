@@ -24,11 +24,14 @@ import androidx.work.WorkerParameters;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.AppUpdate;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 
@@ -53,11 +56,7 @@ public class NotificationCreator extends Worker {
      * @param context necessary context for accessing default shared preferences and using {@link WorkManager}.
      */
     public static void register(Context context) {
-        String userPref = PreferenceManager.getDefaultSharedPreferences(context)
-                .getString(context.getString(R.string.pref_check_interval), null);
-        int defaultPref = context.getResources().getInteger(R.integer.default_pref_check_interval);
-        int pref = NumberUtils.toInt(userPref, defaultPref);
-        register(context, pref);
+        register(context, SettingsHelper.isAutomaticCheck(context), SettingsHelper.getCheckInterval(context));
     }
 
     /**
@@ -68,8 +67,8 @@ public class NotificationCreator extends Worker {
      * @param context            necessary context using {@link WorkManager}.
      * @param repeatEveryMinutes check for app update every x minutes
      */
-    public static void register(Context context, int repeatEveryMinutes) {
-        if (repeatEveryMinutes <= 0) {
+    public static void register(Context context, boolean automaticCheckInBackground, int repeatEveryMinutes) {
+        if (!automaticCheckInBackground) {
             WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY);
             return;
         }
@@ -97,7 +96,8 @@ public class NotificationCreator extends Worker {
     public Result doWork() {
         Log.d("NotificationCreator", "doWork() executed");
         AppUpdate appUpdate = AppUpdate.updateCheck(getApplicationContext().getPackageManager());
-        appUpdate.checkUpdatesForInstalledApps(null, () -> {
+        Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
+        appUpdate.checkUpdatesForInstalledApps(disableApps, null, () -> {
             if (appUpdate.isUpdateAvailable()) {
                 createNotification();
             }

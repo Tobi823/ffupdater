@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutionException;
@@ -104,6 +105,14 @@ public class AppUpdate {
 
     public void checkUpdatesForInstalledApps(@Nullable Activity activity, Runnable callback) {
         checkUpdates(installedApps.getInstalledApps(), activity, callback);
+    }
+
+    public void checkUpdatesForInstalledApps(Set<App> disabledApps, @Nullable Activity activity, Runnable callback) {
+        List<App> apps = installedApps.getInstalledApps();
+        for (App disabledApp : disabledApps) {
+            apps.remove(disabledApp);
+        }
+        checkUpdates(apps, activity, callback);
     }
 
     public void checkUpdateForApp(App app, @Nullable Activity activity, Runnable callback) {
