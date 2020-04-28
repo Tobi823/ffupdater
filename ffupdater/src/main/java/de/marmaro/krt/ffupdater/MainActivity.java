@@ -19,8 +19,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -33,7 +31,6 @@ import java.util.Set;
 
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
-import de.marmaro.krt.ffupdater.dialog.FetchDownloadUrlDialog;
 import de.marmaro.krt.ffupdater.download.FileDownloadActivity;
 import de.marmaro.krt.ffupdater.download.SchemeDownloadActivity;
 import de.marmaro.krt.ffupdater.download.TLSSocketFactory;
@@ -92,10 +89,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Fragment fetchDownloadUrlDialog = getSupportFragmentManager().findFragmentByTag(FetchDownloadUrlDialog.TAG);
-        if (fetchDownloadUrlDialog != null) {
-            ((DialogFragment) fetchDownloadUrlDialog).dismiss();
-        }
     }
 
     @Override

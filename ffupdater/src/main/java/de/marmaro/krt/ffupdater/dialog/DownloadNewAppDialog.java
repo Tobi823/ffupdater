@@ -72,7 +72,6 @@ public class DownloadNewAppDialog extends DialogFragment {
     private void downloadApp(App app) {
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
         callback.accept(app);
-        new FetchDownloadUrlDialog().show(fragmentManager, FetchDownloadUrlDialog.TAG);
     }
 
     private NotInstalledApps getNotInstalledApps() {

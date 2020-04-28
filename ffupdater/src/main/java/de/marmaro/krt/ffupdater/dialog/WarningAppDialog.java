@@ -45,7 +45,6 @@ public class WarningAppDialog extends DialogFragment {
     private void downloadApp(App app) {
         FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
         callback.accept(app);
-        new FetchDownloadUrlDialog().show(fragmentManager, FetchDownloadUrlDialog.TAG);
     }
 
     private String getText() {
