@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="checkIntervalValues">
+    <string-array name="checkIntervalEntries">
         <item>@string/update_interval_15min</item>
         <item>@string/update_interval_30min</item>
         <item>@string/update_interval_1h</item>
@@ -21,7 +21,7 @@
         <item>@string/update_interval_1m</item>
     </string-array>
 
-    <string-array name="checkIntervalEntries">
+    <string-array name="checkIntervalValues">
         <item>15</item>
         <item>30</item>
         <item>60</item>
