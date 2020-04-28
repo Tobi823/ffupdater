@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.marmaro.krt.ffupdater.App;
@@ -44,6 +45,7 @@ public class InstalledApps {
     /**
      * @return all installed apps.
      */
+    @NonNull
     public List<App> getInstalledApps() {
         List<App> installedApps = new ArrayList<>();
         for (App app : App.values()) {
@@ -57,13 +59,10 @@ public class InstalledApps {
     /**
      * @return all not installed apps.
      */
+    @NonNull
     public List<App> getNotInstalledApps() {
-        List<App> notInstalledApp = new ArrayList<>();
-        for (App app : App.values()) {
-            if (!isInstalled(app)) {
-                notInstalledApp.add(app);
-            }
-        }
-        return notInstalledApp;
+        List<App> apps = new ArrayList<>(Arrays.asList(App.values()));
+        apps.removeAll(getInstalledApps());
+        return apps;
     }
 }
