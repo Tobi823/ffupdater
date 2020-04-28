@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         refreshUI();
-        fetchAvailableAppVersions();
+        fetchUpdates();
 
         Set<String> sets = PreferenceManager.getDefaultSharedPreferences(this).getStringSet("disableApps", null);
         if (sets != null) {
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            fetchAvailableAppVersions();
+            fetchUpdates();
             swipeRefreshLayout.setRefreshing(false);
         });
 
@@ -235,18 +235,21 @@ public class MainActivity extends AppCompatActivity {
         progressBar.startAnimation(fadeOutAnimation);
     }
 
-    private void fetchAvailableAppVersions() {
-        // https://developer.android.com/training/monitoring-device-state/connectivity-monitoring#java
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
-            hideVersionOfApps();
-            appUpdate.checkUpdatesForInstalledApps(this, this::refreshUI);
-        } else {
+    private void fetchUpdates() {
+        if (isNoNetworkConnectionAvailable()) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
+            return;
         }
+        hideVersionOfApps();
+        appUpdate.checkUpdatesForInstalledApps(this, this::refreshUI);
     }
 
     private void downloadApp(App app) {
+        if (isNoNetworkConnectionAvailable()) {
+            Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
+            return;
+        }
+
         Intent intent;
         if (Build.VERSION.SDK_INT < 24) {
             intent = new Intent(this, FileDownloadActivity.class);
@@ -256,9 +259,11 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(FileDownloadActivity.EXTRA_APP_NAME, app.name());
         intent.putExtra(FileDownloadActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
         startActivity(intent);
-//
-//        installer.installApp(appUpdate.getDownloadUrl(app), app);
-//        Toast.makeText(this, R.string.download_started, Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isNoNetworkConnectionAvailable() {
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo == null || !activeNetworkInfo.isConnected();
     }
 
     // Listener
