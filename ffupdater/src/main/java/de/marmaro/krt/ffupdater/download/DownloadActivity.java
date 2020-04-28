@@ -138,6 +138,7 @@ public abstract class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlFailure).setVisibility(View.VISIBLE);
         findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(R.string.fetched_url_for_download_unsuccessfully, app.getDownloadSource()));
+        findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
     }
 
     protected void actionDownloadBegin() {
