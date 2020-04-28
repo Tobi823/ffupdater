@@ -110,7 +110,7 @@ public class SchemeDownloadActivity extends DownloadActivity {
             actionDownloadFinished();
             actionVerifyingSignature();
             copiedFile = createCopyOfDownload(id);
-            Pair<Boolean, String> check = CertificateFingerprint.isSignatureOk(copiedFile, app);
+            Pair<Boolean, String> check = CertificateFingerprint.checkFingerprintOfFile(copiedFile, app);
             Preconditions.checkArgument(copiedFile.delete());
             if (check.first) {
                 actionSignatureGood(check.second);

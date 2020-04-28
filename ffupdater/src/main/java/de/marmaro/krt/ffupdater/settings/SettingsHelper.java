@@ -17,7 +17,7 @@ public class SettingsHelper {
     private static final int CHECK_INTERVAL_DEFAULT_VALUE = 15;
 
     public static boolean isAutomaticCheck(Context context) {
-        return getSharedPreferences(context).getBoolean("disableApps", true);
+        return getSharedPreferences(context).getBoolean("automaticCheck", true);
     }
 
     public static int getCheckInterval(Context context) {

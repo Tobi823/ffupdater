@@ -68,15 +68,18 @@
     <string name="application_installation_was_unsuccessful">Application installation was unsuccessful</string>
     <string name="application_successful_installed">Application successful installed</string>
     <string name="back_to_application_overview">Back to application overview</string>
-    <string name="invalid_certificate_fingerprint_explanation">Either an attacker replace the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
+    <string name="invalid_downloaded_certificate_fingerprint_explanation">Either an attacker replace the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="but_was">But was:</string>
     <string name="expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
-    <string name="verification_of_the_application_certificate_failed">Verification of the application certificate FAILED.</string>
-    <string name="sha_256_certificate_fingerprint_of_the_download">SHA-256 certificate fingerprint of the download:</string>
-    <string name="application_certificate_is_successful_verified">Application certificate is successful verified</string>
+    <string name="downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
+    <string name="sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
+    <string name="downloaded_application_is_verified">Downloaded application is verified</string>
     <string name="verify_application_certificate">Verify application certificate</string>
     <string name="downloaded_application_from">Downloaded application from:</string>
     <string name="download_application_from_with_status">Download application (%1$s)</string>
     <string name="download_application_from">Download application</string>
-    <string name="verifying_application_certificate">Verifying application certificate</string>
+    <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
+    <string name="installed_application_is_verified">Installed application is verified</string>
+    <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
+    <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application is installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
 </resources>

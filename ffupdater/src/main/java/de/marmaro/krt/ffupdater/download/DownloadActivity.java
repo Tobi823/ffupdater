@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import java.util.Objects;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.AppUpdate;
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 
 /**
  * Created by Tobiwan on 27.04.2020.
@@ -110,12 +112,14 @@ public abstract class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.downloadingFileV1).setVisibility(View.GONE);
         findViewById(R.id.downloadingFileV2).setVisibility(View.GONE);
         findViewById(R.id.downloadedFile).setVisibility(View.GONE);
-        findViewById(R.id.verifyFingerprint).setVisibility(View.GONE);
-        findViewById(R.id.fingerprintGood).setVisibility(View.GONE);
-        findViewById(R.id.fingerprintBad).setVisibility(View.GONE);
+        findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
+        findViewById(R.id.fingerprintDownloadGood).setVisibility(View.GONE);
+        findViewById(R.id.fingerprintDownloadBad).setVisibility(View.GONE);
         findViewById(R.id.installConfirmation).setVisibility(View.GONE);
         findViewById(R.id.installerSuccess).setVisibility(View.GONE);
         findViewById(R.id.installerFailed).setVisibility(View.GONE);
+        findViewById(R.id.fingerprintInstalledGood).setVisibility(View.GONE);
+        findViewById(R.id.fingerprintInstalledBad).setVisibility(View.GONE);
     }
 
     protected void actionFetching() {
@@ -193,35 +197,52 @@ public abstract class DownloadActivity extends AppCompatActivity {
     }
 
     protected void actionVerifyingSignature() {
-        runOnUiThread(() -> findViewById(R.id.verifyFingerprint).setVisibility(View.VISIBLE));
+        runOnUiThread(() -> findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.VISIBLE));
     }
 
     protected void actionSignatureGood(String hash) {
         runOnUiThread(() -> {
-            findViewById(R.id.verifyFingerprint).setVisibility(View.GONE);
-            findViewById(R.id.fingerprintGood).setVisibility(View.VISIBLE);
-            findTextViewById(R.id.fingerprintGoodHash).setText(hash);
+            findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
+            findViewById(R.id.fingerprintDownloadGood).setVisibility(View.VISIBLE);
+            findTextViewById(R.id.fingerprintDownloadGoodHash).setText(hash);
             findViewById(R.id.installConfirmation).setVisibility(View.VISIBLE);
         });
     }
 
     protected void actionSignatureBad(String hash) {
         runOnUiThread(() -> {
-            findViewById(R.id.verifyFingerprint).setVisibility(View.GONE);
-            findViewById(R.id.fingerprintBad).setVisibility(View.VISIBLE);
-            findTextViewById(R.id.fingerprintBadHashActual).setText(hash);
-            findTextViewById(R.id.fingerprintBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
+            findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
+            findViewById(R.id.fingerprintDownloadBad).setVisibility(View.VISIBLE);
+            findTextViewById(R.id.fingerprintDownloadBadHashActual).setText(hash);
+            findTextViewById(R.id.fingerprintDownloadBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
             findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
         });
     }
 
     protected void actionInstallationFinished(boolean success) {
-        findViewById(R.id.installConfirmation).setVisibility(View.GONE);
-        if (success) {
-            findViewById(R.id.installerSuccess).setVisibility(View.VISIBLE);
-        } else {
-            findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
-        }
+        runOnUiThread(() -> {
+            findViewById(R.id.installConfirmation).setVisibility(View.GONE);
+            if (success) {
+                findViewById(R.id.installerSuccess).setVisibility(View.VISIBLE);
+                actionVerifyInstalledAppSignature();
+            } else {
+                findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    protected void actionVerifyInstalledAppSignature() {
+        runOnUiThread(() -> {
+            Pair<Boolean, String> validCertificate = CertificateFingerprint.checkFingerprintOfInstalledApp(this, app);
+            if (validCertificate.first) {
+                findViewById(R.id.fingerprintInstalledGood).setVisibility(View.VISIBLE);
+                findTextViewById(R.id.fingerprintInstalledGoodHash).setText(validCertificate.second);
+            } else {
+                findViewById(R.id.fingerprintInstalledBad).setVisibility(View.VISIBLE);
+                findTextViewById(R.id.fingerprintInstalledBadHashActual).setText(validCertificate.second);
+                findTextViewById(R.id.fingerprintInstalledBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
+            }
+        });
     }
 
     protected TextView findTextViewById(int id) {

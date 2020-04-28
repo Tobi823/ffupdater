@@ -58,7 +58,7 @@ public class FileDownloadActivity extends DownloadActivity {
             downloadedFile = downloadFileFromUrl(url, cacheFolder);
             actionDownloadFinished();
             actionVerifyingSignature();
-            Pair<Boolean, String> check = CertificateFingerprint.isSignatureOk(downloadedFile, app);
+            Pair<Boolean, String> check = CertificateFingerprint.checkFingerprintOfFile(downloadedFile, app);
             if (check.first) {
                 actionSignatureGood(check.second);
             } else {

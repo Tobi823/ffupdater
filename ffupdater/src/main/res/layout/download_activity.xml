@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".download.FileDownloadActivity">
+    tools:context=".download.DownloadActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,7 +162,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/verifyFingerprint"
+            android:id="@+id/verifyDownloadFingerprint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -171,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/verifying_application_certificate"
+                android:text="@string/verifying_downloaded_application_certificate"
                 android:textStyle="bold" />
 
             <ProgressBar
@@ -183,7 +184,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/fingerprintGood"
+            android:id="@+id/fingerprintDownloadGood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -195,17 +196,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/application_certificate_is_successful_verified"
+                android:text="@string/downloaded_application_is_verified"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/sha_256_certificate_fingerprint_of_the_download" />
+                android:text="@string/sha_256_certificate_fingerprint" />
 
             <TextView
-                android:id="@+id/fingerprintGoodHash"
+                android:id="@+id/fingerprintDownloadGoodHash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -231,7 +232,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/fingerprintBad"
+            android:id="@+id/fingerprintDownloadBad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -243,7 +244,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/verification_of_the_application_certificate_failed"
+                android:text="@string/downloaded_application_is_not_verified"
                 android:textStyle="bold" />
 
             <TextView
@@ -253,7 +254,7 @@
                 android:text="@string/expected_sha_256_certificate_fingerprint" />
 
             <TextView
-                android:id="@+id/fingerprintBadHashExpected"
+                android:id="@+id/fingerprintDownloadBadHashExpected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -267,7 +268,7 @@
                 android:text="@string/but_was" />
 
             <TextView
-                android:id="@+id/fingerprintBadHashActual"
+                android:id="@+id/fingerprintDownloadBadHashActual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -279,7 +280,93 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:text="@string/invalid_certificate_fingerprint_explanation"
+                android:text="@string/invalid_downloaded_certificate_fingerprint_explanation"
+                android:textIsSelectable="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fingerprintInstalledGood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#a4c639"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/installed_application_is_verified"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/sha_256_certificate_fingerprint" />
+
+            <TextView
+                android:id="@+id/fingerprintInstalledGoodHash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textIsSelectable="true"
+                android:typeface="monospace" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fingerprintInstalledBad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#b80f0a"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/installed_app_is_not_verified"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/expected_sha_256_certificate_fingerprint" />
+
+            <TextView
+                android:id="@+id/fingerprintInstalledBadHashExpected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textIsSelectable="true"
+                android:typeface="monospace" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/but_was" />
+
+            <TextView
+                android:id="@+id/fingerprintInstalledBadHashActual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textIsSelectable="true"
+                android:typeface="monospace" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="@string/invalid_installed_certificate_fingerprint_explanation"
                 android:textIsSelectable="true" />
 
         </LinearLayout>
@@ -332,5 +419,4 @@
 
     </LinearLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
