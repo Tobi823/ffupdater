@@ -112,6 +112,7 @@ public abstract class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.downloadingFileV1).setVisibility(View.GONE);
         findViewById(R.id.downloadingFileV2).setVisibility(View.GONE);
         findViewById(R.id.downloadedFile).setVisibility(View.GONE);
+        findViewById(R.id.downloadFileFailed).setVisibility(View.GONE);
         findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
         findViewById(R.id.fingerprintDownloadGood).setVisibility(View.GONE);
         findViewById(R.id.fingerprintDownloadBad).setVisibility(View.GONE);
@@ -182,6 +183,15 @@ public abstract class DownloadActivity extends AppCompatActivity {
                 return "pending";
         }
         return "";
+    }
+
+    protected void actionDownloadFailed() {
+        runOnUiThread(() -> {
+            findViewById(R.id.downloadingFileV1).setVisibility(View.GONE);
+            findViewById(R.id.downloadFileFailed).setVisibility(View.VISIBLE);
+            findTextViewById(R.id.downloadFileFailedUrl).setText(downloadUrl);
+            findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
+        });
     }
 
     protected void actionDownloadFinished() {

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 
 import com.google.common.base.Preconditions;
@@ -55,7 +56,13 @@ public class FileDownloadActivity extends DownloadActivity {
 
         new Thread(() -> {
             actionDownloadBegin();
-            downloadedFile = downloadFileFromUrl(url, cacheFolder);
+            try {
+                downloadedFile = downloadFileFromUrl(url, cacheFolder);
+            } catch (IOException e) {
+                Log.e(LOG_TAG, "download failed of " + app, e);
+                actionDownloadFailed();
+                return;
+            }
             actionDownloadFinished();
             actionVerifyingSignature();
             Pair<Boolean, String> check = CertificateFingerprint.checkFingerprintOfFile(downloadedFile, app);
@@ -86,14 +93,10 @@ public class FileDownloadActivity extends DownloadActivity {
         return folder;
     }
 
-    private File downloadFileFromUrl(URL url, File cacheDir) {
-        File file;
-        try {
-            file = File.createTempFile("download", ".apk", cacheDir);
-            file.deleteOnExit();
-        } catch (IOException e) {
-            throw new RuntimeException("Can't create temporary file for storing the download", e);
-        }
+    private File downloadFileFromUrl(URL url, File cacheDir) throws IOException {
+        File file = File.createTempFile("download", ".apk", cacheDir);
+        file.deleteOnExit();
+
         // https://www.baeldung.com/java-download-file
         try (BufferedInputStream in = new BufferedInputStream(url.openStream());
              BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
@@ -104,7 +107,10 @@ public class FileDownloadActivity extends DownloadActivity {
             }
             out.flush();
         } catch (IOException e) {
-            throw new RuntimeException("Can't copy download to the temporary file", e);
+            if (file.exists()) {
+                Preconditions.checkArgument(file.delete());
+            }
+            throw e;
         }
         return file;
     }

@@ -81,7 +81,6 @@ public class SchemeDownloadActivity extends DownloadActivity {
                         previousStatus = status;
                         actionDownloadUpdateStatus(status);
                     }
-                    //TODO what to do when failure?
                     if (status == DownloadManager.STATUS_FAILED ||
                             status == DownloadManager.STATUS_SUCCESSFUL) {
                         return;
