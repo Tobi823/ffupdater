@@ -28,10 +28,9 @@ public class AppInfoDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        Context context = Objects.requireNonNull(getContext());
         return new AlertDialog.Builder(getActivity())
-                .setTitle(app.getTitle(context))
-                .setMessage(app.getDescription(context))
+                .setTitle(app.getTitle(requireContext()))
+                .setMessage(app.getDescription(requireContext()))
                 .create();
     }
 }

@@ -2,7 +2,13 @@
 <resources>
     <string name="app_name">FFUpdater</string>
     <!-- TODO update text -->
-    <string name="infobox">This is a simple updater for Firefox. Click the button to send an HTTPS intent to whatever app you use to download, e.g. a installed version of Firefox or any other browser. Depending on your device, you might see multiple options to choose from. Most browsers will show an icon indicating the progress. Once finished, open the resulting apk and choose the installer.  This is not a rather clumsy user experience now, if you feel it clumsy then any help is certainly welcome!</string>
+    <string name="infobox">
+        This is a updater for multiple browsers from Mozilla.
+        Click the plus-button for installation and the down-arrow-button for updating.
+        By down-swiping or reopening the app you can check for new updates.
+        On default the app will check regularly for updates in the background.
+        I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request.
+    </string>
     <string name="installed_version">Installed version:</string>
     <string name="available_version">Available version:</string>
     <string name="checking">(checking…)</string>
