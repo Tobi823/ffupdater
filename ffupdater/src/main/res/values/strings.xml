@@ -89,4 +89,5 @@
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application is installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
     <string name="download_failed">Download failed</string>
+    <string name="download_new_app">Download new app</string>
 </resources>

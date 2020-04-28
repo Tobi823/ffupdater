@@ -1,6 +1,10 @@
 package de.marmaro.krt.ffupdater.download;
 
+import android.net.Uri;
+
 import org.junit.Test;
+
+import java.net.MalformedURLException;
 
 /**
  * Created by Tobiwan on 13.04.2020.
@@ -8,20 +12,8 @@ import org.junit.Test;
 public class Test1 {
 
     @Test
-    public void test1() throws InterruptedException {
-//        assertTrue(true);
-//
-//        AppUpdate appUpdate = new AppUpdate();
-//        appUpdate.setCallback(() -> {
-//            System.out.println("ready");
-//            System.out.println(appUpdate.versions);
-//            System.out.println(appUpdate.versions.size());
-//            System.out.println(appUpdate.downloadUrls);
-//            System.out.println(appUpdate.downloadUrls.size());
-//        });
-//        appUpdate.checkUpdatesForInstalledApps();
-//
-//        Thread.sleep(10000);
-
+    public void test1() throws InterruptedException, MalformedURLException {
+        Uri uri = Uri.parse("ftp://ftp.is.co.za/rfc/rfc1808.txt");
+        System.out.println(uri);
     }
 }

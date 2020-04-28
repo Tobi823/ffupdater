@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.dialog;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -8,13 +7,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
+import androidx.core.util.Pair;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
@@ -34,74 +34,41 @@ public class DownloadNewAppDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        NotInstalledApps notInstalledApps = getNotInstalledApps();
+        Pair<List<App>, CharSequence[]> notInstalledApps = getNotInstalledApps();
         return new AlertDialog.Builder(getActivity())
-                .setTitle("Download new app")
-                .setItems(notInstalledApps.getAppNames(), (dialog, which) -> {
-                    App app = notInstalledApps.getApps().get(which);
+                .setTitle(R.string.download_new_app)
+                .setItems(notInstalledApps.second, (dialog, which) -> {
+                    App app = Objects.requireNonNull(notInstalledApps.first).get(which);
                     switch (app) {
                         case FENNEC_BETA:
                         case FENNEC_NIGHTLY:
-                            showWarning(app);
+                            new WarningAppDialog(callback, app).show(getParentFragmentManager(), WarningAppDialog.TAG);
                             break;
                         case FIREFOX_KLAR:
                         case FIREFOX_FOCUS:
                             if (DeviceABI.getAbi().equals(AARCH64) || DeviceABI.getAbi().equals(ARM)) {
-                                downloadApp(app);
+                                callback.accept(app);
                             } else {
-                                showUnsupportedAbiWarning(app);
+                                new UnsupportedAbiDialog().show(getParentFragmentManager(), UnsupportedAbiDialog.TAG);
                             }
                             break;
                         default:
-                            downloadApp(app);
+                            callback.accept(app);
                     }
                 })
                 .create();
     }
 
-    private void showWarning(App app) {
-        FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
-        new WarningAppDialog(callback, app).show(fragmentManager, WarningAppDialog.TAG);
-    }
-
-    private void showUnsupportedAbiWarning(App app) {
-        FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
-        new UnsupportedAbiDialog().show(fragmentManager, UnsupportedAbiDialog.TAG);
-    }
-
-    private void downloadApp(App app) {
-        FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
-        callback.accept(app);
-    }
-
-    private NotInstalledApps getNotInstalledApps() {
-        Activity activity = Objects.requireNonNull(getActivity());
-        InstalledApps detector = new InstalledApps(activity.getPackageManager());
+    @NonNull
+    private Pair<List<App>, CharSequence[]> getNotInstalledApps() {
+        InstalledApps detector = new InstalledApps(requireActivity().getPackageManager());
         List<App> notInstalledApps = detector.getNotInstalledApps();
 
         int appsCount = notInstalledApps.size();
         CharSequence[] appNames = new CharSequence[appsCount];
         for (int i = 0; i < appsCount; i++) {
-            appNames[i] = notInstalledApps.get(i).getTitle(activity);
+            appNames[i] = notInstalledApps.get(i).getTitle(requireActivity());
         }
-        return new NotInstalledApps(notInstalledApps, appNames);
-    }
-
-    private static class NotInstalledApps {
-        private final List<App> apps;
-        private final CharSequence[] appNames;
-
-        NotInstalledApps(List<App> apps, CharSequence[] appNames) {
-            this.apps = apps;
-            this.appNames = appNames;
-        }
-
-        List<App> getApps() {
-            return apps;
-        }
-
-        CharSequence[] getAppNames() {
-            return appNames;
-        }
+        return new Pair<>(notInstalledApps, appNames);
     }
 }
