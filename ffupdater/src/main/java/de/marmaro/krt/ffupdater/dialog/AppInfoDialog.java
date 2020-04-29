@@ -19,6 +19,7 @@ import de.marmaro.krt.ffupdater.R;
  * Created by Tobiwan on 23.08.2019.
  */
 public class AppInfoDialog extends DialogFragment {
+    public static final String TAG = "app_info_dialog";
     private final App app;
 
     public AppInfoDialog(App app) {

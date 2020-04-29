@@ -20,9 +20,9 @@ public class UnsupportedAbiDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         return new AlertDialog.Builder(getActivity())
-                .setTitle("Unsupported device")
-                .setMessage("The selected browser is incompatible with your smartphone's processor. Please select a different browser.")
-                .setNegativeButton("Ok", (dialog, which) -> dialog.dismiss())
+                .setTitle(R.string.unsupported_abi_dialog_title)
+                .setMessage(R.string.unsupported_abi_dialog_message)
+                .setNegativeButton(R.string.ok, (dialog, which) -> dialog.dismiss())
                 .create();
     }
 }

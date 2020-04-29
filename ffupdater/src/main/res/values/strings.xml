@@ -90,4 +90,16 @@
     <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application is installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
     <string name="download_failed">Download failed</string>
     <string name="download_new_app">Download new app</string>
+    <string name="empty" />
+    <string name="mozilla">Mozilla</string>
+    <string name="github">Github</string>
+    <string name="fennec_release_description">This is the default and well-known Firefox browser from Mozilla.\n\nThe app will be downloaded from the official Mozilla API.</string>
+    <string name="fennec_beta_description">This app is a prerelease of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>
+    <string name="fennec_nightly_description">This app is a bleeding edge release of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>
+    <string name="firefox_klar_description">This is a modification of the Firefox browser aimed to increase privacy. Firefox Klar is for Germany, Switzerland and Austria and almost identical to Firefox Focus. Only the name was change to avoid confusion with the magazine \'Focus\'.\n\nThe app will be downloaded from Github - only updates which are released on Github can be downloaded.</string>
+    <string name="firefox_focus_description">This is a modification of the Firefox browser aimed to increase privacy.\n\nThe app will be downloaded from Github - only updates which are released on Github can be downloaded.</string>
+    <string name="firefox_lite_description">Firefox Lite is primary developed for users in Indonesia. The app is very small and supports techniques to reduce (mobile) data consumption.\n\nThe app will be downloaded from Github - only updates which are released on Github can be downloaded.</string>
+    <string name="fenix_description">\'Firefox Preview (internal code name: \'Fenix\') is an all-new browser for Android\'. This app is currently under development and contains more trackers than usual to analyse/improve the app usage.\n\nThe app will be downloaded from Github - only updates which are released on Github can be downloaded.</string>
+    <string name="unsupported_abi_dialog_title">Unsupported device</string>
+    <string name="unsupported_abi_dialog_message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
 </resources>

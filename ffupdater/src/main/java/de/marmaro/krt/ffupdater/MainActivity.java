@@ -30,7 +30,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
-import de.marmaro.krt.ffupdater.dialog.DownloadNewAppDialog;
+import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
 import de.marmaro.krt.ffupdater.download.FileDownloadActivity;
 import de.marmaro.krt.ffupdater.download.SchemeDownloadActivity;
 import de.marmaro.krt.ffupdater.download.TLSSocketFactory;
@@ -268,10 +268,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void infoButtonClicked(View view) {
         App app = Objects.requireNonNull(infoButtonIdsToApp.get(view.getId()));
-        new AppInfoDialog(app).show(getSupportFragmentManager(), "app_info_dialog_" + app);
+        new AppInfoDialog(app).show(getSupportFragmentManager(), AppInfoDialog.TAG);
     }
 
     public void addAppButtonClicked(View view) {
-        new DownloadNewAppDialog(this::downloadApp).show(getSupportFragmentManager(), "download_new_app");
+        new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager(), InstallAppDialog.TAG);
     }
 }

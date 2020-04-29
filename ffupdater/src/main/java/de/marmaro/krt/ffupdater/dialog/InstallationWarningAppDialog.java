@@ -18,13 +18,13 @@ import de.marmaro.krt.ffupdater.R;
 /**
  * Created by Tobiwan on 04.10.2019.
  */
-public class WarningAppDialog extends DialogFragment {
+public class InstallationWarningAppDialog extends DialogFragment {
     static final String TAG = "warning_app_dialog";
-    private final Consumer<App> callback;
+    private final Consumer<App> downloadCallback;
     private final App app;
 
-    WarningAppDialog(Consumer<App> callback, App app) {
-        this.callback = callback;
+    InstallationWarningAppDialog(Consumer<App> callback, App app) {
+        this.downloadCallback = callback;
         this.app = app;
     }
 
@@ -33,28 +33,12 @@ public class WarningAppDialog extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         return new AlertDialog.Builder(getActivity())
                 .setTitle(getString(R.string.switch_to_unsafe_app_title))
-                .setMessage(getText())
+                .setMessage(app.getWarning(requireContext()))
                 .setPositiveButton(getString(R.string.switch_to_unsafe_app_positive_button), (dialog, which) -> {
                     dialog.dismiss();
-                    downloadApp(app);
+                    downloadCallback.accept(app);
                 })
                 .setNegativeButton(getString(R.string.switch_to_unsafe_app_negative_button), (dialog, which) -> dialog.dismiss())
                 .create();
-    }
-
-    private void downloadApp(App app) {
-        FragmentManager fragmentManager = Objects.requireNonNull(getFragmentManager());
-        callback.accept(app);
-    }
-
-    private String getText() {
-        switch (app) {
-            case FENNEC_BETA:
-            case FENNEC_NIGHTLY:
-                return getString(R.string.switch_to_unsafe_fennec_message);
-            case FENIX:
-                return getString(R.string.switch_to_unsafe_fenix_message);
-        }
-        throw new IllegalArgumentException("unsupported app: " + app);
     }
 }
