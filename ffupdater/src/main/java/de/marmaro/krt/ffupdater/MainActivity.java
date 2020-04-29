@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -29,6 +30,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
 import de.marmaro.krt.ffupdater.download.FileDownloadActivity;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     private ConnectivityManager connectivityManager;
+    private PackageManager packageManager;
 
     private Map<App, TextView> availableVersionTextViews = new HashMap<>();
     private Map<App, TextView> installedVersionTextViews = new HashMap<>();
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        packageManager = getPackageManager();
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 
         StrictModeSetup.enable();
@@ -188,9 +192,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void refreshUI() {
         for (App app : App.values()) {
-            Objects.requireNonNull(appCards.get(app)).setVisibility(appUpdate.isAppInstalled(app) ? VISIBLE : GONE);
+            Objects.requireNonNull(appCards.get(app)).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
             Objects.requireNonNull(availableVersionTextViews.get(app)).setText(appUpdate.getAvailableVersion(app));
-            Objects.requireNonNull(installedVersionTextViews.get(app)).setText(appUpdate.getInstalledVersion(app));
+            Objects.requireNonNull(installedVersionTextViews.get(app)).setText(InstalledApps.getVersionName(packageManager, app));
             Objects.requireNonNull(appButtons.get(app)).setImageResource(appUpdate.isUpdateAvailable(app) ?
                     R.drawable.ic_file_download_orange :
                     R.drawable.ic_file_download_grey

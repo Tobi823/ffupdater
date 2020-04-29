@@ -125,19 +125,19 @@ public abstract class DownloadActivity extends AppCompatActivity {
 
     protected void actionFetching() {
         findViewById(R.id.fetchUrl).setVisibility(View.VISIBLE);
-        findTextViewById(R.id.fetchUrlTextView).setText(getString(R.string.fetch_url_for_download, app.getDownloadSource()));
+        findTextViewById(R.id.fetchUrlTextView).setText(getString(R.string.fetch_url_for_download, app.getDownloadSource(this)));
     }
 
     protected void actionFetchSuccessful() {
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlSuccess).setVisibility(View.VISIBLE);
-        findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(R.string.fetched_url_for_download_successfully, app.getDownloadSource()));
+        findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(R.string.fetched_url_for_download_successfully, app.getDownloadSource(this)));
     }
 
     protected void actionFetchUnsuccessful() {
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlFailure).setVisibility(View.VISIBLE);
-        findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(R.string.fetched_url_for_download_unsuccessfully, app.getDownloadSource()));
+        findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(R.string.fetched_url_for_download_unsuccessfully, app.getDownloadSource(this)));
         findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
     }
 

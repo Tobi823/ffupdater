@@ -31,7 +31,7 @@ public class InstallAppDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        List<App> apps = new InstalledApps(requireActivity().getPackageManager()).getNotInstalledApps();
+        List<App> apps = InstalledApps.getNotInstalledApps(requireActivity().getPackageManager());
         CharSequence[] appNames = new CharSequence[apps.size()];
         for (int i = 0; i < appNames.length; i++) {
             appNames[i] = apps.get(i).getTitle(requireContext());

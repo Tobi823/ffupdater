@@ -30,6 +30,7 @@ import de.marmaro.krt.ffupdater.download.FenixVersionFinder;
 import de.marmaro.krt.ffupdater.download.FennecVersionFinder;
 import de.marmaro.krt.ffupdater.download.FirefoxLiteVersionFinder;
 import de.marmaro.krt.ffupdater.download.FocusVersionFinder;
+import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static de.marmaro.krt.ffupdater.App.FENIX;
 import static de.marmaro.krt.ffupdater.App.FENNEC_BETA;
@@ -49,7 +50,7 @@ public class AppUpdate {
     private static final int TRAFFIC_FENIX = 1004;
     private ExecutorService executorService;
 
-    private InstalledApps installedApps;
+    private PackageManager packageManager;
     private Queue<Future> futures = new ConcurrentLinkedQueue<>();
     private Map<App, String> versions = new ConcurrentHashMap<>();
     private Map<App, String> downloadUrls = new ConcurrentHashMap<>();
@@ -57,27 +58,22 @@ public class AppUpdate {
     public static AppUpdate updateCheck(PackageManager packageManager) {
         return new AppUpdate(
                 Executors.newFixedThreadPool(5),
-                new InstalledApps(packageManager));
+                packageManager);
+    }
+
+    private AppUpdate(ExecutorService executorService, PackageManager packageManager) {
+        Objects.requireNonNull(executorService);
+        Objects.requireNonNull(packageManager);
+        this.executorService = executorService;
+        this.packageManager = packageManager;
     }
 
     public void shutdown() {
         executorService.shutdown();
     }
 
-    public AppUpdate(ExecutorService executorService, InstalledApps installedApps) {
-        Objects.requireNonNull(executorService);
-        Objects.requireNonNull(installedApps);
-        this.executorService = executorService;
-        this.installedApps = installedApps;
-    }
-
-    public boolean isAppInstalled(App app) {
-        return installedApps.isInstalled(app);
-    }
-
-    // TODO rename
-    public boolean isUpdateAvailable() {
-        for (App app : installedApps.getInstalledApps()) {
+    public boolean areUpdatesForInstalledAppsAvailable() {
+        for (App app : InstalledApps.getInstalledApps(packageManager)) {
             if (isUpdateAvailable(app)) {
                 return true;
             }
@@ -86,32 +82,30 @@ public class AppUpdate {
     }
 
     public boolean isUpdateAvailable(App app) {
-        String availableVersion = versions.get(app);
-        String installedVersion = installedApps.getVersionName(app);
-        if (availableVersion == null) {
-            return false; //TODO installedVersion should be notnull
+        if (!versions.containsKey(app)) {
+            return false;
         }
+        String available = Objects.requireNonNull(versions.get(app));
+        String installed = InstalledApps.getVersionName(packageManager, app);
 
         if (app == FENNEC_BETA) {
-            String sanitizedAvailable = availableVersion.split("b")[0];
-            return !sanitizedAvailable.contentEquals(installedVersion);
+            String sanitizedAvailable = available.split("b")[0];
+            return !sanitizedAvailable.contentEquals(installed);
         }
         if (app == FIREFOX_LITE) {
-            String sanitizedInstalled = installedVersion.split("\\(")[0];
-            return !availableVersion.contentEquals(sanitizedInstalled);
+            String sanitizedInstalled = installed.split("\\(")[0];
+            return !available.contentEquals(sanitizedInstalled);
         }
-        return !availableVersion.contentEquals(installedVersion);
+        return !available.contentEquals(installed);
     }
 
     public void checkUpdatesForInstalledApps(@Nullable Activity activity, Runnable callback) {
-        checkUpdates(installedApps.getInstalledApps(), activity, callback);
+        checkUpdates(InstalledApps.getInstalledApps(packageManager), activity, callback);
     }
 
     public void checkUpdatesForInstalledApps(Set<App> disabledApps, @Nullable Activity activity, Runnable callback) {
-        List<App> apps = installedApps.getInstalledApps();
-        for (App disabledApp : disabledApps) {
-            apps.remove(disabledApp);
-        }
+        List<App> apps = InstalledApps.getInstalledApps(packageManager);
+        apps.removeAll(disabledApps);
         checkUpdates(apps, activity, callback);
     }
 
@@ -121,29 +115,16 @@ public class AppUpdate {
 
     @NotNull
     public String getDownloadUrl(App app) {
-        String downloadUrl = downloadUrls.get(app);
-        if (downloadUrl == null) {
-            return "";
-        }
-        return downloadUrl;
+        return Utils.convertNullToEmptyString(downloadUrls.get(app));
     }
 
     public boolean isDownloadUrlCached(App app) {
-        return !getDownloadUrl(app).isEmpty();
-    }
-
-    @NotNull
-    public String getInstalledVersion(App app) {
-        return installedApps.getVersionName(app);
+        return downloadUrls.containsKey(app);
     }
 
     @NotNull
     public String getAvailableVersion(App app) {
-        String version = versions.get(app);
-        if (version == null) {
-            return "";
-        }
-        return version;
+        return Utils.convertNullToEmptyString(versions.get(app));
     }
 
     private void checkUpdates(List<App> apps, @Nullable Activity activity, Runnable callback) {

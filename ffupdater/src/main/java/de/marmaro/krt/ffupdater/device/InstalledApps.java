@@ -14,19 +14,13 @@ import de.marmaro.krt.ffupdater.App;
  * Detect installed apps and their version names.
  */
 public class InstalledApps {
-    private final PackageManager packageManager;
-
-    public InstalledApps(PackageManager packageManager) {
-        this.packageManager = packageManager;
-    }
-
     /**
      * Get the version name of app. If the app is not installed, an empty string will be returned.
      * @param app
      * @return version name or empty string.
      */
     @NonNull
-    public String getVersionName(App app) {
+    public static String getVersionName(PackageManager packageManager, App app) {
         try {
             return packageManager.getPackageInfo(app.getPackageName(), 0).versionName;
         } catch (PackageManager.NameNotFoundException e) {
@@ -38,18 +32,18 @@ public class InstalledApps {
      * @param app
      * @return if the app is installed or not.
      */
-    public boolean isInstalled(App app) {
-        return !getVersionName(app).isEmpty();
+    public static boolean isInstalled(PackageManager packageManager, App app) {
+        return !getVersionName(packageManager, app).isEmpty();
     }
 
     /**
      * @return all installed apps.
      */
     @NonNull
-    public List<App> getInstalledApps() {
+    public static List<App> getInstalledApps(PackageManager packageManager) {
         List<App> installedApps = new ArrayList<>();
         for (App app : App.values()) {
-            if (isInstalled(app)) {
+            if (isInstalled(packageManager, app)) {
                 installedApps.add(app);
             }
         }
@@ -60,9 +54,9 @@ public class InstalledApps {
      * @return all not installed apps.
      */
     @NonNull
-    public List<App> getNotInstalledApps() {
+    public static List<App> getNotInstalledApps(PackageManager packageManager) {
         List<App> apps = new ArrayList<>(Arrays.asList(App.values()));
-        apps.removeAll(getInstalledApps());
+        apps.removeAll(getInstalledApps(packageManager));
         return apps;
     }
 }

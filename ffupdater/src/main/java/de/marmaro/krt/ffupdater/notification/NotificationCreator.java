@@ -95,7 +95,7 @@ public class NotificationCreator extends Worker {
         AppUpdate appUpdate = AppUpdate.updateCheck(getApplicationContext().getPackageManager());
         Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
         appUpdate.checkUpdatesForInstalledApps(disableApps, null, () -> {
-            if (appUpdate.isUpdateAvailable()) {
+            if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
                 createNotification();
             }
         });
