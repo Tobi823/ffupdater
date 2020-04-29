@@ -64,7 +64,7 @@ public abstract class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.installerFailedButton).setOnClickListener(v -> finish());
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
-        appUpdate = AppUpdate.updateCheck(getPackageManager());
+        appUpdate = AppUpdate.create(getPackageManager());
 
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
         String appName = extras.getString(EXTRA_APP_NAME);
@@ -82,7 +82,7 @@ public abstract class DownloadActivity extends AppCompatActivity {
             return;
         }
 
-        if (appUpdate.isDownloadUrlCached(app)) {
+        if (!appUpdate.getDownloadUrl(app).isEmpty()) {
             downloadUrl = appUpdate.getDownloadUrl(app);
             actionFetchSuccessful();
             downloadApplication();
@@ -91,7 +91,7 @@ public abstract class DownloadActivity extends AppCompatActivity {
 
         actionFetching();
         appUpdate.checkUpdateForApp(app, this, () -> {
-            if (appUpdate.isDownloadUrlCached(app)) {
+            if (!appUpdate.getDownloadUrl(app).isEmpty()) {
                 actionFetchSuccessful();
                 downloadUrl = appUpdate.getDownloadUrl(app);
                 downloadApplication();

@@ -92,7 +92,7 @@ public class NotificationCreator extends Worker {
     @Override
     public Result doWork() {
         Log.d("NotificationCreator", "doWork() executed");
-        AppUpdate appUpdate = AppUpdate.updateCheck(getApplicationContext().getPackageManager());
+        AppUpdate appUpdate = AppUpdate.create(getApplicationContext().getPackageManager());
         Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
         appUpdate.checkUpdatesForInstalledApps(disableApps, null, () -> {
             if (appUpdate.areUpdatesForInstalledAppsAvailable()) {

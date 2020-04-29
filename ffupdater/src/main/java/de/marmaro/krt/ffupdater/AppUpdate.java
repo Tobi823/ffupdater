@@ -55,7 +55,7 @@ public class AppUpdate {
     private Map<App, String> versions = new ConcurrentHashMap<>();
     private Map<App, String> downloadUrls = new ConcurrentHashMap<>();
 
-    public static AppUpdate updateCheck(PackageManager packageManager) {
+    public static AppUpdate create(PackageManager packageManager) {
         return new AppUpdate(
                 Executors.newFixedThreadPool(5),
                 packageManager);
@@ -68,10 +68,17 @@ public class AppUpdate {
         this.packageManager = packageManager;
     }
 
+    /**
+     * Call this method for destructing AppUpdate correctly to avoid memory leaks.
+     */
     public void shutdown() {
         executorService.shutdown();
     }
 
+    /**
+     * Check with {@code isUpdateAvailable} if any installed app is outdated.
+     * @return if one or more installed apps can be updated
+     */
     public boolean areUpdatesForInstalledAppsAvailable() {
         for (App app : InstalledApps.getInstalledApps(packageManager)) {
             if (isUpdateAvailable(app)) {
@@ -81,6 +88,14 @@ public class AppUpdate {
         return false;
     }
 
+    /**
+     * Compare the version name from the installed app with the latest version name from the developer (cached by
+     * {@code checkUpdateForApp} or {@code checkUpdatesForInstalledApps}).
+     * If these two version names are different then the developer has released a new version of the app.
+     *
+     * @param app
+     * @return is a new version of the app available
+     */
     public boolean isUpdateAvailable(App app) {
         if (!versions.containsKey(app)) {
             return false;
@@ -99,29 +114,62 @@ public class AppUpdate {
         return !available.contentEquals(installed);
     }
 
+    /**
+     * Check for updates of installed applications and get the download links for these applications.
+     *
+     * @param activity if null, then the callback will be executed on a Non-Ui-Thread
+     *                 if not null, then the callback will be executed on the Ui-Thread
+     * @param callback will be executed, when the check is ready
+     */
     public void checkUpdatesForInstalledApps(@Nullable Activity activity, Runnable callback) {
         checkUpdates(InstalledApps.getInstalledApps(packageManager), activity, callback);
     }
 
+    /**
+     * Check for updates of installed applications and get the download links for these applications.
+     *
+     * @param disabledApps these apps will be excluded from the check
+     * @param activity     if null, then the callback will be executed on a Non-Ui-Thread
+     *                     if not null, then the callback will be executed on the Ui-Thread
+     * @param callback     will be executed, when the check is ready
+     */
     public void checkUpdatesForInstalledApps(Set<App> disabledApps, @Nullable Activity activity, Runnable callback) {
         List<App> apps = InstalledApps.getInstalledApps(packageManager);
         apps.removeAll(disabledApps);
         checkUpdates(apps, activity, callback);
     }
 
+    /**
+     * Check for update and get the download link for a specific app.
+     *
+     * @param app
+     * @param activity if null, then the callback will be executed on a Non-Ui-Thread
+     *                 if not null, then the callback will be executed on the Ui-Thread
+     * @param callback will be executed, when the check is ready
+     */
     public void checkUpdateForApp(App app, @Nullable Activity activity, Runnable callback) {
         checkUpdates(Collections.singletonList(app), activity, callback);
     }
 
+    /**
+     * If the download url is cached by {@code checkUpdateForApp} or {@code checkUpdatesForInstalledApps} then the url is returned.
+     * If the download url is not cached then an empty string will be returned.
+     *
+     * @param app
+     * @return download url for the app or empty string
+     */
     @NotNull
     public String getDownloadUrl(App app) {
         return Utils.convertNullToEmptyString(downloadUrls.get(app));
     }
 
-    public boolean isDownloadUrlCached(App app) {
-        return downloadUrls.containsKey(app);
-    }
-
+    /**
+     * Return the latest released version name of the app cached by {@code checkUpdateForApp} or {@code checkUpdatesForInstalledApps}.
+     * If the version name is not cached, then an empty string will be returned.
+     *
+     * @param app
+     * @return latest version name from the developers or empty string
+     */
     @NotNull
     public String getAvailableVersion(App app) {
         return Utils.convertNullToEmptyString(versions.get(app));
