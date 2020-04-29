@@ -216,15 +216,15 @@ public class AppUpdate {
 
     private void checkFennec(List<App> appsToCheck) {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
-        Fennec version = Fennec.findLatest();
-        if (!version.isCorrect()) {
+        Fennec fennec = Fennec.findLatest();
+        if (fennec == null) {
             return;
         }
 
         for (App app : Arrays.asList(FENNEC_RELEASE, FENNEC_BETA, FENNEC_NIGHTLY)) {
             if (appsToCheck.contains(app)) {
-                versions.put(app, version.getVersion(app));
-                downloadUrls.put(app, version.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
+                versions.put(app, fennec.getVersion(app));
+                downloadUrls.put(app, fennec.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
             }
         }
     }

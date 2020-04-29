@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.version;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -25,17 +26,16 @@ class Fennec {
     private static final String DOWNLOAD_URL = "https://download.mozilla.org/?product=%s&os=%s&lang=multi";
 
     private Version version;
-    private boolean correct = true;
 
     private Fennec() {
     }
 
+    @Nullable
     static Fennec findLatest() {
         Fennec newObject = new Fennec();
         Version newVersion = GsonApiConsumer.consume(CHECK_URL, Version.class);
         if (newVersion == null) {
-            newObject.correct = false;
-            return newObject;
+            return null;
         }
 
         newObject.version = newVersion;
@@ -59,10 +59,6 @@ class Fennec {
             default:
                 throw new IllegalArgumentException("unsupported app " + app);
         }
-    }
-
-    boolean isCorrect() {
-        return correct;
     }
 
     private String getDownloadProduct(App app) {
