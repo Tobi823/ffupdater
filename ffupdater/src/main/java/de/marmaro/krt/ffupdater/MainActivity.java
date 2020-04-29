@@ -33,8 +33,6 @@ import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
 import de.marmaro.krt.ffupdater.download.AppUpdate;
-import de.marmaro.krt.ffupdater.download.FileDownloadActivity;
-import de.marmaro.krt.ffupdater.download.SchemeDownloadActivity;
 import de.marmaro.krt.ffupdater.download.TLSSocketFactory;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;

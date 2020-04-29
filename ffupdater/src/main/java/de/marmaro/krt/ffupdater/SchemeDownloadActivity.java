@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download;
+package de.marmaro.krt.ffupdater;
 
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;

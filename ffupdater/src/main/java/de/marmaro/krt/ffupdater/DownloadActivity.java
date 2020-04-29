@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download;
+package de.marmaro.krt.ffupdater;
 
 import android.app.Activity;
 import android.app.DownloadManager;
@@ -16,13 +16,12 @@ import org.apache.commons.codec.binary.ApacheCodecHex;
 
 import java.util.Objects;
 
-import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.download.AppUpdate;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 
 /**
- * Base activity for installing apps on older devices with {@code de.marmaro.krt.ffupdater.download.FileDownloadActivity}
- * or on new devices with {@code de.marmaro.krt.ffupdater.download.SchemeDownloadActivity}.
+ * Base activity for installing apps on older devices with {@code de.marmaro.krt.ffupdater.FileDownloadActivity}
+ * or on new devices with {@code de.marmaro.krt.ffupdater.SchemeDownloadActivity}.
  */
 public abstract class DownloadActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_INSTALL = 401;
