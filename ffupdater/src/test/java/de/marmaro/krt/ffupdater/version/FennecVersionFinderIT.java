@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download;
+package de.marmaro.krt.ffupdater.version;
 
 import org.junit.Before;
 import org.junit.Ignore;

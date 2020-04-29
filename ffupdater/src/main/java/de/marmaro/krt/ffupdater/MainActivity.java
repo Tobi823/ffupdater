@@ -32,7 +32,7 @@ import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
-import de.marmaro.krt.ffupdater.download.AppUpdate;
+import de.marmaro.krt.ffupdater.version.AppUpdate;
 import de.marmaro.krt.ffupdater.security.TLSSocketFactory;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;

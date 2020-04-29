@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download;
+package de.marmaro.krt.ffupdater.version;
 
 /**
  * Access the version name and the download url for Firefox Lite from Github.
