@@ -16,8 +16,8 @@ import de.marmaro.krt.ffupdater.App;
 public class InstalledApps {
     /**
      * Get the version name of app. If the app is not installed, an empty string will be returned.
-     * @param packageManager
-     * @param app
+     * @param packageManager packageManager
+     * @param app app
      * @return version name or empty string.
      */
     @NonNull
@@ -30,8 +30,8 @@ public class InstalledApps {
     }
 
     /**
-     * @param packageManager
-     * @param app
+     * @param packageManager packageManager
+     * @param app app
      * @return is app installed
      */
     public static boolean isInstalled(PackageManager packageManager, App app) {
@@ -39,7 +39,7 @@ public class InstalledApps {
     }
 
     /**
-     * @param packageManager
+     * @param packageManager packageManager
      * @return all installed apps
      */
     @NonNull
@@ -54,7 +54,7 @@ public class InstalledApps {
     }
 
     /**
-     * @param packageManager
+     * @param packageManager packageManager
      * @return all not installed apps
      */
     @NonNull
