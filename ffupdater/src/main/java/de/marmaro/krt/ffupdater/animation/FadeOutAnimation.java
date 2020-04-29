@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 import static android.view.View.GONE;
 
 /**
- * Created by Tobiwan on 29.04.2020.
+ * Run the fade out animation and then hide the progress bar.
  */
 public class FadeOutAnimation extends AlphaAnimation {
 

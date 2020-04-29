@@ -40,7 +40,7 @@ public class InstallAppDialog extends DialogFragment {
                 .setTitle(R.string.download_new_app)
                 .setItems(appNames, (dialog, which) -> {
                     App app = apps.get(which);
-                    if (app.getUnsupportedAbis().contains(DeviceABI.getAbi())) {
+                    if (app.getUnsupportedAbis().contains(DeviceABI.getBestSuitedAbi())) {
                         new UnsupportedAbiDialog().show(getParentFragmentManager(), UnsupportedAbiDialog.TAG);
                         return;
                     }

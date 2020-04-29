@@ -225,15 +225,15 @@ public class AppUpdate {
 
         if (appsToCheck.contains(FENNEC_RELEASE)) {
             versions.put(FENNEC_RELEASE, version.getReleaseVersion());
-            downloadUrls.put(FENNEC_RELEASE, FennecVersionFinder.getDownloadUrl(FENNEC_RELEASE, DeviceABI.getAbi()));
+            downloadUrls.put(FENNEC_RELEASE, FennecVersionFinder.getDownloadUrl(FENNEC_RELEASE, DeviceABI.getBestSuitedAbi()));
         }
         if (appsToCheck.contains(FENNEC_BETA)) {
             versions.put(FENNEC_BETA, version.getBetaVersion());
-            downloadUrls.put(FENNEC_BETA, FennecVersionFinder.getDownloadUrl(FENNEC_BETA, DeviceABI.getAbi()));
+            downloadUrls.put(FENNEC_BETA, FennecVersionFinder.getDownloadUrl(FENNEC_BETA, DeviceABI.getBestSuitedAbi()));
         }
         if (appsToCheck.contains(FENNEC_NIGHTLY)) {
             versions.put(FENNEC_NIGHTLY, version.getNightlyVersion());
-            downloadUrls.put(FENNEC_NIGHTLY, FennecVersionFinder.getDownloadUrl(FENNEC_NIGHTLY, DeviceABI.getAbi()));
+            downloadUrls.put(FENNEC_NIGHTLY, FennecVersionFinder.getDownloadUrl(FENNEC_NIGHTLY, DeviceABI.getBestSuitedAbi()));
         }
     }
 
@@ -246,11 +246,11 @@ public class AppUpdate {
 
         if (appsToCheck.contains(FIREFOX_FOCUS)) {
             versions.put(FIREFOX_FOCUS, focusVersionFinder.getVersion());
-            downloadUrls.put(FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(FIREFOX_FOCUS, DeviceABI.getAbi()));
+            downloadUrls.put(FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(FIREFOX_FOCUS, DeviceABI.getBestSuitedAbi()));
         }
         if (appsToCheck.contains(FIREFOX_KLAR)) {
             versions.put(FIREFOX_KLAR, focusVersionFinder.getVersion());
-            downloadUrls.put(FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(FIREFOX_KLAR, DeviceABI.getAbi()));
+            downloadUrls.put(FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(FIREFOX_KLAR, DeviceABI.getBestSuitedAbi()));
         }
     }
 
@@ -273,6 +273,6 @@ public class AppUpdate {
         }
 
         versions.put(FENIX, fenixVersionFinder.getVersion());
-        downloadUrls.put(FENIX, fenixVersionFinder.getDownloadUrl(DeviceABI.getAbi()));
+        downloadUrls.put(FENIX, fenixVersionFinder.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
     }
 }
