@@ -17,7 +17,6 @@ import org.apache.commons.codec.binary.ApacheCodecHex;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.AppUpdate;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 

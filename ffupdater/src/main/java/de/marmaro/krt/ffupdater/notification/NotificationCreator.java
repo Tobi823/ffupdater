@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.AppUpdate;
+import de.marmaro.krt.ffupdater.download.AppUpdate;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;

@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.download;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -24,12 +24,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
-import de.marmaro.krt.ffupdater.download.FenixVersionFinder;
-import de.marmaro.krt.ffupdater.download.FennecVersionFinder;
-import de.marmaro.krt.ffupdater.download.FirefoxLiteVersionFinder;
-import de.marmaro.krt.ffupdater.download.FocusVersionFinder;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static de.marmaro.krt.ffupdater.App.FENIX;
