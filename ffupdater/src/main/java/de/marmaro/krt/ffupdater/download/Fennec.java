@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.download;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -15,7 +14,7 @@ import de.marmaro.krt.ffupdater.utils.Utils;
  * Get the version name and the download link for the latest Fennec release (release, beta, nightly)
  * from the official Mozilla API.
  */
-public class FennecVersionFinder {
+class Fennec {
     private static final String DEFAULT_ABI = "android";
     private static final String X86_ABI = "android-x86";
     private static final String RELEASE_PRODUCT = "fennec-latest";
@@ -28,11 +27,11 @@ public class FennecVersionFinder {
     private Version version;
     private boolean correct = true;
 
-    private FennecVersionFinder() {
+    private Fennec() {
     }
 
-    static FennecVersionFinder findLatest() {
-        FennecVersionFinder newObject = new FennecVersionFinder();
+    static Fennec findLatest() {
+        Fennec newObject = new Fennec();
         Version newVersion = GsonApiConsumer.consume(CHECK_URL, Version.class);
         if (newVersion == null) {
             newObject.correct = false;
@@ -62,7 +61,7 @@ public class FennecVersionFinder {
         }
     }
 
-    public boolean isCorrect() {
+    boolean isCorrect() {
         return correct;
     }
 

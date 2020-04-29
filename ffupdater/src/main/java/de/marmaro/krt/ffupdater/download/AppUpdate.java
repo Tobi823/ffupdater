@@ -216,7 +216,7 @@ public class AppUpdate {
 
     private void checkFennec(List<App> appsToCheck) {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
-        FennecVersionFinder version = FennecVersionFinder.findLatest();
+        Fennec version = Fennec.findLatest();
         if (!version.isCorrect()) {
             return;
         }
