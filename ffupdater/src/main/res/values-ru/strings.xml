@@ -12,8 +12,8 @@
 	<string name="check_available">Проверить доступную версию</string>
 	<string name="download">Загрузить Firefox</string>
 	<string name="download_started">Начато скачивание</string>
-    <string name="update_notification_title">Выпущена новая версия Firefox</string>
-	<string name="update_notification_text">Нажмите, чтобы открыть приложение</string>
+    <string name="notification_title">Выпущена новая версия Firefox</string>
+	<string name="notification_text">Нажмите, чтобы открыть приложение</string>
 	<string name="action_settings">Настройки</string>
 	<string name="about">О программе</string>
 	<string name="not_connected_to_internet">Вы не подключены к интернету</string>

@@ -21,8 +21,8 @@
     <string name="download_started">Download started</string>
     <string name="installed_version_text_format" translatable="false">%s (%d)</string>
     <string name="not_installed_text_format" translatable="false">%s (%s)</string>
-    <string name="update_notification_title">A new Firefox version was released</string>
-    <string name="update_notification_text">Press to open the app</string>
+    <string name="notification_title">A new Firefox version was released</string>
+    <string name="notification_text">Press to open the app</string>
     <string name="action_settings">Settings</string>
     <string name="about">About</string>
     <string name="not_connected_to_internet">No network connection</string>

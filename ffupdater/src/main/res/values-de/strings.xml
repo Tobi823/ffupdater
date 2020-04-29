@@ -13,8 +13,8 @@
     <string name="check_available">Aktuelle Version herausfinden</string>
     <string name="infobox">Diese einfache App aktualisiert Firefox. Klicken Sie den Knopf „Firefox herunterladen“ um die aktuelle Version von Firefox über HTTPS herunterzuladen. Je nach Gerät werden verschiedene Apps angeboten um das Herunterladen durchzuführen. Meist wird der Fortschritt des Herunterladens über ein Icon angezeigt. Nach dem Herunterladen öffnen Sie die APK-Datei und installieren Sie diese.\n\nDieser Prozess ist recht umständlich, daher ist Hilfe bei der Weiterentwicklung dieser App gerne gesehen.</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
-    <string name="update_notification_title">Eine neue Firefox-Version wurde veröffentlicht</string>
-    <string name="update_notification_text">Drücken Sie, um die App zu öffnen</string>
+    <string name="notification_title">Eine neue Firefox-Version wurde veröffentlicht</string>
+    <string name="notification_text">Drücken Sie, um die App zu öffnen</string>
     <string name="action_settings">die Einstellungen</string>
     <string name="about">Über</string>
     <string name="not_installed">Nicht installiert</string>

@@ -113,8 +113,8 @@ public class NotificationCreator extends Worker {
 
         Notification notification = builder.setSmallIcon(R.mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
-                .setContentTitle(context.getString(R.string.update_notification_title))
-                .setContentText(context.getString(R.string.update_notification_text))
+                .setContentTitle(context.getString(R.string.notification_title))
+                .setContentText(context.getString(R.string.notification_text))
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .build();

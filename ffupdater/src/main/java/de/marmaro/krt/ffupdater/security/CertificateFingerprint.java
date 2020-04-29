@@ -28,12 +28,20 @@ import java.security.cert.CertificateFactory;
 import de.marmaro.krt.ffupdater.App;
 
 /**
- * Created by Tobiwan on 26.04.2020.
+ * Validation of downloaded and installed application.
  */
 public class CertificateFingerprint {
     private static final String LOG_TAG = "CertificateFingerprint";
     private static final String SHA_256 = "SHA-256";
 
+    /**
+     * Validate the SHA256 fingerprint of the certificate of the downloaded application as APK file.
+     * apksig: https://android.googlesource.com/platform/tools/apksig/
+     *
+     * @param file APK file
+     * @param app  app
+     * @return the fingerprint of the app and if it matched with the stored fingerprint
+     */
     public static Pair<Boolean, String> checkFingerprintOfFile(File file, App app) {
         try {
             ApkVerifier.Result result = new ApkVerifier.Builder(file).build().verify();
@@ -52,12 +60,13 @@ public class CertificateFingerprint {
     }
 
     /**
+     * Validate the SHA256 fingerprint of the certificate of the installed application.
      * https://stackoverflow.com/a/22506133
      * https://gist.github.com/scottyab/b849701972d57cf9562e
      *
-     * @param context
-     * @param app
-     * @return
+     * @param context context
+     * @param app     app
+     * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
     @SuppressLint("PackageManagerGetSignatures")
     public static Pair<Boolean, String> checkFingerprintOfInstalledApp(Context context, App app) {
