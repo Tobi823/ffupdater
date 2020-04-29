@@ -17,7 +17,7 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by Tobiwan on 05.04.2020.
  */
 class GsonApiConsumer {
-    private static final String TAG = "ffupdater";
+    private static final String LOG_TAG = "ffupdater";
     private static final int TIMEOUT = 5000;
 
     @Nullable
@@ -26,7 +26,7 @@ class GsonApiConsumer {
         try {
             urlConnection = (HttpsURLConnection) new URL(urlString).openConnection();
         } catch (IOException e) {
-            Log.e(TAG, "Can't connect to API interface", e);
+            Log.e(LOG_TAG, "Can't connect to API interface", e);
             return null;
         }
         urlConnection.setConnectTimeout(TIMEOUT);
@@ -34,7 +34,7 @@ class GsonApiConsumer {
         try (InputStreamReader reader = new InputStreamReader(new BufferedInputStream(urlConnection.getInputStream()))) {
             return new Gson().fromJson(reader, clazz);
         } catch (IOException e) {
-            Log.e(TAG, "Can't consume API interface", e);
+            Log.e(LOG_TAG, "Can't consume API interface", e);
             return null;
         } finally {
             urlConnection.disconnect();
