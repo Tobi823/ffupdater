@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -220,17 +221,11 @@ public class AppUpdate {
             return;
         }
 
-        if (appsToCheck.contains(FENNEC_RELEASE)) {
-            versions.put(FENNEC_RELEASE, version.getVersion(FENNEC_RELEASE));
-            downloadUrls.put(FENNEC_RELEASE, version.getDownloadUrl(FENNEC_RELEASE, DeviceABI.getBestSuitedAbi()));
-        }
-        if (appsToCheck.contains(FENNEC_BETA)) {
-            versions.put(FENNEC_BETA, version.getVersion(FENNEC_BETA));
-            downloadUrls.put(FENNEC_BETA, version.getDownloadUrl(FENNEC_BETA, DeviceABI.getBestSuitedAbi()));
-        }
-        if (appsToCheck.contains(FENNEC_NIGHTLY)) {
-            versions.put(FENNEC_NIGHTLY, version.getVersion(FENNEC_NIGHTLY));
-            downloadUrls.put(FENNEC_NIGHTLY, version.getDownloadUrl(FENNEC_NIGHTLY, DeviceABI.getBestSuitedAbi()));
+        for (App app : Arrays.asList(FENNEC_RELEASE, FENNEC_BETA, FENNEC_NIGHTLY)) {
+            if (appsToCheck.contains(app)) {
+                versions.put(app, version.getVersion(app));
+                downloadUrls.put(app, version.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
+            }
         }
     }
 
