@@ -34,9 +34,10 @@ import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 
 /**
  * This class will call the {@link WorkManager} to check regularly for app updates in the background.
- * When an app update is available, a notification will be created and displayed.
+ * When an app update is available, a notification will be displayed.
  */
 public class NotificationCreator extends Worker {
+    private static final int NOTIFICATION_IDENTIFIER = 1;
     private static final String CHANNEL_ID = "update_notification_channel_id";
     private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
     private static final String WORK_MANAGER_KEY = "update_checker";
@@ -46,25 +47,19 @@ public class NotificationCreator extends Worker {
     }
 
     /**
-     * Register NotificationCreator for regularly update checks.
-     * If NotificationCreator is already registered, the already registered NotificationCreator will be replaced.
-     * If pref_check_interval (from default shared preferences) is less or equal 0, NotificationCreator will be unregistered.
+     * You can
+     * - start a new
+     * - replace the current running
+     * - or stop the current running
+     * background update check (depending on the settings by the user). Only one background job at a time can exists.
      *
-     * @param context necessary context for accessing default shared preferences and using {@link WorkManager}.
+     * @param context context
      */
     public static void register(Context context) {
         register(context, SettingsHelper.isAutomaticCheck(context), SettingsHelper.getCheckInterval(context));
     }
 
-    /**
-     * Register NotificationCreator for regularly update checks.
-     * If NotificationCreator is already registered, the already registered NotificationCreator will be replaced.
-     * If pref_check_interval (from default shared preferences) is less or equal 0, NotificationCreator will be unregistered.
-     *
-     * @param context            necessary context using {@link WorkManager}.
-     * @param repeatEveryMinutes check for app update every x minutes
-     */
-    public static void register(Context context, boolean automaticCheckInBackground, int repeatEveryMinutes) {
+    private static void register(Context context, boolean automaticCheckInBackground, int repeatEveryMinutes) {
         if (!automaticCheckInBackground) {
             WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY);
             return;
@@ -86,7 +81,7 @@ public class NotificationCreator extends Worker {
     /**
      * This method will be called by the WorkManager regularly.
      *
-     * @return every method call will return a Result successfully.
+     * @return always return success
      */
     @NonNull
     @Override
@@ -100,13 +95,6 @@ public class NotificationCreator extends Worker {
             }
         });
         return Result.success();
-    }
-
-    @NonNull
-    private NotificationManager getNotificationManager() {
-        Context context = getApplicationContext();
-        return Objects.requireNonNull(
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE));
     }
 
     private void createNotification() {
@@ -131,7 +119,7 @@ public class NotificationCreator extends Worker {
                 .setAutoCancel(true)
                 .build();
 
-        getNotificationManager().notify(1, notification);
+        getNotificationManager().notify(NOTIFICATION_IDENTIFIER, notification);
     }
 
     /**
@@ -146,5 +134,12 @@ public class NotificationCreator extends Worker {
                 NotificationManager.IMPORTANCE_DEFAULT);
         channel.setDescription(getApplicationContext().getString(R.string.update_notification_channel_description));
         getNotificationManager().createNotificationChannel(channel);
+    }
+
+    @NonNull
+    private NotificationManager getNotificationManager() {
+        Context context = getApplicationContext();
+        return Objects.requireNonNull(
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE));
     }
 }
