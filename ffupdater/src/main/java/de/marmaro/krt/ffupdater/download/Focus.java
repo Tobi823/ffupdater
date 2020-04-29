@@ -12,7 +12,7 @@ import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.ARM;
 /**
  * Access the version name and the download url for Firefox Focus and Firefox Klar from Github.
  */
-class FocusVersionFinder {
+class Focus {
     private static final String OWNER = "mozilla-mobile";
     private static final String REPOSITORY = "focus-android";
 
@@ -20,11 +20,11 @@ class FocusVersionFinder {
     private final Map<String, String> downloadUrls = new HashMap<>();
     private boolean correct = true;
 
-    private FocusVersionFinder() {
+    private Focus() {
     }
 
-    static FocusVersionFinder findLatest() {
-        FocusVersionFinder newObject = new FocusVersionFinder();
+    static Focus findLatest() {
+        Focus newObject = new Focus();
         GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
         if (latestRelease == null) {
             newObject.correct = false;

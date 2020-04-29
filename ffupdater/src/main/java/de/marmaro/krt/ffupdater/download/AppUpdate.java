@@ -231,7 +231,7 @@ public class AppUpdate {
 
     private void checkFocusKlar(List<App> appsToCheck) {
         TrafficStats.setThreadStatsTag(TRAFFIC_FOCUS);
-        FocusVersionFinder focusVersionFinder = FocusVersionFinder.findLatest();
+        Focus focusVersionFinder = Focus.findLatest();
         if (!focusVersionFinder.isCorrect()) {
             return;
         }
