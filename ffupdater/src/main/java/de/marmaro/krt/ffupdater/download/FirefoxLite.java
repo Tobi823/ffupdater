@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.download;
 /**
  * Access the version name and the download url for Firefox Lite from Github.
  */
-class FirefoxLiteVersionFinder {
+class FirefoxLite {
     private static final String OWNER = "mozilla-tw";
     private static final String REPOSITORY = "FirefoxLite";
 
@@ -11,11 +11,11 @@ class FirefoxLiteVersionFinder {
     private String downloadUrl;
     private boolean correct = true;
 
-    private FirefoxLiteVersionFinder() {
+    private FirefoxLite() {
     }
 
-    static FirefoxLiteVersionFinder create() {
-        FirefoxLiteVersionFinder newObject = new FirefoxLiteVersionFinder();
+    static FirefoxLite create() {
+        FirefoxLite newObject = new FirefoxLite();
         GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
         if (latestRelease == null) {
             newObject.correct = false;

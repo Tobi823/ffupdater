@@ -248,7 +248,7 @@ public class AppUpdate {
 
     private void checkLite() {
         TrafficStats.setThreadStatsTag(TRAFFIC_LITE);
-        FirefoxLiteVersionFinder firefoxLiteVersionFinder = FirefoxLiteVersionFinder.create();
+        FirefoxLite firefoxLiteVersionFinder = FirefoxLite.create();
         if (!firefoxLiteVersionFinder.isCorrect()) {
             return;
         }
