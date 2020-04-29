@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download;
+package de.marmaro.krt.ffupdater.security;
 
 import android.util.Log;
 
