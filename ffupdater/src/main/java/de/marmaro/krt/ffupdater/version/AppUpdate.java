@@ -259,12 +259,12 @@ public class AppUpdate {
 
     private void checkFenix() {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENIX);
-        Fenix fenixVersionFinder = Fenix.findLatest();
-        if (!fenixVersionFinder.isCorrect()) {
+        Fenix fenix = Fenix.findLatest();
+        if (fenix == null) {
             return;
         }
 
-        versions.put(FENIX, fenixVersionFinder.getVersion());
-        downloadUrls.put(FENIX, fenixVersionFinder.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
+        versions.put(FENIX, fenix.getVersion());
+        downloadUrls.put(FENIX, fenix.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
     }
 }

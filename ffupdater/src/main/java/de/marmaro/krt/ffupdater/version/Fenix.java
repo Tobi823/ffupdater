@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater.version;
 
+import androidx.annotation.Nullable;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,21 +21,20 @@ class Fenix {
 
     private String version;
     private final Map<String, String> downloadUrls = new HashMap<>();
-    private boolean correct = true;
 
     private Fenix() {
     }
 
     /**
      * Do the network request to get the latest version name and download url for Fenix.
-     * @return
+     * @return result or null
      */
+    @Nullable
     static Fenix findLatest() {
         Fenix newObject = new Fenix();
         GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
         if (latestRelease == null) {
-            newObject.correct = false;
-            return newObject;
+            return null;
         }
 
         newObject.version = latestRelease.getTagName().replace("v", "");
@@ -43,21 +44,11 @@ class Fenix {
         return newObject;
     }
 
-    boolean isCorrect() {
-        return correct;
-    }
-
     String getVersion() {
-        if (!correct) {
-            throw new IllegalArgumentException("Fenix is faulty");
-        }
         return version;
     }
 
     String getDownloadUrl(DeviceABI.ABI abi) {
-        if (!correct) {
-            throw new IllegalArgumentException("Fenix is faulty");
-        }
         for (String name : downloadUrls.keySet()) {
             String nameLowerCase = name.toLowerCase();
 
