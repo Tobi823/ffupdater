@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;
 
 /**
- * Created by Tobiwan on 04.10.2019.
+ * Ask the user with this dialog if he really want to install the app.
  */
 public class InstallationWarningAppDialog extends DialogFragment {
     static final String TAG = "warning_app_dialog";

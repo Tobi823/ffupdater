@@ -17,7 +17,8 @@ import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
 /**
- * Created by Tobiwan on 23.08.2019.
+ * Allow the user to select an app from the dialog to install.
+ * Show warning or error message (if ABI is not supported) if necessary.
  */
 public class InstallAppDialog extends DialogFragment {
     public static final String TAG = "download_new_app_dialog";

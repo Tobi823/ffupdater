@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;
 
 /**
- * Created by Tobiwan on 23.08.2019.
+ * Show a dialog with the app description.
  */
 public class AppInfoDialog extends DialogFragment {
     public static final String TAG = "app_info_dialog";

@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment;
 import de.marmaro.krt.ffupdater.R;
 
 /**
- * Created by Tobiwan on 21.04.2020.
+ * Show the error that the app is not supported on this smartphone.
  */
 public class UnsupportedAbiDialog extends DialogFragment {
     static final String TAG = "unsupported_abi_dialog";

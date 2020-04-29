@@ -22,7 +22,8 @@ import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 
 /**
- * Created by Tobiwan on 27.04.2020.
+ * Base activity for installing apps on older devices with {@code de.marmaro.krt.ffupdater.download.FileDownloadActivity}
+ * or on new devices with {@code de.marmaro.krt.ffupdater.download.SchemeDownloadActivity}.
  */
 public abstract class DownloadActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_INSTALL = 401;
