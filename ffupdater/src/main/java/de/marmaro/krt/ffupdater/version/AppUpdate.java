@@ -231,18 +231,16 @@ public class AppUpdate {
 
     private void checkFocusKlar(List<App> appsToCheck) {
         TrafficStats.setThreadStatsTag(TRAFFIC_FOCUS);
-        Focus focusVersionFinder = Focus.findLatest();
-        if (!focusVersionFinder.isCorrect()) {
+        Focus focus = Focus.findLatest();
+        if (focus == null) {
             return;
         }
 
-        if (appsToCheck.contains(FIREFOX_FOCUS)) {
-            versions.put(FIREFOX_FOCUS, focusVersionFinder.getVersion());
-            downloadUrls.put(FIREFOX_FOCUS, focusVersionFinder.getDownloadUrl(FIREFOX_FOCUS, DeviceABI.getBestSuitedAbi()));
-        }
-        if (appsToCheck.contains(FIREFOX_KLAR)) {
-            versions.put(FIREFOX_KLAR, focusVersionFinder.getVersion());
-            downloadUrls.put(FIREFOX_KLAR, focusVersionFinder.getDownloadUrl(FIREFOX_KLAR, DeviceABI.getBestSuitedAbi()));
+        for (App app : Arrays.asList(FIREFOX_FOCUS, FIREFOX_KLAR)) {
+            if (appsToCheck.contains(app)) {
+                versions.put(app, focus.getVersion());
+                downloadUrls.put(app, focus.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
+            }
         }
     }
 

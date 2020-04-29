@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater.version;
 
+import androidx.annotation.Nullable;
+
 /**
  * Access the version name and the download url for Firefox Lite from Github.
  */
@@ -13,6 +15,7 @@ class FirefoxLite {
     private FirefoxLite() {
     }
 
+    @Nullable
     static FirefoxLite findLatest() {
         FirefoxLite newObject = new FirefoxLite();
         GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);

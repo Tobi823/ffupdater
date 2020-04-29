@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater.version;
 
+import androidx.annotation.Nullable;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,17 +20,16 @@ class Focus {
 
     private String version;
     private final Map<String, String> downloadUrls = new HashMap<>();
-    private boolean correct = true;
 
     private Focus() {
     }
 
+    @Nullable
     static Focus findLatest() {
         Focus newObject = new Focus();
         GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
         if (latestRelease == null) {
-            newObject.correct = false;
-            return newObject;
+            return null;
         }
 
         newObject.version = latestRelease.getTagName().replace("v", "");
@@ -36,10 +37,6 @@ class Focus {
             newObject.downloadUrls.put(asset.getName(), asset.getDownloadUrl());
         }
         return newObject;
-    }
-
-    boolean isCorrect() {
-        return correct;
     }
 
     String getVersion() {
