@@ -23,7 +23,7 @@ class FocusVersionFinder {
     private FocusVersionFinder() {
     }
 
-    static FocusVersionFinder create() {
+    static FocusVersionFinder findLatest() {
         FocusVersionFinder newObject = new FocusVersionFinder();
         GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
         if (latestRelease == null) {

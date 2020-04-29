@@ -231,7 +231,7 @@ public class AppUpdate {
 
     private void checkFocusKlar(List<App> appsToCheck) {
         TrafficStats.setThreadStatsTag(TRAFFIC_FOCUS);
-        FocusVersionFinder focusVersionFinder = FocusVersionFinder.create();
+        FocusVersionFinder focusVersionFinder = FocusVersionFinder.findLatest();
         if (!focusVersionFinder.isCorrect()) {
             return;
         }
@@ -248,7 +248,7 @@ public class AppUpdate {
 
     private void checkLite() {
         TrafficStats.setThreadStatsTag(TRAFFIC_LITE);
-        FirefoxLite firefoxLiteVersionFinder = FirefoxLite.create();
+        FirefoxLite firefoxLiteVersionFinder = FirefoxLite.findLatest();
         if (!firefoxLiteVersionFinder.isCorrect()) {
             return;
         }
