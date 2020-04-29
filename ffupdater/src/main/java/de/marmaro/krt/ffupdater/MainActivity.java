@@ -30,6 +30,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
@@ -200,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                     R.drawable.ic_file_download_grey
             );
         }
-        fadeOutProgressBar();
+        progressBar.startAnimation(new FadeOutAnimation(progressBar));
     }
 
     private void hideVersionOfApps() {
@@ -208,28 +209,6 @@ public class MainActivity extends AppCompatActivity {
             Objects.requireNonNull(availableVersionTextViews.get(app)).setText("");
         }
         progressBar.setVisibility(VISIBLE);
-    }
-
-    private void fadeOutProgressBar() {
-        // https://stackoverflow.com/a/12343453
-        AlphaAnimation fadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
-        fadeOutAnimation.setDuration(300);
-        fadeOutAnimation.setFillAfter(false);
-        fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                progressBar.setVisibility(GONE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-            }
-        });
-        progressBar.startAnimation(fadeOutAnimation);
     }
 
     private void fetchUpdates() {
