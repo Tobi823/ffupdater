@@ -46,7 +46,7 @@ class GithubReleaseParser {
         return null;
     }
 
-    public static class Asset {
+    static class Asset {
         @SerializedName("name")
         private String name;
 
@@ -71,7 +71,7 @@ class GithubReleaseParser {
         }
     }
 
-    public static class Release {
+    static class Release {
         @SerializedName("tag_name")
         private String tagName;
 

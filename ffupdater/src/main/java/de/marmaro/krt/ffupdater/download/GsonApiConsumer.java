@@ -21,7 +21,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 class GsonApiConsumer {
     private static final String TAG = "ffupdater";
-    public static final int TIMEOUT = 5000;
+    private static final int TIMEOUT = 5000;
 
     @Nullable
     static <T> T consume(String urlString, Class<T> clazz) {
