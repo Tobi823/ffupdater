@@ -248,13 +248,13 @@ public class AppUpdate {
 
     private void checkLite() {
         TrafficStats.setThreadStatsTag(TRAFFIC_LITE);
-        FirefoxLite firefoxLiteVersionFinder = FirefoxLite.findLatest();
-        if (!firefoxLiteVersionFinder.isCorrect()) {
+        FirefoxLite firefoxLite = FirefoxLite.findLatest();
+        if (firefoxLite == null) {
             return;
         }
 
-        versions.put(FIREFOX_LITE, firefoxLiteVersionFinder.getVersion());
-        downloadUrls.put(FIREFOX_LITE, firefoxLiteVersionFinder.getDownloadUrl());
+        versions.put(FIREFOX_LITE, firefoxLite.getVersion());
+        downloadUrls.put(FIREFOX_LITE, firefoxLite.getDownloadUrl());
     }
 
     private void checkFenix() {
