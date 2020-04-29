@@ -16,7 +16,7 @@ import org.apache.commons.codec.binary.ApacheCodecHex;
 
 import java.util.Objects;
 
-import de.marmaro.krt.ffupdater.version.AppUpdate;
+import de.marmaro.krt.ffupdater.version.AvailableVersions;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 
 /**
@@ -32,7 +32,7 @@ public abstract class DownloadActivity extends AppCompatActivity {
 
     protected App app;
     protected String downloadUrl;
-    protected AppUpdate appUpdate;
+    protected AvailableVersions appUpdate;
 
     public DownloadActivity(boolean showDownloadProgression) {
         this.showDownloadProgression = showDownloadProgression;
@@ -63,7 +63,7 @@ public abstract class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.installerFailedButton).setOnClickListener(v -> finish());
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
-        appUpdate = AppUpdate.create(getPackageManager());
+        appUpdate = AvailableVersions.create(getPackageManager());
 
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
         String appName = extras.getString(EXTRA_APP_NAME);

@@ -32,7 +32,7 @@ import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
-import de.marmaro.krt.ffupdater.version.AppUpdate;
+import de.marmaro.krt.ffupdater.version.AvailableVersions;
 import de.marmaro.krt.ffupdater.security.TLSSocketFactory;
 import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
@@ -42,7 +42,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
-    private AppUpdate appUpdate;
+    private AvailableVersions appUpdate;
     private ProgressBar progressBar;
 
     private ConnectivityManager connectivityManager;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         initUI();
         NotificationCreator.register(this);
 
-        appUpdate = AppUpdate.create(getPackageManager());
+        appUpdate = AvailableVersions.create(getPackageManager());
     }
 
     @Override

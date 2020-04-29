@@ -41,7 +41,7 @@ import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
 /**
  * Created by Tobiwan on 13.04.2020.
  */
-public class AppUpdate {
+public class AvailableVersions {
     private static final int TRAFFIC_FENNEC = 1001;
     private static final int TRAFFIC_FOCUS = 1002;
     private static final int TRAFFIC_LITE = 1003;
@@ -53,13 +53,13 @@ public class AppUpdate {
     private Map<App, String> versions = new ConcurrentHashMap<>();
     private Map<App, String> downloadUrls = new ConcurrentHashMap<>();
 
-    public static AppUpdate create(PackageManager packageManager) {
-        return new AppUpdate(
+    public static AvailableVersions create(PackageManager packageManager) {
+        return new AvailableVersions(
                 Executors.newFixedThreadPool(5),
                 packageManager);
     }
 
-    private AppUpdate(ExecutorService executorService, PackageManager packageManager) {
+    private AvailableVersions(ExecutorService executorService, PackageManager packageManager) {
         Objects.requireNonNull(executorService);
         Objects.requireNonNull(packageManager);
         this.executorService = executorService;
@@ -67,7 +67,7 @@ public class AppUpdate {
     }
 
     /**
-     * Call this method for destructing AppUpdate correctly to avoid memory leaks.
+     * Call this method for destructing AvailableVersions correctly to avoid memory leaks.
      */
     public void shutdown() {
         executorService.shutdown();
@@ -176,7 +176,7 @@ public class AppUpdate {
     private void checkUpdates(List<App> apps, @Nullable Activity activity, Runnable callback) {
         Objects.requireNonNull(executorService);
         if (!futures.isEmpty()) {
-            Log.w("AppUpdate", "skip because an update is still pending");
+            Log.w("AvailableVersions", "skip because an update is still pending");
             return;
         }
 
@@ -202,7 +202,7 @@ public class AppUpdate {
                     futures.element().get(10, TimeUnit.SECONDS);
                     futures.remove();
                 } catch (ExecutionException | InterruptedException | TimeoutException e) {
-                    Log.e("AppUpdate", "wait too long", e);
+                    Log.e("AvailableVersions", "wait too long", e);
                 }
             }
             // TODO doc that activity must be not null when running on ui thread

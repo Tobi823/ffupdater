@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.version.AppUpdate;
+import de.marmaro.krt.ffupdater.version.AvailableVersions;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
@@ -92,7 +92,7 @@ public class NotificationCreator extends Worker {
     @Override
     public Result doWork() {
         Log.d("NotificationCreator", "doWork() executed");
-        AppUpdate appUpdate = AppUpdate.create(getApplicationContext().getPackageManager());
+        AvailableVersions appUpdate = AvailableVersions.create(getApplicationContext().getPackageManager());
         Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
         appUpdate.checkUpdatesForInstalledApps(disableApps, null, () -> {
             if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
