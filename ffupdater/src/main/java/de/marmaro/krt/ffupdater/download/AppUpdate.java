@@ -215,22 +215,22 @@ public class AppUpdate {
 
     private void checkFennec(List<App> appsToCheck) {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
-        FennecVersionFinder.Version version = FennecVersionFinder.getVersion();
-        if (version == null) {
+        FennecVersionFinder version = FennecVersionFinder.findLatest();
+        if (!version.isCorrect()) {
             return;
         }
 
         if (appsToCheck.contains(FENNEC_RELEASE)) {
-            versions.put(FENNEC_RELEASE, version.getReleaseVersion());
-            downloadUrls.put(FENNEC_RELEASE, FennecVersionFinder.getDownloadUrl(FENNEC_RELEASE, DeviceABI.getBestSuitedAbi()));
+            versions.put(FENNEC_RELEASE, version.getVersion(FENNEC_RELEASE));
+            downloadUrls.put(FENNEC_RELEASE, version.getDownloadUrl(FENNEC_RELEASE, DeviceABI.getBestSuitedAbi()));
         }
         if (appsToCheck.contains(FENNEC_BETA)) {
-            versions.put(FENNEC_BETA, version.getBetaVersion());
-            downloadUrls.put(FENNEC_BETA, FennecVersionFinder.getDownloadUrl(FENNEC_BETA, DeviceABI.getBestSuitedAbi()));
+            versions.put(FENNEC_BETA, version.getVersion(FENNEC_BETA));
+            downloadUrls.put(FENNEC_BETA, version.getDownloadUrl(FENNEC_BETA, DeviceABI.getBestSuitedAbi()));
         }
         if (appsToCheck.contains(FENNEC_NIGHTLY)) {
-            versions.put(FENNEC_NIGHTLY, version.getNightlyVersion());
-            downloadUrls.put(FENNEC_NIGHTLY, FennecVersionFinder.getDownloadUrl(FENNEC_NIGHTLY, DeviceABI.getBestSuitedAbi()));
+            versions.put(FENNEC_NIGHTLY, version.getVersion(FENNEC_NIGHTLY));
+            downloadUrls.put(FENNEC_NIGHTLY, version.getDownloadUrl(FENNEC_NIGHTLY, DeviceABI.getBestSuitedAbi()));
         }
     }
 
@@ -264,7 +264,7 @@ public class AppUpdate {
 
     private void checkFenix() {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENIX);
-        FenixVersionFinder fenixVersionFinder = FenixVersionFinder.create();
+        Fenix fenixVersionFinder = Fenix.findLatest();
         if (!fenixVersionFinder.isCorrect()) {
             return;
         }

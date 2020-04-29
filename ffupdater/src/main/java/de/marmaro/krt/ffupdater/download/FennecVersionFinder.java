@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.download;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
@@ -8,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceABI;
+import de.marmaro.krt.ffupdater.utils.Utils;
 
 /**
  * Get the version name and the download link for the latest Fennec release (release, beta, nightly)
@@ -23,11 +25,48 @@ public class FennecVersionFinder {
     private static final String CHECK_URL = "https://product-details.mozilla.org/1.0/mobile_versions.json";
     private static final String DOWNLOAD_URL = "https://download.mozilla.org/?product=%s&os=%s&lang=multi";
 
-    public static String getDownloadUrl(App app, DeviceABI.ABI abi) {
+    private Version version;
+    private boolean correct = true;
+
+    private FennecVersionFinder() {
+    }
+
+    static FennecVersionFinder findLatest() {
+        FennecVersionFinder newObject = new FennecVersionFinder();
+        Version newVersion = GsonApiConsumer.consume(CHECK_URL, Version.class);
+        if (newVersion == null) {
+            newObject.correct = false;
+            return newObject;
+        }
+
+        newObject.version = newVersion;
+        return newObject;
+    }
+
+    @NonNull
+    String getDownloadUrl(App app, DeviceABI.ABI abi) {
         return String.format(DOWNLOAD_URL, getDownloadProduct(app), getDownloadOs(abi));
     }
 
-    private static String getDownloadProduct(App app) {
+    @NonNull
+    String getVersion(App app) {
+        switch (app) {
+            case FENNEC_RELEASE:
+                return Utils.convertNullToEmptyString(version.releaseVersion);
+            case FENNEC_BETA:
+                return Utils.convertNullToEmptyString(version.betaVersion);
+            case FENNEC_NIGHTLY:
+                return Utils.convertNullToEmptyString(version.nightlyVersion);
+            default:
+                throw new IllegalArgumentException("unsupported app " + app);
+        }
+    }
+
+    public boolean isCorrect() {
+        return correct;
+    }
+
+    private String getDownloadProduct(App app) {
         switch (app) {
             case FENNEC_RELEASE:
                 return RELEASE_PRODUCT;
@@ -40,7 +79,7 @@ public class FennecVersionFinder {
         }
     }
 
-    private static String getDownloadOs(DeviceABI.ABI abi) {
+    private String getDownloadOs(DeviceABI.ABI abi) {
         switch (abi) {
             case AARCH64:
             case ARM:
@@ -53,12 +92,7 @@ public class FennecVersionFinder {
         }
     }
 
-    @Nullable
-    public static Version getVersion() {
-        return GsonApiConsumer.consume(CHECK_URL, Version.class);
-    }
-
-    public static class Version {
+    private static class Version {
         @SerializedName("version")
         private String releaseVersion;
 
@@ -67,18 +101,6 @@ public class FennecVersionFinder {
 
         @SerializedName("nightly_version")
         private String nightlyVersion;
-
-        public String getReleaseVersion() {
-            return releaseVersion;
-        }
-
-        public String getBetaVersion() {
-            return betaVersion;
-        }
-
-        public String getNightlyVersion() {
-            return nightlyVersion;
-        }
 
         @NotNull
         @Override

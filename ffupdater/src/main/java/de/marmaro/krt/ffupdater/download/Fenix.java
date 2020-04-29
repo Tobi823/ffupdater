@@ -13,7 +13,7 @@ import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86_64;
 /**
  * Access the version name and the download url for Fenix from Github.
  */
-public class FenixVersionFinder {
+class Fenix {
     private static final String OWNER = "mozilla-mobile";
     private static final String REPOSITORY = "fenix";
 
@@ -21,11 +21,15 @@ public class FenixVersionFinder {
     private final Map<String, String> downloadUrls = new HashMap<>();
     private boolean correct = true;
 
-    private FenixVersionFinder() {
+    private Fenix() {
     }
 
-    public static FenixVersionFinder create() {
-        FenixVersionFinder newObject = new FenixVersionFinder();
+    /**
+     * Do the network request to get the latest version name and download url for Fenix.
+     * @return
+     */
+    static Fenix findLatest() {
+        Fenix newObject = new Fenix();
         GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
         if (latestRelease == null) {
             newObject.correct = false;
@@ -39,20 +43,20 @@ public class FenixVersionFinder {
         return newObject;
     }
 
-    public boolean isCorrect() {
+    boolean isCorrect() {
         return correct;
     }
 
-    public String getVersion() {
+    String getVersion() {
         if (!correct) {
-            throw new IllegalArgumentException("FenixVersionFinder is faulty");
+            throw new IllegalArgumentException("Fenix is faulty");
         }
         return version;
     }
 
-    public String getDownloadUrl(DeviceABI.ABI abi) {
+    String getDownloadUrl(DeviceABI.ABI abi) {
         if (!correct) {
-            throw new IllegalArgumentException("FenixVersionFinder is faulty");
+            throw new IllegalArgumentException("Fenix is faulty");
         }
         for (String name : downloadUrls.keySet()) {
             String nameLowerCase = name.toLowerCase();
