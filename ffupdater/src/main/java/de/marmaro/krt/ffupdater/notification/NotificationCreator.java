@@ -37,10 +37,11 @@ import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
  * When an app update is available, a notification will be displayed.
  */
 public class NotificationCreator extends Worker {
-    private static final int NOTIFICATION_IDENTIFIER = 1;
+    private static final String LOG_TAG = "NotificationCreator";
     private static final String CHANNEL_ID = "update_notification_channel_id";
-    private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
     private static final String WORK_MANAGER_KEY = "update_checker";
+    private static final int NOTIFICATION_IDENTIFIER = 1;
+    private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
 
     public NotificationCreator(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -55,11 +56,11 @@ public class NotificationCreator extends Worker {
      *
      * @param context context
      */
-    public static void register(Context context) {
-        register(context, SettingsHelper.isAutomaticCheck(context), SettingsHelper.getCheckInterval(context));
+    public static void start(Context context) {
+        start(context, SettingsHelper.isAutomaticCheck(context), SettingsHelper.getCheckInterval(context));
     }
 
-    private static void register(Context context, boolean automaticCheckInBackground, int repeatEveryMinutes) {
+    private static void start(Context context, boolean automaticCheckInBackground, int repeatEveryMinutes) {
         if (!automaticCheckInBackground) {
             WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY);
             return;
@@ -86,7 +87,7 @@ public class NotificationCreator extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        Log.d("NotificationCreator", "doWork() executed");
+        Log.d(LOG_TAG, "doWork() executed");
         AvailableVersions appUpdate = AvailableVersions.create(getApplicationContext().getPackageManager());
         Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
         appUpdate.checkUpdatesForInstalledApps(disableApps, null, () -> {

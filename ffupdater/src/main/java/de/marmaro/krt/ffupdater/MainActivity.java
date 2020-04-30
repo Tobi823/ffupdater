@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         StrictModeSetup.enable();
         TLSSocketFactory.enableTLSv12IfNecessary();
         initUI();
-        NotificationCreator.register(this);
+        NotificationCreator.start(this);
 
         appUpdate = AvailableVersions.create(getPackageManager());
     }

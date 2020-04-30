@@ -14,7 +14,7 @@ public class Autostart extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent != null && ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
-            NotificationCreator.register(context);
+            NotificationCreator.start(context);
         }
     }
 }

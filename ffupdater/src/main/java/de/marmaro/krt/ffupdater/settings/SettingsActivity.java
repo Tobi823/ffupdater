@@ -28,7 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        NotificationCreator.register(this);
+        NotificationCreator.start(this);
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
