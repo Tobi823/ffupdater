@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
 import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.notification.NotificationCreator;
+import de.marmaro.krt.ffupdater.notification.Notificator;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -28,7 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        NotificationCreator.start(this);
+        Notificator.start(this);
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {

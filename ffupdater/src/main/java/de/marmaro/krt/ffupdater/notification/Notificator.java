@@ -36,14 +36,14 @@ import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
  * This class will call the {@link WorkManager} to check regularly for app updates in the background.
  * When an app update is available, a notification will be displayed.
  */
-public class NotificationCreator extends Worker {
-    private static final String LOG_TAG = "NotificationCreator";
+public class Notificator extends Worker {
+    private static final String LOG_TAG = "Notificator";
     private static final String CHANNEL_ID = "update_notification_channel_id";
     private static final String WORK_MANAGER_KEY = "update_checker";
     private static final int NOTIFICATION_IDENTIFIER = 1;
     private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
 
-    public NotificationCreator(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public Notificator(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -72,7 +72,7 @@ public class NotificationCreator extends Worker {
                 .build();
 
         PeriodicWorkRequest saveRequest =
-                new PeriodicWorkRequest.Builder(NotificationCreator.class, repeatEveryMinutes, TimeUnit.MINUTES)
+                new PeriodicWorkRequest.Builder(Notificator.class, repeatEveryMinutes, TimeUnit.MINUTES)
                         .setConstraints(constraints)
                         .build();
 

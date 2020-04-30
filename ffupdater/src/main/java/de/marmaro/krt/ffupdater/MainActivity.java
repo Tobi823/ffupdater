@@ -32,9 +32,9 @@ import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
+import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 import de.marmaro.krt.ffupdater.security.TLSSocketFactory;
-import de.marmaro.krt.ffupdater.notification.NotificationCreator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         StrictModeSetup.enable();
         TLSSocketFactory.enableTLSv12IfNecessary();
         initUI();
-        NotificationCreator.start(this);
+        Notificator.start(this);
 
         appUpdate = AvailableVersions.create(getPackageManager());
     }
