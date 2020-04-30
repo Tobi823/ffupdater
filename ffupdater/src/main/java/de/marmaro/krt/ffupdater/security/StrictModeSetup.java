@@ -7,9 +7,15 @@ import android.util.Log;
 import de.marmaro.krt.ffupdater.BuildConfig;
 
 /**
- * Created by Tobiwan on 21.04.2020.
+ * Configure StrictMode to improve security (by prohibit unencrypted network traffic) and detect bugs during development.
  */
 public class StrictModeSetup {
+    private static final String LOG_TAG = "StrictModeSetup";
+
+    /**
+     * If the app has been built locally, then StrictMode will be configured very repressive. This is necessary to find bugs in development fast.
+     * If the app has been built by F-Droid, then forbid only unencrypted network traffic.
+     */
     public static void enable() {
         if (BuildConfig.DEBUG) {
             enableDebugStrictMode();
@@ -19,7 +25,7 @@ public class StrictModeSetup {
     }
 
     private static void enableDebugStrictMode() {
-        Log.i("MainActivity", "enable StrictMode for local development");
+        Log.i(LOG_TAG, "enable StrictMode for local development");
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .permitDiskReads() // for preferences
