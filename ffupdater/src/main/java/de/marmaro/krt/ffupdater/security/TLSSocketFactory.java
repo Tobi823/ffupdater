@@ -24,6 +24,7 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 /**
+ * This is a workaround to enable TLSv1.2 (required for Github) on older devices.
  * https://gist.github.com/Navneet7k/45dcea08ffc8a4e6750b2c1beefffc28/
  * https://medium.com/@krisnavneet/how-to-solve-sslhandshakeexception-in-android-ssl23-get-server-hello-tlsv1-alert-protocol-13b457c724ef
  */
@@ -118,10 +119,4 @@ public class TLSSocketFactory extends SSLSocketFactory {
         }
         return socket;
     }
-
-    @Nullable
-    public X509TrustManager getTrustManager() {
-        return (X509TrustManager) trustManagers[0];
-    }
-
 }
