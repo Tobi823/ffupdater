@@ -4,10 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
- * Created by Tobiwan on 29.04.2020.
+ * Class with useful helper methods.
  */
 public class Utils {
 
+    /**
+     * @param string string
+     * @return if string is null, then return empty string.
+     *         if string is not null, return string.
+     */
     @NonNull
     public static String convertNullToEmptyString(@Nullable String string) {
         if (string == null) {

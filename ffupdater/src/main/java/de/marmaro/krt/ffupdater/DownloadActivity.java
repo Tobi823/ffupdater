@@ -63,7 +63,7 @@ public abstract class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.installerFailedButton).setOnClickListener(v -> finish());
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
-        appUpdate = AvailableVersions.create(getPackageManager());
+        appUpdate = new AvailableVersions(getPackageManager());
 
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
         String appName = extras.getString(EXTRA_APP_NAME);

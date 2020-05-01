@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         initUI();
         Notificator.start(this);
 
-        appUpdate = AvailableVersions.create(getPackageManager());
+        appUpdate = new AvailableVersions(getPackageManager());
     }
 
     @Override

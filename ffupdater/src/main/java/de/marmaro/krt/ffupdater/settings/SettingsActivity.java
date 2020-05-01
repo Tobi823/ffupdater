@@ -9,6 +9,9 @@ import androidx.preference.PreferenceFragmentCompat;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 
+/**
+ * Activity for displaying the settings view.
+ */
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

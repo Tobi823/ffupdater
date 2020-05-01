@@ -11,15 +11,24 @@ import java.util.Set;
 import de.marmaro.krt.ffupdater.App;
 
 /**
- * Created by Tobiwan on 27.04.2020.
+ * This class is a helper to access the settings more easily by checking und converting the raw values from
+ * SharedPreferences instance.
  */
 public class SettingsHelper {
     private static final int CHECK_INTERVAL_DEFAULT_VALUE = 15;
 
+    /**
+     * @param context context
+     * @return should the regular background update check be enabled?
+     */
     public static boolean isAutomaticCheck(Context context) {
         return getSharedPreferences(context).getBoolean("automaticCheck", true);
     }
 
+    /**
+     * @param context context
+     * @return how long should be the time span between check background update check?
+     */
     public static int getCheckInterval(Context context) {
         String checkInterval = getSharedPreferences(context).getString("checkInterval", null);
         if (checkInterval == null) {
@@ -32,6 +41,11 @@ public class SettingsHelper {
         }
     }
 
+    /**
+     * This setting is necessary to deactivate apps when e.g. their update checks are broken.
+     * @param context context
+     * @return the regular background update check should ignore these apps
+     */
     public static Set<App> getDisableApps(Context context) {
         Set<App> result = new HashSet<>();
         Set<String> disableApps = getSharedPreferences(context).getStringSet("disableApps", null);

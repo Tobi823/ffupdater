@@ -39,31 +39,25 @@ import static de.marmaro.krt.ffupdater.App.FIREFOX_KLAR;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
 
 /**
- * Created by Tobiwan on 13.04.2020.
+ * Helps to fetch the latest version name of apps with background threads.
  */
 public class AvailableVersions {
+    // StrictMode needs for every running thread a stats id
     private static final int TRAFFIC_FENNEC = 1001;
     private static final int TRAFFIC_FOCUS = 1002;
     private static final int TRAFFIC_LITE = 1003;
     private static final int TRAFFIC_FENIX = 1004;
-    private ExecutorService executorService;
+    public static final int NUMBER_BACKGROUND_THREADS = 5;
 
+    private ExecutorService executorService;
     private PackageManager packageManager;
     private Queue<Future> futures = new ConcurrentLinkedQueue<>();
     private Map<App, String> versions = new ConcurrentHashMap<>();
-    private Map<App, String> downloadUrls = new ConcurrentHashMap<>();
+    private Map<App, String> urls = new ConcurrentHashMap<>();
 
-    public static AvailableVersions create(PackageManager packageManager) {
-        return new AvailableVersions(
-                Executors.newFixedThreadPool(5),
-                packageManager);
-    }
-
-    private AvailableVersions(ExecutorService executorService, PackageManager packageManager) {
-        Objects.requireNonNull(executorService);
-        Objects.requireNonNull(packageManager);
-        this.executorService = executorService;
-        this.packageManager = packageManager;
+    public AvailableVersions(PackageManager packageManager) {
+        this.executorService = Executors.newFixedThreadPool(NUMBER_BACKGROUND_THREADS);
+        this.packageManager = Objects.requireNonNull(packageManager);
     }
 
     /**
@@ -91,7 +85,7 @@ public class AvailableVersions {
      * {@code checkUpdateForApp} or {@code checkUpdatesForInstalledApps}).
      * If these two version names are different then the developer has released a new version of the app.
      *
-     * @param app
+     * @param app app
      * @return is a new version of the app available
      */
     public boolean isUpdateAvailable(App app) {
@@ -158,7 +152,7 @@ public class AvailableVersions {
      */
     @NotNull
     public String getDownloadUrl(App app) {
-        return Utils.convertNullToEmptyString(downloadUrls.get(app));
+        return Utils.convertNullToEmptyString(urls.get(app));
     }
 
     /**
@@ -224,7 +218,7 @@ public class AvailableVersions {
         for (App app : Arrays.asList(FENNEC_RELEASE, FENNEC_BETA, FENNEC_NIGHTLY)) {
             if (appsToCheck.contains(app)) {
                 versions.put(app, fennec.getVersion(app));
-                downloadUrls.put(app, fennec.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
+                urls.put(app, fennec.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
             }
         }
     }
@@ -239,7 +233,7 @@ public class AvailableVersions {
         for (App app : Arrays.asList(FIREFOX_FOCUS, FIREFOX_KLAR)) {
             if (appsToCheck.contains(app)) {
                 versions.put(app, focus.getVersion());
-                downloadUrls.put(app, focus.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
+                urls.put(app, focus.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
             }
         }
     }
@@ -252,7 +246,7 @@ public class AvailableVersions {
         }
 
         versions.put(FIREFOX_LITE, firefoxLite.getVersion());
-        downloadUrls.put(FIREFOX_LITE, firefoxLite.getDownloadUrl());
+        urls.put(FIREFOX_LITE, firefoxLite.getDownloadUrl());
     }
 
     private void checkFenix() {
@@ -263,6 +257,6 @@ public class AvailableVersions {
         }
 
         versions.put(FENIX, fenix.getVersion());
-        downloadUrls.put(FENIX, fenix.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
+        urls.put(FENIX, fenix.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
     }
 }
