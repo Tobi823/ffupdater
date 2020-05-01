@@ -26,49 +26,56 @@ public enum App {
             R.string.mozilla,
             "org.mozilla.firefox",
             "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04",
-            Collections.emptyList()),
+            Collections.emptyList(),
+            16),
     FENNEC_BETA(R.string.fennecBetaTitleText,
             R.string.fennec_beta_description,
             R.string.switch_to_unsafe_fennec_message,
             R.string.mozilla,
             "org.mozilla.firefox_beta",
             "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04",
-            Collections.emptyList()),
+            Collections.emptyList(),
+            16),
     FENNEC_NIGHTLY(R.string.fennecNightlyTitleText,
             R.string.fennec_nightly_description,
             R.string.switch_to_unsafe_fennec_message,
             R.string.mozilla,
             "org.mozilla.fennec_aurora",
             "bc0488838d06f4ca6bf32386daab0dd8ebcf3e7730787459f62fb3cd14a1baaa",
-            Collections.emptyList()),
+            Collections.emptyList(),
+            16),
     FIREFOX_KLAR(R.string.firefoxKlarTitleText,
             R.string.firefox_klar_description,
             R.string.empty,
             R.string.github,
             "org.mozilla.klar",
             "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc",
-            Collections.emptyList()),
+            Collections.emptyList(),
+            21),
     FIREFOX_FOCUS(R.string.firefoxFocusTitleText,
             R.string.firefox_focus_description,
             R.string.empty,
             R.string.github,
             "org.mozilla.focus",
             "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc",
-            Arrays.asList(X86, X86_64)),
+            Arrays.asList(X86, X86_64),
+            21),
     FIREFOX_LITE(R.string.firefoxLiteTitleText,
             R.string.firefox_lite_description,
             R.string.empty,
             R.string.github,
             "org.mozilla.rocket",
             "863a46f0973932b7d0199b549112741c2d2731ac72ea11b7523aa90a11bf5691",
-            Collections.emptyList()),
+            Collections.emptyList(),
+            21),
     FENIX(R.string.fenixTitleText,
             R.string.fenix_description,
             R.string.switch_to_unsafe_fenix_message,
             R.string.github,
             "org.mozilla.fenix",
             "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211",
-            Collections.emptyList());
+            Collections.emptyList(),
+            21);
 
     private final int titleId;
     private final int descriptionId;
@@ -77,8 +84,9 @@ public enum App {
     private final String packageName;
     private final byte[] signatureHash;
     private final List<ABI> unsupportedAbis;
+    private final int minApiLevel;
 
-    App(int titleId, int descriptionId, int warningId, int downloadSourceId, String packageName, String signatureHash, List<ABI> unsupportedAbis) {
+    App(int titleId, int descriptionId, int warningId, int downloadSourceId, String packageName, String signatureHash, List<ABI> unsupportedAbis, int minApiLevel) {
         this.titleId = titleId;
         this.descriptionId = descriptionId;
         this.warningId = warningId;
@@ -86,6 +94,7 @@ public enum App {
         this.packageName = packageName;
         this.signatureHash = ApacheCodecHex.decodeHex(signatureHash);
         this.unsupportedAbis = unsupportedAbis;
+        this.minApiLevel = minApiLevel;
     }
 
     @NonNull
@@ -124,5 +133,9 @@ public enum App {
     @NonNull
     public List<ABI> getUnsupportedAbis() {
         return unsupportedAbis;
+    }
+
+    public int getMinApiLevel() {
+        return minApiLevel;
     }
 }

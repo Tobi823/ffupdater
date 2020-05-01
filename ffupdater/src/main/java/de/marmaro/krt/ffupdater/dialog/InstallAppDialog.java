@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,10 @@ public class InstallAppDialog extends DialogFragment {
                     App app = apps.get(which);
                     if (app.getUnsupportedAbis().contains(DeviceABI.getBestSuitedAbi())) {
                         new UnsupportedAbiDialog().show(getParentFragmentManager(), UnsupportedAbiDialog.TAG);
+                        return;
+                    }
+                    if (Build.VERSION.SDK_INT < app.getMinApiLevel()) {
+                        new DeviceTooOldDialog(app.getMinApiLevel()).show(getParentFragmentManager(), DeviceTooOldDialog.TAG);
                         return;
                     }
                     if (!app.getWarning(requireContext()).isEmpty()) {

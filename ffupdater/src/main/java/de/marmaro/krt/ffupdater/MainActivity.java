@@ -61,30 +61,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initUI();
 
         packageManager = getPackageManager();
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 
-        try {
-            SSLContext instance = SSLContext.getInstance("TLSv1.2");
-            int a = 0;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
         StrictModeSetup.enable();
         TLSSocketFactory.enableTLSv12IfNecessary();
-        initUI();
         Notificator.start(this);
 
         appUpdate = new AvailableVersions(getPackageManager());
-
-        try {
-            SSLContext instance = SSLContext.getInstance("TLSv1.2");
-            int a = 0;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
