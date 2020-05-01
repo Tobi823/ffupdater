@@ -22,6 +22,7 @@ import org.apache.commons.codec.binary.ApacheCodecHex;
 import java.io.File;
 import java.util.Objects;
 
+import de.marmaro.krt.ffupdater.download.DownloadManagerDelegator;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 import de.marmaro.krt.ffupdater.utils.Utils;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;

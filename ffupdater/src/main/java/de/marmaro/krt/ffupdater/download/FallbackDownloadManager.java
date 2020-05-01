@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.download;
 
 import android.Manifest;
 import android.app.DownloadManager;
@@ -19,19 +19,24 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Created by Tobiwan on 01.05.2020.
+ * This class will emulated the behavior of the {@code android.app.DownloadManager} for easier integration in
+ * {@code SchemeDownloadActivity} and downloads files with TLSv1.2.
+ * Reason: On older devices (API Level 16 - 19) TLSv1.2 is available but not enabled by default =>
+ * {@code android.app.DownloadManager} does not use TLSv1.2 - although github.com requires TLSv1.2 or TLSv1.3.
+ * Supported TLS versions: https://developer.android.com/reference/javax/net/ssl/SSLSocket.html
  */
-public class FallbackDownloadManager {
-    public static final String LOG_TAG = "FallbackDownloadManager";
+class FallbackDownloadManager {
+    private static final String LOG_TAG = "FallbackDownloadManager";
     private Map<Long, Integer> status = new ConcurrentHashMap<>();
     private Map<Long, File> files = new ConcurrentHashMap<>();
-    private AtomicLong idGenerator = new AtomicLong();
+    private AtomicLong idGenerator = new AtomicLong(1000);
 
-    public long enqueue(Context context, Uri uri, File cacheDir) {
+    long enqueue(Context context, Uri uri, File cacheDir) {
         long id = idGenerator.getAndIncrement();
         new Thread(() -> {
             status.put(id, DownloadManager.STATUS_PENDING);
@@ -69,7 +74,7 @@ public class FallbackDownloadManager {
         context.sendBroadcast(intent, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
-    public int remove(long[] ids) {
+    int remove(long[] ids) {
         int counter = 0;
         for (long id : ids) {
             File file = files.get(id);
@@ -83,7 +88,7 @@ public class FallbackDownloadManager {
     }
 
     @NonNull
-    public Pair<Integer, Integer> getStatusAndProgress(long id) {
+    Pair<Integer, Integer> getStatusAndProgress(long id) {
         Integer statusValue = status.get(id);
         if (statusValue == null) {
             return new Pair<>(DownloadManager.STATUS_PENDING, 0);
@@ -94,7 +99,8 @@ public class FallbackDownloadManager {
         return new Pair<>(statusValue, 0);
     }
 
-    public File getUriForDownloadedFile(long id) {
-        return files.get(id);
+    @NonNull
+    File getUriForDownloadedFile(long id) {
+        return Objects.requireNonNull(files.get(id));
     }
 }

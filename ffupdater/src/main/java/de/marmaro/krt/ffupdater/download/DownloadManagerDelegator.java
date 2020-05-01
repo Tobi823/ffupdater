@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.download;
 
 import android.app.DownloadManager;
 import android.content.Context;
