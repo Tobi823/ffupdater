@@ -24,4 +24,14 @@
     <style name="AppTheme.TransparentText" parent="@android:style/TextAppearance">
         <item name="android:textColor">@android:color/transparent</item>
     </style>
+
+    <style name="DefaultTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="BoldTextView" parent="DefaultTextView">
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

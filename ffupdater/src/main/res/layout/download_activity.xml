@@ -25,11 +25,8 @@
 
             <TextView
                 android:id="@+id/fetchUrlTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/fetch_url_for_download"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/fetch_url_for_download" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -48,11 +45,8 @@
 
             <TextView
                 android:id="@+id/fetchedUrlSuccessTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/fetched_url_for_download_successfully"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/fetched_url_for_download_successfully" />
 
         </LinearLayout>
 
@@ -67,11 +61,8 @@
 
             <TextView
                 android:id="@+id/fetchedUrlFailureTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/fetched_url_for_download_unsuccessfully"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/fetched_url_for_download_unsuccessfully" />
 
         </LinearLayout>
 
@@ -84,17 +75,12 @@
 
             <TextView
                 android:id="@+id/downloadingFileText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/download_application_from_with_status"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/download_application_from_with_status" />
 
             <TextView
                 android:id="@+id/downloadingFileUrl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
@@ -115,17 +101,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/downloaded_application_from"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/downloaded_application_from" />
 
             <TextView
                 android:id="@+id/downloadedFileUrl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
@@ -141,17 +122,12 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/download_failed"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/download_failed" />
 
             <TextView
                 android:id="@+id/downloadFileFailedUrl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
@@ -165,11 +141,8 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/verifying_downloaded_application_certificate"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/verifying_downloaded_application_certificate" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -189,23 +162,16 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/downloaded_application_is_verified"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/downloaded_application_is_verified" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:text="@string/sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintDownloadGoodHash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
@@ -237,44 +203,31 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/downloaded_application_is_not_verified"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/downloaded_application_is_not_verified" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:text="@string/expected_sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintDownloadBadHashExpected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:text="@string/but_was" />
 
             <TextView
                 android:id="@+id/fingerprintDownloadBadHashActual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:layout_marginTop="8dp"
                 android:text="@string/invalid_downloaded_certificate_fingerprint_explanation"
                 android:textIsSelectable="true" />
@@ -291,23 +244,16 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/installed_application_is_verified"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/installed_application_is_verified" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:text="@string/sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintInstalledGoodHash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
@@ -323,44 +269,31 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/installed_app_is_not_verified"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/installed_app_is_not_verified" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:text="@string/expected_sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintInstalledBadHashExpected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:text="@string/but_was" />
 
             <TextView
                 android:id="@+id/fingerprintInstalledBadHashActual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:textIsSelectable="true"
                 android:typeface="monospace" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultTextView"
                 android:layout_marginTop="8dp"
                 android:text="@string/invalid_installed_certificate_fingerprint_explanation"
                 android:textIsSelectable="true" />
@@ -375,11 +308,8 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/application_successful_installed"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/application_successful_installed" />
 
             <Button
                 android:id="@+id/installerSuccessButton"
@@ -398,11 +328,8 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/application_installation_was_unsuccessful"
-                android:textStyle="bold" />
+                style="@style/BoldTextView"
+                android:text="@string/application_installation_was_unsuccessful" />
 
             <Button
                 android:id="@+id/installerFailedButton"
