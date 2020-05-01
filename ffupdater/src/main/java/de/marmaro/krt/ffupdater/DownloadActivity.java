@@ -37,24 +37,16 @@ import de.marmaro.krt.ffupdater.version.AvailableVersions;
 public class DownloadActivity extends AppCompatActivity {
     private static final String LOG_TAG = "DownloadActivity";
 
-    //
-
     public static String EXTRA_APP_NAME = "app_name";
     public static String EXTRA_DOWNLOAD_URL = "download_url";
     public static final int REQUEST_CODE_INSTALL = 401;
 
-    //
-
-    private long downloadId = -1;
-    private boolean killSwitch;
-
     private DownloadManagerDelegator downloadManager;
-
-    //
-
     protected App app;
     protected String downloadUrl;
     protected AvailableVersions appUpdate;
+    private long downloadId = -1;
+    private boolean killSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +112,7 @@ public class DownloadActivity extends AppCompatActivity {
         });
     }
 
-    protected void downloadApplication() {
+    private void downloadApplication() {
         downloadId = downloadManager.enqueue(
                 this,
                 downloadUrl,
@@ -172,7 +164,7 @@ public class DownloadActivity extends AppCompatActivity {
         }
     };
 
-    protected void install() {
+    private void install() {
         Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
         if (Build.VERSION.SDK_INT < 24) {
             intent.setData(Uri.fromFile(downloadManager.getFileForDownloadedFile(downloadId)));
@@ -186,7 +178,7 @@ public class DownloadActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_CODE_INSTALL);
     }
 
-    protected void hideAllEntries() {
+    private void hideAllEntries() {
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlSuccess).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlFailure).setVisibility(View.GONE);
@@ -203,37 +195,37 @@ public class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.fingerprintInstalledBad).setVisibility(View.GONE);
     }
 
-    protected void actionFetching() {
+    private void actionFetching() {
         findViewById(R.id.fetchUrl).setVisibility(View.VISIBLE);
         findTextViewById(R.id.fetchUrlTextView).setText(getString(R.string.fetch_url_for_download, app.getDownloadSource(this)));
     }
 
-    protected void actionFetchSuccessful() {
+    private void actionFetchSuccessful() {
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlSuccess).setVisibility(View.VISIBLE);
         findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(R.string.fetched_url_for_download_successfully, app.getDownloadSource(this)));
     }
 
-    protected void actionFetchUnsuccessful() {
+    private void actionFetchUnsuccessful() {
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlFailure).setVisibility(View.VISIBLE);
         findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(R.string.fetched_url_for_download_unsuccessfully, app.getDownloadSource(this)));
         findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
     }
 
-    protected void actionDownloadBegin() {
+    private void actionDownloadBegin() {
         runOnUiThread(() -> {
             findViewById(R.id.downloadingFile).setVisibility(View.VISIBLE);
             findTextViewById(R.id.downloadingFileUrl).setText(downloadUrl);
         });
     }
 
-    protected void actionDownloadUpdateProgressBar(int percent) {
+    private void actionDownloadUpdateProgressBar(int percent) {
         runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar)).setProgress(percent));
 
     }
 
-    protected void actionDownloadUpdateStatus(int status) {
+    private void actionDownloadUpdateStatus(int status) {
         runOnUiThread(() -> {
             String text = getString(R.string.download_application_from_with_status, getDownloadStatusAsString(status));
             findTextViewById(R.id.downloadingFileText).setText(text);
@@ -256,7 +248,7 @@ public class DownloadActivity extends AppCompatActivity {
         return "";
     }
 
-    protected void actionDownloadFailed() {
+    private void actionDownloadFailed() {
         runOnUiThread(() -> {
             findViewById(R.id.downloadingFile).setVisibility(View.GONE);
             findViewById(R.id.downloadFileFailed).setVisibility(View.VISIBLE);
@@ -265,7 +257,7 @@ public class DownloadActivity extends AppCompatActivity {
         });
     }
 
-    protected void actionDownloadFinished() {
+    private void actionDownloadFinished() {
         runOnUiThread(() -> {
             runOnUiThread(() -> findViewById(R.id.downloadingFile).setVisibility(View.GONE));
             findViewById(R.id.downloadedFile).setVisibility(View.VISIBLE);
@@ -273,11 +265,11 @@ public class DownloadActivity extends AppCompatActivity {
         });
     }
 
-    protected void actionVerifyingSignature() {
+    private void actionVerifyingSignature() {
         runOnUiThread(() -> findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.VISIBLE));
     }
 
-    protected void actionSignatureGood(String hash) {
+    private void actionSignatureGood(String hash) {
         runOnUiThread(() -> {
             findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
             findViewById(R.id.fingerprintDownloadGood).setVisibility(View.VISIBLE);
@@ -286,7 +278,7 @@ public class DownloadActivity extends AppCompatActivity {
         });
     }
 
-    protected void actionSignatureBad(String hash) {
+    private void actionSignatureBad(String hash) {
         runOnUiThread(() -> {
             findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
             findViewById(R.id.fingerprintDownloadBad).setVisibility(View.VISIBLE);
@@ -296,7 +288,7 @@ public class DownloadActivity extends AppCompatActivity {
         });
     }
 
-    protected void actionInstallationFinished(boolean success) {
+    private void actionInstallationFinished(boolean success) {
         downloadManager.remove(downloadId);
         runOnUiThread(() -> {
             findViewById(R.id.installConfirmation).setVisibility(View.GONE);
@@ -309,7 +301,7 @@ public class DownloadActivity extends AppCompatActivity {
         });
     }
 
-    protected void actionVerifyInstalledAppSignature() {
+    private void actionVerifyInstalledAppSignature() {
         runOnUiThread(() -> {
             Pair<Boolean, String> validCertificate = CertificateFingerprint.checkFingerprintOfInstalledApp(this, app);
             if (validCertificate.first) {
@@ -323,7 +315,7 @@ public class DownloadActivity extends AppCompatActivity {
         });
     }
 
-    protected TextView findTextViewById(int id) {
+    private TextView findTextViewById(int id) {
         return findViewById(id);
     }
 }
