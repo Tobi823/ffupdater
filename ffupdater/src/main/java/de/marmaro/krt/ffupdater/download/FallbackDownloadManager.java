@@ -56,6 +56,7 @@ class FallbackDownloadManager {
         return id;
     }
 
+    @NonNull
     private File download(Context context, String downloadUrl) throws IOException {
         File file = DownloadManagerDelegator.generateTempFile(context);
         URL url = new URL(downloadUrl);
@@ -84,17 +85,14 @@ class FallbackDownloadManager {
         context.sendBroadcast(intent, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
-    int remove(long[] ids) {
-        int counter = 0;
+    void remove(long[] ids) {
         for (long id : ids) {
             File file = files.get(id);
             if (file != null) {
                 Preconditions.checkArgument(file.delete());
-                ++counter;
             }
             files.remove(id);
         }
-        return counter;
     }
 
     @NonNull
@@ -114,6 +112,7 @@ class FallbackDownloadManager {
         return Objects.requireNonNull(files.get(id));
     }
 
+    @NonNull
     Uri getUriForDownloadedFile(long id) {
         throw new RuntimeException("not implemented because FallbackDownloadManager should only be necessary for " +
                 "devices with API Level <=20 which never need an Uri for installation");

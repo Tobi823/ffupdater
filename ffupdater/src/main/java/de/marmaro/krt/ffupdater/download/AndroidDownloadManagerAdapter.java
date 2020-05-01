@@ -20,7 +20,8 @@ import static android.app.DownloadManager.COLUMN_STATUS;
 import static android.app.DownloadManager.COLUMN_TOTAL_SIZE_BYTES;
 
 /**
- * Created by Tobiwan on 01.05.2020.
+ * This class helps to adapt the android {@code android.app.DownloadManager} to be used by the {@code DownloadManagerDelegator}.
+ * Moreover this class simplifies the usage of {@code android.app.DownloadManager}.
  */
 class AndroidDownloadManagerAdapter {
     private static final String HTTPS_PROTOCOL = "https";
@@ -47,11 +48,11 @@ class AndroidDownloadManagerAdapter {
         return id;
     }
 
-    int remove(long... ids) {
+    void remove(long... ids) {
         for (long id : ids) {
             files.remove(id);
         }
-        return downloadManager.remove(ids);
+        downloadManager.remove(ids);
     }
 
     @NonNull

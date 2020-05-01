@@ -22,7 +22,7 @@ import static android.content.Context.DOWNLOAD_SERVICE;
  * Moreover this class helps to interact with {@code android.app.DownloadManager} more easily.
  */
 public class DownloadManagerDelegator {
-    public static final String CACHE_SUBFOLDER_NAME = "ffupdater_app_download";
+    private static final String CACHE_SUBFOLDER_NAME = "ffupdater_app_download";
     private AndroidDownloadManagerAdapter androidDownloadManagerAdapter;
     private FallbackDownloadManager fallbackDownloadManager;
 
@@ -35,12 +35,14 @@ public class DownloadManagerDelegator {
     }
 
     /**
-     *
-     * @param context
-     * @param downloadUrl
-     * @param notificationTitle
-     * @param notificationVisibility
-     * @return
+     * Enqueue a new download.
+     * When {@code FallbackDownloadManager} is used, then no notification will be displayed.
+     * The method is inspired by {@code android.app.DownloadManager.enqueue()}
+     * @param context context
+     * @param downloadUrl url for the download
+     * @param notificationTitle title for the download notification
+     * @param notificationVisibility visibility of the download notification
+     * @return new generated id for the download
      */
     public long enqueue(Context context, String downloadUrl, String notificationTitle, int notificationVisibility) {
         if (fallbackDownloadManager == null) {
@@ -51,21 +53,23 @@ public class DownloadManagerDelegator {
     }
 
     /**
-     *
-     * @param ids
-     * @return
+     * Delete the download files by their ids.
+     * The method is inspired by {@code android.app.DownloadManager.remove()}
+     * @param ids ids
      */
-    public int remove(long... ids) {
+    public void remove(long... ids) {
         if (fallbackDownloadManager == null) {
-            return androidDownloadManagerAdapter.remove(ids);
+            androidDownloadManagerAdapter.remove(ids);
         } else {
-            return fallbackDownloadManager.remove(ids);
+            fallbackDownloadManager.remove(ids);
         }
     }
 
     /**
-     * @param id
-     * @return
+     * Return the status and percent for a download.
+     * This method is simple to use then {@code android.app.DownloadManager.query()}
+     * @param id id
+     * @return status (constants from {@code android.app.DownloadManager}) and percent (0-100)
      */
     @NonNull
     public Pair<Integer, Integer> getStatusAndProgress(long id) {
@@ -77,8 +81,11 @@ public class DownloadManagerDelegator {
     }
 
     /**
-     * @param id
-     * @return
+     * Return the uri for the downloaded file.
+     * This method will fail when TSLv1.2 is not enabled by default.
+     * The Uri is no longer available, when the download id was removed.
+     * @param id id
+     * @return url for the downloaded file
      */
     public Uri getUriForDownloadedFile(long id) {
         if (fallbackDownloadManager == null) {
@@ -89,9 +96,10 @@ public class DownloadManagerDelegator {
     }
 
     /**
-     *
-     * @param id
-     * @return
+     * Return the downloaded file.
+     * The file is no longer available, when the download id was removed.
+     * @param id id
+     * @return downloaded file
      */
     public File getFileForDownloadedFile(long id) {
         if (fallbackDownloadManager == null) {
@@ -101,6 +109,14 @@ public class DownloadManagerDelegator {
         }
     }
 
+    /**
+     * Helper for creating a temporary file which can be access by the file app installer (API Level < 24/Nougat).
+     * The method have to create a subfolder in {@code context.getExternalCacheDir()} - only subfolder can be access
+     * by other apps.
+     * @see <a href="https://developer.android.com/training/data-storage">Data and file storage overview</>
+     * @param context context
+     * @return temporary file
+     */
     static File generateTempFile(Context context) {
         File cacheFolder = new File(context.getExternalCacheDir(), CACHE_SUBFOLDER_NAME);
         if (!cacheFolder.exists()) {
