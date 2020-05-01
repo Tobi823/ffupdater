@@ -88,7 +88,7 @@ public class Notificator extends Worker {
     @Override
     public Result doWork() {
         Log.d(LOG_TAG, "doWork() executed");
-        AvailableVersions appUpdate = AvailableVersions.create(getApplicationContext().getPackageManager());
+        AvailableVersions appUpdate = new AvailableVersions(getApplicationContext().getPackageManager());
         Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
         appUpdate.checkUpdatesForInstalledApps(disableApps, null, () -> {
             if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
