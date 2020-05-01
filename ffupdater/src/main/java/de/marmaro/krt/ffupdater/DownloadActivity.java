@@ -190,8 +190,7 @@ public class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlSuccess).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlFailure).setVisibility(View.GONE);
-        findViewById(R.id.downloadingFileV1).setVisibility(View.GONE);
-        findViewById(R.id.downloadingFileV2).setVisibility(View.GONE);
+        findViewById(R.id.downloadingFile).setVisibility(View.GONE);
         findViewById(R.id.downloadedFile).setVisibility(View.GONE);
         findViewById(R.id.downloadFileFailed).setVisibility(View.GONE);
         findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
@@ -224,20 +223,20 @@ public class DownloadActivity extends AppCompatActivity {
 
     protected void actionDownloadBegin() {
         runOnUiThread(() -> {
-            findViewById(R.id.downloadingFileV2).setVisibility(View.VISIBLE);
-            findTextViewById(R.id.downloadingFileV2Url).setText(downloadUrl);
+            findViewById(R.id.downloadingFile).setVisibility(View.VISIBLE);
+            findTextViewById(R.id.downloadingFileUrl).setText(downloadUrl);
         });
     }
 
     protected void actionDownloadUpdateProgressBar(int percent) {
-        runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileV2ProgressBar)).setProgress(percent));
+        runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar)).setProgress(percent));
 
     }
 
     protected void actionDownloadUpdateStatus(int status) {
         runOnUiThread(() -> {
             String text = getString(R.string.download_application_from_with_status, getDownloadStatusAsString(status));
-            findTextViewById(R.id.downloadingFileV2Text).setText(text);
+            findTextViewById(R.id.downloadingFileText).setText(text);
         });
     }
 
@@ -259,7 +258,7 @@ public class DownloadActivity extends AppCompatActivity {
 
     protected void actionDownloadFailed() {
         runOnUiThread(() -> {
-            findViewById(R.id.downloadingFileV1).setVisibility(View.GONE);
+            findViewById(R.id.downloadingFile).setVisibility(View.GONE);
             findViewById(R.id.downloadFileFailed).setVisibility(View.VISIBLE);
             findTextViewById(R.id.downloadFileFailedUrl).setText(downloadUrl);
             findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
@@ -268,7 +267,7 @@ public class DownloadActivity extends AppCompatActivity {
 
     protected void actionDownloadFinished() {
         runOnUiThread(() -> {
-            runOnUiThread(() -> findViewById(R.id.downloadingFileV2).setVisibility(View.GONE));
+            runOnUiThread(() -> findViewById(R.id.downloadingFile).setVisibility(View.GONE));
             findViewById(R.id.downloadedFile).setVisibility(View.VISIBLE);
             findTextViewById(R.id.downloadedFileUrl).setText(downloadUrl);
         });
