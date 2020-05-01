@@ -42,6 +42,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String LOG_TAG = "MainActivity";
     private AvailableVersions appUpdate;
     private ProgressBar progressBar;
 
@@ -78,14 +79,14 @@ public class MainActivity extends AppCompatActivity {
 
         Set<String> sets = PreferenceManager.getDefaultSharedPreferences(this).getStringSet("disableApps", null);
         if (sets != null) {
-            Log.w("MainActivity", "disableApps: " + sets.toString());
+            Log.w(LOG_TAG, "disableApps: " + sets.toString());
         }
 
         String checkInterval = PreferenceManager.getDefaultSharedPreferences(this).getString("checkInterval", "-");
-        Log.w("MainActivity", "checkInterval: " + checkInterval);
+        Log.w(LOG_TAG, "checkInterval: " + checkInterval);
 
         boolean automaticCheck = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("automaticCheck", true);
-        Log.w("MainActivity", "automaticCheck: " + automaticCheck);
+        Log.w(LOG_TAG, "automaticCheck: " + automaticCheck);
     }
 
     @Override
