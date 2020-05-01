@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * This class will emulated the behavior of the {@code android.app.DownloadManager} for easier integration in
- * {@code SchemeDownloadActivity} and downloads files with TLSv1.2.
+ * {@code DownloadActivity} and downloads files with TLSv1.2.
  * Reason: On older devices (API Level 16 - 19) TLSv1.2 is available but not enabled by default =>
  * {@code android.app.DownloadManager} does not use TLSv1.2 - although github.com requires TLSv1.2 or TLSv1.3.
  *

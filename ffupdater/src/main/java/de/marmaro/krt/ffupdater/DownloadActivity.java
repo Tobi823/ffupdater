@@ -34,8 +34,8 @@ import de.marmaro.krt.ffupdater.version.AvailableVersions;
  * The DownloadManager is more difficult to use then the default java way, but the DownloadManager offers more features
  * like restarting downloads, showing the current download status etc.
  */
-public class SchemeDownloadActivity extends AppCompatActivity {
-    private static final String LOG_TAG = "SchemeDownloadActivity";
+public class DownloadActivity extends AppCompatActivity {
+    private static final String LOG_TAG = "DownloadActivity";
 
     //
 

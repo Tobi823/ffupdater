@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -241,9 +240,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Intent intent = new Intent(this, SchemeDownloadActivity.class);
-        intent.putExtra(SchemeDownloadActivity.EXTRA_APP_NAME, app.name());
-        intent.putExtra(SchemeDownloadActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
+        Intent intent = new Intent(this, DownloadActivity.class);
+        intent.putExtra(DownloadActivity.EXTRA_APP_NAME, app.name());
+        intent.putExtra(DownloadActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
         startActivity(intent);
     }
 
