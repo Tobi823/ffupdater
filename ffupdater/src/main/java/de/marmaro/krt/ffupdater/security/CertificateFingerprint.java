@@ -36,7 +36,7 @@ public class CertificateFingerprint {
 
     /**
      * Validate the SHA256 fingerprint of the certificate of the downloaded application as APK file.
-     * apksig: https://android.googlesource.com/platform/tools/apksig/
+     * @see <a href="https://android.googlesource.com/platform/tools/apksig/">apksig project page</a>
      *
      * @param file APK file
      * @param app  app
@@ -61,12 +61,12 @@ public class CertificateFingerprint {
 
     /**
      * Validate the SHA256 fingerprint of the certificate of the installed application.
-     * https://stackoverflow.com/a/22506133
-     * https://gist.github.com/scottyab/b849701972d57cf9562e
      *
      * @param context context
      * @param app     app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
+     * @see <a href="https://stackoverflow.com/a/22506133">Example on how to generate the certificate fingerprint</a>
+     * @see <a href="https://gist.github.com/scottyab/b849701972d57cf9562e">Another example</a>
      */
     @SuppressLint("PackageManagerGetSignatures")
     public static Pair<Boolean, String> checkFingerprintOfInstalledApp(Context context, App app) {

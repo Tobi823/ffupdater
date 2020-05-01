@@ -10,7 +10,7 @@ import static android.os.Build.VERSION_CODES.LOLLIPOP;
  * Apps may support all, some or only one specific ABI (application binary interfaces).
  * But most smartphones only supports some ABIs like x86, x64_64 + x86, ...
  * This class determines the best suited ABI for the smartphone and is necessary for downloading the correct APK file.
- *
+ * <p>
  * The best suited ABI is selected with this priority:
  * 1. arm64-v8a
  * 2. armeabi-v7a
@@ -35,9 +35,11 @@ public class DeviceABI {
     }
 
     /**
-     * All supported ABIs (see https://developer.android.com/ndk/guides/abis)
+     * All supported ABIs
      * "Note: Historically the NDK supported ARMv5 (armeabi), and 32-bit and 64-bit MIPS, but
      * support for these ABIs was removed in NDK r17." (r17c release in June 2018)
+     *
+     * @see <a href="https://developer.android.com/ndk/guides/abis">List of offical supported ABIS</a>
      */
     public enum ABI {
         AARCH64,

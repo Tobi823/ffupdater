@@ -17,7 +17,7 @@ import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86_64;
 
 /**
  * All supported apps.
- * You can verify the APK certificate fingerprint on https://www.apkmirror.com and other sites.
+ * You can verify the APK certificate fingerprint on <a href="https://www.apkmirror.com">APKMirror</a> and other sites.
  */
 public enum App {
     FENNEC_RELEASE(R.string.fennecReleaseTitleText,

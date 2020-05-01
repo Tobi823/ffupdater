@@ -28,7 +28,8 @@ import java.util.concurrent.atomic.AtomicLong;
  * {@code SchemeDownloadActivity} and downloads files with TLSv1.2.
  * Reason: On older devices (API Level 16 - 19) TLSv1.2 is available but not enabled by default =>
  * {@code android.app.DownloadManager} does not use TLSv1.2 - although github.com requires TLSv1.2 or TLSv1.3.
- * Supported TLS versions: https://developer.android.com/reference/javax/net/ssl/SSLSocket.html
+ *
+ * @see <a href="https://developer.android.com/reference/javax/net/ssl/SSLSocket.html">supported TLS versions</a>
  */
 class FallbackDownloadManager {
     private static final String LOG_TAG = "FallbackDownloadManager";
@@ -56,6 +57,13 @@ class FallbackDownloadManager {
         return id;
     }
 
+    /**
+     * @param context     context
+     * @param downloadUrl download url
+     * @return downloaded file
+     * @throws IOException exception
+     * @see <a href="https://www.baeldung.com/java-download-file">Example on how to copy from InputStream to OutputStream</a>
+     */
     @NonNull
     private File download(Context context, String downloadUrl) throws IOException {
         File file = DownloadManagerDelegator.generateTempFile(context);

@@ -23,8 +23,9 @@ import javax.net.ssl.X509TrustManager;
 
 /**
  * This is a workaround to enable TLSv1.2 (required for Github) on older devices.
- * https://gist.github.com/Navneet7k/45dcea08ffc8a4e6750b2c1beefffc28/
- * https://medium.com/@krisnavneet/how-to-solve-sslhandshakeexception-in-android-ssl23-get-server-hello-tlsv1-alert-protocol-13b457c724ef
+ *
+ * @see <a href="https://gist.github.com/Navneet7k/45dcea08ffc8a4e6750b2c1beefffc28/">Example for enabling TLSv1.2</a>
+ * @see <a href="https://medium.com/@krisnavneet/how-to-solve-sslhandshakeexception-in-android-ssl23-get-server-hello-tlsv1-alert-protocol-13b457c724ef">Medium article on how to enable TLSv1.2</a>
  */
 public class TLSSocketFactory extends SSLSocketFactory {
     private static final String TLS_1_2 = "TLSv1.2";
@@ -47,10 +48,9 @@ public class TLSSocketFactory extends SSLSocketFactory {
 
     /**
      * Try to enable TLSv1.2 if necessary. TLSv1.2 is available since API Level 16 but not always enabled
-     * on older devices.
-     * - Github:  TLSv1.2+ (https://www.ssllabs.com/ssltest/analyze.html?d=api.github.com 21.04.2020)
-     * - Mozilla: TLSv1.0+ (https://www.ssllabs.com/ssltest/analyze.html?d=download%2dinstaller.cdn.mozilla.net&latest 21.04.2020)
-     * Source: https://stackoverflow.com/a/42856460
+     * on older devices. (21.04.2020)
+     * - Github:  @see <a href="https://www.ssllabs.com/ssltest/analyze.html?d=api.github.com">TLSv1.2+</a>
+     * - Mozilla: @see <a href="https://www.ssllabs.com/ssltest/analyze.html?d=download%2dinstaller.cdn.mozilla.net&latest">TLSv1.0+</a>
      */
     public static void enableTLSv12IfNecessary() {
         if (isDefaultTLSv12Available()) {
