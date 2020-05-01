@@ -34,4 +34,13 @@
     <style name="BoldTextView" parent="DefaultTextView">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="MonospaceSelectableTextView" parent="DefaultTextView">
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <style name="DownloadActivityDefaultSegments">
+
+    </style>
 </resources>
