@@ -173,21 +173,17 @@ public class SchemeDownloadActivity extends AppCompatActivity {
     };
 
     protected void install() {
+        Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
         if (Build.VERSION.SDK_INT < 24) {
-            Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
             intent.setData(Uri.fromFile(downloadManager.getFileForDownloadedFile(downloadId)));
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-            startActivityForResult(intent, REQUEST_CODE_INSTALL);
         } else {
-            Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
             intent.setData(downloadManager.getUriForDownloadedFile(downloadId));
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
             intent.putExtra(DownloadManager.EXTRA_DOWNLOAD_ID, downloadId);
-            startActivityForResult(intent, REQUEST_CODE_INSTALL);
         }
+        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+        startActivityForResult(intent, REQUEST_CODE_INSTALL);
     }
 
     protected void hideAllEntries() {
