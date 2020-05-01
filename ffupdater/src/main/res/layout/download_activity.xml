@@ -92,7 +92,7 @@
         <LinearLayout
             android:id="@+id/downloadFileFailed"
             style="@style/DownloadActivitySegment"
-            android:background="#b80f0a"
+            android:background="@color/errorRed"
             android:padding="8dp">
 
             <TextView
@@ -124,7 +124,7 @@
         <LinearLayout
             android:id="@+id/fingerprintDownloadGood"
             style="@style/DownloadActivitySegment"
-            android:background="#a4c639"
+            android:background="@color/successGreen"
             android:padding="8dp">
 
             <TextView
@@ -147,9 +147,7 @@
 
             <Button
                 android:id="@+id/installConfirmationButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultButton"
                 android:text="@string/install_application" />
 
         </LinearLayout>
@@ -157,7 +155,7 @@
         <LinearLayout
             android:id="@+id/fingerprintDownloadBad"
             style="@style/DownloadActivitySegment"
-            android:background="#b80f0a"
+            android:background="@color/errorRed"
             android:padding="8dp">
 
             <TextView
@@ -191,7 +189,7 @@
         <LinearLayout
             android:id="@+id/fingerprintInstalledGood"
             style="@style/DownloadActivitySegment"
-            android:background="#a4c639"
+            android:background="@color/successGreen"
             android:padding="8dp">
 
             <TextView
@@ -211,7 +209,7 @@
         <LinearLayout
             android:id="@+id/fingerprintInstalledBad"
             style="@style/DownloadActivitySegment"
-            android:background="#b80f0a"
+            android:background="@color/errorRed"
             android:padding="8dp">
 
             <TextView
@@ -252,9 +250,7 @@
 
             <Button
                 android:id="@+id/installerSuccessButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultButton"
                 android:text="@string/back_to_application_overview" />
 
         </LinearLayout>
@@ -269,9 +265,7 @@
 
             <Button
                 android:id="@+id/installerFailedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                style="@style/DefaultButton"
                 android:text="@string/back_to_application_overview" />
 
         </LinearLayout>

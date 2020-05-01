@@ -32,6 +32,12 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="DefaultButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="BoldTextView" parent="DefaultTextView">
         <item name="android:textStyle">bold</item>
     </style>
