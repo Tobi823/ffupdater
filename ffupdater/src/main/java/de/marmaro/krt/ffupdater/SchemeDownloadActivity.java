@@ -28,7 +28,7 @@ import de.marmaro.krt.ffupdater.utils.Utils;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
 /**
- * Activity for downloading and installing apps on devices with API Level >= 24.
+ * Activity for downloading and installing apps on devices with API Level >= 24/Nougat.
  * Reason: If have to use the DownloadManager because this is the easiest way to download the app and access it with
  * the scheme format (for example: content://downloads/all_downloads/20).
  * The DownloadManager is more difficult to use then the default java way, but the DownloadManager offers more features

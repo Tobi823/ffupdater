@@ -125,7 +125,7 @@ public class Notificator extends Worker {
 
     /**
      * This method will create a notification channel for the "update notification".
-     * Reason: Since Android 9 notification can only be created with an existing notification channel.
+     * Reason: Since API Level 28/Oreo notification can only be created with an existing notification channel.
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel() {

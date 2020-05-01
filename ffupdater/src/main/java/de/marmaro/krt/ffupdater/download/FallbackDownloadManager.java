@@ -123,6 +123,6 @@ class FallbackDownloadManager {
     @NonNull
     Uri getUriForDownloadedFile(long id) {
         throw new RuntimeException("not implemented because FallbackDownloadManager should only be necessary for " +
-                "devices with API Level <=20 which never need an Uri for installation");
+                "devices with API Level <= 20/KitKat  which never need an Uri for installation");
     }
 }
