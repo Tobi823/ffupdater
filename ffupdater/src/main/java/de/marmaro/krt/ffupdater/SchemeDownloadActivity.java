@@ -23,8 +23,15 @@ import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 
+/**
+ * Activity for downloading and installing apps on devices with API Level >= 24.
+ * Reason: If have to use the DownloadManager because this is the easiest way to download the app and access it with
+ * the scheme format (for example: content://downloads/all_downloads/20).
+ * The DownloadManager is more difficult to use then the default java way, but the DownloadManager offers more features
+ * like restarting downloads, showing the current download status etc.
+ */
 public class SchemeDownloadActivity extends DownloadActivity {
-    public static final String LOG_TAG = "SchemeDownloadActivity";
+    private static final String LOG_TAG = "SchemeDownloadActivity";
 
     private File copiedFile;
     private long downloadId = -1;
@@ -129,6 +136,7 @@ public class SchemeDownloadActivity extends DownloadActivity {
         }
 
         // https://www.baeldung.com/java-download-file
+        Log.e(LOG_TAG, downloadManager.getUriForDownloadedFile(id).toString());
         try (InputStream rawInput = getContentResolver().openInputStream(downloadManager.getUriForDownloadedFile(id));
              BufferedInputStream input = new BufferedInputStream(Objects.requireNonNull(rawInput));
              BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {

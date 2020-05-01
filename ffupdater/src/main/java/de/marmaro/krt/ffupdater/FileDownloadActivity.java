@@ -19,8 +19,13 @@ import java.net.URL;
 
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 
+/**
+ * Activity for downloading and installing apps on devices with API Level < 24.
+ * Reason: I can't use the DownloadManager because these devices require the app as a {@code java.io.File}.
+ * The DownloadManager offers the downloaded file only in the Scheme TODO
+ */
 public class FileDownloadActivity extends DownloadActivity {
-    public static final String LOG_TAG = "FileDownloadActivity";
+    private static final String LOG_TAG = "FileDownloadActivity";
 
     private File cacheFolder;
     private File downloadedFile;

@@ -20,8 +20,9 @@ import de.marmaro.krt.ffupdater.version.AvailableVersions;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 
 /**
- * Base activity for installing apps on older devices with {@code de.marmaro.krt.ffupdater.FileDownloadActivity}
- * or on new devices with {@code de.marmaro.krt.ffupdater.SchemeDownloadActivity}.
+ * Base activity for downloading and installing apps.
+ * For devices with API Level < 24, use {@code de.marmaro.krt.ffupdater.FileDownloadActivity}.
+ * For devices with API Level >= 24, use {@code de.marmaro.krt.ffupdater.SchemeDownloadActivity}.
  */
 public abstract class DownloadActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_INSTALL = 401;
