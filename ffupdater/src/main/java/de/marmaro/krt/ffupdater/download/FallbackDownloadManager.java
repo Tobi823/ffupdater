@@ -32,40 +32,50 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 class FallbackDownloadManager {
     private static final String LOG_TAG = "FallbackDownloadManager";
+    private static final String HTTPS_PROTOCOL = "https";
     private Map<Long, Integer> status = new ConcurrentHashMap<>();
     private Map<Long, File> files = new ConcurrentHashMap<>();
     private AtomicLong idGenerator = new AtomicLong(1000);
 
-    long enqueue(Context context, Uri uri, File cacheDir) {
+    long enqueue(Context context, String downloadUrl) {
         long id = idGenerator.getAndIncrement();
+        status.put(id, DownloadManager.STATUS_PENDING);
         new Thread(() -> {
-            status.put(id, DownloadManager.STATUS_PENDING);
-            File file = null;
             try {
-                file = File.createTempFile("download", ".apk", cacheDir);
                 status.put(id, DownloadManager.STATUS_RUNNING);
-                try (BufferedInputStream in = new BufferedInputStream(new URL(uri.toString()).openStream());
-                     BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
-                    byte[] dataBuffer = new byte[1024];
-                    int bytesRead;
-                    while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
-                        out.write(dataBuffer, 0, bytesRead);
-                    }
-                    out.flush();
-                }
+                File downloadedFile = download(context, downloadUrl);
                 status.put(id, DownloadManager.STATUS_SUCCESSFUL);
-                files.put(id, file);
+                files.put(id, downloadedFile);
                 sendBroadcast(context, id);
             } catch (IOException e) {
                 status.put(id, DownloadManager.STATUS_FAILED);
                 Log.e(LOG_TAG, "failed to download app", e);
-                if (file != null && file.exists()) {
-                    Preconditions.checkArgument(file.delete());
-                }
                 sendBroadcast(context, id);
             }
         }).start();
         return id;
+    }
+
+    private File download(Context context, String downloadUrl) throws IOException {
+        File file = DownloadManagerDelegator.generateTempFile(context);
+        URL url = new URL(downloadUrl);
+        Preconditions.checkArgument(HTTPS_PROTOCOL.equals(url.getProtocol()));
+
+        try (BufferedInputStream in = new BufferedInputStream(url.openStream());
+             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
+            byte[] dataBuffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+                out.write(dataBuffer, 0, bytesRead);
+            }
+            out.flush();
+        } catch (IOException e) {
+            if (file.exists()) {
+                Preconditions.checkArgument(file.delete());
+            }
+            throw e;
+        }
+        return file;
     }
 
     private void sendBroadcast(Context context, long id) {
@@ -100,7 +110,12 @@ class FallbackDownloadManager {
     }
 
     @NonNull
-    File getUriForDownloadedFile(long id) {
+    File getFileForDownloadedFile(long id) {
         return Objects.requireNonNull(files.get(id));
+    }
+
+    Uri getUriForDownloadedFile(long id) {
+        throw new RuntimeException("not implemented because FallbackDownloadManager should only be necessary for " +
+                "devices with API Level <=20 which never need an Uri for installation");
     }
 }
