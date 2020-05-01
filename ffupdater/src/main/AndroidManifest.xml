@@ -24,7 +24,6 @@
         <activity
             android:name=".settings.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
-        <activity android:name=".FileDownloadActivity"></activity>
         <activity android:name=".SchemeDownloadActivity"></activity>
         <activity
             android:name=".MainActivity"

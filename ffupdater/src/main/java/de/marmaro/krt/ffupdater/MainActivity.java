@@ -23,10 +23,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+
+import javax.net.ssl.SSLContext;
 
 import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
@@ -63,12 +66,26 @@ public class MainActivity extends AppCompatActivity {
         packageManager = getPackageManager();
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 
+        try {
+            SSLContext instance = SSLContext.getInstance("TLSv1.2");
+            int a = 0;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
         StrictModeSetup.enable();
         TLSSocketFactory.enableTLSv12IfNecessary();
         initUI();
         Notificator.start(this);
 
         appUpdate = new AvailableVersions(getPackageManager());
+
+        try {
+            SSLContext instance = SSLContext.getInstance("TLSv1.2");
+            int a = 0;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -224,14 +241,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Intent intent;
-        if (Build.VERSION.SDK_INT < 24) {
-            intent = new Intent(this, FileDownloadActivity.class);
-        } else {
-            intent = new Intent(this, SchemeDownloadActivity.class);
-        }
-        intent.putExtra(FileDownloadActivity.EXTRA_APP_NAME, app.name());
-        intent.putExtra(FileDownloadActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
+        Intent intent = new Intent(this, SchemeDownloadActivity.class);
+        intent.putExtra(SchemeDownloadActivity.EXTRA_APP_NAME, app.name());
+        intent.putExtra(SchemeDownloadActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
         startActivity(intent);
     }
 

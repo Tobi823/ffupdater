@@ -2,8 +2,6 @@ package de.marmaro.krt.ffupdater.security;
 
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -29,20 +27,36 @@ import javax.net.ssl.X509TrustManager;
  * https://medium.com/@krisnavneet/how-to-solve-sslhandshakeexception-in-android-ssl23-get-server-hello-tlsv1-alert-protocol-13b457c724ef
  */
 public class TLSSocketFactory extends SSLSocketFactory {
+    private static final String TLS_1_2 = "TLSv1.2";
+    private static final String TLS_1_3 = "TLSv1.3";
 
     /**
-     * Try to enable TLSv1.2 if necessary. TLSv1.2 is available since API 16 but not always enabled
+     * @return is TSLv1.2 or TSLv1.3 on default available (for e.g DownloadManager, HttpsURLConnection, ...)
+     */
+    public static boolean isDefaultTLSv12Available() {
+        try {
+            List<String> protocols = Arrays.asList(SSLContext.getDefault().getDefaultSSLParameters().getProtocols());
+            if (protocols.contains(TLS_1_2) || protocols.contains(TLS_1_3)) {
+                return true;
+            }
+        } catch (NoSuchAlgorithmException e) {
+            // ignore
+        }
+        return false;
+    }
+
+    /**
+     * Try to enable TLSv1.2 if necessary. TLSv1.2 is available since API Level 16 but not always enabled
      * on older devices.
      * - Github:  TLSv1.2+ (https://www.ssllabs.com/ssltest/analyze.html?d=api.github.com 21.04.2020)
      * - Mozilla: TLSv1.0+ (https://www.ssllabs.com/ssltest/analyze.html?d=download%2dinstaller.cdn.mozilla.net&latest 21.04.2020)
      * Source: https://stackoverflow.com/a/42856460
      */
     public static void enableTLSv12IfNecessary() {
+        if (isDefaultTLSv12Available()) {
+            return;
+        }
         try {
-            List<String> protocols = Arrays.asList(SSLContext.getDefault().getDefaultSSLParameters().getProtocols());
-            if (protocols.contains("TLSv1.2") || protocols.contains("TLSv1.3")) {
-                return;
-            }
             Log.d("MainAcitivity", "Device doesn't support TLSv1.2 or TLSv1.3 - try to enable these protocols");
             HttpsURLConnection.setDefaultSSLSocketFactory(new TLSSocketFactory());
         } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException e) {
