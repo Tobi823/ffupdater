@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,17 +10,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/fetchUrl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            style="@style/DownloadActivitySegment">
 
             <TextView
                 android:id="@+id/fetchUrlTextView"
@@ -38,10 +31,7 @@
 
         <LinearLayout
             android:id="@+id/fetchedUrlSuccess"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            style="@style/DownloadActivitySegment">
 
             <TextView
                 android:id="@+id/fetchedUrlSuccessTextView"
@@ -52,11 +42,8 @@
 
         <LinearLayout
             android:id="@+id/fetchedUrlFailure"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            style="@style/DownloadActivitySegment"
             android:background="#b80f0a"
-            android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
@@ -68,10 +55,7 @@
 
         <LinearLayout
             android:id="@+id/downloadingFile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            style="@style/DownloadActivitySegment">
 
             <TextView
                 android:id="@+id/downloadingFileText"
@@ -93,10 +77,7 @@
 
         <LinearLayout
             android:id="@+id/downloadedFile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            style="@style/DownloadActivitySegment">
 
             <TextView
                 style="@style/BoldTextView"
@@ -110,11 +91,8 @@
 
         <LinearLayout
             android:id="@+id/downloadFileFailed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            style="@style/DownloadActivitySegment"
             android:background="#b80f0a"
-            android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
@@ -129,10 +107,7 @@
 
         <LinearLayout
             android:id="@+id/verifyDownloadFingerprint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            style="@style/DownloadActivitySegment">
 
             <TextView
                 style="@style/BoldTextView"
@@ -148,11 +123,8 @@
 
         <LinearLayout
             android:id="@+id/fingerprintDownloadGood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            style="@style/DownloadActivitySegment"
             android:background="#a4c639"
-            android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
@@ -171,10 +143,7 @@
 
         <LinearLayout
             android:id="@+id/installConfirmation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            style="@style/DownloadActivitySegment">
 
             <Button
                 android:id="@+id/installConfirmationButton"
@@ -187,11 +156,8 @@
 
         <LinearLayout
             android:id="@+id/fingerprintDownloadBad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            style="@style/DownloadActivitySegment"
             android:background="#b80f0a"
-            android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
@@ -224,11 +190,8 @@
 
         <LinearLayout
             android:id="@+id/fingerprintInstalledGood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            style="@style/DownloadActivitySegment"
             android:background="#a4c639"
-            android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
@@ -247,11 +210,8 @@
 
         <LinearLayout
             android:id="@+id/fingerprintInstalledBad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            style="@style/DownloadActivitySegment"
             android:background="#b80f0a"
-            android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
@@ -284,10 +244,7 @@
 
         <LinearLayout
             android:id="@+id/installerSuccess"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            style="@style/DownloadActivitySegment">
 
             <TextView
                 style="@style/BoldTextView"
@@ -304,10 +261,7 @@
 
         <LinearLayout
             android:id="@+id/installerFailed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            style="@style/DownloadActivitySegment">
 
             <TextView
                 style="@style/BoldTextView"

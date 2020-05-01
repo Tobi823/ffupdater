@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="AppTheme.Base"/>
+    <style name="AppTheme" parent="AppTheme.Base" />
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -16,10 +16,11 @@
         <item name="cardElevation">4dp</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-    <style name="SettingTheme" parent="Theme.AppCompat.Light.DarkActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SettingTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
 
     <style name="AppTheme.TransparentText" parent="@android:style/TextAppearance">
         <item name="android:textColor">@android:color/transparent</item>
@@ -40,7 +41,10 @@
         <item name="android:typeface">monospace</item>
     </style>
 
-    <style name="DownloadActivityDefaultSegments">
-
+    <style name="DownloadActivitySegment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:orientation">vertical</item>
     </style>
 </resources>
