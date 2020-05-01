@@ -8,7 +8,7 @@
             app:title="Automatic in Background" />
 
         <ListPreference
-            app:defaultValue="15"
+            app:defaultValue="360"
             app:dependency="automaticCheck"
             app:entries="@array/checkIntervalEntries"
             app:entryValues="@array/checkIntervalValues"
