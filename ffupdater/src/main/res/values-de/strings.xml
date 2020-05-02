@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FFUpdater</string>
-    <string name="available_version">Aktuelle Version:</string>
-    <string name="download">Firefox herunterladen</string>
-    <string name="download_started">Download gestartet</string>
-    <string name="ff_not_installed">Firefox ist nicht installiert</string>
-    <string name="installed_version">Installierte Version:</string>
-    <string name="none">None</string>
     <string name="ok">OK</string>
-    <string name="checking">(überprüfen…)</string>
-    <string name="check_available_error_message">Die aktuelle Version von Firefox kann nicht festgestellt werden.\nÜberprüfen Sie die Internetverbindung.</string>
-    <string name="check_available">Aktuelle Version herausfinden</string>
     <string name="infobox">Diese einfache App aktualisiert Firefox. Klicken Sie den Knopf „Firefox herunterladen“ um die aktuelle Version von Firefox über HTTPS herunterzuladen. Je nach Gerät werden verschiedene Apps angeboten um das Herunterladen durchzuführen. Meist wird der Fortschritt des Herunterladens über ein Icon angezeigt. Nach dem Herunterladen öffnen Sie die APK-Datei und installieren Sie diese.\n\nDieser Prozess ist recht umständlich, daher ist Hilfe bei der Weiterentwicklung dieser App gerne gesehen.</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
     <string name="notification_title">Eine neue Firefox-Version wurde veröffentlicht</string>
     <string name="notification_text">Drücken Sie, um die App zu öffnen</string>
     <string name="action_settings">die Einstellungen</string>
     <string name="about">Über</string>
-    <string name="not_installed">Nicht installiert</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="update_notification_channel_name">Update-Benachrichtigung</string>
     <string name="update_notification_channel_description">Diese Benachrichtigungskategorie informiert Sie über neue verfügbare Firefox-Updates.</string>
-    <string name="pref_category_automatic_update_check">Automatische Update-Prüfung</string>
-    <string name="pref_check_interval_title">Zeitintervall</string>
     <string name="update_interval_15min">15 Minuten</string>
     <string name="update_interval_18h">18 Stunden</string>
     <string name="update_interval_1d">1 Tag</string>
@@ -40,7 +28,6 @@
     <string name="update_interval_6d">6 Tage</string>
     <string name="update_interval_6h">6 Stunden</string>
     <string name="update_interval_8h">"8 Stunden "</string>
-    <string name="update_interval_never">Nie (deaktivere die automatische Update-Prüfung)</string>
     <string name="update_interval_12h">12 Stunden</string>
     <string name="switch_to_unsafe_fennec_message">Dieser Aktualisierungskanal wird für Entwickler und Prüfer von Mozilla Firefox entworfen. Jede Version kann verschiedene Programmfehler enthalten, die Ihre übliche Arbeit mit dem Browser betreffen können. Wollen Sie wirklich auf diesen Kanal umschalten?</string>
     <string name="switch_to_unsafe_app_negative_button">Nein, gehe zu \'Release\' zurück</string>

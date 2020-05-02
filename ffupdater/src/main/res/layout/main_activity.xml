@@ -17,7 +17,6 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
@@ -41,7 +40,6 @@
                 app:layout_collapseMode="parallax" />
 
             <TextView
-                android:id="@+id/toolbar_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -66,7 +64,6 @@
     <include layout="@layout/content_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addBrowser"
         android:layout_width="wrap_content"
         android:layout_height="94dp"
         android:layout_gravity="end|center"

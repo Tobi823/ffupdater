@@ -75,7 +75,6 @@
                         app:layout_constraintTop_toTopOf="@+id/fennecReleaseAvailableVersionText" />
 
                     <TextView
-                        android:id="@+id/fennecReleaseTitle"
                         style="@style/AppCardTitle"
                         android:text="@string/fennecReleaseTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecReleaseIcon"
@@ -141,7 +140,6 @@
                         app:layout_constraintTop_toTopOf="@+id/fennecBetaAvailableVersionText" />
 
                     <TextView
-                        android:id="@+id/fennecBetaTitle"
                         style="@style/AppCardTitle"
                         android:text="@string/fennecBetaTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecBetaIcon"
@@ -208,7 +206,6 @@
                         app:layout_constraintTop_toTopOf="@+id/fennecNightlyAvailableVersionText" />
 
                     <TextView
-                        android:id="@+id/fennecNightlyTitle"
                         style="@style/AppCardTitle"
                         android:text="@string/fennecNightlyTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecNightlyIcon"
@@ -276,7 +273,6 @@
                         app:layout_constraintTop_toTopOf="@+id/firefoxKlarAvailableVersionText" />
 
                     <TextView
-                        android:id="@+id/firefoxKlarTitle"
                         style="@style/AppCardTitle"
                         android:text="@string/firefoxKlarTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxKlarIcon"
@@ -307,7 +303,6 @@
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <TextView
-                        android:id="@+id/firefoxFocusTitle"
                         style="@style/AppCardTitle"
                         android:text="@string/firefoxFocusTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxFocusIcon"
@@ -375,7 +370,6 @@
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <TextView
-                        android:id="@+id/firefoxLiteTitle"
                         style="@style/AppCardTitle"
                         android:text="@string/firefoxLiteTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxLiteIcon"
@@ -441,7 +435,6 @@
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <TextView
-                        android:id="@+id/fenixTitle"
                         style="@style/AppCardTitle"
                         android:text="@string/fenixTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fenixIcon"

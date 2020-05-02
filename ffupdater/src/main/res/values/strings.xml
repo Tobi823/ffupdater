@@ -9,31 +9,15 @@
         On default the app will check regularly for updates in the background.
         I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request.
     </string>
-    <string name="installed_version">Installed version:</string>
-    <string name="available_version">Available version:</string>
-    <string name="checking">(checking…)</string>
-    <string name="ff_not_installed">Firefox is not installed</string>
-    <string name="check_available_error_message">Could not determine the highest available Firefox version.\nPlease make sure you can connect to the Internet.</string>
-    <string name="none">None</string>
     <string name="ok">OK</string>
-    <string name="check_available">Check available version</string>
-    <string name="download">Download Firefox</string>
-    <string name="download_started">Download started</string>
-    <string name="installed_version_text_format" translatable="false">%s (%d)</string>
-    <string name="not_installed_text_format" translatable="false">%s (%s)</string>
     <string name="notification_title">A new Firefox version was released</string>
     <string name="notification_text">Press to open the app</string>
     <string name="action_settings">Settings</string>
     <string name="about">About</string>
     <string name="not_connected_to_internet">No network connection</string>
-    <string name="not_installed">Not Installed</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="firefox_for_android" translatable="false">Firefox for Android</string>
-    <string name="firefox_for_android_beta" translatable="false">Firefox for Android Beta</string>
-    <string name="firefox_nightly_for_developer" translatable="false">Firefox Nightly for Developer</string>
     <string name="update_notification_channel_name">Update notification</string>
     <string name="update_notification_channel_description">This notification category will inform you about new available Firefox updates.</string>
-    <string name="update_interval_never">Never (disable automatic update check)</string>
     <string name="update_interval_15min">15 minutes</string>
     <string name="update_interval_30min">30 minutes</string>
     <string name="update_interval_1h">1 hour</string>
@@ -52,8 +36,6 @@
     <string name="update_interval_1w">1 week</string>
     <string name="update_interval_2w">2 weeks</string>
     <string name="update_interval_1m">1 month</string>
-    <string name="pref_check_interval_title">Time interval</string>
-    <string name="pref_category_automatic_update_check">Automatic update check</string>
     <string name="switch_to_unsafe_app_title">Warning</string>
     <!-- TODO update text -->
     <string name="switch_to_unsafe_fennec_message">This app is designed for developers and testers of Mozilla Firefox. It may contain various bugs that can affect your usual work with the browser. Do you really want to install this app?</string>
@@ -80,10 +62,8 @@
     <string name="downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
     <string name="sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
     <string name="downloaded_application_is_verified">Downloaded application is verified</string>
-    <string name="verify_application_certificate">Verify application certificate</string>
     <string name="downloaded_application_from">Downloaded application from:</string>
     <string name="download_application_from_with_status">Download application (%1$s)</string>
-    <string name="download_application_from">Download application</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
