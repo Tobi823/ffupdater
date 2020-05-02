@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("FindViewByIdCast")
     private void initUI() {
         setContentView(R.layout.main_activity);
 
@@ -138,37 +139,37 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progress_wheel);
 
-        availableVersionTextViews.put(App.FENNEC_RELEASE, (TextView) findViewById(R.id.fennecReleaseAvailableVersion));
-        availableVersionTextViews.put(App.FENNEC_BETA, (TextView) findViewById(R.id.fennecBetaAvailableVersion));
-        availableVersionTextViews.put(App.FENNEC_NIGHTLY, (TextView) findViewById(R.id.fennecNightlyAvailableVersion));
-        availableVersionTextViews.put(App.FIREFOX_KLAR, (TextView) findViewById(R.id.firefoxKlarAvailableVersion));
-        availableVersionTextViews.put(App.FIREFOX_FOCUS, (TextView) findViewById(R.id.firefoxFocusAvailableVersion));
-        availableVersionTextViews.put(App.FIREFOX_LITE, (TextView) findViewById(R.id.firefoxLiteAvailableVersion));
-        availableVersionTextViews.put(App.FENIX, (TextView) findViewById(R.id.fenixAvailableVersion));
+        availableVersionTextViews.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseAvailableVersion));
+        availableVersionTextViews.put(App.FENNEC_BETA, findViewById(R.id.fennecBetaAvailableVersion));
+        availableVersionTextViews.put(App.FENNEC_NIGHTLY, findViewById(R.id.fennecNightlyAvailableVersion));
+        availableVersionTextViews.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarAvailableVersion));
+        availableVersionTextViews.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusAvailableVersion));
+        availableVersionTextViews.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteAvailableVersion));
+        availableVersionTextViews.put(App.FENIX, findViewById(R.id.fenixAvailableVersion));
 
-        installedVersionTextViews.put(App.FENNEC_RELEASE, (TextView) findViewById(R.id.fennecReleaseInstalledVersion));
-        installedVersionTextViews.put(App.FENNEC_BETA, (TextView) findViewById(R.id.fennecBetaInstalledVersion));
-        installedVersionTextViews.put(App.FENNEC_NIGHTLY, (TextView) findViewById(R.id.fennecNightlyInstalledVersion));
-        installedVersionTextViews.put(App.FIREFOX_KLAR, (TextView) findViewById(R.id.firefoxKlarInstalledVersion));
-        installedVersionTextViews.put(App.FIREFOX_FOCUS, (TextView) findViewById(R.id.firefoxFocusInstalledVersion));
+        installedVersionTextViews.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseInstalledVersion));
+        installedVersionTextViews.put(App.FENNEC_BETA, findViewById(R.id.fennecBetaInstalledVersion));
+        installedVersionTextViews.put(App.FENNEC_NIGHTLY, findViewById(R.id.fennecNightlyInstalledVersion));
+        installedVersionTextViews.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarInstalledVersion));
+        installedVersionTextViews.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusInstalledVersion));
         installedVersionTextViews.put(App.FIREFOX_LITE, (TextView) findViewById(R.id.firefoxLiteInstalledVersion));
-        installedVersionTextViews.put(App.FENIX, (TextView) findViewById(R.id.fenixInstalledVersion));
+        installedVersionTextViews.put(App.FENIX, findViewById(R.id.fenixInstalledVersion));
 
-        appButtons.put(App.FENNEC_RELEASE, (ImageButton) findViewById(R.id.fennecReleaseDownloadButton));
-        appButtons.put(App.FENNEC_BETA, (ImageButton) findViewById(R.id.fennecBetaDownloadButton));
-        appButtons.put(App.FENNEC_NIGHTLY, (ImageButton) findViewById(R.id.fennecNightlyDownloadButton));
-        appButtons.put(App.FIREFOX_KLAR, (ImageButton) findViewById(R.id.firefoxKlarDownloadButton));
-        appButtons.put(App.FIREFOX_FOCUS, (ImageButton) findViewById(R.id.firefoxFocusDownloadButton));
-        appButtons.put(App.FIREFOX_LITE, (ImageButton) findViewById(R.id.firefoxLiteDownloadButton));
-        appButtons.put(App.FENIX, (ImageButton) findViewById(R.id.fenixDownloadButton));
+        appButtons.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseDownloadButton));
+        appButtons.put(App.FENNEC_BETA, findViewById(R.id.fennecBetaDownloadButton));
+        appButtons.put(App.FENNEC_NIGHTLY, findViewById(R.id.fennecNightlyDownloadButton));
+        appButtons.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarDownloadButton));
+        appButtons.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusDownloadButton));
+        appButtons.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteDownloadButton));
+        appButtons.put(App.FENIX, findViewById(R.id.fenixDownloadButton));
 
-        appCards.put(App.FENNEC_RELEASE, (CardView) findViewById(R.id.fennecReleaseCard));
-        appCards.put(App.FENNEC_BETA, (CardView) findViewById(R.id.fennecBetaCard));
-        appCards.put(App.FENNEC_NIGHTLY, (CardView) findViewById(R.id.fennecNightlyCard));
-        appCards.put(App.FIREFOX_KLAR, (CardView) findViewById(R.id.firefoxKlarCard));
-        appCards.put(App.FIREFOX_FOCUS, (CardView) findViewById(R.id.firefoxFocusCard));
-        appCards.put(App.FIREFOX_LITE, (CardView) findViewById(R.id.firefoxLiteCard));
-        appCards.put(App.FENIX, (CardView) findViewById(R.id.fenixCard));
+        appCards.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseCard));
+        appCards.put(App.FENNEC_BETA, findViewById(R.id.fennecBetaCard));
+        appCards.put(App.FENNEC_NIGHTLY, findViewById(R.id.fennecNightlyCard));
+        appCards.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarCard));
+        appCards.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusCard));
+        appCards.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteCard));
+        appCards.put(App.FENIX, findViewById(R.id.fenixCard));
 
         infoButtonIdsToApp.put(R.id.fennecReleaseInfoButton, App.FENNEC_RELEASE);
         infoButtonIdsToApp.put(R.id.fennecBetaInfoButton, App.FENNEC_BETA);
