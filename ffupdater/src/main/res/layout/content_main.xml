@@ -55,69 +55,39 @@
 
                     <ImageView
                         android:id="@+id/fennecReleaseIcon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_firefox_logo" />
 
                     <TextView
                         android:id="@+id/fennecReleaseAvailableVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Available:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardAvailableVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecReleaseInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/fennecReleaseAvailableVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/fennecReleaseAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecReleaseAvailableVersionText" />
 
                     <TextView
                         android:id="@+id/fennecReleaseTitle"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="sans-serif-light"
-                        android:singleLine="true"
+                        style="@style/AppCardTitle"
                         android:text="@string/fennecReleaseTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecReleaseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/fennecReleaseInstalledVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:text="Installed:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardInstalledVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecReleaseIcon" />
 
                     <TextView
                         android:id="@+id/fennecReleaseInstalledVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/fennecReleaseInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecReleaseInstalledVersionText" />
 
@@ -155,69 +125,39 @@
 
                     <ImageView
                         android:id="@+id/fennecBetaIcon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_firefox_logo_beta" />
 
                     <TextView
                         android:id="@+id/fennecBetaAvailableVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Available:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardAvailableVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecBetaInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/fennecBetaAvailableVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/fennecBetaAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecBetaAvailableVersionText" />
 
                     <TextView
                         android:id="@+id/fennecBetaTitle"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="sans-serif-light"
-                        android:singleLine="true"
+                        style="@style/AppCardTitle"
                         android:text="@string/fennecBetaTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecBetaIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/fennecBetaInstalledVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:text="Installed:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardInstalledVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecBetaIcon" />
 
                     <TextView
                         android:id="@+id/fennecBetaInstalledVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/fennecBetaInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecBetaInstalledVersionText" />
 
@@ -250,69 +190,39 @@
 
                     <ImageView
                         android:id="@+id/fennecNightlyIcon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_firefox_logo_nightly" />
 
                     <TextView
                         android:id="@+id/fennecNightlyAvailableVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Available:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardAvailableVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecNightlyInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/fennecNightlyAvailableVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/fennecNightlyAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecNightlyAvailableVersionText" />
 
                     <TextView
                         android:id="@+id/fennecNightlyTitle"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="sans-serif-light"
-                        android:singleLine="true"
+                        style="@style/AppCardTitle"
                         android:text="@string/fennecNightlyTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fennecNightlyIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/fennecNightlyInstalledVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:text="Installed:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardInstalledVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fennecNightlyIcon" />
 
                     <TextView
                         android:id="@+id/fennecNightlyInstalledVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/fennecNightlyInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecNightlyInstalledVersionText" />
 
@@ -344,8 +254,7 @@
 
                     <ImageView
                         android:id="@+id/firefoxKlarIcon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        style="@style/AppCardIcon"
                         android:background="#A4007F"
                         android:padding="3dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -354,61 +263,32 @@
 
                     <TextView
                         android:id="@+id/firefoxKlarAvailableVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Available:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardAvailableVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/firefoxKlarInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/firefoxKlarAvailableVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/firefoxKlarAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxKlarAvailableVersionText" />
 
                     <TextView
                         android:id="@+id/firefoxKlarTitle"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="sans-serif-light"
-                        android:singleLine="true"
+                        style="@style/AppCardTitle"
                         android:text="@string/firefoxKlarTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxKlarIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/firefoxKlarInstalledVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:text="Installed:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardInstalledVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/firefoxKlarIcon" />
 
                     <TextView
                         android:id="@+id/firefoxKlarInstalledVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/firefoxKlarInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxKlarInstalledVersionText" />
 
@@ -426,61 +306,32 @@
 
                     <TextView
                         android:id="@+id/firefoxFocusTitle"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="sans-serif-light"
-                        android:singleLine="true"
+                        style="@style/AppCardTitle"
                         android:text="@string/firefoxFocusTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxFocusIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/firefoxFocusInstalledVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:text="Installed:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardInstalledVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/firefoxFocusIcon" />
 
                     <TextView
                         android:id="@+id/firefoxFocusInstalledVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/firefoxFocusInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxFocusInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/firefoxFocusAvailableVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Available:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardAvailableVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/firefoxFocusInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/firefoxFocusAvailableVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/firefoxFocusAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxFocusAvailableVersionText" />
 
@@ -500,8 +351,7 @@
 
                     <ImageView
                         android:id="@+id/firefoxFocusIcon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        style="@style/AppCardIcon"
                         android:background="#A4007F"
                         android:padding="3dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -522,61 +372,32 @@
 
                     <TextView
                         android:id="@+id/firefoxLiteTitle"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="sans-serif-light"
-                        android:singleLine="true"
+                        style="@style/AppCardTitle"
                         android:text="@string/firefoxLiteTitleText"
                         app:layout_constraintStart_toEndOf="@+id/firefoxLiteIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/firefoxLiteInstalledVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:text="Installed:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardInstalledVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/firefoxLiteIcon" />
 
                     <TextView
                         android:id="@+id/firefoxLiteInstalledVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/firefoxLiteInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxLiteInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/firefoxLiteAvailableVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Available:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardAvailableVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/firefoxLiteInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/firefoxLiteAvailableVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/firefoxLiteAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxLiteAvailableVersionText" />
 
@@ -596,8 +417,7 @@
 
                     <ImageView
                         android:id="@+id/firefoxLiteIcon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/firefox_lite" />
@@ -616,61 +436,32 @@
 
                     <TextView
                         android:id="@+id/fenixTitle"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:fontFamily="sans-serif-light"
-                        android:singleLine="true"
+                        style="@style/AppCardTitle"
                         android:text="@string/fenixTitleText"
                         app:layout_constraintStart_toEndOf="@+id/fenixIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/fenixInstalledVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:singleLine="true"
-                        android:text="Installed:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardInstalledVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fenixIcon" />
 
                     <TextView
                         android:id="@+id/fenixInstalledVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/fenixInstalledVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fenixInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/fenixAvailableVersionText"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Available:"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardAvailableVersionText"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/fenixInstalledVersionText" />
 
                     <TextView
                         android:id="@+id/fenixAvailableVersion"
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
+                        style="@style/AppCardVersion"
                         app:layout_constraintStart_toEndOf="@+id/fenixAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fenixAvailableVersionText" />
 
@@ -690,8 +481,7 @@
 
                     <ImageView
                         android:id="@+id/fenixIcon"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/firefox_preview" />
