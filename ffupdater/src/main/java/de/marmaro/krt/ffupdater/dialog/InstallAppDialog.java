@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,7 +13,6 @@ import java.util.List;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
 /**
@@ -42,19 +40,20 @@ public class InstallAppDialog extends DialogFragment {
                 .setTitle(R.string.download_new_app)
                 .setItems(appNames, (dialog, which) -> {
                     App app = apps.get(which);
-                    if (app.getUnsupportedAbis().contains(DeviceABI.getBestSuitedAbi())) {
+                    if (app.isIncompatibleWithDeviceAbi()) {
                         new UnsupportedAbiDialog().show(getParentFragmentManager(), UnsupportedAbiDialog.TAG);
-                        return;
                     }
-                    if (Build.VERSION.SDK_INT < app.getMinApiLevel()) {
+                    if (app.isIncompatibleWithDeviceApiLevel()) {
                         new DeviceTooOldDialog(app.getMinApiLevel()).show(getParentFragmentManager(), DeviceTooOldDialog.TAG);
-                        return;
                     }
-                    if (!app.getWarning(requireContext()).isEmpty()) {
-                        new InstallationWarningAppDialog(downloadCallback, app).show(getParentFragmentManager(), InstallationWarningAppDialog.TAG);
-                        return;
+
+                    if (app.isCompatibleWithDevice()) {
+                        if (!app.getWarning(requireContext()).isEmpty()) {
+                            new InstallationWarningAppDialog(downloadCallback, app).show(getParentFragmentManager(), InstallationWarningAppDialog.TAG);
+                            return;
+                        }
+                        downloadCallback.accept(app);
                     }
-                    downloadCallback.accept(app);
                 })
                 .create();
     }

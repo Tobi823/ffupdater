@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,13 +23,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-
-import javax.net.ssl.SSLContext;
 
 import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
@@ -36,7 +34,6 @@ import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
-import de.marmaro.krt.ffupdater.security.TLSSocketFactory;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
@@ -67,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 
         StrictModeSetup.enable();
-        TLSSocketFactory.enableTLSv12IfNecessary();
         Notificator.start(this);
 
         appUpdate = new AvailableVersions(getPackageManager());

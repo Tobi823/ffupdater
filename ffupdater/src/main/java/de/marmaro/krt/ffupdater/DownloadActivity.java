@@ -22,7 +22,7 @@ import org.apache.commons.codec.binary.ApacheCodecHex;
 import java.io.File;
 import java.util.Objects;
 
-import de.marmaro.krt.ffupdater.download.DownloadManagerDelegator;
+import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 import de.marmaro.krt.ffupdater.utils.Utils;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
@@ -41,7 +41,7 @@ public class DownloadActivity extends AppCompatActivity {
     public static String EXTRA_DOWNLOAD_URL = "download_url";
     public static final int REQUEST_CODE_INSTALL = 401;
 
-    private DownloadManagerDelegator downloadManager;
+    private DownloadManagerAdapter downloadManager;
     protected App app;
     protected String downloadUrl;
     protected AvailableVersions appUpdate;
@@ -53,7 +53,7 @@ public class DownloadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.download_activity);
         registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-        downloadManager = new DownloadManagerDelegator(this);
+        downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
 
         findViewById(R.id.installerSuccessButton).setOnClickListener(v -> finish());
         findViewById(R.id.installerFailedButton).setOnClickListener(v -> finish());

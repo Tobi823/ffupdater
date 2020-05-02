@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -47,7 +48,7 @@ public class AvailableVersions {
     private static final int TRAFFIC_FOCUS = 1002;
     private static final int TRAFFIC_LITE = 1003;
     private static final int TRAFFIC_FENIX = 1004;
-    public static final int NUMBER_BACKGROUND_THREADS = 5;
+    private static final int NUMBER_BACKGROUND_THREADS = 5;
 
     private ExecutorService executorService;
     private PackageManager packageManager;
@@ -107,6 +108,30 @@ public class AvailableVersions {
     }
 
     /**
+     * If the download url is cached by {@code checkUpdateForApp} or {@code checkUpdatesForInstalledApps} then the url is returned.
+     * If the download url is not cached then an empty string will be returned.
+     *
+     * @param app app
+     * @return download url for the app or empty string
+     */
+    @NotNull
+    public String getDownloadUrl(App app) {
+        return Utils.convertNullToEmptyString(urls.get(app));
+    }
+
+    /**
+     * Return the latest released version name of the app cached by {@code checkUpdateForApp} or {@code checkUpdatesForInstalledApps}.
+     * If the version name is not cached, then an empty string will be returned.
+     *
+     * @param app app
+     * @return latest version name from the developers or empty string
+     */
+    @NotNull
+    public String getAvailableVersion(App app) {
+        return Utils.convertNullToEmptyString(versions.get(app));
+    }
+
+    /**
      * Check for updates of installed applications and get the download links for these applications.
      *
      * @param activity if null, then the callback will be executed on a Non-Ui-Thread
@@ -134,7 +159,7 @@ public class AvailableVersions {
     /**
      * Check for update and get the download link for a specific app.
      *
-     * @param app
+     * @param app specific app
      * @param activity if null, then the callback will be executed on a Non-Ui-Thread
      *                 if not null, then the callback will be executed on the Ui-Thread
      * @param callback will be executed, when the check is ready
@@ -143,50 +168,23 @@ public class AvailableVersions {
         checkUpdates(Collections.singletonList(app), activity, callback);
     }
 
-    /**
-     * If the download url is cached by {@code checkUpdateForApp} or {@code checkUpdatesForInstalledApps} then the url is returned.
-     * If the download url is not cached then an empty string will be returned.
-     *
-     * @param app
-     * @return download url for the app or empty string
-     */
-    @NotNull
-    public String getDownloadUrl(App app) {
-        return Utils.convertNullToEmptyString(urls.get(app));
-    }
-
-    /**
-     * Return the latest released version name of the app cached by {@code checkUpdateForApp} or {@code checkUpdatesForInstalledApps}.
-     * If the version name is not cached, then an empty string will be returned.
-     *
-     * @param app
-     * @return latest version name from the developers or empty string
-     */
-    @NotNull
-    public String getAvailableVersion(App app) {
-        return Utils.convertNullToEmptyString(versions.get(app));
-    }
-
     private void checkUpdates(List<App> apps, @Nullable Activity activity, Runnable callback) {
-        Objects.requireNonNull(executorService);
         if (!futures.isEmpty()) {
             Log.w("AvailableVersions", "skip because an update is still pending");
             return;
         }
 
-        if (apps.contains(FENNEC_RELEASE) ||
-                apps.contains(FENNEC_BETA) ||
-                apps.contains(FENNEC_NIGHTLY)) {
-            futures.add(executorService.submit(() -> checkFennec(apps)));
+        List<App> supportedApps = filterUnsupportedApps(apps);
+        if (!Collections.disjoint(supportedApps, Arrays.asList(FENNEC_RELEASE, FENNEC_BETA, FENNEC_NIGHTLY))) {
+            futures.add(executorService.submit(() -> checkFennec(supportedApps)));
         }
-        if (apps.contains(FIREFOX_KLAR) ||
-                apps.contains(FIREFOX_FOCUS)) {
-            futures.add(executorService.submit(() -> checkFocusKlar(apps)));
+        if (!Collections.disjoint(supportedApps, Arrays.asList(FIREFOX_KLAR, FIREFOX_FOCUS))) {
+            futures.add(executorService.submit(() -> checkFocusKlar(supportedApps)));
         }
-        if (apps.contains(FIREFOX_LITE)) {
+        if (supportedApps.contains(FIREFOX_LITE)) {
             futures.add(executorService.submit(this::checkLite));
         }
-        if (apps.contains(FENIX)) {
+        if (supportedApps.contains(FENIX)) {
             futures.add(executorService.submit(this::checkFenix));
         }
 
@@ -199,13 +197,22 @@ public class AvailableVersions {
                     Log.e("AvailableVersions", "wait too long", e);
                 }
             }
-            // TODO doc that activity must be not null when running on ui thread
             if (activity == null) {
                 callback.run();
             } else {
                 activity.runOnUiThread(callback);
             }
         });
+    }
+
+    private List<App> filterUnsupportedApps(List<App> apps) {
+        List<App> supportedApps = new ArrayList<>(apps.size());
+        for (App app : apps) {
+            if (app.isCompatibleWithDevice()) {
+                supportedApps.add(app);
+            }
+        }
+        return supportedApps;
     }
 
     private void checkFennec(List<App> appsToCheck) {

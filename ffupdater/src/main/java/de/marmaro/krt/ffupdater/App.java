@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater;
 
 import android.content.Context;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.device.DeviceABI.ABI;
 
 import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86;
@@ -137,5 +139,26 @@ public enum App {
 
     public int getMinApiLevel() {
         return minApiLevel;
+    }
+
+    /**
+     * @return can the app be installed on the device?
+     */
+    public boolean isCompatibleWithDevice() {
+        return !isIncompatibleWithDeviceAbi() && !isIncompatibleWithDeviceApiLevel();
+    }
+
+    /**
+     * @return is the app not available for the device's ABI?
+     */
+    public boolean isIncompatibleWithDeviceAbi() {
+        return unsupportedAbis.contains(DeviceABI.getBestSuitedAbi());
+    }
+
+    /**
+     * @return is the app not compatible with the device's API Level?
+     */
+    public boolean isIncompatibleWithDeviceApiLevel() {
+        return Build.VERSION.SDK_INT < minApiLevel;
     }
 }

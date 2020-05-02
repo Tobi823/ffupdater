@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.download;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.util.Pair;
 
@@ -10,34 +11,31 @@ import androidx.annotation.NonNull;
 import com.google.common.base.Preconditions;
 
 import java.io.File;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
-import de.marmaro.krt.ffupdater.security.TLSSocketFactory;
-
-import static android.content.Context.DOWNLOAD_SERVICE;
+import static android.app.DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR;
+import static android.app.DownloadManager.COLUMN_STATUS;
+import static android.app.DownloadManager.COLUMN_TOTAL_SIZE_BYTES;
 
 /**
- * This class delegates all calls to the correct downloader. Either {@code android.app.DownloadManager} or
- * {@code FallbackDownloadManager}.
- * Moreover this class helps to interact with {@code android.app.DownloadManager} more easily.
+ * This class helps to use the {@code android.app.DownloadManager} more easily.
  */
-public class DownloadManagerDelegator {
+public class DownloadManagerAdapter {
     private static final String CACHE_SUBFOLDER_NAME = "ffupdater_app_download";
-    private AndroidDownloadManagerAdapter androidDownloadManagerAdapter;
-    private FallbackDownloadManager fallbackDownloadManager;
+    private static final String HTTPS_PROTOCOL = "https";
 
-    public DownloadManagerDelegator(Context context) {
-        if (TLSSocketFactory.isDefaultTLSv12Available()) {
-            this.androidDownloadManagerAdapter = new AndroidDownloadManagerAdapter((DownloadManager) context.getSystemService(DOWNLOAD_SERVICE));
-        } else {
-            this.fallbackDownloadManager = new FallbackDownloadManager();
-        }
+    private DownloadManager downloadManager;
+    private Map<Long, File> files = new ConcurrentHashMap<>();
+
+    public DownloadManagerAdapter(DownloadManager downloadManager) {
+        this.downloadManager = Objects.requireNonNull(downloadManager);
     }
 
     /**
      * Enqueue a new download.
-     * When {@code FallbackDownloadManager} is used, then no notification will be displayed.
-     * The method is inspired by {@code android.app.DownloadManager.enqueue()}
      * @param context context
      * @param downloadUrl url for the download
      * @param notificationTitle title for the download notification
@@ -45,24 +43,29 @@ public class DownloadManagerDelegator {
      * @return new generated id for the download
      */
     public long enqueue(Context context, String downloadUrl, String notificationTitle, int notificationVisibility) {
-        if (fallbackDownloadManager == null) {
-            return androidDownloadManagerAdapter.enqueue(context, downloadUrl, notificationTitle, notificationVisibility);
-        } else {
-            return fallbackDownloadManager.enqueue(context, downloadUrl);
-        }
+        File downloadDestination = generateTempFile(context);
+        Uri uri = Uri.parse(downloadUrl);
+        Preconditions.checkArgument(HTTPS_PROTOCOL.equals(uri.getScheme()));
+
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setTitle(notificationTitle);
+        request.setNotificationVisibility(notificationVisibility);
+        request.setDestinationUri(Uri.fromFile(downloadDestination));
+
+        long id = downloadManager.enqueue(request);
+        files.put(id, downloadDestination);
+        return id;
     }
 
     /**
      * Delete the download files by their ids.
-     * The method is inspired by {@code android.app.DownloadManager.remove()}
      * @param ids ids
      */
     public void remove(long... ids) {
-        if (fallbackDownloadManager == null) {
-            androidDownloadManagerAdapter.remove(ids);
-        } else {
-            fallbackDownloadManager.remove(ids);
+        for (long id : ids) {
+            files.remove(id);
         }
+        downloadManager.remove(ids);
     }
 
     /**
@@ -73,26 +76,26 @@ public class DownloadManagerDelegator {
      */
     @NonNull
     public Pair<Integer, Integer> getStatusAndProgress(long id) {
-        if (fallbackDownloadManager == null) {
-            return androidDownloadManagerAdapter.getStatusAndProgress(id);
-        } else {
-            return fallbackDownloadManager.getStatusAndProgress(id);
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(id);
+        try (Cursor cursor = downloadManager.query(query)) {
+            cursor.moveToFirst();
+            int status = cursor.getInt(cursor.getColumnIndex(COLUMN_STATUS));
+
+            double columnTotalBytes = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES));
+            double columnActualBytes = cursor.getInt(cursor.getColumnIndex(COLUMN_BYTES_DOWNLOADED_SO_FAR));
+            int percent = (int) ((columnTotalBytes / columnActualBytes) * 100);
+            return new Pair<>(status, percent);
         }
     }
 
     /**
-     * Return the uri for the downloaded file.
-     * This method will fail when TSLv1.2 is not enabled by default.
-     * The Uri is no longer available, when the download id was removed.
+     * Return the uri for the downloaded file. The Uri is no longer available, when the download id was removed.
      * @param id id
      * @return url for the downloaded file
      */
     public Uri getUriForDownloadedFile(long id) {
-        if (fallbackDownloadManager == null) {
-            return androidDownloadManagerAdapter.getUriForDownloadedFile(id);
-        } else {
-            return fallbackDownloadManager.getUriForDownloadedFile(id);
-        }
+        return downloadManager.getUriForDownloadedFile(id);
     }
 
     /**
@@ -102,11 +105,7 @@ public class DownloadManagerDelegator {
      * @return downloaded file
      */
     public File getFileForDownloadedFile(long id) {
-        if (fallbackDownloadManager == null) {
-            return androidDownloadManagerAdapter.getFileForDownloadedFile(id);
-        } else {
-            return fallbackDownloadManager.getFileForDownloadedFile(id);
-        }
+        return Objects.requireNonNull(files.get(id));
     }
 
     /**
@@ -117,7 +116,7 @@ public class DownloadManagerDelegator {
      * @param context context
      * @return temporary file
      */
-    static File generateTempFile(Context context) {
+    private static File generateTempFile(Context context) {
         File cacheFolder = new File(context.getExternalCacheDir(), CACHE_SUBFOLDER_NAME);
         if (!cacheFolder.exists()) {
             Preconditions.checkArgument(cacheFolder.mkdir());

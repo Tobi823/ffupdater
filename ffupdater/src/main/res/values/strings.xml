@@ -104,5 +104,5 @@
     <string name="unsupported_abi_dialog_message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="install_application">Install application</string>
     <string name="device_too_old_dialog_title">Device is too old</string>
-    <string name="device_too_old_dialog_message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app or buy a new smartphone.</string>
+    <string name="device_too_old_dialog_message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>
 </resources>
