@@ -10,8 +10,8 @@
         I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request.
     </string>
     <string name="ok">OK</string>
-    <string name="notification_title">A new Firefox version was released</string>
-    <string name="notification_text">Press to open the app</string>
+    <string name="notification_title">Update is available</string>
+    <string name="notification_text">Press to view update</string>
     <string name="action_settings">Settings</string>
     <string name="about">About</string>
     <string name="not_connected_to_internet">No network connection</string>
@@ -70,9 +70,9 @@
     <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application is installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
     <string name="download_failed">Download failed</string>
     <string name="download_new_app">Download new app</string>
-    <string name="empty" />
-    <string name="mozilla">Mozilla</string>
-    <string name="github">Github</string>
+    <string name="empty" translatable="false" />
+    <string name="mozilla" translatable="false">Mozilla</string>
+    <string name="github" translatable="false">Github</string>
     <string name="fennec_release_description">This is the default and well-known Firefox browser from Mozilla.\n\nThe app will be downloaded from the official Mozilla API.</string>
     <string name="fennec_beta_description">This app is a prerelease of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>
     <string name="fennec_nightly_description">This app is a bleeding edge release of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>

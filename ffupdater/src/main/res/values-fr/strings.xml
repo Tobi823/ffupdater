@@ -2,11 +2,8 @@
 <resources>
     <string name="app_name">FFUpdater</string>
     <string name="ok">D\'accord</string>
-    <string name="infobox">Cette application permet de mettre à jour Firefox simplement. Cliquez sur le bouton «Télécharger» pour télécharger le programme d\'installation. La plupart des app permettant de télécharger affichent une icône indiquant la progression. Après la fin du téléchargement, installez le fichier APK.  C\'est une procédure compliquée, donc toute aide pour améliorer cette application est bien sûr bienvenue !</string>
 
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
-    <string name="notification_title">Une nouvelle version de Firefox a été publiée</string>
-    <string name="notification_text">Appuyez pour ouvrir l\'application</string>
     <string name="action_settings">Réglages</string>
     <string name="about">À propos</string>
     <string name="title_activity_settings">Réglages</string>

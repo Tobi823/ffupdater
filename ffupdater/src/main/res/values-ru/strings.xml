@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">FFUpdater</string>
-	<string name="infobox">Это простая программа для обновления Firefox. Нажмите на кнопку, чтобы отправить HTTPS-запрос за установщик. Многие программы для загрузки файлов отображают значок процесса загрузки. После ее завершения откройте загруженный APK-файл и установите его.\n\nЭто не самый удобный способ обновления, так что любая помощь приветствуется!</string>
-    <string name="ok">ОК</string>
-    <string name="notification_title">Выпущена новая версия Firefox</string>
-	<string name="notification_text">Нажмите, чтобы открыть приложение</string>
+	<string name="ok">ОК</string>
 	<string name="action_settings">Настройки</string>
 	<string name="about">О программе</string>
 	<string name="not_connected_to_internet">Вы не подключены к интернету</string>
