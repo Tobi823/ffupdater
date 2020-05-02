@@ -56,7 +56,7 @@ public enum App {
             R.string.github,
             "org.mozilla.klar",
             "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc",
-            Collections.emptyList(),
+            Arrays.asList(X86, X86_64),
             21),
     @SuppressWarnings("SpellCheckingInspection")
     FIREFOX_FOCUS(R.string.firefoxFocusTitleText,
