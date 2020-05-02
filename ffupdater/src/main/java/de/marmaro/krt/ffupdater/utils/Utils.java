@@ -9,8 +9,7 @@ import androidx.annotation.Nullable;
  * Class with useful helper methods.
  */
 public class Utils {
-
-    public static final String LOG_TAG = "Utils";
+    private static final String LOG_TAG = "Utils";
 
     /**
      * @param string string
@@ -25,6 +24,9 @@ public class Utils {
         return string;
     }
 
+    /**
+     * @param millis wait x milliseconds and ignore InterruptedException
+     */
     public static void sleepAndIgnoreInterruptedException(int millis) {
         try {
             Thread.sleep(millis);
