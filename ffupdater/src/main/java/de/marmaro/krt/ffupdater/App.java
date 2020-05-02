@@ -22,6 +22,7 @@ import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86_64;
  * You can verify the APK certificate fingerprint on <a href="https://www.apkmirror.com">APKMirror</a> and other sites.
  */
 public enum App {
+    @SuppressWarnings("SpellCheckingInspection")
     FENNEC_RELEASE(R.string.fennecReleaseTitleText,
             R.string.fennec_release_description,
             R.string.empty,
@@ -30,6 +31,7 @@ public enum App {
             "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04",
             Collections.emptyList(),
             16),
+    @SuppressWarnings("SpellCheckingInspection")
     FENNEC_BETA(R.string.fennecBetaTitleText,
             R.string.fennec_beta_description,
             R.string.switch_to_unsafe_fennec_message,
@@ -38,6 +40,7 @@ public enum App {
             "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04",
             Collections.emptyList(),
             16),
+    @SuppressWarnings("SpellCheckingInspection")
     FENNEC_NIGHTLY(R.string.fennecNightlyTitleText,
             R.string.fennec_nightly_description,
             R.string.switch_to_unsafe_fennec_message,
@@ -46,6 +49,7 @@ public enum App {
             "bc0488838d06f4ca6bf32386daab0dd8ebcf3e7730787459f62fb3cd14a1baaa",
             Collections.emptyList(),
             16),
+    @SuppressWarnings("SpellCheckingInspection")
     FIREFOX_KLAR(R.string.firefoxKlarTitleText,
             R.string.firefox_klar_description,
             R.string.empty,
@@ -54,6 +58,7 @@ public enum App {
             "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc",
             Collections.emptyList(),
             21),
+    @SuppressWarnings("SpellCheckingInspection")
     FIREFOX_FOCUS(R.string.firefoxFocusTitleText,
             R.string.firefox_focus_description,
             R.string.empty,
@@ -70,6 +75,7 @@ public enum App {
             "863a46f0973932b7d0199b549112741c2d2731ac72ea11b7523aa90a11bf5691",
             Collections.emptyList(),
             21),
+    @SuppressWarnings("SpellCheckingInspection")
     FENIX(R.string.fenixTitleText,
             R.string.fenix_description,
             R.string.switch_to_unsafe_fenix_message,
