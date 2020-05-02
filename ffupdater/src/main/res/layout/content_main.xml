@@ -33,43 +33,22 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/fennecReleaseCard"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:visibility="visible"
+                style="@style/AppCard"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <ImageButton
                         android:id="@+id/fennecReleaseInfoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Info about this app"
-                        android:onClick="infoButtonClicked"
+                        style="@style/AppCardInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecReleaseDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
                         android:id="@+id/fennecReleaseDownloadButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="downloadButtonClicked"
+                        style="@style/AppCardDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -148,12 +127,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/fennecBetaCard"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:visibility="visible"
+                style="@style/AppCard"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
@@ -167,24 +141,14 @@
 
                     <ImageButton
                         android:id="@+id/fennecBetaInfoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Info about this app"
-                        android:onClick="infoButtonClicked"
+                        style="@style/AppCardInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecBetaDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
                         android:id="@+id/fennecBetaDownloadButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="downloadButtonClicked"
+                        style="@style/AppCardDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -264,43 +228,22 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/fennecNightlyCard"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:visibility="visible"
+                style="@style/AppCard"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <ImageButton
                         android:id="@+id/fennecNightlyInfoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Info about this app"
-                        android:onClick="infoButtonClicked"
+                        style="@style/AppCardInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecNightlyDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
                         android:id="@+id/fennecNightlyDownloadButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="downloadButtonClicked"
+                        style="@style/AppCardDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -379,43 +322,22 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxKlarCard"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:visibility="visible"
+                style="@style/AppCard"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <ImageButton
                         android:id="@+id/firefoxKlarInfoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Info about this app"
-                        android:onClick="infoButtonClicked"
+                        style="@style/AppCardInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxKlarDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
                         android:id="@+id/firefoxKlarDownloadButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="downloadButtonClicked"
+                        style="@style/AppCardDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -496,21 +418,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxFocusCard"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                style="@style/AppCard"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <TextView
                         android:id="@+id/firefoxFocusTitle"
@@ -574,24 +486,14 @@
 
                     <ImageButton
                         android:id="@+id/firefoxFocusInfoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Info about this app"
-                        android:onClick="infoButtonClicked"
+                        style="@style/AppCardInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxFocusDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
                         android:id="@+id/firefoxFocusDownloadButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="downloadButtonClicked"
+                        style="@style/AppCardDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -612,21 +514,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxLiteCard"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                style="@style/AppCard"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <TextView
                         android:id="@+id/firefoxLiteTitle"
@@ -690,24 +582,14 @@
 
                     <ImageButton
                         android:id="@+id/firefoxLiteInfoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Info about this app"
-                        android:onClick="infoButtonClicked"
+                        style="@style/AppCardInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxLiteDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
                         android:id="@+id/firefoxLiteDownloadButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="downloadButtonClicked"
+                        style="@style/AppCardDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -726,21 +608,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/fenixCard"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                style="@style/AppCard"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp">
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
                     <TextView
                         android:id="@+id/fenixTitle"
@@ -804,24 +676,14 @@
 
                     <ImageButton
                         android:id="@+id/fenixInfoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Info about this app"
-                        android:onClick="infoButtonClicked"
+                        style="@style/AppCardInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fenixDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
                         android:id="@+id/fenixDownloadButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Download the latest Fennec Release"
-                        android:onClick="downloadButtonClicked"
+                        style="@style/AppCardDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
