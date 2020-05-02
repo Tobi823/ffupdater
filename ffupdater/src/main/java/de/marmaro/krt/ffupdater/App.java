@@ -132,11 +132,6 @@ public enum App {
         return signatureHash;
     }
 
-    @NonNull
-    public List<ABI> getUnsupportedAbis() {
-        return unsupportedAbis;
-    }
-
     public int getMinApiLevel() {
         return minApiLevel;
     }

@@ -27,8 +27,8 @@ public class DownloadManagerAdapter {
     private static final String CACHE_SUBFOLDER_NAME = "ffupdater_app_download";
     private static final String HTTPS_PROTOCOL = "https";
 
-    private DownloadManager downloadManager;
-    private Map<Long, File> files = new ConcurrentHashMap<>();
+    private final DownloadManager downloadManager;
+    private final Map<Long, File> files = new ConcurrentHashMap<>();
 
     public DownloadManagerAdapter(DownloadManager downloadManager) {
         this.downloadManager = Objects.requireNonNull(downloadManager);

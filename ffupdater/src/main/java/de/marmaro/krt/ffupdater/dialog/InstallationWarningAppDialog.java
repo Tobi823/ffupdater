@@ -8,9 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
-
-import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;

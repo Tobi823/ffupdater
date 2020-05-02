@@ -50,11 +50,11 @@ public class AvailableVersions {
     private static final int TRAFFIC_FENIX = 1004;
     private static final int NUMBER_BACKGROUND_THREADS = 5;
 
-    private ExecutorService executorService;
-    private PackageManager packageManager;
-    private Queue<Future> futures = new ConcurrentLinkedQueue<>();
-    private Map<App, String> versions = new ConcurrentHashMap<>();
-    private Map<App, String> urls = new ConcurrentHashMap<>();
+    private final ExecutorService executorService;
+    private final PackageManager packageManager;
+    private final Queue<Future> futures = new ConcurrentLinkedQueue<>();
+    private final Map<App, String> versions = new ConcurrentHashMap<>();
+    private final Map<App, String> urls = new ConcurrentHashMap<>();
 
     public AvailableVersions(PackageManager packageManager) {
         this.executorService = Executors.newFixedThreadPool(NUMBER_BACKGROUND_THREADS);

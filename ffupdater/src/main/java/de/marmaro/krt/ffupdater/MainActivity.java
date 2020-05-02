@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
     private ConnectivityManager connectivityManager;
     private PackageManager packageManager;
 
-    private Map<App, TextView> availableVersionTextViews = new HashMap<>();
-    private Map<App, TextView> installedVersionTextViews = new HashMap<>();
-    private Map<App, ImageButton> appButtons = new HashMap<>();
-    private Map<App, CardView> appCards = new HashMap<>();
-    private Map<Integer, App> infoButtonIdsToApp = new HashMap<>();
-    private Map<Integer, App> downloadButtonIdsToApp = new HashMap<>();
+    private final Map<App, TextView> availableVersionTextViews = new HashMap<>();
+    private final Map<App, TextView> installedVersionTextViews = new HashMap<>();
+    private final Map<App, ImageButton> appButtons = new HashMap<>();
+    private final Map<App, CardView> appCards = new HashMap<>();
+    private final Map<Integer, App> infoButtonIdsToApp = new HashMap<>();
+    private final Map<Integer, App> downloadButtonIdsToApp = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,11 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
         boolean automaticCheck = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("automaticCheck", true);
         Log.w(LOG_TAG, "automaticCheck: " + automaticCheck);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
     }
 
     @Override
@@ -152,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         installedVersionTextViews.put(App.FENNEC_NIGHTLY, findViewById(R.id.fennecNightlyInstalledVersion));
         installedVersionTextViews.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarInstalledVersion));
         installedVersionTextViews.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusInstalledVersion));
-        installedVersionTextViews.put(App.FIREFOX_LITE, (TextView) findViewById(R.id.firefoxLiteInstalledVersion));
+        installedVersionTextViews.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteInstalledVersion));
         installedVersionTextViews.put(App.FENIX, findViewById(R.id.fenixInstalledVersion));
 
         appButtons.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseDownloadButton));
@@ -234,19 +229,19 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo == null || !activeNetworkInfo.isConnected();
     }
 
-    // Listener
+    // android:onClick method calls: - do not delete
 
-    public void downloadButtonClicked(View view) {
+    public void onClickDownloadButton(View view) {
         App app = Objects.requireNonNull(downloadButtonIdsToApp.get(view.getId()));
         downloadApp(app);
     }
 
-    public void infoButtonClicked(View view) {
+    public void onClickInfoButton(View view) {
         App app = Objects.requireNonNull(infoButtonIdsToApp.get(view.getId()));
         new AppInfoDialog(app).show(getSupportFragmentManager(), AppInfoDialog.TAG);
     }
 
-    public void addAppButtonClicked(View view) {
+    public void onClickInstallApp(View view) {
         new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager(), InstallAppDialog.TAG);
     }
 }

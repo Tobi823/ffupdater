@@ -35,16 +35,14 @@ import de.marmaro.krt.ffupdater.version.AvailableVersions;
  * like restarting downloads, showing the current download status etc.
  */
 public class DownloadActivity extends AppCompatActivity {
-    private static final String LOG_TAG = "DownloadActivity";
-
-    public static String EXTRA_APP_NAME = "app_name";
-    public static String EXTRA_DOWNLOAD_URL = "download_url";
-    public static final int REQUEST_CODE_INSTALL = 401;
+    private static final int REQUEST_CODE_INSTALL = 401;
+    public static final String EXTRA_APP_NAME = "app_name";
+    public static final String EXTRA_DOWNLOAD_URL = "download_url";
 
     private DownloadManagerAdapter downloadManager;
-    protected App app;
-    protected String downloadUrl;
-    protected AvailableVersions appUpdate;
+    private App app;
+    private String downloadUrl;
+    private AvailableVersions appUpdate;
     private long downloadId = -1;
     private boolean killSwitch;
 
@@ -141,7 +139,7 @@ public class DownloadActivity extends AppCompatActivity {
         }).start();
     }
 
-    private BroadcastReceiver onDownloadComplete = new BroadcastReceiver() {
+    private final BroadcastReceiver onDownloadComplete = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             long id = Objects.requireNonNull(intent.getExtras()).getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
             if (id != downloadId) {
