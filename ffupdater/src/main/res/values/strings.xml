@@ -43,13 +43,13 @@
     <string name="switch_to_unsafe_app_positive_button">Yes</string>
     <!-- TODO update text -->
     <string name="switch_to_unsafe_app_negative_button">No, don\'t install it</string>
-    <string name="fennecReleaseTitleText">Fennec Release</string>
-    <string name="fennecBetaTitleText">Fennec Beta</string>
-    <string name="fennecNightlyTitleText">Fennec Nightly</string>
+    <string name="fennecReleaseTitleText">Firefox Browser</string>
+    <string name="fennecBetaTitleText">Firefox Beta</string>
+    <string name="fennecNightlyTitleText">Firefox Nightly</string>
     <string name="firefoxKlarTitleText">Firefox Klar</string>
     <string name="firefoxFocusTitleText">Firefox Focus</string>
     <string name="firefoxLiteTitleText">Firefox Lite</string>
-    <string name="fenixTitleText">Fenix</string>
+    <string name="fenixTitleText">Firefox Preview</string>
     <string name="fetch_url_for_download">Fetch download url from %1$s</string>
     <string name="fetched_url_for_download_successfully">Fetched download url from %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Failed to fetch the download url from %1$s</string>

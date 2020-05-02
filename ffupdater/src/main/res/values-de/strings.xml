@@ -30,4 +30,11 @@
     <string name="switch_to_unsafe_app_negative_button">Nein, gehe zu \'Release\' zurück</string>
     <string name="switch_to_unsafe_app_positive_button">Ja</string>
     <string name="switch_to_unsafe_app_title">"Warnung "</string>
+    <string name="fennecReleaseTitleText">Firefox Browser</string>
+    <string name="fennecBetaTitleText">Firefox Beta</string>
+    <string name="fennecNightlyTitleText">Firefox Nightly</string>
+    <string name="firefoxKlarTitleText">Firefox Klar</string>
+    <string name="firefoxFocusTitleText">Firefox Focus</string>
+    <string name="firefoxLiteTitleText">Firefox Lite</string>
+    <string name="fenixTitleText">Firefox Preview</string>
 </resources>

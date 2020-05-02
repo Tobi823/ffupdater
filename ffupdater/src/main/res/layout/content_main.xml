@@ -60,7 +60,7 @@
                         style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_firefox_logo" />
+                        app:srcCompat="@drawable/ic_logo_fennec_release" />
 
                     <TextView
                         android:id="@+id/fennecReleaseAvailableVersionText"
@@ -125,7 +125,7 @@
                         style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_firefox_logo_beta" />
+                        app:srcCompat="@drawable/ic_logo_firefox_beta" />
 
                     <TextView
                         android:id="@+id/fennecBetaAvailableVersionText"
@@ -191,7 +191,7 @@
                         style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_firefox_logo_nightly" />
+                        app:srcCompat="@drawable/ic_logo_fennec_nightly" />
 
                     <TextView
                         android:id="@+id/fennecNightlyAvailableVersionText"
@@ -258,7 +258,7 @@
                         android:padding="3dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_firefox_logo_focus" />
+                        app:srcCompat="@drawable/ic_logo_firefox_klar" />
 
                     <TextView
                         android:id="@+id/firefoxKlarAvailableVersionText"
@@ -355,7 +355,7 @@
                         android:padding="3dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_firefox_logo_focus" />
+                        app:srcCompat="@drawable/ic_logo_firefox_focus" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -420,7 +420,7 @@
                         style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/firefox_lite" />
+                        app:srcCompat="@drawable/ic_logo_firefox_lite" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -485,7 +485,7 @@
                         style="@style/AppCardIcon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/firefox_preview" />
+                        app:srcCompat="@drawable/ic_logo_fenix" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
