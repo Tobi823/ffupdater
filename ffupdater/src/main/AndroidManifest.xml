@@ -23,12 +23,12 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/activity_settings_label"
+            android:label="@string/settings_activity_label"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
         <activity
             android:name=".InstallActivity"
-            android:label="Download Application"
+            android:label="@string/install_activity_label"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
         <activity
@@ -36,7 +36,6 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -6,7 +6,7 @@
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="action_settings_title">Réglages</string>
     <string name="action_about_title">À propos</string>
-    <string name="activity_settings_label">Réglages</string>
+    <string name="settings_activity_label">Réglages</string>
     <string name="update_notification_channel_name">Notification de mise à jour</string>
     <string name="update_notification_channel_description">Cette catégorie de notification vous informera des nouvelles mises à jour de Firefox disponibles.</string>
     <string name="update_interval_12h">12 heures</string>

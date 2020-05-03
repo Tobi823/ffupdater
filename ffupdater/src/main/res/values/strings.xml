@@ -14,7 +14,7 @@
     <string name="action_settings_title">Settings</string>
     <string name="action_about_title">About</string>
     <string name="not_connected_to_internet">No network connection</string>
-    <string name="activity_settings_label">Settings</string>
+    <string name="settings_activity_label">Settings</string>
     <string name="update_notification_channel_name">Update notification</string>
     <string name="update_notification_channel_description">This notification category will inform you about new available Firefox updates.</string>
     <string name="update_interval_15min">15 minutes</string>
@@ -88,4 +88,5 @@
     <string name="settings_check_interval_summary">How often should the app check for updates?</string>
     <string name="settings_disabled_apps_title">Excluded applications</string>
     <string name="settings_disabled_apps_summary">These applications are not automatically checked for updates</string>
+    <string name="install_activity_label">Install Application</string>
 </resources>
