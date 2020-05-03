@@ -5,7 +5,7 @@
     <string name="infobox">
         This is an updater for multiple browsers from Mozilla.
         Click the plus-button for installation and the down-arrow-button for updating.
-        By down-swiping or reopening the app you can check for new updates.
+        You can check for new updates by down-swiping or reopening the app.
         By default the app will check regularly for updates in the background.
         I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request.
     </string>
