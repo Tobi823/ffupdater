@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.version;
 
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
@@ -21,6 +22,8 @@ import static org.mockito.Mockito.mock;
 public class AvailableVersionsIT {
     private int oldSdkInt;
     private String[] oldSupportedAbis;
+    private PackageManager packageManager;
+    private AvailableVersions availableVersions;
 
     @Before
     public void setUp() throws Exception {
@@ -29,6 +32,9 @@ public class AvailableVersionsIT {
 
         setField(Build.VERSION.class.getField("SDK_INT"), 29);
         setField(android.os.Build.class.getField("SUPPORTED_ABIS"), new String[]{"armeabi-v7a"});
+
+        packageManager = mock(PackageManager.class);
+        availableVersions = new AvailableVersions(packageManager);
     }
 
     @After
@@ -38,10 +44,8 @@ public class AvailableVersionsIT {
     }
 
     @Test
-    public void checkUpdateForApp_withFennecRelease_versionAndDownloadNotEmpty() {
+    public void checkUpdateForApp_withFennecRelease_versionAndDownloadNotEmpty() throws PackageManager.NameNotFoundException {
         App app = App.FENNEC_RELEASE;
-        PackageManager packageManager = mock(PackageManager.class);
-        AvailableVersions availableVersions = new AvailableVersions(packageManager);
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
@@ -52,8 +56,6 @@ public class AvailableVersionsIT {
     @Test
     public void checkUpdateForApp_withFennecBeta_versionAndDownloadNotEmpty() {
         App app = App.FENNEC_BETA;
-        PackageManager packageManager = mock(PackageManager.class);
-        AvailableVersions availableVersions = new AvailableVersions(packageManager);
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
@@ -64,8 +66,6 @@ public class AvailableVersionsIT {
     @Test
     public void checkUpdateForApp_withFennecNightly_versionAndDownloadNotEmpty() {
         App app = App.FENNEC_NIGHTLY;
-        PackageManager packageManager = mock(PackageManager.class);
-        AvailableVersions availableVersions = new AvailableVersions(packageManager);
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
@@ -76,8 +76,6 @@ public class AvailableVersionsIT {
     @Test
     public void checkUpdateForApp_withFirefoxKlar_versionAndDownloadNotEmpty() {
         App app = App.FIREFOX_KLAR;
-        PackageManager packageManager = mock(PackageManager.class);
-        AvailableVersions availableVersions = new AvailableVersions(packageManager);
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
@@ -88,8 +86,6 @@ public class AvailableVersionsIT {
     @Test
     public void checkUpdateForApp_withFirefoxFocus_versionAndDownloadNotEmpty() {
         App app = App.FIREFOX_FOCUS;
-        PackageManager packageManager = mock(PackageManager.class);
-        AvailableVersions availableVersions = new AvailableVersions(packageManager);
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
@@ -100,8 +96,6 @@ public class AvailableVersionsIT {
     @Test
     public void checkUpdateForApp_withFirefoxLite_versionAndDownloadNotEmpty() {
         App app = App.FIREFOX_LITE;
-        PackageManager packageManager = mock(PackageManager.class);
-        AvailableVersions availableVersions = new AvailableVersions(packageManager);
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
@@ -112,8 +106,6 @@ public class AvailableVersionsIT {
     @Test
     public void checkUpdateForApp_withFenix_versionAndDownloadNotEmpty() {
         App app = App.FENIX;
-        PackageManager packageManager = mock(PackageManager.class);
-        AvailableVersions availableVersions = new AvailableVersions(packageManager);
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
