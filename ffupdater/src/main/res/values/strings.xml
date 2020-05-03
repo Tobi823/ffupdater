@@ -3,10 +3,10 @@
     <string name="app_name">FFUpdater</string>
     <!-- TODO update text -->
     <string name="infobox">
-        This is a updater for multiple browsers from Mozilla.
+        This is an updater for multiple browsers from Mozilla.
         Click the plus-button for installation and the down-arrow-button for updating.
         By down-swiping or reopening the app you can check for new updates.
-        On default the app will check regularly for updates in the background.
+        By default the app will check regularly for updates in the background.
         I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request.
     </string>
     <string name="ok">OK</string>
@@ -72,17 +72,23 @@
     <string name="download_new_app">Download new app</string>
     <string name="empty" translatable="false" />
     <string name="mozilla" translatable="false">Mozilla</string>
-    <string name="github" translatable="false">Github</string>
+    <string name="github" translatable="false">GitHub</string>
     <string name="fennec_release_description">This is the default and well-known Firefox browser from Mozilla.\n\nThe app will be downloaded from the official Mozilla API.</string>
-    <string name="fennec_beta_description">This app is a prerelease of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>
+    <string name="fennec_beta_description">This app is a pre-release of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>
     <string name="fennec_nightly_description">This app is a bleeding edge release of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>
-    <string name="firefox_klar_description">This is a modification of the Firefox browser aimed to increase privacy. Firefox Klar is for Germany, Switzerland and Austria and almost identical to Firefox Focus. Only the name was change to avoid confusion with the magazine \'Focus\'.\n\nThe app will be downloaded from Github - only updates which are released on Github can be downloaded.</string>
-    <string name="firefox_focus_description">This is a modification of the Firefox browser aimed to increase privacy.\n\nThe app will be downloaded from Github - only updates which are released on Github can be downloaded.</string>
-    <string name="firefox_lite_description">Firefox Lite is primary developed for users in Indonesia. The app is very small and supports techniques to reduce (mobile) data consumption.\n\nThe app will be downloaded from Github - only updates which are released on Github can be downloaded.</string>
-    <string name="fenix_description">\'Firefox Preview (internal code name: \'Fenix\') is an all-new browser for Android\'. This app is currently under development and contains more trackers than usual to analyse/improve the app usage.\n\nThe app will be downloaded from Github - only updates which are released on Github can be downloaded.</string>
+    <string name="firefox_klar_description">This is a modification of the Firefox browser aimed to increase privacy.\n\nFirefox Klar is developed for Germany, Switzerland and Austria and is almost identical to Firefox Focus. Only the name was changed to avoid confusion with the news magazine \'Focus\' from the \'Hubert Burda Media\' media group.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
+    <string name="firefox_focus_description">This is a modification of the Firefox browser aimed to increase privacy.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
+    <string name="firefox_lite_description">Firefox Lite is primary developed for users in Indonesia. The app is very small and supports techniques to reduce (mobile) data consumption.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
+    <string name="fenix_description">Firefox Preview (also known as Fenix) is an all-new browser for Android. This app is currently under development and contains more trackers than usual to analyse/improve the app usage.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="unsupported_abi_dialog_title">Unsupported device</string>
     <string name="unsupported_abi_dialog_message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="install_application">Install application</string>
     <string name="device_too_old_dialog_title">Device is too old</string>
     <string name="device_too_old_dialog_message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>
+    <string name="settings_title">Application Update Check</string>
+    <string name="settings_automatic_check_title">Automatic in Background</string>
+    <string name="settings_check_interval_title">Check Interval</string>
+    <string name="settings_check_interval_summary">How often should the app check for updates?</string>
+    <string name="settings_disabled_apps_title">Excluded applications</string>
+    <string name="settings_disabled_apps_summary">These applications are not automatically checked for updates</string>
 </resources>

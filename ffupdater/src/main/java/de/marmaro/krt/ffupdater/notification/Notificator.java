@@ -87,7 +87,7 @@ public class Notificator extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        Log.d(LOG_TAG, "doWork() executed");
+        Log.d(LOG_TAG, "start background update check");
         AvailableVersions appUpdate = new AvailableVersions(getApplicationContext().getPackageManager());
         Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
         appUpdate.checkUpdatesForInstalledApps(disableApps, null, () -> {
