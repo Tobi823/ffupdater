@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.App;
  * SharedPreferences instance.
  */
 public class SettingsHelper {
-    private static final int CHECK_INTERVAL_DEFAULT_VALUE = 15;
+    static final int CHECK_INTERVAL_DEFAULT_VALUE = 360;
 
     /**
      * @param context context
