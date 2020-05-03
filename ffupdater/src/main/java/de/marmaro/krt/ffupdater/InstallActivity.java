@@ -37,7 +37,7 @@ import de.marmaro.krt.ffupdater.version.AvailableVersions;
  * The DownloadManager is more difficult to use then the default java way, but the DownloadManager offers more features
  * like restarting downloads, showing the current download status etc.
  */
-public class DownloadActivity extends AppCompatActivity {
+public class InstallActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_INSTALL = 401;
     public static final String EXTRA_APP_NAME = "app_name";
     public static final String EXTRA_DOWNLOAD_URL = "download_url";

@@ -217,9 +217,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Intent intent = new Intent(this, DownloadActivity.class);
-        intent.putExtra(DownloadActivity.EXTRA_APP_NAME, app.name());
-        intent.putExtra(DownloadActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
+        Intent intent = new Intent(this, InstallActivity.class);
+        intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name());
+        intent.putExtra(InstallActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
         startActivity(intent);
     }
 

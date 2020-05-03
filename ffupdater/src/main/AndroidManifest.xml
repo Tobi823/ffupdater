@@ -27,7 +27,7 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
         <activity
-            android:name=".DownloadActivity"
+            android:name=".InstallActivity"
             android:label="Download Application"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
