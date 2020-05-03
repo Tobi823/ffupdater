@@ -8,6 +8,7 @@
         android:name="android.hardware.touchscreen"
         android:required="false" />
 
+    <!-- is only necessary for older devices (<= 4.4) for writing to getExternalCacheDir() -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -24,13 +25,11 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings_activity_label"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
         <activity
             android:name=".InstallActivity"
             android:label="@string/install_activity_label"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

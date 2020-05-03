@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:scrollbarFadeDuration="0"
     tools:context=".InstallActivity">
 
     <LinearLayout
@@ -10,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -242,31 +245,33 @@
 
         <LinearLayout
             android:id="@+id/installerSuccess"
-            style="@style/DownloadActivitySegment">
+            style="@style/DownloadActivitySegment"
+            android:background="@color/successGreen"
+            android:padding="8dp">
 
             <TextView
                 style="@style/BoldTextView"
                 android:text="@string/application_successful_installed" />
 
-            <Button
-                android:id="@+id/installerSuccessButton"
-                style="@style/DefaultButton"
-                android:text="@string/back_to_application_overview" />
+            <TextView
+                style="@style/DefaultTextView"
+                android:text="@string/you_can_now_close_this_window" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/installerFailed"
-            style="@style/DownloadActivitySegment">
+            style="@style/DownloadActivitySegment"
+            android:background="@color/errorRed"
+            android:padding="8dp">
 
             <TextView
                 style="@style/BoldTextView"
                 android:text="@string/application_installation_was_unsuccessful" />
 
-            <Button
-                android:id="@+id/installerFailedButton"
-                style="@style/DefaultButton"
-                android:text="@string/back_to_application_overview" />
+            <TextView
+                style="@style/DefaultTextView"
+                android:text="@string/you_can_now_close_this_window" />
 
         </LinearLayout>
 

@@ -89,4 +89,5 @@
     <string name="settings_disabled_apps_title">Excluded applications</string>
     <string name="settings_disabled_apps_summary">These applications are not automatically checked for updates</string>
     <string name="install_activity_label">Install Application</string>
+    <string name="you_can_now_close_this_window">You can now close this window</string>
 </resources>

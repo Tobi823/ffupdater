@@ -56,8 +56,6 @@ public class InstallActivity extends AppCompatActivity {
         registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
 
-        findViewById(R.id.installerSuccessButton).setOnClickListener(v -> finish());
-        findViewById(R.id.installerFailedButton).setOnClickListener(v -> finish());
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
         ActionBar actionBar = getSupportActionBar();
