@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FFUpdater</string>
-    <!-- TODO update text -->
     <string name="infobox">
         This is an updater for multiple browsers from Mozilla.
         Click the plus-button for installation and the down-arrow-button for updating.
@@ -37,11 +36,9 @@
     <string name="update_interval_2w">2 weeks</string>
     <string name="update_interval_1m">1 month</string>
     <string name="switch_to_unsafe_app_title">Warning</string>
-    <!-- TODO update text -->
     <string name="switch_to_unsafe_fennec_message">This app is designed for developers and testers of Mozilla Firefox. It may contain various bugs that can affect your usual work with the browser. Do you really want to install this app?</string>
     <string name="switch_to_unsafe_fenix_message">This app is designed for testers and therefore it contains some trackers. Do you really want to install this app?</string>
     <string name="switch_to_unsafe_app_positive_button">Yes</string>
-    <!-- TODO update text -->
     <string name="switch_to_unsafe_app_negative_button">No, don\'t install it</string>
     <string name="fennecReleaseTitleText">Firefox Browser</string>
     <string name="fennecBetaTitleText">Firefox Beta</string>
