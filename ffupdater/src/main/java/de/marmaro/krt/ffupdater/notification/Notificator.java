@@ -90,11 +90,10 @@ public class Notificator extends Worker {
         Log.d(LOG_TAG, "start background update check");
         AvailableVersions appUpdate = new AvailableVersions(getApplicationContext().getPackageManager());
         Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
-        appUpdate.checkUpdatesForInstalledApps(disableApps, null, () -> {
-            if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
-                createNotification();
-            }
-        });
+        appUpdate.checkUpdatesForInstalledApps(disableApps, null, null);
+        if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
+            createNotification();
+        }
         return Result.success();
     }
 
