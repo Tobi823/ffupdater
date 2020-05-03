@@ -17,15 +17,12 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-/**
- * Created by Tobiwan on 02.05.2020.
- */
 public class CustomSocketFactory extends SSLSocketFactory {
     private SSLSocketFactory delegate;
     private TrustManager[] trustManagers;
     private String[] enabledProtocols;
 
-    public CustomSocketFactory(String[] enabledProtocols) throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+    CustomSocketFactory(String[] enabledProtocols) throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
         this.enabledProtocols = enabledProtocols;
         generateTrustManagers();
         SSLContext context = SSLContext.getInstance("TLS");

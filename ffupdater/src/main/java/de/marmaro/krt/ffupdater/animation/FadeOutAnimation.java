@@ -30,5 +30,4 @@ public class FadeOutAnimation extends AlphaAnimation {
             }
         });
     }
-
 }
