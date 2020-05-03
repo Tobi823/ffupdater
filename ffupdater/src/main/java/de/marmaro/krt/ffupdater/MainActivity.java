@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_about:
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setTitle(getString(R.string.about));
+                alertDialog.setTitle(getString(R.string.action_about_title));
                 alertDialog.setMessage(getString(R.string.infobox));
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
                         (dialog, which) -> dialog.dismiss());

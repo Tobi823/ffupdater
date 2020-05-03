@@ -2,8 +2,8 @@
 <resources>
 	<string name="app_name">FFUpdater</string>
 	<string name="ok">ОК</string>
-	<string name="action_settings">Настройки</string>
-	<string name="about">О программе</string>
+	<string name="action_settings_title">Настройки</string>
+	<string name="action_about_title">О программе</string>
 	<string name="not_connected_to_internet">Вы не подключены к интернету</string>
     <string name="title_activity_settings">Настройки</string>
     <string name="update_notification_channel_name">Уведомление об обновлении</string>

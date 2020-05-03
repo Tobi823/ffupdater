@@ -3,8 +3,8 @@
 	<string name="app_name">FFUpdater</string>
 	<string name="ok">Гаразд</string>
 	<string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
-    <string name="action_settings">Налаштування</string>
-	<string name="about">Про</string>
+    <string name="action_settings_title">Налаштування</string>
+	<string name="action_about_title">Про</string>
     <string name="title_activity_settings">Налаштування</string>
     <string name="update_notification_channel_name">Повідомлення оновлення</string>
 	<string name="update_notification_channel_description">Ця категорія повідомлень повідомить вам про нові доступні оновлення Firefox.</string>

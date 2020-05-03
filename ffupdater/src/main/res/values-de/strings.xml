@@ -3,8 +3,8 @@
     <string name="app_name">FFUpdater</string>
     <string name="ok">OK</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
-    <string name="action_settings">die Einstellungen</string>
-    <string name="about">Über</string>
+    <string name="action_settings_title">die Einstellungen</string>
+    <string name="action_about_title">Über</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="update_notification_channel_name">Update-Benachrichtigung</string>
     <string name="update_notification_channel_description">Diese Benachrichtigungskategorie informiert Sie über neue verfügbare Firefox-Updates.</string>
