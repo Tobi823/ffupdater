@@ -55,6 +55,7 @@ public class Utils {
             "4.2 (Jelly Bean)",
             "4.3 (Jelly Bean)",
             "4.4 (KitKat)",
+            "4.4W (KitKat)",
             "5.0 (Lollipop)",
             "5.1 (Lollipop)",
             "6.0 (Marshmallow)",
@@ -71,7 +72,7 @@ public class Utils {
      * @return the Android version an its codename for the associated API Level
      */
     public static String getVersionAndCodenameFromApiLevel(int apiLevel) {
-        if (apiLevel <= 0 || apiLevel >= versionAndCodenames.length) {
+        if (apiLevel <= 0 || apiLevel > versionAndCodenames.length) {
             return "API Level " + apiLevel;
         }
         return versionAndCodenames[apiLevel - 1];
