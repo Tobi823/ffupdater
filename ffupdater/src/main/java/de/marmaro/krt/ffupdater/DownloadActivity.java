@@ -10,11 +10,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.apache.commons.codec.binary.ApacheCodecHex;
@@ -57,6 +60,11 @@ public class DownloadActivity extends AppCompatActivity {
         findViewById(R.id.installerFailedButton).setOnClickListener(v -> finish());
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         appUpdate = new AvailableVersions(getPackageManager());
 
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
@@ -82,6 +90,15 @@ public class DownloadActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_INSTALL) {
             actionInstallationFinished(resultCode == Activity.RESULT_OK);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void fetchUrlForDownload() {

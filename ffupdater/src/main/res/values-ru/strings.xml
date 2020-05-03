@@ -5,7 +5,7 @@
 	<string name="action_settings_title">Настройки</string>
 	<string name="action_about_title">О программе</string>
 	<string name="not_connected_to_internet">Вы не подключены к интернету</string>
-    <string name="title_activity_settings">Настройки</string>
+    <string name="activity_settings_label">Настройки</string>
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
     <string name="update_notification_channel_description">Эта категория уведомлений будет информировать вас о доступных обновлениях Firefox.</string>
     <string name="update_interval_12h">12 часов</string>

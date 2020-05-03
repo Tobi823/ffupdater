@@ -23,10 +23,13 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".settings.SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:label="@string/activity_settings_label"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
-        <activity android:name=".DownloadActivity">
+        <activity
+            android:name=".DownloadActivity"
+            android:label="Download Application"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
         <activity
             android:name=".MainActivity"

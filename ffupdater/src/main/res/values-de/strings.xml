@@ -5,7 +5,7 @@
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
     <string name="action_settings_title">die Einstellungen</string>
     <string name="action_about_title">Über</string>
-    <string name="title_activity_settings">Einstellungen</string>
+    <string name="activity_settings_label">Einstellungen</string>
     <string name="update_notification_channel_name">Update-Benachrichtigung</string>
     <string name="update_notification_channel_description">Diese Benachrichtigungskategorie informiert Sie über neue verfügbare Firefox-Updates.</string>
     <string name="update_interval_15min">15 Minuten</string>
