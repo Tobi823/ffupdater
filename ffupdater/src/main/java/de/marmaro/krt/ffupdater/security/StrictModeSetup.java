@@ -28,9 +28,9 @@ public class StrictModeSetup {
         Log.i(LOG_TAG, "enable StrictMode for local development");
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
-                .permitDiskReads() // for preferences
-                .permitDiskWrites() // for update
-                .permitNetwork() // for checking updates
+                .permitDiskReads() // for storing preferences
+                .permitDiskWrites() // for downloading apps which will be installed
+                .permitNetwork() // for executing network requests to check for updates
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
