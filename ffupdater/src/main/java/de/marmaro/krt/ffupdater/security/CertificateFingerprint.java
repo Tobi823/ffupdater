@@ -50,9 +50,7 @@ public class CertificateFingerprint {
                 return new Pair<>(false, "");
             }
             Preconditions.checkArgument(!result.getSignerCertificates().isEmpty());
-            byte[] currentHash = hashCertificate(result.getSignerCertificates().get(0));
-            byte[] expectedHash = app.getSignatureHash();
-            return new Pair<>(MessageDigest.isEqual(expectedHash, currentHash), ApacheCodecHex.encodeHexString(currentHash));
+            return checkCertificate(result.getSignerCertificates().get(0), app);
         } catch (IOException | ApkFormatException | NoSuchAlgorithmException | CertificateEncodingException e) {
             Log.e(LOG_TAG, "APK certificate fingerprint validation failed due to an exception", e);
             return new Pair<>(false, "");
@@ -70,31 +68,26 @@ public class CertificateFingerprint {
      */
     @SuppressLint("PackageManagerGetSignatures")
     public static Pair<Boolean, String> checkFingerprintOfInstalledApp(Context context, App app) {
-        PackageInfo packageInfo;
         try {
-            packageInfo = context.getPackageManager().getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(LOG_TAG, "application is not installed ", e);
-            return new Pair<>(false, "");
-        }
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
+            Preconditions.checkArgument(packageInfo.signatures.length > 0);
+            Signature signature = packageInfo.signatures[0];
 
-        Preconditions.checkArgument(packageInfo.signatures.length > 0);
-        Signature signature = packageInfo.signatures[0];
-
-        byte[] currentHash;
-        try {
             InputStream signatureStream = new ByteArrayInputStream(signature.toByteArray());
             Certificate certificate = CertificateFactory.getInstance("X509").generateCertificate(signatureStream);
-            currentHash = hashCertificate(certificate);
-        } catch (CertificateException | NoSuchAlgorithmException e) {
+            return checkCertificate(certificate, app);
+        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException | CertificateException e) {
             Log.e(LOG_TAG, "failed to hash the certificate of the application", e);
             return new Pair<>(false, "");
         }
-        byte[] expectedHash = app.getSignatureHash();
-        return new Pair<>(MessageDigest.isEqual(expectedHash, currentHash), ApacheCodecHex.encodeHexString(currentHash));
     }
 
-    private static byte[] hashCertificate(Certificate certificate) throws NoSuchAlgorithmException, CertificateEncodingException {
-        return MessageDigest.getInstance(SHA_256).digest(certificate.getEncoded());
+    private static Pair<Boolean, String> checkCertificate(Certificate certificate, App app) throws NoSuchAlgorithmException, CertificateEncodingException {
+        byte[] currentHash = MessageDigest.getInstance(SHA_256).digest(certificate.getEncoded());
+        byte[] expectedHash = app.getSignatureHash();
+
+        boolean equal = MessageDigest.isEqual(expectedHash, currentHash);
+        String currentHashAsString = ApacheCodecHex.encodeHexString(currentHash);
+        return new Pair<>(equal, currentHashAsString);
     }
 }
