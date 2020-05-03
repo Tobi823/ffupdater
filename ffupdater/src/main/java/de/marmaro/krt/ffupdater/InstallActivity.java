@@ -9,7 +9,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Pair;
+import androidx.core.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -316,7 +316,7 @@ public class InstallActivity extends AppCompatActivity {
 
     private void actionVerifyInstalledAppSignature() {
         runOnUiThread(() -> {
-            Pair<Boolean, String> validCertificate = CertificateFingerprint.checkFingerprintOfInstalledApp(this, app);
+            Pair<Boolean, String> validCertificate = CertificateFingerprint.checkFingerprintOfInstalledApp(getPackageManager(), app);
             if (validCertificate.first) {
                 findViewById(R.id.fingerprintInstalledGood).setVisibility(View.VISIBLE);
                 findTextViewById(R.id.fingerprintInstalledGoodHash).setText(validCertificate.second);

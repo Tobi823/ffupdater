@@ -1,12 +1,12 @@
 package de.marmaro.krt.ffupdater.security;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.util.Log;
-import android.util.Pair;
+
+import androidx.core.util.Pair;
 
 import com.android.apksig.ApkVerifier;
 import com.android.apksig.apk.ApkFormatException;
@@ -60,16 +60,16 @@ public class CertificateFingerprint {
     /**
      * Validate the SHA256 fingerprint of the certificate of the installed application.
      *
-     * @param context context
+     * @param packageManager package manager
      * @param app     app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      * @see <a href="https://stackoverflow.com/a/22506133">Example on how to generate the certificate fingerprint</a>
      * @see <a href="https://gist.github.com/scottyab/b849701972d57cf9562e">Another example</a>
      */
     @SuppressLint("PackageManagerGetSignatures")
-    public static Pair<Boolean, String> checkFingerprintOfInstalledApp(Context context, App app) {
+    public static Pair<Boolean, String> checkFingerprintOfInstalledApp(PackageManager packageManager, App app) {
         try {
-            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
+            PackageInfo packageInfo = packageManager.getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
             Preconditions.checkArgument(packageInfo.signatures.length > 0);
             Signature signature = packageInfo.signatures[0];
 
