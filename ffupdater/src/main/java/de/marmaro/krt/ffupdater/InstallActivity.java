@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.core.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -19,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Pair;
 
 import org.apache.commons.codec.binary.ApacheCodecHex;
 
@@ -137,7 +137,7 @@ public class InstallActivity extends AppCompatActivity {
             int previousStatus = -1;
             while (!killSwitch) {
                 Pair<Integer, Integer> statusAndProgress = downloadManager.getStatusAndProgress(downloadId);
-                int status = statusAndProgress.first;
+                int status = Objects.requireNonNull(statusAndProgress.first);
                 if (previousStatus != status) {
                     previousStatus = status;
                     actionDownloadUpdateStatus(status);
@@ -146,7 +146,7 @@ public class InstallActivity extends AppCompatActivity {
                     return;
                 }
 
-                int progress = statusAndProgress.second;
+                int progress = Objects.requireNonNull(statusAndProgress.second);
                 actionDownloadUpdateProgressBar(progress);
 
                 Utils.sleepAndIgnoreInterruptedException(200);
@@ -161,7 +161,7 @@ public class InstallActivity extends AppCompatActivity {
                 // received an older message - skip
                 return;
             }
-            if (downloadManager.getStatusAndProgress(id).first == DownloadManager.STATUS_FAILED) {
+            if (Objects.requireNonNull(downloadManager.getStatusAndProgress(id).first) == DownloadManager.STATUS_FAILED) {
                 actionDownloadFailed();
                 return;
             }
@@ -169,7 +169,7 @@ public class InstallActivity extends AppCompatActivity {
             actionVerifyingSignature();
             File downloadedFile = downloadManager.getFileForDownloadedFile(id);
             Pair<Boolean, String> check = CertificateFingerprint.checkFingerprintOfFile(downloadedFile, app);
-            if (check.first) {
+            if (Objects.requireNonNull(check.first)) {
                 actionSignatureGood(check.second);
             } else {
                 actionSignatureBad(check.second);
@@ -317,7 +317,7 @@ public class InstallActivity extends AppCompatActivity {
     private void actionVerifyInstalledAppSignature() {
         runOnUiThread(() -> {
             Pair<Boolean, String> validCertificate = CertificateFingerprint.checkFingerprintOfInstalledApp(getPackageManager(), app);
-            if (validCertificate.first) {
+            if (Objects.requireNonNull(validCertificate.first)) {
                 findViewById(R.id.fingerprintInstalledGood).setVisibility(View.VISIBLE);
                 findTextViewById(R.id.fingerprintInstalledGoodHash).setText(validCertificate.second);
             } else {

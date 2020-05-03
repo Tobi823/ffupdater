@@ -31,7 +31,6 @@ public class UtilsTest {
 
     @Test
     public void getVersionAndCodenameFromApiLevel_with29_returnAndroid10() {
-        System.out.println(Utils.getVersionAndCodenameFromApiLevel(15));
         assertEquals("10 (Android10)", Utils.getVersionAndCodenameFromApiLevel(29));
     }
 

@@ -70,6 +70,7 @@ public class AvailableVersions {
 
     /**
      * Check with {@code isUpdateAvailable} if any installed app is outdated.
+     *
      * @return if one or more installed apps can be updated
      */
     public boolean areUpdatesForInstalledAppsAvailable() {
@@ -134,9 +135,11 @@ public class AvailableVersions {
     /**
      * Check for updates of installed applications and get the download links for these applications.
      *
-     * @param activity if null, then the callback will be executed on a Non-Ui-Thread
-     *                 if not null, then the callback will be executed on the Ui-Thread
-     * @param callback will be executed, when the check is ready
+     * @param activity if null, then the callback will be executed on a Non-Ui-Thread.
+     *                 if not null, then the callback will be executed on the Ui-Thread.
+     * @param callback if null, then the method will block until all network requests are finished.
+     *                 if not null, then method will not block and the callback is executed in a
+     *                 different thread {@see activity}.
      */
     public void checkUpdatesForInstalledApps(@Nullable Activity activity, Runnable callback) {
         checkUpdates(InstalledApps.getInstalledApps(packageManager), activity, callback);
@@ -146,9 +149,11 @@ public class AvailableVersions {
      * Check for updates of installed applications and get the download links for these applications.
      *
      * @param disabledApps these apps will be excluded from the check
-     * @param activity     if null, then the callback will be executed on a Non-Ui-Thread
-     *                     if not null, then the callback will be executed on the Ui-Thread
-     * @param callback     will be executed, when the check is ready
+     * @param activity     if null, then the callback will be executed on a Non-Ui-Thread.
+     *                     if not null, then the callback will be executed on the Ui-Thread.
+     * @param callback     if null, then the method will block until all network requests are finished.
+     *                     if not null, then method will not block and the callback is executed in a
+     *                     different thread {@see activity}.
      */
     public void checkUpdatesForInstalledApps(Set<App> disabledApps, @Nullable Activity activity, Runnable callback) {
         List<App> apps = InstalledApps.getInstalledApps(packageManager);
@@ -159,10 +164,12 @@ public class AvailableVersions {
     /**
      * Check for update and get the download link for a specific app.
      *
-     * @param app specific app
-     * @param activity if null, then the callback will be executed on a Non-Ui-Thread
-     *                 if not null, then the callback will be executed on the Ui-Thread
-     * @param callback will be executed, when the check is ready
+     * @param app      specific app
+     * @param activity if null, then the callback will be executed on a Non-Ui-Thread.
+     *                 if not null, then the callback will be executed on the Ui-Thread.
+     * @param callback if null, then the method will block until all network requests are finished.
+     *                 if not null, then method will not block and the callback is executed in a
+     *                 different thread {@see activity}.
      */
     public void checkUpdateForApp(App app, @Nullable Activity activity, Runnable callback) {
         checkUpdates(Collections.singletonList(app), activity, callback);
@@ -188,21 +195,30 @@ public class AvailableVersions {
             futures.add(executorService.submit(this::checkFenix));
         }
 
-        executorService.submit(() -> {
-            while (!futures.isEmpty()) {
-                try {
-                    futures.element().get(10, TimeUnit.SECONDS);
-                    futures.remove();
-                } catch (ExecutionException | InterruptedException | TimeoutException e) {
-                    Log.e("AvailableVersions", "wait too long", e);
+        if (callback == null) {
+            waitUntilAllFinished();
+        } else {
+            executorService.submit(() -> {
+                waitUntilAllFinished();
+                if (activity == null) {
+                    callback.run();
+                } else {
+                    activity.runOnUiThread(callback);
                 }
+            });
+        }
+    }
+
+    private void waitUntilAllFinished() {
+        while (!futures.isEmpty()) {
+            try {
+                futures.element().get(10, TimeUnit.SECONDS);
+                futures.remove();
+            } catch (ExecutionException | InterruptedException | TimeoutException e) {
+                futures.remove();
+                Log.e("AvailableVersions", "wait too long", e);
             }
-            if (activity == null) {
-                callback.run();
-            } else {
-                activity.runOnUiThread(callback);
-            }
-        });
+        }
     }
 
     private List<App> filterUnsupportedApps(List<App> apps) {
