@@ -8,10 +8,6 @@ import androidx.core.util.Pair;
 
 import org.junit.Test;
 
-import java.util.Objects;
-
-import de.marmaro.krt.ffupdater.App;
-
 import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
