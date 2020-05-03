@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.settings;
+package de.marmaro.krt.ffupdater;
 
 import android.os.Bundle;
 import android.view.MenuItem;

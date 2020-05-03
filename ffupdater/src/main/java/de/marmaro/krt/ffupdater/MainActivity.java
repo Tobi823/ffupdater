@@ -35,7 +35,6 @@ import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
-import de.marmaro.krt.ffupdater.settings.SettingsActivity;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;

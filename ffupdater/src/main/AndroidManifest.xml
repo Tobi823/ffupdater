@@ -22,7 +22,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name=".SettingsActivity"
             android:label="@string/activity_settings_label"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
