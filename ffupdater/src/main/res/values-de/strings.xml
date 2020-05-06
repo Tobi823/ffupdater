@@ -40,4 +40,5 @@
     <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern.</string>
     <string name="notification_title">Update verfügbar</string>
     <string name="notification_text">Anklicken um anzusehen</string>
+    <string name="fenix_warning">Diese App ist für Tester konzipiert und enthält daher einige Tracker. Wollen Sie diese App wirklich installieren?</string>
 </resources>
