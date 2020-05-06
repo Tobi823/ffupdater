@@ -65,7 +65,6 @@
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application is installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
     <string name="download_failed">Download failed</string>
-    <string name="download_new_app">Download new app</string>
     <string name="empty" translatable="false" />
     <string name="mozilla" translatable="false">Mozilla</string>
     <string name="github" translatable="false">GitHub</string>
@@ -78,7 +77,7 @@
     <string name="fenix_description">Firefox Preview (also known as Fenix) is an all-new browser for Android. This app is currently under development and contains more trackers than usual to analyse/improve the app usage.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="unsupported_abi_dialog_title">Unsupported device</string>
     <string name="unsupported_abi_dialog_message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
-    <string name="install_application">Install application</string>
+    <string name="install_application">Install Application</string>
     <string name="device_too_old_dialog_title">Device is too old</string>
     <string name="device_too_old_dialog_message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>
     <string name="settings_title">Application Update Check</string>

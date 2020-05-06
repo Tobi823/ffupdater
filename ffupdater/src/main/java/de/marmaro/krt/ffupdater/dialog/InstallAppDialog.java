@@ -37,7 +37,7 @@ public class InstallAppDialog extends DialogFragment {
             appNames[i] = apps.get(i).getTitle(requireContext());
         }
         return new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.download_new_app)
+                .setTitle(R.string.install_application)
                 .setItems(appNames, (dialog, which) -> {
                     App app = apps.get(which);
                     if (app.isIncompatibleWithDeviceAbi()) {
