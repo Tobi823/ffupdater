@@ -68,4 +68,15 @@
     <string name="installed_application_is_verified">Installierte Anwendung ist verifiziert</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Entweder hat ein Angreifer den korrekten Download durch einen manipulierten ersetzt, oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Entweder wurde eine manipulierte Anwendung installiert oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
+    <string name="settings_automatic_check_title">Automatisch im Hintergrund</string>
+    <string name="settings_check_interval_summary">Wie oft sollte die Anwendung nach Updates suchen?</string>
+    <string name="settings_check_interval_title">Prüfintervall</string>
+    <string name="settings_disabled_apps_summary">Diese Anwendungen werden nicht automatisch auf Aktualisierungen geprüft.</string>
+    <string name="settings_disabled_apps_title">Ausgeschlossene Anwendungen</string>
+    <string name="settings_title">Update-Prüfung der Anwendung</string>
+    <string name="sha_256_certificate_fingerprint">SHA-256 Fingerabdruck des Zertifikats:</string>
+    <string name="unsupported_abi_dialog_message">Der ausgewählte Browser ist mit dem Prozessor Ihres Smartphones nicht kompatibel. Bitte wähle einen anderen Browser.</string>
+    <string name="unsupported_abi_dialog_title">Nicht unterstütztes Gerät</string>
+    <string name="verifying_downloaded_application_certificate">Zertifikat der Anwendung überprüfen</string>
+    <string name="you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
 </resources>
