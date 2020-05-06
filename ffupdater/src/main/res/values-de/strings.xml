@@ -44,11 +44,14 @@
     <string name="fetch_url_for_download">Abruf der Download-URL von %1$s</string>
     <string name="fetched_url_for_download_successfully">Download-URL von %1$a wurde abgerufen</string>
     <string name="fetched_url_for_download_unsuccessfully">Abruf der Download-URL von %1$s schlug fehl</string>
-    <string name="application_installation_was_not_successful">Installation der Applikation schlug fehl</string>
-    <string name="application_successful_installed">Applikation erfolgreich installiert</string>
+    <string name="application_installation_was_not_successful">Installation der Anwendung schlug fehl</string>
+    <string name="application_successful_installed">Anwendung erfolgreich installiert</string>
     <string name="but_was">Aber war:</string>
     <string name="device_too_old_dialog_message">Die Anwendung erfordert Android %1$s. Aber auf Ihrem Gerät läuft nur Android %2$s. Wählen Sie entweder eine andere Applikation, aktualisieren Sie Ihr Betriebssystem oder wechseln Sie zu einem neueren Smartphone.</string>
     <string name="device_too_old_dialog_title">Gerät ist zu alt</string>
-    <string name="download_application_from_with_status">Lade Applikation herunter (%1$s)</string>
+    <string name="download_application_from_with_status">Lade Anwendung herunter (%1$s)</string>
     <string name="download_failed">Download schlug fehl</string>
+    <string name="downloaded_application_from">Anwendung wurde heruntergeladen von:</string>
+    <string name="downloaded_application_is_not_verified">Heruntergeladene Anwendung ist NICHT verifiziert</string>
+    <string name="downloaded_application_is_verified">Heruntergeladene Anwendung ist verifiziert</string>
 </resources>
