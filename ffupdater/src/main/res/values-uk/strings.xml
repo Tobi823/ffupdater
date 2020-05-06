@@ -26,15 +26,15 @@
 	<string name="update_interval_6d">6 днів</string>
 	<string name="update_interval_6h">6 годин</string>
 	<string name="update_interval_8h">8 годин</string>
-    <string name="switch_to_unsafe_fennec_message">Цей канал оновлення призначений для розробників і тестувальників Mozilla Firefox. Будь-яка версія Firefox може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ви дійсно хочете перейти на цей канал?</string>
-    <string name="switch_to_unsafe_app_negative_button">Ні, поверніться до \'Release\'</string>
-    <string name="switch_to_unsafe_app_positive_button">Так</string>
-    <string name="switch_to_unsafe_app_title">Увага</string>
-    <string name="fennecReleaseTitleText">Веб-браузер Firefox</string>
-	<string name="fennecBetaTitleText">Firefox Beta</string>
-	<string name="fennecNightlyTitleText">Firefox Nightly</string>
-	<string name="firefoxKlarTitleText">Firefox Klar</string>
-	<string name="firefoxFocusTitleText">Firefox Focus</string>
-	<string name="firefoxLiteTitleText">Firefox Lite</string>
-	<string name="fenixTitleText">Firefox Preview</string>
+    <string name="fennec_beta_nightly_message_warning">Цей канал оновлення призначений для розробників і тестувальників Mozilla Firefox. Будь-яка версія Firefox може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ви дійсно хочете перейти на цей канал?</string>
+    <string name="installation_warning_negative_button">Ні, поверніться до \'Release\'</string>
+    <string name="installation_warning_positive_button">Так</string>
+    <string name="installation_warning_title">Увага</string>
+    <string name="fennec_release_title">Веб-браузер Firefox</string>
+	<string name="fennec_beta_title">Firefox Beta</string>
+	<string name="fennec_nightly_title">Firefox Nightly</string>
+	<string name="firefox_klar_title">Firefox Klar</string>
+	<string name="firefox_focus_title">Firefox Focus</string>
+	<string name="firefox_lite_title">Firefox Lite</string>
+	<string name="fenix_title">Firefox Preview</string>
 </resources>

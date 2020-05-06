@@ -27,15 +27,15 @@
     <string name="update_interval_5d">5 jours</string>
     <string name="update_interval_6h">6 heures</string>
     <string name="update_interval_8h">"8 heures "</string>
-    <string name="switch_to_unsafe_fennec_message">Ce canal de mise à jour est conçu pour les développeurs et testeurs de Mozilla Firefox. N\'importe quelle version de Firefox de ce canal peut contenir différents bogues qui peuvent affecter votre utilisation habituelle du navigateur. Voulez-vous vraiment passer à ce canal ?</string>
-    <string name="switch_to_unsafe_app_negative_button">Non, rester à \'Release\'</string>
-    <string name="switch_to_unsafe_app_positive_button">Oui</string>
-    <string name="switch_to_unsafe_app_title">"Avertissement"</string>
-    <string name="fennecBetaTitleText">Firefox Beta</string>
-    <string name="fennecNightlyTitleText">Firefox Nightly</string>
-    <string name="firefoxKlarTitleText">Firefox Klar</string>
-    <string name="firefoxFocusTitleText">Firefox Focus</string>
-    <string name="firefoxLiteTitleText">Firefox Lite</string>
-    <string name="fenixTitleText">Firefox Preview</string>
-    <string name="fennecReleaseTitleText">Firefox</string>
+    <string name="fennec_beta_nightly_message_warning">Ce canal de mise à jour est conçu pour les développeurs et testeurs de Mozilla Firefox. N\'importe quelle version de Firefox de ce canal peut contenir différents bogues qui peuvent affecter votre utilisation habituelle du navigateur. Voulez-vous vraiment passer à ce canal ?</string>
+    <string name="installation_warning_negative_button">Non, rester à \'Release\'</string>
+    <string name="installation_warning_positive_button">Oui</string>
+    <string name="installation_warning_title">"Avertissement"</string>
+    <string name="fennec_beta_title">Firefox Beta</string>
+    <string name="fennec_nightly_title">Firefox Nightly</string>
+    <string name="firefox_klar_title">Firefox Klar</string>
+    <string name="firefox_focus_title">Firefox Focus</string>
+    <string name="firefox_lite_title">Firefox Lite</string>
+    <string name="fenix_title">Firefox Preview</string>
+    <string name="fennec_release_title">Firefox</string>
 </resources>

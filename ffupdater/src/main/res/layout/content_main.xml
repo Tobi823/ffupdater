@@ -76,7 +76,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fennecReleaseTitleText"
+                        android:text="@string/fennec_release_title"
                         app:layout_constraintStart_toEndOf="@+id/fennecReleaseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,7 +141,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fennecBetaTitleText"
+                        android:text="@string/fennec_beta_title"
                         app:layout_constraintStart_toEndOf="@+id/fennecBetaIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -207,7 +207,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fennecNightlyTitleText"
+                        android:text="@string/fennec_nightly_title"
                         app:layout_constraintStart_toEndOf="@+id/fennecNightlyIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -274,7 +274,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/firefoxKlarTitleText"
+                        android:text="@string/firefox_klar_title"
                         app:layout_constraintStart_toEndOf="@+id/firefoxKlarIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -304,7 +304,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/firefoxFocusTitleText"
+                        android:text="@string/firefox_focus_title"
                         app:layout_constraintStart_toEndOf="@+id/firefoxFocusIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -371,7 +371,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/firefoxLiteTitleText"
+                        android:text="@string/firefox_lite_title"
                         app:layout_constraintStart_toEndOf="@+id/firefoxLiteIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -436,7 +436,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fenixTitleText"
+                        android:text="@string/fenix_title"
                         app:layout_constraintStart_toEndOf="@+id/fenixIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 

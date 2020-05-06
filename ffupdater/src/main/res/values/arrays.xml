@@ -43,13 +43,13 @@
     </string-array>
 
     <string-array name="disabledAppEntries">
-        <item>@string/fennecReleaseTitleText</item>
-        <item>@string/fennecBetaTitleText</item>
-        <item>@string/fennecNightlyTitleText</item>
-        <item>@string/firefoxKlarTitleText</item>
-        <item>@string/firefoxFocusTitleText</item>
-        <item>@string/firefoxLiteTitleText</item>
-        <item>@string/fenixTitleText</item>
+        <item>@string/fennec_release_title</item>
+        <item>@string/fennec_beta_title</item>
+        <item>@string/fennec_nightly_title</item>
+        <item>@string/firefox_klar_title</item>
+        <item>@string/firefox_focus_title</item>
+        <item>@string/firefox_lite_title</item>
+        <item>@string/fenix_title</item>
     </string-array>
 
     <string-array name="disabledAppEntryValues">

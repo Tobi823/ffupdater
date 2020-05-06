@@ -29,13 +29,13 @@ public class InstallationWarningAppDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         return new AlertDialog.Builder(getActivity())
-                .setTitle(getString(R.string.switch_to_unsafe_app_title))
+                .setTitle(getString(R.string.installation_warning_title))
                 .setMessage(app.getWarning(requireContext()))
-                .setPositiveButton(getString(R.string.switch_to_unsafe_app_positive_button), (dialog, which) -> {
+                .setPositiveButton(getString(R.string.installation_warning_positive_button), (dialog, which) -> {
                     dialog.dismiss();
                     downloadCallback.accept(app);
                 })
-                .setNegativeButton(getString(R.string.switch_to_unsafe_app_negative_button), (dialog, which) -> dialog.dismiss())
+                .setNegativeButton(getString(R.string.installation_warning_negative_button), (dialog, which) -> dialog.dismiss())
                 .create();
     }
 }
