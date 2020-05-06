@@ -59,4 +59,24 @@
 	<string name="firefox_focus_description">Это модификация браузера Firefox, направленная на повышение уровня конфиденциальности.  Приложение будет загружено с GitHub - загружать можно только те обновления, которые выпущены на GitHub.</string>
 	<string name="firefox_klar_description">Это модификация браузера Firefox, направленная на повышение уровня конфиденциальности.  Firefox Klar разработан для Германии, Швейцарии и Австрии и практически идентичен Firefox Focus. Только название было изменено, чтобы избежать путаницы с новостным журналом \"Focus\" из медиа-группы \"Hubert Burda Media\".  Приложение будет загружено с GitHub - загружать можно только те обновления, которые выпущены на GitHub.</string>
 	<string name="firefox_lite_description">Firefox Lite разработан в первую очередь для пользователей в Индонезии. Приложение очень маленькое и поддерживает методы для снижения (мобильного) потребления данных.  Приложение будет загружено с GitHub - загружать можно только те обновления, которые выпущены на GitHub.</string>
+	<string name="infobox">"Это программа обновления для нескольких браузеров Mozilla. Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления. Вы можете проверить наличие новых обновлений, пропустив вниз или открыв приложение заново. По умолчанию приложение будет регулярно проверять наличие обновлений в фоновом режиме. Я сделал все возможное, чтобы обезопасить процесс установки/обновления - не стесняйтесь, перепроверьте или улучшите его, создав команду pulll-запроса.     "</string>
+	<string name="install_activity_label">Установить приложение</string>
+	<string name="install_application">Установить приложение</string>
+	<string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
+	<string name="installed_application_is_verified">Установленное приложение проверено</string>
+	<string name="invalid_downloaded_certificate_fingerprint_explanation">Либо злоумышленник заменил правильную загрузку на фальсифицированную, либо проверка сертификата больше не работает. Вы можете перепроверить отпечаток сертификата на apkmirror.com или создать проблему на сайте https://notabug.org/Tobiwan/ffupdater, чтобы сообщить мне об ошибке.</string>
+	<string name="invalid_installed_certificate_fingerprint_explanation">Либо установлено фальсифицированное приложение, либо больше не работает программа проверки сертификатов. Вы можете перепроверить отпечаток сертификата на apkmirror.com или создать проблему на сайте https://notabug.org/Tobiwan/ffupdater, чтобы сообщить об ошибке.  Я рекомендую удалить приложение.</string>
+	<string name="notification_text">Нажмите, чтобы посмотреть</string>
+	<string name="notification_title">Обновление доступно</string>
+	<string name="settings_automatic_check_title">Автоматический в фоновом режиме</string>
+	<string name="settings_check_interval_summary">Как часто приложение должно проверять наличие обновлений?</string>
+	<string name="settings_check_interval_title">Контрольный интервал</string>
+	<string name="settings_disabled_apps_summary">Эти приложения не проверяются автоматически на наличие обновлений</string>
+	<string name="settings_disabled_apps_title">Исключенные приложения</string>
+	<string name="settings_title">Обновление приложения Проверка</string>
+	<string name="sha_256_certificate_fingerprint">Отпечаток пальца из сертификата SHA-256:</string>
+	<string name="unsupported_abi_dialog_message">Выбранный браузер несовместим с процессором вашего смартфона. Пожалуйста, выберите другой браузер.</string>
+	<string name="unsupported_abi_dialog_title">Не поддерживаемое устройство</string>
+	<string name="verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
+	<string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
 </resources>
