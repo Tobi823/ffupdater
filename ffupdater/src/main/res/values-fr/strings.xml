@@ -41,4 +41,12 @@
     <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait.  Traduit avec www.DeepL.com/Translator (version gratuite)</string>
     <string name="notification_title">Mise à jour disponible</string>
     <string name="notification_text">Cliquez ici pour voir</string>
+    <string name="fenix_warning">Cette application est conçue pour les testeurs et contient donc quelques trackers. Voulez-vous vraiment installer cette application?</string>
+    <string name="fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
+    <string name="fetched_url_for_download_successfully">URL de téléchargement récupéré de %1$s</string>
+    <string name="fetched_url_for_download_unsuccessfully">Impossible de récupérer l\'url de téléchargement de %1$s</string>
+    <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
+    <string name="application_successful_installed">Installation de l\'application réussie</string>
+    <string name="invalid_downloaded_certificate_fingerprint_explanation">Soit un pirate a remplacé le téléchargement correct par un téléchargement altéré, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez vérifier l\'empreinte digitale du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
+    <string name="but_was">Mais était:</string>
 </resources>
