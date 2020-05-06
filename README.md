@@ -2,21 +2,46 @@
 
 ## Firefox-Updater
 
-An Android app to install and update Firefox (and Beta/Nightly) for Android on your device, without using the Google Play Store.
+An Android app to install and update:
+ - [Firefox Browser / Fennec Release](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
+ - [Firefox Beta / Fennec Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta)
+ - [Firefox Nightly / Fennec Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fennec_aurora)
+ - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus)
+ - [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
+ - [Firefox Lite](https://play.google.com/store/apps/details?id=org.mozilla.rocket)
+ - [Firefox Preview / Fenix](https://play.google.com/store/apps/details?id=org.mozilla.fenix)
+ on your device without using the Google Play Store.
 
-Periodical the app will check for updates and will display a notification when a new update is available. The time interval of the automatic update checks can be configured.
+The app can check periodically for updates and will display a notification when an update is available. 
 
 ## Screenshots
 
-<img src="screenshot1.jpg" alt="Screenshot of the main screen"><img src="screenshot2.jpg" alt="Screenshot of the setting screen">
+<img src="screenshot1.jpg" alt="main view">
+<img src="screenshot2.jpg" alt="install new browser">
+<img src="screenshot3.jpg" alt="install app">
+<img src="screenshot4.jpg" alt="app certificate validation">
+<img src="screenshot5.jpg" alt="notification">
+<img src="screenshot6.jpg" alt="settings">
 
 ## Technical detail
 
-Internally the [Mozilla API](https://archive.mozilla.org/pub/mobile/releases/) will be queried. 
+### Fennec Release, Fennec Beta and Fennec Nightly 
 
-When an update is available, the user will be redirect to `https://download.mozilla.org/?product=[fennec-latest|fennec-beta-latest,fennec-nightly-latest]&os=[android|android-x86]&lang=multi`.
-For example `https://download.mozilla.org/?product=fennec-beta-latest&os=android-x86&lang=multi`.
+The Mozilla API will be queried:
+ - https://archive.mozilla.org/pub/mobile/releases/ for latest version names
+ - https://download.mozilla.org/?product=%s&os=%s&lang=multi to download the  app
+   - first parameter: fennec-latest, fennec-beta-latest or fennec-nightly-latest
+   - second parameter: android or android-x86
 
+### Firefox Focus, Firefox Klar, Firefox Lite, Fenix
+
+The Github API will be queried:
+ - https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest for Firefox Focus and Firefox Klar
+ - https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest for Firefox Lite
+ - https://api.github.com/repos/mozilla-mobile/fenix/releases/latest for Fenix
+ 
+If .../releases/latest returns a release without assets (APK files for download), then fetch all releases and search
+for the latest release with assets.
 
 ## History
 
