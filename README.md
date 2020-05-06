@@ -14,15 +14,6 @@ An Android app to install and update:
 
 The app can check periodically for updates and will display a notification when an update is available. 
 
-## Screenshots
-
-<img src="screenshot1.jpg" alt="main view">
-<img src="screenshot2.jpg" alt="install new browser">
-<img src="screenshot3.jpg" alt="install app">
-<img src="screenshot4.jpg" alt="app certificate validation">
-<img src="screenshot5.jpg" alt="notification">
-<img src="screenshot6.jpg" alt="settings">
-
 ## Technical detail
 
 ### Fennec Release, Fennec Beta and Fennec Nightly 
