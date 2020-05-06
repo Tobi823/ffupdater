@@ -34,7 +34,6 @@
     <string name="fennec_beta_title">Firefox Beta</string>
     <string name="fennec_nightly_title">Firefox Nightly</string>
     <string name="firefox_klar_title">Firefox Klar</string>
-    <string name="firefox_focus_title">Firefox Focus</string>
     <string name="firefox_lite_title">Firefox Lite</string>
     <string name="fenix_title">Firefox Preview</string>
     <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern.</string>
@@ -54,4 +53,15 @@
     <string name="downloaded_application_from">Anwendung wurde heruntergeladen von:</string>
     <string name="downloaded_application_is_not_verified">Heruntergeladene Anwendung ist NICHT verifiziert</string>
     <string name="downloaded_application_is_verified">Heruntergeladene Anwendung ist verifiziert</string>
+    <string name="expected_sha_256_certificate_fingerprint">Erwarteter SHA-256 Fingerabdruck des Zertifikats:</string>
+    <string name="fenix_description">Firefox Preview (auch als Fenix bekannt) ist ein völlig neuer Browser für Android. Diese Anwendung befindet sich derzeit in der Entwicklung und enthält mehr Tracker als üblich, um die Nutzung der Anwendung zu analysieren/verbessern.  Die App wird von GitHub heruntergeladen werden - nur Updates, die auf GitHub veröffentlicht werden, können heruntergeladen werden.</string>
+    <string name="fennec_beta_description">Diese Anwendung ist eine Vorabversion des Firefox-Browsers und richtet sich an Entwickler und Tester. Sie kann verschiedene Fehler enthalten, die Ihre übliche Nutzung mit dem Browser beeinträchtigen.  Die Anwendung wird von der offiziellen Mozilla-API heruntergeladen.</string>
+    <string name="fennec_nightly_description">Diese Anwendung ist eine Bleeding-Edge-Version des Firefox-Browsers und richtet sich an Entwickler und Tester.  Sie kann verschiedene Fehler enthalten, die Ihre übliche Nutzung mit dem Browser beeinträchtigen.  Die Anwendung wird von der offiziellen Mozilla-API heruntergeladen.</string>
+    <string name="fennec_release_description">Dies ist der standardmäßige und bekannte Firefox-Browser von Mozilla.  Die Anwendung wird von der offiziellen Mozilla-API heruntergeladen.</string>
+    <string name="firefox_focus_description">Dies ist eine Modifikation des Firefox-Browsers mit dem Ziel, die Privatsphäre zu erhöhen.</string>
+    <string name="firefox_klar_description">Die App wird von GitHub heruntergeladen - nur Updates, die auf GitHub veröffentlicht werden, können heruntergeladen werden.</string>
+    <string name="firefox_focus_title">Firefox Focus</string>
+    <string name="firefox_lite_description">Firefox Lite ist primär für Benutzer in Indonesien entwickelt worden. Die Anwendung ist sehr klein und unterstützt Techniken zur Reduzierung des (mobilen) Datenverbrauchs.  Die Anwendung wird von GitHub heruntergeladen - nur Updates, die auf GitHub veröffentlicht werden, können heruntergeladen werden.</string>
+    <string name="install_activity_label">Anwendung installieren</string>
+    <string name="install_application">Anwendung installieren</string>
 </resources>
