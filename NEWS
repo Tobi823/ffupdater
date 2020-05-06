@@ -1,6 +1,11 @@
 2020-05-06 Version 68.0 (32)
  * Really big update
- +
+ * Add support for Firefox Klar, Firefox Focus, Firefox Lite and Fenix
+ * Download and install the app inside FFUpdater (thanks wolfgang42 for the groundwork)
+ * Improve UI
+ * Verify the certificate of the downloaded and installed app
+ * Many improvements
+ * Thanks DeenHyper74 and xin for translations
 
 2019-06-28 Version 67.4 (31)
  * Fix warning dialogue disappears after screen rotation (thanks DeenHyper74)
