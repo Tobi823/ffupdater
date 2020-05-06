@@ -267,7 +267,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/application_installation_was_unsuccessful" />
+                android:text="@string/application_installation_was_not_successful" />
 
             <TextView
                 style="@style/DefaultTextView"

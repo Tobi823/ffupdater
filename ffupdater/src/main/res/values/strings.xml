@@ -50,7 +50,7 @@
     <string name="fetch_url_for_download">Fetch download url from %1$s</string>
     <string name="fetched_url_for_download_successfully">Fetched download url from %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Failed to fetch the download url from %1$s</string>
-    <string name="application_installation_was_unsuccessful">Application installation was unsuccessful</string>
+    <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successful_installed">Application successful installed</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Either an attacker replace the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="but_was">But was:</string>
