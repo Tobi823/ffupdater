@@ -10,9 +10,9 @@
     </string>
     <string name="ok">OK</string>
     <string name="notification_title">Update is available</string>
-    <string name="notification_text">Press to view update</string>
+    <string name="notification_text">Press to view</string>
     <string name="action_settings_title">Settings</string>
-    <string name="action_about_title">About</string>
+    <string name="action_about_title">About FFUpdater</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="settings_activity_label">Settings</string>
     <string name="update_notification_channel_name">Update notification</string>

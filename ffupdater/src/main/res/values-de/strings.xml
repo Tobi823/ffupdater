@@ -3,8 +3,8 @@
     <string name="app_name">FFUpdater</string>
     <string name="ok">OK</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
-    <string name="action_settings_title">die Einstellungen</string>
-    <string name="action_about_title">Über</string>
+    <string name="action_settings_title">Einstellungen</string>
+    <string name="action_about_title">Über FFUpdater</string>
     <string name="settings_activity_label">Einstellungen</string>
     <string name="update_notification_channel_name">Update-Benachrichtigung</string>
     <string name="update_notification_channel_description">Diese Benachrichtigungskategorie informiert Sie über neue verfügbare Firefox-Updates.</string>
@@ -37,4 +37,5 @@
     <string name="firefoxFocusTitleText">Firefox Focus</string>
     <string name="firefoxLiteTitleText">Firefox Lite</string>
     <string name="fenixTitleText">Firefox Preview</string>
+    <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern.</string>
 </resources>

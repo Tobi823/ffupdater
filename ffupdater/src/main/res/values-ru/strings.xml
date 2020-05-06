@@ -3,7 +3,7 @@
 	<string name="app_name">FFUpdater</string>
 	<string name="ok">ОК</string>
 	<string name="action_settings_title">Настройки</string>
-	<string name="action_about_title">О программе</string>
+	<string name="action_about_title">О программе FFUpdater</string>
 	<string name="not_connected_to_internet">Вы не подключены к интернету</string>
     <string name="settings_activity_label">Настройки</string>
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
