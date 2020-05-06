@@ -14,6 +14,11 @@ An Android app to install and update:
 
 The app can check periodically for updates and will display a notification when an update is available. 
 
+## Mirrors
+ - Github: https://github.com/Tobi823/ffupdater
+ - Gitlab: https://gitlab.com/Tobiwan/ffupdater
+ - Notabug.org: https://notabug.org/Tobiwan/ffupdater
+
 ## Technical detail
 
 ### Fennec Release, Fennec Beta and Fennec Nightly 
