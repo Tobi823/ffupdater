@@ -42,6 +42,7 @@
                     <ImageButton
                         android:id="@+id/fennecReleaseInfoButton"
                         style="@style/AppCardInfoButton"
+                        android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fennecReleaseDownloadButton"
@@ -50,6 +51,7 @@
                     <ImageButton
                         android:id="@+id/fennecReleaseDownloadButton"
                         style="@style/AppCardDownloadButton"
+                        android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +60,7 @@
                     <ImageView
                         android:id="@+id/fennecReleaseIcon"
                         style="@style/AppCardIcon"
+                        android:contentDescription="@string/app_icon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_logo_fennec_release" />
@@ -107,6 +110,7 @@
                     <ImageButton
                         android:id="@+id/firefoxKlarInfoButton"
                         style="@style/AppCardInfoButton"
+                        android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxKlarDownloadButton"
@@ -115,6 +119,7 @@
                     <ImageButton
                         android:id="@+id/firefoxKlarDownloadButton"
                         style="@style/AppCardDownloadButton"
+                        android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -124,6 +129,7 @@
                         android:id="@+id/firefoxKlarIcon"
                         style="@style/AppCardIcon"
                         android:background="#A4007F"
+                        android:contentDescription="@string/app_icon"
                         android:padding="3dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -204,6 +210,7 @@
                     <ImageButton
                         android:id="@+id/firefoxFocusInfoButton"
                         style="@style/AppCardInfoButton"
+                        android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxFocusDownloadButton"
@@ -212,6 +219,7 @@
                     <ImageButton
                         android:id="@+id/firefoxFocusDownloadButton"
                         style="@style/AppCardDownloadButton"
+                        android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -221,6 +229,7 @@
                         android:id="@+id/firefoxFocusIcon"
                         style="@style/AppCardIcon"
                         android:background="#A4007F"
+                        android:contentDescription="@string/app_icon"
                         android:padding="3dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -271,6 +280,7 @@
                     <ImageButton
                         android:id="@+id/firefoxLiteInfoButton"
                         style="@style/AppCardInfoButton"
+                        android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxLiteDownloadButton"
@@ -279,6 +289,7 @@
                     <ImageButton
                         android:id="@+id/firefoxLiteDownloadButton"
                         style="@style/AppCardDownloadButton"
+                        android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -287,6 +298,7 @@
                     <ImageView
                         android:id="@+id/firefoxLiteIcon"
                         style="@style/AppCardIcon"
+                        android:contentDescription="@string/app_icon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_logo_firefox_lite" />
@@ -336,6 +348,7 @@
                     <ImageButton
                         android:id="@+id/fenixInfoButton"
                         style="@style/AppCardInfoButton"
+                        android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fenixDownloadButton"
@@ -344,6 +357,7 @@
                     <ImageButton
                         android:id="@+id/fenixDownloadButton"
                         style="@style/AppCardDownloadButton"
+                        android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -352,6 +366,7 @@
                     <ImageView
                         android:id="@+id/fenixIcon"
                         style="@style/AppCardIcon"
+                        android:contentDescription="@string/app_icon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_logo_fenix" />

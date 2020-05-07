@@ -83,4 +83,7 @@
     <string name="update_notification_channel_name">Update notification</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
+    <string name="information_about_the_app">information about the app</string>
+    <string name="download_the_app">download the app</string>
+    <string name="app_icon">app icon</string>
 </resources>

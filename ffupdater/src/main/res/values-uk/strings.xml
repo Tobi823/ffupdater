@@ -74,4 +74,7 @@
     <string name="update_notification_channel_name">Повідомлення оновлення</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
+    <string name="information_about_the_app">інформація про додаток</string>
+    <string name="download_the_app">завантажити додаток</string>
+    <string name="app_icon">значок програми</string>
 </resources>

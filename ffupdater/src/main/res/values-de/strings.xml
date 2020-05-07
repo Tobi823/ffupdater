@@ -74,4 +74,7 @@
     <string name="update_notification_channel_name">Update-Benachrichtigung</string>
     <string name="verifying_downloaded_application_certificate">Zertifikat der Anwendung überprüfen</string>
     <string name="you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
+    <string name="information_about_the_app">Information über die Applikation</string>
+    <string name="download_the_app">Applikation herunterladen</string>
+    <string name="app_icon">Applikations-Icon</string>
 </resources>
