@@ -1,8 +1,9 @@
-The app can download and install the Firefox Browser (Fennec Release), Firefox Beta (Fennec Beta), Firefox Nightly (Fennec Nightly),
-Firefox Focus, Firefox Klar, Firefox Lite and Firefox Preview (Fenix).
+The app can download and install the Firefox Browser (Fennec Release), Firefox Focus, Firefox Klar, Firefox Lite and Firefox Preview (Fenix).
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature
 can be disabled.
 
 To increase security, the app only uses HTTPS and verifies the certificate fingerprint of the downloaded file and
 the installed application. I did my best to make it secure as possible - feel free to double-check it in the source code.
+
+Important: I removed Fennec Beta and Fennec Nightly because they are outdated - I will add Fenix Beta and Fenix Nightly soon.

@@ -32,8 +32,6 @@ import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static de.marmaro.krt.ffupdater.App.FENIX;
-import static de.marmaro.krt.ffupdater.App.FENNEC_BETA;
-import static de.marmaro.krt.ffupdater.App.FENNEC_NIGHTLY;
 import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_FOCUS;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_KLAR;
@@ -97,10 +95,6 @@ public class AvailableVersions {
         String available = Objects.requireNonNull(versions.get(app));
         String installed = InstalledApps.getVersionName(packageManager, app);
 
-        if (app == FENNEC_BETA) {
-            String sanitizedAvailable = available.split("b")[0];
-            return !sanitizedAvailable.contentEquals(installed);
-        }
         if (app == FIREFOX_LITE) {
             String sanitizedInstalled = installed.split("\\(")[0];
             return !available.contentEquals(sanitizedInstalled);
@@ -182,8 +176,8 @@ public class AvailableVersions {
         }
 
         List<App> supportedApps = filterUnsupportedApps(apps);
-        if (!Collections.disjoint(supportedApps, Arrays.asList(FENNEC_RELEASE, FENNEC_BETA, FENNEC_NIGHTLY))) {
-            futures.add(executorService.submit(() -> checkFennec(supportedApps)));
+        if (supportedApps.contains(FENNEC_RELEASE)) {
+            futures.add(executorService.submit(this::checkFennec));
         }
         if (!Collections.disjoint(supportedApps, Arrays.asList(FIREFOX_KLAR, FIREFOX_FOCUS))) {
             futures.add(executorService.submit(() -> checkFocusKlar(supportedApps)));
@@ -231,19 +225,15 @@ public class AvailableVersions {
         return supportedApps;
     }
 
-    private void checkFennec(List<App> appsToCheck) {
+    private void checkFennec() {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
         Fennec fennec = Fennec.findLatest();
         if (fennec == null) {
             return;
         }
 
-        for (App app : Arrays.asList(FENNEC_RELEASE, FENNEC_BETA, FENNEC_NIGHTLY)) {
-            if (appsToCheck.contains(app)) {
-                versions.put(app, fennec.getVersion(app));
-                urls.put(app, fennec.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
-            }
-        }
+        versions.put(FENNEC_RELEASE, fennec.getVersion());
+        urls.put(FENNEC_RELEASE, fennec.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
     }
 
     private void checkFocusKlar(List<App> appsToCheck) {

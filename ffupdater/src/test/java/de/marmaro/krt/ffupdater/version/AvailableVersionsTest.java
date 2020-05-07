@@ -35,7 +35,7 @@ public class AvailableVersionsTest {
         Field field = availableVersions.getClass().getDeclaredField("versions");
         field.setAccessible(true);
 
-        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        @SuppressWarnings("JavaReflectionMemberAccess") Field modifiersField = Field.class.getDeclaredField("modifiers");
         modifiersField.setAccessible(true);
         modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
 
@@ -55,39 +55,6 @@ public class AvailableVersionsTest {
         App app = App.FENNEC_RELEASE;
         versions.put(app, "68.8.0");
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("68.7.0"));
-        assertTrue(availableVersions.isUpdateAvailable(app));
-    }
-
-
-    @Test
-    public void isUpdateAvailable_fennecBeta_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
-        App app = App.FENNEC_BETA;
-        versions.put(app, "68.7b1");
-        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("68.7"));
-        assertFalse(availableVersions.isUpdateAvailable(app));
-    }
-
-    @Test
-    public void isUpdateAvailable_fennecBeta_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
-        App app = App.FENNEC_BETA;
-        versions.put(app, "68.7b1");
-        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("68.6"));
-        assertTrue(availableVersions.isUpdateAvailable(app));
-    }
-
-    @Test
-    public void isUpdateAvailable_fennecNightly_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
-        App app = App.FENNEC_BETA;
-        versions.put(app, "68.5a1");
-        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("68.5a1"));
-        assertFalse(availableVersions.isUpdateAvailable(app));
-    }
-
-    @Test
-    public void isUpdateAvailable_fennecNightly_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
-        App app = App.FENNEC_BETA;
-        versions.put(app, "68.5a1");
-        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("68.4a1"));
         assertTrue(availableVersions.isUpdateAvailable(app));
     }
 

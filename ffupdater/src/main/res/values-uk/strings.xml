@@ -17,11 +17,6 @@
     <string name="fenix_description">Firefox Preview (також відомий як Fenix) - це абсолютно новий браузер для Android. Зараз ця програма розробляється і містить більше трекерів, ніж зазвичай, для аналізу / покращення використання додатків.  Додаток буде завантажено з GitHub - можна завантажити лише оновлення, які випускаються на GitHub.</string>
     <string name="fenix_title">Firefox Preview</string>
     <string name="fenix_warning">Цей додаток розроблено для тестувальників і тому містить деякі трекери. Ви дійсно хочете встановити цю програму?</string>
-    <string name="fennec_beta_description">Цей додаток є попереднім випуском браузера Firefox і призначений для розробників і тестерів. Він може містити різні помилки, які впливають на вашу звичайну роботу з браузером.  Додаток буде завантажено з офіційного API Mozilla.</string>
-    <string name="fennec_beta_nightly_message_warning">Цей канал оновлення призначений для розробників і тестувальників Mozilla Firefox. Будь-яка версія Firefox може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ви дійсно хочете перейти на цей канал?</string>
-    <string name="fennec_beta_title">Firefox Beta</string>
-    <string name="fennec_nightly_description">Цей додаток є надзвичайним випуском браузера Firefox і призначений для розробників і тестерів. Він може містити різні помилки, які впливають на вашу звичайну роботу з браузером.  Додаток буде завантажено з офіційного API Mozilla.</string>
-    <string name="fennec_nightly_title">Firefox Nightly</string>
     <string name="fennec_release_description">Це стандартний і добре відомий браузер Firefox від Mozilla.  Додаток буде завантажено з офіційного API Mozilla.</string>
     <string name="fennec_release_title">Веб-браузер Firefox</string>
     <string name="fetch_url_for_download">Вилучити URL-адресу для завантаження з %1$s</string>

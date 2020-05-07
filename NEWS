@@ -6,6 +6,7 @@
  * Verify the certificate of the downloaded and installed app
  * Many improvements
  * Thanks DeenHyper74 and xin for translations
+ * Remove Fennec Beta and Fennec Nightly because their are not developed anymore https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
 
 2019-06-28 Version 67.4 (31)
  * Fix warning dialogue disappears after screen rotation (thanks DeenHyper74)

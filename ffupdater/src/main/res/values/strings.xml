@@ -18,11 +18,6 @@
     <string name="fenix_description">Firefox Preview (also known as Fenix) is an all-new browser for Android. This app is currently under development and contains more trackers than usual to analyse/improve the app usage.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="fenix_title">Firefox Preview</string>
     <string name="fenix_warning">This app is designed for testers and therefore it contains some trackers. Do you really want to install this app?</string>
-    <string name="fennec_beta_description">This app is a pre-release of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>
-    <string name="fennec_beta_nightly_message_warning">This app is designed for developers and testers of Mozilla Firefox. It may contain various bugs that can affect your usual work with the browser. Do you really want to install this app?</string>
-    <string name="fennec_beta_title">Firefox Beta</string>
-    <string name="fennec_nightly_description">This app is a bleeding edge release of the Firefox browser and is designed for developers and testers. It may contain various bugs that affect your usual work with the browser.\n\nThe app will be downloaded from the official Mozilla API.</string>
-    <string name="fennec_nightly_title">Firefox Nightly</string>
     <string name="fennec_release_description">This is the default and well-known Firefox browser from Mozilla.\n\nThe app will be downloaded from the official Mozilla API.</string>
     <string name="fennec_release_title">Firefox Browser</string>
     <string name="fetch_url_for_download">Fetch download url from %1$s</string>

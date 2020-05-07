@@ -89,8 +89,6 @@ public class SettingsHelperTest {
     public void getDisableApps_withAllApps_returnApps() {
         Set<String> strings = new HashSet<>(Arrays.asList(
                 "FENNEC_RELEASE",
-                "FENNEC_BETA",
-                "FENNEC_NIGHTLY",
                 "FIREFOX_KLAR",
                 "FIREFOX_FOCUS",
                 "FIREFOX_LITE",

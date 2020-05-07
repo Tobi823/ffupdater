@@ -54,26 +54,6 @@ public class AvailableVersionsIT {
     }
 
     @Test
-    public void checkUpdateForApp_withFennecBeta_versionAndDownloadNotEmpty() {
-        App app = App.FENNEC_BETA;
-        availableVersions.checkUpdateForApp(app, null, null);
-
-        assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
-        assertFalse(availableVersions.getDownloadUrl(app).isEmpty());
-        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersion(app), availableVersions.getDownloadUrl(app));
-    }
-
-    @Test
-    public void checkUpdateForApp_withFennecNightly_versionAndDownloadNotEmpty() {
-        App app = App.FENNEC_NIGHTLY;
-        availableVersions.checkUpdateForApp(app, null, null);
-
-        assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
-        assertFalse(availableVersions.getDownloadUrl(app).isEmpty());
-        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersion(app), availableVersions.getDownloadUrl(app));
-    }
-
-    @Test
     public void checkUpdateForApp_withFirefoxKlar_versionAndDownloadNotEmpty() {
         App app = App.FIREFOX_KLAR;
         availableVersions.checkUpdateForApp(app, null, null);
