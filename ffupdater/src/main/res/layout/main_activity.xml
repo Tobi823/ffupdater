@@ -14,41 +14,29 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            app:collapsedTitleTextAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title.Inverse"
             app:expandedTitleMarginBottom="70dp"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
-            app:expandedTitleTextAppearance="@style/AppTheme.TransparentText"
-            app:layout_scrollFlags="exitUntilCollapsed">
+            app:expandedTitleMarginStart="32dp"
+            app:expandedTitleTextAppearance="@style/MainActivityTheme.MainTitle"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="48dp"
-                android:layout_marginRight="48dp"
-                android:layout_marginBottom="64dp"
-                android:text="@string/app_name"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/abc_text_size_display_1_material"
-                app:layout_collapseMode="parallax" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="48dp"
-                android:layout_marginRight="48dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
                 android:layout_marginBottom="32dp"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/abc_text_size_subhead_material"
+                android:text="Update your browsers from Mozilla"
+                android:textAppearance="@style/MainActivityTheme.SubTitle"
                 app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
@@ -56,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.DayNight" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
