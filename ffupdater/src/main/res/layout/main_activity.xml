@@ -21,11 +21,11 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:collapsedTitleTextAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title.Inverse"
+            app:collapsedTitleTextAppearance="@android:style/TextAppearance.Large.Inverse"
             app:expandedTitleMarginBottom="70dp"
             app:expandedTitleMarginStart="32dp"
             app:expandedTitleTextAppearance="@style/MainActivityTheme.MainTitle"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <TextView
                 android:layout_width="match_parent"
