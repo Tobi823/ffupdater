@@ -34,7 +34,6 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/fennecReleaseCard"
                 style="@style/AppCard"
-                app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
@@ -102,7 +101,6 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxKlarCard"
                 style="@style/AppCard"
-                app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
@@ -172,7 +170,6 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxFocusCard"
                 style="@style/AppCard"
-                app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
@@ -242,7 +239,6 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxLiteCard"
                 style="@style/AppCard"
-                app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
@@ -310,7 +306,6 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/fenixCard"
                 style="@style/AppCard"
-                app:cardBackgroundColor="@android:color/white"
                 app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">

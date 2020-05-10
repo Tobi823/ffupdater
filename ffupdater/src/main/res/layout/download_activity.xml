@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
     android:scrollbarFadeDuration="0"
+    android:scrollbars="vertical"
     tools:context=".InstallActivity">
 
     <LinearLayout
@@ -46,7 +46,7 @@
         <LinearLayout
             android:id="@+id/fetchedUrlFailure"
             style="@style/DownloadActivitySegment"
-            android:background="#b80f0a"
+            android:background="@color/errorRed"
             android:padding="8dp">
 
             <TextView
@@ -104,7 +104,7 @@
 
             <TextView
                 android:id="@+id/downloadFileFailedUrl"
-                style="@style/MonospaceSelectableTextView"/>
+                style="@style/MonospaceSelectableTextView" />
 
         </LinearLayout>
 

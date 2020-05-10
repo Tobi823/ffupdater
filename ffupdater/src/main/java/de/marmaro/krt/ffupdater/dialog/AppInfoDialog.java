@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.R;
 
 /**
  * Show a dialog with the app description.
@@ -27,6 +28,7 @@ public class AppInfoDialog extends DialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setTitle(app.getTitle(requireContext()))
                 .setMessage(app.getDescription(requireContext()))
+                .setPositiveButton(getString(R.string.ok), (dialog, which) -> dialog.dismiss())
                 .create();
     }
 }
