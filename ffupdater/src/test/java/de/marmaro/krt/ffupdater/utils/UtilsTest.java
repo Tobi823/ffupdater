@@ -9,6 +9,8 @@ import static org.junit.Assert.*;
  */
 public class UtilsTest {
 
+
+
     @Test
     public void convertNullToEmptyString_willNull_returnEmptyString() {
         assertEquals("", Utils.convertNullToEmptyString(null));

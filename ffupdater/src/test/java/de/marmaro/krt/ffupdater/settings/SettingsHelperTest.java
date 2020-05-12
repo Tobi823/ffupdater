@@ -6,14 +6,19 @@ import android.content.SharedPreferences;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.utils.Utils;
 
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -36,6 +41,26 @@ public class SettingsHelperTest {
         context = mock(Context.class);
         sharedPreferences = mock(SharedPreferences.class);
         when(context.getSharedPreferences(anyString(), anyInt())).thenReturn(sharedPreferences);
+    }
+
+    @Test
+    public void stringToInt_withNull_returnFallback() {
+        assertEquals(42, Utils.stringToInt(null, 42));
+    }
+
+    @Test
+    public void stringToInt_withEmptyString_returnFallback() {
+        assertEquals(24, Utils.stringToInt("", 24));
+    }
+
+    @Test
+    public void stringToInt_withNumber_returnNumber() {
+        assertEquals(30, Utils.stringToInt("30", 42));
+    }
+
+    @Test
+    public void stringToInt_withNoNumber_returnFallback() {
+        assertEquals(12, Utils.stringToInt("hi", 12));
     }
 
     @Test
@@ -96,5 +121,43 @@ public class SettingsHelperTest {
         ));
         when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
         assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.values()));
+    }
+
+    @Test
+    public void getThemePreference_withNoValue_returnDefaultValue() {
+        when(sharedPreferences.getString("themePreference", null)).thenReturn(null);
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context));
+    }
+
+    @Test
+    public void getThemePreference_withValue_returnValue() {
+        when(sharedPreferences.getString("themePreference", null)).thenReturn(String.valueOf(MODE_NIGHT_YES));
+        assertEquals(MODE_NIGHT_YES, SettingsHelper.getThemePreference(context));
+    }
+
+    @Test
+    public void getThemePreference_withIncorrectValue_returnDefaultValue() {
+        when(sharedPreferences.getString("themePreference", null)).thenReturn("exception");
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context));
+    }
+
+    @Test
+    public void stringsToCharSequenceArray_emptyCollection_returnEmptyArray() {
+        assertEquals(0, Utils.stringsToCharSequenceArray(new ArrayList<String>()).length);
+    }
+
+    @Test
+    public void stringsToCharSequenceArray_withCollection_returnArray() {
+        assertArrayEquals(new CharSequence[]{"hi"}, Utils.stringsToCharSequenceArray(Arrays.asList("hi")));
+    }
+
+    @Test
+    public void integersToCharSequenceArray_emptyCollection_returnEmptyArray() {
+        assertEquals(0, Utils.integersToCharSequenceArray(new ArrayList<Integer>()).length);
+    }
+
+    @Test
+    public void integersToCharSequenceArray_withCollection_returnArray() {
+        assertArrayEquals(new CharSequence[]{"42"}, Utils.integersToCharSequenceArray(Arrays.asList(42)));
     }
 }

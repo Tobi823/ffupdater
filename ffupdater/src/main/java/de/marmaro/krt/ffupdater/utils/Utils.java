@@ -13,6 +13,11 @@ import java.util.Collection;
 public class Utils {
     private static final String LOG_TAG = "Utils";
 
+    /**
+     * @param string   string
+     * @param fallback fallback
+     * @return convert the string to an int or return fallback
+     */
     public static int stringToInt(String string, int fallback) {
         if (string == null) {
             return fallback;
@@ -91,21 +96,29 @@ public class Utils {
         return versionAndCodenames[apiLevel - 1];
     }
 
+    /**
+     * @param collection collection
+     * @return the collection as CharSequence array
+     */
     @NonNull
-    public static CharSequence[] stringsToCharSequenceArray(@NonNull Collection<String> set) {
-        CharSequence[] result = new CharSequence[set.size()];
+    public static CharSequence[] stringsToCharSequenceArray(@NonNull Collection<String> collection) {
+        CharSequence[] result = new CharSequence[collection.size()];
         int i = 0;
-        for (String element : set) {
+        for (String element : collection) {
             result[i++] = element;
         }
         return result;
     }
 
+    /**
+     * @param collection collection
+     * @return the collection as CharSequence array
+     */
     @NonNull
-    public static CharSequence[] integersToCharSequenceArray(@NonNull Collection<Integer> set) {
-        CharSequence[] result = new CharSequence[set.size()];
+    public static CharSequence[] integersToCharSequenceArray(@NonNull Collection<Integer> collection) {
+        CharSequence[] result = new CharSequence[collection.size()];
         int i = 0;
-        for (Integer element : set) {
+        for (Integer element : collection) {
             result[i++] = String.valueOf(element);
         }
         return result;
