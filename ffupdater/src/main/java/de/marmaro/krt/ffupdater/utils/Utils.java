@@ -31,6 +31,22 @@ public class Utils {
 
     /**
      * @param string string
+     * @return convert the string to an int or throw exception
+     * @throws RuntimeException exception
+     */
+    public static int stringToInt(@Nullable String string) {
+        if (string == null) {
+            throw new RuntimeException("could not convert string to int");
+        }
+        try {
+            return Integer.parseInt(string);
+        } catch (final NumberFormatException nfe) {
+            throw new RuntimeException("could not convert string to int");
+        }
+    }
+
+    /**
+     * @param string string
      * @return if string is null, then return empty string.
      * if string is not null, return string.
      */

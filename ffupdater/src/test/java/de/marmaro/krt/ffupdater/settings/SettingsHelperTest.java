@@ -16,6 +16,7 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.junit.Assert.assertArrayEquals;
@@ -126,7 +127,7 @@ public class SettingsHelperTest {
     @Test
     public void getThemePreference_withNoValue_returnDefaultValue() {
         when(sharedPreferences.getString("themePreference", null)).thenReturn(null);
-        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context));
+        assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context));
     }
 
     @Test
@@ -138,7 +139,7 @@ public class SettingsHelperTest {
     @Test
     public void getThemePreference_withIncorrectValue_returnDefaultValue() {
         when(sharedPreferences.getString("themePreference", null)).thenReturn("exception");
-        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context));
+        assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context));
     }
 
     @Test
