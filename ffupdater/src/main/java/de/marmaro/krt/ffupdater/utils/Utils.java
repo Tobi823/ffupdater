@@ -18,7 +18,7 @@ public class Utils {
      * @param fallback fallback
      * @return convert the string to an int or return fallback
      */
-    public static int stringToInt(String string, int fallback) {
+    public static int stringToInt(@Nullable String string, int fallback) {
         if (string == null) {
             return fallback;
         }
