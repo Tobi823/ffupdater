@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -9,17 +8,22 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.ListPreference;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
+import de.marmaro.krt.ffupdater.utils.Utils;
+
+import static android.os.Build.VERSION.SDK_INT;
+import static android.os.Build.VERSION_CODES.P;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+import static de.marmaro.krt.ffupdater.settings.SettingsHelper.DEFAULT_THEME_PREFERENCE;
+import static de.marmaro.krt.ffupdater.settings.SettingsHelper.getDisableApps;
 
 /**
  * Activity for displaying the settings view.
@@ -64,38 +68,31 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         /**
+         * - Android Pie and below supports dark theme by Battery Saver
+         * - Android Pie has a hidden dark theme setting and Android 10 an official dark theme setting
          * https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
          */
         private void configureThemePreference() {
             ListPreference themePreference = Objects.requireNonNull(findPreference("themePreference"));
-            Map<CharSequence, CharSequence> settings = new LinkedHashMap<>();
-            settings.put("Light", Integer.toString(AppCompatDelegate.MODE_NIGHT_NO));
-            settings.put("Dark", Integer.toString(AppCompatDelegate.MODE_NIGHT_YES));
+            Map<String, Integer> entries = new LinkedHashMap<>(SDK_INT == P ? 4 : 3);
+            entries.put("Light", AppCompatDelegate.MODE_NIGHT_NO);
+            entries.put("Dark", AppCompatDelegate.MODE_NIGHT_YES);
 
-            // Android Pie has a hidden dark theme setting and Android 10 an official dark theme setting
-            if (Build.VERSION.SDK_INT >= 28) {
-                settings.put("Use system default", Integer.toString(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM));
+            if (SDK_INT >= P) {
+                entries.put("Use system default", MODE_NIGHT_FOLLOW_SYSTEM);
             }
-            // Android Pie and below supports dark theme by Battery Saver
-            if (Build.VERSION.SDK_INT < 29) {
-                settings.put("Set by Battery Saver", Integer.toString(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY));
+            if (SDK_INT <= P) {
+                entries.put("Set by Battery Saver", MODE_NIGHT_AUTO_BATTERY);
             }
 
-            //
-            if (Build.VERSION.SDK_INT > 28) {
-                themePreference.setDefaultValue(Integer.toString(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM));
-            } else {
-                themePreference.setDefaultValue(Integer.toString(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY));
-            }
+            themePreference.setEntries(Utils.stringsToCharSequenceArray(entries.keySet()));
+            themePreference.setEntryValues(Utils.integersToCharSequenceArray(entries.values()));
+            themePreference.setDefaultValue(DEFAULT_THEME_PREFERENCE);
 
-
-
-            CharSequence[] entries = new CharSequence[elements];
-            CharSequence[] values = new CharSequence[elements];
-
-
-            themePreference.setEntries(new CharSequence[]{"aaa"});
-            themePreference.setEntryValues(new CharSequence[]{"1"});
+            themePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+                AppCompatDelegate.setDefaultNightMode(Utils.stringToInt((String) newValue, DEFAULT_THEME_PREFERENCE));
+                return true;
+            });
         }
     }
 }

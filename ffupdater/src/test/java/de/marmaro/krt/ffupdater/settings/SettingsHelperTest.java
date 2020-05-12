@@ -53,13 +53,13 @@ public class SettingsHelperTest {
     @Test
     public void getCheckInterval_withNoValue_returnDefaultValue() {
         when(sharedPreferences.getString("checkInterval", null)).thenReturn(null);
-        assertEquals(SettingsHelper.CHECK_INTERVAL_DEFAULT_VALUE, SettingsHelper.getCheckInterval(context));
+        assertEquals(SettingsHelper.DEFAULT_CHECK_INTERVAL, SettingsHelper.getCheckInterval(context));
     }
 
     @Test
     public void getCheckInterval_withInvalidValue_returnDefaultValue() {
         when(sharedPreferences.getString("checkInterval", null)).thenReturn("exception");
-        assertEquals(SettingsHelper.CHECK_INTERVAL_DEFAULT_VALUE, SettingsHelper.getCheckInterval(context));
+        assertEquals(SettingsHelper.DEFAULT_CHECK_INTERVAL, SettingsHelper.getCheckInterval(context));
     }
 
     @Test

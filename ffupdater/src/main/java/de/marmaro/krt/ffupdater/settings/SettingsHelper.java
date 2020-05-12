@@ -3,27 +3,34 @@ package de.marmaro.krt.ffupdater.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.utils.Utils;
+
+import static android.os.Build.VERSION.SDK_INT;
+import static android.os.Build.VERSION_CODES.Q;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 
 /**
  * This class is a helper to access the settings more easily by checking und converting the raw values from
  * SharedPreferences instance.
  */
 public class SettingsHelper {
-    static final int CHECK_INTERVAL_DEFAULT_VALUE = 360;
+    public static final boolean DEFAULT_AUTOMATIC_CHECK = true;
+    public static final int DEFAULT_CHECK_INTERVAL = 360;
+    public static final int DEFAULT_THEME_PREFERENCE = SDK_INT >= Q ? MODE_NIGHT_FOLLOW_SYSTEM : MODE_NIGHT_AUTO_BATTERY;
 
     /**
      * @param context context
      * @return should the regular background update check be enabled?
      */
     public static boolean isAutomaticCheck(Context context) {
-        return getSharedPreferences(context).getBoolean("automaticCheck", true);
+        return getSharedPreferences(context).getBoolean("automaticCheck", DEFAULT_AUTOMATIC_CHECK);
     }
 
     /**
@@ -31,15 +38,7 @@ public class SettingsHelper {
      * @return how long should be the time span between check background update check?
      */
     public static int getCheckInterval(Context context) {
-        String checkInterval = getSharedPreferences(context).getString("checkInterval", null);
-        if (checkInterval == null) {
-            return CHECK_INTERVAL_DEFAULT_VALUE;
-        }
-        try {
-            return Integer.parseInt(checkInterval);
-        } catch (final NumberFormatException nfe) {
-            return CHECK_INTERVAL_DEFAULT_VALUE;
-        }
+        return Utils.stringToInt(getSharedPreferences(context).getString("checkInterval", null), DEFAULT_CHECK_INTERVAL);
     }
 
     /**
@@ -62,12 +61,12 @@ public class SettingsHelper {
     public static int getThemePreference(Context context) {
         String themePreference = getSharedPreferences(context).getString("themePreference", null);
         if (themePreference == null) {
-            return AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+            return DEFAULT_THEME_PREFERENCE;
         }
         try {
             return Integer.parseInt(themePreference);
         } catch (final NumberFormatException nfe) {
-            return AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+            return DEFAULT_THEME_PREFERENCE;
         }
     }
 

@@ -5,11 +5,24 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Collection;
+
 /**
  * Class with useful helper methods.
  */
 public class Utils {
     private static final String LOG_TAG = "Utils";
+
+    public static int stringToInt(String string, int fallback) {
+        if (string == null) {
+            return fallback;
+        }
+        try {
+            return Integer.parseInt(string);
+        } catch (final NumberFormatException nfe) {
+            return fallback;
+        }
+    }
 
     /**
      * @param string string
@@ -76,5 +89,25 @@ public class Utils {
             return "API Level " + apiLevel;
         }
         return versionAndCodenames[apiLevel - 1];
+    }
+
+    @NonNull
+    public static CharSequence[] stringsToCharSequenceArray(@NonNull Collection<String> set) {
+        CharSequence[] result = new CharSequence[set.size()];
+        int i = 0;
+        for (String element : set) {
+            result[i++] = element;
+        }
+        return result;
+    }
+
+    @NonNull
+    public static CharSequence[] integersToCharSequenceArray(@NonNull Collection<Integer> set) {
+        CharSequence[] result = new CharSequence[set.size()];
+        int i = 0;
+        for (Integer element : set) {
+            result[i++] = String.valueOf(element);
+        }
+        return result;
     }
 }
