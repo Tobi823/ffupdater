@@ -57,4 +57,18 @@
         <item>FIREFOX_LITE</item>
         <item>FENIX</item>
     </string-array>
+
+    <string-array name="themeEntries">
+        <item>System default</item>
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Dark when \'Battery Saver\' enabled </item>
+    </string-array>
+
+    <string-array name="themeValues">
+        <item>-1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>

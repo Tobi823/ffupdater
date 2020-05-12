@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.preference.PreferenceManager;
@@ -34,6 +35,7 @@ import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
+import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
 import static android.view.View.GONE;
@@ -120,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("FindViewByIdCast")
     private void initUI() {
         setContentView(R.layout.main_activity);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this));
 
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);

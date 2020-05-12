@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
 import java.util.HashSet;
@@ -56,6 +57,18 @@ public class SettingsHelper {
             result.add(App.valueOf(disableApp));
         }
         return result;
+    }
+
+    public static int getThemePreference(Context context) {
+        String themePreference = getSharedPreferences(context).getString("themePreference", null);
+        if (themePreference == null) {
+            return AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+        }
+        try {
+            return Integer.parseInt(themePreference);
+        } catch (final NumberFormatException nfe) {
+            return AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+        }
     }
 
     private static SharedPreferences getSharedPreferences(Context context) {

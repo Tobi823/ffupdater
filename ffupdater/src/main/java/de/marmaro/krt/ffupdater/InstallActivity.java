@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.util.Pair;
 
 import org.apache.commons.codec.binary.ApacheCodecHex;
@@ -27,6 +28,7 @@ import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
+import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
@@ -53,6 +55,8 @@ public class InstallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.download_activity);
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this));
+
         registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
 

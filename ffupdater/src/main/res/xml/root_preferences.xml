@@ -27,4 +27,13 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="Appearance">
+
+        <ListPreference
+            app:key="themePreference"
+            app:summary="Choose between light and dark theme"
+            app:title="Choose theme" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
