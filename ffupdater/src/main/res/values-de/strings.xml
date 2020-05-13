@@ -54,9 +54,9 @@
     <string name="settings_disabled_apps_title">Ausgeschlossene Anwendungen</string>
     <string name="settings_title">Update-Prüfung der Anwendung</string>
     <string name="sha_256_certificate_fingerprint">SHA-256 Fingerabdruck des Zertifikats:</string>
-    <string name="theme_battery_saver">Dunkel wenn Energiesparmodus aktiv</string>
-    <string name="theme_dark">Dunkel</string>
-    <string name="theme_light">Hell</string>
+    <string name="theme_battery_saver">Dark wenn Energiesparmodus aktiv</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_light">Light</string>
     <string name="theme_preference_summary">Wechsle zwischen Dark und Light Theme</string>
     <string name="theme_preference_title">Theme auswählen</string>
     <string name="theme_system_default">Systemeinstellung</string>
