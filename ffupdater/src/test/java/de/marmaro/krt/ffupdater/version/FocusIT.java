@@ -3,9 +3,13 @@ package de.marmaro.krt.ffupdater.version;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceABI;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 /**
@@ -78,5 +82,15 @@ public class FocusIT {
     public void getDownloadUrl_withX8664AndKlar_throwException() {
         DeviceABI.ABI abi = DeviceABI.ABI.X86_64;
         assertFalse(focus.getDownloadUrl(App.FIREFOX_KLAR, abi).isEmpty());
+    }
+
+    @Test
+    public void getDownloadUrl_allAbisAndApps_return4DifferentUrls() {
+        Set<String> strings = new HashSet<>();
+        strings.add(focus.getDownloadUrl(App.FIREFOX_FOCUS, DeviceABI.ABI.ARM));
+        strings.add(focus.getDownloadUrl(App.FIREFOX_FOCUS, DeviceABI.ABI.AARCH64));
+        strings.add(focus.getDownloadUrl(App.FIREFOX_KLAR, DeviceABI.ABI.ARM));
+        strings.add(focus.getDownloadUrl(App.FIREFOX_KLAR, DeviceABI.ABI.AARCH64));
+        assertEquals(4, strings.size());
     }
 }
