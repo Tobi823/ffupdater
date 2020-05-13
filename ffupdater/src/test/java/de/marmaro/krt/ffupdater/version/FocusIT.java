@@ -40,18 +40,17 @@ public class FocusIT {
         System.out.println(App.FIREFOX_FOCUS + " - " + abi + " " + focus.getDownloadUrl(App.FIREFOX_FOCUS, abi));
     }
 
-    @Test
-    public void getDownloadUrl_withX86AndFocus_returnNonEmptyString() {
+    @Test(expected = IllegalArgumentException.class)
+    public void getDownloadUrl_withX86AndFocus_throwException() {
         DeviceABI.ABI abi = DeviceABI.ABI.X86;
         assertFalse(focus.getDownloadUrl(App.FIREFOX_FOCUS, abi).isEmpty());
         System.out.println(App.FIREFOX_FOCUS + " - " + abi + " " + focus.getDownloadUrl(App.FIREFOX_FOCUS, abi));
     }
 
-    @Test
-    public void getDownloadUrl_withX8664AndFocus_returnNonEmptyString() {
+    @Test(expected = IllegalArgumentException.class)
+    public void getDownloadUrl_withX8664AndFocus_throwException() {
         DeviceABI.ABI abi = DeviceABI.ABI.X86_64;
         assertFalse(focus.getDownloadUrl(App.FIREFOX_FOCUS, abi).isEmpty());
-        System.out.println(App.FIREFOX_FOCUS + " - " + abi + " " + focus.getDownloadUrl(App.FIREFOX_FOCUS, abi));
     }
 
     @Test
@@ -68,17 +67,16 @@ public class FocusIT {
         System.out.println(App.FIREFOX_KLAR + " - " + abi + " " + focus.getDownloadUrl(App.FIREFOX_KLAR, abi));
     }
 
-    @Test
-    public void getDownloadUrl_withX86AndKlar_returnNonEmptyString() {
+    @Test(expected = IllegalArgumentException.class)
+    public void getDownloadUrl_withX86AndKlar_throwException() {
         DeviceABI.ABI abi = DeviceABI.ABI.X86;
         assertFalse(focus.getDownloadUrl(App.FIREFOX_KLAR, abi).isEmpty());
         System.out.println(App.FIREFOX_KLAR + " - " + abi + " " + focus.getDownloadUrl(App.FIREFOX_KLAR, abi));
     }
 
-    @Test
-    public void getDownloadUrl_withX8664AndKlar_returnNonEmptyString() {
+    @Test(expected = IllegalArgumentException.class)
+    public void getDownloadUrl_withX8664AndKlar_throwException() {
         DeviceABI.ABI abi = DeviceABI.ABI.X86_64;
         assertFalse(focus.getDownloadUrl(App.FIREFOX_KLAR, abi).isEmpty());
-        System.out.println(App.FIREFOX_KLAR + " - " + abi + " " + focus.getDownloadUrl(App.FIREFOX_KLAR, abi));
     }
 }
