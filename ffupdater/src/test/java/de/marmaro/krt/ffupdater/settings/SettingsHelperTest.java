@@ -141,24 +141,4 @@ public class SettingsHelperTest {
         when(sharedPreferences.getString("themePreference", null)).thenReturn("exception");
         assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context));
     }
-
-    @Test
-    public void stringsToCharSequenceArray_emptyCollection_returnEmptyArray() {
-        assertEquals(0, Utils.stringsToCharSequenceArray(new ArrayList<String>()).length);
-    }
-
-    @Test
-    public void stringsToCharSequenceArray_withCollection_returnArray() {
-        assertArrayEquals(new CharSequence[]{"hi"}, Utils.stringsToCharSequenceArray(Arrays.asList("hi")));
-    }
-
-    @Test
-    public void integersToCharSequenceArray_emptyCollection_returnEmptyArray() {
-        assertEquals(0, Utils.integersToCharSequenceArray(new ArrayList<Integer>()).length);
-    }
-
-    @Test
-    public void integersToCharSequenceArray_withCollection_returnArray() {
-        assertArrayEquals(new CharSequence[]{"42"}, Utils.integersToCharSequenceArray(Arrays.asList(42)));
-    }
 }
