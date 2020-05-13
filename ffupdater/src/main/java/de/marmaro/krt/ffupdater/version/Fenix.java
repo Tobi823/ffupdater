@@ -52,7 +52,7 @@ class Fenix {
         for (String name : downloadUrls.keySet()) {
             String nameLowerCase = name.toLowerCase();
 
-            if (abi == AARCH64 && !nameLowerCase.contains("aarch64")) {
+            if (abi == AARCH64 && !nameLowerCase.contains("arm64")) {
                 continue;
             }
 
