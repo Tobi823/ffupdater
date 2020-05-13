@@ -27,6 +27,7 @@ class Fenix {
 
     /**
      * Do the network request to get the latest version name and download url for Fenix.
+     *
      * @return result or null
      */
     @Nullable
@@ -50,26 +51,26 @@ class Fenix {
 
     String getDownloadUrl(DeviceABI.ABI abi) {
         for (String name : downloadUrls.keySet()) {
-            String nameLowerCase = name.toLowerCase();
-
-            if (abi == AARCH64 && !nameLowerCase.contains("arm64")) {
-                continue;
+            if (isValidAbi(abi, name)) {
+                return downloadUrls.get(name);
             }
-
-            if (abi == ARM && !nameLowerCase.contains("arm")) {
-                continue;
-            }
-
-            if (abi == X86 && !nameLowerCase.contains("x86")) {
-                continue;
-            }
-
-            if (abi == X86_64 && !nameLowerCase.contains("x86_64")) {
-                continue;
-            }
-
-            return downloadUrls.get(name);
         }
-        throw new IllegalArgumentException("Missing map entry");
+        throw new IllegalArgumentException("missing download url for " + abi);
+    }
+
+    private boolean isValidAbi(DeviceABI.ABI abi, String name) {
+        String nameLowerCase = name.toLowerCase();
+        switch (abi) {
+            case AARCH64:
+                return nameLowerCase.contains("arm64");
+            case ARM:
+                return nameLowerCase.contains("arm") && !nameLowerCase.contains("arm64");
+            case X86_64:
+                return nameLowerCase.contains("x86_64");
+            case X86:
+                return nameLowerCase.contains("x86") && !nameLowerCase.contains("x86_64");
+            default:
+                throw new IllegalArgumentException("invalid abi");
+        }
     }
 }

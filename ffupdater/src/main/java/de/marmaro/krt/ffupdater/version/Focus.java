@@ -45,21 +45,34 @@ class Focus {
 
     String getDownloadUrl(App app, DeviceABI.ABI abi) {
         for (String name : downloadUrls.keySet()) {
-            String nameLowerCase = name.toLowerCase();
-            if (app == App.FIREFOX_FOCUS && !nameLowerCase.contains("focus")) {
-                continue;
+            if (isValidApp(app, name) && isValidAbi(abi, name)) {
+                return downloadUrls.get(name);
             }
-            if (app == App.FIREFOX_KLAR && !nameLowerCase.contains("klar")) {
-                continue;
-            }
-            if (abi == AARCH64 && !nameLowerCase.contains("arm64")) {
-                continue;
-            }
-            if (abi == ARM && !nameLowerCase.contains("arm")) {
-                continue;
-            }
-            return downloadUrls.get(name);
         }
-        throw new IllegalArgumentException("Missing map entry");
+        throw new IllegalArgumentException("missing download url for " + app + " and " + abi);
+    }
+
+    private boolean isValidApp(App app, String name) {
+        String nameLowerCase = name.toLowerCase();
+        switch (app) {
+            case FIREFOX_FOCUS:
+                return nameLowerCase.contains("focus");
+            case FIREFOX_KLAR:
+                return nameLowerCase.contains("klar");
+            default:
+                throw new IllegalArgumentException("invalid app");
+        }
+    }
+
+    private boolean isValidAbi(DeviceABI.ABI abi, String name) {
+        String nameLowerCase = name.toLowerCase();
+        switch (abi) {
+            case AARCH64:
+                return nameLowerCase.contains("arm64");
+            case ARM:
+                return nameLowerCase.contains("arm") && !nameLowerCase.contains("arm64");
+            default:
+                throw new IllegalArgumentException("invalid abi");
+        }
     }
 }
