@@ -1,17 +1,4 @@
-# when the git tag was created by the web-frontend, you have to do:
-git fetch --tags
 
-# release new version
-- edit NEWS
-- edit gradle.build
-- add tags
-
-# push changes with tag
-SET TAG=67.4
-git tag %TAG%
-git push origin %TAG%
-git push github %TAG%
-git push gitlab %TAG%
 
 TAG=67.1
 git tag $TAG

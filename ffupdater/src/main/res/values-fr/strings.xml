@@ -2,6 +2,7 @@
 <resources>
     <string name="action_about_title">À propos FFUpdater</string>
     <string name="action_settings_title">Réglages</string>
+    <string name="app_icon">icône de l\'application</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
     <string name="application_successful_installed">Installation de l\'application réussie</string>
@@ -10,6 +11,7 @@
     <string name="device_too_old_dialog_title">L\'appareil est trop vieux</string>
     <string name="download_application_from_with_status">Télécharger l\'application (%1$s)</string>
     <string name="download_failed">Echec du téléchargement</string>
+    <string name="download_the_app">télécharger l\'application</string>
     <string name="downloaded_application_from">Application téléchargée à partir de:</string>
     <string name="downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
     <string name="downloaded_application_is_verified">La demande téléchargée est vérifiée</string>
@@ -29,6 +31,7 @@
     <string name="firefox_lite_description">Firefox Lite est principalement développé pour les utilisateurs en Indonésie. L\'application est très petite et prend en charge des techniques visant à réduire la consommation de données (mobiles).  L\'application sera téléchargée à partir de GitHub - seules les mises à jour qui sont publiées sur GitHub peuvent être téléchargées.</string>
     <string name="firefox_lite_title">Firefox Lite</string>
     <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait.  Traduit avec www.DeepL.com/Translator (version gratuite)</string>
+    <string name="information_about_the_app">informations sur l\'application</string>
     <string name="install_activity_label">Installer l\'application</string>
     <string name="install_application">Installer l\'application</string>
     <string name="installation_warning_negative_button">Non, rester à \'Release\'</string>
@@ -38,6 +41,7 @@
     <string name="installed_application_is_verified">La demande installée est vérifiée</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Soit un pirate a remplacé le téléchargement correct par un téléchargement altéré, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez vérifier l\'empreinte digitale du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Soit une application falsifiée a été installée, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez revérifier l\'empreinte du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
+    <string name="main_activity_subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="notification_text">Cliquez ici pour voir</string>
     <string name="notification_title">Mise à jour disponible</string>
@@ -50,6 +54,12 @@
     <string name="settings_disabled_apps_title">Demandes exclues</string>
     <string name="settings_title">Vérification de la mise à jour de la demande</string>
     <string name="sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256:</string>
+    <string name="theme_battery_saver">Sombre lorsque l\'économiseur de batterie est actif</string>
+    <string name="theme_dark">Foncé</string>
+    <string name="theme_light">Lumière</string>
+    <string name="theme_preference_summary">Choisissez entre un thème clair et un thème sombre</string>
+    <string name="theme_preference_title">Choisissez un thème</string>
+    <string name="theme_system_default">Utiliser le système par défaut</string>
     <string name="unsupported_abi_dialog_message">Le navigateur sélectionné est incompatible avec le processeur de votre smartphone. Veuillez sélectionner un autre navigateur.</string>
     <string name="unsupported_abi_dialog_title">Appareil non pris en charge</string>
     <string name="update_interval_12h">12 heures</string>
@@ -74,7 +84,4 @@
     <string name="update_notification_channel_name">Notification de mise à jour</string>
     <string name="verifying_downloaded_application_certificate">Vérification du certificat de demande</string>
     <string name="you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
-    <string name="information_about_the_app">informations sur l\'application</string>
-    <string name="download_the_app">télécharger l\'application</string>
-    <string name="app_icon">icône de l\'application</string>
 </resources>

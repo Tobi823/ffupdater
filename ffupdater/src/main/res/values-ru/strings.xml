@@ -2,6 +2,7 @@
 <resources>
     <string name="action_about_title">О программе FFUpdater</string>
     <string name="action_settings_title">Настройки</string>
+    <string name="app_icon">иконка приложения</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
     <string name="application_successful_installed">Приложение успешно установлено</string>
@@ -10,6 +11,7 @@
     <string name="device_too_old_dialog_title">Устройство слишком старое</string>
     <string name="download_application_from_with_status">Загрузить приложение (%1$s)</string>
     <string name="download_failed">Не удалось загрузить</string>
+    <string name="download_the_app">загрузить приложение</string>
     <string name="downloaded_application_from">Загруженное приложение из:</string>
     <string name="downloaded_application_is_not_verified">Загруженное приложение НЕ проверяется</string>
     <string name="downloaded_application_is_verified">Загруженное приложение проверено</string>
@@ -35,6 +37,7 @@
         По умолчанию приложение будет регулярно проверять наличие обновлений в фоновом режиме.
         Я сделал все возможное, чтобы обезопасить процесс установки/обновления - не стесняйтесь, перепроверьте или улучшите его, создав pull-request.
     </string>
+    <string name="information_about_the_app">информация о приложении</string>
     <string name="install_activity_label">Установить приложение</string>
     <string name="install_application">Установить приложение</string>
     <string name="installation_warning_negative_button">Нет, не устанавливать</string>
@@ -44,6 +47,7 @@
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Либо злоумышленник заменил правильную загрузку на фальсифицированную, либо проверка сертификата больше не работает. Вы можете перепроверить отпечаток сертификата на apkmirror.com или создать проблему на сайте https://notabug.org/Tobiwan/ffupdater, чтобы сообщить мне об ошибке.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Либо установлено фальсифицированное приложение, либо больше не работает программа проверки сертификатов. Вы можете перепроверить отпечаток сертификата на apkmirror.com или создать проблему на сайте https://notabug.org/Tobiwan/ffupdater, чтобы сообщить об ошибке.\n\nЯ рекомендую удалить приложение.</string>
+    <string name="main_activity_subtitle">Обновите свои браузеры от Mozilla</string>
     <string name="not_connected_to_internet">Вы не подключены к интернету</string>
     <string name="notification_text">Нажмите, чтобы посмотреть</string>
     <string name="notification_title">Доступно обновление</string>
@@ -56,6 +60,12 @@
     <string name="settings_disabled_apps_title">Исключенные приложения</string>
     <string name="settings_title">Проверка обновлений приложений</string>
     <string name="sha_256_certificate_fingerprint">Отпечаток сертификата SHA-256:</string>
+    <string name="theme_battery_saver">Темнота, когда аккумуляторная батарея активна.</string>
+    <string name="theme_dark">Темный</string>
+    <string name="theme_light">Светлый</string>
+    <string name="theme_preference_summary">Выбор между светлой и темной темой</string>
+    <string name="theme_preference_title">Choose theme</string>
+    <string name="theme_system_default">Использовать систему по умолчанию</string>
     <string name="unsupported_abi_dialog_message">Выбранный браузер несовместим с процессором вашего смартфона. Пожалуйста, выберите другой браузер.</string>
     <string name="unsupported_abi_dialog_title">Устройство не поддерживается</string>
     <string name="update_interval_12h">12 часов</string>
@@ -80,7 +90,4 @@
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
     <string name="verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
-    <string name="information_about_the_app">информация о приложении</string>
-    <string name="download_the_app">загрузить приложение</string>
-    <string name="app_icon">иконка приложения</string>
 </resources>

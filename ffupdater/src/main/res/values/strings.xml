@@ -2,6 +2,7 @@
 <resources>
     <string name="action_about_title">About FFUpdater</string>
     <string name="action_settings_title">Settings</string>
+    <string name="app_icon">app icon</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successful_installed">Application successful installed</string>
@@ -10,6 +11,7 @@
     <string name="device_too_old_dialog_title">Device is too old</string>
     <string name="download_application_from_with_status">Download application (%1$s)</string>
     <string name="download_failed">Download failed</string>
+    <string name="download_the_app">download the app</string>
     <string name="downloaded_application_from">Downloaded application from:</string>
     <string name="downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
     <string name="downloaded_application_is_verified">Downloaded application is verified</string>
@@ -37,6 +39,7 @@
         By default the app will check regularly for updates in the background.
         I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request.
     </string>
+    <string name="information_about_the_app">information about the app</string>
     <string name="install_activity_label">Install Application</string>
     <string name="install_application">Install Application</string>
     <string name="installation_warning_negative_button">No, don\'t install it</string>
@@ -46,6 +49,7 @@
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
+    <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
     <string name="mozilla" translatable="false">Mozilla</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="notification_text">Press to view</string>
@@ -59,6 +63,12 @@
     <string name="settings_disabled_apps_title">Excluded applications</string>
     <string name="settings_title">Application Update Check</string>
     <string name="sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
+    <string name="theme_battery_saver">Dark when Battery Saver active</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_preference_summary">Choose between light and dark theme</string>
+    <string name="theme_preference_title">Choose theme</string>
+    <string name="theme_system_default">Use system default</string>
     <string name="unsupported_abi_dialog_message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="unsupported_abi_dialog_title">Unsupported device</string>
     <string name="update_interval_12h">12 hours</string>
@@ -83,7 +93,4 @@
     <string name="update_notification_channel_name">Update notification</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
-    <string name="information_about_the_app">information about the app</string>
-    <string name="download_the_app">download the app</string>
-    <string name="app_icon">app icon</string>
 </resources>

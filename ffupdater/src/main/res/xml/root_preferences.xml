@@ -32,10 +32,10 @@
         <ListPreference
             app:key="themePreference"
             app:defaultValue="@string/default_theme_preference"
-            app:summary="Choose between light and dark theme"
+            app:summary="@string/theme_preference_summary"
             app:entries="@array/themeEntries"
             app:entryValues="@array/themeValues"
-            app:title="Choose theme" />
+            app:title="@string/theme_preference_title" />
 
     </PreferenceCategory>
 
