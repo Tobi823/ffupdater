@@ -7,6 +7,7 @@ git fetch --tags
  - add changelog to NEWS
  - add supporter to NEWS
  - edit gradle.build to increase version code and version name
+ - commit changes
  - create tag for release
  - push tag to notabug.org, Github and Gitlab
 
