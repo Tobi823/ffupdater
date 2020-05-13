@@ -84,7 +84,7 @@ public class DownloadManagerAdapter {
 
             double columnTotalBytes = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES));
             double columnActualBytes = cursor.getInt(cursor.getColumnIndex(COLUMN_BYTES_DOWNLOADED_SO_FAR));
-            int percent = (int) ((columnTotalBytes / columnActualBytes) * 100);
+            int percent = (int) ((columnActualBytes / columnTotalBytes) * 100);
             return new Pair<>(status, percent);
         }
     }
