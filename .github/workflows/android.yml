@@ -1,9 +1,10 @@
 name: Android CI
 
 on:
+  push:
+    branches: [ master ]
   schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '10 11 * * *'
+    - cron:  '10 19 * * *'
 
 jobs:
   build:
@@ -16,5 +17,5 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Test with Gradle
+    - name: Build with Gradle
       run: ./gradlew cleanBuildCache test
