@@ -13,6 +13,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+
 /**
  * Consume a REST-API from the internet.
  */

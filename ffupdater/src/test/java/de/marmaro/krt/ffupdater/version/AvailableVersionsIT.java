@@ -1,46 +1,42 @@
 package de.marmaro.krt.ffupdater.version;
 
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.reflect.Whitebox;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.device.DeviceABI;
 
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.mock;
+import static org.powermock.api.mockito.PowerMockito.when;
 
 /**
  * Created by Tobiwan on 03.05.2020.
  */
+@RunWith(PowerMockRunner.class)
+@PowerMockIgnore({"javax.net.ssl.*"})
+@PrepareForTest({Build.VERSION.class, DeviceABI.class})
 public class AvailableVersionsIT {
-    private int oldSdkInt;
-    private String[] oldSupportedAbis;
-    private PackageManager packageManager;
     private AvailableVersions availableVersions;
 
     @Before
     public void setUp() throws Exception {
-        oldSdkInt = Build.VERSION.SDK_INT;
-        oldSupportedAbis = android.os.Build.SUPPORTED_ABIS;
+        Whitebox.setInternalState(Build.VERSION.class, "SDK_INT", 29);
 
-        setField(Build.VERSION.class.getField("SDK_INT"), 29);
-        setField(android.os.Build.class.getField("SUPPORTED_ABIS"), new String[]{"armeabi-v7a"});
+        PowerMockito.mockStatic(DeviceABI.class);
+        when(DeviceABI.getBestSuitedAbi()).thenReturn(DeviceABI.ABI.ARM);
 
-        packageManager = mock(PackageManager.class);
+        PackageManager packageManager = mock(PackageManager.class);
         availableVersions = new AvailableVersions(packageManager);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        setField(Build.VERSION.class.getField("SDK_INT"), oldSdkInt);
-        setField(android.os.Build.class.getField("SUPPORTED_ABIS"), oldSupportedAbis);
     }
 
     @Test
@@ -91,19 +87,5 @@ public class AvailableVersionsIT {
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
         assertFalse(availableVersions.getDownloadUrl(app).isEmpty());
         System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersion(app), availableVersions.getDownloadUrl(app));
-    }
-
-    /**
-     * // https://stackoverflow.com/a/3301720
-     */
-    @SuppressWarnings("JavaReflectionMemberAccess")
-    private static void setField(Field field, Object value) throws NoSuchFieldException, IllegalAccessException {
-        field.setAccessible(true);
-
-        Field modifiersField = Field.class.getDeclaredField("modifiers");
-        modifiersField.setAccessible(true);
-        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-
-        field.set(null, value);
     }
 }

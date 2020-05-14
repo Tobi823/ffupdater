@@ -6,13 +6,12 @@ import org.junit.Test;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceABI;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Created by Tobiwan on 13.05.2020.
  */
 public class FennecIT {
-
     private static Fennec fennec;
 
     @BeforeClass
@@ -24,7 +23,7 @@ public class FennecIT {
     public void getVersion_withNoParams_returnNonEmptyString() {
         assertFalse(fennec.getVersion().isEmpty());
         System.out.println(App.FENNEC_RELEASE + " - version: " + fennec.getVersion());
-}
+    }
 
     @Test
     public void getDownloadUrl_withArm_returnNonEmptyString() {

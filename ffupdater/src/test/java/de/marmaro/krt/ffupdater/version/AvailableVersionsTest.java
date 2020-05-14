@@ -5,10 +5,11 @@ import android.content.pm.PackageManager;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.reflect.Whitebox;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.HashMap;
 import java.util.Map;
 
 import de.marmaro.krt.ffupdater.App;
@@ -21,25 +22,25 @@ import static org.mockito.Mockito.when;
 /**
  * Created by Tobiwan on 04.05.2020.
  */
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({AvailableVersions.class})
 public class AvailableVersionsTest {
-
     private PackageManager packageManager;
     private AvailableVersions availableVersions;
-    private Map<App, String> versions = new HashMap<>();
+    private Map<App, String> versions;
+
+    private static PackageInfo createPackageInfo(String versionName) {
+        PackageInfo packageInfo = new PackageInfo();
+        packageInfo.versionName = versionName;
+        return packageInfo;
+    }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         packageManager = mock(PackageManager.class);
         availableVersions = new AvailableVersions(packageManager);
-
-        Field field = availableVersions.getClass().getDeclaredField("versions");
-        field.setAccessible(true);
-
-        @SuppressWarnings("JavaReflectionMemberAccess") Field modifiersField = Field.class.getDeclaredField("modifiers");
-        modifiersField.setAccessible(true);
-        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-
-        field.set(availableVersions, versions);
+        versions = Whitebox.getInternalState(availableVersions, "versions");
+        versions.clear();
     }
 
     @Test
@@ -120,12 +121,5 @@ public class AvailableVersionsTest {
         versions.put(app, "4.3.0");
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.2.0"));
         assertTrue(availableVersions.isUpdateAvailable(app));
-    }
-
-
-    private static PackageInfo createPackageInfo(String versionName) {
-        PackageInfo packageInfo = new PackageInfo();
-        packageInfo.versionName = versionName;
-        return packageInfo;
     }
 }

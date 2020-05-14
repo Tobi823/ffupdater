@@ -50,6 +50,9 @@ public class DeviceABI {
 
     private static ABI findBestSuitedAbi() {
         String[] abis = SDK_INT < LOLLIPOP ? new String[]{CPU_ABI, CPU_ABI2} : SUPPORTED_ABIS;
+        if (abis == null) {
+            return ABI.ARM;
+        }
         for (String abi : abis) {
             if (abi == null) {
                 continue;

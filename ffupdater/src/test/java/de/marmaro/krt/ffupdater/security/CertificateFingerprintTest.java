@@ -17,21 +17,6 @@ import static org.mockito.Mockito.when;
 
 public class CertificateFingerprintTest {
 
-    @Test
-    public void checkFingerprintOfInstalledApp_withFennecReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
-        PackageManager packageManager = mock(PackageManager.class);
-        PackageInfo packageInfo = new PackageInfo();
-        packageInfo.signatures = new Signature[]{mock(Signature.class)};
-
-        when(packageManager.getPackageInfo(FENNEC_RELEASE.getPackageName(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
-        when(packageInfo.signatures[0].toByteArray()).thenReturn(fennecReleaseSignatureBytes);
-
-        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfInstalledApp(packageManager, FENNEC_RELEASE);
-        assertNotNull(actual.first);
-        assertTrue(actual.first);
-        assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);
-    }
-
     private final byte[] fennecReleaseSignatureBytes = new byte[]{48, -126, 3, -90, 48, -126, 2, -114, -96, 3, 2, 1, 2,
             2, 4, 76, 114, -3, -120, 48, 13, 6, 9, 42, -122, 72, -122, -9, 13, 1, 1, 5, 5, 0, 48, -127, -108, 49, 11,
             48, 9, 6, 3, 85, 4, 6, 19, 2, 85, 83, 49, 19, 48, 17, 6, 3, 85, 4, 8, 19, 10, 67, 97, 108, 105, 102, 111,
@@ -72,4 +57,19 @@ public class CertificateFingerprintTest {
             102, 47, -101, -28, -30, 46, -38, 73, -31, -76, -37, 30, -111, 26, -71, 114, -40, -110, 82, -104, -15, 110,
             -125, 19, 68, -38, -120, 16, 89, -87, -64, -5, -50, 34, -98, -2, -82, 113, -105, 64, -23, 117, -41, -16,
             -36, 105, 28, -52, -96, -87, -50};
+
+    @Test
+    public void checkFingerprintOfInstalledApp_withFennecReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
+        PackageManager packageManager = mock(PackageManager.class);
+        PackageInfo packageInfo = new PackageInfo();
+        packageInfo.signatures = new Signature[]{mock(Signature.class)};
+
+        when(packageManager.getPackageInfo(FENNEC_RELEASE.getPackageName(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
+        when(packageInfo.signatures[0].toByteArray()).thenReturn(fennecReleaseSignatureBytes);
+
+        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfInstalledApp(packageManager, FENNEC_RELEASE);
+        assertNotNull(actual.first);
+        assertTrue(actual.first);
+        assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);
+    }
 }

@@ -30,7 +30,7 @@ public class GsonApiConsumerIT {
         checkConnection(SSL_3, "https://api.github.com/repos/mozilla-mobile/fenix/releases/latest");
         checkConnection(SSL_3, "https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest");
         checkConnection(SSL_3, "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest");
-}
+    }
 
     /**
      * FENNEC_RELEASE, FENNEC_BETA and FENNEC_NIGHTLY require API Level 16 and are downloaded from mozilla.org.

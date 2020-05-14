@@ -16,7 +16,6 @@ import static org.junit.Assert.assertFalse;
  * Created by Tobiwan on 13.05.2020.
  */
 public class FenixIT {
-
     private static Fenix fenix;
 
     @BeforeClass

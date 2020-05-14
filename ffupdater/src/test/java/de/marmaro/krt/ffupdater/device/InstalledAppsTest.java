@@ -30,6 +30,12 @@ public class InstalledAppsTest {
 
     private PackageManager packageManager;
 
+    private static PackageInfo createPackageInfo(String versionName) {
+        PackageInfo packageInfo = new PackageInfo();
+        packageInfo.versionName = versionName;
+        return packageInfo;
+    }
+
     @Before
     public void setUp() {
         packageManager = mock(PackageManager.class);
@@ -195,11 +201,5 @@ public class InstalledAppsTest {
         when(packageManager.getPackageInfo(FIREFOX_LITE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_LITE_VERSION));
         when(packageManager.getPackageInfo(FENIX_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENIX_VERSION));
         assertTrue(InstalledApps.getNotInstalledApps(packageManager).isEmpty());
-    }
-
-    private static PackageInfo createPackageInfo(String versionName) {
-        PackageInfo packageInfo = new PackageInfo();
-        packageInfo.versionName = versionName;
-        return packageInfo;
     }
 }

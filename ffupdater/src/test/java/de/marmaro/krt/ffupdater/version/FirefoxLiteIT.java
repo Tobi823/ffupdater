@@ -11,7 +11,6 @@ import static org.junit.Assert.assertFalse;
  * Created by Tobiwan on 13.05.2020.
  */
 public class FirefoxLiteIT {
-
     private static FirefoxLite firefoxLite;
 
     @BeforeClass
