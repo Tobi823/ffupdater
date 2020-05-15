@@ -1,1 +1,1 @@
-Installer and updater for many Firefox derivatives
+Downloader, installer and updater for browsers from Mozilla
