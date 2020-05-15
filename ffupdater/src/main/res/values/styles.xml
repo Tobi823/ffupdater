@@ -9,9 +9,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="MainActivityTheme.MainTitle" parent="@android:style/TextAppearance">
-        <item name="android:textSize">34sp</item>
+    <style name="MainActivityTheme.MainTitle.Small" parent="@android:style/TextAppearance.Large">
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="MainActivityTheme.MainTitle.Big" parent="MainActivityTheme.MainTitle.Small">
+        <item name="android:textSize">34sp</item>
     </style>
 
     <style name="MainActivityTheme.SubTitle" parent="@android:style/TextAppearance">
