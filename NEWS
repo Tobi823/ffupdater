@@ -1,3 +1,6 @@
+??? Version 68.3 (35)
+ * Color of collapsed title will be always white (thanks DeenHyper74)
+
 2020-05-13 Version 68.2 (34)
  * Fix Fenix download from Github (thanks yhoyhoj)
  * Show correct download progress when downloading an app
