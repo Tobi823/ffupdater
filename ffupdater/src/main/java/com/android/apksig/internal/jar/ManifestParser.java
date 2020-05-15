@@ -127,7 +127,7 @@ public class ManifestParser {
         } else if (bytes.length == 0) {
             return "";
         } else {
-            return new String(bytes, ApkSigUtils.StandardCharsets.UTF_8);
+            return new String(bytes, ApkSigUtils.StandardCharsetsUtils.UTF_8);
         }
     }
 

@@ -83,7 +83,7 @@ public abstract class ManifestWriter {
     }
 
     private static void writeLine(OutputStream  out, String line) throws IOException {
-        byte[] lineBytes = line.getBytes(ApkSigUtils.StandardCharsets.UTF_8);
+        byte[] lineBytes = line.getBytes(ApkSigUtils.StandardCharsetsUtils.UTF_8);
         int offset = 0;
         int remaining = lineBytes.length;
         boolean firstLine = true;

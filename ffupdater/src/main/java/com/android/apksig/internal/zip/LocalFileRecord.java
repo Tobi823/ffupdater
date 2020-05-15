@@ -343,7 +343,7 @@ public class LocalFileRecord {
             long crc32,
             long uncompressedSize,
             DataSink output) throws IOException {
-        byte[] nameBytes = name.getBytes(ApkSigUtils.StandardCharsets.UTF_8);
+        byte[] nameBytes = name.getBytes(ApkSigUtils.StandardCharsetsUtils.UTF_8);
         int recordSize = HEADER_SIZE_BYTES + nameBytes.length;
         ByteBuffer result = ByteBuffer.allocate(recordSize);
         result.order(ByteOrder.LITTLE_ENDIAN);
