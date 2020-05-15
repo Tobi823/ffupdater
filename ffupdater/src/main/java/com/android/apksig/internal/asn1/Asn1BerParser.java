@@ -23,7 +23,6 @@ import com.android.apksig.internal.asn1.ber.BerEncoding;
 import com.android.apksig.internal.asn1.ber.ByteBufferBerDataValueReader;
 import com.android.apksig.internal.util.ByteBufferUtils;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
@@ -32,6 +31,8 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
 
 /**
  * Parser of ASN.1 BER-encoded structures.
@@ -313,13 +314,7 @@ public final class Asn1BerParser {
 
     private static Asn1Type getContainerAsn1Type(Class<?> containerClass)
             throws Asn1DecodingException {
-        Asn1Class containerAnnotation = null;
-        for (Annotation element : containerClass.getDeclaredAnnotations()) {
-            if (element.annotationType() == Asn1Class.class) {
-                containerAnnotation = (Asn1Class) element;
-            }
-        }
-
+        Asn1Class containerAnnotation = ApkSigUtils.getDeclaredAnnotation(containerClass, Asn1Class.class);
         if (containerAnnotation == null) {
             throw new Asn1DecodingException(
                     containerClass.getName() + " is not annotated with "
@@ -340,7 +335,7 @@ public final class Asn1BerParser {
 
     private static Class<?> getElementType(Field field)
             throws Asn1DecodingException, ClassNotFoundException {
-        String type = field.getGenericType().toString();
+        String type = ApkSigUtils.getTypeName(field.getGenericType());
         int delimiterIndex =  type.indexOf('<');
         if (delimiterIndex == -1) {
             throw new Asn1DecodingException("Not a container type: " + field.getGenericType());
@@ -516,7 +511,7 @@ public final class Asn1BerParser {
     private static int integerToInt(ByteBuffer encoded) throws Asn1DecodingException {
         BigInteger value = integerToBigInteger(encoded);
         try {
-            return value.intValue(); //TODO
+            return ApkSigUtils.intValueExact(value);
         } catch (ArithmeticException e) {
             throw new Asn1DecodingException(
                     String.format("INTEGER cannot be represented as int: %1$d (0x%1$x)", value), e);
@@ -526,7 +521,7 @@ public final class Asn1BerParser {
     private static long integerToLong(ByteBuffer encoded) throws Asn1DecodingException {
         BigInteger value = integerToBigInteger(encoded);
         try {
-            return value.longValue(); //TODO
+            return ApkSigUtils.longValueExact(value);
         } catch (ArithmeticException e) {
             throw new Asn1DecodingException(
                     String.format("INTEGER cannot be represented as long: %1$d (0x%1$x)", value),
@@ -539,12 +534,7 @@ public final class Asn1BerParser {
         Field[] declaredFields = containerClass.getDeclaredFields();
         List<AnnotatedField> result = new ArrayList<>(declaredFields.length);
         for (Field field : declaredFields) {
-            Asn1Field annotation = null;
-            for (Annotation element : field.getDeclaredAnnotations()) {
-                if (element.annotationType() == Asn1Field.class) {
-                    annotation = (Asn1Field) element;
-                }
-            }
+            Asn1Field annotation = ApkSigUtils.getDeclaredAnnotation(field, Asn1Field.class);
             if (annotation == null) {
                 continue;
             }
@@ -663,12 +653,7 @@ public final class Asn1BerParser {
                     break;
                 case SEQUENCE:
                 {
-                    Asn1Class containerAnnotation = null;
-                    for (Annotation element : targetType.getDeclaredAnnotations()) {
-                        if (element.annotationType() == Asn1Class.class) {
-                            containerAnnotation = (Asn1Class) element;
-                        }
-                    }
+                    Asn1Class containerAnnotation = ApkSigUtils.getDeclaredAnnotation(targetType, Asn1Class.class);
                     if ((containerAnnotation != null)
                             && (containerAnnotation.type() == Asn1Type.SEQUENCE)) {
                         return parseSequence(dataValue, targetType);
@@ -677,12 +662,7 @@ public final class Asn1BerParser {
                 }
                 case CHOICE:
                 {
-                    Asn1Class containerAnnotation = null;
-                    for (Annotation element : targetType.getDeclaredAnnotations()) {
-                        if (element.annotationType() == Asn1Class.class) {
-                            containerAnnotation = (Asn1Class) element;
-                        }
-                    }
+                    Asn1Class containerAnnotation = ApkSigUtils.getDeclaredAnnotation(targetType, Asn1Class.class);
                     if ((containerAnnotation != null)
                             && (containerAnnotation.type() == Asn1Type.CHOICE)) {
                         return parseChoice(dataValue, targetType);

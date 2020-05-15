@@ -25,9 +25,10 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.charset.Charset;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
+
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
 
 /**
  * ZIP Local File record.
@@ -342,7 +343,7 @@ public class LocalFileRecord {
             long crc32,
             long uncompressedSize,
             DataSink output) throws IOException {
-        byte[] nameBytes = name.getBytes(Charset.forName("UTF-8"));
+        byte[] nameBytes = name.getBytes(ApkSigUtils.StandardCharsets.UTF_8);
         int recordSize = HEADER_SIZE_BYTES + nameBytes.length;
         ByteBuffer result = ByteBuffer.allocate(recordSize);
         result.order(ByteOrder.LITTLE_ENDIAN);

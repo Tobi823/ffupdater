@@ -16,12 +16,13 @@
 
 package com.android.apksig.internal.jar;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.jar.Attributes;
+
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
 
 /**
  * JAR manifest and signature file parser.
@@ -126,7 +127,7 @@ public class ManifestParser {
         } else if (bytes.length == 0) {
             return "";
         } else {
-            return new String(bytes, Charset.forName("UTF-8"));
+            return new String(bytes, ApkSigUtils.StandardCharsets.UTF_8);
         }
     }
 

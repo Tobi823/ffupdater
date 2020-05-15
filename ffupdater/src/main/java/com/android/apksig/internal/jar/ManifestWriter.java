@@ -18,12 +18,13 @@ package com.android.apksig.internal.jar;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.jar.Attributes;
+
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
 
 /**
  * Producer of {@code META-INF/MANIFEST.MF} file.
@@ -82,7 +83,7 @@ public abstract class ManifestWriter {
     }
 
     private static void writeLine(OutputStream  out, String line) throws IOException {
-        byte[] lineBytes = line.getBytes(Charset.forName("UTF-8"));
+        byte[] lineBytes = line.getBytes(ApkSigUtils.StandardCharsets.UTF_8);
         int offset = 0;
         int remaining = lineBytes.length;
         boolean firstLine = true;
