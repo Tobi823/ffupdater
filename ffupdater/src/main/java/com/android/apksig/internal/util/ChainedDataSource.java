@@ -18,10 +18,12 @@ package com.android.apksig.internal.util;
 
 import com.android.apksig.util.DataSink;
 import com.android.apksig.util.DataSource;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
 
 /** Pseudo {@link DataSource} that chains the given {@link DataSource} as a continuous one. */
 public class ChainedDataSource implements DataSource {
@@ -31,7 +33,7 @@ public class ChainedDataSource implements DataSource {
 
     public ChainedDataSource(DataSource... sources) {
         mSources = sources;
-        mTotalSize = Arrays.stream(sources).mapToLong(src -> src.size()).sum();
+        mTotalSize = ApkSigUtils.ChainedDataSourceUtils.sumSizes(sources);
     }
 
     @Override
@@ -86,7 +88,7 @@ public class ChainedDataSource implements DataSource {
         ByteBuffer buffer = ByteBuffer.allocate(size);
         for (; i < mSources.length && buffer.hasRemaining(); i++) {
             long sizeToCopy = Math.min(mSources[i].size() - offset, buffer.remaining());
-            mSources[i].copyTo(offset, Math.toIntExact(sizeToCopy), buffer);
+            mSources[i].copyTo(offset, ApkSigUtils.Math.toIntExact(sizeToCopy), buffer);
             offset = 0;  // may not be zero for the first source, but reset after that.
         }
         buffer.rewind();

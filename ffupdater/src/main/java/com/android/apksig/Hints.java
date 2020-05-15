@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 package com.android.apksig;
-import java.io.IOException;
-import java.io.DataOutputStream;
+
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public final class Hints {
                 out.writeInt(clampToInt(pinByteRange.end - pinByteRange.start));
             }
         } catch (IOException ex) {
-            throw new AssertionError("impossible", ex);
+            throw new Error("impossible", ex);
         }
         return bos.toByteArray();
     }

@@ -511,7 +511,7 @@ public final class Asn1BerParser {
     private static int integerToInt(ByteBuffer encoded) throws Asn1DecodingException {
         BigInteger value = integerToBigInteger(encoded);
         try {
-            return ApkSigUtils.intValueExact(value);
+            return ApkSigUtils.BigIntegerUtils.intValueExact(value);
         } catch (ArithmeticException e) {
             throw new Asn1DecodingException(
                     String.format("INTEGER cannot be represented as int: %1$d (0x%1$x)", value), e);
@@ -521,7 +521,7 @@ public final class Asn1BerParser {
     private static long integerToLong(ByteBuffer encoded) throws Asn1DecodingException {
         BigInteger value = integerToBigInteger(encoded);
         try {
-            return ApkSigUtils.longValueExact(value);
+            return ApkSigUtils.BigIntegerUtils.longValueExact(value);
         } catch (ArithmeticException e) {
             throw new Asn1DecodingException(
                     String.format("INTEGER cannot be represented as long: %1$d (0x%1$x)", value),

@@ -24,9 +24,11 @@ import com.android.apksig.util.DataSources;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
 
 /**
  * VerityTreeBuilder is used to generate the root hash of verity tree built from the input file.
@@ -155,7 +157,7 @@ public class VerityTreeBuilder {
         levelOffset[0] = 0;
         for (int i = 0; i < levelSize.size(); i++) {
             // We don't support verity tree if it is larger then Integer.MAX_VALUE.
-            levelOffset[i + 1] = levelOffset[i] + Math.toIntExact(
+            levelOffset[i + 1] = levelOffset[i] + ApkSigUtils.Math.toIntExact(
                     levelSize.get(levelSize.size() - i - 1));
         }
         return levelOffset;

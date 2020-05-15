@@ -34,7 +34,10 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
 import javax.security.auth.x500.X500Principal;
+
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
 
 /**
  * {@link X509Certificate} which delegates all method invocations to the provided delegate
@@ -212,6 +215,6 @@ public class DelegatingX509Certificate extends X509Certificate {
     @Override
     public void verify(PublicKey key, Provider sigProvider) throws CertificateException,
             NoSuchAlgorithmException, InvalidKeyException, SignatureException {
-        mDelegate.verify(key, sigProvider);
+        ApkSigUtils.X509CertificateUtils.verify(mDelegate, key, sigProvider);
     }
 }

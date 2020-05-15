@@ -32,8 +32,8 @@ import com.android.apksig.internal.util.TeeDataSink;
 import com.android.apksig.util.DataSink;
 import com.android.apksig.util.DataSinks;
 import com.android.apksig.util.DataSource;
-
 import com.android.apksig.util.RunnablesExecutor;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -51,8 +51,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
+
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
 
 /**
  * Default implementation of {@link ApkSignerEngine}.
@@ -436,15 +437,12 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
             if (V1SchemeSigner.isJarEntryDigestNeededInManifest(entry.getKey()) &&
                     isDebuggable(entryName)) {
 
-                Optional<V1SchemeVerifier.NamedDigest> extractedDigest =
-                        V1SchemeVerifier.getDigestsToVerify(
-                                entry.getValue(), "-Digest", mMinSdkVersion, Integer.MAX_VALUE)
-                                .stream()
-                                .filter(d -> d.jcaDigestAlgorithm == alg)
-                                .findFirst();
-
-                extractedDigest.ifPresent(
-                        namedDigest -> mOutputJarEntryDigests.put(entryName, namedDigest.digest));
+                V1SchemeVerifier.NamedDigest extractedDigest = ApkSigUtils.DefaultApkSignerEngineUtils.findDigest(
+                        V1SchemeVerifier.getDigestsToVerify(entry.getValue(), "-Digest", mMinSdkVersion, Integer.MAX_VALUE),
+                        alg);
+                if (extractedDigest != null) {
+                    mOutputJarEntryDigests.put(entryName, extractedDigest.digest);
+                }
             }
         }
         return mOutputJarEntryDigests.keySet();

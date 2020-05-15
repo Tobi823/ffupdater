@@ -16,6 +16,8 @@
 
 package com.android.apksig.internal.apk.v1;
 
+import android.util.Base64;
+
 import com.android.apksig.apk.ApkFormatException;
 import com.android.apksig.internal.asn1.Asn1DerEncoder;
 import com.android.apksig.internal.asn1.Asn1EncodingException;
@@ -32,6 +34,7 @@ import com.android.apksig.internal.pkcs7.SignedData;
 import com.android.apksig.internal.pkcs7.SignerIdentifier;
 import com.android.apksig.internal.pkcs7.SignerInfo;
 import com.android.apksig.internal.util.Pair;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -46,7 +49,6 @@ import java.security.SignatureException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -57,6 +59,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
+
 import javax.security.auth.x500.X500Principal;
 
 /**
@@ -375,7 +378,7 @@ public abstract class V1SchemeSigner {
             Attributes entryAttrs = new Attributes();
             entryAttrs.putValue(
                     entryDigestAttributeName,
-                    Base64.getEncoder().encodeToString(entryDigest));
+                    Base64.encodeToString(entryDigest, Base64.DEFAULT));
             ByteArrayOutputStream sectionOut = new ByteArrayOutputStream();
             byte[] sectionBytes;
             try {
@@ -448,7 +451,7 @@ public abstract class V1SchemeSigner {
         MessageDigest md = getMessageDigestInstance(manifestDigestAlgorithm);
         mainAttrs.putValue(
                 getManifestDigestAttributeName(manifestDigestAlgorithm),
-                Base64.getEncoder().encodeToString(md.digest(manifest.contents)));
+                Base64.encodeToString(md.digest(manifest.contents), Base64.DEFAULT));
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try {
             SignatureFileWriter.writeMainSection(out, mainAttrs);
@@ -464,7 +467,7 @@ public abstract class V1SchemeSigner {
             Attributes attrs = new Attributes();
             attrs.putValue(
                     entryDigestAttributeName,
-                    Base64.getEncoder().encodeToString(sectionDigest));
+                    Base64.encodeToString(sectionDigest, Base64.DEFAULT));
 
             try {
                 SignatureFileWriter.writeIndividualSection(out, sectionName, attrs);
