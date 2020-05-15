@@ -29,6 +29,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import de.marmaro.krt.ffupdater.utils.ApkSigUtils;
+
 /**
  * Encoder of ASN.1 structures into DER-encoded form.
  *
@@ -53,7 +55,7 @@ public final class Asn1DerEncoder {
      */
     public static byte[] encode(Object container) throws Asn1EncodingException {
         Class<?> containerClass = container.getClass();
-        Asn1Class containerAnnotation = containerClass.getDeclaredAnnotation(Asn1Class.class);
+        Asn1Class containerAnnotation = ApkSigUtils.getDeclaredAnnotation(containerClass, Asn1Class.class);
         if (containerAnnotation == null) {
             throw new Asn1EncodingException(
                     containerClass.getName() + " not annotated with " + Asn1Class.class.getName());
@@ -216,7 +218,7 @@ public final class Asn1DerEncoder {
         Field[] declaredFields = containerClass.getDeclaredFields();
         List<AnnotatedField> result = new ArrayList<>(declaredFields.length);
         for (Field field : declaredFields) {
-            Asn1Field annotation = field.getDeclaredAnnotation(Asn1Field.class);
+            Asn1Field annotation = ApkSigUtils.getDeclaredAnnotation(field, Asn1Field.class);
             if (annotation == null) {
                 continue;
             }
@@ -561,7 +563,7 @@ public final class Asn1DerEncoder {
                 case SEQUENCE:
                 {
                     Asn1Class containerAnnotation =
-                            sourceType.getDeclaredAnnotation(Asn1Class.class);
+                            ApkSigUtils.getDeclaredAnnotation(sourceType, Asn1Class.class);
                     if ((containerAnnotation != null)
                             && (containerAnnotation.type() == Asn1Type.SEQUENCE)) {
                         return toSequence(source);
@@ -571,7 +573,7 @@ public final class Asn1DerEncoder {
                 case CHOICE:
                 {
                     Asn1Class containerAnnotation =
-                            sourceType.getDeclaredAnnotation(Asn1Class.class);
+                            ApkSigUtils.getDeclaredAnnotation(sourceType, Asn1Class.class);
                     if ((containerAnnotation != null)
                             && (containerAnnotation.type() == Asn1Type.CHOICE)) {
                         return toChoice(source);
