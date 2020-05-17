@@ -1,0 +1,8 @@
+ * Select download uri based on arch and api.
+ * Check filename via FTP.
+ * Download update file via HTTPS and DownloadManager.
+ * Log errors and status.
+ * Toast on updates.
+ * Prompt for update (if necessary).
+ * Option to use fixed/tested download location.
+ * Add proper LICENSE (GPLv3+).

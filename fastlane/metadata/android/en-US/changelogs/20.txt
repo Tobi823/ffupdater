@@ -1,0 +1,6 @@
+ * Update to 53.0
+ * Use new Mozilla API to det version information
+ * Remove a lot of unused code.
+ * Add icon
+ * Fix crash with SDK < 17
+ * Enable smaller builds

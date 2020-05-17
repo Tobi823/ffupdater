@@ -1,0 +1,3 @@
+ * Mozilla removed /latest/* downloads from archive. As recommended in
+   https://archive.mozilla.org/pub/mobile/releases/latest/README.txt
+   we use https://download.mozilla.org/?product=fennec-latest now.

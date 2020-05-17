@@ -1,0 +1,2 @@
+ * Really, really quickfix Android6 issues..
+ * Remove version check since it's broken: Just download the APK.

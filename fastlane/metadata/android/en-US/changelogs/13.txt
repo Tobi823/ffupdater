@@ -1,0 +1,1 @@
+ * Use lower target to quickfix Android6 permissions

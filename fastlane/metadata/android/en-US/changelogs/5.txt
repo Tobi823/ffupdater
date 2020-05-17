@@ -1,0 +1,2 @@
+ * Mark background setting as non-functional for now.
+ * Update to 40.0.3

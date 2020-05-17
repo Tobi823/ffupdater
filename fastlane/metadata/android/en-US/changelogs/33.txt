@@ -1,1 +1,3 @@
-Test fastlane changelog file structure 4
+ * Thanks DeenHyper74 for the Russian translation
+ * Add support for Dark Theme (thanks DeenHyper74 for the tip)
+ * Add setting for switching between Dark and Light Theme

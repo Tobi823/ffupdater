@@ -1,0 +1,1 @@
+ * Fix crash when rotating on channel dialog (thanks DeenHyper74)

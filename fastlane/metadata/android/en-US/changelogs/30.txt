@@ -1,1 +1,1 @@
-Test fastlane changelog file structure 1
+ * Fix crash when selecting an entry after rotating the channel dialog (thanks DeenHyper74)

@@ -1,0 +1,4 @@
+ * Added support for beta and nightly channels
+ * Switched to light theme
+ * Update russian translation
+ * Handover maintainership to https://notabug.org/Tobiwan/ffupdater
