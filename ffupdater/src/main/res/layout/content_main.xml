@@ -131,7 +131,7 @@
                         android:padding="3dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@mipmap/ic_logo_firefox_klar" />
+                        app:srcCompat="@mipmap/ic_logo_firefox_focus_klar" />
 
                     <TextView
                         android:id="@+id/firefoxKlarAvailableVersionText"
@@ -230,7 +230,7 @@
                         android:padding="3dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@mipmap/ic_logo_firefox_focus" />
+                        app:srcCompat="@mipmap/ic_logo_firefox_focus_klar" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
