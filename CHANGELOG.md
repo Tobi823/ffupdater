@@ -1,4 +1,5 @@
-# ??? Version 68.3 (35)
+# 2020-05-18 Version 68.3 (35)
+ * Try to fix error "Failed to check certificate hash" by switching from apksig-library to PackageManager#getPackageArchiveInfo (thanks rvandegrift). This will reduce the size of FFUpdater and improve the maintenance for future releases.
  * Color of collapsed title will be always white (thanks DeenHyper74)
 
 # 2020-05-13 Version 68.2 (34)
