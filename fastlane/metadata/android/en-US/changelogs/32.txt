@@ -1,0 +1,1 @@
+Test fastlane changelog file structure 3
