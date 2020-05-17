@@ -20,6 +20,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:3.3.3'
     testImplementation 'org.hamcrest:hamcrest:2.2'
 }
+
 android {
     compileSdkVersion 29
     buildToolsVersion '28.0.3'
