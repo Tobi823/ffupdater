@@ -1,10 +1,9 @@
 package de.marmaro.krt.ffupdater.version;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -61,7 +60,7 @@ class GithubReleaseParser {
             return downloadUrl;
         }
 
-        @NotNull
+        @NonNull
         @Override
         public String toString() {
             return "Asset{" +
@@ -86,7 +85,7 @@ class GithubReleaseParser {
             return assets;
         }
 
-        @NotNull
+        @NonNull
         @Override
         public String toString() {
             return "Release{" +

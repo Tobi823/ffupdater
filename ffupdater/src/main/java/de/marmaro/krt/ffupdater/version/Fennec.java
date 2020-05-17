@@ -5,8 +5,6 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
-import org.jetbrains.annotations.NotNull;
-
 import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
@@ -65,7 +63,7 @@ class Fennec {
         @SerializedName("version")
         private String releaseVersion;
 
-        @NotNull
+        @NonNull
         @Override
         public String toString() {
             return "Version{" +

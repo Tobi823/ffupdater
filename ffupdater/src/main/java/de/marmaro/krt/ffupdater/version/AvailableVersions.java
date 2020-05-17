@@ -5,9 +5,8 @@ import android.content.pm.PackageManager;
 import android.net.TrafficStats;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -109,7 +108,7 @@ public class AvailableVersions {
      * @param app app
      * @return download url for the app or empty string
      */
-    @NotNull
+    @NonNull
     public String getDownloadUrl(App app) {
         return Utils.convertNullToEmptyString(urls.get(app));
     }
@@ -121,7 +120,7 @@ public class AvailableVersions {
      * @param app app
      * @return latest version name from the developers or empty string
      */
-    @NotNull
+    @NonNull
     public String getAvailableVersion(App app) {
         return Utils.convertNullToEmptyString(versions.get(app));
     }
