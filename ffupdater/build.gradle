@@ -8,7 +8,6 @@ dependencies {
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     implementation 'androidx.core:core:1.2.0'
     implementation 'androidx.fragment:fragment:1.2.4'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.preference:preference:1.1.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'androidx.work:work-runtime:2.3.4'
