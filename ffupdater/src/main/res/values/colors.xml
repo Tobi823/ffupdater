@@ -5,6 +5,5 @@
     <color name="colorPrimary">#004acc</color>
     <color name="colorPrimaryDark">#003eaa</color>
     <color name="errorRed">#D32F2F</color>
-    <color name="gray">#473E3F</color>
     <color name="successGreen">#8BC34A</color>
 </resources>
