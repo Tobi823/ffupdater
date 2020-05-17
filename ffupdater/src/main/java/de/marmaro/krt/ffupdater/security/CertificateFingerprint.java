@@ -34,7 +34,7 @@ public class CertificateFingerprint {
     /**
      * Validate the SHA256 fingerprint of the certificate of the downloaded application as APK file.
      *
-     * @param packageManager
+     * @param packageManager packageManager
      * @param file APK file
      * @param app  app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
