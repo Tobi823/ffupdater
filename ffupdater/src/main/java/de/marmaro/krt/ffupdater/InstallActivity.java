@@ -172,7 +172,7 @@ public class InstallActivity extends AppCompatActivity {
             actionDownloadFinished();
             actionVerifyingSignature();
             File downloadedFile = downloadManager.getFileForDownloadedFile(id);
-            Pair<Boolean, String> check = CertificateFingerprint.checkFingerprintOfFile(downloadedFile, app);
+            Pair<Boolean, String> check = CertificateFingerprint.checkFingerprintOfFile(getPackageManager(), downloadedFile, app);
             if (Objects.requireNonNull(check.first)) {
                 actionSignatureGood(check.second);
             } else {

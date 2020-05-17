@@ -34,10 +34,8 @@ android {
 
     buildTypes {
         release {
-            // Enable proguard with default android settings (no obfuscation)
-            minifyEnabled true
-            shrinkResources true
-            proguardFile getDefaultProguardFile('proguard-android.txt')
+            minifyEnabled false
+            shrinkResources false
         }
     }
 
