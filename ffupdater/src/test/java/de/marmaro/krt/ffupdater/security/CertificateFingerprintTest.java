@@ -8,6 +8,8 @@ import androidx.core.util.Pair;
 
 import org.junit.Test;
 
+import java.io.File;
+
 import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -68,6 +70,23 @@ public class CertificateFingerprintTest {
         when(packageInfo.signatures[0].toByteArray()).thenReturn(fennecReleaseSignatureBytes);
 
         Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfInstalledApp(packageManager, FENNEC_RELEASE);
+        assertNotNull(actual.first);
+        assertTrue(actual.first);
+        assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);
+    }
+
+    @Test
+    public void checkFingerprintOfFile_withFennecReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
+        PackageManager packageManager = mock(PackageManager.class);
+        PackageInfo packageInfo = new PackageInfo();
+        packageInfo.signatures = new Signature[]{mock(Signature.class)};
+
+        File file = new File("/path/to/apk");
+
+        when(packageManager.getPackageArchiveInfo(file.getAbsolutePath(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
+        when(packageInfo.signatures[0].toByteArray()).thenReturn(fennecReleaseSignatureBytes);
+
+        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfFile(packageManager, file, FENNEC_RELEASE);
         assertNotNull(actual.first);
         assertTrue(actual.first);
         assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);
