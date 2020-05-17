@@ -79,9 +79,9 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
 
 
 ## Mirrors
- - [Notabug.org](https://notabug.org/Tobiwan/ffupdater) [Account](https://notabug.org/Tobiwan)
- - [Github](https://github.com/Tobi823/ffupdater) [Account](https://github.com/Tobi823)
- - [Gitlab](https://gitlab.com/Tobiwan/ffupdater) [Account](https://gitlab.com/Tobiwan)
+ - [Notabug.org](https://notabug.org/Tobiwan/ffupdater) ([Account](https://notabug.org/Tobiwan))
+ - [Github](https://github.com/Tobi823/ffupdater) ([Account](https://github.com/Tobi823))
+ - [Gitlab](https://gitlab.com/Tobiwan/ffupdater) ([Account](https://gitlab.com/Tobiwan))
 
 ## Technical detail
 
