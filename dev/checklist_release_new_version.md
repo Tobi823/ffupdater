@@ -2,6 +2,7 @@
 git fetch --tags
 
 # release new version
+ - `gradlew clean adviceRelease`
  - fix/add unit tests
  - check translations
  - add changelog to CHANGELOG.md
