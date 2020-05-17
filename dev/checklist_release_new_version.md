@@ -4,9 +4,9 @@ git fetch --tags
 # release new version
  - fix/add unit tests
  - check translations
- - add changelog to NEWS
- - add supporter to NEWS
- - copy entry from NEWS to fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt
+ - add changelog to CHANGELOG.md
+ - add supporter to CHANGELOG.md
+ - copy entry from CHANGELOG.md to fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt
  - edit gradle.build to increase version code and version name
  - commit changes
  - create tag for release
@@ -15,18 +15,10 @@ git fetch --tags
 # push tag to git
 ## Windows
 ````powershell
-SET TAG=67.4
-git tag %TAG%
-git push origin %TAG%
-git push github %TAG%
-git push gitlab %TAG%
+SET /p TAG="TAG: " && git tag %TAG% && git push origin %TAG% && git push github %TAG% && git push gitlab %TAG%
 ````
 
 ## Linux
 ````bash
-TAG=67.1
-git tag $TAG
-git push origin $TAG
-git push github $TAG
-git push gitlab $TAG
+read -i "TAG: " TAG && git tag $TAG && git push origin $TAG && git push github $TAG && git push gitlab $TAG
 ````
