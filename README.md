@@ -2,15 +2,24 @@
 
 ## Firefox-Updater
 
-An Android app to install and update:
+Download, install and update these browsers from Mozilla:
  - [Firefox Browser / Fennec Release](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
  - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus)
  - [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
  - [Firefox Lite](https://play.google.com/store/apps/details?id=org.mozilla.rocket)
  - [Firefox Preview / Fenix](https://play.google.com/store/apps/details?id=org.mozilla.fenix)
- on your device without using the Google Play Store.
 
-The app can check periodically for updates and will display a notification when an update is available.
+FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
+
+Security measures:
+ - only HTTPS connections
+ - check fingerprint of the downloaded file
+ - check fingerprint of the installed app
+
+You can find the APK certificate fingerprints on multiple website - e.g. apkmirror.com
+I did my best to make the app as secure as possible - feel free to double-check it in the source code.
+
+Important: I removed Fennec Beta and Fennec Nightly because they are outdated - I will add Fenix Beta and Fenix Nightly soon.
 
 ## Deprecated browsers
 
@@ -22,6 +31,52 @@ The app can check periodically for updates and will display a notification when 
  >The Google Play Store[1] has a lot of nice features, but it's still pretty basic whenever a software publisher wants to slowly migrate users. Once a migration is started, we can't provide any Fennec updates to the population who wasn't offered Fenix, yet. I can say this restriction is painful to manage for Android developers, Mozilla included. Because of it, we had to stop shipping Fennec Nightly/Beta APKs at the beginning of each migration. This explains the dates of the last builds. At the same time, we stopped building Fennec Nightly/Beta because it enabled us to save technical resources[2] as well as people's time[3].
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
+
+## Build app
+
+### Android Studio
+
+#### From an existing project
+
+ 1. File
+ 2. New
+ 3. Project from Version Control...
+ 4. Git
+ 5. URL: https://notabug.org/Tobiwan/ffupdater.git
+ 6. Clone
+ 7. Wait for Android Studio to import project
+ 8. Build
+ 9. Build Bundle(s) / APK(s)
+ 10. Build APK(s)
+ 11. Wait
+ 12. Click in the bottom right on "locate"
+
+#### From "Welcome to Android Studio" screen
+
+ 1. Check out project from Version Control
+ 2. Git
+ 3. URL: https://notabug.org/Tobiwan/ffupdater.git
+ 4. Clone
+ 5. "Would you like to open it?" Yes
+ 6. Wait for Android Studio to import project
+ 7. Build
+ 8. Build Bundle(s) / APK(s)
+ 9. Build APK(s)
+ 10. Wait
+ 11. Click in the bottom right on "locate"
+
+### Gradle
+
+ 1. `git clone https://notabug.org/Tobiwan/ffupdater.git`
+ 2. `cd ffupdater`
+ 3. create the file `local.properties` with the path to your Android SDK - for example:
+ ````
+ sdk.dir=C\:\\Users\\Tobias\\AppData\\Local\\Android\\Sdk
+ ````
+ 4. `gradlew assembleDebug`
+ 5. `cd ffupdater/build/outputs/apk/debug`
+ 6. `ffupdater-debug.apk` is the generated APK file
+
 
 ## Mirrors
  - Github: https://github.com/Tobi823/ffupdater
