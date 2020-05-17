@@ -7,6 +7,7 @@
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successful_installed">Application successful installed</string>
     <string name="but_was">But was:</string>
+    <string name="default_theme_preference" translatable="false">1</string>
     <string name="device_too_old_dialog_message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>
     <string name="device_too_old_dialog_title">Device is too old</string>
     <string name="download_application_from_with_status">Download application (%1$s)</string>
