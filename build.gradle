@@ -6,12 +6,11 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
-        classpath "com.jaredsburrows:gradle-license-plugin:0.8.70"
     }
 }
 
 plugins {
-    id "com.autonomousapps.dependency-analysis" version "0.42.0"
+    id 'com.autonomousapps.dependency-analysis' version '0.42.0'
 }
 
 allprojects {
