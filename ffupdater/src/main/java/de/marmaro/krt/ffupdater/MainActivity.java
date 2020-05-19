@@ -25,6 +25,7 @@ import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.base.Preconditions;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -237,14 +238,22 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+        if (isWriteExternalStoragePermissionMissing()) {
+            return;
         }
 
         Intent intent = new Intent(this, InstallActivity.class);
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name());
         intent.putExtra(InstallActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
         startActivity(intent);
+    }
+
+    private boolean isWriteExternalStoragePermissionMissing() {
+        if (ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+            return true;
+        }
+        return false;
     }
 
     private boolean isNoNetworkConnectionAvailable() {
@@ -255,16 +264,22 @@ public class MainActivity extends AppCompatActivity {
     // android:onClick method calls: - do not delete
 
     public void onClickDownloadButton(View view) {
-        App app = Objects.requireNonNull(downloadButtonIdsToApp.get(view.getId()));
+        App app = downloadButtonIdsToApp.get(view.getId());
+        Preconditions.checkNotNull(app);
         downloadApp(app);
     }
 
     public void onClickInfoButton(View view) {
-        App app = Objects.requireNonNull(infoButtonIdsToApp.get(view.getId()));
+        App app = infoButtonIdsToApp.get(view.getId());
+        Preconditions.checkNotNull(app);
         new AppInfoDialog(app).show(getSupportFragmentManager(), AppInfoDialog.TAG);
     }
 
     public void onClickInstallApp(View view) {
+        // request for permission before the user selected a browser
+        if (isWriteExternalStoragePermissionMissing()) {
+            return;
+        }
         new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager(), InstallAppDialog.TAG);
     }
 }
