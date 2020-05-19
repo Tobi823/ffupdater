@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +20,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -32,7 +30,6 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
@@ -106,17 +103,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         refreshUI();
         fetchUpdates();
-
-        Set<String> sets = PreferenceManager.getDefaultSharedPreferences(this).getStringSet("disableApps", null);
-        if (sets != null) {
-            Log.w(LOG_TAG, "disableApps: " + sets.toString());
-        }
-
-        String checkInterval = PreferenceManager.getDefaultSharedPreferences(this).getString("checkInterval", "-");
-        Log.w(LOG_TAG, "checkInterval: " + checkInterval);
-
-        boolean automaticCheck = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("automaticCheck", true);
-        Log.w(LOG_TAG, "automaticCheck: " + automaticCheck);
     }
 
     @Override
