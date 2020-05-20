@@ -41,6 +41,8 @@
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Entweder hat ein Angreifer den korrekten Download durch einen manipulierten ersetzt, oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Entweder wurde eine manipulierte Anwendung installiert oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="main_activity_subtitle">Aktualisieren Sie Ihre Browser von Mozilla</string>
+    <string name="missing_external_storage_permission_dialog_summary">Die App fragt nach einer Speichergenehmigung, um Dateien herunterzuladen und zu lesen. Aber nur wenige Geräte benötigen diese Erlaubnis. Wenn Sie unsicher sind, lehnen Sie die Erlaubnisanfrage ab - Sie können die Speichererlaubnis später in den Einstellungen Ihres Gerätes aktivieren.\n\nIch werde nur den externen Anwendungsordner verwenden und niemals auf Ihre privaten Bilder usw. zugreifen.</string>
+    <string name="missing_external_storage_permission_dialog_title">Berechtigungsanfrage</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
     <string name="notification_text">Anklicken um anzusehen</string>
     <string name="notification_title">Update verfügbar</string>

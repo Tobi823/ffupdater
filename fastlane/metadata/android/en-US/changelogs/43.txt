@@ -1,0 +1,3 @@
+ * Improve description of setting "disableApps"
+ * After accepting or denying the external storage permission request, the app will continue to download/install the app
+ * The app explains after the first denial why the external storage permission is necessary

@@ -93,4 +93,6 @@
     <string name="update_notification_channel_name">Update notification</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
+    <string name="missing_external_storage_permission_dialog_title">Permission Request</string>
+    <string name="missing_external_storage_permission_dialog_summary">The app will ask for storage permission to download files and read them. But only a few devices need this permission. If you are in doubt, deny the permission request - you can enable the storage permission later in the settings of your device.\n\nI will only use the external app folder and I will never access your private pictures etc.</string>
 </resources>

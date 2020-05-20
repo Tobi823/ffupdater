@@ -41,6 +41,8 @@
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Soit un pirate a remplacé le téléchargement correct par un téléchargement altéré, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez vérifier l\'empreinte digitale du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Soit une application falsifiée a été installée, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez revérifier l\'empreinte du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="main_activity_subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>
+    <string name="missing_external_storage_permission_dialog_summary">L\'application demandera une autorisation de stockage pour télécharger des fichiers et les lire. Mais seuls quelques appareils ont besoin de cette autorisation. En cas de doute, refusez la demande de permission - vous pouvez activer la permission de stockage plus tard dans les paramètres de votre appareil.\n\nJe n\'utiliserai que le dossier externe de l\'application et je n\'accéderai jamais à vos photos privées, etc.  Traduit avec www.DeepL.com/Translator (version gratuite)</string>
+    <string name="missing_external_storage_permission_dialog_title">Demande d\'autorisation</string>
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="notification_text">Cliquez ici pour voir</string>
     <string name="notification_title">Mise à jour disponible</string>

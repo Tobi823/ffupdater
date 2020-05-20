@@ -14,12 +14,14 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -35,6 +37,7 @@ import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
+import de.marmaro.krt.ffupdater.dialog.MissingExternalStoragePermissionDialog;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
@@ -48,7 +51,7 @@ import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
-    public static final int MY_PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 910;
+    public static final int PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 900;
     private AvailableVersions appUpdate;
     private ProgressBar progressBar;
 
@@ -135,6 +138,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode >= PERMISSIONS_REQUEST_EXTERNAL_STORAGE && requestCode < (PERMISSIONS_REQUEST_EXTERNAL_STORAGE + App.values().length)) {
+            App app = App.values()[requestCode - PERMISSIONS_REQUEST_EXTERNAL_STORAGE];
+            if (grantResults.length > 0 ) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED || grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                    downloadAppWithoutChecks(app);
+                }
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
     @SuppressLint("FindViewByIdCast")
@@ -225,26 +242,33 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (isExternalStoragePermissionMissing()) {
+        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE) ||
+                    ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)) {
+                DialogFragment dialog = new MissingExternalStoragePermissionDialog(() -> requestExternalStoragePermission(app));
+                dialog.show(getSupportFragmentManager(), MissingExternalStoragePermissionDialog.TAG);
+            } else {
+                requestExternalStoragePermission(app);
+            }
             return;
         }
 
+        downloadAppWithoutChecks(app);
+    }
+
+    private void downloadAppWithoutChecks(App app) {
         Intent intent = new Intent(this, InstallActivity.class);
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name());
         intent.putExtra(InstallActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
         startActivity(intent);
     }
 
-    private boolean isExternalStoragePermissionMissing() {
-        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                    this,
-                    new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE},
-                    MY_PERMISSIONS_REQUEST_EXTERNAL_STORAGE);
-            return true;
-        }
-        return false;
+    private void requestExternalStoragePermission(App app) {
+        ActivityCompat.requestPermissions(
+                this,
+                new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE},
+                PERMISSIONS_REQUEST_EXTERNAL_STORAGE + app.ordinal());
     }
 
     private boolean isNoNetworkConnectionAvailable() {
@@ -267,10 +291,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickInstallApp(View view) {
-        // request for permission before the user selected a browser
-        if (isExternalStoragePermissionMissing()) {
-            return;
-        }
         new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager(), InstallAppDialog.TAG);
     }
 }
