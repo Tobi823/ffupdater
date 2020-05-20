@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="action_about_title">О программе FFUpdater</string>
     <string name="action_settings_title">Настройки</string>
@@ -56,7 +55,7 @@
     <string name="settings_automatic_check_title">Автоматический в фоновом режиме</string>
     <string name="settings_check_interval_summary">Как часто приложение должно проверять наличие обновлений?</string>
     <string name="settings_check_interval_title">Контрольный интервал</string>
-    <string name="settings_disabled_apps_summary">Эти приложения не проверяются автоматически на наличие обновлений</string>
+    <string name="settings_disabled_apps_summary">Только установленные приложения будут автоматически проверяться на наличие обновлений. Вы можете удалить установленные приложения из автоматической проверки на наличие обновлений, выбрав их здесь.</string>
     <string name="settings_disabled_apps_title">Исключенные приложения</string>
     <string name="settings_title">Проверка обновлений приложений</string>
     <string name="sha_256_certificate_fingerprint">Отпечаток сертификата SHA-256:</string>

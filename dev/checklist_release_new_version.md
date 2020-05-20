@@ -16,7 +16,7 @@ git fetch --tags
 # push tag to git
 ## Windows
 ````powershell
-SET /p TAG="TAG: " && git tag %TAG% && git push origin %TAG% && git push github %TAG% && git push gitlab %TAG%
+SET /p TAGVALUE= && git tag %TAGVALUE% && git push origin %TAGVALUE% && git push github %TAGVALUE% && git push gitlab %TAGVALUE%
 ````
 
 ## Linux

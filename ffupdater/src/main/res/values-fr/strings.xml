@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="action_about_title">À propos FFUpdater</string>
     <string name="action_settings_title">Réglages</string>
@@ -50,7 +49,7 @@
     <string name="settings_automatic_check_title">Automatique en arrière-plan</string>
     <string name="settings_check_interval_summary">À quelle fréquence l\'application doit-elle vérifier les mises à jour ?</string>
     <string name="settings_check_interval_title">Intervalle de contrôle</string>
-    <string name="settings_disabled_apps_summary">Ces demandes ne sont pas automatiquement vérifiées pour les mises à jour</string>
+    <string name="settings_disabled_apps_summary">Seules les applications installées seront automatiquement vérifiées pour les mises à jour. Vous pouvez supprimer les applications installées de la vérification automatique des mises à jour en les sélectionnant ici.</string>
     <string name="settings_disabled_apps_title">Demandes exclues</string>
     <string name="settings_title">Vérification de la mise à jour de la demande</string>
     <string name="sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256:</string>

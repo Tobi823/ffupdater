@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="action_about_title">Über FFUpdater</string>
     <string name="action_settings_title">Einstellungen</string>
@@ -50,7 +49,7 @@
     <string name="settings_automatic_check_title">Automatisch im Hintergrund</string>
     <string name="settings_check_interval_summary">Wie oft sollte die Anwendung nach Updates suchen?</string>
     <string name="settings_check_interval_title">Prüfintervall</string>
-    <string name="settings_disabled_apps_summary">Diese Anwendungen werden nicht automatisch auf Aktualisierungen geprüft.</string>
+    <string name="settings_disabled_apps_summary">Nur installierte Anwendungen werden automatisch auf Updates geprüft. Sie können installierte Anwendungen aus der automatischen Update-Prüfung entfernen, indem Sie sie hier auswählen.</string>
     <string name="settings_disabled_apps_title">Ausgeschlossene Anwendungen</string>
     <string name="settings_title">Update-Prüfung der Anwendung</string>
     <string name="sha_256_certificate_fingerprint">SHA-256 Fingerabdruck des Zertifikats:</string>
