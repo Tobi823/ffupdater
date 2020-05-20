@@ -208,10 +208,11 @@ public class InstallActivity extends AppCompatActivity {
         findViewById(R.id.fingerprintDownloadGood).setVisibility(View.GONE);
         findViewById(R.id.fingerprintDownloadBad).setVisibility(View.GONE);
         findViewById(R.id.installConfirmation).setVisibility(View.GONE);
-        findViewById(R.id.installerSuccess).setVisibility(View.GONE);
-        findViewById(R.id.installerFailed).setVisibility(View.GONE);
+        findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.GONE);
         findViewById(R.id.fingerprintInstalledGood).setVisibility(View.GONE);
         findViewById(R.id.fingerprintInstalledBad).setVisibility(View.GONE);
+        findViewById(R.id.installerSuccess).setVisibility(View.GONE);
+        findViewById(R.id.installerFailed).setVisibility(View.GONE);
     }
 
     private void actionFetching() {
@@ -321,17 +322,21 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void actionVerifyInstalledAppSignature() {
-        runOnUiThread(() -> {
+        runOnUiThread(() -> findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.VISIBLE));
+        new Thread(() -> {
             Pair<Boolean, String> validCertificate = CertificateFingerprint.checkFingerprintOfInstalledApp(getPackageManager(), app);
-            if (Objects.requireNonNull(validCertificate.first)) {
-                findViewById(R.id.fingerprintInstalledGood).setVisibility(View.VISIBLE);
-                findTextViewById(R.id.fingerprintInstalledGoodHash).setText(validCertificate.second);
-            } else {
-                findViewById(R.id.fingerprintInstalledBad).setVisibility(View.VISIBLE);
-                findTextViewById(R.id.fingerprintInstalledBadHashActual).setText(validCertificate.second);
-                findTextViewById(R.id.fingerprintInstalledBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
-            }
-        });
+            runOnUiThread(() -> {
+                findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.GONE);
+                if (Objects.requireNonNull(validCertificate.first)) {
+                    findViewById(R.id.fingerprintInstalledGood).setVisibility(View.VISIBLE);
+                    findTextViewById(R.id.fingerprintInstalledGoodHash).setText(validCertificate.second);
+                } else {
+                    findViewById(R.id.fingerprintInstalledBad).setVisibility(View.VISIBLE);
+                    findTextViewById(R.id.fingerprintInstalledBadHashActual).setText(validCertificate.second);
+                    findTextViewById(R.id.fingerprintInstalledBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
+                }
+            });
+        }).start();
     }
 
     private TextView findTextViewById(int id) {

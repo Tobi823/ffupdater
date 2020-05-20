@@ -190,6 +190,22 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/verifyInstalledFingerprint"
+            style="@style/DownloadActivitySegment">
+
+            <TextView
+                style="@style/BoldTextView"
+                android:text="@string/verifying_downloaded_application_certificate" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/fingerprintInstalledGood"
             style="@style/DownloadActivitySegment"
             android:background="@color/successGreen"
