@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.version;
 
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
@@ -13,6 +14,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.SimpleSharedPreferences;
 import de.marmaro.krt.ffupdater.device.DeviceABI;
 
 import static org.junit.Assert.assertFalse;
@@ -36,7 +38,8 @@ public class AvailableVersionsIT {
         when(DeviceABI.getBestSuitedAbi()).thenReturn(DeviceABI.ABI.ARM);
 
         PackageManager packageManager = mock(PackageManager.class);
-        availableVersions = new AvailableVersions(packageManager);
+        SharedPreferences sharedPreferences = new SimpleSharedPreferences();
+        availableVersions = new AvailableVersions(packageManager, sharedPreferences);
     }
 
     @Test

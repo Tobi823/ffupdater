@@ -1,22 +1,24 @@
 package de.marmaro.krt.ffupdater.version;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.TrafficStats;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.PreferenceManager;
 
-import java.util.ArrayList;
+import com.google.common.base.Preconditions;
+
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -28,7 +30,6 @@ import java.util.concurrent.TimeoutException;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
-import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static de.marmaro.krt.ffupdater.App.FENIX;
 import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
@@ -50,12 +51,16 @@ public class AvailableVersions {
     private final ExecutorService executorService;
     private final PackageManager packageManager;
     private final Queue<Future> futures = new ConcurrentLinkedQueue<>();
-    private final Map<App, String> versions = new ConcurrentHashMap<>();
-    private final Map<App, String> urls = new ConcurrentHashMap<>();
+    private final MetadataCache metadataStorage;
 
-    public AvailableVersions(PackageManager packageManager) {
+    public AvailableVersions(Context context) {
+        this(Preconditions.checkNotNull(context.getPackageManager()), PreferenceManager.getDefaultSharedPreferences(context));
+    }
+
+    public AvailableVersions(PackageManager packageManager, SharedPreferences sharedPreferences) {
         this.executorService = Executors.newFixedThreadPool(NUMBER_BACKGROUND_THREADS);
-        this.packageManager = Objects.requireNonNull(packageManager);
+        this.packageManager = packageManager;
+        this.metadataStorage = new MetadataCache(sharedPreferences);
     }
 
     /**
@@ -88,10 +93,7 @@ public class AvailableVersions {
      * @return is a new version of the app available
      */
     public boolean isUpdateAvailable(App app) {
-        if (!versions.containsKey(app)) {
-            return false;
-        }
-        String available = Objects.requireNonNull(versions.get(app));
+        String available = metadataStorage.getVersionName(app);
         String installed = InstalledApps.getVersionName(packageManager, app);
 
         if (app == FIREFOX_LITE) {
@@ -110,7 +112,7 @@ public class AvailableVersions {
      */
     @NonNull
     public String getDownloadUrl(App app) {
-        return Utils.convertNullToEmptyString(urls.get(app));
+        return metadataStorage.getDownloadUrl(app);
     }
 
     /**
@@ -122,7 +124,7 @@ public class AvailableVersions {
      */
     @NonNull
     public String getAvailableVersion(App app) {
-        return Utils.convertNullToEmptyString(versions.get(app));
+        return metadataStorage.getVersionName(app);
     }
 
     /**
@@ -174,7 +176,7 @@ public class AvailableVersions {
             return;
         }
 
-        List<App> supportedApps = filterUnsupportedApps(apps);
+        Set<App> supportedApps = filterApps(new HashSet<>(apps));
         if (supportedApps.contains(FENNEC_RELEASE)) {
             futures.add(executorService.submit(this::checkFennec));
         }
@@ -202,6 +204,7 @@ public class AvailableVersions {
         }
     }
 
+
     private void waitUntilAllFinished() {
         while (!futures.isEmpty()) {
             try {
@@ -214,10 +217,18 @@ public class AvailableVersions {
         }
     }
 
-    private List<App> filterUnsupportedApps(List<App> apps) {
-        List<App> supportedApps = new ArrayList<>(apps.size());
+    /**
+     * Return only apps which are:
+     * - compatible with the current device
+     * - in need for new metadata (because the existing metadata is too old) @see {@link MetadataCache#isTimestampTooOld(App)}
+     *
+     * @param apps all apps
+     * @return apps matching the criteria
+     */
+    private Set<App> filterApps(Set<App> apps) {
+        Set<App> supportedApps = new HashSet<>(apps.size());
         for (App app : apps) {
-            if (app.isCompatibleWithDevice()) {
+            if (app.isCompatibleWithDevice() && metadataStorage.isTimestampTooOld(app)) {
                 supportedApps.add(app);
             }
         }
@@ -227,15 +238,12 @@ public class AvailableVersions {
     private void checkFennec() {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
         Fennec fennec = Fennec.findLatest();
-        if (fennec == null) {
-            return;
+        if (fennec != null) {
+            metadataStorage.setMetadata(FENNEC_RELEASE, fennec.getVersion(), fennec.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
         }
-
-        versions.put(FENNEC_RELEASE, fennec.getVersion());
-        urls.put(FENNEC_RELEASE, fennec.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
     }
 
-    private void checkFocusKlar(List<App> appsToCheck) {
+    private void checkFocusKlar(Set<App> appsToCheck) {
         TrafficStats.setThreadStatsTag(TRAFFIC_FOCUS);
         Focus focus = Focus.findLatest();
         if (focus == null) {
@@ -244,8 +252,7 @@ public class AvailableVersions {
 
         for (App app : Arrays.asList(FIREFOX_FOCUS, FIREFOX_KLAR)) {
             if (appsToCheck.contains(app)) {
-                versions.put(app, focus.getVersion());
-                urls.put(app, focus.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
+                metadataStorage.setMetadata(app, focus.getVersion(), focus.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
             }
         }
     }
@@ -253,22 +260,16 @@ public class AvailableVersions {
     private void checkLite() {
         TrafficStats.setThreadStatsTag(TRAFFIC_LITE);
         FirefoxLite firefoxLite = FirefoxLite.findLatest();
-        if (firefoxLite == null) {
-            return;
+        if (firefoxLite != null) {
+            metadataStorage.setMetadata(FIREFOX_LITE, firefoxLite.getVersion(), firefoxLite.getDownloadUrl());
         }
-
-        versions.put(FIREFOX_LITE, firefoxLite.getVersion());
-        urls.put(FIREFOX_LITE, firefoxLite.getDownloadUrl());
     }
 
     private void checkFenix() {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENIX);
         Fenix fenix = Fenix.findLatest();
-        if (fenix == null) {
-            return;
+        if (fenix != null) {
+            metadataStorage.setMetadata(FENIX, fenix.getVersion(), fenix.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
         }
-
-        versions.put(FENIX, fenix.getVersion());
-        urls.put(FENIX, fenix.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
     }
 }

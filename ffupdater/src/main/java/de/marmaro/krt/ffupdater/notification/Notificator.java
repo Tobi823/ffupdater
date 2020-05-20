@@ -25,10 +25,10 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.version.AvailableVersions;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
+import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 
@@ -88,7 +88,7 @@ public class Notificator extends Worker {
     @Override
     public Result doWork() {
         Log.d(LOG_TAG, "start background update check");
-        AvailableVersions appUpdate = new AvailableVersions(getApplicationContext().getPackageManager());
+        AvailableVersions appUpdate = new AvailableVersions(getApplicationContext());
         Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
         appUpdate.checkUpdatesForInstalledApps(disableApps, null, null);
         if (appUpdate.areUpdatesForInstalledAppsAvailable()) {

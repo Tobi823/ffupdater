@@ -67,7 +67,7 @@ public class InstallActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        appUpdate = new AvailableVersions(getPackageManager());
+        appUpdate = new AvailableVersions(this);
 
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
         String appName = extras.getString(EXTRA_APP_NAME);

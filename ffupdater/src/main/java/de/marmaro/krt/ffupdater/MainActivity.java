@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         StrictModeSetup.enable();
         Notificator.start(this);
 
-        appUpdate = new AvailableVersions(getPackageManager());
+        appUpdate = new AvailableVersions(this);
 
         Thread.setDefaultUncaughtExceptionHandler((Thread thread, Throwable e) -> {
             sendStacktraceAsMail(e);
