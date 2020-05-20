@@ -4,9 +4,9 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import androidx.core.util.Pair;
 
 import androidx.annotation.NonNull;
+import androidx.core.util.Pair;
 
 import com.google.common.base.Preconditions;
 
@@ -19,13 +19,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import static android.app.DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR;
 import static android.app.DownloadManager.COLUMN_STATUS;
 import static android.app.DownloadManager.COLUMN_TOTAL_SIZE_BYTES;
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 /**
  * This class helps to use the {@code android.app.DownloadManager} more easily.
  */
 public class DownloadManagerAdapter {
-    private static final String CACHE_SUBFOLDER_NAME = "ffupdater_app_download";
     private static final String HTTPS_PROTOCOL = "https";
+    private static final String FILE_PREFIX = "download_";
+    private static final String FILE_SUFFIX = ".apk";
 
     private final DownloadManager downloadManager;
     private final Map<Long, File> files = new ConcurrentHashMap<>();
@@ -36,29 +38,31 @@ public class DownloadManagerAdapter {
 
     /**
      * Enqueue a new download.
-     * @param context context
-     * @param downloadUrl url for the download
-     * @param notificationTitle title for the download notification
+     *
+     * @param context                context
+     * @param downloadUrl            url for the download
+     * @param notificationTitle      title for the download notification
      * @param notificationVisibility visibility of the download notification
      * @return new generated id for the download
      */
     public long enqueue(Context context, String downloadUrl, String notificationTitle, int notificationVisibility) {
-        File downloadDestination = generateTempFile(context);
         Uri uri = Uri.parse(downloadUrl);
         Preconditions.checkArgument(HTTPS_PROTOCOL.equals(uri.getScheme()));
+        String fileName = FILE_PREFIX + Math.abs(new Random().nextLong()) + FILE_SUFFIX;
 
         DownloadManager.Request request = new DownloadManager.Request(uri);
         request.setTitle(notificationTitle);
         request.setNotificationVisibility(notificationVisibility);
-        request.setDestinationUri(Uri.fromFile(downloadDestination));
+        request.setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName);
 
         long id = downloadManager.enqueue(request);
-        files.put(id, downloadDestination);
+        files.put(id, new File(context.getExternalFilesDir(DIRECTORY_DOWNLOADS), fileName));
         return id;
     }
 
     /**
      * Delete the download files by their ids.
+     *
      * @param ids ids
      */
     public void remove(long... ids) {
@@ -71,6 +75,7 @@ public class DownloadManagerAdapter {
     /**
      * Return the status and percent for a download.
      * This method is simple to use then {@code android.app.DownloadManager.query()}
+     *
      * @param id id
      * @return status (constants from {@code android.app.DownloadManager}) and percent (0-100)
      */
@@ -91,6 +96,7 @@ public class DownloadManagerAdapter {
 
     /**
      * Return the uri for the downloaded file. The Uri is no longer available, when the download id was removed.
+     *
      * @param id id
      * @return url for the downloaded file
      */
@@ -101,27 +107,11 @@ public class DownloadManagerAdapter {
     /**
      * Return the downloaded file.
      * The file is no longer available, when the download id was removed.
+     *
      * @param id id
      * @return downloaded file
      */
     public File getFileForDownloadedFile(long id) {
         return Objects.requireNonNull(files.get(id));
-    }
-
-    /**
-     * Helper for creating a temporary file which can be access by the file app installer (API Level < 24/Nougat).
-     * The method have to create a subfolder in {@code context.getExternalCacheDir()} - only subfolder can be access
-     * by other apps.
-     * @see <a href="https://developer.android.com/training/data-storage">Data and file storage overview</>
-     * @param context context
-     * @return temporary file
-     */
-    private static File generateTempFile(Context context) {
-        File cacheFolder = new File(context.getExternalCacheDir(), CACHE_SUBFOLDER_NAME);
-        if (!cacheFolder.exists()) {
-            Preconditions.checkArgument(cacheFolder.mkdir());
-        }
-        long randomNumber = Math.abs(new Random().nextLong());
-        return new File(cacheFolder, "download" + randomNumber + ".app");
     }
 }

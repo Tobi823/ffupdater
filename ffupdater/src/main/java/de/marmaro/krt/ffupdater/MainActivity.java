@@ -40,6 +40,7 @@ import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.view.View.GONE;
@@ -47,7 +48,7 @@ import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
-    public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 900;
+    public static final int MY_PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 910;
     private AvailableVersions appUpdate;
     private ProgressBar progressBar;
 
@@ -224,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (isWriteExternalStoragePermissionMissing()) {
+        if (isExternalStoragePermissionMissing()) {
             return;
         }
 
@@ -234,9 +235,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private boolean isWriteExternalStoragePermissionMissing() {
-        if (ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+    private boolean isExternalStoragePermissionMissing() {
+        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST_EXTERNAL_STORAGE);
             return true;
         }
         return false;
@@ -263,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickInstallApp(View view) {
         // request for permission before the user selected a browser
-        if (isWriteExternalStoragePermissionMissing()) {
+        if (isExternalStoragePermissionMissing()) {
             return;
         }
         new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager(), InstallAppDialog.TAG);
