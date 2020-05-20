@@ -1,3 +1,11 @@
+# 2020-05-20 Version 68.3.7 (42)
+ * Add simple crash reporter (by opening the mail app with the error message)
+ * Fix crash by asking for WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions
+ * Show progress bar when verifying the downloaded APK
+ * Download APK to the public download directory of the app (for example: /storage/sdcard0/Android/data/de.marmaro.krt.ffupdater/files/Download)
+ * Remove old debug messages
+ * Thanks yhoyhoj, UltraBlackLinux, rvandegrift, vikajon, wchen342, Ulfschaper, prox and danceswithcats for your error reporting
+
 # 2020-05-18 Version 68.3 (35)
  * Try to fix error "Failed to check certificate hash" by switching from apksig-library to PackageManager#getPackageArchiveInfo (thanks rvandegrift). This will reduce the size of FFUpdater and improve the maintenance for future releases.
  * Color of collapsed title will be always white (thanks DeenHyper74)
