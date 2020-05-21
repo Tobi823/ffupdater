@@ -52,15 +52,20 @@ public class AvailableVersions {
     private final PackageManager packageManager;
     private final Queue<Future> futures = new ConcurrentLinkedQueue<>();
     private final MetadataCache metadataStorage;
+    private final DeviceABI deviceABI;
 
     public AvailableVersions(Context context) {
-        this(Preconditions.checkNotNull(context.getPackageManager()), PreferenceManager.getDefaultSharedPreferences(context));
+        this(Preconditions.checkNotNull(
+                context.getPackageManager()),
+                PreferenceManager.getDefaultSharedPreferences(context),
+                new DeviceABI());
     }
 
-    public AvailableVersions(PackageManager packageManager, SharedPreferences sharedPreferences) {
+    public AvailableVersions(PackageManager packageManager, SharedPreferences sharedPreferences, DeviceABI deviceABI) {
         this.executorService = Executors.newFixedThreadPool(NUMBER_BACKGROUND_THREADS);
         this.packageManager = packageManager;
         this.metadataStorage = new MetadataCache(sharedPreferences);
+        this.deviceABI = deviceABI;
     }
 
     /**
@@ -228,7 +233,7 @@ public class AvailableVersions {
     private Set<App> filterApps(Set<App> apps) {
         Set<App> supportedApps = new HashSet<>(apps.size());
         for (App app : apps) {
-            if (app.isCompatibleWithDevice() && metadataStorage.isTimestampTooOld(app)) {
+            if (app.isCompatibleWithDevice(deviceABI) && metadataStorage.isTimestampTooOld(app)) {
                 supportedApps.add(app);
             }
         }
@@ -239,7 +244,7 @@ public class AvailableVersions {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
         Fennec fennec = Fennec.findLatest();
         if (fennec != null) {
-            metadataStorage.setMetadata(FENNEC_RELEASE, fennec.getVersion(), fennec.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
+            metadataStorage.setMetadata(FENNEC_RELEASE, fennec.getVersion(), fennec.getDownloadUrl(deviceABI.getBestSuitedAbi()));
         }
     }
 
@@ -252,7 +257,7 @@ public class AvailableVersions {
 
         for (App app : Arrays.asList(FIREFOX_FOCUS, FIREFOX_KLAR)) {
             if (appsToCheck.contains(app)) {
-                metadataStorage.setMetadata(app, focus.getVersion(), focus.getDownloadUrl(app, DeviceABI.getBestSuitedAbi()));
+                metadataStorage.setMetadata(app, focus.getVersion(), focus.getDownloadUrl(app, deviceABI.getBestSuitedAbi()));
             }
         }
     }
@@ -269,7 +274,7 @@ public class AvailableVersions {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENIX);
         Fenix fenix = Fenix.findLatest();
         if (fenix != null) {
-            metadataStorage.setMetadata(FENIX, fenix.getVersion(), fenix.getDownloadUrl(DeviceABI.getBestSuitedAbi()));
+            metadataStorage.setMetadata(FENIX, fenix.getVersion(), fenix.getDownloadUrl(deviceABI.getBestSuitedAbi()));
         }
     }
 }

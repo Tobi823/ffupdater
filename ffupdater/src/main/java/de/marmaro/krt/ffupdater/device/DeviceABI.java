@@ -25,13 +25,21 @@ public class DeviceABI {
     private static final String ARMEABI_V7A = "armeabi-v7a";
     private static final String X86_64 = "x86_64";
     private static final String X86 = "x86";
-    private static final ABI bestSuitedAbi = findBestSuitedAbi();
+    private final ABI bestSuitedAbi = findBestSuitedAbi();
 
     /**
      * @return the best suited ABI for the current device
      */
-    public static ABI getBestSuitedAbi() {
+    public ABI getBestSuitedAbi() {
         return bestSuitedAbi;
+    }
+
+    /**
+     * @param minimumRequiredSdkInt minimum required SDK
+     * @return is Build.VERSION.SDK_INT equal or higher than the minimum required SKD
+     */
+    public boolean isSdkIntEqualOrHigher(int minimumRequiredSdkInt) {
+        return SDK_INT >= minimumRequiredSdkInt;
     }
 
     /**
@@ -48,7 +56,7 @@ public class DeviceABI {
         X86_64
     }
 
-    private static ABI findBestSuitedAbi() {
+    private ABI findBestSuitedAbi() {
         String[] abis = SDK_INT < LOLLIPOP ? new String[]{CPU_ABI, CPU_ABI2} : SUPPORTED_ABIS;
         if (abis == null) {
             return ABI.ARM;

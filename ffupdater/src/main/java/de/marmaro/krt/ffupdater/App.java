@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater;
 
 import android.content.Context;
-import android.os.Build;
 
 import androidx.annotation.NonNull;
 
@@ -125,23 +124,26 @@ public enum App {
     }
 
     /**
+     * @param deviceABI device metadata
      * @return can the app be installed on the device?
      */
-    public boolean isCompatibleWithDevice() {
-        return !isIncompatibleWithDeviceAbi() && !isIncompatibleWithDeviceApiLevel();
+    public boolean isCompatibleWithDevice(DeviceABI deviceABI) {
+        return !isIncompatibleWithDeviceAbi(deviceABI) && !isIncompatibleWithDeviceApiLevel(deviceABI);
     }
 
     /**
+     * @param deviceABI device metadata
      * @return is the app not available for the device's ABI?
      */
-    public boolean isIncompatibleWithDeviceAbi() {
-        return unsupportedAbis.contains(DeviceABI.getBestSuitedAbi());
+    public boolean isIncompatibleWithDeviceAbi(DeviceABI deviceABI) {
+        return unsupportedAbis.contains(deviceABI.getBestSuitedAbi());
     }
 
     /**
+     * @param deviceABI device metadata
      * @return is the app not compatible with the device's API Level?
      */
-    public boolean isIncompatibleWithDeviceApiLevel() {
-        return Build.VERSION.SDK_INT < minApiLevel;
+    public boolean isIncompatibleWithDeviceApiLevel(DeviceABI deviceABI) {
+        return !deviceABI.isSdkIntEqualOrHigher(minApiLevel);
     }
 }

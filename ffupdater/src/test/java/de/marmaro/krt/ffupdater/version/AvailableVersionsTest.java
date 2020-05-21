@@ -9,9 +9,11 @@ import org.junit.Test;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.SimpleSharedPreferences;
+import de.marmaro.krt.ffupdater.device.DeviceABI;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +35,12 @@ public class AvailableVersionsTest {
     public void setUp() {
         packageManager = mock(PackageManager.class);
         sharedPreferences = new SimpleSharedPreferences();
-        availableVersions = new AvailableVersions(packageManager, sharedPreferences);
+        DeviceABI deviceABI = mock(DeviceABI.class);
+
+        when(deviceABI.getBestSuitedAbi()).thenReturn(DeviceABI.ABI.ARM);
+        when(deviceABI.isSdkIntEqualOrHigher(anyInt())).thenReturn(true);
+
+        availableVersions = new AvailableVersions(packageManager, sharedPreferences, deviceABI);
     }
 
     @Test

@@ -2,44 +2,35 @@ package de.marmaro.krt.ffupdater.version;
 
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Build;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
-import org.powermock.reflect.Whitebox;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.SimpleSharedPreferences;
 import de.marmaro.krt.ffupdater.device.DeviceABI;
 
 import static org.junit.Assert.assertFalse;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
-import static org.powermock.api.mockito.PowerMockito.when;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by Tobiwan on 03.05.2020.
  */
-@RunWith(PowerMockRunner.class)
-@PowerMockIgnore({"javax.net.ssl.*"})
-@PrepareForTest({Build.VERSION.class, DeviceABI.class})
 public class AvailableVersionsIT {
     private AvailableVersions availableVersions;
 
     @Before
     public void setUp() throws Exception {
-        Whitebox.setInternalState(Build.VERSION.class, "SDK_INT", 29);
-
-        PowerMockito.mockStatic(DeviceABI.class);
-        when(DeviceABI.getBestSuitedAbi()).thenReturn(DeviceABI.ABI.ARM);
-
         PackageManager packageManager = mock(PackageManager.class);
         SharedPreferences sharedPreferences = new SimpleSharedPreferences();
-        availableVersions = new AvailableVersions(packageManager, sharedPreferences);
+        DeviceABI deviceABI = mock(DeviceABI.class);
+
+        when(deviceABI.getBestSuitedAbi()).thenReturn(DeviceABI.ABI.ARM);
+        when(deviceABI.isSdkIntEqualOrHigher(anyInt())).thenReturn(true);
+
+        availableVersions = new AvailableVersions(packageManager, sharedPreferences, deviceABI);
     }
 
     @Test

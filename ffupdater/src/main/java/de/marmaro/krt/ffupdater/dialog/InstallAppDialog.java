@@ -13,6 +13,7 @@ import java.util.List;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.device.DeviceABI;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
 /**
@@ -23,6 +24,7 @@ public class InstallAppDialog extends DialogFragment {
     public static final String TAG = "download_new_app_dialog";
 
     private final Consumer<App> downloadCallback;
+    private final DeviceABI deviceABI = new DeviceABI();
 
     public InstallAppDialog(Consumer<App> callback) {
         this.downloadCallback = callback;
@@ -40,14 +42,14 @@ public class InstallAppDialog extends DialogFragment {
                 .setTitle(R.string.install_application)
                 .setItems(appNames, (dialog, which) -> {
                     App app = apps.get(which);
-                    if (app.isIncompatibleWithDeviceAbi()) {
+                    if (app.isIncompatibleWithDeviceAbi(deviceABI)) {
                         new UnsupportedAbiDialog().show(getParentFragmentManager(), UnsupportedAbiDialog.TAG);
                     }
-                    if (app.isIncompatibleWithDeviceApiLevel()) {
+                    if (app.isIncompatibleWithDeviceApiLevel(deviceABI)) {
                         new DeviceTooOldDialog(app.getMinApiLevel()).show(getParentFragmentManager(), DeviceTooOldDialog.TAG);
                     }
 
-                    if (app.isCompatibleWithDevice()) {
+                    if (app.isCompatibleWithDevice(deviceABI)) {
                         if (!app.getWarning(requireContext()).isEmpty()) {
                             new InstallationWarningAppDialog(downloadCallback, app).show(getParentFragmentManager(), InstallationWarningAppDialog.TAG);
                             return;
