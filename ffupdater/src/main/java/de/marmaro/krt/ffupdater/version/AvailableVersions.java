@@ -61,7 +61,7 @@ public class AvailableVersions {
                 new DeviceEnvironment());
     }
 
-    public AvailableVersions(PackageManager packageManager, SharedPreferences sharedPreferences, DeviceEnvironment deviceABI) {
+    AvailableVersions(PackageManager packageManager, SharedPreferences sharedPreferences, DeviceEnvironment deviceABI) {
         this.executorService = Executors.newFixedThreadPool(NUMBER_BACKGROUND_THREADS);
         this.packageManager = packageManager;
         this.metadataStorage = new MetadataCache(sharedPreferences);
@@ -213,7 +213,7 @@ public class AvailableVersions {
     private void waitUntilAllFinished() {
         while (!futures.isEmpty()) {
             try {
-                futures.element().get(10, TimeUnit.SECONDS);
+                futures.element().get(30, TimeUnit.SECONDS);
                 futures.remove();
             } catch (ExecutionException | InterruptedException | TimeoutException e) {
                 futures.remove();
