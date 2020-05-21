@@ -5,12 +5,7 @@ import androidx.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.marmaro.krt.ffupdater.device.DeviceABI;
-
-import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.AARCH64;
-import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.ARM;
-import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86;
-import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86_64;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 /**
  * Access the version name and the download url for Fenix from Github.
@@ -49,7 +44,7 @@ class Fenix {
         return version;
     }
 
-    String getDownloadUrl(DeviceABI.ABI abi) {
+    String getDownloadUrl(DeviceEnvironment.ABI abi) {
         for (String name : downloadUrls.keySet()) {
             if (isValidAbi(abi, name)) {
                 return downloadUrls.get(name);
@@ -58,7 +53,7 @@ class Fenix {
         throw new IllegalArgumentException("missing download url for " + abi);
     }
 
-    private boolean isValidAbi(DeviceABI.ABI abi, String name) {
+    private boolean isValidAbi(DeviceEnvironment.ABI abi, String name) {
         String nameLowerCase = name.toLowerCase();
         switch (abi) {
             case AARCH64:

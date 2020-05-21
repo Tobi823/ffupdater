@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
-import de.marmaro.krt.ffupdater.device.DeviceABI;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 /**
@@ -37,7 +37,7 @@ class Fennec {
     }
 
     @NonNull
-    String getDownloadUrl(DeviceABI.ABI abi) {
+    String getDownloadUrl(DeviceEnvironment.ABI abi) {
         return String.format(DOWNLOAD_URL, RELEASE_PRODUCT, getDownloadOs(abi));
     }
 
@@ -46,7 +46,7 @@ class Fennec {
         return Utils.convertNullToEmptyString(version.releaseVersion);
     }
 
-    private String getDownloadOs(DeviceABI.ABI abi) {
+    private String getDownloadOs(DeviceEnvironment.ABI abi) {
         switch (abi) {
             case AARCH64:
             case ARM:

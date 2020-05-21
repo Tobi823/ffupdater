@@ -13,7 +13,7 @@ import java.util.List;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.device.DeviceABI;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
 /**
@@ -24,7 +24,7 @@ public class InstallAppDialog extends DialogFragment {
     public static final String TAG = "download_new_app_dialog";
 
     private final Consumer<App> downloadCallback;
-    private final DeviceABI deviceABI = new DeviceABI();
+    private final DeviceEnvironment deviceABI = new DeviceEnvironment();
 
     public InstallAppDialog(Consumer<App> callback) {
         this.downloadCallback = callback;

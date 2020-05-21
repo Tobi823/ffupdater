@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.device.DeviceABI;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
 import static de.marmaro.krt.ffupdater.App.FENIX;
@@ -52,16 +52,16 @@ public class AvailableVersions {
     private final PackageManager packageManager;
     private final Queue<Future> futures = new ConcurrentLinkedQueue<>();
     private final MetadataCache metadataStorage;
-    private final DeviceABI deviceABI;
+    private final DeviceEnvironment deviceABI;
 
     public AvailableVersions(Context context) {
         this(Preconditions.checkNotNull(
                 context.getPackageManager()),
                 PreferenceManager.getDefaultSharedPreferences(context),
-                new DeviceABI());
+                new DeviceEnvironment());
     }
 
-    public AvailableVersions(PackageManager packageManager, SharedPreferences sharedPreferences, DeviceABI deviceABI) {
+    public AvailableVersions(PackageManager packageManager, SharedPreferences sharedPreferences, DeviceEnvironment deviceABI) {
         this.executorService = Executors.newFixedThreadPool(NUMBER_BACKGROUND_THREADS);
         this.packageManager = packageManager;
         this.metadataStorage = new MetadataCache(sharedPreferences);

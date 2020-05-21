@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import de.marmaro.krt.ffupdater.device.DeviceABI;
-import de.marmaro.krt.ffupdater.device.DeviceABI.ABI;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment.ABI;
 
-import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86;
-import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.X86_64;
+import static de.marmaro.krt.ffupdater.device.DeviceEnvironment.ABI.X86;
+import static de.marmaro.krt.ffupdater.device.DeviceEnvironment.ABI.X86_64;
 
 /**
  * All supported apps.
@@ -127,7 +127,7 @@ public enum App {
      * @param deviceABI device metadata
      * @return can the app be installed on the device?
      */
-    public boolean isCompatibleWithDevice(DeviceABI deviceABI) {
+    public boolean isCompatibleWithDevice(DeviceEnvironment deviceABI) {
         return !isIncompatibleWithDeviceAbi(deviceABI) && !isIncompatibleWithDeviceApiLevel(deviceABI);
     }
 
@@ -135,7 +135,7 @@ public enum App {
      * @param deviceABI device metadata
      * @return is the app not available for the device's ABI?
      */
-    public boolean isIncompatibleWithDeviceAbi(DeviceABI deviceABI) {
+    public boolean isIncompatibleWithDeviceAbi(DeviceEnvironment deviceABI) {
         return unsupportedAbis.contains(deviceABI.getBestSuitedAbi());
     }
 
@@ -143,7 +143,7 @@ public enum App {
      * @param deviceABI device metadata
      * @return is the app not compatible with the device's API Level?
      */
-    public boolean isIncompatibleWithDeviceApiLevel(DeviceABI deviceABI) {
+    public boolean isIncompatibleWithDeviceApiLevel(DeviceEnvironment deviceABI) {
         return !deviceABI.isSdkIntEqualOrHigher(minApiLevel);
     }
 }

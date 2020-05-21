@@ -7,6 +7,8 @@ import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
 /**
+ * This class returns the best suited ABI and API level.
+ *
  * Apps may support all, some or only one specific ABI (application binary interfaces).
  * But most smartphones only supports some ABIs like x86, x64_64 + x86, ...
  * This class determines the best suited ABI for the smartphone and is necessary for downloading the correct APK file.
@@ -20,7 +22,7 @@ import static android.os.Build.VERSION_CODES.LOLLIPOP;
  * - the majority of devices supporting x86_64/arm64-v8a also support X86/armeabi-v7a
  * - arm64-v8a/x86_64 apps are running better on arm64-v8a/x86_64 devices
  */
-public class DeviceABI {
+public class DeviceEnvironment {
     private static final String ARM64_V8A = "arm64-v8a";
     private static final String ARMEABI_V7A = "armeabi-v7a";
     private static final String X86_64 = "x86_64";

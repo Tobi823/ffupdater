@@ -6,10 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.device.DeviceABI;
-
-import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.AARCH64;
-import static de.marmaro.krt.ffupdater.device.DeviceABI.ABI.ARM;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 /**
  * Access the version name and the download url for Firefox Focus and Firefox Klar from Github.
@@ -43,7 +40,7 @@ class Focus {
         return version;
     }
 
-    String getDownloadUrl(App app, DeviceABI.ABI abi) {
+    String getDownloadUrl(App app, DeviceEnvironment.ABI abi) {
         for (String name : downloadUrls.keySet()) {
             if (isValidApp(app, name) && isValidAbi(abi, name)) {
                 return downloadUrls.get(name);
@@ -64,7 +61,7 @@ class Focus {
         }
     }
 
-    private boolean isValidAbi(DeviceABI.ABI abi, String name) {
+    private boolean isValidAbi(DeviceEnvironment.ABI abi, String name) {
         String nameLowerCase = name.toLowerCase();
         switch (abi) {
             case AARCH64:

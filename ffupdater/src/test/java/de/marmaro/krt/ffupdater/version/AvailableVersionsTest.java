@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.SimpleSharedPreferences;
-import de.marmaro.krt.ffupdater.device.DeviceABI;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -35,9 +35,9 @@ public class AvailableVersionsTest {
     public void setUp() {
         packageManager = mock(PackageManager.class);
         sharedPreferences = new SimpleSharedPreferences();
-        DeviceABI deviceABI = mock(DeviceABI.class);
+        DeviceEnvironment deviceABI = mock(DeviceEnvironment.class);
 
-        when(deviceABI.getBestSuitedAbi()).thenReturn(DeviceABI.ABI.ARM);
+        when(deviceABI.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.ARM);
         when(deviceABI.isSdkIntEqualOrHigher(anyInt())).thenReturn(true);
 
         availableVersions = new AvailableVersions(packageManager, sharedPreferences, deviceABI);
