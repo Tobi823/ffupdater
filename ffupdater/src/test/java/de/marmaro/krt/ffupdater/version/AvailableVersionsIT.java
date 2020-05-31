@@ -10,6 +10,10 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.SimpleSharedPreferences;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.emptyString;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
@@ -38,9 +42,9 @@ public class AvailableVersionsIT {
         App app = App.FENNEC_RELEASE;
         availableVersions.checkUpdateForApp(app, null, null);
 
-        assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
-        assertFalse(availableVersions.getDownloadUrl(app).isEmpty());
-        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersion(app), availableVersions.getDownloadUrl(app));
+        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
+        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
+        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
     }
 
     @Test
@@ -48,9 +52,9 @@ public class AvailableVersionsIT {
         App app = App.FIREFOX_KLAR;
         availableVersions.checkUpdateForApp(app, null, null);
 
-        assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
-        assertFalse(availableVersions.getDownloadUrl(app).isEmpty());
-        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersion(app), availableVersions.getDownloadUrl(app));
+        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
+        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
+        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
     }
 
     @Test
@@ -58,9 +62,9 @@ public class AvailableVersionsIT {
         App app = App.FIREFOX_FOCUS;
         availableVersions.checkUpdateForApp(app, null, null);
 
-        assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
-        assertFalse(availableVersions.getDownloadUrl(app).isEmpty());
-        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersion(app), availableVersions.getDownloadUrl(app));
+        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
+        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
+        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
     }
 
     @Test
@@ -68,9 +72,9 @@ public class AvailableVersionsIT {
         App app = App.FIREFOX_LITE;
         availableVersions.checkUpdateForApp(app, null, null);
 
-        assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
-        assertFalse(availableVersions.getDownloadUrl(app).isEmpty());
-        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersion(app), availableVersions.getDownloadUrl(app));
+        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
+        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
+        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
     }
 
     @Test
@@ -78,8 +82,8 @@ public class AvailableVersionsIT {
         App app = App.FENIX_RELEASE;
         availableVersions.checkUpdateForApp(app, null, null);
 
-        assertFalse(availableVersions.getAvailableVersion(app).isEmpty());
-        assertFalse(availableVersions.getDownloadUrl(app).isEmpty());
-        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersion(app), availableVersions.getDownloadUrl(app));
+        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
+        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
+        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
     }
 }

@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
     private void refreshUI() {
         for (App app : App.values()) {
             Objects.requireNonNull(appCards.get(app)).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
-            Objects.requireNonNull(availableVersionTextViews.get(app)).setText(appUpdate.getAvailableVersion(app));
+            Objects.requireNonNull(availableVersionTextViews.get(app)).setText(appUpdate.getAvailableVersionOrTimestamp(app));
             Objects.requireNonNull(installedVersionTextViews.get(app)).setText(InstalledApps.getVersionName(packageManager, app));
             Objects.requireNonNull(appButtons.get(app)).setImageResource(appUpdate.isUpdateAvailable(app) ?
                     R.drawable.ic_file_download_orange :

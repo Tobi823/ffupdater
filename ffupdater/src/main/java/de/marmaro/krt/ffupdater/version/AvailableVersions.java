@@ -99,19 +99,12 @@ public class AvailableVersions {
      * @return is a new version of the app available
      */
     public boolean isUpdateAvailable(App app) {
-        switch (app.getCompareMethodForUpdateCheck()) {
-            case TIMESTAMP:
-                return !Objects.equals(metadataStorage.getAvailableTimestamp(app), metadataStorage.getInstalledTimestamp(app));
-            case VERSION:
-                String available = metadataStorage.getVersionName(app);
-                String installed = InstalledApps.getVersionName(packageManager, app);
-                if (app == FIREFOX_LITE) {
-                    return !Objects.equals(available, installed.split("\\(")[0]);
-                }
-                return !Objects.equals(available, installed);
-            default:
-                throw new IllegalArgumentException("invalid app");
+        String available = getAvailableVersionOrTimestamp(app);
+        String installed = getInstalledVersionOrTimestamp(packageManager, app);
+        if (app == FIREFOX_LITE) {
+            return !Objects.equals(available, installed.split("\\(")[0]);
         }
+        return !Objects.equals(available, installed);
     }
 
     /**
@@ -134,8 +127,27 @@ public class AvailableVersions {
      * @return latest version name from the developers or empty string
      */
     @NonNull
-    public String getAvailableVersion(App app) {
-        return metadataStorage.getVersionName(app);
+    public String getAvailableVersionOrTimestamp(App app) {
+        switch (app.getCompareMethodForUpdateCheck()) {
+            case VERSION:
+                return metadataStorage.getVersionName(app);
+            case TIMESTAMP:
+                return metadataStorage.getAvailableTimestamp(app);
+            default:
+                throw new IllegalArgumentException("switch fallthrough");
+        }
+    }
+
+    @NonNull
+    public String getInstalledVersionOrTimestamp(PackageManager packageManager, App app) {
+        switch (app.getCompareMethodForUpdateCheck()) {
+            case VERSION:
+                return InstalledApps.getVersionName(packageManager, app);
+            case TIMESTAMP:
+                return metadataStorage.getInstalledTimestamp(app);
+            default:
+                throw new IllegalArgumentException("switch fallthrough");
+        }
     }
 
     /**
