@@ -23,7 +23,9 @@ public class MozillaCISConsumerIT {
         MozillaCIConsumer consumer = MozillaCIConsumer.findLatest(
                 "mobile.v2.fenix.production.latest.arm64-v8a",
                 "build/arm64-v8a/geckoBeta/target.apk");
+        System.out.println(consumer.getTimestamp());
         LocalDateTime timestamp = LocalDateTime.parse(consumer.getTimestamp(), DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        System.out.println(timestamp);
         assertThat(ChronoUnit.DAYS.between(LocalDateTime.now(), timestamp), lessThan(31L));
         checkConnection(consumer.getDownloadUrl());
     }

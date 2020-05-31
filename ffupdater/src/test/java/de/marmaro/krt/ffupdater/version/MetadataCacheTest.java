@@ -56,7 +56,7 @@ public class MetadataCacheTest {
     public void setMetadata_withAllData_setAllData() {
         SimpleSharedPreferences simpleSharedPreferences = new SimpleSharedPreferences();
         MetadataCache localMetadataCache = new MetadataCache(simpleSharedPreferences);
-        localMetadataCache.setMetadata(App.FENNEC_RELEASE, "14.12", "http://some.where/here.apk");
+        localMetadataCache.updateAvailableVersionAndDownloadUrl(App.FENNEC_RELEASE, "14.12", "http://some.where/here.apk");
 
         assertEquals("14.12", localMetadataCache.getVersionName(App.FENNEC_RELEASE));
         assertEquals("http://some.where/here.apk", localMetadataCache.getDownloadUrl(App.FENNEC_RELEASE));

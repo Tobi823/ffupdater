@@ -29,7 +29,7 @@ class Focus {
                         return "app-focus-arm-release-unsigned.apk";
                     case X86:
                     case X86_64:
-                        throw new RuntimeException("unsupported abi for Firefox Focus");
+                        throw new IllegalArgumentException("unsupported abi for Firefox Focus");
                 }
             case FIREFOX_KLAR:
                 switch (abi) {
@@ -39,10 +39,10 @@ class Focus {
                         return "app-klar-arm-release-unsigned.apk";
                     case X86:
                     case X86_64:
-                        throw new RuntimeException("unsupported abi for Firefox Klar");
+                        throw new IllegalArgumentException("unsupported abi for Firefox Klar");
                 }
         }
-        throw new RuntimeException("switch fallthrough");
+        throw new IllegalArgumentException("switch fallthrough");
     }
 
     public String getTimestamp() {

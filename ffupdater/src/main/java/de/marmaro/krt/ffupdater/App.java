@@ -146,4 +146,14 @@ public enum App {
     public boolean isIncompatibleWithDeviceApiLevel(DeviceEnvironment deviceABI) {
         return !deviceABI.isSdkIntEqualOrHigher(minApiLevel);
     }
+
+    public enum CompareMethod {
+        VERSION,
+        TIMESTAMP
+    }
+
+    public CompareMethod getCompareMethodForUpdateCheck() {
+        //TODO
+        return CompareMethod.VERSION;
+    }
 }

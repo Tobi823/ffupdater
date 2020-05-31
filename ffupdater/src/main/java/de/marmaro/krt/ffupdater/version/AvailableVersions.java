@@ -44,9 +44,10 @@ public class AvailableVersions {
     // StrictMode needs for every running thread a stats id
     private static final int TRAFFIC_FENNEC = 1001;
     private static final int TRAFFIC_FOCUS = 1002;
+    private static final int TRAFFIC_KLAR = 1005;
     private static final int TRAFFIC_LITE = 1003;
     private static final int TRAFFIC_FENIX = 1004;
-    private static final int NUMBER_BACKGROUND_THREADS = 5;
+    private static final int NUMBER_BACKGROUND_THREADS = 6;
 
     private final ExecutorService executorService;
     private final PackageManager packageManager;
@@ -185,8 +186,11 @@ public class AvailableVersions {
         if (supportedApps.contains(FENNEC_RELEASE)) {
             futures.add(executorService.submit(this::checkFennec));
         }
-        if (!Collections.disjoint(supportedApps, Arrays.asList(FIREFOX_KLAR, FIREFOX_FOCUS))) {
-            futures.add(executorService.submit(() -> checkFocusKlar(supportedApps)));
+        if (supportedApps.contains(FIREFOX_FOCUS)) {
+            futures.add(executorService.submit(this::checkFocus));
+        }
+        if (supportedApps.contains(FIREFOX_KLAR)) {
+            futures.add(executorService.submit(this::checkKlar));
         }
         if (supportedApps.contains(FIREFOX_LITE)) {
             futures.add(executorService.submit(this::checkLite));
@@ -244,37 +248,33 @@ public class AvailableVersions {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
         Fennec fennec = Fennec.findLatest();
         if (fennec != null) {
-            metadataStorage.setMetadata(FENNEC_RELEASE, fennec.getVersion(), fennec.getDownloadUrl(deviceABI.getBestSuitedAbi()));
+            metadataStorage.updateAvailableVersionAndDownloadUrl(FENNEC_RELEASE, fennec.getVersion(), fennec.getDownloadUrl(deviceABI.getBestSuitedAbi()));
         }
     }
 
-    private void checkFocusKlar(Set<App> appsToCheck) {
+    private void checkFocus() {
         TrafficStats.setThreadStatsTag(TRAFFIC_FOCUS);
-        Focus focus = Focus.findLatest();
-        if (focus == null) {
-            return;
-        }
+        Focus focus = Focus.findLatest(FIREFOX_FOCUS, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FIREFOX_FOCUS, focus.getTimestamp(), focus.getDownloadUrl());
+    }
 
-        for (App app : Arrays.asList(FIREFOX_FOCUS, FIREFOX_KLAR)) {
-            if (appsToCheck.contains(app)) {
-                metadataStorage.setMetadata(app, focus.getVersion(), focus.getDownloadUrl(app, deviceABI.getBestSuitedAbi()));
-            }
-        }
+    private void checkKlar() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_KLAR);
+        Focus klar = Focus.findLatest(FIREFOX_KLAR, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FIREFOX_KLAR, klar.getTimestamp(), klar.getDownloadUrl());
     }
 
     private void checkLite() {
         TrafficStats.setThreadStatsTag(TRAFFIC_LITE);
         FirefoxLite firefoxLite = FirefoxLite.findLatest();
         if (firefoxLite != null) {
-            metadataStorage.setMetadata(FIREFOX_LITE, firefoxLite.getVersion(), firefoxLite.getDownloadUrl());
+            metadataStorage.updateAvailableVersionAndDownloadUrl(FIREFOX_LITE, firefoxLite.getVersion(), firefoxLite.getDownloadUrl());
         }
     }
 
     private void checkFenix() {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENIX);
-        Fenix fenix = Fenix.findLatest();
-        if (fenix != null) {
-            metadataStorage.setMetadata(FENIX, fenix.getVersion(), fenix.getDownloadUrl(deviceABI.getBestSuitedAbi()));
-        }
+        Fenix fenix = Fenix.findLatest(FENIX, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX, fenix.getTimestamp(), fenix.getDownloadUrl());
     }
 }
