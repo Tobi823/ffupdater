@@ -1,10 +1,5 @@
 package de.marmaro.krt.ffupdater.version;
 
-import androidx.annotation.Nullable;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
@@ -12,64 +7,49 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
  * Access the version name and the download url for Firefox Focus and Firefox Klar from Github.
  */
 class Focus {
-    private static final String OWNER = "mozilla-mobile";
-    private static final String REPOSITORY = "focus-android";
 
-    private String version;
-    private final Map<String, String> downloadUrls = new HashMap<>();
+    private final MozillaCIConsumer mozillaCIConsumer;
 
-    private Focus() {
+    private Focus(MozillaCIConsumer mozillaCIConsumer) {
+        this.mozillaCIConsumer = mozillaCIConsumer;
     }
 
-    @Nullable
-    static Focus findLatest() {
-        Focus newObject = new Focus();
-        GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
-        if (latestRelease == null) {
-            return null;
-        }
-
-        newObject.version = latestRelease.getTagName().replace("v", "");
-        for (GithubReleaseParser.Asset asset : latestRelease.getAssets()) {
-            newObject.downloadUrls.put(asset.getName(), asset.getDownloadUrl());
-        }
-        return newObject;
+    static Focus findLatest(App app, DeviceEnvironment.ABI abi) {
+        MozillaCIConsumer consumer = MozillaCIConsumer.findLatest("project.mobile.focus.release.latest", getFile(app, abi));
+        return new Focus(consumer);
     }
 
-    String getVersion() {
-        return version;
-    }
-
-    String getDownloadUrl(App app, DeviceEnvironment.ABI abi) {
-        for (String name : downloadUrls.keySet()) {
-            if (isValidApp(app, name) && isValidAbi(abi, name)) {
-                return downloadUrls.get(name);
-            }
-        }
-        throw new IllegalArgumentException("missing download url for " + app + " and " + abi);
-    }
-
-    private boolean isValidApp(App app, String name) {
-        String nameLowerCase = name.toLowerCase();
+    private static String getFile(App app, DeviceEnvironment.ABI abi) {
         switch (app) {
             case FIREFOX_FOCUS:
-                return nameLowerCase.contains("focus");
+                switch (abi) {
+                    case AARCH64:
+                        return "app-focus-aarch64-release-unsigned.apk";
+                    case ARM:
+                        return "app-focus-arm-release-unsigned.apk";
+                    case X86:
+                    case X86_64:
+                        throw new RuntimeException("unsupported abi for Firefox Focus");
+                }
             case FIREFOX_KLAR:
-                return nameLowerCase.contains("klar");
-            default:
-                throw new IllegalArgumentException("invalid app");
+                switch (abi) {
+                    case AARCH64:
+                        return "app-klar-aarch64-release-unsigned.apk";
+                    case ARM:
+                        return "app-klar-arm-release-unsigned.apk";
+                    case X86:
+                    case X86_64:
+                        throw new RuntimeException("unsupported abi for Firefox Klar");
+                }
         }
+        throw new RuntimeException("switch fallthrough");
     }
 
-    private boolean isValidAbi(DeviceEnvironment.ABI abi, String name) {
-        String nameLowerCase = name.toLowerCase();
-        switch (abi) {
-            case AARCH64:
-                return nameLowerCase.contains("arm64");
-            case ARM:
-                return nameLowerCase.contains("arm") && !nameLowerCase.contains("arm64");
-            default:
-                throw new IllegalArgumentException("invalid abi");
-        }
+    public String getTimestamp() {
+        return mozillaCIConsumer.getTimestamp();
+    }
+
+    public String getDownloadUrl() {
+        return mozillaCIConsumer.getDownloadUrl();
     }
 }

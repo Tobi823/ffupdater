@@ -2,6 +2,8 @@ package de.marmaro.krt.ffupdater.version;
 
 import com.google.common.base.Preconditions;
 
+import java.util.Map;
+
 public class MozillaCIConsumer {
     public static final String BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/";
     public static final String JSON_FILE = "/artifacts/public/chain-of-trust.json";
@@ -10,15 +12,14 @@ public class MozillaCIConsumer {
     private final String timestamp;
     private final String downloadUrl;
 
-    private MozillaCIConsumer(String timestamp, String downloadUrl){
+    private MozillaCIConsumer(String timestamp, String downloadUrl) {
         this.timestamp = timestamp;
         this.downloadUrl = downloadUrl;
     }
 
     /**
-     *
      * @param product for example: "mobile.v2.fenix.nightly.latest.armeabi-v7a", "project.mobile.focus.release.latest"
-     * @param file for example: "app-focus-aarch64-release-unsigned.apk", "build/arm64-v8a/geckoBeta/target.apk"
+     * @param file    for example: "app-focus-aarch64-release-unsigned.apk", "build/arm64-v8a/geckoBeta/target.apk"
      * @return
      */
     static MozillaCIConsumer findLatest(String product, String file) {
@@ -40,14 +41,29 @@ public class MozillaCIConsumer {
 
     private static class Response {
         private Task task;
+        private Map<String, Hash> artifacts;
+
         public Task getTask() {
             return task;
         }
 
+        public Map<String, Hash> getArtifacts() {
+            return artifacts;
+        }
+
         private static class Task {
-            public String created;
+            private String created;
+
             public String getCreated() {
                 return created;
+            }
+        }
+
+        private static class Hash {
+            private String sha256;
+
+            public String getSha256() {
+                return sha256;
             }
         }
     }
