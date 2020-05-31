@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -99,14 +100,19 @@ public class AvailableVersions {
      * @return is a new version of the app available
      */
     public boolean isUpdateAvailable(App app) {
-        String available = metadataStorage.getVersionName(app);
-        String installed = InstalledApps.getVersionName(packageManager, app);
-
-        if (app == FIREFOX_LITE) {
-            String sanitizedInstalled = installed.split("\\(")[0];
-            return !available.contentEquals(sanitizedInstalled);
+        switch (app.getCompareMethodForUpdateCheck()) {
+            case TIMESTAMP:
+                return !Objects.equals(metadataStorage.getAvailableTimestamp(app), metadataStorage.getInstalledTimestamp(app));
+            case VERSION:
+                String available = metadataStorage.getVersionName(app);
+                String installed = InstalledApps.getVersionName(packageManager, app);
+                if (app == FIREFOX_LITE) {
+                    return !Objects.equals(available, installed.split("\\(")[0]);
+                }
+                return !Objects.equals(available, installed);
+            default:
+                throw new IllegalArgumentException("invalid app");
         }
-        return !available.contentEquals(installed);
     }
 
     /**
@@ -212,7 +218,6 @@ public class AvailableVersions {
             });
         }
     }
-
 
     private void waitUntilAllFinished() {
         while (!futures.isEmpty()) {
