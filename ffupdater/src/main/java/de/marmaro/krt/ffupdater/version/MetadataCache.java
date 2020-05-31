@@ -21,7 +21,7 @@ import de.marmaro.krt.ffupdater.App;
  * - reduce network bandwidth
  * - prevent of being temporary blocked by GitHub (for an hour).
  */
-class MetadataCache {
+public class MetadataCache {
     private static final String VERSION_NAME_TEMPLATE = "download_metadata_%1$s_version_name";
     private static final String AVAILABLE_TIMESTAMP_TEMPLATE = "download_metadata_%1$s_available_timestamp";
     private static final String INSTALLED_TIMESTAMP_TEMPLATE = "download_metadata_%1$s_installed_timestamp";
@@ -31,7 +31,7 @@ class MetadataCache {
 
     private final SharedPreferences sharedPreferences;
 
-    MetadataCache(SharedPreferences sharedPreferences) {
+    public MetadataCache(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
     }
 
@@ -40,7 +40,7 @@ class MetadataCache {
      * @return (cached) latest version name or empty string
      */
     @NonNull
-    String getVersionName(App app) {
+    public String getVersionName(App app) {
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.VERSION, "invalid app");
         return getStringNullSafe(String.format(VERSION_NAME_TEMPLATE, getName(app)));
     }
@@ -50,18 +50,18 @@ class MetadataCache {
      * @return (cached) latest download url or empty string
      */
     @NonNull
-    String getDownloadUrl(App app) {
+    public String getDownloadUrl(App app) {
         return getStringNullSafe(String.format(DOWNLOAD_URL_TEMPLATE, getName(app)));
     }
 
     @NonNull
-    String getAvailableTimestamp(App app) {
+    public String getAvailableTimestamp(App app) {
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
         return getStringNullSafe(String.format(AVAILABLE_TIMESTAMP_TEMPLATE, getName(app)));
     }
 
     @NonNull
-    String getInstalledTimestamp(App app) {
+    public String getInstalledTimestamp(App app) {
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
         return getStringNullSafe(String.format(INSTALLED_TIMESTAMP_TEMPLATE, getName(app)));
     }
@@ -79,7 +79,7 @@ class MetadataCache {
      * @param app app
      * @return is the cache entry for the app too old and must be renewed?
      */
-    boolean isTimestampTooOld(App app) {
+    public boolean isTimestampTooOld(App app) {
         return System.currentTimeMillis() - getTimestamp(app) > CACHE_TTL;
     }
 
@@ -97,7 +97,7 @@ class MetadataCache {
      * @param versionName version name
      * @param downloadUrl download url
      */
-    void updateAvailableVersionAndDownloadUrl(App app, String versionName, String downloadUrl) {
+    public void updateAvailableVersionAndDownloadUrl(App app, String versionName, String downloadUrl) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.VERSION, "invalid app");
         Preconditions.checkNotNull(versionName, "Parameter versionName must not be null");
@@ -110,7 +110,7 @@ class MetadataCache {
         editor.apply();
     }
 
-    void updateAvailableTimestampAndDownloadUrl(App app, String availableTimestamp, String downloadUrl) {
+    public void updateAvailableTimestampAndDownloadUrl(App app, String availableTimestamp, String downloadUrl) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
         Preconditions.checkNotNull(availableTimestamp, "Parameter availableTimestamp must not be null");
@@ -123,7 +123,7 @@ class MetadataCache {
         editor.apply();
     }
 
-    void updateInstalledTimestamp(App app, String installedTimestamp) {
+    public void updateInstalledTimestamp(App app, String installedTimestamp) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
         Preconditions.checkNotNull(installedTimestamp, "Parameter installedTimestamp must not be null");
