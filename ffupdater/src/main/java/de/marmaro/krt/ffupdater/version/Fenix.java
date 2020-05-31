@@ -25,8 +25,8 @@ class Fenix {
 
     private static String getFile(App app, DeviceEnvironment.ABI abi) {
         switch (app) {
-            case FENIX:
-            case FIREFOX_KLAR: //TODO change it to beta
+            case FENIX_RELEASE:
+            case FENIX_BETA:
                 switch (abi) {
                     case AARCH64:
                         return "build/arm64-v8a/geckoBeta/target.apk";
@@ -37,7 +37,7 @@ class Fenix {
                     case X86_64:
                         return "build/x86_64/geckoBeta/target.apk";
                 }
-            case FENNEC_RELEASE: //TODO change it to nightly
+            case FENIX_NIGHTLY:
                 switch (abi) {
                     case AARCH64:
                         return "build/arm64-v8a/geckoNightly/target.apk";
@@ -54,7 +54,7 @@ class Fenix {
 
     private static String getProduct(App app, DeviceEnvironment.ABI abi) {
         switch (app) {
-            case FENIX:
+            case FENIX_RELEASE:
                 switch (abi) {
                     case AARCH64:
                         return "mobile.v2.fenix.production.latest.arm64-v8a";
@@ -65,7 +65,7 @@ class Fenix {
                     case X86_64:
                         return "mobile.v2.fenix.production.latest.x86_64";
                 }
-            case FENNEC_RELEASE: //TODO change it to beta
+            case FENIX_BETA:
                 switch (abi) {
                     case AARCH64:
                         return "mobile.v2.fenix.beta.latest.arm64-v8a";
@@ -76,7 +76,7 @@ class Fenix {
                     case X86_64:
                         return "mobile.v2.fenix.beta.latest.x86_64";
                 }
-            case FIREFOX_KLAR: //TODO change it to nightly
+            case FENIX_NIGHTLY:
                 switch (abi) {
                     case AARCH64:
                         return "mobile.v2.fenix.nightly.latest.arm64-v8a";

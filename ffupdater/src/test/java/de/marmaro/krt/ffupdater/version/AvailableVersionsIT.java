@@ -75,7 +75,7 @@ public class AvailableVersionsIT {
 
     @Test
     public void checkUpdateForApp_withFenix_versionAndDownloadNotEmpty() {
-        App app = App.FENIX;
+        App app = App.FENIX_RELEASE;
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertFalse(availableVersions.getAvailableVersion(app).isEmpty());

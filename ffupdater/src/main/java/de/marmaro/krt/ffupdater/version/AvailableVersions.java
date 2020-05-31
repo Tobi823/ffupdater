@@ -13,7 +13,6 @@ import androidx.preference.PreferenceManager;
 
 import com.google.common.base.Preconditions;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +31,7 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
-import static de.marmaro.krt.ffupdater.App.FENIX;
+import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_FOCUS;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_KLAR;
@@ -201,7 +200,7 @@ public class AvailableVersions {
         if (supportedApps.contains(FIREFOX_LITE)) {
             futures.add(executorService.submit(this::checkLite));
         }
-        if (supportedApps.contains(FENIX)) {
+        if (supportedApps.contains(FENIX_RELEASE)) {
             futures.add(executorService.submit(this::checkFenix));
         }
 
@@ -279,7 +278,7 @@ public class AvailableVersions {
 
     private void checkFenix() {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENIX);
-        Fenix fenix = Fenix.findLatest(FENIX, deviceABI.getBestSuitedAbi());
-        metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX, fenix.getTimestamp(), fenix.getDownloadUrl());
+        Fenix fenix = Fenix.findLatest(FENIX_RELEASE, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX_RELEASE, fenix.getTimestamp(), fenix.getDownloadUrl());
     }
 }

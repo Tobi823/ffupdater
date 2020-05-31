@@ -54,12 +54,12 @@ public class AppTest {
 
     @Test
     public void isIncompatibleWithDeviceApiLevel_Fenix_16_returnTrue() {
-        assertTrue(App.FENIX.isIncompatibleWithDeviceApiLevel(new TestDeviceABI(DeviceEnvironment.ABI.ARM, 16)));
+        assertTrue(App.FENIX_RELEASE.isIncompatibleWithDeviceApiLevel(new TestDeviceABI(DeviceEnvironment.ABI.ARM, 16)));
     }
 
     @Test
     public void isIncompatibleWithDeviceApiLevel_Fenix_21_returnFalse() {
-        assertFalse(App.FENIX.isIncompatibleWithDeviceApiLevel(new TestDeviceABI(DeviceEnvironment.ABI.ARM, 21)));
+        assertFalse(App.FENIX_RELEASE.isIncompatibleWithDeviceApiLevel(new TestDeviceABI(DeviceEnvironment.ABI.ARM, 21)));
     }
 
     @Test

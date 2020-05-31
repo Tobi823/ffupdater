@@ -80,7 +80,7 @@ public class InstalledAppsTest {
     @Test
     public void getVersionName_fenix_returnCorrectVersion() throws PackageManager.NameNotFoundException {
         when(packageManager.getPackageInfo(FENIX_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENIX_VERSION));
-        assertEquals(FENIX_VERSION, InstalledApps.getVersionName(packageManager, App.FENIX));
+        assertEquals(FENIX_VERSION, InstalledApps.getVersionName(packageManager, App.FENIX_RELEASE));
     }
 
     @Test
@@ -110,7 +110,7 @@ public class InstalledAppsTest {
     @Test
     public void getVersionName_fenixInstalled_returnCorrectVersion() throws PackageManager.NameNotFoundException {
         when(packageManager.getPackageInfo(FENIX_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENIX_VERSION));
-        assertTrue(InstalledApps.isInstalled(packageManager, App.FENIX));
+        assertTrue(InstalledApps.isInstalled(packageManager, App.FENIX_RELEASE));
     }
 
     @Test
@@ -140,7 +140,7 @@ public class InstalledAppsTest {
     @Test
     public void getVersionName_fenixNotInstalled_returnCorrectVersion() throws PackageManager.NameNotFoundException {
         when(packageManager.getPackageInfo(FENIX_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
-        assertFalse(InstalledApps.isInstalled(packageManager, App.FENIX));
+        assertFalse(InstalledApps.isInstalled(packageManager, App.FENIX_RELEASE));
     }
 
     @Test
@@ -190,7 +190,7 @@ public class InstalledAppsTest {
         when(packageManager.getPackageInfo(FIREFOX_FOCUS_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_LITE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_LITE_VERSION));
         when(packageManager.getPackageInfo(FENIX_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
-        assertThat(InstalledApps.getNotInstalledApps(packageManager), containsInAnyOrder(App.FENNEC_RELEASE, App.FIREFOX_FOCUS, App.FENIX));
+        assertThat(InstalledApps.getNotInstalledApps(packageManager), containsInAnyOrder(App.FENNEC_RELEASE, App.FIREFOX_FOCUS, App.FENIX_RELEASE));
     }
 
     @Test

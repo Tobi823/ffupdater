@@ -17,33 +17,33 @@ public class FenixIT {
 
     @Test
     public void findLatest_aarch64_downloadUrlAndTimestampNotEmpty() {
-        Fenix fenix = Fenix.findLatest(App.FENIX, DeviceEnvironment.ABI.AARCH64);
+        Fenix fenix = Fenix.findLatest(App.FENIX_RELEASE, DeviceEnvironment.ABI.AARCH64);
         assertThat(fenix.getDownloadUrl(), is(not(emptyString())));
         assertThat(fenix.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FENIX + " - " + fenix.getDownloadUrl() + " - " + fenix.getTimestamp());
+        System.out.println(App.FENIX_RELEASE + " - " + fenix.getDownloadUrl() + " - " + fenix.getTimestamp());
     }
 
     @Test
     public void findLatest_arm_downloadUrlAndTimestampNotEmpty() {
-        Fenix fenix = Fenix.findLatest(App.FENIX, DeviceEnvironment.ABI.ARM);
+        Fenix fenix = Fenix.findLatest(App.FENIX_RELEASE, DeviceEnvironment.ABI.ARM);
         assertThat(fenix.getDownloadUrl(), is(not(emptyString())));
         assertThat(fenix.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FENIX + " - " + fenix.getDownloadUrl() + " - " + fenix.getTimestamp());
+        System.out.println(App.FENIX_RELEASE + " - " + fenix.getDownloadUrl() + " - " + fenix.getTimestamp());
     }
 
     @Test
     public void findLatest_x8664_downloadUrlAndTimestampNotEmpty() {
-        Fenix fenix = Fenix.findLatest(App.FENIX, DeviceEnvironment.ABI.X86_64);
+        Fenix fenix = Fenix.findLatest(App.FENIX_RELEASE, DeviceEnvironment.ABI.X86_64);
         assertThat(fenix.getDownloadUrl(), is(not(emptyString())));
         assertThat(fenix.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FENIX + " - " + fenix.getDownloadUrl() + " - " + fenix.getTimestamp());
+        System.out.println(App.FENIX_RELEASE + " - " + fenix.getDownloadUrl() + " - " + fenix.getTimestamp());
     }
 
     @Test
     public void findLatest_x86_downloadUrlAndTimestampNotEmpty() {
-        Fenix fenix = Fenix.findLatest(App.FENIX, DeviceEnvironment.ABI.X86);
+        Fenix fenix = Fenix.findLatest(App.FENIX_RELEASE, DeviceEnvironment.ABI.X86);
         assertThat(fenix.getDownloadUrl(), is(not(emptyString())));
         assertThat(fenix.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FENIX + " - " + fenix.getDownloadUrl() + " - " + fenix.getTimestamp());
+        System.out.println(App.FENIX_RELEASE + " - " + fenix.getDownloadUrl() + " - " + fenix.getTimestamp());
     }
 }

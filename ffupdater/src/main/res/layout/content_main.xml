@@ -312,7 +312,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fenix_title"
+                        android:text="@string/fenix_release_title"
                         app:layout_constraintStart_toEndOf="@+id/fenixIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 

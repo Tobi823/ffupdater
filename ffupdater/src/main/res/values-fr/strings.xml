@@ -15,8 +15,8 @@
     <string name="downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
     <string name="downloaded_application_is_verified">La demande téléchargée est vérifiée</string>
     <string name="expected_sha_256_certificate_fingerprint">Empreinte digitale prévue pour le certificat SHA-256:</string>
-    <string name="fenix_description">Firefox Preview (également connu sous le nom de Fenix) est un tout nouveau navigateur pour Android. Cette application est actuellement en cours de développement et contient plus de trackers que d\'habitude pour analyser/améliorer l\'utilisation de l\'application.</string>
-    <string name="fenix_title">Firefox Preview</string>
+    <string name="fenix_release_description">Firefox Preview (également connu sous le nom de Fenix) est un tout nouveau navigateur pour Android. Cette application est actuellement en cours de développement et contient plus de trackers que d\'habitude pour analyser/améliorer l\'utilisation de l\'application.</string>
+    <string name="fenix_release_title">Firefox Preview</string>
     <string name="fenix_warning">L\'application sera téléchargée à partir de GitHub - seules les mises à jour qui sont publiées sur GitHub peuvent être téléchargées.</string>
     <string name="fennec_release_description">L\'application sera téléchargée à partir de l\'API officielle de Mozilla.</string>
     <string name="fennec_release_title">Firefox</string>

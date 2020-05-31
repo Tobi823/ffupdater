@@ -47,7 +47,7 @@
         <item>@string/firefox_klar_title</item>
         <item>@string/firefox_focus_title</item>
         <item>@string/firefox_lite_title</item>
-        <item>@string/fenix_title</item>
+        <item>@string/fenix_release_title</item>
     </string-array>
 
     <string-array name="disabledAppEntryValues">

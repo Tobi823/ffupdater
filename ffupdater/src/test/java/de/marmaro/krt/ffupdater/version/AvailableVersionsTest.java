@@ -109,7 +109,7 @@ public class AvailableVersionsTest {
 
     @Test
     public void isUpdateAvailable_fenix_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
-        App app = App.FENIX;
+        App app = App.FENIX_RELEASE;
         sharedPreferences.edit().putString("download_metadata_FENIX_version_name", "4.3.0").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.3.0"));
         assertFalse(availableVersions.isUpdateAvailable(app));
@@ -117,7 +117,7 @@ public class AvailableVersionsTest {
 
     @Test
     public void isUpdateAvailable_fenix_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
-        App app = App.FENIX;
+        App app = App.FENIX_RELEASE;
         sharedPreferences.edit().putString("download_metadata_FENIX_version_name", "4.3.0").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.2.0"));
         assertTrue(availableVersions.isUpdateAvailable(app));
