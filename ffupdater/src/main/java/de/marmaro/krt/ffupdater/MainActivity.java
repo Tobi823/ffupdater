@@ -174,44 +174,56 @@ public class MainActivity extends AppCompatActivity {
         availableVersionTextViews.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarAvailableVersion));
         availableVersionTextViews.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusAvailableVersion));
         availableVersionTextViews.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteAvailableVersion));
-        availableVersionTextViews.put(App.FENIX_RELEASE, findViewById(R.id.fenixAvailableVersion));
+        availableVersionTextViews.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseAvailableVersion));
+        availableVersionTextViews.put(App.FENIX_BETA, findViewById(R.id.fenixBetaAvailableVersion));
+        availableVersionTextViews.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyAvailableVersion));
 
         installedVersionTextViews.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseInstalledVersion));
         installedVersionTextViews.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarInstalledVersion));
         installedVersionTextViews.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusInstalledVersion));
         installedVersionTextViews.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteInstalledVersion));
-        installedVersionTextViews.put(App.FENIX_RELEASE, findViewById(R.id.fenixInstalledVersion));
+        installedVersionTextViews.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseInstalledVersion));
+        installedVersionTextViews.put(App.FENIX_BETA, findViewById(R.id.fenixBetaInstalledVersion));
+        installedVersionTextViews.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyInstalledVersion));
 
         appButtons.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseDownloadButton));
         appButtons.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarDownloadButton));
         appButtons.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusDownloadButton));
         appButtons.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteDownloadButton));
-        appButtons.put(App.FENIX_RELEASE, findViewById(R.id.fenixDownloadButton));
+        appButtons.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseDownloadButton));
+        appButtons.put(App.FENIX_BETA, findViewById(R.id.fenixBetaDownloadButton));
+        appButtons.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyDownloadButton));
 
         appCards.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseCard));
         appCards.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarCard));
         appCards.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusCard));
         appCards.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteCard));
-        appCards.put(App.FENIX_RELEASE, findViewById(R.id.fenixCard));
+        appCards.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseCard));
+        appCards.put(App.FENIX_BETA, findViewById(R.id.fenixBetaCard));
+        appCards.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyCard));
 
         infoButtonIdsToApp.put(R.id.fennecReleaseInfoButton, App.FENNEC_RELEASE);
         infoButtonIdsToApp.put(R.id.firefoxKlarInfoButton, App.FIREFOX_KLAR);
         infoButtonIdsToApp.put(R.id.firefoxFocusInfoButton, App.FIREFOX_FOCUS);
         infoButtonIdsToApp.put(R.id.firefoxLiteInfoButton, App.FIREFOX_LITE);
-        infoButtonIdsToApp.put(R.id.fenixInfoButton, App.FENIX_RELEASE);
+        infoButtonIdsToApp.put(R.id.fenixReleaseInfoButton, App.FENIX_RELEASE);
+        infoButtonIdsToApp.put(R.id.fenixBetaInfoButton, App.FENIX_BETA);
+        infoButtonIdsToApp.put(R.id.fenixNightlyInfoButton, App.FENIX_NIGHTLY);
 
         downloadButtonIdsToApp.put(R.id.fennecReleaseDownloadButton, App.FENNEC_RELEASE);
         downloadButtonIdsToApp.put(R.id.firefoxKlarDownloadButton, App.FIREFOX_KLAR);
         downloadButtonIdsToApp.put(R.id.firefoxFocusDownloadButton, App.FIREFOX_FOCUS);
         downloadButtonIdsToApp.put(R.id.firefoxLiteDownloadButton, App.FIREFOX_LITE);
-        downloadButtonIdsToApp.put(R.id.fenixDownloadButton, App.FENIX_RELEASE);
+        downloadButtonIdsToApp.put(R.id.fenixReleaseDownloadButton, App.FENIX_RELEASE);
+        downloadButtonIdsToApp.put(R.id.fenixBetaDownloadButton, App.FENIX_BETA);
+        downloadButtonIdsToApp.put(R.id.fenixNightlyDownloadButton, App.FENIX_NIGHTLY);
     }
 
     private void refreshUI() {
         for (App app : App.values()) {
             Objects.requireNonNull(appCards.get(app)).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
             Objects.requireNonNull(availableVersionTextViews.get(app)).setText(appUpdate.getAvailableVersionOrTimestamp(app));
-            Objects.requireNonNull(installedVersionTextViews.get(app)).setText(InstalledApps.getVersionName(packageManager, app));
+            Objects.requireNonNull(installedVersionTextViews.get(app)).setText(appUpdate.getInstalledVersionOrTimestamp(packageManager, app));
             Objects.requireNonNull(appButtons.get(app)).setImageResource(appUpdate.isUpdateAvailable(app) ?
                     R.drawable.ic_file_download_orange :
                     R.drawable.ic_file_download_grey
@@ -245,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE) ||
-                    ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE)) {
+                    ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
                 DialogFragment dialog = new MissingExternalStoragePermissionDialog(() -> requestExternalStoragePermission(app));
                 dialog.show(getSupportFragmentManager(), MissingExternalStoragePermissionDialog.TAG);
             } else {

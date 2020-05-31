@@ -31,6 +31,8 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
+import static de.marmaro.krt.ffupdater.App.FENIX_BETA;
+import static de.marmaro.krt.ffupdater.App.FENIX_NIGHTLY;
 import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_FOCUS;
@@ -44,10 +46,12 @@ public class AvailableVersions {
     // StrictMode needs for every running thread a stats id
     private static final int TRAFFIC_FENNEC = 1001;
     private static final int TRAFFIC_FOCUS = 1002;
-    private static final int TRAFFIC_KLAR = 1005;
-    private static final int TRAFFIC_LITE = 1003;
-    private static final int TRAFFIC_FENIX = 1004;
-    private static final int NUMBER_BACKGROUND_THREADS = 6;
+    private static final int TRAFFIC_KLAR = 1003;
+    private static final int TRAFFIC_LITE = 1004;
+    private static final int TRAFFIC_FENIX_RELEASE = 1005;
+    private static final int TRAFFIC_FENIX_BETA = 1006;
+    private static final int TRAFFIC_FENIX_NIGHTLY = 1007;
+    private static final int NUMBER_BACKGROUND_THREADS = 7+1;
 
     private final ExecutorService executorService;
     private final PackageManager packageManager;
@@ -213,7 +217,13 @@ public class AvailableVersions {
             futures.add(executorService.submit(this::checkLite));
         }
         if (supportedApps.contains(FENIX_RELEASE)) {
-            futures.add(executorService.submit(this::checkFenix));
+            futures.add(executorService.submit(this::checkFenixRelease));
+        }
+        if (supportedApps.contains(FENIX_BETA)) {
+            futures.add(executorService.submit(this::checkFenixBeta));
+        }
+        if (supportedApps.contains(FENIX_NIGHTLY)) {
+            futures.add(executorService.submit(this::checkFenixNightly));
         }
 
         if (callback == null) {
@@ -288,9 +298,21 @@ public class AvailableVersions {
         }
     }
 
-    private void checkFenix() {
-        TrafficStats.setThreadStatsTag(TRAFFIC_FENIX);
+    private void checkFenixRelease() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FENIX_RELEASE);
         Fenix fenix = Fenix.findLatest(FENIX_RELEASE, deviceABI.getBestSuitedAbi());
         metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX_RELEASE, fenix.getTimestamp(), fenix.getDownloadUrl());
+    }
+
+    private void checkFenixBeta() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FENIX_BETA);
+        Fenix fenix = Fenix.findLatest(FENIX_BETA, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX_BETA, fenix.getTimestamp(), fenix.getDownloadUrl());
+    }
+
+    private void checkFenixNightly() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FENIX_NIGHTLY);
+        Fenix fenix = Fenix.findLatest(FENIX_NIGHTLY, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX_NIGHTLY, fenix.getTimestamp(), fenix.getDownloadUrl());
     }
 }

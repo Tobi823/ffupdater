@@ -304,7 +304,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/fenixCard"
+                android:id="@+id/fenixReleaseCard"
                 style="@style/AppCard"
                 app:cardUseCompatPadding="true">
 
@@ -313,44 +313,44 @@
                     <TextView
                         style="@style/AppCardTitle"
                         android:text="@string/fenix_release_title"
-                        app:layout_constraintStart_toEndOf="@+id/fenixIcon"
+                        app:layout_constraintStart_toEndOf="@+id/fenixReleaseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/fenixInstalledVersionText"
+                        android:id="@+id/fenixReleaseInstalledVersionText"
                         style="@style/AppCardInstalledVersionText"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixIcon" />
+                        app:layout_constraintTop_toBottomOf="@+id/fenixReleaseIcon" />
 
                     <TextView
-                        android:id="@+id/fenixInstalledVersion"
+                        android:id="@+id/fenixReleaseInstalledVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixInstalledVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixInstalledVersionText" />
+                        app:layout_constraintStart_toEndOf="@+id/fenixReleaseInstalledVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fenixReleaseInstalledVersionText" />
 
                     <TextView
-                        android:id="@+id/fenixAvailableVersionText"
+                        android:id="@+id/fenixReleaseAvailableVersionText"
                         style="@style/AppCardAvailableVersionText"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixInstalledVersionText" />
+                        app:layout_constraintTop_toBottomOf="@+id/fenixReleaseInstalledVersionText" />
 
                     <TextView
-                        android:id="@+id/fenixAvailableVersion"
+                        android:id="@+id/fenixReleaseAvailableVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixAvailableVersionText" />
+                        app:layout_constraintStart_toEndOf="@+id/fenixReleaseAvailableVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fenixReleaseAvailableVersionText" />
 
                     <ImageButton
-                        android:id="@+id/fenixInfoButton"
+                        android:id="@+id/fenixReleaseInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/fenixDownloadButton"
+                        app:layout_constraintEnd_toStartOf="@+id/fenixReleaseDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
-                        android:id="@+id/fenixDownloadButton"
+                        android:id="@+id/fenixReleaseDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"
@@ -359,7 +359,141 @@
                         app:srcCompat="@drawable/ic_file_download_grey" />
 
                     <ImageView
-                        android:id="@+id/fenixIcon"
+                        android:id="@+id/fenixReleaseIcon"
+                        style="@style/AppCardIcon"
+                        android:contentDescription="@string/app_icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@mipmap/ic_logo_fenix" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fenixBetaCard"
+                style="@style/AppCard"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
+
+                    <TextView
+                        style="@style/AppCardTitle"
+                        android:text="@string/fenix_release_title"
+                        app:layout_constraintStart_toEndOf="@+id/fenixBetaIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/fenixBetaInstalledVersionText"
+                        style="@style/AppCardInstalledVersionText"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fenixBetaIcon" />
+
+                    <TextView
+                        android:id="@+id/fenixBetaInstalledVersion"
+                        style="@style/AppCardVersion"
+                        app:layout_constraintStart_toEndOf="@+id/fenixBetaInstalledVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fenixBetaInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fenixBetaAvailableVersionText"
+                        style="@style/AppCardAvailableVersionText"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fenixBetaInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fenixBetaAvailableVersion"
+                        style="@style/AppCardVersion"
+                        app:layout_constraintStart_toEndOf="@+id/fenixBetaAvailableVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fenixBetaAvailableVersionText" />
+
+                    <ImageButton
+                        android:id="@+id/fenixBetaInfoButton"
+                        style="@style/AppCardInfoButton"
+                        android:contentDescription="@string/information_about_the_app"
+                        android:onClick="onClickInfoButton"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fenixBetaDownloadButton"
+                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
+
+                    <ImageButton
+                        android:id="@+id/fenixBetaDownloadButton"
+                        style="@style/AppCardDownloadButton"
+                        android:contentDescription="@string/download_the_app"
+                        android:onClick="onClickDownloadButton"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_file_download_grey" />
+
+                    <ImageView
+                        android:id="@+id/fenixBetaIcon"
+                        style="@style/AppCardIcon"
+                        android:contentDescription="@string/app_icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@mipmap/ic_logo_fenix" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fenixNightlyCard"
+                style="@style/AppCard"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
+
+                    <TextView
+                        style="@style/AppCardTitle"
+                        android:text="@string/fenix_release_title"
+                        app:layout_constraintStart_toEndOf="@+id/fenixNightlyIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/fenixNightlyInstalledVersionText"
+                        style="@style/AppCardInstalledVersionText"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fenixNightlyIcon" />
+
+                    <TextView
+                        android:id="@+id/fenixNightlyInstalledVersion"
+                        style="@style/AppCardVersion"
+                        app:layout_constraintStart_toEndOf="@+id/fenixNightlyInstalledVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fenixNightlyInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fenixNightlyAvailableVersionText"
+                        style="@style/AppCardAvailableVersionText"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fenixNightlyInstalledVersionText" />
+
+                    <TextView
+                        android:id="@+id/fenixNightlyAvailableVersion"
+                        style="@style/AppCardVersion"
+                        app:layout_constraintStart_toEndOf="@+id/fenixNightlyAvailableVersionText"
+                        app:layout_constraintTop_toTopOf="@+id/fenixNightlyAvailableVersionText" />
+
+                    <ImageButton
+                        android:id="@+id/fenixNightlyInfoButton"
+                        style="@style/AppCardInfoButton"
+                        android:contentDescription="@string/information_about_the_app"
+                        android:onClick="onClickInfoButton"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fenixNightlyDownloadButton"
+                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
+
+                    <ImageButton
+                        android:id="@+id/fenixNightlyDownloadButton"
+                        style="@style/AppCardDownloadButton"
+                        android:contentDescription="@string/download_the_app"
+                        android:onClick="onClickDownloadButton"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_file_download_grey" />
+
+                    <ImageView
+                        android:id="@+id/fenixNightlyIcon"
                         style="@style/AppCardIcon"
                         android:contentDescription="@string/app_icon"
                         app:layout_constraintStart_toStartOf="parent"
