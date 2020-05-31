@@ -27,7 +27,7 @@ class Fennec {
     @Nullable
     static Fennec findLatest() {
         Fennec newObject = new Fennec();
-        Version newVersion = GsonApiConsumer.consume(CHECK_URL, Version.class);
+        Version newVersion = ApiConsumer.consume(CHECK_URL, Version.class);
         if (newVersion == null) {
             return null;
         }

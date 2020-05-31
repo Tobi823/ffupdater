@@ -24,7 +24,7 @@ public class MozillaCIConsumer {
      */
     static MozillaCIConsumer findLatest(String product, String file) {
         String timestampUrl = BASE_URL + product + JSON_FILE;
-        Response response = GsonApiConsumer.consume(timestampUrl, Response.class);
+        Response response = ApiConsumer.consume(timestampUrl, Response.class);
         Preconditions.checkNotNull(response);
         String timestamp = response.getTask().getCreated();
         String downloadUrl = BASE_URL + product + ARTIFACTS_PUBLIC + file;

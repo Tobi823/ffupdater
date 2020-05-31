@@ -18,7 +18,7 @@ class FirefoxLite {
     @Nullable
     static FirefoxLite findLatest() {
         FirefoxLite newObject = new FirefoxLite();
-        GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
+        GithubConsumer.Release latestRelease = GithubConsumer.findLatestRelease(OWNER, REPOSITORY);
         if (latestRelease == null) {
             return null;
         }

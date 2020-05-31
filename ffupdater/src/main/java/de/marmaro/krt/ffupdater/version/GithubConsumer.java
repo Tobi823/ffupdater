@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Access the version name and the download url from Github.
  */
-class GithubReleaseParser {
+class GithubConsumer {
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/%s/%s/releases/latest";
     private static final String ALL_RELEASES_URL = "https://api.github.com/repos/%s/%s/releases";
 
@@ -26,13 +26,13 @@ class GithubReleaseParser {
     @Nullable
     private static Release findLatestReleaseByApi(String owner, String repo) {
         String downloadUrl = String.format(LATEST_RELEASE_URL, owner, repo);
-        return GsonApiConsumer.consume(downloadUrl, Release.class);
+        return ApiConsumer.consume(downloadUrl, Release.class);
     }
 
     @Nullable
     private static Release findLatestReleaseBySearchingAllReleases(String owner, String repo) {
         String downloadUrl = String.format(ALL_RELEASES_URL, owner, repo);
-        Release[] releases = GsonApiConsumer.consume(downloadUrl, Release[].class);
+        Release[] releases = ApiConsumer.consume(downloadUrl, Release[].class);
         if (releases == null) {
             return null;
         }

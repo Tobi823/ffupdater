@@ -20,7 +20,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Consume a REST-API from the internet.
  */
-class GsonApiConsumer {
+class ApiConsumer {
     private static final String LOG_TAG = "ffupdater";
     private static final int TIMEOUT = 5000;
     public static final String GZIP = "gzip";
