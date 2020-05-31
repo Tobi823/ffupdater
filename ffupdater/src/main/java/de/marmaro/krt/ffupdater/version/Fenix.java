@@ -1,23 +1,16 @@
 package de.marmaro.krt.ffupdater.version;
 
-import androidx.annotation.Nullable;
-
-import java.util.HashMap;
-import java.util.Map;
-
+import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 /**
  * Access the version name and the download url for Fenix from Github.
  */
 class Fenix {
-    private static final String OWNER = "mozilla-mobile";
-    private static final String REPOSITORY = "fenix";
+    private final MozillaCIConsumer mozillaCIConsumer;
 
-    private String version;
-    private final Map<String, String> downloadUrls = new HashMap<>();
-
-    private Fenix() {
+    private Fenix(MozillaCIConsumer mozillaCIConsumer) {
+        this.mozillaCIConsumer = mozillaCIConsumer;
     }
 
     /**
@@ -25,47 +18,84 @@ class Fenix {
      *
      * @return result or null
      */
-    @Nullable
-    static Fenix findLatest() {
-        Fenix newObject = new Fenix();
-        GithubReleaseParser.Release latestRelease = GithubReleaseParser.findLatestRelease(OWNER, REPOSITORY);
-        if (latestRelease == null) {
-            return null;
-        }
-
-        newObject.version = latestRelease.getTagName().replace("v", "");
-        for (GithubReleaseParser.Asset asset : latestRelease.getAssets()) {
-            newObject.downloadUrls.put(asset.getName(), asset.getDownloadUrl());
-        }
-        return newObject;
+    static Fenix findLatest(App app, DeviceEnvironment.ABI abi) {
+        MozillaCIConsumer consumer = MozillaCIConsumer.findLatest(getProduct(app, abi), getFile(app, abi));
+        return new Fenix(consumer);
     }
 
-    String getVersion() {
-        return version;
+    private static String getFile(App app, DeviceEnvironment.ABI abi) {
+        switch (app) {
+            case FENIX:
+            case FIREFOX_KLAR: //TODO change it to beta
+                switch (abi) {
+                    case AARCH64:
+                        return "build/arm64-v8a/geckoBeta/target.apk";
+                    case ARM:
+                        return "build/armeabi-v7a/geckoBeta/target.apk";
+                    case X86:
+                        return "build/x86/geckoBeta/target.apk";
+                    case X86_64:
+                        return "build/x86_64/geckoBeta/target.apk";
+                }
+            case FENNEC_RELEASE: //TODO change it to nightly
+                switch (abi) {
+                    case AARCH64:
+                        return "build/arm64-v8a/geckoNightly/target.apk";
+                    case ARM:
+                        return "build/armeabi-v7a/geckoNightly/target.apk";
+                    case X86:
+                        return "build/x86/geckoNightly/target.apk";
+                    case X86_64:
+                        return "build/x86_64/geckoNightly/target.apk";
+                }
+        }
+        throw new RuntimeException("switch fallthrough");
     }
 
-    String getDownloadUrl(DeviceEnvironment.ABI abi) {
-        for (String name : downloadUrls.keySet()) {
-            if (isValidAbi(abi, name)) {
-                return downloadUrls.get(name);
-            }
+    private static String getProduct(App app, DeviceEnvironment.ABI abi) {
+        switch (app) {
+            case FENIX:
+                switch (abi) {
+                    case AARCH64:
+                        return "mobile.v2.fenix.production.latest.arm64-v8a";
+                    case ARM:
+                        return "mobile.v2.fenix.production.latest.armeabi-v7a";
+                    case X86:
+                        return "mobile.v2.fenix.production.latest.x86";
+                    case X86_64:
+                        return "mobile.v2.fenix.production.latest.x86_64";
+                }
+            case FENNEC_RELEASE: //TODO change it to beta
+                switch (abi) {
+                    case AARCH64:
+                        return "mobile.v2.fenix.beta.latest.arm64-v8a";
+                    case ARM:
+                        return "mobile.v2.fenix.beta.latest.armeabi-v7a";
+                    case X86:
+                        return "mobile.v2.fenix.beta.latest.x86";
+                    case X86_64:
+                        return "mobile.v2.fenix.beta.latest.x86_64";
+                }
+            case FIREFOX_KLAR: //TODO change it to nightly
+                switch (abi) {
+                    case AARCH64:
+                        return "mobile.v2.fenix.nightly.latest.arm64-v8a";
+                    case ARM:
+                        return "mobile.v2.fenix.nightly.latest.armeabi-v7a";
+                    case X86:
+                        return "mobile.v2.fenix.nightly.latest.x86";
+                    case X86_64:
+                        return "mobile.v2.fenix.nightly.latest.x86_64";
+                }
         }
-        throw new IllegalArgumentException("missing download url for " + abi);
+        throw new RuntimeException("switch fallthrough");
     }
 
-    private boolean isValidAbi(DeviceEnvironment.ABI abi, String name) {
-        String nameLowerCase = name.toLowerCase();
-        switch (abi) {
-            case AARCH64:
-                return nameLowerCase.contains("arm64");
-            case ARM:
-                return nameLowerCase.contains("arm") && !nameLowerCase.contains("arm64");
-            case X86_64:
-                return nameLowerCase.contains("x86_64");
-            case X86:
-                return nameLowerCase.contains("x86") && !nameLowerCase.contains("x86_64");
-            default:
-                throw new IllegalArgumentException("invalid abi");
-        }
+    public String getTimestamp() {
+        return mozillaCIConsumer.getTimestamp();
+    }
+
+    public String getDownloadUrl() {
+        return mozillaCIConsumer.getDownloadUrl();
     }
 }
