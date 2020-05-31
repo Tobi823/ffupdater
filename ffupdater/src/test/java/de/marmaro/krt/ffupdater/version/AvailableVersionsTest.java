@@ -62,7 +62,8 @@ public class AvailableVersionsTest {
     @Test
     public void isUpdateAvailable_firefoxKlar_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
         App app = App.FIREFOX_KLAR;
-        sharedPreferences.edit().putString("download_metadata_FIREFOX_KLAR_version_name", "8.2.0").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_KLAR_available_timestamp", "2020-05-29T22:21:08.147Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_KLAR_installed_timestamp", "2020-05-29T22:21:08.147Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("8.2.0"));
         assertFalse(availableVersions.isUpdateAvailable(app));
     }
@@ -70,7 +71,8 @@ public class AvailableVersionsTest {
     @Test
     public void isUpdateAvailable_firefoxKlar_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
         App app = App.FIREFOX_KLAR;
-        sharedPreferences.edit().putString("download_metadata_FIREFOX_KLAR_version_name", "8.2.0").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_KLAR_available_timestamp", "2020-05-29T22:21:08.147Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_KLAR_installed_timestamp", "2020-05-30T14:17:02.111Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("8.0.15"));
         assertTrue(availableVersions.isUpdateAvailable(app));
     }
@@ -78,7 +80,8 @@ public class AvailableVersionsTest {
     @Test
     public void isUpdateAvailable_firefoxFocus_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
         App app = App.FIREFOX_FOCUS;
-        sharedPreferences.edit().putString("download_metadata_FIREFOX_FOCUS_version_name", "8.2.0").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_FOCUS_available_timestamp", "2020-05-31T18:02:43.586Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_FOCUS_installed_timestamp", "2020-05-31T18:02:43.586Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("8.2.0"));
         assertFalse(availableVersions.isUpdateAvailable(app));
     }
@@ -86,7 +89,8 @@ public class AvailableVersionsTest {
     @Test
     public void isUpdateAvailable_firefoxLite_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
         App app = App.FIREFOX_FOCUS;
-        sharedPreferences.edit().putString("download_metadata_FIREFOX_FOCUS_version_name", "8.2.0").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_FOCUS_available_timestamp", "2020-05-31T18:02:43.586Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_FOCUS_installed_timestamp", "2020-04-27T16:03:21.471Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("8.0.15"));
         assertTrue(availableVersions.isUpdateAvailable(app));
     }
@@ -110,7 +114,8 @@ public class AvailableVersionsTest {
     @Test
     public void isUpdateAvailable_fenix_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
         App app = App.FENIX_RELEASE;
-        sharedPreferences.edit().putString("download_metadata_FENIX_version_name", "4.3.0").apply();
+        sharedPreferences.edit().putString("download_metadata_FENIX_RELEASE_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FENIX_RELEASE_installed_timestamp", "2020-05-28T10:11:12.250Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.3.0"));
         assertFalse(availableVersions.isUpdateAvailable(app));
     }
@@ -118,7 +123,8 @@ public class AvailableVersionsTest {
     @Test
     public void isUpdateAvailable_fenix_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
         App app = App.FENIX_RELEASE;
-        sharedPreferences.edit().putString("download_metadata_FENIX_version_name", "4.3.0").apply();
+        sharedPreferences.edit().putString("download_metadata_FENIX_RELEASE_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FENIX_RELEASE_installed_timestamp", "2020-05-31T15:10:47.841Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.2.0"));
         assertTrue(availableVersions.isUpdateAvailable(app));
     }

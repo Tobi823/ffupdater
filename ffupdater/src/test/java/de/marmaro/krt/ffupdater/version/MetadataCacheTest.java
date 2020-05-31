@@ -30,20 +30,20 @@ public class MetadataCacheTest {
 
     @Test
     public void getVersionName_withData_returnEmptyString() {
-        when(sharedPreferences.getString("download_metadata_FENIX_version_name", "")).thenReturn("37.27.64");
-        assertEquals("37.27.64", metadataCache.getVersionName(App.FENIX_RELEASE));
+        when(sharedPreferences.getString("download_metadata_FENNEC_RELEASE_version_name", "")).thenReturn("37.27.64");
+        assertEquals("37.27.64", metadataCache.getVersionName(App.FENNEC_RELEASE));
     }
 
     @Test
     public void getDownloadUrl_withData_returnEmptyString() {
-        when(sharedPreferences.getString("download_metadata_FENIX_download_url", "")).thenReturn("https://something.com/index/app.apk");
-        assertEquals("https://something.com/index/app.apk", metadataCache.getDownloadUrl(App.FENIX_RELEASE));
+        when(sharedPreferences.getString("download_metadata_FENNEC_RELEASE_download_url", "")).thenReturn("https://something.com/index/app.apk");
+        assertEquals("https://something.com/index/app.apk", metadataCache.getDownloadUrl(App.FENNEC_RELEASE));
     }
 
     @Test
     public void isTimestampTooOld_withNewTimestamp_returnFalse() {
-        when(sharedPreferences.getLong("download_metadata_FENIX_timestamp", -1)).thenReturn(System.currentTimeMillis());
-        assertFalse(metadataCache.isTimestampTooOld(App.FENIX_RELEASE));
+        when(sharedPreferences.getLong("download_metadata_FENNEC_RELEASE_timestamp", -1)).thenReturn(System.currentTimeMillis());
+        assertFalse(metadataCache.isTimestampTooOld(App.FENNEC_RELEASE));
     }
 
     @Test

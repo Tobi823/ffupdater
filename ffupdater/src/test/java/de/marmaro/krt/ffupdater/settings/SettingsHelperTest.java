@@ -115,7 +115,9 @@ public class SettingsHelperTest {
                 "FIREFOX_KLAR",
                 "FIREFOX_FOCUS",
                 "FIREFOX_LITE",
-                "FENIX"
+                "FENIX_RELEASE",
+                "FENIX_BETA",
+                "FENIX_NIGHTLY"
         ));
         when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
         assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.values()));
