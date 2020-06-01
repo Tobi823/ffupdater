@@ -52,7 +52,7 @@ import static android.view.View.VISIBLE;
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
     public static final int PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 900;
-    private AvailableVersions appUpdate;
+    private AvailableVersions availableVersions;
     private ProgressBar progressBar;
 
     private ConnectivityManager connectivityManager;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final Map<App, TextView> availableVersionTextViews = new HashMap<>();
     private final Map<App, TextView> installedVersionTextViews = new HashMap<>();
-    private final Map<App, ImageButton> appButtons = new HashMap<>();
+    private final Map<App, ImageButton> downloadButtons = new HashMap<>();
     private final Map<App, CardView> appCards = new HashMap<>();
     private final Map<Integer, App> infoButtonIdsToApp = new HashMap<>();
     private final Map<Integer, App> downloadButtonIdsToApp = new HashMap<>();
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         StrictModeSetup.enable();
         Notificator.start(this);
 
-        appUpdate = new AvailableVersions(this);
+        availableVersions = new AvailableVersions(this);
 
         Thread.setDefaultUncaughtExceptionHandler((Thread thread, Throwable e) -> {
             sendStacktraceAsMail(e);
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        appUpdate.shutdown();
+        availableVersions.shutdown();
     }
 
     @Override
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode >= PERMISSIONS_REQUEST_EXTERNAL_STORAGE && requestCode < (PERMISSIONS_REQUEST_EXTERNAL_STORAGE + App.values().length)) {
             App app = App.values()[requestCode - PERMISSIONS_REQUEST_EXTERNAL_STORAGE];
-            if (grantResults.length > 0 ) {
+            if (grantResults.length > 0) {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED || grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     downloadAppWithoutChecks(app);
                 }
@@ -186,13 +186,13 @@ public class MainActivity extends AppCompatActivity {
         installedVersionTextViews.put(App.FENIX_BETA, findViewById(R.id.fenixBetaInstalledVersion));
         installedVersionTextViews.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyInstalledVersion));
 
-        appButtons.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseDownloadButton));
-        appButtons.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarDownloadButton));
-        appButtons.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusDownloadButton));
-        appButtons.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteDownloadButton));
-        appButtons.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseDownloadButton));
-        appButtons.put(App.FENIX_BETA, findViewById(R.id.fenixBetaDownloadButton));
-        appButtons.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyDownloadButton));
+        downloadButtons.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseDownloadButton));
+        downloadButtons.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarDownloadButton));
+        downloadButtons.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusDownloadButton));
+        downloadButtons.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteDownloadButton));
+        downloadButtons.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseDownloadButton));
+        downloadButtons.put(App.FENIX_BETA, findViewById(R.id.fenixBetaDownloadButton));
+        downloadButtons.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyDownloadButton));
 
         appCards.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseCard));
         appCards.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarCard));
@@ -221,15 +221,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void refreshUI() {
         for (App app : App.values()) {
-            Objects.requireNonNull(appCards.get(app)).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
-            Objects.requireNonNull(availableVersionTextViews.get(app)).setText(appUpdate.getAvailableVersionOrTimestamp(app));
-            Objects.requireNonNull(installedVersionTextViews.get(app)).setText(appUpdate.getInstalledVersionOrTimestamp(packageManager, app));
-            Objects.requireNonNull(appButtons.get(app)).setImageResource(appUpdate.isUpdateAvailable(app) ?
-                    R.drawable.ic_file_download_orange :
-                    R.drawable.ic_file_download_grey
-            );
+            refreshAppCardVisibility(app);
+            refreshAvailableVersionTextView(app);
+            refreshInstalledVersionTextView(app);
+            refreshDownloadButton(app);
         }
         progressBar.startAnimation(new FadeOutAnimation(progressBar));
+    }
+
+    private void refreshAppCardVisibility(App app) {
+        boolean installed = InstalledApps.isInstalled(packageManager, app);
+        Objects.requireNonNull(appCards.get(app)).setVisibility(installed ? VISIBLE : GONE);
+    }
+
+    private void refreshAvailableVersionTextView(App app) {
+        String fullText = availableVersions.getAvailableVersionOrTimestamp(app);
+        String shortText = fullText.split("T")[0];
+        Objects.requireNonNull(availableVersionTextViews.get(app)).setText(shortText);
+    }
+
+    private void refreshInstalledVersionTextView(App app) {
+        String fullText = availableVersions.getInstalledVersionOrTimestamp(packageManager, app);
+        String shortText = fullText.split("T")[0];
+        Objects.requireNonNull(installedVersionTextViews.get(app)).setText(shortText);
+    }
+
+    private void refreshDownloadButton(App app) {
+        boolean update = availableVersions.isUpdateAvailable(app);
+        Objects.requireNonNull(downloadButtons.get(app)).setImageResource(update ?
+                R.drawable.ic_file_download_orange :
+                R.drawable.ic_file_download_grey
+        );
     }
 
     private void hideVersionOfApps() {
@@ -245,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         hideVersionOfApps();
-        appUpdate.checkUpdatesForInstalledApps(this, this::refreshUI);
+        availableVersions.checkUpdatesForInstalledApps(this, this::refreshUI);
     }
 
     private void downloadApp(App app) {
@@ -272,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
     private void downloadAppWithoutChecks(App app) {
         Intent intent = new Intent(this, InstallActivity.class);
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name());
-        intent.putExtra(InstallActivity.EXTRA_DOWNLOAD_URL, appUpdate.getDownloadUrl(app));
+        intent.putExtra(InstallActivity.EXTRA_DOWNLOAD_URL, availableVersions.getDownloadUrl(app));
         startActivity(intent);
     }
 

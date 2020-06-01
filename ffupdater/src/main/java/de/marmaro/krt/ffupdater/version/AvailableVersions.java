@@ -31,6 +31,8 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
+import static de.marmaro.krt.ffupdater.App.CompareMethod.TIMESTAMP;
+import static de.marmaro.krt.ffupdater.App.CompareMethod.VERSION;
 import static de.marmaro.krt.ffupdater.App.FENIX_BETA;
 import static de.marmaro.krt.ffupdater.App.FENIX_NIGHTLY;
 import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
@@ -51,7 +53,7 @@ public class AvailableVersions {
     private static final int TRAFFIC_FENIX_RELEASE = 1005;
     private static final int TRAFFIC_FENIX_BETA = 1006;
     private static final int TRAFFIC_FENIX_NIGHTLY = 1007;
-    private static final int NUMBER_BACKGROUND_THREADS = 7+1;
+    private static final int NUMBER_BACKGROUND_THREADS = 7 + 1;
 
     private final ExecutorService executorService;
     private final PackageManager packageManager;
@@ -132,37 +134,25 @@ public class AvailableVersions {
      */
     @NonNull
     public String getAvailableVersionOrTimestamp(App app) {
-        switch (app.getCompareMethodForUpdateCheck()) {
-            case VERSION:
-                return metadataStorage.getVersionName(app);
-            case TIMESTAMP:
-                return metadataStorage.getAvailableTimestamp(app);
-            default:
-                throw new IllegalArgumentException("switch fallthrough");
+        if (app.getCompareMethodForUpdateCheck() == VERSION) {
+            return metadataStorage.getVersionName(app);
+        } else {
+            return metadataStorage.getAvailableTimestamp(app);
         }
     }
 
     @NonNull
     public String getInstalledVersionOrTimestamp(PackageManager packageManager, App app) {
-        switch (app.getCompareMethodForUpdateCheck()) {
-            case VERSION:
-                return InstalledApps.getVersionName(packageManager, app);
-            case TIMESTAMP:
-                return metadataStorage.getInstalledTimestamp(app);
-            default:
-                throw new IllegalArgumentException("switch fallthrough");
+        if (app.getCompareMethodForUpdateCheck() == VERSION) {
+            return InstalledApps.getVersionName(packageManager, app);
+        } else {
+            return metadataStorage.getInstalledTimestamp(app);
         }
     }
 
     public void setInstalledVersionOrTimestamp(App app, String versionOrTimestamp) {
-        switch (app.getCompareMethodForUpdateCheck()) {
-            case VERSION:
-                break;
-            case TIMESTAMP:
-                metadataStorage.updateInstalledTimestamp(app, versionOrTimestamp);
-                break;
-            default:
-                throw new IllegalArgumentException("switch fallthrough");
+        if (app.getCompareMethodForUpdateCheck() == TIMESTAMP) {
+            metadataStorage.updateInstalledTimestamp(app, versionOrTimestamp);
         }
     }
 
