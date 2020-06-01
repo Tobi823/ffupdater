@@ -7,11 +7,12 @@ import androidx.annotation.Nullable;
 import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 
-import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPInputStream;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -22,13 +23,13 @@ import javax.net.ssl.HttpsURLConnection;
  */
 class ApiConsumer {
     private static final String LOG_TAG = "ffupdater";
-    private static final int TIMEOUT = 5000;
+    private static final int TIMEOUT = (int) TimeUnit.SECONDS.toMillis(10);
     public static final String GZIP = "gzip";
     public static final String ACCEPT_ENCODING = "Accept-Encoding";
 
     /**
      * Download the JSON respond from url and convert the JSON result to a Java object.
-     *
+     * <p>
      * Request the server for gzip-compression. <a href="https://stackoverflow.com/a/27720902">Link</a>
      * Cons: This may help an attacker to guess the plaintext of the encrypted HTTPS connection due
      * to gzip. But the plaintext is not secret because everyone can access it by calling the URLs.
@@ -50,16 +51,16 @@ class ApiConsumer {
         }
         urlConnection.setRequestProperty(ACCEPT_ENCODING, GZIP);
         urlConnection.setConnectTimeout(TIMEOUT);
-        urlConnection.setReadTimeout(TIMEOUT);
 
         String contentEncoding = urlConnection.getContentEncoding();
         boolean gzipped = GZIP.equals(contentEncoding);
         Preconditions.checkArgument(gzipped || contentEncoding == null);
 
-        try (InputStream buffered = new BufferedInputStream(urlConnection.getInputStream());
-             InputStream decompressed = gzipped ? new GZIPInputStream(buffered) : buffered;
-             InputStreamReader reader = new InputStreamReader(decompressed)) {
-            return new Gson().fromJson(reader, clazz);
+        try (InputStream original = urlConnection.getInputStream();
+             InputStream decompressed = gzipped ? new GZIPInputStream(original) : original;
+             InputStreamReader reader = new InputStreamReader(decompressed);
+             BufferedReader buffered = new BufferedReader(reader)) {
+            return new Gson().fromJson(buffered, clazz);
         } catch (IOException e) {
             Log.e(LOG_TAG, "Can't consume API interface", e);
             return null;

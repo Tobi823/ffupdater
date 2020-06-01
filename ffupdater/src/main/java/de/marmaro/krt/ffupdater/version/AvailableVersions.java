@@ -160,6 +160,7 @@ public class AvailableVersions {
                 break;
             case TIMESTAMP:
                 metadataStorage.updateInstalledTimestamp(app, versionOrTimestamp);
+                break;
             default:
                 throw new IllegalArgumentException("switch fallthrough");
         }
