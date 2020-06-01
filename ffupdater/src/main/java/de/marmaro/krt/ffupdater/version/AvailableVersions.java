@@ -154,6 +154,17 @@ public class AvailableVersions {
         }
     }
 
+    public void setInstalledVersionOrTimestamp(App app, String versionOrTimestamp) {
+        switch (app.getCompareMethodForUpdateCheck()) {
+            case VERSION:
+                break;
+            case TIMESTAMP:
+                metadataStorage.updateInstalledTimestamp(app, versionOrTimestamp);
+            default:
+                throw new IllegalArgumentException("switch fallthrough");
+        }
+    }
+
     /**
      * Check for updates of installed applications and get the download links for these applications.
      *

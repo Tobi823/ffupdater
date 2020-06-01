@@ -20,7 +20,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.util.Pair;
-import androidx.preference.PreferenceManager;
 
 import org.apache.commons.codec.binary.ApacheCodecHex;
 
@@ -32,7 +31,6 @@ import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
-import de.marmaro.krt.ffupdater.version.MetadataCache;
 
 /**
  * Activity for downloading and installing apps on devices with API Level >= 24/Nougat.
@@ -47,11 +45,10 @@ public class InstallActivity extends AppCompatActivity {
     public static final String EXTRA_DOWNLOAD_URL = "download_url";
 
     private DownloadManagerAdapter downloadManager;
-    private MetadataCache metadataCache;
     private App app;
     private String downloadUrl;
-    private String installingTimestamp;
-    private AvailableVersions appUpdate;
+    private String installingVersionOrTimestamp;
+    private AvailableVersions availableVersions;
     private long downloadId = -1;
     private boolean killSwitch;
 
@@ -71,17 +68,13 @@ public class InstallActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        appUpdate = new AvailableVersions(this);
-        metadataCache = new MetadataCache(PreferenceManager.getDefaultSharedPreferences(this));
+        availableVersions = new AvailableVersions(this);
 
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
         String appName = extras.getString(EXTRA_APP_NAME);
         app = App.valueOf(Objects.requireNonNull(appName));
         downloadUrl = Objects.requireNonNull(extras.getString(EXTRA_DOWNLOAD_URL)); //TODO
-
-        if (app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP) {
-            installingTimestamp = metadataCache.getAvailableTimestamp(app);
-        }
+        installingVersionOrTimestamp = availableVersions.getAvailableVersionOrTimestamp(app);
 
         hideAllEntries();
         fetchUrlForDownload();
@@ -91,7 +84,7 @@ public class InstallActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(onDownloadComplete);
-        appUpdate.shutdown();
+        availableVersions.shutdown();
         killSwitch = true;
     }
 
@@ -119,18 +112,18 @@ public class InstallActivity extends AppCompatActivity {
             return;
         }
 
-        if (!appUpdate.getDownloadUrl(app).isEmpty()) {
-            downloadUrl = appUpdate.getDownloadUrl(app);
+        if (!availableVersions.getDownloadUrl(app).isEmpty()) {
+            downloadUrl = availableVersions.getDownloadUrl(app);
             actionFetchSuccessful();
             downloadApplication();
             return;
         }
 
         actionFetching();
-        appUpdate.checkUpdateForApp(app, this, () -> {
-            if (!appUpdate.getDownloadUrl(app).isEmpty()) {
+        availableVersions.checkUpdateForApp(app, this, () -> {
+            if (!availableVersions.getDownloadUrl(app).isEmpty()) {
                 actionFetchSuccessful();
-                downloadUrl = appUpdate.getDownloadUrl(app);
+                downloadUrl = availableVersions.getDownloadUrl(app);
                 downloadApplication();
             } else {
                 actionFetchUnsuccessful();
@@ -327,10 +320,10 @@ public class InstallActivity extends AppCompatActivity {
                 findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
             }
         });
-        downloadManager.remove(downloadId);
-        if (success && app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP) {
-            metadataCache.updateInstalledTimestamp(app, installingTimestamp);
+        if (success) {
+            availableVersions.setInstalledVersionOrTimestamp(app, installingVersionOrTimestamp);
         }
+        downloadManager.remove(downloadId);
     }
 
     private void actionVerifyInstalledAppSignature() {

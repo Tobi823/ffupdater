@@ -21,7 +21,7 @@ import de.marmaro.krt.ffupdater.App;
  * - reduce network bandwidth
  * - prevent of being temporary blocked by GitHub (for an hour).
  */
-public class MetadataCache {
+class MetadataCache {
     private static final String VERSION_NAME_TEMPLATE = "download_metadata_%1$s_version_name";
     private static final String AVAILABLE_TIMESTAMP_TEMPLATE = "download_metadata_%1$s_available_timestamp";
     private static final String INSTALLED_TIMESTAMP_TEMPLATE = "download_metadata_%1$s_installed_timestamp";
@@ -40,9 +40,9 @@ public class MetadataCache {
      * @return (cached) latest version name or empty string
      */
     @NonNull
-    public String getVersionName(App app) {
+    String getVersionName(App app) {
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.VERSION, "invalid app");
-        return getStringNullSafe(String.format(VERSION_NAME_TEMPLATE, getName(app)));
+        return getStringNullSafe(String.format(VERSION_NAME_TEMPLATE, app));
     }
 
     /**
@@ -50,20 +50,20 @@ public class MetadataCache {
      * @return (cached) latest download url or empty string
      */
     @NonNull
-    public String getDownloadUrl(App app) {
-        return getStringNullSafe(String.format(DOWNLOAD_URL_TEMPLATE, getName(app)));
+    String getDownloadUrl(App app) {
+        return getStringNullSafe(String.format(DOWNLOAD_URL_TEMPLATE, app));
     }
 
     @NonNull
-    public String getAvailableTimestamp(App app) {
+    String getAvailableTimestamp(App app) {
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
-        return getStringNullSafe(String.format(AVAILABLE_TIMESTAMP_TEMPLATE, getName(app)));
+        return getStringNullSafe(String.format(AVAILABLE_TIMESTAMP_TEMPLATE, app));
     }
 
     @NonNull
-    public String getInstalledTimestamp(App app) {
+    String getInstalledTimestamp(App app) {
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
-        return getStringNullSafe(String.format(INSTALLED_TIMESTAMP_TEMPLATE, getName(app)));
+        return getStringNullSafe(String.format(INSTALLED_TIMESTAMP_TEMPLATE, app));
     }
 
     private String getStringNullSafe(String key) {
@@ -79,7 +79,7 @@ public class MetadataCache {
      * @param app app
      * @return is the cache entry for the app too old and must be renewed?
      */
-    public boolean isTimestampTooOld(App app) {
+    boolean isTimestampTooOld(App app) {
         return System.currentTimeMillis() - getTimestamp(app) > CACHE_TTL;
     }
 
@@ -88,7 +88,7 @@ public class MetadataCache {
      * @return timestamp of the cache entry or -1
      */
     private long getTimestamp(App app) {
-        return sharedPreferences.getLong(String.format(TIMESTAMP_TEMPLATE, getName(app)), -1);
+        return sharedPreferences.getLong(String.format(TIMESTAMP_TEMPLATE, app), -1);
     }
 
     /**
@@ -97,43 +97,39 @@ public class MetadataCache {
      * @param versionName version name
      * @param downloadUrl download url
      */
-    public void updateAvailableVersionAndDownloadUrl(App app, String versionName, String downloadUrl) {
+    void updateAvailableVersionAndDownloadUrl(App app, String versionName, String downloadUrl) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.VERSION, "invalid app");
         Preconditions.checkNotNull(versionName, "Parameter versionName must not be null");
         Preconditions.checkNotNull(downloadUrl, "Parameter downloadUrl must not be null");
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(String.format(VERSION_NAME_TEMPLATE, getName(app)), versionName);
-        editor.putString(String.format(DOWNLOAD_URL_TEMPLATE, getName(app)), downloadUrl);
-        editor.putLong(String.format(TIMESTAMP_TEMPLATE, getName(app)), System.currentTimeMillis());
+        editor.putString(String.format(VERSION_NAME_TEMPLATE, app), versionName);
+        editor.putString(String.format(DOWNLOAD_URL_TEMPLATE, app), downloadUrl);
+        editor.putLong(String.format(TIMESTAMP_TEMPLATE, app), System.currentTimeMillis());
         editor.apply();
     }
 
-    public void updateAvailableTimestampAndDownloadUrl(App app, String availableTimestamp, String downloadUrl) {
+    void updateAvailableTimestampAndDownloadUrl(App app, String availableTimestamp, String downloadUrl) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
         Preconditions.checkNotNull(availableTimestamp, "Parameter availableTimestamp must not be null");
         Preconditions.checkNotNull(downloadUrl, "Parameter downloadUrl must not be null");
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(String.format(AVAILABLE_TIMESTAMP_TEMPLATE, getName(app)), availableTimestamp);
-        editor.putString(String.format(DOWNLOAD_URL_TEMPLATE, getName(app)), downloadUrl);
-        editor.putLong(String.format(TIMESTAMP_TEMPLATE, getName(app)), System.currentTimeMillis());
+        editor.putString(String.format(AVAILABLE_TIMESTAMP_TEMPLATE, app), availableTimestamp);
+        editor.putString(String.format(DOWNLOAD_URL_TEMPLATE, app), downloadUrl);
+        editor.putLong(String.format(TIMESTAMP_TEMPLATE, app), System.currentTimeMillis());
         editor.apply();
     }
 
-    public void updateInstalledTimestamp(App app, String installedTimestamp) {
+    void updateInstalledTimestamp(App app, String installedTimestamp) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
         Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
         Preconditions.checkNotNull(installedTimestamp, "Parameter installedTimestamp must not be null");
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(String.format(INSTALLED_TIMESTAMP_TEMPLATE, getName(app)), installedTimestamp);
+        editor.putString(String.format(INSTALLED_TIMESTAMP_TEMPLATE, app), installedTimestamp);
         editor.apply();
-    }
-
-    private String getName(App app) {
-        return app.toString();
     }
 }
