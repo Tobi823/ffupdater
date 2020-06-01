@@ -1,0 +1,54 @@
+FFUpdater switch to different backend for downloading updates
+
+
+Fenix Release:
+https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.production.latest
+Der version code ist irgendwie anders als von apkmirror.com erwartete
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.production.latest.arm64-v8a/artifacts/public/chain-of-trust.json
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.production.latest.arm64-v8a/artifacts/public/build/arm64-v8a/geckoBeta/target.apk
+
+Fenix Beta:
+https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
+Scheint gut zu sein - aber Beta ist nicht verfügbar über Google Play
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.beta.latest.arm64-v8a/artifacts/public/chain-of-trust.json
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.beta.latest.arm64-v8a/artifacts/public/build/arm64-v8a/geckoBeta/target.apk
+
+
+Fenix Nightly / Firefox Preview Nightly for Developers:
+https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
+Ich aber eine leicht andere Version als auf apkmirror.com - weil die APKs zu unterschiedlichen Zeitpunkten generiert werden
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.nightly.latest.arm64-v8a/artifacts/public/chain-of-trust.json
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.nightly.latest.arm64-v8a/artifacts/public/build/arm64-v8a/geckoNightly/target.apk
+
+
+Firefox Lite:
+Muss wohl bei Github bleiben
+
+Focus:
+Klar:
+https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
+Stimmt sogar vom der Versionsnummer
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/project.mobile.focus.release.latest/artifacts/public/app-focus-aarch64-release-unsigned.apk
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/project.mobile.focus.release.latest/artifacts/public/app-focus-arm-release-unsigned.apk
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/project.mobile.focus.release.latest/artifacts/public/app-klar-aarch64-release-unsigned.apk
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/project.mobile.focus.release.latest/artifacts/public/app-klar-arm-release-unsigned.apk
+
+
+
+
+Lockwise:
+Ebenfalls Github
+
+
+Unterstützt noch TLS1.0 https://www.ssllabs.com/ssltest/analyze.html?d=firefox-ci-tc.services.mozilla.com
+
+
+
+# Ignorieren
+Fennec Release:
+https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.fennec-production.latest
+Leider wird täglich ein neues Release angestoßen
+Kann nicht nachvollziehen, ob dort wirklich Fennec Release gebaut wird
+äh ... project.mobile.fenix.v2.fennec-beta war aber wirklich Fennec Beta
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.fennec-production.latest.arm64-v8a/artifacts/public/chain-of-trust.json
+https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.fennec-production.latest.arm64-v8a/artifacts/public/build/arm64-v8a/geckoBeta/target.apk
