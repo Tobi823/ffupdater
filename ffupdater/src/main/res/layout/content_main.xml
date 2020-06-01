@@ -88,7 +88,7 @@
                     <TextView
                         android:id="@+id/fennecReleaseInstalledVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseInstalledVersionText"
+                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fennecReleaseInstalledVersionText" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -157,7 +157,7 @@
                     <TextView
                         android:id="@+id/firefoxKlarInstalledVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarInstalledVersionText"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxKlarInstalledVersionText" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,7 +186,7 @@
                     <TextView
                         android:id="@+id/firefoxFocusInstalledVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxFocusInstalledVersionText"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxFocusAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxFocusInstalledVersionText" />
 
                     <TextView
@@ -255,7 +255,7 @@
                     <TextView
                         android:id="@+id/firefoxLiteInstalledVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxLiteInstalledVersionText"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxLiteAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/firefoxLiteInstalledVersionText" />
 
                     <TextView
@@ -322,7 +322,7 @@
                     <TextView
                         android:id="@+id/fenixReleaseInstalledVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixReleaseInstalledVersionText"
+                        app:layout_constraintStart_toEndOf="@+id/fenixReleaseAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fenixReleaseInstalledVersionText" />
 
                     <TextView
@@ -389,7 +389,7 @@
                     <TextView
                         android:id="@+id/fenixBetaInstalledVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixBetaInstalledVersionText"
+                        app:layout_constraintStart_toEndOf="@+id/fenixBetaAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fenixBetaInstalledVersionText" />
 
                     <TextView
@@ -456,7 +456,7 @@
                     <TextView
                         android:id="@+id/fenixNightlyInstalledVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixNightlyInstalledVersionText"
+                        app:layout_constraintStart_toEndOf="@+id/fenixNightlyAvailableVersionText"
                         app:layout_constraintTop_toTopOf="@+id/fenixNightlyInstalledVersionText" />
 
                     <TextView
