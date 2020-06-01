@@ -48,6 +48,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static de.marmaro.krt.ffupdater.App.CompareMethod.VERSION;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
@@ -235,15 +236,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshAvailableVersionTextView(App app) {
-        String fullText = availableVersions.getAvailableVersionOrTimestamp(app);
-        String shortText = fullText.split("T")[0];
-        Objects.requireNonNull(availableVersionTextViews.get(app)).setText(shortText);
+        String text = availableVersions.getAvailableVersionOrTimestamp(app);
+        Objects.requireNonNull(availableVersionTextViews.get(app)).setText(text);
     }
 
     private void refreshInstalledVersionTextView(App app) {
-        String fullText = availableVersions.getInstalledVersionOrTimestamp(packageManager, app);
-        String shortText = fullText.split("T")[0];
-        Objects.requireNonNull(installedVersionTextViews.get(app)).setText(shortText);
+        String text = availableVersions.getInstalledVersionOrTimestamp(packageManager, app);
+        Objects.requireNonNull(installedVersionTextViews.get(app)).setText(text);
     }
 
     private void refreshDownloadButton(App app) {
