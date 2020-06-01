@@ -2,15 +2,23 @@ package de.marmaro.krt.ffupdater.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.utils.Utils;
+
+import static android.os.Build.VERSION_CODES.LOLLIPOP;
+import static android.os.Build.VERSION_CODES.P;
+import static android.os.Build.VERSION_CODES.Q;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 
 /**
  * This class is a helper to access the settings more easily by checking und converting the raw values from
@@ -59,15 +67,26 @@ public class SettingsHelper {
      * @param context context
      * @return AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES, ...
      */
-    public static int getThemePreference(Context context) {
+    public static int getThemePreference(Context context, DeviceEnvironment deviceEnvironment) {
+        int defaultValue;
+        if (deviceEnvironment.isSdkIntEqualOrHigher(Q)) {
+            defaultValue = MODE_NIGHT_FOLLOW_SYSTEM;
+        } else if (deviceEnvironment.isSdkIntEqualOrHigher(P)) {
+            defaultValue = MODE_NIGHT_AUTO_BATTERY;
+        } else if (deviceEnvironment.isSdkIntEqualOrHigher(LOLLIPOP)) {
+            defaultValue = MODE_NIGHT_AUTO_BATTERY;
+        } else {
+            defaultValue = MODE_NIGHT_NO;
+        }
+
         String themePreference = getSharedPreferences(context).getString("themePreference", null);
         if (themePreference == null) {
-            return AppCompatDelegate.MODE_NIGHT_NO;
+            return defaultValue;
         }
         try {
             return Integer.parseInt(themePreference);
         } catch (final NumberFormatException nfe) {
-            return AppCompatDelegate.MODE_NIGHT_NO;
+            return defaultValue;
         }
     }
 

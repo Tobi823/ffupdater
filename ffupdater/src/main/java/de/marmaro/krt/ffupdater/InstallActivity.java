@@ -26,6 +26,7 @@ import org.apache.commons.codec.binary.ApacheCodecHex;
 import java.io.File;
 import java.util.Objects;
 
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
@@ -56,7 +57,7 @@ public class InstallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.download_activity);
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this));
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
 
         registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
