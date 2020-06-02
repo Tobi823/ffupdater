@@ -30,6 +30,7 @@ import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
 
 /**
@@ -140,8 +141,6 @@ public class Notificator extends Worker {
 
     @NonNull
     private NotificationManager getNotificationManager() {
-        Context context = getApplicationContext();
-        return Objects.requireNonNull(
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE));
+        return (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
     }
 }
