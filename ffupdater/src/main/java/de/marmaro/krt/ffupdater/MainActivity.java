@@ -37,6 +37,7 @@ import de.marmaro.krt.ffupdater.dialog.MissingExternalStoragePermissionDialog;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
+import de.marmaro.krt.ffupdater.utils.CrashReporter;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -60,11 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        Thread.setDefaultUncaughtExceptionHandler((Thread thread, Throwable e) -> {
-            sendStacktraceAsMail(e);
-            System.exit(2);
-        });
-
+        CrashReporter.register(this);
         AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
         StrictModeSetup.enable();
 
@@ -78,24 +75,6 @@ public class MainActivity extends AppCompatActivity {
         packageManager = getPackageManager();
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
         availableVersions = new AvailableVersions(this);
-    }
-
-    private void sendStacktraceAsMail(Throwable throwable) {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "FFUpdater crashed with this stacktrace");
-
-        StringWriter sw = new StringWriter();
-        sw.write("I'm sorry for this very crude way to display the exception which crashed FFUpdater.\n");
-        sw.write("Can you please send me this error message as an 'issue' on https://notabug.org/Tobiwan/ffupdater/issues?\n");
-        sw.write("\n\n");
-
-        throwable.printStackTrace(new PrintWriter(sw));
-
-        intent.putExtra(Intent.EXTRA_TEXT, sw.toString());
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
     }
 
     @Override
