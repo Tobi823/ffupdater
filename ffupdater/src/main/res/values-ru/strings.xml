@@ -91,4 +91,9 @@
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
     <string name="verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
+    <string name="loading_available_version">Загрузка...</string>
+    <string name="fenix_beta_title">Бета-просмотр Firefox</string>
+    <string name="fenix_nightly_title">Firefox Preview Nightly</string>
+    <string name="fenix_nightly_description">Firefox Preview Nightly - это канал разработки новых релизов Firefox Preview. Он предназначен только для продвинутых пользователей.</string>
+    <string name="fenix_beta_description">Бета-просмотр Firefox - это канал разработки новых релизов Firefox Preview. Он предназначен только для продвинутых пользователей.</string>
 </resources>
