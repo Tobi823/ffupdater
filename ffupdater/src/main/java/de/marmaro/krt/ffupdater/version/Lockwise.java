@@ -22,16 +22,21 @@ class Lockwise {
         Lockwise newObject = new Lockwise();
         GithubConsumer.Release latestRelease = GithubConsumer.findLatestRelease(OWNER, REPOSITORY);
         if (latestRelease == null) {
-            return null;
+            throw new RuntimeException("cant find latest Lockwise APK file");
         }
 
         String[] parts = latestRelease.getTagName().split("v");
         if (parts.length != 2) {
-            return null;
+            throw new RuntimeException("cant find latest Lockwise APK file");
         }
         newObject.version = parts[1].split("-")[0];
-        newObject.downloadUrl = latestRelease.getAssets().get(0).getDownloadUrl();
-        return newObject;
+        for (GithubConsumer.Asset asset : latestRelease.getAssets()) {
+            if (asset.getName().contains(".apk")) {
+                newObject.downloadUrl = asset.getDownloadUrl();
+                return newObject;
+            }
+        }
+        throw new RuntimeException("cant find latest Lockwise APK file");
     }
 
     String getVersion() {
