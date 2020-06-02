@@ -74,7 +74,7 @@ public enum App {
             TIMESTAMP),
     FENIX_BETA(R.string.fenix_beta_title,
             R.string.fenix_beta_description,
-            R.string.empty,
+            R.string.fenix_beta_warning,
             R.string.mozilla_ci,
             "org.mozilla.fenix.beta",
             "f562c08f30778686d2a47b858f45e9ef357083085cb2891a96c409f360e9cab9",
@@ -84,7 +84,7 @@ public enum App {
     @SuppressWarnings("SpellCheckingInspection")
     FENIX_NIGHTLY(R.string.fenix_nightly_title,
             R.string.fenix_nightly_description,
-            R.string.empty,
+            R.string.fenix_nightly_warning,
             R.string.mozilla_ci,
             "org.mozilla.fenix.nightly",
             "77eac4ceed36afefba76179931dd4cc195ab0cd54baf355d215e7bbdd28e402a",
