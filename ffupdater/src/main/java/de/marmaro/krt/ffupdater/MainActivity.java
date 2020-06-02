@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -59,18 +57,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initUI();
-
-        packageManager = getPackageManager();
-        connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
-
-        StrictModeSetup.enable();
-        availableVersions = new AvailableVersions(this);
+        setContentView(R.layout.main_activity);
+        setSupportActionBar(findViewById(R.id.toolbar));
 
         Thread.setDefaultUncaughtExceptionHandler((Thread thread, Throwable e) -> {
             sendStacktraceAsMail(e);
             System.exit(2);
         });
+
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
+        StrictModeSetup.enable();
+
+        SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeContainer);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            fetchUpdates();
+            swipeRefreshLayout.setRefreshing(false);
+        });
+
+        progressBar = findViewById(R.id.progress_wheel);
+        packageManager = getPackageManager();
+        connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
+        availableVersions = new AvailableVersions(this);
     }
 
     private void sendStacktraceAsMail(Throwable throwable) {
@@ -147,23 +154,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-    }
-
-    @SuppressLint("FindViewByIdCast")
-    private void initUI() {
-        setContentView(R.layout.main_activity);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
-
-        final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeContainer);
-        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            fetchUpdates();
-            swipeRefreshLayout.setRefreshing(false);
-        });
-
-        progressBar = findViewById(R.id.progress_wheel);
     }
 
     private void refreshUI() {
