@@ -316,7 +316,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fenix_release_title"
+                        android:text="@string/fenix_beta_title"
                         app:layout_constraintStart_toEndOf="@+id/fenixBetaIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -371,7 +371,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fenix_release_title"
+                        android:text="@string/fenix_nightly_title"
                         app:layout_constraintStart_toEndOf="@+id/fenixNightlyIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -426,7 +426,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fenix_release_title"
+                        android:text="@string/lockwise_title"
                         app:layout_constraintStart_toEndOf="@id/lockwiseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
