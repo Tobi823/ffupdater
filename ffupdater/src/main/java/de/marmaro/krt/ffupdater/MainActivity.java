@@ -68,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 
         StrictModeSetup.enable();
-        Notificator.start(this);
-
         availableVersions = new AvailableVersions(this);
 
         Thread.setDefaultUncaughtExceptionHandler((Thread thread, Throwable e) -> {
@@ -101,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         refreshUI();
         fetchUpdates();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Notificator.start(this);
     }
 
     @Override
