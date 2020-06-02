@@ -25,12 +25,9 @@ import androidx.fragment.app.DialogFragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.common.base.Preconditions;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
@@ -179,14 +176,6 @@ public class MainActivity extends AppCompatActivity {
                     R.drawable.ic_file_download_grey
             );
         }
-        progressBar.startAnimation(new FadeOutAnimation(progressBar));
-    }
-
-    private void hideVersionOfApps() {
-        for (App app : App.values()) {
-            getAvailableVersionTextView(app).setText(R.string.loading_available_version);
-        }
-        progressBar.setVisibility(VISIBLE);
     }
 
     private void fetchUpdates() {
@@ -194,8 +183,14 @@ public class MainActivity extends AppCompatActivity {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
             return;
         }
-        hideVersionOfApps();
-        availableVersions.checkUpdatesForInstalledApps(this, this::refreshUI);
+        for (App app : App.values()) {
+            getAvailableVersionTextView(app).setText(R.string.loading_available_version);
+        }
+        progressBar.setVisibility(VISIBLE);
+        availableVersions.checkUpdatesForInstalledApps(this, () -> {
+            progressBar.startAnimation(new FadeOutAnimation(progressBar));
+            refreshUI();
+        });
     }
 
     private void downloadApp(App app) {
