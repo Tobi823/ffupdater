@@ -40,7 +40,7 @@ public class Notificator extends Worker {
     private static final String LOG_TAG = "Notificator";
     private static final String CHANNEL_ID = "update_notification_channel_id";
     private static final String WORK_MANAGER_KEY = "update_checker";
-    private static final int NOTIFICATION_IDENTIFIER = 1;
+    private static final int NOTIFICATION_ID = 1;
     private static final int REQUEST_CODE_START_MAIN_ACTIVITY = 2;
 
     public Notificator(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -93,6 +93,8 @@ public class Notificator extends Worker {
         appUpdate.checkUpdatesForInstalledApps(disableApps, null, null);
         if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
             createNotification();
+        } else {
+            getNotificationManager().cancel(NOTIFICATION_ID);
         }
         return Result.success();
     }
@@ -119,7 +121,7 @@ public class Notificator extends Worker {
                 .setAutoCancel(true)
                 .build();
 
-        getNotificationManager().notify(NOTIFICATION_IDENTIFIER, notification);
+        getNotificationManager().notify(NOTIFICATION_ID, notification);
     }
 
     /**
