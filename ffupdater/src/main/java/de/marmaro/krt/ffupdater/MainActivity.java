@@ -170,17 +170,12 @@ public class MainActivity extends AppCompatActivity {
             getAppCard(app).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
             getAvailableVersionTextView(app).setText(availableVersions.getAvailableVersionOrTimestamp(app));
             getInstalledVersionTextView(app).setText(availableVersions.getInstalledVersionOrTimestamp(packageManager, app));
-            refreshDownloadButton(app);
+            getDownloadButton(app).setImageResource(availableVersions.isUpdateAvailable(app) ?
+                    R.drawable.ic_file_download_orange :
+                    R.drawable.ic_file_download_grey
+            );
         }
         progressBar.startAnimation(new FadeOutAnimation(progressBar));
-    }
-
-    private void refreshDownloadButton(App app) {
-        boolean update = availableVersions.isUpdateAvailable(app);
-        getDownloadButton(app).setImageResource(update ?
-                R.drawable.ic_file_download_orange :
-                R.drawable.ic_file_download_grey
-        );
     }
 
     private void hideVersionOfApps() {
