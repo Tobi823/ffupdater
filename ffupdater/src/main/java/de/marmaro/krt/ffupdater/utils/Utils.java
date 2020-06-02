@@ -98,7 +98,8 @@ public class Utils {
             "8.0.0 (Oreo)",
             "8.1.0 (Oreo)",
             "9 (Pie)",
-            "10 (Android10)",
+            "10",
+            "11"
     };
 
     /**
