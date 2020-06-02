@@ -6,6 +6,9 @@ import android.content.Intent;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+/**
+ * Dead simple crash reporter for simplifying bug hunting with the end users.
+ */
 public class CrashReporter {
 
     private Context context;
@@ -14,6 +17,11 @@ public class CrashReporter {
         this.context = context;
     }
 
+    /**
+     * Register a DefaultUncaughtExceptionHandler to get the message of an uncaught exception and
+     * displaying it as an e-mail.
+     * @param context context
+     */
     public static void register(Context context) {
         new CrashReporter(context).registerExceptionHandler();
     }
