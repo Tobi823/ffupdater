@@ -103,4 +103,8 @@
     <string name="you_can_now_close_this_window">You can now close this window</string>
     <string name="fenix_beta_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
     <string name="fenix_nightly_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
+    <string name="lockwise_title">Firefox Lockwise</string>
+    <string name="lockwise_description"><![CDATA[PASSWORD ACCESS FOR YOU, & ONLY YOU\n\nSecurely track your Firefox passwords & access them anywhere. Quickly open any website from the app to get into your accounts]]></string>
+    <string name="lockwise_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
+    <string name="firefox_lite_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
 </resources>

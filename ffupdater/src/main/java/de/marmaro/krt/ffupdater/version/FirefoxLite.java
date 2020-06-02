@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 
 /**
  * Access the version name and the download url for Firefox Lite from Github.
+ * https://github.com/mozilla-tw/FirefoxLite/releases
+ * https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest
  */
 class FirefoxLite {
     private static final String OWNER = "mozilla-tw";

@@ -20,6 +20,8 @@ import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -106,10 +108,19 @@ public class SettingsHelperTest {
     public void getDisableApps_withSomeApps_returnApps() {
         Set<String> strings = new HashSet<>(Arrays.asList(
                 "FENNEC_RELEASE",
-                "FIREFOX_KLAR"
+                "FIREFOX_KLAR",
+                "FENIX_BETA",
+                "LOCKWISE"
         ));
         when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
-        assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.FENNEC_RELEASE, App.FIREFOX_KLAR));
+        assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.FENNEC_RELEASE, App.FIREFOX_KLAR, App.FENIX_BETA, App.LOCKWISE));
+    }
+
+    @Test
+    public void getDisableApps_withInvalidApps_ignoreThem() {
+        Set<String> strings = new HashSet<>(Collections.singletonList("FENIX"));
+        when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
+        assertThat(SettingsHelper.getDisableApps(context), is(empty()));
     }
 
     @Test
@@ -121,7 +132,8 @@ public class SettingsHelperTest {
                 "FIREFOX_LITE",
                 "FENIX_RELEASE",
                 "FENIX_BETA",
-                "FENIX_NIGHTLY"
+                "FENIX_NIGHTLY",
+                "LOCKWISE"
         ));
         when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
         assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.values()));

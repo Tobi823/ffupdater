@@ -35,7 +35,7 @@ public class UtilsTest {
 
     @Test
     public void getVersionAndCodenameFromApiLevel_with29_returnAndroid10() {
-        assertEquals("10 (Android10)", Utils.getVersionAndCodenameFromApiLevel(29));
+        assertEquals("10", Utils.getVersionAndCodenameFromApiLevel(29));
     }
 
     @Test
@@ -44,8 +44,8 @@ public class UtilsTest {
     }
 
     @Test
-    public void getVersionAndCodenameFromApiLevel_with30_returnFallback() {
-        assertEquals("API Level 30", Utils.getVersionAndCodenameFromApiLevel(30));
+    public void getVersionAndCodenameFromApiLevel_with31_returnFallback() {
+        assertEquals("API Level 31", Utils.getVersionAndCodenameFromApiLevel(31));
     }
 
     @Test

@@ -25,7 +25,11 @@ class Lockwise {
             return null;
         }
 
-        newObject.version = latestRelease.getTagName().replace("v", "");
+        String[] parts = latestRelease.getTagName().split("v");
+        if (parts.length != 2) {
+            return null;
+        }
+        newObject.version = parts[1].split("-")[0];
         newObject.downloadUrl = latestRelease.getAssets().get(0).getDownloadUrl();
         return newObject;
     }

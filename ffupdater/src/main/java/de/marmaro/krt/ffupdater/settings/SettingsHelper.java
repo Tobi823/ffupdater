@@ -56,7 +56,14 @@ public class SettingsHelper {
             return result;
         }
         for (String disableApp : disableApps) {
-            result.add(App.valueOf(disableApp));
+            App disableAppObject;
+            try {
+                disableAppObject = App.valueOf(disableApp);
+            } catch (IllegalArgumentException e) {
+                continue;
+                //ignore
+            }
+            result.add(disableAppObject);
         }
         return result;
     }

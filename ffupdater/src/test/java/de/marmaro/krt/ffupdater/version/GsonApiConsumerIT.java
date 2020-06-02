@@ -23,13 +23,12 @@ public class GsonApiConsumerIT {
     @Test(expected = SSLHandshakeException.class)
     public void mozillaVersionApi_SSLv3_SSLHandshakeException() throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         checkConnection(SSL_3, "https://product-details.mozilla.org/1.0/mobile_versions.json");
+        checkConnection(TLS_1, "https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi");
     }
 
     @Test(expected = SSLHandshakeException.class)
     public void githubApi_SSLv3_SSLHandshakeException() throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-        checkConnection(SSL_3, "https://api.github.com/repos/mozilla-mobile/fenix/releases/latest");
         checkConnection(SSL_3, "https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest");
-        checkConnection(SSL_3, "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest");
     }
 
     @Test(expected = SSLHandshakeException.class)
@@ -51,16 +50,12 @@ public class GsonApiConsumerIT {
     @Test
     public void mozillaVersionApi_TSLv1_noException() throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         checkConnection(TLS_1, "https://product-details.mozilla.org/1.0/mobile_versions.json");
-        for (String abi : Arrays.asList("android", "android-x86")) {
-            checkConnection(TLS_1, "https://download.mozilla.org/?product=fennec-latest" + "&os=" + abi + "&lang=multi");
-        }
+        checkConnection(TLS_1, "https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi");
     }
 
     @Test(expected = SSLHandshakeException.class)
     public void githubApi_TSLv1_SSLHandshakeException() throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-        checkConnection(TLS_1, "https://api.github.com/repos/mozilla-mobile/fenix/releases/latest");
         checkConnection(TLS_1, "https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest");
-        checkConnection(TLS_1, "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest");
     }
 
     @Test
@@ -74,9 +69,7 @@ public class GsonApiConsumerIT {
     @Test
     public void mozillaVersionApi_TSLv12_noException() throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         checkConnection(TLS_1_2, "https://product-details.mozilla.org/1.0/mobile_versions.json");
-        for (String abi : Arrays.asList("android", "android-x86")) {
-            checkConnection(TLS_1_2, "https://download.mozilla.org/?product=fennec-latest" + "&os=" + abi + "&lang=multi");
-        }
+        checkConnection(TLS_1_2, "https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi");
     }
 
     /**
@@ -91,9 +84,7 @@ public class GsonApiConsumerIT {
      */
     @Test
     public void githubApi_TSLv12_noException() throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-        checkConnection(TLS_1_2, "https://api.github.com/repos/mozilla-mobile/fenix/releases/latest");
         checkConnection(TLS_1_2, "https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest");
-        checkConnection(TLS_1_2, "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest");
     }
 
     @Test

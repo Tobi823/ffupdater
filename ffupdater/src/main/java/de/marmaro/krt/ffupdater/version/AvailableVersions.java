@@ -40,6 +40,7 @@ import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_FOCUS;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_KLAR;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
+import static de.marmaro.krt.ffupdater.App.LOCKWISE;
 
 /**
  * Helps to fetch the latest version name of apps with background threads.
@@ -53,7 +54,8 @@ public class AvailableVersions {
     private static final int TRAFFIC_FENIX_RELEASE = 1005;
     private static final int TRAFFIC_FENIX_BETA = 1006;
     private static final int TRAFFIC_FENIX_NIGHTLY = 1007;
-    private static final int NUMBER_BACKGROUND_THREADS = 7 + 1;
+    private static final int TRAFFIC_LOCKWISE = 1008;
+    private static final int NUMBER_BACKGROUND_THREADS = 8 + 1;
 
     private final ExecutorService executorService;
     private final PackageManager packageManager;
@@ -227,6 +229,9 @@ public class AvailableVersions {
         if (supportedApps.contains(FENIX_NIGHTLY)) {
             futures.add(executorService.submit(this::checkFenixNightly));
         }
+        if (supportedApps.contains(LOCKWISE)) {
+            futures.add(executorService.submit(this::checkLockwise));
+        }
 
         if (callback == null) {
             waitUntilAllFinished();
@@ -316,5 +321,13 @@ public class AvailableVersions {
         TrafficStats.setThreadStatsTag(TRAFFIC_FENIX_NIGHTLY);
         Fenix fenix = Fenix.findLatest(FENIX_NIGHTLY, deviceABI.getBestSuitedAbi());
         metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX_NIGHTLY, fenix.getTimestamp(), fenix.getDownloadUrl());
+    }
+
+    private void checkLockwise() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_LOCKWISE);
+        Lockwise lockwise = Lockwise.findLatest();
+        if (lockwise != null) {
+            metadataStorage.updateAvailableVersionAndDownloadUrl(LOCKWISE, lockwise.getVersion(), lockwise.getDownloadUrl());
+        }
     }
 }

@@ -265,6 +265,8 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.fenixBetaAvailableVersion);
             case FENIX_NIGHTLY:
                 return findViewById(R.id.fenixNightlyAvailableVersion);
+            case LOCKWISE:
+                return findViewById(R.id.lockwiseAvailableVersion);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -286,6 +288,8 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.fenixBetaInstalledVersion);
             case FENIX_NIGHTLY:
                 return findViewById(R.id.fenixNightlyInstalledVersion);
+            case LOCKWISE:
+                return findViewById(R.id.lockwiseInstalledVersion);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -307,6 +311,8 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.fenixBetaDownloadButton);
             case FENIX_NIGHTLY:
                 return findViewById(R.id.fenixNightlyDownloadButton);
+            case LOCKWISE:
+                return findViewById(R.id.lockwiseDownloadButton);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -328,6 +334,8 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.fenixBetaCard);
             case FENIX_NIGHTLY:
                 return findViewById(R.id.fenixNightlyCard);
+            case LOCKWISE:
+                return findViewById(R.id.lockwiseCard);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -349,6 +357,8 @@ public class MainActivity extends AppCompatActivity {
                 return App.FENIX_BETA;
             case R.id.fenixNightlyInfoButton:
                 return App.FENIX_NIGHTLY;
+            case R.id.lockwiseInfoButton:
+                return App.LOCKWISE;
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -370,6 +380,8 @@ public class MainActivity extends AppCompatActivity {
                 return App.FENIX_BETA;
             case R.id.fenixNightlyDownloadButton:
                 return App.FENIX_NIGHTLY;
+            case R.id.lockwiseDownloadButton:
+                return App.LOCKWISE;
             default:
                 throw new RuntimeException("switch fallthrough");
         }

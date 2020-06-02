@@ -55,7 +55,7 @@ public enum App {
             TIMESTAMP),
     FIREFOX_LITE(R.string.firefox_lite_title,
             R.string.firefox_lite_description,
-            R.string.empty,
+            R.string.firefox_lite_warning,
             R.string.github,
             "org.mozilla.rocket",
             "863a46f0973932b7d0199b549112741c2d2731ac72ea11b7523aa90a11bf5691",
@@ -90,7 +90,16 @@ public enum App {
             "77eac4ceed36afefba76179931dd4cc195ab0cd54baf355d215e7bbdd28e402a",
             Collections.emptyList(),
             21,
-            TIMESTAMP);
+            TIMESTAMP),
+    LOCKWISE(R.string.lockwise_title,
+            R.string.lockwise_description,
+            R.string.lockwise_warning,
+            R.string.github,
+            "mozilla.lockbox",
+            "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2",
+            Collections.emptyList(),
+            24,
+            VERSION);
 
     private final int titleId;
     private final int descriptionId;

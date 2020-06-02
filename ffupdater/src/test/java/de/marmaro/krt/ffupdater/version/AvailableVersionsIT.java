@@ -78,8 +78,38 @@ public class AvailableVersionsIT {
     }
 
     @Test
-    public void checkUpdateForApp_withFenix_versionAndDownloadNotEmpty() {
+    public void checkUpdateForApp_withFenixRelease_versionAndDownloadNotEmpty() {
         App app = App.FENIX_RELEASE;
+        availableVersions.checkUpdateForApp(app, null, null);
+
+        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
+        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
+        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
+    }
+
+    @Test
+    public void checkUpdateForApp_withFenixBeta_versionAndDownloadNotEmpty() {
+        App app = App.FENIX_BETA;
+        availableVersions.checkUpdateForApp(app, null, null);
+
+        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
+        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
+        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
+    }
+
+    @Test
+    public void checkUpdateForApp_withFenixNightly_versionAndDownloadNotEmpty() {
+        App app = App.FENIX_NIGHTLY;
+        availableVersions.checkUpdateForApp(app, null, null);
+
+        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
+        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
+        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
+    }
+
+    @Test
+    public void checkUpdateForApp_withLockwise_versionAndDownloadNotEmpty() {
+        App app = App.LOCKWISE;
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
