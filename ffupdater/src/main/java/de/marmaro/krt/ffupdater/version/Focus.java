@@ -5,6 +5,7 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 /**
  * Access the version name and the download url for Firefox Focus and Firefox Klar from Github.
+ * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  */
 class Focus {
 

@@ -5,6 +5,9 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 /**
  * Access the version name and the download url for Fenix from Github.
+ * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.production
+ * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta
+ * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly
  */
 class Fenix {
     private final MozillaCIConsumer mozillaCIConsumer;

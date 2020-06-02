@@ -3,11 +3,14 @@
 ## Firefox-Updater
 
 Download, install and update these browsers from Mozilla:
- - [Firefox Browser / Fennec Release](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
+ - [Firefox Browser (Fennec Release)](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
  - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus)
  - [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
  - [Firefox Lite](https://play.google.com/store/apps/details?id=org.mozilla.rocket)
- - [Firefox Preview / Fenix](https://play.google.com/store/apps/details?id=org.mozilla.fenix)
+ - [Firefox Preview (Fenix)](https://play.google.com/store/apps/details?id=org.mozilla.fenix)
+ - Firefox Preview Beta
+ - [Firefox Preview Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix.nightly)
+ - [Firefox Lockwise](https://play.google.com/store/apps/details?id=mozilla.lockbox)
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
 
@@ -19,7 +22,14 @@ Security measures:
 You can find the APK certificate fingerprints on multiple website - e.g. apkmirror.com
 I did my best to make the app as secure as possible - feel free to double-check it in the source code.
 
-Important: I removed Fennec Beta and Fennec Nightly because they are outdated - I will add Fenix Beta and Fenix Nightly soon.
+The applications are downloaded from these locations:
+ - Firefox Browser (Fennec Release): <https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi>
+ - Firefox Focus/Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
+ - Firefox Lite: <https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest>
+ - Firefox Preview: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.production>
+ - Firefox Preview Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta>
+ - Firefox Preview Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly>
+ - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
 
 ## Deprecated browsers
 

@@ -10,6 +10,8 @@ import de.marmaro.krt.ffupdater.utils.Utils;
 
 /**
  * Get the version name and the download link for the latest Fennec release from the official Mozilla API.
+ * https://product-details.mozilla.org/1.0/mobile_versions.json
+ * https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi
  */
 class Fennec {
     private static final String DEFAULT_ABI = "android";
