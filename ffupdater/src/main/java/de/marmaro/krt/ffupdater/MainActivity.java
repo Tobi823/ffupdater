@@ -138,13 +138,22 @@ public class MainActivity extends AppCompatActivity {
     private void refreshUI() {
         for (App app : App.values()) {
             getAppCard(app).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
-            getAvailableVersionTextView(app).setText(availableVersions.getAvailableVersionOrTimestamp(app));
-            getInstalledVersionTextView(app).setText(availableVersions.getInstalledVersionOrTimestamp(packageManager, app));
+            getAvailableVersionTextView(app).setText(getString(R.string.available_version,
+                    shortingVersionOrTimestamp(availableVersions.getAvailableVersionOrTimestamp(app))));
+            getInstalledVersionTextView(app).setText(getString(R.string.installed_version,
+                    shortingVersionOrTimestamp(availableVersions.getInstalledVersionOrTimestamp(packageManager, app))));
             getDownloadButton(app).setImageResource(availableVersions.isUpdateAvailable(app) ?
                     R.drawable.ic_file_download_orange :
                     R.drawable.ic_file_download_grey
             );
         }
+    }
+
+    private String shortingVersionOrTimestamp(String versionOrTimestamp) {
+        if (versionOrTimestamp.length() > 16) {
+            return versionOrTimestamp.substring(0, 16);
+        }
+        return versionOrTimestamp;
     }
 
     private void fetchUpdates() {

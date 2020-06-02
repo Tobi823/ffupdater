@@ -40,7 +40,7 @@
 
     <style name="MonospaceSelectableTextView" parent="DefaultTextView">
         <item name="android:textIsSelectable">true</item>
-        <item name="android:typeface">monospace</item>
+        <item name="android:fontFamily">monospace</item>
     </style>
 
     <style name="DownloadActivitySegment">
@@ -89,28 +89,14 @@
         <item name="android:layout_height">32dp</item>
     </style>
 
-    <style name="AppCardAvailableVersionText" parent="@style/TextAppearance.AppCompat.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:text">Available:"</item>
-    </style>
-
-    <style name="AppCardInstalledVersionText" parent="@style/TextAppearance.AppCompat.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:text">Installed:</item>
-    </style>
-
     <style name="AppCardVersion" parent="@style/TextAppearance.AppCompat.Small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginLeft">8dp</item>
         <item name="android:singleLine">true</item>
-        <item name="android:maxLength">16</item>
+    </style>
+
+    <style name="AppCardInstalledVersion" parent="AppCardVersion">
+        <item name="android:layout_marginTop">8dp</item>
     </style>
 
     <style name="AppCardTitle" parent="@style/TextAppearance.AppCompat.Large">

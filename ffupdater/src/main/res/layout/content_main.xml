@@ -35,6 +35,24 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
 
+                    <TextView
+                        style="@style/AppCardTitle"
+                        android:text="@string/fennec_release_title"
+                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/fennecReleaseInstalledVersion"
+                        style="@style/AppCardInstalledVersion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/fennecReleaseIcon" />
+
+                    <TextView
+                        android:id="@+id/fennecReleaseAvailableVersion"
+                        style="@style/AppCardVersion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/fennecReleaseInstalledVersion" />
+
                     <ImageButton
                         android:id="@+id/fennecReleaseInfoButton"
                         style="@style/AppCardInfoButton"
@@ -61,36 +79,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@mipmap/ic_logo_fennec_release" />
 
-                    <TextView
-                        android:id="@+id/fennecReleaseAvailableVersionText"
-                        style="@style/AppCardAvailableVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fennecReleaseInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/fennecReleaseAvailableVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fennecReleaseAvailableVersionText" />
-
-                    <TextView
-                        style="@style/AppCardTitle"
-                        android:text="@string/fennec_release_title"
-                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/fennecReleaseInstalledVersionText"
-                        style="@style/AppCardInstalledVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fennecReleaseIcon" />
-
-                    <TextView
-                        android:id="@+id/fennecReleaseInstalledVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fennecReleaseInstalledVersionText" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -101,6 +89,24 @@
                 app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
+
+                    <TextView
+                        style="@style/AppCardTitle"
+                        android:text="@string/firefox_klar_title"
+                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/firefoxKlarInstalledVersion"
+                        style="@style/AppCardInstalledVersion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/firefoxKlarIcon" />
+
+                    <TextView
+                        android:id="@+id/firefoxKlarAvailableVersion"
+                        style="@style/AppCardVersion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/firefoxKlarInstalledVersion" />
 
                     <ImageButton
                         android:id="@+id/firefoxKlarInfoButton"
@@ -130,36 +136,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@mipmap/ic_logo_firefox_focus_klar" />
 
-                    <TextView
-                        android:id="@+id/firefoxKlarAvailableVersionText"
-                        style="@style/AppCardAvailableVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/firefoxKlarInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/firefoxKlarAvailableVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/firefoxKlarAvailableVersionText" />
-
-                    <TextView
-                        style="@style/AppCardTitle"
-                        android:text="@string/firefox_klar_title"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/firefoxKlarInstalledVersionText"
-                        style="@style/AppCardInstalledVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/firefoxKlarIcon" />
-
-                    <TextView
-                        android:id="@+id/firefoxKlarInstalledVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxKlarAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/firefoxKlarInstalledVersionText" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -178,28 +154,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/firefoxFocusInstalledVersionText"
-                        style="@style/AppCardInstalledVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/firefoxFocusIcon" />
-
-                    <TextView
                         android:id="@+id/firefoxFocusInstalledVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxFocusAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/firefoxFocusInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/firefoxFocusAvailableVersionText"
-                        style="@style/AppCardAvailableVersionText"
+                        style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/firefoxFocusInstalledVersionText" />
+                        app:layout_constraintTop_toBottomOf="@id/firefoxFocusIcon" />
 
                     <TextView
                         android:id="@+id/firefoxFocusAvailableVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxFocusAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/firefoxFocusAvailableVersionText" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/firefoxFocusInstalledVersion" />
 
                     <ImageButton
                         android:id="@+id/firefoxFocusInfoButton"
@@ -247,28 +211,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/firefoxLiteInstalledVersionText"
-                        style="@style/AppCardInstalledVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/firefoxLiteIcon" />
-
-                    <TextView
                         android:id="@+id/firefoxLiteInstalledVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxLiteAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/firefoxLiteInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/firefoxLiteAvailableVersionText"
-                        style="@style/AppCardAvailableVersionText"
+                        style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/firefoxLiteInstalledVersionText" />
+                        app:layout_constraintTop_toBottomOf="@id/firefoxLiteIcon" />
 
                     <TextView
                         android:id="@+id/firefoxLiteAvailableVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxLiteAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/firefoxLiteAvailableVersionText" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/firefoxLiteInstalledVersion" />
 
                     <ImageButton
                         android:id="@+id/firefoxLiteInfoButton"
@@ -314,28 +266,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/fenixReleaseInstalledVersionText"
-                        style="@style/AppCardInstalledVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixReleaseIcon" />
-
-                    <TextView
                         android:id="@+id/fenixReleaseInstalledVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixReleaseAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixReleaseInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/fenixReleaseAvailableVersionText"
-                        style="@style/AppCardAvailableVersionText"
+                        style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixReleaseInstalledVersionText" />
+                        app:layout_constraintTop_toBottomOf="@id/fenixReleaseIcon" />
 
                     <TextView
                         android:id="@+id/fenixReleaseAvailableVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixReleaseAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixReleaseAvailableVersionText" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/fenixReleaseInstalledVersion" />
 
                     <ImageButton
                         android:id="@+id/fenixReleaseInfoButton"
@@ -381,28 +321,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/fenixBetaInstalledVersionText"
-                        style="@style/AppCardInstalledVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixBetaIcon" />
-
-                    <TextView
                         android:id="@+id/fenixBetaInstalledVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixBetaAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixBetaInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/fenixBetaAvailableVersionText"
-                        style="@style/AppCardAvailableVersionText"
+                        style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixBetaInstalledVersionText" />
+                        app:layout_constraintTop_toBottomOf="@id/fenixBetaIcon" />
 
                     <TextView
                         android:id="@+id/fenixBetaAvailableVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixBetaAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixBetaAvailableVersionText" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/fenixBetaInstalledVersion" />
 
                     <ImageButton
                         android:id="@+id/fenixBetaInfoButton"
@@ -448,28 +376,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/fenixNightlyInstalledVersionText"
-                        style="@style/AppCardInstalledVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixNightlyIcon" />
-
-                    <TextView
                         android:id="@+id/fenixNightlyInstalledVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixNightlyAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixNightlyInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/fenixNightlyAvailableVersionText"
-                        style="@style/AppCardAvailableVersionText"
+                        style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fenixNightlyInstalledVersionText" />
+                        app:layout_constraintTop_toBottomOf="@id/fenixNightlyIcon" />
 
                     <TextView
                         android:id="@+id/fenixNightlyAvailableVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/fenixNightlyAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/fenixNightlyAvailableVersionText" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/fenixNightlyInstalledVersion" />
 
                     <ImageButton
                         android:id="@+id/fenixNightlyInfoButton"
@@ -511,32 +427,20 @@
                     <TextView
                         style="@style/AppCardTitle"
                         android:text="@string/fenix_release_title"
-                        app:layout_constraintStart_toEndOf="@+id/lockwiseIcon"
+                        app:layout_constraintStart_toEndOf="@id/lockwiseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/lockwiseInstalledVersionText"
-                        style="@style/AppCardInstalledVersionText"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/lockwiseIcon" />
-
-                    <TextView
                         android:id="@+id/lockwiseInstalledVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/lockwiseAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/lockwiseInstalledVersionText" />
-
-                    <TextView
-                        android:id="@+id/lockwiseAvailableVersionText"
-                        style="@style/AppCardAvailableVersionText"
+                        style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/lockwiseInstalledVersionText" />
+                        app:layout_constraintTop_toBottomOf="@id/lockwiseIcon" />
 
                     <TextView
                         android:id="@+id/lockwiseAvailableVersion"
                         style="@style/AppCardVersion"
-                        app:layout_constraintStart_toEndOf="@+id/lockwiseAvailableVersionText"
-                        app:layout_constraintTop_toTopOf="@+id/lockwiseAvailableVersionText" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lockwiseInstalledVersion" />
 
                     <ImageButton
                         android:id="@+id/lockwiseInfoButton"

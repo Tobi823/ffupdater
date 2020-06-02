@@ -19,8 +19,10 @@
     <string name="expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
     <string name="fenix_beta_description">Firefox Preview Beta is a developmental channel for new Firefox Preview releases. It is intended for advanced users only.</string>
     <string name="fenix_beta_title">Firefox Preview Beta</string>
+    <string name="fenix_beta_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
     <string name="fenix_nightly_description">Firefox Preview Nightly is a developmental channel for new Firefox Preview releases. It is intended for advanced users only.</string>
     <string name="fenix_nightly_title">Firefox Preview Nightly</string>
+    <string name="fenix_nightly_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
     <string name="fenix_release_description">Firefox Preview (also known as Fenix) is an all-new browser for Android. This app is currently under development and contains more trackers than usual to analyse/improve the app usage.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="fenix_release_title">Firefox Preview</string>
     <string name="fenix_warning">This app is designed for testers and therefore it contains some trackers. Do you really want to install this app?</string>
@@ -35,6 +37,7 @@
     <string name="firefox_klar_title">Firefox Klar</string>
     <string name="firefox_lite_description">Firefox Lite is primary developed for users in Indonesia. The app is very small and supports techniques to reduce (mobile) data consumption.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="firefox_lite_title">Firefox Lite</string>
+    <string name="firefox_lite_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
     <string name="github" translatable="false">GitHub</string>
     <string name="infobox">
         This is an updater for multiple browsers from Mozilla.
@@ -54,6 +57,9 @@
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
     <string name="loading_available_version">Loading...</string>
+    <string name="lockwise_description"><![CDATA[PASSWORD ACCESS FOR YOU, & ONLY YOU\n\nSecurely track your Firefox passwords & access them anywhere. Quickly open any website from the app to get into your accounts]]></string>
+    <string name="lockwise_title">Firefox Lockwise</string>
+    <string name="lockwise_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
     <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
     <string name="missing_external_storage_permission_dialog_summary">The app will ask for storage permission to download files and read them. But only a few devices need this permission. If you are in doubt, deny the permission request - you can enable the storage permission later in the settings of your device.\n\nI will only use the external app folder and I will never access your private pictures etc.</string>
     <string name="missing_external_storage_permission_dialog_title">Permission Request</string>
@@ -101,10 +107,6 @@
     <string name="update_notification_channel_name">Update notification</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
-    <string name="fenix_beta_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
-    <string name="fenix_nightly_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
-    <string name="lockwise_title">Firefox Lockwise</string>
-    <string name="lockwise_description"><![CDATA[PASSWORD ACCESS FOR YOU, & ONLY YOU\n\nSecurely track your Firefox passwords & access them anywhere. Quickly open any website from the app to get into your accounts]]></string>
-    <string name="lockwise_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
-    <string name="firefox_lite_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
+    <string name="available_version">Available: %1$s</string>
+    <string name="installed_version">Installed:   %1$s</string>
 </resources>
