@@ -156,7 +156,7 @@ public class InstallActivity extends AppCompatActivity {
                 int progress = Objects.requireNonNull(statusAndProgress.second);
                 actionDownloadUpdateProgressBar(progress);
 
-                Utils.sleepAndIgnoreInterruptedException(200);
+                Utils.sleepAndIgnoreInterruptedException(500);
             }
         }).start();
     }
