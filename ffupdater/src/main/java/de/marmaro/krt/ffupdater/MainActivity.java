@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     private ConnectivityManager connectivityManager;
     private PackageManager packageManager;
 
-    private final Map<App, TextView> availableVersionTextViews = new HashMap<>();
     private final Map<App, TextView> installedVersionTextViews = new HashMap<>();
     private final Map<App, ImageButton> downloadButtons = new HashMap<>();
     private final Map<App, CardView> appCards = new HashMap<>();
@@ -171,14 +170,6 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progress_wheel);
 
-        availableVersionTextViews.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseAvailableVersion));
-        availableVersionTextViews.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarAvailableVersion));
-        availableVersionTextViews.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusAvailableVersion));
-        availableVersionTextViews.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteAvailableVersion));
-        availableVersionTextViews.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseAvailableVersion));
-        availableVersionTextViews.put(App.FENIX_BETA, findViewById(R.id.fenixBetaAvailableVersion));
-        availableVersionTextViews.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyAvailableVersion));
-
         installedVersionTextViews.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseInstalledVersion));
         installedVersionTextViews.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarInstalledVersion));
         installedVersionTextViews.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusInstalledVersion));
@@ -220,10 +211,31 @@ public class MainActivity extends AppCompatActivity {
         downloadButtonIdsToApp.put(R.id.fenixNightlyDownloadButton, App.FENIX_NIGHTLY);
     }
 
+    private TextView getAvailableVersionTextView(App app) {
+        switch (app) {
+            case FENNEC_RELEASE:
+                return findViewById(R.id.fennecReleaseAvailableVersion);
+            case FIREFOX_KLAR:
+                return findViewById(R.id.firefoxKlarAvailableVersion);
+            case FIREFOX_FOCUS:
+                return findViewById(R.id.firefoxFocusAvailableVersion);
+            case FIREFOX_LITE:
+                return findViewById(R.id.firefoxLiteAvailableVersion);
+            case FENIX_RELEASE:
+                return findViewById(R.id.fenixReleaseAvailableVersion);
+            case FENIX_BETA:
+                return findViewById(R.id.fenixBetaAvailableVersion);
+            case FENIX_NIGHTLY:
+                return findViewById(R.id.fenixNightlyAvailableVersion);
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
+    }
+
     private void refreshUI() {
         for (App app : App.values()) {
             refreshAppCardVisibility(app);
-            refreshAvailableVersionTextView(app);
+            getAvailableVersionTextView(app).setText(availableVersions.getAvailableVersionOrTimestamp(app));
             refreshInstalledVersionTextView(app);
             refreshDownloadButton(app);
         }
@@ -233,11 +245,6 @@ public class MainActivity extends AppCompatActivity {
     private void refreshAppCardVisibility(App app) {
         boolean installed = InstalledApps.isInstalled(packageManager, app);
         Objects.requireNonNull(appCards.get(app)).setVisibility(installed ? VISIBLE : GONE);
-    }
-
-    private void refreshAvailableVersionTextView(App app) {
-        String text = availableVersions.getAvailableVersionOrTimestamp(app);
-        Objects.requireNonNull(availableVersionTextViews.get(app)).setText(text);
     }
 
     private void refreshInstalledVersionTextView(App app) {
@@ -255,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void hideVersionOfApps() {
         for (App app : App.values()) {
-            Objects.requireNonNull(availableVersionTextViews.get(app)).setText("");
+            getAvailableVersionTextView(app).setText(R.string.loading_available_version);
         }
         progressBar.setVisibility(VISIBLE);
     }

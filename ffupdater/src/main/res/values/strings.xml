@@ -32,7 +32,7 @@
     <string name="firefox_lite_description">Firefox Lite is primary developed for users in Indonesia. The app is very small and supports techniques to reduce (mobile) data consumption.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="firefox_lite_title">Firefox Lite</string>
     <string name="github" translatable="false">GitHub</string>
-    <string name="mozilla_ci">Mozilla CI</string>
+    <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="infobox">
         This is an updater for multiple browsers from Mozilla.
         Click the plus-button for installation and the down-arrow-button for updating.
@@ -100,4 +100,5 @@
     <string name="fenix_beta_description">Firefox Preview Nightly is a developmental channel for new Firefox Preview releases. It is intended for advanced users only.</string>
     <string name="fenix_nightly_title">Firefox Preview Nightly</string>
     <string name="fenix_nightly_description">Firefox Preview Nightly is a developmental channel for new Firefox Preview releases. It is intended for advanced users only.</string>
+    <string name="loading_available_version">Loading...</string>
 </resources>
