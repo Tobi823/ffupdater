@@ -59,12 +59,6 @@ public class MainActivity extends AppCompatActivity {
     private ConnectivityManager connectivityManager;
     private PackageManager packageManager;
 
-    private final Map<App, TextView> installedVersionTextViews = new HashMap<>();
-    private final Map<App, ImageButton> downloadButtons = new HashMap<>();
-    private final Map<App, CardView> appCards = new HashMap<>();
-    private final Map<Integer, App> infoButtonIdsToApp = new HashMap<>();
-    private final Map<Integer, App> downloadButtonIdsToApp = new HashMap<>();
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -169,92 +163,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         progressBar = findViewById(R.id.progress_wheel);
-
-        installedVersionTextViews.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseInstalledVersion));
-        installedVersionTextViews.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarInstalledVersion));
-        installedVersionTextViews.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusInstalledVersion));
-        installedVersionTextViews.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteInstalledVersion));
-        installedVersionTextViews.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseInstalledVersion));
-        installedVersionTextViews.put(App.FENIX_BETA, findViewById(R.id.fenixBetaInstalledVersion));
-        installedVersionTextViews.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyInstalledVersion));
-
-        downloadButtons.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseDownloadButton));
-        downloadButtons.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarDownloadButton));
-        downloadButtons.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusDownloadButton));
-        downloadButtons.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteDownloadButton));
-        downloadButtons.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseDownloadButton));
-        downloadButtons.put(App.FENIX_BETA, findViewById(R.id.fenixBetaDownloadButton));
-        downloadButtons.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyDownloadButton));
-
-        appCards.put(App.FENNEC_RELEASE, findViewById(R.id.fennecReleaseCard));
-        appCards.put(App.FIREFOX_KLAR, findViewById(R.id.firefoxKlarCard));
-        appCards.put(App.FIREFOX_FOCUS, findViewById(R.id.firefoxFocusCard));
-        appCards.put(App.FIREFOX_LITE, findViewById(R.id.firefoxLiteCard));
-        appCards.put(App.FENIX_RELEASE, findViewById(R.id.fenixReleaseCard));
-        appCards.put(App.FENIX_BETA, findViewById(R.id.fenixBetaCard));
-        appCards.put(App.FENIX_NIGHTLY, findViewById(R.id.fenixNightlyCard));
-
-        infoButtonIdsToApp.put(R.id.fennecReleaseInfoButton, App.FENNEC_RELEASE);
-        infoButtonIdsToApp.put(R.id.firefoxKlarInfoButton, App.FIREFOX_KLAR);
-        infoButtonIdsToApp.put(R.id.firefoxFocusInfoButton, App.FIREFOX_FOCUS);
-        infoButtonIdsToApp.put(R.id.firefoxLiteInfoButton, App.FIREFOX_LITE);
-        infoButtonIdsToApp.put(R.id.fenixReleaseInfoButton, App.FENIX_RELEASE);
-        infoButtonIdsToApp.put(R.id.fenixBetaInfoButton, App.FENIX_BETA);
-        infoButtonIdsToApp.put(R.id.fenixNightlyInfoButton, App.FENIX_NIGHTLY);
-
-        downloadButtonIdsToApp.put(R.id.fennecReleaseDownloadButton, App.FENNEC_RELEASE);
-        downloadButtonIdsToApp.put(R.id.firefoxKlarDownloadButton, App.FIREFOX_KLAR);
-        downloadButtonIdsToApp.put(R.id.firefoxFocusDownloadButton, App.FIREFOX_FOCUS);
-        downloadButtonIdsToApp.put(R.id.firefoxLiteDownloadButton, App.FIREFOX_LITE);
-        downloadButtonIdsToApp.put(R.id.fenixReleaseDownloadButton, App.FENIX_RELEASE);
-        downloadButtonIdsToApp.put(R.id.fenixBetaDownloadButton, App.FENIX_BETA);
-        downloadButtonIdsToApp.put(R.id.fenixNightlyDownloadButton, App.FENIX_NIGHTLY);
-    }
-
-    private TextView getAvailableVersionTextView(App app) {
-        switch (app) {
-            case FENNEC_RELEASE:
-                return findViewById(R.id.fennecReleaseAvailableVersion);
-            case FIREFOX_KLAR:
-                return findViewById(R.id.firefoxKlarAvailableVersion);
-            case FIREFOX_FOCUS:
-                return findViewById(R.id.firefoxFocusAvailableVersion);
-            case FIREFOX_LITE:
-                return findViewById(R.id.firefoxLiteAvailableVersion);
-            case FENIX_RELEASE:
-                return findViewById(R.id.fenixReleaseAvailableVersion);
-            case FENIX_BETA:
-                return findViewById(R.id.fenixBetaAvailableVersion);
-            case FENIX_NIGHTLY:
-                return findViewById(R.id.fenixNightlyAvailableVersion);
-            default:
-                throw new RuntimeException("switch fallthrough");
-        }
     }
 
     private void refreshUI() {
         for (App app : App.values()) {
-            refreshAppCardVisibility(app);
+            getAppCard(app).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
             getAvailableVersionTextView(app).setText(availableVersions.getAvailableVersionOrTimestamp(app));
-            refreshInstalledVersionTextView(app);
+            getInstalledVersionTextView(app).setText(availableVersions.getInstalledVersionOrTimestamp(packageManager, app));
             refreshDownloadButton(app);
         }
         progressBar.startAnimation(new FadeOutAnimation(progressBar));
     }
 
-    private void refreshAppCardVisibility(App app) {
-        boolean installed = InstalledApps.isInstalled(packageManager, app);
-        Objects.requireNonNull(appCards.get(app)).setVisibility(installed ? VISIBLE : GONE);
-    }
-
-    private void refreshInstalledVersionTextView(App app) {
-        String text = availableVersions.getInstalledVersionOrTimestamp(packageManager, app);
-        Objects.requireNonNull(installedVersionTextViews.get(app)).setText(text);
-    }
-
     private void refreshDownloadButton(App app) {
         boolean update = availableVersions.isUpdateAvailable(app);
-        Objects.requireNonNull(downloadButtons.get(app)).setImageResource(update ?
+        getDownloadButton(app).setImageResource(update ?
                 R.drawable.ic_file_download_orange :
                 R.drawable.ic_file_download_grey
         );
@@ -319,18 +242,142 @@ public class MainActivity extends AppCompatActivity {
     // android:onClick method calls: - do not delete
 
     public void onClickDownloadButton(View view) {
-        App app = downloadButtonIdsToApp.get(view.getId());
-        Preconditions.checkNotNull(app);
-        downloadApp(app);
+        downloadApp(findAppByDownloadButtonId(view.getId()));
     }
 
     public void onClickInfoButton(View view) {
-        App app = infoButtonIdsToApp.get(view.getId());
-        Preconditions.checkNotNull(app);
-        new AppInfoDialog(app).show(getSupportFragmentManager(), AppInfoDialog.TAG);
+        new AppInfoDialog(findAppByInfoButtonId(view.getId())).show(getSupportFragmentManager(), AppInfoDialog.TAG);
     }
 
     public void onClickInstallApp(View view) {
         new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager(), InstallAppDialog.TAG);
+    }
+
+    // helper methods for accessing GUI objects
+
+    private TextView getAvailableVersionTextView(App app) {
+        switch (app) {
+            case FENNEC_RELEASE:
+                return findViewById(R.id.fennecReleaseAvailableVersion);
+            case FIREFOX_KLAR:
+                return findViewById(R.id.firefoxKlarAvailableVersion);
+            case FIREFOX_FOCUS:
+                return findViewById(R.id.firefoxFocusAvailableVersion);
+            case FIREFOX_LITE:
+                return findViewById(R.id.firefoxLiteAvailableVersion);
+            case FENIX_RELEASE:
+                return findViewById(R.id.fenixReleaseAvailableVersion);
+            case FENIX_BETA:
+                return findViewById(R.id.fenixBetaAvailableVersion);
+            case FENIX_NIGHTLY:
+                return findViewById(R.id.fenixNightlyAvailableVersion);
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
+    }
+
+    private TextView getInstalledVersionTextView(App app) {
+        switch (app) {
+            case FENNEC_RELEASE:
+                return findViewById(R.id.fennecReleaseInstalledVersion);
+            case FIREFOX_KLAR:
+                return findViewById(R.id.firefoxKlarInstalledVersion);
+            case FIREFOX_FOCUS:
+                return findViewById(R.id.firefoxFocusInstalledVersion);
+            case FIREFOX_LITE:
+                return findViewById(R.id.firefoxLiteInstalledVersion);
+            case FENIX_RELEASE:
+                return findViewById(R.id.fenixReleaseInstalledVersion);
+            case FENIX_BETA:
+                return findViewById(R.id.fenixBetaInstalledVersion);
+            case FENIX_NIGHTLY:
+                return findViewById(R.id.fenixNightlyInstalledVersion);
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
+    }
+
+    private ImageButton getDownloadButton(App app) {
+        switch (app) {
+            case FENNEC_RELEASE:
+                return findViewById(R.id.fennecReleaseDownloadButton);
+            case FIREFOX_KLAR:
+                return findViewById(R.id.firefoxKlarDownloadButton);
+            case FIREFOX_FOCUS:
+                return findViewById(R.id.firefoxFocusDownloadButton);
+            case FIREFOX_LITE:
+                return findViewById(R.id.firefoxLiteDownloadButton);
+            case FENIX_RELEASE:
+                return findViewById(R.id.fenixReleaseDownloadButton);
+            case FENIX_BETA:
+                return findViewById(R.id.fenixBetaDownloadButton);
+            case FENIX_NIGHTLY:
+                return findViewById(R.id.fenixNightlyDownloadButton);
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
+    }
+
+    private CardView getAppCard(App app) {
+        switch (app) {
+            case FENNEC_RELEASE:
+                return findViewById(R.id.fennecReleaseCard);
+            case FIREFOX_KLAR:
+                return findViewById(R.id.firefoxKlarCard);
+            case FIREFOX_FOCUS:
+                return findViewById(R.id.firefoxFocusCard);
+            case FIREFOX_LITE:
+                return findViewById(R.id.firefoxLiteCard);
+            case FENIX_RELEASE:
+                return findViewById(R.id.fenixReleaseCard);
+            case FENIX_BETA:
+                return findViewById(R.id.fenixBetaCard);
+            case FENIX_NIGHTLY:
+                return findViewById(R.id.fenixNightlyCard);
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
+    }
+
+    private App findAppByInfoButtonId(int id) {
+        switch (id) {
+            case R.id.fennecReleaseInfoButton:
+                return App.FENNEC_RELEASE;
+            case R.id.firefoxKlarInfoButton:
+                return App.FIREFOX_KLAR;
+            case R.id.firefoxFocusInfoButton:
+                return App.FIREFOX_FOCUS;
+            case R.id.firefoxLiteInfoButton:
+                return App.FIREFOX_LITE;
+            case R.id.fenixReleaseInfoButton:
+                return App.FENIX_RELEASE;
+            case R.id.fenixBetaInfoButton:
+                return App.FENIX_BETA;
+            case R.id.fenixNightlyInfoButton:
+                return App.FENIX_NIGHTLY;
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
+    }
+
+    private App findAppByDownloadButtonId(int id) {
+        switch (id) {
+            case R.id.fennecReleaseDownloadButton:
+                return App.FENNEC_RELEASE;
+            case R.id.firefoxKlarDownloadButton:
+                return App.FIREFOX_KLAR;
+            case R.id.firefoxFocusDownloadButton:
+                return App.FIREFOX_FOCUS;
+            case R.id.firefoxLiteDownloadButton:
+                return App.FIREFOX_LITE;
+            case R.id.fenixReleaseDownloadButton:
+                return App.FENIX_RELEASE;
+            case R.id.fenixBetaDownloadButton:
+                return App.FENIX_BETA;
+            case R.id.fenixNightlyDownloadButton:
+                return App.FENIX_NIGHTLY;
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
     }
 }
