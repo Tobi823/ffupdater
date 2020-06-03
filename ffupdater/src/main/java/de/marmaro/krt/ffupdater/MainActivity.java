@@ -24,8 +24,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;

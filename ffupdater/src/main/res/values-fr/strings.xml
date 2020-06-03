@@ -94,7 +94,7 @@
     <string name="fenix_beta_warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer?</string>
     <string name="fenix_nightly_warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer?</string>
     <string name="firefox_lite_warning">FFUpdater n\'est parfois pas en mesure de télécharger la dernière version car toutes les mises à jour ne sont pas diffusées sur GitHub. Vous souhaitez installer l\'application avec le risque d\'utiliser une version obsolète ?</string>
-    <string name="installed_version">Installé:\t%1$s</string>
+    <string name="installed_version">Installé:\t\t\t%1$s</string>
     <string name="lockwise_description">"UN ACCÈS PAR MOT DE PASSE QUI VOUS EST RÉSERVÉ Suivez vos mots de passe en toute sécurité sur Firefox et accédez-y partout Ouvrez rapidement n’importe quel site Internet de l’application pour accéder à vos comptes "</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater n\'est parfois pas en mesure de télécharger la dernière version car toutes les mises à jour ne sont pas diffusées sur GitHub. Vous souhaitez installer l\'application avec le risque d\'utiliser une version obsolète ?</string>
