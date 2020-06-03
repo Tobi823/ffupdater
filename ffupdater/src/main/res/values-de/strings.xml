@@ -89,5 +89,13 @@
     <string name="fenix_nightly_title">Firefox Preview Nightly</string>
     <string name="fenix_beta_description">Firefox Preview Beta ist ein Entwicklungskanal für neue Firefox Preview-Versionen. Er ist nur für fortgeschrittene Benutzer gedacht.</string>
     <string name="fenix_nightly_description">Firefox Preview Nightly ist ein Entwicklungskanal für neue Firefox Preview-Versionen. Er ist nur für fortgeschrittene Benutzer gedacht.</string>
-    <string name="loading_available_version">Laden...</string>
+    <string name="loading_available_version">Laden…</string>
+    <string name="available_version">Verfügbar:\t%1$s</string>
+    <string name="installed_version">Installiert:\t%1$s</string>
+    <string name="lockwise_title">Firefox Lockwise</string>
+    <string name="fenix_beta_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
+    <string name="fenix_nightly_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
+    <string name="firefox_lite_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>
+    <string name="lockwise_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>
+    <string name="lockwise_description">PASSWORT-ZUGANG FÜR SIE, &amp; NUR SIE Verfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen</string>
 </resources>

@@ -89,5 +89,13 @@
     <string name="fenix_beta_title">Firefox Preview Beta</string>
     <string name="fenix_nightly_description">Firefox Preview Nightly - це розвивальний канал для нових випусків Firefox Preview. Він призначений лише для досвідчених користувачів.</string>
     <string name="fenix_nightly_title">Firefox Preview Nightly</string>
-    <string name="loading_available_version">Завантаження ...</string>
+    <string name="loading_available_version">Завантаження…</string>
+    <string name="lockwise_title">Firefox Lockwise</string>
+    <string name="installed_version">встановлено:\t%1$s</string>
+    <string name="available_version">в наявності:\t%1$s</string>
+    <string name="fenix_beta_warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
+    <string name="fenix_nightly_warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
+    <string name="firefox_lite_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
+    <string name="lockwise_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
+    <string name="lockwise_description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС  Безпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкрийте будь-який веб-сайт із програми, щоб увійти до своїх облікових записів</string>
 </resources>
