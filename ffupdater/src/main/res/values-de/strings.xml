@@ -90,8 +90,8 @@
     <string name="fenix_beta_description">Firefox Preview Beta ist ein Entwicklungskanal für neue Firefox Preview-Versionen. Er ist nur für fortgeschrittene Benutzer gedacht.</string>
     <string name="fenix_nightly_description">Firefox Preview Nightly ist ein Entwicklungskanal für neue Firefox Preview-Versionen. Er ist nur für fortgeschrittene Benutzer gedacht.</string>
     <string name="loading_available_version">Laden…</string>
-    <string name="available_version">Verfügbar:\t%1$s</string>
-    <string name="installed_version">Installiert:\t%1$s</string>
+    <string name="available_version">Verfügbar:%1$s%2$s</string>
+    <string name="installed_version">Installiert:%1$s%2$s</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="fenix_beta_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
     <string name="fenix_nightly_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>

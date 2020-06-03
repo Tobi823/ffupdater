@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
@@ -36,6 +39,7 @@ import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.CrashReporter;
+import de.marmaro.krt.ffupdater.utils.TextViewAligner;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -52,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ConnectivityManager connectivityManager;
     private PackageManager packageManager;
+
+    private String installedVersionSpace = "";
+    private String availableVersionSpace = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +87,20 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         refreshUI();
         fetchUpdates();
+        if (installedVersionSpace.isEmpty() && availableVersionSpace.isEmpty()) {
+            TextViewAligner aligner = new TextViewAligner(this);
+            aligner.addTextView(getInstalledVersionTextView(App.FENNEC_RELEASE),
+                    R.string.installed_version,
+                    0,
+                    "", "2020-06-03T06:02");
+            aligner.addTextView(getAvailableVersionTextView(App.FENNEC_RELEASE),
+                    R.string.available_version,
+                    0,
+                    "", "2020-06-03T06:02");
+            List<String> result = aligner.align();
+            installedVersionSpace = result.get(0);
+            availableVersionSpace = result.get(1);
+        }
     }
 
     @Override
@@ -137,8 +158,10 @@ public class MainActivity extends AppCompatActivity {
         for (App app : App.values()) {
             getAppCard(app).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
             getAvailableVersionTextView(app).setText(getString(R.string.available_version,
+                    availableVersionSpace,
                     shortingVersionOrTimestamp(availableVersions.getAvailableVersionOrTimestamp(app))));
             getInstalledVersionTextView(app).setText(getString(R.string.installed_version,
+                    installedVersionSpace,
                     shortingVersionOrTimestamp(availableVersions.getInstalledVersionOrTimestamp(packageManager, app))));
             getDownloadButton(app).setImageResource(availableVersions.isUpdateAvailable(app) ?
                     R.drawable.ic_file_download_orange :
