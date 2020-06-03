@@ -19,7 +19,7 @@ public class TextViewAligner {
         this.context = context;
     }
 
-    public void addTextView(TextView textView, int stringId, int spaceParamNumber, Object... params) {
+    public void addTextView(TextView textView, int stringId, int spaceParamNumber, Object[] params) {
         textViews.add(textView);
         stringIds.add(stringId);
         spaceParamNumbers.add(spaceParamNumber);
@@ -28,7 +28,7 @@ public class TextViewAligner {
 
     public List<String> align() {
         boolean space = isSpaceNecessary();
-        List<Integer> tabs = new ArrayList<>(Collections.nCopies(0,textViews.size()));
+        List<Integer> tabs = new ArrayList<>(Collections.nCopies(textViews.size(), 0));
 
         for (int tries = 0; tries < 10; tries++) {
             // measure sizes of all textView with the given number of tabs and with/without a space

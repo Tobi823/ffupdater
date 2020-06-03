@@ -92,11 +92,11 @@ public class MainActivity extends AppCompatActivity {
             aligner.addTextView(getInstalledVersionTextView(App.FENNEC_RELEASE),
                     R.string.installed_version,
                     0,
-                    "", "2020-06-03T06:02");
+                    new Object[]{"", "2020-06-03T06:02"});
             aligner.addTextView(getAvailableVersionTextView(App.FENNEC_RELEASE),
                     R.string.available_version,
                     0,
-                    "", "2020-06-03T06:02");
+                    new Object[]{"", "2020-06-03T06:02"});
             List<String> result = aligner.align();
             installedVersionSpace = result.get(0);
             availableVersionSpace = result.get(1);
