@@ -33,7 +33,7 @@
     <string name="information_about_the_app">Information über die Applikation</string>
     <string name="install_activity_label">Anwendung installieren</string>
     <string name="install_application">Anwendung installieren</string>
-    <string name="installation_warning_negative_button">Nein, gehe zu \'Release\' zurück</string>
+    <string name="installation_warning_negative_button">Nein, nicht installieren</string>
     <string name="installation_warning_positive_button">Ja</string>
     <string name="installation_warning_title">"Warnung "</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
