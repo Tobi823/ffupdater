@@ -85,6 +85,8 @@
     <string name="theme_preference_summary">Choose between light and dark theme</string>
     <string name="theme_preference_title">Choose theme</string>
     <string name="theme_system_default">Use system default</string>
+    <string name="too_low_memory_description">On your device is only %1$d MB of space available. This may lead to download or installation failure.</string>
+    <string name="too_low_memory_title">Low Disk Space</string>
     <string name="unsupported_abi_dialog_message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="unsupported_abi_dialog_title">Unsupported device</string>
     <string name="update_interval_12h">12 hours</string>

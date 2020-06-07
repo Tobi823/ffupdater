@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StatFs;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -21,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.util.Pair;
 
+import com.google.common.base.Preconditions;
+
 import org.apache.commons.codec.binary.ApacheCodecHex;
 
 import java.io.File;
@@ -32,6 +35,8 @@ import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
+
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 /**
  * Activity for downloading and installing apps on devices with API Level >= 24/Nougat.
@@ -78,6 +83,7 @@ public class InstallActivity extends AppCompatActivity {
         installingVersionOrTimestamp = availableVersions.getAvailableVersionOrTimestamp(app);
 
         hideAllEntries();
+        checkFreeSpace();
         fetchUrlForDownload();
     }
 
@@ -201,6 +207,7 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void hideAllEntries() {
+        findViewById(R.id.tooLowMemory).setVisibility(View.GONE);
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlSuccess).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlFailure).setVisibility(View.GONE);
@@ -217,6 +224,25 @@ public class InstallActivity extends AppCompatActivity {
         findViewById(R.id.installerSuccess).setVisibility(View.GONE);
         findViewById(R.id.installerFailed).setVisibility(View.GONE);
     }
+
+    private void checkFreeSpace() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            return;
+        }
+
+        File externalFilesDir = getExternalFilesDir(DIRECTORY_DOWNLOADS);
+        Preconditions.checkNotNull(externalFilesDir);
+        long freeBytes = new StatFs(externalFilesDir.getPath()).getFreeBytes();
+        if (freeBytes > 104_857_600) {
+            return;
+        }
+
+        findViewById(R.id.tooLowMemory).setVisibility(View.VISIBLE);
+        long freeMBytes = freeBytes / (1024 * 1024);
+        TextView description = findViewById(R.id.tooLowMemoryDescription);
+        description.setText(getString(R.string.too_low_memory_description, freeMBytes));
+    }
+
 
     private void actionFetching() {
         findViewById(R.id.fetchUrl).setVisibility(View.VISIBLE);

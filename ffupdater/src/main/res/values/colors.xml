@@ -4,6 +4,8 @@
     <color name="colorAccent">#FFC107</color>
     <color name="colorPrimary">#004acc</color>
     <color name="colorPrimaryDark">#003eaa</color>
+    <!-- https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
     <color name="errorRed">#D32F2F</color>
     <color name="successGreen">#8BC34A</color>
+    <color name="warningOrange">#FF9800</color>
 </resources>

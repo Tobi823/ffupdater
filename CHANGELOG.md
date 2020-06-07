@@ -1,3 +1,6 @@
+# 2020-XX-XX Version 68.4.1 (47)
+ * Check for enough free space and display warning if < 100MB
+
 # 2020-06-07 Version 68.4.0 (46)
  * Add Fenix Beta, Fenix Nightly and Lockwise
  * Download Fenix Release/Beta/Nightly, Focus and Klar from Mozilla's Taskcluster (continuous integration server)

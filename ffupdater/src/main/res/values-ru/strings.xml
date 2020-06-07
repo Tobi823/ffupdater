@@ -5,6 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
     <string name="application_successful_installed">Приложение успешно установлено</string>
+    <string name="available_version">доступный:%1$s%2$s</string>
     <string name="but_was">Но был:</string>
     <string name="device_too_old_dialog_message">Для работы приложения требуется Android %1$s, но на вашем устройстве работает только Android %2$s. Выберите другое приложение, обновите операционную систему или переключитесь на новый смартфон.</string>
     <string name="device_too_old_dialog_title">Устройство слишком старое</string>
@@ -15,6 +16,12 @@
     <string name="downloaded_application_is_not_verified">Загруженное приложение НЕ проверяется</string>
     <string name="downloaded_application_is_verified">Загруженное приложение проверено</string>
     <string name="expected_sha_256_certificate_fingerprint">Ожидаемый отпечаток сертификата SHA-256:</string>
+    <string name="fenix_beta_description">Бета-просмотр Firefox - это канал разработки новых релизов Firefox Preview. Он предназначен только для продвинутых пользователей.</string>
+    <string name="fenix_beta_title">Бета-просмотр Firefox</string>
+    <string name="fenix_beta_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
+    <string name="fenix_nightly_description">Firefox Preview Nightly - это канал разработки новых релизов Firefox Preview. Он предназначен только для продвинутых пользователей.</string>
+    <string name="fenix_nightly_title">Firefox Preview Nightly</string>
+    <string name="fenix_nightly_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
     <string name="fenix_release_description">Firefox Preview (также известный как Fenix) - это совершенно новый браузер для Android. Это приложение в настоящее время находится в разработке и содержит больше трекеров, чем обычно для анализа/улучшения использования приложения.\n\nПриложение будет загружено с GitHub - можно загрузить только те обновления, которые выпущены на GitHub.</string>
     <string name="fenix_release_title">Firefox Preview</string>
     <string name="fenix_warning">Это приложение предназначено для тестеров и поэтому содержит некоторые трекеры. Вы действительно хотите установить это приложение?</string>
@@ -29,6 +36,7 @@
     <string name="firefox_klar_title">Firefox Klar</string>
     <string name="firefox_lite_description">Firefox Lite разработан в первую очередь для пользователей в Индонезии. Приложение очень маленькое и поддерживает методы для снижения (мобильного) потребления данных.\n\nПриложение будет загружено с GitHub - загружать можно только те обновления, которые выпущены на GitHub.</string>
     <string name="firefox_lite_title">Firefox Lite</string>
+    <string name="firefox_lite_warning">FFUpdater иногда не может загрузить последнюю версию, потому что не все обновления выпускаются на GitHub. Вы хотите установить приложение с риском использования устаревшей версии?</string>
     <string name="infobox">
         Это программа обновления для нескольких браузеров Mozilla.
         Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления.
@@ -44,8 +52,13 @@
     <string name="installation_warning_title">"Предупреждение"</string>
     <string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
+    <string name="installed_version">установлены:%1$s%2$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Либо злоумышленник заменил правильную загрузку на фальсифицированную, либо проверка сертификата больше не работает. Вы можете перепроверить отпечаток сертификата на apkmirror.com или создать проблему на сайте https://notabug.org/Tobiwan/ffupdater, чтобы сообщить мне об ошибке.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Либо установлено фальсифицированное приложение, либо больше не работает программа проверки сертификатов. Вы можете перепроверить отпечаток сертификата на apkmirror.com или создать проблему на сайте https://notabug.org/Tobiwan/ffupdater, чтобы сообщить об ошибке.\n\nЯ рекомендую удалить приложение.</string>
+    <string name="loading_available_version">Загрузка…</string>
+    <string name="lockwise_description">ПАРОЛЬ ДОСТУПА ДЛЯ ВАС, И ТОЛЬКО ДЛЯ ВАС  Надежно отслеживайте свои пароли Firefox и получайте доступ к ним в любом месте. Быстро откройте любой сайт из приложения, чтобы попасть в свои учетные записи.</string>
+    <string name="lockwise_title">Firefox Lockwise</string>
+    <string name="lockwise_warning">FFUpdater иногда не может загрузить последнюю версию, потому что не все обновления выпускаются на GitHub. Вы хотите установить приложение с риском использования устаревшей версии?</string>
     <string name="main_activity_subtitle">Обновите свои браузеры от Mozilla</string>
     <string name="missing_external_storage_permission_dialog_summary">Приложение запросит разрешение на загрузку файлов и их чтение. Но только несколько устройств нуждаются в этом разрешении. Если вы сомневаетесь, откажите в запросе разрешения - вы можете включить разрешение на хранение позже в настройках вашего устройства.\n\nЯ буду использовать только внешнюю папку приложения и никогда не получу доступ к вашим личным фотографиям и т.д.</string>
     <string name="missing_external_storage_permission_dialog_title">Запрос разрешения</string>
@@ -67,6 +80,8 @@
     <string name="theme_preference_summary">Выбор между светлой и темной темой</string>
     <string name="theme_preference_title">Choose theme</string>
     <string name="theme_system_default">Использовать систему по умолчанию</string>
+    <string name="too_low_memory_description">На вашем устройстве имеется только %1$d MB доступного места. Это может привести к сбою в загрузке или установке.</string>
+    <string name="too_low_memory_title">Низкое дисковое пространство</string>
     <string name="unsupported_abi_dialog_message">Выбранный браузер несовместим с процессором вашего смартфона. Пожалуйста, выберите другой браузер.</string>
     <string name="unsupported_abi_dialog_title">Устройство не поддерживается</string>
     <string name="update_interval_12h">12 часов</string>
@@ -91,17 +106,4 @@
     <string name="update_notification_channel_name">Уведомление об обновлении</string>
     <string name="verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
-    <string name="loading_available_version">Загрузка…</string>
-    <string name="fenix_beta_title">Бета-просмотр Firefox</string>
-    <string name="fenix_nightly_title">Firefox Preview Nightly</string>
-    <string name="fenix_nightly_description">Firefox Preview Nightly - это канал разработки новых релизов Firefox Preview. Он предназначен только для продвинутых пользователей.</string>
-    <string name="fenix_beta_description">Бета-просмотр Firefox - это канал разработки новых релизов Firefox Preview. Он предназначен только для продвинутых пользователей.</string>
-    <string name="available_version">доступный:%1$s%2$s</string>
-    <string name="installed_version">установлены:%1$s%2$s</string>
-    <string name="fenix_beta_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
-    <string name="fenix_nightly_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
-    <string name="firefox_lite_warning">FFUpdater иногда не может загрузить последнюю версию, потому что не все обновления выпускаются на GitHub. Вы хотите установить приложение с риском использования устаревшей версии?</string>
-    <string name="lockwise_warning">FFUpdater иногда не может загрузить последнюю версию, потому что не все обновления выпускаются на GitHub. Вы хотите установить приложение с риском использования устаревшей версии?</string>
-    <string name="lockwise_description">ПАРОЛЬ ДОСТУПА ДЛЯ ВАС, И ТОЛЬКО ДЛЯ ВАС  Надежно отслеживайте свои пароли Firefox и получайте доступ к ним в любом месте. Быстро откройте любой сайт из приложения, чтобы попасть в свои учетные записи.</string>
-    <string name="lockwise_title">Firefox Lockwise</string>
 </resources>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <color name="cardview_background_color">@color/cardview_dark_background</color>
+    <!-- https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
     <color name="errorRed">#D50000</color>
     <color name="successGreen">#33691E</color>
+    <color name="warningOrange">#EF6C00</color>
 </resources>

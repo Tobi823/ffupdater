@@ -16,6 +16,22 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/tooLowMemory"
+            style="@style/DownloadActivitySegment"
+            android:background="@color/warningOrange"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/BoldTextView"
+                android:text="@string/too_low_memory_title" />
+
+            <TextView
+                style="@style/DefaultTextView"
+                android:id="@+id/tooLowMemoryDescription" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/fetchUrl"
             style="@style/DownloadActivitySegment">
 

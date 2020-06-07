@@ -5,6 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
     <string name="application_successful_installed">Програма успішно встановлена</string>
+    <string name="available_version">в наявності:%1$s%2$s</string>
     <string name="but_was">Але було:</string>
     <string name="device_too_old_dialog_message">Додаток вимагає Android %1$s. Але на вашому пристрої працює лише Android %2$s. Або виберіть інший додаток, оновіть операційну систему або перейдіть на новий смартфон.</string>
     <string name="device_too_old_dialog_title">Пристрій занадто старий</string>
@@ -15,6 +16,12 @@
     <string name="downloaded_application_is_not_verified">Завантажена програма НЕ перевірена</string>
     <string name="downloaded_application_is_verified">Завантажена програма перевірена</string>
     <string name="expected_sha_256_certificate_fingerprint">Очікуваний відбиток сертифіката SHA-256:</string>
+    <string name="fenix_beta_description">Firefox Preview Beta - це розвивальний канал для нових випусків Firefox Preview. Він призначений лише для досвідчених користувачів.</string>
+    <string name="fenix_beta_title">Firefox Preview Beta</string>
+    <string name="fenix_beta_warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
+    <string name="fenix_nightly_description">Firefox Preview Nightly - це розвивальний канал для нових випусків Firefox Preview. Він призначений лише для досвідчених користувачів.</string>
+    <string name="fenix_nightly_title">Firefox Preview Nightly</string>
+    <string name="fenix_nightly_warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
     <string name="fenix_release_description">Firefox Preview (також відомий як Fenix) - це абсолютно новий браузер для Android. Зараз ця програма розробляється і містить більше трекерів, ніж зазвичай, для аналізу / покращення використання додатків.  Додаток буде завантажено з GitHub - можна завантажити лише оновлення, які випускаються на GitHub.</string>
     <string name="fenix_release_title">Firefox Preview</string>
     <string name="fenix_warning">Цей додаток розроблено для тестувальників і тому містить деякі трекери. Ви дійсно хочете встановити цю програму?</string>
@@ -29,6 +36,7 @@
     <string name="firefox_klar_title">Firefox Klar</string>
     <string name="firefox_lite_description">Firefox Lite є первинною розробкою для користувачів в Індонезії. Додаток дуже маленький і підтримує методи зменшення споживання (мобільних) даних.  Додаток буде завантажено з GitHub - можна завантажити лише оновлення, які випускаються на GitHub.</string>
     <string name="firefox_lite_title">Firefox Lite</string>
+    <string name="firefox_lite_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
     <string name="infobox">Це оновлення для декількох браузерів Mozilla. Клацніть кнопку плюс, щоб встановити, і кнопку зі стрілкою вниз, щоб оновити веб-переглядач. Ви можете перевірити наявність нових оновлень, провевши пальцем вниз або повторно відкривши програму. За замовчуванням додаток регулярно перевіряє наявність оновлень у фоновому режимі. Я зробив усе можливе, щоб забезпечити процес встановлення / оновлення - сміливо перевіряйте його або вдосконалюйте його, якщо це потрібно.</string>
     <string name="information_about_the_app">інформація про додаток</string>
     <string name="install_activity_label">Встановити програму</string>
@@ -38,8 +46,13 @@
     <string name="installation_warning_title">Увага</string>
     <string name="installed_app_is_not_verified">Встановлений додаток НЕ підтверджений</string>
     <string name="installed_application_is_verified">Встановлена програма перевірена</string>
+    <string name="installed_version">встановлено:%1$s%2$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Або зловмисник замінив правильне завантаження на підроблене, або перевірка сертифікатів більше не працює. Ви можете двічі перевірити відбиток сертифіката на apkmirror.com або створити проблему на https://notabug.org/Tobiwan/ffupdater, щоб повідомити про помилку.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Або підроблена програма встановлена, або перевірка сертифікатів більше не працює. Ви можете двічі перевірити відбиток сертифіката на apkmirror.com або створити проблему на https://notabug.org/Tobiwan/ffupdater, щоб повідомити про помилку.  Рекомендую видалити програму.</string>
+    <string name="loading_available_version">Завантаження…</string>
+    <string name="lockwise_description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС  Безпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкрийте будь-який веб-сайт із програми, щоб увійти до своїх облікових записів</string>
+    <string name="lockwise_title">Firefox Lockwise</string>
+    <string name="lockwise_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
     <string name="main_activity_subtitle">Оновіть веб-переглядачі від Mozilla</string>
     <string name="missing_external_storage_permission_dialog_summary">Додаток запитуватиме дозвіл на зберігання для завантаження файлів та їх читання. Але лише кілька пристроїв потребують цього дозволу. Якщо ви сумніваєтесь, відхиліть запит на дозвіл - ви можете ввімкнути дозвіл на зберігання пізніше в налаштуваннях вашого пристрою.\n\nЯ буду використовувати лише зовнішню папку додатків, і я ніколи не отримаю доступ до ваших приватних фотографій тощо.</string>
     <string name="missing_external_storage_permission_dialog_title">Запит на дозвіл</string>
@@ -61,6 +74,8 @@
     <string name="theme_preference_summary">Вибирайте світлу та темну тему</string>
     <string name="theme_preference_title">Виберіть тему</string>
     <string name="theme_system_default">Використовуйте системний стандарт за замовчуванням</string>
+    <string name="too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>
+    <string name="too_low_memory_title">Мало місця на диску</string>
     <string name="unsupported_abi_dialog_message">Вибраний браузер несумісний з процесором вашого смартфона. Виберіть інший веб-переглядач.</string>
     <string name="unsupported_abi_dialog_title">Непідтримуваний пристрій</string>
     <string name="update_interval_12h">12 годин</string>
@@ -85,17 +100,4 @@
     <string name="update_notification_channel_name">Повідомлення оновлення</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
-    <string name="fenix_beta_description">Firefox Preview Beta - це розвивальний канал для нових випусків Firefox Preview. Він призначений лише для досвідчених користувачів.</string>
-    <string name="fenix_beta_title">Firefox Preview Beta</string>
-    <string name="fenix_nightly_description">Firefox Preview Nightly - це розвивальний канал для нових випусків Firefox Preview. Він призначений лише для досвідчених користувачів.</string>
-    <string name="fenix_nightly_title">Firefox Preview Nightly</string>
-    <string name="loading_available_version">Завантаження…</string>
-    <string name="lockwise_title">Firefox Lockwise</string>
-    <string name="installed_version">встановлено:%1$s%2$s</string>
-    <string name="available_version">в наявності:%1$s%2$s</string>
-    <string name="fenix_beta_warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
-    <string name="fenix_nightly_warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
-    <string name="firefox_lite_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
-    <string name="lockwise_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
-    <string name="lockwise_description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС  Безпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкрийте будь-який веб-сайт із програми, щоб увійти до своїх облікових записів</string>
 </resources>

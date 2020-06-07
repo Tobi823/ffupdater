@@ -5,6 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Installation der Anwendung schlug fehl</string>
     <string name="application_successful_installed">Anwendung erfolgreich installiert</string>
+    <string name="available_version">Verfügbar:%1$s%2$s</string>
     <string name="but_was">Aber war:</string>
     <string name="device_too_old_dialog_message">Die Anwendung erfordert Android %1$s. Aber auf Ihrem Gerät läuft nur Android %2$s. Wählen Sie entweder eine andere Applikation, aktualisieren Sie Ihr Betriebssystem oder wechseln Sie zu einem neueren Smartphone.</string>
     <string name="device_too_old_dialog_title">Gerät ist zu alt</string>
@@ -15,6 +16,12 @@
     <string name="downloaded_application_is_not_verified">Heruntergeladene Anwendung ist NICHT verifiziert</string>
     <string name="downloaded_application_is_verified">Heruntergeladene Anwendung ist verifiziert</string>
     <string name="expected_sha_256_certificate_fingerprint">Erwarteter SHA-256 Fingerabdruck des Zertifikats:</string>
+    <string name="fenix_beta_description">Firefox Preview Beta ist ein Entwicklungskanal für neue Firefox Preview-Versionen. Er ist nur für fortgeschrittene Benutzer gedacht.</string>
+    <string name="fenix_beta_title">Firefox Preview Beta</string>
+    <string name="fenix_beta_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
+    <string name="fenix_nightly_description">Firefox Preview Nightly ist ein Entwicklungskanal für neue Firefox Preview-Versionen. Er ist nur für fortgeschrittene Benutzer gedacht.</string>
+    <string name="fenix_nightly_title">Firefox Preview Nightly</string>
+    <string name="fenix_nightly_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
     <string name="fenix_release_description">Firefox Preview (auch als Fenix bekannt) ist ein völlig neuer Browser für Android. Diese Anwendung befindet sich derzeit in der Entwicklung und enthält mehr Tracker als üblich, um die Nutzung der Anwendung zu analysieren/verbessern.  Die App wird von GitHub heruntergeladen werden - nur Updates, die auf GitHub veröffentlicht werden, können heruntergeladen werden.</string>
     <string name="fenix_release_title">Firefox Preview</string>
     <string name="fenix_warning">Diese App ist für Tester konzipiert und enthält daher einige Tracker. Wollen Sie diese App wirklich installieren?</string>
@@ -29,6 +36,7 @@
     <string name="firefox_klar_title">Firefox Klar</string>
     <string name="firefox_lite_description">Firefox Lite ist primär für Benutzer in Indonesien entwickelt worden. Die Anwendung ist sehr klein und unterstützt Techniken zur Reduzierung des (mobilen) Datenverbrauchs.  Die Anwendung wird von GitHub heruntergeladen - nur Updates, die auf GitHub veröffentlicht werden, können heruntergeladen werden.</string>
     <string name="firefox_lite_title">Firefox Lite</string>
+    <string name="firefox_lite_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>
     <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern.</string>
     <string name="information_about_the_app">Information über die Applikation</string>
     <string name="install_activity_label">Anwendung installieren</string>
@@ -38,8 +46,13 @@
     <string name="installation_warning_title">"Warnung "</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
     <string name="installed_application_is_verified">Installierte Anwendung ist verifiziert</string>
+    <string name="installed_version">Installiert:%1$s%2$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Entweder hat ein Angreifer den korrekten Download durch einen manipulierten ersetzt, oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Entweder wurde eine manipulierte Anwendung installiert oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
+    <string name="loading_available_version">Laden…</string>
+    <string name="lockwise_description">PASSWORT-ZUGANG FÜR SIE, &amp; NUR SIE Verfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen</string>
+    <string name="lockwise_title">Firefox Lockwise</string>
+    <string name="lockwise_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>
     <string name="main_activity_subtitle">Aktualisieren Sie Ihre Browser von Mozilla</string>
     <string name="missing_external_storage_permission_dialog_summary">Die App fragt nach einer Speichergenehmigung, um Dateien herunterzuladen und zu lesen. Aber nur wenige Geräte benötigen diese Erlaubnis. Wenn Sie unsicher sind, lehnen Sie die Erlaubnisanfrage ab - Sie können die Speichererlaubnis später in den Einstellungen Ihres Gerätes aktivieren.\n\nIch werde nur den externen Anwendungsordner verwenden und niemals auf Ihre privaten Bilder usw. zugreifen.</string>
     <string name="missing_external_storage_permission_dialog_title">Berechtigungsanfrage</string>
@@ -61,6 +74,8 @@
     <string name="theme_preference_summary">Wechsle zwischen Dark und Light Theme</string>
     <string name="theme_preference_title">Theme auswählen</string>
     <string name="theme_system_default">Systemeinstellung</string>
+    <string name="too_low_memory_description">Auf Ihrem Gerät ist nur %1$d MB Speicherplatz verfügbar. Dies kann zu einem Download- oder Installationsfehler führen.</string>
+    <string name="too_low_memory_title">Wenig freier Speicher</string>
     <string name="unsupported_abi_dialog_message">Der ausgewählte Browser ist mit dem Prozessor Ihres Smartphones nicht kompatibel. Bitte wähle einen anderen Browser.</string>
     <string name="unsupported_abi_dialog_title">Nicht unterstütztes Gerät</string>
     <string name="update_interval_12h">12 Stunden</string>
@@ -85,17 +100,4 @@
     <string name="update_notification_channel_name">Update-Benachrichtigung</string>
     <string name="verifying_downloaded_application_certificate">Zertifikat der Anwendung überprüfen</string>
     <string name="you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
-    <string name="fenix_beta_title">Firefox Preview Beta</string>
-    <string name="fenix_nightly_title">Firefox Preview Nightly</string>
-    <string name="fenix_beta_description">Firefox Preview Beta ist ein Entwicklungskanal für neue Firefox Preview-Versionen. Er ist nur für fortgeschrittene Benutzer gedacht.</string>
-    <string name="fenix_nightly_description">Firefox Preview Nightly ist ein Entwicklungskanal für neue Firefox Preview-Versionen. Er ist nur für fortgeschrittene Benutzer gedacht.</string>
-    <string name="loading_available_version">Laden…</string>
-    <string name="available_version">Verfügbar:%1$s%2$s</string>
-    <string name="installed_version">Installiert:%1$s%2$s</string>
-    <string name="lockwise_title">Firefox Lockwise</string>
-    <string name="fenix_beta_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
-    <string name="fenix_nightly_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
-    <string name="firefox_lite_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>
-    <string name="lockwise_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>
-    <string name="lockwise_description">PASSWORT-ZUGANG FÜR SIE, &amp; NUR SIE Verfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen</string>
 </resources>
