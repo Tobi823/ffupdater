@@ -1,3 +1,10 @@
+# 2020-06-07 Version 68.4.0 (46)
+ * Add Fenix Beta, Fenix Nightly and Lockwise
+ * Download Fenix Release/Beta/Nightly, Focus and Klar from Mozilla's Taskcluster (continuous integration server)
+ * Fix "Light theme is always shown at first run"
+ * Thanks Rail Aliiev and Johan Lorenzo from Mozilla for their support <https://bugzilla.mozilla.org/show_bug.cgi?id=1627518>
+ * Thanks KarlHeinz and DeenHyper74 for their error reporting and support
+
 # 2020-05-20 Version 68.3.7 (42)
  * Add simple crash reporter (by opening the mail app with the error message)
  * Fix crash by asking for WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions
