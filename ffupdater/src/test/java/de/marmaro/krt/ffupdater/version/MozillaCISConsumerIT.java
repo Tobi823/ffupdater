@@ -31,7 +31,6 @@ public class MozillaCISConsumerIT {
     }
 
     private void checkConnection(String url) throws IOException {
-        System.out.println(url);
         HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(url).openConnection();
         try {
             assertThat(urlConnection.getResponseCode(), is(both(greaterThanOrEqualTo(200)).and(lessThan(300))));
