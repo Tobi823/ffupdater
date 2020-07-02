@@ -1,0 +1,2 @@
+ * Fix broken Fenix download - if the download is still broken for you, wait 10 minutes or delete the storage of the app
+ * Check for enough free space and display warning if < 100MB

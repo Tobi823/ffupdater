@@ -1,4 +1,5 @@
-# 2020-XX-XX Version 68.4.1 (47)
+# 2020-07-02 Version 68.4.1 (47)
+ * Fix broken Fenix download - if the download is still broken for you, wait 10 minutes or delete the storage of the app
  * Check for enough free space and display warning if < 100MB
 
 # 2020-06-07 Version 68.4.0 (46)

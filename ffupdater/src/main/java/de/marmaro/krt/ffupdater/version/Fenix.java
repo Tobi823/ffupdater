@@ -28,7 +28,6 @@ class Fenix {
 
     private static String getFile(App app, DeviceEnvironment.ABI abi) {
         switch (app) {
-            case FENIX_RELEASE:
             case FENIX_BETA:
                 switch (abi) {
                     case AARCH64:
@@ -39,7 +38,10 @@ class Fenix {
                         return "build/x86/geckoBeta/target.apk";
                     case X86_64:
                         return "build/x86_64/geckoBeta/target.apk";
+                    default:
+                        throw new RuntimeException("switch fallthrough");
                 }
+            case FENIX_RELEASE:
             case FENIX_NIGHTLY:
                 switch (abi) {
                     case AARCH64:
@@ -50,6 +52,8 @@ class Fenix {
                         return "build/x86/geckoNightly/target.apk";
                     case X86_64:
                         return "build/x86_64/geckoNightly/target.apk";
+                    default:
+                        throw new RuntimeException("switch fallthrough");
                 }
         }
         throw new RuntimeException("switch fallthrough");
@@ -67,6 +71,8 @@ class Fenix {
                         return "mobile.v2.fenix.production.latest.x86";
                     case X86_64:
                         return "mobile.v2.fenix.production.latest.x86_64";
+                    default:
+                        throw new RuntimeException("switch fallthrough");
                 }
             case FENIX_BETA:
                 switch (abi) {
@@ -78,6 +84,8 @@ class Fenix {
                         return "mobile.v2.fenix.beta.latest.x86";
                     case X86_64:
                         return "mobile.v2.fenix.beta.latest.x86_64";
+                    default:
+                        throw new RuntimeException("switch fallthrough");
                 }
             case FENIX_NIGHTLY:
                 switch (abi) {
@@ -89,6 +97,8 @@ class Fenix {
                         return "mobile.v2.fenix.nightly.latest.x86";
                     case X86_64:
                         return "mobile.v2.fenix.nightly.latest.x86_64";
+                    default:
+                        throw new RuntimeException("switch fallthrough");
                 }
         }
         throw new RuntimeException("switch fallthrough");

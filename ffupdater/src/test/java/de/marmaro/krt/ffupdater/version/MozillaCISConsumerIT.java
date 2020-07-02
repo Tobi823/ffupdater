@@ -22,7 +22,7 @@ public class MozillaCISConsumerIT {
     public void getTimestamp_fenixProduction_timestampMustNotBeOld() throws IOException {
         MozillaCIConsumer consumer = MozillaCIConsumer.findLatest(
                 "mobile.v2.fenix.production.latest.arm64-v8a",
-                "build/arm64-v8a/geckoBeta/target.apk");
+                "build/arm64-v8a/geckoNightly/target.apk");
         System.out.println(consumer.getTimestamp());
         LocalDateTime timestamp = LocalDateTime.parse(consumer.getTimestamp(), DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         System.out.println(timestamp);
@@ -31,6 +31,7 @@ public class MozillaCISConsumerIT {
     }
 
     private void checkConnection(String url) throws IOException {
+        System.out.println(url);
         HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(url).openConnection();
         try {
             assertThat(urlConnection.getResponseCode(), is(both(greaterThanOrEqualTo(200)).and(lessThan(300))));
