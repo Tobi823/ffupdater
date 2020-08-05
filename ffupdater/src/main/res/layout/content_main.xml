@@ -246,7 +246,7 @@
                         android:contentDescription="@string/app_icon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@mipmap/ic_logo_fenix" />
+                        app:srcCompat="@mipmap/ic_logo_firefox_release" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -301,7 +301,7 @@
                         android:contentDescription="@string/app_icon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@mipmap/ic_logo_fenix" />
+                        app:srcCompat="@mipmap/ic_logo_firefox_beta" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -356,7 +356,7 @@
                         android:contentDescription="@string/app_icon"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@mipmap/ic_logo_fenix" />
+                        app:srcCompat="@mipmap/ic_logo_firefox_nightly" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
