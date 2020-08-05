@@ -60,7 +60,7 @@ public class InstallActivity extends AppCompatActivity {
     private DownloadManagerAdapter downloadManager;
     private App app;
     private String downloadUrl;
-    private String installingVersionOrTimestamp;
+    private String versionOrTimestamp;
     private AvailableVersions availableVersions;
     private long downloadId = -1;
     private boolean killSwitch;
@@ -86,8 +86,6 @@ public class InstallActivity extends AppCompatActivity {
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
         String appName = extras.getString(EXTRA_APP_NAME);
         app = App.valueOf(Objects.requireNonNull(appName));
-        downloadUrl = Objects.requireNonNull(extras.getString(EXTRA_DOWNLOAD_URL)); //TODO
-        installingVersionOrTimestamp = availableVersions.getAvailableVersionOrTimestamp(app);
 
         hideAllEntries();
         checkFreeSpace();
@@ -129,13 +127,7 @@ public class InstallActivity extends AppCompatActivity {
                 case PackageInstaller.STATUS_SUCCESS:
                     actionInstallationFinished(true, null);
                     break;
-                case PackageInstaller.STATUS_FAILURE:
-                case PackageInstaller.STATUS_FAILURE_ABORTED:
-                case PackageInstaller.STATUS_FAILURE_BLOCKED:
-                case PackageInstaller.STATUS_FAILURE_CONFLICT:
-                case PackageInstaller.STATUS_FAILURE_INCOMPATIBLE:
-                case PackageInstaller.STATUS_FAILURE_INVALID:
-                case PackageInstaller.STATUS_FAILURE_STORAGE:
+                default:
                     String text = String.format(Locale.getDefault(), "(%d) %s", status, message);
                     actionInstallationFinished(false, text);
             }
@@ -143,24 +135,26 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void fetchUrlForDownload() {
-        if (!downloadUrl.isEmpty()) {
-            actionFetchSuccessful();
-            downloadApplication();
-            return;
-        }
-
-        if (!availableVersions.getDownloadUrl(app).isEmpty()) {
-            downloadUrl = availableVersions.getDownloadUrl(app);
-            actionFetchSuccessful();
-            downloadApplication();
-            return;
+        {
+            String downloadUrl = availableVersions.getDownloadUrl(app);
+            String versionOrTimestamp = availableVersions.getAvailableVersionOrTimestamp(app);
+            if (!downloadUrl.isEmpty() && !versionOrTimestamp.isEmpty()) {
+                this.downloadUrl = downloadUrl;
+                this.versionOrTimestamp = versionOrTimestamp;
+                actionFetchSuccessful();
+                downloadApplication();
+                return;
+            }
         }
 
         actionFetching();
         availableVersions.checkUpdateForApp(app, this, () -> {
-            if (!availableVersions.getDownloadUrl(app).isEmpty()) {
+            String downloadUrl = availableVersions.getDownloadUrl(app);
+            String versionOrTimestamp = availableVersions.getAvailableVersionOrTimestamp(app);
+            if (!downloadUrl.isEmpty() && !versionOrTimestamp.isEmpty()) {
                 actionFetchSuccessful();
-                downloadUrl = availableVersions.getDownloadUrl(app);
+                this.downloadUrl = downloadUrl;
+                this.versionOrTimestamp = versionOrTimestamp;
                 downloadApplication();
             } else {
                 actionFetchUnsuccessful();
@@ -395,7 +389,7 @@ public class InstallActivity extends AppCompatActivity {
             }
         });
         if (success) {
-            availableVersions.setInstalledVersionOrTimestamp(app, installingVersionOrTimestamp);
+            availableVersions.setInstalledVersionOrTimestamp(app, versionOrTimestamp);
         }
         downloadManager.remove(downloadId);
     }
