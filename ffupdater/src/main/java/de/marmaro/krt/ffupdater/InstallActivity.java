@@ -111,6 +111,10 @@ public class InstallActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This method will be called when the app installation is completed.
+     * @param intent intent
+     */
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -125,7 +129,13 @@ public class InstallActivity extends AppCompatActivity {
                 case PackageInstaller.STATUS_SUCCESS:
                     actionInstallationFinished(true, null);
                     break;
-                default:
+                case PackageInstaller.STATUS_FAILURE:
+                case PackageInstaller.STATUS_FAILURE_ABORTED:
+                case PackageInstaller.STATUS_FAILURE_BLOCKED:
+                case PackageInstaller.STATUS_FAILURE_CONFLICT:
+                case PackageInstaller.STATUS_FAILURE_INCOMPATIBLE:
+                case PackageInstaller.STATUS_FAILURE_INVALID:
+                case PackageInstaller.STATUS_FAILURE_STORAGE:
                     String text = String.format(Locale.getDefault(), "(%d) %s", status, message);
                     actionInstallationFinished(false, text);
             }
@@ -216,6 +226,7 @@ public class InstallActivity extends AppCompatActivity {
      * See example: https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/content/InstallApkSessionApi.java
      */
     private void install() {
+        findViewById(R.id.installingApplication).setVisibility(View.VISIBLE);
         PackageInstaller installer = getPackageManager().getPackageInstaller();
         PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(MODE_FULL_INSTALL);
         try (PackageInstaller.Session session = installer.openSession(installer.createSession(params))) {
@@ -255,6 +266,7 @@ public class InstallActivity extends AppCompatActivity {
         findViewById(R.id.fingerprintDownloadGood).setVisibility(View.GONE);
         findViewById(R.id.fingerprintDownloadBad).setVisibility(View.GONE);
         findViewById(R.id.installConfirmation).setVisibility(View.GONE);
+        findViewById(R.id.installingApplication).setVisibility(View.GONE);
         findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.GONE);
         findViewById(R.id.fingerprintInstalledGood).setVisibility(View.GONE);
         findViewById(R.id.fingerprintInstalledBad).setVisibility(View.GONE);
@@ -372,12 +384,14 @@ public class InstallActivity extends AppCompatActivity {
 
     private void actionInstallationFinished(boolean success, String errorMessage) {
         runOnUiThread(() -> {
+            findViewById(R.id.installingApplication).setVisibility(View.GONE);
             findViewById(R.id.installConfirmation).setVisibility(View.GONE);
             if (success) {
                 findViewById(R.id.installerSuccess).setVisibility(View.VISIBLE);
                 actionVerifyInstalledAppSignature();
             } else {
                 findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
+                findTextViewById(R.id.installerFailedReason).setText(errorMessage);
             }
         });
         if (success) {

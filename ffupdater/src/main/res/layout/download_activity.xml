@@ -206,6 +206,18 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/installingApplication"
+            style="@style/DownloadActivitySegment">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/verifyInstalledFingerprint"
             style="@style/DownloadActivitySegment">
 
