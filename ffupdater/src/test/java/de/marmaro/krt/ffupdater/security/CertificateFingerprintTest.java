@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
+import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 public class CertificateFingerprintTest {
 
-    private final byte[] fennecReleaseSignatureBytes = new byte[]{48, -126, 3, -90, 48, -126, 2, -114, -96, 3, 2, 1, 2,
+    private final byte[] firefoxReleaseSignatureBytes = new byte[]{48, -126, 3, -90, 48, -126, 2, -114, -96, 3, 2, 1, 2,
             2, 4, 76, 114, -3, -120, 48, 13, 6, 9, 42, -122, 72, -122, -9, 13, 1, 1, 5, 5, 0, 48, -127, -108, 49, 11,
             48, 9, 6, 3, 85, 4, 6, 19, 2, 85, 83, 49, 19, 48, 17, 6, 3, 85, 4, 8, 19, 10, 67, 97, 108, 105, 102, 111,
             114, 110, 105, 97, 49, 22, 48, 20, 6, 3, 85, 4, 7, 19, 13, 77, 111, 117, 110, 116, 97, 105, 110, 32, 86,
@@ -61,22 +61,22 @@ public class CertificateFingerprintTest {
             -36, 105, 28, -52, -96, -87, -50};
 
     @Test
-    public void checkFingerprintOfInstalledApp_withFennecReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
+    public void checkFingerprintOfInstalledApp_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
         PackageManager packageManager = mock(PackageManager.class);
         PackageInfo packageInfo = new PackageInfo();
         packageInfo.signatures = new Signature[]{mock(Signature.class)};
 
-        when(packageManager.getPackageInfo(FENNEC_RELEASE.getPackageName(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
-        when(packageInfo.signatures[0].toByteArray()).thenReturn(fennecReleaseSignatureBytes);
+        when(packageManager.getPackageInfo(FENIX_RELEASE.getPackageName(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
+        when(packageInfo.signatures[0].toByteArray()).thenReturn(firefoxReleaseSignatureBytes);
 
-        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfInstalledApp(packageManager, FENNEC_RELEASE);
+        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfInstalledApp(packageManager, FENIX_RELEASE);
         assertNotNull(actual.first);
         assertTrue(actual.first);
         assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);
     }
 
     @Test
-    public void checkFingerprintOfFile_withFennecReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
+    public void checkFingerprintOfFile_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
         PackageManager packageManager = mock(PackageManager.class);
         PackageInfo packageInfo = new PackageInfo();
         packageInfo.signatures = new Signature[]{mock(Signature.class)};
@@ -84,9 +84,9 @@ public class CertificateFingerprintTest {
         File file = new File("/path/to/apk");
 
         when(packageManager.getPackageArchiveInfo(file.getAbsolutePath(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
-        when(packageInfo.signatures[0].toByteArray()).thenReturn(fennecReleaseSignatureBytes);
+        when(packageInfo.signatures[0].toByteArray()).thenReturn(firefoxReleaseSignatureBytes);
 
-        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfFile(packageManager, file, FENNEC_RELEASE);
+        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfFile(packageManager, file, FENIX_RELEASE);
         assertNotNull(actual.first);
         assertTrue(actual.first);
         assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);

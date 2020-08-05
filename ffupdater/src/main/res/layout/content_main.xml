@@ -29,61 +29,6 @@
                 android:layout_marginBottom="20dp" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/fennecReleaseCard"
-                style="@style/AppCard"
-                app:cardUseCompatPadding="true">
-
-                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
-
-                    <TextView
-                        style="@style/AppCardTitle"
-                        android:text="@string/fennec_release_title"
-                        app:layout_constraintStart_toEndOf="@+id/fennecReleaseIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/fennecReleaseInstalledVersion"
-                        style="@style/AppCardInstalledVersion"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/fennecReleaseIcon" />
-
-                    <TextView
-                        android:id="@+id/fennecReleaseAvailableVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/fennecReleaseInstalledVersion" />
-
-                    <ImageButton
-                        android:id="@+id/fennecReleaseInfoButton"
-                        style="@style/AppCardInfoButton"
-                        android:contentDescription="@string/information_about_the_app"
-                        android:onClick="onClickInfoButton"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/fennecReleaseDownloadButton"
-                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
-
-                    <ImageButton
-                        android:id="@+id/fennecReleaseDownloadButton"
-                        style="@style/AppCardDownloadButton"
-                        android:contentDescription="@string/download_the_app"
-                        android:onClick="onClickDownloadButton"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/ic_file_download_grey" />
-
-                    <ImageView
-                        android:id="@+id/fennecReleaseIcon"
-                        style="@style/AppCardIcon"
-                        android:contentDescription="@string/app_icon"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@mipmap/ic_logo_fennec_release" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxKlarCard"
                 style="@style/AppCard"
                 app:cardUseCompatPadding="true">

@@ -89,11 +89,11 @@ public class MainActivity extends AppCompatActivity {
         fetchUpdates();
         if (installedVersionSpace.isEmpty() && availableVersionSpace.isEmpty()) {
             TextViewAligner aligner = new TextViewAligner(this);
-            aligner.addTextView(getInstalledVersionTextView(App.FENNEC_RELEASE),
+            aligner.addTextView(getInstalledVersionTextView(App.FENIX_RELEASE),
                     R.string.installed_version,
                     0,
                     new Object[]{"", "2020-06-03T06:02"});
-            aligner.addTextView(getAvailableVersionTextView(App.FENNEC_RELEASE),
+            aligner.addTextView(getAvailableVersionTextView(App.FENIX_RELEASE),
                     R.string.available_version,
                     0,
                     new Object[]{"", "2020-06-03T06:02"});
@@ -250,8 +250,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView getAvailableVersionTextView(App app) {
         switch (app) {
-            case FENNEC_RELEASE:
-                return findViewById(R.id.fennecReleaseAvailableVersion);
             case FIREFOX_KLAR:
                 return findViewById(R.id.firefoxKlarAvailableVersion);
             case FIREFOX_FOCUS:
@@ -273,8 +271,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView getInstalledVersionTextView(App app) {
         switch (app) {
-            case FENNEC_RELEASE:
-                return findViewById(R.id.fennecReleaseInstalledVersion);
             case FIREFOX_KLAR:
                 return findViewById(R.id.firefoxKlarInstalledVersion);
             case FIREFOX_FOCUS:
@@ -296,8 +292,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton getDownloadButton(App app) {
         switch (app) {
-            case FENNEC_RELEASE:
-                return findViewById(R.id.fennecReleaseDownloadButton);
             case FIREFOX_KLAR:
                 return findViewById(R.id.firefoxKlarDownloadButton);
             case FIREFOX_FOCUS:
@@ -319,8 +313,6 @@ public class MainActivity extends AppCompatActivity {
 
     private CardView getAppCard(App app) {
         switch (app) {
-            case FENNEC_RELEASE:
-                return findViewById(R.id.fennecReleaseCard);
             case FIREFOX_KLAR:
                 return findViewById(R.id.firefoxKlarCard);
             case FIREFOX_FOCUS:
@@ -342,8 +334,6 @@ public class MainActivity extends AppCompatActivity {
 
     private App findAppByInfoButtonId(int id) {
         switch (id) {
-            case R.id.fennecReleaseInfoButton:
-                return App.FENNEC_RELEASE;
             case R.id.firefoxKlarInfoButton:
                 return App.FIREFOX_KLAR;
             case R.id.firefoxFocusInfoButton:
@@ -365,8 +355,6 @@ public class MainActivity extends AppCompatActivity {
 
     private App findAppByDownloadButtonId(int id) {
         switch (id) {
-            case R.id.fennecReleaseDownloadButton:
-                return App.FENNEC_RELEASE;
             case R.id.firefoxKlarDownloadButton:
                 return App.FIREFOX_KLAR;
             case R.id.firefoxFocusDownloadButton:

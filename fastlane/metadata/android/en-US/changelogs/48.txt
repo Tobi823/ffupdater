@@ -1,0 +1,1 @@
+Remove Fennec Release because it's no longer supported by Mozilla

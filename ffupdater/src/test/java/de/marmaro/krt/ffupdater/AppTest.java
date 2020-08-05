@@ -13,26 +13,6 @@ import static org.junit.Assert.assertTrue;
 public class AppTest {
 
     @Test
-    public void isIncompatibleWithDeviceAbi_FennecRelease_Arm_returnFalse() {
-        assertFalse(App.FENNEC_RELEASE.isIncompatibleWithDeviceAbi(new TestDeviceABI(DeviceEnvironment.ABI.ARM, 22)));
-    }
-
-    @Test
-    public void isIncompatibleWithDeviceAbi_FennecRelease_Arm64_returnFalse() {
-        assertFalse(App.FENNEC_RELEASE.isIncompatibleWithDeviceAbi(new TestDeviceABI(DeviceEnvironment.ABI.AARCH64, 22)));
-    }
-
-    @Test
-    public void isIncompatibleWithDeviceAbi_FennecRelease_X86_returnFalse() {
-        assertFalse(App.FENNEC_RELEASE.isIncompatibleWithDeviceAbi(new TestDeviceABI(DeviceEnvironment.ABI.X86, 22)));
-    }
-
-    @Test
-    public void isIncompatibleWithDeviceAbi_FennecRelease_X8664_returnFalse() {
-        assertFalse(App.FENNEC_RELEASE.isIncompatibleWithDeviceAbi(new TestDeviceABI(DeviceEnvironment.ABI.X86_64, 22)));
-    }
-
-    @Test
     public void isIncompatibleWithDeviceAbi_FirefoxFocus_Arm_returnFalse() {
         assertFalse(App.FIREFOX_FOCUS.isIncompatibleWithDeviceAbi(new TestDeviceABI(DeviceEnvironment.ABI.ARM, 22)));
     }
@@ -81,6 +61,8 @@ public class AppTest {
     public void isCompatibleWithDevice_supportedApiLevelAndSupportedApiLevel_returnTrue() {
         assertTrue(App.FIREFOX_KLAR.isCompatibleWithDevice(new TestDeviceABI(DeviceEnvironment.ABI.AARCH64, 29)));
     }
+
+    //TODO add tests here
 
     public static class TestDeviceABI extends DeviceEnvironment {
         private ABI abi;

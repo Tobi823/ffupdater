@@ -11,7 +11,6 @@ import de.marmaro.krt.ffupdater.App;
 import static de.marmaro.krt.ffupdater.App.FENIX_BETA;
 import static de.marmaro.krt.ffupdater.App.FENIX_NIGHTLY;
 import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
-import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_FOCUS;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_KLAR;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
@@ -25,7 +24,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class InstalledAppsTest {
-    private static final String FENNEC_RELEASE_PACKAGE_NAME = "org.mozilla.firefox";
     private static final String FIREFOX_KLAR_PACKAGE_NAME = "org.mozilla.klar";
     private static final String FIREFOX_FOCUS_PACKAGE_NAME = "org.mozilla.focus";
     private static final String FIREFOX_LITE_PACKAGE_NAME = "org.mozilla.rocket";
@@ -34,7 +32,6 @@ public class InstalledAppsTest {
     private static final String FENIX_NIGHTLY_PACKAGE_NAME = "org.mozilla.fenix.nightly";
     private static final String LOCKWISE_PACKAGE_NAME = "mozilla.lockbox";
 
-    private static final String FENNEC_RELEASE_VERSION = "68.7.0";
     private static final String FIREFOX_KLAR_VERSION = "8.2.0";
     private static final String FIREFOX_FOCUS_VERSION = "8.2.0";
     private static final String FIREFOX_LITE_VERSION = "2.1.13(19177)";
@@ -54,24 +51,6 @@ public class InstalledAppsTest {
     @Before
     public void setUp() {
         packageManager = mock(PackageManager.class);
-    }
-
-    @Test
-    public void getVersionName_appInstalled_returnVersion() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENNEC_RELEASE_VERSION));
-        assertEquals(FENNEC_RELEASE_VERSION, InstalledApps.getVersionName(packageManager, FENNEC_RELEASE));
-    }
-
-    @Test
-    public void getVersionName_appNotInstalled_returnEmptyString() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
-        assertEquals("", InstalledApps.getVersionName(packageManager, FENNEC_RELEASE));
-    }
-
-    @Test
-    public void getVersionName_fennecRelease_returnCorrectVersion() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENNEC_RELEASE_VERSION));
-        assertEquals(FENNEC_RELEASE_VERSION, InstalledApps.getVersionName(packageManager, FENNEC_RELEASE));
     }
 
     @Test
@@ -117,12 +96,6 @@ public class InstalledAppsTest {
     }
 
     @Test
-    public void getVersionName_fennecReleaseInstalled_returnCorrectVersion() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENNEC_RELEASE_VERSION));
-        assertTrue(InstalledApps.isInstalled(packageManager, FENNEC_RELEASE));
-    }
-
-    @Test
     public void getVersionName_firefoxKlarInstalled_returnCorrectVersion() throws PackageManager.NameNotFoundException {
         when(packageManager.getPackageInfo(FIREFOX_KLAR_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_KLAR_VERSION));
         assertTrue(InstalledApps.isInstalled(packageManager, FIREFOX_KLAR));
@@ -162,12 +135,6 @@ public class InstalledAppsTest {
     public void getVersionName_lockwiseInstalled_returnCorrectVersion() throws PackageManager.NameNotFoundException {
         when(packageManager.getPackageInfo(LOCKWISE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(LOCKWISE_VERSION));
         assertTrue(InstalledApps.isInstalled(packageManager, LOCKWISE));
-    }
-
-    @Test
-    public void getVersionName_fennecReleaseNotInstalled_returnCorrectVersion() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
-        assertFalse(InstalledApps.isInstalled(packageManager, FENNEC_RELEASE));
     }
 
     @Test
@@ -214,7 +181,6 @@ public class InstalledAppsTest {
 
     @Test
     public void getInstalledApps_noneInstalled_returnEmptyList() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_KLAR_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_FOCUS_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_LITE_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
@@ -227,7 +193,6 @@ public class InstalledAppsTest {
 
     @Test
     public void getInstalledApps_someInstalled_returnEmptyList() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_KLAR_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_KLAR_VERSION));
         when(packageManager.getPackageInfo(FIREFOX_FOCUS_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_LITE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_LITE_VERSION));
@@ -240,7 +205,6 @@ public class InstalledAppsTest {
 
     @Test
     public void getInstalledApps_allInstalled_returnListWithAllApps() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENNEC_RELEASE_VERSION));
         when(packageManager.getPackageInfo(FIREFOX_KLAR_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_KLAR_VERSION));
         when(packageManager.getPackageInfo(FIREFOX_FOCUS_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_FOCUS_VERSION));
         when(packageManager.getPackageInfo(FIREFOX_LITE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_LITE_VERSION));
@@ -253,7 +217,6 @@ public class InstalledAppsTest {
 
     @Test
     public void getNotInstalledApps_noneInstalled_returnEmptyList() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_KLAR_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_FOCUS_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_LITE_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
@@ -266,7 +229,6 @@ public class InstalledAppsTest {
 
     @Test
     public void getNotInstalledApps_someInstalled_returnEmptyList() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_KLAR_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_KLAR_VERSION));
         when(packageManager.getPackageInfo(FIREFOX_FOCUS_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(FIREFOX_LITE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_LITE_VERSION));
@@ -274,12 +236,11 @@ public class InstalledAppsTest {
         when(packageManager.getPackageInfo(FENIX_BETA_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENIX_BETA_VERSION));
         when(packageManager.getPackageInfo(FENIX_NIGHTLY_PACKAGE_NAME, 0)).thenThrow(new PackageManager.NameNotFoundException());
         when(packageManager.getPackageInfo(LOCKWISE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(LOCKWISE_VERSION));
-        assertThat(InstalledApps.getNotInstalledApps(packageManager), containsInAnyOrder(FENNEC_RELEASE, FIREFOX_FOCUS, FENIX_RELEASE, FENIX_NIGHTLY));
+        assertThat(InstalledApps.getNotInstalledApps(packageManager), containsInAnyOrder(FIREFOX_FOCUS, FENIX_RELEASE, FENIX_NIGHTLY));
     }
 
     @Test
     public void getNotInstalledApps_allInstalled_returnListWithAllApps() throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(FENNEC_RELEASE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FENNEC_RELEASE_VERSION));
         when(packageManager.getPackageInfo(FIREFOX_KLAR_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_KLAR_VERSION));
         when(packageManager.getPackageInfo(FIREFOX_FOCUS_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_FOCUS_VERSION));
         when(packageManager.getPackageInfo(FIREFOX_LITE_PACKAGE_NAME, 0)).thenReturn(createPackageInfo(FIREFOX_LITE_VERSION));

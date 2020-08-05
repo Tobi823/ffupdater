@@ -24,16 +24,6 @@ import static de.marmaro.krt.ffupdater.device.DeviceEnvironment.ABI.X86_64;
  */
 public enum App {
     @SuppressWarnings("SpellCheckingInspection")
-    FENNEC_RELEASE(R.string.fennec_release_title,
-            R.string.fennec_release_description,
-            R.string.empty,
-            R.string.mozilla,
-            "org.mozilla.firefox",
-            "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04",
-            Collections.emptyList(),
-            16,
-            VERSION),
-    @SuppressWarnings("SpellCheckingInspection")
     FIREFOX_KLAR(R.string.firefox_klar_title,
             R.string.firefox_klar_description,
             R.string.empty,

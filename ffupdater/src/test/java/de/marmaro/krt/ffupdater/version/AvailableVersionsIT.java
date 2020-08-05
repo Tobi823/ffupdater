@@ -38,16 +38,6 @@ public class AvailableVersionsIT {
     }
 
     @Test
-    public void checkUpdateForApp_withFennecRelease_versionAndDownloadNotEmpty() throws PackageManager.NameNotFoundException {
-        App app = App.FENNEC_RELEASE;
-        availableVersions.checkUpdateForApp(app, null, null);
-
-        assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
-        assertThat(availableVersions.getDownloadUrl(app), is(not(emptyString())));
-        System.out.printf("%s - version: %s url: %s\n", app.toString(), availableVersions.getAvailableVersionOrTimestamp(app), availableVersions.getDownloadUrl(app));
-    }
-
-    @Test
     public void checkUpdateForApp_withFirefoxKlar_versionAndDownloadNotEmpty() {
         App app = App.FIREFOX_KLAR;
         availableVersions.checkUpdateForApp(app, null, null);

@@ -107,13 +107,12 @@ public class SettingsHelperTest {
     @Test
     public void getDisableApps_withSomeApps_returnApps() {
         Set<String> strings = new HashSet<>(Arrays.asList(
-                "FENNEC_RELEASE",
                 "FIREFOX_KLAR",
                 "FENIX_BETA",
                 "LOCKWISE"
         ));
         when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
-        assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.FENNEC_RELEASE, App.FIREFOX_KLAR, App.FENIX_BETA, App.LOCKWISE));
+        assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.FIREFOX_KLAR, App.FENIX_BETA, App.LOCKWISE));
     }
 
     @Test
@@ -126,7 +125,6 @@ public class SettingsHelperTest {
     @Test
     public void getDisableApps_withAllApps_returnApps() {
         Set<String> strings = new HashSet<>(Arrays.asList(
-                "FENNEC_RELEASE",
                 "FIREFOX_KLAR",
                 "FIREFOX_FOCUS",
                 "FIREFOX_LITE",

@@ -36,7 +36,6 @@ import static de.marmaro.krt.ffupdater.App.CompareMethod.VERSION;
 import static de.marmaro.krt.ffupdater.App.FENIX_BETA;
 import static de.marmaro.krt.ffupdater.App.FENIX_NIGHTLY;
 import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
-import static de.marmaro.krt.ffupdater.App.FENNEC_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_FOCUS;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_KLAR;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
@@ -47,7 +46,6 @@ import static de.marmaro.krt.ffupdater.App.LOCKWISE;
  */
 public class AvailableVersions {
     // StrictMode needs for every running thread a stats id
-    private static final int TRAFFIC_FENNEC = 1001;
     private static final int TRAFFIC_FOCUS = 1002;
     private static final int TRAFFIC_KLAR = 1003;
     private static final int TRAFFIC_LITE = 1004;
@@ -55,7 +53,7 @@ public class AvailableVersions {
     private static final int TRAFFIC_FENIX_BETA = 1006;
     private static final int TRAFFIC_FENIX_NIGHTLY = 1007;
     private static final int TRAFFIC_LOCKWISE = 1008;
-    private static final int NUMBER_BACKGROUND_THREADS = 8 + 1;
+    private static final int NUMBER_BACKGROUND_THREADS = 7 + 1;
 
     private final ExecutorService executorService;
     private final PackageManager packageManager;
@@ -208,9 +206,6 @@ public class AvailableVersions {
         }
 
         Set<App> supportedApps = filterApps(new HashSet<>(apps));
-        if (supportedApps.contains(FENNEC_RELEASE)) {
-            futures.add(executorService.submit(this::checkFennec));
-        }
         if (supportedApps.contains(FIREFOX_FOCUS)) {
             futures.add(executorService.submit(this::checkFocus));
         }
@@ -275,14 +270,6 @@ public class AvailableVersions {
             }
         }
         return supportedApps;
-    }
-
-    private void checkFennec() {
-        TrafficStats.setThreadStatsTag(TRAFFIC_FENNEC);
-        Fennec fennec = Fennec.findLatest();
-        if (fennec != null) {
-            metadataStorage.updateAvailableVersionAndDownloadUrl(FENNEC_RELEASE, fennec.getVersion(), fennec.getDownloadUrl(deviceABI.getBestSuitedAbi()));
-        }
     }
 
     private void checkFocus() {

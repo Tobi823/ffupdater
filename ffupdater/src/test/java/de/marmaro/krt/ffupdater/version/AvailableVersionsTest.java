@@ -44,22 +44,6 @@ public class AvailableVersionsTest {
     }
 
     @Test
-    public void isUpdateAvailable_fennecRelease_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
-        App app = App.FENNEC_RELEASE;
-        sharedPreferences.edit().putString("download_metadata_FENNEC_RELEASE_version_name", "68.8.0").apply();
-        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("68.8.0"));
-        assertFalse(availableVersions.isUpdateAvailable(app));
-    }
-
-    @Test
-    public void isUpdateAvailable_fennecRelease_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
-        App app = App.FENNEC_RELEASE;
-        sharedPreferences.edit().putString("download_metadata_FENNEC_RELEASE_version_name", "68.8.0").apply();
-        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("68.7.0"));
-        assertTrue(availableVersions.isUpdateAvailable(app));
-    }
-
-    @Test
     public void isUpdateAvailable_firefoxKlar_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
         App app = App.FIREFOX_KLAR;
         sharedPreferences.edit().putString("download_metadata_FIREFOX_KLAR_available_timestamp", "2020-05-29T22:21:08.147Z").apply();

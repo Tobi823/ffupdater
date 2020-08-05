@@ -43,7 +43,6 @@
     </string-array>
 
     <string-array name="disabledAppEntries">
-        <item>@string/fennec_release_title</item>
         <item>@string/firefox_klar_title</item>
         <item>@string/firefox_focus_title</item>
         <item>@string/firefox_lite_title</item>
@@ -54,7 +53,6 @@
     </string-array>
 
     <string-array name="disabledAppEntryValues">
-        <item>FENNEC_RELEASE</item>
         <item>FIREFOX_KLAR</item>
         <item>FIREFOX_FOCUS</item>
         <item>FIREFOX_LITE</item>

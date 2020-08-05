@@ -8,6 +8,7 @@ import org.junit.Test;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.SimpleSharedPreferences;
 
+import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -30,36 +31,36 @@ public class MetadataCacheTest {
 
     @Test
     public void getVersionName_withData_returnEmptyString() {
-        when(sharedPreferences.getString("download_metadata_FENNEC_RELEASE_version_name", "")).thenReturn("37.27.64");
-        assertEquals("37.27.64", metadataCache.getVersionName(App.FENNEC_RELEASE));
+        when(sharedPreferences.getString("download_metadata_FENIX_RELEASE_version_name", "")).thenReturn("37.27.64");
+        assertEquals("37.27.64", metadataCache.getVersionName(FENIX_RELEASE));
     }
 
     @Test
     public void getDownloadUrl_withData_returnEmptyString() {
-        when(sharedPreferences.getString("download_metadata_FENNEC_RELEASE_download_url", "")).thenReturn("https://something.com/index/app.apk");
-        assertEquals("https://something.com/index/app.apk", metadataCache.getDownloadUrl(App.FENNEC_RELEASE));
+        when(sharedPreferences.getString("download_metadata_FENIX_RELEASE_download_url", "")).thenReturn("https://something.com/index/app.apk");
+        assertEquals("https://something.com/index/app.apk", metadataCache.getDownloadUrl(FENIX_RELEASE));
     }
 
     @Test
     public void isTimestampTooOld_withNewTimestamp_returnFalse() {
-        when(sharedPreferences.getLong("download_metadata_FENNEC_RELEASE_timestamp", -1)).thenReturn(System.currentTimeMillis());
-        assertFalse(metadataCache.isTimestampTooOld(App.FENNEC_RELEASE));
+        when(sharedPreferences.getLong("download_metadata_FENIX_RELEASE_timestamp", -1)).thenReturn(System.currentTimeMillis());
+        assertFalse(metadataCache.isTimestampTooOld(FENIX_RELEASE));
     }
 
     @Test
     public void isTimestampTooOld_withOldTimestamp_returnFalse() {
-        when(sharedPreferences.getLong("download_metadata_FENIX_timestamp", -1)).thenReturn(946681200L); //01.01.2000 00:00:00
-        assertTrue(metadataCache.isTimestampTooOld(App.FENIX_RELEASE));
+        when(sharedPreferences.getLong("download_metadata_FENIX_RELEASE_timestamp", -1)).thenReturn(946681200L); //01.01.2000 00:00:00
+        assertTrue(metadataCache.isTimestampTooOld(FENIX_RELEASE));
     }
 
     @Test
     public void setMetadata_withAllData_setAllData() {
         SimpleSharedPreferences simpleSharedPreferences = new SimpleSharedPreferences();
         MetadataCache localMetadataCache = new MetadataCache(simpleSharedPreferences);
-        localMetadataCache.updateAvailableVersionAndDownloadUrl(App.FENNEC_RELEASE, "14.12", "http://some.where/here.apk");
+        localMetadataCache.updateAvailableVersionAndDownloadUrl(FENIX_RELEASE, "14.12", "http://some.where/here.apk");
 
-        assertEquals("14.12", localMetadataCache.getVersionName(App.FENNEC_RELEASE));
-        assertEquals("http://some.where/here.apk", localMetadataCache.getDownloadUrl(App.FENNEC_RELEASE));
-        assertFalse(localMetadataCache.isTimestampTooOld(App.FENNEC_RELEASE));
+        assertEquals("14.12", localMetadataCache.getVersionName(FENIX_RELEASE));
+        assertEquals("http://some.where/here.apk", localMetadataCache.getDownloadUrl(FENIX_RELEASE));
+        assertFalse(localMetadataCache.isTimestampTooOld(FENIX_RELEASE));
     }
 }
