@@ -69,7 +69,7 @@ public class AvailableVersionsIT {
 
     @Test
     public void checkUpdateForApp_withFenixRelease_versionAndDownloadNotEmpty() {
-        App app = App.FENIX_RELEASE;
+        App app = App.FIREFOX_RELEASE;
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
@@ -79,7 +79,7 @@ public class AvailableVersionsIT {
 
     @Test
     public void checkUpdateForApp_withFenixBeta_versionAndDownloadNotEmpty() {
-        App app = App.FENIX_BETA;
+        App app = App.FIREFOX_BETA;
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));
@@ -89,7 +89,7 @@ public class AvailableVersionsIT {
 
     @Test
     public void checkUpdateForApp_withFenixNightly_versionAndDownloadNotEmpty() {
-        App app = App.FENIX_NIGHTLY;
+        App app = App.FIREFOX_NIGHTLY;
         availableVersions.checkUpdateForApp(app, null, null);
 
         assertThat(availableVersions.getAvailableVersionOrTimestamp(app), is(not(emptyString())));

@@ -33,9 +33,9 @@ import de.marmaro.krt.ffupdater.device.InstalledApps;
 
 import static de.marmaro.krt.ffupdater.App.CompareMethod.TIMESTAMP;
 import static de.marmaro.krt.ffupdater.App.CompareMethod.VERSION;
-import static de.marmaro.krt.ffupdater.App.FENIX_BETA;
-import static de.marmaro.krt.ffupdater.App.FENIX_NIGHTLY;
-import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
+import static de.marmaro.krt.ffupdater.App.FIREFOX_BETA;
+import static de.marmaro.krt.ffupdater.App.FIREFOX_NIGHTLY;
+import static de.marmaro.krt.ffupdater.App.FIREFOX_RELEASE;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_FOCUS;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_KLAR;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_LITE;
@@ -49,9 +49,9 @@ public class AvailableVersions {
     private static final int TRAFFIC_FOCUS = 1002;
     private static final int TRAFFIC_KLAR = 1003;
     private static final int TRAFFIC_LITE = 1004;
-    private static final int TRAFFIC_FENIX_RELEASE = 1005;
-    private static final int TRAFFIC_FENIX_BETA = 1006;
-    private static final int TRAFFIC_FENIX_NIGHTLY = 1007;
+    private static final int TRAFFIC_FIREFOX_RELEASE = 1005;
+    private static final int TRAFFIC_FIREFOX_BETA = 1006;
+    private static final int TRAFFIC_FIREFOX_NIGHTLY = 1007;
     private static final int TRAFFIC_LOCKWISE = 1008;
     private static final int NUMBER_BACKGROUND_THREADS = 7 + 1;
 
@@ -215,14 +215,14 @@ public class AvailableVersions {
         if (supportedApps.contains(FIREFOX_LITE)) {
             futures.add(executorService.submit(this::checkLite));
         }
-        if (supportedApps.contains(FENIX_RELEASE)) {
-            futures.add(executorService.submit(this::checkFenixRelease));
+        if (supportedApps.contains(FIREFOX_RELEASE)) {
+            futures.add(executorService.submit(this::checkFirefoxRelease));
         }
-        if (supportedApps.contains(FENIX_BETA)) {
-            futures.add(executorService.submit(this::checkFenixBeta));
+        if (supportedApps.contains(FIREFOX_BETA)) {
+            futures.add(executorService.submit(this::checkFirefoxBeta));
         }
-        if (supportedApps.contains(FENIX_NIGHTLY)) {
-            futures.add(executorService.submit(this::checkFenixNightly));
+        if (supportedApps.contains(FIREFOX_NIGHTLY)) {
+            futures.add(executorService.submit(this::checkFirefoxNightly));
         }
         if (supportedApps.contains(LOCKWISE)) {
             futures.add(executorService.submit(this::checkLockwise));
@@ -292,22 +292,22 @@ public class AvailableVersions {
         }
     }
 
-    private void checkFenixRelease() {
-        TrafficStats.setThreadStatsTag(TRAFFIC_FENIX_RELEASE);
-        Fenix fenix = Fenix.findLatest(FENIX_RELEASE, deviceABI.getBestSuitedAbi());
-        metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX_RELEASE, fenix.getTimestamp(), fenix.getDownloadUrl());
+    private void checkFirefoxRelease() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FIREFOX_RELEASE);
+        Firefox firefox = Firefox.findLatest(FIREFOX_RELEASE, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FIREFOX_RELEASE, firefox.getTimestamp(), firefox.getDownloadUrl());
     }
 
-    private void checkFenixBeta() {
-        TrafficStats.setThreadStatsTag(TRAFFIC_FENIX_BETA);
-        Fenix fenix = Fenix.findLatest(FENIX_BETA, deviceABI.getBestSuitedAbi());
-        metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX_BETA, fenix.getTimestamp(), fenix.getDownloadUrl());
+    private void checkFirefoxBeta() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FIREFOX_BETA);
+        Firefox firefox = Firefox.findLatest(FIREFOX_BETA, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FIREFOX_BETA, firefox.getTimestamp(), firefox.getDownloadUrl());
     }
 
-    private void checkFenixNightly() {
-        TrafficStats.setThreadStatsTag(TRAFFIC_FENIX_NIGHTLY);
-        Fenix fenix = Fenix.findLatest(FENIX_NIGHTLY, deviceABI.getBestSuitedAbi());
-        metadataStorage.updateAvailableTimestampAndDownloadUrl(FENIX_NIGHTLY, fenix.getTimestamp(), fenix.getDownloadUrl());
+    private void checkFirefoxNightly() {
+        TrafficStats.setThreadStatsTag(TRAFFIC_FIREFOX_NIGHTLY);
+        Firefox firefox = Firefox.findLatest(FIREFOX_NIGHTLY, deviceABI.getBestSuitedAbi());
+        metadataStorage.updateAvailableTimestampAndDownloadUrl(FIREFOX_NIGHTLY, firefox.getTimestamp(), firefox.getDownloadUrl());
     }
 
     private void checkLockwise() {

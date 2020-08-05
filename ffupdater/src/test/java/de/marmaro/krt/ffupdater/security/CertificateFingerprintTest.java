@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static de.marmaro.krt.ffupdater.App.FENIX_RELEASE;
+import static de.marmaro.krt.ffupdater.App.FIREFOX_RELEASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -66,10 +66,10 @@ public class CertificateFingerprintTest {
         PackageInfo packageInfo = new PackageInfo();
         packageInfo.signatures = new Signature[]{mock(Signature.class)};
 
-        when(packageManager.getPackageInfo(FENIX_RELEASE.getPackageName(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
+        when(packageManager.getPackageInfo(FIREFOX_RELEASE.getPackageName(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
         when(packageInfo.signatures[0].toByteArray()).thenReturn(firefoxReleaseSignatureBytes);
 
-        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfInstalledApp(packageManager, FENIX_RELEASE);
+        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfInstalledApp(packageManager, FIREFOX_RELEASE);
         assertNotNull(actual.first);
         assertTrue(actual.first);
         assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);
@@ -86,7 +86,7 @@ public class CertificateFingerprintTest {
         when(packageManager.getPackageArchiveInfo(file.getAbsolutePath(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
         when(packageInfo.signatures[0].toByteArray()).thenReturn(firefoxReleaseSignatureBytes);
 
-        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfFile(packageManager, file, FENIX_RELEASE);
+        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfFile(packageManager, file, FIREFOX_RELEASE);
         assertNotNull(actual.first);
         assertTrue(actual.first);
         assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);

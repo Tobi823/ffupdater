@@ -96,56 +96,56 @@ public class AvailableVersionsTest {
     }
 
     @Test
-    public void isUpdateAvailable_fenixRelease_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
-        App app = App.FENIX_RELEASE;
-        sharedPreferences.edit().putString("download_metadata_FENIX_RELEASE_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
-        sharedPreferences.edit().putString("download_metadata_FENIX_RELEASE_installed_timestamp", "2020-05-28T10:11:12.250Z").apply();
+    public void isUpdateAvailable_firefoxRelease_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
+        App app = App.FIREFOX_RELEASE;
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_RELEASE_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_RELEASE_installed_timestamp", "2020-05-28T10:11:12.250Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.3.0"));
         assertFalse(availableVersions.isUpdateAvailable(app));
     }
 
     @Test
-    public void isUpdateAvailable_fenixRelease_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
-        App app = App.FENIX_RELEASE;
-        sharedPreferences.edit().putString("download_metadata_FENIX_RELEASE_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
-        sharedPreferences.edit().putString("download_metadata_FENIX_RELEASE_installed_timestamp", "2020-05-31T15:10:47.841Z").apply();
+    public void isUpdateAvailable_firefoxRelease_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
+        App app = App.FIREFOX_RELEASE;
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_RELEASE_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_RELEASE_installed_timestamp", "2020-05-31T15:10:47.841Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.2.0"));
         assertTrue(availableVersions.isUpdateAvailable(app));
     }
 
 
     @Test
-    public void isUpdateAvailable_fenixBeta_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
-        App app = App.FENIX_BETA;
-        sharedPreferences.edit().putString("download_metadata_FENIX_BETA_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
-        sharedPreferences.edit().putString("download_metadata_FENIX_BETA_installed_timestamp", "2020-05-28T10:11:12.250Z").apply();
+    public void isUpdateAvailable_firefoxBeta_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
+        App app = App.FIREFOX_BETA;
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_BETA_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_BETA_installed_timestamp", "2020-05-28T10:11:12.250Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.3.0"));
         assertFalse(availableVersions.isUpdateAvailable(app));
     }
 
     @Test
-    public void isUpdateAvailable_fenixBeta_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
-        App app = App.FENIX_BETA;
-        sharedPreferences.edit().putString("download_metadata_FENIX_BETA_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
-        sharedPreferences.edit().putString("download_metadata_FENIX_BETA_installed_timestamp", "2020-05-31T15:10:47.841Z").apply();
+    public void isUpdateAvailable_firefoxBeta_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
+        App app = App.FIREFOX_BETA;
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_BETA_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_BETA_installed_timestamp", "2020-05-31T15:10:47.841Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.2.0"));
         assertTrue(availableVersions.isUpdateAvailable(app));
     }
 
     @Test
-    public void isUpdateAvailable_fenixNightly_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
-        App app = App.FENIX_NIGHTLY;
-        sharedPreferences.edit().putString("download_metadata_FENIX_NIGHTLY_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
-        sharedPreferences.edit().putString("download_metadata_FENIX_NIGHTLY_installed_timestamp", "2020-05-28T10:11:12.250Z").apply();
+    public void isUpdateAvailable_firefoxNightly_latestVersion_returnFalse() throws PackageManager.NameNotFoundException {
+        App app = App.FIREFOX_NIGHTLY;
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_NIGHTLY_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_NIGHTLY_installed_timestamp", "2020-05-28T10:11:12.250Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.3.0"));
         assertFalse(availableVersions.isUpdateAvailable(app));
     }
 
     @Test
-    public void isUpdateAvailable_fenixNightly_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
-        App app = App.FENIX_NIGHTLY;
-        sharedPreferences.edit().putString("download_metadata_FENIX_NIGHTLY_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
-        sharedPreferences.edit().putString("download_metadata_FENIX_NIGHTLY_installed_timestamp", "2020-05-31T15:10:47.841Z").apply();
+    public void isUpdateAvailable_firefoxNightly_previousVersion_returnTrue() throws PackageManager.NameNotFoundException {
+        App app = App.FIREFOX_NIGHTLY;
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_NIGHTLY_available_timestamp", "2020-05-28T10:11:12.250Z").apply();
+        sharedPreferences.edit().putString("download_metadata_FIREFOX_NIGHTLY_installed_timestamp", "2020-05-31T15:10:47.841Z").apply();
         when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("4.2.0"));
         assertTrue(availableVersions.isUpdateAvailable(app));
     }

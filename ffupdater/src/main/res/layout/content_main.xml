@@ -198,7 +198,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/fenixReleaseCard"
+                android:id="@+id/firefoxReleaseCard"
                 style="@style/AppCard"
                 app:cardUseCompatPadding="true">
 
@@ -206,33 +206,33 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fenix_release_title"
+                        android:text="@string/firefox_release_title"
                         app:layout_constraintStart_toEndOf="@+id/fenixReleaseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/fenixReleaseInstalledVersion"
+                        android:id="@+id/firefoxReleaseInstalledVersion"
                         style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/fenixReleaseIcon" />
 
                     <TextView
-                        android:id="@+id/fenixReleaseAvailableVersion"
+                        android:id="@+id/firefoxReleaseAvailableVersion"
                         style="@style/AppCardVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/fenixReleaseInstalledVersion" />
+                        app:layout_constraintTop_toBottomOf="@id/firefoxReleaseInstalledVersion" />
 
                     <ImageButton
-                        android:id="@+id/fenixReleaseInfoButton"
+                        android:id="@+id/firefoxReleaseInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/fenixReleaseDownloadButton"
+                        app:layout_constraintEnd_toStartOf="@+id/firefoxReleaseDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
-                        android:id="@+id/fenixReleaseDownloadButton"
+                        android:id="@+id/firefoxReleaseDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"
@@ -253,7 +253,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/fenixBetaCard"
+                android:id="@+id/firefoxBetaCard"
                 style="@style/AppCard"
                 app:cardUseCompatPadding="true">
 
@@ -261,33 +261,33 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fenix_beta_title"
+                        android:text="@string/firefox_beta_title"
                         app:layout_constraintStart_toEndOf="@+id/fenixBetaIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/fenixBetaInstalledVersion"
+                        android:id="@+id/firefoxBetaInstalledVersion"
                         style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/fenixBetaIcon" />
 
                     <TextView
-                        android:id="@+id/fenixBetaAvailableVersion"
+                        android:id="@+id/firefoxBetaAvailableVersion"
                         style="@style/AppCardVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/fenixBetaInstalledVersion" />
+                        app:layout_constraintTop_toBottomOf="@id/firefoxBetaInstalledVersion" />
 
                     <ImageButton
-                        android:id="@+id/fenixBetaInfoButton"
+                        android:id="@+id/firefoxBetaInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/fenixBetaDownloadButton"
+                        app:layout_constraintEnd_toStartOf="@+id/firefoxBetaDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
-                        android:id="@+id/fenixBetaDownloadButton"
+                        android:id="@+id/firefoxBetaDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"
@@ -308,7 +308,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/fenixNightlyCard"
+                android:id="@+id/firefoxNightlyCard"
                 style="@style/AppCard"
                 app:cardUseCompatPadding="true">
 
@@ -316,33 +316,33 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/fenix_nightly_title"
+                        android:text="@string/firefox_nightly_title"
                         app:layout_constraintStart_toEndOf="@+id/fenixNightlyIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/fenixNightlyInstalledVersion"
+                        android:id="@+id/firefoxNightlyInstalledVersion"
                         style="@style/AppCardInstalledVersion"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/fenixNightlyIcon" />
 
                     <TextView
-                        android:id="@+id/fenixNightlyAvailableVersion"
+                        android:id="@+id/firefoxNightlyAvailableVersion"
                         style="@style/AppCardVersion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/fenixNightlyInstalledVersion" />
+                        app:layout_constraintTop_toBottomOf="@id/firefoxNightlyInstalledVersion" />
 
                     <ImageButton
-                        android:id="@+id/fenixNightlyInfoButton"
+                        android:id="@+id/firefoxNightlyInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
                         android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/fenixNightlyDownloadButton"
+                        app:layout_constraintEnd_toStartOf="@+id/firefoxNightlyDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
                     <ImageButton
-                        android:id="@+id/fenixNightlyDownloadButton"
+                        android:id="@+id/firefoxNightlyDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
                         android:onClick="onClickDownloadButton"

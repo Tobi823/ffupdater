@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +24,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -89,11 +87,11 @@ public class MainActivity extends AppCompatActivity {
         fetchUpdates();
         if (installedVersionSpace.isEmpty() && availableVersionSpace.isEmpty()) {
             TextViewAligner aligner = new TextViewAligner(this);
-            aligner.addTextView(getInstalledVersionTextView(App.FENIX_RELEASE),
+            aligner.addTextView(getInstalledVersionTextView(App.FIREFOX_RELEASE),
                     R.string.installed_version,
                     0,
                     new Object[]{"", "2020-06-03T06:02"});
-            aligner.addTextView(getAvailableVersionTextView(App.FENIX_RELEASE),
+            aligner.addTextView(getAvailableVersionTextView(App.FIREFOX_RELEASE),
                     R.string.available_version,
                     0,
                     new Object[]{"", "2020-06-03T06:02"});
@@ -256,12 +254,12 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.firefoxFocusAvailableVersion);
             case FIREFOX_LITE:
                 return findViewById(R.id.firefoxLiteAvailableVersion);
-            case FENIX_RELEASE:
-                return findViewById(R.id.fenixReleaseAvailableVersion);
-            case FENIX_BETA:
-                return findViewById(R.id.fenixBetaAvailableVersion);
-            case FENIX_NIGHTLY:
-                return findViewById(R.id.fenixNightlyAvailableVersion);
+            case FIREFOX_RELEASE:
+                return findViewById(R.id.firefoxReleaseAvailableVersion);
+            case FIREFOX_BETA:
+                return findViewById(R.id.firefoxBetaAvailableVersion);
+            case FIREFOX_NIGHTLY:
+                return findViewById(R.id.firefoxNightlyAvailableVersion);
             case LOCKWISE:
                 return findViewById(R.id.lockwiseAvailableVersion);
             default:
@@ -277,12 +275,12 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.firefoxFocusInstalledVersion);
             case FIREFOX_LITE:
                 return findViewById(R.id.firefoxLiteInstalledVersion);
-            case FENIX_RELEASE:
-                return findViewById(R.id.fenixReleaseInstalledVersion);
-            case FENIX_BETA:
-                return findViewById(R.id.fenixBetaInstalledVersion);
-            case FENIX_NIGHTLY:
-                return findViewById(R.id.fenixNightlyInstalledVersion);
+            case FIREFOX_RELEASE:
+                return findViewById(R.id.firefoxReleaseInstalledVersion);
+            case FIREFOX_BETA:
+                return findViewById(R.id.firefoxBetaInstalledVersion);
+            case FIREFOX_NIGHTLY:
+                return findViewById(R.id.firefoxNightlyInstalledVersion);
             case LOCKWISE:
                 return findViewById(R.id.lockwiseInstalledVersion);
             default:
@@ -298,12 +296,12 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.firefoxFocusDownloadButton);
             case FIREFOX_LITE:
                 return findViewById(R.id.firefoxLiteDownloadButton);
-            case FENIX_RELEASE:
-                return findViewById(R.id.fenixReleaseDownloadButton);
-            case FENIX_BETA:
-                return findViewById(R.id.fenixBetaDownloadButton);
-            case FENIX_NIGHTLY:
-                return findViewById(R.id.fenixNightlyDownloadButton);
+            case FIREFOX_RELEASE:
+                return findViewById(R.id.firefoxReleaseDownloadButton);
+            case FIREFOX_BETA:
+                return findViewById(R.id.firefoxBetaDownloadButton);
+            case FIREFOX_NIGHTLY:
+                return findViewById(R.id.firefoxNightlyDownloadButton);
             case LOCKWISE:
                 return findViewById(R.id.lockwiseDownloadButton);
             default:
@@ -319,12 +317,12 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.firefoxFocusCard);
             case FIREFOX_LITE:
                 return findViewById(R.id.firefoxLiteCard);
-            case FENIX_RELEASE:
-                return findViewById(R.id.fenixReleaseCard);
-            case FENIX_BETA:
-                return findViewById(R.id.fenixBetaCard);
-            case FENIX_NIGHTLY:
-                return findViewById(R.id.fenixNightlyCard);
+            case FIREFOX_RELEASE:
+                return findViewById(R.id.firefoxReleaseCard);
+            case FIREFOX_BETA:
+                return findViewById(R.id.firefoxBetaCard);
+            case FIREFOX_NIGHTLY:
+                return findViewById(R.id.firefoxNightlyCard);
             case LOCKWISE:
                 return findViewById(R.id.lockwiseCard);
             default:
@@ -340,12 +338,12 @@ public class MainActivity extends AppCompatActivity {
                 return App.FIREFOX_FOCUS;
             case R.id.firefoxLiteInfoButton:
                 return App.FIREFOX_LITE;
-            case R.id.fenixReleaseInfoButton:
-                return App.FENIX_RELEASE;
-            case R.id.fenixBetaInfoButton:
-                return App.FENIX_BETA;
-            case R.id.fenixNightlyInfoButton:
-                return App.FENIX_NIGHTLY;
+            case R.id.firefoxReleaseInfoButton:
+                return App.FIREFOX_RELEASE;
+            case R.id.firefoxBetaInfoButton:
+                return App.FIREFOX_BETA;
+            case R.id.firefoxNightlyInfoButton:
+                return App.FIREFOX_NIGHTLY;
             case R.id.lockwiseInfoButton:
                 return App.LOCKWISE;
             default:
@@ -361,12 +359,12 @@ public class MainActivity extends AppCompatActivity {
                 return App.FIREFOX_FOCUS;
             case R.id.firefoxLiteDownloadButton:
                 return App.FIREFOX_LITE;
-            case R.id.fenixReleaseDownloadButton:
-                return App.FENIX_RELEASE;
-            case R.id.fenixBetaDownloadButton:
-                return App.FENIX_BETA;
-            case R.id.fenixNightlyDownloadButton:
-                return App.FENIX_NIGHTLY;
+            case R.id.firefoxReleaseDownloadButton:
+                return App.FIREFOX_RELEASE;
+            case R.id.firefoxBetaDownloadButton:
+                return App.FIREFOX_BETA;
+            case R.id.firefoxNightlyDownloadButton:
+                return App.FIREFOX_NIGHTLY;
             case R.id.lockwiseDownloadButton:
                 return App.LOCKWISE;
             default:

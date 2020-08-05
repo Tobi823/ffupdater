@@ -46,9 +46,9 @@
         <item>@string/firefox_klar_title</item>
         <item>@string/firefox_focus_title</item>
         <item>@string/firefox_lite_title</item>
-        <item>@string/fenix_release_title</item>
-        <item>@string/fenix_beta_title</item>
-        <item>@string/fenix_nightly_title</item>
+        <item>@string/firefox_release_title</item>
+        <item>@string/firefox_beta_title</item>
+        <item>@string/firefox_nightly_title</item>
         <item>@string/lockwise_title</item>
     </string-array>
 

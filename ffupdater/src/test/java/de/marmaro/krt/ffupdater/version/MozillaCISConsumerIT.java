@@ -21,8 +21,8 @@ public class MozillaCISConsumerIT {
     @Test
     public void getTimestamp_fenixProduction_timestampMustNotBeOld() throws IOException {
         MozillaCIConsumer consumer = MozillaCIConsumer.findLatest(
-                "mobile.v2.fenix.production.latest.arm64-v8a",
-                "build/arm64-v8a/geckoNightly/target.apk");
+                "mobile.v2.fenix.fennec-production.latest.arm64-v8a",
+                "build/arm64-v8a/geckoProduction/target.apk");
         System.out.println(consumer.getTimestamp());
         LocalDateTime timestamp = LocalDateTime.parse(consumer.getTimestamp(), DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         System.out.println(timestamp);

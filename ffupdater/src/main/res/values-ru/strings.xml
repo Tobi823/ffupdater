@@ -16,20 +16,15 @@
     <string name="downloaded_application_is_not_verified">Загруженное приложение НЕ проверяется</string>
     <string name="downloaded_application_is_verified">Загруженное приложение проверено</string>
     <string name="expected_sha_256_certificate_fingerprint">Ожидаемый отпечаток сертификата SHA-256:</string>
-    <string name="fenix_beta_description">Бета-просмотр Firefox - это канал разработки новых релизов Firefox Preview. Он предназначен только для продвинутых пользователей.</string>
-    <string name="fenix_beta_title">Бета-просмотр Firefox</string>
-    <string name="fenix_beta_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
-    <string name="fenix_nightly_description">Firefox Preview Nightly - это канал разработки новых релизов Firefox Preview. Он предназначен только для продвинутых пользователей.</string>
-    <string name="fenix_nightly_title">Firefox Preview Nightly</string>
-    <string name="fenix_nightly_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
-    <string name="fenix_release_description">Firefox Preview (также известный как Fenix) - это совершенно новый браузер для Android. Это приложение в настоящее время находится в разработке и содержит больше трекеров, чем обычно для анализа/улучшения использования приложения.\n\nПриложение будет загружено с GitHub - можно загрузить только те обновления, которые выпущены на GitHub.</string>
-    <string name="fenix_release_title">Firefox Preview</string>
     <string name="fenix_warning">Это приложение предназначено для тестеров и поэтому содержит некоторые трекеры. Вы действительно хотите установить это приложение?</string>
     <string name="fennec_release_description">Это браузер по умолчанию и хорошо известный браузер Firefox от Mozilla.\n\nПриложение будет загружено с официального API Mozilla.</string>
     <string name="fennec_release_title">Firefox</string>
     <string name="fetch_url_for_download">Получить ссылку с %1$s</string>
     <string name="fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Не удалось получить ссылку для скачивания с %1$s</string>
+    <string name="firefox_beta_description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за тобой каждый день, собирая информацию о твоей жизни в Интернете и замедляя скорость твоей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если ты захочешь кастомизировать свой браузер ещё больше. С Firefox ты получишь безопасность, которую заслуживаешь, а также высокую скорость работы, — и всё это в конфиденциальном мобильном браузере.</string>
+    <string name="firefox_beta_title">Firefox Бета для Android</string>
+    <string name="firefox_beta_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
     <string name="firefox_focus_description">Это модификация браузера Firefox, направленная на повышение уровня конфиденциальности.\n\nПриложение будет загружено с GitHub - загружать можно только те обновления, которые выпущены на GitHub.</string>
     <string name="firefox_focus_title">Firefox Focus</string>
     <string name="firefox_klar_description">Это модификация браузера Firefox, направленная на повышение уровня конфиденциальности.\n\nFirefox Klar разработан для Германии, Швейцарии и Австрии и практически идентичен Firefox Focus. Было изменено только название, чтобы избежать путаницы с новостным журналом \"Focus\" из медиагруппы \"Hubert Burda Media\".\n\nПриложение будет загружено с GitHub - загружать можно только те обновления, которые выпущены на GitHub.</string>
@@ -37,6 +32,11 @@
     <string name="firefox_lite_description">Firefox Lite разработан в первую очередь для пользователей в Индонезии. Приложение очень маленькое и поддерживает методы для снижения (мобильного) потребления данных.\n\nПриложение будет загружено с GitHub - загружать можно только те обновления, которые выпущены на GitHub.</string>
     <string name="firefox_lite_title">Firefox Lite</string>
     <string name="firefox_lite_warning">FFUpdater иногда не может загрузить последнюю версию, потому что не все обновления выпускаются на GitHub. Вы хотите установить приложение с риском использования устаревшей версии?</string>
+    <string name="firefox_nightly_description">Please note that this app used to be titled Firefox Preview. It has now been transitioned to Firefox Nightly.\n\nFirefox Nightly is a developmental channel for new Mozilla Firefox releases.\n\nFirefox Nightly is designed to showcase the more experimental builds of Firefox. The Nightly channel allows users to experience the newest Firefox innovations in an unstable environment and provide feedback on features and performance to help determine what makes the final release.</string>
+    <string name="firefox_nightly_title">Firefox Nightly</string>
+    <string name="firefox_nightly_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
+    <string name="firefox_release_description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за тобой каждый день, собирая информацию о твоей жизни в Интернете и замедляя скорость твоей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если ты захочешь кастомизировать свой браузер ещё больше. С Firefox ты получишь безопасность, которую заслуживаешь, а также высокую скорость работы, — и всё это в конфиденциальном мобильном браузере.</string>
+    <string name="firefox_release_title">Firefox</string>
     <string name="infobox">
         Это программа обновления для нескольких браузеров Mozilla.
         Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления.
