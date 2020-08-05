@@ -226,10 +226,6 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void checkFreeSpace() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            return;
-        }
-
         File externalFilesDir = getExternalFilesDir(DIRECTORY_DOWNLOADS);
         Preconditions.checkNotNull(externalFilesDir);
         long freeBytes = new StatFs(externalFilesDir.getPath()).getFreeBytes();
