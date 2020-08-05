@@ -1,22 +1,23 @@
 package de.marmaro.krt.ffupdater;
 
-import android.app.Activity;
 import android.app.DownloadManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.IntentSender;
+import android.content.pm.PackageInstaller;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.StatFs;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -27,6 +28,10 @@ import com.google.common.base.Preconditions;
 import org.apache.commons.codec.binary.ApacheCodecHex;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Locale;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
@@ -36,6 +41,7 @@ import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
+import static android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL;
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 /**
@@ -46,9 +52,10 @@ import static android.os.Environment.DIRECTORY_DOWNLOADS;
  * like restarting downloads, showing the current download status etc.
  */
 public class InstallActivity extends AppCompatActivity {
-    private static final int REQUEST_CODE_INSTALL = 401;
     public static final String EXTRA_APP_NAME = "app_name";
     public static final String EXTRA_DOWNLOAD_URL = "download_url";
+    private static final String PACKAGE_INSTALLED_ACTION = "de.marmaro.krt.ffupdater.InstallActivity.SESSION_API_PACKAGE_INSTALLED";
+    public static final String LOG_TAG = "InstallActivity";
 
     private DownloadManagerAdapter downloadManager;
     private App app;
@@ -96,20 +103,33 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_INSTALL) {
-            actionInstallationFinished(resultCode == Activity.RESULT_OK);
-        }
-    }
-
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (PACKAGE_INSTALLED_ACTION.equals(intent.getAction())) {
+            Bundle extras = Preconditions.checkNotNull(intent.getExtras());
+            int status = extras.getInt(PackageInstaller.EXTRA_STATUS);
+            String message = extras.getString(PackageInstaller.EXTRA_STATUS_MESSAGE);
+            switch (status) {
+                case PackageInstaller.STATUS_PENDING_USER_ACTION:
+                    startActivity((Intent) extras.get(Intent.EXTRA_INTENT)); // This test app isn't privileged, so the user has to confirm the install.
+                    break;
+                case PackageInstaller.STATUS_SUCCESS:
+                    actionInstallationFinished(true, null);
+                    break;
+                default:
+                    String text = String.format(Locale.getDefault(), "(%d) %s", status, message);
+                    actionInstallationFinished(false, text);
+            }
+        }
     }
 
     private void fetchUrlForDownload() {
@@ -192,18 +212,35 @@ public class InstallActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * See example: https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/content/InstallApkSessionApi.java
+     */
     private void install() {
-        Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-        if (Build.VERSION.SDK_INT < 24) {
-            intent.setData(Uri.fromFile(downloadManager.getFileForDownloadedFile(downloadId)));
-        } else {
-            intent.setData(downloadManager.getUriForDownloadedFile(downloadId));
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.putExtra(DownloadManager.EXTRA_DOWNLOAD_ID, downloadId);
+        PackageInstaller installer = getPackageManager().getPackageInstaller();
+        PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(MODE_FULL_INSTALL);
+        try (PackageInstaller.Session session = installer.openSession(installer.createSession(params))) {
+            int lengthInBytes = downloadManager.getTotalDownloadSize(downloadId);
+            Uri download = downloadManager.getUriForDownloadedFile(downloadId);
+
+            try (OutputStream packageInSession = session.openWrite("package", 0, lengthInBytes);
+                 InputStream apk = getContentResolver().openInputStream(download)) {
+                Preconditions.checkNotNull(apk);
+                byte[] buffer = new byte[16384];
+                int n;
+                while ((n = apk.read(buffer)) >= 0) {
+                    packageInSession.write(buffer, 0, n);
+                }
+            }
+
+            Context context = InstallActivity.this;
+            Intent intent = new Intent(context, InstallActivity.class);
+            intent.setAction(PACKAGE_INSTALLED_ACTION);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+            IntentSender intentSender = pendingIntent.getIntentSender();
+            session.commit(intentSender);
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "failed to install APK", e);
         }
-        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-        startActivityForResult(intent, REQUEST_CODE_INSTALL);
     }
 
     private void hideAllEntries() {
@@ -333,7 +370,7 @@ public class InstallActivity extends AppCompatActivity {
         });
     }
 
-    private void actionInstallationFinished(boolean success) {
+    private void actionInstallationFinished(boolean success, String errorMessage) {
         runOnUiThread(() -> {
             findViewById(R.id.installConfirmation).setVisibility(View.GONE);
             if (success) {

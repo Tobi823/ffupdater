@@ -94,6 +94,15 @@ public class DownloadManagerAdapter {
         }
     }
 
+    public int getTotalDownloadSize(long id) {
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(id);
+        try (Cursor cursor = downloadManager.query(query)) {
+            cursor.moveToFirst();
+            return cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES));
+        }
+    }
+
     /**
      * Return the uri for the downloaded file. The Uri is no longer available, when the download id was removed.
      *

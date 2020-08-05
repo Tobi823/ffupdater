@@ -26,8 +26,8 @@
                 android:text="@string/too_low_memory_title" />
 
             <TextView
-                style="@style/DefaultTextView"
-                android:id="@+id/tooLowMemoryDescription" />
+                android:id="@+id/tooLowMemoryDescription"
+                style="@style/DefaultTextView" />
 
         </LinearLayout>
 
@@ -300,6 +300,10 @@
             <TextView
                 style="@style/BoldTextView"
                 android:text="@string/application_installation_was_not_successful" />
+
+            <TextView
+                android:id="@+id/installerFailedReason"
+                style="@style/MonospaceSelectableTextView" />
 
             <TextView
                 style="@style/DefaultTextView"
