@@ -1,3 +1,12 @@
+# 2020-08-05 Version 69.0.0 (48)
+ * Remove Fennec Release because it's no longer supported by Mozilla
+ * Rename Fenix Release, Fenix Beta and Fenix Nightly to Firefox Release, Firefox Beta, Firefox Nightly
+ * Fix download URLs for Firefox Release, Firefox Beta, Firefox Nightly
+ * Use the more reliable PackageInstaller-method for installing the apps (instead of the old ACTION_INSTALL_PACKAGE-method)
+ * Increase minimum SDK for FFUpdater to Lollipop/21 (because PackageInstaller needs 21 and all Firefox browsers need at least 21)
+ * Fix bug "empty installed text field"
+ * Thanks trymeout, guysoft, rantpalas and RomainL972 for reporting bugs
+
 # 2020-07-02 Version 68.4.1 (47)
  * Fix broken Fenix download - if the download is still broken for you, wait 10 minutes or delete the storage of the app
  * Check for enough free space and display warning if < 100MB
