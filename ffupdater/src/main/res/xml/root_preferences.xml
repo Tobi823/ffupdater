@@ -27,7 +27,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="Appearance">
+    <PreferenceCategory app:title="@string/settings_category_appearance_title">
 
         <ListPreference
             app:key="themePreference"

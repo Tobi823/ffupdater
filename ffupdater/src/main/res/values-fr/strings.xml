@@ -62,6 +62,7 @@
     <string name="ok">D\'accord</string>
     <string name="settings_activity_label">Réglages</string>
     <string name="settings_automatic_check_title">Automatique en arrière-plan</string>
+    <string name="settings_category_appearance_title">Apparition</string>
     <string name="settings_check_interval_summary">À quelle fréquence l\'application doit-elle vérifier les mises à jour ?</string>
     <string name="settings_check_interval_title">Intervalle de contrôle</string>
     <string name="settings_disabled_apps_summary">Seules les applications installées seront automatiquement vérifiées pour les mises à jour. Vous pouvez supprimer les applications installées de la vérification automatique des mises à jour en les sélectionnant ici.</string>

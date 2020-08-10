@@ -68,6 +68,7 @@
     <string name="ok">ОК</string>
     <string name="settings_activity_label">Настройки</string>
     <string name="settings_automatic_check_title">Автоматический в фоновом режиме</string>
+    <string name="settings_category_appearance_title">Внешний вид</string>
     <string name="settings_check_interval_summary">Как часто приложение должно проверять наличие обновлений?</string>
     <string name="settings_check_interval_title">Контрольный интервал</string>
     <string name="settings_disabled_apps_summary">Только установленные приложения будут автоматически проверяться на наличие обновлений. Вы можете удалить установленные приложения из автоматической проверки на наличие обновлений, выбрав их здесь.</string>

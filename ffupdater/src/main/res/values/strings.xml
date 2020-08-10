@@ -73,6 +73,7 @@
     <string name="ok">OK</string>
     <string name="settings_activity_label">Settings</string>
     <string name="settings_automatic_check_title">Automatic in Background</string>
+    <string name="settings_category_appearance_title">Appearance</string>
     <string name="settings_check_interval_summary">How often should the app check for updates?</string>
     <string name="settings_check_interval_title">Check Interval</string>
     <string name="settings_disabled_apps_summary">Only installed apps will be automatically checked for updates. You can remove installed apps from the automatic update check by selecting them here.</string>
