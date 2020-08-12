@@ -14,16 +14,6 @@ git fetch --tags
  - push tag to notabug.org, Github and Gitlab
 
 # push tag to git
-## Windows
-````powershell
-SET TAGVALUE=68.4.0
-git tag %TAGVALUE%
-git push origin %TAGVALUE%
-git push github %TAGVALUE%
-git push gitlab %TAGVALUE%
-````
-
-## Linux
 ````bash
 read -i "TAG: " TAG && git tag $TAG && git push origin $TAG && git push github $TAG && git push gitlab $TAG
 ````

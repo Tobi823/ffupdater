@@ -1,3 +1,6 @@
+# 2020-08-13 Version 69.0.2 (50)
+ * Thanks aevw for adding brazilian portuguese translation
+
 # 2020-08-12 Version 69.0.1 (49)
  * Thanks DeenHyper74 for updating the russian translation
 
