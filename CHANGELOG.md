@@ -1,5 +1,5 @@
-# 2020-??-?? Version 69.0.1 (49)
- * Thanks DeenHyper74 for translation
+# 2020-08-12 Version 69.0.1 (49)
+ * Thanks DeenHyper74 for updating the russian translation
 
 # 2020-08-05 Version 69.0.0 (48)
  * Remove Fennec Release because it's no longer supported by Mozilla
