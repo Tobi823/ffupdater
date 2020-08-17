@@ -10,10 +10,16 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
  */
 class Firefox {
-    private final MozillaCIConsumer mozillaCIConsumer;
+    private static final String BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.%s.latest.%s";
+    private static final String CHAIN_OF_TRUST_URL = BASE_URL + "/artifacts/public/chain-of-trust.json";
+    private static final String DOWNLOAD_URL = BASE_URL + "/artifacts/public/build/%s.apk";
 
-    private Firefox(MozillaCIConsumer mozillaCIConsumer) {
-        this.mozillaCIConsumer = mozillaCIConsumer;
+    private String timestamp;
+    private String downloadUrl;
+
+    private Firefox(String timestamp, String downloadUrl) {
+        this.timestamp = timestamp;
+        this.downloadUrl = downloadUrl;
     }
 
     /**
@@ -22,58 +28,62 @@ class Firefox {
      * @return result or null
      */
     static Firefox findLatest(App app, DeviceEnvironment.ABI abi) {
-        MozillaCIConsumer consumer = MozillaCIConsumer.findLatest(getProduct(app, abi), getFile(app, abi));
-        return new Firefox(consumer);
-    }
-
-    private static String getProduct(App app, DeviceEnvironment.ABI abi) {
-        String productFormat = "mobile.v2.fenix.%s.latest.%s";
-        String abiString = convertAbiToString(abi);
+        final String namespaceSuffix;
         switch (app) {
             case FIREFOX_RELEASE:
-                return String.format(productFormat, "fennec-production", abiString);
+                namespaceSuffix = "fennec-production";
+                break;
             case FIREFOX_BETA:
-                return String.format(productFormat, "fennec-beta", abiString);
+                namespaceSuffix = "fennec-beta";
+                break;
             case FIREFOX_NIGHTLY:
-                return String.format(productFormat, "nightly", abiString);
-        }
-        throw new RuntimeException("switch fallthrough");
-    }
-
-    private static String getFile(App app, DeviceEnvironment.ABI abi) {
-        String fileFormat = "build/%s/%s/target.apk";
-        String abiString = convertAbiToString(abi);
-        switch (app) {
-            case FIREFOX_RELEASE:
-                return String.format(fileFormat, abiString, "geckoProduction");
-            case FIREFOX_BETA:
-                return String.format(fileFormat, abiString, "geckoBeta");
-            case FIREFOX_NIGHTLY:
-                return String.format("build/%s/target.apk", abiString);
-        }
-        throw new RuntimeException("switch fallthrough");
-    }
-
-    private static String convertAbiToString(DeviceEnvironment.ABI abi) {
-        switch (abi) {
-            case AARCH64:
-                return "arm64-v8a";
-            case ARM:
-                return "armeabi-v7a";
-            case X86:
-                return "x86";
-            case X86_64:
-                return "x86_64";
+                namespaceSuffix = "nightly";
+                break;
             default:
                 throw new RuntimeException("switch fallthrough");
         }
+        final String abiAbbreviation;
+        switch (abi) {
+            case AARCH64:
+                abiAbbreviation = "arm64-v8a";
+                break;
+            case ARM:
+                abiAbbreviation = "armeabi-v7a";
+                break;
+            case X86:
+                abiAbbreviation = "x86";
+                break;
+            case X86_64:
+                abiAbbreviation = "x86_64";
+                break;
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
+        final String apkFile;
+        switch (app) {
+            case FIREFOX_RELEASE:
+                apkFile = abiAbbreviation + "/geckoProduction/target";
+            break;
+            case FIREFOX_BETA:
+                apkFile = abiAbbreviation + "/geckoBeta/target";
+            break;
+            case FIREFOX_NIGHTLY:
+                apkFile = abiAbbreviation + "/target";
+            break;
+            default:
+                throw new RuntimeException("switch fallthrough");
+        }
+        final String chainOfTrustUrl = String.format(CHAIN_OF_TRUST_URL, namespaceSuffix, abiAbbreviation);
+        final String downloadUrl = String.format(DOWNLOAD_URL, namespaceSuffix, abiAbbreviation, apkFile);
+        final String timestamp = MozillaCIConsumer.findLatest(chainOfTrustUrl).getTimestamp();
+        return new Firefox(timestamp, downloadUrl);
     }
 
     public String getTimestamp() {
-        return mozillaCIConsumer.getTimestamp();
+        return timestamp;
     }
 
     public String getDownloadUrl() {
-        return mozillaCIConsumer.getDownloadUrl();
+        return downloadUrl;
     }
 }

@@ -31,6 +31,13 @@ public class MozillaCIConsumer {
         return new MozillaCIConsumer(timestamp, downloadUrl);
     }
 
+    static MozillaCIConsumer findLatest(String chainOfTrustUrl) {
+        Response response = ApiConsumer.consume(chainOfTrustUrl, Response.class);
+        Preconditions.checkNotNull(response);
+        String timestamp = response.getTask().getCreated();
+        return new MozillaCIConsumer(timestamp, "");
+    }
+
     public String getTimestamp() {
         return timestamp;
     }
