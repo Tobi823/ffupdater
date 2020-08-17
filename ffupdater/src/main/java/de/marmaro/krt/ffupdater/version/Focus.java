@@ -8,49 +8,51 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  */
 class Focus {
+    private static final String BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/project.mobile.focus.release.latest";
+    private static final String CHAIN_OF_TRUST_URL = BASE_URL + "/artifacts/public/chain-of-trust.json";
+    private static final String DOWNLOAD_URL = BASE_URL + "/artifacts/public/app-%s-%s-release-unsigned.apk";
 
-    private final MozillaCIConsumer mozillaCIConsumer;
+    private String timestamp;
+    private String downloadUrl;
 
-    private Focus(MozillaCIConsumer mozillaCIConsumer) {
-        this.mozillaCIConsumer = mozillaCIConsumer;
+    private Focus(String timestamp, String downloadUrl) {
+        this.timestamp = timestamp;
+        this.downloadUrl = downloadUrl;
     }
 
     static Focus findLatest(App app, DeviceEnvironment.ABI abi) {
-        MozillaCIConsumer consumer = MozillaCIConsumer.findLatest("project.mobile.focus.release.latest", getFile(app, abi));
-        return new Focus(consumer);
-    }
-
-    private static String getFile(App app, DeviceEnvironment.ABI abi) {
+        final String appName;
         switch (app) {
             case FIREFOX_FOCUS:
-                switch (abi) {
-                    case AARCH64:
-                        return "app-focus-aarch64-release-unsigned.apk";
-                    case ARM:
-                        return "app-focus-arm-release-unsigned.apk";
-                    case X86:
-                    case X86_64:
-                        throw new IllegalArgumentException("unsupported abi for Firefox Focus");
-                }
+                appName = "focus";
+                break;
             case FIREFOX_KLAR:
-                switch (abi) {
-                    case AARCH64:
-                        return "app-klar-aarch64-release-unsigned.apk";
-                    case ARM:
-                        return "app-klar-arm-release-unsigned.apk";
-                    case X86:
-                    case X86_64:
-                        throw new IllegalArgumentException("unsupported abi for Firefox Klar");
-                }
+                appName = "klar";
+                break;
+            default:
+                throw new RuntimeException("switch fallthrough");
         }
-        throw new IllegalArgumentException("switch fallthrough");
+        final String abiAbbreviation;
+        switch (abi) {
+            case AARCH64:
+                abiAbbreviation = "aarch64";
+                break;
+            case ARM:
+                abiAbbreviation = "arm";
+                break;
+            default:
+                throw new IllegalArgumentException("unsupported abi");
+        }
+        final String downloadUrl = String.format(DOWNLOAD_URL, appName, abiAbbreviation);
+        final String timestamp = MozillaCIConsumer.findLatest(CHAIN_OF_TRUST_URL).getTimestamp();
+        return new Focus(timestamp, downloadUrl);
     }
 
     public String getTimestamp() {
-        return mozillaCIConsumer.getTimestamp();
+        return timestamp;
     }
 
     public String getDownloadUrl() {
-        return mozillaCIConsumer.getDownloadUrl();
+        return downloadUrl;
     }
 }
