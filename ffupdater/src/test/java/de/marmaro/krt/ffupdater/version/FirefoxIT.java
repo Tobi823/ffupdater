@@ -39,63 +39,62 @@ public class FirefoxIT {
     }
 
     @Test
-    public void findLatest_aarch64_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_release_aarch64() throws IOException {
         verify(App.FIREFOX_RELEASE, DeviceEnvironment.ABI.AARCH64);
     }
 
     @Test
-    public void findLatest_arm_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_release_arm() throws IOException {
         verify(App.FIREFOX_RELEASE, DeviceEnvironment.ABI.ARM);
     }
 
     @Test
-    public void findLatest_x8664_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_release_x8664() throws IOException {
         verify(App.FIREFOX_RELEASE, DeviceEnvironment.ABI.X86_64);
     }
 
     @Test
-    public void findLatest_x86_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_release_x86() throws IOException {
         verify(App.FIREFOX_RELEASE, DeviceEnvironment.ABI.X86);
     }
 
     @Test
-    public void findBeta_aarch64_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_beta_aarch64() throws IOException {
         verify(App.FIREFOX_BETA, DeviceEnvironment.ABI.AARCH64);
     }
 
     @Test
-    public void findBeta_arm_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_beta_arm() throws IOException {
         verify(App.FIREFOX_BETA, DeviceEnvironment.ABI.ARM);
     }
 
     @Test
-    public void findBeta_x8664_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_beta_x8664() throws IOException {
         verify(App.FIREFOX_BETA, DeviceEnvironment.ABI.X86_64);
     }
 
     @Test
-    public void findBeta_x86_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_beta_x86() throws IOException {
         verify(App.FIREFOX_BETA, DeviceEnvironment.ABI.X86);
     }
 
     @Test
-    public void findNightly_aarch64_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_nightly_aarch64() throws IOException {
         verify(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.AARCH64);
     }
 
     @Test
-    public void findNightly_arm_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_nightly_arm() throws IOException {
         verify(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.ARM);
     }
 
     @Test
-    public void findNightly_x8664_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_nightly_x8664() throws IOException {
         verify(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.X86_64);
     }
 
     @Test
-    public void findNightly_x86_downloadUrlAndTimestampNotEmpty() throws IOException {
+    public void verify_nightly_x86() throws IOException {
         verify(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.X86);
     }
-
 }
