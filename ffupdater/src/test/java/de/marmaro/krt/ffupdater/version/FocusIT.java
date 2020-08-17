@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -13,6 +16,7 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
 
 /**
@@ -26,6 +30,11 @@ public class FocusIT {
         final String timestamp = focus.getTimestamp();
         assertThat(String.format("download url of %s with %s is empty", app, abi), downloadUrl, is(not(emptyString())));
         assertThat(String.format("timestamp of %s with %s is empty", app, abi), timestamp, is(not(emptyString())));
+
+        final LocalDateTime now = LocalDateTime.now();
+        final LocalDateTime parsedTimestamp = LocalDateTime.parse(timestamp, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        final long daysOld = ChronoUnit.DAYS.between(now, parsedTimestamp);
+        assertThat(String.format("timestamp of %s with %s is too old", app, abi), daysOld, lessThan(31L));
 
         // check if downloadUrl is valid
         HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(downloadUrl).openConnection();

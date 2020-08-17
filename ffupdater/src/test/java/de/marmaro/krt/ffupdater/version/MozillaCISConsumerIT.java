@@ -20,22 +20,9 @@ public class MozillaCISConsumerIT {
 
     @Test
     public void getTimestamp_fenixProduction_timestampMustNotBeOld() throws IOException {
-        MozillaCIConsumer consumer = MozillaCIConsumer.findLatest(
-                "mobile.v2.fenix.fennec-production.latest.arm64-v8a",
-                "build/arm64-v8a/geckoProduction/target.apk");
+        MozillaCIConsumer consumer = MozillaCIConsumer.findLatest("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/project.mobile.focus.release.latest/artifacts/public/chain-of-trust.json");
         System.out.println(consumer.getTimestamp());
         LocalDateTime timestamp = LocalDateTime.parse(consumer.getTimestamp(), DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-        System.out.println(timestamp);
         assertThat(ChronoUnit.DAYS.between(LocalDateTime.now(), timestamp), lessThan(31L));
-        checkConnection(consumer.getDownloadUrl());
-    }
-
-    private void checkConnection(String url) throws IOException {
-        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(url).openConnection();
-        try {
-            assertThat(urlConnection.getResponseCode(), is(both(greaterThanOrEqualTo(200)).and(lessThan(300))));
-        } finally {
-            urlConnection.disconnect();
-        }
     }
 }
