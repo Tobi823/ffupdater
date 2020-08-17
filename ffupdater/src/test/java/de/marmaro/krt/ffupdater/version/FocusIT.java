@@ -2,6 +2,11 @@ package de.marmaro.krt.ffupdater.version;
 
 import org.junit.Test;
 
+import java.io.IOException;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
@@ -15,67 +20,61 @@ import static org.hamcrest.Matchers.not;
  */
 public class FocusIT {
 
-    @Test
-    public void findLatest_withArmAndFocus_returnNonEmptyString() {
-        Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.ARM);
-        assertThat(focus.getDownloadUrl(), is(not(emptyString())));
-        assertThat(focus.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FIREFOX_FOCUS + " - " + focus.getDownloadUrl() + " - " + focus.getTimestamp());
+    private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {
+        final Focus focus = Focus.findLatest(app, abi);
+        final String downloadUrl = focus.getDownloadUrl();
+        final String timestamp = focus.getTimestamp();
+        assertThat(String.format("download url of %s with %s is empty", app, abi), downloadUrl, is(not(emptyString())));
+        assertThat(String.format("timestamp of %s with %s is empty", app, abi), timestamp, is(not(emptyString())));
+
+        // check if downloadUrl is valid
+        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(downloadUrl).openConnection();
+        urlConnection.setRequestMethod("HEAD");
+        try {
+            urlConnection.getInputStream();
+        } finally {
+            urlConnection.disconnect();
+        }
+        System.out.printf("%s (%s) - downloadUrl: %s timestamp: %s\n", app, abi, downloadUrl, timestamp);
     }
 
     @Test
-    public void getDownloadUrl_withArm64AndFocus_returnNonEmptyString() {
-        Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.AARCH64);
-        assertThat(focus.getDownloadUrl(), is(not(emptyString())));
-        assertThat(focus.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FIREFOX_FOCUS + " - " + focus.getDownloadUrl() + " - " + focus.getTimestamp());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void getDownloadUrl_withX86AndFocus_throwException() {
-        Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.X86);
-        assertThat(focus.getDownloadUrl(), is(not(emptyString())));
-        assertThat(focus.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FIREFOX_FOCUS + " - " + focus.getDownloadUrl() + " - " + focus.getTimestamp());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void getDownloadUrl_withX8664AndFocus_throwException() {
-        Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.X86_64);
-        assertThat(focus.getDownloadUrl(), is(not(emptyString())));
-        assertThat(focus.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FIREFOX_FOCUS + " - " + focus.getDownloadUrl() + " - " + focus.getTimestamp());
+    public void findLatest_withArmAndFocus_returnNonEmptyString() throws IOException {
+        verify(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.ARM);
     }
 
     @Test
-    public void getDownloadUrl_withArmAndKlar_returnNonEmptyString() {
-        Focus focus = Focus.findLatest(App.FIREFOX_KLAR, DeviceEnvironment.ABI.ARM);
-        assertThat(focus.getDownloadUrl(), is(not(emptyString())));
-        assertThat(focus.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FIREFOX_KLAR + " - " + focus.getDownloadUrl() + " - " + focus.getTimestamp());
+    public void getDownloadUrl_withArm64AndFocus_returnNonEmptyString() throws IOException {
+        verify(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.AARCH64);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getDownloadUrl_withX86AndFocus_throwException() throws IOException {
+        verify(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.X86);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getDownloadUrl_withX8664AndFocus_throwException() throws IOException {
+        verify(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.X86_64);
     }
 
     @Test
-    public void getDownloadUrl_withArm64AndKlar_returnNonEmptyString() {
-        Focus focus = Focus.findLatest(App.FIREFOX_KLAR, DeviceEnvironment.ABI.AARCH64);
-        assertThat(focus.getDownloadUrl(), is(not(emptyString())));
-        assertThat(focus.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FIREFOX_KLAR + " - " + focus.getDownloadUrl() + " - " + focus.getTimestamp());
+    public void getDownloadUrl_withArmAndKlar_returnNonEmptyString() throws IOException {
+        verify(App.FIREFOX_KLAR, DeviceEnvironment.ABI.ARM);
+    }
+
+    @Test
+    public void getDownloadUrl_withArm64AndKlar_returnNonEmptyString() throws IOException {
+        verify(App.FIREFOX_KLAR, DeviceEnvironment.ABI.AARCH64);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void getDownloadUrl_withX86AndKlar_throwException() {
-        Focus focus = Focus.findLatest(App.FIREFOX_KLAR, DeviceEnvironment.ABI.X86);
-        assertThat(focus.getDownloadUrl(), is(not(emptyString())));
-        assertThat(focus.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FIREFOX_KLAR + " - " + focus.getDownloadUrl() + " - " + focus.getTimestamp());
+    public void getDownloadUrl_withX86AndKlar_throwException() throws IOException {
+        verify(App.FIREFOX_KLAR, DeviceEnvironment.ABI.X86);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void getDownloadUrl_withX8664AndKlar_throwException() {
-        Focus focus = Focus.findLatest(App.FIREFOX_KLAR, DeviceEnvironment.ABI.X86_64);
-        assertThat(focus.getDownloadUrl(), is(not(emptyString())));
-        assertThat(focus.getTimestamp(), is(not(emptyString())));
-        System.out.println(App.FIREFOX_KLAR + " - " + focus.getDownloadUrl() + " - " + focus.getTimestamp());
+    public void getDownloadUrl_withX8664AndKlar_throwException() throws IOException {
+        verify(App.FIREFOX_KLAR, DeviceEnvironment.ABI.X86_64);
     }
 }
