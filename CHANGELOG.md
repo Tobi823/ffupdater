@@ -1,3 +1,6 @@
+# 2020-08-17
+ * Fix broken Firefox Nightly installation/update - thanks 132ikl for reporting this bug
+
 # 2020-08-13 Version 69.0.2 (50)
  * Thanks aevw for adding brazilian portuguese translation
 

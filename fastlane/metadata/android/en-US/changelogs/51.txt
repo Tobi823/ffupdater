@@ -1,0 +1,1 @@
+ * Fix broken Firefox Nightly installation/update - thanks 132ikl for reporting this bug

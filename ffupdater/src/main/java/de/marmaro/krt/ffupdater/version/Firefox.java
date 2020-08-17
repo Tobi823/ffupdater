@@ -49,7 +49,7 @@ class Firefox {
             case FIREFOX_BETA:
                 return String.format(fileFormat, abiString, "geckoBeta");
             case FIREFOX_NIGHTLY:
-                return String.format(fileFormat, abiString, "geckoNightly");
+                return String.format("build/%s/target.apk", abiString);
         }
         throw new RuntimeException("switch fallthrough");
     }
