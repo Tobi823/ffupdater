@@ -1,4 +1,4 @@
-# 2020-08-17
+# 2020-08-17 Version 69.0.3 (51)
  * Fix broken Firefox Nightly installation/update - thanks 132ikl for reporting this bug
 
 # 2020-08-13 Version 69.0.2 (50)
