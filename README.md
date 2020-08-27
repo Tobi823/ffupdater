@@ -28,6 +28,9 @@ The applications are downloaded from these locations:
  - Firefox Focus/Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
  - Firefox Lite: <https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest>
  - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
+ 
+Limitations:
+ - FFUpdater can't detect external installations or updates of Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Focus and Firefox Klar. If you install or update one of these apps with the Google Play Store, FFUpdater assumes that this app is outdated and prompts you for an update. You can disable the update check for an app in settings > excluded applications.
 
 ## Deprecated browsers
 
