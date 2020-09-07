@@ -59,20 +59,7 @@ class Firefox {
             default:
                 throw new RuntimeException("unsupported abi");
         }
-        final String apkFile;
-        switch (app) {
-            case FIREFOX_RELEASE:
-                apkFile = abiAbbreviation + "/target";
-            break;
-            case FIREFOX_BETA:
-                apkFile = abiAbbreviation + "/target";
-            break;
-            case FIREFOX_NIGHTLY:
-                apkFile = abiAbbreviation + "/target";
-            break;
-            default:
-                throw new RuntimeException("switch fallthrough");
-        }
+        final String apkFile = abiAbbreviation + "/target";
         final String chainOfTrustUrl = String.format(CHAIN_OF_TRUST_URL, namespaceSuffix, abiAbbreviation);
         final String downloadUrl = String.format(DOWNLOAD_URL, namespaceSuffix, abiAbbreviation, apkFile);
         final String timestamp = MozillaCIConsumer.findLatest(chainOfTrustUrl).getTimestamp();
