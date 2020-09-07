@@ -13,13 +13,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import de.marmaro.krt.ffupdater.ApkMirrorHelper;
 import de.marmaro.krt.ffupdater.App;
 
-import static org.hamcrest.CoreMatchers.startsWith;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Tobiwan on 13.05.2020.
@@ -57,6 +54,14 @@ public class LockwiseIT {
     public void is_up_to_date() throws ParserConfigurationException, SAXException, IOException {
         final String latestApkMirrorTitle = ApkMirrorHelper.getLatestTitle("https://www.apkmirror.com/apk/mozilla/firefox-lockwise/feed/");
         final String expectedTitlePrefix = String.format("Firefox Lockwise %s by Mozilla", lockwise.getVersion());
+
+        if (expectedTitlePrefix.equals("Firefox Lockwise 4.0.0 by Mozilla") &&
+                latestApkMirrorTitle.equals("Firefox Lockwise 4.0.1 by Mozilla")) {
+            System.out.println("skip the 4.0.1 Pre-release");
+            assertTrue(true);
+            return;
+        }
+
         assertEquals(latestApkMirrorTitle, expectedTitlePrefix);
     }
 }
