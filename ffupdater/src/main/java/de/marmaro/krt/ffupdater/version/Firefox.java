@@ -31,10 +31,10 @@ class Firefox {
         final String namespaceSuffix;
         switch (app) {
             case FIREFOX_RELEASE:
-                namespaceSuffix = "fennec-production";
+                namespaceSuffix = "production";
                 break;
             case FIREFOX_BETA:
-                namespaceSuffix = "fennec-beta";
+                namespaceSuffix = "beta";
                 break;
             case FIREFOX_NIGHTLY:
                 namespaceSuffix = "nightly";

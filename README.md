@@ -22,9 +22,9 @@ You can find the APK certificate fingerprints on multiple website - e.g. apkmirr
 I did my best to make the app as secure as possible - feel free to double-check it in the source code.
 
 The applications are downloaded from these locations:
- - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.firefox.fennec-production.latest>
- - Firefox for Android Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.firefox.fennec-beta.latest/arm64-v8a>
- - Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.firefox.nightly.latest>
+ - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
+ - Firefox for Android Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
+ - Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
  - Firefox Focus/Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
  - Firefox Lite: <https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest>
  - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
