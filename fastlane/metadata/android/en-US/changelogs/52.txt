@@ -1,0 +1,2 @@
+ * Fix old download urls for Firefox Release and Firefox Beta - thanks DctrBnsttr for reporting this bug
+ * Add tests to ensure that FFUpdater is always using the latest download urls

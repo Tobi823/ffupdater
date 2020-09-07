@@ -1,3 +1,7 @@
+# 2020-09-08 Version 69.0.4 (52)
+ * Fix old download urls / update check urls for Firefox Release and Firefox Beta - thanks DctrBnsttr for reporting this bug
+ * Add tests to ensure that FFUpdater is always using the latest download urls
+
 # 2020-08-17 Version 69.0.3 (51)
  * Fix broken Firefox Nightly installation/update - thanks 132ikl for reporting this bug
 

@@ -55,6 +55,7 @@ public class LockwiseIT {
         final String latestApkMirrorTitle = ApkMirrorHelper.getLatestTitle("https://www.apkmirror.com/apk/mozilla/firefox-lockwise/feed/");
         final String expectedTitlePrefix = String.format("Firefox Lockwise %s by Mozilla", lockwise.getVersion());
 
+        //TODO remove me if a newer release (and no Pre-release) for Lockwise exists
         if (expectedTitlePrefix.equals("Firefox Lockwise 4.0.0 by Mozilla") &&
                 latestApkMirrorTitle.equals("Firefox Lockwise 4.0.1 by Mozilla")) {
             System.out.println("skip the 4.0.1 Pre-release");
