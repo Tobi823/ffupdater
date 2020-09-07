@@ -1,14 +1,9 @@
 package de.marmaro.krt.ffupdater.version;
 
 import org.junit.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,8 +11,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import de.marmaro.krt.ffupdater.ApkMirrorHelper;
@@ -103,7 +96,7 @@ public class FirefoxIT {
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
         final LocalDate actualReleaseDate = timestamp.toLocalDate();
 
-        final LocalDate expectedReleaseDate = ApkMirrorHelper.getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
+        final LocalDate expectedReleaseDate = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
         assertEquals(expectedReleaseDate, actualReleaseDate);
     }
 
@@ -114,7 +107,7 @@ public class FirefoxIT {
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
         final LocalDate actualReleaseDate = timestamp.toLocalDate();
 
-        final LocalDate expectedReleaseDate = ApkMirrorHelper.getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
+        final LocalDate expectedReleaseDate = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
         assertEquals(expectedReleaseDate, actualReleaseDate);
     }
 
@@ -125,7 +118,7 @@ public class FirefoxIT {
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
         final LocalDate actualReleaseDate = timestamp.toLocalDate();
 
-        final LocalDate expectedReleaseDate = ApkMirrorHelper.getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/");
+        final LocalDate expectedReleaseDate = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/");
         assertEquals(expectedReleaseDate, actualReleaseDate);
     }
 

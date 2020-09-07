@@ -40,7 +40,7 @@ class Firefox {
                 namespaceSuffix = "nightly";
                 break;
             default:
-                throw new RuntimeException("switch fallthrough");
+                throw new RuntimeException("unsupported app - must be FIREFOX_RELEASE, FIREFOX_BETA or FIREFOX_NIGHTLY");
         }
         final String abiAbbreviation;
         switch (abi) {
@@ -57,7 +57,7 @@ class Firefox {
                 abiAbbreviation = "x86_64";
                 break;
             default:
-                throw new RuntimeException("switch fallthrough");
+                throw new RuntimeException("unsupported abi");
         }
         final String apkFile;
         switch (app) {
