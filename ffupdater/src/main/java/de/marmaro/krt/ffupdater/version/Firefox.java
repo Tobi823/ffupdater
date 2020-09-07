@@ -31,7 +31,7 @@ class Firefox {
         final String namespaceSuffix;
         switch (app) {
             case FIREFOX_RELEASE:
-                namespaceSuffix = "production";
+                namespaceSuffix = "release";
                 break;
             case FIREFOX_BETA:
                 namespaceSuffix = "beta";
@@ -62,10 +62,10 @@ class Firefox {
         final String apkFile;
         switch (app) {
             case FIREFOX_RELEASE:
-                apkFile = abiAbbreviation + "/geckoProduction/target";
+                apkFile = abiAbbreviation + "/target";
             break;
             case FIREFOX_BETA:
-                apkFile = abiAbbreviation + "/geckoBeta/target";
+                apkFile = abiAbbreviation + "/target";
             break;
             case FIREFOX_NIGHTLY:
                 apkFile = abiAbbreviation + "/target";
