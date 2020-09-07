@@ -20,6 +20,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import de.marmaro.krt.ffupdater.ApkMirrorHelper;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
@@ -100,7 +101,10 @@ public class FirefoxIT {
         final Firefox firefox = Firefox.findLatest(App.FIREFOX_RELEASE, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = firefox.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        assertEquals(getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox/feed/"), timestamp.toLocalDate());
+        final LocalDate actualReleaseDate = timestamp.toLocalDate();
+
+        final LocalDate expectedReleaseDate = ApkMirrorHelper.getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
+        assertEquals(expectedReleaseDate, actualReleaseDate);
     }
 
     @Test
@@ -108,7 +112,10 @@ public class FirefoxIT {
         final Firefox firefox = Firefox.findLatest(App.FIREFOX_BETA, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = firefox.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        assertEquals(getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/"), timestamp.toLocalDate());
+        final LocalDate actualReleaseDate = timestamp.toLocalDate();
+
+        final LocalDate expectedReleaseDate = ApkMirrorHelper.getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
+        assertEquals(expectedReleaseDate, actualReleaseDate);
     }
 
     @Test
@@ -116,7 +123,10 @@ public class FirefoxIT {
         final Firefox firefox = Firefox.findLatest(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = firefox.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        assertEquals(getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/"), timestamp.toLocalDate());
+        final LocalDate actualReleaseDate = timestamp.toLocalDate();
+
+        final LocalDate expectedReleaseDate = ApkMirrorHelper.getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/");
+        assertEquals(expectedReleaseDate, actualReleaseDate);
     }
 
     private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {
@@ -140,23 +150,5 @@ public class FirefoxIT {
             urlConnection.disconnect();
         }
         System.out.printf("%s (%s) - downloadUrl: %s timestamp: %s\n", app, abi, downloadUrl, timestamp);
-    }
-
-    private LocalDate getPubDateFromApkMirror(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
-        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(feedUrl).openConnection();
-        try (InputStream original = urlConnection.getInputStream()) {
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse(original);
-            document.getDocumentElement().normalize();
-
-            NodeList items = document.getElementsByTagName("item");
-            Element latestItem = ((Element) items.item(0));
-            String pubDateString = latestItem.getElementsByTagName("pubDate").item(0).getTextContent();
-            LocalDateTime pubDate = LocalDateTime.from(DateTimeFormatter.RFC_1123_DATE_TIME.parse(pubDateString));
-            return pubDate.toLocalDate();
-        } finally {
-            urlConnection.disconnect();
-        }
     }
 }
