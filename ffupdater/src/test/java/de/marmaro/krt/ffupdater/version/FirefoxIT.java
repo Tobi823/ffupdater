@@ -95,7 +95,7 @@ public class FirefoxIT {
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
 
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
-        assertThat(expectedRelease, within(24, ChronoUnit.HOURS, timestamp));
+        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
     @Test
@@ -105,7 +105,7 @@ public class FirefoxIT {
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
 
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
-        assertThat(expectedRelease, within(24, ChronoUnit.HOURS, timestamp));
+        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class FirefoxIT {
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
 
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/");
-        assertThat(expectedRelease, within(24, ChronoUnit.HOURS, timestamp));
+        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
     private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {

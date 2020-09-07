@@ -75,17 +75,17 @@ public class FocusIT {
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
 
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
-        assertThat(expectedRelease, within(24, ChronoUnit.HOURS, timestamp));
+        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
     @Test
-    public void is_fenix_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+    public void is_klar_up_to_date() throws ParserConfigurationException, SAXException, IOException {
         final Focus focus = Focus.findLatest(App.FIREFOX_KLAR, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = focus.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
 
-        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/feed/");
-        assertThat(expectedRelease, within(24, ChronoUnit.HOURS, timestamp));
+        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
+        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
     private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {
