@@ -5,7 +5,6 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -17,12 +16,12 @@ import de.marmaro.krt.ffupdater.ApkMirrorHelper;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
+import static org.exparity.hamcrest.date.LocalDateTimeMatchers.within;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Tobiwan on 13.05.2020.
@@ -74,10 +73,9 @@ public class FocusIT {
         final Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = focus.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        final LocalDate actualReleaseDate = timestamp.toLocalDate();
 
-        final LocalDate expectedReleaseDate = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
-        assertEquals(expectedReleaseDate, actualReleaseDate);
+        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
+        assertThat(expectedRelease, within(24, ChronoUnit.HOURS, timestamp));
     }
 
     @Test
@@ -85,10 +83,9 @@ public class FocusIT {
         final Focus focus = Focus.findLatest(App.FIREFOX_KLAR, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = focus.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        final LocalDate actualReleaseDate = timestamp.toLocalDate();
 
-        final LocalDate expectedReleaseDate = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/feed/");
-        assertEquals(expectedReleaseDate, actualReleaseDate);
+        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/feed/");
+        assertThat(expectedRelease, within(24, ChronoUnit.HOURS, timestamp));
     }
 
     private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {

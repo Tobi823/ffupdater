@@ -8,7 +8,6 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -19,13 +18,12 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class ApkMirrorHelper {
 
-    public static LocalDate getLatestPubDate(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
+    public static LocalDateTime getLatestPubDate(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
         Document document = getDocument(feedUrl);
         NodeList items = document.getElementsByTagName("item");
         Element latestItem = ((Element) items.item(0));
         String pubDateString = latestItem.getElementsByTagName("pubDate").item(0).getTextContent();
-        LocalDateTime pubDate = LocalDateTime.from(DateTimeFormatter.RFC_1123_DATE_TIME.parse(pubDateString));
-        return pubDate.toLocalDate();
+        return LocalDateTime.from(DateTimeFormatter.RFC_1123_DATE_TIME.parse(pubDateString));
     }
 
     public static String getLatestTitle(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
