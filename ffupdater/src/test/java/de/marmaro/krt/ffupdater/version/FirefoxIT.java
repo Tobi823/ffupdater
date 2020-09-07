@@ -1,14 +1,24 @@
 package de.marmaro.krt.ffupdater.version;
 
 import org.junit.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
@@ -18,34 +28,12 @@ import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Tobiwan on 13.05.2020.
  */
 public class FirefoxIT {
-
-    private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {
-        final Firefox firefox = Firefox.findLatest(app, abi);
-        final String downloadUrl = firefox.getDownloadUrl();
-        final String timestamp = firefox.getTimestamp();
-        assertThat(String.format("download url of %s with %s is empty", app, abi), downloadUrl, is(not(emptyString())));
-        assertThat(String.format("timestamp of %s with %s is empty", app, abi), timestamp, is(not(emptyString())));
-
-        final LocalDateTime now = LocalDateTime.now();
-        final LocalDateTime parsedTimestamp = LocalDateTime.parse(timestamp, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-        final long daysOld = ChronoUnit.DAYS.between(now, parsedTimestamp);
-        assertThat(String.format("timestamp of %s with %s is too old", app, abi), daysOld, lessThan(31L));
-
-        // check if downloadUrl is valid
-        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(downloadUrl).openConnection();
-        urlConnection.setRequestMethod("HEAD");
-        try {
-            urlConnection.getInputStream();
-        } finally {
-            urlConnection.disconnect();
-        }
-        System.out.printf("%s (%s) - downloadUrl: %s timestamp: %s\n", app, abi, downloadUrl, timestamp);
-    }
 
     @Test
     public void verify_release_aarch64() throws IOException {
@@ -105,5 +93,70 @@ public class FirefoxIT {
     @Test
     public void verify_nightly_x86() throws IOException {
         verify(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.X86);
+    }
+
+    @Test
+    public void is_release_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        final Firefox firefox = Firefox.findLatest(App.FIREFOX_RELEASE, DeviceEnvironment.ABI.AARCH64);
+        final String timestampString = firefox.getTimestamp();
+        final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
+        assertEquals(getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox/feed/"), timestamp.toLocalDate());
+    }
+
+    @Test
+    public void is_beta_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        final Firefox firefox = Firefox.findLatest(App.FIREFOX_BETA, DeviceEnvironment.ABI.AARCH64);
+        final String timestampString = firefox.getTimestamp();
+        final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
+        assertEquals(getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/"), timestamp.toLocalDate());
+    }
+
+    @Test
+    public void is_nightly_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        final Firefox firefox = Firefox.findLatest(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.AARCH64);
+        final String timestampString = firefox.getTimestamp();
+        final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
+        assertEquals(getPubDateFromApkMirror("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/"), timestamp.toLocalDate());
+    }
+
+    private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {
+        final Firefox firefox = Firefox.findLatest(app, abi);
+        final String downloadUrl = firefox.getDownloadUrl();
+        final String timestamp = firefox.getTimestamp();
+        assertThat(String.format("download url of %s with %s is empty", app, abi), downloadUrl, is(not(emptyString())));
+        assertThat(String.format("timestamp of %s with %s is empty", app, abi), timestamp, is(not(emptyString())));
+
+        final LocalDateTime now = LocalDateTime.now();
+        final LocalDateTime parsedTimestamp = LocalDateTime.parse(timestamp, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        final long daysOld = ChronoUnit.DAYS.between(now, parsedTimestamp);
+        assertThat(String.format("timestamp of %s with %s is too old", app, abi), daysOld, lessThan(31L));
+
+        // check if downloadUrl is valid
+        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(downloadUrl).openConnection();
+        urlConnection.setRequestMethod("HEAD");
+        try {
+            urlConnection.getInputStream();
+        } finally {
+            urlConnection.disconnect();
+        }
+        System.out.printf("%s (%s) - downloadUrl: %s timestamp: %s\n", app, abi, downloadUrl, timestamp);
+    }
+
+    private LocalDate getPubDateFromApkMirror(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
+        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(feedUrl).openConnection();
+        try (InputStream original = urlConnection.getInputStream()) {
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document document = documentBuilder.parse(original);
+            document.getDocumentElement().normalize();
+
+            NodeList items = document.getElementsByTagName("item");
+            Element latestItem = ((Element) items.item(0));
+            String pubDateString = latestItem.getElementsByTagName("pubDate").item(0).getTextContent();
+            LocalDateTime pubDate = LocalDateTime.from(DateTimeFormatter.RFC_1123_DATE_TIME.parse(pubDateString));
+            return pubDate.toLocalDate();
+        } finally {
+            urlConnection.disconnect();
+        }
     }
 }
