@@ -93,8 +93,16 @@ public class FirefoxIT {
         final Firefox firefox = Firefox.findLatest(App.FIREFOX_RELEASE, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = firefox.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
+
+        // for releases which are only release on the Mozilla CI and not on APKMirror
+        if (timestamp.isAfter(expectedRelease)) {
+            // max 1 week difference
+            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
+            System.out.println("Mozialla CI offers a non released version of FIREFOX_RELEASE");
+            return;
+        }
+
         assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
@@ -103,8 +111,16 @@ public class FirefoxIT {
         final Firefox firefox = Firefox.findLatest(App.FIREFOX_BETA, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = firefox.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
+
+        // for releases which are only release on the Mozilla CI and not on APKMirror
+        if (timestamp.isAfter(expectedRelease)) {
+            // max 1 week difference
+            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
+            System.out.println("Mozialla CI offers a non released version of FIREFOX_BETA");
+            return;
+        }
+
         assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
@@ -113,8 +129,16 @@ public class FirefoxIT {
         final Firefox firefox = Firefox.findLatest(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = firefox.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/");
+
+        // for releases which are only release on the Mozilla CI and not on APKMirror
+        if (timestamp.isAfter(expectedRelease)) {
+            // max 1 week difference
+            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
+            System.out.println("Mozialla CI offers a non released version of FIREOFX_NIGHTLY");
+            return;
+        }
+
         assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 

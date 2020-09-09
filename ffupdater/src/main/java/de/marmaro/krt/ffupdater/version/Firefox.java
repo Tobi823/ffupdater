@@ -5,9 +5,14 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 /**
  * Source url for Firefox Release, Firefox Beta and Firefox Nightly
- * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.fennec-production.latest
- * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.fennec-beta.latest
+ * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest
+ * https://www.apkmirror.com/apk/mozilla/firefox/
+ *
+ * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
+ * https://www.apkmirror.com/apk/mozilla/firefox-beta/
+ *
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
+ * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
  */
 class Firefox {
     private static final String BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.%s.latest.%s";

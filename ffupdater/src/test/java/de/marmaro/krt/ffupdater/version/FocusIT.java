@@ -73,8 +73,16 @@ public class FocusIT {
         final Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = focus.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
+
+        // for releases which are only release on the Mozilla CI and not on APKMirror
+        if (timestamp.isAfter(expectedRelease)) {
+            // max 1 week difference
+            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
+            System.out.println("Mozialla CI offers a non released version of FIREFOX_FOCUS");
+            return;
+        }
+
         assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
@@ -83,8 +91,16 @@ public class FocusIT {
         final Focus focus = Focus.findLatest(App.FIREFOX_KLAR, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = focus.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
+
+        // for releases which are only release on the Mozilla CI and not on APKMirror
+        if (timestamp.isAfter(expectedRelease)) {
+            // max 1 week difference
+            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
+            System.out.println("Mozialla CI offers a non released version of FIREFOX_KLAR");
+            return;
+        }
+
         assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
     }
 
