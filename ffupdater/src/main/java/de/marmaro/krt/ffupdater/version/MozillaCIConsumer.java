@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.version;
 
 import com.google.common.base.Preconditions;
 
-import java.util.Map;
+import de.marmaro.krt.ffupdater.version.rest.mozilla_ci.Response;
 
 public class MozillaCIConsumer {
     private final String timestamp;
@@ -22,16 +22,4 @@ public class MozillaCIConsumer {
         return timestamp;
     }
 
-    private static class Response {
-        private Task task;
-        public Task getTask() {
-            return task;
-        }
-        private static class Task {
-            private String created;
-            public String getCreated() {
-                return created;
-            }
-        }
-    }
 }

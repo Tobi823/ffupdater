@@ -6,8 +6,10 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,6 +24,8 @@ import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Tobiwan on 13.05.2020.
@@ -89,58 +93,137 @@ public class FirefoxIT {
     }
 
     @Test
-    public void is_release_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        final Firefox firefox = Firefox.findLatest(App.FIREFOX_RELEASE, DeviceEnvironment.ABI.AARCH64);
-        final String timestampString = firefox.getTimestamp();
-        final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
-
-        // for releases which are only release on the Mozilla CI and not on APKMirror
-        if (timestamp.isAfter(expectedRelease)) {
-            // max 1 week difference
-            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
-            System.out.println("Mozialla CI offers a non released version of FIREFOX_RELEASE");
-            return;
-        }
-
-        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
+    public void is_release_aarch64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_release_is_up_to_date("2-", DeviceEnvironment.ABI.AARCH64);
     }
 
     @Test
-    public void is_beta_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        final Firefox firefox = Firefox.findLatest(App.FIREFOX_BETA, DeviceEnvironment.ABI.AARCH64);
-        final String timestampString = firefox.getTimestamp();
-        final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
-
-        // for releases which are only release on the Mozilla CI and not on APKMirror
-        if (timestamp.isAfter(expectedRelease)) {
-            // max 1 week difference
-            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
-            System.out.println("Mozialla CI offers a non released version of FIREFOX_BETA");
-            return;
-        }
-
-        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
+    public void is_release_arm_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_release_is_up_to_date("", DeviceEnvironment.ABI.ARM);
     }
 
     @Test
-    public void is_nightly_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        final Firefox firefox = Firefox.findLatest(App.FIREFOX_NIGHTLY, DeviceEnvironment.ABI.AARCH64);
+    public void is_release_x86_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_release_is_up_to_date("3-", DeviceEnvironment.ABI.X86);
+    }
+
+    @Test
+    public void is_release_x64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_release_is_up_to_date("4-", DeviceEnvironment.ABI.X86_64);
+    }
+
+    private static void check_release_is_up_to_date(String apkMirrorId, DeviceEnvironment.ABI abi) throws ParserConfigurationException, SAXException, IOException {
+        final Firefox firefox = Firefox.findLatest(App.FIREFOX_RELEASE, abi);
+        final String feedUrl = "https://www.apkmirror.com/apk/mozilla/firefox/feed/";
+        String appVersionPageUrl = ApkMirrorHelper.getAppVersionPage(feedUrl);
+        String[] urlParts = appVersionPageUrl.split("/");
+        String abiVersionPageSuffix = urlParts[urlParts.length - 1]
+                .replace("firefox", "firefox-browser-fast-private-safe-web-browser")
+                .replace("release", apkMirrorId + "android-apk-download");
+        String abiVersionPageUrl = appVersionPageUrl + abiVersionPageSuffix;
+        String hash = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(abiVersionPageUrl);
+
+        if (!Objects.equals(hash, firefox.getHash().getHash())) {
+            System.err.println("hashes are different - expected: " + hash +  ", but was: " + firefox.getHash().getHash());
+            final LocalDateTime apkMirrorTimestamp = ApkMirrorHelper.getLatestPubDate(feedUrl);
+            long hours = ChronoUnit.HOURS.between(apkMirrorTimestamp, LocalDateTime.now(ZoneOffset.UTC));
+
+            if (hours < 0) {
+                fail("time difference between now and the release on APK mirror must never be negative");
+            }
+            if (hours < 48) {
+                fail("the released app on APK mirror seems to be up-to-date but have a different hash - do I use the wrong mozilla-ci download url?");
+            }
+            // between 2 - 7 days: APK mirror is not sometime slow and does not release the update immediately
+            if (hours > 7 * 24) {
+                fail("the app on APK mirror was not updated for 7 days and its a different app then on the mozilla-ci server. There must be a bug.");
+            }
+            return;
+        }
+        System.out.println(hash);
+        assertEquals(hash, firefox.getHash().getHash());
+    }
+
+    @Test
+    public void is_beta_aarch64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_beta_is_up_to_date("2-", DeviceEnvironment.ABI.AARCH64);
+    }
+
+    @Test
+    public void is_beta_arm_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_beta_is_up_to_date("", DeviceEnvironment.ABI.ARM);
+    }
+
+    @Test
+    public void is_beta_x86_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_beta_is_up_to_date("3-", DeviceEnvironment.ABI.X86);
+    }
+
+    @Test
+    public void is_beta_X64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_beta_is_up_to_date("4-", DeviceEnvironment.ABI.X86_64);
+    }
+
+    private static void check_beta_is_up_to_date(String apkMirrorId, DeviceEnvironment.ABI abi) throws ParserConfigurationException, SAXException, IOException {
+        final Firefox firefox = Firefox.findLatest(App.FIREFOX_BETA, abi);
+        final String feedUrl = "https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/";
+        String appVersionPageUrl = ApkMirrorHelper.getAppVersionPage(feedUrl);
+        String[] urlParts = appVersionPageUrl.split("/");
+        String abiVersionPageSuffix = urlParts[urlParts.length - 1]
+                .replace("firefox", "firefox-for-android")
+                .replace("release", apkMirrorId + "android-apk-download");
+        String abiVersionPageUrl = appVersionPageUrl + abiVersionPageSuffix;
+        String hash = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(abiVersionPageUrl);
+
+        if (!Objects.equals(hash, firefox.getHash().getHash())) {
+            System.err.println("hashes are different - expected: " + hash +  ", but was: " + firefox.getHash().getHash());
+            final LocalDateTime apkMirrorTimestamp = ApkMirrorHelper.getLatestPubDate(feedUrl);
+            long hours = ChronoUnit.HOURS.between(apkMirrorTimestamp, LocalDateTime.now(ZoneOffset.UTC));
+
+            if (hours < 0) {
+                fail("time difference between now and the release on APK mirror must never be negative");
+            }
+            if (hours < 48) {
+                fail("the released app on APK mirror seems to be up-to-date but have a different hash - do I use the wrong mozilla-ci download url?");
+            }
+            // between 2 - 7 days: APK mirror is not sometime slow and does not release the update immediately
+            if (hours > 7 * 24) {
+                fail("the app on APK mirror was not updated for 7 days and its a different app then on the mozilla-ci server. There must be a bug.");
+            }
+            return;
+        }
+        assertEquals(hash, firefox.getHash().getHash());
+    }
+
+    @Test
+    public void is_nightly_aarch64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_nightly_is_up_to_date(DeviceEnvironment.ABI.AARCH64);
+    }
+
+    @Test
+    public void is_nightly_arm_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_nightly_is_up_to_date(DeviceEnvironment.ABI.ARM);
+    }
+
+    @Test
+    public void is_nightly_x86_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_nightly_is_up_to_date(DeviceEnvironment.ABI.X86);
+    }
+
+    @Test
+    public void is_nightly_x64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_nightly_is_up_to_date(DeviceEnvironment.ABI.X86_64);
+    }
+
+    private static void check_nightly_is_up_to_date(DeviceEnvironment.ABI abi) throws ParserConfigurationException, SAXException, IOException {
+        final Firefox firefox = Firefox.findLatest(App.FIREFOX_NIGHTLY, abi);
         final String timestampString = firefox.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
         final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/");
 
-        // for releases which are only release on the Mozilla CI and not on APKMirror
-        if (timestamp.isAfter(expectedRelease)) {
-            // max 1 week difference
-            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
-            System.out.println("Mozialla CI offers a non released version of FIREOFX_NIGHTLY");
-            return;
-        }
-
-        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
+        assertThat(timestamp, within(48, ChronoUnit.HOURS, expectedRelease));
     }
+
 
     private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {
         final Firefox firefox = Firefox.findLatest(app, abi);
