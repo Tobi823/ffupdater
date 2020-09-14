@@ -225,7 +225,6 @@ public class FirefoxIT {
         assertThat(timestamp, within(48, ChronoUnit.HOURS, expectedRelease));
     }
 
-
     private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {
         final Firefox firefox = Firefox.findLatest(app, abi);
         final String downloadUrl = firefox.getDownloadUrl();

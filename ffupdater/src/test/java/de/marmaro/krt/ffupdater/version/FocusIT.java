@@ -6,8 +6,10 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,6 +24,8 @@ import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Tobiwan on 13.05.2020.
@@ -69,21 +73,45 @@ public class FocusIT {
     }
 
     @Test
-    public void is_focus_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        final Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, DeviceEnvironment.ABI.AARCH64);
-        final String timestampString = focus.getTimestamp();
-        final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
+    public void is_focus_aarch64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_focus_is_up_to_date("", DeviceEnvironment.ABI.AARCH64);
+    }
 
-        // for releases which are only release on the Mozilla CI and not on APKMirror
-        if (timestamp.isAfter(expectedRelease)) {
-            // max 1 week difference
-            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
-            System.out.println("Mozialla CI offers a non released version of FIREFOX_FOCUS");
+    @Test
+    public void is_focus_arm_up_to_date() throws ParserConfigurationException, SAXException, IOException {
+        check_focus_is_up_to_date("2-", DeviceEnvironment.ABI.ARM);
+    }
+
+    private static void check_focus_is_up_to_date(String apkMirrorId, DeviceEnvironment.ABI abi) throws ParserConfigurationException, SAXException, IOException {
+        final Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, abi);
+        final String feedUrl = "https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/";
+        final String appVersionPageUrl = ApkMirrorHelper.getAppVersionPage(feedUrl);
+        final String[] urlParts = appVersionPageUrl.split("/");
+        final String abiVersionPageSuffix = urlParts[urlParts.length - 1]
+                .replace("firefox-focus-private-browser", "firefox-focus-the-privacy-browser")
+                .replace("release", apkMirrorId + "android-apk-download");
+        final String abiVersionPageUrl = appVersionPageUrl + abiVersionPageSuffix;
+        final String hash = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(abiVersionPageUrl);
+
+        if (!Objects.equals(hash, focus.getHash().getHash())) {
+            System.err.println("hashes are different - expected: " + hash +  ", but was: " + focus.getHash().getHash());
+            final LocalDateTime apkMirrorTimestamp = ApkMirrorHelper.getLatestPubDate(feedUrl);
+            long hours = ChronoUnit.HOURS.between(apkMirrorTimestamp, LocalDateTime.now(ZoneOffset.UTC));
+
+            if (hours < 0) {
+                fail("time difference between now and the release on APK mirror must never be negative");
+            }
+            if (hours < 48) {
+                fail("the released app on APK mirror seems to be up-to-date but have a different hash - do I use the wrong mozilla-ci download url?");
+            }
+            // between 2 - 7 days: APK mirror is not sometime slow and does not release the update immediately
+            if (hours > 7 * 24) {
+                fail("the app on APK mirror was not updated for 7 days and its a different app then on the mozilla-ci server. There must be a bug.");
+            }
             return;
         }
-
-        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
+        System.out.printf("FIREFOX_FOCUS (%s) SHA256-hash: %s\n", abi, hash);
+        assertEquals(hash, focus.getHash().getHash());
     }
 
     @Test

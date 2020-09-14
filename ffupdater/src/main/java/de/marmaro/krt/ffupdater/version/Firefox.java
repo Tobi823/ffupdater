@@ -20,7 +20,7 @@ import de.marmaro.krt.ffupdater.version.rest.mozilla_ci.Sha256Hash;
  */
 class Firefox {
     private static final String ARTIFACT_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.%s.latest.%s/artifacts/%s";
-    private static final String CHAIN_OF_TRUST_ARTIFACT = "public/chain-of-trust.json";
+    private static final String CHAIN_OF_TRUST_ARTIFACT_NAME = "public/chain-of-trust.json";
 
     final private String timestamp;
     final private String downloadUrl;
@@ -53,7 +53,7 @@ class Firefox {
      * @return result or null
      */
     static Firefox findLatest(App app, DeviceEnvironment.ABI abi) {
-        final String chainOfTrustUrl = String.format(ARTIFACT_URL, getNamespaceSuffix(app), getAbiAbbreviation(abi), CHAIN_OF_TRUST_ARTIFACT);
+        final String chainOfTrustUrl = String.format(ARTIFACT_URL, getNamespaceSuffix(app), getAbiAbbreviation(abi), CHAIN_OF_TRUST_ARTIFACT_NAME);
         final Response chainOfTrustResponse = ApiConsumer.consume(chainOfTrustUrl, Response.class);
         Preconditions.checkNotNull(chainOfTrustResponse);
 
