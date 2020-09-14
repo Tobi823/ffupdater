@@ -55,7 +55,7 @@ public class FirefoxLiteIT {
 
     @Test
     public void is_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        final String latestApkMirrorTitle = ApkMirrorHelper.getLatestTitle("https://www.apkmirror.com/apk/mozilla/firefox-rocket-fast-and-lightweight-web-browser/feed/");
+        final String latestApkMirrorTitle = ApkMirrorHelper.getLatestTitle(ApkMirrorHelper.getDocument("https://www.apkmirror.com/apk/mozilla/firefox-rocket-fast-and-lightweight-web-browser/feed/"));
         final String expectedTitlePrefix = String.format("Firefox Lite — Fast and Lightweight Web Browser %s(", firefoxLite.getVersion());
         assertThat(latestApkMirrorTitle, startsWith(expectedTitlePrefix));
     }

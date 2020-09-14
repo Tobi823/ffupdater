@@ -52,7 +52,7 @@ public class LockwiseIT {
 
     @Test
     public void is_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        final String latestApkMirrorTitle = ApkMirrorHelper.getLatestTitle("https://www.apkmirror.com/apk/mozilla/firefox-lockwise/feed/");
+        final String latestApkMirrorTitle = ApkMirrorHelper.getLatestTitle(ApkMirrorHelper.getDocument("https://www.apkmirror.com/apk/mozilla/firefox-lockwise/feed/"));
         final String expectedTitlePrefix = String.format("Firefox Lockwise %s by Mozilla", lockwise.getVersion());
 
         //TODO remove me if a newer release (and no Pre-release) for Lockwise exists

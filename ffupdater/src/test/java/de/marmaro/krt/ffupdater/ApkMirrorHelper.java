@@ -20,26 +20,26 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class ApkMirrorHelper {
 
-    public static LocalDateTime getLatestPubDate(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
-        NodeList items = getDocument(feedUrl).getElementsByTagName("item");
+    public static LocalDateTime getLatestPubDate(Document document) throws IOException, ParserConfigurationException, SAXException {
+        NodeList items = document.getElementsByTagName("item");
         Element latestItem = ((Element) items.item(0));
         String pubDateString = latestItem.getElementsByTagName("pubDate").item(0).getTextContent();
         return LocalDateTime.from(DateTimeFormatter.RFC_1123_DATE_TIME.parse(pubDateString));
     }
 
-    public static String getLatestTitle(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
-        NodeList items = getDocument(feedUrl).getElementsByTagName("item");
+    public static String getLatestTitle(Document document) throws IOException, ParserConfigurationException, SAXException {
+        NodeList items = document.getElementsByTagName("item");
         Element latestItem = ((Element) items.item(0));
         return latestItem.getElementsByTagName("title").item(0).getTextContent();
     }
 
-    public static String getAppVersionPage(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
-        NodeList items = getDocument(feedUrl).getElementsByTagName("item");
+    public static String getAppVersionPage(Document document) throws IOException, ParserConfigurationException, SAXException {
+        NodeList items = document.getElementsByTagName("item");
         Element latestItem = ((Element) items.item(0));
         return latestItem.getElementsByTagName("link").item(0).getTextContent();
     }
 
-    private static Document getDocument(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
+    public static Document getDocument(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
         HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(feedUrl).openConnection();
         try (InputStream original = urlConnection.getInputStream()) {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

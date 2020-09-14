@@ -1,6 +1,8 @@
 package de.marmaro.krt.ffupdater.version;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -31,6 +33,13 @@ import static org.junit.Assert.fail;
  * Created by Tobiwan on 13.05.2020.
  */
 public class FocusIT {
+
+    static Document apkMirrorFirefoxFocus;
+
+    @BeforeClass
+    public static void setUp() throws ParserConfigurationException, SAXException, IOException {
+        apkMirrorFirefoxFocus = ApkMirrorHelper.getDocument("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
+    }
 
     @Test
     public void verify_focus_arm() throws IOException {
@@ -84,31 +93,45 @@ public class FocusIT {
 
     private static void check_focus_is_up_to_date(String apkMirrorId, DeviceEnvironment.ABI abi) throws ParserConfigurationException, SAXException, IOException {
         final Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, abi);
-        final String feedUrl = "https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/";
-        final String appVersionPageUrl = ApkMirrorHelper.getAppVersionPage(feedUrl);
-        final String[] urlParts = appVersionPageUrl.split("/");
-        final String abiVersionPageSuffix = urlParts[urlParts.length - 1]
-                .replace("firefox-focus-private-browser", "firefox-focus-the-privacy-browser")
-                .replace("release", apkMirrorId + "android-apk-download");
-        final String abiVersionPageUrl = appVersionPageUrl + abiVersionPageSuffix;
-        final String hash = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(abiVersionPageUrl);
 
-        if (!Objects.equals(hash, focus.getHash().getHash())) {
-            System.err.println("hashes are different - expected: " + hash +  ", but was: " + focus.getHash().getHash());
-            final LocalDateTime apkMirrorTimestamp = ApkMirrorHelper.getLatestPubDate(feedUrl);
-            long hours = ChronoUnit.HOURS.between(apkMirrorTimestamp, LocalDateTime.now(ZoneOffset.UTC));
+        // check if hashes matches
+        // why? I want an error if the apps from Mozilla CI and APK Mirror are different
+        {
+            final String appVersionPageUrl = ApkMirrorHelper.getAppVersionPage(apkMirrorFirefoxFocus);
+            final String[] urlParts = appVersionPageUrl.split("/");
+            final String abiVersionPageSuffix = urlParts[urlParts.length - 1]
+                    .replace("firefox-focus-private-browser", "firefox-focus-the-privacy-browser")
+                    .replace("release", apkMirrorId + "android-apk-download");
+            final String abiVersionPageUrl = appVersionPageUrl + abiVersionPageSuffix;
+            final String hash = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(abiVersionPageUrl);
 
-            if (hours < 0) {
-                fail("time difference between now and the release on APK mirror must never be negative");
+            if (!Objects.equals(hash, focus.getHash().getHash())) {
+                final LocalDateTime apkMirrorTimestamp = ApkMirrorHelper.getLatestPubDate(apkMirrorFirefoxFocus);
+                long hours = ChronoUnit.HOURS.between(apkMirrorTimestamp, LocalDateTime.now(ZoneOffset.UTC));
+
+                if (hours < 0) {
+                    fail("time difference between now and the release on APK mirror must never be negative");
+                } else if (hours > 60) {
+                    // wait 2.5 days because the APK Mirror community is not so fast
+                    fail("the app from Mozilla-CI is different than the app from APK mirror - there must be a bug");
+                } else {
+                    System.err.printf("FIREFOX FOCUS (ignore this error because the latest release on APK Mirror is only %d hours old) hashes are different but skip - expected: %s, but was: %s\n",
+                            hours,
+                            hash,
+                            focus.getHash().getHash());
+                }
             }
-            if (hours > 60) {
-                // wait 2.5 days because the APK Mirror community is not so fast
-                fail("the app from Mozilla-CI is different than the app from APK mirror - there must be a bug");
-            }
-            return;
+            System.out.printf("FIREFOX_FOCUS (%s) SHA256-hash: %s\n", abi, hash);
+            assertEquals(hash, focus.getHash().getHash());
         }
-        System.out.printf("FIREFOX_FOCUS (%s) SHA256-hash: %s\n", abi, hash);
-        assertEquals(hash, focus.getHash().getHash());
+
+        // check that between Mozilla CI release and APK Mirror release are less than 72 hours
+        // why? I want an error if Mozilla CI stops releasing new updates
+        {
+            final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(focus.getTimestamp()));
+            final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate(apkMirrorFirefoxFocus);
+            assertThat(timestamp, within(72, ChronoUnit.HOURS, expectedRelease));
+        }
     }
 
     @Test
@@ -116,7 +139,7 @@ public class FocusIT {
         final Focus focus = Focus.findLatest(App.FIREFOX_KLAR, DeviceEnvironment.ABI.AARCH64);
         final String timestampString = focus.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
+        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate(apkMirrorFirefoxFocus);
 
         // for releases which are only release on the Mozilla CI and not on APKMirror
         if (timestamp.isAfter(expectedRelease)) {
