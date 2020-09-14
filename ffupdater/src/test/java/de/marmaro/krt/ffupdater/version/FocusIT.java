@@ -79,7 +79,7 @@ public class FocusIT {
 
     @Test
     public void is_focus_arm_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_focus_is_up_to_date("2-", DeviceEnvironment.ABI.ARM);
+        check_focus_is_up_to_date("21-", DeviceEnvironment.ABI.ARM);
     }
 
     private static void check_focus_is_up_to_date(String apkMirrorId, DeviceEnvironment.ABI abi) throws ParserConfigurationException, SAXException, IOException {
