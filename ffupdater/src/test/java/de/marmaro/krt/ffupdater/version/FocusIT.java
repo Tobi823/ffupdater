@@ -93,6 +93,7 @@ public class FocusIT {
 
     private static void check_focus_is_up_to_date(String apkMirrorId, DeviceEnvironment.ABI abi) throws ParserConfigurationException, SAXException, IOException {
         final Focus focus = Focus.findLatest(App.FIREFOX_FOCUS, abi);
+        final LocalDateTime mozillaCiTimestmap = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(focus.getTimestamp()));
 
         // check if hashes matches
         // why? I want an error if the apps from Mozilla CI and APK Mirror are different
@@ -106,16 +107,15 @@ public class FocusIT {
             final String hash = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(abiVersionPageUrl);
 
             if (!Objects.equals(hash, focus.getHash().getHash())) {
-                final LocalDateTime apkMirrorTimestamp = ApkMirrorHelper.getLatestPubDate(apkMirrorFirefoxFocus);
-                long hours = ChronoUnit.HOURS.between(apkMirrorTimestamp, LocalDateTime.now(ZoneOffset.UTC));
-
+                long hours = ChronoUnit.HOURS.between(mozillaCiTimestmap, LocalDateTime.now(ZoneOffset.UTC));
                 if (hours < 0) {
-                    fail("time difference between now and the release on APK mirror must never be negative");
+                    fail("time difference between now and the release on Mozilla CI must never be negative");
                 } else if (hours > 60) {
                     // wait 2.5 days because the APK Mirror community is not so fast
                     fail("the app from Mozilla-CI is different than the app from APK mirror - there must be a bug");
                 } else {
-                    System.err.printf("FIREFOX FOCUS (ignore this error because the latest release on APK Mirror is only %d hours old) hashes are different but skip - expected: %s, but was: %s\n",
+                    System.err.printf("FIREFOX FOCUS (ignore this error because the latest release on Mozilla CI is only %d hours old and " +
+                                    "APK Mirror is not so fast) hashes are different but skip - expected: %s, but was: %s\n",
                             hours,
                             hash,
                             focus.getHash().getHash());

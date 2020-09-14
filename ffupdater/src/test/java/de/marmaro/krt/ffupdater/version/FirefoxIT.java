@@ -179,6 +179,7 @@ public class FirefoxIT {
 
     private static void check_if_hash_and_timestamp_are_up_to_date(String firefoxReplacement, String releaseReplacement, App app, DeviceEnvironment.ABI abi, Document document) throws ParserConfigurationException, SAXException, IOException {
         final Firefox firefox = Firefox.findLatest(app, abi);
+        final LocalDateTime mozillaCiTimestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(firefox.getTimestamp()));
 
         // check if hashes matches
         // why? I want an error if the apps from Mozilla CI and APK Mirror are different
@@ -192,16 +193,15 @@ public class FirefoxIT {
             String hash = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(abiVersionPageUrl);
 
             if (!Objects.equals(hash, firefox.getHash().getHash())) {
-                final LocalDateTime apkMirrorTimestamp = ApkMirrorHelper.getLatestPubDate(document);
-                long hours = ChronoUnit.HOURS.between(apkMirrorTimestamp, LocalDateTime.now(ZoneOffset.UTC));
-
+                long hours = ChronoUnit.HOURS.between(mozillaCiTimestamp, LocalDateTime.now(ZoneOffset.UTC));
                 if (hours < 0) {
-                    fail("time difference between now and the release on APK mirror must never be negative");
+                    fail("time difference between now and the release on Mozilla CI must never be negative");
                 } else if (hours > 60) {
                     // wait 2.5 days because the APK Mirror community is not so fast
                     fail("the app from Mozilla-CI is different than the app from APK mirror - there must be a bug");
                 } else {
-                    System.err.printf("%s (ignore this error because the latest release on APK Mirror is only %d hours old) hashes are different but skip - expected: %s, but was: %s\n",
+                    System.err.printf("%s (ignore this error because the latest release on Mozilla CI is only %d hours old and APK Mirror is not " +
+                                    "so fast) hashes are different but skip - expected: %s, but was: %s\n",
                             app,
                             hours,
                             hash,
@@ -216,9 +216,8 @@ public class FirefoxIT {
         // check that between Mozilla CI release and APK Mirror release are less than 72 hours
         // why? I want an error if Mozilla CI stops releasing new updates
         {
-            final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(firefox.getTimestamp()));
             final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate(document);
-            assertThat(timestamp, within(72, ChronoUnit.HOURS, expectedRelease));
+            assertThat(mozillaCiTimestamp, within(72, ChronoUnit.HOURS, expectedRelease));
         }
     }
 
