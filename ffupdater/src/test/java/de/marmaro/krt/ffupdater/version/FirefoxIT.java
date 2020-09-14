@@ -140,7 +140,7 @@ public class FirefoxIT {
             }
             return;
         }
-        System.out.println(hash);
+        System.out.printf("FIREFOX_RELEASE (%s) SHA256-hash: %s\n", abi, hash);
         assertEquals(hash, firefox.getHash().getHash());
     }
 
@@ -192,6 +192,7 @@ public class FirefoxIT {
             }
             return;
         }
+        System.out.printf("FIREFOX_NIGHTLY (%s) SHA256-hash: %s\n", abi, hash);
         assertEquals(hash, firefox.getHash().getHash());
     }
 
