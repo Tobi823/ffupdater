@@ -62,5 +62,13 @@ android {
         // without PowerMockito it is impossible to mock Log.
         unitTests.returnDefaultValues = true
         unitTests.includeAndroidResources = true
+        unitTests.all {
+            // All the usual Gradle options.
+            testLogging {
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen {false}
+                showStandardStreams = true
+            }
+        }
     }
 }
