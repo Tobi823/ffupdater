@@ -101,12 +101,9 @@ public class FocusIT {
             if (hours < 0) {
                 fail("time difference between now and the release on APK mirror must never be negative");
             }
-            if (hours < 48) {
-                fail("the released app on APK mirror seems to be up-to-date but have a different hash - do I use the wrong mozilla-ci download url?");
-            }
-            // between 2 - 7 days: APK mirror is not sometime slow and does not release the update immediately
-            if (hours > 7 * 24) {
-                fail("the app on APK mirror was not updated for 7 days and its a different app then on the mozilla-ci server. There must be a bug.");
+            if (hours > 60) {
+                // wait 2.5 days because the APK Mirror community is not so fast
+                fail("the app from Mozilla-CI is different than the app from APK mirror - there must be a bug");
             }
             return;
         }
