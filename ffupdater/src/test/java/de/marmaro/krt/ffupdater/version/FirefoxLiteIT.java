@@ -6,9 +6,6 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.ParserConfigurationException;
@@ -55,7 +52,8 @@ public class FirefoxLiteIT {
 
     @Test
     public void is_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        final String latestApkMirrorTitle = ApkMirrorHelper.getLatestTitle(ApkMirrorHelper.getDocument("https://www.apkmirror.com/apk/mozilla/firefox-rocket-fast-and-lightweight-web-browser/feed/"));
+        final String feedUrl = "https://www.apkmirror.com/apk/mozilla/firefox-rocket-fast-and-lightweight-web-browser/feed/";
+        final String latestApkMirrorTitle = ApkMirrorHelper.getRssFeedResponse(feedUrl).getTitle();
         final String expectedTitlePrefix = String.format("Firefox Lite — Fast and Lightweight Web Browser %s(", firefoxLite.getVersion());
         assertThat(latestApkMirrorTitle, startsWith(expectedTitlePrefix));
     }

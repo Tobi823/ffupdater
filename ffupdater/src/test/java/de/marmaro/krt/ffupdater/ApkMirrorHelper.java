@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater;
 
+import com.google.common.base.Preconditions;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -12,6 +14,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.DocumentBuilder;
@@ -20,59 +25,94 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class ApkMirrorHelper {
 
-    public static LocalDateTime getLatestPubDate(Document document) throws IOException, ParserConfigurationException, SAXException {
-        NodeList items = document.getElementsByTagName("item");
-        Element latestItem = ((Element) items.item(0));
+    public static RssFeedResponse getRssFeedResponse(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
+        final Document document;
+        final HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(feedUrl).openConnection();
+        try (InputStream original = urlConnection.getInputStream()) {
+            final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            document = documentBuilder.parse(original);
+            document.getDocumentElement().normalize();
+        } finally {
+            urlConnection.disconnect();
+        }
+
+        final Element latestItem = getLatestItem(document);
+        return new RssFeedResponse(
+                getPubDate(latestItem),
+                getTitle(latestItem),
+                getUrlToAppVersion(latestItem)
+        );
+    }
+
+    private static Element getLatestItem(Document document) {
+        final NodeList items = document.getElementsByTagName("item");
+        Preconditions.checkNotNull(items);
+        final Element latestItem = ((Element) items.item(0));
+        Preconditions.checkNotNull(latestItem);
+        return latestItem;
+    }
+
+    private static LocalDateTime getPubDate(Element latestItem) {
         String pubDateString = latestItem.getElementsByTagName("pubDate").item(0).getTextContent();
         return LocalDateTime.from(DateTimeFormatter.RFC_1123_DATE_TIME.parse(pubDateString));
     }
 
-    public static String getLatestTitle(Document document) throws IOException, ParserConfigurationException, SAXException {
-        NodeList items = document.getElementsByTagName("item");
-        Element latestItem = ((Element) items.item(0));
+    private static String getTitle(Element latestItem) {
         return latestItem.getElementsByTagName("title").item(0).getTextContent();
     }
 
-    public static String getAppVersionPage(Document document) throws IOException, ParserConfigurationException, SAXException {
-        NodeList items = document.getElementsByTagName("item");
-        Element latestItem = ((Element) items.item(0));
+    private static String getUrlToAppVersion(Element latestItem) {
         return latestItem.getElementsByTagName("link").item(0).getTextContent();
     }
 
-    public static Document getDocument(String feedUrl) throws IOException, ParserConfigurationException, SAXException {
-        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(feedUrl).openConnection();
-        try (InputStream original = urlConnection.getInputStream()) {
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse(original);
-            document.getDocumentElement().normalize();
-            return document;
-        } finally {
-            urlConnection.disconnect();
+    public static class RssFeedResponse {
+        private LocalDateTime pubDate;
+        private String title;
+        private String urlToAppVersion;
+
+        public RssFeedResponse(LocalDateTime pubDate, String title, String urlToAppVersion) {
+            this.pubDate = pubDate;
+            this.title = title;
+            this.urlToAppVersion = urlToAppVersion;
+        }
+
+        public LocalDateTime getPubDate() {
+            return pubDate;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getUrlToAppVersion() {
+            return urlToAppVersion;
         }
     }
 
-    public static String extractSha256HashFromAbiVersionPage(String appVersionPage) throws IOException, ParserConfigurationException, SAXException {
-        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(appVersionPage).openConnection();
+    public static String extractSha256HashFromAbiVersionPage(RssFeedResponse rssFeedResponse, Map<String, String> replacements) throws IOException, ParserConfigurationException, SAXException {
+        String[] urlParts = rssFeedResponse.getUrlToAppVersion().split("/");
+        final String appName = urlParts[urlParts.length - 1];
 
-        try (InputStream original = urlConnection.getInputStream();
-             BufferedReader reader = new BufferedReader(new InputStreamReader(original))) {
+        String apkName = appName;
+        for (Map.Entry<String, String> replacement : replacements.entrySet()) {
+            apkName = apkName.replace(replacement.getKey(), replacement.getValue());
+        }
+        String apkUrl = rssFeedResponse.getUrlToAppVersion() + apkName;
+        HttpsURLConnection urlConnection = (HttpsURLConnection) new URL(apkUrl).openConnection();
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()))) {
+            StringBuilder response = new StringBuilder();
             String inputLine;
-            StringBuffer response = new StringBuffer();
             while ((inputLine = reader.readLine()) != null) {
                 response.append(inputLine);
             }
             String totalResponse = response.toString();
+            String textWithHash = totalResponse.split("APK file hashes")[1].split("Verify the file")[0];
 
-            String[] temp1 = totalResponse.split("<h4>APK file hashes</h4>");
-            String temp2 = temp1[temp1.length - 1];
-            String temp3 = temp2.split("<h5>Verify the file")[0];
-            String[] temp4 = temp3.split("SHA-256");
-            String temp5 = temp4[temp4.length - 1];
-            String temp6 = temp5.split("</span>")[0];
-            String[] temp7 = temp6.split(">");
-            String hash = temp7[temp7.length - 1];
-            return hash;
+            Matcher matcher = Pattern.compile("([a-z0-9]{64})").matcher(textWithHash);
+            Preconditions.checkArgument(matcher.find());
+            return matcher.group(0);
         } finally {
             urlConnection.disconnect();
         }

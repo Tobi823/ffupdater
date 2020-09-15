@@ -2,15 +2,17 @@ package de.marmaro.krt.ffupdater.version;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -34,13 +36,13 @@ import static org.junit.Assert.fail;
  */
 public class FirefoxIT {
 
-    static Document apkMirrorFirefoxBeta;
-    static Document apkMirrorFirefoxRelease;
+    static ApkMirrorHelper.RssFeedResponse firefoxBetaRssFeedResponse;
+    static ApkMirrorHelper.RssFeedResponse firefoxReleaseRssFeedResponse;
 
     @BeforeClass
     public static void setUp() throws ParserConfigurationException, SAXException, IOException {
-        apkMirrorFirefoxBeta = ApkMirrorHelper.getDocument("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
-        apkMirrorFirefoxRelease = ApkMirrorHelper.getDocument("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
+        firefoxBetaRssFeedResponse = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
+        firefoxReleaseRssFeedResponse = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
     }
 
     @Test
@@ -105,119 +107,101 @@ public class FirefoxIT {
 
     @Test
     public void is_release_aarch64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_if_hash_and_timestamp_are_up_to_date(
-                "firefox-browser-fast-private-safe-web-browser",
-                "2-android-apk-download",
-                App.FIREFOX_RELEASE, DeviceEnvironment.ABI.AARCH64,
-                apkMirrorFirefoxRelease);
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("firefox", "firefox-browser-fast-private-safe-web-browser");
+        replacements.put("release", "2-android-apk-download");
+
+        check_if_hash_and_timestamp_are_up_to_date(replacements, App.FIREFOX_RELEASE, DeviceEnvironment.ABI.AARCH64, firefoxReleaseRssFeedResponse);
     }
 
     @Test
     public void is_release_arm_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_if_hash_and_timestamp_are_up_to_date(
-                "firefox-browser-fast-private-safe-web-browser",
-                "android-apk-download",
-                App.FIREFOX_RELEASE, DeviceEnvironment.ABI.ARM,
-                apkMirrorFirefoxRelease);
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("firefox", "firefox-browser-fast-private-safe-web-browser");
+        replacements.put("release", "android-apk-download");
+
+        check_if_hash_and_timestamp_are_up_to_date(replacements, App.FIREFOX_RELEASE, DeviceEnvironment.ABI.ARM, firefoxReleaseRssFeedResponse);
     }
 
     @Test
     public void is_release_x86_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_if_hash_and_timestamp_are_up_to_date(
-                "firefox-browser-fast-private-safe-web-browser",
-                "3-android-apk-download",
-                App.FIREFOX_RELEASE, DeviceEnvironment.ABI.X86,
-                apkMirrorFirefoxRelease);
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("firefox", "firefox-browser-fast-private-safe-web-browser");
+        replacements.put("release", "3-android-apk-download");
+
+        check_if_hash_and_timestamp_are_up_to_date(replacements, App.FIREFOX_RELEASE, DeviceEnvironment.ABI.X86, firefoxReleaseRssFeedResponse);
     }
 
     @Test
     public void is_release_x64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_if_hash_and_timestamp_are_up_to_date(
-                "firefox-browser-fast-private-safe-web-browser",
-                "4-android-apk-download",
-                App.FIREFOX_RELEASE, DeviceEnvironment.ABI.X86_64,
-                apkMirrorFirefoxRelease);
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("firefox", "firefox-browser-fast-private-safe-web-browser");
+        replacements.put("release", "4-android-apk-download");
+
+        check_if_hash_and_timestamp_are_up_to_date(replacements, App.FIREFOX_RELEASE, DeviceEnvironment.ABI.X86_64, firefoxReleaseRssFeedResponse);
     }
 
     @Test
     public void is_beta_aarch64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_if_hash_and_timestamp_are_up_to_date("firefox-for-android",
-                "2-android-apk-download",
-                App.FIREFOX_BETA,
-                DeviceEnvironment.ABI.AARCH64,
-                apkMirrorFirefoxBeta);
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("firefox", "firefox-for-android");
+        replacements.put("release", "2-android-apk-download");
+
+        check_if_hash_and_timestamp_are_up_to_date(replacements, App.FIREFOX_BETA, DeviceEnvironment.ABI.AARCH64, firefoxBetaRssFeedResponse);
     }
 
     @Test
     public void is_beta_arm_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_if_hash_and_timestamp_are_up_to_date("firefox-for-android",
-                "android-apk-download",
-                App.FIREFOX_BETA,
-                DeviceEnvironment.ABI.ARM,
-                apkMirrorFirefoxBeta);
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("firefox", "firefox-for-android");
+        replacements.put("release", "android-apk-download");
+
+        check_if_hash_and_timestamp_are_up_to_date(replacements, App.FIREFOX_BETA, DeviceEnvironment.ABI.ARM, firefoxBetaRssFeedResponse);
     }
 
     @Test
     public void is_beta_x86_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_if_hash_and_timestamp_are_up_to_date(
-                "firefox-for-android",
-                "3-android-apk-download",
-                App.FIREFOX_BETA,
-                DeviceEnvironment.ABI.X86,
-                apkMirrorFirefoxBeta);
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("firefox", "firefox-for-android");
+        replacements.put("release", "3-android-apk-download");
+
+        check_if_hash_and_timestamp_are_up_to_date(replacements, App.FIREFOX_BETA, DeviceEnvironment.ABI.X86, firefoxBetaRssFeedResponse);
     }
 
     @Test
     public void is_beta_x64_up_to_date() throws ParserConfigurationException, SAXException, IOException {
-        check_if_hash_and_timestamp_are_up_to_date(
-                "firefox-for-android",
-                "4-android-apk-download",
-                App.FIREFOX_BETA,
-                DeviceEnvironment.ABI.X86_64,
-                apkMirrorFirefoxBeta);
+        Map<String, String> replacements = new HashMap<>();
+        replacements.put("firefox", "firefox-for-android");
+        replacements.put("release", "4-android-apk-download");
+
+        check_if_hash_and_timestamp_are_up_to_date(replacements, App.FIREFOX_BETA, DeviceEnvironment.ABI.X86_64, firefoxBetaRssFeedResponse);
     }
 
-    private static void check_if_hash_and_timestamp_are_up_to_date(String firefoxReplacement, String releaseReplacement, App app, DeviceEnvironment.ABI abi, Document document) throws ParserConfigurationException, SAXException, IOException {
+    private static void check_if_hash_and_timestamp_are_up_to_date(
+            Map<String, String> replacements,
+            App app,
+            DeviceEnvironment.ABI abi,
+            ApkMirrorHelper.RssFeedResponse rssFeedResponse) throws ParserConfigurationException, SAXException, IOException {
         final Firefox firefox = Firefox.findLatest(app, abi);
-        final LocalDateTime mozillaCiTimestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(firefox.getTimestamp()));
+        final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(firefox.getTimestamp()));
+        final Duration ageOfRelease = Duration.between(timestamp, LocalDateTime.now(ZoneOffset.UTC));
 
-        // check if hashes matches
-        // why? I want an error if the apps from Mozilla CI and APK Mirror are different
-        {
-            String appVersionPageUrl = ApkMirrorHelper.getAppVersionPage(document);
-            String[] urlParts = appVersionPageUrl.split("/");
-            String abiVersionPageSuffix = urlParts[urlParts.length - 1]
-                    .replace("firefox", firefoxReplacement)
-                    .replace("release", releaseReplacement);
-            String abiVersionPageUrl = appVersionPageUrl + abiVersionPageSuffix;
-            String hash = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(abiVersionPageUrl);
-
-            if (!Objects.equals(hash, firefox.getHash().getHash())) {
-                long hours = ChronoUnit.HOURS.between(mozillaCiTimestamp, LocalDateTime.now(ZoneOffset.UTC));
-                if (hours < 0) {
-                    fail("time difference between now and the release on Mozilla CI must never be negative");
-                } else if (hours > 60) {
-                    // wait 2.5 days because the APK Mirror community is not so fast
-                    fail("the app from Mozilla-CI is different than the app from APK mirror - there must be a bug");
-                } else {
-                    System.err.printf("%s (ignore this error because the latest release on Mozilla CI is only %d hours old and APK Mirror is not " +
-                                    "so fast) hashes are different but skip - expected: %s, but was: %s\n",
-                            app,
-                            hours,
-                            hash,
-                            firefox.getHash().getHash());
-                }
-            } else {
-                System.out.printf("%s (%s) SHA256-hash: %s\n", app, abi, hash);
-                assertEquals(hash, firefox.getHash().getHash());
+        if (ageOfRelease.isNegative()) {
+            fail("the age of the app release on Mozilla CI can never be negative");
+        } else if (ageOfRelease.toHours() < 48) {
+            // if the app is pretty new (app release was in the last 48 hours) then a different hash value is possible
+            String hashFromApkMirror = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(rssFeedResponse, replacements);
+            if (!Objects.equals(hashFromApkMirror, firefox.getHash().toString())) {
+                String format = "%s (ignore this error because the latest release on Mozilla CI is only %d hours old and APK Mirror is not so fast) " +
+                        "hashes are different but skip - expected: %s, but was: %s\n";
+                System.err.printf(format, app, ageOfRelease.toHours(), hashFromApkMirror, firefox.getHash().toString());
             }
-        }
-
-        // check that between Mozilla CI release and APK Mirror release are less than 72 hours
-        // why? I want an error if Mozilla CI stops releasing new updates
-        {
-            final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate(document);
-            assertThat(mozillaCiTimestamp, within(72, ChronoUnit.HOURS, expectedRelease));
+        } else if (ageOfRelease.toDays() < 21) {
+            // the app is not new - the hashes must be equal
+            String hashFromApkMirror = ApkMirrorHelper.extractSha256HashFromAbiVersionPage(rssFeedResponse, replacements);
+            assertEquals(hashFromApkMirror, firefox.getHash().toString());
+        } else {
+            fail("the app from Mozilla CI is too old");
         }
     }
 
@@ -247,8 +231,9 @@ public class FirefoxIT {
         final Firefox firefox = Firefox.findLatest(App.FIREFOX_NIGHTLY, abi);
         final String timestampString = firefox.getTimestamp();
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
-        final LocalDateTime expectedRelease = ApkMirrorHelper.getLatestPubDate(
-                ApkMirrorHelper.getDocument("https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/"));
+
+        final String feedUrl = "https://www.apkmirror.com/apk/mozilla/firefox-fenix/feed/";
+        final LocalDateTime expectedRelease = ApkMirrorHelper.getRssFeedResponse(feedUrl).getPubDate();
 
         assertThat(timestamp, within(48, ChronoUnit.HOURS, expectedRelease));
     }
