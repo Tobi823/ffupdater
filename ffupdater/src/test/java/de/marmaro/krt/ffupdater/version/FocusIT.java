@@ -132,15 +132,23 @@ public class FocusIT {
         final LocalDateTime timestamp = LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestampString));
         final LocalDateTime expectedRelease = rssFeedResponse.getPubDate();
 
-        // for releases which are only release on the Mozilla CI and not on APKMirror
-        if (timestamp.isAfter(expectedRelease)) {
-            // max 1 week difference
-            assertThat(timestamp, within(7, ChronoUnit.DAYS, expectedRelease));
-            System.out.println("Mozialla CI offers a non released version of FIREFOX_KLAR");
-            return;
-        }
 
-        assertThat(timestamp, within(24, ChronoUnit.HOURS, expectedRelease));
+        final Duration ageOfRelease = Duration.between(timestamp, LocalDateTime.now(ZoneOffset.UTC));
+        if (ageOfRelease.isNegative()) {
+            fail("the age of the app release on Mozilla CI can never be negative");
+        } else if (ageOfRelease.toHours() < 48) {
+            // if the app is pretty new (app release was in the last 48 hours) then a different hash value is possible
+            String format = "%s (ignore this error because the latest release on Mozilla CI is only %d hours old and APK Mirror is not so fast) " +
+                    "there is a time difference between Mozilla CI release and APK Mirror release of %d days\n";
+            final Duration timeDiff = Duration.between(expectedRelease, timestamp);
+            if (timeDiff.toHours() > 48) {
+                System.err.printf(format, App.FIREFOX_KLAR, ageOfRelease.toHours(), timeDiff.toDays());
+            }
+        } else if (ageOfRelease.toDays() < 21) {
+            assertThat(timestamp, within(48, ChronoUnit.HOURS, expectedRelease));
+        } else {
+            fail("the app from Mozilla CI is too old");
+        }
     }
 
     private static void verify(App app, DeviceEnvironment.ABI abi) throws IOException {
