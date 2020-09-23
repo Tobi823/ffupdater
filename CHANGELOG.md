@@ -1,3 +1,8 @@
+# 2020-09-23 Version 69.0.5 (53)
+ * Disable error when the already installed app has a different signature (because Android won't install an update with a different signature) - thanks pheki for reporting this bug
+ * Add translations for this bug
+ * Make the installation activity a little big more resilient
+
 # 2020-09-08 Version 69.0.4 (52)
  * Fix old download urls / update check urls for Firefox Release and Firefox Beta - thanks DctrBnsttr for reporting this bug
  * Add tests to ensure that FFUpdater is always using the latest download urls
