@@ -21,6 +21,7 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.Objects;
+import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
 
@@ -39,14 +40,13 @@ public class CertificateFingerprint {
      * @param app  app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
-    public static Pair<Boolean, String> checkFingerprintOfFile(PackageManager packageManager, File file, App app) {
+    public static Pair<Boolean, String> checkSignatureOfApkFile(PackageManager packageManager, File file, App app) {
         try {
             PackageInfo packageInfo = packageManager.getPackageArchiveInfo(file.getAbsolutePath(), PackageManager.GET_SIGNATURES);
             Objects.requireNonNull(packageInfo);
             return verifyPackageInfo(packageInfo, app);
         } catch (CertificateException | NoSuchAlgorithmException e) {
-            Log.e(LOG_TAG, "APK certificate fingerprint validation failed due to an exception", e);
-            return new Pair<>(false, "");
+            throw new RuntimeException("APK certificate fingerprint validation failed due to an exception", e);
         }
     }
 
@@ -60,13 +60,14 @@ public class CertificateFingerprint {
      * @see <a href="https://gist.github.com/scottyab/b849701972d57cf9562e">Another example</a>
      */
     @SuppressLint("PackageManagerGetSignatures")
-    public static Pair<Boolean, String> checkFingerprintOfInstalledApp(PackageManager packageManager, App app) {
+    public static Optional<Pair<Boolean, String>> checkSignatureOfInstalledApp(PackageManager packageManager, App app) {
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
-            return verifyPackageInfo(packageInfo, app);
-        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException | CertificateException e) {
-            Log.e(LOG_TAG, "failed to hash the certificate of the application", e);
-            return new Pair<>(false, "");
+            return Optional.of(verifyPackageInfo(packageInfo, app));
+        } catch (PackageManager.NameNotFoundException e1) {
+            return Optional.empty();
+        } catch (NoSuchAlgorithmException | CertificateException e2) {
+            throw new RuntimeException("failed to hash the certificate of the application", e2);
         }
     }
 

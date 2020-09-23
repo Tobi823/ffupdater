@@ -33,6 +33,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter;
@@ -85,9 +86,16 @@ public class InstallActivity extends AppCompatActivity {
 
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
         String appName = extras.getString(EXTRA_APP_NAME);
-        app = App.valueOf(Objects.requireNonNull(appName));
+        if (appName == null) { // if the Activity was not crated from the FFUpdater main menu
+            finish();
+            return;
+        }
+        app = App.valueOf(appName);
 
         hideAllEntries();
+        if (isSignatureOfInstalledAppUnknown(app)) {
+            return;
+        }
         checkFreeSpace();
         fetchUrlForDownload();
     }
@@ -206,7 +214,7 @@ public class InstallActivity extends AppCompatActivity {
             actionVerifyingSignature();
             new Thread(() -> {
                 File downloadedFile = downloadManager.getFileForDownloadedFile(id);
-                Pair<Boolean, String> check = CertificateFingerprint.checkFingerprintOfFile(getPackageManager(), downloadedFile, app);
+                Pair<Boolean, String> check = CertificateFingerprint.checkSignatureOfApkFile(getPackageManager(), downloadedFile, app);
                 if (Objects.requireNonNull(check.first)) {
                     actionSignatureGood(check.second);
                 } else {
@@ -250,6 +258,7 @@ public class InstallActivity extends AppCompatActivity {
 
     private void hideAllEntries() {
         findViewById(R.id.tooLowMemory).setVisibility(View.GONE);
+        findViewById(R.id.unknownSignatureOfInstalledApp).setVisibility(View.GONE);
         findViewById(R.id.fetchUrl).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlSuccess).setVisibility(View.GONE);
         findViewById(R.id.fetchedUrlFailure).setVisibility(View.GONE);
@@ -282,6 +291,14 @@ public class InstallActivity extends AppCompatActivity {
         description.setText(getString(R.string.too_low_memory_description, freeMBytes));
     }
 
+    private boolean isSignatureOfInstalledAppUnknown(App app) {
+        Optional<Pair<Boolean, String>> signatureInfo = CertificateFingerprint.checkSignatureOfInstalledApp(getPackageManager(), app);
+        boolean unknown = signatureInfo.isPresent() && !Preconditions.checkNotNull(signatureInfo.get().first);
+        if (unknown) {
+            findViewById(R.id.unknownSignatureOfInstalledApp).setVisibility(View.VISIBLE);
+        }
+        return unknown;
+    }
 
     private void actionFetching() {
         findViewById(R.id.fetchUrl).setVisibility(View.VISIBLE);
@@ -397,15 +414,18 @@ public class InstallActivity extends AppCompatActivity {
     private void actionVerifyInstalledAppSignature() {
         runOnUiThread(() -> findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.VISIBLE));
         new Thread(() -> {
-            Pair<Boolean, String> validCertificate = CertificateFingerprint.checkFingerprintOfInstalledApp(getPackageManager(), app);
+            Optional<Pair<Boolean, String>> signatureResult = CertificateFingerprint.checkSignatureOfInstalledApp(getPackageManager(), app);
+            boolean signatureIsValid = signatureResult.isPresent() && Preconditions.checkNotNull(signatureResult.get().first);
+            String signatureAsString = signatureResult.isPresent() ? signatureResult.get().second : "[APP NOT INSTALLED]";
+
             runOnUiThread(() -> {
                 findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.GONE);
-                if (Objects.requireNonNull(validCertificate.first)) {
+                if (signatureIsValid) {
                     findViewById(R.id.fingerprintInstalledGood).setVisibility(View.VISIBLE);
-                    findTextViewById(R.id.fingerprintInstalledGoodHash).setText(validCertificate.second);
+                    findTextViewById(R.id.fingerprintInstalledGoodHash).setText(signatureAsString);
                 } else {
                     findViewById(R.id.fingerprintInstalledBad).setVisibility(View.VISIBLE);
-                    findTextViewById(R.id.fingerprintInstalledBadHashActual).setText(validCertificate.second);
+                    findTextViewById(R.id.fingerprintInstalledBadHashActual).setText(signatureAsString);
                     findTextViewById(R.id.fingerprintInstalledBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
                 }
             });

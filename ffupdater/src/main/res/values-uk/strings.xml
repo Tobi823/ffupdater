@@ -77,6 +77,8 @@
     <string name="theme_system_default">Використовуйте системний стандарт за замовчуванням</string>
     <string name="too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>
     <string name="too_low_memory_title">Мало місця на диску</string>
+    <string name="unknown_signature_of_installed_app_text1">"Вам потрібно видалити існуючу програму, перш ніж FFUpdater зможе встановити або оновити програму. Створіть резервну копію даних, оскільки видалення видалить усі ваші закладки, налаштування тощо. "</string>
+    <string name="unknown_signature_of_installed_app_text2">Причина: Поточна встановлена програма не підписана оригінальним розробником - можливо, вона підписана F-Droid. Android відмовляється оновлювати програму, якщо різні люди підписали встановлену та оновлену версії.</string>
     <string name="unsupported_abi_dialog_message">Вибраний браузер несумісний з процесором вашого смартфона. Виберіть інший веб-переглядач.</string>
     <string name="unsupported_abi_dialog_title">Непідтримуваний пристрій</string>
     <string name="update_interval_12h">12 годин</string>

@@ -77,6 +77,8 @@
     <string name="theme_system_default">Systemeinstellung</string>
     <string name="too_low_memory_description">Auf Ihrem Gerät ist nur %1$d MB Speicherplatz verfügbar. Dies kann zu einem Download- oder Installationsfehler führen.</string>
     <string name="too_low_memory_title">Wenig freier Speicher</string>
+    <string name="unknown_signature_of_installed_app_text1">"Sie müssen die vorhandene Anwendung deinstallieren, bevor FFUpdater die Anwendung installieren oder aktualisieren kann. Sichern Sie Ihre Daten, da die Deinstallation alle Ihre Lesezeichen, Einstellungen usw. löscht. "</string>
+    <string name="unknown_signature_of_installed_app_text2">Grund: Die aktuell installierte Anwendung ist nicht vom ursprünglichen Entwickler signiert - vielleicht ist sie von F-Droid signiert. Android weigert sich, eine Anwendung zu aktualisieren, wenn verschiedene Personen die installierte und die aktualisierte Version signiert haben.</string>
     <string name="unsupported_abi_dialog_message">Der ausgewählte Browser ist mit dem Prozessor Ihres Smartphones nicht kompatibel. Bitte wähle einen anderen Browser.</string>
     <string name="unsupported_abi_dialog_title">Nicht unterstütztes Gerät</string>
     <string name="update_interval_12h">12 Stunden</string>

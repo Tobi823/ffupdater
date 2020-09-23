@@ -83,6 +83,8 @@
     <string name="theme_system_default">Системная тема по умолчанию</string>
     <string name="too_low_memory_description">На вашем устройстве имеется только %1$d МБ свободного места. Это может привести к сбою в загрузке или установке.</string>
     <string name="too_low_memory_title">Недостаточно места на диске</string>
+    <string name="unknown_signature_of_installed_app_text1">Необходимо удалить существующее приложение, прежде чем FFUpdater сможет установить или обновить его. Создайте резервную копию данных, так как при деинсталляции будут удалены все закладки, настройки и т.д.</string>
+    <string name="unknown_signature_of_installed_app_text2">" Причина: Текущее установленное приложение не подписано оригинальным разработчиком - возможно, оно подписано F-Droid. Android отказывается обновлять приложение, если разные люди подписали установленную и обновленную версию."</string>
     <string name="unsupported_abi_dialog_message">Выбранный браузер несовместим с процессором вашего смартфона. Пожалуйста, выберите другой браузер.</string>
     <string name="unsupported_abi_dialog_title">Устройство не поддерживается</string>
     <string name="update_interval_12h">12 часов</string>

@@ -84,6 +84,8 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="theme_system_default">Usar padrão do sistema</string>
     <string name="too_low_memory_description">No seu dispositivo está apenas %1$d MB de espaço disponível. Isto pode levar a erro de download ou na instalação</string>
     <string name="too_low_memory_title">Pouco espaço na memória</string>
+    <string name="unknown_signature_of_installed_app_text1">"É necessário desinstalar o aplicativo existente antes que o FFUpdater possa instalar ou atualizar o aplicativo. Faça backup de seus dados porque a desinstalação irá apagar todos os seus marcadores, configurações, etc. "</string>
+    <string name="unknown_signature_of_installed_app_text2">Motivo: O aplicativo instalado atualmente não é assinado pelo desenvolvedor original - talvez seja assinado pelo F-Droid. O Android se recusa a atualizar um aplicativo se pessoas diferentes assinaram a versão instalada e a versão atualizada.</string>
     <string name="unsupported_abi_dialog_message">O navegador selecionado é incompatível com o processador do seu aparelho. Por favor, selecione um navegador diferente.</string>
     <string name="unsupported_abi_dialog_title">Dispositivo sem suporte</string>
     <string name="update_interval_12h">12 horas</string>

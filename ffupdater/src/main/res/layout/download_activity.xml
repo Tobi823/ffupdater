@@ -32,6 +32,22 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/unknownSignatureOfInstalledApp"
+            style="@style/DownloadActivitySegment"
+            android:background="@color/errorRed"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/BoldTextView"
+                android:text="@string/unknown_signature_of_installed_app_text1" />
+
+            <TextView
+                style="@style/BoldTextView"
+                android:text="@string/unknown_signature_of_installed_app_text2" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/fetchUrl"
             style="@style/DownloadActivitySegment">
 

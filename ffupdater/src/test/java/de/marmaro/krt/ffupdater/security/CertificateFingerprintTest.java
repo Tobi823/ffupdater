@@ -9,11 +9,16 @@ import androidx.core.util.Pair;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Optional;
 
+import static android.content.pm.PackageManager.GET_SIGNATURES;
+import static de.marmaro.krt.ffupdater.App.FIREFOX_BETA;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_RELEASE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -66,13 +71,23 @@ public class CertificateFingerprintTest {
         PackageInfo packageInfo = new PackageInfo();
         packageInfo.signatures = new Signature[]{mock(Signature.class)};
 
-        when(packageManager.getPackageInfo(FIREFOX_RELEASE.getPackageName(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
+        when(packageManager.getPackageInfo(FIREFOX_RELEASE.getPackageName(), GET_SIGNATURES)).thenReturn(packageInfo);
         when(packageInfo.signatures[0].toByteArray()).thenReturn(firefoxReleaseSignatureBytes);
 
-        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfInstalledApp(packageManager, FIREFOX_RELEASE);
-        assertNotNull(actual.first);
-        assertTrue(actual.first);
-        assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);
+        Optional<Pair<Boolean, String>> actual = CertificateFingerprint.checkSignatureOfInstalledApp(packageManager, FIREFOX_RELEASE);
+        assertTrue(actual.isPresent());
+        assertNotNull(actual.get().first);
+        assertTrue(actual.get().first);
+        assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.get().second);
+    }
+
+    @Test
+    public void checkFingerprintOfInstalledApp_appIsNotInstalled_emptyOptional() throws PackageManager.NameNotFoundException {
+        PackageManager packageManager = mock(PackageManager.class);
+        doThrow(new PackageManager.NameNotFoundException()).when(packageManager).getPackageInfo(FIREFOX_BETA.getPackageName(), GET_SIGNATURES);
+
+        Optional<Pair<Boolean, String>> actual = CertificateFingerprint.checkSignatureOfInstalledApp(packageManager, FIREFOX_BETA);
+        assertFalse(actual.isPresent());
     }
 
     @Test
@@ -83,10 +98,10 @@ public class CertificateFingerprintTest {
 
         File file = new File("/path/to/apk");
 
-        when(packageManager.getPackageArchiveInfo(file.getAbsolutePath(), PackageManager.GET_SIGNATURES)).thenReturn(packageInfo);
+        when(packageManager.getPackageArchiveInfo(file.getAbsolutePath(), GET_SIGNATURES)).thenReturn(packageInfo);
         when(packageInfo.signatures[0].toByteArray()).thenReturn(firefoxReleaseSignatureBytes);
 
-        Pair<Boolean, String> actual = CertificateFingerprint.checkFingerprintOfFile(packageManager, file, FIREFOX_RELEASE);
+        Pair<Boolean, String> actual = CertificateFingerprint.checkSignatureOfApkFile(packageManager, file, FIREFOX_RELEASE);
         assertNotNull(actual.first);
         assertTrue(actual.first);
         assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.second);
