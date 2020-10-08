@@ -1,3 +1,6 @@
+# 2020-10-?? Version 69.0.6 (54)
+ * Fix short description in F-Droid - thanks linsui
+
 # 2020-09-23 Version 69.0.5 (53)
  * Disable error when the already installed app has a different signature (because Android won't install an update with a different signature) - thanks pheki for reporting this bug
  * Add translations for this bug
