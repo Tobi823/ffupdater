@@ -4,7 +4,7 @@
     <string name="app_icon">значок програми</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
-    <string name="application_successful_installed">Програма успішно встановлена</string>
+    <string name="application_successfully_installed">Програма успішно встановлена</string>
     <string name="available_version">в наявності:%1$s%2$s</string>
     <string name="but_was">Але було:</string>
     <string name="device_too_old_dialog_message">Додаток вимагає Android %1$s. Але на вашому пристрої працює лише Android %2$s. Або виберіть інший додаток, оновіть операційну систему або перейдіть на новий смартфон.</string>

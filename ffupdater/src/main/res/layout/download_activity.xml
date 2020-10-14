@@ -311,7 +311,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/application_successful_installed" />
+                android:text="@string/application_successfully_installed" />
 
             <TextView
                 style="@style/DefaultTextView"

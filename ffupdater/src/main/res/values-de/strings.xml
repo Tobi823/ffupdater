@@ -4,7 +4,7 @@
     <string name="app_icon">Applikations-Icon</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Installation der Anwendung schlug fehl</string>
-    <string name="application_successful_installed">Anwendung erfolgreich installiert</string>
+    <string name="application_successfully_installed">Anwendung erfolgreich installiert</string>
     <string name="available_version">Verfügbar:%1$s%2$s</string>
     <string name="but_was">Aber war:</string>
     <string name="device_too_old_dialog_message">Die Anwendung erfordert Android %1$s. Aber auf Ihrem Gerät läuft nur Android %2$s. Wählen Sie entweder eine andere Applikation, aktualisieren Sie Ihr Betriebssystem oder wechseln Sie zu einem neueren Smartphone.</string>

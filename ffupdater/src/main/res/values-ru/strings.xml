@@ -4,7 +4,7 @@
     <string name="app_icon">иконка приложения</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
-    <string name="application_successful_installed">Приложение успешно установлено</string>
+    <string name="application_successfully_installed">Приложение успешно установлено</string>
     <string name="available_version">Доступен:%1$s%2$s</string>
     <string name="but_was">Но был:</string>
     <string name="device_too_old_dialog_message">Для работы приложения требуется Android %1$s, но на вашем устройстве работает только Android %2$s. Выберите другое приложение, обновите операционную систему или перейдите на новый смартфон.</string>
