@@ -46,6 +46,6 @@ public class AvailableMetadataFetcher {
     }
 
     public void shutdown() {
-        //TODO implement
+        executorService.shutdown();
     }
 }

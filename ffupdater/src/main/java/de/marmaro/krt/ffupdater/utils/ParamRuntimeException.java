@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.utils;
 
 public class ParamRuntimeException extends RuntimeException {
     public ParamRuntimeException(String format, Object... args) {

@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.metadata;
 import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.ParamRuntimeException;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 public class UpdateChecker {
 

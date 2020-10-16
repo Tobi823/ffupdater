@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.ParamRuntimeException;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.ReleaseId;
 import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;

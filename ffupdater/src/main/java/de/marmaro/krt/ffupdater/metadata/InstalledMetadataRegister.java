@@ -3,21 +3,14 @@ package de.marmaro.krt.ffupdater.metadata;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 
-import androidx.annotation.NonNull;
-
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.ParamRuntimeException;
-import de.marmaro.krt.ffupdater.metadata.ReleaseId;
-import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
-import de.marmaro.krt.ffupdater.metadata.ReleaseVersion;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 /**
  * Detect installed apps and their version names.

@@ -1,7 +1,5 @@
 package de.marmaro.krt.ffupdater.metadata.fetcher;
 
-import android.util.Log;
-
 import androidx.annotation.Nullable;
 
 import com.google.common.base.Preconditions;
@@ -13,13 +11,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPInputStream;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import de.marmaro.krt.ffupdater.ParamRuntimeException;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 
 /**

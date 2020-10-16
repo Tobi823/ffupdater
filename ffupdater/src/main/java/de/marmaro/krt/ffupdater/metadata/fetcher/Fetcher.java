@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.concurrent.Callable;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.ParamRuntimeException;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 

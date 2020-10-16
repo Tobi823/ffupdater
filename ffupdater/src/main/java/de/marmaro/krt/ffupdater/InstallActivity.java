@@ -48,6 +48,7 @@ import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
+import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static android.app.DownloadManager.Request.VISIBILITY_VISIBLE;
 import static android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL;

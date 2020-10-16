@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Class with useful helper methods.
@@ -139,5 +141,11 @@ public class Utils {
             result[i++] = String.valueOf(element);
         }
         return result;
+    }
+
+    public static <T> Set<T> createSet(T element) {
+        Set<T> set = new HashSet<>();
+        set.add(element);
+        return set;
     }
 }

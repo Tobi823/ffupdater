@@ -19,15 +19,6 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <ProgressBar
-                android:id="@+id/progress_wheel"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp" />
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxKlarCard"
                 style="@style/AppCard"

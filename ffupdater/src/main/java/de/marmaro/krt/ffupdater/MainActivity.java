@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,16 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -37,43 +31,29 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.metadata.InstalledMetadata;
-import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
-import de.marmaro.krt.ffupdater.dialog.MissingExternalStoragePermissionDialog;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
+import de.marmaro.krt.ffupdater.metadata.InstalledMetadata;
+import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.metadata.UpdateChecker;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.CrashReporter;
-import de.marmaro.krt.ffupdater.version.AvailableVersions;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
-    public static final int PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 900;
 
-    @Deprecated
-    private AvailableVersions availableVersions;
-
-    @Deprecated
-    private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
-
     private ConnectivityManager connectivityManager;
     private InstalledMetadataRegister deviceAppRegister;
     private AvailableMetadataFetcher metadataFetcher;
-
-    private String installedVersionSpace = "";
-    private String availableVersionSpace = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,27 +71,12 @@ public class MainActivity extends AppCompatActivity {
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         metadataFetcher = new AvailableMetadataFetcher(preferences, deviceEnvironment);
         connectivityManager = Preconditions.checkNotNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
-        availableVersions = new AvailableVersions(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         refreshUI();
-//        if (installedVersionSpace.isEmpty() && availableVersionSpace.isEmpty()) {
-//            TextViewAligner aligner = new TextViewAligner(this);
-//            aligner.addTextView(getInstalledVersionTextView(App.FIREFOX_RELEASE),
-//                    R.string.installed_version,
-//                    0,
-//                    new Object[]{"", "2020-06-03T06:02"});
-//            aligner.addTextView(getAvailableVersionTextView(App.FIREFOX_RELEASE),
-//                    R.string.available_version,
-//                    0,
-//                    new Object[]{"", "2020-06-03T06:02"});
-//            List<String> result = aligner.align();
-//            installedVersionSpace = result.get(0);
-//            availableVersionSpace = result.get(1);
-//        }
     }
 
     @Override
@@ -123,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        availableVersions.shutdown();
+        metadataFetcher.shutdown();
     }
 
     @Override
@@ -151,40 +116,24 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode >= PERMISSIONS_REQUEST_EXTERNAL_STORAGE && requestCode < (PERMISSIONS_REQUEST_EXTERNAL_STORAGE + App.values().length)) {
-            App app = App.values()[requestCode - PERMISSIONS_REQUEST_EXTERNAL_STORAGE];
-            if (grantResults.length > 0) {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED || grantResults[0] == PackageManager.PERMISSION_DENIED) {
-                    downloadAppWithoutChecks(app);
-                }
-            }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
-
     private void refreshUI() {
-        if (isNoNetworkConnectionAvailable()) {
+        if (isNetworkUnavailable()) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
             return;
         }
-
         swipeRefreshLayout.setRefreshing(true);
 
         for (App notInstalledApp : deviceAppRegister.getNotInstalledApps()) {
             getAppCard(notInstalledApp).setVisibility(GONE);
         }
-
         final Set<App> installedApps = deviceAppRegister.getInstalledApps();
         for (App installedApp : installedApps) {
+            final String installedText = deviceAppRegister.getMetadata(installedApp).map(metadata ->
+                    String.format("Installed: %s", metadata.getVersionName())
+            ).orElse("Unknown version installed");
+
             getAppCard(installedApp).setVisibility(VISIBLE);
-            getInstalledVersionTextView(installedApp).setText(
-                    deviceAppRegister.getMetadata(installedApp)
-                            .map(metadata -> String.format("Installed: %s", metadata.getVersionName()))
-                            .orElse("ERROR")
-            );
+            getInstalledVersionTextView(installedApp).setText(installedText);
             getAvailableVersionTextView(installedApp).setText("Loading...");
         }
 
@@ -201,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
                     final String installedText = installedMetadata.map(metadata ->
                             String.format("Installed: %s", metadata.getVersionName())
-                    ).orElse("ERROR");
+                    ).orElse("Unknown version installed");
 
                     final String availableText;
                     if (app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP) {
@@ -228,48 +177,17 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    private String shortingVersionOrTimestamp(String versionOrTimestamp) {
-        if (versionOrTimestamp.length() > 16) {
-            return versionOrTimestamp.substring(0, 16);
-        }
-        return versionOrTimestamp;
-    }
-
     private void downloadApp(App app) {
-        if (isNoNetworkConnectionAvailable()) {
+        if (isNetworkUnavailable()) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
             return;
         }
-
-        if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, READ_EXTERNAL_STORAGE) ||
-                    ActivityCompat.shouldShowRequestPermissionRationale(this, WRITE_EXTERNAL_STORAGE)) {
-                DialogFragment dialog = new MissingExternalStoragePermissionDialog(() -> requestExternalStoragePermission(app));
-                dialog.show(getSupportFragmentManager(), MissingExternalStoragePermissionDialog.TAG);
-            } else {
-                requestExternalStoragePermission(app);
-            }
-            return;
-        }
-
-        downloadAppWithoutChecks(app);
-    }
-
-    private void downloadAppWithoutChecks(App app) {
         Intent intent = new Intent(this, InstallActivity.class);
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name());
         startActivity(intent);
     }
 
-    private void requestExternalStoragePermission(App app) {
-        ActivityCompat.requestPermissions(
-                this,
-                new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE},
-                PERMISSIONS_REQUEST_EXTERNAL_STORAGE + app.ordinal());
-    }
-
-    private boolean isNoNetworkConnectionAvailable() {
+    private boolean isNetworkUnavailable() {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo == null || !activeNetworkInfo.isConnected();
     }
