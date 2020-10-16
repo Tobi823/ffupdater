@@ -13,8 +13,8 @@ import java.util.List;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment.ABI;
 
-import static de.marmaro.krt.ffupdater.App.CompareMethod.TIMESTAMP;
-import static de.marmaro.krt.ffupdater.App.CompareMethod.VERSION;
+import static de.marmaro.krt.ffupdater.App.ReleaseIdType.TIMESTAMP;
+import static de.marmaro.krt.ffupdater.App.ReleaseIdType.VERSION;
 import static de.marmaro.krt.ffupdater.device.DeviceEnvironment.ABI.X86;
 import static de.marmaro.krt.ffupdater.device.DeviceEnvironment.ABI.X86_64;
 
@@ -99,10 +99,10 @@ public enum App {
     private final byte[] signatureHash;
     private final List<ABI> unsupportedAbis;
     private final int minApiLevel;
-    private final CompareMethod compareMethod;
+    private final ReleaseIdType releaseIdType;
 
     App(int titleId, int descriptionId, int warningId, int downloadSourceId, String packageName,
-        String signatureHash, List<ABI> unsupportedAbis, int minApiLevel, CompareMethod compareMethod) {
+        String signatureHash, List<ABI> unsupportedAbis, int minApiLevel, ReleaseIdType releaseIdType) {
         this.titleId = titleId;
         this.descriptionId = descriptionId;
         this.warningId = warningId;
@@ -111,7 +111,7 @@ public enum App {
         this.signatureHash = ApacheCodecHex.decodeHex(signatureHash);
         this.unsupportedAbis = unsupportedAbis;
         this.minApiLevel = minApiLevel;
-        this.compareMethod = compareMethod;
+        this.releaseIdType = releaseIdType;
     }
 
     @NonNull
@@ -151,11 +151,6 @@ public enum App {
         return minApiLevel;
     }
 
-    @NonNull
-    public CompareMethod getCompareMethod() {
-        return compareMethod;
-    }
-
     /**
      * @param deviceABI device metadata
      * @return can the app be installed on the device?
@@ -180,12 +175,12 @@ public enum App {
         return !deviceABI.isSdkIntEqualOrHigher(minApiLevel);
     }
 
-    public enum CompareMethod {
+    public enum ReleaseIdType {
         VERSION,
         TIMESTAMP
     }
 
-    public CompareMethod getCompareMethodForUpdateCheck() {
-        return compareMethod;
+    public ReleaseIdType getReleaseIdType() {
+        return releaseIdType;
     }
 }

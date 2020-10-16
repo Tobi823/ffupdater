@@ -41,7 +41,7 @@ class MetadataCache {
      */
     @NonNull
     String getVersionName(App app) {
-        Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.VERSION, "invalid app");
+        Preconditions.checkArgument(app.getReleaseIdType() == App.ReleaseIdType.VERSION, "invalid app");
         return getStringNullSafe(String.format(VERSION_NAME_TEMPLATE, app));
     }
 
@@ -56,13 +56,13 @@ class MetadataCache {
 
     @NonNull
     String getAvailableTimestamp(App app) {
-        Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
+        Preconditions.checkArgument(app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP, "invalid app");
         return getStringNullSafe(String.format(AVAILABLE_TIMESTAMP_TEMPLATE, app));
     }
 
     @NonNull
     String getInstalledTimestamp(App app) {
-        Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
+        Preconditions.checkArgument(app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP, "invalid app");
         return getStringNullSafe(String.format(INSTALLED_TIMESTAMP_TEMPLATE, app));
     }
 
@@ -99,7 +99,7 @@ class MetadataCache {
      */
     void updateAvailableVersionAndDownloadUrl(App app, String versionName, String downloadUrl) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
-        Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.VERSION, "invalid app");
+        Preconditions.checkArgument(app.getReleaseIdType() == App.ReleaseIdType.VERSION, "invalid app");
         Preconditions.checkNotNull(versionName, "Parameter versionName must not be null");
         Preconditions.checkNotNull(downloadUrl, "Parameter downloadUrl must not be null");
 
@@ -112,7 +112,7 @@ class MetadataCache {
 
     void updateAvailableTimestampAndDownloadUrl(App app, String availableTimestamp, String downloadUrl) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
-        Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
+        Preconditions.checkArgument(app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP, "invalid app");
         Preconditions.checkNotNull(availableTimestamp, "Parameter availableTimestamp must not be null");
         Preconditions.checkNotNull(downloadUrl, "Parameter downloadUrl must not be null");
 
@@ -125,7 +125,7 @@ class MetadataCache {
 
     void updateInstalledTimestamp(App app, String installedTimestamp) {
         Preconditions.checkNotNull(app, "Parameter app must not be null");
-        Preconditions.checkArgument(app.getCompareMethodForUpdateCheck() == App.CompareMethod.TIMESTAMP, "invalid app");
+        Preconditions.checkArgument(app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP, "invalid app");
         Preconditions.checkNotNull(installedTimestamp, "Parameter installedTimestamp must not be null");
 
         SharedPreferences.Editor editor = sharedPreferences.edit();

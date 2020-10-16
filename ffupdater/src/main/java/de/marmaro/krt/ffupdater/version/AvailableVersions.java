@@ -31,8 +31,8 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.device.InstalledApps;
 
-import static de.marmaro.krt.ffupdater.App.CompareMethod.TIMESTAMP;
-import static de.marmaro.krt.ffupdater.App.CompareMethod.VERSION;
+import static de.marmaro.krt.ffupdater.App.ReleaseIdType.TIMESTAMP;
+import static de.marmaro.krt.ffupdater.App.ReleaseIdType.VERSION;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_BETA;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_NIGHTLY;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_RELEASE;
@@ -134,7 +134,7 @@ public class AvailableVersions {
      */
     @NonNull
     public String getAvailableVersionOrTimestamp(App app) {
-        if (app.getCompareMethodForUpdateCheck() == VERSION) {
+        if (app.getReleaseIdType() == VERSION) {
             return metadataStorage.getVersionName(app);
         } else {
             return metadataStorage.getAvailableTimestamp(app);
@@ -143,7 +143,7 @@ public class AvailableVersions {
 
     @NonNull
     public String getInstalledVersionOrTimestamp(PackageManager packageManager, App app) {
-        if (app.getCompareMethodForUpdateCheck() == VERSION) {
+        if (app.getReleaseIdType() == VERSION) {
             return InstalledApps.getVersionName(packageManager, app);
         } else {
             return metadataStorage.getInstalledTimestamp(app);
@@ -151,7 +151,7 @@ public class AvailableVersions {
     }
 
     public void setInstalledVersionOrTimestamp(App app, String versionOrTimestamp) {
-        if (app.getCompareMethodForUpdateCheck() == TIMESTAMP) {
+        if (app.getReleaseIdType() == TIMESTAMP) {
             metadataStorage.updateInstalledTimestamp(app, versionOrTimestamp);
         }
     }
