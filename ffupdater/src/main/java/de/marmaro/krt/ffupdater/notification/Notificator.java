@@ -20,15 +20,11 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
-import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;

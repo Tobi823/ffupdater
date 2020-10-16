@@ -5,6 +5,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -147,5 +149,13 @@ public class Utils {
         Set<T> set = new HashSet<>();
         set.add(element);
         return set;
+    }
+
+    public static URL createURL(String url) {
+        try {
+            return new URL(url);
+        } catch (MalformedURLException e) {
+            throw new ParamRuntimeException("invalid url");
+        }
     }
 }
