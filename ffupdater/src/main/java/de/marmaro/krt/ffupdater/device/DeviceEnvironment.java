@@ -44,6 +44,10 @@ public class DeviceEnvironment {
         return SDK_INT >= minimumRequiredSdkInt;
     }
 
+    public int getApiLevel() {
+        return SDK_INT;
+    }
+
     /**
      * All supported ABIs
      * "Note: Historically the NDK supported ARMv5 (armeabi), and 32-bit and 64-bit MIPS, but

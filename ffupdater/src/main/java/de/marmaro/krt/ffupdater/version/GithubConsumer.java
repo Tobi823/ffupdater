@@ -16,32 +16,34 @@ class GithubConsumer {
 
     @Nullable
     static Release findLatestRelease(String owner, String repo) {
-        Release release = findLatestReleaseByApi(owner, repo);
-        if (release != null && release.getAssets() != null && !release.getAssets().isEmpty()) {
-            return release;
-        }
-        return findLatestReleaseBySearchingAllReleases(owner, repo);
+//        Release release = findLatestReleaseByApi(owner, repo);
+//        if (release != null && release.getAssets() != null && !release.getAssets().isEmpty()) {
+//            return release;
+//        }
+//        return findLatestReleaseBySearchingAllReleases(owner, repo);
+        return null;
     }
 
     @Nullable
     private static Release findLatestReleaseByApi(String owner, String repo) {
-        String downloadUrl = String.format(LATEST_RELEASE_URL, owner, repo);
-        return ApiConsumer.consume(downloadUrl, Release.class);
+//        String downloadUrl = String.format(LATEST_RELEASE_URL, owner, repo);
+//        return ApiConsumer.consume(downloadUrl, Release.class);
+        return null;
     }
 
     @Nullable
     private static Release findLatestReleaseBySearchingAllReleases(String owner, String repo) {
-        String downloadUrl = String.format(ALL_RELEASES_URL, owner, repo);
-        Release[] releases = ApiConsumer.consume(downloadUrl, Release[].class);
-        if (releases == null) {
-            return null;
-        }
-
-        for (Release release : releases) {
-            if (release.getAssets() != null && !release.getAssets().isEmpty()) {
-                return release;
-            }
-        }
+//        String downloadUrl = String.format(ALL_RELEASES_URL, owner, repo);
+//        Release[] releases = ApiConsumer.consume(downloadUrl, Release[].class);
+//        if (releases == null) {
+//            return null;
+//        }
+//
+//        for (Release release : releases) {
+//            if (release.getAssets() != null && !release.getAssets().isEmpty()) {
+//                return release;
+//            }
+//        }
         return null;
     }
 

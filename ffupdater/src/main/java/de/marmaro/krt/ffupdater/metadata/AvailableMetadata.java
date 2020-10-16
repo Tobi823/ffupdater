@@ -2,11 +2,11 @@ package de.marmaro.krt.ffupdater.metadata;
 
 import java.net.URL;
 
-public class Metadata {
+public class AvailableMetadata {
     private final URL downloadUrl;
     private final ReleaseId releaseId;
 
-    public Metadata(URL url, ReleaseId releaseId) {
+    public AvailableMetadata(URL url, ReleaseId releaseId) {
         this.downloadUrl = url;
         this.releaseId = releaseId;
     }

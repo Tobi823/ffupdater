@@ -2,10 +2,12 @@ package de.marmaro.krt.ffupdater;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,24 +22,33 @@ import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.base.Preconditions;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
-import de.marmaro.krt.ffupdater.animation.FadeOutAnimation;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.device.InstalledApps;
+import de.marmaro.krt.ffupdater.metadata.InstalledMetadata;
+import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog;
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog;
 import de.marmaro.krt.ffupdater.dialog.MissingExternalStoragePermissionDialog;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
+import de.marmaro.krt.ffupdater.metadata.UpdateChecker;
 import de.marmaro.krt.ffupdater.notification.Notificator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.CrashReporter;
-import de.marmaro.krt.ffupdater.utils.TextViewAligner;
 import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -49,11 +60,17 @@ import static android.view.View.VISIBLE;
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
     public static final int PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 900;
+
+    @Deprecated
     private AvailableVersions availableVersions;
+
+    @Deprecated
     private ProgressBar progressBar;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private ConnectivityManager connectivityManager;
-    private PackageManager packageManager;
+    private InstalledMetadataRegister deviceAppRegister;
+    private AvailableMetadataFetcher metadataFetcher;
 
     private String installedVersionSpace = "";
     private String availableVersionSpace = "";
@@ -65,18 +82,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
 
         CrashReporter.register(this);
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
+        final DeviceEnvironment deviceEnvironment = new DeviceEnvironment();
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, deviceEnvironment));
         StrictModeSetup.enable();
-
-        SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeContainer);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            fetchUpdates();
-            swipeRefreshLayout.setRefreshing(false);
-        });
-
-        progressBar = findViewById(R.id.progress_wheel);
-        packageManager = getPackageManager();
-        connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
+        swipeRefreshLayout = findViewById(R.id.swipeContainer);
+        swipeRefreshLayout.setOnRefreshListener(this::refreshUI);
+        deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
+        metadataFetcher = new AvailableMetadataFetcher(preferences, deviceEnvironment);
+        connectivityManager = Preconditions.checkNotNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
         availableVersions = new AvailableVersions(this);
     }
 
@@ -84,21 +98,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         refreshUI();
-        fetchUpdates();
-        if (installedVersionSpace.isEmpty() && availableVersionSpace.isEmpty()) {
-            TextViewAligner aligner = new TextViewAligner(this);
-            aligner.addTextView(getInstalledVersionTextView(App.FIREFOX_RELEASE),
-                    R.string.installed_version,
-                    0,
-                    new Object[]{"", "2020-06-03T06:02"});
-            aligner.addTextView(getAvailableVersionTextView(App.FIREFOX_RELEASE),
-                    R.string.available_version,
-                    0,
-                    new Object[]{"", "2020-06-03T06:02"});
-            List<String> result = aligner.align();
-            installedVersionSpace = result.get(0);
-            availableVersionSpace = result.get(1);
-        }
+//        if (installedVersionSpace.isEmpty() && availableVersionSpace.isEmpty()) {
+//            TextViewAligner aligner = new TextViewAligner(this);
+//            aligner.addTextView(getInstalledVersionTextView(App.FIREFOX_RELEASE),
+//                    R.string.installed_version,
+//                    0,
+//                    new Object[]{"", "2020-06-03T06:02"});
+//            aligner.addTextView(getAvailableVersionTextView(App.FIREFOX_RELEASE),
+//                    R.string.available_version,
+//                    0,
+//                    new Object[]{"", "2020-06-03T06:02"});
+//            List<String> result = aligner.align();
+//            installedVersionSpace = result.get(0);
+//            availableVersionSpace = result.get(1);
+//        }
     }
 
     @Override
@@ -153,19 +166,66 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshUI() {
-        for (App app : App.values()) {
-            getAppCard(app).setVisibility(InstalledApps.isInstalled(packageManager, app) ? VISIBLE : GONE);
-            getAvailableVersionTextView(app).setText(getString(R.string.available_version,
-                    availableVersionSpace,
-                    shortingVersionOrTimestamp(availableVersions.getAvailableVersionOrTimestamp(app))));
-            getInstalledVersionTextView(app).setText(getString(R.string.installed_version,
-                    installedVersionSpace,
-                    shortingVersionOrTimestamp(availableVersions.getInstalledVersionOrTimestamp(packageManager, app))));
-            getDownloadButton(app).setImageResource(availableVersions.isUpdateAvailable(app) ?
-                    R.drawable.ic_file_download_orange :
-                    R.drawable.ic_file_download_grey
-            );
+        if (isNoNetworkConnectionAvailable()) {
+            Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
+            return;
         }
+
+        swipeRefreshLayout.setRefreshing(true);
+
+        for (App notInstalledApp : deviceAppRegister.getNotInstalledApps()) {
+            getAppCard(notInstalledApp).setVisibility(GONE);
+        }
+
+        final Set<App> installedApps = deviceAppRegister.getInstalledApps();
+        for (App installedApp : installedApps) {
+            getAppCard(installedApp).setVisibility(VISIBLE);
+            getInstalledVersionTextView(installedApp).setText(
+                    deviceAppRegister.getMetadata(installedApp)
+                            .map(metadata -> String.format("Installed: %s", metadata.getVersionName()))
+                            .orElse("ERROR")
+            );
+            getAvailableVersionTextView(installedApp).setText("Loading...");
+        }
+
+        Map<App, Future<AvailableMetadata>> futures = metadataFetcher.fetchMetadata(installedApps);
+        new Thread(() -> {
+            futures.forEach((app, future) -> {
+                try {
+                    final AvailableMetadata availableMetadata = future.get(30, TimeUnit.SECONDS);
+                    final Optional<InstalledMetadata> installedMetadata = deviceAppRegister.getMetadata(app);
+
+                    final boolean updateAvailable = installedMetadata.map(metadata ->
+                            new UpdateChecker().isUpdateAvailable(app, metadata, availableMetadata)
+                    ).orElse(true);
+
+                    final String installedText = installedMetadata.map(metadata ->
+                            String.format("Installed: %s", metadata.getVersionName())
+                    ).orElse("ERROR");
+
+                    final String availableText;
+                    if (app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP) {
+                        availableText = updateAvailable ? "Update available" : "No update available";
+                    } else {
+                        availableText = String.format("Available: %s", availableMetadata.getReleaseId().getValueAsString());
+                    }
+
+                    runOnUiThread(() -> {
+                        getInstalledVersionTextView(app).setText(installedText);
+                        getAvailableVersionTextView(app).setText(availableText);
+                        getDownloadButton(app).setImageResource(updateAvailable ?
+                                R.drawable.ic_file_download_orange : R.drawable.ic_file_download_grey);
+                    });
+                } catch (ExecutionException | InterruptedException | TimeoutException e) {
+                    Log.e(LOG_TAG, "failed to fetch metadata", e);
+                    runOnUiThread(() -> {
+                        getAvailableVersionTextView(app).setText("ERROR");
+                        getDownloadButton(app).setImageResource(R.drawable.ic_file_download_grey);
+                    });
+                }
+            });
+            runOnUiThread(() -> swipeRefreshLayout.setRefreshing(false));
+        }).start();
     }
 
     private String shortingVersionOrTimestamp(String versionOrTimestamp) {
@@ -173,21 +233,6 @@ public class MainActivity extends AppCompatActivity {
             return versionOrTimestamp.substring(0, 16);
         }
         return versionOrTimestamp;
-    }
-
-    private void fetchUpdates() {
-        if (isNoNetworkConnectionAvailable()) {
-            Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
-            return;
-        }
-        for (App app : App.values()) {
-            getAvailableVersionTextView(app).setText(R.string.loading_available_version);
-        }
-        progressBar.setVisibility(VISIBLE);
-        availableVersions.checkUpdatesForInstalledApps(this, () -> {
-            progressBar.startAnimation(new FadeOutAnimation(progressBar));
-            refreshUI();
-        });
     }
 
     private void downloadApp(App app) {
@@ -214,7 +259,6 @@ public class MainActivity extends AppCompatActivity {
     private void downloadAppWithoutChecks(App app) {
         Intent intent = new Intent(this, InstallActivity.class);
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name());
-        intent.putExtra(InstallActivity.EXTRA_DOWNLOAD_URL, availableVersions.getDownloadUrl(app));
         startActivity(intent);
     }
 
@@ -263,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
             case LOCKWISE:
                 return findViewById(R.id.lockwiseAvailableVersion);
             default:
-                throw new RuntimeException("switch fallthrough");
+                throw new ParamRuntimeException("unknown available version text view for app %s", app);
         }
     }
 
@@ -284,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
             case LOCKWISE:
                 return findViewById(R.id.lockwiseInstalledVersion);
             default:
-                throw new RuntimeException("switch fallthrough");
+                throw new ParamRuntimeException("unknown installed version text view for app %s", app);
         }
     }
 

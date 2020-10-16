@@ -89,14 +89,15 @@ public class Notificator extends Worker {
     @Override
     public Result doWork() {
         Log.d(LOG_TAG, "start background update check");
-        AvailableVersions appUpdate = new AvailableVersions(getApplicationContext());
-        Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
-        appUpdate.checkUpdatesForInstalledApps(disableApps, null, null);
-        if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
-            createNotification();
-        } else {
-            getNotificationManager().cancel(NOTIFICATION_ID);
-        }
+        //TODO
+//        AvailableVersions appUpdate = new AvailableVersions(getApplicationContext());
+//        Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
+//        appUpdate.checkUpdatesForInstalledApps(disableApps, null, null);
+//        if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
+//            createNotification();
+//        } else {
+//            getNotificationManager().cancel(NOTIFICATION_ID);
+//        }
         return Result.success();
     }
 

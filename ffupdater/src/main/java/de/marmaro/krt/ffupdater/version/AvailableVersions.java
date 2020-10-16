@@ -29,7 +29,6 @@ import java.util.concurrent.TimeoutException;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.device.InstalledApps;
 
 import static de.marmaro.krt.ffupdater.App.ReleaseIdType.TIMESTAMP;
 import static de.marmaro.krt.ffupdater.App.ReleaseIdType.VERSION;
@@ -87,12 +86,12 @@ public class AvailableVersions {
      *
      * @return if one or more installed apps can be updated
      */
-    public boolean areUpdatesForInstalledAppsAvailable() {
-        for (App app : InstalledApps.getInstalledApps(packageManager)) {
-            if (isUpdateAvailable(app)) {
-                return true;
-            }
-        }
+    private boolean areUpdatesForInstalledAppsAvailable() {
+//        for (App app : DeviceAppRegister.getInstalledApps(packageManager)) {
+//            if (isUpdateAvailable(app)) {
+//                return true;
+//            }
+//        }
         return false;
     }
 
@@ -104,7 +103,7 @@ public class AvailableVersions {
      * @param app app
      * @return is a new version of the app available
      */
-    public boolean isUpdateAvailable(App app) {
+    private boolean isUpdateAvailable(App app) {
         String available = getAvailableVersionOrTimestamp(app);
         String installed = getInstalledVersionOrTimestamp(packageManager, app);
         if (app == FIREFOX_LITE) {
@@ -121,7 +120,7 @@ public class AvailableVersions {
      * @return download url for the app or empty string
      */
     @NonNull
-    public String getDownloadUrl(App app) {
+    private String getDownloadUrl(App app) {
         return metadataStorage.getDownloadUrl(app);
     }
 
@@ -133,7 +132,7 @@ public class AvailableVersions {
      * @return latest version name from the developers or empty string
      */
     @NonNull
-    public String getAvailableVersionOrTimestamp(App app) {
+    private String getAvailableVersionOrTimestamp(App app) {
         if (app.getReleaseIdType() == VERSION) {
             return metadataStorage.getVersionName(app);
         } else {
@@ -142,15 +141,16 @@ public class AvailableVersions {
     }
 
     @NonNull
-    public String getInstalledVersionOrTimestamp(PackageManager packageManager, App app) {
-        if (app.getReleaseIdType() == VERSION) {
-            return InstalledApps.getVersionName(packageManager, app);
-        } else {
-            return metadataStorage.getInstalledTimestamp(app);
-        }
+    private String getInstalledVersionOrTimestamp(PackageManager packageManager, App app) {
+//        if (app.getReleaseIdType() == VERSION) {
+//            return DeviceAppRegister.getVersionName(packageManager, app);
+//        } else {
+//            return metadataStorage.getInstalledTimestamp(app);
+//        }
+        return "";
     }
 
-    public void setInstalledVersionOrTimestamp(App app, String versionOrTimestamp) {
+    private void setInstalledVersionOrTimestamp(App app, String versionOrTimestamp) {
         if (app.getReleaseIdType() == TIMESTAMP) {
             metadataStorage.updateInstalledTimestamp(app, versionOrTimestamp);
         }
@@ -165,8 +165,8 @@ public class AvailableVersions {
      *                 if not null, then method will not block and the callback is executed in a
      *                 different thread {@see activity}.
      */
-    public void checkUpdatesForInstalledApps(@Nullable Activity activity, Runnable callback) {
-        checkUpdates(InstalledApps.getInstalledApps(packageManager), activity, callback);
+    private void checkUpdatesForInstalledApps(@Nullable Activity activity, Runnable callback) {
+//        checkUpdates(DeviceAppRegister.getInstalledApps(packageManager), activity, callback);
     }
 
     /**
@@ -179,10 +179,10 @@ public class AvailableVersions {
      *                     if not null, then method will not block and the callback is executed in a
      *                     different thread {@see activity}.
      */
-    public void checkUpdatesForInstalledApps(Set<App> disabledApps, @Nullable Activity activity, Runnable callback) {
-        List<App> apps = InstalledApps.getInstalledApps(packageManager);
-        apps.removeAll(disabledApps);
-        checkUpdates(apps, activity, callback);
+    private void checkUpdatesForInstalledApps(Set<App> disabledApps, @Nullable Activity activity, Runnable callback) {
+//        List<App> apps = DeviceAppRegister.getInstalledApps(packageManager);
+//        apps.removeAll(disabledApps);
+//        checkUpdates(apps, activity, callback);
     }
 
     /**
@@ -195,7 +195,7 @@ public class AvailableVersions {
      *                 if not null, then method will not block and the callback is executed in a
      *                 different thread {@see activity}.
      */
-    public void checkUpdateForApp(App app, @Nullable Activity activity, Runnable callback) {
+    private void checkUpdateForApp(App app, @Nullable Activity activity, Runnable callback) {
         checkUpdates(Collections.singletonList(app), activity, callback);
     }
 

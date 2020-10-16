@@ -11,6 +11,9 @@ import androidx.core.util.Pair;
 import com.google.common.base.Preconditions;
 
 import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
@@ -25,10 +28,6 @@ import static android.os.Environment.DIRECTORY_DOWNLOADS;
  * This class helps to use the {@code android.app.DownloadManager} more easily.
  */
 public class DownloadManagerAdapter {
-    private static final String HTTPS_PROTOCOL = "https";
-    private static final String FILE_PREFIX = "download_";
-    private static final String FILE_SUFFIX = ".apk";
-
     private final DownloadManager downloadManager;
     private final Map<Long, File> files = new ConcurrentHashMap<>();
 
@@ -45,12 +44,13 @@ public class DownloadManagerAdapter {
      * @param notificationVisibility visibility of the download notification
      * @return new generated id for the download
      */
-    public long enqueue(Context context, String downloadUrl, String notificationTitle, int notificationVisibility) {
-        Uri uri = Uri.parse(downloadUrl);
-        Preconditions.checkArgument(HTTPS_PROTOCOL.equals(uri.getScheme()));
-        String fileName = FILE_PREFIX + Math.abs(new Random().nextLong()) + FILE_SUFFIX;
+    public long enqueue(Context context, URL downloadUrl, String notificationTitle, int notificationVisibility) {
+        Preconditions.checkArgument("https".equals(downloadUrl.getProtocol()));
+        String fileName = String.format(Locale.getDefault(), "download_%d_%d.apk",
+                System.currentTimeMillis(),
+                Math.abs(new Random().nextLong()));
 
-        DownloadManager.Request request = new DownloadManager.Request(uri);
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl.toString()));
         request.setTitle(notificationTitle);
         request.setNotificationVisibility(notificationVisibility);
         request.setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName);

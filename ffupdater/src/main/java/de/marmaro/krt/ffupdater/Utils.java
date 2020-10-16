@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SetUtils {
+public class Utils {
 
     public static <T> Set<T> createSet(T element) {
         Set<T> set = new HashSet<>();

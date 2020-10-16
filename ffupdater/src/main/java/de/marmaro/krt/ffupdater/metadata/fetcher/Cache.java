@@ -13,7 +13,7 @@ import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.ParamRuntimeException;
-import de.marmaro.krt.ffupdater.metadata.Metadata;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.ReleaseId;
 import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
 import de.marmaro.krt.ffupdater.metadata.ReleaseVersion;
@@ -32,10 +32,10 @@ class Cache {
         this.preferences = preferences;
     }
 
-    Optional<Metadata> getMetadata(App app) {
+    Optional<AvailableMetadata> getMetadata(App app) {
         return getDownloadUrl(app).flatMap(downloadUrl ->
                 getReleaseId(app).map(releaseId ->
-                        new Metadata(downloadUrl, releaseId, hash)));
+                        new AvailableMetadata(downloadUrl, releaseId)));
     }
 
     private Optional<URL> getDownloadUrl(App app) {
@@ -77,7 +77,7 @@ class Cache {
         return System.currentTimeMillis() - created <= CACHE_TTL.toMillis();
     }
 
-    void updateCache(App app, Metadata metadata) {
+    void updateCache(App app, AvailableMetadata metadata) {
         preferences.edit()
                 .putLong(String.format(CREATED_EPOCH_MS, app), System.currentTimeMillis())
                 .putString(String.format(DOWNLOAD_URL, app), metadata.getDownloadUrl().toString())

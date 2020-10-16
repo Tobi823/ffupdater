@@ -9,7 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 /**
@@ -17,10 +19,12 @@ import de.marmaro.krt.ffupdater.utils.Utils;
  */
 public class DeviceTooOldDialog extends DialogFragment {
     static final String TAG = "device_too_old_dialog";
-    private final int necessaryApiLevel;
+    private final App app;
+    private final DeviceEnvironment deviceEnvironment;
 
-    public DeviceTooOldDialog(int necessaryApiLevel) {
-        this.necessaryApiLevel = necessaryApiLevel;
+    public DeviceTooOldDialog(App app, DeviceEnvironment deviceEnvironment) {
+        this.app = app;
+        this.deviceEnvironment = deviceEnvironment;
     }
 
     @NonNull
@@ -29,8 +33,8 @@ public class DeviceTooOldDialog extends DialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.device_too_old_dialog_title)
                 .setMessage(getString(R.string.device_too_old_dialog_message,
-                        Utils.getVersionAndCodenameFromApiLevel(necessaryApiLevel),
-                        Utils.getVersionAndCodenameFromApiLevel(Build.VERSION.SDK_INT)))
+                        Utils.getVersionAndCodenameFromApiLevel(app.getMinApiLevel()),
+                        Utils.getVersionAndCodenameFromApiLevel(deviceEnvironment.getApiLevel())))
                 .setNegativeButton(getString(R.string.ok), (dialog, which) -> dialog.dismiss())
                 .create();
     }

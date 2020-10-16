@@ -6,21 +6,21 @@ import java.util.concurrent.Callable;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.metadata.Metadata;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 
-class Focus implements Callable<Metadata> {
+class Focus implements Callable<AvailableMetadata> {
     private final App app;
-    private final DeviceEnvironment.ABI abi;
+    private final DeviceEnvironment deviceEnvironment;
 
-    Focus(App app, DeviceEnvironment.ABI abi) {
+    Focus(App app, DeviceEnvironment deviceEnvironment) {
         Preconditions.checkNotNull(app);
-        Preconditions.checkNotNull(abi);
+        Preconditions.checkNotNull(deviceEnvironment);
         this.app = app;
-        this.abi = abi;
+        this.deviceEnvironment = deviceEnvironment;
     }
 
     @Override
-    public Metadata call() throws Exception {
+    public AvailableMetadata call() throws Exception {
         //TODO implement
         return null;
     }

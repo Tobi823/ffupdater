@@ -31,7 +31,6 @@ class ApiConsumer {
     private static final String ACCEPT_ENCODING = "Accept-Encoding";
 
     @Nullable
-    //TODO später muss die Exceptions abgefangen werden
     <T> T consume(URL url, Class<T> clazz) {
         try {
             final URLConnection urlConnection = url.openConnection();

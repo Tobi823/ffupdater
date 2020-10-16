@@ -17,28 +17,28 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.fetcher.Fetcher;
 
-public class MetadataFetcher {
+public class AvailableMetadataFetcher {
     private final ExecutorService executorService = Executors.newCachedThreadPool();
-    private final Map<App, Future<Metadata>> futureCache = new HashMap<>();
+    private final Map<App, Future<AvailableMetadata>> futureCache = new HashMap<>();
     private final SharedPreferences sharedPreferences;
-    private final DeviceEnvironment.ABI abi;
+    private final DeviceEnvironment deviceEnvironment;
 
-    public MetadataFetcher(SharedPreferences sharedPreferences, DeviceEnvironment.ABI abi) {
+    public AvailableMetadataFetcher(SharedPreferences sharedPreferences, DeviceEnvironment deviceEnvironment) {
         Preconditions.checkNotNull(sharedPreferences);
-        Preconditions.checkNotNull(abi);
+        Preconditions.checkNotNull(deviceEnvironment);
         this.sharedPreferences = sharedPreferences;
-        this.abi = abi;
+        this.deviceEnvironment = deviceEnvironment;
     }
 
-    public Map<App, Future<Metadata>> fetchMetadata(Set<App> apps) {
+    public Map<App, Future<AvailableMetadata>> fetchMetadata(Set<App> apps) {
         return apps.stream().collect(Collectors.toMap(app -> app, app -> {
-            Future<Metadata> cachedFuture = futureCache.get(app);
+            Future<AvailableMetadata> cachedFuture = futureCache.get(app);
             if (cachedFuture != null && (cachedFuture.isCancelled() || cachedFuture.isDone())) {
                 return cachedFuture;
             }
 
-            Callable<Metadata> callable = new Fetcher(sharedPreferences, app, abi);
-            Future<Metadata> future = executorService.submit(callable);
+            Callable<AvailableMetadata> callable = new Fetcher(sharedPreferences, app, deviceEnvironment);
+            Future<AvailableMetadata> future = executorService.submit(callable);
 
             futureCache.put(app, future);
             return future;

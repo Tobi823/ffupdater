@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInstaller;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.util.Pair;
+import androidx.preference.PreferenceManager;
 
 import com.google.common.base.Preconditions;
 
@@ -34,14 +36,20 @@ import java.io.OutputStream;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter;
+import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
-import de.marmaro.krt.ffupdater.utils.Utils;
-import de.marmaro.krt.ffupdater.version.AvailableVersions;
 
+import static android.app.DownloadManager.Request.VISIBILITY_VISIBLE;
 import static android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL;
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
@@ -54,15 +62,14 @@ import static android.os.Environment.DIRECTORY_DOWNLOADS;
  */
 public class InstallActivity extends AppCompatActivity {
     public static final String EXTRA_APP_NAME = "app_name";
-    public static final String EXTRA_DOWNLOAD_URL = "download_url";
     private static final String PACKAGE_INSTALLED_ACTION = "de.marmaro.krt.ffupdater.InstallActivity.SESSION_API_PACKAGE_INSTALLED";
     public static final String LOG_TAG = "InstallActivity";
 
     private DownloadManagerAdapter downloadManager;
+    private InstalledMetadataRegister deviceAppRegister;
     private App app;
-    private String downloadUrl;
-    private String versionOrTimestamp;
-    private AvailableVersions availableVersions;
+    private AvailableMetadata metadata;
+    private AvailableMetadataFetcher fetcher;
     private long downloadId = -1;
     private boolean killSwitch;
 
@@ -73,7 +80,10 @@ public class InstallActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
 
         registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
+        deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
+        fetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());
 
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
@@ -81,8 +91,6 @@ public class InstallActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-        availableVersions = new AvailableVersions(this);
 
         Bundle extras = Objects.requireNonNull(getIntent().getExtras());
         String appName = extras.getString(EXTRA_APP_NAME);
@@ -104,7 +112,7 @@ public class InstallActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(onDownloadComplete);
-        availableVersions.shutdown();
+        fetcher.shutdown();
         killSwitch = true;
     }
 
@@ -119,6 +127,7 @@ public class InstallActivity extends AppCompatActivity {
 
     /**
      * This method will be called when the app installation is completed.
+     *
      * @param intent intent
      */
     @Override
@@ -143,41 +152,42 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void fetchUrlForDownload() {
-        {
-            String downloadUrl = availableVersions.getDownloadUrl(app);
-            String versionOrTimestamp = availableVersions.getAvailableVersionOrTimestamp(app);
-            if (!downloadUrl.isEmpty() && !versionOrTimestamp.isEmpty()) {
-                this.downloadUrl = downloadUrl;
-                this.versionOrTimestamp = versionOrTimestamp;
-                actionFetchSuccessful();
-                downloadApplication();
-                return;
-            }
-        }
+        findViewById(R.id.fetchUrl).setVisibility(View.VISIBLE);
+        findTextViewById(R.id.fetchUrlTextView).setText(getString(
+                R.string.fetch_url_for_download,
+                app.getDownloadSource(this)));
 
-        actionFetching();
-        availableVersions.checkUpdateForApp(app, this, () -> {
-            String downloadUrl = availableVersions.getDownloadUrl(app);
-            String versionOrTimestamp = availableVersions.getAvailableVersionOrTimestamp(app);
-            if (!downloadUrl.isEmpty() && !versionOrTimestamp.isEmpty()) {
-                actionFetchSuccessful();
-                this.downloadUrl = downloadUrl;
-                this.versionOrTimestamp = versionOrTimestamp;
-                downloadApplication();
-            } else {
-                actionFetchUnsuccessful();
+        final Future<AvailableMetadata> futureMetadata = fetcher.fetchMetadata(Utils.createSet(app)).get(app);
+        new Thread(() -> {
+            try {
+                this.metadata = futureMetadata.get(30, TimeUnit.SECONDS);
+                runOnUiThread(() -> {
+                    findViewById(R.id.fetchUrl).setVisibility(View.GONE);
+                    findViewById(R.id.fetchedUrlSuccess).setVisibility(View.VISIBLE);
+                    findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(
+                            R.string.fetched_url_for_download_successfully,
+                            app.getDownloadSource(this)));
+                    downloadApplication();
+                });
+            } catch (ExecutionException | InterruptedException | TimeoutException e) {
+                Log.e(LOG_TAG, "failed to fetch url", e);
+                runOnUiThread(() -> {
+                    findViewById(R.id.fetchUrl).setVisibility(View.GONE);
+                    findViewById(R.id.fetchedUrlFailure).setVisibility(View.VISIBLE);
+                    findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(
+                            R.string.fetched_url_for_download_unsuccessfully,
+                            app.getDownloadSource(this)));
+                    findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
+                });
             }
-        });
+        }).start();
     }
 
     private void downloadApplication() {
-        downloadId = downloadManager.enqueue(
-                this,
-                downloadUrl,
-                app.getTitle(this),
-                DownloadManager.Request.VISIBILITY_VISIBLE);
+        findViewById(R.id.downloadingFile).setVisibility(View.VISIBLE);
+        findTextViewById(R.id.downloadingFileUrl).setText(metadata.getDownloadUrl().toString());
 
-        actionDownloadBegin();
+        downloadId = downloadManager.enqueue(this, metadata.getDownloadUrl(), app.getTitle(this), VISIBILITY_VISIBLE);
         new Thread(() -> {
             int previousStatus = -1;
             while (!killSwitch) {
@@ -194,7 +204,7 @@ public class InstallActivity extends AppCompatActivity {
                 int progress = Objects.requireNonNull(statusAndProgress.second);
                 actionDownloadUpdateProgressBar(progress);
 
-                Utils.sleepAndIgnoreInterruptedException(500);
+                de.marmaro.krt.ffupdater.utils.Utils.sleepAndIgnoreInterruptedException(500);
             }
         }).start();
     }
@@ -300,31 +310,6 @@ public class InstallActivity extends AppCompatActivity {
         return unknown;
     }
 
-    private void actionFetching() {
-        findViewById(R.id.fetchUrl).setVisibility(View.VISIBLE);
-        findTextViewById(R.id.fetchUrlTextView).setText(getString(R.string.fetch_url_for_download, app.getDownloadSource(this)));
-    }
-
-    private void actionFetchSuccessful() {
-        findViewById(R.id.fetchUrl).setVisibility(View.GONE);
-        findViewById(R.id.fetchedUrlSuccess).setVisibility(View.VISIBLE);
-        findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(R.string.fetched_url_for_download_successfully, app.getDownloadSource(this)));
-    }
-
-    private void actionFetchUnsuccessful() {
-        findViewById(R.id.fetchUrl).setVisibility(View.GONE);
-        findViewById(R.id.fetchedUrlFailure).setVisibility(View.VISIBLE);
-        findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(R.string.fetched_url_for_download_unsuccessfully, app.getDownloadSource(this)));
-        findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
-    }
-
-    private void actionDownloadBegin() {
-        runOnUiThread(() -> {
-            findViewById(R.id.downloadingFile).setVisibility(View.VISIBLE);
-            findTextViewById(R.id.downloadingFileUrl).setText(downloadUrl);
-        });
-    }
-
     private void actionDownloadUpdateProgressBar(int percent) {
         runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar)).setProgress(percent));
 
@@ -357,7 +342,7 @@ public class InstallActivity extends AppCompatActivity {
         runOnUiThread(() -> {
             findViewById(R.id.downloadingFile).setVisibility(View.GONE);
             findViewById(R.id.downloadFileFailed).setVisibility(View.VISIBLE);
-            findTextViewById(R.id.downloadFileFailedUrl).setText(downloadUrl);
+            findTextViewById(R.id.downloadFileFailedUrl).setText(metadata.getDownloadUrl().toString());
             findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
         });
     }
@@ -366,7 +351,7 @@ public class InstallActivity extends AppCompatActivity {
         runOnUiThread(() -> {
             runOnUiThread(() -> findViewById(R.id.downloadingFile).setVisibility(View.GONE));
             findViewById(R.id.downloadedFile).setVisibility(View.VISIBLE);
-            findTextViewById(R.id.downloadedFileUrl).setText(downloadUrl);
+            findTextViewById(R.id.downloadedFileUrl).setText(metadata.getDownloadUrl().toString());
         });
     }
 
@@ -406,7 +391,7 @@ public class InstallActivity extends AppCompatActivity {
             }
         });
         if (success) {
-            availableVersions.setInstalledVersionOrTimestamp(app, versionOrTimestamp);
+            deviceAppRegister.saveReleaseId(app, metadata.getReleaseId());
         }
         downloadManager.remove(downloadId);
     }

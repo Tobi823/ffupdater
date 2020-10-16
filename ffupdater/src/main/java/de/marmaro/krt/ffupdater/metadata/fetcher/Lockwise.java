@@ -5,18 +5,18 @@ import com.google.common.base.Preconditions;
 import java.util.concurrent.Callable;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.metadata.Metadata;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 
-class Lockwise implements Callable<Metadata> {
-    private final DeviceEnvironment.ABI abi;
+class Lockwise implements Callable<AvailableMetadata> {
+    private final DeviceEnvironment deviceEnvironment;
 
-    Lockwise(DeviceEnvironment.ABI abi) {
-        Preconditions.checkNotNull(abi);
-        this.abi = abi;
+    Lockwise(DeviceEnvironment deviceEnvironment) {
+        Preconditions.checkNotNull(deviceEnvironment);
+        this.deviceEnvironment = deviceEnvironment;
     }
 
     @Override
-    public Metadata call() throws Exception {
+    public AvailableMetadata call() throws Exception {
         //TODO implement
         return null;
     }

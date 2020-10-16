@@ -4,8 +4,6 @@ import com.google.common.base.Preconditions;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.version.rest.mozilla_ci.Response;
-import de.marmaro.krt.ffupdater.version.rest.mozilla_ci.Sha256Hash;
 
 /**
  * Source url for Firefox Release, Firefox Beta and Firefox Nightly
@@ -24,15 +22,15 @@ class Firefox {
 
     final private String timestamp;
     final private String downloadUrl;
-    final private Sha256Hash hash;
+//    final private Sha256Hash hash;
 
-    private Firefox(String timestamp, String downloadUrl, Sha256Hash hash) {
+    private Firefox(String timestamp, String downloadUrl/*, Sha256Hash hash*/) {
         Preconditions.checkNotNull(timestamp);
         Preconditions.checkNotNull(downloadUrl);
-        Preconditions.checkNotNull(hash);
+//        Preconditions.checkNotNull(hash);
         this.timestamp = timestamp;
         this.downloadUrl = downloadUrl;
-        this.hash = hash;
+//        this.hash = hash;
     }
 
     public String getTimestamp() {
@@ -43,9 +41,9 @@ class Firefox {
         return downloadUrl;
     }
 
-    public Sha256Hash getHash() {
-        return hash;
-    }
+//    public Sha256Hash getHash() {
+//        return hash;
+//    }
 
     /**
      * Do the network request to get the latest version name and download url for Fenix.
@@ -53,14 +51,15 @@ class Firefox {
      * @return result or null
      */
     static Firefox findLatest(App app, DeviceEnvironment.ABI abi) {
-        final String chainOfTrustUrl = String.format(ARTIFACT_URL, getNamespaceSuffix(app), getAbiAbbreviation(abi), CHAIN_OF_TRUST_ARTIFACT_NAME);
-        final Response chainOfTrustResponse = ApiConsumer.consume(chainOfTrustUrl, Response.class);
-        Preconditions.checkNotNull(chainOfTrustResponse);
-
-        final String timestamp = chainOfTrustResponse.getTask().getCreated();
-        final String downloadUrl = String.format(ARTIFACT_URL, getNamespaceSuffix(app), getAbiAbbreviation(abi), getArtifactNameForApk(abi));
-        final Sha256Hash sha256Hash = chainOfTrustResponse.getArtifacts().get(getArtifactNameForApk(abi));
-        return new Firefox(timestamp, downloadUrl, sha256Hash);
+//        final String chainOfTrustUrl = String.format(ARTIFACT_URL, getNamespaceSuffix(app), getAbiAbbreviation(abi), CHAIN_OF_TRUST_ARTIFACT_NAME);
+//        final Response chainOfTrustResponse = ApiConsumer.consume(chainOfTrustUrl, Response.class);
+//        Preconditions.checkNotNull(chainOfTrustResponse);
+//
+//        final String timestamp = chainOfTrustResponse.getTask().getCreated();
+//        final String downloadUrl = String.format(ARTIFACT_URL, getNamespaceSuffix(app), getAbiAbbreviation(abi), getArtifactNameForApk(abi));
+//        final Sha256Hash sha256Hash = chainOfTrustResponse.getArtifacts().get(getArtifactNameForApk(abi));
+//        return new Firefox(timestamp, downloadUrl, sha256Hash);
+        return new Firefox(null, null);
     }
 
     private static String getArtifactNameForApk(DeviceEnvironment.ABI abi) {
