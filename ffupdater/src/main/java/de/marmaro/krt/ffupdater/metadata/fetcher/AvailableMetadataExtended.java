@@ -10,7 +10,7 @@ public class AvailableMetadataExtended extends AvailableMetadata {
     private final Hash hash;
 
     public AvailableMetadataExtended(URL url, ReleaseId releaseId, Hash hash) {
-        super(url, releaseId);
+        super(releaseId, url);
         this.hash = hash;
     }
 

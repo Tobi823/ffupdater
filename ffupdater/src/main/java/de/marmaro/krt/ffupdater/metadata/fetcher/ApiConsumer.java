@@ -22,7 +22,7 @@ import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 /**
  * Consume a REST-API from the internet.
  */
-class ApiConsumer {
+public class ApiConsumer {
     private static final int TIMEOUT = (int) TimeUnit.SECONDS.toMillis(10);
     private static final String GZIP = "gzip";
     private static final String ACCEPT_ENCODING = "Accept-Encoding";

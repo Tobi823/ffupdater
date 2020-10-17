@@ -18,14 +18,11 @@ class FirefoxLite implements Callable<AvailableMetadata> {
     public static final String OWNER = "mozilla-tw";
     public static final String REPOSITORY = "FirefoxLite";
 
-    private final DeviceEnvironment deviceEnvironment;
     private final GithubConsumer githubConsumer;
 
-    FirefoxLite(GithubConsumer githubConsumer, DeviceEnvironment deviceEnvironment) {
+    FirefoxLite(GithubConsumer githubConsumer) {
         Preconditions.checkNotNull(githubConsumer);
-        Preconditions.checkNotNull(deviceEnvironment);
         this.githubConsumer = githubConsumer;
-        this.deviceEnvironment = deviceEnvironment;
     }
 
     @Override

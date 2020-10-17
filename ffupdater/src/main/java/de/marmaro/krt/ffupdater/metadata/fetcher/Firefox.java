@@ -12,21 +12,20 @@ import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest
  * https://www.apkmirror.com/apk/mozilla/firefox/
- *
+ * <p>
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
- *
+ * <p>
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
  */
 class Firefox implements Callable<AvailableMetadata> {
-    private static final String BASE_URL =
+    public static final String BASE_URL =
             "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/mobile.v2.fenix.%s.latest.%s/artifacts/%s";
-    private static final String CHAIN_OF_TRUST_ARTIFACT = "public/chain-of-trust.json";
+    public static final String CHAIN_OF_TRUST_ARTIFACT = "public/chain-of-trust.json";
     public static final String APK_ARTIFACT = "public/build/%s/target.apk";
 
     private final DeviceEnvironment deviceEnvironment;
-    private final String baseUrl;
     private final MozillaCiConsumer mozillaCiConsumer;
     private final App app;
 
@@ -37,27 +36,21 @@ class Firefox implements Callable<AvailableMetadata> {
         this.deviceEnvironment = deviceEnvironment;
         this.mozillaCiConsumer = mozillaCiConsumer;
         this.app = app;
-        this.baseUrl = String.format(BASE_URL, getNamespaceSuffix(), getAbiAbbreviation(), "%s");
     }
 
     @Override
     public AvailableMetadataExtended call() throws Exception {
-        final MozillaCiConsumer.MozillaCiResult result;
-        {
-            final URL url = new URL(String.format(baseUrl, CHAIN_OF_TRUST_ARTIFACT));
-            result = mozillaCiConsumer.consume(url, getArtifactNameForApk());
-        }
+        final String abi = getAbiAbbreviation();
+        final String namespace = getNamespaceSuffix();
+        final String apkArtifactName = String.format(APK_ARTIFACT, abi);
 
-        final URL downloadUrl = new URL(String.format(baseUrl, getArtifactNameForApk()));
+        final URL chainOfTrustArtifact = new URL(String.format(BASE_URL, namespace, abi, CHAIN_OF_TRUST_ARTIFACT));
+        final MozillaCiConsumer.MozillaCiResult result = mozillaCiConsumer.consume(chainOfTrustArtifact, apkArtifactName);
         return new AvailableMetadataExtended(
-                downloadUrl,
+                new URL(String.format(BASE_URL, namespace, abi, apkArtifactName)),
                 result.getTimestamp(),
                 result.getHash()
         );
-    }
-
-    private String getArtifactNameForApk() {
-        return String.format(APK_ARTIFACT, getAbiAbbreviation());
     }
 
     private String getAbiAbbreviation() {

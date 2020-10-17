@@ -35,22 +35,15 @@ class Focus implements Callable<AvailableMetadata> {
 
     @Override
     public AvailableMetadataExtended call() throws Exception {
-        final MozillaCiConsumer.MozillaCiResult result;
-        {
-            final URL url = new URL(String.format(BASE_URL, CHAIN_OF_TRUST_ARTIFACT));
-            result = mozillaCiConsumer.consume(url, getArtifactNameForApk());
-        }
+        final String apkArtifactName = String.format(APK_ARTIFACT, getAppName(), getAbiAbbreviation());
+        final URL chainOfTrustArtifact = new URL(String.format(BASE_URL, CHAIN_OF_TRUST_ARTIFACT));
 
-        final URL downloadUrl = new URL(String.format(BASE_URL, getArtifactNameForApk()));
+        final MozillaCiConsumer.MozillaCiResult result = mozillaCiConsumer.consume(chainOfTrustArtifact, apkArtifactName);
         return new AvailableMetadataExtended(
-                downloadUrl,
+                new URL(String.format(BASE_URL, apkArtifactName)),
                 result.getTimestamp(),
                 result.getHash()
         );
-    }
-
-    private String getArtifactNameForApk() {
-        return String.format(APK_ARTIFACT, getAppName(), getAbiAbbreviation());
     }
 
     private String getAbiAbbreviation() {

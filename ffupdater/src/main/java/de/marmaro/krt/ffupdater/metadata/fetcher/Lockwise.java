@@ -18,14 +18,11 @@ class Lockwise implements Callable<AvailableMetadata> {
     public static final String OWNER = "mozilla-lockwise";
     public static final String REPOSITORY = "lockwise-android";
 
-    private final DeviceEnvironment deviceEnvironment;
     private final GithubConsumer githubConsumer;
 
-    Lockwise(GithubConsumer githubConsumer, DeviceEnvironment deviceEnvironment) {
+    Lockwise(GithubConsumer githubConsumer) {
         Preconditions.checkNotNull(githubConsumer);
-        Preconditions.checkNotNull(deviceEnvironment);
         this.githubConsumer = githubConsumer;
-        this.deviceEnvironment = deviceEnvironment;
     }
 
     @Override

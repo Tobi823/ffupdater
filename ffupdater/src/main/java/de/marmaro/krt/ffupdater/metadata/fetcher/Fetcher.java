@@ -24,14 +24,24 @@ public class Fetcher implements Callable<AvailableMetadata> {
     private final Cache cache;
     private final App app;
     private final DeviceEnvironment deviceEnvironment;
+    private final MozillaCiConsumer mozillaCiConsumer;
+    private final GithubConsumer githubConsumer;
 
-    public Fetcher(SharedPreferences sharedPreferences, App app, DeviceEnvironment deviceEnvironment) {
+    public Fetcher(SharedPreferences sharedPreferences,
+                   App app,
+                   DeviceEnvironment deviceEnvironment,
+                   MozillaCiConsumer mozillaCiConsumer,
+                   GithubConsumer githubConsumer) {
         Preconditions.checkNotNull(sharedPreferences);
         Preconditions.checkNotNull(app);
         Preconditions.checkNotNull(deviceEnvironment);
+        Preconditions.checkNotNull(mozillaCiConsumer);
+        Preconditions.checkNotNull(githubConsumer);
         this.cache = new Cache(sharedPreferences);
         this.app = app;
         this.deviceEnvironment = deviceEnvironment;
+        this.mozillaCiConsumer = mozillaCiConsumer;
+        this.githubConsumer = githubConsumer;
     }
 
     @Override
@@ -47,31 +57,31 @@ public class Fetcher implements Callable<AvailableMetadata> {
         switch (app) {
             case FIREFOX_KLAR:
                 TrafficStats.setThreadStatsTag(FIREFOX_KLAR_TAG);
-                metadata = new Focus(app, deviceEnvironment).call();
+                metadata = new Focus(mozillaCiConsumer, app, deviceEnvironment).call();
                 break;
             case FIREFOX_FOCUS:
                 TrafficStats.setThreadStatsTag(FIRFOX_FOCUS_TAG);
-                metadata = new Focus(app, deviceEnvironment).call();
+                metadata = new Focus(mozillaCiConsumer, app, deviceEnvironment).call();
                 break;
             case FIREFOX_LITE:
                 TrafficStats.setThreadStatsTag(FIREFOX_LIGHT_TAG);
-                metadata = new FirefoxLite(deviceEnvironment).call();
+                metadata = new FirefoxLite(githubConsumer).call();
                 break;
             case FIREFOX_RELEASE:
                 TrafficStats.setThreadStatsTag(FIREFOX_RELEASE_TAG);
-                metadata = new Firefox(new MozillaCiConsumer(new ApiConsumer()), app, deviceEnvironment).call();
+                metadata = new Firefox(mozillaCiConsumer, app, deviceEnvironment).call();
                 break;
             case FIREFOX_BETA:
                 TrafficStats.setThreadStatsTag(FIREFOX_BETA_TAG);
-                metadata = new Firefox(new MozillaCiConsumer(new ApiConsumer()), app, deviceEnvironment).call();
+                metadata = new Firefox(mozillaCiConsumer, app, deviceEnvironment).call();
                 break;
             case FIREFOX_NIGHTLY:
                 TrafficStats.setThreadStatsTag(FIREFOX_NIGHTLY_TAG);
-                metadata = new Firefox(new MozillaCiConsumer(new ApiConsumer()), app, deviceEnvironment).call();
+                metadata = new Firefox(mozillaCiConsumer, app, deviceEnvironment).call();
                 break;
             case LOCKWISE:
                 TrafficStats.setThreadStatsTag(LOCKWISE_TAG);
-                metadata = new Lockwise(deviceEnvironment).call();
+                metadata = new Lockwise(githubConsumer).call();
                 break;
             default:
                 throw new ParamRuntimeException("can't create callable for unknown app %s", app);

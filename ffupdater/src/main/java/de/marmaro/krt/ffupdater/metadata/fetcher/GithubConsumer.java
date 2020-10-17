@@ -14,13 +14,13 @@ import java.util.Map;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
-class GithubConsumer {
+public class GithubConsumer {
     public static final String LATEST_RELEASE_URL = "https://api.github.com/repos/%s/%s/releases/latest";
     public static final String ALL_RELEASES_URL = "https://api.github.com/repos/%s/%s/releases";
 
     private final ApiConsumer apiConsumer;
 
-    GithubConsumer(ApiConsumer apiConsumer) {
+    public GithubConsumer(ApiConsumer apiConsumer) {
         this.apiConsumer = apiConsumer;
     }
 

@@ -35,7 +35,7 @@ class Cache {
     Optional<AvailableMetadata> getMetadata(App app) {
         return getDownloadUrl(app).flatMap(downloadUrl ->
                 getReleaseId(app).map(releaseId ->
-                        new AvailableMetadata(downloadUrl, releaseId)));
+                        new AvailableMetadata(releaseId, downloadUrl)));
     }
 
     private Optional<URL> getDownloadUrl(App app) {
