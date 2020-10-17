@@ -64,7 +64,7 @@
     <string name="missing_external_storage_permission_dialog_title">Запрос разрешения</string>
     <string name="not_connected_to_internet">Вы не подключены к интернету</string>
     <string name="notification_text">Нажмите для просмотра</string>
-    <string name="notification_title">Доступно обновление</string>
+    <string name="notification_title">Обновление доступно для: %1$s</string>
     <string name="ok">ОК</string>
     <string name="settings_activity_label">Настройки</string>
     <string name="settings_automatic_check_title">Автоматически в фоновом режиме</string>

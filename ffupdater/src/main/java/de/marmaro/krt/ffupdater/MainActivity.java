@@ -46,6 +46,15 @@ import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static de.marmaro.krt.ffupdater.R.drawable.ic_file_download_grey;
+import static de.marmaro.krt.ffupdater.R.drawable.ic_file_download_orange;
+import static de.marmaro.krt.ffupdater.R.string.AVAILABLE_VERSION;
+import static de.marmaro.krt.ffupdater.R.string.AVAILABLE_VERSION_ERROR;
+import static de.marmaro.krt.ffupdater.R.string.AVAILABLE_VERSION_LOADING;
+import static de.marmaro.krt.ffupdater.R.string.INSTALLED_VERSION;
+import static de.marmaro.krt.ffupdater.R.string.NO_UPDATE_AVAILABLE;
+import static de.marmaro.krt.ffupdater.R.string.UNKNOWN_INSTALLED_VERSION;
+import static de.marmaro.krt.ffupdater.R.string.UPDATE_AVAILABLE;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
@@ -134,42 +143,41 @@ public class MainActivity extends AppCompatActivity {
 
             getAppCard(installedApp).setVisibility(VISIBLE);
             getInstalledVersionTextView(installedApp).setText(installedText);
-            getAvailableVersionTextView(installedApp).setText("Loading...");
+            getAvailableVersionTextView(installedApp).setText(AVAILABLE_VERSION_LOADING);
         }
 
         Map<App, Future<AvailableMetadata>> futures = metadataFetcher.fetchMetadata(installedApps);
         new Thread(() -> {
             futures.forEach((app, future) -> {
                 try {
-                    final AvailableMetadata availableMetadata = future.get(30, TimeUnit.SECONDS);
-                    final Optional<InstalledMetadata> installedMetadata = deviceAppRegister.getMetadata(app);
+                    final AvailableMetadata available = future.get(30, TimeUnit.SECONDS);
+                    final Optional<InstalledMetadata> installed = deviceAppRegister.getMetadata(app);
 
-                    final boolean updateAvailable = installedMetadata.map(metadata ->
-                            new UpdateChecker().isUpdateAvailable(app, metadata, availableMetadata)
+                    final boolean updateAvailable = installed.map(metadata ->
+                            new UpdateChecker().isUpdateAvailable(app, metadata, available)
                     ).orElse(true);
-
-                    final String installedText = installedMetadata.map(metadata ->
-                            String.format("Installed: %s", metadata.getVersionName())
-                    ).orElse("Unknown version installed");
 
                     final String availableText;
                     if (app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP) {
-                        availableText = updateAvailable ? "Update available" : "No update available";
+                        availableText = getString(updateAvailable ? UPDATE_AVAILABLE : NO_UPDATE_AVAILABLE);
                     } else {
-                        availableText = String.format("Available: %s", availableMetadata.getReleaseId().getValueAsString());
+                        availableText = getString(AVAILABLE_VERSION, available.getReleaseId().getValueAsString());
                     }
+
+                    final String installedText = installed.map(metadata ->
+                            getString(INSTALLED_VERSION, metadata.getVersionName())
+                    ).orElse(getString(UNKNOWN_INSTALLED_VERSION));
 
                     runOnUiThread(() -> {
                         getInstalledVersionTextView(app).setText(installedText);
                         getAvailableVersionTextView(app).setText(availableText);
-                        getDownloadButton(app).setImageResource(updateAvailable ?
-                                R.drawable.ic_file_download_orange : R.drawable.ic_file_download_grey);
+                        getDownloadButton(app).setImageResource(updateAvailable ? ic_file_download_orange : ic_file_download_grey);
                     });
                 } catch (ExecutionException | InterruptedException | TimeoutException e) {
                     Log.e(LOG_TAG, "failed to fetch metadata", e);
                     runOnUiThread(() -> {
-                        getAvailableVersionTextView(app).setText("ERROR");
-                        getDownloadButton(app).setImageResource(R.drawable.ic_file_download_grey);
+                        getAvailableVersionTextView(app).setText(AVAILABLE_VERSION_ERROR);
+                        getDownloadButton(app).setImageResource(ic_file_download_grey);
                     });
                 }
             });

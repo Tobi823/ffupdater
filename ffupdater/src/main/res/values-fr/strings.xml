@@ -58,7 +58,7 @@
     <string name="missing_external_storage_permission_dialog_title">Demande d\'autorisation</string>
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="notification_text">Cliquez ici pour voir</string>
-    <string name="notification_title">Mise à jour disponible</string>
+    <string name="notification_title">La mise à jour est disponible pour: %1$s</string>
     <string name="ok">D\'accord</string>
     <string name="settings_activity_label">Réglages</string>
     <string name="settings_automatic_check_title">Automatique en arrière-plan</string>

@@ -58,7 +58,7 @@
     <string name="missing_external_storage_permission_dialog_title">Berechtigungsanfrage</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
     <string name="notification_text">Anklicken um anzusehen</string>
-    <string name="notification_title">Update verfügbar</string>
+    <string name="notification_title">Update verfügbar für: %1$s</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Einstellungen</string>
     <string name="settings_automatic_check_title">Automatisch im Hintergrund</string>

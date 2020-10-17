@@ -6,6 +6,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
+import androidx.preference.PreferenceManager;
 import androidx.work.Constraints;
 import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
@@ -20,14 +23,32 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+import java.util.stream.Collectors;
 
+import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.MainActivity;
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
+import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
+import de.marmaro.krt.ffupdater.metadata.InstalledMetadata;
+import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
+import de.marmaro.krt.ffupdater.metadata.UpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
+import static de.marmaro.krt.ffupdater.R.string.notification_title;
 
 /**
  * This class will call the {@link WorkManager} to check regularly for app updates in the background.
@@ -85,21 +106,43 @@ public class Notificator extends Worker {
     @Override
     public Result doWork() {
         Log.d(LOG_TAG, "start background update check");
-        //TODO
-//        AvailableVersions appUpdate = new AvailableVersions(getApplicationContext());
-//        Set<App> disableApps = SettingsHelper.getDisableApps(getApplicationContext());
-//        appUpdate.checkUpdatesForInstalledApps(disableApps, null, null);
-//        if (appUpdate.areUpdatesForInstalledAppsAvailable()) {
-//            createNotification();
-//        } else {
-//            getNotificationManager().cancel(NOTIFICATION_ID);
-//        }
+        final Context context = getApplicationContext();
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        final PackageManager packageManager = context.getPackageManager();
+        final UpdateChecker updateChecker = new UpdateChecker();
+
+        final InstalledMetadataRegister register = new InstalledMetadataRegister(packageManager, preferences);
+        Set<App> apps = register.getInstalledApps();
+        apps.removeAll(SettingsHelper.getDisableApps(context));
+
+        final AvailableMetadataFetcher fetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());
+        final Map<App, Future<AvailableMetadata>> futures = fetcher.fetchMetadata(apps);
+
+        final List<App> appsToUpdate = new ArrayList<>();
+        futures.forEach((app, future) -> {
+            try {
+                AvailableMetadata available = future.get(30, TimeUnit.SECONDS);
+                InstalledMetadata installed = register.getMetadata(app)
+                        .orElseThrow(() -> new ParamRuntimeException("installed metadata is missing"));
+                if (updateChecker.isUpdateAvailable(app, installed, available)) {
+                    appsToUpdate.add(app);
+                }
+            } catch (ExecutionException | InterruptedException | TimeoutException | ParamRuntimeException e) {
+                Log.e(LOG_TAG, "update check failed for " + app, e);
+            }
+        });
+
+        if (appsToUpdate.isEmpty()) {
+            getNotificationManager().cancel(NOTIFICATION_ID);
+        } else {
+            createNotification(appsToUpdate);
+        }
         return Result.success();
     }
 
-    private void createNotification() {
-        Context context = getApplicationContext();
-        NotificationCompat.Builder builder;
+    private void createNotification(List<App> apps) {
+        final Context context = getApplicationContext();
+        final NotificationCompat.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel();
             builder = new NotificationCompat.Builder(context, CHANNEL_ID);
@@ -110,10 +153,11 @@ public class Notificator extends Worker {
 
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, REQUEST_CODE_START_MAIN_ACTIVITY, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        String appsToUpdate = apps.stream().map(app -> app.getTitle(context)).collect(Collectors.joining(", "));
 
         Notification notification = builder.setSmallIcon(R.mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
-                .setContentTitle(context.getString(R.string.notification_title))
+                .setContentTitle(context.getString(notification_title, appsToUpdate))
                 .setContentText(context.getString(R.string.notification_text))
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)

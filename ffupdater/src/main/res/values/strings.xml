@@ -69,7 +69,7 @@
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="notification_text">Press to view</string>
-    <string name="notification_title">Update is available</string>
+    <string name="notification_title">Update is available for: %1$s</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Settings</string>
     <string name="settings_automatic_check_title">Automatic in Background</string>
@@ -114,4 +114,11 @@
     <string name="update_notification_channel_name">Update notification</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
+    <string name="UPDATE_AVAILABLE">Update available</string>
+    <string name="NO_UPDATE_AVAILABLE">No update available</string>
+    <string name="AVAILABLE_VERSION">Available: %1$s</string>
+    <string name="AVAILABLE_VERSION_ERROR">ERROR</string>
+    <string name="AVAILABLE_VERSION_LOADING">Loading…</string>
+    <string name="INSTALLED_VERSION">Installed: %1$s</string>
+    <string name="UNKNOWN_INSTALLED_VERSION">Unknown version installed</string>
 </resources>

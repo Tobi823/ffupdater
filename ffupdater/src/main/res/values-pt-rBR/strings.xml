@@ -65,7 +65,7 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="missing_external_storage_permission_dialog_title">Pedido de Permissão</string>
     <string name="not_connected_to_internet">Sem conexão de Internet</string>
     <string name="notification_text">Aperte para ver</string>
-    <string name="notification_title">Atualização Disponível</string>
+    <string name="notification_title">A atualização está disponível para: %1$s</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Configurações</string>
     <string name="settings_automatic_check_title">Automático no fundo</string>

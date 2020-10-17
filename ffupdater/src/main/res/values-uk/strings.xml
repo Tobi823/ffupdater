@@ -58,7 +58,7 @@
     <string name="missing_external_storage_permission_dialog_title">Запит на дозвіл</string>
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
     <string name="notification_text">Натисніть, щоб переглянути</string>
-    <string name="notification_title">Оновлення доступне</string>
+    <string name="notification_title">Оновлення доступне для: %1$s</string>
     <string name="ok">Гаразд</string>
     <string name="settings_activity_label">Налаштування</string>
     <string name="settings_automatic_check_title">Автоматичний у фоновому режимі</string>
