@@ -24,7 +24,6 @@ public class GithubConsumer {
         this.apiConsumer = apiConsumer;
     }
 
-    @Nullable
     GithubResult consume(String owner, String repository) {
         Release release = findLatestRelease(owner, repository);
         if (release.getAssets() != null && !release.getAssets().isEmpty()) {
@@ -60,25 +59,25 @@ public class GithubConsumer {
         return new GithubResult(release.getTagName(), urls);
     }
 
-    public static class GithubResult {
+    static class GithubResult {
         private final String tagName;
         private final Map<String, URL> urls;
 
-        public GithubResult(String tagName, Map<String, URL> urls) {
+        GithubResult(String tagName, Map<String, URL> urls) {
             this.tagName = tagName;
             this.urls = urls;
         }
 
-        public String getTagName() {
+        String getTagName() {
             return tagName;
         }
 
-        public Map<String, URL> getUrls() {
+        Map<String, URL> getUrls() {
             return urls;
         }
     }
 
-    public static class Release {
+    static class Release {
         @SerializedName("tag_name")
         private String tagName;
 
@@ -103,14 +102,14 @@ public class GithubConsumer {
         }
     }
 
-    public static class Asset {
+    static class Asset {
         @SerializedName("name")
         private String name;
 
         @SerializedName("browser_download_url")
         private String downloadUrl;
 
-        public String getName() {
+        String getName() {
             return name;
         }
 
