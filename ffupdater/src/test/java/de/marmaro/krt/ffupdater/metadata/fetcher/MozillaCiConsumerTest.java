@@ -2,8 +2,6 @@ package de.marmaro.krt.ffupdater.metadata.fetcher;
 
 import com.google.gson.Gson;
 
-import org.exparity.hamcrest.date.ZonedDateTimeMatchers;
-import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +11,6 @@ import java.net.URL;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
 import de.marmaro.krt.ffupdater.metadata.fetcher.MozillaCiConsumer.MozillaCiResult;
 import de.marmaro.krt.ffupdater.metadata.fetcher.MozillaCiConsumer.Response;
 

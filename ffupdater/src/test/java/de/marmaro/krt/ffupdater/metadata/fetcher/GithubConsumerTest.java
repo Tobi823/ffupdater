@@ -2,14 +2,11 @@ package de.marmaro.krt.ffupdater.metadata.fetcher;
 
 import com.google.gson.Gson;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
