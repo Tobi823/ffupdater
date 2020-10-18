@@ -73,8 +73,9 @@ class Cache {
 
     boolean isCacheUpToDate(App app) {
         final String key = String.format(CREATED_EPOCH_MS, app);
-        final long created = preferences.getLong(key, 0);
-        return System.currentTimeMillis() - created <= CACHE_TTL.toMillis();
+        final long creationEpochTimestamp = preferences.getLong(key, 0);
+        final long ageInMillis = System.currentTimeMillis() - creationEpochTimestamp;
+        return ageInMillis <= CACHE_TTL.toMillis();
     }
 
     void updateCache(App app, AvailableMetadata metadata) {
