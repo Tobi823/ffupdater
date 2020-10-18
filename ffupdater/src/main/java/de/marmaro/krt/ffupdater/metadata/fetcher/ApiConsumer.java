@@ -27,7 +27,6 @@ public class ApiConsumer {
     private static final String GZIP = "gzip";
     private static final String ACCEPT_ENCODING = "Accept-Encoding";
 
-    @Nullable
     <T> T consume(URL url, Class<T> clazz) {
         try {
             final URLConnection urlConnection = url.openConnection();

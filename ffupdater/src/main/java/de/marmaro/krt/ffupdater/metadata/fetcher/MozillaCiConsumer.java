@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.metadata.fetcher;
 
 import androidx.annotation.Nullable;
 
+import com.google.common.base.Preconditions;
 import com.google.gson.annotations.SerializedName;
 
 import java.net.URL;
@@ -15,6 +16,7 @@ public class MozillaCiConsumer {
     private final ApiConsumer apiConsumer;
 
     public MozillaCiConsumer(ApiConsumer apiConsumer) {
+        Preconditions.checkNotNull(apiConsumer);
         this.apiConsumer = apiConsumer;
     }
 
@@ -22,20 +24,21 @@ public class MozillaCiConsumer {
     MozillaCiResult consume(final URL urlToChainOfTrustDocument, final String artifactNameForHash) {
         final Response response = apiConsumer.consume(urlToChainOfTrustDocument, Response.class);
         final ReleaseTimestamp timestamp = new ReleaseTimestamp(ZonedDateTime.parse(response.getTask().getCreated()));
-        final Hash hash = new Hash(Hash.Type.SHA256, response.getArtifacts().get(artifactNameForHash).toString());
-        return new MozillaCiResult(timestamp, hash);
+
+        final Sha256Hash sha256Hash = Preconditions.checkNotNull(response.getArtifacts().get(artifactNameForHash));
+        return new MozillaCiResult(timestamp, sha256Hash.toHash());
     }
 
     static class MozillaCiResult {
         private final ReleaseTimestamp timestamp;
         private final Hash hash;
 
-        public MozillaCiResult(ReleaseTimestamp timestamp, Hash hash) {
+        MozillaCiResult(ReleaseTimestamp timestamp, Hash hash) {
             this.timestamp = timestamp;
             this.hash = hash;
         }
 
-        public ReleaseTimestamp getTimestamp() {
+        ReleaseTimestamp getTimestamp() {
             return timestamp;
         }
 
@@ -44,29 +47,29 @@ public class MozillaCiConsumer {
         }
     }
 
-    private static class Response {
+    static class Response {
         private Map<String, Sha256Hash> artifacts;
         private Task task;
 
-        public Map<String, Sha256Hash> getArtifacts() {
+        Map<String, Sha256Hash> getArtifacts() {
             return artifacts;
         }
 
-        public Task getTask() {
+        Task getTask() {
             return task;
         }
     }
 
-    private static class Sha256Hash {
+    static class Sha256Hash {
         @SerializedName("sha256")
         private String hash;
 
-        public String getHashAsHexString() {
-            return hash;
+        Hash toHash() {
+            return new Hash(Hash.Type.SHA256, hash);
         }
     }
 
-    private static class Task {
+    static class Task {
         private String created;
 
         String getCreated() {
