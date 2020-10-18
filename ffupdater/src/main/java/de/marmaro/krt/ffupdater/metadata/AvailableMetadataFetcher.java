@@ -42,7 +42,7 @@ public class AvailableMetadataFetcher {
     public Map<App, Future<AvailableMetadata>> fetchMetadata(Set<App> apps) {
         return apps.stream().collect(Collectors.toMap(app -> app, app -> {
             Future<AvailableMetadata> cachedFuture = futureCache.get(app);
-            if (cachedFuture != null && (cachedFuture.isCancelled() || cachedFuture.isDone())) {
+            if (cachedFuture != null && (!cachedFuture.isCancelled() && !cachedFuture.isDone())) {
                 return cachedFuture;
             }
 
