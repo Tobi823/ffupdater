@@ -20,22 +20,22 @@ class Focus implements Callable<AvailableMetadata> {
     public static final String CHAIN_OF_TRUST_ARTIFACT = "public/chain-of-trust.json";
     public static final String APK_ARTIFACT = "public/app-%s-%s-release-unsigned.apk";
 
-    private final App app;
-    private final DeviceEnvironment deviceEnvironment;
     private final MozillaCiConsumer mozillaCiConsumer;
+    private final String abiAbbreviation;
+    private final String appName;
 
     Focus(MozillaCiConsumer mozillaCiConsumer, App app, DeviceEnvironment deviceEnvironment) {
         Preconditions.checkNotNull(mozillaCiConsumer);
         Preconditions.checkNotNull(app);
         Preconditions.checkNotNull(deviceEnvironment);
         this.mozillaCiConsumer = mozillaCiConsumer;
-        this.app = app;
-        this.deviceEnvironment = deviceEnvironment;
+        abiAbbreviation = getAbiAbbreviation(deviceEnvironment.getBestSuitedAbi());
+        appName = getAppName(app);
     }
 
     @Override
     public AvailableMetadataExtended call() throws Exception {
-        final String apkArtifactName = String.format(APK_ARTIFACT, getAppName(), getAbiAbbreviation());
+        final String apkArtifactName = String.format(APK_ARTIFACT, appName, abiAbbreviation);
         final URL chainOfTrustArtifact = new URL(String.format(BASE_URL, CHAIN_OF_TRUST_ARTIFACT));
 
         final MozillaCiConsumer.MozillaCiResult result = mozillaCiConsumer.consume(chainOfTrustArtifact, apkArtifactName);
@@ -46,18 +46,18 @@ class Focus implements Callable<AvailableMetadata> {
         );
     }
 
-    private String getAbiAbbreviation() {
-        switch (deviceEnvironment.getBestSuitedAbi()) {
+    private String getAbiAbbreviation(DeviceEnvironment.ABI abi) {
+        switch (abi) {
             case AARCH64:
                 return "aarch64";
             case ARM:
                 return "arm";
             default:
-                throw new ParamRuntimeException("unsupported abi %s", deviceEnvironment.getBestSuitedAbi());
+                throw new ParamRuntimeException("unsupported abi %s", abi);
         }
     }
 
-    private String getAppName() {
+    private String getAppName(App app) {
         switch (app) {
             case FIREFOX_FOCUS:
                 return "focus";

@@ -31,7 +31,7 @@ public class FirefoxTest {
     private DeviceEnvironment x86;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         mozillaCiConsumer = mock(MozillaCiConsumer.class);
         releaseTimestamp = new ReleaseTimestamp(ZonedDateTime.now());
         hash = new Hash(Hash.Type.SHA256, "f56063913211d44de579b8335fe1146bd65aa0a35628d48852cb50171e9fa8fc");

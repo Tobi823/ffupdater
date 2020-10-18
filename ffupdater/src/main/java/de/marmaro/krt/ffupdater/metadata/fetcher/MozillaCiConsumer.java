@@ -20,7 +20,6 @@ public class MozillaCiConsumer {
         this.apiConsumer = apiConsumer;
     }
 
-    @Nullable
     MozillaCiResult consume(final URL urlToChainOfTrustDocument, final String artifactNameForHash) {
         final Response response = apiConsumer.consume(urlToChainOfTrustDocument, Response.class);
         final ReleaseTimestamp timestamp = new ReleaseTimestamp(ZonedDateTime.parse(response.getTask().getCreated()));
