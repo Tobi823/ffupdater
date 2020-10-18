@@ -12,7 +12,7 @@ import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 /**
  * https://github.com/mozilla-tw/FirefoxLite/releases
- * https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest
+ * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest
  */
 class Lockwise implements Callable<AvailableMetadata> {
     public static final String OWNER = "mozilla-lockwise";
