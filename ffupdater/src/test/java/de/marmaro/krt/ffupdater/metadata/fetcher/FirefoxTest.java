@@ -25,7 +25,6 @@ public class FirefoxTest {
     private ReleaseTimestamp releaseTimestamp;
     private Hash hash;
 
-
     private DeviceEnvironment arm64;
     private DeviceEnvironment arm32;
     private DeviceEnvironment x64;
