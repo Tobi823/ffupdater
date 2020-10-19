@@ -2,9 +2,15 @@ package de.marmaro.krt.ffupdater.utils;
 
 import org.junit.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -106,5 +112,27 @@ public class UtilsTest {
     @Test
     public void integersToCharSequenceArray_withCollection_returnArray() {
         assertArrayEquals(new CharSequence[]{"42"}, Utils.integersToCharSequenceArray(Arrays.asList(42)));
+    }
+
+    @Test
+    public void createSet() {
+        final String element = "TEST";
+        final Set<String> actual = Utils.createSet(element);
+        assertThat(actual, containsInAnyOrder(element));
+    }
+
+    @Test
+    public void createMap() {
+        final String key = "KEY";
+        final String value = "VALUE";
+        final Map<String, String> actual = Utils.createMap(key, value);
+        assertEquals(value, actual.get(key));
+    }
+
+    @Test
+    public void createUrl() throws MalformedURLException {
+        final String urlString = "https://www.mozilla.org/de/firefox/new/";
+        final URL url = Utils.createURL(urlString);
+        assertEquals(new URL(urlString), url);
     }
 }
