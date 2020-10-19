@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater.metadata.fetcher;
 
 import com.google.common.base.Preconditions;
 
