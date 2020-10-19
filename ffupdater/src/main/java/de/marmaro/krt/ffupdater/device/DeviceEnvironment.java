@@ -1,87 +1,59 @@
 package de.marmaro.krt.ffupdater.device;
 
-import static android.os.Build.CPU_ABI;
-import static android.os.Build.CPU_ABI2;
+import com.google.common.base.Preconditions;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
+
 import static android.os.Build.SUPPORTED_ABIS;
 import static android.os.Build.VERSION.SDK_INT;
-import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
 /**
- * This class returns the best suited ABI and API level.
- *
- * Apps may support all, some or only one specific ABI (application binary interfaces).
- * But most smartphones only supports some ABIs like x86, x64_64 + x86, ...
- * This class determines the best suited ABI for the smartphone and is necessary for downloading the correct APK file.
- * <p>
- * The best suited ABI is selected with this priority:
- * 1. arm64-v8a
- * 2. armeabi-v7a
- * 3. x86_64
- * 4. x86
- * Reason:
- * - the majority of devices supporting x86_64/arm64-v8a also support X86/armeabi-v7a
- * - arm64-v8a/x86_64 apps are running better on arm64-v8a/x86_64 devices
+ * This class returns all supported ABIs and the API level.
  */
 public class DeviceEnvironment {
-    private static final String ARM64_V8A = "arm64-v8a";
-    private static final String ARMEABI_V7A = "armeabi-v7a";
-    private static final String X86_64 = "x86_64";
-    private static final String X86 = "x86";
-    private final ABI bestSuitedAbi = findBestSuitedAbi();
+    private final List<ABI> abiList;
+    private final int sdkInt;
 
-    /**
-     * @return the best suited ABI for the current device
-     */
-    public ABI getBestSuitedAbi() {
-        return bestSuitedAbi;
+    public DeviceEnvironment() {
+        this(findSupportedAbis(), SDK_INT);
     }
 
-    /**
-     * @param minimumRequiredSdkInt minimum required SDK
-     * @return is Build.VERSION.SDK_INT equal or higher than the minimum required SKD
-     */
-    public boolean isSdkIntEqualOrHigher(int minimumRequiredSdkInt) {
-        return SDK_INT >= minimumRequiredSdkInt;
+    public DeviceEnvironment(List<ABI> abiList, int sdkInt) {
+        Preconditions.checkArgument(!abiList.isEmpty());
+        this.abiList = abiList;
+        this.sdkInt = sdkInt;
     }
 
     public int getApiLevel() {
-        return SDK_INT;
+        return sdkInt;
     }
 
     /**
-     * All supported ABIs
-     * "Note: Historically the NDK supported ARMv5 (armeabi), and 32-bit and 64-bit MIPS, but
-     * support for these ABIs was removed in NDK r17." (r17c release in June 2018)
-     *
-     * @see <a href="https://developer.android.com/ndk/guides/abis">List of offical supported ABIS</a>
+     * An ordered list of ABIs supported by this device. The most preferred ABI is the first element in the list.
+     * @return a list of at least one element
      */
-    public enum ABI {
-        AARCH64,
-        ARM,
-        X86,
-        X86_64
+    public List<ABI> getSupportedAbis() {
+        return abiList;
     }
 
-    private ABI findBestSuitedAbi() {
-        String[] abis = SDK_INT < LOLLIPOP ? new String[]{CPU_ABI, CPU_ABI2} : SUPPORTED_ABIS;
-        if (abis == null) {
-            return ABI.ARM;
-        }
-        for (String abi : abis) {
-            if (abi == null) {
-                continue;
-            }
+    private static List<ABI> findSupportedAbis() {
+        return Arrays.stream(SUPPORTED_ABIS).map(abi -> {
             switch (abi) {
-                case ARM64_V8A:
+                case "arm64-v8a":
                     return ABI.AARCH64;
-                case ARMEABI_V7A:
+                case "armeabi-v7a":
                     return ABI.ARM;
-                case X86_64:
+                case "x86_64":
                     return ABI.X86_64;
-                case X86:
+                case "x86":
                     return ABI.X86;
+                default:
+                    throw new ParamRuntimeException("unknown ABI %s", abi);
             }
-        }
-        return ABI.ARM;
+        }).collect(Collectors.toList());
     }
 }

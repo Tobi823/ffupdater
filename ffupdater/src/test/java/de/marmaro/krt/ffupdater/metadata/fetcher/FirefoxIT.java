@@ -7,12 +7,14 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.ParserConfigurationException;
 
+import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
@@ -30,8 +32,6 @@ import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by Tobiwan on 13.05.2020.
@@ -41,10 +41,10 @@ public class FirefoxIT {
     private final static Duration MAX_AGE_BETA = Duration.ofDays(21);
     private final static Duration MAX_AGE_NIGHTLY = Duration.ofDays(7);
 
-    private static DeviceEnvironment arm64;
-    private static DeviceEnvironment arm32;
-    private static DeviceEnvironment x64;
-    private static DeviceEnvironment x86;
+    private static final DeviceEnvironment arm64 = new DeviceEnvironment(Collections.singletonList(ABI.AARCH64), 30);
+    private static final DeviceEnvironment arm32 = new DeviceEnvironment(Collections.singletonList(ABI.ARM), 30);
+    private static final DeviceEnvironment x64 = new DeviceEnvironment(Collections.singletonList(ABI.X86_64), 30);
+    private static final DeviceEnvironment x86 = new DeviceEnvironment(Collections.singletonList(ABI.X86), 30);
     private static MozillaCiConsumer mozillaCiConsumer;
 
     private static RssFeedResponse firefoxBetaRss;
@@ -54,18 +54,6 @@ public class FirefoxIT {
     public static void staticSetUp() throws ParserConfigurationException, SAXException, IOException {
         firefoxBetaRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
         firefoxNightlyRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
-
-        arm64 = mock(DeviceEnvironment.class);
-        when(arm64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.AARCH64);
-
-        arm32 = mock(DeviceEnvironment.class);
-        when(arm32.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.ARM);
-
-        x64 = mock(DeviceEnvironment.class);
-        when(x64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.X86_64);
-
-        x86 = mock(DeviceEnvironment.class);
-        when(x86.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.X86);
 
         mozillaCiConsumer = new MozillaCiConsumer(new ApiConsumer());
     }

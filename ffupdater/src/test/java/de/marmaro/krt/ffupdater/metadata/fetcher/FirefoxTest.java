@@ -5,8 +5,10 @@ import org.junit.Test;
 
 import java.net.URL;
 import java.time.ZonedDateTime;
+import java.util.Collections;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.Hash;
 import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
@@ -25,10 +27,10 @@ public class FirefoxTest {
     private ReleaseTimestamp releaseTimestamp;
     private Hash hash;
 
-    private DeviceEnvironment arm64;
-    private DeviceEnvironment arm32;
-    private DeviceEnvironment x64;
-    private DeviceEnvironment x86;
+    private static final DeviceEnvironment arm64 = new DeviceEnvironment(Collections.singletonList(ABI.AARCH64), 30);
+    private static final DeviceEnvironment arm32 = new DeviceEnvironment(Collections.singletonList(ABI.ARM), 30);
+    private static final DeviceEnvironment x64 = new DeviceEnvironment(Collections.singletonList(ABI.X86_64), 30);
+    private static final DeviceEnvironment x86 = new DeviceEnvironment(Collections.singletonList(ABI.X86), 30);
 
     @Before
     public void setUp() {
@@ -37,18 +39,6 @@ public class FirefoxTest {
         hash = new Hash(Hash.Type.SHA256, "f56063913211d44de579b8335fe1146bd65aa0a35628d48852cb50171e9fa8fc");
         when(mozillaCiConsumer.consume(any(), any())).thenReturn(
                 new MozillaCiConsumer.MozillaCiResult(releaseTimestamp, hash));
-
-        arm64 = mock(DeviceEnvironment.class);
-        when(arm64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.AARCH64);
-
-        arm32 = mock(DeviceEnvironment.class);
-        when(arm32.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.ARM);
-
-        x64 = mock(DeviceEnvironment.class);
-        when(x64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.X86_64);
-
-        x86 = mock(DeviceEnvironment.class);
-        when(x86.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.X86);
     }
 
     private void testUrl(App app, DeviceEnvironment deviceEnvironment, URL expectedUrl) throws Exception {

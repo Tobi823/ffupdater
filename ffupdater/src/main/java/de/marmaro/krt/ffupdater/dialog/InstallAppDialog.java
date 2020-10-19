@@ -48,20 +48,19 @@ public class InstallAppDialog extends DialogFragment {
                 .setTitle(R.string.install_application)
                 .setItems(appNames, (dialog, which) -> {
                     App app = apps.get(which);
-                    if (app.isIncompatibleWithDeviceAbi(deviceEnvironment)) {
+                    if (!app.isCompatibleWithDeviceAbi(deviceEnvironment)) {
                         new UnsupportedAbiDialog().show(getParentFragmentManager(), UnsupportedAbiDialog.TAG);
+                        return;
                     }
-                    if (app.isIncompatibleWithDeviceApiLevel(deviceEnvironment)) {
+                    if (!app.isCompatibleWithDeviceApiLevel(deviceEnvironment)) {
                         new DeviceTooOldDialog(app, deviceEnvironment).show(getParentFragmentManager(), DeviceTooOldDialog.TAG);
+                        return;
                     }
-
-                    if (app.isCompatibleWithDevice(deviceEnvironment)) {
-                        if (!app.getWarning(requireContext()).isEmpty()) {
-                            new InstallationWarningAppDialog(downloadCallback, app).show(getParentFragmentManager(), InstallationWarningAppDialog.TAG);
-                            return;
-                        }
-                        downloadCallback.accept(app);
+                    if (!app.getWarning(requireContext()).isEmpty()) {
+                        new InstallationWarningAppDialog(downloadCallback, app).show(getParentFragmentManager(), InstallationWarningAppDialog.TAG);
+                        return;
                     }
+                    downloadCallback.accept(app);
                 })
                 .create();
     }

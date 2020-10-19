@@ -54,7 +54,7 @@ class Firefox implements Callable<AvailableMetadata> {
     }
 
     private String getAbiAbbreviation() {
-        switch (deviceEnvironment.getBestSuitedAbi()) {
+        switch (deviceEnvironment.getSupportedAbis().get(0)) {
             case AARCH64:
                 return "arm64-v8a";
             case ARM:

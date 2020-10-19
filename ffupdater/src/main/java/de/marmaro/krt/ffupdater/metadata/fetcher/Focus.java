@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.concurrent.Callable;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
@@ -30,7 +31,7 @@ class Focus implements Callable<AvailableMetadata> {
         Preconditions.checkNotNull(app);
         Preconditions.checkNotNull(deviceEnvironment);
         this.mozillaCiConsumer = mozillaCiConsumer;
-        abiAbbreviation = getAbiAbbreviation(deviceEnvironment.getBestSuitedAbi());
+        abiAbbreviation = getAbiAbbreviation(deviceEnvironment);
         appName = getAppName(app);
     }
 
@@ -47,15 +48,16 @@ class Focus implements Callable<AvailableMetadata> {
         );
     }
 
-    private String getAbiAbbreviation(DeviceEnvironment.ABI abi) {
-        switch (abi) {
-            case AARCH64:
-                return "aarch64";
-            case ARM:
-                return "arm";
-            default:
-                throw new ParamRuntimeException("unsupported abi %s", abi);
+    private String getAbiAbbreviation(DeviceEnvironment deviceEnvironment) {
+        for (ABI abi : deviceEnvironment.getSupportedAbis()) {
+            switch (abi) {
+                case AARCH64:
+                    return "aarch64";
+                case ARM:
+                    return "arm";
+            }
         }
+        throw new ParamRuntimeException("unsupported abi %s", deviceEnvironment.getSupportedAbis());
     }
 
     private String getAppName(App app) {

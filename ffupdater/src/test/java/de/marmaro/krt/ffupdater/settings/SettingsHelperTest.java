@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
 
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder;
 
@@ -10,16 +9,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+import static android.os.Build.VERSION_CODES.LOLLIPOP;
+import static android.os.Build.VERSION_CODES.P;
+import static android.os.Build.VERSION_CODES.Q;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
+import static de.marmaro.krt.ffupdater.device.ABI.ARM;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
@@ -143,8 +149,7 @@ public class SettingsHelperTest {
 
     @Test
     public void getThemePreference_withNoValue_JellyBean_returnDefaultValue() {
-        final DeviceEnvironment environment = mock(DeviceEnvironment.class);
-        when(environment.isSdkIntEqualOrHigher(Build.VERSION_CODES.JELLY_BEAN)).thenReturn(true);
+        final DeviceEnvironment environment = new DeviceEnvironment(Collections.singletonList(ARM), JELLY_BEAN);
 
         sharedPreferences.edit().putString("themePreference", null).commit();
         assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context, environment));
@@ -155,8 +160,7 @@ public class SettingsHelperTest {
 
     @Test
     public void getThemePreference_withNoValue_Lollipop_returnDefaultValue() {
-        DeviceEnvironment environment = mock(DeviceEnvironment.class);
-        when(environment.isSdkIntEqualOrHigher(Build.VERSION_CODES.LOLLIPOP)).thenReturn(true);
+        final DeviceEnvironment environment = new DeviceEnvironment(Collections.singletonList(ARM), LOLLIPOP);
 
         sharedPreferences.edit().putString("themePreference", null).commit();
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context, environment));
@@ -167,8 +171,7 @@ public class SettingsHelperTest {
 
     @Test
     public void getThemePreference_withNoValue_AndroidP_returnDefaultValue() {
-        DeviceEnvironment environment = mock(DeviceEnvironment.class);
-        when(environment.isSdkIntEqualOrHigher(Build.VERSION_CODES.P)).thenReturn(true);
+        final DeviceEnvironment environment = new DeviceEnvironment(Collections.singletonList(ARM), P);
 
         sharedPreferences.edit().putString("themePreference", null).commit();
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context, environment));
@@ -179,8 +182,7 @@ public class SettingsHelperTest {
 
     @Test
     public void getThemePreference_withNoValue_AndroidQ_returnDefaultValue() {
-        DeviceEnvironment environment = mock(DeviceEnvironment.class);
-        when(environment.isSdkIntEqualOrHigher(Build.VERSION_CODES.Q)).thenReturn(true);
+        final DeviceEnvironment environment = new DeviceEnvironment(Collections.singletonList(ARM), Q);
 
         sharedPreferences.edit().putString("themePreference", null).commit();
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper.getThemePreference(context, environment));
@@ -191,13 +193,15 @@ public class SettingsHelperTest {
 
     @Test
     public void getThemePreference_withValue_returnValue() {
+        final DeviceEnvironment deviceEnvironment = new DeviceEnvironment(Collections.singletonList(ARM), 30);
         sharedPreferences.edit().putString("themePreference", String.valueOf(MODE_NIGHT_YES)).commit();
-        assertEquals(MODE_NIGHT_YES, SettingsHelper.getThemePreference(context, new DeviceEnvironment()));
+        assertEquals(MODE_NIGHT_YES, SettingsHelper.getThemePreference(context, deviceEnvironment));
     }
 
     @Test
-    public void getThemePreference_withIncorrectValue_returnDefaultValue() {
+    public void getThemePreference_withIncorrectValue_returnDefaultValueForApi30() {
+        final DeviceEnvironment deviceEnvironment = new DeviceEnvironment(Collections.singletonList(ARM), 30);
         sharedPreferences.edit().putString("themePreference", "exception").commit();
-        assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context, new DeviceEnvironment()));
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper.getThemePreference(context, deviceEnvironment));
     }
 }

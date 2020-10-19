@@ -7,12 +7,14 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.ParserConfigurationException;
 
+import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
@@ -22,50 +24,32 @@ import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static de.marmaro.krt.ffupdater.App.FIREFOX_FOCUS;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_KLAR;
-import static org.exparity.hamcrest.date.LocalDateTimeMatchers.within;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by Tobiwan on 13.05.2020.
  */
 public class FocusIT {
     private final static Duration MAX_AGE = Duration.ofDays(28);
-    private static DeviceEnvironment arm64;
-    private static DeviceEnvironment arm32;
-    private static DeviceEnvironment x64;
-    private static DeviceEnvironment x86;
+    private static final DeviceEnvironment arm64 = new DeviceEnvironment(Collections.singletonList(ABI.AARCH64), 30);
+    private static final DeviceEnvironment arm32 = new DeviceEnvironment(Collections.singletonList(ABI.ARM), 30);
+    private static final DeviceEnvironment x64 = new DeviceEnvironment(Collections.singletonList(ABI.X86_64), 30);
+    private static final DeviceEnvironment x86 = new DeviceEnvironment(Collections.singletonList(ABI.X86), 30);
     private static MozillaCiConsumer mozillaCiConsumer;
 
     private static ApkMirrorHelper.RssFeedResponse focusRss;
-    private static ApkMirrorHelper.RssFeedResponse klarRss;
+//    private static ApkMirrorHelper.RssFeedResponse klarRss;
 
     @BeforeClass
     public static void setUp() throws ParserConfigurationException, SAXException, IOException {
         focusRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
-        klarRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/feed/");
-
-        arm64 = mock(DeviceEnvironment.class);
-        when(arm64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.AARCH64);
-
-        arm32 = mock(DeviceEnvironment.class);
-        when(arm32.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.ARM);
-
-        x64 = mock(DeviceEnvironment.class);
-        when(x64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.X86_64);
-
-        x86 = mock(DeviceEnvironment.class);
-        when(x86.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.X86);
+//        klarRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/feed/");
 
         mozillaCiConsumer = new MozillaCiConsumer(new ApiConsumer());
     }
@@ -113,7 +97,7 @@ public class FocusIT {
     private static void isFocusAvailableAndUpToDate(DeviceEnvironment deviceEnvironment, String internalNameApkMirror) throws Exception {
         final AvailableMetadataExtended metadata = new Focus(mozillaCiConsumer, FIREFOX_FOCUS, deviceEnvironment).call();
         verifyDownloadLinkAvailable(metadata);
-        verifyReleaseAgeIsNotTooOld(metadata, MAX_AGE);
+        verifyReleaseAgeIsNotTooOld(metadata);
         verifyHash(metadata, focusRss, Utils.createMap(
                 "firefox-focus-private-browser", "firefox-focus-the-privacy-browser",
                 "release", internalNameApkMirror));
@@ -122,7 +106,7 @@ public class FocusIT {
     private static void isKlarAvailableAndUpToDate(DeviceEnvironment deviceEnvironment, String internalNameApkMirror) throws Exception {
         final AvailableMetadataExtended metadata = new Focus(mozillaCiConsumer, FIREFOX_KLAR, deviceEnvironment).call();
         verifyDownloadLinkAvailable(metadata);
-        verifyReleaseAgeIsNotTooOld(metadata, MAX_AGE);
+        verifyReleaseAgeIsNotTooOld(metadata);
         //TODO
 //        verifyHash(metadata, klarRss, Utils.createMap(
 //                "firefox-klar-the-privacy-browser-2", "firefox-klar-the-privacy-browser",
@@ -135,13 +119,13 @@ public class FocusIT {
         connection.disconnect();
     }
 
-    private static void verifyReleaseAgeIsNotTooOld(AvailableMetadata metadata, Duration maxAge) {
+    private static void verifyReleaseAgeIsNotTooOld(AvailableMetadata metadata) {
         final ReleaseTimestamp timestamp = (ReleaseTimestamp) metadata.getReleaseId();
         final Duration age = Duration.between(timestamp.getCreated(), ZonedDateTime.now());
 
         assertFalse("age must never be zero", age.isNegative());
         assertFalse("due to network lag its impossible that the app was released in the current instant", age.isZero());
-        assertTrue("release must not be older than 31 days", new CompareHelper<>(age).isLessThan(maxAge));
+        assertTrue("release must not be older than 31 days", new CompareHelper<>(age).isLessThan(FocusIT.MAX_AGE));
     }
 
     private static void verifyHash(AvailableMetadataExtended metadata,

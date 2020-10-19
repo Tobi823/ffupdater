@@ -9,8 +9,10 @@ import org.junit.Test;
 
 import java.net.URL;
 import java.time.ZonedDateTime;
+import java.util.Collections;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.Hash;
@@ -29,7 +31,7 @@ public class FetcherTest {
     public static final String ARTIFACT_NAME = "public/build/arm64-v8a/target.apk";
     public static final String HASH = "c0f213ebce8e6e5a383a4538b4e1cea2ffa1240f550cfdfda82218fb061f23e0";
 
-    private DeviceEnvironment arm64;
+    private final DeviceEnvironment arm64 = new DeviceEnvironment(Collections.singletonList(ABI.AARCH64), 30);
     private MozillaCiConsumer mozillaCiConsumer;
     private Fetcher fetcher;
     private ZonedDateTime now;
@@ -37,9 +39,6 @@ public class FetcherTest {
     @Before
     public void setUp() throws Exception {
         SharedPreferences sharedPreferences = new SPMockBuilder().createSharedPreferences();
-
-        arm64 = mock(DeviceEnvironment.class);
-        when(arm64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.AARCH64);
 
         mozillaCiConsumer = mock(MozillaCiConsumer.class);
         now = ZonedDateTime.now();

@@ -7,6 +7,7 @@ import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
@@ -30,8 +32,7 @@ public class AvailableMetadataFetcherTest {
 
     @Before
     public void setUp() {
-        final DeviceEnvironment arm64 = mock(DeviceEnvironment.class);
-        when(arm64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.AARCH64);
+        final DeviceEnvironment arm64 = new DeviceEnvironment(Collections.singletonList(ABI.AARCH64), 30);
         final SharedPreferences sharedPreferences = new SPMockBuilder().createSharedPreferences();
         fetcher = new AvailableMetadataFetcher(sharedPreferences, arm64);
     }
