@@ -46,9 +46,16 @@ import de.marmaro.krt.ffupdater.metadata.UpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
+import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.content.Context.NOTIFICATION_SERVICE;
 import static androidx.work.ExistingPeriodicWorkPolicy.REPLACE;
+import static de.marmaro.krt.ffupdater.R.mipmap.ic_launcher;
+import static de.marmaro.krt.ffupdater.R.mipmap.transparent;
+import static de.marmaro.krt.ffupdater.R.string.notification_text;
 import static de.marmaro.krt.ffupdater.R.string.notification_title;
+import static de.marmaro.krt.ffupdater.R.string.update_notification_channel_description;
+import static de.marmaro.krt.ffupdater.R.string.update_notification_channel_name;
 
 /**
  * This class will call the {@link WorkManager} to check regularly for app updates in the background.
@@ -142,9 +149,11 @@ public class Notificator extends Worker {
 
     private void createNotification(List<App> apps) {
         final Context context = getApplicationContext();
+        final NotificationManager notificationManager = getNotificationManager();
+
         final NotificationCompat.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            createNotificationChannel();
+            createNotificationChannel(context, notificationManager);
             builder = new NotificationCompat.Builder(context, CHANNEL_ID);
         } else {
             //noinspection deprecation
@@ -152,18 +161,18 @@ public class Notificator extends Worker {
         }
 
         Intent intent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, REQUEST_CODE_START_MAIN_ACTIVITY, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, REQUEST_CODE_START_MAIN_ACTIVITY, intent, FLAG_UPDATE_CURRENT);
         String appsToUpdate = apps.stream().map(app -> app.getTitle(context)).collect(Collectors.joining(", "));
 
-        Notification notification = builder.setSmallIcon(R.mipmap.transparent, 0)
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
+        Notification notification = builder.setSmallIcon(transparent, 0)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), ic_launcher))
                 .setContentTitle(context.getString(notification_title, appsToUpdate))
-                .setContentText(context.getString(R.string.notification_text))
+                .setContentText(context.getString(notification_text))
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .build();
 
-        getNotificationManager().notify(NOTIFICATION_ID, notification);
+        notificationManager.notify(NOTIFICATION_ID, notification);
     }
 
     /**
@@ -171,13 +180,13 @@ public class Notificator extends Worker {
      * Reason: Since API Level 28/Oreo notification can only be created with an existing notification channel.
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void createNotificationChannel() {
-        NotificationChannel channel = new NotificationChannel(
+    private void createNotificationChannel(Context context, NotificationManager notificationManager) {
+        final NotificationChannel channel = new NotificationChannel(
                 CHANNEL_ID,
-                getApplicationContext().getString(R.string.update_notification_channel_name),
-                NotificationManager.IMPORTANCE_DEFAULT);
-        channel.setDescription(getApplicationContext().getString(R.string.update_notification_channel_description));
-        getNotificationManager().createNotificationChannel(channel);
+                context.getString(update_notification_channel_name),
+                IMPORTANCE_DEFAULT);
+        channel.setDescription(context.getString(update_notification_channel_description));
+        notificationManager.createNotificationChannel(channel);
     }
 
     @NonNull
