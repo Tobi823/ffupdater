@@ -27,13 +27,17 @@ import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 public class SettingsHelper {
     public static final boolean DEFAULT_AUTOMATIC_CHECK = true;
     public static final int DEFAULT_CHECK_INTERVAL = 360;
+    public static final String AUTOMATIC_CHECK = "automaticCheck";
+    public static final String CHECK_INTERVAL = "checkInterval";
+    public static final String DISABLE_APPS = "disableApps";
+    public static final String THEME_PREFERENCE = "themePreference";
 
     /**
      * @param context context
      * @return should the regular background update check be enabled?
      */
     public static boolean isAutomaticCheck(Context context) {
-        return getSharedPreferences(context).getBoolean("automaticCheck", DEFAULT_AUTOMATIC_CHECK);
+        return getSharedPreferences(context).getBoolean(AUTOMATIC_CHECK, DEFAULT_AUTOMATIC_CHECK);
     }
 
     /**
@@ -41,7 +45,7 @@ public class SettingsHelper {
      * @return how long should be the time span between check background update check?
      */
     public static int getCheckInterval(Context context) {
-        return Utils.stringToInt(getSharedPreferences(context).getString("checkInterval", null), DEFAULT_CHECK_INTERVAL);
+        return Utils.stringToInt(getSharedPreferences(context).getString(CHECK_INTERVAL, null), DEFAULT_CHECK_INTERVAL);
     }
 
     /**
@@ -51,7 +55,7 @@ public class SettingsHelper {
      */
     public static Set<App> getDisableApps(Context context) {
         Set<App> result = new HashSet<>();
-        Set<String> disableApps = getSharedPreferences(context).getStringSet("disableApps", null);
+        Set<String> disableApps = getSharedPreferences(context).getStringSet(DISABLE_APPS, null);
         if (disableApps == null) {
             return result;
         }
@@ -86,7 +90,7 @@ public class SettingsHelper {
             defaultValue = MODE_NIGHT_NO;
         }
 
-        String themePreference = getSharedPreferences(context).getString("themePreference", null);
+        String themePreference = getSharedPreferences(context).getString(THEME_PREFERENCE, null);
         if (themePreference == null) {
             return defaultValue;
         }

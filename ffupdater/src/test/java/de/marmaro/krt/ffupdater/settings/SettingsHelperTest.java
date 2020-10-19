@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Set;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
@@ -20,13 +20,13 @@ import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -43,7 +43,7 @@ public class SettingsHelperTest {
     @Before
     public void setUp() {
         context = mock(Context.class);
-        sharedPreferences = mock(SharedPreferences.class);
+        sharedPreferences = new SPMockBuilder().createSharedPreferences();
         when(context.getSharedPreferences(anyString(), anyInt())).thenReturn(sharedPreferences);
     }
 
@@ -69,122 +69,135 @@ public class SettingsHelperTest {
 
     @Test
     public void isAutomaticCheck_withValueFalse_returnFalse() {
-        when(sharedPreferences.getBoolean("automaticCheck", true)).thenReturn(false);
+        sharedPreferences.edit().putBoolean("automaticCheck", false).commit();
         assertFalse(SettingsHelper.isAutomaticCheck(context));
     }
 
     @Test
     public void isAutomaticCheck_withValueTrue_returnTrue() {
-        when(sharedPreferences.getBoolean("automaticCheck", true)).thenReturn(true);
+        sharedPreferences.edit().putBoolean("automaticCheck", true).commit();
         assertTrue(SettingsHelper.isAutomaticCheck(context));
     }
 
     @Test
     public void getCheckInterval_withNoValue_returnDefaultValue() {
-        when(sharedPreferences.getString("checkInterval", null)).thenReturn(null);
+        sharedPreferences.edit().putString("checkInterval", null).commit();
+        assertEquals(SettingsHelper.DEFAULT_CHECK_INTERVAL, SettingsHelper.getCheckInterval(context));
+
+        sharedPreferences.edit().putString("checkInterval", "").commit();
         assertEquals(SettingsHelper.DEFAULT_CHECK_INTERVAL, SettingsHelper.getCheckInterval(context));
     }
 
     @Test
     public void getCheckInterval_withInvalidValue_returnDefaultValue() {
-        when(sharedPreferences.getString("checkInterval", null)).thenReturn("exception");
+        sharedPreferences.edit().putString("checkInterval", "invalid-value").commit();
         assertEquals(SettingsHelper.DEFAULT_CHECK_INTERVAL, SettingsHelper.getCheckInterval(context));
     }
 
     @Test
     public void getCheckInterval_withValue_returnDefaultValue() {
-        when(sharedPreferences.getString("checkInterval", null)).thenReturn("42");
+        sharedPreferences.edit().putString("checkInterval", "42").commit();
         assertEquals(42, SettingsHelper.getCheckInterval(context));
     }
 
     @Test
     public void getDisableApps_withNoApps_returnEmptySet() {
-        Set<String> strings = new HashSet<>(Collections.emptyList());
-        when(sharedPreferences.getStringSet("disabledApps", null)).thenReturn(strings);
+        sharedPreferences.edit().putStringSet("disabledApps", null).commit();
+        assertTrue(SettingsHelper.getDisableApps(context).isEmpty());
+
+        sharedPreferences.edit().putStringSet("disabledApps", new HashSet<>()).commit();
         assertTrue(SettingsHelper.getDisableApps(context).isEmpty());
     }
 
     @Test
     public void getDisableApps_withSomeApps_returnApps() {
-        Set<String> strings = new HashSet<>(Arrays.asList(
-                "FIREFOX_KLAR",
-                "FIREFOX_BETA",
-                "LOCKWISE"
-        ));
-        when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
+        sharedPreferences.edit().putStringSet("disableApps",
+                new HashSet<>(Arrays.asList("FIREFOX_KLAR", "FIREFOX_BETA", "LOCKWISE"))).commit();
         assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.FIREFOX_KLAR, App.FIREFOX_BETA, App.LOCKWISE));
     }
 
     @Test
     public void getDisableApps_withInvalidApps_ignoreThem() {
-        Set<String> strings = new HashSet<>(Collections.singletonList("FENIX"));
-        when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
+        sharedPreferences.edit().putStringSet("disableApps", Utils.createSet("UNKNOWN_APP")).commit();
         assertThat(SettingsHelper.getDisableApps(context), is(empty()));
     }
 
     @Test
     public void getDisableApps_withAllApps_returnApps() {
-        Set<String> strings = new HashSet<>(Arrays.asList(
-                "FIREFOX_KLAR",
-                "FIREFOX_FOCUS",
-                "FIREFOX_LITE",
-                "FIREFOX_RELEASE",
-                "FIREFOX_BETA",
-                "FIREFOX_NIGHTLY",
-                "LOCKWISE"
-        ));
-        when(sharedPreferences.getStringSet("disableApps", null)).thenReturn(strings);
+        sharedPreferences.edit().putStringSet("disableApps", new HashSet<>(Arrays.asList("FIREFOX_KLAR",
+                "FIREFOX_FOCUS", "FIREFOX_LITE", "FIREFOX_RELEASE", "FIREFOX_BETA", "FIREFOX_NIGHTLY", "LOCKWISE"
+        ))).commit();
         assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.values()));
     }
 
     @Test
-    public void getThemePreference_withNoValueAndBelowJellyBean_returnDefaultValue() {
-        when(sharedPreferences.getString("themePreference", null)).thenReturn(null);
-        DeviceEnvironment environment = mock(DeviceEnvironment.class);
+    public void getThemePreference_withNoValue_BelowJellyBean_returnDefaultValue() {
+        final DeviceEnvironment environment = mock(DeviceEnvironment.class);
+
+        sharedPreferences.edit().putString("themePreference", null).commit();
+        assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context, environment));
+
+        sharedPreferences.edit().putString("themePreference", "").commit();
         assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context, environment));
     }
 
     @Test
-    public void getThemePreference_withNoValueAndJellyBean_returnDefaultValue() {
-        when(sharedPreferences.getString("themePreference", null)).thenReturn(null);
-        DeviceEnvironment environment = mock(DeviceEnvironment.class);
+    public void getThemePreference_withNoValue_JellyBean_returnDefaultValue() {
+        final DeviceEnvironment environment = mock(DeviceEnvironment.class);
         when(environment.isSdkIntEqualOrHigher(Build.VERSION_CODES.JELLY_BEAN)).thenReturn(true);
+
+        sharedPreferences.edit().putString("themePreference", null).commit();
+        assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context, environment));
+
+        sharedPreferences.edit().putString("themePreference", "").commit();
         assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context, environment));
     }
 
     @Test
-    public void getThemePreference_withNoValueLollipop_returnDefaultValue() {
-        when(sharedPreferences.getString("themePreference", null)).thenReturn(null);
+    public void getThemePreference_withNoValue_Lollipop_returnDefaultValue() {
         DeviceEnvironment environment = mock(DeviceEnvironment.class);
         when(environment.isSdkIntEqualOrHigher(Build.VERSION_CODES.LOLLIPOP)).thenReturn(true);
+
+        sharedPreferences.edit().putString("themePreference", null).commit();
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context, environment));
+
+        sharedPreferences.edit().putString("themePreference", "").commit();
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context, environment));
     }
 
     @Test
-    public void getThemePreference_withNoValueAndP_returnDefaultValue() {
-        when(sharedPreferences.getString("themePreference", null)).thenReturn(null);
+    public void getThemePreference_withNoValue_AndroidP_returnDefaultValue() {
         DeviceEnvironment environment = mock(DeviceEnvironment.class);
         when(environment.isSdkIntEqualOrHigher(Build.VERSION_CODES.P)).thenReturn(true);
+
+        sharedPreferences.edit().putString("themePreference", null).commit();
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context, environment));
+
+        sharedPreferences.edit().putString("themePreference", "").commit();
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper.getThemePreference(context, environment));
     }
 
     @Test
-    public void getThemePreference_withNoValueAndQ_returnDefaultValue() {
-        when(sharedPreferences.getString("themePreference", null)).thenReturn(null);
+    public void getThemePreference_withNoValue_AndroidQ_returnDefaultValue() {
         DeviceEnvironment environment = mock(DeviceEnvironment.class);
         when(environment.isSdkIntEqualOrHigher(Build.VERSION_CODES.Q)).thenReturn(true);
+
+        sharedPreferences.edit().putString("themePreference", null).commit();
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper.getThemePreference(context, environment));
+
+        sharedPreferences.edit().putString("themePreference", "").commit();
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper.getThemePreference(context, environment));
     }
 
     @Test
     public void getThemePreference_withValue_returnValue() {
-        when(sharedPreferences.getString("themePreference", null)).thenReturn(String.valueOf(MODE_NIGHT_YES));
+        sharedPreferences.edit().putString("themePreference", String.valueOf(MODE_NIGHT_YES)).commit();
         assertEquals(MODE_NIGHT_YES, SettingsHelper.getThemePreference(context, new DeviceEnvironment()));
     }
 
     @Test
     public void getThemePreference_withIncorrectValue_returnDefaultValue() {
-        when(sharedPreferences.getString("themePreference", null)).thenReturn("exception");
+        sharedPreferences.edit().putString("themePreference", "exception").commit();
         assertEquals(MODE_NIGHT_NO, SettingsHelper.getThemePreference(context, new DeviceEnvironment()));
     }
 }

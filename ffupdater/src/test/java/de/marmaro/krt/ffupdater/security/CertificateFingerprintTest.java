@@ -29,7 +29,7 @@ public class CertificateFingerprintTest {
     private PackageInfo packageInfo;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         packageManager = mock(PackageManager.class);
 
         final Signature signature = mock(Signature.class);
