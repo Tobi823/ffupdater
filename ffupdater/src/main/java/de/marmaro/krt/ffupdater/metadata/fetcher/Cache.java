@@ -12,6 +12,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.utils.CompareHelper;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.ReleaseId;
@@ -73,9 +74,8 @@ class Cache {
 
     boolean isCacheUpToDate(App app) {
         final String key = String.format(CREATED_EPOCH_MS, app);
-        final long creationEpochTimestamp = preferences.getLong(key, 0);
-        final long ageInMillis = System.currentTimeMillis() - creationEpochTimestamp;
-        return ageInMillis <= CACHE_TTL.toMillis();
+        final Duration age = Duration.ofMillis(System.currentTimeMillis() - preferences.getLong(key, 0));
+        return new CompareHelper<>(age).isLessOrEqualTo(CACHE_TTL);
     }
 
     void updateCache(App app, AvailableMetadata metadata) {
