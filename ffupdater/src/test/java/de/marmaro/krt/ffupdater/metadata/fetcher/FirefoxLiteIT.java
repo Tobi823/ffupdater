@@ -15,18 +15,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.lessThan;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 
 /**
  * Created by Tobiwan on 13.05.2020.
  */
-public class LockwiseIT {
+public class FirefoxLiteIT {
     private AvailableMetadata metadata;
 
     @Before
     public void setUp() throws Exception {
         final GithubConsumer githubConsumer = new GithubConsumer(new ApiConsumer());
-        metadata = new Lockwise(githubConsumer).call();
+        metadata = new FirefoxLite(githubConsumer).call();
     }
 
     @Test
@@ -38,9 +38,9 @@ public class LockwiseIT {
 
     @Test
     public void isAppUpToDate() throws ParserConfigurationException, SAXException, IOException {
-        final String url = "https://www.apkmirror.com/apk/mozilla/firefox-lockwise/feed/";
+        final String url = "https://www.apkmirror.com/apk/mozilla/firefox-rocket-fast-and-lightweight-web-browser/feed/";
         final String expectedTitle = ApkMirrorHelper.getRssFeedResponse(url).getTitle();
-        final String actualTitle = String.format("Firefox Lockwise %s by Mozilla", metadata.getReleaseId().getValueAsString());
-        assertEquals(expectedTitle, actualTitle);
+        final String actualTitle = String.format("Firefox Lite — Fast and Lightweight Web Browser %s(", metadata.getReleaseId().getValueAsString());
+        assertThat(expectedTitle, startsWith(actualTitle));
     }
 }
