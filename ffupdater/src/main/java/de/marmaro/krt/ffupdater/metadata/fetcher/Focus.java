@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/
+ * https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/
  */
 class Focus implements Callable<AvailableMetadata> {
     public static final String BASE_URL =

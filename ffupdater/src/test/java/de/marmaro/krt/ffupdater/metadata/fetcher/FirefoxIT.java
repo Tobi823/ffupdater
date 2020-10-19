@@ -51,14 +51,13 @@ public class FirefoxIT {
     private static DeviceEnvironment x86;
     private static MozillaCiConsumer mozillaCiConsumer;
 
-
-    private static RssFeedResponse firefoxBetaRssFeedResponse;
-    private static RssFeedResponse firefoxReleaseRssFeedResponse;
+    private static RssFeedResponse firefoxBetaRss;
+    private static RssFeedResponse firefoxNightlyRss;
 
     @BeforeClass
     public static void staticSetUp() throws ParserConfigurationException, SAXException, IOException {
-        firefoxBetaRssFeedResponse = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
-        firefoxReleaseRssFeedResponse = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
+        firefoxBetaRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-beta/feed/");
+        firefoxNightlyRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox/feed/");
 
         arm64 = mock(DeviceEnvironment.class);
         when(arm64.getBestSuitedAbi()).thenReturn(DeviceEnvironment.ABI.AARCH64);
@@ -76,62 +75,62 @@ public class FirefoxIT {
     }
 
     @Test
-    public void is_release_arm64_available_and_up_to_date() throws Exception {
+    public void is_release_arm64_availableAndUpToDate() throws Exception {
         isReleaseAvailableAndUpToDate(arm64, "2-android-apk-download");
     }
 
     @Test
-    public void is_release_arm32_available_and_up_to_date() throws Exception {
+    public void is_release_arm32_availableAndUpToDate() throws Exception {
         isReleaseAvailableAndUpToDate(arm32, "android-apk-download");
     }
 
     @Test
-    public void is_release_x64_available_and_up_to_date() throws Exception {
+    public void is_release_x64_availableAndUpToDate() throws Exception {
         isReleaseAvailableAndUpToDate(x64, "4-android-apk-download");
     }
 
     @Test
-    public void is_release_x32_available_and_up_to_date() throws Exception {
+    public void is_release_x32_availableAndUpToDate() throws Exception {
         isReleaseAvailableAndUpToDate(x86, "3-android-apk-download");
     }
 
     @Test
-    public void is_beta_arm64_available_and_up_to_date() throws Exception {
+    public void is_beta_arm64_availableAndUpToDate() throws Exception {
         isBetaAvailableAndUpToDate(arm64, "2-android-apk-download");
     }
 
     @Test
-    public void is_beta_arm32_available_and_up_to_date() throws Exception {
+    public void is_beta_arm32_availableAndUpToDate() throws Exception {
         isBetaAvailableAndUpToDate(arm32, "android-apk-download");
     }
 
     @Test
-    public void is_beta_x64_available_and_up_to_date() throws Exception {
+    public void is_beta_x64_availableAndUpToDate() throws Exception {
         isBetaAvailableAndUpToDate(x64, "4-android-apk-download");
     }
 
     @Test
-    public void is_beta_x32_available_and_up_to_date() throws Exception {
+    public void is_beta_x32_availableAndUpToDate() throws Exception {
         isBetaAvailableAndUpToDate(x86, "3-android-apk-download");
     }
 
     @Test
-    public void is_nightly_arm64_available_and_up_to_date() throws Exception {
+    public void is_nightly_arm64_availableAndUpToDate() throws Exception {
         isNightlyAvailableAndUpToDate(arm64);
     }
 
     @Test
-    public void is_nightly_arm32_available_and_up_to_date() throws Exception {
+    public void is_nightly_arm32_availableAndUpToDate() throws Exception {
         isNightlyAvailableAndUpToDate(arm32);
     }
 
     @Test
-    public void is_nightly_x64_available_and_up_to_date() throws Exception {
+    public void is_nightly_x64_availableAndUpToDate() throws Exception {
         isNightlyAvailableAndUpToDate(x64);
     }
 
     @Test
-    public void is_nightly_x32_available_and_up_to_date() throws Exception {
+    public void is_nightly_x32_availableAndUpToDate() throws Exception {
         isNightlyAvailableAndUpToDate(x86);
     }
 
@@ -139,7 +138,7 @@ public class FirefoxIT {
         final AvailableMetadataExtended metadata = new Firefox(mozillaCiConsumer, FIREFOX_RELEASE, deviceEnvironment).call();
         verifyDownloadLinkAvailable(metadata);
         verifyReleaseAgeIsNotTooOld(metadata, MAX_AGE_RELEASE);
-        verifyHash(metadata, firefoxReleaseRssFeedResponse, Utils.createMap(
+        verifyHash(metadata, firefoxNightlyRss, Utils.createMap(
                 "firefox", "firefox-browser-fast-private-safe-web-browser",
                 "release", internalNameApkMirror));
     }
@@ -148,7 +147,7 @@ public class FirefoxIT {
         final AvailableMetadataExtended metadata = new Firefox(mozillaCiConsumer, FIREFOX_BETA, deviceEnvironment).call();
         verifyDownloadLinkAvailable(metadata);
         verifyReleaseAgeIsNotTooOld(metadata, MAX_AGE_BETA);
-        verifyHash(metadata, firefoxBetaRssFeedResponse, Utils.createMap(
+        verifyHash(metadata, firefoxBetaRss, Utils.createMap(
                 "firefox", "firefox-for-android",
                 "release", internalNameApkMirror));
     }
