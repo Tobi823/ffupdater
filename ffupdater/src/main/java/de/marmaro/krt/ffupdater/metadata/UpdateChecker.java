@@ -21,11 +21,11 @@ public class UpdateChecker {
     }
 
     private boolean isUpdateAvailable(ReleaseVersion installed, ReleaseVersion available) {
-        return Objects.equals(installed.getValueAsString(), available.getValueAsString());
+        return !Objects.equals(installed.getValueAsString(), available.getValueAsString());
     }
 
     private boolean isUpdateAvailable(ReleaseTimestamp installed, ReleaseTimestamp available) {
-        return installed.getCreated().isEqual(available.getCreated());
+        return !installed.getCreated().isEqual(available.getCreated());
     }
 
 
