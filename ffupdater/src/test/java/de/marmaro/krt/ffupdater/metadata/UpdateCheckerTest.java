@@ -59,7 +59,6 @@ public class UpdateCheckerTest {
 
     @Test
     public void isUpdateAvailable_version_differentVersion_returnTrue() throws MalformedURLException {
-        final ZonedDateTime now = ZonedDateTime.now();
         AvailableMetadata availableMetadata = new AvailableMetadata(
                 new ReleaseVersion("1.0.0"),
                 new URL("https://api"));
