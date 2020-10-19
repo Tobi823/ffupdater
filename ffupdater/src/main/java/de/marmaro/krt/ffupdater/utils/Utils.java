@@ -159,6 +159,13 @@ public class Utils {
         return map;
     }
 
+    public static <K, V> Map<K, V> createMap(K key1, V value1, K key2, V value2) {
+        final Map<K, V> map = new HashMap<>();
+        map.put(key1, value1);
+        map.put(key2, value2);
+        return map;
+    }
+
     public static URL createURL(String url) {
         try {
             return new URL(url);

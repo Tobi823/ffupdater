@@ -122,11 +122,18 @@ public class UtilsTest {
     }
 
     @Test
-    public void createMap() {
+    public void createMap_oneEntry() {
         final String key = "KEY";
         final String value = "VALUE";
         final Map<String, String> actual = Utils.createMap(key, value);
         assertEquals(value, actual.get(key));
+    }
+
+    @Test
+    public void createMap_twoEntries() {
+        final Map<String, String> actual = Utils.createMap("k1", "v1", "k2", "v2");
+        assertEquals("v1", actual.get("k1"));
+        assertEquals("v2", actual.get("k2"));
     }
 
     @Test
