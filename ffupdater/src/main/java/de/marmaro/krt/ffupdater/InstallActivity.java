@@ -52,6 +52,11 @@ import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static android.app.DownloadManager.Request.VISIBILITY_VISIBLE;
+import static android.app.DownloadManager.STATUS_FAILED;
+import static android.app.DownloadManager.STATUS_PAUSED;
+import static android.app.DownloadManager.STATUS_PENDING;
+import static android.app.DownloadManager.STATUS_RUNNING;
+import static android.app.DownloadManager.STATUS_SUCCESSFUL;
 import static android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL;
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 import static android.view.View.GONE;
@@ -91,11 +96,11 @@ public class InstallActivity extends AppCompatActivity {
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         fetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());
 
-        downloadManagerIdToString.put(DownloadManager.STATUS_RUNNING, "running");
-        downloadManagerIdToString.put(DownloadManager.STATUS_SUCCESSFUL, "success");
-        downloadManagerIdToString.put(DownloadManager.STATUS_FAILED, "failed");
-        downloadManagerIdToString.put(DownloadManager.STATUS_PAUSED, "paused");
-        downloadManagerIdToString.put(DownloadManager.STATUS_PENDING, "pending");
+        downloadManagerIdToString.put(STATUS_RUNNING, "running");
+        downloadManagerIdToString.put(STATUS_SUCCESSFUL, "success");
+        downloadManagerIdToString.put(STATUS_FAILED, "failed");
+        downloadManagerIdToString.put(STATUS_PAUSED, "paused");
+        downloadManagerIdToString.put(STATUS_PENDING, "pending");
 
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
@@ -116,7 +121,7 @@ public class InstallActivity extends AppCompatActivity {
             return;
         }
         checkFreeSpace();
-        fetchUrlForDownload();
+        fetchAvailableMetadata();
     }
 
     @Override
@@ -136,38 +141,29 @@ public class InstallActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * This method will be called when the app installation is completed.
-     *
-     * @param intent intent
-     */
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        if (PACKAGE_INSTALLED_ACTION.equals(intent.getAction())) {
-            Bundle extras = Preconditions.checkNotNull(intent.getExtras());
-            int status = extras.getInt(PackageInstaller.EXTRA_STATUS);
-            if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-                startActivity((Intent) extras.get(Intent.EXTRA_INTENT)); // This test app isn't privileged, so the user has to confirm the install.
-                return;
-            }
-            hide(R.id.installingApplication);
-            hide(R.id.installConfirmation);
-            if (status == PackageInstaller.STATUS_SUCCESS) {
-                show(R.id.installerSuccess);
-                actionVerifyInstalledAppSignature();
-                deviceAppRegister.saveReleaseId(app, metadata.getReleaseId());
-            } else {
-                show(R.id.installerFailed);
-                String message = extras.getString(PackageInstaller.EXTRA_STATUS_MESSAGE);
-                String text = String.format(Locale.getDefault(), "(%d) %s", status, message);
-                setText(R.id.installerFailedReason, text);
-            }
-            downloadManager.remove(downloadId);
+    private boolean isSignatureOfInstalledAppUnknown(App app) {
+        Optional<Pair<Boolean, String>> signatureInfo = CertificateFingerprint.checkSignatureOfInstalledApp(getPackageManager(), app);
+        boolean unknown = signatureInfo.isPresent() && !Preconditions.checkNotNull(signatureInfo.get().first);
+        if (unknown) {
+            show(R.id.unknownSignatureOfInstalledApp);
         }
+        return unknown;
     }
 
-    private void fetchUrlForDownload() {
+    private void checkFreeSpace() {
+        File externalFilesDir = getExternalFilesDir(DIRECTORY_DOWNLOADS);
+        Preconditions.checkNotNull(externalFilesDir);
+        long freeBytes = new StatFs(externalFilesDir.getPath()).getFreeBytes();
+        if (freeBytes > 104_857_600) {
+            return;
+        }
+
+        show(R.id.tooLowMemory);
+        long freeMBytes = freeBytes / (1024 * 1024);
+        setText(R.id.tooLowMemoryDescription, getString(R.string.too_low_memory_description, freeMBytes));
+    }
+
+    private void fetchAvailableMetadata() {
         show(R.id.fetchUrl);
         findTextViewById(R.id.fetchUrlTextView).setText(getString(
                 R.string.fetch_url_for_download,
@@ -177,24 +173,18 @@ public class InstallActivity extends AppCompatActivity {
         new Thread(() -> {
             try {
                 this.metadata = futureMetadata.get(30, TimeUnit.SECONDS);
-                runOnUiThread(() -> {
-                    hide(R.id.fetchUrl);
-                    show(R.id.fetchedUrlSuccess);
-                    findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(
-                            R.string.fetched_url_for_download_successfully,
-                            app.getDownloadSource(this)));
-                    downloadApplication();
-                });
+                hide(R.id.fetchUrl);
+                show(R.id.fetchedUrlSuccess);
+                setText(R.id.fetchedUrlSuccessTextView, getString(R.string.fetched_url_for_download_successfully,
+                        app.getDownloadSource(this)));
+                downloadApplication();
             } catch (ExecutionException | InterruptedException | TimeoutException e) {
                 Log.e(LOG_TAG, "failed to fetch url", e);
-                runOnUiThread(() -> {
-                    hide(R.id.fetchUrl);
-                    show(R.id.fetchedUrlFailure);
-                    findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(
-                            R.string.fetched_url_for_download_unsuccessfully,
-                            app.getDownloadSource(this)));
-                    show(R.id.installerFailed);
-                });
+                hide(R.id.fetchUrl);
+                show(R.id.fetchedUrlFailure);
+                setText(R.id.fetchedUrlFailureTextView, getString(R.string.fetched_url_for_download_unsuccessfully,
+                        app.getDownloadSource(this)));
+                show(R.id.installerFailed);
             }
         }).start();
     }
@@ -214,7 +204,7 @@ public class InstallActivity extends AppCompatActivity {
                     setText(R.id.downloadingFileText, getString(R.string.download_application_from_with_status,
                             downloadManagerIdToString.getOrDefault(status, "?")));
                 }
-                if (status == DownloadManager.STATUS_FAILED || status == DownloadManager.STATUS_SUCCESSFUL) {
+                if (status == STATUS_FAILED || status == STATUS_SUCCESSFUL) {
                     return;
                 }
 
@@ -233,7 +223,7 @@ public class InstallActivity extends AppCompatActivity {
                 // received an older message - skip
                 return;
             }
-            if (Objects.requireNonNull(downloadManager.getStatusAndProgress(id).first) == DownloadManager.STATUS_FAILED) {
+            if (Objects.requireNonNull(downloadManager.getStatusAndProgress(id).first) == STATUS_FAILED) {
                 runOnUiThread(() -> {
                     hide(R.id.downloadingFile);
                     show(R.id.downloadFileFailed);
@@ -299,26 +289,35 @@ public class InstallActivity extends AppCompatActivity {
         }
     }
 
-    private void checkFreeSpace() {
-        File externalFilesDir = getExternalFilesDir(DIRECTORY_DOWNLOADS);
-        Preconditions.checkNotNull(externalFilesDir);
-        long freeBytes = new StatFs(externalFilesDir.getPath()).getFreeBytes();
-        if (freeBytes > 104_857_600) {
-            return;
+    /**
+     * This method will be called when the app installation is completed.
+     *
+     * @param intent intent
+     */
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (PACKAGE_INSTALLED_ACTION.equals(intent.getAction())) {
+            Bundle extras = Preconditions.checkNotNull(intent.getExtras());
+            int status = extras.getInt(PackageInstaller.EXTRA_STATUS);
+            if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+                startActivity((Intent) extras.get(Intent.EXTRA_INTENT)); // This test app isn't privileged, so the user has to confirm the install.
+                return;
+            }
+            hide(R.id.installingApplication);
+            hide(R.id.installConfirmation);
+            if (status == PackageInstaller.STATUS_SUCCESS) {
+                show(R.id.installerSuccess);
+                actionVerifyInstalledAppSignature();
+                deviceAppRegister.saveReleaseId(app, metadata.getReleaseId());
+            } else {
+                show(R.id.installerFailed);
+                String message = extras.getString(PackageInstaller.EXTRA_STATUS_MESSAGE);
+                String text = String.format(Locale.getDefault(), "(%d) %s", status, message);
+                setText(R.id.installerFailedReason, text);
+            }
+            downloadManager.remove(downloadId);
         }
-
-        show(R.id.tooLowMemory);
-        long freeMBytes = freeBytes / (1024 * 1024);
-        setText(R.id.tooLowMemoryDescription, getString(R.string.too_low_memory_description, freeMBytes));
-    }
-
-    private boolean isSignatureOfInstalledAppUnknown(App app) {
-        Optional<Pair<Boolean, String>> signatureInfo = CertificateFingerprint.checkSignatureOfInstalledApp(getPackageManager(), app);
-        boolean unknown = signatureInfo.isPresent() && !Preconditions.checkNotNull(signatureInfo.get().first);
-        if (unknown) {
-            show(R.id.unknownSignatureOfInstalledApp);
-        }
-        return unknown;
     }
 
     private void actionVerifyInstalledAppSignature() {
