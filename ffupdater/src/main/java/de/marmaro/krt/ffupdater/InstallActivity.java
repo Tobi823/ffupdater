@@ -21,7 +21,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.util.Pair;
 import androidx.preference.PreferenceManager;
 
 import com.google.common.base.Preconditions;
@@ -37,7 +36,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -45,6 +43,7 @@ import java.util.concurrent.TimeoutException;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter;
+import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.StatusProgress;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
 import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
@@ -199,20 +198,17 @@ public class InstallActivity extends AppCompatActivity {
             long waitMs = 500;
             long maxTime = Duration.ofMinutes(5).toMillis();
             for (long i = 0; i < maxTime / waitMs; i++) {
-                Pair<Integer, Integer> statusAndProgress = downloadManager.getStatusAndProgress(downloadId);
-                int status = Objects.requireNonNull(statusAndProgress.first);
-                if (previousStatus != status) {
-                    previousStatus = status;
+                StatusProgress result = downloadManager.getStatusAndProgress(downloadId);
+                if (previousStatus != result.getStatus()) {
+                    previousStatus = result.getStatus();
                     setText(R.id.downloadingFileText, getString(R.string.download_application_from_with_status,
-                            downloadManagerIdToString.getOrDefault(status, "?")));
+                            downloadManagerIdToString.getOrDefault(result.getStatus(), "?")));
                 }
-                if (status == STATUS_FAILED || status == STATUS_SUCCESSFUL) {
+                if (result.getStatus() == STATUS_FAILED || result.getStatus() == STATUS_SUCCESSFUL) {
                     return;
                 }
-
-                int progress = Objects.requireNonNull(statusAndProgress.second);
-                runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar)).setProgress(progress));
-
+                runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar))
+                        .setProgress(result.getProgress()));
                 Utils.sleepAndIgnoreInterruptedException(waitMs);
             }
         }).start();
@@ -225,7 +221,7 @@ public class InstallActivity extends AppCompatActivity {
                 // received an older message - skip
                 return;
             }
-            if (Objects.requireNonNull(downloadManager.getStatusAndProgress(id).first) == STATUS_FAILED) {
+            if (downloadManager.getStatusAndProgress(id).getStatus() == STATUS_FAILED) {
                 hide(R.id.downloadingFile);
                 show(R.id.downloadFileFailed);
                 setText(R.id.downloadFileFailedUrl, metadata.getDownloadUrl().toString());

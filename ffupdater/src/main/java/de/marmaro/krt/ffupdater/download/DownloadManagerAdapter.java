@@ -80,17 +80,15 @@ public class DownloadManagerAdapter {
      * @return status (constants from {@code android.app.DownloadManager}) and percent (0-100)
      */
     @NonNull
-    public Pair<Integer, Integer> getStatusAndProgress(long id) {
+    public StatusProgress getStatusAndProgress(long id) {
         DownloadManager.Query query = new DownloadManager.Query();
         query.setFilterById(id);
         try (Cursor cursor = downloadManager.query(query)) {
             cursor.moveToFirst();
-            int status = cursor.getInt(cursor.getColumnIndex(COLUMN_STATUS));
-
             double columnTotalBytes = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES));
             double columnActualBytes = cursor.getInt(cursor.getColumnIndex(COLUMN_BYTES_DOWNLOADED_SO_FAR));
-            int percent = (int) ((columnActualBytes / columnTotalBytes) * 100);
-            return new Pair<>(status, percent);
+            return new StatusProgress(cursor.getInt(cursor.getColumnIndex(COLUMN_STATUS)),
+                    (int) ((columnActualBytes / columnTotalBytes) * 100));
         }
     }
 
@@ -122,5 +120,23 @@ public class DownloadManagerAdapter {
      */
     public File getFileForDownloadedFile(long id) {
         return Objects.requireNonNull(files.get(id));
+    }
+
+    public static class StatusProgress {
+        private final int status;
+        private final int progress;
+
+        public StatusProgress(int status, int progress) {
+            this.status = status;
+            this.progress = progress;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public int getProgress() {
+            return progress;
+        }
     }
 }
