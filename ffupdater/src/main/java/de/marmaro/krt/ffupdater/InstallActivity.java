@@ -225,20 +225,16 @@ public class InstallActivity extends AppCompatActivity {
                 return;
             }
             if (Objects.requireNonNull(downloadManager.getStatusAndProgress(id).first) == STATUS_FAILED) {
-                runOnUiThread(() -> {
-                    hide(R.id.downloadingFile);
-                    show(R.id.downloadFileFailed);
-                    findTextViewById(R.id.downloadFileFailedUrl).setText(metadata.getDownloadUrl().toString());
-                    show(R.id.installerFailed);
-                });
+                hide(R.id.downloadingFile);
+                show(R.id.downloadFileFailed);
+                setText(R.id.downloadFileFailedUrl, metadata.getDownloadUrl().toString());
+                show(R.id.installerFailed);
                 return;
             }
-            runOnUiThread(() -> {
-                hide(R.id.downloadingFile);
-                show(R.id.downloadedFile);
-                findTextViewById(downloadedFileUrl).setText(metadata.getDownloadUrl().toString());
-                show(R.id.verifyDownloadFingerprint);
-            });
+            hide(R.id.downloadingFile);
+            show(R.id.downloadedFile);
+            setText(downloadedFileUrl, metadata.getDownloadUrl().toString());
+            show(R.id.verifyDownloadFingerprint);
             new Thread(() -> {
                 File downloadedFile = downloadManager.getFileForDownloadedFile(id);
                 final FingerprintResult result = fingerprintValidator.checkApkFile(downloadedFile, app);
