@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import de.marmaro.krt.ffupdater.R;
 
@@ -14,7 +15,7 @@ import de.marmaro.krt.ffupdater.R;
  * Show the error that the app is not supported on this smartphone.
  */
 public class UnsupportedAbiDialog extends DialogFragment {
-    static final String TAG = "unsupported_abi_dialog";
+    private static final String TAG = "unsupported_abi_dialog";
 
     @NonNull
     @Override
@@ -24,5 +25,9 @@ public class UnsupportedAbiDialog extends DialogFragment {
                 .setMessage(R.string.unsupported_abi_dialog_message)
                 .setNegativeButton(R.string.ok, (dialog, which) -> dialog.dismiss())
                 .create();
+    }
+
+    public void show(@NonNull FragmentManager manager) {
+        show(manager, TAG);
     }
 }

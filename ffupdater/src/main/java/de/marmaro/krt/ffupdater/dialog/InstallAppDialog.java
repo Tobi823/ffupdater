@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
  * Show warning or error message (if ABI is not supported) if necessary.
  */
 public class InstallAppDialog extends DialogFragment {
-    public static final String TAG = "download_new_app_dialog";
+    private static final String TAG = "download_new_app_dialog";
 
     private final Consumer<App> downloadCallback;
     private final DeviceEnvironment deviceEnvironment = new DeviceEnvironment();
@@ -49,19 +50,23 @@ public class InstallAppDialog extends DialogFragment {
                 .setItems(appNames, (dialog, which) -> {
                     App app = apps.get(which);
                     if (!app.isCompatibleWithDeviceAbi(deviceEnvironment)) {
-                        new UnsupportedAbiDialog().show(getParentFragmentManager(), UnsupportedAbiDialog.TAG);
+                        new UnsupportedAbiDialog().show(getParentFragmentManager());
                         return;
                     }
                     if (!app.isCompatibleWithDeviceApiLevel(deviceEnvironment)) {
-                        new DeviceTooOldDialog(app, deviceEnvironment).show(getParentFragmentManager(), DeviceTooOldDialog.TAG);
+                        new DeviceTooOldDialog(app, deviceEnvironment).show(getParentFragmentManager());
                         return;
                     }
                     if (!app.getWarning(requireContext()).isEmpty()) {
-                        new InstallationWarningAppDialog(downloadCallback, app).show(getParentFragmentManager(), InstallationWarningAppDialog.TAG);
+                        new InstallationWarningAppDialog(downloadCallback, app).show(getParentFragmentManager());
                         return;
                     }
                     downloadCallback.accept(app);
                 })
                 .create();
+    }
+
+    public void show(@NonNull FragmentManager manager) {
+        show(manager, TAG);
     }
 }

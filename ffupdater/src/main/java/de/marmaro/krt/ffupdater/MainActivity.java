@@ -91,6 +91,31 @@ public class MainActivity extends AppCompatActivity {
         final File downloadsDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
         //noinspection ResultOfMethodCallIgnored
         Arrays.stream(downloadsDir.listFiles()).forEach(File::delete);
+
+        // register onclick listener
+        registerAppInfoDialog(R.id.firefoxKlarInfoButton, App.FIREFOX_KLAR);
+        registerAppInfoDialog(R.id.firefoxFocusInfoButton, App.FIREFOX_FOCUS);
+        registerAppInfoDialog(R.id.firefoxLiteInfoButton, App.FIREFOX_LITE);
+        registerAppInfoDialog(R.id.firefoxReleaseInfoButton, App.FIREFOX_RELEASE);
+        registerAppInfoDialog(R.id.firefoxBetaInfoButton, App.FIREFOX_BETA);
+        registerAppInfoDialog(R.id.firefoxNightlyInfoButton, App.FIREFOX_NIGHTLY);
+        registerAppInfoDialog(R.id.lockwiseInfoButton, App.LOCKWISE);
+
+        registerDownloadButton(R.id.firefoxKlarDownloadButton, App.FIREFOX_KLAR);
+        registerDownloadButton(R.id.firefoxFocusDownloadButton, App.FIREFOX_FOCUS);
+        registerDownloadButton(R.id.firefoxLiteDownloadButton, App.FIREFOX_LITE);
+        registerDownloadButton(R.id.firefoxReleaseDownloadButton, App.FIREFOX_RELEASE);
+        registerDownloadButton(R.id.firefoxBetaDownloadButton, App.FIREFOX_BETA);
+        registerDownloadButton(R.id.firefoxNightlyDownloadButton, App.FIREFOX_NIGHTLY);
+        registerDownloadButton(R.id.lockwiseDownloadButton, App.LOCKWISE);
+    }
+
+    private void registerAppInfoDialog(int id, App app) {
+        findViewById(id).setOnClickListener(e -> new AppInfoDialog(app).show(getSupportFragmentManager()));
+    }
+
+    private void registerDownloadButton(int id, App app) {
+        findViewById(id).setOnClickListener(e -> downloadApp(app));
     }
 
     @Override
@@ -213,16 +238,8 @@ public class MainActivity extends AppCompatActivity {
 
     // android:onClick method calls: - do not delete
 
-    public void onClickDownloadButton(View view) {
-        downloadApp(findAppByDownloadButtonId(view.getId()));
-    }
-
-    public void onClickInfoButton(View view) {
-        new AppInfoDialog(findAppByInfoButtonId(view.getId())).show(getSupportFragmentManager(), AppInfoDialog.TAG);
-    }
-
     public void onClickInstallApp(View view) {
-        new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager(), InstallAppDialog.TAG);
+        new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager());
     }
 
     // helper methods for accessing GUI objects
@@ -306,48 +323,6 @@ public class MainActivity extends AppCompatActivity {
                 return findViewById(R.id.firefoxNightlyCard);
             case LOCKWISE:
                 return findViewById(R.id.lockwiseCard);
-            default:
-                throw new RuntimeException("switch fallthrough");
-        }
-    }
-
-    private App findAppByInfoButtonId(int id) {
-        switch (id) {
-            case R.id.firefoxKlarInfoButton:
-                return App.FIREFOX_KLAR;
-            case R.id.firefoxFocusInfoButton:
-                return App.FIREFOX_FOCUS;
-            case R.id.firefoxLiteInfoButton:
-                return App.FIREFOX_LITE;
-            case R.id.firefoxReleaseInfoButton:
-                return App.FIREFOX_RELEASE;
-            case R.id.firefoxBetaInfoButton:
-                return App.FIREFOX_BETA;
-            case R.id.firefoxNightlyInfoButton:
-                return App.FIREFOX_NIGHTLY;
-            case R.id.lockwiseInfoButton:
-                return App.LOCKWISE;
-            default:
-                throw new RuntimeException("switch fallthrough");
-        }
-    }
-
-    private App findAppByDownloadButtonId(int id) {
-        switch (id) {
-            case R.id.firefoxKlarDownloadButton:
-                return App.FIREFOX_KLAR;
-            case R.id.firefoxFocusDownloadButton:
-                return App.FIREFOX_FOCUS;
-            case R.id.firefoxLiteDownloadButton:
-                return App.FIREFOX_LITE;
-            case R.id.firefoxReleaseDownloadButton:
-                return App.FIREFOX_RELEASE;
-            case R.id.firefoxBetaDownloadButton:
-                return App.FIREFOX_BETA;
-            case R.id.firefoxNightlyDownloadButton:
-                return App.FIREFOX_NIGHTLY;
-            case R.id.lockwiseDownloadButton:
-                return App.LOCKWISE;
             default:
                 throw new RuntimeException("switch fallthrough");
         }

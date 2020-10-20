@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.R;
@@ -16,7 +17,7 @@ import de.marmaro.krt.ffupdater.R;
  * Ask the user with this dialog if he really want to install the app.
  */
 public class InstallationWarningAppDialog extends DialogFragment {
-    static final String TAG = "warning_app_dialog";
+    private static final String TAG = "warning_app_dialog";
     private final Consumer<App> downloadCallback;
     private final App app;
 
@@ -37,5 +38,9 @@ public class InstallationWarningAppDialog extends DialogFragment {
                 })
                 .setNegativeButton(getString(R.string.installation_warning_negative_button), (dialog, which) -> dialog.dismiss())
                 .create();
+    }
+
+    public void show(@NonNull FragmentManager manager) {
+        show(manager, TAG);
     }
 }

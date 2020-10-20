@@ -48,7 +48,6 @@
                         android:id="@+id/firefoxKlarInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
-                        android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxKlarDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -57,7 +56,6 @@
                         android:id="@+id/firefoxKlarDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
-                        android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -105,7 +103,6 @@
                         android:id="@+id/firefoxFocusInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
-                        android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxFocusDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -114,7 +111,6 @@
                         android:id="@+id/firefoxFocusDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
-                        android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -162,7 +158,6 @@
                         android:id="@+id/firefoxLiteInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
-                        android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxLiteDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -171,7 +166,6 @@
                         android:id="@+id/firefoxLiteDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
-                        android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -217,7 +211,6 @@
                         android:id="@+id/firefoxReleaseInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
-                        android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxReleaseDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -226,7 +219,6 @@
                         android:id="@+id/firefoxReleaseDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
-                        android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -272,7 +264,6 @@
                         android:id="@+id/firefoxBetaInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
-                        android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxBetaDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -281,7 +272,6 @@
                         android:id="@+id/firefoxBetaDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
-                        android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -327,7 +317,6 @@
                         android:id="@+id/firefoxNightlyInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
-                        android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/firefoxNightlyDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -336,7 +325,6 @@
                         android:id="@+id/firefoxNightlyDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
-                        android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
@@ -382,7 +370,6 @@
                         android:id="@+id/lockwiseInfoButton"
                         style="@style/AppCardInfoButton"
                         android:contentDescription="@string/information_about_the_app"
-                        android:onClick="onClickInfoButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/lockwiseDownloadButton"
                         app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
@@ -391,7 +378,6 @@
                         android:id="@+id/lockwiseDownloadButton"
                         style="@style/AppCardDownloadButton"
                         android:contentDescription="@string/download_the_app"
-                        android:onClick="onClickDownloadButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_file_download_grey" />
