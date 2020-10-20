@@ -67,7 +67,7 @@ public class Utils {
     /**
      * @param millis wait x milliseconds and ignore InterruptedException
      */
-    public static void sleepAndIgnoreInterruptedException(int millis) {
+    public static void sleepAndIgnoreInterruptedException(long millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {

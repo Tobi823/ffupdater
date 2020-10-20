@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -82,7 +83,6 @@ public class InstallActivity extends AppCompatActivity {
     private AvailableMetadata metadata;
     private AvailableMetadataFetcher fetcher;
     private long downloadId = -1;
-    private boolean killSwitch;
     private final Map<Integer, String> downloadManagerIdToString = new HashMap<>();
     private FingerprintValidator fingerprintValidator;
 
@@ -131,7 +131,6 @@ public class InstallActivity extends AppCompatActivity {
         super.onDestroy();
         unregisterReceiver(onDownloadComplete);
         fetcher.shutdown();
-        killSwitch = true;
     }
 
     @Override
@@ -197,7 +196,9 @@ public class InstallActivity extends AppCompatActivity {
         downloadId = downloadManager.enqueue(this, metadata.getDownloadUrl(), app.getTitle(this), VISIBILITY_VISIBLE);
         new Thread(() -> {
             int previousStatus = -1;
-            while (!killSwitch) {
+            long waitMs = 500;
+            long maxTime = Duration.ofMinutes(5).toMillis();
+            for (long i = 0; i < maxTime / waitMs; i++) {
                 Pair<Integer, Integer> statusAndProgress = downloadManager.getStatusAndProgress(downloadId);
                 int status = Objects.requireNonNull(statusAndProgress.first);
                 if (previousStatus != status) {
@@ -212,7 +213,7 @@ public class InstallActivity extends AppCompatActivity {
                 int progress = Objects.requireNonNull(statusAndProgress.second);
                 runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar)).setProgress(progress));
 
-                Utils.sleepAndIgnoreInterruptedException(500);
+                Utils.sleepAndIgnoreInterruptedException(waitMs);
             }
         }).start();
     }
