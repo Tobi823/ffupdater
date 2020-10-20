@@ -47,7 +47,8 @@ import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
 import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
-import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
+import de.marmaro.krt.ffupdater.security.FingerprintValidator;
+import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
@@ -82,7 +83,8 @@ public class InstallActivity extends AppCompatActivity {
     private AvailableMetadataFetcher fetcher;
     private long downloadId = -1;
     private boolean killSwitch;
-    private Map<Integer, String> downloadManagerIdToString = new HashMap<>();
+    private final Map<Integer, String> downloadManagerIdToString = new HashMap<>();
+    private FingerprintValidator fingerprintValidator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,7 @@ public class InstallActivity extends AppCompatActivity {
         downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         fetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());
+        fingerprintValidator = new FingerprintValidator(getPackageManager());
 
         downloadManagerIdToString.put(STATUS_RUNNING, "running");
         downloadManagerIdToString.put(STATUS_SUCCESSFUL, "success");
@@ -109,8 +112,7 @@ public class InstallActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        Bundle extras = Objects.requireNonNull(getIntent().getExtras());
-        String appName = extras.getString(EXTRA_APP_NAME);
+        String appName = Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_APP_NAME);
         if (appName == null) { // if the Activity was not crated from the FFUpdater main menu
             finish();
             return;
@@ -142,8 +144,7 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private boolean isSignatureOfInstalledAppUnknown(App app) {
-        Optional<Pair<Boolean, String>> signatureInfo = CertificateFingerprint.checkSignatureOfInstalledApp(getPackageManager(), app);
-        boolean unknown = signatureInfo.isPresent() && !Preconditions.checkNotNull(signatureInfo.get().first);
+        final boolean unknown = !fingerprintValidator.checkInstalledApp(app).isValid();
         if (unknown) {
             show(R.id.unknownSignatureOfInstalledApp);
         }
@@ -211,7 +212,7 @@ public class InstallActivity extends AppCompatActivity {
                 int progress = Objects.requireNonNull(statusAndProgress.second);
                 runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar)).setProgress(progress));
 
-                de.marmaro.krt.ffupdater.utils.Utils.sleepAndIgnoreInterruptedException(500);
+                Utils.sleepAndIgnoreInterruptedException(500);
             }
         }).start();
     }
@@ -240,16 +241,16 @@ public class InstallActivity extends AppCompatActivity {
             });
             new Thread(() -> {
                 File downloadedFile = downloadManager.getFileForDownloadedFile(id);
-                Pair<Boolean, String> check = CertificateFingerprint.checkSignatureOfApkFile(getPackageManager(), downloadedFile, app);
-                if (Objects.requireNonNull(check.first)) {
+                final FingerprintResult result = fingerprintValidator.checkApkFile(downloadedFile, app);
+                if (result.isValid()) {
                     hide(R.id.verifyDownloadFingerprint);
                     show(R.id.fingerprintDownloadGood);
-                    setText(R.id.fingerprintDownloadGoodHash, check.second);
+                    setText(R.id.fingerprintDownloadGoodHash, result.getHexString());
                     show(R.id.installConfirmation);
                 } else {
                     hide(R.id.verifyDownloadFingerprint);
                     show(R.id.fingerprintDownloadBad);
-                    setText(R.id.fingerprintDownloadBadHashActual, check.second);
+                    setText(R.id.fingerprintDownloadBadHashActual, result.getHexString());
                     setText(R.id.fingerprintDownloadBadHashExpected, ApacheCodecHex.encodeHexString(app.getSignatureHash()));
                     show(R.id.installerFailed);
                 }
@@ -323,17 +324,14 @@ public class InstallActivity extends AppCompatActivity {
     private void actionVerifyInstalledAppSignature() {
         show(R.id.verifyInstalledFingerprint);
         new Thread(() -> {
-            Optional<Pair<Boolean, String>> signatureResult = CertificateFingerprint.checkSignatureOfInstalledApp(getPackageManager(), app);
-            boolean signatureIsValid = signatureResult.isPresent() && Preconditions.checkNotNull(signatureResult.get().first);
-            String signatureAsString = signatureResult.isPresent() ? signatureResult.get().second : "[APP NOT INSTALLED]";
-
+            final FingerprintResult fingerprintResult = fingerprintValidator.checkInstalledApp(app);
             hide(R.id.verifyInstalledFingerprint);
-            if (signatureIsValid) {
+            if (fingerprintResult.isValid()) {
                 show(R.id.fingerprintInstalledGood);
-                setText(R.id.fingerprintInstalledGoodHash, signatureAsString);
+                setText(R.id.fingerprintInstalledGoodHash, fingerprintResult.getHexString());
             } else {
                 show(R.id.fingerprintInstalledBad);
-                setText(R.id.fingerprintInstalledBadHashActual, signatureAsString);
+                setText(R.id.fingerprintInstalledBadHashActual, fingerprintResult.getHexString());
                 setText(R.id.fingerprintInstalledBadHashExpected, ApacheCodecHex.encodeHexString(app.getSignatureHash()));
             }
         }).start();

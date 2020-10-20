@@ -3,10 +3,8 @@ package de.marmaro.krt.ffupdater.security;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
-import android.util.Log;
-
-import androidx.core.util.Pair;
 
 import com.google.common.base.Preconditions;
 
@@ -20,68 +18,83 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
-import java.util.Objects;
-import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 /**
  * Validation of downloaded and installed application.
  */
-public class CertificateFingerprint {
-    private static final String LOG_TAG = "CertificateFingerprint";
+public class FingerprintValidator {
     private static final String SHA_256 = "SHA-256";
+    private final PackageManager packageManager;
+
+    public FingerprintValidator(PackageManager packageManager) {
+        this.packageManager = packageManager;
+    }
 
     /**
      * Validate the SHA256 fingerprint of the certificate of the downloaded application as APK file.
      *
-     * @param packageManager packageManager
-     * @param file APK file
-     * @param app  app
+     * @param file           APK file
+     * @param app            app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
-    public static Pair<Boolean, String> checkSignatureOfApkFile(PackageManager packageManager, File file, App app) {
+    public FingerprintResult checkApkFile(File file, App app) {
         try {
             PackageInfo packageInfo = packageManager.getPackageArchiveInfo(file.getAbsolutePath(), PackageManager.GET_SIGNATURES);
-            Objects.requireNonNull(packageInfo);
             return verifyPackageInfo(packageInfo, app);
         } catch (CertificateException | NoSuchAlgorithmException e) {
-            throw new RuntimeException("APK certificate fingerprint validation failed due to an exception", e);
+            throw new ParamRuntimeException(e, "failed to compare the APK certificate fingerprint from %s for %s validation failed for ", file, app);
         }
     }
 
     /**
      * Validate the SHA256 fingerprint of the certificate of the installed application.
      *
-     * @param packageManager package manager
      * @param app            app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      * @see <a href="https://stackoverflow.com/a/22506133">Example on how to generate the certificate fingerprint</a>
      * @see <a href="https://gist.github.com/scottyab/b849701972d57cf9562e">Another example</a>
      */
     @SuppressLint("PackageManagerGetSignatures")
-    public static Optional<Pair<Boolean, String>> checkSignatureOfInstalledApp(PackageManager packageManager, App app) {
+    public FingerprintResult checkInstalledApp(App app) {
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
-            return Optional.of(verifyPackageInfo(packageInfo, app));
-        } catch (PackageManager.NameNotFoundException e1) {
-            return Optional.empty();
-        } catch (NoSuchAlgorithmException | CertificateException e2) {
-            throw new RuntimeException("failed to hash the certificate of the application", e2);
+            return verifyPackageInfo(packageInfo, app);
+        } catch (NoSuchAlgorithmException | CertificateException | NameNotFoundException e) {
+            throw new ParamRuntimeException(e, "failed to compare signature fingerprint %s", app);
         }
     }
 
-    private static Pair<Boolean, String> verifyPackageInfo(PackageInfo packageInfo, App app) throws CertificateException, NoSuchAlgorithmException {
+    private FingerprintResult verifyPackageInfo(PackageInfo packageInfo, App app) throws CertificateException, NoSuchAlgorithmException {
+        Preconditions.checkNotNull(packageInfo);
         Preconditions.checkArgument(packageInfo.signatures.length > 0);
+        Preconditions.checkNotNull(app);
         Signature signature = packageInfo.signatures[0];
         InputStream signatureStream = new ByteArrayInputStream(signature.toByteArray());
         Certificate certificate = CertificateFactory.getInstance("X509").generateCertificate(signatureStream);
 
-        byte[] currentHash = MessageDigest.getInstance(SHA_256).digest(certificate.getEncoded());
-        byte[] expectedHash = app.getSignatureHash();
+        byte[] current = MessageDigest.getInstance(SHA_256).digest(certificate.getEncoded());
+        byte[] expected = app.getSignatureHash();
+        return new FingerprintResult(MessageDigest.isEqual(expected, current), ApacheCodecHex.encodeHexString(current));
+    }
 
-        boolean equal = MessageDigest.isEqual(expectedHash, currentHash);
-        String currentHashAsString = ApacheCodecHex.encodeHexString(currentHash);
-        return new Pair<>(equal, currentHashAsString);
+    public static class FingerprintResult {
+        private final boolean valid;
+        private final String hexString;
+
+        private FingerprintResult(boolean valid, String hexString) {
+            this.valid = valid;
+            this.hexString = hexString;
+        }
+
+        public boolean isValid() {
+            return valid;
+        }
+
+        public String getHexString() {
+            return hexString;
+        }
     }
 }

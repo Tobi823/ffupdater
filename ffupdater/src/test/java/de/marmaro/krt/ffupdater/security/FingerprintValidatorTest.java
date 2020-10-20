@@ -4,33 +4,33 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 
-import androidx.core.util.Pair;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.Optional;
+
+import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 import static android.content.pm.PackageManager.GET_SIGNATURES;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_BETA;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_RELEASE;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class CertificateFingerprintTest {
+public class FingerprintValidatorTest {
 
     private PackageManager packageManager;
     private PackageInfo packageInfo;
+    private FingerprintValidator fingerprintValidator;
 
     @Before
     public void setUp() {
         packageManager = mock(PackageManager.class);
+        fingerprintValidator = new FingerprintValidator(packageManager);
 
         final Signature signature = mock(Signature.class);
         when(signature.toByteArray()).thenReturn(FIREFOX_RELEASE_SIGNATURE_BYTES);
@@ -40,34 +40,26 @@ public class CertificateFingerprintTest {
     }
 
     @Test
-    public void checkFingerprintOfInstalledApp_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
+    public void checkInstalledApp_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
         when(packageManager.getPackageInfo(FIREFOX_RELEASE.getPackageName(), GET_SIGNATURES)).thenReturn(packageInfo);
-
-        Optional<Pair<Boolean, String>> actual = CertificateFingerprint.checkSignatureOfInstalledApp(packageManager, FIREFOX_RELEASE);
-        assertTrue(actual.isPresent());
-        assertNotNull(actual.get().first);
-        assertTrue(actual.get().first);
-        assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.get().second);
+        FingerprintResult actual = fingerprintValidator.checkInstalledApp(FIREFOX_RELEASE);
+        assertTrue(actual.isValid());
+        assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.getHexString());
     }
 
-    @Test
-    public void checkFingerprintOfInstalledApp_appIsNotInstalled_emptyOptional() throws PackageManager.NameNotFoundException {
+    @Test(expected = ParamRuntimeException.class)
+    public void checkInstalledApp_appIsNotInstalled_emptyOptional() throws PackageManager.NameNotFoundException {
         doThrow(new PackageManager.NameNotFoundException()).when(packageManager).getPackageInfo(FIREFOX_BETA.getPackageName(), GET_SIGNATURES);
-
-        Optional<Pair<Boolean, String>> actual = CertificateFingerprint.checkSignatureOfInstalledApp(packageManager, FIREFOX_BETA);
-        assertFalse(actual.isPresent());
+        fingerprintValidator.checkInstalledApp(FIREFOX_BETA);
     }
 
     @Test
-    public void checkFingerprintOfFile_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
+    public void checkApkFile_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
         File file = new File("/path/to/apk");
-
         when(packageManager.getPackageArchiveInfo(file.getAbsolutePath(), GET_SIGNATURES)).thenReturn(packageInfo);
-
-        Pair<Boolean, String> actual = CertificateFingerprint.checkSignatureOfApkFile(packageManager, file, FIREFOX_RELEASE);
-        assertNotNull(actual.first);
-        assertTrue(actual.first);
-        assertEquals(FIREFOX_RELEASE_SIGNATURE_FINGERPRINT, actual.second);
+        FingerprintResult actual = fingerprintValidator.checkApkFile(file, FIREFOX_RELEASE);
+        assertTrue(actual.isValid());
+        assertEquals(FIREFOX_RELEASE_SIGNATURE_FINGERPRINT, actual.getHexString());
     }
 
     private static final String FIREFOX_RELEASE_SIGNATURE_FINGERPRINT = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04";
