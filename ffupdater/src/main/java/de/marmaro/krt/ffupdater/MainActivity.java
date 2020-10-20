@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -228,17 +227,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean isNetworkUnavailable() {
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo == null || !activeNetworkInfo.isConnected();
+        return Optional.ofNullable(connectivityManager.getActiveNetworkInfo())
+                .map(info -> !info.isConnected())
+                .orElse(true);
     }
-
-    // android:onClick method calls: - do not delete
 
     public void onClickInstallApp(View view) {
         new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager());
     }
-
-    // helper methods for accessing GUI objects
 
     private TextView getAvailableVersionTextView(App app) {
         switch (app) {
