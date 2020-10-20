@@ -22,6 +22,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.common.base.Preconditions;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -44,6 +46,7 @@ import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.CrashReporter;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static de.marmaro.krt.ffupdater.R.drawable.ic_file_download_grey;
@@ -71,15 +74,22 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
 
         CrashReporter.register(this);
-        final DeviceEnvironment deviceEnvironment = new DeviceEnvironment();
-        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, deviceEnvironment));
         StrictModeSetup.enable();
+
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setOnRefreshListener(this::refreshUI);
+
+        final DeviceEnvironment deviceEnvironment = new DeviceEnvironment();
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, deviceEnvironment));
+
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         metadataFetcher = new AvailableMetadataFetcher(preferences, deviceEnvironment);
         connectivityManager = Preconditions.checkNotNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
+
+        // sometimes not all downloaded APK files are automatically deleted
+        //noinspection ResultOfMethodCallIgnored
+        Arrays.stream(getExternalFilesDir(DIRECTORY_DOWNLOADS).listFiles()).forEach(File::delete);
     }
 
     @Override
