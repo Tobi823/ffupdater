@@ -101,7 +101,6 @@ public class InstallActivity extends AppCompatActivity {
         }
         app = App.valueOf(appName);
 
-        hideAllEntries();
         if (isSignatureOfInstalledAppUnknown(app)) {
             return;
         }
@@ -265,27 +264,6 @@ public class InstallActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.e(LOG_TAG, "failed to install APK", e);
         }
-    }
-
-    private void hideAllEntries() {
-        findViewById(R.id.tooLowMemory).setVisibility(View.GONE);
-        findViewById(R.id.unknownSignatureOfInstalledApp).setVisibility(View.GONE);
-        findViewById(R.id.fetchUrl).setVisibility(View.GONE);
-        findViewById(R.id.fetchedUrlSuccess).setVisibility(View.GONE);
-        findViewById(R.id.fetchedUrlFailure).setVisibility(View.GONE);
-        findViewById(R.id.downloadingFile).setVisibility(View.GONE);
-        findViewById(R.id.downloadedFile).setVisibility(View.GONE);
-        findViewById(R.id.downloadFileFailed).setVisibility(View.GONE);
-        findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
-        findViewById(R.id.fingerprintDownloadGood).setVisibility(View.GONE);
-        findViewById(R.id.fingerprintDownloadBad).setVisibility(View.GONE);
-        findViewById(R.id.installConfirmation).setVisibility(View.GONE);
-        findViewById(R.id.installingApplication).setVisibility(View.GONE);
-        findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.GONE);
-        findViewById(R.id.fingerprintInstalledGood).setVisibility(View.GONE);
-        findViewById(R.id.fingerprintInstalledBad).setVisibility(View.GONE);
-        findViewById(R.id.installerSuccess).setVisibility(View.GONE);
-        findViewById(R.id.installerFailed).setVisibility(View.GONE);
     }
 
     private void checkFreeSpace() {
