@@ -144,19 +144,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_about:
-                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setTitle(getString(R.string.action_about_title));
-                alertDialog.setMessage(getString(R.string.infobox));
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
-                        (dialog, which) -> dialog.dismiss());
-                alertDialog.show();
-                break;
-            case R.id.action_settings:
-                //start settings activity where we use select firefox product and release type;
-                startActivity(new Intent(this, SettingsActivity.class));
-                break;
+        final int itemId = item.getItemId();
+        if (itemId == R.id.action_about) {
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle(getString(R.string.action_about_title));
+            alertDialog.setMessage(getString(R.string.infobox));
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok), (dialog, w) -> dialog.dismiss());
+            alertDialog.show();
+        } else if (itemId == R.id.action_settings) {//start settings activity where we use select firefox product and release type;
+            startActivity(new Intent(this, SettingsActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
