@@ -15,6 +15,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,9 +48,9 @@ public class ApkMirrorHelper {
 
     private static Element getLatestItem(Document document) {
         final NodeList items = document.getElementsByTagName("item");
-        Preconditions.checkNotNull(items);
+        Objects.requireNonNull(items);
         final Element latestItem = ((Element) items.item(0));
-        Preconditions.checkNotNull(latestItem);
+        Objects.requireNonNull(latestItem);
         return latestItem;
     }
 

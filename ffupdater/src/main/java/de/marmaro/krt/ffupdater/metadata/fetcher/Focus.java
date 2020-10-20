@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.metadata.fetcher;
 import com.google.common.base.Preconditions;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 
 import de.marmaro.krt.ffupdater.App;
@@ -27,9 +28,9 @@ class Focus implements Callable<AvailableMetadata> {
     private final String appName;
 
     Focus(MozillaCiConsumer mozillaCiConsumer, App app, DeviceEnvironment deviceEnvironment) {
-        Preconditions.checkNotNull(mozillaCiConsumer);
-        Preconditions.checkNotNull(app);
-        Preconditions.checkNotNull(deviceEnvironment);
+        Objects.requireNonNull(mozillaCiConsumer);
+        Objects.requireNonNull(app);
+        Objects.requireNonNull(deviceEnvironment);
         this.mozillaCiConsumer = mozillaCiConsumer;
         abiAbbreviation = getAbiAbbreviation(deviceEnvironment);
         appName = getAppName(app);

@@ -5,6 +5,7 @@ import android.net.TrafficStats;
 
 import com.google.common.base.Preconditions;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
@@ -32,11 +33,11 @@ public class Fetcher implements Callable<AvailableMetadata> {
                    DeviceEnvironment deviceEnvironment,
                    MozillaCiConsumer mozillaCiConsumer,
                    GithubConsumer githubConsumer) {
-        Preconditions.checkNotNull(sharedPreferences);
-        Preconditions.checkNotNull(app);
-        Preconditions.checkNotNull(deviceEnvironment);
-        Preconditions.checkNotNull(mozillaCiConsumer);
-        Preconditions.checkNotNull(githubConsumer);
+        Objects.requireNonNull(sharedPreferences);
+        Objects.requireNonNull(app);
+        Objects.requireNonNull(deviceEnvironment);
+        Objects.requireNonNull(mozillaCiConsumer);
+        Objects.requireNonNull(githubConsumer);
         this.cache = new Cache(sharedPreferences);
         this.app = app;
         this.deviceEnvironment = deviceEnvironment;

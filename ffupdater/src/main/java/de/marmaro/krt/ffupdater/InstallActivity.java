@@ -152,7 +152,7 @@ public class InstallActivity extends AppCompatActivity {
 
     private void checkFreeSpace() {
         File externalFilesDir = getExternalFilesDir(DIRECTORY_DOWNLOADS);
-        Preconditions.checkNotNull(externalFilesDir);
+        Objects.requireNonNull(externalFilesDir);
         long freeBytes = new StatFs(externalFilesDir.getPath()).getFreeBytes();
         if (freeBytes > 104_857_600) {
             return;
@@ -165,7 +165,7 @@ public class InstallActivity extends AppCompatActivity {
 
     private void fetchAvailableMetadata() {
         show(R.id.fetchUrl);
-        findTextViewById(R.id.fetchUrlTextView).setText(getString(
+        setText(R.id.fetchUrlTextView, getString(
                 R.string.fetch_url_for_download,
                 app.getDownloadSource(this)));
 
@@ -191,7 +191,7 @@ public class InstallActivity extends AppCompatActivity {
 
     private void downloadApplication() {
         show(R.id.downloadingFile);
-        findTextViewById(R.id.downloadingFileUrl).setText(metadata.getDownloadUrl().toString());
+        setText(R.id.downloadingFileUrl, metadata.getDownloadUrl().toString());
 
         downloadId = downloadManager.enqueue(this, metadata.getDownloadUrl(), app.getTitle(this), VISIBILITY_VISIBLE);
         new Thread(() -> {
@@ -265,7 +265,7 @@ public class InstallActivity extends AppCompatActivity {
 
             try (OutputStream packageInSession = session.openWrite("package", 0, lengthInBytes);
                  InputStream apk = getContentResolver().openInputStream(download)) {
-                Preconditions.checkNotNull(apk);
+                Objects.requireNonNull(apk);
                 byte[] buffer = new byte[16384];
                 int n;
                 while ((n = apk.read(buffer)) >= 0) {
@@ -293,7 +293,7 @@ public class InstallActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if (PACKAGE_INSTALLED_ACTION.equals(intent.getAction())) {
-            Bundle extras = Preconditions.checkNotNull(intent.getExtras());
+            Bundle extras = Objects.requireNonNull(intent.getExtras());
             int status = extras.getInt(PackageInstaller.EXTRA_STATUS);
             if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
                 startActivity((Intent) extras.get(Intent.EXTRA_INTENT)); // This test app isn't privileged, so the user has to confirm the install.
@@ -339,11 +339,7 @@ public class InstallActivity extends AppCompatActivity {
         runOnUiThread(() -> findViewById(viewId).setVisibility(GONE));
     }
 
-    private void setText(int id, String text) {
-        runOnUiThread(() -> findTextViewById(id).setText(text));
-    }
-
-    private TextView findTextViewById(int id) {
-        return findViewById(id);
+    private void setText(int textId, String text) {
+        runOnUiThread(() -> ((TextView) findViewById(textId)).setText(text));
     }
 }

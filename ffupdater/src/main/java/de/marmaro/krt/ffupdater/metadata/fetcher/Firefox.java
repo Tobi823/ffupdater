@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.metadata.fetcher;
 import com.google.common.base.Preconditions;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 
 import de.marmaro.krt.ffupdater.App;
@@ -30,9 +31,9 @@ class Firefox implements Callable<AvailableMetadata> {
     private final App app;
 
     Firefox(MozillaCiConsumer mozillaCiConsumer, App app, DeviceEnvironment deviceEnvironment) {
-        Preconditions.checkNotNull(mozillaCiConsumer);
-        Preconditions.checkNotNull(app);
-        Preconditions.checkNotNull(deviceEnvironment);
+        Objects.requireNonNull(mozillaCiConsumer);
+        Objects.requireNonNull(app);
+        Objects.requireNonNull(deviceEnvironment);
         this.deviceEnvironment = deviceEnvironment;
         this.mozillaCiConsumer = mozillaCiConsumer;
         this.app = app;

@@ -9,6 +9,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.Objects;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
@@ -29,7 +30,7 @@ class Cache {
     private final SharedPreferences preferences;
 
     public Cache(SharedPreferences preferences) {
-        Preconditions.checkNotNull(preferences);
+        Objects.requireNonNull(preferences);
         this.preferences = preferences;
     }
 

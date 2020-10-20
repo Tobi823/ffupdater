@@ -18,6 +18,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
+import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
@@ -68,9 +69,9 @@ public class FingerprintValidator {
     }
 
     private FingerprintResult verifyPackageInfo(PackageInfo packageInfo, App app) throws CertificateException, NoSuchAlgorithmException {
-        Preconditions.checkNotNull(packageInfo);
+        Objects.requireNonNull(packageInfo);
         Preconditions.checkArgument(packageInfo.signatures.length > 0);
-        Preconditions.checkNotNull(app);
+        Objects.requireNonNull(app);
         Signature signature = packageInfo.signatures[0];
         InputStream signatureStream = new ByteArrayInputStream(signature.toByteArray());
         Certificate certificate = CertificateFactory.getInstance("X509").generateCertificate(signatureStream);

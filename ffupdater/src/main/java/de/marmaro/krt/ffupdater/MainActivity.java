@@ -25,6 +25,7 @@ import com.google.common.base.Preconditions;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         metadataFetcher = new AvailableMetadataFetcher(preferences, deviceEnvironment);
-        connectivityManager = Preconditions.checkNotNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
+        connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 
         // sometimes not all downloaded APK files are automatically deleted
         //noinspection ResultOfMethodCallIgnored

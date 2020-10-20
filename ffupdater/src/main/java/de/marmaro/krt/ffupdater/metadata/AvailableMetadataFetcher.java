@@ -6,6 +6,7 @@ import com.google.common.base.Preconditions;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -29,8 +30,8 @@ public class AvailableMetadataFetcher {
     private final GithubConsumer githubConsumer;
 
     public AvailableMetadataFetcher(SharedPreferences sharedPreferences, DeviceEnvironment deviceEnvironment) {
-        Preconditions.checkNotNull(sharedPreferences);
-        Preconditions.checkNotNull(deviceEnvironment);
+        Objects.requireNonNull(sharedPreferences);
+        Objects.requireNonNull(deviceEnvironment);
         this.sharedPreferences = sharedPreferences;
         this.deviceEnvironment = deviceEnvironment;
 

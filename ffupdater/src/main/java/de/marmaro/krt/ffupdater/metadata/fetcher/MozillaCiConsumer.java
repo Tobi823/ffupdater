@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import java.net.URL;
 import java.time.ZonedDateTime;
 import java.util.Map;
+import java.util.Objects;
 
 import de.marmaro.krt.ffupdater.metadata.Hash;
 import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
@@ -16,7 +17,7 @@ public class MozillaCiConsumer {
     private final ApiConsumer apiConsumer;
 
     public MozillaCiConsumer(ApiConsumer apiConsumer) {
-        Preconditions.checkNotNull(apiConsumer);
+        Objects.requireNonNull(apiConsumer);
         this.apiConsumer = apiConsumer;
     }
 
@@ -24,7 +25,7 @@ public class MozillaCiConsumer {
         final Response response = apiConsumer.consume(urlToChainOfTrustDocument, Response.class);
         final ReleaseTimestamp timestamp = new ReleaseTimestamp(ZonedDateTime.parse(response.getTask().getCreated()));
 
-        final Sha256Hash sha256Hash = Preconditions.checkNotNull(response.getArtifacts().get(artifactNameForHash));
+        final Sha256Hash sha256Hash = Objects.requireNonNull(response.getArtifacts().get(artifactNameForHash));
         return new MozillaCiResult(timestamp, sha256Hash.toHash());
     }
 

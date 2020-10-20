@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.metadata.fetcher;
 import com.google.common.base.Preconditions;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
@@ -21,7 +22,7 @@ class FirefoxLite implements Callable<AvailableMetadata> {
     private final GithubConsumer githubConsumer;
 
     FirefoxLite(GithubConsumer githubConsumer) {
-        Preconditions.checkNotNull(githubConsumer);
+        Objects.requireNonNull(githubConsumer);
         this.githubConsumer = githubConsumer;
     }
 
