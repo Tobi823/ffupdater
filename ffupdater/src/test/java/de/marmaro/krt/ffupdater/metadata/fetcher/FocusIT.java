@@ -44,12 +44,12 @@ public class FocusIT {
     private static MozillaCiConsumer mozillaCiConsumer;
 
     private static ApkMirrorHelper.RssFeedResponse focusRss;
-//    private static ApkMirrorHelper.RssFeedResponse klarRss;
+    private static ApkMirrorHelper.RssFeedResponse klarRss;
 
     @BeforeClass
     public static void setUp() throws ParserConfigurationException, SAXException, IOException {
         focusRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/feed/");
-//        klarRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/feed/");
+        klarRss = ApkMirrorHelper.getRssFeedResponse("https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/feed/");
 
         mozillaCiConsumer = new MozillaCiConsumer(new ApiConsumer());
     }
@@ -107,10 +107,9 @@ public class FocusIT {
         final AvailableMetadataExtended metadata = new Focus(mozillaCiConsumer, FIREFOX_KLAR, deviceEnvironment).call();
         verifyDownloadLinkAvailable(metadata);
         verifyReleaseAgeIsNotTooOld(metadata);
-        //TODO
-//        verifyHash(metadata, klarRss, Utils.createMap(
-//                "firefox-klar-the-privacy-browser-2", "firefox-klar-the-privacy-browser",
-//                "release", internalNameApkMirror));
+        verifyHash(metadata, klarRss, Utils.createMap(
+                "firefox-klar-the-privacy-browser-2", "firefox-klar-the-privacy-browser",
+                "release", internalNameApkMirror));
     }
 
     private static void verifyDownloadLinkAvailable(AvailableMetadata availableMetadata) throws IOException {
