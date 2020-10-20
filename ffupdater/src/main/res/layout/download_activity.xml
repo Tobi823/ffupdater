@@ -48,6 +48,23 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/externalStorageNotAccessible"
+            style="@style/DownloadActivitySegment"
+            android:background="@color/errorRed"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/BoldTextView"
+                android:text="@string/external_storage_not_accessible" />
+
+            <TextView
+                style="@style/MonospaceSelectableTextView"
+                android:id="@+id/externalStorageNotAccessible_state"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/fetchUrl"
             style="@style/DownloadActivitySegment">
 

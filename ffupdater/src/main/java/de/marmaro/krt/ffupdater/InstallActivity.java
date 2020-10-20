@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInstaller;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,8 +23,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
-
-import com.google.common.base.Preconditions;
 
 import org.apache.commons.codec.binary.ApacheCodecHex;
 
@@ -119,7 +118,7 @@ public class InstallActivity extends AppCompatActivity {
         }
         app = App.valueOf(appName);
 
-        if (isSignatureOfInstalledAppUnknown(app)) {
+        if (isSignatureOfInstalledAppUnknown(app) || isExternalStorageNotAccessible()) {
             return;
         }
         checkFreeSpace();
@@ -150,9 +149,19 @@ public class InstallActivity extends AppCompatActivity {
         return unknown;
     }
 
+    private boolean isExternalStorageNotAccessible() {
+        final String status = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(status)) {
+            return false;
+        }
+        show(R.id.externalStorageNotAccessible);
+        setText(R.id.externalStorageNotAccessible_state, status);
+        return true;
+    }
+
     private void checkFreeSpace() {
-        File externalFilesDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
-        long freeBytes = new StatFs(externalFilesDir.getPath()).getFreeBytes();
+        final File downloadDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
+        long freeBytes = new StatFs(downloadDir.getPath()).getFreeBytes();
         if (freeBytes > 104_857_600) {
             return;
         }
