@@ -32,6 +32,9 @@ The applications are downloaded from these locations:
 Limitations:
  - FFUpdater can't detect external installations or updates of Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Focus and Firefox Klar. If you install or update one of these apps with the Google Play Store, FFUpdater assumes that this app is outdated and prompts you for an update. You can disable the update check for an app in settings > excluded applications.
 
+FAQ:
+ - app installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
+
 ## Deprecated browsers
 
 ### Fennec
