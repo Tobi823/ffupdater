@@ -89,8 +89,9 @@ public class MainActivity extends AppCompatActivity {
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 
         // sometimes not all downloaded APK files are automatically deleted
+        final File downloadsDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
         //noinspection ResultOfMethodCallIgnored
-        Arrays.stream(getExternalFilesDir(DIRECTORY_DOWNLOADS).listFiles()).forEach(File::delete);
+        Arrays.stream(downloadsDir.listFiles()).forEach(File::delete);
     }
 
     @Override

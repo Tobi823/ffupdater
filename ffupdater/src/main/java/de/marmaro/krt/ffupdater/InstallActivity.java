@@ -151,8 +151,7 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void checkFreeSpace() {
-        File externalFilesDir = getExternalFilesDir(DIRECTORY_DOWNLOADS);
-        Objects.requireNonNull(externalFilesDir);
+        File externalFilesDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
         long freeBytes = new StatFs(externalFilesDir.getPath()).getFreeBytes();
         if (freeBytes > 104_857_600) {
             return;

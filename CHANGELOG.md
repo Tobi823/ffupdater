@@ -3,6 +3,7 @@
  * Notification contains apps to update
  * better detect ABI of device - Firefox Focus can be installed on Android emulators
  * Better delete old downloaded APK files
+ * Drop permission READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE because they should not be necessary
 
 # 2020-09-23 Version 69.0.5 (53)
  * Disable error when the already installed app has a different signature (because Android won't install an update with a different signature) - thanks pheki for reporting this bug

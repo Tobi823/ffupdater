@@ -45,7 +45,11 @@ public class DownloadManagerAdapter {
      * @return new generated id for the download
      */
     public long enqueue(Context context, URL downloadUrl, String notificationTitle, int notificationVisibility) {
+        Objects.requireNonNull(context);
+        Objects.requireNonNull(downloadUrl);
+        Objects.requireNonNull(notificationTitle);
         Preconditions.checkArgument("https".equals(downloadUrl.getProtocol()));
+
         String fileName = String.format(Locale.getDefault(), "download_%d_%d.apk",
                 System.currentTimeMillis(),
                 Math.abs(new Random().nextLong()));
@@ -56,7 +60,8 @@ public class DownloadManagerAdapter {
         request.setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName);
 
         long id = downloadManager.enqueue(request);
-        files.put(id, new File(context.getExternalFilesDir(DIRECTORY_DOWNLOADS), fileName));
+        final File downloadDir = Objects.requireNonNull(context.getExternalFilesDir(DIRECTORY_DOWNLOADS));
+        files.put(id, new File(downloadDir, fileName));
         return id;
     }
 
