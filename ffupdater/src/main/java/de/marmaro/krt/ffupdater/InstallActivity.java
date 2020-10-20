@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -90,33 +91,30 @@ public class InstallActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.download_activity);
         AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
-
         registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        Optional.ofNullable(getSupportActionBar()).ifPresent(actionBar -> actionBar.setDisplayHomeAsUpEnabled(true));
+
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         fetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());
         fingerprintValidator = new FingerprintValidator(getPackageManager());
-
         downloadManagerIdToString.put(STATUS_RUNNING, "running");
         downloadManagerIdToString.put(STATUS_SUCCESSFUL, "success");
         downloadManagerIdToString.put(STATUS_FAILED, "failed");
         downloadManagerIdToString.put(STATUS_PAUSED, "paused");
         downloadManagerIdToString.put(STATUS_PENDING, "pending");
 
-        findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
-
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
-        String appName = Objects.requireNonNull(getIntent().getExtras()).getString(EXTRA_APP_NAME);
-        if (appName == null) { // if the Activity was not crated from the FFUpdater main menu
+        final Optional<App> optionalApp = Optional.ofNullable(getIntent().getExtras())
+                .map(bundle -> bundle.getString(EXTRA_APP_NAME))
+                .map(App::valueOf);
+        if (!optionalApp.isPresent()) { // if the Activity was not crated from the FFUpdater main menu
             finish();
             return;
         }
-        app = App.valueOf(appName);
+        app = optionalApp.get();
+
+        findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
         if (isSignatureOfInstalledAppUnknown(app) || isExternalStorageNotAccessible()) {
             return;

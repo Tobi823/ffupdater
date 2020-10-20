@@ -11,6 +11,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.notification.Notificator;
@@ -31,10 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.settings, new SettingsFragment())
                 .commit();
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        Optional.ofNullable(getSupportActionBar()).ifPresent(actionBar -> actionBar.setDisplayHomeAsUpEnabled(true));
     }
 
     @Override
