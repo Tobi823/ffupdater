@@ -57,8 +57,6 @@ import static android.os.Environment.DIRECTORY_DOWNLOADS;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static de.marmaro.krt.ffupdater.R.id.downloadedFileUrl;
-import static de.marmaro.krt.ffupdater.R.id.downloadingFileText;
-import static de.marmaro.krt.ffupdater.R.string.download_application_from_with_status;
 
 /**
  * Activity for downloading and installing apps on devices with API Level >= 24/Nougat.
@@ -79,6 +77,7 @@ public class InstallActivity extends AppCompatActivity {
     private AvailableMetadataFetcher fetcher;
     private long downloadId = -1;
     private boolean killSwitch;
+    private Map<Integer, String> downloadManagerIdToString = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +90,12 @@ public class InstallActivity extends AppCompatActivity {
         downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         fetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());
+
+        downloadManagerIdToString.put(DownloadManager.STATUS_RUNNING, "running");
+        downloadManagerIdToString.put(DownloadManager.STATUS_SUCCESSFUL, "success");
+        downloadManagerIdToString.put(DownloadManager.STATUS_FAILED, "failed");
+        downloadManagerIdToString.put(DownloadManager.STATUS_PAUSED, "paused");
+        downloadManagerIdToString.put(DownloadManager.STATUS_PENDING, "pending");
 
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
@@ -142,18 +147,23 @@ public class InstallActivity extends AppCompatActivity {
         if (PACKAGE_INSTALLED_ACTION.equals(intent.getAction())) {
             Bundle extras = Preconditions.checkNotNull(intent.getExtras());
             int status = extras.getInt(PackageInstaller.EXTRA_STATUS);
-            String message = extras.getString(PackageInstaller.EXTRA_STATUS_MESSAGE);
-            switch (status) {
-                case PackageInstaller.STATUS_PENDING_USER_ACTION:
-                    startActivity((Intent) extras.get(Intent.EXTRA_INTENT)); // This test app isn't privileged, so the user has to confirm the install.
-                    break;
-                case PackageInstaller.STATUS_SUCCESS:
-                    actionInstallationFinished(true, null);
-                    break;
-                default:
-                    String text = String.format(Locale.getDefault(), "(%d) %s", status, message);
-                    actionInstallationFinished(false, text);
+            if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+                startActivity((Intent) extras.get(Intent.EXTRA_INTENT)); // This test app isn't privileged, so the user has to confirm the install.
+                return;
             }
+            hide(R.id.installingApplication);
+            hide(R.id.installConfirmation);
+            if (status == PackageInstaller.STATUS_SUCCESS) {
+                show(R.id.installerSuccess);
+                actionVerifyInstalledAppSignature();
+                deviceAppRegister.saveReleaseId(app, metadata.getReleaseId());
+            } else {
+                show(R.id.installerFailed);
+                String message = extras.getString(PackageInstaller.EXTRA_STATUS_MESSAGE);
+                String text = String.format(Locale.getDefault(), "(%d) %s", status, message);
+                setText(R.id.installerFailedReason, text);
+            }
+            downloadManager.remove(downloadId);
         }
     }
 
@@ -201,14 +211,15 @@ public class InstallActivity extends AppCompatActivity {
                 int status = Objects.requireNonNull(statusAndProgress.first);
                 if (previousStatus != status) {
                     previousStatus = status;
-                    actionDownloadUpdateStatus(status);
+                    setText(R.id.downloadingFileText, getString(R.string.download_application_from_with_status,
+                            downloadManagerIdToString.getOrDefault(status, "?")));
                 }
                 if (status == DownloadManager.STATUS_FAILED || status == DownloadManager.STATUS_SUCCESSFUL) {
                     return;
                 }
 
                 int progress = Objects.requireNonNull(statusAndProgress.second);
-                actionDownloadUpdateProgressBar(progress);
+                runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar)).setProgress(progress));
 
                 de.marmaro.krt.ffupdater.utils.Utils.sleepAndIgnoreInterruptedException(500);
             }
@@ -241,9 +252,16 @@ public class InstallActivity extends AppCompatActivity {
                 File downloadedFile = downloadManager.getFileForDownloadedFile(id);
                 Pair<Boolean, String> check = CertificateFingerprint.checkSignatureOfApkFile(getPackageManager(), downloadedFile, app);
                 if (Objects.requireNonNull(check.first)) {
-                    actionSignatureGood(check.second);
+                    hide(R.id.verifyDownloadFingerprint);
+                    show(R.id.fingerprintDownloadGood);
+                    setText(R.id.fingerprintDownloadGoodHash, check.second);
+                    show(R.id.installConfirmation);
                 } else {
-                    actionSignatureBad(check.second);
+                    hide(R.id.verifyDownloadFingerprint);
+                    show(R.id.fingerprintDownloadBad);
+                    setText(R.id.fingerprintDownloadBadHashActual, check.second);
+                    setText(R.id.fingerprintDownloadBadHashExpected, ApacheCodecHex.encodeHexString(app.getSignatureHash()));
+                    show(R.id.installerFailed);
                 }
             }).start();
         }
@@ -291,8 +309,7 @@ public class InstallActivity extends AppCompatActivity {
 
         show(R.id.tooLowMemory);
         long freeMBytes = freeBytes / (1024 * 1024);
-        TextView description = findViewById(R.id.tooLowMemoryDescription);
-        description.setText(getString(R.string.too_low_memory_description, freeMBytes));
+        setText(R.id.tooLowMemoryDescription, getString(R.string.too_low_memory_description, freeMBytes));
     }
 
     private boolean isSignatureOfInstalledAppUnknown(App app) {
@@ -304,59 +321,6 @@ public class InstallActivity extends AppCompatActivity {
         return unknown;
     }
 
-    private void actionDownloadUpdateProgressBar(int percent) {
-        runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar)).setProgress(percent));
-
-    }
-
-    private void actionDownloadUpdateStatus(int status) {
-        final Map<Integer, String> map = new HashMap<>();
-        map.put(DownloadManager.STATUS_RUNNING, "running");
-        map.put(DownloadManager.STATUS_SUCCESSFUL, "success");
-        map.put(DownloadManager.STATUS_FAILED, "failed");
-        map.put(DownloadManager.STATUS_PAUSED, "paused");
-        map.put(DownloadManager.STATUS_PENDING, "pending");
-        final String text = getString(download_application_from_with_status, map.getOrDefault(status, "?"));
-        runOnUiThread(() -> findTextViewById(downloadingFileText).setText(text));
-    }
-
-    private void actionSignatureGood(String hash) {
-        runOnUiThread(() -> {
-            hide(R.id.verifyDownloadFingerprint);
-            show(R.id.fingerprintDownloadGood);
-            findTextViewById(R.id.fingerprintDownloadGoodHash).setText(hash);
-            show(R.id.installConfirmation);
-        });
-    }
-
-    private void actionSignatureBad(String hash) {
-        runOnUiThread(() -> {
-            hide(R.id.verifyDownloadFingerprint);
-            show(R.id.fingerprintDownloadBad);
-            findTextViewById(R.id.fingerprintDownloadBadHashActual).setText(hash);
-            findTextViewById(R.id.fingerprintDownloadBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
-            show(R.id.installerFailed);
-        });
-    }
-
-    private void actionInstallationFinished(boolean success, String errorMessage) {
-        runOnUiThread(() -> {
-            hide(R.id.installingApplication);
-            hide(R.id.installConfirmation);
-            if (success) {
-                show(R.id.installerSuccess);
-                actionVerifyInstalledAppSignature();
-            } else {
-                show(R.id.installerFailed);
-                findTextViewById(R.id.installerFailedReason).setText(errorMessage);
-            }
-        });
-        if (success) {
-            deviceAppRegister.saveReleaseId(app, metadata.getReleaseId());
-        }
-        downloadManager.remove(downloadId);
-    }
-
     private void actionVerifyInstalledAppSignature() {
         show(R.id.verifyInstalledFingerprint);
         new Thread(() -> {
@@ -364,17 +328,15 @@ public class InstallActivity extends AppCompatActivity {
             boolean signatureIsValid = signatureResult.isPresent() && Preconditions.checkNotNull(signatureResult.get().first);
             String signatureAsString = signatureResult.isPresent() ? signatureResult.get().second : "[APP NOT INSTALLED]";
 
-            runOnUiThread(() -> {
-                hide(R.id.verifyInstalledFingerprint);
-                if (signatureIsValid) {
-                    show(R.id.fingerprintInstalledGood);
-                    findTextViewById(R.id.fingerprintInstalledGoodHash).setText(signatureAsString);
-                } else {
-                    show(R.id.fingerprintInstalledBad);
-                    findTextViewById(R.id.fingerprintInstalledBadHashActual).setText(signatureAsString);
-                    findTextViewById(R.id.fingerprintInstalledBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
-                }
-            });
+            hide(R.id.verifyInstalledFingerprint);
+            if (signatureIsValid) {
+                show(R.id.fingerprintInstalledGood);
+                setText(R.id.fingerprintInstalledGoodHash, signatureAsString);
+            } else {
+                show(R.id.fingerprintInstalledBad);
+                setText(R.id.fingerprintInstalledBadHashActual, signatureAsString);
+                setText(R.id.fingerprintInstalledBadHashExpected, ApacheCodecHex.encodeHexString(app.getSignatureHash()));
+            }
         }).start();
     }
 
