@@ -76,14 +76,15 @@ public class InstallActivity extends AppCompatActivity {
     private static final String PACKAGE_INSTALLED_ACTION = "de.marmaro.krt.ffupdater.InstallActivity.SESSION_API_PACKAGE_INSTALLED";
     public static final String LOG_TAG = "InstallActivity";
 
+    private final Map<Integer, String> downloadManagerIdToString = new HashMap<>();
     private DownloadManagerAdapter downloadManager;
     private InstalledMetadataRegister deviceAppRegister;
+    private FingerprintValidator fingerprintValidator;
+    private AvailableMetadataFetcher fetcher;
+
     private App app;
     private AvailableMetadata metadata;
-    private AvailableMetadataFetcher fetcher;
     private long downloadId = -1;
-    private final Map<Integer, String> downloadManagerIdToString = new HashMap<>();
-    private FingerprintValidator fingerprintValidator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
