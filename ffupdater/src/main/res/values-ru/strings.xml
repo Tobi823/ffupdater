@@ -5,7 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
     <string name="application_successful_installed">Приложение успешно установлено</string>
-    <string name="available_version">Доступен:%1$s%2$s</string>
+    <string name="available_version">Доступен:%1$s</string>
     <string name="but_was">Но был:</string>
     <string name="device_too_old_dialog_message">Для работы приложения требуется Android %1$s, но на вашем устройстве работает только Android %2$s. Выберите другое приложение, обновите операционную систему или перейдите на новый смартфон.</string>
     <string name="device_too_old_dialog_title">Устройство слишком старое</string>
@@ -52,7 +52,7 @@
     <string name="installation_warning_title">Предупреждение</string>
     <string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
-    <string name="installed_version">Установлен:%1$s%2$s</string>
+    <string name="installed_version">Установлен:%1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Либо злоумышленник подменил правильную загрузку на фальсифицированную, либо проверка сертификата больше не работает. Вы можете перепроверить отпечаток сертификата на apkmirror.com или сообщить мне об ошибке на сайте https://notabug.org/Tobiwan/ffupdater.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Либо установлено фальсифицированное приложение, либо больше не работает программа проверки сертификатов. Вы можете перепроверить отпечаток сертификата на apkmirror.com или сообщить мне об ошибке на сайте https://notabug.org/Tobiwan/ffupdater.\n\nРекомендуется удалить приложение.</string>
     <string name="loading_available_version">Загрузка…</string>

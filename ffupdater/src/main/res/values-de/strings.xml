@@ -5,7 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Installation der Anwendung schlug fehl</string>
     <string name="application_successful_installed">Anwendung erfolgreich installiert</string>
-    <string name="available_version">Verfügbar:%1$s%2$s</string>
+    <string name="available_version">Verfügbar:%1$s</string>
     <string name="but_was">Aber war:</string>
     <string name="device_too_old_dialog_message">Die Anwendung erfordert Android %1$s. Aber auf Ihrem Gerät läuft nur Android %2$s. Wählen Sie entweder eine andere Applikation, aktualisieren Sie Ihr Betriebssystem oder wechseln Sie zu einem neueren Smartphone.</string>
     <string name="device_too_old_dialog_title">Gerät ist zu alt</string>
@@ -46,7 +46,7 @@
     <string name="installation_warning_title">"Warnung "</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
     <string name="installed_application_is_verified">Installierte Anwendung ist verifiziert</string>
-    <string name="installed_version">Installiert:%1$s%2$s</string>
+    <string name="installed_version">Installiert:%1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Entweder hat ein Angreifer den korrekten Download durch einen manipulierten ersetzt, oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Entweder wurde eine manipulierte Anwendung installiert oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="loading_available_version">Laden…</string>

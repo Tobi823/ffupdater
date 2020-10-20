@@ -5,7 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">A instalação do aplicativo falhou</string>
     <string name="application_successful_installed">O aplicativo instalado com êxito</string>
-    <string name="available_version">Disponível:%1$s%2$s</string>
+    <string name="available_version">Disponível:%1$s</string>
     <string name="but_was">Mais era:</string>
     <string name="device_too_old_dialog_message"> O aplicativo requer o Android %1$s. Mas seu dispositivo está rodando apenas o Android %2$s. Escolha um aplicativo diferente, atualize seu sistema operacional ou mude para um smartphone mais novo.</string>
     <string name="device_too_old_dialog_title">O dispositivo é muito antigo</string>
@@ -53,7 +53,7 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="installation_warning_title">Atenção</string>
     <string name="installed_app_is_not_verified">O aplicativo instalado NÃO é verificado</string>
     <string name="installed_application_is_verified">O aplicativo instalado É verificado</string>
-    <string name="installed_version">Instalado:%1$s%2$s</string>
+    <string name="installed_version">Instalado:%1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Ou um invasor substituiu o download correto por um adulterado ou o verificador de certificados não funciona mais. Você pode verificar novamente a impressão digital do certificado em apkmirror.com ou pode criar um ISSUE em https://notabug.org/Tobiwan/ffupdater para me informar sobre o bug.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Ou uma aplicação adulterada foi instalada no seu dispositivo ou o verificador de certificados não funciona mais. Você pode verificar novamente a impressão digital do certificado em apkmirror.com ou pode criar um ISSUE em https://notabug.org/Tobiwan/ffupdater para me informar sobre o bug.\n\n recomendamos que você desinstale o aplicativo.</string>
     <string name="loading_available_version">Carregando…</string>

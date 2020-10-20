@@ -20,7 +20,6 @@ import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.common.base.Preconditions;
 
 import java.io.File;
 import java.util.Arrays;
@@ -52,13 +51,13 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static de.marmaro.krt.ffupdater.R.drawable.ic_file_download_grey;
 import static de.marmaro.krt.ffupdater.R.drawable.ic_file_download_orange;
-import static de.marmaro.krt.ffupdater.R.string.AVAILABLE_VERSION;
-import static de.marmaro.krt.ffupdater.R.string.AVAILABLE_VERSION_ERROR;
-import static de.marmaro.krt.ffupdater.R.string.AVAILABLE_VERSION_LOADING;
-import static de.marmaro.krt.ffupdater.R.string.INSTALLED_VERSION;
-import static de.marmaro.krt.ffupdater.R.string.NO_UPDATE_AVAILABLE;
-import static de.marmaro.krt.ffupdater.R.string.UNKNOWN_INSTALLED_VERSION;
-import static de.marmaro.krt.ffupdater.R.string.UPDATE_AVAILABLE;
+import static de.marmaro.krt.ffupdater.R.string.available_version;
+import static de.marmaro.krt.ffupdater.R.string.available_version_error;
+import static de.marmaro.krt.ffupdater.R.string.available_version_loading;
+import static de.marmaro.krt.ffupdater.R.string.installed_version;
+import static de.marmaro.krt.ffupdater.R.string.no_update_available;
+import static de.marmaro.krt.ffupdater.R.string.unknown_installed_version;
+import static de.marmaro.krt.ffupdater.R.string.update_available;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
@@ -155,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
             getAppCard(installedApp).setVisibility(VISIBLE);
             getInstalledVersionTextView(installedApp).setText(installedText);
-            getAvailableVersionTextView(installedApp).setText(AVAILABLE_VERSION_LOADING);
+            getAvailableVersionTextView(installedApp).setText(available_version_loading);
         }
 
         Map<App, Future<AvailableMetadata>> futures = metadataFetcher.fetchMetadata(installedApps);
@@ -171,14 +170,14 @@ public class MainActivity extends AppCompatActivity {
 
                     final String availableText;
                     if (app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP) {
-                        availableText = getString(updateAvailable ? UPDATE_AVAILABLE : NO_UPDATE_AVAILABLE);
+                        availableText = getString(updateAvailable ? update_available : no_update_available);
                     } else {
-                        availableText = getString(AVAILABLE_VERSION, available.getReleaseId().getValueAsString());
+                        availableText = getString(available_version, available.getReleaseId().getValueAsString());
                     }
 
                     final String installedText = installed.map(metadata ->
-                            getString(INSTALLED_VERSION, metadata.getVersionName())
-                    ).orElse(getString(UNKNOWN_INSTALLED_VERSION));
+                            getString(installed_version, metadata.getVersionName())
+                    ).orElse(getString(unknown_installed_version));
 
                     runOnUiThread(() -> {
                         getInstalledVersionTextView(app).setText(installedText);
@@ -188,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (ExecutionException | InterruptedException | TimeoutException e) {
                     Log.e(LOG_TAG, "failed to fetch metadata", e);
                     runOnUiThread(() -> {
-                        getAvailableVersionTextView(app).setText(AVAILABLE_VERSION_ERROR);
+                        getAvailableVersionTextView(app).setText(available_version_error);
                         getDownloadButton(app).setImageResource(ic_file_download_grey);
                     });
                 }

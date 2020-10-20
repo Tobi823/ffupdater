@@ -5,7 +5,6 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successful_installed">Application successful installed</string>
-    <string name="available_version">Available:%1$s%2$s</string>
     <string name="but_was">But was:</string>
     <string name="default_theme_preference" translatable="false">1</string>
     <string name="device_too_old_dialog_message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>
@@ -55,7 +54,6 @@
     <string name="installation_warning_title">Warning</string>
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
-    <string name="installed_version">Installed:%1$s%2$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
     <string name="loading_available_version">Loading…</string>
