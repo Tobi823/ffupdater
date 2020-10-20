@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.os.StatFs;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -33,7 +32,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
@@ -43,9 +44,9 @@ import java.util.concurrent.TimeoutException;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter;
-import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
+import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.security.CertificateFingerprint;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
@@ -53,6 +54,11 @@ import de.marmaro.krt.ffupdater.utils.Utils;
 import static android.app.DownloadManager.Request.VISIBILITY_VISIBLE;
 import static android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL;
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+import static de.marmaro.krt.ffupdater.R.id.downloadedFileUrl;
+import static de.marmaro.krt.ffupdater.R.id.downloadingFileText;
+import static de.marmaro.krt.ffupdater.R.string.download_application_from_with_status;
 
 /**
  * Activity for downloading and installing apps on devices with API Level >= 24/Nougat.
@@ -152,7 +158,7 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void fetchUrlForDownload() {
-        findViewById(R.id.fetchUrl).setVisibility(View.VISIBLE);
+        show(R.id.fetchUrl);
         findTextViewById(R.id.fetchUrlTextView).setText(getString(
                 R.string.fetch_url_for_download,
                 app.getDownloadSource(this)));
@@ -162,8 +168,8 @@ public class InstallActivity extends AppCompatActivity {
             try {
                 this.metadata = futureMetadata.get(30, TimeUnit.SECONDS);
                 runOnUiThread(() -> {
-                    findViewById(R.id.fetchUrl).setVisibility(View.GONE);
-                    findViewById(R.id.fetchedUrlSuccess).setVisibility(View.VISIBLE);
+                    hide(R.id.fetchUrl);
+                    show(R.id.fetchedUrlSuccess);
                     findTextViewById(R.id.fetchedUrlSuccessTextView).setText(getString(
                             R.string.fetched_url_for_download_successfully,
                             app.getDownloadSource(this)));
@@ -172,19 +178,19 @@ public class InstallActivity extends AppCompatActivity {
             } catch (ExecutionException | InterruptedException | TimeoutException e) {
                 Log.e(LOG_TAG, "failed to fetch url", e);
                 runOnUiThread(() -> {
-                    findViewById(R.id.fetchUrl).setVisibility(View.GONE);
-                    findViewById(R.id.fetchedUrlFailure).setVisibility(View.VISIBLE);
+                    hide(R.id.fetchUrl);
+                    show(R.id.fetchedUrlFailure);
                     findTextViewById(R.id.fetchedUrlFailureTextView).setText(getString(
                             R.string.fetched_url_for_download_unsuccessfully,
                             app.getDownloadSource(this)));
-                    findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
+                    show(R.id.installerFailed);
                 });
             }
         }).start();
     }
 
     private void downloadApplication() {
-        findViewById(R.id.downloadingFile).setVisibility(View.VISIBLE);
+        show(R.id.downloadingFile);
         findTextViewById(R.id.downloadingFileUrl).setText(metadata.getDownloadUrl().toString());
 
         downloadId = downloadManager.enqueue(this, metadata.getDownloadUrl(), app.getTitle(this), VISIBILITY_VISIBLE);
@@ -217,11 +223,20 @@ public class InstallActivity extends AppCompatActivity {
                 return;
             }
             if (Objects.requireNonNull(downloadManager.getStatusAndProgress(id).first) == DownloadManager.STATUS_FAILED) {
-                actionDownloadFailed();
+                runOnUiThread(() -> {
+                    hide(R.id.downloadingFile);
+                    show(R.id.downloadFileFailed);
+                    findTextViewById(R.id.downloadFileFailedUrl).setText(metadata.getDownloadUrl().toString());
+                    show(R.id.installerFailed);
+                });
                 return;
             }
-            actionDownloadFinished();
-            actionVerifyingSignature();
+            runOnUiThread(() -> {
+                hide(R.id.downloadingFile);
+                show(R.id.downloadedFile);
+                findTextViewById(downloadedFileUrl).setText(metadata.getDownloadUrl().toString());
+                show(R.id.verifyDownloadFingerprint);
+            });
             new Thread(() -> {
                 File downloadedFile = downloadManager.getFileForDownloadedFile(id);
                 Pair<Boolean, String> check = CertificateFingerprint.checkSignatureOfApkFile(getPackageManager(), downloadedFile, app);
@@ -238,7 +253,7 @@ public class InstallActivity extends AppCompatActivity {
      * See example: https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/content/InstallApkSessionApi.java
      */
     private void install() {
-        findViewById(R.id.installingApplication).setVisibility(View.VISIBLE);
+        show(R.id.installingApplication);
         PackageInstaller installer = getPackageManager().getPackageInstaller();
         PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(MODE_FULL_INSTALL);
         try (PackageInstaller.Session session = installer.openSession(installer.createSession(params))) {
@@ -274,7 +289,7 @@ public class InstallActivity extends AppCompatActivity {
             return;
         }
 
-        findViewById(R.id.tooLowMemory).setVisibility(View.VISIBLE);
+        show(R.id.tooLowMemory);
         long freeMBytes = freeBytes / (1024 * 1024);
         TextView description = findViewById(R.id.tooLowMemoryDescription);
         description.setText(getString(R.string.too_low_memory_description, freeMBytes));
@@ -284,7 +299,7 @@ public class InstallActivity extends AppCompatActivity {
         Optional<Pair<Boolean, String>> signatureInfo = CertificateFingerprint.checkSignatureOfInstalledApp(getPackageManager(), app);
         boolean unknown = signatureInfo.isPresent() && !Preconditions.checkNotNull(signatureInfo.get().first);
         if (unknown) {
-            findViewById(R.id.unknownSignatureOfInstalledApp).setVisibility(View.VISIBLE);
+            show(R.id.unknownSignatureOfInstalledApp);
         }
         return unknown;
     }
@@ -295,77 +310,44 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void actionDownloadUpdateStatus(int status) {
-        runOnUiThread(() -> {
-            String text = getString(R.string.download_application_from_with_status, getDownloadStatusAsString(status));
-            findTextViewById(R.id.downloadingFileText).setText(text);
-        });
-    }
-
-    private String getDownloadStatusAsString(int status) {
-        switch (status) {
-            case DownloadManager.STATUS_RUNNING:
-                return "running";
-            case DownloadManager.STATUS_SUCCESSFUL:
-                return "success";
-            case DownloadManager.STATUS_FAILED:
-                return "failed";
-            case DownloadManager.STATUS_PAUSED:
-                return "paused";
-            case DownloadManager.STATUS_PENDING:
-                return "pending";
-        }
-        return "";
-    }
-
-    private void actionDownloadFailed() {
-        runOnUiThread(() -> {
-            findViewById(R.id.downloadingFile).setVisibility(View.GONE);
-            findViewById(R.id.downloadFileFailed).setVisibility(View.VISIBLE);
-            findTextViewById(R.id.downloadFileFailedUrl).setText(metadata.getDownloadUrl().toString());
-            findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
-        });
-    }
-
-    private void actionDownloadFinished() {
-        runOnUiThread(() -> {
-            runOnUiThread(() -> findViewById(R.id.downloadingFile).setVisibility(View.GONE));
-            findViewById(R.id.downloadedFile).setVisibility(View.VISIBLE);
-            findTextViewById(R.id.downloadedFileUrl).setText(metadata.getDownloadUrl().toString());
-        });
-    }
-
-    private void actionVerifyingSignature() {
-        runOnUiThread(() -> findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.VISIBLE));
+        final Map<Integer, String> map = new HashMap<>();
+        map.put(DownloadManager.STATUS_RUNNING, "running");
+        map.put(DownloadManager.STATUS_SUCCESSFUL, "success");
+        map.put(DownloadManager.STATUS_FAILED, "failed");
+        map.put(DownloadManager.STATUS_PAUSED, "paused");
+        map.put(DownloadManager.STATUS_PENDING, "pending");
+        final String text = getString(download_application_from_with_status, map.getOrDefault(status, "?"));
+        runOnUiThread(() -> findTextViewById(downloadingFileText).setText(text));
     }
 
     private void actionSignatureGood(String hash) {
         runOnUiThread(() -> {
-            findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
-            findViewById(R.id.fingerprintDownloadGood).setVisibility(View.VISIBLE);
+            hide(R.id.verifyDownloadFingerprint);
+            show(R.id.fingerprintDownloadGood);
             findTextViewById(R.id.fingerprintDownloadGoodHash).setText(hash);
-            findViewById(R.id.installConfirmation).setVisibility(View.VISIBLE);
+            show(R.id.installConfirmation);
         });
     }
 
     private void actionSignatureBad(String hash) {
         runOnUiThread(() -> {
-            findViewById(R.id.verifyDownloadFingerprint).setVisibility(View.GONE);
-            findViewById(R.id.fingerprintDownloadBad).setVisibility(View.VISIBLE);
+            hide(R.id.verifyDownloadFingerprint);
+            show(R.id.fingerprintDownloadBad);
             findTextViewById(R.id.fingerprintDownloadBadHashActual).setText(hash);
             findTextViewById(R.id.fingerprintDownloadBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
-            findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
+            show(R.id.installerFailed);
         });
     }
 
     private void actionInstallationFinished(boolean success, String errorMessage) {
         runOnUiThread(() -> {
-            findViewById(R.id.installingApplication).setVisibility(View.GONE);
-            findViewById(R.id.installConfirmation).setVisibility(View.GONE);
+            hide(R.id.installingApplication);
+            hide(R.id.installConfirmation);
             if (success) {
-                findViewById(R.id.installerSuccess).setVisibility(View.VISIBLE);
+                show(R.id.installerSuccess);
                 actionVerifyInstalledAppSignature();
             } else {
-                findViewById(R.id.installerFailed).setVisibility(View.VISIBLE);
+                show(R.id.installerFailed);
                 findTextViewById(R.id.installerFailedReason).setText(errorMessage);
             }
         });
@@ -376,24 +358,36 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private void actionVerifyInstalledAppSignature() {
-        runOnUiThread(() -> findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.VISIBLE));
+        show(R.id.verifyInstalledFingerprint);
         new Thread(() -> {
             Optional<Pair<Boolean, String>> signatureResult = CertificateFingerprint.checkSignatureOfInstalledApp(getPackageManager(), app);
             boolean signatureIsValid = signatureResult.isPresent() && Preconditions.checkNotNull(signatureResult.get().first);
             String signatureAsString = signatureResult.isPresent() ? signatureResult.get().second : "[APP NOT INSTALLED]";
 
             runOnUiThread(() -> {
-                findViewById(R.id.verifyInstalledFingerprint).setVisibility(View.GONE);
+                hide(R.id.verifyInstalledFingerprint);
                 if (signatureIsValid) {
-                    findViewById(R.id.fingerprintInstalledGood).setVisibility(View.VISIBLE);
+                    show(R.id.fingerprintInstalledGood);
                     findTextViewById(R.id.fingerprintInstalledGoodHash).setText(signatureAsString);
                 } else {
-                    findViewById(R.id.fingerprintInstalledBad).setVisibility(View.VISIBLE);
+                    show(R.id.fingerprintInstalledBad);
                     findTextViewById(R.id.fingerprintInstalledBadHashActual).setText(signatureAsString);
                     findTextViewById(R.id.fingerprintInstalledBadHashExpected).setText(ApacheCodecHex.encodeHexString(app.getSignatureHash()));
                 }
             });
         }).start();
+    }
+
+    private void show(int viewId) {
+        runOnUiThread(() -> findViewById(viewId).setVisibility(VISIBLE));
+    }
+
+    private void hide(int viewId) {
+        runOnUiThread(() -> findViewById(viewId).setVisibility(GONE));
+    }
+
+    private void setText(int id, String text) {
+        runOnUiThread(() -> findTextViewById(id).setText(text));
     }
 
     private TextView findTextViewById(int id) {
