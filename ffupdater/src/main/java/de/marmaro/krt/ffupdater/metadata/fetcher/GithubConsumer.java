@@ -1,50 +1,81 @@
 package de.marmaro.krt.ffupdater.metadata.fetcher;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
+import com.google.common.base.Preconditions;
 import com.google.gson.annotations.SerializedName;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
+import java.util.function.Predicate;
 
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 public class GithubConsumer {
     public static final String LATEST_RELEASE_URL = "https://api.github.com/repos/%s/%s/releases/latest";
-    public static final String ALL_RELEASES_URL = "https://api.github.com/repos/%s/%s/releases";
+    public static final String ALL_RELEASES_URL = "https://api.github.com/repos/%s/%s/releases?per_page=%d&page=%d";
 
     private final ApiConsumer apiConsumer;
 
     public GithubConsumer(ApiConsumer apiConsumer) {
+        Objects.requireNonNull(apiConsumer);
         this.apiConsumer = apiConsumer;
     }
 
-    GithubResult consume(String owner, String repository) {
-        Release release = findLatestRelease(owner, repository);
-        if (release.getAssets() != null && !release.getAssets().isEmpty()) {
+    /**
+     * Use this method if the latest release is properly the wanted release
+     *
+     * @return
+     */
+    GithubResult consumeLatestReleaseFirst(Request request) {
+        Preconditions.checkArgument(isRequestValid(request));
+        final URL url = Utils.createURL(String.format(
+                LATEST_RELEASE_URL,
+                request.ownerOfRepository,
+                request.repositoryName));
+        Release release = apiConsumer.consume(url, Release.class);
+        if (request.releaseValidator.test(release)) {
             return convert(release);
         }
-        return convert(searchForLatestRelease(owner, repository));
+        return consumeManyReleases(request);
     }
 
-    private Release findLatestRelease(String owner, String repo) {
-        final URL url = Utils.createURL(String.format(LATEST_RELEASE_URL, owner, repo));
-        return apiConsumer.consume(url, Release.class);
-    }
-
-    private Release searchForLatestRelease(String owner, String repo) {
-        final URL url = Utils.createURL(String.format(ALL_RELEASES_URL, owner, repo));
-        for (Release release : apiConsumer.consume(url, Release[].class)) {
-            if (release.getAssets() != null && !release.getAssets().isEmpty()) {
-                return release;
+    /**
+     * Use this method if the latest release is properly not the wanted release
+     *
+     * @return
+     */
+    GithubResult consumeManyReleases(Request request) {
+        Preconditions.checkArgument(isRequestValid(request));
+        for (int page = 1; page < 5; page++) {
+            final URL url = Utils.createURL(String.format(
+                    Locale.getDefault(),
+                    ALL_RELEASES_URL,
+                    request.ownerOfRepository,
+                    request.repositoryName,
+                    request.resultsPerPage,
+                    page));
+            for (Release release : apiConsumer.consume(url, Release[].class)) {
+                if (request.releaseValidator.test(release)) {
+                    return convert(release);
+                }
             }
         }
-        throw new ParamRuntimeException("missing real release in GitHub response");
+        throw new ParamRuntimeException("can't find release after nine network requests - abort");
+    }
+
+    private boolean isRequestValid(Request request) {
+        return request != null
+                && request.ownerOfRepository != null
+                && request.repositoryName != null
+                && request.resultsPerPage != -1
+                && request.releaseValidator != null;
     }
 
     private GithubResult convert(Release release) {
@@ -57,6 +88,33 @@ public class GithubConsumer {
             throw new ParamRuntimeException("invalid urls");
         }
         return new GithubResult(release.getTagName(), urls);
+    }
+
+    public static class Request {
+        private String ownerOfRepository;
+        private String repositoryName;
+        private int resultsPerPage = -1;
+        private Predicate<Release> releaseValidator;
+
+        public Request setOwnerOfRepository(String ownerOfRepository) {
+            this.ownerOfRepository = ownerOfRepository;
+            return this;
+        }
+
+        public Request setRepositoryName(String repositoryName) {
+            this.repositoryName = repositoryName;
+            return this;
+        }
+
+        public Request setResultsPerPage(int resultsPerPage) {
+            this.resultsPerPage = resultsPerPage;
+            return this;
+        }
+
+        public Request setReleaseValidator(Predicate<Release> releaseValidator) {
+            this.releaseValidator = releaseValidator;
+            return this;
+        }
     }
 
     static class GithubResult {

@@ -2,8 +2,6 @@ package de.marmaro.krt.ffupdater.metadata;
 
 import android.content.SharedPreferences;
 
-import com.google.common.base.Preconditions;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
