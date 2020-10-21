@@ -3,8 +3,6 @@ package de.marmaro.krt.ffupdater.metadata.fetcher;
 import android.content.SharedPreferences;
 import android.net.TrafficStats;
 
-import com.google.common.base.Preconditions;
-
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.Callable;
@@ -16,7 +14,7 @@ import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 
 public class Fetcher implements Callable<AvailableMetadata> {
     public static final int FIREFOX_KLAR_TAG = 11;
-    public static final int FIRFOX_FOCUS_TAG = 12;
+    public static final int FIREFOX_FOCUS_TAG = 12;
     public static final int FIREFOX_LIGHT_TAG = 13;
     public static final int FIREFOX_RELEASE_TAG = 14;
     public static final int FIREFOX_BETA_TAG = 15;
@@ -61,7 +59,7 @@ public class Fetcher implements Callable<AvailableMetadata> {
                 metadata = new Focus(mozillaCiConsumer, app, deviceEnvironment).call();
                 break;
             case FIREFOX_FOCUS:
-                TrafficStats.setThreadStatsTag(FIRFOX_FOCUS_TAG);
+                TrafficStats.setThreadStatsTag(FIREFOX_FOCUS_TAG);
                 metadata = new Focus(mozillaCiConsumer, app, deviceEnvironment).call();
                 break;
             case FIREFOX_LITE:

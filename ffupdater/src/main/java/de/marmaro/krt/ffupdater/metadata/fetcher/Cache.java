@@ -20,8 +20,9 @@ import de.marmaro.krt.ffupdater.metadata.ReleaseId;
 import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
 import de.marmaro.krt.ffupdater.metadata.ReleaseVersion;
 
-class Cache {
-    private static final String BASE = "download_metadata_";
+public class Cache {
+    public static final String BASE = "download_metadata_";
+
     private static final String DOWNLOAD_URL = BASE + "%s_download_url";
     private static final String RELEASE_ID = BASE + "%s_release_id";
     private static final String CREATED_EPOCH_MS = BASE + "%s_created_epoch_ms";
@@ -29,7 +30,7 @@ class Cache {
 
     private final SharedPreferences preferences;
 
-    public Cache(SharedPreferences preferences) {
+    Cache(SharedPreferences preferences) {
         Objects.requireNonNull(preferences);
         this.preferences = preferences;
     }

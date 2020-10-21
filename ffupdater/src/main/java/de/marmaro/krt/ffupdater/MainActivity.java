@@ -64,29 +64,39 @@ public class MainActivity extends AppCompatActivity {
         StrictModeSetup.enable();
 
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
-        swipeRefreshLayout.setOnRefreshListener(this::refreshUI);
+
 
         final DeviceEnvironment deviceEnvironment = new DeviceEnvironment();
         AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, deviceEnvironment));
 
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        new Migrator(preferences).migrate();
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         metadataFetcher = new AvailableMetadataFetcher(preferences, deviceEnvironment);
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
         helper = new MainActivityHelper(this);
 
-        // sometimes not all downloaded APK files are automatically deleted
-        final File downloadsDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
-        //noinspection ResultOfMethodCallIgnored
-        Arrays.stream(downloadsDir.listFiles()).forEach(File::delete);
+        deleteOldDownloads();
 
-        // register onclick listener
+        // register listener
         for (App app : App.values()) {
             helper.registerDownloadButtonOnClickListener(app, e -> new AppInfoDialog(app).show(getSupportFragmentManager()));
             helper.registerInfoButtonOnClickListener(app, e -> downloadApp(app));
         }
         findViewById(R.id.installAppButton).setOnClickListener(e ->
                 new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager()));
+        swipeRefreshLayout.setOnRefreshListener(this::refreshUI);
+    }
+
+    /**
+     * Sometimes not all downloaded APK files are automatically deleted.
+     * This method makes sure, that these files are deleted.
+     */
+    private void deleteOldDownloads() {
+        final File downloadDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
+        final File[] downloadedFiles = Objects.requireNonNull(downloadDir.listFiles());
+        //noinspection ResultOfMethodCallIgnored
+        Arrays.stream(downloadedFiles).forEach(File::delete);
     }
 
     @Override
