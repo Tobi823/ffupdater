@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
         // register listener
         for (App app : App.values()) {
-            helper.registerDownloadButtonOnClickListener(app, e -> new AppInfoDialog(app).show(getSupportFragmentManager()));
-            helper.registerInfoButtonOnClickListener(app, e -> downloadApp(app));
+            helper.registerInfoButtonOnClickListener(app, e -> new AppInfoDialog(app).show(getSupportFragmentManager()));
+            helper.registerDownloadButtonOnClickListener(app, e -> downloadApp(app));
         }
         findViewById(R.id.installAppButton).setOnClickListener(e ->
                 new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager()));
