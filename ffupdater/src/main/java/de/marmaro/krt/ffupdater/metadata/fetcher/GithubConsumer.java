@@ -61,7 +61,8 @@ public class GithubConsumer {
                     request.repositoryName,
                     request.resultsPerPage,
                     page));
-            for (Release release : apiConsumer.consume(url, Release[].class)) {
+            final Release[] test = apiConsumer.consume(url, Release[].class);
+            for (Release release : test) {
                 if (request.releaseValidator.test(release)) {
                     return convert(release);
                 }
@@ -139,14 +140,28 @@ public class GithubConsumer {
         @SerializedName("tag_name")
         private String tagName;
 
+        @SerializedName("name")
+        private String name;
+
+        @SerializedName("prerelease")
+        private boolean prerelease;
+
         @SerializedName("assets")
         private List<Asset> assets;
 
-        String getTagName() {
+        public String getTagName() {
             return tagName;
         }
 
-        List<Asset> getAssets() {
+        public String getName() {
+            return name;
+        }
+
+        public boolean isPrerelease() {
+            return prerelease;
+        }
+
+        public List<Asset> getAssets() {
             return assets;
         }
 
