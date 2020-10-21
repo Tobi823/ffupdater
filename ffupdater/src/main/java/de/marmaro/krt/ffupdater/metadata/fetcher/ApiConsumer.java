@@ -30,17 +30,23 @@ public class ApiConsumer {
             urlConnection.setConnectTimeout((int) Duration.ofSeconds(10).toMillis());
             Preconditions.checkArgument(urlConnection instanceof HttpsURLConnection);
 
-            final String contentEncoding = urlConnection.getContentEncoding();
-            final boolean gzipped = GZIP.equals(contentEncoding);
-            Preconditions.checkArgument(gzipped || contentEncoding == null);
-
-            try (InputStream original = urlConnection.getInputStream();
-                 InputStream decompressed = gzipped ? new GZIPInputStream(original) : original;
-                 BufferedReader buffered = new BufferedReader(new InputStreamReader(decompressed))) {
-                return new Gson().fromJson(buffered, clazz);
+            if (GZIP.equals(urlConnection.getContentEncoding())) {
+                try (InputStream inputStream = new GZIPInputStream(urlConnection.getInputStream())) {
+                    return consume(inputStream, clazz);
+                }
+            } else {
+                try (InputStream inputStream = urlConnection.getInputStream()) {
+                    return consume(inputStream, clazz);
+                }
             }
         } catch (IOException e) {
             throw new ParamRuntimeException(e, "can't consume API interface %s", url);
+        }
+    }
+
+    private <T> T consume(InputStream inputStream, Class<T> clazz) throws IOException {
+        try (BufferedReader buffered = new BufferedReader(new InputStreamReader(inputStream))) {
+            return new Gson().fromJson(buffered, clazz);
         }
     }
 }
