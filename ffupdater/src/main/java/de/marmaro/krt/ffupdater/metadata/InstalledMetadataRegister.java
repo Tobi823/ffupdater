@@ -38,7 +38,7 @@ public class InstalledMetadataRegister {
                 .collect(Collectors.toSet());
     }
 
-    private boolean isInstalled(App app) {
+    public boolean isInstalled(App app) {
         try {
             packageManager.getPackageInfo(app.getPackageName(), 0);
             return true;

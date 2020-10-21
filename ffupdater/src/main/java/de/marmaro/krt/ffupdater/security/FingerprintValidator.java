@@ -19,7 +19,6 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.Objects;
-import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
@@ -64,9 +63,7 @@ public class FingerprintValidator {
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
             return verifyPackageInfo(packageInfo, app);
-        } catch (NameNotFoundException e) {
-            return new AppNotInstalled();
-        } catch (NoSuchAlgorithmException | CertificateException e) {
+        } catch (NoSuchAlgorithmException | CertificateException | NameNotFoundException e) {
             throw new ParamRuntimeException(e, "failed to compare signature fingerprint %s", app);
         }
     }
@@ -129,18 +126,4 @@ public class FingerprintValidator {
             return hexString;
         }
     }
-
-    private static class AppNotInstalled implements FingerprintResult {
-        @Override
-        public boolean isValid() {
-            return false;
-        }
-
-        @Override
-        public String getHexString() {
-            return "";
-        }
-    }
-
-
 }

@@ -19,7 +19,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
@@ -50,7 +49,6 @@ import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.security.FingerprintValidator;
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
-import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static android.app.DownloadManager.Request.VISIBILITY_VISIBLE;
@@ -79,9 +77,9 @@ public class InstallActivity extends AppCompatActivity {
 
     private final Map<Integer, String> downloadManagerIdToString = new HashMap<>();
     private DownloadManagerAdapter downloadManager;
-    private InstalledMetadataRegister deviceAppRegister;
+    private InstalledMetadataRegister installedMetadataRegister;
     private FingerprintValidator fingerprintValidator;
-    private AvailableMetadataFetcher fetcher;
+    private AvailableMetadataFetcher availableMetadataFetcher;
 
     private App app;
     private AvailableMetadata metadata;
@@ -97,8 +95,8 @@ public class InstallActivity extends AppCompatActivity {
 
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         downloadManager = new DownloadManagerAdapter((DownloadManager) getSystemService(DOWNLOAD_SERVICE));
-        deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
-        fetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());
+        installedMetadataRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
+        availableMetadataFetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());
         fingerprintValidator = new FingerprintValidator(getPackageManager());
         downloadManagerIdToString.put(STATUS_RUNNING, "running");
         downloadManagerIdToString.put(STATUS_SUCCESSFUL, "success");
@@ -128,7 +126,7 @@ public class InstallActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(onDownloadComplete);
-        fetcher.shutdown();
+        availableMetadataFetcher.shutdown();
     }
 
     @Override
@@ -141,7 +139,7 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private boolean isSignatureOfInstalledAppUnknown(App app) {
-        if (fingerprintValidator.checkInstalledApp(app).isValid()) {
+        if (!installedMetadataRegister.isInstalled(app) || fingerprintValidator.checkInstalledApp(app).isValid()) {
             return false;
         }
         show(R.id.unknownSignatureOfInstalledApp);
@@ -176,7 +174,7 @@ public class InstallActivity extends AppCompatActivity {
                 R.string.fetch_url_for_download,
                 app.getDownloadSource(this)));
 
-        final Future<AvailableMetadata> futureMetadata = fetcher.fetchMetadata(Utils.createSet(app)).get(app);
+        final Future<AvailableMetadata> futureMetadata = availableMetadataFetcher.fetchMetadata(Utils.createSet(app)).get(app);
         new Thread(() -> {
             try {
                 this.metadata = futureMetadata.get(30, TimeUnit.SECONDS);
@@ -303,7 +301,8 @@ public class InstallActivity extends AppCompatActivity {
             Bundle extras = Objects.requireNonNull(intent.getExtras());
             int status = extras.getInt(PackageInstaller.EXTRA_STATUS);
             if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-                startActivity((Intent) extras.get(Intent.EXTRA_INTENT)); // This test app isn't privileged, so the user has to confirm the install.
+                // This test app isn't privileged, so the user has to confirm the install.
+                startActivity((Intent) extras.get(Intent.EXTRA_INTENT));
                 return;
             }
             hide(R.id.installingApplication);
@@ -311,7 +310,7 @@ public class InstallActivity extends AppCompatActivity {
             if (status == PackageInstaller.STATUS_SUCCESS) {
                 show(R.id.installerSuccess);
                 actionVerifyInstalledAppSignature();
-                deviceAppRegister.saveReleaseId(app, metadata.getReleaseId());
+                installedMetadataRegister.saveReleaseId(app, metadata.getReleaseId());
             } else {
                 show(R.id.installerFailed);
                 String message = extras.getString(PackageInstaller.EXTRA_STATUS_MESSAGE);
