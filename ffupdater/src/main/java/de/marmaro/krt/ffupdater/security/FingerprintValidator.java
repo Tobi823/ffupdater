@@ -19,6 +19,7 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.Objects;
+import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
@@ -59,11 +60,13 @@ public class FingerprintValidator {
      * @see <a href="https://gist.github.com/scottyab/b849701972d57cf9562e">Another example</a>
      */
     @SuppressLint("PackageManagerGetSignatures")
-    public FingerprintResult checkInstalledApp(App app) {
+    public Optional<FingerprintResult> checkInstalledApp(App app) {
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
-            return verifyPackageInfo(packageInfo, app);
-        } catch (NoSuchAlgorithmException | CertificateException | NameNotFoundException e) {
+            return Optional.of(verifyPackageInfo(packageInfo, app));
+        } catch (NameNotFoundException e) {
+            return Optional.empty();
+        } catch (NoSuchAlgorithmException | CertificateException e) {
             throw new ParamRuntimeException(e, "failed to compare signature fingerprint %s", app);
         }
     }

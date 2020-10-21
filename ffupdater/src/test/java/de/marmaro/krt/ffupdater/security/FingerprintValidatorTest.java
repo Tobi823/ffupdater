@@ -8,14 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult;
-import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 import static android.content.pm.PackageManager.GET_SIGNATURES;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_BETA;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_RELEASE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
@@ -42,15 +43,17 @@ public class FingerprintValidatorTest {
     @Test
     public void checkInstalledApp_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
         when(packageManager.getPackageInfo(FIREFOX_RELEASE.getPackageName(), GET_SIGNATURES)).thenReturn(packageInfo);
-        FingerprintResult actual = fingerprintValidator.checkInstalledApp(FIREFOX_RELEASE);
+        FingerprintResult actual = fingerprintValidator.checkInstalledApp(FIREFOX_RELEASE)
+                .orElseThrow(() -> new RuntimeException("FIREFOX_RELEASE is not installed"));
         assertTrue(actual.isValid());
         assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.getHexString());
     }
 
-    @Test(expected = ParamRuntimeException.class)
+    @Test
     public void checkInstalledApp_appIsNotInstalled_emptyOptional() throws PackageManager.NameNotFoundException {
         doThrow(new PackageManager.NameNotFoundException()).when(packageManager).getPackageInfo(FIREFOX_BETA.getPackageName(), GET_SIGNATURES);
-        fingerprintValidator.checkInstalledApp(FIREFOX_BETA);
+        final Optional<FingerprintResult> actual = fingerprintValidator.checkInstalledApp(FIREFOX_BETA);
+        assertFalse(actual.isPresent());
     }
 
     @Test

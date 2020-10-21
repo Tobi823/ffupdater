@@ -50,6 +50,7 @@ import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.security.FingerprintValidator;
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static android.app.DownloadManager.Request.VISIBILITY_VISIBLE;
@@ -140,11 +141,11 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private boolean isSignatureOfInstalledAppUnknown(App app) {
-        final boolean unknown = !fingerprintValidator.checkInstalledApp(app).isValid();
-        if (unknown) {
-            show(R.id.unknownSignatureOfInstalledApp);
+        if (fingerprintValidator.checkInstalledApp(app).map(FingerprintResult::isValid).orElse(false)) {
+            return false;
         }
-        return unknown;
+        show(R.id.unknownSignatureOfInstalledApp);
+        return true;
     }
 
     private boolean isExternalStorageNotAccessible() {
@@ -324,7 +325,8 @@ public class InstallActivity extends AppCompatActivity {
     private void actionVerifyInstalledAppSignature() {
         show(R.id.verifyInstalledFingerprint);
         new Thread(() -> {
-            final FingerprintResult fingerprintResult = fingerprintValidator.checkInstalledApp(app);
+            final FingerprintResult fingerprintResult = fingerprintValidator.checkInstalledApp(app)
+                    .orElseThrow(() -> new ParamRuntimeException("app %s must be installed but isn't", app));
             hide(R.id.verifyInstalledFingerprint);
             if (fingerprintResult.isValid()) {
                 show(R.id.fingerprintInstalledGood);
