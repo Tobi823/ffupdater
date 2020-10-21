@@ -43,8 +43,7 @@ public class FingerprintValidatorTest {
     @Test
     public void checkInstalledApp_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
         when(packageManager.getPackageInfo(FIREFOX_RELEASE.getPackageName(), GET_SIGNATURES)).thenReturn(packageInfo);
-        FingerprintResult actual = fingerprintValidator.checkInstalledApp(FIREFOX_RELEASE)
-                .orElseThrow(() -> new RuntimeException("FIREFOX_RELEASE is not installed"));
+        FingerprintResult actual = fingerprintValidator.checkInstalledApp(FIREFOX_RELEASE);
         assertTrue(actual.isValid());
         assertEquals("a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04", actual.getHexString());
     }
@@ -52,8 +51,9 @@ public class FingerprintValidatorTest {
     @Test
     public void checkInstalledApp_appIsNotInstalled_emptyOptional() throws PackageManager.NameNotFoundException {
         doThrow(new PackageManager.NameNotFoundException()).when(packageManager).getPackageInfo(FIREFOX_BETA.getPackageName(), GET_SIGNATURES);
-        final Optional<FingerprintResult> actual = fingerprintValidator.checkInstalledApp(FIREFOX_BETA);
-        assertFalse(actual.isPresent());
+        final FingerprintResult actual = fingerprintValidator.checkInstalledApp(FIREFOX_BETA);
+        assertFalse(actual.isValid());
+        assertTrue(actual.getHexString().isEmpty());
     }
 
     @Test

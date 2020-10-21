@@ -38,8 +38,8 @@ public class FingerprintValidator {
     /**
      * Validate the SHA256 fingerprint of the certificate of the downloaded application as APK file.
      *
-     * @param file           APK file
-     * @param app            app
+     * @param file APK file
+     * @param app  app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
     public FingerprintResult checkApkFile(File file, App app) {
@@ -54,18 +54,18 @@ public class FingerprintValidator {
     /**
      * Validate the SHA256 fingerprint of the certificate of the installed application.
      *
-     * @param app            app
+     * @param app app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      * @see <a href="https://stackoverflow.com/a/22506133">Example on how to generate the certificate fingerprint</a>
      * @see <a href="https://gist.github.com/scottyab/b849701972d57cf9562e">Another example</a>
      */
     @SuppressLint("PackageManagerGetSignatures")
-    public Optional<FingerprintResult> checkInstalledApp(App app) {
+    public FingerprintResult checkInstalledApp(App app) {
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(app.getPackageName(), PackageManager.GET_SIGNATURES);
-            return Optional.of(verifyPackageInfo(packageInfo, app));
+            return verifyPackageInfo(packageInfo, app);
         } catch (NameNotFoundException e) {
-            return Optional.empty();
+            return new AppNotInstalled();
         } catch (NoSuchAlgorithmException | CertificateException e) {
             throw new ParamRuntimeException(e, "failed to compare signature fingerprint %s", app);
         }
@@ -81,24 +81,66 @@ public class FingerprintValidator {
 
         byte[] current = MessageDigest.getInstance(SHA_256).digest(certificate.getEncoded());
         byte[] expected = app.getSignatureHash();
-        return new FingerprintResult(MessageDigest.isEqual(expected, current), ApacheCodecHex.encodeHexString(current));
+        final String hexString = ApacheCodecHex.encodeHexString(current);
+        if (MessageDigest.isEqual(expected, current)) {
+            return new ValidFingerprint(hexString);
+        }
+        return new InvalidFingerprint(hexString);
     }
 
-    public static class FingerprintResult {
-        private final boolean valid;
+    public interface FingerprintResult {
+        boolean isValid();
+
+        String getHexString();
+    }
+
+    private static class ValidFingerprint implements FingerprintResult {
         private final String hexString;
 
-        private FingerprintResult(boolean valid, String hexString) {
-            this.valid = valid;
+        private ValidFingerprint(String hexString) {
             this.hexString = hexString;
         }
 
+        @Override
         public boolean isValid() {
-            return valid;
+            return true;
         }
 
+        @Override
         public String getHexString() {
             return hexString;
         }
     }
+
+    private static class InvalidFingerprint implements FingerprintResult {
+        private final String hexString;
+
+        private InvalidFingerprint(String hexString) {
+            this.hexString = hexString;
+        }
+
+        @Override
+        public boolean isValid() {
+            return false;
+        }
+
+        @Override
+        public String getHexString() {
+            return hexString;
+        }
+    }
+
+    private static class AppNotInstalled implements FingerprintResult {
+        @Override
+        public boolean isValid() {
+            return false;
+        }
+
+        @Override
+        public String getHexString() {
+            return "";
+        }
+    }
+
+
 }

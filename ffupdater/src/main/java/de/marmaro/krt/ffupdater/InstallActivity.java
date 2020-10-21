@@ -141,7 +141,7 @@ public class InstallActivity extends AppCompatActivity {
     }
 
     private boolean isSignatureOfInstalledAppUnknown(App app) {
-        if (fingerprintValidator.checkInstalledApp(app).map(FingerprintResult::isValid).orElse(false)) {
+        if (fingerprintValidator.checkInstalledApp(app).isValid()) {
             return false;
         }
         show(R.id.unknownSignatureOfInstalledApp);
@@ -325,8 +325,7 @@ public class InstallActivity extends AppCompatActivity {
     private void actionVerifyInstalledAppSignature() {
         show(R.id.verifyInstalledFingerprint);
         new Thread(() -> {
-            final FingerprintResult fingerprintResult = fingerprintValidator.checkInstalledApp(app)
-                    .orElseThrow(() -> new ParamRuntimeException("app %s must be installed but isn't", app));
+            final FingerprintResult fingerprintResult = fingerprintValidator.checkInstalledApp(app);
             hide(R.id.verifyInstalledFingerprint);
             if (fingerprintResult.isValid()) {
                 show(R.id.fingerprintInstalledGood);
