@@ -57,8 +57,8 @@
     <string name="missing_external_storage_permission_dialog_summary">Додаток запитуватиме дозвіл на зберігання для завантаження файлів та їх читання. Але лише кілька пристроїв потребують цього дозволу. Якщо ви сумніваєтесь, відхиліть запит на дозвіл - ви можете ввімкнути дозвіл на зберігання пізніше в налаштуваннях вашого пристрою.\n\nЯ буду використовувати лише зовнішню папку додатків, і я ніколи не отримаю доступ до ваших приватних фотографій тощо.</string>
     <string name="missing_external_storage_permission_dialog_title">Запит на дозвіл</string>
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
-    <string name="notification_text">Натисніть, щоб переглянути</string>
-    <string name="notification_title">Оновлення доступне для: %1$s</string>
+    <string name="notification_summarized_text">Натисніть, щоб переглянути</string>
+    <string name="notification_summarized_title">Оновлення доступне для: %1$s</string>
     <string name="ok">Гаразд</string>
     <string name="settings_activity_label">Налаштування</string>
     <string name="settings_automatic_check_title">Автоматичний у фоновому режимі</string>
@@ -99,8 +99,8 @@
     <string name="update_interval_6d">6 днів</string>
     <string name="update_interval_6h">6 годин</string>
     <string name="update_interval_8h">8 годин</string>
-    <string name="update_notification_channel_description">Ця категорія повідомлень повідомить вам про нові доступні оновлення Firefox.</string>
-    <string name="update_notification_channel_name">Повідомлення оновлення</string>
+    <string name="update_notification_channel_description__all">Ця категорія повідомлень повідомить вам про нові доступні оновлення Firefox.</string>
+    <string name="update_notification_channel_name__all">Повідомлення оновлення</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
 </resources>

@@ -64,8 +64,8 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="missing_external_storage_permission_dialog_summary">O aplicativo solicitará permissão de armazenamento para baixar arquivos e lê-los. Mas apenas alguns poucos dispositivos precisam desta permissão. Se você estiver em dúvida, negue o pedido de permissão - você pode habilitar a permissão de armazenamento mais tarde nas configurações do seu dispositivo.\n\nSó usarei a pasta externa do aplicativo e nunca acessarei suas fotos particulares, etc.</string>
     <string name="missing_external_storage_permission_dialog_title">Pedido de Permissão</string>
     <string name="not_connected_to_internet">Sem conexão de Internet</string>
-    <string name="notification_text">Aperte para ver</string>
-    <string name="notification_title">A atualização está disponível para: %1$s</string>
+    <string name="notification_summarized_text">Aperte para ver</string>
+    <string name="notification_summarized_title">A atualização está disponível para: %1$s</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Configurações</string>
     <string name="settings_automatic_check_title">Automático no fundo</string>
@@ -106,8 +106,8 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="update_interval_6d">6 dias</string>
     <string name="update_interval_6h">6 horas</string>
     <string name="update_interval_8h">8 horas</string>
-    <string name="update_notification_channel_description">Esta categoria de notificação o informará sobre as novas atualizações disponíveis do Firefox.</string>
-    <string name="update_notification_channel_name">Notificação de atualização</string>
+    <string name="update_notification_channel_description__all">Esta categoria de notificação o informará sobre as novas atualizações disponíveis do Firefox.</string>
+    <string name="update_notification_channel_name__all">Notificação de atualização</string>
     <string name="verifying_downloaded_application_certificate">Verificando Certificado do aplicativo</string>
     <string name="you_can_now_close_this_window">Agora você pode fechar esta janela</string>
 </resources>

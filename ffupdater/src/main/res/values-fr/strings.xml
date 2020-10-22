@@ -57,8 +57,8 @@
     <string name="missing_external_storage_permission_dialog_summary">L\'application demandera une autorisation de stockage pour télécharger des fichiers et les lire. Mais seuls quelques appareils ont besoin de cette autorisation. En cas de doute, refusez la demande de permission - vous pouvez activer la permission de stockage plus tard dans les paramètres de votre appareil.\n\nJe n\'utiliserai que le dossier externe de l\'application et je n\'accéderai jamais à vos photos privées, etc.  Traduit avec www.DeepL.com/Translator (version gratuite)</string>
     <string name="missing_external_storage_permission_dialog_title">Demande d\'autorisation</string>
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
-    <string name="notification_text">Cliquez ici pour voir</string>
-    <string name="notification_title">La mise à jour est disponible pour: %1$s</string>
+    <string name="notification_summarized_text">Cliquez ici pour voir</string>
+    <string name="notification_summarized_title">La mise à jour est disponible pour: %1$s</string>
     <string name="ok">D\'accord</string>
     <string name="settings_activity_label">Réglages</string>
     <string name="settings_automatic_check_title">Automatique en arrière-plan</string>
@@ -99,8 +99,8 @@
     <string name="update_interval_6d">6 jours</string>
     <string name="update_interval_6h">6 heures</string>
     <string name="update_interval_8h">"8 heures "</string>
-    <string name="update_notification_channel_description">Cette catégorie de notification vous informera des nouvelles mises à jour de Firefox disponibles.</string>
-    <string name="update_notification_channel_name">Notification de mise à jour</string>
+    <string name="update_notification_channel_description__all">Cette catégorie de notification vous informera des nouvelles mises à jour de Firefox disponibles.</string>
+    <string name="update_notification_channel_name__all">Notification de mise à jour</string>
     <string name="verifying_downloaded_application_certificate">Vérification du certificat de demande</string>
     <string name="you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
 </resources>

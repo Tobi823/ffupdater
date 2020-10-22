@@ -30,12 +30,22 @@
     <PreferenceCategory app:title="@string/settings_category_appearance_title">
 
         <ListPreference
-            app:key="themePreference"
             app:defaultValue="@string/default_theme_preference"
-            app:summary="@string/theme_preference_summary"
             app:entries="@array/themeEntries"
             app:entryValues="@array/themeValues"
+            app:key="themePreference"
+            app:summary="@string/theme_preference_summary"
             app:title="@string/theme_preference_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/settingsCategory_notification">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="summarizeUpdateNotifications"
+            app:summary="@string/summarize_update_notification__settings_summary"
+            app:title="@string/summarize_update_notification__settings_title" />
 
     </PreferenceCategory>
 

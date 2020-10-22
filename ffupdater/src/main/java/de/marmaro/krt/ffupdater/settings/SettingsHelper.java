@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
@@ -31,6 +30,7 @@ public class SettingsHelper {
     public static final String CHECK_INTERVAL = "checkInterval";
     public static final String DISABLE_APPS = "disableApps";
     public static final String THEME_PREFERENCE = "themePreference";
+    public static final String SUMMARIZE_UPDATE_NOTIFICATION = "summarizeUpdateNotifications";
 
     /**
      * @param context context
@@ -99,6 +99,10 @@ public class SettingsHelper {
         } catch (final NumberFormatException nfe) {
             return defaultValue;
         }
+    }
+
+    public static boolean isSummarizeUpdateNotifications(Context context) {
+        return getSharedPreferences(context).getBoolean(SUMMARIZE_UPDATE_NOTIFICATION, true);
     }
 
     private static SharedPreferences getSharedPreferences(Context context) {
