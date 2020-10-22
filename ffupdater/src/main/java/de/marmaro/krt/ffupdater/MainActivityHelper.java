@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
-import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 public class MainActivityHelper {
@@ -33,6 +32,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.firefoxNightlyCard);
             case LOCKWISE:
                 return activity.findViewById(R.id.lockwiseCard);
+            case BRAVE:
+                return activity.findViewById(R.id.braveCard);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -66,6 +67,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.firefoxNightlyDownloadButton);
             case LOCKWISE:
                 return activity.findViewById(R.id.lockwiseDownloadButton);
+            case BRAVE:
+                return activity.findViewById(R.id.braveDownloadButton);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -91,6 +94,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.firefoxNightlyInstalledVersion);
             case LOCKWISE:
                 return activity.findViewById(R.id.lockwiseInstalledVersion);
+            case BRAVE:
+                return activity.findViewById(R.id.braveInstalledVersion);
             default:
                 throw new ParamRuntimeException("unknown installed version text view for app %s", app);
         }
@@ -116,6 +121,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.firefoxNightlyAvailableVersion);
             case LOCKWISE:
                 return activity.findViewById(R.id.lockwiseAvailableVersion);
+            case BRAVE:
+                return activity.findViewById(R.id.braveAvailableVersion);
             default:
                 throw new ParamRuntimeException("unknown available version text view for app %s", app);
         }
@@ -141,6 +148,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.firefoxNightlyInfoButton);
             case LOCKWISE:
                 return activity.findViewById(R.id.lockwiseInfoButton);
+            case BRAVE:
+                return activity.findViewById(R.id.braveInfoButton);
             default:
                 throw new RuntimeException("switch fallthrough");
         }

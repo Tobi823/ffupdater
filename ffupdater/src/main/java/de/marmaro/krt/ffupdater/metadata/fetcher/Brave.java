@@ -12,8 +12,8 @@ import de.marmaro.krt.ffupdater.metadata.ReleaseVersion;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 /**
- * https://github.com/mozilla-tw/FirefoxLite/releases
- * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest
+ * https://github.com/brave/brave-browser
+ * https://www.apkmirror.com/apk/brave-software/brave-browser
  */
 class Brave implements Callable<AvailableMetadata> {
     private final GithubConsumer githubConsumer;

@@ -9,8 +9,8 @@ import org.apache.commons.codec.binary.ApacheCodecHex;
 import java.util.Arrays;
 import java.util.List;
 
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.device.ABI;
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 import static de.marmaro.krt.ffupdater.App.ReleaseIdType.TIMESTAMP;
 import static de.marmaro.krt.ffupdater.App.ReleaseIdType.VERSION;
@@ -23,8 +23,8 @@ import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
  * All supported apps.
  * You can verify the APK certificate fingerprint on <a href="https://www.apkmirror.com">APKMirror</a> and other sites.
  */
+@SuppressWarnings("SpellCheckingInspection")
 public enum App {
-    @SuppressWarnings("SpellCheckingInspection")
     FIREFOX_KLAR(R.string.firefox_klar_title,
             R.string.firefox_klar_description,
             R.string.empty,
@@ -34,7 +34,6 @@ public enum App {
             Arrays.asList(AARCH64, ARM),
             21,
             TIMESTAMP),
-    @SuppressWarnings("SpellCheckingInspection")
     FIREFOX_FOCUS(R.string.firefox_focus_title,
             R.string.firefox_focus_description,
             R.string.empty,
@@ -53,7 +52,6 @@ public enum App {
             Arrays.asList(AARCH64, ARM, X86_64, X86),
             21,
             VERSION),
-    @SuppressWarnings("SpellCheckingInspection")
     FIREFOX_RELEASE(R.string.firefox_release_title,
             R.string.firefox_release_description,
             R.string.empty,
@@ -72,7 +70,6 @@ public enum App {
             Arrays.asList(AARCH64, ARM, X86_64, X86),
             21,
             TIMESTAMP),
-    @SuppressWarnings("SpellCheckingInspection")
     FIREFOX_NIGHTLY(R.string.firefox_nightly_title,
             R.string.firefox_nightly_description,
             R.string.firefox_nightly_warning,
@@ -88,6 +85,15 @@ public enum App {
             R.string.github,
             "mozilla.lockbox",
             "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2",
+            Arrays.asList(AARCH64, ARM, X86_64, X86),
+            24,
+            VERSION),
+    BRAVE(R.string.brave_title,
+            R.string.brave_description,
+            R.string.brave_warning,
+            R.string.github,
+            "com.brave.browser",
+            "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac",
             Arrays.asList(AARCH64, ARM, X86_64, X86),
             24,
             VERSION);

@@ -20,6 +20,8 @@ public class Fetcher implements Callable<AvailableMetadata> {
     public static final int FIREFOX_BETA_TAG = 15;
     public static final int FIREFOX_NIGHTLY_TAG = 16;
     public static final int LOCKWISE_TAG = 17;
+    public static final int BRAVE_TAG = 17;
+
     private final Cache cache;
     private final App app;
     private final DeviceEnvironment deviceEnvironment;
@@ -79,6 +81,9 @@ public class Fetcher implements Callable<AvailableMetadata> {
             case LOCKWISE:
                 TrafficStats.setThreadStatsTag(LOCKWISE_TAG);
                 return new Lockwise(githubConsumer).call();
+            case BRAVE:
+                TrafficStats.setThreadStatsTag(BRAVE_TAG);
+                return new Brave(githubConsumer, deviceEnvironment).call();
             default:
                 throw new ParamRuntimeException("can't create callable for unknown app %s", app);
         }
