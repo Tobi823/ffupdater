@@ -91,32 +91,6 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
  5. `cd ffupdater/build/outputs/apk/debug`
  6. `ffupdater-debug.apk` is the generated APK file
 
-
-## Mirrors
- - [Notabug.org](https://notabug.org/Tobiwan/ffupdater) ([Account](https://notabug.org/Tobiwan))
- - [Github](https://github.com/Tobi823/ffupdater) ([Account](https://github.com/Tobi823))
- - [Gitlab](https://gitlab.com/Tobiwan/ffupdater) ([Account](https://gitlab.com/Tobiwan))
-
-## Technical detail
-
-### Fennec Release
-
-The Mozilla API will be queried:
- - https://archive.mozilla.org/pub/mobile/releases/ for latest version names
- - https://download.mozilla.org/?product=%s&os=%s&lang=multi to download the  app
-   - first parameter: fennec-latest, fennec-beta-latest or fennec-nightly-latest
-   - second parameter: android or android-x86
-
-### Firefox Focus, Firefox Klar, Firefox Lite, Fenix
-
-The Github API will be queried:
- - https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest for Firefox Focus and Firefox Klar
- - https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest for Firefox Lite
- - https://api.github.com/repos/mozilla-mobile/firefox/releases/latest for Fenix
- 
-If .../releases/latest returns a release without assets (APK files for download), then fetch all releases and search
-for the latest release with assets.
-
 ## History
 
 Since Mozilla [shut down their FTP server on 2015-08-05](https://blog.mozilla.org/it/2015/07/27/product-delivery-migration-what-is-changing-when-its-changing-and-the-impacts/), non-"Google Play Store" updates of Firefox have to be done by third-party apps such as this one.
