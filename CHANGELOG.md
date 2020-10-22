@@ -1,4 +1,5 @@
 # 2020-10-?? Version 69.0.6 (54)
+ * Add Bulgarian translation (thanks StoyanDimitrov)
  * Fix short description in F-Droid - thanks linsui
  * Notification contains apps to update
  * better detect ABI of device - Firefox Focus can be installed on Android emulators
