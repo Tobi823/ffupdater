@@ -1,0 +1,115 @@
+<resources>
+    <string name="action_about_title">Относно FFUpdater</string>
+    <string name="action_settings_title">Настройки</string>
+    <string name="app_icon">пиктограма на приложение</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="application_installation_was_not_successful">Грешка при инсталиране на приложението</string>
+    <string name="application_successful_installed">Приложението е успешно инсталирано</string>
+    <string name="available_version">Налично:%1$s%2$s</string>
+    <string name="but_was">Но било:</string>
+    <string name="device_too_old_dialog_message">Приложението работи под Android %1$s, но устройството работи само с Android %2$s. Изберете друго приложение, обновете операционната система или сменете телефона с по-нов.</string>
+    <string name="device_too_old_dialog_title">Остаряло устройство</string>
+    <string name="download_application_from_with_status">Изтегляне на приложение (%1$s)</string>
+    <string name="download_failed">Грешка при изтегляне</string>
+    <string name="download_the_app">изтегляне на приложение</string>
+    <string name="downloaded_application_from">Изтеглено приложение от:</string>
+    <string name="downloaded_application_is_not_verified">Изтегленото приложение е НЕпроверено</string>
+    <string name="downloaded_application_is_verified">Изтегленото приложение е проверено</string>
+    <string name="expected_sha_256_certificate_fingerprint">Очакван отпечатък с SHA-256 от сертификат:</string>
+    <string name="fenix_warning">Приложението е предназначено за разработчици и за това съдържа проследявания. Искате ли да бъде инсталирано?</string>
+    <string name="fennec_release_description">Стандартният и добре известен четец Firefox от Mozilla.\n\nПриложението ще бъде изтеглено от официалня ППИ на Mozilla.</string>
+    <string name="fennec_release_title">Firefox Browser</string>
+    <string name="fetch_url_for_download">Получаване на адрес за изтегляне от %1$s</string>
+    <string name="fetched_url_for_download_successfully">Получен адрес за изтегляне от %1$s</string>
+    <string name="fetched_url_for_download_unsuccessfully">Грешка при получаване на адрес за изтегляне от %1$s</string>
+    <string name="firefox_beta_description">Firefox Browser за Android е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били докато намаляват скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
+    <string name="firefox_beta_title">Firefox за Android Beta</string>
+    <string name="firefox_beta_warning">Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на обичайната ви работа. Искате ли да бъде инсталирано?</string>
+    <string name="firefox_focus_description">Това е вариант на четецът Firefox, целящ да подобри поверителността.\n\nПриложението ще бъде изтеглено от GitHub и за това само публикуваните там издания ще са достъпни.</string>
+    <string name="firefox_focus_title">Firefox Focus</string>
+    <string name="firefox_klar_description">Това е вариант на четецът Firefox, целящ да подобри поверителността.\n\nFirefox Klar е разработен за Германия, Швейцария и Австрия и е еднакъв с Firefox Focus. Промяната е само в името, за да бъде избегнато объркване със списание \'Focus\', издавано от \'Hubert Burda Media\'.\n\nПриложението ще бъде изтеглено от GitHub и за това само публикуваните там издания ще са достъпни.</string>
+    <string name="firefox_klar_title">Firefox Klar</string>
+    <string name="firefox_lite_description">Това е вариант на четецът Firefox, разработен предимно за потребителите от Индонезия. То е много малко проложение и предоставя технология за намаляване на използването на (мобилни) данни.\n\nПриложението ще бъде изтеглено от GitHub и за това само публикуваните там издания ще са достъпни.</string>
+    <string name="firefox_lite_title">Firefox Lite</string>
+    <string name="firefox_lite_warning">FFUpdater не винаги има достъп до последното издание, защото не всички издания се публикуват в GitHub. Искате ли приложението да бъде инсталирано с риск да използвате остаряло издание?</string>
+    <string name="firefox_nightly_title">Firefox Nightly</string>
+    <string name="firefox_nightly_warning">Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на обичайната ви работа. Искате ли да бъде инсталирано?</string>
+    <string name="firefox_release_description">Firefox Browser за Android е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били докато намаляват скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
+    <string name="firefox_release_title">Firefox Browser</string>
+    <string name="infobox">
+        Това приложениее предназначено за обновяване на мрежовите четци на Mozilla.
+        Докоснете бутона със знак плюс за инсталиране или стрелка надолу за обновяване.
+        Можете да правите проверка за нови издания като дръпнете списъка надолу или повторно отворите приложението.
+        По подразбиране приложението периодично, във фонов режим също прави такава проверка.
+        Направил съм всичко по силите си да направя процеса на инсталиране/обновяване максимално сигурен, но се чувствайте свободни сами да го проверите или да го подобрите чрез изпращане на заявка за сливане.
+    </string>
+    <string name="information_about_the_app">сведения за приложението</string>
+    <string name="install_activity_label">Инсталиране</string>
+    <string name="install_application">Инсталиране</string>
+    <string name="installation_warning_negative_button">Не, без инсталиране</string>
+    <string name="installation_warning_positive_button">Да</string>
+    <string name="installation_warning_title">Внимание</string>
+    <string name="installed_app_is_not_verified">Инсталираното приложение е НЕпроверено</string>
+    <string name="installed_application_is_verified">Инсталираното приложение е проверено</string>
+    <string name="installed_version">Инсталирано:%1$s%2$s</string>
+    <string name="invalid_downloaded_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта.\n\nПрепоръчително е да премахнете приложението.</string>
+    <string name="invalid_installed_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта.\n\nПрепоръчително е да премахнете приложението.</string>
+    <string name="loading_available_version">Зареждане…</string>
+    <string name="lockwise_description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС\n\nНадежден достъп и управление на паролите ви от Firefox. Бързо отворете страници от приложението и влезте в сметките си.</string>
+    <string name="lockwise_title">Firefox Lockwise</string>
+    <string name="lockwise_warning">FFUpdater не винаги има достъп до последното издание, защото не всички издания се публикуват в GitHub. Искате ли приложението да бъде инсталирано с риск да използвате остаряло издание?</string>
+    <string name="main_activity_subtitle">Обновете мрежовите четци от Mozilla</string>
+    <string name="missing_external_storage_permission_dialog_summary">Приложението ще поиска достъп до хранилището, за да изтегляне и четене на файлове. Малко устройства се нуждаят от права за това. Ако имате съмнения откажете достъпа - по-късно от настройките ни устройството можете да ги дадете.\n\nПриложението ще използва външната за него папка и никога няма да достъпва личните ви фотографии и т.н.</string>
+    <string name="missing_external_storage_permission_dialog_title">Заявка за права</string>
+    <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
+    <string name="notification_text">Докоснете за преглед</string>
+    <string name="notification_title">Налично обноваване</string>
+    <string name="ok">Добре</string>
+    <string name="settings_activity_label">Настройки</string>
+    <string name="settings_automatic_check_title">Автоматично на заден план</string>
+    <string name="settings_category_appearance_title">Външен вид</string>
+    <string name="settings_check_interval_summary">Колко често приложението да проверява за нови издания?</string>
+    <string name="settings_check_interval_title">Честота на проверка</string>
+    <string name="settings_disabled_apps_summary">Само инсталирани приложения се проверяват за обновяване. Спрете проверката за дадено приложение като го избетере тук.</string>
+    <string name="settings_disabled_apps_title">Пропускани приложения</string>
+    <string name="settings_title">Проверка за обновяване на приложения</string>
+    <string name="sha_256_certificate_fingerprint">Отпечатък с SHA-256 от сертификат:</string>
+    <string name="theme_battery_saver">Тъмна при режим на пестене на батерия</string>
+    <string name="theme_dark">Тъмна</string>
+    <string name="theme_light">Светла</string>
+    <string name="theme_preference_summary">Изберете светла или тъмна тема</string>
+    <string name="theme_preference_title">Изберане на тема</string>
+    <string name="theme_system_default">Стандартната за системата</string>
+    <string name="too_low_memory_description">Устройството разполага само с %1$s свободни МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>
+    <string name="too_low_memory_title">Недостатъчно празно пространство</string>
+    <string name="unknown_signature_of_installed_app_text1">
+
+You have to uninstall the existing app before FFUpdater can install or update the app. Backup your data because the uninstall will delete all your bookmarks, settings etc.</string>
+    <string name="unknown_signature_of_installed_app_text2">
+
+Reason: The current installed app is not signed by the original developer - maybe it\'s signed by F-Droid. Android refuses to update an app if different people signed the installed and the updated version.</string>
+    <string name="unsupported_abi_dialog_message">Избраното приложение е несъвместимо с процесора на телефона. Изберете друго.</string>
+    <string name="unsupported_abi_dialog_title">Неподдържано устройство</string>
+    <string name="update_interval_12h">12 часа</string>
+    <string name="update_interval_15min">15 минути</string>
+    <string name="update_interval_18h">18 часа</string>
+    <string name="update_interval_1d">1 ден</string>
+    <string name="update_interval_1h">1 час</string>
+    <string name="update_interval_1m">1 мецсец</string>
+    <string name="update_interval_1w">1 седмица</string>
+    <string name="update_interval_2d">2 дена</string>
+    <string name="update_interval_2h">2 часа</string>
+    <string name="update_interval_2w">2 седмици</string>
+    <string name="update_interval_30min">30 минути</string>
+    <string name="update_interval_3d">3 дена</string>
+    <string name="update_interval_4d">4 дена</string>
+    <string name="update_interval_4h">4 часа</string>
+    <string name="update_interval_5d">5 дена</string>
+    <string name="update_interval_6d">6 дена</string>
+    <string name="update_interval_6h">6 часа</string>
+    <string name="update_interval_8h">8 часа</string>
+    <string name="update_notification_channel_description">Тази категория известия ви информира за обновявания на Firefox.</string>
+    <string name="update_notification_channel_name">Известие при обновление</string>
+    <string name="verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
+    <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
+</resources>
