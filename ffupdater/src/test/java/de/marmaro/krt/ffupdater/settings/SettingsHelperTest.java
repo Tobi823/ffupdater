@@ -13,7 +13,6 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
@@ -130,8 +129,9 @@ public class SettingsHelperTest {
 
     @Test
     public void getDisableApps_withAllApps_returnApps() {
-        sharedPreferences.edit().putStringSet("disableApps", new HashSet<>(Arrays.asList("FIREFOX_KLAR",
-                "FIREFOX_FOCUS", "FIREFOX_LITE", "FIREFOX_RELEASE", "FIREFOX_BETA", "FIREFOX_NIGHTLY", "LOCKWISE"
+        sharedPreferences.edit().putStringSet("disableApps", new HashSet<>(Arrays.asList(
+                "FIREFOX_KLAR", "FIREFOX_FOCUS", "FIREFOX_LITE", "FIREFOX_RELEASE", "FIREFOX_BETA", "FIREFOX_NIGHTLY",
+                "LOCKWISE", "BRAVE"
         ))).commit();
         assertThat(SettingsHelper.getDisableApps(context), containsInAnyOrder(App.values()));
     }
