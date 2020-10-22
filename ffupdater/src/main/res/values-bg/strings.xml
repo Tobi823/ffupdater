@@ -63,7 +63,7 @@
     <string name="missing_external_storage_permission_dialog_title">Заявка за права</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
     <string name="notification_text">Докоснете за преглед</string>
-    <string name="notification_title">Налично обноваване</string>
+    <string name="notification_title">Налично обноваване за: %1$s</string>
     <string name="ok">Добре</string>
     <string name="settings_activity_label">Настройки</string>
     <string name="settings_automatic_check_title">Автоматично на заден план</string>
