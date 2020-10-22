@@ -5,7 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Грешка при инсталиране на приложението</string>
     <string name="application_successful_installed">Приложението е успешно инсталирано</string>
-    <string name="available_version">Налично:%1$s%2$s</string>
+    <string name="available_version">Налично:%1$s</string>
     <string name="but_was">Но било:</string>
     <string name="device_too_old_dialog_message">Приложението работи под Android %1$s, но устройството работи само с Android %2$s. Изберете друго приложение, обновете операционната система или сменете телефона с по-нов.</string>
     <string name="device_too_old_dialog_title">Остаряло устройство</string>
@@ -51,7 +51,7 @@
     <string name="installation_warning_title">Внимание</string>
     <string name="installed_app_is_not_verified">Инсталираното приложение е НЕпроверено</string>
     <string name="installed_application_is_verified">Инсталираното приложение е проверено</string>
-    <string name="installed_version">Инсталирано:%1$s%2$s</string>
+    <string name="installed_version">Инсталирано:%1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта.\n\nПрепоръчително е да премахнете приложението.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта.\n\nПрепоръчително е да премахнете приложението.</string>
     <string name="loading_available_version">Зареждане…</string>
