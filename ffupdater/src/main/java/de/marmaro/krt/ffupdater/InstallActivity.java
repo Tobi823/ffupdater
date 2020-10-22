@@ -30,7 +30,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.Duration;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
@@ -174,7 +176,8 @@ public class InstallActivity extends AppCompatActivity {
                 R.string.fetch_url_for_download,
                 app.getDownloadSource(this)));
 
-        final Future<AvailableMetadata> futureMetadata = availableMetadataFetcher.fetchMetadata(Utils.createSet(app)).get(app);
+        final List<App> apps = Collections.singletonList(app);
+        final Future<AvailableMetadata> futureMetadata = availableMetadataFetcher.fetchMetadata(apps).get(app);
         new Thread(() -> {
             try {
                 this.metadata = futureMetadata.get(30, TimeUnit.SECONDS);

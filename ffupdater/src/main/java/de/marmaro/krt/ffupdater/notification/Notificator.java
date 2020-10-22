@@ -26,8 +26,6 @@ import androidx.work.WorkerParameters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +34,6 @@ import java.util.stream.Collectors;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.MainActivity;
-import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
@@ -119,7 +116,7 @@ public class Notificator extends Worker {
         final UpdateChecker updateChecker = new UpdateChecker();
 
         final InstalledMetadataRegister register = new InstalledMetadataRegister(packageManager, preferences);
-        Set<App> apps = register.getInstalledApps();
+        List<App> apps = register.getInstalledApps();
         apps.removeAll(SettingsHelper.getDisableApps(context));
 
         final AvailableMetadataFetcher fetcher = new AvailableMetadataFetcher(preferences, new DeviceEnvironment());

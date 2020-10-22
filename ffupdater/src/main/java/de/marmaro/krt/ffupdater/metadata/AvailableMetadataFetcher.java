@@ -3,9 +3,9 @@ package de.marmaro.krt.ffupdater.metadata;
 import android.content.SharedPreferences;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -38,7 +38,7 @@ public class AvailableMetadataFetcher {
         this.githubConsumer = new GithubConsumer(apiConsumer);
     }
 
-    public Map<App, Future<AvailableMetadata>> fetchMetadata(Set<App> apps) {
+    public Map<App, Future<AvailableMetadata>> fetchMetadata(List<App> apps) {
         return apps.stream().collect(Collectors.toMap(app -> app, app -> {
             Future<AvailableMetadata> cachedFuture = futureCache.get(app);
             if (cachedFuture != null && (!cachedFuture.isCancelled() && !cachedFuture.isDone())) {

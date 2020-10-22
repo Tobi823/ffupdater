@@ -5,8 +5,8 @@ import android.content.pm.PackageManager;
 
 import java.time.ZonedDateTime;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import de.marmaro.krt.ffupdater.App;
@@ -26,16 +26,16 @@ public class InstalledMetadataRegister {
         this.preferences = preferences;
     }
 
-    public Set<App> getInstalledApps() {
+    public List<App> getInstalledApps() {
         return Arrays.stream(App.values())
                 .filter(this::isInstalled)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 
-    public Set<App> getNotInstalledApps() {
+    public List<App> getNotInstalledApps() {
         return Arrays.stream(App.values())
                 .filter(app -> !isInstalled(app))
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 
     public boolean isInstalled(App app) {

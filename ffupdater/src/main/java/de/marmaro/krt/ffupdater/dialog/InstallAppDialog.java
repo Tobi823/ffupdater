@@ -14,7 +14,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.marmaro.krt.ffupdater.App;
@@ -43,11 +42,13 @@ public class InstallAppDialog extends DialogFragment {
         final PackageManager packageManager = context.getPackageManager();
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        final List<App> apps = new ArrayList<>(new InstalledMetadataRegister(packageManager, preferences).getNotInstalledApps());
-        final CharSequence[] appNames = apps.stream().map(app -> app.getTitle(context)).toArray(CharSequence[]::new);
+        final List<App> apps = new InstalledMetadataRegister(packageManager, preferences).getNotInstalledApps();
+        final CharSequence[] names = apps.stream()
+                .map(app -> app.getTitle(context))
+                .toArray(CharSequence[]::new);
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.install_application)
-                .setItems(appNames, (dialog, which) -> {
+                .setItems(names, (dialog, which) -> {
                     App app = apps.get(which);
                     if (!app.isCompatibleWithDeviceAbi(deviceEnvironment)) {
                         new UnsupportedAbiDialog().show(getParentFragmentManager());

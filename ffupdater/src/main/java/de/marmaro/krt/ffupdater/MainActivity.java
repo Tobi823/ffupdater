@@ -18,10 +18,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         for (App notInstalledApp : deviceAppRegister.getNotInstalledApps()) {
             helper.getAppCardViewForApp(notInstalledApp).setVisibility(GONE);
         }
-        final Set<App> installedApps = deviceAppRegister.getInstalledApps();
+        final List<App> installedApps = deviceAppRegister.getInstalledApps();
         for (App app : installedApps) {
             final String installedText = deviceAppRegister.getMetadata(app).map(metadata ->
                     String.format("Installed: %s", metadata.getVersionName())

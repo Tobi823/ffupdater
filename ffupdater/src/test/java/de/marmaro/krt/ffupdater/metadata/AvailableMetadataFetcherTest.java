@@ -17,14 +17,11 @@ import java.util.concurrent.TimeoutException;
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static de.marmaro.krt.ffupdater.App.FIREFOX_BETA;
 import static de.marmaro.krt.ffupdater.App.FIREFOX_RELEASE;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class AvailableMetadataFetcherTest {
 
@@ -40,8 +37,8 @@ public class AvailableMetadataFetcherTest {
     @Test
     public void fetchMetadata_useCache() throws InterruptedException, ExecutionException, TimeoutException {
         final App app = FIREFOX_RELEASE;
-        final Map<App, Future<AvailableMetadata>> futures1 = fetcher.fetchMetadata(Utils.createSet(app));
-        final Map<App, Future<AvailableMetadata>> futures2 = fetcher.fetchMetadata(Utils.createSet(app));
+        final Map<App, Future<AvailableMetadata>> futures1 = fetcher.fetchMetadata(Collections.singletonList(app));
+        final Map<App, Future<AvailableMetadata>> futures2 = fetcher.fetchMetadata(Collections.singletonList(app));
 
         // both futures must be the same
         assertSame(futures1.get(app), futures2.get(app));
@@ -55,10 +52,10 @@ public class AvailableMetadataFetcherTest {
     @Test
     public void fetchMetadata_useNotTheCache() throws InterruptedException, ExecutionException, TimeoutException {
         final App app = FIREFOX_BETA;
-        final Map<App, Future<AvailableMetadata>> futures1 = fetcher.fetchMetadata(Utils.createSet(app));
+        final Map<App, Future<AvailableMetadata>> futures1 = fetcher.fetchMetadata(Collections.singletonList(app));
         futures1.get(app).get(30, TimeUnit.SECONDS);
 
-        final Map<App, Future<AvailableMetadata>> futures2 = fetcher.fetchMetadata(Utils.createSet(app));
+        final Map<App, Future<AvailableMetadata>> futures2 = fetcher.fetchMetadata(Collections.singletonList(app));
 
         // both futures must be the same
         assertNotSame(futures1.get(app), futures2.get(app));
