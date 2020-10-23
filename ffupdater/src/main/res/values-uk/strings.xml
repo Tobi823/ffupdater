@@ -60,8 +60,6 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
     <string name="main_activity_subtitle">Оновіть веб-переглядачі від Mozilla</string>
-    <string name="missing_external_storage_permission_dialog_summary">Додаток запитуватиме дозвіл на зберігання для завантаження файлів та їх читання. Але лише кілька пристроїв потребують цього дозволу. Якщо ви сумніваєтесь, відхиліть запит на дозвіл - ви можете ввімкнути дозвіл на зберігання пізніше в налаштуваннях вашого пристрою.\n\nЯ буду використовувати лише зовнішню папку додатків, і я ніколи не отримаю доступ до ваших приватних фотографій тощо.</string>
-    <string name="missing_external_storage_permission_dialog_title">Запит на дозвіл</string>
     <string name="no_update_available">оновлення недоступне</string>
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
     <string name="ok">Гаразд</string>

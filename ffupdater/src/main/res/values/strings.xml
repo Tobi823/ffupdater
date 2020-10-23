@@ -69,9 +69,6 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
     <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
-    <string name="missing_external_storage_permission_dialog_summary">The app will ask for storage permission to download files and read them. But only a few devices need this permission. If you are in doubt, deny the permission request - you can enable the storage permission later in the settings of your device.\n\nI will only use the external app folder and I will never access your private pictures etc.</string>
-    <string name="missing_external_storage_permission_dialog_title">Permission Request</string>
-    <string name="mozilla" translatable="false">Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="no_update_available">No update available</string>
     <string name="not_connected_to_internet">No network connection</string>

@@ -66,8 +66,6 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater не винаги има достъп до последното издание, защото не всички издания се публикуват в GitHub. Искате ли приложението да бъде инсталирано с риск да използвате остаряло издание?</string>
     <string name="main_activity_subtitle">Обновете мрежовите четци от Mozilla</string>
-    <string name="missing_external_storage_permission_dialog_summary">Приложението ще поиска достъп до хранилището, за да изтегляне и четене на файлове. Малко устройства се нуждаят от права за това. Ако имате съмнения откажете достъпа - по-късно от настройките ни устройството можете да ги дадете.\n\nПриложението ще използва външната за него папка и никога няма да достъпва личните ви фотографии и т.н.</string>
-    <string name="missing_external_storage_permission_dialog_title">Заявка за права</string>
     <string name="no_update_available">Няма налична актуализация</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
     <string name="ok">Добре</string>

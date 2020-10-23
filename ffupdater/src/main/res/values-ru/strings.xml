@@ -66,8 +66,6 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater иногда не может загрузить последнюю версию, потому что не все обновления выпускаются на GitHub. Вы хотите установить приложение с риском использования устаревшей версии?</string>
     <string name="main_activity_subtitle">Обновите свои браузеры от Mozilla</string>
-    <string name="missing_external_storage_permission_dialog_summary">Приложение запросит разрешение на загрузку файлов и их чтение. Но только несколько устройств нуждаются в этом разрешении. Если вы сомневаетесь, откажите в запросе разрешения - вы можете включить разрешение на хранение позже в настройках вашего устройства.\n\nЯ буду использовать только внешнюю папку приложения и никогда не получу доступ к вашим личным фотографиям и т.д.</string>
-    <string name="missing_external_storage_permission_dialog_title">Запрос разрешения</string>
     <string name="no_update_available">Обновление недоступно</string>
     <string name="not_connected_to_internet">Вы не подключены к интернету</string>
     <string name="ok">ОК</string>

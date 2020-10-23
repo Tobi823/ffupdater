@@ -60,8 +60,6 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater n\'est parfois pas en mesure de télécharger la dernière version car toutes les mises à jour ne sont pas diffusées sur GitHub. Vous souhaitez installer l\'application avec le risque d\'utiliser une version obsolète ?</string>
     <string name="main_activity_subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>
-    <string name="missing_external_storage_permission_dialog_summary">L\'application demandera une autorisation de stockage pour télécharger des fichiers et les lire. Mais seuls quelques appareils ont besoin de cette autorisation. En cas de doute, refusez la demande de permission - vous pouvez activer la permission de stockage plus tard dans les paramètres de votre appareil.\n\nJe n\'utiliserai que le dossier externe de l\'application et je n\'accéderai jamais à vos photos privées, etc.  Traduit avec www.DeepL.com/Translator (version gratuite)</string>
-    <string name="missing_external_storage_permission_dialog_title">Demande d\'autorisation</string>
     <string name="no_update_available">Pas de mise à jour disponible</string>
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="ok">D\'accord</string>

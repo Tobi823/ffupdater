@@ -67,8 +67,6 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater às vezes não consegue baixar a versão mais recente porque nem todas as atualizações são lançadas no GitHub. Você quer instalar o aplicativo com o risco de usar uma versão desatualizada?</string>
     <string name="main_activity_subtitle">Atualize seus navegadores de Mozilla</string>
-    <string name="missing_external_storage_permission_dialog_summary">O aplicativo solicitará permissão de armazenamento para baixar arquivos e lê-los. Mas apenas alguns poucos dispositivos precisam desta permissão. Se você estiver em dúvida, negue o pedido de permissão - você pode habilitar a permissão de armazenamento mais tarde nas configurações do seu dispositivo.\n\nSó usarei a pasta externa do aplicativo e nunca acessarei suas fotos particulares, etc.</string>
-    <string name="missing_external_storage_permission_dialog_title">Pedido de Permissão</string>
     <string name="no_update_available">Nenhuma atualização disponível</string>
     <string name="not_connected_to_internet">Sem conexão de Internet</string>
     <string name="ok">OK</string>
