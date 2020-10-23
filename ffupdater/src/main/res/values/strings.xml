@@ -117,4 +117,5 @@
     <string name="update_notification_title">%1$s can be updated</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
+    <string name="msg_crasher_crashed">Unfortunately, %1$s has stopped working. You can report this bug on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPlease create a new \'issue\', copy the stacktrace with the \'COPY\' or \'SHARE\' button and add a description on how to reproduce the bug.</string>
 </resources>
