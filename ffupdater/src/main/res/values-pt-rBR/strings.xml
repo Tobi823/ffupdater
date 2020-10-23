@@ -22,7 +22,6 @@
     <string name="downloaded_application_is_verified">O aplicativo baixado É verificado</string>
     <string name="expected_sha_256_certificate_fingerprint">Esperada impressão digital do certificado SHA-256:</string>
     <string name="external_storage_not_accessible">O armazenamento externo não está disponível - não é possível iniciar o download. O status atual é:</string>
-    <string name="fenix_warning">Este aplicativo é destinado para testadores e, portanto, contém alguns rastreadores. Você realmente quer instalar este aplicativo?</string>
     <string name="fetch_url_for_download">Baixar url de %1$s</string>
     <string name="fetched_url_for_download_successfully">Obtido a url de download do %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Falha ao obter a url de download do %1$s</string>

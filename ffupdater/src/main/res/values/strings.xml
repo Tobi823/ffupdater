@@ -24,7 +24,6 @@
     <string name="empty" translatable="false"/>
     <string name="expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
     <string name="external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
-    <string name="fenix_warning">This app is designed for testers and therefore it contains some trackers. Do you really want to install this app?</string>
     <string name="fetch_url_for_download">Fetch download url from %1$s</string>
     <string name="fetched_url_for_download_successfully">Fetched download url from %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Failed to fetch the download url from %1$s</string>

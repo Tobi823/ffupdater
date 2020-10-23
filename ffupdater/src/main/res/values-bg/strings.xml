@@ -22,7 +22,6 @@
     <string name="downloaded_application_is_verified">Изтегленото приложение е проверено</string>
     <string name="expected_sha_256_certificate_fingerprint">Очакван отпечатък с SHA-256 от сертификат:</string>
     <string name="external_storage_not_accessible">Външното хранилище не е налице - изтеглянето не може да започне. Текущото състояние е:</string>
-    <string name="fenix_warning">Приложението е предназначено за разработчици и за това съдържа проследявания. Искате ли да бъде инсталирано?</string>
     <string name="fetch_url_for_download">Получаване на адрес за изтегляне от %1$s</string>
     <string name="fetched_url_for_download_successfully">Получен адрес за изтегляне от %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Грешка при получаване на адрес за изтегляне от %1$s</string>
