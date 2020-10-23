@@ -32,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
                 android:layout_marginBottom="32dp"
                 android:singleLine="true"
                 android:text="@string/main_activity_subtitle"
