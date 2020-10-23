@@ -23,8 +23,6 @@
     <string name="expected_sha_256_certificate_fingerprint">Empreinte digitale prévue pour le certificat SHA-256:</string>
     <string name="external_storage_not_accessible">Le stockage externe n\'est pas disponible - ne peut pas commencer le téléchargement. L\'état actuel est :</string>
     <string name="fenix_warning">L\'application sera téléchargée à partir de GitHub - seules les mises à jour qui sont publiées sur GitHub peuvent être téléchargées.</string>
-    <string name="fennec_release_description">L\'application sera téléchargée à partir de l\'API officielle de Mozilla.</string>
-    <string name="fennec_release_title">Firefox</string>
     <string name="fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
     <string name="fetched_url_for_download_successfully">URL de téléchargement récupéré de %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Impossible de récupérer l\'url de téléchargement de %1$s</string>

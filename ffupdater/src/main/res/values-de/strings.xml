@@ -23,8 +23,6 @@
     <string name="expected_sha_256_certificate_fingerprint">Erwarteter SHA-256 Fingerabdruck des Zertifikats:</string>
     <string name="external_storage_not_accessible">Externer Speicher ist nicht verfügbar - kann den Download nicht starten. Aktueller Status ist:</string>
     <string name="fenix_warning">Diese App ist für Tester konzipiert und enthält daher einige Tracker. Wollen Sie diese App wirklich installieren?</string>
-    <string name="fennec_release_description">Dies ist der standardmäßige und bekannte Firefox-Browser von Mozilla.  Die Anwendung wird von der offiziellen Mozilla-API heruntergeladen.</string>
-    <string name="fennec_release_title">Firefox Browser</string>
     <string name="fetch_url_for_download">Abruf der Download-URL von %1$s</string>
     <string name="fetched_url_for_download_successfully">Download-URL von %1$s wurde abgerufen</string>
     <string name="fetched_url_for_download_unsuccessfully">Abruf der Download-URL von %1$s schlug fehl</string>

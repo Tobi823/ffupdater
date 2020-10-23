@@ -23,8 +23,6 @@
     <string name="expected_sha_256_certificate_fingerprint">Очікуваний відбиток сертифіката SHA-256:</string>
     <string name="external_storage_not_accessible">Зовнішня пам’ять недоступна - завантажити не вдається. Поточний статус:</string>
     <string name="fenix_warning">Цей додаток розроблено для тестувальників і тому містить деякі трекери. Ви дійсно хочете встановити цю програму?</string>
-    <string name="fennec_release_description">Це стандартний і добре відомий браузер Firefox від Mozilla.  Додаток буде завантажено з офіційного API Mozilla.</string>
-    <string name="fennec_release_title">Веб-браузер Firefox</string>
     <string name="fetch_url_for_download">Вилучити URL-адресу для завантаження з %1$s</string>
     <string name="fetched_url_for_download_successfully">Вибрано URL-адресу завантаження від %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Не вдалося отримати URL-адресу завантаження від %1$s</string>

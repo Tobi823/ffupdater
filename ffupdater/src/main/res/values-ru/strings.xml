@@ -23,8 +23,6 @@
     <string name="expected_sha_256_certificate_fingerprint">Ожидаемый отпечаток сертификата SHA-256:</string>
     <string name="external_storage_not_accessible">Внешнее хранилище недоступно - не может начать загрузку. Текущее состояние есть:</string>
     <string name="fenix_warning">Это приложение предназначено для тестеров и поэтому содержит некоторые трекеры. Вы действительно хотите установить это приложение?</string>
-    <string name="fennec_release_description">Это браузер по умолчанию и хорошо известный браузер Firefox от Mozilla.\n\nПриложение будет загружено с официального API Mozilla.</string>
-    <string name="fennec_release_title">Firefox</string>
     <string name="fetch_url_for_download">Получить ссылку с %1$s</string>
     <string name="fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
     <string name="fetched_url_for_download_unsuccessfully">Не удалось получить ссылку для скачивания с %1$s</string>
