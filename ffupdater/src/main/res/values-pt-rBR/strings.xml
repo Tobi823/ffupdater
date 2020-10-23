@@ -64,6 +64,7 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater às vezes não consegue baixar a versão mais recente porque nem todas as atualizações são lançadas no GitHub. Você quer instalar o aplicativo com o risco de usar uma versão desatualizada?</string>
     <string name="main_activity_subtitle">Atualize seus navegadores de Mozilla</string>
+    <string name="msg_crasher_crashed">Infelizmente, o %1$s se despenhou. Você pode relatar este erro:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPor favor, crie um novo problema com o stacktrace e uma descrição de como reproduzir o bug.</string>
     <string name="no_update_available">Nenhuma atualização disponível</string>
     <string name="not_connected_to_internet">Sem conexão de Internet</string>
     <string name="ok">OK</string>
@@ -82,6 +83,10 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="theme_preference_summary">Escolha entre o tema claro e o escuro</string>
     <string name="theme_preference_title">Selecione tema</string>
     <string name="theme_system_default">Usar padrão do sistema</string>
+    <string name="title_crasher_copy">Cópia</string>
+    <string name="title_crasher_crashed">%1$s Crashed</string>
+    <string name="title_crasher_share">Compartilhe</string>
+    <string name="title_crasher_stack_trace">Ver Stack Trace</string>
     <string name="too_low_memory_description">No seu dispositivo está apenas %1$d MB de espaço disponível. Isto pode levar a erro de download ou na instalação</string>
     <string name="too_low_memory_title">Pouco espaço na memória</string>
     <string name="unknown_installed_version">Versão desconhecida instalada</string>

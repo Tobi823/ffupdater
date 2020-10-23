@@ -57,6 +57,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>
     <string name="main_activity_subtitle">Aktualisieren Sie Ihre Browser von Mozilla</string>
+    <string name="msg_crasher_crashed">Leider ist der %1$s abgestürzt. Du kannst diesen Fehler melden auf:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nBitte erstellen Sie eine neue Ausgabe mit dem Stacktrace und einer Beschreibung, wie der Fehler reproduziert werden kann.</string>
     <string name="no_update_available">Kein Update verfügbar</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
     <string name="ok">OK</string>
@@ -75,6 +76,10 @@
     <string name="theme_preference_summary">Wechsle zwischen Dark und Light Theme</string>
     <string name="theme_preference_title">Theme auswählen</string>
     <string name="theme_system_default">Systemeinstellung</string>
+    <string name="title_crasher_copy">Kopieren</string>
+    <string name="title_crasher_crashed">%1$s ist abgestürzt</string>
+    <string name="title_crasher_share">Teilen</string>
+    <string name="title_crasher_stack_trace">Stacktrace anzeigen</string>
     <string name="too_low_memory_description">Auf Ihrem Gerät ist nur %1$d MB Speicherplatz verfügbar. Dies kann zu einem Download- oder Installationsfehler führen.</string>
     <string name="too_low_memory_title">Wenig freier Speicher</string>
     <string name="unknown_installed_version">Unbekannte Version installiert</string>

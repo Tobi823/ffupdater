@@ -63,6 +63,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater не винаги има достъп до последното издание, защото не всички издания се публикуват в GitHub. Искате ли приложението да бъде инсталирано с риск да използвате остаряло издание?</string>
     <string name="main_activity_subtitle">Обновете мрежовите четци от Mozilla</string>
+    <string name="msg_crasher_crashed">За съжаление, %1$s се срина. Можете да съобщите за тази грешка на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nМоля, създайте нов брой със стека и описание как да възпроизведете грешката.</string>
     <string name="no_update_available">Няма налична актуализация</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
     <string name="ok">Добре</string>
@@ -81,6 +82,10 @@
     <string name="theme_preference_summary">Изберете светла или тъмна тема</string>
     <string name="theme_preference_title">Изберане на тема</string>
     <string name="theme_system_default">Стандартната за системата</string>
+    <string name="title_crasher_copy">копие</string>
+    <string name="title_crasher_crashed">%1$s се срина</string>
+    <string name="title_crasher_share">Дял</string>
+    <string name="title_crasher_stack_trace">Преглед на проследяването на стека</string>
     <string name="too_low_memory_description">Устройството разполага само с %1$d свободни МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>
     <string name="too_low_memory_title">Недостатъчно празно пространство</string>
     <string name="unknown_installed_version">Инсталирана е неизвестна версия</string>

@@ -57,6 +57,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
     <string name="main_activity_subtitle">Оновіть веб-переглядачі від Mozilla</string>
+    <string name="msg_crasher_crashed">На жаль, FFUpdater зазнав аварії. Ви можете повідомити про цю помилку:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nБудь ласка, створіть нове видання зі стеком і описом того, як відтворити помилку.</string>
     <string name="no_update_available">оновлення недоступне</string>
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
     <string name="ok">Гаразд</string>
@@ -75,6 +76,10 @@
     <string name="theme_preference_summary">Вибирайте світлу та темну тему</string>
     <string name="theme_preference_title">Виберіть тему</string>
     <string name="theme_system_default">Використовуйте системний стандарт за замовчуванням</string>
+    <string name="title_crasher_copy">Копіювати</string>
+    <string name="title_crasher_crashed">%1$s зазнав аварії</string>
+    <string name="title_crasher_share">Поділіться</string>
+    <string name="title_crasher_stack_trace">Переглянути стек стека</string>
     <string name="too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>
     <string name="too_low_memory_title">Мало місця на диску</string>
     <string name="unknown_installed_version">Встановлена невідома версія</string>

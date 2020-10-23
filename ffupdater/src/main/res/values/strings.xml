@@ -67,6 +67,7 @@
     <string name="lockwise_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
     <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
+    <string name="msg_crasher_crashed">Unfortunately, FFUpdater has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
     <string name="no_update_available">No update available</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="ok">OK</string>
@@ -85,6 +86,10 @@
     <string name="theme_preference_summary">Choose between light and dark theme</string>
     <string name="theme_preference_title">Choose theme</string>
     <string name="theme_system_default">Use system default</string>
+    <string name="title_crasher_copy">Copy</string>
+    <string name="title_crasher_crashed">%1$s Crashed</string>
+    <string name="title_crasher_share">Share</string>
+    <string name="title_crasher_stack_trace">View Stack Trace</string>
     <string name="too_low_memory_description">On your device is only %1$d MB of space available. This may lead to download or installation failure.</string>
     <string name="too_low_memory_title">Low Disk Space</string>
     <string name="unknown_installed_version">Unknown version installed</string>
@@ -117,5 +122,4 @@
     <string name="update_notification_title">%1$s can be updated</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
-    <string name="msg_crasher_crashed">Unfortunately, %1$s has stopped working. You can report this bug on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPlease create a new \'issue\', copy the stacktrace with the \'COPY\' or \'SHARE\' button and add a description on how to reproduce the bug.</string>
 </resources>

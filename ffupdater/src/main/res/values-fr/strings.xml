@@ -57,6 +57,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater n\'est parfois pas en mesure de télécharger la dernière version car toutes les mises à jour ne sont pas diffusées sur GitHub. Vous souhaitez installer l\'application avec le risque d\'utiliser une version obsolète ?</string>
     <string name="main_activity_subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>
+    <string name="msg_crasher_crashed">Malheureusement, %1$s s\'est écrasé. Vous pouvez signaler cette erreur sur:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nVeuillez créer un nouveau numéro avec le stacktrace et une description sur la façon de reproduire le bug.</string>
     <string name="no_update_available">Pas de mise à jour disponible</string>
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="ok">D\'accord</string>
@@ -75,6 +76,10 @@
     <string name="theme_preference_summary">Choisissez entre un thème clair et un thème sombre</string>
     <string name="theme_preference_title">Choisissez un thème</string>
     <string name="theme_system_default">Utiliser le système par défaut</string>
+    <string name="title_crasher_copy">Copie</string>
+    <string name="title_crasher_crashed">%1$s a planté</string>
+    <string name="title_crasher_share">Partager</string>
+    <string name="title_crasher_stack_trace">Voir la trace des piles</string>
     <string name="too_low_memory_description">Sur votre appareil, il n\'y a que %1$d MB d\'espace disponible. Cela peut entraîner un échec du téléchargement ou de l\'installation.</string>
     <string name="too_low_memory_title">Espace disque faible</string>
     <string name="unknown_installed_version">Version inconnue installée</string>
