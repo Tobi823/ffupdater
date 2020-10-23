@@ -53,6 +53,7 @@
     <string name="information_about_the_app">information about the app</string>
     <string name="install_activity_label">Install Application</string>
     <string name="install_application">Install Application</string>
+    <string name="install_new_app">Install new app</string>
     <string name="installation_warning_negative_button">No, don\'t install it</string>
     <string name="installation_warning_positive_button">Yes</string>
     <string name="installation_warning_title">Warning</string>

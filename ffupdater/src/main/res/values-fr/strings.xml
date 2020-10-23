@@ -44,6 +44,7 @@
     <string name="information_about_the_app">informations sur l\'application</string>
     <string name="install_activity_label">Installer l\'application</string>
     <string name="install_application">Installer l\'application</string>
+    <string name="install_new_app">Installer une nouvelle application</string>
     <string name="installation_warning_negative_button">Non, rester à \'Release\'</string>
     <string name="installation_warning_positive_button">Oui</string>
     <string name="installation_warning_title">"Avertissement"</string>
@@ -103,7 +104,7 @@
     <string name="update_notification_channel_description">Canal de notification des mises à jour disponibles pour %1$s.</string>
     <string name="update_notification_channel_name">Notification de mise à jour de %1$s</string>
     <string name="update_notification_text">Cliquez pour mettre à jour %1$s</string>
+    <string name="update_notification_title">%1$s peut être mis à jour</string>
     <string name="verifying_downloaded_application_certificate">Vérification du certificat de demande</string>
     <string name="you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
-    <string name="update_notification_title">%1$s peut être mis à jour</string>
 </resources>

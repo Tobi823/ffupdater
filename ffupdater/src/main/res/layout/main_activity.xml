@@ -59,7 +59,8 @@
         android:visibility="visible"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="end|bottom"
-        app:srcCompat="@drawable/ic_add_black" />
+        app:srcCompat="@drawable/ic_add_black"
+        android:contentDescription="@string/install_new_app" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

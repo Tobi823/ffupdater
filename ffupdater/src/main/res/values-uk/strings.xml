@@ -44,6 +44,7 @@
     <string name="information_about_the_app">інформація про додаток</string>
     <string name="install_activity_label">Встановити програму</string>
     <string name="install_application">Встановити програму</string>
+    <string name="install_new_app">Встановіть новий додаток</string>
     <string name="installation_warning_negative_button">Ні, поверніться до \'Release\'</string>
     <string name="installation_warning_positive_button">Так</string>
     <string name="installation_warning_title">Увага</string>
@@ -103,7 +104,7 @@
     <string name="update_notification_channel_description">Канал сповіщення про доступні оновлення %1$s.</string>
     <string name="update_notification_channel_name">Повідомлення про оновлення %1$s</string>
     <string name="update_notification_text">Клацніть, щоб оновити %1$s</string>
+    <string name="update_notification_title">%1$s можна оновити</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
-    <string name="update_notification_title">%1$s можна оновити</string>
 </resources>

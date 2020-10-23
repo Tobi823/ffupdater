@@ -50,6 +50,7 @@
     <string name="information_about_the_app">информация о приложении</string>
     <string name="install_activity_label">Установить приложение</string>
     <string name="install_application">Установить приложение</string>
+    <string name="install_new_app">Установить новое приложение</string>
     <string name="installation_warning_negative_button">Нет, не устанавливать</string>
     <string name="installation_warning_positive_button">Да</string>
     <string name="installation_warning_title">Предупреждение</string>
@@ -109,7 +110,7 @@
     <string name="update_notification_channel_description">"Notification channel for available %1$s updates. "</string>
     <string name="update_notification_channel_name">Уведомление об обновлении %1$s</string>
     <string name="update_notification_text">Нажмите, чтобы обновить %1$s</string>
+    <string name="update_notification_title">%1$s может быть обновлен</string>
     <string name="verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
-    <string name="update_notification_title">%1$s может быть обновлен</string>
 </resources>
