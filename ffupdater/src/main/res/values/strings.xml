@@ -12,7 +12,7 @@
     <string name="brave_title">Brave Private Browser</string>
     <string name="brave_warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
     <string name="but_was">But was:</string>
-    <string name="default_theme_preference" translatable="false">1</string>
+    <string name="default_theme_preference" translatable="false">3</string>
     <string name="device_too_old_dialog_message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>
     <string name="device_too_old_dialog_title">Device is too old</string>
     <string name="download_application_from_with_status">Download application (%1$s)</string>
