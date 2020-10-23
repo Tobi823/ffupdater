@@ -10,6 +10,7 @@ Download, install and update these browsers from Mozilla:
  - [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
  - [Firefox Lite](https://play.google.com/store/apps/details?id=org.mozilla.rocket)
  - [Firefox Lockwise](https://play.google.com/store/apps/details?id=mozilla.lockbox)
+ - [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US)
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
 
@@ -34,6 +35,9 @@ Limitations:
 
 FAQ:
  - app installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
+
+3rd-party libraries:
+ - Crasher (Apache 2.0) https://github.com/fennifith/Crasher
 
 ## Deprecated browsers
 

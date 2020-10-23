@@ -5,22 +5,27 @@ Download, install and update these browsers from Mozilla:
  - Firefox Focus
  - Firefox Klar
  - Firefox Lite
+
+and other apps:
  - Firefox Lockwise
+ - Brave Private Browser
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
 
 Security measures:
  - only HTTPS connections
- - check fingerprint of the downloaded file
- - check fingerprint of the installed app
+ - check certificate fingerprint of the downloaded and installed file
+ - ...
 
-You can find the APK certificate fingerprints on multiple website - e.g. apkmirror.com
-I did my best to make the app as secure as possible - feel free to double-check it in the source code.
+I did my best to make the app as secure as possible - feel free to double-check the source code.
 
 Limitations:
  - FFUpdater can't detect external installations or updates of Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Focus and Firefox Klar. If you install or update one of these apps with the Google Play Store, FFUpdater assumes that this app is outdated and prompts you for an update. You can disable the update check for an app in settings > excluded applications.
 
 FAQ:
  - app installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
+
+3rd-party libraries:
+ - Crasher (Apache 2.0) https://github.com/fennifith/Crasher
 
 Click on the "Source Code" link to see the README.md for more technical details.
