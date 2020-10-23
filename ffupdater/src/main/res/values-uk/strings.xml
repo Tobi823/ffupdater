@@ -6,6 +6,11 @@
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
     <string name="application_successful_installed">Програма успішно встановлена</string>
     <string name="available_version">в наявності:%1$s</string>
+    <string name="available_version_error">ПОМИЛКА</string>
+    <string name="available_version_loading">Завантаження…</string>
+    <string name="brave_description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення.\n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
+    <string name="brave_title">Brave Browser</string>
+    <string name="brave_warning">128/5000 Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave?</string>
     <string name="but_was">Але було:</string>
     <string name="device_too_old_dialog_message">Додаток вимагає Android %1$s. Але на вашому пристрої працює лише Android %2$s. Або виберіть інший додаток, оновіть операційну систему або перейдіть на новий смартфон.</string>
     <string name="device_too_old_dialog_title">Пристрій занадто старий</string>
@@ -16,6 +21,7 @@
     <string name="downloaded_application_is_not_verified">Завантажена програма НЕ перевірена</string>
     <string name="downloaded_application_is_verified">Завантажена програма перевірена</string>
     <string name="expected_sha_256_certificate_fingerprint">Очікуваний відбиток сертифіката SHA-256:</string>
+    <string name="external_storage_not_accessible">Зовнішня пам’ять недоступна - завантажити не вдається. Поточний статус:</string>
     <string name="fenix_warning">Цей додаток розроблено для тестувальників і тому містить деякі трекери. Ви дійсно хочете встановити цю програму?</string>
     <string name="fennec_release_description">Це стандартний і добре відомий браузер Firefox від Mozilla.  Додаток буде завантажено з офіційного API Mozilla.</string>
     <string name="fennec_release_title">Веб-браузер Firefox</string>
@@ -56,9 +62,8 @@
     <string name="main_activity_subtitle">Оновіть веб-переглядачі від Mozilla</string>
     <string name="missing_external_storage_permission_dialog_summary">Додаток запитуватиме дозвіл на зберігання для завантаження файлів та їх читання. Але лише кілька пристроїв потребують цього дозволу. Якщо ви сумніваєтесь, відхиліть запит на дозвіл - ви можете ввімкнути дозвіл на зберігання пізніше в налаштуваннях вашого пристрою.\n\nЯ буду використовувати лише зовнішню папку додатків, і я ніколи не отримаю доступ до ваших приватних фотографій тощо.</string>
     <string name="missing_external_storage_permission_dialog_title">Запит на дозвіл</string>
+    <string name="no_update_available">оновлення недоступне</string>
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
-    <string name="update_notification_text">Натисніть, щоб переглянути</string>
-    <string name="update_notification_title">Оновлення доступне для: %1$s</string>
     <string name="ok">Гаразд</string>
     <string name="settings_activity_label">Налаштування</string>
     <string name="settings_automatic_check_title">Автоматичний у фоновому режимі</string>
@@ -77,10 +82,12 @@
     <string name="theme_system_default">Використовуйте системний стандарт за замовчуванням</string>
     <string name="too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>
     <string name="too_low_memory_title">Мало місця на диску</string>
+    <string name="unknown_installed_version">Встановлена невідома версія</string>
     <string name="unknown_signature_of_installed_app_text1">"Вам потрібно видалити існуючу програму, перш ніж FFUpdater зможе встановити або оновити програму. Створіть резервну копію даних, оскільки видалення видалить усі ваші закладки, налаштування тощо. "</string>
     <string name="unknown_signature_of_installed_app_text2">Причина: Поточна встановлена програма не підписана оригінальним розробником - можливо, вона підписана F-Droid. Android відмовляється оновлювати програму, якщо різні люди підписали встановлену та оновлену версії.</string>
     <string name="unsupported_abi_dialog_message">Вибраний браузер несумісний з процесором вашого смартфона. Виберіть інший веб-переглядач.</string>
     <string name="unsupported_abi_dialog_title">Непідтримуваний пристрій</string>
+    <string name="update_available">Оновлення доступне</string>
     <string name="update_interval_12h">12 годин</string>
     <string name="update_interval_15min">15 хвилин</string>
     <string name="update_interval_18h">18 годин</string>
@@ -99,17 +106,10 @@
     <string name="update_interval_6d">6 днів</string>
     <string name="update_interval_6h">6 годин</string>
     <string name="update_interval_8h">8 годин</string>
-    <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
-    <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
     <string name="update_notification_channel_description">Канал сповіщення про доступні оновлення %1$s.</string>
     <string name="update_notification_channel_name">Повідомлення про оновлення %1$s</string>
-    <string name="update_available">Оновлення доступне</string>
-    <string name="no_update_available">оновлення недоступне</string>
-    <string name="available_version_error">ПОМИЛКА</string>
-    <string name="available_version_loading">Завантаження…</string>
-    <string name="unknown_installed_version">Встановлена невідома версія</string>
-    <string name="external_storage_not_accessible">Зовнішня пам’ять недоступна - завантажити не вдається. Поточний статус:</string>
-    <string name="brave_title">Brave Browser</string>
-    <string name="brave_description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення.\n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
-    <string name="brave_warning">128/5000 Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave?</string>
+    <string name="update_notification_text">Натисніть, щоб переглянути</string>
+    <string name="update_notification_title">Оновлення доступне для: %1$s</string>
+    <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
+    <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
 </resources>

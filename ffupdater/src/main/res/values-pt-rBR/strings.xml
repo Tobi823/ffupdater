@@ -6,6 +6,11 @@
     <string name="application_installation_was_not_successful">A instalação do aplicativo falhou</string>
     <string name="application_successful_installed">O aplicativo instalado com êxito</string>
     <string name="available_version">Disponível:%1$s</string>
+    <string name="available_version_error">ERROR</string>
+    <string name="available_version_loading">Carregando...</string>
+    <string name="brave_description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !\n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé!</string>
+    <string name="brave_title">Navigateur internet privé Brave</string>
+    <string name="brave_warning">A Brave usa a base técnica do Google Chrome (Cromo) - algumas pessoas não gostam disso. Você quer instalar o Brave?</string>
     <string name="but_was">Mais era:</string>
     <string name="device_too_old_dialog_message"> O aplicativo requer o Android %1$s. Mas seu dispositivo está rodando apenas o Android %2$s. Escolha um aplicativo diferente, atualize seu sistema operacional ou mude para um smartphone mais novo.</string>
     <string name="device_too_old_dialog_title">O dispositivo é muito antigo</string>
@@ -16,6 +21,7 @@
     <string name="downloaded_application_is_not_verified">O aplicativo baixado NÃO é verificado</string>
     <string name="downloaded_application_is_verified">O aplicativo baixado É verificado</string>
     <string name="expected_sha_256_certificate_fingerprint">Esperada impressão digital do certificado SHA-256:</string>
+    <string name="external_storage_not_accessible">O armazenamento externo não está disponível - não é possível iniciar o download. O status atual é:</string>
     <string name="fenix_warning">Este aplicativo é destinado para testadores e, portanto, contém alguns rastreadores. Você realmente quer instalar este aplicativo?</string>
     <string name="fennec_release_description">Esta é a versão padrão e sugerida do Navegador Mozilla Firefox.\n\O aplicativo será baixado do API oficial da Mozilla.</string>
     <string name="fennec_release_title">Firefox Browser</string>
@@ -63,9 +69,8 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="main_activity_subtitle">Atualize seus navegadores de Mozilla</string>
     <string name="missing_external_storage_permission_dialog_summary">O aplicativo solicitará permissão de armazenamento para baixar arquivos e lê-los. Mas apenas alguns poucos dispositivos precisam desta permissão. Se você estiver em dúvida, negue o pedido de permissão - você pode habilitar a permissão de armazenamento mais tarde nas configurações do seu dispositivo.\n\nSó usarei a pasta externa do aplicativo e nunca acessarei suas fotos particulares, etc.</string>
     <string name="missing_external_storage_permission_dialog_title">Pedido de Permissão</string>
+    <string name="no_update_available">Nenhuma atualização disponível</string>
     <string name="not_connected_to_internet">Sem conexão de Internet</string>
-    <string name="update_notification_text">Aperte para ver</string>
-    <string name="update_notification_title">A atualização está disponível para: %1$s</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Configurações</string>
     <string name="settings_automatic_check_title">Automático no fundo</string>
@@ -84,10 +89,12 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="theme_system_default">Usar padrão do sistema</string>
     <string name="too_low_memory_description">No seu dispositivo está apenas %1$d MB de espaço disponível. Isto pode levar a erro de download ou na instalação</string>
     <string name="too_low_memory_title">Pouco espaço na memória</string>
+    <string name="unknown_installed_version">Versão desconhecida instalada</string>
     <string name="unknown_signature_of_installed_app_text1">"É necessário desinstalar o aplicativo existente antes que o FFUpdater possa instalar ou atualizar o aplicativo. Faça backup de seus dados porque a desinstalação irá apagar todos os seus marcadores, configurações, etc. "</string>
     <string name="unknown_signature_of_installed_app_text2">Motivo: O aplicativo instalado atualmente não é assinado pelo desenvolvedor original - talvez seja assinado pelo F-Droid. O Android se recusa a atualizar um aplicativo se pessoas diferentes assinaram a versão instalada e a versão atualizada.</string>
     <string name="unsupported_abi_dialog_message">O navegador selecionado é incompatível com o processador do seu aparelho. Por favor, selecione um navegador diferente.</string>
     <string name="unsupported_abi_dialog_title">Dispositivo sem suporte</string>
+    <string name="update_available">Atualização disponível</string>
     <string name="update_interval_12h">12 horas</string>
     <string name="update_interval_15min">15 minutos</string>
     <string name="update_interval_18h">18 horas</string>
@@ -106,17 +113,10 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="update_interval_6d">6 dias</string>
     <string name="update_interval_6h">6 horas</string>
     <string name="update_interval_8h">8 horas</string>
-    <string name="verifying_downloaded_application_certificate">Verificando Certificado do aplicativo</string>
-    <string name="you_can_now_close_this_window">Agora você pode fechar esta janela</string>
     <string name="update_notification_channel_description">Canal de notificação para atualizações disponíveis do %1$s.</string>
     <string name="update_notification_channel_name">"Notificação de atualização do %1$s "</string>
-    <string name="update_available">Atualização disponível</string>
-    <string name="no_update_available">Nenhuma atualização disponível</string>
-    <string name="available_version_error">ERROR</string>
-    <string name="available_version_loading">Carregando...</string>
-    <string name="unknown_installed_version">Versão desconhecida instalada</string>
-    <string name="external_storage_not_accessible">O armazenamento externo não está disponível - não é possível iniciar o download. O status atual é:</string>
-    <string name="brave_title">Navigateur internet privé Brave</string>
-    <string name="brave_description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !\n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé!</string>
-    <string name="brave_warning">A Brave usa a base técnica do Google Chrome (Cromo) - algumas pessoas não gostam disso. Você quer instalar o Brave?</string>
+    <string name="update_notification_text">Aperte para ver</string>
+    <string name="update_notification_title">A atualização está disponível para: %1$s</string>
+    <string name="verifying_downloaded_application_certificate">Verificando Certificado do aplicativo</string>
+    <string name="you_can_now_close_this_window">Agora você pode fechar esta janela</string>
 </resources>
