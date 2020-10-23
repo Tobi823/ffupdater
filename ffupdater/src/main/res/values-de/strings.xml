@@ -99,8 +99,8 @@
     <string name="update_interval_6d">6 Tage</string>
     <string name="update_interval_6h">6 Stunden</string>
     <string name="update_interval_8h">"8 Stunden "</string>
-    <string name="update_notification_channel_description__all">Diese Benachrichtigungskategorie informiert Sie über neue verfügbare Firefox-Updates.</string>
-    <string name="update_notification_channel_name__all">Update-Benachrichtigung</string>
     <string name="verifying_downloaded_application_certificate">Zertifikat der Anwendung überprüfen</string>
     <string name="you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
+    <string name="update_notification_channel_description">Benachrichtigungskanal für verfügbare %1$s Updates.</string>
+    <string name="update_notification_channel_name">Update-Benachrichtigung für %1$s</string>
 </resources>

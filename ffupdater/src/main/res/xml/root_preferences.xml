@@ -39,14 +39,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/settingsCategory_notification">
-
-        <SwitchPreferenceCompat
-            app:defaultValue="false"
-            app:key="summarizeUpdateNotifications"
-            app:summary="@string/summarize_update_notification__settings_summary"
-            app:title="@string/summarize_update_notification__settings_title" />
-
-    </PreferenceCategory>
-
 </PreferenceScreen>

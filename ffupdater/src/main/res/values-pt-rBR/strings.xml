@@ -106,8 +106,8 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="update_interval_6d">6 dias</string>
     <string name="update_interval_6h">6 horas</string>
     <string name="update_interval_8h">8 horas</string>
-    <string name="update_notification_channel_description__all">Esta categoria de notificação o informará sobre as novas atualizações disponíveis do Firefox.</string>
-    <string name="update_notification_channel_name__all">Notificação de atualização</string>
     <string name="verifying_downloaded_application_certificate">Verificando Certificado do aplicativo</string>
     <string name="you_can_now_close_this_window">Agora você pode fechar esta janela</string>
+    <string name="update_notification_channel_description">Canal de notificação para atualizações disponíveis do %1$s.</string>
+    <string name="update_notification_channel_name">"Notificação de atualização do %1$s "</string>
 </resources>

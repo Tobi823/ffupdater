@@ -39,18 +39,20 @@ public class AvailableMetadataFetcher {
     }
 
     public Map<App, Future<AvailableMetadata>> fetchMetadata(List<App> apps) {
-        return apps.stream().collect(Collectors.toMap(app -> app, app -> {
-            Future<AvailableMetadata> cachedFuture = futureCache.get(app);
-            if (cachedFuture != null && (!cachedFuture.isCancelled() && !cachedFuture.isDone())) {
-                return cachedFuture;
-            }
+        return apps.stream().collect(Collectors.toMap(app -> app, this::fetchMetadata));
+    }
 
-            Callable<AvailableMetadata> callable = new Fetcher(sharedPreferences, app, deviceEnvironment, mozillaCiConsumer, githubConsumer);
-            Future<AvailableMetadata> future = executorService.submit(callable);
+    public Future<AvailableMetadata> fetchMetadata(App app) {
+        Future<AvailableMetadata> cachedFuture = futureCache.get(app);
+        if (cachedFuture != null && (!cachedFuture.isCancelled() && !cachedFuture.isDone())) {
+            return cachedFuture;
+        }
 
-            futureCache.put(app, future);
-            return future;
-        }));
+        Callable<AvailableMetadata> callable = new Fetcher(sharedPreferences, app, deviceEnvironment, mozillaCiConsumer, githubConsumer);
+        Future<AvailableMetadata> future = executorService.submit(callable);
+
+        futureCache.put(app, future);
+        return future;
     }
 
     public void shutdown() {

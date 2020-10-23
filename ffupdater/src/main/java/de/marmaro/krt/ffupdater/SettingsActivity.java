@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker;
+import de.marmaro.krt.ffupdater.notification.BackgroundUpdateCheckerCreator;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
@@ -26,7 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
+        AppCompatDelegate.setDefaultNightMode(new SettingsHelper(this).getThemePreference(new DeviceEnvironment()));
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.settings, new SettingsFragment())
@@ -37,7 +37,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        BackgroundUpdateChecker.start(this);
+        new BackgroundUpdateCheckerCreator(this).startOrStopBackgroundUpdateCheck();
     }
 
     @Override

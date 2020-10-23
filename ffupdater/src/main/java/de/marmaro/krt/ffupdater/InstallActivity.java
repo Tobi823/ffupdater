@@ -30,15 +30,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.Duration;
-import java.util.Collections;
+import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -51,9 +52,8 @@ import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.security.FingerprintValidator;
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
-import de.marmaro.krt.ffupdater.utils.Utils;
+import de.marmaro.krt.ffupdater.utils.CompareHelper;
 
-import static android.app.DownloadManager.Request.VISIBILITY_VISIBLE;
 import static android.app.DownloadManager.STATUS_FAILED;
 import static android.app.DownloadManager.STATUS_PAUSED;
 import static android.app.DownloadManager.STATUS_PENDING;
@@ -74,8 +74,9 @@ import static de.marmaro.krt.ffupdater.R.id.downloadedFileUrl;
  */
 public class InstallActivity extends AppCompatActivity {
     public static final String EXTRA_APP_NAME = "app_name";
-    private static final String PACKAGE_INSTALLED_ACTION = "de.marmaro.krt.ffupdater.InstallActivity.SESSION_API_PACKAGE_INSTALLED";
     public static final String LOG_TAG = "InstallActivity";
+    private static final String PACKAGE_INSTALLED_ACTION = "de.marmaro.krt.ffupdater.InstallActivity.SESSION_API_PACKAGE_INSTALLED";
+    private static final Duration MAX_WAIT_TIME = Duration.ofSeconds(30);
 
     private final Map<Integer, String> downloadManagerIdToString = new HashMap<>();
     private DownloadManagerAdapter downloadManager;
@@ -91,7 +92,7 @@ public class InstallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.download_activity);
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, new DeviceEnvironment()));
+        AppCompatDelegate.setDefaultNightMode(new SettingsHelper(this).getThemePreference(new DeviceEnvironment()));
         registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         Optional.ofNullable(getSupportActionBar()).ifPresent(actionBar -> actionBar.setDisplayHomeAsUpEnabled(true));
 
@@ -120,7 +121,7 @@ public class InstallActivity extends AppCompatActivity {
         if (isSignatureOfInstalledAppUnknown(app) || isExternalStorageNotAccessible()) {
             return;
         }
-        checkFreeSpace();
+        displayWarningWhenLowOnMemory();
         fetchAvailableMetadata();
     }
 
@@ -158,16 +159,14 @@ public class InstallActivity extends AppCompatActivity {
         return true;
     }
 
-    private void checkFreeSpace() {
+    private void displayWarningWhenLowOnMemory() {
         final File downloadDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
         long freeBytes = new StatFs(downloadDir.getPath()).getFreeBytes();
-        if (freeBytes > 104_857_600) {
-            return;
+        if (freeBytes < 100 * 1024 * 1024) {
+            long freeMBytes = freeBytes / (1024 * 1024);
+            show(R.id.tooLowMemory);
+            setText(R.id.tooLowMemoryDescription, getString(R.string.too_low_memory_description, freeMBytes));
         }
-
-        show(R.id.tooLowMemory);
-        long freeMBytes = freeBytes / (1024 * 1024);
-        setText(R.id.tooLowMemoryDescription, getString(R.string.too_low_memory_description, freeMBytes));
     }
 
     private void fetchAvailableMetadata() {
@@ -176,11 +175,10 @@ public class InstallActivity extends AppCompatActivity {
                 R.string.fetch_url_for_download,
                 app.getDownloadSource(this)));
 
-        final List<App> apps = Collections.singletonList(app);
-        final Future<AvailableMetadata> futureMetadata = availableMetadataFetcher.fetchMetadata(apps).get(app);
+        final Future<AvailableMetadata> future = availableMetadataFetcher.fetchMetadata(app);
         new Thread(() -> {
             try {
-                this.metadata = futureMetadata.get(30, TimeUnit.SECONDS);
+                this.metadata = future.get(MAX_WAIT_TIME.getSeconds(), TimeUnit.SECONDS);
                 hide(R.id.fetchUrl);
                 show(R.id.fetchedUrlSuccess);
                 setText(R.id.fetchedUrlSuccessTextView, getString(R.string.fetched_url_for_download_successfully,
@@ -201,26 +199,26 @@ public class InstallActivity extends AppCompatActivity {
         show(R.id.downloadingFile);
         setText(R.id.downloadingFileUrl, metadata.getDownloadUrl().toString());
 
-        downloadId = downloadManager.enqueue(this, metadata.getDownloadUrl(), app.getTitle(this), VISIBILITY_VISIBLE);
-        new Thread(() -> {
-            int previousStatus = -1;
-            long waitMs = 500;
-            long maxTime = Duration.ofMinutes(5).toMillis();
-            for (long i = 0; i < maxTime / waitMs; i++) {
-                StatusProgress result = downloadManager.getStatusAndProgress(downloadId);
-                if (previousStatus != result.getStatus()) {
-                    previousStatus = result.getStatus();
-                    setText(R.id.downloadingFileText, getString(R.string.download_application_from_with_status,
-                            downloadManagerIdToString.getOrDefault(result.getStatus(), "?")));
-                }
-                if (result.getStatus() == STATUS_FAILED || result.getStatus() == STATUS_SUCCESSFUL) {
-                    return;
-                }
-                runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar))
-                        .setProgress(result.getProgress()));
-                Utils.sleepAndIgnoreInterruptedException(waitMs);
+        downloadId = downloadManager.enqueue(this, metadata.getDownloadUrl(), app.getTitle(this));
+
+        final LocalDateTime start = LocalDateTime.now();
+        final Duration maxWaitingTime = Duration.ofMinutes(5);
+        final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+        executor.scheduleWithFixedDelay(() -> {
+            final StatusProgress result = downloadManager.getStatusAndProgress(downloadId);
+            final String status = downloadManagerIdToString.getOrDefault(result.getStatus(), "?");
+            setText(R.id.downloadingFileText, getString(R.string.download_application_from_with_status, status));
+            runOnUiThread(() -> ((ProgressBar) findViewById(R.id.downloadingFileProgressBar))
+                    .setProgress(result.getProgress()));
+            switch (result.getStatus()) {
+                case STATUS_FAILED:
+                case STATUS_SUCCESSFUL:
+                    executor.shutdown();
             }
-        }).start();
+            if (new CompareHelper<>(Duration.between(start, LocalDateTime.now())).isGreaterThan(maxWaitingTime)) {
+                executor.shutdown();
+            }
+        }, 0, 500, TimeUnit.MILLISECONDS);
     }
 
     private final BroadcastReceiver onDownloadComplete = new BroadcastReceiver() {

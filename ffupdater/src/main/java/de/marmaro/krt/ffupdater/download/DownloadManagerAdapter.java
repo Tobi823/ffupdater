@@ -6,12 +6,10 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
-import androidx.core.util.Pair;
 
 import com.google.common.base.Preconditions;
 
 import java.io.File;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Map;
@@ -44,20 +42,19 @@ public class DownloadManagerAdapter {
      * @param notificationVisibility visibility of the download notification
      * @return new generated id for the download
      */
-    public long enqueue(Context context, URL downloadUrl, String notificationTitle, int notificationVisibility) {
+    public long enqueue(Context context, URL downloadUrl, String notificationTitle) {
         Objects.requireNonNull(context);
         Objects.requireNonNull(downloadUrl);
         Objects.requireNonNull(notificationTitle);
         Preconditions.checkArgument("https".equals(downloadUrl.getProtocol()));
 
-        String fileName = String.format(Locale.getDefault(), "download_%d_%d.apk",
-                System.currentTimeMillis(),
+        String fileName = String.format(Locale.getDefault(), "download_%d_%d.apk", System.currentTimeMillis(),
                 Math.abs(new Random().nextLong()));
 
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl.toString()));
-        request.setTitle(notificationTitle);
-        request.setNotificationVisibility(notificationVisibility);
-        request.setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName);
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl.toString()))
+                .setTitle(notificationTitle)
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
+                .setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName);
 
         long id = downloadManager.enqueue(request);
         final File downloadDir = Objects.requireNonNull(context.getExternalFilesDir(DIRECTORY_DOWNLOADS));

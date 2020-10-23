@@ -62,7 +62,7 @@
     <string name="missing_external_storage_permission_dialog_summary">Приложението ще поиска достъп до хранилището, за да изтегляне и четене на файлове. Малко устройства се нуждаят от права за това. Ако имате съмнения откажете достъпа - по-късно от настройките ни устройството можете да ги дадете.\n\nПриложението ще използва външната за него папка и никога няма да достъпва личните ви фотографии и т.н.</string>
     <string name="missing_external_storage_permission_dialog_title">Заявка за права</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
-    <string name="update_notification_text">Докоснете за преглед</string>
+    <string name="update_notification_text">Докоснете, за да актуализирате 1$s</string>
     <string name="update_notification_title">Налично обноваване за: %1$s</string>
     <string name="ok">Добре</string>
     <string name="settings_activity_label">Настройки</string>
@@ -80,14 +80,10 @@
     <string name="theme_preference_summary">Изберете светла или тъмна тема</string>
     <string name="theme_preference_title">Изберане на тема</string>
     <string name="theme_system_default">Стандартната за системата</string>
-    <string name="too_low_memory_description">Устройството разполага само с %1$s свободни МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>
+    <string name="too_low_memory_description">Устройството разполага само с %1$d свободни МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>
     <string name="too_low_memory_title">Недостатъчно празно пространство</string>
-    <string name="unknown_signature_of_installed_app_text1">
-
-You have to uninstall the existing app before FFUpdater can install or update the app. Backup your data because the uninstall will delete all your bookmarks, settings etc.</string>
-    <string name="unknown_signature_of_installed_app_text2">
-
-Reason: The current installed app is not signed by the original developer - maybe it\'s signed by F-Droid. Android refuses to update an app if different people signed the installed and the updated version.</string>
+    <string name="unknown_signature_of_installed_app_text1">You have to uninstall the existing app before FFUpdater can install or update the app. Backup your data because the uninstall will delete all your bookmarks, settings etc.</string>
+    <string name="unknown_signature_of_installed_app_text2">Reason: The current installed app is not signed by the original developer - maybe it\'s signed by F-Droid. Android refuses to update an app if different people signed the installed and the updated version.</string>
     <string name="unsupported_abi_dialog_message">Избраното приложение е несъвместимо с процесора на телефона. Изберете друго.</string>
     <string name="unsupported_abi_dialog_title">Неподдържано устройство</string>
     <string name="update_interval_12h">12 часа</string>
@@ -108,8 +104,8 @@ Reason: The current installed app is not signed by the original developer - mayb
     <string name="update_interval_6d">6 дена</string>
     <string name="update_interval_6h">6 часа</string>
     <string name="update_interval_8h">8 часа</string>
-    <string name="update_notification_channel_description__all">Тази категория известия ви информира за обновявания на Firefox.</string>
-    <string name="update_notification_channel_name__all">Известие при обновление</string>
     <string name="verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
+    <string name="update_notification_channel_description">Notification channel for available %1$s updates.</string>
+    <string name="update_notification_channel_name">Известие за актуализация на %1$s</string>
 </resources>

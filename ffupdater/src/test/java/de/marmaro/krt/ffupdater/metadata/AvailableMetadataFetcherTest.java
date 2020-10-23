@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -37,27 +36,27 @@ public class AvailableMetadataFetcherTest {
     @Test
     public void fetchMetadata_useCache() throws InterruptedException, ExecutionException, TimeoutException {
         final App app = FIREFOX_RELEASE;
-        final Map<App, Future<AvailableMetadata>> futures1 = fetcher.fetchMetadata(Collections.singletonList(app));
-        final Map<App, Future<AvailableMetadata>> futures2 = fetcher.fetchMetadata(Collections.singletonList(app));
+        final Future<AvailableMetadata> future1 = fetcher.fetchMetadata(app);
+        final Future<AvailableMetadata> future2 = fetcher.fetchMetadata(app);
 
         // both futures must be the same
-        assertSame(futures1.get(app), futures2.get(app));
+        assertSame(future1, future2);
 
-        futures1.get(app).get(30, TimeUnit.SECONDS);
+        future1.get(30, TimeUnit.SECONDS);
 
         // the second call is faster because it's cashed
-        futures2.get(app).get(1, TimeUnit.MILLISECONDS);
+        future2.get(1, TimeUnit.MILLISECONDS);
     }
 
     @Test
     public void fetchMetadata_useNotTheCache() throws InterruptedException, ExecutionException, TimeoutException {
         final App app = FIREFOX_BETA;
-        final Map<App, Future<AvailableMetadata>> futures1 = fetcher.fetchMetadata(Collections.singletonList(app));
-        futures1.get(app).get(30, TimeUnit.SECONDS);
+        final Future<AvailableMetadata> future1 = fetcher.fetchMetadata(app);
+        future1.get(30, TimeUnit.SECONDS);
 
-        final Map<App, Future<AvailableMetadata>> futures2 = fetcher.fetchMetadata(Collections.singletonList(app));
+        final Future<AvailableMetadata> future2 = fetcher.fetchMetadata(app);
 
         // both futures must be the same
-        assertNotSame(futures1.get(app), futures2.get(app));
+        assertNotSame(future1, future2);
     }
 }

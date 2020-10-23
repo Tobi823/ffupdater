@@ -16,8 +16,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.io.File;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -35,12 +33,13 @@ import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
 import de.marmaro.krt.ffupdater.metadata.InstalledMetadata;
 import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.metadata.UpdateChecker;
-import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker;
+import de.marmaro.krt.ffupdater.notification.BackgroundUpdateCheckerCreator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.CrashReporter;
+import de.marmaro.krt.ffupdater.utils.OldDownloadedFileDeleter;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
-import static android.os.Environment.DIRECTORY_DOWNLOADS;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static de.marmaro.krt.ffupdater.R.string.available_version_loading;
@@ -65,18 +64,15 @@ public class MainActivity extends AppCompatActivity {
 
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
 
-
         final DeviceEnvironment deviceEnvironment = new DeviceEnvironment();
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper.getThemePreference(this, deviceEnvironment));
-
+        AppCompatDelegate.setDefaultNightMode(new SettingsHelper(this).getThemePreference(deviceEnvironment));
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         new Migrator(preferences).migrate();
         deviceAppRegister = new InstalledMetadataRegister(getPackageManager(), preferences);
         metadataFetcher = new AvailableMetadataFetcher(preferences, deviceEnvironment);
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
         helper = new MainActivityHelper(this);
-
-        deleteOldDownloads();
+        new OldDownloadedFileDeleter(this).delete();
 
         // register listener
         for (App app : App.values()) {
@@ -88,17 +84,6 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(this::refreshUI);
     }
 
-    /**
-     * Sometimes not all downloaded APK files are automatically deleted.
-     * This method makes sure, that these files are deleted.
-     */
-    private void deleteOldDownloads() {
-        final File downloadDir = Objects.requireNonNull(getExternalFilesDir(DIRECTORY_DOWNLOADS));
-        final File[] downloadedFiles = Objects.requireNonNull(downloadDir.listFiles());
-        //noinspection ResultOfMethodCallIgnored
-        Arrays.stream(downloadedFiles).forEach(File::delete);
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -108,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        BackgroundUpdateChecker.start(this);
+        new BackgroundUpdateCheckerCreator(this).startOrStopBackgroundUpdateCheck();
     }
 
     @Override
@@ -132,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.setMessage(getString(R.string.infobox));
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok), (dialog, w) -> dialog.dismiss());
             alertDialog.show();
+            throw new ParamRuntimeException("hi there");
         } else if (itemId == R.id.action_settings) {//start settings activity where we use select firefox product and release type;
             startActivity(new Intent(this, SettingsActivity.class));
         }

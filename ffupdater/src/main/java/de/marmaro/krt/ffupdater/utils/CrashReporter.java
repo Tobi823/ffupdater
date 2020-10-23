@@ -10,8 +10,9 @@ import java.io.StringWriter;
  * Dead simple crash reporter for simplifying bug hunting with the end users.
  */
 public class CrashReporter {
-
-    private Context context;
+    public static final String SUBJECT = "FFUpdater crashed";
+    public static final String MESSAGE = "I'm sorry for this crude way to display the error which crashed FFUpdater.\n";
+    private final Context context;
 
     private CrashReporter(Context context) {
         this.context = context;
@@ -20,6 +21,7 @@ public class CrashReporter {
     /**
      * Register a DefaultUncaughtExceptionHandler to get the message of an uncaught exception and
      * displaying it as an e-mail.
+     *
      * @param context context
      */
     public static void register(Context context) {
@@ -36,10 +38,10 @@ public class CrashReporter {
     private void sendStacktraceAsMail(Throwable throwable) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "FFUpdater crashed with this stacktrace");
+        intent.putExtra(Intent.EXTRA_SUBJECT, SUBJECT);
 
         StringWriter sw = new StringWriter();
-        sw.write("I'm sorry for this very crude way to display the exception which crashed FFUpdater.\n");
+        sw.write(MESSAGE);
         sw.write("Can you please send me this error message as an 'issue' on https://notabug.org/Tobiwan/ffupdater/issues?\n");
         sw.write("\n\n");
 

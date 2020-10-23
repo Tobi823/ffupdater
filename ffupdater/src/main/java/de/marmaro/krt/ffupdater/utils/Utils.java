@@ -1,15 +1,15 @@
 package de.marmaro.krt.ffupdater.utils;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,8 +17,6 @@ import java.util.Set;
  * Class with useful helper methods.
  */
 public class Utils {
-    private static final String LOG_TAG = "Utils";
-
     /**
      * @param string   string
      * @param fallback fallback
@@ -64,59 +62,22 @@ public class Utils {
         return string;
     }
 
-    /**
-     * @param millis wait x milliseconds and ignore InterruptedException
-     */
-    public static void sleepAndIgnoreInterruptedException(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            Log.e(LOG_TAG, "failed sleep", e);
-        }
-    }
-
-    private static final String[] versionAndCodenames = new String[]{
-            "1.0",
-            "1.1",
-            "1.5 Cupcake",
-            "1.6 (Donut)",
-            "2.0 (Eclair)",
-            "2.0.1 (Eclair)",
-            "2.1 (Eclair)",
-            "2.2 (Froyo)",
-            "2.3 (Gingerbread)",
-            "2.3.3 (Gingerbread)",
-            "3.0 (Honeycomb)",
-            "3.1 (Honeycomb)",
-            "3.2 (Honeycomb)",
-            "4.0.1 (Ice Cream Sandwich)",
-            "4.0.3 (Ice Cream Sandwich)",
-            "4.1 (Jelly Bean)",
-            "4.2 (Jelly Bean)",
-            "4.3 (Jelly Bean)",
-            "4.4 (KitKat)",
-            "4.4W (KitKat)",
-            "5.0 (Lollipop)",
-            "5.1 (Lollipop)",
-            "6.0 (Marshmallow)",
-            "7.0 (Nougat)",
-            "7.1 (Nougat)",
-            "8.0.0 (Oreo)",
-            "8.1.0 (Oreo)",
-            "9 (Pie)",
-            "10",
-            "11"
-    };
+    private static final List<String> ANDROID_VERSIONS = Arrays.asList("1.0", "1.1", "1.5 (Cupcake)", "1.6 (Donut)",
+            "2.0 (Eclair)", "2.0.1 (Eclair)", "2.1 (Eclair)", "2.2 (Froyo)", "2.3 (Gingerbread)", "2.3.3 (Gingerbread)",
+            "3.0 (Honeycomb)", "3.1 (Honeycomb)", "3.2 (Honeycomb)", "4.0.1 (Ice Cream Sandwich)",
+            "4.0.3 (Ice Cream Sandwich)", "4.1 (Jelly Bean)", "4.2 (Jelly Bean)", "4.3 (Jelly Bean)", "4.4 (KitKat)",
+            "4.4W (KitKat)", "5.0 (Lollipop)", "5.1 (Lollipop)", "6.0 (Marshmallow)", "7.0 (Nougat)", "7.1 (Nougat)",
+            "8.0.0 (Oreo)", "8.1.0 (Oreo)", "9 (Pie)", "10", "11");
 
     /**
      * @param apiLevel API Level
      * @return the Android version an its codename for the associated API Level
      */
     public static String getVersionAndCodenameFromApiLevel(int apiLevel) {
-        if (apiLevel <= 0 || apiLevel > versionAndCodenames.length) {
-            return "API Level " + apiLevel;
+        if (apiLevel <= 0 || apiLevel > ANDROID_VERSIONS.size()) {
+            throw new ParamRuntimeException("invalid API level %d", apiLevel);
         }
-        return versionAndCodenames[apiLevel - 1];
+        return ANDROID_VERSIONS.get(apiLevel - 1);
     }
 
     /**

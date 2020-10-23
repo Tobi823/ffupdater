@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.util.Collections;
 
-import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 
 import static de.marmaro.krt.ffupdater.App.FIREFOX_BETA;

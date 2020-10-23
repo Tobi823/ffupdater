@@ -105,8 +105,8 @@
     <string name="update_interval_6d">6 дней</string>
     <string name="update_interval_6h">6 часов</string>
     <string name="update_interval_8h">8 часов</string>
-    <string name="update_notification_channel_description__all">Эта категория уведомлений будет информировать вас о доступных обновлениях Firefox.</string>
-    <string name="update_notification_channel_name__all">Уведомление об обновлении</string>
     <string name="verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
+    <string name="update_notification_channel_description">"Notification channel for available %1$s updates. "</string>
+    <string name="update_notification_channel_name">Уведомление об обновлении %1$s</string>
 </resources>
