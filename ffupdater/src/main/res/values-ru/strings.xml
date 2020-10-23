@@ -7,7 +7,7 @@
     <string name="application_successful_installed">Приложение успешно установлено</string>
     <string name="available_version">Доступен:%1$s</string>
     <string name="available_version_error">ОШИБКА</string>
-    <string name="available_version_loading">Загрузка...</string>
+    <string name="available_version_loading">Загрузка…</string>
     <string name="brave_description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу.\n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон. Загрузите лучший веб-браузер сегодня.</string>
     <string name="brave_title">Браузер Brave</string>
     <string name="brave_warning">Храбрые используют техническую основу Google Chrome (Chromium) - некоторым это не нравится. Хотите установить Brave?</string>

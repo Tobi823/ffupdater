@@ -7,7 +7,7 @@
     <string name="application_successful_installed">O aplicativo instalado com êxito</string>
     <string name="available_version">Disponível:%1$s</string>
     <string name="available_version_error">ERROR</string>
-    <string name="available_version_loading">Carregando...</string>
+    <string name="available_version_loading">Carregando…</string>
     <string name="brave_description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !\n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé!</string>
     <string name="brave_title">Navigateur internet privé Brave</string>
     <string name="brave_warning">A Brave usa a base técnica do Google Chrome (Cromo) - algumas pessoas não gostam disso. Você quer instalar o Brave?</string>
