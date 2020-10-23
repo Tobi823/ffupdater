@@ -33,7 +33,7 @@ public class InstalledMetadataRegisterTest {
     private InstalledMetadataRegister register;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         packageManager = mock(PackageManager.class);
         register = new InstalledMetadataRegister(packageManager, new SPMockBuilder().createSharedPreferences());
     }
@@ -41,7 +41,7 @@ public class InstalledMetadataRegisterTest {
     @Test
     public void getInstalledApps_allAppsInstalled_returnAllApps() throws PackageManager.NameNotFoundException {
         for (App app : App.values()) {
-            when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("1.0.0"));
+            when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo());
         }
         assertThat(register.getInstalledApps(), containsInAnyOrder(App.values()));
     }
@@ -49,7 +49,7 @@ public class InstalledMetadataRegisterTest {
     @Test
     public void getNotInstalledApps_allAppsInstalled_returnEmptySet() throws PackageManager.NameNotFoundException {
         for (App app : App.values()) {
-            when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("1.0.0"));
+            when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo());
         }
         assertTrue(register.getNotInstalledApps().isEmpty());
     }
@@ -112,7 +112,7 @@ public class InstalledMetadataRegisterTest {
     }
 
     private void checkReleaseTimestampBased(App app) throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("1.0.0"));
+        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo());
 
         final ZonedDateTime now = ZonedDateTime.now();
         register.saveReleaseId(app, new ReleaseTimestamp(now));
@@ -125,7 +125,7 @@ public class InstalledMetadataRegisterTest {
     }
 
     private void checkReleaseVersionBased(App app) throws PackageManager.NameNotFoundException {
-        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo("1.0.0"));
+        when(packageManager.getPackageInfo(app.getPackageName(), 0)).thenReturn(createPackageInfo());
         register.saveReleaseId(app, new ReleaseVersion("1.0.0"));
 
         final InstalledMetadata metadata = register.getMetadata(app).
@@ -135,9 +135,9 @@ public class InstalledMetadataRegisterTest {
         assertEquals("1.0.0", metadata.getInstalledReleasedId().getValueAsString());
     }
 
-    private static PackageInfo createPackageInfo(String versionName) {
+    private static PackageInfo createPackageInfo() {
         PackageInfo packageInfo = new PackageInfo();
-        packageInfo.versionName = versionName;
+        packageInfo.versionName = "1.0.0";
         return packageInfo;
     }
 }

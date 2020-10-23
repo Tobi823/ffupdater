@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,13 +23,13 @@ public class GithubConsumerTest {
     private GithubConsumer githubConsumer;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         apiConsumer = Mockito.mock(ApiConsumer.class);
         githubConsumer = new GithubConsumer(apiConsumer);
     }
 
     @Test
-    public void consumeLatestReleaseFirst_latestReleaseHasApkFile() throws MalformedURLException, FileNotFoundException {
+    public void consumeLatestReleaseFirst_latestReleaseHasApkFile() throws MalformedURLException {
         when(apiConsumer.consume(new URL("https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest"), Release.class))
                 .thenReturn(getReleaseFromJsonFile("GithubConsumerTest_releases_latest_with_apk.json"));
 

@@ -15,7 +15,7 @@ public class ApiConsumerIT {
     private ApiConsumer apiConsumer;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         apiConsumer = new ApiConsumer();
     }
 

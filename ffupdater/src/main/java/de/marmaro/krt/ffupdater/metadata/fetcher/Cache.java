@@ -2,8 +2,6 @@ package de.marmaro.krt.ffupdater.metadata.fetcher;
 
 import android.content.SharedPreferences;
 
-import com.google.common.base.Preconditions;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -13,12 +11,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.App;
-import de.marmaro.krt.ffupdater.utils.CompareHelper;
-import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.ReleaseId;
 import de.marmaro.krt.ffupdater.metadata.ReleaseTimestamp;
 import de.marmaro.krt.ffupdater.metadata.ReleaseVersion;
+import de.marmaro.krt.ffupdater.utils.CompareHelper;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
 public class Cache {
     public static final String BASE = "download_metadata_";

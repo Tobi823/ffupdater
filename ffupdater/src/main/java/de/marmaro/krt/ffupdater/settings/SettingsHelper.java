@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.utils.Utils;
 
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
 import static android.os.Build.VERSION_CODES.P;
@@ -27,12 +26,12 @@ import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
  * SharedPreferences instance.
  */
 public class SettingsHelper {
-    public static final boolean DEFAULT_AUTOMATIC_CHECK = true;
-    public static final int DEFAULT_CHECK_INTERVAL = 360;
     public static final String AUTOMATIC_CHECK = "automaticCheck";
     public static final String CHECK_INTERVAL = "checkInterval";
     public static final String DISABLE_APPS = "disableApps";
     public static final String THEME_PREFERENCE = "themePreference";
+    public static final boolean DEFAULT_AUTOMATIC_CHECK = true;
+    public static final Duration DEFAULT_CHECK_INTERVAL = Duration.ofHours(6);
 
     private final SharedPreferences preferences;
 
@@ -52,8 +51,14 @@ public class SettingsHelper {
      */
     public Duration getCheckInterval() {
         final String checkInterval = preferences.getString(CHECK_INTERVAL, null);
-        final int minutes = Utils.stringToInt(checkInterval, DEFAULT_CHECK_INTERVAL);
-        return Duration.ofMinutes(minutes);
+        if (checkInterval == null) {
+            return DEFAULT_CHECK_INTERVAL;
+        }
+        try {
+            return Duration.ofMinutes(Integer.parseInt(checkInterval));
+        } catch (NumberFormatException e) {
+            return DEFAULT_CHECK_INTERVAL;
+        }
     }
 
     /**

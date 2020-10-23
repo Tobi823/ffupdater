@@ -24,7 +24,7 @@ public class FirefoxLiteIT {
     private AvailableMetadata metadata;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         final GithubConsumer githubConsumer = new GithubConsumer(new ApiConsumer());
         metadata = new FirefoxLite(githubConsumer).call();
     }

@@ -3,10 +3,12 @@
  * Fix short description in F-Droid - thanks linsui
  * Notification contains apps to update
  * better detect ABI of device - Firefox Focus can be installed on Android emulators
+ * Use crashreporter (com.balsikandar.android) for crash reports
  * Better delete old downloaded APK files
  * Drop permission READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE because they should not be necessary
  * Check and fail if external storage is not available
  * Query GitHub API with less network traffic
+ * Cleanup code
 
 # 2020-09-23 Version 69.0.5 (53)
  * Disable error when the already installed app has a different signature (because Android won't install an update with a different signature) - thanks pheki for reporting this bug

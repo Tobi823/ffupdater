@@ -39,7 +39,6 @@ public class DownloadManagerAdapter {
      * @param context                context
      * @param downloadUrl            url for the download
      * @param notificationTitle      title for the download notification
-     * @param notificationVisibility visibility of the download notification
      * @return new generated id for the download
      */
     public long enqueue(Context context, URL downloadUrl, String notificationTitle) {

@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -39,11 +37,7 @@ public class ApkMirrorHelper {
         }
 
         final Element latestItem = getLatestItem(document);
-        return new RssFeedResponse(
-                getPubDate(latestItem),
-                getTitle(latestItem),
-                getUrlToAppVersion(latestItem)
-        );
+        return new RssFeedResponse(getTitle(latestItem), getUrlToAppVersion(latestItem));
     }
 
     private static Element getLatestItem(Document document) {
@@ -52,11 +46,6 @@ public class ApkMirrorHelper {
         final Element latestItem = ((Element) items.item(0));
         Objects.requireNonNull(latestItem);
         return latestItem;
-    }
-
-    private static LocalDateTime getPubDate(Element latestItem) {
-        String pubDateString = latestItem.getElementsByTagName("pubDate").item(0).getTextContent();
-        return LocalDateTime.from(DateTimeFormatter.RFC_1123_DATE_TIME.parse(pubDateString));
     }
 
     private static String getTitle(Element latestItem) {
@@ -68,18 +57,12 @@ public class ApkMirrorHelper {
     }
 
     public static class RssFeedResponse {
-        private LocalDateTime pubDate;
-        private String title;
-        private String urlToAppVersion;
+        private final String title;
+        private final String urlToAppVersion;
 
-        public RssFeedResponse(LocalDateTime pubDate, String title, String urlToAppVersion) {
-            this.pubDate = pubDate;
+        public RssFeedResponse(String title, String urlToAppVersion) {
             this.title = title;
             this.urlToAppVersion = urlToAppVersion;
-        }
-
-        public LocalDateTime getPubDate() {
-            return pubDate;
         }
 
         public String getTitle() {
@@ -91,11 +74,10 @@ public class ApkMirrorHelper {
         }
     }
 
-    public static String extractSha256HashFromAbiVersionPage(RssFeedResponse rssFeedResponse, Map<String, String> replacements) throws IOException, ParserConfigurationException, SAXException {
+    public static String extractSha256HashFromAbiVersionPage(RssFeedResponse rssFeedResponse, Map<String, String> replacements) throws IOException {
         String[] urlParts = rssFeedResponse.getUrlToAppVersion().split("/");
-        final String appName = urlParts[urlParts.length - 1];
 
-        String apkName = appName;
+        String apkName = urlParts[urlParts.length - 1];
         for (Map.Entry<String, String> replacement : replacements.entrySet()) {
             apkName = apkName.replace(replacement.getKey(), replacement.getValue());
         }

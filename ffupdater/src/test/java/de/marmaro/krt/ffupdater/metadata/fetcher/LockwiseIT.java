@@ -24,7 +24,7 @@ public class LockwiseIT {
     private AvailableMetadata metadata;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         final GithubConsumer githubConsumer = new GithubConsumer(new ApiConsumer());
         metadata = new Lockwise(githubConsumer).call();
     }

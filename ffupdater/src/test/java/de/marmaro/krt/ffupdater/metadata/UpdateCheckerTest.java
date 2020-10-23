@@ -17,7 +17,7 @@ public class UpdateCheckerTest {
     private UpdateChecker updateChecker;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         updateChecker = new UpdateChecker();
     }
 
@@ -47,7 +47,6 @@ public class UpdateCheckerTest {
 
     @Test
     public void isUpdateAvailable_version_sameVersion_returnFalse() throws MalformedURLException {
-        final ZonedDateTime now = ZonedDateTime.now();
         AvailableMetadata availableMetadata = new AvailableMetadata(
                 new ReleaseVersion("1.0.0"),
                 new URL("https://api"));

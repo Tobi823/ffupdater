@@ -54,7 +54,7 @@ public class FingerprintValidatorTest {
     }
 
     @Test
-    public void checkApkFile_withFirefoxReleaseSignature_validFingerprint() throws PackageManager.NameNotFoundException {
+    public void checkApkFile_withFirefoxReleaseSignature_validFingerprint() {
         File file = new File("/path/to/apk");
         when(packageManager.getPackageArchiveInfo(file.getAbsolutePath(), GET_SIGNATURES)).thenReturn(packageInfo);
         FingerprintResult actual = fingerprintValidator.checkApkFile(file, FIREFOX_RELEASE);

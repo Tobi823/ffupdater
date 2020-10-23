@@ -1,7 +1,5 @@
 package de.marmaro.krt.ffupdater.metadata;
 
-import com.google.common.base.Preconditions;
-
 import java.net.URL;
 import java.util.Objects;
 

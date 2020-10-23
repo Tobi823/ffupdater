@@ -129,7 +129,7 @@ public class FocusIT {
 
     private static void verifyHash(AvailableMetadataExtended metadata,
                                    ApkMirrorHelper.RssFeedResponse rssFeedResponse,
-                                   Map<String, String> replacements) throws ParserConfigurationException, SAXException, IOException {
+                                   Map<String, String> replacements) throws IOException {
         final ReleaseTimestamp timestamp = (ReleaseTimestamp) metadata.getReleaseId();
         final Duration age = Duration.between(timestamp.getCreated(), ZonedDateTime.now());
 

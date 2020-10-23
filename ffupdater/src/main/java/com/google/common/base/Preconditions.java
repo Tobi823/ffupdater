@@ -16,7 +16,6 @@
 
 package com.google.common.base;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
@@ -89,8 +88,8 @@ import androidx.annotation.Nullable;
  * <h3>{@code java.util.Objects.requireNonNull()}</h3>
  *
  * <p>Projects which use {@code com.google.common} should generally avoid the use of {@link
- * java.util.Objects#requireNonNull(Object)}. Instead, use whichever of {@link
- * #checkNotNull(Object)} or Verify#verifyNotNull(Object) is appropriate to the situation.
+ * java.util.Objects#requireNonNull(Object)}. Instead, use whichever of
+ * #checkNotNull(Object) or Verify#verifyNotNull(Object) is appropriate to the situation.
  * (The same goes for the message-accepting overloads.)
  *
  * <h3>Only {@code %s} is supported</h3>

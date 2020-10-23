@@ -1,8 +1,5 @@
 package de.marmaro.krt.ffupdater.metadata.fetcher;
 
-import androidx.annotation.Nullable;
-
-import com.google.common.base.Preconditions;
 import com.google.gson.annotations.SerializedName;
 
 import java.net.URL;
@@ -48,7 +45,10 @@ public class MozillaCiConsumer {
     }
 
     static class Response {
+        @SerializedName("artifacts")
         private Map<String, Sha256Hash> artifacts;
+
+        @SerializedName("task")
         private Task task;
 
         Map<String, Sha256Hash> getArtifacts() {
@@ -70,6 +70,7 @@ public class MozillaCiConsumer {
     }
 
     static class Task {
+        @SerializedName("created")
         private String created;
 
         String getCreated() {

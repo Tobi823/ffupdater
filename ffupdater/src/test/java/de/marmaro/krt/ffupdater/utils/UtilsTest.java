@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
@@ -96,22 +96,22 @@ public class UtilsTest {
 
     @Test
     public void stringsToCharSequenceArray_emptyCollection_returnEmptyArray() {
-        assertEquals(0, Utils.stringsToCharSequenceArray(new ArrayList<String>()).length);
+        assertEquals(0, Utils.stringsToCharSequenceArray(new ArrayList<>()).length);
     }
 
     @Test
     public void stringsToCharSequenceArray_withCollection_returnArray() {
-        assertArrayEquals(new CharSequence[]{"hi"}, Utils.stringsToCharSequenceArray(Arrays.asList("hi")));
+        assertArrayEquals(new CharSequence[]{"hi"}, Utils.stringsToCharSequenceArray(Collections.singletonList("hi")));
     }
 
     @Test
     public void integersToCharSequenceArray_emptyCollection_returnEmptyArray() {
-        assertEquals(0, Utils.integersToCharSequenceArray(new ArrayList<Integer>()).length);
+        assertEquals(0, Utils.integersToCharSequenceArray(new ArrayList<>()).length);
     }
 
     @Test
     public void integersToCharSequenceArray_withCollection_returnArray() {
-        assertArrayEquals(new CharSequence[]{"42"}, Utils.integersToCharSequenceArray(Arrays.asList(42)));
+        assertArrayEquals(new CharSequence[]{"42"}, Utils.integersToCharSequenceArray(Collections.singletonList(42)));
     }
 
     @Test

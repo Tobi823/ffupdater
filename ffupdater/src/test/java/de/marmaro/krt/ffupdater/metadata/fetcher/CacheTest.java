@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,7 +29,7 @@ public class CacheTest {
     private SharedPreferences sharedPreferences;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         sharedPreferences = new SPMockBuilder().createSharedPreferences();
         cache = new Cache(sharedPreferences);
     }

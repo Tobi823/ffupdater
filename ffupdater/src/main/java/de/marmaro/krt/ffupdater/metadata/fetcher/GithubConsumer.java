@@ -28,11 +28,6 @@ public class GithubConsumer {
         this.apiConsumer = apiConsumer;
     }
 
-    /**
-     * Use this method if the latest release is properly the wanted release
-     *
-     * @return
-     */
     GithubResult consumeLatestReleaseFirst(Request request) {
         Preconditions.checkArgument(isRequestValid(request));
         final URL url = Utils.createURL(String.format(
@@ -46,11 +41,6 @@ public class GithubConsumer {
         return consumeManyReleases(request);
     }
 
-    /**
-     * Use this method if the latest release is properly not the wanted release
-     *
-     * @return
-     */
     GithubResult consumeManyReleases(Request request) {
         Preconditions.checkArgument(isRequestValid(request));
         for (int page = 1; page < 5; page++) {

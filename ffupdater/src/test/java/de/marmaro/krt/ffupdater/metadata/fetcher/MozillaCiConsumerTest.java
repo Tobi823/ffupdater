@@ -40,7 +40,7 @@ public class MozillaCiConsumerTest {
     }
 
     @Test
-    public void isTimestampCorrect() throws MalformedURLException {
+    public void isTimestampCorrect() {
         ZonedDateTime expectedTimestamp = ZonedDateTime.of(2020, 10, 16, 1, 25, 23, 565000000, ZoneId.of("UTC"));
         assertThat(result.getTimestamp().getCreated(), sameInstant(expectedTimestamp));
     }
