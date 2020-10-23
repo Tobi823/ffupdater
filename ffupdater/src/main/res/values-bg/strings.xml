@@ -62,8 +62,8 @@
     <string name="missing_external_storage_permission_dialog_summary">Приложението ще поиска достъп до хранилището, за да изтегляне и четене на файлове. Малко устройства се нуждаят от права за това. Ако имате съмнения откажете достъпа - по-късно от настройките ни устройството можете да ги дадете.\n\nПриложението ще използва външната за него папка и никога няма да достъпва личните ви фотографии и т.н.</string>
     <string name="missing_external_storage_permission_dialog_title">Заявка за права</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
-    <string name="notification_summarized_text">Докоснете за преглед</string>
-    <string name="notification_summarized_title">Налично обноваване за: %1$s</string>
+    <string name="update_notification_text">Докоснете за преглед</string>
+    <string name="update_notification_title">Налично обноваване за: %1$s</string>
     <string name="ok">Добре</string>
     <string name="settings_activity_label">Настройки</string>
     <string name="settings_automatic_check_title">Автоматично на заден план</string>

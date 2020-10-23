@@ -35,7 +35,7 @@ import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
 import de.marmaro.krt.ffupdater.metadata.InstalledMetadata;
 import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.metadata.UpdateChecker;
-import de.marmaro.krt.ffupdater.notification.Notificator;
+import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.CrashReporter;
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Notificator.start(this);
+        BackgroundUpdateChecker.start(this);
     }
 
     @Override

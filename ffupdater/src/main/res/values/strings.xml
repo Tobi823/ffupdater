@@ -66,10 +66,8 @@
     <string name="mozilla" translatable="false">Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="not_connected_to_internet">No network connection</string>
-    <string name="notification_summarized_text">Press to view update(s)</string>
-    <string name="notification_summarized_title">Update is available for: %1$s</string>
-    <string name="notification_individual_text">Press to update</string>
-    <string name="notification_individual_title">Update is available for %1$s</string>
+    <string name="update_notification_text">Press to update %1$s</string>
+    <string name="update_notification_title">%1$s can be updated</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Settings</string>
     <string name="settings_automatic_check_title">Automatic in Background</string>
@@ -110,10 +108,8 @@
     <string name="update_interval_6d">6 days</string>
     <string name="update_interval_6h">6 hours</string>
     <string name="update_interval_8h">8 hours</string>
-    <string name="update_notification_channel_summarized_description">This notification category will inform you about new available updates for all apps.</string>
-    <string name="update_notification_channel_summarized_name">Update notification</string>
-    <string name="update_notification_channel_individual_description">This notification category will inform you about new available "%1$s" updates.</string>
-    <string name="update_notification_channel_individual_name">"%1$s" update notification</string>
+    <string name="update_notification_channel_description">This notification category will inform you about new available "%1$s" updates.</string>
+    <string name="update_notification_channel_name">"%1$s" update notification</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
     <string name="update_available">Update available</string>
@@ -128,6 +124,4 @@
     <string name="brave_description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
     <string name="brave_warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
     <string name="settingsCategory_notification">Notification</string>
-    <string name="summarize_update_notification__settings_title">Summarize update notifications</string>
-    <string name="summarize_update_notification__settings_summary">Show only one notification if one or multiple apps can be updated. Clicking on a summarized notification will open the main menu instead of installing the update immediately.</string>
 </resources>

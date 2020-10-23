@@ -5,8 +5,11 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
+import java.time.Duration;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
@@ -30,82 +33,80 @@ public class SettingsHelper {
     public static final String CHECK_INTERVAL = "checkInterval";
     public static final String DISABLE_APPS = "disableApps";
     public static final String THEME_PREFERENCE = "themePreference";
-    public static final String SUMMARIZE_UPDATE_NOTIFICATION = "summarizeUpdateNotifications";
 
-    /**
-     * @param context context
-     * @return should the regular background update check be enabled?
-     */
-    public static boolean isAutomaticCheck(Context context) {
-        return getSharedPreferences(context).getBoolean(AUTOMATIC_CHECK, DEFAULT_AUTOMATIC_CHECK);
+    private final SharedPreferences preferences;
+
+    public SettingsHelper(Context context) {
+        this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     /**
-     * @param context context
+     * @return should the regular background update check be enabled?
+     */
+    public boolean isAutomaticCheck() {
+        return preferences.getBoolean(AUTOMATIC_CHECK, DEFAULT_AUTOMATIC_CHECK);
+    }
+
+    /**
      * @return how long should be the time span between check background update check?
      */
-    public static int getCheckInterval(Context context) {
-        return Utils.stringToInt(getSharedPreferences(context).getString(CHECK_INTERVAL, null), DEFAULT_CHECK_INTERVAL);
+    public Duration getCheckInterval() {
+        final String checkInterval = preferences.getString(CHECK_INTERVAL, null);
+        final int minutes = Utils.stringToInt(checkInterval, DEFAULT_CHECK_INTERVAL);
+        return Duration.ofMinutes(minutes);
     }
 
     /**
      * This setting is necessary to deactivate apps when e.g. their update checks are broken.
-     * @param context context
+     *
      * @return the regular background update check should ignore these apps
      */
-    public static Set<App> getDisableApps(Context context) {
-        Set<App> result = new HashSet<>();
-        Set<String> disableApps = getSharedPreferences(context).getStringSet(DISABLE_APPS, null);
+    public Set<App> getDisableApps() {
+        Set<String> disableApps = preferences.getStringSet(DISABLE_APPS, null);
         if (disableApps == null) {
-            return result;
+            return new HashSet<>();
         }
-        for (String disableApp : disableApps) {
-            App disableAppObject;
-            try {
-                disableAppObject = App.valueOf(disableApp);
-            } catch (IllegalArgumentException e) {
-                continue;
-                //ignore
-            }
-            result.add(disableAppObject);
+        return disableApps.stream()
+                .map(this::convertStringToApp)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toSet());
+    }
+
+    private Optional<App> convertStringToApp(String app) {
+        try {
+            return Optional.of(App.valueOf(app));
+        } catch (IllegalArgumentException e) {
+            return Optional.empty();
         }
-        return result;
     }
 
     /**
      * If the app is started for the first time, the method will return AppCompatDelegate.MODE_NIGHT_NO.
      * If not, then the default value from R.string.default_theme_preference or the user setting will be returned.
-     * @param context context
+     *
      * @return AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES, ...
      */
-    public static int getThemePreference(Context context, DeviceEnvironment deviceEnvironment) {
-        int defaultValue;
-        if (deviceEnvironment.getApiLevel() >= Q) {
-            defaultValue = MODE_NIGHT_FOLLOW_SYSTEM;
-        } else if (deviceEnvironment.getApiLevel() >= P) {
-            defaultValue = MODE_NIGHT_AUTO_BATTERY;
-        } else if (deviceEnvironment.getApiLevel() >= LOLLIPOP) {
-            defaultValue = MODE_NIGHT_AUTO_BATTERY;
-        } else {
-            defaultValue = MODE_NIGHT_NO;
-        }
-
-        String themePreference = getSharedPreferences(context).getString(THEME_PREFERENCE, null);
+    public int getThemePreference(DeviceEnvironment deviceEnvironment) {
+        String themePreference = preferences.getString(THEME_PREFERENCE, null);
         if (themePreference == null) {
-            return defaultValue;
+            return getDefaultThemePreference(deviceEnvironment);
         }
         try {
             return Integer.parseInt(themePreference);
         } catch (final NumberFormatException nfe) {
-            return defaultValue;
+            return getDefaultThemePreference(deviceEnvironment);
         }
     }
 
-    public static boolean isSummarizeUpdateNotifications(Context context) {
-        return getSharedPreferences(context).getBoolean(SUMMARIZE_UPDATE_NOTIFICATION, true);
-    }
-
-    private static SharedPreferences getSharedPreferences(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context);
+    private int getDefaultThemePreference(DeviceEnvironment deviceEnvironment) {
+        if (deviceEnvironment.getApiLevel() >= Q) {
+            return MODE_NIGHT_FOLLOW_SYSTEM;
+        } else if (deviceEnvironment.getApiLevel() >= P) {
+            return MODE_NIGHT_AUTO_BATTERY;
+        } else if (deviceEnvironment.getApiLevel() >= LOLLIPOP) {
+            return MODE_NIGHT_AUTO_BATTERY;
+        }
+        return MODE_NIGHT_NO;
     }
 }

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.ListPreference;
@@ -14,7 +13,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
-import de.marmaro.krt.ffupdater.notification.Notificator;
+import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.Utils;
 
@@ -38,7 +37,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Notificator.start(this);
+        BackgroundUpdateChecker.start(this);
     }
 
     @Override
