@@ -114,8 +114,8 @@
     <string name="update_interval_8h">8 часа</string>
     <string name="update_notification_channel_description">Notification channel for available %1$s updates.</string>
     <string name="update_notification_channel_name">Известие за актуализация на %1$s</string>
-    <string name="update_notification_text">Докоснете, за да актуализирате 1$s</string>
-    <string name="update_notification_title">Налично обноваване за: %1$s</string>
+    <string name="update_notification_text">Докоснете, за да актуализирате %1$s</string>
     <string name="verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
+    <string name="update_notification_title">%1$s може да бъде актуализиран</string>
 </resources>
