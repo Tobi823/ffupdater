@@ -1,10 +1,11 @@
 # 2020-10-?? Version 69.0.6 (54)
  * Add Bulgarian translation (thanks StoyanDimitrov)
  * Fix short description in F-Droid - thanks linsui
- * Notification contains apps to update
- * better detect ABI of device - Firefox Focus can be installed on Android emulators
- * Use crashreporter (com.balsikandar.android) for crash reports
- * Better delete old downloaded APK files
+ * A different notification for each installed app will be displayed
+ * Clicking on notification will update the app
+ * Better detect ABI of device - Firefox Focus can be installed on Android emulators
+ * Use Crasher (https://github.com/fennifith/Crasher) for crash reports
+ * Delete old downloaded APK files more reliable
  * Drop permission READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE because they should not be necessary
  * Check and fail if external storage is not available
  * Query GitHub API with less network traffic
