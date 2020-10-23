@@ -111,4 +111,5 @@
     <string name="external_storage_not_accessible">Externer Speicher ist nicht verfügbar - kann den Download nicht starten. Aktueller Status ist:</string>
     <string name="brave_title">Brave Browser</string>
     <string name="brave_description">Der Brave Web Browser ist Ihr privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert!\n\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass Sie mit Anzeigen überladen oder mit Malware und Popups verseucht werden.</string>
+    <string name="brave_warning">Brave nutzt die technische Grundlage des Google Chrome (Chrom) - manche Leute mögen das nicht. Willst du Brave dennoch installieren?</string>
 </resources>

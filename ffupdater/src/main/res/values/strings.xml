@@ -123,5 +123,4 @@
     <string name="brave_title">Brave Private Browser</string>
     <string name="brave_description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
     <string name="brave_warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
-    <string name="settingsCategory_notification">Notification</string>
 </resources>
