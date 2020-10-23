@@ -103,4 +103,12 @@
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
     <string name="update_notification_channel_description">Канал сповіщення про доступні оновлення %1$s.</string>
     <string name="update_notification_channel_name">Повідомлення про оновлення %1$s</string>
+    <string name="update_available">Оновлення доступне</string>
+    <string name="no_update_available">оновлення недоступне</string>
+    <string name="available_version_error">ПОМИЛКА</string>
+    <string name="available_version_loading">Завантаження…</string>
+    <string name="unknown_installed_version">Встановлена невідома версія</string>
+    <string name="external_storage_not_accessible">Зовнішня пам’ять недоступна - завантажити не вдається. Поточний статус:</string>
+    <string name="brave_title">Brave Browser</string>
+    <string name="brave_description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення.\n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
 </resources>

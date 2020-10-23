@@ -110,4 +110,12 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="you_can_now_close_this_window">Agora você pode fechar esta janela</string>
     <string name="update_notification_channel_description">Canal de notificação para atualizações disponíveis do %1$s.</string>
     <string name="update_notification_channel_name">"Notificação de atualização do %1$s "</string>
+    <string name="update_available">Atualização disponível</string>
+    <string name="no_update_available">Nenhuma atualização disponível</string>
+    <string name="available_version_error">ERROR</string>
+    <string name="available_version_loading">Carregando...</string>
+    <string name="unknown_installed_version">Versão desconhecida instalada</string>
+    <string name="external_storage_not_accessible">O armazenamento externo não está disponível - não é possível iniciar o download. O status atual é:</string>
+    <string name="brave_title">Navigateur internet privé Brave</string>
+    <string name="brave_description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !\n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé!</string>
 </resources>

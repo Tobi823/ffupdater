@@ -109,4 +109,12 @@
     <string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
     <string name="update_notification_channel_description">"Notification channel for available %1$s updates. "</string>
     <string name="update_notification_channel_name">Уведомление об обновлении %1$s</string>
+    <string name="update_available">Обновление доступно</string>
+    <string name="no_update_available">Обновление недоступно</string>
+    <string name="available_version_error">ОШИБКА</string>
+    <string name="available_version_loading">Загрузка...</string>
+    <string name="unknown_installed_version">Установлена неизвестная версия</string>
+    <string name="external_storage_not_accessible">Внешнее хранилище недоступно - не может начать загрузку. Текущее состояние есть:</string>
+    <string name="brave_title">Браузер Brave</string>
+    <string name="brave_description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу.\n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон. Загрузите лучший веб-браузер сегодня.</string>
 </resources>

@@ -108,4 +108,12 @@
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
     <string name="update_notification_channel_description">Notification channel for available %1$s updates.</string>
     <string name="update_notification_channel_name">Известие за актуализация на %1$s</string>
+    <string name="update_available">Налична актуализация</string>
+    <string name="no_update_available">Няма налична актуализация</string>
+    <string name="available_version_error">ГРЕШКА</string>
+    <string name="available_version_loading">Зареждане…</string>
+    <string name="unknown_installed_version">Инсталирана е неизвестна версия</string>
+    <string name="external_storage_not_accessible">Външното хранилище не е налице - изтеглянето не може да започне. Текущото състояние е:</string>
+    <string name="brave_title">Brave Browser</string>
+    <string name="brave_description">Brave Web Browser е Вашият частен, безопасен уеб браузър, който блокира реклами на трети страни безплатно.\n\nBrave Web Browser е бърз, сигурен уеб браузър за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен браузър, който Ви предпазва от проследяване от реклами, злонамерен софтуер и изскачащи прозорци. Изтеглете най-добрия уеб браузър днес.</string>
 </resources>
