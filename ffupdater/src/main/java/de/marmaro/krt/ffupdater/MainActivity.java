@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        //CrashReporter.register(this);
         new Crasher(this);
         StrictModeSetup.enable();
 
@@ -118,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.setMessage(getString(R.string.infobox));
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok), (dialog, w) -> dialog.dismiss());
             alertDialog.show();
-            throw new ParamRuntimeException("hi there");
         } else if (itemId == R.id.action_settings) {//start settings activity where we use select firefox product and release type;
             startActivity(new Intent(this, SettingsActivity.class));
         }
