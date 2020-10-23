@@ -61,7 +61,6 @@
     <string name="installed_version">Установлен:%1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Либо злоумышленник подменил правильную загрузку на фальсифицированную, либо проверка сертификата больше не работает. Вы можете перепроверить отпечаток сертификата на apkmirror.com или сообщить мне об ошибке на сайте https://notabug.org/Tobiwan/ffupdater.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Либо установлено фальсифицированное приложение, либо больше не работает программа проверки сертификатов. Вы можете перепроверить отпечаток сертификата на apkmirror.com или сообщить мне об ошибке на сайте https://notabug.org/Tobiwan/ffupdater.\n\nРекомендуется удалить приложение.</string>
-    <string name="loading_available_version">Загрузка…</string>
     <string name="lockwise_description">ПАРОЛЬ ДОСТУПА ДЛЯ ВАС, И ТОЛЬКО ДЛЯ ВАС\n\nНадежно отслеживайте свои пароли Firefox и получайте доступ к ним в любом месте. Быстро откройте любой сайт из приложения, чтобы попасть в свои учетные записи.</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater иногда не может загрузить последнюю версию, потому что не все обновления выпускаются на GitHub. Вы хотите установить приложение с риском использования устаревшей версии?</string>

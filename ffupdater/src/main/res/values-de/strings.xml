@@ -55,7 +55,6 @@
     <string name="installed_version">Installiert:%1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Entweder hat ein Angreifer den korrekten Download durch einen manipulierten ersetzt, oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Entweder wurde eine manipulierte Anwendung installiert oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
-    <string name="loading_available_version">Laden…</string>
     <string name="lockwise_description">PASSWORT-ZUGANG FÜR SIE, &amp; NUR SIE Verfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>

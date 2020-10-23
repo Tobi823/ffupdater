@@ -62,7 +62,6 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="installed_version">Instalado:%1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Ou um invasor substituiu o download correto por um adulterado ou o verificador de certificados não funciona mais. Você pode verificar novamente a impressão digital do certificado em apkmirror.com ou pode criar um ISSUE em https://notabug.org/Tobiwan/ffupdater para me informar sobre o bug.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Ou uma aplicação adulterada foi instalada no seu dispositivo ou o verificador de certificados não funciona mais. Você pode verificar novamente a impressão digital do certificado em apkmirror.com ou pode criar um ISSUE em https://notabug.org/Tobiwan/ffupdater para me informar sobre o bug.\n\n recomendamos que você desinstale o aplicativo.</string>
-    <string name="loading_available_version">Carregando…</string>
     <string name="lockwise_description">ACESSO POR SENHA, &amp; SÓ VOCÊ\n\nRastreie com segurança suas senhas Firefox &amp; acessá-los em qualquer lugar. Abra rapidamente qualquer site do aplicativo para entrar em suas contas</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater às vezes não consegue baixar a versão mais recente porque nem todas as atualizações são lançadas no GitHub. Você quer instalar o aplicativo com o risco de usar uma versão desatualizada?</string>
