@@ -5,7 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
     <string name="application_successful_installed">Програма успішно встановлена</string>
-    <string name="available_version">в наявності:%1$s</string>
+    <string name="available_version">в наявності: %1$s</string>
     <string name="available_version_error">ПОМИЛКА</string>
     <string name="available_version_loading">Завантаження…</string>
     <string name="background_error_notification_text">Клацніть, щоб переглянути помилку</string>
@@ -54,7 +54,7 @@
     <string name="installation_warning_title">Увага</string>
     <string name="installed_app_is_not_verified">Встановлений додаток НЕ підтверджений</string>
     <string name="installed_application_is_verified">Встановлена програма перевірена</string>
-    <string name="installed_version">встановлено:%1$s</string>
+    <string name="installed_version">встановлено: %1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Або зловмисник замінив правильне завантаження на підроблене, або перевірка сертифікатів більше не працює. Ви можете двічі перевірити відбиток сертифіката на apkmirror.com або створити проблему на https://notabug.org/Tobiwan/ffupdater, щоб повідомити про помилку.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Або підроблена програма встановлена, або перевірка сертифікатів більше не працює. Ви можете двічі перевірити відбиток сертифіката на apkmirror.com або створити проблему на https://notabug.org/Tobiwan/ffupdater, щоб повідомити про помилку.  Рекомендую видалити програму.</string>
     <string name="lockwise_description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС  Безпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкрийте будь-який веб-сайт із програми, щоб увійти до своїх облікових записів</string>

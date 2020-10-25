@@ -5,7 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
     <string name="application_successful_installed">Installation de l\'application réussie</string>
-    <string name="available_version">Disponible:%1$s</string>
+    <string name="available_version">Disponible: %1$s</string>
     <string name="available_version_error">ERREUR</string>
     <string name="available_version_loading">Chargement…</string>
     <string name="background_error_notification_text">Cliquez pour afficher l\'erreur</string>
@@ -54,7 +54,7 @@
     <string name="installation_warning_title">"Avertissement"</string>
     <string name="installed_app_is_not_verified">L\'application installée n\'est PAS vérifiée</string>
     <string name="installed_application_is_verified">La demande installée est vérifiée</string>
-    <string name="installed_version">Installé:%1$s</string>
+    <string name="installed_version">Installé: %1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Soit un pirate a remplacé le téléchargement correct par un téléchargement altéré, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez vérifier l\'empreinte digitale du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Soit une application falsifiée a été installée, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez revérifier l\'empreinte du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="lockwise_description">"UN ACCÈS PAR MOT DE PASSE QUI VOUS EST RÉSERVÉ Suivez vos mots de passe en toute sécurité sur Firefox et accédez-y partout Ouvrez rapidement n’importe quel site Internet de l’application pour accéder à vos comptes "</string>

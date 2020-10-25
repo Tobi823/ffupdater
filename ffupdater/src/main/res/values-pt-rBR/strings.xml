@@ -5,7 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">A instalação do aplicativo falhou</string>
     <string name="application_successful_installed">O aplicativo instalado com êxito</string>
-    <string name="available_version">Disponível:%1$s</string>
+    <string name="available_version">Disponível: %1$s</string>
     <string name="available_version_error">ERROR</string>
     <string name="available_version_loading">Carregando…</string>
     <string name="background_error_notification_text">Clique para ver o erro</string>
@@ -61,7 +61,7 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="installation_warning_title">Atenção</string>
     <string name="installed_app_is_not_verified">O aplicativo instalado NÃO é verificado</string>
     <string name="installed_application_is_verified">O aplicativo instalado É verificado</string>
-    <string name="installed_version">Instalado:%1$s</string>
+    <string name="installed_version">Instalado: %1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Ou um invasor substituiu o download correto por um adulterado ou o verificador de certificados não funciona mais. Você pode verificar novamente a impressão digital do certificado em apkmirror.com ou pode criar um ISSUE em https://notabug.org/Tobiwan/ffupdater para me informar sobre o bug.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Ou uma aplicação adulterada foi instalada no seu dispositivo ou o verificador de certificados não funciona mais. Você pode verificar novamente a impressão digital do certificado em apkmirror.com ou pode criar um ISSUE em https://notabug.org/Tobiwan/ffupdater para me informar sobre o bug.\n\n recomendamos que você desinstale o aplicativo.</string>
     <string name="lockwise_description">ACESSO POR SENHA, &amp; SÓ VOCÊ\n\nRastreie com segurança suas senhas Firefox &amp; acessá-los em qualquer lugar. Abra rapidamente qualquer site do aplicativo para entrar em suas contas</string>
