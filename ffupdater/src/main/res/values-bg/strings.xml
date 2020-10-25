@@ -28,7 +28,6 @@
     <string name="external_storage_not_accessible">Външното хранилище не е налице - изтеглянето не може да започне. Текущото състояние е:</string>
     <string name="fetch_url_for_download">Получаване на адрес за изтегляне от %1$s</string>
     <string name="fetched_url_for_download_successfully">Получен адрес за изтегляне от %1$s</string>
-    <string name="fetched_url_for_download_unsuccessfully">Грешка при получаване на адрес за изтегляне от %1$s</string>
     <string name="firefox_beta_description">Firefox Browser за Android е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били докато намаляват скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
     <string name="firefox_beta_title">Firefox за Android Beta</string>
     <string name="firefox_beta_warning">Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на обичайната ви работа. Искате ли да бъде инсталирано?</string>

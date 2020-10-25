@@ -28,7 +28,6 @@
     <string name="external_storage_not_accessible">Le stockage externe n\'est pas disponible - ne peut pas commencer le téléchargement. L\'état actuel est :</string>
     <string name="fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
     <string name="fetched_url_for_download_successfully">URL de téléchargement récupéré de %1$s</string>
-    <string name="fetched_url_for_download_unsuccessfully">Impossible de récupérer l\'url de téléchargement de %1$s</string>
     <string name="firefox_beta_description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_beta_title">Firefox pour Android Beta</string>
     <string name="firefox_beta_warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer?</string>

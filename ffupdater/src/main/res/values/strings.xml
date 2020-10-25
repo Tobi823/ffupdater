@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="action_about_title">About FFUpdater</string>
     <string name="action_settings_title">Settings</string>
     <string name="app_icon">app icon</string>
@@ -30,7 +30,6 @@
     <string name="external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
     <string name="fetch_url_for_download">Fetch download url from %1$s</string>
     <string name="fetched_url_for_download_successfully">Fetched download url from %1$s</string>
-    <string name="fetched_url_for_download_unsuccessfully">Failed to fetch the download url from %1$s</string>
     <string name="firefox_beta_description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_beta_title">Firefox for Android Beta</string>
     <string name="firefox_beta_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
@@ -71,7 +70,7 @@
     <string name="lockwise_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
     <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
-    <string name="msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
+    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
     <string name="no_update_available">No update available</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="ok">OK</string>
@@ -90,10 +89,10 @@
     <string name="theme_preference_summary">Choose between light and dark theme</string>
     <string name="theme_preference_title">Choose theme</string>
     <string name="theme_system_default">Use system default</string>
-    <string name="title_crasher_copy">Copy</string>
-    <string name="title_crasher_crashed">%1$s Crashed</string>
-    <string name="title_crasher_share">Share</string>
-    <string name="title_crasher_stack_trace">View Stack Trace</string>
+    <string name="title_crasher_copy" tools:keep="@string/title_crasher_copy">Copy</string>
+    <string name="title_crasher_crashed" tools:keep="@string/title_crasher_crashed">%1$s Crashed</string>
+    <string name="title_crasher_share" tools:keep="@string/title_crasher_share">Share</string>
+    <string name="title_crasher_stack_trace" tools:keep="@string/title_crasher_stack_trace">View Stack Trace</string>
     <string name="too_low_memory_description">On your device is only %1$d MB of space available. This may lead to download or installation failure.</string>
     <string name="too_low_memory_title">Low Disk Space</string>
     <string name="unknown_installed_version">Unknown version installed</string>

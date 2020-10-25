@@ -28,7 +28,6 @@
     <string name="external_storage_not_accessible">O armazenamento externo não está disponível - não é possível iniciar o download. O status atual é:</string>
     <string name="fetch_url_for_download">Baixar url de %1$s</string>
     <string name="fetched_url_for_download_successfully">Obtido a url de download do %1$s</string>
-    <string name="fetched_url_for_download_unsuccessfully">Falha ao obter a url de download do %1$s</string>
     <string name="firefox_beta_description">O navegador Firefox para Android é desenvolvido para ser privado e incrivelmente rápido. Milhares de rastreadores on-line estão seguindo você todos os dias, coletando informações sobre onde você vai on-line e diminuindo sua velocidade.
 O Firefox bloqueia mais de 2000 destes rastreadores por padrão e há complementos de bloqueadores de anúncios disponíveis se você quiser personalizar ainda mais o seu navegador. Com o Firefox, você terá a segurança que merece e a velocidade que precisa num navegador privado e móvel.</string>
     <string name="firefox_beta_title">Firefox Beta para Android</string>
