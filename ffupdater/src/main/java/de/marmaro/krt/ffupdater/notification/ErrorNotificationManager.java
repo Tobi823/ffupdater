@@ -71,9 +71,9 @@ public class ErrorNotificationManager {
     private void createNotificationChannel() {
         final NotificationChannel channel = new NotificationChannel(
                 CHANNEL_ID,
-                "Background errors",
+                context.getString(R.string.error_notification_channel_name),
                 IMPORTANCE_DEFAULT);
-        channel.setDescription("Show the error when the background update check fails");
+        channel.setDescription(context.getString(R.string.error_notification_channel_description));
         notificationManager.createNotificationChannel(channel);
     }
 }

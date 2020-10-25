@@ -121,4 +121,6 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="you_can_now_close_this_window">Agora você pode fechar esta janela</string>
     <string name="background_error_notification_title">Falha na verificação de atualização de antecedentes</string>
     <string name="background_error_notification_text">Clique para ver o erro</string>
+    <string name="error_notification_channel_name">Erros de fundo</string>
+    <string name="error_notification_channel_description">Mostrar erros do verificador de atualização de antecedentes</string>
 </resources>

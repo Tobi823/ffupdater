@@ -114,4 +114,6 @@
     <string name="you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
     <string name="background_error_notification_title">Échec de la vérification de la mise à jour des antécédents</string>
     <string name="background_error_notification_text">Cliquez pour afficher l\'erreur</string>
+    <string name="error_notification_channel_name">Erreurs de fond</string>
+    <string name="error_notification_channel_description">Afficher les erreurs du vérificateur de mise à jour des antécédents</string>
 </resources>

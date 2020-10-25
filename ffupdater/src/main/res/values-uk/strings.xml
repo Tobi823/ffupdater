@@ -114,4 +114,6 @@
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
     <string name="background_error_notification_title">Не вдалося перевірити фонове оновлення</string>
     <string name="background_error_notification_text">Клацніть, щоб переглянути помилку</string>
+    <string name="error_notification_channel_name">Фонові помилки</string>
+    <string name="error_notification_channel_description">Показати помилки перевірки фонового оновлення</string>
 </resources>

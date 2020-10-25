@@ -124,4 +124,6 @@
     <string name="you_can_now_close_this_window">You can now close this window</string>
     <string name="background_error_notification_title">Background update check failed</string>
     <string name="background_error_notification_text">Click to view error</string>
+    <string name="error_notification_channel_name">Background errors</string>
+    <string name="error_notification_channel_description">Show errors of the background update checker</string>
 </resources>

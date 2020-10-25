@@ -114,4 +114,6 @@
     <string name="you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
     <string name="background_error_notification_title">Hintergrundprüfung auf Updates ist fehlgeschlagen</string>
     <string name="background_error_notification_text">Klicken, um den Fehler anzuzeigen</string>
+    <string name="error_notification_channel_name">Fehler im Hintergrund</string>
+    <string name="error_notification_channel_description">Fehler des Hintergrund-Update-Checkers anzeigen</string>
 </resources>

@@ -120,4 +120,6 @@
     <string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
     <string name="background_error_notification_title">Проверка фонового обновления не прошла успешно</string>
     <string name="background_error_notification_text">Нажмите, чтобы просмотреть ошибку</string>
+    <string name="error_notification_channel_name">Ошибки в фоновом режиме</string>
+    <string name="error_notification_channel_description">Показать ошибки проверки фонового обновления</string>
 </resources>

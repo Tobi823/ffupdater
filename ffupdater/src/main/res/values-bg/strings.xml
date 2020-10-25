@@ -120,4 +120,6 @@
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
     <string name="background_error_notification_title">Проверката на фоновата актуализация не бе успешна</string>
     <string name="background_error_notification_text">Щракнете, за да видите грешка</string>
+    <string name="error_notification_channel_name">Фонови грешки</string>
+    <string name="error_notification_channel_description">Показване на грешки на проверката за актуализация на фона</string>
 </resources>
