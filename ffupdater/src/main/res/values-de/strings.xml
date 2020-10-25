@@ -112,7 +112,7 @@
     <string name="update_notification_channel_description">Benachrichtigungskanal für verfügbare %1$s Updates.</string>
     <string name="update_notification_channel_name">Update-Benachrichtigung für %1$s</string>
     <string name="update_notification_text">Klicken um Update zu installieren</string>
-    <string name="update_notification_title">%1$s kann aktualisiert werden</string>
+    <string name="update_notification_title">"%1$s" kann aktualisiert werden</string>
     <string name="verifying_downloaded_application_certificate">Zertifikat der Anwendung überprüfen</string>
     <string name="you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
 </resources>
