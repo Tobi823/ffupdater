@@ -8,6 +8,8 @@
     <string name="available_version">Verfügbar:%1$s</string>
     <string name="available_version_error">FEHLER</string>
     <string name="available_version_loading">Laden…</string>
+    <string name="background_error_notification_text">Klicken, um den Fehler anzuzeigen</string>
+    <string name="background_error_notification_title">Hintergrundprüfung auf Updates ist fehlgeschlagen</string>
     <string name="brave_description">Der Brave Web Browser ist Ihr privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert!\n\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass Sie mit Anzeigen überladen oder mit Malware und Popups verseucht werden.</string>
     <string name="brave_title">Brave Browser</string>
     <string name="brave_warning">Brave nutzt die technische Grundlage des Google Chrome (Chrom) - manche Leute mögen das nicht. Willst du Brave dennoch installieren?</string>
@@ -20,6 +22,8 @@
     <string name="downloaded_application_from">Anwendung wurde heruntergeladen von:</string>
     <string name="downloaded_application_is_not_verified">Heruntergeladene Anwendung ist NICHT verifiziert</string>
     <string name="downloaded_application_is_verified">Heruntergeladene Anwendung ist verifiziert</string>
+    <string name="error_notification_channel_description">Fehler des Hintergrund-Update-Checkers anzeigen</string>
+    <string name="error_notification_channel_name">Fehler im Hintergrund</string>
     <string name="expected_sha_256_certificate_fingerprint">Erwarteter SHA-256 Fingerabdruck des Zertifikats:</string>
     <string name="external_storage_not_accessible">Externer Speicher ist nicht verfügbar - kann den Download nicht starten. Aktueller Status ist:</string>
     <string name="fetch_url_for_download">Abruf der Download-URL von %1$s</string>
@@ -112,8 +116,4 @@
     <string name="update_notification_title">%1$s kann aktualisiert werden</string>
     <string name="verifying_downloaded_application_certificate">Zertifikat der Anwendung überprüfen</string>
     <string name="you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
-    <string name="background_error_notification_title">Hintergrundprüfung auf Updates ist fehlgeschlagen</string>
-    <string name="background_error_notification_text">Klicken, um den Fehler anzuzeigen</string>
-    <string name="error_notification_channel_name">Fehler im Hintergrund</string>
-    <string name="error_notification_channel_description">Fehler des Hintergrund-Update-Checkers anzeigen</string>
 </resources>

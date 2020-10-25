@@ -8,6 +8,8 @@
     <string name="available_version">Disponível:%1$s</string>
     <string name="available_version_error">ERROR</string>
     <string name="available_version_loading">Carregando…</string>
+    <string name="background_error_notification_text">Clique para ver o erro</string>
+    <string name="background_error_notification_title">Falha na verificação de atualização de antecedentes</string>
     <string name="brave_description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !\n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé!</string>
     <string name="brave_title">Navigateur internet privé Brave</string>
     <string name="brave_warning">A Brave usa a base técnica do Google Chrome (Cromo) - algumas pessoas não gostam disso. Você quer instalar o Brave?</string>
@@ -20,6 +22,8 @@
     <string name="downloaded_application_from">Baixe o aplicativos de:</string>
     <string name="downloaded_application_is_not_verified">O aplicativo baixado NÃO é verificado</string>
     <string name="downloaded_application_is_verified">O aplicativo baixado É verificado</string>
+    <string name="error_notification_channel_description">Mostrar erros do verificador de atualização de antecedentes</string>
+    <string name="error_notification_channel_name">Erros de fundo</string>
     <string name="expected_sha_256_certificate_fingerprint">Esperada impressão digital do certificado SHA-256:</string>
     <string name="external_storage_not_accessible">O armazenamento externo não está disponível - não é possível iniciar o download. O status atual é:</string>
     <string name="fetch_url_for_download">Baixar url de %1$s</string>
@@ -119,8 +123,4 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="update_notification_title">O %1$s pode ser atualizado</string>
     <string name="verifying_downloaded_application_certificate">Verificando Certificado do aplicativo</string>
     <string name="you_can_now_close_this_window">Agora você pode fechar esta janela</string>
-    <string name="background_error_notification_title">Falha na verificação de atualização de antecedentes</string>
-    <string name="background_error_notification_text">Clique para ver o erro</string>
-    <string name="error_notification_channel_name">Erros de fundo</string>
-    <string name="error_notification_channel_description">Mostrar erros do verificador de atualização de antecedentes</string>
 </resources>

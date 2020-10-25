@@ -8,6 +8,8 @@
     <string name="available_version">Налично:%1$s</string>
     <string name="available_version_error">ГРЕШКА</string>
     <string name="available_version_loading">Зареждане…</string>
+    <string name="background_error_notification_text">Щракнете, за да видите грешка</string>
+    <string name="background_error_notification_title">Проверката на фоновата актуализация не бе успешна</string>
     <string name="brave_description">Brave Web Browser е Вашият частен, безопасен уеб браузър, който блокира реклами на трети страни безплатно.\n\nBrave Web Browser е бърз, сигурен уеб браузър за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен браузър, който Ви предпазва от проследяване от реклами, злонамерен софтуер и изскачащи прозорци. Изтеглете най-добрия уеб браузър днес.</string>
     <string name="brave_title">Brave Browser</string>
     <string name="brave_warning">Brave използва техническата основа на Google Chrome (Chromium) - някои хора не харесват това. Искате ли да инсталирате Brave?</string>
@@ -20,6 +22,8 @@
     <string name="downloaded_application_from">Изтеглено приложение от:</string>
     <string name="downloaded_application_is_not_verified">Изтегленото приложение е НЕпроверено</string>
     <string name="downloaded_application_is_verified">Изтегленото приложение е проверено</string>
+    <string name="error_notification_channel_description">Показване на грешки на проверката за актуализация на фона</string>
+    <string name="error_notification_channel_name">Фонови грешки</string>
     <string name="expected_sha_256_certificate_fingerprint">Очакван отпечатък с SHA-256 от сертификат:</string>
     <string name="external_storage_not_accessible">Външното хранилище не е налице - изтеглянето не може да започне. Текущото състояние е:</string>
     <string name="fetch_url_for_download">Получаване на адрес за изтегляне от %1$s</string>
@@ -118,8 +122,4 @@
     <string name="update_notification_title">%1$s може да бъде актуализиран</string>
     <string name="verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
-    <string name="background_error_notification_title">Проверката на фоновата актуализация не бе успешна</string>
-    <string name="background_error_notification_text">Щракнете, за да видите грешка</string>
-    <string name="error_notification_channel_name">Фонови грешки</string>
-    <string name="error_notification_channel_description">Показване на грешки на проверката за актуализация на фона</string>
 </resources>

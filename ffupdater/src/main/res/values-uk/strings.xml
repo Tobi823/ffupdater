@@ -8,6 +8,8 @@
     <string name="available_version">в наявності:%1$s</string>
     <string name="available_version_error">ПОМИЛКА</string>
     <string name="available_version_loading">Завантаження…</string>
+    <string name="background_error_notification_text">Клацніть, щоб переглянути помилку</string>
+    <string name="background_error_notification_title">Не вдалося перевірити фонове оновлення</string>
     <string name="brave_description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення.\n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
     <string name="brave_title">Brave Browser</string>
     <string name="brave_warning">128/5000 Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave?</string>
@@ -20,6 +22,8 @@
     <string name="downloaded_application_from">Завантажена програма від:</string>
     <string name="downloaded_application_is_not_verified">Завантажена програма НЕ перевірена</string>
     <string name="downloaded_application_is_verified">Завантажена програма перевірена</string>
+    <string name="error_notification_channel_description">Показати помилки перевірки фонового оновлення</string>
+    <string name="error_notification_channel_name">Фонові помилки</string>
     <string name="expected_sha_256_certificate_fingerprint">Очікуваний відбиток сертифіката SHA-256:</string>
     <string name="external_storage_not_accessible">Зовнішня пам’ять недоступна - завантажити не вдається. Поточний статус:</string>
     <string name="fetch_url_for_download">Вилучити URL-адресу для завантаження з %1$s</string>
@@ -112,8 +116,4 @@
     <string name="update_notification_title">%1$s можна оновити</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
-    <string name="background_error_notification_title">Не вдалося перевірити фонове оновлення</string>
-    <string name="background_error_notification_text">Клацніть, щоб переглянути помилку</string>
-    <string name="error_notification_channel_name">Фонові помилки</string>
-    <string name="error_notification_channel_description">Показати помилки перевірки фонового оновлення</string>
 </resources>

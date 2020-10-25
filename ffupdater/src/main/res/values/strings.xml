@@ -8,6 +8,8 @@
     <string name="available_version">Available: %1$s</string>
     <string name="available_version_error">ERROR</string>
     <string name="available_version_loading">Loading…</string>
+    <string name="background_error_notification_text">Click to view error</string>
+    <string name="background_error_notification_title">Background update check failed</string>
     <string name="brave_description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
     <string name="brave_title">Brave Private Browser</string>
     <string name="brave_warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
@@ -21,7 +23,9 @@
     <string name="downloaded_application_from">Downloaded application from:</string>
     <string name="downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
     <string name="downloaded_application_is_verified">Downloaded application is verified</string>
-    <string name="empty" translatable="false"/>
+    <string name="empty" translatable="false" />
+    <string name="error_notification_channel_description">Show errors of the background update checker</string>
+    <string name="error_notification_channel_name">Background errors</string>
     <string name="expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
     <string name="external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
     <string name="fetch_url_for_download">Fetch download url from %1$s</string>
@@ -122,8 +126,4 @@
     <string name="update_notification_title">%1$s can be updated</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
-    <string name="background_error_notification_title">Background update check failed</string>
-    <string name="background_error_notification_text">Click to view error</string>
-    <string name="error_notification_channel_name">Background errors</string>
-    <string name="error_notification_channel_description">Show errors of the background update checker</string>
 </resources>

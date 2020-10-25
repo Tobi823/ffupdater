@@ -8,6 +8,8 @@
     <string name="available_version">Disponible:%1$s</string>
     <string name="available_version_error">ERREUR</string>
     <string name="available_version_loading">Chargement…</string>
+    <string name="background_error_notification_text">Cliquez pour afficher l\'erreur</string>
+    <string name="background_error_notification_title">Échec de la vérification de la mise à jour des antécédents</string>
     <string name="brave_description">"Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !\n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé! "</string>
     <string name="brave_title">Navigateur internet privé Brave</string>
     <string name="brave_warning">Brave utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Brave ?</string>
@@ -20,6 +22,8 @@
     <string name="downloaded_application_from">Application téléchargée à partir de:</string>
     <string name="downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
     <string name="downloaded_application_is_verified">La demande téléchargée est vérifiée</string>
+    <string name="error_notification_channel_description">Afficher les erreurs du vérificateur de mise à jour des antécédents</string>
+    <string name="error_notification_channel_name">Erreurs de fond</string>
     <string name="expected_sha_256_certificate_fingerprint">Empreinte digitale prévue pour le certificat SHA-256:</string>
     <string name="external_storage_not_accessible">Le stockage externe n\'est pas disponible - ne peut pas commencer le téléchargement. L\'état actuel est :</string>
     <string name="fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
@@ -112,8 +116,4 @@
     <string name="update_notification_title">%1$s peut être mis à jour</string>
     <string name="verifying_downloaded_application_certificate">Vérification du certificat de demande</string>
     <string name="you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
-    <string name="background_error_notification_title">Échec de la vérification de la mise à jour des antécédents</string>
-    <string name="background_error_notification_text">Cliquez pour afficher l\'erreur</string>
-    <string name="error_notification_channel_name">Erreurs de fond</string>
-    <string name="error_notification_channel_description">Afficher les erreurs du vérificateur de mise à jour des antécédents</string>
 </resources>

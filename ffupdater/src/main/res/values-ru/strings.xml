@@ -8,6 +8,8 @@
     <string name="available_version">Доступен:%1$s</string>
     <string name="available_version_error">ОШИБКА</string>
     <string name="available_version_loading">Загрузка…</string>
+    <string name="background_error_notification_text">Нажмите, чтобы просмотреть ошибку</string>
+    <string name="background_error_notification_title">Проверка фонового обновления не прошла успешно</string>
     <string name="brave_description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу.\n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон. Загрузите лучший веб-браузер сегодня.</string>
     <string name="brave_title">Браузер Brave</string>
     <string name="brave_warning">Храбрые используют техническую основу Google Chrome (Chromium) - некоторым это не нравится. Хотите установить Brave?</string>
@@ -20,6 +22,8 @@
     <string name="downloaded_application_from">Загруженное приложение из:</string>
     <string name="downloaded_application_is_not_verified">Загруженное приложение НЕ проверяется</string>
     <string name="downloaded_application_is_verified">Загруженное приложение проверено</string>
+    <string name="error_notification_channel_description">Показать ошибки проверки фонового обновления</string>
+    <string name="error_notification_channel_name">Ошибки в фоновом режиме</string>
     <string name="expected_sha_256_certificate_fingerprint">Ожидаемый отпечаток сертификата SHA-256:</string>
     <string name="external_storage_not_accessible">Внешнее хранилище недоступно - не может начать загрузку. Текущее состояние есть:</string>
     <string name="fetch_url_for_download">Получить ссылку с %1$s</string>
@@ -118,8 +122,4 @@
     <string name="update_notification_title">%1$s может быть обновлен</string>
     <string name="verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
-    <string name="background_error_notification_title">Проверка фонового обновления не прошла успешно</string>
-    <string name="background_error_notification_text">Нажмите, чтобы просмотреть ошибку</string>
-    <string name="error_notification_channel_name">Ошибки в фоновом режиме</string>
-    <string name="error_notification_channel_description">Показать ошибки проверки фонового обновления</string>
 </resources>
