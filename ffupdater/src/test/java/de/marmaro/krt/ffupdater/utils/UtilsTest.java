@@ -44,14 +44,14 @@ public class UtilsTest {
         assertEquals("10", Utils.getVersionAndCodenameFromApiLevel(29));
     }
 
-    @Test
+    @Test(expected = ParamRuntimeException.class)
     public void getVersionAndCodenameFromApiLevel_with0_returnFallback() {
-        assertEquals("API Level 0", Utils.getVersionAndCodenameFromApiLevel(0));
+        Utils.getVersionAndCodenameFromApiLevel(0);
     }
 
-    @Test
+    @Test(expected = ParamRuntimeException.class)
     public void getVersionAndCodenameFromApiLevel_with31_returnFallback() {
-        assertEquals("API Level 31", Utils.getVersionAndCodenameFromApiLevel(31));
+        Utils.getVersionAndCodenameFromApiLevel(31);
     }
 
     @Test
