@@ -69,12 +69,13 @@ public class BackgroundUpdateChecker extends Worker {
         fetcher.fetchMetadata(getAppsWhichShouldBeChecked(settingsHelper, register)).forEach((app, future) -> {
             try {
                 final AvailableMetadata available = future.get(TIMEOUT.getSeconds(), TimeUnit.SECONDS);
-                final InstalledMetadata installed = register.getMetadata(app).orElseThrow(NullPointerException::new);
-                if (updateChecker.isUpdateAvailable(app, installed, available)) {
-                    appsToUpdate.add(app);
-                }
-            } catch (ExecutionException | InterruptedException | TimeoutException | ParamRuntimeException e) {
-                Log.e(LOG_TAG, "update check failed for " + app, e);
+                register.getMetadata(app).ifPresent(installed -> {
+                    if (updateChecker.isUpdateAvailable(app, installed, available)) {
+                        appsToUpdate.add(app);
+                    }
+                });
+            } catch (ExecutionException | InterruptedException | TimeoutException e) {
+                throw new ParamRuntimeException(e, "background update check failed for %s", app);
             }
         });
         return appsToUpdate;
