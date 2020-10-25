@@ -34,10 +34,28 @@ Limitations:
  - FFUpdater can't detect external installations or updates of Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Focus and Firefox Klar. If you install or update one of these apps with the Google Play Store, FFUpdater assumes that this app is outdated and prompts you for an update. You can disable the update check for an app in settings > excluded applications.
 
 FAQ:
- - app installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
+ - App installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
 
 3rd-party libraries:
  - Crasher (Apache 2.0) https://github.com/fennifith/Crasher
+
+## My motivation
+
+[Inspiration](https://kodimensional.dev/goalkeeper)
+
+ - Support the use of degoogled Android devices.
+ - Improve my experience in Android development.
+ - Learn to manage a small open-source project.
+
+## Project goals
+
+[Inspiration](https://kodimensional.dev/goalkeeper)
+
+ - Simplicity
+   - Easy to use for the end-user, simple design, no hidden features
+   - Reasonable to develop and to test the app
+   - Source code must be understandable for new developers
+ - Security - Using FFUpdater must be more secure than downloading the APK file from the Internet
 
 ## Deprecated browsers
 
