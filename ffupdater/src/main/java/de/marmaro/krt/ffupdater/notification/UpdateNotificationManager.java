@@ -69,7 +69,7 @@ class UpdateNotificationManager {
                 .setSmallIcon(transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
                 .setContentTitle(context.getString(R.string.update_notification_title, appTitle))
-                .setContentText(context.getString(R.string.update_notification_text, appTitle))
+                .setContentText(context.getString(R.string.update_notification_text))
                 .setContentIntent(updateAppIntent)
                 .setAutoCancel(true)
                 .build();

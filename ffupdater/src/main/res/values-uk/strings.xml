@@ -111,7 +111,7 @@
     <string name="update_interval_8h">8 годин</string>
     <string name="update_notification_channel_description">Канал сповіщення про доступні оновлення %1$s.</string>
     <string name="update_notification_channel_name">Повідомлення про оновлення %1$s</string>
-    <string name="update_notification_text">Клацніть, щоб оновити %1$s</string>
+    <string name="update_notification_text">Клацніть, щоб встановити оновлення</string>
     <string name="update_notification_title">%1$s можна оновити</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
