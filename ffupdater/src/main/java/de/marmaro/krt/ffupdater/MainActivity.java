@@ -148,52 +148,54 @@ public class MainActivity extends AppCompatActivity {
         Map<App, Future<AvailableMetadata>> futures = metadataFetcher.fetchMetadata(installedApps);
         new Thread(() -> {
             Thread.setDefaultUncaughtExceptionHandler(crasher);
-            futures.forEach((app, future) -> updateUIForApp(crashOnException, app, future));
+            futures.forEach((app, future) -> {
+                try {
+                    updateUIForApp(app, future);
+                } catch (InterruptedException | TimeoutException | ExecutionException e) {
+                    if (crashOnException) {
+                        throw new ParamRuntimeException(e, "failed to fetch available metadata");
+                    }
+                    Log.e(LOG_TAG, "failed to fetch available metadata", e);
+                    runOnUiThread(() -> {
+                        helper.setAvailableVersionText(app, getString(R.string.available_version_error));
+                        helper.disableDownloadButton(app);
+                    });
+                }
+            });
             runOnUiThread(() -> swipeRefreshLayout.setRefreshing(false));
         }).start();
     }
 
-    private void updateUIForApp(boolean crashOnException, App app, Future<AvailableMetadata> future) {
-        try {
-            final AvailableMetadata available = future.get(30, TimeUnit.SECONDS);
-            final Optional<InstalledMetadata> installed = deviceAppRegister.getMetadata(app);
+    private void updateUIForApp(App app, Future<AvailableMetadata> future) throws InterruptedException, ExecutionException, TimeoutException {
+        final AvailableMetadata available = future.get(30, TimeUnit.SECONDS);
+        final Optional<InstalledMetadata> installed = deviceAppRegister.getMetadata(app);
 
-            final boolean updateAvailable = installed.map(metadata ->
-                    new UpdateChecker().isUpdateAvailable(app, metadata, available)
-            ).orElse(true);
+        final boolean updateAvailable = installed.map(metadata ->
+                new UpdateChecker().isUpdateAvailable(app, metadata, available)
+        ).orElse(true);
 
-            final String availableText;
-            if (app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP) {
-                availableText = updateAvailable ? getString(R.string.update_available) :
-                        getString(R.string.no_update_available);
-            } else {
-                availableText = getString(R.string.available_version,
-                        available.getReleaseId().getValueAsString());
-            }
-
-            final String installedText = installed.map(metadata ->
-                    getString(R.string.installed_version, metadata.getVersionName())
-            ).orElse(getString(R.string.unknown_installed_version));
-
-            runOnUiThread(() -> {
-                helper.setInstalledVersionText(app, installedText);
-                helper.setAvailableVersionText(app, availableText);
-                if (updateAvailable) {
-                    helper.enableDownloadButton(app);
-                } else {
-                    helper.disableDownloadButton(app);
-                }
-            });
-        } catch (InterruptedException | TimeoutException | ExecutionException e) {
-            if (crashOnException) {
-                throw new ParamRuntimeException(e, "failed to fetch available metadata");
-            }
-            Log.e(LOG_TAG, "failed to fetch available metadata", e);
-            runOnUiThread(() -> {
-                helper.setAvailableVersionText(app, getString(R.string.available_version_error));
-                helper.disableDownloadButton(app);
-            });
+        final String availableText;
+        if (app.getReleaseIdType() == App.ReleaseIdType.TIMESTAMP) {
+            availableText = updateAvailable ? getString(R.string.update_available) :
+                    getString(R.string.no_update_available);
+        } else {
+            availableText = getString(R.string.available_version,
+                    available.getReleaseId().getValueAsString());
         }
+
+        final String installedText = installed.map(metadata ->
+                getString(R.string.installed_version, metadata.getVersionName())
+        ).orElse(getString(R.string.unknown_installed_version));
+
+        runOnUiThread(() -> {
+            helper.setInstalledVersionText(app, installedText);
+            helper.setAvailableVersionText(app, availableText);
+            if (updateAvailable) {
+                helper.enableDownloadButton(app);
+            } else {
+                helper.disableDownloadButton(app);
+            }
+        });
     }
 
     private void downloadApp(App app) {
