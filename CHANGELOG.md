@@ -1,4 +1,4 @@
-# 2020-10-?? Version 69.0.6 (54)
+# 2020-10-?? Version 70.0.0 (54)
  * Add Bulgarian translation (thanks StoyanDimitrov)
  * Fix short description in F-Droid (thanks linsui)
  * Fix typo (thanks GPery)
