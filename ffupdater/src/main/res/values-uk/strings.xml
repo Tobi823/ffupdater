@@ -4,7 +4,7 @@
     <string name="app_icon">значок програми</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
-    <string name="application_successful_installed">Програма успішно встановлена</string>
+    <string name="application_successfully_installed">Програма успішно встановлена</string>
     <string name="available_version">в наявності: %1$s</string>
     <string name="available_version_error">ПОМИЛКА</string>
     <string name="available_version_loading">Завантаження…</string>

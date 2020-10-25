@@ -4,7 +4,7 @@
     <string name="app_icon">app icon</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
-    <string name="application_successful_installed">Application successful installed</string>
+    <string name="application_successfully_installed">Application successfully installed</string>
     <string name="available_version">Available: %1$s</string>
     <string name="available_version_error">ERROR</string>
     <string name="available_version_loading">Loading…</string>

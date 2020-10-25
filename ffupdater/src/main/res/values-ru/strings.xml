@@ -4,7 +4,7 @@
     <string name="app_icon">иконка приложения</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
-    <string name="application_successful_installed">Приложение успешно установлено</string>
+    <string name="application_successfully_installed">Приложение успешно установлено</string>
     <string name="available_version">Доступен: %1$s</string>
     <string name="available_version_error">ОШИБКА</string>
     <string name="available_version_loading">Загрузка…</string>
