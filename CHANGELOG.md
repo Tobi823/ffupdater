@@ -1,6 +1,7 @@
 # 2020-10-?? Version 69.0.6 (54)
  * Add Bulgarian translation (thanks StoyanDimitrov)
- * Fix short description in F-Droid - thanks linsui
+ * Fix short description in F-Droid (thanks linsui)
+ * Fix typo (thanks GPery)
  * A different notification for each installed app will be displayed
  * Clicking on notification will update the app
  * Better detect ABI of device - Firefox Focus can be installed on Android emulators
