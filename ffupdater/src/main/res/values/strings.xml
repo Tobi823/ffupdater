@@ -71,7 +71,7 @@
     <string name="lockwise_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
     <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
-    <string name="msg_crasher_crashed">Unfortunately, FFUpdater has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
+    <string name="msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
     <string name="no_update_available">No update available</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="ok">OK</string>
