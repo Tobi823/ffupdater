@@ -31,6 +31,8 @@ FAQ:
  - "Gson" by Google for parsing API responses (Apache 2.0)
  - "Crasher" by James Fenn for crash reports (Apache 2.0)
  - "Shared Preferences Mock" by Ivan Shafran for testing SharedPreferences (MIT)
+ - "Guava: Google Core Libraries for Java" for util functions (Apache 2.0) "stripped down to only Preconditions]
+ - [Apache Commons Codec" for converting binary data (Apache 2.0) [stripped down to only ApacheCodecHex]
  - "JUnit 4" for testing (EPL-1.0)
  - "Mockito" for testing (MIT)
  - "Hamcrest" by Joe Walnes, Nat Pryce and Steve Freeman for testing (BSD)

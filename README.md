@@ -41,6 +41,8 @@ FAQ:
  - [Material Components](https://github.com/material-components/material-components-android) by Google for UI (Apache 2.0)
  - [Gson](https://github.com/google/gson) by Google for parsing API responses (Apache 2.0)
  - [Crasher](https://github.com/fennifith/Crasher) by James Fenn for crash reports (Apache 2.0)
+ - [Guava: Google Core Libraries for Java](https://github.com/google/guava) for util function (Apache 2.0) [stripped down to only Preconditions]
+ - [Apache Commons Codec](https://commons.apache.org/proper/commons-codec/) for converting binary data (Apache 2.0) [stripped down to only ApacheCodecHex]
  - [Shared Preferences Mock](https://github.com/IvanShafran/shared-preferences-mock) by Ivan Shafran for testing SharedPreferences (MIT)
  - [JUnit 4](https://github.com/junit-team/junit4) for testing (EPL-1.0)
  - [Mockito](https://github.com/mockito/mockito) for testing (MIT)
