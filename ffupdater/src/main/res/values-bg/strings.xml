@@ -118,4 +118,6 @@
     <string name="update_notification_title">%1$s може да бъде актуализиран</string>
     <string name="verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
+    <string name="background_error_notification_title">Проверката на фоновата актуализация не бе успешна</string>
+    <string name="background_error_notification_text">Щракнете, за да видите грешка</string>
 </resources>

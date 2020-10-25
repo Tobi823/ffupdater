@@ -49,8 +49,8 @@ public class ErrorNotificationManager {
         final Notification notification = createNotificationBuilder()
                 .setSmallIcon(transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
-                .setContentTitle("Background update check failed")
-                .setContentText("Click to view error")
+                .setContentTitle(context.getString(R.string.background_error_notification_title))
+                .setContentText(context.getString(R.string.background_error_notification_text))
                 .setContentIntent(updateAppIntent)
                 .setAutoCancel(true)
                 .build();

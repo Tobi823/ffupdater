@@ -122,4 +122,6 @@
     <string name="update_notification_title">%1$s can be updated</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
+    <string name="background_error_notification_title">Background update check failed</string>
+    <string name="background_error_notification_text">Click to view error</string>
 </resources>

@@ -112,4 +112,6 @@
     <string name="update_notification_title">%1$s peut être mis à jour</string>
     <string name="verifying_downloaded_application_certificate">Vérification du certificat de demande</string>
     <string name="you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
+    <string name="background_error_notification_title">Échec de la vérification de la mise à jour des antécédents</string>
+    <string name="background_error_notification_text">Cliquez pour afficher l\'erreur</string>
 </resources>

@@ -112,4 +112,6 @@
     <string name="update_notification_title">%1$s можна оновити</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
+    <string name="background_error_notification_title">Не вдалося перевірити фонове оновлення</string>
+    <string name="background_error_notification_text">Клацніть, щоб переглянути помилку</string>
 </resources>
