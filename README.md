@@ -37,7 +37,16 @@ FAQ:
  - App installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
 
 3rd-party libraries:
- - Crasher (Apache 2.0) https://github.com/fennifith/Crasher
+ - [AndroidX](https://developer.android.com/jetpack/androidx) by Google for UI
+ - [Material Components](https://github.com/material-components/material-components-android) by Google for UI (Apache 2.0)
+ - [Gson](https://github.com/google/gson) by Google for parsing API responses (Apache 2.0)
+ - [Crasher](https://github.com/fennifith/Crasher) by James Fenn for crash reports (Apache 2.0)
+ - [Shared Preferences Mock](https://github.com/IvanShafran/shared-preferences-mock) by Ivan Shafran for testing SharedPreferences (MIT)
+ - [JUnit 4](https://github.com/junit-team/junit4) for testing (EPL-1.0)
+ - [Mockito](https://github.com/mockito/mockito) for testing (MIT)
+ - [Hamcrest](https://github.com/hamcrest/JavaHamcrest) by Joe Walnes, Nat Pryce and Steve Freeman for testing (BSD)
+ - [Hamcrest Date](https://github.com/eXparity/hamcrest-date) by Stewart Bissett for testing with java.time (BSD-3)
+
 
 ## My motivation / Project goals
 
