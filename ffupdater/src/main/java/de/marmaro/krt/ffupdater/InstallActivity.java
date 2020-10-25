@@ -182,6 +182,7 @@ public class InstallActivity extends AppCompatActivity {
 
         final Future<AvailableMetadata> future = availableMetadataFetcher.fetchMetadata(app);
         new Thread(() -> {
+            Thread.setDefaultUncaughtExceptionHandler(crasher);
             try {
                 metadata = future.get(MAX_WAIT_TIME.getSeconds(), TimeUnit.SECONDS);
                 hide(R.id.fetchUrl);
@@ -198,16 +199,16 @@ public class InstallActivity extends AppCompatActivity {
     private void downloadApplication() {
         show(R.id.downloadingFile);
         setText(R.id.downloadingFileUrl, metadata.getDownloadUrl().toString());
-
         downloadId = downloadManager.enqueue(this, metadata.getDownloadUrl(), app.getTitle(this));
+        activeDownloadStatusRefresher();
+    }
 
+    private void activeDownloadStatusRefresher() {
         final LocalDateTime start = LocalDateTime.now();
         final Duration maxWaitingTime = Duration.ofMinutes(5);
         final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleWithFixedDelay(() -> {
-            if (Math.random() < 10) {
-                throw new RuntimeException("abc");
-            }
+            Thread.setDefaultUncaughtExceptionHandler(crasher);
             final StatusProgress result = downloadManager.getStatusAndProgress(downloadId);
             final String status = downloadManagerIdToString.getOrDefault(result.getStatus(), "?");
             setText(R.id.downloadingFileText, getString(R.string.download_application_from_with_status, status));
@@ -243,6 +244,7 @@ public class InstallActivity extends AppCompatActivity {
             setText(downloadedFileUrl, metadata.getDownloadUrl().toString());
             show(R.id.verifyDownloadFingerprint);
             new Thread(() -> {
+                Thread.setDefaultUncaughtExceptionHandler(crasher);
                 File downloadedFile = downloadManager.getFileForDownloadedFile(id);
                 final FingerprintResult result = fingerprintValidator.checkApkFile(downloadedFile, app);
                 if (result.isValid()) {
@@ -328,6 +330,7 @@ public class InstallActivity extends AppCompatActivity {
     private void actionVerifyInstalledAppSignature() {
         show(R.id.verifyInstalledFingerprint);
         new Thread(() -> {
+            Thread.setDefaultUncaughtExceptionHandler(crasher);
             final FingerprintResult fingerprintResult = fingerprintValidator.checkInstalledApp(app);
             hide(R.id.verifyInstalledFingerprint);
             if (fingerprintResult.isValid()) {

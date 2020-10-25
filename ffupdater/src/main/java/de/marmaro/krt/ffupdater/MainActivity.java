@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private InstalledMetadataRegister deviceAppRegister;
     private AvailableMetadataFetcher metadataFetcher;
     private MainActivityHelper helper;
+    private Crasher crasher;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        new Crasher(this);
+        crasher = new Crasher(this);
         StrictModeSetup.enable();
 
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
         Map<App, Future<AvailableMetadata>> futures = metadataFetcher.fetchMetadata(installedApps);
         new Thread(() -> {
+            Thread.setDefaultUncaughtExceptionHandler(crasher);
             futures.forEach((app, future) -> {
                 try {
                     final AvailableMetadata available = future.get(30, TimeUnit.SECONDS);
