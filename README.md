@@ -41,11 +41,11 @@ FAQ:
 
 ## My motivation / Project goals
 
-[](GOALS.md)
+[Goals](GOALS.md)
 
 ## How to contribute
 
-[](HOW_TO_CONTRIBUTE.md)
+[How to contribute](HOW_TO_CONTRIBUTE.md)
 
 ## Deprecated browsers
 
