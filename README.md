@@ -52,53 +52,12 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
 
 ## Build app
 
-### Android Studio
-
-#### From an existing project
-
- 1. File
- 2. New
- 3. Project from Version Control...
- 4. Git
- 5. URL: https://notabug.org/Tobiwan/ffupdater.git
- 6. Clone
- 7. Wait for Android Studio to import project
- 8. Build
- 9. Build Bundle(s) / APK(s)
- 10. Build APK(s)
- 11. Wait
- 12. Click in the bottom right on "locate"
-
-#### From "Welcome to Android Studio" screen
-
- 1. Check out project from Version Control
- 2. Git
- 3. URL: https://notabug.org/Tobiwan/ffupdater.git
- 4. Clone
- 5. "Would you like to open it?" Yes
- 6. Wait for Android Studio to import project
- 7. Build
- 8. Build Bundle(s) / APK(s)
- 9. Build APK(s)
- 10. Wait
- 11. Click in the bottom right on "locate"
-
-### Gradle
-
- 1. `git clone https://notabug.org/Tobiwan/ffupdater.git`
- 2. `cd ffupdater`
- 3. create the file `local.properties` with the path to your Android SDK - for example:
- ````
- sdk.dir=C\:\\Users\\Tobias\\AppData\\Local\\Android\\Sdk
- ````
- 4. `gradlew assembleDebug`
- 5. `cd ffupdater/build/outputs/apk/debug`
- 6. `ffupdater-debug.apk` is the generated APK file
+Use Android Studio to clone and run the app.
+Nothing special needs to be done.
 
 ## History
 
 Since Mozilla [shut down their FTP server on 2015-08-05](https://blog.mozilla.org/it/2015/07/27/product-delivery-migration-what-is-changing-when-its-changing-and-the-impacts/), non-"Google Play Store" updates of Firefox have to be done by third-party apps such as this one.
-
 
 Mozilla now uses a uniform URL to point to the latest release, see [their README](https://archive.mozilla.org/pub/mobile/releases/latest/README.txt) for details. The current URL for Android is: https://download.mozilla.org/?product=fennec-latest&os=android&lang=multi
 
