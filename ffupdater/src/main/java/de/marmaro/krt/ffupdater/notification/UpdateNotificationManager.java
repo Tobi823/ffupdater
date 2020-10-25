@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.notification;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -64,7 +65,7 @@ class UpdateNotificationManager {
         final PendingIntent updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT);
 
         final String appTitle = app.getTitle(context);
-        createNotificationBuilder(channelIds.get(app), appTitle)
+        final Notification notification = createNotificationBuilder(channelIds.get(app), appTitle)
                 .setSmallIcon(transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
                 .setContentTitle(context.getString(R.string.update_notification_title, appTitle))
@@ -72,6 +73,9 @@ class UpdateNotificationManager {
                 .setContentIntent(updateAppIntent)
                 .setAutoCancel(true)
                 .build();
+
+        final Integer notificationId = Objects.requireNonNull(notificationIds.get(app));
+        notificationManager.notify(notificationId, notification);
     }
 
     private NotificationCompat.Builder createNotificationBuilder(String channelId, String appTitle) {

@@ -4,7 +4,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
@@ -23,7 +22,6 @@ import de.marmaro.krt.ffupdater.App;
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadata;
 import de.marmaro.krt.ffupdater.metadata.AvailableMetadataFetcher;
-import de.marmaro.krt.ffupdater.metadata.InstalledMetadata;
 import de.marmaro.krt.ffupdater.metadata.InstalledMetadataRegister;
 import de.marmaro.krt.ffupdater.metadata.UpdateChecker;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
@@ -36,7 +34,6 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  * When an app update is available, a notification will be displayed.
  */
 public class BackgroundUpdateChecker extends Worker {
-    private static final String LOG_TAG = "Notificator";
     private static final Duration TIMEOUT = Duration.ofSeconds(30);
 
     public BackgroundUpdateChecker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -46,21 +43,30 @@ public class BackgroundUpdateChecker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        Log.d(LOG_TAG, "start background update check");
-        final Context context = getApplicationContext();
-
-        final List<App> appsToUpdate = findAppsWithAvailableUpdates(new SettingsHelper(context),
-                new DeviceEnvironment(),
-                context.getPackageManager(),
-                PreferenceManager.getDefaultSharedPreferences(context));
-
-        final NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-        new UpdateNotificationManager(context, notificationManager).showNotifications(appsToUpdate);
-        return Result.success();
+        try {
+            doBackgroundCheck();
+            return Result.success();
+        } catch (RuntimeException exception) {
+            showErrorNotification(exception);
+            return Result.failure();
+        }
     }
 
-    private List<App> findAppsWithAvailableUpdates(SettingsHelper settingsHelper, DeviceEnvironment deviceEnvironment,
-                                                   PackageManager packageManager, SharedPreferences preferences) {
+    private void doBackgroundCheck() {
+        final Context context = getApplicationContext();
+        final NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+        final SettingsHelper settings = new SettingsHelper(context);
+        final DeviceEnvironment environment = new DeviceEnvironment();
+        final PackageManager packageManager = context.getPackageManager();
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        final List<App> apps = findAppsWithAvailableUpdates(settings, environment, packageManager, preferences);
+        new UpdateNotificationManager(context, notificationManager).showNotifications(apps);
+    }
+
+    private List<App> findAppsWithAvailableUpdates(SettingsHelper settingsHelper,
+                                                   DeviceEnvironment deviceEnvironment,
+                                                   PackageManager packageManager,
+                                                   SharedPreferences preferences) {
         final InstalledMetadataRegister register = new InstalledMetadataRegister(packageManager, preferences);
         final AvailableMetadataFetcher fetcher = new AvailableMetadataFetcher(preferences, deviceEnvironment);
         final UpdateChecker updateChecker = new UpdateChecker();
@@ -87,4 +93,9 @@ public class BackgroundUpdateChecker extends Worker {
         return apps;
     }
 
+    private void showErrorNotification(Exception exception) {
+        final Context context = getApplicationContext();
+        final NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+        new ErrorNotificationManager(context, notificationManager).showNotification(exception);
+    }
 }
