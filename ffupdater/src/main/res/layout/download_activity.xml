@@ -93,19 +93,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/fetchedUrlFailure"
-            style="@style/DownloadActivitySegment"
-            android:background="@color/errorRed"
-            android:padding="8dp">
-
-            <TextView
-                android:id="@+id/fetchedUrlFailureTextView"
-                style="@style/BoldTextView"
-                android:text="@string/fetched_url_for_download_unsuccessfully" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/downloadingFile"
             style="@style/DownloadActivitySegment">
 

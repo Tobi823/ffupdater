@@ -53,6 +53,8 @@ import de.marmaro.krt.ffupdater.security.FingerprintValidator;
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
 import de.marmaro.krt.ffupdater.utils.CompareHelper;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
+import james.crasher.Crasher;
 
 import static android.app.DownloadManager.STATUS_FAILED;
 import static android.app.DownloadManager.STATUS_PAUSED;
@@ -83,6 +85,7 @@ public class InstallActivity extends AppCompatActivity {
     private InstalledMetadataRegister installedMetadataRegister;
     private FingerprintValidator fingerprintValidator;
     private AvailableMetadataFetcher availableMetadataFetcher;
+    private Crasher crasher;
 
     private App app;
     private AvailableMetadata metadata;
@@ -92,6 +95,8 @@ public class InstallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.download_activity);
+        crasher = new Crasher(this);
+
         AppCompatDelegate.setDefaultNightMode(new SettingsHelper(this).getThemePreference(new DeviceEnvironment()));
         registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         Optional.ofNullable(getSupportActionBar()).ifPresent(actionBar -> actionBar.setDisplayHomeAsUpEnabled(true));
@@ -178,19 +183,14 @@ public class InstallActivity extends AppCompatActivity {
         final Future<AvailableMetadata> future = availableMetadataFetcher.fetchMetadata(app);
         new Thread(() -> {
             try {
-                this.metadata = future.get(MAX_WAIT_TIME.getSeconds(), TimeUnit.SECONDS);
+                metadata = future.get(MAX_WAIT_TIME.getSeconds(), TimeUnit.SECONDS);
                 hide(R.id.fetchUrl);
                 show(R.id.fetchedUrlSuccess);
                 setText(R.id.fetchedUrlSuccessTextView, getString(R.string.fetched_url_for_download_successfully,
                         app.getDownloadSource(this)));
                 downloadApplication();
             } catch (ExecutionException | InterruptedException | TimeoutException e) {
-                Log.e(LOG_TAG, "failed to fetch url", e);
-                hide(R.id.fetchUrl);
-                show(R.id.fetchedUrlFailure);
-                setText(R.id.fetchedUrlFailureTextView, getString(R.string.fetched_url_for_download_unsuccessfully,
-                        app.getDownloadSource(this)));
-                show(R.id.installerFailed);
+                throw new ParamRuntimeException(e, "Failed to fetch the download url from %s", app.getDownloadSource(this));
             }
         }).start();
     }
@@ -205,6 +205,9 @@ public class InstallActivity extends AppCompatActivity {
         final Duration maxWaitingTime = Duration.ofMinutes(5);
         final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleWithFixedDelay(() -> {
+            if (Math.random() < 10) {
+                throw new RuntimeException("abc");
+            }
             final StatusProgress result = downloadManager.getStatusAndProgress(downloadId);
             final String status = downloadManagerIdToString.getOrDefault(result.getStatus(), "?");
             setText(R.id.downloadingFileText, getString(R.string.download_application_from_with_status, status));
