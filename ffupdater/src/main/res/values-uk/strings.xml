@@ -61,7 +61,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater іноді не в змозі завантажити останню версію, оскільки не все оновлення випускається на GitHub. Ви хочете встановити додаток з ризиком використання застарілої версії?</string>
     <string name="main_activity_subtitle">Оновіть веб-переглядачі від Mozilla</string>
-    <string name="msg_crasher_crashed">На жаль, FFUpdater зазнав аварії. Ви можете повідомити про цю помилку:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nБудь ласка, створіть нове видання зі стеком і описом того, як відтворити помилку.</string>
+    <string name="msg_crasher_crashed">На жаль, %1$s зазнав аварії. Ви можете повідомити про цю помилку:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nБудь ласка, створіть нове видання зі стеком і описом того, як відтворити помилку.</string>
     <string name="no_update_available">оновлення недоступне</string>
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
     <string name="ok">Гаразд</string>
