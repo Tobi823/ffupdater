@@ -63,7 +63,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater не винаги има достъп до последното издание, защото не всички издания се публикуват в GitHub. Искате ли приложението да бъде инсталирано с риск да използвате остаряло издание?</string>
     <string name="main_activity_subtitle">Обновете мрежовите четци от Mozilla</string>
-    <string name="msg_crasher_crashed">За съжаление, %1$s се срина. Можете да съобщите за тази грешка на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nМоля, създайте нов брой със стека и описание как да възпроизведете грешката.</string>
+    <string name="msg_crasher_crashed">За съжаление, %1$s се срина. Можете да съобщите за тази грешка на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nМоля, създайте нов брой със стека и описание как да възпроизведете грешката.</string>
     <string name="no_update_available">Няма налична актуализация</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
     <string name="ok">Добре</string>

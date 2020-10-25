@@ -64,7 +64,7 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater às vezes não consegue baixar a versão mais recente porque nem todas as atualizações são lançadas no GitHub. Você quer instalar o aplicativo com o risco de usar uma versão desatualizada?</string>
     <string name="main_activity_subtitle">Atualize seus navegadores de Mozilla</string>
-    <string name="msg_crasher_crashed">Infelizmente, o %1$s se despenhou. Você pode relatar este erro:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPor favor, crie um novo problema com o stacktrace e uma descrição de como reproduzir o bug.</string>
+    <string name="msg_crasher_crashed">Infelizmente, o %1$s se despenhou. Você pode relatar este erro:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPor favor, crie um novo problema com o stacktrace e uma descrição de como reproduzir o bug.</string>
     <string name="no_update_available">Nenhuma atualização disponível</string>
     <string name="not_connected_to_internet">Sem conexão de Internet</string>
     <string name="ok">OK</string>

@@ -63,7 +63,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater иногда не может загрузить последнюю версию, потому что не все обновления выпускаются на GitHub. Вы хотите установить приложение с риском использования устаревшей версии?</string>
     <string name="main_activity_subtitle">Обновите свои браузеры от Mozilla</string>
-    <string name="msg_crasher_crashed">К сожалению, FFUpdater разбился. Вы можете сообщить об этой ошибке:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nПожалуйста, создайте новый выпуск со стековой трассировкой и описанием того, как воспроизвести ошибку.</string>
+    <string name="msg_crasher_crashed">К сожалению, FFUpdater разбился. Вы можете сообщить об этой ошибке:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nПожалуйста, создайте новый выпуск со стековой трассировкой и описанием того, как воспроизвести ошибку.</string>
     <string name="no_update_available">Обновление недоступно</string>
     <string name="not_connected_to_internet">Вы не подключены к интернету</string>
     <string name="ok">ОК</string>

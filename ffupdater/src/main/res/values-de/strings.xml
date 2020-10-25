@@ -57,7 +57,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater ist manchmal nicht in der Lage, die neueste Version herunterzuladen, da nicht jedes Update auf GitHub veröffentlicht wird. Wollen Sie die Anwendung mit dem Risiko installieren, eine veraltete Version zu verwenden?</string>
     <string name="main_activity_subtitle">Aktualisieren Sie Ihre Browser von Mozilla</string>
-    <string name="msg_crasher_crashed">Leider ist der %1$s abgestürzt. Du kannst diesen Fehler melden auf:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: (https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nBitte erstelle eine neues Issue mit dem Stacktrace und einer Beschreibung, wie der Fehler reproduziert werden kann.</string>
+    <string name="msg_crasher_crashed">Leider ist der %1$s abgestürzt. Du kannst diesen Fehler melden auf:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nBitte erstelle eine neues Issue mit dem Stacktrace und einer Beschreibung, wie der Fehler reproduziert werden kann.</string>
     <string name="no_update_available">Kein Update verfügbar</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
     <string name="ok">OK</string>
