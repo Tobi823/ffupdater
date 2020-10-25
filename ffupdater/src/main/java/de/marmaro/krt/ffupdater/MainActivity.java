@@ -81,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
         }
         findViewById(R.id.installAppButton).setOnClickListener(e ->
                 new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager()));
-        swipeRefreshLayout.setOnRefreshListener(this::refreshUI);
+        swipeRefreshLayout.setOnRefreshListener(() -> refreshUI(true));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        refreshUI();
+        refreshUI(false);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void refreshUI() {
+    private void refreshUI(boolean crashOnException) {
         if (isNetworkUnavailable()) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show();
             return;
@@ -178,7 +178,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 } catch (InterruptedException | TimeoutException | ExecutionException e) {
-                    Log.e(LOG_TAG, "failed to fetch metadata", e);
+                    if (crashOnException) {
+                        throw new ParamRuntimeException(e, "failed to fetch available metadata");
+                    }
+                    Log.e(LOG_TAG, "failed to fetch available metadata", e);
                     runOnUiThread(() -> {
                         helper.setAvailableVersionText(app, getString(R.string.available_version_error));
                         helper.disableDownloadButton(app);
