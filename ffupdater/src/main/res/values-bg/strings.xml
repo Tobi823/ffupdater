@@ -9,10 +9,10 @@
     <string name="available_version_error">ГРЕШКА</string>
     <string name="available_version_loading">Зареждане…</string>
     <string name="background_error_notification_text">Щракнете, за да видите грешка</string>
-    <string name="background_error_notification_title">Проверката на фоновата актуализация не бе успешна</string>
-    <string name="brave_description">Brave Web Browser е Вашият частен, безопасен уеб браузър, който блокира реклами на трети страни безплатно.\n\nBrave Web Browser е бърз, сигурен уеб браузър за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен браузър, който Ви предпазва от проследяване от реклами, злонамерен софтуер и изскачащи прозорци. Изтеглете най-добрия уеб браузър днес.</string>
+    <string name="background_error_notification_title">Грешка при проверка за обновяване във фонов режим</string>
+    <string name="brave_description">Brave Web Browser поверителен, безопасен мрежов четец, който спира реклами на трети страни безплатно.\n\nBrave Web Browser е бърз, сигурен мрежов четец за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен четец, който ви предпазва от проследяване чрез реклами, злонамерен софтуер и изскачащи прозорци.</string>
     <string name="brave_title">Brave Browser</string>
-    <string name="brave_warning">Brave използва техническата основа на Google Chrome (Chromium) - някои хора не харесват това. Искате ли да инсталирате Brave?</string>
+    <string name="brave_warning">Brave използва техническата основа на Google Chrome (Chromium) - на някои това не им допада. Искате ли да инсталирате Brave?</string>
     <string name="but_was">Но било:</string>
     <string name="device_too_old_dialog_message">Приложението работи под Android %1$s, но устройството работи само с Android %2$s. Изберете друго приложение, обновете операционната система или сменете телефона с по-нов.</string>
     <string name="device_too_old_dialog_title">Остаряло устройство</string>
@@ -23,7 +23,7 @@
     <string name="downloaded_application_is_not_verified">Изтегленото приложение е НЕпроверено</string>
     <string name="downloaded_application_is_verified">Изтегленото приложение е проверено</string>
     <string name="error_notification_channel_description">Показване на грешки на проверката за актуализация на фона</string>
-    <string name="error_notification_channel_name">Фонови грешки</string>
+    <string name="error_notification_channel_name">Грешки фонов режим</string>
     <string name="expected_sha_256_certificate_fingerprint">Очакван отпечатък с SHA-256 от сертификат:</string>
     <string name="external_storage_not_accessible">Външното хранилище не е налице - изтеглянето не може да започне. Текущото състояние е:</string>
     <string name="fetch_url_for_download">Получаване на адрес за изтегляне от %1$s</string>
@@ -67,7 +67,7 @@
     <string name="lockwise_warning">FFUpdater не винаги има достъп до последното издание, защото не всички издания се публикуват в GitHub. Искате ли приложението да бъде инсталирано с риск да използвате остаряло издание?</string>
     <string name="main_activity_subtitle">Обновете мрежовите четци от Mozilla</string>
     <string name="msg_crasher_crashed">За съжаление, %1$s се срина. Можете да съобщите за тази грешка на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nМоля, създайте нов брой със стека и описание как да възпроизведете грешката.</string>
-    <string name="no_update_available">Няма налична актуализация</string>
+    <string name="no_update_available">Няма ново издание</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
     <string name="ok">Добре</string>
     <string name="settings_activity_label">Настройки</string>
@@ -87,16 +87,16 @@
     <string name="theme_system_default">Стандартната за системата</string>
     <string name="title_crasher_copy">копие</string>
     <string name="title_crasher_crashed">%1$s се срина</string>
-    <string name="title_crasher_share">Дял</string>
+    <string name="title_crasher_share">Споделяне</string>
     <string name="title_crasher_stack_trace">Преглед на проследяването на стека</string>
     <string name="too_low_memory_description">Устройството разполага само с %1$d свободни МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>
     <string name="too_low_memory_title">Недостатъчно празно пространство</string>
     <string name="unknown_installed_version">Инсталирана е неизвестна версия</string>
-    <string name="unknown_signature_of_installed_app_text1">You have to uninstall the existing app before FFUpdater can install or update the app. Backup your data because the uninstall will delete all your bookmarks, settings etc.</string>
-    <string name="unknown_signature_of_installed_app_text2">Reason: The current installed app is not signed by the original developer - maybe it\'s signed by F-Droid. Android refuses to update an app if different people signed the installed and the updated version.</string>
+    <string name="unknown_signature_of_installed_app_text1">Трябва да премахнете инсталираното приложение преди FFUpdater да го инсталира или обновява. Направете резервно копие на данните преди да го премахнете, защото при премахване ще бъдат изтрити всички отметки, настройки и т.н.</string>
+    <string name="unknown_signature_of_installed_app_text2">Причина: инсталираното приложение е не подписано от неговия разработчик. Възможно е да е подписано от F-Droid. Adroid отказва да обновява ако има разлика в подписа на обновеното и инсталираното издание на приложението.</string>
     <string name="unsupported_abi_dialog_message">Избраното приложение е несъвместимо с процесора на телефона. Изберете друго.</string>
     <string name="unsupported_abi_dialog_title">Неподдържано устройство</string>
-    <string name="update_available">Налична актуализация</string>
+    <string name="update_available">Налично издание</string>
     <string name="update_interval_12h">12 часа</string>
     <string name="update_interval_15min">15 минути</string>
     <string name="update_interval_18h">18 часа</string>
@@ -115,10 +115,10 @@
     <string name="update_interval_6d">6 дена</string>
     <string name="update_interval_6h">6 часа</string>
     <string name="update_interval_8h">8 часа</string>
-    <string name="update_notification_channel_description">Notification channel for available %1$s updates.</string>
-    <string name="update_notification_channel_name">Известие за актуализация на %1$s</string>
-    <string name="update_notification_text">Щракнете, за да инсталирате актуализация</string>
-    <string name="update_notification_title">Налична актуализация за %1$s</string>
+    <string name="update_notification_channel_description">Канал за известия за обновяване на %1$s.</string>
+    <string name="update_notification_channel_name">Известие за обновяване на %1$s</string>
+    <string name="update_notification_text">Щракнете, за да инсталирате обновяване</string>
+    <string name="update_notification_title">Налична обновяване за %1$s</string>
     <string name="verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
 </resources>
