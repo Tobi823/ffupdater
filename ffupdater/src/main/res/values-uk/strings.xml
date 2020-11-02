@@ -16,6 +16,7 @@
     <string name="but_was">Але було:</string>
     <string name="device_too_old_dialog_message">Додаток вимагає Android %1$s. Але на вашому пристрої працює лише Android %2$s. Або виберіть інший додаток, оновіть операційну систему або перейдіть на новий смартфон.</string>
     <string name="device_too_old_dialog_title">Пристрій занадто старий</string>
+    <string name="download_app_is_disabled">Додаток для завантаження системи вимкнено. FFUpdater потребує цього додатка для завантаження. Увімкніть його.</string>
     <string name="download_application_from_with_status">Завантажити програму (%1$s)</string>
     <string name="download_failed">Не вдалося завантажити</string>
     <string name="download_the_app">завантажити додаток</string>

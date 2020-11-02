@@ -65,6 +65,18 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/downloadAppIsDisabled"
+            style="@style/DownloadActivitySegment"
+            android:background="@color/errorRed"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/BoldTextView"
+                android:text="@string/download_app_is_disabled" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/fetchUrl"
             style="@style/DownloadActivitySegment">
 

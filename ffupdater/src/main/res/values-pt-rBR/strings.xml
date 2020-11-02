@@ -16,6 +16,7 @@
     <string name="but_was">Mais era:</string>
     <string name="device_too_old_dialog_message"> O aplicativo requer o Android %1$s. Mas seu dispositivo está rodando apenas o Android %2$s. Escolha um aplicativo diferente, atualize seu sistema operacional ou mude para um smartphone mais novo.</string>
     <string name="device_too_old_dialog_title">O dispositivo é muito antigo</string>
+    <string name="download_app_is_disabled">O aplicativo de download do sistema está desativado. O FFUpdater precisa deste aplicativo para fazer o download. Ative-o, por favor.</string>
     <string name="download_application_from_with_status">Baixe o aplicativo (%1$s)</string>
     <string name="download_failed">O download falhou</string>
     <string name="download_the_app">Baixe o aplicativo</string>

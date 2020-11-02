@@ -17,6 +17,7 @@
     <string name="default_theme_preference" translatable="false">3</string>
     <string name="device_too_old_dialog_message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>
     <string name="device_too_old_dialog_title">Device is too old</string>
+    <string name="download_app_is_disabled">The system download app is disabled. FFUpdater needs this app for downloading. Please enable it.</string>
     <string name="download_application_from_with_status">Download application (%1$s)</string>
     <string name="download_failed">Download failed</string>
     <string name="download_the_app">download the app</string>

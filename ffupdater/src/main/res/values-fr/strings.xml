@@ -16,6 +16,7 @@
     <string name="but_was">Mais était:</string>
     <string name="device_too_old_dialog_message">L\'application nécessite Android %1$s. Mais votre appareil ne fonctionne qu\'avec Android %2$s. Choisissez une autre application, mettez à jour votre système d\'exploitation ou passez à un smartphone plus récent.</string>
     <string name="device_too_old_dialog_title">L\'appareil est trop vieux</string>
+    <string name="download_app_is_disabled">L\'application de téléchargement du système est désactivée. FFUpdater a besoin de cette application pour le téléchargement. Veuillez l\'activer.</string>
     <string name="download_application_from_with_status">Télécharger l\'application (%1$s)</string>
     <string name="download_failed">Echec du téléchargement</string>
     <string name="download_the_app">télécharger l\'application</string>

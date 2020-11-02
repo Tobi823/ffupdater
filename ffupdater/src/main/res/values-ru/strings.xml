@@ -16,6 +16,7 @@
     <string name="but_was">Но был:</string>
     <string name="device_too_old_dialog_message">Для работы приложения требуется Android %1$s, но на вашем устройстве работает только Android %2$s. Выберите другое приложение, обновите операционную систему или перейдите на новый смартфон.</string>
     <string name="device_too_old_dialog_title">Устройство слишком старое</string>
+    <string name="download_app_is_disabled">Приложение для загрузки системы отключено. FFUpdater нуждается в этом приложении для загрузки. Пожалуйста, включите его.</string>
     <string name="download_application_from_with_status">Загрузить приложение (%1$s)</string>
     <string name="download_failed">Не удалось загрузить</string>
     <string name="download_the_app">загрузить приложение</string>

@@ -16,6 +16,7 @@
     <string name="but_was">Но било:</string>
     <string name="device_too_old_dialog_message">Приложението работи под Android %1$s, но устройството работи само с Android %2$s. Изберете друго приложение, обновете операционната система или сменете телефона с по-нов.</string>
     <string name="device_too_old_dialog_title">Остаряло устройство</string>
+    <string name="download_app_is_disabled">Приложението за изтегляне на системата е деактивирано. FFUpdater се нуждае от това приложение за изтегляне. Моля, активирайте го.</string>
     <string name="download_application_from_with_status">Изтегляне на приложение (%1$s)</string>
     <string name="download_failed">Грешка при изтегляне</string>
     <string name="download_the_app">изтегляне на приложение</string>

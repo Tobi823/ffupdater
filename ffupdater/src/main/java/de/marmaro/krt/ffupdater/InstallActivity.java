@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInstaller;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -123,7 +124,7 @@ public class InstallActivity extends AppCompatActivity {
 
         findViewById(R.id.installConfirmationButton).setOnClickListener(v -> install());
 
-        if (isSignatureOfInstalledAppUnknown(app) || isExternalStorageNotAccessible()) {
+        if (isSignatureOfInstalledAppUnknown(app) || isExternalStorageNotAccessible() || isDownloadManagerDisabled()) {
             return;
         }
         displayWarningWhenLowOnMemory();
@@ -162,6 +163,18 @@ public class InstallActivity extends AppCompatActivity {
         show(R.id.externalStorageNotAccessible);
         setText(R.id.externalStorageNotAccessible_state, status);
         return true;
+    }
+
+    private boolean isDownloadManagerDisabled() {
+        try {
+            final boolean disabled = !getPackageManager().getApplicationInfo("com.android.providers.downloads", 0).enabled;
+            if (disabled) {
+                show(R.id.downloadAppIsDisabled);
+            }
+            return disabled;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
     }
 
     private void displayWarningWhenLowOnMemory() {

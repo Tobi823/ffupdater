@@ -1,3 +1,6 @@
+# 2020-??-?? Version ?? (??)
+ * Check if system download app is installed
+
 # 2020-11-02 Version 70.0.0 (54)
  * Add Bulgarian translation (thanks StoyanDimitrov)
  * Fix short description in F-Droid (thanks linsui)
