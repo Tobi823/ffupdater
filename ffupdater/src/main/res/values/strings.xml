@@ -28,8 +28,8 @@
     <string name="error_notification_channel_name">Background errors</string>
     <string name="expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
     <string name="external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
-    <string name="fetch_url_for_download">Fetch download url from %1$s</string>
-    <string name="fetched_url_for_download_successfully">Fetched download url from %1$s</string>
+    <string name="fetch_url_for_download">Fetch download URL from %1$s</string>
+    <string name="fetched_url_for_download_successfully">Fetched download URL from %1$s</string>
     <string name="firefox_beta_description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_beta_title">Firefox for Android Beta</string>
     <string name="firefox_beta_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
