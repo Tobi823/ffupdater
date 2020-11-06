@@ -16,7 +16,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    implementation 'me.jfenn:crasher:0.0.2'
+    implementation 'com.github.fennifith:Crasher:0.0.2'
 
     testImplementation 'junit:junit:4.13'
     testImplementation 'org.mockito:mockito-core:3.3.3'
