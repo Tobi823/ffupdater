@@ -12,30 +12,4 @@ and other apps:
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
 
-Security measures:
- - only HTTPS connections
- - check certificate fingerprint of the downloaded and installed file
- - ...
-
-I did my best to make the app as secure as possible - feel free to double-check the source code.
-
-Limitations:
- - FFUpdater can't detect external installations or updates of Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Focus and Firefox Klar. If you install or update one of these apps with the Google Play Store, FFUpdater assumes that this app is outdated and prompts you for an update. You can disable the update check for an app in settings > excluded applications.
-
-FAQ:
- - app installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
-
-3rd-party libraries:
- - "AndroidX" by Google for UI
- - "Material Components" by Google for UI (Apache 2.0)
- - "Gson" by Google for parsing API responses (Apache 2.0)
- - "Crasher" by James Fenn for crash reports (Apache 2.0)
- - "Shared Preferences Mock" by Ivan Shafran for testing SharedPreferences (MIT)
- - "Guava: Google Core Libraries for Java" for util functions (Apache 2.0) "stripped down to only Preconditions]
- - [Apache Commons Codec" for converting binary data (Apache 2.0) [stripped down to only ApacheCodecHex]
- - "JUnit 4" for testing (EPL-1.0)
- - "Mockito" for testing (MIT)
- - "Hamcrest" by Joe Walnes, Nat Pryce and Steve Freeman for testing (BSD)
- - "Hamcrest Date" by Stewart Bissett for testing with java.time (BSD-3)
-
-Click on the "Source Code" link to see the README.md for more technical details.
+Visit https://notabug.org/Tobiwan/ffupdater/src/master/README.md or click to see more information about security measurements, limitations, bugs, FAQ, build instructions, used 3rd-party libraries, technical details etc.
