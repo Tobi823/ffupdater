@@ -3,6 +3,7 @@
 [Inspiration](https://kodimensional.dev/goalkeeper)
 
  - Support the use of degoogled Android devices.
+ - Support the use of privacy-friendly browsers.
  - Improve my experience in Android development.
  - Learn to manage a small open-source project.
 
