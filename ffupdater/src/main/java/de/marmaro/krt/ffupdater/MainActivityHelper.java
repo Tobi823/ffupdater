@@ -34,6 +34,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.lockwiseCard);
             case BRAVE:
                 return activity.findViewById(R.id.braveCard);
+            case ICERAVEN:
+                return activity.findViewById(R.id.iceravenCard);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -69,6 +71,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.lockwiseDownloadButton);
             case BRAVE:
                 return activity.findViewById(R.id.braveDownloadButton);
+            case ICERAVEN:
+                return activity.findViewById(R.id.iceravenDownloadButton);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
@@ -96,6 +100,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.lockwiseInstalledVersion);
             case BRAVE:
                 return activity.findViewById(R.id.braveInstalledVersion);
+            case ICERAVEN:
+                return activity.findViewById(R.id.iceravenInstalledVersion);
             default:
                 throw new ParamRuntimeException("unknown installed version text view for app %s", app);
         }
@@ -123,6 +129,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.lockwiseAvailableVersion);
             case BRAVE:
                 return activity.findViewById(R.id.braveAvailableVersion);
+            case ICERAVEN:
+                return activity.findViewById(R.id.iceravenAvailableVersion);
             default:
                 throw new ParamRuntimeException("unknown available version text view for app %s", app);
         }
@@ -150,6 +158,8 @@ public class MainActivityHelper {
                 return activity.findViewById(R.id.lockwiseInfoButton);
             case BRAVE:
                 return activity.findViewById(R.id.braveInfoButton);
+            case ICERAVEN:
+                return activity.findViewById(R.id.iceravenInfoButton);
             default:
                 throw new RuntimeException("switch fallthrough");
         }
