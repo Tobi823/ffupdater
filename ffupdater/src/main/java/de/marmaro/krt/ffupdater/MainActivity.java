@@ -1,16 +1,21 @@
 package de.marmaro.krt.ffupdater;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -40,6 +45,9 @@ import de.marmaro.krt.ffupdater.utils.OldDownloadedFileDeleter;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import james.crasher.Crasher;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static de.marmaro.krt.ffupdater.R.string.available_version_loading;
@@ -83,6 +91,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.installAppButton).setOnClickListener(e ->
                 new InstallAppDialog(this::downloadApp).show(getSupportFragmentManager()));
         swipeRefreshLayout.setOnRefreshListener(() -> updateUI(true));
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

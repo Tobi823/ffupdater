@@ -136,6 +136,7 @@ public class InstallActivity extends AppCompatActivity {
         super.onDestroy();
         unregisterReceiver(onDownloadComplete);
         availableMetadataFetcher.shutdown();
+        downloadManager.remove(downloadId); //TODO das könnte eine Exception verursachen
     }
 
     @Override
@@ -281,31 +282,39 @@ public class InstallActivity extends AppCompatActivity {
      */
     private void install() {
         show(R.id.installingApplication);
-        PackageInstaller installer = getPackageManager().getPackageInstaller();
-        PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(MODE_FULL_INSTALL);
-        try (PackageInstaller.Session session = installer.openSession(installer.createSession(params))) {
-            int lengthInBytes = downloadManager.getTotalDownloadSize(downloadId);
-            Uri download = downloadManager.getUriForDownloadedFile(downloadId);
 
-            try (OutputStream packageInSession = session.openWrite("package", 0, lengthInBytes);
-                 InputStream apk = getContentResolver().openInputStream(download)) {
-                Objects.requireNonNull(apk);
-                byte[] buffer = new byte[16384];
-                int n;
-                while ((n = apk.read(buffer)) >= 0) {
-                    packageInSession.write(buffer, 0, n);
-                }
-            }
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
+        intent.setData(downloadManager.getUriForDownloadedFile(downloadId));
+        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+        startActivityForResult(intent, 4567);
 
-            Context context = InstallActivity.this;
-            Intent intent = new Intent(context, InstallActivity.class);
-            intent.setAction(PACKAGE_INSTALLED_ACTION);
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-            IntentSender intentSender = pendingIntent.getIntentSender();
-            session.commit(intentSender);
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "failed to install APK", e);
-        }
+//        PackageInstaller installer = getPackageManager().getPackageInstaller();
+//        PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(MODE_FULL_INSTALL);
+//        try (PackageInstaller.Session session = installer.openSession(installer.createSession(params))) {
+//            int lengthInBytes = downloadManager.getTotalDownloadSize(downloadId);
+//            Uri download = downloadManager.getUriForDownloadedFile(downloadId);
+//
+//            try (OutputStream packageInSession = session.openWrite("package", 0, lengthInBytes);
+//                 InputStream apk = getContentResolver().openInputStream(download)) {
+//                Objects.requireNonNull(apk);
+//                byte[] buffer = new byte[16384];
+//                int n;
+//                while ((n = apk.read(buffer)) >= 0) {
+//                    packageInSession.write(buffer, 0, n);
+//                }
+//            }
+//
+//            Context context = InstallActivity.this;
+//            Intent intent = new Intent(context, InstallActivity.class);
+//            intent.setAction(PACKAGE_INSTALLED_ACTION);
+//            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+//            IntentSender intentSender = pendingIntent.getIntentSender();
+//            session.commit(intentSender);
+//        } catch (IOException e) {
+//            Log.e(LOG_TAG, "failed to install APK", e);
+//        }
     }
 
     /**
