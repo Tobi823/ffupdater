@@ -126,4 +126,7 @@
     <string name="update_notification_title">Update for "%1$s" available</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
+    <string name="iceraven_title">Iceraven Browser</string>
+    <string name="iceraven_description">Definitely not brought to you by Mozilla!\n\nIceraven Browser is a web browser for Android, based on Mozilla\'s Fenix version of Firefox, GeckoView and Mozilla Android Components.\n\nOur goal is to be a close fork of the new Firefox for Android that seeks to provide users with more options, more opportunities to customize (including a broad extension library), and more information about the pages they visit and how their browsers are interacting with those pages.</string>
+    <string name="iceraven_warning" />
 </resources>

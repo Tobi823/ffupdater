@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -152,6 +153,9 @@ public class GithubConsumer {
         }
 
         public List<Asset> getAssets() {
+            if (assets == null) {
+                return Collections.emptyList();
+            }
             return assets;
         }
 

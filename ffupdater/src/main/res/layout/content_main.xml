@@ -447,6 +447,59 @@
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/iceravenCard"
+                style="@style/AppCard"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
+
+                    <TextView
+                        style="@style/AppCardTitle"
+                        android:text="@string/iceraven_title"
+                        app:layout_constraintStart_toEndOf="@id/iceravenIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/iceravenInstalledVersion"
+                        style="@style/AppCardInstalledVersion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iceravenIcon" />
+
+                    <TextView
+                        android:id="@+id/iceravenAvailableVersion"
+                        style="@style/AppCardVersion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iceravenInstalledVersion" />
+
+                    <ImageButton
+                        android:id="@+id/iceravenInfoButton"
+                        style="@style/AppCardInfoButton"
+                        android:contentDescription="@string/information_about_the_app"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/iceravenDownloadButton"
+                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
+
+                    <ImageButton
+                        android:id="@+id/iceravenDownloadButton"
+                        style="@style/AppCardDownloadButton"
+                        android:contentDescription="@string/download_the_app"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:srcCompat="@drawable/ic_file_download_grey" />
+
+                    <ImageView
+                        android:id="@+id/iceravenIcon"
+                        style="@style/AppCardIcon"
+                        android:contentDescription="@string/app_icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@mipmap/ic_logo_iceraven" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

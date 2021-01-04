@@ -20,7 +20,8 @@ public class Fetcher implements Callable<AvailableMetadata> {
     public static final int FIREFOX_BETA_TAG = 15;
     public static final int FIREFOX_NIGHTLY_TAG = 16;
     public static final int LOCKWISE_TAG = 17;
-    public static final int BRAVE_TAG = 17;
+    public static final int BRAVE_TAG = 18;
+    public static final int ICERAVEN_TAG = 19;
 
     private final Cache cache;
     private final App app;
@@ -33,16 +34,11 @@ public class Fetcher implements Callable<AvailableMetadata> {
                    DeviceEnvironment deviceEnvironment,
                    MozillaCiConsumer mozillaCiConsumer,
                    GithubConsumer githubConsumer) {
-        Objects.requireNonNull(sharedPreferences);
-        Objects.requireNonNull(app);
-        Objects.requireNonNull(deviceEnvironment);
-        Objects.requireNonNull(mozillaCiConsumer);
-        Objects.requireNonNull(githubConsumer);
-        this.cache = new Cache(sharedPreferences);
-        this.app = app;
-        this.deviceEnvironment = deviceEnvironment;
-        this.mozillaCiConsumer = mozillaCiConsumer;
-        this.githubConsumer = githubConsumer;
+        this.cache = new Cache(Objects.requireNonNull(sharedPreferences));
+        this.app = Objects.requireNonNull(app);
+        this.deviceEnvironment = Objects.requireNonNull(deviceEnvironment);
+        this.mozillaCiConsumer = Objects.requireNonNull(mozillaCiConsumer);
+        this.githubConsumer = Objects.requireNonNull(githubConsumer);
     }
 
     @Override
@@ -84,6 +80,9 @@ public class Fetcher implements Callable<AvailableMetadata> {
             case BRAVE:
                 TrafficStats.setThreadStatsTag(BRAVE_TAG);
                 return new Brave(githubConsumer, deviceEnvironment).call();
+            case ICERAVEN:
+                TrafficStats.setThreadStatsTag(ICERAVEN_TAG);
+                return new Iceraven(githubConsumer, deviceEnvironment).call();
             default:
                 throw new ParamRuntimeException("can't create callable for unknown app %s", app);
         }

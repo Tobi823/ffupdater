@@ -96,6 +96,15 @@ public enum App {
             "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac",
             Arrays.asList(AARCH64, ARM, X86_64, X86),
             24,
+            VERSION),
+    ICERAVEN(R.string.iceraven_title,
+            R.string.iceraven_description,
+            R.string.iceraven_warning,
+            R.string.github,
+            "io.github.forkmaintainers.iceraven",
+            "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81",
+            Arrays.asList(AARCH64, ARM, X86_64, X86),
+            21,
             VERSION);
 
     private final int titleId;
