@@ -141,10 +141,16 @@ public class GithubConsumer {
         private List<Asset> assets;
 
         public String getTagName() {
+            if (tagName == null) {
+                return "";
+            }
             return tagName;
         }
 
         public String getName() {
+            if (name == null) {
+                return "";
+            }
             return name;
         }
 

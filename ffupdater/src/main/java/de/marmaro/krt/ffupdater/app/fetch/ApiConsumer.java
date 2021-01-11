@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.metadata.fetcher;
+package de.marmaro.krt.ffupdater.app.fetch;
 
 import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
@@ -23,7 +23,7 @@ import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 public class ApiConsumer {
     private static final String GZIP = "gzip";
 
-    <T> T consume(URL url, Class<T> clazz) {
+    public <T> T consume(URL url, Class<T> clazz) {
         try {
             final URLConnection urlConnection = url.openConnection();
             urlConnection.setRequestProperty("Accept-Encoding", GZIP);
