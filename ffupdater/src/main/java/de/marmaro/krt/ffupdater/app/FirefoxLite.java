@@ -5,7 +5,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -28,6 +27,7 @@ import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
  * https://api.github.com/repos/mozilla-tw/FirefoxLite/releases
  */
 public class FirefoxLite extends BaseApp {
+
     @Override
     public String getPackageName() {
         return "org.mozilla.rocket";

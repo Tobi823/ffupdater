@@ -27,6 +27,7 @@ import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  */
 public class Lockwise extends BaseApp {
+
     @Override
     public String getPackageName() {
         return "mozilla.lockbox";

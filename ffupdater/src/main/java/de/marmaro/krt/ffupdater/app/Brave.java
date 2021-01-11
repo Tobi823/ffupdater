@@ -24,7 +24,11 @@ import static de.marmaro.krt.ffupdater.device.ABI.ARM;
 import static de.marmaro.krt.ffupdater.device.ABI.X86;
 import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
 
+/**
+ * https://api.github.com/repos/brave/brave-browser/releases
+ */
 public class Brave extends BaseApp {
+
     @Override
     public String getPackageName() {
         return "com.brave.browser";

@@ -24,7 +24,11 @@ import static de.marmaro.krt.ffupdater.device.ABI.ARM;
 import static de.marmaro.krt.ffupdater.device.ABI.X86;
 import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
 
+/**
+ * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
+ */
 public class Iceraven extends BaseApp {
+
     @Override
     public String getPackageName() {
         return "io.github.forkmaintainers.iceraven";
