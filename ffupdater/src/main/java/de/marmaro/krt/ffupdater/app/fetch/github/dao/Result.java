@@ -6,10 +6,12 @@ import java.util.Objects;
 public class Result {
     private final String tagName;
     private final URL url;
+    private final long fileSizeBytes;
 
-    public Result(String tagName, URL url) {
+    public Result(String tagName, URL url, long fileSizeBytes) {
         this.tagName = Objects.requireNonNull(tagName);
         this.url = Objects.requireNonNull(url);
+        this.fileSizeBytes = fileSizeBytes;
     }
 
     public String getTagName() {
@@ -18,5 +20,9 @@ public class Result {
 
     public URL getUrl() {
         return url;
+    }
+
+    public long getFileSizeBytes() {
+        return fileSizeBytes;
     }
 }

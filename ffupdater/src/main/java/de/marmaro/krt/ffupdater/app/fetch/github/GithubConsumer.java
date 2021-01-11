@@ -69,7 +69,7 @@ public class GithubConsumer {
         for (Asset asset : release.getAssets()) {
             if (correctDownloadUrlTester.test(asset)) {
                 URL url = Utils.createURL(asset.getDownloadUrl());
-                return new Result(release.getTagName(), url);
+                return new Result(release.getTagName(), url, asset.getFileSizeBytes());
             }
         }
         throw new IllegalStateException("The valid release doesn't have an asset with the correct download url");

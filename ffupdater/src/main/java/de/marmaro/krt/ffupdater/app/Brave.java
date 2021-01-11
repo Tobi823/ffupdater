@@ -5,10 +5,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer;
@@ -19,6 +18,7 @@ import de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult;
 import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
+import static de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult.FILE_SIZE_BYTES;
 import static de.marmaro.krt.ffupdater.device.ABI.AARCH64;
 import static de.marmaro.krt.ffupdater.device.ABI.ARM;
 import static de.marmaro.krt.ffupdater.device.ABI.X86;
@@ -92,7 +92,7 @@ public class Brave extends BaseApp {
                 .setDownloadUrl(result.getUrl())
                 .setVersion(version)
                 .setDisplayVersion(version)
-                .setMetadata(new HashMap<>())
+                .setMetadata(Map.of(FILE_SIZE_BYTES, result.getFileSizeBytes()))
                 .build();
     }
 

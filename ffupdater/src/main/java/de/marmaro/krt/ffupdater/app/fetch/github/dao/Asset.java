@@ -11,6 +11,9 @@ public class Asset {
     @SerializedName("browser_download_url")
     private String downloadUrl;
 
+    @SerializedName("size")
+    private long fileSizeBytes;
+
     public String getName() {
         if (name == null) {
             return "";
@@ -25,12 +28,16 @@ public class Asset {
         return downloadUrl;
     }
 
-    @NonNull
+    public long getFileSizeBytes() {
+        return fileSizeBytes;
+    }
+
     @Override
     public String toString() {
         return "Asset{" +
                 "name='" + name + '\'' +
                 ", downloadUrl='" + downloadUrl + '\'' +
+                ", fileSizeBytes=" + fileSizeBytes +
                 '}';
     }
 }

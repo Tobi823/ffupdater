@@ -6,15 +6,16 @@ import java.util.Objects;
 
 public class UpdateCheckResult {
     public static final String FILE_HASH_SHA256 = "file_hash_sha256";
+    public static final String FILE_SIZE_BYTES = "file_size_bytes";
 
     private final boolean updateAvailable;
     private final URL downloadUrl;
     private final String version;
     private final String displayVersion;
-    private final Map<String, String> metadata;
+    private final Map<String, Object> metadata;
 
     public UpdateCheckResult(boolean updateAvailable, URL downloadUrl, String version, String displayVersion,
-                             Map<String, String> metadata) {
+                             Map<String, Object> metadata) {
         this.updateAvailable = updateAvailable;
         this.downloadUrl = Objects.requireNonNull(downloadUrl);
         this.version = Objects.requireNonNull(version);
@@ -38,7 +39,7 @@ public class UpdateCheckResult {
         return displayVersion;
     }
 
-    public Map<String, String> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return metadata;
     }
 
@@ -47,7 +48,7 @@ public class UpdateCheckResult {
         private URL downloadUrl;
         private String version;
         private String displayVersion;
-        private Map<String, String> metadata;
+        private Map<String, Object> metadata;
 
         public Builder setUpdateAvailable(boolean updateAvailable) {
             this.updateAvailable = updateAvailable;
@@ -69,7 +70,7 @@ public class UpdateCheckResult {
             return this;
         }
 
-        public Builder setMetadata(Map<String, String> metadata) {
+        public Builder setMetadata(Map<String, Object> metadata) {
             this.metadata = metadata;
             return this;
         }

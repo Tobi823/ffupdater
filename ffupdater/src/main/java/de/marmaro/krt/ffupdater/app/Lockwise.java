@@ -5,8 +5,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.R;
@@ -17,11 +17,15 @@ import de.marmaro.krt.ffupdater.app.fetch.github.dao.Result;
 import de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult;
 import de.marmaro.krt.ffupdater.device.ABI;
 
+import static de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult.FILE_SIZE_BYTES;
 import static de.marmaro.krt.ffupdater.device.ABI.AARCH64;
 import static de.marmaro.krt.ffupdater.device.ABI.ARM;
 import static de.marmaro.krt.ffupdater.device.ABI.X86;
 import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
 
+/**
+ * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
+ */
 public class Lockwise extends BaseApp {
     @Override
     public String getPackageName() {
@@ -92,7 +96,7 @@ public class Lockwise extends BaseApp {
                 .setDownloadUrl(result.getUrl())
                 .setVersion(version)
                 .setDisplayVersion(version)
-                .setMetadata(new HashMap<>())
+                .setMetadata(Map.of(FILE_SIZE_BYTES, result.getFileSizeBytes()))
                 .build();
     }
 }
