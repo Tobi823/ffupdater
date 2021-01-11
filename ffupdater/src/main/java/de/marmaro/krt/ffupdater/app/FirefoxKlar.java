@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.app;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Build;
 
 import java.util.Arrays;
@@ -54,7 +53,12 @@ public class FirefoxKlar extends BaseApp {
 
     @Override
     public Optional<String> getDisplayInstalledVersion(Context context) {
-        return getInstalledVersion(context.getPackageManager());
+        return getInstalledVersionFromPackageManager(context);
+    }
+
+    @Override
+    public Optional<String> getInstalledVersion(Context context) {
+        return getInstalledVersionFromSharedPreferences(context, "device_app_register_FIREFOX_KLAR_version_name");
     }
 
     @Override
@@ -68,7 +72,11 @@ public class FirefoxKlar extends BaseApp {
     }
 
     @Override
-    public UpdateCheckResult updateCheck(PackageManager pm, ABI abi) {
+    public UpdateCheckResult updateCheck(Context context, ABI abi) {
         return null; //TODO
+    }
+
+    @Override
+    public void installationCallback(Context context, String installedVersion) {
     }
 }

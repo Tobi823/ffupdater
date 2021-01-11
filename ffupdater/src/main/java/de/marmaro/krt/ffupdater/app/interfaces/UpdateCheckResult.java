@@ -11,15 +11,12 @@ public class UpdateCheckResult {
     private final boolean updateAvailable;
     private final URL downloadUrl;
     private final String version;
-    private final String displayVersion;
     private final Map<String, Object> metadata;
 
-    public UpdateCheckResult(boolean updateAvailable, URL downloadUrl, String version, String displayVersion,
-                             Map<String, Object> metadata) {
+    public UpdateCheckResult(boolean updateAvailable, URL downloadUrl, String version, Map<String, Object> metadata) {
         this.updateAvailable = updateAvailable;
         this.downloadUrl = Objects.requireNonNull(downloadUrl);
         this.version = Objects.requireNonNull(version);
-        this.displayVersion = Objects.requireNonNull(displayVersion);
         this.metadata = Objects.requireNonNull(metadata);
     }
 
@@ -35,10 +32,6 @@ public class UpdateCheckResult {
         return version;
     }
 
-    public String getDisplayVersion() {
-        return displayVersion;
-    }
-
     public Map<String, Object> getMetadata() {
         return metadata;
     }
@@ -47,7 +40,6 @@ public class UpdateCheckResult {
         private Boolean updateAvailable;
         private URL downloadUrl;
         private String version;
-        private String displayVersion;
         private Map<String, Object> metadata;
 
         public Builder setUpdateAvailable(boolean updateAvailable) {
@@ -65,11 +57,6 @@ public class UpdateCheckResult {
             return this;
         }
 
-        public Builder setDisplayVersion(String displayVersion) {
-            this.displayVersion = displayVersion;
-            return this;
-        }
-
         public Builder setMetadata(Map<String, Object> metadata) {
             this.metadata = metadata;
             return this;
@@ -79,9 +66,8 @@ public class UpdateCheckResult {
             Objects.requireNonNull(updateAvailable, "call setUpdateAvailable() first");
             Objects.requireNonNull(downloadUrl, "call setDownloadUrl() first");
             Objects.requireNonNull(version, "call setVersion() first");
-            Objects.requireNonNull(displayVersion, "call setDisplayVersion() first");
             Objects.requireNonNull(metadata, "call setMetadata() first");
-            return new UpdateCheckResult(updateAvailable, downloadUrl, version, displayVersion, metadata);
+            return new UpdateCheckResult(updateAvailable, downloadUrl, version, metadata);
         }
     }
 }

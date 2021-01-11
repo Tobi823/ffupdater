@@ -1,4 +1,8 @@
-package de.marmaro.krt.ffupdater.metadata.fetcher;
+package de.marmaro.krt.ffupdater.metadata.fetcher;/**
+ * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
+ * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/
+ * https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/
+ */
 
 import java.net.URL;
 import java.util.Objects;

@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.app;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Build;
 
 import java.util.Arrays;
@@ -62,7 +61,12 @@ public class Iceraven extends BaseApp {
 
     @Override
     public Optional<String> getDisplayInstalledVersion(Context context) {
-        return getInstalledVersion(context.getPackageManager());
+        return getInstalledVersionFromPackageManager(context);
+    }
+
+    @Override
+    public Optional<String> getInstalledVersion(Context context) {
+        return getInstalledVersionFromPackageManager(context);
     }
 
     @Override
@@ -76,7 +80,7 @@ public class Iceraven extends BaseApp {
     }
 
     @Override
-    public UpdateCheckResult updateCheck(PackageManager pm, ABI abi) {
+    public UpdateCheckResult updateCheck(Context context, ABI abi) {
         final Result result = new GithubConsumer.Builder()
                 .setApiConsumer(new ApiConsumer())
                 .setRepoOwner("fork-maintainers")
@@ -89,13 +93,12 @@ public class Iceraven extends BaseApp {
                 .updateCheck();
 
         final String version = result.getTagName().replace("iceraven-", "");
-        final boolean update = getInstalledVersion(pm).map(x -> !x.equals(version)).orElse(false);
+        final boolean update = getInstalledVersion(context).map(x -> !x.equals(version)).orElse(true);
 
         return new UpdateCheckResult.Builder()
                 .setUpdateAvailable(update)
                 .setDownloadUrl(result.getUrl())
                 .setVersion(version)
-                .setDisplayVersion(version)
                 .setMetadata(Map.of(FILE_SIZE_BYTES, result.getFileSizeBytes()))
                 .build();
     }
@@ -113,5 +116,9 @@ public class Iceraven extends BaseApp {
             default:
                 throw new ParamRuntimeException("Unknown ABI %s - switch fallthrough", abi);
         }
+    }
+
+    @Override
+    public void installationCallback(Context context, String installedVersion) {
     }
 }

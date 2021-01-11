@@ -31,6 +31,7 @@
         <package android:name="org.mozilla.rocket" />
         <package android:name="mozilla.lockbox" />
         <package android:name="com.brave.browser" />
+        <package android:name="io.github.forkmaintainers.iceraven" />
     </queries>
 
     <application

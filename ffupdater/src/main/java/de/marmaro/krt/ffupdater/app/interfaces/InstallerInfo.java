@@ -1,16 +1,14 @@
 package de.marmaro.krt.ffupdater.app.interfaces;
 
-import android.content.pm.PackageManager;
+import android.content.Context;
 
 import java.util.Optional;
 
 public interface InstallerInfo {
-    /**
-     * Raw installed version + check if installed
-     * @return
-     */
-    Optional<String> getInstalledVersion(PackageManager pm);
+    boolean isInstalled(Context context);
+    Optional<String> getInstalledVersion(Context context);
     String getPackageName();
     byte[] getSignatureHash();
     String getSignatureHashAsString();
+    void installationCallback(Context context, String installedVersion);
 }
