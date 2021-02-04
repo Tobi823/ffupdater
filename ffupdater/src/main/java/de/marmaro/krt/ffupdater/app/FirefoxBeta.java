@@ -5,13 +5,19 @@ import android.os.Build;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer;
+import de.marmaro.krt.ffupdater.app.fetch.mozillaci.MozillaCiConsumer;
+import de.marmaro.krt.ffupdater.app.fetch.mozillaci.dao.Result;
 import de.marmaro.krt.ffupdater.app.interfaces.BaseApp;
 import de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult;
 import de.marmaro.krt.ffupdater.device.ABI;
+import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
+import static de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult.FILE_HASH_SHA256;
 import static de.marmaro.krt.ffupdater.device.ABI.AARCH64;
 import static de.marmaro.krt.ffupdater.device.ABI.ARM;
 import static de.marmaro.krt.ffupdater.device.ABI.X86;
@@ -22,6 +28,8 @@ import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
  */
 public class FirefoxBeta extends BaseApp {
+    public static final String INSTALLED_VERSION_KEY =
+            "device_app_register_FIREFOX_BETA_version_name";
 
     @Override
     public String getPackageName() {
@@ -61,7 +69,7 @@ public class FirefoxBeta extends BaseApp {
 
     @Override
     public Optional<String> getInstalledVersion(Context context) {
-        return getInstalledVersionFromSharedPreferences(context, "device_app_register_FIREFOX_BETA_version_name");
+        return getInstalledVersionFromSharedPreferences(context, INSTALLED_VERSION_KEY);
     }
 
     @Override
@@ -76,10 +84,42 @@ public class FirefoxBeta extends BaseApp {
 
     @Override
     public UpdateCheckResult updateCheck(Context context, ABI abi) {
-        return null; //TODO
+        final MozillaCiConsumer consumer = new MozillaCiConsumer(new ApiConsumer());
+        final String abiAbbreviation = getAbiAbbreviation(abi);
+        final String task = String.format("mobile.v2.fenix.beta.latest.%s", abiAbbreviation);
+        final String apkArtifact = String.format("build/%s/target.apk", abiAbbreviation);
+        final Result result = consumer.consume(task, apkArtifact);
+
+        final String buildTimestamp = result.getTimestamp();
+        final boolean updateAvailable = getInstalledVersion(context)
+                .map(x -> !x.equals(buildTimestamp))
+                .orElse(true);
+
+        return new UpdateCheckResult.Builder()
+                .setUpdateAvailable(updateAvailable)
+                .setDownloadUrl(result.getUrl())
+                .setVersion(buildTimestamp)
+                .setMetadata(Map.of(FILE_HASH_SHA256, result.getHash()))
+                .build();
+    }
+
+    private String getAbiAbbreviation(ABI abi) {
+        switch (abi) {
+            case AARCH64:
+                return "arm64-v8a";
+            case ARM:
+                return "armeabi-v7a";
+            case X86:
+                return "x86";
+            case X86_64:
+                return "x86_64";
+            default:
+                throw new ParamRuntimeException("unknown ABI %s - switch fallthrough", abi);
+        }
     }
 
     @Override
     public void installationCallback(Context context, String installedVersion) {
+        setInstalledVersionInSharedPreferences(context, INSTALLED_VERSION_KEY, installedVersion);
     }
 }

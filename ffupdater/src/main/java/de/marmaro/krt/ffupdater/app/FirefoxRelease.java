@@ -28,9 +28,8 @@ import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
  * https://www.apkmirror.com/apk/mozilla/firefox/
  */
 public class FirefoxRelease extends BaseApp {
-    public static final String TASK_NAME = "mobile.v2.fenix.release.latest.%s";
-    public static final String APK_ARTIFACT = "build/%s/target.apk";
-    public static final String INSTALLED_VERSION_KEY = "device_app_register_FIREFOX_RELEASE_version_name";
+    public static final String INSTALLED_VERSION_KEY =
+            "device_app_register_FIREFOX_RELEASE_version_name";
 
     @Override
     public String getPackageName() {
@@ -87,17 +86,19 @@ public class FirefoxRelease extends BaseApp {
     public UpdateCheckResult updateCheck(Context context, ABI abi) {
         final MozillaCiConsumer consumer = new MozillaCiConsumer(new ApiConsumer());
         final String abiAbbreviation = getAbiAbbreviation(abi);
-        final String task = String.format(TASK_NAME, abiAbbreviation);
-        final String apkArtifact = String.format(APK_ARTIFACT, abiAbbreviation);
+        final String task = String.format("mobile.v2.fenix.release.latest.%s", abiAbbreviation);
+        final String apkArtifact = String.format("build/%s/target.apk", abiAbbreviation);
         final Result result = consumer.consume(task, apkArtifact);
 
-        final String version = result.getTimestamp();
-        final boolean update = getInstalledVersion(context).map(x -> !x.equals(version)).orElse(true);
+        final String buildTimestamp = result.getTimestamp();
+        final boolean updateAvailable = getInstalledVersion(context)
+                .map(x -> !x.equals(buildTimestamp))
+                .orElse(true);
 
         return new UpdateCheckResult.Builder()
-                .setUpdateAvailable(update)
+                .setUpdateAvailable(updateAvailable)
                 .setDownloadUrl(result.getUrl())
-                .setVersion(version)
+                .setVersion(buildTimestamp)
                 .setMetadata(Map.of(FILE_HASH_SHA256, result.getHash()))
                 .build();
     }
