@@ -1,6 +1,14 @@
 package de.marmaro.krt.ffupdater.app;
 
-import de.marmaro.krt.ffupdater.app.interfaces.BaseApp;
+import de.marmaro.krt.ffupdater.app.impl.Brave;
+import de.marmaro.krt.ffupdater.app.impl.FirefoxBeta;
+import de.marmaro.krt.ffupdater.app.impl.FirefoxFocus;
+import de.marmaro.krt.ffupdater.app.impl.FirefoxKlar;
+import de.marmaro.krt.ffupdater.app.impl.FirefoxLite;
+import de.marmaro.krt.ffupdater.app.impl.FirefoxNightly;
+import de.marmaro.krt.ffupdater.app.impl.FirefoxRelease;
+import de.marmaro.krt.ffupdater.app.impl.Iceraven;
+import de.marmaro.krt.ffupdater.app.impl.Lockwise;
 
 public enum AppList {
     FIREFOX_RELEASE(new FirefoxRelease()),
