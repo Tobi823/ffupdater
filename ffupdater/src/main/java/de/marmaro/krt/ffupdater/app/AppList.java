@@ -21,13 +21,13 @@ public enum AppList {
     BRAVE(new Brave()),
     ICERAVEN(new Iceraven());
 
-    private final BaseApp baseApp;
+    private final App baseApp;
 
-    AppList(BaseApp baseApp) {
-        this.baseApp = baseApp;
+    AppList(App baseApp) {
+        this.baseApp = new CacheWrapper(baseApp);
     }
 
-    public BaseApp getBaseApp() {
+    public App getBaseApp() {
         return baseApp;
     }
 }

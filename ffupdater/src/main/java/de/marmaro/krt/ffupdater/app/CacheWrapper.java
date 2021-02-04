@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.device.ABI;
 
-public class CacheWrapper implements App {
+class CacheWrapper implements App {
     public static final long CACHE_TIME = Duration.ofMinutes(10).toMillis();
 
     private final App app;
