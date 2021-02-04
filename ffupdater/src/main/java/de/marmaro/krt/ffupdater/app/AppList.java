@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app;
 
 import de.marmaro.krt.ffupdater.app.interfaces.BaseApp;
 
-public enum App {
+public enum AppList {
     FIREFOX_RELEASE(new FirefoxRelease()),
     FIREFOX_BETA(new FirefoxBeta()),
     FIREFOX_NIGHTLY(new FirefoxNightly()),
@@ -15,7 +15,7 @@ public enum App {
 
     private final BaseApp baseApp;
 
-    App(BaseApp baseApp) {
+    AppList(BaseApp baseApp) {
         this.baseApp = baseApp;
     }
 

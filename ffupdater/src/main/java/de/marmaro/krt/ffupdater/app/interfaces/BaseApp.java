@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.app.interfaces.Display;
 import de.marmaro.krt.ffupdater.app.interfaces.InstallerInfo;
 import de.marmaro.krt.ffupdater.app.interfaces.UpdateCheck;
 
-public abstract class BaseApp implements Display, InstallerInfo, Compatibility, UpdateCheck {
+public abstract class BaseApp implements App {
 
     @Override
     public boolean isInstalled(Context context) {
