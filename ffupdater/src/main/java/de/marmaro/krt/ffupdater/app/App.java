@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater.app;
 
+import de.marmaro.krt.ffupdater.app.interfaces.BaseApp;
+
 public enum App {
     FIREFOX_RELEASE(new FirefoxRelease()),
     FIREFOX_BETA(new FirefoxBeta()),

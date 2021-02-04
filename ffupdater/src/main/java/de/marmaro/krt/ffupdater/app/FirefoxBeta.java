@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import de.marmaro.krt.ffupdater.R;
+import de.marmaro.krt.ffupdater.app.interfaces.BaseApp;
 import de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult;
 import de.marmaro.krt.ffupdater.device.ABI;
 

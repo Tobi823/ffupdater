@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer;
 import de.marmaro.krt.ffupdater.app.fetch.github.GithubConsumer;
 import de.marmaro.krt.ffupdater.app.fetch.github.dao.Asset;
 import de.marmaro.krt.ffupdater.app.fetch.github.dao.Result;
+import de.marmaro.krt.ffupdater.app.interfaces.BaseApp;
 import de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult;
 import de.marmaro.krt.ffupdater.device.ABI;
 

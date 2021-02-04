@@ -12,6 +12,7 @@ import de.marmaro.krt.ffupdater.R;
 import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer;
 import de.marmaro.krt.ffupdater.app.fetch.mozillaci.MozillaCiConsumer;
 import de.marmaro.krt.ffupdater.app.fetch.mozillaci.dao.Result;
+import de.marmaro.krt.ffupdater.app.interfaces.BaseApp;
 import de.marmaro.krt.ffupdater.app.interfaces.UpdateCheckResult;
 import de.marmaro.krt.ffupdater.device.ABI;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
@@ -93,7 +94,6 @@ public class FirefoxRelease extends BaseApp {
         final String version = result.getTimestamp();
         final boolean update = getInstalledVersion(context).map(x -> !x.equals(version)).orElse(true);
 
-        //callback hinzufügen
         return new UpdateCheckResult.Builder()
                 .setUpdateAvailable(update)
                 .setDownloadUrl(result.getUrl())

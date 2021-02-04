@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.app;
+package de.marmaro.krt.ffupdater.app.interfaces;
 
 import android.content.Context;
 import android.content.SharedPreferences;
