@@ -1,4 +1,3 @@
-package de.marmaro.krt.ffupdater.app;
+package de.marmaro.krt.ffupdater.app
 
-public interface App extends Display, InstallerInfo, Compatibility, UpdateCheck {
-}
+interface App : Display, InstallerInfo, Compatibility, UpdateCheck

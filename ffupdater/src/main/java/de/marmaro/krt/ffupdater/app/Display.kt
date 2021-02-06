@@ -1,17 +1,12 @@
-package de.marmaro.krt.ffupdater.app;
+package de.marmaro.krt.ffupdater.app
 
-import android.content.Context;
+import android.content.Context
+import java.util.*
 
-import java.util.Optional;
-
-public interface Display {
-    String getDisplayTitle(Context context);
-
-    String getDisplayDescription(Context context);
-
-    Optional<String> getDisplayWarning(Context context);
-
-    Optional<String> getDisplayInstalledVersion(Context context);
-
-    String getDisplayDownloadSource(Context context);
+interface Display {
+    fun getDisplayTitle(context: Context): String
+    fun getDisplayDescription(context: Context): String
+    fun getDisplayWarning(context: Context): String?
+    fun getDisplayInstalledVersion(context: Context): String?
+    fun getDisplayDownloadSource(context: Context): String
 }

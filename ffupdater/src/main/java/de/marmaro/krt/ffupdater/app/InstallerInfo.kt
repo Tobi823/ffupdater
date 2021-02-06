@@ -1,14 +1,13 @@
-package de.marmaro.krt.ffupdater.app;
+package de.marmaro.krt.ffupdater.app
 
-import android.content.Context;
+import android.content.Context
+import java.util.*
 
-import java.util.Optional;
-
-public interface InstallerInfo {
-    boolean isInstalled(Context context);
-    Optional<String> getInstalledVersion(Context context);
-    String getPackageName();
-    byte[] getSignatureHash();
-    String getSignatureHashAsString();
-    void installationCallback(Context context, String installedVersion);
+interface InstallerInfo {
+    fun isInstalled(context: Context): Boolean
+    fun getInstalledVersion(context: Context): Optional<String?>?
+    fun packageName(): String?
+    fun signatureHash(): ByteArray?
+    fun signatureHashAsString(): String?
+    fun installationCallback(context: Context, installedVersion: String?)
 }

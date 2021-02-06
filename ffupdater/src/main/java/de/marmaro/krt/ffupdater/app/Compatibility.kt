@@ -1,10 +1,8 @@
-package de.marmaro.krt.ffupdater.app;
+package de.marmaro.krt.ffupdater.app
 
-import java.util.List;
+import de.marmaro.krt.ffupdater.device.ABI
 
-import de.marmaro.krt.ffupdater.device.ABI;
-
-public interface Compatibility {
-    int getMinApiLevel();
-    List<ABI> getSupportedAbi();
+interface Compatibility {
+    fun minApiLevel(): Int
+    fun supportedAbi(): List<ABI>
 }
