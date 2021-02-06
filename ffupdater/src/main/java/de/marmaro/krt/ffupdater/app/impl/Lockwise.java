@@ -80,7 +80,7 @@ public class Lockwise extends BaseApp {
     }
 
     @Override
-    public UpdateCheckResult updateCheck(Context context, ABI abi) {
+    public UpdateCheckResult updateCheckBlocking(Context context, ABI abi) {
         final Result result = new GithubConsumer.Builder()
                 .setApiConsumer(new ApiConsumer())
                 .setRepoOwner("mozilla-lockwise")

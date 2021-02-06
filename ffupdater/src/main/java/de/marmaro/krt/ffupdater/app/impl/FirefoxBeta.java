@@ -83,7 +83,7 @@ public class FirefoxBeta extends BaseApp {
     }
 
     @Override
-    public UpdateCheckResult updateCheck(Context context, ABI abi) {
+    public UpdateCheckResult updateCheckBlocking(Context context, ABI abi) {
         final MozillaCiConsumer consumer = new MozillaCiConsumer(new ApiConsumer());
         final String abiAbbreviation = getAbiAbbreviation(abi);
         final String task = String.format("mobile.v2.fenix.beta.latest.%s", abiAbbreviation);

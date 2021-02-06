@@ -20,10 +20,10 @@ class CacheWrapper implements App {
     }
 
     @Override
-    public UpdateCheckResult updateCheck(Context context, ABI abi) {
+    public UpdateCheckResult updateCheckBlocking(Context context, ABI abi) {
         final long cacheAge = System.currentTimeMillis() - cacheTimestamp;
         if (cacheAge > CACHE_TIME || cache == null) {
-            cache = app.updateCheck(context, abi);
+            cache = app.updateCheckBlocking(context, abi);
             cacheTimestamp = System.currentTimeMillis();
         }
         return cache;
