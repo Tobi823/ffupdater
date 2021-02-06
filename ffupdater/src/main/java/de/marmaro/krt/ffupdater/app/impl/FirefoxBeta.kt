@@ -1,125 +1,76 @@
-package de.marmaro.krt.ffupdater.app.impl;
+package de.marmaro.krt.ffupdater.app.impl
 
-import android.content.Context;
-import android.os.Build;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer;
-import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer;
-import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.dao.Result;
-import de.marmaro.krt.ffupdater.app.BaseApp;
-import de.marmaro.krt.ffupdater.app.UpdateCheckResult;
-import de.marmaro.krt.ffupdater.device.ABI;
-import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
-
-import static de.marmaro.krt.ffupdater.app.UpdateCheckResult.FILE_HASH_SHA256;
-import static de.marmaro.krt.ffupdater.device.ABI.AARCH64;
-import static de.marmaro.krt.ffupdater.device.ABI.ARM;
-import static de.marmaro.krt.ffupdater.device.ABI.X86;
-import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
+import android.content.Context
+import android.os.Build
+import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
+import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
+import de.marmaro.krt.ffupdater.device.ABI
+import kotlinx.coroutines.Deferred
+import java.util.*
+import java.util.function.Function
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
  */
-public class FirefoxBeta extends BaseApp {
-    public static final String INSTALLED_VERSION_KEY =
-            "device_app_register_FIREFOX_BETA_version_name";
+class FirefoxBeta : BaseApp() {
+    override val packageName = "org.mozilla.firefox_beta"
 
-    @Override
-    public String getPackageName() {
-        return "org.mozilla.firefox_beta";
+    override fun getDisplayTitle(context: Context): String {
+        return context.getString(R.string.firefox_beta_title)
     }
 
-    @Override
-    public String getDisplayTitle(Context context) {
-        return context.getString(R.string.firefox_beta_title);
+    override fun getDisplayDescription(context: Context): String {
+        return context.getString(R.string.firefox_beta_description)
     }
 
-    @Override
-    public String getDisplayDescription(Context context) {
-        return context.getString(R.string.firefox_beta_description);
+    override fun getDisplayWarning(context: Context): String? {
+        return context.getString(R.string.firefox_beta_warning)
     }
 
-    @Override
-    public Optional<String> getDisplayWarning(Context context) {
-        return Optional.of(context.getString(R.string.firefox_beta_warning));
+    @Suppress("SpellCheckingInspection")
+    override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
+
+    override fun getDisplayDownloadSource(context: Context): String {
+        return context.getString(R.string.mozilla_ci)
     }
 
-    @Override
-    @SuppressWarnings("SpellCheckingInspection")
-    public String getSignatureHashAsString() {
-        return "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04";
+    override fun getDisplayInstalledVersion(context: Context): String? {
+        return getInstalledVersionFromPackageManager(context)
     }
 
-    @Override
-    public String getDisplayDownloadSource(Context context) {
-        return context.getString(R.string.mozilla_ci);
+    override fun getInstalledVersion(context: Context): String? {
+        return getInstalledVersionFromSharedPreferences(context, INSTALLED_VERSION_KEY)
     }
 
-    @Override
-    public Optional<String> getDisplayInstalledVersion(Context context) {
-        return getInstalledVersionFromPackageManager(context);
-    }
+    override val minApiLevel: Int = Build.VERSION_CODES.LOLLIPOP
+    override val supportedAbi: List<ABI> = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
-    @Override
-    public Optional<String> getInstalledVersion(Context context) {
-        return getInstalledVersionFromSharedPreferences(context, INSTALLED_VERSION_KEY);
-    }
-
-    @Override
-    public int getMinApiLevel() {
-        return Build.VERSION_CODES.LOLLIPOP;
-    }
-
-    @Override
-    public List<ABI> getSupportedAbi() {
-        return Arrays.asList(AARCH64, ARM, X86_64, X86);
-    }
-
-    @Override
-    public UpdateCheckResult updateCheckBlocking(Context context, ABI abi) {
-        final MozillaCiConsumer consumer = new MozillaCiConsumer(new ApiConsumer());
-        final String abiAbbreviation = getAbiAbbreviation(abi);
-        final String task = String.format("mobile.v2.fenix.beta.latest.%s", abiAbbreviation);
-        final String apkArtifact = String.format("build/%s/target.apk", abiAbbreviation);
-        final Result result = consumer.consume(task, apkArtifact);
-
-        final String buildTimestamp = result.getTimestamp();
-        final boolean updateAvailable = getInstalledVersion(context)
-                .map(x -> !x.equals(buildTimestamp))
-                .orElse(true);
-
-        return new UpdateCheckResult.Builder()
-                .setUpdateAvailable(updateAvailable)
-                .setDownloadUrl(result.getUrl())
-                .setVersion(buildTimestamp)
-                .setMetadata(Map.of(FILE_HASH_SHA256, result.getHash()))
-                .build();
-    }
-
-    private String getAbiAbbreviation(ABI abi) {
-        switch (abi) {
-            case AARCH64:
-                return "arm64-v8a";
-            case ARM:
-                return "armeabi-v7a";
-            case X86:
-                return "x86";
-            case X86_64:
-                return "x86_64";
-            default:
-                throw new ParamRuntimeException("unknown ABI %s - switch fallthrough", abi);
+    override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
+        val abiString: String = when (abi) {
+            ABI.AARCH64 -> "arm64-v8a"
+            ABI.ARM -> "armeabi-v7a"
+            ABI.X86 -> "x86"
+            ABI.X86_64 -> "x86_64"
         }
+        val result = MozillaCiConsumer(ApiConsumer()).consume(
+                "mobile.v2.fenix.beta.latest.$abiString",
+                "build/$abiString/target.apk")
+        return UpdateCheckResult(
+                isUpdateAvailable = getInstalledVersion(context) != result.timestamp,
+                downloadUrl = result.url,
+                version = result.timestamp,
+                metadata = mapOf(UpdateCheckResult.FILE_HASH_SHA256 to result.hash))
     }
 
-    @Override
-    public void installationCallback(Context context, String installedVersion) {
-        setInstalledVersionInSharedPreferences(context, INSTALLED_VERSION_KEY, installedVersion);
+    override fun installationCallback(context: Context, installedVersion: String) {
+        setInstalledVersionInSharedPreferences(context, INSTALLED_VERSION_KEY, installedVersion)
+    }
+
+    companion object {
+        const val INSTALLED_VERSION_KEY = "device_app_register_FIREFOX_BETA_version_name"
     }
 }

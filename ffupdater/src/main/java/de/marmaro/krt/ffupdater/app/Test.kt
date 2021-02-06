@@ -1,14 +1,20 @@
 package de.marmaro.krt.ffupdater.app
 
-import de.marmaro.krt.ffupdater.device.ABI
 import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 
-class Test(
-        private var app: App
-) {
-    private var cache: Deferred<UpdateCheckResult>? = null
+class Test {
+    fun main(args: Array<String>) {
+        println("Hello, world!")
+    }
+//    fun test() {
+//        val test = UpdateCheckResult(
+//                isUpdateAvailable = false,
+//                downloadUrl = URL("https://"),
+//                version = "hi",
+//                metadata = Collections.emptyMap()
+//                )
+//        test.version = "a"
+//    }
 //    fun test(): Deferred<UpdateCheckResult> {
 //        if (cache != null && cache!!.isActive) {
 //            return cache!!

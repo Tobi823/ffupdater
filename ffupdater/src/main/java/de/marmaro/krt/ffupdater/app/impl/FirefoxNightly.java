@@ -84,7 +84,7 @@ public class FirefoxNightly extends BaseApp {
     }
 
     @Override
-    public UpdateCheckResult updateCheckBlocking(Context context, ABI abi) {
+    public UpdateCheckResult updateCheck(Context context, ABI abi) {
         final MozillaCiConsumer consumer = new MozillaCiConsumer(new ApiConsumer());
         final String abiAbbreviation = getAbiAbbreviation(abi);
         final String task = String.format(TASK_NAME, abiAbbreviation);

@@ -1,52 +1,42 @@
-package de.marmaro.krt.ffupdater.app;
+package de.marmaro.krt.ffupdater.app
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.Context
+import android.content.pm.PackageManager
+import androidx.preference.PreferenceManager
+import de.marmaro.krt.ffupdater.device.ABI
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 
-import androidx.preference.PreferenceManager;
-
-import org.apache.commons.codec.binary.ApacheCodecHex;
-
-import java.util.Optional;
-
-public abstract class BaseApp implements App {
-
-    @Override
-    public boolean isInstalled(Context context) {
-        try {
-            context.getPackageManager().getPackageInfo(getPackageName(), 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
+abstract class BaseApp : App {
+    override fun isInstalled(context: Context): Boolean {
+        return try {
+            context.packageManager.getPackageInfo(packageName, 0)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
         }
     }
 
-    @Override
-    public byte[] getSignatureHash() {
-        return ApacheCodecHex.decodeHex(getSignatureHashAsString());
-    }
-
-    protected Optional<String> getInstalledVersionFromPackageManager(Context context) {
-        try {
-            final PackageManager pm = context.getPackageManager();
-            final PackageInfo packageInfo = pm.getPackageInfo(getPackageName(), 0);
-            return Optional.of(packageInfo.versionName);
-        } catch (PackageManager.NameNotFoundException e) {
-            return Optional.empty();
+    protected fun getInstalledVersionFromPackageManager(context: Context): String? {
+        return try {
+            context.packageManager.getPackageInfo(packageName, 0).versionName
+        } catch (e: PackageManager.NameNotFoundException) {
+            null
         }
     }
 
-    protected Optional<String> getInstalledVersionFromSharedPreferences(Context context, String key) {
-        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return Optional.ofNullable(preferences.getString(key, null));
+    protected fun getInstalledVersionFromSharedPreferences(context: Context, key: String): String? {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        return preferences.getString(key, null)
     }
 
-    protected void setInstalledVersionInSharedPreferences(Context context, String key, String value) {
-        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        preferences.edit()
-                .putString(key, value)
-                .apply();
+    protected fun setInstalledVersionInSharedPreferences(context: Context, key: String, value: String) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        preferences.edit().putString(key, value).apply()
+    }
+
+    override fun updateCheckAsync(context: Context, abi: ABI): Deferred<UpdateCheckResult> {
+        return GlobalScope.async { updateCheck(context, abi) }
     }
 }

@@ -5,9 +5,8 @@ import java.util.*
 
 interface InstallerInfo {
     fun isInstalled(context: Context): Boolean
-    fun getInstalledVersion(context: Context): Optional<String?>?
-    fun packageName(): String?
-    fun signatureHash(): ByteArray?
-    fun signatureHashAsString(): String?
-    fun installationCallback(context: Context, installedVersion: String?)
+    fun getInstalledVersion(context: Context): String?
+    val packageName: String
+    val signatureHash: String
+    fun installationCallback(context: Context, installedVersion: String)
 }

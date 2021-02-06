@@ -81,7 +81,7 @@ public class FirefoxFocus extends BaseApp {
     }
 
     @Override
-    public UpdateCheckResult updateCheckBlocking(Context context, ABI abi) {
+    public UpdateCheckResult updateCheck(Context context, ABI abi) {
         final MozillaCiConsumer consumer = new MozillaCiConsumer(new ApiConsumer());
         final Result result = consumer.consume("project.mobile.focus.release.latest",
                 String.format("app-focus-%s-release-unsigned.apk", getAbiAbbreviation(abi)));
