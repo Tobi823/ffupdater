@@ -1,9 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.github
 
+import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Asset
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Release
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Result
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException
 import java.net.URL
 import java.util.*
@@ -46,3 +44,26 @@ class GithubConsumer(private val apiConsumer: ApiConsumer,
                 .let { return Result(release.tagName, URL(it.downloadUrl), it.fileSizeBytes) }
     }
 }
+
+data class Release(
+        @SerializedName("tag_name")
+        val tagName: String,
+        @SerializedName("name")
+        val name: String,
+        @SerializedName("prerelease")
+        val isPreRelease: Boolean,
+        @SerializedName("assets")
+        val assets: List<Asset>)
+
+data class Asset(
+        @SerializedName("name")
+        val name: String,
+        @SerializedName("browser_download_url")
+        val downloadUrl: String,
+        @SerializedName("size")
+        val fileSizeBytes: Long)
+
+data class Result(
+        val tagName: String,
+        val url: URL,
+        val fileSizeBytes: Long)
