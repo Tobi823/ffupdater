@@ -52,7 +52,7 @@ class Brave : BaseApp() {
                 correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheck()
         val version = result.tagName.replace("v", "")
-        val updateAvailable = getInstalledVersion(context)?.let { it != version} ?: true
+        val updateAvailable = getInstalledVersion(context) != version
         return UpdateCheckResult(
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
