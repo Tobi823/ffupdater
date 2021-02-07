@@ -16,27 +16,16 @@ import java.util.function.Function
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
  */
+@Suppress("SpellCheckingInspection")
 class FirefoxBeta : BaseApp() {
     override val packageName = "org.mozilla.firefox_beta"
-
-    override fun getDisplayTitle(context: Context): String {
-        return context.getString(R.string.firefox_beta_title)
-    }
-
-    override fun getDisplayDescription(context: Context): String {
-        return context.getString(R.string.firefox_beta_description)
-    }
-
-    override fun getDisplayWarning(context: Context): String? {
-        return context.getString(R.string.firefox_beta_warning)
-    }
-
-    @Suppress("SpellCheckingInspection")
+    override val displayTitle = R.string.firefox_beta_title
+    override val displayDescription = R.string.firefox_beta_description
+    override val displayWarning = R.string.firefox_beta_warning
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
-
-    override fun getDisplayDownloadSource(context: Context): String {
-        return context.getString(R.string.mozilla_ci)
-    }
+    override val displayDownloadSource = R.string.mozilla_ci
+    override val minApiLevel: Int = Build.VERSION_CODES.LOLLIPOP
+    override val supportedAbi: List<ABI> = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String? {
         return getInstalledVersionFromPackageManager(context)
@@ -46,9 +35,6 @@ class FirefoxBeta : BaseApp() {
         return getInstalledVersionFromSharedPreferences(context, INSTALLED_VERSION_KEY)
     }
 
-    override val minApiLevel: Int = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbi: List<ABI> = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
-
     override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
         val abiString: String = when (abi) {
             ABI.AARCH64 -> "arm64-v8a"
@@ -56,9 +42,9 @@ class FirefoxBeta : BaseApp() {
             ABI.X86 -> "x86"
             ABI.X86_64 -> "x86_64"
         }
-        val result = MozillaCiConsumer(ApiConsumer()).consume(
-                "mobile.v2.fenix.beta.latest.$abiString",
-                "build/$abiString/target.apk")
+        val task = "mobile.v2.fenix.beta.latest.$abiString"
+        val apkArtifact = "build/$abiString/target.apk"
+        val result = MozillaCiConsumer(ApiConsumer()).consume(task, apkArtifact)
         return UpdateCheckResult(
                 isUpdateAvailable = getInstalledVersion(context) != result.timestamp,
                 downloadUrl = result.url,

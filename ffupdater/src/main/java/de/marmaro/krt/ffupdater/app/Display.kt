@@ -4,9 +4,9 @@ import android.content.Context
 import java.util.*
 
 interface Display {
-    fun getDisplayTitle(context: Context): String
-    fun getDisplayDescription(context: Context): String
-    fun getDisplayWarning(context: Context): String?
+    val displayTitle: Int
+    val displayDescription: Int
+    val displayWarning: Int
     fun getDisplayInstalledVersion(context: Context): String?
-    fun getDisplayDownloadSource(context: Context): String
+    val displayDownloadSource: Int
 }
