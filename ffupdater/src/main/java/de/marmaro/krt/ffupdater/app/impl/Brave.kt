@@ -57,8 +57,7 @@ class Brave : BaseApp() {
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
-                metadata = mapOf(FILE_SIZE_BYTES to result.fileSizeBytes)
-        )
+                metadata = mapOf(FILE_SIZE_BYTES to result.fileSizeBytes))
     }
 
     override fun installationCallback(context: Context, installedVersion: String) {}

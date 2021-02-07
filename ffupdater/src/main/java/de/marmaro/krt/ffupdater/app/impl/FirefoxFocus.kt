@@ -34,13 +34,13 @@ class FirefoxFocus : BaseApp() {
     }
 
     override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
-        val consumer = MozillaCiConsumer(ApiConsumer())
         val abiString = when (abi) {
             ABI.AARCH64 -> "aarch64"
             ABI.ARM -> "arm"
             ABI.X86, ABI.X86_64 -> throw ParamRuntimeException("unsupported ABI %s", abi)
         }
         val apkArtifact = "app-focus-$abiString-release-unsigned.apk"
+        val consumer = MozillaCiConsumer(ApiConsumer())
         val result = consumer.consume("project.mobile.focus.release.latest", apkArtifact)
         val version = result.timestamp
         val updateAvailable = getInstalledVersion(context) != version
@@ -48,8 +48,7 @@ class FirefoxFocus : BaseApp() {
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
-                metadata = mapOf(FILE_HASH_SHA256 to result.hash)
-        )
+                metadata = mapOf(FILE_HASH_SHA256 to result.hash))
     }
 
     override fun installationCallback(context: Context, installedVersion: String) {
