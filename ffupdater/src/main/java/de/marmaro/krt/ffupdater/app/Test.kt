@@ -1,28 +1,15 @@
 package de.marmaro.krt.ffupdater.app
 
-import kotlinx.coroutines.Deferred
+import de.marmaro.krt.ffupdater.app.impl.Brave
 
 class Test {
     fun main(args: Array<String>) {
         println("Hello, world!")
     }
-//    fun test() {
-//        val test = UpdateCheckResult(
-//                isUpdateAvailable = false,
-//                downloadUrl = URL("https://"),
-//                version = "hi",
-//                metadata = Collections.emptyMap()
-//                )
-//        test.version = "a"
-//    }
-//    fun test(): Deferred<UpdateCheckResult> {
-//        if (cache != null && cache!!.isActive) {
-//            return cache!!
-//        }
-//        cache = GlobalScope.async {
-//            app.updateCheckBlocking(null, ABI.AARCH64)
-//        }
-//        return cache!!
-//        // Wrapper, damit immer nur ein Deferred erstellt wird
-//    }
+
+    fun test() {
+        val app = Brave()
+        val wrapper: App = CacheWrapper(app)
+        wrapper.
+    }
 }
