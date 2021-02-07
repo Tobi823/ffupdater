@@ -5,25 +5,22 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.UpdateCheckResult.Companion.FILE_HASH_SHA256
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
-import kotlinx.coroutines.Deferred
-import java.util.*
-import java.util.function.Function
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
  */
-@Suppress("SpellCheckingInspection")
 class FirefoxBeta : BaseApp() {
     override val packageName = "org.mozilla.firefox_beta"
     override val displayTitle = R.string.firefox_beta_title
     override val displayDescription = R.string.firefox_beta_description
     override val displayWarning = R.string.firefox_beta_warning
-    override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
     override val displayDownloadSource = R.string.mozilla_ci
+    override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
     override val minApiLevel: Int = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbi: List<ABI> = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
@@ -45,11 +42,12 @@ class FirefoxBeta : BaseApp() {
         val task = "mobile.v2.fenix.beta.latest.$abiString"
         val apkArtifact = "build/$abiString/target.apk"
         val result = MozillaCiConsumer(ApiConsumer()).consume(task, apkArtifact)
+        val updateAvailable = getInstalledVersion(context) != result.timestamp
         return UpdateCheckResult(
-                isUpdateAvailable = getInstalledVersion(context) != result.timestamp,
+                isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = result.timestamp,
-                metadata = mapOf(UpdateCheckResult.FILE_HASH_SHA256 to result.hash))
+                metadata = mapOf(FILE_HASH_SHA256 to result.hash))
     }
 
     override fun installationCallback(context: Context, installedVersion: String) {
