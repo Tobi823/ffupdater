@@ -6,15 +6,15 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
+import de.marmaro.krt.ffupdater.app.impl.fetch.github.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Asset
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Release
+import de.marmaro.krt.ffupdater.app.impl.fetch.github.Release
 import de.marmaro.krt.ffupdater.device.ABI
 
 /**
  * https://api.github.com/repos/mozilla-tw/FirefoxLite/releases
  */
-class FirefoxLite : BaseApp() {
+class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val packageName = "org.mozilla.rocket"
     override val displayTitle = R.string.firefox_lite_title
     override val displayDescription = R.string.firefox_lite_description
@@ -34,7 +34,7 @@ class FirefoxLite : BaseApp() {
 
     override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
         val githubConsumer = GithubConsumer(
-                apiConsumer = ApiConsumer(),
+                apiConsumer = apiConsumer,
                 repoOwner = "mozilla-tw",
                 repoName = "FirefoxLite",
                 resultsPerPage = 5,

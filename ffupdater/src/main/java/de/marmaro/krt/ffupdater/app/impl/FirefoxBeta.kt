@@ -14,7 +14,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
  */
-class FirefoxBeta : BaseApp() {
+class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val packageName = "org.mozilla.firefox_beta"
     override val displayTitle = R.string.firefox_beta_title
     override val displayDescription = R.string.firefox_beta_description
@@ -39,9 +39,11 @@ class FirefoxBeta : BaseApp() {
             ABI.X86 -> "x86"
             ABI.X86_64 -> "x86_64"
         }
-        val task = "mobile.v2.fenix.beta.latest.$abiString"
-        val apkArtifact = "build/$abiString/target.apk"
-        val result = MozillaCiConsumer(ApiConsumer()).consume(task, apkArtifact)
+        val mozillaCiConsumer = MozillaCiConsumer(
+                apiConsumer = apiConsumer,
+                task = "mobile.v2.fenix.beta.latest.$abiString",
+                apkArtifact = "build/$abiString/target.apk")
+        val result = mozillaCiConsumer.updateCheck()
         val version = result.timestamp
         val updateAvailable = getInstalledVersion(context) != version
         return UpdateCheckResult(

@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.utils.ParamRuntimeException
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/
  */
-class FirefoxFocus : BaseApp() {
+class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val packageName = "org.mozilla.focus"
     override val displayTitle = R.string.firefox_focus_title
     override val displayDescription = R.string.firefox_focus_description
@@ -39,9 +39,11 @@ class FirefoxFocus : BaseApp() {
             ABI.ARM -> "arm"
             ABI.X86, ABI.X86_64 -> throw ParamRuntimeException("unsupported ABI %s", abi)
         }
-        val apkArtifact = "app-focus-$abiString-release-unsigned.apk"
-        val consumer = MozillaCiConsumer(ApiConsumer())
-        val result = consumer.consume("project.mobile.focus.release.latest", apkArtifact)
+        val mozillaCiConsumer = MozillaCiConsumer(
+                apiConsumer = apiConsumer,
+                task = "project.mobile.focus.release.latest",
+                apkArtifact = "app-focus-$abiString-release-unsigned.apk")
+        val result = mozillaCiConsumer.updateCheck()
         val version = result.timestamp
         val updateAvailable = getInstalledVersion(context) != version
         return UpdateCheckResult(

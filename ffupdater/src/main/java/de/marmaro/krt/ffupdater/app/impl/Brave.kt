@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 /**
  * https://api.github.com/repos/brave/brave-browser/releases
  */
-class Brave : BaseApp() {
+class Brave(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val packageName = "com.brave.browser"
     override val displayTitle = R.string.brave_title
     override val displayDescription = R.string.brave_description
@@ -42,7 +42,7 @@ class Brave : BaseApp() {
             ABI.X86_64 -> "BraveMonox64.apk"
         }
         val githubConsumer = GithubConsumer(
-                apiConsumer = ApiConsumer(),
+                apiConsumer = apiConsumer,
                 repoOwner = "brave",
                 repoName = "brave-browser",
                 resultsPerPage = 20,

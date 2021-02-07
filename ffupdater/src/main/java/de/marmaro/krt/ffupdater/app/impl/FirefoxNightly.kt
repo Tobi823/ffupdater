@@ -13,7 +13,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
  */
-class FirefoxNightly : BaseApp() {
+class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val packageName = "org.mozilla.fenix"
     override val displayTitle = R.string.firefox_nightly_title
     override val displayDescription = R.string.firefox_nightly_description
@@ -38,10 +38,11 @@ class FirefoxNightly : BaseApp() {
             ABI.X86 -> "x86"
             ABI.X86_64 -> "x86_64"
         }
-        val task = "mobile.v2.fenix.nightly.latest.$abiString"
-        val apkArtifact = "build/$abiString/target.apk"
-        val consumer = MozillaCiConsumer(ApiConsumer())
-        val result = consumer.consume(task, apkArtifact)
+        val mozillaCiConsumer = MozillaCiConsumer(
+                apiConsumer = apiConsumer,
+                task = "mobile.v2.fenix.nightly.latest.$abiString",
+                apkArtifact = "build/$abiString/target.apk")
+        val result = mozillaCiConsumer.updateCheck()
         val version = result.timestamp
         val updateAvailable = getInstalledVersion(context) != version
         return UpdateCheckResult(

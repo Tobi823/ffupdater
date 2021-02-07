@@ -14,7 +14,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 /**
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  */
-class Lockwise : BaseApp() {
+class Lockwise(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val packageName = "mozilla.lockbox"
     override val displayTitle = R.string.lockwise_title
     override val displayDescription = R.string.lockwise_description
@@ -34,7 +34,7 @@ class Lockwise : BaseApp() {
 
     override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
         val githubConsumer = GithubConsumer(
-                apiConsumer = ApiConsumer(),
+                apiConsumer = apiConsumer,
                 repoOwner = "mozilla-lockwise",
                 repoName = "lockwise-android",
                 resultsPerPage = 5,
