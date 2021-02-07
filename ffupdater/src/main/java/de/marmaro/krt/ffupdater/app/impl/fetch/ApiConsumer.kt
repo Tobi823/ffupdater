@@ -1,49 +1,34 @@
-package de.marmaro.krt.ffupdater.app.impl.fetch;
+package de.marmaro.krt.ffupdater.app.impl.fetch
 
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.time.Duration;
-import java.util.zip.GZIPInputStream;
-
-import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
-
+import com.google.gson.Gson
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
+import java.net.URL
+import java.util.zip.GZIPInputStream
 
 /**
  * Consume a REST-API from the internet.
  */
-public class ApiConsumer {
-    private static final String GZIP = "gzip";
-
-    public <T> T consume(URL url, Class<T> clazz) {
+class ApiConsumer {
+    fun <T> consume(url: URL, clazz: Class<T>): T {
         try {
-            final URLConnection urlConnection = url.openConnection();
-            urlConnection.setRequestProperty("Accept-Encoding", GZIP);
-            urlConnection.setConnectTimeout((int) Duration.ofSeconds(10).toMillis());
-            //Preconditions.checkArgument(urlConnection instanceof HttpsURLConnection);
-            try (InputStream inputStream = getInputStream(urlConnection)) {
-                return consume(inputStream, clazz);
-            }
-        } catch (IOException e) {
-            throw new ParamRuntimeException(e, "Can't consume API interface %s", url);
+            val connection = url.openConnection()
+            connection.setRequestProperty("Accept-Encoding", GZIP)
+            connection.connectTimeout = 10 * 1000 // 10 seconds
+            connection.getInputStream()
+                    .let { if (connection.contentEncoding == GZIP) GZIPInputStream(it) else it }
+                    .let { InputStreamReader(it) }
+                    .let { BufferedReader(it) }
+                    .use { return Gson().fromJson(it, clazz) }
+        } catch (e: IOException) {
+            throw ApiConsumerNetworkError("can't consume API interface '$url'", e)
         }
     }
 
-    private InputStream getInputStream(URLConnection urlConnection) throws IOException {
-        if (GZIP.equals(urlConnection.getContentEncoding())) {
-            return new GZIPInputStream(urlConnection.getInputStream());
-        }
-        return urlConnection.getInputStream();
-    }
-
-    private <T> T consume(InputStream inputStream, Class<T> clazz) throws IOException {
-        try (BufferedReader buffered = new BufferedReader(new InputStreamReader(inputStream))) {
-            return new Gson().fromJson(buffered, clazz);
-        }
+    companion object {
+        private const val GZIP = "gzip"
     }
 }
+
+private class ApiConsumerNetworkError(message: String, throwable: Throwable) : Exception(message, throwable)
