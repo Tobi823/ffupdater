@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch;
 
-import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -11,8 +10,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.time.Duration;
 import java.util.zip.GZIPInputStream;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 
@@ -28,7 +25,7 @@ public class ApiConsumer {
             final URLConnection urlConnection = url.openConnection();
             urlConnection.setRequestProperty("Accept-Encoding", GZIP);
             urlConnection.setConnectTimeout((int) Duration.ofSeconds(10).toMillis());
-            Preconditions.checkArgument(urlConnection instanceof HttpsURLConnection);
+            //Preconditions.checkArgument(urlConnection instanceof HttpsURLConnection);
             try (InputStream inputStream = getInputStream(urlConnection)) {
                 return consume(inputStream, clazz);
             }

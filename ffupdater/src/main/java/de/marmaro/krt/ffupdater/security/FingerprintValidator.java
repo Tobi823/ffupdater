@@ -6,8 +6,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 
-import com.google.common.base.Preconditions;
-
 import org.apache.commons.codec.binary.ApacheCodecHex;
 
 import java.io.ByteArrayInputStream;
@@ -70,7 +68,7 @@ public class FingerprintValidator {
 
     private FingerprintResult verifyPackageInfo(PackageInfo packageInfo, App app) throws CertificateException, NoSuchAlgorithmException {
         Objects.requireNonNull(packageInfo);
-        Preconditions.checkArgument(packageInfo.signatures.length > 0);
+        //Preconditions.checkArgument(packageInfo.signatures.length > 0);
         Objects.requireNonNull(app);
         Signature signature = packageInfo.signatures[0];
         InputStream signatureStream = new ByteArrayInputStream(signature.toByteArray());
@@ -78,6 +76,7 @@ public class FingerprintValidator {
 
         byte[] current = MessageDigest.getInstance(SHA_256).digest(certificate.getEncoded());
         byte[] expected = app.getSignatureHash();
+        // test.joinToString("") { String.format("%02x", (it.toInt() and 0xFF)) }
         final String hexString = ApacheCodecHex.encodeHexString(current);
         if (MessageDigest.isEqual(expected, current)) {
             return new ValidFingerprint(hexString);
