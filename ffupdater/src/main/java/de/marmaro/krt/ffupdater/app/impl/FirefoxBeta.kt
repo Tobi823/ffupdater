@@ -33,7 +33,7 @@ class FirefoxBeta : BaseApp() {
     }
 
     override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
-        val abiString: String = when (abi) {
+        val abiString = when (abi) {
             ABI.AARCH64 -> "arm64-v8a"
             ABI.ARM -> "armeabi-v7a"
             ABI.X86 -> "x86"
@@ -42,11 +42,12 @@ class FirefoxBeta : BaseApp() {
         val task = "mobile.v2.fenix.beta.latest.$abiString"
         val apkArtifact = "build/$abiString/target.apk"
         val result = MozillaCiConsumer(ApiConsumer()).consume(task, apkArtifact)
-        val updateAvailable = getInstalledVersion(context) != result.timestamp
+        val version = result.timestamp
+        val updateAvailable = getInstalledVersion(context) != version
         return UpdateCheckResult(
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
-                version = result.timestamp,
+                version = version,
                 metadata = mapOf(FILE_HASH_SHA256 to result.hash))
     }
 
