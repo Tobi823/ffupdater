@@ -1,111 +1,59 @@
-package de.marmaro.krt.ffupdater.app.impl;
+package de.marmaro.krt.ffupdater.app.impl
 
-import android.content.Context;
-import android.os.Build;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import de.marmaro.krt.ffupdater.R;
-import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer;
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer;
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Asset;
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Result;
-import de.marmaro.krt.ffupdater.app.BaseApp;
-import de.marmaro.krt.ffupdater.app.UpdateCheckResult;
-import de.marmaro.krt.ffupdater.device.ABI;
-
-import static de.marmaro.krt.ffupdater.app.UpdateCheckResult.FILE_SIZE_BYTES;
-import static de.marmaro.krt.ffupdater.device.ABI.AARCH64;
-import static de.marmaro.krt.ffupdater.device.ABI.ARM;
-import static de.marmaro.krt.ffupdater.device.ABI.X86;
-import static de.marmaro.krt.ffupdater.device.ABI.X86_64;
+import android.content.Context
+import android.os.Build
+import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
+import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
+import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Asset
+import de.marmaro.krt.ffupdater.app.impl.fetch.github.dao.Release
+import de.marmaro.krt.ffupdater.device.ABI
 
 /**
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  */
-public class Lockwise extends BaseApp {
+class Lockwise : BaseApp() {
+    override val packageName = "mozilla.lockbox"
+    override val displayTitle = R.string.lockwise_title
+    override val displayDescription = R.string.lockwise_description
+    override val displayWarning = R.string.lockwise_warning
+    override val displayDownloadSource = R.string.github
+    override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
+    override val minApiLevel = Build.VERSION_CODES.N
+    override val supportedAbi = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
-    @Override
-    public String getPackageName() {
-        return "mozilla.lockbox";
+    override fun getDisplayInstalledVersion(context: Context): String? {
+        return getInstalledVersionFromPackageManager(context)
     }
 
-    @Override
-    public String getDisplayTitle(Context context) {
-        return context.getString(R.string.lockwise_title);
+    override fun getInstalledVersion(context: Context): String? {
+        return getInstalledVersionFromPackageManager(context)
     }
 
-    @Override
-    public String getDisplayDescription(Context context) {
-        return context.getString(R.string.lockwise_description);
-    }
-
-    @Override
-    public Optional<String> getDisplayWarning(Context context) {
-        return Optional.of(context.getString(R.string.lockwise_warning));
-    }
-
-    @Override
-    @SuppressWarnings("SpellCheckingInspection")
-    public String getSignatureHashAsString() {
-        return "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2";
-    }
-
-    @Override
-    public String getDisplayDownloadSource(Context context) {
-        return context.getString(R.string.github);
-    }
-
-    @Override
-    public Optional<String> getDisplayInstalledVersion(Context context) {
-        return getInstalledVersionFromPackageManager(context);
-    }
-
-    @Override
-    public Optional<String> getInstalledVersion(Context context) {
-        return getInstalledVersionFromPackageManager(context);
-    }
-
-    @Override
-    public int getMinApiLevel() {
-        return Build.VERSION_CODES.N;
-    }
-
-    @Override
-    public List<ABI> getSupportedAbi() {
-        return Arrays.asList(AARCH64, ARM, X86_64, X86);
-    }
-
-    @Override
-    public UpdateCheckResult updateCheck(Context context, ABI abi) {
-        final Result result = new GithubConsumer.Builder()
-                .setApiConsumer(new ApiConsumer())
-                .setRepoOwner("mozilla-lockwise")
-                .setRepoName("lockwise-android")
-                .setResultsPerPage(5)
-                .setValidReleaseTester(release -> !release.isPreRelease() &&
-                        release.getAssets().stream().map(Asset::getName).anyMatch(name -> name.endsWith(".apk")))
-                // each release have only one .apk file
-                .setCorrectDownloadUrlTester(asset -> asset.getName().endsWith(".apk"))
-                .build()
-                .updateCheck();
-
+    override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
+        val githubConsumer = GithubConsumer(
+                apiConsumer = ApiConsumer(),
+                repoOwner = "mozilla-lockwise",
+                repoName = "lockwise-android",
+                resultsPerPage = 5,
+                validReleaseTester = { release: Release ->
+                    !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
+                },
+                correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(".apk") })
+        val result = githubConsumer.updateCheck()
         // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"
-        final String version = result.getTagName().split("v")[1].split("-")[0];
-        final boolean update = getInstalledVersion(context).map(x -> !x.equals(version)).orElse(true);
-
-        return new UpdateCheckResult.Builder()
-                .setUpdateAvailable(update)
-                .setDownloadUrl(result.getUrl())
-                .setVersion(version)
-                .setMetadata(Map.of(FILE_SIZE_BYTES, result.getFileSizeBytes()))
-                .build();
+        val regexResult = Regex("""^release-v((\d)+(\.\d+)*)""").find(result.tagName)
+        val version = regexResult?.groups?.get(1)?.value
+                ?: throw RuntimeException("regex pattern does not match '${result.tagName}'")
+        val updateAvailable = getInstalledVersion(context) != version
+        return UpdateCheckResult(
+                isUpdateAvailable = updateAvailable,
+                downloadUrl = result.url,
+                version = version,
+                metadata = mapOf(UpdateCheckResult.FILE_SIZE_BYTES to result.fileSizeBytes))
     }
 
-    @Override
-    public void installationCallback(Context context, String installedVersion) {
-    }
+    override fun installationCallback(context: Context, installedVersion: String) {}
 }
