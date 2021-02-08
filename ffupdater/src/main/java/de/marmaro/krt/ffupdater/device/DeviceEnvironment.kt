@@ -1,52 +1,39 @@
-package de.marmaro.krt.ffupdater.device;
+package de.marmaro.krt.ffupdater.device
 
-import com.google.common.base.Preconditions;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static android.os.Build.SUPPORTED_ABIS;
-import static android.os.Build.VERSION.SDK_INT;
+import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 
 /**
  * This class returns all supported ABIs and the API level.
  */
-public class DeviceEnvironment {
-    private final List<ABI> abiList;
-    private final int sdkInt;
+class DeviceEnvironment constructor(
+        val abis: List<ABI> = findSupportedAbis(),
+        val sdkInt: Int = SDK_INT) {
 
-    public DeviceEnvironment() {
-        this(findSupportedAbis(), SDK_INT);
-    }
-
-    public DeviceEnvironment(List<ABI> abiList, int sdkInt) {
-        Preconditions.checkArgument(!abiList.isEmpty());
-        this.abiList = abiList;
-        this.sdkInt = sdkInt;
-    }
-
-    public int getApiLevel() {
-        return sdkInt;
-    }
-
-    /**
-     * An ordered list of ABIs supported by this device. The most preferred ABI is the first element in the list.
-     *
-     * @return a list of at least one element
-     */
-    public List<ABI> getSupportedAbis() {
-        return abiList;
-    }
-
-    private static List<ABI> findSupportedAbis() {
-        final HashMap<String, ABI> map = new HashMap<>();
-        map.put("arm64-v8a", ABI.AARCH64);
-        map.put("armeabi-v7a", ABI.ARM);
-        map.put("x86_64", ABI.X86_64);
-        map.put("x86", ABI.X86);
-
-        return Arrays.stream(SUPPORTED_ABIS).filter(map::containsKey).map(map::get).collect(Collectors.toList());
+    companion object {
+        private fun findSupportedAbis(): List<ABI> {
+            return Build.SUPPORTED_ABIS.mapNotNull {
+                when (it) {
+                    "arm64-v8a" -> ABI.AARCH64
+                    "armeabi-v7a" -> ABI.ARM
+                    "x86_64" -> ABI.X86_64
+                    "x86" -> ABI.X86
+                    else -> throw UnknownAbiException()
+                }
+            }
+        }
     }
 }
+
+/**
+ * All supported ABIs
+ * "Note: Historically the NDK supported ARMv5 (armeabi), and 32-bit and 64-bit MIPS, but
+ * support for these ABIs was removed in NDK r17." (r17c release in June 2018)
+ *
+ * @see [List of official supported ABIS](https://developer.android.com/ndk/guides/abis)
+ */
+enum class ABI {
+    AARCH64, ARM, X86, X86_64
+}
+
+private class UnknownAbiException : Exception()
