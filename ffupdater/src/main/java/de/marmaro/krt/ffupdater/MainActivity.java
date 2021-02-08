@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
 
         crasher = new Crasher(this);
-        StrictModeSetup.enable();
+        StrictModeSetup.enableStrictMode();
 
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
 
