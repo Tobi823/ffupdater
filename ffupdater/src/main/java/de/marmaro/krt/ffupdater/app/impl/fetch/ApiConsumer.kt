@@ -6,6 +6,7 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.net.URL
 import java.util.zip.GZIPInputStream
+import javax.net.ssl.HttpsURLConnection
 
 /**
  * Consume a REST-API from the internet.
@@ -13,10 +14,10 @@ import java.util.zip.GZIPInputStream
 class ApiConsumer {
     fun <T> consume(url: URL, clazz: Class<T>): T {
         try {
-            val connection = url.openConnection()
+            val connection = url.openConnection() as HttpsURLConnection
             connection.setRequestProperty("Accept-Encoding", GZIP)
             connection.connectTimeout = 10 * 1000 // 10 seconds
-            connection.getInputStream()
+            connection.inputStream
                     .let { if (connection.contentEncoding == GZIP) GZIPInputStream(it) else it }
                     .let { InputStreamReader(it) }
                     .let { BufferedReader(it) }
