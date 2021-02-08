@@ -34,7 +34,7 @@ public class DeviceTooOldDialog extends DialogFragment {
                 .setTitle(R.string.device_too_old_dialog_title)
                 .setMessage(getString(R.string.device_too_old_dialog_message,
                         Utils.getVersionAndCodenameFromApiLevel(app.getMinApiLevel()),
-                        Utils.getVersionAndCodenameFromApiLevel(deviceEnvironment.getApiLevel())))
+                        Utils.getVersionAndCodenameFromApiLevel(deviceEnvironment.getSdkInt())))
                 .setNegativeButton(getString(R.string.ok), (dialog, which) -> dialog.dismiss())
                 .create();
     }

@@ -105,11 +105,11 @@ public class SettingsHelper {
     }
 
     private int getDefaultThemePreference(DeviceEnvironment deviceEnvironment) {
-        if (deviceEnvironment.getApiLevel() >= Q) {
+        if (deviceEnvironment.getSdkInt() >= Q) {
             return MODE_NIGHT_FOLLOW_SYSTEM;
-        } else if (deviceEnvironment.getApiLevel() >= P) {
+        } else if (deviceEnvironment.getSdkInt() >= P) {
             return MODE_NIGHT_AUTO_BATTERY;
-        } else if (deviceEnvironment.getApiLevel() >= LOLLIPOP) {
+        } else if (deviceEnvironment.getSdkInt() >= LOLLIPOP) {
             return MODE_NIGHT_AUTO_BATTERY;
         }
         return MODE_NIGHT_NO;
