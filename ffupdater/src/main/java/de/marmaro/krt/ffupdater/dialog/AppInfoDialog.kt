@@ -6,8 +6,8 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import de.marmaro.krt.ffupdater.App
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 
 /**
  * Show a dialog with the app description.
@@ -15,9 +15,12 @@ import de.marmaro.krt.ffupdater.R
 class AppInfoDialog(private val app: App) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
-                .setTitle(app.getTitle(requireContext()))
-                .setMessage(app.getDescription(requireContext()))
-                .setPositiveButton(getString(R.string.ok)) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+                .setTitle(getString(app.displayTitle))
+                .setMessage(getString(app.displayDescription))
+                .setPositiveButton(getString(R.string.ok))
+                { dialog: DialogInterface, _: Int ->
+                    dialog.dismiss()
+                }
                 .create()
     }
 

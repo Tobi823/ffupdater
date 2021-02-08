@@ -7,22 +7,27 @@ import android.os.Bundle
 import androidx.core.util.Consumer
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import de.marmaro.krt.ffupdater.App
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 
 /**
  * Ask the user with this dialog if he really want to install the app.
  */
-class InstallationWarningAppDialog internal constructor(private val downloadCallback: Consumer<App>, private val app: App) : DialogFragment() {
+class InstallationWarningAppDialog internal constructor(private val downloadCallback: Consumer<App>,
+                                                        private val app: App) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
                 .setTitle(getString(R.string.installation_warning_title))
-                .setMessage(app.getWarning(requireContext()))
-                .setPositiveButton(getString(R.string.installation_warning_positive_button)) { dialog: DialogInterface, _: Int ->
+                .setMessage(app.displayWarning?.let { getString(it) } ?: "")
+                .setPositiveButton(getString(R.string.installation_warning_positive_button))
+                { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
                     downloadCallback.accept(app)
                 }
-                .setNegativeButton(getString(R.string.installation_warning_negative_button)) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+                .setNegativeButton(getString(R.string.installation_warning_negative_button))
+                { dialog: DialogInterface, _: Int ->
+                    dialog.dismiss()
+                }
                 .create()
     }
 
