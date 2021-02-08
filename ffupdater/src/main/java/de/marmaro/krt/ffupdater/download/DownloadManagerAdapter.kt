@@ -1,37 +1,19 @@
-package de.marmaro.krt.ffupdater.download;
+package de.marmaro.krt.ffupdater.download
 
-import android.app.DownloadManager;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-
-import androidx.annotation.NonNull;
-
-import com.google.common.base.Preconditions;
-
-import java.io.File;
-import java.net.URL;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
-
-import static android.app.DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR;
-import static android.app.DownloadManager.COLUMN_STATUS;
-import static android.app.DownloadManager.COLUMN_TOTAL_SIZE_BYTES;
-import static android.os.Environment.DIRECTORY_DOWNLOADS;
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
+import android.os.Environment
+import java.io.File
+import java.net.URL
+import java.util.concurrent.ConcurrentHashMap
+import kotlin.random.Random
 
 /**
- * This class helps to use the {@code android.app.DownloadManager} more easily.
+ * This class helps to use the `android.app.DownloadManager` more easily.
  */
-public class DownloadManagerAdapter {
-    private final DownloadManager downloadManager;
-    private final Map<Long, File> files = new ConcurrentHashMap<>();
-
-    public DownloadManagerAdapter(DownloadManager downloadManager) {
-        this.downloadManager = Objects.requireNonNull(downloadManager);
-    }
+class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
+    private val files: MutableMap<Long, File> = ConcurrentHashMap()
 
     /**
      * Enqueue a new download.
@@ -41,24 +23,17 @@ public class DownloadManagerAdapter {
      * @param notificationTitle      title for the download notification
      * @return new generated id for the download
      */
-    public long enqueue(Context context, URL downloadUrl, String notificationTitle) {
-        Objects.requireNonNull(context);
-        Objects.requireNonNull(downloadUrl);
-        Objects.requireNonNull(notificationTitle);
-        Preconditions.checkArgument("https".equals(downloadUrl.getProtocol()));
-
-        String fileName = String.format(Locale.getDefault(), "download_%d_%d.apk", System.currentTimeMillis(),
-                Math.abs(new Random().nextLong()));
-
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl.toString()))
+    fun enqueue(context: Context, downloadUrl: URL, notificationTitle: String): Long {
+        check(downloadUrl.protocol == "https")
+        val fileName = "download_${System.currentTimeMillis()}_${Random.nextLong(0, Long.MAX_VALUE)}.apk"
+        val request = DownloadManager.Request(Uri.parse(downloadUrl.toString()))
                 .setTitle(notificationTitle)
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
-                .setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName);
-
-        long id = downloadManager.enqueue(request);
-        final File downloadDir = Objects.requireNonNull(context.getExternalFilesDir(DIRECTORY_DOWNLOADS));
-        files.put(id, new File(downloadDir, fileName));
-        return id;
+                .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
+        val id = downloadManager.enqueue(request)
+        val downloadDir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+        files[id] = File(downloadDir, fileName)
+        return id
     }
 
     /**
@@ -66,39 +41,39 @@ public class DownloadManagerAdapter {
      *
      * @param ids ids
      */
-    public void remove(long... ids) {
-        for (long id : ids) {
-            files.remove(id);
-        }
-        downloadManager.remove(ids);
+    fun remove(id: Long) {
+        files.remove(id)
+        downloadManager.remove(id)
     }
 
     /**
      * Return the status and percent for a download.
-     * This method is simple to use then {@code android.app.DownloadManager.query()}
+     * This method is simple to use then `android.app.DownloadManager.query()`
      *
      * @param id id
-     * @return status (constants from {@code android.app.DownloadManager}) and percent (0-100)
+     * @return status (constants from `android.app.DownloadManager`) and percent (0-100)
      */
-    @NonNull
-    public StatusProgress getStatusAndProgress(long id) {
-        DownloadManager.Query query = new DownloadManager.Query();
-        query.setFilterById(id);
-        try (Cursor cursor = downloadManager.query(query)) {
-            cursor.moveToFirst();
-            double columnTotalBytes = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES));
-            double columnActualBytes = cursor.getInt(cursor.getColumnIndex(COLUMN_BYTES_DOWNLOADED_SO_FAR));
-            return new StatusProgress(cursor.getInt(cursor.getColumnIndex(COLUMN_STATUS)),
-                    (int) ((columnActualBytes / columnTotalBytes) * 100));
+    fun getStatusAndProgress(id: Long): StatusProgress {
+        val query = DownloadManager.Query()
+        query.setFilterById(id)
+        downloadManager.query(query).use { cursor ->
+            cursor.moveToFirst()
+            val totalBytesIndex = cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)
+            val totalBytes = cursor.getInt(totalBytesIndex).toDouble()
+            val actualBytesIndex = cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)
+            val actualBytes = cursor.getInt(actualBytesIndex).toDouble()
+            val statusIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)
+            val status = cursor.getInt(statusIndex)
+            return StatusProgress(status, (actualBytes / totalBytes * 100).toInt())
         }
     }
 
-    public int getTotalDownloadSize(long id) {
-        DownloadManager.Query query = new DownloadManager.Query();
-        query.setFilterById(id);
-        try (Cursor cursor = downloadManager.query(query)) {
-            cursor.moveToFirst();
-            return cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES));
+    fun getTotalDownloadSize(id: Long): Int {
+        val query = DownloadManager.Query()
+        query.setFilterById(id)
+        downloadManager.query(query).use { cursor ->
+            cursor.moveToFirst()
+            return cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES))
         }
     }
 
@@ -108,8 +83,8 @@ public class DownloadManagerAdapter {
      * @param id id
      * @return url for the downloaded file
      */
-    public Uri getUriForDownloadedFile(long id) {
-        return downloadManager.getUriForDownloadedFile(id);
+    fun getUriForDownloadedFile(id: Long): Uri {
+        return downloadManager.getUriForDownloadedFile(id)
     }
 
     /**
@@ -119,25 +94,9 @@ public class DownloadManagerAdapter {
      * @param id id
      * @return downloaded file
      */
-    public File getFileForDownloadedFile(long id) {
-        return Objects.requireNonNull(files.get(id));
+    fun getFileForDownloadedFile(id: Long): File? {
+        return files[id]
     }
 
-    public static class StatusProgress {
-        private final int status;
-        private final int progress;
-
-        public StatusProgress(int status, int progress) {
-            this.status = status;
-            this.progress = progress;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public int getProgress() {
-            return progress;
-        }
-    }
+    class StatusProgress(val status: Int, val progress: Int)
 }
