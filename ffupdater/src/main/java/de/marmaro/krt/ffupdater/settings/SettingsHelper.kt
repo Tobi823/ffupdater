@@ -26,7 +26,6 @@ class SettingsHelper(context: Context) {
             return preferences.getBoolean("automaticCheck", true)
         }
 
-
     /**
      * @return how long should be the time span between check background update check?
      */
