@@ -1,44 +1,34 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater
 
-import android.content.SharedPreferences;
+import android.content.Context
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
+import java.util.*
+import java.util.function.Consumer
+import java.util.function.Predicate
 
-import java.util.Objects;
+class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
-import de.marmaro.krt.ffupdater.metadata.fetcher.Cache;
+    fun migrate(context: Context) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
-public class Migrator {
-    public static final String FFUPDATER_VERSION_NAME = "migrator_ffupdater_version_name";
-    private final SharedPreferences preferences;
-    private final String currentVersion;
-
-    public Migrator(SharedPreferences sharedPreferences) {
-        this(sharedPreferences, BuildConfig.VERSION_NAME);
-    }
-
-    Migrator(SharedPreferences preferences, String currentVersion) {
-        Objects.requireNonNull(preferences);
-        Objects.requireNonNull(currentVersion);
-        this.preferences = preferences;
-        this.currentVersion = currentVersion;
-    }
-
-    public void migrate() {
-        String lastVersion = preferences.getString(FFUPDATER_VERSION_NAME, "");
-
-        if (!currentVersion.equals(lastVersion)) {
-            deleteAvailableMetadataCache();
+        if (lastVersionCode < 56 /* 71.0.0 */) { //TODO update build version to 56 71.0.0
+            deleteAvailableMetadataCache(preferences)
         }
 
-        preferences.edit()
-                .putString(FFUPDATER_VERSION_NAME, currentVersion)
-                .apply();
+        preferences.edit().putInt(FFUPDATER_VERSION_CODE, currentVersionCode).apply()
     }
 
-    private void deleteAvailableMetadataCache() {
-        final SharedPreferences.Editor editor = preferences.edit();
-        preferences.getAll().keySet().stream()
-                .filter(key -> key.startsWith(Cache.BASE))
-                .forEach(editor::remove);
-        editor.apply();
+    private fun deleteAvailableMetadataCache(preferences: SharedPreferences) {
+        val keys = preferences.all.filter { it.key.startsWith("download_metadata_") }
+                .map { it.key }
+        val editor = preferences.edit()
+        keys.forEach { editor.remove(it) }
+        editor.apply()
+    }
+
+    companion object {
+        const val FFUPDATER_VERSION_CODE = "migrator_ffupdater_version_code"
     }
 }
