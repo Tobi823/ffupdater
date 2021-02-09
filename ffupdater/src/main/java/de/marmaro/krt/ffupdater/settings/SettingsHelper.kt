@@ -45,12 +45,12 @@ class SettingsHelper(context: Context) {
      *
      * @return the regular background update check should ignore these apps
      */
-    val disabledApps: List<App>
+    val disabledApps: List<AppList>
         get() {
             val disableApps = preferences.getStringSet("disableApps", null) ?: setOf()
             return disableApps.mapNotNull {
                 try {
-                    AppList.valueOf(it).impl
+                    AppList.valueOf(it)
                 } catch (e: IllegalArgumentException) {
                     null
                 }

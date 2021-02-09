@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.device.ABI
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -37,6 +38,6 @@ abstract class BaseApp : App {
     }
 
     override fun updateCheckAsync(context: Context, abi: ABI): Deferred<UpdateCheckResult> {
-        return GlobalScope.async { updateCheck(context, abi) }
+        return GlobalScope.async(start = CoroutineStart.LAZY) { updateCheck(context, abi) }
     }
 }
