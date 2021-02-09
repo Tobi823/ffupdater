@@ -1,167 +1,109 @@
-package de.marmaro.krt.ffupdater;
+package de.marmaro.krt.ffupdater
 
-import android.app.Activity;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.app.Activity
+import android.view.View
+import android.widget.ImageButton
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import de.marmaro.krt.ffupdater.app.AppList
+import de.marmaro.krt.ffupdater.app.AppList.*
 
-import androidx.cardview.widget.CardView;
-
-import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
-
-public class MainActivityHelper {
-    private final Activity activity;
-
-    public MainActivityHelper(Activity activity) {
-        this.activity = activity;
+class MainActivityHelper(private val activity: Activity) {
+    fun getAppCardViewForApp(app: AppList): CardView {
+        return activity.findViewById(when (app) {
+            FIREFOX_KLAR -> R.id.firefoxKlarCard
+            FIREFOX_FOCUS -> R.id.firefoxFocusCard
+            FIREFOX_LITE -> R.id.firefoxLiteCard
+            FIREFOX_RELEASE -> R.id.firefoxReleaseCard
+            FIREFOX_BETA -> R.id.firefoxBetaCard
+            FIREFOX_NIGHTLY -> R.id.firefoxNightlyCard
+            LOCKWISE -> R.id.lockwiseCard
+            BRAVE -> R.id.braveCard
+            ICERAVEN -> R.id.iceravenCard
+        })
     }
 
-    public CardView getAppCardViewForApp(App app) {
-        switch (app) {
-            case FIREFOX_KLAR:
-                return activity.findViewById(R.id.firefoxKlarCard);
-            case FIREFOX_FOCUS:
-                return activity.findViewById(R.id.firefoxFocusCard);
-            case FIREFOX_LITE:
-                return activity.findViewById(R.id.firefoxLiteCard);
-            case FIREFOX_RELEASE:
-                return activity.findViewById(R.id.firefoxReleaseCard);
-            case FIREFOX_BETA:
-                return activity.findViewById(R.id.firefoxBetaCard);
-            case FIREFOX_NIGHTLY:
-                return activity.findViewById(R.id.firefoxNightlyCard);
-            case LOCKWISE:
-                return activity.findViewById(R.id.lockwiseCard);
-            case BRAVE:
-                return activity.findViewById(R.id.braveCard);
-            case ICERAVEN:
-                return activity.findViewById(R.id.iceravenCard);
-            default:
-                throw new RuntimeException("switch fallthrough");
-        }
+    fun enableDownloadButton(app: AppList) {
+        getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_orange)
     }
 
-    public void enableDownloadButton(App app) {
-        getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_orange);
+    fun disableDownloadButton(app: AppList) {
+        getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_grey)
     }
 
-    public void disableDownloadButton(App app) {
-        getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_grey);
+    @Deprecated("unnötige Methode")
+    fun registerDownloadButtonOnClickListener(app: AppList, listener: View.OnClickListener?) {
+        getDownloadButtonForApp(app).setOnClickListener(listener)
     }
 
-    public void registerDownloadButtonOnClickListener(App app, View.OnClickListener listener) {
-        getDownloadButtonForApp(app).setOnClickListener(listener);
+    private fun getDownloadButtonForApp(app: AppList): ImageButton {
+        return activity.findViewById(when (app) {
+            FIREFOX_KLAR -> R.id.firefoxKlarDownloadButton
+            FIREFOX_FOCUS -> R.id.firefoxFocusDownloadButton
+            FIREFOX_LITE -> R.id.firefoxLiteDownloadButton
+            FIREFOX_RELEASE -> R.id.firefoxReleaseDownloadButton
+            FIREFOX_BETA -> R.id.firefoxBetaDownloadButton
+            FIREFOX_NIGHTLY -> R.id.firefoxNightlyDownloadButton
+            LOCKWISE -> R.id.lockwiseDownloadButton
+            BRAVE -> R.id.braveDownloadButton
+            ICERAVEN -> R.id.iceravenDownloadButton
+        })
     }
 
-    private ImageButton getDownloadButtonForApp(App app) {
-        switch (app) {
-            case FIREFOX_KLAR:
-                return activity.findViewById(R.id.firefoxKlarDownloadButton);
-            case FIREFOX_FOCUS:
-                return activity.findViewById(R.id.firefoxFocusDownloadButton);
-            case FIREFOX_LITE:
-                return activity.findViewById(R.id.firefoxLiteDownloadButton);
-            case FIREFOX_RELEASE:
-                return activity.findViewById(R.id.firefoxReleaseDownloadButton);
-            case FIREFOX_BETA:
-                return activity.findViewById(R.id.firefoxBetaDownloadButton);
-            case FIREFOX_NIGHTLY:
-                return activity.findViewById(R.id.firefoxNightlyDownloadButton);
-            case LOCKWISE:
-                return activity.findViewById(R.id.lockwiseDownloadButton);
-            case BRAVE:
-                return activity.findViewById(R.id.braveDownloadButton);
-            case ICERAVEN:
-                return activity.findViewById(R.id.iceravenDownloadButton);
-            default:
-                throw new RuntimeException("switch fallthrough");
-        }
+    @Deprecated("unnötige Methode")
+    fun setInstalledVersionText(app: AppList, text: String?) {
+        getInstalledVersionTextViewForApp(app).text = text
     }
 
-    public void setInstalledVersionText(App app, String text) {
-        getInstalledVersionTextViewForApp(app).setText(text);
+    private fun getInstalledVersionTextViewForApp(app: AppList): TextView {
+        return activity.findViewById(when (app) {
+            FIREFOX_KLAR -> R.id.firefoxKlarInstalledVersion
+            FIREFOX_FOCUS -> R.id.firefoxFocusInstalledVersion
+            FIREFOX_LITE -> R.id.firefoxLiteInstalledVersion
+            FIREFOX_RELEASE -> R.id.firefoxReleaseInstalledVersion
+            FIREFOX_BETA -> R.id.firefoxBetaInstalledVersion
+            FIREFOX_NIGHTLY -> R.id.firefoxNightlyInstalledVersion
+            LOCKWISE -> R.id.lockwiseInstalledVersion
+            BRAVE -> R.id.braveInstalledVersion
+            ICERAVEN -> R.id.iceravenInstalledVersion
+        })
     }
 
-    private TextView getInstalledVersionTextViewForApp(App app) {
-        switch (app) {
-            case FIREFOX_KLAR:
-                return activity.findViewById(R.id.firefoxKlarInstalledVersion);
-            case FIREFOX_FOCUS:
-                return activity.findViewById(R.id.firefoxFocusInstalledVersion);
-            case FIREFOX_LITE:
-                return activity.findViewById(R.id.firefoxLiteInstalledVersion);
-            case FIREFOX_RELEASE:
-                return activity.findViewById(R.id.firefoxReleaseInstalledVersion);
-            case FIREFOX_BETA:
-                return activity.findViewById(R.id.firefoxBetaInstalledVersion);
-            case FIREFOX_NIGHTLY:
-                return activity.findViewById(R.id.firefoxNightlyInstalledVersion);
-            case LOCKWISE:
-                return activity.findViewById(R.id.lockwiseInstalledVersion);
-            case BRAVE:
-                return activity.findViewById(R.id.braveInstalledVersion);
-            case ICERAVEN:
-                return activity.findViewById(R.id.iceravenInstalledVersion);
-            default:
-                throw new ParamRuntimeException("unknown installed version text view for app %s", app);
-        }
+    @Deprecated("unnötige Methode")
+    fun setAvailableVersionText(app: AppList, text: String?) {
+        getAvailableVersionTextViewForApp(app).text = text
     }
 
-    public void setAvailableVersionText(App app, String text) {
-        getAvailableVersionTextViewForApp(app).setText(text);
+    private fun getAvailableVersionTextViewForApp(app: AppList): TextView {
+        return activity.findViewById(when (app) {
+            FIREFOX_KLAR -> R.id.firefoxKlarAvailableVersion
+            FIREFOX_FOCUS -> R.id.firefoxFocusAvailableVersion
+            FIREFOX_LITE -> R.id.firefoxLiteAvailableVersion
+            FIREFOX_RELEASE -> R.id.firefoxReleaseAvailableVersion
+            FIREFOX_BETA -> R.id.firefoxBetaAvailableVersion
+            FIREFOX_NIGHTLY -> R.id.firefoxNightlyAvailableVersion
+            LOCKWISE -> R.id.lockwiseAvailableVersion
+            BRAVE -> R.id.braveAvailableVersion
+            ICERAVEN -> R.id.iceravenAvailableVersion
+        })
     }
 
-    private TextView getAvailableVersionTextViewForApp(App app) {
-        switch (app) {
-            case FIREFOX_KLAR:
-                return activity.findViewById(R.id.firefoxKlarAvailableVersion);
-            case FIREFOX_FOCUS:
-                return activity.findViewById(R.id.firefoxFocusAvailableVersion);
-            case FIREFOX_LITE:
-                return activity.findViewById(R.id.firefoxLiteAvailableVersion);
-            case FIREFOX_RELEASE:
-                return activity.findViewById(R.id.firefoxReleaseAvailableVersion);
-            case FIREFOX_BETA:
-                return activity.findViewById(R.id.firefoxBetaAvailableVersion);
-            case FIREFOX_NIGHTLY:
-                return activity.findViewById(R.id.firefoxNightlyAvailableVersion);
-            case LOCKWISE:
-                return activity.findViewById(R.id.lockwiseAvailableVersion);
-            case BRAVE:
-                return activity.findViewById(R.id.braveAvailableVersion);
-            case ICERAVEN:
-                return activity.findViewById(R.id.iceravenAvailableVersion);
-            default:
-                throw new ParamRuntimeException("unknown available version text view for app %s", app);
-        }
+    @Deprecated("unnötige Methode")
+    fun registerInfoButtonOnClickListener(app: AppList, listener: View.OnClickListener?) {
+        getInfoButtonForApp(app).setOnClickListener(listener)
     }
 
-    public void registerInfoButtonOnClickListener(App app, View.OnClickListener listener) {
-        getInfoButtonForApp(app).setOnClickListener(listener);
-    }
-
-    private View getInfoButtonForApp(App app) {
-        switch (app) {
-            case FIREFOX_KLAR:
-                return activity.findViewById(R.id.firefoxKlarInfoButton);
-            case FIREFOX_FOCUS:
-                return activity.findViewById(R.id.firefoxFocusInfoButton);
-            case FIREFOX_LITE:
-                return activity.findViewById(R.id.firefoxLiteInfoButton);
-            case FIREFOX_RELEASE:
-                return activity.findViewById(R.id.firefoxReleaseInfoButton);
-            case FIREFOX_BETA:
-                return activity.findViewById(R.id.firefoxBetaInfoButton);
-            case FIREFOX_NIGHTLY:
-                return activity.findViewById(R.id.firefoxNightlyInfoButton);
-            case LOCKWISE:
-                return activity.findViewById(R.id.lockwiseInfoButton);
-            case BRAVE:
-                return activity.findViewById(R.id.braveInfoButton);
-            case ICERAVEN:
-                return activity.findViewById(R.id.iceravenInfoButton);
-            default:
-                throw new RuntimeException("switch fallthrough");
-        }
+    private fun getInfoButtonForApp(app: AppList): View {
+        return activity.findViewById(when (app) {
+            FIREFOX_KLAR -> R.id.firefoxKlarInfoButton
+            FIREFOX_FOCUS -> R.id.firefoxFocusInfoButton
+            FIREFOX_LITE -> R.id.firefoxLiteInfoButton
+            FIREFOX_RELEASE -> R.id.firefoxReleaseInfoButton
+            FIREFOX_BETA -> R.id.firefoxBetaInfoButton
+            FIREFOX_NIGHTLY -> R.id.firefoxNightlyInfoButton
+            LOCKWISE -> R.id.lockwiseInfoButton
+            BRAVE -> R.id.braveInfoButton
+            ICERAVEN -> R.id.iceravenInfoButton
+        })
     }
 }

@@ -5,6 +5,7 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 
 private val apiConsumer = ApiConsumer()
 
+// TODO ich brauche ihr noch einnen besseren Namen
 enum class AppList(impl: App) {
     FIREFOX_RELEASE(FirefoxRelease(apiConsumer)),
     FIREFOX_BETA(FirefoxBeta(apiConsumer)),
