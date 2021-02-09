@@ -32,7 +32,7 @@ class InstallAppDialog(private val downloadCallback: Consumer<App>) : DialogFrag
 
     private fun handleAppInstallation(app: App) {
         // do not install an app which incompatible ABIs
-        if (deviceEnvironment.abis.intersect(app.supportedAbi).isEmpty()) {
+        if (deviceEnvironment.abis.intersect(app.supportedAbis).isEmpty()) {
             UnsupportedAbiDialog().show(parentFragmentManager)
             return
         }

@@ -4,5 +4,5 @@ import de.marmaro.krt.ffupdater.device.ABI
 
 interface Compatibility {
     val minApiLevel: Int
-    val supportedAbi: List<ABI> //TODO rename to supportedAbis
+    val supportedAbis: List<ABI>
 }

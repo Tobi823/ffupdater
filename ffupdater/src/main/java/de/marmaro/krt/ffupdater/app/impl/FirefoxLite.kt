@@ -22,7 +22,7 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val displayDownloadSource = R.string.github
     override val signatureHash = "863a46f0973932b7d0199b549112741c2d2731ac72ea11b7523aa90a11bf5691"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbi = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String? {
         return getInstalledVersionFromPackageManager(context)

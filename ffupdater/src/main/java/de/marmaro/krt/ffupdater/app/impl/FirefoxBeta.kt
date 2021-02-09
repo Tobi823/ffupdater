@@ -22,7 +22,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val displayDownloadSource = R.string.mozilla_ci
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbi = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String? {
         return getInstalledVersionFromPackageManager(context)

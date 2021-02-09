@@ -21,7 +21,7 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val displayDownloadSource = R.string.mozilla_ci
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbi = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String? {
         return getInstalledVersionFromPackageManager(context)

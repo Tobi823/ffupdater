@@ -22,7 +22,7 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val displayDownloadSource = R.string.github
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbi = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String? {
         return getInstalledVersionFromPackageManager(context)

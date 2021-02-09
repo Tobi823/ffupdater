@@ -22,7 +22,7 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val displayDownloadSource = R.string.mozilla_ci
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbi = listOf(ABI.AARCH64, ABI.ARM)
+    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM)
 
     override fun getDisplayInstalledVersion(context: Context): String? {
         return getInstalledVersionFromPackageManager(context)

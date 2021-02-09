@@ -23,7 +23,7 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseApp() {
     override val displayDownloadSource = R.string.github
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
     override val minApiLevel = Build.VERSION_CODES.N
-    override val supportedAbi = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String? {
         return getInstalledVersion(context)
