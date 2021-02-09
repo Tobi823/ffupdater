@@ -20,8 +20,8 @@ class DeviceTooOldDialog(private val app: App,
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.device_too_old_dialog_title)
                 .setMessage(getString(R.string.device_too_old_dialog_message,
-                        Utils.getVersionAndCodenameFromApiLevel(app.minApiLevel),
-                        Utils.getVersionAndCodenameFromApiLevel(deviceEnvironment.sdkInt)))
+                        Utils.getVersionAndCodenameForApiLevel(app.minApiLevel),
+                        Utils.getVersionAndCodenameForApiLevel(deviceEnvironment.sdkInt)))
                 .setNegativeButton(getString(R.string.ok)) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
                 .create()
     }
