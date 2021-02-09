@@ -23,13 +23,13 @@ class ApiConsumer {
                     .let { BufferedReader(it) }
                     .use { return Gson().fromJson(it, clazz) }
         } catch (e: IOException) {
-            throw ApiConsumerNetworkError("can't consume API interface '$url'", e)
+            throw ApiConsumerNetworkException("can't consume API interface '$url'", e)
         }
     }
 
     companion object {
         private const val GZIP = "gzip"
     }
-}
 
-private class ApiConsumerNetworkError(message: String, throwable: Throwable) : Exception(message, throwable)
+    class ApiConsumerNetworkException(message: String, throwable: Throwable) : Exception(message, throwable)
+}

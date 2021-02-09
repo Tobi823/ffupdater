@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl.fetch.github
 
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.utils.ParamRuntimeException
 import java.net.URL
 import java.util.*
 import java.util.function.Predicate
@@ -35,7 +34,7 @@ class GithubConsumer(private val apiConsumer: ApiConsumer,
             val releases = apiConsumer.consume(url, Array<Release>::class.java)
             releases.firstOrNull { validReleaseTester.test(it) }?.let { return convert(it) }
         }
-        throw ParamRuntimeException("can't find release after $tries tries - abort")
+        throw GithubConsumerException("can't find release after $tries tries - abort")
     }
 
     private fun convert(release: Release): Result {
@@ -43,27 +42,29 @@ class GithubConsumer(private val apiConsumer: ApiConsumer,
         release.assets.first { correctDownloadUrlTester.test(it) }
                 .let { return Result(release.tagName, URL(it.downloadUrl), it.fileSizeBytes) }
     }
+
+    data class Release(
+            @SerializedName("tag_name")
+            val tagName: String,
+            @SerializedName("name")
+            val name: String,
+            @SerializedName("prerelease")
+            val isPreRelease: Boolean,
+            @SerializedName("assets")
+            val assets: List<Asset>)
+
+    data class Asset(
+            @SerializedName("name")
+            val name: String,
+            @SerializedName("browser_download_url")
+            val downloadUrl: String,
+            @SerializedName("size")
+            val fileSizeBytes: Long)
+
+    data class Result(
+            val tagName: String,
+            val url: URL,
+            val fileSizeBytes: Long)
+
+    class GithubConsumerException(message: String) : Exception(message)
 }
-
-data class Release(
-        @SerializedName("tag_name")
-        val tagName: String,
-        @SerializedName("name")
-        val name: String,
-        @SerializedName("prerelease")
-        val isPreRelease: Boolean,
-        @SerializedName("assets")
-        val assets: List<Asset>)
-
-data class Asset(
-        @SerializedName("name")
-        val name: String,
-        @SerializedName("browser_download_url")
-        val downloadUrl: String,
-        @SerializedName("size")
-        val fileSizeBytes: Long)
-
-data class Result(
-        val tagName: String,
-        val url: URL,
-        val fileSizeBytes: Long)

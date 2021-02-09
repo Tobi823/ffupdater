@@ -18,23 +18,23 @@ class MozillaCiConsumer(private val apiConsumer: ApiConsumer,
                 hash = response.artifacts[apkArtifact]!!.hash,
                 url = apkArtifactUrl)
     }
+
+    data class Response(
+            @SerializedName("artifacts")
+            val artifacts: Map<String, Sha256Hash>,
+            @SerializedName("task")
+            val task: Task)
+
+    data class Sha256Hash(
+            @SerializedName("sha256")
+            var hash: String)
+
+    data class Task(
+            @SerializedName("created")
+            var created: String)
+
+    data class Result(
+            val timestamp: String,
+            val hash: String,
+            val url: URL)
 }
-
-data class Response(
-        @SerializedName("artifacts")
-        val artifacts: Map<String, Sha256Hash>,
-        @SerializedName("task")
-        val task: Task)
-
-data class Sha256Hash(
-        @SerializedName("sha256")
-        var hash: String)
-
-data class Task(
-        @SerializedName("created")
-        var created: String)
-
-data class Result(
-        val timestamp: String,
-        val hash: String,
-        val url: URL)
