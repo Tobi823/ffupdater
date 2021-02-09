@@ -26,7 +26,7 @@ public class BackgroundUpdateCheckerCreator {
     }
 
     public void startOrStopBackgroundUpdateCheck() {
-        if (settingsHelper.isAutomaticCheck()) {
+        if (settingsHelper.getAutomaticCheck()) {
             startBackgroundUpdateCheck();
         } else {
             stopBackgroundUpdateCheck();

@@ -26,7 +26,6 @@ import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 import static de.marmaro.krt.ffupdater.device.ABI.ARM;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
@@ -76,13 +75,13 @@ public class SettingsHelperTest {
     @Test
     public void isAutomaticCheck_withValueFalse_returnFalse() {
         sharedPreferences.edit().putBoolean("automaticCheck", false).commit();
-        assertFalse(new SettingsHelper(context).isAutomaticCheck());
+        assertFalse(new SettingsHelper(context).getAutomaticCheck());
     }
 
     @Test
     public void isAutomaticCheck_withValueTrue_returnTrue() {
         sharedPreferences.edit().putBoolean("automaticCheck", true).commit();
-        assertTrue(new SettingsHelper(context).isAutomaticCheck());
+        assertTrue(new SettingsHelper(context).getAutomaticCheck());
     }
 
     @Test
