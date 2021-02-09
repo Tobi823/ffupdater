@@ -36,7 +36,7 @@ import de.marmaro.krt.ffupdater.metadata.UpdateChecker;
 import de.marmaro.krt.ffupdater.notification.BackgroundUpdateCheckerCreator;
 import de.marmaro.krt.ffupdater.security.StrictModeSetup;
 import de.marmaro.krt.ffupdater.settings.SettingsHelper;
-import de.marmaro.krt.ffupdater.utils.OldDownloadedFileDeleter;
+import de.marmaro.krt.ffupdater.utils.OldDownloadsDeleter;
 import de.marmaro.krt.ffupdater.utils.ParamRuntimeException;
 import james.crasher.Crasher;
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         metadataFetcher = new AvailableMetadataFetcher(preferences, deviceEnvironment);
         connectivityManager = Objects.requireNonNull((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
         helper = new MainActivityHelper(this);
-        new OldDownloadedFileDeleter(this).delete();
+        new OldDownloadsDeleter(this).delete();
 
         // register listener
         for (App app : App.values()) {
