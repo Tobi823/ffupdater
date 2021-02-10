@@ -49,6 +49,7 @@ class InstallActivity : AppCompatActivity() {
     private var fileFingerprint: FingerprintResult? = null
     private var appFingerprint: FingerprintResult? = null
     private var freeSpaceForDownloading: Long = -1
+    private var appInstallationFailedErrorMessage = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,22 +100,18 @@ class InstallActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This method will be called when the download is ready
+     */
     private val onDownloadComplete: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.extras?.getLong(EXTRA_DOWNLOAD_ID) ?: return != downloadId) {
-                // received an older message - skip
-                return
+                return // received an older message - skip
             }
 
-            val downloadManagerStatus = downloadManager.getStatusAndProgress(downloadId).status
-            // security check; don't trick the state machine in installing the app
-            if (downloadManagerStatus == STATUS_SUCCESSFUL) {
-                check(state == State.SUCCESS_PAUSE)
-            }
-            val newState = when (downloadManagerStatus) {
-                STATUS_FAILED -> State.FAILURE_DOWNLOAD_UNSUCCESSFUL
+            val newState = when (downloadManager.getStatusAndProgress(downloadId).status) {
                 STATUS_SUCCESSFUL -> State.DOWNLOAD_WAS_SUCCESSFUL
-                else -> State.FAILURE_DOWNLOAD_UNSUCCESSFUL
+                else /*STATUS_FAILED*/ -> State.FAILURE_DOWNLOAD_UNSUCCESSFUL
             }
             restartStateMachine(newState)
         }
@@ -122,7 +119,6 @@ class InstallActivity : AppCompatActivity() {
 
     /**
      * This method will be called when the app installation is completed.
-     *
      * @param intent intent
      */
     override fun onNewIntent(intent: Intent) {
@@ -137,8 +133,8 @@ class InstallActivity : AppCompatActivity() {
             if (status == PackageInstaller.STATUS_SUCCESS) {
                 restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
             } else {
-                val errorMessage = intent.extras?.getString(PackageInstaller.EXTRA_STATUS_MESSAGE) //necessary hack
-                setText(R.id.installerFailedReason, "($status) $errorMessage")
+                val errorMessage = intent.extras?.getString(PackageInstaller.EXTRA_STATUS_MESSAGE)
+                appInstallationFailedErrorMessage = "($status) $errorMessage"
                 restartStateMachine(State.FAILURE_APP_INSTALLATION)
             }
         }
@@ -160,7 +156,6 @@ class InstallActivity : AppCompatActivity() {
         const val EXTRA_APP_NAME = "app_name"
         const val LOG_TAG = "InstallActivity"
         private const val PACKAGE_INSTALLED_ACTION = "de.marmaro.krt.ffupdater.InstallActivity.SESSION_API_PACKAGE_INSTALLED"
-        private val MAX_WAIT_TIME = Duration.ofSeconds(30)
     }
 
     private enum class State(val action: suspend (InstallActivity) -> State) {
@@ -250,8 +245,8 @@ class InstallActivity : AppCompatActivity() {
                         result.progress
 
                 when (result.status) {
-                    STATUS_FAILED -> ERROR_STOP
-                    STATUS_SUCCESSFUL -> SUCCESS_PAUSE // state machine will be restarted externally
+                    STATUS_FAILED -> FAILURE_DOWNLOAD_UNSUCCESSFUL
+                    STATUS_SUCCESSFUL -> DOWNLOAD_WAS_SUCCESSFUL
                 }
                 delay(sleepInterval)
             }
@@ -390,6 +385,7 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerFailed)
+            ia.setText(R.id.installerFailedReason, ia.appInstallationFailedErrorMessage)
             ia.downloadManager.remove(ia.downloadId)
             ERROR_STOP
         }),
