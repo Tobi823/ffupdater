@@ -11,7 +11,7 @@ import android.content.Intent
 class Autostart : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (Intent.ACTION_BOOT_COMPLETED == intent.action) {
-            BackgroundUpdateCheckerCreator(context).startOrStopBackgroundUpdateCheck()
+            BackgroundUpdateChecker.startOrStopBackgroundUpdateCheck(context)
         }
     }
 }
