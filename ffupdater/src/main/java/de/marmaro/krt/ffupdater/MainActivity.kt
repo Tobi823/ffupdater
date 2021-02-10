@@ -165,7 +165,8 @@ class MainActivity : AppCompatActivity() {
             return capabilities.hasCapability(NET_CAPABILITY_INTERNET) &&
                     capabilities.hasCapability(NET_CAPABILITY_VALIDATED)
         }
-        return connectivityManager.getActiveNetworkInfo()?.isConnected != true
+        @Suppress("DEPRECATION")
+        return connectivityManager.activeNetworkInfo?.isConnected != true
     }
 
     companion object {
