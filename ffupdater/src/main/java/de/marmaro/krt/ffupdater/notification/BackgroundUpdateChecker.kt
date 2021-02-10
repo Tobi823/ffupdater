@@ -46,14 +46,16 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
                 throw BackgroundUpdateCheckTimeoutException("fail to check $it", e)
             }
         }
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        UpdateNotificationManager(context, notificationManager).showNotifications(appsWithUpdates)
+        UpdateNotificationBuilder.showNotifications(appsWithUpdates, context)
     }
 
     private fun showErrorNotification(exception: Exception) {
         val context = applicationContext
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        ErrorNotificationManager(context, notificationManager).showNotification(exception)
+        ErrorNotificationManager(context, getNotificationManager(context)).showNotification(exception)
+    }
+
+    private fun getNotificationManager(context: Context): NotificationManager {
+        return context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
 
     companion object {
