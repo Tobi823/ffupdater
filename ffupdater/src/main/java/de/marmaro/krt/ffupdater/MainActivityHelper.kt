@@ -45,12 +45,7 @@ class MainActivityHelper(private val activity: Activity) {
         })
     }
 
-    @Deprecated("unnötige Methode")
-    fun setInstalledVersionText(app: AppList, text: String?) {
-        getInstalledVersionTextViewForApp(app).text = text
-    }
-
-    private fun getInstalledVersionTextViewForApp(app: AppList): TextView {
+    fun getInstalledVersionTextView(app: AppList): TextView {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarInstalledVersion
             FIREFOX_FOCUS -> R.id.firefoxFocusInstalledVersion
@@ -64,12 +59,7 @@ class MainActivityHelper(private val activity: Activity) {
         })
     }
 
-    @Deprecated("unnötige Methode")
-    fun setAvailableVersionText(app: AppList, text: String?) {
-        getAvailableVersionTextViewForApp(app).text = text
-    }
-
-    private fun getAvailableVersionTextViewForApp(app: AppList): TextView {
+    fun getAvailableVersionTextView(app: AppList): TextView {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarAvailableVersion
             FIREFOX_FOCUS -> R.id.firefoxFocusAvailableVersion

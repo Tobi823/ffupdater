@@ -7,6 +7,7 @@ data class UpdateCheckResult(
         val isUpdateAvailable: Boolean,
         val downloadUrl: URL,
         val version: String,
+        val displayVersion: String = "hupps", //TODO fix, Available v1; No Update available; Update available
         val metadata: Map<String, Any>) {
     companion object {
         const val FILE_HASH_SHA256 = "file_hash_sha256"
