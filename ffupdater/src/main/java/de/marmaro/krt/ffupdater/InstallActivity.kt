@@ -56,7 +56,6 @@ class InstallActivity : AppCompatActivity() {
         setContentView(R.layout.download_activity)
         Crasher(this)
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(DeviceEnvironment()))
-        registerReceiver(onDownloadComplete, IntentFilter(ACTION_DOWNLOAD_COMPLETE))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
 
@@ -72,7 +71,6 @@ class InstallActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(onDownloadComplete)
         stateJob?.cancel()
     }
 
@@ -97,23 +95,6 @@ class InstallActivity : AppCompatActivity() {
                     && state != State.SUCCESS_STOP) {
                 state = state.action(this@InstallActivity)
             }
-        }
-    }
-
-    /**
-     * This method will be called when the download is ready
-     */
-    private val onDownloadComplete: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            if (intent.extras?.getLong(EXTRA_DOWNLOAD_ID) ?: return != downloadId) {
-                return // received an older message - skip
-            }
-
-            val newState = when (downloadManager.getStatusAndProgress(downloadId).status) {
-                STATUS_SUCCESSFUL -> State.DOWNLOAD_WAS_SUCCESSFUL
-                else /*STATUS_FAILED*/ -> State.FAILURE_DOWNLOAD_UNSUCCESSFUL
-            }
-            restartStateMachine(newState)
         }
     }
 
