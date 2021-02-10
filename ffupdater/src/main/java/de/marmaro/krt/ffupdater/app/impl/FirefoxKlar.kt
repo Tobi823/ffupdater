@@ -4,11 +4,11 @@ import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.UnsupportedAbiException
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.utils.ParamRuntimeException
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
@@ -36,7 +36,7 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseApp() {
         val abiString = when (abi) {
             ABI.AARCH64 -> "aarch64"
             ABI.ARM -> "arm"
-            ABI.X86, ABI.X86_64 -> throw ParamRuntimeException("unsupported ABI %s", abi)
+            ABI.X86, ABI.X86_64 -> throw UnsupportedAbiException("unsupported ABI $abi")
         }
         val mozillaCiConsumer = MozillaCiConsumer(
                 apiConsumer = apiConsumer,
