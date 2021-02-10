@@ -3,17 +3,18 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.BaseAppImpl
+import de.marmaro.krt.ffupdater.app.BaseAppDetail
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest
  * https://www.apkmirror.com/apk/mozilla/firefox/
  */
-class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppImpl() {
+class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "org.mozilla.firefox"
     override val displayTitle = R.string.firefox_release_title
     override val displayDescription = R.string.firefox_release_description
@@ -31,8 +32,9 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppImpl() {
         return getInstalledVersionFromSharedPreferences(context, INSTALLED_VERSION_KEY)
     }
 
-    override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
-        val abiString = when (abi) {
+    override fun updateCheck(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckResult {
+        check(deviceEnvironment.abis.isNotEmpty())
+        val abiString = when (deviceEnvironment.abis[0]) {
             ABI.AARCH64 -> "arm64-v8a"
             ABI.ARM -> "armeabi-v7a"
             ABI.X86 -> "x86"

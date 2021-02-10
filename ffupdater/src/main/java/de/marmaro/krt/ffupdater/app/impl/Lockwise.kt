@@ -3,18 +3,19 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.BaseAppImpl
+import de.marmaro.krt.ffupdater.app.BaseAppDetail
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  */
-class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppImpl() {
+class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "mozilla.lockbox"
     override val displayTitle = R.string.lockwise_title
     override val displayDescription = R.string.lockwise_description
@@ -32,7 +33,7 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppImpl() {
         return getInstalledVersionFromPackageManager(context)
     }
 
-    override fun updateCheck(context: Context, abi: ABI): UpdateCheckResult {
+    override fun updateCheck(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckResult {
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "mozilla-lockwise",

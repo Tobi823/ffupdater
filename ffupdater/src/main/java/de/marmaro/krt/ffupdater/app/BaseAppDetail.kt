@@ -3,13 +3,13 @@ package de.marmaro.krt.ffupdater.app
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.preference.PreferenceManager
-import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
-abstract class BaseAppImpl : AppDetail {
+abstract class BaseAppDetail : AppDetail {
     override fun isInstalled(context: Context): Boolean {
         return try {
             context.packageManager.getPackageInfo(packageName, 0)
@@ -37,7 +37,11 @@ abstract class BaseAppImpl : AppDetail {
         preferences.edit().putString(key, value).apply()
     }
 
-    override fun updateCheckAsync(context: Context, abi: ABI): Deferred<UpdateCheckResult> {
-        return GlobalScope.async(start = CoroutineStart.LAZY) { updateCheck(context, abi) }
+    override fun updateCheckAsync(context: Context,
+                                  deviceEnvironment: DeviceEnvironment): Deferred<UpdateCheckResult> {
+        // TODO do not use GlobalScope.async
+        return GlobalScope.async(start = CoroutineStart.LAZY) {
+            updateCheck(context, deviceEnvironment)
+        }
     }
 }
