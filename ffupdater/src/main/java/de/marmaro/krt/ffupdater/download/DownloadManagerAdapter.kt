@@ -94,8 +94,8 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
      * @param id id
      * @return downloaded file
      */
-    fun getFileForDownloadedFile(id: Long): File? {
-        return files[id]
+    fun getFileForDownloadedFile(id: Long): File {
+        return files[id]!!
     }
 
     class StatusProgress(val status: Int, val progress: Int)
