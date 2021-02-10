@@ -53,6 +53,7 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
+                displayVersion = version,
                 metadata = mapOf(UpdateCheckResult.FILE_SIZE_BYTES to result.fileSizeBytes))
     }
 

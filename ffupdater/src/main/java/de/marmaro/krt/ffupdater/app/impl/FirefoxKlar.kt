@@ -51,6 +51,7 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
+                displayVersion = "? ($version)",
                 metadata = mapOf(UpdateCheckResult.FILE_HASH_SHA256 to result.hash))
     }
 

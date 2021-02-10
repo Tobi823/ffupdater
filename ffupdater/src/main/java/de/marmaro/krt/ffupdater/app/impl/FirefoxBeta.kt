@@ -52,6 +52,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
+                displayVersion = "? ($version)", //TODO nochmal checken, ob Ausgabe ok
                 metadata = mapOf(FILE_HASH_SHA256 to result.hash))
     }
 

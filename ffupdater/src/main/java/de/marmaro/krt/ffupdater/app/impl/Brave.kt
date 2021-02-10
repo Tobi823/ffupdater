@@ -58,6 +58,7 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
+                displayVersion = version,
                 metadata = mapOf(FILE_SIZE_BYTES to result.fileSizeBytes))
     }
 
