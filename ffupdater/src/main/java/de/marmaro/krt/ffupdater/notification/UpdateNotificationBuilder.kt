@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.notification
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_DEFAULT
@@ -29,14 +28,12 @@ object UpdateNotificationBuilder {
         val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
         val appTitle: String = context.getString(app.impl.displayTitle)
 
-        val builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            createNotificationChannel(getChannelId(app), appTitle)
+        val notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotificationChannel(getChannelId(app), appTitle, context)
             NotificationCompat.Builder(context, getChannelId(app))
         } else {
             NotificationCompat.Builder(context)
         }
-
-        val notification: Notification = builder
                 .setSmallIcon(R.mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
                 .setContentTitle(context.getString(R.string.update_notification_title, appTitle))

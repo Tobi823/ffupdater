@@ -21,8 +21,8 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         return try {
             doBackgroundCheck()
             Result.success()
-        } catch (exception: Exception) {
-            showErrorNotification(exception)
+        } catch (e: Exception) {
+            ErrorNotificationBuilder.showNotification(applicationContext, e)
             Result.failure()
         }
     }
@@ -38,24 +38,11 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
             try {
                 val result: UpdateCheckResult = it.impl.updateCheckAsync(context, device).await()
                 result.isUpdateAvailable
-            } catch (e: ExecutionException) {
+            } catch (e: Exception) {
                 throw BackgroundUpdateCheckFailedException("fail to check $it", e)
-            } catch (e: InterruptedException) {
-                throw BackgroundUpdateCheckInterruptedException("fail to check $it", e)
-            } catch (e: TimeoutException) {
-                throw BackgroundUpdateCheckTimeoutException("fail to check $it", e)
             }
         }
         UpdateNotificationBuilder.showNotifications(appsWithUpdates, context)
-    }
-
-    private fun showErrorNotification(exception: Exception) {
-        val context = applicationContext
-        ErrorNotificationManager(context, getNotificationManager(context)).showNotification(exception)
-    }
-
-    private fun getNotificationManager(context: Context): NotificationManager {
-        return context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
 
     companion object {
@@ -90,15 +77,6 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
 
     // TODO private val TIMEOUT = Duration.ofSeconds(30) muss noch implementiert werden
 
-    open class BackgroundUpdateCheckException(message: String, throwable: Throwable) :
-            Exception(message, throwable)
-
     class BackgroundUpdateCheckFailedException(message: String, throwable: Throwable) :
-            BackgroundUpdateCheckException(message, throwable)
-
-    class BackgroundUpdateCheckInterruptedException(message: String, throwable: Throwable) :
-            BackgroundUpdateCheckException(message, throwable)
-
-    class BackgroundUpdateCheckTimeoutException(message: String, throwable: Throwable) :
-            BackgroundUpdateCheckException(message, throwable)
+            Exception(message, throwable)
 }
