@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.BaseAppImpl
 import de.marmaro.krt.ffupdater.app.UnsupportedAbiException
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult.Companion.FILE_HASH_SHA256
@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/
  */
-class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseApp() {
+class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseAppImpl() {
     override val packageName = "org.mozilla.focus"
     override val displayTitle = R.string.firefox_focus_title
     override val displayDescription = R.string.firefox_focus_description

@@ -13,20 +13,20 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AppList
+import de.marmaro.krt.ffupdater.app.App
 
 object UpdateNotificationBuilder {
 
-    fun showNotifications(apps: List<AppList>, context: Context) {
+    fun showNotifications(apps: List<App>, context: Context) {
         apps.forEach { showNotification(it, context) }
-        AppList.values().filter { !apps.contains(it) }.forEach { hideNotification(it, context) }
+        App.values().filter { !apps.contains(it) }.forEach { hideNotification(it, context) }
     }
 
-    private fun showNotification(app: AppList, context: Context) {
+    private fun showNotification(app: App, context: Context) {
         val intent = Intent(context, InstallActivity::class.java)
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name)
         val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
-        val appTitle: String = context.getString(app.impl.displayTitle)
+        val appTitle: String = context.getString(app.detail.displayTitle)
 
         val notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(getChannelId(app), appTitle, context)
@@ -44,35 +44,35 @@ object UpdateNotificationBuilder {
         getNotificationManager(context).notify(getNotificationId(app), notification)
     }
 
-    private fun hideNotification(app: AppList, context: Context) {
+    private fun hideNotification(app: App, context: Context) {
         getNotificationManager(context).cancel(getNotificationId(app))
     }
 
-    private fun getChannelId(app: AppList): String {
+    private fun getChannelId(app: App): String {
         return when (app) {
-            AppList.FIREFOX_RELEASE -> "update_notification_channel__firefox_release"
-            AppList.FIREFOX_BETA -> "update_notification_channel__firefox_beta"
-            AppList.FIREFOX_NIGHTLY -> "update_notification_channel__firefox_nightly"
-            AppList.FIREFOX_FOCUS -> "update_notification_channel__firefox_focus"
-            AppList.FIREFOX_KLAR -> "update_notification_channel__firefox_klar"
-            AppList.FIREFOX_LITE -> "update_notification_channel__firefox_lite"
-            AppList.LOCKWISE -> "update_notification_channel__lockwise"
-            AppList.BRAVE -> "update_notification_channel__brave"
-            AppList.ICERAVEN -> "update_notification_channel__iceraven"
+            App.FIREFOX_RELEASE -> "update_notification_channel__firefox_release"
+            App.FIREFOX_BETA -> "update_notification_channel__firefox_beta"
+            App.FIREFOX_NIGHTLY -> "update_notification_channel__firefox_nightly"
+            App.FIREFOX_FOCUS -> "update_notification_channel__firefox_focus"
+            App.FIREFOX_KLAR -> "update_notification_channel__firefox_klar"
+            App.FIREFOX_LITE -> "update_notification_channel__firefox_lite"
+            App.LOCKWISE -> "update_notification_channel__lockwise"
+            App.BRAVE -> "update_notification_channel__brave"
+            App.ICERAVEN -> "update_notification_channel__iceraven"
         }
     }
 
-    private fun getNotificationId(app: AppList): Int {
+    private fun getNotificationId(app: App): Int {
         return when (app) {
-            AppList.FIREFOX_RELEASE -> 200
-            AppList.FIREFOX_BETA -> 201
-            AppList.FIREFOX_NIGHTLY -> 202
-            AppList.FIREFOX_FOCUS -> 203
-            AppList.FIREFOX_KLAR -> 204
-            AppList.FIREFOX_LITE -> 205
-            AppList.LOCKWISE -> 206
-            AppList.BRAVE -> 207
-            AppList.ICERAVEN -> 208
+            App.FIREFOX_RELEASE -> 200
+            App.FIREFOX_BETA -> 201
+            App.FIREFOX_NIGHTLY -> 202
+            App.FIREFOX_FOCUS -> 203
+            App.FIREFOX_KLAR -> 204
+            App.FIREFOX_LITE -> 205
+            App.LOCKWISE -> 206
+            App.BRAVE -> 207
+            App.ICERAVEN -> 208
         }
     }
 

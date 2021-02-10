@@ -9,7 +9,7 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
-abstract class BaseApp : App {
+abstract class BaseAppImpl : AppDetail {
     override fun isInstalled(context: Context): Boolean {
         return try {
             context.packageManager.getPackageInfo(packageName, 0)

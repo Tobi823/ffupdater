@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.BaseAppImpl
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
@@ -14,7 +14,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 /**
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  */
-class Lockwise(private val apiConsumer: ApiConsumer) : BaseApp() {
+class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppImpl() {
     override val packageName = "mozilla.lockbox"
     override val displayTitle = R.string.lockwise_title
     override val displayDescription = R.string.lockwise_description

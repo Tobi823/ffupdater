@@ -5,11 +5,11 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import de.marmaro.krt.ffupdater.app.AppList
-import de.marmaro.krt.ffupdater.app.AppList.*
+import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.App.*
 
 class MainActivityHelper(private val activity: Activity) {
-    fun getAppCardViewForApp(app: AppList): CardView {
+    fun getAppCardViewForApp(app: App): CardView {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarCard
             FIREFOX_FOCUS -> R.id.firefoxFocusCard
@@ -23,15 +23,15 @@ class MainActivityHelper(private val activity: Activity) {
         })
     }
 
-    fun enableDownloadButton(app: AppList) {
+    fun enableDownloadButton(app: App) {
         getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_orange)
     }
 
-    fun disableDownloadButton(app: AppList) {
+    fun disableDownloadButton(app: App) {
         getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_grey)
     }
 
-    fun getDownloadButtonForApp(app: AppList): ImageButton {
+    fun getDownloadButtonForApp(app: App): ImageButton {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarDownloadButton
             FIREFOX_FOCUS -> R.id.firefoxFocusDownloadButton
@@ -45,7 +45,7 @@ class MainActivityHelper(private val activity: Activity) {
         })
     }
 
-    fun getInstalledVersionTextView(app: AppList): TextView {
+    fun getInstalledVersionTextView(app: App): TextView {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarInstalledVersion
             FIREFOX_FOCUS -> R.id.firefoxFocusInstalledVersion
@@ -59,7 +59,7 @@ class MainActivityHelper(private val activity: Activity) {
         })
     }
 
-    fun getAvailableVersionTextView(app: AppList): TextView {
+    fun getAvailableVersionTextView(app: App): TextView {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarAvailableVersion
             FIREFOX_FOCUS -> R.id.firefoxFocusAvailableVersion
@@ -73,7 +73,7 @@ class MainActivityHelper(private val activity: Activity) {
         })
     }
 
-    fun getInfoButtonForApp(app: AppList): View {
+    fun getInfoButtonForApp(app: App): View {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarInfoButton
             FIREFOX_FOCUS -> R.id.firefoxFocusInfoButton

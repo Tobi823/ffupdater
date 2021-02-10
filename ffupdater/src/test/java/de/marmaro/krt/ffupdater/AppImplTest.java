@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by Tobiwan on 21.05.2020.
  */
-public class AppTest {
+public class AppImplTest {
 
     @Test
     public void isCompatibleWithDeviceAbi_FirefoxFocus_returnTrueForArm() {

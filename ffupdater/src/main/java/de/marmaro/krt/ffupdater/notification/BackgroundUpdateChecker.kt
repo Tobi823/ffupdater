@@ -1,16 +1,13 @@
 package de.marmaro.krt.ffupdater.notification
 
-import android.app.NotificationManager
 import android.content.Context
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
-import de.marmaro.krt.ffupdater.app.AppList
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit.MINUTES
-import java.util.concurrent.TimeoutException
 
 /**
  * This class will call the [WorkManager] to check regularly for app updates in the background.
@@ -31,12 +28,12 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         val device = DeviceEnvironment().abis[0] //TODO
         val context = applicationContext
         val disabledApps = SettingsHelper(context).disabledApps
-        val appsForChecking = AppList.values()
+        val appsForChecking = App.values()
                 .filter { !disabledApps.contains(it) }
-                .filter { it.impl.isInstalled(context) }
+                .filter { it.detail.isInstalled(context) }
         val appsWithUpdates = appsForChecking.filter {
             try {
-                val result: UpdateCheckResult = it.impl.updateCheckAsync(context, device).await()
+                val result: UpdateCheckResult = it.detail.updateCheckAsync(context, device).await()
                 result.isUpdateAvailable
             } catch (e: Exception) {
                 throw BackgroundUpdateCheckFailedException("fail to check $it", e)

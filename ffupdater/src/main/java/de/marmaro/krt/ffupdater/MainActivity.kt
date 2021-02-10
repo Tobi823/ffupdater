@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
-import de.marmaro.krt.ffupdater.app.AppList
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog
@@ -47,16 +47,16 @@ class MainActivity : AppCompatActivity() {
         Migrator().migrate(this)
         OldDownloadsDeleter.delete(this)
 
-        for (app in AppList.values()) {
+        for (app in App.values()) {
             helper.getInfoButtonForApp(app).setOnClickListener {
-                AppInfoDialog(app.impl).show(supportFragmentManager)
+                AppInfoDialog(app.detail).show(supportFragmentManager)
             }
             helper.getDownloadButtonForApp(app).setOnClickListener {
                 downloadApp(app)
             }
         }
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            InstallAppDialog { app: AppList -> downloadApp(app) }.show(supportFragmentManager)
+            InstallAppDialog { app: App -> downloadApp(app) }.show(supportFragmentManager)
         }
         swipeRefreshLayout.setOnRefreshListener { updateUI(true) }
     }
@@ -102,10 +102,10 @@ class MainActivity : AppCompatActivity() {
         swipeRefreshLayout.isRefreshing = true
         val abi = DeviceEnvironment().abis[0]
         val jobs = ConcurrentLinkedQueue<Job>()
-        for (app in AppList.values()) {
-            if (app.impl.isInstalled(this)) {
+        for (app in App.values()) {
+            if (app.detail.isInstalled(this)) {
                 helper.getAppCardViewForApp(app).visibility = View.VISIBLE
-                helper.getInstalledVersionTextView(app).text = app.impl.getDisplayInstalledVersion(this)
+                helper.getInstalledVersionTextView(app).text = app.detail.getDisplayInstalledVersion(this)
                 helper.getAvailableVersionTextView(app).text = getString(R.string.available_version_loading)
                 jobs.add(updateUIForApp(app, DeviceEnvironment(), crashOnException))
             } else {
@@ -118,10 +118,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUIForApp(app: AppList, deviceEnvironment: DeviceEnvironment, crashOnException: Boolean): Job {
+    private fun updateUIForApp(app: App, deviceEnvironment: DeviceEnvironment, crashOnException: Boolean): Job {
         return lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val result = app.impl.updateCheckAsync(applicationContext, deviceEnvironment.abis[0]).await()
+                val result = app.detail.updateCheckAsync(applicationContext, deviceEnvironment.abis[0]).await()
                 lifecycleScope.launch(Dispatchers.Main) {
                     helper.getAvailableVersionTextView(app).text = result.displayVersion
                     if (result.isUpdateAvailable) {
@@ -143,7 +143,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun downloadApp(app: AppList) {
+    private fun downloadApp(app: App) {
         if (isNetworkUnavailable()) {
             Snackbar.make(findViewById(R.id.coordinatorLayout),
                     R.string.not_connected_to_internet,

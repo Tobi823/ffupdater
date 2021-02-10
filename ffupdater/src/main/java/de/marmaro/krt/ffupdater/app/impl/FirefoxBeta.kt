@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.BaseAppImpl
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult.Companion.FILE_HASH_SHA256
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
@@ -14,7 +14,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
  */
-class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseApp() {
+class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppImpl() {
     override val packageName = "org.mozilla.firefox_beta"
     override val displayTitle = R.string.firefox_beta_title
     override val displayDescription = R.string.firefox_beta_description

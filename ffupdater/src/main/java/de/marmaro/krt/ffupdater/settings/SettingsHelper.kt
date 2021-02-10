@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.AppList
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import java.time.Duration
 import kotlin.Int.Companion.MAX_VALUE
@@ -45,12 +44,12 @@ class SettingsHelper(context: Context) {
      *
      * @return the regular background update check should ignore these apps
      */
-    val disabledApps: List<AppList>
+    val disabledApps: List<App>
         get() {
             val disableApps = preferences.getStringSet("disableApps", null) ?: setOf()
             return disableApps.mapNotNull {
                 try {
-                    AppList.valueOf(it)
+                    App.valueOf(it)
                 } catch (e: IllegalArgumentException) {
                     null
                 }

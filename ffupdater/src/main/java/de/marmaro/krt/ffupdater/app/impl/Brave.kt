@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.BaseAppImpl
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult.Companion.FILE_SIZE_BYTES
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 /**
  * https://api.github.com/repos/brave/brave-browser/releases
  */
-class Brave(private val apiConsumer: ApiConsumer) : BaseApp() {
+class Brave(private val apiConsumer: ApiConsumer) : BaseAppImpl() {
     override val packageName = "com.brave.browser"
     override val displayTitle = R.string.brave_title
     override val displayDescription = R.string.brave_description

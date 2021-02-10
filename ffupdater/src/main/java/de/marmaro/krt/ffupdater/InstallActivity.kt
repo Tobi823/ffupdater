@@ -17,7 +17,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
-import de.marmaro.krt.ffupdater.app.AppList
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
@@ -41,7 +41,7 @@ import java.util.concurrent.*
 class InstallActivity : AppCompatActivity() {
     private var downloadManager: DownloadManagerAdapter = DownloadManagerAdapter(getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager)
     private var fingerprintValidator = FingerprintValidator(packageManager)
-    private var app: AppList? = null
+    private var app: App? = null
     private var downloadId: Long = -1
     private var state = State.SUCCESS_PAUSE
     private var stateJob: Job? = null
@@ -59,7 +59,7 @@ class InstallActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
 
-        app = AppList.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run {
+        app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run {
             finish()
             return
         })
@@ -142,8 +142,8 @@ class InstallActivity : AppCompatActivity() {
     private enum class State(val action: suspend (InstallActivity) -> State) {
         START({ ia ->
             val app = ia.app!!
-            if (app.impl.isInstalled(ia)) {
-                if (ia.fingerprintValidator.checkInstalledApp(app.impl).isValid) {
+            if (app.detail.isInstalled(ia)) {
+                if (ia.fingerprintValidator.checkInstalledApp(app.detail).isValid) {
                     INSTALLED_APP_SIGNATURE_CHECKED
                 }
             }
@@ -183,15 +183,15 @@ class InstallActivity : AppCompatActivity() {
             val app = ia.app!!
             ia.show(R.id.fetchUrl)
             ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.fetch_url_for_download,
-                    ia.getString(app.impl.displayDownloadSource)))
+                    ia.getString(app.detail.displayDownloadSource)))
             try {
-                val result = app.impl.updateCheckAsync(ia, DeviceEnvironment().abis[0]).await()
+                val result = app.detail.updateCheckAsync(ia, DeviceEnvironment().abis[0]).await()
                 ia.updateCheckResult = result
                 ia.hide(R.id.fetchUrl)
                 ia.show(R.id.fetchedUrlSuccess)
                 ia.setText(R.id.fetchedUrlSuccessTextView,
                         ia.getString(R.string.fetched_url_for_download_successfully,
-                                ia.getString(app.impl.displayDownloadSource)))
+                                ia.getString(app.detail.displayDownloadSource)))
                 AVAILABLE_METADATA_IS_FETCHED
             } catch (e: Exception) {
                 throw InstallActivityFetchException("fail to fetch $app", e)
@@ -202,7 +202,7 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.downloadingFile)
             val downloadUrl = ia.updateCheckResult!!.downloadUrl
             ia.setText(R.id.downloadingFileUrl, downloadUrl.toString())
-            val displayTitle = ia.getString(ia.app!!.impl.displayTitle)
+            val displayTitle = ia.getString(ia.app!!.detail.displayTitle)
             ia.downloadId = ia.downloadManager.enqueue(ia, downloadUrl, displayTitle)
             DOWNLOAD_IS_ENQUEUED
         }),
@@ -243,7 +243,7 @@ class InstallActivity : AppCompatActivity() {
 
             val file = ia.downloadManager.getFileForDownloadedFile(ia.downloadId)
             val fingerprint = ia.lifecycleScope.async {
-                ia.fingerprintValidator.checkApkFile(file, ia.app!!.impl)
+                ia.fingerprintValidator.checkApkFile(file, ia.app!!.detail)
             }.await()
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
@@ -294,7 +294,7 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerSuccess)
-            ia.app!!.impl.installationCallback(ia, ia.updateCheckResult!!.version)
+            ia.app!!.detail.installationCallback(ia, ia.updateCheckResult!!.version)
             ia.downloadManager.remove(ia.downloadId)
             APP_INSTALLATION_HAS_BEEN_REGISTERED
         }),
@@ -302,7 +302,7 @@ class InstallActivity : AppCompatActivity() {
         APP_INSTALLATION_HAS_BEEN_REGISTERED({ ia ->
             ia.show(R.id.verifyInstalledFingerprint)
             val fingerprint = ia.lifecycleScope.async {
-                ia.fingerprintValidator.checkInstalledApp(ia.app!!.impl)
+                ia.fingerprintValidator.checkInstalledApp(ia.app!!.detail)
             }.await()
             ia.appFingerprint = fingerprint
             ia.hide(R.id.verifyInstalledFingerprint)
@@ -357,7 +357,7 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadBad)
             ia.setText(R.id.fingerprintDownloadBadHashActual, ia.fileFingerprint?.hexString ?: "")
-            ia.setText(R.id.fingerprintDownloadBadHashExpected, ia.app!!.impl.signatureHash)
+            ia.setText(R.id.fingerprintDownloadBadHashExpected, ia.app!!.detail.signatureHash)
             ia.show(R.id.installerFailed)
             ERROR_STOP
         }),
@@ -374,7 +374,7 @@ class InstallActivity : AppCompatActivity() {
         FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID({ ia ->
             ia.show(R.id.fingerprintInstalledBad)
             ia.setText(R.id.fingerprintInstalledBadHashActual, ia.appFingerprint?.hexString ?: "")
-            ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app!!.impl.signatureHash)
+            ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app!!.detail.signatureHash)
             ERROR_STOP
         }),
 

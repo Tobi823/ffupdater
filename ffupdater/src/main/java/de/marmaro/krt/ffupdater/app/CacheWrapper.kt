@@ -4,7 +4,7 @@ import android.content.Context
 import de.marmaro.krt.ffupdater.device.ABI
 import kotlinx.coroutines.Deferred
 
-class CacheWrapper(val delegate: App) : App by delegate {
+class CacheWrapper(private val delegate: AppDetail) : AppDetail by delegate {
     private var cache: Deferred<UpdateCheckResult>? = null
     private var cacheTimestamp: Long = 0
 

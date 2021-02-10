@@ -2,16 +2,13 @@ package de.marmaro.krt.ffupdater
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
-import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import de.marmaro.krt.ffupdater.notification.BackgroundUpdateCheckerCreator
+import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import de.marmaro.krt.ffupdater.utils.Utils
 import java.util.*
 
 /**
@@ -31,7 +28,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        BackgroundUpdateCheckerCreator(this).startOrStopBackgroundUpdateCheck()
+        BackgroundUpdateChecker.startOrStopBackgroundUpdateCheck(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
