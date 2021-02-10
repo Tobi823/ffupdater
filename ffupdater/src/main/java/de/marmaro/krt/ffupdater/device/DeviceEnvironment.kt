@@ -18,11 +18,13 @@ class DeviceEnvironment constructor(
                     "armeabi-v7a" -> ABI.ARM
                     "x86_64" -> ABI.X86_64
                     "x86" -> ABI.X86
-                    else -> throw UnknownAbiException()
+                    else -> throw UnknownAbiException("unknown ABI '$it'")
                 }
             }
         }
     }
+
+    class UnknownAbiException(message: String) : Exception(message)
 }
 
 /**
@@ -36,4 +38,3 @@ enum class ABI {
     AARCH64, ARM, X86, X86_64
 }
 
-private class UnknownAbiException : Exception()
