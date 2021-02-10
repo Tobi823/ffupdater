@@ -16,12 +16,12 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
  * Allow the user to select an app from the dialog to install.
  * Show warning or error message (if ABI is not supported) if necessary.
  */
-class InstallAppDialog(private val downloadCallback: Consumer<App>) : DialogFragment() {
+class InstallAppDialog(private val downloadCallback: Consumer<AppList>) : DialogFragment() {
     private val deviceEnvironment = DeviceEnvironment()
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
-        val apps: List<App> = AppList.values().map { it.impl }.filterNot { it.isInstalled(context) }
-        val names: Array<CharSequence> = apps.map { context.getString(it.displayTitle) }.toTypedArray()
+        val apps: List<AppList> = AppList.values().filterNot { it.impl.isInstalled(context) }
+        val names: Array<CharSequence> = apps.map { context.getString(it.impl.displayTitle) }.toTypedArray()
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.install_application)
                 .setItems(names) { _: DialogInterface, which: Int ->
@@ -30,19 +30,19 @@ class InstallAppDialog(private val downloadCallback: Consumer<App>) : DialogFrag
                 .create()
     }
 
-    private fun handleAppInstallation(app: App) {
+    private fun handleAppInstallation(app: AppList) {
         // do not install an app which incompatible ABIs
-        if (deviceEnvironment.abis.intersect(app.supportedAbis).isEmpty()) {
+        if (deviceEnvironment.abis.intersect(app.impl.supportedAbis).isEmpty()) {
             UnsupportedAbiDialog().show(parentFragmentManager)
             return
         }
         // do not install an app which require a newer Android version
-        if (deviceEnvironment.sdkInt < app.minApiLevel) {
+        if (deviceEnvironment.sdkInt < app.impl.minApiLevel) {
             DeviceTooOldDialog(app, deviceEnvironment).show(parentFragmentManager)
             return
         }
         // if the app has a warning, then show the warning
-        if (app.displayWarning != null) {
+        if (app.impl.displayWarning != null) {
             InstallationWarningAppDialog(downloadCallback, app).show(parentFragmentManager)
             return
         }

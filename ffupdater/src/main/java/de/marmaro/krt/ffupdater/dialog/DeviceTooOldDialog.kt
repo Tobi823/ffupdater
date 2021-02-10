@@ -8,19 +8,20 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.AppList
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.utils.Utils
 
 /**
  * Show the user that the app could not be installed because the operating system is too old.
  */
-class DeviceTooOldDialog(private val app: App,
+class DeviceTooOldDialog(private val app: AppList,
                          private val deviceEnvironment: DeviceEnvironment) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.device_too_old_dialog_title)
                 .setMessage(getString(R.string.device_too_old_dialog_message,
-                        Utils.getVersionAndCodenameForApiLevel(app.minApiLevel),
+                        Utils.getVersionAndCodenameForApiLevel(app.impl.minApiLevel),
                         Utils.getVersionAndCodenameForApiLevel(deviceEnvironment.sdkInt)))
                 .setNegativeButton(getString(R.string.ok)) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
                 .create()

@@ -31,12 +31,7 @@ class MainActivityHelper(private val activity: Activity) {
         getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_grey)
     }
 
-    @Deprecated("unnötige Methode")
-    fun registerDownloadButtonOnClickListener(app: AppList, listener: View.OnClickListener?) {
-        getDownloadButtonForApp(app).setOnClickListener(listener)
-    }
-
-    private fun getDownloadButtonForApp(app: AppList): ImageButton {
+    fun getDownloadButtonForApp(app: AppList): ImageButton {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarDownloadButton
             FIREFOX_FOCUS -> R.id.firefoxFocusDownloadButton
@@ -88,12 +83,7 @@ class MainActivityHelper(private val activity: Activity) {
         })
     }
 
-    @Deprecated("unnötige Methode")
-    fun registerInfoButtonOnClickListener(app: AppList, listener: View.OnClickListener?) {
-        getInfoButtonForApp(app).setOnClickListener(listener)
-    }
-
-    private fun getInfoButtonForApp(app: AppList): View {
+    fun getInfoButtonForApp(app: AppList): View {
         return activity.findViewById(when (app) {
             FIREFOX_KLAR -> R.id.firefoxKlarInfoButton
             FIREFOX_FOCUS -> R.id.firefoxFocusInfoButton
