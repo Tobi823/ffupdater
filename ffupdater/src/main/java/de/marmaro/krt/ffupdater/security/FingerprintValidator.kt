@@ -72,8 +72,8 @@ class FingerprintValidator(private val packageManager: PackageManager) {
                 isValid = (current == app.signatureHash),
                 hexString = current)
     }
+
+    class FingerprintResult(val isValid: Boolean, val hexString: String)
+
+    class UnableCheckApkException(message: String, throwable: Throwable) : Exception(message, throwable)
 }
-
-class FingerprintResult(val isValid: Boolean, val hexString: String)
-
-private class UnableCheckApkException(message: String, throwable: Throwable) : Exception(message, throwable)
