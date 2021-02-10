@@ -5,6 +5,7 @@ import android.app.DownloadManager.*
 import android.app.PendingIntent
 import android.content.*
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -18,8 +19,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
-import de.marmaro.krt.ffupdater.app.AppList
 import app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.AppList
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
@@ -27,7 +28,6 @@ import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import james.crasher.Crasher
 import kotlinx.coroutines.*
 import org.apache.commons.codec.binary.ApacheCodecHex
-import java.io.File
 import java.io.IOException
 import java.io.InputStream
 import java.time.Duration
@@ -46,7 +46,7 @@ class InstallActivity : AppCompatActivity() {
     private var fingerprintValidator = FingerprintValidator(packageManager)
     private var app: AppList? = null
     private var downloadId: Long = -1
-    private var state = State.START
+    private var state = State.SUCCESS_STOP
     private var stateJob: Job? = null
     private var updateCheckResult: UpdateCheckResult? = null
 
@@ -55,7 +55,7 @@ class InstallActivity : AppCompatActivity() {
         setContentView(R.layout.download_activity)
         Crasher(this)
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(DeviceEnvironment()))
-        registerReceiver(onDownloadComplete, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+        registerReceiver(onDownloadComplete, IntentFilter(ACTION_DOWNLOAD_COMPLETE))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
 
@@ -63,13 +63,10 @@ class InstallActivity : AppCompatActivity() {
             finish()
             return
         })
-        findViewById<View>(R.id.installConfirmationButton).setOnClickListener { install() }
-
-        stateJob = lifecycleScope.launch(Dispatchers.Main) {
-            executeStateMachine()
+        findViewById<View>(R.id.installConfirmationButton).setOnClickListener {
+            restartStateMachine(State.USER_HAS_TRIGGERED_INSTALLATION_PROCESS)
         }
-
-        fetchAvailableMetadata()
+        restartStateMachine(State.START)
     }
 
     override fun onDestroy() {
@@ -86,67 +83,19 @@ class InstallActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private suspend fun executeStateMachine() {
-        while (state != State.ERROR_STOP && state != State.SUCCESS_STOP) {
-            state = state.action(this)
+    private fun restartStateMachine(jumpDestination: State) {
+        // security check to prevent a illegal restart
+        if (state != State.SUCCESS_STOP) {
+            return
+        }
+        stateJob?.cancel()
+        state = jumpDestination
+        stateJob = lifecycleScope.launch(Dispatchers.Main) {
+            while (state != State.ERROR_STOP && state != State.SUCCESS_STOP) {
+                state = state.action(this@InstallActivity)
+            }
         }
     }
-
-    private fun fetchAvailableMetadata() {
-//        show(R.id.fetchUrl)
-//        setText(R.id.fetchUrlTextView, getString(
-//                R.string.fetch_url_for_download,
-//                app.getDownloadSource(this)))
-//        val future: Future<AvailableMetadata> = availableMetadataFetcher.fetchMetadata(app)
-//        Thread {
-//            Thread.setDefaultUncaughtExceptionHandler(crasher)
-//            try {
-//                metadata = future[MAX_WAIT_TIME.seconds, TimeUnit.SECONDS]
-//                hide(R.id.fetchUrl)
-//                show(R.id.fetchedUrlSuccess)
-//                setText(R.id.fetchedUrlSuccessTextView, getString(R.string.fetched_url_for_download_successfully,
-//                        app.getDownloadSource(this)))
-        downloadApplication()
-//            } catch (e: Exception) {
-//                throw Exception("Failed to fetch the download url from ${app.getDownloadSource(this)}", e) //TODO
-//            }
-//        }.start()
-    }
-
-    private fun downloadApplication() {
-//        show(R.id.downloadingFile)
-//        setText(R.id.downloadingFileUrl, metadata.getDownloadUrl().toString())
-//        downloadId = downloadManager.enqueue(this, metadata.getDownloadUrl(), app.getTitle(this))
-//        activeDownloadStatusRefresher()
-    }
-
-//    private fun activeDownloadStatusRefresher() {
-//        val start = LocalDateTime.now()
-//        val maxWaitingTime = Duration.ofMinutes(5)
-//        val executor = Executors.newSingleThreadScheduledExecutor()
-//        executor.scheduleWithFixedDelay({
-//            Thread.setDefaultUncaughtExceptionHandler(crasher)
-//            val result: DownloadManagerAdapter.StatusProgress = downloadManager.getStatusAndProgress(downloadId)
-//            val status = when (result.status) {
-//                STATUS_RUNNING -> "running"
-//                STATUS_SUCCESSFUL -> "success"
-//                STATUS_FAILED -> "failed"
-//                STATUS_PAUSED -> "paused"
-//                STATUS_PENDING -> "pending"
-//                else -> "? ($result.status)"
-//            }
-//            setText(R.id.downloadingFileText, getString(R.string.download_application_from_with_status, status))
-//            runOnUiThread {
-//                (findViewById<View>(R.id.downloadingFileProgressBar) as ProgressBar).progress = result.progress
-//            }
-//            when (result.status) {
-//                DownloadManager.STATUS_FAILED, DownloadManager.STATUS_SUCCESSFUL -> executor.shutdown()
-//            }
-//            if (CompareHelper(Duration.between(start, LocalDateTime.now())).isGreaterThan(maxWaitingTime)) {
-//                executor.shutdown()
-//            }
-//        }, 0, 500, TimeUnit.MILLISECONDS)
-//    }
 
     private val onDownloadComplete: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -160,48 +109,12 @@ class InstallActivity : AppCompatActivity() {
             if (downloadManagerStatus == STATUS_SUCCESSFUL) {
                 check(state == State.SUCCESS_STOP)
             }
-            state = when (downloadManagerStatus) {
+            val newState = when (downloadManagerStatus) {
                 STATUS_FAILED -> State.FAILURE_DOWNLOAD_UNSUCCESSFUL
                 STATUS_SUCCESSFUL -> State.DOWNLOAD_WAS_SUCCESSFUL
                 else -> State.FAILURE_DOWNLOAD_UNSUCCESSFUL
             }
-            stateJob?.cancel()
-            stateJob = lifecycleScope.launch(Dispatchers.Main) {
-                executeStateMachine()
-            }
-        }
-    }
-
-    /**
-     * See example: https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/content/InstallApkSessionApi.java
-     */
-    private fun install() {
-        show(R.id.installingApplication)
-        val installer = packageManager.packageInstaller
-        val params = PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
-        try {
-            installer.openSession(installer.createSession(params)).use { session ->
-                val lengthInBytes: Int = downloadManager.getTotalDownloadSize(downloadId)
-                val download: Uri = downloadManager.getUriForDownloadedFile(downloadId)
-                session.openWrite("package", 0, lengthInBytes.toLong()).use { packageInSession ->
-                    getContentResolver().openInputStream(download).use { apk ->
-                        Objects.requireNonNull<InputStream>(apk)
-                        val buffer = ByteArray(16384)
-                        var n: Int
-                        while (apk.read(buffer).also { n = it } >= 0) {
-                            packageInSession.write(buffer, 0, n)
-                        }
-                    }
-                }
-                val context: Context = this@InstallActivity
-                val intent = Intent(context, InstallActivity::class.java)
-                intent.setAction(PACKAGE_INSTALLED_ACTION)
-                val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
-                val intentSender: IntentSender = pendingIntent.getIntentSender()
-                session.commit(intentSender)
-            }
-        } catch (e: IOException) {
-            Log.e(LOG_TAG, "failed to install APK", e)
+            restartStateMachine(newState)
         }
     }
 
@@ -392,6 +305,35 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.fingerprintDownloadGood)
             ia.show(R.id.installConfirmation)
             SUCCESS_STOP // state machine will be restarted externally
+        }),
+
+        USER_HAS_TRIGGERED_INSTALLATION_PROCESS({ ia ->
+            ia.show(R.id.installingApplication)
+            val installer = ia.packageManager.packageInstaller
+            val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
+            // TODO auslagern in eigene Klasse
+            try {
+                installer.openSession(installer.createSession(params)).use { session ->
+                    val lengthInBytes = ia.downloadManager.getTotalDownloadSize(ia.downloadId).toLong()
+                    val downloadUri = ia.downloadManager.getUriForDownloadedFile(ia.downloadId)
+                    session.openWrite("package", 0, lengthInBytes).use { packageInSession ->
+                        ia.contentResolver.openInputStream(downloadUri).use { apk ->
+                            val buffer = ByteArray(16384)
+                            var n: Int
+                            while (apk!!.read(buffer).also { n = it } >= 0) {
+                                packageInSession.write(buffer, 0, n)
+                            }
+                        }
+                    }
+                    val intent = Intent(ia, InstallActivity::class.java)
+                    intent.action = PACKAGE_INSTALLED_ACTION
+                    val pendingIntent = PendingIntent.getActivity(ia, 0, intent, 0)
+                    session.commit(pendingIntent.intentSender)
+                }
+            } catch (e: IOException) {
+                throw e //TODO own exception
+            }
+            SUCCESS_STOP
         }),
 
         //===============================================
