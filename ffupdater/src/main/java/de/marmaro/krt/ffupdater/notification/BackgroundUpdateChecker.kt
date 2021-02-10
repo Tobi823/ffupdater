@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import java.util.concurrent.TimeUnit.MINUTES
@@ -25,7 +24,7 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
     }
 
     private suspend fun doBackgroundCheck() {
-        val device = DeviceEnvironment().abis[0] //TODO
+        val deviceEnvironment = DeviceEnvironment()
         val context = applicationContext
         val disabledApps = SettingsHelper(context).disabledApps
         val appsForChecking = App.values()
@@ -33,7 +32,7 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
                 .filter { it.detail.isInstalled(context) }
         val appsWithUpdates = appsForChecking.filter {
             try {
-                val result: UpdateCheckResult = it.detail.updateCheckAsync(context, device).await()
+                val result = it.detail.updateCheckAsync(context, deviceEnvironment).await()
                 result.isUpdateAvailable
             } catch (e: Exception) {
                 throw BackgroundUpdateCheckFailedException("fail to check $it", e)

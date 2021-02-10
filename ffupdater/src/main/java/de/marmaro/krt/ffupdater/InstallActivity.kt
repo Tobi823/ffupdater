@@ -185,7 +185,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.fetch_url_for_download,
                     ia.getString(app.detail.displayDownloadSource)))
             try {
-                val result = app.detail.updateCheckAsync(ia, DeviceEnvironment().abis[0]).await()
+                val result = app.detail.updateCheckAsync(ia, DeviceEnvironment()).await()
                 ia.updateCheckResult = result
                 ia.hide(R.id.fetchUrl)
                 ia.show(R.id.fetchedUrlSuccess)

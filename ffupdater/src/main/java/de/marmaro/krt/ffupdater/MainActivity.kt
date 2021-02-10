@@ -100,14 +100,14 @@ class MainActivity : AppCompatActivity() {
             return
         }
         swipeRefreshLayout.isRefreshing = true
-        val abi = DeviceEnvironment().abis[0]
+        val deviceEnvironment = DeviceEnvironment()
         val jobs = ConcurrentLinkedQueue<Job>()
         for (app in App.values()) {
             if (app.detail.isInstalled(this)) {
                 helper.getAppCardViewForApp(app).visibility = View.VISIBLE
                 helper.getInstalledVersionTextView(app).text = app.detail.getDisplayInstalledVersion(this)
                 helper.getAvailableVersionTextView(app).text = getString(R.string.available_version_loading)
-                jobs.add(updateUIForApp(app, DeviceEnvironment(), crashOnException))
+                jobs.add(updateUIForApp(app, deviceEnvironment, crashOnException))
             } else {
                 helper.getAppCardViewForApp(app).visibility = View.GONE
             }
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUIForApp(app: App, deviceEnvironment: DeviceEnvironment, crashOnException: Boolean): Job {
         return lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val result = app.detail.updateCheckAsync(applicationContext, deviceEnvironment.abis[0]).await()
+                val result = app.detail.updateCheckAsync(applicationContext, deviceEnvironment).await()
                 lifecycleScope.launch(Dispatchers.Main) {
                     helper.getAvailableVersionTextView(app).text = result.displayVersion
                     if (result.isUpdateAvailable) {
