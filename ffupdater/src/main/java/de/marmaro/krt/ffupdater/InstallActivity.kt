@@ -7,11 +7,9 @@ import android.content.*
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.StatFs
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ProgressBar
@@ -19,17 +17,15 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
-import app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.AppList
+import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import james.crasher.Crasher
 import kotlinx.coroutines.*
-import org.apache.commons.codec.binary.ApacheCodecHex
 import java.io.IOException
-import java.io.InputStream
 import java.time.Duration
 import java.util.*
 import java.util.concurrent.*
@@ -46,7 +42,7 @@ class InstallActivity : AppCompatActivity() {
     private var fingerprintValidator = FingerprintValidator(packageManager)
     private var app: AppList? = null
     private var downloadId: Long = -1
-    private var state = State.SUCCESS_STOP
+    private var state = State.SUCCESS_PAUSE
     private var stateJob: Job? = null
     private var updateCheckResult: UpdateCheckResult? = null
 
@@ -85,13 +81,15 @@ class InstallActivity : AppCompatActivity() {
 
     private fun restartStateMachine(jumpDestination: State) {
         // security check to prevent a illegal restart
-        if (state != State.SUCCESS_STOP) {
+        if (state != State.SUCCESS_PAUSE) {
             return
         }
         stateJob?.cancel()
         state = jumpDestination
         stateJob = lifecycleScope.launch(Dispatchers.Main) {
-            while (state != State.ERROR_STOP && state != State.SUCCESS_STOP) {
+            while (state != State.ERROR_STOP
+                    && state != State.SUCCESS_PAUSE
+                    && state != State.SUCCESS_STOP) {
                 state = state.action(this@InstallActivity)
             }
         }
@@ -107,7 +105,7 @@ class InstallActivity : AppCompatActivity() {
             val downloadManagerStatus = downloadManager.getStatusAndProgress(downloadId).status
             // security check; don't trick the state machine in installing the app
             if (downloadManagerStatus == STATUS_SUCCESSFUL) {
-                check(state == State.SUCCESS_STOP)
+                check(state == State.SUCCESS_PAUSE)
             }
             val newState = when (downloadManagerStatus) {
                 STATUS_FAILED -> State.FAILURE_DOWNLOAD_UNSUCCESSFUL
@@ -123,59 +121,35 @@ class InstallActivity : AppCompatActivity() {
      *
      * @param intent intent
      */
-    protected override fun onNewIntent(intent: Intent) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        if (PACKAGE_INSTALLED_ACTION == intent.getAction()) {
-            val extras: Bundle = Objects.requireNonNull<Bundle>(intent.getExtras())
-            val status: Int = extras.getInt(PackageInstaller.EXTRA_STATUS)
+        if (intent.action == PACKAGE_INSTALLED_ACTION) {
+            val status = intent.extras?.getInt(PackageInstaller.EXTRA_STATUS)
             if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
                 // This test app isn't privileged, so the user has to confirm the install.
-                startActivity(extras.get(Intent.EXTRA_INTENT) as Intent)
+                startActivity(intent.extras!!.get(Intent.EXTRA_INTENT) as Intent)
                 return
             }
-            hide(R.id.installingApplication)
-            hide(R.id.installConfirmation)
             if (status == PackageInstaller.STATUS_SUCCESS) {
-                show(R.id.installerSuccess)
-                actionVerifyInstalledAppSignature()
-                installedMetadataRegister.saveReleaseId(app, metadata.getReleaseId())
+                restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
             } else {
-                show(R.id.installerFailed)
-                val message: String = extras.getString(PackageInstaller.EXTRA_STATUS_MESSAGE)
-                val text = String.format(Locale.getDefault(), "(%d) %s", status, message)
-                setText(R.id.installerFailedReason, text)
+                val errorMessage = intent.extras?.getString(PackageInstaller.EXTRA_STATUS_MESSAGE) //necessary hack
+                setText(R.id.installerFailedReason, "($status) $errorMessage")
+                restartStateMachine(State.FAILURE_APP_INSTALLATION)
             }
-            downloadManager.remove(downloadId)
         }
     }
 
-    private fun actionVerifyInstalledAppSignature() {
-        show(R.id.verifyInstalledFingerprint)
-        Thread {
-            Thread.setDefaultUncaughtExceptionHandler(crasher)
-            val fingerprintResult: FingerprintResult = fingerprintValidator.checkInstalledApp(app)
-            hide(R.id.verifyInstalledFingerprint)
-            if (fingerprintResult.isValid) {
-                show(R.id.fingerprintInstalledGood)
-                setText(R.id.fingerprintInstalledGoodHash, fingerprintResult.hexString)
-            } else {
-                show(R.id.fingerprintInstalledBad)
-                setText(R.id.fingerprintInstalledBadHashActual, fingerprintResult.hexString)
-                setText(R.id.fingerprintInstalledBadHashExpected, ApacheCodecHex.encodeHexString(app.getSignatureHash()))
-            }
-        }.start()
-    }
-
     private fun show(viewId: Int) {
-        runOnUiThread { findViewById<View>(viewId).visibility = View.VISIBLE }
+        findViewById<View>(viewId).visibility = View.VISIBLE
     }
 
     private fun hide(viewId: Int) {
-        runOnUiThread { findViewById<View>(viewId).visibility = View.GONE }
+        findViewById<View>(viewId).visibility = View.GONE
     }
 
     private fun setText(textId: Int, text: String) {
-        runOnUiThread { findViewById<TextView>(textId).text = text }
+        findViewById<TextView>(textId).text = text
     }
 
     companion object {
@@ -273,7 +247,7 @@ class InstallActivity : AppCompatActivity() {
 
                 when (result.status) {
                     STATUS_FAILED -> ERROR_STOP
-                    STATUS_SUCCESSFUL -> SUCCESS_STOP // state machine will be restarted externally
+                    STATUS_SUCCESSFUL -> SUCCESS_PAUSE // state machine will be restarted externally
                 }
                 delay(sleepInterval)
             }
@@ -304,7 +278,7 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadGood)
             ia.show(R.id.installConfirmation)
-            SUCCESS_STOP // state machine will be restarted externally
+            SUCCESS_PAUSE // state machine will be restarted externally
         }),
 
         USER_HAS_TRIGGERED_INSTALLATION_PROCESS({ ia ->
@@ -333,6 +307,36 @@ class InstallActivity : AppCompatActivity() {
             } catch (e: IOException) {
                 throw e //TODO own exception
             }
+            SUCCESS_PAUSE
+        }),
+
+        USER_HAS_INSTALLED_APP_SUCCESSFUL({ ia ->
+            ia.hide(R.id.installingApplication)
+            ia.hide(R.id.installConfirmation)
+            ia.show(R.id.installerSuccess)
+            //actionVerifyInstalledAppSignature()
+            ia.app!!.impl.installationCallback(ia, ia.updateCheckResult!!.version)
+            ia.downloadManager.remove(ia.downloadId)
+            APP_INSTALLATION_HAS_BEEN_REGISTERED
+        }),
+
+        APP_INSTALLATION_HAS_BEEN_REGISTERED({ ia ->
+            ia.show(R.id.verifyInstalledFingerprint)
+            val fingerprint = ia.lifecycleScope.async {
+                ia.fingerprintValidator.checkInstalledApp(ia.app!!.impl)
+            }.await()
+            ia.hide(R.id.verifyInstalledFingerprint)
+            if (fingerprint.isValid) {
+                ia.setText(R.id.fingerprintInstalledGoodHash, fingerprint.hexString) // necessary hack
+                FINGERPRINT_OF_INSTALLED_APP_OK
+            } else {
+                ia.setText(R.id.fingerprintInstalledBadHashActual, fingerprint.hexString) // necessary hack
+                FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID
+            }
+        }),
+
+        FINGERPRINT_OF_INSTALLED_APP_OK({ ia ->
+            ia.show(R.id.fingerprintInstalledGood)
             SUCCESS_STOP
         }),
 
@@ -365,7 +369,7 @@ class InstallActivity : AppCompatActivity() {
             activity.hide(R.id.downloadingFile)
             activity.show(R.id.downloadFileFailed)
             activity.setText(R.id.downloadFileFailedUrl,
-                    activity.updateCheckResult.downloadUrl.toString())
+                    activity.updateCheckResult?.downloadUrl.toString())
             activity.show(R.id.installerFailed)
             ERROR_STOP
         }),
@@ -378,16 +382,23 @@ class InstallActivity : AppCompatActivity() {
             ERROR_STOP
         }),
 
-
-        AAAAA({ activity ->
+        FAILURE_APP_INSTALLATION({ ia ->
+            ia.hide(R.id.installingApplication)
+            ia.hide(R.id.installConfirmation)
+            ia.show(R.id.installerFailed)
+            ia.downloadManager.remove(ia.downloadId)
             ERROR_STOP
         }),
 
+        FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID({ ia ->
+            ia.show(R.id.fingerprintInstalledBad)
+            ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app!!.impl.signatureHash)
+            ERROR_STOP
+        }),
+
+        SUCCESS_PAUSE({ SUCCESS_PAUSE }),
         SUCCESS_STOP({ SUCCESS_STOP }),
-        ERROR_STOP({ ERROR_STOP }),
-        ;
-
-
+        ERROR_STOP({ ERROR_STOP });
     }
 
     private class InstallActivityFetchException(message: String, throwable: Throwable) : Exception(message, throwable)
