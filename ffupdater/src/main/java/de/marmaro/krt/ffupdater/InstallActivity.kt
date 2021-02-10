@@ -22,6 +22,7 @@ import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
+import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import james.crasher.Crasher
 import kotlinx.coroutines.*
@@ -45,6 +46,9 @@ class InstallActivity : AppCompatActivity() {
     private var state = State.SUCCESS_PAUSE
     private var stateJob: Job? = null
     private var updateCheckResult: UpdateCheckResult? = null
+    private var fileFingerprint: FingerprintResult? = null
+    private var appFingerprint: FingerprintResult? = null
+    private var freeSpaceForDownloading: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -160,27 +164,27 @@ class InstallActivity : AppCompatActivity() {
     }
 
     private enum class State(val action: suspend (InstallActivity) -> State) {
-        START({ activity ->
-            val app = activity.app!!
-            if (app.impl.isInstalled(activity)) {
-                if (activity.fingerprintValidator.checkInstalledApp(app.impl).isValid) {
+        START({ ia ->
+            val app = ia.app!!
+            if (app.impl.isInstalled(ia)) {
+                if (ia.fingerprintValidator.checkInstalledApp(app.impl).isValid) {
                     INSTALLED_APP_SIGNATURE_CHECKED
                 }
             }
             FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP
         }),
 
-        INSTALLED_APP_SIGNATURE_CHECKED({ activity ->
+        INSTALLED_APP_SIGNATURE_CHECKED({
             if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
                 EXTERNAL_STORAGE_IS_ACCESSIBLE
             }
             FAILURE_EXTERNAL_STORAGE_NOT_ACCESSIBLE
         }),
 
-        EXTERNAL_STORAGE_IS_ACCESSIBLE({ activity ->
+        EXTERNAL_STORAGE_IS_ACCESSIBLE({ ia ->
             val downloadManager = "com.android.providers.downloads"
             try {
-                if (activity.packageManager.getApplicationInfo(downloadManager, 0).enabled) {
+                if (ia.packageManager.getApplicationInfo(downloadManager, 0).enabled) {
                     DOWNLOAD_MANAGER_IS_ENABLED
                 }
             } catch (e: PackageManager.NameNotFoundException) {
@@ -189,49 +193,49 @@ class InstallActivity : AppCompatActivity() {
             FAILURE_DOWNLOAD_MANAGER_DISABLED
         }),
 
-        DOWNLOAD_MANAGER_IS_ENABLED({ activity ->
-            val path = activity.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!.path
-            if (StatFs(path).freeBytes > 100 * 1024 * 1024) {
+        DOWNLOAD_MANAGER_IS_ENABLED({ ia ->
+            val path = ia.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!.path
+            val freeBytes = StatFs(path).freeBytes
+            ia.freeSpaceForDownloading = freeBytes
+            if (freeBytes > 100 * 1024 * 1024) {
                 PRECONDITIONS_ARE_CHECKED
             }
             FAILURE_LOW_ON_SPACE
         }),
 
-        PRECONDITIONS_ARE_CHECKED({ activity ->
-            val app = activity.app!!
-            activity.show(R.id.fetchUrl)
-            activity.setText(R.id.fetchUrlTextView,
-                    activity.getString(R.string.fetch_url_for_download,
-                            activity.getString(app.impl.displayDownloadSource)))
+        PRECONDITIONS_ARE_CHECKED({ ia ->
+            val app = ia.app!!
+            ia.show(R.id.fetchUrl)
+            ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.fetch_url_for_download,
+                    ia.getString(app.impl.displayDownloadSource)))
             try {
-                val result = app.impl.updateCheckAsync(activity, DeviceEnvironment().abis[0]).await()
-                activity.updateCheckResult = result
-                activity.hide(R.id.fetchUrl)
-                activity.show(R.id.fetchedUrlSuccess)
-                activity.setText(R.id.fetchedUrlSuccessTextView,
-                        activity.getString(R.string.fetched_url_for_download_successfully,
-                                activity.getString(app.impl.displayDownloadSource)))
+                val result = app.impl.updateCheckAsync(ia, DeviceEnvironment().abis[0]).await()
+                ia.updateCheckResult = result
+                ia.hide(R.id.fetchUrl)
+                ia.show(R.id.fetchedUrlSuccess)
+                ia.setText(R.id.fetchedUrlSuccessTextView,
+                        ia.getString(R.string.fetched_url_for_download_successfully,
+                                ia.getString(app.impl.displayDownloadSource)))
                 AVAILABLE_METADATA_IS_FETCHED
             } catch (e: Exception) {
                 throw InstallActivityFetchException("fail to fetch $app", e)
             }
         }),
 
-        AVAILABLE_METADATA_IS_FETCHED({ acti ->
-            acti.show(R.id.downloadingFile)
-            val downloadUrl = acti.updateCheckResult!!.downloadUrl
-            acti.setText(R.id.downloadingFileUrl, downloadUrl.toString())
-            acti.downloadId = acti.downloadManager.enqueue(acti,
-                    downloadUrl,
-                    acti.getString(acti.app!!.impl.displayTitle))
+        AVAILABLE_METADATA_IS_FETCHED({ ia ->
+            ia.show(R.id.downloadingFile)
+            val downloadUrl = ia.updateCheckResult!!.downloadUrl
+            ia.setText(R.id.downloadingFileUrl, downloadUrl.toString())
+            val displayTitle = ia.getString(ia.app!!.impl.displayTitle)
+            ia.downloadId = ia.downloadManager.enqueue(ia, downloadUrl, displayTitle)
             DOWNLOAD_IS_ENQUEUED
         }),
 
-        DOWNLOAD_IS_ENQUEUED({ activity ->
+        DOWNLOAD_IS_ENQUEUED({ ia ->
             val sleepInterval: Long = 500
             val maxWaitingTime: Long = Duration.ofMinutes(5).toMillis()
             for (i: Long in 1..(maxWaitingTime / sleepInterval)) {
-                val result = activity.downloadManager.getStatusAndProgress(activity.downloadId)
+                val result = ia.downloadManager.getStatusAndProgress(ia.downloadId)
                 val status = when (result.status) {
                     STATUS_RUNNING -> "running"
                     STATUS_SUCCESSFUL -> "success"
@@ -240,9 +244,9 @@ class InstallActivity : AppCompatActivity() {
                     STATUS_PENDING -> "pending"
                     else -> "? ($result.status)"
                 }
-                activity.setText(R.id.downloadingFileText, activity.getString(
+                ia.setText(R.id.downloadingFileText, ia.getString(
                         R.string.download_application_from_with_status, status))
-                activity.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress =
+                ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress =
                         result.progress
 
                 when (result.status) {
@@ -262,14 +266,13 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.verifyDownloadFingerprint)
 
             val file = ia.downloadManager.getFileForDownloadedFile(ia.downloadId)
-            val result = ia.lifecycleScope.async {
+            val fingerprint = ia.lifecycleScope.async {
                 ia.fingerprintValidator.checkApkFile(file, ia.app!!.impl)
             }.await()
-            if (result.isValid) {
-                ia.setText(R.id.fingerprintDownloadGoodHash, result.hexString) // necessary hack
+            ia.fileFingerprint = fingerprint
+            if (fingerprint.isValid) {
                 FINGERPRINT_OF_DOWNLOADED_FILE_OK
             } else {
-                ia.setText(R.id.fingerprintDownloadBadHashActual, result.hexString) // necessary hack
                 FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
             }
         }),
@@ -278,7 +281,8 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadGood)
             ia.show(R.id.installConfirmation)
-            SUCCESS_PAUSE // state machine will be restarted externally
+            ia.setText(R.id.fingerprintDownloadGoodHash, ia.fileFingerprint?.hexString ?: "")
+            SUCCESS_PAUSE
         }),
 
         USER_HAS_TRIGGERED_INSTALLATION_PROCESS({ ia ->
@@ -314,7 +318,6 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerSuccess)
-            //actionVerifyInstalledAppSignature()
             ia.app!!.impl.installationCallback(ia, ia.updateCheckResult!!.version)
             ia.downloadManager.remove(ia.downloadId)
             APP_INSTALLATION_HAS_BEEN_REGISTERED
@@ -325,58 +328,59 @@ class InstallActivity : AppCompatActivity() {
             val fingerprint = ia.lifecycleScope.async {
                 ia.fingerprintValidator.checkInstalledApp(ia.app!!.impl)
             }.await()
+            ia.appFingerprint = fingerprint
             ia.hide(R.id.verifyInstalledFingerprint)
             if (fingerprint.isValid) {
-                ia.setText(R.id.fingerprintInstalledGoodHash, fingerprint.hexString) // necessary hack
                 FINGERPRINT_OF_INSTALLED_APP_OK
             } else {
-                ia.setText(R.id.fingerprintInstalledBadHashActual, fingerprint.hexString) // necessary hack
                 FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID
             }
         }),
 
         FINGERPRINT_OF_INSTALLED_APP_OK({ ia ->
             ia.show(R.id.fingerprintInstalledGood)
+            ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint?.hexString ?: "")
             SUCCESS_STOP
         }),
 
         //===============================================
 
-        FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP({ activity ->
-            activity.show(R.id.unknownSignatureOfInstalledApp)
+        FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP({ ia ->
+            ia.show(R.id.unknownSignatureOfInstalledApp)
             ERROR_STOP
         }),
 
-        FAILURE_EXTERNAL_STORAGE_NOT_ACCESSIBLE({ activity ->
-            activity.show(R.id.externalStorageNotAccessible)
-            activity.setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
+        FAILURE_EXTERNAL_STORAGE_NOT_ACCESSIBLE({ ia ->
+            ia.show(R.id.externalStorageNotAccessible)
+            ia.setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
             ERROR_STOP
         }),
 
-        FAILURE_DOWNLOAD_MANAGER_DISABLED({ activity ->
-            activity.show(R.id.downloadAppIsDisabled)
+        FAILURE_DOWNLOAD_MANAGER_DISABLED({ ia ->
+            ia.show(R.id.downloadAppIsDisabled)
             ERROR_STOP
         }),
 
-        FAILURE_LOW_ON_SPACE({ activity ->
-            activity.show(R.id.tooLowMemory)
-            activity.setText(R.id.tooLowMemoryDescription,
-                    activity.getString(R.string.too_low_memory_description, 0)) //TODO string abändern, weil ich nicht die Größe ermitteln kann
+        FAILURE_LOW_ON_SPACE({ ia ->
+            ia.show(R.id.tooLowMemory)
+            ia.setText(R.id.tooLowMemoryDescription,
+                    ia.getString(R.string.too_low_memory_description, ia.freeSpaceForDownloading))
             ERROR_STOP
         }),
 
-        FAILURE_DOWNLOAD_UNSUCCESSFUL({ activity ->
-            activity.hide(R.id.downloadingFile)
-            activity.show(R.id.downloadFileFailed)
-            activity.setText(R.id.downloadFileFailedUrl,
-                    activity.updateCheckResult?.downloadUrl.toString())
-            activity.show(R.id.installerFailed)
+        FAILURE_DOWNLOAD_UNSUCCESSFUL({ ia ->
+            ia.hide(R.id.downloadingFile)
+            ia.show(R.id.downloadFileFailed)
+            ia.setText(R.id.downloadFileFailedUrl,
+                    ia.updateCheckResult?.downloadUrl.toString())
+            ia.show(R.id.installerFailed)
             ERROR_STOP
         }),
 
         FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE({ ia ->
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadBad)
+            ia.setText(R.id.fingerprintDownloadBadHashActual, ia.fileFingerprint?.hexString ?: "")
             ia.setText(R.id.fingerprintDownloadBadHashExpected, ia.app!!.impl.signatureHash)
             ia.show(R.id.installerFailed)
             ERROR_STOP
@@ -392,10 +396,12 @@ class InstallActivity : AppCompatActivity() {
 
         FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID({ ia ->
             ia.show(R.id.fingerprintInstalledBad)
+            ia.setText(R.id.fingerprintInstalledBadHashActual, ia.appFingerprint?.hexString ?: "")
             ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app!!.impl.signatureHash)
             ERROR_STOP
         }),
 
+        // SUCCESS_PAUSE => state machine will be restarted externally
         SUCCESS_PAUSE({ SUCCESS_PAUSE }),
         SUCCESS_STOP({ SUCCESS_STOP }),
         ERROR_STOP({ ERROR_STOP });
