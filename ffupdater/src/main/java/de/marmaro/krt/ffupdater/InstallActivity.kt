@@ -90,10 +90,12 @@ class InstallActivity : AppCompatActivity() {
         stateJob?.cancel()
         state = jumpDestination
         stateJob = lifecycleScope.launch(Dispatchers.Main) {
-            while (state != State.ERROR_STOP
-                    && state != State.SUCCESS_PAUSE
-                    && state != State.SUCCESS_STOP) {
-                state = state.action(this@InstallActivity)
+            withTimeout(Duration.ofMinutes(5).toMillis()) {
+                while (state != State.ERROR_STOP
+                        && state != State.SUCCESS_PAUSE
+                        && state != State.SUCCESS_STOP) {
+                    state = state.action(this@InstallActivity)
+                }
             }
         }
     }

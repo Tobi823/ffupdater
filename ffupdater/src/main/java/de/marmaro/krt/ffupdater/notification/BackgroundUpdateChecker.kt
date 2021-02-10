@@ -71,8 +71,6 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         }
     }
 
-    // TODO private val TIMEOUT = Duration.ofSeconds(30) muss noch implementiert werden
-
     class BackgroundUpdateCheckFailedException(message: String, throwable: Throwable) :
             Exception(message, throwable)
 }

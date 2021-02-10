@@ -4,10 +4,8 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
+import kotlinx.coroutines.*
+import java.time.Duration
 
 abstract class BaseAppDetail : AppDetail {
     override fun isInstalled(context: Context): Boolean {
@@ -37,11 +35,16 @@ abstract class BaseAppDetail : AppDetail {
         preferences.edit().putString(key, value).apply()
     }
 
+    /**
+     * 2min timeout
+     */
     override fun updateCheckAsync(context: Context,
                                   deviceEnvironment: DeviceEnvironment): Deferred<UpdateCheckResult> {
         // TODO do not use GlobalScope.async
         return GlobalScope.async(start = CoroutineStart.LAZY) {
-            updateCheck(context, deviceEnvironment)
+            withTimeout(Duration.ofMinutes(2).toMillis()) {
+                updateCheck(context, deviceEnvironment)
+            }
         }
     }
 }
