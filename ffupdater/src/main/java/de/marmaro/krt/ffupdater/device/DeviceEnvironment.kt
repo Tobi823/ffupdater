@@ -41,4 +41,3 @@ class DeviceEnvironment constructor(
 enum class ABI {
     AARCH64, ARM, X86, X86_64
 }
-

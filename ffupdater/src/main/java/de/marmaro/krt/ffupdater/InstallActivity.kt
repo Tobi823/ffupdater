@@ -39,8 +39,10 @@ import java.util.concurrent.*
  * like restarting downloads, showing the current download status etc.
  */
 class InstallActivity : AppCompatActivity() {
-    private var downloadManager: DownloadManagerAdapter = DownloadManagerAdapter(getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager)
-    private var fingerprintValidator = FingerprintValidator(packageManager)
+    private var downloadManager: DownloadManagerAdapter? = null
+    private var fingerprintValidator: FingerprintValidator? = null
+
+    // necessary for communication with State enums
     private var app: App? = null
     private var downloadId: Long = -1
     private var state = State.SUCCESS_PAUSE
@@ -58,6 +60,7 @@ class InstallActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(DeviceEnvironment()))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
+        downloadManager = DownloadManagerAdapter(getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager)
 
         app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run {
             finish()
@@ -142,46 +145,47 @@ class InstallActivity : AppCompatActivity() {
     }
 
     private enum class State(val action: suspend (InstallActivity) -> State) {
-        START({ ia ->
+        START(f@{ ia ->
             val app = ia.app!!
-            if (app.detail.isInstalled(ia)) {
-                if (ia.fingerprintValidator.checkInstalledApp(app.detail).isValid) {
-                    INSTALLED_APP_SIGNATURE_CHECKED
-                }
+            if (!app.detail.isInstalled(ia)) {
+                return@f INSTALLED_APP_SIGNATURE_CHECKED
             }
-            FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP
+            if (ia.fingerprintValidator!!.checkInstalledApp(app.detail).isValid) {
+                return@f INSTALLED_APP_SIGNATURE_CHECKED
+            }
+            return@f FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP
         }),
 
-        INSTALLED_APP_SIGNATURE_CHECKED({
+        INSTALLED_APP_SIGNATURE_CHECKED(f@{
             if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-                EXTERNAL_STORAGE_IS_ACCESSIBLE
+                return@f EXTERNAL_STORAGE_IS_ACCESSIBLE
             }
-            FAILURE_EXTERNAL_STORAGE_NOT_ACCESSIBLE
+            return@f FAILURE_EXTERNAL_STORAGE_NOT_ACCESSIBLE
         }),
 
-        EXTERNAL_STORAGE_IS_ACCESSIBLE({ ia ->
+        EXTERNAL_STORAGE_IS_ACCESSIBLE(f@{ ia ->
             val downloadManager = "com.android.providers.downloads"
             try {
                 if (ia.packageManager.getApplicationInfo(downloadManager, 0).enabled) {
-                    DOWNLOAD_MANAGER_IS_ENABLED
+                    return@f DOWNLOAD_MANAGER_IS_ENABLED
                 }
             } catch (e: PackageManager.NameNotFoundException) {
-                FAILURE_DOWNLOAD_MANAGER_DISABLED
+                return@f FAILURE_DOWNLOAD_MANAGER_DISABLED
             }
-            FAILURE_DOWNLOAD_MANAGER_DISABLED
+            return@f FAILURE_DOWNLOAD_MANAGER_DISABLED
         }),
 
-        DOWNLOAD_MANAGER_IS_ENABLED({ ia ->
+        DOWNLOAD_MANAGER_IS_ENABLED(f@{ ia ->
             val path = ia.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!.path
             val freeBytes = StatFs(path).freeBytes
             ia.freeSpaceForDownloading = freeBytes
             if (freeBytes > 100 * 1024 * 1024) {
-                PRECONDITIONS_ARE_CHECKED
+                return@f PRECONDITIONS_ARE_CHECKED
             }
-            FAILURE_LOW_ON_SPACE
+            return@f FAILURE_LOW_ON_SPACE
         }),
 
-        PRECONDITIONS_ARE_CHECKED({ ia ->
+        PRECONDITIONS_ARE_CHECKED(f@{ ia ->
             val app = ia.app!!
             ia.show(R.id.fetchUrl)
             ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.fetch_url_for_download,
@@ -194,26 +198,26 @@ class InstallActivity : AppCompatActivity() {
                 ia.setText(R.id.fetchedUrlSuccessTextView,
                         ia.getString(R.string.fetched_url_for_download_successfully,
                                 ia.getString(app.detail.displayDownloadSource)))
-                AVAILABLE_METADATA_IS_FETCHED
+                return@f AVAILABLE_METADATA_IS_FETCHED
             } catch (e: Exception) {
                 throw InstallActivityFetchException("fail to fetch $app", e)
             }
         }),
 
-        AVAILABLE_METADATA_IS_FETCHED({ ia ->
+        AVAILABLE_METADATA_IS_FETCHED(f@{ ia ->
             ia.show(R.id.downloadingFile)
             val downloadUrl = ia.updateCheckResult!!.downloadUrl
             ia.setText(R.id.downloadingFileUrl, downloadUrl.toString())
             val displayTitle = ia.getString(ia.app!!.detail.displayTitle)
-            ia.downloadId = ia.downloadManager.enqueue(ia, downloadUrl, displayTitle)
-            DOWNLOAD_IS_ENQUEUED
+            ia.downloadId = ia.downloadManager!!.enqueue(ia, downloadUrl, displayTitle)
+            return@f DOWNLOAD_IS_ENQUEUED
         }),
 
-        DOWNLOAD_IS_ENQUEUED({ ia ->
+        DOWNLOAD_IS_ENQUEUED(f@{ ia ->
             val sleepInterval: Long = 500
             val maxWaitingTime: Long = Duration.ofMinutes(5).toMillis()
             for (i: Long in 1..(maxWaitingTime / sleepInterval)) {
-                val result = ia.downloadManager.getStatusAndProgress(ia.downloadId)
+                val result = ia.downloadManager!!.getStatusAndProgress(ia.downloadId)
                 val status = when (result.status) {
                     STATUS_RUNNING -> "running"
                     STATUS_SUCCESSFUL -> "success"
@@ -228,50 +232,50 @@ class InstallActivity : AppCompatActivity() {
                         result.progress
 
                 when (result.status) {
-                    STATUS_FAILED -> FAILURE_DOWNLOAD_UNSUCCESSFUL
-                    STATUS_SUCCESSFUL -> DOWNLOAD_WAS_SUCCESSFUL
+                    STATUS_FAILED -> return@f FAILURE_DOWNLOAD_UNSUCCESSFUL
+                    STATUS_SUCCESSFUL -> return@f DOWNLOAD_WAS_SUCCESSFUL
                 }
                 delay(sleepInterval)
             }
-            FAILURE_DOWNLOAD_UNSUCCESSFUL
+            return@f FAILURE_DOWNLOAD_UNSUCCESSFUL
         }),
 
-        DOWNLOAD_WAS_SUCCESSFUL({ ia ->
+        DOWNLOAD_WAS_SUCCESSFUL(f@{ ia ->
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadedFile)
             ia.setText(R.id.downloadedFileUrl,
                     ia.updateCheckResult?.downloadUrl.toString())
             ia.show(R.id.verifyDownloadFingerprint)
 
-            val file = ia.downloadManager.getFileForDownloadedFile(ia.downloadId)
+            val file = ia.downloadManager!!.getFileForDownloadedFile(ia.downloadId)
             val fingerprint = ia.lifecycleScope.async {
-                ia.fingerprintValidator.checkApkFile(file, ia.app!!.detail)
+                ia.fingerprintValidator!!.checkApkFile(file, ia.app!!.detail)
             }.await()
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
-                FINGERPRINT_OF_DOWNLOADED_FILE_OK
+                return@f FINGERPRINT_OF_DOWNLOADED_FILE_OK
             } else {
-                FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
+                return@f FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
             }
         }),
 
-        FINGERPRINT_OF_DOWNLOADED_FILE_OK({ ia ->
+        FINGERPRINT_OF_DOWNLOADED_FILE_OK(f@{ ia ->
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadGood)
             ia.show(R.id.installConfirmation)
             ia.setText(R.id.fingerprintDownloadGoodHash, ia.fileFingerprint?.hexString ?: "")
-            SUCCESS_PAUSE
+            return@f SUCCESS_PAUSE
         }),
 
-        USER_HAS_TRIGGERED_INSTALLATION_PROCESS({ ia ->
+        USER_HAS_TRIGGERED_INSTALLATION_PROCESS(f@{ ia ->
             ia.show(R.id.installingApplication)
             val installer = ia.packageManager.packageInstaller
             val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
             // TODO auslagern in eigene Klasse
             try {
                 installer.openSession(installer.createSession(params)).use { session ->
-                    val lengthInBytes = ia.downloadManager.getTotalDownloadSize(ia.downloadId).toLong()
-                    val downloadUri = ia.downloadManager.getUriForDownloadedFile(ia.downloadId)
+                    val lengthInBytes = ia.downloadManager!!.getTotalDownloadSize(ia.downloadId).toLong()
+                    val downloadUri = ia.downloadManager!!.getUriForDownloadedFile(ia.downloadId)
                     session.openWrite("package", 0, lengthInBytes).use { packageInSession ->
                         ia.contentResolver.openInputStream(downloadUri).use { apk ->
                             val buffer = ByteArray(16384)
@@ -289,101 +293,101 @@ class InstallActivity : AppCompatActivity() {
             } catch (e: IOException) {
                 throw e //TODO own exception
             }
-            SUCCESS_PAUSE
+            return@f SUCCESS_PAUSE
         }),
 
-        USER_HAS_INSTALLED_APP_SUCCESSFUL({ ia ->
+        USER_HAS_INSTALLED_APP_SUCCESSFUL(f@{ ia ->
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerSuccess)
             ia.app!!.detail.installationCallback(ia, ia.updateCheckResult!!.version)
-            ia.downloadManager.remove(ia.downloadId)
-            APP_INSTALLATION_HAS_BEEN_REGISTERED
+            ia.downloadManager!!.remove(ia.downloadId)
+            return@f APP_INSTALLATION_HAS_BEEN_REGISTERED
         }),
 
-        APP_INSTALLATION_HAS_BEEN_REGISTERED({ ia ->
+        APP_INSTALLATION_HAS_BEEN_REGISTERED(f@{ ia ->
             ia.show(R.id.verifyInstalledFingerprint)
             val fingerprint = ia.lifecycleScope.async {
-                ia.fingerprintValidator.checkInstalledApp(ia.app!!.detail)
+                ia.fingerprintValidator!!.checkInstalledApp(ia.app!!.detail)
             }.await()
             ia.appFingerprint = fingerprint
             ia.hide(R.id.verifyInstalledFingerprint)
             if (fingerprint.isValid) {
-                FINGERPRINT_OF_INSTALLED_APP_OK
+                return@f FINGERPRINT_OF_INSTALLED_APP_OK
             } else {
-                FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID
+                return@f FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID
             }
         }),
 
-        FINGERPRINT_OF_INSTALLED_APP_OK({ ia ->
+        FINGERPRINT_OF_INSTALLED_APP_OK(f@{ ia ->
             ia.show(R.id.fingerprintInstalledGood)
             ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint?.hexString ?: "")
-            SUCCESS_STOP
+            return@f SUCCESS_STOP
         }),
 
         //===============================================
 
-        FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP({ ia ->
+        FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP(f@{ ia ->
             ia.show(R.id.unknownSignatureOfInstalledApp)
-            ERROR_STOP
+            return@f ERROR_STOP
         }),
 
-        FAILURE_EXTERNAL_STORAGE_NOT_ACCESSIBLE({ ia ->
+        FAILURE_EXTERNAL_STORAGE_NOT_ACCESSIBLE(f@{ ia ->
             ia.show(R.id.externalStorageNotAccessible)
             ia.setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
-            ERROR_STOP
+            return@f ERROR_STOP
         }),
 
-        FAILURE_DOWNLOAD_MANAGER_DISABLED({ ia ->
+        FAILURE_DOWNLOAD_MANAGER_DISABLED(f@{ ia ->
             ia.show(R.id.downloadAppIsDisabled)
-            ERROR_STOP
+            return@f ERROR_STOP
         }),
 
-        FAILURE_LOW_ON_SPACE({ ia ->
+        FAILURE_LOW_ON_SPACE(f@{ ia ->
             ia.show(R.id.tooLowMemory)
             ia.setText(R.id.tooLowMemoryDescription,
                     ia.getString(R.string.too_low_memory_description, ia.freeSpaceForDownloading))
-            ERROR_STOP
+            return@f ERROR_STOP
         }),
 
-        FAILURE_DOWNLOAD_UNSUCCESSFUL({ ia ->
+        FAILURE_DOWNLOAD_UNSUCCESSFUL(f@{ ia ->
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadFileFailed)
             ia.setText(R.id.downloadFileFailedUrl,
                     ia.updateCheckResult?.downloadUrl.toString())
             ia.show(R.id.installerFailed)
-            ERROR_STOP
+            return@f ERROR_STOP
         }),
 
-        FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE({ ia ->
+        FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE(f@{ ia ->
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadBad)
             ia.setText(R.id.fingerprintDownloadBadHashActual, ia.fileFingerprint?.hexString ?: "")
             ia.setText(R.id.fingerprintDownloadBadHashExpected, ia.app!!.detail.signatureHash)
             ia.show(R.id.installerFailed)
-            ERROR_STOP
+            return@f ERROR_STOP
         }),
 
-        FAILURE_APP_INSTALLATION({ ia ->
+        FAILURE_APP_INSTALLATION(f@{ ia ->
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerFailed)
             ia.setText(R.id.installerFailedReason, ia.appInstallationFailedErrorMessage)
-            ia.downloadManager.remove(ia.downloadId)
-            ERROR_STOP
+            ia.downloadManager!!.remove(ia.downloadId)
+            return@f ERROR_STOP
         }),
 
-        FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID({ ia ->
+        FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID(f@{ ia ->
             ia.show(R.id.fingerprintInstalledBad)
             ia.setText(R.id.fingerprintInstalledBadHashActual, ia.appFingerprint?.hexString ?: "")
             ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app!!.detail.signatureHash)
-            ERROR_STOP
+            return@f ERROR_STOP
         }),
 
         // SUCCESS_PAUSE => state machine will be restarted externally
-        SUCCESS_PAUSE({ SUCCESS_PAUSE }),
-        SUCCESS_STOP({ SUCCESS_STOP }),
-        ERROR_STOP({ ERROR_STOP });
+        SUCCESS_PAUSE(f@{ return@f SUCCESS_PAUSE }),
+        SUCCESS_STOP(f@{ return@f SUCCESS_STOP }),
+        ERROR_STOP(f@{ return@f ERROR_STOP });
     }
 
     private class InstallActivityFetchException(message: String, throwable: Throwable) : Exception(message, throwable)
