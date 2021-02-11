@@ -25,8 +25,8 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
-    override fun getDisplayInstalledVersion(context: Context): String? {
-        return getInstalledVersionFromPackageManager(context)
+    override fun getDisplayInstalledVersion(context: Context): String {
+        return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
     }
 
     override fun getInstalledVersion(context: Context): String? {

@@ -6,6 +6,6 @@ interface Display {
     val displayTitle: Int
     val displayDescription: Int
     val displayWarning: Int?
-    fun getDisplayInstalledVersion(context: Context): String?
+    fun getDisplayInstalledVersion(context: Context): String
     val displayDownloadSource: Int
 }

@@ -9,6 +9,8 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest
@@ -24,8 +26,8 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
 
-    override fun getDisplayInstalledVersion(context: Context): String? {
-        return getInstalledVersionFromPackageManager(context)
+    override fun getDisplayInstalledVersion(context: Context): String {
+        return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
     }
 
     override fun getInstalledVersion(context: Context): String? {
@@ -46,12 +48,13 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 apkArtifact = "public/build/$abiString/target.apk")
         val result = mozillaCiConsumer.updateCheck()
         val version = result.timestamp
+        val shortVersion = version.split("T")[0]
         val updateAvailable = getInstalledVersion(context) != version
         return UpdateCheckResult(
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = "? (${version.split("T")[0]})",
+                displayVersion = context.getString(R.string.available_version_timestamp, shortVersion),
                 metadata = mapOf(UpdateCheckResult.FILE_HASH_SHA256 to result.hash))
     }
 

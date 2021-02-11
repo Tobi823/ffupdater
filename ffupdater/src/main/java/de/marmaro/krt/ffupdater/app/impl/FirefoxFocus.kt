@@ -25,8 +25,8 @@ class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM)
 
-    override fun getDisplayInstalledVersion(context: Context): String? {
-        return getInstalledVersionFromPackageManager(context)
+    override fun getDisplayInstalledVersion(context: Context): String {
+        return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
     }
 
     override fun getInstalledVersion(context: Context): String? {
@@ -47,12 +47,13 @@ class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 apkArtifact = "public/app-focus-$abiString-release-unsigned.apk")
         val result = mozillaCiConsumer.updateCheck()
         val version = result.timestamp
+        val shortVersion = version.split("T")[0]
         val updateAvailable = getInstalledVersion(context) != version
         return UpdateCheckResult(
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = "? (${version.split("T")[0]})",
+                displayVersion = context.getString(R.string.available_version_timestamp, shortVersion),
                 metadata = mapOf(FILE_HASH_SHA256 to result.hash))
     }
 
