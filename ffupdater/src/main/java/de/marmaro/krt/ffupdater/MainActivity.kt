@@ -12,8 +12,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
@@ -35,7 +38,6 @@ import java.util.concurrent.*
 class MainActivity : AppCompatActivity() {
     private var swipeRefreshLayout: SwipeRefreshLayout = findViewById(R.id.swipeContainer)
     private var connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    private var helper = MainActivityHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +50,10 @@ class MainActivity : AppCompatActivity() {
         OldDownloadsDeleter.delete(this)
 
         for (app in App.values()) {
-            helper.getInfoButtonForApp(app).setOnClickListener {
+            getInfoButtonForApp(app).setOnClickListener {
                 AppInfoDialog(app.detail).show(supportFragmentManager)
             }
-            helper.getDownloadButtonForApp(app).setOnClickListener {
+            getDownloadButtonForApp(app).setOnClickListener {
                 downloadApp(app)
             }
         }
@@ -104,12 +106,12 @@ class MainActivity : AppCompatActivity() {
         val jobs = ConcurrentLinkedQueue<Job>()
         for (app in App.values()) {
             if (app.detail.isInstalled(this)) {
-                helper.getAppCardViewForApp(app).visibility = View.VISIBLE
-                helper.getInstalledVersionTextView(app).text = app.detail.getDisplayInstalledVersion(this)
-                helper.getAvailableVersionTextView(app).text = getString(R.string.available_version_loading)
+                getAppCardViewForApp(app).visibility = View.VISIBLE
+                getInstalledVersionTextView(app).text = app.detail.getDisplayInstalledVersion(this)
+                getAvailableVersionTextView(app).text = getString(R.string.available_version_loading)
                 jobs.add(updateUIForApp(app, deviceEnvironment, crashOnException))
             } else {
-                helper.getAppCardViewForApp(app).visibility = View.GONE
+                getAppCardViewForApp(app).visibility = View.GONE
             }
         }
         lifecycleScope.launch(Dispatchers.IO) {
@@ -123,11 +125,11 @@ class MainActivity : AppCompatActivity() {
             try {
                 val result = app.detail.updateCheckAsync(applicationContext, deviceEnvironment).await()
                 lifecycleScope.launch(Dispatchers.Main) {
-                    helper.getAvailableVersionTextView(app).text = result.displayVersion
+                    getAvailableVersionTextView(app).text = result.displayVersion
                     if (result.isUpdateAvailable) {
-                        helper.enableDownloadButton(app)
+                        enableDownloadButton(app)
                     } else {
-                        helper.disableDownloadButton(app)
+                        disableDownloadButton(app)
                     }
                 }
             } catch (e: Exception) {
@@ -136,8 +138,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 Log.e(LOG_TAG, "fail to check $app for updates", e)
                 lifecycleScope.launch(Dispatchers.Main) {
-                    helper.getAvailableVersionTextView(app).text = getString(R.string.available_version_error)
-                    helper.disableDownloadButton(app)
+                    getAvailableVersionTextView(app).text = getString(R.string.available_version_error)
+                    disableDownloadButton(app)
                 }
             }
         }
@@ -167,6 +169,84 @@ class MainActivity : AppCompatActivity() {
         }
         @Suppress("DEPRECATION")
         return connectivityManager.activeNetworkInfo?.isConnected != true
+    }
+
+    private fun getAppCardViewForApp(app: App): CardView {
+        return findViewById(when (app) {
+            App.FIREFOX_KLAR -> R.id.firefoxKlarCard
+            App.FIREFOX_FOCUS -> R.id.firefoxFocusCard
+            App.FIREFOX_LITE -> R.id.firefoxLiteCard
+            App.FIREFOX_RELEASE -> R.id.firefoxReleaseCard
+            App.FIREFOX_BETA -> R.id.firefoxBetaCard
+            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyCard
+            App.LOCKWISE -> R.id.lockwiseCard
+            App.BRAVE -> R.id.braveCard
+            App.ICERAVEN -> R.id.iceravenCard
+        })
+    }
+
+    private fun enableDownloadButton(app: App) {
+        getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_orange)
+    }
+
+    private fun disableDownloadButton(app: App) {
+        getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_grey)
+    }
+
+    private fun getDownloadButtonForApp(app: App): ImageButton {
+        return findViewById(when (app) {
+            App.FIREFOX_KLAR -> R.id.firefoxKlarDownloadButton
+            App.FIREFOX_FOCUS -> R.id.firefoxFocusDownloadButton
+            App.FIREFOX_LITE -> R.id.firefoxLiteDownloadButton
+            App.FIREFOX_RELEASE -> R.id.firefoxReleaseDownloadButton
+            App.FIREFOX_BETA -> R.id.firefoxBetaDownloadButton
+            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyDownloadButton
+            App.LOCKWISE -> R.id.lockwiseDownloadButton
+            App.BRAVE -> R.id.braveDownloadButton
+            App.ICERAVEN -> R.id.iceravenDownloadButton
+        })
+    }
+
+    private fun getInstalledVersionTextView(app: App): TextView {
+        return findViewById(when (app) {
+            App.FIREFOX_KLAR -> R.id.firefoxKlarInstalledVersion
+            App.FIREFOX_FOCUS -> R.id.firefoxFocusInstalledVersion
+            App.FIREFOX_LITE -> R.id.firefoxLiteInstalledVersion
+            App.FIREFOX_RELEASE -> R.id.firefoxReleaseInstalledVersion
+            App.FIREFOX_BETA -> R.id.firefoxBetaInstalledVersion
+            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyInstalledVersion
+            App.LOCKWISE -> R.id.lockwiseInstalledVersion
+            App.BRAVE -> R.id.braveInstalledVersion
+            App.ICERAVEN -> R.id.iceravenInstalledVersion
+        })
+    }
+
+    private fun getAvailableVersionTextView(app: App): TextView {
+        return findViewById(when (app) {
+            App.FIREFOX_KLAR -> R.id.firefoxKlarAvailableVersion
+            App.FIREFOX_FOCUS -> R.id.firefoxFocusAvailableVersion
+            App.FIREFOX_LITE -> R.id.firefoxLiteAvailableVersion
+            App.FIREFOX_RELEASE -> R.id.firefoxReleaseAvailableVersion
+            App.FIREFOX_BETA -> R.id.firefoxBetaAvailableVersion
+            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyAvailableVersion
+            App.LOCKWISE -> R.id.lockwiseAvailableVersion
+            App.BRAVE -> R.id.braveAvailableVersion
+            App.ICERAVEN -> R.id.iceravenAvailableVersion
+        })
+    }
+
+    private fun getInfoButtonForApp(app: App): View {
+        return findViewById(when (app) {
+            App.FIREFOX_KLAR -> R.id.firefoxKlarInfoButton
+            App.FIREFOX_FOCUS -> R.id.firefoxFocusInfoButton
+            App.FIREFOX_LITE -> R.id.firefoxLiteInfoButton
+            App.FIREFOX_RELEASE -> R.id.firefoxReleaseInfoButton
+            App.FIREFOX_BETA -> R.id.firefoxBetaInfoButton
+            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyInfoButton
+            App.LOCKWISE -> R.id.lockwiseInfoButton
+            App.BRAVE -> R.id.braveInfoButton
+            App.ICERAVEN -> R.id.iceravenInfoButton
+        })
     }
 
     companion object {

@@ -40,7 +40,7 @@ abstract class BaseAppDetail : AppDetail {
      */
     override fun updateCheckAsync(context: Context,
                                   deviceEnvironment: DeviceEnvironment): Deferred<UpdateCheckResult> {
-        // TODO do not use GlobalScope.async
+        // TODO check GlobalScope.async is ok
         return GlobalScope.async(start = CoroutineStart.LAZY) {
             withTimeout(Duration.ofMinutes(2).toMillis()) {
                 updateCheck(context, deviceEnvironment)
