@@ -20,6 +20,6 @@ object InternetConnectionTester {
     }
 
     fun isInternetUnavailable(cm: ConnectivityManager, deviceEnvironment: DeviceEnvironment): Boolean {
-        return isInternetAvailable(cm, deviceEnvironment)
+        return !isInternetAvailable(cm, deviceEnvironment)
     }
 }
