@@ -24,6 +24,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallAppDialog
+import de.marmaro.krt.ffupdater.download.InternetConnectionTester
 import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
@@ -36,8 +37,8 @@ import java.util.*
 import java.util.concurrent.*
 
 class MainActivity : AppCompatActivity() {
-    private var swipeRefreshLayout: SwipeRefreshLayout = findViewById(R.id.swipeContainer)
-    private var connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    private var connectivityManager: ConnectivityManager? = null
+    private val deviceEnvironment = DeviceEnvironment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(DeviceEnvironment()))
         Migrator().migrate(this)
         OldDownloadsDeleter.delete(this)
+        connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         for (app in App.values()) {
             getInfoButtonForApp(app).setOnClickListener {
@@ -60,7 +62,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             InstallAppDialog { app: App -> downloadApp(app) }.show(supportFragmentManager)
         }
-        swipeRefreshLayout.setOnRefreshListener { updateUI(true) }
+        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).setOnRefreshListener {
+            updateUI(true)
+        }
     }
 
     override fun onResume() {
@@ -97,11 +101,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(crashOnException: Boolean) {
-        if (isNetworkUnavailable()) {
+        if (InternetConnectionTester.isInternetAvailable(connectivityManager!!, deviceEnvironment)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show()
             return
         }
-        swipeRefreshLayout.isRefreshing = true
+        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = true
         val deviceEnvironment = DeviceEnvironment()
         val jobs = ConcurrentLinkedQueue<Job>()
         for (app in App.values()) {
@@ -116,7 +120,9 @@ class MainActivity : AppCompatActivity() {
         }
         lifecycleScope.launch(Dispatchers.IO) {
             jobs.forEach { it.join() }
-            lifecycleScope.launch(Dispatchers.Main) { swipeRefreshLayout.isRefreshing = false }
+            lifecycleScope.launch(Dispatchers.Main) {
+                findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
+            }
         }
     }
 
@@ -146,7 +152,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun downloadApp(app: App) {
-        if (isNetworkUnavailable()) {
+        if (InternetConnectionTester.isInternetAvailable(connectivityManager!!, deviceEnvironment)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout),
                     R.string.not_connected_to_internet,
                     Snackbar.LENGTH_LONG)
@@ -156,19 +162,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, InstallActivity::class.java)
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name)
         startActivity(intent)
-    }
-
-    private fun isNetworkUnavailable(): Boolean {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            // https://gist.github.com/Farbklex/f84029889444ee9c52a331a7e2bd10d2
-            val activeNetwork = connectivityManager.activeNetwork ?: return true
-            val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork)
-                    ?: return true
-            return capabilities.hasCapability(NET_CAPABILITY_INTERNET) &&
-                    capabilities.hasCapability(NET_CAPABILITY_VALIDATED)
-        }
-        @Suppress("DEPRECATION")
-        return connectivityManager.activeNetworkInfo?.isConnected != true
     }
 
     private fun getAppCardViewForApp(app: App): CardView {

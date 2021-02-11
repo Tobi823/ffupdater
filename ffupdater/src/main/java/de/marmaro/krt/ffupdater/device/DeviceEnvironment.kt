@@ -24,6 +24,10 @@ class DeviceEnvironment constructor(
         }
     }
 
+    fun supportsAndroidMarshmallow(): Boolean {
+        return SDK_INT >= Build.VERSION_CODES.M
+    }
+
     class UnknownAbiException(message: String) : Exception(message)
 }
 
