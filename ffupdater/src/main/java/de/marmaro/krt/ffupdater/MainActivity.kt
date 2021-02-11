@@ -5,8 +5,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
-import android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -45,8 +43,8 @@ class MainActivity : AppCompatActivity() {
         Crasher(this)
         setContentView(R.layout.main_activity)
         setSupportActionBar(findViewById(R.id.toolbar))
-        StrictModeSetup.enableStrictMode()
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(DeviceEnvironment()))
+        StrictModeSetup.enableStrictMode(deviceEnvironment)
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(deviceEnvironment))
         Migrator().migrate(this)
         OldDownloadsDeleter.delete(this)
         connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -106,14 +104,13 @@ class MainActivity : AppCompatActivity() {
             return
         }
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = true
-        val deviceEnvironment = DeviceEnvironment()
         val jobs = ConcurrentLinkedQueue<Job>()
         for (app in App.values()) {
             if (app.detail.isInstalled(this)) {
                 getAppCardViewForApp(app).visibility = View.VISIBLE
                 getInstalledVersionTextView(app).text = app.detail.getDisplayInstalledVersion(this)
                 getAvailableVersionTextView(app).text = getString(R.string.available_version_loading)
-                jobs.add(updateUIForApp(app, deviceEnvironment, crashOnException))
+                jobs.add(updateUIForApp(app, crashOnException))
             } else {
                 getAppCardViewForApp(app).visibility = View.GONE
             }
@@ -126,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUIForApp(app: App, deviceEnvironment: DeviceEnvironment, crashOnException: Boolean): Job {
+    private fun updateUIForApp(app: App, crashOnException: Boolean): Job {
         return lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val result = app.detail.updateCheckAsync(applicationContext, deviceEnvironment).await()

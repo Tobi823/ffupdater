@@ -1,10 +1,10 @@
 package de.marmaro.krt.ffupdater.security
 
-import android.os.Build
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import android.util.Log
 import de.marmaro.krt.ffupdater.BuildConfig
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
  * Configure StrictMode to improve security (by prohibit unencrypted network traffic) and detect bugs during development.
@@ -17,15 +17,15 @@ object StrictModeSetup {
      * If the app has been built by F-Droid, then forbid only unencrypted network traffic.
      */
     @JvmStatic
-    fun enableStrictMode() {
+    fun enableStrictMode(deviceEnvironment: DeviceEnvironment) {
         if (BuildConfig.DEBUG) {
-            enableDebugStrictMode()
+            enableDebugStrictMode(deviceEnvironment)
         } else {
-            enableReleaseStrictMode()
+            enableReleaseStrictMode(deviceEnvironment)
         }
     }
 
-    private fun enableDebugStrictMode() {
+    private fun enableDebugStrictMode(deviceEnvironment: DeviceEnvironment) {
         Log.i(LOG_TAG, "enable StrictMode for local development")
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
                 .detectAll()
@@ -35,7 +35,7 @@ object StrictModeSetup {
                 .penaltyLog()
                 .penaltyDeath()
                 .build())
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (deviceEnvironment.supportsAndroidMarshmallow()) {
             StrictMode.setVmPolicy(VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
@@ -44,9 +44,9 @@ object StrictModeSetup {
         }
     }
 
-    private fun enableReleaseStrictMode() {
-        Log.i("MainActivity", "enable StrictMode for everyday usage to prevent unencrypted data connection")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+    private fun enableReleaseStrictMode(deviceEnvironment: DeviceEnvironment) {
+        Log.i(LOG_TAG, "enable StrictMode for everyday usage to prevent unencrypted data connection")
+        if (deviceEnvironment.supportsAndroidMarshmallow()) {
             StrictMode.setVmPolicy(VmPolicy.Builder()
                     .penaltyDeathOnCleartextNetwork()
                     .build())
