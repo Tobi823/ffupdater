@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(crashOnException: Boolean) {
-        if (InternetConnectionTester.isInternetAvailable(connectivityManager!!, deviceEnvironment)) {
+        if (InternetConnectionTester.isInternetUnavailable(connectivityManager!!, deviceEnvironment)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show()
             return
         }
@@ -149,7 +149,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun downloadApp(app: App) {
-        if (InternetConnectionTester.isInternetAvailable(connectivityManager!!, deviceEnvironment)) {
+        if (InternetConnectionTester.isInternetUnavailable(connectivityManager!!, deviceEnvironment)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout),
                     R.string.not_connected_to_internet,
                     Snackbar.LENGTH_LONG)
