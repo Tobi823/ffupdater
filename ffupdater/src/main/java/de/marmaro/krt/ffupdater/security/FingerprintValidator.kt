@@ -20,12 +20,13 @@ class FingerprintValidator(private val packageManager: PackageManager) {
 
     /**
      * Validate the SHA256 fingerprint of the certificate of the downloaded application as APK file.
+     * Takes about 1ms -> blocking UI thread is ok because thread switching is expensive
      *
      * @param file APK file
      * @param appDetail  app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
-    fun checkApkFile(file: File, appDetail: AppDetail): FingerprintResult {
+    suspend fun checkApkFile(file: File, appDetail: AppDetail): FingerprintResult {
         return try {
             val packageInfo = packageManager.getPackageArchiveInfo(file.absolutePath, PackageManager.GET_SIGNATURES)!!
             verifyPackageInfo(packageInfo, appDetail)
@@ -38,6 +39,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
 
     /**
      * Validate the SHA256 fingerprint of the certificate of the installed application.
+     * Takes about 1s -> blocking UI thread is not ok -> suspend
      *
      * @param appDetail app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
@@ -45,10 +47,11 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      *
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
+    @Suppress("RedundantSuspendModifier")
     @SuppressLint("PackageManagerGetSignatures")
     // because GET_SIGNATURES is dangerous on Android 4.4 or lower https://stackoverflow.com/a/39348300
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun checkInstalledApp(appDetail: AppDetail): FingerprintResult {
+    suspend fun checkInstalledApp(appDetail: AppDetail): FingerprintResult {
         return try {
             val packageInfo = packageManager.getPackageInfo(appDetail.packageName, PackageManager.GET_SIGNATURES)
             verifyPackageInfo(packageInfo, appDetail)

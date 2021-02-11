@@ -248,7 +248,7 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.verifyDownloadFingerprint)
 
             val file = ia.downloadManager!!.getFileForDownloadedFile(ia.downloadId)
-            val fingerprint = ia.lifecycleScope.async {
+            val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
                 ia.fingerprintValidator!!.checkApkFile(file, ia.app!!.detail)
             }.await()
             ia.fileFingerprint = fingerprint
@@ -307,7 +307,7 @@ class InstallActivity : AppCompatActivity() {
 
         APP_INSTALLATION_HAS_BEEN_REGISTERED(f@{ ia ->
             ia.show(R.id.verifyInstalledFingerprint)
-            val fingerprint = ia.lifecycleScope.async {
+            val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
                 ia.fingerprintValidator!!.checkInstalledApp(ia.app!!.detail)
             }.await()
             ia.appFingerprint = fingerprint
