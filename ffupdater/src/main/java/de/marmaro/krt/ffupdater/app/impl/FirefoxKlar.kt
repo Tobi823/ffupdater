@@ -43,7 +43,7 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val mozillaCiConsumer = MozillaCiConsumer(
                 apiConsumer = apiConsumer,
                 task = "project.mobile.focus.release.latest",
-                apkArtifact = "app-klar-$abiString-release-unsigned.apk")
+                apkArtifact = "public/app-klar-$abiString-release-unsigned.apk")
         val result = mozillaCiConsumer.updateCheck()
         val version = result.timestamp
         val updateAvailable = getInstalledVersion(context) != version
@@ -51,7 +51,7 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = "? ($version)",
+                displayVersion = "? (${version.split("T")[0]})",
                 metadata = mapOf(UpdateCheckResult.FILE_HASH_SHA256 to result.hash))
     }
 

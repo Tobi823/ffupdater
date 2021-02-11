@@ -44,7 +44,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val mozillaCiConsumer = MozillaCiConsumer(
                 apiConsumer = apiConsumer,
                 task = "mobile.v2.fenix.beta.latest.$abiString",
-                apkArtifact = "build/$abiString/target.apk")
+                apkArtifact = "public/build/$abiString/target.apk")
         val result = mozillaCiConsumer.updateCheck()
         val version = result.timestamp
         val updateAvailable = getInstalledVersion(context) != version
@@ -52,7 +52,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = "? ($version)", //TODO nochmal checken, ob Ausgabe ok
+                displayVersion = "? (${version.split("T")[0]})",
                 metadata = mapOf(FILE_HASH_SHA256 to result.hash))
     }
 

@@ -7,9 +7,9 @@ import java.net.URL
 class MozillaCiConsumer(private val apiConsumer: ApiConsumer,
                         task: String,
                         private val apkArtifact: String) {
-    private val artifactsUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task/artifacts/"
-    private val chainOfTrustUrl = URL("$artifactsUrl/public/chain-of-trust.json")
-    private val apkArtifactUrl = URL("$artifactsUrl/public/$apkArtifact")
+    private val taskUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
+    private val chainOfTrustUrl = URL("$taskUrl/artifacts/public/chain-of-trust.json")
+    private val apkArtifactUrl = URL("$taskUrl/artifacts/$apkArtifact")
 
     fun updateCheck(): Result {
         val response = apiConsumer.consume(chainOfTrustUrl, Response::class.java)

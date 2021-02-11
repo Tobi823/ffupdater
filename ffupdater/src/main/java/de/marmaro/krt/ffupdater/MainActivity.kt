@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
+import androidx.core.widget.TextViewCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
@@ -99,9 +100,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(crashOnException: Boolean) {
-        if (InternetConnectionTester.isInternetUnavailable(connectivityManager!!, deviceEnvironment)) {
+        val internetAvailable = InternetConnectionTester.isInternetAvailable(connectivityManager!!, deviceEnvironment)
+        if (!internetAvailable) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show()
-            return
         }
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = true
         val jobs = ConcurrentLinkedQueue<Job>()
@@ -109,12 +110,17 @@ class MainActivity : AppCompatActivity() {
             if (app.detail.isInstalled(this)) {
                 getAppCardViewForApp(app).visibility = View.VISIBLE
                 getInstalledVersionTextView(app).text = app.detail.getDisplayInstalledVersion(this)
-                getAvailableVersionTextView(app).text = getString(R.string.available_version_loading)
-                jobs.add(updateUIForApp(app, crashOnException))
+                if (internetAvailable) {
+                    getAvailableVersionTextView(app).text = getString(R.string.available_version_loading)
+                    jobs.add(updateUIForApp(app, crashOnException))
+                } else {
+                    getAvailableVersionTextView(app).text = getString(R.string.not_connected_to_internet)
+                }
             } else {
                 getAppCardViewForApp(app).visibility = View.GONE
             }
         }
+
         lifecycleScope.launch(Dispatchers.IO) {
             jobs.forEach { it.join() }
             lifecycleScope.launch(Dispatchers.Main) {
