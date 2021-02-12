@@ -21,6 +21,8 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
+import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.SessionInstaller
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
@@ -41,6 +43,7 @@ import java.util.concurrent.*
 class InstallActivity : AppCompatActivity() {
     private var downloadManager: DownloadManagerAdapter? = null
     private var fingerprintValidator: FingerprintValidator? = null
+    private var appInstaller: AppInstaller? = null
 
     // necessary for communication with State enums
     private var app: App? = null
@@ -61,6 +64,12 @@ class InstallActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
         downloadManager = DownloadManagerAdapter(getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager)
+        appInstaller = SessionInstaller({
+            restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
+        }, { errorMessage ->
+            appInstallationFailedErrorMessage = errorMessage
+            restartStateMachine(State.FAILURE_APP_INSTALLATION)
+        })
 
         app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run {
             finish()
@@ -109,21 +118,7 @@ class InstallActivity : AppCompatActivity() {
      */
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        if (intent.action == PACKAGE_INSTALLED_ACTION) {
-            val status = intent.extras?.getInt(PackageInstaller.EXTRA_STATUS)
-            if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-                // This test app isn't privileged, so the user has to confirm the install.
-                startActivity(intent.extras!!.get(Intent.EXTRA_INTENT) as Intent)
-                return
-            }
-            if (status == PackageInstaller.STATUS_SUCCESS) {
-                restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
-            } else {
-                val errorMessage = intent.extras?.getString(PackageInstaller.EXTRA_STATUS_MESSAGE)
-                appInstallationFailedErrorMessage = "($status) $errorMessage"
-                restartStateMachine(State.FAILURE_APP_INSTALLATION)
-            }
-        }
+        appInstaller?.onNewIntentCallback(intent, this)
     }
 
     private fun show(viewId: Int) {
@@ -141,7 +136,6 @@ class InstallActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_APP_NAME = "app_name"
         const val LOG_TAG = "InstallActivity"
-        private const val PACKAGE_INSTALLED_ACTION = "de.marmaro.krt.ffupdater.InstallActivity.SESSION_API_PACKAGE_INSTALLED"
     }
 
     private enum class State(val action: suspend (InstallActivity) -> State) {
@@ -214,24 +208,13 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         DOWNLOAD_IS_ENQUEUED(f@{ ia ->
-            val sleepInterval: Long = 500
+            val sleepInterval: Long = 250
             val maxWaitingTime: Long = Duration.ofMinutes(5).toMillis()
             for (i: Long in 1..(maxWaitingTime / sleepInterval)) {
-                val result = ia.downloadManager!!.getStatusAndProgress(ia.downloadId)
-                val status = when (result.status) {
-                    STATUS_RUNNING -> "running"
-                    STATUS_SUCCESSFUL -> "success"
-                    STATUS_FAILED -> "failed"
-                    STATUS_PAUSED -> "paused"
-                    STATUS_PENDING -> "pending"
-                    else -> "? ($result.status)"
-                }
-                ia.setText(R.id.downloadingFileText, ia.getString(
-                        R.string.download_application_from_with_status, status))
-                ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress =
-                        result.progress
-
-                when (result.status) {
+                val r = ia.downloadManager!!.getStatusAndProgress(ia.downloadId)
+                ia.setText(R.id.downloadingFileText, r.toTranslatedText(ia))
+                ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = r.progress
+                when (r.status) {
                     STATUS_FAILED -> return@f FAILURE_DOWNLOAD_UNSUCCESSFUL
                     STATUS_SUCCESSFUL -> return@f DOWNLOAD_WAS_SUCCESSFUL
                 }
@@ -269,30 +252,7 @@ class InstallActivity : AppCompatActivity() {
 
         USER_HAS_TRIGGERED_INSTALLATION_PROCESS(f@{ ia ->
             ia.show(R.id.installingApplication)
-            val installer = ia.packageManager.packageInstaller
-            val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
-            // TODO auslagern in eigene Klasse
-            try {
-                installer.openSession(installer.createSession(params)).use { session ->
-                    val lengthInBytes = ia.downloadManager!!.getTotalDownloadSize(ia.downloadId).toLong()
-                    val downloadUri = ia.downloadManager!!.getUriForDownloadedFile(ia.downloadId)
-                    session.openWrite("package", 0, lengthInBytes).use { packageInSession ->
-                        ia.contentResolver.openInputStream(downloadUri).use { apk ->
-                            val buffer = ByteArray(16384)
-                            var n: Int
-                            while (apk!!.read(buffer).also { n = it } >= 0) {
-                                packageInSession.write(buffer, 0, n)
-                            }
-                        }
-                    }
-                    val intent = Intent(ia, InstallActivity::class.java)
-                    intent.action = PACKAGE_INSTALLED_ACTION
-                    val pendingIntent = PendingIntent.getActivity(ia, 0, intent, 0)
-                    session.commit(pendingIntent.intentSender)
-                }
-            } catch (e: IOException) {
-                throw e //TODO own exception
-            }
+            ia.appInstaller!!.install(ia, ia.downloadManager!!, ia.downloadId)
             return@f SUCCESS_PAUSE
         }),
 

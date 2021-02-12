@@ -4,6 +4,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
+import de.marmaro.krt.ffupdater.R
 import java.io.File
 import java.net.URL
 import java.util.concurrent.ConcurrentHashMap
@@ -68,12 +69,12 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
         }
     }
 
-    fun getTotalDownloadSize(id: Long): Int {
+    fun getTotalDownloadSize(id: Long): Long {
         val query = DownloadManager.Query()
         query.setFilterById(id)
         downloadManager.query(query).use { cursor ->
             cursor.moveToFirst()
-            return cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES))
+            return cursor.getLong(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES))
         }
     }
 
@@ -98,5 +99,16 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
         return files[id]!!
     }
 
-    class StatusProgress(val status: Int, val progress: Int)
+    class StatusProgress(val status: Int, val progress: Int) {
+        fun toTranslatedText(context: Context): String {
+            return context.getString(R.string.download_application_from_with_status,  when (status) {
+                DownloadManager.STATUS_RUNNING -> "running"
+                DownloadManager.STATUS_SUCCESSFUL -> "success"
+                DownloadManager.STATUS_FAILED -> "failed"
+                DownloadManager.STATUS_PAUSED -> "paused"
+                DownloadManager.STATUS_PENDING -> "pending"
+                else -> "? ($status)"
+            })
+        }
+    }
 }
