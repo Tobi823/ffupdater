@@ -69,7 +69,6 @@ class SettingsHelper(context: Context) {
             else -> throw Exception("invalid API level")
         }
 
-        // TODO die preference keys verallgemeinern, damit kein Rechtschreibfehler möglich ist
         val themePreference = preferences.getString("themePreference", null)
         return try {
             themePreference?.toInt() ?: default
