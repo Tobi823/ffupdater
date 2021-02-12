@@ -6,6 +6,6 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import kotlinx.coroutines.Deferred
 
 interface UpdateCheck {
-    fun updateCheck(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckResult
-    fun updateCheckAsync(context: Context, deviceEnvironment: DeviceEnvironment): Deferred<UpdateCheckResult>
+    fun updateCheck(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult
+    suspend fun updateCheckAsync(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckResult
 }

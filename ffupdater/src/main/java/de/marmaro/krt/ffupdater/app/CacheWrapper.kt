@@ -18,8 +18,4 @@ class CacheWrapper(private val delegate: AppDetail) : AppDetail by delegate {
         }
         return cache!!
     }
-
-    companion object {
-        const val CACHE_TIME: Long = 10 * 60 * 1000 // 10 minutes
-    }
 }

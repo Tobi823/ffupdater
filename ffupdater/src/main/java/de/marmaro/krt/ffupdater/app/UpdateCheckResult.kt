@@ -8,9 +8,5 @@ data class UpdateCheckResult(
         val downloadUrl: URL,
         val version: String,
         val displayVersion: String,
-        val metadata: Map<String, Any>) {
-    companion object {
-        const val FILE_HASH_SHA256 = "file_hash_sha256"
-        const val FILE_SIZE_BYTES = "file_size_bytes"
-    }
-}
+        val fileHashSha256: String?,
+        val fileSizeBytes: Long?)
