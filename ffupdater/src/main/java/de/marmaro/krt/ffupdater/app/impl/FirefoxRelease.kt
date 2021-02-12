@@ -5,6 +5,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -34,7 +35,8 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return getInstalledVersionFromSharedPreferences(context, INSTALLED_VERSION_KEY)
     }
 
-    override fun updateCheck(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckResult {
+    override fun updateCheckBlocking(context: Context,
+                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         check(deviceEnvironment.abis.isNotEmpty())
         val abiString = when (deviceEnvironment.abis[0]) {
             ABI.AARCH64 -> "arm64-v8a"
@@ -49,13 +51,12 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val result = mozillaCiConsumer.updateCheck()
         val version = result.timestamp
         val shortVersion = version.split("T")[0]
-        val updateAvailable = getInstalledVersion(context) != version
-        return UpdateCheckResult(
-                isUpdateAvailable = updateAvailable,
+        return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
                 displayVersion = context.getString(R.string.available_version_timestamp, shortVersion),
-                metadata = mapOf(UpdateCheckResult.FILE_HASH_SHA256 to result.hash))
+                fileHashSha256 = result.hash,
+                fileSizeBytes = null)
     }
 
     override fun installationCallback(context: Context, installedVersion: String) {

@@ -16,9 +16,6 @@ enum class App(appDetail: AppDetail) {
     BRAVE(Brave(apiConsumer)),
     ICERAVEN(Iceraven(apiConsumer));
 
-    val detail: AppDetail
+    val detail: AppDetail = appDetail
 
-    init {
-        this.detail = CacheWrapper(appDetail)
-    }
 }

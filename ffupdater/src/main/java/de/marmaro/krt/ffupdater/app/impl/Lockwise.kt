@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
@@ -33,7 +33,8 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return getInstalledVersionFromPackageManager(context)
     }
 
-    override fun updateCheck(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckResult {
+    override fun updateCheckBlocking(context: Context,
+                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "mozilla-lockwise",
@@ -48,13 +49,12 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val regexResult = Regex("""^release-v((\d)+(\.\d+)*)""").find(result.tagName)
         val version = regexResult?.groups?.get(1)?.value
                 ?: throw RuntimeException("regex pattern does not match '${result.tagName}'")
-        val updateAvailable = getInstalledVersion(context) != version
-        return UpdateCheckResult(
-                isUpdateAvailable = updateAvailable,
+        return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
                 displayVersion = version,
-                metadata = mapOf(UpdateCheckResult.FILE_SIZE_BYTES to result.fileSizeBytes))
+                fileHashSha256 = null,
+                fileSizeBytes = result.fileSizeBytes)
     }
 
     override fun installationCallback(context: Context, installedVersion: String) {}

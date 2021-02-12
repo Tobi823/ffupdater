@@ -31,6 +31,7 @@ import james.crasher.Crasher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.*
 import java.util.concurrent.*
 
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity() {
         Migrator().migrate(this)
         OldDownloadsDeleter.delete(this)
         connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        runBlocking {
+            App.BRAVE.detail.updateCheck(this@MainActivity, deviceEnvironment)
+        }
+
 
         for (app in App.values()) {
             getInfoButtonForApp(app).setOnClickListener {
@@ -131,7 +137,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUIForApp(app: App, crashOnException: Boolean): Job {
         return lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val result = app.detail.updateCheckAsync(applicationContext, deviceEnvironment).await()
+                val result = app.detail.updateCheck(applicationContext, deviceEnvironment)
                 lifecycleScope.launch(Dispatchers.Main) {
                     getAvailableVersionTextView(app).text = result.displayVersion
                     if (result.isUpdateAvailable) {

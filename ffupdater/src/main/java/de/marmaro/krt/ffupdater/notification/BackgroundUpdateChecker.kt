@@ -32,8 +32,7 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
                 .filter { it.detail.isInstalled(context) }
         val appsWithUpdates = appsForChecking.filter {
             try {
-                val result = it.detail.updateCheckAsync(context, deviceEnvironment).await()
-                result.isUpdateAvailable
+                it.detail.updateCheck(context, deviceEnvironment).isUpdateAvailable
             } catch (e: Exception) {
                 throw BackgroundUpdateCheckFailedException("fail to check $it", e)
             }

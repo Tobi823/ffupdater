@@ -2,10 +2,7 @@ package de.marmaro.krt.ffupdater
 
 import android.app.DownloadManager
 import android.app.DownloadManager.*
-import android.app.PendingIntent
 import android.content.*
-import android.content.pm.PackageInstaller
-import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Environment
@@ -28,7 +25,6 @@ import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import james.crasher.Crasher
 import kotlinx.coroutines.*
-import java.io.IOException
 import java.time.Duration
 import java.util.*
 import java.util.concurrent.*
@@ -185,8 +181,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.fetch_url_for_download,
                     ia.getString(app.detail.displayDownloadSource)))
             try {
-                val result = app.detail.updateCheckAsync(ia, DeviceEnvironment()).await()
-                ia.updateCheckResult = result
+                ia.updateCheckResult = app.detail.updateCheck(ia, DeviceEnvironment())
                 ia.hide(R.id.fetchUrl)
                 ia.show(R.id.fetchedUrlSuccess)
                 ia.setText(R.id.fetchedUrlSuccessTextView,

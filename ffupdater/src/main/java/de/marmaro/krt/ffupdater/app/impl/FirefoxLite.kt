@@ -5,6 +5,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
@@ -33,7 +34,8 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return getInstalledVersionFromPackageManager(context)
     }
 
-    override fun updateCheck(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckResult {
+    override fun updateCheckBlocking(context: Context,
+                             deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "mozilla-tw",
@@ -47,13 +49,12 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val result = githubConsumer.updateCheck()
         // tag_name can be: "v2.5.1", "v.2.0.5"
         val version = result.tagName.replace("v", "")
-        val update = getInstalledVersion(context) != version
-        return UpdateCheckResult(
-                isUpdateAvailable = update,
+        return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
                 displayVersion = version,
-                metadata = mapOf(UpdateCheckResult.FILE_SIZE_BYTES to result.fileSizeBytes))
+                fileHashSha256 = null,
+                fileSizeBytes = result.fileSizeBytes)
     }
 
     override fun installationCallback(context: Context, installedVersion: String) {}
