@@ -208,9 +208,9 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         DOWNLOAD_IS_ENQUEUED(f@{ ia ->
-            val sleepInterval: Long = 250
-            val maxWaitingTime: Long = Duration.ofMinutes(5).toMillis()
-            for (i: Long in 1..(maxWaitingTime / sleepInterval)) {
+            val sleepInterval = 250L
+            val maxWaitingTime = Duration.ofMinutes(5).toMillis()
+            for (i in 1..(maxWaitingTime / sleepInterval)) {
                 val r = ia.downloadManager!!.getStatusAndProgress(ia.downloadId)
                 ia.setText(R.id.downloadingFileText, r.toTranslatedText(ia))
                 ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = r.progress
@@ -226,8 +226,7 @@ class InstallActivity : AppCompatActivity() {
         DOWNLOAD_WAS_SUCCESSFUL(f@{ ia ->
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadedFile)
-            ia.setText(R.id.downloadedFileUrl,
-                    ia.updateCheckResult?.downloadUrl.toString())
+            ia.setText(R.id.downloadedFileUrl, ia.updateCheckResult?.downloadUrl.toString())
             ia.show(R.id.verifyDownloadFingerprint)
 
             val file = ia.downloadManager!!.getFileForDownloadedFile(ia.downloadId)
@@ -350,5 +349,6 @@ class InstallActivity : AppCompatActivity() {
         ERROR_STOP(f@{ return@f ERROR_STOP });
     }
 
-    private class InstallActivityFetchException(message: String, throwable: Throwable) : Exception(message, throwable)
+    private class InstallActivityFetchException(message: String, throwable: Throwable) :
+            Exception(message, throwable)
 }
