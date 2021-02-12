@@ -50,11 +50,6 @@ class MainActivity : AppCompatActivity() {
         OldDownloadsDeleter.delete(this)
         connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        runBlocking {
-            App.BRAVE.detail.updateCheck(this@MainActivity, deviceEnvironment)
-        }
-
-
         for (app in App.values()) {
             getInfoButtonForApp(app).setOnClickListener {
                 AppInfoDialog(app.detail).show(supportFragmentManager)
