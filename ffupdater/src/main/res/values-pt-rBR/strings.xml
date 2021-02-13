@@ -72,7 +72,6 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="lockwise_warning">FFUpdater às vezes não consegue baixar a versão mais recente porque nem todas as atualizações são lançadas no GitHub. Você quer instalar o aplicativo com o risco de usar uma versão desatualizada?</string>
     <string name="main_activity_subtitle">Atualize seus navegadores de Mozilla</string>
     <string name="msg_crasher_crashed">Infelizmente, o %1$s se despenhou. Você pode relatar este erro:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nPor favor, crie um novo problema com o stacktrace e uma descrição de como reproduzir o bug.</string>
-    <string name="no_update_available">Nenhuma atualização disponível</string>
     <string name="not_connected_to_internet">Sem conexão de Internet</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Configurações</string>
@@ -96,12 +95,10 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="title_crasher_stack_trace">Ver Stack Trace</string>
     <string name="too_low_memory_description">No seu dispositivo está apenas %1$d MB de espaço disponível. Isto pode levar a erro de download ou na instalação</string>
     <string name="too_low_memory_title">Pouco espaço na memória</string>
-    <string name="unknown_installed_version">Versão desconhecida instalada</string>
     <string name="unknown_signature_of_installed_app_text1">"É necessário desinstalar o aplicativo existente antes que o FFUpdater possa instalar ou atualizar o aplicativo. Faça backup de seus dados porque a desinstalação irá apagar todos os seus marcadores, configurações, etc. "</string>
     <string name="unknown_signature_of_installed_app_text2">Motivo: O aplicativo instalado atualmente não é assinado pelo desenvolvedor original - talvez seja assinado pelo F-Droid. O Android se recusa a atualizar um aplicativo se pessoas diferentes assinaram a versão instalada e a versão atualizada.</string>
     <string name="unsupported_abi_dialog_message">O navegador selecionado é incompatível com o processador do seu aparelho. Por favor, selecione um navegador diferente.</string>
     <string name="unsupported_abi_dialog_title">Dispositivo sem suporte</string>
-    <string name="update_available">Atualização disponível</string>
     <string name="update_interval_12h">12 horas</string>
     <string name="update_interval_15min">15 minutos</string>
     <string name="update_interval_18h">18 horas</string>
