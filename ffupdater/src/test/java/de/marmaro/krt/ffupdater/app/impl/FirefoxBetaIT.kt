@@ -66,7 +66,7 @@ class FirefoxBetaIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("59ce0f9ea256b4576f391d01c685ced2db224a252bf09c3f362e6859a6c7ead5",
+            assertEquals("d9b48cfc73d5d0463bceb229734bf11a9d14eb69e676218561647c76f55cd0eb",
                     actual.fileHashSha256)
         }
 
@@ -81,7 +81,7 @@ class FirefoxBetaIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("59ce0f9ea256b4576f391d01c685ced2db224a252bf09c3f362e6859a6c7ead5",
+            assertEquals("d9b48cfc73d5d0463bceb229734bf11a9d14eb69e676218561647c76f55cd0eb",
                     actual.fileHashSha256)
         }
     }
@@ -107,7 +107,7 @@ class FirefoxBetaIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("5c81d3f523804347bd2af0908367346d39ad5995461910edcb2b0093c02b44b5",
+            assertEquals("2812e4430fdd552e35b146ab774b754ab635c4ce12c0f05e5d6b3fd3e6a2bc45",
                     actual.fileHashSha256)
         }
 
@@ -122,7 +122,7 @@ class FirefoxBetaIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("5c81d3f523804347bd2af0908367346d39ad5995461910edcb2b0093c02b44b5",
+            assertEquals("2812e4430fdd552e35b146ab774b754ab635c4ce12c0f05e5d6b3fd3e6a2bc45",
                     actual.fileHashSha256)
         }
     }
@@ -148,7 +148,7 @@ class FirefoxBetaIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("3288eb3adbb0498b8e5b7017562cbfd156099fa0f2af6f65941c2aa104c42a80",
+            assertEquals("b9836779f91eae161daee32062b7567bb291c437562398ac5f0e6fbc8b499b53",
                     actual.fileHashSha256)
         }
 
@@ -163,7 +163,7 @@ class FirefoxBetaIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("3288eb3adbb0498b8e5b7017562cbfd156099fa0f2af6f65941c2aa104c42a80",
+            assertEquals("b9836779f91eae161daee32062b7567bb291c437562398ac5f0e6fbc8b499b53",
                     actual.fileHashSha256)
         }
     }
@@ -189,7 +189,7 @@ class FirefoxBetaIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("1dae9fa995cf197698e652f3e23aa84b2280f69a82964885751cedf7c8e45beb",
+            assertEquals("ba29fa9a8ec46fed9db833c0f5fbf3b7c431fc843833ab66b22723f7c6251d6e",
                     actual.fileHashSha256)
         }
 
@@ -204,7 +204,7 @@ class FirefoxBetaIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("1dae9fa995cf197698e652f3e23aa84b2280f69a82964885751cedf7c8e45beb",
+            assertEquals("ba29fa9a8ec46fed9db833c0f5fbf3b7c431fc843833ab66b22723f7c6251d6e",
                     actual.fileHashSha256)
         }
     }

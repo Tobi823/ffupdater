@@ -122,7 +122,7 @@ class LockwiseIT {
                 Lockwise(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
             }
             val expected = "https://github.com/mozilla-lockwise/lockwise-android/releases/" +
-                    "download/release-v4.0.3/lockbox-app-release-6584-signed.apk"
+                    "download/release-v3.3.0-RC-2/lockbox-app-release-5784-signed.apk"
             assertEquals(URL(expected), actual)
         }
     }
