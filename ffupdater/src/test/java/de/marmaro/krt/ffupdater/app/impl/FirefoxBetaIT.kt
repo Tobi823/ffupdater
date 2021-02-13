@@ -58,12 +58,12 @@ class FirefoxBetaIT {
                 "mobile.v2.fenix.beta.latest.armeabi-v7a/artifacts/public/chain-of-trust.json"
         every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
                 Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
+        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
 
         runBlocking {
             sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
                     "2021-02-11T13:27:29.055Z").commit()
 
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                     "mobile.v2.fenix.beta.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
@@ -79,7 +79,6 @@ class FirefoxBetaIT {
             sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
                     "2021-01-28T07:35:12.476Z").commit()
 
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                     "mobile.v2.fenix.beta.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
@@ -100,12 +99,12 @@ class FirefoxBetaIT {
                 "mobile.v2.fenix.beta.latest.arm64-v8a/artifacts/public/chain-of-trust.json"
         every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
                 Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
+        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
 
         runBlocking {
             sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
                     "2021-02-11T13:27:29.055Z").commit()
 
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                     "mobile.v2.fenix.beta.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
@@ -121,7 +120,6 @@ class FirefoxBetaIT {
             sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
                     "2021-01-28T07:35:12.476Z").commit()
 
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                     "mobile.v2.fenix.beta.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
@@ -142,12 +140,12 @@ class FirefoxBetaIT {
                 "mobile.v2.fenix.beta.latest.x86/artifacts/public/chain-of-trust.json"
         every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
                 Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
+        val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86), Build.VERSION_CODES.R)
 
         runBlocking {
             sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
                     "2021-02-11T13:27:29.055Z").commit()
 
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                     "mobile.v2.fenix.beta.latest.x86/artifacts/public/build/x86/" +
@@ -163,7 +161,6 @@ class FirefoxBetaIT {
             sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
                     "2021-01-28T07:35:12.476Z").commit()
 
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                     "mobile.v2.fenix.beta.latest.x86/artifacts/public/build/x86/" +
@@ -184,12 +181,12 @@ class FirefoxBetaIT {
                 "mobile.v2.fenix.beta.latest.x86_64/artifacts/public/chain-of-trust.json"
         every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
                 Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
+        val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
 
         runBlocking {
             sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
                     "2021-02-11T13:27:29.055Z").commit()
 
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                     "mobile.v2.fenix.beta.latest.x86_64/artifacts/public/build/x86_64/" +
@@ -205,7 +202,6 @@ class FirefoxBetaIT {
             sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
                     "2021-01-28T07:35:12.476Z").commit()
 
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                     "mobile.v2.fenix.beta.latest.x86_64/artifacts/public/build/x86_64/" +
