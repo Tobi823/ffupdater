@@ -126,7 +126,7 @@ class BraveIT {
         every {
             apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
-                File("$basePath/releases_perpage_20_page_1.json").readText(),
+                File("$basePath/2releases_perpage_20_page_1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
 
         val packageInfo = PackageInfo()
@@ -178,7 +178,7 @@ class BraveIT {
         every {
             apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
-                File("$basePath/releases_perpage_20_page_1.json").readText(),
+                File("$basePath/2releases_perpage_20_page_1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
 
         val packageInfo = PackageInfo()
