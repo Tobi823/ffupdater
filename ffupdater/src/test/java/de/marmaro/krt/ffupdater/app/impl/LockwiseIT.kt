@@ -38,7 +38,7 @@ class LockwiseIT {
     }
 
     @Test
-    fun updateCheckBlocking_latestRelease_checkDownloadUrlForABI() {
+    fun updateCheck_latestRelease_checkDownloadUrlForABI() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/latest.json"
         val url = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest"
         every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
@@ -62,7 +62,7 @@ class LockwiseIT {
     }
 
     @Test
-    fun updateCheckBlocking_latestRelease_updateCheck() {
+    fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/latest.json"
         val url = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest"
         every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
@@ -95,7 +95,7 @@ class LockwiseIT {
     }
 
     @Test
-    fun updateCheckBlocking_2releases_checkDownloadUrlForABI() {
+    fun updateCheck_2releases_checkDownloadUrlForABI() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/"
         val baseUrl = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases"
         every {
@@ -128,7 +128,7 @@ class LockwiseIT {
     }
 
     @Test
-    fun updateCheckBlocking_2releases_updateCheck() {
+    fun updateCheck_2releases_updateCheck() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/"
         val baseUrl = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases"
         every {

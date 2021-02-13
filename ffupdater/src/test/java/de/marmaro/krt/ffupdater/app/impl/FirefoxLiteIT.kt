@@ -39,7 +39,7 @@ class FirefoxLiteIT {
     }
 
     @Test
-    fun updateCheckBlocking_latestRelease_checkDownloadUrlForABI() {
+    fun updateCheck_latestRelease_checkDownloadUrlForABI() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxLite/latest.json"
         val url = URL("https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest")
 
@@ -61,7 +61,7 @@ class FirefoxLiteIT {
     }
 
     @Test
-    fun updateCheckBlocking_latestRelease_updateCheck() {
+    fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxLite/latest.json"
         val url = URL("https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest")
         every { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns

@@ -39,7 +39,7 @@ class IceravenIT {
     }
 
     @Test
-    fun updateCheckBlocking_latestRelease_checkDownloadUrlForABI() {
+    fun updateCheck_latestRelease_checkDownloadUrlForABI() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Iceraven/latest.json"
         val url = "https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest"
         every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
@@ -89,7 +89,7 @@ class IceravenIT {
     }
 
     @Test
-    fun updateCheckBlocking_latestRelease_updateCheck() {
+    fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Iceraven/latest.json"
         val url = "https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest"
         every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns

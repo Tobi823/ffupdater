@@ -39,7 +39,7 @@ class BraveIT {
     }
 
     @Test
-    fun updateCheckBlocking_latestRelease_checkDownloadUrlForABI() {
+    fun updateCheck_latestRelease_checkDownloadUrlForABI() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/latest_contains_release_version.json"
         val url = URL("https://api.github.com/repos/brave/brave-browser/releases/latest")
 
@@ -83,7 +83,7 @@ class BraveIT {
     }
 
     @Test
-    fun updateCheckBlocking_latestRelease_updateCheck() {
+    fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/latest_contains_release_version.json"
         val url = URL("https://api.github.com/repos/brave/brave-browser/releases/latest")
         every { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
@@ -114,7 +114,7 @@ class BraveIT {
     }
 
     @Test
-    fun updateCheckBlocking_2releases_checkDownloadUrlForABI() {
+    fun updateCheck_2releases_checkDownloadUrlForABI() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
         every {
@@ -166,7 +166,7 @@ class BraveIT {
     }
 
     @Test
-    fun updateCheckBlocking_2releases_updateCheck() {
+    fun updateCheck_2releases_updateCheck() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
         every {
@@ -206,7 +206,7 @@ class BraveIT {
     }
 
     @Test
-    fun updateCheckBlocking_3releases_checkDownloadUrlForABI() {
+    fun updateCheck_3releases_checkDownloadUrlForABI() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
         every {
@@ -264,7 +264,7 @@ class BraveIT {
     }
 
     @Test
-    fun updateCheckBlocking_3releases_updateCheck() {
+    fun updateCheck_3releases_updateCheck() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
         every {
