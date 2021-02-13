@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.app
 
 import java.net.URL
-import java.util.*
 
 data class UpdateCheckResult(
         val isUpdateAvailable: Boolean,

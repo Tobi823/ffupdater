@@ -9,7 +9,6 @@ import androidx.preference.PreferenceFragmentCompat
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import java.util.*
 
 /**
  * Activity for displaying the settings view.

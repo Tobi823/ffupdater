@@ -22,15 +22,15 @@ import kotlin.random.Random
 class FingerprintValidatorTest {
 
     @Mock
-    lateinit var packageManager: PackageManager
+    private lateinit var packageManager: PackageManager
 
     @Mock
-    lateinit var signature: Signature
-    lateinit var fingerprintValidator: FingerprintValidator
+    private lateinit var signature: Signature
+    private lateinit var fingerprintValidator: FingerprintValidator
 
     companion object {
         lateinit var signatureBytes: ByteArray
-        val signatureFingerprint = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
+        const val signatureFingerprint = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
         @BeforeClass
         @JvmStatic

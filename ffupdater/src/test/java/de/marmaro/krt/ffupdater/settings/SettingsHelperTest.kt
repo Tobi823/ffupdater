@@ -200,7 +200,7 @@ class SettingsHelperTest {
         }
     }
 
-    fun testIfGetThemePreferenceReturnsDefaultValue() {
+    private fun testIfGetThemePreferenceReturnsDefaultValue() {
         for (sdkInt in Build.VERSION_CODES.LOLLIPOP..Build.VERSION_CODES.P) {
             val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), sdkInt)
             val actual = SettingsHelper(mockContext).getThemePreference(deviceEnvironment)

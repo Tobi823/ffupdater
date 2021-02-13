@@ -23,14 +23,14 @@ import java.net.URL
 
 class FirefoxKlarIT {
     @MockK
-    lateinit var apiConsumer: ApiConsumer
+    private lateinit var apiConsumer: ApiConsumer
 
     @MockK
-    lateinit var context: Context
+    private lateinit var context: Context
 
     @MockK
-    lateinit var packageManager: PackageManager
-    lateinit var sharedPreferences: SharedPreferences
+    private lateinit var packageManager: PackageManager
+    private lateinit var sharedPreferences: SharedPreferences
 
     @Before
     fun setUp() {

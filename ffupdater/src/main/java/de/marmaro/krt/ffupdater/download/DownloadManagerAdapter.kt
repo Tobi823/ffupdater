@@ -38,9 +38,7 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
     }
 
     /**
-     * Delete the download files by their ids.
-     *
-     * @param ids ids
+     * Delete the download files by their ids
      */
     fun remove(id: Long) {
         files.remove(id)

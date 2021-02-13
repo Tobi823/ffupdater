@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.app
 
 import android.content.Context
-import java.util.*
 
 interface InstallerInfo {
     fun isInstalled(context: Context): Boolean
