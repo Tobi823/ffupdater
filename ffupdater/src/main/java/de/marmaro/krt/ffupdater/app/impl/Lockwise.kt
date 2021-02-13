@@ -53,7 +53,7 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = version,
+                displayVersion = context.getString(R.string.available_version, version),
                 fileHashSha256 = null,
                 fileSizeBytes = result.fileSizeBytes)
     }
