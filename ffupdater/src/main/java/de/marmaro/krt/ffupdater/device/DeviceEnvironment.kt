@@ -30,14 +30,3 @@ class DeviceEnvironment constructor(
 
     class UnknownAbiException(message: String) : Exception(message)
 }
-
-/**
- * All supported ABIs
- * "Note: Historically the NDK supported ARMv5 (armeabi), and 32-bit and 64-bit MIPS, but
- * support for these ABIs was removed in NDK r17." (r17c release in June 2018)
- *
- * @see [List of official supported ABIS](https://developer.android.com/ndk/guides/abis)
- */
-enum class ABI {
-    AARCH64, ARM, X86, X86_64
-}
