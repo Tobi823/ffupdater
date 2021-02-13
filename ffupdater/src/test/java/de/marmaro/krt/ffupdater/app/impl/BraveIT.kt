@@ -164,4 +164,44 @@ class BraveIT {
                     actual)
         }
     }
+
+    @Test
+    fun updateCheckBlocking_2releases_updateCheck() {
+        val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
+        val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
+        every {
+            apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
+        } returns Gson().fromJson(
+                File("$basePath/latest_contains_NOT_release_version.json").readText(),
+                GithubConsumer.Release::class.java)
+
+        every {
+            apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
+        } returns Gson().fromJson(
+                File("$basePath/releases_perpage_20_page_1.json").readText(),
+                Array<GithubConsumer.Release>::class.java)
+
+        val packageInfo = PackageInfo()
+        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, 0) } returns packageInfo
+
+        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
+
+        // installed app is up-to-date
+        runBlocking {
+            packageInfo.versionName = "1.20.103"
+            val actual = Brave(apiConsumer).updateCheck(context, deviceEnvironment)
+            assertFalse(actual.isUpdateAvailable)
+            assertEquals("1.20.103", actual.version)
+            assertEquals(100446537L, actual.fileSizeBytes)
+        }
+
+        // installed app is old
+        runBlocking {
+            packageInfo.versionName = "1.18.12"
+            val actual = Brave(apiConsumer).updateCheck(context, deviceEnvironment)
+            assertTrue(actual.isUpdateAvailable)
+            assertEquals("1.20.103", actual.version)
+            assertEquals(100446537L, actual.fileSizeBytes)
+        }
+    }
 }
