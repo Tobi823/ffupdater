@@ -192,7 +192,7 @@ class FirefoxBetaIT {
             val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.x86-64/artifacts/public/build/x86_64/" +
+                    "mobile.v2.fenix.beta.latest.x86_64/artifacts/public/build/x86_64/" +
                     "target.apk"
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
@@ -208,7 +208,7 @@ class FirefoxBetaIT {
             val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
             val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.x86-64/artifacts/public/build/x86_64/" +
+                    "mobile.v2.fenix.beta.latest.x86_64/artifacts/public/build/x86_64/" +
                     "target.apk"
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-11T13:27:29.055Z", actual.version)
