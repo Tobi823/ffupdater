@@ -1,7 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import junit.framework.TestCase
-
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -42,32 +40,38 @@ class LockwiseIT {
     @Test
     fun updateCheckBlocking_latestRelease_checkDownloadUrlForABI() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/latest.json"
-        val url = URL("https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest")
-
-        every { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        val url = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest"
+        every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
+
         val packageInfo = PackageInfo()
         packageInfo.versionName = "4.0.3"
-        every { packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0) } returns packageInfo
+        every {
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0)
+        } returns packageInfo
 
-        runBlocking {
-            val abi = ABI.ARMEABI_V7A
+        for (abi in ABI.values()) {
             val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
-            val actual = Lockwise(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
-            assertEquals(URL("https://github.com/mozilla-lockwise/lockwise-android/releases/download/release-v4.0.3/lockbox-app-release-6584-signed.apk"),
-                    actual)
+            val actual = runBlocking {
+                Lockwise(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
+            }
+            val expected = "https://github.com/mozilla-lockwise/lockwise-android/releases/" +
+                    "download/release-v4.0.3/lockbox-app-release-6584-signed.apk"
+            assertEquals(URL(expected), actual)
         }
     }
 
     @Test
     fun updateCheckBlocking_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/latest.json"
-        val url = URL("https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest")
-        every { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        val url = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest"
+        every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()
-        every { packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0) } returns packageInfo
+        every {
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0)
+        } returns packageInfo
 
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
 
@@ -101,20 +105,25 @@ class LockwiseIT {
                 GithubConsumer.Release::class.java)
 
         every {
-            apiConsumer.consume(URL("$baseUrl?per_page=5&page=1"), Array<GithubConsumer.Release>::class.java)
+            apiConsumer.consume(URL("$baseUrl?per_page=5&page=1"),
+                    Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/2releases_page1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
 
         val packageInfo = PackageInfo()
-        every { packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0) } returns packageInfo
+        every {
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0)
+        } returns packageInfo
 
-        runBlocking {
-            val abi = ABI.ARMEABI_V7A
+        for (abi in ABI.values()) {
             val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
-            val actual = Lockwise(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
-            assertEquals(URL("https://github.com/mozilla-lockwise/lockwise-android/releases/download/release-v3.3.0-RC-2/lockbox-app-release-5784-signed.apk"),
-                    actual)
+            val actual = runBlocking {
+                Lockwise(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
+            }
+            val expected = "https://github.com/mozilla-lockwise/lockwise-android/releases/" +
+                    "download/release-v4.0.3/lockbox-app-release-6584-signed.apk"
+            assertEquals(URL(expected), actual)
         }
     }
 
@@ -129,13 +138,16 @@ class LockwiseIT {
                 GithubConsumer.Release::class.java)
 
         every {
-            apiConsumer.consume(URL("$baseUrl?per_page=5&page=1"), Array<GithubConsumer.Release>::class.java)
+            apiConsumer.consume(URL("$baseUrl?per_page=5&page=1"),
+                    Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/2releases_page1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
 
         val packageInfo = PackageInfo()
-        every { packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0) } returns packageInfo
+        every {
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0)
+        } returns packageInfo
 
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
 
