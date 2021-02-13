@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import com.google.gson.Gson
+import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
@@ -36,6 +37,7 @@ class IceravenIT {
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
         every { context.packageManager } returns packageManager
+        every { context.getString(R.string.available_version, any()) } returns "/"
     }
 
     @Test
@@ -104,19 +106,19 @@ class IceravenIT {
 
         // installed app is up-to-date
         runBlocking {
-            packageInfo.versionName = "1.6.0"
+            packageInfo.versionName = "iceraven-1.6.0"
             val actual = Iceraven(apiConsumer).updateCheck(context, deviceEnvironment)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("1.6.0", actual.version)
+            assertEquals("iceraven-1.6.0", actual.version)
             assertEquals(66150140L, actual.fileSizeBytes)
         }
 
         // installed app is old
         runBlocking {
-            packageInfo.versionName = "1.5.0"
+            packageInfo.versionName = "iceraven-1.5.0"
             val actual = Iceraven(apiConsumer).updateCheck(context, deviceEnvironment)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("1.6.0", actual.version)
+            assertEquals("iceraven-1.6.0", actual.version)
             assertEquals(66150140L, actual.fileSizeBytes)
         }
     }
