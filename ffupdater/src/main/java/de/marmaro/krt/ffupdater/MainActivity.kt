@@ -31,12 +31,11 @@ import james.crasher.Crasher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.util.*
 import java.util.concurrent.*
 
 class MainActivity : AppCompatActivity() {
-    private var connectivityManager: ConnectivityManager? = null
+    private lateinit var cm: ConnectivityManager
     private val deviceEnvironment = DeviceEnvironment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(deviceEnvironment))
         Migrator().migrate(this)
         OldDownloadsDeleter.delete(this)
-        connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         for (app in App.values()) {
             getInfoButtonForApp(app).setOnClickListener {
@@ -100,7 +99,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(crashOnException: Boolean) {
-        val internetAvailable = InternetConnectionTester.isInternetAvailable(connectivityManager!!, deviceEnvironment)
+        val internetAvailable = InternetConnectionTester.isInternetAvailable(cm, deviceEnvironment)
         if (!internetAvailable) {
             Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show()
         }
@@ -155,7 +154,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun downloadApp(app: App) {
-        if (InternetConnectionTester.isInternetUnavailable(connectivityManager!!, deviceEnvironment)) {
+        if (InternetConnectionTester.isInternetUnavailable(cm, deviceEnvironment)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout),
                     R.string.not_connected_to_internet,
                     Snackbar.LENGTH_LONG)
