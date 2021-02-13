@@ -139,7 +139,7 @@ class InstallActivity : AppCompatActivity() {
             if (!ia.app.detail.isInstalled(ia)) {
                 return@f INSTALLED_APP_SIGNATURE_CHECKED
             }
-            if (ia.fingerprintValidator.checkInstalledApp(ia.app.detail).isValid) {
+            if (ia.fingerprintValidator.checkInstalledApp(ia.app).isValid) {
                 return@f INSTALLED_APP_SIGNATURE_CHECKED
             }
             return@f FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP
@@ -225,7 +225,7 @@ class InstallActivity : AppCompatActivity() {
 
             val file = ia.downloadManager.getFileForDownloadedFile(ia.downloadId)
             val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
-                ia.fingerprintValidator.checkApkFile(file, ia.app.detail)
+                ia.fingerprintValidator.checkApkFile(file, ia.app)
             }.await()
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
@@ -261,7 +261,7 @@ class InstallActivity : AppCompatActivity() {
         APP_INSTALLATION_HAS_BEEN_REGISTERED(f@{ ia ->
             ia.show(R.id.verifyInstalledFingerprint)
             val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
-                ia.fingerprintValidator.checkInstalledApp(ia.app.detail)
+                ia.fingerprintValidator.checkInstalledApp(ia.app)
             }.await()
             ia.appFingerprint = fingerprint
             ia.hide(R.id.verifyInstalledFingerprint)
