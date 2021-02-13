@@ -1,0 +1,33 @@
+values of Build.SUPPORTED_ABIS
+
+Android 5 Emulator x86:
+0 = "x86_64"
+1 = "x86"
+
+Android 11 Emulator x86:
+0 = "x86"
+1 = "armeabi-v7a"
+2 = "armeabi"
+
+Android 11 Emulator x86_64:
+0 = "x86_64"
+1 = "x86"
+2 = "arm64-v8a"
+3 = "armeabi-v7a"
+4 = "armeabi"
+
+Google Pixel 3a (Android 11):
+0 = "arm64-v8a"
+1 = "armeabi-v7a"
+2 = "armeabi"
+
+Google Nexus 7 (custom Android 10):
+0 = "armeabi-v7a"
+1 = "armeabi"
+
+Fire Tablet 7 - 5. Generation (Android 5.1)
+0 = "armeabi-v7a"
+1 = "armeabi"
+
+Firefox Lite does not have special libs for any ABI
+Lockwise has libs for all ABIs

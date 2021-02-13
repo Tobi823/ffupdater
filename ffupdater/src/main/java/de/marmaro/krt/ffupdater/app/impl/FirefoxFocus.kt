@@ -22,7 +22,7 @@ class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayDownloadSource = R.string.mozilla_ci
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM)
+    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A)
 
     override fun getDisplayInstalledVersion(context: Context): String {
         return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
@@ -36,9 +36,9 @@ class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                                      deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
             when (it) {
-                ABI.AARCH64 -> "aarch64"
-                ABI.ARM -> "arm"
-                ABI.X86, ABI.X86_64 -> null
+                ABI.ARM64_V8A -> "aarch64"
+                ABI.ARMEABI_V7A -> "arm"
+                ABI.ARMEABI, ABI.X86, ABI.X86_64, ABI.MIPS, ABI.MIPS64 -> null
             }
         }.first()
         val mozillaCiConsumer = MozillaCiConsumer(

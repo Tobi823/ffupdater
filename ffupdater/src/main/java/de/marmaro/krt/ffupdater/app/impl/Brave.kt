@@ -23,7 +23,7 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayDownloadSource = R.string.github
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
     override val minApiLevel = Build.VERSION_CODES.N
-    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String {
         return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
@@ -35,13 +35,15 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
 
     override fun updateCheckBlocking(context: Context,
                                      deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
-        check(deviceEnvironment.abis.isNotEmpty())
-        val fileName = when (deviceEnvironment.abis[0]) {
-            ABI.AARCH64 -> "BraveMonoarm64.apk"
-            ABI.ARM -> "BraveMonoarm.apk"
-            ABI.X86 -> "BraveMonox86.apk"
-            ABI.X86_64 -> "BraveMonox64.apk"
-        }
+        val fileName = deviceEnvironment.abis.mapNotNull {
+            when (it) {
+                ABI.ARM64_V8A -> "BraveMonoarm64.apk"
+                ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
+                ABI.X86 -> "BraveMonox86.apk"
+                ABI.X86_64 -> "BraveMonox64.apk"
+                ABI.ARMEABI, ABI.MIPS, ABI.MIPS64 -> null
+            }
+        }.first()
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "brave",

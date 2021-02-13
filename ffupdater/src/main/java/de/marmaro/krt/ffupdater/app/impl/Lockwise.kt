@@ -23,7 +23,8 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayDownloadSource = R.string.github
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
     override val minApiLevel = Build.VERSION_CODES.N
-    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64,
+            ABI.X86, ABI.MIPS, ABI.MIPS64)
 
     override fun getDisplayInstalledVersion(context: Context): String {
         return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))

@@ -12,12 +12,16 @@ class DeviceEnvironment constructor(
 
     companion object {
         private fun findSupportedAbis(): List<ABI> {
+            val d = SDK_INT
             return Build.SUPPORTED_ABIS.mapNotNull {
                 when (it) {
-                    "arm64-v8a" -> ABI.AARCH64
-                    "armeabi-v7a" -> ABI.ARM
+                    "arm64-v8a" -> ABI.ARM64_V8A
+                    "armeabi-v7a" -> ABI.ARMEABI_V7A
+                    "armeabi" -> ABI.ARMEABI
                     "x86_64" -> ABI.X86_64
                     "x86" -> ABI.X86
+                    "mips" -> ABI.MIPS
+                    "mips64" -> ABI.MIPS64
                     else -> throw UnknownAbiException("unknown ABI '$it'")
                 }
             }

@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
@@ -24,7 +23,8 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayDownloadSource = R.string.github
     override val signatureHash = "863a46f0973932b7d0199b549112741c2d2731ac72ea11b7523aa90a11bf5691"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64,
+            ABI.X86, ABI.MIPS, ABI.MIPS64)
 
     override fun getDisplayInstalledVersion(context: Context): String {
         return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
@@ -35,7 +35,7 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     }
 
     override fun updateCheckBlocking(context: Context,
-                             deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "mozilla-tw",
@@ -44,7 +44,7 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 validReleaseTester = { release: Release ->
                     !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
                 },
-                correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(".apk")}
+                correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(".apk") }
         )
         val result = githubConsumer.updateCheck()
         // tag_name can be: "v2.5.1", "v.2.0.5"

@@ -23,7 +23,7 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayDownloadSource = R.string.github
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = listOf(ABI.AARCH64, ABI.ARM, ABI.X86_64, ABI.X86)
+    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String {
         return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
@@ -35,13 +35,15 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
 
     override fun updateCheckBlocking(context: Context,
                                      deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
-        check(deviceEnvironment.abis.isNotEmpty())
-        val fileSuffix = when (deviceEnvironment.abis[0]) {
-            ABI.AARCH64 -> "browser-arm64-v8a-forkRelease.apk"
-            ABI.ARM -> "browser-armeabi-v7a-forkRelease.apk"
-            ABI.X86 -> "browser-x86-forkRelease.apk"
-            ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
-        }
+        val fileSuffix = deviceEnvironment.abis.mapNotNull {
+            when (it) {
+                ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
+                ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
+                ABI.X86 -> "browser-x86-forkRelease.apk"
+                ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
+                ABI.ARMEABI, ABI.MIPS, ABI.MIPS64 -> null
+            }
+        }.first()
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "fork-maintainers",
