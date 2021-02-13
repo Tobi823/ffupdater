@@ -33,7 +33,7 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return getInstalledVersionFromPackageManager(context)
     }
 
-    override fun updateCheckBlocking(context: Context,
+    override fun updateCheckBlocking(context: Context, //TODO context kann glaube ich entfernt werden hier
                                      deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val fileName = deviceEnvironment.abis.mapNotNull {
             when (it) {
