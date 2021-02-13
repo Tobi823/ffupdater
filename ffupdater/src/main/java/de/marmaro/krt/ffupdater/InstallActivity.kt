@@ -37,20 +37,20 @@ import java.util.concurrent.*
  * like restarting downloads, showing the current download status etc.
  */
 class InstallActivity : AppCompatActivity() {
-    private var downloadManager: DownloadManagerAdapter? = null
-    private var fingerprintValidator: FingerprintValidator? = null
-    private var appInstaller: AppInstaller? = null
+    private lateinit var downloadManager: DownloadManagerAdapter
+    private lateinit var fingerprintValidator: FingerprintValidator
+    private lateinit var appInstaller: AppInstaller
 
     // necessary for communication with State enums
-    private var app: App? = null
+    private lateinit var app: App
     private var downloadId: Long = -1
     private var state = State.SUCCESS_PAUSE
     private var stateJob: Job? = null
-    private var updateCheckResult: UpdateCheckResult? = null
-    private var fileFingerprint: FingerprintResult? = null
-    private var appFingerprint: FingerprintResult? = null
+    private lateinit var updateCheckResult: UpdateCheckResult
+    private lateinit var fileFingerprint: FingerprintResult
+    private lateinit var appFingerprint: FingerprintResult
     private var freeSpaceForDownloading: Long = -1
-    private var appInstallationFailedErrorMessage = ""
+    private lateinit var appInstallationFailedErrorMessage: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,7 +114,7 @@ class InstallActivity : AppCompatActivity() {
      */
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        appInstaller?.onNewIntentCallback(intent, this)
+        appInstaller.onNewIntentCallback(intent, this)
     }
 
     private fun show(viewId: Int) {
@@ -136,11 +136,10 @@ class InstallActivity : AppCompatActivity() {
 
     private enum class State(val action: suspend (InstallActivity) -> State) {
         START(f@{ ia ->
-            val app = ia.app!!
-            if (!app.detail.isInstalled(ia)) {
+            if (!ia.app.detail.isInstalled(ia)) {
                 return@f INSTALLED_APP_SIGNATURE_CHECKED
             }
-            if (ia.fingerprintValidator!!.checkInstalledApp(app.detail).isValid) {
+            if (ia.fingerprintValidator.checkInstalledApp(ia.app.detail).isValid) {
                 return@f INSTALLED_APP_SIGNATURE_CHECKED
             }
             return@f FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP
@@ -176,7 +175,7 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         PRECONDITIONS_ARE_CHECKED(f@{ ia ->
-            val app = ia.app!!
+            val app = ia.app
             ia.show(R.id.fetchUrl)
             ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.fetch_url_for_download,
                     ia.getString(app.detail.displayDownloadSource)))
@@ -195,10 +194,10 @@ class InstallActivity : AppCompatActivity() {
 
         AVAILABLE_METADATA_IS_FETCHED(f@{ ia ->
             ia.show(R.id.downloadingFile)
-            val downloadUrl = ia.updateCheckResult!!.downloadUrl
+            val downloadUrl = ia.updateCheckResult.downloadUrl
             ia.setText(R.id.downloadingFileUrl, downloadUrl.toString())
-            val displayTitle = ia.getString(ia.app!!.detail.displayTitle)
-            ia.downloadId = ia.downloadManager!!.enqueue(ia, downloadUrl, displayTitle)
+            val displayTitle = ia.getString(ia.app.detail.displayTitle)
+            ia.downloadId = ia.downloadManager.enqueue(ia, downloadUrl, displayTitle)
             return@f DOWNLOAD_IS_ENQUEUED
         }),
 
@@ -206,7 +205,7 @@ class InstallActivity : AppCompatActivity() {
             val sleepInterval = 250L
             val maxWaitingTime = Duration.ofMinutes(5).toMillis()
             for (i in 1..(maxWaitingTime / sleepInterval)) {
-                val r = ia.downloadManager!!.getStatusAndProgress(ia.downloadId)
+                val r = ia.downloadManager.getStatusAndProgress(ia.downloadId)
                 ia.setText(R.id.downloadingFileText, r.toTranslatedText(ia))
                 ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = r.progress
                 when (r.status) {
@@ -221,12 +220,12 @@ class InstallActivity : AppCompatActivity() {
         DOWNLOAD_WAS_SUCCESSFUL(f@{ ia ->
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadedFile)
-            ia.setText(R.id.downloadedFileUrl, ia.updateCheckResult?.downloadUrl.toString())
+            ia.setText(R.id.downloadedFileUrl, ia.updateCheckResult.downloadUrl.toString())
             ia.show(R.id.verifyDownloadFingerprint)
 
-            val file = ia.downloadManager!!.getFileForDownloadedFile(ia.downloadId)
+            val file = ia.downloadManager.getFileForDownloadedFile(ia.downloadId)
             val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
-                ia.fingerprintValidator!!.checkApkFile(file, ia.app!!.detail)
+                ia.fingerprintValidator.checkApkFile(file, ia.app.detail)
             }.await()
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
@@ -240,13 +239,13 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadGood)
             ia.show(R.id.installConfirmation)
-            ia.setText(R.id.fingerprintDownloadGoodHash, ia.fileFingerprint?.hexString ?: "")
+            ia.setText(R.id.fingerprintDownloadGoodHash, ia.fileFingerprint.hexString)
             return@f SUCCESS_PAUSE
         }),
 
         USER_HAS_TRIGGERED_INSTALLATION_PROCESS(f@{ ia ->
             ia.show(R.id.installingApplication)
-            ia.appInstaller!!.install(ia, ia.downloadManager!!, ia.downloadId)
+            ia.appInstaller.install(ia, ia.downloadManager, ia.downloadId)
             return@f SUCCESS_PAUSE
         }),
 
@@ -254,15 +253,15 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerSuccess)
-            ia.app!!.detail.installationCallback(ia, ia.updateCheckResult!!.version)
-            ia.downloadManager!!.remove(ia.downloadId)
+            ia.app.detail.installationCallback(ia, ia.updateCheckResult.version)
+            ia.downloadManager.remove(ia.downloadId)
             return@f APP_INSTALLATION_HAS_BEEN_REGISTERED
         }),
 
         APP_INSTALLATION_HAS_BEEN_REGISTERED(f@{ ia ->
             ia.show(R.id.verifyInstalledFingerprint)
             val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
-                ia.fingerprintValidator!!.checkInstalledApp(ia.app!!.detail)
+                ia.fingerprintValidator.checkInstalledApp(ia.app.detail)
             }.await()
             ia.appFingerprint = fingerprint
             ia.hide(R.id.verifyInstalledFingerprint)
@@ -275,7 +274,7 @@ class InstallActivity : AppCompatActivity() {
 
         FINGERPRINT_OF_INSTALLED_APP_OK(f@{ ia ->
             ia.show(R.id.fingerprintInstalledGood)
-            ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint?.hexString ?: "")
+            ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint.hexString)
             return@f SUCCESS_STOP
         }),
 
@@ -307,8 +306,7 @@ class InstallActivity : AppCompatActivity() {
         FAILURE_DOWNLOAD_UNSUCCESSFUL(f@{ ia ->
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadFileFailed)
-            ia.setText(R.id.downloadFileFailedUrl,
-                    ia.updateCheckResult?.downloadUrl.toString())
+            ia.setText(R.id.downloadFileFailedUrl, ia.updateCheckResult.downloadUrl.toString())
             ia.show(R.id.installerFailed)
             return@f ERROR_STOP
         }),
@@ -316,8 +314,8 @@ class InstallActivity : AppCompatActivity() {
         FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE(f@{ ia ->
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadBad)
-            ia.setText(R.id.fingerprintDownloadBadHashActual, ia.fileFingerprint?.hexString ?: "")
-            ia.setText(R.id.fingerprintDownloadBadHashExpected, ia.app!!.detail.signatureHash)
+            ia.setText(R.id.fingerprintDownloadBadHashActual, ia.fileFingerprint.hexString)
+            ia.setText(R.id.fingerprintDownloadBadHashExpected, ia.app.detail.signatureHash)
             ia.show(R.id.installerFailed)
             return@f ERROR_STOP
         }),
@@ -327,14 +325,14 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerFailed)
             ia.setText(R.id.installerFailedReason, ia.appInstallationFailedErrorMessage)
-            ia.downloadManager!!.remove(ia.downloadId)
+            ia.downloadManager.remove(ia.downloadId)
             return@f ERROR_STOP
         }),
 
         FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID(f@{ ia ->
             ia.show(R.id.fingerprintInstalledBad)
-            ia.setText(R.id.fingerprintInstalledBadHashActual, ia.appFingerprint?.hexString ?: "")
-            ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app!!.detail.signatureHash)
+            ia.setText(R.id.fingerprintInstalledBadHashActual, ia.appFingerprint.hexString)
+            ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app.detail.signatureHash)
             return@f ERROR_STOP
         }),
 
