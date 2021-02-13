@@ -23,6 +23,7 @@ import java.io.File
 import java.net.URL
 
 class LockwiseIT {
+
     @MockK
     lateinit var apiConsumer: ApiConsumer
 
@@ -31,7 +32,6 @@ class LockwiseIT {
 
     @MockK
     lateinit var packageManager: PackageManager
-
 
     @Before
     fun setUp() {
