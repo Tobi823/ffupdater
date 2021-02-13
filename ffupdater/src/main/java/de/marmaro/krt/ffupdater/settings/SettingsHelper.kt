@@ -2,8 +2,7 @@ package de.marmaro.krt.ffupdater.settings
 
 import android.content.Context
 import android.os.Build.VERSION_CODES.*
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
@@ -31,12 +30,17 @@ class SettingsHelper(context: Context) {
     val checkInterval: Duration
         get() {
             val default = Duration.ofHours(6)
-            val checkInterval = preferences.getString("checkInterval", null)
-            return try {
-                Duration.ofMinutes(checkInterval?.toLong() ?: return default)
+            val rawValue = preferences.getString("checkInterval", null) ?: return default
+            val checkInterval: Long
+            try {
+                checkInterval = rawValue.toLong()
             } catch (_: NumberFormatException) {
-                default
+                return default
             }
+            if (checkInterval < 0 || checkInterval > Duration.ofDays(35).toMinutes()) {
+                return default
+            }
+            return Duration.ofMinutes(checkInterval)
         }
 
     /**
@@ -69,11 +73,20 @@ class SettingsHelper(context: Context) {
             else -> throw Exception("invalid API level")
         }
 
-        val themePreference = preferences.getString("themePreference", null)
-        return try {
-            themePreference?.toInt() ?: default
+        val rawValue = preferences.getString("themePreference", null)
+        val themePreference: Int
+        try {
+            themePreference = rawValue?.toInt() ?: return default
         } catch (_: NumberFormatException) {
-            default
+            return default
         }
+
+        val validThemes = listOf(MODE_NIGHT_FOLLOW_SYSTEM,
+                MODE_NIGHT_AUTO_BATTERY,
+                MODE_NIGHT_YES,
+                MODE_NIGHT_NO)
+        return if (validThemes.contains(themePreference)) {
+            themePreference
+        } else default
     }
 }
