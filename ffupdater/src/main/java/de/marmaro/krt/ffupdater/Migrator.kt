@@ -3,9 +3,6 @@ package de.marmaro.krt.ffupdater
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import java.util.*
-import java.util.function.Consumer
-import java.util.function.Predicate
 
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
@@ -14,13 +11,13 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
         if (lastVersionCode < 56 /* 71.0.0 */) {
-            deleteAvailableMetadataCache(preferences)
+            deleteDeprecatedCacheData(preferences)
         }
 
         preferences.edit().putInt(FFUPDATER_VERSION_CODE, currentVersionCode).apply()
     }
 
-    private fun deleteAvailableMetadataCache(preferences: SharedPreferences) {
+    private fun deleteDeprecatedCacheData(preferences: SharedPreferences) {
         val keys = preferences.all.filter { it.key.startsWith("download_metadata_") }
                 .map { it.key }
         val editor = preferences.edit()
