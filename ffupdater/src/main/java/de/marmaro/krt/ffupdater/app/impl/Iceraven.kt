@@ -26,7 +26,9 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
+        val rawVersion = getInstalledVersionFromPackageManager(context)
+        val version = rawVersion?.replace("iceraven-", "") ?: ""
+        return context.getString(R.string.installed_version, version)
     }
 
     override fun getInstalledVersion(context: Context): String? {
@@ -54,11 +56,12 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 },
                 correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
         val result = githubConsumer.updateCheck()
-        val version = result.tagName.replace("iceraven-", "")
+        val version = result.tagName
+        val displayVersion = version.replace("iceraven-", "")
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = context.getString(R.string.available_version, version),
+                displayVersion = context.getString(R.string.available_version, displayVersion),
                 fileHashSha256 = null,
                 fileSizeBytes = result.fileSizeBytes)
     }
