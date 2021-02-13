@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import junit.framework.TestCase
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -21,7 +22,7 @@ import org.junit.Test
 import java.io.File
 import java.net.URL
 
-class FirefoxBetaIT {
+class FirefoxNightlyIT {
 
     @MockK
     lateinit var apiConsumer: ApiConsumer
@@ -47,164 +48,164 @@ class FirefoxBetaIT {
 
     @Test
     fun updateCheck_armeabiv7a() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
                 "armeabiv7a_chain-of-trust.json"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.beta.latest.armeabi-v7a/artifacts/public/chain-of-trust.json"
+                "mobile.v2.fenix.nightly.latest.armeabi-v7a/artifacts/public/chain-of-trust.json"
         every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
                 Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
-                    "2021-02-11T13:27:29.055Z").commit()
+            sharedPreferences.edit().putString("device_app_register_FIREFOX_NIGHTLY_version_name",
+                    "2021-02-13T17:04:53.449Z").commit()
 
-            val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
+                    "mobile.v2.fenix.nightly.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
                     "target.apk"
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("2021-02-11T13:27:29.055Z", actual.version)
+            assertEquals("2021-02-13T17:04:53.449Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("d9b48cfc73d5d0463bceb229734bf11a9d14eb69e676218561647c76f55cd0eb",
+            assertEquals("ccc35dbb9e87f860bd5cfc1b2d3a0fbc7439ff9fa73415d62e28b3f186a7ddaa",
                     actual.fileHashSha256)
         }
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
-                    "2021-01-28T07:35:12.476Z").commit()
+            sharedPreferences.edit().putString("device_app_register_FIREFOX_NIGHTLY_version_name",
+                    "2021-01-12T09:13:46.180Z").commit()
 
-            val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
+                    "mobile.v2.fenix.nightly.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
                     "target.apk"
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("2021-02-11T13:27:29.055Z", actual.version)
+            assertEquals("2021-02-13T17:04:53.449Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("d9b48cfc73d5d0463bceb229734bf11a9d14eb69e676218561647c76f55cd0eb",
+            assertEquals("ccc35dbb9e87f860bd5cfc1b2d3a0fbc7439ff9fa73415d62e28b3f186a7ddaa",
                     actual.fileHashSha256)
         }
     }
 
     @Test
     fun updateCheck_arm64v8a() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
                 "arm64v8a_chain-of-trust.json"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.beta.latest.arm64-v8a/artifacts/public/chain-of-trust.json"
+                "mobile.v2.fenix.nightly.latest.arm64-v8a/artifacts/public/chain-of-trust.json"
         every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
                 Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
-                    "2021-02-11T13:27:29.055Z").commit()
+            sharedPreferences.edit().putString("device_app_register_FIREFOX_NIGHTLY_version_name",
+                    "2021-02-13T17:04:53.449Z").commit()
 
-            val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
+                    "mobile.v2.fenix.nightly.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
                     "target.apk"
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("2021-02-11T13:27:29.055Z", actual.version)
+            assertEquals("2021-02-13T17:04:53.449Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("2812e4430fdd552e35b146ab774b754ab635c4ce12c0f05e5d6b3fd3e6a2bc45",
+            assertEquals("bea4a406f6106c30ed3d749da5d8ebf3a046b5d0ab3cc97d35f313de62b77ab5",
                     actual.fileHashSha256)
         }
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
-                    "2021-01-28T07:35:12.476Z").commit()
+            sharedPreferences.edit().putString("device_app_register_FIREFOX_NIGHTLY_version_name",
+                    "2021-01-06T20:34:12.059Z").commit()
 
-            val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
+                    "mobile.v2.fenix.nightly.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
                     "target.apk"
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("2021-02-11T13:27:29.055Z", actual.version)
+            assertEquals("2021-02-13T17:04:53.449Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("2812e4430fdd552e35b146ab774b754ab635c4ce12c0f05e5d6b3fd3e6a2bc45",
+            assertEquals("bea4a406f6106c30ed3d749da5d8ebf3a046b5d0ab3cc97d35f313de62b77ab5",
                     actual.fileHashSha256)
         }
     }
 
     @Test
     fun updateCheck_x86() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
                 "x86_chain-of-trust.json"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.beta.latest.x86/artifacts/public/chain-of-trust.json"
+                "mobile.v2.fenix.nightly.latest.x86/artifacts/public/chain-of-trust.json"
         every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
                 Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86), Build.VERSION_CODES.R)
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
-                    "2021-02-11T13:27:29.055Z").commit()
+            sharedPreferences.edit().putString("device_app_register_FIREFOX_NIGHTLY_version_name",
+                    "2021-02-13T17:04:53.449Z").commit()
 
-            val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.x86/artifacts/public/build/x86/" +
+                    "mobile.v2.fenix.nightly.latest.x86/artifacts/public/build/x86/" +
                     "target.apk"
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("2021-02-11T13:27:29.055Z", actual.version)
+            assertEquals("2021-02-13T17:04:53.449Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("b9836779f91eae161daee32062b7567bb291c437562398ac5f0e6fbc8b499b53",
+            assertEquals("3a5d67f5741c80e7e209872f9dbadbccbdc262e07ed524c573e57404290b3fff",
                     actual.fileHashSha256)
         }
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
+            sharedPreferences.edit().putString("device_app_register_FIREFOX_NIGHTLY_version_name",
                     "2021-01-28T07:35:12.476Z").commit()
 
-            val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.x86/artifacts/public/build/x86/" +
+                    "mobile.v2.fenix.nightly.latest.x86/artifacts/public/build/x86/" +
                     "target.apk"
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("2021-02-11T13:27:29.055Z", actual.version)
+            assertEquals("2021-02-13T17:04:53.449Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("b9836779f91eae161daee32062b7567bb291c437562398ac5f0e6fbc8b499b53",
+            assertEquals("3a5d67f5741c80e7e209872f9dbadbccbdc262e07ed524c573e57404290b3fff",
                     actual.fileHashSha256)
         }
     }
 
     @Test
     fun updateCheck_x8664() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
                 "x8664_chain-of-trust.json"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.beta.latest.x86_64/artifacts/public/chain-of-trust.json"
+                "mobile.v2.fenix.nightly.latest.x86_64/artifacts/public/chain-of-trust.json"
         every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
                 Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
-                    "2021-02-11T13:27:29.055Z").commit()
+            sharedPreferences.edit().putString("device_app_register_FIREFOX_NIGHTLY_version_name",
+                    "2021-02-13T17:04:53.449Z").commit()
 
-            val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.x86_64/artifacts/public/build/x86_64/" +
+                    "mobile.v2.fenix.nightly.latest.x86_64/artifacts/public/build/x86_64/" +
                     "target.apk"
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("2021-02-11T13:27:29.055Z", actual.version)
+            assertEquals("2021-02-13T17:04:53.449Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("ba29fa9a8ec46fed9db833c0f5fbf3b7c431fc843833ab66b22723f7c6251d6e",
+            assertEquals("c6d78d17547e2b9bc9d7a8411e5961c1564df825bbd89f379ef17787735442f9",
                     actual.fileHashSha256)
         }
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_BETA_version_name",
+            sharedPreferences.edit().putString("device_app_register_FIREFOX_NIGHTLY_version_name",
                     "2021-01-28T07:35:12.476Z").commit()
 
-            val actual = FirefoxBeta(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "mobile.v2.fenix.beta.latest.x86_64/artifacts/public/build/x86_64/" +
+                    "mobile.v2.fenix.nightly.latest.x86_64/artifacts/public/build/x86_64/" +
                     "target.apk"
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("2021-02-11T13:27:29.055Z", actual.version)
+            assertEquals("2021-02-13T17:04:53.449Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("ba29fa9a8ec46fed9db833c0f5fbf3b7c431fc843833ab66b22723f7c6251d6e",
+            assertEquals("c6d78d17547e2b9bc9d7a8411e5961c1564df825bbd89f379ef17787735442f9",
                     actual.fileHashSha256)
         }
     }
