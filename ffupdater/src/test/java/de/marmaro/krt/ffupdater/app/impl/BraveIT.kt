@@ -17,10 +17,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.junit.MockitoJUnitRunner
 import java.io.File
 import java.net.URL
 
@@ -140,7 +136,7 @@ class BraveIT {
             val abi = ABI.ARMEABI_V7A
             val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
             val actual = Brave(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
-            assertEquals(URL("https://github.com/brave/brave-browser/releases/download/v1.19.92/BraveMonoarm.apk"),
+            assertEquals(URL("https://github.com/brave/brave-browser/releases/download/v1.20.103/BraveMonoarm.apk"),
                     actual)
         }
 
@@ -148,7 +144,7 @@ class BraveIT {
             val abi = ABI.ARM64_V8A
             val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
             val actual = Brave(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
-            assertEquals(URL("https://github.com/brave/brave-browser/releases/download/v1.19.92/BraveMonoarm64.apk"),
+            assertEquals(URL("https://github.com/brave/brave-browser/releases/download/v1.20.103/BraveMonoarm64.apk"),
                     actual)
         }
 
@@ -156,7 +152,7 @@ class BraveIT {
             val abi = ABI.X86
             val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
             val actual = Brave(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
-            assertEquals(URL("https://github.com/brave/brave-browser/releases/download/v1.19.92/BraveMonox86.apk"),
+            assertEquals(URL("https://github.com/brave/brave-browser/releases/download/v1.20.103/BraveMonox86.apk"),
                     actual)
         }
 
@@ -164,7 +160,7 @@ class BraveIT {
             val abi = ABI.X86_64
             val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
             val actual = Brave(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
-            assertEquals(URL("https://github.com/brave/brave-browser/releases/download/v1.19.92/BraveMonox64.apk"),
+            assertEquals(URL("https://github.com/brave/brave-browser/releases/download/v1.20.103/BraveMonox64.apk"),
                     actual)
         }
     }

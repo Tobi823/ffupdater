@@ -33,8 +33,10 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return getInstalledVersionFromPackageManager(context)
     }
 
-    override fun updateCheckBlocking(context: Context, //TODO context kann glaube ich entfernt werden hier
-                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override fun updateCheckBlocking(
+            context: Context, //TODO context kann glaube ich entfernt werden hier
+            deviceEnvironment: DeviceEnvironment,
+    ): UpdateCheckSubResult {
         val fileName = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "BraveMonoarm64.apk"
@@ -50,7 +52,9 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 repoName = "brave-browser",
                 resultsPerPage = 20,
                 validReleaseTester = { release: Release ->
-                    !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
+                    !release.isPreRelease &&
+                            release.name.startsWith("Release v") &&
+                            release.assets.any { it.name == fileName }
                 },
                 correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheck()
