@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import junit.framework.TestCase
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
