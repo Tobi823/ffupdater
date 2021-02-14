@@ -9,9 +9,6 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
@@ -26,14 +23,6 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
-
-    override fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
-    }
-
-    override fun getInstalledVersion(context: Context): String? {
-        return getInstalledVersionFromSharedPreferences(context, INSTALLED_VERSION_KEY)
-    }
 
     override fun updateCheckBlocking(context: Context,
                                      deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
@@ -51,19 +40,13 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 task = "mobile.v2.fenix.nightly.latest.$abiString",
                 apkArtifact = "public/build/$abiString/target.apk")
         val result = mozillaCiConsumer.updateCheck()
-        val version = result.timestamp
-        val shortVersion = version.split("T")[0]
+        val version = result.version
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = context.getString(R.string.available_version_timestamp, shortVersion),
-                publishDate = ZonedDateTime.parse(result.timestamp, ISO_ZONED_DATE_TIME),
-                fileHashSha256 = result.hash,
+                displayVersion = context.getString(R.string.available_version, version),
+                publishDate = result.releaseDate,
                 fileSizeBytes = null)
-    }
-
-    override fun installationCallback(context: Context, installedVersion: String) {
-        setInstalledVersionInSharedPreferences(context, INSTALLED_VERSION_KEY, installedVersion)
     }
 
     companion object {

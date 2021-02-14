@@ -25,14 +25,6 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
-    }
-
-    override fun getInstalledVersion(context: Context): String? {
-        return getInstalledVersionFromPackageManager(context)
-    }
-
     override fun updateCheckBlocking(
             context: Context, //TODO context kann glaube ich entfernt werden hier
             deviceEnvironment: DeviceEnvironment,
@@ -64,9 +56,6 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 version = version,
                 displayVersion = context.getString(R.string.available_version, version),
                 publishDate = result.releaseDate,
-                fileHashSha256 = null,
                 fileSizeBytes = result.fileSizeBytes)
     }
-
-    override fun installationCallback(context: Context, installedVersion: String) {}
 }

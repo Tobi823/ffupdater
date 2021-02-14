@@ -5,10 +5,8 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
-import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.MockKAnnotations
@@ -50,11 +48,10 @@ class FirefoxReleaseIT {
     @Test
     fun updateCheck_armeabiv7a() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
-                "armeabiv7a_chain-of-trust.json"
+                "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.armeabi-v7a/artifacts/public/chain-of-trust.json"
-        every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
-                Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
+                "mobile.v2.fenix.release.latest.armeabi-v7a/artifacts/public/chain-of-trust.log"
+        every { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
 
         runBlocking {
@@ -68,8 +65,6 @@ class FirefoxReleaseIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-09T11:15:29.671Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("59ce0f9ea256b4576f391d01c685ced2db224a252bf09c3f362e6859a6c7ead5",
-                    actual.fileHashSha256)
             assertEquals(ZonedDateTime.parse("2021-02-09T11:15:29.671Z", ISO_ZONED_DATE_TIME),
                     actual.publishDate)
         }
@@ -85,8 +80,6 @@ class FirefoxReleaseIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-09T11:15:29.671Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("59ce0f9ea256b4576f391d01c685ced2db224a252bf09c3f362e6859a6c7ead5",
-                    actual.fileHashSha256)
             assertEquals(ZonedDateTime.parse("2021-02-09T11:15:29.671Z", ISO_ZONED_DATE_TIME),
                     actual.publishDate)
         }
@@ -95,11 +88,10 @@ class FirefoxReleaseIT {
     @Test
     fun updateCheck_arm64v8a() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
-                "arm64v8a_chain-of-trust.json"
+                "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.arm64-v8a/artifacts/public/chain-of-trust.json"
-        every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
-                Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
+                "mobile.v2.fenix.release.latest.arm64-v8a/artifacts/public/chain-of-trust.log"
+        every { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
 
         runBlocking {
@@ -113,8 +105,6 @@ class FirefoxReleaseIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-09T11:15:29.671Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("5c81d3f523804347bd2af0908367346d39ad5995461910edcb2b0093c02b44b5",
-                    actual.fileHashSha256)
             assertEquals(ZonedDateTime.parse("2021-02-09T11:15:29.671Z", ISO_ZONED_DATE_TIME),
                     actual.publishDate)
         }
@@ -130,8 +120,6 @@ class FirefoxReleaseIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-09T11:15:29.671Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("5c81d3f523804347bd2af0908367346d39ad5995461910edcb2b0093c02b44b5",
-                    actual.fileHashSha256)
             assertEquals(ZonedDateTime.parse("2021-02-09T11:15:29.671Z", ISO_ZONED_DATE_TIME),
                     actual.publishDate)
         }
@@ -140,11 +128,10 @@ class FirefoxReleaseIT {
     @Test
     fun updateCheck_x86() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
-                "x86_chain-of-trust.json"
+                "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.x86/artifacts/public/chain-of-trust.json"
-        every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
-                Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
+                "mobile.v2.fenix.release.latest.x86/artifacts/public/chain-of-trust.log"
+        every { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86), Build.VERSION_CODES.R)
 
         runBlocking {
@@ -158,8 +145,6 @@ class FirefoxReleaseIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-09T11:15:29.671Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("3288eb3adbb0498b8e5b7017562cbfd156099fa0f2af6f65941c2aa104c42a80",
-                    actual.fileHashSha256)
             assertEquals(ZonedDateTime.parse("2021-02-09T11:15:29.671Z", ISO_ZONED_DATE_TIME),
                     actual.publishDate)
         }
@@ -175,8 +160,6 @@ class FirefoxReleaseIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-09T11:15:29.671Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("3288eb3adbb0498b8e5b7017562cbfd156099fa0f2af6f65941c2aa104c42a80",
-                    actual.fileHashSha256)
             assertEquals(ZonedDateTime.parse("2021-02-09T11:15:29.671Z", ISO_ZONED_DATE_TIME),
                     actual.publishDate)
         }
@@ -185,11 +168,10 @@ class FirefoxReleaseIT {
     @Test
     fun updateCheck_x8664() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
-                "x8664_chain-of-trust.json"
+                "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.x86_64/artifacts/public/chain-of-trust.json"
-        every { apiConsumer.consume(URL(url), MozillaCiConsumer.Response::class.java) } returns
-                Gson().fromJson(File(path).readText(), MozillaCiConsumer.Response::class.java)
+                "mobile.v2.fenix.release.latest.x86_64/artifacts/public/chain-of-trust.log"
+        every { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
 
         runBlocking {
@@ -203,8 +185,6 @@ class FirefoxReleaseIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2021-02-09T11:15:29.671Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("1dae9fa995cf197698e652f3e23aa84b2280f69a82964885751cedf7c8e45beb",
-                    actual.fileHashSha256)
             assertEquals(ZonedDateTime.parse("2021-02-09T11:15:29.671Z", ISO_ZONED_DATE_TIME),
                     actual.publishDate)
         }
@@ -220,8 +200,6 @@ class FirefoxReleaseIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2021-02-09T11:15:29.671Z", actual.version)
             assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals("1dae9fa995cf197698e652f3e23aa84b2280f69a82964885751cedf7c8e45beb",
-                    actual.fileHashSha256)
             assertEquals(ZonedDateTime.parse("2021-02-09T11:15:29.671Z", ISO_ZONED_DATE_TIME),
                     actual.publishDate)
         }
