@@ -20,6 +20,8 @@ import org.junit.Before
 import org.junit.Test
 import java.io.File
 import java.net.URL
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 class FirefoxNightlyIT {
 
@@ -68,6 +70,8 @@ class FirefoxNightlyIT {
             assertEquals(URL(expected), actual.downloadUrl)
             assertEquals("ccc35dbb9e87f860bd5cfc1b2d3a0fbc7439ff9fa73415d62e28b3f186a7ddaa",
                     actual.fileHashSha256)
+            assertEquals(ZonedDateTime.parse("2021-02-13T17:04:53.449Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         runBlocking {
@@ -83,6 +87,8 @@ class FirefoxNightlyIT {
             assertEquals(URL(expected), actual.downloadUrl)
             assertEquals("ccc35dbb9e87f860bd5cfc1b2d3a0fbc7439ff9fa73415d62e28b3f186a7ddaa",
                     actual.fileHashSha256)
+            assertEquals(ZonedDateTime.parse("2021-02-13T17:04:53.449Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 
@@ -109,6 +115,8 @@ class FirefoxNightlyIT {
             assertEquals(URL(expected), actual.downloadUrl)
             assertEquals("bea4a406f6106c30ed3d749da5d8ebf3a046b5d0ab3cc97d35f313de62b77ab5",
                     actual.fileHashSha256)
+            assertEquals(ZonedDateTime.parse("2021-02-13T17:04:53.449Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         runBlocking {
@@ -124,6 +132,8 @@ class FirefoxNightlyIT {
             assertEquals(URL(expected), actual.downloadUrl)
             assertEquals("bea4a406f6106c30ed3d749da5d8ebf3a046b5d0ab3cc97d35f313de62b77ab5",
                     actual.fileHashSha256)
+            assertEquals(ZonedDateTime.parse("2021-02-13T17:04:53.449Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 
@@ -150,6 +160,8 @@ class FirefoxNightlyIT {
             assertEquals(URL(expected), actual.downloadUrl)
             assertEquals("3a5d67f5741c80e7e209872f9dbadbccbdc262e07ed524c573e57404290b3fff",
                     actual.fileHashSha256)
+            assertEquals(ZonedDateTime.parse("2021-02-13T17:04:53.449Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         runBlocking {
@@ -165,6 +177,8 @@ class FirefoxNightlyIT {
             assertEquals(URL(expected), actual.downloadUrl)
             assertEquals("3a5d67f5741c80e7e209872f9dbadbccbdc262e07ed524c573e57404290b3fff",
                     actual.fileHashSha256)
+            assertEquals(ZonedDateTime.parse("2021-02-13T17:04:53.449Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 
@@ -191,6 +205,8 @@ class FirefoxNightlyIT {
             assertEquals(URL(expected), actual.downloadUrl)
             assertEquals("c6d78d17547e2b9bc9d7a8411e5961c1564df825bbd89f379ef17787735442f9",
                     actual.fileHashSha256)
+            assertEquals(ZonedDateTime.parse("2021-02-13T17:04:53.449Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         runBlocking {
@@ -206,6 +222,8 @@ class FirefoxNightlyIT {
             assertEquals(URL(expected), actual.downloadUrl)
             assertEquals("c6d78d17547e2b9bc9d7a8411e5961c1564df825bbd89f379ef17787735442f9",
                     actual.fileHashSha256)
+            assertEquals(ZonedDateTime.parse("2021-02-13T17:04:53.449Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 }
