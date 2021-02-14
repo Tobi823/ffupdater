@@ -24,6 +24,12 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
+    override fun getInstalledVersion(context: Context): String? {
+        val rawVersion = super.getInstalledVersion(context) ?: ""
+        return Regex("""^(Nightly \d{6}) \d{2}:\d{2}$""").find(rawVersion)!!
+                .groups[1]!!.value
+    }
+
     override fun updateCheckBlocking(context: Context,
                                      deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
@@ -39,19 +45,20 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 apiConsumer = apiConsumer,
                 task = "mobile.v2.fenix.nightly.latest.$abiString",
                 apkArtifact = "public/build/$abiString/target.apk",
-                keyForVersion = "version",
+                keyForVersion = "tag_name",
                 keyForReleaseDate = "now")
         val result = mozillaCiConsumer.updateCheck()
-        val version = result.version
+        val year = (result.releaseDate.year-2000).toString()
+        val monthValue = result.releaseDate.monthValue
+        val month = if (monthValue < 10) "0$monthValue" else monthValue.toString()
+        val dayValue = result.releaseDate.dayOfMonth
+        val day = if (dayValue < 10) "0$dayValue" else dayValue.toString()
+        val version = "Nightly $year$month$day"
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
                 displayVersion = context.getString(R.string.available_version, version),
                 publishDate = result.releaseDate,
                 fileSizeBytes = null)
-    }
-
-    companion object {
-        const val INSTALLED_VERSION_KEY = "device_app_register_FIREFOX_NIGHTLY_version_name"
     }
 }
