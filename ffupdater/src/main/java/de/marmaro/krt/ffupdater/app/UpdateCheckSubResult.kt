@@ -6,11 +6,11 @@ import java.time.ZonedDateTime
 data class UpdateCheckSubResult(
         val downloadUrl: URL,
         val version: String,
-        val displayVersion: String,
         val publishDate: ZonedDateTime,
         val fileSizeBytes: Long?,
 ) {
-    fun convertToUpdateCheckResult(updateAvailable: Boolean): UpdateCheckResult {
+    fun convertToUpdateCheckResult(updateAvailable: Boolean,
+                                   displayVersion: String): UpdateCheckResult {
         return UpdateCheckResult(
                 isUpdateAvailable = updateAvailable,
                 downloadUrl = downloadUrl,

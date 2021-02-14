@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
@@ -9,9 +8,6 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
@@ -27,10 +23,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override fun updateCheckBlocking(
-            context: Context,
-            deviceEnvironment: DeviceEnvironment,
-    ): UpdateCheckSubResult {
+    override fun updateCheckBlocking(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "arm64-v8a"
@@ -51,7 +44,6 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = context.getString(R.string.available_version, version),
                 publishDate = result.releaseDate,
                 fileSizeBytes = null)
     }

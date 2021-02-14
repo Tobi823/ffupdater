@@ -30,8 +30,7 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 .groups[1]!!.value
     }
 
-    override fun updateCheckBlocking(context: Context,
-                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override fun updateCheckBlocking(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "arm64-v8a"
@@ -57,7 +56,6 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = context.getString(R.string.available_version, version),
                 publishDate = result.releaseDate,
                 fileSizeBytes = null)
     }

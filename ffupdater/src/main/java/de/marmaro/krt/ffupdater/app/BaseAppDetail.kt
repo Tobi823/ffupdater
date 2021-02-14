@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app
 
 import android.content.Context
 import android.content.pm.PackageManager
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import kotlinx.coroutines.*
@@ -36,33 +35,40 @@ abstract class BaseAppDetail : AppDetail {
         }
     }
 
-    protected abstract fun updateCheckBlocking(context: Context,
-                                               deviceEnvironment: DeviceEnvironment)
+    protected open fun getDisplayAvailableVersion(context: Context,
+                                            updateCheckSubResult: UpdateCheckSubResult): String {
+        return context.getString(R.string.available_version, updateCheckSubResult.version)
+    }
+
+    protected abstract fun updateCheckBlocking(deviceEnvironment: DeviceEnvironment)
             : UpdateCheckSubResult
 
     /**
      * 2min timeout
      */
-    override suspend fun updateCheck(context: Context,
-                                     deviceEnvironment: DeviceEnvironment): UpdateCheckResult {
+    override suspend fun updateCheck(
+            context: Context,
+            deviceEnvironment: DeviceEnvironment,
+    ): UpdateCheckResult {
         mutex.withLock {
             val cacheAge = System.currentTimeMillis() - cacheTimestamp
             // cache is invalid, if it's: too old, not created or failed
             if (cache == null || cacheAge > CACHE_TIME) {
                 cache = GlobalScope.async(Dispatchers.IO) {
-                    updateCheckBlocking(context, deviceEnvironment)
+                    updateCheckBlocking(deviceEnvironment)
                 }
                 cacheTimestamp = System.currentTimeMillis()
             }
         }
 
-        val updateCheckSubResult: UpdateCheckSubResult
+        val subResult: UpdateCheckSubResult
         withTimeout(Duration.ofMinutes(2).toMillis()) {
-            updateCheckSubResult = cache!!.await()
+            subResult = cache!!.await()
         }
 
-        val updateAvailable = (getInstalledVersion(context) != updateCheckSubResult.version)
-        return updateCheckSubResult.convertToUpdateCheckResult(updateAvailable)
+        val updateAvailable = (getInstalledVersion(context) != subResult.version)
+        val displayVersion = getDisplayAvailableVersion(context, subResult)
+        return subResult.convertToUpdateCheckResult(updateAvailable, displayVersion)
     }
 
     companion object {

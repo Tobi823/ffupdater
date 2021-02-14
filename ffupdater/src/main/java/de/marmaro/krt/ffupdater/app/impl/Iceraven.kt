@@ -30,8 +30,12 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return context.getString(R.string.installed_version, version ?: "")
     }
 
-    override fun updateCheckBlocking(context: Context,
-                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override fun getDisplayAvailableVersion(context: Context, updateCheckSubResult: UpdateCheckSubResult): String {
+        val version = updateCheckSubResult.version.replace("iceraven-", "")
+        return context.getString(R.string.available_version, version)
+    }
+
+    override fun updateCheckBlocking(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val fileSuffix = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
@@ -56,7 +60,6 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = context.getString(R.string.available_version, displayVersion),
                 publishDate = result.releaseDate,
                 fileSizeBytes = result.fileSizeBytes)
     }

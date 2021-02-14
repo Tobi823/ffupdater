@@ -24,8 +24,7 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override fun updateCheckBlocking(context: Context,
-                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override fun updateCheckBlocking(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "arm64-v8a"
@@ -46,7 +45,6 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = context.getString(R.string.available_version, version),
                 publishDate = result.releaseDate,
                 fileSizeBytes = null)
     }
