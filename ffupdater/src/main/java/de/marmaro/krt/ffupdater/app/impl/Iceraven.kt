@@ -35,7 +35,7 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return context.getString(R.string.available_version, version)
     }
 
-    override fun updateCheckBlocking(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val fileSuffix = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
@@ -56,7 +56,6 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
         val result = githubConsumer.updateCheck()
         val version = result.tagName
-        val displayVersion = version.replace("iceraven-", "")
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,

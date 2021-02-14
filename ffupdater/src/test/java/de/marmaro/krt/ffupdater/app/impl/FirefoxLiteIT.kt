@@ -12,6 +12,7 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.MockKAnnotations
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
@@ -47,7 +48,7 @@ class FirefoxLiteIT {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxLite/latest.json"
         val url = URL("https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest")
 
-        every { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
         val packageInfo = PackageInfo()
         packageInfo.versionName = "1.19.92"
@@ -68,7 +69,7 @@ class FirefoxLiteIT {
     fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxLite/latest.json"
         val url = URL("https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest")
-        every { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()

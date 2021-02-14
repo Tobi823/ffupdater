@@ -12,6 +12,7 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.MockKAnnotations
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
@@ -48,7 +49,7 @@ class BraveIT {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/latest_contains_release_version.json"
         val url = URL("https://api.github.com/repos/brave/brave-browser/releases/latest")
 
-        every { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
         val packageInfo = PackageInfo()
         packageInfo.versionName = "1.19.92"
@@ -91,7 +92,7 @@ class BraveIT {
     fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/latest_contains_release_version.json"
         val url = URL("https://api.github.com/repos/brave/brave-browser/releases/latest")
-        every { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()
@@ -126,13 +127,13 @@ class BraveIT {
     fun updateCheck_2releases_checkDownloadUrlForABI() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/latest_contains_NOT_release_version.json").readText(),
                 GithubConsumer.Release::class.java)
 
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/2releases_perpage_20_page_1.json").readText(),
@@ -178,13 +179,13 @@ class BraveIT {
     fun updateCheck_2releases_updateCheck() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/latest_contains_NOT_release_version.json").readText(),
                 GithubConsumer.Release::class.java)
 
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/2releases_perpage_20_page_1.json").readText(),
@@ -222,19 +223,19 @@ class BraveIT {
     fun updateCheck_3releases_checkDownloadUrlForABI() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/latest_contains_NOT_release_version.json").readText(),
                 GithubConsumer.Release::class.java)
 
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/3releases_perpage_10_page_1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
 
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl?per_page=20&page=2"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/3releases_perpage_10_page_2.json").readText(),
@@ -280,19 +281,19 @@ class BraveIT {
     fun updateCheck_3releases_updateCheck() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/latest_contains_NOT_release_version.json").readText(),
                 GithubConsumer.Release::class.java)
 
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/3releases_perpage_10_page_1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
 
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl?per_page=20&page=2"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/3releases_perpage_10_page_2.json").readText(),

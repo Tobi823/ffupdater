@@ -35,12 +35,14 @@ abstract class BaseAppDetail : AppDetail {
         }
     }
 
-    protected open fun getDisplayAvailableVersion(context: Context,
-                                            updateCheckSubResult: UpdateCheckSubResult): String {
+    protected open fun getDisplayAvailableVersion(
+            context: Context,
+            updateCheckSubResult: UpdateCheckSubResult,
+    ): String {
         return context.getString(R.string.available_version, updateCheckSubResult.version)
     }
 
-    protected abstract fun updateCheckBlocking(deviceEnvironment: DeviceEnvironment)
+    protected abstract suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment)
             : UpdateCheckSubResult
 
     /**
@@ -55,7 +57,7 @@ abstract class BaseAppDetail : AppDetail {
             // cache is invalid, if it's: too old, not created or failed
             if (cache == null || cacheAge > CACHE_TIME) {
                 cache = GlobalScope.async(Dispatchers.IO) {
-                    updateCheckBlocking(deviceEnvironment)
+                    updateCheckWithoutCaching(deviceEnvironment)
                 }
                 cacheTimestamp = System.currentTimeMillis()
             }

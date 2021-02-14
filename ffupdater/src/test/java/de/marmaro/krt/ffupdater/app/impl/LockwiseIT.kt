@@ -12,6 +12,7 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.MockKAnnotations
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
@@ -44,7 +45,7 @@ class LockwiseIT {
     fun updateCheck_latestRelease_checkDownloadUrlForABI() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/latest.json"
         val url = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest"
-        every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()
@@ -68,7 +69,7 @@ class LockwiseIT {
     fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/latest.json"
         val url = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest"
-        every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()
@@ -105,13 +106,13 @@ class LockwiseIT {
     fun updateCheck_2releases_checkDownloadUrlForABI() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/"
         val baseUrl = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases"
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/2releases_latest.json").readText(),
                 GithubConsumer.Release::class.java)
 
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl?per_page=5&page=1"),
                     Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
@@ -138,13 +139,13 @@ class LockwiseIT {
     fun updateCheck_2releases_updateCheck() {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/"
         val baseUrl = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases"
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/2releases_latest.json").readText(),
                 GithubConsumer.Release::class.java)
 
-        every {
+        coEvery {
             apiConsumer.consume(URL("$baseUrl?per_page=5&page=1"),
                     Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(

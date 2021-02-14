@@ -16,7 +16,7 @@ class MozillaCiConsumer(
     private val chainOfTrustLogUrl = URL("$taskUrl/artifacts/public/logs/chain_of_trust.log")
     private val apkArtifactUrl = URL("$taskUrl/artifacts/$apkArtifact")
 
-    fun updateCheck(): Result {
+    suspend fun updateCheck(): Result {
         val response = apiConsumer.consume(chainOfTrustLogUrl, String::class.java)
         val version = Regex("""'$keyForVersion': '(.+)'""").find(response)!!
                 .groups[1]!!.value

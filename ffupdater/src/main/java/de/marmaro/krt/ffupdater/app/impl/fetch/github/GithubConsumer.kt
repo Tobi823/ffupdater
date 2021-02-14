@@ -20,17 +20,17 @@ class GithubConsumer(
         check(resultsPerPage > 0)
     }
 
-    fun updateCheck(): Result {
+    suspend fun updateCheck(): Result {
         return updateCheckLatestRelease() ?: updateCheckAllReleases()
     }
 
-    private fun updateCheckLatestRelease(): Result? {
+    private suspend fun updateCheckLatestRelease(): Result? {
         val url = URL("https://api.github.com/repos/$repoOwner/$repoName/releases/latest")
         val release = apiConsumer.consume(url, Release::class.java)
         return release.takeIf { validReleaseTester.test(it) }?.let { convert(it) }
     }
 
-    private fun updateCheckAllReleases(): Result {
+    private suspend fun updateCheckAllReleases(): Result {
         val tries = 4
         for (page in 1..(tries + 1)) {
             val url = URL("https://api.github.com/repos/$repoOwner/$repoName/releases?" +

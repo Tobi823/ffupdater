@@ -12,6 +12,7 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.MockKAnnotations
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
@@ -46,7 +47,7 @@ class IceravenIT {
     fun updateCheck_latestRelease_checkDownloadUrlForABI() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Iceraven/latest.json"
         val url = "https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest"
-        every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()
@@ -96,7 +97,7 @@ class IceravenIT {
     fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Iceraven/latest.json"
         val url = "https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest"
-        every { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()
