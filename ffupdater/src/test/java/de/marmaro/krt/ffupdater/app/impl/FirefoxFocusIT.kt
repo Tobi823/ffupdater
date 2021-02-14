@@ -1,11 +1,11 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
-import android.content.SharedPreferences
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
@@ -19,7 +19,7 @@ import org.junit.Test
 import java.io.File
 import java.net.URL
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 class FirefoxFocusIT {
     @MockK
@@ -30,17 +30,17 @@ class FirefoxFocusIT {
 
     @MockK
     private lateinit var packageManager: PackageManager
-    private lateinit var sharedPreferences: SharedPreferences
+    private var packageInfo = PackageInfo()
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
         every { context.packageManager } returns packageManager
-        sharedPreferences = SPMockBuilder().createSharedPreferences()
+        packageInfo.versionName = ""
         every {
-            context.getSharedPreferences("de.marmaro.krt.ffupdater_preferences", 0)
-        } returns sharedPreferences
-        every { context.getString(R.string.available_version_timestamp, any()) } returns "/"
+            packageManager.getPackageInfo(App.FIREFOX_FOCUS.detail.packageName, 0)
+        } returns packageInfo
+        every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
     }
 
@@ -49,38 +49,31 @@ class FirefoxFocusIT {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/" +
                 "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "project.mobile.focus.release.latest/artifacts/public/chain-of-trust.log"
+                "project.mobile.focus.release.latest/artifacts/public/logs/chain_of_trust.log"
         every { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
 
-        runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_FOCUS_version_name",
-                    "2021-01-19T21:52:21.911Z").commit()
+        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+                "project.mobile.focus.release.latest/artifacts/public/" +
+                "app-focus-arm-release-unsigned.apk")
+        val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
 
+        runBlocking {
+            packageInfo.versionName = "8.12.0"
             val actual = FirefoxFocus(apiConsumer).updateCheck(context, deviceEnvironment)
-            val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "project.mobile.focus.release.latest/artifacts/public/" +
-                    "app-focus-arm-release-unsigned.apk"
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("2021-01-19T21:52:21.911Z", actual.version)
-            assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals(ZonedDateTime.parse("2021-01-19T21:52:21.911Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                    actual.publishDate)
+            assertEquals("8.12.0", actual.version)
+            assertEquals(expectedUrl, actual.downloadUrl)
+            assertEquals(expectedTime, actual.publishDate)
         }
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_FOCUS_version_name",
-                    "2021-01-10T12:45:23.396Z").commit()
-
+            packageInfo.versionName = "8.11.0"
             val actual = FirefoxFocus(apiConsumer).updateCheck(context, deviceEnvironment)
-            val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "project.mobile.focus.release.latest/artifacts/public/" +
-                    "app-focus-arm-release-unsigned.apk"
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("2021-01-19T21:52:21.911Z", actual.version)
-            assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals(ZonedDateTime.parse("2021-01-19T21:52:21.911Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                    actual.publishDate)
+            assertEquals("8.12.0", actual.version)
+            assertEquals(expectedUrl, actual.downloadUrl)
+            assertEquals(expectedTime, actual.publishDate)
         }
     }
 
@@ -89,38 +82,31 @@ class FirefoxFocusIT {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/" +
                 "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "project.mobile.focus.release.latest/artifacts/public/chain-of-trust.log"
+                "project.mobile.focus.release.latest/artifacts/public/logs/chain_of_trust.log"
         every { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
 
-        runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_FOCUS_version_name",
-                    "2021-01-19T21:52:21.911Z").commit()
+        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+        "project.mobile.focus.release.latest/artifacts/public/" +
+                "app-focus-aarch64-release-unsigned.apk")
+        val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
 
+        runBlocking {
+            packageInfo.versionName = "8.12.0"
             val actual = FirefoxFocus(apiConsumer).updateCheck(context, deviceEnvironment)
-            val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "project.mobile.focus.release.latest/artifacts/public/" +
-                    "app-focus-aarch64-release-unsigned.apk"
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("2021-01-19T21:52:21.911Z", actual.version)
-            assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals(ZonedDateTime.parse("2021-01-19T21:52:21.911Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                    actual.publishDate)
+            assertEquals("8.12.0", actual.version)
+            assertEquals(expectedUrl, actual.downloadUrl)
+            assertEquals(expectedTime, actual.publishDate)
         }
 
         runBlocking {
-            sharedPreferences.edit().putString("device_app_register_FIREFOX_FOCUS_version_name",
-                    "2021-01-10T12:34:56.789Z").commit()
-
+            packageInfo.versionName = "8.11.0"
             val actual = FirefoxFocus(apiConsumer).updateCheck(context, deviceEnvironment)
-            val expected = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                    "project.mobile.focus.release.latest/artifacts/public/" +
-                    "app-focus-aarch64-release-unsigned.apk"
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("2021-01-19T21:52:21.911Z", actual.version)
-            assertEquals(URL(expected), actual.downloadUrl)
-            assertEquals(ZonedDateTime.parse("2021-01-19T21:52:21.911Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                    actual.publishDate)
+            assertEquals("8.12.0", actual.version)
+            assertEquals(expectedUrl, actual.downloadUrl)
+            assertEquals(expectedTime, actual.publishDate)
         }
     }
 }

@@ -11,15 +11,17 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
         if (lastVersionCode < 56 /* 71.0.0 */) {
-            deleteDeprecatedCacheData(preferences)
+            deleteDeprecatedData(preferences)
         }
 
         preferences.edit().putInt(FFUPDATER_VERSION_CODE, currentVersionCode).apply()
     }
 
-    private fun deleteDeprecatedCacheData(preferences: SharedPreferences) {
-        val keys = preferences.all.filter { it.key.startsWith("download_metadata_") }
-                .map { it.key }
+    private fun deleteDeprecatedData(preferences: SharedPreferences) {
+        val keys = preferences.all.filter {
+            it.key.startsWith("download_metadata_") or
+                    it.key.startsWith("device_app_register_")
+        }.map { it.key }
         val editor = preferences.edit()
         keys.forEach { editor.remove(it) }
         editor.apply()

@@ -24,8 +24,10 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A)
 
-    override fun updateCheckBlocking(context: Context,
-                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override fun updateCheckBlocking(
+            context: Context,
+            deviceEnvironment: DeviceEnvironment,
+    ): UpdateCheckSubResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "aarch64"
@@ -36,18 +38,16 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val mozillaCiConsumer = MozillaCiConsumer(
                 apiConsumer = apiConsumer,
                 task = "project.mobile.focus.release.latest",
-                apkArtifact = "public/app-klar-$abiString-release-unsigned.apk")
+                apkArtifact = "public/app-klar-$abiString-release-unsigned.apk",
+                keyForVersion = "tag_name",
+                keyForReleaseDate = "published_at")
         val result = mozillaCiConsumer.updateCheck()
-        val version = result.version
+        val version = Regex("""^v(.*)$""").find(result.version)!!.groups[1]!!.value
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
                 displayVersion = context.getString(R.string.available_version, version),
                 publishDate = result.releaseDate,
                 fileSizeBytes = null)
-    }
-
-    companion object {
-        const val INSTALLED_VERSION_KEY = "device_app_register_FIREFOX_KLAR_version_name"
     }
 }

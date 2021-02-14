@@ -9,6 +9,8 @@ class MozillaCiConsumer(
         private val apiConsumer: ApiConsumer,
         task: String,
         apkArtifact: String,
+        private val keyForVersion: String,
+        private val keyForReleaseDate: String,
 ) {
     private val taskUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
     private val chainOfTrustLogUrl = URL("$taskUrl/artifacts/public/logs/chain_of_trust.log")
@@ -16,8 +18,10 @@ class MozillaCiConsumer(
 
     fun updateCheck(): Result {
         val response = apiConsumer.consume(chainOfTrustLogUrl, String::class.java)
-        val version = Regex("""'version': '(.+)'""").find(response)!!.groups[1]!!.value
-        val dateString = Regex("""'now': '(.+)'""").find(response)!!.groups[1]!!.value
+        val version = Regex("""'$keyForVersion': '(.+)'""").find(response)!!
+                .groups[1]!!.value
+        val dateString = Regex("""'$keyForReleaseDate': '(.+)'""").find(response)!!
+                .groups[1]!!.value
         return Result(
                 version = version,
                 url = apkArtifactUrl,

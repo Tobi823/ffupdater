@@ -27,8 +27,10 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override fun updateCheckBlocking(context: Context,
-                                     deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override fun updateCheckBlocking(
+            context: Context,
+            deviceEnvironment: DeviceEnvironment,
+    ): UpdateCheckSubResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "arm64-v8a"
@@ -41,7 +43,9 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val mozillaCiConsumer = MozillaCiConsumer(
                 apiConsumer = apiConsumer,
                 task = "mobile.v2.fenix.beta.latest.$abiString",
-                apkArtifact = "public/build/$abiString/target.apk")
+                apkArtifact = "public/build/$abiString/target.apk",
+                keyForVersion = "version",
+                keyForReleaseDate = "now")
         val result = mozillaCiConsumer.updateCheck()
         val version = result.version
         return UpdateCheckSubResult(

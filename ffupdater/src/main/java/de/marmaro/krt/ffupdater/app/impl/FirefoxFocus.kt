@@ -36,9 +36,11 @@ class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val mozillaCiConsumer = MozillaCiConsumer(
                 apiConsumer = apiConsumer,
                 task = "project.mobile.focus.release.latest",
-                apkArtifact = "public/app-focus-$abiString-release-unsigned.apk")
+                apkArtifact = "public/app-focus-$abiString-release-unsigned.apk",
+                keyForVersion = "tag_name",
+                keyForReleaseDate = "published_at")
         val result = mozillaCiConsumer.updateCheck()
-        val version = result.version
+        val version = Regex("""^v(.*)$""").find(result.version)!!.groups[1]!!.value
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,

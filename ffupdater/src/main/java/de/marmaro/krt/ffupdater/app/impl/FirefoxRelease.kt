@@ -38,7 +38,9 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val mozillaCiConsumer = MozillaCiConsumer(
                 apiConsumer = apiConsumer,
                 task = "mobile.v2.fenix.release.latest.$abiString",
-                apkArtifact = "public/build/$abiString/target.apk")
+                apkArtifact = "public/build/$abiString/target.apk",
+                keyForVersion = "version",
+                keyForReleaseDate = "now")
         val result = mozillaCiConsumer.updateCheck()
         val version = result.version
         return UpdateCheckSubResult(
