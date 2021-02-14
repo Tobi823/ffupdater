@@ -20,6 +20,8 @@ import org.junit.Before
 import org.junit.Test
 import java.io.File
 import java.net.URL
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class LockwiseIT {
     @MockK
@@ -83,6 +85,8 @@ class LockwiseIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("4.0.3", actual.version)
             assertEquals(37188004L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2020-12-10T18:40:16Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         // installed app is old
@@ -92,6 +96,8 @@ class LockwiseIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("4.0.3", actual.version)
             assertEquals(37188004L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2020-12-10T18:40:16Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 
@@ -159,6 +165,8 @@ class LockwiseIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("3.3.0", actual.version)
             assertEquals(19367045L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2019-12-13T19:34:17Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         // installed app is old
@@ -168,6 +176,8 @@ class LockwiseIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("3.3.0", actual.version)
             assertEquals(19367045L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2019-12-13T19:34:17Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 }

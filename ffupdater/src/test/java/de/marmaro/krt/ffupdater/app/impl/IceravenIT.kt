@@ -20,6 +20,8 @@ import org.junit.Before
 import org.junit.Test
 import java.io.File
 import java.net.URL
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class IceravenIT {
 
@@ -111,6 +113,8 @@ class IceravenIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("iceraven-1.6.0", actual.version)
             assertEquals(66150140L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-02-07T00:37:13Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         // installed app is old
@@ -120,6 +124,8 @@ class IceravenIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("iceraven-1.6.0", actual.version)
             assertEquals(66150140L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-02-07T00:37:13Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 }

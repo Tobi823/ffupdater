@@ -20,6 +20,8 @@ import org.junit.Before
 import org.junit.Test
 import java.io.File
 import java.net.URL
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class FirefoxLiteIT {
 
@@ -81,6 +83,8 @@ class FirefoxLiteIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("2.6.0", actual.version)
             assertEquals(6657406L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-01-29T20:55:06Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         // installed app is old
@@ -90,6 +94,8 @@ class FirefoxLiteIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("2.6.0", actual.version)
             assertEquals(6657406L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-01-29T20:55:06Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 }
