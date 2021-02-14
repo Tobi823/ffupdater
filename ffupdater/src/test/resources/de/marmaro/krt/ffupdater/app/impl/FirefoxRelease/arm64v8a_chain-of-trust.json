@@ -1,0 +1,103 @@
+{
+  "artifacts": {
+    "public/build/arm64-v8a/target.apk": {
+      "sha256": "5c81d3f523804347bd2af0908367346d39ad5995461910edcb2b0093c02b44b5"
+    },
+    "public/build/armeabi-v7a/target.apk": {
+      "sha256": "59ce0f9ea256b4576f391d01c685ced2db224a252bf09c3f362e6859a6c7ead5"
+    },
+    "public/build/x86/target.apk": {
+      "sha256": "3288eb3adbb0498b8e5b7017562cbfd156099fa0f2af6f65941c2aa104c42a80"
+    },
+    "public/build/x86_64/target.apk": {
+      "sha256": "1dae9fa995cf197698e652f3e23aa84b2280f69a82964885751cedf7c8e45beb"
+    },
+    "public/logs/chain_of_trust.log": {
+      "sha256": "b0c010209209025f4e30fc6cfdfc6c849696b6a529ed8f1d8eeae95ea2f11e0a"
+    },
+    "public/logs/live_backing.log": {
+      "sha256": "547e03798e31951fcf868a97104c3128877bed9a9e6b9938da190c462aa34d88"
+    }
+  },
+  "chainOfTrustVersion": 1,
+  "environment": {},
+  "runId": 0,
+  "task": {
+    "created": "2021-02-09T11:15:29.671Z",
+    "deadline": "2021-02-10T11:15:29.671Z",
+    "dependencies": [
+      "K1HO2Mb_SNK5h0Ri9Wfqlg"
+    ],
+    "expires": "2022-02-09T11:15:29.671Z",
+    "extra": {
+      "index": {
+        "rank": 1612819136
+      },
+      "parent": "F-cZoDotSESnywihXDEdYg",
+      "treeherder": {
+        "collection": {
+          "opt": true
+        },
+        "groupName": "Production-related tasks with same APK configuration as Fennec",
+        "groupSymbol": "release",
+        "jobKind": "build",
+        "machine": {
+          "platform": "android-all"
+        },
+        "symbol": "Bs",
+        "tier": 1
+      },
+      "treeherder-platform": "android-all/opt"
+    },
+    "metadata": {
+      "description": "Sign Fenix ([Treeherder push](https://treeherder.mozilla.org/#/jobs?repo=fenix&revision=c6a17c9135c312360ceabece8c2cfe7d4d08fc0e))",
+      "name": "signing-release",
+      "owner": "@noreply.mozilla.org",
+      "source": "https://github.com/mozilla-mobile/fenix/blob/c6a17c9135c312360ceabece8c2cfe7d4d08fc0e/taskcluster/ci/signing"
+    },
+    "payload": {
+      "maxRunTime": 600,
+      "upstreamArtifacts": [
+        {
+          "formats": [
+            "autograph_apk"
+          ],
+          "paths": [
+            "public/build/arm64-v8a/target.apk",
+            "public/build/armeabi-v7a/target.apk",
+            "public/build/x86/target.apk",
+            "public/build/x86_64/target.apk"
+          ],
+          "taskId": "K1HO2Mb_SNK5h0Ri9Wfqlg",
+          "taskType": "build"
+        }
+      ]
+    },
+    "priority": "highest",
+    "provisionerId": "scriptworker-k8s",
+    "requires": "all-completed",
+    "retries": 5,
+    "routes": [
+      "tc-treeherder.v2.fenix.c6a17c9135c312360ceabece8c2cfe7d4d08fc0e.0",
+      "checks"
+    ],
+    "schedulerId": "mobile-level-3",
+    "scopes": [
+      "project:mobile:fenix:releng:signing:cert:fennec-production-signing",
+      "project:mobile:fenix:releng:signing:format:autograph_apk"
+    ],
+    "tags": {
+      "createdForUser": "@noreply.mozilla.org",
+      "kind": "signing",
+      "label": "signing-release",
+      "os": "scriptworker",
+      "worker-implementation": "scriptworker"
+    },
+    "taskGroupId": "F-cZoDotSESnywihXDEdYg",
+    "workerType": "mobile-3-signing"
+  },
+  "taskId": "IlriR12WRHCTviPdnLVECw",
+  "workerGroup": "mobile-3-signing",
+  "workerId": "mobile-3-signing-foujv78qig9gkb34hayq",
+  "workerType": "mobile-3-signing"
+}

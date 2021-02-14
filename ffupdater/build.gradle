@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.1'
@@ -7,19 +8,22 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
-    implementation 'androidx.core:core:1.3.2'
-    implementation 'androidx.fragment:fragment:1.2.5'
-    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.fragment:fragment-ktx:1.3.0'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation 'androidx.work:work-runtime:2.4.0'
+    implementation 'androidx.work:work-runtime-ktx:2.5.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.30'
 
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.3.0'
     implementation 'com.google.code.gson:gson:2.8.6'
 
     implementation 'com.github.fennifith:Crasher:0.0.2'
 
     testImplementation 'junit:junit:4.13'
-    testImplementation 'org.mockito:mockito-core:3.3.3'
+    testImplementation 'io.mockk:mockk:1.10.5'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'org.exparity:hamcrest-date:2.0.7'
     testImplementation 'com.github.IvanShafran:shared-preferences-mock:1.0'
@@ -29,16 +33,15 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        versionCode 55
-        versionName "70.0.1"
+        versionCode 56
+        versionName "71.0.0"
         minSdkVersion 21
         targetSdkVersion 30
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled true
     }
 
     buildTypes {
-        release {
+        release { //TODO mal reingucken
             minifyEnabled false
             shrinkResources false
         }
@@ -74,4 +77,7 @@ android {
             }
         }
     }
+}
+repositories {
+    mavenCentral()
 }

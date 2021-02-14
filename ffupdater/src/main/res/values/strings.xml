@@ -8,6 +8,7 @@
     <string name="available_version">Available: %1$s</string>
     <string name="available_version_error">ERROR</string>
     <string name="available_version_loading">Loading…</string>
+    <string name="available_version_timestamp">Available version from: %1$s</string>
     <string name="background_error_notification_text">Click to view error</string>
     <string name="background_error_notification_title">Background update check failed</string>
     <string name="brave_description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
@@ -24,7 +25,6 @@
     <string name="downloaded_application_from">Downloaded application from:</string>
     <string name="downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
     <string name="downloaded_application_is_verified">Downloaded application is verified</string>
-    <string name="empty" translatable="false" />
     <string name="error_notification_channel_description">Show errors of the background update checker</string>
     <string name="error_notification_channel_name">Background errors</string>
     <string name="expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
@@ -34,19 +34,21 @@
     <string name="firefox_beta_description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_beta_title">Firefox for Android Beta</string>
     <string name="firefox_beta_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
-    <string name="firefox_focus_description">This is a modification of the Firefox browser aimed to increase privacy.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
+    <string name="firefox_focus_description">This is a modification of the Firefox browser aimed to increase privacy. \n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="firefox_focus_title">Firefox Focus</string>
-    <string name="firefox_klar_description">This is a modification of the Firefox browser aimed to increase privacy.\n\nFirefox Klar is developed for Germany, Switzerland and Austria and is almost identical to Firefox Focus. Only the name was changed to avoid confusion with the news magazine \'Focus\' from the \'Hubert Burda Media\' media group.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
+    <string name="firefox_klar_description">This is a modification of the Firefox browser aimed to increase privacy. \n\nFirefox Klar is developed for Germany, Switzerland and Austria and is almost identical to Firefox Focus. Only the name was changed to avoid confusion with the news magazine \'Focus\' from the \'Hubert Burda Media\' media group. \n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="firefox_klar_title">Firefox Klar</string>
-    <string name="firefox_lite_description">Firefox Lite is primary developed for users in Indonesia. The app is very small and supports techniques to reduce (mobile) data consumption.\n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
+    <string name="firefox_lite_description">Firefox Lite is primary developed for users in Indonesia. The app is very small and supports techniques to reduce (mobile) data consumption. \n\nThe app will be downloaded from GitHub - only updates which are released on GitHub can be downloaded.</string>
     <string name="firefox_lite_title">Firefox Lite</string>
     <string name="firefox_lite_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
-    <string name="firefox_nightly_description">Please note that this app used to be titled Firefox Preview. It has now been transitioned to Firefox Nightly.\n\nFirefox Nightly is a developmental channel for new Mozilla Firefox releases.\n\nFirefox Nightly is designed to showcase the more experimental builds of Firefox. The Nightly channel allows users to experience the newest Firefox innovations in an unstable environment and provide feedback on features and performance to help determine what makes the final release.</string>
+    <string name="firefox_nightly_description">Please note that this app used to be titled Firefox Preview. It has now been transitioned to Firefox Nightly. \n\nFirefox Nightly is a developmental channel for new Mozilla Firefox releases. \n\nFirefox Nightly is designed to showcase the more experimental builds of Firefox. The Nightly channel allows users to experience the newest Firefox innovations in an unstable environment and provide feedback on features and performance to help determine what makes the final release.</string>
     <string name="firefox_nightly_title">Firefox Nightly</string>
     <string name="firefox_nightly_warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Dou you want to install it?</string>
     <string name="firefox_release_description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_release_title">Firefox Browser</string>
     <string name="github" translatable="false">GitHub</string>
+    <string name="iceraven_description">Definitely not brought to you by Mozilla! \n\nIceraven Browser is a web browser for Android, based on Mozilla\'s Fenix version of Firefox, GeckoView and Mozilla Android Components. \n\nOur goal is to be a close fork of the new Firefox for Android that seeks to provide users with more options, more opportunities to customize (including a broad extension library), and more information about the pages they visit and how their browsers are interacting with those pages.</string>
+    <string name="iceraven_title">Iceraven Browser</string>
     <string name="infobox">
         This is an updater for multiple browsers from Mozilla.
         Click the plus-button for installation and the down-arrow-button for updating.
@@ -65,14 +67,13 @@
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="installed_version">Installed: %1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
-    <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.\n\nI recommend you to uninstall the application.</string>
-    <string name="lockwise_description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU\n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
+    <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug. \n\nI recommend you to uninstall the application.</string>
+    <string name="lockwise_description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="lockwise_warning">FFUpdater is sometimes not able to download the latest version because not every update is released on GitHub. Do you want to install the app with the risk of using an outdated version?</string>
     <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
-    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues\n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
-    <string name="no_update_available">No update available</string>
+    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Settings</string>
@@ -96,12 +97,10 @@
     <string name="title_crasher_stack_trace" tools:keep="@string/title_crasher_stack_trace">View Stack Trace</string>
     <string name="too_low_memory_description">On your device is only %1$d MB of space available. This may lead to download or installation failure.</string>
     <string name="too_low_memory_title">Low Disk Space</string>
-    <string name="unknown_installed_version">Unknown version installed</string>
     <string name="unknown_signature_of_installed_app_text1">You have to uninstall the existing app before FFUpdater can install or update the app. Backup your data because the uninstall will delete all your bookmarks, settings etc.</string>
     <string name="unknown_signature_of_installed_app_text2">Reason: The current installed app is not signed by the original developer - maybe it\'s signed by F-Droid. Android refuses to update an app if different people signed the installed and the updated version.</string>
     <string name="unsupported_abi_dialog_message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="unsupported_abi_dialog_title">Unsupported device</string>
-    <string name="update_available">Update available</string>
     <string name="update_interval_12h">12 hours</string>
     <string name="update_interval_15min">15 minutes</string>
     <string name="update_interval_18h">18 hours</string>
