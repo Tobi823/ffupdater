@@ -21,7 +21,12 @@ class ApiConsumer {
                     .let { if (connection.contentEncoding == GZIP) GZIPInputStream(it) else it }
                     .let { InputStreamReader(it) }
                     .let { BufferedReader(it) }
-                    .use { return Gson().fromJson(it, clazz) }
+                    .use {
+                        if (clazz == String::class.java) {
+                            return it.readText() as T
+                        }
+                        return Gson().fromJson(it, clazz)
+                    }
         } catch (e: IOException) {
             throw ApiConsumerNetworkException("can't consume API interface '$url'", e)
         }

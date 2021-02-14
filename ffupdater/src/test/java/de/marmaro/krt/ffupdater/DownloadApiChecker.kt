@@ -32,26 +32,17 @@ class DownloadApiChecker {
 
     @MockK
     private lateinit var packageManager: PackageManager
-    private lateinit var sharedPreferences: SharedPreferences
     private val device = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.P)
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
         every { context.packageManager } returns packageManager
-        sharedPreferences = SPMockBuilder().createSharedPreferences()
-        every {
-            context.getSharedPreferences("de.marmaro.krt.ffupdater_preferences", 0)
-        } returns sharedPreferences
-        every { context.getString(R.string.available_version_timestamp, any()) } returns "/"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        val packageInfo = PackageInfo()
-        packageInfo.versionName = "placeholder"
-        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, 0) } returns packageInfo
-        every { packageManager.getPackageInfo(App.FIREFOX_LITE.detail.packageName, 0) } returns packageInfo
-        every { packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, 0) } returns packageInfo
-        every { packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0) } returns packageInfo
+        every {
+            packageManager.getPackageInfo(any<String>(), 0)
+        } throws PackageManager.NameNotFoundException()
     }
 
     @Test

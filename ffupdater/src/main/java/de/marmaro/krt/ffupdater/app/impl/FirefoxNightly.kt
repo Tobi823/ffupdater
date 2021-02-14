@@ -25,7 +25,7 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
     override fun getInstalledVersion(context: Context): String? {
-        val rawVersion = super.getInstalledVersion(context) ?: ""
+        val rawVersion = super.getInstalledVersion(context) ?: return null
         return Regex("""^(Nightly \d{6}) \d{2}:\d{2}$""").find(rawVersion)!!
                 .groups[1]!!.value
     }
