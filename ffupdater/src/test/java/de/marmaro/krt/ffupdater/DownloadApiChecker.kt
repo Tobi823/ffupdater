@@ -20,8 +20,7 @@ import org.junit.Before
 import org.junit.Test
 import java.net.URL
 import java.time.Duration
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.time.ZonedDateTime
 import javax.net.ssl.HttpsURLConnection
 
 /**
@@ -61,6 +60,9 @@ class DownloadApiChecker {
             Brave(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 10
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
@@ -69,9 +71,9 @@ class DownloadApiChecker {
             FirefoxBeta(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val release = LocalDateTime.parse(result.version, DateTimeFormatter.ISO_DATE_TIME)
-        val age = Duration.between(release, LocalDateTime.now())
-        assertTrue("$age must be smaller then 14 days", age.toDays() < 14)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 14
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
@@ -80,9 +82,9 @@ class DownloadApiChecker {
             FirefoxFocus(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val release = LocalDateTime.parse(result.version, DateTimeFormatter.ISO_DATE_TIME)
-        val age = Duration.between(release, LocalDateTime.now())
-        assertTrue("$age must be smaller then 60 days", age.toDays() < 60)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 60
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
@@ -91,9 +93,9 @@ class DownloadApiChecker {
             FirefoxKlar(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val release = LocalDateTime.parse(result.version, DateTimeFormatter.ISO_DATE_TIME)
-        val age = Duration.between(release, LocalDateTime.now())
-        assertTrue("$age must be smaller then 60 days", age.toDays() < 60)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 60
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
@@ -102,6 +104,9 @@ class DownloadApiChecker {
             FirefoxLite(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 60
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
@@ -110,9 +115,9 @@ class DownloadApiChecker {
             FirefoxNightly(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val release = LocalDateTime.parse(result.version, DateTimeFormatter.ISO_DATE_TIME)
-        val age = Duration.between(release, LocalDateTime.now())
-        assertTrue("$age must be smaller then 7 days", age.toDays() < 7)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 7
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
@@ -121,9 +126,9 @@ class DownloadApiChecker {
             FirefoxRelease(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val release = LocalDateTime.parse(result.version, DateTimeFormatter.ISO_DATE_TIME)
-        val age = Duration.between(release, LocalDateTime.now())
-        assertTrue("$age must be smaller then 21 days", age.toDays() < 21)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 21
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
@@ -132,6 +137,9 @@ class DownloadApiChecker {
             Iceraven(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 30
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
@@ -140,6 +148,9 @@ class DownloadApiChecker {
             Lockwise(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 90
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     private fun verifyThatDownloadLinkAvailable(url: URL) {
