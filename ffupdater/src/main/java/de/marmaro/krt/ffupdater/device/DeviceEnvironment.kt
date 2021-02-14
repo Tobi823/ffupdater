@@ -32,5 +32,13 @@ class DeviceEnvironment constructor(
         return SDK_INT >= Build.VERSION_CODES.M
     }
 
+    fun supportsAndroidNougat(): Boolean {
+        return SDK_INT >=Build.VERSION_CODES.N
+    }
+
+    fun supportsAndroid10(): Boolean {
+        return SDK_INT >= Build.VERSION_CODES.Q
+    }
+
     class UnknownAbiException(message: String) : Exception(message)
 }

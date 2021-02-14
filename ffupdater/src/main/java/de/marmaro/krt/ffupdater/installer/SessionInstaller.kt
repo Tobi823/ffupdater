@@ -1,11 +1,13 @@
 package de.marmaro.krt.ffupdater.installer
 
+import android.app.Activity
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import de.marmaro.krt.ffupdater.InstallActivity
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import java.io.IOException
 
@@ -31,37 +33,41 @@ class SessionInstaller(
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    }
+
     override fun install(
-            context: Context,
+            activity: Activity,
             downloadManagerAdapter: DownloadManagerAdapter,
             downloadId: Long,
+            deviceEnvironment: DeviceEnvironment,
     ) {
         try {
-            return installInternal(context, downloadManagerAdapter, downloadId)
+            return installInternal(activity, downloadManagerAdapter, downloadId)
         } catch (e: IOException) {
             throw SessionInstallerException("fail to install app", e)
         }
     }
 
     private fun installInternal(
-            context: Context,
+            activity: Activity,
             downloadManagerAdapter: DownloadManagerAdapter,
             downloadId: Long,
     ) {
-        val installer = context.packageManager.packageInstaller
+        val installer = activity.packageManager.packageInstaller
         val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
         val downloadSize = downloadManagerAdapter.getTotalDownloadSize(downloadId)
         val downloadUri = downloadManagerAdapter.getUriForDownloadedFile(downloadId)
 
         installer.openSession(installer.createSession(params)).use { session ->
             session.openWrite("package", 0, downloadSize).use { packageStream ->
-                context.contentResolver.openInputStream(downloadUri).use { apkStream ->
+                activity.contentResolver.openInputStream(downloadUri).use { apkStream ->
                     apkStream?.copyTo(packageStream)
                 }
             }
-            val intent = Intent(context, InstallActivity::class.java)
+            val intent = Intent(activity, InstallActivity::class.java)
             intent.action = PACKAGE_INSTALLED_ACTION
-            val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+            val pendingIntent = PendingIntent.getActivity(activity, 0, intent, 0)
             session.commit(pendingIntent.intentSender)
         }
     }

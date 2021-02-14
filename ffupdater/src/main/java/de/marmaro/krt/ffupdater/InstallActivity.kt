@@ -19,7 +19,6 @@ import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.installer.AppInstaller
-import de.marmaro.krt.ffupdater.installer.SessionInstaller
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
@@ -28,6 +27,7 @@ import kotlinx.coroutines.*
 import java.time.Duration
 import java.util.*
 import java.util.concurrent.*
+
 
 /**
  * Activity for downloading and installing apps on devices with API Level >= 24/Nougat.
@@ -40,6 +40,7 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var downloadManager: DownloadManagerAdapter
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
+    private val deviceEnvironment = DeviceEnvironment()
 
     // necessary for communication with State enums
     private lateinit var app: App
@@ -60,13 +61,15 @@ class InstallActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
         downloadManager = DownloadManagerAdapter(getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager)
-        appInstaller = SessionInstaller({
-            restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
-        }, { errorMessage ->
-            appInstallationFailedErrorMessage = errorMessage
-            restartStateMachine(State.FAILURE_APP_INSTALLATION)
-        })
-
+        appInstaller = AppInstaller.create(
+                deviceEnvironment = deviceEnvironment,
+                appInstalledCallback = {
+                    restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
+                },
+                appNotInstalledCallback = { errorMessage ->
+                    appInstallationFailedErrorMessage = errorMessage
+                    restartStateMachine(State.FAILURE_APP_INSTALLATION)
+                })
         app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run {
             finish()
             return
@@ -88,6 +91,11 @@ class InstallActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        appInstaller.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun restartStateMachine(jumpDestination: State) {
@@ -245,7 +253,7 @@ class InstallActivity : AppCompatActivity() {
 
         USER_HAS_TRIGGERED_INSTALLATION_PROCESS(f@{ ia ->
             ia.show(R.id.installingApplication)
-            ia.appInstaller.install(ia, ia.downloadManager, ia.downloadId)
+            ia.appInstaller.install(ia, ia.downloadManager, ia.downloadId, ia.deviceEnvironment)
             return@f SUCCESS_PAUSE
         }),
 
