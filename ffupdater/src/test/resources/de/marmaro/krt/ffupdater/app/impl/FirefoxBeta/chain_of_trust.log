@@ -1,19 +1,3 @@
-package de.marmaro.krt.ffupdater.utils
-
-import android.os.Build
-import org.junit.Assert.assertEquals
-import org.junit.Test
-
-class UtilsTest {
-
-    @Test
-    fun getVersionAndCodenameForApiLevel_withAndroidR_returnCorrectText() {
-        assertEquals("11 (R)", Utils.getVersionAndCodenameForApiLevel(Build.VERSION_CODES.R))
-    }
-
-    @Test
-    fun name() {
-        val data = """    
 2021-02-11T13:41:33     INFO - Running scriptworker version 36.0.1
 2021-02-11T13:41:33     INFO - build_task_dependencies scriptworker EW47NZ4ETr6mCJm9eVWmyQ
 2021-02-11T13:41:33     INFO - find_sorted_task_dependencies scriptworker EW47NZ4ETr6mCJm9eVWmyQ
@@ -68,11 +52,11 @@ class UtilsTest {
 2021-02-11T13:41:34     INFO - Done
 2021-02-11T13:41:34     INFO - Done
 2021-02-11T13:41:34     INFO - Done
-2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/BpEU_djMQ8-3PWWPuaxPkQ/./public/chain-of-trust.log downloaded; hash is 810b009ad90244beab2af9a96ef834382a60eb1a44571e1164b343bb33f70c35
-2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/An8owHqsSvC9f-9Yok5Z8Q/./public/chain-of-trust.log downloaded; hash is 2fa577d3b0d6d2cddc3dd412cad09424a6f70dfaa98448e9d691534fde0a229d
-2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/E7UJGIXgQlKtDOd1YNciZA/./public/chain-of-trust.log downloaded; hash is 050dde841b5a706512c2b8b15ba74490cd7c46a1862802df8d1c23eff190c903
-2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/XGGmdDBTSPOa1ZFu6Roldg/./public/chain-of-trust.log downloaded; hash is 61d74cd1c814dedaa99b686edebf85cb4b7ba3372728e5e4164c6cec01a1a98d
-2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/Lt9aXLUtSU2lhskGjQCJLg/./public/chain-of-trust.log downloaded; hash is 5ec67192c03fb93a62d2f0bce02eebda21e70c888cafba05b0c33082b4613f5d
+2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/BpEU_djMQ8-3PWWPuaxPkQ/./public/chain-of-trust.json downloaded; hash is 810b009ad90244beab2af9a96ef834382a60eb1a44571e1164b343bb33f70c35
+2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/An8owHqsSvC9f-9Yok5Z8Q/./public/chain-of-trust.json downloaded; hash is 2fa577d3b0d6d2cddc3dd412cad09424a6f70dfaa98448e9d691534fde0a229d
+2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/E7UJGIXgQlKtDOd1YNciZA/./public/chain-of-trust.json downloaded; hash is 050dde841b5a706512c2b8b15ba74490cd7c46a1862802df8d1c23eff190c903
+2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/XGGmdDBTSPOa1ZFu6Roldg/./public/chain-of-trust.json downloaded; hash is 61d74cd1c814dedaa99b686edebf85cb4b7ba3372728e5e4164c6cec01a1a98d
+2021-02-11T13:41:34    DEBUG -  /app/workdir/cot/Lt9aXLUtSU2lhskGjQCJLg/./public/chain-of-trust.json downloaded; hash is 5ec67192c03fb93a62d2f0bce02eebda21e70c888cafba05b0c33082b4613f5d
 2021-02-11T13:41:34    DEBUG -  Verifying the scriptworker:parent BpEU_djMQ8-3PWWPuaxPkQ docker-worker ed25519 chain of trust signature
 2021-02-11T13:41:34    DEBUG -  scriptworker:parent BpEU_djMQ8-3PWWPuaxPkQ: ed25519 cot signature verified.
 2021-02-11T13:41:34    DEBUG -  Verifying the scriptworker:parent:parent An8owHqsSvC9f-9Yok5Z8Q docker-worker ed25519 chain of trust signature
@@ -262,13 +246,4 @@ https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E7UJGIXgQlKtDOd1YNc
 2021-02-11T13:41:45    DEBUG -  GET https://github.com/mozilla-mobile/fenix/branch_commits/7d3b23ceeb12c0e3edcb36836e9041b9ca7a1800
 2021-02-11T13:41:46    DEBUG -  Status 200
 2021-02-11T13:41:46    DEBUG -  Status 200
-2021-02-11T13:41:47     INFO - Good.    
-"""
-        var start = System.nanoTime()
-        var regexResult = Regex("""'version': '(.+)'""").find(data)
-        println(regexResult?.groups?.get(1))
-        var date = Regex("""'now': '(.+)'""").find(data)
-        println(date?.groups?.get(1))
-        println(System.nanoTime() - start)
-    }
-}
+2021-02-11T13:41:47     INFO - Good.

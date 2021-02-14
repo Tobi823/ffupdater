@@ -253,7 +253,6 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerSuccess)
-            ia.app.detail.installationCallback(ia, ia.updateCheckResult.version)
             ia.downloadManager.remove(ia.downloadId)
             return@f APP_INSTALLATION_HAS_BEEN_REGISTERED
         }),

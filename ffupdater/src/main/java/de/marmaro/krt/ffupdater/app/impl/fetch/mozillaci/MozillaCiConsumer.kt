@@ -1,40 +1,36 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci
 
-import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import java.net.URL
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
-class MozillaCiConsumer(private val apiConsumer: ApiConsumer,
-                        task: String,
-                        private val apkArtifact: String) {
+class MozillaCiConsumer(
+        private val apiConsumer: ApiConsumer,
+        task: String,
+        apkArtifact: String,
+        private val keyForVersion: String,
+        private val keyForReleaseDate: String,
+) {
     private val taskUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
-    private val chainOfTrustUrl = URL("$taskUrl/artifacts/public/chain-of-trust.json")
+    private val chainOfTrustLogUrl = URL("$taskUrl/artifacts/public/logs/chain_of_trust.log")
     private val apkArtifactUrl = URL("$taskUrl/artifacts/$apkArtifact")
 
     fun updateCheck(): Result {
-        val response = apiConsumer.consume(chainOfTrustUrl, Response::class.java)
+        val response = apiConsumer.consume(chainOfTrustLogUrl, String::class.java)
+        val version = Regex("""'$keyForVersion': '(.+)'""").find(response)!!
+                .groups[1]!!.value
+        val dateString = Regex("""'$keyForReleaseDate': '(.+)'""").find(response)!!
+                .groups[1]!!.value
         return Result(
-                timestamp = response.task.created,
-                hash = response.artifacts[apkArtifact]!!.hash,
-                url = apkArtifactUrl)
+                version = version,
+                url = apkArtifactUrl,
+                releaseDate = ZonedDateTime.parse(dateString, ISO_ZONED_DATE_TIME))
     }
 
-    data class Response(
-            @SerializedName("artifacts")
-            val artifacts: Map<String, Sha256Hash>,
-            @SerializedName("task")
-            val task: Task)
-
-    data class Sha256Hash(
-            @SerializedName("sha256")
-            var hash: String)
-
-    data class Task(
-            @SerializedName("created")
-            var created: String)
-
     data class Result(
-            val timestamp: String,
-            val hash: String,
-            val url: URL)
+            val version: String,
+            val url: URL,
+            val releaseDate: ZonedDateTime,
+    )
 }

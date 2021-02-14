@@ -9,9 +9,6 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
@@ -27,12 +24,10 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
-    }
-
     override fun getInstalledVersion(context: Context): String? {
-        return getInstalledVersionFromSharedPreferences(context, INSTALLED_VERSION_KEY)
+        val rawVersion = super.getInstalledVersion(context) ?: return null
+        return Regex("""^(Nightly \d{6}) \d{2}:\d{2}$""").find(rawVersion)!!
+                .groups[1]!!.value
     }
 
     override fun updateCheckBlocking(context: Context,
@@ -49,24 +44,21 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val mozillaCiConsumer = MozillaCiConsumer(
                 apiConsumer = apiConsumer,
                 task = "mobile.v2.fenix.nightly.latest.$abiString",
-                apkArtifact = "public/build/$abiString/target.apk")
+                apkArtifact = "public/build/$abiString/target.apk",
+                keyForVersion = "tag_name",
+                keyForReleaseDate = "now")
         val result = mozillaCiConsumer.updateCheck()
-        val version = result.timestamp
-        val shortVersion = version.split("T")[0]
+        val year = (result.releaseDate.year-2000).toString()
+        val monthValue = result.releaseDate.monthValue
+        val month = if (monthValue < 10) "0$monthValue" else monthValue.toString()
+        val dayValue = result.releaseDate.dayOfMonth
+        val day = if (dayValue < 10) "0$dayValue" else dayValue.toString()
+        val version = "Nightly $year$month$day"
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
-                displayVersion = context.getString(R.string.available_version_timestamp, shortVersion),
-                publishDate = ZonedDateTime.parse(result.timestamp, ISO_ZONED_DATE_TIME),
-                fileHashSha256 = result.hash,
+                displayVersion = context.getString(R.string.available_version, version),
+                publishDate = result.releaseDate,
                 fileSizeBytes = null)
-    }
-
-    override fun installationCallback(context: Context, installedVersion: String) {
-        setInstalledVersionInSharedPreferences(context, INSTALLED_VERSION_KEY, installedVersion)
-    }
-
-    companion object {
-        const val INSTALLED_VERSION_KEY = "device_app_register_FIREFOX_NIGHTLY_version_name"
     }
 }

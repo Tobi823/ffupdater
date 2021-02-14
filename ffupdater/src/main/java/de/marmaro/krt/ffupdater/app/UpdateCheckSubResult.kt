@@ -8,7 +8,6 @@ data class UpdateCheckSubResult(
         val version: String,
         val displayVersion: String,
         val publishDate: ZonedDateTime,
-        val fileHashSha256: String?,
         val fileSizeBytes: Long?,
 ) {
     fun convertToUpdateCheckResult(updateAvailable: Boolean): UpdateCheckResult {
@@ -18,7 +17,6 @@ data class UpdateCheckSubResult(
                 version = version,
                 displayVersion = displayVersion,
                 publishDate = publishDate,
-                fileHashSha256 = fileHashSha256,
                 fileSizeBytes = fileSizeBytes
         )
     }

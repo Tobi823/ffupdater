@@ -9,5 +9,4 @@ data class UpdateCheckResult(
         val version: String,
         val displayVersion: String,
         val publishDate: ZonedDateTime,
-        val fileHashSha256: String?,
         val fileSizeBytes: Long?)

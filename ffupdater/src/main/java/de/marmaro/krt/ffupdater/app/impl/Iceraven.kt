@@ -26,13 +26,8 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
     override fun getDisplayInstalledVersion(context: Context): String {
-        val rawVersion = getInstalledVersionFromPackageManager(context)
-        val version = rawVersion?.replace("iceraven-", "") ?: ""
-        return context.getString(R.string.installed_version, version)
-    }
-
-    override fun getInstalledVersion(context: Context): String? {
-        return getInstalledVersionFromPackageManager(context)
+        val version = getInstalledVersion(context)?.replace("iceraven-", "")
+        return context.getString(R.string.installed_version, version ?: "")
     }
 
     override fun updateCheckBlocking(context: Context,
@@ -63,9 +58,6 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 version = version,
                 displayVersion = context.getString(R.string.available_version, displayVersion),
                 publishDate = result.releaseDate,
-                fileHashSha256 = null,
                 fileSizeBytes = result.fileSizeBytes)
     }
-
-    override fun installationCallback(context: Context, installedVersion: String) {}
 }

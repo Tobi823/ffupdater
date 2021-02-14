@@ -26,14 +26,6 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64,
             ABI.X86, ABI.MIPS, ABI.MIPS64)
 
-    override fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersionFromPackageManager(context))
-    }
-
-    override fun getInstalledVersion(context: Context): String? {
-        return getInstalledVersionFromPackageManager(context)
-    }
-
     override fun updateCheckBlocking(context: Context,
                                      deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
         val githubConsumer = GithubConsumer(
@@ -54,9 +46,6 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 version = version,
                 displayVersion = context.getString(R.string.available_version, version),
                 publishDate = result.releaseDate,
-                fileHashSha256 = null,
                 fileSizeBytes = result.fileSizeBytes)
     }
-
-    override fun installationCallback(context: Context, installedVersion: String) {}
 }

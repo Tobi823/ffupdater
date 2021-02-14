@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.preference.PreferenceManager
+import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
@@ -23,24 +24,16 @@ abstract class BaseAppDetail : AppDetail {
         }
     }
 
-    protected fun getInstalledVersionFromPackageManager(context: Context): String? {
+    override fun getDisplayInstalledVersion(context: Context): String {
+        return context.getString(R.string.installed_version, getInstalledVersion(context))
+    }
+
+    override fun getInstalledVersion(context: Context): String? {
         return try {
             context.packageManager.getPackageInfo(packageName, 0).versionName
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
-    }
-
-    protected fun getInstalledVersionFromSharedPreferences(context: Context, key: String): String? {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        return preferences.getString(key, null)
-    }
-
-    protected fun setInstalledVersionInSharedPreferences(context: Context,
-                                                         key: String,
-                                                         value: String) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        preferences.edit().putString(key, value).apply()
     }
 
     protected abstract fun updateCheckBlocking(context: Context,
