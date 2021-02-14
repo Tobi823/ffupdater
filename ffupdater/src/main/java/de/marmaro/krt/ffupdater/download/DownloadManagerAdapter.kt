@@ -1,7 +1,9 @@
 package de.marmaro.krt.ffupdater.download
 
 import android.app.DownloadManager
+import android.app.DownloadManager.*
 import android.content.Context
+import android.database.CursorIndexOutOfBoundsException
 import android.net.Uri
 import android.os.Environment
 import de.marmaro.krt.ffupdater.R
@@ -53,26 +55,30 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
      * @return status (constants from `android.app.DownloadManager`) and percent (0-100)
      */
     fun getStatusAndProgress(id: Long): StatusProgress {
-        val query = DownloadManager.Query()
+        val query = Query()
         query.setFilterById(id)
-        downloadManager.query(query).use { cursor ->
-            cursor.moveToFirst()
-            val totalBytesIndex = cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)
-            val totalBytes = cursor.getInt(totalBytesIndex).toDouble()
-            val actualBytesIndex = cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)
-            val actualBytes = cursor.getInt(actualBytesIndex).toDouble()
-            val statusIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)
-            val status = cursor.getInt(statusIndex)
-            return StatusProgress(status, (actualBytes / totalBytes * 100).toInt())
+        try {
+            downloadManager.query(query).use { cursor ->
+                cursor.moveToFirst()
+                val totalBytesIndex = cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES)
+                val totalBytes = cursor.getInt(totalBytesIndex).toDouble()
+                val actualBytesIndex = cursor.getColumnIndex(COLUMN_BYTES_DOWNLOADED_SO_FAR)
+                val actualBytes = cursor.getInt(actualBytesIndex).toDouble()
+                val statusIndex = cursor.getColumnIndex(COLUMN_STATUS)
+                val status = cursor.getInt(statusIndex)
+                return StatusProgress(status, (actualBytes / totalBytes * 100).toInt())
+            }
+        } catch (e: CursorIndexOutOfBoundsException) {
+            return StatusProgress(-3, 0)
         }
     }
 
     fun getTotalDownloadSize(id: Long): Long {
-        val query = DownloadManager.Query()
+        val query = Query()
         query.setFilterById(id)
         downloadManager.query(query).use { cursor ->
             cursor.moveToFirst()
-            return cursor.getLong(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES))
+            return cursor.getLong(cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES))
         }
     }
 
@@ -99,7 +105,7 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
 
     class StatusProgress(val status: Int, val progress: Int) {
         fun toTranslatedText(context: Context): String {
-            return context.getString(R.string.download_application_from_with_status,  when (status) {
+            return context.getString(R.string.download_application_from_with_status, when (status) {
                 DownloadManager.STATUS_RUNNING -> "running"
                 DownloadManager.STATUS_SUCCESSFUL -> "success"
                 DownloadManager.STATUS_FAILED -> "failed"
