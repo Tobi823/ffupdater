@@ -3,15 +3,19 @@ package de.marmaro.krt.ffupdater.app.impl.fetch.github
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import java.net.URL
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.*
 import java.util.function.Predicate
 
-class GithubConsumer(private val apiConsumer: ApiConsumer,
-                     private val repoOwner: String,
-                     private val repoName: String,
-                     private val resultsPerPage: Int,
-                     private val validReleaseTester: Predicate<Release>,
-                     private val correctDownloadUrlTester: Predicate<Asset>) {
+class GithubConsumer(
+        private val apiConsumer: ApiConsumer,
+        private val repoOwner: String,
+        private val repoName: String,
+        private val resultsPerPage: Int,
+        private val validReleaseTester: Predicate<Release>,
+        private val correctDownloadUrlTester: Predicate<Asset>,
+) {
     init {
         check(resultsPerPage > 0)
     }
@@ -38,9 +42,13 @@ class GithubConsumer(private val apiConsumer: ApiConsumer,
     }
 
     private fun convert(release: Release): Result {
-        // NoSuchElementException: The valid release doesn't have an asset with the correct download url
-        release.assets.first { correctDownloadUrlTester.test(it) }
-                .let { return Result(release.tagName, URL(it.downloadUrl), it.fileSizeBytes) }
+        val asset = release.assets.firstOrNull { correctDownloadUrlTester.test(it) }
+                ?: throw NoSuitableAssetAvailableException("${release.name} has no suitable asset")
+        return Result(
+                tagName = release.tagName,
+                url = URL(asset.downloadUrl),
+                fileSizeBytes = asset.fileSizeBytes,
+                releaseDate = ZonedDateTime.parse(release.publishedAt, ISO_ZONED_DATE_TIME))
     }
 
     data class Release(
@@ -51,7 +59,10 @@ class GithubConsumer(private val apiConsumer: ApiConsumer,
             @SerializedName("prerelease")
             val isPreRelease: Boolean,
             @SerializedName("assets")
-            val assets: List<Asset>)
+            val assets: List<Asset>,
+            @SerializedName("published_at")
+            val publishedAt: String,
+    )
 
     data class Asset(
             @SerializedName("name")
@@ -59,12 +70,17 @@ class GithubConsumer(private val apiConsumer: ApiConsumer,
             @SerializedName("browser_download_url")
             val downloadUrl: String,
             @SerializedName("size")
-            val fileSizeBytes: Long)
+            val fileSizeBytes: Long,
+    )
 
     data class Result(
             val tagName: String,
             val url: URL,
-            val fileSizeBytes: Long)
+            val fileSizeBytes: Long,
+            val releaseDate: ZonedDateTime,
+    )
 
     class GithubConsumerException(message: String) : Exception(message)
+
+    class NoSuitableAssetAvailableException(message: String) : Exception(message)
 }

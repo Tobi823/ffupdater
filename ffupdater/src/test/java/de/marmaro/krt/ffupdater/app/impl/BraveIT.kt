@@ -20,6 +20,9 @@ import org.junit.Before
 import org.junit.Test
 import java.io.File
 import java.net.URL
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 class BraveIT {
 
@@ -103,6 +106,8 @@ class BraveIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("1.19.92", actual.version)
             assertEquals(99117354L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-02-05T15:31:05Z", ISO_ZONED_DATE_TIME),
+                actual.publishDate)
         }
 
         // installed app is old
@@ -112,6 +117,8 @@ class BraveIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("1.19.92", actual.version)
             assertEquals(99117354L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-02-05T15:31:05Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 
@@ -195,6 +202,8 @@ class BraveIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("1.20.103", actual.version)
             assertEquals(100446537L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-02-10T11:30:45Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         // installed app is old
@@ -204,6 +213,8 @@ class BraveIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("1.20.103", actual.version)
             assertEquals(100446537L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-02-10T11:30:45Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 
@@ -299,6 +310,8 @@ class BraveIT {
             assertFalse(actual.isUpdateAvailable)
             assertEquals("1.20.103", actual.version)
             assertEquals(100446537L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-02-10T11:30:45Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
 
         // installed app is old
@@ -308,6 +321,8 @@ class BraveIT {
             assertTrue(actual.isUpdateAvailable)
             assertEquals("1.20.103", actual.version)
             assertEquals(100446537L, actual.fileSizeBytes)
+            assertEquals(ZonedDateTime.parse("2021-02-10T11:30:45Z", ISO_ZONED_DATE_TIME),
+                    actual.publishDate)
         }
     }
 }

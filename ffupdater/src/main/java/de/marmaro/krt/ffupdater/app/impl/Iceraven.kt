@@ -62,6 +62,7 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 downloadUrl = result.url,
                 version = version,
                 displayVersion = context.getString(R.string.available_version, displayVersion),
+                publishDate = result.releaseDate,
                 fileHashSha256 = null,
                 fileSizeBytes = result.fileSizeBytes)
     }

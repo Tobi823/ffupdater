@@ -9,6 +9,9 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
@@ -52,6 +55,7 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 downloadUrl = result.url,
                 version = version,
                 displayVersion = context.getString(R.string.available_version_timestamp, shortVersion),
+                publishDate = ZonedDateTime.parse(result.timestamp, ISO_ZONED_DATE_TIME),
                 fileHashSha256 = result.hash,
                 fileSizeBytes = null)
     }
