@@ -1,3 +1,14 @@
+# 2021-02-15 Version 71.0.0 (56)
+ * Add Iceraven browser
+ * Display the real available versions for Release, Beta, Nightly, Focus and Klar
+ * Reduce likeliness of background errors
+ * Fix installation problems on older devices
+ * Migrate from Java to Kotlin for better concurrency
+ * Thanks StoyanDimitrov for updating the Bulgarian translation
+ * Bug fixes and many more
+ * Thanks mega-stoffel, Iey4iej3, Redpillbug, NANASHI0X74, StoyanDimitrov, lucker999, codingepaduli, borisovg, H-Sachse, mpeter, DeenHyper74, duck-rh, mikeklem and darkludao for bug reports
+ * Thanks CharmCityCrab, TheOneWithTheBraid, codingepaduli and User1l0 for feature requests
+
 # 2020-11-13 Version 70.0.1 (55)
  * Check if system download app is installed (thanks Quantumrider)
  * Fix crash during downloading (thanks hsol)

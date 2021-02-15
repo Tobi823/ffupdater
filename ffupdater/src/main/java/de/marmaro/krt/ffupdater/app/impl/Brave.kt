@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail

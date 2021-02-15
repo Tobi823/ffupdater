@@ -1,14 +1,15 @@
-Download, install and update these browsers from Mozilla:
+Download, install and update these privacy friendly browsers:
+ - Brave Private Browser
  - Firefox Browser
- - Firefox for Android Beta
- - Firefox Nightly
  - Firefox Focus
+ - Firefox for Android Beta
  - Firefox Klar
  - Firefox Lite
+ - Firefox Nightly
+ - Iceraven
 
-and other apps:
+and:
  - Firefox Lockwise
- - Brave Private Browser
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
 

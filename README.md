@@ -1,24 +1,24 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 
 # Firefox-Updater
-Download, install and update these browsers from Mozilla:
+Download, install and update these privacy friendly browsers:
+ - [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US)
  - [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
- - [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta)
- - [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
  - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus)
+ - [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta)
  - [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
  - [Firefox Lite](https://play.google.com/store/apps/details?id=org.mozilla.rocket)
+ - [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
+ - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 
-and other apps:
+and:
  - [Firefox Lockwise](https://play.google.com/store/apps/details?id=mozilla.lockbox)
- - [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US)
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
 
 ## Security measures:
  - only HTTPS connections
- - check fingerprint of the downloaded file
- - check fingerprint of the installed app
+ - check certificate fingerprint of the downloaded file and installed app
 
 You can find the APK certificate fingerprints on multiple website - e.g. apkmirror.com
 I did my best to make the app as secure as possible - feel free to double-check it in the source code.
@@ -31,12 +31,10 @@ The applications are downloaded from these locations:
  - Firefox Focus/Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
  - Firefox Lite: <https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest>
  - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
+ - Brave Private Browser: <https://api.github.com/repos/brave/brave-browser/releases/latest>
+ - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
  
 ## Limitations:
-### Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Focus and Firefox Klar:
-- FFUpdater can't detect external installations or updates of these apps. If you install or update one of these apps with the Google Play Store, FFUpdater assumes that this app is outdated and prompts you for an update. You can disable the update check for an app in settings > excluded applications.
-- FFUpdater can't display the available version of these apps because the download server doesn't offer this information. Instead only "update available" is displayed.
-
 ## FAQ:
  - App installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
 
