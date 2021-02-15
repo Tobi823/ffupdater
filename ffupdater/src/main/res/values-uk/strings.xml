@@ -8,7 +8,6 @@
     <string name="available_version">в наявності: %1$s</string>
     <string name="available_version_error">ПОМИЛКА</string>
     <string name="available_version_loading">Завантаження…</string>
-    <string name="available_version_timestamp">Доступна версія від: %1$s</string>
     <string name="background_error_notification_text">Клацніть, щоб переглянути помилку</string>
     <string name="background_error_notification_title">Не вдалося перевірити фонове оновлення</string>
     <string name="brave_description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення. \n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
