@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import java.util.concurrent.TimeUnit.MINUTES
@@ -17,8 +18,16 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         return try {
             doBackgroundCheck()
             Result.success()
+        } catch (e: ApiConsumer.ApiConsumerRetryIOException) {
+            val message2 = "It's likely that the background check failed due to a " +
+                    "temporary network connectivity issue. But if this error occurs more " +
+                    "than once a week, please report it. Click to view the error log."
+            ErrorNotificationBuilder.showNotification(applicationContext, e, message2)
+            Result.failure()
         } catch (e: Exception) {
-            ErrorNotificationBuilder.showNotification(applicationContext, e)
+            val message = "Due to an unknown bug the background check failed. " +
+                    "Please report this error. Click to view the error log."
+            ErrorNotificationBuilder.showNotification(applicationContext, e, message)
             Result.failure()
         }
     }

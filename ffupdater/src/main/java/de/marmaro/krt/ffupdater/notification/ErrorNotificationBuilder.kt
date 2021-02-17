@@ -16,12 +16,13 @@ import james.crasher.activities.CrashActivity
 import java.io.PrintWriter
 import java.io.StringWriter
 
+
 object ErrorNotificationBuilder {
     private const val CHANNEL_ID = "error_notification_channel"
     private const val NOTIFICATION_ID = 300
 
-    fun showNotification(context: Context, e: Exception) {
-        val intent = buildIntent(context, e)
+    fun showNotification(context: Context, exception: Exception, message: String) {
+        val intent = buildIntent(context, exception)
         val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
 
         val notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -33,7 +34,8 @@ object ErrorNotificationBuilder {
                 .setSmallIcon(mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, mipmap.ic_launcher))
                 .setContentTitle(context.getString(R.string.background_error_notification_title))
-                .setContentText(context.getString(R.string.background_error_notification_text))
+                .setStyle(NotificationCompat.BigTextStyle().bigText(message))
+                .setContentText(message)
                 .setContentIntent(updateAppIntent)
                 .setAutoCancel(true)
                 .build()

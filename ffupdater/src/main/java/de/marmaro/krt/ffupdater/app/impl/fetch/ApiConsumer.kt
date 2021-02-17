@@ -13,43 +13,51 @@ import javax.net.ssl.HttpsURLConnection
  * Consume a REST-API from the internet.
  */
 class ApiConsumer {
-    suspend fun <T> consume(url: URL, clazz: Class<T>): T {
-        var errorMessages = ""
-        for (i in 1L..2L) {
-            try {
-                return consumeWithoutRetrying(url, clazz)
-            } catch (e: IOException) {
-                errorMessages += "; ${e.message}"
-            }
-            delay(5000 * i)
-        }
-        try {
-            return consumeWithoutRetrying(url, clazz)
-        } catch (e: Exception) {
-            throw ApiConsumerRetryException("Fail to consume API. " +
-                    "Previous exceptions: [$errorMessages]. Current exception:", e)
-        }
+    private val gson = Gson()
+
+    suspend fun consumeText(url: URL): String {
+        var result = ""
+        retryConsume(url) { reader -> result = reader.readText() }
+        return result
     }
 
-    private suspend fun <T> consumeWithoutRetrying(url: URL, clazz: Class<T>): T {
+    suspend fun <T> consumeJson(url: URL, clazz: Class<T>): T {
+        var result: T? = null
+        retryConsume(url) { reader -> result = gson.fromJson(reader, clazz) }
+        return result!!
+    }
+
+    private suspend fun retryConsume(url: URL, consumer: (BufferedReader) -> Unit) {
+        var errorMessages = ""
+        var lastException: Exception? = null
+        repeat(3) { i ->
+            delay(5_000L * i)
+            try {
+                consume(url, consumer)
+                return
+            } catch (e: IOException) {
+                lastException = e
+                errorMessages += "; ${e.message}"
+            }
+        }
+        throw ApiConsumerRetryIOException("Fail to consume API. Previous exceptions: "
+                + "[$errorMessages]. Current exception:", lastException!!)
+    }
+
+    private fun consume(url: URL, consumer: (BufferedReader) -> Any) {
         val connection = url.openConnection() as HttpsURLConnection
         connection.setRequestProperty("Accept-Encoding", GZIP)
-        connection.connectTimeout = 10 * 1000 // 10 seconds
+        connection.connectTimeout = 10_000 // 10 seconds
         connection.inputStream
                 .let { if (connection.contentEncoding == GZIP) GZIPInputStream(it) else it }
                 .let { InputStreamReader(it) }
                 .let { BufferedReader(it) }
-                .use {
-                    if (clazz == String::class.java) {
-                        return it.readText() as T
-                    }
-                    return Gson().fromJson(it, clazz)
-                }
+                .use { consumer(it) }
     }
 
     companion object {
         private const val GZIP = "gzip"
     }
 
-    class ApiConsumerRetryException(message: String, throwable: Throwable) : Exception(message, throwable)
+    class ApiConsumerRetryIOException(message: String, throwable: Throwable) : Exception(message, throwable)
 }
