@@ -19,7 +19,7 @@ class FirefoxLite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "org.mozilla.rocket"
     override val displayTitle = R.string.firefox_lite_title
     override val displayDescription = R.string.firefox_lite_description
-    override val displayWarning = R.string.firefox_lite_warning
+    override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.github
     override val signatureHash = "863a46f0973932b7d0199b549112741c2d2731ac72ea11b7523aa90a11bf5691"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
