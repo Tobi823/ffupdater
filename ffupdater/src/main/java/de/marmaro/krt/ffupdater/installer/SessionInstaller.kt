@@ -9,6 +9,7 @@ import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
+import java.io.File
 import java.io.IOException
 
 //für API >= 29 (Q)
@@ -40,6 +41,7 @@ class SessionInstaller(
             activity: Activity,
             downloadManagerAdapter: DownloadManagerAdapter,
             downloadId: Long,
+            downloadedFile: File,
             deviceEnvironment: DeviceEnvironment,
     ) {
         try {

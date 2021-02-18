@@ -10,6 +10,7 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 
+
 /**
  * Activity for displaying the settings view.
  */
@@ -18,10 +19,12 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_activity)
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(DeviceEnvironment()))
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.settings, SettingsFragment())
-                .commit()
+        if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.settings, SettingsFragment())
+                    .commit()
+        }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
