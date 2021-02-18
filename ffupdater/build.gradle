@@ -40,13 +40,6 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-    buildTypes {
-        release { //TODO mal reingucken
-            minifyEnabled false
-            shrinkResources false
-        }
-    }
-
     compileOptions {
         encoding = "UTF-8"
         coreLibraryDesugaringEnabled true

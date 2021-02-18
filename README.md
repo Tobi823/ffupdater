@@ -34,9 +34,9 @@ The applications are downloaded from these locations:
  - Brave Private Browser: <https://api.github.com/repos/brave/brave-browser/releases/latest>
  - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
  
-## Limitations:
 ## FAQ:
  - App installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
+ - I don't optimize the APK file with minifyEnabled and shrinkResources because it makes the app harder to debug
 
 ## 3rd-party libraries:
  - [AndroidX](https://developer.android.com/jetpack/androidx) by Google for UI
