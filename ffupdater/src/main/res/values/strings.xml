@@ -8,8 +8,9 @@
     <string name="available_version">Available: %1$s</string>
     <string name="available_version_error">ERROR</string>
     <string name="available_version_loading">Loading…</string>
-    <string name="background_error_notification_text">Click to view error</string>
     <string name="background_error_notification_title">Background update check failed</string>
+    <string name="background_network_issue_notification_text">It\'s likely that the background check failed due to a temporary network connectivity issue. But if this error occurs more than once a week, please report it. Click to view the error log.</string>
+    <string name="background_unknown_bug_notification_text">Due to an unknown bug the background check failed. Please report this error. Click to view the error log.</string>
     <string name="brave_description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
     <string name="brave_title">Brave Private Browser</string>
     <string name="brave_warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
