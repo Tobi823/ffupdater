@@ -3,7 +3,9 @@ package de.marmaro.krt.ffupdater.notification
 import android.content.Context
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
+import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import java.util.concurrent.TimeUnit.MINUTES
@@ -17,8 +19,13 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         return try {
             doBackgroundCheck()
             Result.success()
+        } catch (e: ApiConsumer.ApiConsumerRetryIOException) {
+            val message = applicationContext.getString(R.string.background_network_issue_notification_text)
+            ErrorNotificationBuilder.showNotification(applicationContext, e, message)
+            Result.failure()
         } catch (e: Exception) {
-            ErrorNotificationBuilder.showNotification(applicationContext, e)
+            val message = applicationContext.getString(R.string.background_unknown_bug_notification_text)
+            ErrorNotificationBuilder.showNotification(applicationContext, e, message)
             Result.failure()
         }
     }

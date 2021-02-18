@@ -22,7 +22,6 @@ import org.junit.Test
 import java.io.File
 import java.net.URL
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 class BraveIT {
@@ -49,7 +48,7 @@ class BraveIT {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/latest_contains_release_version.json"
         val url = URL("https://api.github.com/repos/brave/brave-browser/releases/latest")
 
-        coEvery { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consumeJson(url, GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
         val packageInfo = PackageInfo()
         packageInfo.versionName = "1.19.92"
@@ -92,7 +91,7 @@ class BraveIT {
     fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/latest_contains_release_version.json"
         val url = URL("https://api.github.com/repos/brave/brave-browser/releases/latest")
-        coEvery { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consumeJson(url, GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()
@@ -128,13 +127,13 @@ class BraveIT {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
         coEvery {
-            apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/latest_contains_NOT_release_version.json").readText(),
                 GithubConsumer.Release::class.java)
 
         coEvery {
-            apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/2releases_perpage_20_page_1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
@@ -180,13 +179,13 @@ class BraveIT {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
         coEvery {
-            apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/latest_contains_NOT_release_version.json").readText(),
                 GithubConsumer.Release::class.java)
 
         coEvery {
-            apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/2releases_perpage_20_page_1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
@@ -224,19 +223,19 @@ class BraveIT {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
         coEvery {
-            apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/latest_contains_NOT_release_version.json").readText(),
                 GithubConsumer.Release::class.java)
 
         coEvery {
-            apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/3releases_perpage_10_page_1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
 
         coEvery {
-            apiConsumer.consume(URL("$baseUrl?per_page=20&page=2"), Array<GithubConsumer.Release>::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl?per_page=20&page=2"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/3releases_perpage_10_page_2.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
@@ -282,19 +281,19 @@ class BraveIT {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/"
         val baseUrl = "https://api.github.com/repos/brave/brave-browser/releases"
         coEvery {
-            apiConsumer.consume(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl/latest"), GithubConsumer.Release::class.java)
         } returns Gson().fromJson(
                 File("$basePath/latest_contains_NOT_release_version.json").readText(),
                 GithubConsumer.Release::class.java)
 
         coEvery {
-            apiConsumer.consume(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl?per_page=20&page=1"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/3releases_perpage_10_page_1.json").readText(),
                 Array<GithubConsumer.Release>::class.java)
 
         coEvery {
-            apiConsumer.consume(URL("$baseUrl?per_page=20&page=2"), Array<GithubConsumer.Release>::class.java)
+            apiConsumer.consumeJson(URL("$baseUrl?per_page=20&page=2"), Array<GithubConsumer.Release>::class.java)
         } returns Gson().fromJson(
                 File("$basePath/3releases_perpage_10_page_2.json").readText(),
                 Array<GithubConsumer.Release>::class.java)

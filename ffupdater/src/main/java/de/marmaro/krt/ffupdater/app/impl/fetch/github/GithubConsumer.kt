@@ -26,7 +26,7 @@ class GithubConsumer(
 
     private suspend fun updateCheckLatestRelease(): Result? {
         val url = URL("https://api.github.com/repos/$repoOwner/$repoName/releases/latest")
-        val release = apiConsumer.consume(url, Release::class.java)
+        val release = apiConsumer.consumeJson(url, Release::class.java)
         return release.takeIf { validReleaseTester.test(it) }?.let { convert(it) }
     }
 
@@ -35,7 +35,7 @@ class GithubConsumer(
         for (page in 1..(tries + 1)) {
             val url = URL("https://api.github.com/repos/$repoOwner/$repoName/releases?" +
                     "per_page=$resultsPerPage&page=$page")
-            val releases = apiConsumer.consume(url, Array<Release>::class.java)
+            val releases = apiConsumer.consumeJson(url, Array<Release>::class.java)
             releases.firstOrNull { validReleaseTester.test(it) }?.let { return convert(it) }
         }
         throw GithubConsumerException("can't find release after $tries tries - abort")

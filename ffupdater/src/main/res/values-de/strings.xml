@@ -8,8 +8,9 @@
     <string name="available_version">Verfügbar: %1$s</string>
     <string name="available_version_error">FEHLER</string>
     <string name="available_version_loading">Laden…</string>
-    <string name="background_error_notification_text">Klicken, um den Fehler anzuzeigen</string>
     <string name="background_error_notification_title">Hintergrundprüfung auf Updates ist fehlgeschlagen</string>
+    <string name="background_network_issue_notification_text">Il est probable que la vérification des antécédents ait échoué en raison d\\\'un problème temporaire de connectivité au réseau. Mais si cette erreur se produit plus d\\\'une fois par semaine, veuillez le signaler. Cliquez pour afficher le journal des erreurs.</string>
+    <string name="background_unknown_bug_notification_text">En raison d\\\'un bogue inconnu, la vérification des antécédents a échoué. Veuillez signaler cette erreur. Cliquez pour afficher le journal des erreurs.</string>
     <string name="brave_description">Der Brave Web Browser ist Ihr privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert! \n\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass Sie mit Anzeigen überladen oder mit Malware und Popups verseucht werden.</string>
     <string name="brave_title">Brave Browser</string>
     <string name="brave_warning">Brave nutzt die technische Grundlage des Google Chrome (Chrom) - manche Leute mögen das nicht. Willst du Brave dennoch installieren?</string>

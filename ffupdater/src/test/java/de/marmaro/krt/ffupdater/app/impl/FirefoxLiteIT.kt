@@ -48,7 +48,7 @@ class FirefoxLiteIT {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxLite/latest.json"
         val url = URL("https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest")
 
-        coEvery { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consumeJson(url, GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
         val packageInfo = PackageInfo()
         packageInfo.versionName = "1.19.92"
@@ -69,7 +69,7 @@ class FirefoxLiteIT {
     fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxLite/latest.json"
         val url = URL("https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest")
-        coEvery { apiConsumer.consume(url, GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consumeJson(url, GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()

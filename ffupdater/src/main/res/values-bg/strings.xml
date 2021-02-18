@@ -8,8 +8,9 @@
     <string name="available_version">Налично: %1$s</string>
     <string name="available_version_error">ГРЕШКА</string>
     <string name="available_version_loading">Зареждане…</string>
-    <string name="background_error_notification_text">Докоснете, да видите грешката</string>
     <string name="background_error_notification_title">Грешка при проверка за обновяване във фонов режим</string>
+    <string name="background_network_issue_notification_text">"Вероятно проверката на фона е неуспешна поради временен проблем с мрежовата свързаност. Но ако тази грешка се появи повече от веднъж седмично, моля, докладвайте я. Щракнете, за да видите дневника за грешки. "</string>
+    <string name="background_unknown_bug_notification_text">"Поради неизвестна грешка проверката на фона не бе успешна. Моля, докладвайте за тази грешка. Щракнете, за да видите дневника за грешки. "</string>
     <string name="brave_description">Brave Web Browser поверителен и безопасен мрежов четец, който безплатно спира реклами от трети страни. \n\nBrave Web Browser е бърз и сигурен мрежов четец за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен четец, който ви предпазва от проследяване чрез реклами, злонамерен софтуер и изскачащи прозорци.</string>
     <string name="brave_title">Brave Browser</string>
     <string name="brave_warning">Brave използва техническата основа на Google Chrome (Chromium) - на някои това не им допада. Искате ли да инсталирате Brave?</string>

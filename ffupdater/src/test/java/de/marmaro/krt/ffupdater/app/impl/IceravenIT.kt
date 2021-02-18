@@ -47,7 +47,7 @@ class IceravenIT {
     fun updateCheck_latestRelease_checkDownloadUrlForABI() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Iceraven/latest.json"
         val url = "https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest"
-        coEvery { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consumeJson(URL(url), GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()
@@ -97,7 +97,7 @@ class IceravenIT {
     fun updateCheck_latestRelease_updateCheck() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Iceraven/latest.json"
         val url = "https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest"
-        coEvery { apiConsumer.consume(URL(url), GithubConsumer.Release::class.java) } returns
+        coEvery { apiConsumer.consumeJson(URL(url), GithubConsumer.Release::class.java) } returns
                 Gson().fromJson(File(path).readText(), GithubConsumer.Release::class.java)
 
         val packageInfo = PackageInfo()

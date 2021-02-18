@@ -8,8 +8,9 @@
     <string name="available_version">Доступен: %1$s</string>
     <string name="available_version_error">ОШИБКА</string>
     <string name="available_version_loading">Загрузка…</string>
-    <string name="background_error_notification_text">Нажмите, чтобы просмотреть ошибку</string>
     <string name="background_error_notification_title">Проверка фонового обновления не прошла успешно</string>
+    <string name="background_network_issue_notification_text">Вероятно, что проверка данных не прошла из-за временной проблемы с сетевым подключением. Но если эта ошибка случается более одного раза в неделю, пожалуйста, сообщите об этом. Нажмите для просмотра журнала ошибок.</string>
+    <string name="background_unknown_bug_notification_text">Из-за неизвестной ошибки проверка прошлого не удалась. Пожалуйста, сообщите об этой ошибке. Нажмите для просмотра журнала ошибок.</string>
     <string name="brave_description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон. Загрузите лучший веб-браузер сегодня.</string>
     <string name="brave_title">Браузер Brave</string>
     <string name="brave_warning">Храбрые используют техническую основу Google Chrome (Chromium) - некоторым это не нравится. Хотите установить Brave?</string>

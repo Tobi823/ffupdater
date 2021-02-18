@@ -52,7 +52,7 @@ class FirefoxNightlyIT {
                 "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.nightly.latest.armeabi-v7a/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
+        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
 
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
@@ -85,7 +85,7 @@ class FirefoxNightlyIT {
                 "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.nightly.latest.arm64-v8a/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
+        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
 
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
@@ -118,7 +118,7 @@ class FirefoxNightlyIT {
                 "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.nightly.latest.x86/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
+        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86), Build.VERSION_CODES.R)
 
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
@@ -151,7 +151,7 @@ class FirefoxNightlyIT {
                 "chain-of-trust.log"
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.nightly.latest.x86_64/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consume(URL(url), String::class.java) } returns File(path).readText()
+        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
         val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
 
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
