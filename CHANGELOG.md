@@ -1,3 +1,6 @@
+# 2021-02-18 Version 71.0.1 (57)
+ * Improve error message when the background update check failed (thanks duck-rh)
+
 # 2021-02-15 Version 71.0.0 (56)
  * Add Iceraven browser
  * Display the real available versions for Release, Beta, Nightly, Focus and Klar

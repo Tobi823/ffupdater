@@ -1,1 +1,1 @@
- * TODO
+ * Improve error message when the background update check failed (thanks duck-rh)
