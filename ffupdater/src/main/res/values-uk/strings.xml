@@ -13,7 +13,7 @@
     <string name="background_unknown_bug_notification_text">Через невідому помилку перевірка фону не вдалася. Повідомте про цю помилку. Клацніть, щоб переглянути журнал помилок.</string>
     <string name="brave_description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення. \n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
     <string name="brave_title">Brave Browser</string>
-    <string name="brave_warning">128/5000 Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave?</string>
+    <string name="brave_warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave?</string>
     <string name="but_was">Але було:</string>
     <string name="device_too_old_dialog_message">Додаток вимагає Android %1$s. Але на вашому пристрої працює лише Android %2$s. Або виберіть інший додаток, оновіть операційну систему або перейдіть на новий смартфон.</string>
     <string name="device_too_old_dialog_title">Пристрій занадто старий</string>
@@ -75,7 +75,7 @@
     <string name="settings_disabled_apps_summary">Лише встановлені додатки будуть автоматично перевірені на оновлення. Ви можете видалити встановлені програми з автоматичної перевірки оновлення, вибравши їх тут.</string>
     <string name="settings_disabled_apps_title">Виключені програми</string>
     <string name="settings_title">Перевірка оновлення програми</string>
-    <string name="sha_256_certificate_fingerprint">Ausgangssprache: Englisch 32/5000 Відбиток сертифіката SHA-256:</string>
+    <string name="sha_256_certificate_fingerprint">Відбиток сертифіката SHA-256:</string>
     <string name="theme_battery_saver">Темно, коли заставка батареї активна</string>
     <string name="theme_dark">Темний</string>
     <string name="theme_light">Світло</string>
