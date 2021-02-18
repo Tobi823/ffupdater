@@ -17,7 +17,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "org.mozilla.firefox_beta"
     override val displayTitle = R.string.firefox_beta_title
     override val displayDescription = R.string.firefox_beta_description
-    override val displayWarning: Int? = null
+    override val displayWarning = R.string.firefox_beta_warning
     override val displayDownloadSource = R.string.mozilla_ci
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP

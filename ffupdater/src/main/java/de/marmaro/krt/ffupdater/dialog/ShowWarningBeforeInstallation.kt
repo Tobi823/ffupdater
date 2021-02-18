@@ -13,25 +13,25 @@ import de.marmaro.krt.ffupdater.app.App
 /**
  * Ask the user with this dialog if he really want to install the app.
  */
-class InstallationWarningAppDialog internal constructor(private val downloadCallback: Consumer<App>,
-                                                        private val app: App) : DialogFragment() {
+class ShowWarningBeforeInstallation(
+        private val app: App,
+        private val installCallback: (App) -> Unit,
+) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
                 .setTitle(getString(R.string.installation_warning_title))
-                .setMessage(app.detail.displayWarning?.let { getString(it) } ?: "")
-                .setPositiveButton(getString(R.string.installation_warning_positive_button))
-                { dialog: DialogInterface, _: Int ->
+                .setMessage(getString(app.detail.displayWarning!!))
+                .setPositiveButton(getString(R.string.installation_warning_positive_button)) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
-                    downloadCallback.accept(app)
+                    installCallback.invoke(app)
                 }
-                .setNegativeButton(getString(R.string.installation_warning_negative_button))
-                { dialog: DialogInterface, _: Int ->
+                .setNegativeButton(getString(R.string.installation_warning_negative_button)) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
                 }
                 .create()
     }
 
     fun show(manager: FragmentManager) {
-        show(manager, "warning_app_dialog")
+        show(manager, "show_warning_before_installation_dialog")
     }
 }

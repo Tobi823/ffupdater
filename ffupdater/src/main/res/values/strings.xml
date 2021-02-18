@@ -47,6 +47,7 @@
     <string name="firefox_release_description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_release_title">Firefox Browser</string>
     <string name="github" translatable="false">GitHub</string>
+    <string name="go_back">Go back</string>
     <string name="iceraven_description">Definitely not brought to you by Mozilla! \n\nIceraven Browser is a web browser for Android, based on Mozilla\'s Fenix version of Firefox, GeckoView and Mozilla Android Components. \n\nOur goal is to be a close fork of the new Firefox for Android that seeks to provide users with more options, more opportunities to customize (including a broad extension library), and more information about the pages they visit and how their browsers are interacting with those pages.</string>
     <string name="iceraven_title">Iceraven Browser</string>
     <string name="infobox">
@@ -58,6 +59,7 @@
     </string>
     <string name="information_about_the_app">information about the app</string>
     <string name="install_activity_label">Install Application</string>
+    <string name="install_app">Install app</string>
     <string name="install_application">Install Application</string>
     <string name="install_new_app">Install new app</string>
     <string name="installation_warning_negative_button">No, don\'t install it</string>
