@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
+import java.io.File
 import java.io.IOException
 
 
@@ -32,10 +33,12 @@ class IntentInstaller(
             activity: Activity,
             downloadManagerAdapter: DownloadManagerAdapter,
             downloadId: Long,
+            downloadedFile: File,
             deviceEnvironment: DeviceEnvironment,
     ) {
         try {
-            return installInternal(activity, downloadManagerAdapter, downloadId, deviceEnvironment)
+            return installInternal(activity, downloadManagerAdapter, downloadId, downloadedFile,
+                    deviceEnvironment)
         } catch (e: IOException) {
             throw IntentInstallerException("fail to install app", e)
         }
@@ -45,11 +48,12 @@ class IntentInstaller(
             activity: Activity,
             downloadManagerAdapter: DownloadManagerAdapter,
             downloadId: Long,
+            downloadedFile: File,
             deviceEnvironment: DeviceEnvironment,
     ) {
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
         if (deviceEnvironment.supportsAndroidNougat()) {
-            intent.data = Uri.fromFile(downloadManagerAdapter.getFileForDownloadedFile(downloadId))
+            intent.data = Uri.fromFile(downloadedFile)
         } else {
             intent.data = downloadManagerAdapter.getUriForDownloadedFile(downloadId)
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)

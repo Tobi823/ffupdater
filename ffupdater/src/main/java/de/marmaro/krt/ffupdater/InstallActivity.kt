@@ -13,6 +13,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
@@ -24,6 +26,7 @@ import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import james.crasher.Crasher
 import kotlinx.coroutines.*
+import java.io.File
 import java.time.Duration
 import java.util.*
 import java.util.concurrent.*
@@ -37,6 +40,7 @@ import java.util.concurrent.*
  * like restarting downloads, showing the current download status etc.
  */
 class InstallActivity : AppCompatActivity() {
+    private lateinit var viewModel: InstallActivityViewModel
     private lateinit var downloadManager: DownloadManagerAdapter
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
@@ -44,14 +48,20 @@ class InstallActivity : AppCompatActivity() {
 
     // necessary for communication with State enums
     private lateinit var app: App
-    private var downloadId: Long = -1
     private var state = State.SUCCESS_PAUSE
     private var stateJob: Job? = null
-    private lateinit var updateCheckResult: UpdateCheckResult
     private lateinit var fileFingerprint: FingerprintResult
     private lateinit var appFingerprint: FingerprintResult
     private var freeSpaceForDownloading: Long = -1
     private lateinit var appInstallationFailedErrorMessage: String
+
+    // persistent data across orientation changes
+    class InstallActivityViewModel : ViewModel() {
+        var app: App? = null
+        var downloadId: Long? = null
+        var downloadFile: File? = null
+        var updateCheckResult: UpdateCheckResult? = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +87,19 @@ class InstallActivity : AppCompatActivity() {
         findViewById<View>(R.id.installConfirmationButton).setOnClickListener {
             restartStateMachine(State.USER_HAS_TRIGGERED_INSTALLATION_PROCESS)
         }
+
+        // make sure that the ViewModel is correct for the current app
+        viewModel = ViewModelProvider(this).get(InstallActivityViewModel::class.java)
+        if (viewModel.app != null) {
+            check(viewModel.app == app)
+        }
+        viewModel.app = app
+        // recover from an orientation change - is the download already running/finished?
+        if (viewModel.downloadId != null) {
+            restartStateMachine(State.DOWNLOAD_IS_ENQUEUED)
+            return
+        }
+
         restartStateMachine(State.START)
     }
 
@@ -188,7 +211,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.fetch_url_for_download,
                     ia.getString(app.detail.displayDownloadSource)))
             try {
-                ia.updateCheckResult = app.detail.updateCheck(ia, DeviceEnvironment())
+                ia.viewModel.updateCheckResult = app.detail.updateCheck(ia, DeviceEnvironment())
                 ia.hide(R.id.fetchUrl)
                 ia.show(R.id.fetchedUrlSuccess)
                 ia.setText(R.id.fetchedUrlSuccessTextView,
@@ -202,10 +225,14 @@ class InstallActivity : AppCompatActivity() {
 
         AVAILABLE_METADATA_IS_FETCHED(f@{ ia ->
             ia.show(R.id.downloadingFile)
-            val downloadUrl = ia.updateCheckResult.downloadUrl
+            val downloadUrl = ia.viewModel.updateCheckResult!!.downloadUrl
             ia.setText(R.id.downloadingFileUrl, downloadUrl.toString())
             val displayTitle = ia.getString(ia.app.detail.displayTitle)
-            ia.downloadId = ia.downloadManager.enqueue(ia, downloadUrl, displayTitle)
+
+            val fileReservation = ia.downloadManager.reserveFile(ia)
+            ia.viewModel.downloadFile = fileReservation.file
+            ia.viewModel.downloadId = ia.downloadManager.enqueue(ia, downloadUrl, displayTitle,
+                    fileReservation)
             return@f DOWNLOAD_IS_ENQUEUED
         }),
 
@@ -213,7 +240,7 @@ class InstallActivity : AppCompatActivity() {
             val sleepInterval = 250L
             val maxWaitingTime = Duration.ofMinutes(5).toMillis()
             for (i in 1..(maxWaitingTime / sleepInterval)) {
-                val r = ia.downloadManager.getStatusAndProgress(ia.downloadId)
+                val r = ia.downloadManager.getStatusAndProgress(ia.viewModel.downloadId!!)
                 ia.setText(R.id.downloadingFileText, r.toTranslatedText(ia))
                 ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = r.progress
                 when (r.status) {
@@ -228,12 +255,12 @@ class InstallActivity : AppCompatActivity() {
         DOWNLOAD_WAS_SUCCESSFUL(f@{ ia ->
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadedFile)
-            ia.setText(R.id.downloadedFileUrl, ia.updateCheckResult.downloadUrl.toString())
+            ia.setText(R.id.downloadedFileUrl,
+                    ia.viewModel.updateCheckResult!!.downloadUrl.toString())
             ia.show(R.id.verifyDownloadFingerprint)
 
-            val file = ia.downloadManager.getFileForDownloadedFile(ia.downloadId)
             val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
-                ia.fingerprintValidator.checkApkFile(file, ia.app)
+                ia.fingerprintValidator.checkApkFile(ia.viewModel.downloadFile!!, ia.app)
             }.await()
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
@@ -253,7 +280,8 @@ class InstallActivity : AppCompatActivity() {
 
         USER_HAS_TRIGGERED_INSTALLATION_PROCESS(f@{ ia ->
             ia.show(R.id.installingApplication)
-            ia.appInstaller.install(ia, ia.downloadManager, ia.downloadId, ia.deviceEnvironment)
+            ia.appInstaller.install(ia, ia.downloadManager, ia.viewModel.downloadId!!,
+                    ia.viewModel.downloadFile!!, ia.deviceEnvironment)
             return@f SUCCESS_PAUSE
         }),
 
@@ -261,7 +289,7 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerSuccess)
-            ia.downloadManager.remove(ia.downloadId)
+            ia.downloadManager.remove(ia.viewModel.downloadId!!)
             return@f APP_INSTALLATION_HAS_BEEN_REGISTERED
         }),
 
@@ -313,7 +341,8 @@ class InstallActivity : AppCompatActivity() {
         FAILURE_DOWNLOAD_UNSUCCESSFUL(f@{ ia ->
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadFileFailed)
-            ia.setText(R.id.downloadFileFailedUrl, ia.updateCheckResult.downloadUrl.toString())
+            ia.setText(R.id.downloadFileFailedUrl,
+                    ia.viewModel.updateCheckResult!!.downloadUrl.toString())
             ia.show(R.id.installerFailed)
             return@f ERROR_STOP
         }),
@@ -332,7 +361,7 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerFailed)
             ia.setText(R.id.installerFailedReason, ia.appInstallationFailedErrorMessage)
-            ia.downloadManager.remove(ia.downloadId)
+            ia.downloadManager.remove(ia.viewModel.downloadId!!)
             return@f ERROR_STOP
         }),
 

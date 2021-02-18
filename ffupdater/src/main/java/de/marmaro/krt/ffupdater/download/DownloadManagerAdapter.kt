@@ -5,18 +5,23 @@ import android.app.DownloadManager.*
 import android.content.Context
 import android.database.CursorIndexOutOfBoundsException
 import android.net.Uri
-import android.os.Environment
+import android.os.Environment.DIRECTORY_DOWNLOADS
 import de.marmaro.krt.ffupdater.R
 import java.io.File
 import java.net.URL
-import java.util.concurrent.ConcurrentHashMap
 import kotlin.random.Random
 
 /**
  * This class helps to use the `android.app.DownloadManager` more easily.
  */
 class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
-    private val files: MutableMap<Long, File> = ConcurrentHashMap()
+
+    fun reserveFile(context: Context): DownloadFileReservation {
+        val ms = System.currentTimeMillis()
+        val fileName = "download_${ms}_${Random.nextLong(0, Long.MAX_VALUE)}.apk"
+        val file = File(context.getExternalFilesDir(DIRECTORY_DOWNLOADS), fileName)
+        return DownloadFileReservation(fileName, file)
+    }
 
     /**
      * Enqueue a new download.
@@ -26,24 +31,22 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
      * @param notificationTitle      title for the download notification
      * @return new generated id for the download
      */
-    fun enqueue(context: Context, downloadUrl: URL, notificationTitle: String): Long {
+    fun enqueue(context: Context,
+                downloadUrl: URL,
+                notificationTitle: String,
+                reservedFile: DownloadFileReservation): Long {
         check(downloadUrl.protocol == "https")
-        val fileName = "download_${System.currentTimeMillis()}_${Random.nextLong(0, Long.MAX_VALUE)}.apk"
-        val request = DownloadManager.Request(Uri.parse(downloadUrl.toString()))
+        val request = Request(Uri.parse(downloadUrl.toString()))
                 .setTitle(notificationTitle)
-                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
-                .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
-        val id = downloadManager.enqueue(request)
-        val downloadDir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-        files[id] = File(downloadDir, fileName)
-        return id
+                .setNotificationVisibility(Request.VISIBILITY_VISIBLE)
+                .setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, reservedFile.name)
+        return downloadManager.enqueue(request)
     }
 
     /**
      * Delete the download files by their ids
      */
     fun remove(id: Long) {
-        files.remove(id)
         downloadManager.remove(id)
     }
 
@@ -92,27 +95,18 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
         return downloadManager.getUriForDownloadedFile(id)
     }
 
-    /**
-     * Return the downloaded file.
-     * The file is no longer available, when the download id was removed.
-     *
-     * @param id id
-     * @return downloaded file
-     */
-    fun getFileForDownloadedFile(id: Long): File {
-        return files[id]!!
-    }
-
     class StatusProgress(val status: Int, val progress: Int) {
         fun toTranslatedText(context: Context): String {
             return context.getString(R.string.download_application_from_with_status, when (status) {
-                DownloadManager.STATUS_RUNNING -> "running"
-                DownloadManager.STATUS_SUCCESSFUL -> "success"
-                DownloadManager.STATUS_FAILED -> "failed"
-                DownloadManager.STATUS_PAUSED -> "paused"
-                DownloadManager.STATUS_PENDING -> "pending"
+                STATUS_RUNNING -> "running"
+                STATUS_SUCCESSFUL -> "success"
+                STATUS_FAILED -> "failed"
+                STATUS_PAUSED -> "paused"
+                STATUS_PENDING -> "pending"
                 else -> "? ($status)"
             })
         }
     }
+
+    data class DownloadFileReservation(val name: String, val file: File)
 }

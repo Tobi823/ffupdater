@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
+import java.io.File
 
 interface AppInstaller {
     fun onNewIntentCallback(intent: Intent, context: Context)
@@ -13,6 +14,7 @@ interface AppInstaller {
             activity: Activity,
             downloadManagerAdapter: DownloadManagerAdapter,
             downloadId: Long,
+            downloadedFile: File,
             deviceEnvironment: DeviceEnvironment,
     )
 
