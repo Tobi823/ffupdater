@@ -45,6 +45,7 @@
     <string name="firefox_nightly_warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
     <string name="firefox_release_description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за тобой каждый день, собирая информацию о твоей жизни в Интернете и замедляя скорость твоей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если вы захотите настроить свой браузер под себя. С Firefox вы получите безопасность, которую заслуживаете, а также высокую скорость работы, — и всё это в конфиденциальном мобильном браузере.</string>
     <string name="firefox_release_title">Firefox</string>
+    <string name="go_back">возвращаться</string>
     <string name="iceraven_description">Определенно не принесла вам Mozilla! \n\nIceraven Browser - это веб-браузер для Android, основанный на версиях Firefox, GeckoView и Mozilla Android Components от компании Mozilla Fenix. \n\nНашей целью является быть близкой вилкой нового Firefox для Android, который стремится предоставить пользователям больше возможностей, больше возможностей для настройки (включая широкую библиотеку расширений), и больше информации о страницах, которые они посещают, и как их браузеры взаимодействуют с этими страницами.</string>
     <string name="iceraven_title">Ицеравен Браузер</string>
     <string name="infobox">
@@ -56,6 +57,7 @@
     </string>
     <string name="information_about_the_app">информация о приложении</string>
     <string name="install_activity_label">Установить приложение</string>
+    <string name="install_app">установочное приложение</string>
     <string name="install_application">Установить приложение</string>
     <string name="install_new_app">Установить новое приложение</string>
     <string name="installation_warning_negative_button">Нет, не устанавливать</string>

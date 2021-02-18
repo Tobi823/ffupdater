@@ -47,6 +47,7 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="firefox_nightly_warning">Este aplicativo é destinado para desenvolvedores e testadores. Ele pode conter vários bugs que podem afetar seu trabalho habitual com o navegador. Você quer instalá-lo?</string>
     <string name="firefox_release_description">O navegador Firefox para Android é desenvolvido para ser privado e incrivelmente rápido. Milhares de rastreadores on-line estão seguindo você todos os dias, coletando informações sobre onde você vai on-line e diminuindo sua velocidade. O Firefox bloqueia mais de 2000 destes rastreadores por padrão e há complementos de bloqueadores de anúncios disponíveis se você quiser personalizar ainda mais o seu navegador. Com o Firefox, você terá a segurança que merece e a velocidade que precisa num navegador privado e móvel.</string>
     <string name="firefox_release_title">Firefox Browser</string>
+    <string name="go_back">voltar</string>
     <string name="iceraven_description">Definitivamente não trazido até você pela Mozilla! \n\nIceraven Browser é um navegador web para Android, baseado na versão Fenix da Mozilla do Firefox, GeckoView e Mozilla Android Components. \n\nNosso objetivo é ser um garfo próximo do novo Firefox para Android que procura oferecer aos usuários mais opções, mais oportunidades de customização (incluindo uma ampla biblioteca de extensão), e mais informações sobre as páginas que eles visitam e como seus navegadores estão interagindo com essas páginas.</string>
     <string name="iceraven_title">Navegador Iceraven</string>
     <string name="infobox">
@@ -57,6 +58,7 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
         Fiz meu melhor para garantir segurança de processo de instalação/atualização - sinta-se à vontade para checá-lo ou melhorá-lo criando um pedido PULL.</string>
     <string name="information_about_the_app">informações sobre o aplicativo</string>
     <string name="install_activity_label">Instalar Aplicativo</string>
+    <string name="install_app">instalar aplicativo</string>
     <string name="install_application">Instalar Aplicativo</string>
     <string name="install_new_app">Instalar novo aplicativo</string>
     <string name="installation_warning_negative_button">Não Instalar Aplicativo</string>

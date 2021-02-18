@@ -16,7 +16,7 @@ class UnsupportedAbiDialog : DialogFragment() {
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.unsupported_abi_dialog_title)
                 .setMessage(R.string.unsupported_abi_dialog_message)
-                .setNegativeButton(R.string.ok) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
+                .setNegativeButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .create()
     }
 

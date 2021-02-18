@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         for (app in App.values()) {
             getInfoButtonForApp(app).setOnClickListener {
-                AppInfoDialog(app.detail).show(supportFragmentManager)
+                AppInfoDialog(app).show(supportFragmentManager)
             }
             getDownloadButtonForApp(app).setOnClickListener {
                 downloadApp(app)

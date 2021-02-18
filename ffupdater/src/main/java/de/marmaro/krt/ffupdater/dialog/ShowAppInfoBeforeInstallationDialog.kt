@@ -12,19 +12,31 @@ import de.marmaro.krt.ffupdater.app.App
 /**
  * Show a dialog with the app description.
  */
-class AppInfoDialog(private val app: App) : DialogFragment() {
+class ShowAppInfoBeforeInstallationDialog(
+        private val app: App,
+        private val installCallback: (App) -> Unit,
+) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
                 .setTitle(getString(app.detail.displayTitle))
                 .setMessage(getString(app.detail.displayDescription))
-                .setPositiveButton(getString(R.string.ok))
+                .setPositiveButton(getString(R.string.install_app))
                 { dialog: DialogInterface, _: Int ->
+                    dialog.dismiss()
+                    if (app.detail.displayWarning != null) {
+                        ShowWarningBeforeInstallation(app, installCallback)
+                                .show(parentFragmentManager)
+                    } else {
+                        installCallback.invoke(app)
+                    }
+                }
+                .setNegativeButton(getString(R.string.go_back)) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
                 }
                 .create()
     }
 
     fun show(manager: FragmentManager) {
-        show(manager, "app_info_dialog")
+        show(manager, "show_app_info_before_installation_dialog")
     }
 }
