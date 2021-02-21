@@ -1,3 +1,7 @@
+# 2021-02-21 Version 71.0.2 (58)
+ * Fix double download (thanks Redpillbug)
+ * Fix crash when rotating in the settings view (thanks DeenHyper74)
+
 # 2021-02-18 Version 71.0.1 (57)
  * Improve error message when the background update check failed (thanks duck-rh)
 

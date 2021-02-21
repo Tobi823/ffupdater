@@ -1,0 +1,2 @@
+ * Fix double download (thanks Redpillbug)
+ * Fix crash when rotating in the settings view (thanks DeenHyper74)
