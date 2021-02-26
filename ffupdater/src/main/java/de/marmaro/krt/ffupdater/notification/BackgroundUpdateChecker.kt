@@ -19,7 +19,7 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         return try {
             doBackgroundCheck()
             Result.success()
-        } catch (e: ApiConsumer.ApiConsumerRetryIOException) {
+        } catch (e: BackgroundNetworkException) {
             val message = applicationContext.getString(R.string.background_network_issue_notification_text)
             ErrorNotificationBuilder.showNotification(applicationContext, e, message)
             Result.failure()
@@ -40,8 +40,10 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         val appsWithUpdates = appsForChecking.filter {
             try {
                 it.detail.updateCheck(context, deviceEnvironment).isUpdateAvailable
+            } catch (e: ApiConsumer.ApiConsumerRetryIOException) {
+                throw BackgroundNetworkException("fail to check $it due to network error", e)
             } catch (e: Exception) {
-                throw BackgroundUpdateCheckFailedException("fail to check $it", e)
+                throw BackgroundUnknownException("fail to check $it due to unknown bug", e)
             }
         }
         UpdateNotificationBuilder.showNotifications(appsWithUpdates, context)
@@ -77,6 +79,9 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         }
     }
 
-    class BackgroundUpdateCheckFailedException(message: String, throwable: Throwable) :
+    class BackgroundNetworkException(message: String, throwable: Throwable) :
+            Exception(message, throwable)
+
+    class BackgroundUnknownException(message: String, throwable: Throwable) :
             Exception(message, throwable)
 }
