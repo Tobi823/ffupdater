@@ -1,3 +1,6 @@
+# 2021-02-?? Version 71.0.3 (59)
+ * Fix crash when installing app on Android 8 (thanks bershanskiy)
+
 # 2021-02-21 Version 71.0.2 (58)
  * Fix double download (thanks Redpillbug)
  * Fix crash when rotating in the settings view (thanks DeenHyper74)

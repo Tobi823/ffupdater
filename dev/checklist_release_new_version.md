@@ -23,6 +23,6 @@ git pushall
 
 # push tag to git
 ````bash
-TAG="71.0.0" && git tag "$TAG" && git pushall && git push origin "$TAG" && git push github "$TAG" && git push gitlab "$TAG"
+TAG="XXXXXX" && git tag "$TAG" && git pushall && git push origin "$TAG" && git push github "$TAG" && git push gitlab "$TAG"
 ````
 
