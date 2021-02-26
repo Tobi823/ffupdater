@@ -8,6 +8,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
+import kotlinx.coroutines.CancellationException
 import java.util.concurrent.TimeUnit.MINUTES
 
 /**
@@ -42,6 +43,8 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
                 it.detail.updateCheck(context, deviceEnvironment).isUpdateAvailable
             } catch (e: ApiConsumer.ApiConsumerRetryIOException) {
                 throw BackgroundNetworkException("fail to check $it due to network error", e)
+            } catch (e: CancellationException) {
+                throw BackgroundNetworkException("fail to check $it due to cancelled job", e)
             } catch (e: Exception) {
                 throw BackgroundUnknownException("fail to check $it due to unknown bug", e)
             }
