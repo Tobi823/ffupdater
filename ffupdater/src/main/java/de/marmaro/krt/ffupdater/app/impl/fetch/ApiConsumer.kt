@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch
 
+import android.net.TrafficStats
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
 import java.io.BufferedReader
@@ -45,6 +46,7 @@ class ApiConsumer {
     }
 
     private fun consume(url: URL, consumer: (BufferedReader) -> Any) {
+        TrafficStats.setThreadStatsTag(THREAD_ID)
         val connection = url.openConnection() as HttpsURLConnection
         connection.setRequestProperty("Accept-Encoding", GZIP)
         connection.connectTimeout = 10_000 // 10 seconds
@@ -57,6 +59,7 @@ class ApiConsumer {
 
     companion object {
         private const val GZIP = "gzip"
+        private const val THREAD_ID = 10000
     }
 
     class ApiConsumerRetryIOException(message: String, throwable: Throwable) : Exception(message, throwable)
