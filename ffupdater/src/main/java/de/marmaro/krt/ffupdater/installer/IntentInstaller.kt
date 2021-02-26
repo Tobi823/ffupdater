@@ -44,6 +44,10 @@ class IntentInstaller(
         }
     }
 
+    /**
+     * See org.fdroid.fdroid.installer.DefaultInstallerActivity.java from
+     * https://github.com/f-droid/fdroidclient
+     */
     private fun installInternal(
             activity: Activity,
             downloadManagerAdapter: DownloadManagerAdapter,
@@ -53,11 +57,11 @@ class IntentInstaller(
     ) {
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
         if (deviceEnvironment.supportsAndroidNougat()) {
-            intent.data = Uri.fromFile(downloadedFile)
-        } else {
             intent.data = downloadManagerAdapter.getUriForDownloadedFile(downloadId)
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             intent.putExtra(DownloadManager.EXTRA_DOWNLOAD_ID, downloadId)
+        } else {
+            intent.data = Uri.fromFile(downloadedFile)
         }
         intent.putExtra(Intent.EXTRA_RETURN_RESULT, true)
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
