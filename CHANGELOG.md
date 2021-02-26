@@ -1,6 +1,7 @@
 # 2021-02-?? Version 71.0.3 (59)
  * Fix crash when installing app on Android 8 (thanks bershanskiy)
  * Show the correct notification if the background check failed due to a network exception (thanks Average_User and Diridibindy)
+ * If it's likely that the user has enabled 'MIUI Optimization', instruct him to disable it (thanks Rafa ML)
 
 # 2021-02-21 Version 71.0.2 (58)
  * Fix double download (thanks Redpillbug)

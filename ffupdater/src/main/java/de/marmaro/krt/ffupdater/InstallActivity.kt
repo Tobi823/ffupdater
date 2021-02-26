@@ -360,7 +360,12 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerFailed)
-            ia.setText(R.id.installerFailedReason, ia.appInstallationFailedErrorMessage)
+            var error = ia.appInstallationFailedErrorMessage
+            if (error.contains("INSTALL_FAILED_INTERNAL_ERROR") &&
+                    error.contains("Permission Denied")) {
+                error += "\n\nIf you are using Xiaomi or MIUI, try disabling 'MIUI Optimization'."
+            }
+            ia.setText(R.id.installerFailedReason, error)
             ia.downloadManager.remove(ia.viewModel.downloadId!!)
             return@f ERROR_STOP
         }),
