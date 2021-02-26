@@ -74,6 +74,10 @@ android {
             }
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 repositories {
     mavenCentral()
