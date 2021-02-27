@@ -1,103 +1,105 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="action_about_title">Sobre FFUpdater</string>
     <string name="action_settings_title">Configurações</string>
     <string name="app_icon">ícone do app</string>
     <string name="app_name">FFUpdater</string>
-    <string name="application_installation_was_not_successful">A instalação do aplicativo falhou</string>
-    <string name="application_successfully_installed">O aplicativo instalado com êxito</string>
+    <string name="application_installation_was_not_successful">Instalação do App falhou</string>
+    <string name="application_successfully_installed">Aplicativo instalado com sucesso</string>
     <string name="available_version">Disponível: %1$s</string>
-    <string name="available_version_error">ERROR</string>
+    <string name="available_version_error">ERRO</string>
     <string name="available_version_loading">Carregando…</string>
-    <string name="background_error_notification_title">Falha na verificação de atualização de antecedentes</string>
-    <string name="background_network_issue_notification_text">É provável que a verificação de antecedentes tenha falhado devido a um problema temporário de conectividade de rede. Mas se este erro ocorrer mais de uma vez por semana, por favor, relate-o. Clique para ver o log de erros.</string>
-    <string name="background_unknown_bug_notification_text">Devido a um bug desconhecido, a verificação de antecedentes falhou. Favor reportar este erro. Clique para visualizar o log de erros.</string>
-    <string name="brave_description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers! \n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé!</string>
-    <string name="brave_title">Navigateur internet privé Brave</string>
-    <string name="brave_warning">A Brave usa a base técnica do Google Chrome (Cromo) - algumas pessoas não gostam disso. Você quer instalar o Brave?</string>
-    <string name="but_was">Mais era:</string>
-    <string name="device_too_old_dialog_message"> O aplicativo requer o Android %1$s. Mas seu dispositivo está rodando apenas o Android %2$s. Escolha um aplicativo diferente, atualize seu sistema operacional ou mude para um smartphone mais novo.</string>
+    <string name="background_error_notification_title">Não foi possível realizar a verificação de atualização em segundo plano</string>
+    <string name="background_network_issue_notification_text">É provável que a verificação em segundo plano falhou devido a um problema de conectividade de rede. Se este problema ocorrer mais de uma vez por semana, por favor, notifique-nos sobre isso. Clique para ver os logs de erros.</string>
+    <string name="background_unknown_bug_notification_text">Devido a um erro desconhecido, a verificação em segundo plano falhou. Favor, notifique-nos sobre isso. Clique para ver os logs de erros.</string>
+    <string name="brave_description">Navegue gratuitamente e de forma privada! O App Brave Navegador Privado é rápido, gratuito e seguro, com bloqueador de anúncios e bloqueador de pop-ups. Navegue e pesquise na internet sem ser rastreado por anunciantes, sem malware e pop-ups.</string>
+    <string name="brave_title">Brave Navegador Privado</string>
+    <string name="brave_warning">Brave utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Você quer instalar o Brave?</string>
+    <string name="but_was">Mas era:</string>
+    <string name="default_theme_preference" translatable="false">3</string>
+    <string name="device_too_old_dialog_message">O App requer Android %1$s. Mas seu dispositivo só tem Android %2$s. Escolha um aplicativo diferente, atualize seu sistema operacional ou use um smartphone mais novo.</string>
     <string name="device_too_old_dialog_title">O dispositivo é muito antigo</string>
-    <string name="download_app_is_disabled">O aplicativo de download do sistema está desativado. O FFUpdater precisa deste aplicativo para fazer o download. Ative-o, por favor.</string>
-    <string name="download_application_from_with_status">Baixe o aplicativo (%1$s)</string>
-    <string name="download_failed">O download falhou</string>
-    <string name="download_the_app">Baixe o aplicativo</string>
-    <string name="downloaded_application_from">Baixe o aplicativos de:</string>
-    <string name="downloaded_application_is_not_verified">O aplicativo baixado NÃO é verificado</string>
-    <string name="downloaded_application_is_verified">O aplicativo baixado É verificado</string>
-    <string name="error_notification_channel_description">Mostrar erros do verificador de atualização de antecedentes</string>
-    <string name="error_notification_channel_name">Erros de fundo</string>
-    <string name="expected_sha_256_certificate_fingerprint">Esperada impressão digital do certificado SHA-256:</string>
-    <string name="external_storage_not_accessible">O armazenamento externo não está disponível - não é possível iniciar o download. O status atual é:</string>
-    <string name="fetch_url_for_download">Baixar url de %1$s</string>
-    <string name="fetched_url_for_download_successfully">Obtido a url de download do %1$s</string>
-    <string name="firefox_beta_description">O navegador Firefox para Android é desenvolvido para ser privado e incrivelmente rápido. Milhares de rastreadores on-line estão seguindo você todos os dias, coletando informações sobre onde você vai on-line e diminuindo sua velocidade.
-O Firefox bloqueia mais de 2000 destes rastreadores por padrão e há complementos de bloqueadores de anúncios disponíveis se você quiser personalizar ainda mais o seu navegador. Com o Firefox, você terá a segurança que merece e a velocidade que precisa num navegador privado e móvel.</string>
+    <string name="download_app_is_disabled">O aplicativo de download do sistema está desativado. FFUpdater precisa deste aplicativo para baixar. Por favor, ative-o.</string>
+    <string name="download_application_from_with_status">Baixar o (%1$s) app</string>
+    <string name="download_failed">Download falhou</string>
+    <string name="download_the_app">baixar o app</string>
+    <string name="downloaded_application_from">App baixado de:</string>
+    <string name="downloaded_application_is_not_verified">App baixado NÃO foi verificado</string>
+    <string name="downloaded_application_is_verified">App baixado é verificado</string>
+    <string name="error_notification_channel_description">Mostrar erros ao verificar por atualizações em segundo plano</string>
+    <string name="error_notification_channel_name">Erros em segundo plano</string>
+    - <string name="expected_sha_256_certificate_fingerprint">Certificado previsto de impressão digital SHA-256:</string>
+    <string name="external_storage_not_accessible">Armazenamento externo não está disponível - não é possível baixar. O status atual é:</string>
+    <string name="fetch_url_for_download">Buscar URL de download em %1$s</string>
+    <string name="fetched_url_for_download_successfully">URL para download obtido de %1$s</string>
+    <string name="firefox_beta_description">O navegador Firefox para Android é seguro e incrivelmente rápido. Milhares de rastreadores on-line estão acompanhando você todos os dias, coletando informações sobre onde você vai on-line e diminuindo sua velocidade. Firefox bloqueia mais de 2000 destes rastreadores por padrão e tem extensões de bloqueadores de anúncios disponíveis, caso você precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa num navegador privado e móvel.</string>
     <string name="firefox_beta_title">Firefox Beta para Android</string>
-    <string name="firefox_beta_warning"> Este aplicativo é destinado para desenvolvedores e testadores. Ele pode conter vários bugs que podem afetar seu trabalho habitual com o navegador. Você quer instalá-lo?</string>
-    <string name="firefox_focus_description">
-Esta é uma modificação do navegador Firefox com o objetivo de aumentar a privacidade.</string>
+    <string name="firefox_beta_warning">Este App foi projetado para desenvolvedores e testadores. Ele pode conter vários bugs que podem afetar seu trabalho habitual com o navegador. Você quer instalá-lo?</string>
+    <string name="firefox_focus_description">Esta é uma modificação do Navegador Firefox com o objetivo de aumentar sua privacidade.</string>
     <string name="firefox_focus_title">Firefox Focus</string>
-    <string name="firefox_klar_description">Esta é uma modificação do navegador Firefox com o objetivo de aumentar a privacidade. \n\nFirefox Klar é desenvolvido em Alemanha, Suíça e Áustria e é quase idêntico ao Firefox Focus. Somente o nome foi mudado para evitar confusão com a revista de notícias \'Focus\' de \'Hubert Burda Media\' grupo de mídia.</string>
+    <string name="firefox_klar_description">Esta é uma modificação do Navegador Firefox com o objetivo de aumentar sua privacidade. \n\nFirefox Klar foi desenvolvido para a Alemanha, Suíça e Áustria e é quase idêntico ao Firefox Focus. Apenas o nome foi alterado para evitar confusão com a revista de notícias \'Focus\' do \'Hubert Burda Media\'.</string>
     <string name="firefox_klar_title">Firefox Klar</string>
-    <string name="firefox_lite_description">Firefox Lite é desenvolvido principalmente para usuários na Indonésia. O aplicativo é muito pequeno e inclua técnicas para reduzir o consumo de dados (móvel).</string>
+    <string name="firefox_lite_description">Firefox Lite é desenvolvido principalmente para usuários na Indonésia. O aplicativo é muito pequeno e implementa técnicas para reduzir o consumo de dados (móvel).</string>
     <string name="firefox_lite_title">Firefox Lite</string>
-    <string name="firefox_nightly_description">Por favor, note que este aplicativo costumava ser chamado Firefox Preview. Seu nome foi alterado para Firefox Nightly. \n\nFirefox Nightly é um canal de desenvolvimento para novos lançamentos de Mozilla Firefox. \n\nFirefox Nightly é projetado para mostrar as funções mais experimentais de Firefox. The Nightly canal permite aos usuários experimentar as mais novas inovações do Firefox num ambiente instável e fornecer feedback sobre as funções e desempenho para ajudar a determinar o que vai no lançamento final.</string>
+    <string name="firefox_nightly_description">Por favor, note que este aplicativo costumava ser chamado Firefox Preview. Foi renomado para Firefox Nightly. \n\nFirefox Nightly é um canal de desenvolvimento para novas versões da Mozilla Firefox. \n\nFirefox Nightly é projetado para mostrar as versões mais experimentais do Firefox. O canal Nightly permite aos usuários testar as mais novas inovações do Firefox num ambiente instável e fornecer um feedback sobre as funcionalidades e desempenho para ajudar a determinar o que vai ser incluído na versão final.</string>
     <string name="firefox_nightly_title">Firefox Nightly</string>
-    <string name="firefox_nightly_warning">Este aplicativo é destinado para desenvolvedores e testadores. Ele pode conter vários bugs que podem afetar seu trabalho habitual com o navegador. Você quer instalá-lo?</string>
-    <string name="firefox_release_description">O navegador Firefox para Android é desenvolvido para ser privado e incrivelmente rápido. Milhares de rastreadores on-line estão seguindo você todos os dias, coletando informações sobre onde você vai on-line e diminuindo sua velocidade. O Firefox bloqueia mais de 2000 destes rastreadores por padrão e há complementos de bloqueadores de anúncios disponíveis se você quiser personalizar ainda mais o seu navegador. Com o Firefox, você terá a segurança que merece e a velocidade que precisa num navegador privado e móvel.</string>
-    <string name="firefox_release_title">Firefox Browser</string>
-    <string name="go_back">voltar</string>
-    <string name="iceraven_description">Definitivamente não trazido até você pela Mozilla! \n\nIceraven Browser é um navegador web para Android, baseado na versão Fenix da Mozilla do Firefox, GeckoView e Mozilla Android Components. \n\nNosso objetivo é ser um garfo próximo do novo Firefox para Android que procura oferecer aos usuários mais opções, mais oportunidades de customização (incluindo uma ampla biblioteca de extensão), e mais informações sobre as páginas que eles visitam e como seus navegadores estão interagindo com essas páginas.</string>
+    <string name="firefox_nightly_warning">Este App foi projetado para desenvolvedores e testadores. Ele pode conter vários bugs que podem afetar seu trabalho habitual com o navegador. Você quer instalá-lo?</string>
+    <string name="firefox_release_description">O navegador Firefox para Android é seguro e incrivelmente rápido. Milhares de rastreadores on-line estão acompanhando você todos os dias, coletando informações sobre onde você vai on-line e diminuindo sua velocidade. Firefox bloqueia mais de 2000 destes rastreadores por padrão e tem extensões de bloqueadores de anúncios disponíveis, caso você precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa num navegador privado e móvel.</string>
+    <string name="firefox_release_title">Navegador Firefox</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="go_back">Voltar</string>
+    <string name="iceraven_description">Definitivamente não criado por Mozilla! \n\nNavegador Iceraven é um navegador para Android, baseado em versão Fenix da Mozilla, GeckoView e Componentes da Mozilla para Android. \n\nNosso objetivo é ser um Fork bem próximo ao novo Firefox para Android que intenta oferecer aos usuários mais opções, mais possibilidades de customização (incluindo uma ampla biblioteca de extensões) e mais informações sobre as páginas visitadas e como o navegador está interagindo com elas.</string>
     <string name="iceraven_title">Navegador Iceraven</string>
     <string name="infobox">
-        Este é um atualizador para vários navegadores da Mozilla.
-        Clique no botão "mais" para instalação e no botão "baixar" para atualização.
-        Você pode verificar a existência de novas atualizações ao baixar o navegador ou reabrir o aplicativo.
-        Por padrão, o aplicativo verificará regularmente se há atualizações em segundo plano.
-        Fiz meu melhor para garantir segurança de processo de instalação/atualização - sinta-se à vontade para checá-lo ou melhorá-lo criando um pedido PULL.</string>
-    <string name="information_about_the_app">informações sobre o aplicativo</string>
+        Este é um App que atualiza vários navegadores da Mozilla.
+        Clique no botão "mais" para instalar e no botão com "seta-para-baixo" para atualizar.
+        Você pode verificar se há novas atualizações, deslizando para baixo ou reabrindo o aplicativo.
+        Por padrão, o aplicativo verificará regularmente em segundo plano se há atualizações.
+        Fiz o melhor para garantir a segurança do processo de instalação/atualização - sinta-se a vontade para verificá-lo ou melhorá-lo, criando um pedido de Pull-Request.
+    </string>
+    <string name="information_about_the_app">informações sobre o app</string>
     <string name="install_activity_label">Instalar Aplicativo</string>
-    <string name="install_app">instalar aplicativo</string>
+    <string name="install_app">Instalar App</string>
     <string name="install_application">Instalar Aplicativo</string>
-    <string name="install_new_app">Instalar novo aplicativo</string>
-    <string name="installation_warning_negative_button">Não Instalar Aplicativo</string>
+    <string name="install_new_app">Instalar novo App</string>
+    <string name="installation_warning_negative_button">Não quero instalar</string>
     <string name="installation_warning_positive_button">Sim</string>
-    <string name="installation_warning_title">Atenção</string>
-    <string name="installed_app_is_not_verified">O aplicativo instalado NÃO é verificado</string>
-    <string name="installed_application_is_verified">O aplicativo instalado É verificado</string>
+    <string name="installation_warning_title">Aviso</string>
+    <string name="installed_app_is_not_verified">O App instalado NÃO foi verificado</string>
+    <string name="installed_application_is_verified">O aplicativo instalado é verificado</string>
     <string name="installed_version">Instalado: %1$s</string>
-    <string name="invalid_downloaded_certificate_fingerprint_explanation">Ou um invasor substituiu o download correto por um adulterado ou o verificador de certificados não funciona mais. Você pode verificar novamente a impressão digital do certificado em apkmirror.com ou pode criar um ISSUE em https://notabug.org/Tobiwan/ffupdater para me informar sobre o bug.</string>
-    <string name="invalid_installed_certificate_fingerprint_explanation">Ou uma aplicação adulterada foi instalada no seu dispositivo ou o verificador de certificados não funciona mais. Você pode verificar novamente a impressão digital do certificado em apkmirror.com ou pode criar um ISSUE em https://notabug.org/Tobiwan/ffupdater para me informar sobre o bug. \n\n recomendamos que você desinstale o aplicativo.</string>
-    <string name="lockwise_description">ACESSO POR SENHA, &amp; SÓ VOCÊ \n\nRastreie com segurança suas senhas Firefox &amp; acessá-los em qualquer lugar. Abra rapidamente qualquer site do aplicativo para entrar em suas contas</string>
+    <string name="invalid_downloaded_certificate_fingerprint_explanation">Ou um hacker substituiu o arquivo correto por um adulterado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado em apkmirror.com ou pode criar um Issue em https://notabug.org/Tobiwan/ffupdater para me notificar sobre o bug.</string>
+    <string name="invalid_installed_certificate_fingerprint_explanation">Ou um App alterado foi instalado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado em apkmirror.com ou você pode criar um Issue em https://notabug.org/Tobiwan/ffupdater para me notificar sobre o bug. \n\nRecomendo desinstalar o aplicativo.</string>
+    <string name="lockwise_description">ACESSO COM SENHA PARA VOCÊ, &amp; SOMENTE VOCÊ \n\nRastreie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site no aplicativo para entrar em suas contas</string>
     <string name="lockwise_title">Firefox Lockwise</string>
-    <string name="main_activity_subtitle">Atualize seus navegadores de Mozilla</string>
-    <string name="msg_crasher_crashed">Infelizmente, o %1$s se despenhou. Você pode relatar este erro:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nPor favor, crie um novo problema com o stacktrace e uma descrição de como reproduzir o bug.</string>
-    <string name="not_connected_to_internet">Sem conexão de Internet</string>
+    <string name="main_activity_subtitle">Atualizar seus navegadores da Mozilla</string>
+    <string name="mozilla_ci" translatable="false">Mozilla CI</string>
+    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Infelizmente, %1$s falhou. Você pode submeter este erro em:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nPor favor, crie um novo Issue com o Stacktrace e escreva uma descrição de como reproduzir o bug.</string>
+    <string name="not_connected_to_internet">Sem conexão de rede</string>
     <string name="ok">OK</string>
     <string name="settings_activity_label">Configurações</string>
-    <string name="settings_automatic_check_title">Automático no fundo</string>
-    <string name="settings_category_appearance_title">Aspecto visual</string>
-    <string name="settings_check_interval_summary">Com que freqüência o aplicativo deve verificar atualizações?</string>
+    <string name="settings_automatic_check_title">Automático em segundo plano</string>
+    <string name="settings_category_appearance_title">Aparência</string>
+    <string name="settings_check_interval_summary">Com que freqüência o App deve verificar por atualizações?</string>
     <string name="settings_check_interval_title">Intervalo de verificação</string>
-    <string name="settings_disabled_apps_summary">Somente os aplicativos instalados serão verificados automaticamente para atualizações. Você pode remover os aplicativos instalados da verificação automática de atualizações selecionando-os aqui.</string>
-    <string name="settings_disabled_apps_title">Aplicativos  excluídos</string>
-    <string name="settings_title">Verificar atualizações</string>
+    <string name="settings_disabled_apps_summary">Somente os Apps instalados terão verificação automática por atualizações. Você pode excluir os Apps instalados da verificação automática, selecionando-os aqui.</string>
+    <string name="settings_disabled_apps_title">Apps excluídos</string>
+    <string name="settings_title">Verificar por atualização do App</string>
     <string name="sha_256_certificate_fingerprint">Certificado de impressão digital SHA-256:</string>
-    <string name="theme_battery_saver">Oscuro quando a Economia da Bateria está ativo</string>
-    <string name="theme_dark">Oscuro</string>
+    <string name="theme_battery_saver">Escuro quando Economia da Bateria está ativa</string>
+    <string name="theme_dark">Escuro</string>
     <string name="theme_light">Claro</string>
-    <string name="theme_preference_summary">Escolha entre o tema claro e o escuro</string>
-    <string name="theme_preference_title">Selecione tema</string>
-    <string name="theme_system_default">Usar padrão do sistema</string>
-    <string name="title_crasher_copy">Cópia</string>
-    <string name="title_crasher_crashed">%1$s Crashed</string>
-    <string name="title_crasher_share">Compartilhe</string>
-    <string name="title_crasher_stack_trace">Ver Stack Trace</string>
-    <string name="too_low_memory_description">No seu dispositivo está apenas %1$d MB de espaço disponível. Isto pode levar a erro de download ou na instalação</string>
-    <string name="too_low_memory_title">Pouco espaço na memória</string>
-    <string name="unknown_signature_of_installed_app_text1">"É necessário desinstalar o aplicativo existente antes que o FFUpdater possa instalar ou atualizar o aplicativo. Faça backup de seus dados porque a desinstalação irá apagar todos os seus marcadores, configurações, etc. "</string>
-    <string name="unknown_signature_of_installed_app_text2">Motivo: O aplicativo instalado atualmente não é assinado pelo desenvolvedor original - talvez seja assinado pelo F-Droid. O Android se recusa a atualizar um aplicativo se pessoas diferentes assinaram a versão instalada e a versão atualizada.</string>
-    <string name="unsupported_abi_dialog_message">O navegador selecionado é incompatível com o processador do seu aparelho. Por favor, selecione um navegador diferente.</string>
+    <string name="theme_preference_summary">Escolha entre o tema Claro e Escuro</string>
+    <string name="theme_preference_title">Escolha tema</string>
+    <string name="theme_system_default">Usar o padrão do sistema</string>
+    <string name="title_crasher_copy" tools:keep="@string/title_crasher_copy">Copiar</string>
+    <string name="title_crasher_crashed" tools:keep="@string/title_crasher_crashed">%1$s Falhou</string>
+    <string name="title_crasher_share" tools:keep="@string/title_crasher_share">Compartilhar</string>
+    <string name="title_crasher_stack_trace" tools:keep="@string/title_crasher_stack_trace">Ver Stack Trace</string>
+    <string name="too_low_memory_description">Seu dispositivo está apenas com %1$d MB do espaço disponível. Isto pode causar uma falha no download ou na instalação.</string>
+    <string name="too_low_memory_title">Pouco Espaço no Armazenamento</string>
+    <string name="unknown_signature_of_installed_app_text1">Você tem que desinstalar o App existente antes de que o FFUpdater pode instalar ou atualizar o App. Faça um backup dos seus dados porque a desinstalação excluirá todos os seus favoritos, configurações, etc.</string>
+    <string name="unknown_signature_of_installed_app_text2">Motivo: O aplicativo instalado não é assinado pelo desenvolvedor original - talvez tenha sido assinado por F-Droid. Android não permite atualizar um aplicativo quando diferentes pessoas assinaram a versão instalada e a versão atualizada.</string>
+    <string name="unsupported_abi_dialog_message">O navegador selecionado é incompatível com o processador do seu smartphone. Por favor, selecione um navegador diferente.</string>
     <string name="unsupported_abi_dialog_title">Dispositivo sem suporte</string>
     <string name="update_interval_12h">12 horas</string>
     <string name="update_interval_15min">15 minutos</string>
@@ -117,10 +119,10 @@ Esta é uma modificação do navegador Firefox com o objetivo de aumentar a priv
     <string name="update_interval_6d">6 dias</string>
     <string name="update_interval_6h">6 horas</string>
     <string name="update_interval_8h">8 horas</string>
-    <string name="update_notification_channel_description">Canal de notificação para atualizações disponíveis do %1$s.</string>
-    <string name="update_notification_channel_name">"Notificação de atualização do %1$s "</string>
+    <string name="update_notification_channel_description">Canal de notificação disponível para %1$s atualizações.</string>
+    <string name="update_notification_channel_name">"%1$s" notificação de atualização</string>
     <string name="update_notification_text">Clique para instalar a atualização</string>
     <string name="update_notification_title">Atualização para "%1$s" disponível</string>
-    <string name="verifying_downloaded_application_certificate">Verificando Certificado do aplicativo</string>
-    <string name="you_can_now_close_this_window">Agora você pode fechar esta janela</string>
+    <string name="verifying_downloaded_application_certificate">Verificando certificado do App</string>
+    <string name="you_can_now_close_this_window">Já pode fechar esta janela</string>
 </resources>
