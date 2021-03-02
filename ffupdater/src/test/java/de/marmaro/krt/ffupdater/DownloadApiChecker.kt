@@ -52,7 +52,7 @@ class DownloadApiChecker {
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 10
+        val maxDays = 14
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
