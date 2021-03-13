@@ -51,14 +51,14 @@ class MainActivity : AppCompatActivity() {
 
         for (app in App.values()) {
             getInfoButtonForApp(app).setOnClickListener {
-                AppInfoDialog(app).show(supportFragmentManager)
+                AppInfoDialog.newInstance(app).show(supportFragmentManager)
             }
             getDownloadButtonForApp(app).setOnClickListener {
                 downloadApp(app)
             }
         }
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            InstallAppDialog { app: App -> downloadApp(app) }.show(supportFragmentManager)
+            InstallAppDialog.newInstance().show(supportFragmentManager)
         }
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).setOnRefreshListener {
             updateUI(true)
@@ -153,7 +153,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun downloadApp(app: App) {
+    /**
+     * Will be called by the dialogs like InstallAppDialog.
+     */
+    fun downloadApp(app: App) {
         if (InternetConnectionTester.isInternetUnavailable(cm, deviceEnvironment)) {
             Snackbar.make(findViewById(R.id.coordinatorLayout),
                     R.string.not_connected_to_internet,

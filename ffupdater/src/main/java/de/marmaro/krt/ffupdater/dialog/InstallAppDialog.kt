@@ -14,8 +14,7 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
  * Allow the user to select an app from the dialog to install.
  * Show warning or error message (if ABI is not supported) if necessary.
  */
-class InstallAppDialog(private val downloadCallback: (App) -> Unit) : DialogFragment() {
-    private val deviceEnvironment = DeviceEnvironment()
+class InstallAppDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
         val apps = App.values().filterNot { it.detail.isInstalled(context) }
@@ -29,20 +28,27 @@ class InstallAppDialog(private val downloadCallback: (App) -> Unit) : DialogFrag
     }
 
     private fun triggerAppInstallation(app: App) {
+        val deviceEnvironment = DeviceEnvironment()
         // do not install an app which incompatible ABIs
         if (deviceEnvironment.abis.intersect(app.detail.supportedAbis).isEmpty()) {
-            UnsupportedAbiDialog().show(parentFragmentManager)
+            UnsupportedAbiDialog.newInstance().show(parentFragmentManager)
             return
         }
         // do not install an app which require a newer Android version
         if (deviceEnvironment.sdkInt < app.detail.minApiLevel) {
-            DeviceTooOldDialog(app, deviceEnvironment).show(parentFragmentManager)
+            DeviceTooOldDialog.newInstance(app).show(parentFragmentManager)
             return
         }
-        ShowAppInfoBeforeInstallationDialog(app, downloadCallback).show(parentFragmentManager)
+        ShowAppInfoBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
     }
 
     fun show(manager: FragmentManager) {
         show(manager, "install_app_dialog")
+    }
+
+    companion object {
+        fun newInstance(): InstallAppDialog {
+            return InstallAppDialog()
+        }
     }
 }

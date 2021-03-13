@@ -12,8 +12,9 @@ import de.marmaro.krt.ffupdater.app.App
 /**
  * Show a dialog with the app description.
  */
-class AppInfoDialog(private val app: App) : DialogFragment() {
+class AppInfoDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val app = App.valueOf(requireArguments().getString(BUNDLE_APP_NAME)!!)
         return AlertDialog.Builder(activity)
                 .setTitle(getString(app.detail.displayTitle))
                 .setMessage(getString(app.detail.displayDescription))
@@ -26,5 +27,17 @@ class AppInfoDialog(private val app: App) : DialogFragment() {
 
     fun show(manager: FragmentManager) {
         show(manager, "app_info_dialog")
+    }
+
+    companion object {
+        private const val BUNDLE_APP_NAME = "app_name"
+
+        fun newInstance(app: App): AppInfoDialog {
+            val bundle = Bundle()
+            bundle.putString(BUNDLE_APP_NAME, app.name)
+            val fragment = AppInfoDialog()
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 }
