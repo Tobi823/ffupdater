@@ -68,9 +68,16 @@ abstract class BaseAppDetail : AppDetail {
             subResult = cache!!.await()
         }
 
-        val updateAvailable = (getInstalledVersion(context) != subResult.version)
+        val updateAvailable = isVersionNewer(getInstalledVersion(context), subResult)
         val displayVersion = getDisplayAvailableVersion(context, subResult)
         return subResult.convertToUpdateCheckResult(updateAvailable, displayVersion)
+    }
+
+    protected open fun isVersionNewer(
+            installedVersion: String?,
+            available: UpdateCheckSubResult,
+    ): Boolean {
+        return installedVersion != available.version
     }
 
     companion object {

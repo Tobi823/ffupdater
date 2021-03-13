@@ -9,6 +9,8 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
@@ -26,8 +28,9 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
 
     override fun getInstalledVersion(context: Context): String? {
         val rawVersion = super.getInstalledVersion(context) ?: return null
-        return Regex("""^(Nightly \d{6}) \d{2}:\d{2}$""").find(rawVersion)!!
+        val version = Regex("""^(Nightly \d{6} \d{2}):\d{2}$""").find(rawVersion)!!
                 .groups[1]!!.value
+        return "${version}:xx"
     }
 
     override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
@@ -47,16 +50,28 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 keyForVersion = "tag_name",
                 keyForReleaseDate = "now")
         val result = mozillaCiConsumer.updateCheck()
-        val year = (result.releaseDate.year-2000).toString()
-        val monthValue = result.releaseDate.monthValue
-        val month = if (monthValue < 10) "0$monthValue" else monthValue.toString()
-        val dayValue = result.releaseDate.dayOfMonth
-        val day = if (dayValue < 10) "0$dayValue" else dayValue.toString()
-        val version = "Nightly $year$month$day"
+        val formatter = DateTimeFormatter.ofPattern("yyMMdd HH")
+        val timestamp = formatter.format(result.releaseDate)
+        val version = "Nightly ${timestamp}:xx"
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,
                 fileSizeBytes = null)
+    }
+
+    override fun isVersionNewer(
+            installedVersion: String?,
+            available: UpdateCheckSubResult): Boolean {
+        if (installedVersion == null) {
+            return true
+        }
+        val regex = Regex("""Nightly (\d{6} \d{2}):xx$""")
+        val installedString = regex.find(installedVersion)!!.groups[1]!!.value
+        val availableString = regex.find(available.version)!!.groups[1]!!.value
+        val pattern = DateTimeFormatter.ofPattern("yyMMdd HH")
+        val installedDateTime = LocalDateTime.parse(installedString, pattern)
+        val availableDateTime = LocalDateTime.parse(availableString, pattern)
+        return availableDateTime.isAfter(installedDateTime)
     }
 }

@@ -35,8 +35,11 @@ The applications are downloaded from these locations:
  - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
  
 ## FAQ:
- - App installation fails with "Permission Denied" on MIUI: disable "MIUI Optimization"
- - I don't optimize the APK file with minifyEnabled and shrinkResources because it makes the app harder to debug
+ - Firefox Nightly: Replace the minutes with 'xx' because FFUpdater can only access the start time 
+ of the build and not the version name of the app update (finish time). 
+ The builds always starts at 5:00 and 17:00 and usually takes a few minutes.
+ - I don't optimize the APK file with minifyEnabled and shrinkResources because it makes the app 
+ harder to debug
 
 ## 3rd-party libraries:
  - [AndroidX](https://developer.android.com/jetpack/androidx) by Google for UI

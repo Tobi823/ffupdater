@@ -3,6 +3,7 @@
  * Fix Bulgarian translation (thanks StoyanDimitrov)
  * Fix spelling (thanks ku)
  * Fix crash when rotating device (thanks floringolintchi)
+ * Distinguish the morning and evening version of Firefox Nightly (thanks DctrBnsttr)
 
 # 2021-02-26 Version 71.0.3 (59)
  * Fix crash when installing app on Android 8 (thanks bershanskiy)

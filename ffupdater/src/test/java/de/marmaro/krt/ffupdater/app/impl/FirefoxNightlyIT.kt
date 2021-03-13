@@ -61,19 +61,19 @@ class FirefoxNightlyIT {
         val expectedTime = ZonedDateTime.parse("2021-02-14T05:00:44.482Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "Nightly 210214 00:00"
+            packageInfo.versionName = "Nightly 210214 05:04"
             val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214", actual.version)
+            assertEquals("Nightly 210214 05:xx", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
 
         runBlocking {
-            packageInfo.versionName = "Nightly 210213 00:00"
+            packageInfo.versionName = "Nightly 210213 17:02"
             val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214", actual.version)
+            assertEquals("Nightly 210214 05:xx", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -94,19 +94,19 @@ class FirefoxNightlyIT {
         val expectedTime = ZonedDateTime.parse("2021-02-14T05:00:44.482Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "Nightly 210214 00:00"
+            packageInfo.versionName = "Nightly 210214 05:20"
             val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214", actual.version)
+            assertEquals("Nightly 210214 05:xx", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
 
         runBlocking {
-            packageInfo.versionName = "Nightly 210213 00:00"
+            packageInfo.versionName = "Nightly 210213 17:23"
             val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214", actual.version)
+            assertEquals("Nightly 210214 05:xx", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -127,19 +127,19 @@ class FirefoxNightlyIT {
         val expectedTime = ZonedDateTime.parse("2021-02-14T05:00:44.482Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "Nightly 210214 00:00"
+            packageInfo.versionName = "Nightly 210214 05:01"
             val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214", actual.version)
+            assertEquals("Nightly 210214 05:xx", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
 
         runBlocking {
-            packageInfo.versionName = "Nightly 210213 00:00"
+            packageInfo.versionName = "Nightly 210212 17:50"
             val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214", actual.version)
+            assertEquals("Nightly 210214 05:xx", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -160,21 +160,37 @@ class FirefoxNightlyIT {
         val expectedTime = ZonedDateTime.parse("2021-02-14T05:00:44.482Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "Nightly 210214 00:00"
+            packageInfo.versionName = "Nightly 210214 05:23"
             val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214", actual.version)
+            assertEquals("Nightly 210214 05:xx", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
 
         runBlocking {
-            packageInfo.versionName = "Nightly 210213 00:00"
+            packageInfo.versionName = "Nightly 210213 05:59"
             val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214", actual.version)
+            assertEquals("Nightly 210214 05:xx", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
+        }
+    }
+
+    @Test
+    fun versionNameIsMultipleHoursAfterBuildTime() {
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
+                "chain-of-trust.log"
+        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+                "mobile.v2.fenix.nightly.latest.armeabi-v7a/artifacts/public/logs/chain_of_trust.log"
+        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
+        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
+
+        runBlocking {
+            packageInfo.versionName = "Nightly 210214 09:04"
+            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
+            assertFalse(actual.isUpdateAvailable)
         }
     }
 }
