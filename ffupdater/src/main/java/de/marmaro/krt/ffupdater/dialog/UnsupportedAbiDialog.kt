@@ -23,4 +23,10 @@ class UnsupportedAbiDialog : DialogFragment() {
     fun show(manager: FragmentManager) {
         show(manager, "unsupported_abi_dialog")
     }
+
+    companion object {
+        fun newInstance(): UnsupportedAbiDialog {
+            return UnsupportedAbiDialog()
+        }
+    }
 }
