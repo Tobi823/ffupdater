@@ -6,7 +6,7 @@ git fetch --tags
  - `gradlew clean adviceRelease`
  - fix/add unit tests
  - check translations
- - edit gradle.build to increase version code and version name
+ - edit build.gradle to increase `versionCode` and `versionName`
  - add changelog to CHANGELOG.md
  - add supporter to CHANGELOG.md
  - copy entry from CHANGELOG.md to fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt

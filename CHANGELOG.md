@@ -1,5 +1,5 @@
-# 2021-??-?? Version 72.0.0 (60)
- * Remove support for Firefox Light because updates are no longer signed and therefore pose a security risk (thanks opened and mega-stoffel)
+# 2021-03-14 Version 72.0.0 (60)
+ * !!! Remove support for Firefox Light because updates are no longer signed and therefore pose a security risk (thanks opened and mega-stoffel)
  * User can disable the background update check on metered networks (thanks williamtheaker)
  * By clicking on the "i"-Icon, you can see the time of the last successful background update check.
  * Fix Brazilian Portuguese translation (thanks mezysinc)
