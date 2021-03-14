@@ -35,6 +35,7 @@ The applications are downloaded from these locations:
  - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
  
 ## FAQ:
+ - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
  - Firefox Nightly: Replace the minutes with 'xx' because FFUpdater can only access the start time 
  of the build and not the version name of the app update (finish time). 
  The builds always starts at 5:00 and 17:00 and usually takes a few minutes.

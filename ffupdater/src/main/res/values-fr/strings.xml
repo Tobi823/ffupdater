@@ -47,7 +47,7 @@
     <string name="go_back">retourner</string>
     <string name="iceraven_description">Ce n\'est certainement pas Mozilla qui vous l\'a apporté! \n\nIceraven Browser est un navigateur web pour Android, basé sur la version Fenix de Firefox, GeckoView et Mozilla Android Components de Mozilla. \n\nNotre objectif est d\'être une bifurcation proche du nouveau Firefox pour Android qui cherche à fournir aux utilisateurs plus d\'options, plus de possibilités de personnalisation (y compris une large bibliothèque d\'extensions), et plus d\'informations sur les pages qu\'ils visitent et sur la façon dont leur navigateur interagit avec ces pages.</string>
     <string name="iceraven_title">Navigateur Iceraven</string>
-    <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait.  Traduit avec www.DeepL.com/Translator (version gratuite)</string>
+    <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait. \n\nDernière vérification réussie de la mise à jour des antécédents: %1$s</string>
     <string name="information_about_the_app">informations sur l\'application</string>
     <string name="install_activity_label">Installer l\'application</string>
     <string name="install_app">installer l\'application</string>
@@ -67,6 +67,8 @@
     <string name="msg_crasher_crashed">Malheureusement, %1$s s\'est écrasé. Vous pouvez signaler cette erreur sur:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nVeuillez créer un nouveau numéro avec le stacktrace et une description sur la façon de reproduire le bug.</string>
     <string name="not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="ok">D\'accord</string>
+    <string name="only_unmetered_network_summary">Si cette option est désactivée, FFUpdater peut utiliser votre Internet mobile pour vérifier les mises à jour des applications en arrière-plan. Cela réduira votre limite mensuelle de données. Lorsque cette option est activée, seules les connexions réseau non mesurées, comme la majorité des WiFis, sont utilisées pour la vérification des mises à jour en arrière-plan.</string>
+    <string name="ony_unmetered_network_title">Uniquement réseau non mesuré</string>
     <string name="settings_activity_label">Réglages</string>
     <string name="settings_automatic_check_title">Automatique en arrière-plan</string>
     <string name="settings_category_appearance_title">Apparition</string>

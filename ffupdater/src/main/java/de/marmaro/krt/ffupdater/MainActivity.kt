@@ -25,12 +25,14 @@ import de.marmaro.krt.ffupdater.dialog.InstallAppDialog
 import de.marmaro.krt.ffupdater.download.InternetConnectionTester
 import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
+import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import de.marmaro.krt.ffupdater.utils.OldDownloadsDeleter
 import james.crasher.Crasher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.time.format.DateTimeFormatter
 import java.util.*
 import java.util.concurrent.*
 
@@ -83,14 +85,18 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val itemId = item.itemId
         if (itemId == R.id.action_about) {
-            val alertDialog = AlertDialog.Builder(this@MainActivity).create()
-            alertDialog.setTitle(getString(R.string.action_about_title))
-            alertDialog.setMessage(getString(R.string.infobox))
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok))
-            { dialog: DialogInterface, _: Int ->
-                dialog.dismiss()
-            }
-            alertDialog.show()
+            val timestamp = PreferencesHelper(this).lastBackgroundCheck
+                    ?.let { DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(it) }
+                    ?: "/"
+            AlertDialog.Builder(this@MainActivity)
+                    .setTitle(getString(R.string.action_about_title))
+                    .setMessage(getString(R.string.infobox, timestamp))
+                    .setNeutralButton(getString(R.string.ok))
+                    { dialog: DialogInterface, _: Int ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
         } else if (itemId == R.id.action_settings) {
             //start settings activity where we use select firefox product and release type;
             startActivity(Intent(this, SettingsActivity::class.java))

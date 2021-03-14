@@ -47,13 +47,7 @@
     <string name="go_back">Върни се</string>
     <string name="iceraven_description">Определено не ви е донесено от Mozilla! \n\nIceraven Browser е уеб браузър за Android, базиран на версията на Mozilla Fenix на Firefox, GeckoView и Mozilla Android Components. \n\n Нашата цел е да бъдем близка вилица на новия Firefox за Android, който се стреми да предостави на потребителите повече възможности, повече възможности за персонализиране (включително широка библиотека с разширения) и повече информация за страниците, които посещават и как браузърите им взаимодействат тези страници.</string>
     <string name="iceraven_title">Браузър Iceraven</string>
-    <string name="infobox">
-        Това приложение е предназначено за обновяване на мрежовите четци на Mozilla.
-        Докоснете бутона със знак плюс за инсталиране или стрелка надолу за обновяване.
-        Можете да правите проверка за нови издания като дръпнете списъка надолу или повторно отворите приложението.
-        По подразбиране приложението периодично, във фонов режим, също прави такава проверка.
-        Направил съм всичко по силите си да направя процеса на инсталиране/обновяване максимално сигурен, но се чувствайте свободни да го проверите или да го подобрите чрез изпращане на заявка за сливане.
-    </string>
+    <string name="infobox">Това приложение е предназначено за обновяване на мрежовите четци на Mozilla. Докоснете бутона със знак плюс за инсталиране или стрелка надолу за обновяване. Можете да правите проверка за нови издания като дръпнете списъка надолу или повторно отворите приложението. По подразбиране приложението периодично, във фонов режим, също прави такава проверка. Направил съм всичко по силите си да направя процеса на инсталиране/обновяване максимално сигурен, но се чувствайте свободни да го проверите или да го подобрите чрез изпращане на заявка за сливане. \n\nПоследна успешна проверка на фоновата актуализация: %1$s</string>
     <string name="information_about_the_app">сведения за приложението</string>
     <string name="install_activity_label">Инсталиране</string>
     <string name="install_app">инсталирай приложението</string>
@@ -70,9 +64,11 @@
     <string name="lockwise_description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС \n\nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в сметките си.</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Обновявайте мрежовите четци от Mozilla</string>
-    <string name="msg_crasher_crashed">За съжаление %1$s се срина. Можете да съобщите за това на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nСъздайте доклад за дефект като добавите следата на стека, както и стъпки за възпоризвеждане на дефекта.</string>    
+    <string name="msg_crasher_crashed">За съжаление %1$s се срина. Можете да съобщите за това на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nСъздайте доклад за дефект като добавите следата на стека, както и стъпки за възпоризвеждане на дефекта.</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
     <string name="ok">Добре</string>
+    <string name="only_unmetered_network_summary">Ако тази опция е деактивирана, FFUpdater може да използва мобилния ви интернет, за да проверява за актуализации на приложения във фонов режим. Това ще намали месечния ви лимит за данни. Когато тази опция е активирана, за проверка на актуализацията на заден план се използват само неизмерени мрежови връзки, като повечето WiFis.</string>
+    <string name="ony_unmetered_network_title">Само неограничена мрежа</string>
     <string name="settings_activity_label">Настройки</string>
     <string name="settings_automatic_check_title">Автоматично на заден план</string>
     <string name="settings_category_appearance_title">Външен вид</string>

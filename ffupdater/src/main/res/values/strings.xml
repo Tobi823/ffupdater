@@ -49,13 +49,7 @@
     <string name="go_back">Go back</string>
     <string name="iceraven_description">Definitely not brought to you by Mozilla! \n\nIceraven Browser is a web browser for Android, based on Mozilla\'s Fenix version of Firefox, GeckoView and Mozilla Android Components. \n\nOur goal is to be a close fork of the new Firefox for Android that seeks to provide users with more options, more opportunities to customize (including a broad extension library), and more information about the pages they visit and how their browsers are interacting with those pages.</string>
     <string name="iceraven_title">Iceraven Browser</string>
-    <string name="infobox">
-        This is an updater for multiple browsers from Mozilla.
-        Click the plus-button for installation and the down-arrow-button for updating.
-        You can check for new updates by down-swiping or reopening the app.
-        By default the app will check regularly for updates in the background.
-        I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request.
-    </string>
+    <string name="infobox">This is an updater for multiple browsers from Mozilla. Click the plus-button for installation and the down-arrow-button for updating. You can check for new updates by down-swiping or reopening the app. By default the app will check regularly for updates in the background. I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request. \n\nLast successful background update check: %1$s</string>
     <string name="information_about_the_app">information about the app</string>
     <string name="install_activity_label">Install Application</string>
     <string name="install_app">Install app</string>
@@ -76,6 +70,8 @@
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="ok">OK</string>
+    <string name="only_unmetered_network_summary">If this option is disabled, FFUpdater can use your mobile internet to check for app updates in the background. This will reduce your monthly data limit. When this option is enabled, only unmetered network connections, like the majority of WiFis, are used for background update checking.</string>
+    <string name="ony_unmetered_network_title">Only unmetered network</string>
     <string name="settings_activity_label">Settings</string>
     <string name="settings_automatic_check_title">Automatic in Background</string>
     <string name="settings_category_appearance_title">Appearance</string>

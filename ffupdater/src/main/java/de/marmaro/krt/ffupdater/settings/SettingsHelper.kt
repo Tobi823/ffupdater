@@ -89,4 +89,9 @@ class SettingsHelper(context: Context) {
             themePreference
         } else default
     }
+
+    val onlyUnmeteredNetwork: Boolean
+        get() {
+            return preferences.getBoolean("onlyUnmeteredNetwork", false)
+        }
 }

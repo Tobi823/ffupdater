@@ -47,7 +47,7 @@
     <string name="go_back">Zurück</string>
     <string name="iceraven_description">Definitiv nicht von Mozilla für Sie entwickelt! \n\nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert. \n\nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
     <string name="iceraven_title">Iceraven Browser</string>
-    <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern.</string>
+    <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern. \n\nLetzte erfolgreiche Hintergrundaktualisierungsprüfung: %1$s</string>
     <string name="information_about_the_app">Information über die Applikation</string>
     <string name="install_activity_label">Anwendung installieren</string>
     <string name="install_app">App installieren</string>
@@ -67,6 +67,8 @@
     <string name="msg_crasher_crashed">Leider ist der %1$s abgestürzt. Du kannst diesen Fehler melden auf:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nBitte erstelle eine neues Issue mit dem Stacktrace und einer Beschreibung, wie der Fehler reproduziert werden kann.</string>
     <string name="not_connected_to_internet">Sie sind nicht mit dem Internet verbunden</string>
     <string name="ok">OK</string>
+    <string name="only_unmetered_network_summary">Wenn diese Option deaktiviert ist, kann FFUpdater ihr mobiles Internet nutzen, um im Hintergrund nach App-Updates zu suchen. Dadurch wird ihr monatliches Datenlimit reduziert. Wenn aber diese Option aktiviert ist, werden nur nicht gebührenpflichtige Netzwerkverbindungen, wie die Mehrheit der WLANs, für die Prüfung auf Updates im Hintergrund verwendet.</string>
+    <string name="ony_unmetered_network_title">Nur "kostenlose" Netze</string>
     <string name="settings_activity_label">Einstellungen</string>
     <string name="settings_automatic_check_title">Automatisch im Hintergrund</string>
     <string name="settings_category_appearance_title">Erscheinungsbild</string>

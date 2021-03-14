@@ -7,8 +7,10 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.CancellationException
+import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
 
 /**
@@ -19,6 +21,7 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
     override suspend fun doWork(): Result {
         return try {
             doBackgroundCheck()
+            PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
             Result.success()
         } catch (e: BackgroundNetworkException) {
             val message = applicationContext.getString(R.string.background_network_issue_notification_text)
@@ -64,15 +67,21 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         }
 
         private fun startBackgroundUpdateCheck(context: Context) {
-            val repeatInterval = SettingsHelper(context).checkInterval
+            val settingsHelper = SettingsHelper(context)
+            val repeatInterval = settingsHelper.checkInterval
+            val onlyUnmetered = settingsHelper.onlyUnmeteredNetwork
+
             val constraints = Constraints.Builder()
                     .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .also { if (onlyUnmetered) it.setRequiredNetworkType(NetworkType.UNMETERED) }
                     .setRequiresBatteryNotLow(true)
+                    .setRequiresStorageNotLow(true)
                     .build()
             val saveRequest = PeriodicWorkRequest.Builder(
                     BackgroundUpdateChecker::class.java, repeatInterval.toMinutes(), MINUTES)
                     .setConstraints(constraints)
                     .build()
+
             val workManager = WorkManager.getInstance(context)
             workManager.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, saveRequest)
         }

@@ -15,7 +15,6 @@
     <string name="brave_title">Brave Navegador Privado</string>
     <string name="brave_warning">Brave utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Você quer instalar o Brave?</string>
     <string name="but_was">Mas era:</string>
-    <string name="default_theme_preference" translatable="false">3</string>
     <string name="device_too_old_dialog_message">O App requer Android %1$s. Mas seu dispositivo só tem Android %2$s. Escolha um aplicativo diferente, atualize seu sistema operacional ou use um smartphone mais novo.</string>
     <string name="device_too_old_dialog_title">O dispositivo é muito antigo</string>
     <string name="download_app_is_disabled">O aplicativo de download do sistema está desativado. FFUpdater precisa deste aplicativo para baixar. Por favor, ative-o.</string>
@@ -45,17 +44,10 @@
     <string name="firefox_nightly_warning">Este App foi projetado para desenvolvedores e testadores. Ele pode conter vários bugs que podem afetar seu trabalho habitual com o navegador. Você quer instalá-lo?</string>
     <string name="firefox_release_description">O navegador Firefox para Android é seguro e incrivelmente rápido. Milhares de rastreadores on-line estão acompanhando você todos os dias, coletando informações sobre onde você vai on-line e diminuindo sua velocidade. Firefox bloqueia mais de 2000 destes rastreadores por padrão e tem extensões de bloqueadores de anúncios disponíveis, caso você precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa num navegador privado e móvel.</string>
     <string name="firefox_release_title">Navegador Firefox</string>
-    <string name="github" translatable="false">GitHub</string>
     <string name="go_back">Voltar</string>
     <string name="iceraven_description">Definitivamente não criado por Mozilla! \n\nNavegador Iceraven é um navegador para Android, baseado em versão Fenix da Mozilla, GeckoView e Componentes da Mozilla para Android. \n\nNosso objetivo é ser um Fork bem próximo ao novo Firefox para Android que intenta oferecer aos usuários mais opções, mais possibilidades de customização (incluindo uma ampla biblioteca de extensões) e mais informações sobre as páginas visitadas e como o navegador está interagindo com elas.</string>
     <string name="iceraven_title">Navegador Iceraven</string>
-    <string name="infobox">
-        Este é um App que atualiza vários navegadores da Mozilla.
-        Clique no botão "mais" para instalar e no botão com "seta-para-baixo" para atualizar.
-        Você pode verificar se há novas atualizações, deslizando para baixo ou reabrindo o aplicativo.
-        Por padrão, o aplicativo verificará regularmente em segundo plano se há atualizações.
-        Fiz o melhor para garantir a segurança do processo de instalação/atualização - sinta-se a vontade para verificá-lo ou melhorá-lo, criando um pedido de Pull-Request.
-    </string>
+    <string name="infobox">Este é um App que atualiza vários navegadores da Mozilla. Clique no botão "mais" para instalar e no botão com "seta-para-baixo" para atualizar. Você pode verificar se há novas atualizações, deslizando para baixo ou reabrindo o aplicativo. Por padrão, o aplicativo verificará regularmente em segundo plano se há atualizações. Fiz o melhor para garantir a segurança do processo de instalação/atualização - sinta-se a vontade para verificá-lo ou melhorá-lo, criando um pedido de Pull-Request. \n\nÚltima verificação bem sucedida de atualização de antecedentes: %1$s</string>
     <string name="information_about_the_app">informações sobre o app</string>
     <string name="install_activity_label">Instalar Aplicativo</string>
     <string name="install_app">Instalar App</string>
@@ -72,10 +64,11 @@
     <string name="lockwise_description">ACESSO COM SENHA PARA VOCÊ, &amp; SOMENTE VOCÊ \n\nRastreie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site no aplicativo para entrar em suas contas</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Atualizar seus navegadores da Mozilla</string>
-    <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Infelizmente, %1$s falhou. Você pode submeter este erro em:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nPor favor, crie um novo Issue com o Stacktrace e escreva uma descrição de como reproduzir o bug.</string>
     <string name="not_connected_to_internet">Sem conexão de rede</string>
     <string name="ok">OK</string>
+    <string name="only_unmetered_network_summary">Se esta opção estiver desativada, o FFUpdater pode usar sua internet móvel para verificar se há atualizações de aplicativos em segundo plano. Isto reduzirá seu limite mensal de dados. Quando esta opção é ativada, somente as conexões de rede não conectadas, como a maioria dos WiFis, são usadas para verificação de atualizações em segundo plano.</string>
+    <string name="ony_unmetered_network_title">Somente rede não contatada</string>
     <string name="settings_activity_label">Configurações</string>
     <string name="settings_automatic_check_title">Automático em segundo plano</string>
     <string name="settings_category_appearance_title">Aparência</string>

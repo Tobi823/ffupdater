@@ -7,6 +7,12 @@
             app:key="automaticCheck"
             app:title="@string/settings_automatic_check_title" />
 
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="onlyUnmeteredNetwork"
+            app:title="@string/ony_unmetered_network_title"
+            app:summary="@string/only_unmetered_network_summary"/>
+
         <ListPreference
             app:defaultValue="360"
             app:dependency="automaticCheck"

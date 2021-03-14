@@ -94,6 +94,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">start</item>
     </style>
 
     <style name="AppCardInstalledVersion" parent="AppCardVersion">

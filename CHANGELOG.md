@@ -1,4 +1,6 @@
-# 2021-??-?? Version 71.0.4 (60)
+# 2021-??-?? Version 71.1.0 (60)
+ * User can disable the background update check on metered networks (thanks williamtheaker)
+ * By clicking on the "i"-Icon, you can see the time of the last successful background update check.
  * Fix Brazilian Portuguese translation (thanks mezysinc)
  * Fix Bulgarian translation (thanks StoyanDimitrov)
  * Fix spelling (thanks ku)
