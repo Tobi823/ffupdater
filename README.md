@@ -7,7 +7,6 @@ Download, install and update these privacy friendly browsers:
  - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus)
  - [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta)
  - [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
- - [Firefox Lite](https://play.google.com/store/apps/details?id=org.mozilla.rocket)
  - [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
  - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 
@@ -29,7 +28,6 @@ The applications are downloaded from these locations:
  - Firefox for Android Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
  - Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
  - Firefox Focus/Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
- - Firefox Lite: <https://api.github.com/repos/mozilla-tw/FirefoxLite/releases/latest>
  - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
  - Brave Private Browser: <https://api.github.com/repos/brave/brave-browser/releases/latest>
  - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
@@ -62,6 +60,19 @@ The applications are downloaded from these locations:
 [How to contribute](HOW_TO_CONTRIBUTE.md)
 
 ## Deprecated browsers
+
+### Firefox Lite
+14.03.2021: The latest release of Firefox Lite is not longer signed and thereby can't be used to
+upgrade an existing Firefox Lite installation.
+Moreover the developers haven't responded to the Github issue "[BUG] Unsigned apk ?" from 30.01.2021 
+https://github.com/mozilla-mobile/FirefoxLite/issues/5353.
+And Firefox Lite will only receive bug fixes in the future:
+>Firefox Lite is currently in Maintenance Mode. No active feature is being done on the product. 
+>Older Pull Requests and Issues have been marked with the archived label and have been closed. 
+>However, if you feel an issue is critical enough to be re-opened, please leave a note on the issue 
+>with an explanation. 
+
+These are the reasons why I will remove Firefox Lite.
 
 ### Fennec
 16.05.2020: Mozilla wants to migrate from Fennec to Fenix. Fennec Beta and Fennec Nightly are already end-of-life and Fennec Release will be soon.

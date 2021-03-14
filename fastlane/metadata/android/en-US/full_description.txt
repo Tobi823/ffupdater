@@ -4,7 +4,6 @@ Download, install and update these privacy friendly browsers:
  - Firefox Focus
  - Firefox for Android Beta
  - Firefox Klar
- - Firefox Lite
  - Firefox Nightly
  - Iceraven
 

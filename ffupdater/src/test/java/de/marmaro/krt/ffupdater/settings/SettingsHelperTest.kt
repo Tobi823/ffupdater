@@ -137,12 +137,6 @@ class SettingsHelperTest {
     }
 
     @Test
-    fun getDisableApps_withOneApp_FirefoxLite_returnApps() {
-        sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_LITE")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.FIREFOX_LITE))
-    }
-
-    @Test
     fun getDisableApps_withOneApp_FirefoxNightly_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_NIGHTLY")).commit()
         assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.FIREFOX_NIGHTLY))
@@ -175,9 +169,16 @@ class SettingsHelperTest {
     @Test
     fun getDisableApps_withAllApps_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("BRAVE", "FIREFOX_BETA",
-                "FIREFOX_FOCUS", "FIREFOX_KLAR", "FIREFOX_LITE", "FIREFOX_NIGHTLY",
+                "FIREFOX_FOCUS", "FIREFOX_KLAR", "FIREFOX_NIGHTLY",
                 "FIREFOX_RELEASE", "ICERAVEN", "LOCKWISE")).commit()
         assertTrue(SettingsHelper(context).disabledApps.containsAll(App.values().toList()))
+    }
+
+    @Test
+    fun getDisableApps_withRemovedApps_returnEmptyList() {
+        sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_LITE",
+                "FIREFOX_NIGHTLY")).commit()
+        assertTrue(SettingsHelper(context).disabledApps.contains(App.FIREFOX_NIGHTLY))
     }
 
     @Test

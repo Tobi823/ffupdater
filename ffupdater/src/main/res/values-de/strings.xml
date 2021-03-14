@@ -37,8 +37,6 @@
     <string name="firefox_focus_title">Firefox Focus</string>
     <string name="firefox_klar_description">Die App wird von GitHub heruntergeladen - nur Updates, die auf GitHub veröffentlicht werden, können heruntergeladen werden.</string>
     <string name="firefox_klar_title">Firefox Klar</string>
-    <string name="firefox_lite_description">Firefox Lite ist primär für Benutzer in Indonesien entwickelt worden. Die Anwendung ist sehr klein und unterstützt Techniken zur Reduzierung des (mobilen) Datenverbrauchs.</string>
-    <string name="firefox_lite_title">Firefox Lite</string>
     <string name="firefox_nightly_description">Bitte beachten Sie, dass es Firefox Preview nicht mehr gibt und dieser durch Firefox Nightly ersetzt wurde. \n\nFirefox Nightly ist ein Entwicklerkanal für neue Versionen von Mozilla Firefox. \n\nFirefox Nightly soll experimentellere Versionen von Firefox präsentieren. Im Nightly-Kanal können Nutzer die neuesten Firefox-Innovationen in einer instabilen Umgebung erleben und Ihre Meinung zu Funktionen und Leistung sagen, um mitzuentscheiden, was in der fertigen Version erscheint.</string>
     <string name="firefox_nightly_title">Firefox Nightly</string>
     <string name="firefox_nightly_warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>

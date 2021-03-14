@@ -179,7 +179,6 @@ class MainActivity : AppCompatActivity() {
         return findViewById(when (app) {
             App.FIREFOX_KLAR -> R.id.firefoxKlarCard
             App.FIREFOX_FOCUS -> R.id.firefoxFocusCard
-            App.FIREFOX_LITE -> R.id.firefoxLiteCard
             App.FIREFOX_RELEASE -> R.id.firefoxReleaseCard
             App.FIREFOX_BETA -> R.id.firefoxBetaCard
             App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyCard
@@ -201,7 +200,6 @@ class MainActivity : AppCompatActivity() {
         return findViewById(when (app) {
             App.FIREFOX_KLAR -> R.id.firefoxKlarDownloadButton
             App.FIREFOX_FOCUS -> R.id.firefoxFocusDownloadButton
-            App.FIREFOX_LITE -> R.id.firefoxLiteDownloadButton
             App.FIREFOX_RELEASE -> R.id.firefoxReleaseDownloadButton
             App.FIREFOX_BETA -> R.id.firefoxBetaDownloadButton
             App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyDownloadButton
@@ -215,7 +213,6 @@ class MainActivity : AppCompatActivity() {
         return findViewById(when (app) {
             App.FIREFOX_KLAR -> R.id.firefoxKlarInstalledVersion
             App.FIREFOX_FOCUS -> R.id.firefoxFocusInstalledVersion
-            App.FIREFOX_LITE -> R.id.firefoxLiteInstalledVersion
             App.FIREFOX_RELEASE -> R.id.firefoxReleaseInstalledVersion
             App.FIREFOX_BETA -> R.id.firefoxBetaInstalledVersion
             App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyInstalledVersion
@@ -229,7 +226,6 @@ class MainActivity : AppCompatActivity() {
         return findViewById(when (app) {
             App.FIREFOX_KLAR -> R.id.firefoxKlarAvailableVersion
             App.FIREFOX_FOCUS -> R.id.firefoxFocusAvailableVersion
-            App.FIREFOX_LITE -> R.id.firefoxLiteAvailableVersion
             App.FIREFOX_RELEASE -> R.id.firefoxReleaseAvailableVersion
             App.FIREFOX_BETA -> R.id.firefoxBetaAvailableVersion
             App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyAvailableVersion
@@ -243,7 +239,6 @@ class MainActivity : AppCompatActivity() {
         return findViewById(when (app) {
             App.FIREFOX_KLAR -> R.id.firefoxKlarInfoButton
             App.FIREFOX_FOCUS -> R.id.firefoxFocusInfoButton
-            App.FIREFOX_LITE -> R.id.firefoxLiteInfoButton
             App.FIREFOX_RELEASE -> R.id.firefoxReleaseInfoButton
             App.FIREFOX_BETA -> R.id.firefoxBetaInfoButton
             App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyInfoButton

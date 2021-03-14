@@ -90,17 +90,6 @@ class DownloadApiChecker {
     }
 
     @Test
-    fun lite() {
-        val result = runBlocking {
-            FirefoxLite(ApiConsumer()).updateCheck(context, device)
-        }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 60
-        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
-    }
-
-    @Test
     fun firefoxNightly() {
         val result = runBlocking {
             FirefoxNightly(ApiConsumer()).updateCheck(context, device)

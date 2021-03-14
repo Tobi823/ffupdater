@@ -37,8 +37,6 @@
     <string name="firefox_focus_title">Firefox Focus</string>
     <string name="firefox_klar_description">Це модифікація браузера Firefox, спрямована на підвищення конфіденційності.  Firefox Klar розроблений для Німеччини, Швейцарії та Австрії і майже ідентичний Firefox Focus. Змінено лише ім\'я, щоб уникнути плутанини з новинним журналом \"Фокус\" від медіа-групи \"Hubert Burda Media\".</string>
     <string name="firefox_klar_title">Firefox Klar</string>
-    <string name="firefox_lite_description">Firefox Lite є первинною розробкою для користувачів в Індонезії. Додаток дуже маленький і підтримує методи зменшення споживання (мобільних) даних.</string>
-    <string name="firefox_lite_title">Firefox Lite</string>
     <string name="firefox_nightly_description">Please note that this app used to be titled Firefox Preview. It has now been transitioned to Firefox Nightly. \n\nFirefox Nightly is a developmental channel for new Mozilla Firefox releases. \n\nFirefox Nightly is designed to showcase the more experimental builds of Firefox. The Nightly channel allows users to experience the newest Firefox innovations in an unstable environment and provide feedback on features and performance to help determine what makes the final release.</string>
     <string name="firefox_nightly_title">Firefox Nightly</string>
     <string name="firefox_nightly_warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>

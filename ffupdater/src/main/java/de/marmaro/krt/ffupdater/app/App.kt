@@ -11,7 +11,6 @@ enum class App(appDetail: AppDetail) {
     FIREFOX_NIGHTLY(FirefoxNightly(apiConsumer)),
     FIREFOX_FOCUS(FirefoxFocus(apiConsumer)),
     FIREFOX_KLAR(FirefoxKlar(apiConsumer)),
-    FIREFOX_LITE(FirefoxLite(apiConsumer)),
     LOCKWISE(Lockwise(apiConsumer)),
     BRAVE(Brave(apiConsumer)),
     ICERAVEN(Iceraven(apiConsumer));

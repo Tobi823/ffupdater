@@ -55,7 +55,6 @@ object UpdateNotificationBuilder {
             App.FIREFOX_NIGHTLY -> "update_notification_channel__firefox_nightly"
             App.FIREFOX_FOCUS -> "update_notification_channel__firefox_focus"
             App.FIREFOX_KLAR -> "update_notification_channel__firefox_klar"
-            App.FIREFOX_LITE -> "update_notification_channel__firefox_lite"
             App.LOCKWISE -> "update_notification_channel__lockwise"
             App.BRAVE -> "update_notification_channel__brave"
             App.ICERAVEN -> "update_notification_channel__iceraven"
@@ -69,7 +68,6 @@ object UpdateNotificationBuilder {
             App.FIREFOX_NIGHTLY -> 202
             App.FIREFOX_FOCUS -> 203
             App.FIREFOX_KLAR -> 204
-            App.FIREFOX_LITE -> 205
             App.LOCKWISE -> 206
             App.BRAVE -> 207
             App.ICERAVEN -> 208

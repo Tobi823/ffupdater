@@ -37,8 +37,6 @@
     <string name="firefox_focus_title">Firefox Focus</string>
     <string name="firefox_klar_description">Il s\'agit d\'une modification du navigateur Firefox visant à accroître la protection de la vie privée.  Firefox Klar est développé pour l\'Allemagne, la Suisse et l\'Autriche et est presque identique à Firefox Focus. Seul le nom a été modifié pour éviter toute confusion avec le magazine d\'information \"Focus\" du groupe de médias \"Hubert Burda Media\".</string>
     <string name="firefox_klar_title">Firefox Klar</string>
-    <string name="firefox_lite_description">Firefox Lite est principalement développé pour les utilisateurs en Indonésie. L\'application est très petite et prend en charge des techniques visant à réduire la consommation de données (mobiles).</string>
-    <string name="firefox_lite_title">Firefox Lite</string>
     <string name="firefox_nightly_description">Veuillez noter que Firefox Preview n’est plus disponible et a été remplacé par Firefox Nightly. \n\nFirefox Nightly est un canal de développement pour les nouvelles versions de Mozilla Firefox. \n\nFirefox Nightly est conçu pour mettre en valeur les versions les plus expérimentales de Firefox. Le canal Nightly permet aux utilisateurs de découvrir les dernières innovations de Firefox dans un environnement instable et de faire part de leur avis sur les fonctionnalités et les performances pour aider à déterminer ce qui figurera dans la version finale.</string>
     <string name="firefox_nightly_title">Firefox Nightly</string>
     <string name="firefox_nightly_warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer?</string>

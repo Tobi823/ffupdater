@@ -130,59 +130,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/firefoxLiteCard"
-                style="@style/AppCard"
-                app:cardUseCompatPadding="true">
-
-                <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
-
-                    <TextView
-                        style="@style/AppCardTitle"
-                        android:text="@string/firefox_lite_title"
-                        app:layout_constraintStart_toEndOf="@+id/firefoxLiteIcon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/firefoxLiteInstalledVersion"
-                        style="@style/AppCardInstalledVersion"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/firefoxLiteIcon" />
-
-                    <TextView
-                        android:id="@+id/firefoxLiteAvailableVersion"
-                        style="@style/AppCardVersion"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/firefoxLiteInstalledVersion" />
-
-                    <ImageButton
-                        android:id="@+id/firefoxLiteInfoButton"
-                        style="@style/AppCardInfoButton"
-                        android:contentDescription="@string/information_about_the_app"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/firefoxLiteDownloadButton"
-                        app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
-
-                    <ImageButton
-                        android:id="@+id/firefoxLiteDownloadButton"
-                        style="@style/AppCardDownloadButton"
-                        android:contentDescription="@string/download_the_app"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/ic_file_download_grey" />
-
-                    <ImageView
-                        android:id="@+id/firefoxLiteIcon"
-                        style="@style/AppCardIcon"
-                        android:contentDescription="@string/app_icon"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@mipmap/ic_logo_firefox_lite" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/firefoxReleaseCard"
                 style="@style/AppCard"
                 app:cardUseCompatPadding="true">

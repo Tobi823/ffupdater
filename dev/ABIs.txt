@@ -29,5 +29,4 @@ Fire Tablet 7 - 5. Generation (Android 5.1)
 0 = "armeabi-v7a"
 1 = "armeabi"
 
-Firefox Lite does not have special libs for any ABI
 Lockwise has libs for all ABIs

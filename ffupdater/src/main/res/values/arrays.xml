@@ -48,7 +48,6 @@
         <item>@string/firefox_nightly_title</item>
         <item>@string/firefox_focus_title</item>
         <item>@string/firefox_klar_title</item>
-        <item>@string/firefox_lite_title</item>
         <item>@string/lockwise_title</item>
         <item>@string/brave_title</item>
         <item>@string/iceraven_title</item>
@@ -60,7 +59,6 @@
         <item>FENIX_NIGHTLY</item>
         <item>FIREFOX_FOCUS</item>
         <item>FIREFOX_KLAR</item>
-        <item>FIREFOX_LITE</item>
         <item>LOCKWISE</item>
         <item>BRAVE</item>
         <item>ICERAVEN</item>
