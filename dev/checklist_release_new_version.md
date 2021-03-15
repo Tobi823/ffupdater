@@ -10,7 +10,7 @@ git fetch --tags
  - add changelog to CHANGELOG.md
  - add supporter to CHANGELOG.md
  - copy entry from CHANGELOG.md to fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt
- - commit changes
+ - commit changes with references to the issues/pull requests
  - create tag for release
  - push tag to notabug.org, Github and Gitlab
 

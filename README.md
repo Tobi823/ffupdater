@@ -39,6 +39,11 @@ The applications are downloaded from these locations:
  The builds always starts at 5:00 and 17:00 and usually takes a few minutes.
  - I don't optimize the APK file with minifyEnabled and shrinkResources because it makes the app 
  harder to debug
+ 
+## Git repositories:
+ - Main repository: https://notabug.org/Tobiwan/ffupdater
+ - Mirror repository on Github: https://github.com/Tobi823/ffupdater
+ - Mirror repository on Gitlab: https://gitlab.com/Tobiwan/ffupdater_gitlab
 
 ## 3rd-party libraries:
  - [AndroidX](https://developer.android.com/jetpack/androidx) by Google for UI
