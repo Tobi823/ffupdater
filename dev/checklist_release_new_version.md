@@ -11,6 +11,9 @@ git fetch --tags
  - add supporter to CHANGELOG.md
  - copy entry from CHANGELOG.md to fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt
  - commit changes with references to the issues/pull requests
+   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
+   - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
+   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
  - create tag for release
  - push tag to notabug.org, Github and Gitlab
 
