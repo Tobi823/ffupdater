@@ -12,12 +12,12 @@
    XX is current bg (Bulgarian), de (German), fr (French),
    pt-rBR (Portuguese Brazilian), ru (Russian) or uk (Ukrainian).
  - Send me the translated `values.xml` as an issue on [notabug.org](https://notabug.org/Tobiwan/ffupdater/issues),
- [GitHub](https://github.com/Tobi823/ffupdater/issues) or [GitLab](https://gitlab.com/Tobiwan/ffupdater/-/issues)
+ [GitHub](https://github.com/Tobi823/ffupdater/issues) or [GitLab](https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues)
 
 ## Advanced developers
 
 Same as above but with forking + pull request / merge requests on [notabug.org](https://notabug.org/Tobiwan/ffupdater/pulls),
-[GitHub](https://github.com/Tobi823/ffupdater/pulls) or [GitLab](https://gitlab.com/Tobiwan/ffupdater/-/merge_requests)
+[GitHub](https://github.com/Tobi823/ffupdater/pulls) or [GitLab](https://gitlab.com/Tobiwan/ffupdater_gitlab/-/merge_requests)
 
 ## Regular check
 

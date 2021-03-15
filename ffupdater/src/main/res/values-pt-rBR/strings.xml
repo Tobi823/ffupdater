@@ -62,7 +62,7 @@
     <string name="lockwise_description">ACESSO COM SENHA PARA VOCÊ, &amp; SOMENTE VOCÊ \n\nRastreie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site no aplicativo para entrar em suas contas</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Atualizar seus navegadores da Mozilla</string>
-    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Infelizmente, %1$s falhou. Você pode submeter este erro em:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nPor favor, crie um novo Issue com o Stacktrace e escreva uma descrição de como reproduzir o bug.</string>
+    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Infelizmente, %1$s falhou. Você pode submeter este erro em:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nPor favor, crie um novo Issue com o Stacktrace e escreva uma descrição de como reproduzir o bug.</string>
     <string name="not_connected_to_internet">Sem conexão de rede</string>
     <string name="ok">OK</string>
     <string name="only_unmetered_network_summary">Se esta opção estiver desativada, o FFUpdater pode usar sua internet móvel para verificar se há atualizações de aplicativos em segundo plano. Isto reduzirá seu limite mensal de dados. Quando esta opção é ativada, somente as conexões de rede não conectadas, como a maioria dos WiFis, são usadas para verificação de atualizações em segundo plano.</string>

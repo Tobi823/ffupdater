@@ -62,7 +62,7 @@
     <string name="lockwise_description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС \n\nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в сметките си.</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Обновявайте мрежовите четци от Mozilla</string>
-    <string name="msg_crasher_crashed">За съжаление %1$s се срина. Можете да съобщите за това на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nСъздайте доклад за дефект като добавите следата на стека, както и стъпки за възпоризвеждане на дефекта.</string>
+    <string name="msg_crasher_crashed">За съжаление %1$s се срина. Можете да съобщите за това на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nСъздайте доклад за дефект като добавите следата на стека, както и стъпки за възпоризвеждане на дефекта.</string>
     <string name="not_connected_to_internet">Няма връзка с Мрежата</string>
     <string name="ok">Добре</string>
     <string name="only_unmetered_network_summary">Ако тази опция е деактивирана, FFUpdater може да използва мобилния ви интернет, за да проверява за актуализации на приложения във фонов режим. Това ще намали месечния ви лимит за данни. Когато тази опция е активирана, за проверка на актуализацията на заден план се използват само неизмерени мрежови връзки, като повечето WiFis.</string>

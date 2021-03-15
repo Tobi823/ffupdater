@@ -62,7 +62,7 @@
     <string name="lockwise_description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС  Безпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкрийте будь-який веб-сайт із програми, щоб увійти до своїх облікових записів</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Оновіть веб-переглядачі від Mozilla</string>
-    <string name="msg_crasher_crashed">На жаль, %1$s зазнав аварії. Ви можете повідомити про цю помилку:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nБудь ласка, створіть нове видання зі стеком і описом того, як відтворити помилку.</string>
+    <string name="msg_crasher_crashed">На жаль, %1$s зазнав аварії. Ви можете повідомити про цю помилку:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nБудь ласка, створіть нове видання зі стеком і описом того, як відтворити помилку.</string>
     <string name="not_connected_to_internet">Ви не підключені до Інтернету</string>
     <string name="ok">Гаразд</string>
     <string name="only_unmetered_network_summary">Якщо цю опцію вимкнено, FFUpdater може використовувати ваш мобільний Інтернет для перевірки оновлень додатків у фоновому режимі. Це зменшить ваш щомісячний ліміт даних. Якщо цю опцію ввімкнено, для перевірки фонового оновлення використовуються лише необмежені мережеві підключення, як і більшість WiFis.</string>

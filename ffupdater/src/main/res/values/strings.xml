@@ -65,7 +65,7 @@
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
-    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
+    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="ok">OK</string>
     <string name="only_unmetered_network_summary">If this option is disabled, FFUpdater can use your mobile internet to check for app updates in the background. This will reduce your monthly data limit. When this option is enabled, only unmetered network connections, like the majority of WiFis, are used for background update checking.</string>

@@ -62,7 +62,7 @@
     <string name="lockwise_description">ПАРОЛЬ ДОСТУПА ДЛЯ ВАС, И ТОЛЬКО ДЛЯ ВАС \n\nНадежно отслеживайте свои пароли Firefox и получайте доступ к ним в любом месте. Быстро откройте любой сайт из приложения, чтобы попасть в свои учетные записи.</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Обновите свои браузеры от Mozilla</string>
-    <string name="msg_crasher_crashed">К сожалению, %1$s разбился. Вы можете сообщить об этой ошибке:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater/-/issues \n\nПожалуйста, создайте новый выпуск со стековой трассировкой и описанием того, как воспроизвести ошибку.</string>
+    <string name="msg_crasher_crashed">К сожалению, %1$s разбился. Вы можете сообщить об этой ошибке:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nПожалуйста, создайте новый выпуск со стековой трассировкой и описанием того, как воспроизвести ошибку.</string>
     <string name="not_connected_to_internet">Вы не подключены к интернету</string>
     <string name="ok">ОК</string>
     <string name="only_unmetered_network_summary">Если эта опция отключена, FFUpdater может использовать мобильный интернет для проверки обновлений приложений в фоновом режиме. Это уменьшит ваш месячный лимит данных. Когда эта опция включена, для проверки обновлений в фоновом режиме используются только неучтенные сетевые соединения, как большинство WiFis.</string>
