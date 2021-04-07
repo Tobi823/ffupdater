@@ -20,6 +20,11 @@
     <string name="download_app_is_disabled">Die System-Download-App ist deaktiviert. FFUpdater benötigt diese Anwendung zum Herunterladen. Bitte aktivieren Sie sie.</string>
     <string name="download_application_from_with_status">Lade Anwendung herunter (%1$s)</string>
     <string name="download_failed">Download schlug fehl</string>
+    <string name="download_status_failed">fehlgeschlagen</string>
+    <string name="download_status_paused">pausiert</string>
+    <string name="download_status_pending">in Warteschlange</string>
+    <string name="download_status_running">läuft</string>
+    <string name="download_status_success">erfolgreich</string>
     <string name="download_the_app">Applikation herunterladen</string>
     <string name="downloaded_application_from">Anwendung wurde heruntergeladen von:</string>
     <string name="downloaded_application_is_not_verified">Heruntergeladene Anwendung ist NICHT verifiziert</string>

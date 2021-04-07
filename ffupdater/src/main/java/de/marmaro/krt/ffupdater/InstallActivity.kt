@@ -117,6 +117,7 @@ class InstallActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        @Suppress("DEPRECATION")
         super.onActivityResult(requestCode, resultCode, data)
         appInstaller.onActivityResult(requestCode, resultCode, data)
     }
@@ -240,10 +241,19 @@ class InstallActivity : AppCompatActivity() {
             val sleepInterval = 250L
             val maxWaitingTime = Duration.ofMinutes(5).toMillis()
             for (i in 1..(maxWaitingTime / sleepInterval)) {
-                val r = ia.downloadManager.getStatusAndProgress(ia.viewModel.downloadId!!)
-                ia.setText(R.id.downloadingFileText, r.toTranslatedText(ia))
-                ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = r.progress
-                when (r.status) {
+                val download = ia.downloadManager.getStatusAndProgress(ia.viewModel.downloadId!!)
+                val downloadStatus = when(download.status) {
+                    STATUS_RUNNING -> ia.getString(R.string.download_status_running)
+                    STATUS_SUCCESSFUL -> ia.getString(R.string.download_status_success)
+                    STATUS_FAILED -> ia.getString(R.string.download_status_failed)
+                    STATUS_PAUSED -> ia.getString(R.string.download_status_paused)
+                    STATUS_PENDING -> ia.getString(R.string.download_status_pending)
+                    else -> "${download.status}"
+                }
+                ia.setText(R.id.downloadingFileText,
+                        ia.getString(R.string.download_application_from_with_status, downloadStatus))
+                ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = download.progress
+                when (download.status) {
                     STATUS_FAILED -> return@f FAILURE_DOWNLOAD_UNSUCCESSFUL
                     STATUS_SUCCESSFUL -> return@f DOWNLOAD_WAS_SUCCESSFUL
                 }

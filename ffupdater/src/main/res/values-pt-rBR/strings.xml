@@ -20,6 +20,11 @@
     <string name="download_app_is_disabled">O app de download do sistema está desativado. FFUpdater precisa deste app para poder baixar. Por favor, ative-o.</string>
     <string name="download_application_from_with_status">Baixar o (%1$s)</string>
     <string name="download_failed">Download falhou</string>
+    <string name="download_status_failed">falhou</string>
+    <string name="download_status_paused">pausado</string>
+    <string name="download_status_pending">pendente</string>
+    <string name="download_status_running">em funcionamento</string>
+    <string name="download_status_success">sucesso</string>
     <string name="download_the_app">baixar o app</string>
     <string name="downloaded_application_from">App baixado de:</string>
     <string name="downloaded_application_is_not_verified">O App baixado NÃO foi verificado</string>

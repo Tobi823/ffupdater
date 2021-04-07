@@ -31,10 +31,12 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
      * @param notificationTitle      title for the download notification
      * @return new generated id for the download
      */
-    fun enqueue(context: Context,
-                downloadUrl: URL,
-                notificationTitle: String,
-                reservedFile: DownloadFileReservation): Long {
+    fun enqueue(
+            context: Context,
+            downloadUrl: URL,
+            notificationTitle: String,
+            reservedFile: DownloadFileReservation,
+    ): Long {
         check(downloadUrl.protocol == "https")
         val request = Request(Uri.parse(downloadUrl.toString()))
                 .setTitle(notificationTitle)
@@ -95,18 +97,6 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
         return downloadManager.getUriForDownloadedFile(id)
     }
 
-    class StatusProgress(val status: Int, val progress: Int) {
-        fun toTranslatedText(context: Context): String {
-            return context.getString(R.string.download_application_from_with_status, when (status) {
-                STATUS_RUNNING -> "running"
-                STATUS_SUCCESSFUL -> "success"
-                STATUS_FAILED -> "failed"
-                STATUS_PAUSED -> "paused"
-                STATUS_PENDING -> "pending"
-                else -> "? ($status)"
-            })
-        }
-    }
-
+    data class StatusProgress(val status: Int, val progress: Int)
     data class DownloadFileReservation(val name: String, val file: File)
 }

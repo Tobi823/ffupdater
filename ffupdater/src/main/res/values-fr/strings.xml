@@ -20,6 +20,11 @@
     <string name="download_app_is_disabled">L\'application de téléchargement du système est désactivée. FFUpdater a besoin de cette application pour le téléchargement. Veuillez l\'activer.</string>
     <string name="download_application_from_with_status">Télécharger l\'application (%1$s)</string>
     <string name="download_failed">Echec du téléchargement</string>
+    <string name="download_status_failed">échoué</string>
+    <string name="download_status_paused">en pause</string>
+    <string name="download_status_pending">en attente</string>
+    <string name="download_status_running">en cours d\'exécution</string>
+    <string name="download_status_success">succès</string>
     <string name="download_the_app">télécharger l\'application</string>
     <string name="downloaded_application_from">Application téléchargée à partir de:</string>
     <string name="downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>

@@ -21,6 +21,11 @@
     <string name="download_app_is_disabled">The system download app is disabled. FFUpdater needs this app for downloading. Please enable it.</string>
     <string name="download_application_from_with_status">Download application (%1$s)</string>
     <string name="download_failed">Download failed</string>
+    <string name="download_status_failed">failed</string>
+    <string name="download_status_paused">paused</string>
+    <string name="download_status_pending">pending</string>
+    <string name="download_status_running">running</string>
+    <string name="download_status_success">success</string>
     <string name="download_the_app">download the app</string>
     <string name="downloaded_application_from">Downloaded application from:</string>
     <string name="downloaded_application_is_not_verified">Downloaded application is NOT verified</string>

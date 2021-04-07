@@ -20,6 +20,11 @@
     <string name="download_app_is_disabled">Додаток для завантаження системи вимкнено. FFUpdater потребує цього додатка для завантаження. Увімкніть його.</string>
     <string name="download_application_from_with_status">Завантажити програму (%1$s)</string>
     <string name="download_failed">Не вдалося завантажити</string>
+    <string name="download_status_failed">не вдалося</string>
+    <string name="download_status_paused">призупинено</string>
+    <string name="download_status_pending">в очікуванні</string>
+    <string name="download_status_running">біг</string>
+    <string name="download_status_success">успіху</string>
     <string name="download_the_app">завантажити додаток</string>
     <string name="downloaded_application_from">Завантажена програма від:</string>
     <string name="downloaded_application_is_not_verified">Завантажена програма НЕ перевірена</string>

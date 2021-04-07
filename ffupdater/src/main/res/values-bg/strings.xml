@@ -20,6 +20,11 @@
     <string name="download_app_is_disabled">Системното приложение за изтегляне е изключено. FFUpdater се нуждае от него за да изтегля. Моля, включете го.</string>
     <string name="download_application_from_with_status">Изтегляне на приложение (%1$s)</string>
     <string name="download_failed">Грешка при изтегляне</string>
+    <string name="download_status_failed">неуспешно</string>
+    <string name="download_status_paused">спрян</string>
+    <string name="download_status_pending">в очакване</string>
+    <string name="download_status_running">работи</string>
+    <string name="download_status_success">успех</string>
     <string name="download_the_app">изтегляне на приложение</string>
     <string name="downloaded_application_from">Приложението е изтеглено от:</string>
     <string name="downloaded_application_is_not_verified">Изтегленото приложение е НЕпроверено</string>
