@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
+ * https://github.com/fork-maintainers/iceraven-browser
  * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
  */
 class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {

@@ -24,7 +24,9 @@ import java.time.ZonedDateTime
 import javax.net.ssl.HttpsURLConnection
 
 /**
- * Verify that the APIs for downloading latest app updates are still working
+ * Verify that the APIs for downloading latest app updates:
+ *  - still working
+ *  - not downloading outdated versions
  */
 class DownloadApiChecker {
     @MockK
@@ -107,7 +109,7 @@ class DownloadApiChecker {
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 21
+        val maxDays = 30
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -118,7 +120,7 @@ class DownloadApiChecker {
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 30
+        val maxDays = 60
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
