@@ -1,3 +1,6 @@
+# 2021-XX-XX Version 72.1.0 (61)
+ * Make download status translatable (thanks DeenHyper74; Tobiwan/ffupdater#57)
+
 # 2021-03-14 Version 72.0.0 (60)
  * !!! Remove support for Firefox Light because updates are no longer signed and therefore pose a security risk (thanks opened and mega-stoffel)
  * User can disable the background update check on metered networks (thanks williamtheaker)
