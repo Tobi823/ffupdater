@@ -14,7 +14,7 @@
     <string name="brave_description">Navegue livremente e de forma privada! O Navegador Brave é rápido, gratuito e seguro, com bloqueador de anúncios e pop-ups. Navegue e pesquise na internet sem ser rastreado por anunciantes e sem malware.</string>
     <string name="brave_title">Brave Navegador Privado</string>
     <string name="brave_warning">Brave utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Brave?</string>
-    <string name="but_was">Mas era:</string>    
+    <string name="but_was">Mas era:</string>
     <string name="device_too_old_dialog_message">O App requer Android %1$s. Porém seu dispositivo só tem Android %2$s. Escolha um aplicativo diferente, atualize seu sistema ou use um smartphone mais novo.</string>
     <string name="device_too_old_dialog_title">O dispositivo é incompatível</string>
     <string name="download_app_is_disabled">O app de download do sistema está desativado. FFUpdater precisa deste app para poder baixar. Por favor, ative-o.</string>
