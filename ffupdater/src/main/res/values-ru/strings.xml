@@ -25,11 +25,11 @@
     <string name="download_app_is_disabled">Системное приложение для загрузки отключено. Оно нужно для работы FFUpdater. Пожалуйста, включите его.</string>
     <string name="download_application_from_with_status">Загрузить приложение (%1$s)</string>
     <string name="download_failed">Не удалось загрузить</string>
-    <string name="download_status_failed">неудачный сайт</string>
-    <string name="download_status_paused">приостановленный</string>
-    <string name="download_status_pending">на время</string>
-    <string name="download_status_running">работающий</string>
-    <string name="download_status_success">успех</string>
+    <string name="download_status_failed">неудачно</string>
+    <string name="download_status_paused">приостановлено</string>
+    <string name="download_status_pending">в ожидании</string>
+    <string name="download_status_running">в процессе</string>
+    <string name="download_status_success">успешно</string>
     <string name="download_the_app">загрузить приложение</string>
     <string name="downloaded_application_from">Приложение загружено с:</string>
     <string name="downloaded_application_is_not_verified">Загруженное приложение НЕ проверяется</string>
@@ -61,7 +61,7 @@
     <string name="install_app">установочное приложение</string>
     <string name="install_new_app">Установить новое приложение</string>
     <string name="install_new_app_dialog__title">Установить приложение</string>
-    <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите загрузить и установить последнюю версию снова?</string>
+    <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите снова загрузить и установить ее?</string>
     <string name="install_same_version_dialog__title">Установлена та же версия</string>
     <string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
@@ -99,7 +99,7 @@
     <string name="too_low_memory_description">На вашем устройстве имеется только %1$d Мб свободного места. Это может привести к сбою в загрузке или установке.</string>
     <string name="too_low_memory_title">Недостаточно места на диске</string>
     <string name="unknown_signature_of_installed_app_text1">Необходимо удалить существующее приложение, прежде чем FFUpdater сможет установить или обновить его. Создайте резервную копию данных, так как при деинсталляции будут удалены все закладки, настройки и т.д.</string>
-    <string name="unknown_signature_of_installed_app_text2">" Причина: текущее установленное приложение не подписано оригинальным разработчиком - возможно, оно подписано F-Droid. Android отказывается обновлять приложение, если установленная и обновленная версии были подписаны разными людьми."</string>
+    <string name="unknown_signature_of_installed_app_text2">Причина: текущее установленное приложение не подписано оригинальным разработчиком - возможно, оно подписано F-Droid. Android отказывается обновлять приложение, если установленная и обновленная версии были подписаны разными людьми.</string>
     <string name="unsupported_abi_dialog__message">Выбранный браузер несовместим с процессором вашего смартфона. Пожалуйста, выберите другой браузер.</string>
     <string name="unsupported_abi_dialog__title">Устройство не поддерживается</string>
     <string name="update_interval_12h">12 часов</string>
