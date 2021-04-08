@@ -32,6 +32,7 @@
         <package android:name="mozilla.lockbox" />
         <package android:name="com.brave.browser" />
         <package android:name="io.github.forkmaintainers.iceraven" />
+        <package android:name="org.bromite.bromite" />
     </queries>
 
     <application

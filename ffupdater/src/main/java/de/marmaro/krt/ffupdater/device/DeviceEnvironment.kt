@@ -12,7 +12,6 @@ class DeviceEnvironment constructor(
 
     companion object {
         private fun findSupportedAbis(): List<ABI> {
-            val d = SDK_INT
             return Build.SUPPORTED_ABIS.mapNotNull {
                 when (it) {
                     "arm64-v8a" -> ABI.ARM64_V8A

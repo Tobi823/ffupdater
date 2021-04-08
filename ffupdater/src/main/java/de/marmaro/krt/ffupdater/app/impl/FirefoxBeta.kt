@@ -49,6 +49,5 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     }
 
     companion object {
-        const val INSTALLED_VERSION_KEY = "device_app_register_FIREFOX_BETA_version_name"
     }
 }

@@ -14,6 +14,8 @@
     <string name="brave_description">Navegue livremente e de forma privada! O Navegador Brave é rápido, gratuito e seguro, com bloqueador de anúncios e pop-ups. Navegue e pesquise na internet sem ser rastreado por anunciantes e sem malware.</string>
     <string name="brave_title">Brave Navegador Privado</string>
     <string name="brave_warning">Brave utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Brave?</string>
+    <string name="bromite__warning">Bromite utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Bromite?</string>
+    <string name="bromite__description">Bromite tem o objetivo de proporcionar uma experiência de navegação sem complicação, sem recursos invasivos de privacidade e com a adição de um motor rápido de bloqueio de ad-bloqueio. Mínimas mudanças de IU são aplicadas para ajudar a frear a idéia de \"navegador como plataforma publicitária\".</string>
     <string name="but_was">Mas era:</string>
     <string name="device_too_old_dialog__message">O App requer Android %1$s. Porém seu dispositivo só tem Android %2$s. Escolha um aplicativo diferente, atualize seu sistema ou use um smartphone mais novo.</string>
     <string name="device_too_old_dialog__title">O dispositivo é incompatível</string>
@@ -49,7 +51,6 @@
     <string name="firefox_nightly_warning">Foi projetado para desenvolvedores e testadores. Pode conter vários bugs que podem afetar sua interação com o navegador. Gostaria de instalá-lo?</string>
     <string name="firefox_release_description">Firefox para Android e incrivelmente rápido é seguro. Milhares de rastreadores estão acompanhando você todos os dias, coletando informações sobre onde você vai e diminuindo a velocidade de navegador. Firefox bloqueia por padrão mais de 2000 destes rastreadores e tem disponíveis extensões de bloqueadores de anúncios, caso precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa.</string>
     <string name="firefox_release_title">Firefox Browser</string>
-    <string name="github" translatable="false">GitHub</string>
     <string name="go_back">Voltar</string>
     <string name="iceraven_description">Definitivamente não criado por Mozilla! \n\nNavegador Iceraven é um navegador para Android, baseado na versão Fenix da Mozilla, GeckoView e Componentes da Mozilla para Android. \n\nNosso objetivo é ser um Fork bem próximo ao novo Firefox para Android que intenta oferecer aos usuários mais opções, mais possibilidades de customização (incluindo uma ampla biblioteca de extensões) e mais informações sobre as páginas visitadas e como o navegador está interagindo com elas.</string>
     <string name="iceraven_title">Iceraven Browser</string>
@@ -71,7 +72,6 @@
     <string name="lockwise_description">ACESSO COM SENHA, &amp; SOMENTE VOCÊ \n\nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via aplicativo para entrar em suas contas</string>
     <string name="lockwise_title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Atualizar navegadores da Mozilla</string>
-    <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Infelizmente, %1$s falhou. Você pode submeter relatório em:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nPor favor, crie um novo Issue com o Stacktrace e escreva uma descrição de como reproduzir o bug.</string>
     <string name="not_connected_to_internet">Sem conexão da Internet</string>
     <string name="ok">OK</string>
@@ -126,4 +126,5 @@
     <string name="update_notification_title">Atualização para "%1$s" disponível</string>
     <string name="verifying_downloaded_application_certificate">Verificando certificado do App</string>
     <string name="you_can_now_close_this_window">Pode fechar este diálogo</string>
+    <string name="bromite__title">Bromite</string>
 </resources>

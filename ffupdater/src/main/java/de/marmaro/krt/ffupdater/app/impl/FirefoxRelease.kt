@@ -50,6 +50,5 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     }
 
     companion object {
-        const val INSTALLED_VERSION_KEY = "device_app_register_FIREFOX_RELEASE_version_name"
     }
 }

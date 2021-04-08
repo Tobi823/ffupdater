@@ -13,8 +13,8 @@ enum class App(appDetail: AppDetail) {
     FIREFOX_KLAR(FirefoxKlar(apiConsumer)),
     LOCKWISE(Lockwise(apiConsumer)),
     BRAVE(Brave(apiConsumer)),
-    ICERAVEN(Iceraven(apiConsumer));
+    ICERAVEN(Iceraven(apiConsumer)),
+    BROMITE(Bromite(apiConsumer));
 
     val detail: AppDetail = appDetail
-
 }

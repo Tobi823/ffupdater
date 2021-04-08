@@ -51,6 +51,7 @@
         <item>@string/lockwise_title</item>
         <item>@string/brave_title</item>
         <item>@string/iceraven_title</item>
+        <item>@string/bromite__title</item>
     </string-array>
 
     <string-array name="disabledAppEntryValues">
@@ -62,6 +63,7 @@
         <item>LOCKWISE</item>
         <item>BRAVE</item>
         <item>ICERAVEN</item>
+        <item>BROMITE</item>
     </string-array>
 
     <string-array name="themeEntries" tools:ignore="InconsistentArrays">

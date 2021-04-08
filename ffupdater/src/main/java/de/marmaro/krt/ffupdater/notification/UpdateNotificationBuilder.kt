@@ -32,6 +32,7 @@ object UpdateNotificationBuilder {
             createNotificationChannel(getChannelId(app), appTitle, context)
             NotificationCompat.Builder(context, getChannelId(app))
         } else {
+            @Suppress("DEPRECATION")
             NotificationCompat.Builder(context)
         }
                 .setSmallIcon(R.mipmap.transparent, 0)
@@ -58,6 +59,7 @@ object UpdateNotificationBuilder {
             App.LOCKWISE -> "update_notification_channel__lockwise"
             App.BRAVE -> "update_notification_channel__brave"
             App.ICERAVEN -> "update_notification_channel__iceraven"
+            App.BROMITE -> "update_notification_channel__bromite"
         }
     }
 
@@ -71,6 +73,7 @@ object UpdateNotificationBuilder {
             App.LOCKWISE -> 206
             App.BRAVE -> 207
             App.ICERAVEN -> 208
+            App.BROMITE -> 209
         }
     }
 

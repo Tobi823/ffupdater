@@ -29,6 +29,7 @@ object ErrorNotificationBuilder {
             createNotificationChannel(context)
             NotificationCompat.Builder(context, CHANNEL_ID)
         } else {
+            @Suppress("DEPRECATION")
             NotificationCompat.Builder(context)
         }
                 .setSmallIcon(mipmap.transparent, 0)

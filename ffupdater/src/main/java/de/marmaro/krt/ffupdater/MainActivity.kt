@@ -211,6 +211,7 @@ class MainActivity : AppCompatActivity() {
             App.LOCKWISE -> R.id.lockwiseCard
             App.BRAVE -> R.id.braveCard
             App.ICERAVEN -> R.id.iceravenCard
+            App.BROMITE -> R.id.bromiteCard
         })
     }
 
@@ -232,6 +233,7 @@ class MainActivity : AppCompatActivity() {
             App.LOCKWISE -> R.id.lockwiseDownloadButton
             App.BRAVE -> R.id.braveDownloadButton
             App.ICERAVEN -> R.id.iceravenDownloadButton
+            App.BROMITE -> R.id.bromiteDownloadButton
         })
     }
 
@@ -245,6 +247,7 @@ class MainActivity : AppCompatActivity() {
             App.LOCKWISE -> R.id.lockwiseInstalledVersion
             App.BRAVE -> R.id.braveInstalledVersion
             App.ICERAVEN -> R.id.iceravenInstalledVersion
+            App.BROMITE -> R.id.bromiteInstalledVersion
         })
     }
 
@@ -258,6 +261,7 @@ class MainActivity : AppCompatActivity() {
             App.LOCKWISE -> R.id.lockwiseAvailableVersion
             App.BRAVE -> R.id.braveAvailableVersion
             App.ICERAVEN -> R.id.iceravenAvailableVersion
+            App.BROMITE -> R.id.bromiteAvailableVersion
         })
     }
 
@@ -271,6 +275,7 @@ class MainActivity : AppCompatActivity() {
             App.LOCKWISE -> R.id.lockwiseInfoButton
             App.BRAVE -> R.id.braveInfoButton
             App.ICERAVEN -> R.id.iceravenInfoButton
+            App.BROMITE -> R.id.bromiteInfoButton
         })
     }
 

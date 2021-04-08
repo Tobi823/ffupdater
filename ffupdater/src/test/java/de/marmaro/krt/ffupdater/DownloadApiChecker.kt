@@ -1,12 +1,8 @@
 package de.marmaro.krt.ffupdater
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
-import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.*
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -51,6 +47,17 @@ class DownloadApiChecker {
     fun brave() {
         val result = runBlocking {
             Brave(ApiConsumer()).updateCheck(context, device)
+        }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 14
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
+    }
+
+    @Test
+    fun bromite() {
+        val result = runBlocking {
+            Bromite(ApiConsumer()).updateCheck(context, device)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())

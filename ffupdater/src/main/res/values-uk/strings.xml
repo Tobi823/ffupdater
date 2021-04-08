@@ -14,6 +14,8 @@
     <string name="brave_description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення. \n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
     <string name="brave_title">Brave Browser</string>
     <string name="brave_warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave?</string>
+    <string name="bromite__warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Bromite?</string>
+    <string name="bromite__description">Bromite націлений на те, щоб забезпечити безперешкодний перегляд веб-сторінок без функцій, що заважають конфіденційності, та з додаванням швидкого механізму блокування реклами. Мінімальні зміни користувальницького інтерфейсу застосовуються, щоб допомогти приборкати ідею \"браузер як рекламна платформа\".</string>
     <string name="but_was">Але було:</string>
     <string name="device_too_old_dialog__message">Додаток вимагає Android %1$s. Але на вашому пристрої працює лише Android %2$s. Або виберіть інший додаток, оновіть операційну систему або перейдіть на новий смартфон.</string>
     <string name="device_too_old_dialog__title">Пристрій занадто старий</string>
@@ -123,4 +125,5 @@
     <string name="update_notification_title">Обновление для "%1$s" доступно</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
+    <string name="bromite__title">Bromite</string>
 </resources>
