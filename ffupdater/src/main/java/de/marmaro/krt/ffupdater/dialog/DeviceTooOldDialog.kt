@@ -17,11 +17,11 @@ import de.marmaro.krt.ffupdater.utils.Utils
 class DeviceTooOldDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val app = App.valueOf(requireArguments().getString(BUNDLE_APP_NAME)!!)
+        val required = Utils.getVersionAndCodenameForApiLevel(app.detail.minApiLevel)
+        val actual = Utils.getVersionAndCodenameForApiLevel(DeviceEnvironment().sdkInt)
         return AlertDialog.Builder(activity)
-                .setTitle(R.string.device_too_old_dialog_title)
-                .setMessage(getString(R.string.device_too_old_dialog_message,
-                        Utils.getVersionAndCodenameForApiLevel(app.detail.minApiLevel),
-                        Utils.getVersionAndCodenameForApiLevel(DeviceEnvironment().sdkInt)))
+                .setTitle(R.string.device_too_old_dialog__title)
+                .setMessage(getString(R.string.device_too_old_dialog__message, required, actual))
                 .setNegativeButton(getString(R.string.ok)) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .create()
     }

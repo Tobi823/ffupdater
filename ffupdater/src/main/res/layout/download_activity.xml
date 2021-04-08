@@ -199,7 +199,7 @@
             <Button
                 android:id="@+id/installConfirmationButton"
                 style="@style/DefaultButton"
-                android:text="@string/install_application" />
+                android:text="@string/install_new_app_dialog__title" />
 
         </LinearLayout>
 

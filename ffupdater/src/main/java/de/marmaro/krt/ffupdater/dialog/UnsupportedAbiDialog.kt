@@ -14,8 +14,8 @@ import de.marmaro.krt.ffupdater.R
 class UnsupportedAbiDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
-                .setTitle(R.string.unsupported_abi_dialog_title)
-                .setMessage(R.string.unsupported_abi_dialog_message)
+                .setTitle(R.string.unsupported_abi_dialog__title)
+                .setMessage(R.string.unsupported_abi_dialog__message)
                 .setNegativeButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .create()
     }

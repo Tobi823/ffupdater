@@ -14,13 +14,13 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
  * Allow the user to select an app from the dialog to install.
  * Show warning or error message (if ABI is not supported) if necessary.
  */
-class InstallAppDialog : DialogFragment() {
+class InstallNewAppDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
         val apps = App.values().filterNot { it.detail.isInstalled(context) }
         val names = apps.map { context.getString(it.detail.displayTitle) }.toTypedArray()
         return AlertDialog.Builder(activity)
-                .setTitle(R.string.install_application)
+                .setTitle(R.string.install_new_app_dialog__title)
                 .setItems(names) { _: DialogInterface, which: Int ->
                     triggerAppInstallation(apps[which])
                 }
@@ -43,12 +43,12 @@ class InstallAppDialog : DialogFragment() {
     }
 
     fun show(manager: FragmentManager) {
-        show(manager, "install_app_dialog")
+        show(manager, "install_new_app_dialog")
     }
 
     companion object {
-        fun newInstance(): InstallAppDialog {
-            return InstallAppDialog()
+        fun newInstance(): InstallNewAppDialog {
+            return InstallNewAppDialog()
         }
     }
 }

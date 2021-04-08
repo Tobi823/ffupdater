@@ -21,7 +21,8 @@ import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
-import de.marmaro.krt.ffupdater.dialog.InstallAppDialog
+import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
+import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
 import de.marmaro.krt.ffupdater.download.InternetConnectionTester
 import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
@@ -39,6 +40,7 @@ import java.util.concurrent.*
 class MainActivity : AppCompatActivity() {
     private lateinit var cm: ConnectivityManager
     private val deviceEnvironment = DeviceEnvironment()
+    private val sameAppVersionAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,19 +53,34 @@ class MainActivity : AppCompatActivity() {
         OldDownloadsDeleter.delete(this)
         cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        for (app in App.values()) {
+        App.values().forEach { app ->
             getInfoButtonForApp(app).setOnClickListener {
                 AppInfoDialog.newInstance(app).show(supportFragmentManager)
             }
-            getDownloadButtonForApp(app).setOnClickListener {
-                downloadApp(app)
-            }
+            getDownloadButtonForApp(app).setOnClickListener { userTriggersAppDownload(app) }
         }
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            InstallAppDialog.newInstance().show(supportFragmentManager)
+            InstallNewAppDialog.newInstance().show(supportFragmentManager)
         }
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).setOnRefreshListener {
             updateUI(true)
+        }
+    }
+
+    private fun userTriggersAppDownload(app: App) {
+        if (isInternetUnavailable()) {
+            showInternetUnavailableToast()
+            return
+        }
+        // true: same version is already installed -> show warning
+        // false: an other version is installed (probably older) ->
+        //          install new version without warning
+        // null: due to e.g. network issues it isn't known if the same version is installed ->
+        //          install new version without warning
+        if (sameAppVersionAlreadyInstalled[app] == true) {
+            InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
+        } else {
+            installApp(app)
         }
     }
 
@@ -105,25 +122,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(crashOnException: Boolean) {
-        val internetAvailable = InternetConnectionTester.isInternetAvailable(cm, deviceEnvironment)
-        if (!internetAvailable) {
-            Snackbar.make(findViewById(R.id.coordinatorLayout), R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show()
+        val installedApps = App.values().filter { it.detail.isInstalled(this) }
+        installedApps.forEach {
+            getAppCardViewForApp(it).visibility = View.VISIBLE
+            getInstalledVersionTextView(it).text = it.detail.getDisplayInstalledVersion(this)
+            disableDownloadButton(it)
         }
+        val notInstalledApps = App.values().filterNot { installedApps.contains(it) }
+        notInstalledApps.forEach { getAppCardViewForApp(it).visibility = View.GONE }
+
+        if (isInternetUnavailable()) {
+            installedApps.forEach {
+                getAvailableVersionTextView(it).text = getString(R.string.not_connected_to_internet)
+            }
+            findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
+            showInternetUnavailableToast()
+            return
+        }
+
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = true
         val jobs = ConcurrentLinkedQueue<Job>()
-        for (app in App.values()) {
-            if (app.detail.isInstalled(this)) {
-                getAppCardViewForApp(app).visibility = View.VISIBLE
-                getInstalledVersionTextView(app).text = app.detail.getDisplayInstalledVersion(this)
-                if (internetAvailable) {
-                    getAvailableVersionTextView(app).text = getString(R.string.available_version_loading)
-                    jobs.add(updateUIForApp(app, crashOnException))
-                } else {
-                    getAvailableVersionTextView(app).text = getString(R.string.not_connected_to_internet)
-                }
-            } else {
-                getAppCardViewForApp(app).visibility = View.GONE
-            }
+        installedApps.forEach {
+            getAvailableVersionTextView(it).text = getString(R.string.available_version_loading)
+            jobs.add(showUpdateCheckResultsOfApp(it, crashOnException))
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -134,15 +155,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUIForApp(app: App, crashOnException: Boolean): Job {
+    private fun showUpdateCheckResultsOfApp(app: App, crashOnException: Boolean): Job {
         return lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val result = app.detail.updateCheck(applicationContext, deviceEnvironment)
+                val updateResult = app.detail.updateCheck(applicationContext, deviceEnvironment)
                 lifecycleScope.launch(Dispatchers.Main) {
-                    getAvailableVersionTextView(app).text = result.displayVersion
-                    if (result.isUpdateAvailable) {
+                    getAvailableVersionTextView(app).text = updateResult.displayVersion
+                    if (updateResult.isUpdateAvailable) {
+                        sameAppVersionAlreadyInstalled[app] = false
                         enableDownloadButton(app)
                     } else {
+                        sameAppVersionAlreadyInstalled[app] = true
                         disableDownloadButton(app)
                     }
                 }
@@ -159,20 +182,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Will be called by the dialogs like InstallAppDialog.
-     */
-    fun downloadApp(app: App) {
-        if (InternetConnectionTester.isInternetUnavailable(cm, deviceEnvironment)) {
-            Snackbar.make(findViewById(R.id.coordinatorLayout),
-                    R.string.not_connected_to_internet,
-                    Snackbar.LENGTH_LONG)
-                    .show()
+    fun installApp(app: App) {
+        if (isInternetUnavailable()) {
+            showInternetUnavailableToast()
             return
         }
         val intent = Intent(this, InstallActivity::class.java)
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name)
         startActivity(intent)
+    }
+
+    private fun isInternetUnavailable(): Boolean {
+        return InternetConnectionTester.isInternetUnavailable(cm, deviceEnvironment)
+    }
+
+    private fun showInternetUnavailableToast() {
+        val layout = findViewById<View>(R.id.coordinatorLayout)
+        Snackbar.make(layout, R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show()
     }
 
     private fun getAppCardViewForApp(app: App): CardView {

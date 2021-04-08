@@ -15,8 +15,10 @@
     <string name="brave_title">Brave Navegador Privado</string>
     <string name="brave_warning">Brave utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Brave?</string>
     <string name="but_was">Mas era:</string>
-    <string name="device_too_old_dialog_message">O App requer Android %1$s. Porém seu dispositivo só tem Android %2$s. Escolha um aplicativo diferente, atualize seu sistema ou use um smartphone mais novo.</string>
-    <string name="device_too_old_dialog_title">O dispositivo é incompatível</string>
+    <string name="device_too_old_dialog__message">O App requer Android %1$s. Porém seu dispositivo só tem Android %2$s. Escolha um aplicativo diferente, atualize seu sistema ou use um smartphone mais novo.</string>
+    <string name="device_too_old_dialog__title">O dispositivo é incompatível</string>
+    <string name="dialog_button__do_not_install">Não quero instalar</string>
+    <string name="dialog_button__yes">Sim</string>
     <string name="download_app_is_disabled">O app de download do sistema está desativado. FFUpdater precisa deste app para poder baixar. Por favor, ative-o.</string>
     <string name="download_application_from_with_status">Baixar o (%1$s)</string>
     <string name="download_failed">Download falhou</string>
@@ -55,11 +57,12 @@
     <string name="information_about_the_app">informação sobre o app</string>
     <string name="install_activity_label">Instalar o App</string>
     <string name="install_app">Instalar o App</string>
-    <string name="install_application">Instalar o App</string>
     <string name="install_new_app">Instalar o novo App</string>
-    <string name="installation_warning_negative_button">Não quero instalar</string>
-    <string name="installation_warning_positive_button">Sim</string>
-    <string name="installation_warning_title">Aviso</string>
+    <string name="install_new_app_dialog__title">Instalar o App</string>
+    <string name="install_same_version_dialog__message">A última versão deste aplicativo já está instalada. Você quer baixar e instalar a versão mais recente novamente?</string>
+    <string name="install_same_version_dialog__title">Mesma versão instalada
+</string>
+    <string name="show_warning_before_installation_dialog__title">Aviso</string>
     <string name="installed_app_is_not_verified">O App instalado NÃO foi verificado</string>
     <string name="installed_application_is_verified">O App instalado foi verificado</string>
     <string name="installed_version">Instalado: %1$s</string>
@@ -97,8 +100,8 @@
     <string name="too_low_memory_title">Pouco espaço disponível</string>
     <string name="unknown_signature_of_installed_app_text1">Precisa desinstalar o App existente antes de que o FFUpdater pode instalar ou atualizar este App. Faça um backup dos seus dados porque a desinstalação excluirá todos os seus favoritos, configurações, etc.</string>
     <string name="unknown_signature_of_installed_app_text2">Motivo: O App instalado não é assinado pelo desenvolvedor original - talvez tenha sido assinado pelo F-Droid. Android SO não permite atualizar um aplicativo com diferentes assinaturas.</string>
-    <string name="unsupported_abi_dialog_message">O navegador selecionado é incompatível com o processador do seu smartphone. Por favor, selecione um navegador diferente.</string>
-    <string name="unsupported_abi_dialog_title">Dispositivo incompatível</string>
+    <string name="unsupported_abi_dialog__message">O navegador selecionado é incompatível com o processador do seu smartphone. Por favor, selecione um navegador diferente.</string>
+    <string name="unsupported_abi_dialog__title">Dispositivo incompatível</string>
     <string name="update_interval_12h">12 horas</string>
     <string name="update_interval_15min">15 minutos</string>
     <string name="update_interval_18h">18 horas</string>

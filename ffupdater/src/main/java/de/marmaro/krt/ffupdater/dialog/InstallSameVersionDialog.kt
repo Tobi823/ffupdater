@@ -10,36 +10,34 @@ import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 
-/**
- * Ask the user with this dialog if he really want to install the app.
- */
-class ShowWarningBeforeInstallation : DialogFragment() {
+class InstallSameVersionDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val app = App.valueOf(requireArguments().getString(BUNDLE_APP_NAME)!!)
+        val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-                .setTitle(getString(R.string.installation_warning_title))
-                .setMessage(getString(app.detail.displayWarning!!))
-                .setPositiveButton(getString(R.string.installation_warning_positive_button)) { dialog: DialogInterface, _: Int ->
+                .setTitle(getString(R.string.install_same_version_dialog__title))
+                .setMessage(getString(R.string.install_same_version_dialog__message))
+                .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
+                    mainActivity.installApp(app)
                     dialog.dismiss()
-                    (activity as MainActivity).downloadApp(app)
                 }
-                .setNegativeButton(getString(R.string.installation_warning_negative_button)) { dialog: DialogInterface, _: Int ->
+                .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
                 }
                 .create()
     }
 
     fun show(manager: FragmentManager) {
-        show(manager, "show_warning_before_installation_dialog")
+        show(manager, "install_same_version_dialog")
     }
 
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
 
-        fun newInstance(app: App): ShowWarningBeforeInstallation {
+        fun newInstance(app: App): InstallSameVersionDialog {
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
-            val fragment = ShowWarningBeforeInstallation()
+            val fragment = InstallSameVersionDialog()
             fragment.arguments = bundle
             return fragment
         }
