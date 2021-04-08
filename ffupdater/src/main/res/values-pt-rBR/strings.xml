@@ -14,8 +14,9 @@
     <string name="brave_description">Navegue livremente e de forma privada! O Navegador Brave é rápido, gratuito e seguro, com bloqueador de anúncios e pop-ups. Navegue e pesquise na internet sem ser rastreado por anunciantes e sem malware.</string>
     <string name="brave_title">Brave Navegador Privado</string>
     <string name="brave_warning">Brave utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Brave?</string>
-    <string name="bromite__warning">Bromite utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Bromite?</string>
     <string name="bromite__description">Bromite tem o objetivo de proporcionar uma experiência de navegação sem complicação, sem recursos invasivos de privacidade e com a adição de um motor rápido de bloqueio de ad-bloqueio. Mínimas mudanças de IU são aplicadas para ajudar a frear a idéia de \"navegador como plataforma publicitária\".</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="bromite__warning">Bromite utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Bromite?</string>
     <string name="but_was">Mas era:</string>
     <string name="device_too_old_dialog__message">O App requer Android %1$s. Porém seu dispositivo só tem Android %2$s. Escolha um aplicativo diferente, atualize seu sistema ou use um smartphone mais novo.</string>
     <string name="device_too_old_dialog__title">O dispositivo é incompatível</string>
@@ -63,7 +64,6 @@
     <string name="install_same_version_dialog__message">A última versão deste aplicativo já está instalada. Você quer baixar e instalar a versão mais recente novamente?</string>
     <string name="install_same_version_dialog__title">Mesma versão instalada
 </string>
-    <string name="show_warning_before_installation_dialog__title">Aviso</string>
     <string name="installed_app_is_not_verified">O App instalado NÃO foi verificado</string>
     <string name="installed_application_is_verified">O App instalado foi verificado</string>
     <string name="installed_version">Instalado: %1$s</string>
@@ -86,6 +86,7 @@
     <string name="settings_disabled_apps_title">Apps excluídos</string>
     <string name="settings_title">Verificar por atualizações</string>
     <string name="sha_256_certificate_fingerprint">Certificado de impressão digital SHA-256:</string>
+    <string name="show_warning_before_installation_dialog__title">Aviso</string>
     <string name="theme_battery_saver">Escuro quando Economia da Bateria está ativa</string>
     <string name="theme_dark">Escuro</string>
     <string name="theme_light">Claro</string>
@@ -126,5 +127,4 @@
     <string name="update_notification_title">Atualização para "%1$s" disponível</string>
     <string name="verifying_downloaded_application_certificate">Verificando certificado do App</string>
     <string name="you_can_now_close_this_window">Pode fechar este diálogo</string>
-    <string name="bromite__title">Bromite</string>
 </resources>

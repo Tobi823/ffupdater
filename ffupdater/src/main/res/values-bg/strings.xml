@@ -14,6 +14,8 @@
     <string name="brave_description">Brave Web Browser поверителен и безопасен мрежов четец, който безплатно спира реклами от трети страни. \n\nBrave Web Browser е бърз и сигурен мрежов четец за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен четец, който ви предпазва от проследяване чрез реклами, злонамерен софтуер и изскачащи прозорци.</string>
     <string name="brave_title">Brave Browser</string>
     <string name="brave_warning">Brave използва техническата основа на Google Chrome (Chromium) - на някои това не им допада. Искате ли да инсталирате Brave?</string>
+    <string name="bromite__description">Bromite има за цел да осигури безпроблемно сърфиране без функции, нарушаващи поверителността, и с добавяне на бърз механизъм за блокиране на реклами. Прилагат се минимални промени в потребителския интерфейс, за да се ограничи идеята за \"браузъра като рекламна платформа\".</string>
+    <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite използва техническата основа на Google Chrome (Chromium) - на някои това не им допада. Искате ли да инсталирате Bromite?</string>
     <string name="but_was">Но е:</string>
     <string name="device_too_old_dialog__message">Приложението работи под Android %1$s, но устройството работи само с Android %2$s. Изберете друго приложение, обновете операционната система или сменете телефона с по-нов.</string>
@@ -61,7 +63,6 @@
     <string name="install_new_app_dialog__title">Инсталиране</string>
     <string name="install_same_version_dialog__message">Най-новата версия на това приложение вече е инсталирана. Искате ли да изтеглите и инсталирате отново последната версия?</string>
     <string name="install_same_version_dialog__title">Инсталирана е същата версия</string>
-    <string name="show_warning_before_installation_dialog__title">Внимание</string>
     <string name="installed_app_is_not_verified">Инсталираното приложение е НЕпроверено</string>
     <string name="installed_application_is_verified">Инсталираното приложение е проверено</string>
     <string name="installed_version">Инсталирано: %1$s</string>
@@ -84,6 +85,7 @@
     <string name="settings_disabled_apps_title">Пропускани приложения</string>
     <string name="settings_title">Проверка за обновяване на приложения</string>
     <string name="sha_256_certificate_fingerprint">Отпечатък с SHA-256 от сертификат:</string>
+    <string name="show_warning_before_installation_dialog__title">Внимание</string>
     <string name="theme_battery_saver">Тъмна при режим на пестене на батерия</string>
     <string name="theme_dark">Тъмна</string>
     <string name="theme_light">Светла</string>
@@ -124,6 +126,4 @@
     <string name="update_notification_title">Налично издание на %1$s</string>
     <string name="verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__description">Bromite има за цел да осигури безпроблемно сърфиране без функции, нарушаващи поверителността, и с добавяне на бърз механизъм за блокиране на реклами. Прилагат се минимални промени в потребителския интерфейс, за да се ограничи идеята за \"браузъра като рекламна платформа\".</string>
 </resources>

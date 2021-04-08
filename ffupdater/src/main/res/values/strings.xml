@@ -14,6 +14,8 @@
     <string name="brave_description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
     <string name="brave_title">Brave Private Browser</string>
     <string name="brave_warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
+    <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
+    <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
     <string name="but_was">But was:</string>
     <string name="default_theme_preference" translatable="false">3</string>
@@ -63,7 +65,6 @@
     <string name="install_new_app_dialog__title">Install Application</string>
     <string name="install_same_version_dialog__message">The latest version of this app is already installed. Do you want to download and install the latest version again?</string>
     <string name="install_same_version_dialog__title">Same version installed</string>
-    <string name="show_warning_before_installation_dialog__title">Warning</string>
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="installed_version">Installed: %1$s</string>
@@ -87,6 +88,7 @@
     <string name="settings_disabled_apps_title">Excluded applications</string>
     <string name="settings_title">Application Update Check</string>
     <string name="sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
+    <string name="show_warning_before_installation_dialog__title">Warning</string>
     <string name="theme_battery_saver">Dark when Battery Saver active</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_light">Light</string>
@@ -127,6 +129,4 @@
     <string name="update_notification_title">Update for "%1$s" available</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
 </resources>
