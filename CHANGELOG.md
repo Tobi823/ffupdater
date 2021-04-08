@@ -1,4 +1,6 @@
 # 2021-XX-XX Version 72.1.0 (61)
+ * Improve Brazilian Portuguese translation (thanks mezysinc; Tobiwan/ffupdater#58)
+ * Improve Russian translation (thanks DeenHyper74; Tobiwan/ffupdater#56)
  * Make download status translatable (thanks DeenHyper74; Tobiwan/ffupdater#57)
 
 # 2021-03-14 Version 72.0.0 (60)
