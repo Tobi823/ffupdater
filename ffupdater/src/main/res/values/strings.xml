@@ -59,6 +59,15 @@
     <string name="install_activity__external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
     <string name="install_activity__fetch_url_for_download">Fetch download URL from %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Fetched download URL from %1$s</string>
+    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
+    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug. \n\nI recommend you to uninstall the application.</string>
+    <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
+    <string name="install_activity__too_low_memory_description">On your device is only %1$d MB of space available. This may lead to download or installation failure.</string>
+    <string name="install_activity__too_low_memory_title">Low Disk Space</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text1">You have to uninstall the existing app before FFUpdater can install or update the app. Backup your data because the uninstall will delete all your bookmarks, settings etc.</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text2">Reason: The current installed app is not signed by the original developer - maybe it\'s signed by F-Droid. Android refuses to update an app if different people signed the installed and the updated version.</string>
+    <string name="install_activity__verifying_downloaded_application_certificate">Verifying application certificate</string>
+    <string name="install_activity__you_can_now_close_this_window">You can now close this window</string>
     <string name="install_activity_label">Install Application</string>
     <string name="install_app">Install app</string>
     <string name="install_new_app">Install new app</string>
@@ -68,17 +77,15 @@
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="installed_version">Installed: %1$s</string>
-    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug. \n\nI recommend you to uninstall the application.</string>
     <string name="kiwi__description">Kiwi is based on Chromium. Easily switch to Kiwi without having to painstakingly learn a new interface or break your existing browsing habits. \n\nAmong other functionalities, Kiwi Browser supports: Night Mode (another implementation than Chromium), Support for Chrome Extensions, Bottom address bar It also includes performance improvements (partial rasterization of tiles, etc).</string>
     <string name="kiwi__title">Kiwi Browser</string>
     <string name="kiwi__warning">Kiwi uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Kiwi?</string>
     <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__not_connected_to_internet">No network connection</string>
     <string name="main_activity__subtitle">Update your browsers from Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
-    <string name="main_activity__not_connected_to_internet">No network connection</string>
     <string name="ok">OK</string>
     <string name="settings__activity_label">Settings</string>
     <string name="settings__automatic_check_title">Automatic in Background</string>
@@ -96,16 +103,11 @@
     <string name="settings__theme_preference_title">Choose theme</string>
     <string name="settings__theme_system_default">Use system default</string>
     <string name="settings__title">Application Update Check</string>
-    <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
     <string name="show_warning_before_installation_dialog__title">Warning</string>
     <string name="title_crasher_copy" tools:keep="@string/title_crasher_copy">Copy</string>
     <string name="title_crasher_crashed" tools:keep="@string/title_crasher_crashed">%1$s Crashed</string>
     <string name="title_crasher_share" tools:keep="@string/title_crasher_share">Share</string>
     <string name="title_crasher_stack_trace" tools:keep="@string/title_crasher_stack_trace">View Stack Trace</string>
-    <string name="install_activity__too_low_memory_description">On your device is only %1$d MB of space available. This may lead to download or installation failure.</string>
-    <string name="install_activity__too_low_memory_title">Low Disk Space</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">You have to uninstall the existing app before FFUpdater can install or update the app. Backup your data because the uninstall will delete all your bookmarks, settings etc.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">Reason: The current installed app is not signed by the original developer - maybe it\'s signed by F-Droid. Android refuses to update an app if different people signed the installed and the updated version.</string>
     <string name="unsupported_abi_dialog__message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="unsupported_abi_dialog__title">Unsupported device</string>
     <string name="update_interval__12h">12 hours</string>
@@ -130,6 +132,4 @@
     <string name="update_notification__channel_name">"%1$s" update notification</string>
     <string name="update_notification__text">Click to install update</string>
     <string name="update_notification__title">Update for "%1$s" available</string>
-    <string name="install_activity__verifying_downloaded_application_certificate">Verifying application certificate</string>
-    <string name="install_activity__you_can_now_close_this_window">You can now close this window</string>
 </resources>
