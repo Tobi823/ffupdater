@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
 
         if (isInternetUnavailable()) {
             installedApps.forEach {
-                getAvailableVersionTextView(it).text = getString(R.string.not_connected_to_internet)
+                getAvailableVersionTextView(it).text = getString(R.string.main_activity__not_connected_to_internet)
             }
             findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
             showInternetUnavailableToast()
@@ -198,7 +198,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showInternetUnavailableToast() {
         val layout = findViewById<View>(R.id.coordinatorLayout)
-        Snackbar.make(layout, R.string.not_connected_to_internet, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(layout, R.string.main_activity__not_connected_to_internet, Snackbar.LENGTH_LONG).show()
     }
 
     private fun getAppCardViewForApp(app: App): CardView {

@@ -344,7 +344,7 @@ class InstallActivity : AppCompatActivity() {
         FAILURE_LOW_ON_SPACE(f@{ ia ->
             ia.show(R.id.tooLowMemory)
             ia.setText(R.id.tooLowMemoryDescription,
-                    ia.getString(R.string.too_low_memory_description, ia.freeSpaceForDownloading))
+                    ia.getString(R.string.install_activity__too_low_memory_description, ia.freeSpaceForDownloading))
             return@f ERROR_STOP
         }),
 

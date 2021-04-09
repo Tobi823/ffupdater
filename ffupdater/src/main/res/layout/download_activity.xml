@@ -23,7 +23,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/too_low_memory_title" />
+                android:text="@string/install_activity__too_low_memory_title" />
 
             <TextView
                 android:id="@+id/tooLowMemoryDescription"
@@ -39,11 +39,11 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/unknown_signature_of_installed_app_text1" />
+                android:text="@string/install_activity__unknown_signature_of_installed_app_text1" />
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/unknown_signature_of_installed_app_text2" />
+                android:text="@string/install_activity__unknown_signature_of_installed_app_text2" />
 
         </LinearLayout>
 
@@ -162,7 +162,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/verifying_downloaded_application_certificate" />
+                android:text="@string/install_activity__verifying_downloaded_application_certificate" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -184,7 +184,7 @@
 
             <TextView
                 style="@style/DefaultTextView"
-                android:text="@string/sha_256_certificate_fingerprint" />
+                android:text="@string/install_activity__sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintDownloadGoodHash"
@@ -232,7 +232,7 @@
             <TextView
                 style="@style/DefaultTextView"
                 android:layout_marginTop="8dp"
-                android:text="@string/invalid_downloaded_certificate_fingerprint_explanation"
+                android:text="@string/install_activity__invalid_downloaded_certificate_fingerprint_explanation"
                 android:textIsSelectable="true" />
 
         </LinearLayout>
@@ -255,7 +255,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/verifying_downloaded_application_certificate" />
+                android:text="@string/install_activity__verifying_downloaded_application_certificate" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -277,7 +277,7 @@
 
             <TextView
                 style="@style/DefaultTextView"
-                android:text="@string/sha_256_certificate_fingerprint" />
+                android:text="@string/install_activity__sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintInstalledGoodHash"
@@ -314,7 +314,7 @@
             <TextView
                 style="@style/DefaultTextView"
                 android:layout_marginTop="8dp"
-                android:text="@string/invalid_installed_certificate_fingerprint_explanation"
+                android:text="@string/install_activity__invalid_installed_certificate_fingerprint_explanation"
                 android:textIsSelectable="true" />
 
         </LinearLayout>
@@ -331,7 +331,7 @@
 
             <TextView
                 style="@style/DefaultTextView"
-                android:text="@string/you_can_now_close_this_window" />
+                android:text="@string/install_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 
@@ -351,7 +351,7 @@
 
             <TextView
                 style="@style/DefaultTextView"
-                android:text="@string/you_can_now_close_this_window" />
+                android:text="@string/install_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 

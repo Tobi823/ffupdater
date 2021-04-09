@@ -67,13 +67,13 @@
     <string name="installed_app_is_not_verified">O App instalado NÃO foi verificado</string>
     <string name="installed_application_is_verified">O App instalado foi verificado</string>
     <string name="installed_version">Instalado: %1$s</string>
-    <string name="invalid_downloaded_certificate_fingerprint_explanation">Ou um hacker substituiu o arquivo original por um adulterado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado em apkmirror.com ou pode criar um Issue em https://notabug.org/Tobiwan/ffupdater para informar sobre o bug.</string>
-    <string name="invalid_installed_certificate_fingerprint_explanation">Ou um App modificado foi instalado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado em apkmirror.com ou pode criar um Issue em https://notabug.org/Tobiwan/ffupdater para informar sobre o bug. \n\nRecomendo desinstalar o aplicativo.</string>
+    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Ou um hacker substituiu o arquivo original por um adulterado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado em apkmirror.com ou pode criar um Issue em https://notabug.org/Tobiwan/ffupdater para informar sobre o bug.</string>
+    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Ou um App modificado foi instalado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado em apkmirror.com ou pode criar um Issue em https://notabug.org/Tobiwan/ffupdater para informar sobre o bug. \n\nRecomendo desinstalar o aplicativo.</string>
     <string name="lockwise__description">ACESSO COM SENHA, &amp; SOMENTE VOCÊ \n\nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via aplicativo para entrar em suas contas</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity_subtitle">Atualizar navegadores da Mozilla</string>
+    <string name="main_activity__subtitle">Atualizar navegadores da Mozilla</string>
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Infelizmente, %1$s falhou. Você pode submeter relatório em:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nPor favor, crie um novo Issue com o Stacktrace e escreva uma descrição de como reproduzir o bug.</string>
-    <string name="not_connected_to_internet">Sem conexão da Internet</string>
+    <string name="main_activity__not_connected_to_internet">Sem conexão da Internet</string>
     <string name="ok">OK</string>
     <string name="settings__only_unmetered_network_summary">Se esta opção estiver desativada, o FFUpdater pode usar sua internet de dados para verificar por atualizações em segundo plano. Isto reduzirá sua franquia mensal de dados. Se esta opção fosse ativada, somente as conexões de banda larga, como WiFi, será usada para verificações em segundo plano.</string>
     <string name="settings__ony_unmetered_network_title">Somente rede fixa</string>
@@ -85,7 +85,7 @@
     <string name="settings__disabled_apps_summary">Somente os Apps instalados terão verificação automática. Pode excluir os Apps instalados da verificação automática, desmarcando aqui.</string>
     <string name="settings__disabled_apps_title">Apps excluídos</string>
     <string name="settings__title">Verificar por atualizações</string>
-    <string name="sha_256_certificate_fingerprint">Certificado de impressão digital SHA-256:</string>
+    <string name="install_activity__sha_256_certificate_fingerprint">Certificado de impressão digital SHA-256:</string>
     <string name="show_warning_before_installation_dialog__title">Aviso</string>
     <string name="settings__theme_battery_saver">Escuro quando Economia da Bateria está ativa</string>
     <string name="settings__theme_dark">Escuro</string>
@@ -97,10 +97,10 @@
     <string name="title_crasher_crashed" tools:keep="@string/title_crasher_crashed">%1$s Falhou</string>
     <string name="title_crasher_share" tools:keep="@string/title_crasher_share">Compartilhar</string>
     <string name="title_crasher_stack_trace" tools:keep="@string/title_crasher_stack_trace">Ver Stack Trace</string>
-    <string name="too_low_memory_description">Seu dispositivo está com apenas %1$d MB do espaço disponível. Isto pode causar um erro ao baixar ou instalar.</string>
-    <string name="too_low_memory_title">Pouco espaço disponível</string>
-    <string name="unknown_signature_of_installed_app_text1">Precisa desinstalar o App existente antes de que o FFUpdater pode instalar ou atualizar este App. Faça um backup dos seus dados porque a desinstalação excluirá todos os seus favoritos, configurações, etc.</string>
-    <string name="unknown_signature_of_installed_app_text2">Motivo: O App instalado não é assinado pelo desenvolvedor original - talvez tenha sido assinado pelo F-Droid. Android SO não permite atualizar um aplicativo com diferentes assinaturas.</string>
+    <string name="install_activity__too_low_memory_description">Seu dispositivo está com apenas %1$d MB do espaço disponível. Isto pode causar um erro ao baixar ou instalar.</string>
+    <string name="install_activity__too_low_memory_title">Pouco espaço disponível</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text1">Precisa desinstalar o App existente antes de que o FFUpdater pode instalar ou atualizar este App. Faça um backup dos seus dados porque a desinstalação excluirá todos os seus favoritos, configurações, etc.</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text2">Motivo: O App instalado não é assinado pelo desenvolvedor original - talvez tenha sido assinado pelo F-Droid. Android SO não permite atualizar um aplicativo com diferentes assinaturas.</string>
     <string name="unsupported_abi_dialog__message">O navegador selecionado é incompatível com o processador do seu smartphone. Por favor, selecione um navegador diferente.</string>
     <string name="unsupported_abi_dialog__title">Dispositivo incompatível</string>
     <string name="update_interval__12h">12 horas</string>
@@ -125,8 +125,8 @@
     <string name="update_notification__channel_name">"%1$s" notificações de atualização</string>
     <string name="update_notification__text">Clique para instalar a atualização</string>
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
-    <string name="verifying_downloaded_application_certificate">Verificando certificado do App</string>
-    <string name="you_can_now_close_this_window">Pode fechar este diálogo</string>
+    <string name="install_activity__verifying_downloaded_application_certificate">Verificando certificado do App</string>
+    <string name="install_activity__you_can_now_close_this_window">Pode fechar este diálogo</string>
     <string name="kiwi__title">Navegador Kiwi</string>
     <string name="kiwi__description">O Kiwi é baseado no cromo. Mude facilmente para o Kiwi sem ter que aprender cuidadosamente uma nova interface ou quebrar seus hábitos de navegação existentes. \\n\\nEntre outras funcionalidades, o Kiwi Browser suporta: Modo Noturno (outra implementação que não o Cromo), Suporte para Extensões de Cromo, Barra de endereço inferior Também inclui melhorias de desempenho (rasterização parcial de azulejos, etc).</string>
     <string name="kiwi__warning">O Kiwi utiliza a base técnica do Google Chrome (Chromium) - algumas pessoas não gostam disso. Você quer instalar o Kiwi?</string>
