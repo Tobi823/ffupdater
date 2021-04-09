@@ -24,11 +24,11 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
             PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
             Result.success()
         } catch (e: BackgroundNetworkException) {
-            val message = applicationContext.getString(R.string.background_network_issue_notification_text)
+            val message = applicationContext.getString(R.string.background_network_issue_notification__text)
             ErrorNotificationBuilder.showNotification(applicationContext, e, message)
             Result.failure()
         } catch (e: Exception) {
-            val message = applicationContext.getString(R.string.background_unknown_bug_notification_text)
+            val message = applicationContext.getString(R.string.background_unknown_bug_notification__text)
             ErrorNotificationBuilder.showNotification(applicationContext, e, message)
             Result.failure()
         }

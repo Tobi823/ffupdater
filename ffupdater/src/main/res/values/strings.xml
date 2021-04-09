@@ -8,12 +8,12 @@
     <string name="available_version">Available: %1$s</string>
     <string name="available_version_error">ERROR</string>
     <string name="available_version_loading">Loading…</string>
-    <string name="background_error_notification_title">Background update check failed</string>
-    <string name="background_network_issue_notification_text">It\'s likely that the background check failed due to a temporary network connectivity issue. But if this error occurs more than once a week, please report it. Click to view the error log.</string>
-    <string name="background_unknown_bug_notification_text">Due to an unknown bug the background check failed. Please report this error. Click to view the error log.</string>
-    <string name="brave_description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
-    <string name="brave_title">Brave Private Browser</string>
-    <string name="brave_warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
+    <string name="background_error_notification__title">Background update check failed</string>
+    <string name="background_network_issue_notification__text">It\'s likely that the background check failed due to a temporary network connectivity issue. But if this error occurs more than once a week, please report it. Click to view the error log.</string>
+    <string name="background_unknown_bug_notification__text">Due to an unknown bug the background check failed. Please report this error. Click to view the error log.</string>
+    <string name="brave__description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
+    <string name="brave__title">Brave Private Browser</string>
+    <string name="brave__warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
     <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
@@ -23,24 +23,9 @@
     <string name="device_too_old_dialog__title">Device is too old</string>
     <string name="dialog_button__do_not_install">No, don\'t install it</string>
     <string name="dialog_button__yes">Yes</string>
-    <string name="install_activity__download_app_is_disabled">The system download app is disabled. FFUpdater needs this app for downloading. Please enable it.</string>
-    <string name="install_activity__download_application_from_with_status">Download application (%1$s)</string>
-    <string name="install_activity__download_failed">Download failed</string>
-    <string name="install_activity__download_status_failed">failed</string>
-    <string name="install_activity__download_status_paused">paused</string>
-    <string name="install_activity__download_status_pending">pending</string>
-    <string name="install_activity__download_status_running">running</string>
-    <string name="install_activity__download_status_success">success</string>
     <string name="download_the_app">download the app</string>
-    <string name="install_activity__downloaded_application_from">Downloaded application from:</string>
-    <string name="install_activity__downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
-    <string name="install_activity__downloaded_application_is_verified">Downloaded application is verified</string>
     <string name="error_notification__channel_description">Show errors of the background update checker</string>
     <string name="error_notification__channel_name">Background errors</string>
-    <string name="install_activity__expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
-    <string name="install_activity__external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
-    <string name="install_activity__fetch_url_for_download">Fetch download URL from %1$s</string>
-    <string name="install_activity__fetched_url_for_download_successfully">Fetched download URL from %1$s</string>
     <string name="firefox_beta__description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
     <string name="firefox_beta__warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Do you want to install it?</string>
@@ -59,6 +44,21 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">This is an updater for multiple browsers from Mozilla. Click the plus-button for installation and the down-arrow-button for updating. You can check for new updates by down-swiping or reopening the app. By default the app will check regularly for updates in the background. I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request. \n\nLast successful background update check: %1$s</string>
     <string name="information_about_the_app">information about the app</string>
+    <string name="install_activity__download_app_is_disabled">The system download app is disabled. FFUpdater needs this app for downloading. Please enable it.</string>
+    <string name="install_activity__download_application_from_with_status">Download application (%1$s)</string>
+    <string name="install_activity__download_failed">Download failed</string>
+    <string name="install_activity__download_status_failed">failed</string>
+    <string name="install_activity__download_status_paused">paused</string>
+    <string name="install_activity__download_status_pending">pending</string>
+    <string name="install_activity__download_status_running">running</string>
+    <string name="install_activity__download_status_success">success</string>
+    <string name="install_activity__downloaded_application_from">Downloaded application from:</string>
+    <string name="install_activity__downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
+    <string name="install_activity__downloaded_application_is_verified">Downloaded application is verified</string>
+    <string name="install_activity__expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
+    <string name="install_activity__external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
+    <string name="install_activity__fetch_url_for_download">Fetch download URL from %1$s</string>
+    <string name="install_activity__fetched_url_for_download_successfully">Fetched download URL from %1$s</string>
     <string name="install_activity_label">Install Application</string>
     <string name="install_app">Install app</string>
     <string name="install_new_app">Install new app</string>
@@ -70,6 +70,9 @@
     <string name="installed_version">Installed: %1$s</string>
     <string name="invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug. \n\nI recommend you to uninstall the application.</string>
+    <string name="kiwi__description">Kiwi is based on Chromium. Easily switch to Kiwi without having to painstakingly learn a new interface or break your existing browsing habits. \n\nAmong other functionalities, Kiwi Browser supports: Night Mode (another implementation than Chromium), Support for Chrome Extensions, Bottom address bar It also includes performance improvements (partial rasterization of tiles, etc).</string>
+    <string name="kiwi__title">Kiwi Browser</string>
+    <string name="kiwi__warning">Kiwi uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Kiwi?</string>
     <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity_subtitle">Update your browsers from Mozilla</string>
@@ -77,8 +80,6 @@
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>
     <string name="not_connected_to_internet">No network connection</string>
     <string name="ok">OK</string>
-    <string name="settings__only_unmetered_network_summary">If this option is disabled, FFUpdater can use your mobile internet to check for app updates in the background. This will reduce your monthly data limit. When this option is enabled, only unmetered network connections, like the majority of WiFis, are used for background update checking.</string>
-    <string name="settings__ony_unmetered_network_title">Only unmetered network</string>
     <string name="settings__activity_label">Settings</string>
     <string name="settings__automatic_check_title">Automatic in Background</string>
     <string name="settings__category_appearance_title">Appearance</string>
@@ -86,15 +87,17 @@
     <string name="settings__check_interval_title">Check Interval</string>
     <string name="settings__disabled_apps_summary">Only installed apps will be automatically checked for updates. You can remove installed apps from the automatic update check by selecting them here.</string>
     <string name="settings__disabled_apps_title">Excluded applications</string>
-    <string name="settings__title">Application Update Check</string>
-    <string name="sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
-    <string name="show_warning_before_installation_dialog__title">Warning</string>
+    <string name="settings__only_unmetered_network_summary">If this option is disabled, FFUpdater can use your mobile internet to check for app updates in the background. This will reduce your monthly data limit. When this option is enabled, only unmetered network connections, like the majority of WiFis, are used for background update checking.</string>
+    <string name="settings__ony_unmetered_network_title">Only unmetered network</string>
     <string name="settings__theme_battery_saver">Dark when Battery Saver active</string>
     <string name="settings__theme_dark">Dark</string>
     <string name="settings__theme_light">Light</string>
     <string name="settings__theme_preference_summary">Choose between light and dark theme</string>
     <string name="settings__theme_preference_title">Choose theme</string>
     <string name="settings__theme_system_default">Use system default</string>
+    <string name="settings__title">Application Update Check</string>
+    <string name="sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
+    <string name="show_warning_before_installation_dialog__title">Warning</string>
     <string name="title_crasher_copy" tools:keep="@string/title_crasher_copy">Copy</string>
     <string name="title_crasher_crashed" tools:keep="@string/title_crasher_crashed">%1$s Crashed</string>
     <string name="title_crasher_share" tools:keep="@string/title_crasher_share">Share</string>
@@ -129,7 +132,4 @@
     <string name="update_notification__title">Update for "%1$s" available</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
-    <string name="kiwi__title">Kiwi Browser</string>
-    <string name="kiwi__description">Kiwi is based on Chromium. Easily switch to Kiwi without having to painstakingly learn a new interface or break your existing browsing habits. \n\nAmong other functionalities, Kiwi Browser supports: Night Mode (another implementation than Chromium), Support for Chrome Extensions, Bottom address bar It also includes performance improvements (partial rasterization of tiles, etc).</string>
-    <string name="kiwi__warning">Kiwi uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Kiwi?</string>
 </resources>

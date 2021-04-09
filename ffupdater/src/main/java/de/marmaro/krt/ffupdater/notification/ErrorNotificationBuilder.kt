@@ -34,7 +34,7 @@ object ErrorNotificationBuilder {
         }
                 .setSmallIcon(mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, mipmap.ic_launcher))
-                .setContentTitle(context.getString(R.string.background_error_notification_title))
+                .setContentTitle(context.getString(R.string.background_error_notification__title))
                 .setStyle(NotificationCompat.BigTextStyle().bigText(message))
                 .setContentText(message)
                 .setContentIntent(updateAppIntent)

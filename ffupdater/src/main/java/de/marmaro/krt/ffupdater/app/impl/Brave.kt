@@ -16,9 +16,9 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
  */
 class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "com.brave.browser"
-    override val displayTitle = R.string.brave_title
-    override val displayDescription = R.string.brave_description
-    override val displayWarning = R.string.brave_warning
+    override val displayTitle = R.string.brave__title
+    override val displayDescription = R.string.brave__description
+    override val displayWarning = R.string.brave__warning
     override val displayDownloadSource = R.string.github
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
     override val minApiLevel = Build.VERSION_CODES.N

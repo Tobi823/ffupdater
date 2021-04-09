@@ -350,7 +350,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/brave_title"
+                        android:text="@string/brave__title"
                         app:layout_constraintStart_toEndOf="@id/braveIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
