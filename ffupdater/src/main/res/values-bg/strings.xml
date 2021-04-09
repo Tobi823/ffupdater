@@ -126,4 +126,7 @@
     <string name="update_notification_title">Налично издание на %1$s</string>
     <string name="verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="you_can_now_close_this_window">Можете да затворите прозореца</string>
+    <string name="kiwi__title">Браузър Kiwi</string>
+    <string name="kiwi__description">Kiwi е базиран на Chromium. Преминете лесно към Kiwi, без да се налага да усвоявате мъчително нов интерфейс или да нарушавате досегашните си навици за сърфиране. \\n\\nНаред с други функционалности браузърът Kiwi поддържа: Нощен режим (друга имплементация от Chromium), Поддръжка на разширения за Chrome, Долна адресна лента Той включва и подобрения в производителността (частична растеризация на плочките и др.).</string>
+    <string name="kiwi__warning">Kiwi използва техническата основа на Google Chrome (Chromium) - това не се харесва на някои хора. Искате ли да инсталирате Kiwi?</string>
 </resources>

@@ -126,4 +126,7 @@
     <string name="update_notification_title">Обновление для "%1$s" доступно</string>
     <string name="verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
+    <string name="kiwi__title">Браузер Ківі</string>
+    <string name="kiwi__description">Ківі створений на основі хрому. Легко перейдіть на Ківі, не докладаючи зусиль до вивчення нового інтерфейсу або відмови від існуючих звичок перегляду. \\n\\nСеред інших функціональних можливостей браузер Kiwi підтримує: Нічний режим (інша реалізація, ніж Chromium), Підтримка розширень Chrome, Нижній адресний рядок Він також включає покращення продуктивності (часткова растеризація плиток тощо).</string>
+    <string name="kiwi__warning">"Ківі використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Kiwi? "</string>
 </resources>

@@ -126,4 +126,7 @@
     <string name="you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__description">Bromite zielt auf ein aufgeräumtes Browsing-Erlebnis ab, ohne Datenschutz-invasive Funktionen und mit einer schnellen Ad-Blocking-Engine. Minimale UI-Änderungen sollen helfen, die Idee des \"Browsers als Werbeplattform\" einzudämmen.</string>
+    <string name="kiwi__title">Kiwi-Browser</string>
+    <string name="kiwi__description">Kiwi basiert auf Chromium. Wechseln Sie einfach zu Kiwi, ohne mühsam eine neue Oberfläche zu erlernen oder Ihre bisherigen Surfgewohnheiten zu brechen. \\n\\nNeben anderen Funktionalitäten unterstützt Kiwi Browser: Nachtmodus (eine andere Implementierung als Chromium), Unterstützung für Chrome-Erweiterungen, Adressleiste am unteren Rand Es enthält auch Leistungsverbesserungen (teilweise Rasterung von Kacheln usw.).</string>
+    <string name="kiwi__warning">Kiwi nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Möchten Sie Kiwi installieren?</string>
 </resources>
