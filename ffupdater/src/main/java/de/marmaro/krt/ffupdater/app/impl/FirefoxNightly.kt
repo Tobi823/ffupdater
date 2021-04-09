@@ -18,9 +18,9 @@ import java.time.format.DateTimeFormatter
  */
 class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "org.mozilla.fenix"
-    override val displayTitle = R.string.firefox_nightly_title
-    override val displayDescription = R.string.firefox_nightly_description
-    override val displayWarning = R.string.firefox_nightly_warning
+    override val displayTitle = R.string.firefox_nightly__title
+    override val displayDescription = R.string.firefox_nightly__description
+    override val displayWarning = R.string.firefox_nightly__warning
     override val displayDownloadSource = R.string.mozilla_ci
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP

@@ -44,7 +44,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/settings_activity_label"
+            android:label="@string/settings__activity_label"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".InstallActivity"

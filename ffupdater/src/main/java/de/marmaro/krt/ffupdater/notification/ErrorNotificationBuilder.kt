@@ -59,9 +59,9 @@ object ErrorNotificationBuilder {
     private fun createNotificationChannel(context: Context) {
         val channel = NotificationChannel(
                 CHANNEL_ID,
-                context.getString(R.string.error_notification_channel_name),
+                context.getString(R.string.error_notification__channel_name),
                 NotificationManager.IMPORTANCE_DEFAULT)
-        channel.description = context.getString(R.string.error_notification_channel_description)
+        channel.description = context.getString(R.string.error_notification__channel_description)
         getNotificationManager(context).createNotificationChannel(channel)
     }
 

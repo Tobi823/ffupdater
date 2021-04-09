@@ -209,14 +209,14 @@ class InstallActivity : AppCompatActivity() {
         PRECONDITIONS_ARE_CHECKED(f@{ ia ->
             val app = ia.app
             ia.show(R.id.fetchUrl)
-            ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.fetch_url_for_download,
+            ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.install_activity__fetch_url_for_download,
                     ia.getString(app.detail.displayDownloadSource)))
             try {
                 ia.viewModel.updateCheckResult = app.detail.updateCheck(ia, DeviceEnvironment())
                 ia.hide(R.id.fetchUrl)
                 ia.show(R.id.fetchedUrlSuccess)
                 ia.setText(R.id.fetchedUrlSuccessTextView,
-                        ia.getString(R.string.fetched_url_for_download_successfully,
+                        ia.getString(R.string.install_activity__fetched_url_for_download_successfully,
                                 ia.getString(app.detail.displayDownloadSource)))
                 return@f AVAILABLE_METADATA_IS_FETCHED
             } catch (e: Exception) {
@@ -243,15 +243,15 @@ class InstallActivity : AppCompatActivity() {
             for (i in 1..(maxWaitingTime / sleepInterval)) {
                 val download = ia.downloadManager.getStatusAndProgress(ia.viewModel.downloadId!!)
                 val downloadStatus = when(download.status) {
-                    STATUS_RUNNING -> ia.getString(R.string.download_status_running)
-                    STATUS_SUCCESSFUL -> ia.getString(R.string.download_status_success)
-                    STATUS_FAILED -> ia.getString(R.string.download_status_failed)
-                    STATUS_PAUSED -> ia.getString(R.string.download_status_paused)
-                    STATUS_PENDING -> ia.getString(R.string.download_status_pending)
+                    STATUS_RUNNING -> ia.getString(R.string.install_activity__download_status_running)
+                    STATUS_SUCCESSFUL -> ia.getString(R.string.install_activity__download_status_success)
+                    STATUS_FAILED -> ia.getString(R.string.install_activity__download_status_failed)
+                    STATUS_PAUSED -> ia.getString(R.string.install_activity__download_status_paused)
+                    STATUS_PENDING -> ia.getString(R.string.install_activity__download_status_pending)
                     else -> "${download.status}"
                 }
                 ia.setText(R.id.downloadingFileText,
-                        ia.getString(R.string.download_application_from_with_status, downloadStatus))
+                        ia.getString(R.string.install_activity__download_application_from_with_status, downloadStatus))
                 ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = download.progress
                 when (download.status) {
                     STATUS_FAILED -> return@f FAILURE_DOWNLOAD_UNSUCCESSFUL

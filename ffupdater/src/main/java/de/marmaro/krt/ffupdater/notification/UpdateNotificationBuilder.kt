@@ -37,8 +37,8 @@ object UpdateNotificationBuilder {
         }
                 .setSmallIcon(R.mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
-                .setContentTitle(context.getString(R.string.update_notification_title, appTitle))
-                .setContentText(context.getString(R.string.update_notification_text))
+                .setContentTitle(context.getString(R.string.update_notification__title, appTitle))
+                .setContentText(context.getString(R.string.update_notification__text))
                 .setContentIntent(updateAppIntent)
                 .setAutoCancel(true)
                 .build()
@@ -85,9 +85,9 @@ object UpdateNotificationBuilder {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private fun createNotificationChannel(channelId: String, appTitle: String, context: Context) {
-        val name = context.getString(R.string.update_notification_channel_name, appTitle)
+        val name = context.getString(R.string.update_notification__channel_name, appTitle)
         val channel = NotificationChannel(channelId, name, IMPORTANCE_DEFAULT)
-        channel.description = context.getString(R.string.update_notification_channel_description, appTitle)
+        channel.description = context.getString(R.string.update_notification__channel_description, appTitle)
         getNotificationManager(context).createNotificationChannel(channel)
     }
 }

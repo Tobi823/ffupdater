@@ -16,8 +16,8 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
  */
 class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "mozilla.lockbox"
-    override val displayTitle = R.string.lockwise_title
-    override val displayDescription = R.string.lockwise_description
+    override val displayTitle = R.string.lockwise__title
+    override val displayDescription = R.string.lockwise__description
     override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.github
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"

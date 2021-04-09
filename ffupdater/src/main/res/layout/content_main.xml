@@ -28,7 +28,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/firefox_klar_title"
+                        android:text="@string/firefox_klar__title"
                         app:layout_constraintStart_toEndOf="@+id/firefoxKlarIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,7 +83,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/firefox_focus_title"
+                        android:text="@string/firefox_focus__title"
                         app:layout_constraintStart_toEndOf="@+id/firefoxFocusIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -138,7 +138,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/firefox_release_title"
+                        android:text="@string/firefox_release__title"
                         app:layout_constraintStart_toEndOf="@+id/fenixReleaseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -191,7 +191,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/firefox_beta_title"
+                        android:text="@string/firefox_beta__title"
                         app:layout_constraintStart_toEndOf="@+id/fenixBetaIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -244,7 +244,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/firefox_nightly_title"
+                        android:text="@string/firefox_nightly__title"
                         app:layout_constraintStart_toEndOf="@+id/fenixNightlyIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -297,7 +297,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/lockwise_title"
+                        android:text="@string/lockwise__title"
                         app:layout_constraintStart_toEndOf="@id/lockwiseIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -403,7 +403,7 @@
 
                     <TextView
                         style="@style/AppCardTitle"
-                        android:text="@string/iceraven_title"
+                        android:text="@string/iceraven__title"
                         app:layout_constraintStart_toEndOf="@id/iceravenIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 

@@ -1,17 +1,17 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/settings_title">
+    <PreferenceCategory app:title="@string/settings__title">
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:key="automaticCheck"
-            app:title="@string/settings_automatic_check_title" />
+            app:title="@string/settings__automatic_check_title" />
 
         <SwitchPreferenceCompat
             app:defaultValue="false"
             app:key="onlyUnmeteredNetwork"
-            app:title="@string/ony_unmetered_network_title"
-            app:summary="@string/only_unmetered_network_summary"/>
+            app:title="@string/settings__ony_unmetered_network_title"
+            app:summary="@string/settings__only_unmetered_network_summary"/>
 
         <ListPreference
             app:defaultValue="360"
@@ -19,8 +19,8 @@
             app:entries="@array/checkIntervalEntries"
             app:entryValues="@array/checkIntervalValues"
             app:key="checkInterval"
-            app:summary="@string/settings_check_interval_summary"
-            app:title="@string/settings_check_interval_title"
+            app:summary="@string/settings__check_interval_summary"
+            app:title="@string/settings__check_interval_title"
             app:useSimpleSummaryProvider="true" />
 
         <MultiSelectListPreference
@@ -28,20 +28,20 @@
             app:entries="@array/disabledAppEntries"
             app:entryValues="@array/disabledAppEntryValues"
             app:key="disableApps"
-            app:summary="@string/settings_disabled_apps_summary"
-            app:title="@string/settings_disabled_apps_title" />
+            app:summary="@string/settings__disabled_apps_summary"
+            app:title="@string/settings__disabled_apps_title" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/settings_category_appearance_title">
+    <PreferenceCategory app:title="@string/settings__category_appearance_title">
 
         <ListPreference
             app:defaultValue="@string/default_theme_preference"
             app:entries="@array/themeEntries"
             app:entryValues="@array/themeValues"
             app:key="themePreference"
-            app:summary="@string/theme_preference_summary"
-            app:title="@string/theme_preference_title" />
+            app:summary="@string/settings__theme_preference_summary"
+            app:title="@string/settings__theme_preference_title" />
 
     </PreferenceCategory>
 

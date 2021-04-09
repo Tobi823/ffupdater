@@ -55,7 +55,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/external_storage_not_accessible" />
+                android:text="@string/install_activity__external_storage_not_accessible" />
 
             <TextView
                 style="@style/MonospaceSelectableTextView"
@@ -72,7 +72,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/download_app_is_disabled" />
+                android:text="@string/install_activity__download_app_is_disabled" />
 
         </LinearLayout>
 
@@ -83,7 +83,7 @@
             <TextView
                 android:id="@+id/fetchUrlTextView"
                 style="@style/BoldTextView"
-                android:text="@string/fetch_url_for_download" />
+                android:text="@string/install_activity__fetch_url_for_download" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -100,7 +100,7 @@
             <TextView
                 android:id="@+id/fetchedUrlSuccessTextView"
                 style="@style/BoldTextView"
-                android:text="@string/fetched_url_for_download_successfully" />
+                android:text="@string/install_activity__fetched_url_for_download_successfully" />
 
         </LinearLayout>
 
@@ -111,7 +111,7 @@
             <TextView
                 android:id="@+id/downloadingFileText"
                 style="@style/BoldTextView"
-                android:text="@string/download_application_from_with_status" />
+                android:text="@string/install_activity__download_application_from_with_status" />
 
             <TextView
                 android:id="@+id/downloadingFileUrl"
@@ -132,7 +132,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/downloaded_application_from" />
+                android:text="@string/install_activity__downloaded_application_from" />
 
             <TextView
                 android:id="@+id/downloadedFileUrl"
@@ -148,7 +148,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/download_failed" />
+                android:text="@string/install_activity__download_failed" />
 
             <TextView
                 android:id="@+id/downloadFileFailedUrl"
@@ -180,7 +180,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/downloaded_application_is_verified" />
+                android:text="@string/install_activity__downloaded_application_is_verified" />
 
             <TextView
                 style="@style/DefaultTextView"
@@ -211,11 +211,11 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="@string/downloaded_application_is_not_verified" />
+                android:text="@string/install_activity__downloaded_application_is_not_verified" />
 
             <TextView
                 style="@style/DefaultTextView"
-                android:text="@string/expected_sha_256_certificate_fingerprint" />
+                android:text="@string/install_activity__expected_sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintDownloadBadHashExpected"
@@ -297,7 +297,7 @@
 
             <TextView
                 style="@style/DefaultTextView"
-                android:text="@string/expected_sha_256_certificate_fingerprint" />
+                android:text="@string/install_activity__expected_sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintInstalledBadHashExpected"

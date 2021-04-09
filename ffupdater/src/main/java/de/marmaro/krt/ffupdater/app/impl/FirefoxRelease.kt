@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
@@ -16,8 +15,8 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
  */
 class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "org.mozilla.firefox"
-    override val displayTitle = R.string.firefox_release_title
-    override val displayDescription = R.string.firefox_release_description
+    override val displayTitle = R.string.firefox_release__title
+    override val displayDescription = R.string.firefox_release__description
     override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.mozilla_ci
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"

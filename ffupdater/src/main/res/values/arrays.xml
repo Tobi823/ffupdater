@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string-array name="checkIntervalEntries">
-        <item>@string/update_interval_15min</item>
-        <item>@string/update_interval_30min</item>
-        <item>@string/update_interval_1h</item>
-        <item>@string/update_interval_2h</item>
-        <item>@string/update_interval_4h</item>
-        <item>@string/update_interval_6h</item>
-        <item>@string/update_interval_8h</item>
-        <item>@string/update_interval_12h</item>
-        <item>@string/update_interval_18h</item>
-        <item>@string/update_interval_1d</item>
-        <item>@string/update_interval_2d</item>
-        <item>@string/update_interval_3d</item>
-        <item>@string/update_interval_4d</item>
-        <item>@string/update_interval_5d</item>
-        <item>@string/update_interval_6d</item>
-        <item>@string/update_interval_1w</item>
-        <item>@string/update_interval_2w</item>
-        <item>@string/update_interval_1m</item>
+        <item>@string/update_interval__15min</item>
+        <item>@string/update_interval__30min</item>
+        <item>@string/update_interval__1h</item>
+        <item>@string/update_interval__2h</item>
+        <item>@string/update_interval__4h</item>
+        <item>@string/update_interval__6h</item>
+        <item>@string/update_interval__8h</item>
+        <item>@string/update_interval__12h</item>
+        <item>@string/update_interval__18h</item>
+        <item>@string/update_interval__1d</item>
+        <item>@string/update_interval__2d</item>
+        <item>@string/update_interval__3d</item>
+        <item>@string/update_interval__4d</item>
+        <item>@string/update_interval__5d</item>
+        <item>@string/update_interval__6d</item>
+        <item>@string/update_interval__1w</item>
+        <item>@string/update_interval__2w</item>
+        <item>@string/update_interval__1m</item>
     </string-array>
 
     <string-array name="checkIntervalValues">
@@ -43,14 +43,14 @@
     </string-array>
 
     <string-array name="disabledAppEntries">
-        <item>@string/firefox_release_title</item>
-        <item>@string/firefox_beta_title</item>
-        <item>@string/firefox_nightly_title</item>
-        <item>@string/firefox_focus_title</item>
-        <item>@string/firefox_klar_title</item>
-        <item>@string/lockwise_title</item>
+        <item>@string/firefox_release__title</item>
+        <item>@string/firefox_beta__title</item>
+        <item>@string/firefox_nightly__title</item>
+        <item>@string/firefox_focus__title</item>
+        <item>@string/firefox_klar__title</item>
+        <item>@string/lockwise__title</item>
         <item>@string/brave_title</item>
-        <item>@string/iceraven_title</item>
+        <item>@string/iceraven__title</item>
         <item>@string/bromite__title</item>
         <item>@string/kiwi__title</item>
     </string-array>
@@ -69,9 +69,9 @@
     </string-array>
 
     <string-array name="themeEntries" tools:ignore="InconsistentArrays">
-        <item>@string/theme_light</item>
-        <item>@string/theme_dark</item>
-        <item>@string/theme_battery_saver</item>
+        <item>@string/settings__theme_light</item>
+        <item>@string/settings__theme_dark</item>
+        <item>@string/settings__theme_battery_saver</item>
     </string-array>
 
     <string-array name="themeValues" tools:ignore="InconsistentArrays">

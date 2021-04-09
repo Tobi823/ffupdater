@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
@@ -16,8 +15,8 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
  */
 class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "org.mozilla.klar"
-    override val displayTitle = R.string.firefox_klar_title
-    override val displayDescription = R.string.firefox_klar_description
+    override val displayTitle = R.string.firefox_klar__title
+    override val displayDescription = R.string.firefox_klar__description
     override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.mozilla_ci
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"

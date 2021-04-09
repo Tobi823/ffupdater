@@ -18,8 +18,8 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
  */
 class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val packageName = "io.github.forkmaintainers.iceraven"
-    override val displayTitle = R.string.iceraven_title
-    override val displayDescription = R.string.iceraven_description
+    override val displayTitle = R.string.iceraven__title
+    override val displayDescription = R.string.iceraven__description
     override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.github
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"
