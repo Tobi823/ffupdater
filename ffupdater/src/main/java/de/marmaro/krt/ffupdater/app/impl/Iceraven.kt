@@ -55,7 +55,7 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                     !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
                 },
                 correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
-        val result = githubConsumer.updateCheck()
+        val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         val version = result.tagName
         return UpdateCheckSubResult(
                 downloadUrl = result.url,

@@ -212,6 +212,7 @@ class MainActivity : AppCompatActivity() {
             App.BRAVE -> R.id.braveCard
             App.ICERAVEN -> R.id.iceravenCard
             App.BROMITE -> R.id.bromiteCard
+            App.KIWI -> R.id.kiwiCard
         })
     }
 
@@ -234,6 +235,7 @@ class MainActivity : AppCompatActivity() {
             App.BRAVE -> R.id.braveDownloadButton
             App.ICERAVEN -> R.id.iceravenDownloadButton
             App.BROMITE -> R.id.bromiteDownloadButton
+            App.KIWI -> R.id.kiwiDownloadButton
         })
     }
 
@@ -248,6 +250,7 @@ class MainActivity : AppCompatActivity() {
             App.BRAVE -> R.id.braveInstalledVersion
             App.ICERAVEN -> R.id.iceravenInstalledVersion
             App.BROMITE -> R.id.bromiteInstalledVersion
+            App.KIWI -> R.id.kiwiInstalledVersion
         })
     }
 
@@ -262,6 +265,7 @@ class MainActivity : AppCompatActivity() {
             App.BRAVE -> R.id.braveAvailableVersion
             App.ICERAVEN -> R.id.iceravenAvailableVersion
             App.BROMITE -> R.id.bromiteAvailableVersion
+            App.KIWI -> R.id.kiwiAvailableVersion
         })
     }
 
@@ -276,6 +280,7 @@ class MainActivity : AppCompatActivity() {
             App.BRAVE -> R.id.braveInfoButton
             App.ICERAVEN -> R.id.iceravenInfoButton
             App.BROMITE -> R.id.bromiteInfoButton
+            App.KIWI -> R.id.kiwiInfoButton
         })
     }
 

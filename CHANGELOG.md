@@ -1,5 +1,6 @@
 # 2021-XX-XX Version 72.1.0 (61)
  * Add support for Bromite https://github.com/bromite/bromite (Tobiwan/ffupdater#59 Tobi823/ffupdater#22)
+ * Add support for Kiwi Browser https://github.com/kiwibrowser/src (Tobi823/ffupdater#22)
  * Improve Brazilian Portuguese translation (thanks mezysinc; Tobiwan/ffupdater#58)
  * Improve Russian translation (thanks DeenHyper74; Tobiwan/ffupdater#56)
  * Make download status translatable (Tobiwan/ffupdater#57)

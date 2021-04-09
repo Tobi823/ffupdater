@@ -41,12 +41,11 @@ class Bromite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 repoName = "bromite",
                 resultsPerPage = 5,
                 validReleaseTester = { release: Release ->
-                    !release.isPreRelease &&
-                            release.name.startsWith("Bromite v") &&
-                            release.assets.any { it.name == fileName }
+                    !release.isPreRelease && release.assets.any { it.name == fileName }
                 },
                 correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
-        val result = githubConsumer.updateCheck()
+        val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
+        // tag name can be "90.0.4430.59"
         return UpdateCheckSubResult(
                 downloadUrl = result.url,
                 version = result.tagName,

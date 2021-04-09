@@ -170,7 +170,8 @@ class SettingsHelperTest {
     fun getDisableApps_withAllApps_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("BRAVE", "FIREFOX_BETA",
                 "FIREFOX_FOCUS", "FIREFOX_KLAR", "FIREFOX_NIGHTLY",
-                "FIREFOX_RELEASE", "ICERAVEN", "LOCKWISE")).commit()
+                "FIREFOX_RELEASE", "ICERAVEN", "LOCKWISE", "BROMITE",
+                "KIWI")).commit()
         assertTrue(SettingsHelper(context).disabledApps.containsAll(App.values().toList()))
     }
 

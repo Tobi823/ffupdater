@@ -129,4 +129,7 @@
     <string name="update_notification_title">Update for "%1$s" available</string>
     <string name="verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="you_can_now_close_this_window">You can now close this window</string>
+    <string name="kiwi__title">Kiwi Browser</string>
+    <string name="kiwi__description">Kiwi is based on Chromium. Easily switch to Kiwi without having to painstakingly learn a new interface or break your existing browsing habits. \n\nAmong other functionalities, Kiwi Browser supports: Night Mode (another implementation than Chromium), Support for Chrome Extensions, Bottom address bar It also includes performance improvements (partial rasterization of tiles, etc).</string>
+    <string name="kiwi__warning">Kiwi uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Kiwi?</string>
 </resources>

@@ -20,8 +20,12 @@ class GithubConsumer(
         check(resultsPerPage > 0)
     }
 
-    suspend fun updateCheck(): Result {
+    suspend fun updateCheckReliableOnlyForNormalReleases(): Result {
         return updateCheckLatestRelease() ?: updateCheckAllReleases()
+    }
+
+    suspend fun updateCheckReliableForReleasesAndPreReleases(): Result {
+        return updateCheckAllReleases()
     }
 
     private suspend fun updateCheckLatestRelease(): Result? {

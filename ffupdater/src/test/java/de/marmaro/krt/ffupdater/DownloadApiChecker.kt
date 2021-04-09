@@ -132,6 +132,17 @@ class DownloadApiChecker {
     }
 
     @Test
+    fun kiwi() {
+        val result = runBlocking {
+            Kiwi(ApiConsumer()).updateCheck(context, device)
+        }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 60
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
+    }
+
+    @Test
     fun lockwise() {
         val result = runBlocking {
             Lockwise(ApiConsumer()).updateCheck(context, device)

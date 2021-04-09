@@ -45,7 +45,7 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                             release.assets.any { it.name == fileName }
                 },
                 correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
-        val result = githubConsumer.updateCheck()
+        val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         val version = result.tagName.replace("v", "")
         return UpdateCheckSubResult(
                 downloadUrl = result.url,

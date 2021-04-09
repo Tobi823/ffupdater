@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
@@ -36,7 +35,7 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                     !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
                 },
                 correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(".apk") })
-        val result = githubConsumer.updateCheck()
+        val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"
         val regexResult = Regex("""^release-v((\d)+(\.\d+)*)""").find(result.tagName)
         val version = regexResult!!.groups[1]!!.value

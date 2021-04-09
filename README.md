@@ -10,6 +10,7 @@ Download, install and update these privacy friendly browsers:
  - [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
  - [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
  - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
+ - [Kiwi](https://github.com/kiwibrowser/src)
 
 and:
  - [Firefox Lockwise](https://play.google.com/store/apps/details?id=mozilla.lockbox)
@@ -33,6 +34,7 @@ The applications are downloaded from these locations:
  - Firefox Focus/Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
  - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
  - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
+ - Kiwi: <https://api.github.com/repos/kiwibrowser/src/releases>
 
 ## FAQ:
  - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
