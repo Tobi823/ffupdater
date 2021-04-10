@@ -18,21 +18,30 @@ class ApiConsumer {
 
     suspend fun consumeText(url: URL): String {
         var result = ""
-        retryConsume(url) { reader -> result = reader.readText() }
+        consumeWithNetworkRetries(url) { reader -> result = reader.readText() }
         return result
     }
 
     suspend fun <T> consumeJson(url: URL, clazz: Class<T>): T {
         var result: T? = null
-        retryConsume(url) { reader -> result = gson.fromJson(reader, clazz) }
+        consumeWithNetworkRetries(url) { reader -> result = gson.fromJson(reader, clazz) }
         return result!!
     }
 
-    private suspend fun retryConsume(url: URL, consumer: (BufferedReader) -> Unit) {
-        var errorMessages = ""
-        var lastException: Exception? = null
-        repeat(3) { i ->
-            delay(5_000L * i)
+    private suspend fun consumeWithNetworkRetries(url: URL, consumer: (BufferedReader) -> Unit) {
+        var errorMessages: String
+        var lastException: Exception
+        try {
+            consume(url, consumer)
+            return
+        } catch (e: IOException) {
+            lastException = e
+            errorMessages = e.message ?: ""
+        }
+
+        // if the first try was not successful, retry it again
+        repeat(4) {
+            delay(5_000L)
             try {
                 consume(url, consumer)
                 return
@@ -41,8 +50,8 @@ class ApiConsumer {
                 errorMessages += "; ${e.message}"
             }
         }
-        throw ApiConsumerRetryIOException("Fail to consume API. Previous exceptions: "
-                + "[$errorMessages]. Current exception:", lastException!!)
+        val error = "Fail to consume API. Previous exceptions: [$errorMessages]. Last exception:"
+        throw ApiConsumerRetryIOException(error, lastException)
     }
 
     private fun consume(url: URL, consumer: (BufferedReader) -> Any) {
