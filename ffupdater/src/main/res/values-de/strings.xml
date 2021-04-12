@@ -64,6 +64,7 @@
     <string name="install_activity__too_low_memory_title">Wenig freier Speicher</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">"Sie müssen die vorhandene Anwendung deinstallieren, bevor FFUpdater die Anwendung installieren oder aktualisieren kann. Sichern Sie Ihre Daten, da die Deinstallation alle Ihre Lesezeichen, Einstellungen usw. löscht. "</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Grund: Die aktuell installierte Anwendung ist nicht vom ursprünglichen Entwickler signiert - vielleicht ist sie von F-Droid signiert. Android weigert sich, eine Anwendung zu aktualisieren, wenn verschiedene Personen die installierte und die aktualisierte Version signiert haben.</string>
+    <string name="install_activity__use_cached_downloaded_apk">Verwende die bereits heruntergeladene Datei von:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Zertifikat der Anwendung überprüfen</string>
     <string name="install_activity__you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
     <string name="install_activity_label">Anwendung installieren</string>
@@ -129,5 +130,4 @@
     <string name="update_notification__channel_name">Update-Benachrichtigung für %1$s</string>
     <string name="update_notification__text">Klicken um Update zu installieren</string>
     <string name="update_notification__title">"%1$s" kann aktualisiert werden</string>
-    <string name="install_activity__use_cached_downloaded_apk">Verwende die bereits heruntergeladene Datei von:</string>
 </resources>

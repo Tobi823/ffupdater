@@ -64,6 +64,7 @@
     <string name="install_activity__too_low_memory_title">Недостатъчно свободно пространство</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">Трябва да премахнете инсталираното приложение преди FFUpdater да може да го инсталира или обновява. Направете резервно копие на данните преди да го премахнете, защото при премахване ще бъдат изтрити всички отметки, настройки и т.н.</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: инсталираното приложение е не подписано от неговия разработчик. Възможно е да е подписано от F-Droid. Adroid отказва да обновява приложения ако подписа на инсталираното и обновяваното издание се различават.</string>
+    <string name="install_activity__use_cached_downloaded_apk">Използвайте вече изтеглен файл от:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="install_activity__you_can_now_close_this_window">Можете да затворите прозореца</string>
     <string name="install_activity_label">Инсталиране</string>
@@ -129,5 +130,4 @@
     <string name="update_notification__channel_name">Известие за издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
-    <string name="install_activity__use_cached_downloaded_apk">Използвайте вече изтеглен файл от:</string>
 </resources>

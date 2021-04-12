@@ -64,6 +64,7 @@
     <string name="install_activity__too_low_memory_title">Мало місця на диску</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">"Вам потрібно видалити існуючу програму, перш ніж FFUpdater зможе встановити або оновити програму. Створіть резервну копію даних, оскільки видалення видалить усі ваші закладки, налаштування тощо. "</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: Поточна встановлена програма не підписана оригінальним розробником - можливо, вона підписана F-Droid. Android відмовляється оновлювати програму, якщо різні люди підписали встановлену та оновлену версії.</string>
+    <string name="install_activity__use_cached_downloaded_apk">Використовуйте вже завантажений файл із:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
     <string name="install_activity__you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
     <string name="install_activity_label">Встановити програму</string>
@@ -129,5 +130,4 @@
     <string name="update_notification__channel_name">Повідомлення про оновлення %1$s</string>
     <string name="update_notification__text">Клацніть, щоб встановити оновлення</string>
     <string name="update_notification__title">Обновление для "%1$s" доступно</string>
-    <string name="install_activity__use_cached_downloaded_apk">Використовуйте вже завантажений файл із:</string>
 </resources>

@@ -64,6 +64,7 @@
     <string name="install_activity__too_low_memory_title">Недостаточно места на диске</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">Необходимо удалить существующее приложение, прежде чем FFUpdater сможет установить или обновить его. Создайте резервную копию данных, так как при деинсталляции будут удалены все закладки, настройки и т.д.</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: текущее установленное приложение не подписано оригинальным разработчиком - возможно, оно подписано F-Droid. Android отказывается обновлять приложение, если установленная и обновленная версии были подписаны разными людьми.</string>
+    <string name="install_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="install_activity__you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
     <string name="install_activity_label">Установить приложение</string>
@@ -129,5 +130,4 @@
     <string name="update_notification__channel_name">Уведомление об обновлении %1$s</string>
     <string name="update_notification__text">Нажмите, чтобы установить обновление</string>
     <string name="update_notification__title">Доступно обновление для "%1$s"</string>
-    <string name="install_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
 </resources>

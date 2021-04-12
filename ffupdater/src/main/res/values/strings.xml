@@ -66,6 +66,7 @@
     <string name="install_activity__too_low_memory_title">Low Disk Space</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">You have to uninstall the existing app before FFUpdater can install or update the app. Backup your data because the uninstall will delete all your bookmarks, settings etc.</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Reason: The current installed app is not signed by the original developer - maybe it\'s signed by F-Droid. Android refuses to update an app if different people signed the installed and the updated version.</string>
+    <string name="install_activity__use_cached_downloaded_apk">Use already downloaded file from:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Verifying application certificate</string>
     <string name="install_activity__you_can_now_close_this_window">You can now close this window</string>
     <string name="install_activity_label">Install Application</string>
@@ -132,5 +133,4 @@
     <string name="update_notification__channel_name">"%1$s" update notification</string>
     <string name="update_notification__text">Click to install update</string>
     <string name="update_notification__title">Update for "%1$s" available</string>
-    <string name="install_activity__use_cached_downloaded_apk">Use already downloaded file from:</string>
 </resources>

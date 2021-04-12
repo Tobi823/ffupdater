@@ -64,6 +64,7 @@
     <string name="install_activity__too_low_memory_title">Pouco espaço disponível</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">Precisa desinstalar o App existente antes de que o FFUpdater pode instalar ou atualizar este App. Faça um backup dos seus dados porque a desinstalação excluirá todos os seus favoritos, configurações, etc.</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Motivo: O App instalado não é assinado pelo desenvolvedor original - talvez tenha sido assinado pelo F-Droid. Android SO não permite atualizar um aplicativo com diferentes assinaturas.</string>
+    <string name="install_activity__use_cached_downloaded_apk">Use o arquivo já baixado de:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Verificando certificado do App</string>
     <string name="install_activity__you_can_now_close_this_window">Pode fechar este diálogo</string>
     <string name="install_activity_label">Instalar o App</string>
@@ -130,5 +131,4 @@
     <string name="update_notification__channel_name">"%1$s" notificações de atualização</string>
     <string name="update_notification__text">Clique para instalar a atualização</string>
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
-    <string name="install_activity__use_cached_downloaded_apk">Use o arquivo já baixado de:</string>
 </resources>
