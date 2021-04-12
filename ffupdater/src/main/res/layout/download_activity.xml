@@ -146,7 +146,7 @@
 
             <TextView
                 style="@style/BoldTextView"
-                android:text="Use already downloaded file from:" />
+                android:text="@string/install_activity__use_cached_downloaded_apk" />
 
             <TextView
                 android:id="@+id/useCachedDownloadedApk__path"

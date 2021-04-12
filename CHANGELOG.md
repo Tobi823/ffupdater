@@ -10,7 +10,6 @@
  * Make download status translatable (Tobiwan/ffupdater#57)
  * Ask for confirmation when the user wants to update an app but the latest app version is already installed (Tobiwan/ffupdater#60)
 
-
 # 2021-03-14 Version 72.0.0 (60)
  * !!! Remove support for Firefox Light because updates are no longer signed and therefore pose a security risk (thanks opened and mega-stoffel)
  * User can disable the background update check on metered networks (thanks williamtheaker)
