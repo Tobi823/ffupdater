@@ -1,10 +1,8 @@
 package de.marmaro.krt.ffupdater
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -23,7 +21,7 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
-import de.marmaro.krt.ffupdater.download.InternetConnectionTester
+import de.marmaro.krt.ffupdater.download.NetworkTester
 import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
@@ -38,7 +36,6 @@ import java.util.*
 import java.util.concurrent.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var cm: ConnectivityManager
     private val deviceEnvironment = DeviceEnvironment()
     private val sameAppVersionAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
 
@@ -51,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(deviceEnvironment))
         Migrator().migrate(this)
         OldDownloadsDeleter.delete(this)
-        cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         App.values().forEach { app ->
             getInfoButtonForApp(app).setOnClickListener {
@@ -68,7 +64,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun userTriggersAppDownload(app: App) {
-        if (isInternetUnavailable()) {
+        if (NetworkTester.isInternetUnavailable(this)) {
             showInternetUnavailableToast()
             return
         }
@@ -131,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         val notInstalledApps = App.values().filterNot { installedApps.contains(it) }
         notInstalledApps.forEach { getAppCardViewForApp(it).visibility = View.GONE }
 
-        if (isInternetUnavailable()) {
+        if (NetworkTester.isInternetUnavailable(this)) {
             installedApps.forEach {
                 getAvailableVersionTextView(it).text = getString(R.string.main_activity__not_connected_to_internet)
             }
@@ -183,17 +179,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun installApp(app: App) {
-        if (isInternetUnavailable()) {
+        if (NetworkTester.isInternetUnavailable(this)) {
             showInternetUnavailableToast()
             return
         }
         val intent = Intent(this, InstallActivity::class.java)
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name)
         startActivity(intent)
-    }
-
-    private fun isInternetUnavailable(): Boolean {
-        return InternetConnectionTester.isInternetUnavailable(cm, deviceEnvironment)
     }
 
     private fun showInternetUnavailableToast() {

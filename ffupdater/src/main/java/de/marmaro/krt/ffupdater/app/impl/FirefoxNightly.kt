@@ -3,8 +3,8 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -26,14 +26,18 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override fun getInstalledVersion(context: Context): String? {
-        val rawVersion = super.getInstalledVersion(context) ?: return null
-        val version = Regex("""^(Nightly \d{6} \d{2}):\d{2}$""").find(rawVersion)!!
+    override fun getDisplayInstalledVersion(context: Context): String {
+        val rawVersion = getInstalledVersion(context) ?:
+            return context.getString(R.string.installed_version, "")
+
+        val importantVersionPart = Regex("""^(Nightly \d{6} \d{2}):\d{2}$""")
+                .find(rawVersion)!!
                 .groups[1]!!.value
-        return "${version}:xx"
+        val version = "${importantVersionPart}:xx"
+        return context.getString(R.string.installed_version, version)
     }
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "arm64-v8a"
@@ -53,20 +57,20 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val formatter = DateTimeFormatter.ofPattern("yyMMdd HH")
         val timestamp = formatter.format(result.releaseDate)
         val version = "Nightly ${timestamp}:xx"
-        return UpdateCheckSubResult(
+        return AvailableVersionResult(
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,
                 fileSizeBytes = null)
     }
 
-    override fun isVersionNewer(
+    override fun areVersionsDifferent(
             installedVersion: String?,
-            available: UpdateCheckSubResult): Boolean {
+            available: AvailableVersionResult): Boolean {
         if (installedVersion == null) {
             return true
         }
-        val regex = Regex("""Nightly (\d{6} \d{2}):xx$""")
+        val regex = Regex("""Nightly (\d{6} \d{2}):[\dx]{2}$""")
         val installedString = regex.find(installedVersion)!!.groups[1]!!.value
         val availableString = regex.find(available.version)!!.groups[1]!!.value
         val pattern = DateTimeFormatter.ofPattern("yyMMdd HH")

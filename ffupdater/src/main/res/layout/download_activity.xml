@@ -141,6 +141,20 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/useCachedDownloadedApk"
+            style="@style/DownloadActivitySegment">
+
+            <TextView
+                style="@style/BoldTextView"
+                android:text="Use already downloaded file from:" />
+
+            <TextView
+                android:id="@+id/useCachedDownloadedApk__path"
+                style="@style/MonospaceSelectableTextView" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/downloadFileFailed"
             style="@style/DownloadActivitySegment"
             android:background="@color/errorRed"

@@ -2,8 +2,8 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
@@ -25,7 +25,7 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64,
             ABI.X86, ABI.MIPS, ABI.MIPS64)
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "mozilla-lockwise",
@@ -39,7 +39,7 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"
         val regexResult = Regex("""^release-v((\d)+(\.\d+)*)""").find(result.tagName)
         val version = regexResult!!.groups[1]!!.value
-        return UpdateCheckSubResult(
+        return AvailableVersionResult(
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,

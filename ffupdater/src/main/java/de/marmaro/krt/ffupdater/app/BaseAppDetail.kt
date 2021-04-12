@@ -10,7 +10,7 @@ import kotlinx.coroutines.sync.withLock
 import java.time.Duration
 
 abstract class BaseAppDetail : AppDetail {
-    private var cache: Deferred<UpdateCheckSubResult>? = null
+    private var cache: Deferred<AvailableVersionResult>? = null
     private var cacheTimestamp: Long = 0
     private val mutex = Mutex()
 
@@ -37,13 +37,13 @@ abstract class BaseAppDetail : AppDetail {
 
     protected open fun getDisplayAvailableVersion(
             context: Context,
-            updateCheckSubResult: UpdateCheckSubResult,
+            availableVersionResult: AvailableVersionResult,
     ): String {
-        return context.getString(R.string.available_version, updateCheckSubResult.version)
+        return context.getString(R.string.available_version, availableVersionResult.version)
     }
 
     protected abstract suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment)
-            : UpdateCheckSubResult
+            : AvailableVersionResult
 
     /**
      * 2min timeout
@@ -63,20 +63,18 @@ abstract class BaseAppDetail : AppDetail {
             }
         }
 
-        val subResult: UpdateCheckSubResult
+        val availableVersionResult: AvailableVersionResult
         withTimeout(Duration.ofMinutes(2).toMillis()) {
-            subResult = cache!!.await()
+            availableVersionResult = cache!!.await()
         }
-
-        val updateAvailable = isVersionNewer(getInstalledVersion(context), subResult)
-        val displayVersion = getDisplayAvailableVersion(context, subResult)
-        return subResult.convertToUpdateCheckResult(updateAvailable, displayVersion)
+        return UpdateCheckResult(
+                availableResult = availableVersionResult,
+                isUpdateAvailable = areVersionsDifferent(getInstalledVersion(context), availableVersionResult),
+                displayVersion = getDisplayAvailableVersion(context, availableVersionResult)
+        )
     }
 
-    protected open fun isVersionNewer(
-            installedVersion: String?,
-            available: UpdateCheckSubResult,
-    ): Boolean {
+    override fun areVersionsDifferent(installedVersion: String?, available: AvailableVersionResult): Boolean {
         return installedVersion != available.version
     }
 

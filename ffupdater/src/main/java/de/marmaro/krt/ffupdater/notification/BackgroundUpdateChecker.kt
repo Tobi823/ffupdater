@@ -7,17 +7,29 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
+import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.FAILED
+import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.SUCCESSFUL
+import de.marmaro.krt.ffupdater.download.DownloadedApkCache
+import de.marmaro.krt.ffupdater.download.NetworkTester
+import de.marmaro.krt.ffupdater.download.StorageTester
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.delay
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
+import kotlin.coroutines.cancellation.CancellationException
 
 /**
  * This class will call the [WorkManager] to check regularly for app updates in the background.
  * When an app update is available, a notification will be displayed.
  */
-class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
+class BackgroundUpdateChecker(
+        context: Context,
+        workerParams: WorkerParameters,
+) : CoroutineWorker(context, workerParams) {
+    val deviceEnvironment = DeviceEnvironment()
+
     override suspend fun doWork(): Result {
         return try {
             doBackgroundCheck()
@@ -35,15 +47,13 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
     }
 
     private suspend fun doBackgroundCheck() {
-        val deviceEnvironment = DeviceEnvironment()
-        val context = applicationContext
-        val disabledApps = SettingsHelper(context).disabledApps
+        val disabledApps = SettingsHelper(applicationContext).disabledApps
         val appsForChecking = App.values()
                 .filter { !disabledApps.contains(it) }
-                .filter { it.detail.isInstalled(context) }
+                .filter { it.detail.isInstalled(applicationContext) }
         val appsWithUpdates = appsForChecking.filter {
             try {
-                it.detail.updateCheck(context, deviceEnvironment).isUpdateAvailable
+                it.detail.updateCheck(applicationContext, deviceEnvironment).isUpdateAvailable
             } catch (e: ApiConsumer.ApiConsumerRetryIOException) {
                 throw BackgroundNetworkException("fail to check $it due to network error", e)
             } catch (e: CancellationException) {
@@ -52,7 +62,40 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
                 throw BackgroundUnknownException("fail to check $it due to unknown bug", e)
             }
         }
-        UpdateNotificationBuilder.showNotifications(appsWithUpdates, context)
+
+        if (NetworkTester.isActiveNetworkUnmetered(applicationContext)) {
+            val downloadManager = DownloadManagerAdapter.create(applicationContext)
+            appsWithUpdates.forEach { downloadAppInBackground(it, downloadManager) }
+        }
+
+        UpdateNotificationBuilder.showNotifications(appsWithUpdates, applicationContext)
+    }
+
+    private suspend fun downloadAppInBackground(app: App, downloadManager: DownloadManagerAdapter) {
+        val apkCache = DownloadedApkCache(app, applicationContext)
+        val cachedUpdateChecker = app.detail.updateCheck(applicationContext, deviceEnvironment)
+        val availableResult = cachedUpdateChecker.availableResult
+        if (apkCache.isCacheAvailable(availableResult) ||
+                !StorageTester.isEnoughStorageAvailable(applicationContext)) {
+            return
+        }
+
+        val fileReservation = downloadManager.reserveFile(app, applicationContext)
+        val downloadId = downloadManager.enqueue(applicationContext, app, availableResult, fileReservation)
+        repeat(5 * 60) {
+            when (downloadManager.getStatusAndProgress(downloadId).status) {
+                SUCCESSFUL -> {
+                    apkCache.copyFileToCache(fileReservation.downloadLocation)
+                    return
+                }
+                FAILED -> {
+                    downloadManager.remove(downloadId)
+                    return
+                }
+                else -> delay(1000)
+            }
+        }
+        downloadManager.remove(downloadId)
     }
 
     companion object {

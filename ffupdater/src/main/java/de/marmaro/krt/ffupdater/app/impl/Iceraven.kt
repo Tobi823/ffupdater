@@ -3,8 +3,8 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
@@ -31,12 +31,12 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return context.getString(R.string.installed_version, version ?: "")
     }
 
-    override fun getDisplayAvailableVersion(context: Context, updateCheckSubResult: UpdateCheckSubResult): String {
-        val version = updateCheckSubResult.version.replace("iceraven-", "")
+    override fun getDisplayAvailableVersion(context: Context, availableVersionResult: AvailableVersionResult): String {
+        val version = availableVersionResult.version.replace("iceraven-", "")
         return context.getString(R.string.available_version, version)
     }
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
         val fileSuffix = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
@@ -57,7 +57,7 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
         val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         val version = result.tagName
-        return UpdateCheckSubResult(
+        return AvailableVersionResult(
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,

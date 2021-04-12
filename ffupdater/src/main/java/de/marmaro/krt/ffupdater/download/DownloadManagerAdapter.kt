@@ -6,9 +6,12 @@ import android.content.Context
 import android.database.CursorIndexOutOfBoundsException
 import android.net.Uri
 import android.os.Environment.DIRECTORY_DOWNLOADS
-import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import java.io.File
 import java.net.URL
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
 /**
@@ -16,11 +19,27 @@ import kotlin.random.Random
  */
 class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
 
-    fun reserveFile(context: Context): DownloadFileReservation {
-        val ms = System.currentTimeMillis()
-        val fileName = "download_${ms}_${Random.nextLong(0, Long.MAX_VALUE)}.apk"
-        val file = File(context.getExternalFilesDir(DIRECTORY_DOWNLOADS), fileName)
-        return DownloadFileReservation(fileName, file)
+    fun reserveFile(app: App, context: Context): DownloadFileReservation {
+        val date = DateTimeFormatter.ofPattern("yyyy_MM_dd").format(LocalDate.now())
+        val randomValue = Random.nextInt(0, Int.MAX_VALUE)
+        val directory = context.getExternalFilesDir(DIRECTORY_DOWNLOADS)!!
+        val fileName = "${app}__${date}__${randomValue}.apk"
+        return DownloadFileReservation(fileName, File(directory, fileName))
+    }
+
+    fun enqueue(
+            context: Context,
+            app: App,
+            availableVersionResult: AvailableVersionResult,
+            reservedFile: DownloadFileReservation,
+    ): Long {
+        val title = "FFUpdater: " + context.getString(app.detail.displayTitle)
+        return enqueue(
+                context,
+                downloadUrl = availableVersionResult.downloadUrl,
+                notificationTitle = title,
+                reservedFile
+        )
     }
 
     /**
@@ -40,6 +59,7 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
         check(downloadUrl.protocol == "https")
         val request = Request(Uri.parse(downloadUrl.toString()))
                 .setTitle(notificationTitle)
+                //.setAllowedOverMetered(false)
                 .setNotificationVisibility(Request.VISIBILITY_VISIBLE)
                 .setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, reservedFile.name)
         return downloadManager.enqueue(request)
@@ -59,7 +79,7 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
      * @param id id
      * @return status (constants from `android.app.DownloadManager`) and percent (0-100)
      */
-    fun getStatusAndProgress(id: Long): StatusProgress {
+    fun getStatusAndProgress(id: Long): DownloadStatus {
         val query = Query()
         query.setFilterById(id)
         try {
@@ -69,34 +89,36 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
                 val totalBytes = cursor.getInt(totalBytesIndex).toDouble()
                 val actualBytesIndex = cursor.getColumnIndex(COLUMN_BYTES_DOWNLOADED_SO_FAR)
                 val actualBytes = cursor.getInt(actualBytesIndex).toDouble()
+                val progressInPercentage = (actualBytes / totalBytes * 100).toInt()
+
                 val statusIndex = cursor.getColumnIndex(COLUMN_STATUS)
-                val status = cursor.getInt(statusIndex)
-                return StatusProgress(status, (actualBytes / totalBytes * 100).toInt())
+                val status = when (cursor.getInt(statusIndex)) {
+                    STATUS_RUNNING -> DownloadStatus.Status.RUNNING
+                    STATUS_SUCCESSFUL -> DownloadStatus.Status.SUCCESSFUL
+                    STATUS_FAILED -> DownloadStatus.Status.FAILED
+                    STATUS_PAUSED -> DownloadStatus.Status.PAUSED
+                    STATUS_PENDING -> DownloadStatus.Status.PENDING
+                    else -> DownloadStatus.Status.UNKNOWN
+                }
+                return DownloadStatus(status, progressInPercentage)
             }
         } catch (e: CursorIndexOutOfBoundsException) {
-            return StatusProgress(-3, 0)
+            return DownloadStatus(DownloadStatus.Status.UNKNOWN, 0)
         }
     }
 
-    fun getTotalDownloadSize(id: Long): Long {
-        val query = Query()
-        query.setFilterById(id)
-        downloadManager.query(query).use { cursor ->
-            cursor.moveToFirst()
-            return cursor.getLong(cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES))
+    data class DownloadStatus(val status: Status, val progressInPercentage: Int) {
+        enum class Status {
+            UNKNOWN, PENDING, RUNNING, PAUSED, SUCCESSFUL, FAILED
         }
     }
 
-    /**
-     * Return the uri for the downloaded file. The Uri is no longer available, when the download id was removed.
-     *
-     * @param id id
-     * @return url for the downloaded file
-     */
-    fun getUriForDownloadedFile(id: Long): Uri {
-        return downloadManager.getUriForDownloadedFile(id)
-    }
+    data class DownloadFileReservation(val name: String, val downloadLocation: File)
 
-    data class StatusProgress(val status: Int, val progress: Int)
-    data class DownloadFileReservation(val name: String, val file: File)
+    companion object {
+        fun create(context: Context): DownloadManagerAdapter {
+            val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            return DownloadManagerAdapter(downloadManager)
+        }
+    }
 }

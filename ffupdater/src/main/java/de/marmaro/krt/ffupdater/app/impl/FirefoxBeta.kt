@@ -2,8 +2,8 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -23,7 +23,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
         val abiString = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "arm64-v8a"
@@ -41,7 +41,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 keyForReleaseDate = "now")
         val result = mozillaCiConsumer.updateCheck()
         val version = result.version
-        return UpdateCheckSubResult(
+        return AvailableVersionResult(
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,

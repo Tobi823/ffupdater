@@ -7,12 +7,10 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import de.marmaro.krt.ffupdater.InstallActivity
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import java.io.File
 import java.io.IOException
 
-//für API >= 29 (Q)
+//for API >= 24 (Nougat 7.0)
 class SessionInstaller(
         private val appInstalledCallback: () -> Any,
         private val appNotInstalledCallback: (errorMessage: String) -> Any,
@@ -34,37 +32,24 @@ class SessionInstaller(
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
 
-    override fun install(
-            activity: Activity,
-            downloadManagerAdapter: DownloadManagerAdapter,
-            downloadId: Long,
-            downloadedFile: File,
-            deviceEnvironment: DeviceEnvironment,
-    ) {
+    override fun install(activity: Activity, downloadedFile: File) {
         try {
-            return installInternal(activity, downloadManagerAdapter, downloadId)
+            return installInternal(activity, downloadedFile)
         } catch (e: IOException) {
             throw SessionInstallerException("fail to install app", e)
         }
     }
 
-    private fun installInternal(
-            activity: Activity,
-            downloadManagerAdapter: DownloadManagerAdapter,
-            downloadId: Long,
-    ) {
+    private fun installInternal(activity: Activity, downloadedFile: File) {
         val installer = activity.packageManager.packageInstaller
         val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
-        val downloadSize = downloadManagerAdapter.getTotalDownloadSize(downloadId)
-        val downloadUri = downloadManagerAdapter.getUriForDownloadedFile(downloadId)
-
+        val bytes = downloadedFile.length()
         installer.openSession(installer.createSession(params)).use { session ->
-            session.openWrite("package", 0, downloadSize).use { packageStream ->
-                activity.contentResolver.openInputStream(downloadUri).use { apkStream ->
-                    apkStream?.copyTo(packageStream)
+            session.openWrite("package", 0, bytes).use { packageStream ->
+                downloadedFile.inputStream().use { downloadedFileStream ->
+                    downloadedFileStream.copyTo(packageStream)
                 }
             }
             val intent = Intent(activity, InstallActivity::class.java)

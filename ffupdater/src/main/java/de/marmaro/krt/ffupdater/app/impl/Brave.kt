@@ -2,8 +2,8 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
@@ -24,7 +24,7 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
         val fileName = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> "BraveMonoarm64.apk"
@@ -47,7 +47,7 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         val version = result.tagName.replace("v", "")
-        return UpdateCheckSubResult(
+        return AvailableVersionResult(
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,

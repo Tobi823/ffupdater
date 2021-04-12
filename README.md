@@ -17,6 +17,8 @@ and:
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
 
+FFUpdater will also automatically download the app updates in the background if the current network is unmetered and the device has enough storage.
+
 ## Security measures:
  - only HTTPS connections
  - check certificate fingerprint of the downloaded file and installed app

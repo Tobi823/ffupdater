@@ -14,4 +14,6 @@ and:
 
 FFUpdater will check periodically for updates and will display a notification when an update is available. This feature itself can be disabled and the check frequency can be changed.
 
+FFUpdater will also automatically download the app updates in the background if the current network is unmetered and the device has enough storage.
+
 Visit https://notabug.org/Tobiwan/ffupdater/src/master/README.md or click on the "Source Code" link below to see more information about security measurements, limitations, bugs, FAQ, build instructions, used 3rd-party libraries, technical details etc.

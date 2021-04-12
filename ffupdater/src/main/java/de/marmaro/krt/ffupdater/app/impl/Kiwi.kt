@@ -2,8 +2,8 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.UpdateCheckSubResult
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
@@ -27,7 +27,7 @@ class Kiwi(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val minApiLevel = Build.VERSION_CODES.JELLY_BEAN
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): UpdateCheckSubResult {
+    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
         val fileNameRegex = deviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> Regex("""Kiwi-(\d+)-arm64-signed\.apk""")
@@ -51,7 +51,7 @@ class Kiwi(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val date = DateTimeFormatter.ofPattern("yyMMdd").format(result.releaseDate)
         val number = result.tagName.replace("v", "")
         val version = "Git${date}Gen${number}"
-        return UpdateCheckSubResult(
+        return AvailableVersionResult(
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,

@@ -4,9 +4,19 @@ import java.net.URL
 import java.time.ZonedDateTime
 
 data class UpdateCheckResult(
+        val availableResult: AvailableVersionResult,
         val isUpdateAvailable: Boolean,
-        val downloadUrl: URL,
-        val version: String,
-        val displayVersion: String,
-        val publishDate: ZonedDateTime,
-        val fileSizeBytes: Long?)
+        val displayVersion: String) {
+
+    val downloadUrl: URL
+        get() = availableResult.downloadUrl
+
+    val version: String
+        get() = availableResult.version
+
+    val publishDate: ZonedDateTime
+        get() = availableResult.publishDate
+
+    val fileSizeBytes: Long?
+        get() = availableResult.fileSizeBytes
+}

@@ -1,17 +1,14 @@
 package de.marmaro.krt.ffupdater.installer
 
 import android.app.Activity
-import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import java.io.File
 import java.io.IOException
 
 
-//für API < 29 (Q)
+//for API < 24 (Nougat 7.0)
 class IntentInstaller(
         private val appInstalledCallback: () -> Any,
         private val appNotInstalledCallback: (errorMessage: String) -> Any,
@@ -29,16 +26,9 @@ class IntentInstaller(
         }
     }
 
-    override fun install(
-            activity: Activity,
-            downloadManagerAdapter: DownloadManagerAdapter,
-            downloadId: Long,
-            downloadedFile: File,
-            deviceEnvironment: DeviceEnvironment,
-    ) {
+    override fun install(activity: Activity, downloadedFile: File) {
         try {
-            return installInternal(activity, downloadManagerAdapter, downloadId, downloadedFile,
-                    deviceEnvironment)
+            return installInternal(activity, downloadedFile)
         } catch (e: IOException) {
             throw IntentInstallerException("fail to install app", e)
         }
@@ -48,21 +38,10 @@ class IntentInstaller(
      * See org.fdroid.fdroid.installer.DefaultInstallerActivity.java from
      * https://github.com/f-droid/fdroidclient
      */
-    private fun installInternal(
-            activity: Activity,
-            downloadManagerAdapter: DownloadManagerAdapter,
-            downloadId: Long,
-            downloadedFile: File,
-            deviceEnvironment: DeviceEnvironment,
-    ) {
+    private fun installInternal(activity: Activity, downloadedFile: File) {
+        @Suppress("DEPRECATION")
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
-        if (deviceEnvironment.supportsAndroidNougat()) {
-            intent.data = downloadManagerAdapter.getUriForDownloadedFile(downloadId)
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            intent.putExtra(DownloadManager.EXTRA_DOWNLOAD_ID, downloadId)
-        } else {
-            intent.data = Uri.fromFile(downloadedFile)
-        }
+        intent.data = Uri.fromFile(downloadedFile)
         intent.putExtra(Intent.EXTRA_RETURN_RESULT, true)
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
         activity.startActivityForResult(intent, REQUEST_CODE_INSTALL)
@@ -70,8 +49,7 @@ class IntentInstaller(
 
     class IntentInstallerException(message: String, throwable: Throwable) : Exception(message, throwable)
 
-
     companion object {
-        private val REQUEST_CODE_INSTALL = 0
+        private const val REQUEST_CODE_INSTALL = 0
     }
 }
