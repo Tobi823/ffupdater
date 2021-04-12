@@ -129,4 +129,5 @@
     <string name="update_notification__channel_name">Повідомлення про оновлення %1$s</string>
     <string name="update_notification__text">Клацніть, щоб встановити оновлення</string>
     <string name="update_notification__title">Обновление для "%1$s" доступно</string>
+    <string name="install_activity__use_cached_downloaded_apk">Використовуйте вже завантажений файл із:</string>
 </resources>

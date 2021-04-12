@@ -129,4 +129,5 @@
     <string name="update_notification__channel_name">Известие за издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
+    <string name="install_activity__use_cached_downloaded_apk">Използвайте вече изтеглен файл от:</string>
 </resources>

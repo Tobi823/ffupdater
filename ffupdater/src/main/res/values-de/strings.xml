@@ -129,4 +129,5 @@
     <string name="update_notification__channel_name">Update-Benachrichtigung für %1$s</string>
     <string name="update_notification__text">Klicken um Update zu installieren</string>
     <string name="update_notification__title">"%1$s" kann aktualisiert werden</string>
+    <string name="install_activity__use_cached_downloaded_apk">Verwende die bereits heruntergeladene Datei von:</string>
 </resources>
