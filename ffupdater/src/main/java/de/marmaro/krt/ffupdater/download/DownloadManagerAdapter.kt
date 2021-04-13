@@ -9,7 +9,6 @@ import android.os.Environment.DIRECTORY_DOWNLOADS
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import java.io.File
-import java.net.URL
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import kotlin.random.Random
@@ -27,37 +26,18 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
         return DownloadFileReservation(fileName, File(directory, fileName))
     }
 
+    /**
+     * Enqueue a new download.
+     */
     fun enqueue(
             context: Context,
             app: App,
             availableVersionResult: AvailableVersionResult,
             reservedFile: DownloadFileReservation,
     ): Long {
-        val title = "FFUpdater: " + context.getString(app.detail.displayTitle)
-        return enqueue(
-                context,
-                downloadUrl = availableVersionResult.downloadUrl,
-                notificationTitle = title,
-                reservedFile
-        )
-    }
-
-    /**
-     * Enqueue a new download.
-     *
-     * @param context                context
-     * @param downloadUrl            url for the download
-     * @param notificationTitle      title for the download notification
-     * @return new generated id for the download
-     */
-    fun enqueue(
-            context: Context,
-            downloadUrl: URL,
-            notificationTitle: String,
-            reservedFile: DownloadFileReservation,
-    ): Long {
-        check(downloadUrl.protocol == "https")
-        val request = Request(Uri.parse(downloadUrl.toString()))
+        check(availableVersionResult.downloadUrl.protocol == "https")
+        val notificationTitle = "FFUpdater: " + context.getString(app.detail.displayTitle)
+        val request = Request(Uri.parse(availableVersionResult.downloadUrl.toString()))
                 .setTitle(notificationTitle)
                 //.setAllowedOverMetered(false)
                 .setNotificationVisibility(Request.VISIBILITY_VISIBLE)

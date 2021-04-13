@@ -52,6 +52,5 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 fileSizeBytes = null)
     }
 
-    companion object {
-    }
+    companion object
 }

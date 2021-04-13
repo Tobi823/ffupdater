@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package de.marmaro.krt.ffupdater.device
 
 import android.os.Build
@@ -33,10 +35,6 @@ class DeviceEnvironment constructor(
 
     fun supportsAndroidNougat(): Boolean {
         return SDK_INT >=Build.VERSION_CODES.N
-    }
-
-    fun supportsAndroid10(): Boolean {
-        return SDK_INT >= Build.VERSION_CODES.Q
     }
 
     class UnknownAbiException(message: String) : Exception(message)

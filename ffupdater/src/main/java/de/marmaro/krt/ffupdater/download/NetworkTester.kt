@@ -14,7 +14,7 @@ object NetworkTester {
         return isInternetUnavailable(cm, DeviceEnvironment())
     }
 
-    fun isInternetUnavailable(cm: ConnectivityManager, deviceEnvironment: DeviceEnvironment): Boolean {
+    private fun isInternetUnavailable(cm: ConnectivityManager, deviceEnvironment: DeviceEnvironment): Boolean {
         if (deviceEnvironment.supportsAndroidMarshmallow()) {
             return !isInternetAvailableNewWay(cm)
         }
@@ -42,7 +42,7 @@ object NetworkTester {
         return isActiveNetworkUnmetered(cm)
     }
 
-    fun isActiveNetworkUnmetered(cm: ConnectivityManager): Boolean {
+    private fun isActiveNetworkUnmetered(cm: ConnectivityManager): Boolean {
         return !cm.isActiveNetworkMetered
     }
 }

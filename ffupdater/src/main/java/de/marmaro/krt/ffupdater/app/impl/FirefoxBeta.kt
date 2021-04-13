@@ -51,7 +51,4 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 publishDate = result.releaseDate,
                 fileSizeBytes = null)
     }
-
-    companion object {
-    }
 }
