@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.graphics.Color
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
@@ -20,10 +21,13 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayDescription = R.string.lockwise__description
     override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.github
-    override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
+    override val displayIcon = R.mipmap.ic_logo_lockwise
+    override val displayIconBackground = Color.parseColor("#FFFFFF")
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64,
             ABI.X86, ABI.MIPS, ABI.MIPS64)
+    @Suppress("SpellCheckingInspection")
+    override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
 
     override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
         val githubConsumer = GithubConsumer(

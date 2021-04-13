@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.graphics.Color
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
@@ -19,9 +20,12 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayDescription = R.string.firefox_klar__description
     override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.mozilla_ci
-    override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
+    override val displayIcon = R.mipmap.ic_logo_firefox_focus_klar
+    override val displayIconBackground = Color.parseColor("#A4007F")
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A)
+    @Suppress("SpellCheckingInspection")
+    override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
     override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
         val abiString = deviceEnvironment.abis.mapNotNull {

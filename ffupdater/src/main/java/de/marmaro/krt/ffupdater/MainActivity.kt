@@ -9,10 +9,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
@@ -38,6 +39,8 @@ import java.util.concurrent.*
 class MainActivity : AppCompatActivity() {
     private val deviceEnvironment = DeviceEnvironment()
     private val sameAppVersionAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
+    private val availableVersions: EnumMap<App, TextView> = EnumMap(App::class.java)
+    private val downloadButtons: EnumMap<App, ImageButton> = EnumMap(App::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,17 +52,11 @@ class MainActivity : AppCompatActivity() {
         Migrator().migrate(this)
         OldDownloadsDeleter.delete(this)
 
-        App.values().forEach { app ->
-            getInfoButtonForApp(app).setOnClickListener {
-                AppInfoDialog.newInstance(app).show(supportFragmentManager)
-            }
-            getDownloadButtonForApp(app).setOnClickListener { userTriggersAppDownload(app) }
-        }
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             InstallNewAppDialog.newInstance().show(supportFragmentManager)
         }
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).setOnRefreshListener {
-            updateUI(true)
+            checkForUpdates()
         }
     }
 
@@ -82,7 +79,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        updateUI(false)
+        initUI()
+        checkForUpdates(true)
     }
 
     override fun onPause() {
@@ -117,46 +115,77 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun updateUI(crashOnException: Boolean) {
-        val installedApps = App.values().filter { it.detail.isInstalled(this) }
-        installedApps.forEach {
-            getAppCardViewForApp(it).visibility = View.VISIBLE
-            getInstalledVersionTextView(it).text = it.detail.getDisplayInstalledVersion(this)
-            disableDownloadButton(it)
-        }
-        val notInstalledApps = App.values().filterNot { installedApps.contains(it) }
-        notInstalledApps.forEach { getAppCardViewForApp(it).visibility = View.GONE }
+    private fun initUI() {
+        val mainLinearLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
+        mainLinearLayout.removeAllViews()
+        availableVersions.clear()
+        downloadButtons.clear()
 
-        if (NetworkTester.isInternetUnavailable(this)) {
-            installedApps.forEach {
-                getAvailableVersionTextView(it).text = getString(R.string.main_activity__not_connected_to_internet)
+        val installedApps = App.values().filter { it.detail.isInstalled(this) }
+        installedApps.forEach { app ->
+            val newCardView = layoutInflater.inflate(R.layout.app_card_layout, mainLinearLayout, false)
+
+            val installedVersion = newCardView.findViewWithTag<TextView>("appInstalledVersion")
+            installedVersion.text = app.detail.getDisplayInstalledVersion(this)
+
+            availableVersions[app] = newCardView.findViewWithTag("appAvailableVersion")
+
+            val downloadButton = newCardView.findViewWithTag<ImageButton>("appDownloadButton")
+            downloadButton.setOnClickListener { userTriggersAppDownload(app) }
+            downloadButtons[app] = downloadButton
+            disableDownloadButton(app)
+
+            val infoButton = newCardView.findViewWithTag<ImageButton>("appInfoButton")
+            infoButton.setOnClickListener {
+                AppInfoDialog.newInstance(app).show(supportFragmentManager)
             }
-            findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
+
+            val title = getString(app.detail.displayTitle)
+            newCardView.findViewWithTag<TextView>("appCardTitle").text = title
+
+            val icon = newCardView.findViewWithTag<ImageView>("appIcon")
+            icon.setImageResource(app.detail.displayIcon)
+            icon.setBackgroundColor(app.detail.displayIconBackground)
+
+            mainLinearLayout.addView(newCardView)
+        }
+    }
+
+    private fun checkForUpdates(ignoreErrors: Boolean = false) {
+        // abort if layout is not initialized
+        if (findViewById<LinearLayout>(R.id.mainLinearLayout).childCount == 0) {
+            return
+        }
+
+        val installedApps = App.values().filter { it.detail.isInstalled(this) }
+        if (NetworkTester.isInternetUnavailable(this)) {
+            val errorMessage = getString(R.string.main_activity__not_connected_to_internet)
+            installedApps.forEach { availableVersions[it]!!.text = errorMessage }
+            hideLoadAnimation()
             showInternetUnavailableToast()
             return
         }
 
-        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = true
+        showLoadAnimation()
         val jobs = ConcurrentLinkedQueue<Job>()
         installedApps.forEach {
-            getAvailableVersionTextView(it).text = getString(R.string.available_version_loading)
-            jobs.add(showUpdateCheckResultsOfApp(it, crashOnException))
+            availableVersions[it]!!.text = getString(R.string.available_version_loading)
+            jobs.add(checkForAppUpdate(it, ignoreErrors))
         }
-
         lifecycleScope.launch(Dispatchers.IO) {
             jobs.forEach { it.join() }
             lifecycleScope.launch(Dispatchers.Main) {
-                findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
+                hideLoadAnimation()
             }
         }
     }
 
-    private fun showUpdateCheckResultsOfApp(app: App, crashOnException: Boolean): Job {
+    private fun checkForAppUpdate(app: App, ignoreErrors: Boolean): Job {
         return lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val updateResult = app.detail.updateCheck(applicationContext, deviceEnvironment)
                 lifecycleScope.launch(Dispatchers.Main) {
-                    getAvailableVersionTextView(app).text = updateResult.displayVersion
+                    availableVersions[app]!!.text = updateResult.displayVersion
                     if (updateResult.isUpdateAvailable) {
                         sameAppVersionAlreadyInstalled[app] = false
                         enableDownloadButton(app)
@@ -166,12 +195,12 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } catch (e: Exception) {
-                if (crashOnException) {
+                if (!ignoreErrors) {
                     throw UpdateCheckException("fail to check $app for updates", e)
                 }
                 Log.e(LOG_TAG, "fail to check $app for updates", e)
                 lifecycleScope.launch(Dispatchers.Main) {
-                    getAvailableVersionTextView(app).text = getString(R.string.available_version_error)
+                    availableVersions[app]!!.text = getString(R.string.available_version_error)
                     disableDownloadButton(app)
                 }
             }
@@ -193,87 +222,20 @@ class MainActivity : AppCompatActivity() {
         Snackbar.make(layout, R.string.main_activity__not_connected_to_internet, Snackbar.LENGTH_LONG).show()
     }
 
-    private fun getAppCardViewForApp(app: App): CardView {
-        return findViewById(when (app) {
-            App.FIREFOX_KLAR -> R.id.firefoxKlarCard
-            App.FIREFOX_FOCUS -> R.id.firefoxFocusCard
-            App.FIREFOX_RELEASE -> R.id.firefoxReleaseCard
-            App.FIREFOX_BETA -> R.id.firefoxBetaCard
-            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyCard
-            App.LOCKWISE -> R.id.lockwiseCard
-            App.BRAVE -> R.id.braveCard
-            App.ICERAVEN -> R.id.iceravenCard
-            App.BROMITE -> R.id.bromiteCard
-            App.KIWI -> R.id.kiwiCard
-        })
-    }
-
     private fun enableDownloadButton(app: App) {
-        getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_orange)
+        downloadButtons[app]!!.setImageResource(R.drawable.ic_file_download_orange)
     }
 
     private fun disableDownloadButton(app: App) {
-        getDownloadButtonForApp(app).setImageResource(R.drawable.ic_file_download_grey)
+        downloadButtons[app]!!.setImageResource(R.drawable.ic_file_download_grey)
     }
 
-    private fun getDownloadButtonForApp(app: App): ImageButton {
-        return findViewById(when (app) {
-            App.FIREFOX_KLAR -> R.id.firefoxKlarDownloadButton
-            App.FIREFOX_FOCUS -> R.id.firefoxFocusDownloadButton
-            App.FIREFOX_RELEASE -> R.id.firefoxReleaseDownloadButton
-            App.FIREFOX_BETA -> R.id.firefoxBetaDownloadButton
-            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyDownloadButton
-            App.LOCKWISE -> R.id.lockwiseDownloadButton
-            App.BRAVE -> R.id.braveDownloadButton
-            App.ICERAVEN -> R.id.iceravenDownloadButton
-            App.BROMITE -> R.id.bromiteDownloadButton
-            App.KIWI -> R.id.kiwiDownloadButton
-        })
+    private fun showLoadAnimation() {
+        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = true
     }
 
-    private fun getInstalledVersionTextView(app: App): TextView {
-        return findViewById(when (app) {
-            App.FIREFOX_KLAR -> R.id.firefoxKlarInstalledVersion
-            App.FIREFOX_FOCUS -> R.id.firefoxFocusInstalledVersion
-            App.FIREFOX_RELEASE -> R.id.firefoxReleaseInstalledVersion
-            App.FIREFOX_BETA -> R.id.firefoxBetaInstalledVersion
-            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyInstalledVersion
-            App.LOCKWISE -> R.id.lockwiseInstalledVersion
-            App.BRAVE -> R.id.braveInstalledVersion
-            App.ICERAVEN -> R.id.iceravenInstalledVersion
-            App.BROMITE -> R.id.bromiteInstalledVersion
-            App.KIWI -> R.id.kiwiInstalledVersion
-        })
-    }
-
-    private fun getAvailableVersionTextView(app: App): TextView {
-        return findViewById(when (app) {
-            App.FIREFOX_KLAR -> R.id.firefoxKlarAvailableVersion
-            App.FIREFOX_FOCUS -> R.id.firefoxFocusAvailableVersion
-            App.FIREFOX_RELEASE -> R.id.firefoxReleaseAvailableVersion
-            App.FIREFOX_BETA -> R.id.firefoxBetaAvailableVersion
-            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyAvailableVersion
-            App.LOCKWISE -> R.id.lockwiseAvailableVersion
-            App.BRAVE -> R.id.braveAvailableVersion
-            App.ICERAVEN -> R.id.iceravenAvailableVersion
-            App.BROMITE -> R.id.bromiteAvailableVersion
-            App.KIWI -> R.id.kiwiAvailableVersion
-        })
-    }
-
-    private fun getInfoButtonForApp(app: App): View {
-        return findViewById(when (app) {
-            App.FIREFOX_KLAR -> R.id.firefoxKlarInfoButton
-            App.FIREFOX_FOCUS -> R.id.firefoxFocusInfoButton
-            App.FIREFOX_RELEASE -> R.id.firefoxReleaseInfoButton
-            App.FIREFOX_BETA -> R.id.firefoxBetaInfoButton
-            App.FIREFOX_NIGHTLY -> R.id.firefoxNightlyInfoButton
-            App.LOCKWISE -> R.id.lockwiseInfoButton
-            App.BRAVE -> R.id.braveInfoButton
-            App.ICERAVEN -> R.id.iceravenInfoButton
-            App.BROMITE -> R.id.bromiteInfoButton
-            App.KIWI -> R.id.kiwiInfoButton
-        })
+    private fun hideLoadAnimation() {
+        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
     }
 
     companion object {

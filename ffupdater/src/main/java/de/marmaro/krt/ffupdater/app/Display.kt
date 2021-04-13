@@ -8,4 +8,6 @@ interface Display {
     val displayWarning: Int?
     fun getDisplayInstalledVersion(context: Context): String
     val displayDownloadSource: Int
+    val displayIcon: Int
+    val displayIconBackground: Int
 }
