@@ -1,4 +1,4 @@
-# 2021-XX-XX Version 72.1.0 (61)
+# 2021-04-13 Version 72.1.0 (61)
  * Add support for Bromite https://github.com/bromite/bromite (Tobiwan/ffupdater#59 Tobi823/ffupdater#22)
  * Add support for Kiwi Browser https://github.com/kiwibrowser/src (Tobi823/ffupdater#22)
  * Automatically download app updates in the background if the current network is unmetered and the device has enough storage (Tobi823/ffupdater#34)
@@ -9,6 +9,7 @@
  * Improve Russian translation (thanks DeenHyper74; Tobiwan/ffupdater#56)
  * Make download status translatable (Tobiwan/ffupdater#57)
  * Ask for confirmation when the user wants to update an app but the latest app version is already installed (Tobiwan/ffupdater#60)
+ * Generate UI partially programmatically (and don't use a static UI)
 
 # 2021-03-14 Version 72.0.0 (60)
  * !!! Remove support for Firefox Light because updates are no longer signed and therefore pose a security risk (thanks opened and mega-stoffel)
