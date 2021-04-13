@@ -163,7 +163,6 @@ class InstallActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
-        const val LOG_TAG = "InstallActivity"
     }
 
     private enum class State(val action: suspend (InstallActivity) -> State) {
@@ -279,9 +278,9 @@ class InstallActivity : AppCompatActivity() {
                     ia.viewModel.updateCheckResult!!.downloadUrl.toString())
             ia.show(R.id.verifyDownloadFingerprint)
 
-            val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
+            val fingerprint = withContext(ia.lifecycleScope.coroutineContext + Dispatchers.IO) {
                 ia.fingerprintValidator.checkApkFile(downloadFile, app)
-            }.await()
+            }
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
                 ia.downloadedApkCache.copyFileToCache(downloadFile)
@@ -292,7 +291,6 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         USE_CACHED_DOWNLOADED_APK(f@{ ia ->
-            //TODO Pfad anzeigen?
             ia.viewModel.downloadFile = ia.downloadedApkCache.getPath()
             val app = ia.app
             val downloadFile = ia.viewModel.downloadFile!!
@@ -300,9 +298,9 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.useCachedDownloadedApk__path, downloadFile.absolutePath)
             ia.show(R.id.verifyDownloadFingerprint)
 
-            val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
+            val fingerprint = withContext(ia.lifecycleScope.coroutineContext + Dispatchers.IO) {
                 ia.fingerprintValidator.checkApkFile(downloadFile, app)
-            }.await()
+            }
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
                 ia.downloadedApkCache.copyFileToCache(downloadFile)
@@ -336,9 +334,9 @@ class InstallActivity : AppCompatActivity() {
 
         APP_INSTALLATION_HAS_BEEN_REGISTERED(f@{ ia ->
             ia.show(R.id.verifyInstalledFingerprint)
-            val fingerprint = ia.lifecycleScope.async(Dispatchers.IO) {
+            val fingerprint = withContext(ia.lifecycleScope.coroutineContext + Dispatchers.IO) {
                 ia.fingerprintValidator.checkInstalledApp(ia.app)
-            }.await()
+            }
             ia.appFingerprint = fingerprint
             ia.hide(R.id.verifyInstalledFingerprint)
             if (fingerprint.isValid) {
