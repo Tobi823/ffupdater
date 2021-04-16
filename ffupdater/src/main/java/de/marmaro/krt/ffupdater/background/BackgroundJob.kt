@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.notification
+package de.marmaro.krt.ffupdater.background
 
 import android.content.Context
 import androidx.work.*
@@ -24,7 +24,7 @@ import kotlin.coroutines.cancellation.CancellationException
  * This class will call the [WorkManager] to check regularly for app updates in the background.
  * When an app update is available, a notification will be displayed.
  */
-class BackgroundUpdateChecker(
+class BackgroundJob(
         context: Context,
         workerParams: WorkerParameters,
 ) : CoroutineWorker(context, workerParams) {
@@ -32,12 +32,11 @@ class BackgroundUpdateChecker(
 
     override suspend fun doWork(): Result {
         return try {
-            delay(60000) // wait for the WIFI to become active
-            if (NetworkTester.isInternetUnavailable(applicationContext)) {
-                return Result.success()
-            }
-
-            doBackgroundCheck()
+            waitForInternet()
+            val appsWithUpdates = findAppsWithUpdates()
+            waitForUnmeteredNetwork()
+            downloadUpdatesInBackground(appsWithUpdates)
+            showUpdateNotification(appsWithUpdates)
             PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
             Result.success()
         } catch (e: BackgroundNetworkException) {
@@ -51,12 +50,47 @@ class BackgroundUpdateChecker(
         }
     }
 
-    private suspend fun doBackgroundCheck() {
+    /**
+     * Wait until Internet is available. Abort after 60 seconds.
+     */
+    private suspend fun waitForInternet() {
+        repeat(60) {
+            if (!NetworkTester.isInternetUnavailable(applicationContext)) {
+                return
+            }
+            delay(1000)
+        }
+    }
+
+    /**
+     * Wait until the current network is unmetered. Abort after 60 seconds.
+     * This is necessary because the background download will only work on unmetered networks.
+     * If internet becomes unavailable, abort.
+     */
+    private suspend fun waitForUnmeteredNetwork() {
+        repeat(60) {
+            if (NetworkTester.isActiveNetworkUnmetered(applicationContext)) {
+                return
+            }
+            if (NetworkTester.isInternetUnavailable(applicationContext)) {
+                return
+            }
+            delay(1000)
+        }
+    }
+
+    /**
+     * Returns apps which:
+     *  - are installed
+     *  - are not disabled (in the settings "excluded applications")
+     *  - have an available update
+     */
+    private suspend fun findAppsWithUpdates(): List<App> {
         val disabledApps = SettingsHelper(applicationContext).disabledApps
-        val appsForChecking = App.values()
+        val appsWithUpdatesAvailable = App.values()
                 .filter { !disabledApps.contains(it) }
                 .filter { it.detail.isInstalled(applicationContext) }
-        val appsWithUpdates = appsForChecking.filter {
+        return appsWithUpdatesAvailable.filter {
             try {
                 it.detail.updateCheck(applicationContext, deviceEnvironment).isUpdateAvailable
             } catch (e: ApiConsumer.ApiConsumerRetryIOException) {
@@ -67,16 +101,26 @@ class BackgroundUpdateChecker(
                 throw BackgroundUnknownException("fail to check $it due to unknown bug", e)
             }
         }
-
-        if (NetworkTester.isActiveNetworkUnmetered(applicationContext)) {
-            val downloadManager = DownloadManagerAdapter.create(applicationContext)
-            appsWithUpdates.forEach { downloadAppInBackground(it, downloadManager) }
-        }
-
-        UpdateNotificationBuilder.showNotifications(appsWithUpdates, applicationContext)
     }
 
-    private suspend fun downloadAppInBackground(app: App, downloadManager: DownloadManagerAdapter) {
+    /**
+     * If the current network is unmetered, then download the update for the given apps
+     * with the DownloadManager in the background.
+     */
+    private suspend fun downloadUpdatesInBackground(appsWithUpdates: List<App>) {
+        if (NetworkTester.isActiveNetworkUnmetered(applicationContext)) {
+            val downloadManager = DownloadManagerAdapter.create(applicationContext)
+            appsWithUpdates.forEach { downloadUpdateInBackground(it, downloadManager) }
+        }
+    }
+
+    /**
+     * Start the download of an app update and wait until the download is finished.
+     * Preconditions for the background download:
+     *  - enough memory
+     *  - update must not be already downloaded
+     */
+    private suspend fun downloadUpdateInBackground(app: App, downloadManager: DownloadManagerAdapter) {
         val apkCache = DownloadedApkCache(app, applicationContext)
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext, deviceEnvironment)
         val availableResult = cachedUpdateChecker.availableResult
@@ -103,6 +147,10 @@ class BackgroundUpdateChecker(
         downloadManager.remove(downloadId)
     }
 
+    private fun showUpdateNotification(appsWithUpdates: List<App>) {
+        UpdateNotificationBuilder.showNotifications(appsWithUpdates, applicationContext)
+    }
+
     companion object {
         private const val WORK_MANAGER_KEY: String = "update_checker"
 
@@ -126,7 +174,7 @@ class BackgroundUpdateChecker(
                     .setRequiresStorageNotLow(true)
                     .build()
             val saveRequest = PeriodicWorkRequest.Builder(
-                    BackgroundUpdateChecker::class.java, repeatInterval.toMinutes(), MINUTES)
+                    BackgroundJob::class.java, repeatInterval.toMinutes(), MINUTES)
                     .setConstraints(constraints)
                     .build()
 

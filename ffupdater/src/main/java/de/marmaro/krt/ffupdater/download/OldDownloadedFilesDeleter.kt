@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.utils
+package de.marmaro.krt.ffupdater.download
 
 import android.content.Context
 import android.os.Environment
@@ -8,7 +8,7 @@ import java.io.File
 /**
  * Delete old downloaded APK files but keep the latest three files.
  */
-object OldDownloadsDeleter {
+object OldDownloadedFilesDeleter {
     fun delete(context: Context) {
         deleteFilesInDownloadFolder(context)
         deleteOlderApkFilesInCache(context)

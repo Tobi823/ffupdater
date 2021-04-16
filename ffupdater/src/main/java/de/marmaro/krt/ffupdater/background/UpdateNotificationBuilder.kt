@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.notification
+package de.marmaro.krt.ffupdater.background
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

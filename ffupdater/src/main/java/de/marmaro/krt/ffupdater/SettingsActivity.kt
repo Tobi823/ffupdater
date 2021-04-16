@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
+import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 
 
@@ -30,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        BackgroundUpdateChecker.startOrStopBackgroundUpdateCheck(this)
+        BackgroundJob.startOrStopBackgroundUpdateCheck(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

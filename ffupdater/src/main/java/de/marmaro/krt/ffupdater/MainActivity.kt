@@ -18,16 +18,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
 import de.marmaro.krt.ffupdater.download.NetworkTester
-import de.marmaro.krt.ffupdater.notification.BackgroundUpdateChecker
+import de.marmaro.krt.ffupdater.download.OldDownloadedFilesDeleter
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import de.marmaro.krt.ffupdater.utils.OldDownloadsDeleter
 import james.crasher.Crasher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         StrictModeSetup.enableStrictMode(deviceEnvironment)
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(deviceEnvironment))
         Migrator().migrate(this)
-        OldDownloadsDeleter.delete(this)
+        OldDownloadedFilesDeleter.delete(this)
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             InstallNewAppDialog.newInstance().show(supportFragmentManager)
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        BackgroundUpdateChecker.startOrStopBackgroundUpdateCheck(this)
+        BackgroundJob.startOrStopBackgroundUpdateCheck(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

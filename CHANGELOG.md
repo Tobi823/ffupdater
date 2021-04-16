@@ -1,3 +1,6 @@
+# 2021-04-16 Version 72.1.1 (62)
+ * Bug fix: automatically download app updates after disabling airplane mode
+
 # 2021-04-13 Version 72.1.0 (61)
  * Add support for Bromite https://github.com/bromite/bromite (Tobiwan/ffupdater#59 Tobi823/ffupdater#22)
  * Add support for Kiwi Browser https://github.com/kiwibrowser/src (Tobi823/ffupdater#22)

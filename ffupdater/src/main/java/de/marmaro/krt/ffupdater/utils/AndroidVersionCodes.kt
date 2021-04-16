@@ -5,14 +5,14 @@ import android.os.Build.VERSION_CODES.*
 /**
  * Class with useful helper methods.
  */
-object Utils {
+object AndroidVersionCodes {
 
     /**
      * @param apiLevel API Level
      * @return the Android version an its codename for the associated API Level
      */
     @JvmStatic
-    fun getVersionAndCodenameForApiLevel(apiLevel: Int): String {
+    fun getVersionForApiLevel(apiLevel: Int): String {
         return when (apiLevel) {
             LOLLIPOP -> "5.0 (Lollipop)"
             LOLLIPOP_MR1 -> "5.1 (Lollipop)"

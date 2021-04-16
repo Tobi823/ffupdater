@@ -8,6 +8,6 @@ class UtilsTest {
 
     @Test
     fun getVersionAndCodenameForApiLevel_withAndroidR_returnCorrectText() {
-        assertEquals("11 (R)", Utils.getVersionAndCodenameForApiLevel(Build.VERSION_CODES.R))
+        assertEquals("11 (R)", AndroidVersionCodes.getVersionForApiLevel(Build.VERSION_CODES.R))
     }
 }
