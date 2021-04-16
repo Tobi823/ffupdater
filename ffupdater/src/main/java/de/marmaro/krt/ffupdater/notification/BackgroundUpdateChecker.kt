@@ -32,17 +32,22 @@ class BackgroundUpdateChecker(
 
     override suspend fun doWork(): Result {
         return try {
+            delay(60000) // wait for the WIFI to become active
+            if (NetworkTester.isInternetUnavailable(applicationContext)) {
+                return Result.success()
+            }
+
             doBackgroundCheck()
             PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
             Result.success()
         } catch (e: BackgroundNetworkException) {
             val message = applicationContext.getString(R.string.background_network_issue_notification__text)
             ErrorNotificationBuilder.showNotification(applicationContext, e, message)
-            Result.failure()
+            Result.success()
         } catch (e: Exception) {
             val message = applicationContext.getString(R.string.background_unknown_bug_notification__text)
             ErrorNotificationBuilder.showNotification(applicationContext, e, message)
-            Result.failure()
+            Result.success()
         }
     }
 
