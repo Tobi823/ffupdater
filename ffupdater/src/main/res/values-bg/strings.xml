@@ -76,9 +76,6 @@
     <string name="installed_app_is_not_verified">Инсталираното приложение е НЕпроверено</string>
     <string name="installed_application_is_verified">Инсталираното приложение е проверено</string>
     <string name="installed_version">Инсталирано: %1$s</string>
-    <string name="kiwi__description">Kiwi е базиран на Chromium. Преминете лесно към Kiwi, без да се налага да усвоявате мъчително нов интерфейс или да нарушавате досегашните си навици за сърфиране. \n\nНаред с други функционалности браузърът Kiwi поддържа: Нощен режим (друга имплементация от Chromium), Поддръжка на разширения за Chrome, Долна адресна лента Той включва и подобрения в производителността (частична растеризация на плочките и др.).</string>
-    <string name="kiwi__title">Браузър Kiwi</string>
-    <string name="kiwi__warning">Kiwi използва техническата основа на Google Chrome (Chromium) - това не се харесва на някои хора. Искате ли да инсталирате Kiwi?</string>
     <string name="lockwise__description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС \n\nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в сметките си.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__not_connected_to_internet">Няма връзка с Мрежата</string>

@@ -52,7 +52,6 @@
         <item>@string/brave__title</item>
         <item>@string/iceraven__title</item>
         <item>@string/bromite__title</item>
-        <item>@string/kiwi__title</item>
     </string-array>
 
     <string-array name="disabledAppEntryValues">
@@ -65,7 +64,6 @@
         <item>BRAVE</item>
         <item>ICERAVEN</item>
         <item>BROMITE</item>
-        <item>KIWI</item>
     </string-array>
 
     <string-array name="themeEntries" tools:ignore="InconsistentArrays">

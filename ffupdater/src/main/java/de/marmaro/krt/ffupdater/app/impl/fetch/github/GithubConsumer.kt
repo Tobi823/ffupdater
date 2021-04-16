@@ -1,6 +1,8 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.github
 
 import com.google.gson.annotations.SerializedName
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import java.net.URL
 import java.time.ZonedDateTime
@@ -20,20 +22,36 @@ class GithubConsumer(
         check(resultsPerPage > 0)
     }
 
+    /**
+     * @throws InvalidApiResponseException
+     * @throws ApiNetworkException
+     */
     suspend fun updateCheckReliableOnlyForNormalReleases(): Result {
         return updateCheckLatestRelease() ?: updateCheckAllReleases()
     }
 
+    /**
+     * @throws InvalidApiResponseException
+     * @throws ApiNetworkException
+     */
     suspend fun updateCheckReliableForReleasesAndPreReleases(): Result {
         return updateCheckAllReleases()
     }
 
+    /**
+     * @throws InvalidApiResponseException
+     * @throws ApiNetworkException
+     */
     private suspend fun updateCheckLatestRelease(): Result? {
         val url = URL("https://api.github.com/repos/$repoOwner/$repoName/releases/latest")
         val release = apiConsumer.consumeJson(url, Release::class.java)
         return release.takeIf { validReleaseTester.test(it) }?.let { convert(it) }
     }
 
+    /**
+     * @throws InvalidApiResponseException
+     * @throws ApiNetworkException
+     */
     private suspend fun updateCheckAllReleases(): Result {
         val tries = 4
         for (page in 1..(tries + 1)) {
@@ -42,12 +60,15 @@ class GithubConsumer(
             val releases = apiConsumer.consumeJson(url, Array<Release>::class.java)
             releases.firstOrNull { validReleaseTester.test(it) }?.let { return convert(it) }
         }
-        throw GithubConsumerException("can't find release after $tries tries - abort")
+        throw InvalidApiResponseException("can't find release after $tries tries - abort")
     }
 
+    /**
+     * @throws InvalidApiResponseException
+     */
     private fun convert(release: Release): Result {
         val asset = release.assets.firstOrNull { correctDownloadUrlTester.test(it) }
-                ?: throw NoSuitableAssetAvailableException("${release.name} has no suitable asset")
+                ?: throw InvalidApiResponseException("${release.name} has no suitable asset")
         return Result(
                 tagName = release.tagName,
                 url = URL(asset.downloadUrl),
@@ -83,8 +104,4 @@ class GithubConsumer(
             val fileSizeBytes: Long,
             val releaseDate: ZonedDateTime,
     )
-
-    class GithubConsumerException(message: String) : Exception(message)
-
-    class NoSuitableAssetAvailableException(message: String) : Exception(message)
 }

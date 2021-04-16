@@ -1,5 +1,5 @@
-# 2021-04-?? Version 72.1.1 (62)
- * Bug fix: automatically download app updates after disabling airplane mode
+# 2021-04-17 Version 73.0.0 (63)
+ * Remove Kiwi Browser because it is at least not privacy friendly and in the worst case a spyware (thanks nyanpasu64 Tobi823/ffupdater#35)
 
 # 2021-04-13 Version 72.1.0 (61)
  * Add support for Bromite https://github.com/bromite/bromite (Tobiwan/ffupdater#59 Tobi823/ffupdater#22)

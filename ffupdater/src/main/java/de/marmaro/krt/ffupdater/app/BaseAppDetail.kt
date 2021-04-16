@@ -3,6 +3,8 @@ package de.marmaro.krt.ffupdater.app
 import android.content.Context
 import android.content.pm.PackageManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
@@ -42,12 +44,14 @@ abstract class BaseAppDetail : AppDetail {
         return context.getString(R.string.available_version, availableVersionResult.version)
     }
 
+    /**
+     * @throws InvalidApiResponseException
+     * @throws ApiNetworkException
+     */
     protected abstract suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment)
             : AvailableVersionResult
 
-    /**
-     * 2min timeout
-     */
+
     override suspend fun updateCheck(
             context: Context,
             deviceEnvironment: DeviceEnvironment,
@@ -70,8 +74,7 @@ abstract class BaseAppDetail : AppDetail {
         return UpdateCheckResult(
                 availableResult = availableVersionResult,
                 isUpdateAvailable = areVersionsDifferent(getInstalledVersion(context), availableVersionResult),
-                displayVersion = getDisplayAvailableVersion(context, availableVersionResult)
-        )
+                displayVersion = getDisplayAvailableVersion(context, availableVersionResult))
     }
 
     override fun areVersionsDifferent(installedVersion: String?, available: AvailableVersionResult): Boolean {

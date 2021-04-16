@@ -1,11 +1,12 @@
 package de.marmaro.krt.ffupdater.background
 
 import android.content.Context
+import android.util.Log
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.FAILED
@@ -15,14 +16,16 @@ import de.marmaro.krt.ffupdater.download.NetworkTester
 import de.marmaro.krt.ffupdater.download.StorageTester
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
-import kotlin.coroutines.cancellation.CancellationException
 
 /**
  * This class will call the [WorkManager] to check regularly for app updates in the background.
  * When an app update is available, a notification will be displayed.
+ *
+ * doWork can be interrupted at any time and cause a CancellationException.
  */
 class BackgroundJob(
         context: Context,
@@ -31,7 +34,7 @@ class BackgroundJob(
     val deviceEnvironment = DeviceEnvironment()
 
     override suspend fun doWork(): Result {
-        return try {
+        try {
             waitForInternet()
             val appsWithUpdates = findAppsWithUpdates()
             waitForUnmeteredNetwork()
@@ -39,22 +42,24 @@ class BackgroundJob(
             showUpdateNotification(appsWithUpdates)
             PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
             Result.success()
-        } catch (e: BackgroundNetworkException) {
+        } catch (e: CancellationException) {
+            // when the network is disabled, this exception will be thrown -> ignore it
+        } catch (e: ApiNetworkException) {
             val message = applicationContext.getString(R.string.background_network_issue_notification__text)
             ErrorNotificationBuilder.showNotification(applicationContext, e, message)
-            Result.success()
         } catch (e: Exception) {
             val message = applicationContext.getString(R.string.background_unknown_bug_notification__text)
             ErrorNotificationBuilder.showNotification(applicationContext, e, message)
-            Result.success()
         }
+        // always return success() because failure() will remove the scheduled job
+        return Result.success()
     }
 
     /**
-     * Wait until Internet is available. Abort after 60 seconds.
+     * Wait until Internet is available. Abort after 10 seconds.
      */
     private suspend fun waitForInternet() {
-        repeat(60) {
+        repeat(10) {
             if (!NetworkTester.isInternetUnavailable(applicationContext)) {
                 return
             }
@@ -65,14 +70,11 @@ class BackgroundJob(
     /**
      * Wait until the current network is unmetered. Abort after 60 seconds.
      * This is necessary because the background download will only work on unmetered networks.
-     * If internet becomes unavailable, abort.
+     * If internet becomes unavailable, the CoroutineWorker will automatically be stopped
      */
     private suspend fun waitForUnmeteredNetwork() {
         repeat(60) {
             if (NetworkTester.isActiveNetworkUnmetered(applicationContext)) {
-                return
-            }
-            if (NetworkTester.isInternetUnavailable(applicationContext)) {
                 return
             }
             delay(1000)
@@ -84,23 +86,17 @@ class BackgroundJob(
      *  - are installed
      *  - are not disabled (in the settings "excluded applications")
      *  - have an available update
+     * @throws InvalidApiResponseException
+     * @throws ApiNetworkException
+     * @throws CancellationException
      */
     private suspend fun findAppsWithUpdates(): List<App> {
         val disabledApps = SettingsHelper(applicationContext).disabledApps
-        val appsWithUpdatesAvailable = App.values()
-                .filter { !disabledApps.contains(it) }
+        return App.values()
+                .filter { it !in disabledApps }
                 .filter { it.detail.isInstalled(applicationContext) }
-        return appsWithUpdatesAvailable.filter {
-            try {
-                it.detail.updateCheck(applicationContext, deviceEnvironment).isUpdateAvailable
-            } catch (e: ApiConsumer.ApiConsumerRetryIOException) {
-                throw BackgroundNetworkException("fail to check $it due to network error", e)
-            } catch (e: CancellationException) {
-                throw BackgroundNetworkException("fail to check $it due to cancelled job", e)
-            } catch (e: Exception) {
-                throw BackgroundUnknownException("fail to check $it due to unknown bug", e)
-            }
-        }
+                // nice side effect: check for updates by calling updateCheck()
+                .filter { it.detail.updateCheck(applicationContext, deviceEnvironment).isUpdateAvailable }
     }
 
     /**
@@ -124,10 +120,12 @@ class BackgroundJob(
         val apkCache = DownloadedApkCache(app, applicationContext)
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext, deviceEnvironment)
         val availableResult = cachedUpdateChecker.availableResult
+        Log.e("tobias", "downloadUpdateInBackground " + app + " " + apkCache.isCacheAvailable(availableResult))
         if (apkCache.isCacheAvailable(availableResult) ||
                 !StorageTester.isEnoughStorageAvailable(applicationContext)) {
             return
         }
+        Log.e("tobias", "download: " + app)
 
         val fileReservation = downloadManager.reserveFile(app, applicationContext)
         val downloadId = downloadManager.enqueue(applicationContext, app, availableResult, fileReservation)
@@ -186,10 +184,4 @@ class BackgroundJob(
             WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY)
         }
     }
-
-    class BackgroundNetworkException(message: String, throwable: Throwable) :
-            Exception(message, throwable)
-
-    class BackgroundUnknownException(message: String, throwable: Throwable) :
-            Exception(message, throwable)
 }

@@ -78,9 +78,6 @@
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="installed_version">Installed: %1$s</string>
-    <string name="kiwi__description">Kiwi is based on Chromium. Easily switch to Kiwi without having to painstakingly learn a new interface or break your existing browsing habits. \n\nAmong other functionalities, Kiwi Browser supports: Night Mode (another implementation than Chromium), Support for Chrome Extensions, Bottom address bar It also includes performance improvements (partial rasterization of tiles, etc).</string>
-    <string name="kiwi__title">Kiwi Browser</string>
-    <string name="kiwi__warning">Kiwi uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Kiwi?</string>
     <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__not_connected_to_internet">No network connection</string>

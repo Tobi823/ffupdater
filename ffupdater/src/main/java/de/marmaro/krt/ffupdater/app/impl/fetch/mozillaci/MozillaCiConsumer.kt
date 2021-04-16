@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci
 
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import java.net.URL
 import java.time.ZonedDateTime
@@ -16,11 +17,16 @@ class MozillaCiConsumer(
     private val chainOfTrustLogUrl = URL("$taskUrl/artifacts/public/logs/chain_of_trust.log")
     private val apkArtifactUrl = URL("$taskUrl/artifacts/$apkArtifact")
 
+    /**
+     * @throws ApiNetworkException
+     */
     suspend fun updateCheck(): Result {
         val response = apiConsumer.consumeText(chainOfTrustLogUrl)
-        val version = Regex("""'$keyForVersion': '(.+)'""").find(response)!!
+        val version = Regex("""'$keyForVersion': '(.+)'""")
+                .find(response)!!
                 .groups[1]!!.value
-        val dateString = Regex("""'$keyForReleaseDate': '(.+)'""").find(response)!!
+        val dateString = Regex("""'$keyForReleaseDate': '(.+)'""")
+                .find(response)!!
                 .groups[1]!!.value
         return Result(
                 version = version,

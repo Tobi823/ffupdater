@@ -3,6 +3,8 @@ package de.marmaro.krt.ffupdater
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -120,6 +122,7 @@ class MainActivity : AppCompatActivity() {
         mainLinearLayout.removeAllViews()
         availableVersions.clear()
         downloadButtons.clear()
+        checkForKiwiBrowser()
 
         val installedApps = App.values().filter { it.detail.isInstalled(this) }
         installedApps.forEach { app ->
@@ -148,6 +151,19 @@ class MainActivity : AppCompatActivity() {
             icon.setBackgroundColor(app.detail.displayIconBackground)
 
             mainLinearLayout.addView(newCardView)
+        }
+    }
+
+    private fun checkForKiwiBrowser() {
+        try {
+            packageManager.getPackageInfo("com.kiwibrowser.browser", 0)
+            val warning = TextView(this)
+            warning.text = "PLEASE UNINSTALL THE KIWI BROWSER! It is at least not privacy friendly " +
+                    "and in the worst case a spyware. See https://github.com/Tobi823/ffupdater/issues/35"
+            warning.setTextColor(Color.RED)
+            findViewById<LinearLayout>(R.id.mainLinearLayout).addView(warning)
+        } catch (e: PackageManager.NameNotFoundException) {
+            //ignore
         }
     }
 

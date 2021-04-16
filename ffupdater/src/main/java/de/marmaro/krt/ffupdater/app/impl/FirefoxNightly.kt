@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
+import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
@@ -77,6 +78,8 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         val regex = Regex("""Nightly (\d{6} \d{2}):[\dx]{2}$""")
         val installedString = regex.find(installedVersion)!!.groups[1]!!.value
         val availableString = regex.find(available.version)!!.groups[1]!!.value
+        Log.e("tobias", "installedString " + installedString)
+        Log.e("tobias", "availableString " + availableString)
         val pattern = DateTimeFormatter.ofPattern("yyMMdd HH")
         val installedDateTime = LocalDateTime.parse(installedString, pattern)
         val availableDateTime = LocalDateTime.parse(availableString, pattern)

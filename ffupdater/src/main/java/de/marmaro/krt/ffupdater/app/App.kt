@@ -14,8 +14,7 @@ enum class App(appDetail: AppDetail) {
     LOCKWISE(Lockwise(apiConsumer)),
     BRAVE(Brave(apiConsumer)),
     ICERAVEN(Iceraven(apiConsumer)),
-    BROMITE(Bromite(apiConsumer)),
-    KIWI(Kiwi(apiConsumer));
+    BROMITE(Bromite(apiConsumer));
 
     val detail: AppDetail = appDetail
 }

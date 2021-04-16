@@ -77,9 +77,6 @@
     <string name="installed_app_is_not_verified">O App instalado NÃO foi verificado</string>
     <string name="installed_application_is_verified">O App instalado foi verificado</string>
     <string name="installed_version">Instalado: %1$s</string>
-    <string name="kiwi__description">O Kiwi é baseado no cromo. Mude facilmente para o Kiwi sem ter que aprender cuidadosamente uma nova interface ou quebrar seus hábitos de navegação existentes. \n\nEntre outras funcionalidades, o Kiwi Browser suporta: Modo Noturno (outra implementação que não o Cromo), Suporte para Extensões de Cromo, Barra de endereço inferior Também inclui melhorias de desempenho (rasterização parcial de azulejos, etc).</string>
-    <string name="kiwi__title">Navegador Kiwi</string>
-    <string name="kiwi__warning">O Kiwi utiliza a base técnica do Google Chrome (Chromium) - algumas pessoas não gostam disso. Você quer instalar o Kiwi?</string>
     <string name="lockwise__description">ACESSO COM SENHA, &amp; SOMENTE VOCÊ \n\nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via aplicativo para entrar em suas contas</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__not_connected_to_internet">Sem conexão da Internet</string>
