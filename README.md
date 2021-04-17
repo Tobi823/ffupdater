@@ -1,7 +1,5 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 
-PLEASE UNINSTALL THE KIWI BROWSER! It is at least not privacy friendly and in the worst case a spyware. https://github.com/Tobi823/ffupdater/issues/35
-
 # Firefox-Updater
 Download, install and update these privacy friendly browsers:
  - [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US)
@@ -73,12 +71,20 @@ The applications are downloaded from these locations:
 ## Deprecated browsers
 
 ### Kiwi Browser
-17.04.2021: PLEASE UNINSTALL THE KIWI BROWSER! 
-It is at least not privacy friendly and in the worst case a spyware. 
+17.04.2021: https://github.com/Tobi823/ffupdater/issues/35
+Answer from the Kiwi developer:
 
-It seems that all search requests are going through their servers.
-Moreover, this browser adds your real IP address, a unique ID and more info to the search result link.
-https://github.com/Tobi823/ffupdater/issues/35
+> It's actually quite simple, Kiwi earns money for every search it forwards to Yahoo or Microsoft Bing.
+
+It seems that the developers have to forward search requests to their servers and then to the search engine in order to get paid by the search engine.
+
+> The parameters and integration method are defined by the search engines themselves, we don't have our words at all how the integration is done.
+
+> They [Yahoo or Microsoft Bing] have a standard guide on how to integrate, either you follow this guide, or you don't work with them.
+
+I guess it's fine. Although i don't like it, i understand that the money for the app development has to come from somewhere (even Firefox is paid to use "Google" as the default search engine).
+
+But I think that Kiwi should not be managed by FFUpdater because this browser has additional usability features and no additional privacy features. FFUpdater is about privacy and not usability.
 
 ### Firefox Lite
 14.03.2021: The latest release of Firefox Lite is not longer signed and thereby can't be used to

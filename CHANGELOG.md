@@ -1,4 +1,11 @@
-# 2021-04-17 Version 73.0.0 (63)
+# 2021-04-17 Version 73.0.1 (63)
+ * There has been a discussion on Github if the Kiwi browser is spyware: https://github.com/Tobi823/ffupdater/issues/35 (Tobi823/ffupdater#35)
+   I think that Kiwi is not spyware but stays removed because FFUpdater is about privacy and Kiwi has no additional privacy features.
+   F-Droid users can use other stores (like Aurora Store) to install the Kiwi browser.
+ * Bug fix: automatically download app updates after disabling airplane mode
+ * Bug fix: catch the JobCancellationException correctly (occurs when changing the network during background update check)
+
+# 2021-04-17 Version 73.0.0 (62)
  * Remove Kiwi Browser because it is at least not privacy friendly and in the worst case a spyware (thanks nyanpasu64 Tobi823/ffupdater#35)
 
 # 2021-04-13 Version 72.1.0 (61)
