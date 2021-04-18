@@ -1,3 +1,7 @@
+# 2021-04-18 Version 73.1.0 (64)
+ * Trust user certificates when checking for updates and downloading updates (for AdGuard, Tobi823/ffupdater#37)
+ * Prevent automatic backup of failed downloads by Google's "Auto Backup for Apps"
+
 # 2021-04-17 Version 73.0.1 (63)
  * There has been a discussion on Github if the Kiwi browser is spyware: https://github.com/Tobi823/ffupdater/issues/35 (Tobi823/ffupdater#35)
    I think that Kiwi is not spyware but stays removed because FFUpdater is about privacy and Kiwi has no additional privacy features.

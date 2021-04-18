@@ -120,12 +120,13 @@ class BackgroundJob(
         val apkCache = DownloadedApkCache(app, applicationContext)
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext, deviceEnvironment)
         val availableResult = cachedUpdateChecker.availableResult
-        Log.e("tobias", "downloadUpdateInBackground " + app + " " + apkCache.isCacheAvailable(availableResult))
+
+        Log.d(LOG_TAG, "check if $app should be downloaded in the background")
         if (apkCache.isCacheAvailable(availableResult) ||
                 !StorageTester.isEnoughStorageAvailable(applicationContext)) {
             return
         }
-        Log.e("tobias", "download: " + app)
+        Log.e(LOG_TAG, "download $app in the background")
 
         val fileReservation = downloadManager.reserveFile(app, applicationContext)
         val downloadId = downloadManager.enqueue(applicationContext, app, availableResult, fileReservation)
@@ -150,7 +151,8 @@ class BackgroundJob(
     }
 
     companion object {
-        private const val WORK_MANAGER_KEY: String = "update_checker"
+        private const val WORK_MANAGER_KEY = "update_checker"
+        private const val LOG_TAG = "BackgroundJob"
 
         fun startOrStopBackgroundUpdateCheck(context: Context) {
             if (SettingsHelper(context).automaticCheck) {

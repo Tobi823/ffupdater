@@ -18,9 +18,10 @@ FFUpdater will check periodically for updates and will display a notification wh
 
 FFUpdater will also automatically download the app updates in the background if the current network is unmetered and the device has enough storage.
 
-## Security measures:
+## Security:
  - only HTTPS connections
  - check certificate fingerprint of the downloaded file and installed app
+ - user certificates are supported for AdGuard
 
 You can find the APK certificate fingerprints on multiple website - e.g. apkmirror.com
 I did my best to make the app as secure as possible - feel free to double-check it in the source code.

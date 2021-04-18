@@ -1,0 +1,2 @@
+ * Trust user certificates when checking for updates and downloading updates (for AdGuard, Tobi823/ffupdater#37)
+ * Prevent automatic backup of failed downloads by Google's "Auto Backup for Apps"

@@ -35,3 +35,8 @@ git push gitlab "$TAG"
 git push gitea "$TAG"
 ````
 
+# delete all remote branches except master
+````
+REMOTE_NAME="XXXXX"
+git branch -r | grep "$REMOTE_NAME/" | grep -v 'master$' | grep -v HEAD| cut -d/ -f2 | while read line; do git push "$REMOTE_NAME" :$line; done;
+````

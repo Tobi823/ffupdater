@@ -15,7 +15,7 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.5.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.30'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.32'
 
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'com.google.code.gson:gson:2.8.6'
@@ -33,8 +33,8 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        versionCode 63
-        versionName "73.0.1"
+        versionCode 64
+        versionName "73.1.0"
         minSdkVersion 21
         targetSdkVersion 30
         vectorDrawables.useSupportLibrary = true
