@@ -16,7 +16,7 @@
     <string name="brave__warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
     <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
+    <string name="bromite__warning">Bromite uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
     <string name="but_was">But was:</string>
     <string name="default_theme_preference" translatable="false">3</string>
     <string name="device_too_old_dialog__message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>

@@ -1,0 +1,1 @@
+ * Fix wrong warning for Bromite (thanks mpeter, Tobiwan/ffupdater#64)

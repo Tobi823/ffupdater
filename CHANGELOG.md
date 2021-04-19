@@ -1,3 +1,6 @@
+# 2021-04-18 Version 73.1.1 (65)
+ * Fix wrong warning for Bromite (thanks mpeter, Tobiwan/ffupdater#64)
+
 # 2021-04-18 Version 73.1.0 (64)
  * Trust user certificates when checking for updates and downloading updates (for AdGuard, Tobi823/ffupdater#37)
  * Prevent automatic backup of failed downloads by Google's "Auto Backup for Apps"
