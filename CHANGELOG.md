@@ -1,3 +1,6 @@
+# 2021-04-25 Version 73.1.2 (66)
+ * If it is likely that it is just a network error during manual update search, then display "No network connection" instead of crashing (Tobi823/ffupdater#38)
+
 # 2021-04-18 Version 73.1.1 (65)
  * Fix wrong warning for Bromite (thanks mpeter, Tobiwan/ffupdater#64)
 

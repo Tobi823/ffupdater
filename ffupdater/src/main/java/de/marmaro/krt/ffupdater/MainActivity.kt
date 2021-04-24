@@ -18,6 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
@@ -193,6 +194,12 @@ class MainActivity : AppCompatActivity() {
                         sameAppVersionAlreadyInstalled[app] = true
                         disableDownloadButton(app)
                     }
+                }
+            } catch (e: ApiNetworkException) {
+                Log.e(LOG_TAG, "fail to check $app for updates - maybe temporary network issues?", e)
+                lifecycleScope.launch(Dispatchers.Main) {
+                    availableVersions[app]!!.text = getString(R.string.main_activity__not_connected_to_internet)
+                    disableDownloadButton(app)
                 }
             } catch (e: Exception) {
                 if (!ignoreErrors) {
