@@ -3,7 +3,7 @@ git fetch --tags
 
 # release new version
  - `./gradlew wrapper --gradle-version=6.8.2` https://gradle.org/releases/
- - `gradlew clean adviceRelease`
+ - `./gradlew clean adviceRelease`
  - fix/add unit tests
  - check translations
  - edit build.gradle to increase `versionCode` and `versionName`
