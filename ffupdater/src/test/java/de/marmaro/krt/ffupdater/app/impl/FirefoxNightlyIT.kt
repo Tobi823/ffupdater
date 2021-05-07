@@ -58,12 +58,28 @@ class FirefoxNightlyIT {
     @Test
     fun updateCheck_armeabiv7a_checkForUpdates_noUpdates() {
         setInstalledVersionCode(1000)
+        setInstalledSha256Hash("16342c966a2dff3561215f7bc91ea8ae0fb1902d6c533807667b224c3b87a972")
         assertFalse(checkForUpdates(ABI.ARMEABI_V7A, "armeabi-v7a"))
     }
 
     @Test
-    fun updateCheck_armeabiv7a_checkForUpdates_updateAvailable() {
+    fun updateCheck_armeabiv7a_checkForUpdates_oldVersionInstalled() {
         setInstalledVersionCode(999)
+        setInstalledSha256Hash("16342c966a2dff3561215f7bc91ea8ae0fb1902d6c533807667b224c3b87a972")
+        assertTrue(checkForUpdates(ABI.ARMEABI_V7A, "armeabi-v7a"))
+    }
+
+    @Test
+    fun updateCheck_armeabiv7a_checkForUpdates_updateAvailable() {
+        setInstalledVersionCode(1000)
+        setInstalledSha256Hash("0000000000000000000000000000000000000000000000000000000000000000")
+        assertTrue(checkForUpdates(ABI.ARMEABI_V7A, "armeabi-v7a"))
+    }
+
+    @Test
+    fun updateCheck_armeabiv7a_checkForUpdates_oldVersionAndUpdateAvailable() {
+        setInstalledVersionCode(999)
+        setInstalledSha256Hash("0000000000000000000000000000000000000000000000000000000000000000")
         assertTrue(checkForUpdates(ABI.ARMEABI_V7A, "armeabi-v7a"))
     }
 
@@ -76,12 +92,28 @@ class FirefoxNightlyIT {
     @Test
     fun updateCheck_arm64v8a_checkForUpdates_noUpdates() {
         setInstalledVersionCode(1000)
+        setInstalledSha256Hash("ae53fdf802bdcd2ea95a853a60f9ba9f621fb10d30dcc98dccfd80df4eba20fc")
         assertFalse(checkForUpdates(ABI.ARM64_V8A, "arm64-v8a"))
     }
 
     @Test
-    fun updateCheck_arm64v8a_checkForUpdates_updateAvailable() {
+    fun updateCheck_arm64v8a_checkForUpdates_oldVersionInstalled() {
         setInstalledVersionCode(999)
+        setInstalledSha256Hash("ae53fdf802bdcd2ea95a853a60f9ba9f621fb10d30dcc98dccfd80df4eba20fc")
+        assertTrue(checkForUpdates(ABI.ARM64_V8A, "arm64-v8a"))
+    }
+
+    @Test
+    fun updateCheck_arm64v8a_checkForUpdates_updateAvailable() {
+        setInstalledVersionCode(1000)
+        setInstalledSha256Hash("0000000000000000000000000000000000000000000000000000000000000000")
+        assertTrue(checkForUpdates(ABI.ARM64_V8A, "arm64-v8a"))
+    }
+
+    @Test
+    fun updateCheck_arm64v8a_checkForUpdates_oldVersionAndUpdateAvailable() {
+        setInstalledVersionCode(999)
+        setInstalledSha256Hash("0000000000000000000000000000000000000000000000000000000000000000")
         assertTrue(checkForUpdates(ABI.ARM64_V8A, "arm64-v8a"))
     }
 
@@ -94,12 +126,28 @@ class FirefoxNightlyIT {
     @Test
     fun updateCheck_x86_checkForUpdates_noUpdates() {
         setInstalledVersionCode(1000)
+        setInstalledSha256Hash("3c81530f5a89596c03421a08f5dab8dd6db0a3fcc7063e59b5fd42874f0a7499")
         assertFalse(checkForUpdates(ABI.X86, "x86"))
     }
 
     @Test
-    fun updateCheck_x86_checkForUpdates_updateAvailable() {
+    fun updateCheck_x86_checkForUpdates_oldVersionInstalled() {
         setInstalledVersionCode(999)
+        setInstalledSha256Hash("3c81530f5a89596c03421a08f5dab8dd6db0a3fcc7063e59b5fd42874f0a7499")
+        assertTrue(checkForUpdates(ABI.X86, "x86"))
+    }
+
+    @Test
+    fun updateCheck_x86_checkForUpdates_updateAvailable() {
+        setInstalledVersionCode(1000)
+        setInstalledSha256Hash("0000000000000000000000000000000000000000000000000000000000000000")
+        assertTrue(checkForUpdates(ABI.X86, "x86"))
+    }
+
+    @Test
+    fun updateCheck_x86_checkForUpdates_oldVersionAndUpdateAvailable() {
+        setInstalledVersionCode(999)
+        setInstalledSha256Hash("0000000000000000000000000000000000000000000000000000000000000000")
         assertTrue(checkForUpdates(ABI.X86, "x86"))
     }
 
@@ -112,12 +160,28 @@ class FirefoxNightlyIT {
     @Test
     fun updateCheck_x8664_checkForUpdates_noUpdates() {
         setInstalledVersionCode(1000)
+        setInstalledSha256Hash("4690f2580199423822ca8323b0235cdbaac480f04bc6f21aa7f17636cd42662c")
         assertFalse(checkForUpdates(ABI.X86_64, "x86_64"))
     }
 
     @Test
-    fun updateCheck_x8664_checkForUpdates_updateAvailable() {
+    fun updateCheck_x8664_checkForUpdates_oldVersionInstalled() {
         setInstalledVersionCode(999)
+        setInstalledSha256Hash("4690f2580199423822ca8323b0235cdbaac480f04bc6f21aa7f17636cd42662c")
+        assertTrue(checkForUpdates(ABI.X86_64, "x86_64"))
+    }
+
+    @Test
+    fun updateCheck_x8664_checkForUpdates_updateAvailable() {
+        setInstalledVersionCode(1000)
+        setInstalledSha256Hash("0000000000000000000000000000000000000000000000000000000000000000")
+        assertTrue(checkForUpdates(ABI.X86_64, "x86_64"))
+    }
+
+    @Test
+    fun updateCheck_x8664_checkForUpdates_oldVersionAndUpdateAvailable() {
+        setInstalledVersionCode(999)
+        setInstalledSha256Hash("0000000000000000000000000000000000000000000000000000000000000000")
         assertTrue(checkForUpdates(ABI.X86_64, "x86_64"))
     }
 
@@ -171,5 +235,9 @@ class FirefoxNightlyIT {
 
     private fun setInstalledVersionCode(versionCode: Long) {
         sharedPreferences.edit().putLong(FirefoxNightly.INSTALLED_VERSION_CODE, versionCode).apply()
+    }
+
+    private fun setInstalledSha256Hash(sha256Hash: String) {
+        sharedPreferences.edit().putString(FirefoxNightly.INSTALLED_SHA256_HASH, sha256Hash).apply()
     }
 }
