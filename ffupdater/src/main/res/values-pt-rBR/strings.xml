@@ -62,6 +62,7 @@
     <string name="install_activity__sha_256_certificate_fingerprint">Certificado de impressão digital SHA-256:</string>
     <string name="install_activity__too_low_memory_description">Seu dispositivo está com apenas %1$d MB do espaço disponível. Isto pode causar um erro ao baixar ou instalar.</string>
     <string name="install_activity__too_low_memory_title">Pouco espaço disponível</string>
+    <string name="install_activity__try_disable_miui_optimization">Se você estiver usando Xiaomi ou MIUI, tente desativar a \"Otimização MIUI\".</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">Precisa desinstalar o App existente antes de que o FFUpdater pode instalar ou atualizar este App. Faça um backup dos seus dados porque a desinstalação excluirá todos os seus favoritos, configurações, etc.</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Motivo: O App instalado não é assinado pelo desenvolvedor original - talvez tenha sido assinado pelo F-Droid. Android SO não permite atualizar um aplicativo com diferentes assinaturas.</string>
     <string name="install_activity__use_cached_downloaded_apk">Use o arquivo já baixado de:</string>

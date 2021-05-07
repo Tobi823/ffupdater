@@ -62,6 +62,7 @@
     <string name="install_activity__sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256:</string>
     <string name="install_activity__too_low_memory_description">Sur votre appareil, il n\'y a que %1$d MB d\'espace disponible. Cela peut entraîner un échec du téléchargement ou de l\'installation.</string>
     <string name="install_activity__too_low_memory_title">Espace disque faible</string>
+    <string name="install_activity__try_disable_miui_optimization">Si vous utilisez Xiaomi ou MIUI, essayez de désactiver \"MIUI Optimization\".</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">Vous devez désinstaller l\'application existante avant que FFUpdater puisse l\'installer ou la mettre à jour. Sauvegardez vos données car la désinstallation supprimera tous vos signets, paramètres, etc.</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">" Raison : L'application actuellement installée n'est pas signée par le développeur d'origine - elle est peut-être signée par F-Droid. Android refuse de mettre à jour une application si différentes personnes ont signé la version installée et la version mise à jour."</string>
     <string name="install_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de:</string>

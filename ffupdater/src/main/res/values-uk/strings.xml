@@ -62,6 +62,7 @@
     <string name="install_activity__sha_256_certificate_fingerprint">Відбиток сертифіката SHA-256:</string>
     <string name="install_activity__too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>
     <string name="install_activity__too_low_memory_title">Мало місця на диску</string>
+    <string name="install_activity__try_disable_miui_optimization">Якщо ви використовуєте Xiaomi або MIUI, спробуйте відключити функцію \"Оптимізація MIUI\"</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">"Вам потрібно видалити існуючу програму, перш ніж FFUpdater зможе встановити або оновити програму. Створіть резервну копію даних, оскільки видалення видалить усі ваші закладки, налаштування тощо. "</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: Поточна встановлена програма не підписана оригінальним розробником - можливо, вона підписана F-Droid. Android відмовляється оновлювати програму, якщо різні люди підписали встановлену та оновлену версії.</string>
     <string name="install_activity__use_cached_downloaded_apk">Використовуйте вже завантажений файл із:</string>

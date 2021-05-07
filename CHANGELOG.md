@@ -1,5 +1,8 @@
+# 2021-??-?? Version 73.1.4 (68)
+ * Instruct user if app installation is aborted by "MIUI Optimization" (Tobi823/ffupdater#41)
+
 # 2021-05-07 Version 73.1.3 (67)
- * fix crash caused by the new Firefox Nightly version name schema (Tobiwan/ffupdater#40 Tobiwan/ffupdater#66)
+ * Fix crash caused by the new Firefox Nightly version name schema (Tobi823/ffupdater#40 Tobi823/ffupdater#66)
 
 # 2021-04-25 Version 73.1.2 (66)
  * If it is likely that it is just a network error during manual update search, then display "No network connection" instead of crashing (Tobi823/ffupdater#38)
