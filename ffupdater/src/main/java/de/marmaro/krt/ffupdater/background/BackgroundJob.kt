@@ -119,13 +119,16 @@ class BackgroundJob(
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
         val availableResult = cachedUpdateChecker.availableResult
 
-        Log.d(LOG_TAG, "check if $app should be downloaded in the background")
-        if (apkCache.isCacheAvailable(availableResult) ||
-                !StorageTester.isEnoughStorageAvailable(applicationContext)) {
+        if (apkCache.isCacheAvailable(availableResult)) {
+            Log.i(LOG_TAG, "skip $app download because it's already cached")
             return
         }
-        Log.e(LOG_TAG, "download $app in the background")
+        if (!StorageTester.isEnoughStorageAvailable(applicationContext)) {
+            Log.i(LOG_TAG, "skip $app download because we don't have enough free storage")
+            return
+        }
 
+        Log.i(LOG_TAG, "download $app in the background")
         val fileReservation = downloadManager.reserveFile(app, applicationContext)
         val downloadId = downloadManager.enqueue(applicationContext, app, availableResult, fileReservation)
         repeat(5 * 60) {
