@@ -1,13 +1,11 @@
 package de.marmaro.krt.ffupdater.settings
 
 import android.content.Context
-import android.os.Build.VERSION_CODES.*
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import java.time.Duration
-import kotlin.Int.Companion.MAX_VALUE
 
 /**
  * This class is a helper to access the settings more easily by checking und converting the raw values from
@@ -66,11 +64,11 @@ class SettingsHelper(context: Context) {
      *
      * @return AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES, ...
      */
-    fun getThemePreference(deviceEnvironment: DeviceEnvironment): Int {
-        val default = when (deviceEnvironment.sdkInt) {
-            in Q..MAX_VALUE -> MODE_NIGHT_FOLLOW_SYSTEM
-            in LOLLIPOP..P -> MODE_NIGHT_AUTO_BATTERY
-            else -> throw Exception("invalid API level")
+    fun getThemePreference(): Int {
+        val default = if (DeviceEnvironment.supportAndroid10()) {
+            MODE_NIGHT_FOLLOW_SYSTEM
+        } else {
+            MODE_NIGHT_AUTO_BATTERY
         }
 
         val rawValue = preferences.getString("themePreference", null)

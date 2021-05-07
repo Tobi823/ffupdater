@@ -1,16 +1,19 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
+import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import java.time.LocalDateTime
+import de.marmaro.krt.ffupdater.security.FileHashCalculator
+import java.io.File
 import java.time.format.DateTimeFormatter
 
 /**
@@ -27,59 +30,73 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayIconBackground = Color.parseColor("#FFFFFF")
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
 
-    override fun getDisplayInstalledVersion(context: Context): String {
-        val rawVersion = getInstalledVersion(context) ?:
-            return context.getString(R.string.installed_version, "")
-
-        val importantVersionPart = Regex("""^(Nightly \d{6} \d{2}):\d{2}$""")
-                .find(rawVersion)!!
-                .groups[1]!!.value
-        val version = "${importantVersionPart}:xx"
-        return context.getString(R.string.installed_version, version)
-    }
-
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
-        val abiString = deviceEnvironment.abis.mapNotNull {
-            when (it) {
-                ABI.ARM64_V8A -> "arm64-v8a"
-                ABI.ARMEABI_V7A -> "armeabi-v7a"
-                ABI.X86 -> "x86"
-                ABI.X86_64 -> "x86_64"
-                ABI.ARMEABI, ABI.MIPS, ABI.MIPS64 -> null
-            }
-        }.first()
-        val mozillaCiConsumer = MozillaCiConsumer(
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+        val abiString = getStringForCurrentAbi("armeabi-v7a", "arm64-v8a", "x86",
+                "x86_64")
+        val result = MozillaCiJsonConsumer(
                 apiConsumer = apiConsumer,
                 task = "mobile.v2.fenix.nightly.latest.$abiString",
-                apkArtifact = "public/build/$abiString/target.apk",
-                keyForVersion = "tag_name",
-                keyForReleaseDate = "now")
-        val result = mozillaCiConsumer.updateCheck()
-        val formatter = DateTimeFormatter.ofPattern("yyMMdd HH")
-        val timestamp = formatter.format(result.releaseDate)
-        val version = "Nightly ${timestamp}:xx"
+                apkArtifact = "public/build/$abiString/target.apk").updateCheck()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        val version = formatter.format(result.releaseDate)
         return AvailableVersionResult(
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,
-                fileSizeBytes = null)
+                fileSizeBytes = null,
+                fileHash = result.fileHash)
     }
 
-    override fun areVersionsDifferent(
-            installedVersion: String?,
-            available: AvailableVersionResult): Boolean {
-        if (installedVersion == null) {
-            return true
+    override suspend fun isCacheFileUpToDate(
+            context: Context,
+            file: File,
+            availableVersionResult: AvailableVersionResult,
+    ): Boolean {
+        val hash = FileHashCalculator.getSHA256ofFile(file)
+        return hash == availableVersionResult.fileHash
+    }
+
+    override suspend fun isInstalledVersionUpToDate(
+            context: Context,
+            availableVersionResult: AvailableVersionResult,
+    ): Boolean {
+        return try {
+            val installedVersionCode = PreferenceManager.getDefaultSharedPreferences(context)
+                    .getLong(INSTALLED_VERSION_CODE, 0)
+            getVersionCode(context) == installedVersionCode
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
         }
-        val regex = Regex("""Nightly (\d{6} \d{2}):[\dx]{2}$""")
-        val installedString = regex.find(installedVersion)!!.groups[1]!!.value
-        val availableString = regex.find(available.version)!!.groups[1]!!.value
-        val pattern = DateTimeFormatter.ofPattern("yyMMdd HH")
-        val installedDateTime = LocalDateTime.parse(installedString, pattern)
-        val availableDateTime = LocalDateTime.parse(availableString, pattern)
-        return availableDateTime.isAfter(installedDateTime)
+    }
+
+    override fun appInstallationCallback(context: Context) {
+        try {
+            PreferenceManager.getDefaultSharedPreferences(context).edit()
+                    .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
+                    .apply()
+        } catch (e: PackageManager.NameNotFoundException) {
+            throw Exception("app should be installed because this method was called - but the app " +
+                    "is not installed", e)
+        }
+    }
+
+    /**
+     * @throws PackageManager.NameNotFoundException
+     */
+    private fun getVersionCode(context: Context): Long {
+        val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
+        if (DeviceEnvironment.supportsAndroid9()) {
+            return packageInfo.longVersionCode
+        }
+        @Suppress("DEPRECATION")
+        return packageInfo.versionCode.toLong()
+    }
+
+    companion object {
+        const val INSTALLED_VERSION_CODE = "firefox_nightly_installed_version_code"
     }
 }

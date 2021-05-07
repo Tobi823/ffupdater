@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.mipmap
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import james.crasher.activities.CrashActivity
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -25,13 +26,14 @@ object ErrorNotificationBuilder {
         val intent = buildIntent(context, exception)
         val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
 
-        val notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val notificationBuilder = if (DeviceEnvironment.supportsAndroidOreo()) {
             createNotificationChannel(context)
             NotificationCompat.Builder(context, CHANNEL_ID)
         } else {
             @Suppress("DEPRECATION")
             NotificationCompat.Builder(context)
         }
+        val notification = notificationBuilder
                 .setSmallIcon(mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, mipmap.ic_launcher))
                 .setContentTitle(context.getString(R.string.background_error_notification__title))

@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
@@ -29,7 +28,7 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "mozilla-lockwise",
@@ -47,6 +46,7 @@ class Lockwise(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,
-                fileSizeBytes = result.fileSizeBytes)
+                fileSizeBytes = result.fileSizeBytes,
+                fileHash = null)
     }
 }

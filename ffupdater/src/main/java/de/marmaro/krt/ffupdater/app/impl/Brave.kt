@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
  * https://api.github.com/repos/brave/brave-browser/releases
@@ -25,19 +24,13 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayIconBackground = Color.parseColor("#FFFFFF")
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
-        val fileName = deviceEnvironment.abis.mapNotNull {
-            when (it) {
-                ABI.ARM64_V8A -> "BraveMonoarm64.apk"
-                ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
-                ABI.X86 -> "BraveMonox86.apk"
-                ABI.X86_64 -> "BraveMonox64.apk"
-                ABI.ARMEABI, ABI.MIPS, ABI.MIPS64 -> null
-            }
-        }.first()
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+        val fileName = getStringForCurrentAbi("BraveMonoarm.apk", "BraveMonoarm64.apk",
+                "BraveMonox86.apk", "BraveMonox64.apk")
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "brave",
@@ -55,6 +48,7 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,
-                fileSizeBytes = result.fileSizeBytes)
+                fileSizeBytes = result.fileSizeBytes,
+                fileHash = null)
     }
 }

@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
  * https://github.com/bromite/bromite/releases
@@ -27,18 +26,13 @@ class Bromite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayIconBackground = Color.parseColor("#FFFFFF")
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86)
+
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
-        val fileName = deviceEnvironment.abis.mapNotNull {
-            when (it) {
-                ABI.ARM64_V8A -> "arm64_ChromePublic.apk"
-                ABI.ARMEABI_V7A -> "arm_ChromePublic.apk"
-                ABI.X86 -> "x86_ChromePublic.apk"
-                ABI.X86_64, ABI.ARMEABI, ABI.MIPS, ABI.MIPS64 -> null
-            }
-        }.first()
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+        val fileName = getStringForCurrentAbi("arm_ChromePublic.apk",
+                "arm64_ChromePublic.apk", "x86_ChromePublic.apk", null)
         val githubConsumer = GithubConsumer(
                 apiConsumer = apiConsumer,
                 repoOwner = "bromite",
@@ -54,6 +48,7 @@ class Bromite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 downloadUrl = result.url,
                 version = result.tagName,
                 publishDate = result.releaseDate,
-                fileSizeBytes = result.fileSizeBytes)
+                fileSizeBytes = result.fileSizeBytes,
+                fileHash = null)
     }
 }

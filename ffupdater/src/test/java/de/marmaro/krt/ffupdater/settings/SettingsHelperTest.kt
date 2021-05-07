@@ -2,19 +2,20 @@ package de.marmaro.krt.ffupdater.settings
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate.*
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockkObject
+import io.mockk.unmockkAll
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.empty
 import org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder
+import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -33,6 +34,14 @@ class SettingsHelperTest {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
+        mockkObject(DeviceEnvironment)
+    }
+
+    companion object {
+        @AfterClass
+        fun cleanUp() {
+            unmockkAll()
+        }
     }
 
     @Test
@@ -183,88 +192,101 @@ class SettingsHelperTest {
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidPAndBelow_returnDefaultValue() {
-        for (sdkInt in Build.VERSION_CODES.LOLLIPOP..Build.VERSION_CODES.P) {
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), sdkInt)
-            val actual = SettingsHelper(context).getThemePreference(deviceEnvironment)
-            assertEquals(MODE_NIGHT_AUTO_BATTERY, actual)
-        }
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidQAndHigher_returnDefaultValue() {
-        for (sdkInt in Build.VERSION_CODES.Q..Build.VERSION_CODES.R) {
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), sdkInt)
-            val actual = SettingsHelper(context).getThemePreference(deviceEnvironment)
-            assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, actual)
-        }
-    }
-
-    private fun testIfGetThemePreferenceReturnsDefaultValue() {
-        for (sdkInt in Build.VERSION_CODES.LOLLIPOP..Build.VERSION_CODES.P) {
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), sdkInt)
-            val actual = SettingsHelper(context).getThemePreference(deviceEnvironment)
-            assertEquals(MODE_NIGHT_AUTO_BATTERY, actual)
-        }
-        for (sdkInt in Build.VERSION_CODES.Q..Build.VERSION_CODES.R) {
-            val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), sdkInt)
-            val actual = SettingsHelper(context).getThemePreference(deviceEnvironment)
-            assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, actual)
-        }
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_withInvalidValue_null_returnDefault() {
         sharedPreferences.edit().putString("themePreference", null).commit()
-        testIfGetThemePreferenceReturnsDefaultValue()
+
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
+
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_withInvalidValue_emptyString_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "").commit()
-        testIfGetThemePreferenceReturnsDefaultValue()
+
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
+
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_withInvalidValue_text_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "lorem ipsum").commit()
-        testIfGetThemePreferenceReturnsDefaultValue()
+
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
+
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_withInvalidValue_nonExistingNumber_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "6").commit()
-        testIfGetThemePreferenceReturnsDefaultValue()
+
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
+
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_withValidValue_MODE_NIGHT_FOLLOW_SYSTEM_returnValue() {
         sharedPreferences.edit().putString("themePreference", "-1").commit()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
-        val actual = SettingsHelper(context).getThemePreference(deviceEnvironment)
-        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, actual)
+
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
+
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_withValidValue_MODE_NIGHT_NO_returnValue() {
         sharedPreferences.edit().putString("themePreference", "1").commit()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
-        val actual = SettingsHelper(context).getThemePreference(deviceEnvironment)
-        assertEquals(MODE_NIGHT_NO, actual)
+
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_NO, SettingsHelper(context).getThemePreference())
+
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_NO, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_withValidValue_MODE_NIGHT_YES_returnValue() {
         sharedPreferences.edit().putString("themePreference", "2").commit()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
-        val actual = SettingsHelper(context).getThemePreference(deviceEnvironment)
-        assertEquals(MODE_NIGHT_YES, actual)
+
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_YES, SettingsHelper(context).getThemePreference())
+
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_YES, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_withValidValue_MODE_NIGHT_AUTO_BATTERY_returnValue() {
         sharedPreferences.edit().putString("themePreference", "3").commit()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
-        val actual = SettingsHelper(context).getThemePreference(deviceEnvironment)
-        assertEquals(MODE_NIGHT_AUTO_BATTERY, actual)
+
+        every { DeviceEnvironment.supportAndroid10() } returns false
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
+
+        every { DeviceEnvironment.supportAndroid10() } returns true
+        assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
     }
 }

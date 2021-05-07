@@ -6,9 +6,8 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiConsumer
+import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
@@ -24,20 +23,14 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayIconBackground = Color.parseColor("#FFFFFF")
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
-    override suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment): AvailableVersionResult {
-        val abiString = deviceEnvironment.abis.mapNotNull {
-            when (it) {
-                ABI.ARM64_V8A -> "arm64-v8a"
-                ABI.ARMEABI_V7A -> "armeabi-v7a"
-                ABI.X86 -> "x86"
-                ABI.X86_64 -> "x86_64"
-                ABI.ARMEABI, ABI.MIPS, ABI.MIPS64 -> null
-            }
-        }.first()
-        val mozillaCiConsumer = MozillaCiConsumer(
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+        val abiString = getStringForCurrentAbi("armeabi-v7a", "arm64-v8a", "x86",
+                "x86_64")
+        val mozillaCiConsumer = MozillaCiLogConsumer(
                 apiConsumer = apiConsumer,
                 task = "mobile.v2.fenix.beta.latest.$abiString",
                 apkArtifact = "public/build/$abiString/target.apk",
@@ -49,6 +42,7 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 downloadUrl = result.url,
                 version = version,
                 publishDate = result.releaseDate,
-                fileSizeBytes = null)
+                fileSizeBytes = null,
+                fileHash = null)
     }
 }

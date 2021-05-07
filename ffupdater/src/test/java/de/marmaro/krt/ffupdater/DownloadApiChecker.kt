@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Build
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.impl.*
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -10,7 +10,10 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockkObject
+import io.mockk.unmockkAll
 import kotlinx.coroutines.runBlocking
+import org.junit.AfterClass
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -30,7 +33,8 @@ class DownloadApiChecker {
 
     @MockK
     private lateinit var packageManager: PackageManager
-    private val device = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.P)
+
+    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @Before
     fun setUp() {
@@ -41,12 +45,24 @@ class DownloadApiChecker {
         every {
             packageManager.getPackageInfo(any<String>(), 0)
         } throws PackageManager.NameNotFoundException()
+
+        mockkObject(DeviceEnvironment)
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+
+        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
+    }
+
+    companion object {
+        @AfterClass
+        fun cleanUp() {
+            unmockkAll()
+        }
     }
 
     @Test
     fun brave() {
         val result = runBlocking {
-            Brave(ApiConsumer()).updateCheck(context, device)
+            Brave(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
@@ -57,7 +73,7 @@ class DownloadApiChecker {
     @Test
     fun bromite() {
         val result = runBlocking {
-            Bromite(ApiConsumer()).updateCheck(context, device)
+            Bromite(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
@@ -68,7 +84,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxBeta() {
         val result = runBlocking {
-            FirefoxBeta(ApiConsumer()).updateCheck(context, device)
+            FirefoxBeta(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
@@ -79,7 +95,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxFocus() {
         val result = runBlocking {
-            FirefoxFocus(ApiConsumer()).updateCheck(context, device)
+            FirefoxFocus(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
@@ -90,7 +106,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxKlar() {
         val result = runBlocking {
-            FirefoxKlar(ApiConsumer()).updateCheck(context, device)
+            FirefoxKlar(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
@@ -100,8 +116,9 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxNightly() {
+        sharedPreferences.edit().putLong("firefox_nightly_installed_version_code", 0)
         val result = runBlocking {
-            FirefoxNightly(ApiConsumer()).updateCheck(context, device)
+            FirefoxNightly(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
@@ -112,7 +129,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxRelease() {
         val result = runBlocking {
-            FirefoxRelease(ApiConsumer()).updateCheck(context, device)
+            FirefoxRelease(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
@@ -123,7 +140,7 @@ class DownloadApiChecker {
     @Test
     fun iceraven() {
         val result = runBlocking {
-            Iceraven(ApiConsumer()).updateCheck(context, device)
+            Iceraven(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
@@ -134,7 +151,7 @@ class DownloadApiChecker {
     @Test
     fun lockwise() {
         val result = runBlocking {
-            Lockwise(ApiConsumer()).updateCheck(context, device)
+            Lockwise(ApiConsumer()).updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())

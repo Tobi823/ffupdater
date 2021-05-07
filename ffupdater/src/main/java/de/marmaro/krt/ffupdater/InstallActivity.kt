@@ -17,7 +17,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.*
 import de.marmaro.krt.ffupdater.download.DownloadedApkCache
@@ -47,7 +46,6 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
     private lateinit var downloadedApkCache: DownloadedApkCache
-    private val deviceEnvironment = DeviceEnvironment()
 
     // necessary for communication with State enums
     private lateinit var app: App
@@ -69,12 +67,11 @@ class InstallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.download_activity)
         Crasher(this)
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(DeviceEnvironment()))
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
         downloadManager = DownloadManagerAdapter(getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager)
         appInstaller = AppInstaller.create(
-                deviceEnvironment = deviceEnvironment,
                 successfulInstallationCallback = {
                     restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
                 },
@@ -212,7 +209,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.fetchUrlTextView, ia.getString(R.string.install_activity__fetch_url_for_download,
                     ia.getString(app.detail.displayDownloadSource)))
             try {
-                val updateCheckResult = app.detail.updateCheck(ia, DeviceEnvironment())
+                val updateCheckResult = app.detail.updateCheck(ia)
                 ia.viewModel.updateCheckResult = updateCheckResult
                 ia.hide(R.id.fetchUrl)
                 ia.show(R.id.fetchedUrlSuccess)
@@ -349,6 +346,7 @@ class InstallActivity : AppCompatActivity() {
         FINGERPRINT_OF_INSTALLED_APP_OK(f@{ ia ->
             ia.show(R.id.fingerprintInstalledGood)
             ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint.hexString)
+            ia.app.detail.appInstallationCallback(ia)
             return@f SUCCESS_STOP
         }),
 

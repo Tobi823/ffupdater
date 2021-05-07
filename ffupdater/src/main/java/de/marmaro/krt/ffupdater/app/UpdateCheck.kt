@@ -3,8 +3,8 @@ package de.marmaro.krt.ffupdater.app
 import android.content.Context
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import kotlinx.coroutines.CancellationException
+import java.io.File
 
 interface UpdateCheck {
     /**
@@ -14,6 +14,16 @@ interface UpdateCheck {
      * @throws ApiNetworkException
      * @throws CancellationException
      */
-    suspend fun updateCheck(context: Context, deviceEnvironment: DeviceEnvironment): UpdateCheckResult
-    fun areVersionsDifferent(installedVersion: String?, available: AvailableVersionResult): Boolean
+    suspend fun updateCheck(context: Context): UpdateCheckResult
+
+    suspend fun isCacheFileUpToDate(
+            context: Context,
+            file: File,
+            availableVersionResult: AvailableVersionResult,
+    ): Boolean
+
+    suspend fun isInstalledVersionUpToDate(
+            context: Context,
+            availableVersionResult: AvailableVersionResult,
+    ): Boolean
 }

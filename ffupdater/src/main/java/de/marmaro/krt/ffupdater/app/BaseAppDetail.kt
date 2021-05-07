@@ -5,10 +5,12 @@ import android.content.pm.PackageManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
+import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import java.io.File
 import java.time.Duration
 
 abstract class BaseAppDetail : AppDetail {
@@ -48,20 +50,17 @@ abstract class BaseAppDetail : AppDetail {
      * @throws InvalidApiResponseException
      * @throws ApiNetworkException
      */
-    protected abstract suspend fun updateCheckWithoutCaching(deviceEnvironment: DeviceEnvironment)
-            : AvailableVersionResult
+    protected abstract suspend fun updateCheckWithoutCaching(): AvailableVersionResult
 
 
-    override suspend fun updateCheck(
-            context: Context,
-            deviceEnvironment: DeviceEnvironment,
-    ): UpdateCheckResult {
+    override suspend fun updateCheck(context: Context): UpdateCheckResult {
+        //TODO Vielleicht UpdateCheckResult nicht exponieren, damit ich mich nicht auf was festlegen muss
         mutex.withLock {
             val cacheAge = System.currentTimeMillis() - cacheTimestamp
             // cache is invalid, if it's: too old, not created or failed
             if (cache == null || cacheAge > CACHE_TIME) {
                 cache = GlobalScope.async(Dispatchers.IO) {
-                    updateCheckWithoutCaching(deviceEnvironment)
+                    updateCheckWithoutCaching()
                 }
                 cacheTimestamp = System.currentTimeMillis()
             }
@@ -73,12 +72,52 @@ abstract class BaseAppDetail : AppDetail {
         }
         return UpdateCheckResult(
                 availableResult = availableVersionResult,
-                isUpdateAvailable = areVersionsDifferent(getInstalledVersion(context), availableVersionResult),
+                isUpdateAvailable = !isInstalledVersionUpToDate(context, availableVersionResult),
                 displayVersion = getDisplayAvailableVersion(context, availableVersionResult))
     }
 
-    override fun areVersionsDifferent(installedVersion: String?, available: AvailableVersionResult): Boolean {
-        return installedVersion != available.version
+    override suspend fun isCacheFileUpToDate(
+            context: Context,
+            file: File,
+            availableVersionResult: AvailableVersionResult,
+    ): Boolean {
+        val packageInfo = context.packageManager.getPackageArchiveInfo(file.absolutePath, 0)
+                ?: return false
+        return packageInfo.versionName == availableVersionResult.version
+    }
+
+    override suspend fun isInstalledVersionUpToDate(
+            context: Context,
+            availableVersionResult: AvailableVersionResult,
+    ): Boolean {
+        return try {
+            val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
+            return packageInfo.versionName == availableVersionResult.version
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
+
+    override fun appInstallationCallback(context: Context) {}
+
+    /**
+     * Helper function for getting the correct ABI name (these names are app specific)
+     */
+    protected fun getStringForCurrentAbi(
+            arm: String?,
+            arm64: String?,
+            x86: String?,
+            x64: String?,
+    ): String {
+        return DeviceEnvironment.abis.mapNotNull {
+            when (it) {
+                ABI.ARM64_V8A -> arm64
+                ABI.ARMEABI_V7A -> arm
+                ABI.X86 -> x86
+                ABI.X86_64 -> x64
+                ABI.ARMEABI, ABI.MIPS, ABI.MIPS64 -> null
+            }
+        }.first()
     }
 
     companion object {

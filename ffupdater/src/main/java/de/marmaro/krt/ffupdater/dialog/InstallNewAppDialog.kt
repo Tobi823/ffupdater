@@ -28,14 +28,13 @@ class InstallNewAppDialog : DialogFragment() {
     }
 
     private fun triggerAppInstallation(app: App) {
-        val deviceEnvironment = DeviceEnvironment()
         // do not install an app which incompatible ABIs
-        if (deviceEnvironment.abis.intersect(app.detail.supportedAbis).isEmpty()) {
+        if (DeviceEnvironment.abis.intersect(app.detail.supportedAbis).isEmpty()) {
             UnsupportedAbiDialog.newInstance().show(parentFragmentManager)
             return
         }
         // do not install an app which require a newer Android version
-        if (deviceEnvironment.sdkInt < app.detail.minApiLevel) {
+        if (DeviceEnvironment.sdkInt < app.detail.minApiLevel) {
             DeviceTooOldDialog.newInstance(app).show(parentFragmentManager)
             return
         }

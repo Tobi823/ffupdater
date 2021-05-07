@@ -13,11 +13,10 @@ interface AppInstaller {
 
     companion object {
         fun create(
-                deviceEnvironment: DeviceEnvironment,
                 successfulInstallationCallback: () -> Any,
                 failedInstallationCallback: (errorMessage: String) -> Any,
         ): AppInstaller {
-            return if (deviceEnvironment.supportsAndroidNougat()) {
+            return if (DeviceEnvironment.supportsAndroidNougat()) {
                 SessionInstaller(successfulInstallationCallback, failedInstallationCallback)
             } else {
                 IntentInstaller(successfulInstallationCallback, failedInstallationCallback)

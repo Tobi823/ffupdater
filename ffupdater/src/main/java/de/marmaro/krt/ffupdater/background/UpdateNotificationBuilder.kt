@@ -28,13 +28,14 @@ object UpdateNotificationBuilder {
         val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
         val appTitle: String = context.getString(app.detail.displayTitle)
 
-        val notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val notificationBuilder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(getChannelId(app), appTitle, context)
             NotificationCompat.Builder(context, getChannelId(app))
         } else {
             @Suppress("DEPRECATION")
             NotificationCompat.Builder(context)
         }
+        val notification = notificationBuilder
                 .setSmallIcon(R.mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
                 .setContentTitle(context.getString(R.string.update_notification__title, appTitle))

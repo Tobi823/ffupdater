@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.os.Build
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -11,11 +10,10 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
-import io.mockk.every
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
+import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -41,6 +39,14 @@ class IceravenIT {
         MockKAnnotations.init(this, relaxUnitFun = true)
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
+        mockkObject(DeviceEnvironment)
+    }
+
+    companion object {
+        @AfterClass
+        fun cleanUp() {
+            unmockkAll()
+        }
     }
 
     @Test
@@ -57,36 +63,32 @@ class IceravenIT {
         } returns packageInfo
 
         runBlocking {
-            val abi = ABI.ARMEABI_V7A
-            val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
-            val actual = Iceraven(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
+            every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+            val actual = Iceraven(apiConsumer).updateCheck(context).downloadUrl
             val expected = "https://github.com/fork-maintainers/iceraven-browser/releases/" +
                     "download/iceraven-1.6.0/iceraven-1.6.0-browser-armeabi-v7a-forkRelease.apk"
             assertEquals(URL(expected), actual)
         }
 
         runBlocking {
-            val abi = ABI.ARM64_V8A
-            val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
-            val actual = Iceraven(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
+            every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
+            val actual = Iceraven(apiConsumer).updateCheck(context).downloadUrl
             val expected = "https://github.com/fork-maintainers/iceraven-browser/releases/" +
                     "download/iceraven-1.6.0/iceraven-1.6.0-browser-arm64-v8a-forkRelease.apk"
             assertEquals(URL(expected), actual)
         }
 
         runBlocking {
-            val abi = ABI.X86
-            val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
-            val actual = Iceraven(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
+            every { DeviceEnvironment.abis } returns listOf(ABI.X86)
+            val actual = Iceraven(apiConsumer).updateCheck(context).downloadUrl
             val expected = "https://github.com/fork-maintainers/iceraven-browser/releases/" +
                     "download/iceraven-1.6.0/iceraven-1.6.0-browser-x86-forkRelease.apk"
             assertEquals(URL(expected), actual)
         }
 
         runBlocking {
-            val abi = ABI.X86_64
-            val deviceEnvironment = DeviceEnvironment(listOf(abi), Build.VERSION_CODES.R)
-            val actual = Iceraven(apiConsumer).updateCheck(context, deviceEnvironment).downloadUrl
+            every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
+            val actual = Iceraven(apiConsumer).updateCheck(context).downloadUrl
             val expected = "https://github.com/fork-maintainers/iceraven-browser/releases/" +
                     "download/iceraven-1.6.0/iceraven-1.6.0-browser-x86_64-forkRelease.apk"
             assertEquals(URL(expected), actual)
@@ -104,13 +106,12 @@ class IceravenIT {
         every {
             packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, 0)
         } returns packageInfo
-
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
 
         // installed app is up-to-date
         runBlocking {
             packageInfo.versionName = "iceraven-1.6.0"
-            val actual = Iceraven(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = Iceraven(apiConsumer).updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
             assertEquals("iceraven-1.6.0", actual.version)
             assertEquals(66150140L, actual.fileSizeBytes)
@@ -121,7 +122,7 @@ class IceravenIT {
         // installed app is old
         runBlocking {
             packageInfo.versionName = "iceraven-1.5.0"
-            val actual = Iceraven(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = Iceraven(apiConsumer).updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("iceraven-1.6.0", actual.version)
             assertEquals(66150140L, actual.fileSizeBytes)

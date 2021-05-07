@@ -3,21 +3,22 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.os.Build
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
-import io.mockk.every
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
+import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import java.io.BufferedReader
 import java.io.File
+import java.io.FileReader
 import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
@@ -25,172 +26,150 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 class FirefoxNightlyIT {
 
     @MockK
-    private lateinit var apiConsumer: ApiConsumer
-
-    @MockK
     private lateinit var context: Context
 
     @MockK
     private lateinit var packageManager: PackageManager
+
+    private var apiConsumer = spyk<ApiConsumer>(recordPrivateCalls = true)
     private var packageInfo = PackageInfo()
+    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
+
         every { context.packageManager } returns packageManager
-        packageInfo.versionName = ""
-        every {
-            packageManager.getPackageInfo(App.FIREFOX_NIGHTLY.detail.packageName, 0)
-        } returns packageInfo
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
+        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
+
+        every { packageManager.getPackageInfo(App.FIREFOX_NIGHTLY.detail.packageName, 0) } returns packageInfo
+        mockkObject(DeviceEnvironment)
     }
 
     @Test
-    fun updateCheck_armeabiv7a() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.armeabi-v7a/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
-                "target.apk")
-        val expectedTime = ZonedDateTime.parse("2021-02-14T05:00:44.482Z", ISO_ZONED_DATE_TIME)
-
-        runBlocking {
-            packageInfo.versionName = "Nightly 210214 05:04"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertFalse(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214 05:xx", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
-
-        runBlocking {
-            packageInfo.versionName = "Nightly 210213 17:02"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214 05:xx", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
+    fun updateCheck_armeabiv7a_checkMetadata() {
+        checkMetadata(ABI.ARMEABI_V7A,
+                "armeabi-v7a",
+                "16342c966a2dff3561215f7bc91ea8ae0fb1902d6c533807667b224c3b87a972")
     }
 
     @Test
-    fun updateCheck_arm64v8a() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.arm64-v8a/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
-                "target.apk")
-        val expectedTime = ZonedDateTime.parse("2021-02-14T05:00:44.482Z", ISO_ZONED_DATE_TIME)
-
-        runBlocking {
-            packageInfo.versionName = "Nightly 210214 05:20"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertFalse(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214 05:xx", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
-
-        runBlocking {
-            packageInfo.versionName = "Nightly 210213 17:23"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214 05:xx", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
+    fun updateCheck_armeabiv7a_checkForUpdates_noUpdates() {
+        setInstalledVersionCode(1000)
+        assertFalse(checkForUpdates(ABI.ARMEABI_V7A, "armeabi-v7a"))
     }
 
     @Test
-    fun updateCheck_x86() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.x86/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86), Build.VERSION_CODES.R)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.x86/artifacts/public/build/x86/" +
-                "target.apk")
-        val expectedTime = ZonedDateTime.parse("2021-02-14T05:00:44.482Z", ISO_ZONED_DATE_TIME)
-
-        runBlocking {
-            packageInfo.versionName = "Nightly 210214 05:01"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertFalse(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214 05:xx", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
-
-        runBlocking {
-            packageInfo.versionName = "Nightly 210212 17:50"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214 05:xx", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
+    fun updateCheck_armeabiv7a_checkForUpdates_updateAvailable() {
+        setInstalledVersionCode(999)
+        assertTrue(checkForUpdates(ABI.ARMEABI_V7A, "armeabi-v7a"))
     }
 
     @Test
-    fun updateCheck_x8664() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.x86_64/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.X86_64), Build.VERSION_CODES.R)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.x86_64/artifacts/public/build/x86_64/" +
-                "target.apk")
-        val expectedTime = ZonedDateTime.parse("2021-02-14T05:00:44.482Z", ISO_ZONED_DATE_TIME)
-
-        runBlocking {
-            packageInfo.versionName = "Nightly 210214 05:23"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertFalse(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214 05:xx", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
-
-        runBlocking {
-            packageInfo.versionName = "Nightly 210213 05:59"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("Nightly 210214 05:xx", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
+    fun updateCheck_arm64v8a_checkMetadata() {
+        checkMetadata(ABI.ARM64_V8A, "arm64-v8a",
+                "ae53fdf802bdcd2ea95a853a60f9ba9f621fb10d30dcc98dccfd80df4eba20fc")
     }
 
     @Test
-    fun versionNameIsMultipleHoursAfterBuildTime() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.nightly.latest.armeabi-v7a/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
+    fun updateCheck_arm64v8a_checkForUpdates_noUpdates() {
+        setInstalledVersionCode(1000)
+        assertFalse(checkForUpdates(ABI.ARM64_V8A, "arm64-v8a"))
+    }
 
-        runBlocking {
-            packageInfo.versionName = "Nightly 210214 09:04"
-            val actual = FirefoxNightly(apiConsumer).updateCheck(context, deviceEnvironment)
-            assertFalse(actual.isUpdateAvailable)
+    @Test
+    fun updateCheck_arm64v8a_checkForUpdates_updateAvailable() {
+        setInstalledVersionCode(999)
+        assertTrue(checkForUpdates(ABI.ARM64_V8A, "arm64-v8a"))
+    }
+
+    @Test
+    fun updateCheck_x86_checkMetadata() {
+        checkMetadata(ABI.X86, "x86",
+                "3c81530f5a89596c03421a08f5dab8dd6db0a3fcc7063e59b5fd42874f0a7499")
+    }
+
+    @Test
+    fun updateCheck_x86_checkForUpdates_noUpdates() {
+        setInstalledVersionCode(1000)
+        assertFalse(checkForUpdates(ABI.X86, "x86"))
+    }
+
+    @Test
+    fun updateCheck_x86_checkForUpdates_updateAvailable() {
+        setInstalledVersionCode(999)
+        assertTrue(checkForUpdates(ABI.X86, "x86"))
+    }
+
+    @Test
+    fun updateCheck_x8664_checkMetadata() {
+        checkMetadata(ABI.X86_64, "x86_64",
+                "4690f2580199423822ca8323b0235cdbaac480f04bc6f21aa7f17636cd42662c")
+    }
+
+    @Test
+    fun updateCheck_x8664_checkForUpdates_noUpdates() {
+        setInstalledVersionCode(1000)
+        assertFalse(checkForUpdates(ABI.X86_64, "x86_64"))
+    }
+
+    @Test
+    fun updateCheck_x8664_checkForUpdates_updateAvailable() {
+        setInstalledVersionCode(999)
+        assertTrue(checkForUpdates(ABI.X86_64, "x86_64"))
+    }
+
+    private fun checkMetadata(abi: ABI, abiString: String, hash: String) {
+        every { DeviceEnvironment.abis } returns listOf(abi)
+        makeFileContentAvailableAtUrl(
+                File("$BASE_FOLDER/chain-of-trust.json"),
+                URL("$BASE_URL.$abiString/artifacts/public/chain-of-trust.json")
+        )
+
+        val actual = runBlocking { FirefoxNightly(apiConsumer).updateCheck(context) }
+
+        assertEquals("2021-05-06 17:02", actual.version)
+        assertEquals(URL("$BASE_URL.$abiString/artifacts/public/build/$abiString/target.apk"), actual.downloadUrl)
+        assertEquals(ZonedDateTime.parse("2021-05-06T17:02:55.865Z", ISO_ZONED_DATE_TIME), actual.publishDate)
+        assertEquals(hash, actual.fileHash!!.hexValue)
+    }
+
+    private fun checkForUpdates(abi: ABI, abiString: String): Boolean {
+        every { DeviceEnvironment.abis } returns listOf(abi)
+        makeFileContentAvailableAtUrl(
+                File("$BASE_FOLDER/chain-of-trust.json"),
+                URL("$BASE_URL.$abiString/artifacts/public/chain-of-trust.json")
+        )
+        packageInfo.versionCode = 1000
+
+        val actual = runBlocking { FirefoxNightly(apiConsumer).updateCheck(context) }
+        return actual.isUpdateAvailable
+    }
+
+    companion object {
+        const val BASE_FOLDER = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/" +
+                "FirefoxNightly"
+        const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+                "mobile.v2.fenix.nightly.latest"
+
+        @AfterClass
+        fun cleanUp() {
+            unmockkAll()
         }
+    }
+
+    private fun makeFileContentAvailableAtUrl(file: File, url: URL) {
+        every {
+            apiConsumer["readNetworkResource"](url)
+        } returns BufferedReader(FileReader(file))
+        every {
+            apiConsumer["readNetworkResource"](not(url))
+        } throws Exception("test error: unknown URL was called")
+    }
+
+    private fun setInstalledVersionCode(versionCode: Long) {
+        sharedPreferences.edit().putLong(FirefoxNightly.INSTALLED_VERSION_CODE, versionCode).apply()
     }
 }

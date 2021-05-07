@@ -33,6 +33,7 @@ git push origin "$TAG"
 git push github "$TAG"
 git push gitlab "$TAG"
 git push gitea "$TAG"
+
 ````
 
 # delete all remote branches except master

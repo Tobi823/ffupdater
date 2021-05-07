@@ -20,7 +20,6 @@ import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
@@ -38,7 +37,6 @@ import java.util.*
 import java.util.concurrent.*
 
 class MainActivity : AppCompatActivity() {
-    private val deviceEnvironment = DeviceEnvironment()
     private val sameAppVersionAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
     private val availableVersions: EnumMap<App, TextView> = EnumMap(App::class.java)
     private val downloadButtons: EnumMap<App, ImageButton> = EnumMap(App::class.java)
@@ -48,8 +46,8 @@ class MainActivity : AppCompatActivity() {
         Crasher(this)
         setContentView(R.layout.main_activity)
         setSupportActionBar(findViewById(R.id.toolbar))
-        StrictModeSetup.enableStrictMode(deviceEnvironment)
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference(deviceEnvironment))
+        StrictModeSetup.enableStrictMode()
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         Migrator().migrate(this)
         OldDownloadedFilesDeleter.delete(this)
 
@@ -184,7 +182,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkForAppUpdate(app: App, ignoreErrors: Boolean): Job {
         return lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val updateResult = app.detail.updateCheck(applicationContext, deviceEnvironment)
+                val updateResult = app.detail.updateCheck(applicationContext)
                 lifecycleScope.launch(Dispatchers.Main) {
                     availableVersions[app]!!.text = updateResult.displayVersion
                     if (updateResult.isUpdateAvailable) {

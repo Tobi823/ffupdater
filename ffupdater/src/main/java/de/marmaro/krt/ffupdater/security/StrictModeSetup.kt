@@ -17,15 +17,15 @@ object StrictModeSetup {
      * If the app has been built by F-Droid, then forbid only unencrypted network traffic.
      */
     @JvmStatic
-    fun enableStrictMode(deviceEnvironment: DeviceEnvironment) {
+    fun enableStrictMode() {
         if (BuildConfig.DEBUG) {
-            enableDebugStrictMode(deviceEnvironment)
+            enableDebugStrictMode()
         } else {
-            enableReleaseStrictMode(deviceEnvironment)
+            enableReleaseStrictMode()
         }
     }
 
-    private fun enableDebugStrictMode(deviceEnvironment: DeviceEnvironment) {
+    private fun enableDebugStrictMode() {
         Log.i(LOG_TAG, "enable StrictMode for local development")
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
                 .detectAll()
@@ -35,7 +35,7 @@ object StrictModeSetup {
                 .penaltyLog()
                 .penaltyDeath()
                 .build())
-        if (deviceEnvironment.supportsAndroidMarshmallow()) {
+        if (DeviceEnvironment.supportsAndroidMarshmallow()) {
             StrictMode.setVmPolicy(VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
@@ -44,9 +44,9 @@ object StrictModeSetup {
         }
     }
 
-    private fun enableReleaseStrictMode(deviceEnvironment: DeviceEnvironment) {
+    private fun enableReleaseStrictMode() {
         Log.i(LOG_TAG, "enable StrictMode for everyday usage to prevent unencrypted data connection")
-        if (deviceEnvironment.supportsAndroidMarshmallow()) {
+        if (DeviceEnvironment.supportsAndroidMarshmallow()) {
             StrictMode.setVmPolicy(VmPolicy.Builder()
                     .penaltyDeathOnCleartextNetwork()
                     .build())

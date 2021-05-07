@@ -7,4 +7,5 @@ interface InstallerInfo {
     fun getInstalledVersion(context: Context): String?
     val packageName: String
     val signatureHash: String
+    fun appInstallationCallback(context: Context)
 }

@@ -13,6 +13,7 @@ import javax.net.ssl.HttpsURLConnection
 
 /**
  * Consume a REST-API from the internet.
+ * TODO make it singleton
  */
 class ApiConsumer {
     private val gson = Gson()

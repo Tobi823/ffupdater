@@ -7,7 +7,6 @@ import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.FAILED
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.SUCCESSFUL
@@ -31,7 +30,6 @@ class BackgroundJob(
         context: Context,
         workerParams: WorkerParameters,
 ) : CoroutineWorker(context, workerParams) {
-    val deviceEnvironment = DeviceEnvironment()
 
     override suspend fun doWork(): Result {
         try {
@@ -96,7 +94,7 @@ class BackgroundJob(
                 .filter { it !in disabledApps }
                 .filter { it.detail.isInstalled(applicationContext) }
                 // nice side effect: check for updates by calling updateCheck()
-                .filter { it.detail.updateCheck(applicationContext, deviceEnvironment).isUpdateAvailable }
+                .filter { it.detail.updateCheck(applicationContext).isUpdateAvailable }
     }
 
     /**
@@ -118,7 +116,7 @@ class BackgroundJob(
      */
     private suspend fun downloadUpdateInBackground(app: App, downloadManager: DownloadManagerAdapter) {
         val apkCache = DownloadedApkCache(app, applicationContext)
-        val cachedUpdateChecker = app.detail.updateCheck(applicationContext, deviceEnvironment)
+        val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
         val availableResult = cachedUpdateChecker.availableResult
 
         Log.d(LOG_TAG, "check if $app should be downloaded in the background")

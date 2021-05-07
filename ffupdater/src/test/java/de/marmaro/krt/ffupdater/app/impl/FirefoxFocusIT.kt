@@ -3,17 +3,15 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
-import io.mockk.every
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
+import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -43,6 +41,14 @@ class FirefoxFocusIT {
         } returns packageInfo
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
+        mockkObject(DeviceEnvironment)
+    }
+
+    companion object {
+        @AfterClass
+        fun cleanUp() {
+            unmockkAll()
+        }
     }
 
     @Test
@@ -52,7 +58,7 @@ class FirefoxFocusIT {
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "project.mobile.focus.release.latest/artifacts/public/logs/chain_of_trust.log"
         coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARMEABI_V7A), Build.VERSION_CODES.R)
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
 
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "project.mobile.focus.release.latest/artifacts/public/" +
@@ -61,7 +67,7 @@ class FirefoxFocusIT {
 
         runBlocking {
             packageInfo.versionName = "8.12.0"
-            val actual = FirefoxFocus(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxFocus(apiConsumer).updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
             assertEquals("8.12.0", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -70,7 +76,7 @@ class FirefoxFocusIT {
 
         runBlocking {
             packageInfo.versionName = "8.11.0"
-            val actual = FirefoxFocus(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxFocus(apiConsumer).updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("8.12.0", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -85,7 +91,7 @@ class FirefoxFocusIT {
         val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "project.mobile.focus.release.latest/artifacts/public/logs/chain_of_trust.log"
         coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
-        val deviceEnvironment = DeviceEnvironment(listOf(ABI.ARM64_V8A), Build.VERSION_CODES.R)
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
 
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
         "project.mobile.focus.release.latest/artifacts/public/" +
@@ -94,7 +100,7 @@ class FirefoxFocusIT {
 
         runBlocking {
             packageInfo.versionName = "8.12.0"
-            val actual = FirefoxFocus(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxFocus(apiConsumer).updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
             assertEquals("8.12.0", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -103,7 +109,7 @@ class FirefoxFocusIT {
 
         runBlocking {
             packageInfo.versionName = "8.11.0"
-            val actual = FirefoxFocus(apiConsumer).updateCheck(context, deviceEnvironment)
+            val actual = FirefoxFocus(apiConsumer).updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("8.12.0", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)

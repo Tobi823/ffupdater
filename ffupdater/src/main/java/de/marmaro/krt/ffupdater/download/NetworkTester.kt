@@ -11,11 +11,11 @@ object NetworkTester {
 
     fun isInternetUnavailable(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return isInternetUnavailable(cm, DeviceEnvironment())
+        return isInternetUnavailable(cm)
     }
 
-    private fun isInternetUnavailable(cm: ConnectivityManager, deviceEnvironment: DeviceEnvironment): Boolean {
-        if (deviceEnvironment.supportsAndroidMarshmallow()) {
+    private fun isInternetUnavailable(cm: ConnectivityManager): Boolean {
+        if (DeviceEnvironment.supportsAndroidMarshmallow()) {
             return !isInternetAvailableNewWay(cm)
         }
         return !isInternetAvailableOldWay(cm)

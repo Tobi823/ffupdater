@@ -1,0 +1,103 @@
+{
+  "artifacts": {
+    "public/build/arm64-v8a/target.apk": {
+      "sha256": "ae53fdf802bdcd2ea95a853a60f9ba9f621fb10d30dcc98dccfd80df4eba20fc"
+    },
+    "public/build/armeabi-v7a/target.apk": {
+      "sha256": "16342c966a2dff3561215f7bc91ea8ae0fb1902d6c533807667b224c3b87a972"
+    },
+    "public/build/x86/target.apk": {
+      "sha256": "3c81530f5a89596c03421a08f5dab8dd6db0a3fcc7063e59b5fd42874f0a7499"
+    },
+    "public/build/x86_64/target.apk": {
+      "sha256": "4690f2580199423822ca8323b0235cdbaac480f04bc6f21aa7f17636cd42662c"
+    },
+    "public/logs/chain_of_trust.log": {
+      "sha256": "1b414c77953e45c9402b564edead9745a202398cfac959dd4a6e190b24fdd237"
+    },
+    "public/logs/live_backing.log": {
+      "sha256": "fbb1a74632fab56d8280822cecab6bf00754c9b2c24fda844f4f1d916081c1e2"
+    }
+  },
+  "chainOfTrustVersion": 1,
+  "environment": {},
+  "runId": 0,
+  "task": {
+    "created": "2021-05-06T17:02:55.865Z",
+    "deadline": "2021-05-07T17:02:55.865Z",
+    "dependencies": [
+      "CnLp7reTSLeYRwHqRD2rdQ"
+    ],
+    "expires": "2022-05-06T17:02:55.865Z",
+    "extra": {
+      "index": {
+        "rank": 1620320499
+      },
+      "parent": "K_BmsTa2RMqhJzA2i-x-6g",
+      "treeherder": {
+        "collection": {
+          "opt": true
+        },
+        "groupName": "Nightly-related tasks",
+        "groupSymbol": "nightly",
+        "jobKind": "build",
+        "machine": {
+          "platform": "android-all"
+        },
+        "symbol": "Bs",
+        "tier": 1
+      },
+      "treeherder-platform": "android-all/opt"
+    },
+    "metadata": {
+      "description": "Sign Fenix ([Treeherder push](https://treeherder.mozilla.org/#/jobs?repo=fenix&revision=9bfb31519a0defe9ff4d317a6772dc155ded5c61))",
+      "name": "signing-nightly",
+      "owner": "cron@noreply.mozilla.org",
+      "source": "https://github.com/mozilla-mobile/fenix/blob/9bfb31519a0defe9ff4d317a6772dc155ded5c61/taskcluster/ci/signing"
+    },
+    "payload": {
+      "maxRunTime": 600,
+      "upstreamArtifacts": [
+        {
+          "formats": [
+            "autograph_apk"
+          ],
+          "paths": [
+            "public/build/arm64-v8a/target.apk",
+            "public/build/armeabi-v7a/target.apk",
+            "public/build/x86/target.apk",
+            "public/build/x86_64/target.apk"
+          ],
+          "taskId": "CnLp7reTSLeYRwHqRD2rdQ",
+          "taskType": "build"
+        }
+      ]
+    },
+    "priority": "highest",
+    "provisionerId": "scriptworker-k8s",
+    "requires": "all-completed",
+    "retries": 5,
+    "routes": [
+      "tc-treeherder.v2.fenix.9bfb31519a0defe9ff4d317a6772dc155ded5c61.0",
+      "checks"
+    ],
+    "schedulerId": "mobile-level-3",
+    "scopes": [
+      "project:mobile:fenix:releng:signing:cert:production-signing",
+      "project:mobile:fenix:releng:signing:format:autograph_apk"
+    ],
+    "tags": {
+      "createdForUser": "cron@noreply.mozilla.org",
+      "kind": "signing",
+      "label": "signing-nightly",
+      "os": "scriptworker",
+      "worker-implementation": "scriptworker"
+    },
+    "taskGroupId": "K_BmsTa2RMqhJzA2i-x-6g",
+    "workerType": "mobile-3-signing"
+  },
+  "taskId": "NDr1xt0uSxmItzUq9hOBPQ",
+  "workerGroup": "mobile-3-signing",
+  "workerId": "mobile-3-signing-dci5llheqnquozwmm4cww",
+  "workerType": "mobile-3-signing"
+}
