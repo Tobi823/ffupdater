@@ -346,7 +346,8 @@ class InstallActivity : AppCompatActivity() {
         FINGERPRINT_OF_INSTALLED_APP_OK(f@{ ia ->
             ia.show(R.id.fingerprintInstalledGood)
             ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint.hexString)
-            ia.app.detail.appInstallationCallback(ia)
+            val available = ia.viewModel.updateCheckResult!!.availableResult
+            ia.app.detail.appInstallationCallback(ia, available)
             return@f SUCCESS_STOP
         }),
 

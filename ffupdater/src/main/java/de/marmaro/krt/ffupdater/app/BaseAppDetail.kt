@@ -79,26 +79,26 @@ abstract class BaseAppDetail : AppDetail {
     override suspend fun isCacheFileUpToDate(
             context: Context,
             file: File,
-            availableVersionResult: AvailableVersionResult,
+            available: AvailableVersionResult,
     ): Boolean {
         val packageInfo = context.packageManager.getPackageArchiveInfo(file.absolutePath, 0)
                 ?: return false
-        return packageInfo.versionName == availableVersionResult.version
+        return packageInfo.versionName == available.version
     }
 
     override suspend fun isInstalledVersionUpToDate(
             context: Context,
-            availableVersionResult: AvailableVersionResult,
+            available: AvailableVersionResult,
     ): Boolean {
         return try {
             val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
-            return packageInfo.versionName == availableVersionResult.version
+            return packageInfo.versionName == available.version
         } catch (e: PackageManager.NameNotFoundException) {
             false
         }
     }
 
-    override fun appInstallationCallback(context: Context) {}
+    override fun appInstallationCallback(context: Context, available: AvailableVersionResult) {}
 
     /**
      * Helper function for getting the correct ABI name (these names are app specific)

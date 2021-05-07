@@ -19,11 +19,11 @@ interface UpdateCheck {
     suspend fun isCacheFileUpToDate(
             context: Context,
             file: File,
-            availableVersionResult: AvailableVersionResult,
+            available: AvailableVersionResult,
     ): Boolean
 
     suspend fun isInstalledVersionUpToDate(
             context: Context,
-            availableVersionResult: AvailableVersionResult,
+            available: AvailableVersionResult,
     ): Boolean
 }

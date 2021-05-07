@@ -54,29 +54,32 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override suspend fun isCacheFileUpToDate(
             context: Context,
             file: File,
-            availableVersionResult: AvailableVersionResult,
+            available: AvailableVersionResult,
     ): Boolean {
         val hash = FileHashCalculator.getSHA256ofFile(file)
-        return hash == availableVersionResult.fileHash
+        return hash == available.fileHash
     }
 
     override suspend fun isInstalledVersionUpToDate(
             context: Context,
-            availableVersionResult: AvailableVersionResult,
+            available: AvailableVersionResult,
     ): Boolean {
         return try {
-            val installedVersionCode = PreferenceManager.getDefaultSharedPreferences(context)
-                    .getLong(INSTALLED_VERSION_CODE, 0)
-            getVersionCode(context) == installedVersionCode
+            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+            val installedSha256Hash = preferences.getString(INSTALLED_SHA256_HASH, "")
+            val installedVersionCode = preferences.getLong(INSTALLED_VERSION_CODE, 0)
+            available.fileHash!!.hexValue == installedSha256Hash &&
+                    getVersionCode(context) == installedVersionCode
         } catch (e: PackageManager.NameNotFoundException) {
             false
         }
     }
 
-    override fun appInstallationCallback(context: Context) {
+    override fun appInstallationCallback(context: Context, available: AvailableVersionResult) {
         try {
             PreferenceManager.getDefaultSharedPreferences(context).edit()
                     .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
+                    .putString(INSTALLED_SHA256_HASH, available.fileHash!!.hexValue)
                     .apply()
         } catch (e: PackageManager.NameNotFoundException) {
             throw Exception("app should be installed because this method was called - but the app " +
@@ -98,5 +101,6 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
 
     companion object {
         const val INSTALLED_VERSION_CODE = "firefox_nightly_installed_version_code"
+        const val INSTALLED_SHA256_HASH = "firefox_nightly_installed_sha256_hash"
     }
 }
