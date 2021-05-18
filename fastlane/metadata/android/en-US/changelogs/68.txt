@@ -1,0 +1,1 @@
+ * Instruct user if app installation is aborted by "MIUI Optimization" (Tobi823/ffupdater#41)

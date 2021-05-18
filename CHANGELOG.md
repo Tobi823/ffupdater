@@ -1,4 +1,7 @@
-# 2021-??-?? Version 73.1.4 (68)
+# 2021-05-18 Version 74.0.0 (69)
+ * Remove Brave Browser because the APK files are no longer published on GitHub. (https://github.com/brave/brave-browser/issues/15878)
+
+# 2021-05-18 Version 73.1.4 (68)
  * Instruct user if app installation is aborted by "MIUI Optimization" (Tobi823/ffupdater#41)
 
 # 2021-05-07 Version 73.1.3 (67)
