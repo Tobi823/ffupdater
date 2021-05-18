@@ -11,9 +11,6 @@
     <string name="background_error_notification__title">Verificação em segundo plano falhou</string>
     <string name="background_network_issue_notification__text">Verificação em segundo plano falhou devido a um problema de rede. Se o problema ocorrer com mais frequência, por favor, notifique-nos sobre isso. Clique para ver os logs de erros.</string>
     <string name="background_unknown_bug_notification__text">Verificação em segundo plano falhou devido a um erro desconhecido. Favor, notifique-nos sobre isso. Clique para ver os logs de erros.</string>
-    <string name="brave__description">Navegue livremente e de forma privada! O Navegador Brave é rápido, gratuito e seguro, com bloqueador de anúncios e pop-ups. Navegue e pesquise na internet sem ser rastreado por anunciantes e sem malware.</string>
-    <string name="brave__title">Brave Navegador Privado</string>
-    <string name="brave__warning">Brave utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Brave?</string>
     <string name="bromite__description">Bromite tem o objetivo de proporcionar uma experiência de navegação sem complicação, sem recursos invasivos de privacidade e com a adição de um motor rápido de bloqueio de ad-bloqueio. Mínimas mudanças de IU são aplicadas para ajudar a frear a idéia de \"navegador como plataforma publicitária\".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite utiliza os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Bromite?</string>

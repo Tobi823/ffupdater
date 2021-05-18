@@ -12,7 +12,6 @@ enum class App(appDetail: AppDetail) {
     FIREFOX_FOCUS(FirefoxFocus(apiConsumer)),
     FIREFOX_KLAR(FirefoxKlar(apiConsumer)),
     LOCKWISE(Lockwise(apiConsumer)),
-    BRAVE(Brave(apiConsumer)),
     ICERAVEN(Iceraven(apiConsumer)),
     BROMITE(Bromite(apiConsumer));
 

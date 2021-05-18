@@ -11,9 +11,6 @@
     <string name="background_error_notification__title">Background update check failed</string>
     <string name="background_network_issue_notification__text">It\'s likely that the background check failed due to a temporary network connectivity issue. But if this error occurs more than once a week, please report it. Click to view the error log.</string>
     <string name="background_unknown_bug_notification__text">Due to an unknown bug the background check failed. Please report this error. Click to view the error log.</string>
-    <string name="brave__description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
-    <string name="brave__title">Brave Private Browser</string>
-    <string name="brave__warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
     <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>

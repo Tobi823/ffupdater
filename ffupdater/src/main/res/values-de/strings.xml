@@ -11,9 +11,6 @@
     <string name="background_error_notification__title">Hintergrundprüfung auf Updates ist fehlgeschlagen</string>
     <string name="background_network_issue_notification__text">Es ist wahrscheinlich, dass die Hintergrundprüfung aufgrund eines vorübergehenden Netzwerkverbindungsproblems fehlgeschlagen ist. Wenn dieser Fehler jedoch öfter als einmal pro Woche auftritt, melden Sie ihn bitte. Klicken Sie, um das Fehlerprotokoll anzuzeigen.</string>
     <string name="background_unknown_bug_notification__text">Aufgrund eines unbekannten Fehlers ist die Hintergrundprüfung fehlgeschlagen. Bitte melden Sie diesen Fehler. Klicken Sie, um das Fehlerprotokoll anzuzeigen.</string>
-    <string name="brave__description">Der Brave Web Browser ist Ihr privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert! \n\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass Sie mit Anzeigen überladen oder mit Malware und Popups verseucht werden.</string>
-    <string name="brave__title">Brave Browser</string>
-    <string name="brave__warning">Brave nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Willst du Brave dennoch installieren?</string>
     <string name="bromite__description">Bromite zielt auf ein aufgeräumtes Browsing-Erlebnis ab, ohne Datenschutz-invasive Funktionen und mit einer schnellen Ad-Blocking-Engine. Minimale UI-Änderungen sollen helfen, die Idee des \"Browsers als Werbeplattform\" einzudämmen.</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Willst du Bromite dennoch installieren?</string>

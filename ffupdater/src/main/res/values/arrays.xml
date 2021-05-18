@@ -49,7 +49,6 @@
         <item>@string/firefox_focus__title</item>
         <item>@string/firefox_klar__title</item>
         <item>@string/lockwise__title</item>
-        <item>@string/brave__title</item>
         <item>@string/iceraven__title</item>
         <item>@string/bromite__title</item>
     </string-array>
@@ -61,7 +60,6 @@
         <item>FIREFOX_FOCUS</item>
         <item>FIREFOX_KLAR</item>
         <item>LOCKWISE</item>
-        <item>BRAVE</item>
         <item>ICERAVEN</item>
         <item>BROMITE</item>
     </string-array>
