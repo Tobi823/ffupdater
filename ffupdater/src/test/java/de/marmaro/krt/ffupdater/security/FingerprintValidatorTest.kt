@@ -71,7 +71,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
-        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BRAVE) }
+        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BROMITE) }
         assertFalse(actual.isValid)
     }
 

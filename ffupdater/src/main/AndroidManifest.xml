@@ -29,7 +29,6 @@
         <package android:name="org.mozilla.klar" />
         <package android:name="org.mozilla.rocket" />
         <package android:name="mozilla.lockbox" />
-        <package android:name="com.brave.browser" />
         <package android:name="io.github.forkmaintainers.iceraven" />
         <package android:name="org.bromite.bromite" />
     </queries>
