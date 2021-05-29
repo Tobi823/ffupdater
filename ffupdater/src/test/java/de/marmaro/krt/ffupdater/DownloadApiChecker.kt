@@ -60,6 +60,17 @@ class DownloadApiChecker {
     }
 
     @Test
+    fun brave() {
+        val result = runBlocking {
+            Brave(ApiConsumer()).updateCheck(context)
+        }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 14
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
+    }
+
+    @Test
     fun bromite() {
         val result = runBlocking {
             Bromite(ApiConsumer()).updateCheck(context)
