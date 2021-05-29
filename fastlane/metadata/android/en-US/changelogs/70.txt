@@ -1,0 +1,1 @@
+ * Add Brave Browser because the APK files are published on GitHub again. (https://github.com/brave/brave-browser/issues/15878)

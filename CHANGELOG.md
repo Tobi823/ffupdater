@@ -1,3 +1,6 @@
+# 2021-05-29 Version 74.1.0 (70)
+ * Add Brave Browser because the APK files are published on GitHub again. (https://github.com/brave/brave-browser/issues/15878)
+
 # 2021-05-18 Version 74.0.0 (69)
  * Remove Brave Browser because the APK files are no longer published on GitHub. (https://github.com/brave/brave-browser/issues/15878)
 
