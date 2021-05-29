@@ -44,6 +44,10 @@ The applications are downloaded from these locations:
  The builds always starts at 5:00 and 17:00 and usually takes a few minutes.
  - I don't optimize the APK file with minifyEnabled and shrinkResources because it makes the app 
  harder to debug
+ - Tor Browser / Orbot: I will not support them because they can be installed with F-Droid. 
+ (Go to Settings > Repositories > Enable "Guardian Project Archive".)
+ I don't feel confident enough that I can install and update the Tor Browser / Orbot securely 
+ (because I think there is much more at stake than with other browsers).
  
 ## Git repositories:
  - Main repository: https://notabug.org/Tobiwan/ffupdater
