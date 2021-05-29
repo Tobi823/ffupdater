@@ -11,6 +11,9 @@
     <string name="background_error_notification__title">Грешка при проверка за обновяване във фонов режим</string>
     <string name="background_network_issue_notification__text">Проверката във фонов режим е неуспешна, вероятно поради временен проблем с мрежовата свързаност. Ако все пак грешката се появява повече от веднъж седмично я докладвайте. Докоснете за отваряне на журнала.</string>
     <string name="background_unknown_bug_notification__text">По неизвестна причина проверката във фонов режим е неуспешна. Докладвайте тази грешка. Докоснете за отваряне на журнала.</string>
+    <string name="brave__description">Brave Web Browser поверителен и безопасен мрежов четец, който безплатно спира реклами от трети страни. \n\nBrave Web Browser е бърз и сигурен мрежов четец за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен четец, който ви предпазва от проследяване чрез реклами, злонамерен софтуер и изскачащи прозорци.</string>
+    <string name="brave__title">Brave Browser</string>
+    <string name="brave__warning">Brave използва техническата основа на Google Chrome (Chromium) - на някои това не им допада. Искате ли да инсталирате Brave?</string>
     <string name="bromite__description">Bromite има за цел да осигури безпроблемно сърфиране без функции, нарушаващи поверителността, и с добавяне на бърз механизъм за блокиране на реклами. Прилагат се минимални промени в потребителския интерфейс, за да се ограничи идеята за \"браузъра като рекламна платформа\".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite използва техническата основа на Google Chrome (Chromium) - на някои това не им допада. Искате ли да инсталирате Bromite?</string>

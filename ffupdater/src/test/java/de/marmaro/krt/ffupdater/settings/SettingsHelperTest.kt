@@ -122,6 +122,12 @@ class SettingsHelperTest {
     }
 
     @Test
+    fun getDisableApps_withOneApp_Brave_returnApps() {
+        sharedPreferences.edit().putStringSet("disableApps", setOf("BRAVE")).commit()
+        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.BRAVE))
+    }
+
+    @Test
     fun getDisableApps_withOneApp_FirefoxBeta_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_BETA")).commit()
         assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.FIREFOX_BETA))

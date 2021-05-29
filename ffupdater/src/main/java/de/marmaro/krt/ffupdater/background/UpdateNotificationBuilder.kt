@@ -58,6 +58,7 @@ object UpdateNotificationBuilder {
             App.FIREFOX_FOCUS -> "update_notification_channel__firefox_focus"
             App.FIREFOX_KLAR -> "update_notification_channel__firefox_klar"
             App.LOCKWISE -> "update_notification_channel__lockwise"
+            App.BRAVE -> "update_notification_channel__brave"
             App.ICERAVEN -> "update_notification_channel__iceraven"
             App.BROMITE -> "update_notification_channel__bromite"
         }
@@ -71,6 +72,7 @@ object UpdateNotificationBuilder {
             App.FIREFOX_FOCUS -> 203
             App.FIREFOX_KLAR -> 204
             App.LOCKWISE -> 206
+            App.BRAVE -> 207
             App.ICERAVEN -> 208
             App.BROMITE -> 209
         }

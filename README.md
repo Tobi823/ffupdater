@@ -2,6 +2,7 @@
 
 # Firefox-Updater
 Download, install and update these privacy friendly browsers:
+ - [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US)
  - [Bromite](https://github.com/bromite/bromite)
  - [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
  - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus)
@@ -27,6 +28,7 @@ I did my best to make the app as secure as possible - feel free to double-check 
 
 ## Download server:
 The applications are downloaded from these locations:
+ - Brave Private Browser: <https://api.github.com/repos/brave/brave-browser/releases/latest>
  - Bromite: <https://api.github.com/repos/bromite/bromite/releases/latest>
  - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
  - Firefox for Android Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
@@ -68,12 +70,6 @@ The applications are downloaded from these locations:
 [How to contribute](HOW_TO_CONTRIBUTE.md)
 
 ## Deprecated browsers
-
-### Brave Browser
-18.05.2021: https://github.com/brave/brave-browser/issues/15878
-
-APK files are no longer available on GitHub.
-Instead only AAB files are offered - but FFUpdater can't use these "Android Application Bundles". 
 
 ### Kiwi Browser
 17.04.2021: https://github.com/Tobi823/ffupdater/issues/35
