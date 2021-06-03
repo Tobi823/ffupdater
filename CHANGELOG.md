@@ -1,3 +1,6 @@
+# 2021-06-03 Version 74.1.1 (71)
+ * Fix Firefox Beta by adapting to the new structure of the chain_of_trust.log (Tobi823/ffupdater#44)
+
 # 2021-05-29 Version 74.1.0 (70)
  * Add Brave Browser because the APK files are published on GitHub again. (https://github.com/brave/brave-browser/issues/15878)
 
