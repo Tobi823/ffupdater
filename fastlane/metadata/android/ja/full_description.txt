@@ -1,0 +1,16 @@
+これらのプライバシーを重視したブラウザやアプリをインストールやアップデートできます:
+ - Bromite
+ - Firefox Browser
+ - Firefox Focus
+ - Firefox for Android Beta
+ - Firefox Klar
+ - Firefox Nightly
+ - Iceraven
+
+ - Firefox Lockwise
+
+FFUpdaterは定期的にアップデートをチェックし、アップデートがある場合は通知を表示します。この機能自体を無効にしたり、チェックの頻度を変更することも可能です。
+
+また、FFUpdaterは、現在のネットワークが定額制通信を利用しており、デバイスに十分なストレージがある場合、バックグラウンドで自動的にアプリのアップデートをダウンロードします。
+
+セキュリティ対策、制限事項、バグ、FAQ、ビルド方法、使用しているサードパーティライブラリ、技術的な詳細などの情報は、https://notabug.org/Tobiwan/ffupdater/src/master/README.md をご覧いただくか、以下の「ソースコード」リンクをクリックしてください。
