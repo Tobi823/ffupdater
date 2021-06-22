@@ -1,3 +1,6 @@
+# 2021-06-22 Version 74.2.0 (72)
+ * Add Japanese language (thanks gnuhead-chieb Tobi823/ffupdater#47)
+
 # 2021-06-03 Version 74.1.1 (71)
  * Fix Firefox Beta by adapting to the new structure of the chain_of_trust.log (Tobi823/ffupdater#44)
 
