@@ -37,7 +37,7 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 keyForVersion = "tag_name",
                 keyForReleaseDate = "now")
         val result = mozillaCiConsumer.updateCheck()
-        val version = result.version
+        val version = Regex("""^v(.*)$""").find(result.version)!!.groups[1]!!.value
         return AvailableVersionResult(
                 downloadUrl = result.url,
                 version = version,
