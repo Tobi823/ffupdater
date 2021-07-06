@@ -1,3 +1,7 @@
+# 2021-07-06 Version 74.3.0 (73)
+ * Add Polish language (thanks Eryk Michalak, Tobiwan/ffupdater_gitlab#11)
+ * Fix crash when checking for "Firefox Release" updates (Tobi823/ffupdater#52)
+
 # 2021-06-22 Version 74.2.0 (72)
  * Add Japanese language (thanks gnuhead-chieb Tobi823/ffupdater#47)
 
