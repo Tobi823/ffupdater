@@ -1,3 +1,6 @@
+# 2021-07-06 Version 74.3.1 (74)
+ * Fix crash when checking for "Firefox Release" or "Firefox Beta" (Tobi823/ffupdater#57)
+
 # 2021-07-06 Version 74.3.0 (73)
  * Add Polish language (thanks Eryk Michalak, Tobiwan/ffupdater_gitlab#11)
  * Fix crash when checking for "Firefox Release" updates (Tobi823/ffupdater#52)

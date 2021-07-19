@@ -64,13 +64,13 @@ class FirefoxReleaseIT {
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.release.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
                 "target.apk")
-        val expectedTime = ZonedDateTime.parse("2021-07-06T16:39:13.886Z", ISO_ZONED_DATE_TIME)
+        val expectedTime = ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "90.1.0"
+            packageInfo.versionName = "90.1.2"
             val actual = FirefoxRelease(apiConsumer).updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("90.1.0", actual.version)
+            assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -79,7 +79,7 @@ class FirefoxReleaseIT {
             packageInfo.versionName = "85.1.2"
             val actual = FirefoxRelease(apiConsumer).updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("90.1.0", actual.version)
+            assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -97,13 +97,13 @@ class FirefoxReleaseIT {
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.release.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
                 "target.apk")
-        val expectedTime = ZonedDateTime.parse("2021-07-06T16:39:13.886Z", ISO_ZONED_DATE_TIME)
+        val expectedTime = ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "90.1.0"
+            packageInfo.versionName = "90.1.2"
             val actual = FirefoxRelease(apiConsumer).updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("90.1.0", actual.version)
+            assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -112,7 +112,7 @@ class FirefoxReleaseIT {
             packageInfo.versionName = "85.1.2"
             val actual = FirefoxRelease(apiConsumer).updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("90.1.0", actual.version)
+            assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -130,13 +130,13 @@ class FirefoxReleaseIT {
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.release.latest.x86/artifacts/public/build/x86/" +
                 "target.apk")
-        val expectedTime = ZonedDateTime.parse("2021-07-06T16:39:13.886Z", ISO_ZONED_DATE_TIME)
+        val expectedTime = ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "90.1.0"
+            packageInfo.versionName = "90.1.2"
             val actual = FirefoxRelease(apiConsumer).updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("90.1.0", actual.version)
+            assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -145,7 +145,7 @@ class FirefoxReleaseIT {
             packageInfo.versionName = "85.1.2"
             val actual = FirefoxRelease(apiConsumer).updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("90.1.0", actual.version)
+            assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -163,13 +163,13 @@ class FirefoxReleaseIT {
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.release.latest.x86_64/artifacts/public/build/x86_64/" +
                 "target.apk")
-        val expectedTime = ZonedDateTime.parse("2021-07-06T16:39:13.886Z", ISO_ZONED_DATE_TIME)
+        val expectedTime = ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "90.1.0"
+            packageInfo.versionName = "90.1.2"
             val actual = FirefoxRelease(apiConsumer).updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("90.1.0", actual.version)
+            assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -178,7 +178,7 @@ class FirefoxReleaseIT {
             packageInfo.versionName = "85.1.2"
             val actual = FirefoxRelease(apiConsumer).updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("90.1.0", actual.version)
+            assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }

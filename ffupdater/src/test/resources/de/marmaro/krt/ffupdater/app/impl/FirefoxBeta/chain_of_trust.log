@@ -1,203 +1,243 @@
-2021-06-02T03:18:32     INFO - Running scriptworker version 38.0.0
-2021-06-02T03:18:32     INFO - build_task_dependencies scriptworker HIqtu-IzRrO-Doht2SuD6Q
-2021-06-02T03:18:32     INFO - find_sorted_task_dependencies scriptworker HIqtu-IzRrO-Doht2SuD6Q
-2021-06-02T03:18:32     INFO - found dependencies: [('scriptworker:parent', 'E-dqZelFTK6aF8u6Hy1ZEA'), ('scriptworker:build', 'L7YpG_qeTOm7-gdHStewSA')]
-2021-06-02T03:18:32    DEBUG -  scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA is docker-worker
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/E-dqZelFTK6aF8u6Hy1ZEA)
-2021-06-02T03:18:32     INFO - build_task_dependencies scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA
-2021-06-02T03:18:32     INFO - find_sorted_task_dependencies scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA
-2021-06-02T03:18:32     INFO - found dependencies: [('scriptworker:parent:parent', 'E-dqZelFTK6aF8u6Hy1ZEA')]
-2021-06-02T03:18:32    DEBUG -  scriptworker:build L7YpG_qeTOm7-gdHStewSA is docker-worker
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/L7YpG_qeTOm7-gdHStewSA)
-2021-06-02T03:18:32     INFO - build_task_dependencies scriptworker:build L7YpG_qeTOm7-gdHStewSA
-2021-06-02T03:18:32     INFO - find_sorted_task_dependencies scriptworker:build L7YpG_qeTOm7-gdHStewSA
-2021-06-02T03:18:32     INFO - found dependencies: [('scriptworker:build:parent', 'E-dqZelFTK6aF8u6Hy1ZEA'), ('scriptworker:build:docker-image', 'XGGmdDBTSPOa1ZFu6Roldg')]
-2021-06-02T03:18:32    DEBUG -  scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg is docker-worker
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/XGGmdDBTSPOa1ZFu6Roldg)
-2021-06-02T03:18:32     INFO - build_task_dependencies scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg
-2021-06-02T03:18:32     INFO - find_sorted_task_dependencies scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg
-2021-06-02T03:18:32     INFO - found dependencies: [('scriptworker:build:docker-image:parent', 'Lt9aXLUtSU2lhskGjQCJLg')]
-2021-06-02T03:18:32    DEBUG -  scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg is docker-worker
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/Lt9aXLUtSU2lhskGjQCJLg)
-2021-06-02T03:18:32     INFO - build_task_dependencies scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg
-2021-06-02T03:18:32     INFO - find_sorted_task_dependencies scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg
-2021-06-02T03:18:32     INFO - found dependencies: [('scriptworker:build:docker-image:parent:parent', 'Lt9aXLUtSU2lhskGjQCJLg')]
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E-dqZelFTK6aF8u6Hy1ZEA/artifacts/public%2Fchain-of-trust.json
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E-dqZelFTK6aF8u6Hy1ZEA/artifacts/public%2Fchain-of-trust.json.sig
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fchain-of-trust.json
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fchain-of-trust.json.sig
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/XGGmdDBTSPOa1ZFu6Roldg/artifacts/public%2Fchain-of-trust.json
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/./public)
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/XGGmdDBTSPOa1ZFu6Roldg/artifacts/public%2Fchain-of-trust.json.sig
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/XGGmdDBTSPOa1ZFu6Roldg/./public)
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lt9aXLUtSU2lhskGjQCJLg/artifacts/public%2Fchain-of-trust.json
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/Lt9aXLUtSU2lhskGjQCJLg/./public)
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lt9aXLUtSU2lhskGjQCJLg/artifacts/public%2Fchain-of-trust.json.sig
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/E-dqZelFTK6aF8u6Hy1ZEA/./public)
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/E-dqZelFTK6aF8u6Hy1ZEA/./public/chain-of-trust.json downloaded; hash is 49b89df2e085b8c178adae9ec5f60a0c5f00aa953499ecb477537a7f3d887ce4
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/./public/chain-of-trust.json downloaded; hash is 393e22df25c63db05f759d7c914237c765f4b1de89809133469f7ba02ce76233
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/XGGmdDBTSPOa1ZFu6Roldg/./public/chain-of-trust.json downloaded; hash is 61d74cd1c814dedaa99b686edebf85cb4b7ba3372728e5e4164c6cec01a1a98d
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/Lt9aXLUtSU2lhskGjQCJLg/./public/chain-of-trust.json downloaded; hash is 5ec67192c03fb93a62d2f0bce02eebda21e70c888cafba05b0c33082b4613f5d
-2021-06-02T03:18:32    DEBUG -  Verifying the scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA docker-worker ed25519 chain of trust signature
-2021-06-02T03:18:32    DEBUG -  scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA: ed25519 cot signature verified.
-2021-06-02T03:18:32    DEBUG -  Verifying the scriptworker:build L7YpG_qeTOm7-gdHStewSA docker-worker ed25519 chain of trust signature
-2021-06-02T03:18:32    DEBUG -  scriptworker:build L7YpG_qeTOm7-gdHStewSA: ed25519 cot signature verified.
-2021-06-02T03:18:32    DEBUG -  Verifying the scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg docker-worker ed25519 chain of trust signature
-2021-06-02T03:18:32    DEBUG -  scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg: ed25519 cot signature verified.
-2021-06-02T03:18:32    DEBUG -  Verifying the scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg docker-worker ed25519 chain of trust signature
-2021-06-02T03:18:32    DEBUG -  scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg: ed25519 cot signature verified.
-2021-06-02T03:18:32    DEBUG -  Verifying public/actions.json is in E-dqZelFTK6aF8u6Hy1ZEA cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E-dqZelFTK6aF8u6Hy1ZEA/artifacts/public%2Factions.json
-2021-06-02T03:18:32    DEBUG -  Verifying public/parameters.yml is in E-dqZelFTK6aF8u6Hy1ZEA cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E-dqZelFTK6aF8u6Hy1ZEA/artifacts/public%2Fparameters.yml
-2021-06-02T03:18:32    DEBUG -  Verifying public/task-graph.json is in E-dqZelFTK6aF8u6Hy1ZEA cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E-dqZelFTK6aF8u6Hy1ZEA/artifacts/public%2Ftask-graph.json
-2021-06-02T03:18:32    DEBUG -  Verifying public/actions.json is in Lt9aXLUtSU2lhskGjQCJLg cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lt9aXLUtSU2lhskGjQCJLg/artifacts/public%2Factions.json
-2021-06-02T03:18:32    DEBUG -  Verifying public/parameters.yml is in Lt9aXLUtSU2lhskGjQCJLg cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lt9aXLUtSU2lhskGjQCJLg/artifacts/public%2Fparameters.yml
-2021-06-02T03:18:32    DEBUG -  Verifying public/task-graph.json is in Lt9aXLUtSU2lhskGjQCJLg cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lt9aXLUtSU2lhskGjQCJLg/artifacts/public%2Ftask-graph.json
-2021-06-02T03:18:32    DEBUG -  Verifying public/build/arm64-v8a/target.apk is in L7YpG_qeTOm7-gdHStewSA cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fbuild%2Farm64-v8a%2Ftarget.apk
-2021-06-02T03:18:32    DEBUG -  Verifying public/build/armeabi-v7a/target.apk is in L7YpG_qeTOm7-gdHStewSA cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fbuild%2Farmeabi-v7a%2Ftarget.apk
-2021-06-02T03:18:32    DEBUG -  Verifying public/build/x86/target.apk is in L7YpG_qeTOm7-gdHStewSA cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fbuild%2Fx86%2Ftarget.apk
-2021-06-02T03:18:32    DEBUG -  Verifying public/build/x86_64/target.apk is in L7YpG_qeTOm7-gdHStewSA cot artifacts...
-2021-06-02T03:18:32     INFO - Downloading Chain of Trust artifact:
-https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fbuild%2Fx86_64%2Ftarget.apk
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E-dqZelFTK6aF8u6Hy1ZEA/artifacts/public%2Factions.json
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E-dqZelFTK6aF8u6Hy1ZEA/artifacts/public%2Fparameters.yml
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/E-dqZelFTK6aF8u6Hy1ZEA/artifacts/public%2Ftask-graph.json
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lt9aXLUtSU2lhskGjQCJLg/artifacts/public%2Factions.json
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lt9aXLUtSU2lhskGjQCJLg/artifacts/public%2Fparameters.yml
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lt9aXLUtSU2lhskGjQCJLg/artifacts/public%2Ftask-graph.json
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/Lt9aXLUtSU2lhskGjQCJLg/public/actions.json matches the expected sha256 1a09b88fd0157d0dd7fe653de6302f0a09b1edf3b2a09454cce1e37a0d4674da
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fbuild%2Farm64-v8a%2Ftarget.apk
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/Lt9aXLUtSU2lhskGjQCJLg/public/parameters.yml matches the expected sha256 4e44911e0823e735d69b06cd5f1ac56e4f8c2d4a57008ae76589db5de58efe58
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fbuild%2Farmeabi-v7a%2Ftarget.apk
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/Lt9aXLUtSU2lhskGjQCJLg/public/task-graph.json matches the expected sha256 53016d3f4f4516fdc8d8ff1ee305bd0d6782674b65a992c739fb0889c221f12c
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fbuild%2Fx86%2Ftarget.apk
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/E-dqZelFTK6aF8u6Hy1ZEA/public/actions.json matches the expected sha256 a11cd660df267fcb5e4117a4b5fe4d279406f022adf6ec64b141ca76f3b3e895
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L7YpG_qeTOm7-gdHStewSA/artifacts/public%2Fbuild%2Fx86_64%2Ftarget.apk
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/E-dqZelFTK6aF8u6Hy1ZEA/public/task-graph.json matches the expected sha256 9c3a0bd90cd1cc9941a78184b8222fde0e26d58137712880d06115b51279e41b
-2021-06-02T03:18:32     INFO - Done
-2021-06-02T03:18:32    DEBUG -  /app/workdir/cot/E-dqZelFTK6aF8u6Hy1ZEA/public/parameters.yml matches the expected sha256 e69c2f81fdf4fa89e717c59a52d8fb907387b03a4b33f12b216b757750cefaa1
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/./public/build/armeabi-v7a)
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/./public/build/x86_64)
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/./public/build/x86)
-2021-06-02T03:18:32    DEBUG -  makedirs(/app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/./public/build/arm64-v8a)
-2021-06-02T03:18:38     INFO - Done
-2021-06-02T03:18:38    DEBUG -  /app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/public/build/armeabi-v7a/target.apk matches the expected sha256 195b086806caffe19b4fb02fe591900db0fadd5d9cd5cb8c38829f57450548ca
-2021-06-02T03:18:39     INFO - Done
-2021-06-02T03:18:39    DEBUG -  /app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/public/build/x86_64/target.apk matches the expected sha256 1b5bc3ecf1f440cd6836c58c210ded838c478054a94aad2f28a6ba66fc994620
-2021-06-02T03:18:39     INFO - Done
-2021-06-02T03:18:39    DEBUG -  /app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/public/build/arm64-v8a/target.apk matches the expected sha256 e92f6c647982d672389da3802c8a0bc51d991238a7ad683367b5cd6a365e28c8
-2021-06-02T03:18:39     INFO - Done
-2021-06-02T03:18:40    DEBUG -  /app/workdir/cot/L7YpG_qeTOm7-gdHStewSA/public/build/x86/target.apk matches the expected sha256 c7cda5ceaed2637a48f06cda4e4225d13f8410b56a597e7549bcffaa259c4f11
-2021-06-02T03:18:40     INFO - Verifying scriptworker HIqtu-IzRrO-Doht2SuD6Q as a scriptworker task...
-2021-06-02T03:18:40     INFO - Verifying scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA as a decision task...
-2021-06-02T03:18:40     INFO - Verifying the scriptworker HIqtu-IzRrO-Doht2SuD6Q task definition is part of the scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA task graph...
-2021-06-02T03:18:40     INFO - Found HIqtu-IzRrO-Doht2SuD6Q in the graph; it's a match
-2021-06-02T03:18:40     INFO - Verifying the scriptworker:build L7YpG_qeTOm7-gdHStewSA task definition is part of the scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA task graph...
-2021-06-02T03:18:40     INFO - Found L7YpG_qeTOm7-gdHStewSA in the graph; it's a match
-2021-06-02T03:18:40     INFO - Verifying scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA definition...
-2021-06-02T03:18:40    DEBUG -  scriptworker:parent .taskcluster.yml is at https://raw.githubusercontent.com/mozilla-mobile/fenix/v90.0.0-beta.1/.taskcluster.yml
-2021-06-02T03:18:40     INFO - Downloading https://raw.githubusercontent.com/mozilla-mobile/fenix/v90.0.0-beta.1/.taskcluster.yml
-2021-06-02T03:18:40     INFO - Done
-2021-06-02T03:18:40    DEBUG -  task_ids: {'default': 'E-dqZelFTK6aF8u6Hy1ZEA', 'decision': 'E-dqZelFTK6aF8u6Hy1ZEA'}
-2021-06-02T03:18:40    DEBUG -  scriptworker:parent json-e context:
-2021-06-02T03:18:40    DEBUG -  {'as_slugid': <function populate_jsone_context.<locals>.<lambda> at 0x7f0d6d1cd160>,
- 'event': {'action': 'published',
-           'release': {'published_at': '2021-06-02T03:06:36Z',
-                       'tag_name': 'v90.0.0-beta.1',
-                       'target_commitish': 'c906818d6531575073e6dca8cd64f46976e48432'},
-           'repository': {'clone_url': 'https://github.com/mozilla-mobile/fenix.git',
-                          'full_name': 'mozilla-mobile/fenix',
-                          'html_url': 'https://github.com/mozilla-mobile/fenix',
-                          'name': 'fenix'},
-           'sender': {'login': 'moz-releng-automation'}},
- 'now': '2021-06-02T03:06:37.467Z',
- 'ownTaskId': 'E-dqZelFTK6aF8u6Hy1ZEA',
+2021-07-19T12:54:23     INFO - Running scriptworker version 38.2.0
+2021-07-19T12:54:23     INFO - build_task_dependencies scriptworker FjALU-KvS-KvmgS7d574Cg
+2021-07-19T12:54:23     INFO - find_sorted_task_dependencies scriptworker FjALU-KvS-KvmgS7d574Cg
+2021-07-19T12:54:23     INFO - found dependencies: [('scriptworker:parent', 'GRMa-ZyoST6KQiMZmg6HnQ'), ('scriptworker:build', 'L8mn4HhMQ6awQRBhrey42g')]
+2021-07-19T12:54:23    DEBUG -  scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ is docker-worker
+2021-07-19T12:54:23    DEBUG -  makedirs(/app/workdir/cot/GRMa-ZyoST6KQiMZmg6HnQ)
+2021-07-19T12:54:23     INFO - build_task_dependencies scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ
+2021-07-19T12:54:23     INFO - find_sorted_task_dependencies scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ
+2021-07-19T12:54:23     INFO - found dependencies: [('scriptworker:parent:parent', 'RpeimSEzSrqTl-Rp2OW8Jw')]
+2021-07-19T12:54:23    DEBUG -  scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw is docker-worker
+2021-07-19T12:54:23    DEBUG -  makedirs(/app/workdir/cot/RpeimSEzSrqTl-Rp2OW8Jw)
+2021-07-19T12:54:23     INFO - build_task_dependencies scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw
+2021-07-19T12:54:23     INFO - find_sorted_task_dependencies scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw
+2021-07-19T12:54:23     INFO - found dependencies: [('scriptworker:parent:parent:parent', 'RpeimSEzSrqTl-Rp2OW8Jw')]
+2021-07-19T12:54:23    DEBUG -  scriptworker:build L8mn4HhMQ6awQRBhrey42g is docker-worker
+2021-07-19T12:54:23    DEBUG -  makedirs(/app/workdir/cot/L8mn4HhMQ6awQRBhrey42g)
+2021-07-19T12:54:23     INFO - build_task_dependencies scriptworker:build L8mn4HhMQ6awQRBhrey42g
+2021-07-19T12:54:23     INFO - find_sorted_task_dependencies scriptworker:build L8mn4HhMQ6awQRBhrey42g
+2021-07-19T12:54:23     INFO - found dependencies: [('scriptworker:build:parent', 'GRMa-ZyoST6KQiMZmg6HnQ'), ('scriptworker:build:docker-image', 'bcWUDOGKTlCWiAakcEa3NA')]
+2021-07-19T12:54:23    DEBUG -  scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA is docker-worker
+2021-07-19T12:54:23    DEBUG -  makedirs(/app/workdir/cot/bcWUDOGKTlCWiAakcEa3NA)
+2021-07-19T12:54:23     INFO - build_task_dependencies scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA
+2021-07-19T12:54:23     INFO - find_sorted_task_dependencies scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA
+2021-07-19T12:54:23     INFO - found dependencies: [('scriptworker:build:docker-image:parent', 'fzQ7E273T7yAVtJbH1GMxQ')]
+2021-07-19T12:54:23    DEBUG -  scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ is docker-worker
+2021-07-19T12:54:23    DEBUG -  makedirs(/app/workdir/cot/fzQ7E273T7yAVtJbH1GMxQ)
+2021-07-19T12:54:23     INFO - build_task_dependencies scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ
+2021-07-19T12:54:23     INFO - find_sorted_task_dependencies scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ
+2021-07-19T12:54:23     INFO - found dependencies: [('scriptworker:build:docker-image:parent:parent', 'fzQ7E273T7yAVtJbH1GMxQ')]
+2021-07-19T12:54:23     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/GRMa-ZyoST6KQiMZmg6HnQ/artifacts/public%2Fchain-of-trust.json
+2021-07-19T12:54:23     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/GRMa-ZyoST6KQiMZmg6HnQ/artifacts/public%2Fchain-of-trust.json.sig
+2021-07-19T12:54:23     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RpeimSEzSrqTl-Rp2OW8Jw/artifacts/public%2Fchain-of-trust.json
+2021-07-19T12:54:23     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RpeimSEzSrqTl-Rp2OW8Jw/artifacts/public%2Fchain-of-trust.json.sig
+2021-07-19T12:54:23     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fchain-of-trust.json
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/GRMa-ZyoST6KQiMZmg6HnQ/./public)
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fchain-of-trust.json.sig
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/./public)
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/bcWUDOGKTlCWiAakcEa3NA/artifacts/public%2Fchain-of-trust.json
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/RpeimSEzSrqTl-Rp2OW8Jw/./public)
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/bcWUDOGKTlCWiAakcEa3NA/artifacts/public%2Fchain-of-trust.json.sig
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/bcWUDOGKTlCWiAakcEa3NA/./public)
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/fzQ7E273T7yAVtJbH1GMxQ/artifacts/public%2Fchain-of-trust.json
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/fzQ7E273T7yAVtJbH1GMxQ/artifacts/public%2Fchain-of-trust.json.sig
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/fzQ7E273T7yAVtJbH1GMxQ/./public)
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/GRMa-ZyoST6KQiMZmg6HnQ/./public/chain-of-trust.json downloaded; hash is 06a3eed9074df53172192c975731630e762ed7bf709587542c4f3077d489018d
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/RpeimSEzSrqTl-Rp2OW8Jw/./public/chain-of-trust.json downloaded; hash is 1a8c6ed7477e75d8c4f6dbf5bd00635b56a1f12afd1b6cc412de7daab96125b8
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/./public/chain-of-trust.json downloaded; hash is 5fc37f391797e057e2849049047d5a558206de617286710b5b10e1a17a1bd8ef
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/bcWUDOGKTlCWiAakcEa3NA/./public/chain-of-trust.json downloaded; hash is 678f68ad7ca72b718c2d8f4323081525810529198e5ec86f04e0e36ed507281f
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/fzQ7E273T7yAVtJbH1GMxQ/./public/chain-of-trust.json downloaded; hash is 05d2a8ab5714dbbab311fe015a51c2f61a8ae50c74d4fc17eebd55362197f719
+2021-07-19T12:54:24    DEBUG -  Verifying the scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ docker-worker ed25519 chain of trust signature
+2021-07-19T12:54:24    DEBUG -  scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ: ed25519 cot signature verified.
+2021-07-19T12:54:24    DEBUG -  Verifying the scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw docker-worker ed25519 chain of trust signature
+2021-07-19T12:54:24    DEBUG -  scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw: ed25519 cot signature verified.
+2021-07-19T12:54:24    DEBUG -  Verifying the scriptworker:build L8mn4HhMQ6awQRBhrey42g docker-worker ed25519 chain of trust signature
+2021-07-19T12:54:24    DEBUG -  scriptworker:build L8mn4HhMQ6awQRBhrey42g: ed25519 cot signature verified.
+2021-07-19T12:54:24    DEBUG -  Verifying the scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA docker-worker ed25519 chain of trust signature
+2021-07-19T12:54:24    DEBUG -  scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA: ed25519 cot signature verified.
+2021-07-19T12:54:24    DEBUG -  Verifying the scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ docker-worker ed25519 chain of trust signature
+2021-07-19T12:54:24    DEBUG -  scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ: ed25519 cot signature verified.
+2021-07-19T12:54:24    DEBUG -  Verifying public/task-graph.json is in GRMa-ZyoST6KQiMZmg6HnQ cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/GRMa-ZyoST6KQiMZmg6HnQ/artifacts/public%2Ftask-graph.json
+2021-07-19T12:54:24    DEBUG -  Verifying public/actions.json is in RpeimSEzSrqTl-Rp2OW8Jw cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RpeimSEzSrqTl-Rp2OW8Jw/artifacts/public%2Factions.json
+2021-07-19T12:54:24    DEBUG -  Verifying public/parameters.yml is in RpeimSEzSrqTl-Rp2OW8Jw cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RpeimSEzSrqTl-Rp2OW8Jw/artifacts/public%2Fparameters.yml
+2021-07-19T12:54:24    DEBUG -  Verifying public/task-graph.json is in RpeimSEzSrqTl-Rp2OW8Jw cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RpeimSEzSrqTl-Rp2OW8Jw/artifacts/public%2Ftask-graph.json
+2021-07-19T12:54:24    DEBUG -  Verifying public/actions.json is in fzQ7E273T7yAVtJbH1GMxQ cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/fzQ7E273T7yAVtJbH1GMxQ/artifacts/public%2Factions.json
+2021-07-19T12:54:24    DEBUG -  Verifying public/parameters.yml is in fzQ7E273T7yAVtJbH1GMxQ cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/fzQ7E273T7yAVtJbH1GMxQ/artifacts/public%2Fparameters.yml
+2021-07-19T12:54:24    DEBUG -  Verifying public/task-graph.json is in fzQ7E273T7yAVtJbH1GMxQ cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/fzQ7E273T7yAVtJbH1GMxQ/artifacts/public%2Ftask-graph.json
+2021-07-19T12:54:24    DEBUG -  Verifying public/build/arm64-v8a/target.apk is in L8mn4HhMQ6awQRBhrey42g cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fbuild%2Farm64-v8a%2Ftarget.apk
+2021-07-19T12:54:24    DEBUG -  Verifying public/build/armeabi-v7a/target.apk is in L8mn4HhMQ6awQRBhrey42g cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fbuild%2Farmeabi-v7a%2Ftarget.apk
+2021-07-19T12:54:24    DEBUG -  Verifying public/build/x86/target.apk is in L8mn4HhMQ6awQRBhrey42g cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fbuild%2Fx86%2Ftarget.apk
+2021-07-19T12:54:24    DEBUG -  Verifying public/build/x86_64/target.apk is in L8mn4HhMQ6awQRBhrey42g cot artifacts...
+2021-07-19T12:54:24     INFO - Downloading Chain of Trust artifact:
+https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fbuild%2Fx86_64%2Ftarget.apk
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/GRMa-ZyoST6KQiMZmg6HnQ/artifacts/public%2Ftask-graph.json
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RpeimSEzSrqTl-Rp2OW8Jw/artifacts/public%2Factions.json
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RpeimSEzSrqTl-Rp2OW8Jw/artifacts/public%2Fparameters.yml
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RpeimSEzSrqTl-Rp2OW8Jw/artifacts/public%2Ftask-graph.json
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/fzQ7E273T7yAVtJbH1GMxQ/artifacts/public%2Factions.json
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/fzQ7E273T7yAVtJbH1GMxQ/artifacts/public%2Fparameters.yml
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/RpeimSEzSrqTl-Rp2OW8Jw/public/parameters.yml matches the expected sha256 86f28f642df1577830247e418c573b8093f37fb28fda6db22ee9de42e06321ad
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/fzQ7E273T7yAVtJbH1GMxQ/artifacts/public%2Ftask-graph.json
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/RpeimSEzSrqTl-Rp2OW8Jw/public/actions.json matches the expected sha256 347f544fcdfaaa3b4687f41c5e650d864687de8d8ee2708e7af1b7c0db4a5b2a
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fbuild%2Farm64-v8a%2Ftarget.apk
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/fzQ7E273T7yAVtJbH1GMxQ/public/actions.json matches the expected sha256 8d4d680c7a147b87ff0685ded0c59685f10eaed72ff4cd72391dcf50e357d18b
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fbuild%2Farmeabi-v7a%2Ftarget.apk
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/fzQ7E273T7yAVtJbH1GMxQ/public/parameters.yml matches the expected sha256 72e193d2f680e0cb0e6800464b4e9927a92f6f003054a02fa94745762116c9e7
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fbuild%2Fx86%2Ftarget.apk
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/fzQ7E273T7yAVtJbH1GMxQ/public/task-graph.json matches the expected sha256 e8a5b10a1ac58d7ab78aa3bd7e706a1fd384ad8d11dff8b8da17dd5903330da2
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24     INFO - Downloading https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/L8mn4HhMQ6awQRBhrey42g/artifacts/public%2Fbuild%2Fx86_64%2Ftarget.apk
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/GRMa-ZyoST6KQiMZmg6HnQ/public/task-graph.json matches the expected sha256 ce495c0340e0cfc7065a855608fba988d3cd5cff00436b711e5bb33a0ae70690
+2021-07-19T12:54:24     INFO - Done
+2021-07-19T12:54:24    DEBUG -  /app/workdir/cot/RpeimSEzSrqTl-Rp2OW8Jw/public/task-graph.json matches the expected sha256 bf57bf68f2817527455f3206b4b85b10ec91fcd94a437037cfd7875b90e4e627
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/./public/build/x86_64)
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/./public/build/x86)
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/./public/build/arm64-v8a)
+2021-07-19T12:54:24    DEBUG -  makedirs(/app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/./public/build/armeabi-v7a)
+2021-07-19T12:54:31     INFO - Done
+2021-07-19T12:54:32    DEBUG -  /app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/public/build/armeabi-v7a/target.apk matches the expected sha256 06c1eae877c5789f0722c9e1d1ea3f1117a3396e3d99ffac7b0a93be769a4c44
+2021-07-19T12:54:32     INFO - Done
+2021-07-19T12:54:32    DEBUG -  /app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/public/build/x86_64/target.apk matches the expected sha256 dffc7a1ca58fe7660de0894b63fb0c6e403ee1cf4d1a5f9d87c3f480553316e9
+2021-07-19T12:54:32     INFO - Done
+2021-07-19T12:54:33    DEBUG -  /app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/public/build/arm64-v8a/target.apk matches the expected sha256 1227d175524791757722f3faa66e7c5e39c6b4b899628ae4ef39c3654db9f3d7
+2021-07-19T12:54:33     INFO - Done
+2021-07-19T12:54:33    DEBUG -  /app/workdir/cot/L8mn4HhMQ6awQRBhrey42g/public/build/x86/target.apk matches the expected sha256 7f43d6cc51ffea811fcb5e91d32cbb1416da262753b499564776a443f285239f
+2021-07-19T12:54:33     INFO - Verifying scriptworker FjALU-KvS-KvmgS7d574Cg as a scriptworker task...
+2021-07-19T12:54:33     INFO - Verifying scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ as a action task...
+2021-07-19T12:54:33     INFO - Verifying the scriptworker FjALU-KvS-KvmgS7d574Cg task definition is part of the scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ task graph...
+2021-07-19T12:54:33     INFO - Found FjALU-KvS-KvmgS7d574Cg in the graph; it's a match
+2021-07-19T12:54:33     INFO - Verifying the scriptworker:build L8mn4HhMQ6awQRBhrey42g task definition is part of the scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ task graph...
+2021-07-19T12:54:33     INFO - Found L8mn4HhMQ6awQRBhrey42g in the graph; it's a match
+2021-07-19T12:54:33     INFO - Verifying scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ definition...
+2021-07-19T12:54:33    DEBUG -  task_ids: {'default': 'GRMa-ZyoST6KQiMZmg6HnQ', 'decision': 'RpeimSEzSrqTl-Rp2OW8Jw'}
+2021-07-19T12:54:33    DEBUG -  scriptworker:parent json-e context:
+2021-07-19T12:54:33    DEBUG -  {'as_slugid': <function populate_jsone_context.<locals>.<lambda> at 0x7fdd0cd76820>,
+ 'clientId': 'project/releng/shipit/production',
+ 'input': {'build_number': 1,
+           'next_version': '91.0.0-beta.3',
+           'previous_graph_ids': ['RpeimSEzSrqTl-Rp2OW8Jw'],
+           'release_enable_emefree': False,
+           'release_enable_partner_attribution': False,
+           'release_enable_partner_repack': False,
+           'release_eta': None,
+           'release_promotion_flavor': 'ship',
+           'version': '91.0.0-beta.2'},
+ 'now': '2021-07-19T12:38:32.995Z',
+ 'ownTaskId': 'GRMa-ZyoST6KQiMZmg6HnQ',
+ 'taskGroupId': 'RpeimSEzSrqTl-Rp2OW8Jw',
  'taskId': None,
- 'tasks_for': 'github-release'}
-2021-06-02T03:18:40     INFO - scriptworker:parent: Good.
-2021-06-02T03:18:40     INFO - Verifying scriptworker:build L7YpG_qeTOm7-gdHStewSA as a build task...
-2021-06-02T03:18:40     INFO - Verifying scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg as a docker-image task...
-2021-06-02T03:18:40     INFO - Verifying scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg as a decision task...
-2021-06-02T03:18:40     INFO - Verifying the scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg task definition is part of the scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg task graph...
-2021-06-02T03:18:40     INFO - Found XGGmdDBTSPOa1ZFu6Roldg in the graph; it's a match
-2021-06-02T03:18:40     INFO - Verifying scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg definition...
-2021-06-02T03:18:40    DEBUG -  scriptworker:build:docker-image:parent .taskcluster.yml is at https://raw.githubusercontent.com/mozilla-mobile/fenix/7d3b23ceeb12c0e3edcb36836e9041b9ca7a1800/.taskcluster.yml
-2021-06-02T03:18:40     INFO - Downloading https://raw.githubusercontent.com/mozilla-mobile/fenix/7d3b23ceeb12c0e3edcb36836e9041b9ca7a1800/.taskcluster.yml
-2021-06-02T03:18:41     INFO - Done
-2021-06-02T03:18:41    DEBUG -  task_ids: {'default': 'Lt9aXLUtSU2lhskGjQCJLg', 'decision': 'Lt9aXLUtSU2lhskGjQCJLg'}
-2021-06-02T03:18:41    DEBUG -  scriptworker:build:docker-image:parent json-e context:
-2021-06-02T03:18:41    DEBUG -  {'as_slugid': <function populate_jsone_context.<locals>.<lambda> at 0x7f0d6d1954c0>,
- 'event': {'after': '7d3b23ceeb12c0e3edcb36836e9041b9ca7a1800',
+ 'tasks_for': 'action'}
+2021-07-19T12:54:33    DEBUG -  scriptworker:parent:parent .taskcluster.yml is at https://raw.githubusercontent.com/mozilla-mobile/fenix/55634eaf0533226b330c49f18d33aac8d40da5c7/.taskcluster.yml
+2021-07-19T12:54:33     INFO - Downloading https://raw.githubusercontent.com/mozilla-mobile/fenix/55634eaf0533226b330c49f18d33aac8d40da5c7/.taskcluster.yml
+2021-07-19T12:54:33     INFO - Done
+2021-07-19T12:54:33     INFO - scriptworker:parent: Good.
+2021-07-19T12:54:33     INFO - Verifying scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw as a decision task...
+2021-07-19T12:54:33     INFO - Verifying scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw definition...
+2021-07-19T12:54:33    DEBUG -  scriptworker:parent:parent .taskcluster.yml is at https://raw.githubusercontent.com/mozilla-mobile/fenix/55634eaf0533226b330c49f18d33aac8d40da5c7/.taskcluster.yml
+2021-07-19T12:54:33    DEBUG -  task_ids: {'default': 'RpeimSEzSrqTl-Rp2OW8Jw', 'decision': 'RpeimSEzSrqTl-Rp2OW8Jw'}
+2021-07-19T12:54:34    DEBUG -  scriptworker:parent:parent json-e context:
+2021-07-19T12:54:34    DEBUG -  {'as_slugid': <function populate_jsone_context.<locals>.<lambda> at 0x7fdd0cd401f0>,
+ 'event': {'after': '55634eaf0533226b330c49f18d33aac8d40da5c7',
            'before': None,
-           'pusher': {'email': 'jlorenzo@mozilla.com'},
+           'pusher': {'email': ''},
+           'ref': 'refs/heads/releases_v91.0.0',
+           'repository': {'full_name': 'mozilla-mobile/fenix',
+                          'html_url': 'https://github.com/mozilla-mobile/fenix',
+                          'name': 'fenix',
+                          'pushed_at': None,
+                          'ssh_url': 'git@github.com:mozilla-mobile/fenix.git'},
+           'sender': {'login': 'mergify[bot]'}},
+ 'now': '2021-07-18T23:39:39.477Z',
+ 'ownTaskId': 'RpeimSEzSrqTl-Rp2OW8Jw',
+ 'taskId': None,
+ 'tasks_for': 'github-push'}
+2021-07-19T12:54:34     INFO - scriptworker:parent:parent: Good.
+2021-07-19T12:54:34     INFO - Verifying scriptworker:build L8mn4HhMQ6awQRBhrey42g as a build task...
+2021-07-19T12:54:34     INFO - Verifying scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA as a docker-image task...
+2021-07-19T12:54:34     INFO - Verifying scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ as a decision task...
+2021-07-19T12:54:34     INFO - Verifying the scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA task definition is part of the scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ task graph...
+2021-07-19T12:54:34     INFO - Found bcWUDOGKTlCWiAakcEa3NA in the graph; it's a match
+2021-07-19T12:54:34     INFO - Verifying scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ definition...
+2021-07-19T12:54:34    DEBUG -  scriptworker:build:docker-image:parent .taskcluster.yml is at https://raw.githubusercontent.com/mozilla-mobile/fenix/2339ab664e7150d603794eb419235e830e54957a/.taskcluster.yml
+2021-07-19T12:54:34     INFO - Downloading https://raw.githubusercontent.com/mozilla-mobile/fenix/2339ab664e7150d603794eb419235e830e54957a/.taskcluster.yml
+2021-07-19T12:54:34     INFO - Done
+2021-07-19T12:54:34    DEBUG -  task_ids: {'default': 'fzQ7E273T7yAVtJbH1GMxQ', 'decision': 'fzQ7E273T7yAVtJbH1GMxQ'}
+2021-07-19T12:54:34    DEBUG -  scriptworker:build:docker-image:parent json-e context:
+2021-07-19T12:54:34    DEBUG -  {'as_slugid': <function populate_jsone_context.<locals>.<lambda> at 0x7fdd0dafd790>,
+ 'event': {'after': '2339ab664e7150d603794eb419235e830e54957a',
+           'before': None,
+           'pusher': {'email': 'aki@mozilla.com'},
            'ref': 'refs/heads/master',
            'repository': {'full_name': 'mozilla-mobile/fenix',
                           'html_url': 'https://github.com/mozilla-mobile/fenix',
                           'name': 'fenix',
                           'pushed_at': None,
                           'ssh_url': 'git@github.com:mozilla-mobile/fenix.git'},
-           'sender': {'login': 'MihaiTabara'}},
- 'now': '2020-11-16T14:22:03.386Z',
- 'ownTaskId': 'Lt9aXLUtSU2lhskGjQCJLg',
+           'sender': {'login': 'ahal'}},
+ 'now': '2021-06-09T19:52:30.782Z',
+ 'ownTaskId': 'fzQ7E273T7yAVtJbH1GMxQ',
  'taskId': None,
  'tasks_for': 'github-push'}
-2021-06-02T03:18:41     INFO - scriptworker:build:docker-image:parent: Good.
-2021-06-02T03:18:41     INFO - Verifying scriptworker HIqtu-IzRrO-Doht2SuD6Q as a scriptworker task...
-2021-06-02T03:18:41     INFO - Verifying scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA as a docker-worker task...
-2021-06-02T03:18:41     INFO - Checking for scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA interactive docker-worker
-2021-06-02T03:18:41     INFO - Verifying scriptworker:build L7YpG_qeTOm7-gdHStewSA as a docker-worker task...
-2021-06-02T03:18:41     INFO - Checking for scriptworker:build L7YpG_qeTOm7-gdHStewSA interactive docker-worker
-2021-06-02T03:18:41    DEBUG -  Verifying scriptworker:build L7YpG_qeTOm7-gdHStewSA against docker-image XGGmdDBTSPOa1ZFu6Roldg
-2021-06-02T03:18:41    DEBUG -  Found matching docker-image sha ef714fa5c8c2aa0df0d48708f2f5e3a411918a894e21fc5243959c4bb8e00bf2
-2021-06-02T03:18:41     INFO - Verifying scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg as a docker-worker task...
-2021-06-02T03:18:41     INFO - Checking for scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg interactive docker-worker
-2021-06-02T03:18:41     INFO - Verifying scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg as a docker-worker task...
-2021-06-02T03:18:41     INFO - Checking for scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg interactive docker-worker
-2021-06-02T03:18:41    DEBUG -  Getting source url for scriptworker HIqtu-IzRrO-Doht2SuD6Q...
-2021-06-02T03:18:41     INFO - scriptworker HIqtu-IzRrO-Doht2SuD6Q: found https://github.com/mozilla-mobile/fenix/blob/c906818d6531575073e6dca8cd64f46976e48432/taskcluster/ci/signing
-2021-06-02T03:18:41    DEBUG -  Getting source url for scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA...
-2021-06-02T03:18:41     INFO - scriptworker:parent E-dqZelFTK6aF8u6Hy1ZEA: found https://github.com/mozilla-mobile/fenix/raw/v90.0.0-beta.1/.taskcluster.yml
-2021-06-02T03:18:41    DEBUG -  Getting source url for scriptworker:build L7YpG_qeTOm7-gdHStewSA...
-2021-06-02T03:18:41     INFO - scriptworker:build L7YpG_qeTOm7-gdHStewSA: found https://github.com/mozilla-mobile/fenix/blob/c906818d6531575073e6dca8cd64f46976e48432/taskcluster/ci/build
-2021-06-02T03:18:41    DEBUG -  Getting source url for scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg...
-2021-06-02T03:18:41     INFO - scriptworker:build:docker-image XGGmdDBTSPOa1ZFu6Roldg: found https://github.com/mozilla-mobile/fenix/blob/7d3b23ceeb12c0e3edcb36836e9041b9ca7a1800/taskcluster/ci/docker-image
-2021-06-02T03:18:41    DEBUG -  Getting source url for scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg...
-2021-06-02T03:18:41     INFO - scriptworker:build:docker-image:parent Lt9aXLUtSU2lhskGjQCJLg: found https://github.com/mozilla-mobile/fenix/raw/7d3b23ceeb12c0e3edcb36836e9041b9ca7a1800/.taskcluster.yml
-2021-06-02T03:18:41     INFO - Found privileged scope project:mobile:fenix:releng:signing:cert:fennec-production-signing
-2021-06-02T03:18:42     INFO - Cache does not exist for URL "https://github.com/mozilla-mobile/fenix/branch_commits/c906818d6531575073e6dca8cd64f46976e48432" (in this context), fetching it...
-2021-06-02T03:18:42    DEBUG -  GET https://github.com/mozilla-mobile/fenix/branch_commits/c906818d6531575073e6dca8cd64f46976e48432
-2021-06-02T03:18:42     INFO - Cache does not exist for URL "https://github.com/mozilla-mobile/fenix/branch_commits/7d3b23ceeb12c0e3edcb36836e9041b9ca7a1800" (in this context), fetching it...
-2021-06-02T03:18:42    DEBUG -  GET https://github.com/mozilla-mobile/fenix/branch_commits/7d3b23ceeb12c0e3edcb36836e9041b9ca7a1800
-2021-06-02T03:18:43    DEBUG -  Status 200
-2021-06-02T03:18:43    DEBUG -  Status 200
-2021-06-02T03:18:44     INFO - Good.
+2021-07-19T12:54:34     INFO - scriptworker:build:docker-image:parent: Good.
+2021-07-19T12:54:34     INFO - Verifying scriptworker FjALU-KvS-KvmgS7d574Cg as a scriptworker task...
+2021-07-19T12:54:34     INFO - Verifying scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ as a docker-worker task...
+2021-07-19T12:54:34     INFO - Checking for scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ interactive docker-worker
+2021-07-19T12:54:34     INFO - Verifying scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw as a docker-worker task...
+2021-07-19T12:54:34     INFO - Checking for scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw interactive docker-worker
+2021-07-19T12:54:34     INFO - Verifying scriptworker:build L8mn4HhMQ6awQRBhrey42g as a docker-worker task...
+2021-07-19T12:54:34     INFO - Checking for scriptworker:build L8mn4HhMQ6awQRBhrey42g interactive docker-worker
+2021-07-19T12:54:34    DEBUG -  Verifying scriptworker:build L8mn4HhMQ6awQRBhrey42g against docker-image bcWUDOGKTlCWiAakcEa3NA
+2021-07-19T12:54:34    DEBUG -  Found matching docker-image sha a29f22e6ebcc7469997dbeb37011549cab3141f1fd7682e1d9aece58081ce201
+2021-07-19T12:54:34     INFO - Verifying scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA as a docker-worker task...
+2021-07-19T12:54:34     INFO - Checking for scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA interactive docker-worker
+2021-07-19T12:54:34     INFO - Verifying scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ as a docker-worker task...
+2021-07-19T12:54:34     INFO - Checking for scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ interactive docker-worker
+2021-07-19T12:54:34    DEBUG -  Getting source url for scriptworker FjALU-KvS-KvmgS7d574Cg...
+2021-07-19T12:54:34     INFO - scriptworker FjALU-KvS-KvmgS7d574Cg: found https://github.com/mozilla-mobile/fenix/blob/55634eaf0533226b330c49f18d33aac8d40da5c7/taskcluster/ci/signing
+2021-07-19T12:54:34    DEBUG -  Getting source url for scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ...
+2021-07-19T12:54:34     INFO - scriptworker:parent GRMa-ZyoST6KQiMZmg6HnQ: found https://github.com/mozilla-mobile/fenix/raw/55634eaf0533226b330c49f18d33aac8d40da5c7/.taskcluster.yml
+2021-07-19T12:54:34    DEBUG -  Getting source url for scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw...
+2021-07-19T12:54:34     INFO - scriptworker:parent:parent RpeimSEzSrqTl-Rp2OW8Jw: found https://github.com/mozilla-mobile/fenix/raw/55634eaf0533226b330c49f18d33aac8d40da5c7/.taskcluster.yml
+2021-07-19T12:54:34    DEBUG -  Getting source url for scriptworker:build L8mn4HhMQ6awQRBhrey42g...
+2021-07-19T12:54:34     INFO - scriptworker:build L8mn4HhMQ6awQRBhrey42g: found https://github.com/mozilla-mobile/fenix/blob/55634eaf0533226b330c49f18d33aac8d40da5c7/taskcluster/ci/build
+2021-07-19T12:54:34    DEBUG -  Getting source url for scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA...
+2021-07-19T12:54:34     INFO - scriptworker:build:docker-image bcWUDOGKTlCWiAakcEa3NA: found https://github.com/mozilla-mobile/fenix/blob/2339ab664e7150d603794eb419235e830e54957a/taskcluster/ci/docker-image
+2021-07-19T12:54:34    DEBUG -  Getting source url for scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ...
+2021-07-19T12:54:34     INFO - scriptworker:build:docker-image:parent fzQ7E273T7yAVtJbH1GMxQ: found https://github.com/mozilla-mobile/fenix/raw/2339ab664e7150d603794eb419235e830e54957a/.taskcluster.yml
+2021-07-19T12:54:34     INFO - Found privileged scope project:mobile:fenix:releng:signing:cert:fennec-production-signing
+2021-07-19T12:54:36     INFO - Good.

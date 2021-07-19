@@ -34,14 +34,12 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
                 apiConsumer = apiConsumer,
                 task = "mobile.v2.fenix.beta.latest.$abiString",
                 apkArtifact = "public/build/$abiString/target.apk",
-                keyForVersion = "tag_name",
+                keyForVersion = "version",
                 keyForReleaseDate = "now")
         val result = mozillaCiConsumer.updateCheck()
-        val regexResult = Regex("""^v(\d+.+)$""").find(result.version)
-        val version = regexResult!!.groups[1]!!.value
         return AvailableVersionResult(
                 downloadUrl = result.url,
-                version = version,
+                version = result.version,
                 publishDate = result.releaseDate,
                 fileSizeBytes = null,
                 fileHash = null)
