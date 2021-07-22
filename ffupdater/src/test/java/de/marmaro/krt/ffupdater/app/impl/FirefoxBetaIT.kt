@@ -63,15 +63,15 @@ class FirefoxBetaIT {
         coEvery {
             apiConsumer.consumeText(URL("$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log"))
         } returns File(TEST_JSON_FILE).readText()
-        packageInfo.versionName = "91.0.0-beta.2"
+        packageInfo.versionName = "91.0.0-beta.3"
 
         val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
 
         assertFalse(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.2", actual.version)
+        assertEquals("91.0.0-beta.3", actual.version)
         val expectedUrl = URL("$BASE_URL.armeabi-v7a/artifacts/public/build/armeabi-v7a/target.apk")
         assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-19T12:38:32.995Z", ISO_ZONED_DATE_TIME)
+        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:09.251Z", ISO_ZONED_DATE_TIME)
         assertEquals(expectedDate, actual.publishDate)
     }
 
@@ -86,10 +86,10 @@ class FirefoxBetaIT {
         val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
 
         assertTrue(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.2", actual.version)
+        assertEquals("91.0.0-beta.3", actual.version)
         val expectedUrl = URL("$BASE_URL.armeabi-v7a/artifacts/public/build/armeabi-v7a/target.apk")
         assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-19T12:38:32.995Z", ISO_ZONED_DATE_TIME)
+        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:09.251Z", ISO_ZONED_DATE_TIME)
         assertEquals(expectedDate, actual.publishDate)
     }
 
@@ -99,15 +99,15 @@ class FirefoxBetaIT {
         coEvery {
             apiConsumer.consumeText(URL("$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log"))
         } returns File(TEST_JSON_FILE).readText()
-        packageInfo.versionName = "91.0.0-beta.2"
+        packageInfo.versionName = "91.0.0-beta.3"
 
         val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
 
         assertFalse(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.2", actual.version)
+        assertEquals("91.0.0-beta.3", actual.version)
         val expectedUrl = URL("$BASE_URL.arm64-v8a/artifacts/public/build/arm64-v8a/target.apk")
         assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-19T12:38:32.995Z", ISO_ZONED_DATE_TIME)
+        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:09.251Z", ISO_ZONED_DATE_TIME)
         assertEquals(expectedDate, actual.publishDate)
     }
 
@@ -122,10 +122,10 @@ class FirefoxBetaIT {
         val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
 
         assertTrue(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.2", actual.version)
+        assertEquals("91.0.0-beta.3", actual.version)
         val expectedUrl = URL("$BASE_URL.arm64-v8a/artifacts/public/build/arm64-v8a/target.apk")
         assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-19T12:38:32.995Z", ISO_ZONED_DATE_TIME)
+        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:09.251Z", ISO_ZONED_DATE_TIME)
         assertEquals(expectedDate, actual.publishDate)
     }
 
@@ -135,15 +135,15 @@ class FirefoxBetaIT {
         coEvery {
             apiConsumer.consumeText(URL("$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log"))
         } returns File(TEST_JSON_FILE).readText()
-        packageInfo.versionName = "91.0.0-beta.2"
+        packageInfo.versionName = "91.0.0-beta.3"
 
         val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
 
         assertFalse(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.2", actual.version)
+        assertEquals("91.0.0-beta.3", actual.version)
         val expectedUrl = URL("$BASE_URL.x86/artifacts/public/build/x86/target.apk")
         assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-19T12:38:32.995Z", ISO_ZONED_DATE_TIME)
+        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:09.251Z", ISO_ZONED_DATE_TIME)
         assertEquals(expectedDate, actual.publishDate)
     }
 
@@ -158,10 +158,10 @@ class FirefoxBetaIT {
         val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
 
         assertTrue(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.2", actual.version)
+        assertEquals("91.0.0-beta.3", actual.version)
         val expectedUrl = URL("$BASE_URL.x86/artifacts/public/build/x86/target.apk")
         assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-19T12:38:32.995Z", ISO_ZONED_DATE_TIME)
+        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:09.251Z", ISO_ZONED_DATE_TIME)
         assertEquals(expectedDate, actual.publishDate)
     }
 
@@ -171,15 +171,15 @@ class FirefoxBetaIT {
         coEvery {
             apiConsumer.consumeText(URL("$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log"))
         } returns File(TEST_JSON_FILE).readText()
-        packageInfo.versionName = "91.0.0-beta.2"
+        packageInfo.versionName = "91.0.0-beta.3"
 
         val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
 
         assertFalse(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.2", actual.version)
+        assertEquals("91.0.0-beta.3", actual.version)
         val expectedUrl = URL("$BASE_URL.x86_64/artifacts/public/build/x86_64/target.apk")
         assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-19T12:38:32.995Z", ISO_ZONED_DATE_TIME)
+        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:09.251Z", ISO_ZONED_DATE_TIME)
         assertEquals(expectedDate, actual.publishDate)
     }
 
@@ -194,10 +194,10 @@ class FirefoxBetaIT {
         val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
 
         assertTrue(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.2", actual.version)
+        assertEquals("91.0.0-beta.3", actual.version)
         val expectedUrl = URL("$BASE_URL.x86_64/artifacts/public/build/x86_64/target.apk")
         assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-19T12:38:32.995Z", ISO_ZONED_DATE_TIME)
+        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:09.251Z", ISO_ZONED_DATE_TIME)
         assertEquals(expectedDate, actual.publishDate)
     }
 }

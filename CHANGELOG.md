@@ -1,4 +1,7 @@
-# 2021-07-06 Version 74.3.1 (74)
+# 2021-07-22 Version 74.3.2 (75)
+ * Fix crash when checking for "Firefox Beta" (Tobi823/ffupdater#60)
+
+# 2021-07-19 Version 74.3.1 (74)
  * Fix crash when checking for "Firefox Release" or "Firefox Beta" (Tobi823/ffupdater#57)
 
 # 2021-07-06 Version 74.3.0 (73)
