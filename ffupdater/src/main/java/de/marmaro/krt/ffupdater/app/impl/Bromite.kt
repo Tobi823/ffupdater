@@ -31,24 +31,27 @@ class Bromite(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val fileName = getStringForCurrentAbi("arm_ChromePublic.apk",
-                "arm64_ChromePublic.apk", "x86_ChromePublic.apk", null)
+        val fileName = getStringForCurrentAbi(
+            "arm_ChromePublic.apk",
+            "arm64_ChromePublic.apk", "x86_ChromePublic.apk", null
+        )
         val githubConsumer = GithubConsumer(
-                apiConsumer = apiConsumer,
-                repoOwner = "bromite",
-                repoName = "bromite",
-                resultsPerPage = 5,
-                validReleaseTester = { release: Release ->
-                    !release.isPreRelease && release.assets.any { it.name == fileName }
-                },
-                correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
+            apiConsumer = apiConsumer,
+            repoOwner = "bromite",
+            repoName = "bromite",
+            resultsPerPage = 5,
+            validReleaseTester = { release: Release ->
+                !release.isPreRelease && release.assets.any { it.name == fileName }
+            },
+            correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         // tag name can be "90.0.4430.59"
         return AvailableVersionResult(
-                downloadUrl = result.url,
-                version = result.tagName,
-                publishDate = result.releaseDate,
-                fileSizeBytes = result.fileSizeBytes,
-                fileHash = null)
+            downloadUrl = result.url,
+            version = result.tagName,
+            publishDate = result.releaseDate,
+            fileSizeBytes = result.fileSizeBytes,
+            fileHash = null
+        )
     }
 }

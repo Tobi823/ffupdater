@@ -35,31 +35,37 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
         return context.getString(R.string.installed_version, version ?: "")
     }
 
-    override fun getDisplayAvailableVersion(context: Context, availableVersionResult: AvailableVersionResult): String {
+    override fun getDisplayAvailableVersion(
+        context: Context,
+        availableVersionResult: AvailableVersionResult
+    ): String {
         val version = availableVersionResult.version.replace("iceraven-", "")
         return context.getString(R.string.available_version, version)
     }
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val fileSuffix = getStringForCurrentAbi("browser-armeabi-v7a-forkRelease.apk",
-                "browser-arm64-v8a-forkRelease.apk", "browser-x86-forkRelease.apk",
-                "browser-x86_64-forkRelease.apk")
+        val fileSuffix = getStringForCurrentAbi(
+            "browser-armeabi-v7a-forkRelease.apk",
+            "browser-arm64-v8a-forkRelease.apk", "browser-x86-forkRelease.apk",
+            "browser-x86_64-forkRelease.apk"
+        )
         val githubConsumer = GithubConsumer(
-                apiConsumer = apiConsumer,
-                repoOwner = "fork-maintainers",
-                repoName = "iceraven-browser",
-                resultsPerPage = 3,
-                validReleaseTester = { release: Release ->
-                    !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
-                },
-                correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
+            apiConsumer = apiConsumer,
+            repoOwner = "fork-maintainers",
+            repoName = "iceraven-browser",
+            resultsPerPage = 3,
+            validReleaseTester = { release: Release ->
+                !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
+            },
+            correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
         val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         val version = result.tagName
         return AvailableVersionResult(
-                downloadUrl = result.url,
-                version = version,
-                publishDate = result.releaseDate,
-                fileSizeBytes = result.fileSizeBytes,
-                fileHash = null)
+            downloadUrl = result.url,
+            version = version,
+            publishDate = result.releaseDate,
+            fileSizeBytes = result.fileSizeBytes,
+            fileHash = null
+        )
     }
 }

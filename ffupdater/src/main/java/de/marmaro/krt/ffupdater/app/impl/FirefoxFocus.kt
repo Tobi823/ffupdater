@@ -28,20 +28,22 @@ class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val abiString = getStringForCurrentAbi("arm", "aarch64", null, null)
+        val abiString = getStringForCurrentAbi("armeabi-v7a", "arm64-v8a", null, null)
         val mozillaCiConsumer = MozillaCiLogConsumer(
-                apiConsumer = apiConsumer,
-                task = "project.mobile.focus.release.latest",
-                apkArtifact = "public/app-focus-$abiString-release-unsigned.apk",
-                keyForVersion = "tag_name",
-                keyForReleaseDate = "published_at")
+            apiConsumer = apiConsumer,
+            task = "project.mobile.focus.release.latest",
+            apkArtifact = "public/app-focus-$abiString-release-unsigned.apk",
+            keyForVersion = "tag_name",
+            keyForReleaseDate = "published_at"
+        )
         val result = mozillaCiConsumer.updateCheck()
         val version = Regex("""^v(.*)$""").find(result.version)!!.groups[1]!!.value
         return AvailableVersionResult(
-                downloadUrl = result.url,
-                version = version,
-                publishDate = result.releaseDate,
-                fileSizeBytes = null,
-                fileHash = null)
+            downloadUrl = result.url,
+            version = version,
+            publishDate = result.releaseDate,
+            fileSizeBytes = null,
+            fileHash = null
+        )
     }
 }

@@ -35,34 +35,38 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val abiString = getStringForCurrentAbi("armeabi-v7a", "arm64-v8a", "x86",
-                "x86_64")
+        val abiString = getStringForCurrentAbi(
+            "armeabi-v7a", "arm64-v8a", "x86",
+            "x86_64"
+        )
         val result = MozillaCiJsonConsumer(
-                apiConsumer = apiConsumer,
-                task = "mobile.v2.fenix.nightly.latest.$abiString",
-                apkArtifact = "public/build/$abiString/target.apk").updateCheck()
+            apiConsumer = apiConsumer,
+            task = "mobile.v2.fenix.nightly.latest.$abiString",
+            apkArtifact = "public/build/$abiString/target.apk"
+        ).updateCheck()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val version = formatter.format(result.releaseDate)
         return AvailableVersionResult(
-                downloadUrl = result.url,
-                version = version,
-                publishDate = result.releaseDate,
-                fileSizeBytes = null,
-                fileHash = result.fileHash)
+            downloadUrl = result.url,
+            version = version,
+            publishDate = result.releaseDate,
+            fileSizeBytes = null,
+            fileHash = result.fileHash
+        )
     }
 
     override suspend fun isCacheFileUpToDate(
-            context: Context,
-            file: File,
-            available: AvailableVersionResult,
+        context: Context,
+        file: File,
+        available: AvailableVersionResult,
     ): Boolean {
         val hash = FileHashCalculator.getSHA256ofFile(file)
         return hash == available.fileHash
     }
 
     override suspend fun isInstalledVersionUpToDate(
-            context: Context,
-            available: AvailableVersionResult,
+        context: Context,
+        available: AvailableVersionResult,
     ): Boolean {
         return try {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -78,12 +82,14 @@ class FirefoxNightly(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override fun appInstallationCallback(context: Context, available: AvailableVersionResult) {
         try {
             PreferenceManager.getDefaultSharedPreferences(context).edit()
-                    .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
-                    .putString(INSTALLED_SHA256_HASH, available.fileHash!!.hexValue)
-                    .apply()
+                .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
+                .putString(INSTALLED_SHA256_HASH, available.fileHash!!.hexValue)
+                .apply()
         } catch (e: PackageManager.NameNotFoundException) {
-            throw Exception("app should be installed because this method was called - but the app " +
-                    "is not installed", e)
+            throw Exception(
+                "app should be installed because this method was called - but the app " +
+                        "is not installed", e
+            )
         }
     }
 

@@ -28,21 +28,25 @@ class FirefoxRelease(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val abiString = getStringForCurrentAbi("armeabi-v7a", "arm64-v8a", "x86",
-                "x86_64")
+        val abiString = getStringForCurrentAbi(
+            "armeabi-v7a", "arm64-v8a", "x86",
+            "x86_64"
+        )
         val mozillaCiConsumer = MozillaCiLogConsumer(
-                apiConsumer = apiConsumer,
-                task = "mobile.v2.fenix.release.latest.$abiString",
-                apkArtifact = "public/build/$abiString/target.apk",
-                keyForVersion = "version",
-                keyForReleaseDate = "now")
+            apiConsumer = apiConsumer,
+            task = "mobile.v2.fenix.release.latest.$abiString",
+            apkArtifact = "public/build/$abiString/target.apk",
+            keyForVersion = "version",
+            keyForReleaseDate = "now"
+        )
         val result = mozillaCiConsumer.updateCheck()
         return AvailableVersionResult(
-                downloadUrl = result.url,
-                version = result.version,
-                publishDate = result.releaseDate,
-                fileSizeBytes = null,
-                fileHash = null)
+            downloadUrl = result.url,
+            version = result.version,
+            publishDate = result.releaseDate,
+            fileSizeBytes = null,
+            fileHash = null
+        )
     }
 
     companion object

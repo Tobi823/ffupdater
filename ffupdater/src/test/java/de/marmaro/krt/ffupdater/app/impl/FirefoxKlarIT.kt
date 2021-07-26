@@ -62,7 +62,7 @@ class FirefoxKlarIT {
 
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "project.mobile.focus.release.latest/artifacts/public/" +
-                "app-klar-arm-release-unsigned.apk")
+                "app-klar-armeabi-v7a-release-unsigned.apk")
         val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
@@ -95,7 +95,7 @@ class FirefoxKlarIT {
 
         val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "project.mobile.focus.release.latest/artifacts/public/" +
-                "app-klar-aarch64-release-unsigned.apk")
+                "app-klar-arm64-v8a-release-unsigned.apk")
         val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
