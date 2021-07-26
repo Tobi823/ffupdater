@@ -26,6 +26,11 @@ class FingerprintValidatorTest {
     private lateinit var signature: Signature
     private lateinit var fingerprintValidator: FingerprintValidator
 
+    @MockK
+    private lateinit var file: File
+    private val filePath = "/sdcard/Android/data/de.marmaro.krt.ffupdater/cache/Download/" +
+            "FIREFOX_RELEASE__2021_04_30__244384144.apk"
+
     companion object {
         lateinit var signatureBytes: ByteArray
         @Suppress("SpellCheckingInspection")
@@ -43,16 +48,17 @@ class FingerprintValidatorTest {
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
         fingerprintValidator = FingerprintValidator(packageManager)
+        every { file.exists() } returns true
+        every { file.absolutePath } returns filePath
     }
 
     @Test
     fun checkApkFile_withCorrectSignature_returnValid() {
-        val file = File("file.apk")
         val packageInfo = PackageInfo()
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns signatureBytes
         every {
-            packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
+            packageManager.getPackageArchiveInfo(filePath, GET_SIGNATURES)
         } returns packageInfo
 
         val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE) }
@@ -63,12 +69,11 @@ class FingerprintValidatorTest {
 
     @Test
     fun checkApkFile_withWrongApp_returnInvalid() {
-        val file = File("file.apk")
         val packageInfo = PackageInfo()
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns signatureBytes
         every {
-            packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
+            packageManager.getPackageArchiveInfo(filePath, GET_SIGNATURES)
         } returns packageInfo
 
         val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BRAVE) }
@@ -77,14 +82,12 @@ class FingerprintValidatorTest {
 
     @Test(expected = FingerprintValidator.UnableCheckApkException::class)
     fun checkApkFile_withIncorrectSignature_throwException() {
-        val file = File("file.apk")
         val packageInfo = PackageInfo()
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns Random.nextBytes(938)
         every {
-            packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
+            packageManager.getPackageArchiveInfo(filePath, GET_SIGNATURES)
         } returns packageInfo
-
         runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE) }
     }
 
