@@ -29,8 +29,11 @@ class FingerprintValidator(private val packageManager: PackageManager) {
     @Suppress("RedundantSuspendModifier")
     suspend fun checkApkFile(file: File, app: App): FingerprintResult {
         return try {
-            val packageInfo = packageManager.getPackageArchiveInfo(file.absolutePath, PackageManager.GET_SIGNATURES)!!
-            verifyPackageInfo(packageInfo, app)
+            require(file.exists()) { "file must exists" }
+            val path = file.absolutePath
+            val info = packageManager.getPackageArchiveInfo(path, PackageManager.GET_SIGNATURES)
+            requireNotNull(info) { "getPackageArchiveInfo() must successful parse file" }
+            verifyPackageInfo(info, app)
         } catch (e: CertificateException) {
             throw UnableCheckApkException("certificate of APK file is invalid", e)
         } catch (e: NoSuchAlgorithmException) {
@@ -53,7 +56,8 @@ class FingerprintValidator(private val packageManager: PackageManager) {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun checkInstalledApp(app: App): FingerprintResult {
         return try {
-            val packageInfo = packageManager.getPackageInfo(app.detail.packageName, PackageManager.GET_SIGNATURES)
+            val packageInfo =
+                packageManager.getPackageInfo(app.detail.packageName, PackageManager.GET_SIGNATURES)
             verifyPackageInfo(packageInfo, app)
         } catch (e: CertificateException) {
             throw UnableCheckApkException("certificate of APK file is invalid", e)
@@ -68,15 +72,19 @@ class FingerprintValidator(private val packageManager: PackageManager) {
     private fun verifyPackageInfo(packageInfo: PackageInfo, appDetail: App): FingerprintResult {
         check(packageInfo.signatures.isNotEmpty())
         val signatureStream = ByteArrayInputStream(packageInfo.signatures[0].toByteArray())
-        val certificate = CertificateFactory.getInstance("X509").generateCertificate(signatureStream)
+        val certificate =
+            CertificateFactory.getInstance("X509").generateCertificate(signatureStream)
         val currentByteArray = MessageDigest.getInstance("SHA-256").digest(certificate.encoded)
-        val current = currentByteArray.joinToString("") { String.format("%02x", (it.toInt() and 0xFF)) }
+        val current =
+            currentByteArray.joinToString("") { String.format("%02x", (it.toInt() and 0xFF)) }
         return FingerprintResult(
-                isValid = (current == appDetail.detail.signatureHash),
-                hexString = current)
+            isValid = (current == appDetail.detail.signatureHash),
+            hexString = current
+        )
     }
 
     class FingerprintResult(val isValid: Boolean, val hexString: String)
 
-    class UnableCheckApkException(message: String, throwable: Throwable) : Exception(message, throwable)
+    class UnableCheckApkException(message: String, throwable: Throwable) :
+        Exception(message, throwable)
 }
