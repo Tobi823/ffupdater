@@ -48,7 +48,6 @@
             android:id="@+id/appIcon"
             style="@style/AppCardIcon"
             android:contentDescription="@string/app_icon"
-            android:padding="3dp"
             android:tag="appIcon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

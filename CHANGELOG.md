@@ -1,5 +1,6 @@
 # 2021-07-22 Version 74.3.3 (76)
  * Fix crash when checking for "Firefox Focus" or "Firefox Klar"
+ * Update Firefox Focus/Klar icon
 
 # 2021-07-22 Version 74.3.2 (75)
  * Fix crash when checking for "Firefox Beta" (Tobi823/ffupdater#60)

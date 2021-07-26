@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.graphics.Color
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
@@ -21,7 +20,6 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override val displayWarning = R.string.brave__warning
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_logo_brave
-    override val displayIconBackground = Color.parseColor("#FFFFFF")
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 

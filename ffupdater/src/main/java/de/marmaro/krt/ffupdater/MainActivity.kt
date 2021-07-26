@@ -144,7 +144,6 @@ class MainActivity : AppCompatActivity() {
 
             val icon = newCardView.findViewWithTag<ImageView>("appIcon")
             icon.setImageResource(app.detail.displayIcon)
-            icon.setBackgroundColor(app.detail.displayIconBackground)
 
             mainLinearLayout.addView(newCardView)
         }
