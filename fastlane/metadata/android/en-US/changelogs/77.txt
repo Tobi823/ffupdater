@@ -1,0 +1,1 @@
+ * Make update check more robust for "Firefox Release", "Firefox Beta", "Firefox Focus" and "Firefox Klar"

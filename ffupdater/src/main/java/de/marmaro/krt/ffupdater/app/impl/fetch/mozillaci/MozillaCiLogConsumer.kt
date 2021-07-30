@@ -24,12 +24,12 @@ class MozillaCiLogConsumer(
      */
     suspend fun updateCheck(): Result {
         val response = apiConsumer.consumeText(chainOfTrustLogUrl)
-        val version = Regex("""'$keyForVersion': '(.+)'""")
+        val version = Regex("""'($keyForVersion)': 'v?(.+)'""")
                 .find(response)!!
-                .groups[1]!!.value
-        val dateString = Regex("""'$keyForReleaseDate': '(.+)'""")
+                .groups[2]!!.value
+        val dateString = Regex("""'($keyForReleaseDate)': '(.+)'""")
                 .find(response)!!
-                .groups[1]!!.value
+                .groups[2]!!.value
         return Result(
                 version = version,
                 url = URL("$baseUrl/artifacts/$apkArtifact"),

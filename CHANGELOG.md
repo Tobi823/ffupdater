@@ -1,4 +1,7 @@
-# 2021-07-22 Version 74.3.3 (76)
+# 2021-07-30 Version 74.3.4 (77)
+ * Make update check more robust for "Firefox Release", "Firefox Beta", "Firefox Focus" and "Firefox Klar"
+
+# 2021-07-26 Version 74.3.3 (76)
  * Fix crash when checking for "Firefox Focus" or "Firefox Klar"
  * Update Firefox Focus/Klar icon
 
