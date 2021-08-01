@@ -19,6 +19,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
@@ -96,17 +97,17 @@ class MainActivity : AppCompatActivity() {
         val itemId = item.itemId
         if (itemId == R.id.action_about) {
             val timestamp = PreferencesHelper(this).lastBackgroundCheck
-                    ?.let { DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(it) }
-                    ?: "/"
+                ?.let { DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(it) }
+                ?: "/"
             AlertDialog.Builder(this@MainActivity)
-                    .setTitle(getString(R.string.action_about_title))
-                    .setMessage(getString(R.string.infobox, timestamp))
-                    .setNeutralButton(getString(R.string.ok))
-                    { dialog: DialogInterface, _: Int ->
-                        dialog.dismiss()
-                    }
-                    .create()
-                    .show()
+                .setTitle(getString(R.string.action_about_title))
+                .setMessage(getString(R.string.infobox, timestamp))
+                .setNeutralButton(getString(R.string.ok))
+                { dialog: DialogInterface, _: Int ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
         } else if (itemId == R.id.action_settings) {
             //start settings activity where we use select firefox product and release type;
             startActivity(Intent(this, SettingsActivity::class.java))
@@ -122,7 +123,8 @@ class MainActivity : AppCompatActivity() {
 
         val installedApps = App.values().filter { it.detail.isInstalled(this) }
         installedApps.forEach { app ->
-            val newCardView = layoutInflater.inflate(R.layout.app_card_layout, mainLinearLayout, false)
+            val newCardView =
+                layoutInflater.inflate(R.layout.app_card_layout, mainLinearLayout, false)
 
             val installedVersion = newCardView.findViewWithTag<TextView>("appInstalledVersion")
             installedVersion.text = app.detail.getDisplayInstalledVersion(this)
@@ -139,8 +141,7 @@ class MainActivity : AppCompatActivity() {
                 AppInfoDialog.newInstance(app).show(supportFragmentManager)
             }
 
-            val title = getString(app.detail.displayTitle)
-            newCardView.findViewWithTag<TextView>("appCardTitle").text = title
+            newCardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.displayTitle)
 
             val icon = newCardView.findViewWithTag<ImageView>("appIcon")
             icon.setImageResource(app.detail.displayIcon)
@@ -157,8 +158,9 @@ class MainActivity : AppCompatActivity() {
 
         val installedApps = App.values().filter { it.detail.isInstalled(this) }
         if (NetworkTester.isInternetUnavailable(this)) {
-            val errorMessage = getString(R.string.main_activity__not_connected_to_internet)
-            installedApps.forEach { availableVersions[it]!!.text = errorMessage }
+            installedApps.forEach {
+                availableVersions[it]!!.setText(R.string.main_activity__not_connected_to_internet)
+            }
             hideLoadAnimation()
             showInternetUnavailableToast()
             return
@@ -167,7 +169,7 @@ class MainActivity : AppCompatActivity() {
         showLoadAnimation()
         val jobs = ConcurrentLinkedQueue<Job>()
         installedApps.forEach {
-            availableVersions[it]!!.text = getString(R.string.available_version_loading)
+            availableVersions[it]!!.setText(R.string.available_version_loading)
             jobs.add(checkForAppUpdate(it, ignoreErrors))
         }
         lifecycleScope.launch(Dispatchers.IO) {
@@ -192,19 +194,25 @@ class MainActivity : AppCompatActivity() {
                         disableDownloadButton(app)
                     }
                 }
-            } catch (e: ApiNetworkException) {
-                Log.e(LOG_TAG, "fail to check $app for updates - maybe temporary network issues?", e)
+            } catch (e: GithubRateLimitExceededException) {
+                Log.e(LOG_TAG, "GitHub-API rate limit for '$app' is exceeded.", e)
                 lifecycleScope.launch(Dispatchers.Main) {
-                    availableVersions[app]!!.text = getString(R.string.main_activity__not_connected_to_internet)
+                    availableVersions[app]!!.setText(R.string.main_activity__github_api_limit_exceeded)
+                    disableDownloadButton(app)
+                }
+            } catch (e: ApiNetworkException) {
+                Log.e(LOG_TAG, "Temporary network issue for '$app'.", e)
+                lifecycleScope.launch(Dispatchers.Main) {
+                    availableVersions[app]!!.setText(R.string.main_activity__temporary_network_issue)
                     disableDownloadButton(app)
                 }
             } catch (e: Exception) {
                 if (!ignoreErrors) {
-                    throw UpdateCheckException("fail to check $app for updates", e)
+                    throw UpdateCheckException("Failed to check '$app' for updates", e)
                 }
-                Log.e(LOG_TAG, "fail to check $app for updates", e)
+                Log.e(LOG_TAG, "Fail to check $app for updates", e)
                 lifecycleScope.launch(Dispatchers.Main) {
-                    availableVersions[app]!!.text = getString(R.string.available_version_error)
+                    availableVersions[app]!!.setText(R.string.available_version_error)
                     disableDownloadButton(app)
                 }
             }
@@ -223,7 +231,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun showInternetUnavailableToast() {
         val layout = findViewById<View>(R.id.coordinatorLayout)
-        Snackbar.make(layout, R.string.main_activity__not_connected_to_internet, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(
+            layout,
+            R.string.main_activity__not_connected_to_internet,
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 
     private fun enableDownloadButton(app: App) {
@@ -246,5 +258,6 @@ class MainActivity : AppCompatActivity() {
         private const val LOG_TAG = "MainActivity"
     }
 
-    private class UpdateCheckException(message: String, throwable: Throwable) : Exception(message, throwable)
+    private class UpdateCheckException(message: String, throwable: Throwable) :
+        Exception(message, throwable)
 }

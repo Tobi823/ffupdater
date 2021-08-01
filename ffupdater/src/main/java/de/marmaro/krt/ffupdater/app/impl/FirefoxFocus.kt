@@ -31,8 +31,6 @@ class FirefoxFocus(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
             apiConsumer = apiConsumer,
             task = "project.mobile.focus.release.latest",
             apkArtifact = "public/app-focus-$abiString-release-unsigned.apk",
-            keyForVersion = "version|tag_name",
-            keyForReleaseDate = "published_at"
         )
         val result = mozillaCiConsumer.updateCheck()
         return AvailableVersionResult(

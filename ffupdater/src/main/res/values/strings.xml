@@ -82,6 +82,8 @@
     <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__not_connected_to_internet">No network connection</string>
+    <string name="main_activity__github_api_limit_exceeded">GitHub-API limit exceeded. Retry next hour.</string>
+    <string name="main_activity__temporary_network_issue">Temporary network issue. Retry later.</string>
     <string name="main_activity__subtitle">Update your browsers from Mozilla</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Unfortunately, %1$s has crashed. You can report this error on:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nPlease create a new issue with the stacktrace and a description on how to reproduce the bug.</string>

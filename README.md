@@ -37,6 +37,28 @@ The applications are downloaded from these locations:
  - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
  - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
 
+## Temporary builds
+
+The main distribution method of FFUpdater remains F-Droid.
+
+But for the time between my bug fix and the release on F-Droid, you can use the attached APK file
+from the GitHub/GitLab release overview https://github.com/Tobi823/ffupdater/releases 
+https://gitlab.com/Tobiwan/ffupdater_gitlab/-/tags.
+
+You have to uninstall FFUpdater when you switch between the F-Droid version and my temporary version.
+
+As far as I know, F-Droid will not show an update notification if the installed FFUpdater version
+is not signed by F-Droid.
+You have to manually check for updates.
+
+My temporary version will be signed with:
+```
+Signer #1 certificate DN: CN=Tobi823, O=FFUpdater, ST=Germany, C=DE
+Signer #1 certificate SHA-256 digest: f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62
+Signer #1 certificate SHA-1 digest: b432e9eb74512c0fa58c1ec45912a670f8dfa8e9
+Signer #1 certificate MD5 digest: 78a34e36cedd844954726f1e2076642c
+```
+
 ## FAQ:
  - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
  - Firefox Nightly: Replace the minutes with 'xx' because FFUpdater can only access the start time 

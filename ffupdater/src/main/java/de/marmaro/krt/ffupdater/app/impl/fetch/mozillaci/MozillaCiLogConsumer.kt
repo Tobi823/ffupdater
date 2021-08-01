@@ -13,8 +13,6 @@ class MozillaCiLogConsumer(
         private val apiConsumer: ApiConsumer,
         task: String,
         private val apkArtifact: String,
-        private val keyForVersion: String,
-        private val keyForReleaseDate: String,
 ) {
     private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
     private val chainOfTrustLogUrl = URL("$baseUrl/artifacts/public/logs/chain_of_trust.log")
@@ -24,10 +22,10 @@ class MozillaCiLogConsumer(
      */
     suspend fun updateCheck(): Result {
         val response = apiConsumer.consumeText(chainOfTrustLogUrl)
-        val version = Regex("""'($keyForVersion)': 'v?(.+)'""")
+        val version = Regex("""'(version|tag_name)': 'v?(.+)'""")
                 .find(response)!!
                 .groups[2]!!.value
-        val dateString = Regex("""'($keyForReleaseDate)': '(.+)'""")
+        val dateString = Regex("""'(published_at|now)': '(.+)'""")
                 .find(response)!!
                 .groups[2]!!.value
         return Result(

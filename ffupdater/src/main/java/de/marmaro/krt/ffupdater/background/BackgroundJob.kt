@@ -43,6 +43,7 @@ class BackgroundJob(
         } catch (e: CancellationException) {
             // when the network is disabled, this exception will be thrown -> ignore it
         } catch (e: ApiNetworkException) {
+            // GithubRateLimitExceededException will be caught too
             val message = applicationContext.getString(R.string.background_network_issue_notification__text)
             ErrorNotificationBuilder.showNotification(applicationContext, e, message)
         } catch (e: Exception) {

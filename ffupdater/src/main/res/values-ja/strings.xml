@@ -40,7 +40,7 @@
     <string name="go_back">戻る</string>
     <string name="iceraven__description">このアプリはMozillaにより提供されていません。\n\nIceravenは、MozillaのFenixバージョンのFirefox、GeckoView、Mozilla Android Componentsをベースにした、Android向けのウェブブラウザです。 \n\nこのアプリの目標は、より多くの選択肢、より多くのカスタマイズの機会（幅広い拡張ライブラリを含む）、訪問したページやそれらのページとブラウザの相互作用に関するより多くの情報をユーザーに提供することを目指す、新しいAndroid用Firefoxの親密なフォークとなることです。</string>
     <string name="iceraven__title">Iceravenブラウザ</string>
-    <string name="infobox">このアプリはMozillaの複数のブラウザに対応したアップデータです。プラスボタンでインストール、下矢印ボタンでアップデートを行えます。デフォルトでは、バックグラウンドで定期的にアップデートをチェックします。インストールとアップデートのプロセスを安全にするために最善を尽くしました。ご自由にこのアプリのソースコードを確認したり、プルリクエストを作成して改善してください。</string>
+    <string name="infobox">このアプリはMozillaの複数のブラウザに対応したアップデータです。プラスボタンでインストール、下矢印ボタンでアップデートを行えます。デフォルトでは、バックグラウンドで定期的にアップデートをチェックします。インストールとアップデートのプロセスを安全にするために最善を尽くしました。ご自由にこのアプリのソースコードを確認したり、プルリクエストを作成して改善してください。%1$s</string>
     <string name="information_about_the_app">このアプリについて</string>
     <string name="install_activity__download_app_is_disabled">システムのダウンロードアプリが無効になっています。 FFUpdaterがダウンロードを試行するためにこのアプリが必要です。有効にしてください。</string>
     <string name="install_activity__download_application_from_with_status">アプリをダウンロード (%1$s)</string>

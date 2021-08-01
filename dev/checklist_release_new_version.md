@@ -16,6 +16,8 @@ git fetch --tags
    - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
  - create tag for release
  - push tag to notabug.org, Github and Gitlab
+ - build signed APK file
+ - upload signed APK file to GitHub and GitLab
 
 # push to git
 https://stackoverflow.com/a/18674313

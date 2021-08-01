@@ -34,8 +34,6 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
             apiConsumer = apiConsumer,
             task = "mobile.v2.fenix.beta.latest.$abiString",
             apkArtifact = "public/build/$abiString/target.apk",
-            keyForVersion = "version|tag_name",
-            keyForReleaseDate = "now"
         )
         val result = mozillaCiConsumer.updateCheck()
         return AvailableVersionResult(
