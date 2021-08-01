@@ -128,4 +128,6 @@
     <string name="update_notification__channel_name">Notification de mise à jour de %1$s</string>
     <string name="update_notification__text">Cliquez pour installer la mise à jour</string>
     <string name="update_notification__title">Mise à jour pour "%1$s" disponible</string>
+    <string name="main_activity__github_api_limit_exceeded">La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</string>
+    <string name="main_activity__temporary_network_issue">Problème de réseau temporaire. Réessayez plus tard.</string>
 </resources>

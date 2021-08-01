@@ -128,4 +128,6 @@
     <string name="update_notification__channel_name">Известие за издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
+    <string name="main_activity__github_api_limit_exceeded">Превишаване на лимита на GitHub-API. Повторете опита следващия час.</string>
+    <string name="main_activity__temporary_network_issue">Временен проблем в мрежата. Повторете опита по-</string>
 </resources>

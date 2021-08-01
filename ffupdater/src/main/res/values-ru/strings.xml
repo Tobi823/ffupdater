@@ -128,4 +128,6 @@
     <string name="update_notification__channel_name">Уведомление об обновлении %1$s</string>
     <string name="update_notification__text">Нажмите, чтобы установить обновление</string>
     <string name="update_notification__title">Доступно обновление для "%1$s"</string>
+    <string name="main_activity__github_api_limit_exceeded">Превышен лимит GitHub-API. Повторите попытку через час.</string>
+    <string name="main_activity__temporary_network_issue">Временная сетевая проблема. Повторите попытку позже.</string>
 </resources>
