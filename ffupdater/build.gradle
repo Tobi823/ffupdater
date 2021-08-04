@@ -6,7 +6,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.3.0-rc01'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.fragment:fragment-ktx:1.3.6'
@@ -41,8 +41,8 @@ android {
     //Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
     defaultConfig {
-        versionCode 77
-        versionName "74.3.4"
+        versionCode 78
+        versionName "74.3.5"
         minSdkVersion 21
         targetSdkVersion 30
         vectorDrawables.useSupportLibrary = true

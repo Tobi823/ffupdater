@@ -81,8 +81,8 @@ abstract class BaseAppDetail : AppDetail {
             file: File,
             available: AvailableVersionResult,
     ): Boolean {
-        val packageInfo = context.packageManager.getPackageArchiveInfo(file.absolutePath, 0)
-                ?: return false
+        val pm = context.packageManager
+        val packageInfo = pm.getPackageArchiveInfo(file.absolutePath, 0) ?: return false
         return packageInfo.versionName == available.version
     }
 
@@ -90,12 +90,7 @@ abstract class BaseAppDetail : AppDetail {
             context: Context,
             available: AvailableVersionResult,
     ): Boolean {
-        return try {
-            val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
-            return packageInfo.versionName == available.version
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
-        }
+        return getInstalledVersion(context) == available.version
     }
 
     override fun appInstallationCallback(context: Context, available: AvailableVersionResult) {}

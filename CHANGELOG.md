@@ -1,3 +1,8 @@
+# 2021-08-04 Version 74.3.5 (78)
+ * Fix update check for "Firefox Focus" and "Firefox Klar" (By removing everything after the dash + 
+   the dash itself from the version name of the installed app. "8.18.0-rc.1" will be converted to
+   "8.18.0"; Tobi823/ffupdater#69)
+
 # 2021-07-30 Version 74.3.4 (77)
  * Make update check more robust for "Firefox Release", "Firefox Beta", "Firefox Focus" and "Firefox Klar"
 
