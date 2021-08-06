@@ -1,3 +1,6 @@
+# 2021-08-?? Version ?????? (??)
+ * Update Brazilian Portuguese translation (thanks mezysinc; Tobiwan/ffupdater#78)
+
 # 2021-08-04 Version 74.3.5 (78)
  * Fix update check for "Firefox Focus" and "Firefox Klar" (By removing everything after the dash + 
    the dash itself from the version name of the installed app. "8.18.0-rc.1" will be converted to
