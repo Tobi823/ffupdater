@@ -9,32 +9,30 @@ import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
+import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Test
 import java.io.File
+import kotlin.io.path.createTempFile
 import kotlin.random.Random
 
 
 class FingerprintValidatorTest {
 
     @MockK
-    private lateinit var packageManager: PackageManager
+    lateinit var packageManager: PackageManager
 
     @MockK
-    private lateinit var signature: Signature
-    private lateinit var fingerprintValidator: FingerprintValidator
-
-    @MockK
-    private lateinit var file: File
-    private val filePath = "/sdcard/Android/data/de.marmaro.krt.ffupdater/cache/Download/" +
-            "FIREFOX_RELEASE__2021_04_30__244384144.apk"
+    lateinit var signature: Signature
+    lateinit var fingerprintValidator: FingerprintValidator
 
     companion object {
         lateinit var signatureBytes: ByteArray
         @Suppress("SpellCheckingInspection")
         const val signatureFingerprint = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
+        val file = createTempFile("FIREFOX_RELEASE__2021_04_30__244384144", ".apk").toFile()!!
 
         @BeforeClass
         @JvmStatic
@@ -42,14 +40,18 @@ class FingerprintValidatorTest {
             val path = "src/test/resources/de/marmaro/krt/ffupdater/security/FirefoxReleaseAppSignature.bin"
             signatureBytes = File(path).readBytes()
         }
+
+        @AfterClass
+        @JvmStatic
+        fun tearDownClass() {
+            file.delete()
+        }
     }
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
         fingerprintValidator = FingerprintValidator(packageManager)
-        every { file.exists() } returns true
-        every { file.absolutePath } returns filePath
     }
 
     @Test
@@ -58,7 +60,7 @@ class FingerprintValidatorTest {
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns signatureBytes
         every {
-            packageManager.getPackageArchiveInfo(filePath, GET_SIGNATURES)
+            packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
         val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE) }
@@ -73,7 +75,7 @@ class FingerprintValidatorTest {
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns signatureBytes
         every {
-            packageManager.getPackageArchiveInfo(filePath, GET_SIGNATURES)
+            packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
         val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BRAVE) }
@@ -86,7 +88,7 @@ class FingerprintValidatorTest {
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns Random.nextBytes(938)
         every {
-            packageManager.getPackageArchiveInfo(filePath, GET_SIGNATURES)
+            packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
         runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE) }
     }
