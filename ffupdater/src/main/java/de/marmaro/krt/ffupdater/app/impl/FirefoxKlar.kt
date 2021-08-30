@@ -28,8 +28,8 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
 
     override fun getInstalledVersion(context: Context): String? {
         val originalVersion = super.getInstalledVersion(context)
-        return if (originalVersion?.contains("-") == true) {
-            originalVersion.split("-")[0]
+        return if (originalVersion == "93.0") {
+            "93.0.0" //workaround for https://github.com/Tobi823/ffupdater/issues/75
         } else {
             originalVersion
         }
