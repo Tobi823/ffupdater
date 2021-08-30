@@ -255,7 +255,7 @@ class InstallActivity : AppCompatActivity() {
                 if (download.status == SUCCESSFUL) {
                     return@f DOWNLOAD_WAS_SUCCESSFUL
                 }
-                delay(250L)
+                delay(500L)
             } while (download.status != FAILED)
             return@f FAILURE_DOWNLOAD_UNSUCCESSFUL
         }),
