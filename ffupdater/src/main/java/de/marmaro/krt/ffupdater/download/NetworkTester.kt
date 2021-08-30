@@ -4,21 +4,32 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.provider.Settings
+import android.provider.Settings.Global.AIRPLANE_MODE_ON
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 object NetworkTester {
 
-    fun isInternetUnavailable(context: Context): Boolean {
+    fun isInternetAvailable(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return isInternetUnavailable(cm)
+        return isInternetAvailable(cm)
     }
 
-    private fun isInternetUnavailable(cm: ConnectivityManager): Boolean {
+    fun isInternetUnavailable(context: Context): Boolean {
+        return !isInternetAvailable(context)
+    }
+
+    fun isAirplaneModeOn(context: Context): Boolean {
+        // https://stackoverflow.com/a/4319257
+        return Settings.System.getInt(context.contentResolver, AIRPLANE_MODE_ON, 0) != 0
+    }
+
+    private fun isInternetAvailable(cm: ConnectivityManager): Boolean {
         if (DeviceEnvironment.supportsAndroidMarshmallow()) {
-            return !isInternetAvailableNewWay(cm)
+            return isInternetAvailableNewWay(cm)
         }
-        return !isInternetAvailableOldWay(cm)
+        return isInternetAvailableOldWay(cm)
     }
 
     /**

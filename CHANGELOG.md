@@ -1,6 +1,7 @@
 # 2021-08-30 Version 74.3.6 (79)
  * Update Brazilian Portuguese translation (thanks mezysinc; Tobiwan/ffupdater#78)
  * Add workaround for wrong version text of installed Firefox Klar/Focus (Tobi823/ffupdater#75)
+ * Abort background update check if airplane mode is enabled (Tobi823/ffupdater#74)
 
 # 2021-08-04 Version 74.3.5 (78)
  * Fix update check for "Firefox Focus" and "Firefox Klar" (By removing everything after the dash + 

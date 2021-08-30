@@ -33,13 +33,7 @@ class BackgroundJob(
 
     override suspend fun doWork(): Result {
         try {
-            waitForInternet()
-            val appsWithUpdates = findAppsWithUpdates()
-            waitForUnmeteredNetwork()
-            downloadUpdatesInBackground(appsWithUpdates)
-            showUpdateNotification(appsWithUpdates)
-            PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
-            Result.success()
+            executeBackgroundJob()
         } catch (e: CancellationException) {
             // when the network is disabled, this exception will be thrown -> ignore it
         } catch (e: ApiNetworkException) {
@@ -54,16 +48,30 @@ class BackgroundJob(
         return Result.success()
     }
 
+    private suspend fun executeBackgroundJob() {
+        if (NetworkTester.isAirplaneModeOn(applicationContext)) {
+            Log.e(LOG_TAG, "abort background job because airplane mode is on")
+            return
+        }
+        waitForInternetOrThrowException()
+        val appsWithUpdates = findAppsWithUpdates()
+        waitForUnmeteredNetwork()
+        downloadUpdatesInBackground(appsWithUpdates)
+        showUpdateNotification(appsWithUpdates)
+        PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
+    }
+
     /**
-     * Wait until Internet is available. Abort after 10 seconds.
+     * Wait until Internet is available. Abort after 30 seconds.
      */
-    private suspend fun waitForInternet() {
-        repeat(10) {
-            if (!NetworkTester.isInternetUnavailable(applicationContext)) {
+    private suspend fun waitForInternetOrThrowException() {
+        repeat(30) {
+            if (NetworkTester.isInternetAvailable(applicationContext)) {
                 return
             }
             delay(1000)
         }
+        throw RuntimeException("Internet is not available after 30s")
     }
 
     /**
