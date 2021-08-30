@@ -28,7 +28,6 @@ import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import james.crasher.Crasher
 import kotlinx.coroutines.*
 import java.io.File
-import java.time.Duration
 import java.util.*
 import java.util.concurrent.*
 
@@ -127,12 +126,10 @@ class InstallActivity : AppCompatActivity() {
         stateJob?.cancel()
         state = jumpDestination
         stateJob = lifecycleScope.launch(Dispatchers.Main) {
-            withTimeout(Duration.ofMinutes(5).toMillis()) {
-                while (state != State.ERROR_STOP
-                        && state != State.SUCCESS_PAUSE
-                        && state != State.SUCCESS_STOP) {
-                    state = state.action(this@InstallActivity)
-                }
+            while (state != State.ERROR_STOP
+                    && state != State.SUCCESS_PAUSE
+                    && state != State.SUCCESS_STOP) {
+                state = state.action(this@InstallActivity)
             }
         }
     }
@@ -242,9 +239,7 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         DOWNLOAD_IS_ENQUEUED(f@{ ia ->
-            val sleepInterval = 250L
-            val maxWaitingTime = Duration.ofMinutes(5).toMillis()
-            for (i in 1..(maxWaitingTime / sleepInterval)) {
+            do {
                 val download = ia.downloadManager.getStatusAndProgress(ia.viewModel.downloadId!!)
                 val downloadStatus = when (download.status) {
                     RUNNING -> ia.getString(R.string.install_activity__download_status_running)
@@ -257,12 +252,11 @@ class InstallActivity : AppCompatActivity() {
                 ia.setText(R.id.downloadingFileText,
                         ia.getString(R.string.install_activity__download_application_from_with_status, downloadStatus))
                 ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = download.progressInPercentage
-                when (download.status) {
-                    SUCCESSFUL -> return@f DOWNLOAD_WAS_SUCCESSFUL
-                    FAILED -> return@f FAILURE_DOWNLOAD_UNSUCCESSFUL
-                    else -> delay(sleepInterval)
+                if (download.status == SUCCESSFUL) {
+                    return@f DOWNLOAD_WAS_SUCCESSFUL
                 }
-            }
+                delay(250L)
+            } while (download.status != FAILED)
             return@f FAILURE_DOWNLOAD_UNSUCCESSFUL
         }),
 
