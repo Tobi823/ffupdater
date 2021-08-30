@@ -27,7 +27,6 @@ import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import james.crasher.Crasher
 import kotlinx.coroutines.*
-import java.io.File
 import java.util.*
 import java.util.concurrent.*
 
@@ -44,7 +43,7 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var downloadManager: DownloadManagerAdapter
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
-    private lateinit var downloadedApkCache: DownloadedApkCache
+    private lateinit var apkCache: DownloadedApkCache
 
     // necessary for communication with State enums
     private lateinit var app: App
@@ -58,7 +57,7 @@ class InstallActivity : AppCompatActivity() {
     class InstallActivityViewModel : ViewModel() {
         var app: App? = null
         var downloadId: Long? = null
-        var downloadFile: File? = null
+//        var downloadFile: File? = null
         var updateCheckResult: UpdateCheckResult? = null
     }
 
@@ -79,7 +78,7 @@ class InstallActivity : AppCompatActivity() {
                     restartStateMachine(State.FAILURE_APP_INSTALLATION)
                 })
         app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run { finish(); return })
-        downloadedApkCache = DownloadedApkCache(app, this)
+        apkCache = DownloadedApkCache(app, this)
         findViewById<View>(R.id.installConfirmationButton).setOnClickListener {
             restartStateMachine(State.USER_HAS_TRIGGERED_INSTALLATION_PROCESS)
         }
@@ -213,7 +212,7 @@ class InstallActivity : AppCompatActivity() {
                 ia.setText(R.id.fetchedUrlSuccessTextView,
                         ia.getString(R.string.install_activity__fetched_url_for_download_successfully,
                                 ia.getString(app.detail.displayDownloadSource)))
-                if (ia.downloadedApkCache.isCacheAvailable(updateCheckResult.availableResult)) {
+                if (ia.apkCache.isCacheAvailable(updateCheckResult.availableResult)) {
                     return@f USE_CACHED_DOWNLOADED_APK
                 }
                 return@f ENQUEUING_DOWNLOAD
@@ -223,18 +222,13 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         ENQUEUING_DOWNLOAD(f@{ ia ->
-            val app = ia.app
             ia.show(R.id.downloadingFile)
             val updateCheckResult = ia.viewModel.updateCheckResult!!
             ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl.toString())
-
-            val fileReservation = ia.downloadManager.reserveFile(app, ia)
-            ia.viewModel.downloadFile = fileReservation.downloadLocation
             ia.viewModel.downloadId = ia.downloadManager.enqueue(
                     context = ia,
                     app = ia.app,
-                    availableVersionResult = updateCheckResult.availableResult,
-                    reservedFile = fileReservation)
+                    availableVersionResult = updateCheckResult.availableResult)
             return@f DOWNLOAD_IS_ENQUEUED
         }),
 
@@ -262,7 +256,6 @@ class InstallActivity : AppCompatActivity() {
 
         DOWNLOAD_WAS_SUCCESSFUL(f@{ ia ->
             val app = ia.app
-            val downloadFile = ia.viewModel.downloadFile!!
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadedFile)
             ia.setText(R.id.downloadedFileUrl,
@@ -270,33 +263,35 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.verifyDownloadFingerprint)
 
             val fingerprint = withContext(ia.lifecycleScope.coroutineContext + Dispatchers.IO) {
-                ia.fingerprintValidator.checkApkFile(downloadFile, app)
+                val downloadId = ia.viewModel.downloadId!!
+                val downloadedFile = ia.downloadManager.openDownloadedFile(downloadId)
+                ia.apkCache.copyToCache(downloadedFile)
+                ia.downloadManager.remove(downloadId)
+                ia.fingerprintValidator.checkApkFile(ia.apkCache.getCacheFile(), app)
             }
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
-                ia.downloadedApkCache.copyFileToCache(downloadFile)
                 return@f FINGERPRINT_OF_DOWNLOADED_FILE_OK
             } else {
+                ia.apkCache.deleteCache()
                 return@f FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
             }
         }),
 
         USE_CACHED_DOWNLOADED_APK(f@{ ia ->
-            ia.viewModel.downloadFile = ia.downloadedApkCache.getPath()
             val app = ia.app
-            val downloadFile = ia.viewModel.downloadFile!!
             ia.show(R.id.useCachedDownloadedApk)
-            ia.setText(R.id.useCachedDownloadedApk__path, downloadFile.absolutePath)
+            ia.setText(R.id.useCachedDownloadedApk__path, ia.apkCache.getCacheFile().absolutePath)
             ia.show(R.id.verifyDownloadFingerprint)
 
             val fingerprint = withContext(ia.lifecycleScope.coroutineContext + Dispatchers.IO) {
-                ia.fingerprintValidator.checkApkFile(downloadFile, app)
+                ia.fingerprintValidator.checkApkFile(ia.apkCache.getCacheFile(), app)
             }
             ia.fileFingerprint = fingerprint
             if (fingerprint.isValid) {
-                ia.downloadedApkCache.copyFileToCache(downloadFile)
                 return@f FINGERPRINT_OF_DOWNLOADED_FILE_OK
             } else {
+                ia.apkCache.deleteCache()
                 return@f FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
             }
         }),
@@ -311,7 +306,9 @@ class InstallActivity : AppCompatActivity() {
 
         USER_HAS_TRIGGERED_INSTALLATION_PROCESS(f@{ ia ->
             ia.show(R.id.installingApplication)
-            ia.appInstaller.install(ia, ia.viewModel.downloadFile!!)
+            val installationFile = ia.apkCache.getCacheFile()
+            require(installationFile.exists())
+            ia.appInstaller.install(ia, installationFile)
             return@f SUCCESS_PAUSE
         }),
 

@@ -5,26 +5,14 @@ import android.app.DownloadManager.*
 import android.content.Context
 import android.database.CursorIndexOutOfBoundsException
 import android.net.Uri
-import android.os.Environment.DIRECTORY_DOWNLOADS
+import android.os.ParcelFileDescriptor
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import java.io.File
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import kotlin.random.Random
 
 /**
  * This class helps to use the `android.app.DownloadManager` more easily.
  */
 class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
-
-    fun reserveFile(app: App, context: Context): DownloadFileReservation {
-        val date = DateTimeFormatter.ofPattern("yyyy_MM_dd").format(LocalDate.now())
-        val randomValue = Random.nextInt(0, Int.MAX_VALUE)
-        val directory = context.getExternalFilesDir(DIRECTORY_DOWNLOADS)!!
-        val fileName = "${app}__${date}__${randomValue}.apk"
-        return DownloadFileReservation(fileName, File(directory, fileName))
-    }
 
     /**
      * Enqueue a new download.
@@ -33,15 +21,12 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
             context: Context,
             app: App,
             availableVersionResult: AvailableVersionResult,
-            reservedFile: DownloadFileReservation,
     ): Long {
-        check(availableVersionResult.downloadUrl.protocol == "https")
+        require(availableVersionResult.downloadUrl.protocol == "https")
         val notificationTitle = "FFUpdater: " + context.getString(app.detail.displayTitle)
         val request = Request(Uri.parse(availableVersionResult.downloadUrl.toString()))
                 .setTitle(notificationTitle)
-                //.setAllowedOverMetered(false)
                 .setNotificationVisibility(Request.VISIBILITY_VISIBLE)
-                .setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, reservedFile.name)
         return downloadManager.enqueue(request)
     }
 
@@ -87,13 +72,18 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
         }
     }
 
+    /**
+     * Access the downloaded file
+     */
+    fun openDownloadedFile(id: Long): ParcelFileDescriptor {
+        return downloadManager.openDownloadedFile(id)
+    }
+
     data class DownloadStatus(val status: Status, val progressInPercentage: Int) {
         enum class Status {
             UNKNOWN, PENDING, RUNNING, PAUSED, SUCCESSFUL, FAILED
         }
     }
-
-    data class DownloadFileReservation(val name: String, val downloadLocation: File)
 
     companion object {
         fun create(context: Context): DownloadManagerAdapter {

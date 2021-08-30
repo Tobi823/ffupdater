@@ -138,12 +138,12 @@ class BackgroundJob(
         }
 
         Log.i(LOG_TAG, "download $app in the background")
-        val fileReservation = downloadManager.reserveFile(app, applicationContext)
-        val downloadId = downloadManager.enqueue(applicationContext, app, availableResult, fileReservation)
+        val downloadId = downloadManager.enqueue(applicationContext, app, availableResult)
         repeat(5 * 60) {
             when (downloadManager.getStatusAndProgress(downloadId).status) {
                 SUCCESSFUL -> {
-                    apkCache.copyFileToCache(fileReservation.downloadLocation)
+                    val downloadedFile = downloadManager.openDownloadedFile(downloadId)
+                    apkCache.copyToCache(downloadedFile)
                     return
                 }
                 FAILED -> {
