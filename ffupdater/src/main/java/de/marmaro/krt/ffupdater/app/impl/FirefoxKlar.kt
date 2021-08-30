@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
@@ -25,15 +24,6 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
-
-    override fun getInstalledVersion(context: Context): String? {
-        val originalVersion = super.getInstalledVersion(context)
-        return if (originalVersion == "93.0") {
-            "93.0.0" //workaround for https://github.com/Tobi823/ffupdater/issues/75
-        } else {
-            originalVersion
-        }
-    }
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val abiString = getStringForCurrentAbi("armeabi-v7a", "arm64-v8a", null, null)
