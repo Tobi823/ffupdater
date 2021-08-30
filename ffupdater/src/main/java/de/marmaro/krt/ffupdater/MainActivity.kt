@@ -25,7 +25,6 @@ import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
 import de.marmaro.krt.ffupdater.download.NetworkTester
-import de.marmaro.krt.ffupdater.download.OldDownloadedFilesDeleter
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
@@ -50,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         StrictModeSetup.enableStrictMode()
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         Migrator().migrate(this)
-        OldDownloadedFilesDeleter.delete(this)
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             InstallNewAppDialog.newInstance().show(supportFragmentManager)
