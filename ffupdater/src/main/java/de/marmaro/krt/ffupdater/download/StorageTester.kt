@@ -11,6 +11,6 @@ object StorageTester {
 
     fun getFreeStorageInMB(context: Context): Long {
         val path = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!.path
-        return StatFs(path).freeBytes / 1_048_576
+        return StatFs(path).availableBytes / 1_048_576
     }
 }
