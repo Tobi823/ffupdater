@@ -8,12 +8,20 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import java.io.*
 
-//TODO rename to ApkCache
-class DownloadedApkCache(val app: App, val context: Context) {
+/**
+ * Manage the cache of downloaded apk files.
+ * For every app exactly one apk file can be cached.
+ * The cached apk files will be stored in "/sdcard/Android/data/de.marmaro.krt.ffupdater/cache/Download".
+ */
+class ApkCache(val app: App, val context: Context) {
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
     private val cacheFolder = File(context.externalCacheDir, Environment.DIRECTORY_DOWNLOADS)
     private val key = "exists_cache_file_for_${app}"
 
+    /**
+     * Copy the content of the ParcelFileDescriptor (from the android.app.DownloadManager)
+     * to a file in the "Downloads"-folder of the internal app cache folder.
+     */
     fun copyToCache(downloadedFile: ParcelFileDescriptor) {
         deleteCache()
         BufferedInputStream(FileInputStream(downloadedFile.fileDescriptor)).use { downloadedFileStream ->
@@ -22,24 +30,18 @@ class DownloadedApkCache(val app: App, val context: Context) {
             }
         }
         preferences.edit().putBoolean(key, true).apply()
-//        val file = if (isFileInCacheFolder(downloadedFile)) {
-//            downloadedFile
-//        } else {
-//            val cacheFile = File(cacheFolder, downloadedFile.name)
-//            downloadedFile.copyTo(cacheFile)
-//            cacheFile
-//        }
-//        preferences.edit().putString(key, file.path).apply()
     }
 
-//    private fun isFileInCacheFolder(file: File): Boolean {
-//        return file.parentFile == cacheFolder
-//    }
-
+    /**
+     * Get the cached apk file from the "Downloads"-folder in the internal app cache folder.
+     */
     fun getCacheFile(): File {
         return File(cacheFolder, "${app.detail.packageName}.apk")
     }
 
+    /**
+     * Deleted the cached apk file.
+     */
     fun deleteCache() {
         val cacheFile = getCacheFile()
         if (cacheFile.exists()) {
@@ -48,6 +50,10 @@ class DownloadedApkCache(val app: App, val context: Context) {
         }
     }
 
+    /**
+     * Test if the cached apk file is present and up-to-date.
+     * @param available the latest available version for the given app.
+     */
     suspend fun isCacheAvailable(available: AvailableVersionResult): Boolean {
         val isCacheFileAvailable = preferences.getBoolean(key, false)
         if (!isCacheFileAvailable) return false
@@ -56,10 +62,5 @@ class DownloadedApkCache(val app: App, val context: Context) {
         if (!cacheFile.exists()) return false
 
         return app.detail.isCacheFileUpToDate(context, cacheFile, available)
-
-//        val path = preferences.getString(key, null) ?: return false
-//        val file = File(path)
-//        if (!file.exists()) return false
-//        return app.detail.isCacheFileUpToDate(context, file, available)
     }
 }

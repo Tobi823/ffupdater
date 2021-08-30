@@ -7,10 +7,10 @@ import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.FAILED
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.SUCCESSFUL
-import de.marmaro.krt.ffupdater.download.DownloadedApkCache
 import de.marmaro.krt.ffupdater.download.NetworkTester
 import de.marmaro.krt.ffupdater.download.StorageTester
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
@@ -124,7 +124,7 @@ class BackgroundJob(
      *  - update must not be already downloaded
      */
     private suspend fun downloadUpdateInBackground(app: App, downloadManager: DownloadManagerAdapter) {
-        val apkCache = DownloadedApkCache(app, applicationContext)
+        val apkCache = ApkCache(app, applicationContext)
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
         val availableResult = cachedUpdateChecker.availableResult
 

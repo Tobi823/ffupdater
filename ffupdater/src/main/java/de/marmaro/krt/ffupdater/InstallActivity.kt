@@ -17,9 +17,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.*
-import de.marmaro.krt.ffupdater.download.DownloadedApkCache
 import de.marmaro.krt.ffupdater.download.StorageTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
@@ -43,7 +43,7 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var downloadManager: DownloadManagerAdapter
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
-    private lateinit var apkCache: DownloadedApkCache
+    private lateinit var apkCache: ApkCache
 
     // necessary for communication with State enums
     private lateinit var app: App
@@ -78,7 +78,7 @@ class InstallActivity : AppCompatActivity() {
                     restartStateMachine(State.FAILURE_APP_INSTALLATION)
                 })
         app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run { finish(); return })
-        apkCache = DownloadedApkCache(app, this)
+        apkCache = ApkCache(app, this)
         findViewById<View>(R.id.installConfirmationButton).setOnClickListener {
             restartStateMachine(State.USER_HAS_TRIGGERED_INSTALLATION_PROCESS)
         }
