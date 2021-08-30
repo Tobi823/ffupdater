@@ -6,7 +6,7 @@ import android.os.StatFs
 
 object StorageTester {
     fun isEnoughStorageAvailable(context: Context): Boolean {
-        return getFreeStorageInMB(context) > 500
+        return getFreeStorageInMB(context) > 400
     }
 
     fun getFreeStorageInMB(context: Context): Long {
