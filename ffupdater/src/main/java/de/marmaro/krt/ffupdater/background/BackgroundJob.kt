@@ -63,7 +63,8 @@ class BackgroundJob(
         Log.i(LOG_TAG, "execute BackgroundJob")
         try {
             val appsWithUpdates = findAppsWithUpdates()
-            if (NetworkUtil.isActiveNetworkUnmetered(context)) {
+            if (NetworkUtil.isActiveNetworkUnmetered(context) &&
+                StorageUtil.isEnoughStorageAvailable(context)) {
                 downloadUpdatesInBackground(downloadManager, appsWithUpdates)
             }
             showUpdateNotification(appsWithUpdates)
@@ -112,22 +113,15 @@ class BackgroundJob(
     }
 
     /**
-     * Start the download of an app update and wait until the download is finished.
-     * Preconditions for the background download:
-     *  - enough memory
-     *  - update must not be already downloaded
+     * If the app update is not already been cached, then start the download and wait until the
+     * download is finished.
      */
     private suspend fun downloadUpdateInBackground(app: App, downloadManager: DownloadManager) {
         val apkCache = ApkCache(app, applicationContext)
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
         val availableResult = cachedUpdateChecker.availableResult
-
         if (apkCache.isCacheAvailable(availableResult)) {
             Log.i(LOG_TAG, "skip $app download because it's already cached")
-            return
-        }
-        if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
-            Log.i(LOG_TAG, "skip $app download because we don't have enough free storage")
             return
         }
 
@@ -136,7 +130,7 @@ class BackgroundJob(
             applicationContext,
             app,
             availableResult)
-        repeat(5 * 60) {
+        repeat(60 * 60) {
             when (DownloadManagerUtil.getStatusAndProgress(downloadManager, downloadId).status) {
                 SUCCESSFUL -> {
                     val downloadedFile = downloadManager.openDownloadedFile(downloadId)
