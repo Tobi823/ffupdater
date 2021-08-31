@@ -19,7 +19,7 @@ import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.*
-import de.marmaro.krt.ffupdater.download.StorageTester
+import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult
@@ -188,13 +188,13 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         DOWNLOAD_MANAGER_IS_ENABLED(f@{ ia ->
-            if (StorageTester.isEnoughStorageAvailable(ia)) {
+            if (StorageUtil.isEnoughStorageAvailable(ia)) {
                 return@f PRECONDITIONS_ARE_CHECKED
             }
             ia.show(R.id.tooLowMemory)
             ia.setText(R.id.tooLowMemoryDescription, ia.getString(
                     R.string.install_activity__too_low_memory_description,
-                    StorageTester.getFreeStorageInMB(ia)))
+                    StorageUtil.getFreeStorageInMebibytes(ia)))
             return@f ERROR_STOP
         }),
 

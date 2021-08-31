@@ -11,8 +11,8 @@ import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.FAILED
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.SUCCESSFUL
-import de.marmaro.krt.ffupdater.download.NetworkTester
-import de.marmaro.krt.ffupdater.download.StorageTester
+import de.marmaro.krt.ffupdater.download.NetworkUtil
+import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.CancellationException
@@ -44,11 +44,11 @@ class BackgroundJob(
      */
     override suspend fun doWork(): Result {
         val context = applicationContext
-        if (NetworkTester.isAirplaneModeOn(context)) {
+        if (NetworkUtil.isAirplaneModeOn(context)) {
             Log.i(LOG_TAG, "delay BackgroundJob due to enabled airplane mode")
             return Result.retry()
         }
-        if (!NetworkTester.isInternetAvailable(context)) {
+        if (!NetworkUtil.isInternetAvailable(context)) {
             Log.i(LOG_TAG, "delay BackgroundJob because internet is not available")
             return Result.retry()
         }
@@ -60,7 +60,7 @@ class BackgroundJob(
         Log.i(LOG_TAG, "execute BackgroundJob")
         try {
             val appsWithUpdates = findAppsWithUpdates()
-            if (NetworkTester.isActiveNetworkUnmetered(context)) {
+            if (NetworkUtil.isActiveNetworkUnmetered(context)) {
                 downloadUpdatesInBackground(appsWithUpdates)
             }
             showUpdateNotification(appsWithUpdates)
@@ -124,7 +124,7 @@ class BackgroundJob(
             Log.i(LOG_TAG, "skip $app download because it's already cached")
             return
         }
-        if (!StorageTester.isEnoughStorageAvailable(applicationContext)) {
+        if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             Log.i(LOG_TAG, "skip $app download because we don't have enough free storage")
             return
         }

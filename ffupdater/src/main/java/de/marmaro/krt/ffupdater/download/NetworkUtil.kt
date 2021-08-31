@@ -9,7 +9,7 @@ import android.provider.Settings.Global.AIRPLANE_MODE_ON
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
-object NetworkTester {
+object NetworkUtil {
 
     fun isInternetAvailable(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

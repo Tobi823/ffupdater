@@ -26,7 +26,7 @@ import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
 import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
 import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
-import de.marmaro.krt.ffupdater.download.NetworkTester
+import de.marmaro.krt.ffupdater.download.NetworkUtil
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun userTriggersAppDownload(app: App) {
-        if (NetworkTester.isInternetUnavailable(this)) {
+        if (NetworkUtil.isInternetUnavailable(this)) {
             showInternetUnavailableToast()
             return
         }
@@ -165,7 +165,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val installedApps = App.values().filter { it.detail.isInstalled(this) }
-        if (NetworkTester.isInternetUnavailable(this)) {
+        if (NetworkUtil.isInternetUnavailable(this)) {
             installedApps.forEach {
                 availableVersions[it]!!.setText(R.string.main_activity__not_connected_to_internet)
             }
@@ -228,7 +228,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun installApp(app: App) {
-        if (NetworkTester.isInternetUnavailable(this)) {
+        if (NetworkUtil.isInternetUnavailable(this)) {
             showInternetUnavailableToast()
             return
         }
