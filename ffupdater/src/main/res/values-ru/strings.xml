@@ -79,10 +79,16 @@
     <string name="installed_version">Установлен: %1$s</string>
     <string name="lockwise__description">ПАРОЛЬ ДОСТУПА ДЛЯ ВАС, И ТОЛЬКО ДЛЯ ВАС \n\nНадежно отслеживайте свои пароли Firefox и получайте доступ к ним в любом месте. Быстро откройте любой сайт из приложения, чтобы попасть в свои учетные записи.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__github_api_limit_exceeded">Превышен лимит GitHub-API. Повторите попытку через час.</string>
     <string name="main_activity__not_connected_to_internet">Нет подключения к интернету</string>
     <string name="main_activity__subtitle">Обновите свои браузеры от Mozilla</string>
+    <string name="main_activity__temporary_network_issue">Временная сетевая проблема. Повторите попытку позже.</string>
     <string name="msg_crasher_crashed">К сожалению, произошла ошибка %1$s. Вы можете сообщить о ней:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nПожалуйста, создайте новую тему с трассировкой стека и описанием того, как воспроизвести ошибку.</string>
     <string name="ok">ОК</string>
+    <string name="running_downloads_dialog__message">Менеджер загрузки системы сейчас загружает другие файлы. Вы хотите начать новую загрузку, которая может занять больше времени?</string>
+    <string name="running_downloads_dialog__negative">Нет, не загружайте его</string>
+    <string name="running_downloads_dialog__title">Работающие загрузки</string>
+    <string name="running_downloads_dialog__yes">Да</string>
     <string name="settings__activity_label">Настройки</string>
     <string name="settings__automatic_check_title">Автоматически в фоновом режиме</string>
     <string name="settings__category_appearance_title">Внешний вид</string>
@@ -128,6 +134,4 @@
     <string name="update_notification__channel_name">Уведомление об обновлении %1$s</string>
     <string name="update_notification__text">Нажмите, чтобы установить обновление</string>
     <string name="update_notification__title">Доступно обновление для "%1$s"</string>
-    <string name="main_activity__github_api_limit_exceeded">Превышен лимит GitHub-API. Повторите попытку через час.</string>
-    <string name="main_activity__temporary_network_issue">Временная сетевая проблема. Повторите попытку позже.</string>
 </resources>

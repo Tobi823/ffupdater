@@ -79,10 +79,16 @@
     <string name="installed_version">Инсталирано: %1$s</string>
     <string name="lockwise__description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС \n\nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в сметките си.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__github_api_limit_exceeded">Превишаване на лимита на GitHub-API. Повторете опита следващия час.</string>
     <string name="main_activity__not_connected_to_internet">Няма връзка с Мрежата</string>
     <string name="main_activity__subtitle">Обновявайте мрежовите четци от Mozilla</string>
+    <string name="main_activity__temporary_network_issue">Временен проблем в мрежата. Повторете опита по-</string>
     <string name="msg_crasher_crashed">За съжаление %1$s се срина. Можете да съобщите за това на:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nСъздайте доклад за дефект като добавите следата на стека, както и стъпки за възпоризвеждане на дефекта.</string>
     <string name="ok">Добре</string>
+    <string name="running_downloads_dialog__message">Мениджърът за изтегляне на системата изтегля други файлове в момента. Искате ли да започнете ново изтегляне, което може да отнеме повече време?</string>
+    <string name="running_downloads_dialog__negative">Не, не го изтегляйте</string>
+    <string name="running_downloads_dialog__title">Текущи изтегляния</string>
+    <string name="running_downloads_dialog__yes">Да</string>
     <string name="settings__activity_label">Настройки</string>
     <string name="settings__automatic_check_title">Автоматично на заден план</string>
     <string name="settings__category_appearance_title">Външен вид</string>
@@ -128,6 +134,4 @@
     <string name="update_notification__channel_name">Известие за издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
-    <string name="main_activity__github_api_limit_exceeded">Превишаване на лимита на GitHub-API. Повторете опита следващия час.</string>
-    <string name="main_activity__temporary_network_issue">Временен проблем в мрежата. Повторете опита по-</string>
 </resources>

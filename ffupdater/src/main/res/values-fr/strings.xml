@@ -79,10 +79,16 @@
     <string name="installed_version">Installé: %1$s</string>
     <string name="lockwise__description">"UN ACCÈS PAR MOT DE PASSE QUI VOUS EST RÉSERVÉ Suivez vos mots de passe en toute sécurité sur Firefox et accédez-y partout Ouvrez rapidement n’importe quel site Internet de l’application pour accéder à vos comptes "</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__github_api_limit_exceeded">La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</string>
     <string name="main_activity__not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
     <string name="main_activity__subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>
+    <string name="main_activity__temporary_network_issue">Problème de réseau temporaire. Réessayez plus tard.</string>
     <string name="msg_crasher_crashed">Malheureusement, %1$s s\'est écrasé. Vous pouvez signaler cette erreur sur:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nVeuillez créer un nouveau numéro avec le stacktrace et une description sur la façon de reproduire le bug.</string>
     <string name="ok">D\'accord</string>
+    <string name="running_downloads_dialog__message">Le gestionnaire de téléchargement du système est en train de télécharger d\'autres fichiers. Voulez-vous lancer un nouveau téléchargement qui pourrait prendre plus de temps?</string>
+    <string name="running_downloads_dialog__negative">Non, ne le téléchargez pas</string>
+    <string name="running_downloads_dialog__title">Téléchargements en cours</string>
+    <string name="running_downloads_dialog__yes">Oui</string>
     <string name="settings__activity_label">Réglages</string>
     <string name="settings__automatic_check_title">Automatique en arrière-plan</string>
     <string name="settings__category_appearance_title">Apparition</string>
@@ -128,6 +134,4 @@
     <string name="update_notification__channel_name">Notification de mise à jour de %1$s</string>
     <string name="update_notification__text">Cliquez pour installer la mise à jour</string>
     <string name="update_notification__title">Mise à jour pour "%1$s" disponible</string>
-    <string name="main_activity__github_api_limit_exceeded">La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</string>
-    <string name="main_activity__temporary_network_issue">Problème de réseau temporaire. Réessayez plus tard.</string>
 </resources>

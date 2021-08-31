@@ -49,7 +49,7 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
         query.setFilterById(id)
         try {
             downloadManager.query(query).use { cursor ->
-                cursor.moveToFirst()
+                require(cursor.moveToFirst())
                 val totalBytesIndex = cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES)
                 val totalBytes = cursor.getInt(totalBytesIndex).toDouble()
                 val actualBytesIndex = cursor.getColumnIndex(COLUMN_BYTES_DOWNLOADED_SO_FAR)
@@ -69,6 +69,14 @@ class DownloadManagerAdapter(private val downloadManager: DownloadManager) {
             }
         } catch (e: CursorIndexOutOfBoundsException) {
             return DownloadStatus(DownloadStatus.Status.UNKNOWN, 0)
+        }
+    }
+
+    fun isDownloadingAFileNow(): Boolean {
+        val query = Query()
+        query.setFilterByStatus(STATUS_RUNNING)
+        downloadManager.query(query).use { cursor ->
+            return cursor.moveToFirst()
         }
     }
 

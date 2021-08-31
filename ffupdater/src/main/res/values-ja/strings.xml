@@ -79,10 +79,16 @@
     <string name="installed_version">インストール済み: %1$s</string>
     <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__github_api_limit_exceeded">GitHub-APIの制限を超えました。次の時間に再試行します。</string>
     <string name="main_activity__not_connected_to_internet">ネットワーク接続がありません</string>
     <string name="main_activity__subtitle">あなたのブラウザをアップデートします</string>
+    <string name="main_activity__temporary_network_issue">一時的なネットワークの問題です。後で再試行します。</string>
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">申し訳ございません、%1$sはクラッシュしました。このエラーをこちらから報告できます。:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nスタックトレースとバグな再現方法の詳細を含めて新規Issueを作成してください。</string>
     <string name="ok">OK</string>
+    <string name="running_downloads_dialog__message">システムダウンロードマネージャーは、現在、他のファイルをダウンロードしています。時間がかかるかもしれない新しいダウンロードを開始しますか？</string>
+    <string name="running_downloads_dialog__negative">いいえ、ダウンロードしません</string>
+    <string name="running_downloads_dialog__title">ランニング・ダウンロード</string>
+    <string name="running_downloads_dialog__yes">はい。</string>
     <string name="settings__activity_label">設定</string>
     <string name="settings__automatic_check_title">バックグラウンドでの更新チェック</string>
     <string name="settings__category_appearance_title">外観</string>
@@ -128,6 +134,4 @@
     <string name="update_notification__channel_name">"%1$s" アップデート通知</string>
     <string name="update_notification__text">タップしてアップデートをインストール</string>
     <string name="update_notification__title">「%1$s」の更新が利用可能です</string>
-    <string name="main_activity__github_api_limit_exceeded">GitHub-APIの制限を超えました。次の時間に再試行します。</string>
-    <string name="main_activity__temporary_network_issue">一時的なネットワークの問題です。後で再試行します。</string>
 </resources>

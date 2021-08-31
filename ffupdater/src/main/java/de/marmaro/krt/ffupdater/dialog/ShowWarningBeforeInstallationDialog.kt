@@ -22,7 +22,7 @@ class ShowWarningBeforeInstallationDialog : DialogFragment() {
                 .setMessage(getString(app.detail.displayWarning!!))
                 .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
-                    mainActivity.installApp(app)
+                    mainActivity.installAppButCheckForCurrentDownloads(app)
                 }
                 .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()

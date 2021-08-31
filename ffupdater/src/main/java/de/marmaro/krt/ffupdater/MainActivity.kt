@@ -24,6 +24,8 @@ import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
+import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
+import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
 import de.marmaro.krt.ffupdater.download.NetworkTester
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
@@ -70,6 +72,14 @@ class MainActivity : AppCompatActivity() {
         //          install new version without warning
         if (sameAppVersionAlreadyInstalled[app] == true) {
             InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
+        } else {
+            installAppButCheckForCurrentDownloads(app)
+        }
+    }
+
+    fun installAppButCheckForCurrentDownloads(app: App) {
+        if (DownloadManagerAdapter.create(this).isDownloadingAFileNow()) {
+            RunningDownloadsDialog.newInstance(app).show(supportFragmentManager)
         } else {
             installApp(app)
         }

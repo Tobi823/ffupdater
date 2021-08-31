@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.download
 
 import android.content.Context
-import android.os.Environment
 import android.os.ParcelFileDescriptor
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.app.App
@@ -11,16 +10,15 @@ import java.io.*
 /**
  * Manage the cache of downloaded apk files.
  * For every app exactly one apk file can be cached.
- * The cached apk files will be stored in "/sdcard/Android/data/de.marmaro.krt.ffupdater/cache/Download".
+ * The cached apk files will be stored in "/sdcard/Android/data/de.marmaro.krt.ffupdater/cache/".
  */
 class ApkCache(val app: App, val context: Context) {
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-    private val cacheFolder = File(context.externalCacheDir, Environment.DIRECTORY_DOWNLOADS)
     private val key = "exists_cache_file_for_${app}"
 
     /**
      * Copy the content of the ParcelFileDescriptor (from the android.app.DownloadManager)
-     * to a file in the "Downloads"-folder of the internal app cache folder.
+     * to a file in the internal app cache folder.
      */
     fun copyToCache(downloadedFile: ParcelFileDescriptor) {
         deleteCache()
@@ -36,7 +34,7 @@ class ApkCache(val app: App, val context: Context) {
      * Get the cached apk file from the "Downloads"-folder in the internal app cache folder.
      */
     fun getCacheFile(): File {
-        return File(cacheFolder, "${app.detail.packageName}.apk")
+        return File(context.externalCacheDir, "${app.detail.packageName}.apk")
     }
 
     /**

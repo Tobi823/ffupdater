@@ -79,12 +79,16 @@
     <string name="installed_version">Instalado: %1$s</string>
     <string name="lockwise__description">ACESSO VIA SENHA, &amp; APENAS VOCÊ \n\nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via aplicativo para entrar em suas contas</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__not_connected_to_internet">Sem conexão à Internet</string>
     <string name="main_activity__github_api_limit_exceeded">O limite de API do GitHub foi excedido. Tente novamente mais tarde.</string>
-    <string name="main_activity__temporary_network_issue">Problema temporário da rede. Tente novamente mais tarde.</string>
+    <string name="main_activity__not_connected_to_internet">Sem conexão à Internet</string>
     <string name="main_activity__subtitle">Instale e atualize navegadores da Internet</string>
+    <string name="main_activity__temporary_network_issue">Problema temporário da rede. Tente novamente mais tarde.</string>
     <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">Infelizmente, %1$s falhou. Você pode enviar o relatório no:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nPor favor, crie um novo Issue com o Stacktrace e escreva uma descrição de como reproduzir a falha.</string>
     <string name="ok">OK</string>
+    <string name="running_downloads_dialog__message">" O gerente de download do sistema está baixando outros arquivos agora. Você quer iniciar um novo download que pode levar mais tempo?"</string>
+    <string name="running_downloads_dialog__negative">Não, não faça o download</string>
+    <string name="running_downloads_dialog__title">Execução de downloads</string>
+    <string name="running_downloads_dialog__yes">Sim</string>
     <string name="settings__activity_label">Configurações</string>
     <string name="settings__automatic_check_title">Autom. em segundo plano</string>
     <string name="settings__category_appearance_title">Aparência</string>
@@ -130,5 +134,4 @@
     <string name="update_notification__channel_name">"%1$s" notificações de atualização</string>
     <string name="update_notification__text">Clique para instalar a atualização</string>
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
-
 </resources>

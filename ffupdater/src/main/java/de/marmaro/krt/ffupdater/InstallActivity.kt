@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater
 
-import android.app.DownloadManager
 import android.app.DownloadManager.*
 import android.content.*
 import android.content.pm.PackageManager
@@ -57,7 +56,6 @@ class InstallActivity : AppCompatActivity() {
     class InstallActivityViewModel : ViewModel() {
         var app: App? = null
         var downloadId: Long? = null
-//        var downloadFile: File? = null
         var updateCheckResult: UpdateCheckResult? = null
     }
 
@@ -68,7 +66,7 @@ class InstallActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
-        downloadManager = DownloadManagerAdapter(getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager)
+        downloadManager = DownloadManagerAdapter.create(this)
         appInstaller = AppInstaller.create(
                 successfulInstallationCallback = {
                     restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
@@ -77,19 +75,20 @@ class InstallActivity : AppCompatActivity() {
                     appInstallationFailedErrorMessage = errorMessage
                     restartStateMachine(State.FAILURE_APP_INSTALLATION)
                 })
-        app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run { finish(); return })
+//        app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run { finish(); return })
+        app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME)!!)
         apkCache = ApkCache(app, this)
         findViewById<View>(R.id.installConfirmationButton).setOnClickListener {
             restartStateMachine(State.USER_HAS_TRIGGERED_INSTALLATION_PROCESS)
         }
 
-        // make sure that the ViewModel is correct for the current app
+        //make sure that the ViewModel is correct for the current app
         viewModel = ViewModelProvider(this).get(InstallActivityViewModel::class.java)
         if (viewModel.app != null) {
             check(viewModel.app == app)
         }
         viewModel.app = app
-        // recover from an orientation change - is the download already running/finished?
+        //recover from an orientation change - is the download already running/finished?
         if (viewModel.downloadId != null) {
             restartStateMachine(State.DOWNLOAD_IS_ENQUEUED)
             return

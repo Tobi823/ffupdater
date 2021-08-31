@@ -10,41 +10,34 @@ import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 
-/**
- * Show a dialog with the app description.
- */
-class ShowAppInfoBeforeInstallationDialog : DialogFragment() {
+class RunningDownloadsDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val app = App.valueOf(requireArguments().getString(BUNDLE_APP_NAME)!!)
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-                .setTitle(getString(app.detail.displayTitle))
-                .setMessage(getString(app.detail.displayDescription))
-                .setPositiveButton(getString(R.string.install_app)) { dialog: DialogInterface, _: Int ->
+                .setTitle(getString(R.string.running_downloads_dialog__title))
+                .setMessage(getString(R.string.running_downloads_dialog__message))
+                .setPositiveButton(getString(R.string.running_downloads_dialog__yes)) { dialog: DialogInterface, _: Int ->
+                    mainActivity.installApp(app)
                     dialog.dismiss()
-                    if (app.detail.displayWarning != null) {
-                        ShowWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
-                    } else {
-                        mainActivity.installAppButCheckForCurrentDownloads(app)
-                    }
                 }
-                .setNegativeButton(getString(R.string.go_back)) { dialog: DialogInterface, _: Int ->
+                .setNegativeButton(getString(R.string.running_downloads_dialog__negative)) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
                 }
                 .create()
     }
 
     fun show(manager: FragmentManager) {
-        show(manager, "show_app_info_before_installation_dialog")
+        show(manager, "downloads_are_running_dialog")
     }
 
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
 
-        fun newInstance(app: App): ShowAppInfoBeforeInstallationDialog {
+        fun newInstance(app: App): RunningDownloadsDialog {
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
-            val fragment = ShowAppInfoBeforeInstallationDialog()
+            val fragment = RunningDownloadsDialog()
             fragment.arguments = bundle
             return fragment
         }

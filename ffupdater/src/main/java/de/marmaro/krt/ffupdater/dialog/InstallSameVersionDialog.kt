@@ -18,7 +18,7 @@ class InstallSameVersionDialog : DialogFragment() {
                 .setTitle(getString(R.string.install_same_version_dialog__title))
                 .setMessage(getString(R.string.install_same_version_dialog__message))
                 .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
-                    mainActivity.installApp(app)
+                    mainActivity.installAppButCheckForCurrentDownloads(app)
                     dialog.dismiss()
                 }
                 .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
