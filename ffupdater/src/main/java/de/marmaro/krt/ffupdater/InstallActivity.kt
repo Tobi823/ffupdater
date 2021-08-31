@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater
 
+import android.app.DownloadManager
 import android.app.DownloadManager.*
 import android.content.*
 import android.content.pm.PackageManager
@@ -17,8 +18,8 @@ import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.download.ApkCache
-import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
-import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.*
+import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
+import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.*
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
@@ -39,7 +40,7 @@ import java.util.concurrent.*
  */
 class InstallActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
-    private lateinit var downloadManager: DownloadManagerAdapter
+    private lateinit var downloadManager: DownloadManager
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
     private lateinit var apkCache: ApkCache
@@ -66,7 +67,7 @@ class InstallActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fingerprintValidator = FingerprintValidator(packageManager)
-        downloadManager = DownloadManagerAdapter.create(this)
+        downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         appInstaller = AppInstaller.create(
                 successfulInstallationCallback = {
                     restartStateMachine(State.USER_HAS_INSTALLED_APP_SUCCESSFUL)
@@ -224,7 +225,8 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.downloadingFile)
             val updateCheckResult = ia.viewModel.updateCheckResult!!
             ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl.toString())
-            ia.viewModel.downloadId = ia.downloadManager.enqueue(
+            ia.viewModel.downloadId = DownloadManagerUtil.enqueue(
+                    downloadManager = ia.downloadManager,
                     context = ia,
                     app = ia.app,
                     availableVersionResult = updateCheckResult.availableResult)
@@ -233,23 +235,19 @@ class InstallActivity : AppCompatActivity() {
 
         DOWNLOAD_IS_ENQUEUED(f@{ ia ->
             do {
-                val download = ia.downloadManager.getStatusAndProgress(ia.viewModel.downloadId!!)
-                val downloadStatus = when (download.status) {
-                    RUNNING -> ia.getString(R.string.install_activity__download_status_running)
-                    SUCCESSFUL -> ia.getString(R.string.install_activity__download_status_success)
-                    FAILED -> ia.getString(R.string.install_activity__download_status_failed)
-                    PAUSED -> ia.getString(R.string.install_activity__download_status_paused)
-                    PENDING -> ia.getString(R.string.install_activity__download_status_pending)
-                    UNKNOWN -> "unknown"
-                }
+                val downloadStatus = DownloadManagerUtil.getStatusAndProgress(ia.downloadManager, ia.viewModel.downloadId!!)
+                val downloadStatusText = DownloadManagerUtil.getStatusText(ia, downloadStatus)
+
                 ia.setText(R.id.downloadingFileText,
-                        ia.getString(R.string.install_activity__download_application_from_with_status, downloadStatus))
-                ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = download.progressInPercentage
-                if (download.status == SUCCESSFUL) {
+                        ia.getString(R.string.install_activity__download_application_from_with_status, downloadStatusText))
+                ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress =
+                    downloadStatus.progressInPercentage
+
+                if (downloadStatus.status == SUCCESSFUL) {
                     return@f DOWNLOAD_WAS_SUCCESSFUL
                 }
                 delay(500L)
-            } while (download.status != FAILED)
+            } while (downloadStatus.status != FAILED)
             return@f FAILURE_DOWNLOAD_UNSUCCESSFUL
         }),
 

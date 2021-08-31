@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.background
 
+import android.app.DownloadManager
 import android.content.Context
 import android.util.Log
 import androidx.work.*
@@ -8,9 +9,9 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.download.ApkCache
-import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter
-import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.FAILED
-import de.marmaro.krt.ffupdater.download.DownloadManagerAdapter.DownloadStatus.Status.SUCCESSFUL
+import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
+import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.FAILED
+import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.SUCCESSFUL
 import de.marmaro.krt.ffupdater.download.NetworkUtil
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
@@ -44,6 +45,8 @@ class BackgroundJob(
      */
     override suspend fun doWork(): Result {
         val context = applicationContext
+        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+
         if (NetworkUtil.isAirplaneModeOn(context)) {
             Log.i(LOG_TAG, "delay BackgroundJob due to enabled airplane mode")
             return Result.retry()
@@ -52,7 +55,7 @@ class BackgroundJob(
             Log.i(LOG_TAG, "delay BackgroundJob because internet is not available")
             return Result.retry()
         }
-        if (DownloadManagerAdapter.create(context).isDownloadingAFileNow()) {
+        if (DownloadManagerUtil.isDownloadingAFileNow(downloadManager)) {
             Log.i(LOG_TAG, "delay BackgroundJob because other downloads are running")
             return Result.retry()
         }
@@ -61,7 +64,7 @@ class BackgroundJob(
         try {
             val appsWithUpdates = findAppsWithUpdates()
             if (NetworkUtil.isActiveNetworkUnmetered(context)) {
-                downloadUpdatesInBackground(appsWithUpdates)
+                downloadUpdatesInBackground(downloadManager, appsWithUpdates)
             }
             showUpdateNotification(appsWithUpdates)
             updateLastBackgroundCheckTimestamp()
@@ -101,8 +104,10 @@ class BackgroundJob(
      * If the current network is unmetered, then download the update for the given apps
      * with the DownloadManager in the background.
      */
-    private suspend fun downloadUpdatesInBackground(appsWithUpdates: List<App>) {
-        val downloadManager = DownloadManagerAdapter.create(applicationContext)
+    private suspend fun downloadUpdatesInBackground(
+        downloadManager: DownloadManager,
+        appsWithUpdates: List<App>
+    ) {
         appsWithUpdates.forEach { downloadUpdateInBackground(it, downloadManager) }
     }
 
@@ -112,10 +117,7 @@ class BackgroundJob(
      *  - enough memory
      *  - update must not be already downloaded
      */
-    private suspend fun downloadUpdateInBackground(
-        app: App,
-        downloadManager: DownloadManagerAdapter
-    ) {
+    private suspend fun downloadUpdateInBackground(app: App, downloadManager: DownloadManager) {
         val apkCache = ApkCache(app, applicationContext)
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
         val availableResult = cachedUpdateChecker.availableResult
@@ -130,9 +132,12 @@ class BackgroundJob(
         }
 
         Log.i(LOG_TAG, "download $app in the background")
-        val downloadId = downloadManager.enqueue(applicationContext, app, availableResult)
+        val downloadId = DownloadManagerUtil.enqueue(downloadManager,
+            applicationContext,
+            app,
+            availableResult)
         repeat(5 * 60) {
-            when (downloadManager.getStatusAndProgress(downloadId).status) {
+            when (DownloadManagerUtil.getStatusAndProgress(downloadManager, downloadId).status) {
                 SUCCESSFUL -> {
                     val downloadedFile = downloadManager.openDownloadedFile(downloadId)
                     apkCache.copyToCache(downloadedFile)
