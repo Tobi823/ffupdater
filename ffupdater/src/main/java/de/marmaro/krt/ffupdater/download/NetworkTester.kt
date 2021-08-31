@@ -50,10 +50,6 @@ object NetworkTester {
 
     fun isActiveNetworkUnmetered(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return isActiveNetworkUnmetered(cm)
-    }
-
-    private fun isActiveNetworkUnmetered(cm: ConnectivityManager): Boolean {
         return !cm.isActiveNetworkMetered
     }
 }

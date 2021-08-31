@@ -35,7 +35,6 @@ class BackgroundJob(
      * If:
      * - airplane mode is enabled
      * - internet is not available
-     * - active network is metered
      * - the system download manager is currently downloading a file
      * then delay the background job execution by 30s, 1m, 2m, 4m, ...
      * <a>https://developer.android.com/reference/androidx/work/BackoffPolicy?hl=en#EXPONENTIAL</a>
@@ -44,37 +43,37 @@ class BackgroundJob(
      * Result.failure will remove the scheduled job (and that's unwanted).
      */
     override suspend fun doWork(): Result {
-        if (NetworkTester.isAirplaneModeOn(applicationContext)) {
+        val context = applicationContext
+        if (NetworkTester.isAirplaneModeOn(context)) {
             Log.i(LOG_TAG, "delay BackgroundJob due to enabled airplane mode")
             return Result.retry()
         }
-        if (!NetworkTester.isInternetAvailable(applicationContext)) {
+        if (!NetworkTester.isInternetAvailable(context)) {
             Log.i(LOG_TAG, "delay BackgroundJob because internet is not available")
             return Result.retry()
         }
-        if (NetworkTester.isActiveNetworkUnmetered(applicationContext)) {
-            Log.i(LOG_TAG, "delay BackgroundJob because network is unmetered")
-            return Result.retry()
-        }
-        if (DownloadManagerAdapter.create(applicationContext).isDownloadingAFileNow()) {
+        if (DownloadManagerAdapter.create(context).isDownloadingAFileNow()) {
             Log.i(LOG_TAG, "delay BackgroundJob because other downloads are running")
             return Result.retry()
         }
+
+        Log.i(LOG_TAG, "execute BackgroundJob")
         try {
-            Log.i(LOG_TAG, "execute BackgroundJob")
             val appsWithUpdates = findAppsWithUpdates()
-            downloadUpdatesInBackground(appsWithUpdates)
+            if (NetworkTester.isActiveNetworkUnmetered(context)) {
+                downloadUpdatesInBackground(appsWithUpdates)
+            }
             showUpdateNotification(appsWithUpdates)
-            PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
+            updateLastBackgroundCheckTimestamp()
         } catch (e: CancellationException) {
             // when the network is disabled, this exception will be thrown -> ignore it
         } catch (e: ApiNetworkException) {
             // GithubRateLimitExceededException will be caught too
-            val message = applicationContext.getString(R.string.background_network_issue_notification__text)
-            ErrorNotificationBuilder.showNotification(applicationContext, e, message)
+            val message = context.getString(R.string.background_network_issue_notification__text)
+            ErrorNotificationBuilder.showNotification(context, e, message)
         } catch (e: Exception) {
-            val message = applicationContext.getString(R.string.background_unknown_bug_notification__text)
-            ErrorNotificationBuilder.showNotification(applicationContext, e, message)
+            val message = context.getString(R.string.background_unknown_bug_notification__text)
+            ErrorNotificationBuilder.showNotification(context, e, message)
         }
         //don't Result.retry() on exceptions to avoid error spamming
         return Result.success()
@@ -103,10 +102,8 @@ class BackgroundJob(
      * with the DownloadManager in the background.
      */
     private suspend fun downloadUpdatesInBackground(appsWithUpdates: List<App>) {
-        if (NetworkTester.isActiveNetworkUnmetered(applicationContext)) {
-            val downloadManager = DownloadManagerAdapter.create(applicationContext)
-            appsWithUpdates.forEach { downloadUpdateInBackground(it, downloadManager) }
-        }
+        val downloadManager = DownloadManagerAdapter.create(applicationContext)
+        appsWithUpdates.forEach { downloadUpdateInBackground(it, downloadManager) }
     }
 
     /**
@@ -151,6 +148,10 @@ class BackgroundJob(
         downloadManager.remove(downloadId)
     }
 
+    private fun updateLastBackgroundCheckTimestamp() {
+        PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
+    }
+
     private fun showUpdateNotification(appsWithUpdates: List<App>) {
         UpdateNotificationBuilder.showNotifications(appsWithUpdates, applicationContext)
     }
@@ -169,23 +170,24 @@ class BackgroundJob(
 
         private fun startBackgroundUpdateCheck(context: Context) {
             val settingsHelper = SettingsHelper(context)
-            val repeatInterval = settingsHelper.checkInterval
-            val onlyUnmetered = settingsHelper.onlyUnmeteredNetwork
-
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
-                .also { if (onlyUnmetered) it.setRequiredNetworkType(NetworkType.UNMETERED) }
                 .setRequiresBatteryNotLow(true)
                 .setRequiresStorageNotLow(true)
-                .build()
-            val saveRequest = PeriodicWorkRequest.Builder(
-                BackgroundJob::class.java, repeatInterval.toMinutes(), MINUTES
+            if (settingsHelper.onlyUnmeteredNetwork) {
+                constraints.setRequiredNetworkType(NetworkType.UNMETERED)
+            }
+
+            val workRequest = PeriodicWorkRequest.Builder(
+                BackgroundJob::class.java,
+                settingsHelper.checkInterval.toMinutes(),
+                MINUTES
             )
-                .setConstraints(constraints)
+                .setConstraints(constraints.build())
                 .build()
 
             val workManager = WorkManager.getInstance(context)
-            workManager.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, saveRequest)
+            workManager.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, workRequest)
         }
 
         private fun stopBackgroundUpdateCheck(context: Context) {
