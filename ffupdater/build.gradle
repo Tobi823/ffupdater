@@ -41,8 +41,8 @@ android {
     //Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
     defaultConfig {
-        versionCode 78
-        versionName "74.3.5"
+        versionCode 79
+        versionName "74.3.6"
         minSdkVersion 21
         targetSdkVersion 30
         vectorDrawables.useSupportLibrary = true
