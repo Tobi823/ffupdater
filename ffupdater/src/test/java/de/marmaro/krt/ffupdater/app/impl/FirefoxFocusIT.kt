@@ -16,7 +16,6 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import java.io.File
-import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
@@ -66,7 +65,7 @@ class FirefoxFocusIT {
     fun updateCheck_armeabiv7a() {
         makeChainOfTrustTextAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-        val expectedUrl = URL("$DOWNLOAD_URL/app-focus-armeabi-v7a-release-unsigned.apk")
+        val expectedUrl = "$DOWNLOAD_URL/app-focus-armeabi-v7a-release-unsigned.apk"
         val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
@@ -92,7 +91,7 @@ class FirefoxFocusIT {
     fun updateCheck_arm64v8a() {
         makeChainOfTrustTextAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-        val expectedUrl = URL("$DOWNLOAD_URL/app-focus-arm64-v8a-release-unsigned.apk")
+        val expectedUrl = "$DOWNLOAD_URL/app-focus-arm64-v8a-release-unsigned.apk"
         val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {

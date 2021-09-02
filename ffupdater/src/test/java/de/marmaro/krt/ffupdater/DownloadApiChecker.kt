@@ -4,17 +4,16 @@ import android.content.Context
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.impl.*
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.MockKAnnotations
-import io.mockk.every
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
-import io.mockk.mockkObject
-import io.mockk.unmockkAll
 import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
 import org.junit.Assert.assertTrue
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import java.net.URL
 import java.time.Duration
@@ -52,6 +51,11 @@ class DownloadApiChecker {
     }
 
     companion object {
+        @BeforeClass
+        fun beforeClass() {
+            unmockkAll()
+        }
+
         @AfterClass
         fun cleanUp() {
             unmockkAll()
@@ -66,6 +70,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 2 * 7
+        require(result.version == "1.29.76")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -77,6 +82,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 5 * 7
+        require(result.version == "92.0.4515.134")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -88,6 +94,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 3 * 7
+        require(result.version == "92.0.0-beta.8")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -99,6 +106,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 8 * 7
+        require(result.version == "93.0.1")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -110,6 +118,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 2 * 30
+        require(result.version == "93.0.1")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -122,6 +131,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 1 * 7
+        require(result.version == "2021-09-02 17:06")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -133,17 +143,20 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 6 * 7
+        require(result.version == "92.1.0")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
     @Test
     fun iceraven() {
+        unmockkObject(ApiConsumer)
         val result = runBlocking {
             Iceraven().updateCheck(context)
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 4 * 30
+        val maxDays = 2 * 30
+        require(result.version == "iceraven-1.12.0")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -155,6 +168,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 9 * 30
+        require(result.version == "4.0.3")
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 

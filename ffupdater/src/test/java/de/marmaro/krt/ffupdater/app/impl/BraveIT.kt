@@ -16,7 +16,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.Assert.*
 import java.io.FileReader
-import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
@@ -71,7 +70,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.19.92/BraveMonoarm.apk"),
+                "$DOWNLOAD_URL/v1.19.92/BraveMonoarm.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -79,7 +78,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.19.92/BraveMonoarm64.apk"),
+                "$DOWNLOAD_URL/v1.19.92/BraveMonoarm64.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -87,7 +86,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.19.92/BraveMonox86.apk"),
+                "$DOWNLOAD_URL/v1.19.92/BraveMonox86.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -95,7 +94,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.19.92/BraveMonox64.apk"),
+                "$DOWNLOAD_URL/v1.19.92/BraveMonox64.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -145,7 +144,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.20.103/BraveMonoarm.apk"),
+                "$DOWNLOAD_URL/v1.20.103/BraveMonoarm.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -153,7 +152,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.20.103/BraveMonoarm64.apk"),
+                "$DOWNLOAD_URL/v1.20.103/BraveMonoarm64.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -161,7 +160,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.20.103/BraveMonox86.apk"),
+                "$DOWNLOAD_URL/v1.20.103/BraveMonox86.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -169,7 +168,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.20.103/BraveMonox64.apk"),
+                "$DOWNLOAD_URL/v1.20.103/BraveMonox64.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -223,7 +222,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.20.103/BraveMonoarm.apk"),
+                "$DOWNLOAD_URL/v1.20.103/BraveMonoarm.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -231,7 +230,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.20.103/BraveMonoarm64.apk"),
+                "$DOWNLOAD_URL/v1.20.103/BraveMonoarm64.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -239,7 +238,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.20.103/BraveMonox86.apk"),
+                "$DOWNLOAD_URL/v1.20.103/BraveMonox86.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }
@@ -247,7 +246,7 @@ class BraveIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
             assertEquals(
-                URL("$DOWNLOAD_URL/v1.20.103/BraveMonox64.apk"),
+                "$DOWNLOAD_URL/v1.20.103/BraveMonox64.apk",
                 Brave().updateCheck(context).downloadUrl
             )
         }

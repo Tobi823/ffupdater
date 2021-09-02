@@ -20,7 +20,6 @@ import org.junit.Before
 import org.junit.Test
 import java.io.BufferedReader
 import java.io.FileReader
-import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
@@ -226,7 +225,7 @@ class FirefoxNightlyIT {
 
         assertEquals("2021-05-06 17:02", actual.version)
         assertEquals(
-            URL("$BASE_URL.$abiString/artifacts/public/build/$abiString/target.apk"),
+            "$BASE_URL.$abiString/artifacts/public/build/$abiString/target.apk",
             actual.downloadUrl
         )
         assertEquals(

@@ -18,7 +18,6 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import java.io.FileReader
-import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
@@ -72,7 +71,7 @@ class BromiteIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
             assertEquals(
-                URL("$DOWNLOAD_URL/arm_ChromePublic.apk"),
+                "$DOWNLOAD_URL/arm_ChromePublic.apk",
                 Bromite().updateCheck(context).downloadUrl
             )
         }
@@ -80,7 +79,7 @@ class BromiteIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
             assertEquals(
-                URL("$DOWNLOAD_URL/arm64_ChromePublic.apk"),
+                "$DOWNLOAD_URL/arm64_ChromePublic.apk",
                 Bromite().updateCheck(context).downloadUrl
             )
         }
@@ -88,7 +87,7 @@ class BromiteIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86)
             assertEquals(
-                URL("$DOWNLOAD_URL/x86_ChromePublic.apk"),
+                "$DOWNLOAD_URL/x86_ChromePublic.apk",
                 Bromite().updateCheck(context).downloadUrl
             )
         }
@@ -96,7 +95,7 @@ class BromiteIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86_64, ABI.X86)
             assertEquals(
-                URL("$DOWNLOAD_URL/x86_ChromePublic.apk"),
+                "$DOWNLOAD_URL/x86_ChromePublic.apk",
                 Bromite().updateCheck(context).downloadUrl
             )
         }

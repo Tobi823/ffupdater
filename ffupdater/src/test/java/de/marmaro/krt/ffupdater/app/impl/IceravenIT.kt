@@ -18,7 +18,6 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import java.io.FileReader
-import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
@@ -32,8 +31,8 @@ class IceravenIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        mockkObject(DeviceEnvironment)
         mockkObject(ApiConsumer)
+        mockkObject(DeviceEnvironment)
 
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
@@ -70,7 +69,7 @@ class IceravenIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
             assertEquals(
-                URL("$DOWNLOAD_URL/iceraven-1.6.0-browser-armeabi-v7a-forkRelease.apk"),
+                "$DOWNLOAD_URL/iceraven-1.6.0-browser-armeabi-v7a-forkRelease.apk",
                 Iceraven().updateCheck(context).downloadUrl
             )
         }
@@ -78,7 +77,7 @@ class IceravenIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
             assertEquals(
-                URL("$DOWNLOAD_URL/iceraven-1.6.0-browser-arm64-v8a-forkRelease.apk"),
+                "$DOWNLOAD_URL/iceraven-1.6.0-browser-arm64-v8a-forkRelease.apk",
                 Iceraven().updateCheck(context).downloadUrl
             )
         }
@@ -86,7 +85,7 @@ class IceravenIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86)
             assertEquals(
-                URL("$DOWNLOAD_URL/iceraven-1.6.0-browser-x86-forkRelease.apk"),
+                "$DOWNLOAD_URL/iceraven-1.6.0-browser-x86-forkRelease.apk",
                 Iceraven().updateCheck(context).downloadUrl
             )
         }
@@ -94,7 +93,7 @@ class IceravenIT {
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
             assertEquals(
-                URL("$DOWNLOAD_URL/iceraven-1.6.0-browser-x86_64-forkRelease.apk"),
+                "$DOWNLOAD_URL/iceraven-1.6.0-browser-x86_64-forkRelease.apk",
                 Iceraven().updateCheck(context).downloadUrl
             )
         }

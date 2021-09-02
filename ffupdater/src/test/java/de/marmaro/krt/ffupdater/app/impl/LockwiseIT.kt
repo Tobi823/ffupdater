@@ -18,7 +18,6 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import java.io.FileReader
-import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
@@ -79,7 +78,7 @@ class LockwiseIT {
                 Lockwise().updateCheck(context).downloadUrl
             }
             val expected = "$DOWNLOAD_URL/release-v4.0.3/lockbox-app-release-6584-signed.apk"
-            assertEquals(URL(expected), actual)
+            assertEquals(expected, actual)
         }
     }
 
@@ -134,7 +133,7 @@ class LockwiseIT {
                 Lockwise().updateCheck(context).downloadUrl
             }
             val expected = "$DOWNLOAD_URL/release-v3.3.0-RC-2/lockbox-app-release-5784-signed.apk"
-            assertEquals(URL(expected), actual)
+            assertEquals(expected, actual)
         }
     }
 
