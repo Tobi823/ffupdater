@@ -34,14 +34,14 @@ object ApiConsumer {
      * @throws ApiNetworkException if the network resource is not available after 5 retires.
      * @throws GithubRateLimitExceededException if the GitHub-API rate limit is exceeded.
      */
-    suspend fun <T: Any> consumeNetworkResource(url: URL, clazz: KClass<T>): T {
+    suspend fun <T: Any> consumeNetworkResource(url: String, clazz: KClass<T>): T {
         val errors = Stack<Exception>()
         repeat(3) { i ->
             try {
                 return readNetworkResource(url, clazz)
             } catch (e: FileNotFoundException) {
                 Log.e("ApiConsumer", "failed $url: $e")
-                if (url.host == "api.github.com") {
+                if (url.startsWith("https://api.github.com")) {
                     throw GithubRateLimitExceededException(e)
                 }
                 errors.push(e)
@@ -67,8 +67,9 @@ object ApiConsumer {
     /**
      * @throws IOException
      */
-    private fun <T: Any> readNetworkResource(url: URL, clazz: KClass<T>): T {
+    private fun <T: Any> readNetworkResource(urlString: String, clazz: KClass<T>): T {
         TrafficStats.setThreadStatsTag(THREAD_ID)
+        val url = URL(urlString)
         val connection = url.openConnection() as HttpsURLConnection
         connection.setRequestProperty("Accept-Encoding", GZIP)
         connection.inputStream

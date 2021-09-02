@@ -63,10 +63,9 @@ class FirefoxNightlyIT {
         }
     }
 
-    private fun makeChainOfTrustAvailableUnderUrl(urlString: String) {
+    private fun makeChainOfTrustAvailableUnderUrl(url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
                 "chain-of-trust.json"
-        val url = URL(urlString)
         coEvery {
             ApiConsumer.consumeNetworkResource(url, MozillaCiJsonConsumer.ChainOfTrustJson::class)
         } returns Gson().fromJson(

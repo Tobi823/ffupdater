@@ -231,7 +231,7 @@ class InstallActivity : AppCompatActivity() {
         ENQUEUING_DOWNLOAD(f@{ ia ->
             ia.show(R.id.downloadingFile)
             val updateCheckResult = ia.viewModel.updateCheckResult!!
-            ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl.toString())
+            ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
             ia.viewModel.downloadId = DownloadManagerUtil.enqueue(
                     downloadManager = ia.downloadManager,
                     context = ia,
@@ -262,8 +262,7 @@ class InstallActivity : AppCompatActivity() {
             val app = ia.app
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadedFile)
-            ia.setText(R.id.downloadedFileUrl,
-                    ia.viewModel.updateCheckResult!!.downloadUrl.toString())
+            ia.setText(R.id.downloadedFileUrl, ia.viewModel.updateCheckResult!!.downloadUrl)
             ia.show(R.id.verifyDownloadFingerprint)
 
             val fingerprint = withContext(ia.lifecycleScope.coroutineContext + Dispatchers.IO) {
@@ -367,8 +366,7 @@ class InstallActivity : AppCompatActivity() {
         FAILURE_DOWNLOAD_UNSUCCESSFUL(f@{ ia ->
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadFileFailed)
-            ia.setText(R.id.downloadFileFailedUrl,
-                    ia.viewModel.updateCheckResult!!.downloadUrl.toString())
+            ia.setText(R.id.downloadFileFailedUrl, ia.viewModel.updateCheckResult!!.downloadUrl)
             ia.show(R.id.installerFailed)
             ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
             return@f ERROR_STOP

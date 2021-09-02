@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.app
 
 import de.marmaro.krt.ffupdater.security.Sha256Hash
-import java.net.URL
 import java.time.ZonedDateTime
 
 data class UpdateCheckResult(
@@ -10,7 +9,7 @@ data class UpdateCheckResult(
         val displayVersion: String,
 ) {
 
-    val downloadUrl: URL
+    val downloadUrl: String
         get() = availableResult.downloadUrl
 
     val version: String

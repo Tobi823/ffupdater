@@ -50,17 +50,15 @@ class LockwiseIT {
         }
     }
 
-    private fun makeReleaseJsonObjectAvailableUnderUrl(fileName: String, urlString: String) {
+    private fun makeReleaseJsonObjectAvailableUnderUrl(fileName: String, url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/$fileName"
-        val url = URL(urlString)
         coEvery {
             ApiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 
-    private fun makeReleaseJsonArrayAvailableUnderUrl(fileName: String, urlString: String) {
+    private fun makeReleaseJsonArrayAvailableUnderUrl(fileName: String, url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise//$fileName"
-        val url = URL(urlString)
         coEvery {
             ApiConsumer.consumeNetworkResource(url, Array<GithubConsumer.Release>::class)
         } returns Gson().fromJson(FileReader(path), Array<GithubConsumer.Release>::class.java)

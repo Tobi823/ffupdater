@@ -51,7 +51,7 @@ class BromiteIT {
     private fun makeReleaseJsonObjectAvailable() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Bromite/" +
                 "latest_contains_release_version.json"
-        val url = URL("https://api.github.com/repos/bromite/bromite/releases/latest")
+        val url = "https://api.github.com/repos/bromite/bromite/releases/latest"
         coEvery {
             ApiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)

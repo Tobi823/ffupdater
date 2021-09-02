@@ -53,9 +53,8 @@ class IceravenIT {
 
     private fun makeReleaseJsonObjectAvailable() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Iceraven/latest.json"
-        val url = URL(API_URL)
         coEvery {
-            ApiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
+            ApiConsumer.consumeNetworkResource(API_URL, GithubConsumer.Release::class)
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 

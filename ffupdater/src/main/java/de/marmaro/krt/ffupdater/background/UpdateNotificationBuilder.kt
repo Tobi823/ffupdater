@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 object UpdateNotificationBuilder {
 
@@ -25,7 +26,13 @@ object UpdateNotificationBuilder {
     private fun showNotification(app: App, context: Context) {
         val intent = Intent(context, InstallActivity::class.java)
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name)
-        val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
+
+        val flag = if (DeviceEnvironment.supportsAndroidMarshmallow()) {
+            FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        } else {
+            FLAG_UPDATE_CURRENT
+        }
+        val updateAppIntent = PendingIntent.getActivity(context, 0, intent, flag)
         val appTitle: String = context.getString(app.detail.displayTitle)
 
         val notificationBuilder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

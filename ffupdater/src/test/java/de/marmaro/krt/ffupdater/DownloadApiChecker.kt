@@ -158,7 +158,8 @@ class DownloadApiChecker {
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
-    private fun verifyThatDownloadLinkAvailable(url: URL) {
+    private fun verifyThatDownloadLinkAvailable(urlString: String) {
+        val url = URL(urlString)
         val connection = url.openConnection() as HttpsURLConnection
         val status = connection.responseCode
         assertTrue("$status of connection must be >= 200", status >= 200)

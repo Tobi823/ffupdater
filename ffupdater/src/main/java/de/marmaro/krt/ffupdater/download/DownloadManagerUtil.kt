@@ -24,8 +24,8 @@ object DownloadManagerUtil {
             app: App,
             availableVersionResult: AvailableVersionResult,
     ): Long {
-        require(availableVersionResult.downloadUrl.protocol == "https")
-        val downloadUri = Uri.parse(availableVersionResult.downloadUrl.toString())
+        require(availableVersionResult.downloadUrl.startsWith("https://"))
+        val downloadUri = Uri.parse(availableVersionResult.downloadUrl)
         val notificationTitle = "FFUpdater: ${context.getString(app.detail.displayTitle)}"
         val request = Request(downloadUri)
                 .setTitle(notificationTitle)

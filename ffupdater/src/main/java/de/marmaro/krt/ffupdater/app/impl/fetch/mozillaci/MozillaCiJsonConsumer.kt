@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.security.Sha256Hash
-import java.net.URL
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
@@ -12,7 +11,7 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
  */
 class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
     private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
-    private val chainOfTrustJsonUrl = URL("$baseUrl/artifacts/public/chain-of-trust.json")
+    private val chainOfTrustJsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
 
     /**
      * @throws ApiNetworkException
@@ -24,7 +23,7 @@ class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
         val releaseDate = ZonedDateTime.parse(response.task.created, ISO_ZONED_DATE_TIME)
         return Result(
             fileHash = Sha256Hash(hashString),
-            url = URL("$baseUrl/artifacts/$apkArtifact"),
+            url = "$baseUrl/artifacts/$apkArtifact",
             releaseDate = releaseDate
         )
     }
@@ -44,7 +43,7 @@ class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
 
     data class Result(
         val fileHash: Sha256Hash,
-        val url: URL,
+        val url: String,
         val releaseDate: ZonedDateTime,
     )
 }

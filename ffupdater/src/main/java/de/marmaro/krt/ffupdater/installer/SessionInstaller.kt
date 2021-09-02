@@ -9,6 +9,7 @@ import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import java.io.File
 import java.io.IOException
 
@@ -61,7 +62,12 @@ class SessionInstaller(
             }
             val intent = Intent(activity, InstallActivity::class.java)
             intent.action = PACKAGE_INSTALLED_ACTION
-            val pendingIntent = PendingIntent.getActivity(activity, 0, intent, 0)
+            val flag = if (DeviceEnvironment.supportsAndroidMarshmallow()) {
+                PendingIntent.FLAG_IMMUTABLE
+            } else {
+                0
+            }
+            val pendingIntent = PendingIntent.getActivity(activity, 0, intent, flag)
             session.commit(pendingIntent.intentSender)
         }
     }

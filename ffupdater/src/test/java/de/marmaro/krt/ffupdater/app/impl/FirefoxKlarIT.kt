@@ -54,7 +54,7 @@ class FirefoxKlarIT {
     }
 
     private fun makeChainOfTrustTextAvailableUnderUrl() {
-        val url = URL("$BASE_URL/logs/chain_of_trust.log")
+        val url = "$BASE_URL/logs/chain_of_trust.log"
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxKlar/" +
                 "chain-of-trust.log"
         coEvery {

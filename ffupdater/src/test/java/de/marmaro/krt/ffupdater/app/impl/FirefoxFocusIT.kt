@@ -54,7 +54,7 @@ class FirefoxFocusIT {
     }
 
     private fun makeChainOfTrustTextAvailable() {
-        val url = URL("$DOWNLOAD_URL/logs/chain_of_trust.log")
+        val url = "$DOWNLOAD_URL/logs/chain_of_trust.log"
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/" +
                 "chain-of-trust.log"
         coEvery {
