@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.background
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_DEFAULT
@@ -14,7 +15,6 @@ import androidx.core.app.NotificationCompat
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 object UpdateNotificationBuilder {
 
@@ -23,16 +23,11 @@ object UpdateNotificationBuilder {
         App.values().filter { !apps.contains(it) }.forEach { hideNotification(it, context) }
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun showNotification(app: App, context: Context) {
         val intent = Intent(context, InstallActivity::class.java)
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name)
-
-        val flag = if (DeviceEnvironment.supportsAndroidMarshmallow()) {
-            FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        } else {
-            FLAG_UPDATE_CURRENT
-        }
-        val updateAppIntent = PendingIntent.getActivity(context, 0, intent, flag)
+        val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
         val appTitle: String = context.getString(app.detail.displayTitle)
 
         val notificationBuilder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -43,13 +38,13 @@ object UpdateNotificationBuilder {
             NotificationCompat.Builder(context)
         }
         val notification = notificationBuilder
-                .setSmallIcon(R.mipmap.transparent, 0)
-                .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
-                .setContentTitle(context.getString(R.string.update_notification__title, appTitle))
-                .setContentText(context.getString(R.string.update_notification__text))
-                .setContentIntent(updateAppIntent)
-                .setAutoCancel(true)
-                .build()
+            .setSmallIcon(R.mipmap.transparent, 0)
+            .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
+            .setContentTitle(context.getString(R.string.update_notification__title, appTitle))
+            .setContentText(context.getString(R.string.update_notification__text))
+            .setContentIntent(updateAppIntent)
+            .setAutoCancel(true)
+            .build()
         getNotificationManager(context).notify(getNotificationId(app), notification)
     }
 
@@ -93,7 +88,8 @@ object UpdateNotificationBuilder {
     private fun createNotificationChannel(channelId: String, appTitle: String, context: Context) {
         val name = context.getString(R.string.update_notification__channel_name, appTitle)
         val channel = NotificationChannel(channelId, name, IMPORTANCE_DEFAULT)
-        channel.description = context.getString(R.string.update_notification__channel_description, appTitle)
+        channel.description =
+            context.getString(R.string.update_notification__channel_description, appTitle)
         getNotificationManager(context).createNotificationChannel(channel)
     }
 }

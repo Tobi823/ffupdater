@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.installer
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.PendingIntent
 import android.content.ActivityNotFoundException
@@ -9,7 +10,6 @@ import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import java.io.File
 import java.io.IOException
 
@@ -50,6 +50,7 @@ class SessionInstaller(
         }
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun installInternal(activity: Activity, downloadedFile: File) {
         val installer = activity.packageManager.packageInstaller
         val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
@@ -62,12 +63,7 @@ class SessionInstaller(
             }
             val intent = Intent(activity, InstallActivity::class.java)
             intent.action = PACKAGE_INSTALLED_ACTION
-            val flag = if (DeviceEnvironment.supportsAndroidMarshmallow()) {
-                PendingIntent.FLAG_IMMUTABLE
-            } else {
-                0
-            }
-            val pendingIntent = PendingIntent.getActivity(activity, 0, intent, flag)
+            val pendingIntent = PendingIntent.getActivity(activity, 0, intent, 0)
             session.commit(pendingIntent.intentSender)
         }
     }

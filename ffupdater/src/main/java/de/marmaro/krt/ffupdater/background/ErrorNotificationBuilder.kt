@@ -1,9 +1,9 @@
 package de.marmaro.krt.ffupdater.background
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
@@ -23,14 +23,10 @@ object ErrorNotificationBuilder {
     private const val CHANNEL_ID = "error_notification_channel"
     private const val NOTIFICATION_ID = 300
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     fun showNotification(context: Context, exception: Exception, message: String) {
         val intent = buildIntent(context, exception)
-        val flag = if (DeviceEnvironment.supportsAndroidMarshmallow()) {
-            FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
-        } else {
-            FLAG_UPDATE_CURRENT
-        }
-        val updateAppIntent = PendingIntent.getActivity(context, 0, intent, flag)
+        val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
 
         val notificationBuilder = if (DeviceEnvironment.supportsAndroidOreo()) {
             createNotificationChannel(context)
