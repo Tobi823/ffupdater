@@ -66,6 +66,15 @@ class InstallActivity : AppCompatActivity() {
         Crasher(this)
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val passedAppName = intent.extras?.getString(EXTRA_APP_NAME)
+        if (passedAppName == null) {
+            //InstallActivity was unintentionally started again after finishing the download
+            finish()
+            return
+        }
+        app = App.valueOf(passedAppName)
+
         fingerprintValidator = FingerprintValidator(packageManager)
         downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         appInstaller = AppInstaller.create(
@@ -76,8 +85,6 @@ class InstallActivity : AppCompatActivity() {
                     appInstallationFailedErrorMessage = errorMessage
                     restartStateMachine(State.FAILURE_APP_INSTALLATION)
                 })
-//        app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME) ?: run { finish(); return })
-        app = App.valueOf(intent.extras?.getString(EXTRA_APP_NAME)!!)
         apkCache = ApkCache(app, this)
         findViewById<View>(R.id.installConfirmationButton).setOnClickListener {
             restartStateMachine(State.USER_HAS_TRIGGERED_INSTALLATION_PROCESS)
