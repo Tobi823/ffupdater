@@ -11,7 +11,6 @@ import java.util.*
 import java.util.function.Predicate
 
 class GithubConsumer(
-        private val apiConsumer: ApiConsumer,
         private val repoOwner: String,
         private val repoName: String,
         private val resultsPerPage: Int,
@@ -44,7 +43,7 @@ class GithubConsumer(
      */
     private suspend fun updateCheckLatestRelease(): Result? {
         val url = URL("https://api.github.com/repos/$repoOwner/$repoName/releases/latest")
-        val release = apiConsumer.consumeJson(url, Release::class.java)
+        val release = ApiConsumer.consumeNetworkResource(url, Release::class)
         return release.takeIf { validReleaseTester.test(it) }?.let { convert(it) }
     }
 
@@ -55,9 +54,11 @@ class GithubConsumer(
     private suspend fun updateCheckAllReleases(): Result {
         val tries = 4
         for (page in 1..(tries + 1)) {
-            val url = URL("https://api.github.com/repos/$repoOwner/$repoName/releases?" +
-                    "per_page=$resultsPerPage&page=$page")
-            val releases = apiConsumer.consumeJson(url, Array<Release>::class.java)
+            val url = URL(
+                "https://api.github.com/repos/$repoOwner/$repoName/releases?" +
+                        "per_page=$resultsPerPage&page=$page"
+            )
+            val releases = ApiConsumer.consumeNetworkResource(url, Array<Release>::class)
             releases.firstOrNull { validReleaseTester.test(it) }?.let { return convert(it) }
         }
         throw InvalidApiResponseException("can't find release after $tries tries - abort")

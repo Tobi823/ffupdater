@@ -4,7 +4,6 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
@@ -13,7 +12,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 /**
  * https://api.github.com/repos/brave/brave-browser/releases
  */
-class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
+class Brave : BaseAppDetail() {
     override val packageName = "com.brave.browser"
     override val displayTitle = R.string.brave__title
     override val displayDescription = R.string.brave__description
@@ -32,7 +31,6 @@ class Brave(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
             "BraveMonox86.apk", "BraveMonox64.apk"
         )
         val githubConsumer = GithubConsumer(
-            apiConsumer = apiConsumer,
             repoOwner = "brave",
             repoName = "brave-browser",
             resultsPerPage = 20,

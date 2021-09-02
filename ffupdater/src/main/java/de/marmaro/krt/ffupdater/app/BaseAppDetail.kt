@@ -7,11 +7,13 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.io.File
-import java.time.Duration
 
 abstract class BaseAppDetail : AppDetail {
     private var cache: Deferred<AvailableVersionResult>? = null
@@ -54,11 +56,10 @@ abstract class BaseAppDetail : AppDetail {
 
 
     override suspend fun updateCheck(context: Context): UpdateCheckResult {
-        //TODO Vielleicht UpdateCheckResult nicht exponieren, damit ich mich nicht auf was festlegen muss
         mutex.withLock {
             val cacheAge = System.currentTimeMillis() - cacheTimestamp
-            // cache is invalid, if it's: too old, not created or failed
-            if (cache == null || cacheAge > CACHE_TIME) {
+            val cacheInvalid = (cache == null || cacheAge > CACHE_TIME)
+            if (cacheInvalid) {
                 cache = GlobalScope.async(Dispatchers.IO) {
                     updateCheckWithoutCaching()
                 }
@@ -66,10 +67,7 @@ abstract class BaseAppDetail : AppDetail {
             }
         }
 
-        val availableVersionResult: AvailableVersionResult
-        withTimeout(Duration.ofMinutes(2).toMillis()) {
-            availableVersionResult = cache!!.await()
-        }
+        val availableVersionResult = cache!!.await()
         return UpdateCheckResult(
                 availableResult = availableVersionResult,
                 isUpdateAvailable = !isInstalledVersionUpToDate(context, availableVersionResult),

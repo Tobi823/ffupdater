@@ -4,7 +4,6 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
@@ -12,7 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/
  */
-class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
+class FirefoxKlar : BaseAppDetail() {
     override val packageName = "org.mozilla.klar"
     override val displayTitle = R.string.firefox_klar__title
     override val displayDescription = R.string.firefox_klar__description
@@ -28,7 +27,6 @@ class FirefoxKlar(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val abiString = getStringForCurrentAbi("armeabi-v7a", "arm64-v8a", null, null)
         val mozillaCiConsumer = MozillaCiLogConsumer(
-            apiConsumer = apiConsumer,
             task = "project.mobile.focus.release.latest",
             apkArtifact = "public/app-klar-$abiString-release-unsigned.apk",
         )

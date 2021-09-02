@@ -10,11 +10,7 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 /**
  * Consume the "chain_of_trust.json".
  */
-class MozillaCiJsonConsumer(
-        private val apiConsumer: ApiConsumer,
-        task: String,
-        private val apkArtifact: String,
-) {
+class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
     private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
     private val chainOfTrustJsonUrl = URL("$baseUrl/artifacts/public/chain-of-trust.json")
 
@@ -22,32 +18,33 @@ class MozillaCiJsonConsumer(
      * @throws ApiNetworkException
      */
     suspend fun updateCheck(): Result {
-        val response = apiConsumer.consumeJson(chainOfTrustJsonUrl, ChainOfTrustJson::class.java)
+        val response =
+            ApiConsumer.consumeNetworkResource(chainOfTrustJsonUrl, ChainOfTrustJson::class)
         val hashString = response.artifacts[apkArtifact]!!.sha256
         val releaseDate = ZonedDateTime.parse(response.task.created, ISO_ZONED_DATE_TIME)
         return Result(
-                fileHash = Sha256Hash(hashString),
-                url = URL("$baseUrl/artifacts/$apkArtifact"),
-                releaseDate = releaseDate
+            fileHash = Sha256Hash(hashString),
+            url = URL("$baseUrl/artifacts/$apkArtifact"),
+            releaseDate = releaseDate
         )
     }
 
     data class ChainOfTrustJson(
-            val artifacts: Map<String, JsonValue>,
-            val task: TaskValue
+        val artifacts: Map<String, JsonValue>,
+        val task: TaskValue
     )
 
     data class JsonValue(
-            val sha256: String
+        val sha256: String
     )
 
     data class TaskValue(
-            val created: String
+        val created: String
     )
 
     data class Result(
-            val fileHash: Sha256Hash,
-            val url: URL,
-            val releaseDate: ZonedDateTime,
+        val fileHash: Sha256Hash,
+        val url: URL,
+        val releaseDate: ZonedDateTime,
     )
 }

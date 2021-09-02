@@ -4,7 +4,6 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
@@ -12,7 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
  */
-class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
+class FirefoxBeta : BaseAppDetail() {
     override val packageName = "org.mozilla.firefox_beta"
     override val displayTitle = R.string.firefox_beta__title
     override val displayDescription = R.string.firefox_beta__description
@@ -31,7 +30,6 @@ class FirefoxBeta(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
             "x86_64"
         )
         val mozillaCiConsumer = MozillaCiLogConsumer(
-            apiConsumer = apiConsumer,
             task = "mobile.v2.fenix.beta.latest.$abiString",
             apkArtifact = "public/build/$abiString/target.apk",
         )

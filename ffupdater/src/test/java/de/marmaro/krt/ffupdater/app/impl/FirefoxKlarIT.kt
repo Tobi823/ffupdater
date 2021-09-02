@@ -22,9 +22,6 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 class FirefoxKlarIT {
     @MockK
-    private lateinit var apiConsumer: ApiConsumer
-
-    @MockK
     private lateinit var context: Context
 
     @MockK
@@ -34,6 +31,9 @@ class FirefoxKlarIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
+        mockkObject(ApiConsumer)
+        mockkObject(DeviceEnvironment)
+
         every { context.packageManager } returns packageManager
         packageInfo.versionName = ""
         every {
@@ -41,33 +41,37 @@ class FirefoxKlarIT {
         } returns packageInfo
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        mockkObject(DeviceEnvironment)
     }
 
     companion object {
+        const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+                "project.mobile.focus.release.latest/artifacts/public"
+
         @AfterClass
         fun cleanUp() {
             unmockkAll()
         }
     }
 
+    private fun makeChainOfTrustTextAvailableUnderUrl() {
+        val url = URL("$BASE_URL/logs/chain_of_trust.log")
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxKlar/" +
+                "chain-of-trust.log"
+        coEvery {
+            ApiConsumer.consumeNetworkResource(url, String::class)
+        } returns File(path).readText()
+    }
+
     @Test
     fun updateCheck_armeabiv7a() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "project.mobile.focus.release.latest/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
+        makeChainOfTrustTextAvailableUnderUrl()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "project.mobile.focus.release.latest/artifacts/public/" +
-                "app-klar-armeabi-v7a-release-unsigned.apk")
+        val expectedUrl = URL("$BASE_URL/app-klar-armeabi-v7a-release-unsigned.apk")
         val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
             packageInfo.versionName = "8.12.0"
-            val actual = FirefoxKlar(apiConsumer).updateCheck(context)
+            val actual = FirefoxKlar().updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
             assertEquals("8.12.0", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -76,7 +80,7 @@ class FirefoxKlarIT {
 
         runBlocking {
             packageInfo.versionName = "8.11.0"
-            val actual = FirefoxKlar(apiConsumer).updateCheck(context)
+            val actual = FirefoxKlar().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("8.12.0", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -86,21 +90,14 @@ class FirefoxKlarIT {
 
     @Test
     fun updateCheck_arm64v8a() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "project.mobile.focus.release.latest/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
+        makeChainOfTrustTextAvailableUnderUrl()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "project.mobile.focus.release.latest/artifacts/public/" +
-                "app-klar-arm64-v8a-release-unsigned.apk")
+        val expectedUrl = URL("$BASE_URL/app-klar-arm64-v8a-release-unsigned.apk")
         val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
             packageInfo.versionName = "8.12.0"
-            val actual = FirefoxKlar(apiConsumer).updateCheck(context)
+            val actual = FirefoxKlar().updateCheck(context)
             assertEquals("8.12.0", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
@@ -108,7 +105,7 @@ class FirefoxKlarIT {
 
         runBlocking {
             packageInfo.versionName = "8.11.0"
-            val actual = FirefoxKlar(apiConsumer).updateCheck(context)
+            val actual = FirefoxKlar().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("8.12.0", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)

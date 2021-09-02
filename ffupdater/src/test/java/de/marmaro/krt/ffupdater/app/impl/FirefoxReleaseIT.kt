@@ -21,10 +21,6 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 class FirefoxReleaseIT {
-
-    @MockK
-    private lateinit var apiConsumer: ApiConsumer
-
     @MockK
     private lateinit var context: Context
 
@@ -35,6 +31,9 @@ class FirefoxReleaseIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
+        mockkObject(ApiConsumer)
+        mockkObject(DeviceEnvironment)
+
         every { context.packageManager } returns packageManager
         packageInfo.versionName = ""
         every {
@@ -42,33 +41,37 @@ class FirefoxReleaseIT {
         } returns packageInfo
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        mockkObject(DeviceEnvironment)
     }
 
     companion object {
+        const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+                "mobile.v2.fenix.release.latest"
+
         @AfterClass
         fun cleanUp() {
             unmockkAll()
         }
     }
 
-    @Test
-    fun updateCheck_armeabiv7a() {
+    private fun makeChainOfTrustTextAvailableUnderUrl(urlString: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
                 "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.armeabi-v7a/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+        val url = URL(urlString)
+        coEvery {
+            ApiConsumer.consumeNetworkResource(url, String::class)
+        } returns File(path).readText()
+    }
 
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.armeabi-v7a/artifacts/public/build/armeabi-v7a/" +
-                "target.apk")
+    @Test
+    fun updateCheck_armeabiv7a() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log")
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+        val expectedUrl = URL("$BASE_URL.armeabi-v7a/artifacts/public/build/armeabi-v7a/target.apk")
         val expectedTime = ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
             packageInfo.versionName = "90.1.2"
-            val actual = FirefoxRelease(apiConsumer).updateCheck(context)
+            val actual = FirefoxRelease().updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
             assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -77,7 +80,7 @@ class FirefoxReleaseIT {
 
         runBlocking {
             packageInfo.versionName = "85.1.2"
-            val actual = FirefoxRelease(apiConsumer).updateCheck(context)
+            val actual = FirefoxRelease().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -87,21 +90,14 @@ class FirefoxReleaseIT {
 
     @Test
     fun updateCheck_arm64v8a() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.arm64-v8a/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.arm64-v8a/artifacts/public/build/arm64-v8a/" +
-                "target.apk")
+        val expectedUrl = URL("$BASE_URL.arm64-v8a/artifacts/public/build/arm64-v8a/target.apk")
         val expectedTime = ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
             packageInfo.versionName = "90.1.2"
-            val actual = FirefoxRelease(apiConsumer).updateCheck(context)
+            val actual = FirefoxRelease().updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
             assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -110,7 +106,7 @@ class FirefoxReleaseIT {
 
         runBlocking {
             packageInfo.versionName = "85.1.2"
-            val actual = FirefoxRelease(apiConsumer).updateCheck(context)
+            val actual = FirefoxRelease().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -120,21 +116,14 @@ class FirefoxReleaseIT {
 
     @Test
     fun updateCheck_x86() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.x86/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.X86)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.x86/artifacts/public/build/x86/" +
-                "target.apk")
+        val expectedUrl = URL("$BASE_URL.x86/artifacts/public/build/x86/target.apk")
         val expectedTime = ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
             packageInfo.versionName = "90.1.2"
-            val actual = FirefoxRelease(apiConsumer).updateCheck(context)
+            val actual = FirefoxRelease().updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
             assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -143,7 +132,7 @@ class FirefoxReleaseIT {
 
         runBlocking {
             packageInfo.versionName = "85.1.2"
-            val actual = FirefoxRelease(apiConsumer).updateCheck(context)
+            val actual = FirefoxRelease().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -153,21 +142,14 @@ class FirefoxReleaseIT {
 
     @Test
     fun updateCheck_x8664() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
-                "chain-of-trust.log"
-        val url = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.x86_64/artifacts/public/logs/chain_of_trust.log"
-        coEvery { apiConsumer.consumeText(URL(url)) } returns File(path).readText()
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
-
-        val expectedUrl = URL("https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.x86_64/artifacts/public/build/x86_64/" +
-                "target.apk")
+        val expectedUrl = URL("$BASE_URL.x86_64/artifacts/public/build/x86_64/target.apk")
         val expectedTime = ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
             packageInfo.versionName = "90.1.2"
-            val actual = FirefoxRelease(apiConsumer).updateCheck(context)
+            val actual = FirefoxRelease().updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
             assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
@@ -176,7 +158,7 @@ class FirefoxReleaseIT {
 
         runBlocking {
             packageInfo.versionName = "85.1.2"
-            val actual = FirefoxRelease(apiConsumer).updateCheck(context)
+            val actual = FirefoxRelease().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
             assertEquals("90.1.2", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)

@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch
 
 import android.net.TrafficStats
+import android.util.Log
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
@@ -10,83 +11,76 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.URL
+import java.util.*
 import java.util.zip.GZIPInputStream
 import javax.net.ssl.HttpsURLConnection
+import kotlin.reflect.KClass
 
 /**
  * Consume a REST-API from the internet.
- * TODO make it singleton
  */
-class ApiConsumer {
+object ApiConsumer {
+    private const val GZIP = "gzip"
+    private const val THREAD_ID = 10000
+    private const val NETWORK_RETRY_DELAY = 5_000L //5 seconds
+
     private val gson = Gson()
 
     /**
-     * @throws ApiNetworkException
-     */
-    suspend fun consumeText(url: URL): String {
-        readNetworkResourceWithRetries(url).use {
-            return it.readText()
-        }
-    }
-
-    /**
-     * @throws ApiNetworkException
-     */
-    suspend fun <T> consumeJson(url: URL, clazz: Class<T>): T {
-        readNetworkResourceWithRetries(url).use {
-            return gson.fromJson(it, clazz)
-        }
-    }
-
-    /**
+     * Reads the network resource.
+     * If an error occurs, this method tries two additional times for reading the network resource.
+     * If clazz is String, then the network response is returned as a string.
+     * If class is not a String, then the network response is parsed as JSON and returned as object.
      * @throws ApiNetworkException if the network resource is not available after 5 retires.
      * @throws GithubRateLimitExceededException if the GitHub-API rate limit is exceeded.
      */
-    private suspend fun readNetworkResourceWithRetries(url: URL): BufferedReader {
-        val errorMessages = arrayListOf<String>()
-        var lastException: Exception? = null
-
-        repeat(5) { i ->
-            if (i != 0) {
-                delay(NETWORK_RETRY_DELAY)
-            }
+    suspend fun <T: Any> consumeNetworkResource(url: URL, clazz: KClass<T>): T {
+        val errors = Stack<Exception>()
+        repeat(3) { i ->
             try {
-                return readNetworkResource(url)
+                return readNetworkResource(url, clazz)
             } catch (e: FileNotFoundException) {
+                Log.e("ApiConsumer", "failed $url: $e")
                 if (url.host == "api.github.com") {
                     throw GithubRateLimitExceededException(e)
                 }
-                errorMessages.add(e.message ?: "")
-                lastException = e
+                errors.push(e)
             } catch (e: IOException) {
-                errorMessages.add(e.message ?: "")
-                lastException = e
+                Log.e("ApiConsumer", "failed $url: $e")
+                errors.push(e)
+            }
+            if (i != 2) {
+                delay(NETWORK_RETRY_DELAY)
             }
         }
 
-        val previousErrors = errorMessages.joinToString("; ")
-        val error = "Failed to consume API. Previous exceptions: [${previousErrors}]."
-        throw ApiNetworkException(error, lastException!!)
+        require(!errors.empty())
+        val lastException = errors.pop()
+
+        var errorMessage = "Failed to consume network resource. Previous exceptions:"
+        while(!errors.empty()) {
+            errorMessage += " ${errors.pop().message};"
+        }
+        throw ApiNetworkException(errorMessage, lastException)
     }
 
     /**
      * @throws IOException
      */
-    private fun readNetworkResource(url: URL): BufferedReader {
+    private fun <T: Any> readNetworkResource(url: URL, clazz: KClass<T>): T {
         TrafficStats.setThreadStatsTag(THREAD_ID)
         val connection = url.openConnection() as HttpsURLConnection
         connection.setRequestProperty("Accept-Encoding", GZIP)
-        connection.connectTimeout = CONNECTION_TIMEOUT_MS
-        return connection.inputStream
+        connection.inputStream
             .let { if (connection.contentEncoding == GZIP) GZIPInputStream(it) else it }
             .let { InputStreamReader(it) }
             .let { BufferedReader(it) }
-    }
-
-    companion object {
-        private const val GZIP = "gzip"
-        private const val THREAD_ID = 10000
-        private const val CONNECTION_TIMEOUT_MS = 10_000 //10 seconds
-        private const val NETWORK_RETRY_DELAY = 5_000L //5 seconds
+            .use {
+                if (clazz == String::class) {
+                    @Suppress("UNCHECKED_CAST")
+                    return it.readText() as T
+                }
+                return gson.fromJson(it, clazz.java)
+            }
     }
 }

@@ -5,7 +5,6 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppDetail
-import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
@@ -15,7 +14,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://github.com/fork-maintainers/iceraven-browser
  * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
  */
-class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
+class Iceraven : BaseAppDetail() {
     override val packageName = "io.github.forkmaintainers.iceraven"
     override val displayTitle = R.string.iceraven__title
     override val displayDescription = R.string.iceraven__description
@@ -48,7 +47,6 @@ class Iceraven(private val apiConsumer: ApiConsumer) : BaseAppDetail() {
             "browser-x86_64-forkRelease.apk"
         )
         val githubConsumer = GithubConsumer(
-            apiConsumer = apiConsumer,
             repoOwner = "fork-maintainers",
             repoName = "iceraven-browser",
             resultsPerPage = 3,

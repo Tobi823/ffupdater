@@ -21,10 +21,6 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 class FirefoxBetaIT {
-
-    @MockK
-    private lateinit var apiConsumer: ApiConsumer
-
     @MockK
     private lateinit var context: Context
 
@@ -35,6 +31,9 @@ class FirefoxBetaIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
+        mockkObject(ApiConsumer)
+        mockkObject(DeviceEnvironment)
+
         every { context.packageManager } returns packageManager
         packageInfo.versionName = ""
         every {
@@ -42,12 +41,9 @@ class FirefoxBetaIT {
         } returns packageInfo
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
-        mockkObject(DeviceEnvironment)
     }
 
     companion object {
-        const val TEST_JSON_FILE = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/" +
-                "FirefoxBeta/chain_of_trust.log"
         const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.beta.latest"
 
@@ -57,15 +53,22 @@ class FirefoxBetaIT {
         }
     }
 
+    private fun makeChainOfTrustTextAvailableUnderUrl(urlString: String) {
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
+                "chain_of_trust.log"
+        val url = URL(urlString)
+        coEvery {
+            ApiConsumer.consumeNetworkResource(url, String::class)
+        } returns File(path).readText()
+    }
+
     @Test
     fun updateCheck_armeabiv7a_upToDate() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-        coEvery {
-            apiConsumer.consumeText(URL("$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log"))
-        } returns File(TEST_JSON_FILE).readText()
         packageInfo.versionName = "91.0.0-beta.3"
 
-        val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
+        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
 
         assertFalse(actual.isUpdateAvailable)
         assertEquals("91.0.0-beta.3", actual.version)
@@ -77,13 +80,11 @@ class FirefoxBetaIT {
 
     @Test
     fun updateCheck_armeabiv7a_updateAvailable() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-        coEvery {
-            apiConsumer.consumeText(URL("$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log"))
-        } returns File(TEST_JSON_FILE).readText()
         packageInfo.versionName = "86.0.0-beta.3"
 
-        val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
+        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
 
         assertTrue(actual.isUpdateAvailable)
         assertEquals("91.0.0-beta.3", actual.version)
@@ -95,13 +96,11 @@ class FirefoxBetaIT {
 
     @Test
     fun updateCheck_arm64v8a_upToDate() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-        coEvery {
-            apiConsumer.consumeText(URL("$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log"))
-        } returns File(TEST_JSON_FILE).readText()
         packageInfo.versionName = "91.0.0-beta.3"
 
-        val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
+        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
 
         assertFalse(actual.isUpdateAvailable)
         assertEquals("91.0.0-beta.3", actual.version)
@@ -113,13 +112,11 @@ class FirefoxBetaIT {
 
     @Test
     fun updateCheck_arm64v8a_updateAvailable() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-        coEvery {
-            apiConsumer.consumeText(URL("$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log"))
-        } returns File(TEST_JSON_FILE).readText()
         packageInfo.versionName = "86.0.0-beta.3"
 
-        val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
+        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
 
         assertTrue(actual.isUpdateAvailable)
         assertEquals("91.0.0-beta.3", actual.version)
@@ -131,13 +128,11 @@ class FirefoxBetaIT {
 
     @Test
     fun updateCheck_x86_upToDate() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.X86)
-        coEvery {
-            apiConsumer.consumeText(URL("$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log"))
-        } returns File(TEST_JSON_FILE).readText()
         packageInfo.versionName = "91.0.0-beta.3"
 
-        val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
+        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
 
         assertFalse(actual.isUpdateAvailable)
         assertEquals("91.0.0-beta.3", actual.version)
@@ -149,13 +144,11 @@ class FirefoxBetaIT {
 
     @Test
     fun updateCheck_x86_updateAvailable() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.X86)
-        coEvery {
-            apiConsumer.consumeText(URL("$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log"))
-        } returns File(TEST_JSON_FILE).readText()
         packageInfo.versionName = "86.0.0-beta.3"
 
-        val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
+        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
 
         assertTrue(actual.isUpdateAvailable)
         assertEquals("91.0.0-beta.3", actual.version)
@@ -167,13 +160,11 @@ class FirefoxBetaIT {
 
     @Test
     fun updateCheck_x8664_upToDate() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
-        coEvery {
-            apiConsumer.consumeText(URL("$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log"))
-        } returns File(TEST_JSON_FILE).readText()
         packageInfo.versionName = "91.0.0-beta.3"
 
-        val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
+        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
 
         assertFalse(actual.isUpdateAvailable)
         assertEquals("91.0.0-beta.3", actual.version)
@@ -185,13 +176,11 @@ class FirefoxBetaIT {
 
     @Test
     fun updateCheck_x8664_updateAvailable() {
+        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log")
         every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
-        coEvery {
-            apiConsumer.consumeText(URL("$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log"))
-        } returns File(TEST_JSON_FILE).readText()
         packageInfo.versionName = "86.0.0-beta.3"
 
-        val actual = runBlocking { FirefoxBeta(apiConsumer).updateCheck(context) }
+        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
 
         assertTrue(actual.isUpdateAvailable)
         assertEquals("91.0.0-beta.3", actual.version)

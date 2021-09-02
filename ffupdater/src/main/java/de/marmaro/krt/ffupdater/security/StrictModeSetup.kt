@@ -39,7 +39,7 @@ object StrictModeSetup {
             StrictMode.setVmPolicy(VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
-                    .penaltyDeath() //TODO find leak
+                    //.penaltyDeath() //TODO find leak
                     .build())
         }
     }
