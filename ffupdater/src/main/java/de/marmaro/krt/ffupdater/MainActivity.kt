@@ -34,7 +34,6 @@ import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import james.crasher.Crasher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -93,10 +92,6 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         initUI()
         checkForUpdates(true)
-    }
-
-    override fun onPause() {
-        super.onPause()
         BackgroundJob.startOrStopBackgroundUpdateCheck(this)
     }
 
@@ -179,54 +174,46 @@ class MainActivity : AppCompatActivity() {
         }
 
         showLoadAnimation()
-        val jobs = ConcurrentLinkedQueue<Job>()
-        installedApps.forEach {
-            availableVersions[it]!!.setText(R.string.available_version_loading)
-            jobs.add(checkForAppUpdate(it, ignoreErrors))
-        }
+        installedApps.forEach { availableVersions[it]!!.setText(R.string.available_version_loading) }
         lifecycleScope.launch(Dispatchers.IO) {
-            jobs.forEach { it.join() }
-            lifecycleScope.launch(Dispatchers.Main) {
-                hideLoadAnimation()
-            }
+            installedApps.forEach { checkForAppUpdate(it, ignoreErrors) }
+            lifecycleScope.launch(Dispatchers.Main) { hideLoadAnimation() }
         }
     }
 
-    private fun checkForAppUpdate(app: App, ignoreErrors: Boolean): Job {
-        return lifecycleScope.launch(Dispatchers.IO) {
-            try {
-                val updateResult = app.detail.updateCheck(applicationContext)
-                lifecycleScope.launch(Dispatchers.Main) {
-                    availableVersions[app]!!.text = updateResult.displayVersion
-                    if (updateResult.isUpdateAvailable) {
-                        sameAppVersionAlreadyInstalled[app] = false
-                        enableDownloadButton(app)
-                    } else {
-                        sameAppVersionAlreadyInstalled[app] = true
-                        disableDownloadButton(app)
-                    }
-                }
-            } catch (e: GithubRateLimitExceededException) {
-                Log.e(LOG_TAG, "GitHub-API rate limit for '$app' is exceeded.", e)
-                lifecycleScope.launch(Dispatchers.Main) {
-                    availableVersions[app]!!.setText(R.string.main_activity__github_api_limit_exceeded)
+    private suspend fun checkForAppUpdate(app: App, ignoreErrors: Boolean) {
+        try {
+            val updateResult = app.detail.updateCheck(applicationContext)
+            lifecycleScope.launch(Dispatchers.Main) {
+                availableVersions[app]!!.text = updateResult.displayVersion
+                if (updateResult.isUpdateAvailable) {
+                    sameAppVersionAlreadyInstalled[app] = false
+                    enableDownloadButton(app)
+                } else {
+                    sameAppVersionAlreadyInstalled[app] = true
                     disableDownloadButton(app)
                 }
-            } catch (e: ApiNetworkException) {
-                Log.e(LOG_TAG, "Temporary network issue for '$app'.", e)
-                lifecycleScope.launch(Dispatchers.Main) {
-                    availableVersions[app]!!.setText(R.string.main_activity__temporary_network_issue)
-                    disableDownloadButton(app)
-                }
-            } catch (e: Exception) {
-                if (!ignoreErrors) {
-                    throw UpdateCheckException("Failed to check '$app' for updates", e)
-                }
-                Log.e(LOG_TAG, "Fail to check $app for updates", e)
-                lifecycleScope.launch(Dispatchers.Main) {
-                    availableVersions[app]!!.setText(R.string.available_version_error)
-                    disableDownloadButton(app)
-                }
+            }
+        } catch (e: GithubRateLimitExceededException) {
+            Log.e(LOG_TAG, "GitHub-API rate limit for '$app' is exceeded.", e)
+            lifecycleScope.launch(Dispatchers.Main) {
+                availableVersions[app]!!.setText(R.string.main_activity__github_api_limit_exceeded)
+                disableDownloadButton(app)
+            }
+        } catch (e: ApiNetworkException) {
+            Log.e(LOG_TAG, "Temporary network issue for '$app'.", e)
+            lifecycleScope.launch(Dispatchers.Main) {
+                availableVersions[app]!!.setText(R.string.main_activity__temporary_network_issue)
+                disableDownloadButton(app)
+            }
+        } catch (e: Exception) {
+            if (!ignoreErrors) {
+                throw UpdateCheckException("Failed to check '$app' for updates", e)
+            }
+            Log.e(LOG_TAG, "Fail to check $app for updates", e)
+            lifecycleScope.launch(Dispatchers.Main) {
+                availableVersions[app]!!.setText(R.string.available_version_error)
+                disableDownloadButton(app)
             }
         }
     }
