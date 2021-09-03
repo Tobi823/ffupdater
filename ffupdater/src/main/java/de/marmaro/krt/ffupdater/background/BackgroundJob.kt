@@ -45,6 +45,25 @@ class BackgroundJob(
      */
     override suspend fun doWork(): Result {
         val context = applicationContext
+        try {
+            executeBackgroundJob()
+        } catch (e: CancellationException) {
+            // when the network is disabled, this exception will be thrown -> ignore it
+        } catch (e: ApiNetworkException) {
+            // GithubRateLimitExceededException will be caught too
+            val message = context.getString(R.string.background_network_issue_notification__text)
+            ErrorNotificationBuilder.showNotification(context, e, message)
+        } catch (e: Exception) {
+            val message = context.getString(R.string.background_unknown_bug_notification__text)
+            ErrorNotificationBuilder.showNotification(context, e, message)
+        }
+        //don't Result.retry() on exceptions to avoid error spamming
+        return Result.success()
+    }
+
+    private suspend fun executeBackgroundJob(): Result {
+        Log.i(LOG_TAG, "execute BackgroundJob")
+        val context = applicationContext
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
 
         if (NetworkUtil.isAirplaneModeOn(context)) {
@@ -60,26 +79,13 @@ class BackgroundJob(
             return Result.retry()
         }
 
-        Log.i(LOG_TAG, "execute BackgroundJob")
-        try {
-            val appsWithUpdates = findAppsWithUpdates()
-            if (NetworkUtil.isActiveNetworkUnmetered(context) &&
-                StorageUtil.isEnoughStorageAvailable(context)) {
-                downloadUpdatesInBackground(downloadManager, appsWithUpdates)
-            }
-            showUpdateNotification(appsWithUpdates)
-            updateLastBackgroundCheckTimestamp()
-        } catch (e: CancellationException) {
-            // when the network is disabled, this exception will be thrown -> ignore it
-        } catch (e: ApiNetworkException) {
-            // GithubRateLimitExceededException will be caught too
-            val message = context.getString(R.string.background_network_issue_notification__text)
-            ErrorNotificationBuilder.showNotification(context, e, message)
-        } catch (e: Exception) {
-            val message = context.getString(R.string.background_unknown_bug_notification__text)
-            ErrorNotificationBuilder.showNotification(context, e, message)
+        val appsWithUpdates = findAppsWithUpdates()
+        if (NetworkUtil.isActiveNetworkUnmetered(context) &&
+            StorageUtil.isEnoughStorageAvailable(context)) {
+            downloadUpdatesInBackground(downloadManager, appsWithUpdates)
         }
-        //don't Result.retry() on exceptions to avoid error spamming
+        showUpdateNotification(appsWithUpdates)
+        updateLastBackgroundCheckTimestamp()
         return Result.success()
     }
 

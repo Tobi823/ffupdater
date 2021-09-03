@@ -23,6 +23,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
+import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
@@ -32,7 +33,6 @@ import de.marmaro.krt.ffupdater.download.NetworkUtil
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import james.crasher.Crasher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Crasher(this)
+        CrashListener.openCrashReporterForUncaughtExceptions(this)
         setContentView(R.layout.main_activity)
         setSupportActionBar(findViewById(R.id.toolbar))
         StrictModeSetup.enableStrictMode()

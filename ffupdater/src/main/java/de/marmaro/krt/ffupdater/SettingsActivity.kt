@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
 import de.marmaro.krt.ffupdater.background.BackgroundJob
+import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 
 
@@ -16,6 +17,7 @@ import de.marmaro.krt.ffupdater.settings.SettingsHelper
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        CrashListener.openCrashReporterForUncaughtExceptions(this)
         setContentView(R.layout.settings_activity)
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385

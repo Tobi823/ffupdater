@@ -38,6 +38,11 @@
         android:usesCleartextTraffic="false"
         tools:targetApi="Q">
         <activity
+            android:name=".CrashReportActivity"
+            android:label="FFUpdater Crash Reporter"
+            android:theme="@style/CrashReportTheme">
+        </activity>
+        <activity
             android:name=".SettingsActivity"
             android:label="@string/settings__activity_label"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />

@@ -109,4 +109,10 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:singleLine">true</item>
     </style>
+
+    <style name="CrashReportTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/errorRed</item>
+        <item name="colorPrimaryDark">@color/errorRed</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

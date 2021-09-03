@@ -20,8 +20,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    implementation 'com.github.fennifith:Crasher:0.0.2'
-
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'io.mockk:mockk:1.10.5'
     testImplementation 'org.hamcrest:hamcrest:2.2'

@@ -18,6 +18,11 @@
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromiteは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？</string>
     <string name="but_was">But was:</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピーする</string>
+    <string name="crash_report__explain_text">残念ながら、FFUpdaterはクラッシュしました。このエラーを notabug.org、GitHub または GitLab で報告してください。クリップボードからのクラッシュレポートと、バグを再現する方法の説明を課題に追加してください。</string>
+    <string name="crash_report__go_to_github">GitHub に移動</string>
+    <string name="crash_report__go_to_gitlab">GitLab に移動</string>
+    <string name="crash_report__got_to_notabug_org">notabug.org に移動</string>
     <string name="device_too_old_dialog__message">このアプリはAndroid %1$s以上を要求してしますが、このデバイスはAndroid %2$sが実行されています。別のアプリを選択するか、OSのアップデートまたはより新しい端末を使用してください。</string>
     <string name="device_too_old_dialog__title">デバイスが古いバージョンです</string>
     <string name="dialog_button__do_not_install">いいえ、このアプリをインストールしません</string>
@@ -83,7 +88,6 @@
     <string name="main_activity__not_connected_to_internet">ネットワーク接続がありません</string>
     <string name="main_activity__subtitle">あなたのブラウザをアップデートします</string>
     <string name="main_activity__temporary_network_issue">一時的なネットワークの問題です。後で再試行します。</string>
-    <string name="msg_crasher_crashed" tools:keep="@string/msg_crasher_crashed">申し訳ございません、%1$sはクラッシュしました。このエラーをこちらから報告できます。:\n - notabug.org: https://notabug.org/Tobiwan/ffupdater/issues\n - GitHub: https://github.com/Tobi823/ffupdater/issues\n - GitLab: https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues \n\nスタックトレースとバグな再現方法の詳細を含めて新規Issueを作成してください。</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">システムダウンロードマネージャーは、現在、他のファイルをダウンロードしています。時間がかかるかもしれない新しいダウンロードを開始しますか？</string>
     <string name="running_downloads_dialog__negative">いいえ、ダウンロードしません</string>

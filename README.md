@@ -80,7 +80,6 @@ Signer #1 certificate MD5 digest: 78a34e36cedd844954726f1e2076642c
  - [AndroidX](https://developer.android.com/jetpack/androidx) by Google for UI
  - [Material Components](https://github.com/material-components/material-components-android) by Google for UI (Apache 2.0)
  - [Gson](https://github.com/google/gson) by Google for parsing API responses (Apache 2.0)
- - [Crasher](https://github.com/fennifith/Crasher) by James Fenn for crash reports (Apache 2.0)
  - [Shared Preferences Mock](https://github.com/IvanShafran/shared-preferences-mock) by Ivan Shafran for testing SharedPreferences (MIT)
  - [Kotlin](https://github.com/JetBrains/kotlin) by Jetbrains for programming language Kotlin
  - [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) by Jetbrains for concurrency (Apache 2.0)
@@ -88,6 +87,7 @@ Signer #1 certificate MD5 digest: 78a34e36cedd844954726f1e2076642c
  - [MockK](https://mockk.io/) for testing (Apache 2.0)
  - [Hamcrest](https://github.com/hamcrest/JavaHamcrest) by Joe Walnes, Nat Pryce and Steve Freeman for testing (BSD)
  - [Hamcrest Date](https://github.com/eXparity/hamcrest-date) by Stewart Bissett for testing with java.time (BSD-3)
+ - Partially copy and modify [Crasher by James Fenn (Apache 2.0)](https://github.com/fennifith/Crasher) to the FFUpdater code base for crash reports
 
 ## My motivation / Project goals
 [Goals](GOALS.md)

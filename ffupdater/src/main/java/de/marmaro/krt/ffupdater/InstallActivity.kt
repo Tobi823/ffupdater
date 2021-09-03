@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.*
@@ -25,7 +26,6 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.FingerprintResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import james.crasher.Crasher
 import kotlinx.coroutines.*
 import java.util.*
 import java.util.concurrent.*
@@ -63,7 +63,7 @@ class InstallActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.download_activity)
-        Crasher(this)
+        CrashListener.openCrashReporterForUncaughtExceptions(this)
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
