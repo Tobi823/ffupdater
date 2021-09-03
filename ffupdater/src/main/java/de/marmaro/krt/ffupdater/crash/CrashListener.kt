@@ -14,7 +14,7 @@ class CrashListener private constructor(val context: Context) : Thread.UncaughtE
 
     companion object {
         fun openCrashReporterForUncaughtExceptions(context: Context): CrashListener {
-            val crashListener = CrashListener(context.getApplicationContext())
+            val crashListener = CrashListener(context.applicationContext)
             Thread.setDefaultUncaughtExceptionHandler(crashListener)
             return crashListener
         }

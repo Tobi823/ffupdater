@@ -55,9 +55,9 @@ class CrashReportActivity : AppCompatActivity() {
         const val EXTRA_EXCEPTION_CLASS_NAME = "exception_class_name"
         const val EXTRA_EXCEPTION_MESSAGE = "exception_message"
         const val EXTRA_EXCEPTION_STACK_TRACE = "exception_stack_trace"
-        val NOTABUG_URI = Uri.parse("https://notabug.org/Tobiwan/ffupdater/issues")
-        val GITHUB_URI = Uri.parse("https://github.com/Tobi823/ffupdater/issues")
-        val GITLAB_URI = Uri.parse("https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues")
+        val NOTABUG_URI = Uri.parse("https://notabug.org/Tobiwan/ffupdater/issues")!!
+        val GITHUB_URI = Uri.parse("https://github.com/Tobi823/ffupdater/issues")!!
+        val GITLAB_URI = Uri.parse("https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues")!!
 
         fun createIntentForDisplayingThrowable(context: Context, throwable: Throwable): Intent {
             val intent = Intent(context, CrashReportActivity::class.java)

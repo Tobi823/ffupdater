@@ -26,7 +26,7 @@ class FingerprintValidatorTest {
 
     @MockK
     lateinit var signature: Signature
-    lateinit var fingerprintValidator: FingerprintValidator
+    private lateinit var fingerprintValidator: FingerprintValidator
 
     companion object {
         lateinit var signatureBytes: ByteArray
