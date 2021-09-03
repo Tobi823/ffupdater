@@ -1,4 +1,4 @@
-# 2021-08-30 Version 74.3.6 (79)
+# 2021-08-30 Version 74.4.0 (79)
  * Update Brazilian Portuguese translation (thanks mezysinc; Tobiwan/ffupdater#78)
  * Abort background update check if airplane mode is enabled (Tobi823/ffupdater#74)
  * Prevent simultaneous download by the background job and the user (Tobiwan/ffupdater#80)
