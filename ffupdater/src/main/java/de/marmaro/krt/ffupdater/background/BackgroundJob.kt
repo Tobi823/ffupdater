@@ -133,8 +133,9 @@ class BackgroundJob(
         repeat(60 * 60) {
             when (DownloadManagerUtil.getStatusAndProgress(downloadManager, downloadId).status) {
                 SUCCESSFUL -> {
-                    val downloadedFile = downloadManager.openDownloadedFile(downloadId)
-                    apkCache.copyToCache(downloadedFile)
+                    downloadManager.openDownloadedFile(downloadId).use { downloadedFile ->
+                        apkCache.copyToCache(downloadedFile)
+                    }
                     return
                 }
                 FAILED -> {

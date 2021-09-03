@@ -267,8 +267,9 @@ class InstallActivity : AppCompatActivity() {
 
             val fingerprint = withContext(ia.lifecycleScope.coroutineContext + Dispatchers.IO) {
                 val downloadId = ia.viewModel.downloadId!!
-                val downloadedFile = ia.downloadManager.openDownloadedFile(downloadId)
-                ia.apkCache.copyToCache(downloadedFile)
+                ia.downloadManager.openDownloadedFile(downloadId).use { downloadedFile ->
+                    ia.apkCache.copyToCache(downloadedFile)
+                }
                 ia.downloadManager.remove(downloadId)
                 ia.fingerprintValidator.checkApkFile(ia.apkCache.getCacheFile(), app)
             }
