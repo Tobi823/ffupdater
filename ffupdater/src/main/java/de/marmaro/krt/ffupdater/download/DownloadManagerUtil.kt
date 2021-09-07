@@ -45,7 +45,10 @@ object DownloadManagerUtil {
         query.setFilterById(id)
         try {
             downloadManager.query(query).use { cursor ->
-                require(cursor.moveToFirst())
+                if (!cursor.moveToFirst()) {
+                    return DownloadStatus(DownloadStatus.Status.FAILED, 0)
+                }
+
                 val totalBytesIndex = cursor.getColumnIndex(COLUMN_TOTAL_SIZE_BYTES)
                 val totalBytes = cursor.getInt(totalBytesIndex).toDouble()
                 val actualBytesIndex = cursor.getColumnIndex(COLUMN_BYTES_DOWNLOADED_SO_FAR)

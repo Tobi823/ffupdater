@@ -1,3 +1,6 @@
+# 2021-09-?? Version 74.4.1 (80)
+ * Fix crash when canceling a download (Tobi823/ffupdater#77)
+
 # 2021-08-30 Version 74.4.0 (79)
  * Update Brazilian Portuguese translation (thanks mezysinc; Tobiwan/ffupdater#78)
  * Abort background update check if airplane mode is enabled (Tobi823/ffupdater#74)
