@@ -8,6 +8,7 @@ import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.FAILED
@@ -18,6 +19,7 @@ import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
+import java.net.UnknownHostException
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
 
@@ -48,9 +50,17 @@ class BackgroundJob(
         try {
             executeBackgroundJob()
         } catch (e: CancellationException) {
-            // when the network is disabled, this exception will be thrown -> ignore it
+            Log.i(LOG_TAG, "retry BackgroundJob after CancellationException")
+            return Result.retry()
         } catch (e: ApiNetworkException) {
-            // GithubRateLimitExceededException will be caught too
+            if (e.cause is GithubRateLimitExceededException) {
+                Log.i(LOG_TAG, "retry BackgroundJob after GithubRateLimitExceededException")
+                return Result.retry()
+            }
+            if (e.cause is UnknownHostException) {
+                Log.i(LOG_TAG, "retry BackgroundJob after UnknownHostException")
+                return Result.retry()
+            }
             val message = context.getString(R.string.background_network_issue_notification__text)
             ErrorNotificationBuilder.showNotification(context, e, message)
         } catch (e: Exception) {
@@ -81,7 +91,8 @@ class BackgroundJob(
 
         val appsWithUpdates = findAppsWithUpdates()
         if (NetworkUtil.isActiveNetworkUnmetered(context) &&
-            StorageUtil.isEnoughStorageAvailable(context)) {
+            StorageUtil.isEnoughStorageAvailable(context)
+        ) {
             downloadUpdatesInBackground(downloadManager, appsWithUpdates)
         }
         showUpdateNotification(appsWithUpdates)
@@ -132,10 +143,12 @@ class BackgroundJob(
         }
 
         Log.i(LOG_TAG, "download $app in the background")
-        val downloadId = DownloadManagerUtil.enqueue(downloadManager,
+        val downloadId = DownloadManagerUtil.enqueue(
+            downloadManager,
             applicationContext,
             app,
-            availableResult)
+            availableResult
+        )
         repeat(60 * 60) {
             when (DownloadManagerUtil.getStatusAndProgress(downloadManager, downloadId).status) {
                 SUCCESSFUL -> {

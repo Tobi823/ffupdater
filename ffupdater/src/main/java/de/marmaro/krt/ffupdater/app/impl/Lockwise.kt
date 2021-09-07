@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 
 /**
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
+ * https://www.apkmirror.com/apk/mozilla/firefox-lockwise/
  */
 class Lockwise : BaseAppDetail() {
     override val packageName = "mozilla.lockbox"
