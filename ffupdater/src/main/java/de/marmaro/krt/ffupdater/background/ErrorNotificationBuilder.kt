@@ -22,7 +22,8 @@ object ErrorNotificationBuilder {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     fun showNotification(context: Context, exception: Exception, message: String) {
-        val intent = CrashReportActivity.createIntentForDisplayingThrowable(context, exception)
+        val description = context.getString(R.string.crash_report__explain_text__background_job)
+        val intent = CrashReportActivity.createIntent(context, exception, description)
         val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
 
         val notificationBuilder = if (DeviceEnvironment.supportsAndroidOreo()) {
@@ -35,7 +36,7 @@ object ErrorNotificationBuilder {
         val notification = notificationBuilder
                 .setSmallIcon(mipmap.transparent, 0)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, mipmap.ic_launcher))
-                .setContentTitle(context.getString(R.string.background_error_notification__title))
+                .setContentTitle(context.getString(R.string.background_job_failure__notification_title))
                 .setStyle(NotificationCompat.BigTextStyle().bigText(message))
                 .setContentText(message)
                 .setContentIntent(updateAppIntent)

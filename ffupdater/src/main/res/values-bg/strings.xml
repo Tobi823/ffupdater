@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Относно FFUpdater</string>
     <string name="action_settings_title">Настройки</string>
@@ -6,11 +7,12 @@
     <string name="application_installation_was_not_successful">Грешка при инсталиране на приложението</string>
     <string name="application_successfully_installed">Приложението е успешно инсталирано</string>
     <string name="available_version">Налично: %1$s</string>
-    <string name="available_version_error">ГРЕШКА</string>
+    <string name="available_version_error">
+        <u>ГРЕШКА</u>
+    </string>
     <string name="available_version_loading">Зареждане…</string>
-    <string name="background_error_notification__title">Грешка при проверка за обновяване във фонов режим</string>
-    <string name="background_network_issue_notification__text">Проверката във фонов режим е неуспешна, вероятно поради временен проблем с мрежовата свързаност. Ако все пак грешката се появява повече от веднъж седмично я докладвайте. Докоснете за отваряне на журнала.</string>
-    <string name="background_unknown_bug_notification__text">По неизвестна причина проверката във фонов режим е неуспешна. Докладвайте тази грешка. Докоснете за отваряне на журнала.</string>
+    <string name="background_job_failure__notification_text">Моля, докладвайте за тази грешка. Щракнете, за да видите доклада за грешка.</string>
+    <string name="background_job_failure__notification_title">Грешка при проверка за обновяване във фонов режим</string>
     <string name="brave__description">Brave Web Browser поверителен и безопасен мрежов четец, който безплатно спира реклами от трети страни. \n\nBrave Web Browser е бърз и сигурен мрежов четец за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен четец, който ви предпазва от проследяване чрез реклами, злонамерен софтуер и изскачащи прозорци.</string>
     <string name="brave__title">Brave Browser</string>
     <string name="brave__warning">Brave използва техническата основа на Google Chrome (Chromium) - на някои това не им допада. Искате ли да инсталирате Brave?</string>
@@ -18,8 +20,11 @@
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite използва техническата основа на Google Chrome (Chromium) - на някои това не им допада. Искате ли да инсталирате Bromite?</string>
     <string name="but_was">Но е:</string>
-    <string name="crash_report__copy_crash_report_to_clipboard">"Копиране на доклада за срив в клипборда "</string>
-    <string name="crash_report__explain_text">За съжаление FFUpdater се срина. Моля, докладвайте за тази грешка на notabug.org, GitHub или GitLab. Добавете към проблема си доклада за срив от клипборда и описание как да възпроизведете грешката.</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Копиране на доклада за срив в клипборда</string>
+    <string name="crash_report__explain_text__background_job">По време на фоновата проверка на грешки се появи следната грешка. Ако тази грешка се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Моля, не забравяйте да добавите доклада за срив от клипборда и описание на начина, по който възпроизвеждате тази грешка.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">При извличането на URL адреса за изтегляне е възникнала следната грешка. Ако тази грешка се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Моля, не забравяйте да добавите вашия доклад за срив от клипборда и описание на начина, по който възпроизвеждате тази грешка.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">При проверката за актуализации в главния изглед се появи следната грешка. Ако тази грешка се появява често, не се колебайте да я съобщите в notabug.org, GitHub или GitLab. Моля, не забравяйте да добавите вашия доклад за срив от клипборда и описание на начина, по който възпроизвеждате тази грешка.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">За съжаление FFUpdater се срина. Моля, докладвайте за тази грешка на notabug.org, GitHub или GitLab. Добавете към проблема си доклада за срив от клипборда и описание как да възпроизведете грешката.</string>
     <string name="crash_report__go_to_github">Към GitHub</string>
     <string name="crash_report__go_to_gitlab">Към GitLab</string>
     <string name="crash_report__got_to_notabug_org">Отидете на notabug.org</string>
@@ -58,13 +63,18 @@
     <string name="install_activity__downloaded_application_from">Приложението е изтеглено от:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Изтегленото приложение е НЕпроверено</string>
     <string name="install_activity__downloaded_application_is_verified">Изтегленото приложение е проверено</string>
+    <string name="install_activity__exception__show_button">
+        <u>Покажете подробния отчет за грешка.</u>
+    </string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Очакван отпечатък с SHA-256 от сертификат:</string>
     <string name="install_activity__external_storage_not_accessible">Външно хранилище не е налично и изтегляне не може да започне. Текущото състояние е:</string>
     <string name="install_activity__fetch_url_for_download">Получаване на адрес от %1$s за изтегляне</string>
     <string name="install_activity__fetched_url_for_download_successfully">Получен е адрес за изтегляне от %1$s</string>
+    <string name="install_activity__github_rate_limit_exceeded">Превишено е ограничението на скоростта на GitHub-API. Моля, опитайте изтеглянето отново през следващия час.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта. \n\nПрепоръчително е да премахнете приложението.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта. \n\nПрепоръчително е да премахнете приложението.</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Отпечатък с SHA-256 от сертификат:</string>
+    <string name="install_activity__temporary_network_issue">Възникнал е временен проблем в мрежата. Моля, опитайте отново по-късно.</string>
     <string name="install_activity__too_low_memory_description">Устройството разполага само с %1$d свободни МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>
     <string name="install_activity__too_low_memory_title">Недостатъчно свободно пространство</string>
     <string name="install_activity__try_disable_miui_optimization">Ако използвате Xiaomi или MIUI, опитайте да деактивирате \"MIUI Optimization\".</string>
@@ -84,10 +94,14 @@
     <string name="installed_version">Инсталирано: %1$s</string>
     <string name="lockwise__description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС \n\nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в сметките си.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">Превишаване на лимита на GitHub-API. Повторете опита следващия час.</string>
-    <string name="main_activity__not_connected_to_internet">Няма връзка с Мрежата</string>
+    <string name="main_activity__github_api_limit_exceeded">
+        <u>Превишаване на лимита на GitHub-API. Повторете опита следващия час.</u>
+    </string>
+    <string name="main_activity__no_internet_connection">Няма връзка с Мрежата</string>
     <string name="main_activity__subtitle">Обновявайте мрежовите четци от Mozilla</string>
-    <string name="main_activity__temporary_network_issue">Временен проблем в мрежата. Повторете опита по-</string>
+    <string name="main_activity__temporary_network_issue">
+        <u>Временен проблем в мрежата. Повторете опита по-</u>
+    </string>
     <string name="ok">Добре</string>
     <string name="running_downloads_dialog__message">Мениджърът за изтегляне на системата изтегля други файлове в момента. Искате ли да започнете ново изтегляне, което може да отнеме повече време?</string>
     <string name="running_downloads_dialog__negative">Не, не го изтегляйте</string>

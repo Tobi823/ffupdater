@@ -7,7 +7,7 @@ import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
@@ -19,7 +19,6 @@ import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
-import java.net.UnknownHostException
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
 
@@ -44,31 +43,37 @@ class BackgroundJob(
      * <a>https://developer.android.com/reference/androidx/work/WorkRequest#DEFAULT_BACKOFF_DELAY_MILLIS</a>
      *
      * Result.failure will remove the scheduled job (and that's unwanted).
+     * Result.success will execute the job in the next period.
+     * Result.retry will retry the job with exponentially increased wait time (30s, 1m, 2m, ...).
      */
     override suspend fun doWork(): Result {
         val context = applicationContext
         try {
             executeBackgroundJob()
-        } catch (e: CancellationException) {
-            Log.i(LOG_TAG, "retry BackgroundJob after CancellationException")
+        } catch (e: GithubRateLimitExceededException) {
+            if (runAttemptCount >= 8) {
+                showErrorNotification(context, e)
+                Result.success()
+            }
+            Log.i(LOG_TAG, "retry due to GithubRateLimitExceededException", e)
             return Result.retry()
-        } catch (e: ApiNetworkException) {
-            if (e.cause is GithubRateLimitExceededException) {
-                Log.i(LOG_TAG, "retry BackgroundJob after GithubRateLimitExceededException")
-                return Result.retry()
+        } catch (e: ApiConsumerException) {
+            if (runAttemptCount >= 8) {
+                showErrorNotification(context, e)
+                return Result.success()
             }
-            if (e.cause is UnknownHostException) {
-                Log.i(LOG_TAG, "retry BackgroundJob after UnknownHostException")
-                return Result.retry()
-            }
-            val message = context.getString(R.string.background_network_issue_notification__text)
-            ErrorNotificationBuilder.showNotification(context, e, message)
+            Log.i(LOG_TAG, "retry due to ApiConsumerException", e)
+            return Result.retry()
         } catch (e: Exception) {
-            val message = context.getString(R.string.background_unknown_bug_notification__text)
-            ErrorNotificationBuilder.showNotification(context, e, message)
+            showErrorNotification(context, e)
+            return Result.success()
         }
-        //don't Result.retry() on exceptions to avoid error spamming
         return Result.success()
+    }
+
+    private fun showErrorNotification(context: Context, e: Exception) {
+        val message = context.getString(R.string.background_job_failure__notification_text)
+        ErrorNotificationBuilder.showNotification(context, e, message)
     }
 
     private suspend fun executeBackgroundJob(): Result {
@@ -76,16 +81,12 @@ class BackgroundJob(
         val context = applicationContext
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
 
-        if (NetworkUtil.isAirplaneModeOn(context)) {
-            Log.i(LOG_TAG, "delay BackgroundJob due to enabled airplane mode")
-            return Result.retry()
-        }
         if (!NetworkUtil.isInternetAvailable(context)) {
-            Log.i(LOG_TAG, "delay BackgroundJob because internet is not available")
+            Log.i(LOG_TAG, "retry because internet is not available")
             return Result.retry()
         }
         if (DownloadManagerUtil.isDownloadingAFileNow(downloadManager)) {
-            Log.i(LOG_TAG, "delay BackgroundJob because other downloads are running")
+            Log.i(LOG_TAG, "retry because other downloads are running")
             return Result.retry()
         }
 
@@ -106,7 +107,7 @@ class BackgroundJob(
      *  - are not disabled (in the settings "excluded applications")
      *  - have an available update
      * @throws InvalidApiResponseException
-     * @throws ApiNetworkException
+     * @throws ApiConsumerException
      * @throws CancellationException
      */
     private suspend fun findAppsWithUpdates(): List<App> {

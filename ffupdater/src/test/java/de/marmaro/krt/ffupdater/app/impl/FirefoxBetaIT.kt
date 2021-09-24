@@ -55,7 +55,7 @@ class FirefoxBetaIT {
     private fun makeChainOfTrustTextAvailableUnderUrl(url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
                 "chain_of_trust.log"
-        coEvery {
+        every {
             ApiConsumer.consumeNetworkResource(url, String::class)
         } returns File(path).readText()
     }

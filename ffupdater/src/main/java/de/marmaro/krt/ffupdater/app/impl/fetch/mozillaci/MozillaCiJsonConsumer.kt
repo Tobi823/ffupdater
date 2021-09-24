@@ -1,6 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci
 
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.security.Sha256Hash
 import java.time.ZonedDateTime
@@ -14,9 +14,9 @@ class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
     private val chainOfTrustJsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
 
     /**
-     * @throws ApiNetworkException
+     * @throws ApiConsumerException
      */
-    suspend fun updateCheck(): Result {
+    fun updateCheck(): Result {
         val response =
             ApiConsumer.consumeNetworkResource(chainOfTrustJsonUrl, ChainOfTrustJson::class)
         val hashString = response.artifacts[apkArtifact]!!.sha256

@@ -17,6 +17,8 @@ class CrashReportActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.crash_report_layout)
 
+        findViewById<TextView>(R.id.crash_report__explanation_textview).text =
+            intent.extras?.getString(EXTRA_EXCEPTION_EXPLANATION, "/")
         findViewById<Button>(R.id.crash_report__copy_error_message_to_clipboard_button).setOnClickListener {
             val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val crashReport = getCrashReport()
@@ -55,16 +57,18 @@ class CrashReportActivity : AppCompatActivity() {
         const val EXTRA_EXCEPTION_CLASS_NAME = "exception_class_name"
         const val EXTRA_EXCEPTION_MESSAGE = "exception_message"
         const val EXTRA_EXCEPTION_STACK_TRACE = "exception_stack_trace"
+        const val EXTRA_EXCEPTION_EXPLANATION = "exception_explanation"
         val NOTABUG_URI = Uri.parse("https://notabug.org/Tobiwan/ffupdater/issues")!!
         val GITHUB_URI = Uri.parse("https://github.com/Tobi823/ffupdater/issues")!!
         val GITLAB_URI = Uri.parse("https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues")!!
 
-        fun createIntentForDisplayingThrowable(context: Context, throwable: Throwable): Intent {
+        fun createIntent(context: Context, throwable: Throwable, description: String): Intent {
             val intent = Intent(context, CrashReportActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_EXCEPTION_CLASS_NAME, throwable.javaClass.canonicalName)
             intent.putExtra(EXTRA_EXCEPTION_MESSAGE, throwable.localizedMessage)
             intent.putExtra(EXTRA_EXCEPTION_STACK_TRACE, throwable.stackTraceToString())
+            intent.putExtra(EXTRA_EXCEPTION_EXPLANATION, description)
             return intent
         }
     }

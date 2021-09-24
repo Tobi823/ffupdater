@@ -27,7 +27,7 @@ class Bromite : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileName = getStringForCurrentAbi(
             "arm_ChromePublic.apk",
             "arm64_ChromePublic.apk", "x86_ChromePublic.apk", null

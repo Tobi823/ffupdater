@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="action_about_title">About FFUpdater</string>
     <string name="action_settings_title">Settings</string>
@@ -6,11 +7,12 @@
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successfully_installed">Application successfully installed</string>
     <string name="available_version">Available: %1$s</string>
-    <string name="available_version_error">ERROR</string>
+    <string name="available_version_error">
+        <u>ERROR</u>
+    </string>
     <string name="available_version_loading">Loading…</string>
-    <string name="background_error_notification__title">Background update check failed</string>
-    <string name="background_network_issue_notification__text">It\'s likely that the background check failed due to a temporary network connectivity issue. But if this error occurs more than once a week, please report it. Click to view the error log.</string>
-    <string name="background_unknown_bug_notification__text">Due to an unknown bug the background check failed. Please report this error. Click to view the error log.</string>
+    <string name="background_job_failure__notification_text">Please report this error. Click to view the error report.</string>
+    <string name="background_job_failure__notification_title">Background update check failed</string>
     <string name="brave__description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
     <string name="brave__title">Brave Private Browser</string>
     <string name="brave__warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
@@ -19,7 +21,10 @@
     <string name="bromite__warning">Bromite uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Bromite?</string>
     <string name="but_was">But was:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copy crash report to clipboard</string>
-    <string name="crash_report__explain_text">Unfortunately, FFUpdater has crashed. Please report this error on notabug.org, GitHub or GitLab. Add to your issue the crash report from the clipboard and a description on how to reproduce the bug.</string>
+    <string name="crash_report__explain_text__background_job">The following error occurred during the background error check. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">The following error occurred when the download URL was fetched. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">The following error occurred when checking for updates in the main view. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Unfortunately, FFUpdater has crashed. Please report this error on notabug.org, GitHub or GitLab. Add to your issue the crash report from the clipboard and a description on how to reproduce the bug.</string>
     <string name="crash_report__go_to_github">Go to GitHub</string>
     <string name="crash_report__go_to_gitlab">Go to GitLab</string>
     <string name="crash_report__got_to_notabug_org">Go to notabug.org</string>
@@ -60,13 +65,18 @@
     <string name="install_activity__downloaded_application_from">Downloaded application from:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
     <string name="install_activity__downloaded_application_is_verified">Downloaded application is verified</string>
+    <string name="install_activity__exception__show_button">
+        <u>Show the detailed error report.</u>
+    </string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
     <string name="install_activity__external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
     <string name="install_activity__fetch_url_for_download">Fetch download URL from %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Fetched download URL from %1$s</string>
+    <string name="install_activity__github_rate_limit_exceeded">GitHub-API rate limit is exceeded. Please try the download again in the next hour.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug. \n\nI recommend you to uninstall the application.</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
+    <string name="install_activity__temporary_network_issue">A temporary network issue occurred. Please retry later.</string>
     <string name="install_activity__too_low_memory_description">Your device is low on storage (only %1$d MB free). This will lead to download or installation failure.</string>
     <string name="install_activity__too_low_memory_title">Low Disk Space</string>
     <string name="install_activity__try_disable_miui_optimization">If you are using Xiaomi or MIUI, try disabling \"MIUI Optimization\".</string>
@@ -86,10 +96,14 @@
     <string name="installed_version">Installed: %1$s</string>
     <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">GitHub-API limit exceeded. Retry next hour.</string>
-    <string name="main_activity__not_connected_to_internet">No network connection</string>
+    <string name="main_activity__github_api_limit_exceeded">
+        <u>GitHub-API limit exceeded. Retry next hour.</u>
+    </string>
+    <string name="main_activity__no_internet_connection">No network connection</string>
     <string name="main_activity__subtitle">Update your browsers from Mozilla</string>
-    <string name="main_activity__temporary_network_issue">Temporary network issue. Retry later.</string>
+    <string name="main_activity__temporary_network_issue">
+        <u>Temporary network issue. Retry later.</u>
+    </string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">The system download manager is downloading other files now. Do you want to start a new download that may take longer?</string>

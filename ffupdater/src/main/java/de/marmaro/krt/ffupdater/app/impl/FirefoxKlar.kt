@@ -24,7 +24,7 @@ class FirefoxKlar : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override fun updateCheckWithoutCaching(): AvailableVersionResult {
         val abiString = getStringForCurrentAbi("armeabi-v7a", "arm64-v8a", null, null)
         val mozillaCiConsumer = MozillaCiLogConsumer(
             task = "project.mobile.focus.release.latest",

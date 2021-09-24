@@ -369,6 +369,27 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/install_activity__exception"
+            style="@style/DownloadActivitySegment"
+            android:background="@color/errorRed"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/install_activity__exception__text"
+                style="@style/BoldTextView" />
+
+            <TextView
+                android:id="@+id/install_activity__exception__show_button"
+                android:text="@string/install_activity__exception__show_button"
+                style="@style/DefaultTextView" />
+
+            <TextView
+                style="@style/DefaultTextView"
+                android:text="@string/install_activity__you_can_now_close_this_window" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

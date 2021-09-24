@@ -18,13 +18,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/crash_report__explanation_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="@string/crash_report__explain_text"/>
+                android:text="@string/crash_report__explain_text__uncaught_throwable"/>
 
             <Button
                 android:id="@+id/crash_report__copy_error_message_to_clipboard_button"

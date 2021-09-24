@@ -48,14 +48,14 @@ class BraveIT {
 
     private fun makeReleaseJsonObjectAvailableUnderUrl(fileName: String, url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/$fileName"
-        coEvery {
+        every {
             ApiConsumer.consumeNetworkResource(url, Release::class)
         } returns Gson().fromJson(FileReader(path), Release::class.java)
     }
 
     private fun makeReleaseJsonArrayAvailableUnderUrl(fileName: String, url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave/$fileName"
-        coEvery {
+        every {
             ApiConsumer.consumeNetworkResource(url, Array<Release>::class)
         } returns Gson().fromJson(FileReader(path), Array<Release>::class.java)
     }

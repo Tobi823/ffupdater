@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Про FFUpdater</string>
     <string name="action_settings_title">Налаштування</string>
@@ -6,11 +7,12 @@
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
     <string name="application_successfully_installed">Програма успішно встановлена</string>
     <string name="available_version">в наявності: %1$s</string>
-    <string name="available_version_error">ПОМИЛКА</string>
+    <string name="available_version_error">
+        <u>ПОМИЛКА</u>
+    </string>
     <string name="available_version_loading">Завантаження…</string>
-    <string name="background_error_notification__title">Не вдалося перевірити фонове оновлення</string>
-    <string name="background_network_issue_notification__text">"Ймовірно, перевірка фону не вдалася через тимчасову проблему з підключенням до мережі. Але якщо ця помилка трапляється більше одного разу на тиждень, повідомте про це. Клацніть, щоб переглянути журнал помилок. "</string>
-    <string name="background_unknown_bug_notification__text">Через невідому помилку перевірка фону не вдалася. Повідомте про цю помилку. Клацніть, щоб переглянути журнал помилок.</string>
+    <string name="background_job_failure__notification_text">"Повідомте про цю помилку. Натисніть, щоб переглянути звіт про помилку. "</string>
+    <string name="background_job_failure__notification_title">Не вдалося перевірити фонове оновлення</string>
     <string name="brave__description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення. \n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
     <string name="brave__title">Brave Browser</string>
     <string name="brave__warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave?</string>
@@ -19,9 +21,12 @@
     <string name="bromite__warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Bromite?</string>
     <string name="but_was">Але було:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопіюйте звіт про аварійне завершення роботи в буфер обміну</string>
-    <string name="crash_report__explain_text">281 / 5000 Translation results На жаль, FFUpdater вийшов з ладу. Будь ласка, повідомте про цю помилку на notabug.org, GitHub або GitLab. Додайте до вашої проблеми звіт про збої з буфера обміну та опис того, як відтворити помилку.</string>
+    <string name="crash_report__explain_text__background_job">Під час перевірки фонових помилок сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">Під час отримання URL -адреси завантаження сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">Під час перевірки оновлень у головному вікні сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">281 / 5000 Translation results На жаль, FFUpdater вийшов з ладу. Будь ласка, повідомте про цю помилку на notabug.org, GitHub або GitLab. Додайте до вашої проблеми звіт про збої з буфера обміну та опис того, як відтворити помилку.</string>
     <string name="crash_report__go_to_github">Перейдіть на GitHub</string>
-    <string name="crash_report__go_to_gitlab">"Перейдіть до GitLab "</string>
+    <string name="crash_report__go_to_gitlab">Перейдіть до GitLab</string>
     <string name="crash_report__got_to_notabug_org">Перейдіть на сторінку notabug.org</string>
     <string name="device_too_old_dialog__message">Додаток вимагає Android %1$s. Але на вашому пристрої працює лише Android %2$s. Або виберіть інший додаток, оновіть операційну систему або перейдіть на новий смартфон.</string>
     <string name="device_too_old_dialog__title">Пристрій занадто старий</string>
@@ -58,17 +63,22 @@
     <string name="install_activity__downloaded_application_from">Завантажена програма від:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Завантажена програма НЕ перевірена</string>
     <string name="install_activity__downloaded_application_is_verified">Завантажена програма перевірена</string>
+    <string name="install_activity__exception__show_button">
+        <u> Показати докладний звіт про помилку.</u>
+    </string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Очікуваний відбиток сертифіката SHA-256:</string>
     <string name="install_activity__external_storage_not_accessible">Зовнішня пам’ять недоступна - завантажити не вдається. Поточний статус:</string>
     <string name="install_activity__fetch_url_for_download">Вилучити URL-адресу для завантаження з %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Вибрано URL-адресу завантаження від %1$s</string>
+    <string name="install_activity__github_rate_limit_exceeded">Перевищено ліміт швидкості GitHub-API. Спробуйте завантажити знову протягом наступної години.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Або зловмисник замінив правильне завантаження на підроблене, або перевірка сертифікатів більше не працює. Ви можете двічі перевірити відбиток сертифіката на apkmirror.com або створити проблему на https://notabug.org/Tobiwan/ffupdater, щоб повідомити про помилку.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Або підроблена програма встановлена, або перевірка сертифікатів більше не працює. Ви можете двічі перевірити відбиток сертифіката на apkmirror.com або створити проблему на https://notabug.org/Tobiwan/ffupdater, щоб повідомити про помилку.  Рекомендую видалити програму.</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Відбиток сертифіката SHA-256:</string>
+    <string name="install_activity__temporary_network_issue">Виникла тимчасова проблема з мережею. Повторіть спробу пізніше.</string>
     <string name="install_activity__too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>
     <string name="install_activity__too_low_memory_title">Мало місця на диску</string>
     <string name="install_activity__try_disable_miui_optimization">Якщо ви використовуєте Xiaomi або MIUI, спробуйте відключити функцію \"Оптимізація MIUI\"</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">"Вам потрібно видалити існуючу програму, перш ніж FFUpdater зможе встановити або оновити програму. Створіть резервну копію даних, оскільки видалення видалить усі ваші закладки, налаштування тощо. "</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text1">Вам потрібно видалити існуючу програму, перш ніж FFUpdater зможе встановити або оновити програму. Створіть резервну копію даних, оскільки видалення видалить усі ваші закладки, налаштування тощо.</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: Поточна встановлена програма не підписана оригінальним розробником - можливо, вона підписана F-Droid. Android відмовляється оновлювати програму, якщо різні люди підписали встановлену та оновлену версії.</string>
     <string name="install_activity__use_cached_downloaded_apk">Використовуйте вже завантажений файл із:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Перевірка сертифіката заявки</string>
@@ -84,13 +94,17 @@
     <string name="installed_version">встановлено: %1$s</string>
     <string name="lockwise__description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС  Безпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкрийте будь-який веб-сайт із програми, щоб увійти до своїх облікових записів</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">"Перевищено ліміт GitHub-API. Повторіть спробу наступної години. "</string>
-    <string name="main_activity__not_connected_to_internet">Ви не підключені до Інтернету</string>
+    <string name="main_activity__github_api_limit_exceeded">
+        <u>Перевищено ліміт GitHub-API. Повторіть спробу наступної години.</u>
+    </string>
+    <string name="main_activity__no_internet_connection">Ви не підключені до Інтернету</string>
     <string name="main_activity__subtitle">Оновіть веб-переглядачі від Mozilla</string>
-    <string name="main_activity__temporary_network_issue">Тимчасова проблема з мережею. Повторіть спробу пізніше.</string>
+    <string name="main_activity__temporary_network_issue">
+        <u>Тимчасова проблема з мережею. Повторіть спробу пізніше.</u>
+    </string>
     <string name="ok">Гаразд</string>
     <string name="running_downloads_dialog__message">Менеджер завантаження системи зараз завантажує інші файли. Хочете розпочати нове завантаження, яке може зайняти більше часу?</string>
-    <string name="running_downloads_dialog__negative">"Ні, не завантажуйте "</string>
+    <string name="running_downloads_dialog__negative">Ні, не завантажуйте</string>
     <string name="running_downloads_dialog__title">164 / 5000 Translation results Завантаження завантажень</string>
     <string name="running_downloads_dialog__yes">Так</string>
     <string name="settings__activity_label">Налаштування</string>

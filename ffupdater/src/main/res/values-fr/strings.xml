@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">À propos FFUpdater</string>
     <string name="action_settings_title">Réglages</string>
@@ -6,12 +7,13 @@
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
     <string name="application_successfully_installed">Installation de l\'application réussie</string>
     <string name="available_version">Disponible: %1$s</string>
-    <string name="available_version_error">ERREUR</string>
+    <string name="available_version_error">
+        <u>ERREUR</u>
+    </string>
     <string name="available_version_loading">Chargement…</string>
-    <string name="background_error_notification__title">Échec de la vérification de la mise à jour des antécédents</string>
-    <string name="background_network_issue_notification__text">Il est probable que la vérification des antécédents ait échoué en raison d\\\'un problème temporaire de connectivité au réseau. Mais si cette erreur se produit plus d\\\'une fois par semaine, veuillez le signaler. Cliquez pour afficher le journal des erreurs.</string>
-    <string name="background_unknown_bug_notification__text">En raison d\\\'un bogue inconnu, la vérification des antécédents a échoué. Veuillez signaler cette erreur. Cliquez pour afficher le journal des erreurs.</string>
-    <string name="brave__description">"Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers! \n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé! "</string>
+    <string name="background_job_failure__notification_text">Veuillez signaler cette erreur. Cliquez pour afficher le rapport d\'erreur.</string>
+    <string name="background_job_failure__notification_title">Échec de la vérification de la mise à jour des antécédents</string>
+    <string name="brave__description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers! \n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé!</string>
     <string name="brave__title">Navigateur internet privé Brave</string>
     <string name="brave__warning">Brave utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Brave?</string>
     <string name="bromite__description">Bromite vise à offrir une expérience de navigation sans encombrement, sans fonctions envahissantes pour la vie privée et avec l\'ajout d\'un moteur rapide de blocage des publicités. Des changements minimes sont apportés à l\'interface utilisateur afin d\'enrayer l\'idée que le \"navigateur est une plate-forme publicitaire\".</string>
@@ -19,7 +21,10 @@
     <string name="bromite__warning">Bromite utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Bromite?</string>
     <string name="but_was">Mais était:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copier le rapport d\'erreur dans le presse-papiers</string>
-    <string name="crash_report__explain_text">Malheureusement, FFUpdater s\'est planté. Veuillez signaler cette erreur sur notabug.org, GitHub ou GitLab. Ajoutez à votre problème le rapport de panne du presse-papiers et une description de la façon de reproduire le bogue.</string>
+    <string name="crash_report__explain_text__background_job">L\'erreur suivante s\'est produite pendant la vérification des erreurs en arrière-plan. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport de crash du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">L\'erreur suivante s\'est produite lors de l\'extraction de l\'URL de téléchargement. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport d\'erreur du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">L\'erreur suivante s\'est produite lors de la vérification des mises à jour dans la vue principale. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport de crash du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Malheureusement, FFUpdater s\'est planté. Veuillez signaler cette erreur sur notabug.org, GitHub ou GitLab. Ajoutez à votre problème le rapport de panne du presse-papiers et une description de la façon de reproduire le bogue.</string>
     <string name="crash_report__go_to_github">Aller sur GitHub</string>
     <string name="crash_report__go_to_gitlab">Aller sur GitLab</string>
     <string name="crash_report__got_to_notabug_org">Aller sur notabug.org</string>
@@ -58,18 +63,23 @@
     <string name="install_activity__downloaded_application_from">Application téléchargée à partir de:</string>
     <string name="install_activity__downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
     <string name="install_activity__downloaded_application_is_verified">La demande téléchargée est vérifiée</string>
+    <string name="install_activity__exception__show_button">
+        <u>Afficher le rapport d\'erreur détaillé.</u>
+    </string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Empreinte digitale prévue pour le certificat SHA-256:</string>
     <string name="install_activity__external_storage_not_accessible">Le stockage externe n\'est pas disponible - ne peut pas commencer le téléchargement. L\'état actuel est :</string>
     <string name="install_activity__fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">URL de téléchargement récupéré de %1$s</string>
+    <string name="install_activity__github_rate_limit_exceeded">La limite de débit de GitHub-API est dépassée. Veuillez réessayer le téléchargement dans l\'heure qui suit.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Soit un pirate a remplacé le téléchargement correct par un téléchargement altéré, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez vérifier l\'empreinte digitale du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Soit une application falsifiée a été installée, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez revérifier l\'empreinte du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256:</string>
+    <string name="install_activity__temporary_network_issue">Un problème de réseau temporaire s\'est produit. Veuillez réessayer plus tard.</string>
     <string name="install_activity__too_low_memory_description">Sur votre appareil, il n\'y a que %1$d MB d\'espace disponible. Cela peut entraîner un échec du téléchargement ou de l\'installation.</string>
     <string name="install_activity__too_low_memory_title">Espace disque faible</string>
     <string name="install_activity__try_disable_miui_optimization">Si vous utilisez Xiaomi ou MIUI, essayez de désactiver \"MIUI Optimization\".</string>
     <string name="install_activity__unknown_signature_of_installed_app_text1">Vous devez désinstaller l\'application existante avant que FFUpdater puisse l\'installer ou la mettre à jour. Sauvegardez vos données car la désinstallation supprimera tous vos signets, paramètres, etc.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">" Raison : L'application actuellement installée n'est pas signée par le développeur d'origine - elle est peut-être signée par F-Droid. Android refuse de mettre à jour une application si différentes personnes ont signé la version installée et la version mise à jour."</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text2">Raison : L\'application actuellement installée n\'est pas signée par le développeur d\'origine - elle est peut-être signée par F-Droid. Android refuse de mettre à jour une application si différentes personnes ont signé la version installée et la version mise à jour.</string>
     <string name="install_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Vérification du certificat de demande</string>
     <string name="install_activity__you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
@@ -82,12 +92,16 @@
     <string name="installed_app_is_not_verified">L\'application installée n\'est PAS vérifiée</string>
     <string name="installed_application_is_verified">La demande installée est vérifiée</string>
     <string name="installed_version">Installé: %1$s</string>
-    <string name="lockwise__description">"UN ACCÈS PAR MOT DE PASSE QUI VOUS EST RÉSERVÉ Suivez vos mots de passe en toute sécurité sur Firefox et accédez-y partout Ouvrez rapidement n’importe quel site Internet de l’application pour accéder à vos comptes "</string>
+    <string name="lockwise__description">UN ACCÈS PAR MOT DE PASSE QUI VOUS EST RÉSERVÉ Suivez vos mots de passe en toute sécurité sur Firefox et accédez-y partout Ouvrez rapidement n’importe quel site Internet de l’application pour accéder à vos comptes</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</string>
-    <string name="main_activity__not_connected_to_internet">Vous n\'êtes pas connecté à internet</string>
+    <string name="main_activity__github_api_limit_exceeded">
+        <u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>
+    </string>
+    <string name="main_activity__no_internet_connection">Vous n\'êtes pas connecté à internet</string>
     <string name="main_activity__subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>
-    <string name="main_activity__temporary_network_issue">Problème de réseau temporaire. Réessayez plus tard.</string>
+    <string name="main_activity__temporary_network_issue">
+        <u>Problème de réseau temporaire. Réessayez plus tard.</u>
+    </string>
     <string name="ok">D\'accord</string>
     <string name="running_downloads_dialog__message">Le gestionnaire de téléchargement du système est en train de télécharger d\'autres fichiers. Voulez-vous lancer un nouveau téléchargement qui pourrait prendre plus de temps?</string>
     <string name="running_downloads_dialog__negative">Non, ne le téléchargez pas</string>
@@ -109,7 +123,7 @@
     <string name="settings__theme_preference_title">Choisissez un thème</string>
     <string name="settings__theme_system_default">Utiliser le système par défaut</string>
     <string name="settings__title">Vérification de la mise à jour de la demande</string>
-    <string name="show_warning_before_installation_dialog__title">"Avertissement"</string>
+    <string name="show_warning_before_installation_dialog__title">Avertissement</string>
     <string name="title_crasher_copy">Copie</string>
     <string name="title_crasher_crashed">%1$s a planté</string>
     <string name="title_crasher_share">Partager</string>
@@ -133,7 +147,7 @@
     <string name="update_interval__5d">5 jours</string>
     <string name="update_interval__6d">6 jours</string>
     <string name="update_interval__6h">6 heures</string>
-    <string name="update_interval__8h">"8 heures "</string>
+    <string name="update_interval__8h">8 heures</string>
     <string name="update_notification__channel_description">Canal de notification des mises à jour disponibles pour %1$s.</string>
     <string name="update_notification__channel_name">Notification de mise à jour de %1$s</string>
     <string name="update_notification__text">Cliquez pour installer la mise à jour</string>

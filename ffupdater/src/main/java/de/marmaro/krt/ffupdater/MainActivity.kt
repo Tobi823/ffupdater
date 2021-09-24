@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -20,7 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
@@ -43,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     private val sameAppVersionAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
     private val availableVersions: EnumMap<App, TextView> = EnumMap(App::class.java)
     private val downloadButtons: EnumMap<App, ImageButton> = EnumMap(App::class.java)
+    private val errorsDuringUpdateCheck: EnumMap<App, Exception?> = EnumMap(App::class.java)
     private lateinit var downloadManager: DownloadManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,6 +95,11 @@ class MainActivity : AppCompatActivity() {
         BackgroundJob.startOrStopBackgroundUpdateCheck(this)
     }
 
+    override fun onPause() {
+        super.onPause()
+        cleanUpObjects()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
@@ -122,38 +127,52 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun initUI() {
-        val mainLinearLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
-        mainLinearLayout.removeAllViews()
+    private fun cleanUpObjects() {
         availableVersions.clear()
         downloadButtons.clear()
+        errorsDuringUpdateCheck.clear()
+    }
 
+    private fun initUI() {
+        val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
+        mainLayout.removeAllViews()
+        cleanUpObjects()
         val installedApps = App.values().filter { it.detail.isInstalled(this) }
         installedApps.forEach { app ->
-            val newCardView =
-                layoutInflater.inflate(R.layout.app_card_layout, mainLinearLayout, false)
+            val newCardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
-            val installedVersion = newCardView.findViewWithTag<TextView>("appInstalledVersion")
+            val installedVersion: TextView = newCardView.findViewWithTag("appInstalledVersion")
             installedVersion.text = app.detail.getDisplayInstalledVersion(this)
 
-            availableVersions[app] = newCardView.findViewWithTag("appAvailableVersion")
+            val availableVersion: TextView = newCardView.findViewWithTag("appAvailableVersion")
+            availableVersions[app] = availableVersion
+            availableVersion.setOnClickListener {
+                val exception = errorsDuringUpdateCheck[app]
+                if (exception != null) {
+                    val description =
+                        getString(R.string.crash_report__explain_text__main_activity_update_check)
+                    val intent = CrashReportActivity.createIntent(this, exception, description)
+                    startActivity(intent)
+                }
+            }
 
-            val downloadButton = newCardView.findViewWithTag<ImageButton>("appDownloadButton")
+            val downloadButton: ImageButton = newCardView.findViewWithTag("appDownloadButton")
             downloadButton.setOnClickListener { userTriggersAppDownload(app) }
             downloadButtons[app] = downloadButton
             disableDownloadButton(app)
 
-            val infoButton = newCardView.findViewWithTag<ImageButton>("appInfoButton")
+            val infoButton: ImageButton = newCardView.findViewWithTag("appInfoButton")
             infoButton.setOnClickListener {
                 AppInfoDialog.newInstance(app).show(supportFragmentManager)
             }
 
-            newCardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.displayTitle)
+            val cardTitle: TextView = newCardView.findViewWithTag("appCardTitle")
+            cardTitle.setText(app.detail.displayTitle)
 
             val icon = newCardView.findViewWithTag<ImageView>("appIcon")
             icon.setImageResource(app.detail.displayIcon)
 
-            mainLinearLayout.addView(newCardView)
+            mainLayout.addView(newCardView)
         }
     }
 
@@ -165,8 +184,8 @@ class MainActivity : AppCompatActivity() {
 
         val installedApps = App.values().filter { it.detail.isInstalled(this) }
         if (NetworkUtil.isInternetUnavailable(this)) {
-            installedApps.forEach {
-                availableVersions[it]!!.setText(R.string.main_activity__not_connected_to_internet)
+            installedApps.forEach { app ->
+                setAvailableVersion(app, getString(R.string.main_activity__no_internet_connection))
             }
             hideLoadAnimation()
             showInternetUnavailableToast()
@@ -174,47 +193,56 @@ class MainActivity : AppCompatActivity() {
         }
 
         showLoadAnimation()
-        installedApps.forEach { availableVersions[it]!!.setText(R.string.available_version_loading) }
+        installedApps.forEach { app ->
+            setAvailableVersion(app, getString(R.string.available_version_loading))
+        }
         lifecycleScope.launch(Dispatchers.IO) {
-            installedApps.forEach { checkForAppUpdate(it, ignoreErrors) }
+            installedApps.forEach {
+                checkForAppUpdate(it, ignoreErrors)
+            }
             lifecycleScope.launch(Dispatchers.Main) { hideLoadAnimation() }
         }
     }
 
-    private suspend fun checkForAppUpdate(app: App, ignoreErrors: Boolean) {
+    private suspend fun checkForAppUpdate(app: App, dontCrashOnError: Boolean) {
         try {
             val updateResult = app.detail.updateCheck(applicationContext)
             lifecycleScope.launch(Dispatchers.Main) {
-                availableVersions[app]!!.text = updateResult.displayVersion
+                setAvailableVersion(app, updateResult.displayVersion)
+                sameAppVersionAlreadyInstalled[app] = !updateResult.isUpdateAvailable
                 if (updateResult.isUpdateAvailable) {
-                    sameAppVersionAlreadyInstalled[app] = false
                     enableDownloadButton(app)
                 } else {
-                    sameAppVersionAlreadyInstalled[app] = true
                     disableDownloadButton(app)
                 }
             }
         } catch (e: GithubRateLimitExceededException) {
-            Log.e(LOG_TAG, "GitHub-API rate limit for '$app' is exceeded.", e)
-            lifecycleScope.launch(Dispatchers.Main) {
-                availableVersions[app]!!.setText(R.string.main_activity__github_api_limit_exceeded)
-                disableDownloadButton(app)
-            }
-        } catch (e: ApiNetworkException) {
-            Log.e(LOG_TAG, "Temporary network issue for '$app'.", e)
-            lifecycleScope.launch(Dispatchers.Main) {
-                availableVersions[app]!!.setText(R.string.main_activity__temporary_network_issue)
-                disableDownloadButton(app)
-            }
+            showUpdateCheckError(app, R.string.main_activity__github_api_limit_exceeded, e)
+        } catch (e: ApiConsumerException) {
+            showUpdateCheckError(app, R.string.main_activity__temporary_network_issue, e)
         } catch (e: Exception) {
-            if (!ignoreErrors) {
+            if (dontCrashOnError) {
+                showUpdateCheckError(app, R.string.available_version_error, e)
+            } else {
                 throw UpdateCheckException("Failed to check '$app' for updates", e)
             }
-            Log.e(LOG_TAG, "Fail to check $app for updates", e)
-            lifecycleScope.launch(Dispatchers.Main) {
-                availableVersions[app]!!.setText(R.string.available_version_error)
-                disableDownloadButton(app)
-            }
+        }
+    }
+
+    private fun setAvailableVersion(app: App, message: String) {
+        availableVersions[app]!!.text = message
+        errorsDuringUpdateCheck[app] = null
+    }
+
+    private fun showUpdateCheckError(
+        app: App,
+        message: Int,
+        exception: Exception
+    ) {
+        errorsDuringUpdateCheck[app] = exception
+        lifecycleScope.launch(Dispatchers.Main) {
+            availableVersions[app]!!.setText(message)
+            disableDownloadButton(app)
         }
     }
 
@@ -232,7 +260,7 @@ class MainActivity : AppCompatActivity() {
         val layout = findViewById<View>(R.id.coordinatorLayout)
         Snackbar.make(
             layout,
-            R.string.main_activity__not_connected_to_internet,
+            R.string.main_activity__no_internet_connection,
             Snackbar.LENGTH_LONG
         ).show()
     }

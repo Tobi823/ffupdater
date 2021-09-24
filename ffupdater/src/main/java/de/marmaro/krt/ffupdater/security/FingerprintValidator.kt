@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.security
 import android.annotation.SuppressLint
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Build
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.app.App
@@ -31,7 +32,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
         return try {
             require(file.exists()) { "file must exists" }
             val path = file.absolutePath
-            val info = packageManager.getPackageArchiveInfo(path, PackageManager.GET_SIGNATURES)
+            val info = packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
             requireNotNull(info) { "getPackageArchiveInfo() must successful parse file" }
             verifyPackageInfo(info, app)
         } catch (e: CertificateException) {
@@ -56,8 +57,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun checkInstalledApp(app: App): FingerprintResult {
         return try {
-            val packageInfo =
-                packageManager.getPackageInfo(app.detail.packageName, PackageManager.GET_SIGNATURES)
+            val packageInfo = packageManager.getPackageInfo(app.detail.packageName, GET_SIGNATURES)
             verifyPackageInfo(packageInfo, app)
         } catch (e: CertificateException) {
             throw UnableCheckApkException("certificate of APK file is invalid", e)

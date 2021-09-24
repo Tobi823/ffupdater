@@ -40,7 +40,7 @@ class Iceraven : BaseAppDetail() {
         return context.getString(R.string.available_version, version)
     }
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileSuffix = getStringForCurrentAbi(
             "browser-armeabi-v7a-forkRelease.apk",
             "browser-arm64-v8a-forkRelease.apk", "browser-x86-forkRelease.apk",

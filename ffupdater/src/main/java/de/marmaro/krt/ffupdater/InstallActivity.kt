@@ -15,8 +15,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import de.marmaro.krt.ffupdater.R.id.install_activity__exception__show_button
+import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__install_activity_fetching_url
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
@@ -58,11 +62,13 @@ class InstallActivity : AppCompatActivity() {
         var app: App? = null
         var downloadId: Long? = null
         var updateCheckResult: UpdateCheckResult? = null
+        var fetchUrlException: Exception? = null
+        var fetchUrlExceptionText: String? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.download_activity)
+        setContentView(R.layout.install_activity)
         CrashListener.openCrashReporterForUncaughtExceptions(this)
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -196,7 +202,8 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         DOWNLOAD_MANAGER_IS_ENABLED(f@{ ia ->
-            if (StorageUtil.isEnoughStorageAvailable(ia)) {
+            //TODO test entfernen
+            if (StorageUtil.isEnoughStorageAvailable(ia) || true) {
                 return@f PRECONDITIONS_ARE_CHECKED
             }
             ia.show(R.id.tooLowMemory)
@@ -223,8 +230,14 @@ class InstallActivity : AppCompatActivity() {
                     return@f USE_CACHED_DOWNLOADED_APK
                 }
                 return@f ENQUEUING_DOWNLOAD
-            } catch (e: Exception) {
-                throw InstallActivityFetchException("fail to fetch $app", e)
+            } catch (e: GithubRateLimitExceededException) {
+                ia.viewModel.fetchUrlException = e
+                ia.viewModel.fetchUrlExceptionText = ia.getString(R.string.install_activity__github_rate_limit_exceeded)
+                return@f FAILURE_SHOW_FETCH_URL_EXCEPTION
+            } catch (e: ApiConsumerException) {
+                ia.viewModel.fetchUrlException = e
+                ia.viewModel.fetchUrlExceptionText = ia.getString(R.string.install_activity__temporary_network_issue)
+                return@f FAILURE_SHOW_FETCH_URL_EXCEPTION
             }
         }),
 
@@ -259,9 +272,9 @@ class InstallActivity : AppCompatActivity() {
         }),
 
         DOWNLOAD_WAS_SUCCESSFUL(f@{ ia ->
+            ia.show(R.id.downloadedFile)
             val app = ia.app
             ia.hide(R.id.downloadingFile)
-            ia.show(R.id.downloadedFile)
             ia.setText(R.id.downloadedFileUrl, ia.viewModel.updateCheckResult!!.downloadUrl)
             ia.show(R.id.verifyDownloadFingerprint)
 
@@ -403,6 +416,24 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.fingerprintInstalledBadHashActual, ia.appFingerprint.hexString)
             ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app.detail.signatureHash)
             ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
+            return@f ERROR_STOP
+        }),
+
+        FAILURE_SHOW_FETCH_URL_EXCEPTION(f@{ ia ->
+            ia.hide(R.id.fetchUrl)
+            ia.show(R.id.install_activity__exception)
+            val text = ia.viewModel.fetchUrlExceptionText ?: "/"
+            ia.setText(R.id.install_activity__exception__text, text)
+            val exception = ia.viewModel.fetchUrlException
+            if (exception != null) {
+                ia.findViewById<TextView>(install_activity__exception__show_button)
+                    .setOnClickListener {
+                        val description =
+                            ia.getString(crash_report__explain_text__install_activity_fetching_url)
+                        val intent = CrashReportActivity.createIntent(ia, exception, description)
+                        ia.startActivity(intent)
+                    }
+            }
             return@f ERROR_STOP
         }),
 

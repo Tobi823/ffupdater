@@ -3,21 +3,16 @@ package de.marmaro.krt.ffupdater.app
 import android.content.Context
 import android.content.pm.PackageManager
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiNetworkException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.io.File
 
 abstract class BaseAppDetail : AppDetail {
-    private var cache: Deferred<AvailableVersionResult>? = null
-    private var cacheTimestamp: Long = 0
+    private var cache: CachedAvailableVersionResult? = null
     private val mutex = Mutex()
 
     override fun isInstalled(context: Context): Boolean {
@@ -50,24 +45,24 @@ abstract class BaseAppDetail : AppDetail {
 
     /**
      * @throws InvalidApiResponseException
-     * @throws ApiNetworkException
+     * @throws ApiConsumerException
      */
-    protected abstract suspend fun updateCheckWithoutCaching(): AvailableVersionResult
-
+    protected abstract fun updateCheckWithoutCaching(): AvailableVersionResult
 
     override suspend fun updateCheck(context: Context): UpdateCheckResult {
+        // - use mutex lock to prevent multiple simultaneously update check for a single app
+        // - it's useless to start a new update check for an app when a different update check
+        // for the same app is already running
         mutex.withLock {
-            val cacheAge = System.currentTimeMillis() - cacheTimestamp
-            val cacheInvalid = (cache == null || cacheAge > CACHE_TIME)
-            if (cacheInvalid) {
-                cache = GlobalScope.async(Dispatchers.IO) {
-                    updateCheckWithoutCaching()
-                }
-                cacheTimestamp = System.currentTimeMillis()
+            val cacheAge = System.currentTimeMillis() - (cache?.cacheTimestamp ?: 0)
+            if (cache == null || cacheAge > CACHE_TIME) {
+                val availableVersionResult = updateCheckWithoutCaching()
+                val time = System.currentTimeMillis()
+                cache = CachedAvailableVersionResult(availableVersionResult, time)
             }
         }
 
-        val availableVersionResult = cache!!.await()
+        val availableVersionResult = cache!!.availableVersionResult
         return UpdateCheckResult(
                 availableResult = availableVersionResult,
                 isUpdateAvailable = !isInstalledVersionUpToDate(context, availableVersionResult),
@@ -116,4 +111,9 @@ abstract class BaseAppDetail : AppDetail {
     companion object {
         const val CACHE_TIME: Long = 10 * 60 * 1000 // 10 minutes
     }
+
+    data class CachedAvailableVersionResult(
+        val availableVersionResult: AvailableVersionResult,
+        val cacheTimestamp: Long
+    )
 }

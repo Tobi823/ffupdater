@@ -25,7 +25,7 @@ class Brave : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileName = getStringForCurrentAbi(
             "BraveMonoarm.apk", "BraveMonoarm64.apk",
             "BraveMonox86.apk", "BraveMonox64.apk"

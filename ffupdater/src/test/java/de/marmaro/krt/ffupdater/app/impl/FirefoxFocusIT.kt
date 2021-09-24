@@ -56,7 +56,7 @@ class FirefoxFocusIT {
         val url = "$DOWNLOAD_URL/logs/chain_of_trust.log"
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/" +
                 "chain-of-trust.log"
-        coEvery {
+        every {
             ApiConsumer.consumeNetworkResource(url, String::class)
         } returns File(path).readText()
     }

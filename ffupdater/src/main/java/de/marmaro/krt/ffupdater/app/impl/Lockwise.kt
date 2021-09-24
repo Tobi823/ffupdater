@@ -29,7 +29,7 @@ class Lockwise : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override fun updateCheckWithoutCaching(): AvailableVersionResult {
         val githubConsumer = GithubConsumer(
             repoOwner = "mozilla-lockwise",
             repoName = "lockwise-android",
