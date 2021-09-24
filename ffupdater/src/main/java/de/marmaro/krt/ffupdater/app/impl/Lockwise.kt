@@ -37,7 +37,7 @@ class Lockwise : BaseAppDetail() {
             validReleaseTester = { release: Release ->
                 !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
             },
-            correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(".apk") })
+            correctAssetTester = { asset: Asset -> asset.name.endsWith(".apk") })
         val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"
         val regexResult = Regex("""^release-v((\d)+(\.\d+)*)""").find(result.tagName)

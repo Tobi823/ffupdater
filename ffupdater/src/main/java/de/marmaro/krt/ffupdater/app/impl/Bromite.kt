@@ -39,7 +39,7 @@ class Bromite : BaseAppDetail() {
             validReleaseTester = { release: Release ->
                 !release.isPreRelease && release.assets.any { it.name == fileName }
             },
-            correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
+            correctAssetTester = { asset: Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         // tag name can be "90.0.4430.59"
         return AvailableVersionResult(

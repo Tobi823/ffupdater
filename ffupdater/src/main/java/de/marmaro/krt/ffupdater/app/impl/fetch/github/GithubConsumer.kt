@@ -10,11 +10,11 @@ import java.util.*
 import java.util.function.Predicate
 
 class GithubConsumer(
-        private val repoOwner: String,
-        private val repoName: String,
-        private val resultsPerPage: Int,
-        private val validReleaseTester: Predicate<Release>,
-        private val correctDownloadUrlTester: Predicate<Asset>,
+    private val repoOwner: String,
+    private val repoName: String,
+    private val resultsPerPage: Int,
+    private val validReleaseTester: Predicate<Release>,
+    private val correctAssetTester: Predicate<Asset>,
 ) {
     init {
         check(resultsPerPage > 0)
@@ -57,7 +57,7 @@ class GithubConsumer(
      * @throws InvalidApiResponseException
      */
     private fun convert(release: Release): Result {
-        val asset = release.assets.firstOrNull { correctDownloadUrlTester.test(it) }
+        val asset = release.assets.firstOrNull { correctAssetTester.test(it) }
                 ?: throw InvalidApiResponseException("${release.name} has no suitable asset")
         return Result(
                 tagName = release.tagName,

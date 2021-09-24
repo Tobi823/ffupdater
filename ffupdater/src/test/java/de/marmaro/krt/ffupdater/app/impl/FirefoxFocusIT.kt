@@ -3,19 +3,24 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
+import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.*
+import io.mockk.MockKAnnotations
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockkObject
+import io.mockk.unmockkAll
 import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import java.io.File
+import java.io.FileReader
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
@@ -43,8 +48,8 @@ class FirefoxFocusIT {
     }
 
     companion object {
-        const val DOWNLOAD_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "project.mobile.focus.release.latest/artifacts/public"
+        const val DOWNLOAD_URL =
+            "https://github.com/mozilla-mobile/focus-android/releases/download/v92.1.1"
 
         @AfterClass
         fun cleanUp() {
@@ -52,36 +57,35 @@ class FirefoxFocusIT {
         }
     }
 
-    private fun makeChainOfTrustTextAvailable() {
-        val url = "$DOWNLOAD_URL/logs/chain_of_trust.log"
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/" +
-                "chain-of-trust.log"
+    private fun makeReleaseJsonObjectAvailable() {
+        val url = "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest"
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/latest.json"
         every {
-            ApiConsumer.consumeNetworkResource(url, String::class)
-        } returns File(path).readText()
+            ApiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
+        } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 
     @Test
     fun updateCheck_armeabiv7a() {
-        makeChainOfTrustTextAvailable()
+        makeReleaseJsonObjectAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-        val expectedUrl = "$DOWNLOAD_URL/app-focus-armeabi-v7a-release-unsigned.apk"
-        val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
+        val expectedUrl = "$DOWNLOAD_URL/Focus-arm.apk"
+        val expectedTime = ZonedDateTime.parse("2021-09-04T18:12:23Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "8.12.0"
+            packageInfo.versionName = "92.1.1"
             val actual = FirefoxFocus().updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("8.12.0", actual.version)
+            assertEquals("92.1.1", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
 
         runBlocking {
-            packageInfo.versionName = "8.11.0"
+            packageInfo.versionName = "92.1.0"
             val actual = FirefoxFocus().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("8.12.0", actual.version)
+            assertEquals("92.1.1", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
@@ -89,25 +93,25 @@ class FirefoxFocusIT {
 
     @Test
     fun updateCheck_arm64v8a() {
-        makeChainOfTrustTextAvailable()
+        makeReleaseJsonObjectAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-        val expectedUrl = "$DOWNLOAD_URL/app-focus-arm64-v8a-release-unsigned.apk"
-        val expectedTime = ZonedDateTime.parse("2021-01-19T21:51:06Z", ISO_ZONED_DATE_TIME)
+        val expectedUrl = "$DOWNLOAD_URL/Focus-arm64.apk"
+        val expectedTime = ZonedDateTime.parse("2021-09-04T18:12:23Z", ISO_ZONED_DATE_TIME)
 
         runBlocking {
-            packageInfo.versionName = "8.12.0"
+            packageInfo.versionName = "92.1.1"
             val actual = FirefoxFocus().updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("8.12.0", actual.version)
+            assertEquals("92.1.1", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }
 
         runBlocking {
-            packageInfo.versionName = "8.11.0"
+            packageInfo.versionName = "92.1.0"
             val actual = FirefoxFocus().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("8.12.0", actual.version)
+            assertEquals("92.1.1", actual.version)
             assertEquals(expectedUrl, actual.downloadUrl)
             assertEquals(expectedTime, actual.publishDate)
         }

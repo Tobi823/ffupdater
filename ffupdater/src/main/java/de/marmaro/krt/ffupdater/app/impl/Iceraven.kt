@@ -43,7 +43,8 @@ class Iceraven : BaseAppDetail() {
     override fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileSuffix = getStringForCurrentAbi(
             "browser-armeabi-v7a-forkRelease.apk",
-            "browser-arm64-v8a-forkRelease.apk", "browser-x86-forkRelease.apk",
+            "browser-arm64-v8a-forkRelease.apk",
+            "browser-x86-forkRelease.apk",
             "browser-x86_64-forkRelease.apk"
         )
         val githubConsumer = GithubConsumer(
@@ -53,7 +54,7 @@ class Iceraven : BaseAppDetail() {
             validReleaseTester = { release: Release ->
                 !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
             },
-            correctDownloadUrlTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
+            correctAssetTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
         val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         val version = result.tagName
         return AvailableVersionResult(

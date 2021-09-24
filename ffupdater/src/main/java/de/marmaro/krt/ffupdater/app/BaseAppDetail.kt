@@ -92,10 +92,10 @@ abstract class BaseAppDetail : AppDetail {
      * Helper function for getting the correct ABI name (these names are app specific)
      */
     protected fun getStringForCurrentAbi(
-            arm: String?,
-            arm64: String?,
-            x86: String?,
-            x64: String?,
+            arm: String? = null,
+            arm64: String? = null,
+            x86: String? = null,
+            x64: String? = null,
     ): String {
         return DeviceEnvironment.abis.mapNotNull {
             when (it) {

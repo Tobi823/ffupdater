@@ -39,7 +39,7 @@ class Brave : BaseAppDetail() {
                         release.name.startsWith("Release v") &&
                         release.assets.any { it.name == fileName }
             },
-            correctDownloadUrlTester = { asset: Asset -> asset.name == fileName })
+            correctAssetTester = { asset: Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
         val version = result.tagName.replace("v", "")
         return AvailableVersionResult(
