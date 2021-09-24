@@ -1,2 +1,4 @@
  * Fix crash when canceling a download (Tobi823/ffupdater#77)
  * Ignore error and retry background update (with exponential increasing waiting time) for CancellationException, GithubRateLimitExceededException and UnknownHostException (Tobi823/ffupdater#74)
+ * Improve error handling
+ * Fix download error for Focus/Klar by switching to the GitHub API (Tobiwan/ffupdater#81)

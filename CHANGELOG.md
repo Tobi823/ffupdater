@@ -1,6 +1,8 @@
-# 2021-09-?? Version 74.4.1 (80)
+# 2021-09-24 Version 74.4.1 (80)
  * Fix crash when canceling a download (Tobi823/ffupdater#77)
  * Ignore error and retry background update (with exponential increasing waiting time) for CancellationException, GithubRateLimitExceededException and UnknownHostException (Tobi823/ffupdater#74) 
+ * Improve error handling
+ * Fix download error for Focus/Klar by switching to the GitHub API (Tobiwan/ffupdater#81)
 
 # 2021-08-30 Version 74.4.0 (79)
  * Update Brazilian Portuguese translation (thanks mezysinc; Tobiwan/ffupdater#78)
