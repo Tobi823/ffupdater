@@ -18,6 +18,8 @@ git fetch --tags
  - push tag to notabug.org, Github and Gitlab
  - build signed APK file
  - upload signed APK file to GitHub and GitLab
+ - start repomaker with Docker
+ - upload signed APK to repomaker
 
 # push to git
 https://stackoverflow.com/a/18674313
