@@ -37,35 +37,49 @@ The applications are downloaded from these locations:
  - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
  - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
 
-## Temporary builds
+## Other distribution channels
 
-The main distribution method of FFUpdater remains F-Droid.
+The main distribution method of FFUpdater remains F-Droid - this will not change.
+But you can use the APK files or the F-Droid repository to quickly install fixed versions.
 
-But for the time between my bug fix and the release on F-Droid, you can use the attached APK file
-from the GitHub/GitLab release overview https://github.com/Tobi823/ffupdater/releases 
-https://gitlab.com/Tobiwan/ffupdater_gitlab/-/tags.
+You need to uninstall FFUpdater every time you switch between F-Droid version and my version.
 
-You have to uninstall FFUpdater when you switch between the F-Droid version and my temporary version.
+I don't know if F-Droid shows an update notification when you have my version installed.
+Maybe you need to manually check for updates in the F-Droid app.
 
-As far as I know, F-Droid will not show an update notification if the installed FFUpdater version
-is not signed by F-Droid.
-You have to manually check for updates.
-
-My temporary version will be signed with:
+My versions will be signed with:
 ```
-Signer #1 certificate DN: CN=Tobi823, O=FFUpdater, ST=Germany, C=DE
-Signer #1 certificate SHA-256 digest: f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62
-Signer #1 certificate SHA-1 digest: b432e9eb74512c0fa58c1ec45912a670f8dfa8e9
-Signer #1 certificate MD5 digest: 78a34e36cedd844954726f1e2076642c
+DN: CN=Tobi823, O=FFUpdater, ST=Germany, C=DE
+SHA-256 digest: f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62
+SHA-1 digest: b432e9eb74512c0fa58c1ec45912a670f8dfa8e9
+MD5 digest: 78a34e36cedd844954726f1e2076642c
 ```
+
+### APK files on GitHub
+
+The APK files are available on [GitHub](https://github.com/Tobi823/ffupdater/releases) and
+[GitLab](https://gitlab.com/Tobiwan/ffupdater_gitlab/-/tags).
 
 ## F-Droid repository
 
-TODO
+This is the link to the F-Droid repository:
 
+```
 https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89
+```
 
-https://github.com/Tobi823/ffupdaterrepo/blob/master/fdroid/repo/assets/qrcode.pnge
+[<img src="https://github.com/Tobi823/ffupdaterrepo/blob/master/fdroid/repo/assets/qrcode.pnge" alt="F-Droid repository link" height="80">](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89)
+
+You can add this repository by opening the F-Droid app -> Settings -> Repositories -> + -> 
+Enter the link from above -> Add -> Go back to Latest -> Refresh by swiping down.
+
+It seems that this F-Droid repository is sometimes a little buggy.
+If F-Droid fails to download FFUpdater, try to install the version from the official F-Droid repository
+first.
+
+On the app page under the item "Versions" you can see from which repository (my *FFUpdater* 
+repository or the official F-Droid repository) the app version was installed
+
 
 ## FAQ:
  - By clicking on the "i"-Icon, you can see the time of the last successful background update check.

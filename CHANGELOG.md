@@ -1,5 +1,9 @@
 # Version 74.4.3 (82)
- *
+ * Improve handling of concurrent code
+ * Fix crash when starting app (NetworkOnMainThreadException) ()
+ * Fix missing icon (in repomaker and maybe F-Droid)
+ * Improve translation files 
+ * Cleanup and refactor code
 
 # Version 74.4.2 (81)
  * Skip version
