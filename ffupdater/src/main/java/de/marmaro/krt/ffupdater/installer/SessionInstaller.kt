@@ -7,6 +7,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.SessionCallback
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
@@ -15,22 +16,21 @@ import java.io.IOException
 
 //for API >= 24 (Nougat 7.0)
 class SessionInstaller(
-        private val appInstalledCallback: () -> Any,
-        private val appNotInstalledCallback: (errorMessage: String) -> Any,
+    private val appInstalledCallback: () -> Any,
+    private val appNotInstalledCallback: (errorMessage: String?) -> Any,
 ) : AppInstaller {
     override fun onNewIntentCallback(intent: Intent, context: Context) {
-        if (intent.action == PACKAGE_INSTALLED_ACTION) {
-            val status = intent.extras?.getInt(PackageInstaller.EXTRA_STATUS)
-            if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-                try {
-                    //FFUpdater isn't privileged, so the user has to confirm the install.
-                    context.startActivity(intent.extras!!.get(Intent.EXTRA_INTENT) as Intent)
-                } catch (e: ActivityNotFoundException) {
-                    val help = context.getString(R.string.install_activity__try_disable_miui_optimization)
-                    appNotInstalledCallback(e.message + "\n\n" + help)
-                }
-                return
+        if (intent.action != PACKAGE_INSTALLED_ACTION) return
+        val status = intent.extras?.getInt(PackageInstaller.EXTRA_STATUS)
+        if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+            try {
+                //FFUpdater isn't privileged, so the user has to confirm the install.
+                context.startActivity(intent.extras!!.get(Intent.EXTRA_INTENT) as Intent)
+            } catch (e: ActivityNotFoundException) {
+                val m = context.getString(R.string.install_activity__try_disable_miui_optimization)
+                appNotInstalledCallback("${e.message}\n\n$m")
             }
+        } else {
             if (status == PackageInstaller.STATUS_SUCCESS) {
                 appInstalledCallback()
             } else {
@@ -54,8 +54,29 @@ class SessionInstaller(
     private fun installInternal(activity: Activity, downloadedFile: File) {
         val installer = activity.packageManager.packageInstaller
         val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
-        val bytes = downloadedFile.length()
-        installer.openSession(installer.createSession(params)).use { session ->
+        val id = installer.createSession(params)
+
+        //execute callbacks when installation is finished
+        installer.registerSessionCallback(object : SessionCallback() {
+            override fun onCreated(sessionId: Int) {}
+            override fun onBadgingChanged(sessionId: Int) {}
+            override fun onActiveChanged(sessionId: Int, active: Boolean) {}
+            override fun onProgressChanged(sessionId: Int, progress: Float) {}
+            override fun onFinished(sessionId: Int, success: Boolean) {
+                if (id == sessionId) {
+                    installer.unregisterSessionCallback(this)
+                    if (success) {
+                        appInstalledCallback()
+                    } else {
+                        appNotInstalledCallback(null)
+                    }
+                }
+            }
+        })
+
+        val openSession = installer.openSession(id)
+        openSession.use { session ->
+            val bytes = downloadedFile.length()
             session.openWrite("package", 0, bytes).use { packageStream ->
                 downloadedFile.inputStream().use { downloadedFileStream ->
                     downloadedFileStream.copyTo(packageStream)
@@ -68,10 +89,11 @@ class SessionInstaller(
         }
     }
 
-    class SessionInstallerException(message: String, throwable: Throwable) : Exception(message, throwable)
+    class SessionInstallerException(message: String, throwable: Throwable) :
+        Exception(message, throwable)
 
     companion object {
         private const val PACKAGE_INSTALLED_ACTION =
-                "de.marmaro.krt.ffupdater.installer.SessionInstaller.SESSION_API_PACKAGE_INSTALLED"
+            "de.marmaro.krt.ffupdater.installer.SessionInstaller.SESSION_API_PACKAGE_INSTALLED"
     }
 }

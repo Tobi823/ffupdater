@@ -12,22 +12,37 @@ object DeviceEnvironment {
     val abis = findSupportedAbis()
     val sdkInt = SDK_INT
 
+    /**
+     * API level 23
+     */
     fun supportsAndroidMarshmallow(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.M
     }
 
+    /**
+     * API level 24
+     */
     fun supportsAndroidNougat(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.N
     }
 
+    /**
+     * API level 26
+     */
     fun supportsAndroidOreo(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.O
     }
 
+    /**
+     * API level 28
+     */
     fun supportsAndroid9(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.P
     }
 
+    /**
+     * API level 29
+     */
     fun supportAndroid10(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.Q
     }

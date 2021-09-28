@@ -1,10 +1,14 @@
 package de.marmaro.krt.ffupdater.download
 
+import android.app.DownloadManager
 import android.content.Context
 import android.os.ParcelFileDescriptor
+import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.*
 
 /**
@@ -16,18 +20,49 @@ class ApkCache(val app: App, val context: Context) {
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
     private val key = "exists_cache_file_for_${app}"
 
+    @MainThread
+    suspend fun moveDownloadToCache(downloadManager: DownloadManager, downloadId: Long) {
+        openDownloadedFile(downloadManager, downloadId).use { downloadedFile ->
+            copyToCache(downloadedFile)
+        }
+        downloadManager.remove(downloadId)
+    }
+
+    /**
+     * Prevent false-positive "Inappropriate blocking method call"
+     */
+    private fun openDownloadedFile(
+        downloadManager: DownloadManager,
+        downloadId: Long
+    ) = downloadManager.openDownloadedFile(downloadId)
+
+
     /**
      * Copy the content of the ParcelFileDescriptor (from the android.app.DownloadManager)
      * to a file in the internal app cache folder.
      */
-    fun copyToCache(downloadedFile: ParcelFileDescriptor) {
+    @MainThread
+    private suspend fun copyToCache(downloadedFile: ParcelFileDescriptor) {
         deleteCache()
-        BufferedInputStream(FileInputStream(downloadedFile.fileDescriptor)).use { downloadedFileStream ->
-            BufferedOutputStream(FileOutputStream(getCacheFile())).use { cacheFileStream ->
-                downloadedFileStream.copyTo(cacheFileStream)
+        createInputStream(downloadedFile.fileDescriptor).use { downloadedFileStream ->
+            createOutputStream(getCacheFile()).use { cacheFileStream ->
+                withContext(Dispatchers.IO) {
+                    downloadedFileStream.copyTo(cacheFileStream)
+                }
             }
         }
         preferences.edit().putBoolean(key, true).apply()
+    }
+
+    private fun createInputStream(fileDescriptor: FileDescriptor): BufferedInputStream {
+        return BufferedInputStream(FileInputStream(fileDescriptor))
+    }
+
+    /**
+     * Prevent false-positive "Inappropriate blocking method call"
+     */
+    private fun createOutputStream(file: File): BufferedOutputStream {
+        return BufferedOutputStream(FileOutputStream(file))
     }
 
     /**
@@ -50,6 +85,7 @@ class ApkCache(val app: App, val context: Context) {
 
     /**
      * Test if the cached apk file is present and up-to-date.
+     * This method should not be called from the main thread.
      * @param available the latest available version for the given app.
      */
     suspend fun isCacheAvailable(available: AvailableVersionResult): Boolean {

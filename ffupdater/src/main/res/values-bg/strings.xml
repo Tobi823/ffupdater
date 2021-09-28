@@ -7,9 +7,7 @@
     <string name="application_installation_was_not_successful">Грешка при инсталиране на приложението</string>
     <string name="application_successfully_installed">Приложението е успешно инсталирано</string>
     <string name="available_version">Налично: %1$s</string>
-    <string name="available_version_error">
-        <u>ГРЕШКА</u>
-    </string>
+    <string name="available_version_error">"<u>ГРЕШКА</u>"</string>
     <string name="available_version_loading">Зареждане…</string>
     <string name="background_job_failure__notification_text">Моля, докладвайте за тази грешка. Щракнете, за да видите доклада за грешка.</string>
     <string name="background_job_failure__notification_title">Грешка при проверка за обновяване във фонов режим</string>
@@ -63,9 +61,7 @@
     <string name="install_activity__downloaded_application_from">Приложението е изтеглено от:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Изтегленото приложение е НЕпроверено</string>
     <string name="install_activity__downloaded_application_is_verified">Изтегленото приложение е проверено</string>
-    <string name="install_activity__exception__show_button">
-        <u>Покажете подробния отчет за грешка.</u>
-    </string>
+    <string name="install_activity__exception__show_button">"<u>Покажете подробния отчет за грешка.</u>"</string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Очакван отпечатък с SHA-256 от сертификат:</string>
     <string name="install_activity__external_storage_not_accessible">Външно хранилище не е налично и изтегляне не може да започне. Текущото състояние е:</string>
     <string name="install_activity__fetch_url_for_download">Получаване на адрес от %1$s за изтегляне</string>
@@ -94,14 +90,10 @@
     <string name="installed_version">Инсталирано: %1$s</string>
     <string name="lockwise__description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС \n\nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в сметките си.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">
-        <u>Превишаване на лимита на GitHub-API. Повторете опита следващия час.</u>
-    </string>
+    <string name="main_activity__github_api_limit_exceeded">"<u>Превишаване на лимита на GitHub-API. Повторете опита следващия час.</u>"</string>
     <string name="main_activity__no_internet_connection">Няма връзка с Мрежата</string>
     <string name="main_activity__subtitle">Обновявайте мрежовите четци от Mozilla</string>
-    <string name="main_activity__temporary_network_issue">
-        <u>Временен проблем в мрежата. Повторете опита по-</u>
-    </string>
+    <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Повторете опита по-</u>"</string>
     <string name="ok">Добре</string>
     <string name="running_downloads_dialog__message">Мениджърът за изтегляне на системата изтегля други файлове в момента. Искате ли да започнете ново изтегляне, което може да отнеме повече време?</string>
     <string name="running_downloads_dialog__negative">Не, не го изтегляйте</string>
@@ -124,10 +116,6 @@
     <string name="settings__theme_system_default">Стандартната за системата</string>
     <string name="settings__title">Проверка за обновяване на приложения</string>
     <string name="show_warning_before_installation_dialog__title">Внимание</string>
-    <string name="title_crasher_copy">копие</string>
-    <string name="title_crasher_crashed">%1$s се срина</string>
-    <string name="title_crasher_share">Споделяне</string>
-    <string name="title_crasher_stack_trace">Преглед на следата в стека</string>
     <string name="unsupported_abi_dialog__message">Избраното приложение е несъвместимо с процесора на телефона. Изберете друго.</string>
     <string name="unsupported_abi_dialog__title">Неподдържано устройство</string>
     <string name="update_interval__12h">12 часа</string>

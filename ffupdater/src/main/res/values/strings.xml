@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="action_about_title">About FFUpdater</string>
     <string name="action_settings_title">Settings</string>
     <string name="app_icon">app icon</string>
@@ -7,9 +7,7 @@
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successfully_installed">Application successfully installed</string>
     <string name="available_version">Available: %1$s</string>
-    <string name="available_version_error">
-        <u>ERROR</u>
-    </string>
+    <string name="available_version_error">"<u>ERROR</u>"</string>
     <string name="available_version_loading">Loading…</string>
     <string name="background_job_failure__notification_text">Please report this error. Click to view the error report.</string>
     <string name="background_job_failure__notification_title">Background update check failed</string>
@@ -65,9 +63,7 @@
     <string name="install_activity__downloaded_application_from">Downloaded application from:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
     <string name="install_activity__downloaded_application_is_verified">Downloaded application is verified</string>
-    <string name="install_activity__exception__show_button">
-        <u>Show the detailed error report.</u>
-    </string>
+    <string name="install_activity__exception__show_button">"<u>Show the detailed error report.</u>"</string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Expected SHA-256 certificate fingerprint:</string>
     <string name="install_activity__external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
     <string name="install_activity__fetch_url_for_download">Fetch download URL from %1$s</string>
@@ -96,14 +92,10 @@
     <string name="installed_version">Installed: %1$s</string>
     <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">
-        <u>GitHub-API limit exceeded. Retry next hour.</u>
-    </string>
+    <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API limit exceeded. Retry next hour.</u>"</string>
     <string name="main_activity__no_internet_connection">No network connection</string>
     <string name="main_activity__subtitle">Update your browsers from Mozilla</string>
-    <string name="main_activity__temporary_network_issue">
-        <u>Temporary network issue. Retry later.</u>
-    </string>
+    <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">The system download manager is downloading other files now. Do you want to start a new download that may take longer?</string>
@@ -127,10 +119,6 @@
     <string name="settings__theme_system_default">Use system default</string>
     <string name="settings__title">Application Update Check</string>
     <string name="show_warning_before_installation_dialog__title">Warning</string>
-    <string name="title_crasher_copy" tools:keep="@string/title_crasher_copy">Copy</string>
-    <string name="title_crasher_crashed" tools:keep="@string/title_crasher_crashed">%1$s Crashed</string>
-    <string name="title_crasher_share" tools:keep="@string/title_crasher_share">Share</string>
-    <string name="title_crasher_stack_trace" tools:keep="@string/title_crasher_stack_trace">View Stack Trace</string>
     <string name="unsupported_abi_dialog__message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="unsupported_abi_dialog__title">Unsupported device</string>
     <string name="update_interval__12h">12 hours</string>

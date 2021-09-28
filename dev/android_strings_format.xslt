@@ -10,7 +10,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     omit-xml-declaration="yes"/>
 
 <xsl:template match="/resources">
-    <resources>
+<resources>
 
 <xsl:for-each select="string">
 <xsl:sort select="@name"/>

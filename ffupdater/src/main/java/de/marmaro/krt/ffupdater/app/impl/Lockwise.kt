@@ -29,7 +29,7 @@ class Lockwise : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
 
-    override fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val githubConsumer = GithubConsumer(
             repoOwner = "mozilla-lockwise",
             repoName = "lockwise-android",
@@ -38,7 +38,7 @@ class Lockwise : BaseAppDetail() {
                 !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
             },
             correctAssetTester = { asset: Asset -> asset.name.endsWith(".apk") })
-        val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
+        val result = githubConsumer.updateCheck()
         // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"
         val regexResult = Regex("""^release-v((\d)+(\.\d+)*)""").find(result.tagName)
         val version = regexResult!!.groups[1]!!.value

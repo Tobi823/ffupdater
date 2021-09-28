@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="action_about_title">Sobre FFUpdater</string>
     <string name="action_settings_title">Configurações</string>
     <string name="app_icon">ícone do app</string>
@@ -7,9 +7,7 @@
     <string name="application_installation_was_not_successful">Instalação do navegador falhou</string>
     <string name="application_successfully_installed">Navegador instalado com sucesso</string>
     <string name="available_version">Disponível: %1$s</string>
-    <string name="available_version_error">
-        <u>ERRO</u>
-    </string>
+    <string name="available_version_error">"<u>ERRO</u>"</string>
     <string name="available_version_loading">Carregando…</string>
     <string name="background_job_failure__notification_text">Favor reportar este erro. Clique para ver o relatório de erro.</string>
     <string name="background_job_failure__notification_title">Verificação em segundo plano falhou</string>
@@ -63,9 +61,7 @@
     <string name="install_activity__downloaded_application_from">Navegador baixado de:</string>
     <string name="install_activity__downloaded_application_is_not_verified">O navegador baixado NÃO foi verificado</string>
     <string name="install_activity__downloaded_application_is_verified">O navegador baixado foi verificado</string>
-    <string name="install_activity__exception__show_button">
-        <u>Mostrar o relatório de erro detalhado.</u>
-    </string>
+    <string name="install_activity__exception__show_button">"<u>Mostrar o relatório de erro detalhado.</u>"</string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Certificado previsto da impressão digital SHA-256:</string>
     <string name="install_activity__external_storage_not_accessible">Armazenamento não está disponível - não é possível baixar. Status atual:</string>
     <string name="install_activity__fetch_url_for_download">Procurar pela URL de download em %1$s</string>
@@ -94,14 +90,10 @@
     <string name="installed_version">Instalado: %1$s</string>
     <string name="lockwise__description">ACESSO VIA SENHA, &amp; APENAS VOCÊ \n\nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via aplicativo para entrar em suas contas</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">
-        <u>O limite de API do GitHub foi excedido. Tente novamente mais tarde.</u>
-    </string>
+    <string name="main_activity__github_api_limit_exceeded">"<u>O limite de API do GitHub foi excedido. Tente novamente mais tarde.</u>"</string>
     <string name="main_activity__no_internet_connection">Sem conexão à Internet</string>
     <string name="main_activity__subtitle">Instale e atualize navegadores da Internet</string>
-    <string name="main_activity__temporary_network_issue">
-        <u>Problema temporário da rede. Tente novamente mais tarde.</u>
-    </string>
+    <string name="main_activity__temporary_network_issue">"<u>Problema temporário da rede. Tente novamente mais tarde.</u>"</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">O gerente de download do sistema está baixando outros arquivos agora. Você quer iniciar um novo download que pode levar mais tempo?</string>
     <string name="running_downloads_dialog__negative">Não, não faça o download</string>
@@ -124,10 +116,6 @@
     <string name="settings__theme_system_default">Adaptar do sistema</string>
     <string name="settings__title">Verificar por atualizações</string>
     <string name="show_warning_before_installation_dialog__title">Aviso</string>
-    <string name="title_crasher_copy" tools:keep="@string/title_crasher_copy">Copiar</string>
-    <string name="title_crasher_crashed" tools:keep="@string/title_crasher_crashed">%1$s Falhou</string>
-    <string name="title_crasher_share" tools:keep="@string/title_crasher_share">Compartilhar</string>
-    <string name="title_crasher_stack_trace" tools:keep="@string/title_crasher_stack_trace">Ver Stack Trace</string>
     <string name="unsupported_abi_dialog__message">O navegador selecionado é incompatível com o processador no seu celular. Por favor, selecione um navegador diferente.</string>
     <string name="unsupported_abi_dialog__title">Dispositivo incompatível</string>
     <string name="update_interval__12h">12 horas</string>

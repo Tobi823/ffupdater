@@ -1,9 +1,13 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch
 
 import android.net.TrafficStats
+import androidx.annotation.MainThread
+import androidx.annotation.WorkerThread
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.FileNotFoundException
 import java.io.IOException
@@ -29,9 +33,12 @@ object ApiConsumer {
      * @throws ApiConsumerException if the network resource is not available after 5 retires.
      * @throws GithubRateLimitExceededException if the GitHub-API rate limit is exceeded.
      */
-    fun <T: Any> consumeNetworkResource(url: String, clazz: KClass<T>): T {
+    @MainThread
+    suspend fun <T: Any> consumeNetworkResource(url: String, clazz: KClass<T>): T {
         try {
-            return readNetworkResource(url, clazz)
+            return withContext(Dispatchers.IO) {
+                readNetworkResource(url, clazz)
+            }
         } catch (e: FileNotFoundException) {
             if (url.startsWith("https://api.github.com")) {
                 throw GithubRateLimitExceededException(e)
@@ -43,6 +50,7 @@ object ApiConsumer {
         }
     }
 
+    @WorkerThread
     private fun <T: Any> readNetworkResource(urlString: String, clazz: KClass<T>): T {
         TrafficStats.setThreadStatsTag(THREAD_ID)
         val url = URL(urlString)

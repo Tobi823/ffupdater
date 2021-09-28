@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci
 
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import java.time.ZonedDateTime
@@ -10,13 +11,16 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
  */
 class MozillaCiLogConsumer(task: String, private val apkArtifact: String) {
     private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
-    private val chainOfTrustLogUrl = "$baseUrl/artifacts/public/logs/chain_of_trust.log"
+    private val logUrl = "$baseUrl/artifacts/public/logs/chain_of_trust.log"
 
     /**
+     * This method must not be called from the main thread or a android.os.NetworkOnMainThreadException
+     * will be thrown
      * @throws ApiConsumerException
      */
-    fun updateCheck(): Result {
-        val response = ApiConsumer.consumeNetworkResource(chainOfTrustLogUrl, String::class)
+    @MainThread
+    suspend fun updateCheck(): Result {
+        val response = ApiConsumer.consumeNetworkResource(logUrl, String::class)
         val version = Regex("""'(version|tag_name)': 'v?(.+)'""")
             .find(response)!!
             .groups[2]!!.value

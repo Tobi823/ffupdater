@@ -15,7 +15,7 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.6.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.30'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31'
 
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.google.code.gson:gson:2.8.6'
@@ -38,8 +38,8 @@ android {
         //PATCH version when you make backwards compatible bug fixes.
         //
         //Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
-        versionCode 80
-        versionName "74.4.1"
+        versionCode 82
+        versionName "74.4.3"
         minSdkVersion 21
         targetSdkVersion 30
         vectorDrawables.useSupportLibrary = true

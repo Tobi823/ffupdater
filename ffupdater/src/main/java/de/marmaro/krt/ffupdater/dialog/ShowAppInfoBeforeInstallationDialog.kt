@@ -6,9 +6,12 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * Show a dialog with the app description.
@@ -21,11 +24,13 @@ class ShowAppInfoBeforeInstallationDialog : DialogFragment() {
                 .setTitle(getString(app.detail.displayTitle))
                 .setMessage(getString(app.detail.displayDescription))
                 .setPositiveButton(getString(R.string.install_app)) { dialog: DialogInterface, _: Int ->
-                    dialog.dismiss()
-                    if (app.detail.displayWarning != null) {
-                        ShowWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
-                    } else {
-                        mainActivity.installAppButCheckForCurrentDownloads(app)
+                    mainActivity.lifecycleScope.launch(Dispatchers.Main) {
+                        dialog.dismiss()
+                        if (app.detail.displayWarning != null) {
+                            ShowWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
+                        } else {
+                            mainActivity.installAppButCheckForCurrentDownloads(app)
+                        }
                     }
                 }
                 .setNegativeButton(getString(R.string.go_back)) { dialog: DialogInterface, _: Int ->

@@ -26,7 +26,7 @@ class FirefoxKlar : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
-    override fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileName = getStringForCurrentAbi("Klar-arm.apk", "Klar-arm64.apk")
         val githubConsumer = GithubConsumer(
             repoOwner = "mozilla-mobile",
@@ -36,7 +36,7 @@ class FirefoxKlar : BaseAppDetail() {
                 !release.isPreRelease && release.assets.any { it.name == fileName }
             },
             correctAssetTester = { asset: GithubConsumer.Asset -> asset.name == fileName })
-        val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
+        val result = githubConsumer.updateCheck()
         val versionRegexResult = Regex("""^v((\d)+(\.\d+)*)""").find(result.tagName)
         val version = versionRegexResult!!.groups[1]!!.value
         return AvailableVersionResult(

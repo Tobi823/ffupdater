@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.background
 import android.app.DownloadManager
 import android.content.Context
 import android.util.Log
+import androidx.annotation.MainThread
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.R
@@ -17,7 +18,6 @@ import de.marmaro.krt.ffupdater.download.NetworkUtil
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
@@ -46,6 +46,7 @@ class BackgroundJob(
      * Result.success will execute the job in the next period.
      * Result.retry will retry the job with exponentially increased wait time (30s, 1m, 2m, ...).
      */
+    @MainThread
     override suspend fun doWork(): Result {
         val context = applicationContext
         try {
@@ -76,6 +77,7 @@ class BackgroundJob(
         ErrorNotificationBuilder.showNotification(context, e, message)
     }
 
+    @MainThread
     private suspend fun executeBackgroundJob(): Result {
         Log.i(LOG_TAG, "execute BackgroundJob")
         val context = applicationContext
@@ -92,7 +94,7 @@ class BackgroundJob(
 
         val appsWithUpdates = findAppsWithUpdates()
         if (NetworkUtil.isActiveNetworkUnmetered(context) &&
-            StorageUtil.isEnoughStorageAvailable(context)
+            StorageUtil.isEnoughStorageAvailable()
         ) {
             downloadUpdatesInBackground(downloadManager, appsWithUpdates)
         }
@@ -106,9 +108,6 @@ class BackgroundJob(
      *  - are installed
      *  - are not disabled (in the settings "excluded applications")
      *  - have an available update
-     * @throws InvalidApiResponseException
-     * @throws ApiConsumerException
-     * @throws CancellationException
      */
     private suspend fun findAppsWithUpdates(): List<App> {
         val disabledApps = SettingsHelper(applicationContext).disabledApps
@@ -134,6 +133,7 @@ class BackgroundJob(
      * If the app update is not already been cached, then start the download and wait until the
      * download is finished.
      */
+    @MainThread
     private suspend fun downloadUpdateInBackground(app: App, downloadManager: DownloadManager) {
         val apkCache = ApkCache(app, applicationContext)
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
@@ -153,9 +153,7 @@ class BackgroundJob(
         repeat(60 * 60) {
             when (DownloadManagerUtil.getStatusAndProgress(downloadManager, downloadId).status) {
                 SUCCESSFUL -> {
-                    downloadManager.openDownloadedFile(downloadId).use { downloadedFile ->
-                        apkCache.copyToCache(downloadedFile)
-                    }
+                    apkCache.moveDownloadToCache(downloadManager, downloadId)
                     return
                 }
                 FAILED -> {

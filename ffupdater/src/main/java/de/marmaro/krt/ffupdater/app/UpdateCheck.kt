@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app
 
 import android.content.Context
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import java.io.File
@@ -12,15 +13,17 @@ interface UpdateCheck {
      * @throws InvalidApiResponseException
      * @throws ApiConsumerException
      */
+    @MainThread
     suspend fun updateCheck(context: Context): UpdateCheckResult
 
+    @MainThread
     suspend fun isCacheFileUpToDate(
             context: Context,
             file: File,
             available: AvailableVersionResult,
     ): Boolean
 
-    suspend fun isInstalledVersionUpToDate(
+    fun isInstalledVersionUpToDate(
             context: Context,
             available: AvailableVersionResult,
     ): Boolean

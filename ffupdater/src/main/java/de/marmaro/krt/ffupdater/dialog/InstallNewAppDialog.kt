@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import kotlinx.coroutines.runBlocking
 
 /**
  * Allow the user to select an app from the dialog to install.
@@ -17,7 +18,11 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 class InstallNewAppDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
-        val apps = App.values().filterNot { it.detail.isInstalled(context) }
+        val apps = runBlocking {
+            App.values().filterNot {
+                it.detail.isInstalled(context)
+            }
+        }
         val names = apps.map { context.getString(it.detail.displayTitle) }.toTypedArray()
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.install_new_app_dialog__title)

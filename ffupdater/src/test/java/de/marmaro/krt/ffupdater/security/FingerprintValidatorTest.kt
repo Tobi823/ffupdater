@@ -101,7 +101,9 @@ class FingerprintValidatorTest {
         every {
             packageManager.getPackageInfo(App.FIREFOX_RELEASE.detail.packageName, GET_SIGNATURES)
         } returns packageInfo
-        val actual = fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE)
+        val actual = runBlocking {
+            fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE)
+        }
         assertTrue(actual.isValid)
         assertEquals(signatureFingerprint, actual.hexString)
         assertEquals(signatureFingerprint, App.FIREFOX_RELEASE.detail.signatureHash)
@@ -114,7 +116,9 @@ class FingerprintValidatorTest {
         every {
             packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, GET_SIGNATURES)
         } throws PackageManager.NameNotFoundException()
-        val actual = fingerprintValidator.checkInstalledApp(App.LOCKWISE)
+        val actual = runBlocking {
+            fingerprintValidator.checkInstalledApp(App.LOCKWISE)
+        }
         assertFalse(actual.isValid)
     }
 
@@ -126,6 +130,8 @@ class FingerprintValidatorTest {
         every {
             packageManager.getPackageInfo(App.FIREFOX_RELEASE.detail.packageName, GET_SIGNATURES)
         } returns packageInfo
-        fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE)
+        runBlocking {
+            fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE)
+        }
     }
 }

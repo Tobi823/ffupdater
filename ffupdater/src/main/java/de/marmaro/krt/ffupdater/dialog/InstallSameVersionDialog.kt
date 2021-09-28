@@ -6,9 +6,12 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class InstallSameVersionDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -18,8 +21,10 @@ class InstallSameVersionDialog : DialogFragment() {
                 .setTitle(getString(R.string.install_same_version_dialog__title))
                 .setMessage(getString(R.string.install_same_version_dialog__message))
                 .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
-                    mainActivity.installAppButCheckForCurrentDownloads(app)
-                    dialog.dismiss()
+                    mainActivity.lifecycleScope.launch(Dispatchers.Main) {
+                        dialog.dismiss()
+                        mainActivity.installAppButCheckForCurrentDownloads(app)
+                    }
                 }
                 .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()

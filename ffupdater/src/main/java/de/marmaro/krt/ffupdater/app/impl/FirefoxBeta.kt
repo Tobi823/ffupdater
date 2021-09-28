@@ -24,7 +24,7 @@ class FirefoxBeta : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
-    override fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val abiString = getStringForCurrentAbi(
             "armeabi-v7a", "arm64-v8a", "x86",
             "x86_64"

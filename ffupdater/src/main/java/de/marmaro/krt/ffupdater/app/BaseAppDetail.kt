@@ -2,22 +2,29 @@ package de.marmaro.krt.ffupdater.app
 
 import android.content.Context
 import android.content.pm.PackageManager
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.download.PackageManagerUtil
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import java.io.File
 
 abstract class BaseAppDetail : AppDetail {
     private var cache: CachedAvailableVersionResult? = null
     private val mutex = Mutex()
 
-    override fun isInstalled(context: Context): Boolean {
+    @MainThread
+    override suspend fun isInstalled(context: Context): Boolean {
         return try {
-            context.packageManager.getPackageInfo(packageName, 0)
+            withContext(Dispatchers.IO) {
+                context.packageManager.getPackageInfo(packageName, 0)
+            }
             true
         } catch (e: PackageManager.NameNotFoundException) {
             false
@@ -47,8 +54,12 @@ abstract class BaseAppDetail : AppDetail {
      * @throws InvalidApiResponseException
      * @throws ApiConsumerException
      */
-    protected abstract fun updateCheckWithoutCaching(): AvailableVersionResult
+    protected abstract suspend fun updateCheckWithoutCaching(): AvailableVersionResult
 
+    /**
+     * This method must not be called from the main thread or a android.os.NetworkOnMainThreadException
+     * will be thrown
+     */
     override suspend fun updateCheck(context: Context): UpdateCheckResult {
         // - use mutex lock to prevent multiple simultaneously update check for a single app
         // - it's useless to start a new update check for an app when a different update check
@@ -70,16 +81,16 @@ abstract class BaseAppDetail : AppDetail {
     }
 
     override suspend fun isCacheFileUpToDate(
-            context: Context,
-            file: File,
-            available: AvailableVersionResult,
+        context: Context,
+        file: File,
+        available: AvailableVersionResult,
     ): Boolean {
-        val pm = context.packageManager
-        val packageInfo = pm.getPackageArchiveInfo(file.absolutePath, 0) ?: return false
-        return packageInfo.versionName == available.version
+        val path = file.absolutePath
+        val packageInfo = PackageManagerUtil.getPackageArchiveInfo(context.packageManager, path)
+        return packageInfo != null && packageInfo.versionName == available.version
     }
 
-    override suspend fun isInstalledVersionUpToDate(
+    override fun isInstalledVersionUpToDate(
             context: Context,
             available: AvailableVersionResult,
     ): Boolean {
@@ -109,7 +120,7 @@ abstract class BaseAppDetail : AppDetail {
     }
 
     companion object {
-        const val CACHE_TIME: Long = 10 * 60 * 1000 // 10 minutes
+        const val CACHE_TIME = 600_000L // 10 minutes
     }
 
     data class CachedAvailableVersionResult(

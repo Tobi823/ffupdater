@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci
 
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.security.Sha256Hash
@@ -11,14 +12,16 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
  */
 class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
     private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
-    private val chainOfTrustJsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
+    private val jsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
 
     /**
+     * This method must not be called from the main thread or a android.os.NetworkOnMainThreadException
+     * will be thrown
      * @throws ApiConsumerException
      */
-    fun updateCheck(): Result {
-        val response =
-            ApiConsumer.consumeNetworkResource(chainOfTrustJsonUrl, ChainOfTrustJson::class)
+    @MainThread
+    suspend fun updateCheck(): Result {
+        val response = ApiConsumer.consumeNetworkResource(jsonUrl, ChainOfTrustJson::class)
         val hashString = response.artifacts[apkArtifact]!!.sha256
         val releaseDate = ZonedDateTime.parse(response.task.created, ISO_ZONED_DATE_TIME)
         return Result(

@@ -7,9 +7,7 @@
     <string name="application_installation_was_not_successful">Installation der Anwendung schlug fehl</string>
     <string name="application_successfully_installed">Anwendung erfolgreich installiert</string>
     <string name="available_version">Verfügbar: %1$s</string>
-    <string name="available_version_error">
-        <u>FEHLER</u>
-    </string>
+    <string name="available_version_error">"<u>FEHLER</u>"</string>
     <string name="available_version_loading">Laden…</string>
     <string name="background_job_failure__notification_text">Bitte melden Sie diesen Fehler. Klicken Sie auf diese Benachrichtigung, um den Fehlerbericht anzuzeigen.</string>
     <string name="background_job_failure__notification_title">Hintergrundprüfung auf Updates ist fehlgeschlagen</string>
@@ -63,9 +61,7 @@
     <string name="install_activity__downloaded_application_from">Anwendung wurde heruntergeladen von:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Heruntergeladene Anwendung ist NICHT verifiziert</string>
     <string name="install_activity__downloaded_application_is_verified">Heruntergeladene Anwendung ist verifiziert</string>
-    <string name="install_activity__exception__show_button">
-        <u>Zeige den detaillierten Fehlerbericht an.</u>
-    </string>
+    <string name="install_activity__exception__show_button">"<u>Zeige den detaillierten Fehlerbericht an.</u>"</string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Erwarteter SHA-256 Fingerabdruck des Zertifikats:</string>
     <string name="install_activity__external_storage_not_accessible">Externer Speicher ist nicht verfügbar - kann den Download nicht starten. Aktueller Status ist:</string>
     <string name="install_activity__fetch_url_for_download">Abruf der Download-URL von %1$s</string>
@@ -94,14 +90,10 @@
     <string name="installed_version">Installiert: %1$s</string>
     <string name="lockwise__description">PASSWORT-ZUGANG FÜR SIE, &amp; NUR SIE Verfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">
-        <u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>
-    </string>
+    <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
     <string name="main_activity__no_internet_connection">Sie sind nicht mit dem Internet verbunden</string>
     <string name="main_activity__subtitle">Aktualisieren Sie Ihre Browser von Mozilla</string>
-    <string name="main_activity__temporary_network_issue">
-        <u>Vorübergehendes Netzwerkproblem. Später erneut versuchen.</u>
-    </string>
+    <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Später erneut versuchen.</u>"</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">Der System-Download-Manager lädt gerade andere Dateien herunter. Möchten Sie einen neuen Download starten, der länger dauern kann?</string>
     <string name="running_downloads_dialog__negative">Nein, nicht herunterladen</string>
@@ -124,10 +116,6 @@
     <string name="settings__theme_system_default">Systemeinstellung</string>
     <string name="settings__title">Update-Prüfung der Anwendung</string>
     <string name="show_warning_before_installation_dialog__title">Warnung</string>
-    <string name="title_crasher_copy">Kopieren</string>
-    <string name="title_crasher_crashed">%1$s ist abgestürzt</string>
-    <string name="title_crasher_share">Teilen</string>
-    <string name="title_crasher_stack_trace">Stacktrace anzeigen</string>
     <string name="unsupported_abi_dialog__message">Der ausgewählte Browser ist mit dem Prozessor Ihres Smartphones nicht kompatibel. Bitte wähle einen anderen Browser.</string>
     <string name="unsupported_abi_dialog__title">Nicht unterstütztes Gerät</string>
     <string name="update_interval__12h">12 Stunden</string>

@@ -1,3 +1,9 @@
+# Version 74.4.3 (82)
+ *
+
+# Version 74.4.2 (81)
+ * Skip version
+
 # 2021-09-24 Version 74.4.1 (80)
  * Fix crash when canceling a download (Tobi823/ffupdater#77)
  * Ignore error and retry background update (with exponential increasing waiting time) for CancellationException, GithubRateLimitExceededException and UnknownHostException (Tobi823/ffupdater#74) 

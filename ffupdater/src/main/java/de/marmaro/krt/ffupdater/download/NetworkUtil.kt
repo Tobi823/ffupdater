@@ -4,8 +4,12 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
+import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.net.InetAddress
 import java.net.UnknownHostException
 
@@ -13,15 +17,20 @@ object NetworkUtil {
     private const val GITHUB_API_HOST = "api.github.com"
     private const val MOZILLA_FIREFOX_CI_TC_HOST = "firefox-ci-tc.services.mozilla.com"
 
-    fun isInternetAvailable(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return isInternetAvailable(cm)
-    }
-
-    fun isInternetUnavailable(context: Context): Boolean {
+    @MainThread
+    suspend fun isInternetUnavailable(context: Context): Boolean {
         return !isInternetAvailable(context)
     }
 
+    @MainThread
+    suspend fun isInternetAvailable(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return withContext(Dispatchers.IO) {
+            isInternetAvailable(cm)
+        }
+    }
+
+    @WorkerThread
     private fun isInternetAvailable(cm: ConnectivityManager): Boolean {
         val networkConnected = if (DeviceEnvironment.supportsAndroidMarshmallow()) {
             isNetworkConnected(cm)
@@ -49,6 +58,7 @@ object NetworkUtil {
         return cm.activeNetworkInfo?.isConnected == true
     }
 
+    @WorkerThread
     private fun isDnsResolvable(url: String): Boolean {
         return try {
             val address = InetAddress.getByName(url)

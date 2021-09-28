@@ -27,7 +27,7 @@ class Bromite : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
 
-    override fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileName = getStringForCurrentAbi(
             "arm_ChromePublic.apk",
             "arm64_ChromePublic.apk", "x86_ChromePublic.apk", null
@@ -40,7 +40,7 @@ class Bromite : BaseAppDetail() {
                 !release.isPreRelease && release.assets.any { it.name == fileName }
             },
             correctAssetTester = { asset: Asset -> asset.name == fileName })
-        val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
+        val result = githubConsumer.updateCheck()
         // tag name can be "90.0.4430.59"
         return AvailableVersionResult(
             downloadUrl = result.url,

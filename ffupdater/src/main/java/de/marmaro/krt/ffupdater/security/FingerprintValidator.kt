@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
-import android.os.Build
-import androidx.annotation.RequiresApi
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.download.PackageManagerUtil
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayInputStream
 import java.io.File
 import java.security.MessageDigest
@@ -27,13 +29,12 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      * @param app  app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
-    @Suppress("RedundantSuspendModifier")
-    suspend fun checkApkFile(file: File, app: App): FingerprintResult {
+    @MainThread
+    suspend fun checkApkFile(file: File, app: App): CertificateValidationResult {
+        require(file.exists()) { "file must exists" }
+        val path = file.absolutePath
+        val info = PackageManagerUtil.getPackageArchiveInfoOrFail(packageManager, path)
         return try {
-            require(file.exists()) { "file must exists" }
-            val path = file.absolutePath
-            val info = packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
-            requireNotNull(info) { "getPackageArchiveInfo() must successful parse file" }
             verifyPackageInfo(info, app)
         } catch (e: CertificateException) {
             throw UnableCheckApkException("certificate of APK file is invalid", e)
@@ -54,8 +55,8 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      */
     @SuppressLint("PackageManagerGetSignatures")
     // because GET_SIGNATURES is dangerous on Android 4.4 or lower https://stackoverflow.com/a/39348300
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun checkInstalledApp(app: App): FingerprintResult {
+    @MainThread
+    suspend fun checkInstalledApp(app: App): CertificateValidationResult {
         return try {
             val packageInfo = packageManager.getPackageInfo(app.detail.packageName, GET_SIGNATURES)
             verifyPackageInfo(packageInfo, app)
@@ -64,26 +65,37 @@ class FingerprintValidator(private val packageManager: PackageManager) {
         } catch (e: NoSuchAlgorithmException) {
             throw UnableCheckApkException("unknown algorithm for checking APK file", e)
         } catch (e: PackageManager.NameNotFoundException) {
-            FingerprintResult(false, "")
+            CertificateValidationResult(false, "")
         }
     }
 
+    @MainThread
     @Throws(CertificateException::class, NoSuchAlgorithmException::class)
-    private fun verifyPackageInfo(packageInfo: PackageInfo, appDetail: App): FingerprintResult {
-        check(packageInfo.signatures.isNotEmpty())
-        val signatureStream = ByteArrayInputStream(packageInfo.signatures[0].toByteArray())
-        val certificate =
-            CertificateFactory.getInstance("X509").generateCertificate(signatureStream)
-        val currentByteArray = MessageDigest.getInstance("SHA-256").digest(certificate.encoded)
-        val current =
-            currentByteArray.joinToString("") { String.format("%02x", (it.toInt() and 0xFF)) }
-        return FingerprintResult(
-            isValid = (current == appDetail.detail.signatureHash),
-            hexString = current
-        )
+    private suspend fun verifyPackageInfo(
+        packageInfo: PackageInfo,
+        appDetail: App
+    ): CertificateValidationResult {
+        return withContext(Dispatchers.IO) {
+            check(packageInfo.signatures.isNotEmpty())
+            val signatureStream = ByteArrayInputStream(packageInfo.signatures[0].toByteArray())
+            val certificateFactory = CertificateFactory.getInstance("X509")
+            val certificate = certificateFactory.generateCertificate(signatureStream)
+
+            val messageDigestSha256 = MessageDigest.getInstance("SHA-256")
+            val certificateFingerprint = messageDigestSha256.digest(certificate.encoded)
+            val certificateFingerprintHexString = certificateFingerprint.joinToString("") {
+                String.format("%02x", (it.toInt() and 0xFF))
+            }
+
+            val isValid = certificateFingerprintHexString == appDetail.detail.signatureHash
+            CertificateValidationResult(
+                isValid = isValid,
+                hexString = certificateFingerprintHexString
+            )
+        }
     }
 
-    class FingerprintResult(val isValid: Boolean, val hexString: String)
+    class CertificateValidationResult(val isValid: Boolean, val hexString: String)
 
     class UnableCheckApkException(message: String, throwable: Throwable) :
         Exception(message, throwable)

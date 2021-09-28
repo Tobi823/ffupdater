@@ -25,7 +25,7 @@ class Brave : BaseAppDetail() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
-    override fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileName = getStringForCurrentAbi(
             "BraveMonoarm.apk", "BraveMonoarm64.apk",
             "BraveMonox86.apk", "BraveMonox64.apk"
@@ -40,7 +40,7 @@ class Brave : BaseAppDetail() {
                         release.assets.any { it.name == fileName }
             },
             correctAssetTester = { asset: Asset -> asset.name == fileName })
-        val result = githubConsumer.updateCheckReliableOnlyForNormalReleases()
+        val result = githubConsumer.updateCheck()
         val version = result.tagName.replace("v", "")
         return AvailableVersionResult(
             downloadUrl = result.url,

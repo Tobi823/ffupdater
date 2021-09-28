@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.github
 
+import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import java.time.ZonedDateTime
@@ -20,29 +20,20 @@ class GithubConsumer(
         check(resultsPerPage > 0)
     }
 
-    /**
-     * @throws InvalidApiResponseException
-     * @throws ApiConsumerException
-     */
-    fun updateCheckReliableOnlyForNormalReleases(): Result {
+    @MainThread
+    suspend fun updateCheck(): Result {
         return updateCheckLatestRelease() ?: updateCheckAllReleases()
     }
 
-    /**
-     * @throws InvalidApiResponseException
-     * @throws ApiConsumerException
-     */
-    private fun updateCheckLatestRelease(): Result? {
+    @MainThread
+    private suspend fun updateCheckLatestRelease(): Result? {
         val url = "https://api.github.com/repos/$repoOwner/$repoName/releases/latest"
         val release = ApiConsumer.consumeNetworkResource(url, Release::class)
         return release.takeIf { validReleaseTester.test(it) }?.let { convert(it) }
     }
 
-    /**
-     * @throws InvalidApiResponseException
-     * @throws ApiConsumerException
-     */
-    private fun updateCheckAllReleases(): Result {
+    @MainThread
+    private suspend fun updateCheckAllReleases(): Result {
         val tries = 4
         for (page in 1..(tries + 1)) {
             val url = "https://api.github.com/repos/$repoOwner/$repoName/releases" +

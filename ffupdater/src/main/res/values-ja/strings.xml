@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="action_about_title">FFUpdaterについて</string>
     <string name="action_settings_title">設定</string>
     <string name="app_icon">アプリアイコン</string>
@@ -7,9 +7,7 @@
     <string name="application_installation_was_not_successful">アプリのインストールに失敗しました</string>
     <string name="application_successfully_installed">アプリのインストールに成功しました</string>
     <string name="available_version">利用可能: %1$s</string>
-    <string name="available_version_error">
-        <u>エラー</u>
-    </string>
+    <string name="available_version_error">"<u>エラー</u>"</string>
     <string name="available_version_loading">読み込み中…</string>
     <string name="background_job_failure__notification_text">このエラーを報告してください。クリックするとエラーレポートが表示されます。</string>
     <string name="background_job_failure__notification_title">バックグラウンドのチェックに失敗しました</string>
@@ -63,9 +61,7 @@
     <string name="install_activity__downloaded_application_from">アプリのダウンロード元:</string>
     <string name="install_activity__downloaded_application_is_not_verified">ダウンロードしたアプリを検証できませんでした。</string>
     <string name="install_activity__downloaded_application_is_verified">ダウンロードしたアプリは検証されました。</string>
-    <string name="install_activity__exception__show_button">
-        <u>詳細なエラーレポートを表示する。</u>
-    </string>
+    <string name="install_activity__exception__show_button">"<u>詳細なエラーレポートを表示する。</u>"</string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">予期されるSHA-256証明書フィンガープリント:</string>
     <string name="install_activity__external_storage_not_accessible">外部ストレージが利用できません - ダウンロードが開始できません。 現在のステータス:</string>
     <string name="install_activity__fetch_url_for_download">%1$s からダウンロードURLを取得中</string>
@@ -94,14 +90,10 @@
     <string name="installed_version">インストール済み: %1$s</string>
     <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">
-        <u>GitHub-APIの制限を超えました。次の時間に再試行します。</u>
-    </string>
+    <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-APIの制限を超えました。次の時間に再試行します。</u>"</string>
     <string name="main_activity__no_internet_connection">ネットワーク接続がありません</string>
     <string name="main_activity__subtitle">あなたのブラウザをアップデートします</string>
-    <string name="main_activity__temporary_network_issue">
-        <u>一時的なネットワークの問題です。後で再試行します。</u>
-    </string>
+    <string name="main_activity__temporary_network_issue">"<u>一時的なネットワークの問題です。後で再試行します。</u>"</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">システムダウンロードマネージャーは、現在、他のファイルをダウンロードしています。時間がかかるかもしれない新しいダウンロードを開始しますか？</string>
     <string name="running_downloads_dialog__negative">いいえ、ダウンロードしません</string>
@@ -124,10 +116,6 @@
     <string name="settings__theme_system_default">システム標準に従う</string>
     <string name="settings__title">アップデートチェック</string>
     <string name="show_warning_before_installation_dialog__title">警告</string>
-    <string name="title_crasher_copy" tools:keep="@string/title_crasher_copy">コピー</string>
-    <string name="title_crasher_crashed" tools:keep="@string/title_crasher_crashed">%1$s はクラッシュしました</string>
-    <string name="title_crasher_share" tools:keep="@string/title_crasher_share">共有</string>
-    <string name="title_crasher_stack_trace" tools:keep="@string/title_crasher_stack_trace">スタックトレースを確認</string>
     <string name="unsupported_abi_dialog__message">選択したアプリはこの端末のプロセッサに互換性がありません。別のブラウザを選択してください。</string>
     <string name="unsupported_abi_dialog__title">未対応のデバイス</string>
     <string name="update_interval__12h">12時間</string>

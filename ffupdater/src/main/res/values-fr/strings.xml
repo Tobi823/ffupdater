@@ -7,9 +7,7 @@
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
     <string name="application_successfully_installed">Installation de l\'application réussie</string>
     <string name="available_version">Disponible: %1$s</string>
-    <string name="available_version_error">
-        <u>ERREUR</u>
-    </string>
+    <string name="available_version_error">"<u>ERREUR</u>"</string>
     <string name="available_version_loading">Chargement…</string>
     <string name="background_job_failure__notification_text">Veuillez signaler cette erreur. Cliquez pour afficher le rapport d\'erreur.</string>
     <string name="background_job_failure__notification_title">Échec de la vérification de la mise à jour des antécédents</string>
@@ -63,9 +61,7 @@
     <string name="install_activity__downloaded_application_from">Application téléchargée à partir de:</string>
     <string name="install_activity__downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
     <string name="install_activity__downloaded_application_is_verified">La demande téléchargée est vérifiée</string>
-    <string name="install_activity__exception__show_button">
-        <u>Afficher le rapport d\'erreur détaillé.</u>
-    </string>
+    <string name="install_activity__exception__show_button">"<u>Afficher le rapport d\'erreur détaillé.</u>"</string>
     <string name="install_activity__expected_sha_256_certificate_fingerprint">Empreinte digitale prévue pour le certificat SHA-256:</string>
     <string name="install_activity__external_storage_not_accessible">Le stockage externe n\'est pas disponible - ne peut pas commencer le téléchargement. L\'état actuel est :</string>
     <string name="install_activity__fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
@@ -94,14 +90,10 @@
     <string name="installed_version">Installé: %1$s</string>
     <string name="lockwise__description">UN ACCÈS PAR MOT DE PASSE QUI VOUS EST RÉSERVÉ Suivez vos mots de passe en toute sécurité sur Firefox et accédez-y partout Ouvrez rapidement n’importe quel site Internet de l’application pour accéder à vos comptes</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">
-        <u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>
-    </string>
+    <string name="main_activity__github_api_limit_exceeded">"<u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>"</string>
     <string name="main_activity__no_internet_connection">Vous n\'êtes pas connecté à internet</string>
     <string name="main_activity__subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>
-    <string name="main_activity__temporary_network_issue">
-        <u>Problème de réseau temporaire. Réessayez plus tard.</u>
-    </string>
+    <string name="main_activity__temporary_network_issue">"<u>Problème de réseau temporaire. Réessayez plus tard.</u>"</string>
     <string name="ok">D\'accord</string>
     <string name="running_downloads_dialog__message">Le gestionnaire de téléchargement du système est en train de télécharger d\'autres fichiers. Voulez-vous lancer un nouveau téléchargement qui pourrait prendre plus de temps?</string>
     <string name="running_downloads_dialog__negative">Non, ne le téléchargez pas</string>
@@ -124,10 +116,6 @@
     <string name="settings__theme_system_default">Utiliser le système par défaut</string>
     <string name="settings__title">Vérification de la mise à jour de la demande</string>
     <string name="show_warning_before_installation_dialog__title">Avertissement</string>
-    <string name="title_crasher_copy">Copie</string>
-    <string name="title_crasher_crashed">%1$s a planté</string>
-    <string name="title_crasher_share">Partager</string>
-    <string name="title_crasher_stack_trace">Voir la trace des piles</string>
     <string name="unsupported_abi_dialog__message">Le navigateur sélectionné est incompatible avec le processeur de votre smartphone. Veuillez sélectionner un autre navigateur.</string>
     <string name="unsupported_abi_dialog__title">Appareil non pris en charge</string>
     <string name="update_interval__12h">12 heures</string>

@@ -59,6 +59,14 @@ Signer #1 certificate SHA-1 digest: b432e9eb74512c0fa58c1ec45912a670f8dfa8e9
 Signer #1 certificate MD5 digest: 78a34e36cedd844954726f1e2076642c
 ```
 
+## F-Droid repository
+
+TODO
+
+https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89
+
+https://github.com/Tobi823/ffupdaterrepo/blob/master/fdroid/repo/assets/qrcode.pnge
+
 ## FAQ:
  - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
  - Firefox Nightly: Replace the minutes with 'xx' because FFUpdater can only access the start time 
