@@ -78,7 +78,7 @@ If F-Droid fails to download FFUpdater, try to install the version from the offi
 first.
 
 On the app page under the item "Versions" you can see from which repository (my *FFUpdater* 
-repository or the official F-Droid repository) the app version was installed
+repository or the official *F-Droid* repository) the app version was installed
 
 ## FAQ:
  - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
