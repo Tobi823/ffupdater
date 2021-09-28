@@ -60,7 +60,7 @@ MD5 digest: 78a34e36cedd844954726f1e2076642c
 The APK files are available on [GitHub](https://github.com/Tobi823/ffupdater/releases) and
 [GitLab](https://gitlab.com/Tobiwan/ffupdater_gitlab/-/tags).
 
-## F-Droid repository
+### F-Droid repository
 
 This is the link to the F-Droid repository:
 
@@ -68,7 +68,7 @@ This is the link to the F-Droid repository:
 https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89
 ```
 
-[<img src="https://github.com/Tobi823/ffupdaterrepo/blob/master/fdroid/repo/assets/qrcode.pnge" alt="F-Droid repository link" height="80">](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89)
+[<img src="https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png" alt="F-Droid repository link" height="80">](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89)
 
 You can add this repository by opening the F-Droid app -> Settings -> Repositories -> + -> 
 Enter the link from above -> Add -> Go back to Latest -> Refresh by swiping down.
@@ -79,7 +79,6 @@ first.
 
 On the app page under the item "Versions" you can see from which repository (my *FFUpdater* 
 repository or the official F-Droid repository) the app version was installed
-
 
 ## FAQ:
  - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
