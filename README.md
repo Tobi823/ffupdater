@@ -66,7 +66,9 @@ The APK files are available on [GitHub](https://github.com/Tobi823/ffupdater/rel
 
 If the link is not clickable, you can use this help website [https://tobi823.github.io/ffupdaterrepo.html](https://tobi823.github.io/ffupdaterrepo.html).
 
-F-Droid repository address: `https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89`
+Repository address: `https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo`
+
+Fingerprint: `6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89`
 
 [<img src="https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png" alt="F-Droid repository link" height="120">](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png)
 
