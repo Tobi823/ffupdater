@@ -50,7 +50,7 @@
     <string name="iceraven__title">Navigateur Iceraven</string>
     <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait. \n\nDernière vérification réussie de la mise à jour des antécédents: %1$s</string>
     <string name="information_about_the_app">informations sur l\'application</string>
-    <string name="install_activity__download_app_is_disabled">L\'application de téléchargement du système est désactivée. FFUpdater a besoin de cette application pour le téléchargement. Veuillez l\'activer.</string>
+    <string name="install_activity__download_app_is_disabled">L\'application système nécessaire \"Download Manager\" est désactivée. Veuillez la réactiver.</string>
     <string name="install_activity__download_application_from_with_status">Télécharger l\'application (%1$s)</string>
     <string name="install_activity__download_failed">Echec du téléchargement</string>
     <string name="install_activity__download_status_failed">échoué</string>

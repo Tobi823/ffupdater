@@ -50,7 +50,7 @@
     <string name="iceraven__title">Iceravenブラウザ</string>
     <string name="infobox">このアプリはMozillaの複数のブラウザに対応したアップデータです。プラスボタンでインストール、下矢印ボタンでアップデートを行えます。デフォルトでは、バックグラウンドで定期的にアップデートをチェックします。インストールとアップデートのプロセスを安全にするために最善を尽くしました。ご自由にこのアプリのソースコードを確認したり、プルリクエストを作成して改善してください。%1$s</string>
     <string name="information_about_the_app">このアプリについて</string>
-    <string name="install_activity__download_app_is_disabled">システムのダウンロードアプリが無効になっています。 FFUpdaterがダウンロードを試行するためにこのアプリが必要です。有効にしてください。</string>
+    <string name="install_activity__download_app_is_disabled">必要なシステムアプリ「Download Manager」が無効になっています。お手数ですが、再度有効にしてください。</string>
     <string name="install_activity__download_application_from_with_status">アプリをダウンロード (%1$s)</string>
     <string name="install_activity__download_failed">ダウンロード失敗</string>
     <string name="install_activity__download_status_failed">失敗</string>

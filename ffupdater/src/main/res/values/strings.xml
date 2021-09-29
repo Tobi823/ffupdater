@@ -52,7 +52,7 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">This is an updater for multiple browsers from Mozilla. Click the plus-button for installation and the down-arrow-button for updating. You can check for new updates by down-swiping or reopening the app. By default the app will check regularly for updates in the background. I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request. \n\nLast successful background update check: %1$s</string>
     <string name="information_about_the_app">information about the app</string>
-    <string name="install_activity__download_app_is_disabled">The system download app is disabled. FFUpdater needs this app for downloading. Please enable it.</string>
+    <string name="install_activity__download_app_is_disabled">The necessary system app \"Download Manager\" is disabled. Please enable it again.</string>
     <string name="install_activity__download_application_from_with_status">Download application (%1$s)</string>
     <string name="install_activity__download_failed">Download failed</string>
     <string name="install_activity__download_status_failed">failed</string>

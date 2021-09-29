@@ -50,7 +50,7 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">Это программа обновления для нескольких браузеров Mozilla. Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления. Вы можете проверить наличие новых обновлений, потянув вниз или открыв приложение заново. По умолчанию приложение будет регулярно проверять наличие обновлений в фоновом режиме. Я сделал все возможное, чтобы обезопасить процесс установки/обновления - не стесняйтесь, перепроверьте или улучшите его, создав pull-request. \n\nПоследняя успешная проверка фонового обновления: %1$s</string>
     <string name="information_about_the_app">информация о приложении</string>
-    <string name="install_activity__download_app_is_disabled">Системное приложение для загрузки отключено. Оно нужно для работы FFUpdater. Пожалуйста, включите его.</string>
+    <string name="install_activity__download_app_is_disabled">Необходимое системное приложение \"Менеджер загрузок\" отключено. Пожалуйста, включите его снова.</string>
     <string name="install_activity__download_application_from_with_status">Загрузить приложение (%1$s)</string>
     <string name="install_activity__download_failed">Не удалось загрузить</string>
     <string name="install_activity__download_status_failed">неудачно</string>

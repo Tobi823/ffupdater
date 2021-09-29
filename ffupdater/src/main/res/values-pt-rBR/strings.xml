@@ -50,7 +50,7 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">Este App instala e atualiza vários navegadores de pesquisa da Internet. Clique no botão + para instalar ou no botão de "seta-para-baixo" para atualizar. Você pode verificar por novas atualizações, deslizando o dedo para baixo ou reabrindo este App. Por padrão, ele verificará regularmente por atualizações em segundo plano. Fiz o melhor para garantir a segurança do processo de instalação/atualização - fique a vontade para verificá-lo ou melhorá-lo, criando um PR. \n\nÚltima verificação em segundo plano concluída em: %1$s</string>
     <string name="information_about_the_app">detalhes sobre navegador</string>
-    <string name="install_activity__download_app_is_disabled">O app de download do sistema está desativado. FFUpdater precisa dele para poder baixar navegadores. Por favor, ative-o.</string>
+    <string name="install_activity__download_app_is_disabled">O aplicativo do sistema necessário \"Download Manager\" está desativado. Por favor, ative-o novamente.</string>
     <string name="install_activity__download_application_from_with_status">Baixar o (%1$s)</string>
     <string name="install_activity__download_failed">Download falhou</string>
     <string name="install_activity__download_status_failed">falhou</string>

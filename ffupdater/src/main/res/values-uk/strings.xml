@@ -50,7 +50,7 @@
     <string name="iceraven__title">Ицеравен Браузер</string>
     <string name="infobox">Це оновлення для декількох браузерів Mozilla. Клацніть кнопку плюс, щоб встановити, і кнопку зі стрілкою вниз, щоб оновити веб-переглядач. Ви можете перевірити наявність нових оновлень, провевши пальцем вниз або повторно відкривши програму. За замовчуванням додаток регулярно перевіряє наявність оновлень у фоновому режимі. Я зробив усе можливе, щоб забезпечити процес встановлення / оновлення - сміливо перевіряйте його або вдосконалюйте його, якщо це потрібно. \n\nОстання успішна перевірка фонового оновлення: %1$s</string>
     <string name="information_about_the_app">інформація про додаток</string>
-    <string name="install_activity__download_app_is_disabled">Додаток для завантаження системи вимкнено. FFUpdater потребує цього додатка для завантаження. Увімкніть його.</string>
+    <string name="install_activity__download_app_is_disabled">Необхідний системний додаток \"Диспетчер завантажень\" вимкнено. Увімкніть його знову.</string>
     <string name="install_activity__download_application_from_with_status">Завантажити програму (%1$s)</string>
     <string name="install_activity__download_failed">Не вдалося завантажити</string>
     <string name="install_activity__download_status_failed">не вдалося</string>

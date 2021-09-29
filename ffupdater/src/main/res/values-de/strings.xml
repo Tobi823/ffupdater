@@ -50,7 +50,7 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern. \n\nLetzte erfolgreiche Hintergrundaktualisierungsprüfung: %1$s</string>
     <string name="information_about_the_app">Information über die Applikation</string>
-    <string name="install_activity__download_app_is_disabled">Die System-Download-App ist deaktiviert. FFUpdater benötigt diese Anwendung zum Herunterladen. Bitte aktivieren Sie sie.</string>
+    <string name="install_activity__download_app_is_disabled">Die notwendige System-App \"Download Manager\" ist deaktiviert. Bitte aktivieren Sie sie wieder.</string>
     <string name="install_activity__download_application_from_with_status">Lade Anwendung herunter (%1$s)</string>
     <string name="install_activity__download_failed">Download schlug fehl</string>
     <string name="install_activity__download_status_failed">fehlgeschlagen</string>

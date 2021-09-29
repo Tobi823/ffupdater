@@ -50,7 +50,7 @@
     <string name="iceraven__title">Браузър Iceraven</string>
     <string name="infobox">Това приложение е предназначено за обновяване на мрежовите четци на Mozilla. Докоснете бутона със знак плюс за инсталиране или стрелка надолу за обновяване. Можете да правите проверка за нови издания като дръпнете списъка надолу или повторно отворите приложението. По подразбиране приложението периодично, във фонов режим, също прави такава проверка. Направил съм всичко по силите си да направя процеса на инсталиране/обновяване максимално сигурен, но се чувствайте свободни да го проверите или да го подобрите чрез изпращане на заявка за сливане. \n\nПоследна успешна проверка на фоновата актуализация: %1$s</string>
     <string name="information_about_the_app">сведения за приложението</string>
-    <string name="install_activity__download_app_is_disabled">Системното приложение за изтегляне е изключено. FFUpdater се нуждае от него за да изтегля. Моля, включете го.</string>
+    <string name="install_activity__download_app_is_disabled">Необходимото системно приложение \"Мениджър за изтегляне\" е деактивирано. Моля, разрешете го отново.</string>
     <string name="install_activity__download_application_from_with_status">Изтегляне на приложение (%1$s)</string>
     <string name="install_activity__download_failed">Грешка при изтегляне</string>
     <string name="install_activity__download_status_failed">неуспешно</string>

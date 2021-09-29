@@ -50,7 +50,7 @@
     <string name="iceraven__title">Przeglądarka Iceraven</string>
     <string name="infobox">Jest to aplikacja aktualizująca wiele przeglądarek Mozilli. Kliknij przycisk plusa, aby zainstalować, i przycisk strzałki w dół, aby zaktualizować daną przeglądarkę. Możesz sprawdzić nowe aktualizacje, przesuwając palcem w dół lub otwierając ponownie aplikację. Domyślnie aplikacja będzie regularnie sprawdzać aktualizacje w tle. Dołożyłem wszelkich starań, aby zabezpieczyć proces instalacji/aktualizacji - nie krępuj się sprawdzić go dwukrotnie lub poprawić poprzez stworzenie pull-request. \n\nOstatnie udane sprawdzanie aktualizacji: %1$s</string>
     <string name="information_about_the_app">informacje o aplikacji</string>
-    <string name="install_activity__download_app_is_disabled">Systemowa aplikacja do pobierania jest wyłączona. FFUpdater potrzebuje tej aplikacji do pobierania. Proszę ją włączyć.</string>
+    <string name="install_activity__download_app_is_disabled">Niezbędna aplikacja systemowa \"Menedżer pobierania\" jest wyłączona. Proszę włączyć ją ponownie.</string>
     <string name="install_activity__download_application_from_with_status">Pobierz aplikację (%1$s)</string>
     <string name="install_activity__download_failed">Pobieranie nie powiodło się</string>
     <string name="install_activity__download_status_failed">nie powiodło się</string>
