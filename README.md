@@ -72,6 +72,8 @@ Fingerprint: `6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89`
 
 [<img src="https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png" alt="F-Droid repository link" height="120">](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png)
 
+[https://f-droid.org/en/tutorials/add-repo/](How to Add a Repo to F-Droid)
+
 It seems that this F-Droid repository is sometimes a little buggy.
 If F-Droid fails to download FFUpdater, try to install the version from the official F-Droid repository
 first.
