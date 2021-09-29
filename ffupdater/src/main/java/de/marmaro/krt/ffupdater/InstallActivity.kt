@@ -238,14 +238,15 @@ class InstallActivity : AppCompatActivity() {
         @MainThread
         fun externalStorageIsAccessible(ia: InstallActivity): State {
             val downloadManager = "com.android.providers.downloads"
-            try {
+            return try {
                 if (ia.packageManager.getApplicationInfo(downloadManager, 0).enabled) {
-                    return DOWNLOAD_MANAGER_IS_ENABLED
+                    DOWNLOAD_MANAGER_IS_ENABLED
+                } else {
+                    FAILURE_DOWNLOAD_MANAGER_DISABLED
                 }
             } catch (e: PackageManager.NameNotFoundException) {
-                return FAILURE_DOWNLOAD_MANAGER_DISABLED
+                FAILURE_DOWNLOAD_MANAGER_DISABLED
             }
-            return FAILURE_DOWNLOAD_MANAGER_DISABLED
         }
 
         @MainThread

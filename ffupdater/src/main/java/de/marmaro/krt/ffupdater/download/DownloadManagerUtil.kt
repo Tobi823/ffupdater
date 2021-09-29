@@ -86,7 +86,8 @@ object DownloadManagerUtil {
         val query = Query()
         query.setFilterByStatus(STATUS_RUNNING)
         downloadManager.query(query).use { cursor ->
-            return cursor.moveToFirst()
+            //cursor will be null if "Download Manager" is disabled
+            return cursor?.moveToFirst() ?: false
         }
     }
 
