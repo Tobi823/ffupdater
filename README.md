@@ -62,20 +62,13 @@ The APK files are available on [GitHub](https://github.com/Tobi823/ffupdater/rel
 
 ### F-Droid repository
 
-<a href="fdroidrepos://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89">test</a>
+<a href="fdroidrepos://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89">Click to add the FFUpdater repository to your F-Droid client.</a>
 
-[fdroidrepos://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89](Add to F-Droid)
+If the link is not clickable, you can use this help website [https://tobi823.github.io/ffupdaterrepo.html](https://tobi823.github.io/ffupdaterrepo.html).
 
-The link to the F-Droid repository: [https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89)
+F-Droid repository address: `https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89`
 
 [<img src="https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png" alt="F-Droid repository link" height="120">](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png)
-
-It seems that the F-Droid client is very picky when adding a repository.
-Make sure that there is now space before and after the "repository address" and "fingerprint".
-
-
-You can add this repository by opening the F-Droid app -> Settings -> Repositories -> + -> 
-Enter the link from above -> Add -> Go back to Latest -> Refresh by swiping down.
 
 It seems that this F-Droid repository is sometimes a little buggy.
 If F-Droid fails to download FFUpdater, try to install the version from the official F-Droid repository
