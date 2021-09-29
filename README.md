@@ -62,13 +62,15 @@ The APK files are available on [GitHub](https://github.com/Tobi823/ffupdater/rel
 
 ### F-Droid repository
 
-This is the link to the F-Droid repository:
+[fdroidrepos://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89"](Add to F-Droid)
 
-```
-https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89
-```
+The link to the F-Droid repository: [https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89)
 
 [<img src="https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png" alt="F-Droid repository link" height="120">](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png)
+
+It seems that the F-Droid client is very picky when adding a repository.
+Make sure that there is now space before and after the "repository address" and "fingerprint".
+
 
 You can add this repository by opening the F-Droid app -> Settings -> Repositories -> + -> 
 Enter the link from above -> Add -> Go back to Latest -> Refresh by swiping down.
