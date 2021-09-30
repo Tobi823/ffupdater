@@ -6,7 +6,6 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
-import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,7 +14,6 @@ import java.net.UnknownHostException
 
 object NetworkUtil {
     private const val GITHUB_API_HOST = "api.github.com"
-    private const val MOZILLA_FIREFOX_CI_TC_HOST = "firefox-ci-tc.services.mozilla.com"
 
     @MainThread
     suspend fun isInternetUnavailable(context: Context): Boolean {
@@ -25,21 +23,17 @@ object NetworkUtil {
     @MainThread
     suspend fun isInternetAvailable(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return withContext(Dispatchers.IO) {
-            isInternetAvailable(cm)
-        }
+        return isInternetAvailable(cm)
     }
 
-    @WorkerThread
-    private fun isInternetAvailable(cm: ConnectivityManager): Boolean {
+    @MainThread
+    private suspend fun isInternetAvailable(cm: ConnectivityManager): Boolean {
         val networkConnected = if (DeviceEnvironment.supportsAndroidMarshmallow()) {
             isNetworkConnected(cm)
         } else {
             isNetworkConnectedOldWay(cm)
         }
-        return networkConnected &&
-                isDnsResolvable(GITHUB_API_HOST) &&
-                isDnsResolvable(MOZILLA_FIREFOX_CI_TC_HOST)
+        return networkConnected && isDnsResolvable()
     }
 
     /**
@@ -58,13 +52,16 @@ object NetworkUtil {
         return cm.activeNetworkInfo?.isConnected == true
     }
 
-    @WorkerThread
-    private fun isDnsResolvable(url: String): Boolean {
-        return try {
-            val address = InetAddress.getByName(url)
-            address.hostAddress.isNotEmpty()
-        } catch (e: UnknownHostException) {
-            false
+    @Suppress("BlockingMethodInNonBlockingContext")
+    @MainThread
+    private suspend fun isDnsResolvable(): Boolean {
+        return withContext(Dispatchers.IO) {
+            try {
+                val address = InetAddress.getByName(GITHUB_API_HOST)
+                address.hostAddress.isNotEmpty()
+            } catch (e: UnknownHostException) {
+                false
+            }
         }
     }
 
