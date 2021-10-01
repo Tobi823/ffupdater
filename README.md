@@ -89,7 +89,7 @@ repository or the official *F-Droid* repository) the app version was installed
  - I don't optimize the APK file with minifyEnabled and shrinkResources because it makes the app 
  harder to debug
  - Tor Browser / Orbot: I will not support them because they can be installed with F-Droid. 
- (Go to Settings > Repositories > Enable "Guardian Project Archive".)
+ (Go to Settings > Repositories > Enable "Guardian Project Official Releases".)
  I don't feel confident enough that I can install and update the Tor Browser / Orbot securely 
  (because I think there is much more at stake than with other browsers).
  
