@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.download.NetworkUtil
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
@@ -51,25 +52,26 @@ class BackgroundJob(
         val context = applicationContext
         try {
             executeBackgroundJob()
+        } catch (e: CancellationException) {
+            return handleTemporaryException(context, e, "CancellationException")
         } catch (e: GithubRateLimitExceededException) {
-            if (runAttemptCount >= 8) {
-                showErrorNotification(context, e)
-                Result.success()
-            }
-            Log.i(LOG_TAG, "retry due to GithubRateLimitExceededException", e)
-            return Result.retry()
+            return handleTemporaryException(context, e, "GithubRateLimitExceededException")
         } catch (e: ApiConsumerException) {
-            if (runAttemptCount >= 8) {
-                showErrorNotification(context, e)
-                return Result.success()
-            }
-            Log.i(LOG_TAG, "retry due to ApiConsumerException", e)
-            return Result.retry()
+            return handleTemporaryException(context, e, "ApiConsumerException")
         } catch (e: Exception) {
             showErrorNotification(context, e)
             return Result.success()
         }
         return Result.success()
+    }
+
+    private fun handleTemporaryException(context: Context, e: Exception, reason: String): Result {
+        if (runAttemptCount >= 8) {
+            showErrorNotification(context, e)
+            Result.success()
+        }
+        Log.i(LOG_TAG, "retry due to $reason", e)
+        return Result.retry()
     }
 
     private fun showErrorNotification(context: Context, e: Exception) {
