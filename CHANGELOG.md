@@ -1,4 +1,19 @@
-# Version 74.4.3 (82)
+# 2021-10-07 Version 74.4.5 (84)
+ * Small mistake, I forget to add important changes to 74.4.4
+ * Improve handling of Kotlin coroutine errors (Tobiwan/ffupdater#85 Tobi823/ffupdater#86)
+ * Improve and speed up internet check
+ * Handle disabled "Download Manager" better
+ * Improve translation
+ * Update dependencies
+
+# 2021-10-07 Version 74.4.4 (83)
+ * Improve handling of Kotlin coroutine errors (Tobiwan/ffupdater#85 Tobi823/ffupdater#86)
+ * Improve and speed up internet check
+ * Handle disabled "Download Manager" better
+ * Improve translation
+ * Update dependencies
+
+# 2021-09-29 Version 74.4.3 (82)
  * Improve handling of concurrent code
  * Fix crash when starting app (NetworkOnMainThreadException) ()
  * Fix missing icon (in repomaker and maybe F-Droid)

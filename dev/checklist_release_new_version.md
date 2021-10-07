@@ -45,3 +45,5 @@ git push gitea "$TAG"
 REMOTE_NAME="XXXXX"
 git branch -r | grep "$REMOTE_NAME/" | grep -v 'master$' | grep -v HEAD| cut -d/ -f2 | while read line; do git push "$REMOTE_NAME" :$line; done;
 ````
+
+You can either wait for the official F-Droid release, install the APK file from GitHub/GitLab or try my personal F-Droid repository (see https://github.com/Tobi823/ffupdater#f-droid-repository).
