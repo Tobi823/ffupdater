@@ -1,3 +1,7 @@
+# 2021-10-25 Version 74.4.6 (85)
+ * Download only "Firefox Focus/Klar" and not "Firefox Focus/Klar Beta" (Tobi823/ffupdater#89)
+ * Try out the Android 12 "silent update" feature when user manual updates an app (Tobi823/ffupdater#88)
+
 # 2021-10-07 Version 74.4.5 (84)
  * Small mistake, I forget to add important changes to 74.4.4
  * Improve handling of Kotlin coroutine errors (Tobiwan/ffupdater#85 Tobi823/ffupdater#86)

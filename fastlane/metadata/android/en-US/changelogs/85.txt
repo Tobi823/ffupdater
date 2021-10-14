@@ -1,0 +1,2 @@
+ * Download only "Firefox Focus/Klar" and not "Firefox Focus/Klar Beta" (Tobi823/ffupdater#89)
+ * Try out the Android 12 "silent update" feature when user manual updates an app (Tobi823/ffupdater#88)
