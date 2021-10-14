@@ -9,8 +9,10 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.SessionCallback
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
+import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import java.io.File
 import java.io.IOException
 
@@ -54,6 +56,9 @@ class SessionInstaller(
     private fun installInternal(activity: Activity, downloadedFile: File) {
         val installer = activity.packageManager.packageInstaller
         val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
+        if (DeviceEnvironment.supportsAndroid12()) {
+            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
+        }
         val id = installer.createSession(params)
 
         //execute callbacks when installation is finished
@@ -84,7 +89,11 @@ class SessionInstaller(
             }
             val intent = Intent(activity, InstallActivity::class.java)
             intent.action = PACKAGE_INSTALLED_ACTION
-            val pendingIntent = PendingIntent.getActivity(activity, 0, intent, 0)
+            val pendingIntent = if (DeviceEnvironment.supportsAndroid12()) {
+                PendingIntent.getActivity(activity, 0, intent, PendingIntent.FLAG_MUTABLE)
+            } else {
+                PendingIntent.getActivity(activity, 0, intent, 0)
+            }
             session.commit(pendingIntent.intentSender)
         }
     }

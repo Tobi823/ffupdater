@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
@@ -15,6 +16,7 @@ import androidx.core.app.NotificationCompat
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 object UpdateNotificationBuilder {
 
@@ -27,7 +29,11 @@ object UpdateNotificationBuilder {
     private fun showNotification(app: App, context: Context) {
         val intent = Intent(context, InstallActivity::class.java)
         intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name)
-        val updateAppIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
+        val updateAppIntent = if (DeviceEnvironment.supportsAndroid12()) {
+            PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT + FLAG_IMMUTABLE)
+        } else {
+            PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
+        }
         val appTitle: String = context.getString(app.detail.displayTitle)
 
         val notificationBuilder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

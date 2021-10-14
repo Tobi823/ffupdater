@@ -47,6 +47,13 @@ object DeviceEnvironment {
         return SDK_INT >= Build.VERSION_CODES.Q
     }
 
+    /**
+     * API level 31
+     */
+    fun supportsAndroid12(): Boolean {
+        return SDK_INT >= Build.VERSION_CODES.S
+    }
+
     private fun findSupportedAbis(): List<ABI> {
         val supportedAbis = Build.SUPPORTED_ABIS ?: return listOf()
         return supportedAbis.mapNotNull {
