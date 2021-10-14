@@ -33,7 +33,9 @@ class FirefoxFocus : BaseAppDetail() {
             repoName = "focus-android",
             resultsPerPage = 3,
             validReleaseTester = { release: GithubConsumer.Release ->
-                !release.isPreRelease && release.assets.any { it.name == fileName }
+                !release.isPreRelease &&
+                        !release.name.contains("beta") &&
+                        release.assets.any { it.name == fileName }
             },
             correctAssetTester = { asset: GithubConsumer.Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheck()
