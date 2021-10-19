@@ -207,17 +207,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/installConfirmation"
-            style="@style/DownloadActivitySegment">
-
-            <Button
-                android:id="@+id/installConfirmationButton"
-                style="@style/DefaultButton"
-                android:text="@string/install_new_app_dialog__title" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/fingerprintDownloadBad"
             style="@style/DownloadActivitySegment"
             android:background="@color/errorRed"
@@ -262,6 +251,16 @@
                 android:layout_gravity="center" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/install_activity__retrigger_installation"
+            style="@style/DownloadActivitySegment">
+
+            <Button
+                android:id="@+id/install_activity__retrigger_installation__button"
+                style="@style/DefaultButton"
+                android:text="@string/install_activity__retrigger_installation__button_title" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/verifyInstalledFingerprint"

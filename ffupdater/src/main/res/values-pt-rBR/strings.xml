@@ -82,7 +82,7 @@
     <string name="install_activity_label">Instalar o navegador</string>
     <string name="install_app">Instalar o navegador</string>
     <string name="install_new_app">Instalar o outro navegador</string>
-    <string name="install_new_app_dialog__title">Instalar o navegador</string>
+    <string name="install_activity__retrigger_installation__button_title">Instalação de nova aplicação</string>
     <string name="install_same_version_dialog__message">A última versão deste navegador já está instalada. Você quer baixar e instalar a versão mais recente outra vez?</string>
     <string name="install_same_version_dialog__title">Mesma versão instalada</string>
     <string name="installed_app_is_not_verified">O navegador instalado NÃO foi verificado</string>
