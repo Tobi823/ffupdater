@@ -82,7 +82,7 @@
     <string name="install_activity_label">アプリをインストール</string>
     <string name="install_app">アプリをインストール</string>
     <string name="install_new_app">新規アプリをインストール</string>
-    <string name="install_activity__retrigger_installation__button_title">アプリのインストールを再試行する</string>
+    <string name="install_new_app_dialog__title">アプリをインストール</string>
     <string name="install_same_version_dialog__message">このアプリの最新版はすでにインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>
     <string name="install_same_version_dialog__title">同じバージョンがインストール済み</string>
     <string name="installed_app_is_not_verified">インストールしたアプリが検証できませんでした</string>

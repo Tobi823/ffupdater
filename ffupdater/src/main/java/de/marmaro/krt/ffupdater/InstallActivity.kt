@@ -96,8 +96,8 @@ class InstallActivity : AppCompatActivity() {
                 restartStateMachine(FAILURE_APP_INSTALLATION)
             })
         apkCache = ApkCache(app, this)
-        findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
-            restartStateMachine(TRIGGER_INSTALLATION_PROCESS)
+        findViewById<View>(R.id.installConfirmationButton).setOnClickListener {
+            restartStateMachine(USER_TRIGGERS_INSTALLATION_PROCESS)
         }
 
         //make sure that the ViewModel is correct for the current app
@@ -191,7 +191,7 @@ class InstallActivity : AppCompatActivity() {
         DOWNLOAD_WAS_SUCCESSFUL(InstallActivity::downloadWasSuccessful),
         USE_CACHED_DOWNLOADED_APK(InstallActivity::useCachedDownloadedApk),
         FINGERPRINT_OF_DOWNLOADED_FILE_OK(InstallActivity::fingerprintOfDownloadedFileOk),
-        TRIGGER_INSTALLATION_PROCESS(InstallActivity::triggerInstallationProcess),
+        USER_TRIGGERS_INSTALLATION_PROCESS(InstallActivity::userTriggersInstallationProcess),
         USER_HAS_INSTALLED_APP_SUCCESSFUL(InstallActivity::userHasInstalledAppSuccessful),
         APP_INSTALLATION_HAS_BEEN_REGISTERED(InstallActivity::appInstallationHasBeenRegistered),
         FINGERPRINT_OF_INSTALLED_APP_OK(InstallActivity::fingerprintOfInstalledAppOk),
@@ -381,16 +381,16 @@ class InstallActivity : AppCompatActivity() {
         fun fingerprintOfDownloadedFileOk(ia: InstallActivity): State {
             ia.hide(R.id.verifyDownloadFingerprint)
             ia.show(R.id.fingerprintDownloadGood)
-            ia.show(R.id.install_activity__retrigger_installation)
+            ia.show(R.id.installConfirmation)
             ia.setText(R.id.fingerprintDownloadGoodHash, ia.fileFingerprint.hexString)
-            return TRIGGER_INSTALLATION_PROCESS
+            return SUCCESS_PAUSE
         }
 
         @MainThread
-        fun triggerInstallationProcess(ia: InstallActivity): State {
+        fun userTriggersInstallationProcess(ia: InstallActivity): State {
             ia.show(R.id.installingApplication)
             val installationFile = ia.apkCache.getCacheFile()
-            require(installationFile.exists()) { "Cached file does not exists" }
+            require(installationFile.exists())
             ia.appInstaller.install(ia, installationFile)
             return SUCCESS_PAUSE
         }
@@ -398,7 +398,7 @@ class InstallActivity : AppCompatActivity() {
         @MainThread
         fun userHasInstalledAppSuccessful(ia: InstallActivity): State {
             ia.hide(R.id.installingApplication)
-            ia.hide(R.id.install_activity__retrigger_installation)
+            ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerSuccess)
             ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
             return APP_INSTALLATION_HAS_BEEN_REGISTERED
@@ -474,7 +474,7 @@ class InstallActivity : AppCompatActivity() {
         @MainThread
         fun failureAppInstallation(ia: InstallActivity): State {
             ia.hide(R.id.installingApplication)
-            ia.hide(R.id.install_activity__retrigger_installation)
+            ia.hide(R.id.installConfirmation)
             ia.show(R.id.installerFailed)
             var error = ia.appInstallationFailedErrorMessage
             if (error != null) {

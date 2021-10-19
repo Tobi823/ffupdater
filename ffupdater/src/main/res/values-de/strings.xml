@@ -82,7 +82,7 @@
     <string name="install_activity_label">Anwendung installieren</string>
     <string name="install_app">App installieren</string>
     <string name="install_new_app">Neue Anwendung installieren</string>
-    <string name="install_activity__retrigger_installation__button_title">App-Installation wiederholen</string>
+    <string name="install_new_app_dialog__title">Anwendung installieren</string>
     <string name="install_same_version_dialog__message">Die neueste Version dieser App ist bereits installiert. Möchten Sie die neueste Version erneut herunterladen und installieren?</string>
     <string name="install_same_version_dialog__title">Gleiche Version installiert</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
