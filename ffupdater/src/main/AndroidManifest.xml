@@ -14,6 +14,16 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
 
+    <!-- Necessary for gaining read/write access to "Android/data/de.marmaro.krt.ffupdater/files/"
+         on older devices. For Amazon devices, I have to download the APK files into this folder
+         or I'll get a "Permission Denial: reading ... DownloadProvider uri ... requires
+         android.permission.ACCESS_ALL_DOWNLOADS or grantUriPermission()" exception.
+         -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <!-- If FFUpdater wants to check if an app is installed, this app must be listed here -->
     <!-- https://developer.android.com/about/versions/11/privacy/package-visibility -->
     <queries>
@@ -33,17 +43,16 @@
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:usesCleartextTraffic="false"
         tools:targetApi="Q">
         <activity
             android:name=".CrashReportActivity"
             android:label="FFUpdater Crash Reporter"
-            android:theme="@style/CrashReportTheme">
-        </activity>
+            android:theme="@style/CrashReportTheme"></activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings__activity_label"
@@ -55,9 +64,9 @@
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".MainActivity"
+            android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/MainActivityTheme"
-            android:exported="true">
+            android:theme="@style/MainActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

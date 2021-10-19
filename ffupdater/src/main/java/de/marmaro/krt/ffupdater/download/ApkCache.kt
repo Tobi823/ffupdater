@@ -2,14 +2,16 @@ package de.marmaro.krt.ffupdater.download
 
 import android.app.DownloadManager
 import android.content.Context
-import android.os.ParcelFileDescriptor
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.*
+import java.io.BufferedOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
 
 /**
  * Manage the cache of downloaded apk files.
@@ -22,40 +24,37 @@ class ApkCache(val app: App, val context: Context) {
 
     @MainThread
     suspend fun moveDownloadToCache(downloadManager: DownloadManager, downloadId: Long) {
-        openDownloadedFile(downloadManager, downloadId).use { downloadedFile ->
-            copyToCache(downloadedFile)
+        openDownloadedFileStream(downloadManager, downloadId).use { downloadedFileStream ->
+            copyToCache(downloadedFileStream)
         }
         downloadManager.remove(downloadId)
     }
 
-    /**
-     * Prevent false-positive "Inappropriate blocking method call"
-     */
-    private fun openDownloadedFile(
+    private fun openDownloadedFileStream(
         downloadManager: DownloadManager,
         downloadId: Long
-    ) = downloadManager.openDownloadedFile(downloadId)
-
+    ): InputStream {
+        val downloadedFileUri = downloadManager.getUriForDownloadedFile(downloadId)
+        val downloadedFileStream = context.contentResolver.openInputStream(downloadedFileUri)
+        checkNotNull(
+            downloadedFileStream,
+            { "Fail to open InputStream from DownloadManager-URI '$downloadedFileUri'" })
+        return downloadedFileStream
+    }
 
     /**
      * Copy the content of the ParcelFileDescriptor (from the android.app.DownloadManager)
      * to a file in the internal app cache folder.
      */
     @MainThread
-    private suspend fun copyToCache(downloadedFile: ParcelFileDescriptor) {
+    private suspend fun copyToCache(downloadedFileStream: InputStream) {
         deleteCache()
-        createInputStream(downloadedFile.fileDescriptor).use { downloadedFileStream ->
-            createOutputStream(getCacheFile()).use { cacheFileStream ->
-                withContext(Dispatchers.IO) {
-                    downloadedFileStream.copyTo(cacheFileStream)
-                }
+        createOutputStream(getCacheFile()).use { cacheFileStream ->
+            withContext(Dispatchers.IO) {
+                downloadedFileStream.copyTo(cacheFileStream)
             }
         }
         preferences.edit().putBoolean(key, true).apply()
-    }
-
-    private fun createInputStream(fileDescriptor: FileDescriptor): BufferedInputStream {
-        return BufferedInputStream(FileInputStream(fileDescriptor))
     }
 
     /**
