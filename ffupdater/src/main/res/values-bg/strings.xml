@@ -82,7 +82,7 @@
     <string name="install_activity_label">Инсталиране</string>
     <string name="install_app">инсталирай приложението</string>
     <string name="install_new_app">Инсталирайте ново приложение</string>
-    <string name="install_new_app_dialog__title">Инсталиране</string>
+    <string name="install_activity__retrigger_installation__button_title">Повторете инсталирането на приложението</string>
     <string name="install_same_version_dialog__message">Най-новата версия на това приложение вече е инсталирана. Искате ли да изтеглите и инсталирате отново последната версия?</string>
     <string name="install_same_version_dialog__title">Инсталирана е същата версия</string>
     <string name="installed_app_is_not_verified">Инсталираното приложение е НЕпроверено</string>

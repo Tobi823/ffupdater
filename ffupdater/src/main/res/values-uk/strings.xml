@@ -82,7 +82,7 @@
     <string name="install_activity_label">Встановити програму</string>
     <string name="install_app">встановити додаток</string>
     <string name="install_new_app">Встановіть новий додаток</string>
-    <string name="install_new_app_dialog__title">Встановити програму</string>
+    <string name="install_activity__retrigger_installation__button_title">Повторіть установку програми</string>
     <string name="install_same_version_dialog__message">Останню версію цього додатка вже встановлено. Завантажити та встановити останню версію знову?</string>
     <string name="install_same_version_dialog__title">Встановлена та сама версія</string>
     <string name="installed_app_is_not_verified">Встановлений додаток НЕ підтверджений</string>
