@@ -1,6 +1,7 @@
 # 2021-10-?? Version 74.4.7 (86)
  * Fix "Permission Denial" bug on Android devices (Tobiwan/ffupdater#86)
  * Speed-up app installation/update by not requiring to press a button
+ * Improve crash report styling and add important device information to the crash report
 
 # 2021-10-25 Version 74.4.6 (85)
  * Download only "Firefox Focus/Klar" and not "Firefox Focus/Klar Beta" (Tobi823/ffupdater#89)
