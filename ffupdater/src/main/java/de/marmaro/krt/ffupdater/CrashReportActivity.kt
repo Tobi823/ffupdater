@@ -5,11 +5,13 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 class CrashReportActivity : AppCompatActivity() {
 
@@ -20,13 +22,7 @@ class CrashReportActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.crash_report__explanation_textview).text =
             intent.extras?.getString(EXTRA_EXCEPTION_EXPLANATION, "/")
         findViewById<Button>(R.id.crash_report__copy_error_message_to_clipboard_button).setOnClickListener {
-            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val crashReport = getCrashReport()
-            val clip = ClipData.newPlainText("FFUpdater crash report", crashReport)
-            clipboardManager.setPrimaryClip(clip)
-
-            Toast.makeText(this, "Crash report is copied to your clipboard", Toast.LENGTH_LONG)
-                .show()
+            copyErrorMessageToClipboard()
         }
         findViewById<Button>(R.id.crash_report__got_to_notabug_org_button).setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, NOTABUG_URI))
@@ -46,11 +42,41 @@ class CrashReportActivity : AppCompatActivity() {
             intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE) ?: "/"
     }
 
+    private fun copyErrorMessageToClipboard() {
+        val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val crashReport = getCrashReport()
+        val clip = ClipData.newPlainText("FFUpdater crash report", crashReport)
+        clipboardManager.setPrimaryClip(clip)
+        Toast.makeText(this, "Crash report is copied to your clipboard", Toast.LENGTH_LONG)
+            .show()
+    }
+
     private fun getCrashReport(): String {
-        val className = intent.extras?.getString(EXTRA_EXCEPTION_CLASS_NAME) ?: "/"
-        val message = intent.extras?.getString(EXTRA_EXCEPTION_MESSAGE) ?: "/"
-        val stackTrace = intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE) ?: "/"
-        return "$className\n-\n$message\n-\n$stackTrace"
+        return """
+            |Stacktrace:
+            |```
+            |${intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE)}
+            |```
+            |Device information:
+            || key | value |
+            || --- | --- |
+            || version name | ${BuildConfig.VERSION_NAME} |
+            || version code | ${BuildConfig.VERSION_CODE} |
+            || build type | ${BuildConfig.BUILD_TYPE} |
+            || SDK version | ${Build.VERSION.SDK_INT} |
+            || android release | ${Build.VERSION.RELEASE} |
+            || board | ${Build.BOARD} |
+            || brand | ${Build.BRAND} |
+            || device | ${Build.DEVICE} |
+            || manufacturer | ${Build.MANUFACTURER} |
+            || model | ${Build.MODEL} |
+            || product | ${Build.PRODUCT} |
+            || SOC manufacturer | ${if (DeviceEnvironment.supportsAndroid12()) Build.SOC_MANUFACTURER else "/"} |
+            || SOC model | ${if (DeviceEnvironment.supportsAndroid12()) Build.SOC_MODEL else "/"} |
+            || supported ABIs | ${Build.SUPPORTED_ABIS.joinToString()} |
+            || tags | ${Build.TAGS} |
+            || build time | ${Build.TIME} |
+        """.trimMargin()
     }
 
     companion object {
@@ -67,7 +93,7 @@ class CrashReportActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_EXCEPTION_CLASS_NAME, throwable.javaClass.canonicalName)
             intent.putExtra(EXTRA_EXCEPTION_MESSAGE, throwable.localizedMessage)
-            intent.putExtra(EXTRA_EXCEPTION_STACK_TRACE, throwable.stackTraceToString())
+            intent.putExtra(EXTRA_EXCEPTION_STACK_TRACE, throwable.stackTraceToString().trim())
             intent.putExtra(EXTRA_EXCEPTION_EXPLANATION, description)
             return intent
         }
