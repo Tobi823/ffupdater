@@ -1,0 +1,5 @@
+ * Fix "Permission Denial" bug on Android devices (Tobiwan/ffupdater#86)
+ * Speed-up app installation/update by not requiring to press a button
+ * Improve crash report styling and add important device information to the crash report
+ * Improve internal condition checks and add improved error messages
+ * Remove unused dependencies androidx.fragment:fragment-ktx and org.jetbrains.kotlin:kotlin-stdlib-jdk7

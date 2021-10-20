@@ -58,7 +58,7 @@ object NetworkUtil {
         return withContext(Dispatchers.IO) {
             try {
                 val address = InetAddress.getByName(GITHUB_API_HOST)
-                address.hostAddress.isNotEmpty()
+                address.hostAddress?.isNotEmpty() == true
             } catch (e: UnknownHostException) {
                 false
             }

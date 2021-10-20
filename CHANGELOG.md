@@ -3,6 +3,7 @@
  * Speed-up app installation/update by not requiring to press a button
  * Improve crash report styling and add important device information to the crash report
  * Improve internal condition checks and add improved error messages
+ * Remove unused dependencies androidx.fragment:fragment-ktx and org.jetbrains.kotlin:kotlin-stdlib-jdk7 
 
 # 2021-10-25 Version 74.4.6 (85)
  * Download only "Firefox Focus/Klar" and not "Firefox Focus/Klar Beta" (Tobi823/ffupdater#89)
