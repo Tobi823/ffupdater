@@ -39,12 +39,24 @@ class Lockwise : BaseAppDetail() {
             },
             correctAssetTester = { asset: Asset -> asset.name.endsWith(".apk") })
         val result = githubConsumer.updateCheck()
-        // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"
-        val regexResult = Regex("""^release-v((\d)+(\.\d+)*)""").find(result.tagName)
-        val version = regexResult!!.groups[1]!!.value
+
+        val extractVersion = {
+            // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"
+            val regexMatch = Regex("""^release-v((\d)+(\.\d+)*)""")
+                .find(result.tagName)
+            checkNotNull(regexMatch) {
+                "Fail to extract the version with regex from string: \"${result.tagName}\""
+            }
+            val matchGroup = regexMatch.groups[1]
+            checkNotNull(matchGroup) {
+                "Fail to extract the version value from regex match: \"${regexMatch.value}\""
+            }
+            matchGroup.value
+        }
+
         return AvailableVersionResult(
             downloadUrl = result.url,
-            version = version,
+            version = extractVersion(),
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null

@@ -14,15 +14,17 @@ import de.marmaro.krt.ffupdater.app.App
  */
 class AppInfoDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val app = App.valueOf(requireArguments().getString(BUNDLE_APP_NAME)!!)
+        val app = App.valueOf(requireNotNull(requireArguments().getString(BUNDLE_APP_NAME)) {
+            "$BUNDLE_APP_NAME is not set."
+        })
         return AlertDialog.Builder(activity)
-                .setTitle(getString(app.detail.displayTitle))
-                .setMessage(getString(app.detail.displayDescription))
-                .setPositiveButton(getString(R.string.ok))
-                { dialog: DialogInterface, _: Int ->
-                    dialog.dismiss()
-                }
-                .create()
+            .setTitle(getString(app.detail.displayTitle))
+            .setMessage(getString(app.detail.displayDescription))
+            .setPositiveButton(getString(R.string.ok))
+            { dialog: DialogInterface, _: Int ->
+                dialog.dismiss()
+            }
+            .create()
     }
 
     fun show(manager: FragmentManager) {

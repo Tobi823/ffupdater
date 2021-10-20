@@ -66,9 +66,9 @@ class FirefoxNightly : BaseAppDetail() {
     ): Boolean {
         return try {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-            val installedSha256Hash = preferences.getString(INSTALLED_SHA256_HASH, "")
-            val installedVersionCode = preferences.getLong(INSTALLED_VERSION_CODE, 0)
-            available.fileHash!!.hexValue == installedSha256Hash &&
+            val installedSha256Hash = preferences.getString(INSTALLED_SHA256_HASH, "unknown")
+            val installedVersionCode = preferences.getLong(INSTALLED_VERSION_CODE, -1)
+            available.fileHash?.hexValue == installedSha256Hash &&
                     getVersionCode(context) == installedVersionCode
         } catch (e: PackageManager.NameNotFoundException) {
             false
@@ -79,7 +79,7 @@ class FirefoxNightly : BaseAppDetail() {
         try {
             PreferenceManager.getDefaultSharedPreferences(context).edit()
                 .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
-                .putString(INSTALLED_SHA256_HASH, available.fileHash!!.hexValue)
+                .putString(INSTALLED_SHA256_HASH, available.fileHash?.hexValue)
                 .apply()
         } catch (e: PackageManager.NameNotFoundException) {
             throw Exception(

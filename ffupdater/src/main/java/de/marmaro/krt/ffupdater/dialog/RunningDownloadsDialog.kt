@@ -15,7 +15,9 @@ import kotlinx.coroutines.launch
 
 class RunningDownloadsDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val app = App.valueOf(requireArguments().getString(BUNDLE_APP_NAME)!!)
+        val app = App.valueOf(requireNotNull(requireArguments().getString(BUNDLE_APP_NAME)) {
+            "$BUNDLE_APP_NAME is not set."
+        })
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
                 .setTitle(getString(R.string.running_downloads_dialog__title))

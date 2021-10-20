@@ -39,11 +39,23 @@ class FirefoxKlar : BaseAppDetail() {
             },
             correctAssetTester = { asset: GithubConsumer.Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheck()
-        val versionRegexResult = Regex("""^v((\d)+(\.\d+)*)""").find(result.tagName)
-        val version = versionRegexResult!!.groups[1]!!.value
+
+        val extractVersion = {
+            val regexMatch = Regex("""^v((\d)+(\.\d+)*)""")
+                .find(result.tagName)
+            checkNotNull(regexMatch) {
+                "Fail to extract the version with regex from string: \"${result.tagName}\""
+            }
+            val matchGroup = regexMatch.groups[1]
+            checkNotNull(matchGroup) {
+                "Fail to extract the version value from regex match: \"${regexMatch.value}\""
+            }
+            matchGroup.value
+        }
+
         return AvailableVersionResult(
             downloadUrl = result.url,
-            version = version,
+            version = extractVersion(),
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null

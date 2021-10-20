@@ -21,16 +21,36 @@ class MozillaCiLogConsumer(task: String, private val apkArtifact: String) {
     @MainThread
     suspend fun updateCheck(): Result {
         val response = ApiConsumer.consumeNetworkResource(logUrl, String::class)
-        val version = Regex("""'(version|tag_name)': 'v?(.+)'""")
-            .find(response)!!
-            .groups[2]!!.value
-        val dateString = Regex("""'(published_at|now)': '(.+)'""")
-            .find(response)!!
-            .groups[2]!!.value
+        val extractVersion = {
+            val regexMatch = Regex("""'(version|tag_name)': 'v?(.+)'""")
+                .find(response)
+            checkNotNull(regexMatch) {
+                "Fail to extract the version with regex from string: \"\"\"$response\"\"\""
+            }
+            val matchGroup = regexMatch.groups[2]
+            checkNotNull(matchGroup) {
+                "Fail to extract the version value from regex match: \"${regexMatch.value}\""
+            }
+            matchGroup.value
+        }
+
+        val extractDateString = {
+            val regexMatch = Regex("""'(published_at|now)': '(.+)'""")
+                .find(response)
+            checkNotNull(regexMatch) {
+                "Fail to extract the date with regex from string: \"\"\"$response\"\"\""
+            }
+            val matchGroup = regexMatch.groups[2]
+            checkNotNull(matchGroup) {
+                "Fail to extract the date value from regex match: \"${regexMatch.value}\""
+            }
+            matchGroup.value
+        }
+
         return Result(
-            version = version,
+            version = extractVersion(),
             url = "$baseUrl/artifacts/$apkArtifact",
-            releaseDate = ZonedDateTime.parse(dateString, ISO_ZONED_DATE_TIME)
+            releaseDate = ZonedDateTime.parse(extractDateString(), ISO_ZONED_DATE_TIME)
         )
     }
 

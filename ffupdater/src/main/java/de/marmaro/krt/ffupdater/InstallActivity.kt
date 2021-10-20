@@ -302,8 +302,8 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         fun enqueuingDownload(ia: InstallActivity): State {
+            val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
             ia.show(R.id.downloadingFile)
-            val updateCheckResult = ia.viewModel.updateCheckResult!!
             ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
             ia.viewModel.downloadId = DownloadManagerUtil.enqueue(
                 downloadManager = ia.downloadManager,
@@ -316,11 +316,11 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         suspend fun downloadIsEnqueued(ia: InstallActivity): State {
+            val downloadId = requireNotNull(ia.viewModel.downloadId)
             do {
                 val downloadStatus = DownloadManagerUtil.getStatusAndProgress(
                     ia.downloadManager,
-                    ia.viewModel.downloadId!!
-                )
+                    downloadId)
                 val downloadStatusText = DownloadManagerUtil.getStatusText(ia, downloadStatus)
 
                 ia.setText(
@@ -343,13 +343,16 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         suspend fun downloadWasSuccessful(ia: InstallActivity): State {
+            val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
+            val downloadId = requireNotNull(ia.viewModel.downloadId)
+
             ia.show(R.id.downloadedFile)
             val app = ia.app
             ia.hide(R.id.downloadingFile)
-            ia.setText(R.id.downloadedFileUrl, ia.viewModel.updateCheckResult!!.downloadUrl)
+            ia.setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
             ia.show(R.id.verifyDownloadFingerprint)
 
-            ia.apkCache.moveDownloadToCache(ia.downloadManager, ia.viewModel.downloadId!!)
+            ia.apkCache.moveDownloadToCache(ia.downloadManager, downloadId)
             val fingerprint = ia.fingerprintValidator.checkApkFile(ia.apkCache.getCacheFile(), app)
             ia.fileFingerprint = fingerprint
             return if (fingerprint.isValid) {
@@ -419,9 +422,10 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         fun fingerprintOfInstalledAppOk(ia: InstallActivity): State {
+            val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
             ia.show(R.id.fingerprintInstalledGood)
             ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint.hexString)
-            val available = ia.viewModel.updateCheckResult!!.availableResult
+            val available = updateCheckResult.availableResult
             ia.app.detail.appInstallationCallback(ia, available)
             return SUCCESS_STOP
         }
@@ -452,9 +456,10 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         fun failureDownloadUnsuccessful(ia: InstallActivity): State {
+            val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
             ia.hide(R.id.downloadingFile)
             ia.show(R.id.downloadFileFailed)
-            ia.setText(R.id.downloadFileFailedUrl, ia.viewModel.updateCheckResult!!.downloadUrl)
+            ia.setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)
             ia.show(R.id.installerFailed)
             ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
             return ERROR_STOP

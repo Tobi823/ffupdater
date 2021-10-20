@@ -18,21 +18,25 @@ import kotlinx.coroutines.launch
  */
 class ShowWarningBeforeInstallationDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val app = App.valueOf(requireArguments().getString(BUNDLE_APP_NAME)!!)
+        val app = App.valueOf(requireNotNull(requireArguments().getString(BUNDLE_APP_NAME)) {
+            "$BUNDLE_APP_NAME is not set."
+        })
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-                .setTitle(getString(R.string.show_warning_before_installation_dialog__title))
-                .setMessage(getString(app.detail.displayWarning!!))
-                .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
-                    mainActivity.lifecycleScope.launch(Dispatchers.Main) {
-                        dialog.dismiss()
-                        mainActivity.installAppButCheckForCurrentDownloads(app)
-                    }
-                }
-                .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
+            .setTitle(getString(R.string.show_warning_before_installation_dialog__title))
+            .setMessage(getString(requireNotNull(app.detail.displayWarning) {
+                "$app must have a warning message."
+            }))
+            .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
+                mainActivity.lifecycleScope.launch(Dispatchers.Main) {
                     dialog.dismiss()
+                    mainActivity.installAppButCheckForCurrentDownloads(app)
                 }
-                .create()
+            }
+            .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
+                dialog.dismiss()
+            }
+            .create()
     }
 
     fun show(manager: FragmentManager) {

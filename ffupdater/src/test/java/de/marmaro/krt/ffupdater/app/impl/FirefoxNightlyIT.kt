@@ -232,7 +232,7 @@ class FirefoxNightlyIT {
             ZonedDateTime.parse("2021-05-06T17:02:55.865Z", ISO_ZONED_DATE_TIME),
             actual.publishDate
         )
-        assertEquals(hash, actual.fileHash!!.hexValue)
+        assertEquals(hash, actual.fileHash?.hexValue)
     }
 
     private fun checkForUpdates(abi: ABI, abiString: String): Boolean {

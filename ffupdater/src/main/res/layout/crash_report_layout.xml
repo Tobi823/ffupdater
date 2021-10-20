@@ -66,22 +66,6 @@
                 android:layout_marginBottom="16dp"
                 android:background="#1E000000" />
 
-            <TextView
-                android:id="@+id/crash_report__exception_class_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/crash_report__exception_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"/>
-
             <HorizontalScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

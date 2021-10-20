@@ -23,20 +23,27 @@ class SessionInstaller(
 ) : AppInstaller {
     override fun onNewIntentCallback(intent: Intent, context: Context) {
         if (intent.action != PACKAGE_INSTALLED_ACTION) return
-        val status = intent.extras?.getInt(PackageInstaller.EXTRA_STATUS)
-        if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-            try {
-                //FFUpdater isn't privileged, so the user has to confirm the install.
-                context.startActivity(intent.extras!!.get(Intent.EXTRA_INTENT) as Intent)
-            } catch (e: ActivityNotFoundException) {
-                val m = context.getString(R.string.install_activity__try_disable_miui_optimization)
-                appNotInstalledCallback("${e.message}\n\n$m")
+        val bundle = intent.extras ?: let {
+            appNotInstalledCallback("intent.extras is null")
+            return@onNewIntentCallback
+        }
+
+        when (val status = bundle.getInt(PackageInstaller.EXTRA_STATUS)) {
+            PackageInstaller.STATUS_PENDING_USER_ACTION -> {
+                try {
+                    //FFUpdater isn't privileged, so the user has to confirm the install.
+                    context.startActivity(bundle.get(Intent.EXTRA_INTENT) as Intent)
+                } catch (e: ActivityNotFoundException) {
+                    val tip = context.getString(
+                        R.string.install_activity__try_disable_miui_optimization)
+                    appNotInstalledCallback("${e.message}\n\n$tip")
+                }
             }
-        } else {
-            if (status == PackageInstaller.STATUS_SUCCESS) {
+            PackageInstaller.STATUS_SUCCESS -> {
                 appInstalledCallback()
-            } else {
-                val errorMessage = intent.extras?.getString(PackageInstaller.EXTRA_STATUS_MESSAGE)
+            }
+            else -> {
+                val errorMessage = bundle.getString(PackageInstaller.EXTRA_STATUS_MESSAGE)
                 appNotInstalledCallback("($status) $errorMessage")
             }
         }

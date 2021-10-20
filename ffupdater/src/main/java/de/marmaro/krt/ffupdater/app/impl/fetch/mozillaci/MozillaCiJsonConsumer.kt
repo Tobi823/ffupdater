@@ -22,10 +22,14 @@ class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
     @MainThread
     suspend fun updateCheck(): Result {
         val response = ApiConsumer.consumeNetworkResource(jsonUrl, ChainOfTrustJson::class)
-        val hashString = response.artifacts[apkArtifact]!!.sha256
+        val artifact = response.artifacts[apkArtifact]
+        checkNotNull(artifact) {
+            "Missing artifact '$apkArtifact'. Only [${response.artifacts.keys.joinToString()}] " +
+                    "are available."
+        }
         val releaseDate = ZonedDateTime.parse(response.task.created, ISO_ZONED_DATE_TIME)
         return Result(
-            fileHash = Sha256Hash(hashString),
+            fileHash = Sha256Hash(artifact.sha256),
             url = "$baseUrl/artifacts/$apkArtifact",
             releaseDate = releaseDate
         )

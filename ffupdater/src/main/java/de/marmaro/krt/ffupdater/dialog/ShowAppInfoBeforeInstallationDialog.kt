@@ -18,25 +18,28 @@ import kotlinx.coroutines.launch
  */
 class ShowAppInfoBeforeInstallationDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val app = App.valueOf(requireArguments().getString(BUNDLE_APP_NAME)!!)
+        val app = App.valueOf(requireNotNull(requireArguments().getString(BUNDLE_APP_NAME)) {
+            "$BUNDLE_APP_NAME is not set."
+        })
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-                .setTitle(getString(app.detail.displayTitle))
-                .setMessage(getString(app.detail.displayDescription))
-                .setPositiveButton(getString(R.string.install_app)) { dialog: DialogInterface, _: Int ->
-                    mainActivity.lifecycleScope.launch(Dispatchers.Main) {
-                        dialog.dismiss()
-                        if (app.detail.displayWarning != null) {
-                            ShowWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
-                        } else {
-                            mainActivity.installAppButCheckForCurrentDownloads(app)
-                        }
+            .setTitle(getString(app.detail.displayTitle))
+            .setMessage(getString(app.detail.displayDescription))
+            .setPositiveButton(getString(R.string.install_app)) { dialog: DialogInterface, _: Int ->
+                mainActivity.lifecycleScope.launch(Dispatchers.Main) {
+                    dialog.dismiss()
+                    if (app.detail.displayWarning != null) {
+                        ShowWarningBeforeInstallationDialog.newInstance(app)
+                            .show(parentFragmentManager)
+                    } else {
+                        mainActivity.installAppButCheckForCurrentDownloads(app)
                     }
                 }
-                .setNegativeButton(getString(R.string.go_back)) { dialog: DialogInterface, _: Int ->
-                    dialog.dismiss()
-                }
-                .create()
+            }
+            .setNegativeButton(getString(R.string.go_back)) { dialog: DialogInterface, _: Int ->
+                dialog.dismiss()
+            }
+            .create()
     }
 
     fun show(manager: FragmentManager) {
