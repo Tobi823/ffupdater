@@ -16,30 +16,25 @@ git fetch --tags
    - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
    - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
  - create tag for release
+   ````bash
+   TAG="XXXXXX"
+   git tag "$TAG"
+   git pushall
+   git push origin "$TAG"
+   git push github "$TAG"
+   git push gitlab "$TAG"
+   git push gitea "$TAG"
+   
+   ````
  - push tag to notabug.org, Github and Gitlab
+   ````bash
+   git config --global alias.pushall '!git remote | xargs -L1 git push --all'
+   git pushall
+   ````
  - build signed APK file
  - upload signed APK file to GitHub and GitLab
  - start repomaker with Docker
  - upload signed APK to repomaker
-
-# push to git
-https://stackoverflow.com/a/18674313
-````bash
-git config --global alias.pushall '!git remote | xargs -L1 git push --all'
-git pushall
-````
-
-# push tag to git
-````bash
-TAG="XXXXXX"
-git tag "$TAG"
-git pushall
-git push origin "$TAG"
-git push github "$TAG"
-git push gitlab "$TAG"
-git push gitea "$TAG"
-
-````
 
 # delete all remote branches except master
 ````
