@@ -191,10 +191,6 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun checkForUpdates() {
-        // abort if layout is not initialized
-//        if (findViewById<LinearLayout>(R.id.mainLinearLayout).childCount == 0) {
-//            return
-//        }
         val installedApps = App.values().filter { app ->
             app.detail.isInstalled(this@MainActivity)
         }
