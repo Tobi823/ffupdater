@@ -6,12 +6,9 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 /**
  * Ask the user with this dialog if he really want to install the app.
@@ -28,10 +25,8 @@ class ShowWarningBeforeInstallationDialog : DialogFragment() {
                 "$app must have a warning message."
             }))
             .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
-                mainActivity.lifecycleScope.launch(Dispatchers.Main) {
-                    dialog.dismiss()
-                    mainActivity.installAppButCheckForCurrentDownloads(app)
-                }
+                dialog.dismiss()
+                mainActivity.installAppButCheckForCurrentDownloads(app)
             }
             .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()

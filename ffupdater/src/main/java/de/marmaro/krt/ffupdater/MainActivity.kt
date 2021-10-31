@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private suspend fun userTriggersAppDownload(app: App) {
+    private fun userTriggersAppDownload(app: App) {
         if (NetworkUtil.isInternetUnavailable(this)) {
             showInternetUnavailableToast()
             return
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    suspend fun installAppButCheckForCurrentDownloads(app: App) {
+    fun installAppButCheckForCurrentDownloads(app: App) {
         if (DownloadManagerUtil.isDownloadingFilesNow(downloadManager)) {
             RunningDownloadsDialog.newInstance(app).show(supportFragmentManager)
         } else {
@@ -170,11 +170,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             val downloadButton: ImageButton = newCardView.findViewWithTag("appDownloadButton")
-            downloadButton.setOnClickListener {
-                lifecycleScope.launch(Dispatchers.Main) {
-                    userTriggersAppDownload(app)
-                }
-            }
+            downloadButton.setOnClickListener { userTriggersAppDownload(app) }
             downloadButtons[app] = downloadButton
             disableDownloadButton(app)
 
@@ -258,7 +254,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    suspend fun installApp(app: App) {
+    fun installApp(app: App) {
         if (NetworkUtil.isInternetUnavailable(this)) {
             showInternetUnavailableToast()
             return
@@ -293,9 +289,5 @@ class MainActivity : AppCompatActivity() {
     @UiThread
     private fun hideLoadAnimation() {
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
-    }
-
-    companion object {
-        private const val LOG_TAG = "MainActivity"
     }
 }

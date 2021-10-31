@@ -4,17 +4,15 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import androidx.annotation.AnyThread
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 object NetworkUtil {
+    @AnyThread
     fun isInternetUnavailable(context: Context): Boolean {
-        return !isInternetAvailable(context)
-    }
-
-    fun isInternetAvailable(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return isInternetAvailable(cm)
+        return !isInternetAvailable(cm)
     }
 
     private fun isInternetAvailable(cm: ConnectivityManager): Boolean {
