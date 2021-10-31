@@ -43,7 +43,7 @@ object DeviceEnvironment {
     /**
      * API level 29
      */
-    fun supportAndroid10(): Boolean {
+    fun supportsAndroid10(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.Q
     }
 

@@ -190,13 +190,13 @@ class SettingsHelperTest {
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidPAndBelow_returnDefaultValue() {
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidQAndHigher_returnDefaultValue() {
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -204,10 +204,10 @@ class SettingsHelperTest {
     fun getThemePreference_withInvalidValue_null_returnDefault() {
         sharedPreferences.edit().putString("themePreference", null).commit()
 
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -215,10 +215,10 @@ class SettingsHelperTest {
     fun getThemePreference_withInvalidValue_emptyString_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "").commit()
 
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -226,10 +226,10 @@ class SettingsHelperTest {
     fun getThemePreference_withInvalidValue_text_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "lorem ipsum").commit()
 
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -237,10 +237,10 @@ class SettingsHelperTest {
     fun getThemePreference_withInvalidValue_nonExistingNumber_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "6").commit()
 
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -248,10 +248,10 @@ class SettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_FOLLOW_SYSTEM_returnValue() {
         sharedPreferences.edit().putString("themePreference", "-1").commit()
 
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -259,10 +259,10 @@ class SettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_NO_returnValue() {
         sharedPreferences.edit().putString("themePreference", "1").commit()
 
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_NO, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_NO, SettingsHelper(context).getThemePreference())
     }
 
@@ -270,10 +270,10 @@ class SettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_YES_returnValue() {
         sharedPreferences.edit().putString("themePreference", "2").commit()
 
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_YES, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_YES, SettingsHelper(context).getThemePreference())
     }
 
@@ -281,10 +281,10 @@ class SettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_AUTO_BATTERY_returnValue() {
         sharedPreferences.edit().putString("themePreference", "3").commit()
 
-        every { DeviceEnvironment.supportAndroid10() } returns false
+        every { DeviceEnvironment.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportAndroid10() } returns true
+        every { DeviceEnvironment.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
     }
 }

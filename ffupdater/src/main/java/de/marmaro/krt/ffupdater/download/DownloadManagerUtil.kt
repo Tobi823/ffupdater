@@ -92,7 +92,7 @@ object DownloadManagerUtil {
         }
     }
 
-    fun isDownloadingAFileNow(downloadManager: DownloadManager): Boolean {
+    fun isDownloadingFilesNow(downloadManager: DownloadManager): Boolean {
         val query = Query()
         query.setFilterByStatus(STATUS_RUNNING)
         downloadManager.query(query).use { cursor ->

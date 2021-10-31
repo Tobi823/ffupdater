@@ -52,7 +52,7 @@
         <activity
             android:name=".CrashReportActivity"
             android:label="FFUpdater Crash Reporter"
-            android:theme="@style/CrashReportTheme"></activity>
+            android:theme="@style/CrashReportTheme" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings__activity_label"

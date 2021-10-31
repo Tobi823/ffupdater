@@ -65,7 +65,7 @@ class SettingsHelper(context: Context) {
      * @return AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES, ...
      */
     fun getThemePreference(): Int {
-        val default = if (DeviceEnvironment.supportAndroid10()) {
+        val default = if (DeviceEnvironment.supportsAndroid10()) {
             MODE_NIGHT_FOLLOW_SYSTEM
         } else {
             MODE_NIGHT_AUTO_BATTERY

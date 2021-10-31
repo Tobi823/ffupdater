@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     suspend fun installAppButCheckForCurrentDownloads(app: App) {
-        if (DownloadManagerUtil.isDownloadingAFileNow(downloadManager)) {
+        if (DownloadManagerUtil.isDownloadingFilesNow(downloadManager)) {
             RunningDownloadsDialog.newInstance(app).show(supportFragmentManager)
         } else {
             installApp(app)

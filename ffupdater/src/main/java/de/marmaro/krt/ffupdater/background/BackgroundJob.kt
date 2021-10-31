@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.background
 
 import android.app.DownloadManager
 import android.content.Context
+import android.content.Context.DOWNLOAD_SERVICE
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.work.*
@@ -82,22 +83,14 @@ class BackgroundJob(
     @MainThread
     private suspend fun executeBackgroundJob(): Result {
         Log.i(LOG_TAG, "execute BackgroundJob")
-        val context = applicationContext
-        val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-
-        if (!NetworkUtil.isInternetAvailable(context)) {
-            Log.i(LOG_TAG, "retry because internet is not available")
-            return Result.retry()
-        }
-        if (DownloadManagerUtil.isDownloadingAFileNow(downloadManager)) {
+        val downloadManager = applicationContext.getSystemService(DOWNLOAD_SERVICE) as DownloadManager
+        if (DownloadManagerUtil.isDownloadingFilesNow(downloadManager)) {
             Log.i(LOG_TAG, "retry because other downloads are running")
             return Result.retry()
         }
 
         val appsWithUpdates = findAppsWithUpdates()
-        if (NetworkUtil.isActiveNetworkUnmetered(context) &&
-            StorageUtil.isEnoughStorageAvailable()
-        ) {
+        if (NetworkUtil.isActiveNetworkUnmetered(applicationContext) && StorageUtil.isEnoughStorageAvailable()) {
             downloadUpdatesInBackground(downloadManager, appsWithUpdates)
         }
         showUpdateNotification(appsWithUpdates)

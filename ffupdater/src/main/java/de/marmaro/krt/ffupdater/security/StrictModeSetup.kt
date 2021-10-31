@@ -39,7 +39,7 @@ object StrictModeSetup {
         if (DeviceEnvironment.supportsAndroid9()) {
             vmPolicyBuilder.detectNonSdkApiUsage()
         }
-        if (DeviceEnvironment.supportAndroid10()) {
+        if (DeviceEnvironment.supportsAndroid10()) {
             vmPolicyBuilder.detectImplicitDirectBoot()
             vmPolicyBuilder.detectCredentialProtectedWhileLocked()
         }
