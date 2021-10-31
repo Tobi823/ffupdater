@@ -21,8 +21,8 @@ import de.marmaro.krt.ffupdater.R.id.install_activity__exception__show_button
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__install_activity_fetching_url
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
@@ -279,7 +279,7 @@ class InstallActivity : AppCompatActivity() {
                 ia.viewModel.fetchUrlExceptionText =
                     ia.getString(R.string.install_activity__github_rate_limit_exceeded)
                 return FAILURE_SHOW_FETCH_URL_EXCEPTION
-            } catch (e: ApiConsumerException) {
+            } catch (e: NetworkException) {
                 ia.viewModel.fetchUrlException = e
                 ia.viewModel.fetchUrlExceptionText =
                     ia.getString(R.string.install_activity__temporary_network_issue)

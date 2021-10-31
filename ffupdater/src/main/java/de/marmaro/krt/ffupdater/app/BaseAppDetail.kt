@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
@@ -52,7 +52,7 @@ abstract class BaseAppDetail : AppDetail {
 
     /**
      * @throws InvalidApiResponseException
-     * @throws ApiConsumerException
+     * @throws NetworkException
      */
     protected abstract suspend fun updateCheckWithoutCaching(): AvailableVersionResult
 

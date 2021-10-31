@@ -9,8 +9,8 @@ import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.download.ApkCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.FAILED
@@ -30,10 +30,8 @@ import java.util.concurrent.TimeUnit.MINUTES
  *
  * doWork can be interrupted at any time and cause a CancellationException.
  */
-class BackgroundJob(
-    context: Context,
-    workerParams: WorkerParameters,
-) : CoroutineWorker(context, workerParams) {
+class BackgroundJob(context: Context, workerParams: WorkerParameters) :
+    CoroutineWorker(context, workerParams) {
 
     /**
      * If:
@@ -50,29 +48,21 @@ class BackgroundJob(
      */
     @MainThread
     override suspend fun doWork(): Result {
-        val context = applicationContext
         try {
             executeBackgroundJob()
-        } catch (e: CancellationException) {
-            return handleTemporaryException(context, e, "CancellationException")
-        } catch (e: GithubRateLimitExceededException) {
-            return handleTemporaryException(context, e, "GithubRateLimitExceededException")
-        } catch (e: ApiConsumerException) {
-            return handleTemporaryException(context, e, "ApiConsumerException")
+            return Result.success()
         } catch (e: Exception) {
-            showErrorNotification(context, e)
+            when (e) {
+                is CancellationException, is GithubRateLimitExceededException, is NetworkException -> {
+                    if (runAttemptCount <= RUN_ATTEMPTS_FOR_63MIN_TOTAL) {
+                        Log.i(LOG_TAG, "Retry background job.", e)
+                        return Result.retry()
+                    }
+                }
+            }
+            showErrorNotification(applicationContext, e)
             return Result.success()
         }
-        return Result.success()
-    }
-
-    private fun handleTemporaryException(context: Context, e: Exception, reason: String): Result {
-        if (runAttemptCount >= 8) {
-            showErrorNotification(context, e)
-            Result.success()
-        }
-        Log.i(LOG_TAG, "retry due to $reason", e)
-        return Result.retry()
     }
 
     private fun showErrorNotification(context: Context, e: Exception) {
@@ -82,10 +72,10 @@ class BackgroundJob(
 
     @MainThread
     private suspend fun executeBackgroundJob(): Result {
-        Log.i(LOG_TAG, "execute BackgroundJob")
+        Log.i(LOG_TAG, "Execute background job for update check.")
         val downloadManager = applicationContext.getSystemService(DOWNLOAD_SERVICE) as DownloadManager
         if (DownloadManagerUtil.isDownloadingFilesNow(downloadManager)) {
-            Log.i(LOG_TAG, "retry because other downloads are running")
+            Log.i(LOG_TAG, "Retry background job because other downloads are running.")
             return Result.retry()
         }
 
@@ -134,11 +124,11 @@ class BackgroundJob(
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
         val availableResult = cachedUpdateChecker.availableResult
         if (apkCache.isCacheAvailable(availableResult)) {
-            Log.i(LOG_TAG, "skip $app download because it's already cached")
+            Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return
         }
 
-        Log.i(LOG_TAG, "download $app in the background")
+        Log.i(LOG_TAG, "Download $app in the background.")
         val downloadId = DownloadManagerUtil.enqueue(
             downloadManager,
             applicationContext,
@@ -172,6 +162,8 @@ class BackgroundJob(
     companion object {
         private const val WORK_MANAGER_KEY = "update_checker"
         private const val LOG_TAG = "BackgroundJob"
+        // waiting time = 0.5m + 1m + 2m + 4m + 8m + 16m + 32m = 63,5m
+        private const val RUN_ATTEMPTS_FOR_63MIN_TOTAL = 7
 
         fun startOrStopBackgroundUpdateCheck(context: Context) {
             if (SettingsHelper(context).automaticCheck) {

@@ -22,8 +22,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
@@ -235,7 +235,7 @@ class MainActivity : AppCompatActivity() {
             }
         } catch (e: GithubRateLimitExceededException) {
             showUpdateCheckError(app, R.string.main_activity__github_api_limit_exceeded, e)
-        } catch (e: ApiConsumerException) {
+        } catch (e: NetworkException) {
             showUpdateCheckError(app, R.string.main_activity__temporary_network_issue, e)
         } catch (e: Exception) {
             showUpdateCheckError(app, R.string.available_version_error, e)

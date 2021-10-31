@@ -4,8 +4,8 @@ import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.BufferedReader
@@ -26,46 +26,45 @@ object ApiConsumer {
     private val gson = Gson()
 
     /**
-     * Reads the network resource.
-     * If an error occurs, this method tries two additional times for reading the network resource.
+     * Reads a network resource.
      * If clazz is String, then the network response is returned as a string.
      * If class is not a String, then the network response is parsed as JSON and returned as object.
-     * @throws ApiConsumerException if the network resource is not available after 5 retires.
+     * @throws NetworkException if the network resource is not available after 5 retires.
      * @throws GithubRateLimitExceededException if the GitHub-API rate limit is exceeded.
      */
     @MainThread
-    suspend fun <T: Any> consumeNetworkResource(url: String, clazz: KClass<T>): T {
-        try {
-            return withContext(Dispatchers.IO) {
-                readNetworkResource(url, clazz)
-            }
-        } catch (e: FileNotFoundException) {
-            if (url.startsWith("https://api.github.com")) {
-                throw GithubRateLimitExceededException(e)
-            } else {
-                throw ApiConsumerException("fail to consume ${clazz.qualifiedName} from '$url'", e)
-            }
-        } catch (e: IOException) {
-            throw ApiConsumerException("fail to consume ${clazz.qualifiedName} from '$url'", e)
+    suspend fun <T : Any> consumeNetworkResource(url: String, clazz: KClass<T>): T {
+        return withContext(Dispatchers.IO) {
+            readNetworkResource(url, clazz)
         }
     }
 
     @WorkerThread
-    private fun <T: Any> readNetworkResource(urlString: String, clazz: KClass<T>): T {
+    private fun <T : Any> readNetworkResource(urlString: String, clazz: KClass<T>): T {
         TrafficStats.setThreadStatsTag(THREAD_ID)
-        val url = URL(urlString)
-        val connection = url.openConnection() as HttpsURLConnection
-        connection.setRequestProperty("Accept-Encoding", GZIP)
-        connection.inputStream
-            .let { if (connection.contentEncoding == GZIP) GZIPInputStream(it) else it }
-            .let { InputStreamReader(it) }
-            .let { BufferedReader(it) }
-            .use {
-                if (clazz == String::class) {
-                    @Suppress("UNCHECKED_CAST")
-                    return it.readText() as T
-                }
-                return gson.fromJson(it, clazz.java)
+        val reader = try {
+            val url = URL(urlString)
+            val connection = url.openConnection() as HttpsURLConnection
+            connection.setRequestProperty("Accept-Encoding", GZIP)
+            if (connection.contentEncoding == GZIP) {
+                BufferedReader(InputStreamReader(GZIPInputStream(connection.inputStream)))
+            } else {
+                BufferedReader(InputStreamReader(connection.inputStream))
             }
+        } catch (e: FileNotFoundException) {
+            if (urlString.startsWith("https://api.github.com")) {
+                throw GithubRateLimitExceededException(e)
+            } else {
+                throw NetworkException("Fail to consume ${clazz.qualifiedName} from '$urlString'.", e)
+            }
+        } catch (e: IOException) {
+            throw NetworkException("Fail to consume ${clazz.qualifiedName} from '$urlString'.", e)
+        }
+
+        if (clazz == String::class) {
+            @Suppress("UNCHECKED_CAST")
+            return reader.use { it.readText() as T }
+        }
+        return reader.use { gson.fromJson(it, clazz.java) }
     }
 }

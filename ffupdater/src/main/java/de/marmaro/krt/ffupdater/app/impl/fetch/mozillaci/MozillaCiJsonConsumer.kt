@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci
 
 import androidx.annotation.MainThread
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.security.Sha256Hash
 import java.time.ZonedDateTime
@@ -17,7 +17,7 @@ class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
     /**
      * This method must not be called from the main thread or a android.os.NetworkOnMainThreadException
      * will be thrown
-     * @throws ApiConsumerException
+     * @throws NetworkException
      */
     @MainThread
     suspend fun updateCheck(): Result {

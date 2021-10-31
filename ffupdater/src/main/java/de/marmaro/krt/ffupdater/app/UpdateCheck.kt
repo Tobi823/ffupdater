@@ -2,8 +2,8 @@ package de.marmaro.krt.ffupdater.app
 
 import android.content.Context
 import androidx.annotation.MainThread
-import de.marmaro.krt.ffupdater.app.impl.exceptions.ApiConsumerException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import java.io.File
 
 interface UpdateCheck {
@@ -11,7 +11,7 @@ interface UpdateCheck {
      * 2min timeout
      * Exception will not cause CancellationExceptions
      * @throws InvalidApiResponseException
-     * @throws ApiConsumerException
+     * @throws NetworkException
      */
     @MainThread
     suspend fun updateCheck(context: Context): UpdateCheckResult
