@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 type xsltproc > /dev/null
 type xmllint > /dev/null
