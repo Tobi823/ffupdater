@@ -48,7 +48,12 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:usesCleartextTraffic="false"
+        android:manageSpaceActivity=".ManageStorageActivity"
         tools:targetApi="Q">
+        <activity
+            android:name=".ManageStorageActivity"
+            android:label="Manage Storage"
+            android:theme="@style/MainActivityTheme"/>
         <activity
             android:name=".CrashReportActivity"
             android:label="FFUpdater Crash Reporter"

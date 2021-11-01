@@ -6,7 +6,7 @@ import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppDetail
+import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
  */
-class FirefoxNightly : BaseAppDetail() {
+class FirefoxNightly : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.mozilla.fenix"
     override val displayTitle = R.string.firefox_nightly__title
     override val displayDescription = R.string.firefox_nightly__description

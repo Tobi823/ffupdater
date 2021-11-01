@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app
 
 import de.marmaro.krt.ffupdater.app.impl.*
 
-enum class App(appDetail: AppDetail) {
+enum class App(appDetail: BaseApp) {
     FIREFOX_RELEASE(FirefoxRelease()),
     FIREFOX_BETA(FirefoxBeta()),
     FIREFOX_NIGHTLY(FirefoxNightly()),
@@ -13,5 +13,5 @@ enum class App(appDetail: AppDetail) {
     ICERAVEN(Iceraven()),
     BROMITE(Bromite());
 
-    val detail: AppDetail = appDetail
+    val detail: BaseApp = appDetail
 }

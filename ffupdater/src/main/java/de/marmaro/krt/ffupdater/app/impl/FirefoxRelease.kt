@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppDetail
+import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
@@ -11,7 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest
  * https://www.apkmirror.com/apk/mozilla/firefox/
  */
-class FirefoxRelease : BaseAppDetail() {
+class FirefoxRelease : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.mozilla.firefox"
     override val displayTitle = R.string.firefox_release__title
     override val displayDescription = R.string.firefox_release__description

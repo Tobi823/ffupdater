@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.installer
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import java.io.File
@@ -14,8 +13,6 @@ class IntentInstaller(
         private val appNotInstalledCallback: (errorMessage: String) -> Any,
 ) : AppInstaller {
 
-    override fun onNewIntentCallback(intent: Intent, context: Context) {}
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CODE_INSTALL) {
             if (resultCode == Activity.RESULT_OK) {
@@ -27,6 +24,7 @@ class IntentInstaller(
     }
 
     override fun install(activity: Activity, downloadedFile: File) {
+        require(downloadedFile.exists()) { "File does not exists." }
         try {
             return installInternal(activity, downloadedFile)
         } catch (e: IOException) {

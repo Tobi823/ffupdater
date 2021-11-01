@@ -7,9 +7,9 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import java.io.File
 
 interface AppInstaller {
-    fun onNewIntentCallback(intent: Intent, context: Context)
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
-    fun install(activity: Activity, downloadedFile: File)
+    fun onNewIntentCallback(intent: Intent, context: Context) {}
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
+    fun install(activity: Activity, downloadedFile: File) {}
 
     companion object {
         fun create(

@@ -71,6 +71,7 @@
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API rate limit is exceeded. Please try the download again in the next hour.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug. \n\nI recommend you to uninstall the application.</string>
+    <string name="install_activity__retrigger_installation__button_title">Retry App Installation</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
     <string name="install_activity__temporary_network_issue">A temporary network issue occurred. Please retry later.</string>
     <string name="install_activity__too_low_memory_description">Your device is low on storage (only %1$d MB free). This will lead to download or installation failure.</string>
@@ -84,7 +85,6 @@
     <string name="install_activity_label">Install Application</string>
     <string name="install_app">Install app</string>
     <string name="install_new_app">Install new app</string>
-    <string name="install_activity__retrigger_installation__button_title">Retry App Installation</string>
     <string name="install_same_version_dialog__message">The latest version of this app is already installed. Do you want to download and install the latest version again?</string>
     <string name="install_same_version_dialog__title">Same version installed</string>
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
@@ -96,6 +96,8 @@
     <string name="main_activity__no_internet_connection">No network connection</string>
     <string name="main_activity__subtitle">Update your browsers from Mozilla</string>
     <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
+    <string name="manage_storage_activity__delete_button">Delete cached app updates.</string>
+    <string name="manage_storage_activity__explanation">FFUpdater caches already downloaded app updates and stores them in the \'Android/data/de.marmaro.krt.ffupdater/files/Download\' folder.\n\nThis saves bandwidth when an app is not successfully installed or updated. Also, the cache is needed so that updates that were downloaded in the background can be installed later.\n\nIf you decide to delete these app updates, you may have to download them again.</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">The system download manager is downloading other files now. Do you want to start a new download that may take longer?</string>

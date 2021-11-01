@@ -1,9 +1,7 @@
 package de.marmaro.krt.ffupdater.security
 
-import android.annotation.SuppressLint
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.content.pm.PackageManager.GET_SIGNATURES
+import android.content.pm.Signature
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
@@ -31,15 +29,16 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      */
     @MainThread
     suspend fun checkApkFile(file: File, app: App): CertificateValidationResult {
-        require(file.exists()) { "file must exists" }
+        require(file.exists()) { "File '${file.absoluteFile}' must exists." }
         val path = file.absolutePath
-        val info = PackageManagerUtil.getPackageArchiveInfoOrFail(packageManager, path)
+        val signature = PackageManagerUtil.getPackageArchiveInfo(packageManager, path)
+        checkNotNull(signature) { "Fail to parse APK file '${file.absoluteFile}'." }
         return try {
-            verifyPackageInfo(info, app)
+            verifyPackageInfo(signature, app)
         } catch (e: CertificateException) {
-            throw UnableCheckApkException("certificate of APK file is invalid", e)
+            throw UnableCheckApkException("Certificate of APK file is invalid.", e)
         } catch (e: NoSuchAlgorithmException) {
-            throw UnableCheckApkException("unknown algorithm for checking APK file", e)
+            throw UnableCheckApkException("Unknown algorithm for checking APK file.", e)
         }
     }
 
@@ -53,13 +52,13 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      *
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
-    @SuppressLint("PackageManagerGetSignatures")
-    // because GET_SIGNATURES is dangerous on Android 4.4 or lower https://stackoverflow.com/a/39348300
+
     @MainThread
     suspend fun checkInstalledApp(app: App): CertificateValidationResult {
         return try {
-            val packageInfo = packageManager.getPackageInfo(app.detail.packageName, GET_SIGNATURES)
-            verifyPackageInfo(packageInfo, app)
+            val signature = PackageManagerUtil.getInstalledAppInfo(packageManager, app)
+            checkNotNull(signature) { "Fail to get signature of app '${app.detail.packageName}'." }
+            verifyPackageInfo(signature, app)
         } catch (e: CertificateException) {
             throw UnableCheckApkException("certificate of APK file is invalid", e)
         } catch (e: NoSuchAlgorithmException) {
@@ -72,12 +71,11 @@ class FingerprintValidator(private val packageManager: PackageManager) {
     @MainThread
     @Throws(CertificateException::class, NoSuchAlgorithmException::class)
     private suspend fun verifyPackageInfo(
-        packageInfo: PackageInfo,
+        signature: Signature,
         appDetail: App
     ): CertificateValidationResult {
         return withContext(Dispatchers.IO) {
-            check(packageInfo.signatures.isNotEmpty())
-            val signatureStream = ByteArrayInputStream(packageInfo.signatures[0].toByteArray())
+            val signatureStream = ByteArrayInputStream(signature.toByteArray())
             val certificateFactory = CertificateFactory.getInstance("X509")
             val certificate = certificateFactory.generateCertificate(signatureStream)
 

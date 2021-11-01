@@ -49,13 +49,12 @@ class SessionInstaller(
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
-
     override fun install(activity: Activity, downloadedFile: File) {
+        require(downloadedFile.exists()) { "File does not exists." }
         try {
             return installInternal(activity, downloadedFile)
         } catch (e: IOException) {
-            throw SessionInstallerException("fail to install app", e)
+            throw SessionInstallerException("Fail to install app.", e)
         }
     }
 

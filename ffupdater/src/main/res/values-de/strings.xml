@@ -69,6 +69,7 @@
     <string name="install_activity__github_rate_limit_exceeded">Das Ratenlimit der GitHub-API ist überschritten. Bitte versuchen Sie den Download in der nächsten Stunde erneut.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Entweder hat ein Angreifer den korrekten Download durch einen manipulierten ersetzt, oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Entweder wurde eine manipulierte Anwendung installiert oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
+    <string name="install_activity__retrigger_installation__button_title">App-Installation wiederholen</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 Fingerabdruck des Zertifikats:</string>
     <string name="install_activity__temporary_network_issue">Es ist ein vorübergehendes Netzwerkproblem aufgetreten. Bitte versuchen Sie es später erneut.</string>
     <string name="install_activity__too_low_memory_description">Auf Ihrem Gerät ist nur %1$d MB Speicherplatz verfügbar. Dies kann zu einem Download- oder Installationsfehler führen.</string>
@@ -82,7 +83,6 @@
     <string name="install_activity_label">Anwendung installieren</string>
     <string name="install_app">App installieren</string>
     <string name="install_new_app">Neue Anwendung installieren</string>
-    <string name="install_activity__retrigger_installation__button_title">App-Installation wiederholen</string>
     <string name="install_same_version_dialog__message">Die neueste Version dieser App ist bereits installiert. Möchten Sie die neueste Version erneut herunterladen und installieren?</string>
     <string name="install_same_version_dialog__title">Gleiche Version installiert</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
@@ -94,6 +94,8 @@
     <string name="main_activity__no_internet_connection">Sie sind nicht mit dem Internet verbunden</string>
     <string name="main_activity__subtitle">Aktualisieren Sie Ihre Browser von Mozilla</string>
     <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Später erneut versuchen.</u>"</string>
+    <string name="manage_storage_activity__delete_button">Lösche zwischengespeicherte App-Updates.</string>
+    <string name="manage_storage_activity__explanation">FFUpdater speichert bereits heruntergeladene App-Updates im Zwischenspeicher im Ordner \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nDies spart Bandbreite, wenn eine App nicht erfolgreich installiert oder aktualisiert wird. Außerdem wird der Cache benötigt, damit Updates, die im Hintergrund heruntergeladen wurden, später installiert werden können.\n\nWenn Sie sich entscheiden, diese App-Updates zu löschen, müssen Sie sie möglicherweise erneut herunterladen.</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">Der System-Download-Manager lädt gerade andere Dateien herunter. Möchten Sie einen neuen Download starten, der länger dauern kann?</string>
     <string name="running_downloads_dialog__negative">Nein, nicht herunterladen</string>

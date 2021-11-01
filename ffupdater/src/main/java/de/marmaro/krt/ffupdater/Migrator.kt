@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater
 import android.content.Context
 import android.os.Environment
 import androidx.preference.PreferenceManager
-import java.io.File
 
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
@@ -11,7 +10,7 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
-        if (lastVersionCode < 79 /* 74.3.6 */) {
+        if (lastVersionCode < 87 /* TODO */) {
             deleteOldCacheData(context)
         }
 
@@ -22,8 +21,8 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
             ?.listFiles()
             ?.forEach { it.delete() }
-        File(context.externalCacheDir, Environment.DIRECTORY_DOWNLOADS)
-            .listFiles()
+        context.externalCacheDir
+            ?.listFiles()
             ?.forEach { it.delete() }
     }
 

@@ -24,7 +24,6 @@ import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
@@ -100,8 +99,8 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         lifecycleScope.launch(Dispatchers.Main) {
             initUI()
-            checkForUpdates()
-            BackgroundJob.startOrStopBackgroundUpdateCheck(this@MainActivity)
+            //checkForUpdates() TODO
+            //BackgroundJob.startOrStopBackgroundUpdateCheck(this@MainActivity) TODO
         }
     }
 

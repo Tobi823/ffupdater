@@ -69,6 +69,7 @@
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API の速度制限を超えました。1時間以内にもう一度ダウンロードをお試しください。</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">攻撃者がアプリを改ざんされたものに置き換えたか、証明書チェッカーが正しく機能しなくなっています。 apkmirror.comで証明書のフィンガープリントを再確認するか、https://notabug.org/Tobiwan/ffupdater でIssueを作成してバグについて報告してください。</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">改ざんされたアプリケーションがインストールされているか、証明書チェッカーが正しく機能しなくなっています。apkmirror.comで証明書のフィンガープリントを再確認するか、https://notabug.org/Tobiwan/ffupdater でIssueを作成してバグについて報告してください。\n\nインストールしたアプリのアンインストールを推奨します</string>
+    <string name="install_activity__retrigger_installation__button_title">アプリのインストールを再試行する</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256証明書フィンガープリント:</string>
     <string name="install_activity__temporary_network_issue">一時的なネットワークの問題が発生しました。後で再試行してください。</string>
     <string name="install_activity__too_low_memory_description">このデバイスには %1$d MB の空き容量しかありません。これにより、ダウンロードやインストールに失敗する可能性があります。</string>
@@ -82,7 +83,6 @@
     <string name="install_activity_label">アプリをインストール</string>
     <string name="install_app">アプリをインストール</string>
     <string name="install_new_app">新規アプリをインストール</string>
-    <string name="install_activity__retrigger_installation__button_title">アプリのインストールを再試行する</string>
     <string name="install_same_version_dialog__message">このアプリの最新版はすでにインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>
     <string name="install_same_version_dialog__title">同じバージョンがインストール済み</string>
     <string name="installed_app_is_not_verified">インストールしたアプリが検証できませんでした</string>
@@ -94,6 +94,8 @@
     <string name="main_activity__no_internet_connection">ネットワーク接続がありません</string>
     <string name="main_activity__subtitle">あなたのブラウザをアップデートします</string>
     <string name="main_activity__temporary_network_issue">"<u>一時的なネットワークの問題です。後で再試行します。</u>"</string>
+    <string name="manage_storage_activity__delete_button">キャッシュされたアプリのアップデートを削除します。</string>
+    <string name="manage_storage_activity__explanation">FFUpdaterは、すでにダウンロードされたアプリのアップデートをキャッシュし、「Android/data/de.marmaro.ktr.ffupdater/files/Download」フォルダに保存します。\n\nこれにより、アプリのインストールやアップデートが正常に行われなかった場合の帯域幅を節約できます。また、バックグラウンドでダウンロードされたアップデートを後からインストールするためにも、キャッシュは必要です。\n\nこれらのアプリのアップデートを削除することにした場合、再度ダウンロードしなければならない可能性があります。</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">システムダウンロードマネージャーは、現在、他のファイルをダウンロードしています。時間がかかるかもしれない新しいダウンロードを開始しますか？</string>
     <string name="running_downloads_dialog__negative">いいえ、ダウンロードしません</string>

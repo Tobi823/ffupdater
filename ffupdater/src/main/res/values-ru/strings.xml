@@ -69,6 +69,7 @@
     <string name="install_activity__github_rate_limit_exceeded">Превышен лимит скорости GitHub-API. Пожалуйста, повторите попытку загрузки в течение следующего часа.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Либо злоумышленник подменил правильную загрузку на фальсифицированную, либо проверка сертификата больше не работает. Вы можете перепроверить отпечаток сертификата на apkmirror.com или сообщить мне об ошибке на сайте https://notabug.org/Tobiwan/ffupdater.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Либо установлено фальсифицированное приложение, либо больше не работает программа проверки сертификатов. Вы можете перепроверить отпечаток сертификата на apkmirror.com или сообщить мне об ошибке на сайте https://notabug.org/Tobiwan/ffupdater. \n\nРекомендуется удалить приложение.</string>
+    <string name="install_activity__retrigger_installation__button_title">Повторите установку приложения</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Отпечаток сертификата SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Возникла временная сетевая проблема. Пожалуйста, повторите попытку позже.</string>
     <string name="install_activity__too_low_memory_description">На вашем устройстве имеется только %1$d Мб свободного места. Это может привести к сбою в загрузке или установке.</string>
@@ -82,7 +83,6 @@
     <string name="install_activity_label">Установить приложение</string>
     <string name="install_app">установочное приложение</string>
     <string name="install_new_app">Установить новое приложение</string>
-    <string name="install_activity__retrigger_installation__button_title">Повторите установку приложения</string>
     <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите снова загрузить и установить ее?</string>
     <string name="install_same_version_dialog__title">Установлена та же версия</string>
     <string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
@@ -94,6 +94,8 @@
     <string name="main_activity__no_internet_connection">Нет подключения к интернету</string>
     <string name="main_activity__subtitle">Обновите свои браузеры от Mozilla</string>
     <string name="main_activity__temporary_network_issue">"<u>Временная сетевая проблема. Повторите попытку позже.</u>"</string>
+    <string name="manage_storage_activity__delete_button">Удаление кэшированных обновлений приложений.</string>
+    <string name="manage_storage_activity__explanation">FFUpdater кэширует уже загруженные обновления приложений и хранит их в папке \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nЭто экономит пропускную способность, когда приложение не удается установить или обновить. Кроме того, кэш необходим для того, чтобы обновления, загруженные в фоновом режиме, можно было установить позже.\n\nЕсли вы решите удалить эти обновления приложений, вам, возможно, придется загрузить их снова.</string>
     <string name="ok">ОК</string>
     <string name="running_downloads_dialog__message">Менеджер загрузки системы сейчас загружает другие файлы. Вы хотите начать новую загрузку, которая может занять больше времени?</string>
     <string name="running_downloads_dialog__negative">Нет, не загружайте его</string>

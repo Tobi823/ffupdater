@@ -24,7 +24,7 @@ import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.crash.CrashListener
-import de.marmaro.krt.ffupdater.download.ApkCache
+import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.*
 import de.marmaro.krt.ffupdater.download.StorageUtil
@@ -49,7 +49,7 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var downloadManager: DownloadManager
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
-    private lateinit var apkCache: ApkCache
+    private lateinit var appCache: AppCache
 
     // necessary for communication with State enums
     private lateinit var app: App
@@ -95,7 +95,7 @@ class InstallActivity : AppCompatActivity() {
                 }
                 restartStateMachine(FAILURE_APP_INSTALLATION)
             })
-        apkCache = ApkCache(app, this)
+        appCache = AppCache(app)
         findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
             restartStateMachine(TRIGGER_INSTALLATION_PROCESS)
         }
@@ -218,10 +218,7 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         suspend fun start(ia: InstallActivity): State {
-            if (!ia.app.detail.isInstalled(ia)) {
-                return INSTALLED_APP_SIGNATURE_CHECKED
-            }
-            if (ia.fingerprintValidator.checkInstalledApp(ia.app).isValid) {
+            if (!ia.app.detail.isInstalled(ia) || ia.fingerprintValidator.checkInstalledApp(ia.app).isValid) {
                 return INSTALLED_APP_SIGNATURE_CHECKED
             }
             return FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP
@@ -294,7 +291,7 @@ class InstallActivity : AppCompatActivity() {
                 downloadSource
             )
             ia.setText(R.id.fetchedUrlSuccessTextView, finishedText)
-            if (ia.apkCache.isCacheAvailable(updateCheckResult.availableResult)) {
+            if (ia.appCache.isAvailable(ia, updateCheckResult.availableResult)) {
                 return USE_CACHED_DOWNLOADED_APK
             }
             return ENQUEUING_DOWNLOAD
@@ -305,11 +302,13 @@ class InstallActivity : AppCompatActivity() {
             val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
             ia.show(R.id.downloadingFile)
             ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
+            ia.appCache.delete(ia)
             ia.viewModel.downloadId = DownloadManagerUtil.enqueue(
                 downloadManager = ia.downloadManager,
                 context = ia,
                 app = ia.app,
-                availableVersionResult = updateCheckResult.availableResult
+                availableVersionResult = updateCheckResult.availableResult,
+                fileName = ia.appCache.getFileName()
             )
             return DOWNLOAD_IS_ENQUEUED
         }
@@ -344,7 +343,6 @@ class InstallActivity : AppCompatActivity() {
         @MainThread
         suspend fun downloadWasSuccessful(ia: InstallActivity): State {
             val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
-            val downloadId = requireNotNull(ia.viewModel.downloadId)
 
             ia.show(R.id.downloadedFile)
             val app = ia.app
@@ -352,13 +350,13 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
             ia.show(R.id.verifyDownloadFingerprint)
 
-            ia.apkCache.moveDownloadToCache(ia.downloadManager, downloadId)
-            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.apkCache.getCacheFile(), app)
+            ia.appCache.fixFileName(ia)
+            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.appCache.getFile(ia), app)
             ia.fileFingerprint = fingerprint
             return if (fingerprint.isValid) {
                 FINGERPRINT_OF_DOWNLOADED_FILE_OK
             } else {
-                ia.apkCache.deleteCache()
+                ia.appCache.delete(ia)
                 FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
             }
         }
@@ -367,15 +365,15 @@ class InstallActivity : AppCompatActivity() {
         suspend fun useCachedDownloadedApk(ia: InstallActivity): State {
             val app = ia.app
             ia.show(R.id.useCachedDownloadedApk)
-            ia.setText(R.id.useCachedDownloadedApk__path, ia.apkCache.getCacheFile().absolutePath)
+            ia.setText(R.id.useCachedDownloadedApk__path, ia.appCache.getFile(ia).absolutePath)
             ia.show(R.id.verifyDownloadFingerprint)
 
-            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.apkCache.getCacheFile(), app)
+            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.appCache.getFile(ia), app)
             ia.fileFingerprint = fingerprint
             return if (fingerprint.isValid) {
                 FINGERPRINT_OF_DOWNLOADED_FILE_OK
             } else {
-                ia.apkCache.deleteCache()
+                ia.appCache.delete(ia)
                 FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
             }
         }
@@ -392,9 +390,7 @@ class InstallActivity : AppCompatActivity() {
         @MainThread
         fun triggerInstallationProcess(ia: InstallActivity): State {
             ia.show(R.id.installingApplication)
-            val installationFile = ia.apkCache.getCacheFile()
-            require(installationFile.exists()) { "Cached file does not exists" }
-            ia.appInstaller.install(ia, installationFile)
+            ia.appInstaller.install(ia, ia.appCache.getFile(ia))
             return SUCCESS_PAUSE
         }
 
@@ -403,7 +399,6 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.install_activity__retrigger_installation)
             ia.show(R.id.installerSuccess)
-            ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
             return APP_INSTALLATION_HAS_BEEN_REGISTERED
         }
 

@@ -69,6 +69,7 @@
     <string name="install_activity__github_rate_limit_exceeded">Превишено е ограничението на скоростта на GitHub-API. Моля, опитайте изтеглянето отново през следващия час.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта. \n\nПрепоръчително е да премахнете приложението.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта. \n\nПрепоръчително е да премахнете приложението.</string>
+    <string name="install_activity__retrigger_installation__button_title">Повторете инсталирането на приложението</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Отпечатък с SHA-256 от сертификат:</string>
     <string name="install_activity__temporary_network_issue">Възникнал е временен проблем в мрежата. Моля, опитайте отново по-късно.</string>
     <string name="install_activity__too_low_memory_description">Устройството разполага само с %1$d свободни МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>
@@ -82,7 +83,6 @@
     <string name="install_activity_label">Инсталиране</string>
     <string name="install_app">инсталирай приложението</string>
     <string name="install_new_app">Инсталирайте ново приложение</string>
-    <string name="install_activity__retrigger_installation__button_title">Повторете инсталирането на приложението</string>
     <string name="install_same_version_dialog__message">Най-новата версия на това приложение вече е инсталирана. Искате ли да изтеглите и инсталирате отново последната версия?</string>
     <string name="install_same_version_dialog__title">Инсталирана е същата версия</string>
     <string name="installed_app_is_not_verified">Инсталираното приложение е НЕпроверено</string>
@@ -94,6 +94,8 @@
     <string name="main_activity__no_internet_connection">Няма връзка с Мрежата</string>
     <string name="main_activity__subtitle">Обновявайте мрежовите четци от Mozilla</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Повторете опита по-</u>"</string>
+    <string name="manage_storage_activity__delete_button">Изтриване на актуализациите на приложения в кеша.</string>
+    <string name="manage_storage_activity__explanation">FFUpdater кешира вече изтеглените актуализации на приложения и ги съхранява в папката \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nПо този начин се спестява честотна лента, когато дадено приложение не е успешно инсталирано или актуализирано. Освен това кешът е необходим, за да могат изтеглените във фонов режим актуализации да бъдат инсталирани по-късно.\n\nАко решите да изтриете тези актуализации на приложения, може да се наложи да ги изтеглите отново.</string>
     <string name="ok">Добре</string>
     <string name="running_downloads_dialog__message">Мениджърът за изтегляне на системата изтегля други файлове в момента. Искате ли да започнете ново изтегляне, което може да отнеме повече време?</string>
     <string name="running_downloads_dialog__negative">Не, не го изтегляйте</string>

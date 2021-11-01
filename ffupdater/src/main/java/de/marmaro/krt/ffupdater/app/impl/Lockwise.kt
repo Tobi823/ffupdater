@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppDetail
+import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
@@ -13,7 +13,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  * https://www.apkmirror.com/apk/mozilla/firefox-lockwise/
  */
-class Lockwise : BaseAppDetail() {
+class Lockwise : BaseAppWithCachedUpdateCheck() {
     override val packageName = "mozilla.lockbox"
     override val displayTitle = R.string.lockwise__title
     override val displayDescription = R.string.lockwise__description

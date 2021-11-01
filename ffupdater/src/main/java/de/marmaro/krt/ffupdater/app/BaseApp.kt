@@ -1,0 +1,72 @@
+package de.marmaro.krt.ffupdater.app
+
+import android.content.Context
+import androidx.annotation.AnyThread
+import androidx.annotation.MainThread
+import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.download.PackageManagerUtil
+import java.io.File
+
+interface BaseApp {
+    val packageName: String
+    val displayTitle: Int
+    val displayDescription: Int
+    val displayWarning: Int?
+    val displayDownloadSource: Int
+    val displayIcon: Int
+    val minApiLevel: Int
+    val supportedAbis: List<ABI>
+    val signatureHash: String
+
+    @AnyThread
+    fun isInstalled(context: Context): Boolean {
+        return PackageManagerUtil.isAppInstalled(context.packageManager, packageName)
+    }
+
+    @AnyThread
+    fun getInstalledVersion(context: Context): String? {
+        return PackageManagerUtil.getInstalledAppVersionName(context.packageManager, packageName)
+    }
+
+    @AnyThread
+    fun getDisplayInstalledVersion(context: Context): String {
+        return context.getString(R.string.installed_version, getInstalledVersion(context))
+    }
+
+    @AnyThread
+    fun getDisplayAvailableVersion(context: Context, availableVersionResult: AvailableVersionResult): String {
+        return context.getString(R.string.available_version, availableVersionResult.version)
+    }
+
+    @AnyThread
+    fun appInstallationCallback(context: Context, available: AvailableVersionResult) {}
+
+    /**
+     * 2min timeout
+     * Exception will not cause CancellationExceptions
+     * @throws InvalidApiResponseException
+     * @throws NetworkException
+     */
+    @MainThread
+    suspend fun updateCheck(context: Context): UpdateCheckResult
+
+    @MainThread
+    suspend fun isCacheFileUpToDate(
+        context: Context,
+        file: File,
+        available: AvailableVersionResult
+    ): Boolean {
+        return PackageManagerUtil.getPackageArchiveVersionName(
+            context.packageManager,
+            file.absolutePath
+        ) == available.version
+    }
+
+    @AnyThread
+    fun isInstalledVersionUpToDate(context: Context, available: AvailableVersionResult): Boolean {
+        return getInstalledVersion(context) == available.version
+    }
+}

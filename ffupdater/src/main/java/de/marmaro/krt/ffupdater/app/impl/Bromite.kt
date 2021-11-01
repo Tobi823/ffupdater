@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppDetail
+import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
@@ -14,7 +14,7 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://api.github.com/repos/bromite/bromite/releases
  * https://www.apkmirror.com/apk/bromite/bromite/
  */
-class Bromite : BaseAppDetail() {
+class Bromite : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.bromite.bromite"
     override val displayTitle = R.string.bromite__title
     override val displayDescription = R.string.bromite__description

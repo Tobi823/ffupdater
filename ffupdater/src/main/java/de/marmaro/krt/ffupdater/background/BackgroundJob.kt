@@ -11,7 +11,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.download.ApkCache
+import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.FAILED
 import de.marmaro.krt.ffupdater.download.DownloadManagerUtil.DownloadStatus.Status.SUCCESSFUL
@@ -120,10 +120,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      */
     @MainThread
     private suspend fun downloadUpdateInBackground(app: App, downloadManager: DownloadManager) {
-        val apkCache = ApkCache(app, applicationContext)
+        val appCache = AppCache(app)
         val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
         val availableResult = cachedUpdateChecker.availableResult
-        if (apkCache.isCacheAvailable(availableResult)) {
+        if (appCache.isAvailable(applicationContext, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return
         }
@@ -133,20 +133,18 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             downloadManager,
             applicationContext,
             app,
-            availableResult
+            availableResult,
+            appCache.getFileName()
         )
         repeat(60 * 60) {
-            when (DownloadManagerUtil.getStatusAndProgress(downloadManager, downloadId).status) {
-                SUCCESSFUL -> {
-                    apkCache.moveDownloadToCache(downloadManager, downloadId)
-                    return
-                }
-                FAILED -> {
-                    downloadManager.remove(downloadId)
-                    return
-                }
-                else -> delay(1000)
+            val status = DownloadManagerUtil.getStatusAndProgress(downloadManager, downloadId).status
+            if (status == FAILED) {
+                downloadManager.remove(downloadId)
             }
+            if (status == SUCCESSFUL || status == FAILED) {
+                return
+            }
+            delay(1000)
         }
         downloadManager.remove(downloadId)
     }

@@ -5,7 +5,6 @@ import android.app.DownloadManager.*
 import android.content.Context
 import android.database.CursorIndexOutOfBoundsException
 import android.net.Uri
-import android.os.Build.MANUFACTURER
 import android.os.Environment.DIRECTORY_DOWNLOADS
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -25,21 +24,16 @@ object DownloadManagerUtil {
         context: Context,
         app: App,
         availableVersionResult: AvailableVersionResult,
+        fileName: String
     ): Long {
         require(availableVersionResult.downloadUrl.startsWith("https://"))
         val downloadUri = Uri.parse(availableVersionResult.downloadUrl)
         val notificationTitle = "FFUpdater: ${context.getString(app.detail.displayTitle)}"
         val request = Request(downloadUri)
             .setTitle(notificationTitle)
+            .setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName)
             .setNotificationVisibility(Request.VISIBILITY_VISIBLE)
 
-        // For Amazon devices, I have to specify a download folder for APK files or I'll get a
-        // "Permission Denial: reading ... DownloadProvider uri ... requires
-        // android.permission.ACCESS_ALL_DOWNLOADS or grantUriPermission()" exception.
-        if (MANUFACTURER == "Amazon") {
-            val fileName = "${(0..Int.MAX_VALUE).random()}.apk"
-            request.setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName)
-        }
         return downloadManager.enqueue(request)
     }
 
