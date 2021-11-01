@@ -19,8 +19,8 @@ object PackageManagerUtil {
     @MainThread
     suspend fun getPackageArchiveInfo(packageManager: PackageManager, path: String): Signature? {
         return withContext(Dispatchers.IO) {
-            if (DeviceEnvironment.supportsAndroid11()) {
-                //GET_SIGNING_CERTIFICATES does not work on Android 9/10
+            if (DeviceEnvironment.supportsAndroid9()) {
+                // GET_SIGNING_CERTIFICATES does not work on Android 9/10
                 val packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
                 extractSignatureForNewerDevices(packageInfo)
             } else {
@@ -68,15 +68,19 @@ object PackageManagerUtil {
 
     @RequiresApi(Build.VERSION_CODES.P)
     private fun extractSignatureForNewerDevices(packageInfo: PackageInfo?): Signature? {
-        val signingInfo = packageInfo?.signingInfo ?: return null
+        val signingInfo = (packageInfo ?: return null).signingInfo
+        checkNotNull(signingInfo) { "PackageInfo#signingInfo is null" }
         check(!signingInfo.hasMultipleSigners()) { "App ${packageInfo.packageName} has multiple signers" }
-        check(signingInfo.signingCertificateHistory.size == 1) { "App ${packageInfo.packageName} has multiple certificates" }
+        check(signingInfo.signingCertificateHistory.size == 1) {
+            "App ${packageInfo.packageName} has ${signingInfo.signingCertificateHistory.size} certificates"
+        }
         return signingInfo.signingCertificateHistory[0]
     }
 
     private fun extractSignatureForOlderDevices(packageInfo: PackageInfo?): Signature? {
-        val signatures = packageInfo?.signatures ?: return null
-        check(signatures.size == 1) { "App ${packageInfo.packageName} has multiple signatures" }
+        val signatures = (packageInfo ?: return null).signatures
+        checkNotNull(signatures) { "PackageInfo#signatures is null" }
+        check(signatures.size == 1) { "App ${packageInfo.packageName} has ${signatures.size} signatures" }
         return signatures[0]
     }
 }
