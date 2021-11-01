@@ -12,7 +12,7 @@ class AppCache(val app: App) {
     }
 
     fun getFile(context: Context): File {
-        return File(getDownloadFolder(context), getFileName())
+        return File(getCacheFolder(context), getFileName())
     }
 
     fun fixFileName(context: Context) {
@@ -21,7 +21,7 @@ class AppCache(val app: App) {
         }
 
         // sometimes the DownloadManager forgets to add the file suffix "apk" to the downloaded file: notabug#79
-        val fileWithoutSuffix = File(getDownloadFolder(context), app.detail.packageName)
+        val fileWithoutSuffix = File(getCacheFolder(context), app.detail.packageName)
         if (fileWithoutSuffix.exists()) {
             val normalFile = getFile(context)
             check(!normalFile.exists()) { "Normal cache file should not exists." }
@@ -38,7 +38,7 @@ class AppCache(val app: App) {
         return false
     }
 
-    private fun getDownloadFolder(context: Context): File {
+    private fun getCacheFolder(context: Context): File {
         val downloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
         return checkNotNull(downloadFolder) { "External download folder should exists." }
     }
@@ -50,7 +50,7 @@ class AppCache(val app: App) {
      * And all files for an app mus be deleted.
      */
     fun delete(context: Context) {
-        val allFiles = getDownloadFolder(context).listFiles()
+        val allFiles = getCacheFolder(context).listFiles()
         checkNotNull(allFiles) { "Array of files in download folder should exists." }
         val appFiles = allFiles.filter { it.name.startsWith(app.detail.packageName) }
         appFiles.forEach {

@@ -138,15 +138,16 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         )
         repeat(60 * 60) {
             val status = DownloadManagerUtil.getStatusAndProgress(downloadManager, downloadId).status
-            if (status == FAILED) {
-                downloadManager.remove(downloadId)
-            }
-            if (status == SUCCESSFUL || status == FAILED) {
+            if (status == SUCCESSFUL) {
                 return
+            }
+            if (status == FAILED) {
+                return@repeat
             }
             delay(1000)
         }
         downloadManager.remove(downloadId)
+        appCache.delete(applicationContext)
     }
 
     private fun updateLastBackgroundCheckTimestamp() {
