@@ -50,6 +50,8 @@
     <string name="iceraven__title">Przeglądarka Iceraven</string>
     <string name="infobox">Jest to aplikacja aktualizująca wiele przeglądarek Mozilli. Kliknij przycisk plusa, aby zainstalować, i przycisk strzałki w dół, aby zaktualizować daną przeglądarkę. Możesz sprawdzić nowe aktualizacje, przesuwając palcem w dół lub otwierając ponownie aplikację. Domyślnie aplikacja będzie regularnie sprawdzać aktualizacje w tle. Dołożyłem wszelkich starań, aby zabezpieczyć proces instalacji/aktualizacji - nie krępuj się sprawdzić go dwukrotnie lub poprawić poprzez stworzenie pull-request. \n\nOstatnie udane sprawdzanie aktualizacji: %1$s</string>
     <string name="information_about_the_app">informacje o aplikacji</string>
+    <string name="install_activity__delete_cache_button_text">wyczyść pamięć podręczną</string>
+    <string name="install_activity__delete_cache_explanation">Jeśli uważasz, że FFUpdater zbuforował błędną aktualizację aplikacji, kliknij przycisk \"wyczyść pamięć podręczną\", aby usunąć pamięć podręczną dla tej aplikacji.</string>
     <string name="install_activity__download_app_is_disabled">Niezbędna aplikacja systemowa \"Menedżer pobierania\" jest wyłączona. Proszę włączyć ją ponownie.</string>
     <string name="install_activity__download_application_from_with_status">Pobierz aplikację (%1$s)</string>
     <string name="install_activity__download_failed">Pobieranie nie powiodło się</string>
@@ -69,6 +71,8 @@
     <string name="install_activity__github_rate_limit_exceeded">Limit prędkości GitHub-API został przekroczony. Proszę spróbować pobrać ponownie w ciągu następnej godziny.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Albo atakujący zastąpił poprawny plik innym, albo narzędzie do sprawdzania certyfikatów już nie działa. Możesz dwukrotnie sprawdzić odcisk palca certyfikatu na apkmirror.com lub możesz utworzyć zgłoszenie na https://notabug.org/Tobiwan/ffupdater, aby poinformować mnie o błędzie.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Albo została zainstalowana uszkodzona aplikacja, albo narzędzie do sprawdzania certyfikatów już nie działa. Możesz dwukrotnie sprawdzić odcisk palca certyfikatu na apkmirror.com lub możesz utworzyć zgłoszenie na https://notabug.org/Tobiwan/ffupdater, aby poinformować mnie o błędzie. \n\nZalecam odinstalowanie aplikacji.</string>
+    <string name="install_activity__open_cache_explanation">Możesz otworzyć folder pamięci podręcznej, aby skopiować plik APK do miejsca z większą ilością wolnego miejsca.</string>
+    <string name="install_activity__open_cache_folder_button_text">otwórz folder pamięci podręcznej</string>
     <string name="install_activity__retrigger_installation__button_title">Ponów próbę instalacji aplikacji</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Odcisk palca certyfikatu SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Wystąpił tymczasowy problem z siecią. Proszę spróbować ponownie później.</string>
@@ -142,8 +146,4 @@
     <string name="update_notification__channel_name">Powiadomienie o aktualizacji "%1$s"</string>
     <string name="update_notification__text">Kliknij aby zainstalować aktualizację</string>
     <string name="update_notification__title">Dostępna jest aktualizacja dla "%1$s"</string>
-    <string name="install_activity__delete_cache_explanation">Jeśli uważasz, że FFUpdater zbuforował błędną aktualizację aplikacji, kliknij przycisk \"wyczyść pamięć podręczną\", aby usunąć pamięć podręczną dla tej aplikacji.</string>
-    <string name="install_activity__delete_cache_button_text">wyczyść pamięć podręczną</string>
-    <string name="install_activity__open_cache_folder_button_text">otwórz folder pamięci podręcznej</string>
-    <string name="install_activity__open_cache_explanation">Możesz otworzyć folder pamięci podręcznej, aby skopiować plik APK do miejsca z większą ilością wolnego miejsca.</string>
 </resources>

@@ -50,6 +50,8 @@
     <string name="iceraven__title">Браузър Iceraven</string>
     <string name="infobox">Това приложение е предназначено за обновяване на мрежовите четци на Mozilla. Докоснете бутона със знак плюс за инсталиране или стрелка надолу за обновяване. Можете да правите проверка за нови издания като дръпнете списъка надолу или повторно отворите приложението. По подразбиране приложението периодично, във фонов режим, също прави такава проверка. Направил съм всичко по силите си да направя процеса на инсталиране/обновяване максимално сигурен, но се чувствайте свободни да го проверите или да го подобрите чрез изпращане на заявка за сливане. \n\nПоследна успешна проверка на фоновата актуализация: %1$s</string>
     <string name="information_about_the_app">сведения за приложението</string>
+    <string name="install_activity__delete_cache_button_text">изчистване на кеша</string>
+    <string name="install_activity__delete_cache_explanation">Ако смятате, че FFUpdater е съхранил в кеша си дефектна актуализация на приложение, щракнете върху бутона \"Изчистване на кеша\", за да изтриете кеша на това приложение.</string>
     <string name="install_activity__download_app_is_disabled">Необходимото системно приложение \"Мениджър за изтегляне\" е деактивирано. Моля, разрешете го отново.</string>
     <string name="install_activity__download_application_from_with_status">Изтегляне на приложение (%1$s)</string>
     <string name="install_activity__download_failed">Грешка при изтегляне</string>
@@ -69,6 +71,8 @@
     <string name="install_activity__github_rate_limit_exceeded">Превишено е ограничението на скоростта на GitHub-API. Моля, опитайте изтеглянето отново през следващия час.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта. \n\nПрепоръчително е да премахнете приложението.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификата не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да създадете доклад на https://notabug.org/Tobiwan/ffupdater за дефекта. \n\nПрепоръчително е да премахнете приложението.</string>
+    <string name="install_activity__open_cache_explanation">Можете да отворите папката с кеш, за да копирате APK файла на място с повече свободно място за съхранение.</string>
+    <string name="install_activity__open_cache_folder_button_text">отворете папката с кеш</string>
     <string name="install_activity__retrigger_installation__button_title">Повторете инсталирането на приложението</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Отпечатък с SHA-256 от сертификат:</string>
     <string name="install_activity__temporary_network_issue">Възникнал е временен проблем в мрежата. Моля, опитайте отново по-късно.</string>
@@ -142,8 +146,4 @@
     <string name="update_notification__channel_name">Известие за издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
-    <string name="install_activity__delete_cache_explanation">Ако смятате, че FFUpdater е съхранил в кеша си дефектна актуализация на приложение, щракнете върху бутона \"Изчистване на кеша\", за да изтриете кеша на това приложение.</string>
-    <string name="install_activity__delete_cache_button_text">изчистване на кеша</string>
-    <string name="install_activity__open_cache_folder_button_text">отворете папката с кеш</string>
-    <string name="install_activity__open_cache_explanation">Можете да отворите папката с кеш, за да копирате APK файла на място с повече свободно място за съхранение.</string>
 </resources>

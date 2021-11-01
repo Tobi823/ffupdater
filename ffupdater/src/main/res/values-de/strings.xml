@@ -50,6 +50,8 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern. \n\nLetzte erfolgreiche Hintergrundaktualisierungsprüfung: %1$s</string>
     <string name="information_about_the_app">Information über die Applikation</string>
+    <string name="install_activity__delete_cache_button_text">Cache leeren</string>
+    <string name="install_activity__delete_cache_explanation">"Wenn Sie glauben, dass FFUpdater ein fehlerhaftes App-Update zwischengespeichert hat, klicken Sie auf den Button \"Cache löschen\", um den Cache für diese App zu löschen."</string>
     <string name="install_activity__download_app_is_disabled">Die notwendige System-App \"Download Manager\" ist deaktiviert. Bitte aktivieren Sie sie wieder.</string>
     <string name="install_activity__download_application_from_with_status">Lade Anwendung herunter (%1$s)</string>
     <string name="install_activity__download_failed">Download schlug fehl</string>
@@ -69,6 +71,8 @@
     <string name="install_activity__github_rate_limit_exceeded">Das Ratenlimit der GitHub-API ist überschritten. Bitte versuchen Sie den Download in der nächsten Stunde erneut.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Entweder hat ein Angreifer den korrekten Download durch einen manipulierten ersetzt, oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Entweder wurde eine manipulierte Anwendung installiert oder der Zertifikatsprüfer funktioniert nicht mehr. Du kannst den Fingerabdruck des Zertifikats auf apkmirror.com überprüfen oder du kannst ein Issue auf https://notabug.org/Tobiwan/ffupdater erstellen, um mich über den Fehler zu informieren.</string>
+    <string name="install_activity__open_cache_explanation">Sie können den Cache-Ordner öffnen, um die APK-Datei an einen Ort mit mehr freiem Speicherplatz zu kopieren.</string>
+    <string name="install_activity__open_cache_folder_button_text">Cache-Ordner öffnen</string>
     <string name="install_activity__retrigger_installation__button_title">App-Installation wiederholen</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 Fingerabdruck des Zertifikats:</string>
     <string name="install_activity__temporary_network_issue">Es ist ein vorübergehendes Netzwerkproblem aufgetreten. Bitte versuchen Sie es später erneut.</string>
@@ -142,8 +146,4 @@
     <string name="update_notification__channel_name">Update-Benachrichtigung für %1$s</string>
     <string name="update_notification__text">Klicken um Update zu installieren</string>
     <string name="update_notification__title">"%1$s" kann aktualisiert werden</string>
-    <string name="install_activity__delete_cache_explanation">"Wenn Sie glauben, dass FFUpdater ein fehlerhaftes App-Update zwischengespeichert hat, klicken Sie auf den Button \"Cache löschen\", um den Cache für diese App zu löschen."</string>
-    <string name="install_activity__delete_cache_button_text">Cache leeren</string>
-    <string name="install_activity__open_cache_folder_button_text">Cache-Ordner öffnen</string>
-    <string name="install_activity__open_cache_explanation">Sie können den Cache-Ordner öffnen, um die APK-Datei an einen Ort mit mehr freiem Speicherplatz zu kopieren.</string>
 </resources>

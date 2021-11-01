@@ -50,6 +50,8 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">Este App instala e atualiza vários navegadores de pesquisa da Internet. Clique no botão + para instalar ou no botão de "seta-para-baixo" para atualizar. Você pode verificar por novas atualizações, deslizando o dedo para baixo ou reabrindo este App. Por padrão, ele verificará regularmente por atualizações em segundo plano. Fiz o melhor para garantir a segurança do processo de instalação/atualização - fique a vontade para verificá-lo ou melhorá-lo, criando um PR. \n\nÚltima verificação em segundo plano concluída em: %1$s</string>
     <string name="information_about_the_app">detalhes sobre navegador</string>
+    <string name="install_activity__delete_cache_button_text">limpar o cache</string>
+    <string name="install_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização de aplicativo defeituosa, clique no botão \"limpar cache\" para excluir o cache deste aplicativo.</string>
     <string name="install_activity__download_app_is_disabled">O aplicativo do sistema necessário \"Download Manager\" está desativado. Por favor, ative-o novamente.</string>
     <string name="install_activity__download_application_from_with_status">Baixar o (%1$s)</string>
     <string name="install_activity__download_failed">Download falhou</string>
@@ -69,6 +71,8 @@
     <string name="install_activity__github_rate_limit_exceeded">O limite da taxa GitHub-API é excedido. Por favor, tente o download novamente na próxima hora.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Ou um hacker substituiu o arquivo original por um adulterado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado em apkmirror.com ou pode criar um Issue em https://notabug.org/Tobiwan/ffupdater para informar sobre o bug.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Ou um navegador modificado foi instalado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado em apkmirror.com ou pode criar um Issue em https://notabug.org/Tobiwan/ffupdater para informar sobre o bug. \n\nRecomendo desinstalar o navegador.</string>
+    <string name="install_activity__open_cache_explanation">Você pode abrir a pasta do cache para copiar o arquivo APK para um local com mais armazenamento gratuito.</string>
+    <string name="install_activity__open_cache_folder_button_text">pasta de cache aberta</string>
     <string name="install_activity__retrigger_installation__button_title">Instalação de nova aplicação</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Certificado da impressão digital SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Ocorreu um problema temporário na rede. Por favor, tente novamente mais tarde.</string>
@@ -142,8 +146,4 @@
     <string name="update_notification__channel_name">"%1$s" notificações de atualização</string>
     <string name="update_notification__text">Clique para instalar a atualização</string>
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
-    <string name="install_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização de aplicativo defeituosa, clique no botão \"limpar cache\" para excluir o cache deste aplicativo.</string>
-    <string name="install_activity__delete_cache_button_text">limpar o cache</string>
-    <string name="install_activity__open_cache_folder_button_text">pasta de cache aberta</string>
-    <string name="install_activity__open_cache_explanation">Você pode abrir a pasta do cache para copiar o arquivo APK para um local com mais armazenamento gratuito.</string>
 </resources>

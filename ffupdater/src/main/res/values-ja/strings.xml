@@ -50,6 +50,8 @@
     <string name="iceraven__title">Iceravenブラウザ</string>
     <string name="infobox">このアプリはMozillaの複数のブラウザに対応したアップデータです。プラスボタンでインストール、下矢印ボタンでアップデートを行えます。デフォルトでは、バックグラウンドで定期的にアップデートをチェックします。インストールとアップデートのプロセスを安全にするために最善を尽くしました。ご自由にこのアプリのソースコードを確認したり、プルリクエストを作成して改善してください。%1$s</string>
     <string name="information_about_the_app">このアプリについて</string>
+    <string name="install_activity__delete_cache_button_text">キャッシュクリア</string>
+    <string name="install_activity__delete_cache_explanation">FFUpdaterが欠陥のあるアプリのアップデートをキャッシュしたと思われる場合は、「clear cache」ボタンをクリックして、このアプリのキャッシュを削除してください。</string>
     <string name="install_activity__download_app_is_disabled">必要なシステムアプリ「Download Manager」が無効になっています。お手数ですが、再度有効にしてください。</string>
     <string name="install_activity__download_application_from_with_status">アプリをダウンロード (%1$s)</string>
     <string name="install_activity__download_failed">ダウンロード失敗</string>
@@ -69,6 +71,8 @@
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API の速度制限を超えました。1時間以内にもう一度ダウンロードをお試しください。</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">攻撃者がアプリを改ざんされたものに置き換えたか、証明書チェッカーが正しく機能しなくなっています。 apkmirror.comで証明書のフィンガープリントを再確認するか、https://notabug.org/Tobiwan/ffupdater でIssueを作成してバグについて報告してください。</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">改ざんされたアプリケーションがインストールされているか、証明書チェッカーが正しく機能しなくなっています。apkmirror.comで証明書のフィンガープリントを再確認するか、https://notabug.org/Tobiwan/ffupdater でIssueを作成してバグについて報告してください。\n\nインストールしたアプリのアンインストールを推奨します</string>
+    <string name="install_activity__open_cache_explanation">キャッシュフォルダを開いて、APKファイルをより空きストレージの多い場所にコピーすることができます。</string>
+    <string name="install_activity__open_cache_folder_button_text">キャッシュフォルダを開く</string>
     <string name="install_activity__retrigger_installation__button_title">アプリのインストールを再試行する</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256証明書フィンガープリント:</string>
     <string name="install_activity__temporary_network_issue">一時的なネットワークの問題が発生しました。後で再試行してください。</string>
@@ -142,8 +146,4 @@
     <string name="update_notification__channel_name">"%1$s" アップデート通知</string>
     <string name="update_notification__text">タップしてアップデートをインストール</string>
     <string name="update_notification__title">"%1$s" の更新が利用可能です</string>
-    <string name="install_activity__delete_cache_explanation">FFUpdaterが欠陥のあるアプリのアップデートをキャッシュしたと思われる場合は、「clear cache」ボタンをクリックして、このアプリのキャッシュを削除してください。</string>
-    <string name="install_activity__delete_cache_button_text">キャッシュクリア</string>
-    <string name="install_activity__open_cache_folder_button_text">キャッシュフォルダを開く</string>
-    <string name="install_activity__open_cache_explanation">キャッシュフォルダを開いて、APKファイルをより空きストレージの多い場所にコピーすることができます。</string>
 </resources>

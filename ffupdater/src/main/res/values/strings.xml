@@ -52,6 +52,8 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">This is an updater for multiple browsers from Mozilla. Click the plus-button for installation and the down-arrow-button for updating. You can check for new updates by down-swiping or reopening the app. By default the app will check regularly for updates in the background. I did my best to secure the installation/updating process - feel free to double-check it or improve it by creating a pull-request. \n\nLast successful background update check: %1$s</string>
     <string name="information_about_the_app">information about the app</string>
+    <string name="install_activity__delete_cache_button_text">clear cache</string>
+    <string name="install_activity__delete_cache_explanation">If you think that FFUpdater has cached a faulty app update, click the \"clear cache\" button to delete the cache for this app.</string>
     <string name="install_activity__download_app_is_disabled">The necessary system app \"Download Manager\" is disabled. Please enable it again.</string>
     <string name="install_activity__download_application_from_with_status">Download application (%1$s)</string>
     <string name="install_activity__download_failed">Download failed</string>
@@ -71,6 +73,8 @@
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API rate limit is exceeded. Please try the download again in the next hour.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Either an attacker has replaced the correct download with a tampered one or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug. \n\nI recommend you to uninstall the application.</string>
+    <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage.</string>
+    <string name="install_activity__open_cache_folder_button_text">open cache folder</string>
     <string name="install_activity__retrigger_installation__button_title">Retry App Installation</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
     <string name="install_activity__temporary_network_issue">A temporary network issue occurred. Please retry later.</string>
@@ -145,8 +149,4 @@
     <string name="update_notification__channel_name">"%1$s" update notification</string>
     <string name="update_notification__text">Click to install update</string>
     <string name="update_notification__title">Update for "%1$s" available</string>
-    <string name="install_activity__delete_cache_explanation">If you think that FFUpdater has cached a faulty app update, click the \"clear cache\" button to delete the cache for this app.</string>
-    <string name="install_activity__delete_cache_button_text">clear cache</string>
-    <string name="install_activity__open_cache_folder_button_text">open cache folder</string>
-    <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage.</string>
 </resources>

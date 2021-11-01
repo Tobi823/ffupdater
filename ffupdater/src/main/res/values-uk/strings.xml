@@ -50,6 +50,8 @@
     <string name="iceraven__title">Ицеравен Браузер</string>
     <string name="infobox">Це оновлення для декількох браузерів Mozilla. Клацніть кнопку плюс, щоб встановити, і кнопку зі стрілкою вниз, щоб оновити веб-переглядач. Ви можете перевірити наявність нових оновлень, провевши пальцем вниз або повторно відкривши програму. За замовчуванням додаток регулярно перевіряє наявність оновлень у фоновому режимі. Я зробив усе можливе, щоб забезпечити процес встановлення / оновлення - сміливо перевіряйте його або вдосконалюйте його, якщо це потрібно. \n\nОстання успішна перевірка фонового оновлення: %1$s</string>
     <string name="information_about_the_app">інформація про додаток</string>
+    <string name="install_activity__delete_cache_button_text">очистити кеш</string>
+    <string name="install_activity__delete_cache_explanation">"Якщо ви вважаєте, що FFUpdater кешував несправне оновлення програми, натисніть кнопку «очистити кеш», щоб видалити кеш цієї програми."</string>
     <string name="install_activity__download_app_is_disabled">Необхідний системний додаток \"Диспетчер завантажень\" вимкнено. Увімкніть його знову.</string>
     <string name="install_activity__download_application_from_with_status">Завантажити програму (%1$s)</string>
     <string name="install_activity__download_failed">Не вдалося завантажити</string>
@@ -69,6 +71,8 @@
     <string name="install_activity__github_rate_limit_exceeded">Перевищено ліміт швидкості GitHub-API. Спробуйте завантажити знову протягом наступної години.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Або зловмисник замінив правильне завантаження на підроблене, або перевірка сертифікатів більше не працює. Ви можете двічі перевірити відбиток сертифіката на apkmirror.com або створити проблему на https://notabug.org/Tobiwan/ffupdater, щоб повідомити про помилку.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Або підроблена програма встановлена, або перевірка сертифікатів більше не працює. Ви можете двічі перевірити відбиток сертифіката на apkmirror.com або створити проблему на https://notabug.org/Tobiwan/ffupdater, щоб повідомити про помилку.  Рекомендую видалити програму.</string>
+    <string name="install_activity__open_cache_explanation">Ви можете відкрити папку кешу, щоб скопіювати файл APK до місця з більшою кількістю вільного місця.</string>
+    <string name="install_activity__open_cache_folder_button_text">відкрити папку кешу</string>
     <string name="install_activity__retrigger_installation__button_title">Повторіть установку програми</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Відбиток сертифіката SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Виникла тимчасова проблема з мережею. Повторіть спробу пізніше.</string>
@@ -142,8 +146,4 @@
     <string name="update_notification__channel_name">Повідомлення про оновлення %1$s</string>
     <string name="update_notification__text">Клацніть, щоб встановити оновлення</string>
     <string name="update_notification__title">Обновление для "%1$s" доступно</string>
-    <string name="install_activity__delete_cache_explanation">"Якщо ви вважаєте, що FFUpdater кешував несправне оновлення програми, натисніть кнопку «очистити кеш», щоб видалити кеш цієї програми."</string>
-    <string name="install_activity__delete_cache_button_text">очистити кеш</string>
-    <string name="install_activity__open_cache_folder_button_text">відкрити папку кешу</string>
-    <string name="install_activity__open_cache_explanation">Ви можете відкрити папку кешу, щоб скопіювати файл APK до місця з більшою кількістю вільного місця.</string>
 </resources>

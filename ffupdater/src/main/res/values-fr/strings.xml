@@ -50,6 +50,8 @@
     <string name="iceraven__title">Navigateur Iceraven</string>
     <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait. \n\nDernière vérification réussie de la mise à jour des antécédents: %1$s</string>
     <string name="information_about_the_app">informations sur l\'application</string>
+    <string name="install_activity__delete_cache_button_text">vider le cache</string>
+    <string name="install_activity__delete_cache_explanation">Si vous pensez que FFUpdater a mis en cache une mise à jour d\'application défectueuse, cliquez sur le bouton \"Effacer le cache\" pour supprimer le cache de cette application.</string>
     <string name="install_activity__download_app_is_disabled">L\'application système nécessaire \"Download Manager\" est désactivée. Veuillez la réactiver.</string>
     <string name="install_activity__download_application_from_with_status">Télécharger l\'application (%1$s)</string>
     <string name="install_activity__download_failed">Echec du téléchargement</string>
@@ -69,6 +71,8 @@
     <string name="install_activity__github_rate_limit_exceeded">La limite de débit de GitHub-API est dépassée. Veuillez réessayer le téléchargement dans l\'heure qui suit.</string>
     <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Soit un pirate a remplacé le téléchargement correct par un téléchargement altéré, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez vérifier l\'empreinte digitale du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Soit une application falsifiée a été installée, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez revérifier l\'empreinte du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
+    <string name="install_activity__open_cache_explanation">Vous pouvez ouvrir le dossier du cache pour copier le fichier APK à un endroit où il y a plus d\'espace libre.</string>
+    <string name="install_activity__open_cache_folder_button_text">ouvrir le dossier du cache</string>
     <string name="install_activity__retrigger_installation__button_title">Réessayer l\'installation de l\'application</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Un problème de réseau temporaire s\'est produit. Veuillez réessayer plus tard.</string>
@@ -142,8 +146,4 @@
     <string name="update_notification__channel_name">Notification de mise à jour de %1$s</string>
     <string name="update_notification__text">Cliquez pour installer la mise à jour</string>
     <string name="update_notification__title">Mise à jour pour "%1$s" disponible</string>
-    <string name="install_activity__delete_cache_explanation">Si vous pensez que FFUpdater a mis en cache une mise à jour d\'application défectueuse, cliquez sur le bouton \"Effacer le cache\" pour supprimer le cache de cette application.</string>
-    <string name="install_activity__delete_cache_button_text">vider le cache</string>
-    <string name="install_activity__open_cache_folder_button_text">ouvrir le dossier du cache</string>
-    <string name="install_activity__open_cache_explanation">Vous pouvez ouvrir le dossier du cache pour copier le fichier APK à un endroit où il y a plus d\'espace libre.</string>
 </resources>
