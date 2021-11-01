@@ -19,7 +19,8 @@ object PackageManagerUtil {
     @MainThread
     suspend fun getPackageArchiveInfo(packageManager: PackageManager, path: String): Signature? {
         return withContext(Dispatchers.IO) {
-            if (DeviceEnvironment.supportsAndroid9()) {
+            if (DeviceEnvironment.supportsAndroid11()) {
+                //GET_SIGNING_CERTIFICATES does not work on Android 9/10
                 val packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
                 extractSignatureForNewerDevices(packageInfo)
             } else {
