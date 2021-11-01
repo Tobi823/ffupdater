@@ -389,6 +389,38 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/install_activity__delete_cache"
+            style="@style/DownloadActivitySegment"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/DefaultTextView"
+                android:text="@string/install_activity__delete_cache_explanation" />
+
+            <Button
+                android:id="@+id/install_activity__delete_cache_button"
+                style="@style/DefaultButton"
+                android:text="@string/install_activity__delete_cache_button_text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/install_activity__open_cache_folder"
+            style="@style/DownloadActivitySegment"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/DefaultTextView"
+                android:text="@string/install_activity__open_cache_explanation" />
+
+            <Button
+                android:id="@+id/install_activity__open_cache_folder_button"
+                style="@style/DefaultButton"
+                android:text="@string/install_activity__open_cache_folder_button_text" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

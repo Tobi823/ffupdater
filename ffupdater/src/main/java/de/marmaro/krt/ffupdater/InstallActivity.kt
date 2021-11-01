@@ -4,10 +4,12 @@ import android.app.DownloadManager
 import android.app.DownloadManager.*
 import android.content.*
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.MainThread
@@ -98,6 +100,17 @@ class InstallActivity : AppCompatActivity() {
         appCache = AppCache(app)
         findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
             restartStateMachine(TRIGGER_INSTALLATION_PROCESS)
+        }
+        findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
+            appCache.delete(this)
+            hide(R.id.install_activity__delete_cache)
+        }
+        findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            val parentFolder = appCache.getFile(this).parentFile ?: return@setOnClickListener
+            val uri = Uri.parse("file://${parentFolder.absolutePath}")
+            intent.setDataAndType(uri, "resource/folder")
+            startActivity(Intent.createChooser(intent, "Open folder"))
         }
 
         //make sure that the ViewModel is correct for the current app
@@ -422,6 +435,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint.hexString)
             val available = updateCheckResult.availableResult
             ia.app.detail.appInstallationCallback(ia, available)
+            deleteDownloadedCacheFile(ia)
             return SUCCESS_STOP
         }
 
@@ -456,7 +470,7 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.downloadFileFailed)
             ia.setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)
             ia.show(R.id.installerFailed)
-            ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
+            deleteDownloadedCacheFile(ia)
             return ERROR_STOP
         }
 
@@ -467,7 +481,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.fingerprintDownloadBadHashActual, ia.fileFingerprint.hexString)
             ia.setText(R.id.fingerprintDownloadBadHashExpected, ia.app.detail.signatureHash)
             ia.show(R.id.installerFailed)
-            ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
+            deleteDownloadedCacheFile(ia)
             return ERROR_STOP
         }
 
@@ -476,6 +490,8 @@ class InstallActivity : AppCompatActivity() {
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.install_activity__retrigger_installation)
             ia.show(R.id.installerFailed)
+            ia.show(R.id.install_activity__delete_cache)
+            ia.show(R.id.install_activity__open_cache_folder)
             var error = ia.appInstallationFailedErrorMessage
             if (error != null) {
                 if (error.contains("INSTALL_FAILED_INTERNAL_ERROR") &&
@@ -487,7 +503,6 @@ class InstallActivity : AppCompatActivity() {
                 }
                 ia.setText(R.id.installerFailedReason, error)
             }
-            ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
             return ERROR_STOP
         }
 
@@ -496,7 +511,7 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.fingerprintInstalledBad)
             ia.setText(R.id.fingerprintInstalledBadHashActual, ia.appFingerprint.hexString)
             ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app.detail.signatureHash)
-            ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
+            deleteDownloadedCacheFile(ia)
             return ERROR_STOP
         }
 
@@ -517,6 +532,13 @@ class InstallActivity : AppCompatActivity() {
                     }
             }
             return ERROR_STOP
+        }
+
+        //===============================================
+
+        private fun deleteDownloadedCacheFile(ia: InstallActivity) {
+            ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
+            ia.appCache.delete(ia)
         }
     }
 }

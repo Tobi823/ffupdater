@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater
 
 import android.content.Context
 import android.os.Environment
+import android.util.Log
 import androidx.preference.PreferenceManager
 
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
@@ -18,6 +19,7 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
     }
 
     private fun deleteOldCacheData(context: Context) {
+        Log.i(LOG_TAG, "Delete old data from cache.")
         context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
             ?.listFiles()
             ?.forEach { it.delete() }
@@ -28,5 +30,6 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
     companion object {
         const val FFUPDATER_VERSION_CODE = "migrator_ffupdater_version_code"
+        const val LOG_TAG = "Migrator"
     }
 }
