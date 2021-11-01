@@ -145,8 +145,8 @@
     <string name="update_notification__channel_name">"%1$s" update notification</string>
     <string name="update_notification__text">Click to install update</string>
     <string name="update_notification__title">Update for "%1$s" available</string>
-    <string name="install_activity__delete_cache_explanation">If you think that FFUpdater has cached a faulty app update, click the \'clear cache\' button to delete the cache for this app.</string>
-    <string name="install_activity__delete_cache_button_text">Clear Cache</string>
-    <string name="install_activity__open_cache_folder_button_text">Open cache folder</string>
-    <string name="install_activity__open_cache_explanation">Or you can open the cache folder to copy the APK file to a place with more free storage.</string>
+    <string name="install_activity__delete_cache_explanation">If you think that FFUpdater has cached a faulty app update, click the \"clear cache\" button to delete the cache for this app.</string>
+    <string name="install_activity__delete_cache_button_text">clear cache</string>
+    <string name="install_activity__open_cache_folder_button_text">open cache folder</string>
+    <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage.</string>
 </resources>

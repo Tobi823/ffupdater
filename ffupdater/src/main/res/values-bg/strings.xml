@@ -142,4 +142,8 @@
     <string name="update_notification__channel_name">Известие за издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
+    <string name="install_activity__delete_cache_explanation">Ако смятате, че FFUpdater е съхранил в кеша си дефектна актуализация на приложение, щракнете върху бутона \"Изчистване на кеша\", за да изтриете кеша на това приложение.</string>
+    <string name="install_activity__delete_cache_button_text">изчистване на кеша</string>
+    <string name="install_activity__open_cache_folder_button_text">отворете папката с кеш</string>
+    <string name="install_activity__open_cache_explanation">Можете да отворите папката с кеш, за да копирате APK файла на място с повече свободно място за съхранение.</string>
 </resources>

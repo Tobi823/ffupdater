@@ -142,4 +142,8 @@
     <string name="update_notification__channel_name">Powiadomienie o aktualizacji "%1$s"</string>
     <string name="update_notification__text">Kliknij aby zainstalować aktualizację</string>
     <string name="update_notification__title">Dostępna jest aktualizacja dla "%1$s"</string>
+    <string name="install_activity__delete_cache_explanation">Jeśli uważasz, że FFUpdater zbuforował błędną aktualizację aplikacji, kliknij przycisk \"wyczyść pamięć podręczną\", aby usunąć pamięć podręczną dla tej aplikacji.</string>
+    <string name="install_activity__delete_cache_button_text">wyczyść pamięć podręczną</string>
+    <string name="install_activity__open_cache_folder_button_text">otwórz folder pamięci podręcznej</string>
+    <string name="install_activity__open_cache_explanation">Możesz otworzyć folder pamięci podręcznej, aby skopiować plik APK do miejsca z większą ilością wolnego miejsca.</string>
 </resources>

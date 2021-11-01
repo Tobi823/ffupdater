@@ -142,4 +142,8 @@
     <string name="update_notification__channel_name">"%1$s" アップデート通知</string>
     <string name="update_notification__text">タップしてアップデートをインストール</string>
     <string name="update_notification__title">"%1$s" の更新が利用可能です</string>
+    <string name="install_activity__delete_cache_explanation">FFUpdaterが欠陥のあるアプリのアップデートをキャッシュしたと思われる場合は、「clear cache」ボタンをクリックして、このアプリのキャッシュを削除してください。</string>
+    <string name="install_activity__delete_cache_button_text">キャッシュクリア</string>
+    <string name="install_activity__open_cache_folder_button_text">キャッシュフォルダを開く</string>
+    <string name="install_activity__open_cache_explanation">キャッシュフォルダを開いて、APKファイルをより空きストレージの多い場所にコピーすることができます。</string>
 </resources>

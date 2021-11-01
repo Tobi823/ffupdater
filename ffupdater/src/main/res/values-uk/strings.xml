@@ -142,4 +142,8 @@
     <string name="update_notification__channel_name">Повідомлення про оновлення %1$s</string>
     <string name="update_notification__text">Клацніть, щоб встановити оновлення</string>
     <string name="update_notification__title">Обновление для "%1$s" доступно</string>
+    <string name="install_activity__delete_cache_explanation">"Якщо ви вважаєте, що FFUpdater кешував несправне оновлення програми, натисніть кнопку «очистити кеш», щоб видалити кеш цієї програми."</string>
+    <string name="install_activity__delete_cache_button_text">очистити кеш</string>
+    <string name="install_activity__open_cache_folder_button_text">відкрити папку кешу</string>
+    <string name="install_activity__open_cache_explanation">Ви можете відкрити папку кешу, щоб скопіювати файл APK до місця з більшою кількістю вільного місця.</string>
 </resources>

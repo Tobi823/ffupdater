@@ -142,4 +142,8 @@
     <string name="update_notification__channel_name">"%1$s" notificações de atualização</string>
     <string name="update_notification__text">Clique para instalar a atualização</string>
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
+    <string name="install_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização de aplicativo defeituosa, clique no botão \"limpar cache\" para excluir o cache deste aplicativo.</string>
+    <string name="install_activity__delete_cache_button_text">limpar o cache</string>
+    <string name="install_activity__open_cache_folder_button_text">pasta de cache aberta</string>
+    <string name="install_activity__open_cache_explanation">Você pode abrir a pasta do cache para copiar o arquivo APK para um local com mais armazenamento gratuito.</string>
 </resources>

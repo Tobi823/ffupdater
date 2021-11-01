@@ -142,4 +142,8 @@
     <string name="update_notification__channel_name">Уведомление об обновлении %1$s</string>
     <string name="update_notification__text">Нажмите, чтобы установить обновление</string>
     <string name="update_notification__title">Доступно обновление для "%1$s"</string>
+    <string name="install_activity__delete_cache_explanation">Если вы считаете, что FFUpdater сохранил в кэше обновление ошибочного приложения, нажмите кнопку \"очистить кэш\", чтобы удалить кэш для этого приложения.</string>
+    <string name="install_activity__delete_cache_button_text">очистить кэш</string>
+    <string name="install_activity__open_cache_folder_button_text">открыть папку кэша</string>
+    <string name="install_activity__open_cache_explanation">Вы можете открыть папку кэша, чтобы скопировать APK-файл в место с большим объемом свободного пространства.</string>
 </resources>
