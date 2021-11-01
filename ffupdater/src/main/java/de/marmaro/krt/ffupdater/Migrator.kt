@@ -11,7 +11,7 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
-        if (lastVersionCode < 87 /* TODO */) {
+        if (lastVersionCode < 87 /* 74.5.0 */) {
             deleteOldCacheData(context)
         }
 

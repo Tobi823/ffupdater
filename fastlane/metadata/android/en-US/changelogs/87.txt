@@ -1,0 +1,16 @@
+ * Improve internet check. (Tobi823/ffupdater#87)
+   * Use the old network check API for Android 10 and below.
+   * Handle network errors better in the app.
+ * Reduce storage usage for devices with low internal memory. (Tobiwan/ffupdater#88)
+   * If an app update fails, keep the cached app update (APK file).
+   * If an app update is successful or a critical error (wrong certificate fingerprint) occurs, delete the cached app update (APK file).
+   * Download and keep the APK file in the Android/data/de.marmaro.krt.ffupdater/files/Download folder and use this folder as a cache folder.
+   * Do not copy the downloaded APK file to a official cache folder which is invisible to the user.
+   * User can delete the downloaded app updates (APK files) in the Android app settings > Storage > Manage Space.
+   * If an app update fails, show buttons for:
+     * deleting the app update in the cache folder.
+     * opening the cache folder with a file manager app.
+   * When migrating to this version, the app will delete old cache files.
+ * Update dependencies:
+   * androidx.core:core-ktx to 1.7.0
+   * androidx.lifecycle:lifecycle-runtime-ktx to 2.4.0

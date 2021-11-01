@@ -24,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
@@ -97,10 +98,10 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     override fun onResume() {
         super.onResume()
+        initUI()
         lifecycleScope.launch(Dispatchers.Main) {
-            initUI()
-            //checkForUpdates() TODO
-            //BackgroundJob.startOrStopBackgroundUpdateCheck(this@MainActivity) TODO
+            checkForUpdates()
+            BackgroundJob.startOrStopBackgroundUpdateCheck(this@MainActivity)
         }
     }
 
@@ -144,7 +145,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private suspend fun initUI() {
+    private fun initUI() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
         mainLayout.removeAllViews()
         cleanUpObjects()
