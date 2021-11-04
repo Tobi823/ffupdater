@@ -38,7 +38,7 @@
     <string name="firefox_beta__warning">このアプリは開発者やテスター向けに作られたものです。作業に影響を与える様々なバグが含まれている可能性があります。このアプリをインストールしますか？</string>
     <string name="firefox_focus__description">このアプリはプライバシーの向上を目的としたFirefoxブラウザの改良版です。</string>
     <string name="firefox_focus__title">Firefox Focus</string>
-    <string name="firefox_klar__description">このアプリはプライバシーの向上を目的としたFirefoxブラウザの改良版です。\n\nFirefox Klar は、ドイツ、スイス、オーストリア向けに開発された Firefox Focus とほぼ同じものです。 「Hubert Burda Media」のニュース雑誌「Focus」との混同を避けるため、名前だけが変更されています。</string>
+    <string name="firefox_klar__description">Firefox Klar は、ドイツ、オーストリア、スイス向けに開発されていますが、どの国のユーザでも使用することができます。Firefox Focus と非常によく似ていますが、Hubert Burda Media group の雑誌 Focus との混同を避けるため、ドイツ語圏では名前が変更されています。Firefox Focus とは異なり、Firefox Klar は、ドイツの厳格な個人情報保護法により、デフォルトでテレメトリーが無効になっています。</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">このアプリは以前は「Firefox Preview」という名称で、現在は、Firefox Nightly に移行しています。\n\nFirefox Nightly は、Firefox の新しいリリースに向けた開発チャンネルです。\n\nFirefox Nightly は、Firefox のより実験的な機能を紹介するために設計されています。Nightly チャンネルでは、ユーザーが不安定なFirefox の最新の革新的な機能を体験し、機能やパフォーマンスに関するフィードバックを提供することで、最終的なリリースの決定に役立てています。</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
