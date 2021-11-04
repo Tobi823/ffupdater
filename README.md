@@ -55,6 +55,11 @@ SHA-1 digest: b432e9eb74512c0fa58c1ec45912a670f8dfa8e9
 MD5 digest: 78a34e36cedd844954726f1e2076642c
 ```
 
+The official F-Droid Android client sometimes has problems accessing the APK file from my F-Droid repository.
+But other clients like "Foxy Droid" work fine. Does anyone know the reason for this? Does the official F-Droid
+client has an internal cache and therefore needs more time before it can access a new version from my
+repository?
+
 ### APK files on GitHub
 
 The APK files are available on [GitHub](https://github.com/Tobi823/ffupdater/releases) and
