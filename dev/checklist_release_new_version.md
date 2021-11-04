@@ -35,6 +35,7 @@ git fetch --tags
  - upload signed APK file to GitHub and GitLab
  - start repomaker with Docker
  - upload signed APK to repomaker
+ - test release with "Foxy Droid"
 
 # delete all remote branches except master
 ````
