@@ -37,6 +37,7 @@
         <package android:name="com.brave.browser" />
         <package android:name="io.github.forkmaintainers.iceraven" />
         <package android:name="org.bromite.bromite" />
+        <package android:name="com.vivaldi.browser" />
     </queries>
 
     <application

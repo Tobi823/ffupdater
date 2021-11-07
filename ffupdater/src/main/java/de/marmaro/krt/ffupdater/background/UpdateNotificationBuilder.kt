@@ -69,6 +69,7 @@ object UpdateNotificationBuilder {
             App.BRAVE -> "update_notification_channel__brave"
             App.ICERAVEN -> "update_notification_channel__iceraven"
             App.BROMITE -> "update_notification_channel__bromite"
+            App.VIVALDI -> "update_notification_channel__vivaldi"
         }
     }
 
@@ -83,6 +84,7 @@ object UpdateNotificationBuilder {
             App.BRAVE -> 207
             App.ICERAVEN -> 208
             App.BROMITE -> 209
+            App.VIVALDI -> 210
         }
     }
 

@@ -164,6 +164,15 @@ class DownloadApiChecker {
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
+    @Test
+    fun vivaldi() {
+        val result = runBlocking {
+            Vivaldi().updateCheck(context)
+        }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        assertFalse(result.version.isEmpty())
+    }
+
     private fun verifyThatDownloadLinkAvailable(urlString: String) {
         val url = URL(urlString)
         val connection = url.openConnection() as HttpsURLConnection

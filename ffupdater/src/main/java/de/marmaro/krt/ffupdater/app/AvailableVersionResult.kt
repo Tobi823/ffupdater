@@ -6,7 +6,7 @@ import java.time.ZonedDateTime
 data class AvailableVersionResult(
         val downloadUrl: String,
         val version: String,
-        val publishDate: ZonedDateTime,
+        val publishDate: ZonedDateTime?,
         val fileSizeBytes: Long?,
         val fileHash: Sha256Hash?
 )

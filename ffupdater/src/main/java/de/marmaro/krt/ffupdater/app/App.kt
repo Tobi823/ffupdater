@@ -11,7 +11,8 @@ enum class App(appDetail: BaseApp) {
     LOCKWISE(Lockwise()),
     BRAVE(Brave()),
     ICERAVEN(Iceraven()),
-    BROMITE(Bromite());
+    BROMITE(Bromite()),
+    VIVALDI(Vivaldi());
 
     val detail: BaseApp = appDetail
 }

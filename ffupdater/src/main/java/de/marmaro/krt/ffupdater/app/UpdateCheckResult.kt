@@ -15,7 +15,7 @@ data class UpdateCheckResult(
     val version: String
         get() = availableResult.version
 
-    val publishDate: ZonedDateTime
+    val publishDate: ZonedDateTime?
         get() = availableResult.publishDate
 
     val fileSizeBytes: Long?

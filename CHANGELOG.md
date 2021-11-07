@@ -1,3 +1,6 @@
+# 2021-11-07 Version 75.0.0 (88)
+ * Add Vivaldi (Tobiwan/ffupdater#89)
+
 # 2021-11-01 Version 74.5.0 (87)
  * Improve internet check. (Tobi823/ffupdater#87)
    * Use the old network check API for Android 10 and below.
