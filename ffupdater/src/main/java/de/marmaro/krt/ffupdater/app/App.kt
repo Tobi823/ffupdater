@@ -12,7 +12,8 @@ enum class App(appDetail: BaseApp) {
     BRAVE(Brave()),
     ICERAVEN(Iceraven()),
     BROMITE(Bromite()),
-    VIVALDI(Vivaldi());
+    VIVALDI(Vivaldi()),
+    STYX(Styx());
 
     val detail: BaseApp = appDetail
 }

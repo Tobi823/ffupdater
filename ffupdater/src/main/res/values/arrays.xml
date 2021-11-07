@@ -53,6 +53,7 @@
         <item>@string/iceraven__title</item>
         <item>@string/bromite__title</item>
         <item>@string/vivaldi__title</item>
+        <item>@string/styx__title</item>
     </string-array>
 
     <string-array name="disabledAppEntryValues">
@@ -66,6 +67,7 @@
         <item>ICERAVEN</item>
         <item>BROMITE</item>
         <item>VIVALDI</item>
+        <item>STYX</item>
     </string-array>
 
     <string-array name="themeEntries" tools:ignore="InconsistentArrays">

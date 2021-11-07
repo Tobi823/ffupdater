@@ -153,4 +153,6 @@
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Vivaldi?</string>
+    <string name="styx__title">Styx Browser</string>
+    <string name="styx__description">A fork of Fulguris with additional functions.\n\nAd &amp; Malware Blocker: Use the built-in ad blocker or use it with local or online host files. A malware blocker is also on board.\n\nPrivacy: Styx protects and respects privacy. An incognito mode is included. One can deny cookies. (To be found in the settings). Functions to clear tabs, history, cookies and cache. Management of third-party apps.</string>
 </resources>

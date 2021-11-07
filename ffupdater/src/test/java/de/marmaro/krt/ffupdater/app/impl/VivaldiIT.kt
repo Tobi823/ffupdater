@@ -38,15 +38,13 @@ class VivaldiIT {
     }
 
     companion object {
-        const val WEBSITE_URL = "https://vivaldi.com/download/"
-
         @AfterClass
         fun cleanUp() {
             unmockkAll()
         }
     }
 
-    private fun makeHtmlAvailableUnderUrl() {
+    private fun makeHtmlAvailable() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Vivaldi/download.html"
         coEvery {
             ApiConsumer.consumeNetworkResource("https://vivaldi.com/download/", String::class)
@@ -55,7 +53,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_armeabiv7a_checkVersionAndDownloadLink() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
         val actual = runBlocking { Vivaldi().updateCheck(context) }
         assertEquals("4.3.2439.61", actual.version)
@@ -67,7 +65,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_arm64v8a_checkVersionAndDownloadLink() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
         val actual = runBlocking { Vivaldi().updateCheck(context) }
         assertEquals("4.3.2439.61", actual.version)
@@ -79,7 +77,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_x8664_checkVersionAndDownloadLink() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
         val actual = runBlocking { Vivaldi().updateCheck(context) }
         assertEquals("4.3.2439.61", actual.version)
@@ -91,7 +89,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_armeabiv7a_latestVersionIsInstalled() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
         packageInfo.versionName = "4.3.2439.61"
         val actual = runBlocking { Vivaldi().updateCheck(context) }
@@ -100,7 +98,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_armeabiv7a_oldVersionIsInstalled() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
         packageInfo.versionName = "4.3.2439.43"
         val actual = runBlocking { Vivaldi().updateCheck(context) }
@@ -109,7 +107,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_arm64v8a_latestVersionIsInstalled() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
         packageInfo.versionName = "4.3.2439.61"
         val actual = runBlocking { Vivaldi().updateCheck(context) }
@@ -118,7 +116,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_arm64v8a_oldVersionIsInstalled() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
         packageInfo.versionName = "4.3.2439.43"
         val actual = runBlocking { Vivaldi().updateCheck(context) }
@@ -127,7 +125,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_x8664_latestVersionIsInstalled() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
         packageInfo.versionName = "4.3.2439.61"
         val actual = runBlocking { Vivaldi().updateCheck(context) }
@@ -136,7 +134,7 @@ class VivaldiIT {
 
     @Test
     fun updateCheck_x8664_oldVersionIsInstalled() {
-        makeHtmlAvailableUnderUrl()
+        makeHtmlAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
         packageInfo.versionName = "4.3.2439.43"
         val actual = runBlocking { Vivaldi().updateCheck(context) }

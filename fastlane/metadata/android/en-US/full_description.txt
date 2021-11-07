@@ -2,10 +2,11 @@ Download, install and update these privacy friendly browsers:
  - Bromite
  - Firefox Browser
  - Firefox Focus
- - Firefox for Android Beta
  - Firefox Klar
  - Firefox Nightly
+ - Firefox for Android Beta
  - Iceraven
+ - Styx
  - Vivaldi
 
 and:

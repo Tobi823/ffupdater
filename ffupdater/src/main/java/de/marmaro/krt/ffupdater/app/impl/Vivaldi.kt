@@ -8,6 +8,10 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
+/**
+ * https://vivaldi.com/de/download/
+ * https://www.apkmirror.com/apk/vivaldi-technologies/vivaldi-browser-beta/
+ */
 class Vivaldi : BaseAppWithCachedUpdateCheck() {
     override val packageName = "com.vivaldi.browser"
     override val displayTitle = R.string.vivaldi__title

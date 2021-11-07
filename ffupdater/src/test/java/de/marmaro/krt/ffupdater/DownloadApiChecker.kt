@@ -173,6 +173,17 @@ class DownloadApiChecker {
         assertFalse(result.version.isEmpty())
     }
 
+    @Test
+    fun styx() {
+        val result = runBlocking {
+            Styx().updateCheck(context)
+        }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 30
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
+    }
+
     private fun verifyThatDownloadLinkAvailable(urlString: String) {
         val url = URL(urlString)
         val connection = url.openConnection() as HttpsURLConnection

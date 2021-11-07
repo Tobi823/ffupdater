@@ -149,4 +149,6 @@
     <string name="vivaldi__description">"O Vivaldi é um novo navegador web, com bloqueador de anúncios integrado, proteção contra rastreadores e úteis funcionalidades integradas. Navegue com separadores únicos estilo-computador, sincronização com encriptação ponto a ponto, modo escuro &amp; privado. Baixe gratuitamente e navegue de forma rápida, crie notas no navegador e faça capturas de tela de página inteira."</string>
     <string name="vivaldi__title">Navegador Vivaldi</string>
     <string name="vivaldi__warning">A Vivaldi usa a base técnica do Google Chrome (Cromo) - algumas pessoas não gostam disso. Você quer instalar o Vivaldi?</string>
+    <string name="styx__title">Navegador Styx</string>
+    <string name="styx__description">" Um garfo de Fulguris com funções adicionais.\n\nBloqueador de anúncios e malwares: Use o bloqueador de anúncios embutido ou use-o com arquivos host locais ou on-line. Um bloqueador de malware também está a bordo.\n\nPrivacidade: O Styx protege e respeita a privacidade. Um modo incógnito está incluído. Pode-se negar cookies. (A ser encontrado nas configurações). Funções para limpar abas, histórico, cookies e cache. Gerenciamento de aplicativos de terceiros."</string>
 </resources>

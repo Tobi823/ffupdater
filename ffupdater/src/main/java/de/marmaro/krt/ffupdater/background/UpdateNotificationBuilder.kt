@@ -70,6 +70,7 @@ object UpdateNotificationBuilder {
             App.ICERAVEN -> "update_notification_channel__iceraven"
             App.BROMITE -> "update_notification_channel__bromite"
             App.VIVALDI -> "update_notification_channel__vivaldi"
+            App.STYX -> "update_notification_channel__styx"
         }
     }
 
@@ -85,6 +86,7 @@ object UpdateNotificationBuilder {
             App.ICERAVEN -> 208
             App.BROMITE -> 209
             App.VIVALDI -> 210
+            App.STYX -> 211
         }
     }
 

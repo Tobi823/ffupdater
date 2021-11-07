@@ -38,6 +38,7 @@
         <package android:name="io.github.forkmaintainers.iceraven" />
         <package android:name="org.bromite.bromite" />
         <package android:name="com.vivaldi.browser" />
+        <package android:name="com.jamal2367.styx" />
     </queries>
 
     <application

@@ -4,15 +4,16 @@
 
 Download, install and update these privacy friendly browsers:
 
-- [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US)
+- [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US) [GitHub Repository](https://github.com/brave/brave-browser)
 - [Bromite](https://github.com/bromite/bromite)
-- [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
-- [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus)
-- [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta)
-- [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
-- [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
+- [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
+- [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus) [GitHub Repository](https://github.com/mozilla-mobile/focus-android)
+- [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar) [GitHub Repository](https://github.com/mozilla-mobile/focus-android)
+- [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
+- [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
-- [Vivaldi](https://vivaldi.com/download/)
+- [Styx](https://play.google.com/store/apps/details?id=com.jamal2367.styx) [GitHub Repository](https://github.com/jamal2362/Styx)
+- [Vivaldi](https://vivaldi.com/download/) [Source Code](https://vivaldi.com/source/)
 
 and:
 
@@ -40,13 +41,13 @@ The applications are downloaded from these locations:
 - Brave Private Browser: <https://api.github.com/repos/brave/brave-browser/releases/latest>
 - Bromite: <https://api.github.com/repos/bromite/bromite/releases/latest>
 - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
-- Firefox for Android
-  Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
-- Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
-- Firefox
-  Focus/Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
+- Firefox Focus: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
+- Firefox Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
 - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
+- Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
+- Firefox for Android Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
 - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
+- Styx: <https://api.github.com/repos/jamal2362/Styx/releases/latest>
 - Vivaldi: <https://vivaldi.com/download/>
 
 ## Other distribution channels
