@@ -1,6 +1,17 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+repositories {
+    mavenCentral()
+    google()
+    maven {
+        url 'https://jitpack.io'
+        content {
+            includeModule('com.github.IvanShafran', 'shared-preferences-mock')
+        }
+    }
+}
+
 dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
@@ -22,7 +33,7 @@ dependencies {
     testImplementation 'io.mockk:mockk:1.10.5'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'org.exparity:hamcrest-date:2.0.7'
-    testImplementation 'com.github.IvanShafran:shared-preferences-mock:1.0'
+    testImplementation 'com.github.IvanShafran:shared-preferences-mock:1.1'
 }
 
 android {
@@ -79,7 +90,4 @@ android {
     lintOptions {
         abortOnError false
     }
-}
-repositories {
-    mavenCentral()
 }

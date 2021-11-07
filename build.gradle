@@ -1,21 +1,11 @@
 buildscript {
     repositories {
+        mavenCentral()
         google()
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
-    }
-}
-
-plugins {
-    id 'com.autonomousapps.dependency-analysis' version '0.42.0'
-}
-
-allprojects {
-    repositories {
-        google()
-        maven { url 'https://jitpack.io' }
     }
 }
