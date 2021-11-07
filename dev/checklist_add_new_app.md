@@ -9,3 +9,5 @@
   - update description in repomaker
 - update/add unit tests
 - resolved all TODOs?
+
+Extract certificate hash with: `keytool -printcert -jarfile *.apk`
