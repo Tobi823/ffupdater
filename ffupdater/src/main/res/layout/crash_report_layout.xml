@@ -78,7 +78,8 @@
                 <TextView
                     android:id="@+id/crash_report__exception_stack_trace"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textIsSelectable="true"/>
 
             </HorizontalScrollView>
 
