@@ -1,7 +1,10 @@
-# 2021-11-07 Version 75.0.0 (88)
+# 2021-11-07 Version 74.5.1 (88)
 * Add Vivaldi (Tobiwan/ffupdater#89)
 * Add Styx (Tobi823/ffupdater#48)
 * Add Ungoogled Chromium (Tobi823/ffupdater#50)
+* Update description of Firefox Klar (thanks cosify - Tobi823/ffupdater#91)
+* Crash report can partially selected and copied
+* Cleanup build scripts
 
 # 2021-11-01 Version 74.5.0 (87)
  * Improve internet check. (Tobi823/ffupdater#87)
