@@ -36,7 +36,7 @@ class FirefoxReleaseIT {
         every { context.packageManager } returns packageManager
         packageInfo.versionName = ""
         every {
-            packageManager.getPackageInfo(App.FIREFOX_RELEASE.detail.packageName, 0)
+            packageManager.getPackageInfo(App.FIREFOX_RELEASE.detail.packageName, any())
         } returns packageInfo
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"

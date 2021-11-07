@@ -36,7 +36,7 @@ class FirefoxBetaIT {
         every { context.packageManager } returns packageManager
         packageInfo.versionName = ""
         every {
-            packageManager.getPackageInfo(App.FIREFOX_BETA.detail.packageName, 0)
+            packageManager.getPackageInfo(App.FIREFOX_BETA.detail.packageName, any())
         } returns packageInfo
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"

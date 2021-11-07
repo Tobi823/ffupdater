@@ -69,7 +69,7 @@ class LockwiseIT {
         val packageInfo = PackageInfo()
         packageInfo.versionName = "4.0.3"
         every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0)
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
         } returns packageInfo
 
         for (abi in ABI.values()) {
@@ -87,7 +87,7 @@ class LockwiseIT {
         makeReleaseJsonObjectAvailableUnderUrl("latest.json", "$API_URL/latest")
         val packageInfo = PackageInfo()
         every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0)
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
         } returns packageInfo
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
 
@@ -124,7 +124,7 @@ class LockwiseIT {
         makeReleaseJsonArrayAvailableUnderUrl("2releases_page1.json", "$API_URL?per_page=5&page=1")
         val packageInfo = PackageInfo()
         every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0)
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
         } returns packageInfo
 
         for (abi in ABI.values()) {
@@ -143,7 +143,7 @@ class LockwiseIT {
         makeReleaseJsonArrayAvailableUnderUrl("2releases_page1.json", "$API_URL?per_page=5&page=1")
         val packageInfo = PackageInfo()
         every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, 0)
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
         } returns packageInfo
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
 

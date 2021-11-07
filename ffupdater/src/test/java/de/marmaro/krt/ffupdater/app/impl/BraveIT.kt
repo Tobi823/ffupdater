@@ -65,7 +65,7 @@ class BraveIT {
         makeReleaseJsonObjectAvailableUnderUrl("latest_contains_release_version.json", "$API_URl/latest")
         val packageInfo = PackageInfo()
         packageInfo.versionName = "1.19.92"
-        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, 0) } returns packageInfo
+        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, any()) } returns packageInfo
 
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
@@ -105,7 +105,7 @@ class BraveIT {
         makeReleaseJsonObjectAvailableUnderUrl("latest_contains_release_version.json", "$API_URl/latest")
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
         val packageInfo = PackageInfo()
-        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, 0) } returns packageInfo
+        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, any()) } returns packageInfo
 
         // installed app is up-to-date
         runBlocking {
@@ -139,7 +139,7 @@ class BraveIT {
         makeReleaseJsonObjectAvailableUnderUrl("latest_contains_NOT_release_version.json", "$API_URl/latest")
         makeReleaseJsonArrayAvailableUnderUrl("2releases_perpage_20_page_1.json", "$API_URl?per_page=20&page=1")
         val packageInfo = PackageInfo()
-        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, 0) } returns packageInfo
+        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, any()) } returns packageInfo
 
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
@@ -181,7 +181,7 @@ class BraveIT {
 
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
         val packageInfo = PackageInfo()
-        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, 0) } returns packageInfo
+        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, any()) } returns packageInfo
 
         // installed app is up-to-date
         runBlocking {
@@ -217,7 +217,7 @@ class BraveIT {
         makeReleaseJsonArrayAvailableUnderUrl("3releases_perpage_10_page_2.json", "$API_URl?per_page=20&page=2")
 
         val packageInfo = PackageInfo()
-        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, 0) } returns packageInfo
+        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, any()) } returns packageInfo
 
         runBlocking {
             every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
@@ -260,7 +260,7 @@ class BraveIT {
 
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
         val packageInfo = PackageInfo()
-        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, 0) } returns packageInfo
+        every { packageManager.getPackageInfo(App.BRAVE.detail.packageName, any()) } returns packageInfo
 
         // installed app is up-to-date
         runBlocking {

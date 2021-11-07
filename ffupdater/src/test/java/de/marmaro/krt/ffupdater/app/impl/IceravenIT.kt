@@ -63,7 +63,7 @@ class IceravenIT {
         val packageInfo = PackageInfo()
         packageInfo.versionName = "1.19.92"
         every {
-            packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, 0)
+            packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, any())
         } returns packageInfo
 
         runBlocking {
@@ -104,7 +104,7 @@ class IceravenIT {
         makeReleaseJsonObjectAvailable()
         val packageInfo = PackageInfo()
         every {
-            packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, 0)
+            packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, any())
         } returns packageInfo
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
 
