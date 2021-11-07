@@ -122,6 +122,11 @@
     <string name="settings__theme_system_default">Utiliser le système par défaut</string>
     <string name="settings__title">Vérification de la mise à jour de la demande</string>
     <string name="show_warning_before_installation_dialog__title">Avertissement</string>
+    <string name="styx__description">Un fork de Fulguris avec des fonctions supplémentaires.\n\nBloqueur de publicités et de logiciels malveillants : Utilisez le bloqueur de publicité intégré ou utilisez-le avec des fichiers hôtes locaux ou en ligne. Un bloqueur de logiciels malveillants est également intégré.\n\nConfidentialité : Styx protège et respecte la vie privée. Un mode incognito est inclus. On peut refuser les cookies. (A trouver dans les paramètres). Fonctions pour effacer les onglets, l\'historique, les cookies et le cache. Gestion des applications tierces.</string>
+    <string name="styx__title">Navigateur Styx</string>
+    <string name="ungoogled_chromium__description">Google Chromium, sans intégration avec Google.\n\nSans connexion à un compte Google, Chromium s\'en sort plutôt bien en termes de sécurité et de confidentialité. Cependant, Chromium a toujours une certaine dépendance vis-à-vis des services Web et des binaires de Google. En outre, Google a conçu Chromium pour qu\'il soit facile et intuitif pour les utilisateurs, ce qui signifie qu\'ils font des compromis sur la transparence et le contrôle des opérations internes.</string>
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="ungoogled_chromium__warning">Ungoogled Chromium utilise la base technique de Google Chrome (Chromium), ce qui ne plaît pas à tout le monde. Voulez-vous installer Ungoogled Chromium?</string>
     <string name="unsupported_abi_dialog__message">Le navigateur sélectionné est incompatible avec le processeur de votre smartphone. Veuillez sélectionner un autre navigateur.</string>
     <string name="unsupported_abi_dialog__title">Appareil non pris en charge</string>
     <string name="update_interval__12h">12 heures</string>
@@ -149,6 +154,4 @@
     <string name="vivaldi__description">Vivaldi est un navigateur pratique et très respectueux de la vie privée. Il intègre des nombreuses fonctions dont un bloqueur de pubs et traqueurs (désactivé par défaut) et un traducteur de pages. Des outils judicieux de prise de notes et de capture de page vous feront gagner du temps. En option, vous pouvez afficher les onglets comme sur ordinateurs, des thèmes clair et sombre ou personnaliser l’interface. Téléchargez-le et profitez de ses performances.</string>
     <string name="vivaldi__title">Navigateur Vivaldi</string>
     <string name="vivaldi__warning">Vivaldi utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Voulez-vous installer Vivaldi ?</string>
-    <string name="styx__title">Navigateur Styx</string>
-    <string name="styx__description">Un fork de Fulguris avec des fonctions supplémentaires.\n\nBloqueur de publicités et de logiciels malveillants : Utilisez le bloqueur de publicité intégré ou utilisez-le avec des fichiers hôtes locaux ou en ligne. Un bloqueur de logiciels malveillants est également intégré.\n\nConfidentialité : Styx protège et respecte la vie privée. Un mode incognito est inclus. On peut refuser les cookies. (A trouver dans les paramètres). Fonctions pour effacer les onglets, l\'historique, les cookies et le cache. Gestion des applications tierces.</string>
 </resources>

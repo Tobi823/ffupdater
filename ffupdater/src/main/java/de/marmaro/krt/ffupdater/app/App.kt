@@ -13,7 +13,8 @@ enum class App(appDetail: BaseApp) {
     ICERAVEN(Iceraven()),
     BROMITE(Bromite()),
     VIVALDI(Vivaldi()),
-    STYX(Styx());
+    STYX(Styx()),
+    UNGOOGLED_CHROMIUM(UngoogledChromium());
 
     val detail: BaseApp = appDetail
 }

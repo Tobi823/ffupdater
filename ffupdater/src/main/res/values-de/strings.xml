@@ -122,6 +122,11 @@
     <string name="settings__theme_system_default">Systemeinstellung</string>
     <string name="settings__title">Update-Prüfung der Anwendung</string>
     <string name="show_warning_before_installation_dialog__title">Warnung</string>
+    <string name="styx__description">Ein Fork von Fulguris mit zusätzlichen Funktionen.\n\nWerbe- und Malware-Blocker: Nutzen Sie den eingebauten Werbeblocker oder verwenden Sie ihn mit lokalen oder Online-Host-Dateien. Ein Malware-Blocker ist ebenfalls an Bord.\n\nDatenschutz: Styx schützt und respektiert die Privatsphäre. Ein Inkognito-Modus ist enthalten. Man kann Cookies verweigern. (Zu finden in den Einstellungen). Funktionen zum Löschen von Tabs, Verlauf, Cookies und Cache. Verwaltung von Drittanbieter-Apps.</string>
+    <string name="styx__title">Styx-Browser</string>
+    <string name="ungoogled_chromium__description">Google Chromium, ohne die Integration mit Google.\n\nOhne Anmeldung bei einem Google-Konto schneidet Chromium in puncto Sicherheit und Datenschutz recht gut ab. Allerdings ist Chromium immer noch von Google-Webdiensten und -Binärdateien abhängig. Außerdem hat Google Chromium so konzipiert, dass es für die Benutzer einfach und intuitiv zu bedienen ist, was bedeutet, dass es bei der Transparenz und der Kontrolle der internen Vorgänge Kompromisse eingeht.</string>
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="ungoogled_chromium__warning">Ungoogled Chromium verwendet die technische Grundlage von Google Chrome (Chromium) - manche Leute mögen das nicht. Möchten Sie Ungoogled Chromium installieren?</string>
     <string name="unsupported_abi_dialog__message">Der ausgewählte Browser ist mit dem Prozessor Ihres Smartphones nicht kompatibel. Bitte wähle einen anderen Browser.</string>
     <string name="unsupported_abi_dialog__title">Nicht unterstütztes Gerät</string>
     <string name="update_interval__12h">12 Stunden</string>
@@ -149,6 +154,4 @@
     <string name="vivaldi__description">Vivaldi ist ein privater Browser mit einzigartigen Anpassungsmöglichkeiten. Es bietet viele Funktionen, wie z. B. Werbe- und Trackerblocker (standardmäßig deaktiviert), Webseitenübersetzung. Notizen und Screenshots helfen, Ihre Arbeit zu beschleunigen. Die Anpassung der Tabs, der Designthemen und des Aussehens verleihen dem System Persönlichkeit. Laden Sie Vivaldi kostenlos herunter surfen Sie mit Vergnügen im Internet.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi verwendet die technische Grundlage von Google Chrome (Chromium) - manche Leute mögen das nicht. Möchten Sie Vivaldi installieren?</string>
-    <string name="styx__title">Styx-Browser</string>
-    <string name="styx__description">Ein Fork von Fulguris mit zusätzlichen Funktionen.\n\nWerbe- und Malware-Blocker: Nutzen Sie den eingebauten Werbeblocker oder verwenden Sie ihn mit lokalen oder Online-Host-Dateien. Ein Malware-Blocker ist ebenfalls an Bord.\n\nDatenschutz: Styx schützt und respektiert die Privatsphäre. Ein Inkognito-Modus ist enthalten. Man kann Cookies verweigern. (Zu finden in den Einstellungen). Funktionen zum Löschen von Tabs, Verlauf, Cookies und Cache. Verwaltung von Drittanbieter-Apps.</string>
 </resources>

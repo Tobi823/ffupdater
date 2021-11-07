@@ -71,6 +71,7 @@ object UpdateNotificationBuilder {
             App.BROMITE -> "update_notification_channel__bromite"
             App.VIVALDI -> "update_notification_channel__vivaldi"
             App.STYX -> "update_notification_channel__styx"
+            App.UNGOOGLED_CHROMIUM -> "update_notification_channel__ungoogled_chromium"
         }
     }
 
@@ -87,6 +88,7 @@ object UpdateNotificationBuilder {
             App.BROMITE -> 209
             App.VIVALDI -> 210
             App.STYX -> 211
+            App.UNGOOGLED_CHROMIUM -> 212
         }
     }
 

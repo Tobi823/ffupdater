@@ -13,6 +13,7 @@ Download, install and update these privacy friendly browsers:
 - [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Styx](https://play.google.com/store/apps/details?id=com.jamal2367.styx) [GitHub Repository](https://github.com/jamal2362/Styx)
+- [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium-android)
 - [Vivaldi](https://vivaldi.com/download/) [Source Code](https://vivaldi.com/source/)
 
 and:
@@ -48,6 +49,7 @@ The applications are downloaded from these locations:
 - Firefox for Android Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
 - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
 - Styx: <https://api.github.com/repos/jamal2362/Styx/releases/latest>
+- Ungoogled Chromium: <https://api.github.com/repos/ungoogled-software/ungoogled-chromium-android/releases>
 - Vivaldi: <https://vivaldi.com/download/>
 
 ## Other distribution channels

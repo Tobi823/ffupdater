@@ -22,24 +22,26 @@ class GithubConsumer(
 
     @MainThread
     suspend fun updateCheck(): Result {
-        return updateCheckLatestRelease() ?: updateCheckAllReleases()
-    }
-
-    @MainThread
-    private suspend fun updateCheckLatestRelease(): Result? {
         val url = "https://api.github.com/repos/$repoOwner/$repoName/releases/latest"
         val release = ApiConsumer.consumeNetworkResource(url, Release::class)
-        return release.takeIf { validReleaseTester.test(it) }?.let { convert(it) }
+        if (validReleaseTester.test(release)) {
+            return convert(release)
+        }
+        return updateCheckAllReleases()
     }
 
     @MainThread
-    private suspend fun updateCheckAllReleases(): Result {
+    suspend fun updateCheckAllReleases(): Result {
         val tries = 4
         for (page in 1..(tries + 1)) {
             val url = "https://api.github.com/repos/$repoOwner/$repoName/releases" +
                     "?per_page=$resultsPerPage&page=$page"
             val releases = ApiConsumer.consumeNetworkResource(url, Array<Release>::class)
-            releases.firstOrNull { validReleaseTester.test(it) }?.let { return convert(it) }
+            releases.forEach {
+                if (validReleaseTester.test(it)) {
+                    return convert(it)
+                }
+            }
         }
         throw InvalidApiResponseException("can't find release after $tries tries - abort")
     }

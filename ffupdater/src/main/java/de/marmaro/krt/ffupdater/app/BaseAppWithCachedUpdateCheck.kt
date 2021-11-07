@@ -48,7 +48,7 @@ abstract class BaseAppWithCachedUpdateCheck : BaseApp {
         x86: String? = null,
         x64: String? = null,
     ): String {
-        return DeviceEnvironment.abis.mapNotNull {
+        val mapping = DeviceEnvironment.abis.mapNotNull {
             when (it) {
                 ABI.ARM64_V8A -> arm64
                 ABI.ARMEABI_V7A -> arm
@@ -56,7 +56,11 @@ abstract class BaseAppWithCachedUpdateCheck : BaseApp {
                 ABI.X86_64 -> x64
                 ABI.ARMEABI, ABI.MIPS, ABI.MIPS64 -> null
             }
-        }.first()
+        }
+        check(mapping.isNotEmpty()) {
+            "There was no matches for the device ABIs [${DeviceEnvironment.abis.joinToString(", ")}]."
+        }
+        return mapping.first()
     }
 
     companion object {

@@ -39,6 +39,7 @@
         <package android:name="org.bromite.bromite" />
         <package android:name="com.vivaldi.browser" />
         <package android:name="com.jamal2367.styx" />
+        <package android:name="org.ungoogled.chromium.stable" />
     </queries>
 
     <application
