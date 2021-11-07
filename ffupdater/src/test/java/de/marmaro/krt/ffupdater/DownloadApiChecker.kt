@@ -11,6 +11,7 @@ import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.BeforeClass
@@ -159,7 +160,7 @@ class DownloadApiChecker {
         }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 11 * 30
+        val maxDays = 12 * 30
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
