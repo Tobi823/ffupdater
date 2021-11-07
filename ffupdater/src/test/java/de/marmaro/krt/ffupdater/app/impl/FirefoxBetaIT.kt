@@ -14,6 +14,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import java.io.File
 import java.time.ZonedDateTime
@@ -30,9 +31,6 @@ class FirefoxBetaIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        mockkObject(ApiConsumer)
-        mockkObject(DeviceEnvironment)
-
         every { context.packageManager } returns packageManager
         packageInfo.versionName = ""
         every {
@@ -45,10 +43,18 @@ class FirefoxBetaIT {
     companion object {
         const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.beta.latest"
+        @JvmStatic
+        @BeforeClass
+        fun beforeTests() {
+            mockkObject(ApiConsumer)
+            mockkObject(DeviceEnvironment)
+        }
 
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
+            unmockkObject(ApiConsumer)
+            unmockkObject(DeviceEnvironment)
         }
     }
 

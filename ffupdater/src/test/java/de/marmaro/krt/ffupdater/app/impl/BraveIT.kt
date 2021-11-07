@@ -29,9 +29,6 @@ class BraveIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        mockkObject(ApiConsumer)
-        mockkObject(DeviceEnvironment)
-
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
     }
@@ -40,9 +37,18 @@ class BraveIT {
         const val API_URl = "https://api.github.com/repos/brave/brave-browser/releases"
         const val DOWNLOAD_URL = "https://github.com/brave/brave-browser/releases/download"
 
+        @JvmStatic
+        @BeforeClass
+        fun beforeTests() {
+            mockkObject(ApiConsumer)
+            mockkObject(DeviceEnvironment)
+        }
+
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
+            unmockkObject(ApiConsumer)
+            unmockkObject(DeviceEnvironment)
         }
     }
 

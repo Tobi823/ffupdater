@@ -13,10 +13,8 @@ import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
-import org.junit.AfterClass
+import org.junit.*
 import org.junit.Assert.*
-import org.junit.Before
-import org.junit.Test
 import java.io.FileReader
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -31,8 +29,6 @@ class LockwiseIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        mockkObject(ApiConsumer)
-        mockkObject(DeviceEnvironment)
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
     }
@@ -43,9 +39,18 @@ class LockwiseIT {
         const val DOWNLOAD_URL = "https://github.com/mozilla-lockwise/lockwise-android/releases/" +
                 "download"
 
+        @JvmStatic
+        @BeforeClass
+        fun beforeTests() {
+            mockkObject(ApiConsumer)
+            mockkObject(DeviceEnvironment)
+        }
+
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
+            unmockkObject(ApiConsumer)
+            unmockkObject(DeviceEnvironment)
         }
     }
 

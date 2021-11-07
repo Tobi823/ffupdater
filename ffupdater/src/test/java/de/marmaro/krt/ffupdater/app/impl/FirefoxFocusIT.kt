@@ -12,10 +12,13 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
+import junit.framework.Assert.assertFalse
 import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import java.io.FileReader
 import java.time.ZonedDateTime
@@ -32,9 +35,6 @@ class FirefoxFocusIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        mockkObject(ApiConsumer)
-        mockkObject(DeviceEnvironment)
-
         every { context.packageManager } returns packageManager
         packageInfo.versionName = ""
         every {
@@ -48,9 +48,18 @@ class FirefoxFocusIT {
         const val DOWNLOAD_URL =
             "https://github.com/mozilla-mobile/focus-android/releases/download/v92.1.1"
 
+        @JvmStatic
+        @BeforeClass
+        fun beforeTests() {
+            mockkObject(ApiConsumer)
+            mockkObject(DeviceEnvironment)
+        }
+
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
+            unmockkObject(ApiConsumer)
+            unmockkObject(DeviceEnvironment)
         }
     }
 

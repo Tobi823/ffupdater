@@ -16,6 +16,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import java.io.FileReader
 import java.time.ZonedDateTime
@@ -31,9 +32,6 @@ class BromiteIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        mockkObject(ApiConsumer)
-        mockkObject(DeviceEnvironment)
-
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
     }
@@ -41,9 +39,18 @@ class BromiteIT {
     companion object {
         const val DOWNLOAD_URL = "https://github.com/bromite/bromite/releases/download/90.0.4430.59"
 
+        @JvmStatic
+        @BeforeClass
+        fun beforeTests() {
+            mockkObject(ApiConsumer)
+            mockkObject(DeviceEnvironment)
+        }
+
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
+            unmockkObject(ApiConsumer)
+            unmockkObject(DeviceEnvironment)
         }
     }
 

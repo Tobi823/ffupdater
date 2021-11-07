@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatDelegate.*
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.*
+import io.mockk.MockKAnnotations
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockkObject
+import io.mockk.unmockkObject
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.empty
@@ -15,6 +18,7 @@ import org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder
 import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import java.time.Duration
 
@@ -31,13 +35,18 @@ class SettingsHelperTest {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        mockkObject(DeviceEnvironment)
     }
 
     companion object {
+        @JvmStatic
+        @BeforeClass
+        fun beforeTests() {
+            mockkObject(DeviceEnvironment)
+        }
+
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
             unmockkObject(DeviceEnvironment)
         }
     }

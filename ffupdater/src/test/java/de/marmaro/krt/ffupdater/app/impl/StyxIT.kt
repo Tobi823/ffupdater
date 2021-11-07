@@ -16,6 +16,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import java.io.FileReader
 
@@ -30,8 +31,6 @@ class StyxIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        mockkObject(ApiConsumer)
-        mockkObject(DeviceEnvironment)
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
@@ -40,19 +39,27 @@ class StyxIT {
     }
 
     companion object {
+        const val API_URL = "https://api.github.com/repos/jamal2362/Styx/releases/latest"
+
+        @JvmStatic
+        @BeforeClass
+        fun beforeTests() {
+            mockkObject(ApiConsumer)
+            mockkObject(DeviceEnvironment)
+        }
+
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
+            unmockkObject(ApiConsumer)
+            unmockkObject(DeviceEnvironment)
         }
     }
 
     private fun makeLatestJsonAvailable() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Styx/latest.json"
         coEvery {
-            ApiConsumer.consumeNetworkResource(
-                "https://api.github.com/repos/jamal2362/Styx/releases/latest/",
-                GithubConsumer.Release::class
-            )
+            ApiConsumer.consumeNetworkResource(API_URL, GithubConsumer.Release::class)
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 

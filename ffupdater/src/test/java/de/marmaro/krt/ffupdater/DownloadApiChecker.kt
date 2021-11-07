@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.impl.*
-import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.*
+import io.mockk.MockKAnnotations
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockkObject
+import io.mockk.unmockkObject
 import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
 import org.junit.Assert.assertFalse
@@ -44,30 +46,27 @@ class DownloadApiChecker {
         every {
             packageManager.getPackageInfo(any<String>(), 0)
         } throws PackageManager.NameNotFoundException()
-
-        mockkObject(DeviceEnvironment)
         every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
     }
 
     companion object {
+        @JvmStatic
         @BeforeClass
-        fun beforeClass() {
-            unmockkAll()
+        fun beforeTests() {
+            mockkObject(DeviceEnvironment)
         }
 
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
+            unmockkObject(DeviceEnvironment)
         }
     }
 
     @Test
     fun brave() {
-        val result = runBlocking {
-            Brave().updateCheck(context)
-        }
+        val result = runBlocking { Brave().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 2 * 7
@@ -76,9 +75,7 @@ class DownloadApiChecker {
 
     @Test
     fun bromite() {
-        val result = runBlocking {
-            Bromite().updateCheck(context)
-        }
+        val result = runBlocking { Bromite().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 6 * 7
@@ -87,9 +84,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxBeta() {
-        val result = runBlocking {
-            FirefoxBeta().updateCheck(context)
-        }
+        val result = runBlocking { FirefoxBeta().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 3 * 7
@@ -98,9 +93,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxFocus() {
-        val result = runBlocking {
-            FirefoxFocus().updateCheck(context)
-        }
+        val result = runBlocking { FirefoxFocus().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 8 * 7
@@ -109,9 +102,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxKlar() {
-        val result = runBlocking {
-            FirefoxKlar().updateCheck(context)
-        }
+        val result = runBlocking { FirefoxKlar().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 2 * 30
@@ -121,9 +112,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxNightly() {
         sharedPreferences.edit().putLong("firefox_nightly_installed_version_code", 0)
-        val result = runBlocking {
-            FirefoxNightly().updateCheck(context)
-        }
+        val result = runBlocking { FirefoxNightly().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 1 * 7
@@ -132,9 +121,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxRelease() {
-        val result = runBlocking {
-            FirefoxRelease().updateCheck(context)
-        }
+        val result = runBlocking { FirefoxRelease().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 6 * 7
@@ -143,10 +130,7 @@ class DownloadApiChecker {
 
     @Test
     fun iceraven() {
-        unmockkObject(ApiConsumer)
-        val result = runBlocking {
-            Iceraven().updateCheck(context)
-        }
+        val result = runBlocking { Iceraven().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 3 * 30
@@ -155,9 +139,7 @@ class DownloadApiChecker {
 
     @Test
     fun lockwise() {
-        val result = runBlocking {
-            Lockwise().updateCheck(context)
-        }
+        val result = runBlocking { Lockwise().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 12 * 30
@@ -166,21 +148,26 @@ class DownloadApiChecker {
 
     @Test
     fun vivaldi() {
-        val result = runBlocking {
-            Vivaldi().updateCheck(context)
-        }
+        val result = runBlocking { Vivaldi().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertFalse(result.version.isEmpty())
     }
 
     @Test
     fun styx() {
-        val result = runBlocking {
-            Styx().updateCheck(context)
-        }
+        val result = runBlocking { Styx().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 30
+        assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
+    }
+
+    @Test
+    fun ungoogledChromium() {
+        val result = runBlocking { UngoogledChromium().updateCheck(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 14
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 

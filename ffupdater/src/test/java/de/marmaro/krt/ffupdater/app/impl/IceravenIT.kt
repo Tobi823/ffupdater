@@ -16,6 +16,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import java.io.FileReader
 import java.time.ZonedDateTime
@@ -31,9 +32,6 @@ class IceravenIT {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        mockkObject(ApiConsumer)
-        mockkObject(DeviceEnvironment)
-
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
     }
@@ -44,9 +42,18 @@ class IceravenIT {
         const val DOWNLOAD_URL = "https://github.com/fork-maintainers/iceraven-browser/releases/" +
                 "download/iceraven-1.6.0"
 
+        @JvmStatic
+        @BeforeClass
+        fun beforeTests() {
+            mockkObject(ApiConsumer)
+            mockkObject(DeviceEnvironment)
+        }
+
+        @JvmStatic
         @AfterClass
-        fun cleanUp() {
-            unmockkAll()
+        fun afterTests() {
+            unmockkObject(ApiConsumer)
+            unmockkObject(DeviceEnvironment)
         }
     }
 
