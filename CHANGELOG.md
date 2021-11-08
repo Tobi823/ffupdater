@@ -1,4 +1,10 @@
+# 2021-11-08 Version 74.5.2 (89)
+
+* Update warning for Vivaldi (thanks gnuhead-chieb - Tobi823/ffupdater#92)
+* Make links in dialogs clickable
+
 # 2021-11-07 Version 74.5.1 (88)
+
 * Add Vivaldi (Tobiwan/ffupdater#89)
 * Add Styx (Tobi823/ffupdater#48)
 * Add Ungoogled Chromium (Tobi823/ffupdater#50)
