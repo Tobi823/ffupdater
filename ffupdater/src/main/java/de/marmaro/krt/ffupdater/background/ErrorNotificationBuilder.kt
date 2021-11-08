@@ -41,7 +41,7 @@ object ErrorNotificationBuilder {
         val notification = notificationBuilder
             .setSmallIcon(mipmap.transparent, 0)
             .setLargeIcon(BitmapFactory.decodeResource(context.resources, mipmap.ic_launcher))
-            .setContentTitle(context.getString(R.string.background_job_failure__notification_title))
+            .setContentTitle(context.getText(R.string.background_job_failure__notification_title))
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
             .setContentText(message)
             .setContentIntent(updateAppIntent)

@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
@@ -24,8 +26,13 @@ class DeviceTooOldDialog : DialogFragment() {
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.device_too_old_dialog__title)
                 .setMessage(getString(R.string.device_too_old_dialog__message, required, actual))
-                .setNegativeButton(getString(R.string.ok)) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+                .setNegativeButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .create()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance()
     }
 
     fun show(manager: FragmentManager) {

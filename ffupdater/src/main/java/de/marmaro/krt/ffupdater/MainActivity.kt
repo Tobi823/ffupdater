@@ -122,10 +122,9 @@ class MainActivity : AppCompatActivity() {
                 ?.let { DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(it) }
                 ?: "/"
             AlertDialog.Builder(this@MainActivity)
-                .setTitle(getString(R.string.action_about_title))
+                .setTitle(R.string.action_about_title)
                 .setMessage(getString(R.string.infobox, timestamp))
-                .setNeutralButton(getString(R.string.ok))
-                { dialog: DialogInterface, _: Int ->
+                .setNeutralButton(R.string.ok) { dialog: DialogInterface, _: Int ->
                     dialog.dismiss()
                 }
                 .create()

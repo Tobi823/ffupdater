@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
@@ -44,6 +46,11 @@ class InstallNewAppDialog : DialogFragment() {
             return
         }
         ShowAppInfoBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance()
     }
 
     fun show(manager: FragmentManager) {

@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.MainActivity
@@ -20,9 +22,9 @@ class ShowAppInfoBeforeInstallationDialog : DialogFragment() {
         })
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-            .setTitle(getString(app.detail.displayTitle))
-            .setMessage(getString(app.detail.displayDescription))
-            .setPositiveButton(getString(R.string.install_app)) { dialog: DialogInterface, _: Int ->
+            .setTitle(app.detail.displayTitle)
+            .setMessage(app.detail.displayDescription)
+            .setPositiveButton(R.string.install_app) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
                 if (app.detail.displayWarning != null) {
                     ShowWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
@@ -30,10 +32,15 @@ class ShowAppInfoBeforeInstallationDialog : DialogFragment() {
                     mainActivity.installAppButCheckForCurrentDownloads(app)
                 }
             }
-            .setNegativeButton(getString(R.string.go_back)) { dialog: DialogInterface, _: Int ->
+            .setNegativeButton(R.string.go_back) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
             }
             .create()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance()
     }
 
     fun show(manager: FragmentManager) {

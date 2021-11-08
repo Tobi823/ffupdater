@@ -22,15 +22,15 @@ class ShowWarningBeforeInstallationDialog : DialogFragment() {
         })
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-            .setTitle(getString(R.string.show_warning_before_installation_dialog__title))
-            .setMessage(getText(requireNotNull(app.detail.displayWarning) {
+            .setTitle(R.string.show_warning_before_installation_dialog__title)
+            .setMessage(requireNotNull(app.detail.displayWarning) {
                 "$app must have a warning message."
-            }))
-            .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
+            })
+            .setPositiveButton(R.string.dialog_button__yes) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
                 mainActivity.installAppButCheckForCurrentDownloads(app)
             }
-            .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
+            .setNegativeButton(R.string.dialog_button__do_not_install) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
             }
             .create()

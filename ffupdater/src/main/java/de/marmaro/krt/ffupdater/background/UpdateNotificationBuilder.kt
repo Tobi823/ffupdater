@@ -47,7 +47,7 @@ object UpdateNotificationBuilder {
             .setSmallIcon(R.mipmap.transparent, 0)
             .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
             .setContentTitle(context.getString(R.string.update_notification__title, appTitle))
-            .setContentText(context.getString(R.string.update_notification__text))
+            .setContentText(context.getText(R.string.update_notification__text))
             .setContentIntent(updateAppIntent)
             .setAutoCancel(true)
             .build()

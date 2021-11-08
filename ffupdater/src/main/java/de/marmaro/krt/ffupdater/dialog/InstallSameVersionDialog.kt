@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.MainActivity
@@ -17,16 +19,21 @@ class InstallSameVersionDialog : DialogFragment() {
         })
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-            .setTitle(getString(R.string.install_same_version_dialog__title))
-            .setMessage(getString(R.string.install_same_version_dialog__message))
-            .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
+            .setTitle(R.string.install_same_version_dialog__title)
+            .setMessage(R.string.install_same_version_dialog__message)
+            .setPositiveButton(R.string.dialog_button__yes) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
                 mainActivity.installAppButCheckForCurrentDownloads(app)
             }
-            .setNegativeButton(getString(R.string.dialog_button__do_not_install)) { dialog: DialogInterface, _: Int ->
+            .setNegativeButton(R.string.dialog_button__do_not_install) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
             }
             .create()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance()
     }
 
     fun show(manager: FragmentManager) {

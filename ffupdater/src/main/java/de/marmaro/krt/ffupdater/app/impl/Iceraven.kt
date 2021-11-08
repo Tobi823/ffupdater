@@ -28,8 +28,8 @@ class Iceraven : BaseAppWithCachedUpdateCheck() {
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"
 
     override fun getDisplayInstalledVersion(context: Context): String {
-        val version = getInstalledVersion(context)?.replace("iceraven-", "")
-        return context.getString(R.string.installed_version, version ?: "")
+        val displayVersion = getInstalledVersion(context)?.replace("iceraven-", "") ?: ""
+        return context.getString(R.string.installed_version, displayVersion)
     }
 
     override fun getDisplayAvailableVersion(

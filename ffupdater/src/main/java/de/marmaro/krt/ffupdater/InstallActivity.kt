@@ -497,9 +497,7 @@ class InstallActivity : AppCompatActivity() {
                 if (error.contains("INSTALL_FAILED_INTERNAL_ERROR") &&
                     error.contains("Permission Denied")
                 ) {
-                    val help =
-                        ia.getString(R.string.install_activity__try_disable_miui_optimization)
-                    error += "\n\n" + help
+                    error += "\n\n" + ia.getString(R.string.install_activity__try_disable_miui_optimization)
                 }
                 ia.setText(R.id.installerFailedReason, error)
             }
