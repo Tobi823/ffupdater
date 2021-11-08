@@ -212,7 +212,8 @@ Use Android Studio to clone and run the app. Nothing special needs to be done.
 ## License
 
 ````
-FFUpdater -- a simple Android app to update Firefox.
+FFUpdater -- Updater for privacy friendly browser
+Copyright (C) 2019-2021 Tobias Hellmann https://github.com/Tobi823
 Copyright (C) 2015-2019 Boris Kraut <krt@nurfuerspam.de>
 
 This program is free software: you can redistribute it and/or modify
