@@ -153,5 +153,5 @@
     <string name="update_notification__title">Налично издание на %1$s</string>
     <string name="vivaldi__description">Vivaldi е нов поверителен браузър, изграден с гъвкавост наум. Набит е с полезни възможности, в т.ч. вградени блокер на реклами (фабрично забранен), защита срещу проследяване и поверителен превод. Инструменти като записки и прихващане на страници улесняват работата, но и пестят време. Истинските раздели в настолен стил, темите в тъмен или светъл облик и изборите на оформление ще позволят да го опитомите. Изтеглете безплатно и сърфирайте бързо.</string>
     <string name="vivaldi__title">Браузър Vivaldi</string>
-    <string name="vivaldi__warning">Vivaldi използва техническата основа на Google Chrome (Chromium) - това не се харесва на някои хора. Искате ли да инсталирате Vivaldi?</string>
+    <string name="vivaldi__warning">Vivaldi е само частично с отворен код (за повече информация вижте <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Освен това той използва техническата основа на Google Chrome (Chromium).\n\nТова не се харесва на някои хора. Искате ли да инсталирате Vivaldi?</string>
 </resources>

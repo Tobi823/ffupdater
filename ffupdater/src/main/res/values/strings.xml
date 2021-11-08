@@ -157,5 +157,5 @@
     <string name="vivaldi__description">Discover a blazingly fast Internet browser! Vivaldi is a new, free, and private web browser built with flexibility in mind. It comes packed with useful features including a built-in AdBlocker (pop-up blocker), tracking protection, and private translation. Browser options like proper desktop-style tabs, dark/light Themes, and layout choices help you make it yours.</string>
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">Vivaldi uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Vivaldi?</string>
+    <string name="vivaldi__warning">"Vivaldi is only partially open source (see <a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?"</string>
 </resources>

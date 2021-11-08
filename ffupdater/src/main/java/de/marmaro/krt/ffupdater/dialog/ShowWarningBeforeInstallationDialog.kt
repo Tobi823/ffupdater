@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.MainActivity
@@ -21,7 +23,7 @@ class ShowWarningBeforeInstallationDialog : DialogFragment() {
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
             .setTitle(getString(R.string.show_warning_before_installation_dialog__title))
-            .setMessage(getString(requireNotNull(app.detail.displayWarning) {
+            .setMessage(getText(requireNotNull(app.detail.displayWarning) {
                 "$app must have a warning message."
             }))
             .setPositiveButton(getString(R.string.dialog_button__yes)) { dialog: DialogInterface, _: Int ->
@@ -32,6 +34,11 @@ class ShowWarningBeforeInstallationDialog : DialogFragment() {
                 dialog.dismiss()
             }
             .create()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance()
     }
 
     fun show(manager: FragmentManager) {

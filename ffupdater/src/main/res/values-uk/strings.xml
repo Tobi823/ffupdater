@@ -153,5 +153,5 @@
     <string name="update_notification__title">Обновление для "%1$s" доступно</string>
     <string name="vivaldi__description">Vivaldi - це новий приватний браузер з унікальною гнучкістю в налаштуванні. Він має такі корисні інстументи, як блокувальник реклами (вимкнений за промовчанням), захист від стеження та приватний перекладач. Нотатки та знімки сторінок прискорюють та полегшують робочий процес. Налаштування теми оформлення та вигляду й розташування вкладок додають індивідуальність браузерові. Завантажте безкоштовно та переглядайте сайти з насолодою.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
-    <string name="vivaldi__warning">Vivaldi використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Vivaldi?</string>
+    <string name="vivaldi__warning">Vivaldi є лише частково відкритим вихідним кодом (див. <a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для отримання додаткової інформації). Він також використовує технічну базу Google Chrome (Chromium).\n\nДеяким людям це не до вподоби. Чи хочете ви встановити Vivaldi?</string>
 </resources>

@@ -153,5 +153,5 @@
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
     <string name="vivaldi__description">"O Vivaldi é um novo navegador web, com bloqueador de anúncios integrado, proteção contra rastreadores e úteis funcionalidades integradas. Navegue com separadores únicos estilo-computador, sincronização com encriptação ponto a ponto, modo escuro &amp; privado. Baixe gratuitamente e navegue de forma rápida, crie notas no navegador e faça capturas de tela de página inteira."</string>
     <string name="vivaldi__title">Navegador Vivaldi</string>
-    <string name="vivaldi__warning">A Vivaldi usa a base técnica do Google Chrome (Cromo) - algumas pessoas não gostam disso. Você quer instalar o Vivaldi?</string>
+    <string name="vivaldi__warning">O Vivaldi é apenas parcialmente código aberto (ver <a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a> para mais informações). Ele também utiliza a base técnica do Google Chrome (Cromo).\n\nAlgumas pessoas não gostam disto. Você quer instalar o Vivaldi?</string>
 </resources>
