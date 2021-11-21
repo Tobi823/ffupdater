@@ -59,7 +59,7 @@ interface BaseApp {
         file: File,
         available: AvailableVersionResult
     ): Boolean {
-        return PackageManagerUtil.getPackageArchiveVersionName(
+        return PackageManagerUtil.getPackageArchiveVersionNameOrNull(
             context.packageManager,
             file.absolutePath
         ) == available.version
