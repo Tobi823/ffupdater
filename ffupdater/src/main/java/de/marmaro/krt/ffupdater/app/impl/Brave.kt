@@ -10,7 +10,9 @@ import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
 import de.marmaro.krt.ffupdater.device.ABI
 
 /**
+ * https://github.com/brave/brave-browser/releases
  * https://api.github.com/repos/brave/brave-browser/releases
+ * https://www.apkmirror.com/apk/brave-software/brave-browser/
  */
 class Brave : BaseAppWithCachedUpdateCheck() {
     override val packageName = "com.brave.browser"
