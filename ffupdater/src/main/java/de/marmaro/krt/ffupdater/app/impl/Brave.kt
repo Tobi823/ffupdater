@@ -37,12 +37,11 @@ class Brave : BaseAppWithCachedUpdateCheck() {
             repoName = "brave-browser",
             resultsPerPage = 20,
             validReleaseTester = { release: Release ->
-                !release.isPreRelease &&
-                        release.name.startsWith("Release v") &&
+                release.name.startsWith("Release v") &&
                         release.assets.any { it.name == fileName }
             },
             correctAssetTester = { asset: Asset -> asset.name == fileName })
-        val result = githubConsumer.updateCheck()
+        val result = githubConsumer.updateCheckAllReleases()
         val version = result.tagName.replace("v", "")
         return AvailableVersionResult(
             downloadUrl = result.url,

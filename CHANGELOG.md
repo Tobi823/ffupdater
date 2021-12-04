@@ -1,3 +1,7 @@
+# 2021-12-05 Version 74.5.3 (90)
+
+* Fix Brave update check
+
 # 2021-11-08 Version 74.5.2 (89)
 
 * Update warning for Vivaldi (thanks gnuhead-chieb - Tobi823/ffupdater#92)

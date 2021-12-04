@@ -1,0 +1,1 @@
+* Fix Brave update check

@@ -173,6 +173,9 @@ features and no additional privacy features. FFUpdater is about privacy and not 
 
 ### Firefox Lite
 
+02.12.2021: End of support for Firefox Lockwise https://support.mozilla.org/en-US/kb/end-of-support-firefox-lockwise
+> Mozilla will end support for the Firefox Lockwise app on Android and iOS, effective December 13, 2021.
+
 14.03.2021: The latest release of Firefox Lite is not longer signed and thereby can't be used to upgrade an
 existing Firefox Lite installation. Moreover the developers haven't responded to the Github issue "[BUG]
 Unsigned apk ?" from 30.01.2021
