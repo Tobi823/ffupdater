@@ -142,7 +142,7 @@ class DownloadApiChecker {
         val result = runBlocking { Lockwise().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 12 * 30
+        val maxDays = 14 * 30
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
