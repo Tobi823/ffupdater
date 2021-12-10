@@ -158,7 +158,7 @@ class DownloadApiChecker {
         val result = runBlocking { Styx().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 30
+        val maxDays = 45
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
