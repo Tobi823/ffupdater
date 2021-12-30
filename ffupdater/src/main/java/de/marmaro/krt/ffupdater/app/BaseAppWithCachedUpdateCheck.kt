@@ -34,7 +34,7 @@ abstract class BaseAppWithCachedUpdateCheck : BaseApp {
         val availableVersionResult = checkNotNull(cache).availableVersionResult
         return UpdateCheckResult(
             availableResult = availableVersionResult,
-            isUpdateAvailable = !isInstalledVersionUpToDate(context, availableVersionResult),
+            isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, availableVersionResult),
             displayVersion = getDisplayAvailableVersion(context, availableVersionResult)
         )
     }

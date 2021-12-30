@@ -139,6 +139,8 @@ repository or the official *F-Droid* repository) the app version was installed
   BSD-3)
 - Partially copy and modify [Crasher by James Fenn (Apache 2.0)](https://github.com/fennifith/Crasher) to the
   FFUpdater code base for crash reports
+- [G00fY2/version-compare](https://github.com/G00fY2/version-compare) for comparing versions of installed and
+  available apps (Apache 2.0)
 
 ## My motivation / Project goals
 

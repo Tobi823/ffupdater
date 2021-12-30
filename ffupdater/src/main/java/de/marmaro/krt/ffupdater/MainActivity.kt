@@ -1,8 +1,6 @@
 package de.marmaro.krt.ffupdater
 
 import android.app.AlertDialog
-import android.app.DownloadManager
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -45,7 +43,6 @@ class MainActivity : AppCompatActivity() {
     private val availableVersions: EnumMap<App, TextView> = EnumMap(App::class.java)
     private val downloadButtons: EnumMap<App, ImageButton> = EnumMap(App::class.java)
     private val errorsDuringUpdateCheck: EnumMap<App, Exception?> = EnumMap(App::class.java)
-    private lateinit var downloadManager: DownloadManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +53,6 @@ class MainActivity : AppCompatActivity() {
         StrictModeSetup.enableStrictMode()
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         Migrator().migrate(this)
-        downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             InstallNewAppDialog.newInstance().show(supportFragmentManager)
@@ -88,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     fun installAppButCheckForCurrentDownloads(app: App) {
-        if (DownloadManagerUtil.isDownloadingFilesNow(downloadManager)) {
+        if (DownloadManagerUtil.isDownloadingFilesNow(this)) {
             RunningDownloadsDialog.newInstance(app).show(supportFragmentManager)
         } else {
             installApp(app)

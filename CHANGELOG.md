@@ -1,6 +1,7 @@
 # 2021-12-30 Version 75.0.0 (91)
 
 * Remove Styx because it is not longer maintained (Tobi823/ffupdater#101).
+* Improve version comparison with G00fY2/version-compare (Tobi823/ffupdater#98)
 
 # 2021-12-05 Version 74.5.3 (90)
 

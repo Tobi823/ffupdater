@@ -42,7 +42,8 @@ interface BaseApp {
     }
 
     @AnyThread
-    fun appInstallationCallback(context: Context, available: AvailableVersionResult) {}
+    fun appInstallationCallback(context: Context, available: AvailableVersionResult) {
+    }
 
     /**
      * 2min timeout
@@ -54,19 +55,21 @@ interface BaseApp {
     suspend fun updateCheck(context: Context): UpdateCheckResult
 
     @MainThread
-    suspend fun isCacheFileUpToDate(
+    suspend fun isAvailableVersionEqualToArchive(
         context: Context,
         file: File,
         available: AvailableVersionResult
     ): Boolean {
-        return PackageManagerUtil.getPackageArchiveVersionNameOrNull(
+        val archiveVersion = PackageManagerUtil.getPackageArchiveVersionNameOrNull(
             context.packageManager,
             file.absolutePath
-        ) == available.version
+        ) ?: return false
+        return VersionCompareHelper.isAvailableVersionEqual(archiveVersion, available.version)
     }
 
     @AnyThread
-    fun isInstalledVersionUpToDate(context: Context, available: AvailableVersionResult): Boolean {
-        return getInstalledVersion(context) == available.version
+    fun isAvailableVersionHigherThanInstalled(context: Context, available: AvailableVersionResult): Boolean {
+        val installedVersion = getInstalledVersion(context) ?: return true
+        return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
     }
 }

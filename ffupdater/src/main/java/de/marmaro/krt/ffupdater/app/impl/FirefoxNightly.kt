@@ -51,7 +51,7 @@ class FirefoxNightly : BaseAppWithCachedUpdateCheck() {
         )
     }
 
-    override suspend fun isCacheFileUpToDate(
+    override suspend fun isAvailableVersionEqualToArchive(
         context: Context,
         file: File,
         available: AvailableVersionResult,
@@ -60,7 +60,7 @@ class FirefoxNightly : BaseAppWithCachedUpdateCheck() {
         return hash == available.fileHash
     }
 
-    override fun isInstalledVersionUpToDate(
+    override fun isAvailableVersionHigherThanInstalled(
         context: Context,
         available: AvailableVersionResult,
     ): Boolean {
@@ -68,8 +68,9 @@ class FirefoxNightly : BaseAppWithCachedUpdateCheck() {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
             val installedSha256Hash = preferences.getString(INSTALLED_SHA256_HASH, "unknown")
             val installedVersionCode = preferences.getLong(INSTALLED_VERSION_CODE, -1)
-            available.fileHash?.hexValue == installedSha256Hash &&
-                    getVersionCode(context) == installedVersionCode
+            val sameHex = available.fileHash?.hexValue == installedSha256Hash
+            val sameVersionCode = getVersionCode(context) == installedVersionCode
+            !(sameHex && sameVersionCode)
         } catch (e: PackageManager.NameNotFoundException) {
             false
         }

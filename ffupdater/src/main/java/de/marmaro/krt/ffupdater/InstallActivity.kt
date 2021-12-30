@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater
 
-import android.app.DownloadManager
 import android.app.DownloadManager.*
 import android.content.*
 import android.content.pm.PackageManager
@@ -48,7 +47,6 @@ import java.util.concurrent.*
  */
 class InstallActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
-    private lateinit var downloadManager: DownloadManager
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
     private lateinit var appCache: AppCache
@@ -86,7 +84,6 @@ class InstallActivity : AppCompatActivity() {
         app = App.valueOf(passedAppName)
 
         fingerprintValidator = FingerprintValidator(packageManager)
-        downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         appInstaller = AppInstaller.create(
             successfulInstallationCallback = {
                 restartStateMachine(USER_HAS_INSTALLED_APP_SUCCESSFUL)
@@ -317,7 +314,6 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
             ia.appCache.delete(ia)
             ia.viewModel.downloadId = DownloadManagerUtil.enqueue(
-                downloadManager = ia.downloadManager,
                 context = ia,
                 app = ia.app,
                 availableVersionResult = updateCheckResult.availableResult,
@@ -330,9 +326,7 @@ class InstallActivity : AppCompatActivity() {
         suspend fun downloadIsEnqueued(ia: InstallActivity): State {
             val downloadId = requireNotNull(ia.viewModel.downloadId)
             do {
-                val downloadStatus = DownloadManagerUtil.getStatusAndProgress(
-                    ia.downloadManager,
-                    downloadId)
+                val downloadStatus = DownloadManagerUtil.getStatusAndProgress(ia, downloadId)
                 val downloadStatusText = DownloadManagerUtil.getStatusText(ia, downloadStatus)
 
                 ia.setText(
@@ -535,7 +529,7 @@ class InstallActivity : AppCompatActivity() {
         //===============================================
 
         private fun deleteDownloadedCacheFile(ia: InstallActivity) {
-            ia.viewModel.downloadId?.let { ia.downloadManager.remove(it) }
+            ia.viewModel.downloadId?.let { id -> DownloadManagerUtil.remove(ia, id) }
             ia.appCache.delete(ia)
         }
     }

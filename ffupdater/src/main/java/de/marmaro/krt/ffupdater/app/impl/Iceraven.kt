@@ -27,17 +27,9 @@ class Iceraven : BaseAppWithCachedUpdateCheck() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"
 
-    override fun getDisplayInstalledVersion(context: Context): String {
-        val displayVersion = getInstalledVersion(context)?.replace("iceraven-", "") ?: ""
-        return context.getString(R.string.installed_version, displayVersion)
-    }
-
-    override fun getDisplayAvailableVersion(
-        context: Context,
-        availableVersionResult: AvailableVersionResult
-    ): String {
-        val version = availableVersionResult.version.replace("iceraven-", "")
-        return context.getString(R.string.available_version, version)
+    override fun getInstalledVersion(context: Context): String? {
+        val installedVersion = super.getInstalledVersion(context)
+        return installedVersion?.replace("iceraven-", "")
     }
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
@@ -56,10 +48,9 @@ class Iceraven : BaseAppWithCachedUpdateCheck() {
             },
             correctAssetTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
         val result = githubConsumer.updateCheck()
-        val version = result.tagName
         return AvailableVersionResult(
             downloadUrl = result.url,
-            version = version,
+            version = result.tagName.replace("iceraven-", ""),
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null

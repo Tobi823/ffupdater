@@ -120,7 +120,7 @@ class IceravenIT {
             packageInfo.versionName = "iceraven-1.6.0"
             val actual = Iceraven().updateCheck(context)
             assertFalse(actual.isUpdateAvailable)
-            assertEquals("iceraven-1.6.0", actual.version)
+            assertEquals("1.6.0", actual.version)
             assertEquals(66150140L, actual.fileSizeBytes)
             assertEquals(
                 ZonedDateTime.parse("2021-02-07T00:37:13Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
@@ -133,7 +133,7 @@ class IceravenIT {
             packageInfo.versionName = "iceraven-1.5.0"
             val actual = Iceraven().updateCheck(context)
             assertTrue(actual.isUpdateAvailable)
-            assertEquals("iceraven-1.6.0", actual.version)
+            assertEquals("1.6.0", actual.version)
             assertEquals(66150140L, actual.fileSizeBytes)
             assertEquals(
                 ZonedDateTime.parse("2021-02-07T00:37:13Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),

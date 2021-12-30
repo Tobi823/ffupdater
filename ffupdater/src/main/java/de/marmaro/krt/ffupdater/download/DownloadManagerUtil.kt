@@ -20,7 +20,6 @@ object DownloadManagerUtil {
      * Enqueue a new download.
      */
     fun enqueue(
-        downloadManager: DownloadManager,
         context: Context,
         app: App,
         availableVersionResult: AvailableVersionResult,
@@ -34,6 +33,7 @@ object DownloadManagerUtil {
             .setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS, fileName)
             .setNotificationVisibility(Request.VISIBILITY_VISIBLE)
 
+        val downloadManager = getDownloadManager(context)
         return downloadManager.enqueue(request)
     }
 
@@ -44,10 +44,11 @@ object DownloadManagerUtil {
      * @param id id
      * @return status (constants from `android.app.DownloadManager`) and percent (0-100)
      */
-    fun getStatusAndProgress(downloadManager: DownloadManager, id: Long): DownloadStatus {
+    fun getStatusAndProgress(context: Context, id: Long): DownloadStatus {
         val query = Query()
         query.setFilterById(id)
         try {
+            val downloadManager = getDownloadManager(context)
             downloadManager.query(query).use { cursor ->
                 if (!cursor.moveToFirst()) {
                     return DownloadStatus(DownloadStatus.Status.FAILED, 0)
@@ -86,13 +87,23 @@ object DownloadManagerUtil {
         }
     }
 
-    fun isDownloadingFilesNow(downloadManager: DownloadManager): Boolean {
+    fun isDownloadingFilesNow(context: Context): Boolean {
         val query = Query()
         query.setFilterByStatus(STATUS_RUNNING)
+        val downloadManager = getDownloadManager(context)
         downloadManager.query(query).use { cursor ->
             //cursor will be null if "Download Manager" is disabled
             return cursor?.moveToFirst() ?: false
         }
+    }
+
+    fun remove(context: Context, id: Long): Int {
+        val downloadManager = getDownloadManager(context)
+        return downloadManager.remove(id)
+    }
+
+    private fun getDownloadManager(context: Context): DownloadManager {
+        return context.getSystemService(Context.DOWNLOAD_SERVICE)!! as DownloadManager
     }
 
     data class DownloadStatus(val status: Status, val progressInPercentage: Int) {
