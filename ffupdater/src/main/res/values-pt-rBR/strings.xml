@@ -122,8 +122,6 @@
     <string name="settings__theme_system_default">Adaptar do sistema</string>
     <string name="settings__title">Verificar por atualizações</string>
     <string name="show_warning_before_installation_dialog__title">Aviso</string>
-    <string name="styx__description">" Um garfo de Fulguris com funções adicionais.\n\nBloqueador de anúncios e malwares: Use o bloqueador de anúncios embutido ou use-o com arquivos host locais ou on-line. Um bloqueador de malware também está a bordo.\n\nPrivacidade: O Styx protege e respeita a privacidade. Um modo incógnito está incluído. Pode-se negar cookies. (A ser encontrado nas configurações). Funções para limpar abas, histórico, cookies e cache. Gerenciamento de aplicativos de terceiros."</string>
-    <string name="styx__title">Navegador Styx</string>
     <string name="ungoogled_chromium__description">Google Chromium, sem integração com o Google.\n\nSem ter que acessar uma conta Google, Chromium se sai muito bem em termos de segurança e privacidade. No entanto, a Chromium ainda tem alguma dependência dos serviços web e binários do Google. Além disso, o Google projetou o Chromium para ser fácil e intuitivo para os usuários, o que significa que eles comprometem a transparência e o controle das operações internas.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">O Chromium sem goteiras usa a base técnica do Google Chrome (Chromium) - algumas pessoas não gostam disso. Você quer instalar o Cromo Ungoogled?</string>

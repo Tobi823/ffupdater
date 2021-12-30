@@ -6,7 +6,6 @@ Download, install and update these privacy friendly browsers:
 - Firefox Nightly
 - Firefox for Android Beta
 - Iceraven
-- Styx
 - Ungoogled Chromium
 - Vivaldi
 

@@ -122,8 +122,6 @@
     <string name="settings__theme_system_default">Utiliser le système par défaut</string>
     <string name="settings__title">Vérification de la mise à jour de la demande</string>
     <string name="show_warning_before_installation_dialog__title">Avertissement</string>
-    <string name="styx__description">Un fork de Fulguris avec des fonctions supplémentaires.\n\nBloqueur de publicités et de logiciels malveillants : Utilisez le bloqueur de publicité intégré ou utilisez-le avec des fichiers hôtes locaux ou en ligne. Un bloqueur de logiciels malveillants est également intégré.\n\nConfidentialité : Styx protège et respecte la vie privée. Un mode incognito est inclus. On peut refuser les cookies. (A trouver dans les paramètres). Fonctions pour effacer les onglets, l\'historique, les cookies et le cache. Gestion des applications tierces.</string>
-    <string name="styx__title">Navigateur Styx</string>
     <string name="ungoogled_chromium__description">Google Chromium, sans intégration avec Google.\n\nSans connexion à un compte Google, Chromium s\'en sort plutôt bien en termes de sécurité et de confidentialité. Cependant, Chromium a toujours une certaine dépendance vis-à-vis des services Web et des binaires de Google. En outre, Google a conçu Chromium pour qu\'il soit facile et intuitif pour les utilisateurs, ce qui signifie qu\'ils font des compromis sur la transparence et le contrôle des opérations internes.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium utilise la base technique de Google Chrome (Chromium), ce qui ne plaît pas à tout le monde. Voulez-vous installer Ungoogled Chromium?</string>

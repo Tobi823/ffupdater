@@ -197,7 +197,6 @@ class SettingsHelperTest {
                 "LOCKWISE",
                 "BROMITE",
                 "VIVALDI",
-                "STYX",
                 "UNGOOGLED_CHROMIUM"
             )
         ).commit()

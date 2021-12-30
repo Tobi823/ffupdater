@@ -125,8 +125,6 @@
     <string name="settings__theme_system_default">Use system default</string>
     <string name="settings__title">Application Update Check</string>
     <string name="show_warning_before_installation_dialog__title">Warning</string>
-    <string name="styx__description">A fork of Fulguris with additional functions.\n\nAd &amp; Malware Blocker: Use the built-in ad blocker or use it with local or online host files. A malware blocker is also on board.\n\nPrivacy: Styx protects and respects privacy. An incognito mode is included. One can deny cookies. (To be found in the settings). Functions to clear tabs, history, cookies and cache. Management of third-party apps.</string>
-    <string name="styx__title">Styx Browser</string>
     <string name="ungoogled_chromium__description">Google Chromium, sans integration with Google.\n\nWithout signing in to a Google Account, Chromium does pretty well in terms of security and privacy. However, Chromium still has some dependency on Google web services and binaries. In addition, Google designed Chromium to be easy and intuitive for users, which means they compromise on transparency and control of internal operations.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Ungoogled Chromium?</string>

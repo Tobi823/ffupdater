@@ -122,8 +122,6 @@
     <string name="settings__theme_system_default">システム標準に従う</string>
     <string name="settings__title">アップデートチェック</string>
     <string name="show_warning_before_installation_dialog__title">警告</string>
-    <string name="styx__description">Fulgurisのフォークで機能を追加したもの。\n\n広告＆マルウェアブロッカー。内蔵の広告ブロッカーを使用するか、ローカルまたはオンラインのホストファイルで使用します。マルウェアブロッカーも搭載されています。\n\nプライバシー Styxはプライバシーを保護、尊重します。インコグニートモードが搭載されています。クッキーを拒否することもできます。(設定で確認できます)。タブ、履歴、クッキー、キャッシュの消去機能。サードパーティ製アプリの管理。</string>
-    <string name="styx__title">Styxブラウザ</string>
     <string name="ungoogled_chromium__description">Googleとの統合がないGoogle Chromium。\n\nGoogleアカウントにサインインしなくても、Chromiumはセキュリティとプライバシーの面で非常に優れています。しかし、ChromiumはGoogleのウェブサービスやバイナリに依存しています。さらに、GoogleはChromiumをユーザーにとって簡単で直感的なものにするように設計しているため、内部操作の透明性とコントロールに妥協していることになる。</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromiumは、Google Chrome（Chromium）の技術基盤を使用していますが、これを好まない人もいます。Ungoogled Chromiumをインストールしますか？</string>

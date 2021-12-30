@@ -12,7 +12,6 @@ Download, install and update these privacy friendly browsers:
 - [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
 - [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
-- [Styx](https://play.google.com/store/apps/details?id=com.jamal2367.styx) [GitHub Repository](https://github.com/jamal2362/Styx)
 - [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium-android)
 - [Vivaldi](https://vivaldi.com/download/) [Source Code](https://vivaldi.com/source/)
 
@@ -46,9 +45,9 @@ The applications are downloaded from these locations:
 - Firefox Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
 - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
 - Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
-- Firefox for Android Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
+- Firefox for Android
+  Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
 - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
-- Styx: <https://api.github.com/repos/jamal2362/Styx/releases/latest>
 - Ungoogled Chromium: <https://api.github.com/repos/ungoogled-software/ungoogled-chromium-android/releases>
 - Vivaldi: <https://vivaldi.com/download/>
 
@@ -149,7 +148,19 @@ repository or the official *F-Droid* repository) the app version was installed
 
 [How to contribute](HOW_TO_CONTRIBUTE.md)
 
-## Deprecated browsers
+## Deprecated browsers#
+
+### Styx Browser
+
+30.12.2021: https://github.com/Tobi823/ffupdater/issues/101
+
+It seems that @jamal2362 does not maintain the Styx browser any longer:
+
+- The GitHub repository (https://github.com/jamal2362/Styx) is deleted or private.
+- Styx is removed from Google Play (https://play.google.com/store/apps/details?id=com.jamal2367.styx).
+
+Due to the deleted GitHub repository, Styx cannot be downloaded by FFUpdater. And even if - end users should
+not use a browser that is no longer updated.
 
 ### Kiwi Browser
 
@@ -173,7 +184,8 @@ features and no additional privacy features. FFUpdater is about privacy and not 
 
 ### Firefox Lite
 
-02.12.2021: End of support for Firefox Lockwise https://support.mozilla.org/en-US/kb/end-of-support-firefox-lockwise
+02.12.2021: End of support for Firefox
+Lockwise https://support.mozilla.org/en-US/kb/end-of-support-firefox-lockwise
 > Mozilla will end support for the Firefox Lockwise app on Android and iOS, effective December 13, 2021.
 
 14.03.2021: The latest release of Firefox Lite is not longer signed and thereby can't be used to upgrade an

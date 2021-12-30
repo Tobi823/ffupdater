@@ -1,3 +1,7 @@
+# 2021-12-30 Version 75.0.0 (91)
+
+* Remove Styx because it is not longer maintained (Tobi823/ffupdater#101).
+
 # 2021-12-05 Version 74.5.3 (90)
 
 * Fix Brave update check
@@ -10,7 +14,6 @@
 # 2021-11-07 Version 74.5.1 (88)
 
 * Add Vivaldi (Tobiwan/ffupdater#89)
-* Add Styx (Tobi823/ffupdater#48)
 * Add Ungoogled Chromium (Tobi823/ffupdater#50)
 * Update description of Firefox Klar (thanks cosify - Tobi823/ffupdater#91)
 * Crash report can partially selected and copied

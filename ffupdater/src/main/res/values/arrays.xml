@@ -53,7 +53,6 @@
         <item>@string/iceraven__title</item>
         <item>@string/bromite__title</item>
         <item>@string/vivaldi__title</item>
-        <item>@string/styx__title</item>
         <item>@string/ungoogled_chromium__title</item>
     </string-array>
 
@@ -68,7 +67,6 @@
         <item>ICERAVEN</item>
         <item>BROMITE</item>
         <item>VIVALDI</item>
-        <item>STYX</item>
         <item>UNGOOGLED_CHROMIUM</item>
     </string-array>
 
