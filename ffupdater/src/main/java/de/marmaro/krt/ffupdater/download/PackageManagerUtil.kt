@@ -20,10 +20,10 @@ object PackageManagerUtil {
             val packageInfo = if (DeviceEnvironment.supportsAndroid11()) {
                 // GET_SIGNING_CERTIFICATES does not work on Android 9/10
                 val packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
-                checkNotNull(packageInfo) { "PackageInfo for file '$packageInfo' is null." }
+                checkNotNull(packageInfo) { "PackageInfo for file '$path' is null." }
             } else {
                 val packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
-                checkNotNull(packageInfo) { "PackageInfo for file '$packageInfo' is null." }
+                checkNotNull(packageInfo) { "PackageInfo for file '$path' is null." }
             }
             extractSignature(packageInfo)
         }
