@@ -3,6 +3,7 @@
 - add new class in de.marmaro.krt.ffupdater.app.impl
 - add entry in de.marmaro.krt.ffupdater.app.App
 - add entry in the arrays disabledAppEntries + disabledAppEntryValues in src/main/res/values/arrays.xml
+- are the entries in disabledAppEntryValues correct?
 - add entry in AndroidManifest.xml <queries>
 - update README.md
 - update fastlane/metadata/android/en-US/{full_description.txt,short_description.txt}

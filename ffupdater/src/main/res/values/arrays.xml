@@ -57,9 +57,9 @@
     </string-array>
 
     <string-array name="disabledAppEntryValues">
-        <item>FENIX_RELEASE</item>
-        <item>FENIX_BETA</item>
-        <item>FENIX_NIGHTLY</item>
+        <item>FIREFOX_RELEASE</item>
+        <item>FIREFOX_BETA</item>
+        <item>FIREFOX_NIGHTLY</item>
         <item>FIREFOX_FOCUS</item>
         <item>FIREFOX_KLAR</item>
         <item>LOCKWISE</item>
