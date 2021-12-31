@@ -50,7 +50,9 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.main_activity)
         setSupportActionBar(findViewById(R.id.toolbar))
-        StrictModeSetup.enableStrictMode()
+        if (BuildConfig.BUILD_TYPE == "debug") {
+            StrictModeSetup.enableStrictMode()
+        }
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         Migrator().migrate(this)
 

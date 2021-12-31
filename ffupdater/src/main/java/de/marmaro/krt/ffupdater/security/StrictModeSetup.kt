@@ -5,8 +5,7 @@ import android.os.StrictMode.VmPolicy
 import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 
 /**
- * Configure StrictMode to improve security (by prohibit unencrypted network traffic) and detect
- * bugs during development.
+ * Configure StrictMode to find bugs or other problems.
  */
 object StrictModeSetup {
     fun enableStrictMode() {
@@ -21,9 +20,11 @@ object StrictModeSetup {
         )
 
         val vmPolicyBuilder = VmPolicy.Builder()
-        vmPolicyBuilder.detectAll() //because of the always present LeakedClosableViolation
-        //vmPolicyBuilder.detectIncorrectContextUse() only available in API 31
-        //vmPolicyBuilder.detectUnsafeIntentLaunch() only available in API 31
+        //vmPolicyBuilder.detectAll() //because of the always present LeakedClosableViolation
+        if (DeviceEnvironment.supportsAndroid12()) {
+            vmPolicyBuilder.detectIncorrectContextUse()
+            vmPolicyBuilder.detectUnsafeIntentLaunch()
+        }
         if (DeviceEnvironment.supportsAndroidMarshmallow()) {
             vmPolicyBuilder.detectActivityLeaks()
             vmPolicyBuilder.detectCleartextNetwork()
@@ -45,6 +46,7 @@ object StrictModeSetup {
         }
         StrictMode.setVmPolicy(vmPolicyBuilder
             .penaltyLog()
+            .penaltyDeath()
             .build())
     }
 }
