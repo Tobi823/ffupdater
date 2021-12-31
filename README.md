@@ -114,6 +114,7 @@ repository or the official *F-Droid* repository) the app version was installed
   (Go to Settings > Repositories > Enable "Guardian Project Official Releases".)
   I don't feel confident enough that I can install and update the Tor Browser / Orbot securely
   (because I think there is much more at stake than with other browsers).
+- Please reopen FFUpdater after moving it to the internal/external storage.
 
 ## Git repositories:
 

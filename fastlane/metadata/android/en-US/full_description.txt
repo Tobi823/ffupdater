@@ -16,4 +16,6 @@ FFUpdater will check periodically for updates and will display a notification wh
 
 FFUpdater will also automatically download the app updates in the background if the current network is unmetered and the device has enough storage.
 
+Please reopen FFUpdater after moving it to the internal/external storage.
+
 Visit https://notabug.org/Tobiwan/ffupdater/src/master/README.md or use the "Source Code" link below to see more information about security measurements, other distribution channels, limitations, bugs, FAQ, build instructions, used 3rd-party libraries, technical details etc.
