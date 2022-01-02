@@ -15,7 +15,7 @@ object StrictModeSetup {
                 .permitDiskReads() // for storing preferences
                 .permitDiskWrites() // for downloading apps which will be installed
                 .penaltyLog()
-                .penaltyDeath()
+                //.penaltyDeath()
                 .build()
         )
 
@@ -46,7 +46,7 @@ object StrictModeSetup {
         }
         StrictMode.setVmPolicy(vmPolicyBuilder
             .penaltyLog()
-            .penaltyDeath()
+            //.penaltyDeath()
             .build())
     }
 }
