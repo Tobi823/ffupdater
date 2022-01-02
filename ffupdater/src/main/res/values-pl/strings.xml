@@ -105,6 +105,14 @@
     <string name="running_downloads_dialog__negative">Nie, nie pobieraj tego</string>
     <string name="running_downloads_dialog__title">Pobieranie plików w trybie ciągłym</string>
     <string name="running_downloads_dialog__yes">Tak</string>
+    <string name="session_installer__not_enough_storage">Operacja nie powiodła się, ponieważ nie jest dostępna wystarczająca ilość pamięci masowej: %1$s</string>
+    <string name="session_installer__status_failure">Operacja nie powiodła się w sposób ogólny. System zawsze będzie próbował podać bardziej szczegółowy powód niepowodzenia, ale w niektórych rzadkich przypadkach może to być dostarczone.</string>
+    <string name="session_installer__status_failure_aborted">Operacja nie powiodła się, ponieważ została aktywnie przerwana. Na przykład, użytkownik aktywnie odmówił żądanych uprawnień lub sesja została porzucona.</string>
+    <string name="session_installer__status_failure_blocked">Operacja nie powiodła się, ponieważ została zablokowana. Na przykład, polityka urządzenia może blokować operację, weryfikator pakietów może zablokować operację lub aplikacja może być wymagana do podstawowej pracy systemu.</string>
+    <string name="session_installer__status_failure_conflict">Operacja nie powiodła się, ponieważ jest w konflikcie (lub jest niezgodna z) z innym pakietem już zainstalowanym na urządzeniu. Na przykład istniejące uprawnienie, niekompatybilne certyfikaty itp. Użytkownik może być w stanie odinstalować inną aplikację, aby rozwiązać ten problem.</string>
+    <string name="session_installer__status_failure_incompatible">Operacja nie powiodła się, ponieważ jest zasadniczo niekompatybilna z tym urządzeniem. Na przykład, aplikacja może wymagać funkcji sprzętowej, która nie istnieje, może brakować jej natywnego kodu dla ABI obsługiwanych przez urządzenie lub wymaga nowszej wersji SDK itp.</string>
+    <string name="session_installer__status_failure_invalid">Operacja nie powiodła się, ponieważ jeden lub więcej pakietów APK był nieprawidłowy. Na przykład, mogą one być nieprawidłowo sformowane, uszkodzone, nieprawidłowo podpisane, niedopasowane itp.</string>
+    <string name="session_installer__status_failure_storage">Operacja nie powiodła się z powodu problemów z pamięcią masową. Na przykład na urządzeniu może brakować miejsca lub nośniki zewnętrzne mogą być niedostępne. Użytkownik może pomóc w zwolnieniu miejsca lub włożeniu innego nośnika zewnętrznego.</string>
     <string name="settings__activity_label">Ustawienia</string>
     <string name="settings__automatic_check_title">Automatycznie w tle</string>
     <string name="settings__category_appearance_title">Wygląd</string>
@@ -151,5 +159,5 @@
     <string name="update_notification__title">Dostępna jest aktualizacja dla "%1$s"</string>
     <string name="vivaldi__description">"Vivaldi to nowa, prywatna przeglądarka zbudowana z myślą o elastyczności. Posiada użyteczne funkcje, takie jak blokowanie reklam, ochronę przed śledzeniem czy prywatny tłumacz. Narzedzia, w tym notatki czy przechwytywanie ekranu, oszczędzają dużo czasu. Wreszcie opcje, jak klasyczny pasek kart czy motywy, pozwalają Ci urządzić się po swojemu. Pobierz za darmo i przeglądaj sieć szybciej. "</string>
     <string name="vivaldi__title">Przeglądarka Vivaldi</string>
-    <string name="vivaldi__warning">Vivaldi jest tylko częściowo open source (zobacz <a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a>, aby uzyskać więcej informacji). Wykorzystuje również techniczne podstawy Google Chrome (Chromium).\n\nNiektórym osobom się to nie podoba. Czy chcesz zainstalować Vivaldiego?</string>
+    <string name="vivaldi__warning">Vivaldi jest tylko częściowo open source (zobacz <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>, aby uzyskać więcej informacji). Wykorzystuje również techniczne podstawy Google Chrome (Chromium).\n\nNiektórym osobom się to nie podoba. Czy chcesz zainstalować Vivaldiego?</string>
 </resources>

@@ -6,8 +6,8 @@ import android.app.PendingIntent
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageInstaller
-import android.content.pm.PackageInstaller.SessionCallback
+import android.content.IntentSender
+import android.content.pm.PackageInstaller.*
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
 import de.marmaro.krt.ffupdater.InstallActivity
@@ -28,22 +28,44 @@ class SessionInstaller(
             return@onNewIntentCallback
         }
 
-        when (val status = bundle.getInt(PackageInstaller.EXTRA_STATUS)) {
-            PackageInstaller.STATUS_PENDING_USER_ACTION -> {
+        when (val status = bundle.getInt(EXTRA_STATUS)) {
+            STATUS_PENDING_USER_ACTION -> {
                 try {
                     //FFUpdater isn't privileged, so the user has to confirm the install.
                     context.startActivity(bundle.get(Intent.EXTRA_INTENT) as Intent)
                 } catch (e: ActivityNotFoundException) {
                     val tip = context.getString(
-                        R.string.install_activity__try_disable_miui_optimization)
+                        R.string.install_activity__try_disable_miui_optimization
+                    )
                     appNotInstalledCallback("${e.message}\n\n$tip")
                 }
             }
-            PackageInstaller.STATUS_SUCCESS -> {
+            STATUS_SUCCESS -> {
                 appInstalledCallback()
             }
+            STATUS_FAILURE -> {
+                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure))
+            }
+            STATUS_FAILURE_ABORTED -> {
+                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_aborted))
+            }
+            STATUS_FAILURE_BLOCKED -> {
+                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_blocked))
+            }
+            STATUS_FAILURE_CONFLICT -> {
+                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_conflict))
+            }
+            STATUS_FAILURE_INCOMPATIBLE -> {
+                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_incompatible))
+            }
+            STATUS_FAILURE_INVALID -> {
+                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_invalid))
+            }
+            STATUS_FAILURE_STORAGE -> {
+                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_storage))
+            }
             else -> {
-                val errorMessage = bundle.getString(PackageInstaller.EXTRA_STATUS_MESSAGE)
+                val errorMessage = bundle.getString(EXTRA_STATUS_MESSAGE)
                 appNotInstalledCallback("($status) $errorMessage")
             }
         }
@@ -61,47 +83,59 @@ class SessionInstaller(
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun installInternal(activity: Activity, downloadedFile: File) {
         val installer = activity.packageManager.packageInstaller
-        val params = PackageInstaller.SessionParams(MODE_FULL_INSTALL)
-        if (DeviceEnvironment.supportsAndroid12()) {
-            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
-        }
+        val params = createSessionParams()
         val id = installer.createSession(params)
 
-        //execute callbacks when installation is finished
-        installer.registerSessionCallback(object : SessionCallback() {
-            override fun onCreated(sessionId: Int) {}
-            override fun onBadgingChanged(sessionId: Int) {}
-            override fun onActiveChanged(sessionId: Int, active: Boolean) {}
-            override fun onProgressChanged(sessionId: Int, progress: Float) {}
-            override fun onFinished(sessionId: Int, success: Boolean) {
-                if (id == sessionId) {
-                    installer.unregisterSessionCallback(this)
-                    if (success) {
-                        appInstalledCallback()
-                    } else {
-                        appNotInstalledCallback(null)
-                    }
+        installer.registerSessionCallback(object : SessionSuccessCallback(id) {
+            override fun onFinishedForThisSession(success: Boolean) {
+                installer.unregisterSessionCallback(this)
+                if (success) {
+                    appInstalledCallback()
+                } else {
+                    appNotInstalledCallback(null)
                 }
             }
         })
 
-        val openSession = installer.openSession(id)
-        openSession.use { session ->
-            val bytes = downloadedFile.length()
-            session.openWrite("package", 0, bytes).use { packageStream ->
-                downloadedFile.inputStream().use { downloadedFileStream ->
-                    downloadedFileStream.copyTo(packageStream)
-                }
+        installer.openSession(id).use { session ->
+            try {
+                copyApkToSession(downloadedFile, session)
+            } catch (e: IOException) {
+                session.abandon()
+                val error = activity.getString(R.string.session_installer__not_enough_storage, e.message)
+                appNotInstalledCallback(error)
+                return
             }
-            val intent = Intent(activity, InstallActivity::class.java)
-            intent.action = PACKAGE_INSTALLED_ACTION
-            val pendingIntent = if (DeviceEnvironment.supportsAndroid12()) {
-                PendingIntent.getActivity(activity, 0, intent, PendingIntent.FLAG_MUTABLE)
-            } else {
-                PendingIntent.getActivity(activity, 0, intent, 0)
-            }
-            session.commit(pendingIntent.intentSender)
+            val intentSender = createSessionChangeReceiver(activity)
+            session.commit(intentSender)
         }
+    }
+
+    private fun createSessionParams(): SessionParams {
+        val params = SessionParams(MODE_FULL_INSTALL)
+        if (DeviceEnvironment.supportsAndroid12()) {
+            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
+        }
+        return params
+    }
+
+    private fun copyApkToSession(downloadedFile: File, session: Session) {
+        session.openWrite("package", 0, downloadedFile.length()).use { sessionStream ->
+            downloadedFile.inputStream().use { downloadedFileStream ->
+                downloadedFileStream.copyTo(sessionStream)
+            }
+        }
+    }
+
+    private fun createSessionChangeReceiver(activity: Activity): IntentSender {
+        val intent = Intent(activity, InstallActivity::class.java)
+        intent.action = PACKAGE_INSTALLED_ACTION
+        val pendingIntent = if (DeviceEnvironment.supportsAndroid12()) {
+            PendingIntent.getActivity(activity, 0, intent, PendingIntent.FLAG_MUTABLE)
+        } else {
+            PendingIntent.getActivity(activity, 0, intent, 0)
+        }
+        return pendingIntent.intentSender
     }
 
     class SessionInstallerException(message: String, throwable: Throwable) :

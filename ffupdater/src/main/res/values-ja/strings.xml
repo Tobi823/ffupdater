@@ -105,6 +105,14 @@
     <string name="running_downloads_dialog__negative">いいえ、ダウンロードしません</string>
     <string name="running_downloads_dialog__title">ランニング・ダウンロード</string>
     <string name="running_downloads_dialog__yes">はい。</string>
+    <string name="session_installer__not_enough_storage">十分なストレージがないため、操作に失敗しました。%1$s</string>
+    <string name="session_installer__status_failure">一般的な方法で操作に失敗しました。システムは常により具体的な失敗理由を提供しようとしますが、稀なケースでこれが配信されることがあります。</string>
+    <string name="session_installer__status_failure_aborted">操作が失敗したのは、積極的に中止されたからです。たとえば、ユーザーが要求された権限を積極的に拒否した場合や、セッションが放棄された場合などです。</string>
+    <string name="session_installer__status_failure_blocked">操作がブロックされたため、失敗しました。たとえば、デバイス ポリシーが操作をブロックしている、パッケージ ベリファイアが操作をブロックしている、またはアプリがシステムのコア操作に必要である可能性があります。</string>
+    <string name="session_installer__status_failure_conflict">デバイスにすでにインストールされている別のパッケージと競合（または矛盾）しているため、操作が失敗しました。例えば、既存の権限、互換性のない証明書など。ユーザーは別のアプリをアンインストールすることで、問題を解決できる可能性があります。</string>
+    <string name="session_installer__status_failure_incompatible">このデバイスと根本的に互換性がないため、操作に失敗しました。たとえば、アプリが存在しないハードウェア機能を必要とする、デバイスがサポートするABIのネイティブコードがない、または新しいSDKバージョンを必要とする、などです。</string>
+    <string name="session_installer__status_failure_invalid">1 つ以上の APK が無効であったため、操作に失敗しました。たとえば、不正な形式、破損、不正な署名、不一致などです。</string>
+    <string name="session_installer__status_failure_storage">ストレージに問題があるため、操作に失敗しました。例えば、デバイスの容量が不足している、または外部メディアが使用できない可能性があります。ユーザーは、空き容量を増やすか、別の外部メディアを挿入することができるかもしれません。</string>
     <string name="settings__activity_label">設定</string>
     <string name="settings__automatic_check_title">バックグラウンドでの更新チェック</string>
     <string name="settings__category_appearance_title">外観</string>
@@ -151,5 +159,5 @@
     <string name="update_notification__title">"%1$s" の更新が利用可能です</string>
     <string name="vivaldi__description">Vivaldi は思い通りにカスタマイズできる新しいプライベートなウェブブラウザです。内蔵の広告ブロッカー、トラッキング防止機能、プライベートな翻訳機能をはじめ、便利な機能をたくさん搭載しています。メモやページキャプチャーのような機能を使えば使うほど毎日の効率が良くなります。デスクトップと同じスタイルのタブやダーク/ライトテーマなどのレイアウト設定で、あなただけのブラウザにしましょう。ダウンロードは無料。いますぐダウンロードして、快適で安全なブラウジングをはじめましょう。</string>
     <string name="vivaldi__title">Vivaldiブラウザ</string>
-    <string name="vivaldi__warning">Vivaldiは部分的にしかオープンソースではありません（詳しくは<a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a>）。また、Google Chromeの技術基盤（Chromium）を使用しています。\n\nこれを好まない人もいます。Vivaldiをインストールしたいですか？</string>
+    <string name="vivaldi__warning">Vivaldiは部分的にしかオープンソースではありません（詳しくは<a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>）。また、Google Chromeの技術基盤（Chromium）を使用しています。\n\nこれを好まない人もいます。Vivaldiをインストールしたいですか？</string>
 </resources>

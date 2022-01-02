@@ -105,6 +105,14 @@
     <string name="running_downloads_dialog__negative">Nein, nicht herunterladen</string>
     <string name="running_downloads_dialog__title">Laufende Downloads</string>
     <string name="running_downloads_dialog__yes">Ja</string>
+    <string name="session_installer__not_enough_storage">Der Vorgang ist fehlgeschlagen, weil nicht genügend Speicherplatz vorhanden ist: %1$s</string>
+    <string name="session_installer__status_failure">Der Vorgang ist auf eine allgemeine Weise fehlgeschlagen. Das System wird immer versuchen, einen genaueren Grund für das Scheitern anzugeben, aber in einigen seltenen Fällen kann dieser auch geliefert werden.</string>
+    <string name="session_installer__status_failure_aborted">Der Vorgang ist fehlgeschlagen, weil er aktiv abgebrochen wurde. Beispielsweise hat der Benutzer aktiv die angeforderten Berechtigungen abgelehnt, oder die Sitzung wurde abgebrochen.</string>
+    <string name="session_installer__status_failure_blocked">Der Vorgang ist fehlgeschlagen, weil er blockiert wurde. Der Vorgang kann z.B. durch eine Geräterichtlinie blockiert werden, eine Paketüberprüfung kann den Vorgang blockieren, oder die Anwendung ist für den Betrieb des Kernsystems erforderlich.</string>
+    <string name="session_installer__status_failure_conflict">Der Vorgang ist fehlgeschlagen, weil er mit einem anderen, bereits auf dem Gerät installierten Paket kollidiert (oder inkonsistent damit ist). Zum Beispiel eine bestehende Berechtigung, inkompatible Zertifikate usw. Der Benutzer kann möglicherweise eine andere Anwendung deinstallieren, um das Problem zu beheben.</string>
+    <string name="session_installer__status_failure_incompatible">Der Vorgang ist fehlgeschlagen, weil er mit diesem Gerät grundsätzlich nicht kompatibel ist. Die App kann zum Beispiel eine Hardwarefunktion erfordern, die nicht vorhanden ist, es kann nativer Code für die vom Gerät unterstützten ABIs fehlen, oder sie erfordert eine neuere SDK-Version usw.</string>
+    <string name="session_installer__status_failure_invalid">Der Vorgang ist fehlgeschlagen, weil eine oder mehrere der APKs ungültig waren. Sie könnten z. B. missgebildet, beschädigt, falsch signiert, nicht übereinstimmend usw. sein.</string>
+    <string name="session_installer__status_failure_storage">Der Vorgang ist aufgrund von Speicherproblemen fehlgeschlagen. Beispielsweise kann der Speicherplatz auf dem Gerät knapp werden, oder es sind keine externen Medien verfügbar. Der Benutzer kann möglicherweise helfen, Speicherplatz freizugeben oder andere externe Medien einzulegen.</string>
     <string name="settings__activity_label">Einstellungen</string>
     <string name="settings__automatic_check_title">Automatisch im Hintergrund</string>
     <string name="settings__category_appearance_title">Erscheinungsbild</string>
@@ -151,5 +159,5 @@
     <string name="update_notification__title">"%1$s" kann aktualisiert werden</string>
     <string name="vivaldi__description">Vivaldi ist ein privater Browser mit einzigartigen Anpassungsmöglichkeiten. Es bietet viele Funktionen, wie z. B. Werbe- und Trackerblocker (standardmäßig deaktiviert), Webseitenübersetzung. Notizen und Screenshots helfen, Ihre Arbeit zu beschleunigen. Die Anpassung der Tabs, der Designthemen und des Aussehens verleihen dem System Persönlichkeit. Laden Sie Vivaldi kostenlos herunter surfen Sie mit Vergnügen im Internet.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">Vivaldi ist nur teilweise quelloffen (siehe <a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a> für weitere Informationen). Außerdem nutzt es die technische Grundlage von Google Chrome (Chromium).\n\nManche Leute mögen das nicht. Möchten Sie Vivaldi installieren?</string>
+    <string name="vivaldi__warning">Vivaldi ist nur teilweise quelloffen (siehe <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> für weitere Informationen). Außerdem nutzt es die technische Grundlage von Google Chrome (Chromium).\n\nManche Leute mögen das nicht. Möchten Sie Vivaldi installieren?</string>
 </resources>

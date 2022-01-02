@@ -105,6 +105,14 @@
     <string name="running_downloads_dialog__negative">Non, ne le téléchargez pas</string>
     <string name="running_downloads_dialog__title">Téléchargements en cours</string>
     <string name="running_downloads_dialog__yes">Oui</string>
+    <string name="session_installer__not_enough_storage">L\'opération a échoué parce que l\'espace de stockage disponible est insuffisant: %1$s</string>
+    <string name="session_installer__status_failure">L\'opération a échoué de manière générique. Le système essaiera toujours de fournir une raison d\'échec plus spécifique, mais dans certains cas rares, cette raison peut être fournie.</string>
+    <string name="session_installer__status_failure_aborted">L\'opération a échoué parce qu\'elle a été activement interrompue. Par exemple, l\'utilisateur a activement refusé les autorisations demandées, ou la session a été abandonnée.</string>
+    <string name="session_installer__status_failure_blocked">L\'opération a échoué parce qu\'elle a été bloquée. Par exemple, la politique d\'un appareil peut bloquer l\'opération, un vérificateur de paquets peut avoir bloqué l\'opération, ou l\'application peut être nécessaire au fonctionnement du système central.</string>
+    <string name="session_installer__status_failure_conflict">L\'opération a échoué car elle entre en conflit (ou est incompatible) avec un autre paquet déjà installé sur l\'appareil. Par exemple, une autorisation existante, des certificats incompatibles, etc. L\'utilisateur peut être en mesure de désinstaller une autre application pour résoudre le problème.</string>
+    <string name="session_installer__status_failure_incompatible">L\'opération a échoué car elle est fondamentalement incompatible avec cet appareil. Par exemple, l\'application peut nécessiter une fonctionnalité matérielle qui n\'existe pas, il peut manquer du code natif pour les ABI prises en charge par l\'appareil, ou elle nécessite une version plus récente du SDK, etc.</string>
+    <string name="session_installer__status_failure_invalid">L\'opération a échoué car un ou plusieurs des APK n\'étaient pas valides. Par exemple, ils peuvent être malformés, corrompus, mal signés, mal assortis, etc.</string>
+    <string name="session_installer__status_failure_storage">L\'opération a échoué en raison de problèmes de stockage. Par exemple, l\'appareil peut manquer d\'espace, ou les supports externes peuvent être indisponibles. L\'utilisateur peut aider à libérer de l\'espace ou à insérer un autre support externe.</string>
     <string name="settings__activity_label">Réglages</string>
     <string name="settings__automatic_check_title">Automatique en arrière-plan</string>
     <string name="settings__category_appearance_title">Apparition</string>

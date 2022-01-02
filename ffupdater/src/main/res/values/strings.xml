@@ -108,6 +108,14 @@
     <string name="running_downloads_dialog__negative">No, don\'t download it</string>
     <string name="running_downloads_dialog__title">Running downloads</string>
     <string name="running_downloads_dialog__yes">Yes</string>
+    <string name="session_installer__not_enough_storage">The operation failed because not enough storage is available: %1$s</string>
+    <string name="session_installer__status_failure">The operation failed in a generic way. The system will always try to provide a more specific failure reason, but in some rare cases this may be delivered.</string>
+    <string name="session_installer__status_failure_aborted">The operation failed because it was actively aborted. For example, the user actively declined requested permissions, or the session was abandoned.</string>
+    <string name="session_installer__status_failure_blocked">The operation failed because it was blocked. For example, a device policy may be blocking the operation, a package verifier may have blocked the operation, or the app may be required for core system operation.</string>
+    <string name="session_installer__status_failure_conflict">The operation failed because it conflicts (or is inconsistent with) with another package already installed on the device. For example, an existing permission, incompatible certificates, etc. The user may be able to uninstall another app to fix the issue.</string>
+    <string name="session_installer__status_failure_incompatible">The operation failed because it is fundamentally incompatible with this device. For example, the app may require a hardware feature that doesn\'t exist, it may be missing native code for the ABIs supported by the device, or it requires a newer SDK version, etc.</string>
+    <string name="session_installer__status_failure_invalid">The operation failed because one or more of the APKs was invalid. For example, they might be malformed, corrupt, incorrectly signed, mismatched, etc.</string>
+    <string name="session_installer__status_failure_storage">The operation failed because of storage issues. For example, the device may be running low on space, or external media may be unavailable. The user may be able to help free space or insert different external media.</string>
     <string name="settings__activity_label">Settings</string>
     <string name="settings__automatic_check_title">Automatic in Background</string>
     <string name="settings__category_appearance_title">Appearance</string>
@@ -155,5 +163,5 @@
     <string name="vivaldi__description">Discover a blazingly fast Internet browser! Vivaldi is a new, free, and private web browser built with flexibility in mind. It comes packed with useful features including a built-in AdBlocker (pop-up blocker), tracking protection, and private translation. Browser options like proper desktop-style tabs, dark/light Themes, and layout choices help you make it yours.</string>
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">"Vivaldi is only partially open source (see <a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?"</string>
+    <string name="vivaldi__warning">"Vivaldi is only partially open source (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?"</string>
 </resources>

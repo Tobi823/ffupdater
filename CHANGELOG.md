@@ -1,8 +1,10 @@
 # 2021-12-30 Version 75.0.0 (91)
 
 * Remove Styx because it is not longer maintained (Tobi823/ffupdater#101).
-* Improve version comparison with G00fY2/version-compare (Tobi823/ffupdater#98)
-* Fix opt-out of apps from background update check ("Excluded applications") for Firefox Release, Firefox Beta and Firefox Nightly (Tobi823/ffupdater#97)
+* Improve version comparison with G00fY2/version-compare (Tobi823/ffupdater#98).
+* Fix opt-out of apps from background update check ("Excluded applications") for Firefox Release, Firefox Beta and Firefox Nightly (Tobi823/ffupdater#97).
+* Don't crash during app installation/update when no or only very little storage is available (Tobi823/ffupdater#96).
+* When app update is unsuccessful, show more detailed error message.
 
 # 2021-12-05 Version 74.5.3 (90)
 

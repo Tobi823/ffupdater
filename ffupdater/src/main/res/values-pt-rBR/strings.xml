@@ -105,6 +105,14 @@
     <string name="running_downloads_dialog__negative">Não, não faça o download</string>
     <string name="running_downloads_dialog__title">Execução de downloads</string>
     <string name="running_downloads_dialog__yes">Sim</string>
+    <string name="session_installer__not_enough_storage">A operação falhou porque não há armazenagem suficiente disponível: %1$s</string>
+    <string name="session_installer__status_failure">A operação falhou de uma maneira genérica. O sistema sempre tentará fornecer um motivo de falha mais específico, mas em alguns casos raros isto pode ser entregue.</string>
+    <string name="session_installer__status_failure_aborted">A operação fracassou porque foi abortada ativamente. Por exemplo, o usuário recusou ativamente as permissões solicitadas, ou a sessão foi abandonada.</string>
+    <string name="session_installer__status_failure_blocked">A operação falhou porque foi bloqueada. Por exemplo, uma política de dispositivos pode estar bloqueando a operação, um verificador de pacotes pode ter bloqueado a operação, ou o aplicativo pode ser necessário para a operação do sistema central.</string>
+    <string name="session_installer__status_failure_conflict">A operação falhou porque entra em conflito (ou é inconsistente com) com outro pacote já instalado no dispositivo. Por exemplo, uma permissão existente, certificados incompatíveis, etc. O usuário pode ser capaz de desinstalar outro aplicativo para corrigir o problema.</string>
+    <string name="session_installer__status_failure_incompatible">A operação falhou porque é fundamentalmente incompatível com este dispositivo. Por exemplo, o aplicativo pode requerer um recurso de hardware que não existe, pode estar faltando código nativo para as ABIs suportadas pelo dispositivo, ou requerer uma versão mais recente do SDK, etc.</string>
+    <string name="session_installer__status_failure_invalid">A operação falhou porque um ou mais dos APKs era inválido. Por exemplo, eles podem ser malformados, corruptos, assinados incorretamente, desajustados, etc.</string>
+    <string name="session_installer__status_failure_storage">A operação fracassou por causa de problemas de armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço, ou a mídia externa pode não estar disponível. O usuário pode ser capaz de ajudar a liberar espaço ou inserir diferentes mídias externas.</string>
     <string name="settings__activity_label">Configurações</string>
     <string name="settings__automatic_check_title">Autom. em segundo plano</string>
     <string name="settings__category_appearance_title">Aparência</string>
@@ -151,5 +159,5 @@
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
     <string name="vivaldi__description">"O Vivaldi é um novo navegador web, com bloqueador de anúncios integrado, proteção contra rastreadores e úteis funcionalidades integradas. Navegue com separadores únicos estilo-computador, sincronização com encriptação ponto a ponto, modo escuro &amp; privado. Baixe gratuitamente e navegue de forma rápida, crie notas no navegador e faça capturas de tela de página inteira."</string>
     <string name="vivaldi__title">Navegador Vivaldi</string>
-    <string name="vivaldi__warning">O Vivaldi é apenas parcialmente código aberto (ver <a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a> para mais informações). Ele também utiliza a base técnica do Google Chrome (Cromo).\n\nAlgumas pessoas não gostam disto. Você quer instalar o Vivaldi?</string>
+    <string name="vivaldi__warning">O Vivaldi é apenas parcialmente código aberto (ver <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> para mais informações). Ele também utiliza a base técnica do Google Chrome (Cromo).\n\nAlgumas pessoas não gostam disto. Você quer instalar o Vivaldi?</string>
 </resources>

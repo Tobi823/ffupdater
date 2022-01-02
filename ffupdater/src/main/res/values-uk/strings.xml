@@ -105,6 +105,14 @@
     <string name="running_downloads_dialog__negative">Ні, не завантажуйте</string>
     <string name="running_downloads_dialog__title">164 / 5000 Translation results Завантаження завантажень</string>
     <string name="running_downloads_dialog__yes">Так</string>
+    <string name="session_installer__not_enough_storage">Операцію не вдалося виконати, оскільки недостатньо доступного місця: %1$s</string>
+    <string name="session_installer__status_failure">Операція загалом провалилася. Система завжди намагатиметься надати більш конкретну причину збою, але в деяких рідкісних випадках це може бути доставлено.</string>
+    <string name="session_installer__status_failure_aborted">Операція не вдалася, оскільки її активно перервали. Наприклад, користувач активно відхилив запитувані дозволи або сеанс був перерваний.</string>
+    <string name="session_installer__status_failure_blocked">Операцію не вдалося виконати, оскільки вона була заблокована. Наприклад, політика пристрою може блокувати операцію, перевірка пакетів може заблокувати операцію, або програма може знадобитися для роботи основної системи.</string>
+    <string name="session_installer__status_failure_conflict">Операцію не вдалося виконати, оскільки вона конфліктує (або не узгоджується) з іншим пакетом, уже встановленим на пристрої. Наприклад, наявний дозвіл, несумісні сертифікати тощо. Користувач може видалити іншу програму, щоб вирішити проблему.</string>
+    <string name="session_installer__status_failure_incompatible">Операція не вдалася, оскільки вона принципово несумісна з цим пристроєм. Наприклад, для програми може знадобитися апаратна функція, якої не існує, у ній може бути відсутній рідний код для ABI, що підтримується пристроєм, або потрібна новіша версія SDK тощо.</string>
+    <string name="session_installer__status_failure_invalid">Не вдалося виконати операцію, оскільки один або кілька файлів .apk були недійсними. Наприклад, вони можуть бути неправильно сформованими, пошкодженими, неправильно підписаними, невідповідними тощо.</string>
+    <string name="session_installer__status_failure_storage">Операцію не вдалося виконати через проблеми зі зберіганням. Наприклад, на пристрої може не вистачати місця, або зовнішній носій може бути недоступний. Користувач може допомогти звільнити місце або вставити різні зовнішні носії.</string>
     <string name="settings__activity_label">Налаштування</string>
     <string name="settings__automatic_check_title">Автоматичний у фоновому режимі</string>
     <string name="settings__category_appearance_title">Зовнішній вигляд</string>
@@ -151,5 +159,5 @@
     <string name="update_notification__title">Обновление для "%1$s" доступно</string>
     <string name="vivaldi__description">Vivaldi - це новий приватний браузер з унікальною гнучкістю в налаштуванні. Він має такі корисні інстументи, як блокувальник реклами (вимкнений за промовчанням), захист від стеження та приватний перекладач. Нотатки та знімки сторінок прискорюють та полегшують робочий процес. Налаштування теми оформлення та вигляду й розташування вкладок додають індивідуальність браузерові. Завантажте безкоштовно та переглядайте сайти з насолодою.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
-    <string name="vivaldi__warning">Vivaldi є лише частково відкритим вихідним кодом (див. <a href='https://vivaldi.com/blog/vivaldi-browser-open-source/'>https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для отримання додаткової інформації). Він також використовує технічну базу Google Chrome (Chromium).\n\nДеяким людям це не до вподоби. Чи хочете ви встановити Vivaldi?</string>
+    <string name="vivaldi__warning">Vivaldi є лише частково відкритим вихідним кодом (див. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для отримання додаткової інформації). Він також використовує технічну базу Google Chrome (Chromium).\n\nДеяким людям це не до вподоби. Чи хочете ви встановити Vivaldi?</string>
 </resources>
