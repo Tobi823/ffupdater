@@ -5,6 +5,7 @@
 * Fix opt-out of apps from background update check ("Excluded applications") for Firefox Release, Firefox Beta and Firefox Nightly (Tobi823/ffupdater#97).
 * Don't crash during app installation/update when no or only very little storage is available (Tobi823/ffupdater#96).
 * When app update is unsuccessful, show more detailed error message.
+* Update dependencies
 
 # 2021-12-05 Version 74.5.3 (90)
 
