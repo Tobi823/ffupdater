@@ -155,6 +155,14 @@ repository or the official *F-Droid* repository) the app version was installed
 
 ### Styx Browser
 
+02.01.2022 https://github.com/Tobi823/ffupdater/issues/101
+
+Styx is only temporarily removed from Google Play:
+
+> Sorry for the premature end of Styx.
+But in the future the Styx browser will appear again.
+Currently styx is migrated to Fulguris base. When this is completed then Styx will return as well as in the Play Store.
+
 30.12.2021: https://github.com/Tobi823/ffupdater/issues/101
 
 It seems that @jamal2362 does not maintain the Styx browser any longer:
