@@ -7,6 +7,10 @@ import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
+/**
+ * https://github.com/ungoogled-software/ungoogled-chromium-android/releases
+ */
+
 class UngoogledChromium : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.ungoogled.chromium.stable"
     override val displayTitle = R.string.ungoogled_chromium__title

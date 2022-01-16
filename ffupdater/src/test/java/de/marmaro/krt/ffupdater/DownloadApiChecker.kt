@@ -78,7 +78,7 @@ class DownloadApiChecker {
         val result = runBlocking { Bromite().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 6 * 7
+        val maxDays = 7 * 7
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
@@ -158,7 +158,7 @@ class DownloadApiChecker {
         val result = runBlocking { UngoogledChromium().updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 21
+        val maxDays = 4*7
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 
