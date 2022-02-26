@@ -1,10 +1,10 @@
-Scarica, installa e aggiorna questi browser privacy friendly:
+Scarica, installa e aggiorna questi browser rispettosi della privacy:
 - Bromite
 - Firefox Browser
 - Firefox Focus
 - Firefox Klar
 - Firefox Nightly
-- Firefox for Android Beta
+- Firefox per Android Beta
 - Iceraven
 - Ungoogled Chromium
 - Vivaldi
