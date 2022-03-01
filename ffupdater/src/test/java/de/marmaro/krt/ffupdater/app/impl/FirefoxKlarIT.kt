@@ -44,7 +44,8 @@ class FirefoxKlarIT {
 
     companion object {
         const val DOWNLOAD_URL =
-            "https://github.com/mozilla-mobile/focus-android/releases/download/v92.1.1"
+            "https://github.com/mozilla-mobile/focus-android/releases/download"
+
         @JvmStatic
         @BeforeClass
         fun beforeTests() {
@@ -62,60 +63,121 @@ class FirefoxKlarIT {
 
     private fun makeReleaseJsonObjectAvailable() {
         val url = "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest"
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/latest.json"
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxKlar/latest.json"
         coEvery {
             ApiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 
     @Test
-    fun updateCheck_armeabiv7a() {
+    fun `check url, time and version (ARM64_V8A)`() {
         makeReleaseJsonObjectAvailable()
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-        val expectedUrl = "$DOWNLOAD_URL/Klar-arm.apk"
-        val expectedTime = ZonedDateTime.parse("2021-09-04T18:12:23Z", ISO_ZONED_DATE_TIME)
-
-        runBlocking {
-            packageInfo.versionName = "92.1.1"
-            val actual = FirefoxKlar().updateCheck(context)
-            assertFalse(actual.isUpdateAvailable)
-            assertEquals("92.1.1", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
-
-        runBlocking {
-            packageInfo.versionName = "92.1.0"
-            val actual = FirefoxKlar().updateCheck(context)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("92.1.1", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertEquals("98.1.0", actual.version)
+        assertEquals("$DOWNLOAD_URL/v98.1.0/klar-98.1.0-arm64-v8a.apk", actual.downloadUrl)
+        assertEquals(ZonedDateTime.parse("2022-03-01T14:16:00Z", ISO_ZONED_DATE_TIME), actual.publishDate)
     }
 
     @Test
-    fun updateCheck_arm64v8a() {
+    fun `check url, time and version (ARMEABI_V7A)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertEquals("98.1.0", actual.version)
+        assertEquals("$DOWNLOAD_URL/v98.1.0/klar-98.1.0-armeabi-v7a.apk", actual.downloadUrl)
+        assertEquals(ZonedDateTime.parse("2022-03-01T14:16:00Z", ISO_ZONED_DATE_TIME), actual.publishDate)
+    }
+
+    @Test
+    fun `check url, time and version (X86)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.X86)
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertEquals("98.1.0", actual.version)
+        assertEquals("$DOWNLOAD_URL/v98.1.0/klar-98.1.0-x86.apk", actual.downloadUrl)
+        assertEquals(ZonedDateTime.parse("2022-03-01T14:16:00Z", ISO_ZONED_DATE_TIME), actual.publishDate)
+    }
+
+    @Test
+    fun `check url, time and version (X86_64)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertEquals("98.1.0", actual.version)
+        assertEquals("$DOWNLOAD_URL/v98.1.0/klar-98.1.0-x86_64.apk", actual.downloadUrl)
+        assertEquals(ZonedDateTime.parse("2022-03-01T14:16:00Z", ISO_ZONED_DATE_TIME), actual.publishDate)
+    }
+
+    @Test
+    fun `negative update check for up-to-date app (ARM64_V8A)`() {
         makeReleaseJsonObjectAvailable()
         every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-        val expectedUrl = "$DOWNLOAD_URL/Klar-arm64.apk"
-        val expectedTime = ZonedDateTime.parse("2021-09-04T18:12:23Z", ISO_ZONED_DATE_TIME)
+        packageInfo.versionName = "98.1.0"
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertFalse(actual.isUpdateAvailable)
+    }
 
-        runBlocking {
-            packageInfo.versionName = "92.1.1"
-            val actual = FirefoxKlar().updateCheck(context)
-            assertEquals("92.1.1", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
+    @Test
+    fun `negative update check for up-to-date app (ARMEABI_V7A)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+        packageInfo.versionName = "98.1.0"
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertFalse(actual.isUpdateAvailable)
+    }
 
-        runBlocking {
-            packageInfo.versionName = "92.1.0"
-            val actual = FirefoxKlar().updateCheck(context)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("92.1.1", actual.version)
-            assertEquals(expectedUrl, actual.downloadUrl)
-            assertEquals(expectedTime, actual.publishDate)
-        }
+    @Test
+    fun `negative update check for up-to-date app (X86)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.X86)
+        packageInfo.versionName = "98.1.0"
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertFalse(actual.isUpdateAvailable)
+    }
+
+    @Test
+    fun `negative update check for up-to-date app (X86_64)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
+        packageInfo.versionName = "98.1.0"
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertFalse(actual.isUpdateAvailable)
+    }
+
+    @Test
+    fun `positive update check for outdated app (ARM64_V8A)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
+        packageInfo.versionName = "97.2.0"
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertTrue(actual.isUpdateAvailable)
+    }
+
+    @Test
+    fun `positive update check for outdated app (ARMEABI_V7A)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+        packageInfo.versionName = "97.2.0"
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertTrue(actual.isUpdateAvailable)
+    }
+
+    @Test
+    fun `positive update check for outdated app (X86)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.X86)
+        packageInfo.versionName = "97.2.0"
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertTrue(actual.isUpdateAvailable)
+    }
+
+    @Test
+    fun `positive update check for outdated app (X86_64)`() {
+        makeReleaseJsonObjectAvailable()
+        every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
+        packageInfo.versionName = "97.2.0"
+        val actual = runBlocking { FirefoxKlar().updateCheck(context) }
+        assertTrue(actual.isUpdateAvailable)
     }
 }
