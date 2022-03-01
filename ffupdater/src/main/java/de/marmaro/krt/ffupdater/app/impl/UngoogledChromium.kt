@@ -35,12 +35,12 @@ class UngoogledChromium : BaseAppWithCachedUpdateCheck() {
             repoOwner = "ungoogled-software",
             repoName = "ungoogled-chromium-android",
             resultsPerPage = 2,
-            validReleaseTester = { release: GithubConsumer.Release ->
+            isValidRelease = { release: GithubConsumer.Release ->
                 !release.isPreRelease
                         && !release.name.contains("webview")
                         && release.assets.any { it.name == fileName }
             },
-            correctAssetTester = { asset: GithubConsumer.Asset -> asset.name == fileName })
+            isCorrectAsset = { asset: GithubConsumer.Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheckAllReleases()
 
         val extractVersion = {

@@ -43,10 +43,10 @@ class Iceraven : BaseAppWithCachedUpdateCheck() {
             repoOwner = "fork-maintainers",
             repoName = "iceraven-browser",
             resultsPerPage = 3,
-            validReleaseTester = { release: Release ->
+            isValidRelease = { release: Release ->
                 !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
             },
-            correctAssetTester = { asset: Asset -> asset.name.endsWith(fileSuffix) })
+            isCorrectAsset = { asset: Asset -> asset.name.endsWith(fileSuffix) })
         val result = githubConsumer.updateCheck()
         return AvailableVersionResult(
             downloadUrl = result.url,

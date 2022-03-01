@@ -34,10 +34,10 @@ class Lockwise : BaseAppWithCachedUpdateCheck() {
             repoOwner = "mozilla-lockwise",
             repoName = "lockwise-android",
             resultsPerPage = 5,
-            validReleaseTester = { release: Release ->
+            isValidRelease = { release: Release ->
                 !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
             },
-            correctAssetTester = { asset: Asset -> asset.name.endsWith(".apk") })
+            isCorrectAsset = { asset: Asset -> asset.name.endsWith(".apk") })
         val result = githubConsumer.updateCheck()
 
         val extractVersion = {

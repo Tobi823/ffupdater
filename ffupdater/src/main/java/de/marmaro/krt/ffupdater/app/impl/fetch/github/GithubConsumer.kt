@@ -13,8 +13,8 @@ class GithubConsumer(
     private val repoOwner: String,
     private val repoName: String,
     private val resultsPerPage: Int,
-    private val validReleaseTester: Predicate<Release>,
-    private val correctAssetTester: Predicate<Asset>,
+    private val isValidRelease: Predicate<Release>,
+    private val isCorrectAsset: Predicate<Asset>,
 ) {
     init {
         check(resultsPerPage > 0)
@@ -24,7 +24,7 @@ class GithubConsumer(
     suspend fun updateCheck(): Result {
         val url = "https://api.github.com/repos/$repoOwner/$repoName/releases/latest"
         val release = ApiConsumer.consumeNetworkResource(url, Release::class)
-        if (validReleaseTester.test(release)) {
+        if (isValidRelease.test(release)) {
             return convert(release)
         }
         return updateCheckAllReleases()
@@ -38,7 +38,7 @@ class GithubConsumer(
                     "?per_page=$resultsPerPage&page=$page"
             val releases = ApiConsumer.consumeNetworkResource(url, Array<Release>::class)
             releases.forEach {
-                if (validReleaseTester.test(it)) {
+                if (isValidRelease.test(it)) {
                     return convert(it)
                 }
             }
@@ -50,7 +50,7 @@ class GithubConsumer(
      * @throws InvalidApiResponseException
      */
     private fun convert(release: Release): Result {
-        val asset = release.assets.firstOrNull { correctAssetTester.test(it) }
+        val asset = release.assets.firstOrNull { isCorrectAsset.test(it) }
                 ?: throw InvalidApiResponseException("${release.name} has no suitable asset")
         return Result(
                 tagName = release.tagName,

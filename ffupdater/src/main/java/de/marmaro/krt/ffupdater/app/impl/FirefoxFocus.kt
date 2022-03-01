@@ -27,17 +27,17 @@ class FirefoxFocus : BaseAppWithCachedUpdateCheck() {
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val fileName = getStringForCurrentAbi("Focus-arm.apk", "Focus-arm64.apk")
+        val fileSuffix = getStringForCurrentAbi("armeabi-v7a.apk", "arm64-v8a.apk", "x86.apk", "x86_64.apk")
         val githubConsumer = GithubConsumer(
             repoOwner = "mozilla-mobile",
             repoName = "focus-android",
             resultsPerPage = 3,
-            validReleaseTester = { release: GithubConsumer.Release ->
+            isValidRelease = { release: GithubConsumer.Release ->
                 !release.isPreRelease &&
                         !release.name.contains("beta") &&
-                        release.assets.any { it.name == fileName }
+                        release.assets.any { it.name.endsWith(fileSuffix) }
             },
-            correctAssetTester = { asset: GithubConsumer.Asset -> asset.name == fileName })
+            isCorrectAsset = { asset: GithubConsumer.Asset -> asset.name.endsWith(fileSuffix) })
         val result = githubConsumer.updateCheck()
 
         val extractVersion = {

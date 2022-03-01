@@ -36,11 +36,11 @@ class Brave : BaseAppWithCachedUpdateCheck() {
             repoOwner = "brave",
             repoName = "brave-browser",
             resultsPerPage = 20,
-            validReleaseTester = { release: Release ->
+            isValidRelease = { release: Release ->
                 release.name.startsWith("Release v") &&
                         release.assets.any { it.name == fileName }
             },
-            correctAssetTester = { asset: Asset -> asset.name == fileName })
+            isCorrectAsset = { asset: Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheckAllReleases()
         val version = result.tagName.replace("v", "")
         return AvailableVersionResult(

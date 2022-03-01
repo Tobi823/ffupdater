@@ -36,10 +36,10 @@ class Bromite : BaseAppWithCachedUpdateCheck() {
             repoOwner = "bromite",
             repoName = "bromite",
             resultsPerPage = 5,
-            validReleaseTester = { release: Release ->
+            isValidRelease = { release: Release ->
                 !release.isPreRelease && release.assets.any { it.name == fileName }
             },
-            correctAssetTester = { asset: Asset -> asset.name == fileName })
+            isCorrectAsset = { asset: Asset -> asset.name == fileName })
         val result = githubConsumer.updateCheck()
         // tag name can be "90.0.4430.59"
         return AvailableVersionResult(
