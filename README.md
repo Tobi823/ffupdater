@@ -209,12 +209,18 @@ future:
 > However, if you feel an issue is critical enough to be re-opened, please leave a note on the issue
 > with an explanation.
 
+30.06.2021: Firefox Lite is removed from Google Play and Galaxy Store, its repository is archived (https://github.com/mozilla-mobile/FirefoxLite) and development stopped.
+
+> Effective June 30, 2021, this app will no longer receive security or other updates. Download the official Firefox Android app now for a fast, private & safe web browser.
+
 These are the reasons why I will remove Firefox Lite.
 
 ### Fennec
 
 16.05.2020: Mozilla wants to migrate from Fennec to Fenix. Fennec Beta and Fennec Nightly are already
 end-of-life and Fennec Release will be soon.
+
+27.07.2020: 68.11.0 is the last released update for Fennec version, all Fennec browsers are deprecated.
 
 > Fennec is being replaced by our new state-of-the-art mobile browser codenamed "Fenix". We're slowly migrating users in order to make sure the experience is as painless and as enjoyable as possible. We started to migrate users who were using Fennec Nightly in January (bug 1608882). It took us several weeks to be sure of the result and to finally offer Fenix Nightly to all users using Fennec Nightly. Another few weeks later, we repeated the same process with Fennec Beta (bug 1614287). Fenix Beta has been offered to the whole Fennec Beta population on April 22nd. We're planning to do the same with Fennec Release sometimes this year. The schedule is still to be determined.
 
