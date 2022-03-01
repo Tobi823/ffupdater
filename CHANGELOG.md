@@ -1,3 +1,6 @@
+# 2022-03-01 Version 75.0.1 (92)
+* Adapt Firefox Klar and Firefox Focus to the new file names in the Github repository (fix missed Focus/Klar updates)
+
 # 2022-01-02 Version 75.0.0 (91)
 
 * Remove Styx because it is not longer maintained (Tobi823/ffupdater#101).
