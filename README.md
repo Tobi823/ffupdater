@@ -37,7 +37,8 @@ unmetered and the device has enough storage.
   allowlist. This prevents the installation of malicious app versions that do not originate from the original
   developer. The certificate fingerprints will be displayed in the app and be check by yourself. Some websites
   like apkmirror.com list these fingerprints for every app.
-- No unencrypted traffic is used, which can potentially be modified by attackers. Only HTTPS connections.
+- No unencrypted traffic is used or accepted, which can potentially be modified by attackers. Only HTTPS
+  connections.
 
 - Slight risk for a machine-in-the-middle-attack: FFUpdater trusts HTTPS certificates which are installed by
   the user (they are called "user certificates"). This is necessary for
