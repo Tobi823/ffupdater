@@ -34,9 +34,9 @@ unmetered and the device has enough storage.
 ## Security measures
 
 - The certificate fingerprint of every downloaded APK file is checked and validated against an internal
-  allowlist. This measure prevents the installation of app versions that do not originate from the original
-  developer. The certificate fingerprints will be displayed and be check by yourself. Some websites like
-  apkmirror.com list these fingerprints.
+  allowlist. This prevents the installation of malicious app versions that do not originate from the original
+  developer. The certificate fingerprints will be displayed in the app and be check by yourself. Some websites
+  like apkmirror.com list these fingerprints for every app.
 - No unencrypted traffic is used, which can potentially be modified by attackers. Only HTTPS connections.
 
 - Slight risk for a machine-in-the-middle-attack: FFUpdater trusts HTTPS certificates which are installed by
