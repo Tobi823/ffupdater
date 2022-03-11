@@ -4,13 +4,19 @@
 
 Download, install and update these privacy friendly browsers:
 
-- [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US) [GitHub Repository](https://github.com/brave/brave-browser)
+- [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US)
+  [GitHub Repository](https://github.com/brave/brave-browser)
 - [Bromite](https://github.com/bromite/bromite)
-- [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
-- [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus) [GitHub Repository](https://github.com/mozilla-mobile/focus-android)
-- [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar) [GitHub Repository](https://github.com/mozilla-mobile/focus-android)
-- [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
-- [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta) [GitHub Repository](https://github.com/mozilla-mobile/fenix)
+- [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
+  [GitHub Repository](https://github.com/mozilla-mobile/fenix)
+- [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus)
+  [GitHub Repository](https://github.com/mozilla-mobile/focus-android)
+- [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
+  [GitHub Repository](https://github.com/mozilla-mobile/focus-android)
+- [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
+  [GitHub Repository](https://github.com/mozilla-mobile/fenix)
+- [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta)
+  [GitHub Repository](https://github.com/mozilla-mobile/fenix)
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium-android)
 - [Vivaldi](https://vivaldi.com/download/) [Source Code](https://vivaldi.com/source/)
@@ -159,9 +165,8 @@ repository or the official *F-Droid* repository) the app version was installed
 
 Styx is only temporarily removed from Google Play:
 
-> Sorry for the premature end of Styx.
-But in the future the Styx browser will appear again.
-Currently styx is migrated to Fulguris base. When this is completed then Styx will return as well as in the Play Store.
+> Sorry for the premature end of Styx. But in the future the Styx browser will appear again. Currently styx
+> is migrated to Fulguris base. When this is completed then Styx will return as well as in the Play Store.
 
 30.12.2021: https://github.com/Tobi823/ffupdater/issues/101
 
@@ -183,9 +188,11 @@ Answer from the Kiwi developer:
 It seems that the developers have to forward search requests to their servers and then to the search engine in
 order to get paid by the search engine.
 
-> The parameters and integration method are defined by the search engines themselves, we don't have our words at all how the integration is done.
+> The parameters and integration method are defined by the search engines themselves, we don't have our words
+> at all how the integration is done.
 
-> They [Yahoo or Microsoft Bing] have a standard guide on how to integrate, either you follow this guide, or you don't work with them.
+> They [Yahoo or Microsoft Bing] have a standard guide on how to integrate, either you follow this guide, or
+> you don't work with them.
 
 I guess it's fine. Although i don't like it, i understand that the money for the app development has to come
 from somewhere (even Firefox is paid to use "Google" as the default search engine).
@@ -209,9 +216,11 @@ future:
 > However, if you feel an issue is critical enough to be re-opened, please leave a note on the issue
 > with an explanation.
 
-30.06.2021: Firefox Lite is removed from Google Play and Galaxy Store, its repository is archived (https://github.com/mozilla-mobile/FirefoxLite) and development stopped.
+30.06.2021: Firefox Lite is removed from Google Play and Galaxy Store, its repository is
+archived (https://github.com/mozilla-mobile/FirefoxLite) and development stopped.
 
-> Effective June 30, 2021, this app will no longer receive security or other updates. Download the official Firefox Android app now for a fast, private & safe web browser.
+> Effective June 30, 2021, this app will no longer receive security or other updates. Download the official
+> Firefox Android app now for a fast, private & safe web browser.
 
 These are the reasons why I will remove Firefox Lite.
 
@@ -222,9 +231,21 @@ end-of-life and Fennec Release will be soon.
 
 27.07.2020: 68.11.0 is the last released update for Fennec version, all Fennec browsers are deprecated.
 
-> Fennec is being replaced by our new state-of-the-art mobile browser codenamed "Fenix". We're slowly migrating users in order to make sure the experience is as painless and as enjoyable as possible. We started to migrate users who were using Fennec Nightly in January (bug 1608882). It took us several weeks to be sure of the result and to finally offer Fenix Nightly to all users using Fennec Nightly. Another few weeks later, we repeated the same process with Fennec Beta (bug 1614287). Fenix Beta has been offered to the whole Fennec Beta population on April 22nd. We're planning to do the same with Fennec Release sometimes this year. The schedule is still to be determined.
+> Fennec is being replaced by our new state-of-the-art mobile browser codenamed "Fenix". We're slowly
+> migrating users in order to make sure the experience is as painless and as enjoyable as possible. We
+> started to migrate users who were using Fennec Nightly in January (bug 1608882). It took us several weeks
+> to be sure of the result and to finally offer Fenix Nightly to all users using Fennec Nightly. Another
+> few weeks later, we repeated the same process with Fennec Beta (bug 1614287). Fenix Beta has been offered
+> to the whole Fennec Beta population on April 22nd. We're planning to do the same with Fennec Release
+> sometimes this year. The schedule is still to be determined.
 
-> The Google Play Store[1] has a lot of nice features, but it's still pretty basic whenever a software publisher wants to slowly migrate users. Once a migration is started, we can't provide any Fennec updates to the population who wasn't offered Fenix, yet. I can say this restriction is painful to manage for Android developers, Mozilla included. Because of it, we had to stop shipping Fennec Nightly/Beta APKs at the beginning of each migration. This explains the dates of the last builds. At the same time, we stopped building Fennec Nightly/Beta because it enabled us to save technical resources[2] as well as people's time[3].
+> The Google Play Store[1] has a lot of nice features, but it's still pretty basic whenever a software
+> publisher wants to slowly migrate users. Once a migration is started, we can't provide any Fennec updates
+> to the population who wasn't offered Fenix, yet. I can say this restriction is painful to manage for
+> Android developers, Mozilla included. Because of it, we had to stop shipping Fennec Nightly/Beta APKs at
+> the beginning of each migration. This explains the dates of the last builds. At the same time, we stopped
+> building Fennec Nightly/Beta because it enabled us to save technical resources[2] as well as people's
+> time[3].
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
 
@@ -238,7 +259,11 @@ Use Android Studio to clone and run the app. Nothing special needs to be done.
 
 ### Boris Kraut (https://gitlab.com/krt/ffupdater, until April 2019)
 
-> Since I left F-Droid (and Android/Smartphones) about a year ago, I am looking for a new maintainer to take over. Unfortunately the upstream issue I opened years ago is still not solved in 2019. While Fennec F-Droid is back in the mainline repo and other binary repos do serve Firefox, some might still prefer this updater. So as I said: Maintainers welcome. The main task should be to test the last few merge requests (especially the background update stuff) and release a new version.
+> Since I left F-Droid (and Android/Smartphones) about a year ago, I am looking for a new maintainer to take
+> over. Unfortunately the upstream issue I opened years ago is still not solved in 2019. While Fennec F-Droid
+> is back in the mainline repo and other binary repos do serve Firefox, some might still prefer this updater.
+> So as I said: Maintainers welcome. The main task should be to test the last few merge requests (especially
+> the background update stuff) and release a new version.
 > **New Maintainer: https://notabug.org/Tobiwan/ffupdater**
 
 ## License
