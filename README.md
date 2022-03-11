@@ -31,16 +31,22 @@ This feature itself can be disabled and the check frequency can be changed.
 FFUpdater will also automatically download the app updates in the background if the current network is
 unmetered and the device has enough storage.
 
-## Security:
+## Security measures
 
-- only HTTPS connections
-- check certificate fingerprint of the downloaded file and installed app
-- user certificates are supported for AdGuard
+- The certificate fingerprint of every downloaded APK file is checked and validated against an internal
+  allowlist. This measure prevents the installation of app versions that do not originate from the original
+  developer. The certificate fingerprints will be displayed and be check by yourself. Some websites like
+  apkmirror.com list these fingerprints.
+- No unencrypted traffic is used, which can potentially be modified by attackers. Only HTTPS connections.
 
-You can find the APK certificate fingerprints on multiple website - e.g. apkmirror.com I did my best to make
-the app as secure as possible - feel free to double-check it in the source code.
+- Slight risk for a machine-in-the-middle-attack: FFUpdater trusts HTTPS certificates which are installed by
+  the user (they are called "user certificates"). This is necessary for
+  AdGuard [GitHub-Issue](https://github.com/Tobi823/ffupdater/issues/37). Be careful which certificates you
+  install. A malicious certificate can prevent FFUpdater finding new updates.
 
-## Download server:
+Feel free to double-check my source code ;)
+
+## Download sources for applications
 
 The applications are downloaded from these locations:
 
@@ -108,7 +114,7 @@ to install the version from the official F-Droid repository first.
 On the app page under the item "Versions" you can see from which repository (my *FFUpdater*
 repository or the official *F-Droid* repository) the app version was installed
 
-## FAQ:
+## FAQ
 
 - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
 - Firefox Nightly: Replace the minutes with 'xx' because FFUpdater can only access the start time of the build
@@ -122,13 +128,13 @@ repository or the official *F-Droid* repository) the app version was installed
   (because I think there is much more at stake than with other browsers).
 - Please reopen FFUpdater after moving it to the internal/external storage.
 
-## Git repositories:
+## Git repositories
 
 - Main repository: https://notabug.org/Tobiwan/ffupdater
 - Mirror repository on Github: https://github.com/Tobi823/ffupdater
 - Mirror repository on Gitlab: https://gitlab.com/Tobiwan/ffupdater_gitlab
 
-## 3rd-party libraries:
+## 3rd-party libraries
 
 - [AndroidX](https://developer.android.com/jetpack/androidx) by Google for UI
 - [Material Components](https://github.com/material-components/material-components-android) by Google for UI (
