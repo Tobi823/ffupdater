@@ -39,7 +39,6 @@ unmetered and the device has enough storage.
   like apkmirror.com list these fingerprints for every app.
 - No unencrypted traffic is used or accepted, which can potentially be modified by attackers. Only HTTPS
   connections.
-
 - Slight risk for a machine-in-the-middle-attack: FFUpdater trusts HTTPS certificates which are installed by
   the user (called "user certificates"). This is necessary for AdGuard (
   see [GitHub-Issue](https://github.com/Tobi823/ffupdater/issues/37)). Be careful which certificates you
