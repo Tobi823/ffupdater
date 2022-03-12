@@ -10,7 +10,7 @@
     <string name="available_version_error">"<u>ОШИБКА</u>"</string>
     <string name="available_version_loading">Загрузка…</string>
     <string name="background_job_failure__notification_text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
-    <string name="background_job_failure__notification_title">Не удалось проверить обновления в фоне</string>
+    <string name="background_job_failure__notification_title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
     <string name="brave__title">Браузер Brave</string>
     <string name="brave__warning">Brave использует техническую основу Google Chrome (Chromium) - некоторым это не нравится. Хотите установить Brave?</string>
@@ -79,13 +79,13 @@
     <string name="install_activity__too_low_memory_description">На вашем устройстве имеется только %1$d Мб свободного места. Это может привести к сбою в загрузке или установке.</string>
     <string name="install_activity__too_low_memory_title">Недостаточно места на диске</string>
     <string name="install_activity__try_disable_miui_optimization">Если вы используете Xiaomi или MIUI, попробуйте отключить \"Оптимизацию MIUI\".</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">Необходимо удалить существующее приложение, прежде чем FFUpdater сможет установить или обновить его. Создайте резервную копию данных, так как при деинсталляции будут удалены все закладки, настройки и т.д.</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text1">Необходимо удалить существующее приложение, прежде чем FFUpdater сможет установить или обновить его. Создайте резервную копию данных, так как при удалении будут очищены все закладки, настройки и т.д.</string>
     <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: текущее установленное приложение не подписано оригинальным разработчиком - возможно, оно подписано F-Droid. Android отказывается обновлять приложение, если установленная и обновленная версии были подписаны разными людьми.</string>
     <string name="install_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="install_activity__you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
     <string name="install_activity_label">Установить приложение</string>
-    <string name="install_app">установочное приложение</string>
+    <string name="install_app">Установить</string>
     <string name="install_new_app">Установить новое приложение</string>
     <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите снова загрузить и установить ее?</string>
     <string name="install_same_version_dialog__title">Установлена та же версия</string>
@@ -121,8 +121,8 @@
     <string name="settings__disabled_apps_summary">Проверка обновлений будет проводиться автоматически только для установленных приложений. Вы можете отключить автоматическую проверку обновлений у установленных приложений, выбрав их здесь.</string>
     <string name="settings__disabled_apps_title">Исключенные приложения</string>
     <string name="settings__only_unmetered_network_summary">Если эта опция отключена, FFUpdater может использовать мобильный интернет для проверки обновлений приложений в фоновом режиме. Это уменьшит ваш месячный лимит данных. Когда эта опция включена, для проверки обновлений в фоновом режиме используются только безлимитные сетевые подключения, например, большинство сетей WiFi.</string>
-    <string name="settings__ony_unmetered_network_title">Только безлимитная сеть</string>
-    <string name="settings__theme_battery_saver">Темная, когда активен Battery Saver</string>
+    <string name="settings__only_unmetered_network_title">Только безлимитная сеть</string>
+    <string name="settings__theme_battery_saver">Темная, когда активна экономия батареи</string>
     <string name="settings__theme_dark">Темная</string>
     <string name="settings__theme_light">Светлая</string>
     <string name="settings__theme_preference_summary">Выбор между светлой и темной темой</string>
@@ -159,5 +159,5 @@
     <string name="update_notification__title">Доступно обновление для "%1$s"</string>
     <string name="vivaldi__description">"Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования.  Меняйте внешний вид. Меняйте интерфейс браузера для андроид с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели.  Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве.  Используйте несколько поисковиков. Переключайтесь между поисковиками в одно касание. Используйте префиксы в адресной строке для выбора нужного поисковика."</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
-    <string name="vivaldi__warning">Vivaldi является лишь частично открытым исходным кодом (см. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для получения дополнительной информации). Он также использует техническую основу Google Chrome (Chromium).\n\nНекоторым людям это не нравится. Хотите ли вы установить Vivaldi?</string>
+    <string name="vivaldi__warning">Исходный код Vivaldi не полностью открыт (см. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для получения дополнительной информации). Он также основан на Google Chrome (Chromium).\n\nНекоторым людям это может не нравиться. Хотите ли вы установить Vivaldi?</string>
 </resources>
