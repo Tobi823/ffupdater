@@ -13,15 +13,15 @@
     <string name="background_job_failure__notification_title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
     <string name="brave__title">Браузер Brave</string>
-    <string name="brave__warning">Brave использует техническую основу Google Chrome (Chromium) - некоторым это не нравится. Хотите установить Brave?</string>
-    <string name="bromite__description">Компания Bromite стремится обеспечить бесперебойный просмотр веб-страниц без использования частных функций и с добавлением быстрого движка для блокировки рекламы. Минимальные изменения пользовательского интерфейса применяются для того, чтобы помочь обуздать идею \"браузера как рекламной платформы\".</string>
+    <string name="brave__warning">Brave основан на Google Chrome (Chromium) - некоторым людям это не нравится. Хотите установить Brave?</string>
+    <string name="bromite__description">Компания Bromite стремится обеспечить бесперебойный просмотр веб-страниц без использования нарушающих приватность функций и с добавлением быстрого движка для блокировки рекламы. Минимальные изменения пользовательского интерфейса применяются для того, чтобы помочь обуздать идею \"браузера как рекламной платформы\".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite использует техническую основу Google Chrome (Chromium) - некоторым это не нравится. Хотите установить Bromite?</string>
+    <string name="bromite__warning">Bromite основан на Google Chrome (Chromium) - некоторым людям это не нравится. Хотите установить Bromite?</string>
     <string name="but_was">Но был:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопируйте отчет о сбое в буфер обмена</string>
-    <string name="crash_report__explain_text__background_job">Во время фоновой проверки ошибок произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщить о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">При получении URL-адреса загрузки произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщить о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизводите эту ошибку.</string>
-    <string name="crash_report__explain_text__main_activity_update_check">При проверке обновлений в основном представлении произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщать о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизводите эту ошибку.</string>
+    <string name="crash_report__explain_text__background_job">Во время фоновой проверки на ошибки произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщить о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">При получении URL-адреса загрузки произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщить о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">При проверке обновлений в окне приложения произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщать о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
     <string name="crash_report__explain_text__uncaught_throwable">К сожалению, программа FFUpdater потерпела крах. Пожалуйста, сообщите об этой ошибке на notabug.org, GitHub или GitLab. Добавьте к сообщению отчет о сбое из буфера обмена и описание того, как воспроизвести ошибку.</string>
     <string name="crash_report__go_to_github">Перейти на GitHub</string>
     <string name="crash_report__go_to_gitlab">Перейти на GitLab</string>
@@ -40,7 +40,7 @@
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar разработан для Германии, Австрии и Швейцарии, но может использоваться пользователями в любой стране. Он очень похож на Firefox Focus, но название было изменено в немецкоговорящих странах, чтобы избежать путаницы с журналом Focus от Hubert Burda Media group. В отличие от Firefox Focus, в Firefox Klar по умолчанию отключена телеметрия из-за строгих немецких законов о конфиденциальности.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">Обратите внимание: данное приложение раньше называлось Firefox Preview. Теперь оно называется Firefox Nightly. \n\nFirefox Nightly is a developmental channel for new Mozilla Firefox releases. \n\nFirefox Nightly is designed to showcase the more experimental builds of Firefox. The Nightly channel allows users to experience the newest Firefox innovations in an unstable environment and provide feedback on features and performance to help determine what makes the final release.</string>
+    <string name="firefox_nightly__description">Обратите внимание: данное приложение раньше называлось Firefox Preview. Теперь оно называется Firefox Nightly. \n\nFirefox Nightly - это канал для разработки новых выпусков Mozilla Firefox. \n\nFirefox Nightly был создан, чтобы тестировать новые, экспериментальные сборки Firefox. "Ночной" канал позволяет пользователям изучать новейшие инновации Firefox в нестабильной среде, оставлять отзывы о новых функциях и улучшениях производительности, чтобы помочь понять, как должен выглядеть стабильный выпуск.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_nightly__warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
     <string name="firefox_release__description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за вами каждый день, собирая информацию о вашей жизни в Интернете и замедляя скорость вашей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если вы захотите настроить свой браузер под себя. С Firefox вы получите безопасность, которую заслуживаете, а также высокую скорость работы — и всё это в конфиденциальном мобильном браузере.</string>
@@ -75,19 +75,19 @@
     <string name="install_activity__open_cache_folder_button_text">открыть папку кэша</string>
     <string name="install_activity__retrigger_installation__button_title">Повторите установку приложения</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Отпечаток сертификата SHA-256:</string>
-    <string name="install_activity__temporary_network_issue">Возникла временная сетевая проблема. Пожалуйста, повторите попытку позже.</string>
-    <string name="install_activity__too_low_memory_description">На вашем устройстве имеется только %1$d Мб свободного места. Это может привести к сбою в загрузке или установке.</string>
+    <string name="install_activity__temporary_network_issue">Возникла временная проблема сети. Пожалуйста, повторите попытку позже.</string>
+    <string name="install_activity__too_low_memory_description">На вашем устройстве имеется только %1$d Мб свободного места. Это может привести к сбою при загрузке или установке.</string>
     <string name="install_activity__too_low_memory_title">Недостаточно места на диске</string>
     <string name="install_activity__try_disable_miui_optimization">Если вы используете Xiaomi или MIUI, попробуйте отключить \"Оптимизацию MIUI\".</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">Необходимо удалить существующее приложение, прежде чем FFUpdater сможет установить или обновить его. Создайте резервную копию данных, так как при удалении будут очищены все закладки, настройки и т.д.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: текущее установленное приложение не подписано оригинальным разработчиком - возможно, оно подписано F-Droid. Android отказывается обновлять приложение, если установленная и обновленная версии были подписаны разными людьми.</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text1">Необходимо удалить существующее приложение, прежде чем FFUpdater сможет установить или обновить его. Создайте резервную копию данных, так как после его удаления пропадут все закладки, настройки и т.д.</string>
+    <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: текущее установленное приложение не подписано оригинальным разработчиком - возможно, оно подписано F-Droid. Android отказывается обновлять приложение, если установленная и обновлённая версии были подписаны разными ключами.</string>
     <string name="install_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
     <string name="install_activity__verifying_downloaded_application_certificate">Проверка сертификата приложения</string>
     <string name="install_activity__you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
     <string name="install_activity_label">Установить приложение</string>
     <string name="install_app">Установить</string>
     <string name="install_new_app">Установить новое приложение</string>
-    <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите снова загрузить и установить ее?</string>
+    <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите снова загрузить и установить её?</string>
     <string name="install_same_version_dialog__title">Установлена та же версия</string>
     <string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
@@ -97,7 +97,7 @@
     <string name="main_activity__github_api_limit_exceeded">"<u>Превышен лимит GitHub-API. Повторите попытку через час.</u>"</string>
     <string name="main_activity__no_internet_connection">Нет подключения к интернету</string>
     <string name="main_activity__subtitle">Обновите свои браузеры от Mozilla</string>
-    <string name="main_activity__temporary_network_issue">"<u>Временная сетевая проблема. Повторите попытку позже.</u>"</string>
+    <string name="main_activity__temporary_network_issue">"<u>Временная проблема сети. Повторите попытку позже.</u>"</string>
     <string name="manage_storage_activity__delete_button">Удаление кэшированных обновлений приложений.</string>
     <string name="manage_storage_activity__explanation">FFUpdater кэширует уже загруженные обновления приложений и хранит их в папке \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nЭто экономит пропускную способность, когда приложение не удается установить или обновить. Кроме того, кэш необходим для того, чтобы обновления, загруженные в фоновом режиме, можно было установить позже.\n\nЕсли вы решите удалить эти обновления приложений, вам, возможно, придется загрузить их снова.</string>
     <string name="ok">ОК</string>
@@ -105,7 +105,7 @@
     <string name="running_downloads_dialog__negative">Нет, не загружайте его</string>
     <string name="running_downloads_dialog__title">Работающие загрузки</string>
     <string name="running_downloads_dialog__yes">Да</string>
-    <string name="session_installer__not_enough_storage">Операция завершилась неудачно из-за недостаточного объема памяти: %1$s</string>
+    <string name="session_installer__not_enough_storage">Операция завершилась неудачно из-за недостаточного объёма памяти: %1$s</string>
     <string name="session_installer__status_failure">Операция завершилась неудачно в общем случае. Система всегда будет пытаться предоставить более конкретную причину сбоя, но в некоторых редких случаях она может быть не предоставлена.</string>
     <string name="session_installer__status_failure_aborted">Операция не удалась, потому что она была активно прервана. Например, пользователь активно отказался от запрашиваемых разрешений, или сеанс был прерван.</string>
     <string name="session_installer__status_failure_blocked">Операция завершилась неудачно, потому что была заблокирована. Например, политика устройства может блокировать операцию, верификатор пакетов может блокировать операцию, или приложение может быть необходимо для работы основной системы.</string>
@@ -130,9 +130,9 @@
     <string name="settings__theme_system_default">Системная тема по умолчанию</string>
     <string name="settings__title">Проверка обновлений приложений</string>
     <string name="show_warning_before_installation_dialog__title">Предупреждение</string>
-    <string name="ungoogled_chromium__description">"Google Chromium, без интеграции с Google.\n\nБез входа в аккаунт Google, Chromium довольно хорошо справляется с безопасностью и конфиденциальностью. Однако Chromium все еще имеет некоторую зависимость от веб-служб и двоичных файлов Google. Кроме того, Google разрабатывал Chromium, чтобы он был простым и интуитивно понятным для пользователей, что означает компромисс с прозрачностью и контролем внутренних операций."</string>
+    <string name="ungoogled_chromium__description">"Google Chromium, без интеграции с Google.\n\nБез входа в аккаунт Google, Chromium довольно хорошо справляется с безопасностью и конфиденциальностью. Однако Chromium все еще имеет некоторую зависимость от сетевых служб и проприетарных двоичных файлов Google. Кроме того, Google разрабатывал Chromium, чтобы он был простым и интуитивно понятным для пользователей, что означает компромисс с прозрачностью и контролем внутренних операций."</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium использует техническую основу Google Chrome (Chromium) - некоторым людям это не нравится. Вы хотите установить Ungoogled Chromium?</string>
+    <string name="ungoogled_chromium__warning">Ungoogled Chromium основан на Google Chrome (Chromium) - некоторым людям это не нравится. Вы хотите установить Ungoogled Chromium?</string>
     <string name="unsupported_abi_dialog__message">Выбранный браузер несовместим с процессором вашего смартфона. Пожалуйста, выберите другой браузер.</string>
     <string name="unsupported_abi_dialog__title">Устройство не поддерживается</string>
     <string name="update_interval__12h">12 часов</string>
@@ -157,7 +157,7 @@
     <string name="update_notification__channel_name">Уведомление об обновлении %1$s</string>
     <string name="update_notification__text">Нажмите, чтобы установить обновление</string>
     <string name="update_notification__title">Доступно обновление для "%1$s"</string>
-    <string name="vivaldi__description">"Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования.  Меняйте внешний вид. Меняйте интерфейс браузера для андроид с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели.  Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве.  Используйте несколько поисковиков. Переключайтесь между поисковиками в одно касание. Используйте префиксы в адресной строке для выбора нужного поисковика."</string>
+    <string name="vivaldi__description">"Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования.  Меняйте внешний вид. Меняйте интерфейс браузера для Android с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели.  Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве.  Используйте несколько поисковых систем. Переключайтесь между ними в одно касание. Используйте префиксы в адресной строке для выбора нужной поисковой системы."</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">Исходный код Vivaldi не полностью открыт (см. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для получения дополнительной информации). Он также основан на Google Chrome (Chromium).\n\nНекоторым людям это может не нравиться. Хотите ли вы установить Vivaldi?</string>
 </resources>
