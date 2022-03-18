@@ -1,3 +1,6 @@
+# 2022-03-?? Version 75.0.2 (93)
+* Add Italian translation (thanks Giovanni - Tobi823/ffupdater#111)
+
 # 2022-03-01 Version 75.0.1 (92)
 * Adapt Firefox Klar and Firefox Focus to the new file names in the Github repository (fix missed Focus/Klar updates)
 
