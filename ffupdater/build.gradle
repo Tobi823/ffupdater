@@ -41,15 +41,11 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        //Given a version number MAJOR.MINOR.PATCH, increment the:
-        //
-        //MAJOR version when you make incompatible API changes,
-        //MINOR version when you add functionality in a backwards compatible manner, and
-        //PATCH version when you make backwards compatible bug fixes.
-        //
-        //Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
         versionCode 92
-        versionName "75.0.1"
+        versionName "75.0.1" // MAJOR.MINOR.PATCH
+        // MAJOR version when you make incompatible API changes,
+        // MINOR version when you add functionality in a backwards compatible manner, and
+        // PATCH version when you make backwards compatible bug fixes.
         minSdkVersion 21
         targetSdkVersion 31
         vectorDrawables.useSupportLibrary = true
@@ -63,32 +59,28 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
     packagingOptions {
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/README'
-        exclude 'META-INF/README.txt'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
+        resources {
+            excludes += ['META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/README', 'META-INF/README.txt',
+                         'META-INF/LICENSE', 'META-INF/LICENSE.txt']
+        }
     }
 
     testOptions {
-        // workaround for the error "Method i in android.util.Log not mocked" (http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-)
+        // workaround for "Method i in android.util.Log not mocked"
         // without PowerMockito it is impossible to mock Log.
         unitTests.returnDefaultValues = true
         unitTests.includeAndroidResources = true
         unitTests.all {
-            // All the usual Gradle options.
             testLogging {
                 events "passed", "skipped", "failed", "standardOut", "standardError"
-                outputs.upToDateWhen {false}
+                outputs.upToDateWhen { false }
                 showStandardStreams = true
             }
         }
     }
 
-    lintOptions {
+    lint {
         abortOnError false
     }
 }
