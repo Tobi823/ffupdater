@@ -121,7 +121,6 @@
     <string name="settings__disabled_apps_summary">Проверка обновлений будет проводиться автоматически только для установленных приложений. Вы можете отключить автоматическую проверку обновлений у установленных приложений, выбрав их здесь.</string>
     <string name="settings__disabled_apps_title">Исключенные приложения</string>
     <string name="settings__only_unmetered_network_summary">Если эта опция отключена, FFUpdater может использовать мобильный интернет для проверки обновлений приложений в фоновом режиме. Это уменьшит ваш месячный лимит данных. Когда эта опция включена, для проверки обновлений в фоновом режиме используются только безлимитные сетевые подключения, например, большинство сетей WiFi.</string>
-    <string name="settings__only_unmetered_network_title">Только безлимитная сеть</string>
     <string name="settings__theme_battery_saver">Тёмная, когда активна экономия батареи</string>
     <string name="settings__theme_dark">Тёмная</string>
     <string name="settings__theme_light">Светлая</string>
