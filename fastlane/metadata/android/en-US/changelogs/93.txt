@@ -1,0 +1,5 @@
+* Add Italian translation (thanks Giovanni - Tobi823/ffupdater#111)
+* Update Bulgarian translation (thanks StoyanDimitrov - Tobi823/ffupdater#119)
+* Update Russian translation (thanks Nickoriginal - Tobi823/ffupdater#116)
+* Update Brazilian Portuguese translation (thanks Ghost and ms - Tobiwan/ffupdater#98)
+* Update dependencies
