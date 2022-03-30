@@ -66,7 +66,7 @@ class DownloadApiChecker {
 
     @Test
     fun brave() {
-        val result = runBlocking { Brave().updateCheck(context) }
+        val result = runBlocking { Brave(true).updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 2 * 7
@@ -75,7 +75,7 @@ class DownloadApiChecker {
 
     @Test
     fun bromite() {
-        val result = runBlocking { Bromite().updateCheck(context) }
+        val result = runBlocking { Bromite(true).updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 9 * 7
@@ -93,7 +93,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxFocus() {
-        val result = runBlocking { FirefoxFocus().updateCheck(context) }
+        val result = runBlocking { FirefoxFocus(true).updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 8 * 7
@@ -102,7 +102,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxKlar() {
-        val result = runBlocking { FirefoxKlar().updateCheck(context) }
+        val result = runBlocking { FirefoxKlar(true).updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 2 * 30
@@ -130,7 +130,7 @@ class DownloadApiChecker {
 
     @Test
     fun iceraven() {
-        val result = runBlocking { Iceraven().updateCheck(context) }
+        val result = runBlocking { Iceraven(true).updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 3 * 30
@@ -139,7 +139,7 @@ class DownloadApiChecker {
 
     @Test
     fun lockwise() {
-        val result = runBlocking { Lockwise().updateCheck(context) }
+        val result = runBlocking { Lockwise(true).updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 16 * 30
@@ -155,7 +155,7 @@ class DownloadApiChecker {
 
     @Test
     fun ungoogledChromium() {
-        val result = runBlocking { UngoogledChromium().updateCheck(context) }
+        val result = runBlocking { UngoogledChromium(true).updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 8*7

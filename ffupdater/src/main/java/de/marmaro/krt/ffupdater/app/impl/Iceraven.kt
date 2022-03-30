@@ -6,15 +6,15 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
 import de.marmaro.krt.ffupdater.device.ABI
 
 /**
  * https://github.com/fork-maintainers/iceraven-browser
  * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
  */
-class Iceraven : BaseAppWithCachedUpdateCheck() {
+class Iceraven(
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "io.github.forkmaintainers.iceraven"
     override val displayTitle = R.string.iceraven__title
     override val displayDescription = R.string.iceraven__description
@@ -43,10 +43,10 @@ class Iceraven : BaseAppWithCachedUpdateCheck() {
             repoOwner = "fork-maintainers",
             repoName = "iceraven-browser",
             resultsPerPage = 3,
-            isValidRelease = { release: Release ->
-                !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
-            },
-            isCorrectAsset = { asset: Asset -> asset.name.endsWith(fileSuffix) })
+            isValidRelease = { release -> !release.isPreRelease },
+            isCorrectAsset = { asset -> asset.name.endsWith(fileSuffix) },
+            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
+        )
         val result = githubConsumer.updateCheck()
         return AvailableVersionResult(
             downloadUrl = result.url,

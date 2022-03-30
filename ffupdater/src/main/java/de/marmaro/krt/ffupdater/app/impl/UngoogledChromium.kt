@@ -11,7 +11,9 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://github.com/ungoogled-software/ungoogled-chromium-android/releases
  */
 
-class UngoogledChromium : BaseAppWithCachedUpdateCheck() {
+class UngoogledChromium(
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.ungoogled.chromium.stable"
     override val displayTitle = R.string.ungoogled_chromium__title
     override val displayDescription = R.string.ungoogled_chromium__description
@@ -35,13 +37,12 @@ class UngoogledChromium : BaseAppWithCachedUpdateCheck() {
             repoOwner = "ungoogled-software",
             repoName = "ungoogled-chromium-android",
             resultsPerPage = 2,
-            isValidRelease = { release: GithubConsumer.Release ->
-                !release.isPreRelease
-                        && !release.name.contains("webview")
-                        && release.assets.any { it.name == fileName }
-            },
-            isCorrectAsset = { asset: GithubConsumer.Asset -> asset.name == fileName })
-        val result = githubConsumer.updateCheckAllReleases()
+            isValidRelease = { release -> !release.isPreRelease && !release.name.contains("webview") },
+            isCorrectAsset = { asset -> asset.name == fileName },
+            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
+            onlyRequestReleasesInBulk = true
+        )
+        val result = githubConsumer.updateCheck()
 
         val extractVersion = {
             val regexMatch = Regex("""^([.0-9]+)-\d+$""")

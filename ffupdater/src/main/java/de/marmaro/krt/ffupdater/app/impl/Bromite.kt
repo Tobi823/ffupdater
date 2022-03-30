@@ -5,8 +5,6 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
 import de.marmaro.krt.ffupdater.device.ABI
 
 /**
@@ -14,7 +12,9 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://api.github.com/repos/bromite/bromite/releases
  * https://www.apkmirror.com/apk/bromite/bromite/
  */
-class Bromite : BaseAppWithCachedUpdateCheck() {
+class Bromite(
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.bromite.bromite"
     override val displayTitle = R.string.bromite__title
     override val displayDescription = R.string.bromite__description
@@ -36,10 +36,10 @@ class Bromite : BaseAppWithCachedUpdateCheck() {
             repoOwner = "bromite",
             repoName = "bromite",
             resultsPerPage = 5,
-            isValidRelease = { release: Release ->
-                !release.isPreRelease && release.assets.any { it.name == fileName }
-            },
-            isCorrectAsset = { asset: Asset -> asset.name == fileName })
+            isValidRelease = { release -> !release.isPreRelease },
+            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
+            isCorrectAsset = { asset -> asset.name == fileName },
+        )
         val result = githubConsumer.updateCheck()
         // tag name can be "90.0.4430.59"
         return AvailableVersionResult(

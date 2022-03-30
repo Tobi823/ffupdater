@@ -13,7 +13,9 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/
  */
-class FirefoxKlar : BaseAppWithCachedUpdateCheck() {
+class FirefoxKlar(
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.mozilla.klar"
     override val displayTitle = R.string.firefox_klar__title
     override val displayDescription = R.string.firefox_klar__description
@@ -28,20 +30,14 @@ class FirefoxKlar : BaseAppWithCachedUpdateCheck() {
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileSuffix = getStringForCurrentAbi("armeabi-v7a.apk", "arm64-v8a.apk", "x86.apk", "x86_64.apk")
-        val isCorrectAsset = { asset: GithubConsumer.Asset ->
-            asset.name.startsWith("klar") && asset.name.endsWith(fileSuffix)
-        }
-
         val githubConsumer = GithubConsumer(
             repoOwner = "mozilla-mobile",
             repoName = "focus-android",
             resultsPerPage = 3,
-            isValidRelease = { release: GithubConsumer.Release ->
-                !release.isPreRelease &&
-                        !release.name.contains("beta") &&
-                        release.assets.any(isCorrectAsset)
-            },
-            isCorrectAsset = isCorrectAsset)
+            isValidRelease = { release -> !release.isPreRelease && !release.name.contains("beta") },
+            isCorrectAsset = { asset -> asset.name.startsWith("klar") && asset.name.endsWith(fileSuffix) },
+            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
+        )
         val result = githubConsumer.updateCheck()
 
         val extractVersion = {

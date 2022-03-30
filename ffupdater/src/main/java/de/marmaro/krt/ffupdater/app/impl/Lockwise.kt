@@ -5,15 +5,15 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Asset
-import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer.Release
 import de.marmaro.krt.ffupdater.device.ABI
 
 /**
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  * https://www.apkmirror.com/apk/mozilla/firefox-lockwise/
  */
-class Lockwise : BaseAppWithCachedUpdateCheck() {
+class Lockwise(
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "mozilla.lockbox"
     override val displayTitle = R.string.lockwise__title
     override val displayDescription = R.string.lockwise__description
@@ -34,10 +34,10 @@ class Lockwise : BaseAppWithCachedUpdateCheck() {
             repoOwner = "mozilla-lockwise",
             repoName = "lockwise-android",
             resultsPerPage = 5,
-            isValidRelease = { release: Release ->
-                !release.isPreRelease && release.assets.any { it.name.endsWith(".apk") }
-            },
-            isCorrectAsset = { asset: Asset -> asset.name.endsWith(".apk") })
+            isValidRelease = { release -> !release.isPreRelease },
+            isCorrectAsset = { asset -> asset.name.endsWith(".apk") },
+            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
+        )
         val result = githubConsumer.updateCheck()
 
         val extractVersion = {
