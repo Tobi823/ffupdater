@@ -1,0 +1,21 @@
+Stáhněte, nainstalujte a aktualizujte prohlížeče šetrné k soukromí:
+- Bromite
+- Firefox Prohlížeč
+- Firefox Focus
+- Firefox Klar
+- Firefox Nightly
+- Firefox Beta pro Android
+- Iceraven
+- Ungoogled Chromium
+- Vivaldi
+
+a:
+- Firefox Lockwise
+
+FFUpdater bude pravidelně kontrolovat dostupné aktualizace a zobrazí upozornění, jakmile budou k dispozici. Tuto funkci lze vypnout a změnit frekvenci kontroly.
+
+FFUpdater bude automaticky stahovat aktualizace aplikací na pozadí, pokud je současné připojení neměřené podle objemu dat a v zařízení je dostatek volného místa.
+
+Po přesunu do interního/externího úložiště znovu otevřte FFUpdater.
+
+Navštivte https://notabug.org/Tobiwan/ffupdater/src/master/README.md nebo použijte níže uvedený odkaz "Zdrojový kód", kde naleznete další informace o bezpečnostních opatřeních, dalších distribučních kanálech, omezeních, chybách, FAQ, instrukce k sestavení, použitých knihovnách třetích stran, technických detailech aj.
