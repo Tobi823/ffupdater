@@ -1,3 +1,6 @@
+# 2022-04-?? Version 75.0.3 (94)
+* Add Czech translation (thanks Juraj Motuz - Tobi823/ffupdater#122)
+
 # 2022-03-18 Version 75.0.2 (93)
 * Add Italian translation (thanks Giovanni - Tobi823/ffupdater#111)
 * Update Bulgarian translation (thanks StoyanDimitrov - Tobi823/ffupdater#119)
