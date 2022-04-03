@@ -46,7 +46,6 @@
     <string name="firefox_nightly__warning">Tato aplikace je určena pro vývojáře a testery. Může obsahovat mnoho bugů, které mohou ovlivnit vaši běžnou práci s prohlížečem. Jste si jisti, že chcete prohlížeč nainstalovat?</string>
     <string name="firefox_release__description">Prohlížeč Firefox pro Android je automaticky a úžasně rychlý. Každý den vás monitorují tisíce online sledovacích prvků, shromažďují informace o tom, jaké stránky navštívíte, a zpomalují vaši rychlost. Firefox ve výchozím nastavení blokuje více než 2 000 těchto sledovacích prvků, a pokud chcete svůj prohlížeč ještě více přizpůsobit, máte k dispozici doplňky pro blokování reklam. Díky prohlížeči Firefox získáte zabezpečení, jaké si zasloužíte, a rychlost, kterou potřebujete v soukromém mobilním prohlížeči.</string>
     <string name="firefox_release__title">Firefox Prohlížeč</string>
-    <string name="github" translatable="false">GitHub</string>
     <string name="go_back">zpět</string>
     <string name="iceraven__description">Rozhodně se nejedná o prohlížeč od Mozilly! \n\nIceraven Browser je webový pro Android, založený na Firefox verzi Fenix od Mozilly, GeckoView a Mozilla Android Components. \n\nNáš cíl je být blízkým forkem nového Firefoxu pro Android, který se snaží poskytnout uživatelům více nastavení, větší možnost přizpůsobení (včetně rozsáhlé knihovny dopňků), a více informací o stránkách, které uživatelé navštěvují a jak s nima prohlížeč komunikuje.</string>
     <string name="iceraven__title">Iceraven Prohlížeč</string>
@@ -102,7 +101,6 @@
     <string name="main_activity__temporary_network_issue">"<u>Dočasný problém se sítí. Zkuste to prosím později.</u>"</string>
     <string name="manage_storage_activity__delete_button">Odstranění aktualizací aplikace z mezipaměti.</string>
     <string name="manage_storage_activity__explanation">FFUpdater ukládá do mezipaměti již stažené aktualizace a ukládá je do složky \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nTohle šetří šířku pásma, když se nepodařilo aplikaci úspěšně stáhnout nebo aktualizovat. Mezipamět je také potřeba aby bylo možné stažené aktualizace na pozadí později nainstalovat.\n\nPokud se rozhodnete tyto aktualizace aplikací odstranit, možná je budete muset stáhnout znovu.</string>
-    <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="ok">OK</string>
     <string name="running_downloads_dialog__message">Systemový správce stahování teď stahuje ostatní soubory. Opravdu chcete zahájit nové stahování, které může trvat déle?</string>
     <string name="running_downloads_dialog__negative">Ne, nestahovat</string>
@@ -161,7 +159,6 @@
     <string name="update_notification__text">Klikněte pro instalaci aktualizací</string>
     <string name="update_notification__title">Dostupné aktualizace pro "%1$s"</string>
     <string name="vivaldi__description">Vivaldi je nový soukromý webový prohlížeč, postavený s ohledem na flexibilitu. Přináší řadu užitečných funkcí, včetně vestavěného blokování reklam (ve výchozím nastavení vypnuto), ochranou proti sledování a soukromým překladačem. Poznámky a zachycení stránky vám ušetří čas. Přizpůsobte si vše podle sebe s možnostmi typu listy jako na počítači, tmavý a světlý vzhled, či úpravy rozložení rozhraní. Stáhněte si zdarma Vivaldi a začněte prohlížejte rychleji.</string>
-    <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">"Vivaldi je pouze částečně open source (viz. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Také používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Vivaldi?"</string>
 </resources>
