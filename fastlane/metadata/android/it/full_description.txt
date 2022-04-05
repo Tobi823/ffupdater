@@ -1,4 +1,5 @@
 Scarica, installa e aggiorna questi browser rispettosi della privacy:
+- Brave Private Browser
 - Bromite
 - Firefox Browser
 - Firefox Focus

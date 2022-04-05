@@ -1,4 +1,5 @@
 これらのプライバシーを重視したブラウザやアプリをインストールやアップデートできます:
+ - カバーアート Brave 広告ブロック(adblock)するwebブラウザ
  - Bromite
  - Firefox Browser
  - Firefox Focus

@@ -1,4 +1,5 @@
 Stáhněte, nainstalujte a aktualizujte prohlížeče šetrné k soukromí:
+- Brave Soukromý prohlížeč
 - Bromite
 - Firefox Prohlížeč
 - Firefox Focus
