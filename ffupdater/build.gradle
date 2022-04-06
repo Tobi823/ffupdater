@@ -51,6 +51,14 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
     compileOptions {
         encoding = "UTF-8"
         coreLibraryDesugaringEnabled true
@@ -59,6 +67,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     packagingOptions {
         resources {
             excludes += ['META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/README', 'META-INF/README.txt',

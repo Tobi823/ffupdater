@@ -1,0 +1,1 @@
+-keep class de.marmaro.krt.ffupdater.** { *; }
