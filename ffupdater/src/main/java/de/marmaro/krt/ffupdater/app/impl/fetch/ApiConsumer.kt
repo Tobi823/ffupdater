@@ -8,22 +8,20 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededExcep
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.BufferedReader
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.io.InputStreamReader
-import java.net.URL
-import java.util.zip.GZIPInputStream
-import javax.net.ssl.HttpsURLConnection
 import kotlin.reflect.KClass
+
 
 /**
  * Consume a REST-API from the internet.
  */
 object ApiConsumer {
-    private const val GZIP = "gzip"
     private const val THREAD_ID = 10000
     private val gson = Gson()
+    private val client = OkHttpClient()
 
     /**
      * Reads a network resource.
@@ -40,31 +38,29 @@ object ApiConsumer {
     }
 
     @WorkerThread
-    private fun <T : Any> readNetworkResource(urlString: String, clazz: KClass<T>): T {
+    private fun <T : Any> readNetworkResource(url: String, clazz: KClass<T>): T {
+        require(url.startsWith("https://"))
         TrafficStats.setThreadStatsTag(THREAD_ID)
-        val reader = try {
-            val url = URL(urlString)
-            val connection = url.openConnection() as HttpsURLConnection
-            connection.setRequestProperty("Accept-Encoding", GZIP)
-            if (connection.contentEncoding == GZIP) {
-                BufferedReader(InputStreamReader(GZIPInputStream(connection.inputStream)))
-            } else {
-                BufferedReader(InputStreamReader(connection.inputStream))
+        try {
+            val request = Request.Builder().url(url).build()
+            client.newCall(request).execute().use { response ->
+                val body = requireNotNull(response.body)
+                if (clazz == String::class) {
+                    @Suppress("UNCHECKED_CAST")
+                    return body.string() as T
+                }
+                body.byteStream().buffered().reader().use { reader ->
+                    return gson.fromJson(reader, clazz.java)
+                }
             }
         } catch (e: FileNotFoundException) {
-            if (urlString.startsWith("https://api.github.com")) {
+            if (url.startsWith("https://api.github.com")) {
                 throw GithubRateLimitExceededException(e)
             } else {
-                throw NetworkException("Fail to consume ${clazz.qualifiedName} from '$urlString'.", e)
+                throw NetworkException("Fail to consume ${clazz.qualifiedName} from '$url'.", e)
             }
         } catch (e: IOException) {
-            throw NetworkException("Fail to consume ${clazz.qualifiedName} from '$urlString'.", e)
+            throw NetworkException("Fail to consume ${clazz.qualifiedName} from '$url'.", e)
         }
-
-        if (clazz == String::class) {
-            @Suppress("UNCHECKED_CAST")
-            return reader.use { it.readText() as T }
-        }
-        return reader.use { gson.fromJson(it, clazz.java) }
     }
 }

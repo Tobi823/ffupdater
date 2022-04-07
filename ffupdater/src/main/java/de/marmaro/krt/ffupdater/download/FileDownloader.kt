@@ -22,7 +22,7 @@ class FileDownloader {
     private val trafficStatsThreadId = 10001
     var errorMessage: String? = null
         private set
-    var onProgress: (progressInPercent: Int) -> Unit = @WorkerThread {}
+    var onProgress: (progressInPercent: Int?, totalMB: Long) -> Unit = @WorkerThread { _, _ -> }
 
     // fallback to register for news for existing download
     var currentDownloadResult: Deferred<Boolean>? = null
@@ -91,7 +91,7 @@ class FileDownloader {
 
 internal class ProgressResponseBody(
     private val responseBody: ResponseBody,
-    private var onProgress: KMutableProperty0<(progressInPercent: Int) -> Unit>
+    private var onProgress: KMutableProperty0<(progressInPercent: Int?, totalMB: Long) -> Unit>
 ) : ResponseBody() {
     override fun contentType() = responseBody.contentType()
     override fun contentLength() = responseBody.contentLength()
@@ -102,13 +102,7 @@ internal class ProgressResponseBody(
             private val sourceIsExhausted = -1L
             var totalBytesRead = 0L
             var totalProgress = -1
-
-            private fun getProgress(): Int {
-                if (contentLength() == 0L) {
-                    return 0
-                }
-                return (100 * totalBytesRead / contentLength()).toInt()
-            }
+            var totalMB = 0L
 
             @Throws(IOException::class)
             override fun read(sink: Buffer, byteCount: Long): Long {
@@ -116,10 +110,19 @@ internal class ProgressResponseBody(
                 if (bytesRead != sourceIsExhausted) {
                     totalBytesRead += bytesRead
                 }
-                val progress = getProgress()
-                if (progress != totalProgress) {
-                    totalProgress = progress
-                    onProgress.get().invoke(progress)
+                if (contentLength() > 0L) {
+                    val progress = (100 * totalBytesRead / contentLength()).toInt()
+                    if (progress != totalProgress) {
+                        totalProgress = progress
+                        val totalMegabytesRead = totalBytesRead / 1_048_576
+                        onProgress.get().invoke(progress, totalMegabytesRead)
+                    }
+                } else {
+                    val totalMegabytesRead = totalBytesRead / 1_048_576
+                    if (totalMegabytesRead != totalMB) {
+                        totalMB = totalMegabytesRead
+                        onProgress.get().invoke(null, totalMegabytesRead)
+                    }
                 }
                 return bytesRead
             }

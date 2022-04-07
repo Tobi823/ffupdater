@@ -305,10 +305,14 @@ class InstallActivity : AppCompatActivity() {
                 )
             }
             val fileDownloader = FileDownloader()
-            fileDownloader.onProgress = { percentage ->
+            fileDownloader.onProgress = { percentage, mb ->
                 ia.runOnUiThread {
-                    ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
-                    setDownloadingFileText("$percentage%")
+                    if (percentage != null) {
+                        ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
+                        setDownloadingFileText("$percentage %, $mb MB")
+                    } else {
+                        setDownloadingFileText("$mb MB")
+                    }
                 }
             }
             ia.viewModel.fileDownloader = fileDownloader
@@ -341,10 +345,14 @@ class InstallActivity : AppCompatActivity() {
                 )
             }
             val fileDownloader = requireNotNull(ia.viewModel.fileDownloader)
-            fileDownloader.onProgress = { percentage ->
+            fileDownloader.onProgress = { percentage, mb ->
                 ia.runOnUiThread {
-                    ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
-                    setDownloadingFileText("$percentage %")
+                    if (percentage != null) {
+                        ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
+                        setDownloadingFileText("$percentage %")
+                    } else {
+                        setDownloadingFileText("$mb MB")
+                    }
                 }
             }
 
