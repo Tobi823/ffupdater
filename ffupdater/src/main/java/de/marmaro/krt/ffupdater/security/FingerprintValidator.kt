@@ -32,7 +32,6 @@ class FingerprintValidator(private val packageManager: PackageManager) {
         require(file.exists()) { "File '${file.absoluteFile}' must exists." }
         val path = file.absolutePath
         val signature = PackageManagerUtil.getPackageArchiveInfo(packageManager, path)
-        checkNotNull(signature) { "Fail to parse APK file '${file.absoluteFile}'." }
         return try {
             verifyPackageInfo(signature, app)
         } catch (e: CertificateException) {
@@ -57,7 +56,6 @@ class FingerprintValidator(private val packageManager: PackageManager) {
     suspend fun checkInstalledApp(app: App): CertificateValidationResult {
         return try {
             val signature = PackageManagerUtil.getInstalledAppInfo(packageManager, app)
-            checkNotNull(signature) { "Fail to get signature of app '${app.detail.packageName}'." }
             verifyPackageInfo(signature, app)
         } catch (e: CertificateException) {
             throw UnableCheckApkException("certificate of APK file is invalid", e)

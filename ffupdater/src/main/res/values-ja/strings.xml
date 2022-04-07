@@ -19,7 +19,6 @@
     <string name="bromite__warning">Bromiteは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？</string>
     <string name="but_was">But was:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピーする</string>
-    <string name="crash_report__explain_text__background_job">バックグラウンドのエラーチェックで次のようなエラーが発生しました。このエラーが頻繁に発生する場合は、notabug.orgやGitHub、GitLabなどで遠慮なく報告してください。その際には、クリップボードからのクラッシュレポートと、このエラーを再現する方法の説明を忘れずに付け加えてください。</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">ダウンロードURLを取得する際に以下のエラーが発生しました。このエラーが頻繁に発生する場合は、notabug.org、GitHub、またはGitLabで自由に報告してください。その際、クリップボードからのクラッシュレポートと、このエラーを再現する方法の説明を忘れずに付け加えてください。</string>
     <string name="crash_report__explain_text__main_activity_update_check">メインビューでアップデートをチェックする際に、以下のエラーが発生しました。このエラーが頻繁に発生する場合は、notabug.org、GitHub、またはGitLabで自由に報告してください。その際には、クリップボードからのクラッシュレポートと、このエラーを再現する方法の説明を忘れずに付け加えてください。</string>
     <string name="crash_report__explain_text__uncaught_throwable">残念ながら、FFUpdaterはクラッシュしました。このエラーを notabug.org、GitHub または GitLab で報告してください。クリップボードからのクラッシュレポートと、バグを再現する方法の説明を課題に追加してください。</string>
@@ -30,6 +29,10 @@
     <string name="device_too_old_dialog__title">デバイスが古いバージョンです</string>
     <string name="dialog_button__do_not_install">いいえ、このアプリをインストールしません</string>
     <string name="dialog_button__yes">はい</string>
+    <string name="download_notification__channel_description">アプリのアップデートがバックグラウンドでダウンロードされたときに表示される。</string>
+    <string name="download_notification__channel_name">バックグラウンドでダウンロードを通知</string>
+    <string name="download_notification__message">現在、インストールされているアプリのアップデートをバックグラウンドでダウンロード中です。</string>
+    <string name="download_notification__title">アプリのアップデートをダウンロードする</string>
     <string name="download_the_app">アプリをダウンロード</string>
     <string name="error_notification__channel_description">バックグラウンドの更新チェックのエラーを表示します</string>
     <string name="error_notification__channel_name">バックグラウンドチェックのエラー</string>
@@ -52,14 +55,8 @@
     <string name="information_about_the_app">このアプリについて</string>
     <string name="install_activity__delete_cache_button_text">キャッシュクリア</string>
     <string name="install_activity__delete_cache_explanation">FFUpdaterが欠陥のあるアプリのアップデートをキャッシュしたと思われる場合は、「clear cache」ボタンをクリックして、このアプリのキャッシュを削除してください。</string>
-    <string name="install_activity__download_app_is_disabled">必要なシステムアプリ「Download Manager」が無効になっています。お手数ですが、再度有効にしてください。</string>
-    <string name="install_activity__download_application_from_with_status">アプリをダウンロード (%1$s)</string>
+    <string name="install_activity__download_app_with_status">アプリをダウンロード (%1$s)</string>
     <string name="install_activity__download_failed">ダウンロード失敗</string>
-    <string name="install_activity__download_status_failed">失敗</string>
-    <string name="install_activity__download_status_paused">休止</string>
-    <string name="install_activity__download_status_pending">保留中</string>
-    <string name="install_activity__download_status_running">実行中</string>
-    <string name="install_activity__download_status_success">成功</string>
     <string name="install_activity__downloaded_application_from">アプリのダウンロード元:</string>
     <string name="install_activity__downloaded_application_is_not_verified">ダウンロードしたアプリを検証できませんでした。</string>
     <string name="install_activity__downloaded_application_is_verified">ダウンロードしたアプリは検証されました。</string>

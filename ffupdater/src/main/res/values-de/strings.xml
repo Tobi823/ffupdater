@@ -19,7 +19,6 @@
     <string name="bromite__warning">Bromite nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Willst du Bromite dennoch installieren?</string>
     <string name="but_was">Aber war:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopieren des Absturzberichts in die Zwischenablage</string>
-    <string name="crash_report__explain_text__background_job">Der folgende Fehler ist während der Fehlerprüfung im Hintergrund aufgetreten. Wenn dieser Fehler häufig auftritt, können Sie ihn auf notabug.org, GitHub oder GitLab melden. Vergessen Sie bitte nicht, Ihren Absturzbericht aus der Zwischenablage und die Beschreibung, wie Sie diesen Fehler reproduzieren, hinzuzufügen.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Der folgende Fehler trat auf, als die Download-URL abgerufen wurde. Wenn dieser Fehler häufig auftritt, können Sie ihn auf notabug.org, GitHub oder GitLab melden. Vergessen Sie bitte nicht, Ihren Absturzbericht aus der Zwischenablage und die Beschreibung, wie Sie diesen Fehler reproduzieren, hinzuzufügen.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Bei der Suche nach Aktualisierungen in der Hauptansicht ist der folgende Fehler aufgetreten. Wenn dieser Fehler häufig auftritt, können Sie ihn gerne auf notabug.org, GitHub oder GitLab melden. Bitte vergessen Sie nicht, Ihren Absturzbericht aus der Zwischenablage und die Beschreibung, wie Sie diesen Fehler reproduzieren, hinzuzufügen.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Leider ist FFUpdater abgestürzt. Bitte melden Sie diesen Fehler auf notabug.org, GitHub oder GitLab. Fügen Sie Ihrem Issue den Absturzbericht aus der Zwischenablage und eine Beschreibung hinzu, wie Sie den Fehler reproduzieren können.</string>
@@ -30,6 +29,10 @@
     <string name="device_too_old_dialog__title">Gerät ist zu alt</string>
     <string name="dialog_button__do_not_install">Nein, nicht installieren</string>
     <string name="dialog_button__yes">Ja</string>
+    <string name="download_notification__channel_description">Zeigt an, wenn App-Updates im Hintergrund heruntergeladen werden.</string>
+    <string name="download_notification__channel_name">Benachrichtigung über Downloads im Hintergrund</string>
+    <string name="download_notification__message">Derzeit werden Updates für installierte Anwendungen im Hintergrund heruntergeladen.</string>
+    <string name="download_notification__title">Herunterladen von App-Updates</string>
     <string name="download_the_app">Applikation herunterladen</string>
     <string name="error_notification__channel_description">Fehler des Hintergrund-Update-Checkers anzeigen</string>
     <string name="error_notification__channel_name">Fehler im Hintergrund</string>
@@ -52,14 +55,8 @@
     <string name="information_about_the_app">Information über die Applikation</string>
     <string name="install_activity__delete_cache_button_text">Cache leeren</string>
     <string name="install_activity__delete_cache_explanation">"Wenn Sie glauben, dass FFUpdater ein fehlerhaftes App-Update zwischengespeichert hat, klicken Sie auf den Button \"Cache löschen\", um den Cache für diese App zu löschen."</string>
-    <string name="install_activity__download_app_is_disabled">Die notwendige System-App \"Download Manager\" ist deaktiviert. Bitte aktivieren Sie sie wieder.</string>
-    <string name="install_activity__download_application_from_with_status">Lade Anwendung herunter (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Lade Anwendung herunter (%1$s)</string>
     <string name="install_activity__download_failed">Download schlug fehl</string>
-    <string name="install_activity__download_status_failed">fehlgeschlagen</string>
-    <string name="install_activity__download_status_paused">pausiert</string>
-    <string name="install_activity__download_status_pending">in Warteschlange</string>
-    <string name="install_activity__download_status_running">läuft</string>
-    <string name="install_activity__download_status_success">erfolgreich</string>
     <string name="install_activity__downloaded_application_from">Anwendung wurde heruntergeladen von:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Heruntergeladene Anwendung ist NICHT verifiziert</string>
     <string name="install_activity__downloaded_application_is_verified">Heruntergeladene Anwendung ist verifiziert</string>

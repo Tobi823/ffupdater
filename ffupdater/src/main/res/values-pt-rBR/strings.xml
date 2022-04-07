@@ -19,7 +19,6 @@
     <string name="bromite__warning">Bromite usa os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Bromite?</string>
     <string name="but_was">Mas era:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copiar o relatório do erro ao Clipboard</string>
-    <string name="crash_report__explain_text__background_job">O seguinte erro ocorreu durante a verificação em segundo plano. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">O seguinte erro ocorreu quando a URL de download foi consultada. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
     <string name="crash_report__explain_text__main_activity_update_check">O seguinte erro ocorreu ao verificar por atualizações na interface principal. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Infelizmente, o FFUpdater falhou. Por favor relate este erro via notabug.org, GitHub ou GitLab. Adicione o relatório do erro do Clipboard com uma descrição e os passos de como reproduzir a falha.</string>
@@ -30,6 +29,10 @@
     <string name="device_too_old_dialog__title">O dispositivo é incompatível</string>
     <string name="dialog_button__do_not_install">Não quero instalar</string>
     <string name="dialog_button__yes">Sim</string>
+    <string name="download_notification__channel_description">Mostra quando as atualizações do aplicativo são baixadas em segundo plano.</string>
+    <string name="download_notification__channel_name">Notificação sobre downloads em segundo plano</string>
+    <string name="download_notification__message">Atualmente, as atualizações para os aplicativos instalados são baixadas em segundo plano.</string>
+    <string name="download_notification__title">Download de atualizações do aplicativo</string>
     <string name="download_the_app">baixar o navegador</string>
     <string name="error_notification__channel_description">Mostrar erros ao verificar por atualizações em segundo plano</string>
     <string name="error_notification__channel_name">Erros em segundo plano</string>
@@ -52,14 +55,8 @@
     <string name="information_about_the_app">detalhes sobre o app</string>
     <string name="install_activity__delete_cache_button_text">limpar cache</string>
     <string name="install_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização do navegador defeituosa, clique no botão \"limpar cache\" para limpar o cache do app.</string>
-    <string name="install_activity__download_app_is_disabled">O app necessário do sistema \"Download Manager\" está desativado. Por favor, ative-o de volta.</string>
-    <string name="install_activity__download_application_from_with_status">Baixar o (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Baixar o (%1$s)</string>
     <string name="install_activity__download_failed">Download falhou</string>
-    <string name="install_activity__download_status_failed">falhou</string>
-    <string name="install_activity__download_status_paused">pausado</string>
-    <string name="install_activity__download_status_pending">pendente</string>
-    <string name="install_activity__download_status_running">em funcionamento</string>
-    <string name="install_activity__download_status_success">sucesso</string>
     <string name="install_activity__downloaded_application_from">Navegador baixado do:</string>
     <string name="install_activity__downloaded_application_is_not_verified">O navegador baixado NÃO foi verificado</string>
     <string name="install_activity__downloaded_application_is_verified">O navegador baixado foi verificado</string>

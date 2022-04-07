@@ -3,6 +3,8 @@ package de.marmaro.krt.ffupdater.installer
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_MUTABLE
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -130,11 +132,12 @@ class SessionInstaller(
     private fun createSessionChangeReceiver(activity: Activity): IntentSender {
         val intent = Intent(activity, InstallActivity::class.java)
         intent.action = PACKAGE_INSTALLED_ACTION
-        val pendingIntent = if (DeviceEnvironment.supportsAndroid12()) {
-            PendingIntent.getActivity(activity, 0, intent, PendingIntent.FLAG_MUTABLE)
+        val flags = if (DeviceEnvironment.supportsAndroid12()) {
+            FLAG_UPDATE_CURRENT + FLAG_MUTABLE
         } else {
-            PendingIntent.getActivity(activity, 0, intent, 0)
+            FLAG_UPDATE_CURRENT
         }
+        val pendingIntent = PendingIntent.getActivity(activity, 0, intent, flags)
         return pendingIntent.intentSender
     }
 

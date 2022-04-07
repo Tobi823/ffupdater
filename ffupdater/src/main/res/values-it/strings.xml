@@ -19,7 +19,6 @@
     <string name="bromite__warning">Bromite usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Bromite?</string>
     <string name="but_was">Ma era:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copia il rapporto di arresto anomalo negli appunti</string>
-    <string name="crash_report__explain_text__background_job">Si è verificato il seguente errore durante il controllo degli errori in background. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Si è verificato il seguente errore quando è stato recuperato l\'URL di download. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Si è verificato il seguente errore durante il controllo degli aggiornamenti nella pagina principale. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Sfortunatamente, FFUpdater si è arrestato in modo anomalo. Si prega di segnalare questo errore su notabug.org, GitHub o GitLab. Aggiungi alla tua issue il rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
@@ -52,14 +51,8 @@
     <string name="information_about_the_app">informazioni sull\'app</string>
     <string name="install_activity__delete_cache_button_text">svuota cache</string>
     <string name="install_activity__delete_cache_explanation">Se pensi che FFupdater abbia memorizzato nella cache un aggiornamento di app difettoso, clicca il pulsante \"svuota cache\" per eliminare la cache di questa app.</string>
-    <string name="install_activity__download_app_is_disabled">L\'app di sistema necessaria \"Gestione download\" è disabilitata. Si prega di abilitarla nuovamente.</string>
-    <string name="install_activity__download_application_from_with_status">Download applicazione (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Download applicazione (%1$s)</string>
     <string name="install_activity__download_failed">Download fallito</string>
-    <string name="install_activity__download_status_failed">fallito</string>
-    <string name="install_activity__download_status_paused">in pausa</string>
-    <string name="install_activity__download_status_pending">in attesa</string>
-    <string name="install_activity__download_status_running">in corso</string>
-    <string name="install_activity__download_status_success">successo</string>
     <string name="install_activity__downloaded_application_from">Applicazione scaricata da:</string>
     <string name="install_activity__downloaded_application_is_not_verified">L\'applicazione scaricata NON è verificata</string>
     <string name="install_activity__downloaded_application_is_verified">L\'applicazione scaricata è verificata</string>
@@ -160,4 +153,8 @@
     <string name="vivaldi__description">Scopri un browser Internet incredibilmente veloce! Vivaldi è un browser web nuovo, gratuito, e privato costruito pensando alla flessibilità. Viene fornito con funzioni utili tra cui un blocco delle pubblicità incorporato (blocco dei pop-up), protezione dal tracciamento e traduzione privata. Opzioni del browser come schede appropriate in stile desktop, temi chiaro/scuro, e le scelte di layout ti aiutano a renderlo tuo.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">"Vivaldi è open source solo parzialmente (vedi <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> per più informazioni). Inoltre usa la base tecnica di Google Chrome (Chromium).\n\nCiò non piace ad alcune persone. Vuoi installare Vivaldi?"</string>
+    <string name="download_notification__channel_name">Notifica di download in background</string>
+    <string name="download_notification__channel_description">Mostra quando gli aggiornamenti delle app vengono scaricati in background.</string>
+    <string name="download_notification__title">Scaricare gli aggiornamenti delle app</string>
+    <string name="download_notification__message">Attualmente scarica in background gli aggiornamenti per le app installate.</string>
 </resources>

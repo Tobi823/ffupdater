@@ -28,15 +28,15 @@ import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
 import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
-import de.marmaro.krt.ffupdater.download.DownloadManagerUtil
+import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.NetworkUtil
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.PreferencesHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 import java.util.*
-import java.util.concurrent.*
 
 class MainActivity : AppCompatActivity() {
     private val sameAppVersionAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     fun installAppButCheckForCurrentDownloads(app: App) {
-        if (DownloadManagerUtil.isDownloadingFilesNow(this)) {
+        if (AppDownloadStatus.areDownloadsInBackgroundActive()) {
             RunningDownloadsDialog.newInstance(app).show(supportFragmentManager)
         } else {
             installApp(app)

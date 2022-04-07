@@ -19,7 +19,6 @@
     <string name="bromite__warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Bromite?</string>
     <string name="but_was">Але було:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопіюйте звіт про аварійне завершення роботи в буфер обміну</string>
-    <string name="crash_report__explain_text__background_job">Під час перевірки фонових помилок сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Під час отримання URL -адреси завантаження сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Під час перевірки оновлень у головному вікні сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
     <string name="crash_report__explain_text__uncaught_throwable">281 / 5000 Translation results На жаль, FFUpdater вийшов з ладу. Будь ласка, повідомте про цю помилку на notabug.org, GitHub або GitLab. Додайте до вашої проблеми звіт про збої з буфера обміну та опис того, як відтворити помилку.</string>
@@ -30,6 +29,10 @@
     <string name="device_too_old_dialog__title">Пристрій занадто старий</string>
     <string name="dialog_button__do_not_install">Ні, поверніться до \'Release\'</string>
     <string name="dialog_button__yes">Так</string>
+    <string name="download_notification__channel_description">Показує, коли оновлення програми завантажуються у фоновому режимі.</string>
+    <string name="download_notification__channel_name">Повідомлення про завантаження у фоновому режимі</string>
+    <string name="download_notification__message">Наразі завантажуються оновлення для встановлених програм у фоновому режимі.</string>
+    <string name="download_notification__title">Завантаження оновлень програми</string>
     <string name="download_the_app">завантажити додаток</string>
     <string name="error_notification__channel_description">Показати помилки перевірки фонового оновлення</string>
     <string name="error_notification__channel_name">Фонові помилки</string>
@@ -52,14 +55,8 @@
     <string name="information_about_the_app">інформація про додаток</string>
     <string name="install_activity__delete_cache_button_text">очистити кеш</string>
     <string name="install_activity__delete_cache_explanation">"Якщо ви вважаєте, що FFUpdater кешував несправне оновлення програми, натисніть кнопку «очистити кеш», щоб видалити кеш цієї програми."</string>
-    <string name="install_activity__download_app_is_disabled">Необхідний системний додаток \"Диспетчер завантажень\" вимкнено. Увімкніть його знову.</string>
-    <string name="install_activity__download_application_from_with_status">Завантажити програму (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Завантажити програму (%1$s)</string>
     <string name="install_activity__download_failed">Не вдалося завантажити</string>
-    <string name="install_activity__download_status_failed">не вдалося</string>
-    <string name="install_activity__download_status_paused">призупинено</string>
-    <string name="install_activity__download_status_pending">в очікуванні</string>
-    <string name="install_activity__download_status_running">біг</string>
-    <string name="install_activity__download_status_success">успіху</string>
     <string name="install_activity__downloaded_application_from">Завантажена програма від:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Завантажена програма НЕ перевірена</string>
     <string name="install_activity__downloaded_application_is_verified">Завантажена програма перевірена</string>

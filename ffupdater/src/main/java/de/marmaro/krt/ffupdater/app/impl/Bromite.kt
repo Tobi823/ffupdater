@@ -30,7 +30,9 @@ class Bromite(
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val fileName = getStringForCurrentAbi(
             "arm_ChromePublic.apk",
-            "arm64_ChromePublic.apk", "x86_ChromePublic.apk", null
+            "arm64_ChromePublic.apk",
+            "x86_ChromePublic.apk",
+            "x64_ChromePublic.apk",
         )
         val githubConsumer = GithubConsumer(
             repoOwner = "bromite",

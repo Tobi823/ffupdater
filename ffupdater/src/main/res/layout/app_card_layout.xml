@@ -1,6 +1,5 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/appCard"
     style="@style/AppCard"
     app:cardUseCompatPadding="true">
 
@@ -20,14 +19,12 @@
             app:layout_constraintTop_toBottomOf="@id/appIcon" />
 
         <TextView
-            android:id="@+id/appAvailableVersion"
             style="@style/AppCardVersion"
             android:tag="appAvailableVersion"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appInstalledVersion" />
 
         <ImageButton
-            android:id="@+id/appInfoButton"
             style="@style/AppCardInfoButton"
             android:contentDescription="@string/information_about_the_app"
             android:tag="appInfoButton"

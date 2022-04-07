@@ -7,27 +7,8 @@ import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import java.io.File
 
 class AppCache(val app: App) {
-    fun getFileName(): String {
-        return "${app.detail.packageName}.apk"
-    }
-
     fun getFile(context: Context): File {
-        return File(getCacheFolder(context), getFileName())
-    }
-
-    fun fixFileName(context: Context) {
-        if (getFile(context).exists()) {
-            return
-        }
-
-        // sometimes the DownloadManager forgets to add the file suffix "apk" to the downloaded file: notabug#79
-        val fileWithoutSuffix = File(getCacheFolder(context), app.detail.packageName)
-        if (fileWithoutSuffix.exists()) {
-            val normalFile = getFile(context)
-            check(!normalFile.exists()) { "Normal cache file should not exists." }
-            val success = fileWithoutSuffix.renameTo(normalFile)
-            check(success) { "Renaming file to the correct file name was not successful." }
-        }
+        return File(getCacheFolder(context), "${app.detail.packageName}.apk")
     }
 
     suspend fun isAvailable(context: Context, available: AvailableVersionResult): Boolean {

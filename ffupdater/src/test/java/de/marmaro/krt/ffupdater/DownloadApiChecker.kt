@@ -23,6 +23,7 @@ import java.time.Duration
 import java.time.ZonedDateTime
 import javax.net.ssl.HttpsURLConnection
 
+
 /**
  * Verify that the APIs for downloading latest app updates:
  *  - still working
@@ -158,7 +159,7 @@ class DownloadApiChecker {
         val result = runBlocking { UngoogledChromium(true).updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 8*7
+        val maxDays = 8 * 7
         assertTrue("$age must be smaller then $maxDays days", age.toDays() < maxDays)
     }
 

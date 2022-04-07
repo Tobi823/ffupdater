@@ -58,21 +58,9 @@
                 android:text="@string/install_activity__external_storage_not_accessible" />
 
             <TextView
-                style="@style/MonospaceSelectableTextView"
                 android:id="@+id/externalStorageNotAccessible_state"
+                style="@style/MonospaceSelectableTextView"
                 android:text="" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/downloadAppIsDisabled"
-            style="@style/DownloadActivitySegment"
-            android:background="@color/errorRed"
-            android:padding="8dp">
-
-            <TextView
-                style="@style/BoldTextView"
-                android:text="@string/install_activity__download_app_is_disabled" />
 
         </LinearLayout>
 
@@ -111,7 +99,7 @@
             <TextView
                 android:id="@+id/downloadingFileText"
                 style="@style/BoldTextView"
-                android:text="@string/install_activity__download_application_from_with_status" />
+                android:text="@string/install_activity__download_app_with_status" />
 
             <TextView
                 android:id="@+id/downloadingFileUrl"
@@ -167,6 +155,11 @@
             <TextView
                 android:id="@+id/downloadFileFailedUrl"
                 style="@style/MonospaceSelectableTextView" />
+
+            <TextView
+                android:id="@+id/downloadFileFailedText"
+                style="@style/DefaultTextView"
+                android:layout_marginTop="8dp" />
 
         </LinearLayout>
 
@@ -380,8 +373,8 @@
 
             <TextView
                 android:id="@+id/install_activity__exception__show_button"
-                android:text="@string/install_activity__exception__show_button"
-                style="@style/DefaultTextView" />
+                style="@style/DefaultTextView"
+                android:text="@string/install_activity__exception__show_button" />
 
             <TextView
                 style="@style/DefaultTextView"

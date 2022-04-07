@@ -19,7 +19,6 @@
     <string name="bromite__warning">Bromite utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Bromite?</string>
     <string name="but_was">Mais était:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copier le rapport d\'erreur dans le presse-papiers</string>
-    <string name="crash_report__explain_text__background_job">L\'erreur suivante s\'est produite pendant la vérification des erreurs en arrière-plan. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport de crash du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">L\'erreur suivante s\'est produite lors de l\'extraction de l\'URL de téléchargement. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport d\'erreur du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
     <string name="crash_report__explain_text__main_activity_update_check">L\'erreur suivante s\'est produite lors de la vérification des mises à jour dans la vue principale. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport de crash du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Malheureusement, FFUpdater s\'est planté. Veuillez signaler cette erreur sur notabug.org, GitHub ou GitLab. Ajoutez à votre problème le rapport de panne du presse-papiers et une description de la façon de reproduire le bogue.</string>
@@ -30,6 +29,10 @@
     <string name="device_too_old_dialog__title">L\'appareil est trop vieux</string>
     <string name="dialog_button__do_not_install">Non, rester à \'Release\'</string>
     <string name="dialog_button__yes">Oui</string>
+    <string name="download_notification__channel_description">Indique quand les mises à jour des applications sont téléchargées en arrière-plan.</string>
+    <string name="download_notification__channel_name">Notification des téléchargements en arrière-plan</string>
+    <string name="download_notification__message">Téléchargement actuel des mises à jour des applications installées en arrière-plan.</string>
+    <string name="download_notification__title">Téléchargement des mises à jour des applications</string>
     <string name="download_the_app">télécharger l\'application</string>
     <string name="error_notification__channel_description">Afficher les erreurs du vérificateur de mise à jour des antécédents</string>
     <string name="error_notification__channel_name">Erreurs de fond</string>
@@ -52,14 +55,8 @@
     <string name="information_about_the_app">informations sur l\'application</string>
     <string name="install_activity__delete_cache_button_text">vider le cache</string>
     <string name="install_activity__delete_cache_explanation">Si vous pensez que FFUpdater a mis en cache une mise à jour d\'application défectueuse, cliquez sur le bouton \"Effacer le cache\" pour supprimer le cache de cette application.</string>
-    <string name="install_activity__download_app_is_disabled">L\'application système nécessaire \"Download Manager\" est désactivée. Veuillez la réactiver.</string>
-    <string name="install_activity__download_application_from_with_status">Télécharger l\'application (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Télécharger l\'application (%1$s)</string>
     <string name="install_activity__download_failed">Echec du téléchargement</string>
-    <string name="install_activity__download_status_failed">échoué</string>
-    <string name="install_activity__download_status_paused">en pause</string>
-    <string name="install_activity__download_status_pending">en attente</string>
-    <string name="install_activity__download_status_running">en cours d\'exécution</string>
-    <string name="install_activity__download_status_success">succès</string>
     <string name="install_activity__downloaded_application_from">Application téléchargée à partir de:</string>
     <string name="install_activity__downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
     <string name="install_activity__downloaded_application_is_verified">La demande téléchargée est vérifiée</string>

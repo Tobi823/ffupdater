@@ -19,7 +19,6 @@
     <string name="bromite__warning">Bromite uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Bromite?</string>
     <string name="but_was">But was:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copy crash report to clipboard</string>
-    <string name="crash_report__explain_text__background_job">The following error occurred during the background error check. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">The following error occurred when the download URL was fetched. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
     <string name="crash_report__explain_text__main_activity_update_check">The following error occurred when checking for updates in the main view. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Unfortunately, FFUpdater has crashed. Please report this error on notabug.org, GitHub or GitLab. Add to your issue the crash report from the clipboard and a description on how to reproduce the bug.</string>
@@ -31,6 +30,10 @@
     <string name="device_too_old_dialog__title">Device is too old</string>
     <string name="dialog_button__do_not_install">No, don\'t install it</string>
     <string name="dialog_button__yes">Yes</string>
+    <string name="download_notification__channel_description">Shows when app updates are downloaded in the background.</string>
+    <string name="download_notification__channel_name">Notification about downloads in the background</string>
+    <string name="download_notification__message">Currently downloading updates for installed apps in the background.</string>
+    <string name="download_notification__title">Downloading app updates</string>
     <string name="download_the_app">download the app</string>
     <string name="error_notification__channel_description">Show errors of the background update checker</string>
     <string name="error_notification__channel_name">Background errors</string>
@@ -54,14 +57,8 @@
     <string name="information_about_the_app">information about the app</string>
     <string name="install_activity__delete_cache_button_text">clear cache</string>
     <string name="install_activity__delete_cache_explanation">If you think that FFUpdater has cached a faulty app update, click the \"clear cache\" button to delete the cache for this app.</string>
-    <string name="install_activity__download_app_is_disabled">The necessary system app \"Download Manager\" is disabled. Please enable it again.</string>
-    <string name="install_activity__download_application_from_with_status">Download application (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Download application (%1$s)</string>
     <string name="install_activity__download_failed">Download failed</string>
-    <string name="install_activity__download_status_failed">failed</string>
-    <string name="install_activity__download_status_paused">paused</string>
-    <string name="install_activity__download_status_pending">pending</string>
-    <string name="install_activity__download_status_running">running</string>
-    <string name="install_activity__download_status_success">success</string>
     <string name="install_activity__downloaded_application_from">Downloaded application from:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
     <string name="install_activity__downloaded_application_is_verified">Downloaded application is verified</string>

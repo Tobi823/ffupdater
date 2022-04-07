@@ -19,7 +19,6 @@
     <string name="bromite__warning">Bromite основан на Google Chrome (Chromium) - некоторым людям это не нравится. Хотите установить Bromite?</string>
     <string name="but_was">Но был:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопируйте отчет о сбое в буфер обмена</string>
-    <string name="crash_report__explain_text__background_job">Во время фоновой проверки на ошибки произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщить о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">При получении URL-адреса загрузки произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщить о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
     <string name="crash_report__explain_text__main_activity_update_check">При проверке обновлений в окне приложения произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщать о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
     <string name="crash_report__explain_text__uncaught_throwable">К сожалению, программа FFUpdater потерпела крах. Пожалуйста, сообщите об этой ошибке на notabug.org, GitHub или GitLab. Добавьте к сообщению отчет о сбое из буфера обмена и описание того, как воспроизвести ошибку.</string>
@@ -30,6 +29,10 @@
     <string name="device_too_old_dialog__title">Устройство слишком старое</string>
     <string name="dialog_button__do_not_install">Нет, не устанавливать</string>
     <string name="dialog_button__yes">Да</string>
+    <string name="download_notification__channel_description">Показывает, когда обновления приложений загружаются в фоновом режиме.</string>
+    <string name="download_notification__channel_name">Уведомление о загрузках в фоновом режиме</string>
+    <string name="download_notification__message">В настоящее время в фоновом режиме загружаются обновления для установленных приложений.</string>
+    <string name="download_notification__title">Загрузка обновлений приложений</string>
     <string name="download_the_app">загрузить приложение</string>
     <string name="error_notification__channel_description">Показать ошибки проверки фонового обновления</string>
     <string name="error_notification__channel_name">Ошибки фонового режима</string>
@@ -52,14 +55,8 @@
     <string name="information_about_the_app">информация о приложении</string>
     <string name="install_activity__delete_cache_button_text">очистить кэш</string>
     <string name="install_activity__delete_cache_explanation">Если вы считаете, что FFUpdater сохранил в кэше обновление ошибочного приложения, нажмите кнопку \"очистить кэш\", чтобы удалить кэш для этого приложения.</string>
-    <string name="install_activity__download_app_is_disabled">Необходимое системное приложение \"Менеджер загрузок\" отключено. Пожалуйста, включите его снова.</string>
-    <string name="install_activity__download_application_from_with_status">Загрузить приложение (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Загрузить приложение (%1$s)</string>
     <string name="install_activity__download_failed">Не удалось загрузить</string>
-    <string name="install_activity__download_status_failed">неудачно</string>
-    <string name="install_activity__download_status_paused">приостановлено</string>
-    <string name="install_activity__download_status_pending">в ожидании</string>
-    <string name="install_activity__download_status_running">в процессе</string>
-    <string name="install_activity__download_status_success">успешно</string>
     <string name="install_activity__downloaded_application_from">Приложение загружено с:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Загруженное приложение НЕ проверяется</string>
     <string name="install_activity__downloaded_application_is_verified">Загруженное приложение проверено</string>
@@ -121,6 +118,7 @@
     <string name="settings__disabled_apps_summary">Проверка обновлений будет проводиться автоматически только для установленных приложений. Вы можете отключить автоматическую проверку обновлений у установленных приложений, выбрав их здесь.</string>
     <string name="settings__disabled_apps_title">Исключенные приложения</string>
     <string name="settings__only_unmetered_network_summary">Если эта опция отключена, FFUpdater может использовать мобильный интернет для проверки обновлений приложений в фоновом режиме. Это уменьшит ваш месячный лимит данных. Когда эта опция включена, для проверки обновлений в фоновом режиме используются только безлимитные сетевые подключения, например, большинство сетей WiFi.</string>
+    <string name="settings__ony_unmetered_network_title">Только безлимитная сеть</string>
     <string name="settings__theme_battery_saver">Тёмная, когда активна экономия батареи</string>
     <string name="settings__theme_dark">Тёмная</string>
     <string name="settings__theme_light">Светлая</string>
@@ -159,5 +157,4 @@
     <string name="vivaldi__description">"Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования.  Меняйте внешний вид. Меняйте интерфейс браузера для Android с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели.  Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве.  Используйте несколько поисковых систем. Переключайтесь между ними в одно касание. Используйте префиксы в адресной строке для выбора нужной поисковой системы."</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">Исходный код Vivaldi не полностью открыт (см. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для получения дополнительной информации). Он также основан на Google Chrome (Chromium).\n\nНекоторым людям это не нравится. Хотите ли вы установить Vivaldi?</string>
-    <string name="settings__ony_unmetered_network_title">Только безлимитная сеть</string>
 </resources>

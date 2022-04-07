@@ -19,14 +19,12 @@
     <string name="bromite__warning">Bromite používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Bromite?</string>
     <string name="but_was">Ale byl:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Zkopírovat chybové hlášení do schránky</string>
-    <string name="crash_report__explain_text__background_job">Při kontrolování chyb na pozadí došlo k následujícímu problému. Pokud se tento problém vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Při načítání adresy URL pro stahování došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Při kontrole aktualizací v hlavním zobrazení došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Bohužel došlo k pádu FFUpdateru. Nahlašte prosím tuto chybu na stránkách notabug.org, GitHub or GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
     <string name="crash_report__go_to_github">Přejít na GitHub</string>
     <string name="crash_report__go_to_gitlab">Přejít na GitLab</string>
     <string name="crash_report__got_to_notabug_org">Přejít na notabug.org</string>
-    <string name="default_theme_preference" translatable="false">3</string>
     <string name="device_too_old_dialog__message">Aplikace vyžaduje Android %1$s. Ale vaše zařízení má verzi Android %2$s. Vyberte si jinou aplikaci, aktualizujte operační systém nebo přejděte na novější smartphone.</string>
     <string name="device_too_old_dialog__title">Zařízení je zastaralé</string>
     <string name="dialog_button__do_not_install">Ne, nestahovat</string>
@@ -53,14 +51,8 @@
     <string name="information_about_the_app">informace o prohlížeči</string>
     <string name="install_activity__delete_cache_button_text">vyčistit mezipaměť</string>
     <string name="install_activity__delete_cache_explanation">Pokud si myslíte, že FFUpdater uložil do mezipaměti chybnou aktualizaci aplikace, klikněte na tlačítko \"vyčistit mezipaměť\" pro vyčištění mezipaměti pro tuto aplikaci.</string>
-    <string name="install_activity__download_app_is_disabled">Nezbytná systemová aplikace \"Správce stahování\" je zakázána. Znovu ji prosím povolte.</string>
-    <string name="install_activity__download_application_from_with_status">Stáhování aplikace (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Stáhování aplikace (%1$s)</string>
     <string name="install_activity__download_failed">Stahování selhalo</string>
-    <string name="install_activity__download_status_failed">selhání</string>
-    <string name="install_activity__download_status_paused">pozastaveno</string>
-    <string name="install_activity__download_status_pending">čeká</string>
-    <string name="install_activity__download_status_running">stahuje</string>
-    <string name="install_activity__download_status_success">úspěch</string>
     <string name="install_activity__downloaded_application_from">Aplikace stažená z:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Stažená aplikace NEBYLA ověřena</string>
     <string name="install_activity__downloaded_application_is_verified">Stažená aplikace je ověřena</string>
@@ -161,4 +153,8 @@
     <string name="vivaldi__description">Vivaldi je nový soukromý webový prohlížeč, postavený s ohledem na flexibilitu. Přináší řadu užitečných funkcí, včetně vestavěného blokování reklam (ve výchozím nastavení vypnuto), ochranou proti sledování a soukromým překladačem. Poznámky a zachycení stránky vám ušetří čas. Přizpůsobte si vše podle sebe s možnostmi typu listy jako na počítači, tmavý a světlý vzhled, či úpravy rozložení rozhraní. Stáhněte si zdarma Vivaldi a začněte prohlížejte rychleji.</string>
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">"Vivaldi je pouze částečně open source (viz. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Také používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Vivaldi?"</string>
+    <string name="download_notification__channel_name">Upozornění na stahování na pozadí</string>
+    <string name="download_notification__channel_description">Zobrazuje, kdy jsou aktualizace aplikací staženy na pozadí.</string>
+    <string name="download_notification__title">Stahování aktualizací aplikací</string>
+    <string name="download_notification__message">Aktuálně se stahují aktualizace pro nainstalované aplikace na pozadí.</string>
 </resources>

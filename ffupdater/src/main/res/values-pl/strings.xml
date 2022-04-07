@@ -19,7 +19,6 @@
     <string name="bromite__warning">Bromite wykorzystuje rozwiązania techniczne Google Chrome (Chromium) - niektórym się to nie podoba. Czy na pewno chcesz zainstalować Bromite?</string>
     <string name="but_was">Czy jednak:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>
-    <string name="crash_report__explain_text__background_job">Następujący błąd wystąpił podczas sprawdzania błędów w tle. Jeśli ten błąd pojawia się często, możesz go zgłosić na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu o błędzie ze schowka i opisu, jak odtworzyć ten błąd.</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Następujący błąd wystąpił podczas pobierania adresu URL pobierania. Jeśli ten błąd pojawia się często, zapraszamy do zgłoszenia go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Podczas sprawdzania dostępności aktualizacji w widoku głównym wystąpił następujący błąd. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Niestety, FFUpdater się zawiesił. Proszę zgłoś ten błąd na notabug.org, GitHub lub GitLab. Dodaj do zgłoszenia raport o awarii z pamięci podręcznej oraz opis, jak odtworzyć błąd.</string>
@@ -30,6 +29,10 @@
     <string name="device_too_old_dialog__title">Urządzenie jest zbyt stare</string>
     <string name="dialog_button__do_not_install">Nie, nie instaluj tego</string>
     <string name="dialog_button__yes">Tak</string>
+    <string name="download_notification__channel_description">Pokazuje, kiedy aktualizacje aplikacji są pobierane w tle.</string>
+    <string name="download_notification__channel_name">Powiadomienie o pobranych plikach w tle</string>
+    <string name="download_notification__message">Obecnie w tle pobierane są aktualizacje dla zainstalowanych aplikacji.</string>
+    <string name="download_notification__title">Pobieranie aktualizacji aplikacji</string>
     <string name="download_the_app">Pobierz aplikację</string>
     <string name="error_notification__channel_description">Pokaż błędy sprawdzania aktualizacji w tle</string>
     <string name="error_notification__channel_name">Błędy w tle</string>
@@ -52,14 +55,8 @@
     <string name="information_about_the_app">informacje o aplikacji</string>
     <string name="install_activity__delete_cache_button_text">wyczyść pamięć podręczną</string>
     <string name="install_activity__delete_cache_explanation">Jeśli uważasz, że FFUpdater zbuforował błędną aktualizację aplikacji, kliknij przycisk \"wyczyść pamięć podręczną\", aby usunąć pamięć podręczną dla tej aplikacji.</string>
-    <string name="install_activity__download_app_is_disabled">Niezbędna aplikacja systemowa \"Menedżer pobierania\" jest wyłączona. Proszę włączyć ją ponownie.</string>
-    <string name="install_activity__download_application_from_with_status">Pobierz aplikację (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Pobierz aplikację (%1$s)</string>
     <string name="install_activity__download_failed">Pobieranie nie powiodło się</string>
-    <string name="install_activity__download_status_failed">nie powiodło się</string>
-    <string name="install_activity__download_status_paused">zatrzymane</string>
-    <string name="install_activity__download_status_pending">w toku</string>
-    <string name="install_activity__download_status_running">uruchomione</string>
-    <string name="install_activity__download_status_success">sukces</string>
     <string name="install_activity__downloaded_application_from">Pobrano aplikację z:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Pobrana aplikacja NIE została zweryfikowana</string>
     <string name="install_activity__downloaded_application_is_verified">Pobrana aplikacja została zweryfikowana</string>
