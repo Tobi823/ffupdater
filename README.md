@@ -154,6 +154,9 @@ repository or the official *F-Droid* repository) the app version was installed
   FFUpdater code base for crash reports
 - [G00fY2/version-compare](https://github.com/G00fY2/version-compare) for comparing versions of installed and
   available apps (Apache 2.0)
+- [OkHttp](https://square.github.io/okio/) for downloading files (Apache 2.0)
+- [Kotlin coroutines await extension for OkHttp3](https://github.com/gildor/kotlin-coroutines-okhttp) for
+  better integration of OkHttp in Kotlin (Apache 2.0)
 
 ## My motivation / Project goals
 
