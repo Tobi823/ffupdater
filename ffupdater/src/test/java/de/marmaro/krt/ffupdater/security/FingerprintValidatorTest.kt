@@ -38,14 +38,14 @@ class FingerprintValidatorTest {
 
         @BeforeAll
         @JvmStatic
-        fun setUpStatic() {
+        internal fun beforeAll() {
             val path = "src/test/resources/de/marmaro/krt/ffupdater/security/FirefoxReleaseAppSignature.bin"
             signatureBytes = File(path).readBytes()
         }
 
         @AfterAll
         @JvmStatic
-        fun tearDownClass() {
+        internal fun afterAll() {
             file.delete()
         }
     }

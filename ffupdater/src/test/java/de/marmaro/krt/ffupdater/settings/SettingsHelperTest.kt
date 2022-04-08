@@ -36,13 +36,13 @@ class SettingsHelperTest {
     companion object {
         @JvmStatic
         @BeforeAll
-        fun beforeTests() {
+        internal fun beforeAll() {
             mockkObject(DeviceSdkTester)
         }
 
         @JvmStatic
         @AfterAll
-        fun afterTests() {
+        internal fun afterAll() {
             unmockkObject(DeviceSdkTester)
         }
     }
