@@ -1,0 +1,2 @@
+* Add Czech translation (thanks Juraj Motuz - Tobi823/ffupdater#122)
+* Replace the Android DownloadManager with the library OkHttp

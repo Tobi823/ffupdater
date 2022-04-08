@@ -24,12 +24,6 @@ class AppCache(val app: App) {
         return checkNotNull(downloadFolder) { "External download folder should exists." }
     }
 
-    /**
-     * If the file already exists, the download manager will append some text to the file name of the next
-     * downloaded file.
-     * That's why there could the files "org.mozilla.firefox.apk", "org.mozilla.firefox-1.apk" ...
-     * And all files for an app mus be deleted.
-     */
     fun delete(context: Context) {
         val allFiles = getCacheFolder(context).listFiles()
         checkNotNull(allFiles) { "Array of files in download folder should exists." }

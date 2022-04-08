@@ -29,7 +29,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * If:
      * - airplane mode is enabled
      * - internet is not available
-     * - the system download manager is currently downloading a file
+     * - the app is currently downloading an app update
      * then delay the background job execution by 30s, 1m, 2m, 4m, ...
      * <a>https://developer.android.com/reference/androidx/work/BackoffPolicy?hl=en#EXPONENTIAL</a>
      * <a>https://developer.android.com/reference/androidx/work/WorkRequest#DEFAULT_BACKOFF_DELAY_MILLIS</a>

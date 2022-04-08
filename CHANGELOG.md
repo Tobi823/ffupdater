@@ -1,5 +1,6 @@
-# 2022-04-?? Version 75.0.3 (94)
+# 2022-04-08 Version 75.1.0 (94)
 * Add Czech translation (thanks Juraj Motuz - Tobi823/ffupdater#122)
+* Replace the Android DownloadManager with the library OkHttp
 
 # 2022-03-18 Version 75.0.2 (93)
 * Add Italian translation (thanks Giovanni - Tobi823/ffupdater#111)

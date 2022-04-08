@@ -13,6 +13,7 @@ sort_xml_file() {
 
 sort_xml_file "../ffupdater/src/main/res/values/strings.xml"
 sort_xml_file "../ffupdater/src/main/res/values-bg/strings.xml"
+sort_xml_file "../ffupdater/src/main/res/values-cs/strings.xml"
 sort_xml_file "../ffupdater/src/main/res/values-de/strings.xml"
 sort_xml_file "../ffupdater/src/main/res/values-fr/strings.xml"
 sort_xml_file "../ffupdater/src/main/res/values-ja/strings.xml"
