@@ -157,4 +157,5 @@
     <string name="download_notification__title">Scaricare gli aggiornamenti delle app</string>
     <string name="download_notification__message">Attualmente scarica in background gli aggiornamenti per le app installate.</string>
     <string name="running_downloads_dialog__message">L\'app sta scaricando gli aggiornamenti in background ora. Vuoi iniziare un nuovo download che potrebbe richiedere più tempo?</string>
+    <string name="app_description">Updater per i browser rispettosi della privacy</string>
 </resources>

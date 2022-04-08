@@ -2,6 +2,7 @@
 <resources>
     <string name="action_about_title">О программе FFUpdater</string>
     <string name="action_settings_title">Настройки</string>
+    <string name="app_description">Программа обновления приватных браузеров</string>
     <string name="app_icon">иконка приложения</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>

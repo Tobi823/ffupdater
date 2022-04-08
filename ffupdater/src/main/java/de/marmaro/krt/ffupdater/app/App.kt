@@ -18,7 +18,9 @@ enum class App(appDetail: BaseApp) {
     ICERAVEN(Iceraven(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     BROMITE(Bromite(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     VIVALDI(Vivaldi(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    UNGOOGLED_CHROMIUM(UngoogledChromium(apiConsumer = apiConsumer, deviceAbis = deviceAbis));
+    UNGOOGLED_CHROMIUM(UngoogledChromium(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
+    FFUPDATER(FFUpdater(apiConsumer = apiConsumer)),
+    ;
 
     val detail: BaseApp = appDetail
 }

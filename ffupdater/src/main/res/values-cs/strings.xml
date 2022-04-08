@@ -2,6 +2,7 @@
 <resources>
     <string name="action_about_title">O aplikaci FFUpdater</string>
     <string name="action_settings_title">Nastavení</string>
+    <string name="app_description">Aktualizátor pro prohlížeče šetrný k soukromí</string>
     <string name="app_icon">ikona aplikace</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Instalace aplikace se nezdařila</string>

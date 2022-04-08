@@ -39,6 +39,7 @@
         <package android:name="org.bromite.bromite" />
         <package android:name="com.vivaldi.browser" />
         <package android:name="org.ungoogled.chromium.stable" />
+        <package android:name="de.marmaro.krt.ffupdater" />
     </queries>
 
     <application

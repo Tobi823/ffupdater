@@ -5,9 +5,6 @@ import android.content.pm.Signature
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import java.io.ByteArrayInputStream
 import java.io.File
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -52,8 +49,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
 
-    @MainThread
-    suspend fun checkInstalledApp(app: App): CertificateValidationResult {
+    fun checkInstalledApp(app: App): CertificateValidationResult {
         return try {
             val signature = PackageManagerUtil.getInstalledAppInfo(packageManager, app)
             verifyPackageInfo(signature, app)
@@ -66,29 +62,26 @@ class FingerprintValidator(private val packageManager: PackageManager) {
         }
     }
 
-    @MainThread
     @Throws(CertificateException::class, NoSuchAlgorithmException::class)
-    private suspend fun verifyPackageInfo(
+    private fun verifyPackageInfo(
         signature: Signature,
         appDetail: App
     ): CertificateValidationResult {
-        return withContext(Dispatchers.IO) {
-            val signatureStream = ByteArrayInputStream(signature.toByteArray())
-            val certificateFactory = CertificateFactory.getInstance("X509")
-            val certificate = certificateFactory.generateCertificate(signatureStream)
+        val stream = signature.toByteArray().inputStream().buffered()
+        val factory = CertificateFactory.getInstance("X509")
+        val certificate = factory.generateCertificate(stream)
 
-            val messageDigestSha256 = MessageDigest.getInstance("SHA-256")
-            val certificateFingerprint = messageDigestSha256.digest(certificate.encoded)
-            val certificateFingerprintHexString = certificateFingerprint.joinToString("") {
-                String.format("%02x", (it.toInt() and 0xFF))
-            }
-
-            val isValid = certificateFingerprintHexString == appDetail.detail.signatureHash
-            CertificateValidationResult(
-                isValid = isValid,
-                hexString = certificateFingerprintHexString
-            )
+        val message = MessageDigest.getInstance("SHA-256")
+        val fingerprint = message.digest(certificate.encoded)
+        val fingerprintString = fingerprint.joinToString("") {
+            String.format("%02x", (it.toInt() and 0xFF))
         }
+
+        val isValid = (fingerprintString == appDetail.detail.signatureHash)
+        return CertificateValidationResult(
+            isValid = isValid,
+            hexString = fingerprintString
+        )
     }
 
     class CertificateValidationResult(val isValid: Boolean, val hexString: String)

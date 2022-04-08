@@ -147,13 +147,20 @@ class DownloadApiChecker {
     }
 
     @Test
-    suspend fun ungoogledChromium() {
+    fun ungoogledChromium() {
         val ungoogledChromium = UngoogledChromium(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = ungoogledChromium.updateCheck(context)
+        val result = runBlocking { ungoogledChromium.updateCheck(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 8 * 7
         assertTrue(age.toDays() < maxDays) { "$age must be smaller then $maxDays days" }
+    }
+
+    @Test
+    fun ffupdater() {
+        val ffupdater = FFUpdater(true, ApiConsumer())
+        val result = runBlocking { ffupdater.updateCheck(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
     }
 
     private fun verifyThatDownloadLinkAvailable(urlString: String) {

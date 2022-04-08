@@ -2,6 +2,7 @@
 <resources>
     <string name="action_about_title">FFUpdaterについて</string>
     <string name="action_settings_title">設定</string>
+    <string name="app_description">プライバシーを重視したブラウザ用のアップデータ</string>
     <string name="app_icon">アプリアイコン</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">アプリのインストールに失敗しました</string>

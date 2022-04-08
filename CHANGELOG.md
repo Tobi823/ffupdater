@@ -1,3 +1,6 @@
+# 2022-04-08 Version 75.2.0 (95)
+* If FFUpdater is installed from the GitHub/GitLab/Repository, it can update itself.
+
 # 2022-04-08 Version 75.1.0 (94)
 * Add Czech translation (thanks Juraj Motuz - Tobi823/ffupdater#122)
 * Replace the Android DownloadManager with the library OkHttp

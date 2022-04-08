@@ -202,7 +202,8 @@ class SettingsHelperTest {
                 "LOCKWISE",
                 "BROMITE",
                 "VIVALDI",
-                "UNGOOGLED_CHROMIUM"
+                "UNGOOGLED_CHROMIUM",
+                "FFUPDATER"
             )
         ).commit()
         assertTrue(SettingsHelper(context).disabledApps.containsAll(App.values().toList()))

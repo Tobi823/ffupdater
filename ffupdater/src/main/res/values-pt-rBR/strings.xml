@@ -2,6 +2,7 @@
 <resources>
     <string name="action_about_title">Sobre FFUpdater</string>
     <string name="action_settings_title">Configurações</string>
+    <string name="app_description">Atualizador para navegadores que protegem a privacidade</string>
     <string name="app_icon">ícone do app</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Instalação do navegador falhou</string>
