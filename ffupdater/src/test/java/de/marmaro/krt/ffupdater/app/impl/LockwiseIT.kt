@@ -112,7 +112,7 @@ class LockwiseIT {
     }
 
     @ParameterizedTest(name = "update check - outdated version installed - \"{1}\" network requests necessary")
-    @MethodSource("testdata")
+    @MethodSource("abisWithMetaData")
     fun `update check for ABI X - outdated version installed`(
         networkRequests: Int,
     ) {
@@ -130,7 +130,7 @@ class LockwiseIT {
     }
 
     @ParameterizedTest(name = "update check - latest version installed - \"{1}\" network requests necessary")
-    @MethodSource("testdata")
+    @MethodSource("abisWithMetaData")
     fun `update check for ABI X - latest version installed`(
         networkRequests: Int,
         expectedVersion: String,
