@@ -14,7 +14,7 @@ import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import java.io.File
 import java.io.IOException
 
@@ -115,7 +115,7 @@ class SessionInstaller(
 
     private fun createSessionParams(): SessionParams {
         val params = SessionParams(MODE_FULL_INSTALL)
-        if (DeviceEnvironment.supportsAndroid12()) {
+        if (DeviceSdkTester.supportsAndroid12()) {
             params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
         }
         return params
@@ -132,7 +132,7 @@ class SessionInstaller(
     private fun createSessionChangeReceiver(activity: Activity): IntentSender {
         val intent = Intent(activity, InstallActivity::class.java)
         intent.action = PACKAGE_INSTALLED_ACTION
-        val flags = if (DeviceEnvironment.supportsAndroid12()) {
+        val flags = if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_MUTABLE
         } else {
             FLAG_UPDATE_CURRENT

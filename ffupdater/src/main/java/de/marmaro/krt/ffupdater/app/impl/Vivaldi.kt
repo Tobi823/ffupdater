@@ -11,7 +11,10 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://vivaldi.com/de/download/
  * https://www.apkmirror.com/apk/vivaldi-technologies/vivaldi-browser-beta/
  */
-class Vivaldi : BaseAppWithCachedUpdateCheck() {
+class Vivaldi(
+    private val apiConsumer: ApiConsumer,
+    private val deviceAbis: List<ABI>,
+) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "com.vivaldi.browser"
     override val displayTitle = R.string.vivaldi__title
     override val displayDescription = R.string.vivaldi__description
@@ -25,13 +28,14 @@ class Vivaldi : BaseAppWithCachedUpdateCheck() {
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val regexPattern = getStringForCurrentAbi(
-            """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_armeabi-v7a.apk)"""",
-            """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_arm64-v8a.apk)"""",
-            null,
-            """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_x86-64.apk)"""",
-        )
-        val content = ApiConsumer.consumeNetworkResource(DOWNLOAD_WEBSITE_URL, String::class)
+        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val regexPattern = when (filteredAbis.firstOrNull()) {
+            ABI.ARMEABI_V7A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_armeabi-v7a.apk)""""
+            ABI.ARM64_V8A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_arm64-v8a.apk)""""
+            ABI.X86_64 -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_x86-64.apk)""""
+            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+        }
+        val content = apiConsumer.consumeNetworkResource(DOWNLOAD_WEBSITE_URL, String::class)
         val regexMatch = Regex(regexPattern).find(content)
         checkNotNull(regexMatch) { "Can't find download link with regex pattern '$regexPattern'." }
         val downloadUrl = regexMatch.groups[1]

@@ -7,19 +7,25 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.*
+import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
-import org.junit.AfterClass
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.Test
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import java.io.File
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
+import java.util.stream.Stream
 
+@ExtendWith(MockKExtension::class)
 class FirefoxBetaIT {
     @MockK
     private lateinit var context: Context
@@ -28,9 +34,11 @@ class FirefoxBetaIT {
     private lateinit var packageManager: PackageManager
     private var packageInfo = PackageInfo()
 
-    @Before
+    @MockK
+    lateinit var apiConsumer: ApiConsumer
+
+    @BeforeEach
     fun setUp() {
-        MockKAnnotations.init(this, relaxUnitFun = true)
         every { context.packageManager } returns packageManager
         packageInfo.versionName = ""
         every {
@@ -43,154 +51,82 @@ class FirefoxBetaIT {
     companion object {
         const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.beta.latest"
-        @JvmStatic
-        @BeforeClass
-        fun beforeTests() {
-            mockkObject(ApiConsumer)
-            mockkObject(DeviceEnvironment)
-        }
+        const val EXPECTED_VERSION = "91.0.0-beta.3"
+        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+            ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic
-        @AfterClass
-        fun afterTests() {
-            unmockkObject(ApiConsumer)
-            unmockkObject(DeviceEnvironment)
-        }
+        fun abisWithMetaData(): Stream<Arguments> = Stream.of(
+            Arguments.of(
+                ABI.ARMEABI_V7A,
+                "$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log",
+                "$BASE_URL.armeabi-v7a/artifacts/public/build/armeabi-v7a/target.apk"
+            ),
+            Arguments.of(
+                ABI.ARM64_V8A,
+                "$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log",
+                "$BASE_URL.arm64-v8a/artifacts/public/build/arm64-v8a/target.apk"
+            ),
+            Arguments.of(
+                ABI.X86,
+                "$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log",
+                "$BASE_URL.x86/artifacts/public/build/x86/target.apk"
+            ),
+            Arguments.of(
+                ABI.X86_64,
+                "$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log",
+                "$BASE_URL.x86_64/artifacts/public/build/x86_64/target.apk"
+            ),
+        )
+    }
+
+    private fun createSut(deviceAbi: ABI): FirefoxBeta {
+        return FirefoxBeta(apiConsumer = apiConsumer, deviceAbis = listOf(deviceAbi))
     }
 
     private fun makeChainOfTrustTextAvailableUnderUrl(url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
                 "chain_of_trust.log"
         coEvery {
-            ApiConsumer.consumeNetworkResource(url, String::class)
+            apiConsumer.consumeNetworkResource(url, String::class)
         } returns File(path).readText()
     }
 
-    @Test
-    fun updateCheck_armeabiv7a_upToDate() {
-        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log")
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-        packageInfo.versionName = "91.0.0-beta.3"
-
-        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
-
-        assertFalse(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.3", actual.version)
-        val expectedUrl = "$BASE_URL.armeabi-v7a/artifacts/public/build/armeabi-v7a/target.apk"
-        assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
-        assertEquals(expectedDate, actual.publishDate)
+    @ParameterizedTest(name = "check download info for ABI \"{0}\"")
+    @MethodSource("abisWithMetaData")
+    fun `check download info for ABI X`(
+        abi: ABI,
+        logUrl: String,
+        downloadUrl: String,
+    ) {
+        makeChainOfTrustTextAvailableUnderUrl(logUrl)
+        val result = runBlocking { createSut(abi).updateCheck(context) }
+        Assertions.assertEquals(downloadUrl, result.downloadUrl)
+        Assertions.assertEquals(EXPECTED_VERSION, result.version)
+        Assertions.assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
     }
 
-    @Test
-    fun updateCheck_armeabiv7a_updateAvailable() {
-        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.armeabi-v7a/artifacts/public/logs/chain_of_trust.log")
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+    @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed")
+    @MethodSource("abisWithMetaData")
+    fun `update check for ABI X - outdated version installed`(
+        abi: ABI,
+        logUrl: String,
+    ) {
+        makeChainOfTrustTextAvailableUnderUrl(logUrl)
         packageInfo.versionName = "86.0.0-beta.3"
-
-        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
-
-        assertTrue(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.3", actual.version)
-        val expectedUrl = "$BASE_URL.armeabi-v7a/artifacts/public/build/armeabi-v7a/target.apk"
-        assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
-        assertEquals(expectedDate, actual.publishDate)
+        val result = runBlocking { createSut(abi).updateCheck(context) }
+        assertTrue(result.isUpdateAvailable)
     }
 
-    @Test
-    fun updateCheck_arm64v8a_upToDate() {
-        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log")
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-        packageInfo.versionName = "91.0.0-beta.3"
-
-        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
-
-        assertFalse(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.3", actual.version)
-        val expectedUrl = "$BASE_URL.arm64-v8a/artifacts/public/build/arm64-v8a/target.apk"
-        assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
-        assertEquals(expectedDate, actual.publishDate)
-    }
-
-    @Test
-    fun updateCheck_arm64v8a_updateAvailable() {
-        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.arm64-v8a/artifacts/public/logs/chain_of_trust.log")
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-        packageInfo.versionName = "86.0.0-beta.3"
-
-        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
-
-        assertTrue(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.3", actual.version)
-        val expectedUrl = "$BASE_URL.arm64-v8a/artifacts/public/build/arm64-v8a/target.apk"
-        assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
-        assertEquals(expectedDate, actual.publishDate)
-    }
-
-    @Test
-    fun updateCheck_x86_upToDate() {
-        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log")
-        every { DeviceEnvironment.abis } returns listOf(ABI.X86)
-        packageInfo.versionName = "91.0.0-beta.3"
-
-        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
-
-        assertFalse(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.3", actual.version)
-        val expectedUrl = "$BASE_URL.x86/artifacts/public/build/x86/target.apk"
-        assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
-        assertEquals(expectedDate, actual.publishDate)
-    }
-
-    @Test
-    fun updateCheck_x86_updateAvailable() {
-        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86/artifacts/public/logs/chain_of_trust.log")
-        every { DeviceEnvironment.abis } returns listOf(ABI.X86)
-        packageInfo.versionName = "86.0.0-beta.3"
-
-        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
-
-        assertTrue(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.3", actual.version)
-        val expectedUrl = "$BASE_URL.x86/artifacts/public/build/x86/target.apk"
-        assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
-        assertEquals(expectedDate, actual.publishDate)
-    }
-
-    @Test
-    fun updateCheck_x8664_upToDate() {
-        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log")
-        every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
-        packageInfo.versionName = "91.0.0-beta.3"
-
-        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
-
-        assertFalse(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.3", actual.version)
-        val expectedUrl = "$BASE_URL.x86_64/artifacts/public/build/x86_64/target.apk"
-        assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
-        assertEquals(expectedDate, actual.publishDate)
-    }
-
-    @Test
-    fun updateCheck_x8664_updateAvailable() {
-        makeChainOfTrustTextAvailableUnderUrl("$BASE_URL.x86_64/artifacts/public/logs/chain_of_trust.log")
-        every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
-        packageInfo.versionName = "86.0.0-beta.3"
-
-        val actual = runBlocking { FirefoxBeta().updateCheck(context) }
-
-        assertTrue(actual.isUpdateAvailable)
-        assertEquals("91.0.0-beta.3", actual.version)
-        val expectedUrl = "$BASE_URL.x86_64/artifacts/public/build/x86_64/target.apk"
-        assertEquals(expectedUrl, actual.downloadUrl)
-        val expectedDate = ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
-        assertEquals(expectedDate, actual.publishDate)
+    @ParameterizedTest(name = "update check for ABI \"{0}\" - latest version installed")
+    @MethodSource("abisWithMetaData")
+    fun `update check for ABI X - latest version installed`(
+        abi: ABI,
+        logUrl: String,
+    ) {
+        makeChainOfTrustTextAvailableUnderUrl(logUrl)
+        packageInfo.versionName = EXPECTED_VERSION
+        val result = runBlocking { createSut(abi).updateCheck(context) }
+        assertFalse(result.isUpdateAvailable)
     }
 }

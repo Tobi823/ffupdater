@@ -4,6 +4,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
@@ -12,7 +13,8 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://www.apkmirror.com/apk/mozilla/firefox-lockwise/
  */
 class Lockwise(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
+    private val apiConsumer: ApiConsumer,
 ) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "mozilla.lockbox"
     override val displayTitle = R.string.lockwise__title
@@ -37,6 +39,7 @@ class Lockwise(
             isValidRelease = { release -> !release.isPreRelease },
             isCorrectAsset = { asset -> asset.name.endsWith(".apk") },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
+            apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
 

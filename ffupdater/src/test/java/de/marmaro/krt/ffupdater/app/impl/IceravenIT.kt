@@ -9,19 +9,23 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.*
+import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
-import org.junit.AfterClass
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import java.io.FileReader
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
+import java.util.stream.Stream
 
+@ExtendWith(MockKExtension::class)
 class IceravenIT {
     @MockK
     lateinit var context: Context
@@ -29,11 +33,18 @@ class IceravenIT {
     @MockK
     lateinit var packageManager: PackageManager
 
-    @Before
+    @MockK
+    lateinit var apiConsumer: ApiConsumer
+
+    val packageInfo = PackageInfo()
+
+    @BeforeEach
     fun setUp() {
-        MockKAnnotations.init(this, relaxUnitFun = true)
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
+        every {
+            packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, any())
+        } returns packageInfo
     }
 
     companion object {
@@ -41,104 +52,80 @@ class IceravenIT {
                 "releases/latest"
         const val DOWNLOAD_URL = "https://github.com/fork-maintainers/iceraven-browser/releases/" +
                 "download/iceraven-1.6.0"
+        const val EXPECTED_VERSION = "1.6.0"
+        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+            ZonedDateTime.parse("2021-02-07T00:37:13Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic
-        @BeforeClass
-        fun beforeTests() {
-            mockkObject(ApiConsumer)
-            mockkObject(DeviceEnvironment)
-        }
+        fun abisWithMetaData(): Stream<Arguments> = Stream.of(
+            Arguments.of(
+                ABI.ARMEABI_V7A,
+                "$DOWNLOAD_URL/iceraven-1.6.0-browser-armeabi-v7a-forkRelease.apk",
+                66150140L
+            ),
+            Arguments.of(
+                ABI.ARM64_V8A,
+                "$DOWNLOAD_URL/iceraven-1.6.0-browser-arm64-v8a-forkRelease.apk",
+                72589026L
+            ),
+            Arguments.of(
+                ABI.X86,
+                "$DOWNLOAD_URL/iceraven-1.6.0-browser-x86-forkRelease.apk",
+                77651604L
+            ),
+            Arguments.of(
+                ABI.X86_64,
+                "$DOWNLOAD_URL/iceraven-1.6.0-browser-x86_64-forkRelease.apk",
+                73338555L
+            ),
+        )
+    }
 
-        @JvmStatic
-        @AfterClass
-        fun afterTests() {
-            unmockkObject(ApiConsumer)
-            unmockkObject(DeviceEnvironment)
-        }
+    private fun createSut(deviceAbi: ABI): Iceraven {
+        return Iceraven(apiConsumer = apiConsumer, deviceAbis = listOf(deviceAbi))
     }
 
     private fun makeReleaseJsonObjectAvailable() {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Iceraven/latest.json"
         coEvery {
-            ApiConsumer.consumeNetworkResource(API_URL, GithubConsumer.Release::class)
+            apiConsumer.consumeNetworkResource(API_URL, GithubConsumer.Release::class)
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 
-    @Test
-    fun updateCheck_latestRelease_checkDownloadUrlForABI() {
+    @ParameterizedTest(name = "check download info for ABI \"{0}\"")
+    @MethodSource("abisWithMetaData")
+    fun `check download info for ABI X`(
+        abi: ABI,
+        url: String,
+        fileSize: Long,
+    ) {
         makeReleaseJsonObjectAvailable()
-        val packageInfo = PackageInfo()
-        packageInfo.versionName = "1.19.92"
-        every {
-            packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, any())
-        } returns packageInfo
-
-        runBlocking {
-            every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-            assertEquals(
-                "$DOWNLOAD_URL/iceraven-1.6.0-browser-armeabi-v7a-forkRelease.apk",
-                Iceraven().updateCheck(context).downloadUrl
-            )
-        }
-
-        runBlocking {
-            every { DeviceEnvironment.abis } returns listOf(ABI.ARM64_V8A)
-            assertEquals(
-                "$DOWNLOAD_URL/iceraven-1.6.0-browser-arm64-v8a-forkRelease.apk",
-                Iceraven().updateCheck(context).downloadUrl
-            )
-        }
-
-        runBlocking {
-            every { DeviceEnvironment.abis } returns listOf(ABI.X86)
-            assertEquals(
-                "$DOWNLOAD_URL/iceraven-1.6.0-browser-x86-forkRelease.apk",
-                Iceraven().updateCheck(context).downloadUrl
-            )
-        }
-
-        runBlocking {
-            every { DeviceEnvironment.abis } returns listOf(ABI.X86_64)
-            assertEquals(
-                "$DOWNLOAD_URL/iceraven-1.6.0-browser-x86_64-forkRelease.apk",
-                Iceraven().updateCheck(context).downloadUrl
-            )
-        }
+        val result = runBlocking { createSut(abi).updateCheck(context) }
+        assertEquals(url, result.downloadUrl)
+        assertEquals(EXPECTED_VERSION, result.version)
+        assertEquals(fileSize, result.fileSizeBytes)
+        assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
     }
 
-    @Test
-    fun updateCheck_latestRelease_updateCheck() {
+    @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed")
+    @MethodSource("abisWithMetaData")
+    fun `update check for ABI X - outdated version installed`(
+        abi: ABI,
+    ) {
         makeReleaseJsonObjectAvailable()
-        val packageInfo = PackageInfo()
-        every {
-            packageManager.getPackageInfo(App.ICERAVEN.detail.packageName, any())
-        } returns packageInfo
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
+        packageInfo.versionName = "iceraven-1.5.0"
+        val result = runBlocking { createSut(abi).updateCheck(context) }
+        assertTrue(result.isUpdateAvailable)
+    }
 
-        // installed app is up-to-date
-        runBlocking {
-            packageInfo.versionName = "iceraven-1.6.0"
-            val actual = Iceraven().updateCheck(context)
-            assertFalse(actual.isUpdateAvailable)
-            assertEquals("1.6.0", actual.version)
-            assertEquals(66150140L, actual.fileSizeBytes)
-            assertEquals(
-                ZonedDateTime.parse("2021-02-07T00:37:13Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                actual.publishDate
-            )
-        }
-
-        // installed app is old
-        runBlocking {
-            packageInfo.versionName = "iceraven-1.5.0"
-            val actual = Iceraven().updateCheck(context)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("1.6.0", actual.version)
-            assertEquals(66150140L, actual.fileSizeBytes)
-            assertEquals(
-                ZonedDateTime.parse("2021-02-07T00:37:13Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                actual.publishDate
-            )
-        }
+    @ParameterizedTest(name = "update check for ABI \"{0}\" - latest version installed")
+    @MethodSource("abisWithMetaData")
+    fun `update check for ABI X - latest version installed`(
+        abi: ABI,
+    ) {
+        makeReleaseJsonObjectAvailable()
+        packageInfo.versionName = EXPECTED_VERSION
+        val result = runBlocking { createSut(abi).updateCheck(context) }
+        assertFalse(result.isUpdateAvailable)
     }
 }

@@ -5,6 +5,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
@@ -13,7 +14,9 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
  */
 class Iceraven(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
+    private val apiConsumer: ApiConsumer,
+    private val deviceAbis: List<ABI>,
 ) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "io.github.forkmaintainers.iceraven"
     override val displayTitle = R.string.iceraven__title
@@ -33,12 +36,14 @@ class Iceraven(
     }
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val fileSuffix = getStringForCurrentAbi(
-            "browser-armeabi-v7a-forkRelease.apk",
-            "browser-arm64-v8a-forkRelease.apk",
-            "browser-x86-forkRelease.apk",
-            "browser-x86_64-forkRelease.apk"
-        )
+        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val fileSuffix = when (filteredAbis.firstOrNull()) {
+            ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
+            ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
+            ABI.X86 -> "browser-x86-forkRelease.apk"
+            ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
+            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+        }
         val githubConsumer = GithubConsumer(
             repoOwner = "fork-maintainers",
             repoName = "iceraven-browser",
@@ -46,6 +51,7 @@ class Iceraven(
             isValidRelease = { release -> !release.isPreRelease },
             isCorrectAsset = { asset -> asset.name.endsWith(fileSuffix) },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
+            apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
         return AvailableVersionResult(

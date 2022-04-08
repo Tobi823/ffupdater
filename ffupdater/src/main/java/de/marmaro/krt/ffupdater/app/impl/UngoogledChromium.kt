@@ -4,6 +4,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
@@ -12,7 +13,9 @@ import de.marmaro.krt.ffupdater.device.ABI
  */
 
 class UngoogledChromium(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
+    private val apiConsumer: ApiConsumer,
+    private val deviceAbis: List<ABI>,
 ) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.ungoogled.chromium.stable"
     override val displayTitle = R.string.ungoogled_chromium__title
@@ -27,12 +30,13 @@ class UngoogledChromium(
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val fileName = getStringForCurrentAbi(
-            "ChromeModernPublic_arm.apk",
-            "ChromeModernPublic_arm64.apk",
-            "ChromeModernPublic_x86.apk",
-            null
-        )
+        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val fileName = when (filteredAbis.firstOrNull()) {
+            ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"
+            ABI.ARM64_V8A -> "ChromeModernPublic_arm64.apk"
+            ABI.X86 -> "ChromeModernPublic_x86.apk"
+            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+        }
         val githubConsumer = GithubConsumer(
             repoOwner = "ungoogled-software",
             repoName = "ungoogled-chromium-android",
@@ -40,7 +44,8 @@ class UngoogledChromium(
             isValidRelease = { release -> !release.isPreRelease && !release.name.contains("webview") },
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
-            onlyRequestReleasesInBulk = true
+            onlyRequestReleasesInBulk = true,
+            apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
 

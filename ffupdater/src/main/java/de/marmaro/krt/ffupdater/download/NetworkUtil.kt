@@ -6,7 +6,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.annotation.AnyThread
 import androidx.annotation.RequiresApi
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 object NetworkUtil {
     @AnyThread
@@ -16,7 +16,7 @@ object NetworkUtil {
     }
 
     private fun isInternetAvailable(cm: ConnectivityManager): Boolean {
-        return if (DeviceEnvironment.supportsAndroid10()) {
+        return if (DeviceSdkTester.supportsAndroid10()) {
             isNetworkConnected(cm)
         } else {
             isNetworkConnectedOldWay(cm)

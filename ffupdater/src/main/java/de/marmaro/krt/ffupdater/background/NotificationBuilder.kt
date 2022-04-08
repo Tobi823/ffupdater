@@ -17,7 +17,7 @@ import de.marmaro.krt.ffupdater.CrashReportActivity
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 object NotificationBuilder {
     fun showErrorNotification(context: Context, exception: Exception, message: String) {
@@ -109,7 +109,7 @@ object NotificationBuilder {
     }
 
     private fun getFlags(): Int {
-        return if (DeviceEnvironment.supportsAndroid12()) {
+        return if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_IMMUTABLE
         } else {
             FLAG_UPDATE_CURRENT
@@ -123,7 +123,7 @@ object NotificationBuilder {
         channelName: String,
         channelDescription: String
     ): Notification.Builder {
-        if (DeviceEnvironment.supportsAndroidOreo()) {
+        if (DeviceSdkTester.supportsAndroidOreo()) {
             createNotificationChannel(notificationManager, channelId, channelName, channelDescription)
             return Notification.Builder(context, channelId)
         }

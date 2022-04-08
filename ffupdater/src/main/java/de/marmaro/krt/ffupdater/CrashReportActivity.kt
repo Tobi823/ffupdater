@@ -11,7 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 class CrashReportActivity : AppCompatActivity() {
 
@@ -67,8 +67,8 @@ class CrashReportActivity : AppCompatActivity() {
             || manufacturer | ${Build.MANUFACTURER} |
             || model | ${Build.MODEL} |
             || product | ${Build.PRODUCT} |
-            || SOC manufacturer | ${if (DeviceEnvironment.supportsAndroid12()) Build.SOC_MANUFACTURER else "/"} |
-            || SOC model | ${if (DeviceEnvironment.supportsAndroid12()) Build.SOC_MODEL else "/"} |
+            || SOC manufacturer | ${if (DeviceSdkTester.supportsAndroid12()) Build.SOC_MANUFACTURER else "/"} |
+            || SOC model | ${if (DeviceSdkTester.supportsAndroid12()) Build.SOC_MODEL else "/"} |
             || supported ABIs | ${Build.SUPPORTED_ABIS.joinToString()} |
             || tags | ${Build.TAGS} |
             || build time | ${Build.TIME} |

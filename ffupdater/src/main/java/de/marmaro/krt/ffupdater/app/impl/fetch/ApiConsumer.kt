@@ -18,8 +18,8 @@ import kotlin.reflect.KClass
 /**
  * Consume a REST-API from the internet.
  */
-object ApiConsumer {
-    private const val THREAD_ID = 10000
+class ApiConsumer {
+    private val threadId = 10000
     private val gson = Gson()
     private val client = OkHttpClient()
 
@@ -40,7 +40,7 @@ object ApiConsumer {
     @WorkerThread
     private fun <T : Any> readNetworkResource(url: String, clazz: KClass<T>): T {
         require(url.startsWith("https://"))
-        TrafficStats.setThreadStatsTag(THREAD_ID)
+        TrafficStats.setThreadStatsTag(threadId)
         try {
             val request = Request.Builder().url(url).build()
             client.newCall(request).execute().use { response ->

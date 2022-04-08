@@ -9,7 +9,11 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 /**
  * Consume the "chain_of_trust.log".
  */
-class MozillaCiLogConsumer(task: String, private val apkArtifact: String) {
+class MozillaCiLogConsumer(
+    task: String,
+    private val apkArtifact: String,
+    private val apiConsumer: ApiConsumer,
+) {
     private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
     private val logUrl = "$baseUrl/artifacts/public/logs/chain_of_trust.log"
 
@@ -20,7 +24,7 @@ class MozillaCiLogConsumer(task: String, private val apkArtifact: String) {
      */
     @MainThread
     suspend fun updateCheck(): Result {
-        val response = ApiConsumer.consumeNetworkResource(logUrl, String::class)
+        val response = apiConsumer.consumeNetworkResource(logUrl, String::class)
         val extractVersion = {
             val regexMatch = Regex("""'(version|tag_name)': 'v?(.+)'""")
                 .find(response)

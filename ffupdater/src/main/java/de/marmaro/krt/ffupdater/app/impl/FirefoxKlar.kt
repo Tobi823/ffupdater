@@ -4,6 +4,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
@@ -14,7 +15,9 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/
  */
 class FirefoxKlar(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
+    private val apiConsumer: ApiConsumer,
+    private val deviceAbis: List<ABI>,
 ) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "org.mozilla.klar"
     override val displayTitle = R.string.firefox_klar__title
@@ -23,13 +26,20 @@ class FirefoxKlar(
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_logo_firefox_focus_klar
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A)
+    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val fileSuffix = getStringForCurrentAbi("armeabi-v7a.apk", "arm64-v8a.apk", "x86.apk", "x86_64.apk")
+        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val fileSuffix = when (filteredAbis.firstOrNull()) {
+            ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
+            ABI.ARM64_V8A -> "arm64-v8a.apk"
+            ABI.X86 -> "x86.apk"
+            ABI.X86_64 -> "x86_64.apk"
+            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+        }
         val githubConsumer = GithubConsumer(
             repoOwner = "mozilla-mobile",
             repoName = "focus-android",
@@ -37,6 +47,7 @@ class FirefoxKlar(
             isValidRelease = { release -> !release.isPreRelease && !release.name.contains("beta") },
             isCorrectAsset = { asset -> asset.name.startsWith("klar") && asset.name.endsWith(fileSuffix) },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
+            apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
 

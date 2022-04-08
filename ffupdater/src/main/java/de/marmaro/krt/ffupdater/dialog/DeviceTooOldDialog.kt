@@ -10,7 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.utils.AndroidVersionCodes
 
 /**
@@ -22,7 +22,7 @@ class DeviceTooOldDialog : DialogFragment() {
             "$BUNDLE_APP_NAME is not set."
         })
         val required = AndroidVersionCodes.getVersionForApiLevel(app.detail.minApiLevel)
-        val actual = AndroidVersionCodes.getVersionForApiLevel(DeviceEnvironment.sdkInt)
+        val actual = AndroidVersionCodes.getVersionForApiLevel(DeviceSdkTester.sdkInt)
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.device_too_old_dialog__title)
                 .setMessage(getString(R.string.device_too_old_dialog__message, required, actual))

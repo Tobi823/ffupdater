@@ -5,33 +5,29 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate.*
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
-import io.mockk.MockKAnnotations
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import io.mockk.mockkObject
 import io.mockk.unmockkObject
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.`is`
-import org.hamcrest.Matchers.empty
-import org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder
-import org.junit.AfterClass
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.Test
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import java.time.Duration
 
-
+@ExtendWith(MockKExtension::class)
 class SettingsHelperTest {
 
     @MockK
     lateinit var context: Context
     private lateinit var sharedPreferences: SharedPreferences
 
-    @Before
+    @BeforeEach
     fun setUp() {
-        MockKAnnotations.init(this, relaxUnitFun = true)
         sharedPreferences = SPMockBuilder().createSharedPreferences()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
@@ -39,15 +35,15 @@ class SettingsHelperTest {
 
     companion object {
         @JvmStatic
-        @BeforeClass
+        @BeforeAll
         fun beforeTests() {
-            mockkObject(DeviceEnvironment)
+            mockkObject(DeviceSdkTester)
         }
 
         @JvmStatic
-        @AfterClass
+        @AfterAll
         fun afterTests() {
-            unmockkObject(DeviceEnvironment)
+            unmockkObject(DeviceSdkTester)
         }
     }
 
@@ -131,55 +127,64 @@ class SettingsHelperTest {
     @Test
     fun getDisableApps_withOneApp_Brave_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("BRAVE")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.BRAVE))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.contains(App.BRAVE))
     }
 
     @Test
     fun getDisableApps_withOneApp_FirefoxBeta_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_BETA")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.FIREFOX_BETA))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.contains(App.FIREFOX_BETA))
     }
 
     @Test
     fun getDisableApps_withOneApp_FirefoxFocus_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_FOCUS")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.FIREFOX_FOCUS))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.contains(App.FIREFOX_FOCUS))
     }
 
     @Test
     fun getDisableApps_withOneApp_FirefoxKlar_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_KLAR")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.FIREFOX_KLAR))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.contains(App.FIREFOX_KLAR))
     }
 
     @Test
     fun getDisableApps_withOneApp_FirefoxNightly_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_NIGHTLY")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.FIREFOX_NIGHTLY))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.contains(App.FIREFOX_NIGHTLY))
     }
 
     @Test
     fun getDisableApps_withOneApp_FirefoxRelease_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("FIREFOX_RELEASE")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.FIREFOX_RELEASE))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.contains(App.FIREFOX_RELEASE))
     }
 
     @Test
     fun getDisableApps_withOneApp_Iceraven_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("ICERAVEN")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.ICERAVEN))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.contains(App.ICERAVEN))
     }
 
     @Test
     fun getDisableApps_withOneApp_Lockwise_returnApps() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("LOCKWISE")).commit()
-        assertThat(SettingsHelper(context).disabledApps, containsInAnyOrder(App.LOCKWISE))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.contains(App.LOCKWISE))
     }
 
     @Test
     fun getDisableApps_withInvalidApps_ignoreThem() {
         sharedPreferences.edit().putStringSet("disableApps", setOf("invalid")).commit()
-        assertThat(SettingsHelper(context).disabledApps, `is`(empty()))
+        val disabledApps = SettingsHelper(context).disabledApps
+        assertTrue(disabledApps.isEmpty())
     }
 
     @Test
@@ -216,13 +221,13 @@ class SettingsHelperTest {
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidPAndBelow_returnDefaultValue() {
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
     }
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidQAndHigher_returnDefaultValue() {
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -230,10 +235,10 @@ class SettingsHelperTest {
     fun getThemePreference_withInvalidValue_null_returnDefault() {
         sharedPreferences.edit().putString("themePreference", null).commit()
 
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -241,10 +246,10 @@ class SettingsHelperTest {
     fun getThemePreference_withInvalidValue_emptyString_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "").commit()
 
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -252,10 +257,10 @@ class SettingsHelperTest {
     fun getThemePreference_withInvalidValue_text_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "lorem ipsum").commit()
 
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -263,10 +268,10 @@ class SettingsHelperTest {
     fun getThemePreference_withInvalidValue_nonExistingNumber_returnDefault() {
         sharedPreferences.edit().putString("themePreference", "6").commit()
 
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -274,10 +279,10 @@ class SettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_FOLLOW_SYSTEM_returnValue() {
         sharedPreferences.edit().putString("themePreference", "-1").commit()
 
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_FOLLOW_SYSTEM, SettingsHelper(context).getThemePreference())
     }
 
@@ -285,10 +290,10 @@ class SettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_NO_returnValue() {
         sharedPreferences.edit().putString("themePreference", "1").commit()
 
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_NO, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_NO, SettingsHelper(context).getThemePreference())
     }
 
@@ -296,10 +301,10 @@ class SettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_YES_returnValue() {
         sharedPreferences.edit().putString("themePreference", "2").commit()
 
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_YES, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_YES, SettingsHelper(context).getThemePreference())
     }
 
@@ -307,10 +312,10 @@ class SettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_AUTO_BATTERY_returnValue() {
         sharedPreferences.edit().putString("themePreference", "3").commit()
 
-        every { DeviceEnvironment.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10() } returns false
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
 
-        every { DeviceEnvironment.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).getThemePreference())
     }
 }

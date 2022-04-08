@@ -10,7 +10,11 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 /**
  * Consume the "chain_of_trust.json".
  */
-class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
+class MozillaCiJsonConsumer(
+    task: String,
+    private val apkArtifact: String,
+    private val apiConsumer: ApiConsumer,
+) {
     private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
     private val jsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
 
@@ -21,7 +25,7 @@ class MozillaCiJsonConsumer(task: String, private val apkArtifact: String) {
      */
     @MainThread
     suspend fun updateCheck(): Result {
-        val response = ApiConsumer.consumeNetworkResource(jsonUrl, ChainOfTrustJson::class)
+        val response = apiConsumer.consumeNetworkResource(jsonUrl, ChainOfTrustJson::class)
         val artifact = response.artifacts[apkArtifact]
         checkNotNull(artifact) {
             "Missing artifact '$apkArtifact'. Only [${response.artifacts.keys.joinToString()}] " +

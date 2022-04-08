@@ -8,17 +8,22 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
-import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
-import org.junit.*
-import org.junit.Assert.*
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import java.io.FileReader
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.util.stream.Stream
 
+@ExtendWith(MockKExtension::class)
 class LockwiseIT {
     @MockK
     lateinit var context: Context
@@ -26,156 +31,119 @@ class LockwiseIT {
     @MockK
     lateinit var packageManager: PackageManager
 
-    @Before
+    @MockK
+    lateinit var apiConsumer: ApiConsumer
+
+    val packageInfo = PackageInfo()
+
+    @BeforeEach
     fun setUp() {
-        MockKAnnotations.init(this, relaxUnitFun = true)
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
+        every {
+            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
+        } returns packageInfo
     }
 
     companion object {
-        const val API_URL = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/" +
-                "releases"
-        const val DOWNLOAD_URL = "https://github.com/mozilla-lockwise/lockwise-android/releases/" +
-                "download"
+        const val API_URL = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases"
+        const val DOWNLOAD_URL = "https://github.com/mozilla-lockwise/lockwise-android/releases/download"
 
         @JvmStatic
-        @BeforeClass
-        fun beforeTests() {
-            mockkObject(ApiConsumer)
-            mockkObject(DeviceEnvironment)
-        }
-
-        @JvmStatic
-        @AfterClass
-        fun afterTests() {
-            unmockkObject(ApiConsumer)
-            unmockkObject(DeviceEnvironment)
-        }
+        fun testdata(): Stream<Arguments> = Stream.of(
+            Arguments.of(
+                1,
+                "4.0.3",
+                "$DOWNLOAD_URL/release-v4.0.3/lockbox-app-release-6584-signed.apk",
+                37188004L,
+                ZonedDateTime.parse("2020-12-10T18:40:16Z", DateTimeFormatter.ISO_ZONED_DATE_TIME)
+            ),
+            Arguments.of(
+                2,
+                "3.3.0",
+                "$DOWNLOAD_URL/release-v3.3.0-RC-2/lockbox-app-release-5784-signed.apk",
+                19367045L,
+                ZonedDateTime.parse("2019-12-13T19:34:17Z", DateTimeFormatter.ISO_ZONED_DATE_TIME)
+            ),
+        )
     }
 
-    private fun makeReleaseJsonObjectAvailableUnderUrl(fileName: String, url: String) {
+    private fun createSut(): Lockwise {
+        return Lockwise(apiConsumer = apiConsumer)
+    }
+
+    private fun makeJsonObjectAvailable(fileName: String, url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/$fileName"
         coEvery {
-            ApiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
+            apiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 
-    private fun makeReleaseJsonArrayAvailableUnderUrl(fileName: String, url: String) {
+    private fun makeJsonArrayAvailable(fileName: String, url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise//$fileName"
         coEvery {
-            ApiConsumer.consumeNetworkResource(url, Array<GithubConsumer.Release>::class)
+            apiConsumer.consumeNetworkResource(url, Array<GithubConsumer.Release>::class)
         } returns Gson().fromJson(FileReader(path), Array<GithubConsumer.Release>::class.java)
     }
 
-    @Test
-    fun updateCheck_latestRelease_checkDownloadUrlForABI() {
-        makeReleaseJsonObjectAvailableUnderUrl("latest.json", "$API_URL/latest")
-        val packageInfo = PackageInfo()
-        packageInfo.versionName = "4.0.3"
-        every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
-        } returns packageInfo
-
-        for (abi in ABI.values()) {
-            every { DeviceEnvironment.abis } returns listOf(abi)
-            val actual = runBlocking {
-                Lockwise().updateCheck(context).downloadUrl
+    @ParameterizedTest(name = "check download info - \"{1}\" network requests necessary")
+    @MethodSource("testdata")
+    fun `check download info for ABI X`(
+        networkRequests: Int,
+        expectedVersion: String,
+        downloadUrl: String,
+        fileSize: Long,
+        timestamp: ZonedDateTime,
+    ) {
+        when (networkRequests) {
+            1 -> makeJsonObjectAvailable("latest.json", "$API_URL/latest")
+            2 -> {
+                makeJsonObjectAvailable("2releases_latest.json", "$API_URL/latest")
+                makeJsonArrayAvailable("2releases_page1.json", "$API_URL?per_page=5&page=1")
             }
-            val expected = "$DOWNLOAD_URL/release-v4.0.3/lockbox-app-release-6584-signed.apk"
-            assertEquals(expected, actual)
+            else -> throw IllegalStateException()
         }
+        val result = runBlocking { createSut().updateCheck(context) }
+        assertEquals(downloadUrl, result.downloadUrl)
+        assertEquals(expectedVersion, result.version)
+        assertEquals(fileSize, result.fileSizeBytes)
+        assertEquals(timestamp, result.publishDate)
     }
 
-    @Test
-    fun updateCheck_latestRelease_updateCheck() {
-        makeReleaseJsonObjectAvailableUnderUrl("latest.json", "$API_URL/latest")
-        val packageInfo = PackageInfo()
-        every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
-        } returns packageInfo
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-
-        // installed app is up-to-date
-        runBlocking {
-            packageInfo.versionName = "4.0.3"
-            val actual = Lockwise().updateCheck(context)
-            assertFalse(actual.isUpdateAvailable)
-            assertEquals("4.0.3", actual.version)
-            assertEquals(37188004L, actual.fileSizeBytes)
-            assertEquals(
-                ZonedDateTime.parse("2020-12-10T18:40:16Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                actual.publishDate
-            )
-        }
-
-        // installed app is old
-        runBlocking {
-            packageInfo.versionName = "4.0.0"
-            val actual = Lockwise().updateCheck(context)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("4.0.3", actual.version)
-            assertEquals(37188004L, actual.fileSizeBytes)
-            assertEquals(
-                ZonedDateTime.parse("2020-12-10T18:40:16Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                actual.publishDate
-            )
-        }
-    }
-
-    @Test
-    fun updateCheck_2releases_checkDownloadUrlForABI() {
-        makeReleaseJsonObjectAvailableUnderUrl("2releases_latest.json", "$API_URL/latest")
-        makeReleaseJsonArrayAvailableUnderUrl("2releases_page1.json", "$API_URL?per_page=5&page=1")
-        val packageInfo = PackageInfo()
-        every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
-        } returns packageInfo
-
-        for (abi in ABI.values()) {
-            every { DeviceEnvironment.abis } returns listOf(abi)
-            val actual = runBlocking {
-                Lockwise().updateCheck(context).downloadUrl
+    @ParameterizedTest(name = "update check - outdated version installed - \"{1}\" network requests necessary")
+    @MethodSource("testdata")
+    fun `update check for ABI X - outdated version installed`(
+        networkRequests: Int,
+    ) {
+        when (networkRequests) {
+            1 -> makeJsonObjectAvailable("latest.json", "$API_URL/latest")
+            2 -> {
+                makeJsonObjectAvailable("2releases_latest.json", "$API_URL/latest")
+                makeJsonArrayAvailable("2releases_page1.json", "$API_URL?per_page=5&page=1")
             }
-            val expected = "$DOWNLOAD_URL/release-v3.3.0-RC-2/lockbox-app-release-5784-signed.apk"
-            assertEquals(expected, actual)
+            else -> throw IllegalStateException()
         }
+        packageInfo.versionName = "3.2.0"
+        val result = runBlocking { createSut().updateCheck(context) }
+        assertTrue(result.isUpdateAvailable)
     }
 
-    @Test
-    fun updateCheck_2releases_updateCheck() {
-        makeReleaseJsonObjectAvailableUnderUrl("2releases_latest.json", "$API_URL/latest")
-        makeReleaseJsonArrayAvailableUnderUrl("2releases_page1.json", "$API_URL?per_page=5&page=1")
-        val packageInfo = PackageInfo()
-        every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, any())
-        } returns packageInfo
-        every { DeviceEnvironment.abis } returns listOf(ABI.ARMEABI_V7A)
-
-        // installed app is up-to-date
-        runBlocking {
-            packageInfo.versionName = "3.3.0"
-            val actual = Lockwise().updateCheck(context)
-            assertFalse(actual.isUpdateAvailable)
-            assertEquals("3.3.0", actual.version)
-            assertEquals(19367045L, actual.fileSizeBytes)
-            assertEquals(
-                ZonedDateTime.parse("2019-12-13T19:34:17Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                actual.publishDate
-            )
+    @ParameterizedTest(name = "update check - latest version installed - \"{1}\" network requests necessary")
+    @MethodSource("testdata")
+    fun `update check for ABI X - latest version installed`(
+        networkRequests: Int,
+        expectedVersion: String,
+    ) {
+        when (networkRequests) {
+            1 -> makeJsonObjectAvailable("latest.json", "$API_URL/latest")
+            2 -> {
+                makeJsonObjectAvailable("2releases_latest.json", "$API_URL/latest")
+                makeJsonArrayAvailable("2releases_page1.json", "$API_URL?per_page=5&page=1")
+            }
+            else -> throw IllegalStateException()
         }
-
-        // installed app is old
-        runBlocking {
-            packageInfo.versionName = "3.2.0"
-            val actual = Lockwise().updateCheck(context)
-            assertTrue(actual.isUpdateAvailable)
-            assertEquals("3.3.0", actual.version)
-            assertEquals(19367045L, actual.fileSizeBytes)
-            assertEquals(
-                ZonedDateTime.parse("2019-12-13T19:34:17Z", DateTimeFormatter.ISO_ZONED_DATE_TIME),
-                actual.publishDate
-            )
-        }
+        packageInfo.versionName = expectedVersion
+        val result = runBlocking { createSut().updateCheck(context) }
+        assertFalse(result.isUpdateAvailable)
     }
 }

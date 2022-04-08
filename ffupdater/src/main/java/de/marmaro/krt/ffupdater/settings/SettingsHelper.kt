@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import java.time.Duration
 
 /**
@@ -65,7 +65,7 @@ class SettingsHelper(context: Context) {
      * @return AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES, ...
      */
     fun getThemePreference(): Int {
-        val default = if (DeviceEnvironment.supportsAndroid10()) {
+        val default = if (DeviceSdkTester.supportsAndroid10()) {
             MODE_NIGHT_FOLLOW_SYSTEM
         } else {
             MODE_NIGHT_AUTO_BATTERY

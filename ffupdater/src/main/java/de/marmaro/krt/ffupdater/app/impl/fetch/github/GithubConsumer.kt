@@ -20,6 +20,7 @@ class GithubConsumer(
     // true -> contact only "$url?per_page=..&page=.."
     // set it to true if it is unlikely that the latest release is a valid release
     private val onlyRequestReleasesInBulk: Boolean = false,
+    private val apiConsumer: ApiConsumer,
 ) {
     private val url = "https://api.github.com/repos/$repoOwner/$repoName/releases"
 
@@ -56,12 +57,12 @@ class GithubConsumer(
     suspend fun requestReleases(tries: Int): Array<Release> {
         when (tries) {
             1 -> {
-                val release = ApiConsumer.consumeNetworkResource("$url/latest", Release::class)
+                val release = apiConsumer.consumeNetworkResource("$url/latest", Release::class)
                 return arrayOf(release)
             }
             2, 3, 4, 5 -> {
                 val url = "$url?per_page=$resultsPerPage&page=${tries - 1}"
-                return ApiConsumer.consumeNetworkResource(url, Array<Release>::class)
+                return apiConsumer.consumeNetworkResource(url, Array<Release>::class)
             }
         }
         throw InvalidApiResponseException("can't find release after $tries tries - abort")

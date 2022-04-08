@@ -4,12 +4,9 @@ import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 
 /**
- * This class returns all supported ABIs and the API level.
- * This indirection with abis and supportAndroidXXX() is necessary, because Mockk can't mock/change the
- * Android classes.
+ * This class makes SDK checks testable because Mockk can't mock/change Android classes.
  */
-object DeviceEnvironment {
-    val abis = findSupportedAbis()
+object DeviceSdkTester {
     val sdkInt = SDK_INT
 
     /**
@@ -60,22 +57,4 @@ object DeviceEnvironment {
     fun supportsAndroid12(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.S
     }
-
-    private fun findSupportedAbis(): List<ABI> {
-        val supportedAbis = Build.SUPPORTED_ABIS ?: return listOf()
-        return supportedAbis.mapNotNull {
-            when (it) {
-                "arm64-v8a" -> ABI.ARM64_V8A
-                "armeabi-v7a" -> ABI.ARMEABI_V7A
-                "armeabi" -> ABI.ARMEABI
-                "x86_64" -> ABI.X86_64
-                "x86" -> ABI.X86
-                "mips" -> ABI.MIPS
-                "mips64" -> ABI.MIPS64
-                else -> throw UnknownAbiException("unknown ABI '$it'")
-            }
-        }
-    }
-
-    class UnknownAbiException(message: String) : Exception(message)
 }

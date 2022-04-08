@@ -24,6 +24,7 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededExcep
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
 import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
@@ -56,8 +57,10 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
         Migrator().migrate(this)
 
+        val deviceAbis = DeviceAbiExtractor.findSupportedAbis()
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            InstallNewAppDialog.newInstance().show(supportFragmentManager)
+            val dialog = InstallNewAppDialog.newInstance(deviceAbis)
+            dialog.show(supportFragmentManager)
         }
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).setOnRefreshListener {
             lifecycleScope.launch(Dispatchers.Main) {

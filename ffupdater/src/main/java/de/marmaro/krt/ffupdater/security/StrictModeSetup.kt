@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.security
 
 import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 /**
  * Configure StrictMode to find bugs or other problems.
@@ -21,11 +21,11 @@ object StrictModeSetup {
 
         val vmPolicyBuilder = VmPolicy.Builder()
         //vmPolicyBuilder.detectAll() //because of the always present LeakedClosableViolation
-        if (DeviceEnvironment.supportsAndroid12()) {
+        if (DeviceSdkTester.supportsAndroid12()) {
             vmPolicyBuilder.detectIncorrectContextUse()
             vmPolicyBuilder.detectUnsafeIntentLaunch()
         }
-        if (DeviceEnvironment.supportsAndroidMarshmallow()) {
+        if (DeviceSdkTester.supportsAndroidMarshmallow()) {
             vmPolicyBuilder.detectActivityLeaks()
             vmPolicyBuilder.detectCleartextNetwork()
             vmPolicyBuilder.detectFileUriExposure()
@@ -33,14 +33,14 @@ object StrictModeSetup {
             vmPolicyBuilder.detectLeakedRegistrationObjects()
             vmPolicyBuilder.detectLeakedSqlLiteObjects()
         }
-        if (DeviceEnvironment.supportsAndroidOreo()) {
+        if (DeviceSdkTester.supportsAndroidOreo()) {
             vmPolicyBuilder.detectContentUriWithoutPermission()
             vmPolicyBuilder.detectUntaggedSockets()
         }
-        if (DeviceEnvironment.supportsAndroid9()) {
+        if (DeviceSdkTester.supportsAndroid9()) {
             vmPolicyBuilder.detectNonSdkApiUsage()
         }
-        if (DeviceEnvironment.supportsAndroid10()) {
+        if (DeviceSdkTester.supportsAndroid10()) {
             vmPolicyBuilder.detectImplicitDirectBoot()
             vmPolicyBuilder.detectCredentialProtectedWhileLocked()
         }

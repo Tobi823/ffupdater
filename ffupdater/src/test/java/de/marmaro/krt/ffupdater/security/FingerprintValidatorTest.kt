@@ -5,20 +5,21 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.content.pm.Signature
 import de.marmaro.krt.ffupdater.app.App
-import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
-import org.junit.AfterClass
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.Test
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import java.io.File
 import kotlin.io.path.createTempFile
 import kotlin.random.Random
 
-
+@ExtendWith(MockKExtension::class)
 class FingerprintValidatorTest {
 
     @MockK
@@ -30,27 +31,27 @@ class FingerprintValidatorTest {
 
     companion object {
         lateinit var signatureBytes: ByteArray
+
         @Suppress("SpellCheckingInspection")
         const val signatureFingerprint = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
         val file = createTempFile("FIREFOX_RELEASE__2021_04_30__244384144", ".apk").toFile()!!
 
-        @BeforeClass
+        @BeforeAll
         @JvmStatic
         fun setUpStatic() {
             val path = "src/test/resources/de/marmaro/krt/ffupdater/security/FirefoxReleaseAppSignature.bin"
             signatureBytes = File(path).readBytes()
         }
 
-        @AfterClass
+        @AfterAll
         @JvmStatic
         fun tearDownClass() {
             file.delete()
         }
     }
 
-    @Before
+    @BeforeEach
     fun setUp() {
-        MockKAnnotations.init(this, relaxUnitFun = true)
         fingerprintValidator = FingerprintValidator(packageManager)
     }
 
@@ -82,7 +83,7 @@ class FingerprintValidatorTest {
         assertFalse(actual.isValid)
     }
 
-    @Test(expected = FingerprintValidator.UnableCheckApkException::class)
+    @Test
     fun checkApkFile_withIncorrectSignature_throwException() {
         val packageInfo = PackageInfo()
         packageInfo.signatures = arrayOf(signature)
@@ -90,7 +91,12 @@ class FingerprintValidatorTest {
         every {
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
-        runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE) }
+
+        assertThrows(FingerprintValidator.UnableCheckApkException::class.java) {
+            runBlocking {
+                fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE)
+            }
+        }
     }
 
     @Test
@@ -122,7 +128,7 @@ class FingerprintValidatorTest {
         assertFalse(actual.isValid)
     }
 
-    @Test(expected = FingerprintValidator.UnableCheckApkException::class)
+    @Test
     fun checkInstalledApp_withInvalidCertificate_throwException() {
         val packageInfo = PackageInfo()
         packageInfo.signatures = arrayOf(signature)
@@ -130,8 +136,11 @@ class FingerprintValidatorTest {
         every {
             packageManager.getPackageInfo(App.FIREFOX_RELEASE.detail.packageName, GET_SIGNATURES)
         } returns packageInfo
-        runBlocking {
-            fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE)
+
+        assertThrows(FingerprintValidator.UnableCheckApkException::class.java) {
+            runBlocking {
+                fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE)
+            }
         }
     }
 }

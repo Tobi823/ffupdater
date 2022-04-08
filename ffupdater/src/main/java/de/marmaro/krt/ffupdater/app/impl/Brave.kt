@@ -4,6 +4,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
@@ -13,7 +14,9 @@ import de.marmaro.krt.ffupdater.device.ABI
  * https://www.apkmirror.com/apk/brave-software/brave-browser/
  */
 class Brave(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false
+    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
+    private val apiConsumer: ApiConsumer,
+    private val deviceAbis: List<ABI>,
 ) : BaseAppWithCachedUpdateCheck() {
     override val packageName = "com.brave.browser"
     override val displayTitle = R.string.brave__title
@@ -28,10 +31,14 @@ class Brave(
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val fileName = getStringForCurrentAbi(
-            "BraveMonoarm.apk", "BraveMonoarm64.apk",
-            "BraveMonox86.apk", "BraveMonox64.apk"
-        )
+        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val fileName = when (filteredAbis.firstOrNull()) {
+            ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
+            ABI.ARM64_V8A -> "BraveMonoarm64.apk"
+            ABI.X86 -> "BraveMonox86.apk"
+            ABI.X86_64 -> "BraveMonox64.apk"
+            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+        }
         val githubConsumer = GithubConsumer(
             repoOwner = "brave",
             repoName = "brave-browser",
@@ -40,6 +47,7 @@ class Brave(
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             onlyRequestReleasesInBulk = true,
+            apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
         val version = result.tagName.replace("v", "")

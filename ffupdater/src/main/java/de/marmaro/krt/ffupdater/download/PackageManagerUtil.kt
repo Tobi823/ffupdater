@@ -8,7 +8,7 @@ import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
 import android.content.pm.Signature
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceEnvironment
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -17,7 +17,7 @@ object PackageManagerUtil {
     @MainThread
     suspend fun getPackageArchiveInfo(packageManager: PackageManager, path: String): Signature {
         return withContext(Dispatchers.IO) {
-            val packageInfo = if (DeviceEnvironment.supportsAndroid11()) {
+            val packageInfo = if (DeviceSdkTester.supportsAndroid11()) {
                 // GET_SIGNING_CERTIFICATES does not work on Android 9/10
                 val packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
                 checkNotNull(packageInfo) { "PackageInfo for file '$path' is null." }
@@ -37,7 +37,7 @@ object PackageManagerUtil {
     }
 
     fun getInstalledAppInfo(packageManager: PackageManager, app: App): Signature {
-        val packageInfo = if (DeviceEnvironment.supportsAndroid9()) {
+        val packageInfo = if (DeviceSdkTester.supportsAndroid9()) {
             val packageInfo = packageManager.getPackageInfo(app.detail.packageName, GET_SIGNING_CERTIFICATES)
             checkNotNull(packageInfo) { "PackageInfo for package ${app.detail.packageName} is null." }
         } else {
@@ -67,7 +67,7 @@ object PackageManagerUtil {
     }
 
     private fun extractSignature(packageInfo: PackageInfo): Signature {
-        if (DeviceEnvironment.supportsAndroid9() && packageInfo.signingInfo != null) {
+        if (DeviceSdkTester.supportsAndroid9() && packageInfo.signingInfo != null) {
             val signingInfo = packageInfo.signingInfo
             check(!signingInfo.hasMultipleSigners()) { "App ${packageInfo.packageName} has multiple signers" }
             check(signingInfo.signingCertificateHistory.size == 1) {
