@@ -55,10 +55,10 @@ class FirefoxKlarIT {
     }
 
     companion object {
-        const val DOWNLOAD_URL =
+        private const val DOWNLOAD_URL =
             "https://github.com/mozilla-mobile/focus-android/releases/download"
-        const val EXPECTED_VERSION = "99.1.1"
-        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+        private const val EXPECTED_VERSION = "99.1.1"
+        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
             ZonedDateTime.parse("2022-03-31T05:06:42Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic
@@ -83,9 +83,9 @@ class FirefoxKlarIT {
     ) {
         val result = runBlocking { createSut(abi).updateCheck(context) }
         assertEquals(url, result.downloadUrl)
-        assertEquals(FirefoxFocusIT.EXPECTED_VERSION, result.version)
+        assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
-        assertEquals(FirefoxFocusIT.EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
+        assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
     }
 
     @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed")
@@ -103,7 +103,7 @@ class FirefoxKlarIT {
     fun `update check for ABI X - latest version installed`(
         abi: ABI,
     ) {
-        packageInfo.versionName = FirefoxFocusIT.EXPECTED_VERSION
+        packageInfo.versionName = EXPECTED_VERSION
         val result = runBlocking { createSut(abi).updateCheck(context) }
         assertFalse(result.isUpdateAvailable)
     }

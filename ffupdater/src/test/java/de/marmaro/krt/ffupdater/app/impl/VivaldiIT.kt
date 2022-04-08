@@ -48,7 +48,7 @@ class VivaldiIT {
     }
 
     companion object {
-        const val EXPECTED_VERSION = "4.3.2439.61"
+        private const val EXPECTED_VERSION = "4.3.2439.61"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(

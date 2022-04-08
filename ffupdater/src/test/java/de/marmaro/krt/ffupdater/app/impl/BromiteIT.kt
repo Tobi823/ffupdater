@@ -55,10 +55,10 @@ class BromiteIT {
     }
 
     companion object {
-        const val DOWNLOAD_URL = "https://github.com/bromite/bromite/releases/download/100.0.4896.57"
-        const val FOLDER_PATH = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Bromite"
-        const val EXPECTED_VERSION = "100.0.4896.57"
-        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+        private const val DOWNLOAD_URL = "https://github.com/bromite/bromite/releases/download/100.0.4896.57"
+        private const val FOLDER_PATH = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Bromite"
+        private const val EXPECTED_VERSION = "100.0.4896.57"
+        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
             ZonedDateTime.parse("2022-03-29T21:36:18Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic

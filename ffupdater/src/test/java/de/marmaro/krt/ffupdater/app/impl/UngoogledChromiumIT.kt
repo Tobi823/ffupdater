@@ -53,14 +53,14 @@ class UngoogledChromiumIT {
     }
 
     companion object {
-        const val API_URL = "https://api.github.com/repos/ungoogled-software/ungoogled-chromium-android/" +
+        private const val API_URL = "https://api.github.com/repos/ungoogled-software/ungoogled-chromium-android/" +
                 "releases?per_page=2&page=1"
-        const val DOWNLOAD_URL =
+        private const val DOWNLOAD_URL =
             "https://github.com/ungoogled-software/ungoogled-chromium-android/releases/" +
                     "download/95.0.4638.74-1"
 
-        const val EXPECTED_VERSION = "95.0.4638.74"
-        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+        private const val EXPECTED_VERSION = "95.0.4638.74"
+        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
             ZonedDateTime.parse("2021-11-06T02:47:00Z", DateTimeFormatter.ISO_ZONED_DATE_TIME)
 
         @JvmStatic

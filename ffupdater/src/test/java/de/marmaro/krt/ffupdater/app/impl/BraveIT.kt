@@ -45,10 +45,10 @@ class BraveIT {
     }
 
     companion object {
-        const val API_URl = "https://api.github.com/repos/brave/brave-browser/releases"
-        const val DOWNLOAD_URL = "https://github.com/brave/brave-browser/releases/download"
-        const val EXPECTED_VERSION = "1.20.103"
-        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+        private const val API_URl = "https://api.github.com/repos/brave/brave-browser/releases"
+        private const val DOWNLOAD_URL = "https://github.com/brave/brave-browser/releases/download"
+        private const val EXPECTED_VERSION = "1.20.103"
+        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
             ZonedDateTime.parse("2021-02-10T11:30:45Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic

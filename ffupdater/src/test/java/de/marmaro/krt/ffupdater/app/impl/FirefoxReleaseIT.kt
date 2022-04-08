@@ -47,10 +47,10 @@ class FirefoxReleaseIT {
     }
 
     companion object {
-        const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+        private const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.release.latest"
-        const val EXPECTED_VERSION = "90.1.2"
-        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+        private const val EXPECTED_VERSION = "90.1.2"
+        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
             ZonedDateTime.parse("2021-07-19T15:07:50.886Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic

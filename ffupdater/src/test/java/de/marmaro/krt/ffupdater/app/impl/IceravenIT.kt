@@ -48,12 +48,12 @@ class IceravenIT {
     }
 
     companion object {
-        const val API_URL = "https://api.github.com/repos/fork-maintainers/iceraven-browser/" +
+        private const val API_URL = "https://api.github.com/repos/fork-maintainers/iceraven-browser/" +
                 "releases/latest"
-        const val DOWNLOAD_URL = "https://github.com/fork-maintainers/iceraven-browser/releases/" +
+        private const val DOWNLOAD_URL = "https://github.com/fork-maintainers/iceraven-browser/releases/" +
                 "download/iceraven-1.6.0"
-        const val EXPECTED_VERSION = "1.6.0"
-        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+        private const val EXPECTED_VERSION = "1.6.0"
+        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
             ZonedDateTime.parse("2021-02-07T00:37:13Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic

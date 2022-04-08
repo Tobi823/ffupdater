@@ -46,11 +46,12 @@ class LockwiseIT {
     }
 
     companion object {
-        const val API_URL = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases"
-        const val DOWNLOAD_URL = "https://github.com/mozilla-lockwise/lockwise-android/releases/download"
+        private const val API_URL = "https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases"
+        private const val DOWNLOAD_URL =
+            "https://github.com/mozilla-lockwise/lockwise-android/releases/download"
 
         @JvmStatic
-        fun testdata(): Stream<Arguments> = Stream.of(
+        fun abisWithMetaData(): Stream<Arguments> = Stream.of(
             Arguments.of(
                 1,
                 "4.0.3",
@@ -87,7 +88,7 @@ class LockwiseIT {
     }
 
     @ParameterizedTest(name = "check download info - \"{1}\" network requests necessary")
-    @MethodSource("testdata")
+    @MethodSource("abisWithMetaData")
     fun `check download info for ABI X`(
         networkRequests: Int,
         expectedVersion: String,

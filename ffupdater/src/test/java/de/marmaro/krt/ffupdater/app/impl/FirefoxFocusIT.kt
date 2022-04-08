@@ -55,9 +55,9 @@ class FirefoxFocusIT {
     }
 
     companion object {
-        const val DOWNLOAD_URL = "https://github.com/mozilla-mobile/focus-android/releases/download"
-        const val EXPECTED_VERSION = "99.1.1"
-        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+        private const val DOWNLOAD_URL = "https://github.com/mozilla-mobile/focus-android/releases/download"
+        private const val EXPECTED_VERSION = "99.1.1"
+        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
             ZonedDateTime.parse("2022-03-31T05:06:42Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic

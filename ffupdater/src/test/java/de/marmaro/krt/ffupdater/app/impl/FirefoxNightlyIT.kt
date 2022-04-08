@@ -57,10 +57,10 @@ class FirefoxNightlyIT {
     }
 
     companion object {
-        const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+        private const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.nightly.latest"
-        const val EXPECTED_VERSION = "2021-05-06 17:02"
-        val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
+        private const val EXPECTED_VERSION = "2021-05-06 17:02"
+        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
             ZonedDateTime.parse("2021-05-06T17:02:55.865Z", DateTimeFormatter.ISO_ZONED_DATE_TIME)
 
         @JvmStatic
