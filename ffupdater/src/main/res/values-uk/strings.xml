@@ -98,7 +98,7 @@
     <string name="manage_storage_activity__delete_button">Видалити кешовані оновлення програми.</string>
     <string name="manage_storage_activity__explanation">FFUpdater кешує вже завантажені оновлення програм і зберігає їх у папці «Android/data/de.marmaro.krt.ffupdater/files/Download».\n\nЦе заощаджує пропускну спроможність, якщо програму не встановлено або не оновлено. Крім того, кеш потрібен, щоб оновлення, завантажені у фоновому режимі, можна було встановити пізніше.\n\nЯкщо ви вирішите видалити ці оновлення програми, можливо, вам доведеться завантажити їх знову.</string>
     <string name="ok">Гаразд</string>
-    <string name="running_downloads_dialog__message">Менеджер завантаження системи зараз завантажує інші файли. Хочете розпочати нове завантаження, яке може зайняти більше часу?</string>
+    <string name="running_downloads_dialog__message">Додаток завантажує оновлення у фоновому режимі. Ви хочете почати нове завантаження, яке може зайняти більше часу?</string>
     <string name="running_downloads_dialog__negative">Ні, не завантажуйте</string>
     <string name="running_downloads_dialog__title">164 / 5000 Translation results Завантаження завантажень</string>
     <string name="running_downloads_dialog__yes">Так</string>

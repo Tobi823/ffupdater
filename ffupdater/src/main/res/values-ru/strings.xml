@@ -98,7 +98,7 @@
     <string name="manage_storage_activity__delete_button">Удаление кэшированных обновлений приложений.</string>
     <string name="manage_storage_activity__explanation">FFUpdater кэширует уже загруженные обновления приложений и хранит их в папке \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nЭто экономит пропускную способность, когда приложение не удается установить или обновить. Кроме того, кэш необходим для того, чтобы обновления, загруженные в фоновом режиме, можно было установить позже.\n\nЕсли вы решите удалить эти обновления приложений, вам, возможно, придется загрузить их снова.</string>
     <string name="ok">ОК</string>
-    <string name="running_downloads_dialog__message">Менеджер загрузки системы сейчас загружает другие файлы. Вы хотите начать новую загрузку, которая может занять больше времени?</string>
+    <string name="running_downloads_dialog__message">Сейчас приложение загружает обновления в фоновом режиме. Вы хотите начать новую загрузку, которая может занять больше времени?</string>
     <string name="running_downloads_dialog__negative">Нет, не загружать</string>
     <string name="running_downloads_dialog__title">Выполняющиеся загрузки</string>
     <string name="running_downloads_dialog__yes">Да</string>

@@ -101,7 +101,7 @@
     <string name="manage_storage_activity__explanation">FFUpdater caches already downloaded app updates and stores them in the \'Android/data/de.marmaro.krt.ffupdater/files/Download\' folder.\n\nThis saves bandwidth when an app is not successfully installed or updated. Also, the cache is needed so that updates that were downloaded in the background can be installed later.\n\nIf you decide to delete these app updates, you may have to download them again.</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="ok">OK</string>
-    <string name="running_downloads_dialog__message">The system download manager is downloading other files now. Do you want to start a new download that may take longer?</string>
+    <string name="running_downloads_dialog__message">The app is downloading updates in the background now. Do you want to start a new download that may take longer?</string>
     <string name="running_downloads_dialog__negative">No, don\'t download it</string>
     <string name="running_downloads_dialog__title">Running downloads</string>
     <string name="running_downloads_dialog__yes">Yes</string>

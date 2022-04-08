@@ -94,7 +94,6 @@
     <string name="manage_storage_activity__delete_button">Elimina gli aggiornamenti delle app in cache.</string>
     <string name="manage_storage_activity__explanation">FFUpdater memorizza in cache gli aggiornamenti delle app già scaricati e li savla nella cartella \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nQuesto consente di risparmiare banda quando un\'app non è installata o aggiornata correttamente. Inoltre, la cache è necessaria in modo che gli aggiornamenti scaricati in background possano essere installati in seguito.\n\nSe si decide di eliminare questi aggiornamenti dell\'app, potrebbe essere necessario scaricarli di nuovo.</string>
     <string name="ok">OK</string>
-    <string name="running_downloads_dialog__message">Il gestore di download del sistema sta scaricando altri file ora. Vuoi iniziare un nuovo download che potrebbe richiedere più tempo?</string>
     <string name="running_downloads_dialog__negative">No, non scaricarlo</string>
     <string name="running_downloads_dialog__title">Download in corso</string>
     <string name="running_downloads_dialog__yes">Yes</string>
@@ -157,4 +156,5 @@
     <string name="download_notification__channel_description">Mostra quando gli aggiornamenti delle app vengono scaricati in background.</string>
     <string name="download_notification__title">Scaricare gli aggiornamenti delle app</string>
     <string name="download_notification__message">Attualmente scarica in background gli aggiornamenti per le app installate.</string>
+    <string name="running_downloads_dialog__message">L\'app sta scaricando gli aggiornamenti in background ora. Vuoi iniziare un nuovo download che potrebbe richiedere più tempo?</string>
 </resources>

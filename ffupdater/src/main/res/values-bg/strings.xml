@@ -98,7 +98,7 @@
     <string name="manage_storage_activity__delete_button">Изтриване на обновяванията от междинната памет.</string>
     <string name="manage_storage_activity__explanation">FFUpdater слага изтеглените обновявания във временна междинна памет в папката \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nПо този начин се пести трафик, когато приложението не е успешно инсталирано или обновено. Освен това междинната памет е необходима, за да може изтеглените във фонов режим обновявания да бъдат инсталирани по-късно.\n\nАко решите да изтриете тези обновявания, ще се наложи да ги изтеглите отново.</string>
     <string name="ok">Добре</string>
-    <string name="running_downloads_dialog__message">В момента системата изтегля други файлове. Желаете ли да започне ново изтегляне, което може да отнеме повече време?</string>
+    <string name="running_downloads_dialog__message">The app is downloading updates in the background now. Do you want to start a new download that may take longer?</string>
     <string name="running_downloads_dialog__negative">Не, без изтегляне</string>
     <string name="running_downloads_dialog__title">Текущи изтегляния</string>
     <string name="running_downloads_dialog__yes">Да</string>
