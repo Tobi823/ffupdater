@@ -28,6 +28,7 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.FileDownloader
+import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
@@ -51,6 +52,7 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: AppInstaller
     private lateinit var appCache: AppCache
+    private lateinit var settingsHelper: SettingsHelper
 
     // necessary for communication with State enums
     private lateinit var app: App
@@ -65,6 +67,7 @@ class InstallActivity : AppCompatActivity() {
         var app: App? = null
         var fileDownloader: FileDownloader? = null
         var updateCheckResult: UpdateCheckResult? = null
+        var error: Pair<Int?, Exception?>? = null
         var fetchUrlException: Exception? = null
         var fetchUrlExceptionText: String? = null
     }
@@ -73,7 +76,7 @@ class InstallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.install_activity)
         CrashListener.openCrashReporterForUncaughtExceptions(this)
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val passedAppName = intent.extras?.getString(EXTRA_APP_NAME)
@@ -84,6 +87,7 @@ class InstallActivity : AppCompatActivity() {
         }
         app = App.valueOf(passedAppName)
 
+        settingsHelper = SettingsHelper(this)
         fingerprintValidator = FingerprintValidator(packageManager)
         appInstaller = AppInstaller.create(
             successfulInstallationCallback = {
@@ -191,7 +195,7 @@ class InstallActivity : AppCompatActivity() {
         START(InstallActivity::start),
         CHECK_IF_STORAGE_IS_MOUNTED(InstallActivity::checkIfStorageIsMounted),
         CHECK_FOR_ENOUGH_STORAGE(InstallActivity::checkForEnoughStorage),
-        PRECONDITIONS_ARE_CHECKED(InstallActivity::preconditionsAreChecked),
+        FETCH_DOWNLOAD_INFORMATION(InstallActivity::fetchDownloadInformation),
         START_DOWNLOAD(InstallActivity::startDownload),
         REUSE_CURRENT_DOWNLOAD(InstallActivity::reuseCurrentDownload),
         DOWNLOAD_WAS_SUCCESSFUL(InstallActivity::downloadWasSuccessful),
@@ -222,8 +226,10 @@ class InstallActivity : AppCompatActivity() {
         const val EXTRA_APP_NAME = "app_name"
 
         @MainThread
-        suspend fun start(ia: InstallActivity): State {
-            if (!ia.app.detail.isInstalled(ia) || ia.fingerprintValidator.checkInstalledApp(ia.app).isValid) {
+        fun start(ia: InstallActivity): State {
+            if (!ia.app.detail.isInstalled(ia) ||
+                ia.fingerprintValidator.checkInstalledApp(ia.app.detail).isValid
+            ) {
                 return CHECK_IF_STORAGE_IS_MOUNTED
             }
             return FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP
@@ -240,17 +246,17 @@ class InstallActivity : AppCompatActivity() {
         @MainThread
         fun checkForEnoughStorage(ia: InstallActivity): State {
             if (StorageUtil.isEnoughStorageAvailable()) {
-                return PRECONDITIONS_ARE_CHECKED
+                return FETCH_DOWNLOAD_INFORMATION
             }
             ia.show(R.id.tooLowMemory)
             val mbs = StorageUtil.getFreeStorageInMebibytes()
             val message = ia.getString(R.string.install_activity__too_low_memory_description, mbs)
             ia.setText(R.id.tooLowMemoryDescription, message)
-            return PRECONDITIONS_ARE_CHECKED
+            return FETCH_DOWNLOAD_INFORMATION
         }
 
         @MainThread
-        suspend fun preconditionsAreChecked(ia: InstallActivity): State {
+        suspend fun fetchDownloadInformation(ia: InstallActivity): State {
             val app = ia.app
             ia.show(R.id.fetchUrl)
             val downloadSource = ia.getString(app.detail.displayDownloadSource)
@@ -260,17 +266,19 @@ class InstallActivity : AppCompatActivity() {
             )
             ia.setText(R.id.fetchUrlTextView, runningText)
 
+            // check if network type requirements are met
+            if (!ia.settingsHelper.isForegroundUpdateCheckOnMeteredAllowed && isNetworkMetered(ia)) {
+                ia.viewModel.error = Pair(R.string.main_activity__no_unmetered_network, null)
+                return FAILURE_SHOW_FETCH_URL_EXCEPTION
+            }
+
             val updateCheckResult = try {
                 app.detail.updateCheck(ia)
             } catch (e: GithubRateLimitExceededException) {
-                ia.viewModel.fetchUrlException = e
-                ia.viewModel.fetchUrlExceptionText =
-                    ia.getString(R.string.install_activity__github_rate_limit_exceeded)
+                ia.viewModel.error = Pair(R.string.install_activity__github_rate_limit_exceeded, e)
                 return FAILURE_SHOW_FETCH_URL_EXCEPTION
             } catch (e: NetworkException) {
-                ia.viewModel.fetchUrlException = e
-                ia.viewModel.fetchUrlExceptionText =
-                    ia.getString(R.string.install_activity__temporary_network_issue)
+                ia.viewModel.error = Pair(R.string.install_activity__temporary_network_issue, e)
                 return FAILURE_SHOW_FETCH_URL_EXCEPTION
             }
 
@@ -294,15 +302,18 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         suspend fun startDownload(ia: InstallActivity): State {
+            if (!ia.settingsHelper.isForegroundDownloadOnMeteredAllowed && isNetworkMetered(ia)) {
+                ia.viewModel.error = Pair(R.string.main_activity__no_unmetered_network, null)
+                return FAILURE_SHOW_FETCH_URL_EXCEPTION
+            }
+
             val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
             ia.show(R.id.downloadingFile)
             ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
-            ia.appCache.delete(ia)
+
             val setDownloadingFileText = { text: String ->
-                ia.setText(
-                    R.id.downloadingFileText,
-                    ia.getString(R.string.install_activity__download_app_with_status, text)
-                )
+                val display = ia.getString(R.string.install_activity__download_app_with_status, text)
+                ia.setText(R.id.downloadingFileText, display)
             }
             val fileDownloader = FileDownloader()
             fileDownloader.onProgress = { percentage, mb ->
@@ -319,6 +330,7 @@ class InstallActivity : AppCompatActivity() {
             setDownloadingFileText(" %")
 
             val url = updateCheckResult.availableResult.downloadUrl
+            ia.appCache.delete(ia)
             val file = ia.appCache.getFile(ia)
 
             AppDownloadStatus.foregroundDownloadIsStarted()
@@ -374,7 +386,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
             ia.show(R.id.verifyDownloadFingerprint)
 
-            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.appCache.getFile(ia), app)
+            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.appCache.getFile(ia), app.detail)
             ia.fileFingerprint = fingerprint
 
             if (fingerprint.isValid) {
@@ -391,7 +403,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.useCachedDownloadedApk__path, ia.appCache.getFile(ia).absolutePath)
             ia.show(R.id.verifyDownloadFingerprint)
 
-            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.appCache.getFile(ia), app)
+            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.appCache.getFile(ia), app.detail)
             ia.fileFingerprint = fingerprint
             return if (fingerprint.isValid) {
                 FINGERPRINT_OF_DOWNLOADED_FILE_OK
@@ -426,9 +438,9 @@ class InstallActivity : AppCompatActivity() {
         }
 
         @MainThread
-        suspend fun appInstallationHasBeenRegistered(ia: InstallActivity): State {
+        fun appInstallationHasBeenRegistered(ia: InstallActivity): State {
             ia.show(R.id.verifyInstalledFingerprint)
-            val fingerprint = ia.fingerprintValidator.checkInstalledApp(ia.app)
+            val fingerprint = ia.fingerprintValidator.checkInstalledApp(ia.app.detail)
             ia.appFingerprint = fingerprint
             ia.hide(R.id.verifyInstalledFingerprint)
             return if (fingerprint.isValid) {
@@ -499,10 +511,8 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.install_activity__open_cache_folder)
             var error = ia.appInstallationFailedErrorMessage
             if (error != null) {
-                if (error.contains("INSTALL_FAILED_INTERNAL_ERROR") &&
-                    error.contains("Permission Denied")
-                ) {
-                    error += "\n\n" + ia.getString(R.string.install_activity__try_disable_miui_optimization)
+                if ("INSTALL_FAILED_INTERNAL_ERROR" in error && "Permission Denied" in error) {
+                    error += "\n\n${ia.getString(R.string.install_activity__try_disable_miui_optimization)}"
                 }
                 ia.setText(R.id.installerFailedReason, error)
             }
@@ -522,17 +532,17 @@ class InstallActivity : AppCompatActivity() {
         fun failureShowFetchUrlException(ia: InstallActivity): State {
             ia.hide(R.id.fetchUrl)
             ia.show(R.id.install_activity__exception)
-            val text = ia.viewModel.fetchUrlExceptionText ?: "/"
+            val text = ia.viewModel.error?.first?.let { ia.getString(it) } ?: "/"
             ia.setText(R.id.install_activity__exception__text, text)
-            val exception = ia.viewModel.fetchUrlException
-            if (exception != null) {
-                ia.findViewById<TextView>(install_activity__exception__show_button)
-                    .setOnClickListener {
-                        val description =
-                            ia.getString(crash_report__explain_text__install_activity_fetching_url)
-                        val intent = CrashReportActivity.createIntent(ia, exception, description)
-                        ia.startActivity(intent)
-                    }
+            val exception = ia.viewModel.error?.second
+            if (exception == null) {
+                ia.hide(install_activity__exception__show_button)
+            } else {
+                ia.findViewById<TextView>(install_activity__exception__show_button).setOnClickListener {
+                    val description = ia.getString(crash_report__explain_text__install_activity_fetching_url)
+                    val intent = CrashReportActivity.createIntent(ia, exception, description)
+                    ia.startActivity(intent)
+                }
             }
             return ERROR_STOP
         }

@@ -5,12 +5,14 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
+import androidx.work.NetworkType.NOT_REQUIRED
+import androidx.work.NetworkType.UNMETERED
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.download.*
-import de.marmaro.krt.ffupdater.settings.PreferencesHelper
+import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.CancellationException
 import java.time.LocalDateTime
@@ -24,6 +26,9 @@ import java.util.concurrent.TimeUnit.MINUTES
  */
 class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {
+
+    private val settingsHelper = SettingsHelper(context)
+    private val dataStoreHelper = DataStoreHelper(context)
 
     /**
      * If:
@@ -40,65 +45,100 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      */
     @MainThread
     override suspend fun doWork(): Result {
-        try {
+        return try {
+            Log.i(LOG_TAG, "Execute background job for update check.")
             executeBackgroundJob()
-            return Result.success()
+        } catch (e: CancellationException) {
+            handleRetryableError(e)
+        } catch (e: GithubRateLimitExceededException) {
+            handleRetryableError(e)
+        } catch (e: NetworkException) {
+            handleRetryableError(e)
         } catch (e: Exception) {
-            when (e) {
-                is CancellationException, is GithubRateLimitExceededException, is NetworkException -> {
-                    if (runAttemptCount <= RUN_ATTEMPTS_FOR_63MIN_TOTAL) {
-                        Log.i(LOG_TAG, "Retry background job.", e)
-                        return Result.retry()
-                    }
-                }
-            }
-            showErrorNotification(applicationContext, e)
-            return Result.success()
+            showErrorNotification(e)
+            Result.success()
         }
-    }
-
-    private fun showErrorNotification(context: Context, e: Exception) {
-        val message = context.getString(R.string.background_job_failure__notification_text)
-        NotificationBuilder.showErrorNotification(context, e, message)
     }
 
     @MainThread
     private suspend fun executeBackgroundJob(): Result {
-        Log.i(LOG_TAG, "Execute background job for update check.")
+        areUpdateCheckPreconditionsUnfulfilled()?.let { return it }
+        val appsWithAvailableUpdates = checkForUpdates()
+        dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
+        if (appsWithAvailableUpdates.isEmpty()) {
+            return Result.success()
+        }
+
+        areDownloadPreconditionsUnfulfilled()?.let {
+            showUpdateNotification(appsWithAvailableUpdates)
+            return it
+        }
+        NotificationBuilder.showDownloadNotification(applicationContext)
+        appsWithAvailableUpdates.forEach { downloadUpdate(it) }
+        NotificationBuilder.hideDownloadNotification(applicationContext)
+
+        areInstallationPreconditionsUnfulfilled()?.let {
+            showUpdateNotification(appsWithAvailableUpdates)
+            return it
+        }
+
+        // TODO implement automatic background app installation
+
+        return Result.success()
+    }
+
+    /**
+     * Actually, WorkManager should ensure that most of these conditions are met.
+     * But this does not always happen reliably.
+     */
+    private fun areUpdateCheckPreconditionsUnfulfilled(): Result? {
+        if (!settingsHelper.isBackgroundUpdateCheckEnabled) {
+            Log.i(LOG_TAG, "Background should be disabled - disable it now.")
+            return Result.failure()
+        }
+
         if (AppDownloadStatus.areDownloadsInForegroundActive()) {
             Log.i(LOG_TAG, "Retry background job because other downloads are running.")
             return Result.retry()
         }
 
-        val appsWithUpdates = findAppsWithUpdates()
-        if (NetworkUtil.isActiveNetworkUnmetered(applicationContext) &&
-            StorageUtil.isEnoughStorageAvailable() &&
-            appsWithUpdates.isNotEmpty()
+        if (!settingsHelper.isBackgroundUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(
+                applicationContext
+            )
         ) {
-            NotificationBuilder.showDownloadNotification(applicationContext)
-            appsWithUpdates.forEach {
-                downloadUpdateInBackground(it)
-            }
-            NotificationBuilder.hideDownloadNotification(applicationContext)
+            Log.i(LOG_TAG, "No unmetered network available for update check.")
+            return Result.retry()
         }
-        showUpdateNotification(appsWithUpdates)
-        updateLastBackgroundCheckTimestamp()
-        return Result.success()
+
+        return null
     }
 
-    /**
-     * Returns apps which:
-     *  - are installed
-     *  - are not disabled (in the settings "excluded applications")
-     *  - have an available update
-     */
-    private suspend fun findAppsWithUpdates(): List<App> {
-        val disabledApps = SettingsHelper(applicationContext).disabledApps
-        return App.values()
-            .filter { it !in disabledApps }
+    private suspend fun checkForUpdates(): List<App> {
+        val apps = App.values()
+            .filter { it !in settingsHelper.excludedAppsFromBackgroundUpdateCheck }
             .filter { it.detail.isInstalled(applicationContext) }
-            // nice side effect: check for updates by calling updateCheck()
-            .filter { it.detail.updateCheck(applicationContext).isUpdateAvailable }
+        val appsWithAvailableUpdates = apps.filter {
+            val updateCheckResult = it.detail.updateCheck(applicationContext)
+            updateCheckResult.isUpdateAvailable
+        }
+        return appsWithAvailableUpdates
+    }
+
+    private fun areDownloadPreconditionsUnfulfilled(): Result? {
+        if (!settingsHelper.isBackgroundDownloadEnabled) {
+            Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
+            return Result.success()
+        }
+
+        if (!settingsHelper.isBackgroundDownloadOnMeteredAllowed && NetworkUtil.isNetworkMetered(
+                applicationContext
+            )
+        ) {
+            Log.i(LOG_TAG, "No unmetered network available for download.")
+            return Result.success()
+        }
+
+        return null
     }
 
     /**
@@ -106,32 +146,58 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * download is finished.
      */
     @MainThread
-    private suspend fun downloadUpdateInBackground(app: App) {
+    private suspend fun downloadUpdate(app: App) {
+        if (!StorageUtil.isEnoughStorageAvailable()) {
+            Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
+            return
+        }
+
         val appCache = AppCache(app)
-        val cachedUpdateChecker = app.detail.updateCheck(applicationContext)
-        val availableResult = cachedUpdateChecker.availableResult
+        val availableResult = app.detail.updateCheck(applicationContext).availableResult
         if (appCache.isAvailable(applicationContext, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return
         }
-        Log.i(LOG_TAG, "Download $app in the background.")
 
-        val url = availableResult.downloadUrl
-        val file = appCache.getFile(applicationContext)
+        Log.i(LOG_TAG, "Download update for $app.")
         AppDownloadStatus.backgroundDownloadIsStarted()
-        val result = FileDownloader().downloadFile(url, file)
+        val result = FileDownloader().downloadFile(
+            availableResult.downloadUrl,
+            appCache.getFile(applicationContext)
+        )
         AppDownloadStatus.backgroundDownloadIsFinished()
         if (!result) {
             appCache.delete(applicationContext)
         }
     }
 
-    private fun updateLastBackgroundCheckTimestamp() {
-        PreferencesHelper(applicationContext).lastBackgroundCheck = LocalDateTime.now()
+    private fun areInstallationPreconditionsUnfulfilled(): Result? {
+        if (!settingsHelper.isBackgroundInstallationEnabled) {
+            Log.i(LOG_TAG, "Automatic background app installation is not enabled.")
+            return Result.success()
+        }
+
+        // automatic background app installation is not yet implemented
+        return Result.success()
     }
 
     private fun showUpdateNotification(appsWithUpdates: List<App>) {
         NotificationBuilder.showUpdateNotifications(applicationContext, appsWithUpdates)
+    }
+
+    private fun handleRetryableError(e: Exception): Result {
+        if (runAttemptCount <= RUN_ATTEMPTS_FOR_63MIN_TOTAL) {
+            Log.i(LOG_TAG, "Retry background job.", e)
+            return Result.retry()
+        }
+
+        showErrorNotification(e)
+        return Result.success()
+    }
+
+    private fun showErrorNotification(e: Exception) {
+        val message = applicationContext.getString(R.string.background_job_failure__notification_text)
+        NotificationBuilder.showErrorNotification(applicationContext, e, message)
     }
 
     companion object {
@@ -142,7 +208,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         private const val RUN_ATTEMPTS_FOR_63MIN_TOTAL = 7
 
         fun startOrStopBackgroundUpdateCheck(context: Context) {
-            if (SettingsHelper(context).automaticCheck) {
+            if (SettingsHelper(context).isBackgroundUpdateCheckEnabled) {
                 startBackgroundUpdateCheck(context)
             } else {
                 stopBackgroundUpdateCheck(context)
@@ -150,25 +216,21 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         private fun startBackgroundUpdateCheck(context: Context) {
-            val settingsHelper = SettingsHelper(context)
+            val settings = SettingsHelper(context)
+            val meteredAllowed = settings.isBackgroundUpdateCheckOnMeteredAllowed
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .setRequiresBatteryNotLow(true)
                 .setRequiresStorageNotLow(true)
-            if (settingsHelper.onlyUnmeteredNetwork) {
-                constraints.setRequiredNetworkType(NetworkType.UNMETERED)
-            }
+                .setRequiredNetworkType(if (meteredAllowed) NOT_REQUIRED else UNMETERED)
 
-            val workRequest = PeriodicWorkRequest.Builder(
-                BackgroundJob::class.java,
-                settingsHelper.checkInterval.toMinutes(),
-                MINUTES
-            )
+            val interval = settings.backgroundUpdateCheckInterval.toMinutes()
+            val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, interval, MINUTES)
                 .setConstraints(constraints.build())
                 .build()
 
-            val workManager = WorkManager.getInstance(context)
-            workManager.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, workRequest)
+            WorkManager.getInstance(context)
+                .enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, workRequest)
         }
 
         private fun stopBackgroundUpdateCheck(context: Context) {

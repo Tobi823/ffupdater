@@ -32,7 +32,7 @@ class FirefoxFocus(
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val fileSuffix = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
             ABI.ARM64_V8A -> "arm64-v8a.apk"
@@ -44,7 +44,7 @@ class FirefoxFocus(
             repoOwner = "mozilla-mobile",
             repoName = "focus-android",
             resultsPerPage = 3,
-            isValidRelease = { release -> !release.isPreRelease && !release.name.contains("beta") },
+            isValidRelease = { release -> !release.isPreRelease && "beta" !in release.name },
             isCorrectAsset = { asset -> asset.name.startsWith("focus") && asset.name.endsWith(fileSuffix) },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             apiConsumer = apiConsumer,

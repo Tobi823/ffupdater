@@ -51,10 +51,12 @@ object NotificationBuilder {
             )
         }
 
-        App.values().filter { !apps.contains(it) }.forEach {
-            val notificationManager = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-            notificationManager.cancel(200 + it.ordinal)
-        }
+        App.values()
+            .filter { it !in apps }
+            .forEach {
+                val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+                nm.cancel(200 + it.ordinal)
+            }
     }
 
     fun showDownloadNotification(context: Context) {

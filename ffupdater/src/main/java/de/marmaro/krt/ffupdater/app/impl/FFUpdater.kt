@@ -1,16 +1,12 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.security.FingerprintValidator
 
 /**
  * https://api.github.com/repos/brave/brave-browser/releases
@@ -33,15 +29,6 @@ class FFUpdater(
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
-
-    @SuppressLint("WrongThread")
-    override fun isInstalled(context: Context): Boolean {
-        // FFUpdater must be installed or this code will never run
-        // Check if FFUpdater was installed with my signed APK file
-        return FingerprintValidator(context.packageManager)
-            .checkInstalledApp(App.FFUPDATER)
-            .isValid
-    }
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
         val githubConsumer = GithubConsumer(

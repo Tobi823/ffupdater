@@ -2,7 +2,8 @@
 - download icon (ic_launcher)
 - add new class in de.marmaro.krt.ffupdater.app.impl
 - add entry in de.marmaro.krt.ffupdater.app.App
-- add entry in the arrays disabledAppEntries + disabledAppEntryValues in src/main/res/values/arrays.xml
+- add entry in the arrays background__update_check__excluded_apps__entries + 
+  background__update_check__excluded_apps__entries_values in src/main/res/values/arrays.xml
 - are the entries in disabledAppEntryValues correct?
 - add entry in AndroidManifest.xml <queries>
 - update README.md

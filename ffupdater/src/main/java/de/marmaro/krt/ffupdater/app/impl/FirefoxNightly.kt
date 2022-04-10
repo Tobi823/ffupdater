@@ -36,7 +36,7 @@ class FirefoxNightly(
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
             ABI.ARM64_V8A -> "arm64-v8a"

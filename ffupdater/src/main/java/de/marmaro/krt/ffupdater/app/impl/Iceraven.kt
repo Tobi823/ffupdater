@@ -36,7 +36,7 @@ class Iceraven(
     }
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val fileSuffix = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
             ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"

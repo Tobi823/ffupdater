@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
-class PreferencesHelper(context: Context) {
+class DataStoreHelper(context: Context) {
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
 
     var lastBackgroundCheck: LocalDateTime?

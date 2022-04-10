@@ -1,48 +1,98 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/settings__title">
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory
+        app:summary="@string/settings__foreground_category__summary"
+        app:title="@string/settings__foreground_category__title">
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
-            app:key="automaticCheck"
-            app:title="@string/settings__automatic_check_title" />
+            app:key="foreground__update_check__metered"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__foreground__update_check__metered__summary"
+            app:title="@string/settings__foreground__update_check__metered__title" />
 
         <SwitchPreferenceCompat
-            app:defaultValue="false"
-            app:key="onlyUnmeteredNetwork"
-            app:title="@string/settings__ony_unmetered_network_title"
-            app:summary="@string/settings__only_unmetered_network_summary"/>
-
-        <ListPreference
-            app:defaultValue="360"
-            app:dependency="automaticCheck"
-            app:entries="@array/checkIntervalEntries"
-            app:entryValues="@array/checkIntervalValues"
-            app:key="checkInterval"
-            app:summary="@string/settings__check_interval_summary"
-            app:title="@string/settings__check_interval_title"
-            app:useSimpleSummaryProvider="true" />
-
-        <MultiSelectListPreference
-            app:dependency="automaticCheck"
-            app:entries="@array/disabledAppEntries"
-            app:entryValues="@array/disabledAppEntryValues"
-            app:key="disableApps"
-            app:summary="@string/settings__disabled_apps_summary"
-            app:title="@string/settings__disabled_apps_title" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory app:title="@string/settings__category_appearance_title">
+            app:defaultValue="true"
+            app:dependency="foreground__update_check__metered"
+            app:key="foreground__download__metered"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__foreground__download__metered__summary"
+            app:title="@string/settings__foreground__download__metered__title" />
 
         <ListPreference
             app:defaultValue="@string/default_theme_preference"
-            app:entries="@array/themeEntries"
-            app:entryValues="@array/themeValues"
-            app:key="themePreference"
-            app:summary="@string/settings__theme_preference_summary"
-            app:title="@string/settings__theme_preference_title" />
+            app:entries="@array/foreground__theme_preference__entries"
+            app:entryValues="@array/foreground__theme_preference__values"
+            app:key="foreground__theme_preference"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__foreground__theme_preference__summary"
+            app:title="@string/settings__foreground__theme_preference__title" />
 
-    </PreferenceCategory>
+    </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
+
+
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory
+        app:summary="@string/settings__background_category__summary"
+        app:title="@string/settings__background_category__title">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="background__update_check__enabled"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__background__update_check__enabled__summary"
+            app:title="@string/settings__background__update_check__enabled__title" />
+
+        <ListPreference
+            app:defaultValue="360"
+            app:dependency="background__update_check__enabled"
+            app:entries="@array/background__update_check__interval__entries"
+            app:entryValues="@array/background__update_check__interval__values"
+            app:key="background__update_check__interval"
+            app:singleLineTitle="false"
+            app:title="@string/settings__background__update_check__interval__title"
+            app:useSimpleSummaryProvider="true" />
+
+        <MultiSelectListPreference
+            app:dependency="background__update_check__enabled"
+            app:entries="@array/background__update_check__excluded_apps__entries"
+            app:entryValues="@array/background__update_check__excluded_apps__values"
+            app:key="background__update_check__excluded_apps"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__background__update_check__excluded_apps__summary"
+            app:title="@string/settings__background__update_check__excluded_apps__title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:dependency="background__update_check__enabled"
+            app:key="background__update_check__metered"
+            app:singleLineTitle="false"
+            app:title="@string/settings__background__update_check__metered__title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:dependency="background__update_check__enabled"
+            app:key="background__download__enabled"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__background__download__enabled__summary"
+            app:title="@string/settings__background__download__enabled__title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:dependency="background__download__enabled"
+            app:key="background__download__metered"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__background__download__metered__summary"
+            app:title="@string/settings__background__download__metered__title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:dependency="background__download__enabled"
+            app:enabled="false"
+            app:key="background__installation__enabled"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__background__installation__enabled__summary"
+            app:title="@string/settings__background__installation__enabled__title" />
+
+    </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
 </PreferenceScreen>

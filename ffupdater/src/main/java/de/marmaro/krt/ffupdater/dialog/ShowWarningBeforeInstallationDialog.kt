@@ -28,7 +28,7 @@ class ShowWarningBeforeInstallationDialog : DialogFragment() {
             })
             .setPositiveButton(R.string.dialog_button__yes) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
-                mainActivity.installAppButCheckForCurrentDownloads(app)
+                mainActivity.installApp(app, askForConfirmationIfOtherDownloadsAreRunning = true)
             }
             .setNegativeButton(R.string.dialog_button__do_not_install) { dialog: DialogInterface, _: Int ->
                 dialog.dismiss()

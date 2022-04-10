@@ -7,15 +7,15 @@ import android.content.pm.PackageManager.GET_SIGNATURES
 import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
 import android.content.pm.Signature
 import androidx.annotation.MainThread
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-object PackageManagerUtil {
+class PackageManagerUtil(private val packageManager: PackageManager) {
 
     @MainThread
-    suspend fun getPackageArchiveInfo(packageManager: PackageManager, path: String): Signature {
+    suspend fun getPackageArchiveInfo(path: String): Signature {
         return withContext(Dispatchers.IO) {
             val packageInfo = if (DeviceSdkTester.supportsAndroid11()) {
                 // GET_SIGNING_CERTIFICATES does not work on Android 9/10
@@ -30,26 +30,26 @@ object PackageManagerUtil {
     }
 
     @MainThread
-    suspend fun getPackageArchiveVersionNameOrNull(packageManager: PackageManager, path: String): String? {
+    suspend fun getPackageArchiveVersionNameOrNull(path: String): String? {
         return withContext(Dispatchers.IO) {
             packageManager.getPackageArchiveInfo(path, 0)?.versionName
         }
     }
 
-    fun getInstalledAppInfo(packageManager: PackageManager, app: App): Signature {
+    fun getInstalledAppInfo(app: BaseApp): Signature {
         val packageInfo = if (DeviceSdkTester.supportsAndroid9()) {
-            val packageInfo = packageManager.getPackageInfo(app.detail.packageName, GET_SIGNING_CERTIFICATES)
-            checkNotNull(packageInfo) { "PackageInfo for package ${app.detail.packageName} is null." }
+            val packageInfo = packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
+            checkNotNull(packageInfo) { "PackageInfo for package ${app.packageName} is null." }
         } else {
             @SuppressLint("PackageManagerGetSignatures")
             // because GET_SIGNATURES is dangerous on Android 4.4 or lower https://stackoverflow.com/a/39348300
-            val packageInfo = packageManager.getPackageInfo(app.detail.packageName, GET_SIGNATURES)
-            checkNotNull(packageInfo) { "PackageInfo for package ${app.detail.packageName} is null." }
+            val packageInfo = packageManager.getPackageInfo(app.packageName, GET_SIGNATURES)
+            checkNotNull(packageInfo) { "PackageInfo for package ${app.packageName} is null." }
         }
         return extractSignature(packageInfo)
     }
 
-    fun getInstalledAppVersionName(packageManager: PackageManager, packageName: String): String? {
+    fun getInstalledAppVersionName(packageName: String): String? {
         return try {
             packageManager.getPackageInfo(packageName, 0)?.versionName
         } catch (e: PackageManager.NameNotFoundException) {
@@ -57,7 +57,7 @@ object PackageManagerUtil {
         }
     }
 
-    fun isAppInstalled(packageManager: PackageManager, packageName: String): Boolean {
+    fun isAppInstalled(packageName: String): Boolean {
         return try {
             packageManager.getPackageInfo(packageName, 0)
             true

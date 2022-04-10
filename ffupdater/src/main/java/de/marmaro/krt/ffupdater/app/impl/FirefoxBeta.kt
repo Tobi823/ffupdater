@@ -29,7 +29,7 @@ class FirefoxBeta(
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
             ABI.ARM64_V8A -> "arm64-v8a"

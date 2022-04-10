@@ -31,7 +31,7 @@ class Brave(
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val fileName = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
             ABI.ARM64_V8A -> "BraveMonoarm64.apk"

@@ -19,7 +19,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         CrashListener.openCrashReporterForUncaughtExceptions(this)
         setContentView(R.layout.settings_activity)
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).getThemePreference())
+        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385
             supportFragmentManager
                     .beginTransaction()

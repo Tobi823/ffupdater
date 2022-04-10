@@ -12,6 +12,8 @@ object StorageUtil {
     }
 
     fun getFreeStorageInMebibytes(): Long {
+        // TODO verbessert - ich weiß ja jetzt, wohin ich downloaden muss + ich kann ja auch noch prüfen, ob
+        // genug Speicherplatz für die App da ist
         val path = Environment.getDataDirectory().absolutePath
         return StatFs(path).availableBytes / BYTES_IN_MEBIBYTE
     }

@@ -8,6 +8,7 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
+import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import java.io.File
 
 interface BaseApp {
@@ -23,12 +24,13 @@ interface BaseApp {
 
     @AnyThread
     fun isInstalled(context: Context): Boolean {
-        return PackageManagerUtil.isAppInstalled(context.packageManager, packageName)
+        return PackageManagerUtil(context.packageManager).isAppInstalled(packageName) &&
+                FingerprintValidator(context.packageManager).checkInstalledApp(this).isValid
     }
 
     @AnyThread
     fun getInstalledVersion(context: Context): String? {
-        return PackageManagerUtil.getInstalledAppVersionName(context.packageManager, packageName)
+        return PackageManagerUtil(context.packageManager).getInstalledAppVersionName(packageName)
     }
 
     @AnyThread
@@ -60,10 +62,8 @@ interface BaseApp {
         file: File,
         available: AvailableVersionResult
     ): Boolean {
-        val archiveVersion = PackageManagerUtil.getPackageArchiveVersionNameOrNull(
-            context.packageManager,
-            file.absolutePath
-        ) ?: return false
+        val archiveVersion = PackageManagerUtil(context.packageManager)
+            .getPackageArchiveVersionNameOrNull(file.absolutePath) ?: return false
         return VersionCompareHelper.isAvailableVersionEqual(archiveVersion, available.version)
     }
 

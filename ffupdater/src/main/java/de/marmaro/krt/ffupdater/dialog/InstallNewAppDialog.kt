@@ -39,7 +39,7 @@ class InstallNewAppDialog(
 
     private fun triggerAppInstallation(app: App) {
         // do not install an app which incompatible ABIs
-        if (deviceAbis.any { app.detail.supportedAbis.contains(it) }) {
+        if (deviceAbis.any { it !in app.detail.supportedAbis }) {
             UnsupportedAbiDialog.newInstance().show(parentFragmentManager)
             return
         }

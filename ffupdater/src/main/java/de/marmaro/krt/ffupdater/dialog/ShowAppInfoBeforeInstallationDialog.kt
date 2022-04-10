@@ -29,7 +29,7 @@ class ShowAppInfoBeforeInstallationDialog : DialogFragment() {
                 if (app.detail.displayWarning != null) {
                     ShowWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
                 } else {
-                    mainActivity.installAppButCheckForCurrentDownloads(app)
+                    mainActivity.installApp(app, askForConfirmationIfOtherDownloadsAreRunning = true)
                 }
             }
             .setNegativeButton(R.string.go_back) { dialog: DialogInterface, _: Int ->

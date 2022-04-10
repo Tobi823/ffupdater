@@ -30,7 +30,7 @@ class UngoogledChromium(
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"
 
     override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
-        val filteredAbis = deviceAbis.filter { supportedAbis.contains(it) }
+        val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val fileName = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"
             ABI.ARM64_V8A -> "ChromeModernPublic_arm64.apk"
@@ -41,7 +41,7 @@ class UngoogledChromium(
             repoOwner = "ungoogled-software",
             repoName = "ungoogled-chromium-android",
             resultsPerPage = 2,
-            isValidRelease = { release -> !release.isPreRelease && !release.name.contains("webview") },
+            isValidRelease = { release -> !release.isPreRelease && "webview" !in release.name },
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             onlyRequestReleasesInBulk = true,

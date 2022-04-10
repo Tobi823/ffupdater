@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string-array name="checkIntervalEntries">
+    <string-array name="background__update_check__interval__entries">
         <item>@string/update_interval__15min</item>
         <item>@string/update_interval__30min</item>
         <item>@string/update_interval__1h</item>
@@ -21,7 +21,7 @@
         <item>@string/update_interval__1m</item>
     </string-array>
 
-    <string-array name="checkIntervalValues">
+    <string-array name="background__update_check__interval__values">
         <item>15</item>
         <item>30</item>
         <item>60</item>
@@ -42,7 +42,7 @@
         <item>40320</item>
     </string-array>
 
-    <string-array name="disabledAppEntries">
+    <string-array name="background__update_check__excluded_apps__entries">
         <item>@string/firefox_release__title</item>
         <item>@string/firefox_beta__title</item>
         <item>@string/firefox_nightly__title</item>
@@ -57,7 +57,7 @@
         <item>@string/app_name</item>
     </string-array>
 
-    <string-array name="disabledAppEntryValues">
+    <string-array name="background__update_check__excluded_apps__values">
         <item>FIREFOX_RELEASE</item>
         <item>FIREFOX_BETA</item>
         <item>FIREFOX_NIGHTLY</item>
@@ -72,13 +72,13 @@
         <item>FFUPDATER</item>
     </string-array>
 
-    <string-array name="themeEntries" tools:ignore="InconsistentArrays">
+    <string-array name="foreground__theme_preference__entries" tools:ignore="InconsistentArrays">
         <item>@string/settings__theme_light</item>
         <item>@string/settings__theme_dark</item>
         <item>@string/settings__theme_battery_saver</item>
     </string-array>
 
-    <string-array name="themeValues" tools:ignore="InconsistentArrays">
+    <string-array name="foreground__theme_preference__values" tools:ignore="InconsistentArrays">
         <item>1</item>
         <item>2</item>
         <item>3</item>
