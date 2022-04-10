@@ -64,7 +64,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
-        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE) }
+        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE.detail) }
         assertTrue(actual.isValid)
         assertEquals(signatureFingerprint, actual.hexString)
         assertEquals(signatureFingerprint, App.FIREFOX_RELEASE.detail.signatureHash)
@@ -79,7 +79,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
-        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BRAVE) }
+        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BRAVE.detail) }
         assertFalse(actual.isValid)
     }
 
@@ -94,7 +94,7 @@ class FingerprintValidatorTest {
 
         assertThrows(FingerprintValidator.UnableCheckApkException::class.java) {
             runBlocking {
-                fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE)
+                fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE.detail)
             }
         }
     }
@@ -108,7 +108,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageInfo(App.FIREFOX_RELEASE.detail.packageName, GET_SIGNATURES)
         } returns packageInfo
         val actual = runBlocking {
-            fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE)
+            fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE.detail)
         }
         assertTrue(actual.isValid)
         assertEquals(signatureFingerprint, actual.hexString)
@@ -123,7 +123,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, GET_SIGNATURES)
         } throws PackageManager.NameNotFoundException()
         val actual = runBlocking {
-            fingerprintValidator.checkInstalledApp(App.LOCKWISE)
+            fingerprintValidator.checkInstalledApp(App.LOCKWISE.detail)
         }
         assertFalse(actual.isValid)
     }
@@ -139,7 +139,7 @@ class FingerprintValidatorTest {
 
         assertThrows(FingerprintValidator.UnableCheckApkException::class.java) {
             runBlocking {
-                fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE)
+                fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE.detail)
             }
         }
     }

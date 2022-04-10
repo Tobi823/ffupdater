@@ -1,4 +1,4 @@
-# 2022-04-08 Version 75.2.0 (95)
+# 2022-04-10 Version 75.2.0 (95)
 * If FFUpdater is installed from the GitHub/GitLab/Repository, it can update itself.
 * Overhauled settings menu with more control over network and background activities.
 * More background network retries to avoid unnecessary error messages
