@@ -49,11 +49,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             Log.i(LOG_TAG, "Execute background job for update check.")
             executeBackgroundJob()
         } catch (e: CancellationException) {
-            handleRetryableError(e)
+            handleRetryableError(e, RUN_ATTEMPTS_FOR_1HOUR)
         } catch (e: GithubRateLimitExceededException) {
-            handleRetryableError(e)
+            handleRetryableError(e, RUN_ATTEMPTS_FOR_2DAYS)
         } catch (e: NetworkException) {
-            handleRetryableError(e)
+            handleRetryableError(e, RUN_ATTEMPTS_FOR_2DAYS)
         } catch (e: Exception) {
             showErrorNotification(e)
             Result.success()
@@ -185,8 +185,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         NotificationBuilder.showUpdateNotifications(applicationContext, appsWithUpdates)
     }
 
-    private fun handleRetryableError(e: Exception): Result {
-        if (runAttemptCount <= RUN_ATTEMPTS_FOR_63MIN_TOTAL) {
+    private fun handleRetryableError(e: Exception, maxRetries: Int): Result {
+        if (runAttemptCount <= maxRetries) {
             Log.i(LOG_TAG, "Retry background job.", e)
             return Result.retry()
         }
@@ -204,8 +204,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         private const val WORK_MANAGER_KEY = "update_checker"
         private const val LOG_TAG = "BackgroundJob"
 
-        // waiting time = 0.5m + 1m + 2m + 4m + 8m + 16m + 32m = 63,5m
-        private const val RUN_ATTEMPTS_FOR_63MIN_TOTAL = 7
+        // retry delays: 15s,30s,1m,2m,4m,8m,16m,32m
+        private const val RUN_ATTEMPTS_FOR_1HOUR = 8
+
+        // retry delays: 15s,30s,1m,2m,4m,8m,16m,32m,64m,128m,256m,300m,300m,300m,300m,300m,300m,300m,300m
+        private const val RUN_ATTEMPTS_FOR_2DAYS = 19
 
         fun startOrStopBackgroundUpdateCheck(context: Context) {
             if (SettingsHelper(context).isBackgroundUpdateCheckEnabled) {
@@ -223,6 +226,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 .setRequiresBatteryNotLow(true)
                 .setRequiresStorageNotLow(true)
                 .setRequiredNetworkType(if (meteredAllowed) NOT_REQUIRED else UNMETERED)
+
+            WorkRequest.MAX_BACKOFF_MILLIS
 
             val interval = settings.backgroundUpdateCheckInterval.toMinutes()
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, interval, MINUTES)
