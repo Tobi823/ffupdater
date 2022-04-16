@@ -1,9 +1,15 @@
+# 2022-04-?? Version 75.2.1 (96)
+
+* Add Russian translation for the changelog (thanks Nickoriginal - Tobi823/ffupdater#127)
+
 # 2022-04-10 Version 75.2.0 (95)
+
 * If FFUpdater is installed from the GitHub/GitLab/Repository, it can update itself.
 * Overhauled settings menu with more control over network and background activities.
 * More background network retries to avoid unnecessary error messages
 
 # 2022-04-08 Version 75.1.0 (94)
+
 * Add Czech translation (thanks Juraj Motuz - Tobi823/ffupdater#122)
 * Replace the Android DownloadManager with the library OkHttp
 
@@ -46,24 +52,23 @@
 # 2021-11-01 Version 74.5.0 (87)
 
 * Improve internet check. (Tobi823/ffupdater#87)
-    * Use the old network check API for Android 10 and below.
-    * Handle network errors better in the app.
+  * Use the old network check API for Android 10 and below.
+  * Handle network errors better in the app.
 * Reduce storage usage for devices with low internal memory. (Tobiwan/ffupdater#88)
-    * If an app update fails, keep the cached app update (APK file).
-    * If an app update is successful or a critical error (wrong certificate fingerprint) occurs, delete the
-      cached app update (APK file).
-    * Download and keep the APK file in the Android/data/de.marmaro.krt.ffupdater/files/Download folder and
-      use this folder as a cache folder.
-    * Do not copy the downloaded APK file to a official cache folder which is invisible to the user.
-    * User can delete the downloaded app updates (APK files) in the Android app settings > Storage > Manage
-      Space.
-    * If an app update fails, show buttons for:
-        * deleting the app update in the cache folder.
-        * opening the cache folder with a file manager app.
-    * When migrating to this version, the app will delete old cache files.
+  * If an app update fails, keep the cached app update (APK file).
+  * If an app update is successful or a critical error (wrong certificate fingerprint) occurs, delete the
+    cached app update (APK file).
+  * Download and keep the APK file in the Android/data/de.marmaro.krt.ffupdater/files/Download folder and use this folder as a cache folder.
+  * Do not copy the downloaded APK file to a official cache folder which is invisible to the user.
+  * User can delete the downloaded app updates (APK files) in the Android app settings > Storage > Manage
+    Space.
+  * If an app update fails, show buttons for:
+    * deleting the app update in the cache folder.
+    * opening the cache folder with a file manager app.
+  * When migrating to this version, the app will delete old cache files.
 * Update dependencies:
-    * androidx.core:core-ktx to 1.7.0
-    * androidx.lifecycle:lifecycle-runtime-ktx to 2.4.0
+  * androidx.core:core-ktx to 1.7.0
+  * androidx.lifecycle:lifecycle-runtime-ktx to 2.4.0
 
 # 2021-10-20 Version 74.4.7 (86)
 
@@ -160,13 +165,11 @@
 
 # 2021-05-29 Version 74.1.0 (70)
 
-* Add Brave Browser because the APK files are published on GitHub
-  again. (https://github.com/brave/brave-browser/issues/15878)
+* Add Brave Browser because the APK files are published on GitHub again. (https://github.com/brave/brave-browser/issues/15878)
 
 # 2021-05-18 Version 74.0.0 (69)
 
-* Remove Brave Browser because the APK files are no longer published on
-  GitHub. (https://github.com/brave/brave-browser/issues/15878)
+* Remove Brave Browser because the APK files are no longer published on GitHub. (https://github.com/brave/brave-browser/issues/15878)
 
 # 2021-05-18 Version 73.1.4 (68)
 
@@ -187,14 +190,12 @@
 
 # 2021-04-18 Version 73.1.0 (64)
 
-* Trust user certificates when checking for updates and downloading updates (for AdGuard,
-  Tobi823/ffupdater#37)
+* Trust user certificates when checking for updates and downloading updates (for AdGuard, Tobi823/ffupdater#37)
 * Prevent automatic backup of failed downloads by Google's "Auto Backup for Apps"
 
 # 2021-04-17 Version 73.0.1 (63)
 
-* There has been a discussion on Github if the Kiwi browser is
-  spyware: https://github.com/Tobi823/ffupdater/issues/35 (Tobi823/ffupdater#35)
+* There has been a discussion on Github if the Kiwi browser is spyware: https://github.com/Tobi823/ffupdater/issues/35 (Tobi823/ffupdater#35)
   I think that Kiwi is not spyware but stays removed because FFUpdater is about privacy and Kiwi has no
   additional privacy features. F-Droid users can use other stores (like Aurora Store) to install the Kiwi
   browser.
@@ -228,8 +229,7 @@
 
 # 2021-03-14 Version 72.0.0 (60)
 
-* !!! Remove support for Firefox Light because updates are no longer signed and therefore pose a security
-  risk (thanks opened and mega-stoffel)
+* !!! Remove support for Firefox Light because updates are no longer signed and therefore pose a security risk (thanks opened and mega-stoffel)
 * User can disable the background update check on metered networks (thanks williamtheaker)
 * By clicking on the "i"-Icon, you can see the time of the last successful background update check.
 * Fix Brazilian Portuguese translation (thanks mezysinc)
@@ -336,8 +336,7 @@
 * Download Fenix Release/Beta/Nightly, Focus and Klar from Mozilla's Taskcluster (continuous integration
   server)
 * Fix "Light theme is always shown at first run"
-* Thanks Rail Aliiev and Johan Lorenzo from Mozilla for their
-  support <https://bugzilla.mozilla.org/show_bug.cgi?id=1627518>
+* Thanks Rail Aliiev and Johan Lorenzo from Mozilla for their support <https://bugzilla.mozilla.org/show_bug.cgi?id=1627518>
 * Thanks KarlHeinz and DeenHyper74 for their error reporting and support
 
 # 2020-05-20 Version 68.3.7 (42)
@@ -378,8 +377,7 @@
 * Verify the certificate of the downloaded and installed app
 * Many improvements
 * Thanks DeenHyper74 and xin for translations
-* Remove Fennec Beta and Fennec Nightly because their are not developed
-  anymore https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
+* Remove Fennec Beta and Fennec Nightly because their are not developed anymore https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
 
 # 2019-06-28 Version 67.4 (31)
 
@@ -400,8 +398,7 @@
 # 2019-06-28 Version 67.0 (27)
 
 * Fix broken nightly download (thanks dannycolin for the info)
-* Display warning when switching from 'Release' channel to the 'Nightly' or 'Beta' channel (thanks
-  DeenHyper74)
+* Display warning when switching from 'Release' channel to the 'Nightly' or 'Beta' channel (thanks DeenHyper74)
 * Interval between update checks is now configurable (thanks aplufr, wah6Me1l and DeenHyper74)
 
 # 2019-04-25 Version 66.2 (26)
