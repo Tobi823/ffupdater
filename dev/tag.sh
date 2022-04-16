@@ -1,6 +1,11 @@
 #!/bin/zsh
 
-echo "$1"
+if [ -z "$var" ]; then
+  echo "abort - parameter is empty"
+  exit
+fi
+
+echo "tag: $1"
 
 git tag "$1"
 git push origin
