@@ -6,18 +6,18 @@ git fetch --tags
 
 - are you on the master branch?
 - optional:
-    - `./gradlew wrapper --gradle-version=6.8.2` https://gradle.org/releases/
-    - `./gradlew clean adviceRelease`
+  - `./gradlew wrapper --gradle-version=6.8.2` https://gradle.org/releases/
+  - `./gradlew clean adviceRelease`
 - fix and add unit tests
-- check translations
+- check translations and update them with my script `translate_android_strings`
 - edit build.gradle to increase `versionCode` and `versionName`
-- add changelog to CHANGELOG.md
-- add supporter to CHANGELOG.md
-- copy entry from CHANGELOG.md to fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt
+- add changelog and supporter to CHANGELOG.md
+- copy and translate the changelog from CHANGELOG.md to
+  `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt` with my script `translate_changelogs`
 - commit changes with references to the issues/pull requests
-    - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
-    - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
-    - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
+  - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
+  - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
+  - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
 - /dev/tag.sh
 - build signed APK file
 - upload signed APK file to GitHub and GitLab
