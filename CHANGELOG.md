@@ -1,5 +1,5 @@
 # 2022-04-?? Version 75.2.1 (96)
-
+* Fix the "can't install a new app" bug
 * Add Russian translation for the changelog (thanks Nickoriginal - Tobi823/ffupdater#127)
 
 # 2022-04-10 Version 75.2.0 (95)
