@@ -31,9 +31,14 @@ class FileDownloader {
     suspend fun downloadFile(url: String, file: File): Boolean {
         return withContext(Dispatchers.IO) {
             val asyncValue = async {
-                val value = downloadFileInternal(url, file)
-                currentDownloadResult = null
-                value
+                try {
+                    val value = downloadFileInternal(url, file)
+                    currentDownloadResult = null
+                    value
+                } catch (e: IOException) {
+                    errorMessage = e.localizedMessage
+                    false
+                }
             }
             currentDownloadResult = asyncValue
             asyncValue
