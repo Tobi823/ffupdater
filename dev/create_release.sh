@@ -1,12 +1,11 @@
 #!/bin/zsh
 
-set -euo pipefail
-
 if [ -z "$1" ]; then
   echo "abort - parameter is empty"
   exit
 fi
 
+set -euo pipefail
 SCRIPT_PATH=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 
@@ -39,7 +38,7 @@ SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
   gh release create "$1" "$release_file" --notes "$release_message" --title "$release_title"
 
   echo "create release on GitLab:"
-  glab release create "$1" "$release_file" --notes "$release_message" --title "$release_title"
+  glab release create "$1" "$release_file" --notes "$release_message" --name "$release_title"
 
   startrepomaker
 )
