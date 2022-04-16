@@ -18,10 +18,8 @@ git fetch --tags
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
   - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
-- /dev/tag.sh
 - build signed APK file
-- upload signed APK file to GitHub and GitLab
-- start repomaker with Docker
+- `/dev/create_release.sh` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
 - upload signed APK to repomaker
 - test release with "Foxy Droid"
 
