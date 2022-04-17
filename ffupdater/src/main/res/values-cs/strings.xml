@@ -15,6 +15,10 @@
     <string name="brave__description">Webový prohlížeč Brave je rychlá a bezpečná aplikace k prohlížení webu pro Android s vestavěným blokátorem na reklamy třetích stran. Brave je bleskově rychlý, bezpečný a soukromý, který zabraňuje reklamám sledovat Vás, zamezuje infekci malware a blokuje vyskakovací okna.</string>
     <string name="brave__title">Brave Soukromý prohlížeč</string>
     <string name="brave__warning">Brave používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Brave?</string>
+    <string name="brave_beta__description">Welcome to Brave Beta for Android!  Try out the newest features and give early feedback: https://brave.com/msupport  You can install Brave Beta alongside your current version of Brave for Android.</string>
+    <string name="brave_beta__title">Obrázek alba Brave Browser (Beta)</string>
+    <string name="brave_nightly__description">Vítejte v Brave Nightly (vývojář) pro Android!\nVyzkoušejte nejnovější funkce a poskytněte včasnou zpětnou vazbu: https://brave.com/msupport\nBrave Nightly si můžete nainstalovat vedle své aktuální verze Brave pro Android.</string>
+    <string name="brave_nightly__title">Brave Browser (Noční)</string>
     <string name="bromite__description">Bromite si klade za cíl poskytnout pohodlný zážitek bez narušení soukromí s rychlým blokováním reklam. Minimální změny rozhrání pomáhají omezit představu "prohlížeč jako reklamní plocha".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Bromite?</string>
@@ -169,8 +173,4 @@
     <string name="vivaldi__description">Vivaldi je nový soukromý webový prohlížeč, postavený s ohledem na flexibilitu. Přináší řadu užitečných funkcí, včetně vestavěného blokování reklam (ve výchozím nastavení vypnuto), ochranou proti sledování a soukromým překladačem. Poznámky a zachycení stránky vám ušetří čas. Přizpůsobte si vše podle sebe s možnostmi typu listy jako na počítači, tmavý a světlý vzhled, či úpravy rozložení rozhraní. Stáhněte si zdarma Vivaldi a začněte prohlížejte rychleji.</string>
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">"Vivaldi je pouze částečně open source (viz. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Také používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Vivaldi?"</string>
-    <string name="brave_beta__title">Obrázek alba Brave Browser (Beta)</string>
-    <string name="brave_beta__description">Welcome to Brave Beta for Android!  Try out the newest features and give early feedback: https://brave.com/msupport  You can install Brave Beta alongside your current version of Brave for Android.</string>
-    <string name="brave_nightly__title">Brave Browser (Noční)</string>
-    <string name="brave_nightly__description">Vítejte v Brave Nightly (vývojář) pro Android!\nVyzkoušejte nejnovější funkce a poskytněte včasnou zpětnou vazbu: https://brave.com/msupport\nBrave Nightly si můžete nainstalovat vedle své aktuální verze Brave pro Android.</string>
 </resources>

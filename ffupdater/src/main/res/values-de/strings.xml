@@ -15,6 +15,10 @@
     <string name="brave__description">Der Brave Web Browser ist Ihr privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert! \n\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass Sie mit Anzeigen überladen oder mit Malware und Popups verseucht werden.</string>
     <string name="brave__title">Brave Browser</string>
     <string name="brave__warning">Brave nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Willst du Brave dennoch installieren?</string>
+    <string name="brave_beta__description">Willkommen bei Brave Beta für Android!\nTesten Sie die neuesten Funktionen und geben Sie frühzeitig Feedback: https://brave.com/msupport\nSie können Brave Beta neben Ihrer aktuellen Version von Brave für Android installieren.</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="brave_nightly__description">Willkommen bei Brave Nightly (Developer) für Android!\nTesten Sie die neuesten Funktionen und geben Sie frühzeitig Feedback: https://brave.com/msupport\nSie können Brave Nightly neben Ihrer aktuellen Version von Brave für Android installieren.</string>
+    <string name="brave_nightly__title">Brave Browser (Nachts)</string>
     <string name="bromite__description">Bromite zielt auf ein aufgeräumtes Browsing-Erlebnis ab, ohne Datenschutz-invasive Funktionen und mit einer schnellen Ad-Blocking-Engine. Minimale UI-Änderungen sollen helfen, die Idee des \"Browsers als Werbeplattform\" einzudämmen.</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Willst du Bromite dennoch installieren?</string>
@@ -169,8 +173,4 @@
     <string name="vivaldi__description">Vivaldi ist ein privater Browser mit einzigartigen Anpassungsmöglichkeiten. Es bietet viele Funktionen, wie z. B. Werbe- und Trackerblocker (standardmäßig deaktiviert), Webseitenübersetzung. Notizen und Screenshots helfen, Ihre Arbeit zu beschleunigen. Die Anpassung der Tabs, der Designthemen und des Aussehens verleihen dem System Persönlichkeit. Laden Sie Vivaldi kostenlos herunter surfen Sie mit Vergnügen im Internet.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi ist nur teilweise quelloffen (siehe <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> für weitere Informationen). Außerdem nutzt es die technische Grundlage von Google Chrome (Chromium).\n\nManche Leute mögen das nicht. Möchten Sie Vivaldi installieren?</string>
-    <string name="brave_beta__title">Brave Browser (Beta)</string>
-    <string name="brave_beta__description">Willkommen bei Brave Beta für Android!\nTesten Sie die neuesten Funktionen und geben Sie frühzeitig Feedback: https://brave.com/msupport\nSie können Brave Beta neben Ihrer aktuellen Version von Brave für Android installieren.</string>
-    <string name="brave_nightly__title">Brave Browser (Nachts)</string>
-    <string name="brave_nightly__description">Willkommen bei Brave Nightly (Developer) für Android!\nTesten Sie die neuesten Funktionen und geben Sie frühzeitig Feedback: https://brave.com/msupport\nSie können Brave Nightly neben Ihrer aktuellen Version von Brave für Android installieren.</string>
 </resources>

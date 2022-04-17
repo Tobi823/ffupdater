@@ -15,6 +15,10 @@
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
     <string name="brave__title">Браузер Brave</string>
     <string name="brave__warning">Brave основан на Google Chrome (Chromium) - некоторым людям это не нравится. Хотите установить Brave?</string>
+    <string name="brave_beta__description">Добро пожаловать в Brave Beta для Android!\nОпробуйте новейшие функции и оставьте свой отзыв: https://brave.com/msupport\nВы можете установить Brave Beta вместе с текущей версией Brave для Android.</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="brave_nightly__description">Добро пожаловать в Brave Nightly (Developer) для Android!\nОпробуйте новейшие функции и оставьте первые отзывы: https://brave.com/msupport\nВы можете установить Brave Nightly вместе с текущей версией Brave для Android.</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite стремится обеспечить бесперебойный просмотр веб-страниц без использования нарушающих приватность функций с использованием быстрого движка для блокировки рекламы. Минимальные изменения пользовательского интерфейса применяются для того, чтобы помочь обуздать идею \"браузера как рекламной платформы\".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite основан на Google Chrome (Chromium) - некоторым людям это не нравится. Хотите установить Bromite?</string>
@@ -169,8 +173,4 @@
     <string name="vivaldi__description">"Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования.  Меняйте внешний вид. Меняйте интерфейс браузера для Android с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели.  Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве.  Используйте несколько поисковых систем. Переключайтесь между ними в одно касание. Используйте префиксы в адресной строке для выбора нужной поисковой системы."</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">Исходный код Vivaldi не полностью открыт (см. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для получения дополнительной информации). Он также основан на Google Chrome (Chromium).\n\nНекоторым людям это не нравится. Хотите ли вы установить Vivaldi?</string>
-    <string name="brave_beta__title">Brave Browser (Beta)</string>
-    <string name="brave_beta__description">Добро пожаловать в Brave Beta для Android!\nОпробуйте новейшие функции и оставьте свой отзыв: https://brave.com/msupport\nВы можете установить Brave Beta вместе с текущей версией Brave для Android.</string>
-    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
-    <string name="brave_nightly__description">Добро пожаловать в Brave Nightly (Developer) для Android!\nОпробуйте новейшие функции и оставьте первые отзывы: https://brave.com/msupport\nВы можете установить Brave Nightly вместе с текущей версией Brave для Android.</string>
 </resources>

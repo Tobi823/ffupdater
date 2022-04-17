@@ -15,6 +15,10 @@
     <string name="brave__description">自由で、プライベートにインターネットを閲覧することができます。Braveは、広告ブロック機能とポップアップブロック機能を備えた、高速、無料、かつ安全なプライベートウェブブラウザです。広告主やマルウェア、ポップアップに追跡されることなく、プライベートにインターネットを閲覧、検索することができます。</string>
     <string name="brave__title">Brave ウェブブラウザ</string>
     <string name="brave__warning">Braveは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？</string>
+    <string name="brave_beta__description">Android版Brave Betaへようこそ!\n最新機能をお試しいただき、早い段階でフィードバックをお願いします。https://brave.com/msupport \nブレイブベータは、現在お使いのAndroid版ブレイブと一緒にインストールすることができます。</string>
+    <string name="brave_beta__title">ブレイブブラウザ（ベータ版）</string>
+    <string name="brave_nightly__description">Android版Brave Nightly (Developer)へようこそ!\n最新機能を試し、早い段階でフィードバックしてください: https://brave.com/msupport\nBrave Nightlyは、現在お使いのBrave for Androidと一緒にインストールすることができます。</string>
+    <string name="brave_nightly__title">ブレイブブラウザ（ナイトリー）</string>
     <string name="bromite__description">Bromiteは、プライバシーを侵害する機能を排除し、高速な広告ブロック機能を追加することで、高速なブラウジング体験を提供することを目的としています。</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromiteは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？</string>
@@ -169,8 +173,4 @@
     <string name="vivaldi__description">Vivaldi は思い通りにカスタマイズできる新しいプライベートなウェブブラウザです。内蔵の広告ブロッカー、トラッキング防止機能、プライベートな翻訳機能をはじめ、便利な機能をたくさん搭載しています。メモやページキャプチャーのような機能を使えば使うほど毎日の効率が良くなります。デスクトップと同じスタイルのタブやダーク/ライトテーマなどのレイアウト設定で、あなただけのブラウザにしましょう。ダウンロードは無料。いますぐダウンロードして、快適で安全なブラウジングをはじめましょう。</string>
     <string name="vivaldi__title">Vivaldiブラウザ</string>
     <string name="vivaldi__warning">Vivaldiは部分的にしかオープンソースではありません（詳しくは<a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>）。また、Google Chromeの技術基盤（Chromium）を使用しています。\n\nこれを好まない人もいます。Vivaldiをインストールしたいですか？</string>
-    <string name="brave_beta__title">ブレイブブラウザ（ベータ版）</string>
-    <string name="brave_beta__description">Android版Brave Betaへようこそ!\n最新機能をお試しいただき、早い段階でフィードバックをお願いします。https://brave.com/msupport \nブレイブベータは、現在お使いのAndroid版ブレイブと一緒にインストールすることができます。</string>
-    <string name="brave_nightly__title">ブレイブブラウザ（ナイトリー）</string>
-    <string name="brave_nightly__description">Android版Brave Nightly (Developer)へようこそ!\n最新機能を試し、早い段階でフィードバックしてください: https://brave.com/msupport\nBrave Nightlyは、現在お使いのBrave for Androidと一緒にインストールすることができます。</string>
 </resources>
