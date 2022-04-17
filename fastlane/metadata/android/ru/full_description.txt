@@ -1,11 +1,8 @@
 Загружайте, устанавливайте и обновляйте эти приватные браузеры:
-- Brave приватный веб-браузер
+- Brave приватный веб-браузер, Brave Browser (Beta), Brave Browser (Nightly)
 - Bromite
-- Браузер Firefox
-- Firefox Focus
-- Firefox Klar
-- Firefox Nightly
-- Firefox Бета
+- Браузер Firefox, Firefox Бета, Firefox Nightly
+- Firefox Focus, Firefox Klar
 - Iceraven
 - Ungoogled Chromium
 - Vivaldi

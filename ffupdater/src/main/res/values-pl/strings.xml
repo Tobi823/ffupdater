@@ -169,4 +169,8 @@
     <string name="vivaldi__description">"Vivaldi to nowa, prywatna przeglądarka zbudowana z myślą o elastyczności. Posiada użyteczne funkcje, takie jak blokowanie reklam, ochronę przed śledzeniem czy prywatny tłumacz. Narzedzia, w tym notatki czy przechwytywanie ekranu, oszczędzają dużo czasu. Wreszcie opcje, jak klasyczny pasek kart czy motywy, pozwalają Ci urządzić się po swojemu. Pobierz za darmo i przeglądaj sieć szybciej. "</string>
     <string name="vivaldi__title">Przeglądarka Vivaldi</string>
     <string name="vivaldi__warning">Vivaldi jest tylko częściowo open source (zobacz <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>, aby uzyskać więcej informacji). Wykorzystuje również techniczne podstawy Google Chrome (Chromium).\n\nNiektórym osobom się to nie podoba. Czy chcesz zainstalować Vivaldiego?</string>
+    <string name="brave_beta__title">Przeglądarka Brave (Beta)</string>
+    <string name="brave_beta__description">Witamy w Brave Beta na Androida! Wypróbuj najnowsze funkcje i przekaż wczesną opinię: https://brave.com/msupport Możesz zainstalować Brave Beta równolegle z obecną wersją Brave na Androida.</string>
+    <string name="brave_nightly__title">Przeglądarka Brave (Nightly)</string>
+    <string name="brave_nightly__description">Witamy w Brave Nightly (Developer) dla Androida! Wypróbuj najnowsze funkcje i przekaż wczesną opinię: https://brave.com/msupport Możesz zainstalować Brave Nightly równolegle z obecną wersją Brave dla Androida.</string>
 </resources>

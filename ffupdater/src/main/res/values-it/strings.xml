@@ -169,4 +169,8 @@
     <string name="download_notification__message">Attualmente scarica in background gli aggiornamenti per le app installate.</string>
     <string name="running_downloads_dialog__message">L\'app sta scaricando gli aggiornamenti in background ora. Vuoi iniziare un nuovo download che potrebbe richiedere più tempo?</string>
     <string name="app_description">Updater per i browser rispettosi della privacy</string>
+    <string name="brave_beta__title">Browser coraggioso (Beta)</string>
+    <string name="brave_beta__description">Benvenuto in Brave Beta per Android!\nProva le nuove funzionalità e dai un feedback anticipato: https://brave.com/msupport\nPuoi installare Brave Beta insieme alla tua attuale versione di Brave per Android.</string>
+    <string name="brave_nightly__title">Browser coraggioso (notte)</string>
+    <string name="brave_nightly__description">Benvenuti a Brave Nightly (Developer) per Android!\nProvare le nuove funzionalità e dare un feedback anticipato: https://brave.com/msupport\nPuoi installare Brave Nightly insieme alla tua attuale versione di Brave per Android.</string>
 </resources>

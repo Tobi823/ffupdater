@@ -58,6 +58,26 @@ class DownloadApiChecker {
     }
 
     @Test
+    fun braveBeta() {
+        val brave = BraveBeta(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val result = runBlocking { brave.updateCheck(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 7
+        assertTrue(age.toDays() < maxDays)
+    }
+
+    @Test
+    fun braveNightly() {
+        val brave = BraveNightly(false, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val result = runBlocking { brave.updateCheck(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 3
+        assertTrue(age.toDays() < maxDays)
+    }
+
+    @Test
     fun bromite() {
         val bromite = Bromite(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { bromite.updateCheck(context) }

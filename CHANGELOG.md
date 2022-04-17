@@ -1,4 +1,9 @@
-# 2022-04-?? Version 75.2.1 (96)
+# 2022-04-?? Version 75.3.0 (97)
+
+* Add Brave Beta and Brave Nightly
+
+# 2022-04-17 Version 75.2.1 (96)
+
 * Fix the "can't install a new app" bug
 * Add Russian translation for the changelog (thanks Nickoriginal - Tobi823/ffupdater#127)
 

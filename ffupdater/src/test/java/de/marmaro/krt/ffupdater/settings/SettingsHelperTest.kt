@@ -53,6 +53,8 @@ class SettingsHelperTest {
         @JvmStatic
         fun excludedAppsFromBackgroundUpdateCheck_data(): Stream<Arguments> = Stream.of(
             Arguments.of(App.BRAVE, "BRAVE"),
+            Arguments.of(App.BRAVE_BETA, "BRAVE_BETA"),
+            Arguments.of(App.BRAVE_NIGHTLY, "BRAVE_NIGHTLY"),
             Arguments.of(App.BROMITE, "BROMITE"),
             Arguments.of(App.FFUPDATER, "FFUPDATER"),
             Arguments.of(App.FIREFOX_BETA, "FIREFOX_BETA"),
@@ -337,6 +339,10 @@ class SettingsHelperTest {
             "background__update_check__excluded_apps",
             setOf(
                 "BRAVE",
+                "BRAVE_BETA",
+                "BRAVE_NIGHTLY",
+                "BROMITE",
+                "FFUPDATER",
                 "FIREFOX_BETA",
                 "FIREFOX_FOCUS",
                 "FIREFOX_KLAR",
@@ -344,10 +350,8 @@ class SettingsHelperTest {
                 "FIREFOX_RELEASE",
                 "ICERAVEN",
                 "LOCKWISE",
-                "BROMITE",
-                "VIVALDI",
                 "UNGOOGLED_CHROMIUM",
-                "FFUPDATER"
+                "VIVALDI",
             )
         ).commit()
         assertEquals(

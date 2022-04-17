@@ -1,13 +1,11 @@
 これらのプライバシーを重視したブラウザやアプリをインストールやアップデートできます:
- - カバーアート Brave 広告ブロック(adblock)するwebブラウザ
+ - カバーアート Brave 広告ブロック(adblock)するwebブラウザ, Brave Browser (Beta), Brave Browser (Nightly)
  - Bromite
- - Firefox Browser
- - Firefox Focus
- - Firefox for Android Beta
- - Firefox Klar
- - Firefox Nightly
+ - Firefox Browser, Firefox for Android Beta, Firefox Nightly
+ - Firefox Focus, Firefox Klar
  - Iceraven
-
+ - Ungoogled Chromium
+ - Vivaldi
  - Firefox Lockwise
 
 FFUpdaterは定期的にアップデートをチェックし、アップデートがある場合は通知を表示します。この機能自体を無効にしたり、チェックの頻度を変更することも可能です。
