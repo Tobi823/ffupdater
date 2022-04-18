@@ -24,9 +24,9 @@ class InstallNewAppDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
         val apps = runBlocking {
-            App.values().filterNot {
-                it.detail.isInstalled(context)
-            }
+            App.values()
+                .filter { it.detail.normalInstallation }
+                .filterNot { it.detail.isInstalled(context) }
         }
         val names = apps.map { context.getString(it.detail.displayTitle) }.toTypedArray()
         return AlertDialog.Builder(activity)
