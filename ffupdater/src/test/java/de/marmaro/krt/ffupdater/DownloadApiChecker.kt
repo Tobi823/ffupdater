@@ -88,6 +88,16 @@ class DownloadApiChecker {
     }
 
     @Test
+    fun bromiteSystemWebView() {
+        val bromite = BromiteSystemWebView(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val result = runBlocking { bromite.updateCheck(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val age = Duration.between(result.publishDate, ZonedDateTime.now())
+        val maxDays = 9 * 7
+        assertTrue(age.toDays() < maxDays) { "$age must be smaller then $maxDays days" }
+    }
+
+    @Test
     fun firefoxBeta() {
         val firefoxBeta = FirefoxBeta(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { firefoxBeta.updateCheck(context) }
