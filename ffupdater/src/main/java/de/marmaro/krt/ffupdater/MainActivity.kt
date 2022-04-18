@@ -75,13 +75,17 @@ class MainActivity : AppCompatActivity() {
         initUI()
         lifecycleScope.launch(Dispatchers.Main) {
             checkForUpdates()
-            BackgroundJob.startOrStopBackgroundUpdateCheck(this@MainActivity)
         }
     }
 
     override fun onPause() {
         super.onPause()
         cleanUpObjects()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        BackgroundJob.startOrStopBackgroundUpdateCheck(this@MainActivity)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
