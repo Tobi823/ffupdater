@@ -507,6 +507,8 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.installerFailed)
             ia.show(R.id.install_activity__delete_cache)
             ia.show(R.id.install_activity__open_cache_folder)
+            val cacheFolder = ia.appCache.getFile(ia).parentFile?.absolutePath ?: ""
+            ia.setText(R.id.install_activity__cache_folder_path, cacheFolder)
             var error = ia.viewModel.installationError?.second
             if (error != null) {
                 if ("INSTALL_FAILED_INTERNAL_ERROR" in error && "Permission Denied" in error) {

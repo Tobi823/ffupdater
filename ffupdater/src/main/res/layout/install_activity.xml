@@ -407,6 +407,10 @@
                 style="@style/DefaultTextView"
                 android:text="@string/install_activity__open_cache_explanation" />
 
+            <TextView
+                android:id="@+id/install_activity__cache_folder_path"
+                style="@style/MonospaceSelectableTextView" />
+
             <Button
                 android:id="@+id/install_activity__open_cache_folder_button"
                 style="@style/DefaultButton"
