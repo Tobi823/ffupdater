@@ -1,8 +1,10 @@
 package de.marmaro.krt.ffupdater.background
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.annotation.RequiresApi
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
@@ -11,10 +13,22 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.download.*
+import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideAllFailedBackgroundInstallationNotifications
+import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideAllSuccessfulBackgroundInstallationNotifications
+import de.marmaro.krt.ffupdater.background.NotificationBuilder.showFailedBackgroundInstallationNotification
+import de.marmaro.krt.ffupdater.background.NotificationBuilder.showSuccessfulBackgroundInstallationNotification
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.download.AppCache
+import de.marmaro.krt.ffupdater.download.AppDownloadStatus
+import de.marmaro.krt.ffupdater.download.FileDownloader
+import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
+import de.marmaro.krt.ffupdater.download.StorageUtil
+import de.marmaro.krt.ffupdater.installer.BackgroundSessionInstaller
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
 
@@ -77,13 +91,18 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         appsWithAvailableUpdates.forEach { downloadUpdate(it) }
         NotificationBuilder.hideDownloadNotification(applicationContext)
 
+        if (!DeviceSdkTester.supportsAndroid10()) {
+            return Result.success()
+        }
         areInstallationPreconditionsUnfulfilled()?.let {
             showUpdateNotification(appsWithAvailableUpdates)
             return it
         }
-
-        // TODO implement automatic background app installation
-
+        hideAllSuccessfulBackgroundInstallationNotifications(applicationContext)
+        hideAllFailedBackgroundInstallationNotifications(applicationContext)
+        appsWithAvailableUpdates.forEach {
+            installApplication(it)
+        }
         return Result.success()
     }
 
@@ -102,10 +121,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.retry()
         }
 
-        if (!settingsHelper.isBackgroundUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(
-                applicationContext
-            )
-        ) {
+        if (!settingsHelper.isBackgroundUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             Log.i(LOG_TAG, "No unmetered network available for update check.")
             return Result.retry()
         }
@@ -130,10 +146,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.success()
         }
 
-        if (!settingsHelper.isBackgroundDownloadOnMeteredAllowed && NetworkUtil.isNetworkMetered(
-                applicationContext
-            )
-        ) {
+        if (!settingsHelper.isBackgroundDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             Log.i(LOG_TAG, "No unmetered network available for download.")
             return Result.success()
         }
@@ -171,14 +184,41 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun areInstallationPreconditionsUnfulfilled(): Result? {
+        if (!applicationContext.packageManager.canRequestPackageInstalls()) {
+            return Result.retry()
+        }
+
         if (!settingsHelper.isBackgroundInstallationEnabled) {
             Log.i(LOG_TAG, "Automatic background app installation is not enabled.")
             return Result.success()
         }
 
-        // automatic background app installation is not yet implemented
-        return Result.success()
+        return null
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private suspend fun installApplication(it: App) {
+        val appCache = AppCache(it)
+        val file = appCache.getFile(applicationContext)
+        if (!file.exists()) {
+            val errorMessage = "AppCache has no cached APK file"
+            showFailedBackgroundInstallationNotification(applicationContext, it, -100, errorMessage)
+        }
+
+        val installer = BackgroundSessionInstaller(applicationContext, file)
+        withContext(Dispatchers.Main) {
+            val result = installer.installAsync().await()
+            if (result.success) {
+                showSuccessfulBackgroundInstallationNotification(applicationContext, it)
+            } else {
+                val code = result.errorCode
+                val message = result.errorMessage
+                showFailedBackgroundInstallationNotification(applicationContext, it, code, message)
+            }
+        }
     }
 
     private fun showUpdateNotification(appsWithUpdates: List<App>) {
