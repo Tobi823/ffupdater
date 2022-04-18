@@ -1,6 +1,6 @@
 Scarica, installa e aggiorna questi browser rispettosi della privacy:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
-- Bromite
+- Bromite, Bromite SystemWebView
 - Firefox Browser, Firefox per Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven

@@ -1,6 +1,6 @@
 これらのプライバシーを重視したブラウザやアプリをインストールやアップデートできます:
  - カバーアート Brave 広告ブロック(adblock)するwebブラウザ, Brave Browser (Beta), Brave Browser (Nightly)
- - Bromite
+ - Bromite, Bromite SystemWebView
  - Firefox Browser, Firefox for Android Beta, Firefox Nightly
  - Firefox Focus, Firefox Klar
  - Iceraven

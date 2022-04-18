@@ -12,6 +12,7 @@ enum class App(appDetail: BaseApp) {
     BRAVE_BETA(BraveBeta(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     BRAVE_NIGHTLY(BraveNightly(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     BROMITE(Bromite(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
+    BROMITE_SYSTEMWEBVIEW(BromiteSystemWebView(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     FFUPDATER(FFUpdater(apiConsumer = apiConsumer)),
     FIREFOX_BETA(FirefoxBeta(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     FIREFOX_FOCUS(FirefoxFocus(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),

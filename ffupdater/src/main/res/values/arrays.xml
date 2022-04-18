@@ -47,6 +47,7 @@
         <item>@string/brave_beta__title</item>
         <item>@string/brave_nightly__title</item>
         <item>@string/bromite__title</item>
+        <item>@string/bromite_systemwebview__title</item>
         <item>@string/app_name</item>
         <item>@string/firefox_beta__title</item>
         <item>@string/firefox_focus__title</item>
@@ -64,6 +65,7 @@
         <item>BRAVE_BETA</item>
         <item>BRAVE_NIGHTLY</item>
         <item>BROMITE</item>
+        <item>BROMITE_SYSTEMWEBVIEW</item>
         <item>FFUPDATER</item>
         <item>FIREFOX_BETA</item>
         <item>FIREFOX_FOCUS</item>

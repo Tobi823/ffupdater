@@ -8,7 +8,8 @@ Download, install and update these privacy friendly browsers:
   [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
   [Brave Browser (Nightly)](https://play.google.com/store/apps/details?id=com.brave.browser_nightly&gl=US)
   ([GitHub Repository](https://github.com/brave/brave-browser))
-- [Bromite](https://github.com/bromite/bromite)
+- [Bromite](https://github.com/bromite/bromite),
+  [Bromite SystemWebView](https://www.bromite.org/system_web_view)
 - [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox),
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
   [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
@@ -50,7 +51,7 @@ The applications are downloaded from these locations:
 
 - Brave Private Browser, Brave Browser (Beta), [Brave Browser (Nightly):
   <https://api.github.com/repos/brave/brave-browser/releases/latest>
-- Bromite: <https://api.github.com/repos/bromite/bromite/releases/latest>
+- Bromite, Bromite SystemWebView: <https://api.github.com/repos/bromite/bromite/releases/latest>
 - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
 - Firefox for Android
   Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>

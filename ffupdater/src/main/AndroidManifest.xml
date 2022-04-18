@@ -35,6 +35,7 @@
         <package android:name="io.github.forkmaintainers.iceraven" />
         <package android:name="mozilla.lockbox" />
         <package android:name="org.bromite.bromite" />
+        <package android:name="org.bromite.webview" />
         <package android:name="org.mozilla.fenix" />
         <package android:name="org.mozilla.firefox" />
         <package android:name="org.mozilla.firefox_beta" />
