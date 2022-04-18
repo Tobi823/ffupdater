@@ -90,15 +90,13 @@ class InstallActivity : AppCompatActivity() {
         settingsHelper = SettingsHelper(this)
         fingerprintValidator = FingerprintValidator(packageManager)
         appInstaller = AppInstaller.create(
-            successfulInstallationCallback = {
-                restartStateMachine(USER_HAS_INSTALLED_APP_SUCCESSFUL)
-            },
-            failedInstallationCallback = { errorMessage ->
-                if (errorMessage != null) {
-                    appInstallationFailedErrorMessage = errorMessage
-                }
+            { restartStateMachine(USER_HAS_INSTALLED_APP_SUCCESSFUL) },
+            { errorMessage ->
+                appInstallationFailedErrorMessage = errorMessage ?: "/"
                 restartStateMachine(FAILURE_APP_INSTALLATION)
-            })
+            },
+            InstallActivity::class.java,
+        )
         appCache = AppCache(app)
         findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
             restartStateMachine(TRIGGER_INSTALLATION_PROCESS)

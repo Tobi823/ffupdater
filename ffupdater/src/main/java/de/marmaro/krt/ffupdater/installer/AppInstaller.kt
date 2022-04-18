@@ -9,17 +9,18 @@ import java.io.File
 interface AppInstaller {
     fun onNewIntentCallback(intent: Intent, context: Context) {}
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
-    fun install(activity: Activity, downloadedFile: File) {}
+    fun install(activity: Activity, file: File) {}
 
     companion object {
-        fun create(
-                successfulInstallationCallback: () -> Any,
-                failedInstallationCallback: (errorMessage: String?) -> Any,
+        fun <T : Any> create(
+            successCallback: () -> Any,
+            failureCallback: (errorMessage: String?) -> Any,
+            intentReceiverClass: Class<T>,
         ): AppInstaller {
             return if (DeviceSdkTester.supportsAndroidNougat()) {
-                SessionInstaller(successfulInstallationCallback, failedInstallationCallback)
+                SessionInstaller(successCallback, failureCallback, intentReceiverClass)
             } else {
-                IntentInstaller(successfulInstallationCallback, failedInstallationCallback)
+                IntentInstaller(successCallback, failureCallback)
             }
         }
     }

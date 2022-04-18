@@ -12,24 +12,24 @@ import android.content.IntentSender
 import android.content.pm.PackageInstaller.*
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
-import de.marmaro.krt.ffupdater.InstallActivity
+import android.os.Build
+import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import java.io.File
 import java.io.IOException
 
-//for API >= 24 (Nougat 7.0)
-class SessionInstaller(
+@RequiresApi(Build.VERSION_CODES.N)
+class SessionInstaller<T : Any>(
     private val appInstalledCallback: () -> Any,
     private val appNotInstalledCallback: (errorMessage: String?) -> Any,
+    private val intentReceiverClass: Class<T>,
 ) : AppInstaller {
     override fun onNewIntentCallback(intent: Intent, context: Context) {
-        if (intent.action != PACKAGE_INSTALLED_ACTION) return
-        val bundle = intent.extras ?: let {
-            appNotInstalledCallback("intent.extras is null")
-            return@onNewIntentCallback
+        if (intent.action != PACKAGE_INSTALLED_ACTION) {
+            return
         }
-
+        val bundle = intent.extras ?: return
         when (val status = bundle.getInt(EXTRA_STATUS)) {
             STATUS_PENDING_USER_ACTION -> {
                 try {
@@ -74,32 +74,24 @@ class SessionInstaller(
         }
     }
 
-    override fun install(activity: Activity, downloadedFile: File) {
-        require(downloadedFile.exists()) { "File does not exists." }
+    override fun install(activity: Activity, file: File) {
+        require(file.exists()) { "File does not exists." }
         try {
-            return installInternal(activity, downloadedFile)
+            return installInternal(activity, file)
         } catch (e: IOException) {
-            throw SessionInstallerException("Fail to install app.", e)
+            throw Exception("Fail to install app.", e)
         }
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun installInternal(activity: Activity, downloadedFile: File) {
         val installer = activity.packageManager.packageInstaller
-        val params = createSessionParams()
+        val params = SessionParams(MODE_FULL_INSTALL)
+        if (DeviceSdkTester.supportsAndroid12()) {
+            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
+        }
+
         val id = installer.createSession(params)
-
-        installer.registerSessionCallback(object : SessionSuccessCallback(id) {
-            override fun onFinishedForThisSession(success: Boolean) {
-                installer.unregisterSessionCallback(this)
-                if (success) {
-                    appInstalledCallback()
-                } else {
-                    appNotInstalledCallback(null)
-                }
-            }
-        })
-
         installer.openSession(id).use { session ->
             try {
                 copyApkToSession(downloadedFile, session)
@@ -114,14 +106,6 @@ class SessionInstaller(
         }
     }
 
-    private fun createSessionParams(): SessionParams {
-        val params = SessionParams(MODE_FULL_INSTALL)
-        if (DeviceSdkTester.supportsAndroid12()) {
-            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
-        }
-        return params
-    }
-
     private fun copyApkToSession(downloadedFile: File, session: Session) {
         session.openWrite("package", 0, downloadedFile.length()).use { sessionStream ->
             downloadedFile.inputStream().use { downloadedFileStream ->
@@ -130,20 +114,17 @@ class SessionInstaller(
         }
     }
 
-    private fun createSessionChangeReceiver(activity: Activity): IntentSender {
-        val intent = Intent(activity, InstallActivity::class.java)
+    private fun createSessionChangeReceiver(content: Context): IntentSender {
+        val intent = Intent(content, intentReceiverClass)
         intent.action = PACKAGE_INSTALLED_ACTION
         val flags = if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_MUTABLE
         } else {
             FLAG_UPDATE_CURRENT
         }
-        val pendingIntent = PendingIntent.getActivity(activity, 0, intent, flags)
+        val pendingIntent = PendingIntent.getActivity(content, 0, intent, flags)
         return pendingIntent.intentSender
     }
-
-    class SessionInstallerException(message: String, throwable: Throwable) :
-        Exception(message, throwable)
 
     companion object {
         private const val PACKAGE_INSTALLED_ACTION =

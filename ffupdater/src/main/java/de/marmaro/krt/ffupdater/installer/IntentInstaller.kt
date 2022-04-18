@@ -3,11 +3,13 @@ package de.marmaro.krt.ffupdater.installer
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
 import java.io.File
 import java.io.IOException
 
 
-//for API < 24 (Nougat 7.0)
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class IntentInstaller(
         private val appInstalledCallback: () -> Any,
         private val appNotInstalledCallback: (errorMessage: String) -> Any,
@@ -23,10 +25,10 @@ class IntentInstaller(
         }
     }
 
-    override fun install(activity: Activity, downloadedFile: File) {
-        require(downloadedFile.exists()) { "File does not exists." }
+    override fun install(activity: Activity, file: File) {
+        require(file.exists()) { "File does not exists." }
         try {
-            return installInternal(activity, downloadedFile)
+            return installInternal(activity, file)
         } catch (e: IOException) {
             throw IntentInstallerException("fail to install app", e)
         }
