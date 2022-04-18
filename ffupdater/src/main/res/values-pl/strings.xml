@@ -105,6 +105,10 @@
     <string name="manage_storage_activity__delete_button">Usuń aktualizacje aplikacji z pamięci podręcznej.</string>
     <string name="manage_storage_activity__explanation">"FFUpdater buforuje już pobrane aktualizacje aplikacji i przechowuje je w folderze 'Android/data/de.marmaro.krt.ffupdater/files/Download'.\n\nOszczędza to przepustowość, gdy aplikacja nie zostanie pomyślnie zainstalowana lub zaktualizowana. Ponadto, pamięć podręczna jest potrzebna, aby aktualizacje, które zostały pobrane w tle, mogły być zainstalowane później.\n\nJeśli zdecydujesz się usunąć te aktualizacje aplikacji, być może będziesz musiał pobrać je ponownie."</string>
     <string name="ok">OK</string>
+    <string name="request_installation_permission_dialog__abort">Przerwij</string>
+    <string name="request_installation_permission_dialog__grant_permission">Udzielenie pozwolenia</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater nie ma uprawnień do instalowania i aktualizowania aplikacji. Musisz przyznać te uprawnienia, inaczej program FFUpdater nie będzie działał.</string>
+    <string name="request_installation_permission_dialog__title">Uprawnienia instalatora</string>
     <string name="running_downloads_dialog__message">Aplikacja pobiera teraz aktualizacje w tle. Czy chcesz rozpocząć nowe pobieranie, które może potrwać dłużej?</string>
     <string name="running_downloads_dialog__negative">Nie, nie pobieraj tego</string>
     <string name="running_downloads_dialog__title">Pobieranie plików w trybie ciągłym</string>

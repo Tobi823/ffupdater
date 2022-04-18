@@ -105,6 +105,10 @@
     <string name="manage_storage_activity__delete_button">キャッシュされたアプリのアップデートを削除します。</string>
     <string name="manage_storage_activity__explanation">FFUpdaterは、すでにダウンロードされたアプリのアップデートをキャッシュし、「Android/data/de.marmaro.ktr.ffupdater/files/Download」フォルダに保存します。\n\nこれにより、アプリのインストールやアップデートが正常に行われなかった場合の帯域幅を節約できます。また、バックグラウンドでダウンロードされたアップデートを後からインストールするためにも、キャッシュは必要です。\n\nこれらのアプリのアップデートを削除することにした場合、再度ダウンロードしなければならない可能性があります。</string>
     <string name="ok">OK</string>
+    <string name="request_installation_permission_dialog__abort">中止</string>
+    <string name="request_installation_permission_dialog__grant_permission">許可する</string>
+    <string name="request_installation_permission_dialog__message">FFUpdaterには、アプリのインストールとアップデートを行う権限がありません。これらの権限を付与しないと、FFUpdaterは動作しません。</string>
+    <string name="request_installation_permission_dialog__title">インストーラの許可</string>
     <string name="running_downloads_dialog__message">現在、アプリはバックグラウンドでアップデートをダウンロードしています。時間がかかるかもしれませんが、新しいダウンロードを開始しますか？</string>
     <string name="running_downloads_dialog__negative">いいえ、ダウンロードしません</string>
     <string name="running_downloads_dialog__title">ランニング・ダウンロード</string>

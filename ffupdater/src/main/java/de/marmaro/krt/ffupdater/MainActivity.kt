@@ -25,10 +25,8 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
-import de.marmaro.krt.ffupdater.dialog.InstallNewAppDialog
-import de.marmaro.krt.ffupdater.dialog.InstallSameVersionDialog
-import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.dialog.*
 import de.marmaro.krt.ffupdater.download.AppDownloadStatus.Companion.areDownloadsInBackgroundActive
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
@@ -230,6 +228,10 @@ class MainActivity : AppCompatActivity() {
     fun installApp(app: App, askForConfirmationIfOtherDownloadsAreRunning: Boolean = false) {
         if (!settingsHelper.isForegroundUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             showToast(R.string.main_activity__no_unmetered_network)
+            return
+        }
+        if (DeviceSdkTester.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
+            RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }
         if (askForConfirmationIfOtherDownloadsAreRunning && areDownloadsInBackgroundActive()) {

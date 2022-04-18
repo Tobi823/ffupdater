@@ -105,6 +105,10 @@
     <string name="manage_storage_activity__delete_button">Lösche zwischengespeicherte App-Updates.</string>
     <string name="manage_storage_activity__explanation">FFUpdater speichert bereits heruntergeladene App-Updates im Zwischenspeicher im Ordner \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nDies spart Bandbreite, wenn eine App nicht erfolgreich installiert oder aktualisiert wird. Außerdem wird der Cache benötigt, damit Updates, die im Hintergrund heruntergeladen wurden, später installiert werden können.\n\nWenn Sie sich entscheiden, diese App-Updates zu löschen, müssen Sie sie möglicherweise erneut herunterladen.</string>
     <string name="ok">OK</string>
+    <string name="request_installation_permission_dialog__abort">Abbrechen</string>
+    <string name="request_installation_permission_dialog__grant_permission">Erlaubnis erteilen</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater fehlt die Berechtigung, Anwendungen zu installieren und zu aktualisieren. Sie müssen diese Berechtigungen erteilen, sonst funktioniert FFUpdater nicht.</string>
+    <string name="request_installation_permission_dialog__title">Erlaubnis des Installateurs</string>
     <string name="running_downloads_dialog__message">Die App lädt jetzt Updates im Hintergrund herunter. Möchten Sie einen neuen Download starten, der länger dauern kann?</string>
     <string name="running_downloads_dialog__negative">Nein, nicht herunterladen</string>
     <string name="running_downloads_dialog__title">Laufende Downloads</string>

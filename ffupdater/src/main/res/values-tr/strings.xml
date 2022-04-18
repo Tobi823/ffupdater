@@ -105,6 +105,10 @@
     <string name="manage_storage_activity__delete_button">Önbelleğe alınmış uygulama güncellemelerini silin.</string>
     <string name="manage_storage_activity__explanation">FFUpdater önceden indirilmiş uygulama güncellemelerini önbelleğe alır ve bunları \'Android/data/de.marmaro.krt.ffupdater/files/Download\' klasöründe saklar.\n\nBu, bir uygulama başarıyla yüklenmediğinde veya güncellenmediğinde bant genişliğinden tasarruf sağlar. Ayrıca, arka planda indirilen güncellemelerin daha sonra yüklenebilmesi için önbelleğe ihtiyaç vardır.\n\nBu uygulama güncellemelerini silmeye karar verirseniz, bunları yeniden indirmeniz gerekebilir.</string>
     <string name="ok">Tamam</string>
+    <string name="request_installation_permission_dialog__abort">iptal</string>
+    <string name="request_installation_permission_dialog__grant_permission">İzin ver</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater, uygulamaları yükleme ve güncelleme iznine sahip değil. </string>
+    <string name="request_installation_permission_dialog__title">yükleyici izni</string>
     <string name="running_downloads_dialog__message">Uygulama şimdi arka planda güncellemeleri indiriyor. Daha uzun sürebilecek yeni bir indirme işlemi başlatmak istiyor musunuz?</string>
     <string name="running_downloads_dialog__negative">Hayır, indirme</string>
     <string name="running_downloads_dialog__title">Mevcut indirmeler</string>

@@ -33,7 +33,8 @@ class SessionInstaller(
         when (val status = bundle.getInt(EXTRA_STATUS)) {
             STATUS_PENDING_USER_ACTION -> {
                 try {
-                    //FFUpdater isn't privileged, so the user has to confirm the install.
+                    // request installation permission
+                    // but this should never happens because the permission is already requested in MainActivity
                     context.startActivity(bundle.get(Intent.EXTRA_INTENT) as Intent)
                 } catch (e: ActivityNotFoundException) {
                     val tip = context.getString(

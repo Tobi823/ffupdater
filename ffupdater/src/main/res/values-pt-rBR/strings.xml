@@ -105,6 +105,10 @@
     <string name="manage_storage_activity__delete_button">Remover as atualizações dos naveadores do cache.</string>
     <string name="manage_storage_activity__explanation">O FFUpdater armazena atualizações baixadas de navegadores no \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nIsto economiza uso de dados quando um navegador não é instalado ou atualizado com sucesso. Além disso, o cache é necessário para que as atualizações que foram baixadas em segundo plano possam ser instaladas posteriormente.\n\nSe você decidir excluir estas atualizações do app, terá que baixá-las novamente.</string>
     <string name="ok">OK</string>
+    <string name="request_installation_permission_dialog__abort">Abortar</string>
+    <string name="request_installation_permission_dialog__grant_permission">Conceder permissão</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater está faltando a permissão para instalar e atualizar aplicativos. Você tem que conceder essas permissões ou o FFUpdater não vai funcionar.</string>
+    <string name="request_installation_permission_dialog__title">Permissão do instalador</string>
     <string name="running_downloads_dialog__message">O aplicativo está baixando atualizações em segundo plano agora. Você quer iniciar um novo download que pode levar mais tempo?</string>
     <string name="running_downloads_dialog__negative">Não baixa agora</string>
     <string name="running_downloads_dialog__title">Downloads executados</string>
