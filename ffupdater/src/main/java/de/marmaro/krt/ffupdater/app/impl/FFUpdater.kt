@@ -24,7 +24,7 @@ class FFUpdater(
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis =
         listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64, ABI.X86, ABI.MIPS, ABI.MIPS64)
-    override val normalInstallation = true
+    override val normalInstallation = false
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
