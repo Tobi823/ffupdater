@@ -77,6 +77,55 @@ object NotificationBuilder {
         notificationManager.cancel(400)
     }
 
+    fun showSuccessfulBackgroundInstallationNotification(context: Context, app: App) {
+        val appTitle: String = context.getString(app.detail.displayTitle)
+        showNotification(
+            context = context,
+            channelId = "successful_background_update_notification_channel__${app.name.lowercase()}",
+            channelName = "$appTitle successful update notification",
+            channelDescription = "Notification channel for successful $appTitle updates.",
+            notificationId = 500 + app.ordinal,
+            notificationTitle = "$appTitle has been updated.",
+            notificationMessage = "App has been successfully updated in the background.",
+            intent = null
+        )
+    }
+
+    fun hideAllSuccessfulBackgroundInstallationNotifications(context: Context) {
+        App.values()
+            .forEach {
+                val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+                nm.cancel(500 + it.ordinal)
+            }
+    }
+
+    fun showFailedBackgroundInstallationNotification(
+        context: Context,
+        app: App,
+        errorCode: Int?,
+        errorMessage: String?
+    ) {
+        val appTitle: String = context.getString(app.detail.displayTitle)
+        showNotification(
+            context = context,
+            channelId = "failed_background_update_notification_channel__${app.name.lowercase()}",
+            channelName = "$appTitle update failure notification",
+            channelDescription = "Notification channel for failed $appTitle updates.",
+            notificationId = 600 + app.ordinal,
+            notificationTitle = "$appTitle could not be updated.",
+            notificationMessage = "Error ($errorCode): $errorMessage",
+            intent = InstallActivity.createIntent(context, app)
+        )
+    }
+
+    fun hideAllFailedBackgroundInstallationNotifications(context: Context) {
+        App.values()
+            .forEach {
+                val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+                nm.cancel(600 + it.ordinal)
+            }
+    }
+
     @SuppressLint("UnspecifiedImmutableFlag")
     fun showNotification(
         context: Context,
