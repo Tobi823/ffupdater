@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">Uygulama güncellemelerini indir</string>
     <string name="settings__background__download__metered__summary">Sınırlı mobil veriye sahip kullanıcılar için önerilmez.</string>
     <string name="settings__background__download__metered__title">Ölçülü ağlarda uygulama güncellemelerini indirme</string>
-    <string name="settings__background__installation__enabled__summary">Henüz yerine getirilmedi.</string>
+    <string name="settings__background__installation__enabled__summary">Kullanıcı etkileşimi olmadan güncellemeleri yüklemeyi deneyin.</string>
     <string name="settings__background__installation__enabled__title">Güncellemeyi yükle</string>
     <string name="settings__background__update_check__enabled__summary">Düzenli aralıklarla yeni güncellemeleri kontrol edin.</string>
     <string name="settings__background__update_check__enabled__title">Güncellemeleri kontrol et</string>

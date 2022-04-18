@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">App-Updates herunterladen</string>
     <string name="settings__background__download__metered__summary">Nicht empfohlen für Benutzer mit begrenzten mobilen Daten.</string>
     <string name="settings__background__download__metered__title">App-Updates in gebührenpflichtigen Netzen herunterladen</string>
-    <string name="settings__background__installation__enabled__summary">Noch nicht umgesetzt.</string>
+    <string name="settings__background__installation__enabled__summary">Es wird versucht, Updates ohne Benutzerinteraktion zu installieren.</string>
     <string name="settings__background__installation__enabled__title">Update installieren</string>
     <string name="settings__background__update_check__enabled__summary">Prüfen Sie in regelmäßigen Abständen, ob es neue Updates gibt.</string>
     <string name="settings__background__update_check__enabled__title">Überprüfung aktualisieren</string>

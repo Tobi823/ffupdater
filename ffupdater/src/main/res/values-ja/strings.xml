@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">アプリのアップデートをダウンロードする</string>
     <string name="settings__background__download__metered__summary">モバイルデータを制限されているユーザーにはお勧めできません。</string>
     <string name="settings__background__download__metered__title">従量制ネットワークでアプリのアップデートをダウンロード</string>
-    <string name="settings__background__installation__enabled__summary">未実装です。</string>
+    <string name="settings__background__installation__enabled__summary">ユーザーの操作なしでアップデートをインストールするようにする。</string>
     <string name="settings__background__installation__enabled__title">アップデートのインストール</string>
     <string name="settings__background__update_check__enabled__summary">定期的に新しいアップデートを確認する。</string>
     <string name="settings__background__update_check__enabled__title">アップデートチェック</string>

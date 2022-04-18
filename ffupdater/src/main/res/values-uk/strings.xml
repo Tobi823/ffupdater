@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">Завантажте оновлення програми</string>
     <string name="settings__background__download__metered__summary">Не рекомендується користувачам з обмеженим мобільним трафіком.</string>
     <string name="settings__background__download__metered__title">Завантажуйте оновлення додатків у мережах із лічильником</string>
-    <string name="settings__background__installation__enabled__summary">Ще не реалізовано.</string>
+    <string name="settings__background__installation__enabled__summary">Спробуйте встановити оновлення без взаємодії з користувачем.</string>
     <string name="settings__background__installation__enabled__title">Встановити оновлення</string>
     <string name="settings__background__update_check__enabled__summary">Регулярно перевіряйте наявність нових оновлень.</string>
     <string name="settings__background__update_check__enabled__title">Перевірка оновлення</string>

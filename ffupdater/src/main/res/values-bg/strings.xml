@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">Download app updates</string>
     <string name="settings__background__download__metered__summary">Not recommended for users with limited mobile data.</string>
     <string name="settings__background__download__metered__title">Download app updates on metered networks</string>
-    <string name="settings__background__installation__enabled__summary">Not yet implemented.</string>
+    <string name="settings__background__installation__enabled__summary">Try to install updates without user interaction.</string>
     <string name="settings__background__installation__enabled__title">Install update</string>
     <string name="settings__background__update_check__enabled__summary">Check for new updates at regular intervals.</string>
     <string name="settings__background__update_check__enabled__title">Update check</string>

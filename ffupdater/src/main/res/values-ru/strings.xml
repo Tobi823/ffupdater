@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">Загрузка обновлений приложения</string>
     <string name="settings__background__download__metered__summary">Не рекомендуется для пользователей с ограниченным объемом мобильных данных.</string>
     <string name="settings__background__download__metered__title">Загружайте обновления приложений в сетях с дозированной оплатой</string>
-    <string name="settings__background__installation__enabled__summary">Еще не реализовано.</string>
+    <string name="settings__background__installation__enabled__summary">Попытайтесь установить обновления без участия пользователя.</string>
     <string name="settings__background__installation__enabled__title">Установите обновление</string>
     <string name="settings__background__update_check__enabled__summary">Регулярно проверяйте наличие новых обновлений.</string>
     <string name="settings__background__update_check__enabled__title">Проверка обновления</string>

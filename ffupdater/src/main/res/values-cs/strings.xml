@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">Stáhněte si aktualizace aplikace</string>
     <string name="settings__background__download__metered__summary">Nedoporučuje se uživatelům s omezenými mobilními daty.</string>
     <string name="settings__background__download__metered__title">Stáhněte si aktualizace aplikací v měřených sítích</string>
-    <string name="settings__background__installation__enabled__summary">Dosud neimplementováno.</string>
+    <string name="settings__background__installation__enabled__summary">Zkuste nainstalovat aktualizace bez zásahu uživatele.</string>
     <string name="settings__background__installation__enabled__title">Instalovat aktualizace</string>
     <string name="settings__background__update_check__enabled__summary">Pravidelně kontrolujte nové aktualizace.</string>
     <string name="settings__background__update_check__enabled__title">Kontrola aktualizací</string>

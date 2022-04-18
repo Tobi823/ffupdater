@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">Pobierz aktualizacje aplikacji</string>
     <string name="settings__background__download__metered__summary">Nie zalecane dla użytkowników z ograniczoną ilością danych komórkowych.</string>
     <string name="settings__background__download__metered__title">Pobieraj aktualizacje aplikacji w sieciach płatnych</string>
-    <string name="settings__background__installation__enabled__summary">Jeszcze nie wdrożone.</string>
+    <string name="settings__background__installation__enabled__summary">Spróbuj zainstalować aktualizacje bez interakcji z użytkownikiem.</string>
     <string name="settings__background__installation__enabled__title">Zainstaluj aktualizację</string>
     <string name="settings__background__update_check__enabled__summary">W regularnych odstępach czasu należy sprawdzać dostępność nowych aktualizacji.</string>
     <string name="settings__background__update_check__enabled__title">Kontrola aktualizacji</string>

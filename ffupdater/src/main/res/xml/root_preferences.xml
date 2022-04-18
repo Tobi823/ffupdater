@@ -85,9 +85,8 @@
             app:title="@string/settings__background__download__metered__title" />
 
         <SwitchPreferenceCompat
-            app:defaultValue="false"
+            app:defaultValue="true"
             app:dependency="background__download__enabled"
-            app:enabled="false"
             app:key="background__installation__enabled"
             app:singleLineTitle="false"
             app:summary="@string/settings__background__installation__enabled__summary"

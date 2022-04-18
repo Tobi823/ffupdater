@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">Télécharger les mises à jour de l\'application</string>
     <string name="settings__background__download__metered__summary">Non recommandé pour les utilisateurs disposant de peu de données mobiles.</string>
     <string name="settings__background__download__metered__title">Télécharger les mises à jour des applications sur les réseaux équipés de compteurs</string>
-    <string name="settings__background__installation__enabled__summary">Pas encore mis en œuvre.</string>
+    <string name="settings__background__installation__enabled__summary">Essayez d\'installer les mises à jour sans l\'interaction de l\'utilisateur.</string>
     <string name="settings__background__installation__enabled__title">Installer la mise à jour</string>
     <string name="settings__background__update_check__enabled__summary">Vérifiez les nouvelles mises à jour à intervalles réguliers.</string>
     <string name="settings__background__update_check__enabled__title">Contrôle de la mise à jour</string>

@@ -126,7 +126,7 @@
     <string name="settings__background__download__enabled__title">Download de atualizações do aplicativo</string>
     <string name="settings__background__download__metered__summary">Não recomendado para usuários com dados móveis limitados.</string>
     <string name="settings__background__download__metered__title">Download de atualizações de aplicativos em redes dosadoras</string>
-    <string name="settings__background__installation__enabled__summary">Ainda não implementado.</string>
+    <string name="settings__background__installation__enabled__summary">Tente instalar atualizações sem a interação do usuário.</string>
     <string name="settings__background__installation__enabled__title">Instalar atualização</string>
     <string name="settings__background__update_check__enabled__summary">Verificar novas atualizações a intervalos regulares.</string>
     <string name="settings__background__update_check__enabled__title">Verificação de atualização</string>
