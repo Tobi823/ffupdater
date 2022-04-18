@@ -43,6 +43,10 @@
     <string name="download_the_app">stáhnout aplikaci</string>
     <string name="error_notification__channel_description">Zobrazit chyby z nástroje pro kontrolu aktualizací na pozadí</string>
     <string name="error_notification__channel_name">Chyby na pozadí</string>
+    <string name="failed_update_notification__channel_description">Kanál oznámení o neúspěšných aktualizacích %1$s.</string>
+    <string name="failed_update_notification__channel_name">Upozornění na selhání aktualizace %1$s</string>
+    <string name="failed_update_notification__notification_message">Chyba (%1$d): %2$s</string>
+    <string name="failed_update_notification__notification_title">%1$s nelze aktualizovat.</string>
     <string name="firefox_beta__description">Prohlížeč Firefox pro Android je automaticky a úžasně rychlý. Každý den vás monitorují tisíce online sledovacích prvků, shromažďují informace o tom, jaké stránky navštívíte, a zpomalují vaši rychlost. Firefox ve výchozím nastavení blokuje více než 2 000 těchto sledovacích prvků, a pokud chcete svůj prohlížeč ještě více přizpůsobit, máte k dispozici doplňky pro blokování reklam. Díky prohlížeči Firefox získáte zabezpečení, jaké si zasloužíte, a rychlost, kterou potřebujete v soukromém mobilním prohlížeči.</string>
     <string name="firefox_beta__title">Firefox Beta pro Android</string>
     <string name="firefox_beta__warning">Tato aplikace je určena pro vývojáře a testery. Může obsahovat mnoho bugů, které mohou ovlivnit vaši běžnou práci s prohlížečem. Jste si jisti, že chcete prohlížeč nainstalovat?</string>
@@ -149,6 +153,10 @@
     <string name="settings__theme_light">Světlý motiv</string>
     <string name="settings__theme_system_default">Výchozí nastavení systému</string>
     <string name="show_warning_before_installation_dialog__title">Varování</string>
+    <string name="successful_update__notification_message">Aplikace byla úspěšně aktualizována na pozadí.</string>
+    <string name="successful_update_notification__channel_description">Kanál oznámení o úspěšných aktualizacích %1$s.</string>
+    <string name="successful_update_notification__channel_name">Oznámení o úspěšné aktualizaci %1$s</string>
+    <string name="successful_update_notification__notification_title">%1$s bylo aktualizováno.</string>
     <string name="ungoogled_chromium__description">Google Chromium, bez integrace s Googlem.\n\nBez přihlášení do Google Účtu si Chromium vede z hlediska bezpečnosti a soukromí docela dobře. Chromium je však stále do jisté míry závislý na webových službách a binárních souborech od Googlu. Navíc Google navrhl Chromium, aby byl pro uživatele snadný a intuitivní, což znamená, že slevil z požadavků na transparentnost a kontrolu interních operací.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Ungoogled Chromium?</string>
@@ -179,12 +187,4 @@
     <string name="vivaldi__description">Vivaldi je nový soukromý webový prohlížeč, postavený s ohledem na flexibilitu. Přináší řadu užitečných funkcí, včetně vestavěného blokování reklam (ve výchozím nastavení vypnuto), ochranou proti sledování a soukromým překladačem. Poznámky a zachycení stránky vám ušetří čas. Přizpůsobte si vše podle sebe s možnostmi typu listy jako na počítači, tmavý a světlý vzhled, či úpravy rozložení rozhraní. Stáhněte si zdarma Vivaldi a začněte prohlížejte rychleji.</string>
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">"Vivaldi je pouze částečně open source (viz. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Také používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Vivaldi?"</string>
-    <string name="successful_update_notification__channel_name">Oznámení o úspěšné aktualizaci %1$s</string>
-    <string name="successful_update_notification__channel_description">Kanál oznámení o úspěšných aktualizacích %1$s.</string>
-    <string name="successful_update_notification__notification_title">%1$s bylo aktualizováno.</string>
-    <string name="successful_update__notification_message">Aplikace byla úspěšně aktualizována na pozadí.</string>
-    <string name="failed_update_notification__channel_name">Upozornění na selhání aktualizace %1$s</string>
-    <string name="failed_update_notification__channel_description">Kanál oznámení o neúspěšných aktualizacích %1$s.</string>
-    <string name="failed_update_notification__notification_title">%1$s nelze aktualizovat.</string>
-    <string name="failed_update_notification__notification_message">Chyba (%1$d): %2$s</string>
 </resources>

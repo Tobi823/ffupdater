@@ -44,6 +44,10 @@
     <string name="download_the_app">download the app</string>
     <string name="error_notification__channel_description">Show errors of the background update checker</string>
     <string name="error_notification__channel_name">Background errors</string>
+    <string name="failed_update_notification__channel_description">Notification channel for failed %1$s updates.</string>
+    <string name="failed_update_notification__channel_name">%1$s update failure notification</string>
+    <string name="failed_update_notification__notification_message">Error (%1$d): %2$s</string>
+    <string name="failed_update_notification__notification_title">%1$s could not be updated.</string>
     <string name="firefox_beta__description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
     <string name="firefox_beta__warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Do you want to install it?</string>
@@ -152,6 +156,10 @@
     <string name="settings__theme_light">Light</string>
     <string name="settings__theme_system_default">Use system default</string>
     <string name="show_warning_before_installation_dialog__title">Warning</string>
+    <string name="successful_update__notification_message">App has been successfully updated in the background.</string>
+    <string name="successful_update_notification__channel_description">Notification channel for successful %1$s updates.</string>
+    <string name="successful_update_notification__channel_name">%1$s successful update notification</string>
+    <string name="successful_update_notification__notification_title">%1$s has been updated.</string>
     <string name="ungoogled_chromium__description">Google Chromium, sans integration with Google.\n\nWithout signing in to a Google Account, Chromium does pretty well in terms of security and privacy. However, Chromium still has some dependency on Google web services and binaries. In addition, Google designed Chromium to be easy and intuitive for users, which means they compromise on transparency and control of internal operations.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Ungoogled Chromium?</string>
@@ -183,12 +191,4 @@
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi is only partially open source (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?</string>
-    <string name="successful_update_notification__channel_name">%1$s successful update notification</string>
-    <string name="successful_update_notification__channel_description">Notification channel for successful %1$s updates.</string>
-    <string name="successful_update_notification__notification_title">%1$s has been updated.</string>
-    <string name="successful_update__notification_message">App has been successfully updated in the background.</string>
-    <string name="failed_update_notification__channel_name">%1$s update failure notification</string>
-    <string name="failed_update_notification__channel_description">Notification channel for failed %1$s updates.</string>
-    <string name="failed_update_notification__notification_title">%1$s could not be updated.</string>
-    <string name="failed_update_notification__notification_message">Error (%1$d): %2$s</string>
 </resources>

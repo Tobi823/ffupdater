@@ -43,6 +43,10 @@
     <string name="download_the_app">scarica l\'app</string>
     <string name="error_notification__channel_description">Mostra errori della verifica degli aggiornamenti in background</string>
     <string name="error_notification__channel_name">Errori in background</string>
+    <string name="failed_update_notification__channel_description">Canale di notifica per aggiornamenti falliti %1$s.</string>
+    <string name="failed_update_notification__channel_name">%1$s notifica di fallimento dell\'aggiornamento</string>
+    <string name="failed_update_notification__notification_message">Errore (%1$d): %2$s</string>
+    <string name="failed_update_notification__notification_title">%1$s non può essere aggiornato.</string>
     <string name="firefox_beta__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
     <string name="firefox_beta__title">Firefox per Android Beta</string>
     <string name="firefox_beta__warning">Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser. Vuoi installarla?</string>
@@ -149,6 +153,10 @@
     <string name="settings__theme_light">Chiaro</string>
     <string name="settings__theme_system_default">Usa predefinito di sistema</string>
     <string name="show_warning_before_installation_dialog__title">Avvertimento</string>
+    <string name="successful_update__notification_message">L\'app è stata aggiornata con successo in background.</string>
+    <string name="successful_update_notification__channel_description">Canale di notifica per aggiornamenti di successo %1$s.</string>
+    <string name="successful_update_notification__channel_name">%1$s notifica di aggiornamento riuscito</string>
+    <string name="successful_update_notification__notification_title">%1$s è stato aggiornato.</string>
     <string name="ungoogled_chromium__description">Google Chromium, senza l\'integrazione con Google.\n\nSenza fare l\'accesso a un Account Google, Chromium fa abbastanza bene in termini di sicurezza e privacy. Tuttavia, Chromium ha ancora una certa dipendenza dai binari e dai servizi web di  Google. Inoltre, Google ha progettato Chromium in modo che fosse facile e intuitivo per gli utenti, il che significa che compromettono la trasparenza e il controllo delle operazioni interne.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Ungoogled Chromium?</string>
@@ -179,12 +187,4 @@
     <string name="vivaldi__description">Scopri un browser Internet incredibilmente veloce! Vivaldi è un browser web nuovo, gratuito, e privato costruito pensando alla flessibilità. Viene fornito con funzioni utili tra cui un blocco delle pubblicità incorporato (blocco dei pop-up), protezione dal tracciamento e traduzione privata. Opzioni del browser come schede appropriate in stile desktop, temi chiaro/scuro, e le scelte di layout ti aiutano a renderlo tuo.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">"Vivaldi è open source solo parzialmente (vedi <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> per più informazioni). Inoltre usa la base tecnica di Google Chrome (Chromium).\n\nCiò non piace ad alcune persone. Vuoi installare Vivaldi?"</string>
-    <string name="successful_update_notification__channel_name">%1$s notifica di aggiornamento riuscito</string>
-    <string name="successful_update_notification__channel_description">Canale di notifica per aggiornamenti di successo %1$s.</string>
-    <string name="successful_update_notification__notification_title">%1$s è stato aggiornato.</string>
-    <string name="successful_update__notification_message">L\'app è stata aggiornata con successo in background.</string>
-    <string name="failed_update_notification__channel_name">%1$s notifica di fallimento dell\'aggiornamento</string>
-    <string name="failed_update_notification__channel_description">Canale di notifica per aggiornamenti falliti %1$s.</string>
-    <string name="failed_update_notification__notification_title">%1$s non può essere aggiornato.</string>
-    <string name="failed_update_notification__notification_message">Errore (%1$d): %2$s</string>
 </resources>

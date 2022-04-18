@@ -43,6 +43,10 @@
     <string name="download_the_app">загрузить приложение</string>
     <string name="error_notification__channel_description">Показать ошибки проверки фонового обновления</string>
     <string name="error_notification__channel_name">Ошибки фонового режима</string>
+    <string name="failed_update_notification__channel_description">Канал уведомления о неудачных обновлениях %1$s.</string>
+    <string name="failed_update_notification__channel_name">Уведомление о сбое обновления %1$s</string>
+    <string name="failed_update_notification__notification_message">Ошибка (%1$d): %2$s</string>
+    <string name="failed_update_notification__notification_title">%1$s не удалось обновить.</string>
     <string name="firefox_beta__description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за вами каждый день, собирая информацию о вашей жизни в Интернете и замедляя скорость вашей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если вы захотите настроить свой браузер под себя. С Firefox вы получите безопасность, которую заслуживаете, а также высокую скорость работы — и всё это в конфиденциальном мобильном браузере.</string>
     <string name="firefox_beta__title">Firefox Бета для Android</string>
     <string name="firefox_beta__warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
@@ -149,6 +153,10 @@
     <string name="settings__theme_light">Светлая</string>
     <string name="settings__theme_system_default">Системная тема по умолчанию</string>
     <string name="show_warning_before_installation_dialog__title">Предупреждение</string>
+    <string name="successful_update__notification_message">Приложение было успешно обновлено в фоновом режиме.</string>
+    <string name="successful_update_notification__channel_description">Канал уведомления об успешных обновлениях %1$s.</string>
+    <string name="successful_update_notification__channel_name">%1$s уведомление об успешном обновлении</string>
+    <string name="successful_update_notification__notification_title">%1$s был обновлен.</string>
     <string name="ungoogled_chromium__description">"Google Chromium, без интеграции с Google.\n\nБез входа в аккаунт Google, Chromium довольно хорошо справляется с безопасностью и конфиденциальностью. Однако Chromium все еще имеет некоторую зависимость от сетевых служб и проприетарных двоичных файлов Google. Кроме того, Google разрабатывал Chromium, чтобы он был простым и интуитивно понятным для пользователей, что означает компромисс с прозрачностью и контролем внутренних операций."</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium основан на Google Chrome (Chromium) - некоторым людям это не нравится. Вы хотите установить Ungoogled Chromium?</string>
@@ -179,12 +187,4 @@
     <string name="vivaldi__description">"Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования.  Меняйте внешний вид. Меняйте интерфейс браузера для Android с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели.  Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве.  Используйте несколько поисковых систем. Переключайтесь между ними в одно касание. Используйте префиксы в адресной строке для выбора нужной поисковой системы."</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">Исходный код Vivaldi не полностью открыт (см. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для получения дополнительной информации). Он также основан на Google Chrome (Chromium).\n\nНекоторым людям это не нравится. Хотите ли вы установить Vivaldi?</string>
-    <string name="successful_update_notification__channel_name">%1$s уведомление об успешном обновлении</string>
-    <string name="successful_update_notification__channel_description">Канал уведомления об успешных обновлениях %1$s.</string>
-    <string name="successful_update_notification__notification_title">%1$s был обновлен.</string>
-    <string name="successful_update__notification_message">Приложение было успешно обновлено в фоновом режиме.</string>
-    <string name="failed_update_notification__channel_name">Уведомление о сбое обновления %1$s</string>
-    <string name="failed_update_notification__channel_description">Канал уведомления о неудачных обновлениях %1$s.</string>
-    <string name="failed_update_notification__notification_title">%1$s не удалось обновить.</string>
-    <string name="failed_update_notification__notification_message">Ошибка (%1$d): %2$s</string>
 </resources>

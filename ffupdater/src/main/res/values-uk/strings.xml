@@ -43,6 +43,10 @@
     <string name="download_the_app">завантажити додаток</string>
     <string name="error_notification__channel_description">Показати помилки перевірки фонового оновлення</string>
     <string name="error_notification__channel_name">Фонові помилки</string>
+    <string name="failed_update_notification__channel_description">Канал сповіщень про невдалі оновлення %1$s.</string>
+    <string name="failed_update_notification__channel_name">Повідомлення про помилку оновлення %1$s</string>
+    <string name="failed_update_notification__notification_message">Помилка (%1$d): %2$s</string>
+    <string name="failed_update_notification__notification_title">Не вдалося оновити %1$s.</string>
     <string name="firefox_beta__description">Firefox для Android — це за замовчуванням конфіденційний і неймовірно швидкий браузер. Щодня тисячі онлайн-трекерів стежать за тобою, збираючи інформацію про твоє життя в Інтернеті і уповільнюючи швидкість твоєї роботи. Firefox за замовчуванням блокує більше 2000 таких трекерів і дозволяє встановити доповнення, що блокують рекламу, якщо ти захочеш настроювати свій браузер ще більше. З Firefox ти отримаєш безпеку, на яку заслуговуєш, а також високу швидкість роботи, — і все це в конфіденційному мобільному браузері.</string>
     <string name="firefox_beta__title">Firefox для Android Beta</string>
     <string name="firefox_beta__warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
@@ -149,6 +153,10 @@
     <string name="settings__theme_light">Світло</string>
     <string name="settings__theme_system_default">Використовуйте системний стандарт за замовчуванням</string>
     <string name="show_warning_before_installation_dialog__title">Увага</string>
+    <string name="successful_update__notification_message">Додаток успішно оновлено у фоновому режимі.</string>
+    <string name="successful_update_notification__channel_description">Канал сповіщень про успішні оновлення %1$s.</string>
+    <string name="successful_update_notification__channel_name">%1$s сповіщення про успішне оновлення</string>
+    <string name="successful_update_notification__notification_title">%1$s оновлено.</string>
     <string name="ungoogled_chromium__description">Google Chromium, без інтеграції з Google.\n\nБез входу в обліковий запис Google Chromium працює досить добре з точки зору безпеки та конфіденційності. Однак Chromium все ще певна залежність від веб-сервісів і бінарних файлів Google. Крім того, Google створив Chromium, щоб він був простим та інтуїтивно зрозумілим для користувачів, що означає, що вони йдуть на компроміс щодо прозорості та контролю внутрішніх операцій.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Ungoogled Chromium?</string>
@@ -179,12 +187,4 @@
     <string name="vivaldi__description">Vivaldi - це новий приватний браузер з унікальною гнучкістю в налаштуванні. Він має такі корисні інстументи, як блокувальник реклами (вимкнений за промовчанням), захист від стеження та приватний перекладач. Нотатки та знімки сторінок прискорюють та полегшують робочий процес. Налаштування теми оформлення та вигляду й розташування вкладок додають індивідуальність браузерові. Завантажте безкоштовно та переглядайте сайти з насолодою.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">Vivaldi є лише частково відкритим вихідним кодом (див. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для отримання додаткової інформації). Він також використовує технічну базу Google Chrome (Chromium).\n\nДеяким людям це не до вподоби. Чи хочете ви встановити Vivaldi?</string>
-    <string name="successful_update_notification__channel_name">%1$s сповіщення про успішне оновлення</string>
-    <string name="successful_update_notification__channel_description">Канал сповіщень про успішні оновлення %1$s.</string>
-    <string name="successful_update_notification__notification_title">%1$s оновлено.</string>
-    <string name="successful_update__notification_message">Додаток успішно оновлено у фоновому режимі.</string>
-    <string name="failed_update_notification__channel_name">Повідомлення про помилку оновлення %1$s</string>
-    <string name="failed_update_notification__channel_description">Канал сповіщень про невдалі оновлення %1$s.</string>
-    <string name="failed_update_notification__notification_title">Не вдалося оновити %1$s.</string>
-    <string name="failed_update_notification__notification_message">Помилка (%1$d): %2$s</string>
 </resources>

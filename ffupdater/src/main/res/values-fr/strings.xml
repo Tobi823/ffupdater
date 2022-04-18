@@ -43,6 +43,10 @@
     <string name="download_the_app">télécharger l\'application</string>
     <string name="error_notification__channel_description">Afficher les erreurs du vérificateur de mise à jour des antécédents</string>
     <string name="error_notification__channel_name">Erreurs de fond</string>
+    <string name="failed_update_notification__channel_description">Canal de notification des échecs de mise à jour de %1$s.</string>
+    <string name="failed_update_notification__channel_name">notification d\'échec de la mise à jour de %1$s</string>
+    <string name="failed_update_notification__notification_message">Erreur (%1$d) : %2$s</string>
+    <string name="failed_update_notification__notification_title">%1$s n\'a pas pu être mis à jour.</string>
     <string name="firefox_beta__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_beta__title">Firefox pour Android Beta</string>
     <string name="firefox_beta__warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer?</string>
@@ -149,6 +153,10 @@
     <string name="settings__theme_light">Lumière</string>
     <string name="settings__theme_system_default">Utiliser le système par défaut</string>
     <string name="show_warning_before_installation_dialog__title">Avertissement</string>
+    <string name="successful_update__notification_message">L\'application a été mise à jour avec succès en arrière-plan.</string>
+    <string name="successful_update_notification__channel_description">Canal de notification pour les mises à jour réussies de %1$s.</string>
+    <string name="successful_update_notification__channel_name">Notification de mise à jour réussie de %1$s</string>
+    <string name="successful_update_notification__notification_title">%1$s a été mis à jour.</string>
     <string name="ungoogled_chromium__description">Google Chromium, sans intégration avec Google.\n\nSans connexion à un compte Google, Chromium s\'en sort plutôt bien en termes de sécurité et de confidentialité. Cependant, Chromium a toujours une certaine dépendance vis-à-vis des services Web et des binaires de Google. En outre, Google a conçu Chromium pour qu\'il soit facile et intuitif pour les utilisateurs, ce qui signifie qu\'ils font des compromis sur la transparence et le contrôle des opérations internes.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium utilise la base technique de Google Chrome (Chromium), ce qui ne plaît pas à tout le monde. Voulez-vous installer Ungoogled Chromium?</string>
@@ -179,12 +187,4 @@
     <string name="vivaldi__description">Vivaldi est un navigateur pratique et très respectueux de la vie privée. Il intègre des nombreuses fonctions dont un bloqueur de pubs et traqueurs (désactivé par défaut) et un traducteur de pages. Des outils judicieux de prise de notes et de capture de page vous feront gagner du temps. En option, vous pouvez afficher les onglets comme sur ordinateurs, des thèmes clair et sombre ou personnaliser l’interface. Téléchargez-le et profitez de ses performances.</string>
     <string name="vivaldi__title">Navigateur Vivaldi</string>
     <string name="vivaldi__warning">Vivaldi n\'est que partiellement open source (voir <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> pour plus d\'informations). Il utilise également la base technique de Google Chrome (Chromium).\n\nCertaines personnes n\'aiment pas cela. Voulez-vous installer Vivaldi?</string>
-    <string name="successful_update_notification__channel_name">Notification de mise à jour réussie de %1$s</string>
-    <string name="successful_update_notification__channel_description">Canal de notification pour les mises à jour réussies de %1$s.</string>
-    <string name="successful_update_notification__notification_title">%1$s a été mis à jour.</string>
-    <string name="successful_update__notification_message">L\'application a été mise à jour avec succès en arrière-plan.</string>
-    <string name="failed_update_notification__channel_name">notification d\'échec de la mise à jour de %1$s</string>
-    <string name="failed_update_notification__channel_description">Canal de notification des échecs de mise à jour de %1$s.</string>
-    <string name="failed_update_notification__notification_title">%1$s n\'a pas pu être mis à jour.</string>
-    <string name="failed_update_notification__notification_message">Erreur (%1$d) : %2$s</string>
 </resources>

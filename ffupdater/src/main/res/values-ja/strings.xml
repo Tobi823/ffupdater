@@ -43,6 +43,10 @@
     <string name="download_the_app">アプリをダウンロード</string>
     <string name="error_notification__channel_description">バックグラウンドの更新チェックのエラーを表示します</string>
     <string name="error_notification__channel_name">バックグラウンドチェックのエラー</string>
+    <string name="failed_update_notification__channel_description">失敗した %1$s 更新の通知チャネル。</string>
+    <string name="failed_update_notification__channel_name">%1$s 更新失敗通知</string>
+    <string name="failed_update_notification__notification_message">エラー (%1$d): %2$s</string>
+    <string name="failed_update_notification__notification_title">%1$s は更新できませんでした。</string>
     <string name="firefox_beta__description">Android用Firefoxブラウザは、プライベートで、非常に高速に動作します。何千ものオンライントラッカーが毎日あなたを追跡し、あなたがオンラインで何にアクセスしたか等の情報を収集し、ブラウジング速度を低下させています。Firefoxは、これらのトラッカーの2000以上をデフォルトでブロックし、さらにブラウザをカスタマイズしたい場合は、広告ブロックのアドオンも利用できます。Firefoxは、あなたが必要とするセキュリティとスピードを、プライベートなモバイルブラウザで実現します。</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
     <string name="firefox_beta__warning">このアプリは開発者やテスター向けに作られたものです。作業に影響を与える様々なバグが含まれている可能性があります。このアプリをインストールしますか？</string>
@@ -149,6 +153,10 @@
     <string name="settings__theme_light">ライトテーマ</string>
     <string name="settings__theme_system_default">システム標準に従う</string>
     <string name="show_warning_before_installation_dialog__title">警告</string>
+    <string name="successful_update__notification_message">アプリはバックグラウンドで正常に更新されました。</string>
+    <string name="successful_update_notification__channel_description">成功した %1$s 更新の通知チャネル。</string>
+    <string name="successful_update_notification__channel_name">%1$s 正常に更新された通知</string>
+    <string name="successful_update_notification__notification_title">%1$s が更新されました。</string>
     <string name="ungoogled_chromium__description">Googleとの統合がないGoogle Chromium。\n\nGoogleアカウントにサインインしなくても、Chromiumはセキュリティとプライバシーの面で非常に優れています。しかし、ChromiumはGoogleのウェブサービスやバイナリに依存しています。さらに、GoogleはChromiumをユーザーにとって簡単で直感的なものにするように設計しているため、内部操作の透明性とコントロールに妥協していることになる。</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromiumは、Google Chrome（Chromium）の技術基盤を使用していますが、これを好まない人もいます。Ungoogled Chromiumをインストールしますか？</string>
@@ -179,12 +187,4 @@
     <string name="vivaldi__description">Vivaldi は思い通りにカスタマイズできる新しいプライベートなウェブブラウザです。内蔵の広告ブロッカー、トラッキング防止機能、プライベートな翻訳機能をはじめ、便利な機能をたくさん搭載しています。メモやページキャプチャーのような機能を使えば使うほど毎日の効率が良くなります。デスクトップと同じスタイルのタブやダーク/ライトテーマなどのレイアウト設定で、あなただけのブラウザにしましょう。ダウンロードは無料。いますぐダウンロードして、快適で安全なブラウジングをはじめましょう。</string>
     <string name="vivaldi__title">Vivaldiブラウザ</string>
     <string name="vivaldi__warning">Vivaldiは部分的にしかオープンソースではありません（詳しくは<a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>）。また、Google Chromeの技術基盤（Chromium）を使用しています。\n\nこれを好まない人もいます。Vivaldiをインストールしたいですか？</string>
-    <string name="successful_update_notification__channel_name">%1$s 正常に更新された通知</string>
-    <string name="successful_update_notification__channel_description">成功した %1$s 更新の通知チャネル。</string>
-    <string name="successful_update_notification__notification_title">%1$s が更新されました。</string>
-    <string name="successful_update__notification_message">アプリはバックグラウンドで正常に更新されました。</string>
-    <string name="failed_update_notification__channel_name">%1$s 更新失敗通知</string>
-    <string name="failed_update_notification__channel_description">失敗した %1$s 更新の通知チャネル。</string>
-    <string name="failed_update_notification__notification_title">%1$s は更新できませんでした。</string>
-    <string name="failed_update_notification__notification_message">エラー (%1$d): %2$s</string>
 </resources>
