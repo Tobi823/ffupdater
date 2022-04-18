@@ -23,7 +23,6 @@ import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
-import de.marmaro.krt.ffupdater.installer.BackgroundSessionInstaller
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.CancellationException

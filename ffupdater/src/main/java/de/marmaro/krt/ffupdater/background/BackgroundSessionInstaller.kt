@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.installer
+package de.marmaro.krt.ffupdater.background
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
@@ -15,6 +15,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.SessionSuccessCallback
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import java.io.File
@@ -99,6 +100,6 @@ class BackgroundSessionInstaller(
 
     companion object {
         private const val PACKAGE_INSTALLED_ACTION =
-            "de.marmaro.krt.ffupdater.installer.BackgroundSessionInstaller.SESSION_API_PACKAGE_INSTALLED"
+            "de.marmaro.krt.ffupdater.background.BackgroundSessionInstaller.SESSION_API_PACKAGE_INSTALLED"
     }
 }
