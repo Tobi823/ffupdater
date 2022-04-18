@@ -22,6 +22,8 @@
     <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Bromite?</string>
+    <string name="bromite_systemwebview__description">The SystemWebView package contains the core browser/rendering engine of Bromite and its same features; it offers the possibility to replace the default browser component for the whole Android system.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="but_was">But was:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copy crash report to clipboard</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">The following error occurred when the download URL was fetched. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
@@ -177,5 +179,4 @@
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi is only partially open source (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
 </resources>

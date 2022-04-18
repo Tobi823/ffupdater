@@ -22,6 +22,8 @@
     <string name="bromite__description">Bromite ma na celu zapewnienie komfortowego przeglądania stron bez ingerencji w prywatność dzięki szybkiemu silnikowi blokowania reklam. Minimalne zmiany interfejsu są stosowane, aby pomóc ograniczyć ideę "przeglądarki jako przestrzeni reklamowej".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite wykorzystuje rozwiązania techniczne Google Chrome (Chromium) - niektórym się to nie podoba. Czy na pewno chcesz zainstalować Bromite?</string>
+    <string name="bromite_systemwebview__description">Pakiet SystemWebView zawiera podstawowy silnik przeglądarki/renderowania Bromite i jego funkcje; oferuje możliwość zastąpienia domyślnego komponentu przeglądarki dla całego systemu Android.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="but_was">Czy jednak:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Następujący błąd wystąpił podczas pobierania adresu URL pobierania. Jeśli ten błąd pojawia się często, zapraszamy do zgłoszenia go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>

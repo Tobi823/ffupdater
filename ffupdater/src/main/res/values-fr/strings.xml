@@ -22,6 +22,8 @@
     <string name="bromite__description">Bromite vise à offrir une expérience de navigation sans encombrement, sans fonctions envahissantes pour la vie privée et avec l\'ajout d\'un moteur rapide de blocage des publicités. Des changements minimes sont apportés à l\'interface utilisateur afin d\'enrayer l\'idée que le \"navigateur est une plate-forme publicitaire\".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Bromite?</string>
+    <string name="bromite_systemwebview__description">Le paquet SystemWebView contient le noyau du navigateur/ moteur de rendu de Bromite et ses mêmes fonctionnalités ; il offre la possibilité de remplacer le composant de navigateur par défaut pour l\'ensemble du système Android.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="but_was">Mais était:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copier le rapport d\'erreur dans le presse-papiers</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">L\'erreur suivante s\'est produite lors de l\'extraction de l\'URL de téléchargement. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport d\'erreur du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>

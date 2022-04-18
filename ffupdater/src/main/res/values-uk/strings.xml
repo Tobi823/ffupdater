@@ -22,6 +22,8 @@
     <string name="bromite__description">Bromite націлений на те, щоб забезпечити безперешкодний перегляд веб-сторінок без функцій, що заважають конфіденційності, та з додаванням швидкого механізму блокування реклами. Мінімальні зміни користувальницького інтерфейсу застосовуються, щоб допомогти приборкати ідею \"браузер як рекламна платформа\".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Bromite?</string>
+    <string name="bromite_systemwebview__description">Пакет SystemWebView містить основний браузер і механізм візуалізації Bromite та ті самі функції; </string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="but_was">Але було:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопіюйте звіт про аварійне завершення роботи в буфер обміну</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Під час отримання URL -адреси завантаження сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>

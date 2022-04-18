@@ -22,6 +22,8 @@
     <string name="bromite__description">Bromite mira a fornire un\'esperienza di navigazione senza fronzoli, senza funzionalità invasive della privacy e con l\'aggiunta di un veloce motore di blocco delle pubblicità. I cambiamenti minimi dell\'interfaccia utente sono applicati per aiutare a frenare l\'idea di "browser come una piattaforma pubblicitaria".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Bromite?</string>
+    <string name="bromite_systemwebview__description">Il pacchetto SystemWebView contiene il core browser/rendering engine di Bromite e le sue stesse caratteristiche; offre la possibilità di sostituire il componente browser predefinito per l\'intero sistema Android.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="but_was">Ma era:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copia il rapporto di arresto anomalo negli appunti</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Si è verificato il seguente errore quando è stato recuperato l\'URL di download. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>

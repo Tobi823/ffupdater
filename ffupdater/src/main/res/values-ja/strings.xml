@@ -22,6 +22,8 @@
     <string name="bromite__description">Bromiteは、プライバシーを侵害する機能を排除し、高速な広告ブロック機能を追加することで、高速なブラウジング体験を提供することを目的としています。</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromiteは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？</string>
+    <string name="bromite_systemwebview__description">SystemWebViewパッケージは、Bromiteのコアブラウザ／レンダリングエンジンと同じ機能を持ち、Androidシステム全体のデフォルトブラウザコンポーネントを置き換える可能性を提供します。</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="but_was">But was:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピーする</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">ダウンロードURLを取得する際に以下のエラーが発生しました。このエラーが頻繁に発生する場合は、notabug.org、GitHub、またはGitLabで自由に報告してください。その際、クリップボードからのクラッシュレポートと、このエラーを再現する方法の説明を忘れずに付け加えてください。</string>

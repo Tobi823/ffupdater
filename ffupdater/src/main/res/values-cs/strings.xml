@@ -22,6 +22,8 @@
     <string name="bromite__description">Bromite si klade za cíl poskytnout pohodlný zážitek bez narušení soukromí s rychlým blokováním reklam. Minimální změny rozhrání pomáhají omezit představu "prohlížeč jako reklamní plocha".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Bromite?</string>
+    <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje hlavní prohlížeč/vykreslovací modul Bromite a jeho stejné funkce; </string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="but_was">Ale byl:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Zkopírovat chybové hlášení do schránky</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Při načítání adresy URL pro stahování došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
