@@ -77,9 +77,10 @@ class BackgroundSessionInstaller(
     }
 
     private fun copyApkToSession(downloadedFile: File, session: Session) {
-        session.openWrite("package", 0, downloadedFile.length()).use { sessionStream ->
-            downloadedFile.inputStream().use { downloadedFileStream ->
-                downloadedFileStream.copyTo(sessionStream)
+        val length = downloadedFile.length()
+        session.openWrite("package", 0, length).buffered().use { sessionStream ->
+            downloadedFile.inputStream().buffered().use { fileStream ->
+                fileStream.copyTo(sessionStream)
             }
         }
     }
