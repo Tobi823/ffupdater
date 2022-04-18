@@ -60,7 +60,6 @@ class InstallActivity : AppCompatActivity() {
     private var stateJob: Job? = null
     private lateinit var fileFingerprint: CertificateValidationResult
     private lateinit var appFingerprint: CertificateValidationResult
-    private var appInstallationFailedErrorMessage: String? = null
 
     // persistent data across orientation changes
     class InstallActivityViewModel : ViewModel() {
@@ -68,8 +67,7 @@ class InstallActivity : AppCompatActivity() {
         var fileDownloader: FileDownloader? = null
         var updateCheckResult: UpdateCheckResult? = null
         var error: Pair<Int?, Exception?>? = null
-        var fetchUrlException: Exception? = null
-        var fetchUrlExceptionText: String? = null
+        var installationError: Pair<Int, String>? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,15 +87,12 @@ class InstallActivity : AppCompatActivity() {
 
         settingsHelper = SettingsHelper(this)
         fingerprintValidator = FingerprintValidator(packageManager)
+        appCache = AppCache(app)
         appInstaller = AppInstaller.create(
-            { restartStateMachine(USER_HAS_INSTALLED_APP_SUCCESSFUL) },
-            { errorMessage ->
-                appInstallationFailedErrorMessage = errorMessage ?: "/"
-                restartStateMachine(FAILURE_APP_INSTALLATION)
-            },
+            this,
+            appCache.getFile(this),
             InstallActivity::class.java,
         )
-        appCache = AppCache(app)
         findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
             restartStateMachine(TRIGGER_INSTALLATION_PROCESS)
         }
@@ -421,10 +416,15 @@ class InstallActivity : AppCompatActivity() {
         }
 
         @MainThread
-        fun triggerInstallationProcess(ia: InstallActivity): State {
+        suspend fun triggerInstallationProcess(ia: InstallActivity): State {
             ia.show(R.id.installingApplication)
-            ia.appInstaller.install(ia, ia.appCache.getFile(ia))
-            return SUCCESS_PAUSE
+            val result = ia.appInstaller.installAsync().await()
+            return if (result.success) {
+                USER_HAS_INSTALLED_APP_SUCCESSFUL
+            } else {
+                ia.viewModel.installationError = Pair(result.errorCode ?: -99, result.errorMessage ?: "/")
+                FAILURE_APP_INSTALLATION
+            }
         }
 
         @MainThread
@@ -507,7 +507,7 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.installerFailed)
             ia.show(R.id.install_activity__delete_cache)
             ia.show(R.id.install_activity__open_cache_folder)
-            var error = ia.appInstallationFailedErrorMessage
+            var error = ia.viewModel.installationError?.second
             if (error != null) {
                 if ("INSTALL_FAILED_INTERNAL_ERROR" in error && "Permission Denied" in error) {
                     error += "\n\n${ia.getString(R.string.install_activity__try_disable_miui_optimization)}"

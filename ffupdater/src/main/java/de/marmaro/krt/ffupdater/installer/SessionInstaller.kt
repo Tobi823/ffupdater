@@ -16,71 +16,81 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Deferred
 import java.io.File
 import java.io.IOException
 
 @RequiresApi(Build.VERSION_CODES.N)
 class SessionInstaller<T : Any>(
-    private val appInstalledCallback: () -> Any,
-    private val appNotInstalledCallback: (errorMessage: String?) -> Any,
-    private val intentReceiverClass: Class<T>,
+    private val activity: Activity,
+    private val file: File,
+    private val intentReceiverClass: Class<T>
 ) : AppInstaller {
+    private val status = CompletableDeferred<InstallResult>()
+
     override fun onNewIntentCallback(intent: Intent, context: Context) {
         if (intent.action != PACKAGE_INSTALLED_ACTION) {
             return
         }
         val bundle = intent.extras ?: return
-        when (val status = bundle.getInt(EXTRA_STATUS)) {
+        val extraStatus = bundle.getInt(EXTRA_STATUS)
+        val reportFailure = { message: String ->
+            status.complete(InstallResult(false, extraStatus, message))
+        }
+        when (extraStatus) {
             STATUS_PENDING_USER_ACTION -> {
                 try {
                     // request installation permission
                     // but this should never happens because the permission is already requested in MainActivity
                     context.startActivity(bundle.get(Intent.EXTRA_INTENT) as Intent)
                 } catch (e: ActivityNotFoundException) {
-                    val tip = context.getString(
-                        R.string.install_activity__try_disable_miui_optimization
-                    )
-                    appNotInstalledCallback("${e.message}\n\n$tip")
+                    val tip = context.getString(R.string.install_activity__try_disable_miui_optimization)
+                    reportFailure("${e.message}\n\n$tip")
                 }
             }
             STATUS_SUCCESS -> {
-                appInstalledCallback()
+                status.complete(InstallResult(true, null, null))
             }
             STATUS_FAILURE -> {
-                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure))
+                reportFailure(context.getString(R.string.session_installer__status_failure))
             }
             STATUS_FAILURE_ABORTED -> {
-                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_aborted))
+                reportFailure(context.getString(R.string.session_installer__status_failure_aborted))
             }
             STATUS_FAILURE_BLOCKED -> {
-                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_blocked))
+                reportFailure(context.getString(R.string.session_installer__status_failure_blocked))
             }
             STATUS_FAILURE_CONFLICT -> {
-                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_conflict))
+                reportFailure(context.getString(R.string.session_installer__status_failure_conflict))
             }
             STATUS_FAILURE_INCOMPATIBLE -> {
-                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_incompatible))
+                reportFailure(context.getString(R.string.session_installer__status_failure_incompatible))
             }
             STATUS_FAILURE_INVALID -> {
-                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_invalid))
+                reportFailure(context.getString(R.string.session_installer__status_failure_invalid))
             }
             STATUS_FAILURE_STORAGE -> {
-                appNotInstalledCallback(context.getString(R.string.session_installer__status_failure_storage))
+                reportFailure(context.getString(R.string.session_installer__status_failure_storage))
             }
             else -> {
-                val errorMessage = bundle.getString(EXTRA_STATUS_MESSAGE)
-                appNotInstalledCallback("($status) $errorMessage")
+                reportFailure("($extraStatus) ${bundle.getString(EXTRA_STATUS_MESSAGE)}")
             }
         }
     }
 
-    override fun install(activity: Activity, file: File) {
+    override fun installAsync(): Deferred<InstallResult> {
         require(file.exists()) { "File does not exists." }
         try {
-            return installInternal(activity, file)
+            installInternal(activity, file)
+            return status
         } catch (e: IOException) {
-            throw Exception("Fail to install app.", e)
+            status.completeExceptionally(Exception("Fail to install app.", e))
+        } catch (e: Exception) {
+            status.completeExceptionally(e)
         }
+        return status
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
@@ -96,9 +106,10 @@ class SessionInstaller<T : Any>(
             try {
                 copyApkToSession(downloadedFile, session)
             } catch (e: IOException) {
-                session.abandon()
                 val error = activity.getString(R.string.session_installer__not_enough_storage, e.message)
-                appNotInstalledCallback(error)
+                status.complete(InstallResult(false, 6, error))
+                // abandon() will trigger a 2nd complete()-call - but this 2nd call will be ignored
+                session.abandon()
                 return
             }
             val intentSender = createSessionChangeReceiver(activity)

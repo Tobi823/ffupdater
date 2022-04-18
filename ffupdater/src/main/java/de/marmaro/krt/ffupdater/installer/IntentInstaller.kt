@@ -5,33 +5,43 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
+import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Deferred
 import java.io.File
 import java.io.IOException
 
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class IntentInstaller(
-        private val appInstalledCallback: () -> Any,
-        private val appNotInstalledCallback: (errorMessage: String) -> Any,
+    private val activity: Activity,
+    private val file: File,
 ) : AppInstaller {
+    private val status = CompletableDeferred<InstallResult>()
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CODE_INSTALL) {
             if (resultCode == Activity.RESULT_OK) {
-                appInstalledCallback()
+                status.complete(InstallResult(true, null, null))
             } else {
-                appNotInstalledCallback("resultCode is '$resultCode'")
+                val installResult = data?.extras?.getInt("android.intent.extra.INSTALL_RESULT")
+                val errorMessage = "resultCode: $resultCode, INSTALL_RESULT: $installResult"
+                status.complete(InstallResult(false, resultCode, errorMessage))
             }
         }
     }
 
-    override fun install(activity: Activity, file: File) {
+    override fun installAsync(): Deferred<InstallResult> {
         require(file.exists()) { "File does not exists." }
         try {
-            return installInternal(activity, file)
+            installInternal(activity, file)
+            return status
         } catch (e: IOException) {
-            throw IntentInstallerException("fail to install app", e)
+            status.completeExceptionally(Exception("fail to install app", e))
+        } catch (e: Exception) {
+            status.completeExceptionally(e)
         }
+        return status
     }
 
     /**
@@ -46,8 +56,6 @@ class IntentInstaller(
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
         activity.startActivityForResult(intent, REQUEST_CODE_INSTALL)
     }
-
-    class IntentInstallerException(message: String, throwable: Throwable) : Exception(message, throwable)
 
     companion object {
         private const val REQUEST_CODE_INSTALL = 0
