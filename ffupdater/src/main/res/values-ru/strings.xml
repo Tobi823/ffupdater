@@ -179,4 +179,12 @@
     <string name="vivaldi__description">"Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования.  Меняйте внешний вид. Меняйте интерфейс браузера для Android с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели.  Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве.  Используйте несколько поисковых систем. Переключайтесь между ними в одно касание. Используйте префиксы в адресной строке для выбора нужной поисковой системы."</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">Исходный код Vivaldi не полностью открыт (см. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для получения дополнительной информации). Он также основан на Google Chrome (Chromium).\n\nНекоторым людям это не нравится. Хотите ли вы установить Vivaldi?</string>
+    <string name="successful_update_notification__channel_name">%1$s уведомление об успешном обновлении</string>
+    <string name="successful_update_notification__channel_description">Канал уведомления об успешных обновлениях %1$s.</string>
+    <string name="successful_update_notification__notification_title">%1$s был обновлен.</string>
+    <string name="successful_update__notification_message">Приложение было успешно обновлено в фоновом режиме.</string>
+    <string name="failed_update_notification__channel_name">Уведомление о сбое обновления %1$s</string>
+    <string name="failed_update_notification__channel_description">Канал уведомления о неудачных обновлениях %1$s.</string>
+    <string name="failed_update_notification__notification_title">%1$s не удалось обновить.</string>
+    <string name="failed_update_notification__notification_message">Ошибка (%1$d): %2$s</string>
 </resources>

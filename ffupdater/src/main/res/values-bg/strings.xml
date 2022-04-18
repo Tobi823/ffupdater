@@ -179,4 +179,12 @@
     <string name="vivaldi__description">Vivaldi е нов поверителен браузър, изграден с гъвкавост наум. Набит е с полезни възможности, в т.ч. вградени блокер на реклами (фабрично забранен), защита срещу проследяване и поверителен превод. Инструменти като записки и прихващане на страници улесняват работата, но и пестят време. Истинските раздели в настолен стил, темите в тъмен или светъл облик и изборите на оформление ще позволят да го опитомите. Изтеглете безплатно и сърфирайте бързо.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi е само частично с отворен код (за повече информация вижте <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Освен това използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Vivaldi?</string>
+    <string name="successful_update_notification__channel_name">%1$s successful update notification</string>
+    <string name="successful_update_notification__channel_description">Notification channel for successful %1$s updates.</string>
+    <string name="successful_update_notification__notification_title">%1$s has been updated.</string>
+    <string name="successful_update__notification_message">App has been successfully updated in the background.</string>
+    <string name="failed_update_notification__channel_name">%1$s update failure notification</string>
+    <string name="failed_update_notification__channel_description">Notification channel for failed %1$s updates.</string>
+    <string name="failed_update_notification__notification_title">%1$s could not be updated.</string>
+    <string name="failed_update_notification__notification_message">Error (%1$d): %2$s</string>
 </resources>

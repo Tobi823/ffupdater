@@ -179,4 +179,12 @@
     <string name="vivaldi__description">Son derece hızlı bir İnternet tarayıcısını keşfedin! Vivaldi, esneklik göz önünde bulundurularak oluşturulmuş yeni, ücretsiz ve özel bir web tarayıcısıdır. İçinde var olan bir reklam engelleyici (açılır pencere engelleyici), izleme koruması ve özel çeviri gibi kullanışlı özelliklerle birlikte gelir. Uygun masaüstü stili sekmeler, Koyu/Açık temalar ve düzen seçenekleri gibi tarayıcı seçenekleri, onu sizin yapmanıza yardımcı olur.</string>
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
     <string name="vivaldi__warning">"Vivaldi sadece kısmen açık kaynaktır (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> daha fazla bilgi için). Vivaldi, Google Chrome\'un (Chromium) altyapısını kullanıyor - bazı insanlar bunu sevmiyor. Vivaldi\'yi yüklemek istiyor musunuz?"</string>
+    <string name="successful_update_notification__channel_name">%1$s başarılı güncelleme bildirimi</string>
+    <string name="successful_update_notification__channel_description">Başarılı %1$s güncellemeleri için bildirim kanalı.</string>
+    <string name="successful_update_notification__notification_title">%1$s güncellendi.</string>
+    <string name="successful_update__notification_message">Uygulama arka planda başarıyla güncellendi.</string>
+    <string name="failed_update_notification__channel_name">%1$s güncelleme hatası bildirimi</string>
+    <string name="failed_update_notification__channel_description">Başarısız %1$s güncellemeleri için bildirim kanalı.</string>
+    <string name="failed_update_notification__notification_title">%1$s güncellenemedi.</string>
+    <string name="failed_update_notification__notification_message">Hata (%1$d): %2$s</string>
 </resources>

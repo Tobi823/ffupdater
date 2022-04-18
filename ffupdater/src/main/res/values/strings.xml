@@ -183,4 +183,12 @@
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi is only partially open source (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?</string>
+    <string name="successful_update_notification__channel_name">%1$s successful update notification</string>
+    <string name="successful_update_notification__channel_description">Notification channel for successful %1$s updates.</string>
+    <string name="successful_update_notification__notification_title">%1$s has been updated.</string>
+    <string name="successful_update__notification_message">App has been successfully updated in the background.</string>
+    <string name="failed_update_notification__channel_name">%1$s update failure notification</string>
+    <string name="failed_update_notification__channel_description">Notification channel for failed %1$s updates.</string>
+    <string name="failed_update_notification__notification_title">%1$s could not be updated.</string>
+    <string name="failed_update_notification__notification_message">Error (%1$d): %2$s</string>
 </resources>

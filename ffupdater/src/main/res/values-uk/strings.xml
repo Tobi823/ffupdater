@@ -179,4 +179,12 @@
     <string name="vivaldi__description">Vivaldi - це новий приватний браузер з унікальною гнучкістю в налаштуванні. Він має такі корисні інстументи, як блокувальник реклами (вимкнений за промовчанням), захист від стеження та приватний перекладач. Нотатки та знімки сторінок прискорюють та полегшують робочий процес. Налаштування теми оформлення та вигляду й розташування вкладок додають індивідуальність браузерові. Завантажте безкоштовно та переглядайте сайти з насолодою.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">Vivaldi є лише частково відкритим вихідним кодом (див. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для отримання додаткової інформації). Він також використовує технічну базу Google Chrome (Chromium).\n\nДеяким людям це не до вподоби. Чи хочете ви встановити Vivaldi?</string>
+    <string name="successful_update_notification__channel_name">%1$s сповіщення про успішне оновлення</string>
+    <string name="successful_update_notification__channel_description">Канал сповіщень про успішні оновлення %1$s.</string>
+    <string name="successful_update_notification__notification_title">%1$s оновлено.</string>
+    <string name="successful_update__notification_message">Додаток успішно оновлено у фоновому режимі.</string>
+    <string name="failed_update_notification__channel_name">Повідомлення про помилку оновлення %1$s</string>
+    <string name="failed_update_notification__channel_description">Канал сповіщень про невдалі оновлення %1$s.</string>
+    <string name="failed_update_notification__notification_title">Не вдалося оновити %1$s.</string>
+    <string name="failed_update_notification__notification_message">Помилка (%1$d): %2$s</string>
 </resources>

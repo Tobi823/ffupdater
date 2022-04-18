@@ -179,4 +179,12 @@
     <string name="vivaldi__description">"Vivaldi to nowa, prywatna przeglądarka zbudowana z myślą o elastyczności. Posiada użyteczne funkcje, takie jak blokowanie reklam, ochronę przed śledzeniem czy prywatny tłumacz. Narzedzia, w tym notatki czy przechwytywanie ekranu, oszczędzają dużo czasu. Wreszcie opcje, jak klasyczny pasek kart czy motywy, pozwalają Ci urządzić się po swojemu. Pobierz za darmo i przeglądaj sieć szybciej. "</string>
     <string name="vivaldi__title">Przeglądarka Vivaldi</string>
     <string name="vivaldi__warning">Vivaldi jest tylko częściowo open source (zobacz <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>, aby uzyskać więcej informacji). Wykorzystuje również techniczne podstawy Google Chrome (Chromium).\n\nNiektórym osobom się to nie podoba. Czy chcesz zainstalować Vivaldiego?</string>
+    <string name="successful_update_notification__channel_name">%1$s powiadomienie o udanej aktualizacji</string>
+    <string name="successful_update_notification__channel_description">Kanał powiadamiania o udanych aktualizacjach %1$s.</string>
+    <string name="successful_update_notification__notification_title">%1$s został zaktualizowany.</string>
+    <string name="successful_update__notification_message">Aplikacja została pomyślnie zaktualizowana w tle.</string>
+    <string name="failed_update_notification__channel_name">Powiadomienie o niepowodzeniu aktualizacji %1$s</string>
+    <string name="failed_update_notification__channel_description">Kanał powiadamiania o nieudanych aktualizacjach %1$s.</string>
+    <string name="failed_update_notification__notification_title">Nie można zaktualizować %1$s.</string>
+    <string name="failed_update_notification__notification_message">Błąd (%1$d): %2$s</string>
 </resources>

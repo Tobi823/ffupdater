@@ -179,4 +179,12 @@
     <string name="vivaldi__description">Descubra um navegador extremamente veloz! Vivaldi é um navegador novo, gratuito, privado e muito flexível. Ele vem repleto de recursos úteis incluindo um AdBlocker (bloqueador de pop-ups) integrado, proteção contra rastreamento e opção de tradução privada. Navegador vem com abas especiais no estilo desktop, temas escuros/claros e muitas opções de layout.</string>
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">Vivaldi é parcialmente de software livre (veja <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> para mais detalhes). Ele também utiliza a base técnica do Google Chrome (Chromium).\n\nAlgumas pessoas não gostam disto. Você quer instalar o Vivaldi?</string>
+    <string name="successful_update_notification__channel_name">%1$s notificação de atualização bem sucedida</string>
+    <string name="successful_update_notification__channel_description">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
+    <string name="successful_update_notification__notification_title">%1$s foi atualizado.</string>
+    <string name="successful_update__notification_message">O aplicativo foi atualizado com sucesso em segundo plano.</string>
+    <string name="failed_update_notification__channel_name">%1$s notificação de falha de atualização</string>
+    <string name="failed_update_notification__channel_description">Canal de notificação para atualizações de %1$s falhadas.</string>
+    <string name="failed_update_notification__notification_title">%1$s não puderam ser atualizados.</string>
+    <string name="failed_update_notification__notification_message">Erro (%1$d): %2$s</string>
 </resources>

@@ -82,11 +82,17 @@ object NotificationBuilder {
         showNotification(
             context = context,
             channelId = "successful_background_update_notification_channel__${app.name.lowercase()}",
-            channelName = "$appTitle successful update notification",
-            channelDescription = "Notification channel for successful $appTitle updates.",
+            channelName = context.getString(R.string.successful_update_notification__channel_name, appTitle),
+            channelDescription = context.getString(
+                R.string.successful_update_notification__channel_description,
+                appTitle
+            ),
             notificationId = 500 + app.ordinal,
-            notificationTitle = "$appTitle has been updated.",
-            notificationMessage = "App has been successfully updated in the background.",
+            notificationTitle = context.getString(
+                R.string.successful_update_notification__notification_title,
+                appTitle
+            ),
+            notificationMessage = context.getString(R.string.successful_update__notification_message),
             intent = null
         )
     }
@@ -109,11 +115,21 @@ object NotificationBuilder {
         showNotification(
             context = context,
             channelId = "failed_background_update_notification_channel__${app.name.lowercase()}",
-            channelName = "$appTitle update failure notification",
-            channelDescription = "Notification channel for failed $appTitle updates.",
+            channelName = context.getString(R.string.failed_update_notification__channel_name, appTitle),
+            channelDescription = context.getString(
+                R.string.failed_update_notification__channel_description,
+                appTitle
+            ),
             notificationId = 600 + app.ordinal,
-            notificationTitle = "$appTitle could not be updated.",
-            notificationMessage = "Error ($errorCode): $errorMessage",
+            notificationTitle = context.getString(
+                R.string.failed_update_notification__notification_title,
+                appTitle
+            ),
+            notificationMessage = context.getString(
+                R.string.failed_update_notification__notification_message,
+                errorCode,
+                errorMessage
+            ),
             intent = InstallActivity.createIntent(context, app)
         )
     }

@@ -179,4 +179,12 @@
     <string name="vivaldi__description">Vivaldi je nový soukromý webový prohlížeč, postavený s ohledem na flexibilitu. Přináší řadu užitečných funkcí, včetně vestavěného blokování reklam (ve výchozím nastavení vypnuto), ochranou proti sledování a soukromým překladačem. Poznámky a zachycení stránky vám ušetří čas. Přizpůsobte si vše podle sebe s možnostmi typu listy jako na počítači, tmavý a světlý vzhled, či úpravy rozložení rozhraní. Stáhněte si zdarma Vivaldi a začněte prohlížejte rychleji.</string>
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">"Vivaldi je pouze částečně open source (viz. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Také používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Vivaldi?"</string>
+    <string name="successful_update_notification__channel_name">Oznámení o úspěšné aktualizaci %1$s</string>
+    <string name="successful_update_notification__channel_description">Kanál oznámení o úspěšných aktualizacích %1$s.</string>
+    <string name="successful_update_notification__notification_title">%1$s bylo aktualizováno.</string>
+    <string name="successful_update__notification_message">Aplikace byla úspěšně aktualizována na pozadí.</string>
+    <string name="failed_update_notification__channel_name">Upozornění na selhání aktualizace %1$s</string>
+    <string name="failed_update_notification__channel_description">Kanál oznámení o neúspěšných aktualizacích %1$s.</string>
+    <string name="failed_update_notification__notification_title">%1$s nelze aktualizovat.</string>
+    <string name="failed_update_notification__notification_message">Chyba (%1$d): %2$s</string>
 </resources>
