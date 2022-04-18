@@ -27,6 +27,7 @@ class FirefoxKlar(
     override val displayIcon = R.mipmap.ic_logo_firefox_focus_klar
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+    override val normalInstallation = true
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"

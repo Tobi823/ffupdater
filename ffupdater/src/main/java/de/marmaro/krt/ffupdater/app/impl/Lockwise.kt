@@ -23,10 +23,9 @@ class Lockwise(
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_logo_lockwise
     override val minApiLevel = Build.VERSION_CODES.N
-    override val supportedAbis = listOf(
-        ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64,
-        ABI.X86, ABI.MIPS, ABI.MIPS64
-    )
+    override val supportedAbis =
+        listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64, ABI.X86, ABI.MIPS, ABI.MIPS64)
+    override val normalInstallation = true
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"

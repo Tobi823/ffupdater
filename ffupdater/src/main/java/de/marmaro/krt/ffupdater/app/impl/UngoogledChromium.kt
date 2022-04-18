@@ -25,6 +25,7 @@ class UngoogledChromium(
     override val displayIcon = R.mipmap.ic_logo_ungoogled_chromium
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARMEABI_V7A, ABI.ARM64_V8A, ABI.X86)
+    override val normalInstallation = true
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"

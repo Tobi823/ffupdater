@@ -24,6 +24,7 @@ class FirefoxRelease(
     override val displayIcon = R.mipmap.ic_logo_firefox_release
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+    override val normalInstallation = true
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"

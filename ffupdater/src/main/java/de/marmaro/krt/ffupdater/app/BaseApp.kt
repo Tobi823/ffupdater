@@ -22,6 +22,9 @@ interface BaseApp {
     val supportedAbis: List<ABI>
     val signatureHash: String
 
+    // The installation does not require special actions like rooting the smartphone
+    val normalInstallation: Boolean
+
     @AnyThread
     fun isInstalled(context: Context): Boolean {
         return PackageManagerUtil(context.packageManager).isAppInstalled(packageName) &&

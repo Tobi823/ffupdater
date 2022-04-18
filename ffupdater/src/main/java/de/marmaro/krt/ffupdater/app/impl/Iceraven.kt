@@ -26,6 +26,7 @@ class Iceraven(
     override val displayIcon = R.mipmap.ic_logo_iceraven
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+    override val normalInstallation = true
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"

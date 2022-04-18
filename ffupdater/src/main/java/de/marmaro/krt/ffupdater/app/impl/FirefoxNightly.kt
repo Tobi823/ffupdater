@@ -31,6 +31,7 @@ class FirefoxNightly(
     override val displayIcon = R.mipmap.ic_logo_firefox_nightly
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+    override val normalInstallation = true
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"

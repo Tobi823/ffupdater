@@ -26,6 +26,7 @@ class Brave(
     override val displayIcon = R.mipmap.ic_logo_brave
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+    override val normalInstallation = true
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
