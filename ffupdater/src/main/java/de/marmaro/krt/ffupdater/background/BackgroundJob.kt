@@ -199,23 +199,23 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    private suspend fun installApplication(it: App) {
-        val appCache = AppCache(it)
+    private suspend fun installApplication(app: App) {
+        val appCache = AppCache(app)
         val file = appCache.getFile(applicationContext)
         if (!file.exists()) {
             val errorMessage = "AppCache has no cached APK file"
-            showFailedBackgroundInstallationNotification(applicationContext, it, -100, errorMessage)
+            showFailedBackgroundInstallationNotification(applicationContext, app, -100, errorMessage)
         }
 
-        val installer = BackgroundSessionInstaller(applicationContext, file)
+        val installer = BackgroundSessionInstaller(applicationContext, file, app)
         withContext(Dispatchers.Main) {
             val result = installer.installAsync().await()
             if (result.success) {
-                showSuccessfulBackgroundInstallationNotification(applicationContext, it)
+                showSuccessfulBackgroundInstallationNotification(applicationContext, app)
             } else {
                 val code = result.errorCode
                 val message = result.errorMessage
-                showFailedBackgroundInstallationNotification(applicationContext, it, code, message)
+                showFailedBackgroundInstallationNotification(applicationContext, app, code, message)
             }
         }
     }
