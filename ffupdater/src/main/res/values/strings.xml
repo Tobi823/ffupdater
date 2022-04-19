@@ -60,6 +60,8 @@
     <string name="firefox_nightly__warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Do you want to install it?</string>
     <string name="firefox_release__description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_release__title">Firefox Browser</string>
+    <string name="general__use_root__summary">FFUpdater will ask for root permission if this option is enabled and an app is installed or updated. To gain root privileges, you must use Magisk or other tools. If enabled, FFUpdater will install or updates apps in the foreground and background without user interaction.</string>
+    <string name="general__use_root__title">Use root permission to install or update apps</string>
     <string name="github" translatable="false">GitHub</string>
     <string name="go_back">Go back</string>
     <string name="iceraven__description">Definitely not brought to you by Mozilla! \n\nIceraven Browser is a web browser for Android, based on Mozilla\'s Fenix version of Firefox, GeckoView and Mozilla Android Components. \n\nOur goal is to be a close fork of the new Firefox for Android that seeks to provide users with more options, more opportunities to customize (including a broad extension library), and more information about the pages they visit and how their browsers are interacting with those pages.</string>
@@ -191,6 +193,4 @@
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi is only partially open source (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?</string>
-    <string name="general__use_root__summary">FFUpdater will ask for root permission if this option is enabled and an app is installed or updated. To gain root privileges, you must use Magisk or other tools. If enabled, FFUpdater will install or updates apps in the foreground and background without user interaction.</string>
-    <string name="general__use_root__title">Use root permission to install or update apps</string>
 </resources>
