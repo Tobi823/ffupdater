@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.installer
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_MUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
@@ -12,9 +11,12 @@ import android.content.IntentSender
 import android.content.pm.PackageInstaller.*
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import kotlinx.coroutines.CompletableDeferred
@@ -24,8 +26,9 @@ import java.io.IOException
 
 @RequiresApi(Build.VERSION_CODES.N)
 class SessionInstaller<T : Any>(
-    private val activity: Activity,
+    private val activity: Context,
     private val file: File,
+    private val app: App,
     private val intentReceiverClass: Class<T>
 ) : AppInstaller {
     private val status = CompletableDeferred<InstallResult>()
@@ -83,7 +86,7 @@ class SessionInstaller<T : Any>(
     override suspend fun installAsync(): Deferred<InstallResult> {
         require(file.exists()) { "File does not exists." }
         try {
-            installInternal(activity, file)
+            installInternal()
             return status
         } catch (e: IOException) {
             status.completeExceptionally(Exception("Fail to install app.", e))
@@ -94,18 +97,15 @@ class SessionInstaller<T : Any>(
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
-    private fun installInternal(activity: Activity, downloadedFile: File) {
+    private fun installInternal() {
         val installer = activity.packageManager.packageInstaller
-        val params = SessionParams(MODE_FULL_INSTALL)
-        if (DeviceSdkTester.supportsAndroid12()) {
-            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
-        }
+        val params = createSessionParams()
 
         // TODO can I add checksums to SessionManager for more security?
         val id = installer.createSession(params)
         installer.openSession(id).use { session ->
             try {
-                copyApkToSession(downloadedFile, session)
+                copyApkToSession(session)
             } catch (e: IOException) {
                 val error = activity.getString(R.string.session_installer__not_enough_storage, e.message)
                 status.complete(InstallResult(false, 6, error))
@@ -113,28 +113,49 @@ class SessionInstaller<T : Any>(
                 session.abandon()
                 return
             }
-            val intentSender = createSessionChangeReceiver(activity)
+            val intentSender = createSessionChangeReceiver()
             session.commit(intentSender)
         }
     }
 
-    private fun copyApkToSession(downloadedFile: File, session: Session) {
-        session.openWrite("package", 0, downloadedFile.length()).use { sessionStream ->
-            downloadedFile.inputStream().use { downloadedFileStream ->
+    private fun createSessionParams(): SessionParams {
+        val params = SessionParams(MODE_FULL_INSTALL)
+        // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
+        params.setAppIcon(BitmapFactory.decodeResource(activity.resources, app.detail.displayIcon))
+        params.setAppLabel(activity.getString(app.detail.displayTitle))
+        params.setAppPackageName(app.detail.packageName)
+        params.setSize(file.length())
+        if (DeviceSdkTester.supportsAndroidNougat()) {
+            params.setOriginatingUid(android.os.Process.myUid())
+        }
+        if (DeviceSdkTester.supportsAndroidOreo()) {
+            params.setInstallReason(PackageManager.INSTALL_REASON_USER)
+        }
+        if (DeviceSdkTester.supportsAndroid12()) {
+            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
+        }
+        return params
+    }
+
+    private fun copyApkToSession(session: Session) {
+        val name = "${app.detail.packageName}_${System.currentTimeMillis()}"
+        session.openWrite(name, 0, file.length()).use { sessionStream ->
+            file.inputStream().use { downloadedFileStream ->
                 downloadedFileStream.copyTo(sessionStream)
+                session.fsync(sessionStream)
             }
         }
     }
 
-    private fun createSessionChangeReceiver(content: Context): IntentSender {
-        val intent = Intent(content, intentReceiverClass)
+    private fun createSessionChangeReceiver(): IntentSender {
+        val intent = Intent(activity, intentReceiverClass)
         intent.action = PACKAGE_INSTALLED_ACTION
         val flags = if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_MUTABLE
         } else {
             FLAG_UPDATE_CURRENT
         }
-        val pendingIntent = PendingIntent.getActivity(content, 0, intent, flags)
+        val pendingIntent = PendingIntent.getActivity(activity, 0, intent, flags)
         return pendingIntent.intentSender
     }
 

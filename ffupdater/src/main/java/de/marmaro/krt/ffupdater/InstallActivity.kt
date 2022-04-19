@@ -91,6 +91,7 @@ class InstallActivity : AppCompatActivity() {
         appInstaller = AppInstaller.create(
             this,
             appCache.getFile(this),
+            app,
             InstallActivity::class.java,
         )
         findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
