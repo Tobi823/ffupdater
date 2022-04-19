@@ -1,4 +1,4 @@
-# 2022-04-?? Version 75.3.0 (97)
+# 2022-04-19 Version 75.3.0 (97)
 * Add Brave Beta and Brave Nightly
 * Add Turkish translation (thanks metezd - Tobi823/ffupdater#129)
 * Add Bromite SystemWebView

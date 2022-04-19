@@ -1,0 +1,5 @@
+* Brave BetaとBrave Nightlyを追加しました。
+* トルコ語の翻訳を追加 (metezd - Tobi823/ffupdater#129 に感謝)
+* Bromite SystemWebViewの追加
+* Android 12+ および root 化されたデバイスのサイレントバックグラウンドアップデート対応
+* SessionInstallerの改良を試みる

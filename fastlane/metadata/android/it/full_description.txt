@@ -10,10 +10,6 @@ Scarica, installa e aggiorna questi browser rispettosi della privacy:
 e:
 - Firefox Lockwise
 
-FFUpdater verificherà periodicamente la presenza di aggiornamenti e visualizzerà una notifica quando è disponibile un aggiornamento. Questa funzione può essere disabilitata e la frequenza di verifica può essere modificata.
-
-FFUpdater inoltre scaricherà automaticamente gli aggiornamenti delle app in background se la rete corrente è illimitata e il dispositivo ha spazio sufficiente.
-
-Si prega di riaprire FFupdater dopo averlo spostato nella memoria interna/esterna.
+FFUpdater controlla gli aggiornamenti in background e li scarica pure. Su Android 12+ o sui dispositivi con root, FFUpdater può anche aggiornare le applicazioni senza l'interazione dell'utente.
 
 Visita https://notabug.org/Tobiwan/ffupdater/src/master/README.md o usa il link sottostante "Codice sorgente" per visualizzare ulteriori informazioni sulle misure di sicurezza, altri canali di distribuzione, limitazioni, bug, FAQ, istruzioni di compilazione, librerie di terze parti utilizzate, dettagli tecnici ecc.

@@ -25,11 +25,8 @@ and:
 
 - [Firefox Lockwise](https://play.google.com/store/apps/details?id=mozilla.lockbox)
 
-FFUpdater will check periodically for updates and will display a notification when an update is available.
-This feature itself can be disabled and the check frequency can be changed.
-
-FFUpdater will also automatically download the app updates in the background if the current network is
-unmetered and the device has enough storage.
+FFUpdater checks for updates in the background and downloads them as well. On Android 12+ or root devices,
+FFUpdater can also update the apps without user interaction.
 
 ## Security measures
 
