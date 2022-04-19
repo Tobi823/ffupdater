@@ -461,4 +461,30 @@ class SettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns true
         assertEquals(MODE_NIGHT_AUTO_BATTERY, SettingsHelper(context).themePreference)
     }
+
+    @Test
+    fun `isRootUsageEnabled default value`() {
+        assertFalse(SettingsHelper(context).isRootUsageEnabled)
+    }
+
+    @Test
+    fun `isRootUsageEnabled with true`() {
+        sharedPreferences.edit().putBoolean("general__use_root", true).commit()
+        assertTrue(SettingsHelper(context).isRootUsageEnabled)
+    }
+
+    @Test
+    fun `isRootUsageEnabled with false`() {
+        sharedPreferences.edit().putBoolean("general__use_root", false).commit()
+        assertFalse(SettingsHelper(context).isRootUsageEnabled)
+    }
+
+    @Test
+    fun `isRootUsageEnabled with changing values`() {
+        val settingsHelper = SettingsHelper(context)
+        sharedPreferences.edit().putBoolean("general__use_root", false).commit()
+        assertFalse(settingsHelper.isRootUsageEnabled)
+        sharedPreferences.edit().putBoolean("general__use_root", true).commit()
+        assertTrue(settingsHelper.isRootUsageEnabled)
+    }
 }

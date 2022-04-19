@@ -31,7 +31,7 @@ class IntentInstaller(
         }
     }
 
-    override fun installAsync(): Deferred<InstallResult> {
+    override suspend fun installAsync(): Deferred<InstallResult> {
         require(file.exists()) { "File does not exists." }
         try {
             installInternal(activity, file)

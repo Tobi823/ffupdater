@@ -3,7 +3,8 @@ package de.marmaro.krt.ffupdater.installer
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroidNougat
+import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.Deferred
 import java.io.File
 
@@ -12,14 +13,14 @@ interface AppInstaller {
 
     fun onNewIntentCallback(intent: Intent, context: Context) {}
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
-    fun installAsync(): Deferred<InstallResult>
+    suspend fun installAsync(): Deferred<InstallResult>
 
     companion object {
         fun <T : Any> create(activity: Activity, file: File, intentReceiverClass: Class<T>): AppInstaller {
-            return if (DeviceSdkTester.supportsAndroidNougat()) {
-                SessionInstaller(activity, file, intentReceiverClass)
-            } else {
-                IntentInstaller(activity, file)
+            return when {
+                SettingsHelper(activity).isRootUsageEnabled -> RootInstaller(file)
+                supportsAndroidNougat() -> SessionInstaller(activity, file, intentReceiverClass)
+                else -> IntentInstaller(activity, file)
             }
         }
     }

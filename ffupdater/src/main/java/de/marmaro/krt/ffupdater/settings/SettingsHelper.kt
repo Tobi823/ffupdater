@@ -75,7 +75,8 @@ class SettingsHelper(context: Context) {
      */
     val excludedAppsFromBackgroundUpdateCheck: List<App>
         get() {
-            val disableApps = preferences.getStringSet("background__update_check__excluded_apps", null) ?: setOf()
+            val disableApps = preferences.getStringSet("background__update_check__excluded_apps", null)
+                ?: setOf()
             return disableApps.mapNotNull {
                 try {
                     App.valueOf(it)
@@ -84,4 +85,7 @@ class SettingsHelper(context: Context) {
                 }
             }
         }
+
+    val isRootUsageEnabled: Boolean
+        get() = preferences.getBoolean("general__use_root", false)
 }

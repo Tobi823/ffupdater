@@ -94,4 +94,15 @@
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="General">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="general__use_root"
+            app:singleLineTitle="false"
+            app:summary="@string/general__use_root__summary"
+            app:title="@string/general__use_root__title" />
+
+    </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
+
 </PreferenceScreen>

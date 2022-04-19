@@ -187,4 +187,6 @@
     <string name="vivaldi__description">Son derece hızlı bir İnternet tarayıcısını keşfedin! Vivaldi, esneklik göz önünde bulundurularak oluşturulmuş yeni, ücretsiz ve özel bir web tarayıcısıdır. İçinde var olan bir reklam engelleyici (açılır pencere engelleyici), izleme koruması ve özel çeviri gibi kullanışlı özelliklerle birlikte gelir. Uygun masaüstü stili sekmeler, Koyu/Açık temalar ve düzen seçenekleri gibi tarayıcı seçenekleri, onu sizin yapmanıza yardımcı olur.</string>
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
     <string name="vivaldi__warning">"Vivaldi sadece kısmen açık kaynaktır (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> daha fazla bilgi için). Vivaldi, Google Chrome\'un (Chromium) altyapısını kullanıyor - bazı insanlar bunu sevmiyor. Vivaldi\'yi yüklemek istiyor musunuz?"</string>
+    <string name="general__use_root__summary">FFUpdater, bu seçenek etkinleştirildiyse ve bir uygulama yüklendiyse veya güncellendiyse kök izni isteyecektir. </string>
+    <string name="general__use_root__title">Uygulamaları yüklemek veya güncellemek için kök iznini kullanın</string>
 </resources>

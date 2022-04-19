@@ -80,7 +80,7 @@ class SessionInstaller<T : Any>(
         }
     }
 
-    override fun installAsync(): Deferred<InstallResult> {
+    override suspend fun installAsync(): Deferred<InstallResult> {
         require(file.exists()) { "File does not exists." }
         try {
             installInternal(activity, file)
@@ -101,6 +101,7 @@ class SessionInstaller<T : Any>(
             params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
         }
 
+        // TODO can I add checksums to SessionManager for more security?
         val id = installer.createSession(params)
         installer.openSession(id).use { session ->
             try {

@@ -187,4 +187,6 @@
     <string name="vivaldi__description">Scopri un browser Internet incredibilmente veloce! Vivaldi è un browser web nuovo, gratuito, e privato costruito pensando alla flessibilità. Viene fornito con funzioni utili tra cui un blocco delle pubblicità incorporato (blocco dei pop-up), protezione dal tracciamento e traduzione privata. Opzioni del browser come schede appropriate in stile desktop, temi chiaro/scuro, e le scelte di layout ti aiutano a renderlo tuo.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">"Vivaldi è open source solo parzialmente (vedi <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> per più informazioni). Inoltre usa la base tecnica di Google Chrome (Chromium).\n\nCiò non piace ad alcune persone. Vuoi installare Vivaldi?"</string>
+    <string name="general__use_root__summary">FFUpdater chiederà il permesso di root se questa opzione è abilitata e un\'app viene installata o aggiornata. Per ottenere i privilegi di root, devi usare Magisk o altri strumenti. Se abilitato, FFUpdater installerà o aggiornerà le app in primo piano e in background senza l\'interazione dell\'utente.</string>
+    <string name="general__use_root__title">Utilizzare i permessi di root per installare o aggiornare le app</string>
 </resources>
