@@ -86,7 +86,7 @@ class SessionInstaller<T : Any>(
     override suspend fun installAsync(): Deferred<InstallResult> {
         require(file.exists()) { "File does not exists." }
         try {
-            installInternal()
+            install()
             return status
         } catch (e: IOException) {
             status.completeExceptionally(Exception("Fail to install app.", e))
@@ -97,22 +97,18 @@ class SessionInstaller<T : Any>(
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
-    private fun installInternal() {
+    private fun install() {
         val installer = activity.packageManager.packageInstaller
         val params = createSessionParams()
-
-        // TODO can I add checksums to SessionManager for more security?
-        val id = installer.createSession(params)
+        val id = try {
+            installer.createSession(params)
+        } catch (e: IOException) {
+            val error = activity.getString(R.string.session_installer__not_enough_storage, e.message)
+            status.complete(InstallResult(false, 6, error))
+            return
+        }
         installer.openSession(id).use { session ->
-            try {
-                copyApkToSession(session)
-            } catch (e: IOException) {
-                val error = activity.getString(R.string.session_installer__not_enough_storage, e.message)
-                status.complete(InstallResult(false, 6, error))
-                // abandon() will trigger a 2nd complete()-call - but this 2nd call will be ignored
-                session.abandon()
-                return
-            }
+            copyApkToSession(session)
             val intentSender = createSessionChangeReceiver()
             session.commit(intentSender)
         }

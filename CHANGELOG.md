@@ -3,6 +3,7 @@
 * Add Turkish translation (thanks metezd - Tobi823/ffupdater#129)
 * Add Bromite SystemWebView
 * Support silent background updates for Android 12+ and rooted devices
+* Try to improve the SessionInstaller
 
 # 2022-04-17 Version 75.2.1 (96)
 
