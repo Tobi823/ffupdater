@@ -11,9 +11,12 @@ import android.content.pm.PackageInstaller.Session
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.SessionSuccessCallback
 import kotlinx.coroutines.CompletableDeferred
@@ -23,8 +26,9 @@ import java.io.IOException
 
 @RequiresApi(Build.VERSION_CODES.Q)
 class BackgroundSessionInstaller(
-    private val content: Context,
+    private val context: Context,
     private val file: File,
+    private val app: App,
 ) {
     data class InstallResult(val success: Boolean, val errorCode: Int?, val errorMessage: String?)
 
@@ -45,12 +49,15 @@ class BackgroundSessionInstaller(
 
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun install() {
-        val installer = content.packageManager.packageInstaller
-        val params = SessionParams(MODE_FULL_INSTALL)
-        if (DeviceSdkTester.supportsAndroid12()) {
-            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
+        val installer = context.packageManager.packageInstaller
+        val params = createSessionParams()
+        val id = try {
+            installer.createSession(params)
+        } catch (e: IOException) {
+            val error = context.getString(R.string.session_installer__not_enough_storage, e.message)
+            status.complete(InstallResult(false, 6, error))
+            return
         }
-        val id = installer.createSession(params)
 
         installer.registerSessionCallback(object : SessionSuccessCallback(id) {
             override fun onFinishedForThisSession(success: Boolean) {
@@ -63,25 +70,37 @@ class BackgroundSessionInstaller(
         })
 
         installer.openSession(id).use { session ->
-            try {
-                copyApkToSession(file, session)
-            } catch (e: IOException) {
-                val error = content.getString(R.string.session_installer__not_enough_storage, e.message)
-                status.complete(InstallResult(false, 6, error))
-                // abandon() will trigger a 2nd complete()-call - but this 2nd call will be ignored
-                session.abandon()
-                return
-            }
-            val intentSender = createFakeChangeReceiver(content)
+            copyApkToSession(file, session)
+            val intentSender = createFakeChangeReceiver(context)
             session.commit(intentSender)
         }
     }
 
+    private fun createSessionParams(): SessionParams {
+        val params = SessionParams(MODE_FULL_INSTALL)
+        // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
+        params.setAppIcon(BitmapFactory.decodeResource(context.resources, app.detail.displayIcon))
+        params.setAppLabel(context.getString(app.detail.displayTitle))
+        params.setAppPackageName(app.detail.packageName)
+        params.setSize(file.length())
+        if (DeviceSdkTester.supportsAndroidNougat()) {
+            params.setOriginatingUid(android.os.Process.myUid())
+        }
+        if (DeviceSdkTester.supportsAndroidOreo()) {
+            params.setInstallReason(PackageManager.INSTALL_REASON_USER)
+        }
+        if (DeviceSdkTester.supportsAndroid12()) {
+            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
+        }
+        return params
+    }
+
     private fun copyApkToSession(downloadedFile: File, session: Session) {
-        val length = downloadedFile.length()
-        session.openWrite("package", 0, length).buffered().use { sessionStream ->
-            downloadedFile.inputStream().buffered().use { fileStream ->
-                fileStream.copyTo(sessionStream)
+        val name = "${app.detail.packageName}_${System.currentTimeMillis()}"
+        session.openWrite(name, 0, file.length()).use { sessionStream ->
+            file.inputStream().use { downloadedFileStream ->
+                downloadedFileStream.copyTo(sessionStream)
+                session.fsync(sessionStream)
             }
         }
     }
