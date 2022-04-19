@@ -71,7 +71,7 @@ class BackgroundSessionInstaller(
 
         installer.openSession(id).use { session ->
             copyApkToSession(file, session)
-            val intentSender = createFakeChangeReceiver(context)
+            val intentSender = createFakeChangeReceiver()
             session.commit(intentSender)
         }
     }
@@ -105,15 +105,15 @@ class BackgroundSessionInstaller(
         }
     }
 
-    private fun createFakeChangeReceiver(content: Context): IntentSender {
-        val intent = Intent(content, BackgroundSessionInstaller::class.java)
+    private fun createFakeChangeReceiver(): IntentSender {
+        val intent = Intent(context, BackgroundSessionInstaller::class.java)
         intent.action = PACKAGE_INSTALLED_ACTION
         val flags = if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_MUTABLE
         } else {
             FLAG_UPDATE_CURRENT
         }
-        val pendingIntent = PendingIntent.getActivity(content, 0, intent, flags)
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent, flags)
         return pendingIntent.intentSender
     }
 
