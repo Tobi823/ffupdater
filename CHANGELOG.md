@@ -2,7 +2,7 @@
 * Add Brave Beta and Brave Nightly
 * Add Turkish translation (thanks metezd - Tobi823/ffupdater#129)
 * Add Bromite SystemWebView
-* Support silent background updates for Android 12+
+* Support silent background updates for Android 12+ and rooted devices
 
 # 2022-04-17 Version 75.2.1 (96)
 
