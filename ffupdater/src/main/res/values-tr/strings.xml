@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">FFUpdater Hakkında</string>
-    <string name="action_settings_title">Ayarlar</string>
     <string name="app_description">Gizlilik dostu tarayıcılar için bir güncelleyici</string>
     <string name="app_icon">uygulama simgesi</string>
     <string name="app_name">FFUpdater</string>

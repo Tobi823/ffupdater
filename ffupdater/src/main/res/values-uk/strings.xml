@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Про FFUpdater</string>
-    <string name="action_settings_title">Налаштування</string>
     <string name="app_description">Програма оновлення для конфіденційних браузерів</string>
     <string name="app_icon">значок програми</string>
     <string name="app_name">FFUpdater</string>

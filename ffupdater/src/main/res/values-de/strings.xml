@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Über FFUpdater</string>
-    <string name="action_settings_title">Einstellungen</string>
     <string name="app_description">Updater für datenschutzfreundliche Browser</string>
     <string name="app_icon">Applikations-Icon</string>
     <string name="app_name">FFUpdater</string>

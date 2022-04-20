@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Относно FFUpdater</string>
-    <string name="action_settings_title">Настройки</string>
     <string name="app_icon">пиктограма на приложение</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Грешка при инсталиране на приложението</string>

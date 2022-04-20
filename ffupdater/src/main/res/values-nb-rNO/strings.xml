@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_icon">programikon</string>
-    <string name="action_settings_title">Innstillinger</string>
     <string name="app_description">Oppgraderinger for personvernsvennlige nettlesere</string>
     <string name="install_activity__use_cached_downloaded_apk">Bruk allerede nedlastet fil fra:</string>
     <string name="crash_report__got_to_notabug_org">Surf til notabug.org</string>
