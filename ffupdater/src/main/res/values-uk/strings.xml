@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">164 / 5000 Translation results Завантаження завантажень</string>
     <string name="running_downloads_dialog__yes">Так</string>
     <string name="session_installer__not_enough_storage">Операцію не вдалося виконати, оскільки недостатньо доступного місця: %1$s</string>
+    <string name="session_installer__require_user_interaction">Вимагають взаємодії з користувачем.</string>
     <string name="session_installer__status_failure">Операція загалом провалилася. Система завжди намагатиметься надати більш конкретну причину збою, але в деяких рідкісних випадках це може бути доставлено.</string>
     <string name="session_installer__status_failure_aborted">Операція не вдалася, оскільки її активно перервали. Наприклад, користувач активно відхилив запитувані дозволи або сеанс був перерваний.</string>
     <string name="session_installer__status_failure_blocked">Операцію не вдалося виконати, оскільки вона була заблокована. Наприклад, політика пристрою може блокувати операцію, перевірка пакетів може заблокувати операцію, або програма може знадобитися для роботи основної системи.</string>

@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">Mevcut indirmeler</string>
     <string name="running_downloads_dialog__yes">Evet</string>
     <string name="session_installer__not_enough_storage">Yeterli depolama alanı olmadığı için işlem başarısız oldu: %1$s</string>
+    <string name="session_installer__require_user_interaction">Kullanıcı etkileşimi gerektirir.</string>
     <string name="session_installer__status_failure">İşlem genel bir şekilde başarısız oldu. Sistem her zaman daha spesifik bir arıza nedeni sağlamaya çalışacaktır, ancak bazı nadir durumlarda bu sağlanabilir.</string>
     <string name="session_installer__status_failure_aborted">İşlem, etkin bir şekilde durdurulduğu için başarısız oldu. Örneğin, kullanıcı istenen izinleri etkin bir şekilde reddetti veya oturum sonlandırıldı.</string>
     <string name="session_installer__status_failure_blocked">İşlem engellendiği için başarısız oldu. Örneğin, bir cihaz politikası işlemi engelliyor olabilir, bir paket doğrulayıcı işlemi engellemiş olabilir veya uygulama, çekirdek sistem işlemi için gerekli olabilir.</string>

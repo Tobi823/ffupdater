@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">Текущи изтегляния</string>
     <string name="running_downloads_dialog__yes">Да</string>
     <string name="session_installer__not_enough_storage">Операцията е неуспешна, защото няма достатъчно свободно пространство: %1$s</string>
+    <string name="session_installer__require_user_interaction">Require user interaction.</string>
     <string name="session_installer__status_failure">Операцията е неуспешна поради неясна причина. Системата винаги се опитва да предостави конкретна причина за грешката, но в редки случаи това може да се окаже невъзможно.</string>
     <string name="session_installer__status_failure_aborted">Операцията е неуспешна, защото е прекъсната нарочно. Например, потребителят активно е отказал исканите разрешения или сесията е била прекратена.</string>
     <string name="session_installer__status_failure_blocked">Операцията е неуспешна, защото е възпряна. Например политика на устройството или проверката на пакети могат да спрат операцията, или приложението може да се изисква за основната работа на системата.</string>

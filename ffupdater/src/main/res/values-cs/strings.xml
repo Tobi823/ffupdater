@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">Probíhá stahování</string>
     <string name="running_downloads_dialog__yes">Ano</string>
     <string name="session_installer__not_enough_storage">Operace selhala, protože není dostatek volného místa: %1$s</string>
+    <string name="session_installer__require_user_interaction">Vyžadovat interakci uživatele.</string>
     <string name="session_installer__status_failure">Operace selhala obecným způsobem. Systém se vždy pokusí uvést konkrétnější důvod selhání, ale v některých výjimečných případech nemusí být poskytnut.</string>
     <string name="session_installer__status_failure_aborted">Operace selhala, protože byla aktivně zrušena. Například, uživatel aktivně zamítnul vyžadované oprávnění, nebo byla relace přerušena.</string>
     <string name="session_installer__status_failure_blocked">Operace selhala, protože byla blokovaná. Například zásady zařízení mohou blokovat operaci, může ji blokovat ověřovatel balíčků nebo může být aplikace vyžadována pro základní provoz systému.</string>

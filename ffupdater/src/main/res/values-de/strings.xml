@@ -124,6 +124,7 @@
     <string name="running_downloads_dialog__title">Laufende Downloads</string>
     <string name="running_downloads_dialog__yes">Ja</string>
     <string name="session_installer__not_enough_storage">Der Vorgang ist fehlgeschlagen, weil nicht genügend Speicherplatz vorhanden ist: %1$s</string>
+    <string name="session_installer__require_user_interaction">Benutzerinteraktion erforderlich.</string>
     <string name="session_installer__status_failure">Der Vorgang ist auf eine allgemeine Weise fehlgeschlagen. Das System wird immer versuchen, einen genaueren Grund für das Scheitern anzugeben, aber in einigen seltenen Fällen kann dieser auch geliefert werden.</string>
     <string name="session_installer__status_failure_aborted">Der Vorgang ist fehlgeschlagen, weil er aktiv abgebrochen wurde. Beispielsweise hat der Benutzer aktiv die angeforderten Berechtigungen abgelehnt, oder die Sitzung wurde abgebrochen.</string>
     <string name="session_installer__status_failure_blocked">Der Vorgang ist fehlgeschlagen, weil er blockiert wurde. Der Vorgang kann z.B. durch eine Geräterichtlinie blockiert werden, eine Paketüberprüfung kann den Vorgang blockieren, oder die Anwendung ist für den Betrieb des Kernsystems erforderlich.</string>

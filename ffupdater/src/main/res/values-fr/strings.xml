@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">Téléchargements en cours</string>
     <string name="running_downloads_dialog__yes">Oui</string>
     <string name="session_installer__not_enough_storage">L\'opération a échoué parce que l\'espace de stockage disponible est insuffisant: %1$s</string>
+    <string name="session_installer__require_user_interaction">Exiger une interaction avec l\'utilisateur.</string>
     <string name="session_installer__status_failure">L\'opération a échoué de manière générique. Le système essaiera toujours de fournir une raison d\'échec plus spécifique, mais dans certains cas rares, cette raison peut être fournie.</string>
     <string name="session_installer__status_failure_aborted">L\'opération a échoué parce qu\'elle a été activement interrompue. Par exemple, l\'utilisateur a activement refusé les autorisations demandées, ou la session a été abandonnée.</string>
     <string name="session_installer__status_failure_blocked">L\'opération a échoué parce qu\'elle a été bloquée. Par exemple, la politique d\'un appareil peut bloquer l\'opération, un vérificateur de paquets peut avoir bloqué l\'opération, ou l\'application peut être nécessaire au fonctionnement du système central.</string>

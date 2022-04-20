@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">Pobieranie plików w trybie ciągłym</string>
     <string name="running_downloads_dialog__yes">Tak</string>
     <string name="session_installer__not_enough_storage">Operacja nie powiodła się, ponieważ nie jest dostępna wystarczająca ilość pamięci masowej: %1$s</string>
+    <string name="session_installer__require_user_interaction">Wymagają interakcji z użytkownikiem.</string>
     <string name="session_installer__status_failure">Operacja nie powiodła się w sposób ogólny. System zawsze będzie próbował podać bardziej szczegółowy powód niepowodzenia, ale w niektórych rzadkich przypadkach może to być dostarczone.</string>
     <string name="session_installer__status_failure_aborted">Operacja nie powiodła się, ponieważ została aktywnie przerwana. Na przykład, użytkownik aktywnie odmówił żądanych uprawnień lub sesja została porzucona.</string>
     <string name="session_installer__status_failure_blocked">Operacja nie powiodła się, ponieważ została zablokowana. Na przykład, polityka urządzenia może blokować operację, weryfikator pakietów może zablokować operację lub aplikacja może być wymagana do podstawowej pracy systemu.</string>

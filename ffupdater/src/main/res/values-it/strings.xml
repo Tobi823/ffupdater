@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">Download in corso</string>
     <string name="running_downloads_dialog__yes">Yes</string>
     <string name="session_installer__not_enough_storage">L\'operazione è fallita perché non è disponibile abbastanza spazio di archiviazione: %1$s</string>
+    <string name="session_installer__require_user_interaction">Richiedono l\'interazione dell\'utente.</string>
     <string name="session_installer__status_failure">L\'operazione è fallita in modo generico. Il sistema cercherà sempre di fornire un motivo di errore più specifico, ma in alcuni casi rari questo può essere emesso.</string>
     <string name="session_installer__status_failure_aborted">L\'operazione è fallita perché è stata interrotta attivamente. Ad esempio, l\'utente ha rifiutato attivamente le autorizzazioni richieste o la sessione è stata abbandonata.</string>
     <string name="session_installer__status_failure_blocked">L\'operazione è fallita perché è stata bloccata. Ad esempio, una politica del dispositivo potrebbe bloccare l\'operazione, un verificatore del pacchetto potrebbe aver bloccato l\'operazione, o l\'app potrebbe essere richiesta per il funzionamento del sistema principale.</string>

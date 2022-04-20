@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">Downloads executados</string>
     <string name="running_downloads_dialog__yes">Sim</string>
     <string name="session_installer__not_enough_storage">O processo falhou porque não há espaço suficiente disponível: %1$s</string>
+    <string name="session_installer__require_user_interaction">Exigir a interação do usuário.</string>
     <string name="session_installer__status_failure">O processo falhou de modo genérico. O sistema sempre tentará fornecer um motivo de falha mais específico, mas em alguns casos raros isto pode ser entregue.</string>
     <string name="session_installer__status_failure_aborted">O processo falhou porque foi interrompido. Por exemplo, o usuário recusou as permissões solicitadas ou a sessão foi abandonada.</string>
     <string name="session_installer__status_failure_blocked">O processo falhou porque foi bloqueado. Por exemplo, uma regra no dispositivo pode estar bloqueando o processo, um verificador de pacotes pode ter bloqueado a operação ou um app pode ser necessário para a operação do sistema.</string>

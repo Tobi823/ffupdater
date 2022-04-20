@@ -120,6 +120,7 @@
     <string name="running_downloads_dialog__title">ランニング・ダウンロード</string>
     <string name="running_downloads_dialog__yes">はい。</string>
     <string name="session_installer__not_enough_storage">十分なストレージがないため、操作に失敗しました。%1$s</string>
+    <string name="session_installer__require_user_interaction">ユーザーのインタラクションを必要とする。</string>
     <string name="session_installer__status_failure">一般的な方法で操作に失敗しました。システムは常により具体的な失敗理由を提供しようとしますが、稀なケースでこれが配信されることがあります。</string>
     <string name="session_installer__status_failure_aborted">操作が失敗したのは、積極的に中止されたからです。たとえば、ユーザーが要求された権限を積極的に拒否した場合や、セッションが放棄された場合などです。</string>
     <string name="session_installer__status_failure_blocked">操作がブロックされたため、失敗しました。たとえば、デバイス ポリシーが操作をブロックしている、パッケージ ベリファイアが操作をブロックしている、またはアプリがシステムのコア操作に必要である可能性があります。</string>
