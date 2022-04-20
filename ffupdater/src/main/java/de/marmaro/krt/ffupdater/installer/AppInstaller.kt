@@ -23,7 +23,7 @@ interface AppInstaller {
     data class InstallResult(val success: Boolean, val errorCode: Int?, val errorMessage: String?)
     data class ExtendedInstallResult(
         val success: Boolean,
-        val checksum: String?,
+        val certificateHash: String?,
         val errorCode: Int?,
         val errorMessage: String?,
     )

@@ -31,8 +31,6 @@ import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
-import de.marmaro.krt.ffupdater.security.FingerprintValidator
-import de.marmaro.krt.ffupdater.security.FingerprintValidator.CertificateValidationResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -49,7 +47,6 @@ import kotlinx.coroutines.withContext
  */
 class InstallActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
-    private lateinit var fingerprintValidator: FingerprintValidator
     private lateinit var appInstaller: ForegroundAppInstaller
     private lateinit var appCache: AppCache
     private lateinit var settingsHelper: SettingsHelper
@@ -58,8 +55,6 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var app: App
     private var state = SUCCESS_PAUSE
     private var stateJob: Job? = null
-    private lateinit var fileFingerprint: CertificateValidationResult
-    private lateinit var appFingerprint: CertificateValidationResult
 
     // persistent data across orientation changes
     class InstallActivityViewModel : ViewModel() {
@@ -86,13 +81,12 @@ class InstallActivity : AppCompatActivity() {
         app = App.valueOf(passedAppName)
 
         settingsHelper = SettingsHelper(this)
-        fingerprintValidator = FingerprintValidator(packageManager)
         appCache = AppCache(app)
         appInstaller = ForegroundAppInstaller.create(this, app, appCache.getFile(this))
         lifecycle.addObserver(appInstaller)
 
         findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
-            restartStateMachine(TRIGGER_INSTALLATION_PROCESS)
+            restartStateMachine(INSTALL_APP)
         }
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
             appCache.delete(this)
@@ -174,22 +168,12 @@ class InstallActivity : AppCompatActivity() {
         FETCH_DOWNLOAD_INFORMATION(InstallActivity::fetchDownloadInformation),
         START_DOWNLOAD(InstallActivity::startDownload),
         REUSE_CURRENT_DOWNLOAD(InstallActivity::reuseCurrentDownload),
-        DOWNLOAD_WAS_SUCCESSFUL(InstallActivity::downloadWasSuccessful),
-        USE_CACHED_DOWNLOADED_APK(InstallActivity::useCachedDownloadedApk),
-        FINGERPRINT_OF_DOWNLOADED_FILE_OK(InstallActivity::fingerprintOfDownloadedFileOk),
-        TRIGGER_INSTALLATION_PROCESS(InstallActivity::triggerInstallationProcess),
-        USER_HAS_INSTALLED_APP_SUCCESSFUL(InstallActivity::userHasInstalledAppSuccessful),
-        APP_INSTALLATION_HAS_BEEN_REGISTERED(InstallActivity::appInstallationHasBeenRegistered),
-        FINGERPRINT_OF_INSTALLED_APP_OK(InstallActivity::fingerprintOfInstalledAppOk),
+        INSTALL_APP(InstallActivity::installApp),
 
         //===============================================
 
-        FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP(InstallActivity::failureUnknownSignatureOfInstalledApp),
         FAILURE_EXTERNAL_STORAGE_NOT_ACCESSIBLE(InstallActivity::failureExternalStorageNotAccessible),
         FAILURE_DOWNLOAD_UNSUCCESSFUL(InstallActivity::failureDownloadUnsuccessful),
-        FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE(InstallActivity::failureInvalidFingerprintOfDownloadedFile),
-        FAILURE_APP_INSTALLATION(InstallActivity::failureAppInstallation),
-        FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID(InstallActivity::failureFingerprintOfInstalledAppInvalid),
         FAILURE_SHOW_FETCH_URL_EXCEPTION(InstallActivity::failureShowFetchUrlException),
 
         // SUCCESS_PAUSE => state machine will be restarted externally
@@ -203,12 +187,7 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         fun start(ia: InstallActivity): State {
-            if (!ia.app.detail.isInstalled(ia) ||
-                ia.fingerprintValidator.checkInstalledApp(ia.app.detail).isValid
-            ) {
-                return CHECK_IF_STORAGE_IS_MOUNTED
-            }
-            return FAILURE_UNKNOWN_SIGNATURE_OF_INSTALLED_APP
+            return CHECK_IF_STORAGE_IS_MOUNTED
         }
 
         @MainThread
@@ -267,7 +246,9 @@ class InstallActivity : AppCompatActivity() {
             )
             ia.setText(R.id.fetchedUrlSuccessTextView, finishedText)
             if (ia.appCache.isAvailable(ia, updateCheckResult.availableResult)) {
-                return USE_CACHED_DOWNLOADED_APK
+                ia.show(R.id.useCachedDownloadedApk)
+                ia.setText(R.id.useCachedDownloadedApk__path, ia.appCache.getFile(ia).absolutePath)
+                return INSTALL_APP
             }
 
             if (ia.viewModel.fileDownloader?.currentDownloadResult != null) {
@@ -316,7 +297,7 @@ class InstallActivity : AppCompatActivity() {
             }
             AppDownloadStatus.foregroundDownloadIsFinished()
             if (result) {
-                return DOWNLOAD_WAS_SUCCESSFUL
+                return INSTALL_APP
             }
             return FAILURE_DOWNLOAD_UNSUCCESSFUL
         }
@@ -347,108 +328,48 @@ class InstallActivity : AppCompatActivity() {
             val success = fileDownloader.currentDownloadResult?.await() ?: false
             AppDownloadStatus.foregroundDownloadIsFinished()
             if (success) {
-                return DOWNLOAD_WAS_SUCCESSFUL
+                return INSTALL_APP
             }
             return FAILURE_DOWNLOAD_UNSUCCESSFUL
         }
 
         @MainThread
-        suspend fun downloadWasSuccessful(ia: InstallActivity): State {
-            val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
-
-            ia.show(R.id.downloadedFile)
-            val app = ia.app
-            ia.hide(R.id.downloadingFile)
-            ia.setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
-            ia.show(R.id.verifyDownloadFingerprint)
-
-            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.appCache.getFile(ia), app.detail)
-            ia.fileFingerprint = fingerprint
-
-            if (fingerprint.isValid) {
-                return FINGERPRINT_OF_DOWNLOADED_FILE_OK
-            }
-            ia.appCache.delete(ia)
-            return FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
-        }
-
-        @MainThread
-        suspend fun useCachedDownloadedApk(ia: InstallActivity): State {
-            val app = ia.app
-            ia.show(R.id.useCachedDownloadedApk)
-            ia.setText(R.id.useCachedDownloadedApk__path, ia.appCache.getFile(ia).absolutePath)
-            ia.show(R.id.verifyDownloadFingerprint)
-
-            val fingerprint = ia.fingerprintValidator.checkApkFile(ia.appCache.getFile(ia), app.detail)
-            ia.fileFingerprint = fingerprint
-            return if (fingerprint.isValid) {
-                FINGERPRINT_OF_DOWNLOADED_FILE_OK
-            } else {
-                ia.appCache.delete(ia)
-                FAILURE_INVALID_FINGERPRINT_OF_DOWNLOADED_FILE
-            }
-        }
-
-        @MainThread
-        fun fingerprintOfDownloadedFileOk(ia: InstallActivity): State {
-            ia.hide(R.id.verifyDownloadFingerprint)
-            ia.show(R.id.fingerprintDownloadGood)
-            ia.show(R.id.install_activity__retrigger_installation)
-            ia.setText(R.id.fingerprintDownloadGoodHash, ia.fileFingerprint.hexString)
-            return TRIGGER_INSTALLATION_PROCESS
-        }
-
-        @MainThread
-        suspend fun triggerInstallationProcess(ia: InstallActivity): State {
+        suspend fun installApp(ia: InstallActivity): State {
             ia.show(R.id.installingApplication)
+            ia.show(R.id.install_activity__retrigger_installation)
             val result = ia.appInstaller.installAsync().await()
-            return if (result.success) {
-                USER_HAS_INSTALLED_APP_SUCCESSFUL
-            } else {
-                ia.viewModel.installationError = Pair(result.errorCode ?: -99, result.errorMessage ?: "/")
-                FAILURE_APP_INSTALLATION
+            if (result.success) {
+                ia.hide(R.id.installingApplication)
+                ia.hide(R.id.install_activity__retrigger_installation)
+                ia.show(R.id.installerSuccess)
+                ia.show(R.id.fingerprintInstalledGood)
+                ia.setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
+                val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
+                val available = updateCheckResult.availableResult
+                ia.app.detail.appInstallationCallback(ia, available)
+                ia.appCache.delete(ia)
+                return SUCCESS_STOP
             }
-        }
 
-        @MainThread
-        fun userHasInstalledAppSuccessful(ia: InstallActivity): State {
+            ia.viewModel.installationError = Pair(result.errorCode ?: -80, result.errorMessage ?: "/")
             ia.hide(R.id.installingApplication)
             ia.hide(R.id.install_activity__retrigger_installation)
-            ia.show(R.id.installerSuccess)
-            return APP_INSTALLATION_HAS_BEEN_REGISTERED
-        }
-
-        @MainThread
-        fun appInstallationHasBeenRegistered(ia: InstallActivity): State {
-            ia.show(R.id.verifyInstalledFingerprint)
-            val fingerprint = ia.fingerprintValidator.checkInstalledApp(ia.app.detail)
-            ia.appFingerprint = fingerprint
-            ia.hide(R.id.verifyInstalledFingerprint)
-            return if (fingerprint.isValid) {
-                FINGERPRINT_OF_INSTALLED_APP_OK
-            } else {
-                FAILURE_FINGERPRINT_OF_INSTALLED_APP_INVALID
+            ia.show(R.id.installerFailed)
+            ia.show(R.id.install_activity__delete_cache)
+            ia.show(R.id.install_activity__open_cache_folder)
+            val cacheFolder = ia.appCache.getFile(ia).parentFile?.absolutePath ?: ""
+            ia.setText(R.id.install_activity__cache_folder_path, cacheFolder)
+            var error = ia.viewModel.installationError?.second
+            if (error != null) {
+                if ("INSTALL_FAILED_INTERNAL_ERROR" in error && "Permission Denied" in error) {
+                    error += "\n\n${ia.getString(R.string.install_activity__try_disable_miui_optimization)}"
+                }
+                ia.setText(R.id.installerFailedReason, error)
             }
-        }
-
-        @MainThread
-        fun fingerprintOfInstalledAppOk(ia: InstallActivity): State {
-            val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
-            ia.show(R.id.fingerprintInstalledGood)
-            ia.setText(R.id.fingerprintInstalledGoodHash, ia.appFingerprint.hexString)
-            val available = updateCheckResult.availableResult
-            ia.app.detail.appInstallationCallback(ia, available)
-            ia.appCache.delete(ia)
-            return SUCCESS_STOP
+            return ERROR_STOP
         }
 
         //===============================================
-
-        @MainThread
-        fun failureUnknownSignatureOfInstalledApp(ia: InstallActivity): State {
-            ia.show(R.id.unknownSignatureOfInstalledApp)
-            return ERROR_STOP
-        }
 
         @MainThread
         fun failureExternalStorageNotAccessible(ia: InstallActivity): State {
@@ -468,45 +389,6 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)
             ia.setText(R.id.downloadFileFailedText, ia.viewModel.fileDownloader?.errorMessage ?: "")
             ia.show(R.id.installerFailed)
-            ia.appCache.delete(ia)
-            return ERROR_STOP
-        }
-
-        @MainThread
-        fun failureInvalidFingerprintOfDownloadedFile(ia: InstallActivity): State {
-            ia.hide(R.id.verifyDownloadFingerprint)
-            ia.show(R.id.fingerprintDownloadBad)
-            ia.setText(R.id.fingerprintDownloadBadHashActual, ia.fileFingerprint.hexString)
-            ia.setText(R.id.fingerprintDownloadBadHashExpected, ia.app.detail.signatureHash)
-            ia.show(R.id.installerFailed)
-            ia.appCache.delete(ia)
-            return ERROR_STOP
-        }
-
-        @MainThread
-        fun failureAppInstallation(ia: InstallActivity): State {
-            ia.hide(R.id.installingApplication)
-            ia.hide(R.id.install_activity__retrigger_installation)
-            ia.show(R.id.installerFailed)
-            ia.show(R.id.install_activity__delete_cache)
-            ia.show(R.id.install_activity__open_cache_folder)
-            val cacheFolder = ia.appCache.getFile(ia).parentFile?.absolutePath ?: ""
-            ia.setText(R.id.install_activity__cache_folder_path, cacheFolder)
-            var error = ia.viewModel.installationError?.second
-            if (error != null) {
-                if ("INSTALL_FAILED_INTERNAL_ERROR" in error && "Permission Denied" in error) {
-                    error += "\n\n${ia.getString(R.string.install_activity__try_disable_miui_optimization)}"
-                }
-                ia.setText(R.id.installerFailedReason, error)
-            }
-            return ERROR_STOP
-        }
-
-        @MainThread
-        fun failureFingerprintOfInstalledAppInvalid(ia: InstallActivity): State {
-            ia.show(R.id.fingerprintInstalledBad)
-            ia.setText(R.id.fingerprintInstalledBadHashActual, ia.appFingerprint.hexString)
-            ia.setText(R.id.fingerprintInstalledBadHashExpected, ia.app.detail.signatureHash)
             ia.appCache.delete(ia)
             return ERROR_STOP
         }
