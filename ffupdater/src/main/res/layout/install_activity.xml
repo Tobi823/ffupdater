@@ -32,22 +32,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/unknownSignatureOfInstalledApp"
-            style="@style/DownloadActivitySegment"
-            android:background="@color/errorRed"
-            android:padding="8dp">
-
-            <TextView
-                style="@style/BoldTextView"
-                android:text="@string/install_activity__unknown_signature_of_installed_app_text1" />
-
-            <TextView
-                style="@style/BoldTextView"
-                android:text="@string/install_activity__unknown_signature_of_installed_app_text2" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/externalStorageNotAccessible"
             style="@style/DownloadActivitySegment"
             android:background="@color/errorRed"
@@ -114,17 +98,13 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/downloadedFile"
-            style="@style/DownloadActivitySegment">
+        <LinearLayout style="@style/DownloadActivitySegment">
 
             <TextView
                 style="@style/BoldTextView"
                 android:text="@string/install_activity__downloaded_application_from" />
 
-            <TextView
-                android:id="@+id/downloadedFileUrl"
-                style="@style/MonospaceSelectableTextView" />
+            <TextView style="@style/MonospaceSelectableTextView" />
 
         </LinearLayout>
 
@@ -164,76 +144,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/verifyDownloadFingerprint"
-            style="@style/DownloadActivitySegment">
-
-            <TextView
-                style="@style/BoldTextView"
-                android:text="@string/install_activity__verifying_downloaded_application_certificate" />
-
-            <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fingerprintDownloadGood"
-            style="@style/DownloadActivitySegment"
-            android:background="@color/successGreen"
-            android:padding="8dp">
-
-            <TextView
-                style="@style/BoldTextView"
-                android:text="@string/install_activity__downloaded_application_is_verified" />
-
-            <TextView
-                style="@style/DefaultTextView"
-                android:text="@string/install_activity__sha_256_certificate_fingerprint" />
-
-            <TextView
-                android:id="@+id/fingerprintDownloadGoodHash"
-                style="@style/MonospaceSelectableTextView" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fingerprintDownloadBad"
-            style="@style/DownloadActivitySegment"
-            android:background="@color/errorRed"
-            android:padding="8dp">
-
-            <TextView
-                style="@style/BoldTextView"
-                android:text="@string/install_activity__downloaded_application_is_not_verified" />
-
-            <TextView
-                style="@style/DefaultTextView"
-                android:text="@string/install_activity__expected_sha_256_certificate_fingerprint" />
-
-            <TextView
-                android:id="@+id/fingerprintDownloadBadHashExpected"
-                style="@style/MonospaceSelectableTextView" />
-
-            <TextView
-                style="@style/DefaultTextView"
-                android:text="@string/but_was" />
-
-            <TextView
-                android:id="@+id/fingerprintDownloadBadHashActual"
-                style="@style/MonospaceSelectableTextView" />
-
-            <TextView
-                style="@style/DefaultTextView"
-                android:layout_marginTop="8dp"
-                android:text="@string/install_activity__invalid_downloaded_certificate_fingerprint_explanation"
-                android:textIsSelectable="true" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/installingApplication"
             style="@style/DownloadActivitySegment">
 
@@ -256,22 +166,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/verifyInstalledFingerprint"
-            style="@style/DownloadActivitySegment">
-
-            <TextView
-                style="@style/BoldTextView"
-                android:text="@string/install_activity__verifying_downloaded_application_certificate" />
-
-            <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/fingerprintInstalledGood"
             style="@style/DownloadActivitySegment"
             android:background="@color/successGreen"
@@ -288,40 +182,6 @@
             <TextView
                 android:id="@+id/fingerprintInstalledGoodHash"
                 style="@style/MonospaceSelectableTextView" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fingerprintInstalledBad"
-            style="@style/DownloadActivitySegment"
-            android:background="@color/errorRed"
-            android:padding="8dp">
-
-            <TextView
-                style="@style/BoldTextView"
-                android:text="@string/installed_app_is_not_verified" />
-
-            <TextView
-                style="@style/DefaultTextView"
-                android:text="@string/install_activity__expected_sha_256_certificate_fingerprint" />
-
-            <TextView
-                android:id="@+id/fingerprintInstalledBadHashExpected"
-                style="@style/MonospaceSelectableTextView" />
-
-            <TextView
-                style="@style/DefaultTextView"
-                android:text="@string/but_was" />
-
-            <TextView
-                android:id="@+id/fingerprintInstalledBadHashActual"
-                style="@style/MonospaceSelectableTextView" />
-
-            <TextView
-                style="@style/DefaultTextView"
-                android:layout_marginTop="8dp"
-                android:text="@string/install_activity__invalid_installed_certificate_fingerprint_explanation"
-                android:textIsSelectable="true" />
 
         </LinearLayout>
 

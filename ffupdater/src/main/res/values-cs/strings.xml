@@ -24,7 +24,6 @@
     <string name="bromite__warning">Bromite používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Bromite?</string>
     <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje hlavní prohlížeč/vykreslovací modul Bromite a jeho stejné funkce; </string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="but_was">Ale byl:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Zkopírovat chybové hlášení do schránky</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Při načítání adresy URL pro stahování došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Při kontrole aktualizací v hlavním zobrazení došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
@@ -72,15 +71,11 @@
     <string name="install_activity__download_failed">Stahování selhalo</string>
     <string name="install_activity__downloaded_application_from">Aplikace stažená z:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Stažená aplikace NEBYLA ověřena</string>
-    <string name="install_activity__downloaded_application_is_verified">Stažená aplikace je ověřena</string>
     <string name="install_activity__exception__show_button">"<u>Zobrazit detailní chybové hlášení.</u>"</string>
-    <string name="install_activity__expected_sha_256_certificate_fingerprint">Očekávaný otisk certifikátu SHA-256:</string>
     <string name="install_activity__external_storage_not_accessible">Externí úložiště není k dispozici - stahování nelze spustit. Součastný status je:</string>
     <string name="install_activity__fetch_url_for_download">Načítání adresy URL pro stahování z %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Adresa URL načtena z %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</string>
-    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Buď útočník nahradil správný stažený soubor zfalšovaným, nebo kontrola certifikátu již nefunguje. Otisk certifikátu můžete překontrolovat na stránce apkmirror.com nebo vytvořit issue na https://notabug.org/Tobiwan/ffupdater a informovat mě o chybě.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Buď jste nainstalovali poškozenou aplikaci, nebo nástroj pro kontrolu certifikátu již nefunguje. Otisk certifikátu můžete překontrolovat na stránce apkmirror.com nebo vytvořit issue na https://notabug.org/Tobiwan/ffupdater a informovat mě o chybě. \n\nDoporučuji aplikaci odinstalovat.</string>
     <string name="install_activity__open_cache_explanation">Můžete otevřít složku mezipaměti a zkopírovat soubor APK do umístění s větším množstvím volného místa.</string>
     <string name="install_activity__open_cache_folder_button_text">otevřít složku mezipaměti</string>
     <string name="install_activity__retrigger_installation__button_title">Zkusit instalaci aplikace znovu</string>
@@ -89,10 +84,7 @@
     <string name="install_activity__too_low_memory_description">Nedostatek volného místa (k dispozici pouze %1$d MB). To může vést k neúspěšnému stažení nebo instalaci aplikace.</string>
     <string name="install_activity__too_low_memory_title">Málo místa v paměti</string>
     <string name="install_activity__try_disable_miui_optimization">Pokud používáte Xiaomi nebo MIUI, zkuste vypnout \"MIUI Spořič baterie\".</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">Než FFUpdater může nainstalovat nebo stáhnout aplikaci, je nutné odinstalovat stávající aplikaci. Vytvořte si zálohu dat, protože odinstalováním dojde ke smazání všech záložek, nastavení atd.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">Důvod: Stávající aplikace není podepsaná původním vývojářem - možná je podepsaná aplikací F-Droid. Android zamítá instalovat aktualizovanou verzi aplikace, pokud se podpis liší od stávající nainstalované verze aplikace.</string>
     <string name="install_activity__use_cached_downloaded_apk">Použít již stažený soubor z:</string>
-    <string name="install_activity__verifying_downloaded_application_certificate">Ověření certifikátu aplikace</string>
     <string name="install_activity__you_can_now_close_this_window">Toto okno můžete zavřít</string>
     <string name="install_activity_label">Instalovat aplikaci</string>
     <string name="install_app">Instalovat aplikaci</string>

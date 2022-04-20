@@ -24,7 +24,6 @@
     <string name="bromite__warning">Bromite usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Bromite?</string>
     <string name="bromite_systemwebview__description">Il pacchetto SystemWebView contiene il core browser/rendering engine di Bromite e le sue stesse caratteristiche; offre la possibilità di sostituire il componente browser predefinito per l\'intero sistema Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="but_was">Ma era:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copia il rapporto di arresto anomalo negli appunti</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Si è verificato il seguente errore quando è stato recuperato l\'URL di download. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Si è verificato il seguente errore durante il controllo degli aggiornamenti nella pagina principale. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
@@ -72,15 +71,11 @@
     <string name="install_activity__download_failed">Download fallito</string>
     <string name="install_activity__downloaded_application_from">Applicazione scaricata da:</string>
     <string name="install_activity__downloaded_application_is_not_verified">L\'applicazione scaricata NON è verificata</string>
-    <string name="install_activity__downloaded_application_is_verified">L\'applicazione scaricata è verificata</string>
     <string name="install_activity__exception__show_button">"<u>Mostra il rapporto di errore dettagliato.</u>"</string>
-    <string name="install_activity__expected_sha_256_certificate_fingerprint">Impronta digitale del certificato SHA-256 prevista:</string>
     <string name="install_activity__external_storage_not_accessible">La memoria esterna non è disponibile - impossibile iniziare il download. Lo stato attuale è:</string>
     <string name="install_activity__fetch_url_for_download">Recupera l\'URL di download da %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Recuperato l\'URL di download da %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Limite di chiamate GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</string>
-    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">O un utente malintenzionato ha sostituito il download corretto con uno manomesso o il controllo del certificato non funziona più. Puoi ricontrollare l\'impronta digitale del certificato su apkmirror.com o puoi aprire una issue su https://notabug.org/Tobiwan/ffupdater per informarmi del bug.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">O è stata installata un\'applicazione manomessa o il controllo del certificato non funziona più. Puoi ricontrollare l\'impronta digitale del certificato su apkmirror.com o puoi aprire una issue su https://notabug.org/Tobiwan/ffupdater per informarmi del bug. \n\nTi consiglio di disinstallare l\'applicazione.</string>
     <string name="install_activity__open_cache_explanation">Puoi aprire la cartella di cache per copiare il file APK in un luogo con una memoria più libera.</string>
     <string name="install_activity__open_cache_folder_button_text">apri cartella di cache</string>
     <string name="install_activity__retrigger_installation__button_title">Riprova Installazione dell\'App</string>
@@ -89,10 +84,7 @@
     <string name="install_activity__too_low_memory_description">Il tuo dispositivo ha poca memoria disponibile (solo %1$d MB liberi). Questo porterà al fallimento del download o dell\'installazione.</string>
     <string name="install_activity__too_low_memory_title">Poco Spazio sul Disco</string>
     <string name="install_activity__try_disable_miui_optimization">Se stai usando Xiaomi oo MIUI, prova a disabilitare \"Ottimizzazione MIUI\".</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">Devi disinstallare l\'app esistente prima che FFUpdater possa installare o aggiornare l\'app. Effettua un backup dei tuoi dati perché la disinstallazione cancellerà tutti i tuoi segnalibri, impostazioni ecc.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">Motivo: l\'app attualmente installata non è firmata dallo sviluppatore originale - forse è firmata da F-Droid. Android si rifiuta di aggiornare un\'app se diverse persone hanno firmato la versione installata e aggiornata.</string>
     <string name="install_activity__use_cached_downloaded_apk">Usa il file già scaricato da:</string>
-    <string name="install_activity__verifying_downloaded_application_certificate">Verificando il certificato dell\'applicazione</string>
     <string name="install_activity__you_can_now_close_this_window">Ora puoi chiudere questa finestra</string>
     <string name="install_activity_label">Installa Applicazione</string>
     <string name="install_app">Installa app</string>

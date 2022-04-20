@@ -19,7 +19,7 @@ import java.io.IOException
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class IntentInstaller(
     private val activity: ComponentActivity,
-    private val app: App,
+    app: App,
     private val file: File,
 ) : ForegroundAppInstaller, SecureAppInstaller(activity, app, file) {
     private val status = CompletableDeferred<AppInstaller.InstallResult>()

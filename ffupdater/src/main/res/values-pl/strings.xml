@@ -24,7 +24,6 @@
     <string name="bromite__warning">Bromite wykorzystuje rozwiązania techniczne Google Chrome (Chromium) - niektórym się to nie podoba. Czy na pewno chcesz zainstalować Bromite?</string>
     <string name="bromite_systemwebview__description">Pakiet SystemWebView zawiera podstawowy silnik przeglądarki/renderowania Bromite i jego funkcje; oferuje możliwość zastąpienia domyślnego komponentu przeglądarki dla całego systemu Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="but_was">Czy jednak:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Następujący błąd wystąpił podczas pobierania adresu URL pobierania. Jeśli ten błąd pojawia się często, zapraszamy do zgłoszenia go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Podczas sprawdzania dostępności aktualizacji w widoku głównym wystąpił następujący błąd. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
@@ -72,15 +71,11 @@
     <string name="install_activity__download_failed">Pobieranie nie powiodło się</string>
     <string name="install_activity__downloaded_application_from">Pobrano aplikację z:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Pobrana aplikacja NIE została zweryfikowana</string>
-    <string name="install_activity__downloaded_application_is_verified">Pobrana aplikacja została zweryfikowana</string>
     <string name="install_activity__exception__show_button">"<u>Pokaż szczegółowy raport o błędach.</u>"</string>
-    <string name="install_activity__expected_sha_256_certificate_fingerprint">Oczekiwany odcisk palca certyfikatu SHA-256:</string>
     <string name="install_activity__external_storage_not_accessible">Zewnętrzna pamięć masowa nie jest dostępna - nie można rozpocząć pobierania. Aktualny status:</string>
     <string name="install_activity__fetch_url_for_download">Pobierz adres URL pobierania z %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Pobrano adres URL pobierania z %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Limit prędkości GitHub-API został przekroczony. Proszę spróbować pobrać ponownie w ciągu następnej godziny.</string>
-    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Albo atakujący zastąpił poprawny plik innym, albo narzędzie do sprawdzania certyfikatów już nie działa. Możesz dwukrotnie sprawdzić odcisk palca certyfikatu na apkmirror.com lub możesz utworzyć zgłoszenie na https://notabug.org/Tobiwan/ffupdater, aby poinformować mnie o błędzie.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Albo została zainstalowana uszkodzona aplikacja, albo narzędzie do sprawdzania certyfikatów już nie działa. Możesz dwukrotnie sprawdzić odcisk palca certyfikatu na apkmirror.com lub możesz utworzyć zgłoszenie na https://notabug.org/Tobiwan/ffupdater, aby poinformować mnie o błędzie. \n\nZalecam odinstalowanie aplikacji.</string>
     <string name="install_activity__open_cache_explanation">Możesz otworzyć folder pamięci podręcznej, aby skopiować plik APK do miejsca z większą ilością wolnego miejsca.</string>
     <string name="install_activity__open_cache_folder_button_text">otwórz folder pamięci podręcznej</string>
     <string name="install_activity__retrigger_installation__button_title">Ponów próbę instalacji aplikacji</string>
@@ -89,10 +84,7 @@
     <string name="install_activity__too_low_memory_description">Na Twoim urządzeniu dostępne jest tylko %1$d MB wolnego miejsca. Może to prowadzić do niepowodzenia pobierania lub instalacji aplikacji.</string>
     <string name="install_activity__too_low_memory_title">Mało Miejsca w Pamięci</string>
     <string name="install_activity__try_disable_miui_optimization">Jeśli używasz Xiaomi lub MIUI, spróbuj wyłączyć \"Optymalizację MIUI\".</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">Musisz odinstalować istniejącą aplikację, zanim FFUpdater będzie mógł zainstalować lub zaktualizować aplikację. Zrób kopię zapasową swoich danych, ponieważ odinstalowanie usunie wszystkie zakładki, ustawienia itp.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">Powód: Aktualnie zainstalowana aplikacja nie jest podpisana przez oryginalnego dewelopera - być może jest podpisana przez F-Droid. Android odmawia aktualizacji aplikacji, jeśli różne osoby podpisały zainstalowaną i zaktualizowaną wersję.</string>
     <string name="install_activity__use_cached_downloaded_apk">Użyj pobranego już pliku z:</string>
-    <string name="install_activity__verifying_downloaded_application_certificate">Weryfikowanie certyfikatu aplikacji</string>
     <string name="install_activity__you_can_now_close_this_window">Możesz teraz zamknąć to okno</string>
     <string name="install_activity_label">Zainstaluj aplikację</string>
     <string name="install_app">Zainstaluj aplikację</string>

@@ -24,7 +24,6 @@
     <string name="bromite__warning">Bromite usa os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Bromite?</string>
     <string name="bromite_systemwebview__description">O pacote SystemWebView contém o principal navegador/ mecanismo de renderização do Bromite e suas mesmas características; ele oferece a possibilidade de substituir o componente padrão do navegador para todo o sistema Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="but_was">Mas era:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copiar o relatório do erro ao Clipboard</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">O seguinte erro ocorreu quando a URL de download foi consultada. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
     <string name="crash_report__explain_text__main_activity_update_check">O seguinte erro ocorreu ao verificar por atualizações na interface principal. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
@@ -72,15 +71,11 @@
     <string name="install_activity__download_failed">Download falhou</string>
     <string name="install_activity__downloaded_application_from">Navegador baixado do:</string>
     <string name="install_activity__downloaded_application_is_not_verified">O navegador baixado NÃO foi verificado</string>
-    <string name="install_activity__downloaded_application_is_verified">O navegador baixado foi verificado</string>
     <string name="install_activity__exception__show_button">"<u>Mostrar o relatório do erro detalhado.</u>"</string>
-    <string name="install_activity__expected_sha_256_certificate_fingerprint">Certificado previsto da impressão digital SHA-256:</string>
     <string name="install_activity__external_storage_not_accessible">Armazenamento não está disponível - não é possível baixar. Status atual:</string>
     <string name="install_activity__fetch_url_for_download">Procurar pela URL de download em %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">A URL de download extraída de %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">O limite de consultas do GitHub-API foi excedido. Por favor, tente baixar outra vez em uma hora.</string>
-    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Ou um hacker substituiu o arquivo original por um outro modificado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado no apkmirror.com ou pode criar um relatório no https://notabug.org/Tobiwan/ffupdater para informar sobre o erro.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Ou um navegador modificado foi instalado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado no apkmirror.com ou pode criar um relatório no https://notabug.org/Tobiwan/ffupdater para informar sobre a falha. \n\nRecomendo desinstalar o navegador.</string>
     <string name="install_activity__open_cache_explanation">Você pode abrir o local do cache e copiar o arquivo APK para um outro local com mais armazenamento.</string>
     <string name="install_activity__open_cache_folder_button_text">abrir a localização do cache</string>
     <string name="install_activity__retrigger_installation__button_title">Tente novamente instalar o navegador</string>
@@ -89,10 +84,7 @@
     <string name="install_activity__too_low_memory_description">Seu dispositivo está com (apenas %1$d MB) do espaço disponível. Isto pode causar um erro ao baixar ou instalar.</string>
     <string name="install_activity__too_low_memory_title">Pouco espaço disponível</string>
     <string name="install_activity__try_disable_miui_optimization">Se você estiver usando Xiaomi ou MIUI, tente desativar a \"Otimização MIUI\".</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">Você precisa desinstalar o navegador existente para que o FFUpdater pode instalar ou atualizar ele automaticamente. Faça um backup dos seus dados porque a desinstalação removerá todos seus favoritos, configurações, etc.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">Motivo: O navegador instalado não é assinado pelo desenvolvedor original - talvez tenha sido assinado pelo F-Droid. O Android não permite atualizar nenhum app com diferentes assinaturas.</string>
     <string name="install_activity__use_cached_downloaded_apk">Use o navegador baixado do:</string>
-    <string name="install_activity__verifying_downloaded_application_certificate">Verificando certificado do navegador</string>
     <string name="install_activity__you_can_now_close_this_window">Pode fechar este aviso</string>
     <string name="install_activity_label">Instalar o navegador</string>
     <string name="install_app">Instalar o navegador</string>

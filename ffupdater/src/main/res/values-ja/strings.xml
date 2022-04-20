@@ -24,7 +24,6 @@
     <string name="bromite__warning">Bromiteは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？</string>
     <string name="bromite_systemwebview__description">SystemWebViewパッケージは、Bromiteのコアブラウザ／レンダリングエンジンと同じ機能を持ち、Androidシステム全体のデフォルトブラウザコンポーネントを置き換える可能性を提供します。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="but_was">But was:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピーする</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">ダウンロードURLを取得する際に以下のエラーが発生しました。このエラーが頻繁に発生する場合は、notabug.org、GitHub、またはGitLabで自由に報告してください。その際、クリップボードからのクラッシュレポートと、このエラーを再現する方法の説明を忘れずに付け加えてください。</string>
     <string name="crash_report__explain_text__main_activity_update_check">メインビューでアップデートをチェックする際に、以下のエラーが発生しました。このエラーが頻繁に発生する場合は、notabug.org、GitHub、またはGitLabで自由に報告してください。その際には、クリップボードからのクラッシュレポートと、このエラーを再現する方法の説明を忘れずに付け加えてください。</string>
@@ -72,15 +71,11 @@
     <string name="install_activity__download_failed">ダウンロード失敗</string>
     <string name="install_activity__downloaded_application_from">アプリのダウンロード元:</string>
     <string name="install_activity__downloaded_application_is_not_verified">ダウンロードしたアプリを検証できませんでした。</string>
-    <string name="install_activity__downloaded_application_is_verified">ダウンロードしたアプリは検証されました。</string>
     <string name="install_activity__exception__show_button">"<u>詳細なエラーレポートを表示する。</u>"</string>
-    <string name="install_activity__expected_sha_256_certificate_fingerprint">予期されるSHA-256証明書フィンガープリント:</string>
     <string name="install_activity__external_storage_not_accessible">外部ストレージが利用できません - ダウンロードが開始できません。 現在のステータス:</string>
     <string name="install_activity__fetch_url_for_download">%1$s からダウンロードURLを取得中</string>
     <string name="install_activity__fetched_url_for_download_successfully">%1$s からダウンロードURLを取得しました</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API の速度制限を超えました。1時間以内にもう一度ダウンロードをお試しください。</string>
-    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">攻撃者がアプリを改ざんされたものに置き換えたか、証明書チェッカーが正しく機能しなくなっています。 apkmirror.comで証明書のフィンガープリントを再確認するか、https://notabug.org/Tobiwan/ffupdater でIssueを作成してバグについて報告してください。</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">改ざんされたアプリケーションがインストールされているか、証明書チェッカーが正しく機能しなくなっています。apkmirror.comで証明書のフィンガープリントを再確認するか、https://notabug.org/Tobiwan/ffupdater でIssueを作成してバグについて報告してください。\n\nインストールしたアプリのアンインストールを推奨します</string>
     <string name="install_activity__open_cache_explanation">キャッシュフォルダを開いて、APKファイルをより空きストレージの多い場所にコピーすることができます。</string>
     <string name="install_activity__open_cache_folder_button_text">キャッシュフォルダを開く</string>
     <string name="install_activity__retrigger_installation__button_title">アプリのインストールを再試行する</string>
@@ -89,10 +84,7 @@
     <string name="install_activity__too_low_memory_description">このデバイスには %1$d MB の空き容量しかありません。これにより、ダウンロードやインストールに失敗する可能性があります。</string>
     <string name="install_activity__too_low_memory_title">ストレージ容量不足</string>
     <string name="install_activity__try_disable_miui_optimization">XiaomiのMIUIを使用している場合、「MIUIの最適化」を無効にしてみてください。</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">FFUpdaterがアプリをインストールまたはアップデートする前に、既存のアプリをアンインストールする必要があります。アンインストールすると、ブックマークや設定などがすべて削除されるため、データをバックアップすることを推奨します。</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">原因:現在インストールされているアプリは開発者によって署名されていません。 - おそらく、F-Droidによって署名されているかもしれません。Androidでは、インストールされているアプリとアップデートするアプリの署名が異なる場合、アプリのアップデートができません。</string>
     <string name="install_activity__use_cached_downloaded_apk">すでにダウンロード済みのファイルを使用します:</string>
-    <string name="install_activity__verifying_downloaded_application_certificate">アプリ署名を検証中</string>
     <string name="install_activity__you_can_now_close_this_window">ウィンドウを閉じても構いません</string>
     <string name="install_activity_label">アプリをインストール</string>
     <string name="install_app">アプリをインストール</string>

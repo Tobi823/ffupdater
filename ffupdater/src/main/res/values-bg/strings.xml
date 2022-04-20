@@ -24,7 +24,6 @@
     <string name="bromite__warning">Bromite използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Bromite?</string>
     <string name="bromite_systemwebview__description">The SystemWebView package contains the core browser/rendering engine of Bromite and its same features; it offers the possibility to replace the default browser component for the whole Android system.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="but_was">Но е:</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Копиране на доклада за срив в междинната памет</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">При извличане на адреса за изтегляне възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
     <string name="crash_report__explain_text__main_activity_update_check">При проверката за обновяване в главния изглед възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
@@ -72,15 +71,11 @@
     <string name="install_activity__download_failed">Грешка при изтегляне</string>
     <string name="install_activity__downloaded_application_from">Приложението е изтеглено от:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Изтегленото приложение НЕ е проверено</string>
-    <string name="install_activity__downloaded_application_is_verified">Изтегленото приложение е проверено</string>
     <string name="install_activity__exception__show_button">"<u>Подробнен доклад за грешка.</u>"</string>
-    <string name="install_activity__expected_sha_256_certificate_fingerprint">Очакван отпечатък с SHA-256 от сертификат:</string>
     <string name="install_activity__external_storage_not_accessible">Външно хранилище не е налично и изтегляне не може да започне. Текущото състояние е:</string>
     <string name="install_activity__fetch_url_for_download">Получаване на адрес за изтегляне от %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Получен е адрес за изтегляне от %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Превишено е ограничение на GitHub-API. Опитайте отново след час.</string>
-    <string name="install_activity__invalid_downloaded_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификати не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да съобщите за дефект на https://notabug.org/Tobiwan/ffupdater.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификати не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да съобщите за дефект на https://notabug.org/Tobiwan/ffupdater. \n\nПрепоръчително е да премахнете приложението.</string>
     <string name="install_activity__open_cache_explanation">Можете да отворите папката на междинната памет и да копирате файла на APK на място с повече свободно пространство.</string>
     <string name="install_activity__open_cache_folder_button_text">Отваряне</string>
     <string name="install_activity__retrigger_installation__button_title">Повторно инсталиране</string>
@@ -89,10 +84,7 @@
     <string name="install_activity__too_low_memory_description">Устройството разполага има свободни само %1$d МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>
     <string name="install_activity__too_low_memory_title">Недостатъчно свободно пространство</string>
     <string name="install_activity__try_disable_miui_optimization">Ако използвате Xiaomi или MIUI, опитайте да изключите „MIUI Optimization“.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text1">Трябва да премахнете инсталираното приложение преди FFUpdater да може да го инсталира или обновява. Направете резервно копие на данните преди да го премахнете, защото при премахване ще бъдат изтрити всички отметки, настройки и т.н.</string>
-    <string name="install_activity__unknown_signature_of_installed_app_text2">Причина: инсталираното приложение е не подписано от неговия разработчик. Възможно е да е подписано от F-Droid. Adroid отказва да обновява приложения ако подписа на инсталираното и обновяваното издание се различават.</string>
     <string name="install_activity__use_cached_downloaded_apk">Използва се изтеглен файл от:</string>
-    <string name="install_activity__verifying_downloaded_application_certificate">Проверка на сертификат на приложение</string>
     <string name="install_activity__you_can_now_close_this_window">Можете да затворите прозореца</string>
     <string name="install_activity_label">Инсталиране</string>
     <string name="install_app">Инсталиране</string>
