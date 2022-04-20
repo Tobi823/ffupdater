@@ -22,7 +22,7 @@
     <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Bromite?</string>
-    <string name="bromite_systemwebview__description">The SystemWebView package contains the core browser/rendering engine of Bromite and its same features; it offers the possibility to replace the default browser component for the whole Android system.</string>
+    <string name="bromite_systemwebview__description">The SystemWebView package contains the core browser/rendering engine of Bromite and its same features. It offers the possibility to replace the default browser component for the whole Android system.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copy crash report to clipboard</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">The following error occurred when the download URL was fetched. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
@@ -96,7 +96,9 @@
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="installed_version">Installed: %1$s</string>
-    <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU \n\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts</string>
+    <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU
+\n
+\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API limit exceeded. Retry next hour.</u>"</string>
     <string name="main_activity__no_unmetered_network">No unmetered network</string>
