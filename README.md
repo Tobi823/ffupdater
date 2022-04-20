@@ -28,6 +28,13 @@ and:
 FFUpdater checks for updates in the background and downloads them as well. On Android 12+ or root devices,
 FFUpdater can also update the apps without user interaction.
 
+## How to contribute
+
+You can improve the app translation with [Weblate](https://weblate.org). Go to (TODO: add Link), create an
+account and improve the translation for your language.
+
+[How to contribute](HOW_TO_CONTRIBUTE.md)
+
 ## Security measures
 
 - The certificate fingerprint of every downloaded APK file is checked and validated against an internal
@@ -164,11 +171,7 @@ repository or the official *F-Droid* repository) the app version was installed
 
 [Goals](GOALS.md)
 
-## How to contribute
-
-[How to contribute](HOW_TO_CONTRIBUTE.md)
-
-## Deprecated browsers#
+## Deprecated browsers
 
 ### Styx Browser
 
