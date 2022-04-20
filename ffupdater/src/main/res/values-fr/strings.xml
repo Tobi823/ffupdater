@@ -7,22 +7,26 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
     <string name="application_successfully_installed">Installation de l\'application réussie</string>
-    <string name="available_version">Disponible: %1$s</string>
+    <string name="available_version">Disponible : %1$s</string>
     <string name="available_version_error">"<u>ERREUR</u>"</string>
     <string name="available_version_loading">Chargement…</string>
     <string name="background_job_failure__notification_text">Veuillez signaler cette erreur. Cliquez pour afficher le rapport d\'erreur.</string>
     <string name="background_job_failure__notification_title">Échec de la vérification de la mise à jour des antécédents</string>
-    <string name="brave__description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers! \n\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé!</string>
+    <string name="brave__description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !
+\n
+\nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé !</string>
     <string name="brave__title">Navigateur internet privé Brave</string>
-    <string name="brave__warning">Brave utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Brave?</string>
-    <string name="brave_beta__description">Bienvenue dans la version bêta de Brave pour Android!\NJoignez-vous aux nouvelles fonctionnalités et donnez vos premiers commentaires : https://brave.com/msupport\nVous pouvez installer Brave Beta en même temps que votre version actuelle de Brave pour Android.</string>
+    <string name="brave__warning">Brave utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Brave \?</string>
+    <string name="brave_beta__description">Bienvenue dans la version bêta de Brave pour Android !
+\nJoignez-vous aux nouvelles fonctionnalités et donnez vos premiers commentaires : https ://brave.com/msupport
+\nVous pouvez installer Brave Beta en même temps que votre version actuelle de Brave pour Android.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Bienvenue dans la version Nightly (Developer) de Brave pour Android !\NJugez des nouvelles fonctionnalités et donnez vos premières impressions : https://brave.com/msupport\nVous pouvez installer Brave Nightly en même temps que votre version actuelle de Brave pour Android.</string>
     <string name="brave_nightly__title">Navigateur Brave (Nightly)</string>
     <string name="bromite__description">Bromite vise à offrir une expérience de navigation sans encombrement, sans fonctions envahissantes pour la vie privée et avec l\'ajout d\'un moteur rapide de blocage des publicités. Des changements minimes sont apportés à l\'interface utilisateur afin d\'enrayer l\'idée que le \"navigateur est une plate-forme publicitaire\".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Bromite?</string>
-    <string name="bromite_systemwebview__description">Le paquet SystemWebView contient le noyau du navigateur/ moteur de rendu de Bromite et ses mêmes fonctionnalités ; il offre la possibilité de remplacer le composant de navigateur par défaut pour l\'ensemble du système Android.</string>
+    <string name="bromite__warning">Bromite utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Bromite \?</string>
+    <string name="bromite_systemwebview__description">Le paquet SystemWebView contient le noyau du navigateur/ moteur de rendu de Bromite et ses mêmes fonctionnalités. Il offre la possibilité de remplacer le composant de navigateur par défaut pour l\'ensemble du système Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copier le rapport d\'erreur dans le presse-papiers</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">L\'erreur suivante s\'est produite lors de l\'extraction de l\'URL de téléchargement. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport d\'erreur du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
@@ -48,28 +52,34 @@
     <string name="failed_update_notification__notification_title">%1$s n\'a pas pu être mis à jour.</string>
     <string name="firefox_beta__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_beta__title">Firefox pour Android Beta</string>
-    <string name="firefox_beta__warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer?</string>
+    <string name="firefox_beta__warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer \?</string>
     <string name="firefox_focus__description">Il s\'agit d\'une modification du navigateur Firefox visant à accroître la protection de la vie privée.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar est développé pour l\'Allemagne, l\'Autriche et la Suisse, mais peut être utilisé par les utilisateurs de n\'importe quel pays. Il est très similaire à Firefox Focus, mais son nom a été modifié dans les pays germanophones pour éviter toute confusion avec le magazine Focus du groupe Hubert Burda Media. Contrairement à Firefox Focus, Firefox Klar a la télémétrie désactivée par défaut en raison des lois allemandes strictes sur la protection de la vie privée.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Veuillez noter que Firefox Preview n’est plus disponible et a été remplacé par Firefox Nightly. \n\nFirefox Nightly est un canal de développement pour les nouvelles versions de Mozilla Firefox. \n\nFirefox Nightly est conçu pour mettre en valeur les versions les plus expérimentales de Firefox. Le canal Nightly permet aux utilisateurs de découvrir les dernières innovations de Firefox dans un environnement instable et de faire part de leur avis sur les fonctionnalités et les performances pour aider à déterminer ce qui figurera dans la version finale.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer?</string>
+    <string name="firefox_nightly__warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer \?</string>
     <string name="firefox_release__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_release__title">Firefox</string>
     <string name="general__use_root__summary">FFUpdater demandera l\'autorisation de l\'utilisateur root si cette option est activée et si une application est installée ou mise à jour. Pour obtenir les privilèges root, vous devez utiliser Magisk ou d\'autres outils. Si cette option est activée, FFUpdater installera ou mettra à jour des applications en avant-plan et en arrière-plan sans intervention de l\'utilisateur.</string>
     <string name="general__use_root__title">Utiliser l\'autorisation de la racine pour installer ou mettre à jour des applications</string>
     <string name="go_back">retourner</string>
-    <string name="iceraven__description">Ce n\'est certainement pas Mozilla qui vous l\'a apporté! \n\nIceraven Browser est un navigateur web pour Android, basé sur la version Fenix de Firefox, GeckoView et Mozilla Android Components de Mozilla. \n\nNotre objectif est d\'être une bifurcation proche du nouveau Firefox pour Android qui cherche à fournir aux utilisateurs plus d\'options, plus de possibilités de personnalisation (y compris une large bibliothèque d\'extensions), et plus d\'informations sur les pages qu\'ils visitent et sur la façon dont leur navigateur interagit avec ces pages.</string>
+    <string name="iceraven__description">Ce n\'est certainement pas Mozilla qui vous l\'a apporté !
+\n
+\nIceraven Browser est un navigateur web pour Android, basé sur la version Fenix de Firefox, GeckoView et Mozilla Android Components de Mozilla.
+\n
+\nNotre objectif est d\'être une bifurcation proche du nouveau Firefox pour Android qui cherche à fournir aux utilisateurs plus d\'options, plus de possibilités de personnalisation (y compris une large bibliothèque d\'extensions), et plus d\'informations sur les pages qu\'ils visitent et sur la façon dont leur navigateur interagit avec ces pages.</string>
     <string name="iceraven__title">Navigateur Iceraven</string>
-    <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait. \n\nDernière vérification réussie de la mise à jour des antécédents: %1$s</string>
+    <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait.
+\n
+\nDernière vérification réussie de la mise à jour des antécédents : %1$s</string>
     <string name="information_about_the_app">informations sur l\'application</string>
     <string name="install_activity__delete_cache_button_text">vider le cache</string>
     <string name="install_activity__delete_cache_explanation">Si vous pensez que FFUpdater a mis en cache une mise à jour d\'application défectueuse, cliquez sur le bouton \"Effacer le cache\" pour supprimer le cache de cette application.</string>
     <string name="install_activity__download_app_with_status">Télécharger l\'application (%1$s)</string>
     <string name="install_activity__download_failed">Echec du téléchargement</string>
-    <string name="install_activity__downloaded_application_from">Application téléchargée à partir de:</string>
+    <string name="install_activity__downloaded_application_from">Application téléchargée à partir de :</string>
     <string name="install_activity__downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
     <string name="install_activity__exception__show_button">"<u>Afficher le rapport d\'erreur détaillé.</u>"</string>
     <string name="install_activity__external_storage_not_accessible">Le stockage externe n\'est pas disponible - ne peut pas commencer le téléchargement. L\'état actuel est :</string>
@@ -79,12 +89,12 @@
     <string name="install_activity__open_cache_explanation">Vous pouvez ouvrir le dossier du cache pour copier le fichier APK à un endroit où il y a plus d\'espace libre.</string>
     <string name="install_activity__open_cache_folder_button_text">ouvrir le dossier du cache</string>
     <string name="install_activity__retrigger_installation__button_title">Réessayer l\'installation de l\'application</string>
-    <string name="install_activity__sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256:</string>
+    <string name="install_activity__sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256 :</string>
     <string name="install_activity__temporary_network_issue">Un problème de réseau temporaire s\'est produit. Veuillez réessayer plus tard.</string>
     <string name="install_activity__too_low_memory_description">Sur votre appareil, il n\'y a que %1$d MB d\'espace disponible. Cela peut entraîner un échec du téléchargement ou de l\'installation.</string>
     <string name="install_activity__too_low_memory_title">Espace disque faible</string>
     <string name="install_activity__try_disable_miui_optimization">Si vous utilisez Xiaomi ou MIUI, essayez de désactiver \"MIUI Optimization\".</string>
-    <string name="install_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de:</string>
+    <string name="install_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de :</string>
     <string name="install_activity__you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
     <string name="install_activity_label">Installer l\'application</string>
     <string name="install_app">installer l\'application</string>
@@ -93,8 +103,10 @@
     <string name="install_same_version_dialog__title">Même version installée</string>
     <string name="installed_app_is_not_verified">L\'application installée n\'est PAS vérifiée</string>
     <string name="installed_application_is_verified">La demande installée est vérifiée</string>
-    <string name="installed_version">Installé: %1$s</string>
-    <string name="lockwise__description">UN ACCÈS PAR MOT DE PASSE QUI VOUS EST RÉSERVÉ Suivez vos mots de passe en toute sécurité sur Firefox et accédez-y partout Ouvrez rapidement n’importe quel site Internet de l’application pour accéder à vos comptes</string>
+    <string name="installed_version">Installé : %1$s</string>
+    <string name="lockwise__description">ACCÈS AUX MOTS DE PASSE POUR VOUS, ET SEULEMENT POUR VOUS
+\n
+\nSuivez en toute sécurité vos mots de passe Firefox et accédez-y partout. Ouvrez rapidement n\'importe quel site Web depuis l\'application pour accéder à vos comptes.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>"</string>
     <string name="main_activity__no_unmetered_network">Pas de réseau non mesuré</string>
@@ -107,11 +119,11 @@
     <string name="request_installation_permission_dialog__grant_permission">Accorder la permission</string>
     <string name="request_installation_permission_dialog__message">FFUpdater n\'a pas l\'autorisation d\'installer et de mettre à jour des applications. Vous devez accorder ces permissions ou FFUpdater ne fonctionnera pas.</string>
     <string name="request_installation_permission_dialog__title">Autorisation de l\'installateur</string>
-    <string name="running_downloads_dialog__message">L\'application télécharge actuellement des mises à jour en arrière-plan. Voulez-vous commencer un nouveau téléchargement qui pourrait prendre plus de temps?</string>
+    <string name="running_downloads_dialog__message">L\'application télécharge actuellement des mises à jour en arrière-plan. Voulez-vous commencer un nouveau téléchargement qui pourrait prendre plus de temps \?</string>
     <string name="running_downloads_dialog__negative">Non, ne le téléchargez pas</string>
     <string name="running_downloads_dialog__title">Téléchargements en cours</string>
     <string name="running_downloads_dialog__yes">Oui</string>
-    <string name="session_installer__not_enough_storage">L\'opération a échoué parce que l\'espace de stockage disponible est insuffisant: %1$s</string>
+    <string name="session_installer__not_enough_storage">L\'opération a échoué parce que l\'espace de stockage disponible est insuffisant : %1$s</string>
     <string name="session_installer__require_user_interaction">Exiger une interaction avec l\'utilisateur.</string>
     <string name="session_installer__status_failure">L\'opération a échoué de manière générique. Le système essaiera toujours de fournir une raison d\'échec plus spécifique, mais dans certains cas rares, cette raison peut être fournie.</string>
     <string name="session_installer__status_failure_aborted">L\'opération a échoué parce qu\'elle a été activement interrompue. Par exemple, l\'utilisateur a activement refusé les autorisations demandées, ou la session a été abandonnée.</string>
@@ -154,7 +166,7 @@
     <string name="successful_update_notification__notification_title">%1$s a été mis à jour.</string>
     <string name="ungoogled_chromium__description">Google Chromium, sans intégration avec Google.\n\nSans connexion à un compte Google, Chromium s\'en sort plutôt bien en termes de sécurité et de confidentialité. Cependant, Chromium a toujours une certaine dépendance vis-à-vis des services Web et des binaires de Google. En outre, Google a conçu Chromium pour qu\'il soit facile et intuitif pour les utilisateurs, ce qui signifie qu\'ils font des compromis sur la transparence et le contrôle des opérations internes.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium utilise la base technique de Google Chrome (Chromium), ce qui ne plaît pas à tout le monde. Voulez-vous installer Ungoogled Chromium?</string>
+    <string name="ungoogled_chromium__warning">Ungoogled Chromium utilise la base technique de Google Chrome (Chromium), ce qui ne plaît pas à tout le monde. Voulez-vous installer Ungoogled Chromium \?</string>
     <string name="unsupported_abi_dialog__message">Le navigateur sélectionné est incompatible avec le processeur de votre smartphone. Veuillez sélectionner un autre navigateur.</string>
     <string name="unsupported_abi_dialog__title">Appareil non pris en charge</string>
     <string name="update_interval__12h">12 heures</string>
@@ -181,5 +193,7 @@
     <string name="update_notification__title">Mise à jour pour "%1$s" disponible</string>
     <string name="vivaldi__description">Vivaldi est un navigateur pratique et très respectueux de la vie privée. Il intègre des nombreuses fonctions dont un bloqueur de pubs et traqueurs (désactivé par défaut) et un traducteur de pages. Des outils judicieux de prise de notes et de capture de page vous feront gagner du temps. En option, vous pouvez afficher les onglets comme sur ordinateurs, des thèmes clair et sombre ou personnaliser l’interface. Téléchargez-le et profitez de ses performances.</string>
     <string name="vivaldi__title">Navigateur Vivaldi</string>
-    <string name="vivaldi__warning">Vivaldi n\'est que partiellement open source (voir <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> pour plus d\'informations). Il utilise également la base technique de Google Chrome (Chromium).\n\nCertaines personnes n\'aiment pas cela. Voulez-vous installer Vivaldi?</string>
+    <string name="vivaldi__warning">Vivaldi n\'est que partiellement open source (voir <a href="https ://vivaldi.com/blog/vivaldi-browser-open-source/">https ://vivaldi.com/blog/vivaldi-browser-open-source/</a> pour plus d\'informations). Il utilise également la base technique de Google Chrome (Chromium).
+\n
+\nCertaines personnes n\'aiment pas cela. Voulez-vous installer Vivaldi \?</string>
 </resources>
