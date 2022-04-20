@@ -98,13 +98,17 @@
 
         </LinearLayout>
 
-        <LinearLayout style="@style/DownloadActivitySegment">
+        <LinearLayout
+            android:id="@+id/downloadedFile"
+            style="@style/DownloadActivitySegment">
 
             <TextView
                 style="@style/BoldTextView"
                 android:text="@string/install_activity__downloaded_application_from" />
 
-            <TextView style="@style/MonospaceSelectableTextView" />
+            <TextView
+                android:id="@+id/downloadedFileUrl"
+                style="@style/MonospaceSelectableTextView" />
 
         </LinearLayout>
 
