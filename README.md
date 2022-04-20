@@ -30,10 +30,12 @@ FFUpdater can also update the apps without user interaction.
 
 ## How to contribute
 
-You can improve the app translation with [Weblate](https://weblate.org). Go to (TODO: add Link), create an
-account and improve the translation for your language.
+You can add and update translations with [Weblate](https://weblate.org). Go to
+[ffupdater-app-translations](https://hosted.weblate.org/projects/ffupdater/ffupdater-app-translations/) for
+improving the translation of the Android app. To improve the translation of the release notes, go to
+[ffupdater-release-notes](https://hosted.weblate.org/projects/ffupdater/ffupdater-release-notes/).
 
-[How to contribute](HOW_TO_CONTRIBUTE.md)
+For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
 
 ## Security measures
 
