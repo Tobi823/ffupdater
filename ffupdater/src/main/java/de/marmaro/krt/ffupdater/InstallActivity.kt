@@ -296,6 +296,10 @@ class InstallActivity : AppCompatActivity() {
                 fileDownloader.downloadFile(url, file)
             }
             AppDownloadStatus.foregroundDownloadIsFinished()
+
+            ia.hide(R.id.downloadingFile)
+            ia.show(R.id.downloadedFile)
+            ia.setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
             if (result) {
                 return INSTALL_APP
             }

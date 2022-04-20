@@ -76,6 +76,7 @@
     <string name="install_activity__fetch_url_for_download">Получить ссылку с %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Превышен лимит скорости GitHub-API. Пожалуйста, повторите попытку загрузки в течение следующего часа.</string>
+    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Либо установлено фальсифицированное приложение, либо больше не работает программа проверки сертификатов. Вы можете перепроверить отпечаток сертификата на apkmirror.com или сообщить мне об ошибке на сайте https://notabug.org/Tobiwan/ffupdater. \n\nРекомендуется удалить приложение.</string>
     <string name="install_activity__open_cache_explanation">Вы можете открыть папку кэша, чтобы скопировать APK-файл в место с большим объемом свободного пространства.</string>
     <string name="install_activity__open_cache_folder_button_text">открыть папку кэша</string>
     <string name="install_activity__retrigger_installation__button_title">Повторите установку приложения</string>

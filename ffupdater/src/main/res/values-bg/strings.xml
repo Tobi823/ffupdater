@@ -76,6 +76,7 @@
     <string name="install_activity__fetch_url_for_download">Получаване на адрес за изтегляне от %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Получен е адрес за изтегляне от %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Превишено е ограничение на GitHub-API. Опитайте отново след час.</string>
+    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Или е инсталирано подправено приложение, или проверката на сертификати не работи. Можете да сравните отпечатъка на сертификата на https://apkmirror.com/ или да съобщите за дефект на https://notabug.org/Tobiwan/ffupdater. \n\nПрепоръчително е да премахнете приложението.</string>
     <string name="install_activity__open_cache_explanation">Можете да отворите папката на междинната памет и да копирате файла на APK на място с повече свободно пространство.</string>
     <string name="install_activity__open_cache_folder_button_text">Отваряне</string>
     <string name="install_activity__retrigger_installation__button_title">Повторно инсталиране</string>

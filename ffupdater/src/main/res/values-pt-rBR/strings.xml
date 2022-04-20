@@ -76,6 +76,7 @@
     <string name="install_activity__fetch_url_for_download">Procurar pela URL de download em %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">A URL de download extraída de %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">O limite de consultas do GitHub-API foi excedido. Por favor, tente baixar outra vez em uma hora.</string>
+    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Ou um navegador modificado foi instalado ou o verificador de certificados não funciona mais. Você pode verificar outra vez a impressão digital do certificado no apkmirror.com ou pode criar um relatório no https://notabug.org/Tobiwan/ffupdater para informar sobre a falha. \n\nRecomendo desinstalar o navegador.</string>
     <string name="install_activity__open_cache_explanation">Você pode abrir o local do cache e copiar o arquivo APK para um outro local com mais armazenamento.</string>
     <string name="install_activity__open_cache_folder_button_text">abrir a localização do cache</string>
     <string name="install_activity__retrigger_installation__button_title">Tente novamente instalar o navegador</string>

@@ -76,6 +76,7 @@
     <string name="install_activity__fetch_url_for_download">Recupera l\'URL di download da %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Recuperato l\'URL di download da %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Limite di chiamate GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</string>
+    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">O è stata installata un\'applicazione manomessa o il controllo del certificato non funziona più. Puoi ricontrollare l\'impronta digitale del certificato su apkmirror.com o puoi aprire una issue su https://notabug.org/Tobiwan/ffupdater per informarmi del bug. \n\nTi consiglio di disinstallare l\'applicazione.</string>
     <string name="install_activity__open_cache_explanation">Puoi aprire la cartella di cache per copiare il file APK in un luogo con una memoria più libera.</string>
     <string name="install_activity__open_cache_folder_button_text">apri cartella di cache</string>
     <string name="install_activity__retrigger_installation__button_title">Riprova Installazione dell\'App</string>

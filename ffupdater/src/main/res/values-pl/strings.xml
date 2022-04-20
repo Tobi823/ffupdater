@@ -76,6 +76,7 @@
     <string name="install_activity__fetch_url_for_download">Pobierz adres URL pobierania z %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Pobrano adres URL pobierania z %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Limit prędkości GitHub-API został przekroczony. Proszę spróbować pobrać ponownie w ciągu następnej godziny.</string>
+    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Albo została zainstalowana uszkodzona aplikacja, albo narzędzie do sprawdzania certyfikatów już nie działa. Możesz dwukrotnie sprawdzić odcisk palca certyfikatu na apkmirror.com lub możesz utworzyć zgłoszenie na https://notabug.org/Tobiwan/ffupdater, aby poinformować mnie o błędzie. \n\nZalecam odinstalowanie aplikacji.</string>
     <string name="install_activity__open_cache_explanation">Możesz otworzyć folder pamięci podręcznej, aby skopiować plik APK do miejsca z większą ilością wolnego miejsca.</string>
     <string name="install_activity__open_cache_folder_button_text">otwórz folder pamięci podręcznej</string>
     <string name="install_activity__retrigger_installation__button_title">Ponów próbę instalacji aplikacji</string>
