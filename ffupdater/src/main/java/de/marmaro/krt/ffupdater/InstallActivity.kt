@@ -30,7 +30,7 @@ import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
-import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.FingerprintValidator.CertificateValidationResult
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
@@ -50,7 +50,7 @@ import kotlinx.coroutines.withContext
 class InstallActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
     private lateinit var fingerprintValidator: FingerprintValidator
-    private lateinit var appInstaller: AppInstaller
+    private lateinit var appInstaller: ForegroundAppInstaller
     private lateinit var appCache: AppCache
     private lateinit var settingsHelper: SettingsHelper
 
@@ -88,12 +88,9 @@ class InstallActivity : AppCompatActivity() {
         settingsHelper = SettingsHelper(this)
         fingerprintValidator = FingerprintValidator(packageManager)
         appCache = AppCache(app)
-        appInstaller = AppInstaller.create(
-            this,
-            appCache.getFile(this),
-            app,
-            InstallActivity::class.java,
-        )
+        appInstaller = ForegroundAppInstaller.create(this, appCache.getFile(this), app)
+        lifecycle.addObserver(appInstaller)
+
         findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
             restartStateMachine(TRIGGER_INSTALLATION_PROCESS)
         }
@@ -140,12 +137,6 @@ class InstallActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        @Suppress("DEPRECATION")
-        super.onActivityResult(requestCode, resultCode, data)
-        appInstaller.onActivityResult(requestCode, resultCode, data)
-    }
-
     private fun restartStateMachine(jumpDestination: State) {
         // security check to prevent a illegal restart
         if (state != SUCCESS_PAUSE) {
@@ -161,15 +152,6 @@ class InstallActivity : AppCompatActivity() {
                 state = state.action(this@InstallActivity)
             }
         }
-    }
-
-    /**
-     * This method will be called when the app installation is completed.
-     * @param intent intent
-     */
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        appInstaller.onNewIntentCallback(intent, this)
     }
 
     private fun show(viewId: Int) {

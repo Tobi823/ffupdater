@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.installer
 
+import androidx.lifecycle.LifecycleOwner
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import kotlinx.coroutines.CompletableDeferred
@@ -12,7 +13,8 @@ import java.util.regex.Pattern
 /**
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
  */
-class RootInstaller(private val file: File) : AppInstaller {
+class RootInstaller(private val file: File) :
+    ForegroundAppInstaller, BackgroundAppInstaller {
     private val status = CompletableDeferred<InstallResult>()
 
     override suspend fun installAsync(): Deferred<InstallResult> {
@@ -47,5 +49,14 @@ class RootInstaller(private val file: File) : AppInstaller {
         val shellResult = Shell.cmd("pm install-commit $sessionId")
             .exec()
         status.complete(InstallResult(shellResult.isSuccess, null, shellResult.out.joinToString(";")))
+    }
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
+        status.completeExceptionally(Exception("RootInstaller has been destroyed"))
+    }
+
+    override fun close() {
+        status.completeExceptionally(Exception("RootInstaller has been closed"))
     }
 }

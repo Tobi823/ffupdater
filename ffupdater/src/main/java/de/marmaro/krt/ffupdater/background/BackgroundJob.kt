@@ -23,6 +23,7 @@ import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
+import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.SettingsHelper
 import kotlinx.coroutines.CancellationException
@@ -207,15 +208,16 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             showFailedBackgroundInstallationNotification(applicationContext, app, -100, errorMessage)
         }
 
-        val installer = BackgroundSessionInstaller(applicationContext, file, app)
-        withContext(Dispatchers.Main) {
-            val result = installer.installAsync().await()
-            if (result.success) {
-                showSuccessfulBackgroundInstallationNotification(applicationContext, app)
-            } else {
-                val code = result.errorCode
-                val message = result.errorMessage
-                showFailedBackgroundInstallationNotification(applicationContext, app, code, message)
+        BackgroundAppInstaller.create(applicationContext, file, app).use { installer ->
+            withContext(Dispatchers.Main) {
+                val result = installer.installAsync().await()
+                if (result.success) {
+                    showSuccessfulBackgroundInstallationNotification(applicationContext, app)
+                } else {
+                    val code = result.errorCode
+                    val message = result.errorMessage
+                    showFailedBackgroundInstallationNotification(applicationContext, app, code, message)
+                }
             }
         }
     }

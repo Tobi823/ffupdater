@@ -4,8 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.ActivityResultRegistry
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.annotation.RequiresApi
-import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
+import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import java.io.File
@@ -14,27 +17,34 @@ import java.io.IOException
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class IntentInstaller(
-    private val activity: Activity,
+    private val activityResultRegistry: ActivityResultRegistry? = null,
     private val file: File,
-) : AppInstaller {
-    private val status = CompletableDeferred<InstallResult>()
+) : ForegroundAppInstaller {
+    private val status = CompletableDeferred<AppInstaller.InstallResult>()
+    private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CODE_INSTALL) {
-            if (resultCode == Activity.RESULT_OK) {
-                status.complete(InstallResult(true, null, null))
-            } else {
-                val installResult = data?.extras?.getInt("android.intent.extra.INSTALL_RESULT")
-                val errorMessage = "resultCode: $resultCode, INSTALL_RESULT: $installResult"
-                status.complete(InstallResult(false, resultCode, errorMessage))
+    override fun onCreate(owner: LifecycleOwner) {
+        appInstallationCallback = activityResultRegistry!!.register(
+            "IntentInstaller_app_installation_callback",
+            owner,
+            StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                status.complete(AppInstaller.InstallResult(true, null, null))
+                return@register
             }
+
+            val installResult = it.data?.extras?.getInt("android.intent.extra.INSTALL_RESULT")
+            val errorMessage = "resultCode: ${it.resultCode}, INSTALL_RESULT: $installResult"
+            status.complete(AppInstaller.InstallResult(false, it.resultCode, errorMessage))
         }
     }
 
-    override suspend fun installAsync(): Deferred<InstallResult> {
+    override suspend fun installAsync(): Deferred<AppInstaller.InstallResult> {
+        require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         try {
-            installInternal(activity, file)
+            installInternal(file)
             return status
         } catch (e: IOException) {
             status.completeExceptionally(Exception("fail to install app", e))
@@ -48,16 +58,14 @@ class IntentInstaller(
      * See org.fdroid.fdroid.installer.DefaultInstallerActivity.java from
      * https://github.com/f-droid/fdroidclient
      */
-    private fun installInternal(activity: Activity, downloadedFile: File) {
+    private fun installInternal(file: File) {
         @Suppress("DEPRECATION")
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
-        intent.data = Uri.fromFile(downloadedFile)
+        intent.data = Uri.fromFile(file)
+        intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         intent.putExtra(Intent.EXTRA_RETURN_RESULT, true)
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-        activity.startActivityForResult(intent, REQUEST_CODE_INSTALL)
-    }
-
-    companion object {
-        private const val REQUEST_CODE_INSTALL = 0
+        intent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, "com.android.vending")
+        appInstallationCallback.launch(intent)
     }
 }
