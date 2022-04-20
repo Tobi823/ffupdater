@@ -11,7 +11,7 @@ git fetch --tags
 - fix and add unit tests
 - check translations and update them with my script `translate_android_strings`
 - edit build.gradle to increase `versionCode` and `versionName`
-- add changelog and supporter to CHANGELOG.md
+- add changelog and supporter to CHANGELOG.md (don't forget commits from Weblate)
 - copy and translate the changelog from CHANGELOG.md to
   `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt` with my script `translate_changelogs`
 - commit changes with references to the issues/pull requests
