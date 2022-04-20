@@ -112,7 +112,6 @@
     <string name="running_downloads_dialog__message">L\'app sta scaricando gli aggiornamenti in background ora. Vuoi iniziare un nuovo download che potrebbe richiedere più tempo?</string>
     <string name="running_downloads_dialog__negative">No, non scaricarlo</string>
     <string name="running_downloads_dialog__title">Download in corso</string>
-    <string name="running_downloads_dialog__yes"></string>
     <string name="session_installer__not_enough_storage">L\'operazione è fallita perché non è disponibile abbastanza spazio di archiviazione: %1$s</string>
     <string name="session_installer__require_user_interaction">Richiede l\'interazione dell\'utente.</string>
     <string name="session_installer__status_failure">L\'operazione è fallita in modo generico. Il sistema cercherà sempre di fornire un motivo di errore più specifico, ma in alcuni casi rari questo può essere emesso.</string>

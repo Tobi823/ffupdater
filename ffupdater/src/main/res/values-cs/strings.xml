@@ -15,7 +15,6 @@
     <string name="brave__description">Webový prohlížeč Brave je rychlá a bezpečná aplikace k prohlížení webu pro Android s vestavěným blokátorem na reklamy třetích stran. Brave je bleskově rychlý, bezpečný a soukromý, který zabraňuje reklamám sledovat Vás, zamezuje infekci malware a blokuje vyskakovací okna.</string>
     <string name="brave__title">Brave Soukromý prohlížeč</string>
     <string name="brave__warning">Brave používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Brave?</string>
-    <string name="brave_beta__description"></string>
     <string name="brave_beta__title">Obrázek alba Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Vítejte v Brave Nightly (vývojář) pro Android!\nVyzkoušejte nejnovější funkce a poskytněte včasnou zpětnou vazbu: https://brave.com/msupport\nBrave Nightly si můžete nainstalovat vedle své aktuální verze Brave pro Android.</string>
     <string name="brave_nightly__title">Brave Browser (Noční)</string>
