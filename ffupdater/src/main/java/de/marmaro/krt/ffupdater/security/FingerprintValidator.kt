@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.security
 
 import android.content.pm.PackageManager
 import android.content.pm.Signature
-import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
 import java.io.File
@@ -24,8 +23,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      * @param app  app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
-    @MainThread
-    suspend fun checkApkFile(file: File, app: BaseApp): CertificateValidationResult {
+    fun checkApkFile(file: File, app: BaseApp): CertificateValidationResult {
         require(file.exists()) { "File '${file.absoluteFile}' must exists." }
         val path = file.absolutePath
         val signature = PackageManagerUtil(packageManager).getPackageArchiveInfo(path)

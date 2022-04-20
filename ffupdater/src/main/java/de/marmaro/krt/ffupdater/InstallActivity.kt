@@ -88,7 +88,7 @@ class InstallActivity : AppCompatActivity() {
         settingsHelper = SettingsHelper(this)
         fingerprintValidator = FingerprintValidator(packageManager)
         appCache = AppCache(app)
-        appInstaller = ForegroundAppInstaller.create(this, appCache.getFile(this), app)
+        appInstaller = ForegroundAppInstaller.create(this, app, appCache.getFile(this))
         lifecycle.addObserver(appInstaller)
 
         findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {

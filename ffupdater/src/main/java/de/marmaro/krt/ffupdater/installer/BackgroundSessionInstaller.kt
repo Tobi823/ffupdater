@@ -12,9 +12,9 @@ import java.io.File
 @RequiresApi(Build.VERSION_CODES.N)
 class BackgroundSessionInstaller(
     context: Context,
-    file: File,
-    app: App
-) : BackgroundAppInstaller, SessionInstallerBase(context, file, app) {
+    app: App,
+    file: File
+) : BackgroundAppInstaller, SessionInstallerBase(context, app, file) {
 
     init {
         registerIntentReceiver()

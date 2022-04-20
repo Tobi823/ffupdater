@@ -4,11 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LifecycleOwner
+import de.marmaro.krt.ffupdater.app.App
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import java.io.File
@@ -17,14 +18,15 @@ import java.io.IOException
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class IntentInstaller(
-    private val activityResultRegistry: ActivityResultRegistry? = null,
+    private val activity: ComponentActivity,
+    private val app: App,
     private val file: File,
-) : ForegroundAppInstaller {
+) : ForegroundAppInstaller, SecureAppInstaller(activity, app, file) {
     private val status = CompletableDeferred<AppInstaller.InstallResult>()
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
 
     override fun onCreate(owner: LifecycleOwner) {
-        appInstallationCallback = activityResultRegistry!!.register(
+        appInstallationCallback = activity.activityResultRegistry.register(
             "IntentInstaller_app_installation_callback",
             owner,
             StartActivityForResult()
@@ -40,7 +42,7 @@ class IntentInstaller(
         }
     }
 
-    override suspend fun installAsync(): Deferred<AppInstaller.InstallResult> {
+    override suspend fun uncheckInstallAsync(): Deferred<AppInstaller.InstallResult> {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         try {

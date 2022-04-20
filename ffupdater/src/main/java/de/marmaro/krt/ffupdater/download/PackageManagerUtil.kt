@@ -15,18 +15,15 @@ import kotlinx.coroutines.withContext
 class PackageManagerUtil(private val packageManager: PackageManager) {
 
     @MainThread
-    suspend fun getPackageArchiveInfo(path: String): Signature {
-        return withContext(Dispatchers.IO) {
-            val packageInfo = if (DeviceSdkTester.supportsAndroid11()) {
-                // GET_SIGNING_CERTIFICATES does not work on Android 9/10
-                val packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
-                checkNotNull(packageInfo) { "PackageInfo for file '$path' is null." }
-            } else {
-                val packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
-                checkNotNull(packageInfo) { "PackageInfo for file '$path' is null." }
-            }
-            extractSignature(packageInfo)
+    fun getPackageArchiveInfo(path: String): Signature {
+        val packageInfo = if (DeviceSdkTester.supportsAndroid11()) {
+            // GET_SIGNING_CERTIFICATES does not work on Android 9/10
+            packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
+        } else {
+            packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
         }
+        checkNotNull(packageInfo) { "PackageInfo for file '$path' is null." }
+        return extractSignature(packageInfo)
     }
 
     @MainThread
@@ -38,14 +35,14 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
 
     fun getInstalledAppInfo(app: BaseApp): Signature {
         val packageInfo = if (DeviceSdkTester.supportsAndroid9()) {
-            val packageInfo = packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
-            checkNotNull(packageInfo) { "PackageInfo for package ${app.packageName} is null." }
+            packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
         } else {
-            @SuppressLint("PackageManagerGetSignatures")
             // because GET_SIGNATURES is dangerous on Android 4.4 or lower https://stackoverflow.com/a/39348300
-            val packageInfo = packageManager.getPackageInfo(app.packageName, GET_SIGNATURES)
-            checkNotNull(packageInfo) { "PackageInfo for package ${app.packageName} is null." }
+            @SuppressLint("PackageManagerGetSignatures")
+            val info = packageManager.getPackageInfo(app.packageName, GET_SIGNATURES)
+            info
         }
+        checkNotNull(packageInfo) { "PackageInfo for package ${app.packageName} is null." }
         return extractSignature(packageInfo)
     }
 

@@ -1,7 +1,9 @@
 package de.marmaro.krt.ffupdater.installer
 
+import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import com.topjohnwu.superuser.Shell
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
@@ -13,11 +15,11 @@ import java.util.regex.Pattern
 /**
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
  */
-class RootInstaller(private val file: File) :
-    ForegroundAppInstaller, BackgroundAppInstaller {
+class RootInstaller(context: Context, app: App, private val file: File) :
+    SecureAppInstaller(context, app, file), ForegroundAppInstaller, BackgroundAppInstaller {
     private val status = CompletableDeferred<InstallResult>()
 
-    override suspend fun installAsync(): Deferred<InstallResult> {
+    override suspend fun uncheckInstallAsync(): Deferred<InstallResult> {
         withContext(Dispatchers.IO) {
             install()
         }

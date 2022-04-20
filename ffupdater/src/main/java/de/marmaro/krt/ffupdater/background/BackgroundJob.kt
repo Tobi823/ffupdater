@@ -198,7 +198,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return null
     }
 
-
     @RequiresApi(Build.VERSION_CODES.Q)
     private suspend fun installApplication(app: App) {
         val appCache = AppCache(app)
@@ -208,7 +207,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             showFailedBackgroundInstallationNotification(applicationContext, app, -100, errorMessage)
         }
 
-        BackgroundAppInstaller.create(applicationContext, file, app).use { installer ->
+        BackgroundAppInstaller.create(applicationContext, app, file).use { installer ->
             withContext(Dispatchers.Main) {
                 val result = installer.installAsync().await()
                 if (result.success) {

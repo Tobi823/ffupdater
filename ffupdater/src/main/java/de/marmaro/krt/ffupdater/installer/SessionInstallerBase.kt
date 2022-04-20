@@ -27,13 +27,13 @@ import java.io.IOException
 @RequiresApi(Build.VERSION_CODES.N)
 abstract class SessionInstallerBase(
     private val context: Context,
-    private val file: File,
     private val app: App,
-) : AppInstaller {
+    private val file: File,
+) : SecureAppInstaller(context, app, file) {
     private val installationStatus = CompletableDeferred<InstallResult>()
     private var intentReceiver: BroadcastReceiver? = null
 
-    override suspend fun installAsync(): Deferred<InstallResult> {
+    override suspend fun uncheckInstallAsync(): Deferred<InstallResult> {
         requireNotNull(intentReceiver) { "SessionInstaller is not initialized" }
         require(file.exists()) { "File does not exists." }
         try {

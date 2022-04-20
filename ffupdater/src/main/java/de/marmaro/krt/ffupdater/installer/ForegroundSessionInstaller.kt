@@ -14,9 +14,9 @@ import java.io.File
 @RequiresApi(Build.VERSION_CODES.N)
 class ForegroundSessionInstaller(
     private val context: Context,
-    file: File,
-    app: App
-) : ForegroundAppInstaller, SessionInstallerBase(context, file, app) {
+    app: App,
+    file: File
+) : ForegroundAppInstaller, SessionInstallerBase(context, app, file) {
 
     override fun getIntentNameForAppInstallationCallback(): String {
         return "de.marmaro.krt.ffupdater.installer.ForegroundSessionInstaller.app_installed"
