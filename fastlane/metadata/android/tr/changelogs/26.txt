@@ -1,0 +1,2 @@
+* Fransızca çeviri iyileştirildi (teşekkürler xinxinxinxinxin)
+ * "Güncelleme bildirimi her 5 dakikada bir gösterilecek" düzeltmesi (aplufr tarafından keşfedilen hata)

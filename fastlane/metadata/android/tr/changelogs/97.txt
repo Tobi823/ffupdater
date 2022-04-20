@@ -1,0 +1,5 @@
+* Brave Beta ve Brave Gecelik eklendi
+* Türkçe çeviri eklendi (teşekkürler metezd - Tobi823/ffupdater#129)
+* Bromit SystemWebView eklendi
+* Android 12+ ve root yapılmış aygıtlar için sessiz arka plan güncellemeleri desteği
+* SessionInstaller iyileştirmeleri

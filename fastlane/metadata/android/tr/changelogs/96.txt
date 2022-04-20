@@ -1,0 +1,2 @@
+* "Yeni bir uygulama kurulamıyor" hatası düzeltildi
+* Değişiklik günlüğü için Rusça çeviri eklendi (teşekkürler Nickoriginal - Tobi823/ffupdater#127)

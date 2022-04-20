@@ -1,0 +1,15 @@
+Bu gizlilik dostu tarayıcıları indirin, kurun ve güncelleyin:
+- Brave Gizli Tarayıcı, Brave Tarayıcı (Beta), Brave Tarayıcı (Gecelik)
+- Bromit, Bromit SystemWebView
+- Firefox Tarayıcı, Android için Firefox Beta, Firefox Nightly
+- Firefox Focus, Firefox Klar
+- Iceraven
+- Ungoogled Chromium
+- Vivaldi
+
+ve:
+- Firefox Lockwise
+
+FFUpdater arka planda güncellemeleri denetler ve ayrıca onları indirir. Android 12+ veya root yapılmış aygıtlarda, FFUpdater uygulamaları kullanıcı etkileşimi olmadan da güncelleyebilir.
+
+Güvenlik ölçümleri, diğer dağıtım kanalları, sınırlamalar, hatalar, SSS, derleme talimatları, kullanılan 3. taraf kütüphaneleri, teknik ayrıntılar vb. hakkında daha fazla bilgi için https://notabug.org/Tobiwan/ffupdater/src/master/README.md adresini ziyaret edin veya aşağıdaki "Kaynak Kodu" bağlantısını kullanın.
