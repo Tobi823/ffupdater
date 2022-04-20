@@ -31,7 +31,6 @@
     <string name="device_too_old_dialog__title">Остаряло устройство</string>
     <string name="dialog_button__do_not_install">Не, без инсталиране</string>
     <string name="dialog_button__yes">Да</string>
-    <string name="download_notification__title"/>
     <string name="download_the_app">изтегляне на приложение</string>
     <string name="error_notification__channel_description">Грешки при проверка за обновяване във фонов режим</string>
     <string name="error_notification__channel_name">Грешки във фонов режим</string>
@@ -92,7 +91,6 @@
     <string name="manage_storage_activity__delete_button">Изтриване на обновяванията от междинната памет.</string>
     <string name="manage_storage_activity__explanation">FFUpdater слага изтеглените обновявания във временна междинна памет в папката \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nПо този начин се пести трафик, когато приложението не е успешно инсталирано или обновено. Освен това междинната памет е необходима, за да може изтеглените във фонов режим обновявания да бъдат инсталирани по-късно.\n\nАко решите да изтриете тези обновявания, ще се наложи да ги изтеглите отново.</string>
     <string name="ok">Добре</string>
-    <string name="request_installation_permission_dialog__title"/>
     <string name="running_downloads_dialog__negative">Не, без изтегляне</string>
     <string name="running_downloads_dialog__title">Текущи изтегляния</string>
     <string name="running_downloads_dialog__yes">Да</string>
@@ -105,19 +103,15 @@
     <string name="session_installer__status_failure_invalid">Операцията е неуспешна, защото един или повече от APK файловете са невалидни. Например те могат да бъдат повредени, неправилно подписани, несъвместими и т.н.</string>
     <string name="session_installer__status_failure_storage">Операцията е неуспешна поради проблеми с хранилището. Например, устройството може няма достатъчно свободно пространство или външният носител да не е наличен. Потребителят може да помогне за освобождаване на място или за поставяне на друг външен носител.</string>
     <string name="settings__activity_label">Настройки</string>
-    <string name="settings__background__download__metered__title"/>
     <string name="settings__background__installation__enabled__title">Install update</string>
-    <string name="settings__background__update_check__excluded_apps__title"/>
     <string name="settings__background_category__title"/>
     <string name="settings__foreground__theme_preference__summary">На разположение са светла и тъмна тема</string>
     <string name="settings__foreground__theme_preference__title">Избиране на тема</string>
-    <string name="settings__foreground_category__title"/>
     <string name="settings__theme_battery_saver">Тъмна при режим на пестене на батерия</string>
     <string name="settings__theme_dark">Тъмна</string>
     <string name="settings__theme_light">Светла</string>
     <string name="settings__theme_system_default">Стандартната за системата</string>
     <string name="show_warning_before_installation_dialog__title">Внимание</string>
-    <string name="successful_update_notification__notification_title"/>
     <string name="ungoogled_chromium__description">Google Chromium, без интеграция с Google.\n\nБез влизане в профил в Google Chromium се справя доста добре по отношение на сигурността и поверителността. Въпреки това Chromium все още има известна зависимост от уеб услуги и двоични файлове на Google. Освен това Google са проектирали Chromium така, че да бъде лесен и интуитивен за потребителите, което означава, че са направили компромис с прозрачността и контрола на вътрешните дейности.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Ungoogled Chromium?</string>
