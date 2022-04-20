@@ -22,7 +22,7 @@
     <string name="bromite__description">Bromite tem como o objetivo proporcionar uma experiência de navegação descomplicada, sem funcionalidades que invadem sua privacidade e com a adição de um mecanismo rápido de bloqueio de anúncios. As mínimas mudanças da interface são implementadas para ajudar a frear a idéia de \"navegador como plataforma publicitária\".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite usa os fundamentos técnicos do Google Chrome (Chromium) - algumas pessoas não gostam disso. Gostaria de instalar o Bromite?</string>
-    <string name="bromite_systemwebview__description">O pacote SystemWebView contém o principal navegador/ mecanismo de renderização do Bromite e suas mesmas características; ele oferece a possibilidade de substituir o componente padrão do navegador para todo o sistema Android.</string>
+    <string name="bromite_systemwebview__description">O pacote SystemWebView contém o principal navegador/ mecanismo de renderização do Bromite e suas mesmas características. Ele oferece a possibilidade de substituir o componente padrão do navegador para todo o sistema Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copiar o relatório do erro ao Clipboard</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">O seguinte erro ocorreu quando a URL de download foi consultada. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
@@ -94,7 +94,9 @@
     <string name="installed_app_is_not_verified">O navegador instalado NÃO foi verificado</string>
     <string name="installed_application_is_verified">O navegador instalado foi verificado</string>
     <string name="installed_version">Instalado: %1$s</string>
-    <string name="lockwise__description">ACESSO VIA SENHA, &amp; APENAS VOCÊ \n\nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via app para entrar em suas contas</string>
+    <string name="lockwise__description">ACESSO VIA SENHA, &amp; APENAS VOCÊ
+\n
+\nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via app para entrar em suas contas.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nenhuma rede não contatada</string>
