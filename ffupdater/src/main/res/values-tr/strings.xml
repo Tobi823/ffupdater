@@ -76,7 +76,6 @@
     <string name="install_activity__fetch_url_for_download">İndirme URL\'sini %1$s değerinden getir</string>
     <string name="install_activity__fetched_url_for_download_successfully">İndirme URL\'si %1$s değerinden getirildi</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API hız sınırı aşıldı. Lütfen indirmeyi bir saat içinde tekrar deneyin.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Ya kurcalanmış bir uygulama yüklenmiştir ya da sertifika denetleyicisi artık çalışmıyor. Apkmirror.com\'da sertifika parmak izini iki kez kontrol edebilir veya https://notabug.org/Tobiwan/ffupdater adresinde hata hakkında bilgi vermek için bir sorun oluşturabilirsiniz. \n\nUygulamayı kaldırmanızı tavsiye ederiz.</string>
     <string name="install_activity__open_cache_explanation">APK dosyasını daha fazla boş depolama alanına sahip bir yere kopyalamak için önbellek klasörünü açabilirsiniz.</string>
     <string name="install_activity__open_cache_folder_button_text">önbellek klasörünü aç</string>
     <string name="install_activity__retrigger_installation__button_title">Uygulama Kurulumunu Yeniden Dene</string>

@@ -76,7 +76,6 @@
     <string name="install_activity__fetch_url_for_download">%1$s からダウンロードURLを取得中</string>
     <string name="install_activity__fetched_url_for_download_successfully">%1$s からダウンロードURLを取得しました</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API の速度制限を超えました。1時間以内にもう一度ダウンロードをお試しください。</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">改ざんされたアプリケーションがインストールされているか、証明書チェッカーが正しく機能しなくなっています。apkmirror.comで証明書のフィンガープリントを再確認するか、https://notabug.org/Tobiwan/ffupdater でIssueを作成してバグについて報告してください。\n\nインストールしたアプリのアンインストールを推奨します</string>
     <string name="install_activity__open_cache_explanation">キャッシュフォルダを開いて、APKファイルをより空きストレージの多い場所にコピーすることができます。</string>
     <string name="install_activity__open_cache_folder_button_text">キャッシュフォルダを開く</string>
     <string name="install_activity__retrigger_installation__button_title">アプリのインストールを再試行する</string>

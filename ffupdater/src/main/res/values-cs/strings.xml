@@ -76,7 +76,6 @@
     <string name="install_activity__fetch_url_for_download">Načítání adresy URL pro stahování z %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Adresa URL načtena z %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Buď jste nainstalovali poškozenou aplikaci, nebo nástroj pro kontrolu certifikátu již nefunguje. Otisk certifikátu můžete překontrolovat na stránce apkmirror.com nebo vytvořit issue na https://notabug.org/Tobiwan/ffupdater a informovat mě o chybě. \n\nDoporučuji aplikaci odinstalovat.</string>
     <string name="install_activity__open_cache_explanation">Můžete otevřít složku mezipaměti a zkopírovat soubor APK do umístění s větším množstvím volného místa.</string>
     <string name="install_activity__open_cache_folder_button_text">otevřít složku mezipaměti</string>
     <string name="install_activity__retrigger_installation__button_title">Zkusit instalaci aplikace znovu</string>

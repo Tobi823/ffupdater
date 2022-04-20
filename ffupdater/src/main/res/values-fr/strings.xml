@@ -76,7 +76,6 @@
     <string name="install_activity__fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">URL de téléchargement récupéré de %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">La limite de débit de GitHub-API est dépassée. Veuillez réessayer le téléchargement dans l\'heure qui suit.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Soit une application falsifiée a été installée, soit le vérificateur de certificats ne fonctionne plus. Vous pouvez revérifier l\'empreinte du certificat sur apkmirror.com ou créer un problème sur https://notabug.org/Tobiwan/ffupdater pour m\'informer du bogue.</string>
     <string name="install_activity__open_cache_explanation">Vous pouvez ouvrir le dossier du cache pour copier le fichier APK à un endroit où il y a plus d\'espace libre.</string>
     <string name="install_activity__open_cache_folder_button_text">ouvrir le dossier du cache</string>
     <string name="install_activity__retrigger_installation__button_title">Réessayer l\'installation de l\'application</string>

@@ -78,7 +78,6 @@
     <string name="install_activity__fetch_url_for_download">Fetch download URL from %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Fetched download URL from %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API rate limit is exceeded. Please try the download again in the next hour.</string>
-    <string name="install_activity__invalid_installed_certificate_fingerprint_explanation">Either a tampered application has been installed or the certificate checker doesn\'t work anymore. You can double-check the certificate fingerprint on apkmirror.com or you can create an issue on https://notabug.org/Tobiwan/ffupdater to inform my about the bug. \n\nI recommend you to uninstall the application.</string>
     <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage.</string>
     <string name="install_activity__open_cache_folder_button_text">open cache folder</string>
     <string name="install_activity__retrigger_installation__button_title">Retry App Installation</string>
