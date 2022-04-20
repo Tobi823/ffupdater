@@ -2,7 +2,6 @@
 <resources>
     <string name="action_about_title">Относно FFUpdater</string>
     <string name="action_settings_title">Настройки</string>
-    <string name="app_description">Updater for privacy friendly browsers</string>
     <string name="app_icon">пиктограма на приложение</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Грешка при инсталиране на приложението</string>
@@ -15,14 +14,11 @@
     <string name="brave__description">Brave Web Browser поверителен и безопасен мрежов четец, който безплатно спира реклами от трети страни. \n\nBrave Web Browser е бърз и сигурен мрежов четец за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен четец, който ви предпазва от проследяване чрез реклами, злонамерен софтуер и изскачащи прозорци.</string>
     <string name="brave__title">Brave Browser</string>
     <string name="brave__warning">Brave използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Brave?</string>
-    <string name="brave_beta__description">Welcome to Brave Beta for Android!  Try out the newest features and give early feedback: https://brave.com/msupport  You can install Brave Beta alongside your current version of Brave for Android.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
-    <string name="brave_nightly__description">Welcome to Brave Nightly (Developer) for Android!\nTry out the newest features and give early feedback: https://brave.com/msupport\nYou can install Brave Nightly alongside your current version of Brave for Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite има за цел да осигури безпроблемно разглеждане без да нарушава поверителността, а добавя бърз механизъм за спиране на реклами. Прилагат се минимални промени в потребителския интерфейс, за да се ограничи идеята „четецът като рекламна платформа“.</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Bromite?</string>
-    <string name="bromite_systemwebview__description">The SystemWebView package contains the core browser/rendering engine of Bromite and its same features; it offers the possibility to replace the default browser component for the whole Android system.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Копиране на доклада за срив в междинната памет</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">При извличане на адреса за изтегляне възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
@@ -35,17 +31,10 @@
     <string name="device_too_old_dialog__title">Остаряло устройство</string>
     <string name="dialog_button__do_not_install">Не, без инсталиране</string>
     <string name="dialog_button__yes">Да</string>
-    <string name="download_notification__channel_description">Shows when app updates are downloaded in the background.</string>
-    <string name="download_notification__channel_name">Notification about downloads in the background</string>
-    <string name="download_notification__message">Currently downloading updates for installed apps in the background.</string>
-    <string name="download_notification__title">Downloading app updates</string>
     <string name="download_the_app">изтегляне на приложение</string>
     <string name="error_notification__channel_description">Грешки при проверка за обновяване във фонов режим</string>
     <string name="error_notification__channel_name">Грешки във фонов режим</string>
-    <string name="failed_update_notification__channel_description">Notification channel for failed %1$s updates.</string>
-    <string name="failed_update_notification__channel_name">%1$s update failure notification</string>
     <string name="failed_update_notification__notification_message">Error (%1$d): %2$s</string>
-    <string name="failed_update_notification__notification_title">%1$s could not be updated.</string>
     <string name="firefox_beta__description">Firefox Browser за Android е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
     <string name="firefox_beta__title">Firefox за Android Beta</string>
     <string name="firefox_beta__warning">Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната  му работа. Искате ли да бъде инсталирано?</string>
@@ -58,8 +47,6 @@
     <string name="firefox_nightly__warning">Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната работа с него. Искате ли да бъде инсталирано?</string>
     <string name="firefox_release__description">Firefox Browser за Android е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
     <string name="firefox_release__title">Firefox Browser</string>
-    <string name="general__use_root__summary">FFUpdater will ask for root permission if this option is enabled and an app is installed or updated. To gain root privileges, you must use Magisk or other tools. If enabled, FFUpdater will install or updates apps in the foreground and background without user interaction.</string>
-    <string name="general__use_root__title">Use root permission to install or update apps</string>
     <string name="go_back">Назад</string>
     <string name="iceraven__description">Определено не е произведено от Mozilla! \n\nIceraven Browser е мрежов четец за Android, базиран на Mozilla Fenix, на Firefox, GeckoView и Mozilla Android Components. \n\n Целта ни е да бъде близко разклонение на новия Firefox за Android, което се стреми да предостави на потребителите повече възможности, повече персонализиране (включително голяма библиотека с разширения) и повече информация за страниците, които посещават и как мрежовите четци взаимодействат с тях.</string>
     <string name="iceraven__title">Iceraven Browser</string>
@@ -94,25 +81,20 @@
     <string name="installed_app_is_not_verified">Инсталираното приложение НЕ е проверено</string>
     <string name="installed_application_is_verified">Инсталираното приложение е проверено</string>
     <string name="installed_version">Инсталирано: %1$s</string>
-    <string name="lockwise__description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС \n\nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в профилите си.</string>
+    <string name="lockwise__description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС
+\n
+\nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в профилите си.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превишено е ограничение на GitHub-API. Опитайте отново след час.</u>"</string>
-    <string name="main_activity__no_unmetered_network">No unmetered network</string>
     <string name="main_activity__subtitle">Обновявайте мрежовите четци от Mozilla</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
     <string name="manage_storage_activity__delete_button">Изтриване на обновяванията от междинната памет.</string>
     <string name="manage_storage_activity__explanation">FFUpdater слага изтеглените обновявания във временна междинна памет в папката \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nПо този начин се пести трафик, когато приложението не е успешно инсталирано или обновено. Освен това междинната памет е необходима, за да може изтеглените във фонов режим обновявания да бъдат инсталирани по-късно.\n\nАко решите да изтриете тези обновявания, ще се наложи да ги изтеглите отново.</string>
     <string name="ok">Добре</string>
-    <string name="request_installation_permission_dialog__abort">Abort</string>
-    <string name="request_installation_permission_dialog__grant_permission">Grant permission</string>
-    <string name="request_installation_permission_dialog__message">FFUpdater is missing the permission to install and update apps. You have to grant these permissions or FFUpdater will not work.</string>
-    <string name="request_installation_permission_dialog__title">Installer permission</string>
-    <string name="running_downloads_dialog__message">The app is downloading updates in the background now. Do you want to start a new download that may take longer?</string>
     <string name="running_downloads_dialog__negative">Не, без изтегляне</string>
     <string name="running_downloads_dialog__title">Текущи изтегляния</string>
     <string name="running_downloads_dialog__yes">Да</string>
     <string name="session_installer__not_enough_storage">Операцията е неуспешна, защото няма достатъчно свободно пространство: %1$s</string>
-    <string name="session_installer__require_user_interaction">Require user interaction.</string>
     <string name="session_installer__status_failure">Операцията е неуспешна поради неясна причина. Системата винаги се опитва да предостави конкретна причина за грешката, но в редки случаи това може да се окаже невъзможно.</string>
     <string name="session_installer__status_failure_aborted">Операцията е неуспешна, защото е прекъсната нарочно. Например, потребителят активно е отказал исканите разрешения или сесията е била прекратена.</string>
     <string name="session_installer__status_failure_blocked">Операцията е неуспешна, защото е възпряна. Например политика на устройството или проверката на пакети могат да спрат операцията, или приложението може да се изисква за основната работа на системата.</string>
@@ -121,37 +103,14 @@
     <string name="session_installer__status_failure_invalid">Операцията е неуспешна, защото един или повече от APK файловете са невалидни. Например те могат да бъдат повредени, неправилно подписани, несъвместими и т.н.</string>
     <string name="session_installer__status_failure_storage">Операцията е неуспешна поради проблеми с хранилището. Например, устройството може няма достатъчно свободно пространство или външният носител да не е наличен. Потребителят може да помогне за освобождаване на място или за поставяне на друг външен носител.</string>
     <string name="settings__activity_label">Настройки</string>
-    <string name="settings__background__download__enabled__summary">When an update is detected, download it. This will later speed up the update process.</string>
-    <string name="settings__background__download__enabled__title">Download app updates</string>
-    <string name="settings__background__download__metered__summary">Not recommended for users with limited mobile data.</string>
-    <string name="settings__background__download__metered__title">Download app updates on metered networks</string>
-    <string name="settings__background__installation__enabled__summary">Try to install updates without user interaction.</string>
     <string name="settings__background__installation__enabled__title">Install update</string>
-    <string name="settings__background__update_check__enabled__summary">Check for new updates at regular intervals.</string>
-    <string name="settings__background__update_check__enabled__title">Update check</string>
-    <string name="settings__background__update_check__excluded_apps__summary">Useful if you don\'t want to update an app and don\'t want to receive update notifications for it.</string>
-    <string name="settings__background__update_check__excluded_apps__title">Exclude apps from update check</string>
-    <string name="settings__background__update_check__interval__title">Update check interval</string>
-    <string name="settings__background__update_check__metered__title">Update checks on metered networks</string>
-    <string name="settings__background_category__summary">Settings when the app is working in the background and is invisible to the user.</string>
-    <string name="settings__background_category__title">Background</string>
-    <string name="settings__foreground__download__metered__summary">Useful for users with limited mobile data.</string>
-    <string name="settings__foreground__download__metered__title">Download updates on metered networks</string>
     <string name="settings__foreground__theme_preference__summary">На разположение са светла и тъмна тема</string>
     <string name="settings__foreground__theme_preference__title">Избиране на тема</string>
-    <string name="settings__foreground__update_check__metered__summary">Allow update checks on metered networks such as mobile data.</string>
-    <string name="settings__foreground__update_check__metered__title">Update checks on metered networks</string>
-    <string name="settings__foreground_category__summary">Settings when the user interface is visible.</string>
-    <string name="settings__foreground_category__title">Foreground</string>
     <string name="settings__theme_battery_saver">Тъмна при режим на пестене на батерия</string>
     <string name="settings__theme_dark">Тъмна</string>
     <string name="settings__theme_light">Светла</string>
     <string name="settings__theme_system_default">Стандартната за системата</string>
     <string name="show_warning_before_installation_dialog__title">Внимание</string>
-    <string name="successful_update__notification_message">App has been successfully updated in the background.</string>
-    <string name="successful_update_notification__channel_description">Notification channel for successful %1$s updates.</string>
-    <string name="successful_update_notification__channel_name">%1$s successful update notification</string>
-    <string name="successful_update_notification__notification_title">%1$s has been updated.</string>
     <string name="ungoogled_chromium__description">Google Chromium, без интеграция с Google.\n\nБез влизане в профил в Google Chromium се справя доста добре по отношение на сигурността и поверителността. Въпреки това Chromium все още има известна зависимост от уеб услуги и двоични файлове на Google. Освен това Google са проектирали Chromium така, че да бъде лесен и интуитивен за потребителите, което означава, че са направили компромис с прозрачността и контрола на вътрешните дейности.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Ungoogled Chromium?</string>
@@ -181,5 +140,7 @@
     <string name="update_notification__title">Налично издание на %1$s</string>
     <string name="vivaldi__description">Vivaldi е нов поверителен браузър, изграден с гъвкавост наум. Набит е с полезни възможности, в т.ч. вградени блокер на реклами (фабрично забранен), защита срещу проследяване и поверителен превод. Инструменти като записки и прихващане на страници улесняват работата, но и пестят време. Истинските раздели в настолен стил, темите в тъмен или светъл облик и изборите на оформление ще позволят да го опитомите. Изтеглете безплатно и сърфирайте бързо.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">Vivaldi е само частично с отворен код (за повече информация вижте <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Освен това използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Vivaldi?</string>
+    <string name="vivaldi__warning">Vivaldi е само частично с отворен код (за повече информация вижте <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Освен това използва техническата основа на Google Chrome (Chromium).
+\n
+\nUма хора, на които това не се харесва. Искате ли да инсталирате Vivaldi\?</string>
 </resources>

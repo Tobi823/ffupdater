@@ -26,7 +26,7 @@
     <string name="bromite__description">Bromite, gizliliği ihlal eden özellikler olmadan ve hızlı bir reklam engelleme motorunun eklenmesiyle karışık olmayan bir göz atma deneyimi sağlamayı amaçlar. Bir reklam platformu olarak tarayıcı fikrini engellemeye yardımcı olmak için en az kullanıcı arayüzü değişiklikleri uygulanır.</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite, Google Chrome\'un (Chromium) teknik temelini kullanır - bazı insanlar bundan hoşlanmaz. Bromite\'i kurmak istiyor musunuz\?</string>
-    <string name="bromite_systemwebview__description">SystemWebView paketi, Bromite\'ın temel tarayıcı/görselleştirme motorunu ve onunla aynı özellikleri içerir; tüm Android sistemi için öntanımlı tarayıcı bileşenini değiştirme imkanı sunar.</string>
+    <string name="bromite_systemwebview__description">SystemWebView paketi, Bromite\'ın temel tarayıcı/görselleştirme motorunu ve onunla aynı özellikleri içerir. Tüm Android sistemi için öntanımlı tarayıcı bileşenini değiştirme imkanı sunar.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Çökme raporunu panoya kopyala</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">İndirme URL\'si alındığında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, bunu notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodan çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
@@ -110,7 +110,7 @@
     <string name="installed_version">Kuruldu: %1$s</string>
     <string name="lockwise__description">SİZİN VE YALNIZCA SİZİN İÇİN PAROLA ERİŞİMİ
 \n
-\nFirefox parolalarınızı güvenle takip edin ve onlara her yerden erişin. Hesaplarınıza girmek için uygulamadan herhangi bir web sitesini hızla açın</string>
+\nFirefox parolalarınızı güvenle takip edin ve onlara her yerden erişin. Hesaplarınıza girmek için uygulamadan herhangi bir web sitesini hızla açın.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u>"</string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>

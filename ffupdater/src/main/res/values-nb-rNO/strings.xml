@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_icon">programikon</string>
+    <string name="action_settings_title">Innstillinger</string>
+    <string name="app_description">Oppgraderinger for personvernsvennlige nettlesere</string>
+    <string name="install_activity__use_cached_downloaded_apk">Bruk allerede nedlastet fil fra:</string>
+    <string name="crash_report__got_to_notabug_org">Surf til notabug.org</string>
+    <string name="action_about_title">Om</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="available_version_error"><u>FEIL</u></string>
+    <string name="dialog_button__yes">Ja</string>
+    <string name="available_version">Tilgjengelig: %1$s</string>
+    <string name="error_notification__channel_name">Bakgrunnsfeil</string>
+    <string name="install_activity__temporary_network_issue">En midlertidig feil oppstod. Prøv igjen senere.</string>
+    <string name="available_version_loading">Laster inn …</string>
+    <string name="device_too_old_dialog__title">Enheten er for gammel</string>
+    <string name="download_the_app">last ned programmet</string>
+    <string name="failed_update_notification__notification_message">Feil (%1$d): %2$s</string>
+    <string name="failed_update_notification__notification_title">%1$s kunne ikke oppgraderes.</string>
+    <string name="install_activity__retrigger_installation__button_title">Prøv å installere programmet igjen</string>
+    <string name="install_app">Installer program</string>
+    <string name="install_same_version_dialog__title">Samme versjon installert</string>
+    <string name="install_activity__too_low_memory_title">Lite lagringsplass igjen</string>
+    <string name="install_activity__you_can_now_close_this_window">Du kan lukke vinduet</string>
+    <string name="install_activity_label">Installer program</string>
+    <string name="install_new_app">Installer nytt program</string>
+    <string name="installed_app_is_not_verified">Det installerte programmet er IKKE bekreftet</string>
+    <string name="installed_version">Installert: %1$s</string>
+</resources>

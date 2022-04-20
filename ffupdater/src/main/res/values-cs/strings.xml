@@ -15,14 +15,13 @@
     <string name="brave__description">Webový prohlížeč Brave je rychlá a bezpečná aplikace k prohlížení webu pro Android s vestavěným blokátorem na reklamy třetích stran. Brave je bleskově rychlý, bezpečný a soukromý, který zabraňuje reklamám sledovat Vás, zamezuje infekci malware a blokuje vyskakovací okna.</string>
     <string name="brave__title">Brave Soukromý prohlížeč</string>
     <string name="brave__warning">Brave používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Brave?</string>
-    <string name="brave_beta__description">Welcome to Brave Beta for Android!  Try out the newest features and give early feedback: https://brave.com/msupport  You can install Brave Beta alongside your current version of Brave for Android.</string>
     <string name="brave_beta__title">Obrázek alba Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Vítejte v Brave Nightly (vývojář) pro Android!\nVyzkoušejte nejnovější funkce a poskytněte včasnou zpětnou vazbu: https://brave.com/msupport\nBrave Nightly si můžete nainstalovat vedle své aktuální verze Brave pro Android.</string>
     <string name="brave_nightly__title">Brave Browser (Noční)</string>
     <string name="bromite__description">Bromite si klade za cíl poskytnout pohodlný zážitek bez narušení soukromí s rychlým blokováním reklam. Minimální změny rozhrání pomáhají omezit představu "prohlížeč jako reklamní plocha".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Bromite?</string>
-    <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje hlavní prohlížeč/vykreslovací modul Bromite a jeho stejné funkce; </string>
+    <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje základní prohlížeč / vykreslování motoru bromite a jeho stejné vlastnosti. Nabízí možnost nahradit výchozí složku prohlížeče pro celý systém Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Zkopírovat chybové hlášení do schránky</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Při načítání adresy URL pro stahování došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
@@ -94,7 +93,9 @@
     <string name="installed_app_is_not_verified">Nainstalovaná aplikace NEBYLA ověřena</string>
     <string name="installed_application_is_verified">Nainstalovaná aplikace je ověřena</string>
     <string name="installed_version">Instalovaná: %1$s</string>
-    <string name="lockwise__description">PŘÍSTUP K HESLŮM POUZE PRO VÁS \n\nBezpečně ukládá hesla, ať jste kdekoli. V aplikaci rychle otevřete jakoukoli stránku a přistupte ke svým účtům.</string>
+    <string name="lockwise__description">PŘÍSTUP K HESLŮM POUZE PRO VÁS
+\n
+\nBezpečně ukládá hesla, ať jste kdekoli. V aplikaci rychle otevřete jakoukoli stránku a přistupte ke svým účtům.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</u>"</string>
     <string name="main_activity__no_unmetered_network">Žádná neměřená síť</string>
@@ -107,7 +108,7 @@
     <string name="request_installation_permission_dialog__grant_permission">Udělte povolení</string>
     <string name="request_installation_permission_dialog__message">FFUpdater postrádá oprávnění k instalaci a aktualizaci aplikací. </string>
     <string name="request_installation_permission_dialog__title">Oprávnění instalátoru</string>
-    <string name="running_downloads_dialog__message">Aplikace nyní stahuje aktualizace na pozadí.</string>
+    <string name="running_downloads_dialog__message">Aplikace je nyní stahování aktualizací v pozadí. Chcete začít nové stahování, které může trvat déle\?</string>
     <string name="running_downloads_dialog__negative">Ne, nestahovat</string>
     <string name="running_downloads_dialog__title">Probíhá stahování</string>
     <string name="running_downloads_dialog__yes">Ano</string>
