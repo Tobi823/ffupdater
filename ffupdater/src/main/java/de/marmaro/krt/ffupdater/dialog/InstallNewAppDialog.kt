@@ -30,7 +30,7 @@ class InstallNewAppDialog(
         }
         val names = apps.map { context.getString(it.detail.displayTitle) }.toTypedArray()
         return AlertDialog.Builder(activity)
-            .setTitle(R.string.install_activity__retrigger_installation__button_title)
+            .setTitle(R.string.install_new_app)
             .setItems(names) { _: DialogInterface, which: Int ->
                 triggerAppInstallation(apps[which])
             }
