@@ -104,7 +104,6 @@
     <string name="session_installer__status_failure_storage">Операцията е неуспешна поради проблеми с хранилището. Например, устройството може няма достатъчно свободно пространство или външният носител да не е наличен. Потребителят може да помогне за освобождаване на място или за поставяне на друг външен носител.</string>
     <string name="settings__activity_label">Настройки</string>
     <string name="settings__background__installation__enabled__title">Install update</string>
-    <string name="settings__background_category__title"/>
     <string name="settings__foreground__theme_preference__summary">На разположение са светла и тъмна тема</string>
     <string name="settings__foreground__theme_preference__title">Избиране на тема</string>
     <string name="settings__theme_battery_saver">Тъмна при режим на пестене на батерия</string>
