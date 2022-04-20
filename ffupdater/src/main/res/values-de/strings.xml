@@ -22,7 +22,7 @@
     <string name="bromite__description">Bromite zielt auf ein aufgeräumtes Browsing-Erlebnis ab, ohne Datenschutz-invasive Funktionen und mit einer schnellen Ad-Blocking-Engine. Minimale UI-Änderungen sollen helfen, die Idee des \"Browsers als Werbeplattform\" einzudämmen.</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Willst du Bromite dennoch installieren?</string>
-    <string name="bromite_systemwebview__description">Das SystemWebView-Paket enthält die Kern-Browser/Rendering-Engine von Bromite und die gleichen Funktionen; es bietet die Möglichkeit, die Standard-Browser-Komponente für das gesamte Android-System zu ersetzen.</string>
+    <string name="bromite_systemwebview__description">Das SystemWebView-Paket enthält die Kern-Browser/Rendering-Engine von Bromite und die gleichen Funktionen. Es bietet die Möglichkeit, die Standard-Browser-Komponente für das gesamte Android-System zu ersetzen.</string>
     <string name="bromite_systemwebview__title">Bromit SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopieren des Absturzberichts in die Zwischenablage</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Der folgende Fehler trat auf, als die Download-URL abgerufen wurde. Wenn dieser Fehler häufig auftritt, können Sie ihn auf notabug.org, GitHub oder GitLab melden. Vergessen Sie bitte nicht, Ihren Absturzbericht aus der Zwischenablage und die Beschreibung, wie Sie diesen Fehler reproduzieren, hinzuzufügen.</string>
@@ -94,9 +94,9 @@
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
     <string name="installed_application_is_verified">Installierte Anwendung ist verifiziert</string>
     <string name="installed_version">Installiert: %1$s</string>
-    <string name="lockwise__description">PASSWORT-ZUGANG FÜR SIE, &amp; NUR SIE 
+    <string name="lockwise__description">PASSWORT-ZUGANG FÜR SIE, &amp; NUR SIE
 \n
-\nVerfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen</string>
+\nVerfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
     <string name="main_activity__no_unmetered_network">Kein ungebremstes Netz</string>
@@ -146,8 +146,8 @@
     <string name="settings__foreground_category__summary">Einstellungen, wenn die Benutzeroberfläche sichtbar ist.</string>
     <string name="settings__foreground_category__title">Vorderseite</string>
     <string name="settings__theme_battery_saver">Dark wenn Energiesparmodus aktiv</string>
-    <string name="settings__theme_dark">Dark</string>
-    <string name="settings__theme_light">Light</string>
+    <string name="settings__theme_dark">Dunkles Farbschema</string>
+    <string name="settings__theme_light">Helles Farbschema</string>
     <string name="settings__theme_system_default">Systemeinstellung</string>
     <string name="show_warning_before_installation_dialog__title">Warnung</string>
     <string name="successful_update__notification_message">Die App wurde erfolgreich im Hintergrund aktualisiert.</string>
