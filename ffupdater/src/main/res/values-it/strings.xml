@@ -16,13 +16,13 @@
     <string name="brave__title">Brave Private Browser</string>
     <string name="brave__warning">Brave usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Brave?</string>
     <string name="brave_beta__description">Benvenuto in Brave Beta per Android!\nProva le nuove funzionalità e dai un feedback anticipato: https://brave.com/msupport\nPuoi installare Brave Beta insieme alla tua attuale versione di Brave per Android.</string>
-    <string name="brave_beta__title">Browser coraggioso (Beta)</string>
-    <string name="brave_nightly__description">Benvenuti a Brave Nightly (Developer) per Android!\nProvare le nuove funzionalità e dare un feedback anticipato: https://brave.com/msupport\nPuoi installare Brave Nightly insieme alla tua attuale versione di Brave per Android.</string>
-    <string name="brave_nightly__title">Browser coraggioso (notte)</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="brave_nightly__description">Benvenuti su Brave Nightly (Developer) per Android!\nProva le nuove funzionalità e dai un feedback anticipato: https://brave.com/msupport\nPuoi installare Brave Nightly insieme alla tua attuale versione di Brave per Android.</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite mira a fornire un\'esperienza di navigazione senza fronzoli, senza funzionalità invasive della privacy e con l\'aggiunta di un veloce motore di blocco delle pubblicità. I cambiamenti minimi dell\'interfaccia utente sono applicati per aiutare a frenare l\'idea di "browser come una piattaforma pubblicitaria".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">Bromite usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Bromite?</string>
-    <string name="bromite_systemwebview__description">Il pacchetto SystemWebView contiene il core browser/rendering engine di Bromite e le sue stesse caratteristiche; offre la possibilità di sostituire il componente browser predefinito per l\'intero sistema Android.</string>
+    <string name="bromite_systemwebview__description">Il pacchetto SystemWebView contiene il browser principale/motore di rendering di Bromite e le sue stesse caratteristiche; offre la possibilità di sostituire il componente browser predefinito per l\'intero sistema Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copia il rapporto di arresto anomalo negli appunti</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Si è verificato il seguente errore quando è stato recuperato l\'URL di download. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
@@ -103,8 +103,8 @@
     <string name="manage_storage_activity__delete_button">Elimina gli aggiornamenti delle app in cache.</string>
     <string name="manage_storage_activity__explanation">FFUpdater memorizza in cache gli aggiornamenti delle app già scaricati e li savla nella cartella \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nQuesto consente di risparmiare banda quando un\'app non è installata o aggiornata correttamente. Inoltre, la cache è necessaria in modo che gli aggiornamenti scaricati in background possano essere installati in seguito.\n\nSe si decide di eliminare questi aggiornamenti dell\'app, potrebbe essere necessario scaricarli di nuovo.</string>
     <string name="ok">OK</string>
-    <string name="request_installation_permission_dialog__abort">Abort</string>
-    <string name="request_installation_permission_dialog__grant_permission">Concessione del permesso</string>
+    <string name="request_installation_permission_dialog__abort">Annulla</string>
+    <string name="request_installation_permission_dialog__grant_permission">Concedi l\'autorizzazione</string>
     <string name="request_installation_permission_dialog__message">A FFUpdater manca il permesso di installare e aggiornare le applicazioni. Devi concedere questi permessi o FFUpdater non funzionerà.</string>
     <string name="request_installation_permission_dialog__title">Autorizzazione dell\'installatore</string>
     <string name="running_downloads_dialog__message">L\'app sta scaricando gli aggiornamenti in background ora. Vuoi iniziare un nuovo download che potrebbe richiedere più tempo?</string>
@@ -112,7 +112,7 @@
     <string name="running_downloads_dialog__title">Download in corso</string>
     <string name="running_downloads_dialog__yes">Yes</string>
     <string name="session_installer__not_enough_storage">L\'operazione è fallita perché non è disponibile abbastanza spazio di archiviazione: %1$s</string>
-    <string name="session_installer__require_user_interaction">Richiedono l\'interazione dell\'utente.</string>
+    <string name="session_installer__require_user_interaction">Richiede l\'interazione dell\'utente.</string>
     <string name="session_installer__status_failure">L\'operazione è fallita in modo generico. Il sistema cercherà sempre di fornire un motivo di errore più specifico, ma in alcuni casi rari questo può essere emesso.</string>
     <string name="session_installer__status_failure_aborted">L\'operazione è fallita perché è stata interrotta attivamente. Ad esempio, l\'utente ha rifiutato attivamente le autorizzazioni richieste o la sessione è stata abbandonata.</string>
     <string name="session_installer__status_failure_blocked">L\'operazione è fallita perché è stata bloccata. Ad esempio, una politica del dispositivo potrebbe bloccare l\'operazione, un verificatore del pacchetto potrebbe aver bloccato l\'operazione, o l\'app potrebbe essere richiesta per il funzionamento del sistema principale.</string>
@@ -123,7 +123,7 @@
     <string name="settings__activity_label">Impostazioni</string>
     <string name="settings__background__download__enabled__summary">Quando viene rilevato un aggiornamento, scaricalo. Questo accelererà in seguito il processo di aggiornamento.</string>
     <string name="settings__background__download__enabled__title">Scarica gli aggiornamenti dell\'app</string>
-    <string name="settings__background__download__metered__summary">Non raccomandato per gli utenti con dati mobili limitati.</string>
+    <string name="settings__background__download__metered__summary">Non consigliato per gli utenti con dati mobili limitati.</string>
     <string name="settings__background__download__metered__title">Scarica gli aggiornamenti delle app sulle reti a pagamento</string>
     <string name="settings__background__installation__enabled__summary">Cerca di installare gli aggiornamenti senza l\'interazione dell\'utente.</string>
     <string name="settings__background__installation__enabled__title">Installare l\'aggiornamento</string>
