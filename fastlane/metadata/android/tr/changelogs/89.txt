@@ -1,0 +1,2 @@
+* Vivaldi için güncelleme uyarısı (teşekkürler gnuhead-chieb - Tobi823/ffupdater#92)
+* İletişim kutularındaki bağlantılar tıklanabilir yapıldı

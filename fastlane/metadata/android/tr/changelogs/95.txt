@@ -1,0 +1,3 @@
+* FFUpdater GitHub/GitLab/Depodan kuruluysa kendini güncelleyebilir.
+* Ağ ve arka plan etkinlikleri üzerinde daha fazla denetime sahip elden geçirilmiş ayarlar menüsü.
+* Gereksiz hata mesajlarından kaçınmak için daha fazla arka plan ağı denemesi

@@ -1,0 +1,1 @@
+* Firefox Klar ve Firefox Focus, Github deposundaki yeni dosya adlarına uyarlandı (kaçırılan Focus/Klar güncellemeleri düzeltildi)

@@ -1,0 +1,1 @@
+* Bromite için yanlış uyarı düzeltildi (teşekkürler mpeter, Tobiwan/ffupdater#64)

@@ -1,0 +1,1 @@
+* Arka plan güncelleme denetimi başarısız olduğunda hata mesajı iyileştirildi (teşekkürler duck-rh)
