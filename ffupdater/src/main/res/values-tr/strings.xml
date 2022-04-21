@@ -88,7 +88,7 @@
     <string name="install_activity__fetch_url_for_download">İndirme URL\'sini %1$s değerinden getir</string>
     <string name="install_activity__fetched_url_for_download_successfully">İndirme URL\'si %1$s değerinden getirildi</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API hız sınırı aşıldı. Lütfen indirmeyi bir saat içinde tekrar deneyin.</string>
-    <string name="install_activity__open_cache_explanation">APK dosyasını daha fazla boş depolama alanına sahip bir yere kopyalamak için önbellek klasörünü açabilirsiniz.</string>
+    <string name="install_activity__open_cache_explanation">APK dosyasını daha fazla boş depolama alanına sahip bir yere kopyalamak için önbellek klasörünü açabilirsiniz. Dikkatli olun, Android 11 ve sonrasında yalnızca bazı dosya yöneticileri Android/data klasöründeki dosyaları açabilir.</string>
     <string name="install_activity__open_cache_folder_button_text">önbellek klasörünü aç</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 sertifikası parmak izi:</string>
     <string name="install_activity__temporary_network_issue">Geçici bir ağ sorunu oluştu. Lütfen daha sonra tekrar deneyin.</string>
@@ -204,4 +204,6 @@
 \n
 \nBazı insanlar bundan hoşlanmaz. Vivaldi\'yi kurmak istiyor musunuz\?</string>
     <string name="settings__general_category__title">Genel</string>
+    <string name="download_notification__message">%1$s (%2$s) için güncellemeyi indir.</string>
+    <string name="install_activity__file_uri_exposed_toast">Dosya yolu diğer uygulamalara gösterilemiyor. Lütfen tercih ettiğiniz dosya yöneticisi ile klasörü kendiniz açın.</string>
 </resources>
