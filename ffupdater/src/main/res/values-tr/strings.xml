@@ -204,4 +204,5 @@
     <string name="vivaldi__warning">Vivaldi yalnızca kısmen açık kaynaktır (daha fazla bilgi için <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source /</a> adresine bakın). Ayrıca Google Chrome\'un (Chromium) teknik temelini kullanır.
 \n
 \nBazı insanlar bundan hoşlanmaz. Vivaldi\'yi kurmak istiyor musunuz\?</string>
+    <string name="settings__general_category__title">Genel</string>
 </resources>
