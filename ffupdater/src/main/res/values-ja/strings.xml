@@ -36,7 +36,6 @@
     <string name="dialog_button__yes">はい</string>
     <string name="download_notification__channel_description">アプリのアップデートがバックグラウンドでダウンロードされたときに表示される。</string>
     <string name="download_notification__channel_name">バックグラウンドでダウンロードを通知</string>
-    <string name="download_notification__message">現在、インストールされているアプリのアップデートをバックグラウンドでダウンロード中です。</string>
     <string name="download_notification__title">アプリのアップデートをダウンロードする</string>
     <string name="download_the_app">アプリをダウンロード</string>
     <string name="error_notification__channel_description">バックグラウンドの更新チェックのエラーを表示します</string>

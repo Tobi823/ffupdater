@@ -36,7 +36,6 @@
     <string name="dialog_button__yes">Sì</string>
     <string name="download_notification__channel_description">Mostra quando gli aggiornamenti delle app vengono scaricati in background.</string>
     <string name="download_notification__channel_name">Notifica di download in background</string>
-    <string name="download_notification__message">Attualmente scarica in background gli aggiornamenti per le app installate.</string>
     <string name="download_notification__title">Scaricare gli aggiornamenti delle app</string>
     <string name="download_the_app">scarica l\'app</string>
     <string name="error_notification__channel_description">Mostra errori della verifica degli aggiornamenti in background</string>

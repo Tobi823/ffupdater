@@ -40,7 +40,6 @@
     <string name="dialog_button__yes">Tak</string>
     <string name="download_notification__channel_description">Pokazuje, kiedy aktualizacje aplikacji są pobierane w tle.</string>
     <string name="download_notification__channel_name">Powiadomienie o pobranych plikach w tle</string>
-    <string name="download_notification__message">Obecnie w tle pobierane są aktualizacje dla zainstalowanych aplikacji.</string>
     <string name="download_notification__title">Pobieranie aktualizacji aplikacji</string>
     <string name="download_the_app">Pobierz aplikację</string>
     <string name="error_notification__channel_description">Pokaż błędy sprawdzania aktualizacji w tle</string>

@@ -40,7 +40,6 @@
     <string name="dialog_button__yes">Oui</string>
     <string name="download_notification__channel_description">Indique quand les mises à jour des applications sont téléchargées en arrière-plan.</string>
     <string name="download_notification__channel_name">Notification des téléchargements en arrière-plan</string>
-    <string name="download_notification__message">Téléchargement actuel des mises à jour des applications installées en arrière-plan.</string>
     <string name="download_notification__title">Téléchargement des mises à jour des applications</string>
     <string name="download_the_app">télécharger l\'application</string>
     <string name="error_notification__channel_description">Afficher les erreurs du vérificateur de mise à jour des antécédents</string>

@@ -37,7 +37,6 @@
     <string name="dialog_button__yes">Yes</string>
     <string name="download_notification__channel_description">Shows when app updates are downloaded in the background.</string>
     <string name="download_notification__channel_name">Notification about downloads in the background</string>
-    <string name="download_notification__message">Currently downloading updates for installed apps in the background.</string>
     <string name="download_notification__title">Downloading app updates</string>
     <string name="download_the_app">download the app</string>
     <string name="error_notification__channel_description">Show errors of the background update checker</string>
@@ -188,4 +187,5 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi is only partially open source (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?</string>
     <string name="settings__general_category__title">General</string>
+    <string name="download_notification__message">Download update for %1$s (%2$s).</string>
 </resources>

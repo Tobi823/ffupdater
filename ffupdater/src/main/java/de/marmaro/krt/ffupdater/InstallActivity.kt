@@ -270,23 +270,23 @@ class InstallActivity : AppCompatActivity() {
             ia.show(R.id.downloadingFile)
             ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
 
-            val setDownloadingFileText = { text: String ->
-                val display = ia.getString(R.string.install_activity__download_app_with_status, text)
-                ia.setText(R.id.downloadingFileText, display)
-            }
             val fileDownloader = FileDownloader()
+            ia.viewModel.fileDownloader = fileDownloader
             fileDownloader.onProgress = { percentage, mb ->
                 ia.runOnUiThread {
-                    if (percentage != null) {
+                    val status = if (percentage != null) {
                         ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
-                        setDownloadingFileText("$percentage %, $mb MB")
+                        "$percentage %"
                     } else {
-                        setDownloadingFileText("$mb MB")
+                        "$mb MB"
                     }
+                    val display = ia.getString(R.string.install_activity__download_app_with_status, status)
+                    ia.setText(R.id.downloadingFileText, display)
                 }
             }
-            ia.viewModel.fileDownloader = fileDownloader
-            setDownloadingFileText(" %")
+
+            val display = ia.getString(R.string.install_activity__download_app_with_status, "")
+            ia.setText(R.id.downloadingFileText, display)
 
             val url = updateCheckResult.availableResult.downloadUrl
             ia.appCache.delete(ia)
@@ -313,21 +313,17 @@ class InstallActivity : AppCompatActivity() {
             val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
             ia.show(R.id.downloadingFile)
             ia.setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
-            val setDownloadingFileText = { text: String ->
-                ia.setText(
-                    R.id.downloadingFileText,
-                    ia.getString(R.string.install_activity__download_app_with_status, text)
-                )
-            }
             val fileDownloader = requireNotNull(ia.viewModel.fileDownloader)
             fileDownloader.onProgress = { percentage, mb ->
                 ia.runOnUiThread {
-                    if (percentage != null) {
+                    val status = if (percentage != null) {
                         ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
-                        setDownloadingFileText("$percentage %")
+                        "$percentage %"
                     } else {
-                        setDownloadingFileText("$mb MB")
+                        "$mb MB"
                     }
+                    val display = ia.getString(R.string.install_activity__download_app_with_status, status)
+                    ia.setText(R.id.downloadingFileText, display)
                 }
             }
 

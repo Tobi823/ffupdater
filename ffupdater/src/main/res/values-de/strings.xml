@@ -36,7 +36,6 @@
     <string name="dialog_button__yes">Ja</string>
     <string name="download_notification__channel_description">Zeigt an, wenn App-Updates im Hintergrund heruntergeladen werden.</string>
     <string name="download_notification__channel_name">Benachrichtigung über Downloads im Hintergrund</string>
-    <string name="download_notification__message">Derzeit werden Updates für installierte Anwendungen im Hintergrund heruntergeladen.</string>
     <string name="download_notification__title">Herunterladen von App-Updates</string>
     <string name="download_the_app">Applikation herunterladen</string>
     <string name="error_notification__channel_description">Fehler des Hintergrund-Update-Checkers anzeigen</string>

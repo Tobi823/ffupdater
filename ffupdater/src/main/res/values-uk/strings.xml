@@ -36,7 +36,6 @@
     <string name="dialog_button__yes">Так</string>
     <string name="download_notification__channel_description">Показує, коли оновлення програми завантажуються у фоновому режимі.</string>
     <string name="download_notification__channel_name">Повідомлення про завантаження у фоновому режимі</string>
-    <string name="download_notification__message">Наразі завантажуються оновлення для встановлених програм у фоновому режимі.</string>
     <string name="download_notification__title">Завантаження оновлень програми</string>
     <string name="download_the_app">завантажити додаток</string>
     <string name="error_notification__channel_description">Показати помилки перевірки фонового оновлення</string>

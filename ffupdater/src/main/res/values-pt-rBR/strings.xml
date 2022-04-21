@@ -36,7 +36,6 @@
     <string name="dialog_button__yes">Sim</string>
     <string name="download_notification__channel_description">Mostra quando as atualizações do aplicativo são baixadas em segundo plano.</string>
     <string name="download_notification__channel_name">Notificação sobre downloads em segundo plano</string>
-    <string name="download_notification__message">Atualmente, as atualizações para os aplicativos instalados são baixadas em segundo plano.</string>
     <string name="download_notification__title">Download de atualizações do aplicativo</string>
     <string name="download_the_app">baixar o navegador</string>
     <string name="error_notification__channel_description">Mostrar erros ao verificar por atualizações em segundo plano</string>

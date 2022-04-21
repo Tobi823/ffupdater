@@ -40,7 +40,6 @@
     <string name="dialog_button__yes">Evet</string>
     <string name="download_notification__channel_description">Arka planda uygulama güncellemelerinin ne zaman indirildiğini gösterir.</string>
     <string name="download_notification__channel_name">Arka planda indirmeler hakkında bildirim</string>
-    <string name="download_notification__message">Şu anda arka planda kurulu uygulamalar için güncellemeler indiriliyor.</string>
     <string name="download_notification__title">Uygulama güncellemeleri indiriliyor</string>
     <string name="download_the_app">uygulamayı indir</string>
     <string name="error_notification__channel_description">Arka plan güncelleme denetleyicisinin hatalarını göster</string>

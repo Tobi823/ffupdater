@@ -35,7 +35,6 @@
     <string name="dialog_button__yes">Ano</string>
     <string name="download_notification__channel_description">Zobrazuje, kdy jsou aktualizace aplikací staženy na pozadí.</string>
     <string name="download_notification__channel_name">Upozornění na stahování na pozadí</string>
-    <string name="download_notification__message">Aktuálně se stahují aktualizace pro nainstalované aplikace na pozadí.</string>
     <string name="download_notification__title">Stahování aktualizací aplikací</string>
     <string name="download_the_app">stáhnout aplikaci</string>
     <string name="error_notification__channel_description">Zobrazit chyby z nástroje pro kontrolu aktualizací na pozadí</string>

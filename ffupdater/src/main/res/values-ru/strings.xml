@@ -36,7 +36,6 @@
     <string name="dialog_button__yes">Да</string>
     <string name="download_notification__channel_description">Показывает, когда обновления приложений загружаются в фоновом режиме.</string>
     <string name="download_notification__channel_name">Уведомление о загрузках в фоновом режиме</string>
-    <string name="download_notification__message">В настоящее время в фоновом режиме загружаются обновления для установленных приложений.</string>
     <string name="download_notification__title">Загрузка обновлений приложений</string>
     <string name="download_the_app">загрузить приложение</string>
     <string name="error_notification__channel_description">Показать ошибки проверки фонового обновления</string>
