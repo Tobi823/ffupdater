@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -25,6 +26,7 @@ import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.BuildMetadata
 import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.FileDownloader
@@ -348,10 +350,15 @@ class InstallActivity : AppCompatActivity() {
                 ia.show(R.id.installerSuccess)
                 ia.show(R.id.fingerprintInstalledGood)
                 ia.setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
+
                 val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
                 val available = updateCheckResult.availableResult
                 ia.app.detail.appInstallationCallback(ia, available)
-                ia.appCache.delete(ia)
+                if (BuildMetadata.isDebugBuild()) {
+                    Log.i("InstallActivity", "Don't delete file to speedup local development.")
+                } else {
+                    ia.appCache.delete(ia)
+                }
                 return SUCCESS_STOP
             }
 
@@ -393,7 +400,11 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)
             ia.setText(R.id.downloadFileFailedText, ia.viewModel.fileDownloader?.errorMessage ?: "")
             ia.show(R.id.installerFailed)
-            ia.appCache.delete(ia)
+            if (BuildMetadata.isDebugBuild()) {
+                Log.i("InstallActivity", "Don't delete file to speedup local development.")
+            } else {
+                ia.appCache.delete(ia)
+            }
             return ERROR_STOP
         }
 

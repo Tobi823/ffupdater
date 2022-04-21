@@ -24,6 +24,7 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededExcep
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.BuildMetadata
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
@@ -38,7 +39,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private val sameAppVersionAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
+    private val sameAppVersionIsAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
     private val availableVersions: EnumMap<App, TextView> = EnumMap(App::class.java)
     private val downloadButtons: EnumMap<App, ImageButton> = EnumMap(App::class.java)
     private val errorsDuringUpdateCheck: EnumMap<App, Exception?> = EnumMap(App::class.java)
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.main_activity)
         setSupportActionBar(findViewById(R.id.toolbar))
-        if (BuildConfig.BUILD_TYPE == "debug") {
+        if (BuildMetadata.isDebugBuild()) {
             StrictModeSetup.enableStrictMode()
         }
         settingsHelper = SettingsHelper(this)
@@ -144,14 +145,14 @@ class MainActivity : AppCompatActivity() {
 
             val downloadButton: ImageButton = newCardView.findViewWithTag("appDownloadButton")
             downloadButton.setOnClickListener {
-                if (sameAppVersionAlreadyInstalled[app] == true) {
+                if (sameAppVersionIsAlreadyInstalled[app] == true) {
                     InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
                 } else {
                     installApp(app, askForConfirmationIfOtherDownloadsAreRunning = true)
                 }
             }
             downloadButtons[app] = downloadButton
-            disableDownloadButton(app)
+            setDownloadButtonState(app, false)
 
             val infoButton: ImageButton = newCardView.findViewWithTag("appInfoButton")
             infoButton.setOnClickListener {
@@ -171,36 +172,31 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private suspend fun checkForUpdates() {
         val apps = App.values()
-            .filter {
-                it.detail.isInstalled(this@MainActivity)
-            }
+            .filter { it.detail.isInstalled(this@MainActivity) }
 
-        val abortUpdateCheck = { message: Int ->
-            apps.forEach { setAvailableVersion(it, getString(message)) }
-            hideLoadAnimation()
-            showToast(message)
-        }
         if (!settingsHelper.isForegroundUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-            abortUpdateCheck(R.string.main_activity__no_unmetered_network)
+            setAvailableVersion(apps, getString(R.string.main_activity__no_unmetered_network))
+            setLoadAnimationState(false)
+            showToast(R.string.main_activity__no_unmetered_network)
             return
         }
 
-        showLoadAnimation()
-        apps.forEach { setAvailableVersion(it, getString(R.string.available_version_loading)) }
-        apps.forEach { checkForAppUpdateInIOThread(it) }
-        hideLoadAnimation()
+        setLoadAnimationState(true)
+        setAvailableVersion(apps, getString(R.string.available_version_loading))
+        apps.forEach { checkForAppUpdate(it) }
+        setLoadAnimationState(false)
     }
 
     @MainThread
-    private suspend fun checkForAppUpdateInIOThread(app: App) {
+    private suspend fun checkForAppUpdate(app: App) {
         try {
             val updateResult = app.detail.updateCheck(applicationContext)
             setAvailableVersion(app, updateResult.displayVersion)
-            sameAppVersionAlreadyInstalled[app] = !updateResult.isUpdateAvailable
+            sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable
             if (updateResult.isUpdateAvailable) {
-                enableDownloadButton(app)
+                setDownloadButtonState(app, true)
             } else {
-                disableDownloadButton(app)
+                setDownloadButtonState(app, false)
             }
         } catch (e: GithubRateLimitExceededException) {
             showUpdateCheckError(app, R.string.main_activity__github_api_limit_exceeded, e)
@@ -213,17 +209,22 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     private fun setAvailableVersion(app: App, message: String) {
-        //it's possible that MainActivity is destroyed but the coroutine wants to update
-        //the "available version" text field (which does not longer exists)
+        // it is possible that MainActivity is destroyed but the coroutine wants to update
+        // the "available version" text field (which does not longer exists)
         availableVersions[app]?.text = message
         errorsDuringUpdateCheck[app] = null
+    }
+
+    @MainThread
+    private fun setAvailableVersion(apps: List<App>, message: String) {
+        apps.forEach { setAvailableVersion(it, message) }
     }
 
     @UiThread
     private fun showUpdateCheckError(app: App, message: Int, exception: Exception) {
         errorsDuringUpdateCheck[app] = exception
         availableVersions[app]?.setText(message)
-        disableDownloadButton(app)
+        setDownloadButtonState(app, false)
     }
 
     @MainThread
@@ -253,22 +254,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun enableDownloadButton(app: App) {
-        downloadButtons[app]?.setImageResource(R.drawable.ic_file_download_orange)
+    private fun setDownloadButtonState(app: App, enabled: Boolean) {
+        val icon = if (enabled) R.drawable.ic_file_download_orange else R.drawable.ic_file_download_grey
+        downloadButtons[app]?.setImageResource(icon)
     }
 
     @UiThread
-    private fun disableDownloadButton(app: App) {
-        downloadButtons[app]?.setImageResource(R.drawable.ic_file_download_grey)
-    }
-
-    @UiThread
-    private fun showLoadAnimation() {
-        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = true
-    }
-
-    @UiThread
-    private fun hideLoadAnimation() {
-        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
+    private fun setLoadAnimationState(visible: Boolean) {
+        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = visible
     }
 }

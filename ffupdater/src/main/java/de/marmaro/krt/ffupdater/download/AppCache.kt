@@ -2,8 +2,6 @@ package de.marmaro.krt.ffupdater.download
 
 import android.content.Context
 import android.os.Environment
-import android.util.Log
-import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import java.io.File
@@ -27,10 +25,6 @@ class AppCache(val app: App) {
     }
 
     fun delete(context: Context) {
-        if (BuildConfig.BUILD_TYPE == "debug") {
-            Log.i("AppCache", "Don't delete file to speedup development.")
-            return
-        }
         val allFiles = getCacheFolder(context).listFiles()
         checkNotNull(allFiles) { "Array of files in download folder should exists." }
         val appFiles = allFiles.filter { it.name.startsWith(app.detail.packageName) }
