@@ -1,4 +1,9 @@
+# 2022-04-?? Version 75.4.0 (98)
+
+* Show download progress in background download notification
+
 # 2022-04-19 Version 75.3.0 (97)
+
 * Add Brave Beta and Brave Nightly
 * Add Turkish translation (thanks metezd - Tobi823/ffupdater#129)
 * Add Bromite SystemWebView

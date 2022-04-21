@@ -295,7 +295,7 @@ class InstallActivity : AppCompatActivity() {
             AppDownloadStatus.foregroundDownloadIsStarted()
             // download coroutine should survive a screen rotation and should live as long as the view model
             val result = withContext(ia.viewModel.viewModelScope.coroutineContext) {
-                fileDownloader.downloadFile(url, file)
+                fileDownloader.downloadFileAsync(url, file).await()
             }
             AppDownloadStatus.foregroundDownloadIsFinished()
 

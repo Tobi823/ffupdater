@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.CrashReportActivity
 import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.R.string.download_notification__message
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
@@ -59,7 +60,13 @@ object NotificationBuilder {
             }
     }
 
-    fun showDownloadNotification(context: Context) {
+    fun showDownloadNotification(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
+        val appTitle = context.getString(app.detail.displayTitle)
+        val status = when {
+            progressInPercent != null -> "$progressInPercent %"
+            totalMB != null -> "$totalMB MB"
+            else -> ""
+        }
         showNotification(
             context = context,
             channelId = "background_downloads_notification_channel",
@@ -67,7 +74,7 @@ object NotificationBuilder {
             channelDescription = context.getString(R.string.download_notification__channel_description),
             notificationId = 400,
             notificationTitle = context.getString(R.string.download_notification__title),
-            notificationMessage = context.getString(R.string.download_notification__message),
+            notificationMessage = context.getString(download_notification__message, appTitle, status),
             intent = null
         )
     }

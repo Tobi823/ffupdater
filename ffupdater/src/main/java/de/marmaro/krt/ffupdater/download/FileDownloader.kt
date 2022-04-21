@@ -28,7 +28,7 @@ class FileDownloader {
     var currentDownloadResult: Deferred<Boolean>? = null
 
     @MainThread
-    suspend fun downloadFile(url: String, file: File): Boolean {
+    suspend fun downloadFileAsync(url: String, file: File): Deferred<Boolean> {
         return withContext(Dispatchers.IO) {
             val asyncValue = async {
                 try {
@@ -42,7 +42,7 @@ class FileDownloader {
             }
             currentDownloadResult = asyncValue
             asyncValue
-        }.await()
+        }
     }
 
     @WorkerThread

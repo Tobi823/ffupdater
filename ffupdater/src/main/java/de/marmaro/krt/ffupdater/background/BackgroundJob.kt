@@ -15,6 +15,7 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededExcep
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideAllFailedBackgroundInstallationNotifications
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideAllSuccessfulBackgroundInstallationNotifications
+import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideDownloadNotification
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.showFailedBackgroundInstallationNotification
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.showSuccessfulBackgroundInstallationNotification
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -40,7 +41,7 @@ import java.util.concurrent.TimeUnit.MINUTES
  */
 class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {
-
+    private val context = applicationContext
     private val settingsHelper = SettingsHelper(context)
     private val dataStoreHelper = DataStoreHelper(context)
 
@@ -87,9 +88,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             showUpdateNotification(appsWithAvailableUpdates)
             return it
         }
-        NotificationBuilder.showDownloadNotification(applicationContext)
         appsWithAvailableUpdates.forEach { downloadUpdate(it) }
-        NotificationBuilder.hideDownloadNotification(applicationContext)
+        hideDownloadNotification(context)
 
         if (!DeviceSdkTester.supportsAndroid10()) {
             return Result.success()
@@ -98,8 +98,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             showUpdateNotification(appsWithAvailableUpdates)
             return it
         }
-        hideAllSuccessfulBackgroundInstallationNotifications(applicationContext)
-        hideAllFailedBackgroundInstallationNotifications(applicationContext)
+        hideAllSuccessfulBackgroundInstallationNotifications(context)
+        hideAllFailedBackgroundInstallationNotifications(context)
         appsWithAvailableUpdates.forEach {
             installApplication(it)
         }
@@ -121,7 +121,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.retry()
         }
 
-        if (!settingsHelper.isBackgroundUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+        if (!settingsHelper.isBackgroundUpdateCheckOnMeteredAllowed && isNetworkMetered(context)) {
             Log.i(LOG_TAG, "No unmetered network available for update check.")
             return Result.retry()
         }
@@ -132,9 +132,9 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     private suspend fun checkForUpdates(): List<App> {
         val apps = App.values()
             .filter { it !in settingsHelper.excludedAppsFromBackgroundUpdateCheck }
-            .filter { it.detail.isInstalled(applicationContext) }
+            .filter { it.detail.isInstalled(context) }
         val appsWithAvailableUpdates = apps.filter {
-            val updateCheckResult = it.detail.updateCheck(applicationContext)
+            val updateCheckResult = it.detail.updateCheck(context)
             updateCheckResult.isUpdateAvailable
         }
         return appsWithAvailableUpdates
@@ -146,7 +146,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.success()
         }
 
-        if (!settingsHelper.isBackgroundDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+        if (!settingsHelper.isBackgroundDownloadOnMeteredAllowed && isNetworkMetered(context)) {
             Log.i(LOG_TAG, "No unmetered network available for download.")
             return Result.success()
         }
@@ -166,27 +166,32 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         val appCache = AppCache(app)
-        val availableResult = app.detail.updateCheck(applicationContext).availableResult
-        if (appCache.isAvailable(applicationContext, availableResult)) {
+        val availableResult = app.detail.updateCheck(context).availableResult
+        if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
         AppDownloadStatus.backgroundDownloadIsStarted()
-        val result = FileDownloader().downloadFile(
-            availableResult.downloadUrl,
-            appCache.getFile(applicationContext)
-        )
+        val downloader = FileDownloader()
+        downloader.onProgress = { progressInPercent, totalMB ->
+            NotificationBuilder.showDownloadNotification(context, app, progressInPercent, totalMB)
+        }
+        NotificationBuilder.showDownloadNotification(context, app, null, null)
+
+        val file = appCache.getFile(context)
+        val result = downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
+
         AppDownloadStatus.backgroundDownloadIsFinished()
         if (!result) {
-            appCache.delete(applicationContext)
+            appCache.delete(context)
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun areInstallationPreconditionsUnfulfilled(): Result? {
-        if (!applicationContext.packageManager.canRequestPackageInstalls()) {
+        if (!context.packageManager.canRequestPackageInstalls()) {
             return Result.retry()
         }
 
@@ -201,28 +206,28 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     @RequiresApi(Build.VERSION_CODES.Q)
     private suspend fun installApplication(app: App) {
         val appCache = AppCache(app)
-        val file = appCache.getFile(applicationContext)
+        val file = appCache.getFile(context)
         if (!file.exists()) {
             val errorMessage = "AppCache has no cached APK file"
-            showFailedBackgroundInstallationNotification(applicationContext, app, -100, errorMessage)
+            showFailedBackgroundInstallationNotification(context, app, -100, errorMessage)
         }
 
-        BackgroundAppInstaller.create(applicationContext, app, file).use { installer ->
+        BackgroundAppInstaller.create(context, app, file).use { installer ->
             withContext(Dispatchers.Main) {
                 val result = installer.installAsync().await()
                 if (result.success) {
-                    showSuccessfulBackgroundInstallationNotification(applicationContext, app)
+                    showSuccessfulBackgroundInstallationNotification(context, app)
                 } else {
                     val code = result.errorCode
                     val message = result.errorMessage
-                    showFailedBackgroundInstallationNotification(applicationContext, app, code, message)
+                    showFailedBackgroundInstallationNotification(context, app, code, message)
                 }
             }
         }
     }
 
     private fun showUpdateNotification(appsWithUpdates: List<App>) {
-        NotificationBuilder.showUpdateNotifications(applicationContext, appsWithUpdates)
+        NotificationBuilder.showUpdateNotifications(context, appsWithUpdates)
     }
 
     private fun handleRetryableError(e: Exception, maxRetries: Int): Result {
@@ -236,8 +241,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun showErrorNotification(e: Exception) {
-        val message = applicationContext.getString(R.string.background_job_failure__notification_text)
-        NotificationBuilder.showErrorNotification(applicationContext, e, message)
+        val message = context.getString(R.string.background_job_failure__notification_text)
+        NotificationBuilder.showErrorNotification(context, e, message)
     }
 
     companion object {
