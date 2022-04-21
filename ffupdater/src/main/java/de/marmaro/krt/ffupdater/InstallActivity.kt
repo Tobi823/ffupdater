@@ -101,23 +101,7 @@ class InstallActivity : AppCompatActivity() {
             hide(R.id.install_activity__delete_cache)
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            val parentFolder = appCache.getFile(this).parentFile ?: return@setOnClickListener
-            val uri = Uri.parse("file://${parentFolder.absolutePath}/")
-            intent.setDataAndType(uri, "resource/folder")
-            val chooser = Intent.createChooser(intent, "Open folder")
-
-            if (DeviceSdkTester.supportsAndroidNougat()) {
-                StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
-                try {
-                    startActivity(chooser)
-                } catch (e: FileUriExposedException) {
-                    Toast.makeText(this, install_activity__file_uri_exposed_toast, LENGTH_LONG)
-                        .show()
-                }
-            } else {
-                startActivity(chooser)
-            }
+            tryOpenDownloadFolderInFileManager()
         }
 
         // make sure that the ViewModel is correct for the current app
@@ -128,6 +112,26 @@ class InstallActivity : AppCompatActivity() {
         viewModel.app = app
         // only start new download if no download is still running (can happen after rotation)
         restartStateMachine(START)
+    }
+
+    private fun tryOpenDownloadFolderInFileManager() {
+        val intent = Intent(Intent.ACTION_VIEW)
+        val parentFolder = appCache.getFile(this).parentFile ?: return
+        val uri = Uri.parse("file://${parentFolder.absolutePath}/")
+        intent.setDataAndType(uri, "resource/folder")
+        val chooser = Intent.createChooser(intent, "Open folder")
+
+        if (DeviceSdkTester.supportsAndroidNougat()) {
+            StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
+            try {
+                startActivity(chooser)
+            } catch (e: FileUriExposedException) {
+                Toast.makeText(this, install_activity__file_uri_exposed_toast, LENGTH_LONG)
+                    .show()
+            }
+        } else {
+            startActivity(chooser)
+        }
     }
 
     override fun onStop() {
