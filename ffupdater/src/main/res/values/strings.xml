@@ -76,7 +76,7 @@
     <string name="install_activity__fetch_url_for_download">Fetch download URL from %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Fetched download URL from %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API rate limit is exceeded. Please try the download again in the next hour.</string>
-    <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage.</string>
+    <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage. Beware, on Android 11+ only some file manager are able to open files in the Android/data folder.</string>
     <string name="install_activity__open_cache_folder_button_text">open cache folder</string>
     <string name="install_activity__retrigger_installation__button_title">Retry App Installation</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
@@ -188,4 +188,5 @@
     <string name="vivaldi__warning">Vivaldi is only partially open source (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?</string>
     <string name="settings__general_category__title">General</string>
     <string name="download_notification__message">Download update for %1$s (%2$s).</string>
+    <string name="install_activity__file_uri_exposed_toast">Can\'t expose file path to other apps. Please open the folder yourself with your preferred file manager."</string>
 </resources>

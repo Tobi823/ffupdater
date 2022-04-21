@@ -5,12 +5,16 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.FileUriExposedException
+import android.os.StrictMode
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -21,12 +25,14 @@ import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.InstallActivity.State.*
 import de.marmaro.krt.ffupdater.R.id.install_activity__exception__show_button
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__install_activity_fetching_url
+import de.marmaro.krt.ffupdater.R.string.install_activity__file_uri_exposed_toast
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.BuildMetadata
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.FileDownloader
@@ -97,9 +103,21 @@ class InstallActivity : AppCompatActivity() {
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
             val parentFolder = appCache.getFile(this).parentFile ?: return@setOnClickListener
-            val uri = Uri.parse("file://${parentFolder.absolutePath}")
+            val uri = Uri.parse("file://${parentFolder.absolutePath}/")
             intent.setDataAndType(uri, "resource/folder")
-            startActivity(Intent.createChooser(intent, "Open folder"))
+            val chooser = Intent.createChooser(intent, "Open folder")
+
+            if (DeviceSdkTester.supportsAndroidNougat()) {
+                StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
+                try {
+                    startActivity(chooser)
+                } catch (e: FileUriExposedException) {
+                    Toast.makeText(this, install_activity__file_uri_exposed_toast, LENGTH_LONG)
+                        .show()
+                }
+            } else {
+                startActivity(chooser)
+            }
         }
 
         // make sure that the ViewModel is correct for the current app
@@ -352,6 +370,7 @@ class InstallActivity : AppCompatActivity() {
                 ia.app.detail.appInstallationCallback(ia, available)
                 if (BuildMetadata.isDebugBuild()) {
                     Log.i("InstallActivity", "Don't delete file to speedup local development.")
+                    ia.show(R.id.install_activity__open_cache_folder)
                 } else {
                     ia.appCache.delete(ia)
                 }
