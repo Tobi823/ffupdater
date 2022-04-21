@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -19,6 +18,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
+import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__main_activity_update_check
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
@@ -135,10 +135,8 @@ class MainActivity : AppCompatActivity() {
             availableVersions[app] = availableVersion
             availableVersion.setOnClickListener {
                 val exception = errorsDuringUpdateCheck[app]
-                Log.e("MainActivity", exception.toString())
                 if (exception != null) {
-                    val description =
-                        getString(R.string.crash_report__explain_text__main_activity_update_check)
+                    val description = getString(crash_report__explain_text__main_activity_update_check)
                     val intent = CrashReportActivity.createIntent(this, exception, description)
                     startActivity(intent)
                 }
