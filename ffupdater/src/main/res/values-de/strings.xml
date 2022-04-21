@@ -183,4 +183,5 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">Vivaldi ist nur teilweise quelloffen (siehe <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> für weitere Informationen). Außerdem nutzt es die technische Grundlage von Google Chrome (Chromium).\n\nManche Leute mögen das nicht. Möchten Sie Vivaldi installieren?</string>
     <string name="settings__general_category__title">Allgemein</string>
+    <string name="download_notification__message">Lade Update für %1$s herunter (%2$s).</string>
 </resources>
