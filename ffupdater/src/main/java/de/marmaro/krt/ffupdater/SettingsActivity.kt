@@ -21,10 +21,9 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.settings_activity)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385
-            supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.settings, SettingsFragment())
-                    .commit()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.settings, SettingsFragment())
+                .commit()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
