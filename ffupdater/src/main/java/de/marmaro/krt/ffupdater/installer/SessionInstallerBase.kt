@@ -12,6 +12,7 @@ import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
+import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_incompatible
@@ -20,6 +21,8 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.IOException
 
@@ -37,7 +40,9 @@ abstract class SessionInstallerBase(
         requireNotNull(intentReceiver) { "SessionInstaller is not initialized" }
         require(file.exists()) { "File does not exists." }
         try {
-            install()
+            withContext(Dispatchers.Main) {
+                install()
+            }
             return installationStatus
         } catch (e: IOException) {
             installationStatus.completeExceptionally(Exception("Fail to install app.", e))
@@ -48,6 +53,7 @@ abstract class SessionInstallerBase(
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
+    @MainThread
     private fun install() {
         val installer = context.packageManager.packageInstaller
         val params = createSessionParams()
@@ -58,6 +64,7 @@ abstract class SessionInstallerBase(
             failure(STATUS_FAILURE_STORAGE, error)
             return
         }
+        installer.registerSessionCallback(fallbackAppInstallationResultListener)
         installer.openSession(id).use {
             copyApkToSession(it)
             val intentSender = createSessionChangeReceiver(id)
@@ -121,6 +128,23 @@ abstract class SessionInstallerBase(
             STATUS_FAILURE_STORAGE -> failure(status, R.string.session_installer__status_failure_storage)
             else -> failure(status, "($status) ${bundle.getString(EXTRA_STATUS_MESSAGE)}")
         }
+    }
+
+    private val fallbackAppInstallationResultListener = object : SessionCallback() {
+        override fun onCreated(sessionId: Int) {}
+        override fun onBadgingChanged(sessionId: Int) {}
+        override fun onActiveChanged(sessionId: Int, active: Boolean) {}
+        override fun onProgressChanged(sessionId: Int, progress: Float) {}
+        override fun onFinished(sessionId: Int, success: Boolean) {
+            // this should be called after handleAppInstallationResult() and it is only a fallback
+            // if PackageInstaller fail to call handleAppInstallationResult()
+            // one installationStatus has been completed, its value can not be changed
+            if (!success) {
+                val errorMessage = context.getString(R.string.session_installer__status_failure_aborted)
+                installationStatus.complete(InstallResult(false, STATUS_FAILURE_ABORTED, errorMessage))
+            }
+        }
+
     }
 
     protected abstract fun requestInstallationPermission(bundle: Bundle)
