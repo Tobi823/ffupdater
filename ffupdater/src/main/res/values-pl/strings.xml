@@ -80,7 +80,6 @@
     <string name="install_activity__github_rate_limit_exceeded">Limit prędkości GitHub-API został przekroczony. Proszę spróbować pobrać ponownie w ciągu następnej godziny.</string>
     <string name="install_activity__open_cache_explanation">Możesz otworzyć folder pamięci podręcznej, aby skopiować plik APK do miejsca z większą ilością wolnego miejsca.</string>
     <string name="install_activity__open_cache_folder_button_text">otwórz folder pamięci podręcznej</string>
-    <string name="install_activity__retrigger_installation__button_title">Ponów próbę instalacji aplikacji</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Odcisk palca certyfikatu SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Wystąpił tymczasowy problem z siecią. Proszę spróbować ponownie później.</string>
     <string name="install_activity__too_low_memory_description">Na Twoim urządzeniu dostępne jest tylko %1$d MB wolnego miejsca. Może to prowadzić do niepowodzenia pobierania lub instalacji aplikacji.</string>

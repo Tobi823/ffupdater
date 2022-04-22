@@ -1,6 +1,8 @@
 # 2022-04-?? Version 75.4.0 (98)
 
 * Show download progress in background download notification
+* Remove the "retry installation" button from InstallActivity because it should no longer be necessary
+* Fix bugs
 
 # 2022-04-19 Version 75.3.0 (97)
 

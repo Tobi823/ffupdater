@@ -78,7 +78,6 @@
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API rate limit is exceeded. Please try the download again in the next hour.</string>
     <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage. Beware, on Android 11+ only some file manager are able to open files in the Android/data folder.</string>
     <string name="install_activity__open_cache_folder_button_text">open cache folder</string>
-    <string name="install_activity__retrigger_installation__button_title">Retry App Installation</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
     <string name="install_activity__temporary_network_issue">A temporary network issue occurred. Please retry later.</string>
     <string name="install_activity__too_low_memory_description">Your device is low on storage (only %1$d MB free). This will lead to download or installation failure.</string>

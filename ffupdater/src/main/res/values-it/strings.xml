@@ -76,7 +76,6 @@
     <string name="install_activity__github_rate_limit_exceeded">Limite di chiamate GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</string>
     <string name="install_activity__open_cache_explanation">Puoi aprire la cartella di cache per copiare il file APK in un luogo con una memoria più libera.</string>
     <string name="install_activity__open_cache_folder_button_text">apri cartella di cache</string>
-    <string name="install_activity__retrigger_installation__button_title">Riprova Installazione dell\'App</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Impronta digitale del certificato SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Si è verificato un problema di rete temporaneo. Si prega di riprovare in seguito.</string>
     <string name="install_activity__too_low_memory_description">Il tuo dispositivo ha poca memoria disponibile (solo %1$d MB liberi). Questo porterà al fallimento del download o dell\'installazione.</string>

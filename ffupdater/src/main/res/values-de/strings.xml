@@ -76,7 +76,6 @@
     <string name="install_activity__github_rate_limit_exceeded">Das Ratenlimit der GitHub-API ist überschritten. Bitte versuchen Sie den Download in der nächsten Stunde erneut.</string>
     <string name="install_activity__open_cache_explanation">Sie können den Cache-Ordner öffnen, um die APK-Datei an einen Ort mit mehr freiem Speicherplatz zu kopieren.</string>
     <string name="install_activity__open_cache_folder_button_text">Cache-Ordner öffnen</string>
-    <string name="install_activity__retrigger_installation__button_title">App-Installation wiederholen</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 Fingerabdruck des Zertifikats:</string>
     <string name="install_activity__temporary_network_issue">Es ist ein vorübergehendes Netzwerkproblem aufgetreten. Bitte versuchen Sie es später erneut.</string>
     <string name="install_activity__too_low_memory_description">Auf Ihrem Gerät ist nur %1$d MB Speicherplatz verfügbar. Dies kann zu einem Download- oder Installationsfehler führen.</string>

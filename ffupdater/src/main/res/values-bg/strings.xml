@@ -64,7 +64,6 @@
     <string name="install_activity__github_rate_limit_exceeded">Превишено е ограничение на GitHub-API. Опитайте отново след час.</string>
     <string name="install_activity__open_cache_explanation">Можете да отворите папката на междинната памет и да копирате файла на APK на място с повече свободно пространство.</string>
     <string name="install_activity__open_cache_folder_button_text">Отваряне</string>
-    <string name="install_activity__retrigger_installation__button_title">Повторно инсталиране</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Отпечатък с SHA-256 от сертификат:</string>
     <string name="install_activity__temporary_network_issue">Възникнал е временен проблем в мрежата. Опитайте отново по-късно.</string>
     <string name="install_activity__too_low_memory_description">Устройството разполага има свободни само %1$d МБ. Това може може да стане причина за пропадане на изтегляне или инсталиране.</string>

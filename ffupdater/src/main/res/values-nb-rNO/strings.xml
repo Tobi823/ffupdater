@@ -16,7 +16,6 @@
     <string name="download_the_app">last ned programmet</string>
     <string name="failed_update_notification__notification_message">Feil (%1$d): %2$s</string>
     <string name="failed_update_notification__notification_title">%1$s kunne ikke oppgraderes.</string>
-    <string name="install_activity__retrigger_installation__button_title">Prøv å installere programmet igjen</string>
     <string name="install_app">Installer program</string>
     <string name="install_same_version_dialog__title">Samme versjon installert</string>
     <string name="install_activity__too_low_memory_title">Lite lagringsplass igjen</string>

@@ -93,9 +93,6 @@ class InstallActivity : AppCompatActivity() {
         appInstaller = ForegroundAppInstaller.create(this, app, appCache.getFile(this))
         lifecycle.addObserver(appInstaller)
 
-        findViewById<View>(R.id.install_activity__retrigger_installation__button).setOnClickListener {
-            restartStateMachine(INSTALL_APP)
-        }
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
             appCache.delete(this)
             hide(R.id.install_activity__delete_cache)
@@ -360,11 +357,9 @@ class InstallActivity : AppCompatActivity() {
         @MainThread
         suspend fun installApp(ia: InstallActivity): State {
             ia.show(R.id.installingApplication)
-            ia.show(R.id.install_activity__retrigger_installation)
             val result = ia.appInstaller.installAsync().await()
             if (result.success) {
                 ia.hide(R.id.installingApplication)
-                ia.hide(R.id.install_activity__retrigger_installation)
                 ia.show(R.id.installerSuccess)
                 ia.show(R.id.fingerprintInstalledGood)
                 ia.setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
@@ -383,7 +378,6 @@ class InstallActivity : AppCompatActivity() {
 
             ia.viewModel.installationError = Pair(result.errorCode ?: -80, result.errorMessage ?: "/")
             ia.hide(R.id.installingApplication)
-            ia.hide(R.id.install_activity__retrigger_installation)
             ia.show(R.id.installerFailed)
             ia.show(R.id.install_activity__delete_cache)
             ia.show(R.id.install_activity__open_cache_folder)

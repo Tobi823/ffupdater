@@ -75,7 +75,6 @@
     <string name="install_activity__github_rate_limit_exceeded">Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</string>
     <string name="install_activity__open_cache_explanation">Můžete otevřít složku mezipaměti a zkopírovat soubor APK do umístění s větším množstvím volného místa.</string>
     <string name="install_activity__open_cache_folder_button_text">otevřít složku mezipaměti</string>
-    <string name="install_activity__retrigger_installation__button_title">Zkusit instalaci aplikace znovu</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Otisk certifikátu SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Došlo k dočasnému problému se sítí. Zkuste to prosím později.</string>
     <string name="install_activity__too_low_memory_description">Nedostatek volného místa (k dispozici pouze %1$d MB). To může vést k neúspěšnému stažení nebo instalaci aplikace.</string>

@@ -78,7 +78,6 @@
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API の速度制限を超えました。1時間以内にもう一度ダウンロードをお試しください。</string>
     <string name="install_activity__open_cache_explanation">キャッシュフォルダを開いて、APKファイルをより空きストレージの多い場所にコピーすることができます。</string>
     <string name="install_activity__open_cache_folder_button_text">キャッシュフォルダを開く</string>
-    <string name="install_activity__retrigger_installation__button_title">アプリのインストールを再試行する</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256証明書フィンガープリント:</string>
     <string name="install_activity__temporary_network_issue">一時的なネットワークの問題が発生しました。後で再試行してください。</string>
     <string name="install_activity__too_low_memory_description">このデバイスには %1$d MB の空き容量しかありません。これにより、ダウンロードやインストールに失敗する可能性があります。</string>

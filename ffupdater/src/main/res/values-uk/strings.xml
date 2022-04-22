@@ -80,7 +80,6 @@
     <string name="install_activity__github_rate_limit_exceeded">Перевищено ліміт швидкості GitHub-API. Спробуйте завантажити знову протягом наступної години.</string>
     <string name="install_activity__open_cache_explanation">Ви можете відкрити папку кешу, щоб скопіювати файл APK до місця з більшою кількістю вільного місця.</string>
     <string name="install_activity__open_cache_folder_button_text">відкрити папку кешу</string>
-    <string name="install_activity__retrigger_installation__button_title">Повторіть установку програми</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Відбиток сертифіката SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Виникла тимчасова проблема з мережею. Повторіть спробу пізніше.</string>
     <string name="install_activity__too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>

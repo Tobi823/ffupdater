@@ -76,7 +76,6 @@
     <string name="install_activity__github_rate_limit_exceeded">O limite de consultas do GitHub-API foi excedido. Por favor, tente baixar outra vez em uma hora.</string>
     <string name="install_activity__open_cache_explanation">Você pode abrir o local do cache e copiar o arquivo APK para um outro local com mais armazenamento.</string>
     <string name="install_activity__open_cache_folder_button_text">abrir a localização do cache</string>
-    <string name="install_activity__retrigger_installation__button_title">Tente novamente instalar o navegador</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Certificado da impressão digital SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Ocorreu um problema temporário na rede. Por favor, tente outra vez mais tarde.</string>
     <string name="install_activity__too_low_memory_description">Seu dispositivo está com (apenas %1$d MB) do espaço disponível. Isto pode causar um erro ao baixar ou instalar.</string>

@@ -86,7 +86,6 @@
     <string name="install_activity__github_rate_limit_exceeded">La limite de débit de GitHub-API est dépassée. Veuillez réessayer le téléchargement dans l\'heure qui suit.</string>
     <string name="install_activity__open_cache_explanation">Vous pouvez ouvrir le dossier du cache pour copier le fichier APK à un endroit où il y a plus d\'espace libre.</string>
     <string name="install_activity__open_cache_folder_button_text">ouvrir le dossier du cache</string>
-    <string name="install_activity__retrigger_installation__button_title">Réessayer l\'installation de l\'application</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256 :</string>
     <string name="install_activity__temporary_network_issue">Un problème de réseau temporaire s\'est produit. Veuillez réessayer plus tard.</string>
     <string name="install_activity__too_low_memory_description">Sur votre appareil, il n\'y a que %1$d MB d\'espace disponible. Cela peut entraîner un échec du téléchargement ou de l\'installation.</string>
