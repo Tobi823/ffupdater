@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="action_about_title">À propos FFUpdater</string>
+    <string name="action_about_title">À propos de FFUpdater</string>
     <string name="app_description">Mise à jour pour les navigateurs respectueux de la vie privée</string>
     <string name="app_icon">icône de l\'application</string>
     <string name="app_name">FFUpdater</string>
@@ -36,7 +36,7 @@
     <string name="crash_report__got_to_notabug_org">Aller sur notabug.org</string>
     <string name="device_too_old_dialog__message">L\'application nécessite Android %1$s. Mais votre appareil ne fonctionne qu\'avec Android %2$s. Choisissez une autre application, mettez à jour votre système d\'exploitation ou passez à un smartphone plus récent.</string>
     <string name="device_too_old_dialog__title">L\'appareil est trop vieux</string>
-    <string name="dialog_button__do_not_install">Non, rester à \'Release\'</string>
+    <string name="dialog_button__do_not_install">Non, ne pas l\'installer</string>
     <string name="dialog_button__yes">Oui</string>
     <string name="download_notification__channel_description">Indique quand les mises à jour des applications sont téléchargées en arrière-plan.</string>
     <string name="download_notification__channel_name">Notification des téléchargements en arrière-plan</string>
@@ -84,7 +84,7 @@
     <string name="install_activity__fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">URL de téléchargement récupéré de %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">La limite de débit de GitHub-API est dépassée. Veuillez réessayer le téléchargement dans l\'heure qui suit.</string>
-    <string name="install_activity__open_cache_explanation">Vous pouvez ouvrir le dossier du cache pour copier le fichier APK à un endroit où il y a plus d\'espace libre.</string>
+    <string name="install_activity__open_cache_explanation">Vous pouvez ouvrir le dossier cache pour copier le fichier APK à un endroit où il y a plus de stockage libre. Attention, sur Android 11+, seuls certains gestionnaires de fichiers sont capables d\'ouvrir les fichiers dans le dossier Android/data.</string>
     <string name="install_activity__open_cache_folder_button_text">ouvrir le dossier du cache</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Empreinte digitale du certificat SHA-256 :</string>
     <string name="install_activity__temporary_network_issue">Un problème de réseau temporaire s\'est produit. Veuillez réessayer plus tard.</string>
@@ -193,4 +193,7 @@
     <string name="vivaldi__warning">Vivaldi n\'est que partiellement open source (voir <a href="https ://vivaldi.com/blog/vivaldi-browser-open-source/">https ://vivaldi.com/blog/vivaldi-browser-open-source/</a> pour plus d\'informations). Il utilise également la base technique de Google Chrome (Chromium).
 \n
 \nCertaines personnes n\'aiment pas cela. Voulez-vous installer Vivaldi \?</string>
+    <string name="settings__general_category__title">Général</string>
+    <string name="install_activity__file_uri_exposed_toast">Nous ne pouvons pas exposer le chemin du fichier à d\'autres applications. Veuillez ouvrir le dossier vous-même avec votre gestionnaire de fichiers préféré.</string>
+    <string name="download_notification__message">Télécharger la mise à jour pour %1$s (%2$s).</string>
 </resources>
