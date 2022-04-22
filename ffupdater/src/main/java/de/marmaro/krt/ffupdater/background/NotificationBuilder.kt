@@ -174,6 +174,7 @@ object NotificationBuilder {
             .setStyle(Notification.BigTextStyle().bigText(notificationMessage))
             .setContentTitle(notificationTitle)
             .setContentText(notificationMessage)
+            .setOnlyAlertOnce(true)
             .setAutoCancel(true)
         if (intent != null) {
             val updateAppIntent = PendingIntent.getActivity(context, 0, intent, getFlags())
