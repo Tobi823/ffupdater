@@ -188,4 +188,6 @@
     <string name="settings__general_category__title">General</string>
     <string name="download_notification__message">Download update for %1$s (%2$s).</string>
     <string name="install_activity__file_uri_exposed_toast">Can\'t expose file path to other apps. Please open the folder yourself with your preferred file manager."</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Delete the downloaded update if the installation is successful.</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Delete the downloaded update if the installation fails.</string>
 </resources>

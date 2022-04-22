@@ -39,7 +39,7 @@ import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
-import de.marmaro.krt.ffupdater.settings.SettingsHelper
+import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -57,7 +57,7 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
     private lateinit var appInstaller: ForegroundAppInstaller
     private lateinit var appCache: AppCache
-    private lateinit var settingsHelper: SettingsHelper
+    private lateinit var foregroundSettings: ForegroundSettingsHelper
 
     // necessary for communication with State enums
     private lateinit var app: App
@@ -77,7 +77,7 @@ class InstallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.install_activity)
         CrashListener.openCrashReporterForUncaughtExceptions(this)
-        AppCompatDelegate.setDefaultNightMode(SettingsHelper(this).themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val passedAppName = intent.extras?.getString(EXTRA_APP_NAME)
@@ -88,7 +88,7 @@ class InstallActivity : AppCompatActivity() {
         }
         app = App.valueOf(passedAppName)
 
-        settingsHelper = SettingsHelper(this)
+        foregroundSettings = ForegroundSettingsHelper(this)
         appCache = AppCache(app)
         appInstaller = ForegroundAppInstaller.create(this, app, appCache.getFile(this))
         lifecycle.addObserver(appInstaller)
@@ -243,7 +243,7 @@ class InstallActivity : AppCompatActivity() {
             ia.setText(R.id.fetchUrlTextView, runningText)
 
             // check if network type requirements are met
-            if (!ia.settingsHelper.isForegroundUpdateCheckOnMeteredAllowed && isNetworkMetered(ia)) {
+            if (!ia.foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(ia)) {
                 ia.viewModel.error = Pair(R.string.main_activity__no_unmetered_network, null)
                 return FAILURE_SHOW_FETCH_URL_EXCEPTION
             }
@@ -280,7 +280,7 @@ class InstallActivity : AppCompatActivity() {
 
         @MainThread
         suspend fun startDownload(ia: InstallActivity): State {
-            if (!ia.settingsHelper.isForegroundDownloadOnMeteredAllowed && isNetworkMetered(ia)) {
+            if (!ia.foregroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(ia)) {
                 ia.viewModel.error = Pair(R.string.main_activity__no_unmetered_network, null)
                 return FAILURE_SHOW_FETCH_URL_EXCEPTION
             }

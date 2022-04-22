@@ -32,7 +32,7 @@ import de.marmaro.krt.ffupdater.download.AppDownloadStatus.Companion.areDownload
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
-import de.marmaro.krt.ffupdater.settings.SettingsHelper
+import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private val availableVersions: EnumMap<App, TextView> = EnumMap(App::class.java)
     private val downloadButtons: EnumMap<App, ImageButton> = EnumMap(App::class.java)
     private val errorsDuringUpdateCheck: EnumMap<App, Exception?> = EnumMap(App::class.java)
-    private lateinit var settingsHelper: SettingsHelper
+    private lateinit var foregroundSettings: ForegroundSettingsHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +54,8 @@ class MainActivity : AppCompatActivity() {
         if (BuildMetadata.isDebugBuild()) {
             StrictModeSetup.enableStrictMode()
         }
-        settingsHelper = SettingsHelper(this)
-        AppCompatDelegate.setDefaultNightMode(settingsHelper.themePreference)
+        foregroundSettings = ForegroundSettingsHelper(this)
+        AppCompatDelegate.setDefaultNightMode(foregroundSettings.themePreference)
         Migrator(this).migrate()
 
         val deviceAbis = DeviceAbiExtractor.findSupportedAbis()
@@ -174,7 +174,7 @@ class MainActivity : AppCompatActivity() {
         val apps = App.values()
             .filter { it.detail.isInstalled(this@MainActivity) }
 
-        if (!settingsHelper.isForegroundUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setAvailableVersion(apps, getString(R.string.main_activity__no_unmetered_network))
             setLoadAnimationState(false)
             showToast(R.string.main_activity__no_unmetered_network)
@@ -229,7 +229,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     fun installApp(app: App, askForConfirmationIfOtherDownloadsAreRunning: Boolean = false) {
-        if (!settingsHelper.isForegroundUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             showToast(R.string.main_activity__no_unmetered_network)
             return
         }

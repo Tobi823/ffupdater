@@ -28,6 +28,18 @@
             app:summary="@string/settings__foreground__theme_preference__summary"
             app:title="@string/settings__foreground__theme_preference__title" />
 
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="foreground__delete_cache_if_install_successful"
+            app:singleLineTitle="false"
+            app:title="@string/settings__b_f__delete_cache_if_install_successful" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="foreground__delete_cache_if_install_failed"
+            app:singleLineTitle="false"
+            app:title="@string/settings__b_f__delete_cache_if_install_failed" />
+
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
 
@@ -91,6 +103,20 @@
             app:singleLineTitle="false"
             app:summary="@string/settings__background__installation__enabled__summary"
             app:title="@string/settings__background__installation__enabled__title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:dependency="background__installation__enabled"
+            app:key="background__delete_cache_if_install_successful"
+            app:singleLineTitle="false"
+            app:title="@string/settings__b_f__delete_cache_if_install_successful" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:dependency="background__installation__enabled"
+            app:key="background__delete_cache_if_install_failed"
+            app:singleLineTitle="false"
+            app:title="@string/settings__b_f__delete_cache_if_install_failed" />
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 

@@ -12,7 +12,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.ExtendedInstallResult
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
-import de.marmaro.krt.ffupdater.settings.SettingsHelper
+import de.marmaro.krt.ffupdater.settings.GeneralSettingsHelper
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -77,7 +77,7 @@ interface BackgroundAppInstaller : AppInstaller, AutoCloseable {
         @RequiresApi(Build.VERSION_CODES.N)
         fun create(context: Context, app: App, file: File): BackgroundAppInstaller {
             return when {
-                SettingsHelper(context).isRootUsageEnabled -> RootInstaller(context, app, file)
+                GeneralSettingsHelper(context).isRootUsageEnabled -> RootInstaller(context, app, file)
                 else -> BackgroundSessionInstaller(context, app, file)
             }
         }
@@ -88,7 +88,7 @@ interface ForegroundAppInstaller : AppInstaller, DefaultLifecycleObserver {
     companion object {
         fun create(activity: ComponentActivity, app: App, file: File): ForegroundAppInstaller {
             return when {
-                SettingsHelper(activity).isRootUsageEnabled -> RootInstaller(activity, app, file)
+                GeneralSettingsHelper(activity).isRootUsageEnabled -> RootInstaller(activity, app, file)
                 DeviceSdkTester.supportsAndroidNougat() -> ForegroundSessionInstaller(activity, app, file)
                 else -> IntentInstaller(activity, app, file)
             }
