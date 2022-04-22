@@ -1,0 +1,15 @@
+Last ned, installer, og oppgrader disse personvernsvennlige nettleserne:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Bromite, Bromite SystemWebView
+- Firefox Browser, Firefox for Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Klar
+- Iceraven
+- Ungoogled Chromium
+- Vivaldi
+
+og:
+- Firefox Lockwise
+
+FFUpdater ser etter nye versjoner i bakgrunnen og laster dem ned. På Android 12+, eller enheter med rot-tilgang kan det også oppgradere programmer uten interaksjon fra brukeren.
+
+Besøk https://notabug.org/Tobiwan/ffupdater/src/master/README.md eller bruk «Kildekode»-lenken nedenfor for mer info om sikkerhetsanalyser, andre distribusjonskanaler, begrensninger, feil, O-S-S, bygginstruks, brukte tredjepartsbibliotek, tekniske detaljer, osv.
