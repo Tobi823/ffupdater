@@ -10,7 +10,8 @@
     <string name="available_version_loading">Зареждане…</string>
     <string name="background_job_failure__notification_text">Докладвайте за тази грешка. Докоснете, за да видите целия доклад.</string>
     <string name="background_job_failure__notification_title">Грешка при проверка за обновяване във фонов режим</string>
-    <string name="brave__description">Brave Web Browser поверителен и безопасен мрежов четец, който безплатно спира реклами от трети страни. \n\nBrave Web Browser е бърз и сигурен мрежов четец за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен четец, който ви предпазва от проследяване чрез реклами, злонамерен софтуер и изскачащи прозорци.</string>
+    <string name="brave__description">Brave Web Browser поверителен и безопасен мрежов четец, който безплатно спира реклами от трети страни.
+\nBrave Web Browser е бърз и сигурен мрежов четец за Android с вграден adblocker за реклами на трети страни. Brave е бърз, безопасен и поверителен четец, който ви предпазва от проследяване чрез реклами, злонамерен софтуер и изскачащи прозорци.</string>
     <string name="brave__title">Brave Browser</string>
     <string name="brave__warning">Brave използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Brave?</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
@@ -141,4 +142,12 @@
     <string name="vivaldi__warning">Vivaldi е само частично с отворен код (за повече информация вижте <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>). Освен това използва техническата основа на Google Chrome (Chromium).
 \n
 \nUма хора, на които това не се харесва. Искате ли да инсталирате Vivaldi\?</string>
+    <string name="download_notification__channel_description">Показва се, когато се изтегля обновяване във фонов режим.</string>
+    <string name="download_notification__title">Изтегляне на обновяване</string>
+    <string name="request_installation_permission_dialog__abort">Относно</string>
+    <string name="app_description">Приложение за обновяване на поврителни четци</string>
+    <string name="download_notification__channel_name">Известие при изтегляне във фонов режим</string>
+    <string name="request_installation_permission_dialog__grant_permission">Разрешаване</string>
+    <string name="settings__background__update_check__enabled__title">Проверка за обновяване</string>
+    <string name="download_notification__message">Изтегля се обновяване за %1$s (%2$s).</string>
 </resources>
