@@ -206,4 +206,6 @@
     <string name="settings__general_category__title">Genel</string>
     <string name="download_notification__message">%1$s (%2$s) için güncellemeyi indir.</string>
     <string name="install_activity__file_uri_exposed_toast">Dosya yolu diğer uygulamalara gösterilemiyor. Lütfen tercih ettiğiniz dosya yöneticisi ile klasörü kendiniz açın.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Kurulum başarılı olursa indirilen güncellemeyi sil.</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Kurulum başarısız olursa indirilen güncellemeyi sil.</string>
 </resources>
