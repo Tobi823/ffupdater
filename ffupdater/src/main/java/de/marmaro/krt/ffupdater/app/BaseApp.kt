@@ -47,7 +47,7 @@ interface BaseApp {
     }
 
     @AnyThread
-    fun appInstallationCallback(context: Context, available: AvailableVersionResult) {
+    fun appIsInstalled(context: Context, available: AvailableVersionResult) {
     }
 
     /**

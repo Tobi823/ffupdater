@@ -86,7 +86,7 @@ class FirefoxNightly(
         }
     }
 
-    override fun appInstallationCallback(context: Context, available: AvailableVersionResult) {
+    override fun appIsInstalled(context: Context, available: AvailableVersionResult) {
         try {
             PreferenceManager.getDefaultSharedPreferences(context).edit()
                 .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))

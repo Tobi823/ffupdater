@@ -25,12 +25,8 @@ class AppCache(val app: App) {
     }
 
     fun delete(context: Context) {
-        val allFiles = getCacheFolder(context).listFiles()
-        checkNotNull(allFiles) { "Array of files in download folder should exists." }
-        val appFiles = allFiles.filter { it.name.startsWith(app.detail.packageName) }
-        appFiles.forEach {
-            val success = it.delete()
-            check(success) { "Fail to delete file '${it.name}'." }
-        }
+        val file = getFile(context)
+        val success = file.delete()
+        check(success) { "Fail to delete file '${file.absolutePath}'." }
     }
 }

@@ -364,14 +364,13 @@ class InstallActivity : AppCompatActivity() {
                 ia.show(R.id.fingerprintInstalledGood)
                 ia.setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
 
-                val updateCheckResult = requireNotNull(ia.viewModel.updateCheckResult)
-                val available = updateCheckResult.availableResult
-                ia.app.detail.appInstallationCallback(ia, available)
-                if (BuildMetadata.isDebugBuild()) {
-                    Log.i("InstallActivity", "Don't delete file to speedup local development.")
-                    ia.show(R.id.install_activity__open_cache_folder)
-                } else {
+                val available = requireNotNull(ia.viewModel.updateCheckResult).availableResult
+                ia.app.detail.appIsInstalled(ia, available)
+
+                if (ia.foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
                     ia.appCache.delete(ia)
+                } else {
+                    ia.show(R.id.install_activity__delete_cache)
                 }
                 return SUCCESS_STOP
             }
@@ -379,7 +378,6 @@ class InstallActivity : AppCompatActivity() {
             ia.viewModel.installationError = Pair(result.errorCode ?: -80, result.errorMessage ?: "/")
             ia.hide(R.id.installingApplication)
             ia.show(R.id.installerFailed)
-            ia.show(R.id.install_activity__delete_cache)
             ia.show(R.id.install_activity__open_cache_folder)
             val cacheFolder = ia.appCache.getFile(ia).parentFile?.absolutePath ?: ""
             ia.setText(R.id.install_activity__cache_folder_path, cacheFolder)
@@ -389,6 +387,11 @@ class InstallActivity : AppCompatActivity() {
                     error += "\n\n${ia.getString(R.string.install_activity__try_disable_miui_optimization)}"
                 }
                 ia.setText(R.id.installerFailedReason, error)
+            }
+            if (ia.foregroundSettings.isDeleteUpdateIfInstallFailed) {
+                ia.appCache.delete(ia)
+            } else {
+                ia.show(R.id.install_activity__delete_cache)
             }
             return ERROR_STOP
         }
