@@ -190,4 +190,5 @@
     <string name="install_activity__file_uri_exposed_toast">Can\'t expose file path to other apps. Please open the folder yourself with your preferred file manager."</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Delete the downloaded update if the installation is successful.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Delete the downloaded update if the installation fails.</string>
+    <string name="install_activity__open_folder">Open folder</string>
 </resources>
