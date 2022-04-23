@@ -167,7 +167,6 @@ class InstallActivity : AppCompatActivity() {
                 && state != SUCCESS_PAUSE
                 && state != SUCCESS_STOP
             ) {
-                throw RuntimeException("test test")
                 state = state.action(this@InstallActivity)
             }
         }

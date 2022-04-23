@@ -50,6 +50,8 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
   called "user certificates"). This is necessary for AdGuard (see
   [GitHub-Issue](https://github.com/Tobi823/ffupdater/issues/37)). Be careful which certificates you install.
   A malicious certificate can prevent FFUpdater finding new updates.
+- When using root permission, check for dangerous characters and use only values from an allow list. Only
+  src/main/java/de/marmaro/krt/ffupdater/installer/RootInstaller.kt uses root permission.
 
 Feel free to check my source code ;)
 
