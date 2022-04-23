@@ -30,7 +30,7 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Çökme raporunu panoya kopyala</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">İndirme URL\'si alındığında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, bunu notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodan çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Ana görünümde güncellemeler denetlenirken aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, bunu notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodan çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Ne yazık ki FFUpdater çöktü. Lütfen bu hatayı notabug.org, GitHub veya GitLab üzerinden bildirin. Sorununuza panodaki çökme raporunu ve hatanın nasıl yeniden oluşturulacağına ilişkin bir açıklama ekleyin.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Ne yazık ki, FFUpdater geçen sefer çöktü ve aşağıdaki hatayı kaydetti. Lütfen bu hatayı notabug.org, GitHub veya GitLab üzerinden bildirin. Çökme raporunu panodan mesaja kopyalayın ve hatanın nasıl yeniden oluşturulacağına dair bir açıklama ekleyin.</string>
     <string name="crash_report__go_to_github">GitHub\'a git</string>
     <string name="crash_report__go_to_gitlab">GitLab\'a git</string>
     <string name="crash_report__got_to_notabug_org">notabug.org\'a git</string>
@@ -78,7 +78,7 @@
 \nSon başarılı arka plan güncelleme denetimi: %1$s</string>
     <string name="information_about_the_app">uygulama hakkında bilgi</string>
     <string name="install_activity__delete_cache_button_text">önbelleği temizle</string>
-    <string name="install_activity__delete_cache_explanation">FFUpdater\'ın hatalı bir uygulama güncellemesini önbelleğe aldığını düşünüyorsanız, bu uygulamanın önbelleğini silmek için \"önbelleği temizle\" düğmesini tıklayın.</string>
+    <string name="install_activity__delete_cache_explanation">FFUpdater\'ın hatalı bir uygulama güncellemesini önbelleğe aldığını düşünüyorsanız veya yerden tasarruf etmek istiyorsanız, indirilen dosyayı silmek için düğmeye tıklayın.</string>
     <string name="install_activity__download_app_with_status">Uygulamayı indir (%1$s)</string>
     <string name="install_activity__download_failed">İndirme başarısız</string>
     <string name="install_activity__downloaded_application_from">Şuradan indirilen uygulama:</string>
