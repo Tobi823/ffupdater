@@ -17,7 +17,10 @@ import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        CrashListener.openCrashReporterForUncaughtExceptions(this)
+        if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
+            finish()
+            return
+        }
         setContentView(R.layout.settings_activity)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385

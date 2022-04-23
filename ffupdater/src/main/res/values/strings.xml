@@ -26,7 +26,7 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Copy crash report to clipboard</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">The following error occurred when the download URL was fetched. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
     <string name="crash_report__explain_text__main_activity_update_check">The following error occurred when checking for updates in the main view. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please don\'t forget to add your crash report from the clipboard and the description of how you reproduce this error.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Unfortunately, FFUpdater has crashed. Please report this error on notabug.org, GitHub or GitLab. Add to your issue the crash report from the clipboard and a description on how to reproduce the bug.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Unfortunately, FFUpdater crashed last time and logged the following error. Please report this error on notabug.org, GitHub or GitLab. Copy the crash report from the clipboard into the message and add a description how to reproduce the error.</string>
     <string name="crash_report__go_to_github">Go to GitHub</string>
     <string name="crash_report__go_to_gitlab">Go to GitLab</string>
     <string name="crash_report__got_to_notabug_org">Go to notabug.org</string>

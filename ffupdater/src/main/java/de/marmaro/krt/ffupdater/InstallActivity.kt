@@ -76,7 +76,10 @@ class InstallActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.install_activity)
-        CrashListener.openCrashReporterForUncaughtExceptions(this)
+        if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
+            finish()
+            return
+        }
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -164,6 +167,7 @@ class InstallActivity : AppCompatActivity() {
                 && state != SUCCESS_PAUSE
                 && state != SUCCESS_STOP
             ) {
+                throw RuntimeException("test test")
                 state = state.action(this@InstallActivity)
             }
         }

@@ -9,9 +9,12 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 class ManageStorageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        CrashListener.openCrashReporterForUncaughtExceptions(this)
-        setContentView(R.layout.manage_storage_activity)
+        if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
+            finish()
+            return
+        }
 
+        setContentView(R.layout.manage_storage_activity)
         findViewById<Button>(R.id.manage_storage_activity__delete_cached_apk_files).setOnClickListener {
             val folder = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
             checkNotNull(folder) { "External download folder should exists." }

@@ -83,9 +83,13 @@ class CrashReportActivity : AppCompatActivity() {
         val GITLAB_URI: Uri = Uri.parse("https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues")
 
         fun createIntent(context: Context, throwable: Throwable, description: String): Intent {
+            return createIntent(context, throwable.stackTraceToString().trim(), description)
+        }
+
+        fun createIntent(context: Context, error: String, description: String): Intent {
             val intent = Intent(context, CrashReportActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            intent.putExtra(EXTRA_EXCEPTION_STACK_TRACE, throwable.stackTraceToString().trim())
+            intent.putExtra(EXTRA_EXCEPTION_STACK_TRACE, error)
             intent.putExtra(EXTRA_EXCEPTION_EXPLANATION, description)
             return intent
         }

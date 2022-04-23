@@ -47,7 +47,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        CrashListener.openCrashReporterForUncaughtExceptions(this)
+        if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
+            finish()
+            return
+        }
 
         setContentView(R.layout.main_activity)
         setSupportActionBar(findViewById(R.id.toolbar))
@@ -56,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
         foregroundSettings = ForegroundSettingsHelper(this)
         AppCompatDelegate.setDefaultNightMode(foregroundSettings.themePreference)
-        Migrator(this).migrate()
+        Migrator().migrate(this)
 
         val deviceAbis = DeviceAbiExtractor.findSupportedAbis()
         findViewById<View>(R.id.installAppButton).setOnClickListener {
