@@ -21,7 +21,7 @@ class AppCache(val app: App) {
 
     private fun getCacheFolder(context: Context): File {
         val downloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-        return checkNotNull(downloadFolder) { "External download folder should exists." }
+        return checkNotNull(downloadFolder) { "The external 'Download' folder of the app should exists." }
     }
 
     fun delete(context: Context) {

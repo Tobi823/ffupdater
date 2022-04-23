@@ -17,7 +17,7 @@ class ManageStorageActivity : AppCompatActivity() {
         setContentView(R.layout.manage_storage_activity)
         findViewById<Button>(R.id.manage_storage_activity__delete_cached_apk_files).setOnClickListener {
             val folder = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-            checkNotNull(folder) { "External download folder should exists." }
+            checkNotNull(folder) { "The external 'Download' folder of the app should exists." }
             val files = folder.listFiles()
             checkNotNull(files) { "Array of files in download folder should exists." }
             files.forEach {
