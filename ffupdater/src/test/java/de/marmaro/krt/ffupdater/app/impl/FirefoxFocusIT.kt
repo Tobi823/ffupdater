@@ -80,7 +80,7 @@ class FirefoxFocusIT {
         url: String,
         fileSize: Long,
     ) {
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         Assertions.assertEquals(url, result.downloadUrl)
         Assertions.assertEquals(EXPECTED_VERSION, result.version)
         Assertions.assertEquals(fileSize, result.fileSizeBytes)
@@ -93,7 +93,7 @@ class FirefoxFocusIT {
         abi: ABI,
     ) {
         packageInfo.versionName = "97.2.0"
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         Assertions.assertTrue(result.isUpdateAvailable)
     }
 
@@ -103,7 +103,7 @@ class FirefoxFocusIT {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         Assertions.assertFalse(result.isUpdateAvailable)
     }
 }

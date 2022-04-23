@@ -72,7 +72,7 @@ class VivaldiIT {
         abi: ABI,
         url: String,
     ) {
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
     }
@@ -83,7 +83,7 @@ class VivaldiIT {
         abi: ABI,
     ) {
         packageInfo.versionName = "4.3.2439.43"
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -93,7 +93,7 @@ class VivaldiIT {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

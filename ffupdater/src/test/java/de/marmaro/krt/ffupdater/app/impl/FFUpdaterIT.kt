@@ -59,7 +59,7 @@ class FFUpdaterIT {
 
     @Test
     fun `check download info`() {
-        val result = runBlocking { createSut().updateCheck(context) }
+        val result = runBlocking { createSut().updateCheckAsync(context).await() }
         assertEquals("$DOWNLOAD_URL/75.1.0/ffupdater-release.apk", result.downloadUrl)
         assertEquals("75.1.0", result.version)
         assertEquals(3151577L, result.fileSizeBytes)
@@ -72,14 +72,14 @@ class FFUpdaterIT {
     @Test
     fun `update check - outdated version installed`() {
         packageInfo.versionName = "75.0.2"
-        val result = runBlocking { createSut().updateCheck(context) }
+        val result = runBlocking { createSut().updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
     @Test
     fun `update check - latest version installed`() {
         packageInfo.versionName = "75.1.0"
-        val result = runBlocking { createSut().updateCheck(context) }
+        val result = runBlocking { createSut().updateCheckAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

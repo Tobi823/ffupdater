@@ -100,7 +100,7 @@ class FirefoxBetaIT {
         downloadUrl: String,
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         Assertions.assertEquals(downloadUrl, result.downloadUrl)
         Assertions.assertEquals(EXPECTED_VERSION, result.version)
         Assertions.assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
@@ -114,7 +114,7 @@ class FirefoxBetaIT {
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
         packageInfo.versionName = "86.0.0-beta.3"
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -126,7 +126,7 @@ class FirefoxBetaIT {
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

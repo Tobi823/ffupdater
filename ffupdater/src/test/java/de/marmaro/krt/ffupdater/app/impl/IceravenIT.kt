@@ -100,7 +100,7 @@ class IceravenIT {
         fileSize: Long,
     ) {
         makeReleaseJsonObjectAvailable()
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -114,7 +114,7 @@ class IceravenIT {
     ) {
         makeReleaseJsonObjectAvailable()
         packageInfo.versionName = "iceraven-1.5.0"
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -125,7 +125,7 @@ class IceravenIT {
     ) {
         makeReleaseJsonObjectAvailable()
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

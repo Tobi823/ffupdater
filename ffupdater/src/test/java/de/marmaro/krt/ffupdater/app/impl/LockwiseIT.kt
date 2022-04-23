@@ -104,7 +104,7 @@ class LockwiseIT {
             }
             else -> throw IllegalStateException()
         }
-        val result = runBlocking { createSut().updateCheck(context) }
+        val result = runBlocking { createSut().updateCheckAsync(context).await() }
         assertEquals(downloadUrl, result.downloadUrl)
         assertEquals(expectedVersion, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -125,7 +125,7 @@ class LockwiseIT {
             else -> throw IllegalStateException()
         }
         packageInfo.versionName = "3.2.0"
-        val result = runBlocking { createSut().updateCheck(context) }
+        val result = runBlocking { createSut().updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -144,7 +144,7 @@ class LockwiseIT {
             else -> throw IllegalStateException()
         }
         packageInfo.versionName = expectedVersion
-        val result = runBlocking { createSut().updateCheck(context) }
+        val result = runBlocking { createSut().updateCheckAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

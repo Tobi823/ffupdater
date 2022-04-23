@@ -50,7 +50,7 @@ class DownloadApiChecker {
     @Test
     fun brave() {
         val brave = Brave(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { brave.updateCheck(context) }
+        val result = runBlocking { brave.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 2 * 7
@@ -60,7 +60,7 @@ class DownloadApiChecker {
     @Test
     fun braveBeta() {
         val brave = BraveBeta(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { brave.updateCheck(context) }
+        val result = runBlocking { brave.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 7
@@ -70,7 +70,7 @@ class DownloadApiChecker {
     @Test
     fun braveNightly() {
         val brave = BraveNightly(false, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { brave.updateCheck(context) }
+        val result = runBlocking { brave.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 3
@@ -80,7 +80,7 @@ class DownloadApiChecker {
     @Test
     fun bromite() {
         val bromite = Bromite(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { bromite.updateCheck(context) }
+        val result = runBlocking { bromite.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 9 * 7
@@ -90,7 +90,7 @@ class DownloadApiChecker {
     @Test
     fun bromiteSystemWebView() {
         val bromite = BromiteSystemWebView(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { bromite.updateCheck(context) }
+        val result = runBlocking { bromite.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 9 * 7
@@ -100,7 +100,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxBeta() {
         val firefoxBeta = FirefoxBeta(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { firefoxBeta.updateCheck(context) }
+        val result = runBlocking { firefoxBeta.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 3 * 7
@@ -110,7 +110,9 @@ class DownloadApiChecker {
     @Test
     fun firefoxFocus() {
         val result =
-            runBlocking { FirefoxFocus(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A)).updateCheck(context) }
+            runBlocking {
+                FirefoxFocus(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A)).updateCheckAsync(context).await()
+            }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 8 * 7
@@ -120,7 +122,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxKlar() {
         val firefoxKlar = FirefoxKlar(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { firefoxKlar.updateCheck(context) }
+        val result = runBlocking { firefoxKlar.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 2 * 30
@@ -131,7 +133,7 @@ class DownloadApiChecker {
     fun firefoxNightly() {
         sharedPreferences.edit().putLong("firefox_nightly_installed_version_code", 0)
         val firefoxNightly = FirefoxNightly(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { firefoxNightly.updateCheck(context) }
+        val result = runBlocking { firefoxNightly.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 1 * 7
@@ -141,7 +143,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxRelease() {
         val firefoxRelease = FirefoxRelease(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { firefoxRelease.updateCheck(context) }
+        val result = runBlocking { firefoxRelease.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 6 * 7
@@ -151,7 +153,7 @@ class DownloadApiChecker {
     @Test
     fun iceraven() {
         val iceraven = Iceraven(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { iceraven.updateCheck(context) }
+        val result = runBlocking { iceraven.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 3 * 30
@@ -161,7 +163,7 @@ class DownloadApiChecker {
     @Test
     fun lockwise() {
         val lockwise = Lockwise(true, ApiConsumer())
-        val result = runBlocking { lockwise.updateCheck(context) }
+        val result = runBlocking { lockwise.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 19 * 30
@@ -171,7 +173,7 @@ class DownloadApiChecker {
     @Test
     fun vivaldi() {
         val vivaldi = Vivaldi(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { vivaldi.updateCheck(context) }
+        val result = runBlocking { vivaldi.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertFalse(result.version.isEmpty())
     }
@@ -179,7 +181,7 @@ class DownloadApiChecker {
     @Test
     fun ungoogledChromium() {
         val ungoogledChromium = UngoogledChromium(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { ungoogledChromium.updateCheck(context) }
+        val result = runBlocking { ungoogledChromium.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
         val maxDays = 8 * 7
@@ -189,7 +191,7 @@ class DownloadApiChecker {
     @Test
     fun ffupdater() {
         val ffupdater = FFUpdater(true, ApiConsumer())
-        val result = runBlocking { ffupdater.updateCheck(context) }
+        val result = runBlocking { ffupdater.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
     }
 

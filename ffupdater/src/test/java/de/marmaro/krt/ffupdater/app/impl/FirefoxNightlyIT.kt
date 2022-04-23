@@ -116,7 +116,7 @@ class FirefoxNightlyIT {
         hash: String,
     ) {
         makeChainOfTrustAvailableUnderUrl(logUrl)
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertEquals(downloadUrl, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
@@ -139,7 +139,7 @@ class FirefoxNightlyIT {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = 1000
 
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 
@@ -160,7 +160,7 @@ class FirefoxNightlyIT {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = differentVersionCode
 
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -181,7 +181,7 @@ class FirefoxNightlyIT {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = 1000
 
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -203,7 +203,7 @@ class FirefoxNightlyIT {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = differentVersionCode
 
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 }

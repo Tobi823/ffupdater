@@ -124,7 +124,7 @@ class BraveIT {
             3 -> prepareNetworkForReleaseAfterThreeRequests()
             else -> throw IllegalStateException()
         }
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -143,7 +143,7 @@ class BraveIT {
             else -> throw IllegalStateException()
         }
         packageInfo.versionName = "1.18.12"
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -159,7 +159,7 @@ class BraveIT {
             else -> throw IllegalStateException()
         }
         packageInfo.versionName = "1.20.103"
-        val result = runBlocking { createSut(abi).updateCheck(context) }
+        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }
