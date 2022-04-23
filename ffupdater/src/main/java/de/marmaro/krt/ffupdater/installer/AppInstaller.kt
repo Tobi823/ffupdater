@@ -89,7 +89,7 @@ interface ForegroundAppInstaller : AppInstaller, DefaultLifecycleObserver {
             return when {
                 GeneralSettingsHelper(activity).isRootUsageEnabled -> RootInstaller(app, file)
                 DeviceSdkTester.supportsAndroidNougat() -> ForegroundSessionInstaller(activity, app, file)
-                else -> IntentInstaller(activity.activityResultRegistry, app, file)
+                else -> IntentInstaller(activity, activity.activityResultRegistry, app, file)
             }
         }
     }
