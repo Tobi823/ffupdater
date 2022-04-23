@@ -295,9 +295,9 @@ class InstallActivity : AppCompatActivity() {
                 ia.runOnUiThread {
                     val status = if (percentage != null) {
                         ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
-                        "$percentage %"
+                        "${percentage}%"
                     } else {
-                        "$mb MB"
+                        "${mb}MB"
                     }
                     val display = ia.getString(R.string.install_activity__download_app_with_status, status)
                     ia.setText(R.id.downloadingFileText, display)
@@ -337,9 +337,9 @@ class InstallActivity : AppCompatActivity() {
                 ia.runOnUiThread {
                     val status = if (percentage != null) {
                         ia.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
-                        "$percentage %"
+                        "${percentage}%"
                     } else {
-                        "$mb MB"
+                        "${mb}MB"
                     }
                     val display = ia.getString(R.string.install_activity__download_app_with_status, status)
                     ia.setText(R.id.downloadingFileText, display)
@@ -357,7 +357,7 @@ class InstallActivity : AppCompatActivity() {
         @MainThread
         suspend fun installApp(ia: InstallActivity): State {
             ia.show(R.id.installingApplication)
-            val result = ia.appInstaller.installAsync().await()
+            val result = ia.appInstaller.installAsync(ia).await()
             if (result.success) {
                 ia.hide(R.id.installingApplication)
                 ia.show(R.id.installerSuccess)

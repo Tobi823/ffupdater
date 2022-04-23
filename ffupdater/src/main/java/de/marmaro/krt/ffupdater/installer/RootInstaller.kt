@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.installer
 
 import android.content.Context
-import androidx.lifecycle.LifecycleOwner
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
@@ -15,11 +14,14 @@ import java.util.regex.Pattern
 /**
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
  */
-class RootInstaller(context: Context, app: App, private val file: File) :
-    SecureAppInstaller(context, app, file), ForegroundAppInstaller, BackgroundAppInstaller {
+class RootInstaller(
+    app: App,
+    private val file: File
+) :
+    SecureAppInstaller(app, file), ForegroundAppInstaller, BackgroundAppInstaller {
     private val status = CompletableDeferred<InstallResult>()
 
-    override suspend fun uncheckInstallAsync(): Deferred<InstallResult> {
+    override suspend fun uncheckInstallAsync(context: Context): Deferred<InstallResult> {
         withContext(Dispatchers.IO) {
             install()
         }
@@ -51,14 +53,5 @@ class RootInstaller(context: Context, app: App, private val file: File) :
         val shellResult = Shell.cmd("pm install-commit $sessionId")
             .exec()
         status.complete(InstallResult(shellResult.isSuccess, null, shellResult.out.joinToString(";")))
-    }
-
-    override fun onDestroy(owner: LifecycleOwner) {
-        super.onDestroy(owner)
-        status.completeExceptionally(Exception("RootInstaller has been destroyed"))
-    }
-
-    override fun close() {
-        status.completeExceptionally(Exception("RootInstaller has been closed"))
     }
 }

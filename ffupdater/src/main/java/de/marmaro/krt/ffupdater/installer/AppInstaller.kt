@@ -28,26 +28,25 @@ interface AppInstaller {
         val errorMessage: String?,
     )
 
-    suspend fun installAsync(): Deferred<ExtendedInstallResult>
+    suspend fun installAsync(context: Context): Deferred<ExtendedInstallResult>
 }
 
 abstract class SecureAppInstaller(
-    private val context: Context,
     private val app: App,
     private val file: File,
 ) : AppInstaller {
 
-    protected abstract suspend fun uncheckInstallAsync(): Deferred<InstallResult>
+    protected abstract suspend fun uncheckInstallAsync(context: Context): Deferred<InstallResult>
 
-    override suspend fun installAsync(): Deferred<ExtendedInstallResult> {
+    override suspend fun installAsync(context: Context): Deferred<ExtendedInstallResult> {
         return withContext(Dispatchers.IO) {
             async {
-                secureInstallAsync()
+                secureInstallAsync(context)
             }
         }
     }
 
-    private suspend fun secureInstallAsync(): ExtendedInstallResult {
+    private suspend fun secureInstallAsync(context: Context): ExtendedInstallResult {
         val validator = FingerprintValidator(context.packageManager)
         val fileResult = validator.checkApkFile(file, app.detail)
         val fileCertHash = fileResult.hexString
@@ -56,7 +55,7 @@ abstract class SecureAppInstaller(
             return ExtendedInstallResult(false, fileCertHash, -100, errorMessage)
         }
 
-        val installResult = uncheckInstallAsync().await()
+        val installResult = uncheckInstallAsync(context).await()
         val installCode = installResult.errorCode
         val installMessage = installResult.errorMessage
         if (!installResult.success) {
@@ -72,12 +71,12 @@ abstract class SecureAppInstaller(
     }
 }
 
-interface BackgroundAppInstaller : AppInstaller, AutoCloseable {
+interface BackgroundAppInstaller : AppInstaller {
     companion object {
         @RequiresApi(Build.VERSION_CODES.N)
         fun create(context: Context, app: App, file: File): BackgroundAppInstaller {
             return when {
-                GeneralSettingsHelper(context).isRootUsageEnabled -> RootInstaller(context, app, file)
+                GeneralSettingsHelper(context).isRootUsageEnabled -> RootInstaller(app, file)
                 else -> BackgroundSessionInstaller(context, app, file)
             }
         }
@@ -88,9 +87,9 @@ interface ForegroundAppInstaller : AppInstaller, DefaultLifecycleObserver {
     companion object {
         fun create(activity: ComponentActivity, app: App, file: File): ForegroundAppInstaller {
             return when {
-                GeneralSettingsHelper(activity).isRootUsageEnabled -> RootInstaller(activity, app, file)
+                GeneralSettingsHelper(activity).isRootUsageEnabled -> RootInstaller(app, file)
                 DeviceSdkTester.supportsAndroidNougat() -> ForegroundSessionInstaller(activity, app, file)
-                else -> IntentInstaller(activity, app, file)
+                else -> IntentInstaller(activity.activityResultRegistry, app, file)
             }
         }
     }

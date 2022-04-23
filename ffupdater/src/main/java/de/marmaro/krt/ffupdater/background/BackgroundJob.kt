@@ -212,21 +212,20 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             showFailedBackgroundInstallationNotification(context, app, -100, errorMessage)
         }
 
-        BackgroundAppInstaller.create(context, app, file).use { installer ->
-            withContext(Dispatchers.Main) {
-                val result = installer.installAsync().await()
-                if (result.success) {
-                    showSuccessfulBackgroundInstallationNotification(context, app)
-                    if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                        appCache.delete(context)
-                    }
-                } else {
-                    val code = result.errorCode
-                    val message = result.errorMessage
-                    showFailedBackgroundInstallationNotification(context, app, code, message)
-                    if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
-                        appCache.delete(context)
-                    }
+        val installer = BackgroundAppInstaller.create(context, app, file)
+        withContext(Dispatchers.Main) {
+            val result = installer.installAsync(context).await()
+            if (result.success) {
+                showSuccessfulBackgroundInstallationNotification(context, app)
+                if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
+                    appCache.delete(context)
+                }
+            } else {
+                val code = result.errorCode
+                val message = result.errorMessage
+                showFailedBackgroundInstallationNotification(context, app, code, message)
+                if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
+                    appCache.delete(context)
                 }
             }
         }

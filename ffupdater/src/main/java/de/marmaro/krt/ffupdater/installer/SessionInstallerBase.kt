@@ -15,7 +15,6 @@ import android.os.Bundle
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_incompatible
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
@@ -29,19 +28,19 @@ import java.io.IOException
 
 @RequiresApi(Build.VERSION_CODES.N)
 abstract class SessionInstallerBase(
-    private val context: Context,
+    context: Context,
     private val app: App,
     private val file: File,
-) : SecureAppInstaller(context, app, file) {
+) : SecureAppInstaller(app, file) {
     private val installationStatus = CompletableDeferred<InstallResult>()
     private var intentReceiver: BroadcastReceiver? = null
 
-    override suspend fun uncheckInstallAsync(): Deferred<InstallResult> {
+    override suspend fun uncheckInstallAsync(context: Context): Deferred<InstallResult> {
         requireNotNull(intentReceiver) { "SessionInstaller is not initialized" }
         require(file.exists()) { "File does not exists." }
         try {
             withContext(Dispatchers.Main) {
-                install()
+                install(context)
             }
             return installationStatus
         } catch (e: IOException) {
@@ -54,25 +53,25 @@ abstract class SessionInstallerBase(
 
     @SuppressLint("UnspecifiedImmutableFlag")
     @MainThread
-    private fun install() {
+    private fun install(context: Context) {
+        val params = createSessionParams(context)
         val installer = context.packageManager.packageInstaller
-        val params = createSessionParams()
         val id = try {
             installer.createSession(params)
         } catch (e: IOException) {
-            val error = context.getString(R.string.session_installer__not_enough_storage, e.message)
-            failure(STATUS_FAILURE_STORAGE, error)
+            val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
+            failure(STATUS_FAILURE_STORAGE, errorMessage)
             return
         }
         installer.registerSessionCallback(fallbackAppInstallationResultListener)
         installer.openSession(id).use {
             copyApkToSession(it)
-            val intentSender = createSessionChangeReceiver(id)
+            val intentSender = createSessionChangeReceiver(context, id)
             it.commit(intentSender)
         }
     }
 
-    private fun createSessionParams(): SessionParams {
+    private fun createSessionParams(context: Context): SessionParams {
         val params = SessionParams(MODE_FULL_INSTALL)
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
         params.setAppIcon(BitmapFactory.decodeResource(context.resources, app.detail.displayIcon))
@@ -101,9 +100,9 @@ abstract class SessionInstallerBase(
         }
     }
 
-    private fun createSessionChangeReceiver(sessionId: Int): IntentSender {
+    private fun createSessionChangeReceiver(context: Context, sessionId: Int): IntentSender {
         val intent = Intent(getIntentNameForAppInstallationCallback())
-        intent.`package` = context.packageName
+        intent.`package` = "de.marmaro.krt.ffupdater"
         val flags = if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_MUTABLE
         } else {
@@ -113,24 +112,34 @@ abstract class SessionInstallerBase(
         return pendingIntent.intentSender
     }
 
-    private fun handleAppInstallationResult(intent: Intent?) {
+    private fun handleAppInstallationResult(c: Context?, intent: Intent?) {
+        requireNotNull(c)
         requireNotNull(intent)
         val bundle = requireNotNull(intent.extras)
         when (val status = bundle.getInt(EXTRA_STATUS)) {
-            STATUS_PENDING_USER_ACTION -> requestInstallationPermission(bundle)
+            STATUS_PENDING_USER_ACTION -> requestInstallationPermission(c, bundle)
             STATUS_SUCCESS -> success()
-            STATUS_FAILURE -> failure(status, R.string.session_installer__status_failure)
-            STATUS_FAILURE_ABORTED -> failure(status, R.string.session_installer__status_failure_aborted)
-            STATUS_FAILURE_BLOCKED -> failure(status, R.string.session_installer__status_failure_blocked)
-            STATUS_FAILURE_CONFLICT -> failure(status, R.string.session_installer__status_failure_conflict)
-            STATUS_FAILURE_INCOMPATIBLE -> failure(status, session_installer__status_failure_incompatible)
-            STATUS_FAILURE_INVALID -> failure(status, R.string.session_installer__status_failure_invalid)
-            STATUS_FAILURE_STORAGE -> failure(status, R.string.session_installer__status_failure_storage)
-            else -> failure(status, "($status) ${bundle.getString(EXTRA_STATUS_MESSAGE)}")
+            else -> failure(status, getErrorMessage(c, status, bundle))
+        }
+    }
+
+    private fun getErrorMessage(c: Context, status: Int, bundle: Bundle): String {
+        return when (status) {
+            STATUS_FAILURE -> c.getString(R.string.session_installer__status_failure)
+            STATUS_FAILURE_ABORTED -> c.getString(R.string.session_installer__status_failure_aborted)
+            STATUS_FAILURE_BLOCKED -> c.getString(R.string.session_installer__status_failure_blocked)
+            STATUS_FAILURE_CONFLICT -> c.getString(R.string.session_installer__status_failure_conflict)
+            STATUS_FAILURE_INCOMPATIBLE -> c.getString(R.string.session_installer__status_failure_incompatible)
+            STATUS_FAILURE_INVALID -> c.getString(R.string.session_installer__status_failure_invalid)
+            STATUS_FAILURE_STORAGE -> c.getString(R.string.session_installer__status_failure_storage)
+            else -> "($status) ${bundle.getString(EXTRA_STATUS_MESSAGE)}"
         }
     }
 
     private val fallbackAppInstallationResultListener = object : SessionCallback() {
+        private val abortedErrorMessage =
+            context.getString(R.string.session_installer__status_failure_aborted)
+
         override fun onCreated(sessionId: Int) {}
         override fun onBadgingChanged(sessionId: Int) {}
         override fun onActiveChanged(sessionId: Int, active: Boolean) {}
@@ -140,19 +149,13 @@ abstract class SessionInstallerBase(
             // if PackageInstaller fail to call handleAppInstallationResult()
             // one installationStatus has been completed, its value can not be changed
             if (!success) {
-                val errorMessage = context.getString(R.string.session_installer__status_failure_aborted)
-                installationStatus.complete(InstallResult(false, STATUS_FAILURE_ABORTED, errorMessage))
+                installationStatus.complete(InstallResult(false, STATUS_FAILURE_ABORTED, abortedErrorMessage))
             }
         }
 
     }
 
-    protected abstract fun requestInstallationPermission(bundle: Bundle)
-
-    protected fun failure(errorCode: Int, errorMessageId: Int) {
-        val errorMessage = context.getString(errorMessageId)
-        installationStatus.complete(InstallResult(false, errorCode, errorMessage))
-    }
+    protected abstract fun requestInstallationPermission(context: Context, bundle: Bundle)
 
     protected fun failure(errorCode: Int, errorMessage: String) {
         installationStatus.complete(InstallResult(false, errorCode, errorMessage))
@@ -162,14 +165,14 @@ abstract class SessionInstallerBase(
         installationStatus.complete(InstallResult(true, null, null))
     }
 
-    protected fun registerIntentReceiver() {
+    protected fun registerIntentReceiver(context: Context) {
         intentReceiver = object : BroadcastReceiver() {
-            override fun onReceive(c: Context?, intent: Intent?) = handleAppInstallationResult(intent)
+            override fun onReceive(c: Context?, i: Intent?) = handleAppInstallationResult(c, i)
         }
         context.registerReceiver(intentReceiver, IntentFilter(getIntentNameForAppInstallationCallback()))
     }
 
-    protected fun unregisterIntentReceiver() {
+    protected fun unregisterIntentReceiver(context: Context) {
         context.unregisterReceiver(intentReceiver)
         intentReceiver = null
     }

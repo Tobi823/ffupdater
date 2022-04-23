@@ -1,11 +1,12 @@
 package de.marmaro.krt.ffupdater.installer
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LifecycleOwner
@@ -18,15 +19,15 @@ import java.io.IOException
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class IntentInstaller(
-    private val activity: ComponentActivity,
+    private val activityResultRegistry: ActivityResultRegistry,
     app: App,
     private val file: File,
-) : ForegroundAppInstaller, SecureAppInstaller(activity, app, file) {
+) : ForegroundAppInstaller, SecureAppInstaller(app, file) {
     private val status = CompletableDeferred<AppInstaller.InstallResult>()
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
 
     override fun onCreate(owner: LifecycleOwner) {
-        appInstallationCallback = activity.activityResultRegistry.register(
+        appInstallationCallback = activityResultRegistry.register(
             "IntentInstaller_app_installation_callback",
             owner,
             StartActivityForResult()
@@ -42,7 +43,7 @@ class IntentInstaller(
         }
     }
 
-    override suspend fun uncheckInstallAsync(): Deferred<AppInstaller.InstallResult> {
+    override suspend fun uncheckInstallAsync(context: Context): Deferred<AppInstaller.InstallResult> {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         try {
