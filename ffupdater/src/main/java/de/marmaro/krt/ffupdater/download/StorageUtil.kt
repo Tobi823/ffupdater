@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.download
 
+import android.content.Context
 import android.os.Environment
 import android.os.StatFs
 
@@ -7,14 +8,13 @@ object StorageUtil {
     private const val REQUIRED_MEBIBYTES = 500
     private const val BYTES_IN_MEBIBYTE = 1024 * 1024
 
-    fun isEnoughStorageAvailable(): Boolean {
-        return getFreeStorageInMebibytes() > REQUIRED_MEBIBYTES
+    fun isEnoughStorageAvailable(context: Context): Boolean {
+        return getFreeStorageInMebibytes(context) > REQUIRED_MEBIBYTES
     }
 
-    fun getFreeStorageInMebibytes(): Long {
-        // TODO verbessert - ich weiß ja jetzt, wohin ich downloaden muss + ich kann ja auch noch prüfen, ob
-        // genug Speicherplatz für die App da ist
-        val path = Environment.getDataDirectory().absolutePath
-        return StatFs(path).availableBytes / BYTES_IN_MEBIBYTE
+    fun getFreeStorageInMebibytes(context: Context): Long {
+        val folder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+        checkNotNull(folder) { "The external 'Download' folder of the app should exists." }
+        return StatFs(folder.absolutePath).availableBytes / BYTES_IN_MEBIBYTE
     }
 }
