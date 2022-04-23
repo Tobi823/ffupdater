@@ -5,6 +5,7 @@ import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.R.string.file_downloader__fail_to_handle_download_stream
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -66,7 +67,8 @@ class FileDownloader {
                     try {
                         responseReader.copyTo(fileWriter)
                     } catch (e: IOException) {
-                        throw Exception(context.getString(file_downloader__fail_to_handle_download_stream), e)
+                        val message = context.getString(file_downloader__fail_to_handle_download_stream)
+                        throw NetworkException(message, e)
                     }
                     return true
                 }
