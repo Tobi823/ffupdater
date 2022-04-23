@@ -1,8 +1,15 @@
-# 2022-04-?? Version 75.4.0 (98)
+# 2022-04-23 Version 75.4.0 (98)
 
+* Improve translations - thanks:
+  * Allan Nordhøy: Norwegian Bokmål
+  * Oğuz Ersen: Turkish
+  * 109247019824: Bulgarian
+  * J. Lavoie: Italien, French
 * Show download progress in background download notification
+* Add new settings for controlling the cache behaviour
 * Remove the "retry installation" button from InstallActivity because it should no longer be necessary
-* Fix bugs
+* Fix bugs, cleanup code
+* Integrate Weblate
 
 # 2022-04-19 Version 75.3.0 (97)
 

@@ -9,11 +9,9 @@ git fetch --tags
   - `./gradlew wrapper --gradle-version=6.8.2` https://gradle.org/releases/
   - `./gradlew clean adviceRelease`
 - fix and add unit tests
-- check translations and update them with my script `translate_android_strings`
 - edit build.gradle to increase `versionCode` and `versionName`
 - add changelog and supporter to CHANGELOG.md (don't forget commits from Weblate)
-- copy and translate the changelog from CHANGELOG.md to
-  `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt` with my script `translate_changelogs`
+- copy changelog from CHANGELOG.md to `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt`
 - commit changes with references to the issues/pull requests
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
   - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
@@ -22,6 +20,7 @@ git fetch --tags
 - `/dev/create_release.sh` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
 - upload signed APK to repomaker
 - test release with "Foxy Droid"
+- mark older changelogs in Weblate as read-only
 
 # delete all remote branches except master
 
