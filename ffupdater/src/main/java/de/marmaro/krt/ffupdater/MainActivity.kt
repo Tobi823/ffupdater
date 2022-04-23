@@ -128,7 +128,8 @@ class MainActivity : AppCompatActivity() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
         mainLayout.removeAllViews()
         cleanUpObjects()
-        val installedApps = App.values().filter { it.detail.isInstalled(this) }
+        val installedApps = App.values()
+            .filter { it.detail.isInstalled(this) }
         installedApps.forEach { app ->
             val newCardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
@@ -193,7 +194,7 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private suspend fun checkForAppUpdate(app: App) {
         try {
-            val updateResult = app.detail.updateCheck(applicationContext)
+            val updateResult = app.detail.updateCheckAsync(applicationContext).await()
             setAvailableVersion(app, updateResult.displayVersion)
             sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable
             if (updateResult.isUpdateAvailable) {

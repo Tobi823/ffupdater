@@ -2,8 +2,12 @@ package de.marmaro.krt.ffupdater.app
 
 import android.content.Context
 import androidx.annotation.MainThread
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 abstract class BaseAppWithCachedUpdateCheck : BaseApp {
     private var cache: CachedAvailableVersionResult? = null
@@ -12,11 +16,15 @@ abstract class BaseAppWithCachedUpdateCheck : BaseApp {
     @MainThread
     protected abstract suspend fun updateCheckWithoutCaching(): AvailableVersionResult
 
-    /**
-     * This method must not be called from the main thread or a android.os.NetworkOnMainThreadException
-     * will be thrown
-     */
-    override suspend fun updateCheck(context: Context): UpdateCheckResult {
+    override suspend fun updateCheckAsync(context: Context): Deferred<UpdateCheckResult> {
+        return withContext(Dispatchers.IO) {
+            async {
+                updateCheck(context)
+            }
+        }
+    }
+
+    private suspend fun updateCheck(context: Context): UpdateCheckResult {
         // - use mutex lock to prevent multiple simultaneously update check for a single app
         // - it's useless to start a new update check for an app when a different update check
         // for the same app is already running

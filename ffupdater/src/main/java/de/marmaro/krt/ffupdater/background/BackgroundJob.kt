@@ -134,7 +134,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             .filter { it !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { it.detail.isInstalled(context) }
         val appsWithAvailableUpdates = apps.filter {
-            val updateCheckResult = it.detail.updateCheck(context)
+            val updateCheckResult = it.detail.updateCheckAsync(context).await()
             updateCheckResult.isUpdateAvailable
         }
         return appsWithAvailableUpdates
@@ -166,7 +166,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         val appCache = AppCache(app)
-        val availableResult = app.detail.updateCheck(context).availableResult
+        val updateResult = app.detail.updateCheckAsync(context).await()
+        val availableResult = updateResult.availableResult
         if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return

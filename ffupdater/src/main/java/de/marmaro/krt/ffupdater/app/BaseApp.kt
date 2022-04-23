@@ -9,6 +9,7 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
+import kotlinx.coroutines.Deferred
 import java.io.File
 
 interface BaseApp {
@@ -57,7 +58,7 @@ interface BaseApp {
      * @throws NetworkException
      */
     @MainThread
-    suspend fun updateCheck(context: Context): UpdateCheckResult
+    suspend fun updateCheckAsync(context: Context): Deferred<UpdateCheckResult>
 
     @MainThread
     suspend fun isAvailableVersionEqualToArchive(

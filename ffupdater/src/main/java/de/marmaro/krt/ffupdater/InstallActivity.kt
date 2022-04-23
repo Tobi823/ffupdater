@@ -252,7 +252,7 @@ class InstallActivity : AppCompatActivity() {
             }
 
             val updateCheckResult = try {
-                app.detail.updateCheck(ia)
+                app.detail.updateCheckAsync(ia).await()
             } catch (e: GithubRateLimitExceededException) {
                 ia.viewModel.error = Pair(R.string.install_activity__github_rate_limit_exceeded, e)
                 return FAILURE_SHOW_FETCH_URL_EXCEPTION
