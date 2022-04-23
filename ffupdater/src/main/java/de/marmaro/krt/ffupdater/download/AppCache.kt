@@ -26,7 +26,9 @@ class AppCache(val app: App) {
 
     fun delete(context: Context) {
         val file = getFile(context)
-        val success = file.delete()
-        check(success) { "Fail to delete file '${file.absolutePath}'." }
+        if (file.exists()) {
+            val success = file.delete()
+            check(success) { "Fail to delete file '${file.absolutePath}'." }
+        }
     }
 }
