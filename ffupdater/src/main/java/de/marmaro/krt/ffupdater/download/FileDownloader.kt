@@ -1,8 +1,10 @@
 package de.marmaro.krt.ffupdater.download
 
+import android.content.Context
 import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
+import de.marmaro.krt.ffupdater.R.string.file_downloader__fail_to_handle_download_stream
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -22,31 +24,31 @@ class FileDownloader {
     private val trafficStatsThreadId = 10001
     var errorMessage: String? = null
         private set
+    var errorException: Throwable? = null
+        private set
     var onProgress: (progressInPercent: Int?, totalMB: Long) -> Unit = @WorkerThread { _, _ -> }
 
     // fallback to register for news for existing download
     var currentDownloadResult: Deferred<Boolean>? = null
 
     @MainThread
-    suspend fun downloadFileAsync(url: String, file: File): Deferred<Boolean> {
+    suspend fun downloadFileAsync(context: Context, url: String, file: File): Deferred<Boolean> {
         return withContext(Dispatchers.IO) {
-            val asyncValue = async {
+            currentDownloadResult = async {
                 try {
-                    val value = downloadFileInternal(url, file)
-                    currentDownloadResult = null
-                    value
-                } catch (e: IOException) {
+                    downloadFileInternal(context, url, file)
+                } catch (e: Exception) {
                     errorMessage = e.localizedMessage
+                    errorException = e
                     false
                 }
             }
-            currentDownloadResult = asyncValue
-            asyncValue
+            currentDownloadResult!!
         }
     }
 
     @WorkerThread
-    private suspend fun downloadFileInternal(url: String, file: File): Boolean {
+    private suspend fun downloadFileInternal(context: Context, url: String, file: File): Boolean {
         require(url.startsWith("https://"))
         TrafficStats.setThreadStatsTag(trafficStatsThreadId)
         val client = createClient()
@@ -61,7 +63,11 @@ class FileDownloader {
             file.outputStream().buffered().use { fileWriter ->
                 body.byteStream().buffered().use { responseReader ->
                     // this method blocks until download is finished
-                    responseReader.copyTo(fileWriter)
+                    try {
+                        responseReader.copyTo(fileWriter)
+                    } catch (e: IOException) {
+                        throw Exception(context.getString(file_downloader__fail_to_handle_download_stream), e)
+                    }
                     return true
                 }
             }

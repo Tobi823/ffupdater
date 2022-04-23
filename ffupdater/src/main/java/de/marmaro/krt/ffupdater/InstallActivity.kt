@@ -22,8 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.R.id.install_activity__exception__show_button
-import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__install_activity_fetching_url
-import de.marmaro.krt.ffupdater.R.string.install_activity__file_uri_exposed_toast
+import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
@@ -251,7 +250,7 @@ class InstallActivity : AppCompatActivity() {
         AppDownloadStatus.foregroundDownloadIsStarted()
         // this coroutine should survive a screen rotation and should live as long as the view model
         val result = withContext(viewModel.viewModelScope.coroutineContext) {
-            fileDownloader.downloadFileAsync(url, file).await()
+            fileDownloader.downloadFileAsync(this@InstallActivity, url, file).await()
         }
         AppDownloadStatus.foregroundDownloadIsFinished()
 
@@ -347,6 +346,16 @@ class InstallActivity : AppCompatActivity() {
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)
         setText(R.id.downloadFileFailedText, viewModel.fileDownloader?.errorMessage ?: "")
+        val exception = viewModel.fileDownloader?.errorException
+        if (exception == null) {
+            hide(R.id.downloadFileFailedShowException)
+        } else {
+            findViewById<TextView>(R.id.downloadFileFailedShowException).setOnClickListener {
+                val description = getString(crash_report___explain_text__install_activity_download_file)
+                val intent = CrashReportActivity.createIntent(this, exception, description)
+                startActivity(intent)
+            }
+        }
         show(R.id.installerFailed)
         appCache.delete(this)
     }

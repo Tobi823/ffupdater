@@ -145,6 +145,11 @@
                 style="@style/DefaultTextView"
                 android:layout_marginTop="8dp" />
 
+            <TextView
+                android:id="@+id/downloadFileFailedShowException"
+                style="@style/DefaultTextView"
+                android:text="@string/install_activity__exception__show_button" />
+
         </LinearLayout>
 
         <LinearLayout

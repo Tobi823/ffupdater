@@ -182,7 +182,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         NotificationBuilder.showDownloadNotification(context, app, null, null)
 
         val file = appCache.getFile(context)
-        val result = downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
+        val result = downloader.downloadFileAsync(context, availableResult.downloadUrl, file).await()
 
         AppDownloadStatus.backgroundDownloadIsFinished()
         if (!result) {

@@ -192,4 +192,6 @@
     <string name="settings__b_f__delete_cache_if_install_failed">Delete the downloaded update if the installation fails.</string>
     <string name="install_activity__open_folder">Open folder</string>
     <string name="intent_installer__likely_storage_failure">The operation likely failed because of storage issues. For example, the device may be running low on space, or external media may be unavailable. The user may be able to help free space or insert different external media.</string>
+    <string name="crash_report___explain_text__install_activity_download_file">The following error occurred during download. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please add the crash report from the clipboard to the report.</string>
+    <string name="file_downloader__fail_to_handle_download_stream">Fail to handle download stream.</string>
 </resources>
