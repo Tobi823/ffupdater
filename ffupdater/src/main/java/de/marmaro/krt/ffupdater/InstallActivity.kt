@@ -156,12 +156,12 @@ class InstallActivity : AppCompatActivity() {
     }
 
     private suspend fun checkIfEnoughStorageAvailable() {
-        if (StorageUtil.isEnoughStorageAvailable()) {
+        if (StorageUtil.isEnoughStorageAvailable(this)) {
             fetchDownloadInformation()
             return
         }
         show(R.id.tooLowMemory)
-        val mbs = StorageUtil.getFreeStorageInMebibytes()
+        val mbs = StorageUtil.getFreeStorageInMebibytes(this)
         val message = getString(R.string.install_activity__too_low_memory_description, mbs)
         setText(R.id.tooLowMemoryDescription, message)
         fetchDownloadInformation()

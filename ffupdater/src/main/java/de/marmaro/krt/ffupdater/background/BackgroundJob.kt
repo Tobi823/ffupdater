@@ -160,7 +160,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      */
     @MainThread
     private suspend fun downloadUpdate(app: App) {
-        if (!StorageUtil.isEnoughStorageAvailable()) {
+        if (!StorageUtil.isEnoughStorageAvailable(context)) {
             Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
             return
         }
