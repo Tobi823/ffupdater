@@ -22,7 +22,7 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Копиране на доклада за срив в междинната памет</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">При извличане на адреса за изтегляне възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
     <string name="crash_report__explain_text__main_activity_update_check">При проверката за обновяване в главния изглед възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">За съжаление FFUpdater се срина. Докладвайте тази грешка на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">За съжаление FFUpdater се срина предния път. Докладвайте тази грешка на notabug.org, GitHub или GitLab. Копирайте доклада за срив от междинната памет като съобщение, добавете описание на начина, по който възпроизвеждате грешката.</string>
     <string name="crash_report__go_to_github">Към GitHub</string>
     <string name="crash_report__go_to_gitlab">Към GitLab</string>
     <string name="crash_report__got_to_notabug_org">Към notabug.org</string>
@@ -56,7 +56,7 @@
     <string name="infobox">Това приложение е предназначено за обновяване на мрежовите четци на Mozilla. Докоснете бутона със знак плюс за инсталиране или стрелка надолу за обновяване. Можете да правите проверка за нови издания като дръпнете списъка надолу или повторно отворите приложението. По подразбиране приложението периодично, във фонов режим, също прави такава проверка. Направил съм всичко по силите си да направя процеса на инсталиране/обновяване максимално сигурен, но се чувствайте свободни да го проверите или да го подобрите чрез изпращане на заявка за сливане. \n\nПоследна успешна проверка на фоновата актуализация: %1$s</string>
     <string name="information_about_the_app">сведения за приложението</string>
     <string name="install_activity__delete_cache_button_text">Изчистване</string>
-    <string name="install_activity__delete_cache_explanation">Ако смятате, че FFUpdater е съхранил във врементата памет дефектно обновяване на някое от приложенията, докоснете бутона „Изчистване“, за да го премахнете.</string>
+    <string name="install_activity__delete_cache_explanation">Ако смятате, че FFUpdater е съхранил във врементата памет дефектно обновяване на някое от приложенията или искате да освободите дисково пространство натиснете бутона, за да го премахнете.</string>
     <string name="install_activity__download_app_with_status">Изтегляне на приложение (%1$s)</string>
     <string name="install_activity__download_failed">Изтеглянето е неуспешно</string>
     <string name="install_activity__downloaded_application_from">Приложението е изтеглено от:</string>
