@@ -26,7 +26,7 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
             val errorFile = getCrashReportFile(context)
             val crashListener = CrashListener(errorFile)
             Thread.setDefaultUncaughtExceptionHandler(crashListener)
-            if (errorFile.exists()) {
+            if (hasCrashOccurred(errorFile)) {
                 startCrashReport(context, errorFile)
                 errorFile.delete()
                 return true
@@ -44,5 +44,9 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
         }
 
         private fun getCrashReportFile(context: Context) = File(context.externalCacheDir, "crashlog.txt")
+
+        private fun hasCrashOccurred(errorFile: File): Boolean {
+            return errorFile.exists()
+        }
     }
 }
