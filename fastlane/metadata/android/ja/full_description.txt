@@ -1,19 +1,19 @@
-Mozilla または Firefox ベースのブラウザをダウンロード、インストール、更新します。
-- Firefox Browser, Firefox for Android Beta, Firefox Nightly
-- Firefox Focus, Firefox Klar
+Mozilla 製または Firefox ベースのブラウザのダウンロード、インストール、アップデートを行います。
+- Firefox ブラウザ、Android Beta 版 Firefox、Firefox Nightly
+- Firefox Focus、Firefox Klar
 - Iceraven
 
-良いプライバシーブラウザ。
-- Bromite, Bromite SystemWebView
+優れたプライバシーブラウザ
+- Bromite、Bromite SystemWebView
 - Ungoogled Chromium
 
-Google Chromeよりも優れたブラウザです。
-- カバーアート Brave 広告ブロック(adblock)するwebブラウザ, Brave Browser (Beta), Brave Browser (Nightly)
-- Vivaldi
+Google Chromeより優れたブラウザ
+- Brave Private Browser、Brave Browser (Beta)、Brave Browser (Nightly)。
+- ヴィヴァルディ
 
-と:
-- Firefox Lockwise
+とします。
+- Firefox ロックワイズ
 
-FFUpdaterはバックグラウンドでアップデートの有無を確認し、ダウンロードも行います。Android 12+またはルートデバイスでは、FFUpdaterはユーザーの操作なしでアプリを更新することもできます。
+FFUpdaterは、バックグラウンドでアップデートをチェックし、ダウンロードも行います。Android 12+またはrootデバイスでは、FFUpdaterはユーザーの操作なしでアプリを更新することも可能です。
 
-セキュリティ対策、制限事項、バグ、FAQ、ビルド方法、使用しているサードパーティライブラリ、技術的な詳細などの情報は、https://notabug.org/Tobiwan/ffupdater/src/master/README.md をご覧いただくか、以下の「ソースコード」リンクをクリックしてください。
+セキュリティ対策、他の配布チャネル、制限、バグ、FAQ、ビルド手順、使用したサードパーティライブラリ、技術的詳細などの詳細については、https://notabug.org/Tobiwan/ffupdater/src/master/README.md または以下の "Source Code" のリンクを参照してください。
