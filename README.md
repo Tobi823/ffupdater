@@ -19,7 +19,7 @@ good privacy browsers:
   [Bromite SystemWebView](https://www.bromite.org/system_web_view)
 - [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium-android)
 
-browser which are better than Google Chrome:
+better than Google Chrome browsers:
 
 - [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US),
   [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
