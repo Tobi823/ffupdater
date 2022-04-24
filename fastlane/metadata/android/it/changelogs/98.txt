@@ -1,0 +1,10 @@
+* Migliorare le traduzioni - grazie:
+  * Allan Nordhøy: Bokmål norvegese
+  * Oğuz Ersen: Turco
+  * 109247019824: Bulgaro
+  * J. Lavoie: Italiano, Francese
+* Mostra l'avanzamento del download nella notifica di download in background
+* Aggiungere nuove impostazioni per controllare il comportamento della cache
+* Rimuovere il pulsante "retry installation" da InstallActivity perché non dovrebbe più essere necessario
+* Correggere i bug, pulire il codice
+* Integrare Weblate
