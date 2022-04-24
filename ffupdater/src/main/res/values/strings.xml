@@ -100,7 +100,7 @@
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API limit exceeded. Retry next hour.</u>"</string>
     <string name="main_activity__no_unmetered_network">No unmetered network</string>
     <string name="main_activity__subtitle">Update your browsers from Mozilla</string>
-    <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u> a b c d e f g h i j k l m n o p q r s t u v w"</string>
+    <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
     <string name="manage_storage_activity__delete_button">Delete cached app updates.</string>
     <string name="manage_storage_activity__explanation">FFUpdater caches already downloaded app updates and stores them in the \'Android/data/de.marmaro.krt.ffupdater/files/Download\' folder.\n\nThis saves bandwidth when an app is not successfully installed or updated. Also, the cache is needed so that updates that were downloaded in the background can be installed later.\n\nIf you decide to delete these app updates, you may have to download them again.</string>
     <string name="mozilla_ci" translatable="false">Mozilla CI</string>
