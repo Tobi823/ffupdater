@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MainActivityTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="main_activity__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -9,41 +9,41 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="MainActivityTheme.MainTitle.Small" parent="@android:style/TextAppearance.Large">
+    <style name="main_activity__main_title_small" parent="@android:style/TextAppearance.Large">
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="MainActivityTheme.MainTitle.Big" parent="MainActivityTheme.MainTitle.Small">
+    <style name="main_activity__main_title_big" parent="main_activity__main_title_small">
         <item name="android:textSize">34sp</item>
     </style>
 
-    <style name="MainActivityTheme.SubTitle" parent="@android:style/TextAppearance">
+    <style name="main_activity__sub_title" parent="@android:style/TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="DefaultTextView">
+    <style name="install_activity__default_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="DefaultButton">
+    <style name="install_activity__button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="BoldTextView" parent="DefaultTextView">
+    <style name="install_activity__bold_text" parent="install_activity__default_text">
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="MonospaceSelectableTextView" parent="DefaultTextView">
+    <style name="install_activity__monospace_text" parent="install_activity__default_text">
         <item name="android:textIsSelectable">true</item>
         <item name="android:fontFamily">monospace</item>
     </style>
 
-    <style name="DownloadActivitySegment">
+    <style name="install_activity__segment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">16dp</item>
@@ -51,68 +51,24 @@
         <item name="android:visibility">gone</item>
     </style>
 
-    <style name="AppCard">
-        <item name="cardBackgroundColor">@color/cardview_background_color</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
-    </style>
-
-    <style name="AppCardLayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
-    </style>
-
-    <style name="AppCardInfoButton">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginEnd">8dp</item>
-        <item name="android:layout_marginRight">8dp</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:contentDescription">Info about this app</item>
-    </style>
-
-    <style name="AppCardDownloadButton">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:contentDescription">Download the latest Fennec Release</item>
-    </style>
-
-    <style name="AppCardIcon">
-        <item name="android:layout_width">32dp</item>
-        <item name="android:layout_height">32dp</item>
-    </style>
-
-    <style name="AppCardVersion" parent="@style/TextAppearance.AppCompat.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:ellipsize">start</item>
-    </style>
-
-    <style name="AppCardInstalledVersion" parent="AppCardVersion">
-        <item name="android:layout_marginTop">8dp</item>
-    </style>
-
-    <style name="AppCardTitle" parent="@style/TextAppearance.AppCompat.Large">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginLeft">8dp</item>
-        <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:singleLine">true</item>
-    </style>
-
-    <style name="CrashReportTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="crash_report__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/errorRed</item>
         <item name="colorPrimaryDark">@color/errorRed</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="manage_storage_activity__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="manage_storage_activity__bold_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

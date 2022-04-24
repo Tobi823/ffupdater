@@ -1,40 +1,79 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/AppCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    app:cardBackgroundColor="@color/cardview_background_color"
     app:cardUseCompatPadding="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout style="@style/AppCardLayout">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
-            style="@style/AppCardTitle"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif-light"
+            android:singleLine="true"
             android:tag="appCardTitle"
             app:layout_constraintStart_toEndOf="@+id/appIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/appInstalledVersion"
-            style="@style/AppCardInstalledVersion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:tag="appInstalledVersion"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appIcon" />
 
         <TextView
-            style="@style/AppCardVersion"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:tag="appAvailableVersion"
+            app:layout_constraintEnd_toStartOf="@id/appWarningButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appInstalledVersion" />
 
         <ImageButton
-            style="@style/AppCardInfoButton"
+            android:id="@+id/appWarningButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Warning about this app"
+            android:tag="appWarningButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/appInfoButton"
+            app:srcCompat="@drawable/ic_baseline_warning_36dp" />
+
+        <ImageButton
+            android:id="@+id/appInfoButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/information_about_the_app"
             android:tag="appInfoButton"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/appDownloadButton"
+            app:layout_constraintEnd_toStartOf="@id/appDownloadButton"
             app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
 
         <ImageButton
             android:id="@+id/appDownloadButton"
-            style="@style/AppCardDownloadButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/download_the_app"
             android:tag="appDownloadButton"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +82,8 @@
 
         <ImageView
             android:id="@+id/appIcon"
-            style="@style/AppCardIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:contentDescription="@string/app_icon"
             android:tag="appIcon"
             app:layout_constraintStart_toStartOf="parent"

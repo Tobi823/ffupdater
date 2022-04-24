@@ -59,11 +59,11 @@
         <activity
             android:name=".ManageStorageActivity"
             android:label="Manage Storage"
-            android:theme="@style/MainActivityTheme"/>
+            android:theme="@style/main_activity__theme" />
         <activity
             android:name=".CrashReportActivity"
             android:label="FFUpdater Crash Reporter"
-            android:theme="@style/CrashReportTheme" />
+            android:theme="@style/crash_report__theme" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings__activity_label"
@@ -76,7 +76,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/MainActivityTheme">
+            android:theme="@style/main_activity__theme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

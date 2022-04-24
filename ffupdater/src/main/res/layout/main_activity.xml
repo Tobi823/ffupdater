@@ -21,10 +21,10 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:collapsedTitleTextAppearance="@style/MainActivityTheme.MainTitle.Small"
+            app:collapsedTitleTextAppearance="@style/main_activity__main_title_small"
             app:expandedTitleMarginBottom="70dp"
             app:expandedTitleMarginStart="32dp"
-            app:expandedTitleTextAppearance="@style/MainActivityTheme.MainTitle.Big"
+            app:expandedTitleTextAppearance="@style/main_activity__main_title_big"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <TextView
@@ -35,7 +35,7 @@
                 android:layout_marginBottom="32dp"
                 android:singleLine="true"
                 android:text="@string/main_activity__subtitle"
-                android:textAppearance="@style/MainActivityTheme.SubTitle"
+                android:textAppearance="@style/main_activity__sub_title"
                 app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar

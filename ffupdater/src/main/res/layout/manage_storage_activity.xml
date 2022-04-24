@@ -17,13 +17,13 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/BoldTextView"
+            style="@style/manage_storage_activity__bold_text"
             android:layout_marginBottom="8dp"
             android:text="@string/manage_storage_activity__explanation" />
 
         <Button
             android:id="@+id/manage_storage_activity__delete_cached_apk_files"
-            style="@style/DefaultButton"
+            style="@style/install_activity__button"
             android:text="@string/manage_storage_activity__delete_button" />
 
     </LinearLayout>

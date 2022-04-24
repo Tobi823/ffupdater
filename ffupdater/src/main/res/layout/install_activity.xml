@@ -17,44 +17,44 @@
 
         <LinearLayout
             android:id="@+id/tooLowMemory"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:background="@color/warningOrange"
             android:padding="8dp">
 
             <TextView
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/install_activity__too_low_memory_title" />
 
             <TextView
                 android:id="@+id/tooLowMemoryDescription"
-                style="@style/DefaultTextView" />
+                style="@style/install_activity__default_text" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/externalStorageNotAccessible"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:background="@color/errorRed"
             android:padding="8dp">
 
             <TextView
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/install_activity__external_storage_not_accessible" />
 
             <TextView
                 android:id="@+id/externalStorageNotAccessible_state"
-                style="@style/MonospaceSelectableTextView"
+                style="@style/install_activity__monospace_text"
                 android:text="" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fetchUrl"
-            style="@style/DownloadActivitySegment">
+            style="@style/install_activity__segment">
 
             <TextView
                 android:id="@+id/fetchUrlTextView"
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/install_activity__fetch_url_for_download" />
 
             <ProgressBar
@@ -67,27 +67,27 @@
 
         <LinearLayout
             android:id="@+id/fetchedUrlSuccess"
-            style="@style/DownloadActivitySegment">
+            style="@style/install_activity__segment">
 
             <TextView
                 android:id="@+id/fetchedUrlSuccessTextView"
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/install_activity__fetched_url_for_download_successfully" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/downloadingFile"
-            style="@style/DownloadActivitySegment">
+            style="@style/install_activity__segment">
 
             <TextView
                 android:id="@+id/downloadingFileText"
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/install_activity__download_app_with_status" />
 
             <TextView
                 android:id="@+id/downloadingFileUrl"
-                style="@style/MonospaceSelectableTextView" />
+                style="@style/install_activity__monospace_text" />
 
             <ProgressBar
                 android:id="@+id/downloadingFileProgressBar"
@@ -100,61 +100,61 @@
 
         <LinearLayout
             android:id="@+id/downloadedFile"
-            style="@style/DownloadActivitySegment">
+            style="@style/install_activity__segment">
 
             <TextView
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/install_activity__downloaded_application_from" />
 
             <TextView
                 android:id="@+id/downloadedFileUrl"
-                style="@style/MonospaceSelectableTextView" />
+                style="@style/install_activity__monospace_text" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/useCachedDownloadedApk"
-            style="@style/DownloadActivitySegment">
+            style="@style/install_activity__segment">
 
             <TextView
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/install_activity__use_cached_downloaded_apk" />
 
             <TextView
                 android:id="@+id/useCachedDownloadedApk__path"
-                style="@style/MonospaceSelectableTextView" />
+                style="@style/install_activity__monospace_text" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/downloadFileFailed"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:background="@color/errorRed"
             android:padding="8dp">
 
             <TextView
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/install_activity__download_failed" />
 
             <TextView
                 android:id="@+id/downloadFileFailedUrl"
-                style="@style/MonospaceSelectableTextView" />
+                style="@style/install_activity__monospace_text" />
 
             <TextView
                 android:id="@+id/downloadFileFailedText"
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:layout_marginTop="8dp" />
 
             <TextView
                 android:id="@+id/downloadFileFailedShowException"
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:text="@string/install_activity__exception__show_button" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/installingApplication"
-            style="@style/DownloadActivitySegment">
+            style="@style/install_activity__segment">
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -165,113 +165,113 @@
 
         <LinearLayout
             android:id="@+id/fingerprintInstalledGood"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:background="@color/successGreen"
             android:padding="8dp">
 
             <TextView
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/installed_application_is_verified" />
 
             <TextView
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:text="@string/install_activity__sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintInstalledGoodHash"
-                style="@style/MonospaceSelectableTextView" />
+                style="@style/install_activity__monospace_text" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/installerSuccess"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:background="@color/successGreen"
             android:padding="8dp">
 
             <TextView
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/application_successfully_installed" />
 
             <TextView
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:text="@string/install_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/installerFailed"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:background="@color/errorRed"
             android:padding="8dp">
 
             <TextView
-                style="@style/BoldTextView"
+                style="@style/install_activity__bold_text"
                 android:text="@string/application_installation_was_not_successful" />
 
             <TextView
                 android:id="@+id/installerFailedReason"
-                style="@style/MonospaceSelectableTextView" />
+                style="@style/install_activity__monospace_text" />
 
             <TextView
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:text="@string/install_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/install_activity__exception"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:background="@color/errorRed"
             android:padding="8dp">
 
             <TextView
                 android:id="@+id/install_activity__exception__text"
-                style="@style/BoldTextView" />
+                style="@style/install_activity__bold_text" />
 
             <TextView
                 android:id="@+id/install_activity__exception__show_button"
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:text="@string/install_activity__exception__show_button" />
 
             <TextView
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:text="@string/install_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/install_activity__delete_cache"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:padding="8dp">
 
             <TextView
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:text="@string/install_activity__delete_cache_explanation" />
 
             <Button
                 android:id="@+id/install_activity__delete_cache_button"
-                style="@style/DefaultButton"
+                style="@style/install_activity__button"
                 android:text="@string/install_activity__delete_cache_button_text" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/install_activity__open_cache_folder"
-            style="@style/DownloadActivitySegment"
+            style="@style/install_activity__segment"
             android:padding="8dp">
 
             <TextView
-                style="@style/DefaultTextView"
+                style="@style/install_activity__default_text"
                 android:text="@string/install_activity__open_cache_explanation" />
 
             <TextView
                 android:id="@+id/install_activity__cache_folder_path"
-                style="@style/MonospaceSelectableTextView" />
+                style="@style/install_activity__monospace_text" />
 
             <Button
                 android:id="@+id/install_activity__open_cache_folder_button"
-                style="@style/DefaultButton"
+                style="@style/install_activity__button"
                 android:text="@string/install_activity__open_cache_folder_button_text" />
 
         </LinearLayout>
