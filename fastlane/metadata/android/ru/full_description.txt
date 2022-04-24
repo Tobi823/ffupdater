@@ -1,10 +1,14 @@
-Загружайте, устанавливайте и обновляйте эти приватные браузеры:
-- Brave приватный веб-браузер, Brave Browser (Beta), Brave Browser (Nightly)
-- Bromite, Bromite SystemWebView
-- Браузер Firefox, Firefox Бета, Firefox Nightly
+Загружайте, устанавливайте и обновляйте браузеры от Mozilla или основанные на Firefox:
+- Firefox Browser, Firefox для Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
+
+хорошие браузеры для обеспечения конфиденциальности:
+- Bromite, Bromite SystemWebView
 - Ungoogled Chromium
+
+браузеры, которые лучше, чем Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Vivaldi
 
 и:
@@ -12,4 +16,4 @@
 
 FFUpdater проверяет наличие обновлений в фоновом режиме и также загружает их. На устройствах с Android 12+ или root FFUpdater также может обновлять приложения без участия пользователя.
 
-Посетите https://notabug.org/Tobiwan/ffupdater/src/master/README.md или перейдите по ссылке "Исходный код" внизу, чтобы увидеть больше информации о мерах безопасности, каналах распространения, ограничениях, ошибках, частых вопросах, инструкциях для сборки, использовании сторонних библиотек, технических деталях и т.д. 
+Посетите сайт https://notabug.org/Tobiwan/ffupdater/src/master/README.md или воспользуйтесь ссылкой "Исходный код" ниже для получения дополнительной информации о мерах безопасности, других каналах распространения, ограничениях, ошибках, FAQ, инструкциях по сборке, используемых сторонних библиотеках, технических деталях и т.д.
