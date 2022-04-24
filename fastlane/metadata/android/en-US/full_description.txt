@@ -1,10 +1,14 @@
-Download, install and update these privacy friendly browsers:
-- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
-- Bromite, Bromite SystemWebView
+Download, install and update browsers from Mozilla or based on Firefox:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
+
+good privacy browsers:
+- Bromite, Bromite SystemWebView
 - Ungoogled Chromium
+
+browser which are better than Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Vivaldi
 
 and:

@@ -2,14 +2,8 @@
 
 # Firefox-Updater
 
-Download, install and update these privacy friendly browsers:
+Download, install and update browsers from Mozilla or based on Firefox:
 
-- [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US),
-  [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
-  [Brave Browser (Nightly)](https://play.google.com/store/apps/details?id=com.brave.browser_nightly&gl=US)
-  ([GitHub Repository](https://github.com/brave/brave-browser))
-- [Bromite](https://github.com/bromite/bromite),
-  [Bromite SystemWebView](https://www.bromite.org/system_web_view)
 - [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox),
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
   [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
@@ -18,7 +12,19 @@ Download, install and update these privacy friendly browsers:
   [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
   ([GitHub Repository](https://github.com/mozilla-mobile/focus-android))
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
+
+good privacy browsers:
+
+- [Bromite](https://github.com/bromite/bromite),
+  [Bromite SystemWebView](https://www.bromite.org/system_web_view)
 - [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium-android)
+
+browser which are better than Google Chrome:
+
+- [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US),
+  [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
+  [Brave Browser (Nightly)](https://play.google.com/store/apps/details?id=com.brave.browser_nightly&gl=US)
+  ([GitHub Repository](https://github.com/brave/brave-browser))
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 
 and:
