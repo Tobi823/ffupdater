@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater
 
+import android.R.color.holo_blue_dark
+import android.R.color.holo_blue_light
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -66,20 +68,18 @@ class MainActivity : AppCompatActivity() {
             val dialog = InstallNewAppDialog.newInstance(deviceAbis)
             dialog.show(supportFragmentManager)
         }
-        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).setOnRefreshListener {
-            lifecycleScope.launch(Dispatchers.Main) {
-                checkForUpdates()
-            }
+        val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
+        swipeContainer.setOnRefreshListener {
+            lifecycleScope.launch(Dispatchers.Main) { checkForUpdates() }
         }
+        swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
     }
 
     @MainThread
     override fun onResume() {
         super.onResume()
         initUI()
-        lifecycleScope.launch(Dispatchers.Main) {
-            checkForUpdates()
-        }
+        lifecycleScope.launch(Dispatchers.Main) { checkForUpdates() }
     }
 
     override fun onPause() {
@@ -128,49 +128,52 @@ class MainActivity : AppCompatActivity() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
         mainLayout.removeAllViews()
         cleanUpObjects()
-        val installedApps = App.values()
+        App.values()
             .filter { it.detail.isInstalled(this) }
-        installedApps.forEach { app ->
-            val newCardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
+            .forEach { initUIForApp(mainLayout, it) }
+    }
 
-            val installedVersion: TextView = newCardView.findViewWithTag("appInstalledVersion")
-            installedVersion.text = app.detail.getDisplayInstalledVersion(this)
+    @UiThread
+    private fun initUIForApp(mainLayout: LinearLayout, app: App) {
+        val newCardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
-            val availableVersion: TextView = newCardView.findViewWithTag("appAvailableVersion")
-            availableVersions[app] = availableVersion
-            availableVersion.setOnClickListener {
-                val exception = errorsDuringUpdateCheck[app]
-                if (exception != null) {
-                    val description = getString(crash_report__explain_text__main_activity_update_check)
-                    val intent = CrashReportActivity.createIntent(this, exception, description)
-                    startActivity(intent)
-                }
+        val installedVersion: TextView = newCardView.findViewWithTag("appInstalledVersion")
+        installedVersion.text = app.detail.getDisplayInstalledVersion(this)
+
+        val availableVersion: TextView = newCardView.findViewWithTag("appAvailableVersion")
+        availableVersions[app] = availableVersion
+        availableVersion.setOnClickListener {
+            val exception = errorsDuringUpdateCheck[app]
+            if (exception != null) {
+                val description = getString(crash_report__explain_text__main_activity_update_check)
+                val intent = CrashReportActivity.createIntent(this, exception, description)
+                startActivity(intent)
             }
-
-            val downloadButton: ImageButton = newCardView.findViewWithTag("appDownloadButton")
-            downloadButton.setOnClickListener {
-                if (sameAppVersionIsAlreadyInstalled[app] == true) {
-                    InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
-                } else {
-                    installApp(app, askForConfirmationIfOtherDownloadsAreRunning = true)
-                }
-            }
-            downloadButtons[app] = downloadButton
-            setDownloadButtonState(app, false)
-
-            val infoButton: ImageButton = newCardView.findViewWithTag("appInfoButton")
-            infoButton.setOnClickListener {
-                AppInfoDialog.newInstance(app).show(supportFragmentManager)
-            }
-
-            val cardTitle: TextView = newCardView.findViewWithTag("appCardTitle")
-            cardTitle.setText(app.detail.displayTitle)
-
-            val icon = newCardView.findViewWithTag<ImageView>("appIcon")
-            icon.setImageResource(app.detail.displayIcon)
-
-            mainLayout.addView(newCardView)
         }
+
+        val downloadButton: ImageButton = newCardView.findViewWithTag("appDownloadButton")
+        downloadButton.setOnClickListener {
+            if (sameAppVersionIsAlreadyInstalled[app] == true) {
+                InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
+            } else {
+                installApp(app, askForConfirmationIfOtherDownloadsAreRunning = true)
+            }
+        }
+        downloadButtons[app] = downloadButton
+        setDownloadButtonState(app, false)
+
+        val infoButton: ImageButton = newCardView.findViewWithTag("appInfoButton")
+        infoButton.setOnClickListener {
+            AppInfoDialog.newInstance(app).show(supportFragmentManager)
+        }
+
+        val cardTitle: TextView = newCardView.findViewWithTag("appCardTitle")
+        cardTitle.setText(app.detail.displayTitle)
+
+        val icon = newCardView.findViewWithTag<ImageView>("appIcon")
+        icon.setImageResource(app.detail.displayIcon)
+
+        mainLayout.addView(newCardView)
     }
 
     @MainThread
