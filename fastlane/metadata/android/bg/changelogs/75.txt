@@ -1,0 +1,1 @@
+* Поправяне на срив при проверка за "Firefox Beta" (Tobi823/ffupdater#60)

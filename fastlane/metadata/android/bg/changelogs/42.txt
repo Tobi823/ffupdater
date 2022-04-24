@@ -1,0 +1,6 @@
+* Добавяне на прост репортер за срив (чрез отваряне на пощенското приложение със съобщението за грешка)
+ * Поправяне на срива чрез искане на разрешения за WRITE_EXTERNAL_STORAGE и READ_EXTERNAL_STORAGE
+ * Показване на лента за напредъка при проверка на изтегления APK файл
+ * Изтегляне на APK в публичната директория за изтегляне на приложението (например: /storage/sdcard0/Android/data/de.marmaro.krt.ffupdater/files/Download)
+ * Премахване на старите съобщения за отстраняване на грешки
+ * Благодаря на yhoyhoj, UltraBlackLinux, rvandegrift, vikajon, wchen342, Ulfschaper, prox и danceswithcats за съобщенията за грешки

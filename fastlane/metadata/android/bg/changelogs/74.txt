@@ -1,0 +1,1 @@
+* Отстраняване на срив при проверка за "Firefox Release" или "Firefox Beta" (Tobi823/ffupdater#57)

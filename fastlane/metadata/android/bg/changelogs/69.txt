@@ -1,0 +1,1 @@
+* Премахнете Brave Browser, защото APK файловете вече не се публикуват в GitHub. (https://github.com/brave/brave-browser/issues/15878)

@@ -1,0 +1,1 @@
+* Направете проверката за актуализация по-стабилна за "Firefox Release", "Firefox Beta", "Firefox Focus" и "Firefox Klar";
