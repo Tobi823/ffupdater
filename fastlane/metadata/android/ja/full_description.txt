@@ -1,12 +1,15 @@
-これらのプライバシーを重視したブラウザやアプリをインストールやアップデートできます:
- - カバーアート Brave 広告ブロック(adblock)するwebブラウザ, Brave Browser (Beta), Brave Browser (Nightly)
- - Bromite, Bromite SystemWebView
- - Firefox Browser, Firefox for Android Beta, Firefox Nightly
- - Firefox Focus, Firefox Klar
- - Iceraven
- - Ungoogled Chromium
- - Vivaldi
- - Firefox Lockwise
+Mozilla または Firefox ベースのブラウザをダウンロード、インストール、更新します。
+- Firefox Browser, Firefox for Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Klar
+- Iceraven
+
+良いプライバシーブラウザ。
+- Bromite, Bromite SystemWebView
+- Ungoogled Chromium
+
+Google Chromeよりも優れたブラウザです。
+- カバーアート Brave 広告ブロック(adblock)するwebブラウザ, Brave Browser (Beta), Brave Browser (Nightly)
+- Vivaldi
 
 と:
 - Firefox Lockwise
