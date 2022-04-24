@@ -1,10 +1,14 @@
-Stáhněte, nainstalujte a aktualizujte prohlížeče šetrné k soukromí:
-- Brave Soukromý prohlížeč, Brave Browser (Beta), Brave Browser (Nightly)
-- Bromite, Bromite SystemWebView
+Stáhnout, instalovat a aktualizovat prohlížeče z Mozilla nebo na základě Firefoxu:
 - Firefox Prohlížeč, Firefox Beta pro Android, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
+
+Dobré prohlížeče ochrany osobních údajů:
+- Bromite, Bromite SystemWebView
 - Ungoogled Chromium
+
+Prohlížeč, který je lepší než Google Chrome:
+- Brave Soukromý prohlížeč, Brave Browser (Beta), Brave Browser (Nightly)
 - Vivaldi
 
 a:
