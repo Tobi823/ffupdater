@@ -77,7 +77,7 @@
     <string name="install_activity__fetch_url_for_download">Fetch download URL from %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Fetched download URL from %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API rate limit is exceeded. Please try the download again in the next hour.</string>
-    <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage. Beware, on Android 11+ only some file manager are able to open files in the Android/data folder.</string>
+    <string name="install_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage. Unfortunately, on Android 11+ only few file managers can access this folder within Android/data.</string>
     <string name="install_activity__open_cache_folder_button_text">open cache folder</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 certificate fingerprint:</string>
     <string name="install_activity__temporary_network_issue">A temporary network issue occurred. Please retry later.</string>
@@ -204,5 +204,4 @@
         <item quantity="one">%1$s has the following problem:\n\n%2$s</item>
         <item quantity="other">%1$s has the following problems:\n\n%2$s</item>
     </plurals>
-
 </resources>
