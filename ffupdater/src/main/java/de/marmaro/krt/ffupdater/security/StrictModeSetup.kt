@@ -1,7 +1,9 @@
 package de.marmaro.krt.ffupdater.security
 
 import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
+import de.marmaro.krt.ffupdater.device.BuildMetadata
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 /**
@@ -9,44 +11,50 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
  */
 object StrictModeSetup {
     fun enableStrictMode() {
+        if (BuildMetadata.isDebugBuild()) {
+            enableStrictModeForDebugging()
+        } else {
+            enableStrictModeForRelease()
+        }
+    }
+
+    private fun enableStrictModeForDebugging() {
         StrictMode.setThreadPolicy(
-            StrictMode.ThreadPolicy.Builder()
+            ThreadPolicy.Builder()
                 .detectAll()
                 .permitDiskReads() // for storing preferences
                 .permitDiskWrites() // for downloading apps which will be installed
                 .penaltyLog()
-                //.penaltyDeath()
+                .penaltyDialog()
                 .build()
         )
 
-        val vmPolicyBuilder = VmPolicy.Builder()
-        //vmPolicyBuilder.detectAll() //because of the always present LeakedClosableViolation
-        if (DeviceSdkTester.supportsAndroid12()) {
-            vmPolicyBuilder.detectIncorrectContextUse()
-            vmPolicyBuilder.detectUnsafeIntentLaunch()
-        }
+        val vmPolicy = VmPolicy.Builder()
+            .detectAll()
         if (DeviceSdkTester.supportsAndroidMarshmallow()) {
-            vmPolicyBuilder.detectActivityLeaks()
-            vmPolicyBuilder.detectCleartextNetwork()
-            vmPolicyBuilder.detectFileUriExposure()
-            //vmPolicyBuilder.detectLeakedClosableObjects() because of the always present LeakedClosableViolation
-            vmPolicyBuilder.detectLeakedRegistrationObjects()
-            vmPolicyBuilder.detectLeakedSqlLiteObjects()
+            vmPolicy.penaltyDeathOnCleartextNetwork()
         }
-        if (DeviceSdkTester.supportsAndroidOreo()) {
-            vmPolicyBuilder.detectContentUriWithoutPermission()
-            vmPolicyBuilder.detectUntaggedSockets()
+        StrictMode.setVmPolicy(
+            vmPolicy.build()
+        )
+    }
+
+    private fun enableStrictModeForRelease() {
+        StrictMode.setThreadPolicy(
+            ThreadPolicy.Builder()
+                .detectAll()
+                .permitDiskReads() // for storing preferences
+                .permitDiskWrites() // for downloading apps which will be installed
+                .penaltyDialog()
+                .build()
+        )
+
+        if (DeviceSdkTester.supportsAndroidMarshmallow()) {
+            StrictMode.setVmPolicy(
+                VmPolicy.Builder()
+                    .penaltyDeathOnCleartextNetwork()
+                    .build()
+            )
         }
-        if (DeviceSdkTester.supportsAndroid9()) {
-            vmPolicyBuilder.detectNonSdkApiUsage()
-        }
-        if (DeviceSdkTester.supportsAndroid10()) {
-            vmPolicyBuilder.detectImplicitDirectBoot()
-            vmPolicyBuilder.detectCredentialProtectedWhileLocked()
-        }
-        StrictMode.setVmPolicy(vmPolicyBuilder
-            .penaltyLog()
-            //.penaltyDeath()
-            .build())
     }
 }

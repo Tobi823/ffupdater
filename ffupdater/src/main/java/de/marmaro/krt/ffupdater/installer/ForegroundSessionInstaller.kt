@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -25,7 +24,6 @@ class ForegroundSessionInstaller(
     override suspend fun uncheckInstallAsync(context: Context): Deferred<AppInstaller.InstallResult> {
         return withContext(Dispatchers.Main) {
             async {
-                Log.e("FSI", "uncheckInstallAsync")
                 registerIntentReceiver(context)
                 try {
                     super.uncheckInstallAsync(context).await()
