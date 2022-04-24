@@ -13,20 +13,21 @@
     <string name="background_job_failure__notification_title">Hintergrundprüfung auf Updates ist fehlgeschlagen</string>
     <string name="brave__description">Der Brave Web Browser ist Ihr privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert! \n\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass Sie mit Anzeigen überladen oder mit Malware und Popups verseucht werden.</string>
     <string name="brave__title">Brave Browser</string>
-    <string name="brave__warning">Brave nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Willst du Brave dennoch installieren?</string>
+    <string name="brave__warning">- Brave nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Render-Engine.
+\n- Durch seinen Basic Attention Token BAT auf der Ethereum-Blockchain hat das Projekt Verbindungen zur Kryptowährung. Blockchains haben viele Probleme und sollten meiner Meinung nach vermieden werden.</string>
     <string name="brave_beta__description">Willkommen bei Brave Beta für Android!\nTesten Sie die neuesten Funktionen und geben Sie frühzeitig Feedback: https://brave.com/msupport\nSie können Brave Beta neben Ihrer aktuellen Version von Brave für Android installieren.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Willkommen bei Brave Nightly (Developer) für Android!\nTesten Sie die neuesten Funktionen und geben Sie frühzeitig Feedback: https://brave.com/msupport\nSie können Brave Nightly neben Ihrer aktuellen Version von Brave für Android installieren.</string>
     <string name="brave_nightly__title">Brave Browser (Nachts)</string>
     <string name="bromite__description">Bromite zielt auf ein aufgeräumtes Browsing-Erlebnis ab, ohne Datenschutz-invasive Funktionen und mit einer schnellen Ad-Blocking-Engine. Minimale UI-Änderungen sollen helfen, die Idee des \"Browsers als Werbeplattform\" einzudämmen.</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite nutzt die technische Grundlage des Google Chrome (Chromium) - manche Leute mögen das nicht. Willst du Bromite dennoch installieren?</string>
+    <string name="bromite__warning">- Bromite nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium Rendering Engine.</string>
     <string name="bromite_systemwebview__description">Das SystemWebView-Paket enthält die Kern-Browser/Rendering-Engine von Bromite und die gleichen Funktionen. Es bietet die Möglichkeit, die Standard-Browser-Komponente für das gesamte Android-System zu ersetzen.</string>
     <string name="bromite_systemwebview__title">Bromit SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopieren des Absturzberichts in die Zwischenablage</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Der folgende Fehler trat auf, als die Download-URL abgerufen wurde. Wenn dieser Fehler häufig auftritt, können Sie ihn auf notabug.org, GitHub oder GitLab melden. Vergessen Sie bitte nicht, Ihren Absturzbericht aus der Zwischenablage und die Beschreibung, wie Sie diesen Fehler reproduzieren, hinzuzufügen.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Bei der Suche nach Aktualisierungen in der Hauptansicht ist der folgende Fehler aufgetreten. Wenn dieser Fehler häufig auftritt, können Sie ihn gerne auf notabug.org, GitHub oder GitLab melden. Bitte vergessen Sie nicht, Ihren Absturzbericht aus der Zwischenablage und die Beschreibung, wie Sie diesen Fehler reproduzieren, hinzuzufügen.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Leider ist FFUpdater abgestürzt. Bitte melden Sie diesen Fehler auf notabug.org, GitHub oder GitLab. Fügen Sie Ihrem Issue den Absturzbericht aus der Zwischenablage und eine Beschreibung hinzu, wie Sie den Fehler reproduzieren können.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Leider ist FFUpdater beim letzten Mal abgestürzt und hat den folgenden Fehler protokolliert. Bitte melde diesen Fehler auf notabug.org, GitHub oder GitLab. Füge dabei den Absturzbericht aus der Zwischenablage sowie eine Beschreibung hinzu, wie der Fehler reproduziert werden kann.</string>
     <string name="crash_report__go_to_github">Zu GitHub gehen</string>
     <string name="crash_report__go_to_gitlab">Zu GitLab gehen</string>
     <string name="crash_report__got_to_notabug_org">Zu notabug.org gehen</string>
@@ -46,14 +47,14 @@
     <string name="failed_update_notification__notification_title">%1$s konnte nicht aktualisiert werden.</string>
     <string name="firefox_beta__description">Der Firefox Browser für Android blockt standardmäßig über 2000 Online-Tracker, die dir jeden Tag durchs Web folgen wollen – automatisch und mit dem verbesserten Tracking-Schutz. Warum? Um deine Privatsphäre zu schützen und Unternehmen davon abzuhalten, deine persönlichen Daten ohne deine Zustimmung zu sammeln und daraus Profit zu schlagen. Außerdem kannst du so noch schneller durchs Web surfen und bekommst nicht nur die Privatsphäre, die du verdienst, sondern auch den schnellen mobilen Browser, den du brauchst. Mit Adblocker Add-ons kannst du deinen Browser zusätzlich auf deine Bedürfnisse anpassen.</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
-    <string name="firefox_beta__warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
+    <string name="firefox_beta__warning">- Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können.</string>
     <string name="firefox_focus__description">Dies ist eine Modifikation des Firefox-Browsers mit dem Ziel, die Privatsphäre zu erhöhen.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar wurde für Deutschland, Österreich und die Schweiz entwickelt, kann aber von Nutzern in jedem Land verwendet werden. Er ist Firefox Focus sehr ähnlich, aber der Name wurde im deutschsprachigen Raum geändert, um Verwechslungen mit der Zeitschrift Focus der Hubert Burda Media Gruppe zu vermeiden. Im Gegensatz zu Firefox Focus ist bei Firefox Klar die Telemetrie aufgrund der strengen deutschen Datenschutzgesetze standardmäßig deaktiviert.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Bitte beachten Sie, dass es Firefox Preview nicht mehr gibt und dieser durch Firefox Nightly ersetzt wurde. \n\nFirefox Nightly ist ein Entwicklerkanal für neue Versionen von Mozilla Firefox. \n\nFirefox Nightly soll experimentellere Versionen von Firefox präsentieren. Im Nightly-Kanal können Nutzer die neuesten Firefox-Innovationen in einer instabilen Umgebung erleben und Ihre Meinung zu Funktionen und Leistung sagen, um mitzuentscheiden, was in der fertigen Version erscheint.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können. Möchten Sie die App installieren?</string>
+    <string name="firefox_nightly__warning">- Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können.</string>
     <string name="firefox_release__description">Der Firefox Browser für Android blockt standardmäßig über 2000 Online-Tracker, die dir jeden Tag durchs Web folgen wollen – automatisch und mit dem verbesserten Tracking-Schutz. Warum? Um deine Privatsphäre zu schützen und Unternehmen davon abzuhalten, deine persönlichen Daten ohne deine Zustimmung zu sammeln und daraus Profit zu schlagen. Außerdem kannst du so noch schneller durchs Web surfen und bekommst nicht nur die Privatsphäre, die du verdienst, sondern auch den schnellen mobilen Browser, den du brauchst. Mit Adblocker Add-ons kannst du deinen Browser zusätzlich auf deine Bedürfnisse anpassen.</string>
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="general__use_root__summary">FFUpdater fragt nach Root-Rechten, wenn diese Option aktiviert ist und eine Anwendung installiert oder aktualisiert wird. Um Root-Rechte zu erhalten, müssen Sie Magisk oder andere Tools verwenden. Wenn diese Option aktiviert ist, installiert oder aktualisiert FFUpdater Anwendungen im Vorder- und Hintergrund ohne Benutzerinteraktion.</string>
@@ -64,7 +65,7 @@
     <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern. \n\nLetzte erfolgreiche Hintergrundaktualisierungsprüfung: %1$s</string>
     <string name="information_about_the_app">Information über die Applikation</string>
     <string name="install_activity__delete_cache_button_text">Cache leeren</string>
-    <string name="install_activity__delete_cache_explanation">"Wenn Sie glauben, dass FFUpdater ein fehlerhaftes App-Update zwischengespeichert hat, klicken Sie auf den Button \"Cache löschen\", um den Cache für diese App zu löschen."</string>
+    <string name="install_activity__delete_cache_explanation">Wenn du glaubst, dass FFUpdater ein fehlerhaftes App-Update heruntergeladen hat, oder wenn du Speicherplatz sparen möchtest, dann klicke auf den Button um die Datei zu löschen.</string>
     <string name="install_activity__download_app_with_status">Lade Anwendung herunter (%1$s)</string>
     <string name="install_activity__download_failed">Download schlug fehl</string>
     <string name="install_activity__downloaded_application_from">Anwendung wurde heruntergeladen von:</string>
@@ -74,7 +75,7 @@
     <string name="install_activity__fetch_url_for_download">Abruf der Download-URL von %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Download-URL von %1$s wurde abgerufen</string>
     <string name="install_activity__github_rate_limit_exceeded">Das Ratenlimit der GitHub-API ist überschritten. Bitte versuchen Sie den Download in der nächsten Stunde erneut.</string>
-    <string name="install_activity__open_cache_explanation">Sie können den Cache-Ordner öffnen, um die APK-Datei an einen Ort mit mehr freiem Speicherplatz zu kopieren.</string>
+    <string name="install_activity__open_cache_explanation">Du kannst den Cache-Ordner öffnen, um die APK-Datei an einen Ort mit mehr freiem Speicherplatz zu kopieren. Leider können unter Android 11+ nur wenige Dateimanager auf diesen Ordner innerhalb von Android/data zugreifen.</string>
     <string name="install_activity__open_cache_folder_button_text">Cache-Ordner öffnen</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 Fingerabdruck des Zertifikats:</string>
     <string name="install_activity__temporary_network_issue">Es ist ein vorübergehendes Netzwerkproblem aufgetreten. Bitte versuchen Sie es später erneut.</string>
@@ -153,7 +154,7 @@
     <string name="successful_update_notification__notification_title">%1$s wurde aktualisiert.</string>
     <string name="ungoogled_chromium__description">Google Chromium, ohne die Integration mit Google.\n\nOhne Anmeldung bei einem Google-Konto schneidet Chromium in puncto Sicherheit und Datenschutz recht gut ab. Allerdings ist Chromium immer noch von Google-Webdiensten und -Binärdateien abhängig. Außerdem hat Google Chromium so konzipiert, dass es für die Benutzer einfach und intuitiv zu bedienen ist, was bedeutet, dass es bei der Transparenz und der Kontrolle der internen Vorgänge Kompromisse eingeht.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium verwendet die technische Grundlage von Google Chrome (Chromium) - manche Leute mögen das nicht. Möchten Sie Ungoogled Chromium installieren?</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium Rendering Engine.</string>
     <string name="unsupported_abi_dialog__message">Der ausgewählte Browser ist mit dem Prozessor Ihres Smartphones nicht kompatibel. Bitte wähle einen anderen Browser.</string>
     <string name="unsupported_abi_dialog__title">Nicht unterstütztes Gerät</string>
     <string name="update_interval__12h">12 Stunden</string>
@@ -180,7 +181,37 @@
     <string name="update_notification__title">"%1$s" kann aktualisiert werden</string>
     <string name="vivaldi__description">Vivaldi ist ein privater Browser mit einzigartigen Anpassungsmöglichkeiten. Es bietet viele Funktionen, wie z. B. Werbe- und Trackerblocker (standardmäßig deaktiviert), Webseitenübersetzung. Notizen und Screenshots helfen, Ihre Arbeit zu beschleunigen. Die Anpassung der Tabs, der Designthemen und des Aussehens verleihen dem System Persönlichkeit. Laden Sie Vivaldi kostenlos herunter surfen Sie mit Vergnügen im Internet.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">Vivaldi ist nur teilweise quelloffen (siehe <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> für weitere Informationen). Außerdem nutzt es die technische Grundlage von Google Chrome (Chromium).\n\nManche Leute mögen das nicht. Möchten Sie Vivaldi installieren?</string>
+    <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen.
+\n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
     <string name="settings__general_category__title">Allgemein</string>
     <string name="download_notification__message">Lade Update für %1$s herunter (%2$s).</string>
+    <string name="install_activity__open_folder">Öffne Ordner</string>
+    <string name="install_activity__file_uri_exposed_toast">Der Dateipfad kann nicht an andere Apps weitergeleitet werden. Bitte öffne den Ordner selbst mit deinem bevorzugten Dateimanager.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Lösche das heruntergeladene Update wenn die Installation erfolgreich war.</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Lösche die heruntergeladene Datei wenn die Installation nicht erfolgreich war.</string>
+    <string name="crash_report___explain_text__install_activity_download_file">Der folgende Fehler ist während des Downloads aufgetreten. Wenn dieser Fehler häufig auftritt, kannst du ihn auf notabug.org, GitHub oder GitLab melden. Bitte füge auch den Absturzbericht aus der Zwischenablage hinzu.</string>
+    <string name="file_downloader__fail_to_handle_download_stream">Der Download-Stream kann nicht verarbeitet werden.</string>
+    <string name="app_warning_dialog__title">Warnung</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s hat folgendes Problem:
+\n
+\n%2$s
+\n
+\nWillst du immer noch %1$s installieren\?</item>
+        <item quantity="other">%1$s hat folgende Probleme:
+\n
+\n%2$s
+\n
+\nWillst du immer noch %1$s installieren\?</item>
+    </plurals>
+    <plurals name="app_warning_before_installation_dialog__message">
+        <item quantity="one">%1$s hat folgendes Problem:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s hat folgende Probleme:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="firefox_release__warning">- Eine verbesserte Version von Firefox ist auch auf F-Droid unter dem Namen Fennec F-Droid verfügbar.</string>
+    <string name="intent_installer__likely_storage_failure">Der Vorgang ist wahrscheinlich wegen Speicherproblemen fehlgeschlagen. Beispielsweise kann der Speicherplatz auf dem Gerät knapp werden, oder es sind keine externen Medien verfügbar. Der Benutzer kann möglicherweise helfen, Speicherplatz freizugeben oder andere externe Medien einzulegen.</string>
 </resources>

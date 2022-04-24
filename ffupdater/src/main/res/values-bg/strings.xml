@@ -91,9 +91,9 @@
     <string name="main_activity__subtitle">Обновявайте мрежовите четци от Mozilla</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
     <string name="manage_storage_activity__delete_button">Изчистване на обновяванията от междинната памет.</string>
-    <string name="manage_storage_activity__explanation">FFUpdater слага изтеглените обновявания в междинна памет в папката „Android/data/de.marmaro.krt.ffupdater/files/Download“.
+    <string name="manage_storage_activity__explanation">FFUpdater разполага изтеглените обновявания в междинна памет в папката „Android/data/de.marmaro.krt.ffupdater/files/Download“.
 \n
-\nПо този начин се пести трафик, когато приложението не е успешно инсталирано или обновено. Освен това междинната памет е необходима, за да може изтеглените във фонов режим обновявания да бъдат инсталирани по-късно.
+\nПо този начин се пести трафик ако приложението не е успешно инсталирано или обновено. Освен това, междинната памет е необходима, за да може изтеглените във фонов режим обновявания да бъдат инсталирани по-късно.
 \n
 \nАко решите да изтриете тези обновявания, ще се наложи да бъдат изтеглени отново.</string>
     <string name="ok">Добре</string>
@@ -200,4 +200,8 @@
     <string name="settings__background__update_check__excluded_apps__summary">Полезно, ако не искате да обновявате дадено приложение и не желаете да получавате известия за нови издания.</string>
     <string name="settings__foreground__download__metered__summary">Полезно за потребители с ограничен обем мобилни данни.</string>
     <string name="settings__foreground__download__metered__title">Изтегляне на обновявания в мрежи с отчитане на трафика</string>
+    <string name="file_downloader__fail_to_handle_download_stream">Неуспешна обработка на изтегляне.</string>
+    <string name="crash_report___explain_text__install_activity_download_file">При изтегляне възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет.</string>
+    <string name="install_activity__open_folder">Отваряне на папката</string>
+    <string name="intent_installer__likely_storage_failure">Операцията е неуспешна вероятно поради проблеми с хранилището. Например, устройството може няма достатъчно свободно пространство или външният носител да не е наличен. Потребителят може да помогне за освобождаване на място или за поставяне на друг външен носител.</string>
 </resources>

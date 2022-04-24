@@ -1,10 +1,14 @@
-Last ned, installer, og oppgrader disse personvernsvennlige nettleserne:
-- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
-- Bromite, Bromite SystemWebView
+Pobieraj, instaluj i aktualizuj przeglądarki z Mozilli lub oparte na przeglądarce Firefox:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
+
+dobre przeglądarki do ochrony prywatności:
+- Bromite, Bromite SystemWebView
 - Ungoogled Chromium
+
+przeglądarki, które są lepsze niż Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Vivaldi
 
 og:

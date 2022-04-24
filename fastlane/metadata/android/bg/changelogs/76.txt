@@ -1,0 +1,2 @@
+* Отстраняване на срив при проверка за "Firefox Focus" или "Firefox Klar";
+ * Актуализиране на иконата Firefox Focus/Klar

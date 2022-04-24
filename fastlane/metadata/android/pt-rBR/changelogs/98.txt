@@ -1,0 +1,10 @@
+* Melhorar as traduções - obrigado:
+  * Allan Nordhøy: Norueguês Bokmål
+  * Oğuz Ersen: Turco
+  * 109247019824: Búlgaro
+  * J. Lavoie: Italien, French
+* Mostrar o progresso do download em fundo notificação de download
+* Adicionar novas definições para controlar o comportamento da cache
+* Retire o " tente novamente a instalação" botão de InstallActivity porque já não deve ser necessário
+* Corrigir bugs, código de limpeza
+* Integrar Weblate

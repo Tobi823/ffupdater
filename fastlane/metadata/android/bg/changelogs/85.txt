@@ -1,0 +1,2 @@
+* Изтеглете само "Firefox Focus/Klar", а не "Firefox Focus/Klar Beta" (Tobi823/ffupdater#89)
+ * Изпробвайте функцията за "тихо актуализиране" на Android 12, когато потребителят актуализира приложение ръчно (Tobi823/ffupdater#88)

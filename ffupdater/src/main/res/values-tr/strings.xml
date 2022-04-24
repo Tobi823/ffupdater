@@ -208,4 +208,8 @@
     <string name="install_activity__file_uri_exposed_toast">Dosya yolu diğer uygulamalara gösterilemiyor. Lütfen tercih ettiğiniz dosya yöneticisi ile klasörü kendiniz açın.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Kurulum başarılı olursa indirilen güncellemeyi sil.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Kurulum başarısız olursa indirilen güncellemeyi sil.</string>
+    <string name="crash_report___explain_text__install_activity_download_file">İndirme sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, bunu notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen çökme raporunu panodan bildirime ekleyin.</string>
+    <string name="file_downloader__fail_to_handle_download_stream">İndirme akışı işlenemedi.</string>
+    <string name="install_activity__open_folder">Klasörü aç</string>
+    <string name="intent_installer__likely_storage_failure">İşlem, büyük olasılıkla depolama sorunları nedeniyle başarısız oldu. Örneğin, aygıtın alanı azalıyor veya harici ortam kullanılamıyor olabilir. Kullanıcının boş alan sağlaması veya farklı harici ortamlar yerleştirmesi yardımcı olabilir.</string>
 </resources>

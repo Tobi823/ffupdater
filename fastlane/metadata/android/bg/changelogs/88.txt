@@ -1,0 +1,6 @@
+* Добавяне на Vivaldi (Tobiwan/ffupdater#89)
+* Добавяне на Styx (Tobi823/ffupdater#48)
+* Добавяне на Ungoogled Chromium (Tobi823/ffupdater#50)
+* Актуализиране на описанието на Firefox Klar (благодарение на cosify - Tobi823/ffupdater#91)
+* Докладът за срив може да се избира и копира частично
+* Почистване на скриптовете за изграждане

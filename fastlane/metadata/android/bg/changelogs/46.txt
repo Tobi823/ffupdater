@@ -1,0 +1,5 @@
+* Добавяне на Fenix Beta, Fenix Nightly и Lockwise
+ * Изтегляне на Fenix Release/Beta/Nightly, Focus и Klar от Taskcluster (сървър за непрекъсната интеграция) на Mozilla'
+ * Поправяне на "Light theme is always shown at first run"
+ * Благодаря на Раил Алиев и Йохан Лоренцо от Mozilla за тяхната подкрепа <https:>
+ * Благодаря на KarlHeinz и DeenHyper74 за докладването на грешки и подкрепата им</https:>

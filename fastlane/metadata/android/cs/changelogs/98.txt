@@ -1,0 +1,10 @@
+* Zlepšit překlady - díky:
+  * Allan Nordhøy: Norský bokmål
+  * Oğuz Ersen: turečtina
+  * 109247019824: Bulharština
+  * J. Lavoie: italština, francouzština
+* Zobrazení průběhu stahování v oznámení o stahování na pozadí
+* Přidání nových nastavení pro ovládání chování mezipaměti
+* Odstranění tlačítka "opakovat instalaci" z InstallActivity, protože by již nemělo být nutné
+* Oprava chyb, vyčištění kódu
+* Integrace služby Weblate

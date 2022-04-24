@@ -1,10 +1,14 @@
-Bu gizlilik dostu tarayıcıları indirin, kurun ve güncelleyin:
-- Brave Gizli Tarayıcı, Brave Tarayıcı (Beta), Brave Tarayıcı (Gecelik)
-- Bromit, Bromit SystemWebView
+Tarayıcıları Mozilla'dan indirin, yükleyin ve güncelleyin veya Firefox'a göre:
 - Firefox Tarayıcı, Android için Firefox Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
+
+İyi Gizlilik Tarayıcıları:
+- Bromit, Bromit SystemWebView
 - Ungoogled Chromium
+
+Google Chrome'dan daha iyi olan tarayıcı:
+- Brave Gizli Tarayıcı, Brave Tarayıcı (Beta), Brave Tarayıcı (Gecelik)
 - Vivaldi
 
 ve:

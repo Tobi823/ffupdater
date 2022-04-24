@@ -1,0 +1,4 @@
+* Поправяне на срив при отмяна на изтегляне (Tobi823/ffupdater#77)
+ * Игнориране на грешка и повторен опит за фоново актуализиране (с експоненциално нарастващо време за изчакване) за CancellationException, GithubRateLimitExceededException и UnknownHostException (Tobi823/ffupdater#74)
+ * Подобряване на обработката на грешки
+ * Поправяне на грешка при изтегляне за Focus/Klar чрез преминаване към API на GitHub (Tobiwan/ffupdater#81)

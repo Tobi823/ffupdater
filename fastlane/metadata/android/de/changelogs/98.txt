@@ -1,0 +1,10 @@
+* Verbesserung der Übersetzungen - danke:
+  * Allan Nordhøy: Norwegisch Bokmål
+  * Oğuz Ersen: Türkisch
+  * 109247019824: Bulgarisch
+  * J. Lavoie: Italien, Französisch
+* Anzeige des Download-Fortschritts in der Download-Benachrichtigung im Hintergrund
+* Hinzufügen neuer Einstellungen zur Steuerung des Cache-Verhaltens
+* Entfernen der Schaltfläche "Installation erneut versuchen" aus InstallActivity, da sie nicht mehr notwendig sein sollte
+* Fehler beheben, Code bereinigen
+* Weblate einbinden
