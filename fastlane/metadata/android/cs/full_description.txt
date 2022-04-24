@@ -1,19 +1,19 @@
-Stáhnout, instalovat a aktualizovat prohlížeče z Mozilla nebo na základě Firefoxu:
-- Firefox Prohlížeč, Firefox Beta pro Android, Firefox Nightly
+Stáhněte si, nainstalujte a aktualizujte prohlížeče od společnosti Mozilla nebo založené na prohlížeči Firefox:
+- Firefox Browser, Firefox pro Android Beta, Firefox Nightly.
 - Firefox Focus, Firefox Klar
 - Iceraven
 
-Dobré prohlížeče ochrany osobních údajů:
+dobré prohlížeče pro ochranu soukromí:
 - Bromite, Bromite SystemWebView
 - Ungoogled Chromium
 
-Prohlížeč, který je lepší než Google Chrome:
-- Brave Soukromý prohlížeč, Brave Browser (Beta), Brave Browser (Nightly)
+prohlížeče, které jsou lepší než Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly).
 - Vivaldi
 
 a:
 - Firefox Lockwise
 
-Ffupdater kontroluje aktualizace na pozadí a stahuje je také. Na Android 12+ nebo root zařízení může Ffupdater také aktualizovat aplikace bez interakce uživatele.
+FFUpdater kontroluje aktualizace na pozadí a také je stahuje. V zařízeních se systémem Android 12+ nebo rootem může FFUpdater aktualizovat aplikace i bez interakce uživatele.
 
-Navštivte https://notabug.org/Tobiwan/ffupdater/src/master/README.md nebo použijte níže uvedený odkaz "Zdrojový kód", kde naleznete další informace o bezpečnostních opatřeních, dalších distribučních kanálech, omezeních, chybách, FAQ, instrukce k sestavení, použitých knihovnách třetích stran, technických detailech aj.
+Navštivte stránku https://notabug.org/Tobiwan/ffupdater/src/master/README.md nebo použijte "Zdrojový kód" odkaz níže, kde najdete další informace o bezpečnostních měřeních, dalších distribučních kanálech, omezeních, chybách, často kladených dotazech, návodech na sestavení, použitých knihovnách třetích stran, technických detailech atd.
