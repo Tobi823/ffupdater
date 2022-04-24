@@ -19,7 +19,7 @@ class FirefoxRelease(
     override val packageName = "org.mozilla.firefox"
     override val displayTitle = R.string.firefox_release__title
     override val displayDescription = R.string.firefox_release__description
-    override val displayWarning: Int? = null
+    override val displayWarning = R.string.firefox_release__warning
     override val displayDownloadSource = R.string.mozilla_ci
     override val displayIcon = R.mipmap.ic_logo_firefox_release
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP

@@ -146,7 +146,7 @@
     <string name="settings__theme_dark">Тёмная</string>
     <string name="settings__theme_light">Светлая</string>
     <string name="settings__theme_system_default">Системная тема по умолчанию</string>
-    <string name="show_warning_before_installation_dialog__title">Предупреждение</string>
+    <string name="app_warning_before_installation_dialog__title">Предупреждение</string>
     <string name="successful_update__notification_message">Приложение было успешно обновлено в фоновом режиме.</string>
     <string name="successful_update_notification__channel_description">Канал уведомления об успешных обновлениях %1$s.</string>
     <string name="successful_update_notification__channel_name">%1$s уведомление об успешном обновлении</string>

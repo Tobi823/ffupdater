@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
@@ -12,7 +11,6 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import kotlinx.coroutines.runBlocking
 
 /**
  * Allow the user to select an app from the dialog to install.
@@ -23,17 +21,15 @@ class InstallNewAppDialog(
 ) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
-        val apps = runBlocking {
-            App.values()
-                .filter { it.detail.normalInstallation }
-                .filterNot { it.detail.isInstalled(context) }
-        }
+        val apps = App.values()
+            .filter { it.detail.normalInstallation }
+            .filterNot { it.detail.isInstalled(context) }
+
+
         val names = apps.map { context.getString(it.detail.displayTitle) }.toTypedArray()
         return AlertDialog.Builder(activity)
             .setTitle(R.string.install_new_app)
-            .setItems(names) { _: DialogInterface, which: Int ->
-                triggerAppInstallation(apps[which])
-            }
+            .setItems(names) { _, which -> triggerAppInstallation(apps[which]) }
             .create()
     }
 
@@ -48,7 +44,13 @@ class InstallNewAppDialog(
             DeviceTooOldDialog.newInstance(app).show(parentFragmentManager)
             return
         }
-        ShowAppInfoBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
+
+        if (app.detail.displayWarning != null) {
+            AppWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
+            return
+        }
+
+        AppInfoBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
     }
 
     override fun onStart() {

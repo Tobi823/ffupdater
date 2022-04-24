@@ -150,7 +150,7 @@
     <string name="settings__theme_dark">Темний</string>
     <string name="settings__theme_light">Світло</string>
     <string name="settings__theme_system_default">Використовуйте системний стандарт за замовчуванням</string>
-    <string name="show_warning_before_installation_dialog__title">Увага</string>
+    <string name="app_warning_before_installation_dialog__title">Увага</string>
     <string name="successful_update__notification_message">Додаток успішно оновлено у фоновому режимі.</string>
     <string name="successful_update_notification__channel_description">Канал сповіщень про успішні оновлення %1$s.</string>
     <string name="successful_update_notification__channel_name">%1$s сповіщення про успішне оновлення</string>

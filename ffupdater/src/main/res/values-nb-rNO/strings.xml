@@ -96,7 +96,7 @@
     <string name="settings__foreground__theme_preference__summary">Velg mellom lys og mørk drakt</string>
     <string name="settings__theme_battery_saver">Mørk når batterisparer er aktiv</string>
     <string name="settings__theme_system_default">Systemforvalg</string>
-    <string name="show_warning_before_installation_dialog__title">Advarsel</string>
+    <string name="app_warning_before_installation_dialog__title">Advarsel</string>
     <string name="successful_update_notification__channel_description">Merknadskanal for %1$s-oppgraderinger.</string>
     <string name="successful_update_notification__notification_title">%1$s har blitt oppgradert.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>

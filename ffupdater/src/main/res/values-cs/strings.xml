@@ -145,7 +145,7 @@
     <string name="settings__theme_dark">Tmavý motiv</string>
     <string name="settings__theme_light">Světlý motiv</string>
     <string name="settings__theme_system_default">Výchozí nastavení systému</string>
-    <string name="show_warning_before_installation_dialog__title">Varování</string>
+    <string name="app_warning_before_installation_dialog__title">Varování</string>
     <string name="successful_update__notification_message">Aplikace byla úspěšně aktualizována na pozadí.</string>
     <string name="successful_update_notification__channel_description">Kanál oznámení o úspěšných aktualizacích %1$s.</string>
     <string name="successful_update_notification__channel_name">Oznámení o úspěšné aktualizaci %1$s</string>

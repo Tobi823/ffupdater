@@ -116,7 +116,7 @@
     <string name="settings__theme_dark">Тъмна</string>
     <string name="settings__theme_light">Светла</string>
     <string name="settings__theme_system_default">Стандартната за системата</string>
-    <string name="show_warning_before_installation_dialog__title">Внимание</string>
+    <string name="app_warning_before_installation_dialog__title">Внимание</string>
     <string name="ungoogled_chromium__description">Google Chromium, без интеграция с Google.\n\nБез влизане в профил в Google Chromium се справя доста добре по отношение на сигурността и поверителността. Въпреки това Chromium все още има известна зависимост от уеб услуги и двоични файлове на Google. Освен това Google са проектирали Chromium така, че да бъде лесен и интуитивен за потребителите, което означава, че са направили компромис с прозрачността и контрола на вътрешните дейности.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">Ungoogled Chromium използва техническата основа на Google Chrome (Chromium) - има хора, на които това не се харесва. Искате ли да инсталирате Ungoogled Chromium?</string>

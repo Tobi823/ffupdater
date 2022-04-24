@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.R.string.request_installation_permission_dialog__abort
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 class RequestInstallationPermissionDialog : DialogFragment() {
@@ -27,9 +28,7 @@ class RequestInstallationPermissionDialog : DialogFragment() {
                 val requestPermission = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, uri)
                 startActivity(requestPermission)
             }
-            .setNegativeButton(R.string.request_installation_permission_dialog__abort) { dialog, _ ->
-                dialog.dismiss()
-            }
+            .setNegativeButton(request_installation_permission_dialog__abort) { dialog, _ -> dialog.dismiss() }
             .create()
     }
 

@@ -164,7 +164,7 @@
     <string name="settings__theme_dark">Koyu</string>
     <string name="settings__theme_light">Açık</string>
     <string name="settings__theme_system_default">Sistem öntanımlı ayarını kullan</string>
-    <string name="show_warning_before_installation_dialog__title">Uyarı</string>
+    <string name="app_warning_before_installation_dialog__title">Uyarı</string>
     <string name="successful_update__notification_message">Uygulama arka planda başarıyla güncellendi.</string>
     <string name="successful_update_notification__channel_description">Başarılı %1$s güncellemeleri için bildirim kanalı.</string>
     <string name="successful_update_notification__channel_name">%1$s başarılı güncelleme bildirimi</string>

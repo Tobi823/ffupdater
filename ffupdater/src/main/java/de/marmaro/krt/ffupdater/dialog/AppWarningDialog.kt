@@ -9,41 +9,49 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.utils.AndroidVersionCodes
 
 /**
- * Show the user that the app could not be installed because the operating system is too old.
+ * Show a dialog with the app warning.
  */
-class DeviceTooOldDialog : DialogFragment() {
+class AppWarningDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)
-        val required = AndroidVersionCodes.getVersionForApiLevel(app.detail.minApiLevel)
-        val actual = AndroidVersionCodes.getVersionForApiLevel(DeviceSdkTester.sdkInt)
+        val warning = getString(app.detail.displayWarning!!)
+        val counter = warning.lines()
+            .filter { it.startsWith("- ") }
+            .count()
+        val message = resources.getQuantityString(
+            R.plurals.app_warning_before_installation_dialog__message,
+            counter,
+            getString(app.detail.displayTitle),
+            warning
+        )
         return AlertDialog.Builder(activity)
-            .setTitle(R.string.device_too_old_dialog__title)
-            .setMessage(getString(R.string.device_too_old_dialog__message, required, actual))
-            .setNegativeButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
+            .setTitle(getString(R.string.app_warning_dialog__title))
+            .setMessage(message)
+            .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
             .create()
     }
 
     override fun onStart() {
         super.onStart()
-        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance()
+        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod =
+            LinkMovementMethod.getInstance()
     }
 
     fun show(manager: FragmentManager) {
-        show(manager, "device_too_old_dialog")
+        show(manager, "app_warning_dialog")
     }
 
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
 
-        fun newInstance(app: App): DeviceTooOldDialog {
+        fun newInstance(app: App): AppWarningDialog {
+            requireNotNull(app.detail.displayWarning)
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
-            val fragment = DeviceTooOldDialog()
+            val fragment = AppWarningDialog()
             fragment.arguments = bundle
             return fragment
         }

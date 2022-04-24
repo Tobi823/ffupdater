@@ -148,7 +148,7 @@
     <string name="settings__theme_dark">ダークテーマ</string>
     <string name="settings__theme_light">ライトテーマ</string>
     <string name="settings__theme_system_default">システム標準に従う</string>
-    <string name="show_warning_before_installation_dialog__title">警告</string>
+    <string name="app_warning_before_installation_dialog__title">警告</string>
     <string name="successful_update__notification_message">アプリはバックグラウンドで正常に更新されました。</string>
     <string name="successful_update_notification__channel_description">成功した %1$s 更新の通知チャネル。</string>
     <string name="successful_update_notification__channel_name">%1$s 正常に更新された通知</string>

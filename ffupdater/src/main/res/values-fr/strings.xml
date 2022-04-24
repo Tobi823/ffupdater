@@ -156,7 +156,7 @@
     <string name="settings__theme_dark">Foncé</string>
     <string name="settings__theme_light">Lumière</string>
     <string name="settings__theme_system_default">Utiliser le système par défaut</string>
-    <string name="show_warning_before_installation_dialog__title">Avertissement</string>
+    <string name="app_warning_before_installation_dialog__title">Avertissement</string>
     <string name="successful_update__notification_message">L\'application a été mise à jour avec succès en arrière-plan.</string>
     <string name="successful_update_notification__channel_description">Canal de notification pour les mises à jour réussies de %1$s.</string>
     <string name="successful_update_notification__channel_name">Notification de mise à jour réussie de %1$s</string>

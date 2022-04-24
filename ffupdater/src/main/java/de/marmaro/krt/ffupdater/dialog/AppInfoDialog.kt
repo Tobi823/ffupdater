@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
@@ -16,15 +15,12 @@ import de.marmaro.krt.ffupdater.app.App
  */
 class AppInfoDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val app = App.valueOf(requireNotNull(requireArguments().getString(BUNDLE_APP_NAME)) {
-            "$BUNDLE_APP_NAME is not set."
-        })
+        val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
+        val app = App.valueOf(appName)
         return AlertDialog.Builder(activity)
             .setTitle(app.detail.displayTitle)
             .setMessage(app.detail.displayDescription)
-            .setPositiveButton(R.string.ok) { dialog: DialogInterface, _: Int ->
-                dialog.dismiss()
-            }
+            .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
             .create()
     }
 

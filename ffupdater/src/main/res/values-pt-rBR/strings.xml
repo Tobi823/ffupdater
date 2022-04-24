@@ -146,7 +146,7 @@
     <string name="settings__theme_dark">Escuro</string>
     <string name="settings__theme_light">Claro</string>
     <string name="settings__theme_system_default">Adaptar do sistema</string>
-    <string name="show_warning_before_installation_dialog__title">Aviso</string>
+    <string name="app_warning_before_installation_dialog__title">Aviso</string>
     <string name="successful_update__notification_message">O aplicativo foi atualizado com sucesso em segundo plano.</string>
     <string name="successful_update_notification__channel_description">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
     <string name="successful_update_notification__channel_name">%1$s notificação de atualização bem sucedida</string>

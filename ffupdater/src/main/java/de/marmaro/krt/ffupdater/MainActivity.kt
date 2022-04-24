@@ -26,7 +26,6 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededExcep
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
-import de.marmaro.krt.ffupdater.device.BuildMetadata
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
@@ -56,17 +55,14 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.main_activity)
         setSupportActionBar(findViewById(R.id.toolbar))
-        if (BuildMetadata.isDebugBuild()) {
-            StrictModeSetup.enableStrictMode()
-        }
+        StrictModeSetup.enableStrictMode()
         foregroundSettings = ForegroundSettingsHelper(this)
         AppCompatDelegate.setDefaultNightMode(foregroundSettings.themePreference)
         Migrator().migrate(this)
 
         val deviceAbis = DeviceAbiExtractor.findSupportedAbis()
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            val dialog = InstallNewAppDialog.newInstance(deviceAbis)
-            dialog.show(supportFragmentManager)
+            InstallNewAppDialog.newInstance(deviceAbis).show(supportFragmentManager)
         }
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
@@ -135,23 +131,22 @@ class MainActivity : AppCompatActivity() {
 
     @UiThread
     private fun initUIForApp(mainLayout: LinearLayout, app: App) {
-        val newCardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
+        val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
-        val installedVersion: TextView = newCardView.findViewWithTag("appInstalledVersion")
+        val installedVersion = cardView.findViewWithTag<TextView>("appInstalledVersion")
         installedVersion.text = app.detail.getDisplayInstalledVersion(this)
 
-        val availableVersion: TextView = newCardView.findViewWithTag("appAvailableVersion")
+        val availableVersion = cardView.findViewWithTag<TextView>("appAvailableVersion")
         availableVersions[app] = availableVersion
         availableVersion.setOnClickListener {
-            val exception = errorsDuringUpdateCheck[app]
-            if (exception != null) {
+            errorsDuringUpdateCheck[app]?.let { exception ->
                 val description = getString(crash_report__explain_text__main_activity_update_check)
                 val intent = CrashReportActivity.createIntent(this, exception, description)
                 startActivity(intent)
             }
         }
 
-        val downloadButton: ImageButton = newCardView.findViewWithTag("appDownloadButton")
+        val downloadButton = cardView.findViewWithTag<ImageButton>("appDownloadButton")
         downloadButton.setOnClickListener {
             if (sameAppVersionIsAlreadyInstalled[app] == true) {
                 InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
@@ -162,18 +157,21 @@ class MainActivity : AppCompatActivity() {
         downloadButtons[app] = downloadButton
         setDownloadButtonState(app, false)
 
-        val infoButton: ImageButton = newCardView.findViewWithTag("appInfoButton")
-        infoButton.setOnClickListener {
-            AppInfoDialog.newInstance(app).show(supportFragmentManager)
+        val warningButton = cardView.findViewWithTag<ImageButton>("appWarningButton")
+        if (app.detail.displayWarning == null) {
+            warningButton.visibility = View.GONE
+        } else {
+            warningButton.setOnClickListener {
+                AppWarningDialog.newInstance(app).show(supportFragmentManager)
+            }
         }
 
-        val cardTitle: TextView = newCardView.findViewWithTag("appCardTitle")
-        cardTitle.setText(app.detail.displayTitle)
-
-        val icon = newCardView.findViewWithTag<ImageView>("appIcon")
-        icon.setImageResource(app.detail.displayIcon)
-
-        mainLayout.addView(newCardView)
+        cardView.findViewWithTag<ImageButton>("appInfoButton").setOnClickListener {
+            AppInfoDialog.newInstance(app).show(supportFragmentManager)
+        }
+        cardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.displayTitle)
+        cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.detail.displayIcon)
+        mainLayout.addView(cardView)
     }
 
     @MainThread

@@ -13,14 +13,14 @@
     <string name="background_job_failure__notification_title">Background update check failed</string>
     <string name="brave__description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
     <string name="brave__title">Brave Private Browser</string>
-    <string name="brave__warning">Brave uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Brave?</string>
+    <string name="brave__warning">- Brave uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="brave_beta__description">Welcome to Brave Beta for Android!\nTry out the newest features and give early feedback: https://brave.com/msupport\nYou can install Brave Beta alongside your current version of Brave for Android.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Welcome to Brave Nightly (Developer) for Android!\nTry out the newest features and give early feedback: https://brave.com/msupport\nYou can install Brave Nightly alongside your current version of Brave for Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Bromite?</string>
+    <string name="bromite__warning">- Bromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="bromite_systemwebview__description">The SystemWebView package contains the core browser/rendering engine of Bromite and its same features. It offers the possibility to replace the default browser component for the whole Android system.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copy crash report to clipboard</string>
@@ -47,16 +47,17 @@
     <string name="failed_update_notification__notification_title">%1$s could not be updated.</string>
     <string name="firefox_beta__description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
-    <string name="firefox_beta__warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Do you want to install it?</string>
+    <string name="firefox_beta__warning">- This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser.</string>
     <string name="firefox_focus__description">This is a modification of the Firefox browser aimed to increase privacy.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar is developed for Germany, Austria and Switzerland, but can be used by users in any country. It is very similar to Firefox Focus, but the name was changed in German-speaking countries to avoid confusion with the magazine Focus by Hubert Burda Media group. Unlike Firefox Focus, Firefox Klar has telemetry disabled by default due to strict German privacy laws.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Please note that this app used to be titled Firefox Preview. It has now been transitioned to Firefox Nightly. \n\nFirefox Nightly is a developmental channel for new Mozilla Firefox releases. \n\nFirefox Nightly is designed to showcase the more experimental builds of Firefox. The Nightly channel allows users to experience the newest Firefox innovations in an unstable environment and provide feedback on features and performance to help determine what makes the final release.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser. Do you want to install it?</string>
+    <string name="firefox_nightly__warning">- This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser.</string>
     <string name="firefox_release__description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- An improved version of Firefox is also available on F-Droid under the name "Fennec F-Droid".</string>
     <string name="general__use_root__summary">FFUpdater will ask for root permission if this option is enabled and an app is installed or updated. To gain root privileges, you must use Magisk or other tools. If enabled, FFUpdater will install or updates apps in the foreground and background without user interaction.</string>
     <string name="general__use_root__title">Use root permission to install or update apps</string>
     <string name="github" translatable="false">GitHub</string>
@@ -149,14 +150,14 @@
     <string name="settings__theme_dark">Dark</string>
     <string name="settings__theme_light">Light</string>
     <string name="settings__theme_system_default">Use system default</string>
-    <string name="show_warning_before_installation_dialog__title">Warning</string>
+    <string name="app_warning_before_installation_dialog__title">Warning</string>
     <string name="successful_update__notification_message">App has been successfully updated in the background.</string>
     <string name="successful_update_notification__channel_description">Notification channel for successful %1$s updates.</string>
     <string name="successful_update_notification__channel_name">%1$s successful update notification</string>
     <string name="successful_update_notification__notification_title">%1$s has been updated.</string>
     <string name="ungoogled_chromium__description">Google Chromium, sans integration with Google.\n\nWithout signing in to a Google Account, Chromium does pretty well in terms of security and privacy. However, Chromium still has some dependency on Google web services and binaries. In addition, Google designed Chromium to be easy and intuitive for users, which means they compromise on transparency and control of internal operations.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium uses the technical foundation of the Google Chrome (Chromium) - some people don\'t like this. Do you want to install Ungoogled Chromium?</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="unsupported_abi_dialog__message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="unsupported_abi_dialog__title">Unsupported device</string>
     <string name="update_interval__12h">12 hours</string>
@@ -184,7 +185,7 @@
     <string name="vivaldi__description">Discover a blazingly fast Internet browser! Vivaldi is a new, free, and private web browser built with flexibility in mind. It comes packed with useful features including a built-in AdBlocker (pop-up blocker), tracking protection, and private translation. Browser options like proper desktop-style tabs, dark/light Themes, and layout choices help you make it yours.</string>
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">Vivaldi is only partially open source (see <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> for more info). It also uses the technical foundation of the Google Chrome (Chromium).\n\nSome people don\'t like this. Do you want to install Vivaldi?</string>
+    <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="settings__general_category__title">General</string>
     <string name="download_notification__message">Download update for %1$s (%2$s).</string>
     <string name="install_activity__file_uri_exposed_toast">Can\'t expose file path to other apps. Please open the folder yourself with your preferred file manager."</string>
@@ -194,4 +195,14 @@
     <string name="intent_installer__likely_storage_failure">The operation likely failed because of storage issues. For example, the device may be running low on space, or external media may be unavailable. The user may be able to help free space or insert different external media.</string>
     <string name="crash_report___explain_text__install_activity_download_file">The following error occurred during download. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please add the crash report from the clipboard to the report.</string>
     <string name="file_downloader__fail_to_handle_download_stream">Fail to handle download stream.</string>
+    <string name="app_warning_dialog__title">Warning</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s has the following problem:\n\n%2$s\n\nDo you still want to install %1$s?</item>
+        <item quantity="other">%1$s has the following problems:\n\n%2$s\n\nDo you still want to install %1$s?</item>
+    </plurals>
+    <plurals name="app_warning_before_installation_dialog__message">
+        <item quantity="one">%1$s has the following problem:\n\n%2$s</item>
+        <item quantity="other">%1$s has the following problems:\n\n%2$s</item>
+    </plurals>
+
 </resources>
