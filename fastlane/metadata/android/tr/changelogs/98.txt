@@ -1,0 +1,10 @@
+* Çeviriler iyileştirildi - teşekkürler:
+  * Allan Nordhøy: Bokmål Norveççe
+  * Oğuz Ersen: Türkçe
+  * 109247019824: Bulgarca
+  * J. Lavoie: İtalyanca, Fransızca
+* Arka planda indirme bildiriminde indirme ilerlemesini göster
+* Önbellek davranışını denetlemek için yeni ayarlar eklendi
+* Artık gerekli olmadığı için InstallActivity içinden "kurulumu yeniden dene" düğmesi kaldırıldı
+* Hatalar düzeltildi, kod temizlendi
+* Weblate bütünleşmesi yapıldı
