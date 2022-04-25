@@ -13,7 +13,8 @@
     <string name="background_job_failure__notification_title">Arka plan güncelleme denetimi başarısız oldu</string>
     <string name="brave__description">İnternette ücretsiz olarak gizli bir şekilde gezinin! Brave Gizli Tarayıcı uygulaması, reklam engelleyicisi ve açılır pencere engelleyicisi ile hızlı, özel, güvenli ve ücretsiz bir web tarayıcısıdır. Reklamlar, kötü amaçlı yazılımlar ve açılır pencereler tarafından izlenmeden internette gizli olarak gezinin ve arama yapın.</string>
     <string name="brave__title">Brave Gizli Tarayıcı</string>
-    <string name="brave__warning">Brave, Google Chrome\'un (Chromium) teknik temelini kullanır - bazı insanlar bundan hoşlanmaz. Brave\'i kurmak istiyor musunuz\?</string>
+    <string name="brave__warning">- Brave, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.
+\n- Ethereum blok zincirindeki Basic Attention Token BAT nedeniyle, projenin kripto para birimi ile bağları vardır. Blok zincirlerin birçok sorunu vardır ve benim görüşüme göre kaçınılması gerekmektedir.</string>
     <string name="brave_beta__description">Android için Brave Beta\'ya hoş geldiniz!
 \nEn yeni özellikleri deneyin ve erken geri bildirimde bulunun: https://brave.com/msupport
 \nAndroid için Brave\'in geçerli sürümünün yanı sıra Brave Beta\'yı da kurabilirsiniz.</string>
@@ -24,7 +25,7 @@
     <string name="brave_nightly__title">Brave Tarayıcı (Gecelik)</string>
     <string name="bromite__description">Bromite, gizliliği ihlal eden özellikler olmadan ve hızlı bir reklam engelleme motorunun eklenmesiyle karışık olmayan bir göz atma deneyimi sağlamayı amaçlar. Bir reklam platformu olarak tarayıcı fikrini engellemeye yardımcı olmak için en az kullanıcı arayüzü değişiklikleri uygulanır.</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite, Google Chrome\'un (Chromium) teknik temelini kullanır - bazı insanlar bundan hoşlanmaz. Bromite\'i kurmak istiyor musunuz\?</string>
+    <string name="bromite__warning">- Bromite, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="bromite_systemwebview__description">SystemWebView paketi, Bromite\'ın temel tarayıcı/görselleştirme motorunu ve onunla aynı özellikleri içerir. Tüm Android sistemi için öntanımlı tarayıcı bileşenini değiştirme imkanı sunar.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Çökme raporunu panoya kopyala</string>
@@ -50,7 +51,7 @@
     <string name="failed_update_notification__notification_title">%1$s güncellenemedi.</string>
     <string name="firefox_beta__description">Android için Firefox tarayıcı, ışık hızında sayfa yükleme ve gizliliğinizi kolayca koruma olanağı sunuyor. Gelişmiş İzlenme Koruması, gizliliğinizi ihlal eden ve sayfalarınızı yavaşlatan 2.000\'den fazla çevrimiçi takipçiyi otomatik olarak engelliyor. Ayrıca Firefox tarayıcı, daha verimli ve daha hızlı kullanım sağlayan yeni ve sade bir tasarım sunuyor. Üstelik Firefox, yerleşik akıllı gezinti özellikleriyle gizliliğinizi, parolalarınızı ve yer imlerinizi gittiğiniz her yere güvenle taşıyor.</string>
     <string name="firefox_beta__title">Android için Firefox Beta</string>
-    <string name="firefox_beta__warning">Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir. Kurmak istiyor musunuz\?</string>
+    <string name="firefox_beta__warning">- Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir.</string>
     <string name="firefox_focus__description">Bu, gizliliği artırmayı amaçlayan Firefox tarayıcısının değiştirilmiş bir çeşididir.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar Almanya, Avusturya ve İsviçre için geliştirilmiştir, ancak herhangi bir ülkedeki kullanıcılar tarafından kullanılabilir. Firefox Focus\'a çok benzer, ancak Almanca konuşulan ülkelerde Hubert Burda Media grubunun Focus dergisi ile karıştırılmaması için adı değiştirildi. Firefox Focus\'un aksine, Firefox Klar, katı Alman gizlilik yasaları nedeniyle öntanımlı olarak uzaktan izlemeyi devre dışı bırakmıştır.</string>
@@ -61,7 +62,7 @@
 \n
 \nFirefox Nightly, Firefox’un daha deneysel sürümlerini sergilemek amacıyla tasarlandı. Nightly kanalı, en yeni Firefox özelliklerini kararlı olmayan bir ortamda denemenize, özellikler ve performansla ilgili geri bildirimlerde bulunmanıza olanak tanıyor. Böylece neleri son sürüme aktaracağımızı belirlememize yardımcı oluyorsunuz.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir. Kurmak istiyor musunuz\?</string>
+    <string name="firefox_nightly__warning">- Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir.</string>
     <string name="firefox_release__description">Android için Firefox tarayıcı, ışık hızında sayfa yükleme ve gizliliğinizi kolayca koruma olanağı sunuyor. Gelişmiş İzlenme Koruması, gizliliğinizi ihlal eden ve sayfalarınızı yavaşlatan 2.000\'den fazla çevrimiçi takipçiyi otomatik olarak engelliyor. Ayrıca Firefox tarayıcı, daha verimli ve daha hızlı kullanım sağlayan yeni ve sade bir tasarım sunuyor. Üstelik Firefox, yerleşik akıllı gezinti özellikleriyle gizliliğinizi, parolalarınızı ve yer imlerinizi gittiğiniz her yere güvenle taşıyor.</string>
     <string name="firefox_release__title">Firefox Tarayıcı</string>
     <string name="general__use_root__summary">FFUpdater, bu seçenek etkinleştirildiyse ve bir uygulama kurulduysa veya güncellendiyse root izni isteyecektir. Root ayrıcalıkları kazanmak için Magisk veya diğer araçları kullanmalısınız. Etkinleştirilirse, FFUpdater uygulamaları kullanıcı etkileşimi olmadan ön planda ve arka planda kuracak veya güncelleyecektir.</string>
@@ -88,7 +89,7 @@
     <string name="install_activity__fetch_url_for_download">İndirme URL\'sini %1$s değerinden getir</string>
     <string name="install_activity__fetched_url_for_download_successfully">İndirme URL\'si %1$s değerinden getirildi</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API hız sınırı aşıldı. Lütfen indirmeyi bir saat içinde tekrar deneyin.</string>
-    <string name="install_activity__open_cache_explanation">APK dosyasını daha fazla boş depolama alanına sahip bir yere kopyalamak için önbellek klasörünü açabilirsiniz. Dikkatli olun, Android 11 ve sonrasında yalnızca bazı dosya yöneticileri Android/data klasöründeki dosyaları açabilir.</string>
+    <string name="install_activity__open_cache_explanation">APK dosyasını daha fazla boş depolama alanına sahip bir yere kopyalamak için önbellek klasörünü açabilirsiniz. Ne yazık ki, Android 11 ve sonrasında, Android/data içindeki bu klasöre yalnızca birkaç dosya yöneticisi erişebilir.</string>
     <string name="install_activity__open_cache_folder_button_text">önbellek klasörünü aç</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 sertifikası parmak izi:</string>
     <string name="install_activity__temporary_network_issue">Geçici bir ağ sorunu oluştu. Lütfen daha sonra tekrar deneyin.</string>
@@ -173,7 +174,7 @@
 \n
 \nChromium, bir Google Hesabında oturum açmadan güvenlik ve gizlilik açısından oldukça başarılıdır. Ancak, Chromium\'un hala Google web hizmetlerine ve ikili dosyalara biraz bağımlılığı vardır. Ayrıca Google, Chromium\'u kullanıcılar için kolay ve sezgisel olacak şekilde tasarladı; bu, şeffaflık ve dahili işlemlerin denetiminden ödün verdikleri anlamına geliyor.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium, Google Chrome\'un (Chromium) teknik temelini kullanır - bazı insanlar bundan hoşlanmaz. Ungoogled Chromium\'u kurmak istiyor musunuz\?</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="unsupported_abi_dialog__message">Seçilen tarayıcı, akıllı telefonunuzun işlemcisiyle uyumlu değil. Lütfen farklı bir tarayıcı seçin.</string>
     <string name="unsupported_abi_dialog__title">Desteklenmeyen aygıt</string>
     <string name="update_interval__12h">12 saat</string>
@@ -200,9 +201,8 @@
     <string name="update_notification__title">%1$s için güncelleme var</string>
     <string name="vivaldi__description">Son derece hızlı bir İnternet tarayıcısını keşfedin! Vivaldi, esneklik göz önünde bulundurularak oluşturulmuş yeni, ücretsiz ve özel bir web tarayıcısıdır. İçinde var olan bir reklam engelleyici (açılır pencere engelleyici), izleme koruması ve özel çeviri gibi kullanışlı özelliklerle birlikte gelir. Uygun masaüstü tarzı sekmeler, Koyu/Açık temalar ve düzen seçenekleri gibi tarayıcı seçenekleri, onu size özel yapmanıza yardımcı olur.</string>
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
-    <string name="vivaldi__warning">Vivaldi yalnızca kısmen açık kaynaktır (daha fazla bilgi için <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source /</a> adresine bakın). Ayrıca Google Chrome\'un (Chromium) teknik temelini kullanır.
-\n
-\nBazı insanlar bundan hoşlanmaz. Vivaldi\'yi kurmak istiyor musunuz\?</string>
+    <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır.
+\n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="settings__general_category__title">Genel</string>
     <string name="download_notification__message">%1$s (%2$s) için güncellemeyi indir.</string>
     <string name="install_activity__file_uri_exposed_toast">Dosya yolu diğer uygulamalara gösterilemiyor. Lütfen tercih ettiğiniz dosya yöneticisi ile klasörü kendiniz açın.</string>
@@ -212,4 +212,26 @@
     <string name="file_downloader__fail_to_handle_download_stream">İndirme akışı işlenemedi.</string>
     <string name="install_activity__open_folder">Klasörü aç</string>
     <string name="intent_installer__likely_storage_failure">İşlem, büyük olasılıkla depolama sorunları nedeniyle başarısız oldu. Örneğin, aygıtın alanı azalıyor veya harici ortam kullanılamıyor olabilir. Kullanıcının boş alan sağlaması veya farklı harici ortamlar yerleştirmesi yardımcı olabilir.</string>
+    <string name="firefox_release__warning">- F-Droid\'de Fennec F-Droid adı altında Firefox\'un iyileştirilmiş bir sürümü de bulunmakdır.</string>
+    <string name="app_warning_dialog__title">Uyarı</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s aşağıdaki soruna sahiptir:
+\n
+\n%2$s
+\n
+\nYine de %1$s kurmak istiyor musunuz\?</item>
+        <item quantity="other">%1$s aşağıdaki sorunlara sahiptir:
+\n
+\n%2$s
+\n
+\nYine de %1$s kurmak istiyor musunuz\?</item>
+    </plurals>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">%1$s aşağıdaki soruna sahiptir:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s aşağıdaki sorunlara sahiptir:
+\n
+\n%2$s</item>
+    </plurals>
 </resources>
