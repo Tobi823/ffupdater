@@ -204,7 +204,7 @@
 \n
 \nWillst du immer noch %1$s installieren\?</item>
     </plurals>
-    <plurals name="app_warning_before_installation_dialog__message">
+    <plurals name="app_warning_dialog__message">
         <item quantity="one">%1$s hat folgendes Problem:
 \n
 \n%2$s</item>

@@ -22,7 +22,7 @@ class AppWarningDialog : DialogFragment() {
             .filter { it.startsWith("- ") }
             .count()
         val message = resources.getQuantityString(
-            R.plurals.app_warning_before_installation_dialog__message,
+            R.plurals.app_warning_dialog__message,
             counter,
             getString(app.detail.displayTitle),
             warning

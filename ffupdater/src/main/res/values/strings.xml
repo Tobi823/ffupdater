@@ -200,7 +200,7 @@
         <item quantity="one">%1$s has the following problem:\n\n%2$s\n\nDo you still want to install %1$s?</item>
         <item quantity="other">%1$s has the following problems:\n\n%2$s\n\nDo you still want to install %1$s?</item>
     </plurals>
-    <plurals name="app_warning_before_installation_dialog__message">
+    <plurals name="app_warning_dialog__message">
         <item quantity="one">%1$s has the following problem:\n\n%2$s</item>
         <item quantity="other">%1$s has the following problems:\n\n%2$s</item>
     </plurals>
