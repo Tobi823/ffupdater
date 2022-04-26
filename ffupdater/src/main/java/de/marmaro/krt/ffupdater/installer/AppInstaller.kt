@@ -8,7 +8,6 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.install_activity__downloaded_application_is_not_verified
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.ExtendedInstallResult
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
@@ -88,7 +87,6 @@ interface ForegroundAppInstaller : AppInstaller, DefaultLifecycleObserver {
         fun create(activity: ComponentActivity, app: App, file: File): ForegroundAppInstaller {
             return when {
                 GeneralSettingsHelper(activity).isRootUsageEnabled -> RootInstaller(app, file)
-                DeviceSdkTester.supportsAndroidNougat() -> ForegroundSessionInstaller(activity, app, file)
                 else -> IntentInstaller(activity, activity.activityResultRegistry, app, file)
             }
         }
