@@ -13,7 +13,7 @@ class AppCache(val app: App) {
 
     suspend fun isAvailable(context: Context, available: AvailableVersionResult): Boolean {
         val file = getFile(context)
-        if (file.exists()) {
+        if (file.exists() && file.length() > 0L) {
             return app.detail.isAvailableVersionEqualToArchive(context, file, available)
         }
         return false
