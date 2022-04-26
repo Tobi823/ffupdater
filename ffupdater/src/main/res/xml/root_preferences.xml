@@ -124,10 +124,21 @@
 
         <SwitchPreferenceCompat
             app:defaultValue="false"
+            app:disableDependentsState="true"
             app:key="general__use_root"
             app:singleLineTitle="false"
             app:summary="@string/general__use_root__summary"
             app:title="@string/general__use_root__title" />
+
+        <ListPreference
+            app:defaultValue="1"
+            app:entries="@array/general__install_method__entries"
+            app:entryValues="@array/general__install_method__values"
+            app:key="general__install_method"
+            app:singleLineTitle="false"
+            app:summary="Session installer: ...\n\nNative installer: ...\n\nRoot installer: ..."
+            app:title="Installer" />
+
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 

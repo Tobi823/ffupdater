@@ -89,4 +89,16 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+
+    <string-array name="general__install_method__entries">
+        <item>PackageInstaller</item>
+        <item>Intent</item>
+        <item>Root</item>
+    </string-array>
+
+    <string-array name="general__install_method__values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>
