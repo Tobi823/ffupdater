@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import de.marmaro.krt.ffupdater.background.BackgroundJob
 
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
@@ -15,6 +16,9 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         }
         if (lastVersionCode < 98) { // 75.4.0
             migrateOldSettings2(preferences)
+        }
+        if (lastVersionCode != currentVersionCode) {
+            restartBackgroundJobAfterUpgrade(context)
         }
 
         preferences.edit().putInt(FFUPDATER_VERSION_CODE, currentVersionCode).apply()
@@ -58,6 +62,10 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
                 .putBoolean("installer__root", true)
                 .apply()
         }
+    }
+
+    private fun restartBackgroundJobAfterUpgrade(context: Context) {
+        BackgroundJob.changeBackgroundUpdateCheck(context, null, null)
     }
 
     private fun migrateStringSetting(preferences: SharedPreferences, oldKey: String, newKey: String) {
