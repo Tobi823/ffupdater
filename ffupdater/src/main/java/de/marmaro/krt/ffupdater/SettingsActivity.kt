@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
@@ -47,9 +48,33 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
-            findPreference<ListPreference>("themePreference")?.setOnPreferenceChangeListener()
-            { _, newValue ->
+            val themePreference = findPreference<ListPreference>("themePreference")
+            themePreference?.setOnPreferenceChangeListener { _, newValue ->
                 AppCompatDelegate.setDefaultNightMode((newValue as String).toInt())
+                true
+            }
+            val sessionInstaller = findPreference<SwitchPreferenceCompat>("installer__session")
+            val nativeInstaller = findPreference<SwitchPreferenceCompat>("installer__native")
+            val rootInstaller = findPreference<SwitchPreferenceCompat>("installer__root")
+            sessionInstaller?.setOnPreferenceChangeListener { _, newValue ->
+                if (newValue as Boolean) {
+                    nativeInstaller?.isChecked = false
+                    rootInstaller?.isChecked = false
+                }
+                true
+            }
+            nativeInstaller?.setOnPreferenceChangeListener { _, newValue ->
+                if (newValue as Boolean) {
+                    sessionInstaller?.isChecked = false
+                    rootInstaller?.isChecked = false
+                }
+                true
+            }
+            rootInstaller?.setOnPreferenceChangeListener { _, newValue ->
+                if (newValue as Boolean) {
+                    sessionInstaller?.isChecked = false
+                    nativeInstaller?.isChecked = false
+                }
                 true
             }
         }

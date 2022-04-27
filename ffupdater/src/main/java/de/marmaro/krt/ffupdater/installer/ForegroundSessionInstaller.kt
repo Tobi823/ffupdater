@@ -3,10 +3,7 @@ package de.marmaro.krt.ffupdater.installer
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -14,9 +11,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import java.io.File
 
-@RequiresApi(Build.VERSION_CODES.N)
 class ForegroundSessionInstaller(
-    private val context: Context,
+    context: Context,
     app: App,
     file: File
 ) : ForegroundAppInstaller, SessionInstallerBase(context, app, file) {
@@ -43,9 +39,7 @@ class ForegroundSessionInstaller(
             val requestPermission = bundle.get(Intent.EXTRA_INTENT) as Intent
             context.startActivity(requestPermission)
         } catch (e: ActivityNotFoundException) {
-            val tip = context.getString(R.string.install_activity__try_disable_miui_optimization)
-            failure(-99, "${e.message}\n\n$tip")
+            failure(-99, e.message ?: "/")
         }
     }
-
 }

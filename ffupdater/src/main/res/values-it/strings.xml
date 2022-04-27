@@ -56,8 +56,6 @@
     <string name="firefox_nightly__warning">Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser. Vuoi installarla?</string>
     <string name="firefox_release__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
     <string name="firefox_release__title">Firefox Browser</string>
-    <string name="general__use_root__summary">FFUpdater chiederà il permesso di root se questa opzione è abilitata e un\'app viene installata o aggiornata. Per ottenere i privilegi di root, devi usare Magisk o altri strumenti. Se abilitato, FFUpdater installerà o aggiornerà le app in primo piano e in background senza l\'interazione dell\'utente.</string>
-    <string name="general__use_root__title">Utilizzare i permessi di root per installare o aggiornare le app</string>
     <string name="go_back">Vai indietro</string>
     <string name="iceraven__description">Sicuramente non offerto da Mozilla! \n\nIceraven Browser è un browser per Android, basato sulla versione Fenix di Mozilla Firefox, GeckoView e Mozilla Android Components. \n\nIl nostro obiettivo è di essere un fork vicino al nuovo Firefox per Android che cerca di fornire agli utenti più opzioni, più opportunità di personalizzazione (tra cui una larga collezione di estensioni) e più informazioni sulle pagine che visitano e in che modo i loro browser interagiscono con quelle pagine.</string>
     <string name="iceraven__title">Iceraven Browser</string>
@@ -80,7 +78,6 @@
     <string name="install_activity__temporary_network_issue">Si è verificato un problema di rete temporaneo. Si prega di riprovare in seguito.</string>
     <string name="install_activity__too_low_memory_description">Il tuo dispositivo ha poca memoria disponibile (solo %1$d MB liberi). Questo porterà al fallimento del download o dell\'installazione.</string>
     <string name="install_activity__too_low_memory_title">Poco Spazio sul Disco</string>
-    <string name="install_activity__try_disable_miui_optimization">Se stai usando Xiaomi oo MIUI, prova a disabilitare \"Ottimizzazione MIUI\".</string>
     <string name="install_activity__use_cached_downloaded_apk">Usa il file già scaricato da:</string>
     <string name="install_activity__you_can_now_close_this_window">Ora puoi chiudere questa finestra</string>
     <string name="install_activity_label">Installa Applicazione</string>

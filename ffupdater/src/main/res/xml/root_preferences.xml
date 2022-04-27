@@ -120,25 +120,28 @@
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
-    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__general_category__title">
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__installer_category__title">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="installer__session"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__installer__session__summary"
+            app:title="@string/settings__installer__session__title" />
 
         <SwitchPreferenceCompat
             app:defaultValue="false"
-            app:disableDependentsState="true"
-            app:key="general__use_root"
+            app:key="installer__native"
             app:singleLineTitle="false"
-            app:summary="@string/general__use_root__summary"
-            app:title="@string/general__use_root__title" />
+            app:summary="@string/settings__installer__native__summary"
+            app:title="@string/settings__installer__native__title" />
 
-        <ListPreference
-            app:defaultValue="1"
-            app:entries="@array/general__install_method__entries"
-            app:entryValues="@array/general__install_method__values"
-            app:key="general__install_method"
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="installer__root"
             app:singleLineTitle="false"
-            app:summary="Session installer: ...\n\nNative installer: ...\n\nRoot installer: ..."
-            app:title="Installer" />
-
+            app:summary="@string/settings__installer__root__summary"
+            app:title="@string/settings__installer__root__title" />
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 

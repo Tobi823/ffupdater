@@ -40,12 +40,10 @@
     <string name="firefox_focus__description">Dette er en endring av Firefox-nettleseren myntet på økt personvern.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__warning">Programmet er designet for utviklere og testere. Det kan inneholde feil som påvirker vanlig bruk. Vil du installere det\?</string>
-    <string name="general__use_root__title">Bruk rot-tilgang for å installere og oppgradere programmer</string>
     <string name="install_activity__delete_cache_button_text">tøm hurtiglager</string>
     <string name="install_activity__downloaded_application_is_not_verified">Nedlastet program er IKKE bekreftet</string>
     <string name="install_activity__open_cache_explanation">Du kan åpne hurtiglagringsmappen for å kopiere APK-filen til et sted med mer ledig lagringsplass. Husk at på Android 11+ er det kun noen filbehandlere som kan åpne filer i Android/data-mappen.</string>
     <string name="install_activity__open_cache_folder_button_text">åpne hurtiglagringsmappe</string>
-    <string name="install_activity__try_disable_miui_optimization">Hvis du bruker Xiaomi eller MIUI kan du prøve å skru av «MIUI-optimalisering».</string>
     <string name="settings__activity_label">Innstillinger</string>
     <string name="settings__background__download__enabled__title">Last ned programoppgraderinger</string>
     <string name="settings__background__update_check__interval__title">Intervall for oppgraderingssjekk</string>
@@ -75,7 +73,6 @@
     <string name="running_downloads_dialog__negative">Nei, ikke last ned</string>
     <string name="settings__background__update_check__enabled__title">Oppgraderingssjekk</string>
     <string name="update_interval__6h">6 timer</string>
-    <string name="general__use_root__summary">FFUpdater spør om rot-tilgang hvis dette alternativet er påslått og programmet installeres eller oppgraderes. Bruk Magisk eller andre verktøy for å få rot-tilgang. FFUpdater installerer eller oppgraderer programmer i forgrunnen og bakgrunnen uten brukerinteraksjon.</string>
     <string name="install_activity__exception__show_button"><u>Vis detaljert feilrapport.</u></string>
     <string name="install_activity__external_storage_not_accessible">Eksternlagring er ikke tilgjengelig. Kan ikke starte nedlastning. Nåværende status er:</string>
     <string name="manage_storage_activity__delete_button">Slett hurtiglagrede programoppgraderinger.</string>
@@ -110,7 +107,7 @@
     <string name="update_interval__2w">2 uker</string>
     <string name="update_notification__channel_name">%1$s-oppgraderingsmerknad</string>
     <string name="vivaldi__title">Vivaldi-nettleseren</string>
-    <string name="settings__general_category__title">Generelt</string>
+    <string name="settings__installer_category__title">Generelt</string>
     <string name="install_activity__file_uri_exposed_toast">Kan ikke gjøre filstien tilgjengelig for andre programmer. Åpne mappen selv med din foretrukne filbehandler.</string>
     <string name="install_activity__download_failed">Nedlasting mislyktes</string>
     <string name="install_activity__github_rate_limit_exceeded">Grensen for bruk av GitHub-API-et er overskredet. Prøv å laste ned igjen om en time.</string>

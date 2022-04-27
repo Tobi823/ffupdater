@@ -56,8 +56,6 @@
     <string name="firefox_nightly__warning">Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером. Хотите установить его?</string>
     <string name="firefox_release__description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за вами каждый день, собирая информацию о вашей жизни в Интернете и замедляя скорость вашей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если вы захотите настроить свой браузер под себя. С Firefox вы получите безопасность, которую заслуживаете, а также высокую скорость работы — и всё это в конфиденциальном мобильном браузере.</string>
     <string name="firefox_release__title">Firefox</string>
-    <string name="general__use_root__summary">FFUpdater будет запрашивать права root, если эта опция включена и приложение установлено или обновлено. Чтобы получить права root, необходимо использовать Magisk или другие инструменты. Если опция включена, FFUpdater будет устанавливать или обновлять приложения на переднем плане и в фоновом режиме без участия пользователя.</string>
-    <string name="general__use_root__title">Используйте права root для установки или обновления приложений</string>
     <string name="go_back">Вернуться</string>
     <string name="iceraven__description">Определенно не от Mozilla! \n\nIceraven Browser - это веб-браузер для Android, основанный на версиях Firefox, GeckoView и Mozilla Android Components от Mozilla Fenix. \n\nНашей целью является создание как можно более точной копии нового Firefox для Android, который стремится предоставить пользователям больше возможностей для настройки (включая широкую библиотеку расширений), больше информации о страницах, которые они посещают, и как их браузеры взаимодействуют с этими страницами.</string>
     <string name="iceraven__title">Iceraven Browser</string>
@@ -80,7 +78,6 @@
     <string name="install_activity__temporary_network_issue">Возникла временная проблема сети. Пожалуйста, повторите попытку позже.</string>
     <string name="install_activity__too_low_memory_description">На вашем устройстве имеется только %1$d Мб свободного места. Это может привести к сбою при загрузке или установке приложений.</string>
     <string name="install_activity__too_low_memory_title">Недостаточно места на диске</string>
-    <string name="install_activity__try_disable_miui_optimization">Если вы используете устройство Xiaomi или MIUI, попробуйте отключить \"Оптимизацию MIUI\".</string>
     <string name="install_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
     <string name="install_activity__you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
     <string name="install_activity_label">Установить приложение</string>

@@ -58,8 +58,6 @@
     <string name="firefox_release__description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="firefox_release__warning">- An improved version of Firefox is also available on F-Droid under the name "Fennec F-Droid".</string>
-    <string name="general__use_root__summary">FFUpdater will ask for root permission if this option is enabled and an app is installed or updated. To gain root privileges, you must use Magisk or other tools. If enabled, FFUpdater will install or updates apps in the foreground and background without user interaction.</string>
-    <string name="general__use_root__title">Use root permission to install or update apps</string>
     <string name="github" translatable="false">GitHub</string>
     <string name="go_back">Go back</string>
     <string name="iceraven__description">Definitely not brought to you by Mozilla! \n\nIceraven Browser is a web browser for Android, based on Mozilla\'s Fenix version of Firefox, GeckoView and Mozilla Android Components. \n\nOur goal is to be a close fork of the new Firefox for Android that seeks to provide users with more options, more opportunities to customize (including a broad extension library), and more information about the pages they visit and how their browsers are interacting with those pages.</string>
@@ -83,7 +81,6 @@
     <string name="install_activity__temporary_network_issue">A temporary network issue occurred. Please retry later.</string>
     <string name="install_activity__too_low_memory_description">Your device is low on storage (only %1$d MB free). This will lead to download or installation failure.</string>
     <string name="install_activity__too_low_memory_title">Low Disk Space</string>
-    <string name="install_activity__try_disable_miui_optimization">If you are using Xiaomi or MIUI, try disabling \"MIUI Optimization\".</string>
     <string name="install_activity__use_cached_downloaded_apk">Use already downloaded file from:</string>
     <string name="install_activity__you_can_now_close_this_window">You can now close this window</string>
     <string name="install_activity_label">Install Application</string>
@@ -186,7 +183,7 @@
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
-    <string name="settings__general_category__title">General</string>
+    <string name="settings__installer_category__title">Installer</string>
     <string name="download_notification__message">Download update for %1$s (%2$s).</string>
     <string name="install_activity__file_uri_exposed_toast">Can\'t expose file path to other apps. Please open the folder yourself with your preferred file manager."</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Delete the downloaded update if the installation is successful.</string>
@@ -196,6 +193,13 @@
     <string name="crash_report___explain_text__install_activity_download_file">The following error occurred during download. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please add the crash report from the clipboard to the report.</string>
     <string name="file_downloader__fail_to_handle_download_stream">Fail to handle download stream.</string>
     <string name="app_warning_dialog__title">Warning</string>
+    <string name="settings__installer__session__summary">Recommended for most devices.</string>
+    <string name="settings__installer__session__title">Session installer</string>
+    <string name="settings__installer__native__summary">Fallback if the session installer does not work on your smartphone. This is more often the case with devices from Samsung or Xiaomi.</string>
+    <string name="settings__installer__native__title">Native installer</string>
+    <string name="settings__installer__root__summary">Uses root permission to install or update apps without user interaction. This requires a rooted smartphone.</string>
+    <string name="settings__installer__root__title">Root installer</string>
+    <string name="install_activity__different_installer_info__text">If the installation fails frequently, try switching to the \'native installer\' in the settings.</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="one">%1$s has the following problem:\n\n%2$s\n\nDo you still want to install %1$s?</item>
         <item quantity="other">%1$s has the following problems:\n\n%2$s\n\nDo you still want to install %1$s?</item>

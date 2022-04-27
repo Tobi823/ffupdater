@@ -64,8 +64,6 @@
     <string name="firefox_nightly__warning">Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir. Kurmak istiyor musunuz\?</string>
     <string name="firefox_release__description">Android için Firefox tarayıcı, ışık hızında sayfa yükleme ve gizliliğinizi kolayca koruma olanağı sunuyor. Gelişmiş İzlenme Koruması, gizliliğinizi ihlal eden ve sayfalarınızı yavaşlatan 2.000\'den fazla çevrimiçi takipçiyi otomatik olarak engelliyor. Ayrıca Firefox tarayıcı, daha verimli ve daha hızlı kullanım sağlayan yeni ve sade bir tasarım sunuyor. Üstelik Firefox, yerleşik akıllı gezinti özellikleriyle gizliliğinizi, parolalarınızı ve yer imlerinizi gittiğiniz her yere güvenle taşıyor.</string>
     <string name="firefox_release__title">Firefox Tarayıcı</string>
-    <string name="general__use_root__summary">FFUpdater, bu seçenek etkinleştirildiyse ve bir uygulama kurulduysa veya güncellendiyse root izni isteyecektir. Root ayrıcalıkları kazanmak için Magisk veya diğer araçları kullanmalısınız. Etkinleştirilirse, FFUpdater uygulamaları kullanıcı etkileşimi olmadan ön planda ve arka planda kuracak veya güncelleyecektir.</string>
-    <string name="general__use_root__title">Uygulamaları kurmak veya güncellemek için root izni kullan</string>
     <string name="go_back">Geri git</string>
     <string name="iceraven__description">Kesinlikle Mozilla tarafından size getirilmedi!
 \n
@@ -94,7 +92,6 @@
     <string name="install_activity__temporary_network_issue">Geçici bir ağ sorunu oluştu. Lütfen daha sonra tekrar deneyin.</string>
     <string name="install_activity__too_low_memory_description">Aygıtınızda depolama alanı azaldı (yalnızca %1$d MB boş). Bu, indirme veya kurulum hatasına yol açacaktır.</string>
     <string name="install_activity__too_low_memory_title">Düşük Disk Alanı</string>
-    <string name="install_activity__try_disable_miui_optimization">Xiaomi veya MIUI kullanıyorsanız, \"MIUI Optimizasyonu\"nu devre dışı bırakmayı deneyin.</string>
     <string name="install_activity__use_cached_downloaded_apk">Şuradan indirilmiş dosyayı kullanın:</string>
     <string name="install_activity__you_can_now_close_this_window">Artık bu pencereyi kapatabilirsiniz</string>
     <string name="install_activity_label">Uygulamayı Kur</string>
@@ -203,7 +200,7 @@
     <string name="vivaldi__warning">Vivaldi yalnızca kısmen açık kaynaktır (daha fazla bilgi için <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source /</a> adresine bakın). Ayrıca Google Chrome\'un (Chromium) teknik temelini kullanır.
 \n
 \nBazı insanlar bundan hoşlanmaz. Vivaldi\'yi kurmak istiyor musunuz\?</string>
-    <string name="settings__general_category__title">Genel</string>
+    <string name="settings__installer_category__title">Genel</string>
     <string name="download_notification__message">%1$s (%2$s) için güncellemeyi indir.</string>
     <string name="install_activity__file_uri_exposed_toast">Dosya yolu diğer uygulamalara gösterilemiyor. Lütfen tercih ettiğiniz dosya yöneticisi ile klasörü kendiniz açın.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Kurulum başarılı olursa indirilen güncellemeyi sil.</string>
