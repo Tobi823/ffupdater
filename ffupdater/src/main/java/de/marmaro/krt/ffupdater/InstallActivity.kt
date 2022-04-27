@@ -27,6 +27,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.background.NotificationBuilder
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
@@ -100,6 +101,11 @@ class InstallActivity : AppCompatActivity() {
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
             tryOpenDownloadFolderInFileManager()
         }
+
+        // hide existing background notification for this app
+        NotificationBuilder.hideUpdateNotification(this, viewModel.app!!)
+        NotificationBuilder.hideSuccessfulBackgroundInstallationNotification(this, viewModel.app!!)
+        NotificationBuilder.hideFailedBackgroundInstallationNotifications(this, viewModel.app!!)
 
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
@@ -300,6 +306,12 @@ class InstallActivity : AppCompatActivity() {
     private suspend fun installApp() {
         show(R.id.installingApplication)
         val result = appInstaller.installAsync(this).await()
+
+        // hide existing background notification for this app
+        NotificationBuilder.hideUpdateNotification(this, viewModel.app!!)
+        NotificationBuilder.hideSuccessfulBackgroundInstallationNotification(this, viewModel.app!!)
+        NotificationBuilder.hideFailedBackgroundInstallationNotifications(this, viewModel.app!!)
+
         if (result.success) {
             hide(R.id.installingApplication)
             show(R.id.installerSuccess)

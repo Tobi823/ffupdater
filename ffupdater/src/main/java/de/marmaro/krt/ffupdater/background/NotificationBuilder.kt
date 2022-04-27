@@ -54,10 +54,12 @@ object NotificationBuilder {
 
         App.values()
             .filter { it !in apps }
-            .forEach {
-                val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-                nm.cancel(200 + it.ordinal)
-            }
+            .forEach { hideUpdateNotification(context, it) }
+    }
+
+    fun hideUpdateNotification(context: Context, app: App) {
+        val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+        nm.cancel(200 + app.ordinal)
     }
 
     fun showDownloadNotification(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
@@ -105,11 +107,12 @@ object NotificationBuilder {
     }
 
     fun hideAllSuccessfulBackgroundInstallationNotifications(context: Context) {
-        App.values()
-            .forEach {
-                val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-                nm.cancel(500 + it.ordinal)
-            }
+        App.values().forEach { hideSuccessfulBackgroundInstallationNotification(context, it) }
+    }
+
+    fun hideSuccessfulBackgroundInstallationNotification(context: Context, app: App) {
+        val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+        nm.cancel(500 + app.ordinal)
     }
 
     fun showFailedBackgroundInstallationNotification(
@@ -142,11 +145,12 @@ object NotificationBuilder {
     }
 
     fun hideAllFailedBackgroundInstallationNotifications(context: Context) {
-        App.values()
-            .forEach {
-                val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-                nm.cancel(600 + it.ordinal)
-            }
+        App.values().forEach { hideFailedBackgroundInstallationNotifications(context, it) }
+    }
+
+    fun hideFailedBackgroundInstallationNotifications(context: Context, app: App) {
+        val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+        nm.cancel(600 + app.ordinal)
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
