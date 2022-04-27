@@ -1,0 +1,1 @@
+* Corrigir crash do instalador de sessão nos dispositivos OnePlus (Tobi823/ffupdater#153)
