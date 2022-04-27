@@ -10,6 +10,7 @@ import androidx.preference.SwitchPreferenceCompat
 import de.marmaro.krt.ffupdater.background.BackgroundJob
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import java.time.Duration
 
 
 /**
@@ -34,7 +35,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        BackgroundJob.startOrStopBackgroundUpdateCheck(this)
+        BackgroundJob.initBackgroundUpdateCheck(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -46,16 +47,29 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
+        private fun findSwitchPref(key: String) = findPreference<SwitchPreferenceCompat>(key)
+        private fun findListPref(key: String) = findPreference<ListPreference>(key)
+
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
-            val themePreference = findPreference<ListPreference>("themePreference")
-            themePreference?.setOnPreferenceChangeListener { _, newValue ->
+            findListPref("foreground__theme_preference")?.setOnPreferenceChangeListener { _, newValue ->
                 AppCompatDelegate.setDefaultNightMode((newValue as String).toInt())
                 true
             }
-            val sessionInstaller = findPreference<SwitchPreferenceCompat>("installer__session")
-            val nativeInstaller = findPreference<SwitchPreferenceCompat>("installer__native")
-            val rootInstaller = findPreference<SwitchPreferenceCompat>("installer__root")
+            findSwitchPref("background__update_check__enabled")?.setOnPreferenceChangeListener { _, newValue ->
+                val enabled = newValue as Boolean
+                BackgroundJob.changeBackgroundUpdateCheck(requireContext(), enabled, null)
+                true
+            }
+            findListPref("background__update_check__interval")?.setOnPreferenceChangeListener { _, newValue ->
+                val minutes = (newValue as String).toLong()
+                val duration = Duration.ofMinutes(minutes)
+                BackgroundJob.changeBackgroundUpdateCheck(requireContext(), null, duration)
+                true
+            }
+            val sessionInstaller = findSwitchPref("installer__session")
+            val nativeInstaller = findSwitchPref("installer__native")
+            val rootInstaller = findSwitchPref("installer__root")
             sessionInstaller?.setOnPreferenceChangeListener { _, newValue ->
                 if (newValue as Boolean) {
                     nativeInstaller?.isChecked = false

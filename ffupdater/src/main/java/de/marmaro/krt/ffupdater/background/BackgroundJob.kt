@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import androidx.work.*
+import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
@@ -33,6 +34,7 @@ import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.SESSI
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.time.Duration
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
 
@@ -275,16 +277,39 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         // retry delays: 15s,30s,1m,2m,4m,8m,16m,32m,64m,128m,256m,300m,300m,300m,300m,300m,300m,300m,300m
         private const val RUN_ATTEMPTS_FOR_2DAYS = 19
 
-        fun startOrStopBackgroundUpdateCheck(context: Context) {
+        /**
+         * Should be called when the user minimize the app to make sure that the background update check
+         * is running.
+         */
+        fun initBackgroundUpdateCheck(context: Context) {
             val backgroundSettings = BackgroundSettingsHelper(context)
             if (backgroundSettings.isUpdateCheckEnabled) {
-                startBackgroundUpdateCheck(context, backgroundSettings)
+                startBackgroundUpdateCheck(context, backgroundSettings, KEEP)
             } else {
                 stopBackgroundUpdateCheck(context)
             }
         }
 
-        private fun startBackgroundUpdateCheck(context: Context, settings: BackgroundSettingsHelper) {
+        /**
+         * Should be called when the user changes specific background settings.
+         * If value is null, the value from SharedPreferences will be used.
+         */
+        fun changeBackgroundUpdateCheck(context: Context, _enabled: Boolean?, interval: Duration?) {
+            val backgroundSettings = BackgroundSettingsHelper(context)
+            val enabled = _enabled ?: backgroundSettings.isUpdateCheckEnabled
+            if (enabled) {
+                startBackgroundUpdateCheck(context, backgroundSettings, REPLACE, interval)
+            } else {
+                stopBackgroundUpdateCheck(context)
+            }
+        }
+
+        private fun startBackgroundUpdateCheck(
+            context: Context,
+            settings: BackgroundSettingsHelper,
+            existingPeriodicWorkPolicy: ExistingPeriodicWorkPolicy,
+            _interval: Duration? = null,
+        ) {
             val requiredNetworkType = if (settings.isUpdateCheckOnMeteredAllowed) {
                 NOT_REQUIRED
             } else {
@@ -298,13 +323,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
             WorkRequest.MAX_BACKOFF_MILLIS
 
-            val interval = settings.updateCheckInterval.toMinutes()
-            val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, interval, MINUTES)
+            val interval = _interval ?: settings.updateCheckInterval
+            val minutes = interval.toMinutes()
+            val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)
                 .setConstraints(constraints.build())
                 .build()
 
             WorkManager.getInstance(context)
-                .enqueueUniquePeriodicWork(WORK_MANAGER_KEY, REPLACE, workRequest)
+                .enqueueUniquePeriodicWork(WORK_MANAGER_KEY, existingPeriodicWorkPolicy, workRequest)
         }
 
         private fun stopBackgroundUpdateCheck(context: Context) {
