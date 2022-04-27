@@ -1,3 +1,13 @@
+# 2022-04-27 Version 75.4.1 (99)
+
+* Improve translations - thanks:
+  * Oğuz Ersen: Turkish
+  * 109247019824: Bulgarian
+* Add option to use the older native installer for devices which buggy PackageInstaller implementation e.g.
+  Samsung and Xiaomi (Tobi823/ffupdater#150)
+* Better display the warnings/downsides for each browser
+* Cleanup and refactor code
+
 # 2022-04-23 Version 75.4.0 (98)
 
 * Improve translations - thanks:

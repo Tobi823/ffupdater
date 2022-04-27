@@ -1,0 +1,6 @@
+* Improve translations - thanks:
+  * Oğuz Ersen: Turkish
+  * 109247019824: Bulgarian
+* Add option to use the older native installer for devices which buggy PackageInstaller implementation (e.g. Samsung and Xiaomi)
+* Better display the warnings/downsides for each browser
+* Cleanup and refactor code
