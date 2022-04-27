@@ -2,8 +2,6 @@ package de.marmaro.krt.ffupdater
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Environment
-import android.util.Log
 import androidx.preference.PreferenceManager
 
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
@@ -12,27 +10,17 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
-        if (lastVersionCode < 87) { // 74.5.0
-            deleteOldCacheData(context)
-        }
         if (lastVersionCode < 94) { // 75.1.0
-            migrateOldSettingsToNewSettings(preferences)
+            migrateOldSettings1(preferences)
+        }
+        if (lastVersionCode < 98) { // 75.4.0
+            migrateOldSettings2(preferences)
         }
 
         preferences.edit().putInt(FFUPDATER_VERSION_CODE, currentVersionCode).apply()
     }
 
-    private fun deleteOldCacheData(context: Context) {
-        Log.i(LOG_TAG, "Delete old data from cache.")
-        context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-            ?.listFiles()
-            ?.forEach { it.delete() }
-        context.externalCacheDir
-            ?.listFiles()
-            ?.forEach { it.delete() }
-    }
-
-    private fun migrateOldSettingsToNewSettings(preferences: SharedPreferences) {
+    private fun migrateOldSettings1(preferences: SharedPreferences) {
         migrateBooleanSetting(
             preferences,
             "automaticCheck", "background__update_check__enabled",
@@ -60,6 +48,16 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
             "themePreference",
             "foreground__theme_preference"
         )
+    }
+
+    private fun migrateOldSettings2(preferences: SharedPreferences) {
+        if (preferences.getBoolean("general__use_root", false)) {
+            preferences.edit()
+                .putBoolean("installer__session", false)
+                .putBoolean("installer__native", false)
+                .putBoolean("installer__root", true)
+                .apply()
+        }
     }
 
     private fun migrateStringSetting(preferences: SharedPreferences, oldKey: String, newKey: String) {

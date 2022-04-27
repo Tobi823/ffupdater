@@ -60,8 +60,6 @@
     <string name="firefox_nightly__warning">Ta aplikacja jest przeznaczona dla programistów i testerów. Może zawierać różne błędy, które mogą wpłynąć na Twoją codzienną pracę z przeglądarką. Czy chcesz ją zainstalować?</string>
     <string name="firefox_release__description">Przeglądarka Firefox dla Androida zapewnia prywatność i niewiarygodną szybkość. Tysiące skryptów śledzących śledzi Cię każdego dnia, zbierając informacje o tym, gdzie jesteś w sieci, spowalniając Twoją przeglądarkę. Firefox domyślnie blokuje ponad 2000 takich skryptów, a jeśli chcesz jeszcze bardziej dostosować przeglądarkę do swoich potrzeb, dostępne są dodatki blokujące reklamy. Dzięki Firefoxowi uzyskasz bezpieczeństwo, na które zasługujesz, i szybkość, jakiej potrzebujesz, w prywatnej, mobilnej przeglądarce.</string>
     <string name="firefox_release__title">Przeglądarka Firefox</string>
-    <string name="general__use_root__summary">Program FFUpdater zapyta o uprawnienia roota, jeśli ta opcja jest włączona, a aplikacja jest instalowana lub aktualizowana. Aby uzyskać uprawnienia roota, musisz użyć Magisk lub innych narzędzi. Jeśli opcja jest włączona, FFUpdater będzie instalował lub aktualizował aplikacje na pierwszym planie i w tle bez interakcji użytkownika.</string>
-    <string name="general__use_root__title">Używanie uprawnień roota do instalowania lub aktualizowania aplikacji</string>
     <string name="go_back">Wstecz</string>
     <string name="iceraven__description">To nie jest usługa Mozilli! \n\nIceraven Browser to przeglądarka internetowa dla systemu Android, oparta na wersji Fenix przeglądarki Firefox, GeckoView i Mozilla Android Components. \n\nNaszym celem jest być bliskim forkiem nowego Firefoksa, który stara się zapewnić użytkownikom więcej opcji, więcej możliwości personalizacji (w tym szeroką bibliotekę rozszerzeń) oraz dostarczać więcej informacji o stronach, które odwiedzają użytkownicy i o tym, jak ich przeglądarki wchodzą w interakcję z tymi stronami.</string>
     <string name="iceraven__title">Przeglądarka Iceraven</string>
@@ -84,7 +82,6 @@
     <string name="install_activity__temporary_network_issue">Wystąpił tymczasowy problem z siecią. Proszę spróbować ponownie później.</string>
     <string name="install_activity__too_low_memory_description">Na Twoim urządzeniu dostępne jest tylko %1$d MB wolnego miejsca. Może to prowadzić do niepowodzenia pobierania lub instalacji aplikacji.</string>
     <string name="install_activity__too_low_memory_title">Mało Miejsca w Pamięci</string>
-    <string name="install_activity__try_disable_miui_optimization">Jeśli używasz Xiaomi lub MIUI, spróbuj wyłączyć \"Optymalizację MIUI\".</string>
     <string name="install_activity__use_cached_downloaded_apk">Użyj pobranego już pliku z:</string>
     <string name="install_activity__you_can_now_close_this_window">Możesz teraz zamknąć to okno</string>
     <string name="install_activity_label">Zainstaluj aplikację</string>

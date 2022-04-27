@@ -10,9 +10,11 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.annotation.RequiresApi
+import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import java.io.File
@@ -56,7 +58,7 @@ class IntentInstaller(
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         try {
-            installInternal(file)
+            installInternal(context, file)
             return status
         } catch (e: IOException) {
             status.completeExceptionally(Exception("fail to install app", e))
@@ -70,14 +72,22 @@ class IntentInstaller(
      * See org.fdroid.fdroid.installer.DefaultInstallerActivity.java from
      * https://github.com/f-droid/fdroidclient
      */
-    private fun installInternal(file: File) {
+    private fun installInternal(context: Context, file: File) {
         @Suppress("DEPRECATION")
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
-        intent.data = Uri.fromFile(file)
+        intent.data = if (DeviceSdkTester.supportsAndroidNougat()) {
+            FileProvider.getUriForFile(context, FILE_PROVIDER_AUTHORITY, file)
+        } else {
+            Uri.fromFile(file)
+        }
         intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         intent.putExtra(Intent.EXTRA_RETURN_RESULT, true)
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
         intent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, "com.android.vending")
         appInstallationCallback.launch(intent)
+    }
+
+    companion object {
+        const val FILE_PROVIDER_AUTHORITY = "de.marmaro.krt.ffupdater.fileprovider"
     }
 }

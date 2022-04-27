@@ -8,11 +8,11 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.install_activity__downloaded_application_is_not_verified
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.ExtendedInstallResult
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
-import de.marmaro.krt.ffupdater.settings.GeneralSettingsHelper
+import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
+import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.*
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -75,9 +75,11 @@ interface BackgroundAppInstaller : AppInstaller {
     companion object {
         @RequiresApi(Build.VERSION_CODES.N)
         fun create(context: Context, app: App, file: File): BackgroundAppInstaller {
-            return when {
-                GeneralSettingsHelper(context).isRootUsageEnabled -> RootInstaller(app, file)
-                else -> BackgroundSessionInstaller(context, app, file)
+            return when (InstallerSettingsHelper(context).getInstaller()) {
+                SESSION_INSTALLER -> BackgroundSessionInstaller(context, app, file)
+                NATIVE_INSTALLER ->
+                    throw Exception("The current installer can not update apps in the background")
+                ROOT_INSTALLER -> RootInstaller(app, file)
             }
         }
     }
@@ -86,10 +88,10 @@ interface BackgroundAppInstaller : AppInstaller {
 interface ForegroundAppInstaller : AppInstaller, DefaultLifecycleObserver {
     companion object {
         fun create(activity: ComponentActivity, app: App, file: File): ForegroundAppInstaller {
-            return when {
-                GeneralSettingsHelper(activity).isRootUsageEnabled -> RootInstaller(app, file)
-                DeviceSdkTester.supportsAndroidNougat() -> ForegroundSessionInstaller(activity, app, file)
-                else -> IntentInstaller(activity, activity.activityResultRegistry, app, file)
+            return when (InstallerSettingsHelper(activity).getInstaller()) {
+                SESSION_INSTALLER -> ForegroundSessionInstaller(activity, app, file)
+                NATIVE_INSTALLER -> IntentInstaller(activity, activity.activityResultRegistry, app, file)
+                ROOT_INSTALLER -> RootInstaller(app, file)
             }
         }
     }

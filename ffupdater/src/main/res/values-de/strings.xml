@@ -57,8 +57,6 @@
     <string name="firefox_nightly__warning">- Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können.</string>
     <string name="firefox_release__description">Der Firefox Browser für Android blockt standardmäßig über 2000 Online-Tracker, die dir jeden Tag durchs Web folgen wollen – automatisch und mit dem verbesserten Tracking-Schutz. Warum? Um deine Privatsphäre zu schützen und Unternehmen davon abzuhalten, deine persönlichen Daten ohne deine Zustimmung zu sammeln und daraus Profit zu schlagen. Außerdem kannst du so noch schneller durchs Web surfen und bekommst nicht nur die Privatsphäre, die du verdienst, sondern auch den schnellen mobilen Browser, den du brauchst. Mit Adblocker Add-ons kannst du deinen Browser zusätzlich auf deine Bedürfnisse anpassen.</string>
     <string name="firefox_release__title">Firefox Browser</string>
-    <string name="general__use_root__summary">FFUpdater fragt nach Root-Rechten, wenn diese Option aktiviert ist und eine Anwendung installiert oder aktualisiert wird. Um Root-Rechte zu erhalten, müssen Sie Magisk oder andere Tools verwenden. Wenn diese Option aktiviert ist, installiert oder aktualisiert FFUpdater Anwendungen im Vorder- und Hintergrund ohne Benutzerinteraktion.</string>
-    <string name="general__use_root__title">Verwenden Sie die Root-Berechtigung, um Anwendungen zu installieren oder zu aktualisieren</string>
     <string name="go_back">Zurück</string>
     <string name="iceraven__description">Definitiv nicht von Mozilla für Sie entwickelt! \n\nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert. \n\nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
     <string name="iceraven__title">Iceraven Browser</string>
@@ -81,7 +79,6 @@
     <string name="install_activity__temporary_network_issue">Es ist ein vorübergehendes Netzwerkproblem aufgetreten. Bitte versuchen Sie es später erneut.</string>
     <string name="install_activity__too_low_memory_description">Auf Ihrem Gerät ist nur %1$d MB Speicherplatz verfügbar. Dies kann zu einem Download- oder Installationsfehler führen.</string>
     <string name="install_activity__too_low_memory_title">Wenig freier Speicher</string>
-    <string name="install_activity__try_disable_miui_optimization">Wenn Sie Xiaomi oder MIUI verwenden, versuchen Sie, die \"MIUI-Optimierung\" zu deaktivieren.</string>
     <string name="install_activity__use_cached_downloaded_apk">Verwende die bereits heruntergeladene Datei von:</string>
     <string name="install_activity__you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
     <string name="install_activity_label">Anwendung installieren</string>
@@ -183,7 +180,7 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen.
 \n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
-    <string name="settings__general_category__title">Allgemein</string>
+    <string name="settings__installer_category__title">Allgemein</string>
     <string name="download_notification__message">Lade Update für %1$s herunter (%2$s).</string>
     <string name="install_activity__open_folder">Öffne Ordner</string>
     <string name="install_activity__file_uri_exposed_toast">Der Dateipfad kann nicht an andere Apps weitergeleitet werden. Bitte öffne den Ordner selbst mit deinem bevorzugten Dateimanager.</string>

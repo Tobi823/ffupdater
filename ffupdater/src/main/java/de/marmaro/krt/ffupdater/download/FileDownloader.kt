@@ -61,11 +61,15 @@ class FileDownloader {
                 errorMessage = "HTTP code: ${response.code}"
                 return false
             }
+            if (!file.exists()) {
+                file.createNewFile()
+            }
             file.outputStream().buffered().use { fileWriter ->
                 body.byteStream().buffered().use { responseReader ->
                     // this method blocks until download is finished
                     try {
                         responseReader.copyTo(fileWriter)
+                        fileWriter.flush()
                     } catch (e: IOException) {
                         val message = context.getString(file_downloader__fail_to_handle_download_stream)
                         throw NetworkException(message, e)

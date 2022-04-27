@@ -241,6 +241,17 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/install_activity__different_installer_info"
+            style="@style/install_activity__segment"
+            android:padding="8dp">
+
+            <TextView
+                style="@style/install_activity__default_text"
+                android:text="@string/install_activity__different_installer_info__text" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/install_activity__delete_cache"
             style="@style/install_activity__segment"
             android:padding="8dp">

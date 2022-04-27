@@ -27,6 +27,9 @@ import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
+import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
+import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.ROOT_INSTALLER
+import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.SESSION_INSTALLER
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -43,6 +46,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {
     private val context = applicationContext
     private val backgroundSettings = BackgroundSettingsHelper(context)
+    private val installerSettings = InstallerSettingsHelper(context)
     private val dataStoreHelper = DataStoreHelper(context)
 
     /**
@@ -193,6 +197,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     @RequiresApi(Build.VERSION_CODES.O)
     private fun areInstallationPreconditionsUnfulfilled(): Result? {
         if (!context.packageManager.canRequestPackageInstalls()) {
+            Log.i(LOG_TAG, "Missing installation permission")
             return Result.retry()
         }
 
@@ -201,7 +206,16 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.success()
         }
 
-        return null
+        if (installerSettings.getInstaller() == ROOT_INSTALLER) {
+            return null
+        }
+
+        if (DeviceSdkTester.supportsAndroid12() && installerSettings.getInstaller() == SESSION_INSTALLER) {
+            return null
+        }
+
+        Log.i(LOG_TAG, "The current installer can not update apps in the background")
+        return Result.success()
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)

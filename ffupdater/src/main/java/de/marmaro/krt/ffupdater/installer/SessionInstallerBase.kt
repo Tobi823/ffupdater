@@ -10,10 +10,8 @@ import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.os.Build
 import android.os.Bundle
 import androidx.annotation.MainThread
-import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -26,7 +24,6 @@ import java.io.File
 import java.io.IOException
 
 
-@RequiresApi(Build.VERSION_CODES.N)
 abstract class SessionInstallerBase(
     context: Context,
     private val app: App,

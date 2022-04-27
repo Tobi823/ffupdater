@@ -36,6 +36,8 @@ import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
+import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.SESSION_INSTALLER
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -53,6 +55,7 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var appInstaller: ForegroundAppInstaller
     private lateinit var appCache: AppCache
     private lateinit var foregroundSettings: ForegroundSettingsHelper
+    private lateinit var installerSettingsHelper: InstallerSettingsHelper
 
     // persistent data across orientation changes
     class InstallActivityViewModel : ViewModel() {
@@ -85,6 +88,7 @@ class InstallActivity : AppCompatActivity() {
         }
 
         foregroundSettings = ForegroundSettingsHelper(this)
+        installerSettingsHelper = InstallerSettingsHelper(this)
         appCache = AppCache(viewModel.app!!)
         appInstaller = ForegroundAppInstaller.create(this, viewModel.app!!, appCache.getFile(this))
         lifecycle.addObserver(appInstaller)
@@ -316,16 +320,14 @@ class InstallActivity : AppCompatActivity() {
         viewModel.installationError = Pair(result.errorCode ?: -80, result.errorMessage ?: "/")
         hide(R.id.installingApplication)
         show(R.id.installerFailed)
+        if (installerSettingsHelper.getInstaller() == SESSION_INSTALLER) {
+            show(R.id.install_activity__different_installer_info)
+        }
+
         show(R.id.install_activity__open_cache_folder)
         val cacheFolder = appCache.getFile(this).parentFile?.absolutePath ?: ""
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
-        var error = viewModel.installationError?.second
-        if (error != null) {
-            if ("INSTALL_FAILED_INTERNAL_ERROR" in error && "Permission Denied" in error) {
-                error += "\n\n${getString(R.string.install_activity__try_disable_miui_optimization)}"
-            }
-            setText(R.id.installerFailedReason, error)
-        }
+        setText(R.id.installerFailedReason, viewModel.installationError?.second ?: "/")
         if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
             appCache.delete(this)
         } else {

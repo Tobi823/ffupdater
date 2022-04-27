@@ -72,7 +72,6 @@
     <string name="install_activity__temporary_network_issue">Възникнал е временен проблем в мрежата. Опитайте отново по-късно.</string>
     <string name="install_activity__too_low_memory_description">Устройството разполага с малко свободно място (само %1$d МБ). Това може може да стане причина за неуспешно изтегляне или инсталиране.</string>
     <string name="install_activity__too_low_memory_title">Недостатъчно свободно пространство</string>
-    <string name="install_activity__try_disable_miui_optimization">Ако използвате устройство на Xiaomi или MIUI, опитайте да изключите „Оптимизация на MIUI“.</string>
     <string name="install_activity__use_cached_downloaded_apk">Използва се изтегления файл:</string>
     <string name="install_activity__you_can_now_close_this_window">Можете да затворите прозореца</string>
     <string name="install_activity_label">Инсталиране</string>
@@ -162,7 +161,6 @@
     <string name="settings__foreground_category__summary">Настройки на приложението, когато потребителският интерфейс е видим.</string>
     <string name="successful_update_notification__channel_description">Категория известия за успешно обновяване на %1$s.</string>
     <string name="settings__background__update_check__excluded_apps__title">Изключване на приложения от проверката за обновяване</string>
-    <string name="general__use_root__title">Инсталиране и обновяване с правата на суперпотребителя</string>
     <string name="settings__background__download__enabled__title">Изтегляне на издания на приложенията</string>
     <string name="settings__background__update_check__interval__title">Интервал за проверка на издания</string>
     <string name="bromite_systemwebview__description">Пакетът SystemWebView съдържа ядрото на четеца/машината за изчертаване на Bromite и същите функции. Той предлага възможност за замяна на компонента на мрежовия четец по подразбиране за цялата система на Android.</string>
@@ -183,14 +181,13 @@
     <string name="failed_update_notification__channel_name">Известие за неуспешно обновяване на %1$s</string>
     <string name="failed_update_notification__channel_description">Категория известия за неуспешно обновяване на %1$s.</string>
     <string name="failed_update_notification__notification_title">%1$s не можа да бъде обновен.</string>
-    <string name="general__use_root__summary">Ако е включено FFUpdater ще поиска разрешение за достъп до суперпотребителя за инсталирате или обновяване приложениея. За да получите достъп до суперпотребителя, трябва да използвате Magisk или друг инструмент. Ако е включено, FFUpdater ще инсталира и обновява приложения на преден план и във фонов режим без взаимодействие с потребителя.</string>
     <string name="main_activity__no_unmetered_network">Няма мрежи без отчитане</string>
     <string name="running_downloads_dialog__message">В момента във фонов режим се изтегля обновяване. Желаете ли да започне ново изтегляне, което може да отнеме повече време\?</string>
     <string name="settings__background__update_check__metered__title">Проверка за обновяване в мрежи с отчитане на трафика</string>
     <string name="settings__background_category__summary">Настройки на приложението, когато работи във фонов режим и е невидимо за потребителя.</string>
     <string name="settings__background_category__title">Работа във фонов режим</string>
     <string name="settings__foreground__update_check__metered__title">Проверка за обновяване в мрежи с отчитане на трафика</string>
-    <string name="settings__general_category__title">Основни</string>
+    <string name="settings__installer_category__title">Основни</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Премахнете изтегленото обновяване ако не е инсталирано успешно.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Премахнете изтегленото обновяване ако не е инсталирано успешно.</string>
     <string name="install_activity__file_uri_exposed_toast">Пътят до файла не може да бъде предоставен на други приложения. Отворете папката сами с предпочитаното от вас приложение за управление на файлове.</string>

@@ -10,6 +10,9 @@ import kotlin.system.exitProcess
 class CrashListener private constructor(private val file: File) : Thread.UncaughtExceptionHandler {
 
     override fun uncaughtException(t: Thread, e: Throwable) {
+        if (!file.exists()) {
+            file.createNewFile()
+        }
         file.bufferedWriter().use {
             val stacktrace = e.stackTraceToString().trim()
             it.write(stacktrace)

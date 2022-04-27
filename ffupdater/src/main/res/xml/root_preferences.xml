@@ -120,14 +120,28 @@
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
-    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__general_category__title">
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__installer_category__title">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="installer__session"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__installer__session__summary"
+            app:title="@string/settings__installer__session__title" />
 
         <SwitchPreferenceCompat
             app:defaultValue="false"
-            app:key="general__use_root"
+            app:key="installer__native"
             app:singleLineTitle="false"
-            app:summary="@string/general__use_root__summary"
-            app:title="@string/general__use_root__title" />
+            app:summary="@string/settings__installer__native__summary"
+            app:title="@string/settings__installer__native__title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="installer__root"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__installer__root__summary"
+            app:title="@string/settings__installer__root__title" />
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 

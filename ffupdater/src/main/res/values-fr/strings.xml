@@ -60,8 +60,6 @@
     <string name="firefox_nightly__warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer \?</string>
     <string name="firefox_release__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_release__title">Firefox</string>
-    <string name="general__use_root__summary">FFUpdater demandera l\'autorisation de l\'utilisateur root si cette option est activée et si une application est installée ou mise à jour. Pour obtenir les privilèges root, vous devez utiliser Magisk ou d\'autres outils. Si cette option est activée, FFUpdater installera ou mettra à jour des applications en avant-plan et en arrière-plan sans intervention de l\'utilisateur.</string>
-    <string name="general__use_root__title">Utiliser l\'autorisation de la racine pour installer ou mettre à jour des applications</string>
     <string name="go_back">retourner</string>
     <string name="iceraven__description">Ce n\'est certainement pas Mozilla qui vous l\'a apporté !
 \n
@@ -90,7 +88,6 @@
     <string name="install_activity__temporary_network_issue">Un problème de réseau temporaire s\'est produit. Veuillez réessayer plus tard.</string>
     <string name="install_activity__too_low_memory_description">Sur votre appareil, il n\'y a que %1$d MB d\'espace disponible. Cela peut entraîner un échec du téléchargement ou de l\'installation.</string>
     <string name="install_activity__too_low_memory_title">Espace disque faible</string>
-    <string name="install_activity__try_disable_miui_optimization">Si vous utilisez Xiaomi ou MIUI, essayez de désactiver \"MIUI Optimization\".</string>
     <string name="install_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de :</string>
     <string name="install_activity__you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
     <string name="install_activity_label">Installer l\'application</string>
@@ -193,7 +190,7 @@
     <string name="vivaldi__warning">Vivaldi n\'est que partiellement open source (voir <a href="https ://vivaldi.com/blog/vivaldi-browser-open-source/">https ://vivaldi.com/blog/vivaldi-browser-open-source/</a> pour plus d\'informations). Il utilise également la base technique de Google Chrome (Chromium).
 \n
 \nCertaines personnes n\'aiment pas cela. Voulez-vous installer Vivaldi \?</string>
-    <string name="settings__general_category__title">Général</string>
+    <string name="settings__installer_category__title">Général</string>
     <string name="install_activity__file_uri_exposed_toast">Nous ne pouvons pas exposer le chemin du fichier à d\'autres applications. Veuillez ouvrir le dossier vous-même avec votre gestionnaire de fichiers préféré.</string>
     <string name="download_notification__message">Télécharger la mise à jour pour %1$s (%2$s).</string>
 </resources>
