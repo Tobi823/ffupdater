@@ -1,0 +1,1 @@
+* Oprava pádu instalačního programu relace na zařízeních OnePlus (Tobi823/ffupdater#153)

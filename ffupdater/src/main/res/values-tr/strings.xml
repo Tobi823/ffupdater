@@ -230,4 +230,12 @@
 \n
 \n%2$s</item>
     </plurals>
+    <string name="settings__installer_category__title">Kurucu</string>
+    <string name="settings__installer__session__title">Oturum kurucusu</string>
+    <string name="settings__installer__native__title">Yerel kurucu</string>
+    <string name="settings__installer__root__summary">Kullanıcı etkileşimi olmadan uygulamaları kurmak veya güncellemek için root iznini kullanır. Bu, root yapılmış bir akıllı telefon gerektirir.</string>
+    <string name="settings__installer__root__title">Root kurucusu</string>
+    <string name="install_activity__different_installer_info__text">Kurulum sık sık başarısız oluyorsa, ayarlar kısmında \'yerel kurucu\' kullanmayı deneyin.</string>
+    <string name="settings__installer__session__summary">Çoğu aygıt için önerilir.</string>
+    <string name="settings__installer__native__summary">Oturum kurucusu akıllı telefonunuzda çalışmıyorsa onun yerine kullanılır. Bu, Samsung veya Xiaomi marka aygıtlarda daha sık görülür.</string>
 </resources>

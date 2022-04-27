@@ -197,7 +197,7 @@
     <string name="install_activity__file_uri_exposed_toast">Пътят до файла не може да бъде предоставен на други приложения. Отворете папката сами с предпочитаното от вас приложение за управление на файлове.</string>
     <string name="settings__background__update_check__enabled__summary">Регулярна проверка за обновявания.</string>
     <string name="settings__background__download__metered__title">Изтегляне на обновявания в мрежи с отчитане на трафика</string>
-    <string name="settings__background__installation__enabled__summary">Прави се опит за обновяване без участието на потребителя.</string>
+    <string name="settings__background__installation__enabled__summary">Извършва се опит за обновяване без участието на потребителя.</string>
     <string name="settings__background__update_check__excluded_apps__summary">Полезно, ако не искате да обновявате дадено приложение и не желаете да получавате известия за нови издания.</string>
     <string name="settings__foreground__download__metered__summary">Полезно за потребители с ограничен обем мобилни данни.</string>
     <string name="settings__foreground__download__metered__title">Изтегляне на обновявания в мрежи с отчитане на трафика</string>
@@ -227,4 +227,11 @@
 \n%2$s</item>
     </plurals>
     <string name="app_warning_dialog__title">Внимание</string>
+    <string name="settings__installer__session__title">Сесиен инсталатор</string>
+    <string name="settings__installer__native__title">Вграден инсталатор</string>
+    <string name="settings__installer__root__title">Инсталиране чрез суперпотербителя</string>
+    <string name="install_activity__different_installer_info__text">Ако често инсталацията е неуспешна изберете „вграден инсталатор“ в настройките.</string>
+    <string name="settings__installer__session__summary">Препоръчано за повечето устройства.</string>
+    <string name="settings__installer__native__summary">Резервен вариант ако сесийният инсталатор не работи на устройството. Най-често се случва на устройства от Samsung и Xiaomi.</string>
+    <string name="settings__installer__root__summary">Използва правата на суперпотребителя, за да инсталира или обновява приложения без участието на потребителя. Изисква достъп до права на суперпотребителя на устройството.</string>
 </resources>

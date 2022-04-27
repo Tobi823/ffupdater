@@ -1,0 +1,1 @@
+* Naprawiono awarię instalatora sesji na urządzeniach OnePlus (Tobi823/ffupdater#153).

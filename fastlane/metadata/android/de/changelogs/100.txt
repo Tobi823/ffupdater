@@ -1,0 +1,1 @@
+* Behebt den Absturz des Session-Installers auf OnePlus-Geräten (Tobi823/ffupdater#153)

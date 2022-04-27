@@ -1,0 +1,6 @@
+* Poprawa tłumaczeń - dzięki:
+  * Oğuz Ersen: turecki
+  * 109247019824: Bulgarian
+* Dodanie opcji użycia starszego natywnego instalatora dla urządzeń, w których implementacja PackageInstaller jest błędna (np. Samsung i Xiaomi)
+* Lepsze wyświetlanie ostrzeżeń i minusów dla każdej przeglądarki
+* Wyczyść i przeformułuj kod

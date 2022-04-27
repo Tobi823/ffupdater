@@ -1,0 +1,6 @@
+* Migliorare le traduzioni - grazie:
+  * Oğuz Ersen: Turco
+  * 109247019824: Bulgaro
+* Aggiungere l'opzione di usare il vecchio installer nativo per i dispositivi che hanno un'implementazione buggy di PackageInstaller (per esempio Samsung e Xiaomi)
+* Migliore visualizzazione delle avvertenze/scorciatoie per ogni browser
+* Pulizia e rifattorizzazione del codice
