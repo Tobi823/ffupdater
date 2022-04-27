@@ -117,6 +117,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * But this does not always happen reliably.
      */
     private fun areUpdateCheckPreconditionsUnfulfilled(): Result? {
+        if (isStopped) {
+            Log.i(LOG_TAG, "BackgroundJob was canceled.")
+            return Result.success()
+        }
+
         if (!backgroundSettings.isUpdateCheckEnabled) {
             Log.i(LOG_TAG, "Background should be disabled - disable it now.")
             return Result.failure()
@@ -136,17 +141,25 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private suspend fun checkForUpdates(): List<App> {
-        val apps = App.values()
+        return App.values()
             .filter { it !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { it.detail.isInstalled(context) }
-        val appsWithAvailableUpdates = apps.filter {
-            val updateCheckResult = it.detail.updateCheckAsync(context).await()
-            updateCheckResult.isUpdateAvailable
-        }
-        return appsWithAvailableUpdates
+            .filter {
+                if (!isStopped) {
+                    val updateCheckResult = it.detail.updateCheckAsync(context).await()
+                    updateCheckResult.isUpdateAvailable
+                } else {
+                    false
+                }
+            }
     }
 
     private fun areDownloadPreconditionsUnfulfilled(): Result? {
+        if (isStopped) {
+            Log.i(LOG_TAG, "BackgroundJob was canceled.")
+            return Result.success()
+        }
+
         if (!backgroundSettings.isDownloadEnabled) {
             Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
             return Result.success()
@@ -166,6 +179,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      */
     @MainThread
     private suspend fun downloadUpdate(app: App) {
+        if (isStopped) {
+            Log.i(LOG_TAG, "BackgroundJob was canceled.")
+            return
+        }
+
         if (!StorageUtil.isEnoughStorageAvailable(context)) {
             Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
             return
@@ -198,6 +216,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun areInstallationPreconditionsUnfulfilled(): Result? {
+        if (isStopped) {
+            Log.i(LOG_TAG, "BackgroundJob was canceled.")
+            return Result.success()
+        }
+
         if (!context.packageManager.canRequestPackageInstalls()) {
             Log.i(LOG_TAG, "Missing installation permission")
             return Result.retry()
@@ -222,6 +245,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private suspend fun installApplication(app: App) {
+        if (isStopped) {
+            Log.i(LOG_TAG, "BackgroundJob was canceled.")
+            return
+        }
+
         val appCache = AppCache(app)
         val file = appCache.getFile(context)
         if (!file.exists()) {
