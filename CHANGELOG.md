@@ -1,3 +1,7 @@
+# 2022-04-28 Version 75.4.2 (100)
+
+* Fix crash of session installer on OnePlus devices (Tobi823/ffupdater#153)
+
 # 2022-04-27 Version 75.4.1 (99)
 
 * Improve translations - thanks:
