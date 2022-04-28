@@ -1,6 +1,8 @@
-# 2022-04-?? Version 75.4.3 (101)
+# 2022-04-28 Version 75.4.3 (101)
 
+* Thanks 109247019824, Oğuz Ersen and Vitor Henrique for improving the translation
 * Background job can be stopped more reliable by the operating system (Tobi823/ffupdater#148)
+* Improve check for GitHub rate limit (Tobi823/ffupdater#152)
 
 # 2022-04-28 Version 75.4.2 (100)
 
