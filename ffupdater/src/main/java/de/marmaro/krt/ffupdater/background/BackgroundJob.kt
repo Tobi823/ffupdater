@@ -33,6 +33,7 @@ import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.ROOT_
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.SESSION_INSTALLER
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 import java.time.Duration
 import java.time.LocalDateTime
@@ -60,22 +61,29 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * <a>https://developer.android.com/reference/androidx/work/BackoffPolicy?hl=en#EXPONENTIAL</a>
      * <a>https://developer.android.com/reference/androidx/work/WorkRequest#DEFAULT_BACKOFF_DELAY_MILLIS</a>
      *
+     * The coroutineScope ensures that stopping the BackgroundJob will also stop the app update check, app
+     * download and app installation.
+     *
      * Result.failure will remove the scheduled job (and that's unwanted).
      * Result.success will execute the job in the next period.
      * Result.retry will retry the job with exponentially increased wait time (30s, 1m, 2m, ...).
      */
     @MainThread
-    override suspend fun doWork(): Result {
-        return try {
+    override suspend fun doWork(): Result = coroutineScope {
+        try {
             Log.i(LOG_TAG, "Execute background job for update check.")
             executeBackgroundJob()
         } catch (e: CancellationException) {
+            Log.w(LOG_TAG, "Background job failed (CancellationException)", e)
             handleRetryableError(e, RUN_ATTEMPTS_FOR_1HOUR)
         } catch (e: GithubRateLimitExceededException) {
+            Log.w(LOG_TAG, "Background job failed (GithubRateLimitExceededException)", e)
             handleRetryableError(e, RUN_ATTEMPTS_FOR_2DAYS)
         } catch (e: NetworkException) {
+            Log.w(LOG_TAG, "Background job failed (NetworkException)", e)
             handleRetryableError(e, RUN_ATTEMPTS_FOR_2DAYS)
         } catch (e: Exception) {
+            Log.e(LOG_TAG, "Background job failed due to an unexpected exception", e)
             showErrorNotification(e)
             Result.success()
         }
@@ -117,11 +125,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * But this does not always happen reliably.
      */
     private fun areUpdateCheckPreconditionsUnfulfilled(): Result? {
-        if (isStopped) {
-            Log.i(LOG_TAG, "BackgroundJob was canceled.")
-            return Result.success()
-        }
-
         if (!backgroundSettings.isUpdateCheckEnabled) {
             Log.i(LOG_TAG, "Background should be disabled - disable it now.")
             return Result.failure()
@@ -145,21 +148,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             .filter { it !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { it.detail.isInstalled(context) }
             .filter {
-                if (!isStopped) {
-                    val updateCheckResult = it.detail.updateCheckAsync(context).await()
-                    updateCheckResult.isUpdateAvailable
-                } else {
-                    false
-                }
+                val updateCheckResult = it.detail.updateCheckAsync(context).await()
+                updateCheckResult.isUpdateAvailable
             }
     }
 
     private fun areDownloadPreconditionsUnfulfilled(): Result? {
-        if (isStopped) {
-            Log.i(LOG_TAG, "BackgroundJob was canceled.")
-            return Result.success()
-        }
-
         if (!backgroundSettings.isDownloadEnabled) {
             Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
             return Result.success()
@@ -179,11 +173,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      */
     @MainThread
     private suspend fun downloadUpdate(app: App) {
-        if (isStopped) {
-            Log.i(LOG_TAG, "BackgroundJob was canceled.")
-            return
-        }
-
         if (!StorageUtil.isEnoughStorageAvailable(context)) {
             Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
             return
@@ -216,11 +205,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun areInstallationPreconditionsUnfulfilled(): Result? {
-        if (isStopped) {
-            Log.i(LOG_TAG, "BackgroundJob was canceled.")
-            return Result.success()
-        }
-
         if (!context.packageManager.canRequestPackageInstalls()) {
             Log.i(LOG_TAG, "Missing installation permission")
             return Result.retry()
@@ -245,11 +229,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private suspend fun installApplication(app: App) {
-        if (isStopped) {
-            Log.i(LOG_TAG, "BackgroundJob was canceled.")
-            return
-        }
-
         val appCache = AppCache(app)
         val file = appCache.getFile(context)
         if (!file.exists()) {
