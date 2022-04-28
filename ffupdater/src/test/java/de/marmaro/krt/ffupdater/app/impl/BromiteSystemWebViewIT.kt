@@ -49,10 +49,10 @@ class BromiteSystemWebViewIT {
             )
         } returns packageInfo
         coEvery {
-            apiConsumer.consumeNetworkResource(
+            apiConsumer.consumeAsync(
                 "https://api.github.com/repos/bromite/bromite/releases/latest",
                 GithubConsumer.Release::class
-            )
+            ).await()
         } returns Gson().fromJson(
             FileReader("$FOLDER_PATH/latest.json"),
             GithubConsumer.Release::class.java

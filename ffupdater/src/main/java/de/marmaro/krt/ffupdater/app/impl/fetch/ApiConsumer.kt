@@ -6,11 +6,12 @@ import androidx.annotation.WorkerThread
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import java.io.FileNotFoundException
 import java.io.IOException
 import kotlin.reflect.KClass
 
@@ -31,20 +32,35 @@ class ApiConsumer {
      * @throws GithubRateLimitExceededException if the GitHub-API rate limit is exceeded.
      */
     @MainThread
-    suspend fun <T : Any> consumeNetworkResource(url: String, clazz: KClass<T>): T {
+    suspend fun <T : Any> consumeAsync(url: String, clazz: KClass<T>): Deferred<T> {
         return withContext(Dispatchers.IO) {
-            readNetworkResource(url, clazz)
+            async {
+                try {
+                    consume(url, clazz)
+                } catch (e: IOException) {
+                    throw NetworkException("Fail to consume '$url'.", e)
+                }
+            }
         }
     }
 
     @WorkerThread
-    private fun <T : Any> readNetworkResource(url: String, clazz: KClass<T>): T {
+    private fun <T : Any> consume(url: String, clazz: KClass<T>): T {
         require(url.startsWith("https://"))
         TrafficStats.setThreadStatsTag(threadId)
-        try {
-            val request = Request.Builder().url(url).build()
-            client.newCall(request).execute().use { response ->
+
+        val request = Request.Builder()
+            .url(url)
+            .build()
+        client.newCall(request)
+            .execute()
+            .use { response ->
+                if (url.startsWith(GITHUB_URL) && response.code == 403) {
+                    throw GithubRateLimitExceededException(Exception("response code is ${response.code}"))
+                }
+
                 val body = requireNotNull(response.body)
+
                 if (clazz == String::class) {
                     @Suppress("UNCHECKED_CAST")
                     return body.string() as T
@@ -53,14 +69,9 @@ class ApiConsumer {
                     return gson.fromJson(reader, clazz.java)
                 }
             }
-        } catch (e: FileNotFoundException) {
-            if (url.startsWith("https://api.github.com")) {
-                throw GithubRateLimitExceededException(e)
-            } else {
-                throw NetworkException("Fail to consume ${clazz.qualifiedName} from '$url'.", e)
-            }
-        } catch (e: IOException) {
-            throw NetworkException("Fail to consume ${clazz.qualifiedName} from '$url'.", e)
-        }
+    }
+
+    companion object {
+        const val GITHUB_URL = "https://api.github.com"
     }
 }

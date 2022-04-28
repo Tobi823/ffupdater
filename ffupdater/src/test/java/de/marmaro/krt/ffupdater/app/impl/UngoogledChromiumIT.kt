@@ -48,7 +48,7 @@ class UngoogledChromiumIT {
         val path =
             "src/test/resources/de/marmaro/krt/ffupdater/app/impl/UngoogledChromium/releases?per_page=2.json"
         coEvery {
-            apiConsumer.consumeNetworkResource(API_URL, Array<GithubConsumer.Release>::class)
+            apiConsumer.consumeAsync(API_URL, Array<GithubConsumer.Release>::class).await()
         } returns Gson().fromJson(FileReader(path), Array<GithubConsumer.Release>::class.java)
     }
 

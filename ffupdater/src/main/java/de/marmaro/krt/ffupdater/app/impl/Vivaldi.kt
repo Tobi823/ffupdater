@@ -36,7 +36,7 @@ class Vivaldi(
             ABI.X86_64 -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_x86-64.apk)""""
             else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
         }
-        val content = apiConsumer.consumeNetworkResource(DOWNLOAD_WEBSITE_URL, String::class)
+        val content = apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, String::class).await()
         val regexMatch = Regex(regexPattern).find(content)
         checkNotNull(regexMatch) { "Can't find download link with regex pattern '$regexPattern'." }
         val downloadUrl = regexMatch.groups[1]

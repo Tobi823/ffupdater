@@ -100,7 +100,7 @@ class FirefoxNightlyIT {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxNightly/" +
                 "chain-of-trust.json"
         coEvery {
-            apiConsumer.consumeNetworkResource(url, MozillaCiJsonConsumer.ChainOfTrustJson::class)
+            apiConsumer.consumeAsync(url, MozillaCiJsonConsumer.ChainOfTrustJson::class).await()
         } returns Gson().fromJson(
             BufferedReader(FileReader(path)),
             MozillaCiJsonConsumer.ChainOfTrustJson::class.java

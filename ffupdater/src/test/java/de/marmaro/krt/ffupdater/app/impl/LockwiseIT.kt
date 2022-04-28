@@ -76,14 +76,14 @@ class LockwiseIT {
     private fun makeJsonObjectAvailable(fileName: String, url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise/$fileName"
         coEvery {
-            apiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
+            apiConsumer.consumeAsync(url, GithubConsumer.Release::class).await()
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 
     private fun makeJsonArrayAvailable(fileName: String, url: String) {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Lockwise//$fileName"
         coEvery {
-            apiConsumer.consumeNetworkResource(url, Array<GithubConsumer.Release>::class)
+            apiConsumer.consumeAsync(url, Array<GithubConsumer.Release>::class).await()
         } returns Gson().fromJson(FileReader(path), Array<GithubConsumer.Release>::class.java)
     }
 

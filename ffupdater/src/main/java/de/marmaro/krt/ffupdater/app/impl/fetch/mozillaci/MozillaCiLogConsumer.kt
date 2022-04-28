@@ -24,7 +24,7 @@ class MozillaCiLogConsumer(
      */
     @MainThread
     suspend fun updateCheck(): Result {
-        val response = apiConsumer.consumeNetworkResource(logUrl, String::class)
+        val response = apiConsumer.consumeAsync(logUrl, String::class).await()
         val extractVersion = {
             val regexMatch = Regex("""'(version|tag_name)': 'v?(.+)'""")
                 .find(response)

@@ -30,7 +30,7 @@ class GithubConsumer(
 
     @MainThread
     suspend fun updateCheck(): Result {
-        val start = if (onlyRequestReleasesInBulk) 2 else 1
+        val start = if (onlyRequestReleasesInBulk) 1 else 0
         for (tries in start..5) {
             val releases = requestReleases(tries)
             val validReleases = releases.filter { isReleaseValid(it) }
@@ -56,13 +56,13 @@ class GithubConsumer(
     @MainThread
     suspend fun requestReleases(tries: Int): Array<Release> {
         when (tries) {
-            1 -> {
-                val release = apiConsumer.consumeNetworkResource("$url/latest", Release::class)
+            0 -> {
+                val release = apiConsumer.consumeAsync("$url/latest", Release::class).await()
                 return arrayOf(release)
             }
-            2, 3, 4, 5 -> {
-                val url = "$url?per_page=$resultsPerPage&page=${tries - 1}"
-                return apiConsumer.consumeNetworkResource(url, Array<Release>::class)
+            1, 2, 3, 4, 5 -> {
+                val url = "$url?per_page=$resultsPerPage&page=${tries}"
+                return apiConsumer.consumeAsync(url, Array<Release>::class).await()
             }
         }
         throw InvalidApiResponseException("can't find release after $tries tries - abort")

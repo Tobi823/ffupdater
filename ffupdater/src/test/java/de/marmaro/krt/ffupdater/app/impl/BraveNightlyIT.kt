@@ -50,7 +50,7 @@ class BraveNightlyIT {
 
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/BraveNightly"
         coEvery {
-            apiConsumer.consumeNetworkResource("$API_URl?per_page=10&page=1", Array<Release>::class)
+            apiConsumer.consumeAsync("$API_URl?per_page=10&page=1", Array<Release>::class).await()
         } returns Gson().fromJson(
             FileReader("$basePath/releases.json"),
             Array<Release>::class.java

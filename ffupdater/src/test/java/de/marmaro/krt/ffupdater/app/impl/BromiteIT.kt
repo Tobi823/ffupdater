@@ -44,10 +44,10 @@ class BromiteIT {
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { packageManager.getPackageInfo(App.BROMITE.detail.packageName, 0) } returns packageInfo
         coEvery {
-            apiConsumer.consumeNetworkResource(
+            apiConsumer.consumeAsync(
                 "https://api.github.com/repos/bromite/bromite/releases/latest",
                 GithubConsumer.Release::class
-            )
+            ).await()
         } returns Gson().fromJson(
             FileReader("$FOLDER_PATH/latest_contains_release_version.json"),
             GithubConsumer.Release::class.java

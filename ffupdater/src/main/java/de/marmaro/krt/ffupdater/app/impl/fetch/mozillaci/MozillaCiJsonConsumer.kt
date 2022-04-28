@@ -25,7 +25,7 @@ class MozillaCiJsonConsumer(
      */
     @MainThread
     suspend fun updateCheck(): Result {
-        val response = apiConsumer.consumeNetworkResource(jsonUrl, ChainOfTrustJson::class)
+        val response = apiConsumer.consumeAsync(jsonUrl, ChainOfTrustJson::class).await()
         val artifact = response.artifacts[apkArtifact]
         checkNotNull(artifact) {
             "Missing artifact '$apkArtifact'. Only [${response.artifacts.keys.joinToString()}] " +

@@ -50,7 +50,7 @@ class FirefoxFocusIT {
         val url = "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest"
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxFocus/latest.json"
         coEvery {
-            apiConsumer.consumeNetworkResource(url, GithubConsumer.Release::class)
+            apiConsumer.consumeAsync(url, GithubConsumer.Release::class).await()
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 

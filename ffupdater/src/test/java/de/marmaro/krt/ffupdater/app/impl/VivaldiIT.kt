@@ -43,7 +43,7 @@ class VivaldiIT {
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Vivaldi/download.html"
         coEvery {
-            apiConsumer.consumeNetworkResource("https://vivaldi.com/download/", String::class)
+            apiConsumer.consumeAsync("https://vivaldi.com/download/", String::class).await()
         } returns File(path).readText()
     }
 

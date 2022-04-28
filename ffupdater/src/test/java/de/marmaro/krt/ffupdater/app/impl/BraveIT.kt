@@ -72,14 +72,14 @@ class BraveIT {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave"
 
         coEvery {
-            apiConsumer.consumeNetworkResource("$API_URl/latest", Release::class)
+            apiConsumer.consumeAsync("$API_URl/latest", Release::class).await()
         } returns Gson().fromJson(
             FileReader("$basePath/latest_contains_NOT_release_version.json"),
             Release::class.java
         )
 
         coEvery {
-            apiConsumer.consumeNetworkResource("$API_URl?per_page=20&page=1", Array<Release>::class)
+            apiConsumer.consumeAsync("$API_URl?per_page=20&page=1", Array<Release>::class).await()
         } returns Gson().fromJson(
             FileReader("$basePath/2releases_perpage_20_page_1.json"),
             Array<Release>::class.java
@@ -90,21 +90,21 @@ class BraveIT {
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave"
 
         coEvery {
-            apiConsumer.consumeNetworkResource("$API_URl/latest", Release::class)
+            apiConsumer.consumeAsync("$API_URl/latest", Release::class).await()
         } returns Gson().fromJson(
             FileReader("$basePath/latest_contains_NOT_release_version.json"),
             Release::class.java
         )
 
         coEvery {
-            apiConsumer.consumeNetworkResource("$API_URl?per_page=20&page=1", Array<Release>::class)
+            apiConsumer.consumeAsync("$API_URl?per_page=20&page=1", Array<Release>::class).await()
         } returns Gson().fromJson(
             FileReader("$basePath/3releases_perpage_10_page_1.json"),
             Array<Release>::class.java
         )
 
         coEvery {
-            apiConsumer.consumeNetworkResource("$API_URl?per_page=20&page=2", Array<Release>::class)
+            apiConsumer.consumeAsync("$API_URl?per_page=20&page=2", Array<Release>::class).await()
         } returns Gson().fromJson(
             FileReader("$basePath/3releases_perpage_10_page_2.json"),
             Array<Release>::class.java

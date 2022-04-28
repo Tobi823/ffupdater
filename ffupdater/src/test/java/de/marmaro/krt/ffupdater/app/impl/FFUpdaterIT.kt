@@ -44,7 +44,7 @@ class FFUpdaterIT {
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FFUpdater/latest.json"
         coEvery {
-            apiConsumer.consumeNetworkResource("$API_URL/latest", GithubConsumer.Release::class)
+            apiConsumer.consumeAsync("$API_URL/latest", GithubConsumer.Release::class).await()
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
     }
 

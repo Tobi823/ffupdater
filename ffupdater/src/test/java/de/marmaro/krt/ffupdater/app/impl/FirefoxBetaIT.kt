@@ -88,7 +88,7 @@ class FirefoxBetaIT {
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
                 "chain_of_trust.log"
         coEvery {
-            apiConsumer.consumeNetworkResource(url, String::class)
+            apiConsumer.consumeAsync(url, String::class).await()
         } returns File(path).readText()
     }
 
