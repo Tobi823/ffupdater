@@ -156,7 +156,7 @@ class DownloadApiChecker {
         val result = runBlocking { iceraven.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 3 * 30
+        val maxDays = 4 * 30
         assertTrue(age.toDays() < maxDays) { "$age must be smaller then $maxDays days" }
     }
 

@@ -21,7 +21,7 @@ class Iceraven(
     override val packageName = "io.github.forkmaintainers.iceraven"
     override val displayTitle = R.string.iceraven__title
     override val displayDescription = R.string.iceraven__description
-    override val displayWarning: Int? = null
+    override val displayWarning = R.string.iceraven__warning
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_logo_iceraven
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP

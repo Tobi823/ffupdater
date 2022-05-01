@@ -200,6 +200,7 @@
     <string name="settings__installer__root__summary">Uses root permission to install or update apps without user interaction. This requires a rooted smartphone.</string>
     <string name="settings__installer__root__title">Root installer</string>
     <string name="install_activity__different_installer_info__text">If the installation fails frequently, try switching to the \'native installer\' in the settings.</string>
+    <string name="iceraven__warning">- The maintainer gives no warranties or guarantees of security or updates or even stability.</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="one">%1$s has the following problem:\n\n%2$s\n\nDo you still want to install %1$s?</item>
         <item quantity="other">%1$s has the following problems:\n\n%2$s\n\nDo you still want to install %1$s?</item>
