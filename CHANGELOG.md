@@ -1,5 +1,6 @@
 # 2022-05-02 Version 75.5.0 (102)
 
+* Thanks 109247019824, WaldiS and Oğuz Ersen for improving the translation
 * Add Kiwi Browser Next
 
 # 2022-04-28 Version 75.4.3 (101)
