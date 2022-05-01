@@ -1,0 +1,3 @@
+* Obrigado 109247019824, Oğuz Ersen e Vitor Henrique por melhorarem a tradução
+* O trabalho de fundo pode ser interrompido de forma mais fiável pelo sistema operacional (Tobi823/ffupdater#148)
+* Melhorar a verificação do limite da taxa GitHub (Tobi823/ffupdater#152)
