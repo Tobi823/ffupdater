@@ -127,7 +127,7 @@
     <string name="running_downloads_dialog__title">Devam eden indirmeler</string>
     <string name="running_downloads_dialog__yes">Evet</string>
     <string name="session_installer__not_enough_storage">Yeterli depolama alanı olmadığı için işlem başarısız oldu: %1$s</string>
-    <string name="session_installer__require_user_interaction">Kullanıcı etkileşimi gerektirir.</string>
+    <string name="session_installer__require_user_interaction">Kullanıcı etkileşimi gerektirir. Uygulamayı önce FFUpdater kullanıcı arayüzü aracılığıyla güncellemelisiniz. Ancak bundan sonra ilgili uygulama için sessiz arka plan güncellemelerine izin verilir.</string>
     <string name="session_installer__status_failure">İşlem genel bir şekilde başarısız oldu. Sistem her zaman daha özel bir arıza nedeni sağlamaya çalışacaktır, ancak bazı nadir durumlarda bu sağlanabilir.</string>
     <string name="session_installer__status_failure_aborted">İşlem, etkin bir şekilde durdurulduğu için başarısız oldu. Örneğin, kullanıcı istenen izinleri etkin bir şekilde reddetti veya oturum sonlandırıldı.</string>
     <string name="session_installer__status_failure_blocked">İşlem engellendiği için başarısız oldu. Örneğin, bir aygıt politikası işlemi engelliyor olabilir, bir paket doğrulayıcı işlemi engellemiş olabilir veya uygulama, çekirdek sistem işlemi için gerekli olabilir.</string>
@@ -238,4 +238,5 @@
     <string name="install_activity__different_installer_info__text">Kurulum sık sık başarısız oluyorsa, ayarlar kısmında \'yerel kurucu\' kullanmayı deneyin.</string>
     <string name="settings__installer__session__summary">Çoğu aygıt için önerilir.</string>
     <string name="settings__installer__native__summary">Oturum kurucusu akıllı telefonunuzda çalışmıyorsa onun yerine kullanılır. Bu, Samsung veya Xiaomi marka aygıtlarda daha sık görülür.</string>
+    <string name="iceraven__warning">- Geliştiricisi, güvenlik veya güncellemeler ve hatta kararlılık konusunda hiçbir garanti vermez.</string>
 </resources>
