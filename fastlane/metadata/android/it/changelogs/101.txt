@@ -1,0 +1,3 @@
+* Grazie 109247019824, Oğuz Ersen e Vitor Henrique per aver migliorato la traduzione
+* Il lavoro in background può essere fermato in modo più affidabile dal sistema operativo (Tobi823/ffupdater#148)
+* Migliora il controllo del limite di velocità di GitHub (Tobi823/ffupdater#152)
