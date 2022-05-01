@@ -95,7 +95,7 @@
     <string name="main_activity__subtitle">Обновявайте мрежовите четци от Mozilla</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
     <string name="manage_storage_activity__delete_button">Изчистване на обновяванията от междинната памет.</string>
-    <string name="manage_storage_activity__explanation">FFUpdater разполага изтеглените обновявания в междинна памет в папката „Android/data/de.marmaro.krt.ffupdater/files/Download“.
+    <string name="manage_storage_activity__explanation">FFUpdater временно разполага изтеглените обновявания в папката „Android/data/de.marmaro.krt.ffupdater/files/Download“.
 \n
 \nПо този начин се пести трафик ако приложението не е успешно инсталирано или обновено. Освен това, междинната памет е необходима, за да може изтеглените във фонов режим обновявания да бъдат инсталирани по-късно.
 \n
@@ -192,8 +192,8 @@
     <string name="settings__background_category__title">Работа във фонов режим</string>
     <string name="settings__foreground__update_check__metered__title">Проверка за обновяване в мрежи с отчитане на трафика</string>
     <string name="settings__installer_category__title">Основни</string>
-    <string name="settings__b_f__delete_cache_if_install_successful">Премахнете изтегленото обновяване ако не е инсталирано успешно.</string>
-    <string name="settings__b_f__delete_cache_if_install_failed">Премахнете изтегленото обновяване ако не е инсталирано успешно.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Премахване на изтегления файл ако обновяването е успешно</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Премахване на изтегления файл ако обновяването не е успешно</string>
     <string name="install_activity__file_uri_exposed_toast">Пътят до файла не може да бъде предоставен на други приложения. Отворете папката сами с предпочитаното от вас приложение за управление на файлове.</string>
     <string name="settings__background__update_check__enabled__summary">Регулярна проверка за обновявания.</string>
     <string name="settings__background__download__metered__title">Изтегляне на обновявания в мрежи с отчитане на трафика</string>
