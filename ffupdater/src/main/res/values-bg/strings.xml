@@ -234,4 +234,5 @@
     <string name="settings__installer__session__summary">Препоръчано за повечето устройства.</string>
     <string name="settings__installer__native__summary">Резервен вариант ако сесийният инсталатор не работи на устройството. Най-често се случва на устройства от Samsung и Xiaomi.</string>
     <string name="settings__installer__root__summary">Използва правата на суперпотребителя, за да инсталира или обновява приложения без участието на потребителя. Изисква достъп до права на суперпотребителя на устройството.</string>
+    <string name="iceraven__warning">- Отговорникът не дава никакви гаранции за сигурност или обновявания, или дори стабилност.</string>
 </resources>
