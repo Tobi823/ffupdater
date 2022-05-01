@@ -47,7 +47,7 @@ class BraveNightly(
             isValidRelease = { release -> release.isPreRelease && release.name.startsWith("Nightly v") },
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
-            onlyRequestReleasesInBulk = true,
+            dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

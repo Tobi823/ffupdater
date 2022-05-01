@@ -47,7 +47,7 @@ class BraveBeta(
             isValidRelease = { release -> release.isPreRelease && release.name.startsWith("Beta v") },
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
-            onlyRequestReleasesInBulk = true,
+            dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

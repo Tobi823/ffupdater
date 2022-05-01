@@ -30,6 +30,7 @@
         <package android:name="com.brave.browser" />
         <package android:name="com.brave.browser_beta" />
         <package android:name="com.brave.browser_nightly" />
+        <package android:name="com.kiwibrowser.browser" />
         <package android:name="com.vivaldi.browser" />
         <package android:name="de.marmaro.krt.ffupdater" />
         <package android:name="io.github.forkmaintainers.iceraven" />
@@ -43,6 +44,7 @@
         <package android:name="org.mozilla.klar" />
         <package android:name="org.mozilla.rocket" />
         <package android:name="org.ungoogled.chromium.stable" />
+
     </queries>
 
     <application

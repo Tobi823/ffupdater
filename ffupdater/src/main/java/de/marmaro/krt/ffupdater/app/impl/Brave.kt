@@ -47,7 +47,7 @@ class Brave(
             isValidRelease = { release -> release.name.startsWith("Release v") },
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
-            onlyRequestReleasesInBulk = true,
+            dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

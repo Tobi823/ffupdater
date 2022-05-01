@@ -1,3 +1,7 @@
+# 2022-05-02 Version 75.5.0 (102)
+
+* Add Kiwi Browser Next
+
 # 2022-04-28 Version 75.4.3 (101)
 
 * Thanks 109247019824, Oğuz Ersen and Vitor Henrique for improving the translation

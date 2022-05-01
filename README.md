@@ -25,6 +25,7 @@ better than Google Chrome browsers:
   [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
   [Brave Browser (Nightly)](https://play.google.com/store/apps/details?id=com.brave.browser_nightly&gl=US)
   ([GitHub Repository](https://github.com/brave/brave-browser))
+- [Kiwi Browser Next](https://github.com/kiwibrowser/src.next)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 
 and:
@@ -76,6 +77,7 @@ The applications are downloaded from these locations:
   <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
 - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
 - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
+- Kiwi Browser Next: <https://api.github.com/repos/kiwibrowser/src.next/releases>
 - Ungoogled Chromium: <https://api.github.com/repos/ungoogled-software/ungoogled-chromium-android/releases>
 - Vivaldi: <https://vivaldi.com/download/>
 

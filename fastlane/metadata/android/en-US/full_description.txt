@@ -9,6 +9,7 @@ good privacy browsers:
 
 browser which are better than Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Kiwi Browser Next
 - Vivaldi
 
 and:

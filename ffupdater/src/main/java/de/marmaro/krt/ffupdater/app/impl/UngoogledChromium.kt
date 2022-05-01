@@ -45,7 +45,7 @@ class UngoogledChromium(
             isValidRelease = { release -> !release.isPreRelease && "webview" !in release.name },
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
-            onlyRequestReleasesInBulk = true,
+            dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

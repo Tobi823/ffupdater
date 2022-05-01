@@ -19,7 +19,7 @@ class GithubConsumer(
     // false -> contact "$url/latest" and then "$url?per_page=..&page=.."
     // true -> contact only "$url?per_page=..&page=.."
     // set it to true if it is unlikely that the latest release is a valid release
-    private val onlyRequestReleasesInBulk: Boolean = false,
+    private val dontUseApiForLatestRelease: Boolean = false,
     private val apiConsumer: ApiConsumer,
 ) {
     private val url = "https://api.github.com/repos/$repoOwner/$repoName/releases"
@@ -30,7 +30,7 @@ class GithubConsumer(
 
     @MainThread
     suspend fun updateCheck(): Result {
-        val start = if (onlyRequestReleasesInBulk) 1 else 0
+        val start = if (dontUseApiForLatestRelease) 1 else 0
         for (tries in start..5) {
             val releases = requestReleases(tries)
             val validReleases = releases.filter { isReleaseValid(it) }
