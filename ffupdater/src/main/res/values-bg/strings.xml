@@ -175,7 +175,7 @@
 \nИзпробвайте най-новите възможности и дайте обратна връзка: https://brave.com/msupport
 \nМожете да инсталирате Brave Nightly заедно с текущото издание на Brave за Android.</string>
     <string name="request_installation_permission_dialog__title">Разрешение за инсталиране</string>
-    <string name="session_installer__require_user_interaction">Необходимо е взаимодействие с потребителя.</string>
+    <string name="session_installer__require_user_interaction">Необходимо е взаимодействие с потребителя. Първо трябва да обновите приложението от интерфейса на FFUpdater. Само тогава обновяването във фонов режим е разрешено.</string>
     <string name="settings__background__download__enabled__summary">Когато бъде открито обновяване се изтегля. Като последствие ще се ускори процеса на обновяване.</string>
     <string name="settings__background__download__metered__summary">Не се препоръчва за потребители с ограничен обем на мобилните данни.</string>
     <string name="settings__foreground__update_check__metered__summary">Разрешава проверката за обновявания в мрежи с отчитане на трафика, каквито са мобилните данни.</string>
@@ -234,4 +234,5 @@
     <string name="settings__installer__session__summary">Препоръчано за повечето устройства.</string>
     <string name="settings__installer__native__summary">Резервен вариант ако сесийният инсталатор не работи на устройството. Най-често се случва на устройства от Samsung и Xiaomi.</string>
     <string name="settings__installer__root__summary">Използва правата на суперпотребителя, за да инсталира или обновява приложения без участието на потребителя. Изисква достъп до права на суперпотребителя на устройството.</string>
+    <string name="iceraven__warning">- Отговорникът не дава никакви гаранции за сигурност или обновявания, или дори стабилност.</string>
 </resources>
