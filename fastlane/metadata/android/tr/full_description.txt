@@ -9,6 +9,7 @@ Tarayıcıları Mozilla'dan indirin, yükleyin ve güncelleyin veya Firefox'a g�
 
 Google Chrome'dan daha iyi olan tarayıcı:
 - Brave Gizli Tarayıcı, Brave Tarayıcı (Beta), Brave Tarayıcı (Gecelik)
+- Kiwi Browser Next
 - Vivaldi
 
 ve:
