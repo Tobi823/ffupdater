@@ -13,20 +13,21 @@
     <string name="background_job_failure__notification_title">Verifica aggiornamenti in background fallita</string>
     <string name="brave__description">Naviga su internet privatamente, gratis! Brave Private Browser App è il tuo browser web privato, veloce, gratuito e sicuro con blocco di annunci e pop-up. Naviga e cerca su internet privatamente, senza essere tracciato da inserzionisti, malware e pop-up.</string>
     <string name="brave__title">Brave Private Browser</string>
-    <string name="brave__warning">Brave usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Brave?</string>
+    <string name="brave__warning">Brave usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.
+\nA causa del suo Basic Attention Token BAT sulla blockchain Ethereum, il progetto ha legami con criptovalute. Le blockchain hanno molti problemi e dovrebbero essere evitate a mio avviso.</string>
     <string name="brave_beta__description">Benvenuto in Brave Beta per Android!\nProva le nuove funzionalità e dai un feedback anticipato: https://brave.com/msupport\nPuoi installare Brave Beta insieme alla tua attuale versione di Brave per Android.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Benvenuti su Brave Nightly (Developer) per Android!\nProva le nuove funzionalità e dai un feedback anticipato: https://brave.com/msupport\nPuoi installare Brave Nightly insieme alla tua attuale versione di Brave per Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite mira a fornire un\'esperienza di navigazione senza fronzoli, senza funzionalità invasive della privacy e con l\'aggiunta di un veloce motore di blocco delle pubblicità. I cambiamenti minimi dell\'interfaccia utente sono applicati per aiutare a frenare l\'idea di "browser come una piattaforma pubblicitaria".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Bromite?</string>
+    <string name="bromite__warning">Bromite usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="bromite_systemwebview__description">Il pacchetto SystemWebView contiene il browser principale/motore di rendering di Bromite e le sue stesse caratteristiche. Offre la possibilità di sostituire il componente browser predefinito per l\'intero sistema Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copia il rapporto di arresto anomalo negli appunti</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Si è verificato il seguente errore quando è stato recuperato l\'URL di download. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Si è verificato il seguente errore durante il controllo degli aggiornamenti nella pagina principale. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Sfortunatamente, FFUpdater si è arrestato in modo anomalo. Si prega di segnalare questo errore su notabug.org, GitHub o GitLab. Aggiungi alla tua issue il rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Sfortunatamente, FFUpdater si è bloccato l\'ultima volta e ha registrato il seguente errore. Si prega di segnalare questo errore su notabug.org, GitHub o GitLab. Copia il rapporto sull\'arresto anomalo dagli appunti nel messaggio e aggiungi una descrizione su come replicare l\'errore.</string>
     <string name="crash_report__go_to_github">Vai su GitHub</string>
     <string name="crash_report__go_to_gitlab">Vai su GitLab</string>
     <string name="crash_report__got_to_notabug_org">Vai su notabug.org</string>
@@ -46,14 +47,14 @@
     <string name="failed_update_notification__notification_title">%1$s non può essere aggiornato.</string>
     <string name="firefox_beta__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
     <string name="firefox_beta__title">Firefox per Android Beta</string>
-    <string name="firefox_beta__warning">Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser. Vuoi installarla?</string>
+    <string name="firefox_beta__warning">Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser.</string>
     <string name="firefox_focus__description">Questa è una modifica del browser Firefox finalizzata ad aumentare la privacy.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar è sviluppato per Germania, Austria e Svizzera ma può essere utilizzato dagli utenti in qualsiasi paese. È molto simile a Firefox Focus, ma il nome è stato cambiato nei paesi di lingua tedesca per evitare confusione con la rivista Focus del gruppo Hubert Burda Media. A differenza di Firefox Focus, Firefox Klar ha la telemetria disabilitata per impostazione predefinita a causa delle rigide leggi tedesche sulla privacy.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Si prega di notare che questa app era chiamata Firefox Preview. Ora è stata cambiata in Firefox Nightly. \n\nFirefox Nightly è un canale di sviluppo per nuove versioni di Mozilla Firefox. \n\nFirefox Nightly è progettato per mostrare le build più sperimentali di Firefox. Il canale Nightly consente agli utenti di sperimentare le ultime innovazioni di Firefox in un ambiente instabile e fornire un feedback su funzionalità e prestazioni per aiutare a determinare cosa finirà nella versione finale.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser. Vuoi installarla?</string>
+    <string name="firefox_nightly__warning">- Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser.</string>
     <string name="firefox_release__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="go_back">Vai indietro</string>
@@ -62,7 +63,7 @@
     <string name="infobox">Questo è un updater per più browser di Mozilla. Clicca sul pulsante Più per l\'installazione e il pulsante di freccia verso il basso per l\'aggiornamento. È possibile verificare la presenza di nuovi aggiornamenti scorrendo verso il basso o riaprendo l\'app. Per impostazione predefinita, l\'app verificherà regolarmente gli aggiornamenti in background. Ho fatto del mio meglio per garantire sicurezza durante il processo di installazione/aggiornamento - sentiti libero di ricontrollare o migliorarlo creando un pull request. \n\nUltima verifica riuscita degli aggiornamenti in background: %1$s</string>
     <string name="information_about_the_app">informazioni sull\'app</string>
     <string name="install_activity__delete_cache_button_text">svuota cache</string>
-    <string name="install_activity__delete_cache_explanation">Se pensi che FFupdater abbia memorizzato nella cache un aggiornamento di app difettoso, clicca il pulsante \"svuota cache\" per eliminare la cache di questa app.</string>
+    <string name="install_activity__delete_cache_explanation">Se pensi che FFupdater abbia memorizzato nella cache un aggiornamento di app difettoso o se vuoi risparmiare spazio, clicca sul pulsante per eliminare il file scaricato.</string>
     <string name="install_activity__download_app_with_status">Download applicazione (%1$s)</string>
     <string name="install_activity__download_failed">Download fallito</string>
     <string name="install_activity__downloaded_application_from">Applicazione scaricata da:</string>
@@ -72,7 +73,7 @@
     <string name="install_activity__fetch_url_for_download">Recupera l\'URL di download da %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Recuperato l\'URL di download da %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Limite di chiamate GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</string>
-    <string name="install_activity__open_cache_explanation">Puoi aprire la cartella di cache per copiare il file APK in un luogo con una memoria più libera.</string>
+    <string name="install_activity__open_cache_explanation">Puoi aprire la cartella di cache per copiare il file APK in un luogo con una memoria più libera. Sfortunatamente, su Android 11+ solo pochi file manager possono accedere a questa cartella all\'interno di Android/data.</string>
     <string name="install_activity__open_cache_folder_button_text">apri cartella di cache</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Impronta digitale del certificato SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Si è verificato un problema di rete temporaneo. Si prega di riprovare in seguito.</string>
@@ -107,7 +108,7 @@
     <string name="running_downloads_dialog__negative">No, non scaricarlo</string>
     <string name="running_downloads_dialog__title">Download in corso</string>
     <string name="session_installer__not_enough_storage">L\'operazione è fallita perché non è disponibile abbastanza spazio di archiviazione: %1$s</string>
-    <string name="session_installer__require_user_interaction">Richiede l\'interazione dell\'utente.</string>
+    <string name="session_installer__require_user_interaction">Richiede l\'interazione dell\'utente. Devi prima aggiornare l\'app tramite l\'interfaccia utente di FFUpdater. Solo allora sono consentiti aggiornamenti in background silenziosi per la rispettiva app.</string>
     <string name="session_installer__status_failure">L\'operazione è fallita in modo generico. Il sistema cercherà sempre di fornire un motivo di errore più specifico, ma in alcuni casi rari questo può essere emesso.</string>
     <string name="session_installer__status_failure_aborted">L\'operazione è fallita perché è stata interrotta attivamente. Ad esempio, l\'utente ha rifiutato attivamente le autorizzazioni richieste o la sessione è stata abbandonata.</string>
     <string name="session_installer__status_failure_blocked">L\'operazione è fallita perché è stata bloccata. Ad esempio, una politica del dispositivo potrebbe bloccare l\'operazione, un verificatore del pacchetto potrebbe aver bloccato l\'operazione, o l\'app potrebbe essere richiesta per il funzionamento del sistema principale.</string>
@@ -149,7 +150,7 @@
     <string name="successful_update_notification__notification_title">%1$s è stato aggiornato.</string>
     <string name="ungoogled_chromium__description">Google Chromium, senza l\'integrazione con Google.\n\nSenza fare l\'accesso a un Account Google, Chromium fa abbastanza bene in termini di sicurezza e privacy. Tuttavia, Chromium ha ancora una certa dipendenza dai binari e dai servizi web di  Google. Inoltre, Google ha progettato Chromium in modo che fosse facile e intuitivo per gli utenti, il che significa che compromettono la trasparenza e il controllo delle operazioni interne.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone. Vuoi installare Ungoogled Chromium?</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="unsupported_abi_dialog__message">Il browser selezionato non è compatibile con il processore del tuo smartphone. Seleziona un browser diverso.</string>
     <string name="unsupported_abi_dialog__title">Dispositivo non supportato</string>
     <string name="update_interval__12h">12 ore</string>
@@ -176,5 +177,51 @@
     <string name="update_notification__title">Aggiornamento disponibile per "%1$s"</string>
     <string name="vivaldi__description">Scopri un browser Internet incredibilmente veloce! Vivaldi è un browser web nuovo, gratuito, e privato costruito pensando alla flessibilità. Viene fornito con funzioni utili tra cui un blocco delle pubblicità incorporato (blocco dei pop-up), protezione dal tracciamento e traduzione privata. Opzioni del browser come schede appropriate in stile desktop, temi chiaro/scuro, e le scelte di layout ti aiutano a renderlo tuo.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">"Vivaldi è open source solo parzialmente (vedi <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> per più informazioni). Inoltre usa la base tecnica di Google Chrome (Chromium).\n\nCiò non piace ad alcune persone. Vuoi installare Vivaldi?"</string>
+    <string name="vivaldi__warning">- Vivaldi è open source solo parzialmente.
+\n- Inoltre usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">%1$s ha il seguente problema:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s ha i seguenti problemi:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="running_downloads_dialog__yes">Sì</string>
+    <string name="download_notification__message">Scarica aggiornamento per %1$s (%2$s).</string>
+    <string name="kiwi__description">Kiwi Browser è fatto per navigare in internet, leggere notizie, guardare video e ascoltare musica, senza fastidi.</string>
+    <string name="settings__installer__root__summary">Usa l\'autorizzazione di root per installare o aggiornare le app senza l\'interazione dell\'utente. Ciò richiede uno smartphone con root.</string>
+    <string name="iceraven__warning">- Il manutentore non fornisce garanzie o assicurazioni di sicurezza o aggiornamenti e neanche stabilità.</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="kiwi__warning">- Kiwi usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.
+\n- Kiwi non è un browser per la privacy ideale, ma ha un buon supporto per componenti aggiuntivi.
+\n- Il browser viene pagato dai motori di ricerca per ogni ricerca effettuata utilizzando Kiwi Browser. A seconda della scelta del motore di ricerca, le richieste possono passare tramite i server Kiwibrowser / Kiwisearchservices.</string>
+    <string name="install_activity__file_uri_exposed_toast">Impossibile esporre il percorso del file ad altre app. Si prega di aprire la cartella con il suo file manager preferito.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Elimina l\'aggiornamento scaricato se l\'installazione ha esito positivo.</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Elimina l\'aggiornamento scaricato se l\'installazione non riesce.</string>
+    <string name="install_activity__open_folder">Apri cartella</string>
+    <string name="firefox_release__warning">- Una versione migliorata di Firefox è disponibile anche su F-Droid con il nome Fennec F-Droid.</string>
+    <string name="crash_report___explain_text__install_activity_download_file">Durante il download si è verificato il seguente errore. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Aggiungi il rapporto sull\'arresto anomalo dagli appunti alla segnalazione.</string>
+    <string name="file_downloader__fail_to_handle_download_stream">Impossibile gestire il flusso di download.</string>
+    <string name="app_warning_dialog__title">Attenzione</string>
+    <string name="settings__installer__session__summary">Consigliato per la maggior parte dei dispositivi.</string>
+    <string name="settings__installer__session__title">Programma di installazione della sessione</string>
+    <string name="settings__installer_category__title">Installatore</string>
+    <string name="intent_installer__likely_storage_failure">L\'operazione probabilmente non è riuscita a causa di problemi di archiviazione. Ad esempio, la memoria del dispositivo potrebbe essere in esaurimento o il supporto esterno potrebbe non essere disponibile. L\'utente potrebbe essere in grado di liberare spazio o inserire diversi supporti esterni.</string>
+    <string name="settings__installer__native__summary">Alternativa se il programma di installazione della sessione non funziona sul tuo smartphone. Questo è spesso il caso dei dispositivi Samsung o Xiaomi.</string>
+    <string name="settings__installer__native__title">Programma di installazione nativo</string>
+    <string name="settings__installer__root__title">Programma di installazione con root</string>
+    <string name="install_activity__different_installer_info__text">Se l\'installazione fallisce frequentemente, prova a passare al \'programma di installazione nativo\' nelle impostazioni.</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s ha il seguente problema:
+\n
+\n%2$s
+\n
+\nVuoi ancora installare %1$s\?</item>
+        <item quantity="other">%1$s ha i seguenti problemi:
+\n
+\n%2$s
+\n
+\nVuoi ancora installare %1$s\?</item>
+    </plurals>
 </resources>
