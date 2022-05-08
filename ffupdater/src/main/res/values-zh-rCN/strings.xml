@@ -1,2 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_about_title">关于 FFUpdater</string>
+    <string name="app_icon">应用图标</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="application_installation_was_not_successful">应用程序安装未成功</string>
+    <string name="application_successfully_installed">已成功安装应用程序</string>
+    <string name="available_version">可用版本：%1$s</string>
+    <string name="available_version_error"><u>错误</u></string>
+    <string name="available_version_loading">正在加载…</string>
+    <string name="app_description">为隐私友好型浏览器打造的升级器</string>
+    <string name="background_job_failure__notification_text">请报告此错误。点击查看错误报告。</string>
+    <string name="background_job_failure__notification_title">后台检查更新失败</string>
+    <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
+    <string name="brave__title">Brave 隐私浏览器</string>
+    <string name="brave__warning">- Brave 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。
+\n- 由于其以太坊区块链上的 Basic Attention Token（BAT）技术，该项目与加密货币有联系。 区块链有很多问题，在我看来应该避免。</string>
+    <string name="brave_nightly__title">Brave 浏览器（每夜版）</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="bromite__warning">- Bromite 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">在拉取下载 URL 时出现以下错误。如果这个错误经常出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。记得从剪贴板里添加崩溃报告并描述如何复现这个错误。</string>
+    <string name="crash_report__explain_text__main_activity_update_check">在主视图中检查更新时出现以下错误。如果这个错误经常出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。记得从剪贴板里添加崩溃报告并描述如何复现这个错误。</string>
+    <string name="crash_report__go_to_github">跳转到 GitHub</string>
+    <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
+    <string name="crash_report__got_to_notabug_org">跳转到 notabug.org</string>
+    <string name="device_too_old_dialog__message">此应用要求使用 Android %1$s。但是您的设备仅运行着 Android %2$s。请选择其他应用、更新操作系统或换用更新的智能手机。</string>
+    <string name="device_too_old_dialog__title">设备太旧</string>
+    <string name="dialog_button__do_not_install">不，请不要安装</string>
+    <string name="dialog_button__yes">是</string>
+    <string name="download_notification__channel_description">显示何时在后台下载了更新。</string>
+    <string name="download_notification__channel_name">后台下载通知</string>
+    <string name="download_notification__title">正在下载应用程序更新</string>
+    <string name="download_the_app">下载应用程序</string>
+    <string name="error_notification__channel_description">显示后台更新检查器错误</string>
+    <string name="error_notification__channel_name">后台错误</string>
+    <string name="failed_update_notification__channel_description">%1$s 更新失败通知通道。</string>
+    <string name="failed_update_notification__channel_name">%1$s 更新失败通知</string>
+    <string name="failed_update_notification__notification_message">错误（%1$d）：%2$s</string>
+    <string name="failed_update_notification__notification_title">无法更新 %1$s。</string>
+    <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！
+\n尝试最新功能并给予早期反馈：https://brave.com/msupport
+\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 公测版。</string>
+    <string name="brave_nightly__description">欢迎使用 Brave 浏览器 Android 每夜版（开发者版）！
+\n尝试最新功能并给予早期反馈：https://brave.com/msupport
+\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
+    <string name="brave_beta__title">Brave 浏览器（公测版）</string>
+    <string name="bromite__description">Bromite 致力于提供清爽的浏览体验，无隐私侵害性功能，并附带一个快速的广告拦截引擎。应用了精简的用户界面，帮助抑制浏览器成为广告泛滥的平台。</string>
+    <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎和相同功能。这使其代替成为 Android 系统默认浏览器成为可能。</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
+    <string name="crash_report__explain_text__uncaught_throwable">FFUpdater 上次不幸崩溃了，并记录到以下错误。请在 notabug.org、GitHub 或 GitLab 上报告。请从剪贴板里复制崩溃报告到信息中，并描述如何复现这个错误。</string>
+</resources>
