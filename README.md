@@ -37,10 +37,10 @@ FFUpdater can also update the apps without user interaction.
 
 ## How to contribute
 
-You can add and update translations with [Weblate](https://weblate.org). Go to
-[ffupdater-app-translations](https://hosted.weblate.org/projects/ffupdater/ffupdater-app-translations/) for
-improving the translation of the Android app. To improve the translation of the release notes, go to
-[ffupdater-release-notes](https://hosted.weblate.org/projects/ffupdater/ffupdater-release-notes/).
+You can improve the translation on [Weblate](https://hosted.weblate.org/projects/ffupdater). Current progress:
+[<img align="right" src="https://hosted.weblate.org/widgets/ffupdater/-/287x66-white.png" alt="Get involved in translating FFUpdater" />](https://hosted.weblate.org/engage/ffupdater/?utm_source=widget)
+
+[![Translation status](https://hosted.weblate.org/widgets/ffupdater/-/multi-auto.svg)](https://hosted.weblate.org/engage/ffupdater/?utm_source=widget)
 
 For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
 
