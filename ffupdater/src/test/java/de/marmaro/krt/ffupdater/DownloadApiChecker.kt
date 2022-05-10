@@ -194,7 +194,7 @@ class DownloadApiChecker {
         val result = runBlocking { ungoogledChromium.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 8 * 7
+        val maxDays = 9 * 7
         assertTrue(age.toDays() < maxDays) { "$age must be smaller then $maxDays days" }
     }
 
