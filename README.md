@@ -191,28 +191,6 @@ It seems that @jamal2362 does not maintain the Styx browser any longer:
 Due to the deleted GitHub repository, Styx cannot be downloaded by FFUpdater. And even if - end users should
 not use a browser that is no longer updated.
 
-### Kiwi Browser
-
-17.04.2021: https://github.com/Tobi823/ffupdater/issues/35
-Answer from the Kiwi developer:
-
-> It's actually quite simple, Kiwi earns money for every search it forwards to Yahoo or Microsoft Bing.
-
-It seems that the developers have to forward search requests to their servers and then to the search engine in
-order to get paid by the search engine.
-
-> The parameters and integration method are defined by the search engines themselves, we don't have our words
-> at all how the integration is done.
-
-> They [Yahoo or Microsoft Bing] have a standard guide on how to integrate, either you follow this guide, or
-> you don't work with them.
-
-I guess it's fine. Although i don't like it, i understand that the money for the app development has to come
-from somewhere (even Firefox is paid to use "Google" as the default search engine).
-
-But I think that Kiwi should not be managed by FFUpdater because this browser has additional usability
-features and no additional privacy features. FFUpdater is about privacy and not usability.
-
 ### Firefox Lite
 
 02.12.2021: End of support for Firefox
