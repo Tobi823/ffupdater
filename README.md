@@ -60,7 +60,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
 - When using root permission, check for dangerous characters and use only values from an allow list. Only
   src/main/java/de/marmaro/krt/ffupdater/installer/RootInstaller.kt uses root permission.
 - I will sign my commits with the GPG key
-  CE72BFF6A293A85762D4901E426C5FB1C7840C5F [public key](dev/ffupdater_gpg_public.key)
+  CE72BFF6A293A85762D4901E426C5FB1C7840C5F [public key](dev/signatures/ffupdater_gpg_public.key)
 
 Feel free to check my source code ;)
 
@@ -88,24 +88,13 @@ The applications are downloaded from these locations:
 The main distribution method of FFUpdater remains F-Droid - this will not change. But you can use the APK
 files or the F-Droid repository to quickly install fixed versions.
 
-You need to uninstall FFUpdater every time you switch between F-Droid version and my version.
+You need to uninstall FFUpdater every time you switch between F-Droid version and my version. F-Droid will not
+show you new updates if you still uses the version from GitHub/GitLab.
 
-I don't know if F-Droid shows an update notification when you have my version installed. Maybe you need to
-manually check for updates in the F-Droid app.
-
-My versions will be signed with:
-
-```
-DN: CN=Tobi823, O=FFUpdater, ST=Germany, C=DE
-SHA-256 digest: f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62
-SHA-1 digest: b432e9eb74512c0fa58c1ec45912a670f8dfa8e9
-MD5 digest: 78a34e36cedd844954726f1e2076642c
-```
+My versions will be signed with this [certificate](dev/signatures/apk_signature.txt).
 
 The official F-Droid Android client sometimes has problems accessing the APK file from my F-Droid repository.
-But other clients like "Foxy Droid" work fine. Does anyone know the reason for this? Does the official F-Droid
-client has an internal cache and therefore needs more time before it can access a new version from my
-repository?
+But other clients like "Foxy Droid" work fine.
 
 ### APK files on GitHub
 
@@ -114,8 +103,7 @@ The APK files are available on [GitHub](https://github.com/Tobi823/ffupdater/rel
 
 ### F-Droid repository
 
-<a href="fdroidrepos://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89">
-Click here to add the FFUpdater repository to your F-Droid client.</a>
+[Click here to add the FFUpdater repository to your F-Droid client.](fdroidrepos://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89)
 
 If the link is not clickable, you can use this help
 website [https://tobi823.github.io/ffupdaterrepo.html](https://tobi823.github.io/ffupdaterrepo.html).

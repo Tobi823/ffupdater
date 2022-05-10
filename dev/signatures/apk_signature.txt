@@ -1,0 +1,4 @@
+DN: CN=Tobi823, O=FFUpdater, ST=Germany, C=DE
+SHA-256 digest: f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62
+SHA-1 digest: b432e9eb74512c0fa58c1ec45912a670f8dfa8e9
+MD5 digest: 78a34e36cedd844954726f1e2076642c
