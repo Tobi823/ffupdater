@@ -110,9 +110,8 @@ Fingerprint: `6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89`
 [![Add](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png)](fdroidrepos://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo?fingerprint=6E4E6A597D289CB2D4D4F0E4B792E14CCE070BDA6C47AF4918B342FA51F2DC89)
 
 If the link is not clickable, you can use this help
-website [https://tobi823.github.io/ffupdaterrepo.html](https://tobi823.github.io/ffupdaterrepo.html).
-
-[<img src="https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png" alt="F-Droid repository link" height="120">](https://tobi823.github.io/ffupdaterrepo.html)
+website [https://tobi823.github.io/ffupdaterrepo.html](https://raw.githubusercontent.com/Tobi823/ffupdaterrepo/master/fdroid/repo/assets/qrcode.png)
+.
 
 [How to Add a Repo to F-Droid](https://f-droid.org/en/tutorials/add-repo/)
 
