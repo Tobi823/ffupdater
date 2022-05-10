@@ -59,6 +59,8 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
   A malicious certificate can prevent FFUpdater finding new updates.
 - When using root permission, check for dangerous characters and use only values from an allow list. Only
   src/main/java/de/marmaro/krt/ffupdater/installer/RootInstaller.kt uses root permission.
+- I will sign my commits with the GPG key
+  CE72BFF6A293A85762D4901E426C5FB1C7840C5F [public key](dev/ffupdater_gpg_public.key)
 
 Feel free to check my source code ;)
 
