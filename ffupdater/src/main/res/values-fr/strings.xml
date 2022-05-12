@@ -15,7 +15,8 @@
 \n
 \nLe navigateur Web de Brave est une application de navigation rapide et sûre. Elle est dotée d\'un bloqueur de pubs intégré qui a été spécialement conçu pour les publicités tierces. Brave est extrêmement rapide, sécurisé et privé, empêchant ainsi, lorsque vous naviguez, que vous soyiez traqués par des publicités ou que votre appareil soit attaqué par des logiciels malveillants ou des fenêtre pop-up. Téléchargez Brave dès aujourd\'hui et naviguez avec le meilleur navigateur web rapide, privé et sécurisé !</string>
     <string name="brave__title">Navigateur internet privé Brave</string>
-    <string name="brave__warning">Brave utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Brave \?</string>
+    <string name="brave__warning">- Brave utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Brave \?
+\n- En raison de son Basic Attention Token BAT sur la blockchain Ethereum, le projet a des liens avec les crypto-monnaies. Les blockchains ont de nombreux problèmes et devraient être évitées à mon avis.</string>
     <string name="brave_beta__description">Bienvenue dans la version bêta de Brave pour Android !
 \nJoignez-vous aux nouvelles fonctionnalités et donnez vos premiers commentaires : https ://brave.com/msupport
 \nVous pouvez installer Brave Beta en même temps que votre version actuelle de Brave pour Android.</string>
@@ -24,7 +25,7 @@
     <string name="brave_nightly__title">Navigateur Brave (Nightly)</string>
     <string name="bromite__description">Bromite vise à offrir une expérience de navigation sans encombrement, sans fonctions envahissantes pour la vie privée et avec l\'ajout d\'un moteur rapide de blocage des publicités. Des changements minimes sont apportés à l\'interface utilisateur afin d\'enrayer l\'idée que le \"navigateur est une plate-forme publicitaire\".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Bromite \?</string>
+    <string name="bromite__warning">- Bromite utilise la base technique de Google Chrome et soutient donc indirectement la position de monopole du moteur de rendu Chromium.</string>
     <string name="bromite_systemwebview__description">Le paquet SystemWebView contient le noyau du navigateur/ moteur de rendu de Bromite et ses mêmes fonctionnalités. Il offre la possibilité de remplacer le composant de navigateur par défaut pour l\'ensemble du système Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copier le rapport d\'erreur dans le presse-papiers</string>
@@ -50,14 +51,14 @@
     <string name="failed_update_notification__notification_title">%1$s n\'a pas pu être mis à jour.</string>
     <string name="firefox_beta__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_beta__title">Firefox pour Android Beta</string>
-    <string name="firefox_beta__warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer \?</string>
+    <string name="firefox_beta__warning">- Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur.</string>
     <string name="firefox_focus__description">Il s\'agit d\'une modification du navigateur Firefox visant à accroître la protection de la vie privée.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar est développé pour l\'Allemagne, l\'Autriche et la Suisse, mais peut être utilisé par les utilisateurs de n\'importe quel pays. Il est très similaire à Firefox Focus, mais son nom a été modifié dans les pays germanophones pour éviter toute confusion avec le magazine Focus du groupe Hubert Burda Media. Contrairement à Firefox Focus, Firefox Klar a la télémétrie désactivée par défaut en raison des lois allemandes strictes sur la protection de la vie privée.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Veuillez noter que Firefox Preview n’est plus disponible et a été remplacé par Firefox Nightly. \n\nFirefox Nightly est un canal de développement pour les nouvelles versions de Mozilla Firefox. \n\nFirefox Nightly est conçu pour mettre en valeur les versions les plus expérimentales de Firefox. Le canal Nightly permet aux utilisateurs de découvrir les dernières innovations de Firefox dans un environnement instable et de faire part de leur avis sur les fonctionnalités et les performances pour aider à déterminer ce qui figurera dans la version finale.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur. Vous voulez l\'installer \?</string>
+    <string name="firefox_nightly__warning">- Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur.</string>
     <string name="firefox_release__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_release__title">Firefox</string>
     <string name="go_back">retourner</string>
@@ -160,7 +161,7 @@
     <string name="successful_update_notification__notification_title">%1$s a été mis à jour.</string>
     <string name="ungoogled_chromium__description">Google Chromium, sans intégration avec Google.\n\nSans connexion à un compte Google, Chromium s\'en sort plutôt bien en termes de sécurité et de confidentialité. Cependant, Chromium a toujours une certaine dépendance vis-à-vis des services Web et des binaires de Google. En outre, Google a conçu Chromium pour qu\'il soit facile et intuitif pour les utilisateurs, ce qui signifie qu\'ils font des compromis sur la transparence et le contrôle des opérations internes.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium utilise la base technique de Google Chrome (Chromium), ce qui ne plaît pas à tout le monde. Voulez-vous installer Ungoogled Chromium \?</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium utilise la base technique de Google Chrome et soutient donc indirectement la position de monopole du moteur de rendu Chromium.</string>
     <string name="unsupported_abi_dialog__message">Le navigateur sélectionné est incompatible avec le processeur de votre smartphone. Veuillez sélectionner un autre navigateur.</string>
     <string name="unsupported_abi_dialog__title">Appareil non pris en charge</string>
     <string name="update_interval__12h">12 heures</string>
@@ -187,9 +188,8 @@
     <string name="update_notification__title">Mise à jour pour "%1$s" disponible</string>
     <string name="vivaldi__description">Vivaldi est un navigateur pratique et très respectueux de la vie privée. Il intègre des nombreuses fonctions dont un bloqueur de pubs et traqueurs (désactivé par défaut) et un traducteur de pages. Des outils judicieux de prise de notes et de capture de page vous feront gagner du temps. En option, vous pouvez afficher les onglets comme sur ordinateurs, des thèmes clair et sombre ou personnaliser l’interface. Téléchargez-le et profitez de ses performances.</string>
     <string name="vivaldi__title">Navigateur Vivaldi</string>
-    <string name="vivaldi__warning">Vivaldi n\'est que partiellement open source (voir <a href="https ://vivaldi.com/blog/vivaldi-browser-open-source/">https ://vivaldi.com/blog/vivaldi-browser-open-source/</a> pour plus d\'informations). Il utilise également la base technique de Google Chrome (Chromium).
-\n
-\nCertaines personnes n\'aiment pas cela. Voulez-vous installer Vivaldi \?</string>
+    <string name="vivaldi__warning">- Vivaldi n\'est que partiellement open source.
+\n- Il utilise également le fondement technique de Google Chrome et soutient donc indirectement la position monopolistique du moteur de rendu Chromium.</string>
     <string name="settings__installer_category__title">Général</string>
     <string name="install_activity__file_uri_exposed_toast">Nous ne pouvons pas exposer le chemin du fichier à d\'autres applications. Veuillez ouvrir le dossier vous-même avec votre gestionnaire de fichiers préféré.</string>
     <string name="download_notification__message">Télécharger la mise à jour pour %1$s (%2$s).</string>
