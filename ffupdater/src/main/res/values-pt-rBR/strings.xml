@@ -195,7 +195,9 @@
     </plurals>
     <string name="install_activity__file_uri_exposed_toast">Não é possível expor o caminho do arquivo para outros aplicativos. Abra a pasta você mesmo com seu gerenciador de arquivos preferido.</string>
     <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade.</string>
-    <string name="kiwi__warning">- O Kiwi implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. - O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a addons. - O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.</string>
+    <string name="kiwi__warning">- O Kiwi implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. 
+\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a addons. 
+\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
     <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
     <string name="crash_report___explain_text__install_activity_download_file">O seguinte erro ocorreu durante o download. Se esse erro ocorrer com frequência, sinta-se à vontade para reportá-lo em notabug.org, GitHub ou GitLab. Adicione o relatório do erro da área de transferência ao relatório.</string>
