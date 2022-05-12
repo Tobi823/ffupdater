@@ -18,7 +18,7 @@
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite има за цел да осигури безпроблемно разглеждане без да нарушава поверителността, а добавя бърз механизъм за спиране на реклами. Прилагат се минимални промени в потребителския интерфейс, за да се ограничи идеята „четецът като рекламна платформа“.</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
+    <string name="bromite__warning">- Bromite е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Копиране на доклада за срив в междинната памет</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">При извличане на адреса за изтегляне възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
@@ -125,7 +125,7 @@
     <string name="app_warning_before_installation_dialog__title">Внимание</string>
     <string name="ungoogled_chromium__description">Google Chromium, без интеграция с Google.\n\nБез влизане в профил в Google Chromium се справя доста добре по отношение на сигурността и поверителността. Въпреки това Chromium все още има известна зависимост от уеб услуги и двоични файлове на Google. Освен това Google са проектирали Chromium така, че да бъде лесен и интуитивен за потребителите, което означава, че са направили компромис с прозрачността и контрола на вътрешните дейности.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
     <string name="unsupported_abi_dialog__message">Избраното приложение е несъвместимо с процесора на телефона. Изберете друго.</string>
     <string name="unsupported_abi_dialog__title">Неподдържано устройство</string>
     <string name="update_interval__12h">12 часа</string>
