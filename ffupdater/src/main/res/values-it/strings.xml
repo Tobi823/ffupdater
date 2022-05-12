@@ -21,7 +21,7 @@
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite mira a fornire un\'esperienza di navigazione senza fronzoli, senza funzionalità invasive della privacy e con l\'aggiunta di un veloce motore di blocco delle pubblicità. I cambiamenti minimi dell\'interfaccia utente sono applicati per aiutare a frenare l\'idea di "browser come una piattaforma pubblicitaria".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
+    <string name="bromite__warning">- Bromite usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="bromite_systemwebview__description">Il pacchetto SystemWebView contiene il browser principale/motore di rendering di Bromite e le sue stesse caratteristiche. Offre la possibilità di sostituire il componente browser predefinito per l\'intero sistema Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copia il rapporto di arresto anomalo negli appunti</string>
@@ -47,7 +47,7 @@
     <string name="failed_update_notification__notification_title">%1$s non può essere aggiornato.</string>
     <string name="firefox_beta__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
     <string name="firefox_beta__title">Firefox per Android Beta</string>
-    <string name="firefox_beta__warning">Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser.</string>
+    <string name="firefox_beta__warning">- Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser.</string>
     <string name="firefox_focus__description">Questa è una modifica del browser Firefox finalizzata ad aumentare la privacy.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar è sviluppato per Germania, Austria e Svizzera ma può essere utilizzato dagli utenti in qualsiasi paese. È molto simile a Firefox Focus, ma il nome è stato cambiato nei paesi di lingua tedesca per evitare confusione con la rivista Focus del gruppo Hubert Burda Media. A differenza di Firefox Focus, Firefox Klar ha la telemetria disabilitata per impostazione predefinita a causa delle rigide leggi tedesche sulla privacy.</string>
