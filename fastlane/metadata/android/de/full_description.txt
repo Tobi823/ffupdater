@@ -1,14 +1,17 @@
-Installiert und aktualisiert folgende Browser von Mozilla bzw. Browser auf Basis des Firefoxes:
+Installiert und aktualisiert folgende Browser:
+
+Browser von Mozilla oder Browser auf des Firefoxes:
 - Firefox Browser, Firefox für Android Beta, Firefox Nightly
 - Firefox Fokus, Firefox Klar
 - Iceraven
 
-dazu noch folgende gute Datenschutz-Browser:
+Gute Datenschutz-Browser:
 - Bromite, Bromite SystemWebView
 - Ungegoogeltes Chromium
 
-ebenfalls noch folgende Browser, die besser sind als Google Chrome:
+Browser, die besser sind als Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Kiwi Browser Next
 - Vivaldi
 
 und:
@@ -16,4 +19,4 @@ und:
 
 FFUpdater sucht im Hintergrund nach Updates und lädt diese auch herunter. Auf Android 12+ oder Root-Geräten kann FFUpdater die Apps auch ohne Benutzerinteraktion aktualisieren.
 
-Gehe auf https://notabug.org/Tobiwan/ffupdater/src/master/README.md oder klicke auf den "Source Code"-Link unten, um weitere Informationen über Sicherheitsmaßnahmen, andere Verteilungskanäle, Einschränkungen, Bugs, FAQ, Build-Anweisungen, verwendete Drittbibliotheken, technische Details usw. zu erhalten.
+Gehe auf https://notabug.org/Tobiwan/ffupdater/src/master/README.md für mehr Informationen.
