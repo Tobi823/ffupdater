@@ -1,20 +1,22 @@
-Изтеглете, инсталирайте и обновявайте мрежови четци от Mozilla или на основата на Firefox:
-- Firefox Browser, Firefox за Android Beta, Firefox Nightly
+Инсталира и актуализира следните браузъри:
+
+Браузъри от Mozilla или базирани на Firefox:
+- Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
 
-поверителни четци:
+Добри браузъри за защита на личните данни:
 - Bromite, Bromite SystemWebView
 - Ungoogled Chromium
 
-четци, по-добри от Google Chrome:
+Браузъри, които са по-добри от Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
-- Kiwi Browser Next
+- Браузър Kiwi Следваща
 - Vivaldi
 
 и:
 - Firefox Lockwise
 
-FFUpdater проверява за обновявания във фонов режим и ги изтегля. При устройства с Android 12+ или достъп до суперпотребителя FFUpdater може да обновява приложенията и без действие от страна на потребителя.
+FFUpdater проверява за актуализации във фонов режим и също така ги изтегля. При устройства с Android 12+ или root FFUpdater може да актуализира приложенията и без взаимодействие с потребителя.
 
-Посетете https://notabug.org/Tobiwan/ffupdater/src/master/README.md или използвайте препратката „Изходен код“ по-долу, за да видите повече за мерките за сигурност, други канали за разпространение, ограничения, грешки, често задавани въпроси, инструкции за изграждане, използвани библиотеки на трети страни, технически подробности и други.
+Посетете https://notabug.org/Tobiwan/ffupdater/src/master/README.md за повече информация.
