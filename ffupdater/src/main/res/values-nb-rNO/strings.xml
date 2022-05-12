@@ -39,7 +39,7 @@
     <string name="download_notification__channel_name">Merknad om nedlastinger i bakgrunnen</string>
     <string name="firefox_focus__description">Dette er en endring av Firefox-nettleseren myntet på økt personvern.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__warning">Programmet er designet for utviklere og testere. Det kan inneholde feil som påvirker vanlig bruk. Vil du installere det\?</string>
+    <string name="firefox_nightly__warning">- Programmet er designet for utviklere og testere. Det kan inneholde feil som påvirker vanlig bruk.</string>
     <string name="install_activity__delete_cache_button_text">tøm hurtiglager</string>
     <string name="install_activity__downloaded_application_is_not_verified">Nedlastet program er IKKE bekreftet</string>
     <string name="install_activity__open_cache_explanation">Du kan åpne hurtiglagringsmappen for å kopiere APK-filen til et sted med mer ledig lagringsplass. Husk at på Android 11+ er det kun noen filbehandlere som kan åpne filer i Android/data-mappen.</string>
@@ -63,7 +63,7 @@
     <string name="brave__title">Brave-nettleseren</string>
     <string name="bromite__title">Bromite</string>
     <string name="firefox_focus__title">Firefox Focus</string>
-    <string name="firefox_beta__warning">Programmet er designet for utviklere og testere. Det kan inneholde forskjellige feil som kan ha innvirkning på vanlig bruk av nettleseren. Vil du installere det\?</string>
+    <string name="firefox_beta__warning">- Programmet er designet for utviklere og testere. Det kan inneholde forskjellige feil som kan ha innvirkning på vanlig bruk av nettleseren.</string>
     <string name="firefox_nightly__title">Firefox nattlig</string>
     <string name="iceraven__title">Iceraven-nettleseren</string>
     <string name="install_activity__download_app_with_status">Last ned program (%1$s)</string>
@@ -126,7 +126,8 @@
     <string name="running_downloads_dialog__message">Programmet laster ned oppgraderinger i bakgrunnen … Vil du starte en ny nedlasting som kan ta lengre tid\?</string>
     <string name="brave__description">Mer privat surfing, gratis. Har blokkering av reklame og oppsprett. Søk på Internett uten at reklameselskap, skadevare og oppsprett sporer deg.</string>
     <string name="settings__background__update_check__excluded_apps__summary">Nyttig hvis du ikke vil oppgradere programmet og ikke vil motta oppgraderingsmerknader om det.</string>
-    <string name="brave__warning">Bruker Google Chrome (Chromium) som teknisk fundament. Noen liker ikke dette. Vil du installere Brave\?</string>
+    <string name="brave__warning">- Bruker Google Chrome (Chromium) som teknisk fundament. Noen liker ikke dette. Vil du installere Brave\?
+\n- På grunn av sin grunnleggende oppmerksomhetstoken flaggermus på Ethereum blockchain har prosjektet bånd med cryptocurrency. Blockchains har mange problemer og bør unngås etter mitt syn.</string>
     <string name="settings__background__update_check__metered__title">Oppgraderingssjekker på kvotebaserte nettverk</string>
     <string name="settings__background_category__title">Bakgrunn</string>
     <string name="settings__foreground__download__metered__title">Last ned oppgraderinger på kvotebaserte nettverk</string>
@@ -146,7 +147,7 @@
     <string name="settings__theme_light">Lys</string>
     <string name="dialog_button__do_not_install">Nei, ikke installer</string>
     <string name="background_job_failure__notification_title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
-    <string name="bromite__warning">Bruker Google Chrome (Chromium) som teknisk utgangspunkt. Noen misliker dette. Vil du installere Bromite\?</string>
+    <string name="bromite__warning">- Bromite bruker det tekniske fundamentet til Google Chrome og støtter dermed indirekte monopolposisjonen til krom gjengivelsesmotoren.</string>
     <string name="install_activity__downloaded_application_from">Last ned program fra:</string>
     <string name="install_activity__fetch_url_for_download">Hent nedlastningsnettadresse fra %1$s</string>
     <string name="device_too_old_dialog__message">Din enhet kjører Android %2$s, men programmet krever %1$s. Enten velg et annet program, oppgrader operativsystemet, eller bytt til en nyere smarttelefon.</string>
