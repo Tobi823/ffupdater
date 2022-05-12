@@ -11,8 +11,7 @@
     <string name="notification__error__title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
     <string name="brave__description">Mer privat surfing, gratis. Har blokkering av reklame og oppsprett. Søk på Internett uten at reklameselskap, skadevare og oppsprett sporer deg.</string>
     <string name="brave__title">Brave-nettleseren</string>
-    <string name="brave__warning">- Bruker Google Chrome (Chromium) som teknisk fundament. Noen liker ikke dette. Vil du installere Brave\?
-\n- På grunn av sin grunnleggende oppmerksomhetstoken flaggermus på Ethereum blockchain har prosjektet bånd med cryptocurrency. Blockchains har mange problemer og bør unngås etter mitt syn.</string>
+    <string name="brave__warning">- Bruker Google Chrome (Chromium) som teknisk fundament. Noen liker ikke dette. Vil du installere Brave? \n- På grunn av sin grunnleggende oppmerksomhetstoken flaggermus på Ethereum blockchain har prosjektet bånd med cryptocurrency. Blockchains har mange problemer og bør unngås etter mitt syn.</string>
     <string name="brave_beta__description">Velkommen til Brave-beta for Android. \nPrøv de nyeste funksjonene og gi tilbakemelding: https://brave.com/msupport \nDu kan installere det sammen med din nåværende versjon av Brave for Android.</string>
     <string name="brave_beta__title">Brave-nettleseren (beta)</string>
     <string name="brave_nightly__description">Velkommen til Brave nattlig (utviklerversjon) for Android. \nPrøv ut de nyeste funksjoner og gi tilbakemelding: https://brave.com/msupport \nDu kan installere det ved siden av din nåværende versjon av Brave for Android.</string>
