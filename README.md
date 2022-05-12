@@ -2,7 +2,9 @@
 
 # Firefox-Updater
 
-Download, install and update browsers from Mozilla or based on Firefox:
+Installs and updates the following browsers:
+
+Browsers from Mozilla or based on Firefox:
 
 - [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox),
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
@@ -13,13 +15,13 @@ Download, install and update browsers from Mozilla or based on Firefox:
   ([GitHub Repository](https://github.com/mozilla-mobile/focus-android))
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 
-good privacy browsers:
+Good privacy browsers:
 
 - [Bromite](https://github.com/bromite/bromite),
   [Bromite SystemWebView](https://www.bromite.org/system_web_view)
 - [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium-android)
 
-better than Google Chrome browsers:
+Browser which are better than Google Chrome:
 
 - [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US),
   [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
@@ -125,8 +127,6 @@ repository or the official *F-Droid* repository) the app version was installed
 - Firefox Nightly: Replace the minutes with 'xx' because FFUpdater can only access the start time of the build
   and not the version name of the app update (finish time). The builds always starts at 5:00 and 17:00 and
   usually takes a few minutes.
-- I don't optimize the APK file with minifyEnabled and shrinkResources because it makes the app harder to
-  debug
 - Tor Browser / Orbot: I will not support them because they can be installed with F-Droid.
   (Go to Settings > Repositories > Enable "Guardian Project Official Releases".)
   I don't feel confident enough that I can install and update the Tor Browser / Orbot securely
