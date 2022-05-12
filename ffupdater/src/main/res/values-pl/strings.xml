@@ -13,7 +13,8 @@
     <string name="background_job_failure__notification_title">Aktualizacja w tle się nie powiodła</string>
     <string name="brave__description">Przeglądaj internet prywatnie, za darmo! Brave to Twoja szybka, darmowa i bezpieczna przeglądarka internetowa z blokadą reklam i wyskakujących okienek. Prywatne przeglądanie i wyszukiwanie w Internecie bez śledzenia przez reklamodawców, złośliwego oprogramowania i wyskakujących okienek.</string>
     <string name="brave__title">Przeglądarka Brave</string>
-    <string name="brave__warning">Brave wykorzystuje rozwiązania techniczne Google Chrome (Chromium) - niektórym się to nie podoba. Czy na pewno chcesz zainstalować Brave?</string>
+    <string name="brave__warning">- Brave wykorzystuje rozwiązania techniczne Google Chrome (Chromium) - niektórym się to nie podoba. Czy na pewno chcesz zainstalować Brave\?
+\n- Ze względu na Basic Attention Token BAT na blockchainie Ethereum projekt ten ma powiązania z kryptowalutami. Blockchainy mają wiele problemów i moim zdaniem należy ich unikać.</string>
     <string name="brave_beta__description">Witamy w programie Brave Beta dla systemu Android!
 \nWypróbuj najnowsze funkcje i przekaż wczesne opinie: https://brave.com/msupport
 \nMożesz zainstalować Brave Beta równolegle z obecną wersją Brave na Androida.</string>
@@ -24,7 +25,7 @@
     <string name="brave_nightly__title">Przeglądarka Brave (Nightly)</string>
     <string name="bromite__description">Bromite ma na celu zapewnienie komfortowego przeglądania stron bez ingerencji w prywatność dzięki szybkiemu silnikowi blokowania reklam. Minimalne zmiany interfejsu są stosowane, aby pomóc ograniczyć ideę "przeglądarki jako przestrzeni reklamowej".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromite wykorzystuje rozwiązania techniczne Google Chrome (Chromium) - niektórym się to nie podoba. Czy na pewno chcesz zainstalować Bromite?</string>
+    <string name="bromite__warning">- Bromite wykorzystuje techniczne podstawy przeglądarki Google Chrome i w ten sposób pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="bromite_systemwebview__description">Pakiet SystemWebView zawiera podstawowy silnik przeglądarki/renderowania Bromite i jego funkcje. Oferuje możliwość zastąpienia domyślnego komponentu przeglądarki dla całego systemu Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>

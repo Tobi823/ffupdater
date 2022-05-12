@@ -13,14 +13,15 @@
     <string name="background_job_failure__notification_title">Не вдалося перевірити фонове оновлення</string>
     <string name="brave__description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення. \n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
     <string name="brave__title">Brave Browser</string>
-    <string name="brave__warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave?</string>
+    <string name="brave__warning">- Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave\?
+\n- Завдяки своїй основній уваги маркуванню на блокчейні Ethereum проект має зв\'язки з криптовалютою. Блокчейн має багато проблем, і слід уникати, на мій погляд.</string>
     <string name="brave_beta__description">Ласкаво просимо до Brave Beta для Android!\nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport\nВи можете встановити Brave Beta разом із поточною версією Brave для Android.</string>
     <string name="brave_beta__title">Brave Browser (бета-версія)</string>
     <string name="brave_nightly__description">Ласкаво просимо до Brave Nightly (розробник) для Android!\nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport\nВи можете встановити Brave Nightly разом із поточною версією Brave для Android.</string>
     <string name="brave_nightly__title">Brave Browser (на ніч)</string>
     <string name="bromite__description">Bromite націлений на те, щоб забезпечити безперешкодний перегляд веб-сторінок без функцій, що заважають конфіденційності, та з додаванням швидкого механізму блокування реклами. Мінімальні зміни користувальницького інтерфейсу застосовуються, щоб допомогти приборкати ідею \"браузер як рекламна платформа\".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Bromite?</string>
+    <string name="bromite__warning">- Броміт використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
     <string name="bromite_systemwebview__description">Пакет SystemWebView містить основний браузер і механізм візуалізації Bromite та ті самі функції. Він пропонує можливість замінити компонент браузера за замовчуванням для всієї системи Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопіюйте звіт про аварійне завершення роботи в буфер обміну</string>
@@ -46,7 +47,7 @@
     <string name="failed_update_notification__notification_title">Не вдалося оновити %1$s.</string>
     <string name="firefox_beta__description">Firefox для Android — це за замовчуванням конфіденційний і неймовірно швидкий браузер. Щодня тисячі онлайн-трекерів стежать за тобою, збираючи інформацію про твоє життя в Інтернеті і уповільнюючи швидкість твоєї роботи. Firefox за замовчуванням блокує більше 2000 таких трекерів і дозволяє встановити доповнення, що блокують рекламу, якщо ти захочеш настроювати свій браузер ще більше. З Firefox ти отримаєш безпеку, на яку заслуговуєш, а також високу швидкість роботи, — і все це в конфіденційному мобільному браузері.</string>
     <string name="firefox_beta__title">Firefox для Android Beta</string>
-    <string name="firefox_beta__warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
+    <string name="firefox_beta__warning">- Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером.</string>
     <string name="firefox_focus__description">Це модифікація браузера Firefox, спрямована на підвищення конфіденційності.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar розроблено для Німеччини, Австрії та Швейцарії, але може використовуватися користувачами з будь-якої країни. Він дуже схожий на Firefox Focus, але назву було змінено в німецькомовних країнах, щоб уникнути плутанини з журналом Focus від Hubert Burda Media group. На відміну від Firefox Focus, у Firefox Klar телеметрія вимкнена за замовчуванням через суворі німецькі закони про конфіденційність.</string>
@@ -57,7 +58,7 @@
 \n
 \nFirefox Nightly розроблено для демонстрації більш експериментальних збірок Firefox. Канал Nightly дозволяє користувачам випробувати новітні інновації Firefox у нестабільному середовищі та надати відгук про функції та продуктивність, щоб допомогти визначити, що робить остаточний випуск.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером. Ду ви хочете його встановити?</string>
+    <string name="firefox_nightly__warning">- Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером.</string>
     <string name="firefox_release__description">Firefox для Android — це за замовчуванням конфіденційний і неймовірно швидкий браузер. Щодня тисячі онлайн-трекерів стежать за тобою, збираючи інформацію про твоє життя в Інтернеті і уповільнюючи швидкість твоєї роботи. Firefox за замовчуванням блокує більше 2000 таких трекерів і дозволяє встановити доповнення, що блокують рекламу, якщо ти захочеш настроювати свій браузер ще більше. З Firefox ти отримаєш безпеку, на яку заслуговуєш, а також високу швидкість роботи, — і все це в конфіденційному мобільному браузері.</string>
     <string name="firefox_release__title">Веб-браузер Firefox</string>
     <string name="go_back">Повертайся</string>
@@ -154,7 +155,7 @@
     <string name="successful_update_notification__notification_title">%1$s оновлено.</string>
     <string name="ungoogled_chromium__description">Google Chromium, без інтеграції з Google.\n\nБез входу в обліковий запис Google Chromium працює досить добре з точки зору безпеки та конфіденційності. Однак Chromium все ще певна залежність від веб-сервісів і бінарних файлів Google. Крім того, Google створив Chromium, щоб він був простим та інтуїтивно зрозумілим для користувачів, що означає, що вони йдуть на компроміс щодо прозорості та контролю внутрішніх операцій.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromium використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Ungoogled Chromium?</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
     <string name="unsupported_abi_dialog__message">Вибраний браузер несумісний з процесором вашого смартфона. Виберіть інший веб-переглядач.</string>
     <string name="unsupported_abi_dialog__title">Непідтримуваний пристрій</string>
     <string name="update_interval__12h">12 годин</string>
@@ -181,5 +182,6 @@
     <string name="update_notification__title">Обновление для "%1$s" доступно</string>
     <string name="vivaldi__description">Vivaldi - це новий приватний браузер з унікальною гнучкістю в налаштуванні. Він має такі корисні інстументи, як блокувальник реклами (вимкнений за промовчанням), захист від стеження та приватний перекладач. Нотатки та знімки сторінок прискорюють та полегшують робочий процес. Налаштування теми оформлення та вигляду й розташування вкладок додають індивідуальність браузерові. Завантажте безкоштовно та переглядайте сайти з насолодою.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
-    <string name="vivaldi__warning">Vivaldi є лише частково відкритим вихідним кодом (див. <a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a> для отримання додаткової інформації). Він також використовує технічну базу Google Chrome (Chromium).\n\nДеяким людям це не до вподоби. Чи хочете ви встановити Vivaldi?</string>
+    <string name="vivaldi__warning">- Vivaldi є лише частково відкритим кодом.
+\n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
 </resources>
