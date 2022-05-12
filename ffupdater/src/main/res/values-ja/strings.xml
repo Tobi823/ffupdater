@@ -13,14 +13,15 @@
     <string name="background_job_failure__notification_title">バックグラウンドのチェックに失敗しました</string>
     <string name="brave__description">自由で、プライベートにインターネットを閲覧することができます。Braveは、広告ブロック機能とポップアップブロック機能を備えた、高速、無料、かつ安全なプライベートウェブブラウザです。広告主やマルウェア、ポップアップに追跡されることなく、プライベートにインターネットを閲覧、検索することができます。</string>
     <string name="brave__title">Brave ウェブブラウザ</string>
-    <string name="brave__warning">Braveは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？</string>
+    <string name="brave__warning">- Braveは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？
+\n- Ethereumブロックチェーン上のBasic Attention Token BATのため、このプロジェクトは暗号通貨との結びつきがあります。ブロックチェーンには多くの問題があり、避けるべきと私は考えています。</string>
     <string name="brave_beta__description">Android版Brave Betaへようこそ!\n最新機能をお試しいただき、早い段階でフィードバックをお願いします。https://brave.com/msupport \nブレイブベータは、現在お使いのAndroid版ブレイブと一緒にインストールすることができます。</string>
     <string name="brave_beta__title">ブレイブブラウザ（ベータ版）</string>
     <string name="brave_nightly__description">Android版Brave Nightly (Developer)へようこそ!\n最新機能を試し、早い段階でフィードバックしてください: https://brave.com/msupport\nBrave Nightlyは、現在お使いのBrave for Androidと一緒にインストールすることができます。</string>
     <string name="brave_nightly__title">ブレイブブラウザ（ナイトリー）</string>
     <string name="bromite__description">Bromiteは、プライバシーを侵害する機能を排除し、高速な広告ブロック機能を追加することで、高速なブラウジング体験を提供することを目的としています。</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">Bromiteは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？</string>
+    <string name="bromite__warning">- BromiteはGoogle Chromeの技術基盤を利用しているため、間接的にChromiumレンダーエンジンの独占的な地位を支えていることになります。</string>
     <string name="bromite_systemwebview__description">SystemWebViewパッケージは、Bromiteのコアブラウザ／レンダリングエンジンと同じ機能を持ち、Androidシステム全体のデフォルトブラウザコンポーネントを置き換える可能性を提供します。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピーする</string>
@@ -46,14 +47,14 @@
     <string name="failed_update_notification__notification_title">%1$s は更新できませんでした。</string>
     <string name="firefox_beta__description">Android用Firefoxブラウザは、プライベートで、非常に高速に動作します。何千ものオンライントラッカーが毎日あなたを追跡し、あなたがオンラインで何にアクセスしたか等の情報を収集し、ブラウジング速度を低下させています。Firefoxは、これらのトラッカーの2000以上をデフォルトでブロックし、さらにブラウザをカスタマイズしたい場合は、広告ブロックのアドオンも利用できます。Firefoxは、あなたが必要とするセキュリティとスピードを、プライベートなモバイルブラウザで実現します。</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
-    <string name="firefox_beta__warning">このアプリは開発者やテスター向けに作られたものです。作業に影響を与える様々なバグが含まれている可能性があります。このアプリをインストールしますか？</string>
+    <string name="firefox_beta__warning">- このアプリは開発者やテスター向けに作られたものです。作業に影響を与える様々なバグが含まれている可能性があります。</string>
     <string name="firefox_focus__description">このアプリはプライバシーの向上を目的としたFirefoxブラウザの改良版です。</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar は、ドイツ、オーストリア、スイス向けに開発されていますが、どの国のユーザでも使用することができます。Firefox Focus と非常によく似ていますが、Hubert Burda Media group の雑誌 Focus との混同を避けるため、ドイツ語圏では名前が変更されています。Firefox Focus とは異なり、Firefox Klar は、ドイツの厳格な個人情報保護法により、デフォルトでテレメトリーが無効になっています。</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">このアプリは以前は「Firefox Preview」という名称で、現在は、Firefox Nightly に移行しています。\n\nFirefox Nightly は、Firefox の新しいリリースに向けた開発チャンネルです。\n\nFirefox Nightly は、Firefox のより実験的な機能を紹介するために設計されています。Nightly チャンネルでは、ユーザーが不安定なFirefox の最新の革新的な機能を体験し、機能やパフォーマンスに関するフィードバックを提供することで、最終的なリリースの決定に役立てています。</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">このアプリは開発者やテスター向けに作られたものです。作業に影響を与える様々なバグが含まれている可能性があります。このアプリをインストールしますか？</string>
+    <string name="firefox_nightly__warning">- このアプリは開発者やテスター向けに作られたものです。作業に影響を与える様々なバグが含まれている可能性があります。</string>
     <string name="firefox_release__description">Android用Firefoxブラウザは、プライベートで、非常に高速に動作します。何千ものオンライントラッカーが毎日あなたを追跡し、あなたがオンラインで何にアクセスしたか等の情報を収集し、ブラウジング速度を低下させています。Firefoxは、これらのトラッカーの2000以上をデフォルトでブロックし、さらにブラウザをカスタマイズしたい場合は、広告ブロックのアドオンも利用できます。Firefoxは、あなたが必要とするセキュリティとスピードを、プライベートなモバイルブラウザで実現します。</string>
     <string name="firefox_release__title">Firefoxブラウザ</string>
     <string name="go_back">戻る</string>
@@ -90,9 +91,7 @@
     <string name="installed_app_is_not_verified">インストールしたアプリが検証できませんでした</string>
     <string name="installed_application_is_verified">インストールしたアプリは検証されました</string>
     <string name="installed_version">インストール済み: %1$s</string>
-    <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU
-\n
-\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts.</string>
+    <string name="lockwise__description"></string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-APIの制限を超えました。次の時間に再試行します。</u>"</string>
     <string name="main_activity__no_unmetered_network">アンメットネットワークなし</string>
@@ -152,7 +151,7 @@
     <string name="successful_update_notification__notification_title">%1$s が更新されました。</string>
     <string name="ungoogled_chromium__description">Googleとの統合がないGoogle Chromium。\n\nGoogleアカウントにサインインしなくても、Chromiumはセキュリティとプライバシーの面で非常に優れています。しかし、ChromiumはGoogleのウェブサービスやバイナリに依存しています。さらに、GoogleはChromiumをユーザーにとって簡単で直感的なものにするように設計しているため、内部操作の透明性とコントロールに妥協していることになる。</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">Ungoogled Chromiumは、Google Chrome（Chromium）の技術基盤を使用していますが、これを好まない人もいます。Ungoogled Chromiumをインストールしますか？</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled ChromiumはGoogle Chromeの技術基盤を利用しているため、間接的にChromiumレンダーエンジンの独占的な地位を支えていることになるのです。</string>
     <string name="unsupported_abi_dialog__message">選択したアプリはこの端末のプロセッサに互換性がありません。別のブラウザを選択してください。</string>
     <string name="unsupported_abi_dialog__title">未対応のデバイス</string>
     <string name="update_interval__12h">12時間</string>
@@ -179,5 +178,6 @@
     <string name="update_notification__title">"%1$s" の更新が利用可能です</string>
     <string name="vivaldi__description">Vivaldi は思い通りにカスタマイズできる新しいプライベートなウェブブラウザです。内蔵の広告ブロッカー、トラッキング防止機能、プライベートな翻訳機能をはじめ、便利な機能をたくさん搭載しています。メモやページキャプチャーのような機能を使えば使うほど毎日の効率が良くなります。デスクトップと同じスタイルのタブやダーク/ライトテーマなどのレイアウト設定で、あなただけのブラウザにしましょう。ダウンロードは無料。いますぐダウンロードして、快適で安全なブラウジングをはじめましょう。</string>
     <string name="vivaldi__title">Vivaldiブラウザ</string>
-    <string name="vivaldi__warning">Vivaldiは部分的にしかオープンソースではありません（詳しくは<a href="https://vivaldi.com/blog/vivaldi-browser-open-source/">https://vivaldi.com/blog/vivaldi-browser-open-source/</a>）。また、Google Chromeの技術基盤（Chromium）を使用しています。\n\nこれを好まない人もいます。Vivaldiをインストールしたいですか？</string>
+    <string name="vivaldi__warning">- Vivaldiは部分的なオープンソースに過ぎません。
+\n- また、Google Chromeの技術基盤を利用しているため、Chromiumレンダーエンジンの独占的な地位を間接的に支えている。</string>
 </resources>
