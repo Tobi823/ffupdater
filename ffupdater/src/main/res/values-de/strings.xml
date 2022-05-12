@@ -109,7 +109,7 @@
     <string name="running_downloads_dialog__title">Laufende Downloads</string>
     <string name="running_downloads_dialog__yes">Ja</string>
     <string name="session_installer__not_enough_storage">Der Vorgang ist fehlgeschlagen, weil nicht genügend Speicherplatz vorhanden ist: %1$s</string>
-    <string name="session_installer__require_user_interaction">Benutzerinteraktion erforderlich.</string>
+    <string name="session_installer__require_user_interaction">Benutzerinteraktion erforderlich. Du musst zuerst die App über die FFUpdater-Benutzeroberfläche aktualisieren. Erst danach darf die App im Hintergrund aktualisiert werden.</string>
     <string name="session_installer__status_failure">Der Vorgang ist auf eine allgemeine Weise fehlgeschlagen. Das System wird immer versuchen, einen genaueren Grund für das Scheitern anzugeben, aber in einigen seltenen Fällen kann dieser auch geliefert werden.</string>
     <string name="session_installer__status_failure_aborted">Der Vorgang ist fehlgeschlagen, weil er aktiv abgebrochen wurde. Beispielsweise hat der Benutzer aktiv die angeforderten Berechtigungen abgelehnt, oder die Sitzung wurde abgebrochen.</string>
     <string name="session_installer__status_failure_blocked">Der Vorgang ist fehlgeschlagen, weil er blockiert wurde. Der Vorgang kann z.B. durch eine Geräterichtlinie blockiert werden, eine Paketüberprüfung kann den Vorgang blockieren, oder die Anwendung ist für den Betrieb des Kernsystems erforderlich.</string>
@@ -211,4 +211,17 @@
     </plurals>
     <string name="firefox_release__warning">- Eine verbesserte Version von Firefox ist auch auf F-Droid unter dem Namen Fennec F-Droid verfügbar.</string>
     <string name="intent_installer__likely_storage_failure">Der Vorgang ist wahrscheinlich wegen Speicherproblemen fehlgeschlagen. Beispielsweise kann der Speicherplatz auf dem Gerät knapp werden, oder es sind keine externen Medien verfügbar. Der Benutzer kann möglicherweise helfen, Speicherplatz freizugeben oder andere externe Medien einzulegen.</string>
+    <string name="iceraven__warning">- Der Maintainer gibt keine Garantien oder Gewährleistungen für Sicherheit oder Updates oder gar Stabilität.</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="kiwi__description">Kiwi Browser wurde entwickelt, um im Internet zu surfen, Nachrichten zu lesen, Videos anzuschauen und Musik zu hören, ohne dabei zu stören.</string>
+    <string name="settings__installer__session__summary">Empfohlen für die meisten Geräte.</string>
+    <string name="settings__installer__session__title">Session-Installationsmethode</string>
+    <string name="settings__installer__native__summary">Alternative Installationsmethode, wenn die Session-Installationsmethode nicht auf deinem Smartphone funktioniert.</string>
+    <string name="settings__installer__native__title">Native Installationsmethode</string>
+    <string name="settings__installer__root__summary">Verwende Root-Rechte, um Apps ohne Benutzerinteraktion zu installieren oder zu aktualisieren. Dies benötigt ein gerootetes Smartphone.</string>
+    <string name="settings__installer__root__title">Root-Installationsmethode</string>
+    <string name="install_activity__different_installer_info__text">Wenn die App-Installation häufig fehlschlägt, versuche in den Einstellungen die native Installationsmethode zu aktivieren.</string>
+    <string name="kiwi__warning">- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.
+\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.
+\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.</string>
 </resources>
