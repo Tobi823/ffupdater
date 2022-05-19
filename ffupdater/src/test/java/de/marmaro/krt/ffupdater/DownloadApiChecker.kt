@@ -166,7 +166,7 @@ class DownloadApiChecker {
         val result = runBlocking { kiwi.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 14
+        val maxDays = 3 * 7
         assertTrue(age.toDays() < maxDays) { "$age must be smaller then $maxDays days" }
     }
 
@@ -194,7 +194,7 @@ class DownloadApiChecker {
         val result = runBlocking { ungoogledChromium.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 9 * 7
+        val maxDays = 11 * 7
         assertTrue(age.toDays() < maxDays) { "$age must be smaller then $maxDays days" }
     }
 
