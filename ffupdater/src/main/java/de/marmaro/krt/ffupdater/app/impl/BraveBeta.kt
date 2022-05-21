@@ -44,7 +44,7 @@ class BraveBeta(
             repoOwner = "brave",
             repoName = "brave-browser",
             resultsPerPage = 20,
-            isValidRelease = { release -> release.isPreRelease && release.name.startsWith("Beta v") },
+            isValidRelease = { release -> !release.isPreRelease && release.name.startsWith("Beta v") },
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             dontUseApiForLatestRelease = true,
