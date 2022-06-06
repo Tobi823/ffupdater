@@ -179,8 +179,7 @@
     <string name="update_notification__title">Actualización para %1$s disponible</string>
     <string name="vivaldi__description">¡Descubra un navegador de Internet increíblemente rápido!. Vivaldi es un nuevo navegador web gratuito y privado construido con flexibilidad. Viene repleto de funciones útiles, como un AdBlocker (bloqueador de ventanas emergentes) integrado, protección contra el rastreo y traducción privada. Las opciones del navegador, como las pestañas propias del estilo del escritorio, los temas oscuros o claros y las opciones de diseño, te ayudan a hacerlo tuyo.</string>
     <string name="vivaldi__title">Navegador Vivaldi</string>
-    <string name="vivaldi__warning">- Vivaldi es solo parcialmente de código abierto.
-\n- También utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
+    <string name="vivaldi__warning">- Vivaldi es solo parcialmente de código abierto. \n- También utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="notification__eol_apps__title">Aplicaciones obsoletas instaladas</string>
     <string name="orbot__description">Orbot es una aplicación de proxy gratuita que permite a otras aplicaciones utilizar Internet de forma más segura. Orbot usa Tor para encriptar su tráfico de Internet y luego lo oculta rebotando a través de una serie de computadoras en todo el mundo. Tor es un software gratuito y una red abierta que lo ayuda a defenderse contra una forma de vigilancia de la red que amenaza la libertad personal y la privacidad, las actividades y relaciones comerciales confidenciales y la seguridad del estado conocida como análisis de tráfico.</string>
     <string name="notification__eol_apps__channel_description">Canal de notificaciones para avisar de aplicaciones obsoletas.</string>
