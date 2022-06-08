@@ -72,7 +72,7 @@
 \n
 \nAmacımız, kullanıcılara daha fazla seçenek, daha fazla özelleştirme fırsatı (geniş bir uzantı kitaplığı dahil) ve ziyaret ettikleri sayfalar ve tarayıcılarının nasıl çalıştığı hakkında daha fazla bilgi sağlamayı amaçlayan yeni Android için Firefox\'un yakın bir çatalı olmaktır.</string>
     <string name="iceraven__title">Iceraven Tarayıcı</string>
-    <string name="infobox">Bu, Mozilla\'dan birden fazla tarayıcı için bir güncelleyicidir. Kurulum için artı düğmesine ve güncelleme için aşağı ok düğmesine tıklayın. Uygulamayı aşağı kaydırarak veya yeniden açarak yeni güncellemeleri denetleyebilirsiniz. Öntanımlı olarak uygulama, arka planda güncellemeleri düzenli olarak denetleyecektir. Kurulum/güncelleme sürecini güvenceye almak için elimden gelenin en iyisini yaptım - tekrar denetlemekten veya bir çekme talebi oluşturarak geliştirmekten çekinmeyin.
+    <string name="infobox">Bu, Mozilla ve diğerlerinden birden fazla tarayıcı için bir güncelleyicidir. Kurulum için artı düğmesine ve güncelleme için aşağı ok düğmesine tıklayın. Uygulamayı aşağı kaydırarak veya yeniden açarak yeni güncellemeleri denetleyebilirsiniz. Öntanımlı olarak uygulama, arka planda güncellemeleri düzenli olarak denetleyecektir. Kurulum/güncelleme sürecini güvenceye almak için elimden gelenin en iyisini yaptım - tekrar denetlemekten veya bir çekme talebi oluşturarak geliştirmekten çekinmeyin.
 \n
 \nSon başarılı arka plan güncelleme denetimi: %1$s</string>
     <string name="information_about_the_app">uygulama hakkında bilgi</string>
@@ -109,7 +109,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u>"</string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>
-    <string name="main_activity__subtitle">Tarayıcılarınızı Mozilla\'dan güncelleyin</string>
+    <string name="main_activity__subtitle">Tarayıcılarınızı resmi kaynaklarından güncelleyin</string>
     <string name="main_activity__temporary_network_issue">"<u>Geçici ağ sorunu. Daha sonra tekrar deneyin.</u>"</string>
     <string name="manage_storage_activity__delete_button">Önbelleğe alınmış uygulama güncellemelerini silin.</string>
     <string name="manage_storage_activity__explanation">FFUpdater önceden indirilmiş uygulama güncellemelerini önbelleğe alır ve bunları \'Android/data/de.marmaro.krt.ffupdater/files/Download\' klasöründe saklar.
@@ -240,7 +240,9 @@
     <string name="iceraven__warning">- Geliştiricisi, güvenlik veya güncellemeler ve hatta kararlılık konusunda hiçbir garanti vermez.</string>
     <string name="kiwi__description">Kiwi Browser, rahatsız edilmeden internette gezinmek, haber okumak, video izlemek ve müzik dinlemek için yapılmıştır.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler. 
-\n- Kiwi, gizlilik için uygun bir tarayıcı değildir, ancak iyi bir eklenti desteğine sahiptir. 
-\n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir.</string>
+    <string name="kiwi__warning">- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.
+\n- Kiwi, gizlilik için uygun bir tarayıcı değildir, ancak iyi bir eklenti desteğine sahiptir.
+\n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir.
+\n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
+    <string name="crash_report___explain_text__install_activity_install_file">Kurulum sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodaki çökme raporunuzu eklemeyi unutmayın.</string>
 </resources>
