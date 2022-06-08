@@ -10,24 +10,24 @@
     <string name="available_version_loading">Зареждане…</string>
     <string name="background_job_failure__notification_text">Докладвайте за тази грешка. Докоснете, за да видите доклада.</string>
     <string name="background_job_failure__notification_title">Грешка при проверка за обновяване във фонов режим</string>
-    <string name="brave__description">Разглеждайте интернет поверително и безплатно! Приложението Brave Private Browser е вашият бърз, безплатен и безопасен личен мрежов четец със спиране на реклами и изскачащи прозорци. Разглеждайте и търсете в интернет в поверителен режим, без да бъдете следени от рекламодатели, зловреден софтуер и изскачащи прозорци.</string>
-    <string name="brave__title">Brave Browser</string>
+    <string name="brave__description">Разглеждайте интернет поверително и безплатно! Приложението поверителен четец на Brave е вашият бърз, безплатен и безопасен личен мрежов четец със спиране на реклами и изскачащи прозорци. Разглеждайте и търсете в интернет в поверителен режим, без да бъдете следени от рекламодатели, зловреден софтуер и изскачащи прозорци.</string>
+    <string name="brave__title">Поверителен четец Brave</string>
     <string name="brave__warning">- Brave е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.
 \n- Заради Basic Attention Token BAT на Ethereum проектът е свързан с криптовалути. Тази технология има множество проблеми и трябва да бъде избягвана според мен.</string>
-    <string name="brave_beta__title">Brave Browser (Beta)</string>
-    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="brave_beta__title">Четец Brave (Beta)</string>
+    <string name="brave_nightly__title">Четец Brave (Nightly)</string>
     <string name="bromite__description">Bromite има за цел да осигури безпроблемно разглеждане без да нарушава поверителността, а добавя бърз механизъм за спиране на реклами. Прилагат се минимални промени в потребителския интерфейс, за да се ограничи идеята „четецът като рекламна платформа“.</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">- Bromite е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Копиране на доклада за срив в междинната памет</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">При извличане на адреса за изтегляне възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
-    <string name="crash_report__explain_text__main_activity_update_check">При проверката за обновяване в главния изглед възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">За съжаление FFUpdater се срина предния път. Докладвайте тази грешка на notabug.org, GitHub или GitLab. Копирайте доклада за срив от междинната памет като съобщение, добавете описание на начина, по който възпроизвеждате грешката.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">При извличане на адреса за изтегляне възникна грешка. Ако тя се появява често, не се колебайте да съобщите за нея в notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">При проверката за обновяване в главния изглед възникна грешка. Ако тя се появява често, не се колебайте да съобщите за нея в notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет и описание на начина, по който възпроизвеждате грешката.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">За съжаление FFUpdater се срина предния път. Съобщите за нея в notabug.org, GitHub или GitLab. Добавете доклада за срив от междинната памет като съобщение, както и описание на начина, по който възпроизвеждате грешката.</string>
     <string name="crash_report__go_to_github">Към GitHub</string>
     <string name="crash_report__go_to_gitlab">Към GitLab</string>
     <string name="crash_report__got_to_notabug_org">Към notabug.org</string>
-    <string name="device_too_old_dialog__message">Приложението работи под Android %1$s, но устройството работи само с Android %2$s. Изберете друго приложение, обновете операционната система или сменете устройството с по-ново.</string>
+    <string name="device_too_old_dialog__message">Приложението работи под Андроид %1$s, но устройството работи само с Андроид %2$s. Изберете друго приложение, обновете операционната система или сменете устройството с по-ново.</string>
     <string name="device_too_old_dialog__title">Остаряло устройство</string>
     <string name="dialog_button__do_not_install">Не, без инсталиране</string>
     <string name="dialog_button__yes">Да</string>
@@ -35,30 +35,30 @@
     <string name="error_notification__channel_description">Грешки при проверка за обновяване във фонов режим</string>
     <string name="error_notification__channel_name">Грешки във фонов режим</string>
     <string name="failed_update_notification__notification_message">Error (%1$d): %2$s</string>
-    <string name="firefox_beta__description">Firefox Browser за Android е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
-    <string name="firefox_beta__title">Firefox за Android Beta</string>
-    <string name="firefox_beta__warning">- Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната му работа.</string>
+    <string name="firefox_beta__description">Четецът Firefox за Андроид е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
+    <string name="firefox_beta__title">Firefox за Андроид Beta</string>
+    <string name="firefox_beta__warning">- Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната работа с него.</string>
     <string name="firefox_focus__description">Това е вариант на четеца Firefox, целящ да подобри поверителността.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar е разработен за Германия, Австрия и Швейцария, но може да се използва от потребители във всяка страна. Той е много подобен на Firefox Focus, но името е променено в немскоговорящите страни, за да се избегне объркване със списанието Focus на Hubert Burda Media group. За разлика от Firefox Focus, при Firefox Klar телеметрията е изключена по подразбиране поради строгите германски закони за защита на личните данни.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Обърнете внимание, че преди това приложение е било Firefox Preview. Сега се нарича Firefox Nightly.
 \n
-\nТова е канал за разработка на новите издания на Mozilla Firefox.
+\nТова е канал за разработка на новите издания на Firefox от Мозила.
 \n
-\nNightly е проектиран да предоставя експериментални издания на Firefox. Каналът Nightly позволява на потребителите да изпитат най-новите способности на Firefox в нестабилна среда и да предоставят обратна връзка за възможностите и производителността и така да определят какво прави окончателното издание.</string>
+\nNightly е проектиран да предоставя експериментални издания на Firefox. Каналът Nightly дава възможност на потребителите да изпитат най-новите способности на Firefox в нестабилна среда и да предоставят обратна връзка за възможностите и производителността и така да определят какво ще бъде окончателното издание.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_nightly__warning">- Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната работа с него.</string>
-    <string name="firefox_release__description">Firefox Browser за Android е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
-    <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__description">Четецът Firefox за Андроид е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
+    <string name="firefox_release__title">Четецът Firefox</string>
     <string name="go_back">Назад</string>
-    <string name="iceraven__description">Определено не е произведено от Mozilla!
+    <string name="iceraven__description">Определено не е произведено от Мозила!
 \n
-\nIceraven Browser е мрежов четец за Android, основан на версиите на Firefox, GeckoView и Mozilla Android Components на Mozilla Fenix.
+\nIceraven е мрежов четец за Андроид основан на версиите на Firefox, GeckoView и Mozilla Android Components на Fenix от Мозила.
 \n
-\nЦелта ни е да бъде близко разклонение на новия Firefox за Android, което се стреми да предостави на потребителите повече възможности, повече персонализиране (включително голяма библиотека с разширения) и повече информация за страниците, които посещават и как мрежовите четци взаимодействат с тях.</string>
-    <string name="iceraven__title">Iceraven Browser</string>
-    <string name="infobox">Това приложение е предназначено за обновяване на мрежовите четци на Mozilla. Докоснете бутона със знак плюс за инсталиране или стрелка надолу за обновяване. Можете да правите проверка за нови издания като дръпнете списъка надолу или повторно отворите приложението. По подразбиране приложението периодично, във фонов режим, също прави такава проверка. Направил съм всичко по силите си да направя процеса на инсталиране/обновяване максимално сигурен, но се чувствайте свободни да го проверите или да го подобрите чрез изпращане на заявка за сливане.
+\nЦелта ни е да бъде близко разклонение на новия Firefox за Андроид, което се стреми да предостави на потребителите повече възможности, повече персонализиране (включително голяма библиотека с разширения) и повече информация за страниците, които посещават и как мрежовите четци взаимодействат с тях.</string>
+    <string name="iceraven__title">Четецът Iceraven</string>
+    <string name="infobox">Приложението е предназначено за обновяване на мрежовите четци на Мозила и други. Докоснете бутона със знак плюс за инсталиране или стрелка надолу за обновяване. Можете да направите проверка за нови издания като дръпнете списъка надолу или повторно отворите приложението. По подразбиране приложението периодично, във фонов режим, също прави такава проверка. Направил съм всичко по силите си да процеса на инсталиране/обновяване да бъде максимално сигурен, но се чувствайте свободни да го проверите или да го подобрите чрез изпращане на заявка за сливане.
 \n
 \nПоследна успешна проверка за обновяване във фонов режим: %1$s</string>
     <string name="information_about_the_app">сведения за приложението</string>
@@ -73,7 +73,7 @@
     <string name="install_activity__fetch_url_for_download">Получаване на адрес за изтегляне от %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Получен е адрес за изтегляне от %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Превишено е ограничение на GitHub-API. Опитайте отново след час.</string>
-    <string name="install_activity__open_cache_explanation">Можете да отворите папката на междинната памет и да копирате файла на APK на място с повече свободно пространство. Внимавайте, защото при Android 11+ малко приложения за управление на файлове имат достъп до папката Android/data.</string>
+    <string name="install_activity__open_cache_explanation">Можете да отворите папката на междинната памет и да копирате файла на APK на място с повече свободно пространство. Внимавайте, защото при Андроид 11+ малко приложения за управление на файлове имат достъп до папката „Android/data“.</string>
     <string name="install_activity__open_cache_folder_button_text">Отваряне</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Отпечатък с SHA-256 от сертификат:</string>
     <string name="install_activity__temporary_network_issue">Възникнал е временен проблем в мрежата. Опитайте отново по-късно.</string>
@@ -94,7 +94,7 @@
 \nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в профилите си.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превишено е ограничение на GitHub-API. Опитайте отново след час.</u>"</string>
-    <string name="main_activity__subtitle">Обновявайте мрежовите четци от Mozilla</string>
+    <string name="main_activity__subtitle">Обновявайте мрежовите четци от официалните им източници</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
     <string name="manage_storage_activity__delete_button">Изчистване на обновяванията от междинната памет.</string>
     <string name="manage_storage_activity__explanation">FFUpdater временно разполага изтеглените обновявания в папката „Android/data/de.marmaro.krt.ffupdater/files/Download“.
@@ -126,7 +126,7 @@
     <string name="ungoogled_chromium__description">Google Chromium, без интеграция с Google.\n\nБез влизане в профил в Google Chromium се справя доста добре по отношение на сигурността и поверителността. Въпреки това Chromium все още има известна зависимост от уеб услуги и двоични файлове на Google. Освен това Google са проектирали Chromium така, че да бъде лесен и интуитивен за потребителите, което означава, че са направили компромис с прозрачността и контрола на вътрешните дейности.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
-    <string name="unsupported_abi_dialog__message">Избраното приложение е несъвместимо с процесора на телефона. Изберете друго.</string>
+    <string name="unsupported_abi_dialog__message">Избраното приложение е несъвместимо с процесора на устройството. Изберете друго.</string>
     <string name="unsupported_abi_dialog__title">Неподдържано устройство</string>
     <string name="update_interval__12h">12 часа</string>
     <string name="update_interval__15min">15 минути</string>
@@ -150,8 +150,8 @@
     <string name="update_notification__channel_name">Известие за издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
-    <string name="vivaldi__description">Vivaldi е нов поверителен браузър, изграден с гъвкавост наум. Набит е с полезни възможности, в т.ч. вградени блокер на реклами (фабрично забранен), защита срещу проследяване и поверителен превод. Инструменти като записки и прихващане на страници улесняват работата, но и пестят време. Истинските раздели в настолен стил, темите в тъмен или светъл облик и изборите на оформление ще позволят да го опитомите. Изтеглете безплатно и сърфирайте бързо.</string>
-    <string name="vivaldi__title">Vivaldi Browser</string>
+    <string name="vivaldi__description">Открийте изключително бърз мрежов четец! Vivaldi е нов, безплатен и поверителен мрежов четец, създаден с мисъл за гъвкавост. Той е снабден с полезни функции, включително вградено спиране на реклами (изскачащи прозорци също), защита от проследяване и поверително превеждане. Възможностите на четеца, като например подходящи раздели в настолен стил, тъмни/светли теми и избор на оформление, ви помагат да го направите свой.</string>
+    <string name="vivaldi__title">Четецът Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi е само частично с отворен код.
 \n- Освен това е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
     <string name="download_notification__channel_description">Показва се, когато се изтегля обновяване във фонов режим.</string>
@@ -169,13 +169,13 @@
     <string name="settings__background__update_check__excluded_apps__title">Изключване на приложения от проверката за обновяване</string>
     <string name="settings__background__download__enabled__title">Изтегляне на издания на приложенията</string>
     <string name="settings__background__update_check__interval__title">Интервал за проверка на издания</string>
-    <string name="bromite_systemwebview__description">Пакетът SystemWebView съдържа ядрото на четеца/машината за изчертаване на Bromite и същите функции. Той предлага възможност за замяна на компонента на мрежовия четец по подразбиране за цялата система на Android.</string>
-    <string name="brave_beta__description">Добре дошли от Brave Beta за Android!
+    <string name="bromite_systemwebview__description">Пакетът SystemWebView съдържа ядрото на четеца/машината за изчертаване на Bromite и същите функции. Той предлага възможност за замяна на компонента на мрежовия четец по подразбиране за цялата система на Андроид.</string>
+    <string name="brave_beta__description">Добре дошли от Brave Beta за Андроид!
 \nИзпробвайте най-новите възможности и дайте обратна връзка: https://brave.com/msupport
-\nМожете да инсталирате Brave Beta заедно с текущото издание на Brave за Android.</string>
-    <string name="brave_nightly__description">Добре дошли от Brave Nightly (Developer) за Android!
+\nМожете да инсталирате Brave Beta заедно с текущото издание на Brave за Андроид.</string>
+    <string name="brave_nightly__description">Добре дошли от Brave Nightly (Developer) за Андроид!
 \nИзпробвайте най-новите възможности и дайте обратна връзка: https://brave.com/msupport
-\nМожете да инсталирате Brave Nightly заедно с текущото издание на Brave за Android.</string>
+\nМожете да инсталирате Brave Nightly заедно с текущото издание на Brave за Андроид.</string>
     <string name="request_installation_permission_dialog__title">Разрешение за инсталиране</string>
     <string name="session_installer__require_user_interaction">Необходимо е взаимодействие с потребителя. Първо трябва да обновите приложението от интерфейса на FFUpdater. Само тогава обновяването във фонов режим е разрешено.</string>
     <string name="settings__background__download__enabled__summary">Когато бъде открито обновяване то се изтегля. В следствие на това се ускорява процеса на обновяване.</string>
@@ -186,7 +186,7 @@
     <string name="successful_update_notification__notification_title">Приложението %1$s е обновено.</string>
     <string name="failed_update_notification__channel_name">Известие за неуспешно обновяване на %1$s</string>
     <string name="failed_update_notification__channel_description">Категория известия за неуспешно обновяване на %1$s.</string>
-    <string name="failed_update_notification__notification_title">%1$s не е обновено</string>
+    <string name="failed_update_notification__notification_title">Приложението %1$s не е обновено</string>
     <string name="main_activity__no_unmetered_network">Няма мрежи без отчитане</string>
     <string name="running_downloads_dialog__message">В момента във фонов режим се изтегля обновяване. Желаете ли да започне ново изтегляне, което може да отнеме повече време\?</string>
     <string name="settings__background__update_check__metered__title">Проверка за обновяване в мрежи с отчитане на трафика</string>
@@ -203,7 +203,7 @@
     <string name="settings__background__update_check__excluded_apps__summary">Полезно, ако не искате да обновявате дадено приложение и не желаете да получавате известия за нови издания.</string>
     <string name="settings__foreground__download__metered__summary">Полезно за потребители с ограничен обем мобилни данни.</string>
     <string name="settings__foreground__download__metered__title">Изтегляне на обновявания в мрежи с отчитане на трафика</string>
-    <string name="crash_report___explain_text__install_activity_download_file">При изтегляне възникна грешка. Ако тя се появява често, не се колебайте да я докладвате на notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет.</string>
+    <string name="crash_report___explain_text__install_activity_download_file">При изтегляне възникна грешка. Ако тя се появява често, не се колебайте да съобщите за нея в notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет.</string>
     <string name="install_activity__open_folder">Отваряне на папката</string>
     <string name="intent_installer__likely_storage_failure">Операцията е неуспешна вероятно поради проблеми с хранилището. Например, устройството може няма достатъчно свободно пространство или външният носител да не е наличен. Потребителят може да помогне за освобождаване на място или за поставяне на друг външен носител.</string>
     <string name="firefox_release__warning">- Подобрена версия на Firefox е налична в F-Droid под името Fennec F-Droid.</string>
@@ -236,9 +236,11 @@
     <string name="settings__installer__native__summary">Резервен вариант ако сесийният инсталатор не работи на устройството. Най-често се случва на устройства от Samsung и Xiaomi.</string>
     <string name="settings__installer__root__summary">Използва правата на суперпотребителя, за да инсталира или обновява приложения без участието на потребителя. Изисква достъп до права на суперпотребителя на устройството.</string>
     <string name="iceraven__warning">- Отговорникът не дава никакви гаранции за сигурност или обновявания, или дори стабилност.</string>
-    <string name="kiwi__description">Kiwi Browser е създаден за разглеждане, четене на новини, гледане на видеоклипове и слушане на музика без досадните неща.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi Browser е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.
+    <string name="kiwi__description">Четецът Kiwi е създаден за разглеждане, четене на новини, гледане на видеоклипове и слушане на музика без досадните неща.</string>
+    <string name="kiwi__title">Четецът Kiwi Next</string>
+    <string name="kiwi__warning">- Четецът Kiwi е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.
 \n- Не е поверителен мрежов четец, но има добра поддръжка на добавки.
-\n- Разработчиците на Kiwi Browser получават заплащане от търсещите машини при всяко търсене, направено с мрежовия четец. В зависимост от избраната търсеща машина заявките се изпращат до сървърите на Kiwibrowser или Kiwisearchservices.</string>
+\n- Разработчиците на Четецът Kiwi получават заплащане от търсещите машини при всяко търсене, направено с мрежовия четец. В зависимост от избраната търсеща машина заявките се изпращат до сървърите на Kiwibrowser или Kiwisearchservices.
+\n- Рекламите на Google в Kiwi могат да използват вашето за местоположението за реклами, но можете да ги забраните, като изключите функцията „Откриване“. Това скоро ще бъде променено. Вижте https://privacy.kiwibrowser.org/ за повече подробности.</string>
+    <string name="crash_report___explain_text__install_activity_install_file">По време на инсталацията е възникнала следната грешка. Ако тя се появява често, не се колебайте да съобщите за нея в notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет.</string>
 </resources>
