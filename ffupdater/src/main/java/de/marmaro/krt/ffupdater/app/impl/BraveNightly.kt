@@ -44,7 +44,7 @@ class BraveNightly(
             repoOwner = "brave",
             repoName = "brave-browser",
             resultsPerPage = 10,
-            isValidRelease = { release -> release.isPreRelease && release.name.startsWith("Nightly v") },
+            isValidRelease = { release -> !release.isPreRelease && release.name.startsWith("Nightly v") },
             isCorrectAsset = { asset -> asset.name == fileName },
             failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             dontUseApiForLatestRelease = true,
