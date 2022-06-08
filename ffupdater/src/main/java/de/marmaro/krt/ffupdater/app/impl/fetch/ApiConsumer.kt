@@ -13,6 +13,7 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
+import java.net.SocketTimeoutException
 import kotlin.reflect.KClass
 
 
@@ -38,6 +39,12 @@ class ApiConsumer {
                 try {
                     consume(url, clazz)
                 } catch (e: IOException) {
+                    throw NetworkException("Fail to consume '$url'.", e)
+                } catch (e: IllegalArgumentException) {
+                    // for java.lang.IllegalArgumentException: port out of range:-1
+                    throw NetworkException("Fail to consume '$url'.", e)
+                } catch (e: SocketTimeoutException) {
+                    // for java.net.SocketTimeoutException: timeout
                     throw NetworkException("Fail to consume '$url'.", e)
                 }
             }
