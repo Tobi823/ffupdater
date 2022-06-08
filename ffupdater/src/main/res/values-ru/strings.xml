@@ -27,7 +27,7 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Скопируйте отчет о сбое в буфер обмена</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">При получении URL-адреса загрузки произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщить о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
     <string name="crash_report__explain_text__main_activity_update_check">При проверке обновлений в окне приложения произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщать о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">К сожалению, программа FFUpdater потерпела крах. Пожалуйста, сообщите об этой ошибке на notabug.org, GitHub или GitLab. Добавьте к сообщению отчет о сбое из буфера обмена и описание того, как воспроизвести ошибку.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">К сожалению, программа FFUpdater потерпела крах из-за следующей ошибки. Пожалуйста, сообщите об этой ошибке на notabug.org, GitHub или GitLab. Скопируйте отчет о сбое из буфера обмена в сообщение и добавьте описание того, как воспроизвести ошибку.</string>
     <string name="crash_report__go_to_github">Перейти на GitHub</string>
     <string name="crash_report__go_to_gitlab">Перейти на GitLab</string>
     <string name="crash_report__got_to_notabug_org">Перейти на notabug.org</string>
@@ -63,7 +63,7 @@
     <string name="infobox">Это программа обновления для нескольких браузеров Mozilla. Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления. Вы можете проверить наличие новых обновлений, потянув вниз или открыв приложение заново. По умолчанию приложение будет регулярно проверять наличие обновлений в фоновом режиме. Я сделал все возможное, чтобы обезопасить процесс установки/обновления - не стесняйтесь, перепроверьте или улучшите его, создав pull-request. \n\nПоследняя успешная проверка фонового обновления: %1$s</string>
     <string name="information_about_the_app">информация о приложении</string>
     <string name="install_activity__delete_cache_button_text">очистить кэш</string>
-    <string name="install_activity__delete_cache_explanation">Если вы считаете, что FFUpdater сохранил в кэше обновление ошибочного приложения, нажмите кнопку \"очистить кэш\", чтобы удалить кэш для этого приложения.</string>
+    <string name="install_activity__delete_cache_explanation">Если вы считаете, что FFUpdater ошибочно сохранил в кэше обновление приложения или просто желаете очистить место, нажмите кнопку \"очистить кэш\", для удаления загруженного файла.</string>
     <string name="install_activity__download_app_with_status">Загрузить приложение (%1$s)</string>
     <string name="install_activity__download_failed">Не удалось загрузить</string>
     <string name="install_activity__downloaded_application_from">Приложение загружено с:</string>
@@ -73,7 +73,7 @@
     <string name="install_activity__fetch_url_for_download">Получить ссылку с %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Превышен лимит скорости GitHub-API. Пожалуйста, повторите попытку загрузки в течение следующего часа.</string>
-    <string name="install_activity__open_cache_explanation">Вы можете открыть папку кэша, чтобы скопировать APK-файл в место с большим объемом свободного пространства.</string>
+    <string name="install_activity__open_cache_explanation">Вы можете открыть папку кэша, чтобы скопировать APK-файл в место с большим объемом свободного пространства. К сожалению, на Android 11+ лишь немногие файловые менеджеры имеют доступ к этому каталогу в Android/data.</string>
     <string name="install_activity__open_cache_folder_button_text">открыть папку кэша</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Отпечаток сертификата SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Возникла временная проблема сети. Пожалуйста, повторите попытку позже.</string>
@@ -180,4 +180,12 @@
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi является лишь частично открытым исходным кодом.
 \n- Он также использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
+    <string name="download_notification__message">Загрузка обновления для %1$s (%2$s).</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Удалить обновление, если установка прошла успешно.</string>
+    <string name="firefox_release__warning">- Улучшенная версия Firefix доступна на F-Droid под названием Fennec F-Droid</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Удалить обновление, если установка не удалась.</string>
+    <string name="settings__installer_category__title">Установщик</string>
+    <string name="install_activity__open_folder">Открыть каталог</string>
+    <string name="app_warning_dialog__title">Предупреждение</string>
+    <string name="settings__installer__session__summary">Рекомендовано для большинства устройств.</string>
 </resources>

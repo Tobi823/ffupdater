@@ -186,7 +186,7 @@
     <string name="successful_update_notification__notification_title">Приложението %1$s е обновено.</string>
     <string name="failed_update_notification__channel_name">Известие за неуспешно обновяване на %1$s</string>
     <string name="failed_update_notification__channel_description">Категория известия за неуспешно обновяване на %1$s.</string>
-    <string name="failed_update_notification__notification_title">%1$s не можа да бъде обновен.</string>
+    <string name="failed_update_notification__notification_title">%1$s не е обновено</string>
     <string name="main_activity__no_unmetered_network">Няма мрежи без отчитане</string>
     <string name="running_downloads_dialog__message">В момента във фонов режим се изтегля обновяване. Желаете ли да започне ново изтегляне, което може да отнеме повече време\?</string>
     <string name="settings__background__update_check__metered__title">Проверка за обновяване в мрежи с отчитане на трафика</string>

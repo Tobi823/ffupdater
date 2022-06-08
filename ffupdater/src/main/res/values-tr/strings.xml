@@ -29,8 +29,8 @@
     <string name="bromite_systemwebview__description">SystemWebView paketi, Bromite\'ın temel tarayıcı/görselleştirme motorunu ve onunla aynı özellikleri içerir. Tüm Android sistemi için öntanımlı tarayıcı bileşenini değiştirme imkanı sunar.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Çökme raporunu panoya kopyala</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">İndirme URL\'si alındığında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, bunu notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodan çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
-    <string name="crash_report__explain_text__main_activity_update_check">Ana görünümde güncellemeler denetlenirken aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, bunu notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodan çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">İndirme URL\'si getirildiğinde aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodaki çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">Ana görünümde güncellemeler kontrol edilirken aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodaki çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Ne yazık ki, FFUpdater geçen sefer çöktü ve aşağıdaki hatayı kaydetti. Lütfen bu hatayı notabug.org, GitHub veya GitLab üzerinden bildirin. Çökme raporunu panodan mesaja kopyalayın ve hatanın nasıl yeniden oluşturulacağına dair bir açıklama ekleyin.</string>
     <string name="crash_report__go_to_github">GitHub\'a git</string>
     <string name="crash_report__go_to_gitlab">GitLab\'a git</string>
@@ -204,6 +204,7 @@
     <string name="install_activity__file_uri_exposed_toast">Dosya yolu diğer uygulamalara gösterilemiyor. Lütfen tercih ettiğiniz dosya yöneticisi ile klasörü kendiniz açın.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Kurulum başarılı olursa indirilen güncellemeyi sil.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Kurulum başarısız olursa indirilen güncellemeyi sil.</string>
+    <string name="file_downloader__fail_to_handle_download_stream">İndirme akışı işlenemedi.</string>
     <string name="crash_report___explain_text__install_activity_download_file">İndirme sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, bunu notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen çökme raporunu panodan bildirime ekleyin.</string>
     <string name="install_activity__open_folder">Klasörü aç</string>
     <string name="intent_installer__likely_storage_failure">İşlem, büyük olasılıkla depolama sorunları nedeniyle başarısız oldu. Örneğin, aygıtın alanı azalıyor veya harici ortam kullanılamıyor olabilir. Kullanıcının boş alan sağlaması veya farklı harici ortamlar yerleştirmesi yardımcı olabilir.</string>
@@ -234,7 +235,7 @@
     <string name="settings__installer__native__title">Yerel kurucu</string>
     <string name="settings__installer__root__summary">Kullanıcı etkileşimi olmadan uygulamaları kurmak veya güncellemek için root iznini kullanır. Bu, root yapılmış bir akıllı telefon gerektirir.</string>
     <string name="settings__installer__root__title">Root kurucusu</string>
-    <string name="install_activity__different_installer_info__text">Kurulum sık sık başarısız oluyorsa, ayarlar kısmında \'yerel kurucu\' kullanmayı deneyin.</string>
+    <string name="install_activity__different_installer_info__text">Yükleme sık sık başarısız oluyorsa, ayarlardan \'yerel yükleyiciye\' geçmeyi deneyin.</string>
     <string name="settings__installer__session__summary">Çoğu aygıt için önerilir.</string>
     <string name="settings__installer__native__summary">Oturum kurucusu akıllı telefonunuzda çalışmıyorsa onun yerine kullanılır. Bu, Samsung veya Xiaomi marka aygıtlarda daha sık görülür.</string>
     <string name="iceraven__warning">- Geliştiricisi, güvenlik veya güncellemeler ve hatta kararlılık konusunda hiçbir garanti vermez.</string>
