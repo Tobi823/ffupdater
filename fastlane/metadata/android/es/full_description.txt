@@ -1,0 +1,22 @@
+Instala y actualiza los siguientes navegadores:
+
+Navegadores de Mozilla o basados en Firefox:
+- Firefox Browser, Firefox para Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Klar
+- Iceraven
+
+Buenos navegadores de privacidad:
+- Bromite, Bromite SystemWebView
+- Ungoogled Chromium
+
+Navegadores que son mejores que Google Chrome
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Kiwi Browser Siguiente
+- Vivaldi
+
+y:
+- Firefox Lockwise
+
+FFUpdater comprueba las actualizaciones en segundo plano y también las descarga. En dispositivos Android 12+ o con root, FFUpdater también puede actualizar las apps sin la interacción del usuario.
+
+Visita https://notabug.org/Tobiwan/ffupdater/src/master/README.md para más información.
