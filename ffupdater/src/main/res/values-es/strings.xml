@@ -138,7 +138,6 @@
     <string name="settings__b_f__delete_cache_if_install_failed">Eliminar la actualización descargada si la actualización falla.</string>
     <string name="install_activity__open_folder">Abrir carpeta</string>
     <string name="crash_report___explain_text__install_activity_download_file">Se ha producido el siguiente error durante la descarga. Si este error se produce con frecuencia, siéntase libre en reportarlo en notabug.org, GitHub o GitLab. Por favor, añada el informe de fallo del portapapeles al reporte.</string>
-    <string name="file_downloader__fail_to_handle_download_stream">Fallo en la gestión del flujo de descarga.</string>
     <string name="app_warning_dialog__title">Advertencia</string>
     <string name="settings__installer__session__title">Instalador de sesión</string>
     <string name="settings__installer__native__summary">Alternativa si el instalador de sesión no funciona en su smartphone. Esto es más a menudo el caso de los dispositivos de Samsung o Xiaomi.</string>
