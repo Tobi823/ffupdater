@@ -1,3 +1,13 @@
+# 2022-06-08 Version 75.5.1 (103)
+
+* Thanks for Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen,
+  ToldYouThat and Francois Marier for improving the translation
+* Thanks Francois Marier for fixing the Brave updater logic - beta and nightly versions not tested by Q&A will
+  be ignored (Tobiwan/ffupdater#105)
+* Make FFUpdater more resilient for the cases when the signatures of an APK file can not be extracted
+* Better handle temporary network issues
+* Upgrade dependencies
+
 # 2022-05-02 Version 75.5.0 (102)
 
 * Thanks 109247019824, WaldiS and Oğuz Ersen for improving the translation
