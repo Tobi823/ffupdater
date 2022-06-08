@@ -359,7 +359,6 @@ class InstallActivity : AppCompatActivity() {
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)
-        setText(R.id.downloadFileFailedText, viewModel.fileDownloader?.errorMessage ?: "")
         val exception = viewModel.fileDownloader?.errorException
         if (exception == null) {
             hide(R.id.downloadFileFailedShowException)

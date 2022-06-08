@@ -201,7 +201,6 @@
     <string name="kiwi__title">Navegador Kiwi Next</string>
     <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
     <string name="crash_report___explain_text__install_activity_download_file">O seguinte erro ocorreu durante o download. Se esse erro ocorrer com frequência, sinta-se à vontade para reportá-lo em notabug.org, GitHub ou GitLab. Adicione o relatório do erro da área de transferência ao relatório.</string>
-    <string name="file_downloader__fail_to_handle_download_stream">Erro ao lidar com o fluxo de download.</string>
     <string name="firefox_release__warning">- Uma versão melhorada do Firefox também está disponível no F-Droid com o nome Fennec F-Droid.</string>
     <string name="settings__installer_category__title">Instalador</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Excluir a atualização baixada se a instalação for bem sucedida.</string>

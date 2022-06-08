@@ -187,7 +187,6 @@
     <string name="settings__b_f__delete_cache_if_install_successful">Lösche das heruntergeladene Update wenn die Installation erfolgreich war.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Lösche die heruntergeladene Datei wenn die Installation nicht erfolgreich war.</string>
     <string name="crash_report___explain_text__install_activity_download_file">Der folgende Fehler ist während des Downloads aufgetreten. Wenn dieser Fehler häufig auftritt, kannst du ihn auf notabug.org, GitHub oder GitLab melden. Bitte füge auch den Absturzbericht aus der Zwischenablage hinzu.</string>
-    <string name="file_downloader__fail_to_handle_download_stream">Der Download-Stream kann nicht verarbeitet werden.</string>
     <string name="app_warning_dialog__title">Warnung</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="one">%1$s hat folgendes Problem:
