@@ -143,6 +143,7 @@
             <TextView
                 android:id="@+id/downloadFileFailedText"
                 style="@style/install_activity__default_text"
+                android:text="@string/install_activity__temporary_network_issue"
                 android:layout_marginTop="8dp" />
 
             <TextView

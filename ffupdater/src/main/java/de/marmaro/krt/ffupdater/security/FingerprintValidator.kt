@@ -3,8 +3,10 @@ package de.marmaro.krt.ffupdater.security
 import android.content.pm.PackageManager
 import android.content.pm.Signature
 import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.download.ApkSignatureNotFoundException
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
 import java.io.File
+import java.io.FileNotFoundException
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.security.cert.CertificateException
@@ -23,10 +25,15 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      * @param app  app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
+    @Throws(UnableCheckApkException::class)
     fun checkApkFile(file: File, app: BaseApp): CertificateValidationResult {
-        require(file.exists()) { "File '${file.absoluteFile}' must exists." }
-        val path = file.absolutePath
-        val signature = PackageManagerUtil(packageManager).getPackageArchiveInfo(path)
+        val signature = try {
+            PackageManagerUtil(packageManager).getPackageArchiveInfo(file.absolutePath)
+        } catch (e: FileNotFoundException) {
+            throw UnableCheckApkException("File does not exists.", e)
+        } catch (e: ApkSignatureNotFoundException) {
+            throw UnableCheckApkException("Can't find signatures of the APK file.", e)
+        }
         return try {
             verifyPackageInfo(signature, app)
         } catch (e: CertificateException) {
@@ -46,16 +53,21 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      *
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
+    @Throws(UnableCheckApkException::class)
     fun checkInstalledApp(app: BaseApp): CertificateValidationResult {
+        val signature = try {
+            PackageManagerUtil(packageManager).getInstalledAppInfo(app)
+        } catch (e: PackageManager.NameNotFoundException) {
+            return CertificateValidationResult(false, "")
+        } catch (e: ApkSignatureNotFoundException) {
+            throw UnableCheckApkException("Can't find signatures of the APK file.", e)
+        }
         return try {
-            val signature = PackageManagerUtil(packageManager).getInstalledAppInfo(app)
             verifyPackageInfo(signature, app)
         } catch (e: CertificateException) {
-            throw UnableCheckApkException("certificate of APK file is invalid", e)
+            throw UnableCheckApkException("Certificate of APK file is invalid", e)
         } catch (e: NoSuchAlgorithmException) {
-            throw UnableCheckApkException("unknown algorithm for checking APK file", e)
-        } catch (e: PackageManager.NameNotFoundException) {
-            CertificateValidationResult(false, "")
+            throw UnableCheckApkException("Unknown algorithm for checking APK file.", e)
         }
     }
 

@@ -191,7 +191,7 @@
     <string name="install_activity__open_folder">Open folder</string>
     <string name="intent_installer__likely_storage_failure">The operation likely failed because of storage issues. For example, the device may be running low on space, or external media may be unavailable. The user may be able to help free space or insert different external media.</string>
     <string name="crash_report___explain_text__install_activity_download_file">The following error occurred during download. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please add the crash report from the clipboard to the report.</string>
-    <string name="file_downloader__fail_to_handle_download_stream">Fail to handle download stream.</string>
+    <string name="crash_report___explain_text__install_activity_install_file">The following error occurred during installation. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab. Please add the crash report from the clipboard to the report.</string>
     <string name="app_warning_dialog__title">Warning</string>
     <string name="settings__installer__session__summary">Recommended for most devices.</string>
     <string name="settings__installer__session__title">Session installer</string>
@@ -205,7 +205,8 @@
     <string name="kiwi__description">Kiwi Browser is made to browse the internet, read news, watch videos and listen to music, without annoyances.</string>
     <string name="kiwi__warning">- Kiwi uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.
 \n- Kiwi is not an ideal privacy browser but has a good addon support.
-\n- The browser is getting paid by search engines for every search done using Kiwi Browser. Depending on the search engine choice, requests may go via Kiwibrowser / Kiwisearchservices servers.</string>
+\n- The browser is getting paid by search engines for every search done using Kiwi Browser. Depending on the search engine choice, requests may go via Kiwibrowser / Kiwisearchservices servers.
+\n- Google Ads in Kiwi may use the location data for ads - but you can disable it by disabling the Discovery feature. But this will soon change. See https://privacy.kiwibrowser.org/ for more details.</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="one">%1$s has the following problem:\n\n%2$s\n\nDo you still want to install %1$s?</item>
         <item quantity="other">%1$s has the following problems:\n\n%2$s\n\nDo you still want to install %1$s?</item>

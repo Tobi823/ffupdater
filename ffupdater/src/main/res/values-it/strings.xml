@@ -202,7 +202,6 @@
     <string name="install_activity__open_folder">Apri cartella</string>
     <string name="firefox_release__warning">- Una versione migliorata di Firefox è disponibile anche su F-Droid con il nome Fennec F-Droid.</string>
     <string name="crash_report___explain_text__install_activity_download_file">Durante il download si è verificato il seguente errore. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Aggiungi il rapporto sull\'arresto anomalo dagli appunti alla segnalazione.</string>
-    <string name="file_downloader__fail_to_handle_download_stream">Impossibile gestire il flusso di download.</string>
     <string name="app_warning_dialog__title">Attenzione</string>
     <string name="settings__installer__session__summary">Consigliato per la maggior parte dei dispositivi.</string>
     <string name="settings__installer__session__title">Programma di installazione della sessione</string>
