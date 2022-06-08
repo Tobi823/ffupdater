@@ -63,8 +63,6 @@ class InstallActivity : AppCompatActivity() {
         var app: App? = null
         var fileDownloader: FileDownloader? = null
         var updateCheckResult: UpdateCheckResult? = null
-        var error: Pair<Int?, Exception?>? = null
-        var installationError: Pair<Int, String>? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -184,20 +182,17 @@ class InstallActivity : AppCompatActivity() {
 
         // check if network type requirements are met
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-            viewModel.error = Pair(R.string.main_activity__no_unmetered_network, null)
-            failureShowFetchUrlException()
+            failureShowFetchUrlException(getString(main_activity__no_unmetered_network))
             return
         }
 
         val updateCheckResult = try {
             viewModel.app!!.detail.updateCheckAsync(this).await()
         } catch (e: GithubRateLimitExceededException) {
-            viewModel.error = Pair(R.string.install_activity__github_rate_limit_exceeded, e)
-            failureShowFetchUrlException()
+            failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
             return
         } catch (e: NetworkException) {
-            viewModel.error = Pair(R.string.install_activity__temporary_network_issue, e)
-            failureShowFetchUrlException()
+            failureShowFetchUrlException(getString(install_activity__temporary_network_issue), e)
             return
         }
 
@@ -226,8 +221,7 @@ class InstallActivity : AppCompatActivity() {
     @MainThread
     private suspend fun startDownload() {
         if (!foregroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
-            viewModel.error = Pair(R.string.main_activity__no_unmetered_network, null)
-            failureShowFetchUrlException()
+            failureShowFetchUrlException(getString(main_activity__no_unmetered_network))
             return
         }
 
@@ -329,7 +323,6 @@ class InstallActivity : AppCompatActivity() {
             return
         }
 
-        viewModel.installationError = Pair(result.errorCode ?: -80, result.errorMessage ?: "/")
         hide(R.id.installingApplication)
         show(R.id.installerFailed)
         if (installerSettingsHelper.getInstaller() == SESSION_INSTALLER) {
@@ -339,11 +332,20 @@ class InstallActivity : AppCompatActivity() {
         show(R.id.install_activity__open_cache_folder)
         val cacheFolder = appCache.getFile(this).parentFile?.absolutePath ?: ""
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
-        setText(R.id.installerFailedReason, viewModel.installationError?.second ?: "/")
+        setText(R.id.installerFailedReason, result.errorMessage ?: "/")
+
         if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
             appCache.delete(this)
         } else {
             show(R.id.install_activity__delete_cache)
+        }
+
+        if (result.errorException != null) {
+            findViewById<TextView>(R.id.installerFailedReason).setOnClickListener {
+                val description = getString(crash_report___explain_text__install_activity_install_file)
+                val intent = CrashReportActivity.createIntent(this, result.errorException, description)
+                startActivity(intent)
+            }
         }
     }
 
@@ -374,12 +376,10 @@ class InstallActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun failureShowFetchUrlException() {
+    private fun failureShowFetchUrlException(message: String, exception: Exception? = null) {
         hide(R.id.fetchUrl)
         show(R.id.install_activity__exception)
-        val text = viewModel.error?.first?.let { getString(it) } ?: "/"
-        setText(R.id.install_activity__exception__text, text)
-        val exception = viewModel.error?.second
+        setText(R.id.install_activity__exception__text, message)
         if (exception == null) {
             hide(install_activity__exception__show_button)
             return

@@ -23,9 +23,10 @@ interface AppInstaller {
     data class InstallResult(val success: Boolean, val errorCode: Int?, val errorMessage: String?)
     data class ExtendedInstallResult(
         val success: Boolean,
-        val certificateHash: String?,
-        val errorCode: Int?,
-        val errorMessage: String?,
+        val certificateHash: String? = null,
+        val errorCode: Int? = null,
+        val errorMessage: String? = null,
+        val errorException: Throwable? = null
     )
 
     suspend fun installAsync(context: Context): Deferred<ExtendedInstallResult>
@@ -62,7 +63,12 @@ abstract class SecureAppInstaller(
             return ExtendedInstallResult(false, fileCertHash, installCode, installMessage)
         }
 
-        val appResult = validator.checkInstalledApp(app.detail)
+        val appResult = try {
+            validator.checkInstalledApp(app.detail)
+        } catch (e: FingerprintValidator.UnableCheckApkException) {
+            val errorMessage = "Fail to check APK file. Please retry again. Click to view the error report."
+            return ExtendedInstallResult(false, null, -102, errorMessage, e)
+        }
         if (!appResult.isValid || fileCertHash != appResult.hexString) {
             val errorMessage = context.getString(R.string.installed_app_is_not_verified)
             return ExtendedInstallResult(false, appResult.hexString, -101, errorMessage)

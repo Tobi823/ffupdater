@@ -11,16 +11,23 @@ import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileNotFoundException
 
 class PackageManagerUtil(private val packageManager: PackageManager) {
 
     @MainThread
+    @Throws(FileNotFoundException::class, ApkSignatureNotFoundException::class)
     fun getPackageArchiveInfo(path: String): Signature {
-        val packageInfo = if (DeviceSdkTester.supportsAndroid11()) {
-            // GET_SIGNING_CERTIFICATES does not work on Android 9/10
-            packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
-        } else {
-            packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
+        if (!File(path).exists()) {
+            throw FileNotFoundException("File '$path' does not exists.")
+        }
+        var packageInfo: PackageInfo? = null
+        if (DeviceSdkTester.supportsAndroid9()) {
+            packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
+        }
+        if (packageInfo == null) {
+            packageInfo = packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
         }
         checkNotNull(packageInfo) { "PackageInfo for file '$path' is null." }
         return extractSignature(packageInfo)
@@ -33,14 +40,16 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
         }
     }
 
+    @Throws(ApkSignatureNotFoundException::class)
     fun getInstalledAppInfo(app: BaseApp): Signature {
-        val packageInfo = if (DeviceSdkTester.supportsAndroid9()) {
-            packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
-        } else {
+        var packageInfo: PackageInfo? = null
+        if (DeviceSdkTester.supportsAndroid9()) {
+            packageInfo = packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
+        }
+        if (packageInfo == null) {
             // because GET_SIGNATURES is dangerous on Android 4.4 or lower https://stackoverflow.com/a/39348300
             @SuppressLint("PackageManagerGetSignatures")
-            val info = packageManager.getPackageInfo(app.packageName, GET_SIGNATURES)
-            info
+            packageInfo = packageManager.getPackageInfo(app.packageName, GET_SIGNATURES)
         }
         checkNotNull(packageInfo) { "PackageInfo for package ${app.packageName} is null." }
         return extractSignature(packageInfo)
@@ -63,6 +72,7 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
         }
     }
 
+    @Throws(ApkSignatureNotFoundException::class)
     private fun extractSignature(packageInfo: PackageInfo): Signature {
         if (DeviceSdkTester.supportsAndroid9() && packageInfo.signingInfo != null) {
             val signingInfo = packageInfo.signingInfo
@@ -79,6 +89,6 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
             }
             return signatures[0]
         }
-        throw IllegalArgumentException("PackageInfo has no signingInfo and no signatures.")
+        throw ApkSignatureNotFoundException("PackageInfo has no signingInfo and no signatures.")
     }
 }
