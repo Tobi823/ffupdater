@@ -1,0 +1,3 @@
+* Gracias 109247019824, Oğuz Ersen y Vitor Henrique para mejorar la traducción
+* El trabajo en segundo plano puede ser detenido de forma más fiable por el sistema operativo (Tobi823/ffupdater#148)
+* Mejorar la comprobación del límite de velocidad de GitHub (Tobi823/ffupdater#152)
