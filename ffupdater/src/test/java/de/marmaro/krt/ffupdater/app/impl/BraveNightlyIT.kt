@@ -60,16 +60,16 @@ class BraveNightlyIT {
     companion object {
         private const val API_URl = "https://api.github.com/repos/brave/brave-browser/releases"
         private const val DOWNLOAD_URL = "https://github.com/brave/brave-browser/releases/download"
-        private const val EXPECTED_VERSION = "1.39.64"
+        private const val EXPECTED_VERSION = "1.39.61"
         private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
-            ZonedDateTime.parse("2022-04-16T04:58:44Z", ISO_ZONED_DATE_TIME)
+            ZonedDateTime.parse("2022-04-15T13:33:14Z", ISO_ZONED_DATE_TIME)
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
-            Arguments.of(ABI.ARMEABI_V7A, "$DOWNLOAD_URL/v$EXPECTED_VERSION/BraveMonoarm.apk", 138188427L),
-            Arguments.of(ABI.ARM64_V8A, "$DOWNLOAD_URL/v$EXPECTED_VERSION/BraveMonoarm64.apk", 236448755L),
-            Arguments.of(ABI.X86, "$DOWNLOAD_URL/v$EXPECTED_VERSION/BraveMonox86.apk", 187220237L),
-            Arguments.of(ABI.X86_64, "$DOWNLOAD_URL/v$EXPECTED_VERSION/BraveMonox64.apk", 289998102L),
+            Arguments.of(ABI.ARMEABI_V7A, "$DOWNLOAD_URL/v$EXPECTED_VERSION/BraveMonoarm.apk", 137506798L),
+            Arguments.of(ABI.ARM64_V8A, "$DOWNLOAD_URL/v$EXPECTED_VERSION/BraveMonoarm64.apk", 232583912L),
+            Arguments.of(ABI.X86, "$DOWNLOAD_URL/v$EXPECTED_VERSION/BraveMonox86.apk", 186253734L),
+            Arguments.of(ABI.X86_64, "$DOWNLOAD_URL/v$EXPECTED_VERSION/BraveMonox64.apk", 288279277L),
         )
     }
 
