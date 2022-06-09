@@ -17,7 +17,16 @@ git fetch --tags
   - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
 - build signed APK file
+- copy message of the release commit
 - `/dev/create_release.sh` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
+- paste message of the release commit + add
+
+```
+Changelogs:
+* https://github.com/Tobi823/ffupdater/blob/master/CHANGELOG.md
+* https://github.com/Tobi823/ffupdater/compare/75.5.1...75.5.2
+```
+
 - upload signed APK to repomaker
 - test release with "Foxy Droid"
 - mark older changelogs in Weblate as read-only
