@@ -1,3 +1,7 @@
+# 2022-06-09 Version 75.5.2 (104)
+
+* Try to fix the "Can't find signatures of the APK file." bug
+
 # 2022-06-08 Version 75.5.1 (103)
 
 * Thanks for Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen,
