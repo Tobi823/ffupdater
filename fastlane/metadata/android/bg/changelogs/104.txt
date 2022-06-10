@@ -1,0 +1,1 @@
+* Опит за поправка на грешката „Can't find signatures of the APK file.“
