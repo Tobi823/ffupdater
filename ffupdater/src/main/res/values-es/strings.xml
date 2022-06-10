@@ -46,7 +46,7 @@
     <string name="firefox_release__warning">- Una versión mejorada de Firefox también está disponible en F-Droid bajo el nombre de Fennec F-Droid.</string>
     <string name="go_back">Volver</string>
     <string name="iceraven__title">Navegador Iceraven</string>
-    <string name="infobox">Este es un actualizador para varios navegadores de Mozilla. Haga clic en el botón más para instalar y el botón de flecha para abajo para actualizar. Puede comprobar si hay nuevas actualizaciones deslizando el dedo hacia abajo o reabriendo la aplicación. Por defecto, la aplicación comprobará regularmente si hay actualizaciones en segundo plano. He hecho todo lo posible para reforzar el proceso de instalación/actualización - no dude en volver a revisarlo o mejorarlo creando un pull request.
+    <string name="infobox">Este es un actualizador para varios navegadores de Mozilla y otros. Haga clic en el botón más para instalar y el botón de flecha para abajo para actualizar. Puede comprobar si hay nuevas actualizaciones deslizando el dedo hacia abajo o reabriendo la aplicación. Por defecto, la aplicación comprobará regularmente si hay actualizaciones en segundo plano. He hecho todo lo posible para reforzar el proceso de instalación/actualización - no dude en volver a revisarlo o mejorarlo creando un pull request.
 \n
 \nÚltima comprobación de actualizaciones en segundo plano exitosa: %1$s</string>
     <string name="information_about_the_app">información acerca de la aplicación</string>
@@ -78,7 +78,7 @@
 \n
 \nSiga de forma segura sus contraseñas de Firefox y acceda a ellas en cualquier lugar. Abra rápidamente cualquier sitio web desde la aplicación para entrar a cuentas.</string>
     <string name="main_activity__no_unmetered_network">Ninguna red no medida</string>
-    <string name="main_activity__subtitle">Actualice sus navegadores de Mozilla</string>
+    <string name="main_activity__subtitle">Actualice sus navegadores desde la fuente oficial</string>
     <string name="request_installation_permission_dialog__title">Permiso de instalador</string>
     <string name="running_downloads_dialog__message">La aplicación está descargando actualizaciones en segundo plano. ¿Quiere iniciar una nueva descarga que puede tardar más\?</string>
     <string name="running_downloads_dialog__negative">No, no lo descargues</string>
@@ -137,7 +137,7 @@
     <string name="settings__b_f__delete_cache_if_install_successful">Eliminar la actualización descargada si la instalación es exitosa.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Eliminar la actualización descargada si la actualización falla.</string>
     <string name="install_activity__open_folder">Abrir carpeta</string>
-    <string name="crash_report___explain_text__install_activity_download_file">Se ha producido el siguiente error durante la descarga. Si este error se produce con frecuencia, siéntase libre en reportarlo en notabug.org, GitHub o GitLab. Por favor, añada el informe de fallo del portapapeles al reporte.</string>
+    <string name="crash_report___explain_text__install_activity_download_file">Se ha producido el siguiente error durante la descarga. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, añada el informe de fallo del portapapeles al reporte.</string>
     <string name="app_warning_dialog__title">Advertencia</string>
     <string name="settings__installer__session__title">Instalador de sesión</string>
     <string name="settings__installer__native__summary">Alternativa si el instalador de sesión no funciona en su smartphone. Esto es más a menudo el caso de los dispositivos de Samsung o Xiaomi.</string>
@@ -187,7 +187,8 @@
     <string name="settings__installer__session__summary">Recomendado para la mayoría de dispositivos.</string>
     <string name="kiwi__warning">- Kiwi utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.
 \n- Kiwi no es un navegador de privacidad ideal, pero tiene buen soporte para complementos.
-\n- El navegador recibe es pagado por motores de búsqueda por cada búsqueda realizada con Kiwi Browser. Dependiendo de la elección del motor de búsqueda, las solicitudes pueden pasar a través de los servidores de Kiwibrowser / Kiwisearchservices.</string>
+\n- El navegador recibe es pagado por motores de búsqueda por cada búsqueda realizada con Kiwi Browser. Dependiendo de la elección del motor de búsqueda, las solicitudes pueden pasar a través de los servidores de Kiwibrowser / Kiwisearchservices.
+\n- Google Ads en Kiwi puede usar los datos de ubicación con fines publicitarios - pero puede desactivarlos deshabilitando la función de Descubrimiento. Pero esto cambiará pronto. Consulte https://privacy.kiwibrowser.org/ para obtener más detalles.</string>
     <string name="brave_beta__description">¡Bienvenido/a a Brave Beta para Android!
 \nPruebe las nuevas funciones y dé sus primeras impresiones: https://brave.com/msupport
 \nPuede instalar Brave Beta junto a su versión actual de Brave para Android.</string>
@@ -243,4 +244,5 @@
     <string name="firefox_beta__description">El navegador Firefox para Android es automáticamente privado e increíblemente rápido. Miles de rastreadores en línea le siguen cada día, recopilando información sobre dónde se conecta y ralentizando su velocidad. Firefox bloquea a más de 2000 de estos rastreadores por defecto y hay complementos de bloqueo de anuncios disponibles si quiere personalizar su navegador aún más. Con Firefox, obtendrá la seguridad que se merece y la velocidad que necesita en un navegador privado y móvil.</string>
     <string name="firefox_release__description">El navegador Firefox para Android es automáticamente privado e increíblemente rápido. Miles de rastreadores en línea le siguen cada día, recopilando información sobre dónde se conecta y ralentizando su velocidad. Firefox bloquea a más de 2000 de estos rastreadores por defecto y hay complementos de bloqueo de anuncios disponibles si quiere personalizar su navegador aún más. Con Firefox, obtendrá la seguridad que se merece y la velocidad que necesita en un navegador privado y móvil.</string>
     <string name="vivaldi__description">¡Descubra un navegador de Internet increíblemente rápido! Vivaldi es un nuevo navegador web gratuito y privado hecho con flexibilidad en mente. Viene repleto de funciones útiles, como un AdBlocker (bloqueador de ventanas emergentes) integrado, protección contra el rastreo y traducción privada. Las opciones del navegador, como las pestañas propias del estilo del escritorio, los temas oscuros o claros y las opciones de diseño, le ayudan a hacerlo suyo.</string>
+    <string name="crash_report___explain_text__install_activity_install_file">Se ha producido el siguiente error durante la instalación. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, añada el informe de fallo del portapapeles al reporte.</string>
 </resources>
