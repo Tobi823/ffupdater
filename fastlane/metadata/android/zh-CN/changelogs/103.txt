@@ -1,0 +1,5 @@
+* 感谢Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat 和 Francois Marier对翻译的改进
+* 感谢Francois Marier修复Brave的更新逻辑--未经Q&amp;A测试的测试版和夜间版将被忽略(Tobiwan/ffupdater#105)
+* 让FFUpdater在APK文件的签名无法被提取的情况下更有弹性。
+* 更好地处理临时网络问题
+* 升级依赖性
