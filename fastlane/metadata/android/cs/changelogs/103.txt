@@ -1,0 +1,5 @@
+* Děkujeme Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat a Francois Marier za zlepšení překladu.
+* Děkujeme Francoisovi Marierovi za opravu logiky updateru Brave - beta a nightly verze, které nebyly otestovány Q&amp;A, budou ignorovány (Tobiwan/ffupdater#105)
+* Udělejte FFUpdater odolnější pro případy, kdy nelze extrahovat podpisy souboru APK.
+* Lépe řešit dočasné problémy se sítí
+* Aktualizace závislostí
