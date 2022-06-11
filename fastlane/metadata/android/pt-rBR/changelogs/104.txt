@@ -1,0 +1,1 @@
+* Tente corrigir o "Can't encontrar assinaturas do ficheiro APK." bug
