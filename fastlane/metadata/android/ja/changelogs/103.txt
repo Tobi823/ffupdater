@@ -1,0 +1,5 @@
+* Hin Weisner、WhiredPlanck、Giovanni Donisi、Vitor Henrique、109247019824、AHOHNMYC、Oğuz Ersen、ToldYouThat、Francois Marierが翻訳の改良をしてくれたことに感謝します。
+* Q&amp;Aによってテストされていないベータ版とナイトリーバージョンは無視されます(Tobiwan/ffupdater#105)
+* APKファイルの署名が抽出できない場合のために、FFUpdaterをより回復力のあるものにしました。
+* 一時的なネットワークの問題をより良く処理する
+* アップグレードの依存関係
