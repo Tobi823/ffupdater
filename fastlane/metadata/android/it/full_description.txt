@@ -1,13 +1,15 @@
-Scarica, installa e aggiorna i browser di Mozilla o basati su Firefox:
+Installa e aggiorna i seguenti browser:
+
+Browser di Mozilla o basati su Firefox:
 - Firefox Browser, Firefox per Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
 
-buoni browser per la privacy:
+Buoni browser per la privacy:
 - Bromite, Bromite SystemWebView
 - Ungoogled Chromium
 
-browser che sono meglio di Google Chrome:
+Browser che sono meglio di Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Kiwi Browser Next
 - Vivaldi
@@ -17,4 +19,4 @@ e:
 
 FFUpdater controlla gli aggiornamenti in background e li scarica anche. Su Android 12+ o sui dispositivi con root, FFUpdater può anche aggiornare le applicazioni senza l'interazione dell'utente.
 
-Visita https://notabug.org/Tobiwan/ffupdater/src/master/README.md o usa il link "Source Code" qui sotto per vedere maggiori informazioni sulle misure di sicurezza, altri canali di distribuzione, limitazioni, bug, FAQ, istruzioni di compilazione, librerie di terze parti usate, dettagli tecnici ecc.
+Visita https://notabug.org/Tobiwan/ffupdater/src/master/README.md per vedere maggiori informazioni.
