@@ -1,0 +1,5 @@
+* Подяка для Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat й Francois Marier за покращення перекладу
+* Подяка Francois Marier за виправлення логіки оновлення Brave - версії beta й nightly не перевірені Q&amp;A будуть проігноровані (Tobiwan/ffupdater#105)
+* FFUpdater зроблено більш стійким до випадків, коли підписи файлу APK не можуть бути розпаковані
+* Краще обробляються тимчасові проблеми мережі
+* Оновлення залежностей
