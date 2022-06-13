@@ -58,7 +58,6 @@ class ForegroundSettingsHelperTest {
                 true,
                 { helper: ForegroundSettingsHelper -> helper.isDownloadOnMeteredAllowed }),
 
-
             Arguments.of(
                 "isDeleteUpdateIfInstallSuccessful",
                 "foreground__delete_cache_if_install_successful",
@@ -70,6 +69,12 @@ class ForegroundSettingsHelperTest {
                 "foreground__delete_cache_if_install_failed",
                 true,
                 { helper: ForegroundSettingsHelper -> helper.isDeleteUpdateIfInstallFailed }),
+
+            Arguments.of(
+                "isHideWarningButtonForInstalledApps",
+                "foreground__hide_warning_button_for_installed_apps",
+                false,
+                { helper: ForegroundSettingsHelper -> helper.isHideWarningButtonForInstalledApps }),
         )
     }
 

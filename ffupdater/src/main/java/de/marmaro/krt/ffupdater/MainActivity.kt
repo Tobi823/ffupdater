@@ -124,13 +124,18 @@ class MainActivity : AppCompatActivity() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
         mainLayout.removeAllViews()
         cleanUpObjects()
+        val settingsHelper = ForegroundSettingsHelper(this)
         App.values()
             .filter { it.detail.isInstalled(this) }
-            .forEach { initUIForApp(mainLayout, it) }
+            .forEach { initUIForApp(mainLayout, it, settingsHelper) }
     }
 
     @UiThread
-    private fun initUIForApp(mainLayout: LinearLayout, app: App) {
+    private fun initUIForApp(
+        mainLayout: LinearLayout,
+        app: App,
+        settingsHelper: ForegroundSettingsHelper
+    ) {
         val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
         val installedVersion = cardView.findViewWithTag<TextView>("appInstalledVersion")
@@ -158,11 +163,13 @@ class MainActivity : AppCompatActivity() {
         setDownloadButtonState(app, false)
 
         val warningButton = cardView.findViewWithTag<ImageButton>("appWarningButton")
-        if (app.detail.displayWarning == null) {
-            warningButton.visibility = View.GONE
-        } else {
-            warningButton.setOnClickListener {
-                AppWarningDialog.newInstance(app).show(supportFragmentManager)
+        when {
+            settingsHelper.isHideWarningButtonForInstalledApps -> warningButton.visibility = View.GONE
+            app.detail.displayWarning == null -> warningButton.visibility = View.GONE
+            else -> {
+                warningButton.setOnClickListener {
+                    AppWarningDialog.newInstance(app).show(supportFragmentManager)
+                }
             }
         }
 

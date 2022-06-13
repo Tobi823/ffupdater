@@ -37,4 +37,7 @@ class ForegroundSettingsHelper(context: Context) {
 
     val isDeleteUpdateIfInstallFailed
         get() = preferences.getBoolean("foreground__delete_cache_if_install_failed", true)
+
+    val isHideWarningButtonForInstalledApps
+        get() = preferences.getBoolean("foreground__hide_warning_button_for_installed_apps", false)
 }

@@ -40,6 +40,12 @@
             app:singleLineTitle="false"
             app:title="@string/settings__b_f__delete_cache_if_install_failed" />
 
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="foreground__hide_warning_button_for_installed_apps"
+            app:singleLineTitle="false"
+            app:title="@string/settings__foreground__hide_warning_buttons" />
+
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
 
