@@ -60,7 +60,9 @@
     <string name="go_back">Zurück</string>
     <string name="iceraven__description">Definitiv nicht von Mozilla für Sie entwickelt! \n\nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert. \n\nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
     <string name="iceraven__title">Iceraven Browser</string>
-    <string name="infobox">Dies ist ein Updater für mehrere Browser von Mozilla. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern. \n\nLetzte erfolgreiche Hintergrundaktualisierungsprüfung: %1$s</string>
+    <string name="infobox">Dies ist ein Updater für unterschiedliche Browser. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern.
+\n
+\nLetzte erfolgreiche Hintergrundaktualisierungsprüfung: %1$s</string>
     <string name="information_about_the_app">Information über die Applikation</string>
     <string name="install_activity__delete_cache_button_text">Cache leeren</string>
     <string name="install_activity__delete_cache_explanation">Wenn du glaubst, dass FFUpdater ein fehlerhaftes App-Update heruntergeladen hat, oder wenn du Speicherplatz sparen möchtest, dann klicke auf den Button um die Datei zu löschen.</string>
@@ -95,7 +97,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
     <string name="main_activity__no_unmetered_network">Kein ungebremstes Netz</string>
-    <string name="main_activity__subtitle">Aktualisieren Sie Ihre Browser von Mozilla</string>
+    <string name="main_activity__subtitle">Aktualisiere datenschutzfreundliche Browser</string>
     <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Später erneut versuchen.</u>"</string>
     <string name="manage_storage_activity__delete_button">Lösche zwischengespeicherte App-Updates.</string>
     <string name="manage_storage_activity__explanation">FFUpdater speichert bereits heruntergeladene App-Updates im Zwischenspeicher im Ordner \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nDies spart Bandbreite, wenn eine App nicht erfolgreich installiert oder aktualisiert wird. Außerdem wird der Cache benötigt, damit Updates, die im Hintergrund heruntergeladen wurden, später installiert werden können.\n\nWenn Sie sich entscheiden, diese App-Updates zu löschen, müssen Sie sie möglicherweise erneut herunterladen.</string>
@@ -222,5 +224,8 @@
     <string name="install_activity__different_installer_info__text">Wenn die App-Installation häufig fehlschlägt, versuche in den Einstellungen die native Installationsmethode zu aktivieren.</string>
     <string name="kiwi__warning">- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.
 \n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.
-\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.</string>
+\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.
+\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - Sie können dies jedoch deaktivieren, indem Sie die Entdeckungsfunktion deaktivieren. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
+    <string name="crash_report___explain_text__install_activity_install_file">Der folgende Fehler ist während der Installation aufgetreten. Wenn dieser Fehler häufig auftritt, kannst du ihn auf notabug.org, GitHub oder GitLab melden. Bitte füge auch den Absturzbericht aus der Zwischenablage hinzu.</string>
+    <string name="settings__foreground__hide_warning_buttons">Blende den Button für Warnungen von installierten Apps aus.</string>
 </resources>

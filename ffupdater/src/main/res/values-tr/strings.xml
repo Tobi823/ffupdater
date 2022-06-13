@@ -245,4 +245,5 @@
 \n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir.
 \n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
     <string name="crash_report___explain_text__install_activity_install_file">Kurulum sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodaki çökme raporunuzu eklemeyi unutmayın.</string>
+    <string name="settings__foreground__hide_warning_buttons">Kurulu uygulama için uyarı düğmesini gizle.</string>
 </resources>
