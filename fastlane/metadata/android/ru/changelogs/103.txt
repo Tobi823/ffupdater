@@ -1,0 +1,5 @@
+* Спасибо Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat и Francois Marier за улучшение перевода.
+* Спасибо Франсуа Марье за исправление логики работы Brave updater - бета и nightly версии, не протестированные Q&amp;A, будут игнорироваться (Tobiwan/ffupdater#105)
+* Сделать FFUpdater более устойчивым для случаев, когда сигнатуры APK-файла не могут быть извлечены.
+* Лучше справляться с временными сетевыми проблемами
+* Обновление зависимостей

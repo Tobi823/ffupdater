@@ -1,0 +1,5 @@
+* Merci à Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat et Francois Marier pour avoir amélioré la traduction.
+* Merci à François Marier pour avoir corrigé la logique de mise à jour de Brave - les versions bêta et nocturnes non testées par Q&amp;R seront ignorées (Tobiwan/ffupdater#105).
+* FFUpdater est plus résilient pour les cas où les signatures d'un fichier APK ne peuvent pas être extraites.
+* Mieux gérer les problèmes de réseau temporaires
+* Dépendances de mise à jour
