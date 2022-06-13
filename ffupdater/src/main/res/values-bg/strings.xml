@@ -94,7 +94,7 @@
 \nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в профилите си.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превишено е ограничение на GitHub-API. Опитайте отново след час.</u>"</string>
-    <string name="main_activity__subtitle">Обновявайте мрежовите четци от официалните им източници</string>
+    <string name="main_activity__subtitle">Приложение за обновяване на поверителни четци</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
     <string name="manage_storage_activity__delete_button">Изчистване на обновяванията от междинната памет.</string>
     <string name="manage_storage_activity__explanation">FFUpdater временно разполага изтеглените обновявания в папката „Android/data/de.marmaro.krt.ffupdater/files/Download“.
