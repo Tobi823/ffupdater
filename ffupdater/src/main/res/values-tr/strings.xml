@@ -72,7 +72,7 @@
 \n
 \nAmacımız, kullanıcılara daha fazla seçenek, daha fazla özelleştirme fırsatı (geniş bir uzantı kitaplığı dahil) ve ziyaret ettikleri sayfalar ve tarayıcılarının nasıl çalıştığı hakkında daha fazla bilgi sağlamayı amaçlayan yeni Android için Firefox\'un yakın bir çatalı olmaktır.</string>
     <string name="iceraven__title">Iceraven Tarayıcı</string>
-    <string name="infobox">Bu, Mozilla ve diğerlerinden birden fazla tarayıcı için bir güncelleyicidir. Kurulum için artı düğmesine ve güncelleme için aşağı ok düğmesine tıklayın. Uygulamayı aşağı kaydırarak veya yeniden açarak yeni güncellemeleri denetleyebilirsiniz. Öntanımlı olarak uygulama, arka planda güncellemeleri düzenli olarak denetleyecektir. Kurulum/güncelleme sürecini güvenceye almak için elimden gelenin en iyisini yaptım - tekrar denetlemekten veya bir çekme talebi oluşturarak geliştirmekten çekinmeyin.
+    <string name="infobox">Bu uygulama Mozilla ve diğerlerinden birden fazla tarayıcı için bir güncelleyicidir. Kurulum için artı düğmesine ve güncelleme için aşağı ok düğmesine tıklayın. Uygulamayı aşağı kaydırarak veya yeniden açarak yeni güncellemeleri denetleyebilirsiniz. Öntanımlı olarak uygulama, arka planda güncellemeleri düzenli olarak denetleyecektir. Kurulum/güncelleme sürecini güvenceye almak için elimden gelenin en iyisini yaptım - tekrar denetlemekten veya bir çekme talebi oluşturarak geliştirmekten çekinmeyin.
 \n
 \nSon başarılı arka plan güncelleme denetimi: %1$s</string>
     <string name="information_about_the_app">uygulama hakkında bilgi</string>
