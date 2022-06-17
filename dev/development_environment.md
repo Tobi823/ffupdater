@@ -14,5 +14,10 @@ https://monitor.f-droid.org/builds
 
 # Android Emulator
 
-adb shell svc wifi disable; adb shell svc data disable; sleep 5; adb shell svc wifi enable; adb shell svc data
-disable
+```
+adb shell svc wifi disable
+adb shell svc data disable
+sleep 5
+adb shell svc wifi enable
+adb shell svc data disable
+```

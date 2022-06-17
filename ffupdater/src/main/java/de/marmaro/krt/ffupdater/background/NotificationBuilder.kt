@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.download_notification__message
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 object NotificationBuilder {
@@ -84,6 +85,31 @@ object NotificationBuilder {
     fun hideDownloadNotification(context: Context) {
         val notificationManager = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         notificationManager.cancel(400)
+    }
+
+    fun showBackgroundDownloadErrorNotification(context: Context, app: App, exception: NetworkException) {
+        val appTitle = context.getString(app.detail.displayTitle)
+        showNotification(
+            context = context,
+            channelId = "background_downloads_error_notification_channel",
+            channelName = "Notification about download errors in the background",
+            channelDescription = "Shows when app downloads in the background fail.",
+            notificationId = 700 + app.ordinal,
+            notificationTitle = "Background download of the app update failed",
+            notificationMessage = "The background download of the XXX update failed. If this error occurs frequently, click here to view the error report.",
+            intent = CrashReportActivity.createIntent(
+                context,
+                exception,
+                "The background download of the XXX update failed. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab."
+            ),
+        )
+    }
+
+    fun hideBackgroundDownloadErrorNotification(context: Context) {
+        App.values().forEach {
+            val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
+            nm.cancel(700 + it.ordinal)
+        }
     }
 
     fun showSuccessfulBackgroundInstallationNotification(context: Context, app: App) {

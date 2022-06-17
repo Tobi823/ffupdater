@@ -14,6 +14,7 @@ import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededExcep
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideAllFailedBackgroundInstallationNotifications
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideAllSuccessfulBackgroundInstallationNotifications
+import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideBackgroundDownloadErrorNotification
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideDownloadNotification
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.showFailedBackgroundInstallationNotification
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.showSuccessfulBackgroundInstallationNotification
@@ -92,8 +93,9 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
 
         // check for updates
-        val apps = App.values()
-        val outdatedApps = apps.filter { checkForUpdateAndReturnAvailability(it) }
+        val apps = App.values().asList()
+        val outdatedApps = listOf(App.FIREFOX_RELEASE)
+//            .filter { checkForUpdateAndReturnAvailability(it) }
         if (outdatedApps.isEmpty()) {
             return Result.success()
         }
@@ -103,6 +105,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             showUpdateNotification(outdatedApps)
             return it
         }
+        hideBackgroundDownloadErrorNotification(context)
         val downloadedUpdates = outdatedApps.filter { downloadUpdateAndReturnAvailability(it) }
         hideDownloadNotification(context)
 
@@ -198,6 +201,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
             true
         } catch (e: NetworkException) {
+            NotificationBuilder.showBackgroundDownloadErrorNotification(context, app, e)
             appCache.delete(context)
             false
         }
