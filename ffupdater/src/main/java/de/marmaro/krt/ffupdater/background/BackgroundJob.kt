@@ -1,10 +1,8 @@
 package de.marmaro.krt.ffupdater.background
 
 import android.content.Context
-import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.annotation.RequiresApi
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
@@ -92,31 +90,31 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     @MainThread
     private suspend fun executeBackgroundJob(): Result {
         areUpdateCheckPreconditionsUnfulfilled()?.let { return it }
-        val appsWithAvailableUpdates = checkForUpdates()
         dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
-        if (appsWithAvailableUpdates.isEmpty()) {
+
+        // check for updates
+        val apps = App.values()
+        val outdatedApps = apps.filter { checkForUpdateAndReturnAvailability(it) }
+        if (outdatedApps.isEmpty()) {
             return Result.success()
         }
 
+        // download updates
         areDownloadPreconditionsUnfulfilled()?.let {
-            showUpdateNotification(appsWithAvailableUpdates)
+            showUpdateNotification(outdatedApps)
             return it
         }
-        appsWithAvailableUpdates.forEach { downloadUpdate(it) }
+        val downloadedUpdates = outdatedApps.filter { downloadUpdateAndReturnAvailability(it) }
         hideDownloadNotification(context)
 
-        if (!DeviceSdkTester.supportsAndroid10()) {
-            return Result.success()
-        }
+        // install updates
         areInstallationPreconditionsUnfulfilled()?.let {
-            showUpdateNotification(appsWithAvailableUpdates)
+            showUpdateNotification(downloadedUpdates)
             return it
         }
         hideAllSuccessfulBackgroundInstallationNotifications(context)
         hideAllFailedBackgroundInstallationNotifications(context)
-        appsWithAvailableUpdates.forEach {
-            installApplication(it)
-        }
+        downloadedUpdates.forEach { installApplication(it) }
         return Result.success()
     }
 
@@ -143,14 +141,17 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return null
     }
 
-    private suspend fun checkForUpdates(): List<App> {
-        return App.values()
-            .filter { it !in backgroundSettings.excludedAppsFromUpdateCheck }
-            .filter { it.detail.isInstalled(context) }
-            .filter {
-                val updateCheckResult = it.detail.updateCheckAsync(context).await()
-                updateCheckResult.isUpdateAvailable
-            }
+    private suspend fun checkForUpdateAndReturnAvailability(app: App): Boolean {
+        if (app in backgroundSettings.excludedAppsFromUpdateCheck) {
+            return false
+        }
+
+        if (!app.detail.isInstalled(context)) {
+            return false
+        }
+
+        val updateCheckResult = app.detail.updateCheckAsync(context).await()
+        return updateCheckResult.isUpdateAvailable
     }
 
     private fun areDownloadPreconditionsUnfulfilled(): Result? {
@@ -172,10 +173,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * download is finished.
      */
     @MainThread
-    private suspend fun downloadUpdate(app: App) {
+    private suspend fun downloadUpdateAndReturnAvailability(app: App): Boolean {
         if (!StorageUtil.isEnoughStorageAvailable(context)) {
             Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
-            return
+            return false
         }
 
         val appCache = AppCache(app)
@@ -183,7 +184,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val availableResult = updateResult.availableResult
         if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
-            return
+            return false
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
@@ -201,10 +202,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         if (!result) {
             appCache.delete(context)
         }
+        return result
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun areInstallationPreconditionsUnfulfilled(): Result? {
+        if (!DeviceSdkTester.supportsAndroid10()) {
+            return Result.success()
+        }
+
         if (!context.packageManager.canRequestPackageInstalls()) {
             Log.i(LOG_TAG, "Missing installation permission")
             return Result.retry()
@@ -227,8 +232,13 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return Result.success()
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     private suspend fun installApplication(app: App) {
+        // a previous check pretends that this method is called with Android < 10
+        // but I have to add this check to make the compiler happy
+        if (!DeviceSdkTester.supportsAndroid10()) {
+            return
+        }
+
         val appCache = AppCache(app)
         val file = appCache.getFile(context)
         if (!file.exists()) {
