@@ -9,8 +9,8 @@
     <string name="available_version_error"><u>错误</u></string>
     <string name="available_version_loading">正在加载…</string>
     <string name="app_description">为隐私友好型浏览器打造的升级器</string>
-    <string name="background_job_failure__notification_text">请报告此错误。点击查看错误报告。</string>
-    <string name="background_job_failure__notification_title">后台检查更新失败</string>
+    <string name="background_notification__text">请报告此错误。点击查看错误报告。</string>
+    <string name="background_notification__title">后台检查更新失败</string>
     <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
     <string name="brave__title">Brave 隐私浏览器</string>
     <string name="brave__warning">- Brave 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。
@@ -28,16 +28,16 @@
     <string name="device_too_old_dialog__title">设备太旧</string>
     <string name="dialog_button__do_not_install">不，请不要安装</string>
     <string name="dialog_button__yes">是</string>
-    <string name="download_notification__channel_description">显示何时在后台下载了更新。</string>
-    <string name="download_notification__channel_name">后台下载通知</string>
-    <string name="download_notification__title">正在下载应用程序更新</string>
+    <string name="download_running_notification__channel_description">显示何时在后台下载了更新。</string>
+    <string name="download_running_notification__channel_name">后台下载通知</string>
+    <string name="download_running_notification__title">正在下载应用程序更新</string>
     <string name="download_the_app">下载应用程序</string>
     <string name="error_notification__channel_description">显示后台更新检查器错误</string>
     <string name="error_notification__channel_name">后台错误</string>
-    <string name="failed_update_notification__channel_description">%1$s 更新失败通知通道。</string>
-    <string name="failed_update_notification__channel_name">%1$s 更新失败通知</string>
-    <string name="failed_update_notification__notification_message">错误（%1$d）：%2$s</string>
-    <string name="failed_update_notification__notification_title">无法更新 %1$s。</string>
+    <string name="installation_error_notification__channel_description">%1$s 更新失败通知通道。</string>
+    <string name="installation_error_notification__channel_name">%1$s 更新失败通知</string>
+    <string name="installation_error_notification__message">错误（%1$d）：%2$s</string>
+    <string name="installation_error_notification__title">无法更新 %1$s。</string>
     <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！
 \n尝试最新功能并给予早期反馈：https://brave.com/msupport
 \n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 公测版。</string>

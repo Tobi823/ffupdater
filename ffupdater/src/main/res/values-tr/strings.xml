@@ -9,8 +9,8 @@
     <string name="available_version">Kullanılabilir: %1$s</string>
     <string name="available_version_error">"<u>HATA</u>"</string>
     <string name="available_version_loading">Yükleniyor…</string>
-    <string name="background_job_failure__notification_text">Lütfen bu hatayı bildirin. Hata raporunu görüntülemek için tıklayın.</string>
-    <string name="background_job_failure__notification_title">Arka plan güncelleme denetimi başarısız oldu</string>
+    <string name="background_notification__text">Lütfen bu hatayı bildirin. Hata raporunu görüntülemek için tıklayın.</string>
+    <string name="background_notification__title">Arka plan güncelleme denetimi başarısız oldu</string>
     <string name="brave__description">İnternette ücretsiz olarak gizli bir şekilde gezinin! Brave Gizli Tarayıcı uygulaması, reklam engelleyicisi ve açılır pencere engelleyicisi ile hızlı, özel, güvenli ve ücretsiz bir web tarayıcısıdır. Reklamlar, kötü amaçlı yazılımlar ve açılır pencereler tarafından izlenmeden internette gizli olarak gezinin ve arama yapın.</string>
     <string name="brave__title">Brave Gizli Tarayıcı</string>
     <string name="brave__warning">- Brave, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.
@@ -39,16 +39,16 @@
     <string name="device_too_old_dialog__title">Aygıt çok eski</string>
     <string name="dialog_button__do_not_install">Hayır, kurma</string>
     <string name="dialog_button__yes">Evet</string>
-    <string name="download_notification__channel_description">Arka planda uygulama güncellemelerinin ne zaman indirildiğini gösterir.</string>
-    <string name="download_notification__channel_name">Arka planda indirmeler hakkında bildirim</string>
-    <string name="download_notification__title">Uygulama güncellemeleri indiriliyor</string>
+    <string name="download_running_notification__channel_description">Arka planda uygulama güncellemelerinin ne zaman indirildiğini gösterir.</string>
+    <string name="download_running_notification__channel_name">Arka planda indirmeler hakkında bildirim</string>
+    <string name="download_running_notification__title">Uygulama güncellemeleri indiriliyor</string>
     <string name="download_the_app">uygulamayı indir</string>
     <string name="error_notification__channel_description">Arka plan güncelleme denetleyicisinin hatalarını göster</string>
     <string name="error_notification__channel_name">Arka plan hataları</string>
-    <string name="failed_update_notification__channel_description">Başarısız %1$s güncellemeleri için bildirim kanalı.</string>
-    <string name="failed_update_notification__channel_name">%1$s güncelleme hatası bildirimi</string>
-    <string name="failed_update_notification__notification_message">Hata (%1$d): %2$s</string>
-    <string name="failed_update_notification__notification_title">%1$s güncellenemedi.</string>
+    <string name="installation_error_notification__channel_description">Başarısız %1$s güncellemeleri için bildirim kanalı.</string>
+    <string name="installation_error_notification__channel_name">%1$s güncelleme hatası bildirimi</string>
+    <string name="installation_error_notification__message">Hata (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">%1$s güncellenemedi.</string>
     <string name="firefox_beta__description">Android için Firefox tarayıcı, ışık hızında sayfa yükleme ve gizliliğinizi kolayca koruma olanağı sunuyor. Gelişmiş İzlenme Koruması, gizliliğinizi ihlal eden ve sayfalarınızı yavaşlatan 2.000\'den fazla çevrimiçi takipçiyi otomatik olarak engelliyor. Ayrıca Firefox tarayıcı, daha verimli ve daha hızlı kullanım sağlayan yeni ve sade bir tasarım sunuyor. Üstelik Firefox, yerleşik akıllı gezinti özellikleriyle gizliliğinizi, parolalarınızı ve yer imlerinizi gittiğiniz her yere güvenle taşıyor.</string>
     <string name="firefox_beta__title">Android için Firefox Beta</string>
     <string name="firefox_beta__warning">- Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir.</string>
@@ -163,10 +163,10 @@
     <string name="settings__theme_light">Açık</string>
     <string name="settings__theme_system_default">Sistem öntanımlı ayarını kullan</string>
     <string name="app_warning_before_installation_dialog__title">Uyarı</string>
-    <string name="successful_update__notification_message">Uygulama arka planda başarıyla güncellendi.</string>
-    <string name="successful_update_notification__channel_description">Başarılı %1$s güncellemeleri için bildirim kanalı.</string>
-    <string name="successful_update_notification__channel_name">%1$s başarılı güncelleme bildirimi</string>
-    <string name="successful_update_notification__notification_title">%1$s güncellendi.</string>
+    <string name="installation_success_notification__message">Uygulama arka planda başarıyla güncellendi.</string>
+    <string name="installation_success_notification__channel_description">Başarılı %1$s güncellemeleri için bildirim kanalı.</string>
+    <string name="installation_success_notification__channel_name">%1$s başarılı güncelleme bildirimi</string>
+    <string name="installation_success_notification__title">%1$s güncellendi.</string>
     <string name="ungoogled_chromium__description">Google Chromium, Google ile bütünleşmeye izin vermez.
 \n
 \nChromium, bir Google Hesabında oturum açmadan güvenlik ve gizlilik açısından oldukça başarılıdır. Ancak, Chromium\'un hala Google web hizmetlerine ve ikili dosyalara biraz bağımlılığı vardır. Ayrıca Google, Chromium\'u kullanıcılar için kolay ve sezgisel olacak şekilde tasarladı; bu, şeffaflık ve dahili işlemlerin denetiminden ödün verdikleri anlamına geliyor.</string>
@@ -200,7 +200,7 @@
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
     <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır.
 \n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
-    <string name="download_notification__message">%1$s (%2$s) için güncellemeyi indir.</string>
+    <string name="download_running_notification__message">%1$s (%2$s) için güncellemeyi indir.</string>
     <string name="install_activity__file_uri_exposed_toast">Dosya yolu diğer uygulamalara gösterilemiyor. Lütfen tercih ettiğiniz dosya yöneticisi ile klasörü kendiniz açın.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Kurulum başarılı olursa indirilen güncellemeyi sil.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Kurulum başarısız olursa indirilen güncellemeyi sil.</string>

@@ -14,8 +14,8 @@
     <string name="available_version_loading">Laster inn …</string>
     <string name="device_too_old_dialog__title">Enheten er for gammel</string>
     <string name="download_the_app">last ned programmet</string>
-    <string name="failed_update_notification__notification_message">Feil (%1$d): %2$s</string>
-    <string name="failed_update_notification__notification_title">%1$s kunne ikke oppgraderes.</string>
+    <string name="installation_error_notification__message">Feil (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">%1$s kunne ikke oppgraderes.</string>
     <string name="install_app">Installer program</string>
     <string name="install_same_version_dialog__title">Samme versjon installert</string>
     <string name="install_activity__too_low_memory_title">Lite lagringsplass igjen</string>
@@ -34,9 +34,9 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Kopier krasjrapport til utklippstavlen</string>
     <string name="crash_report__go_to_github">Gå til GitHub</string>
     <string name="crash_report__go_to_gitlab">Gå til GitLab</string>
-    <string name="download_notification__message">Last ned oppgradering for %1$s (%2$s).</string>
-    <string name="download_notification__channel_description">Viser når programoppgraderinger lastes ned i bakgrunnen.</string>
-    <string name="download_notification__channel_name">Merknad om nedlastinger i bakgrunnen</string>
+    <string name="download_running_notification__message">Last ned oppgradering for %1$s (%2$s).</string>
+    <string name="download_running_notification__channel_description">Viser når programoppgraderinger lastes ned i bakgrunnen.</string>
+    <string name="download_running_notification__channel_name">Merknad om nedlastinger i bakgrunnen</string>
     <string name="firefox_focus__description">Dette er en endring av Firefox-nettleseren myntet på økt personvern.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__warning">- Programmet er designet for utviklere og testere. Det kan inneholde feil som påvirker vanlig bruk.</string>
@@ -94,8 +94,8 @@
     <string name="settings__theme_battery_saver">Mørk når batterisparer er aktiv</string>
     <string name="settings__theme_system_default">Systemforvalg</string>
     <string name="app_warning_before_installation_dialog__title">Advarsel</string>
-    <string name="successful_update_notification__channel_description">Merknadskanal for %1$s-oppgraderinger.</string>
-    <string name="successful_update_notification__notification_title">%1$s har blitt oppgradert.</string>
+    <string name="installation_success_notification__channel_description">Merknadskanal for %1$s-oppgraderinger.</string>
+    <string name="installation_success_notification__title">%1$s har blitt oppgradert.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="unsupported_abi_dialog__title">Ustøttet enhet</string>
     <string name="update_interval__15min">15 minutter</string>
@@ -119,7 +119,7 @@
 \nDu kan installere det sammen med din nåværende versjon av Brave for Android.</string>
     <string name="update_notification__text">Klikk for å installere</string>
     <string name="bromite__description">Prøver å tilby en ren surfeopplevelse uten personvernsskadende funksjoner. Har en rask reklameblokkeringsmotor. Minimale grensesnittsendringer brukes for å bekjempe idéen om nettleseren som en reklameplattform.</string>
-    <string name="successful_update__notification_message">Programmet ble oppgradert i bakgrunnen.</string>
+    <string name="installation_success_notification__message">Programmet ble oppgradert i bakgrunnen.</string>
     <string name="session_installer__status_failure">Operasjonen mislyktes på generisk måte. Systemet vil alltid prøve å tilby en mer spesifikk grunn, men i sjeldne tilfeller kan det altså gå slik.</string>
     <string name="install_activity__delete_cache_explanation">Hvis du tror FFUpdater har hurtiglagret en feilaktig programoppgradering kan du trykke «Tøm hurtiglager»-knappen for å slette hurtiglageret for dette programmet.</string>
     <string name="request_installation_permission_dialog__message">FFUpdater mangler tilgang til å installere og oppgradere programmer. Du må innvilge disse tilgangene for at FFUpdater skal virke.</string>
@@ -134,7 +134,7 @@
     <string name="application_successfully_installed">Installert</string>
     <string name="firefox_klar__description">Utviklet for Tyskland, Østerrike, og Sveits, men kan brukes av alle. Ligner Firefox Focus, men navnet ble endret i tysktalende land for å skille seg fra magasinet Focus av Hubert Burda-mediagruppen. Til forskjell fra Firefox Focus har Klar telemetri avslått som forvalg, som følge av strenge personvernslover i Tyskland.</string>
     <string name="main_activity__subtitle">Oppgrader dine Mozilla-nettlesere</string>
-    <string name="background_job_failure__notification_text">Innrapporter denne feilen. Klikk for å vise feilrapporten.</string>
+    <string name="background_notification__text">Innrapporter denne feilen. Klikk for å vise feilrapporten.</string>
     <string name="install_same_version_dialog__message">Nyeste versjon av dette programmet er allerede installert. Last det ned og installer nyeste versjon igjen\?</string>
     <string name="install_activity__fetched_url_for_download_successfully">Hentet nedlastningsnettadresse fra %1$s</string>
     <string name="main_activity__temporary_network_issue"><u>Midlertidig nettverksproblem. Prøv igjen senere.</u></string>
@@ -146,13 +146,13 @@
     <string name="settings__background__installation__enabled__summary">Prøv å installere oppgraderinger uten brukerinteraksjon.</string>
     <string name="settings__theme_light">Lys</string>
     <string name="dialog_button__do_not_install">Nei, ikke installer</string>
-    <string name="background_job_failure__notification_title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
+    <string name="background_notification__title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
     <string name="bromite__warning">- Bromite bruker det tekniske fundamentet til Google Chrome og støtter dermed indirekte monopolposisjonen til krom gjengivelsesmotoren.</string>
     <string name="install_activity__downloaded_application_from">Last ned program fra:</string>
     <string name="install_activity__fetch_url_for_download">Hent nedlastningsnettadresse fra %1$s</string>
     <string name="device_too_old_dialog__message">Din enhet kjører Android %2$s, men programmet krever %1$s. Enten velg et annet program, oppgrader operativsystemet, eller bytt til en nyere smarttelefon.</string>
-    <string name="download_notification__title">Laster ned programoppgraderinger</string>
+    <string name="download_running_notification__title">Laster ned programoppgraderinger</string>
     <string name="error_notification__channel_description">Vis feil i bakgrunnsoppdateringssjekken</string>
-    <string name="failed_update_notification__channel_description">Merknadskanal for mislykkede %1$s-oppgraderinger.</string>
+    <string name="installation_error_notification__channel_description">Merknadskanal for mislykkede %1$s-oppgraderinger.</string>
     <string name="firefox_release__title">Firefox-nettleseren</string>
 </resources>

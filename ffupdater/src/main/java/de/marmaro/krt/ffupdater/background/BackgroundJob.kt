@@ -88,8 +88,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         // check for updates
         val apps = App.values().asList()
-        val outdatedApps = listOf(App.FIREFOX_RELEASE)
-//            .filter { checkForUpdateAndReturnAvailability(it) }
+        val outdatedApps = apps.filter { checkForUpdateAndReturnAvailability(it) }
         if (outdatedApps.isEmpty()) {
             return Result.success()
         }
@@ -282,7 +281,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun showErrorNotification(e: Exception) {
-        val message = context.getString(R.string.background_job_failure__notification_text)
+        val message = context.getString(R.string.background_notification__text)
         BackgroundNotificationBuilder.showError(context, e, message)
     }
 

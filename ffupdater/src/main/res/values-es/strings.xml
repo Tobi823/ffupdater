@@ -10,7 +10,7 @@
     <string name="available_version">Disponible: %1$s</string>
     <string name="available_version_error"><u>ERROR</u></string>
     <string name="available_version_loading">Cargando…</string>
-    <string name="background_job_failure__notification_title">Falló la comprobación de actualizaciones en segundo plano</string>
+    <string name="background_notification__title">Falló la comprobación de actualizaciones en segundo plano</string>
     <string name="brave__title">Navegador web privado Brave</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="bromite__title">Bromite</string>
@@ -28,17 +28,17 @@
     <string name="device_too_old_dialog__title">El dispositivo es muy antiguo</string>
     <string name="dialog_button__do_not_install">No, no lo instales</string>
     <string name="dialog_button__yes">Sí</string>
-    <string name="download_notification__channel_description">Muestra cuándo se descargan las actualizaciones de las aplicaciones en segundo plano.</string>
-    <string name="download_notification__channel_name">Notificación acerca de descargas en segundo plano</string>
-    <string name="download_notification__title">Descargando actualizaciones de aplicaciones</string>
+    <string name="download_running_notification__channel_description">Muestra cuándo se descargan las actualizaciones de las aplicaciones en segundo plano.</string>
+    <string name="download_running_notification__channel_name">Notificación acerca de descargas en segundo plano</string>
+    <string name="download_running_notification__title">Descargando actualizaciones de aplicaciones</string>
     <string name="error_notification__channel_description">Mostrar errores del comprobador de actualizaciones en segundo plano</string>
     <string name="error_notification__channel_name">Errores en segundo plano</string>
-    <string name="failed_update_notification__notification_message">Error (%1$d): %2$s</string>
-    <string name="failed_update_notification__notification_title">%1$s no pudo ser actualizado.</string>
+    <string name="installation_error_notification__message">Error (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">%1$s no pudo ser actualizado.</string>
     <string name="firefox_beta__title">Beta de Firefox para Android</string>
     <string name="firefox_focus__description">Esta es una modificación del navegador Firefox cuyo objetivo es mejorar la privacidad.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
-    <string name="failed_update_notification__channel_description">Canal de notificaciones para actualizaciones fallidas de %1$s.</string>
+    <string name="installation_error_notification__channel_description">Canal de notificaciones para actualizaciones fallidas de %1$s.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_nightly__warning">- Esta aplicación está diseñada para desarrolladores y probadores. Puede contener varios errores que pueden afectar su trabajo habitual con el navegador.</string>
@@ -108,8 +108,8 @@
     <string name="settings__theme_light">Claro</string>
     <string name="settings__theme_system_default">Usar predeterminado del sistema</string>
     <string name="app_warning_before_installation_dialog__title">Advertencia</string>
-    <string name="successful_update__notification_message">La aplicación ha sido actualizada exitosamente en segundo plano.</string>
-    <string name="successful_update_notification__channel_name">Notificación de actualización exitosa de %1$s</string>
+    <string name="installation_success_notification__message">La aplicación ha sido actualizada exitosamente en segundo plano.</string>
+    <string name="installation_success_notification__channel_name">Notificación de actualización exitosa de %1$s</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="unsupported_abi_dialog__message">El navegador seleccionado es incompatible con el procesador de su smartphone. Por favor, seleccione un navegador diferente.</string>
     <string name="unsupported_abi_dialog__title">Dispositivo no soportado</string>
@@ -146,7 +146,7 @@
     <string name="install_activity__different_installer_info__text">Si la instalación falla frecuentemente, intenta cambiar al \"instalador nativo\" en los ajustes.</string>
     <string name="iceraven__warning">- El mantenedor no da ninguna garantía de seguridad, ni de actualizaciones, ni siquiera de estabilidad.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
-    <string name="download_notification__message">Descargar actualización para %1$s (%2$s).</string>
+    <string name="download_running_notification__message">Descargar actualización para %1$s (%2$s).</string>
     <string name="kiwi__description">El Navegador Kiwi está hecho para navegar el internet, leer noticias, ver videos y escuchar música, sin molestias.</string>
     <plurals name="app_warning_dialog__message">
         <item quantity="one">%1$s tiene el siguiente problema:
@@ -156,7 +156,7 @@
 \n
 \n%2$s</item>
     </plurals>
-    <string name="background_job_failure__notification_text">Por favor, reporte este error. Haga clic para ver el reporte de error.</string>
+    <string name="background_notification__text">Por favor, reporte este error. Haga clic para ver el reporte de error.</string>
     <string name="bromite_systemwebview__description">El paquete SystemWebView contiene el núcleo del motor de navegación/renderizado de Bromite y sus mismas características. Ofrece la posibilidad de sustituir el componente del navegador por defecto para todo el sistema Android.</string>
     <string name="brave__warning">- Brave utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.
 \n- Debido a su Token de Atención Básica BAT en la blockchain de Ethereum, el proyecto tiene vínculos con las criptomonedas. Las Blockchains tienen muchos problemas y deben ser evitados en mi opinión.</string>
@@ -164,7 +164,7 @@
     <string name="download_the_app">descargar la aplicación</string>
     <string name="device_too_old_dialog__message">La aplicación requiere Android %1$s. Sin embargo, su dispositivo está ejecutando Android %2$s. Elija una aplicación diferente, actualice su sistema operativo o cambie a un smartphone más nuevo.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Se ha producido el siguiente error al comprobar las actualizaciones en la vista principal. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, no olvide añadir su informe de fallo del portapapeles y la descripción de cómo reproducir este error.</string>
-    <string name="failed_update_notification__channel_name">Notificación de fallo de actualización de %1$s</string>
+    <string name="installation_error_notification__channel_name">Notificación de fallo de actualización de %1$s</string>
     <string name="firefox_klar__description">Firefox Klar está desarrollado para Alemania, Austria y Suiza, pero puede ser utilizado por usuarios de cualquier país. Es muy similar a Firefox Focus, pero el nombre fue cambiado en los países de habla alemana para evitar la confusión con la revista Focus del grupo Hubert Burda Media. A diferencia de Firefox Focus, Firefox Klar tiene la telemetría desactivada por defecto debido a las estrictas leyes de privacidad alemanas.</string>
     <string name="firefox_beta__warning">- Esta aplicación está diseñada para desarrolladores y probadores. Puede contener varios errores que pueden afectar su trabajo habitual con el navegador.</string>
     <string name="firefox_nightly__description">Por favor, tenga en cuenta que esta aplicación solía llamarse Firefox Preview. Ahora ha pasado a ser Firefox Nightly.
@@ -220,7 +220,7 @@
     <string name="install_same_version_dialog__message">La última versión de esta aplicación ya está instalada. ¿Quiere descargar e instalar la última versión otra vez\?</string>
     <string name="settings__foreground__update_check__metered__title">Comprobaciones de actualizaciones en redes medidas</string>
     <string name="update_notification__channel_description">Canal de notificaciones para actualizaciones disponibles de %1$s.</string>
-    <string name="successful_update_notification__notification_title">%1$s ha sido actualizado.</string>
+    <string name="installation_success_notification__title">%1$s ha sido actualizado.</string>
     <string name="ungoogled_chromium__description">Google Chromium, sin integración con Google.
 \n
 \nSin necesidad de acceder a una cuenta de Google, Chromium es bastante bueno en términos de seguridad y privacidad. Sin embargo, Chromium sigue teniendo cierta dependencia de los servicios web y los binarios de Google. Además, Google diseñó Chromium para que fuera fácil e intuitivo para los usuarios, lo que significa que compromete la transparencia y el control de las operaciones internas.</string>
@@ -228,7 +228,7 @@
     <string name="update_interval__4h">4 horas</string>
     <string name="update_interval__6d">6 días</string>
     <string name="update_interval__8h">8 horas</string>
-    <string name="successful_update_notification__channel_description">Canal de notificaciones para actualizaciones exitosas de %1$s.</string>
+    <string name="installation_success_notification__channel_description">Canal de notificaciones para actualizaciones exitosas de %1$s.</string>
     <string name="manage_storage_activity__explanation">FFUpdater guarda en caché las actualizaciones de aplicaciones ya descargadas y las almacena en la carpeta \"Android/data/de.marmaro.krt.ffupdater/files/Download\".
 \n
 \nEsto ahorra ancho de banda cuando una aplicación no se instala o actualiza correctamente. Además, la caché es necesaria para que las actualizaciones que se descargaron en segundo plano puedan instalarse más tarde.

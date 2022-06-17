@@ -9,8 +9,8 @@
     <string name="available_version">Disponível: %1$s</string>
     <string name="available_version_error">"<u>ERRO</u>"</string>
     <string name="available_version_loading">Carregando…</string>
-    <string name="background_job_failure__notification_text">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
-    <string name="background_job_failure__notification_title">Verificação em segundo plano falhou</string>
+    <string name="background_notification__text">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
+    <string name="background_notification__title">Verificação em segundo plano falhou</string>
     <string name="brave__description">Navegue livremente e de modo privado! Brave é rápido, gratuito e seguro com bloqueador de pop-ups e anúncios. Navegue e pesquise na internet sem malware e rastreamento.</string>
     <string name="brave__title">Brave</string>
     <string name="brave__warning">- O Brave implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
@@ -35,16 +35,16 @@
     <string name="device_too_old_dialog__title">O dispositivo é incompatível</string>
     <string name="dialog_button__do_not_install">Não quero instalar</string>
     <string name="dialog_button__yes">Sim</string>
-    <string name="download_notification__channel_description">Mostra quando as atualizações do aplicativo são baixadas em segundo plano.</string>
-    <string name="download_notification__channel_name">Notificação sobre downloads em segundo plano</string>
-    <string name="download_notification__title">Download de atualizações do aplicativo</string>
+    <string name="download_running_notification__channel_description">Mostra quando as atualizações do aplicativo são baixadas em segundo plano.</string>
+    <string name="download_running_notification__channel_name">Notificação sobre downloads em segundo plano</string>
+    <string name="download_running_notification__title">Download de atualizações do aplicativo</string>
     <string name="download_the_app">baixar o navegador</string>
     <string name="error_notification__channel_description">Mostrar erros ao verificar por atualizações em segundo plano</string>
     <string name="error_notification__channel_name">Erros em segundo plano</string>
-    <string name="failed_update_notification__channel_description">Canal de notificação para atualizações de %1$s falhadas.</string>
-    <string name="failed_update_notification__channel_name">%1$s notificação de falha de atualização</string>
-    <string name="failed_update_notification__notification_message">Erro (%1$d): %2$s</string>
-    <string name="failed_update_notification__notification_title">%1$s não puderam ser atualizados.</string>
+    <string name="installation_error_notification__channel_description">Canal de notificação para atualizações de %1$s falhadas.</string>
+    <string name="installation_error_notification__channel_name">%1$s notificação de falha de atualização</string>
+    <string name="installation_error_notification__message">Erro (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">%1$s não puderam ser atualizados.</string>
     <string name="firefox_beta__description">Firefox para Android e incrivelmente rápido é seguro. Milhares de rastreadores estão acompanhando você todos os dias, coletando informações sobre onde você vai e portanto diminuindo a velocidade de navegação. Firefox bloqueia por padrão mais de 2000 destes rastreadores e tem disponíveis extensões de bloqueadores de anúncios, caso precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa.</string>
     <string name="firefox_beta__title">Firefox Beta</string>
     <string name="firefox_beta__warning">- Foi criado para desenvolvedores e testadores. Pode conter vários bugs que podem afetar sua interação com o navegador.</string>
@@ -145,10 +145,10 @@
     <string name="settings__theme_light">Claro</string>
     <string name="settings__theme_system_default">Adaptar do sistema</string>
     <string name="app_warning_before_installation_dialog__title">Aviso</string>
-    <string name="successful_update__notification_message">O aplicativo foi atualizado com sucesso em segundo plano.</string>
-    <string name="successful_update_notification__channel_description">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
-    <string name="successful_update_notification__channel_name">%1$s notificação de atualização bem sucedida</string>
-    <string name="successful_update_notification__notification_title">%1$s foi atualizado.</string>
+    <string name="installation_success_notification__message">O aplicativo foi atualizado com sucesso em segundo plano.</string>
+    <string name="installation_success_notification__channel_description">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
+    <string name="installation_success_notification__channel_name">%1$s notificação de atualização bem sucedida</string>
+    <string name="installation_success_notification__title">%1$s foi atualizado.</string>
     <string name="ungoogled_chromium__description">Google Chromium, sem integração com o Google.\n\nSem ter que acessar uma conta do Google, Chromium se sai muito bem em termos de segurança e privacidade. No entanto, o Chromium ainda tem algumas dependências de serviços web e binários do Google. Além disso, o Google criou o Chromium para ser fácil e intuitivo aos usuários, o que significa que eles comprometem a transparência e o controle das operações internas.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- O Ungoogled Chromium implementa a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
@@ -180,7 +180,7 @@
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto.
 \n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
-    <string name="download_notification__message">Baixando atualização para %1$s (%2$s).</string>
+    <string name="download_running_notification__message">Baixando atualização para %1$s (%2$s).</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="one">%1$s tem o seguinte problema:
 \n

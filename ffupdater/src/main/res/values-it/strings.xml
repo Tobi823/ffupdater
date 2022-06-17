@@ -9,8 +9,8 @@
     <string name="available_version">Disponibile: %1$s</string>
     <string name="available_version_error">"<u>ERRORE</u>"</string>
     <string name="available_version_loading">Caricamento…</string>
-    <string name="background_job_failure__notification_text">Si prega di segnalare questo errore. Clicca per visualizzare il rapporto di errore.</string>
-    <string name="background_job_failure__notification_title">Verifica aggiornamenti in background fallita</string>
+    <string name="background_notification__text">Si prega di segnalare questo errore. Clicca per visualizzare il rapporto di errore.</string>
+    <string name="background_notification__title">Verifica aggiornamenti in background fallita</string>
     <string name="brave__description">Naviga su internet privatamente, gratis! Brave Private Browser App è il tuo browser web privato, veloce, gratuito e sicuro con blocco di annunci e pop-up. Naviga e cerca su internet privatamente, senza essere tracciato da inserzionisti, malware e pop-up.</string>
     <string name="brave__title">Brave Private Browser</string>
     <string name="brave__warning">Brave usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.
@@ -35,16 +35,16 @@
     <string name="device_too_old_dialog__title">Il dispositivo è troppo vecchio</string>
     <string name="dialog_button__do_not_install">No, non installarlo</string>
     <string name="dialog_button__yes">Sì</string>
-    <string name="download_notification__channel_description">Mostra quando gli aggiornamenti delle app vengono scaricati in sfondo.</string>
-    <string name="download_notification__channel_name">Notifica di scaricamento in sfondo</string>
-    <string name="download_notification__title">Scaricare gli aggiornamenti delle app</string>
+    <string name="download_running_notification__channel_description">Mostra quando gli aggiornamenti delle app vengono scaricati in sfondo.</string>
+    <string name="download_running_notification__channel_name">Notifica di scaricamento in sfondo</string>
+    <string name="download_running_notification__title">Scaricare gli aggiornamenti delle app</string>
     <string name="download_the_app">scarica l\'app</string>
     <string name="error_notification__channel_description">Mostra errori della verifica degli aggiornamenti in sfondo</string>
     <string name="error_notification__channel_name">Errori in sfondo</string>
-    <string name="failed_update_notification__channel_description">Canale di notifica per aggiornamenti falliti %1$s.</string>
-    <string name="failed_update_notification__channel_name">%1$s notifica di fallimento dell\'aggiornamento</string>
-    <string name="failed_update_notification__notification_message">Errore (%1$d): %2$s</string>
-    <string name="failed_update_notification__notification_title">%1$s non può essere aggiornato.</string>
+    <string name="installation_error_notification__channel_description">Canale di notifica per aggiornamenti falliti %1$s.</string>
+    <string name="installation_error_notification__channel_name">%1$s notifica di fallimento dell\'aggiornamento</string>
+    <string name="installation_error_notification__message">Errore (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">%1$s non può essere aggiornato.</string>
     <string name="firefox_beta__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
     <string name="firefox_beta__title">Firefox per Android Beta</string>
     <string name="firefox_beta__warning">- Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser.</string>
@@ -146,10 +146,10 @@
     <string name="settings__theme_light">Chiaro</string>
     <string name="settings__theme_system_default">Usa predefinito di sistema</string>
     <string name="app_warning_before_installation_dialog__title">Avvertimento</string>
-    <string name="successful_update__notification_message">L\'app è stata aggiornata con successo in background.</string>
-    <string name="successful_update_notification__channel_description">Canale di notifica per aggiornamenti di successo %1$s.</string>
-    <string name="successful_update_notification__channel_name">%1$s notifica di aggiornamento riuscito</string>
-    <string name="successful_update_notification__notification_title">%1$s è stato aggiornato.</string>
+    <string name="installation_success_notification__message">L\'app è stata aggiornata con successo in background.</string>
+    <string name="installation_success_notification__channel_description">Canale di notifica per aggiornamenti di successo %1$s.</string>
+    <string name="installation_success_notification__channel_name">%1$s notifica di aggiornamento riuscito</string>
+    <string name="installation_success_notification__title">%1$s è stato aggiornato.</string>
     <string name="ungoogled_chromium__description">Google Chromium, senza l\'integrazione con Google.\n\nSenza fare l\'accesso a un Account Google, Chromium fa abbastanza bene in termini di sicurezza e privacy. Tuttavia, Chromium ha ancora una certa dipendenza dai binari e dai servizi web di  Google. Inoltre, Google ha progettato Chromium in modo che fosse facile e intuitivo per gli utenti, il che significa che compromettono la trasparenza e il controllo delle operazioni interne.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
@@ -190,7 +190,7 @@
 \n%2$s</item>
     </plurals>
     <string name="running_downloads_dialog__yes">Sì</string>
-    <string name="download_notification__message">Scarica aggiornamento per %1$s (%2$s).</string>
+    <string name="download_running_notification__message">Scarica aggiornamento per %1$s (%2$s).</string>
     <string name="kiwi__description">Kiwi Browser è fatto per navigare in internet, leggere notizie, guardare video e ascoltare musica, senza fastidi.</string>
     <string name="settings__installer__root__summary">Usa l\'autorizzazione di root per installare o aggiornare le app senza l\'interazione dell\'utente. Ciò richiede uno smartphone con root.</string>
     <string name="iceraven__warning">- Il manutentore non fornisce garanzie o assicurazioni di sicurezza o aggiornamenti e neanche stabilità.</string>

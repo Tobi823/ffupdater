@@ -9,8 +9,8 @@
     <string name="available_version">Dostępne: %1$s</string>
     <string name="available_version_error">"<u>BŁĄD</u>"</string>
     <string name="available_version_loading">Ładowanie…</string>
-    <string name="background_job_failure__notification_text">Proszę zgłosić ten błąd. Kliknij, aby wyświetlić raport o błędzie.</string>
-    <string name="background_job_failure__notification_title">Aktualizacja w tle się nie powiodła</string>
+    <string name="background_notification__text">Proszę zgłosić ten błąd. Kliknij, aby wyświetlić raport o błędzie.</string>
+    <string name="background_notification__title">Aktualizacja w tle się nie powiodła</string>
     <string name="brave__description">Przeglądaj internet prywatnie, za darmo! Brave to Twoja szybka, darmowa i bezpieczna przeglądarka internetowa z blokadą reklam i wyskakujących okienek. Prywatne przeglądanie i wyszukiwanie w Internecie bez śledzenia przez reklamodawców, złośliwego oprogramowania i wyskakujących okienek.</string>
     <string name="brave__title">Przeglądarka Brave</string>
     <string name="brave__warning">- Brave wykorzystuje rozwiązania techniczne Google Chrome (Chromium) - niektórym się to nie podoba. Czy na pewno chcesz zainstalować Brave\?
@@ -39,16 +39,16 @@
     <string name="device_too_old_dialog__title">Urządzenie jest zbyt stare</string>
     <string name="dialog_button__do_not_install">Nie, nie instaluj tego</string>
     <string name="dialog_button__yes">Tak</string>
-    <string name="download_notification__channel_description">Pokazuje, kiedy aktualizacje aplikacji są pobierane w tle.</string>
-    <string name="download_notification__channel_name">Powiadomienie o pobranych plikach w tle</string>
-    <string name="download_notification__title">Pobieranie aktualizacji aplikacji</string>
+    <string name="download_running_notification__channel_description">Pokazuje, kiedy aktualizacje aplikacji są pobierane w tle.</string>
+    <string name="download_running_notification__channel_name">Powiadomienie o pobranych plikach w tle</string>
+    <string name="download_running_notification__title">Pobieranie aktualizacji aplikacji</string>
     <string name="download_the_app">Pobierz aplikację</string>
     <string name="error_notification__channel_description">Pokaż błędy sprawdzania aktualizacji w tle</string>
     <string name="error_notification__channel_name">Błędy w tle</string>
-    <string name="failed_update_notification__channel_description">Kanał powiadamiania o nieudanych aktualizacjach %1$s.</string>
-    <string name="failed_update_notification__channel_name">Powiadomienie o niepowodzeniu aktualizacji %1$s</string>
-    <string name="failed_update_notification__notification_message">Błąd (%1$d): %2$s</string>
-    <string name="failed_update_notification__notification_title">Nie można zaktualizować %1$s.</string>
+    <string name="installation_error_notification__channel_description">Kanał powiadamiania o nieudanych aktualizacjach %1$s.</string>
+    <string name="installation_error_notification__channel_name">Powiadomienie o niepowodzeniu aktualizacji %1$s</string>
+    <string name="installation_error_notification__message">Błąd (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">Nie można zaktualizować %1$s.</string>
     <string name="firefox_beta__description">Przeglądarka Firefox dla Androida zapewnia prywatność i niewiarygodną szybkość. Tysiące skryptów śledzących śledzi Cię każdego dnia, zbierając informacje o tym, gdzie jesteś w sieci, spowalniając Twoją przeglądarkę. Firefox domyślnie blokuje ponad 2000 takich skryptów, a jeśli chcesz jeszcze bardziej dostosować przeglądarkę do swoich potrzeb, dostępne są dodatki blokujące reklamy. Dzięki Firefoxowi uzyskasz bezpieczeństwo, na które zasługujesz, i szybkość, jakiej potrzebujesz, w prywatnej, mobilnej przeglądarce.</string>
     <string name="firefox_beta__title">Firefox dla Android Beta</string>
     <string name="firefox_beta__warning">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
@@ -149,10 +149,10 @@
     <string name="settings__theme_light">Jasny</string>
     <string name="settings__theme_system_default">Użyj motywu systemowego</string>
     <string name="app_warning_before_installation_dialog__title">Ostrzeżenie</string>
-    <string name="successful_update__notification_message">Aplikacja została pomyślnie zaktualizowana w tle.</string>
-    <string name="successful_update_notification__channel_description">Kanał powiadamiania o udanych aktualizacjach %1$s.</string>
-    <string name="successful_update_notification__channel_name">%1$s powiadomienie o udanej aktualizacji</string>
-    <string name="successful_update_notification__notification_title">%1$s został zaktualizowany.</string>
+    <string name="installation_success_notification__message">Aplikacja została pomyślnie zaktualizowana w tle.</string>
+    <string name="installation_success_notification__channel_description">Kanał powiadamiania o udanych aktualizacjach %1$s.</string>
+    <string name="installation_success_notification__channel_name">%1$s powiadomienie o udanej aktualizacji</string>
+    <string name="installation_success_notification__title">%1$s został zaktualizowany.</string>
     <string name="ungoogled_chromium__description">Google Chromium, bez integracji z Google.\n\nBez logowania się na konto Google, Chromium radzi sobie całkiem dobrze pod względem bezpieczeństwa i prywatności. Jednakże, Chromium nadal jest w pewnym stopniu zależne od usług sieciowych i plików binarnych Google. Ponadto, Google zaprojektowało Chromium tak, aby było łatwe i intuicyjne dla użytkowników, co oznacza, że poszło na kompromis w kwestii przejrzystości i kontroli operacji wewnętrznych.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium wykorzystuje techniczne podstawy Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
@@ -186,5 +186,5 @@
 \n- Wykorzystuje również techniczne podstawy przeglądarki Google Chrome, przez co pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="settings__installer_category__title">Instalator</string>
     <string name="firefox_release__warning">- Ulepszona wersja Firefox jest również dostępna w systemie F-Droid pod nazwą Fennec F-Droid.</string>
-    <string name="download_notification__message">Pobierz aktualizację dla %1$s (%2$s).</string>
+    <string name="download_running_notification__message">Pobierz aktualizację dla %1$s (%2$s).</string>
 </resources>
