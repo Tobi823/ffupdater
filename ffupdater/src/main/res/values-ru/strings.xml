@@ -60,11 +60,13 @@
     <string name="go_back">Вернуться</string>
     <string name="iceraven__description">Определенно не от Mozilla! \n\nIceraven Browser - это веб-браузер для Android, основанный на версиях Firefox, GeckoView и Mozilla Android Components от Mozilla Fenix. \n\nНашей целью является создание как можно более точной копии нового Firefox для Android, который стремится предоставить пользователям больше возможностей для настройки (включая широкую библиотеку расширений), больше информации о страницах, которые они посещают, и как их браузеры взаимодействуют с этими страницами.</string>
     <string name="iceraven__title">Iceraven Browser</string>
-    <string name="infobox">Это программа обновления для нескольких браузеров Mozilla. Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления. Вы можете проверить наличие новых обновлений, потянув вниз или открыв приложение заново. По умолчанию приложение будет регулярно проверять наличие обновлений в фоновом режиме. Я сделал все возможное, чтобы обезопасить процесс установки/обновления - не стесняйтесь, перепроверьте или улучшите его, создав pull-request. \n\nПоследняя успешная проверка фонового обновления: %1$s</string>
+    <string name="infobox">Это программа обновления для нескольких браузеров от Mozilla и других поставщиков. Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления. Вы можете проверить наличие новых обновлений, потянув вниз или открыв приложение заново. По умолчанию приложение будет регулярно проверять наличие обновлений в фоновом режиме. Я сделал все возможное, чтобы обезопасить процесс установки/обновления - не стесняйтесь, перепроверьте или улучшите его, создав pull-request.
+\n
+\nПоследняя успешная проверка фонового обновления: %1$s</string>
     <string name="information_about_the_app">информация о приложении</string>
     <string name="install_activity__delete_cache_button_text">очистить кэш</string>
     <string name="install_activity__delete_cache_explanation">Если вы считаете, что FFUpdater ошибочно сохранил в кэше обновление приложения или просто желаете очистить место, нажмите кнопку \"очистить кэш\", для удаления загруженного файла.</string>
-    <string name="install_activity__download_app_with_status">Загрузить приложение (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Загрузка приложения (%1$s)</string>
     <string name="install_activity__download_failed">Не удалось загрузить</string>
     <string name="install_activity__downloaded_application_from">Приложение загружено с:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Загруженное приложение НЕ проверяется</string>
@@ -95,7 +97,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превышен лимит GitHub-API. Повторите попытку через час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Отсутствие сети без оплаты</string>
-    <string name="main_activity__subtitle">Обновите свои браузеры от Mozilla</string>
+    <string name="main_activity__subtitle">Программа для обновления браузеров, уважающих конфиденциальность</string>
     <string name="main_activity__temporary_network_issue">"<u>Временная проблема сети. Повторите попытку позже.</u>"</string>
     <string name="manage_storage_activity__delete_button">Удаление кэшированных обновлений приложений.</string>
     <string name="manage_storage_activity__explanation">FFUpdater кэширует уже загруженные обновления приложений и хранит их в папке \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nЭто экономит пропускную способность, когда приложение не удается установить или обновить. Кроме того, кэш необходим для того, чтобы обновления, загруженные в фоновом режиме, можно было установить позже.\n\nЕсли вы решите удалить эти обновления приложений, вам, возможно, придется загрузить их снова.</string>
@@ -109,7 +111,7 @@
     <string name="running_downloads_dialog__title">Выполняющиеся загрузки</string>
     <string name="running_downloads_dialog__yes">Да</string>
     <string name="session_installer__not_enough_storage">Операция завершилась неудачно из-за недостаточного объёма памяти: %1$s</string>
-    <string name="session_installer__require_user_interaction">Требуют взаимодействия с пользователем.</string>
+    <string name="session_installer__require_user_interaction">Требуется взаимодействие с пользователем. Сначала надо обновить программу через интерфейс FFUpdater. Только после этого будут доступны фоновые обновления для выбранного приложения.</string>
     <string name="session_installer__status_failure">Операция завершилась неудачно в общем случае. Система всегда будет пытаться предоставить более конкретную причину сбоя, но в некоторых редких случаях она может быть не предоставлена.</string>
     <string name="session_installer__status_failure_aborted">Операция не удалась, потому что она была активно прервана. Например, пользователь активно отказался от запрашиваемых разрешений, или сеанс был прерван.</string>
     <string name="session_installer__status_failure_blocked">Операция завершилась неудачно, потому что была заблокирована. Например, политика устройства может блокировать операцию, верификатор пакетов может блокировать операцию, или приложение может быть необходимо для работы основной системы.</string>
@@ -182,10 +184,64 @@
 \n- Он также использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
     <string name="download_notification__message">Загрузка обновления для %1$s (%2$s).</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Удалить обновление, если установка прошла успешно.</string>
-    <string name="firefox_release__warning">- Улучшенная версия Firefix доступна на F-Droid под названием Fennec F-Droid</string>
+    <string name="firefox_release__warning">- Улучшенная версия Firefox под названием Fennec F-Droid доступна на F-Droid.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Удалить обновление, если установка не удалась.</string>
     <string name="settings__installer_category__title">Установщик</string>
     <string name="install_activity__open_folder">Открыть каталог</string>
     <string name="app_warning_dialog__title">Предупреждение</string>
     <string name="settings__installer__session__summary">Рекомендовано для большинства устройств.</string>
+    <string name="crash_report___explain_text__install_activity_install_file">При установке произошла ошибка. Если это случается очень часто, опишите проблему на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте прикрепить отчёт об ошибке из буфера обмена.</string>
+    <string name="iceraven__warning">- Поддерживающий не даёт никаких гарантий по безопасности, и даже стабильности.</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="kiwi__description">Kiwi Browser сделан, чтобы обозревать интернет, читать новости, смотреть видео и слушать музыку без раздражающих элементов.</string>
+    <string name="install_activity__file_uri_exposed_toast">Не удалось определить путь к другим приложениям. Пожалуйста, откройте каталог с помощью предпочитаемого вами файлового менеджера.</string>
+    <string name="settings__foreground__hide_warning_buttons">Скрыть предупреждения для установленных приложений.</string>
+    <string name="crash_report___explain_text__install_activity_download_file">При загрузке произошла ошибка. Если это случается очень часто, опишите проблему на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте прикрепить отчёт об ошибке из буфера обмена.</string>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">У %1$s имеется проблема:
+\n
+\n%2$s</item>
+        <item quantity="few">У %1$s имеются проблемы:
+\n
+\n%2$s</item>
+        <item quantity="many">У %1$s имеются проблемы:
+\n
+\n%2$s</item>
+        <item quantity="other">У %1$s имеются проблемы:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="settings__installer__session__title">Сессионный установщик</string>
+    <string name="settings__installer__native__summary">План Б, на случай, если сессионный установщик не поддерживается вашим телефоном. Такое часто случается на Samsung и Xiaomi.</string>
+    <string name="settings__installer__native__title">Родной установщик</string>
+    <string name="settings__installer__root__title">Root-установка</string>
+    <string name="install_activity__different_installer_info__text">Если установка часто проваливается, попробуйте переключиться на \"Родной установщик\" в настройках.</string>
+    <string name="settings__installer__root__summary">Использует права суперпользователя для установки и обновления приложений без участия пользователя. Требуется root.</string>
+    <string name="kiwi__warning">- Kiwi использует кодовую базу Google Chrome и тем самым поддерживает монопольную позицию движка отрисовки Chromium.
+\n- Kiwi — не идеальный приватный браузер, но у него есть хорошая поддержка дополнений.
+\n- Браузер монетизируется поисковыми движками за каждый запрос, сделанный через Kiwi Browser. В зависимости от выбранного поискового движка, запросы могут идти через серверы Kiwibrowser / Kiwisearchservices.
+\n- Google Ads в Kiwi может использовать данные местоположения для показа таргетированной рекламы, но это можно отключить выключив настройку \"Discovery feature\". Но правила игры скоро изменятся. Подробности на https://privacy.kiwibrowser.org.</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">У %1$s имеется проблема:
+\n
+\n%2$s
+\n
+\nВы хотите продолжить установку %1$s\?</item>
+        <item quantity="few">У %1$s имеются проблемы:
+\n
+\n%2$s
+\n
+\nВы хотите продолжить установку %1$s\?</item>
+        <item quantity="many">У %1$s имеются проблемы:
+\n
+\n%2$s
+\n
+\nВы хотите продолжить установку %1$s\?</item>
+        <item quantity="other">У %1$s имеются проблемы:
+\n
+\n%2$s
+\n
+\nВы хотите продолжить установку %1$s\?</item>
+    </plurals>
+    <string name="intent_installer__likely_storage_failure">Из-за проблем с хранилищем операция провалилась. Скорее всего, на устройстве закончилось место, или внешний накопитель недоступен. Вы можете высвободить место на устройстве или вставить другой внешний накопитель.</string>
 </resources>
