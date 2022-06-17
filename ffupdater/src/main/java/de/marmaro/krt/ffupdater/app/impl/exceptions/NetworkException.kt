@@ -1,3 +1,8 @@
 package de.marmaro.krt.ffupdater.app.impl.exceptions
 
-open class NetworkException(message: String, throwable: Throwable) : Exception(message, throwable)
+import java.io.IOException
+
+open class NetworkException : IOException {
+    constructor(message: String) : super(message)
+    constructor(message: String, throwable: Throwable) : super(message, throwable)
+}

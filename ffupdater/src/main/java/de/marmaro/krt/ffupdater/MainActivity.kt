@@ -29,7 +29,7 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
-import de.marmaro.krt.ffupdater.download.AppDownloadStatus.Companion.areDownloadsInBackgroundActive
+import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
@@ -249,7 +249,7 @@ class MainActivity : AppCompatActivity() {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }
-        if (askForConfirmationIfOtherDownloadsAreRunning && areDownloadsInBackgroundActive()) {
+        if (askForConfirmationIfOtherDownloadsAreRunning && FileDownloader.areDownloadsCurrentlyRunning()) {
             RunningDownloadsDialog.newInstance(app).show(supportFragmentManager)
             return
         }

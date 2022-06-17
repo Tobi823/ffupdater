@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.download
 
-import android.content.Context
 import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
@@ -17,78 +16,68 @@ import okio.buffer
 import ru.gildor.coroutines.okhttp.await
 import java.io.File
 import java.io.IOException
-import java.net.UnknownHostException
+import java.util.concurrent.atomic.AtomicInteger
 import kotlin.reflect.KMutableProperty0
 
 class FileDownloader {
     private val trafficStatsThreadId = 10001
-    var errorMessage: String? = null
-        private set
-    var errorException: Throwable? = null
-        private set
+
     var onProgress: (progressInPercent: Int?, totalMB: Long) -> Unit = @WorkerThread { _, _ -> }
 
-    // fallback to register for news for existing download
-    var currentDownloadResult: Deferred<Boolean>? = null
+    // fallback to wait for the download when the activity was recreated
+    var currentDownload: Deferred<Any>? = null
 
     @MainThread
-    suspend fun downloadFileAsync(context: Context, url: String, file: File): Deferred<Boolean> {
+    @Throws(NetworkException::class)
+    suspend fun downloadFileAsync(url: String, file: File): Deferred<Any> {
         return withContext(Dispatchers.IO) {
-            currentDownloadResult = async {
+            currentDownload = async {
                 try {
-                    downloadFileInternal(context, url, file)
-                } catch (e: Exception) {
-                    errorMessage = e.localizedMessage
-                    errorException = e
-                    false
+                    numberOfRunningDownloads.incrementAndGet()
+                    downloadFileInternal(url, file)
+                } catch (e: IOException) {
+                    throw NetworkException("File download failed.", e)
+                } finally {
+                    numberOfRunningDownloads.decrementAndGet()
                 }
             }
-            currentDownloadResult!!
+            currentDownload!!
         }
     }
 
     @WorkerThread
-    private suspend fun downloadFileInternal(context: Context, url: String, file: File): Boolean {
-        require(url.startsWith("https://"))
-        TrafficStats.setThreadStatsTag(trafficStatsThreadId)
-        val client = createClient()
-        val call = callUrl(client, url) ?: return false
-        call.use { response ->
+    private suspend fun downloadFileInternal(url: String, file: File) {
+        val okhttpCallResponse = callUrl(url)
+        okhttpCallResponse.use { response ->
             TrafficStats.setThreadStatsTag(trafficStatsThreadId)
             val body = response.body
-            if (!response.isSuccessful || body == null) {
-                errorMessage = "HTTP code: ${response.code}"
-                return false
+            if (!response.isSuccessful) {
+                throw NetworkException("Response is unsuccessful. HTTP code: '${response.code}'.")
             }
-            if (!file.exists()) {
-                file.createNewFile()
+            if (body == null) {
+                throw NetworkException("Response is unsuccessful. Body is null.")
+            }
+            if (file.exists()) {
+                file.delete()
             }
             file.outputStream().buffered().use { fileWriter ->
                 body.byteStream().buffered().use { responseReader ->
                     // this method blocks until download is finished
-                    try {
-                        responseReader.copyTo(fileWriter)
-                        fileWriter.flush()
-                    } catch (e: IOException) {
-                        throw NetworkException("Fail to copy download stream to file.", e)
-                    }
-                    return true
+                    responseReader.copyTo(fileWriter)
                 }
             }
         }
     }
 
-    private suspend fun callUrl(client: OkHttpClient, url: String): Response? {
+    private suspend fun callUrl(url: String): Response {
+        require(url.startsWith("https://"))
+        TrafficStats.setThreadStatsTag(trafficStatsThreadId)
+        val client = createClient()
         val request = Request.Builder()
             .url(url)
             .build()
-        return try {
-            client.newCall(request)
-                .await()
-        } catch (e: UnknownHostException) {
-            errorMessage = e.localizedMessage
-            null
-        }
+        return client.newCall(request)
+            .await()
     }
 
     private fun createClient(): OkHttpClient {
@@ -101,6 +90,13 @@ class FileDownloader {
                     .build()
             }
             .build()
+    }
+
+    // simple communication between WorkManager and the InstallActivity to prevent duplicated downloads
+    // persistence/consistence is not very important -> global available variables are ok
+    companion object {
+        private var numberOfRunningDownloads = AtomicInteger(0)
+        fun areDownloadsCurrentlyRunning() = numberOfRunningDownloads.get() != 0
     }
 }
 
@@ -141,37 +137,6 @@ internal class ProgressResponseBody(
                 }
                 return bytesRead
             }
-        }
-    }
-}
-
-// simple communication between WorkManager and the InstallActivity to prevent duplicated downloads
-// persistence/consistence is not important -> global available variables are ok
-class AppDownloadStatus {
-    companion object {
-        private var BACKGROUND_DOWNLOAD_STARTED: Long? = null
-        private var FOREGROUND_DOWNLOAD_STARTED: Long? = null
-
-        fun areDownloadsInBackgroundActive() =
-            (System.currentTimeMillis() - (BACKGROUND_DOWNLOAD_STARTED ?: 0)) < 600_000L
-
-        fun areDownloadsInForegroundActive() =
-            (System.currentTimeMillis() - (FOREGROUND_DOWNLOAD_STARTED ?: 0)) < 600_000L
-
-        fun backgroundDownloadIsStarted() {
-            BACKGROUND_DOWNLOAD_STARTED = System.currentTimeMillis()
-        }
-
-        fun backgroundDownloadIsFinished() {
-            BACKGROUND_DOWNLOAD_STARTED = null
-        }
-
-        fun foregroundDownloadIsStarted() {
-            FOREGROUND_DOWNLOAD_STARTED = System.currentTimeMillis()
-        }
-
-        fun foregroundDownloadIsFinished() {
-            FOREGROUND_DOWNLOAD_STARTED = null
         }
     }
 }

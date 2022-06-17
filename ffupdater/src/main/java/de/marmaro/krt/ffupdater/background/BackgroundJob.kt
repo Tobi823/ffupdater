@@ -19,7 +19,6 @@ import de.marmaro.krt.ffupdater.background.NotificationBuilder.showFailedBackgro
 import de.marmaro.krt.ffupdater.background.NotificationBuilder.showSuccessfulBackgroundInstallationNotification
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
-import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
@@ -128,7 +127,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.failure()
         }
 
-        if (AppDownloadStatus.areDownloadsInForegroundActive()) {
+        if (FileDownloader.areDownloadsCurrentlyRunning()) {
             Log.i(LOG_TAG, "Retry background job because other downloads are running.")
             return Result.retry()
         }
@@ -188,7 +187,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
-        AppDownloadStatus.backgroundDownloadIsStarted()
         val downloader = FileDownloader()
         downloader.onProgress = { progressInPercent, totalMB ->
             NotificationBuilder.showDownloadNotification(context, app, progressInPercent, totalMB)
@@ -196,13 +194,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         NotificationBuilder.showDownloadNotification(context, app, null, null)
 
         val file = appCache.getFile(context)
-        val result = downloader.downloadFileAsync(context, availableResult.downloadUrl, file).await()
-
-        AppDownloadStatus.backgroundDownloadIsFinished()
-        if (!result) {
+        return try {
+            @Suppress("BlockingMethodInNonBlockingContext")
+            downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
+            true
+        } catch (e: NetworkException) {
             appCache.delete(context)
+            false
         }
-        return result
     }
 
     private fun areInstallationPreconditionsUnfulfilled(): Result? {

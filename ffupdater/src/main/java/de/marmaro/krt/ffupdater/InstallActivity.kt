@@ -31,7 +31,6 @@ import de.marmaro.krt.ffupdater.background.NotificationBuilder
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
-import de.marmaro.krt.ffupdater.download.AppDownloadStatus
 import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
@@ -115,7 +114,7 @@ class InstallActivity : AppCompatActivity() {
         val parentFolder = appCache.getFile(this).parentFile ?: return
         val uri = Uri.parse("file://${parentFolder.absolutePath}/")
         intent.setDataAndType(uri, "resource/folder")
-        val chooser = Intent.createChooser(intent, getString(R.string.install_activity__open_folder))
+        val chooser = Intent.createChooser(intent, getString(install_activity__open_folder))
 
         if (DeviceSdkTester.supportsAndroidNougat()) {
             StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
@@ -211,7 +210,7 @@ class InstallActivity : AppCompatActivity() {
             return
         }
 
-        if (viewModel.fileDownloader?.currentDownloadResult != null) {
+        if (viewModel.fileDownloader?.currentDownload != null) {
             reuseCurrentDownload()
             return
         }
@@ -251,21 +250,22 @@ class InstallActivity : AppCompatActivity() {
         appCache.delete(this)
         val file = appCache.getFile(this)
 
-        AppDownloadStatus.foregroundDownloadIsStarted()
         // this coroutine should survive a screen rotation and should live as long as the view model
-        val result = withContext(viewModel.viewModelScope.coroutineContext) {
-            fileDownloader.downloadFileAsync(this@InstallActivity, url, file).await()
-        }
-        AppDownloadStatus.foregroundDownloadIsFinished()
-
-        hide(R.id.downloadingFile)
-        show(R.id.downloadedFile)
-        setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
-        if (result) {
+        try {
+            withContext(viewModel.viewModelScope.coroutineContext) {
+                @Suppress("BlockingMethodInNonBlockingContext")
+                fileDownloader.downloadFileAsync(url, file).await()
+            }
+            hide(R.id.downloadingFile)
+            show(R.id.downloadedFile)
+            setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
             installApp()
-            return
+        } catch (e: NetworkException) {
+            hide(R.id.downloadingFile)
+            show(R.id.downloadedFile)
+            setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
+            failureDownloadUnsuccessful(e)
         }
-        failureDownloadUnsuccessful()
     }
 
     @MainThread
@@ -287,13 +287,12 @@ class InstallActivity : AppCompatActivity() {
             }
         }
 
-        val success = fileDownloader.currentDownloadResult?.await() ?: false
-        AppDownloadStatus.foregroundDownloadIsFinished()
-        if (success) {
+        try {
+            fileDownloader.currentDownload?.await()
             installApp()
-            return
+        } catch (e: NetworkException) {
+            failureDownloadUnsuccessful(e)
         }
-        failureDownloadUnsuccessful()
     }
 
     @MainThread
@@ -356,20 +355,16 @@ class InstallActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun failureDownloadUnsuccessful() {
+    private fun failureDownloadUnsuccessful(exception: Exception) {
         val updateCheckResult = requireNotNull(viewModel.updateCheckResult)
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)
-        val exception = viewModel.fileDownloader?.errorException
-        if (exception == null) {
-            hide(R.id.downloadFileFailedShowException)
-        } else {
-            findViewById<TextView>(R.id.downloadFileFailedShowException).setOnClickListener {
-                val description = getString(crash_report___explain_text__install_activity_download_file)
-                val intent = CrashReportActivity.createIntent(this, exception, description)
-                startActivity(intent)
-            }
+
+        findViewById<TextView>(R.id.downloadFileFailedShowException).setOnClickListener {
+            val description = getString(crash_report___explain_text__install_activity_download_file)
+            val intent = CrashReportActivity.createIntent(this, exception, description)
+            startActivity(intent)
         }
         show(R.id.installerFailed)
         appCache.delete(this)
