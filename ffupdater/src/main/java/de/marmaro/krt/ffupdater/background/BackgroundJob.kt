@@ -89,6 +89,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         // check for updates
         val apps = App.values().asList()
         val outdatedApps = apps.filter { checkForUpdateAndReturnAvailability(it) }
+//        val outdatedApps = listOf(App.FIREFOX_RELEASE, App.ICERAVEN)
         if (outdatedApps.isEmpty()) {
             return Result.success()
         }
@@ -100,7 +101,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
         BackgroundNotificationBuilder.hideDownloadError(context)
         val downloadedUpdates = outdatedApps.filter { downloadUpdateAndReturnAvailability(it) }
-        BackgroundNotificationBuilder.hideDownloadIsRunning(context)
 
         // install updates
         areInstallationPreconditionsUnfulfilled()?.let {
@@ -185,20 +185,17 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         Log.i(LOG_TAG, "Download update for $app.")
         val downloader = FileDownloader()
         downloader.onProgress = { progressInPercent, totalMB ->
-            BackgroundNotificationBuilder.showDownloadIsRunning(
-                context,
-                app,
-                progressInPercent,
-                totalMB
-            )
+            BackgroundNotificationBuilder.showDownloadIsRunning(context, app, progressInPercent, totalMB)
         }
         BackgroundNotificationBuilder.showDownloadIsRunning(context, app, null, null)
 
         val file = appCache.getFile(context)
         return try {
             downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
+            BackgroundNotificationBuilder.hideDownloadIsRunning(context, app)
             true
         } catch (e: NetworkException) {
+            BackgroundNotificationBuilder.hideDownloadIsRunning(context, app)
             BackgroundNotificationBuilder.showDownloadError(context, app, e)
             appCache.delete(context)
             false

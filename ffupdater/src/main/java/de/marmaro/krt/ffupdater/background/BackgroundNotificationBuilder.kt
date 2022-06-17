@@ -77,11 +77,9 @@ object BackgroundNotificationBuilder {
         )
     }
 
-    fun hideDownloadIsRunning(context: Context) {
+    fun hideDownloadIsRunning(context: Context, app: App) {
         val notificationManager = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-        App.values().forEach {
-            notificationManager.cancel(400 + it.ordinal)
-        }
+        notificationManager.cancel(400 + app.ordinal)
     }
 
     fun showDownloadError(context: Context, app: App, exception: NetworkException) {
