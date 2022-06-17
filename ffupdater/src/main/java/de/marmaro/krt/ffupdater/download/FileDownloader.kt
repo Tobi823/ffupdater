@@ -33,6 +33,7 @@ class FileDownloader {
         return withContext(Dispatchers.IO) {
             currentDownload = async {
                 try {
+                    lastChange = System.currentTimeMillis()
                     numberOfRunningDownloads.incrementAndGet()
                     downloadFileInternal(url, file)
                 } catch (e: IOException) {
@@ -40,6 +41,7 @@ class FileDownloader {
                 } catch (e: NetworkException) {
                     throw NetworkException("File download failed.", e)
                 } finally {
+                    lastChange = System.currentTimeMillis()
                     numberOfRunningDownloads.decrementAndGet()
                 }
             }
@@ -98,7 +100,9 @@ class FileDownloader {
     // persistence/consistence is not very important -> global available variables are ok
     companion object {
         private var numberOfRunningDownloads = AtomicInteger(0)
-        fun areDownloadsCurrentlyRunning() = numberOfRunningDownloads.get() != 0
+        private var lastChange = System.currentTimeMillis()
+        fun areDownloadsCurrentlyRunning() = (numberOfRunningDownloads.get() != 0) &&
+                ((System.currentTimeMillis() - lastChange) < 3600_000)
     }
 }
 
