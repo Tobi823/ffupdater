@@ -99,9 +99,9 @@ class InstallActivity : AppCompatActivity() {
         }
 
         // hide existing background notification for this app
-        NotificationBuilder.hideUpdateNotification(this, viewModel.app!!)
-        NotificationBuilder.hideSuccessfulBackgroundInstallationNotification(this, viewModel.app!!)
-        NotificationBuilder.hideFailedBackgroundInstallationNotifications(this, viewModel.app!!)
+        NotificationBuilder.hideBackgroundUpdateAvailableNotification(this, viewModel.app!!)
+        NotificationBuilder.hideBackgroundInstallationSuccessNotification(this, viewModel.app!!)
+        NotificationBuilder.hideBackgroundInstallationErrorNotifications(this, viewModel.app!!)
 
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
@@ -296,9 +296,9 @@ class InstallActivity : AppCompatActivity() {
         val result = appInstaller.installAsync(this).await()
 
         // hide existing background notification for this app
-        NotificationBuilder.hideUpdateNotification(this, viewModel.app!!)
-        NotificationBuilder.hideSuccessfulBackgroundInstallationNotification(this, viewModel.app!!)
-        NotificationBuilder.hideFailedBackgroundInstallationNotifications(this, viewModel.app!!)
+        NotificationBuilder.hideBackgroundUpdateAvailableNotification(this, viewModel.app!!)
+        NotificationBuilder.hideBackgroundInstallationSuccessNotification(this, viewModel.app!!)
+        NotificationBuilder.hideBackgroundInstallationErrorNotifications(this, viewModel.app!!)
 
         if (result.success) {
             hide(R.id.installingApplication)

@@ -35,7 +35,7 @@ object NotificationBuilder {
         )
     }
 
-    fun showUpdateNotifications(context: Context, apps: List<App>) {
+    fun showBackgroundUpdateAvailableNotification(context: Context, apps: List<App>) {
         apps.forEach {
             val appTitle: String = context.getString(it.detail.displayTitle)
             showNotification(
@@ -55,15 +55,20 @@ object NotificationBuilder {
 
         App.values()
             .filter { it !in apps }
-            .forEach { hideUpdateNotification(context, it) }
+            .forEach { hideBackgroundUpdateAvailableNotification(context, it) }
     }
 
-    fun hideUpdateNotification(context: Context, app: App) {
+    fun hideBackgroundUpdateAvailableNotification(context: Context, app: App) {
         val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         nm.cancel(200 + app.ordinal)
     }
 
-    fun showDownloadNotification(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
+    fun showBackgroundDownloadRunningNotification(
+        context: Context,
+        app: App,
+        progressInPercent: Int?,
+        totalMB: Long?
+    ) {
         val appTitle = context.getString(app.detail.displayTitle)
         val status = when {
             progressInPercent != null -> "$progressInPercent %"
@@ -82,7 +87,7 @@ object NotificationBuilder {
         )
     }
 
-    fun hideDownloadNotification(context: Context) {
+    fun hideBackgroundDownloadRunningNotification(context: Context) {
         val notificationManager = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         notificationManager.cancel(400)
     }
@@ -112,7 +117,7 @@ object NotificationBuilder {
         }
     }
 
-    fun showSuccessfulBackgroundInstallationNotification(context: Context, app: App) {
+    fun showBackgroundInstallationSuccessNotification(context: Context, app: App) {
         val appTitle: String = context.getString(app.detail.displayTitle)
         showNotification(
             context = context,
@@ -132,16 +137,16 @@ object NotificationBuilder {
         )
     }
 
-    fun hideAllSuccessfulBackgroundInstallationNotifications(context: Context) {
-        App.values().forEach { hideSuccessfulBackgroundInstallationNotification(context, it) }
+    fun hideBackgroundInstallationSuccessNotification(context: Context) {
+        App.values().forEach { hideBackgroundInstallationSuccessNotification(context, it) }
     }
 
-    fun hideSuccessfulBackgroundInstallationNotification(context: Context, app: App) {
+    fun hideBackgroundInstallationSuccessNotification(context: Context, app: App) {
         val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         nm.cancel(500 + app.ordinal)
     }
 
-    fun showFailedBackgroundInstallationNotification(
+    fun showBackgroundInstallationErrorNotification(
         context: Context,
         app: App,
         errorCode: Int?,
@@ -170,11 +175,11 @@ object NotificationBuilder {
         )
     }
 
-    fun hideAllFailedBackgroundInstallationNotifications(context: Context) {
-        App.values().forEach { hideFailedBackgroundInstallationNotifications(context, it) }
+    fun hideBackgroundInstallationErrorNotifications(context: Context) {
+        App.values().forEach { hideBackgroundInstallationErrorNotifications(context, it) }
     }
 
-    fun hideFailedBackgroundInstallationNotifications(context: Context, app: App) {
+    fun hideBackgroundInstallationErrorNotifications(context: Context, app: App) {
         val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         nm.cancel(600 + app.ordinal)
     }
