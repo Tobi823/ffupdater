@@ -37,6 +37,8 @@ class FileDownloader {
                     downloadFileInternal(url, file)
                 } catch (e: IOException) {
                     throw NetworkException("File download failed.", e)
+                } catch (e: NetworkException) {
+                    throw NetworkException("File download failed.", e)
                 } finally {
                     numberOfRunningDownloads.decrementAndGet()
                 }

@@ -253,7 +253,6 @@ class InstallActivity : AppCompatActivity() {
         // this coroutine should survive a screen rotation and should live as long as the view model
         try {
             withContext(viewModel.viewModelScope.coroutineContext) {
-                @Suppress("BlockingMethodInNonBlockingContext")
                 fileDownloader.downloadFileAsync(url, file).await()
             }
             hide(R.id.downloadingFile)

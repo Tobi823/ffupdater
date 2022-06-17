@@ -195,7 +195,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         val file = appCache.getFile(context)
         return try {
-            @Suppress("BlockingMethodInNonBlockingContext")
             downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
             true
         } catch (e: NetworkException) {
