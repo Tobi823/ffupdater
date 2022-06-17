@@ -26,7 +26,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.background.NotificationBuilder
+import de.marmaro.krt.ffupdater.background.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
@@ -99,9 +99,9 @@ class InstallActivity : AppCompatActivity() {
         }
 
         // hide existing background notification for this app
-        NotificationBuilder.hideBackgroundUpdateAvailableNotification(this, viewModel.app!!)
-        NotificationBuilder.hideBackgroundInstallationSuccessNotification(this, viewModel.app!!)
-        NotificationBuilder.hideBackgroundInstallationErrorNotifications(this, viewModel.app!!)
+        BackgroundNotificationBuilder.hideUpdateIsAvailable(this, viewModel.app!!)
+        BackgroundNotificationBuilder.hideInstallationSuccess(this, viewModel.app!!)
+        BackgroundNotificationBuilder.hideInstallationError(this, viewModel.app!!)
 
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
@@ -296,9 +296,9 @@ class InstallActivity : AppCompatActivity() {
         val result = appInstaller.installAsync(this).await()
 
         // hide existing background notification for this app
-        NotificationBuilder.hideBackgroundUpdateAvailableNotification(this, viewModel.app!!)
-        NotificationBuilder.hideBackgroundInstallationSuccessNotification(this, viewModel.app!!)
-        NotificationBuilder.hideBackgroundInstallationErrorNotifications(this, viewModel.app!!)
+        BackgroundNotificationBuilder.hideUpdateIsAvailable(this, viewModel.app!!)
+        BackgroundNotificationBuilder.hideInstallationSuccess(this, viewModel.app!!)
+        BackgroundNotificationBuilder.hideInstallationError(this, viewModel.app!!)
 
         if (result.success) {
             hide(R.id.installingApplication)

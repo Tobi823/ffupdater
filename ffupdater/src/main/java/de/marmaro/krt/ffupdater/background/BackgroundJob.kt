@@ -12,12 +12,6 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideBackgroundDownloadErrorNotification
-import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideBackgroundDownloadRunningNotification
-import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideBackgroundInstallationErrorNotifications
-import de.marmaro.krt.ffupdater.background.NotificationBuilder.hideBackgroundInstallationSuccessNotification
-import de.marmaro.krt.ffupdater.background.NotificationBuilder.showBackgroundInstallationErrorNotification
-import de.marmaro.krt.ffupdater.background.NotificationBuilder.showBackgroundInstallationSuccessNotification
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.FileDownloader
@@ -105,17 +99,17 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             showUpdateNotification(outdatedApps)
             return it
         }
-        hideBackgroundDownloadErrorNotification(context)
+        BackgroundNotificationBuilder.hideDownloadError(context)
         val downloadedUpdates = outdatedApps.filter { downloadUpdateAndReturnAvailability(it) }
-        hideBackgroundDownloadRunningNotification(context)
+        BackgroundNotificationBuilder.hideDownloadIsRunning(context)
 
         // install updates
         areInstallationPreconditionsUnfulfilled()?.let {
             showUpdateNotification(downloadedUpdates)
             return it
         }
-        hideBackgroundInstallationSuccessNotification(context)
-        hideBackgroundInstallationErrorNotifications(context)
+        BackgroundNotificationBuilder.hideInstallationSuccess(context)
+        BackgroundNotificationBuilder.hideInstallationError(context)
         downloadedUpdates.forEach { installApplication(it) }
         return Result.success()
     }
@@ -192,21 +186,21 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         Log.i(LOG_TAG, "Download update for $app.")
         val downloader = FileDownloader()
         downloader.onProgress = { progressInPercent, totalMB ->
-            NotificationBuilder.showBackgroundDownloadRunningNotification(
+            BackgroundNotificationBuilder.showDownloadIsRunning(
                 context,
                 app,
                 progressInPercent,
                 totalMB
             )
         }
-        NotificationBuilder.showBackgroundDownloadRunningNotification(context, app, null, null)
+        BackgroundNotificationBuilder.showDownloadIsRunning(context, app, null, null)
 
         val file = appCache.getFile(context)
         return try {
             downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
             true
         } catch (e: NetworkException) {
-            NotificationBuilder.showBackgroundDownloadErrorNotification(context, app, e)
+            BackgroundNotificationBuilder.showDownloadError(context, app, e)
             appCache.delete(context)
             false
         }
@@ -250,21 +244,21 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val file = appCache.getFile(context)
         if (!file.exists()) {
             val errorMessage = "AppCache has no cached APK file"
-            showBackgroundInstallationErrorNotification(context, app, -100, errorMessage)
+            BackgroundNotificationBuilder.showInstallationError(context, app, -100, errorMessage)
         }
 
         val installer = BackgroundAppInstaller.create(context, app, file)
         withContext(Dispatchers.Main) {
             val result = installer.installAsync(context).await()
             if (result.success) {
-                showBackgroundInstallationSuccessNotification(context, app)
+                BackgroundNotificationBuilder.showInstallationSuccess(context, app)
                 if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                     appCache.delete(context)
                 }
             } else {
                 val code = result.errorCode
                 val message = result.errorMessage
-                showBackgroundInstallationErrorNotification(context, app, code, message)
+                BackgroundNotificationBuilder.showInstallationError(context, app, code, message)
                 if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
                     appCache.delete(context)
                 }
@@ -273,7 +267,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun showUpdateNotification(appsWithUpdates: List<App>) {
-        NotificationBuilder.showBackgroundUpdateAvailableNotification(context, appsWithUpdates)
+        BackgroundNotificationBuilder.hideUpdateIsAvailable(context)
+        appsWithUpdates.forEach { BackgroundNotificationBuilder.showUpdateIsAvailable(context, it) }
     }
 
     private fun handleRetryableError(e: Exception, maxRetries: Int): Result {
@@ -288,7 +283,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     private fun showErrorNotification(e: Exception) {
         val message = context.getString(R.string.background_job_failure__notification_text)
-        NotificationBuilder.showErrorNotification(context, e, message)
+        BackgroundNotificationBuilder.showError(context, e, message)
     }
 
     companion object {
