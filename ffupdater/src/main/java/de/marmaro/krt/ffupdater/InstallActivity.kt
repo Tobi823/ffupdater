@@ -21,7 +21,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import de.marmaro.krt.ffupdater.R.id.install_activity__exception__show_button
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
@@ -168,7 +167,7 @@ class InstallActivity : AppCompatActivity() {
         }
         show(R.id.tooLowMemory)
         val mbs = StorageUtil.getFreeStorageInMebibytes(this)
-        val message = getString(R.string.install_activity__too_low_memory_description, mbs)
+        val message = getString(install_activity__too_low_memory_description, mbs)
         setText(R.id.tooLowMemoryDescription, message)
         fetchDownloadInformation()
     }
@@ -176,7 +175,7 @@ class InstallActivity : AppCompatActivity() {
     private suspend fun fetchDownloadInformation() {
         show(R.id.fetchUrl)
         val downloadSource = getString(viewModel.app!!.detail.displayDownloadSource)
-        val runningText = getString(R.string.install_activity__fetch_url_for_download, downloadSource)
+        val runningText = getString(install_activity__fetch_url_for_download, downloadSource)
         setText(R.id.fetchUrlTextView, runningText)
 
         // check if network type requirements are met
@@ -198,10 +197,7 @@ class InstallActivity : AppCompatActivity() {
         viewModel.updateCheckResult = updateCheckResult
         hide(R.id.fetchUrl)
         show(R.id.fetchedUrlSuccess)
-        val finishedText = getString(
-            R.string.install_activity__fetched_url_for_download_successfully,
-            downloadSource
-        )
+        val finishedText = getString(install_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
         if (appCache.isAvailable(this, updateCheckResult.availableResult)) {
             show(R.id.useCachedDownloadedApk)
@@ -238,12 +234,12 @@ class InstallActivity : AppCompatActivity() {
                 } else {
                     "${mb}MB"
                 }
-                val display = getString(R.string.install_activity__download_app_with_status, status)
+                val display = getString(install_activity__download_app_with_status, status)
                 setText(R.id.downloadingFileText, display)
             }
         }
 
-        val display = getString(R.string.install_activity__download_app_with_status, "")
+        val display = getString(install_activity__download_app_with_status, "")
         setText(R.id.downloadingFileText, display)
 
         val url = updateCheckResult.availableResult.downloadUrl
@@ -281,7 +277,7 @@ class InstallActivity : AppCompatActivity() {
                 } else {
                     "${mb}MB"
                 }
-                val display = getString(R.string.install_activity__download_app_with_status, status)
+                val display = getString(install_activity__download_app_with_status, status)
                 setText(R.id.downloadingFileText, display)
             }
         }
@@ -375,11 +371,11 @@ class InstallActivity : AppCompatActivity() {
         show(R.id.install_activity__exception)
         setText(R.id.install_activity__exception__text, message)
         if (exception == null) {
-            hide(install_activity__exception__show_button)
+            hide(R.id.install_activity__exception__show_button)
             return
         }
 
-        findViewById<TextView>(install_activity__exception__show_button).setOnClickListener {
+        findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
             val description = getString(crash_report__explain_text__install_activity_fetching_url)
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
