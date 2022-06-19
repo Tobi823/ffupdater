@@ -3,6 +3,7 @@
 * Thanks 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername and metezd for improving the
   translation
 * Try to fix crashes when the download of updates failed in the background
+* Add option to hide warning buttons
 
 # 2022-06-09 Version 75.5.2 (104)
 
