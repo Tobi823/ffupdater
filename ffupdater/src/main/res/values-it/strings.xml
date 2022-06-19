@@ -228,4 +228,9 @@
     </plurals>
     <string name="crash_report___explain_text__install_activity_install_file">Si è verificato il seguente errore durante l\'installazione. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Aggiungi il rapporto sull\'arresto anomalo dagli appunti alla segnalazione.</string>
     <string name="settings__foreground__hide_warning_buttons">Nascondi il pulsante di avviso per le app installate.</string>
+    <string name="download_error_notification__channel_description">Mostra quando i download dell\'app in background falliscono.</string>
+    <string name="download_error_notification__message">Il download in background dell\'aggiornamento %1$s non è riuscito. Se questo errore si verifica frequentemente, clicca qui per visualizzare il rapporto dell\'errore.</string>
+    <string name="download_error_notification__channel_name">Notifica sugli errori di download in background</string>
+    <string name="download_error_notification__title">Download in background dell\'aggiornamento dell\'app non riuscito</string>
+    <string name="download_error_notification__description">Il download in background dell\'aggiornamento %1$s non è riuscito. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab.</string>
 </resources>
