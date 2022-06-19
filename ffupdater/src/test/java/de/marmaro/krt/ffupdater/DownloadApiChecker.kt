@@ -73,7 +73,7 @@ class DownloadApiChecker {
         val result = runBlocking { brave.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 3
+        val maxDays = 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
     }
 
@@ -166,7 +166,7 @@ class DownloadApiChecker {
         val result = runBlocking { kiwi.updateCheckAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 6 * 7
+        val maxDays = 9 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
     }
 
