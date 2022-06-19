@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'de.mannodermaus.android-junit5'
 apply plugin: 'org.owasp.dependencycheck'
+apply plugin: 'kotlin-parcelize'
 
 repositories {
     mavenCentral()

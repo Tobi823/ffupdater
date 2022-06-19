@@ -83,6 +83,9 @@ class InstallActivity : AppCompatActivity() {
                     return
                 }
         }
+        if (viewModel.updateCheckResult == null) {
+            viewModel.updateCheckResult = intent.extras?.getParcelable(EXTRA_UPDATE_CHECK_RESULT)
+        }
 
         foregroundSettings = ForegroundSettingsHelper(this)
         installerSettingsHelper = InstallerSettingsHelper(this)
@@ -175,8 +178,7 @@ class InstallActivity : AppCompatActivity() {
     private suspend fun fetchDownloadInformation() {
         show(R.id.fetchUrl)
         val downloadSource = getString(viewModel.app!!.detail.displayDownloadSource)
-        val runningText = getString(install_activity__fetch_url_for_download, downloadSource)
-        setText(R.id.fetchUrlTextView, runningText)
+        setText(R.id.fetchUrlTextView, getString(install_activity__fetch_url_for_download, downloadSource))
 
         // check if network type requirements are met
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
@@ -184,22 +186,23 @@ class InstallActivity : AppCompatActivity() {
             return
         }
 
-        val updateCheckResult = try {
-            viewModel.app!!.detail.updateCheckAsync(this).await()
-        } catch (e: GithubRateLimitExceededException) {
-            failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
-            return
-        } catch (e: NetworkException) {
-            failureShowFetchUrlException(getString(install_activity__temporary_network_issue), e)
-            return
+        if (viewModel.updateCheckResult == null) {
+            viewModel.updateCheckResult = try {
+                viewModel.app!!.detail.updateCheckAsync(this).await()
+            } catch (e: GithubRateLimitExceededException) {
+                failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
+                return
+            } catch (e: NetworkException) {
+                failureShowFetchUrlException(getString(install_activity__temporary_network_issue), e)
+                return
+            }
         }
 
-        viewModel.updateCheckResult = updateCheckResult
         hide(R.id.fetchUrl)
         show(R.id.fetchedUrlSuccess)
         val finishedText = getString(install_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
-        if (appCache.isAvailable(this, updateCheckResult.availableResult)) {
+        if (appCache.isAvailable(this, viewModel.updateCheckResult!!.availableResult)) {
             show(R.id.useCachedDownloadedApk)
             setText(R.id.useCachedDownloadedApk__path, appCache.getFile(this).absolutePath)
             installApp()
@@ -220,9 +223,8 @@ class InstallActivity : AppCompatActivity() {
             return
         }
 
-        val updateCheckResult = requireNotNull(viewModel.updateCheckResult)
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
+        setText(R.id.downloadingFileUrl, viewModel.updateCheckResult!!.downloadUrl)
 
         val fileDownloader = FileDownloader()
         viewModel.fileDownloader = fileDownloader
@@ -242,7 +244,7 @@ class InstallActivity : AppCompatActivity() {
         val display = getString(install_activity__download_app_with_status, "")
         setText(R.id.downloadingFileText, display)
 
-        val url = updateCheckResult.availableResult.downloadUrl
+        val url = viewModel.updateCheckResult!!.availableResult.downloadUrl
         appCache.delete(this)
         val file = appCache.getFile(this)
 
@@ -253,12 +255,12 @@ class InstallActivity : AppCompatActivity() {
             }
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
+            setText(R.id.downloadedFileUrl, viewModel.updateCheckResult!!.downloadUrl)
             installApp()
         } catch (e: NetworkException) {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, updateCheckResult.downloadUrl)
+            setText(R.id.downloadedFileUrl, viewModel.updateCheckResult!!.downloadUrl)
             failureDownloadUnsuccessful(e)
         }
     }
@@ -384,10 +386,26 @@ class InstallActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
+        const val EXTRA_UPDATE_CHECK_RESULT = "update_check_result"
+
+        /**
+         * Create a new InstallActivity which have to check if app is up-to-date
+         */
         fun createIntent(context: Context, app: App): Intent {
             val intent = Intent(context, InstallActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)
+            return intent
+        }
+
+        /**
+         * Create a new InstallActivity which use the given UpdateCheckResult for downloading
+         */
+        fun createIntent(context: Context, app: App, updateCheckResult: UpdateCheckResult): Intent {
+            val intent = Intent(context, InstallActivity::class.java)
+            // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra(EXTRA_APP_NAME, app.name)
+            intent.putExtra(EXTRA_UPDATE_CHECK_RESULT, updateCheckResult)
             return intent
         }
     }

@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
@@ -35,7 +36,7 @@ object BackgroundNotificationBuilder {
         )
     }
 
-    fun showUpdateIsAvailable(context: Context, app: App) {
+    fun showUpdateIsAvailable(context: Context, app: App, updateCheckResult: UpdateCheckResult) {
         val appTitle: String = context.getString(app.detail.displayTitle)
         showNotification(
             context = context,
@@ -45,7 +46,7 @@ object BackgroundNotificationBuilder {
             notificationId = 200 + app.ordinal,
             notificationTitle = context.getString(update_notification__title, appTitle),
             notificationMessage = context.getString(update_notification__text),
-            intent = InstallActivity.createIntent(context, app)
+            intent = InstallActivity.createIntent(context, app, updateCheckResult)
         )
     }
 

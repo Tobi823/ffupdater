@@ -262,9 +262,13 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
     }
 
-    private fun showUpdateNotification(appsWithUpdates: List<App>) {
+    private suspend fun showUpdateNotification(appsWithUpdates: List<App>) {
         BackgroundNotificationBuilder.hideUpdateIsAvailable(context)
-        appsWithUpdates.forEach { BackgroundNotificationBuilder.showUpdateIsAvailable(context, it) }
+        appsWithUpdates.forEach {
+            // updateCheckAsync() should be fast because the result is cached
+            val updateCheckResult = it.detail.updateCheckAsync(context).await()
+            BackgroundNotificationBuilder.showUpdateIsAvailable(context, it, updateCheckResult)
+        }
     }
 
     private fun handleRetryableError(e: Exception, maxRetries: Int): Result {

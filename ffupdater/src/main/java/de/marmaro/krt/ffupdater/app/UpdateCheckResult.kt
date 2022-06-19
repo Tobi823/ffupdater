@@ -1,13 +1,16 @@
 package de.marmaro.krt.ffupdater.app
 
+import android.os.Parcelable
 import de.marmaro.krt.ffupdater.security.Sha256Hash
+import kotlinx.parcelize.Parcelize
 import java.time.ZonedDateTime
 
+@Parcelize
 data class UpdateCheckResult(
-        val availableResult: AvailableVersionResult,
-        val isUpdateAvailable: Boolean,
-        val displayVersion: String,
-) {
+    val availableResult: AvailableVersionResult,
+    val isUpdateAvailable: Boolean,
+    val displayVersion: String,
+) : Parcelable {
 
     val downloadUrl: String
         get() = availableResult.downloadUrl

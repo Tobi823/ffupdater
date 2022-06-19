@@ -254,8 +254,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val intent = Intent(this@MainActivity, InstallActivity::class.java)
-        intent.putExtra(InstallActivity.EXTRA_APP_NAME, app.name)
+        val intent = InstallActivity.createIntent(this@MainActivity, app)
         startActivity(intent)
     }
 
