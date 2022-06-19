@@ -66,7 +66,7 @@
     <string name="information_about_the_app">informazioni sull\'app</string>
     <string name="install_activity__delete_cache_button_text">svuota cache</string>
     <string name="install_activity__delete_cache_explanation">Se pensi che FFupdater abbia memorizzato nella cache un aggiornamento di app difettoso o se vuoi risparmiare spazio, clicca sul pulsante per eliminare il file scaricato.</string>
-    <string name="install_activity__download_app_with_status">Download applicazione (%1$s)</string>
+    <string name="install_activity__download_app_with_status">Scaricando l\'applicazione (%1$s)</string>
     <string name="install_activity__download_failed">Download fallito</string>
     <string name="install_activity__downloaded_application_from">Applicazione scaricata da:</string>
     <string name="install_activity__downloaded_application_is_not_verified">L\'applicazione scaricata NON è verificata</string>
@@ -97,7 +97,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Limite di GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nessuna rete non misurata</string>
-    <string name="main_activity__subtitle">Aggiorna i tuoi browser dalla loro fonte ufficiale</string>
+    <string name="main_activity__subtitle">Aggiorna i browser che rispettano la tua privacy</string>
     <string name="main_activity__temporary_network_issue">"<u>Problema di rete temporaneo. Riprovare più tardi.</u>"</string>
     <string name="manage_storage_activity__delete_button">Elimina gli aggiornamenti delle app in cache.</string>
     <string name="manage_storage_activity__explanation">FFUpdater memorizza in cache gli aggiornamenti delle app già scaricati e li savla nella cartella \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nQuesto consente di risparmiare banda quando un\'app non è installata o aggiornata correttamente. Inoltre, la cache è necessaria in modo che gli aggiornamenti scaricati in background possano essere installati in seguito.\n\nSe si decide di eliminare questi aggiornamenti dell\'app, potrebbe essere necessario scaricarli di nuovo.</string>
@@ -227,4 +227,5 @@
 \nVuoi ancora installare %1$s\?</item>
     </plurals>
     <string name="crash_report___explain_text__install_activity_install_file">Si è verificato il seguente errore durante l\'installazione. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Aggiungi il rapporto sull\'arresto anomalo dagli appunti alla segnalazione.</string>
+    <string name="settings__foreground__hide_warning_buttons">Nascondi il pulsante di avviso per le app installate.</string>
 </resources>
