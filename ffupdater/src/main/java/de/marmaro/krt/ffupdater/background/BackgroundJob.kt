@@ -89,7 +89,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         // check for updates
         val apps = App.values().asList()
         val outdatedApps = apps.filter { checkForUpdateAndReturnAvailability(it) }
-//        val outdatedApps = listOf(App.FIREFOX_RELEASE, App.ICERAVEN)
+//        val outdatedApps = listOf(App.FIREFOX_RELEASE)
         if (outdatedApps.isEmpty()) {
             return Result.success()
         }
@@ -101,6 +101,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
         BackgroundNotificationBuilder.hideDownloadError(context)
         val downloadedUpdates = outdatedApps.filter { downloadUpdateAndReturnAvailability(it) }
+        Log.e("BackgroundJob", "downloadUpdates: $downloadedUpdates")
 
         // install updates
         areInstallationPreconditionsUnfulfilled()?.let {
@@ -179,7 +180,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val availableResult = updateResult.availableResult
         if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
-            return false
+            return true
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
