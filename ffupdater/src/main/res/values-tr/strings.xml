@@ -246,4 +246,9 @@
 \n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
     <string name="crash_report___explain_text__install_activity_install_file">Kurulum sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodaki çökme raporunuzu eklemeyi unutmayın.</string>
     <string name="settings__foreground__hide_warning_buttons">Kurulu uygulama için uyarı düğmesini gizle.</string>
+    <string name="download_error_notification__title">Uygulama güncellemesinin arka planda indirilmesi başarısız oldu</string>
+    <string name="download_error_notification__description">%1$s güncellemesinin arka planda indirilmesi başarısız oldu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin.</string>
+    <string name="download_error_notification__channel_name">Arka planda indirme hataları hakkında bildirim</string>
+    <string name="download_error_notification__channel_description">Arka planda uygulama indirmeleri başarısız olduğunda gösterilir.</string>
+    <string name="download_error_notification__message">%1$s güncellemesinin arka planda indirilmesi başarısız oldu. Bu hata sık sık meydana geliyorsa, hata raporunu görüntülemek için buraya tıklayın.</string>
 </resources>
