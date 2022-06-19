@@ -12,6 +12,7 @@ SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 (
   set -euo pipefail
   cd "$SCRIPT_DIR" || exit
+  source /home/hacker/.zshrc
   echo "tag: $1"
 
   git tag "$1"
@@ -40,5 +41,24 @@ SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
   echo "create release on GitLab:"
   glab release create "$1" "$release_file" --notes "$release_message" --name "$release_title"
 
-  startrepomaker
+  echo "start repomaker"
+  set -euo pipefail
+  cd /home/hacker/Documents/Programme/repomaker/
+
+  if (! systemctl is-active --quiet docker ); then
+    echo "start docker"
+    sudo systemctl start docker
+  else
+    echo "docker is already running"
+  fi
+
+  (
+    set -euo pipefail
+    while [ -z "$(curl -Is http://localhost:80 | head -1)" ]; do
+      sleep 0.1
+    done
+    xdg-open http://localhost
+  ) &
+
+  ./execute.sh
 )
