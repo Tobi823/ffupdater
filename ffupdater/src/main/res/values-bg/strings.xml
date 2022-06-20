@@ -244,4 +244,9 @@
 \n- Рекламите на Google в Kiwi могат да използват вашето за местоположението за реклами, но можете да ги забраните, като изключите функцията „Откриване“. Това скоро ще бъде променено. Вижте https://privacy.kiwibrowser.org/ за повече подробности.</string>
     <string name="crash_report___explain_text__install_activity_install_file">По време на инсталацията е възникнала следната грешка. Ако тя се появява често, не се колебайте да съобщите за нея в notabug.org, GitHub или GitLab. Не забравяйте да добавите доклада за срив от междинната памет.</string>
     <string name="settings__foreground__hide_warning_buttons">Скриване на предупреждението на инсталираните приложения</string>
+    <string name="download_error_notification__channel_name">Известия за грешка при изтегляне във фонов режим</string>
+    <string name="download_error_notification__channel_description">Показва когато изтегляне във фонов режим е неуспешно.</string>
+    <string name="download_error_notification__title">Изтегляне на обновяване във фонов режим е неуспешно</string>
+    <string name="download_error_notification__description">Неуспешно изтегляне на обновяване на %1$s във фонов режим. Ако грешката се появява често, не се колебайте да съобщите за нея в notabug.org, GitHub или GitLab.</string>
+    <string name="download_error_notification__message">Неуспешно изтегляне на обновяване на %1$s във фонов режим. Ако грешката се появява често, докоснете, за да видите доклада.</string>
 </resources>
