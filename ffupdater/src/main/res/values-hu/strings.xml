@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_icon">az alkalmazás ikonja</string>
+    <string name="background_notification__text">Kérjük, jelezze ezt a hibát. Kattintson a hibajelentés megtekintéséhez.</string>
+    <string name="background_notification__title">A háttérfrissítés ellenőrzése sikertelen</string>
+    <string name="brave__description">Böngésszen privátban az interneten, ingyen! A Brave Private Browser App a gyors, ingyenes és biztonságos privát böngészője reklámblokkolóval és felugró ablakok blokkolójával. Privát böngészés és keresés az interneten anélkül, hogy a hirdetők, rosszindulatú programok és felugró ablakok követnék.</string>
+    <string name="brave__title">Brave Private Browser</string>
+    <string name="brave__warning">- A Brave a Google Chrome technikai alapjait használja, és így közvetve támogatja a Chromium renderelőmotor monopolhelyzetét.
+\n- Az Ethereum blokkláncon lévő Basic Attention Token BAT-jának köszönhetően a projekt kötődik a kriptopénzekhez. A blokkláncok számos problémával járnak, és véleményem szerint kerülendőek.</string>
+    <string name="action_about_title">Az FFUpdater-ről</string>
+    <string name="app_description">Frissítő az adatvédelmi barátságos böngészőkhöz</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="application_installation_was_not_successful">Az alkalmazás telepítése nem volt sikeres</string>
+    <string name="application_successfully_installed">Az alkalmazás sikeresen telepítve</string>
+    <string name="available_version_error"><u>HIBA</u></string>
+    <string name="available_version">Elérhető: %1$s</string>
+    <string name="available_version_loading">Betöltés…</string>
+</resources>
