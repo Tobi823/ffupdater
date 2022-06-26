@@ -1,22 +1,22 @@
 安装和更新以下浏览器。
 
-来自Mozilla或基于Firefox的浏览器。
-- 火狐浏览器、安卓版火狐浏览器测试版、火狐夜间版
-- 火狐焦点, 火狐Klar
+来自Mozilla或基于Firefox的浏览器：
+- Firefox浏览器、Firefox for Android Beta、Firefox Nightly
+- Firefox Focus、Firefox Klar
 - Iceraven
 
-好的隐私浏览器。
-- Bromite, Bromite SystemWebView
+好的隐私浏览器：
+- Bromite、Bromite SystemWebView
 - Ungoogled Chromium
 
-比谷歌浏览器更好的浏览器。
-- 勇敢的私人浏览器，勇敢的浏览器（测试版），勇敢的浏览器（夜间版）。
+比Google Chrome更好的浏览器：
+- Brave Private Browser、Brave Browser (Beta)、Brave Browser (Nightly)
 - Kiwi Browser Next
 - Vivaldi
 
-和。
-- 火狐锁定
+以及：
+- Firefox Lockwise
 
-FFUpdater会在后台检查更新，同时也会下载。在安卓12+或root设备上，FFUpdater也可以在没有用户互动的情况下更新应用程序。
+FFUpdater能在后台检查和下载更新。在安卓12+或已root设备上，FFUpdater也可以在没有用户互动的情况下更新应用程序。
 
-请访问https://notabug.org/Tobiwan/ffupdater/src/master/README.md，了解更多信息。
+访问 https://notabug.org/Tobiwan/ffupdater/src/master/README.md 可了解更多信息。

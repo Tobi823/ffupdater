@@ -1,0 +1,3 @@
+* 感谢109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername和metezd改进了翻译
+* 尝试修复后台下载更新失败时的崩溃问题
+* 新增隐藏警告按钮的选项
