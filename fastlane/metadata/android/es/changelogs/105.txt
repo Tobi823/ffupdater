@@ -1,0 +1,4 @@
+* Gracias 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername y metezd por mejorar la
+  traducción
+* Tratar de arreglar las caídas cuando la descarga de las actualizaciones falla en el fondo
+* Añadir la opción de ocultar los botones de advertencia
