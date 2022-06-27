@@ -251,4 +251,6 @@
     <string name="download_error_notification__channel_name">Arka planda indirme hataları hakkında bildirim</string>
     <string name="download_error_notification__channel_description">Arka planda uygulama indirmeleri başarısız olduğunda gösterilir.</string>
     <string name="download_error_notification__message">%1$s güncellemesinin arka planda indirilmesi başarısız oldu. Bu hata sık sık meydana geliyorsa, hata raporunu görüntülemek için buraya tıklayın.</string>
+    <string name="lockwise__eol_reason">Mozilla, Aralık 2021\'de desteği bıraktı. Lütfen başka bir parola yöneticisine geçin.</string>
+    <string name="app_card__app_warning_button_description">Bu uygulama hakkındaki uyarıları göster</string>
 </resources>
