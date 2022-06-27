@@ -233,4 +233,6 @@
     <string name="download_error_notification__channel_name">Notifica sugli errori di download in background</string>
     <string name="download_error_notification__title">Download in background dell\'aggiornamento dell\'app non riuscito</string>
     <string name="download_error_notification__description">Il download in background dell\'aggiornamento %1$s non è riuscito. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab.</string>
+    <string name="app_card__app_warning_button_description">Mostra avvisi riguardo a questa app</string>
+    <string name="lockwise__eol_reason">Mozilla ha abbandonato il supporto nel dicembre 2021. Si prega di passare a un altro gestore di password.</string>
 </resources>
