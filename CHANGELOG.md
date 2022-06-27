@@ -3,6 +3,7 @@
 * Thanks XXX for improving the translation.
 * Mark Mozilla Lockwise as end-of-life (thanks p0yskaa for the information).
 * Show warning when an end-of-life app is used.
+* Cache UpdateCheckResult in preferences - this should be more reliable than the previous caching method
 * Improve contrasts of colors.
 
 # 2022-06-19 Version 75.5.3 (105)
