@@ -1,0 +1,4 @@
+* Merci à 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername et metezd pour avoir amélioré la
+  traduction
+* Essayer de corriger les crashs lorsque le téléchargement des mises à jour a échoué en arrière-plan.
+* Ajouter une option pour cacher les boutons d'avertissement
