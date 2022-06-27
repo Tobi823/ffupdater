@@ -6,13 +6,14 @@ import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.security.FileHashCalculator
 import java.io.File
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /**
@@ -22,7 +23,7 @@ import java.time.format.DateTimeFormatter
 class FirefoxNightly(
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
-) : BaseAppWithCachedUpdateCheck() {
+) : BaseApp() {
     override val packageName = "org.mozilla.fenix"
     override val displayTitle = R.string.firefox_nightly__title
     override val displayDescription = R.string.firefox_nightly__description
@@ -36,7 +37,7 @@ class FirefoxNightly(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun checkForUpdate(): AvailableVersionResult {
         val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
@@ -51,7 +52,8 @@ class FirefoxNightly(
             apiConsumer = apiConsumer,
         ).updateCheck()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-        val version = formatter.format(result.releaseDate)
+        val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val version = formatter.format(releaseDate)
         return AvailableVersionResult(
             downloadUrl = result.url,
             version = version,

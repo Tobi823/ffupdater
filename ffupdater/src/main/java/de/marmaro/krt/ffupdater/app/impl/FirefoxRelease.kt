@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 class FirefoxRelease(
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
-) : BaseAppWithCachedUpdateCheck() {
+) : BaseApp() {
     override val packageName = "org.mozilla.firefox"
     override val displayTitle = R.string.firefox_release__title
     override val displayDescription = R.string.firefox_release__description
@@ -29,7 +29,7 @@ class FirefoxRelease(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun checkForUpdate(): AvailableVersionResult {
         val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"

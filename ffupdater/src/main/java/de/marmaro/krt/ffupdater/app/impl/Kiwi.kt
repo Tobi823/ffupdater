@@ -5,7 +5,7 @@ import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -20,7 +20,7 @@ class Kiwi(
     private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
-) : BaseAppWithCachedUpdateCheck() {
+) : BaseApp() {
     override val packageName = "com.kiwibrowser.browser"
     override val displayTitle = R.string.kiwi__title
     override val displayDescription = R.string.kiwi__description
@@ -34,7 +34,7 @@ class Kiwi(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun checkForUpdate(): AvailableVersionResult {
         val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val filePrefix = "com.kiwibrowser.browser-"
         val fileSuffix = when (filteredAbis.firstOrNull()) {

@@ -4,8 +4,6 @@ import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.impl.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.*
 import java.util.function.Predicate
 
@@ -47,7 +45,7 @@ class GithubConsumer(
                 tagName = firstReleaseWithValidAsset.tagName,
                 url = firstValidAsset.downloadUrl,
                 fileSizeBytes = firstValidAsset.fileSizeBytes,
-                releaseDate = ZonedDateTime.parse(firstReleaseWithValidAsset.publishedAt, ISO_ZONED_DATE_TIME)
+                releaseDate = firstReleaseWithValidAsset.publishedAt,
             )
         }
         throw InvalidApiResponseException("can't find release after all tries - abort")
@@ -106,6 +104,6 @@ class GithubConsumer(
         val tagName: String,
         val url: String,
         val fileSizeBytes: Long,
-        val releaseDate: ZonedDateTime,
+        val releaseDate: String,
     )
 }

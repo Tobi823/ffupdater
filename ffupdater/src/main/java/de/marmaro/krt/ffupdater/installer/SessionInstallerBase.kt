@@ -69,9 +69,10 @@ abstract class SessionInstallerBase(
     }
 
     private fun createSessionParams(context: Context): SessionParams {
-        val params = SessionParams(MODE_FULL_INSTALL)
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
-        params.setAppIcon(BitmapFactory.decodeResource(context.resources, app.detail.displayIcon))
+        val params = SessionParams(MODE_FULL_INSTALL)
+        val displayIcon = app.detail.displayIcon // store display icon id in variable to prevent crash
+        params.setAppIcon(BitmapFactory.decodeResource(context.resources, displayIcon))
         params.setAppLabel(context.getString(app.detail.displayTitle))
         params.setAppPackageName(app.detail.packageName)
         params.setSize(file.length())

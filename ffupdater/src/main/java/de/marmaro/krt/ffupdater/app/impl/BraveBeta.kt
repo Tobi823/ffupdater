@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -17,7 +17,7 @@ class BraveBeta(
     private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
-) : BaseAppWithCachedUpdateCheck() {
+) : BaseApp() {
     override val packageName = "com.brave.browser_beta"
     override val displayTitle = R.string.brave_beta__title
     override val displayDescription = R.string.brave_beta__description
@@ -31,7 +31,7 @@ class BraveBeta(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun checkForUpdate(): AvailableVersionResult {
         val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val fileName = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "BraveMonoarm.apk"

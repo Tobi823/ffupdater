@@ -83,9 +83,6 @@ class InstallActivity : AppCompatActivity() {
                     return
                 }
         }
-        if (viewModel.updateCheckResult == null) {
-            viewModel.updateCheckResult = intent.extras?.getParcelable(EXTRA_UPDATE_CHECK_RESULT)
-        }
 
         foregroundSettings = ForegroundSettingsHelper(this)
         installerSettingsHelper = InstallerSettingsHelper(this)
@@ -188,7 +185,7 @@ class InstallActivity : AppCompatActivity() {
 
         if (viewModel.updateCheckResult == null) {
             viewModel.updateCheckResult = try {
-                viewModel.app!!.detail.updateCheckAsync(this).await()
+                viewModel.app!!.detail.checkForUpdateAsync(this).await()
             } catch (e: GithubRateLimitExceededException) {
                 failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
                 return
@@ -386,7 +383,6 @@ class InstallActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
-        const val EXTRA_UPDATE_CHECK_RESULT = "update_check_result"
 
         /**
          * Create a new InstallActivity which have to check if app is up-to-date
@@ -395,17 +391,6 @@ class InstallActivity : AppCompatActivity() {
             val intent = Intent(context, InstallActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)
-            return intent
-        }
-
-        /**
-         * Create a new InstallActivity which use the given UpdateCheckResult for downloading
-         */
-        fun createIntent(context: Context, app: App, updateCheckResult: UpdateCheckResult): Intent {
-            val intent = Intent(context, InstallActivity::class.java)
-            // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            intent.putExtra(EXTRA_APP_NAME, app.name)
-            intent.putExtra(EXTRA_UPDATE_CHECK_RESULT, updateCheckResult)
             return intent
         }
     }

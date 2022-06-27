@@ -46,7 +46,7 @@ object BackgroundNotificationBuilder {
             notificationId = 200 + app.ordinal,
             notificationTitle = context.getString(update_notification__title, appTitle),
             notificationMessage = context.getString(update_notification__text),
-            intent = InstallActivity.createIntent(context, app, updateCheckResult)
+            intent = InstallActivity.createIntent(context, app)
         )
     }
 

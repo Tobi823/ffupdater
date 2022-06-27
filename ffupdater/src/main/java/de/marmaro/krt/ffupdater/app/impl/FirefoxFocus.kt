@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -18,7 +18,7 @@ class FirefoxFocus(
     private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
-) : BaseAppWithCachedUpdateCheck() {
+) : BaseApp() {
     override val packageName = "org.mozilla.focus"
     override val displayTitle = R.string.firefox_focus__title
     override val displayDescription = R.string.firefox_focus__description
@@ -32,7 +32,7 @@ class FirefoxFocus(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun checkForUpdate(): AvailableVersionResult {
         val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val fileSuffix = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a.apk"

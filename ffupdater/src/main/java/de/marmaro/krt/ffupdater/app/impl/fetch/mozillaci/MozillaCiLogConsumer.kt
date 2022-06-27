@@ -3,8 +3,6 @@ package de.marmaro.krt.ffupdater.app.impl.fetch.mozillaci
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 /**
  * Consume the "chain_of_trust.log".
@@ -54,13 +52,13 @@ class MozillaCiLogConsumer(
         return Result(
             version = extractVersion(),
             url = "$baseUrl/artifacts/$apkArtifact",
-            releaseDate = ZonedDateTime.parse(extractDateString(), ISO_ZONED_DATE_TIME)
+            releaseDate = extractDateString()
         )
     }
 
     data class Result(
         val version: String,
         val url: String,
-        val releaseDate: ZonedDateTime,
+        val releaseDate: String,
     )
 }

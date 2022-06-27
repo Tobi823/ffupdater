@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         }
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
-            lifecycleScope.launch(Dispatchers.Main) { checkForUpdates() }
+            lifecycleScope.launch(Dispatchers.Main) { checkForUpdates(false) }
         }
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
     }
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         cleanUpObjects()
         val settingsHelper = ForegroundSettingsHelper(this)
         EolApp.values()
-            .filter { it.detail.isInstalled(this) || true }
+            .filter { it.detail.isInstalled(this) }
             .forEach { initUIForEolApp(mainLayout, it) }
         App.values()
             .filter { it.detail.isInstalled(this) }
@@ -195,7 +195,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private suspend fun checkForUpdates() {
+    private suspend fun checkForUpdates(useCache: Boolean = true) {
         val apps = App.values()
             .filter { it.detail.isInstalled(this@MainActivity) }
 
@@ -208,14 +208,18 @@ class MainActivity : AppCompatActivity() {
 
         setLoadAnimationState(true)
         setAvailableVersion(apps, getString(R.string.available_version_loading))
-        apps.forEach { checkForAppUpdate(it) }
+        apps.forEach { checkForAppUpdate(it, useCache) }
         setLoadAnimationState(false)
     }
 
     @MainThread
-    private suspend fun checkForAppUpdate(app: App) {
+    private suspend fun checkForAppUpdate(app: App, useCache: Boolean) {
         try {
-            val updateResult = app.detail.updateCheckAsync(applicationContext).await()
+            val updateResult = if (useCache) {
+                app.detail.checkForUpdateAsync(applicationContext).await()
+            } else {
+                app.detail.checkForUpdateWithoutCacheAsync(applicationContext).await()
+            }
             setAvailableVersion(app, updateResult.displayVersion)
             sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable
             if (updateResult.isUpdateAvailable) {

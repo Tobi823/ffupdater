@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseAppWithCachedUpdateCheck
+import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.impl.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
@@ -14,7 +14,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 class FFUpdater(
     private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
-) : BaseAppWithCachedUpdateCheck() {
+) : BaseApp() {
     override val packageName = "de.marmaro.krt.ffupdater"
     override val displayTitle = R.string.app_name
     override val displayDescription = R.string.app_description
@@ -29,7 +29,7 @@ class FFUpdater(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
 
-    override suspend fun updateCheckWithoutCaching(): AvailableVersionResult {
+    override suspend fun checkForUpdate(): AvailableVersionResult {
         val githubConsumer = GithubConsumer(
             repoOwner = "Tobi823",
             repoName = "ffupdater",

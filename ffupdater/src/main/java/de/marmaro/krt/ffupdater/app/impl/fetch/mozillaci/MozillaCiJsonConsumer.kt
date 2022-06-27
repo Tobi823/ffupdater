@@ -4,8 +4,6 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.security.Sha256Hash
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 
 /**
  * Consume the "chain_of_trust.json".
@@ -31,11 +29,10 @@ class MozillaCiJsonConsumer(
             "Missing artifact '$apkArtifact'. Only [${response.artifacts.keys.joinToString()}] " +
                     "are available."
         }
-        val releaseDate = ZonedDateTime.parse(response.task.created, ISO_ZONED_DATE_TIME)
         return Result(
             fileHash = Sha256Hash(artifact.sha256),
             url = "$baseUrl/artifacts/$apkArtifact",
-            releaseDate = releaseDate
+            releaseDate = response.task.created
         )
     }
 
@@ -55,6 +52,6 @@ class MozillaCiJsonConsumer(
     data class Result(
         val fileHash: Sha256Hash,
         val url: String,
-        val releaseDate: ZonedDateTime,
+        val releaseDate: String,
     )
 }

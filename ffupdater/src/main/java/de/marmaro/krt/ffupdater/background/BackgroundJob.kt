@@ -146,7 +146,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return false
         }
 
-        val updateCheckResult = app.detail.updateCheckAsync(context).await()
+        val updateCheckResult = app.detail.checkForUpdateAsync(context).await()
         return updateCheckResult.isUpdateAvailable
     }
 
@@ -176,7 +176,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         val appCache = AppCache(app)
-        val updateResult = app.detail.updateCheckAsync(context).await()
+        val updateResult = app.detail.checkForUpdateAsync(context).await()
         val availableResult = updateResult.availableResult
         if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
@@ -267,7 +267,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         BackgroundNotificationBuilder.hideUpdateIsAvailable(context)
         appsWithUpdates.forEach {
             // updateCheckAsync() should be fast because the result is cached
-            val updateCheckResult = it.detail.updateCheckAsync(context).await()
+            val updateCheckResult = it.detail.checkForUpdateAsync(context).await()
             BackgroundNotificationBuilder.showUpdateIsAvailable(context, it, updateCheckResult)
         }
     }
