@@ -1,0 +1,4 @@
+* Podziękowania dla 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername i metezd za poprawienie
+  tłumaczenia
+* Spróbuj naprawić awarie, gdy pobieranie aktualizacji w tle nie powiodło się
+* Dodanie opcji ukrywania przycisków ostrzegawczych
