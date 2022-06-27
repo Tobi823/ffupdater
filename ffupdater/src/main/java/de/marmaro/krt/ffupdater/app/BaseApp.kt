@@ -65,7 +65,7 @@ abstract class BaseApp {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
                 mutex.withLock {
-                    checkForUpdateAndCacheIt(context, true)
+                    checkForUpdateAndCacheIt(context, useCache = true, useExpiredCache = false)
                 }
             }
         }
@@ -76,20 +76,35 @@ abstract class BaseApp {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
                 mutex.withLock {
-                    checkForUpdateAndCacheIt(context, false)
+                    checkForUpdateAndCacheIt(context, useCache = false, useExpiredCache = false)
                 }
             }
         }
     }
 
-    private suspend fun checkForUpdateAndCacheIt(context: Context, useCache: Boolean): UpdateCheckResult {
+    suspend fun checkForUpdateWithEvenExpiredCacheAsync(context: Context): Deferred<UpdateCheckResult> {
+        return withContext(Dispatchers.IO) {
+            async {
+                // - use mutex lock to prevent multiple simultaneously update check for a single app
+                mutex.withLock {
+                    checkForUpdateAndCacheIt(context, useCache = true, useExpiredCache = true)
+                }
+            }
+        }
+    }
+
+    private suspend fun checkForUpdateAndCacheIt(
+        context: Context,
+        useCache: Boolean,
+        useExpiredCache: Boolean
+    ): UpdateCheckResult {
         val cacheKey = "cached_update_check_result__${packageName}"
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         try {
             if (useCache) {
                 preferences.getString(cacheKey, null)
                     ?.let { gson.fromJson(it, UpdateCheckResult::class.java) }
-                    ?.takeIf { System.currentTimeMillis() - it.timestamp <= CACHE_TIME }
+                    ?.takeIf { useExpiredCache || (System.currentTimeMillis() - it.timestamp <= CACHE_TIME) }
                     ?.let { return it }
             }
         } catch (e: JsonSyntaxException) {

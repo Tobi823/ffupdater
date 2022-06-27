@@ -185,7 +185,7 @@ class InstallActivity : AppCompatActivity() {
 
         if (viewModel.updateCheckResult == null) {
             viewModel.updateCheckResult = try {
-                viewModel.app!!.detail.checkForUpdateAsync(this).await()
+                viewModel.app!!.detail.checkForUpdateWithEvenExpiredCacheAsync(this).await()
             } catch (e: GithubRateLimitExceededException) {
                 failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
                 return
