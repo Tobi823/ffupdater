@@ -249,4 +249,6 @@
     <string name="download_error_notification__title">Изтегляне на обновяване във фонов режим е неуспешно</string>
     <string name="download_error_notification__description">Неуспешно изтегляне на обновяване на %1$s във фонов режим. Ако грешката се появява често, не се колебайте да съобщите за нея в notabug.org, GitHub или GitLab.</string>
     <string name="download_error_notification__message">Неуспешно изтегляне на обновяване на %1$s във фонов режим. Ако грешката се появява често, докоснете, за да видите доклада.</string>
+    <string name="lockwise__eol_reason">Мозила е спряла поддръжката през декември 2021 г. Изберете друго приложение за пазене на пароли.</string>
+    <string name="app_card__app_warning_button_description">Показва предупреждение за приложението</string>
 </resources>
