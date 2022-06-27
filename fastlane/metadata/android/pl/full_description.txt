@@ -11,9 +11,6 @@ przeglądarki, które są lepsze niż Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Vivaldi
 
-oraz:
-- Firefox Lockwise
-
 Program FFUpdater sprawdza w tle dostępność aktualizacji i również je pobiera. Na urządzeniach z systemem Android 12+ lub rootem FFUpdater może również aktualizować aplikacje bez interakcji z użytkownikiem.
 
 Odwiedź https://notabug.org/Tobiwan/ffupdater/src/master/README.md lub użyj linku "Kod źródłowy" poniżej, aby zobaczyć więcej informacji na temat pomiarów bezpieczeństwa, innych kanałów dystrybucji, ograniczeń, błędów, FAQ, instrukcji budowania, używanych bibliotek firm trzecich, szczegółów technicznych itp.

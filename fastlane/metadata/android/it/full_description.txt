@@ -14,9 +14,6 @@ Browser che sono meglio di Google Chrome:
 - Kiwi Browser Next
 - Vivaldi
 
-e:
-- Firefox Lockwise
-
 FFUpdater controlla gli aggiornamenti in background e li scarica anche. Su Android 12+ o sui dispositivi con root, FFUpdater può anche aggiornare le applicazioni senza l'interazione dell'utente.
 
 Visita https://notabug.org/Tobiwan/ffupdater/src/master/README.md per vedere maggiori informazioni.

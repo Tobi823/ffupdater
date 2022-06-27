@@ -11,9 +11,6 @@ Google Chromeより優れたブラウザ
 - Brave Private Browser、Brave Browser (Beta)、Brave Browser (Nightly)。
 - ヴィヴァルディ
 
-とします。
-- Firefox ロックワイズ
-
 FFUpdaterは、バックグラウンドでアップデートをチェックし、ダウンロードも行います。Android 12+またはrootデバイスでは、FFUpdaterはユーザーの操作なしでアプリを更新することも可能です。
 
 セキュリティ対策、他の配布チャネル、制限、バグ、FAQ、ビルド手順、使用したサードパーティライブラリ、技術的詳細などの詳細については、https://notabug.org/Tobiwan/ffupdater/src/master/README.md または以下の "Source Code" のリンクを参照してください。

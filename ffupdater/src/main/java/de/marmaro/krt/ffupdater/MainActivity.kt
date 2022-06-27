@@ -22,6 +22,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__main_activity_update_check
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.eol.EolApp
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.background.BackgroundJob
@@ -125,9 +126,21 @@ class MainActivity : AppCompatActivity() {
         mainLayout.removeAllViews()
         cleanUpObjects()
         val settingsHelper = ForegroundSettingsHelper(this)
+        EolApp.values()
+            .filter { it.detail.isInstalled(this) || true }
+            .forEach { initUIForEolApp(mainLayout, it) }
         App.values()
             .filter { it.detail.isInstalled(this) }
             .forEach { initUIForApp(mainLayout, it, settingsHelper) }
+    }
+
+    @UiThread
+    private fun initUIForEolApp(mainLayout: LinearLayout, app: EolApp) {
+        val cardView = layoutInflater.inflate(R.layout.eol_app_card_layout, mainLayout, false)
+        cardView.findViewWithTag<TextView>("app_title").setText(app.detail.displayTitle)
+        cardView.findViewWithTag<ImageView>("app_icon").setImageResource(app.detail.displayIcon)
+        cardView.findViewWithTag<TextView>("eol_reason").setText(app.detail.eolReason)
+        mainLayout.addView(cardView)
     }
 
     @UiThread

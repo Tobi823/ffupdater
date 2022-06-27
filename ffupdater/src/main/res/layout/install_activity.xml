@@ -34,7 +34,7 @@
         <LinearLayout
             android:id="@+id/externalStorageNotAccessible"
             style="@style/install_activity__segment"
-            android:background="@color/errorRed"
+            android:background="@color/red_background_for_text"
             android:padding="8dp">
 
             <TextView
@@ -129,7 +129,7 @@
         <LinearLayout
             android:id="@+id/downloadFileFailed"
             style="@style/install_activity__segment"
-            android:background="@color/errorRed"
+            android:background="@color/red_background_for_text"
             android:padding="8dp">
 
             <TextView
@@ -203,7 +203,7 @@
         <LinearLayout
             android:id="@+id/installerFailed"
             style="@style/install_activity__segment"
-            android:background="@color/errorRed"
+            android:background="@color/red_background_for_text"
             android:padding="8dp">
 
             <TextView
@@ -223,7 +223,7 @@
         <LinearLayout
             android:id="@+id/install_activity__exception"
             style="@style/install_activity__segment"
-            android:background="@color/errorRed"
+            android:background="@color/red_background_for_text"
             android:padding="8dp">
 
             <TextView

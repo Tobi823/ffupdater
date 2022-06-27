@@ -1,3 +1,10 @@
+# 2022-06-27 Version 76.0.0 (106)
+
+* Thanks XXX for improving the translation.
+* Mark Mozilla Lockwise as end-of-life (thanks p0yskaa for the information).
+* Show warning when an end-of-life app is used.
+* Improve contrasts of colors.
+
 # 2022-06-19 Version 75.5.3 (105)
 
 * Thanks 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername and metezd for improving the

@@ -34,7 +34,6 @@
         <package android:name="com.vivaldi.browser" />
         <package android:name="de.marmaro.krt.ffupdater" />
         <package android:name="io.github.forkmaintainers.iceraven" />
-        <package android:name="mozilla.lockbox" />
         <package android:name="org.bromite.bromite" />
         <package android:name="org.bromite.webview" />
         <package android:name="org.mozilla.fenix" />
@@ -45,6 +44,8 @@
         <package android:name="org.mozilla.rocket" />
         <package android:name="org.ungoogled.chromium.stable" />
 
+        <!-- Detect outdated/eol apps -->
+        <package android:name="mozilla.lockbox" />
     </queries>
 
     <application

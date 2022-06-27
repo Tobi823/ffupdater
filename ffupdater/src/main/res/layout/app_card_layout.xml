@@ -51,7 +51,7 @@
             android:layout_height="36dp"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Warning about this app"
+            android:contentDescription="@string/app_card__app_warning_button_description"
             android:tag="appWarningButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/appInfoButton"

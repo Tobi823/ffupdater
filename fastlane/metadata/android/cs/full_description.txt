@@ -11,9 +11,6 @@ prohlížeče, které jsou lepší než Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly).
 - Vivaldi
 
-a:
-- Firefox Lockwise
-
 FFUpdater kontroluje aktualizace na pozadí a také je stahuje. V zařízeních se systémem Android 12+ nebo rootem může FFUpdater aktualizovat aplikace i bez interakce uživatele.
 
 Navštivte stránku https://notabug.org/Tobiwan/ffupdater/src/master/README.md nebo použijte "Zdrojový kód" odkaz níže, kde najdete další informace o bezpečnostních měřeních, dalších distribučních kanálech, omezeních, chybách, často kladených dotazech, návodech na sestavení, použitých knihovnách třetích stran, technických detailech atd.

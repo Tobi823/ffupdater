@@ -30,10 +30,6 @@ Browser which are better than Google Chrome:
 - [Kiwi Browser Next](https://github.com/kiwibrowser/src.next)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 
-and:
-
-- [Firefox Lockwise](https://play.google.com/store/apps/details?id=mozilla.lockbox)
-
 FFUpdater checks for updates in the background and downloads them as well. On Android 12+ or root devices,
 FFUpdater can also update the apps without user interaction.
 

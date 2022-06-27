@@ -56,7 +56,6 @@
         <item>@string/firefox_release__title</item>
         <item>@string/iceraven__title</item>
         <item>@string/kiwi__title</item>
-        <item>@string/lockwise__title</item>
         <item>@string/ungoogled_chromium__title</item>
         <item>@string/vivaldi__title</item>
     </string-array>
@@ -75,7 +74,6 @@
         <item>FIREFOX_RELEASE</item>
         <item>ICERAVEN</item>
         <item>KIWI</item>
-        <item>LOCKWISE</item>
         <item>UNGOOGLED_CHROMIUM</item>
         <item>VIVALDI</item>
     </string-array>
