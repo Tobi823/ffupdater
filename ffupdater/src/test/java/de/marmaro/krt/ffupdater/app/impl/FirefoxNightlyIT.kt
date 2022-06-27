@@ -142,7 +142,7 @@ class FirefoxNightlyIT {
         assertFalse(result.isUpdateAvailable)
     }
 
-    @Suppress("DEPRECATION")
+    @Suppress("UNUSED_PARAMETER", "DEPRECATION")
     @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed - different version code")
     @MethodSource("abisWithMetaData")
     fun `update check for ABI X - outdated version installed - different version code`(
@@ -164,7 +164,7 @@ class FirefoxNightlyIT {
         assertTrue(result.isUpdateAvailable)
     }
 
-    @Suppress("DEPRECATION")
+    @Suppress("UNUSED_PARAMETER", "DEPRECATION")
     @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed - different hash")
     @MethodSource("abisWithMetaData")
     fun `update check for ABI X - outdated version installed - different hash`(
@@ -186,7 +186,7 @@ class FirefoxNightlyIT {
         assertTrue(result.isUpdateAvailable)
     }
 
-    @Suppress("DEPRECATION")
+    @Suppress("UNUSED_PARAMETER", "DEPRECATION")
     @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed - different version code and hash")
     @MethodSource("abisWithMetaData")
     fun `update check for ABI X - outdated version installed - different version code and hash`(
