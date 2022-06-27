@@ -268,7 +268,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         appsWithUpdates.forEach {
             // updateCheckAsync() should be fast because the result is cached
             val updateCheckResult = it.detail.checkForUpdateAsync(context).await()
-            BackgroundNotificationBuilder.showUpdateIsAvailable(context, it, updateCheckResult)
+            BackgroundNotificationBuilder.showUpdateIsAvailable(context, it)
         }
     }
 
