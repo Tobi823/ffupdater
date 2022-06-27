@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -20,8 +21,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.FileReader
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
@@ -36,10 +35,12 @@ class BraveNightlyIT {
     lateinit var apiConsumer: ApiConsumer
 
     val packageInfo = PackageInfo()
+    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @BeforeEach
     fun setUp() {
         every { context.packageManager } returns packageManager
+        every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
             packageManager.getPackageInfo(
@@ -47,6 +48,7 @@ class BraveNightlyIT {
                 any()
             )
         } returns packageInfo
+        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
 
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/BraveNightly"
         coEvery {
@@ -61,8 +63,7 @@ class BraveNightlyIT {
         private const val API_URl = "https://api.github.com/repos/brave/brave-browser/releases"
         private const val DOWNLOAD_URL = "https://github.com/brave/brave-browser/releases/download"
         private const val EXPECTED_VERSION = "1.39.61"
-        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
-            ZonedDateTime.parse("2022-04-15T13:33:14Z", ISO_ZONED_DATE_TIME)
+        private val EXPECTED_RELEASE_TIMESTAMP = "2022-04-15T13:33:14Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
@@ -84,7 +85,7 @@ class BraveNightlyIT {
         url: String,
         fileSize: Long,
     ) {
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -97,7 +98,7 @@ class BraveNightlyIT {
         abi: ABI,
     ) {
         packageInfo.versionName = "1.18.12"
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -107,7 +108,7 @@ class BraveNightlyIT {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

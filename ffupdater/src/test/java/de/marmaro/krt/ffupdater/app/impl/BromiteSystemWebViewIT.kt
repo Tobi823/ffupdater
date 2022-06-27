@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -21,8 +22,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.FileReader
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
@@ -37,10 +36,12 @@ class BromiteSystemWebViewIT {
     lateinit var apiConsumer: ApiConsumer
 
     val packageInfo = PackageInfo()
+    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @BeforeEach
     fun setUp() {
         every { context.packageManager } returns packageManager
+        every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
             packageManager.getPackageInfo(
@@ -57,6 +58,7 @@ class BromiteSystemWebViewIT {
             FileReader("$FOLDER_PATH/latest.json"),
             GithubConsumer.Release::class.java
         )
+        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
     }
 
     companion object {
@@ -64,8 +66,7 @@ class BromiteSystemWebViewIT {
         private const val FOLDER_PATH =
             "src/test/resources/de/marmaro/krt/ffupdater/app/impl/BromiteSystemWebView"
         private const val EXPECTED_VERSION = "100.0.4896.92"
-        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
-            ZonedDateTime.parse("2022-04-15T14:41:46Z", ISO_ZONED_DATE_TIME)
+        private val EXPECTED_RELEASE_TIMESTAMP = "2022-04-15T14:41:46Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
@@ -87,7 +88,7 @@ class BromiteSystemWebViewIT {
         url: String,
         fileSize: Long,
     ) {
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -100,7 +101,7 @@ class BromiteSystemWebViewIT {
         abi: ABI,
     ) {
         packageInfo.versionName = "89.0.4389.117"
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -110,7 +111,7 @@ class BromiteSystemWebViewIT {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

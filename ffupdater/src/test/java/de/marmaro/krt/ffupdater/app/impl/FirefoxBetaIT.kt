@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
@@ -21,8 +22,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.File
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
@@ -36,24 +35,26 @@ class FirefoxBetaIT {
 
     @MockK
     lateinit var apiConsumer: ApiConsumer
+    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @BeforeEach
     fun setUp() {
         every { context.packageManager } returns packageManager
+        every { context.packageName } returns "de.marmaro.krt.ffupdater"
         packageInfo.versionName = ""
         every {
             packageManager.getPackageInfo(App.FIREFOX_BETA.detail.packageName, any())
         } returns packageInfo
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
+        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
     }
 
     companion object {
         private const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.beta.latest"
         private const val EXPECTED_VERSION = "91.0.0-beta.3"
-        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
-            ZonedDateTime.parse("2021-07-22T13:29:07Z", ISO_ZONED_DATE_TIME)
+        private val EXPECTED_RELEASE_TIMESTAMP = "2021-07-22T13:29:07Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
@@ -100,7 +101,7 @@ class FirefoxBetaIT {
         downloadUrl: String,
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         Assertions.assertEquals(downloadUrl, result.downloadUrl)
         Assertions.assertEquals(EXPECTED_VERSION, result.version)
         Assertions.assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
@@ -114,7 +115,7 @@ class FirefoxBetaIT {
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
         packageInfo.versionName = "86.0.0-beta.3"
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -126,7 +127,7 @@ class FirefoxBetaIT {
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

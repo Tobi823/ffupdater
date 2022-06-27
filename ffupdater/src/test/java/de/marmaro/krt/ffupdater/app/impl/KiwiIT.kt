@@ -22,8 +22,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.FileReader
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
@@ -37,9 +35,9 @@ class KiwiIT {
     @MockK
     lateinit var apiConsumer: ApiConsumer
 
+    val packageInfo = PackageInfo()
     private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
-    val packageInfo = PackageInfo()
 
     @BeforeEach
     fun setUp() {
@@ -58,8 +56,7 @@ class KiwiIT {
         private const val DOWNLOAD_URL =
             "https://github.com/kiwibrowser/src.next/releases/download/2232087292"
         private const val EXPECTED_RUNNER_ID = "2232087292"
-        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
-            ZonedDateTime.parse("2022-04-27T09:24:16Z", ISO_ZONED_DATE_TIME)
+        private val EXPECTED_RELEASE_TIMESTAMP = "2022-04-27T09:24:16Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
@@ -105,7 +102,7 @@ class KiwiIT {
         fileSize: Long,
     ) {
         makeReleaseJsonObjectAvailable()
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_RUNNER_ID, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -123,10 +120,11 @@ class KiwiIT {
             .putLong(Kiwi.APK_FILE_SIZE, 226448284L)
             .apply()
         packageInfo.versionName = "101.0.4951.28"
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     @ParameterizedTest(name = "update check for ABI \"{0}\" - latest version installed")
     @MethodSource("abisWithMetaData")
     fun `update check for ABI X - latest version installed`(
@@ -140,7 +138,7 @@ class KiwiIT {
             .putLong(Kiwi.APK_FILE_SIZE, fileSize)
             .apply()
         packageInfo.versionName = "101.0.4951.48"
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

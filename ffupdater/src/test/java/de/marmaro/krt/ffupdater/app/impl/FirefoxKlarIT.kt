@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -21,8 +22,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.FileReader
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
@@ -36,10 +35,12 @@ class FirefoxKlarIT {
 
     @MockK
     lateinit var apiConsumer: ApiConsumer
+    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @BeforeEach
     fun setUp() {
         every { context.packageManager } returns packageManager
+        every { context.packageName } returns "de.marmaro.krt.ffupdater"
         packageInfo.versionName = ""
         every {
             packageManager.getPackageInfo(App.FIREFOX_KLAR.detail.packageName, any())
@@ -52,14 +53,14 @@ class FirefoxKlarIT {
         coEvery {
             apiConsumer.consumeAsync(url, GithubConsumer.Release::class).await()
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
+        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
     }
 
     companion object {
         private const val DOWNLOAD_URL =
             "https://github.com/mozilla-mobile/focus-android/releases/download"
         private const val EXPECTED_VERSION = "99.1.1"
-        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
-            ZonedDateTime.parse("2022-03-31T05:06:42Z", ISO_ZONED_DATE_TIME)
+        private const val EXPECTED_RELEASE_TIMESTAMP = "2022-03-31T05:06:42Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
@@ -81,7 +82,7 @@ class FirefoxKlarIT {
         url: String,
         fileSize: Long,
     ) {
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -94,7 +95,7 @@ class FirefoxKlarIT {
         abi: ABI,
     ) {
         packageInfo.versionName = "97.2.0"
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -104,7 +105,7 @@ class FirefoxKlarIT {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

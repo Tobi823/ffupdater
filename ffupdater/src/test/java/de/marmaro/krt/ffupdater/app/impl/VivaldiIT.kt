@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.fetch.ApiConsumer
@@ -32,10 +33,12 @@ class VivaldiIT {
 
     @MockK
     lateinit var apiConsumer: ApiConsumer
+    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @BeforeEach
     fun setUp() {
         every { context.packageManager } returns packageManager
+        every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
             packageManager.getPackageInfo(App.VIVALDI.detail.packageName, any())
@@ -45,25 +48,24 @@ class VivaldiIT {
         coEvery {
             apiConsumer.consumeAsync("https://vivaldi.com/download/", String::class).await()
         } returns File(path).readText()
+        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
+
     }
 
     companion object {
         private const val EXPECTED_VERSION = "4.3.2439.61"
+        private const val BASE_URL = "https://downloads.vivaldi.com/stable"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
-            Arguments.of(ABI.ARMEABI_V7A, "https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.61_armeabi-v7a.apk"),
-            Arguments.of(ABI.ARM64_V8A, "https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.61_arm64-v8a.apk"),
-            Arguments.of(ABI.X86_64, "https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.61_x86-64.apk"),
+            Arguments.of(ABI.ARMEABI_V7A, "$BASE_URL/Vivaldi.4.3.2439.61_armeabi-v7a.apk"),
+            Arguments.of(ABI.ARM64_V8A, "$BASE_URL/Vivaldi.4.3.2439.61_arm64-v8a.apk"),
+            Arguments.of(ABI.X86_64, "$BASE_URL/Vivaldi.4.3.2439.61_x86-64.apk"),
         )
     }
 
     private fun createSut(deviceAbi: ABI): Vivaldi {
         return Vivaldi(apiConsumer = apiConsumer, deviceAbis = listOf(deviceAbi))
-    }
-
-    private fun makeHtmlAvailable() {
-
     }
 
     @ParameterizedTest(name = "check download info for ABI \"{0}\"")
@@ -72,7 +74,7 @@ class VivaldiIT {
         abi: ABI,
         url: String,
     ) {
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
     }
@@ -83,7 +85,7 @@ class VivaldiIT {
         abi: ABI,
     ) {
         packageInfo.versionName = "4.3.2439.43"
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -93,7 +95,7 @@ class VivaldiIT {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

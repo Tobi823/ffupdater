@@ -23,8 +23,6 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.BufferedReader
 import java.io.FileReader
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
@@ -44,6 +42,7 @@ class FirefoxNightlyIT {
     @BeforeEach
     fun setUp() {
         every { context.packageManager } returns packageManager
+        every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
@@ -60,8 +59,7 @@ class FirefoxNightlyIT {
         private const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.nightly.latest"
         private const val EXPECTED_VERSION = "2021-05-06 17:02"
-        private val EXPECTED_RELEASE_TIMESTAMP: ZonedDateTime =
-            ZonedDateTime.parse("2021-05-06T17:02:55.865Z", DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        private val EXPECTED_RELEASE_TIMESTAMP = "2021-05-06T17:02:55.865Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
@@ -116,13 +114,14 @@ class FirefoxNightlyIT {
         hash: String,
     ) {
         makeChainOfTrustAvailableUnderUrl(logUrl)
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertEquals(downloadUrl, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
         assertEquals(hash, result.fileHash?.hexValue)
     }
 
+    @Suppress("UNUSED_PARAMETER", "DEPRECATION")
     @ParameterizedTest(name = "update check for ABI \"{0}\" - latest version installed")
     @MethodSource("abisWithMetaData")
     fun `update check for ABI X - latest version installed`(
@@ -139,10 +138,11 @@ class FirefoxNightlyIT {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = 1000
 
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 
+    @Suppress("DEPRECATION")
     @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed - different version code")
     @MethodSource("abisWithMetaData")
     fun `update check for ABI X - outdated version installed - different version code`(
@@ -160,10 +160,11 @@ class FirefoxNightlyIT {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = differentVersionCode
 
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
+    @Suppress("DEPRECATION")
     @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed - different hash")
     @MethodSource("abisWithMetaData")
     fun `update check for ABI X - outdated version installed - different hash`(
@@ -181,10 +182,11 @@ class FirefoxNightlyIT {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = 1000
 
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
+    @Suppress("DEPRECATION")
     @ParameterizedTest(name = "update check for ABI \"{0}\" - outdated version installed - different version code and hash")
     @MethodSource("abisWithMetaData")
     fun `update check for ABI X - outdated version installed - different version code and hash`(
@@ -203,7 +205,7 @@ class FirefoxNightlyIT {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = differentVersionCode
 
-        val result = runBlocking { createSut(abi).updateCheckAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 }
