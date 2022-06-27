@@ -1,0 +1,4 @@
+* Děkujeme 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername a metezd za vylepšení.
+  překladu
+* Pokus o opravu pádů při neúspěšném stahování aktualizací na pozadí
+* Přidání možnosti skrýt tlačítka s varováním
