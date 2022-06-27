@@ -1,0 +1,5 @@
+* Köszönet Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat és Francois Marier számára a fordítás javításáért.
+* Köszönet Francois Marier-nek a Brave updater logikájának javításáért - a Q&amp;A által nem tesztelt béta és nightly verziók figyelmen kívül maradnak (Tobiwan/ffupdater#105)
+* Az FFUpdater rugalmasabbá tétele azokban az esetekben, amikor egy APK fájl aláírása nem vonható ki.
+* Jobban kezelje az ideiglenes hálózati problémákat
+* Függőségek frissítése

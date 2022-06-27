@@ -1,0 +1,4 @@
+* Köszönet 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername és metezd javításáért.
+  fordítást
+* Próbálja meg javítani az összeomlásokat, amikor a frissítések letöltése a háttérben sikertelen volt.
+* A figyelmeztető gombok elrejtésének lehetőségének hozzáadása

@@ -1,0 +1,1 @@
+* Próbálja meg kijavítani a "Nem találja az APK fájl aláírásait." hibát
