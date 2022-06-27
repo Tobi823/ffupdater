@@ -1,4 +1,4 @@
-* Grazie a 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername e metezd per il miglioramento delle
-  traduzioni
-* Tentativo di correggere gli arresti anomali quando il download degli aggiornamenti non riesce in background
-* Aggiunta l'opzione per nascondere i pulsanti di avviso
+* Si ringraziano 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername e metezd per aver migliorato la
+  traduzione
+* Cercare di risolvere gli arresti anomali quando il download degli aggiornamenti non riesce in background
+* Aggiungere l'opzione per nascondere i pulsanti di avviso
