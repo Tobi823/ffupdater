@@ -185,6 +185,9 @@ class InstallActivity : AppCompatActivity() {
 
         if (viewModel.updateCheckResult == null) {
             viewModel.updateCheckResult = try {
+                // InstallActivity should work even if there is no internet connection for a long time
+                // -> use even expired cache data to potentially use already downloaded APK files
+                // Risk: old version will be installed
                 viewModel.app!!.detail.checkForUpdateWithEvenExpiredCacheAsync(this).await()
             } catch (e: GithubRateLimitExceededException) {
                 failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)

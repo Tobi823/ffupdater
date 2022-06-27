@@ -1,0 +1,6 @@
+* Thanks MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner for improving the
+  translation.
+* Mark Mozilla Lockwise as end-of-life (thanks p0yskaa for the information).
+* Show warning when an end-of-life app is used.
+* Cache UpdateCheckResult in preferences - this should be more reliable than the previous caching method
+* Improve contrasts of colors.
