@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <!-- https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
+    <!-- https://coolors.co/contrast-checker -->
     <color name="cardview_background_color">@color/cardview_dark_background</color>
     <color name="red_background_for_text">#A81A1A</color>
 

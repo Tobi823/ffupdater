@@ -85,7 +85,6 @@ class BackgroundSettingsHelperTest {
             Arguments.of(App.FIREFOX_RELEASE, "FIREFOX_RELEASE"),
             Arguments.of(App.ICERAVEN, "ICERAVEN"),
             Arguments.of(App.KIWI, "KIWI"),
-            Arguments.of(App.LOCKWISE, "LOCKWISE"),
             Arguments.of(App.UNGOOGLED_CHROMIUM, "UNGOOGLED_CHROMIUM"),
             Arguments.of(App.VIVALDI, "VIVALDI"),
         )

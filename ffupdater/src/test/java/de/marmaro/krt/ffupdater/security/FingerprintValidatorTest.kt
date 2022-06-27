@@ -116,19 +116,6 @@ class FingerprintValidatorTest {
     }
 
     @Test
-    fun checkInstalledApp_withAppIsNotInstalled_returnInvalid() {
-        val packageInfo = PackageInfo()
-        packageInfo.signatures = arrayOf(signature)
-        every {
-            packageManager.getPackageInfo(App.LOCKWISE.detail.packageName, GET_SIGNATURES)
-        } throws PackageManager.NameNotFoundException()
-        val actual = runBlocking {
-            fingerprintValidator.checkInstalledApp(App.LOCKWISE.detail)
-        }
-        assertFalse(actual.isValid)
-    }
-
-    @Test
     fun checkInstalledApp_withInvalidCertificate_throwException() {
         val packageInfo = PackageInfo()
         packageInfo.signatures = arrayOf(signature)
