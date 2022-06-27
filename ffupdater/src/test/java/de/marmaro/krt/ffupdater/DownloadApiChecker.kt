@@ -171,16 +171,6 @@ class DownloadApiChecker {
     }
 
     @Test
-    fun lockwise() {
-        val lockwise = Lockwise(true, ApiConsumer())
-        val result = runBlocking { lockwise.updateCheckAsync(context).await() }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val age = Duration.between(result.publishDate, ZonedDateTime.now())
-        val maxDays = 19 * 30
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
-    }
-
-    @Test
     fun vivaldi() {
         val vivaldi = Vivaldi(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { vivaldi.updateCheckAsync(context).await() }
