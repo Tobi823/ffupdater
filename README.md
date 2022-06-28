@@ -168,6 +168,12 @@ repository or the official *F-Droid* repository) the app version was installed
 
 ## Deprecated browsers
 
+### Mozilla Lockwise
+
+27.06.2022 https://github.com/Tobi823/ffupdater/issues/194
+
+> Firefox Lockwise was abandoned six months ago https://support.mozilla.org/en-US/kb/end-of-support-firefox-lockwise
+
 ### Styx Browser
 
 02.01.2022 https://github.com/Tobi823/ffupdater/issues/101
