@@ -192,7 +192,7 @@ repository or the official *F-Droid* repository) the app version was installed
 
 ### Fennec
 
-27.07.2020: Remove Firefox Release/Beta/Nightly based on Fennec
+27.07.2020: Firefox Release/Beta/Nightly based on Fennec are removed from FFUpdater.
 
 > 68.11.0 is the last released update for Fennec version, all Fennec browsers are deprecated.
 > https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
