@@ -82,7 +82,7 @@
     <string name="install_activity__too_low_memory_title">Málo místa v paměti</string>
     <string name="install_activity__use_cached_downloaded_apk">Použít již stažený soubor z:</string>
     <string name="install_activity__you_can_now_close_this_window">Toto okno můžete zavřít</string>
-    <string name="install_activity_label">Instalovat aplikaci</string>
+    <string name="install_activity_label">Instalace aplikace</string>
     <string name="install_app">Instalovat aplikaci</string>
     <string name="install_new_app">Instalovat novou aplikaci</string>
     <string name="install_same_version_dialog__message">Nejnovější verze této aplikace je již nainstalovaná. Chcete nejnovější verzi znovu stáhnout a nainstalovat?</string>
