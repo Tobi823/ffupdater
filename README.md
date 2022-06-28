@@ -170,77 +170,32 @@ repository or the official *F-Droid* repository) the app version was installed
 
 ### Mozilla Lockwise
 
-27.06.2022 https://github.com/Tobi823/ffupdater/issues/194
+27.06.2022: Mozilla Lockwise is removed from FFUpdater. https://github.com/Tobi823/ffupdater/issues/194
 
-> Firefox Lockwise was abandoned six months ago https://support.mozilla.org/en-US/kb/end-of-support-firefox-lockwise
+> Mozilla ended support for the Firefox Lockwise app on Android and iOS, effective December 13, 2021.
+> https://support.mozilla.org/en-US/kb/end-of-support-firefox-lockwise
 
 ### Styx Browser
 
-02.01.2022 https://github.com/Tobi823/ffupdater/issues/101
-
-Styx is only temporarily removed from Google Play:
+02.01.2022: Styx Browser is temporary removed from FFUpdater.
 
 > Sorry for the premature end of Styx. But in the future the Styx browser will appear again. Currently styx
 > is migrated to Fulguris base. When this is completed then Styx will return as well as in the Play Store.
-
-30.12.2021: https://github.com/Tobi823/ffupdater/issues/101
-
-It seems that @jamal2362 does not maintain the Styx browser any longer:
-
-- The GitHub repository (https://github.com/jamal2362/Styx) is deleted or private.
-- Styx is removed from Google Play (https://play.google.com/store/apps/details?id=com.jamal2367.styx).
-
-Due to the deleted GitHub repository, Styx cannot be downloaded by FFUpdater. And even if - end users should
-not use a browser that is no longer updated.
+> https://github.com/Tobi823/ffupdater/issues/101
 
 ### Firefox Lite
 
-02.12.2021: End of support for Firefox
-Lockwise https://support.mozilla.org/en-US/kb/end-of-support-firefox-lockwise
-> Mozilla will end support for the Firefox Lockwise app on Android and iOS, effective December 13, 2021.
+02.12.2021: Firefox Lite is removed from FFUpdater.
 
-14.03.2021: The latest release of Firefox Lite is not longer signed and thereby can't be used to upgrade an
-existing Firefox Lite installation. Moreover the developers haven't responded to the Github issue "[BUG]
-Unsigned apk ?" from 30.01.2021
-https://github.com/mozilla-mobile/FirefoxLite/issues/5353. And Firefox Lite will only receive bug fixes in the
-future:
-> Firefox Lite is currently in Maintenance Mode. No active feature is being done on the product.
-> Older Pull Requests and Issues have been marked with the archived label and have been closed.
-> However, if you feel an issue is critical enough to be re-opened, please leave a note on the issue
-> with an explanation.
-
-30.06.2021: Firefox Lite is removed from Google Play and Galaxy Store, its repository is
-archived (https://github.com/mozilla-mobile/FirefoxLite) and development stopped.
-
-> Effective June 30, 2021, this app will no longer receive security or other updates. Download the official
-> Firefox Android app now for a fast, private & safe web browser.
-
-These are the reasons why I will remove Firefox Lite.
+> Mozilla will end support for the Firefox Lite browser on June 30, 2021.
+> https://support.mozilla.org/en-US/kb/end-support-firefox-lite
 
 ### Fennec
 
-16.05.2020: Mozilla wants to migrate from Fennec to Fenix. Fennec Beta and Fennec Nightly are already
-end-of-life and Fennec Release will be soon.
+27.07.2020: Remove Firefox Release/Beta/Nightly based on Fennec
 
-27.07.2020: 68.11.0 is the last released update for Fennec version, all Fennec browsers are deprecated.
-
-> Fennec is being replaced by our new state-of-the-art mobile browser codenamed "Fenix". We're slowly
-> migrating users in order to make sure the experience is as painless and as enjoyable as possible. We
-> started to migrate users who were using Fennec Nightly in January (bug 1608882). It took us several weeks
-> to be sure of the result and to finally offer Fenix Nightly to all users using Fennec Nightly. Another
-> few weeks later, we repeated the same process with Fennec Beta (bug 1614287). Fenix Beta has been offered
-> to the whole Fennec Beta population on April 22nd. We're planning to do the same with Fennec Release
-> sometimes this year. The schedule is still to be determined.
-
-> The Google Play Store[1] has a lot of nice features, but it's still pretty basic whenever a software
-> publisher wants to slowly migrate users. Once a migration is started, we can't provide any Fennec updates
-> to the population who wasn't offered Fenix, yet. I can say this restriction is painful to manage for
-> Android developers, Mozilla included. Because of it, we had to stop shipping Fennec Nightly/Beta APKs at
-> the beginning of each migration. This explains the dates of the last builds. At the same time, we stopped
-> building Fennec Nightly/Beta because it enabled us to save technical resources[2] as well as people's
-> time[3].
-
-https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
+> 68.11.0 is the last released update for Fennec version, all Fennec browsers are deprecated.
+> https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
 
 ## Build app
 
