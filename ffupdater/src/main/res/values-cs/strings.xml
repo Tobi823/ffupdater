@@ -14,14 +14,14 @@
     <string name="brave__description">Webový prohlížeč Brave je rychlá a bezpečná aplikace k prohlížení webu pro Android s vestavěným blokátorem na reklamy třetích stran. Brave je bleskově rychlý, bezpečný a soukromý, který zabraňuje reklamám sledovat Vás, zamezuje infekci malware a blokuje vyskakovací okna.</string>
     <string name="brave__title">Brave Soukromý prohlížeč</string>
     <string name="brave__warning">- Brave používá technologii Google Chrome (Chromium) - některým lidem se to nemusí líbit. Jste si jisti, že chcete nainstalovat prohlížeč Brave\?
-\n- Vzhledem k tomu, že je Basic Attention Token BAT na blockchainu Ethereum, má projekt vazby na kryptoměny. Blockchainy mají mnoho problémů a podle mého názoru by se jim mělo vyhnout.</string>
-    <string name="brave_beta__title">Obrázek alba Brave Browser (Beta)</string>
+\n- Vzhledem k tomu, že je token Basic Attention BAT na blockchainu Ethereum, má tento projekt vazby na kryptoměny. Blockchainy mají mnoho problémů a podle mého názoru bychom se jim měli vyhnout.</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Vítejte v Brave Nightly (vývojář) pro Android!\nVyzkoušejte nejnovější funkce a poskytněte včasnou zpětnou vazbu: https://brave.com/msupport\nBrave Nightly si můžete nainstalovat vedle své aktuální verze Brave pro Android.</string>
-    <string name="brave_nightly__title">Brave Browser (Noční)</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite si klade za cíl poskytnout pohodlný zážitek bez narušení soukromí s rychlým blokováním reklam. Minimální změny rozhrání pomáhají omezit představu "prohlížeč jako reklamní plocha".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite používá technický základ Google Chrome, a tak nepřímo podporuje monopolní polohu motoru Chromium Render.</string>
-    <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje základní prohlížeč / vykreslování motoru bromite a jeho stejné vlastnosti. Nabízí možnost nahradit výchozí složku prohlížeče pro celý systém Android.</string>
+    <string name="bromite__warning">- Bromite používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
+    <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje základní prohlížeč/vykreslovací jádro Bromite a jeho stejné vlastnosti. Nabízí možnost nahradit výchozí komponent prohlížeče pro celý systém Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Zkopírovat chybové hlášení do schránky</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Při načítání adresy URL pro stahování došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
@@ -56,14 +56,16 @@
     <string name="firefox_nightly__warning">- Tato aplikace je určena pro vývojáře a testery. Může obsahovat mnoho bugů, které mohou ovlivnit vaši běžnou práci s prohlížečem.</string>
     <string name="firefox_release__description">Prohlížeč Firefox pro Android je automaticky a úžasně rychlý. Každý den vás monitorují tisíce online sledovacích prvků, shromažďují informace o tom, jaké stránky navštívíte, a zpomalují vaši rychlost. Firefox ve výchozím nastavení blokuje více než 2 000 těchto sledovacích prvků, a pokud chcete svůj prohlížeč ještě více přizpůsobit, máte k dispozici doplňky pro blokování reklam. Díky prohlížeči Firefox získáte zabezpečení, jaké si zasloužíte, a rychlost, kterou potřebujete v soukromém mobilním prohlížeči.</string>
     <string name="firefox_release__title">Firefox Prohlížeč</string>
-    <string name="go_back">zpět</string>
+    <string name="go_back">Zpět</string>
     <string name="iceraven__description">Rozhodně se nejedná o prohlížeč od Mozilly! \n\nIceraven Browser je webový pro Android, založený na Firefox verzi Fenix od Mozilly, GeckoView a Mozilla Android Components. \n\nNáš cíl je být blízkým forkem nového Firefoxu pro Android, který se snaží poskytnout uživatelům více nastavení, větší možnost přizpůsobení (včetně rozsáhlé knihovny dopňků), a více informací o stránkách, které uživatelé navštěvují a jak s nima prohlížeč komunikuje.</string>
     <string name="iceraven__title">Iceraven Prohlížeč</string>
-    <string name="infobox">Aplikace pro aktualizování několik prohlížečů od Mozilly. Klikněte na tlačítko plus pro instalaci prohlížeče a tlačítko se šipku směrem dolů pro aktualizaci konkrétního prohlížeče. Aktualizace můžete zkontrolovat přejetím prstem směrem dolů nebo znovuotevřením aplikace. Ve výchozím nastavení aplikace pravidelně kontroluje aktualizace na pozadí. Udělal jsem, co bylo v mých silách, abych zajistil proces instalace/aktualizace - neváhejte to překontrolovat nebo opravit vytvořením pull requestu. \n\nPoslední úspěšná kontrola aktualizací na pozadí: %1$s</string>
-    <string name="information_about_the_app">informace o prohlížeči</string>
+    <string name="infobox">Aplikace pro aktualizování prohlížečů nejen od Mozilly. Klikněte na tlačítko plus pro instalaci prohlížeče a tlačítko se šipku směrem dolů pro aktualizaci konkrétního prohlížeče. Aktualizace můžete zkontrolovat přejetím prstem směrem dolů nebo znovuotevřením aplikace. Ve výchozím nastavení aplikace pravidelně kontroluje dosptupnost aktualizací na pozadí. Udělal jsem, co bylo v mých silách, abych zajistil proces instalace/aktualizace - neváhejte to překontrolovat nebo opravit vytvořením pull requestu.
+\n
+\nPoslední úspěšná kontrola aktualizací na pozadí: %1$s</string>
+    <string name="information_about_the_app">informace o aplikaci</string>
     <string name="install_activity__delete_cache_button_text">vyčistit mezipaměť</string>
-    <string name="install_activity__delete_cache_explanation">Pokud si myslíte, že FFUpdater uložil do mezipaměti chybnou aktualizaci aplikace, klikněte na tlačítko \"vyčistit mezipaměť\" pro vyčištění mezipaměti pro tuto aplikaci.</string>
-    <string name="install_activity__download_app_with_status">Stáhování aplikace (%1$s)</string>
+    <string name="install_activity__delete_cache_explanation">Pokud si myslíte, že FFUpdater uložil do mezipaměti chybnou aktualizaci aplikace nebo pokud chcete ušetřit trochu místa, kliknutím na tlačítko odstraníte stažené soubory.</string>
+    <string name="install_activity__download_app_with_status">Stahování aplikace (%1$s)</string>
     <string name="install_activity__download_failed">Stahování selhalo</string>
     <string name="install_activity__downloaded_application_from">Aplikace stažená z:</string>
     <string name="install_activity__downloaded_application_is_not_verified">Stažená aplikace NEBYLA ověřena</string>
@@ -72,7 +74,7 @@
     <string name="install_activity__fetch_url_for_download">Načítání adresy URL pro stahování z %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Adresa URL načtena z %1$s</string>
     <string name="install_activity__github_rate_limit_exceeded">Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</string>
-    <string name="install_activity__open_cache_explanation">Můžete otevřít složku mezipaměti a zkopírovat soubor APK do umístění s větším množstvím volného místa.</string>
+    <string name="install_activity__open_cache_explanation">Můžete otevřít složku mezipaměti a zkopírovat soubor APK do umístění s větším množstvím volného místa. Bohužel na Androidu 11+ má přístup ke složce Android/data pouze několik správců souborů.</string>
     <string name="install_activity__open_cache_folder_button_text">otevřít složku mezipaměti</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Otisk certifikátu SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Došlo k dočasnému problému se sítí. Zkuste to prosím později.</string>
@@ -179,4 +181,8 @@
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">- Vivaldi je pouze částečně open source.
 \n- Používá také technický základ Google Chrome, a proto nepřímo podporuje monopolní polohu motoru Chromium Render.</string>
+    <string name="brave_beta__description">Vítejte v aplikaci Brave Beta pro Android!
+\nVyzkoušejte si nejnovější funkce a poskytněte nám zpětnou vazbu: https://brave.com/msupport
+\nBrave Beta můžete nainstalovat vedle aktuální verze Brave pro Android.</string>
+    <string name="firefox_release__warning">- Vylepšená verze Firefoxu je také dostupná na F-Droidu pod jménem Fennec F-Droid.</string>
 </resources>
