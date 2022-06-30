@@ -13,13 +13,11 @@ Browsers from Mozilla or based on Firefox:
 - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus),
   [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
   ([GitHub Repository](https://github.com/mozilla-mobile/focus-android))
-- [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 
 Good privacy browsers:
 
 - [Bromite](https://github.com/bromite/bromite),
   [Bromite SystemWebView](https://www.bromite.org/system_web_view)
-- [Ungoogled Chromium](https://github.com/ungoogled-software/ungoogled-chromium-android)
 
 Browser which are better than Google Chrome:
 
