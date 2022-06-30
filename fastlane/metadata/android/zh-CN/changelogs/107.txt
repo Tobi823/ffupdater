@@ -1,5 +1,6 @@
-* 感谢MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner改进了翻译。
-* 将Mozilla Lockwise标记为已停止维护（感谢p0yskaa提供的信息）。
-* 当使用一个已停止维护的应用程序时显示警告。
+* 感谢MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner的改进。
+  翻译。
+* 标记Mozilla Lockwise为终结版（感谢p0yskaa提供的信息）。
+* 当使用一个终结期的应用程序时显示警告。
 * 在偏好设置中缓存UpdateCheckResult - 这应该比之前的缓存方法更可靠。
-* 改善颜色对比度。
+* 改善颜色的对比度。
