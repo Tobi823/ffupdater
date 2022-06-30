@@ -235,4 +235,9 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi è open source solo parzialmente.
 \n- Inoltre usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
+    <string name="eol_apps_notification__channel_name">Notifica per app obsolete</string>
+    <string name="eol_apps_notification__message">Hai app obsolete che non dovrebbero essere più usate. Clicca per maggiori informazioni.</string>
+    <string name="generic_eol_reason__browser_to_old">Il browser non è stato aggiornato per molto tempo, quindi consiglio di utilizzare temporaneamente un altro browser. Quando gli sviluppatori rilasciano un nuovo aggiornamento, rimuoverò questo avviso.</string>
+    <string name="eol_apps_notification__title">App obsolete installate</string>
+    <string name="eol_apps_notification__channel_description">Canale di notifica per avvisi su app obsolete.</string>
 </resources>
