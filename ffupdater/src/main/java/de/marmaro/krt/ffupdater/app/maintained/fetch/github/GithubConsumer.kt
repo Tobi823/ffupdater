@@ -2,8 +2,8 @@ package de.marmaro.krt.ffupdater.app.maintained.fetch.github
 
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
+import de.marmaro.krt.ffupdater.app.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.app.maintained.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.exceptions.InvalidApiResponseException
 import java.util.*
 import java.util.function.Predicate
 

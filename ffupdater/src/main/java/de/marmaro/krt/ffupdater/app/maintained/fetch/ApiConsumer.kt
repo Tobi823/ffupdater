@@ -4,8 +4,8 @@ import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.exceptions.GithubRateLimitExceededException
-import de.marmaro.krt.ffupdater.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.app.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.app.exceptions.NetworkException
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

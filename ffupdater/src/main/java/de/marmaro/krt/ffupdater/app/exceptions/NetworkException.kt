@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.exceptions
+package de.marmaro.krt.ffupdater.app.exceptions
 
 open class NetworkException : RuntimeException {
     constructor(message: String) : super(message)

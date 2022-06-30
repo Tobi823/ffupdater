@@ -24,14 +24,14 @@ import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__main_activity_update_check
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.eol.EolApp
+import de.marmaro.krt.ffupdater.app.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.app.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
 import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
-import de.marmaro.krt.ffupdater.exceptions.GithubRateLimitExceededException
-import de.marmaro.krt.ffupdater.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
