@@ -1,0 +1,6 @@
+* Děkujeme MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner za vylepšování
+  překladu.
+* Označte Mozilla Lockwise jako ukončený (díky p0yskaa za informaci).
+* Zobrazení varování při použití aplikace s ukončenou životností.
+* Ukládání výsledku UpdateCheckResult do mezipaměti v předvolbách - mělo by to být spolehlivější než předchozí způsob ukládání do mezipaměti.
+* Zlepšit kontrasty barev.
