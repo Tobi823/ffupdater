@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.download
 import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
-import de.marmaro.krt.ffupdater.app.maintained.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.exceptions.NetworkException
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

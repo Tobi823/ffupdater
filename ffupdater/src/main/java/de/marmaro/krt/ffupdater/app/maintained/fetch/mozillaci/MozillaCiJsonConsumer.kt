@@ -1,8 +1,8 @@
 package de.marmaro.krt.ffupdater.app.maintained.fetch.mozillaci
 
 import androidx.annotation.MainThread
-import de.marmaro.krt.ffupdater.app.maintained.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.app.maintained.fetch.ApiConsumer
+import de.marmaro.krt.ffupdater.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
 
 /**

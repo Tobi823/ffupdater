@@ -24,14 +24,14 @@ import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
-import de.marmaro.krt.ffupdater.app.maintained.exceptions.GithubRateLimitExceededException
-import de.marmaro.krt.ffupdater.app.maintained.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
+import de.marmaro.krt.ffupdater.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
