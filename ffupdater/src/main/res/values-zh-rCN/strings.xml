@@ -243,4 +243,6 @@
     <string name="download_error_notification__title">后台下载应用更新失败</string>
     <string name="download_error_notification__message">后台下载 %1$s 的更新失败。如果此错误经常发生，请单击此处查看错误报告。</string>
     <string name="download_error_notification__description">后台下载 %1$s 的更新失败。如果此错误频繁发生，请随时在notabug.org、GitHub或GitLab上报告。</string>
+    <string name="lockwise__eol_reason">Mozilla在2021年12月放弃了对它的支持。请使用其他密码管理器。</string>
+    <string name="app_card__app_warning_button_description">显示关于此应用的警告</string>
 </resources>
