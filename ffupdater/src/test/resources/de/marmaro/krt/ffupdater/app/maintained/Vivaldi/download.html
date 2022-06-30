@@ -16,6 +16,9 @@
     <!-- TradeDoubler site verification 3108517 -->
     <script nonce="Vg1Ix7+R24+Pk+NC9UrzCGc6QSU=">
         !function(e,n,t){function r(e,n){return typeof e===n}function o(){var e,n,t,o,i,s,a;for(var l in _)if(_.hasOwnProperty(l)){if(e=[],n=_[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(o=r(n.fn,"function")?n.fn():n.fn,i=0;i<e.length;i++)s=e[i],a=s.split("."),1===a.length?Modernizr[a[0]]=o:(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=o),w.push((o?"":"no-")+a.join("-"))}}function i(e){var n=S.className,t=Modernizr._config.classPrefix||"";if(B&&(n=n.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\s)"+t+"no-js(\s|$)");n=n.replace(r,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),B?S.className.baseVal=n:S.className=n)}function s(e,n){if("object"==typeof e)for(var t in e)C(e,t)&&s(t,e[t]);else{e=e.toLowerCase();var r=e.split("."),o=Modernizr[r[0]];if(2==r.length&&(o=o[r[1]]),"undefined"!=typeof o)return Modernizr;n="function"==typeof n?n():n,1==r.length?Modernizr[r[0]]=n:(!Modernizr[r[0]]||Modernizr[r[0]]instanceof Boolean||(Modernizr[r[0]]=new Boolean(Modernizr[r[0]])),Modernizr[r[0]][r[1]]=n),i([(n&&0!=n?"":"no-")+r.join("-")]),Modernizr._trigger(e,n)}return Modernizr}function a(e,n){return!!~(""+e).indexOf(n)}function l(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):B?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function A(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function u(e,n){return function(){return e.apply(n,arguments)}}function f(e,n,t){var o;for(var i in e)if(e[i]in n)return t===!1?e[i]:(o=n[e[i]],r(o,"function")?u(o,t||n):o);return!1}function c(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function d(n,t,r){var o;if("getComputedStyle"in e){o=getComputedStyle.call(e,n,t);var i=e.console;if(null!==o)r&&(o=o.getPropertyValue(r));else if(i){var s=i.error?"error":"log";i[s].call(i,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!t&&n.currentStyle&&n.currentStyle[r];return o}function p(){var e=n.body;return e||(e=l(B?"svg":"body"),e.fake=!0),e}function m(e,t,r,o){var i,s,a,A,u="modernizr",f=l("div"),c=p();if(parseInt(r,10))for(;r--;)a=l("div"),a.id=o?o[r]:u+(r+1),f.appendChild(a);return i=l("style"),i.type="text/css",i.id="s"+u,(c.fake?c:f).appendChild(i),c.appendChild(f),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(n.createTextNode(e)),f.id=u,c.fake&&(c.style.background="",c.style.overflow="hidden",A=S.style.overflow,S.style.overflow="hidden",S.appendChild(c)),s=t(f,e),c.fake?(c.parentNode.removeChild(c),S.style.overflow=A,S.offsetHeight):f.parentNode.removeChild(f),!!s}function g(n,r){var o=n.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(c(n[o]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var i=[];o--;)i.push("("+c(n[o])+":"+r+")");return i=i.join(" or "),m("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"==d(e,null,"position")})}return t}function h(e,n,o,i){function s(){f&&(delete R.style,delete R.modElem)}if(i=r(i,"undefined")?!1:i,!r(o,"undefined")){var u=g(e,o);if(!r(u,"undefined"))return u}for(var f,c,d,p,m,h=["modernizr","tspan","samp"];!R.style&&h.length;)f=!0,R.modElem=l(h.shift()),R.style=R.modElem.style;for(d=e.length,c=0;d>c;c++)if(p=e[c],m=R.style[p],a(p,"-")&&(p=A(p)),R.style[p]!==t){if(i||r(o,"undefined"))return s(),"pfx"==n?p:!0;try{R.style[p]=o}catch(v){}if(R.style[p]!=m)return s(),"pfx"==n?p:!0}return s(),!1}function v(e,n,t,o,i){var s=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+Q.join(s+" ")+s).split(" ");return r(n,"string")||r(n,"undefined")?h(a,n,o,i):(a=(e+" "+E.join(s+" ")+s).split(" "),f(a,n,t))}function y(e,n,r){return v(e,t,t,n,r)}var w=[],_=[],b={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){_.push({name:e,fn:n,options:t})},addAsyncTest:function(e){_.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=b,Modernizr=new Modernizr,Modernizr.addTest("svg",!!n.createElementNS&&!!n.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect);var C,S=n.documentElement,B="svg"===S.nodeName.toLowerCase();!function(){var e={}.hasOwnProperty;C=r(e,"undefined")||r(e.call,"undefined")?function(e,n){return n in e&&r(e.constructor.prototype[n],"undefined")}:function(n,t){return e.call(n,t)}}(),b._l={},b.on=function(e,n){this._l[e]||(this._l[e]=[]),this._l[e].push(n),Modernizr.hasOwnProperty(e)&&setTimeout(function(){Modernizr._trigger(e,Modernizr[e])},0)},b._trigger=function(e,n){if(this._l[e]){var t=this._l[e];setTimeout(function(){var e,r;for(e=0;e<t.length;e++)(r=t[e])(n)},0),delete this._l[e]}},Modernizr._q.push(function(){b.addTest=s}),Modernizr.addAsyncTest(function(){function e(e,n,t){function r(n){var r=n&&"load"===n.type?1==o.width:!1,i="webp"===e;s(e,i&&r?new Boolean(r):r),t&&t(n)}var o=new Image;o.onerror=r,o.onload=r,o.src=n}var n=[{uri:"data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=",name:"webp"},{uri:"data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==",name:"webp.alpha"},{uri:"data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA",name:"webp.animation"},{uri:"data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=",name:"webp.lossless"}],t=n.shift();e(t.name,t.uri,function(t){if(t&&"load"===t.type)for(var r=0;r<n.length;r++)e(n[r].name,n[r].uri)})});var x="Moz O ms Webkit",Q=b._config.usePrefixes?x.split(" "):[];b._cssomPrefixes=Q;var E=b._config.usePrefixes?x.toLowerCase().split(" "):[];b._domPrefixes=E;var T={elem:l("modernizr")};Modernizr._q.push(function(){delete T.elem});var R={style:T.elem.style};Modernizr._q.unshift(function(){delete R.style}),b.testAllProps=v,b.testAllProps=y,Modernizr.addTest("cssanimations",y("animationName","a",!0)),Modernizr.addTest("flexbox",y("flexBasis","1px",!0)),o(),i(w),delete b.addTest,delete b.addAsyncTest;for(var U=0;U<Modernizr._q.length;U++)Modernizr._q[U]();e.Modernizr=Modernizr}(window,document);
+
+
+
     </script>
     <title>Download Vivaldi | Vivaldi Browser</title>
     <link href="https://vivaldi.com/download/" hreflang="x-default" rel="alternate"/>
@@ -141,6 +144,9 @@ display: none;
 		 height: 484px;
 	}
 }
+
+
+
 
     </style>
 </head>
@@ -305,6 +311,9 @@ display: none;
 	}
 }
 
+
+
+
     </style>
 
     <div class="hero-cover" id="hero-desktop-dl">
@@ -429,11 +438,11 @@ display: none;
                         AppGallery</a></b>. </p>
                     <p class="small graylinks">Download the app (apk) here.<br>
                         <a href="https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.61_armeabi-v7a.apk"
-                           onclick="thankyou_apk();">ARM 32 bit (default)</a>, <a
-                                href="https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.61_arm64-v8a.apk"
-                                onclick="thankyou_apk();">ARM 64 bit</a>, <a
-                                href="https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.61_x86-64.apk"
-                                onclick="thankyou_apk();">Intel 64 bit</a>
+                           onclick="thankyou_apk();">ARM 32 bit (default)</a>,
+                        <a href="https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.61_arm64-v8a.apk"
+                           onclick="thankyou_apk();">ARM 64 bit</a>,
+                        <a href="https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.61_x86-64.apk"
+                           onclick="thankyou_apk();">Intel 64 bit</a>
                     </p>
                 </div>
 
@@ -449,6 +458,9 @@ jQuery(function() {
 		jQuery('#altdownload').toggleClass('hidden');
 	});
 });
+
+
+
 
     </script>
 
@@ -671,6 +683,9 @@ jQuery(function() {
 
 <script nonce="Vg1Ix7+R24+Pk+NC9UrzCGc6QSU=">
     var _paq = _paq || [];_paq.push(["AbTesting::enter", {experiment: "#1_Download_page_sales_prop_testing", variation: "Productivity_Dreamstate"}]);
+
+
+
 </script>
 <script nonce="Vg1Ix7+R24+Pk+NC9UrzCGc6QSU=">
 		jQuery(document).ready(function(){
@@ -740,6 +755,9 @@ jQuery(function() {
 			}
 		});
 
+
+
+
 </script>
 <script nonce="Vg1Ix7+R24+Pk+NC9UrzCGc6QSU=">
   var _paq = _paq || [];
@@ -754,6 +772,9 @@ jQuery(function() {
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.async=true; g.defer=true; g.src=u+'rep/rep.js?2'; s.parentNode.insertBefore(g,s);
   })();
+
+
+
 </script>
 <noscript><img alt="" src="https://vivaldi.com/rep/rep?idsite=4&rec=1"/></noscript>
 <script nonce="Vg1Ix7+R24+Pk+NC9UrzCGc6QSU=">
@@ -806,6 +827,9 @@ function thankyou_apk() {
 	jQuery("#thankyou-apk").removeClass("fadeOut");
 	jQuery("#thankyou-apk").addClass("fadeIn");
 }
+
+
+
 
 </script>
 </body>
