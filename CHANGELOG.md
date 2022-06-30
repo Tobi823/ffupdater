@@ -1,3 +1,8 @@
+# 2022-06-30 Version 76.1.0 (108)
+
+* Mark Ungoogled Chromium and Iceraven temporary as end-of-life
+*
+
 # 2022-06-27 Version 76.0.1 (107)
 
 * Thanks MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner for improving the
