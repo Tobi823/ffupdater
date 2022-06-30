@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import de.marmaro.krt.ffupdater.app.eol.EolApp
-import de.marmaro.krt.ffupdater.background.BackgroundNotificationBuilder
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 
 
 class EolAppsWarnerReceiver : BroadcastReceiver() {

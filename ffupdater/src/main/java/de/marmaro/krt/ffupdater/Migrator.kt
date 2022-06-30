@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import de.marmaro.krt.ffupdater.background.BackgroundJob
 
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 

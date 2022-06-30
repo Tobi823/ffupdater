@@ -26,7 +26,6 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.background.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
@@ -34,6 +33,7 @@ import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.SESSION_INSTALLER

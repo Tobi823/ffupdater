@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.background
+package de.marmaro.krt.ffupdater
 
 import android.content.Context
 import android.util.Log
@@ -8,7 +8,6 @@ import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
 import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
@@ -18,6 +17,7 @@ import de.marmaro.krt.ffupdater.download.FileDownloader
 import de.marmaro.krt.ffupdater.download.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper

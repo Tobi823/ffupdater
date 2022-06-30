@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.background
+package de.marmaro.krt.ffupdater.notification
 
 import android.annotation.SuppressLint
 import android.app.Notification
