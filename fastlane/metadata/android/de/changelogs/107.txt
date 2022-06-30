@@ -1,0 +1,6 @@
+* Dank an MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner für die Verbesserung der
+  Übersetzung.
+* Mozilla Lockwise als End-of-life markieren (Danke an p0yskaa für die Information).
+* Warnung anzeigen, wenn eine End-of-Life-App verwendet wird.
+* UpdateCheckResult in den Einstellungen zwischenspeichern - dies sollte zuverlässiger sein als die vorherige Zwischenspeicherungsmethode
+* Kontraste der Farben verbessern.
