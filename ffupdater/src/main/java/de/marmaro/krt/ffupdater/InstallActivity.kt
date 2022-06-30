@@ -22,8 +22,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.R.string.*
+import de.marmaro.krt.ffupdater.app.AppUpdateResult
 import de.marmaro.krt.ffupdater.app.MaintainedApp
-import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
@@ -60,7 +60,7 @@ class InstallActivity : AppCompatActivity() {
     class InstallActivityViewModel : ViewModel() {
         var app: MaintainedApp? = null
         var fileDownloader: FileDownloader? = null
-        var updateCheckResult: UpdateCheckResult? = null
+        var appUpdateResult: AppUpdateResult? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -183,8 +183,8 @@ class InstallActivity : AppCompatActivity() {
             return
         }
 
-        if (viewModel.updateCheckResult == null) {
-            viewModel.updateCheckResult = try {
+        if (viewModel.appUpdateResult == null) {
+            viewModel.appUpdateResult = try {
                 // InstallActivity should work even if there is no internet connection for a long time
                 // -> use even expired cache data to potentially use already downloaded APK files
                 // Risk: old version will be installed
@@ -202,7 +202,7 @@ class InstallActivity : AppCompatActivity() {
         show(R.id.fetchedUrlSuccess)
         val finishedText = getString(install_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
-        if (appCache.isAvailable(this, viewModel.updateCheckResult!!.availableResult)) {
+        if (appCache.isAvailable(this, viewModel.appUpdateResult!!.availableResult)) {
             show(R.id.useCachedDownloadedApk)
             setText(R.id.useCachedDownloadedApk__path, appCache.getFile(this).absolutePath)
             installApp()
@@ -224,7 +224,7 @@ class InstallActivity : AppCompatActivity() {
         }
 
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, viewModel.updateCheckResult!!.downloadUrl)
+        setText(R.id.downloadingFileUrl, viewModel.appUpdateResult!!.downloadUrl)
 
         val fileDownloader = FileDownloader()
         viewModel.fileDownloader = fileDownloader
@@ -244,7 +244,7 @@ class InstallActivity : AppCompatActivity() {
         val display = getString(install_activity__download_app_with_status, "")
         setText(R.id.downloadingFileText, display)
 
-        val url = viewModel.updateCheckResult!!.availableResult.downloadUrl
+        val url = viewModel.appUpdateResult!!.availableResult.downloadUrl
         appCache.delete(this)
         val file = appCache.getFile(this)
 
@@ -255,19 +255,19 @@ class InstallActivity : AppCompatActivity() {
             }
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, viewModel.updateCheckResult!!.downloadUrl)
+            setText(R.id.downloadedFileUrl, viewModel.appUpdateResult!!.downloadUrl)
             installApp()
         } catch (e: NetworkException) {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, viewModel.updateCheckResult!!.downloadUrl)
+            setText(R.id.downloadedFileUrl, viewModel.appUpdateResult!!.downloadUrl)
             failureDownloadUnsuccessful(e)
         }
     }
 
     @MainThread
     private suspend fun reuseCurrentDownload() {
-        val updateCheckResult = requireNotNull(viewModel.updateCheckResult)
+        val updateCheckResult = requireNotNull(viewModel.appUpdateResult)
         show(R.id.downloadingFile)
         setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
         val fileDownloader = requireNotNull(viewModel.fileDownloader)
@@ -308,7 +308,7 @@ class InstallActivity : AppCompatActivity() {
             show(R.id.fingerprintInstalledGood)
             setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
 
-            val available = requireNotNull(viewModel.updateCheckResult).availableResult
+            val available = requireNotNull(viewModel.appUpdateResult).availableResult
             viewModel.app!!.detail.appIsInstalled(this, available)
 
             if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
@@ -353,7 +353,7 @@ class InstallActivity : AppCompatActivity() {
 
     @MainThread
     private fun failureDownloadUnsuccessful(exception: Exception) {
-        val updateCheckResult = requireNotNull(viewModel.updateCheckResult)
+        val updateCheckResult = requireNotNull(viewModel.appUpdateResult)
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)

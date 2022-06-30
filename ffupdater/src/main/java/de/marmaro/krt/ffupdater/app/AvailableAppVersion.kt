@@ -5,7 +5,7 @@ import de.marmaro.krt.ffupdater.security.Sha256Hash
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class AvailableVersionResult(
+data class AvailableAppVersion(
         val downloadUrl: String,
         val version: String,
         val publishDate: String?,

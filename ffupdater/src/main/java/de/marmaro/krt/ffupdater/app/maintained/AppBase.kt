@@ -7,8 +7,8 @@ import androidx.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.AppUpdateResult
+import de.marmaro.krt.ffupdater.app.AvailableAppVersion
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
@@ -55,15 +55,15 @@ abstract class AppBase {
     }
 
     @AnyThread
-    fun getDisplayAvailableVersion(context: Context, availableVersionResult: AvailableVersionResult): String {
+    fun getDisplayAvailableVersion(context: Context, availableVersionResult: AvailableAppVersion): String {
         return context.getString(R.string.available_version, availableVersionResult.version)
     }
 
     @AnyThread
-    open fun appIsInstalled(context: Context, available: AvailableVersionResult) {
+    open fun appIsInstalled(context: Context, available: AvailableAppVersion) {
     }
 
-    suspend fun checkForUpdateAsync(context: Context): Deferred<UpdateCheckResult> {
+    suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateResult> {
         return withContext(Dispatchers.IO) {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
@@ -74,7 +74,7 @@ abstract class AppBase {
         }
     }
 
-    suspend fun checkForUpdateWithoutCacheAsync(context: Context): Deferred<UpdateCheckResult> {
+    suspend fun checkForUpdateWithoutCacheAsync(context: Context): Deferred<AppUpdateResult> {
         return withContext(Dispatchers.IO) {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
@@ -85,7 +85,7 @@ abstract class AppBase {
         }
     }
 
-    suspend fun checkForUpdateWithEvenExpiredCacheAsync(context: Context): Deferred<UpdateCheckResult> {
+    suspend fun checkForUpdateWithEvenExpiredCacheAsync(context: Context): Deferred<AppUpdateResult> {
         return withContext(Dispatchers.IO) {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
@@ -100,13 +100,13 @@ abstract class AppBase {
         context: Context,
         useCache: Boolean,
         useExpiredCache: Boolean
-    ): UpdateCheckResult {
+    ): AppUpdateResult {
         val cacheKey = "cached_update_check_result__${packageName}"
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         try {
             if (useCache) {
                 preferences.getString(cacheKey, null)
-                    ?.let { gson.fromJson(it, UpdateCheckResult::class.java) }
+                    ?.let { gson.fromJson(it, AppUpdateResult::class.java) }
                     ?.takeIf { useExpiredCache || (System.currentTimeMillis() - it.timestamp <= CACHE_TIME) }
                     ?.let { return it }
             }
@@ -115,7 +115,7 @@ abstract class AppBase {
         }
 
         val available = checkForUpdate()
-        val result = UpdateCheckResult(
+        val result = AppUpdateResult(
             availableResult = available,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available),
             displayVersion = getDisplayAvailableVersion(context, available)
@@ -126,13 +126,13 @@ abstract class AppBase {
     }
 
     @MainThread
-    protected abstract suspend fun checkForUpdate(): AvailableVersionResult
+    protected abstract suspend fun checkForUpdate(): AvailableAppVersion
 
     @MainThread
     open suspend fun isAvailableVersionEqualToArchive(
         context: Context,
         file: File,
-        available: AvailableVersionResult
+        available: AvailableAppVersion
     ): Boolean {
         val archiveVersion = PackageManagerUtil(context.packageManager)
             .getPackageArchiveVersionNameOrNull(file.absolutePath) ?: return false
@@ -142,7 +142,7 @@ abstract class AppBase {
     @AnyThread
     open fun isAvailableVersionHigherThanInstalled(
         context: Context,
-        available: AvailableVersionResult
+        available: AvailableAppVersion
     ): Boolean {
         val installedVersion = getInstalledVersion(context) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)

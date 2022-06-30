@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.download
 
 import android.content.Context
 import android.os.Environment
-import de.marmaro.krt.ffupdater.app.AvailableVersionResult
+import de.marmaro.krt.ffupdater.app.AvailableAppVersion
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import java.io.File
 
@@ -11,7 +11,7 @@ class AppCache(val app: MaintainedApp) {
         return File(getCacheFolder(context), "${app.detail.packageName}.apk")
     }
 
-    suspend fun isAvailable(context: Context, available: AvailableVersionResult): Boolean {
+    suspend fun isAvailable(context: Context, available: AvailableAppVersion): Boolean {
         val file = getFile(context)
         if (file.exists() && file.length() > 0L) {
             return app.detail.isAvailableVersionEqualToArchive(context, file, available)

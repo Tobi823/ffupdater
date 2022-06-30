@@ -5,7 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableVersionResult
+import de.marmaro.krt.ffupdater.app.AvailableAppVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -36,7 +36,7 @@ class FirefoxNightly(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
 
-    override suspend fun checkForUpdate(): AvailableVersionResult {
+    override suspend fun checkForUpdate(): AvailableAppVersion {
         val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
@@ -53,7 +53,7 @@ class FirefoxNightly(
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val version = formatter.format(releaseDate)
-        return AvailableVersionResult(
+        return AvailableAppVersion(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,
@@ -65,7 +65,7 @@ class FirefoxNightly(
     override suspend fun isAvailableVersionEqualToArchive(
         context: Context,
         file: File,
-        available: AvailableVersionResult,
+        available: AvailableAppVersion,
     ): Boolean {
         val hash = FileHashCalculator.getSHA256ofFile(file)
         return hash == available.fileHash
@@ -73,7 +73,7 @@ class FirefoxNightly(
 
     override fun isAvailableVersionHigherThanInstalled(
         context: Context,
-        available: AvailableVersionResult,
+        available: AvailableAppVersion,
     ): Boolean {
         return try {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -87,7 +87,7 @@ class FirefoxNightly(
         }
     }
 
-    override fun appIsInstalled(context: Context, available: AvailableVersionResult) {
+    override fun appIsInstalled(context: Context, available: AvailableAppVersion) {
         try {
             PreferenceManager.getDefaultSharedPreferences(context).edit()
                 .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))

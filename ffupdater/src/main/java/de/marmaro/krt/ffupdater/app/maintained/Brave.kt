@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableVersionResult
+import de.marmaro.krt.ffupdater.app.AvailableAppVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -30,7 +30,7 @@ class Brave(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
-    override suspend fun checkForUpdate(): AvailableVersionResult {
+    override suspend fun checkForUpdate(): AvailableAppVersion {
         val filteredAbis = deviceAbis.filter { it in supportedAbis }
         val fileName = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
@@ -51,7 +51,7 @@ class Brave(
         )
         val result = githubConsumer.updateCheck()
         val version = result.tagName.replace("v", "")
-        return AvailableVersionResult(
+        return AvailableAppVersion(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,

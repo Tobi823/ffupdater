@@ -5,8 +5,8 @@ import de.marmaro.krt.ffupdater.security.Sha256Hash
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class UpdateCheckResult(
-    val availableResult: AvailableVersionResult,
+data class AppUpdateResult(
+    val availableResult: AvailableAppVersion,
     val isUpdateAvailable: Boolean,
     val displayVersion: String,
     val timestamp: Long = System.currentTimeMillis()
