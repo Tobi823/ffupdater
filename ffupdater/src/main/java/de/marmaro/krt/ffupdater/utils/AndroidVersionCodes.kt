@@ -24,7 +24,9 @@ object AndroidVersionCodes {
             P -> "9 (Pie)"
             Q -> "10 (Q)"
             R -> "11 (R)"
-            R + 1 -> throw Exception("missing entry for Android 12")
+            S -> "12"
+            S_V2 -> "12L"
+            S_V2 + 1 -> throw Exception("missing entry for Android 13")
             else -> throw Exception("invalid API level")
         }
     }
