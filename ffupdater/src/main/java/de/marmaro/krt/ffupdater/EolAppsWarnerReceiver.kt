@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import de.marmaro.krt.ffupdater.app.eol.EolApp
+import de.marmaro.krt.ffupdater.app.EolApp
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 
 
