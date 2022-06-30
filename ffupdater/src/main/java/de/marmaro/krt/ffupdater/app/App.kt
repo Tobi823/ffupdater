@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.app
 
-import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.maintained.*
+import de.marmaro.krt.ffupdater.app.network.ApiConsumer
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 
 private val apiConsumer = ApiConsumer()

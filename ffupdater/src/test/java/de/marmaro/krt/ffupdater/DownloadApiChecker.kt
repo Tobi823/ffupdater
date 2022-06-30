@@ -3,8 +3,8 @@ package de.marmaro.krt.ffupdater
 import android.content.Context
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
-import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer
 import de.marmaro.krt.ffupdater.app.maintained.*
+import de.marmaro.krt.ffupdater.app.network.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import io.mockk.every
 import io.mockk.impl.annotations.MockK

@@ -4,8 +4,8 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseApp
-import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.app.fetch.github.GithubConsumer
+import de.marmaro.krt.ffupdater.app.network.ApiConsumer
+import de.marmaro.krt.ffupdater.app.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
 /**
