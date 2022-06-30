@@ -42,7 +42,8 @@ class FFUpdater(
             version = result.tagName,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
-            fileHash = null
+            fileHash = null,
+            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 }

@@ -54,7 +54,8 @@ class BraveNightly(
             version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
-            fileHash = null
+            fileHash = null,
+            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 }

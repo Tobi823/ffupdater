@@ -58,7 +58,8 @@ class FirefoxNightly(
             version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = null,
-            fileHash = result.fileHash
+            fileHash = result.fileHash,
+            firstReleaseHasAssets = true,
         )
     }
 

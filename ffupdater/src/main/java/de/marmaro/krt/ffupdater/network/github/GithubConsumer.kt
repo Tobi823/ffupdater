@@ -49,7 +49,7 @@ class GithubConsumer(
                                 url = asset.downloadUrl,
                                 fileSizeBytes = asset.fileSizeBytes,
                                 releaseDate = release.publishedAt,
-                                moreRecentReleaseWasIgnoredBecauseItHasNoValidAssets = firstReleaseHasAssets,
+                                firstReleaseHasAssets = firstReleaseHasAssets,
                             )
                         }
                     // this will only be called if the first valid release has no valid assets
@@ -86,6 +86,6 @@ class GithubConsumer(
         val url: String,
         val fileSizeBytes: Long,
         val releaseDate: String,
-        val moreRecentReleaseWasIgnoredBecauseItHasNoValidAssets: Boolean
+        val firstReleaseHasAssets: Boolean
     )
 }

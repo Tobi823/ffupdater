@@ -10,5 +10,6 @@ data class AvailableAppVersion(
         val version: String,
         val publishDate: String?,
         val fileSizeBytes: Long?,
-        val fileHash: Sha256Hash?
+        val fileHash: Sha256Hash?,
+        val firstReleaseHasAssets: Boolean,
 ) : Parcelable

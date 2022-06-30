@@ -48,7 +48,8 @@ class Vivaldi(
             version = availableVersion.value,
             publishDate = null,
             fileSizeBytes = null,
-            fileHash = null
+            fileHash = null,
+            firstReleaseHasAssets = true,
         )
     }
 
