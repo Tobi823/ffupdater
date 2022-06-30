@@ -26,4 +26,7 @@ data class AppUpdateResult(
 
     val fileHash: Sha256Hash?
         get() = availableResult.fileHash
+
+    val firstReleaseHasAssets: Boolean
+        get() = availableResult.firstReleaseHasAssets
 }

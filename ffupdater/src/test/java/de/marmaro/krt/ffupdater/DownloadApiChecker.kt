@@ -57,6 +57,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 4 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        // don't check for firstReleaseHasAssets because it is common that some releases has no APK files
     }
 
     @Test
@@ -68,6 +69,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        // don't check for firstReleaseHasAssets because it is common that some releases has no APK files
     }
 
     @Test
@@ -79,6 +81,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        // don't check for firstReleaseHasAssets because it is common that some releases has no APK files
     }
 
     @Test
@@ -88,8 +91,9 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 9 * 7
+        val maxDays = 4 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -101,6 +105,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 9 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -112,6 +117,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 3 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -127,6 +133,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 8 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -138,6 +145,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 2 * 30
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -150,6 +158,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 1 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -161,6 +170,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 6 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -172,6 +182,7 @@ class DownloadApiChecker {
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         val maxDays = 9 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -180,6 +191,7 @@ class DownloadApiChecker {
         val result = runBlocking { vivaldi.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertFalse(result.version.isEmpty())
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     @Test
@@ -187,6 +199,7 @@ class DownloadApiChecker {
         val ffupdater = FFUpdater(ApiConsumer())
         val result = runBlocking { ffupdater.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     private fun verifyThatDownloadLinkAvailable(urlString: String) {
