@@ -164,17 +164,6 @@ class DownloadApiChecker {
     }
 
     @Test
-    fun iceraven() {
-        val iceraven = Iceraven(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { iceraven.checkForUpdateWithoutCacheAsync(context).await() }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
-        val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 4 * 30
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
-    }
-
-    @Test
     fun kiwi() {
         val kiwi = Kiwi(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { kiwi.checkForUpdateWithoutCacheAsync(context).await() }
@@ -191,17 +180,6 @@ class DownloadApiChecker {
         val result = runBlocking { vivaldi.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertFalse(result.version.isEmpty())
-    }
-
-    @Test
-    fun ungoogledChromium() {
-        val ungoogledChromium = UngoogledChromium(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
-        val result = runBlocking { ungoogledChromium.checkForUpdateWithoutCacheAsync(context).await() }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
-        val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 15 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
     }
 
     @Test

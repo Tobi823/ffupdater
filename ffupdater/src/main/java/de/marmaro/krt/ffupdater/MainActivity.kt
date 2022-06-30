@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         cleanUpObjects()
         val settingsHelper = ForegroundSettingsHelper(this)
         EolApp.values()
-            .filter { it.detail.isInstalled(this) }
+            .filter { it.impl.isInstalled(this) }
             .forEach { initUIForEolApp(mainLayout, it) }
         App.values()
             .filter { it.detail.isInstalled(this) }
@@ -137,9 +137,9 @@ class MainActivity : AppCompatActivity() {
     @UiThread
     private fun initUIForEolApp(mainLayout: LinearLayout, app: EolApp) {
         val cardView = layoutInflater.inflate(R.layout.eol_app_card_layout, mainLayout, false)
-        cardView.findViewWithTag<TextView>("app_title").setText(app.detail.displayTitle)
-        cardView.findViewWithTag<ImageView>("app_icon").setImageResource(app.detail.displayIcon)
-        cardView.findViewWithTag<TextView>("eol_reason").setText(app.detail.eolReason)
+        cardView.findViewWithTag<TextView>("app_title").setText(app.impl.displayTitle)
+        cardView.findViewWithTag<ImageView>("app_icon").setImageResource(app.impl.displayIcon)
+        cardView.findViewWithTag<TextView>("eol_reason").setText(app.impl.eolReason)
         mainLayout.addView(cardView)
     }
 

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.annotation.AnyThread
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
 
-interface EolBaseApp {
+interface EolAppBase {
     val packageName: String
     val displayTitle: Int
     val displayIcon: Int

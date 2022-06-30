@@ -19,9 +19,7 @@ enum class App(appDetail: BaseApp) {
     FIREFOX_KLAR(FirefoxKlar(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     FIREFOX_NIGHTLY(FirefoxNightly(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     FIREFOX_RELEASE(FirefoxRelease(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    ICERAVEN(Iceraven(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     KIWI(Kiwi(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    UNGOOGLED_CHROMIUM(UngoogledChromium(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     VIVALDI(Vivaldi(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     ;
 
