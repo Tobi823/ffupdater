@@ -13,7 +13,6 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/brave-software/brave-browser-beta/
  */
 class BraveBeta(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
 ) : AppBase() {
@@ -45,7 +44,6 @@ class BraveBeta(
             resultsPerPage = 20,
             isValidRelease = { release -> !release.isPreRelease && release.name.startsWith("Beta v") },
             isCorrectAsset = { asset -> asset.name == fileName },
-            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )

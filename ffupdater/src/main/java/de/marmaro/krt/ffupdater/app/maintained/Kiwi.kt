@@ -16,7 +16,6 @@ import java.io.File
  * https://www.apkmirror.com/apk/geometry-ou/kiwi-browser-fast-quiet/
  */
 class Kiwi(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
 ) : AppBase() {
@@ -48,7 +47,6 @@ class Kiwi(
             repoName = "src.next",
             resultsPerPage = 1,
             isValidRelease = { true },
-            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             isCorrectAsset = { asset -> asset.name.startsWith(filePrefix) && asset.name.endsWith(fileSuffix) },
             dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,

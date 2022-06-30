@@ -14,7 +14,6 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/
  */
 class FirefoxFocus(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
 ) : AppBase() {
@@ -46,7 +45,6 @@ class FirefoxFocus(
             resultsPerPage = 3,
             isValidRelease = { release -> !release.isPreRelease && "beta" !in release.name },
             isCorrectAsset = { asset -> asset.name.startsWith("focus") && asset.name.endsWith(fileSuffix) },
-            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

@@ -11,7 +11,6 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://api.github.com/repos/brave/brave-browser/releases
  */
 class FFUpdater(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
 ) : AppBase() {
     override val packageName = "de.marmaro.krt.ffupdater"
@@ -35,7 +34,6 @@ class FFUpdater(
             resultsPerPage = 5,
             isValidRelease = { release -> !release.isPreRelease },
             isCorrectAsset = { asset -> asset.name.endsWith(".apk") },
-            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

@@ -13,7 +13,6 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/bromite/bromite-system-webview-2/
  */
 class BromiteSystemWebView(
-    private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
 ) : AppBase() {
@@ -44,7 +43,6 @@ class BromiteSystemWebView(
             repoName = "bromite",
             resultsPerPage = 5,
             isValidRelease = { release -> !release.isPreRelease },
-            failIfValidReleaseHasNoValidAsset = failIfValidReleaseHasNoValidAsset,
             isCorrectAsset = { asset -> asset.name == fileName },
             apiConsumer = apiConsumer,
         )

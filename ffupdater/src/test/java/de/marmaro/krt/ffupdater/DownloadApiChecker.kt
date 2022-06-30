@@ -50,7 +50,7 @@ class DownloadApiChecker {
 
     @Test
     fun brave() {
-        val brave = Brave(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val brave = Brave(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { brave.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -61,7 +61,7 @@ class DownloadApiChecker {
 
     @Test
     fun braveBeta() {
-        val brave = BraveBeta(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val brave = BraveBeta(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { brave.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -72,7 +72,7 @@ class DownloadApiChecker {
 
     @Test
     fun braveNightly() {
-        val brave = BraveNightly(false, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val brave = BraveNightly(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { brave.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -83,7 +83,7 @@ class DownloadApiChecker {
 
     @Test
     fun bromite() {
-        val bromite = Bromite(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val bromite = Bromite(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { bromite.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -94,7 +94,7 @@ class DownloadApiChecker {
 
     @Test
     fun bromiteSystemWebView() {
-        val bromite = BromiteSystemWebView(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val bromite = BromiteSystemWebView(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { bromite.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -118,7 +118,7 @@ class DownloadApiChecker {
     fun firefoxFocus() {
         val result =
             runBlocking {
-                FirefoxFocus(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A)).checkForUpdateWithoutCacheAsync(
+                FirefoxFocus(ApiConsumer(), listOf(ABI.ARMEABI_V7A)).checkForUpdateWithoutCacheAsync(
                     context
                 ).await()
             }
@@ -131,7 +131,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxKlar() {
-        val firefoxKlar = FirefoxKlar(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val firefoxKlar = FirefoxKlar(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { firefoxKlar.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -165,7 +165,7 @@ class DownloadApiChecker {
 
     @Test
     fun kiwi() {
-        val kiwi = Kiwi(true, ApiConsumer(), listOf(ABI.ARMEABI_V7A))
+        val kiwi = Kiwi(ApiConsumer(), listOf(ABI.ARMEABI_V7A))
         val result = runBlocking { kiwi.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -184,7 +184,7 @@ class DownloadApiChecker {
 
     @Test
     fun ffupdater() {
-        val ffupdater = FFUpdater(true, ApiConsumer())
+        val ffupdater = FFUpdater(ApiConsumer())
         val result = runBlocking { ffupdater.checkForUpdateWithoutCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
     }
