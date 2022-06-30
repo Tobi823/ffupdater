@@ -19,7 +19,7 @@ import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.app.maintained.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 object BackgroundNotificationBuilder {

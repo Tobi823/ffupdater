@@ -24,8 +24,8 @@ import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
-import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
-import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.app.maintained.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.app.maintained.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache

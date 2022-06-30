@@ -9,8 +9,8 @@ import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.impl.exceptions.GithubRateLimitExceededException
-import de.marmaro.krt.ffupdater.app.impl.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.app.maintained.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.app.maintained.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.FileDownloader
