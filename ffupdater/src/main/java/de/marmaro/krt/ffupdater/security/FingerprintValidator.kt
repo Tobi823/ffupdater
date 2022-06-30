@@ -2,9 +2,9 @@ package de.marmaro.krt.ffupdater.security
 
 import android.content.pm.PackageManager
 import android.content.pm.Signature
+import de.marmaro.krt.ffupdater.app.PackageManagerUtil
 import de.marmaro.krt.ffupdater.app.maintained.AppBase
 import de.marmaro.krt.ffupdater.download.ApkSignatureNotFoundException
-import de.marmaro.krt.ffupdater.download.PackageManagerUtil
 import java.io.File
 import java.io.FileNotFoundException
 import java.security.MessageDigest

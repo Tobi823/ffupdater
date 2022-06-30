@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download
+package de.marmaro.krt.ffupdater.app
 
 import android.annotation.SuppressLint
 import android.content.pm.PackageInfo
@@ -9,6 +9,7 @@ import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.app.maintained.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.download.ApkSignatureNotFoundException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File

@@ -9,9 +9,9 @@ import com.google.gson.JsonSyntaxException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AppUpdateResult
 import de.marmaro.krt.ffupdater.app.AvailableAppVersion
+import de.marmaro.krt.ffupdater.app.PackageManagerUtil
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.download.PackageManagerUtil
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
