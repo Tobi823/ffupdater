@@ -15,6 +15,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.CrashReportActivity
 import de.marmaro.krt.ffupdater.InstallActivity
+import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
@@ -163,6 +164,19 @@ object BackgroundNotificationBuilder {
     fun hideInstallationError(context: Context, app: App) {
         val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         nm.cancel(600 + app.ordinal)
+    }
+
+    fun showEolAppsWarning(context: Context) {
+        showNotification(
+            context = context,
+            channelId = "eol_apps_notification",
+            channelName = context.getString(eol_apps_notification__channel_name),
+            channelDescription = context.getString(eol_apps_notification__channel_description),
+            notificationId = 800,
+            notificationTitle = context.getString(eol_apps_notification__title),
+            notificationMessage = context.getString(eol_apps_notification__message),
+            intent = MainActivity.createIntent(context)
+        )
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")

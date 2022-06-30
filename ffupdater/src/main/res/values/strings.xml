@@ -216,6 +216,10 @@
     <string name="lockwise__eol_reason">Mozilla dropped the support in December 2021. Please switch to another password safe.</string>
     <string name="app_card__app_warning_button_description">Show warnings about this app</string>
     <string name="generic_eol_reason__browser_to_old">The browser has not been updated for a long time, so I recommend using another browser temporarily. When the developers release a new update, I will remove this warning.</string>
+    <string name="eol_apps_notification__channel_name">Outdated apps notification</string>
+    <string name="eol_apps_notification__channel_description">Notification channel for warnings about outdated apps.</string>
+    <string name="eol_apps_notification__title">Outdated apps installed</string>
+    <string name="eol_apps_notification__message">You have outdated apps which should not be used anymore. Click for more information.</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="one">%1$s has the following problem:\n\n%2$s\n\nDo you still want to install %1$s?</item>
         <item quantity="other">%1$s has the following problems:\n\n%2$s\n\nDo you still want to install %1$s?</item>

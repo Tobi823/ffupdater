@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater
 import android.R.color.holo_blue_dark
 import android.R.color.holo_blue_light
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -290,5 +291,12 @@ class MainActivity : AppCompatActivity() {
     @UiThread
     private fun setLoadAnimationState(visible: Boolean) {
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = visible
+    }
+
+    companion object {
+        fun createIntent(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+            // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
     }
 }
