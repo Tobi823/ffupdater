@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
@@ -49,7 +49,7 @@ class FirefoxNightlyIT {
 
         every {
             packageManager.getPackageInfo(
-                App.FIREFOX_NIGHTLY.detail.packageName,
+                MaintainedApp.FIREFOX_NIGHTLY.detail.packageName,
                 0
             )
         } returns packageInfo

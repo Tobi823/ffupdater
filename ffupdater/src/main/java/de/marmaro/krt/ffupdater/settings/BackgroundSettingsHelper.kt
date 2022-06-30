@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.settings
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import java.time.Duration
 
 class BackgroundSettingsHelper(context: Context) {
@@ -25,13 +25,13 @@ class BackgroundSettingsHelper(context: Context) {
      *
      * @return the regular background update check should ignore these apps
      */
-    val excludedAppsFromUpdateCheck: List<App>
+    val excludedAppsFromUpdateCheck: List<MaintainedApp>
         get() {
             val disableApps = preferences.getStringSet("background__update_check__excluded_apps", null)
                 ?: setOf()
             return disableApps.mapNotNull {
                 try {
-                    App.valueOf(it)
+                    MaintainedApp.valueOf(it)
                 } catch (e: IllegalArgumentException) {
                     null
                 }

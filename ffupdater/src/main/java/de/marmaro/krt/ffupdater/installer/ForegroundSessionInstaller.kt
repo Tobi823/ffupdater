@@ -4,7 +4,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -13,7 +13,7 @@ import java.io.File
 
 class ForegroundSessionInstaller(
     context: Context,
-    app: App,
+    app: MaintainedApp,
     file: File
 ) : ForegroundAppInstaller, SessionInstallerBase(context, app, file) {
 

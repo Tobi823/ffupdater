@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.Context
 import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
@@ -72,19 +72,19 @@ class BackgroundSettingsHelperTest {
 
         @JvmStatic
         fun excludedAppsFromBackgroundUpdateCheck_data(): Stream<Arguments> = Stream.of(
-            Arguments.of(App.BRAVE, "BRAVE"),
-            Arguments.of(App.BRAVE_BETA, "BRAVE_BETA"),
-            Arguments.of(App.BRAVE_NIGHTLY, "BRAVE_NIGHTLY"),
-            Arguments.of(App.BROMITE, "BROMITE"),
-            Arguments.of(App.BROMITE_SYSTEMWEBVIEW, "BROMITE_SYSTEMWEBVIEW"),
-            Arguments.of(App.FFUPDATER, "FFUPDATER"),
-            Arguments.of(App.FIREFOX_BETA, "FIREFOX_BETA"),
-            Arguments.of(App.FIREFOX_FOCUS, "FIREFOX_FOCUS"),
-            Arguments.of(App.FIREFOX_KLAR, "FIREFOX_KLAR"),
-            Arguments.of(App.FIREFOX_NIGHTLY, "FIREFOX_NIGHTLY"),
-            Arguments.of(App.FIREFOX_RELEASE, "FIREFOX_RELEASE"),
-            Arguments.of(App.KIWI, "KIWI"),
-            Arguments.of(App.VIVALDI, "VIVALDI"),
+            Arguments.of(MaintainedApp.BRAVE, "BRAVE"),
+            Arguments.of(MaintainedApp.BRAVE_BETA, "BRAVE_BETA"),
+            Arguments.of(MaintainedApp.BRAVE_NIGHTLY, "BRAVE_NIGHTLY"),
+            Arguments.of(MaintainedApp.BROMITE, "BROMITE"),
+            Arguments.of(MaintainedApp.BROMITE_SYSTEMWEBVIEW, "BROMITE_SYSTEMWEBVIEW"),
+            Arguments.of(MaintainedApp.FFUPDATER, "FFUPDATER"),
+            Arguments.of(MaintainedApp.FIREFOX_BETA, "FIREFOX_BETA"),
+            Arguments.of(MaintainedApp.FIREFOX_FOCUS, "FIREFOX_FOCUS"),
+            Arguments.of(MaintainedApp.FIREFOX_KLAR, "FIREFOX_KLAR"),
+            Arguments.of(MaintainedApp.FIREFOX_NIGHTLY, "FIREFOX_NIGHTLY"),
+            Arguments.of(MaintainedApp.FIREFOX_RELEASE, "FIREFOX_RELEASE"),
+            Arguments.of(MaintainedApp.KIWI, "KIWI"),
+            Arguments.of(MaintainedApp.VIVALDI, "VIVALDI"),
         )
     }
 
@@ -205,7 +205,7 @@ class BackgroundSettingsHelperTest {
 
     @ParameterizedTest(name = "excludedAppsFromBackgroundUpdateCheck with app \"{0}\"")
     @MethodSource("excludedAppsFromBackgroundUpdateCheck_data")
-    fun `excludedAppsFromBackgroundUpdateCheck with app X`(app: App, name: String) {
+    fun `excludedAppsFromBackgroundUpdateCheck with app X`(app: MaintainedApp, name: String) {
         sharedPreferences.edit()
             .putStringSet("background__update_check__excluded_apps", setOf(name))
             .commit()
@@ -245,7 +245,7 @@ class BackgroundSettingsHelperTest {
             )
         ).commit()
         Assertions.assertEquals(
-            App.values().toList().sorted(),
+            MaintainedApp.values().toList().sorted(),
             BackgroundSettingsHelper(context).excludedAppsFromUpdateCheck.sorted()
         )
     }

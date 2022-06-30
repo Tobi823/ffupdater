@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.app
+package de.marmaro.krt.ffupdater.app.maintained
 
 import android.content.Context
 import androidx.annotation.AnyThread
@@ -7,6 +7,9 @@ import androidx.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.AvailableVersionResult
+import de.marmaro.krt.ffupdater.app.UpdateCheckResult
+import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
@@ -19,7 +22,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 
 
-abstract class BaseApp {
+abstract class AppBase {
     abstract val packageName: String
     abstract val displayTitle: Int
     abstract val displayDescription: Int

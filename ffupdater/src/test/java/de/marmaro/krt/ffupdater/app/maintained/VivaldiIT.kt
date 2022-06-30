@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import io.mockk.coEvery
@@ -41,7 +41,7 @@ class VivaldiIT {
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
-            packageManager.getPackageInfo(App.VIVALDI.detail.packageName, any())
+            packageManager.getPackageInfo(MaintainedApp.VIVALDI.detail.packageName, any())
         } returns packageInfo
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Vivaldi/download.html"

@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer.Release
@@ -44,7 +44,7 @@ class BraveNightlyIT {
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
             packageManager.getPackageInfo(
-                App.BRAVE_NIGHTLY.detail.packageName,
+                MaintainedApp.BRAVE_NIGHTLY.detail.packageName,
                 any()
             )
         } returns packageInfo

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.utils.AndroidVersionCodes
 
@@ -18,7 +18,7 @@ import de.marmaro.krt.ffupdater.utils.AndroidVersionCodes
 class DeviceTooOldDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
-        val app = App.valueOf(appName)
+        val app = MaintainedApp.valueOf(appName)
         val required = AndroidVersionCodes.getVersionForApiLevel(app.detail.minApiLevel)
         val actual = AndroidVersionCodes.getVersionForApiLevel(DeviceSdkTester.sdkInt)
         return AlertDialog.Builder(activity)
@@ -40,7 +40,7 @@ class DeviceTooOldDialog : DialogFragment() {
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
 
-        fun newInstance(app: App): DeviceTooOldDialog {
+        fun newInstance(app: MaintainedApp): DeviceTooOldDialog {
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
             val fragment = DeviceTooOldDialog()

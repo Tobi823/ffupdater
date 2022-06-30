@@ -7,7 +7,7 @@ import android.content.pm.Signature
 import android.os.Build
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
-import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.maintained.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -34,7 +34,7 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
     }
 
     @Throws(ApkSignatureNotFoundException::class)
-    fun getInstalledAppInfo(app: BaseApp): Signature {
+    fun getInstalledAppInfo(app: AppBase): Signature {
         return extractSignature { flags: Int -> packageManager.getPackageInfo(app.packageName, flags) }
             ?: throw ApkSignatureNotFoundException("Can't extract the signature from app.")
     }

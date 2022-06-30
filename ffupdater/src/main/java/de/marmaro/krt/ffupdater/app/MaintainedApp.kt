@@ -7,7 +7,7 @@ import de.marmaro.krt.ffupdater.network.ApiConsumer
 private val apiConsumer = ApiConsumer()
 private val deviceAbis = DeviceAbiExtractor.findSupportedAbis()
 
-enum class App(appDetail: BaseApp) {
+enum class MaintainedApp(appDetail: AppBase) {
     BRAVE(Brave(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     BRAVE_BETA(BraveBeta(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     BRAVE_NIGHTLY(BraveNightly(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
@@ -23,5 +23,5 @@ enum class App(appDetail: BaseApp) {
     VIVALDI(Vivaldi(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
     ;
 
-    val detail: BaseApp = appDetail
+    val detail: AppBase = appDetail
 }

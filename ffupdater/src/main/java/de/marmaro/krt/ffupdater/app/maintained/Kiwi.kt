@@ -5,7 +5,6 @@ import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -20,7 +19,7 @@ class Kiwi(
     private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
-) : BaseApp() {
+) : AppBase() {
     override val packageName = "com.kiwibrowser.browser"
     override val displayTitle = R.string.kiwi__title
     override val displayDescription = R.string.kiwi__description

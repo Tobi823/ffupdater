@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.installer
 
 import android.content.Context
 import com.topjohnwu.superuser.Shell
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
@@ -15,7 +15,7 @@ import java.util.regex.Pattern
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
  */
 class RootInstaller(
-    app: App,
+    app: MaintainedApp,
     private val file: File
 ) :
     SecureAppInstaller(app, file), ForegroundAppInstaller, BackgroundAppInstaller {
@@ -24,7 +24,7 @@ class RootInstaller(
     private val allowListFileName = ArrayList<String>()
 
     init {
-        App.values().forEach {
+        MaintainedApp.values().forEach {
             val packageName = it.detail.packageName
             val basePath = "/storage/emulated/0/Android/data/de.marmaro.krt.ffupdater/files/Download"
             allowListAbsoluteFilePath.add("$basePath/${packageName}.apk")

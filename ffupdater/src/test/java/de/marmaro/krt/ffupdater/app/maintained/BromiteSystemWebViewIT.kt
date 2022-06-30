@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -45,7 +45,7 @@ class BromiteSystemWebViewIT {
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
             packageManager.getPackageInfo(
-                App.BROMITE_SYSTEMWEBVIEW.detail.packageName,
+                MaintainedApp.BROMITE_SYSTEMWEBVIEW.detail.packageName,
                 0
             )
         } returns packageInfo

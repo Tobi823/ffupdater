@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.R.string.*
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.app.UpdateCheckResult
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -58,7 +58,7 @@ class InstallActivity : AppCompatActivity() {
 
     // persistent data across orientation changes
     class InstallActivityViewModel : ViewModel() {
-        var app: App? = null
+        var app: MaintainedApp? = null
         var fileDownloader: FileDownloader? = null
         var updateCheckResult: UpdateCheckResult? = null
     }
@@ -76,7 +76,7 @@ class InstallActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(InstallActivityViewModel::class.java)
         if (viewModel.app == null) {
             viewModel.app = intent.extras?.getString(EXTRA_APP_NAME)
-                ?.let { App.valueOf(it) }
+                ?.let { MaintainedApp.valueOf(it) }
                 ?: run {
                     // InstallActivity was unintentionally started again after finishing the download
                     finish()
@@ -390,7 +390,7 @@ class InstallActivity : AppCompatActivity() {
         /**
          * Create a new InstallActivity which have to check if app is up-to-date
          */
-        fun createIntent(context: Context, app: App): Intent {
+        fun createIntent(context: Context, app: MaintainedApp): Intent {
             val intent = Intent(context, InstallActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)

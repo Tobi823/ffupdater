@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.app.maintained
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -14,7 +13,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 class FFUpdater(
     private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
-) : BaseApp() {
+) : AppBase() {
     override val packageName = "de.marmaro.krt.ffupdater"
     override val displayTitle = R.string.app_name
     override val displayDescription = R.string.app_description

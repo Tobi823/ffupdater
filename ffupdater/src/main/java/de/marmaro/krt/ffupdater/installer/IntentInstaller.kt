@@ -13,7 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
@@ -25,7 +25,7 @@ import java.io.IOException
 class IntentInstaller(
     context: Context,
     private val activityResultRegistry: ActivityResultRegistry,
-    app: App,
+    app: MaintainedApp,
     private val file: File,
 ) : ForegroundAppInstaller, SecureAppInstaller(app, file) {
     private val status = CompletableDeferred<AppInstaller.InstallResult>()

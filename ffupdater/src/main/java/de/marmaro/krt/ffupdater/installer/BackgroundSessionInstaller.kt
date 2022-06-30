@@ -6,7 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -16,7 +16,7 @@ import java.io.File
 @RequiresApi(Build.VERSION_CODES.N)
 class BackgroundSessionInstaller(
     context: Context,
-    app: App,
+    app: MaintainedApp,
     file: File
 ) : BackgroundAppInstaller, SessionInstallerBase(context, app, file) {
 

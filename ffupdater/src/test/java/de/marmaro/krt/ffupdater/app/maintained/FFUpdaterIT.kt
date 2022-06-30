@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import io.mockk.coEvery
@@ -40,7 +40,7 @@ class FFUpdaterIT {
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
-            packageManager.getPackageInfo(App.FFUPDATER.detail.packageName, any())
+            packageManager.getPackageInfo(MaintainedApp.FFUPDATER.detail.packageName, any())
         } returns packageInfo
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FFUpdater/latest.json"

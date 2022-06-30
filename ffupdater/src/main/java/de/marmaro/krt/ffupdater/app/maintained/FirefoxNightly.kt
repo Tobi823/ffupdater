@@ -6,7 +6,6 @@ import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -23,7 +22,7 @@ import java.time.format.DateTimeFormatter
 class FirefoxNightly(
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
-) : BaseApp() {
+) : AppBase() {
     override val packageName = "org.mozilla.fenix"
     override val displayTitle = R.string.firefox_nightly__title
     override val displayDescription = R.string.firefox_nightly__description

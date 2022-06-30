@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 
 /**
  * Show a dialog with the app warning.
@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.app.App
 class AppWarningDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
-        val app = App.valueOf(appName)
+        val app = MaintainedApp.valueOf(appName)
         val warning = getString(app.detail.displayWarning!!)
         val counter = warning.lines()
             .filter { it.startsWith("- ") }
@@ -47,7 +47,7 @@ class AppWarningDialog : DialogFragment() {
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
 
-        fun newInstance(app: App): AppWarningDialog {
+        fun newInstance(app: MaintainedApp): AppWarningDialog {
             requireNotNull(app.detail.displayWarning)
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)

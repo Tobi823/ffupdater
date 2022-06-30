@@ -13,7 +13,7 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import kotlinx.coroutines.CompletableDeferred
@@ -26,7 +26,7 @@ import java.io.IOException
 
 abstract class SessionInstallerBase(
     context: Context,
-    private val app: App,
+    private val app: MaintainedApp,
     private val file: File,
 ) : SecureAppInstaller(app, file) {
     private val installationStatus = CompletableDeferred<InstallResult>()

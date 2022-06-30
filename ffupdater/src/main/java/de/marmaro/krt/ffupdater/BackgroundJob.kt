@@ -8,7 +8,7 @@ import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.download.AppCache
 import de.marmaro.krt.ffupdater.download.FileDownloader
@@ -87,7 +87,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
 
         // check for updates
-        val apps = App.values().asList()
+        val apps = MaintainedApp.values().asList()
         val outdatedApps = apps.filter { checkForUpdateAndReturnAvailability(it) }
 //        val outdatedApps = listOf(App.FIREFOX_RELEASE)
         if (outdatedApps.isEmpty()) {
@@ -137,7 +137,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return null
     }
 
-    private suspend fun checkForUpdateAndReturnAvailability(app: App): Boolean {
+    private suspend fun checkForUpdateAndReturnAvailability(app: MaintainedApp): Boolean {
         if (app in backgroundSettings.excludedAppsFromUpdateCheck) {
             return false
         }
@@ -169,7 +169,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * download is finished.
      */
     @MainThread
-    private suspend fun downloadUpdateAndReturnAvailability(app: App): Boolean {
+    private suspend fun downloadUpdateAndReturnAvailability(app: MaintainedApp): Boolean {
         if (!StorageUtil.isEnoughStorageAvailable(context)) {
             Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
             return false
@@ -230,7 +230,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return Result.success()
     }
 
-    private suspend fun installApplication(app: App) {
+    private suspend fun installApplication(app: MaintainedApp) {
         // a previous check pretends that this method is called with Android < 10
         // but I have to add this check to make the compiler happy
         if (!DeviceSdkTester.supportsAndroid10()) {
@@ -263,7 +263,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
     }
 
-    private fun showUpdateNotification(appsWithUpdates: List<App>) {
+    private fun showUpdateNotification(appsWithUpdates: List<MaintainedApp>) {
         BackgroundNotificationBuilder.hideUpdateIsAvailable(context)
         appsWithUpdates.forEach { BackgroundNotificationBuilder.showUpdateIsAvailable(context, it) }
     }

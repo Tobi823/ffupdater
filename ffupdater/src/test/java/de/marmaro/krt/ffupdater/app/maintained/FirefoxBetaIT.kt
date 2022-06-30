@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import io.mockk.coEvery
@@ -43,7 +43,7 @@ class FirefoxBetaIT {
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         packageInfo.versionName = ""
         every {
-            packageManager.getPackageInfo(App.FIREFOX_BETA.detail.packageName, any())
+            packageManager.getPackageInfo(MaintainedApp.FIREFOX_BETA.detail.packageName, any())
         } returns packageInfo
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"

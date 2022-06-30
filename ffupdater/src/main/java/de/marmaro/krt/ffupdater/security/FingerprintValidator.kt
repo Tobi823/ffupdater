@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.security
 
 import android.content.pm.PackageManager
 import android.content.pm.Signature
-import de.marmaro.krt.ffupdater.app.BaseApp
+import de.marmaro.krt.ffupdater.app.maintained.AppBase
 import de.marmaro.krt.ffupdater.download.ApkSignatureNotFoundException
 import de.marmaro.krt.ffupdater.download.PackageManagerUtil
 import java.io.File
@@ -26,7 +26,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
     @Throws(UnableCheckApkException::class)
-    fun checkApkFile(file: File, app: BaseApp): CertificateValidationResult {
+    fun checkApkFile(file: File, app: AppBase): CertificateValidationResult {
         val signature = try {
             PackageManagerUtil(packageManager).getPackageArchiveInfo(file.absolutePath)
         } catch (e: FileNotFoundException) {
@@ -54,7 +54,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
     @Throws(UnableCheckApkException::class)
-    fun checkInstalledApp(app: BaseApp): CertificateValidationResult {
+    fun checkInstalledApp(app: AppBase): CertificateValidationResult {
         val signature = try {
             PackageManagerUtil(packageManager).getInstalledAppInfo(app)
         } catch (e: PackageManager.NameNotFoundException) {
@@ -72,7 +72,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
     }
 
     @Throws(CertificateException::class, NoSuchAlgorithmException::class)
-    private fun verifyPackageInfo(signature: Signature, appDetail: BaseApp): CertificateValidationResult {
+    private fun verifyPackageInfo(signature: Signature, appDetail: AppBase): CertificateValidationResult {
         val stream = signature.toByteArray().inputStream().buffered()
         val factory = CertificateFactory.getInstance("X509")
         val certificate = factory.generateCertificate(stream)

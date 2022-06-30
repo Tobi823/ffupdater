@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -43,7 +43,7 @@ class FirefoxFocusIT {
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         packageInfo.versionName = ""
         every {
-            packageManager.getPackageInfo(App.FIREFOX_FOCUS.detail.packageName, any())
+            packageManager.getPackageInfo(MaintainedApp.FIREFOX_FOCUS.detail.packageName, any())
         } returns packageInfo
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"

@@ -7,7 +7,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.DefaultLifecycleObserver
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.install_activity__downloaded_application_is_not_verified
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.installer.AppInstaller.ExtendedInstallResult
 import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
@@ -33,7 +33,7 @@ interface AppInstaller {
 }
 
 abstract class SecureAppInstaller(
-    private val app: App,
+    private val app: MaintainedApp,
     private val file: File,
 ) : AppInstaller {
 
@@ -80,7 +80,7 @@ abstract class SecureAppInstaller(
 interface BackgroundAppInstaller : AppInstaller {
     companion object {
         @RequiresApi(Build.VERSION_CODES.N)
-        fun create(context: Context, app: App, file: File): BackgroundAppInstaller {
+        fun create(context: Context, app: MaintainedApp, file: File): BackgroundAppInstaller {
             return when (InstallerSettingsHelper(context).getInstaller()) {
                 SESSION_INSTALLER -> BackgroundSessionInstaller(context, app, file)
                 NATIVE_INSTALLER ->
@@ -93,7 +93,7 @@ interface BackgroundAppInstaller : AppInstaller {
 
 interface ForegroundAppInstaller : AppInstaller, DefaultLifecycleObserver {
     companion object {
-        fun create(activity: ComponentActivity, app: App, file: File): ForegroundAppInstaller {
+        fun create(activity: ComponentActivity, app: MaintainedApp, file: File): ForegroundAppInstaller {
             return when (InstallerSettingsHelper(activity).getInstaller()) {
                 SESSION_INSTALLER -> ForegroundSessionInstaller(activity, app, file)
                 NATIVE_INSTALLER -> IntentInstaller(activity, activity.activityResultRegistry, app, file)

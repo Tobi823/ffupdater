@@ -22,8 +22,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__main_activity_update_check
-import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.EolApp
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -41,10 +41,12 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private val sameAppVersionIsAlreadyInstalled: EnumMap<App, Boolean> = EnumMap(App::class.java)
-    private val availableVersions: EnumMap<App, TextView> = EnumMap(App::class.java)
-    private val downloadButtons: EnumMap<App, ImageButton> = EnumMap(App::class.java)
-    private val errorsDuringUpdateCheck: EnumMap<App, Exception?> = EnumMap(App::class.java)
+    private val sameAppVersionIsAlreadyInstalled: EnumMap<MaintainedApp, Boolean> =
+        EnumMap(MaintainedApp::class.java)
+    private val availableVersions: EnumMap<MaintainedApp, TextView> = EnumMap(MaintainedApp::class.java)
+    private val downloadButtons: EnumMap<MaintainedApp, ImageButton> = EnumMap(MaintainedApp::class.java)
+    private val errorsDuringUpdateCheck: EnumMap<MaintainedApp, Exception?> =
+        EnumMap(MaintainedApp::class.java)
     private lateinit var foregroundSettings: ForegroundSettingsHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         EolApp.values()
             .filter { it.impl.isInstalled(this) }
             .forEach { initUIForEolApp(mainLayout, it) }
-        App.values()
+        MaintainedApp.values()
             .filter { it.detail.isInstalled(this) }
             .forEach { initUIForApp(mainLayout, it, settingsHelper) }
     }
@@ -146,7 +148,7 @@ class MainActivity : AppCompatActivity() {
     @UiThread
     private fun initUIForApp(
         mainLayout: LinearLayout,
-        app: App,
+        app: MaintainedApp,
         settingsHelper: ForegroundSettingsHelper
     ) {
         val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
@@ -196,7 +198,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun checkForUpdates(useCache: Boolean = true) {
-        val apps = App.values()
+        val apps = MaintainedApp.values()
             .filter { it.detail.isInstalled(this@MainActivity) }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
@@ -213,7 +215,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private suspend fun checkForAppUpdate(app: App, useCache: Boolean) {
+    private suspend fun checkForAppUpdate(app: MaintainedApp, useCache: Boolean) {
         try {
             val updateResult = if (useCache) {
                 app.detail.checkForUpdateAsync(applicationContext).await()
@@ -237,7 +239,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun setAvailableVersion(app: App, message: String) {
+    private fun setAvailableVersion(app: MaintainedApp, message: String) {
         // it is possible that MainActivity is destroyed but the coroutine wants to update
         // the "available version" text field (which does not longer exists)
         availableVersions[app]?.text = message
@@ -245,19 +247,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun setAvailableVersion(apps: List<App>, message: String) {
+    private fun setAvailableVersion(apps: List<MaintainedApp>, message: String) {
         apps.forEach { setAvailableVersion(it, message) }
     }
 
     @UiThread
-    private fun showUpdateCheckError(app: App, message: Int, exception: Exception) {
+    private fun showUpdateCheckError(app: MaintainedApp, message: Int, exception: Exception) {
         errorsDuringUpdateCheck[app] = exception
         availableVersions[app]?.setText(message)
         setDownloadButtonState(app, false)
     }
 
     @MainThread
-    fun installApp(app: App, askForConfirmationIfOtherDownloadsAreRunning: Boolean = false) {
+    fun installApp(app: MaintainedApp, askForConfirmationIfOtherDownloadsAreRunning: Boolean = false) {
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             showToast(R.string.main_activity__no_unmetered_network)
             return
@@ -282,7 +284,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun setDownloadButtonState(app: App, enabled: Boolean) {
+    private fun setDownloadButtonState(app: MaintainedApp, enabled: Boolean) {
         val icon = if (enabled) R.drawable.ic_file_download_orange else R.drawable.ic_file_download_grey
         downloadButtons[app]?.setImageResource(icon)
     }

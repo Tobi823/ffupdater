@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
@@ -21,7 +21,7 @@ class InstallNewAppDialog(
 ) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
-        val apps = App.values()
+        val apps = MaintainedApp.values()
             .filter { it.detail.normalInstallation }
             .filterNot { it.detail.isInstalled(context) }
 
@@ -33,7 +33,7 @@ class InstallNewAppDialog(
             .create()
     }
 
-    private fun triggerAppInstallation(app: App) {
+    private fun triggerAppInstallation(app: MaintainedApp) {
         // do not install an app which incompatible ABIs
         if (deviceAbis.all { it !in app.detail.supportedAbis }) {
             UnsupportedAbiDialog.newInstance().show(parentFragmentManager)

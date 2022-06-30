@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -43,7 +43,12 @@ class BromiteIT {
         every { context.packageManager } returns packageManager
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
-        every { packageManager.getPackageInfo(App.BROMITE.detail.packageName, 0) } returns packageInfo
+        every {
+            packageManager.getPackageInfo(
+                MaintainedApp.BROMITE.detail.packageName,
+                0
+            )
+        } returns packageInfo
         coEvery {
             apiConsumer.consumeAsync(
                 "https://api.github.com/repos/bromite/bromite/releases/latest",

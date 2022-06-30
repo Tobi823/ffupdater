@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer.Release
@@ -45,7 +45,7 @@ class KiwiIT {
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
-            packageManager.getPackageInfo(App.KIWI.detail.packageName, any())
+            packageManager.getPackageInfo(MaintainedApp.KIWI.detail.packageName, any())
         } returns packageInfo
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
     }

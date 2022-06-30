@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.app.maintained
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
-import de.marmaro.krt.ffupdater.app.BaseApp
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -17,7 +16,7 @@ class BraveNightly(
     private val failIfValidReleaseHasNoValidAsset: Boolean = false,
     private val apiConsumer: ApiConsumer,
     private val deviceAbis: List<ABI>,
-) : BaseApp() {
+) : AppBase() {
     override val packageName = "com.brave.browser_nightly"
     override val displayTitle = R.string.brave_nightly__title
     override val displayDescription = R.string.brave_nightly__description
