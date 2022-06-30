@@ -28,7 +28,7 @@ class GithubConsumer(
     @MainThread
     suspend fun updateCheck(): Result {
         val start = if (dontUseApiForLatestRelease) 1 else 0
-        var firstValidRelease = true
+        var firstReleaseHasAssets = true
         for (tries in start..5) {
             val releases = if (tries == 0) {
                 val url = "$url/latest"
@@ -49,10 +49,11 @@ class GithubConsumer(
                                 url = asset.downloadUrl,
                                 fileSizeBytes = asset.fileSizeBytes,
                                 releaseDate = release.publishedAt,
-                                moreRecentReleaseWasIgnoredBecauseItHasNoValidAssets = firstValidRelease,
+                                moreRecentReleaseWasIgnoredBecauseItHasNoValidAssets = firstReleaseHasAssets,
                             )
                         }
-                    firstValidRelease = true
+                    // this will only be called if the first valid release has no valid assets
+                    firstReleaseHasAssets = true
                 }
         }
         throw InvalidApiResponseException("can't find release after all tries - abort")
