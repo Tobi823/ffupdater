@@ -1,6 +1,6 @@
-* MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner'e geliştirdikleri için teşekkürler
-  Çeviri.
-* Mozilla Lockwise'ı kullanım ömrü sonu olarak işaretleyin (bilgi için p0yskaa'ya teşekkürler).
+* Çevirileri iyileştirdikleri için MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner'e
+  teşekkürler.
+* Mozilla Lockwise kullanım ömrünün sonuna geldi olarak işaretlendi (bilgi için p0yskaa'ya teşekkürler).
 * Ömrünü tamamlamış bir uygulama kullanıldığında uyarı göster.
-* UpdateCheckResult'ı tercihlerde önbelleğe al - bu, önceki önbelleğe alma yönteminden daha güvenilir olmalıdır
-* Renk kontrastlarını iyileştirin.
+* UpdateCheckResult'ı tercihlerde önbelleğe al - bu, önceki önbelleğe alma yönteminden daha güvenilirdir
+* Renk karşıtlığı iyileştirildi.
