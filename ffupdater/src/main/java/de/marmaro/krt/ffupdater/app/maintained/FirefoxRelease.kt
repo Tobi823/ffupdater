@@ -4,8 +4,8 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseApp
-import de.marmaro.krt.ffupdater.app.maintained.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.app.maintained.fetch.mozillaci.MozillaCiLogConsumer
+import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer
+import de.marmaro.krt.ffupdater.app.fetch.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 
 /**

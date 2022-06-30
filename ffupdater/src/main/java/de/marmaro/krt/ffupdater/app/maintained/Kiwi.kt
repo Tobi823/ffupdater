@@ -6,8 +6,8 @@ import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseApp
-import de.marmaro.krt.ffupdater.app.maintained.fetch.ApiConsumer
-import de.marmaro.krt.ffupdater.app.maintained.fetch.github.GithubConsumer
+import de.marmaro.krt.ffupdater.app.fetch.ApiConsumer
+import de.marmaro.krt.ffupdater.app.fetch.github.GithubConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import java.io.File
 

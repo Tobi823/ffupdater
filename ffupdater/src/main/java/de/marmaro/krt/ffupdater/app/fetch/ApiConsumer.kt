@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.app.maintained.fetch
+package de.marmaro.krt.ffupdater.app.fetch
 
 import android.net.TrafficStats
 import androidx.annotation.MainThread
