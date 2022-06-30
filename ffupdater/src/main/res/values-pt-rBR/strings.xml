@@ -4,6 +4,28 @@
     <string name="app_description">Atualizador para navegadores que protegem a privacidade</string>
     <string name="app_icon">ícone do app</string>
     <string name="app_name">FFUpdater</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s tem o seguinte problema:
+\n
+\n%2$s
+\n
+\nAinda quer instalar %1$s\?</item>
+        <item quantity="other">%1$s tem os seguintes problemas:
+\n
+\n%2$s
+\n
+\nAinda quer instalar %1$s\?</item>
+    </plurals>
+    <string name="app_warning_before_installation_dialog__title">Aviso</string>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">%1$s tem o seguinte problema:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s tem o seguintes problemas:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="app_warning_dialog__title">Atenção</string>
     <string name="application_installation_was_not_successful">Instalação do navegador falhou</string>
     <string name="application_successfully_installed">Navegador instalado com sucesso</string>
     <string name="available_version">Disponível: %1$s</string>
@@ -24,6 +46,7 @@
     <string name="bromite__warning">- Bromite usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
     <string name="bromite_systemwebview__description">O pacote SystemWebView contém o principal navegador/ mecanismo de renderização do Bromite e suas mesmas características. Ele oferece a possibilidade de substituir o componente padrão do navegador para todo o sistema Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report___explain_text__install_activity_download_file">O seguinte erro ocorreu durante o download. Se esse erro ocorrer com frequência, sinta-se à vontade para reportá-lo em notabug.org, GitHub ou GitLab. Adicione o relatório do erro da área de transferência ao relatório.</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copiar o relatório do erro ao Clipboard</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">O seguinte erro ocorreu quando a URL de download foi consultada. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
     <string name="crash_report__explain_text__main_activity_update_check">O seguinte erro ocorreu ao verificar por atualizações na interface principal. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
@@ -37,14 +60,11 @@
     <string name="dialog_button__yes">Sim</string>
     <string name="download_running_notification__channel_description">Mostra quando as atualizações do aplicativo são baixadas em segundo plano.</string>
     <string name="download_running_notification__channel_name">Notificação sobre downloads em segundo plano</string>
+    <string name="download_running_notification__message">Baixando atualização para %1$s (%2$s).</string>
     <string name="download_running_notification__title">Download de atualizações do aplicativo</string>
     <string name="download_the_app">baixar o navegador</string>
     <string name="error_notification__channel_description">Mostrar erros ao verificar por atualizações em segundo plano</string>
     <string name="error_notification__channel_name">Erros em segundo plano</string>
-    <string name="installation_error_notification__channel_description">Canal de notificação para atualizações de %1$s falhadas.</string>
-    <string name="installation_error_notification__channel_name">%1$s notificação de falha de atualização</string>
-    <string name="installation_error_notification__message">Erro (%1$d): %2$s</string>
-    <string name="installation_error_notification__title">%1$s não puderam ser atualizados.</string>
     <string name="firefox_beta__description">Firefox para Android e incrivelmente rápido é seguro. Milhares de rastreadores estão acompanhando você todos os dias, coletando informações sobre onde você vai e portanto diminuindo a velocidade de navegação. Firefox bloqueia por padrão mais de 2000 destes rastreadores e tem disponíveis extensões de bloqueadores de anúncios, caso precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa.</string>
     <string name="firefox_beta__title">Firefox Beta</string>
     <string name="firefox_beta__warning">- Foi criado para desenvolvedores e testadores. Pode conter vários bugs que podem afetar sua interação com o navegador.</string>
@@ -57,13 +77,16 @@
     <string name="firefox_nightly__warning">- Foi criado para desenvolvedores e testadores. Pode conter vários bugs que podem afetar sua interação com o navegador.</string>
     <string name="firefox_release__description">Firefox e incrivelmente rápido é seguro. Milhares de rastreadores estão acompanhando você todos os dias, coletando informações sobre onde você vai e portanto diminuindo a velocidade de navegador. Firefox bloqueia por padrão mais de 2000 destes rastreadores e tem disponíveis extensões de bloqueadores de anúncios, caso precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa.</string>
     <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- Uma versão melhorada do Firefox também está disponível no F-Droid com o nome Fennec F-Droid.</string>
     <string name="go_back">Voltar</string>
     <string name="iceraven__description">Definitivamente não criado pela Mozilla! \n\nIceraven é um navegador baseado na versão Fenix da Mozilla, GeckoView e Componentes da Mozilla. \n\nSeu objetivo é ser uma modificação bem próxima ao novo Firefox que tenta oferecer aos usuários mais opções, mais possibilidades de customização (incluindo uma ampla biblioteca de extensões) e mais informações sobre os sites visitados e como o navegador está interagindo com eles.</string>
     <string name="iceraven__title">Iceraven</string>
+    <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade.</string>
     <string name="infobox">Este app instala e atualiza vários navegadores web. Clique no botão \"+\" para instalar ou no botão com \"seta para baixo\" para atualizar. Você pode verificar por novas atualizações, deslizando para baixo ou reabrindo este app. Por padrão, ele verificará regularmente por atualizações em segundo plano. Fiz o melhor para garantir a segurança do processo de instalação/atualização - fique a vontade para verificá-lo ou melhorá-lo, criando um PR. \n\nÚltima verificação em segundo plano: %1$s</string>
     <string name="information_about_the_app">detalhes sobre o app</string>
     <string name="install_activity__delete_cache_button_text">limpar cache</string>
     <string name="install_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização do navegador defeituosa ou deseja economizar espaço, clique no botão para apagar o arquivo baixado.</string>
+    <string name="install_activity__different_installer_info__text">Se a instalação falhar com frequência, tente mudar para o \'instalador nativo\' nas configurações.</string>
     <string name="install_activity__download_app_with_status">Baixando (%1$s)</string>
     <string name="install_activity__download_failed">Download falhou</string>
     <string name="install_activity__downloaded_application_from">Navegador baixado do:</string>
@@ -72,9 +95,11 @@
     <string name="install_activity__external_storage_not_accessible">Armazenamento não está disponível - não é possível baixar. Status atual:</string>
     <string name="install_activity__fetch_url_for_download">Procurar pela URL de download em %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">A URL de download extraída de %1$s</string>
+    <string name="install_activity__file_uri_exposed_toast">Não é possível expor o caminho do arquivo para outros aplicativos. Abra a pasta você mesmo com seu gerenciador de arquivos preferido.</string>
     <string name="install_activity__github_rate_limit_exceeded">O limite de consultas do GitHub-API foi excedido. Por favor, tente baixar outra vez em uma hora.</string>
     <string name="install_activity__open_cache_explanation">Você pode abrir o local do cache e copiar o arquivo APK para um outro local com mais armazenamento. Infelizmente, a partir do Android 11 somente alguns gerenciadores de arquivos podem acessar essa pasta dentro do Android/data.</string>
     <string name="install_activity__open_cache_folder_button_text">abrir a localização do cache</string>
+    <string name="install_activity__open_folder">Abrir pasta</string>
     <string name="install_activity__sha_256_certificate_fingerprint">Certificado da impressão digital SHA-256:</string>
     <string name="install_activity__temporary_network_issue">Ocorreu um problema temporário na rede. Por favor, tente outra vez mais tarde.</string>
     <string name="install_activity__too_low_memory_description">Seu dispositivo está com (apenas %1$d MB) do espaço disponível. Isto pode causar um erro ao baixar ou instalar.</string>
@@ -86,9 +111,23 @@
     <string name="install_new_app">Instalar outro navegador</string>
     <string name="install_same_version_dialog__message">A versão mais recente deste navegador já foi instalada. Você quer baixar e instalar ela outra vez?</string>
     <string name="install_same_version_dialog__title">Mesma versão instalada</string>
+    <string name="installation_error_notification__channel_description">Canal de notificação para atualizações de %1$s falhadas.</string>
+    <string name="installation_error_notification__channel_name">%1$s notificação de falha de atualização</string>
+    <string name="installation_error_notification__message">Erro (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">%1$s não puderam ser atualizados.</string>
+    <string name="installation_success_notification__channel_description">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
+    <string name="installation_success_notification__channel_name">%1$s notificação de atualização bem sucedida</string>
+    <string name="installation_success_notification__message">O aplicativo foi atualizado com sucesso em segundo plano.</string>
+    <string name="installation_success_notification__title">%1$s foi atualizado.</string>
     <string name="installed_app_is_not_verified">O navegador instalado NÃO foi verificado</string>
     <string name="installed_application_is_verified">O navegador instalado foi verificado</string>
     <string name="installed_version">Instalado: %1$s</string>
+    <string name="intent_installer__likely_storage_failure">A operação provavelmente falhou devido a problemas de armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço ou a mídia externa pode estar indisponível. O usuário pode ajudar a liberar espaço ou inserir diferentes mídias externas.</string>
+    <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
+    <string name="kiwi__title">Navegador Kiwi Next</string>
+    <string name="kiwi__warning">- O Kiwi implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. 
+\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a addons. 
+\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.</string>
     <string name="lockwise__description">ACESSO VIA SENHA, &amp; APENAS VOCÊ
 \n
 \nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via app para entrar em suas contas.</string>
@@ -118,6 +157,8 @@
     <string name="session_installer__status_failure_invalid">O processo falhou porque um ou mais dos APKs era inválido. Por exemplo, eles podem ser malformados, corruptos, assinados incorretamente, desajustados, etc.</string>
     <string name="session_installer__status_failure_storage">O processo falhou por causa de problemas com armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço ou a memória  externa pode não estar disponível. Você pode liberar espaço ou inserir outra mídia externa.</string>
     <string name="settings__activity_label">Configurações</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Excluir a atualização baixada se a instalação falhar.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Excluir a atualização baixada se a instalação for bem sucedida.</string>
     <string name="settings__background__download__enabled__summary">Quando uma atualização é detectada, faça o download. Isto irá mais tarde acelerar o processo de atualização.</string>
     <string name="settings__background__download__enabled__title">Download de atualizações do aplicativo</string>
     <string name="settings__background__download__metered__summary">Não recomendado para usuários com dados móveis limitados.</string>
@@ -140,15 +181,16 @@
     <string name="settings__foreground__update_check__metered__title">Atualização de verificações em redes dosadoras</string>
     <string name="settings__foreground_category__summary">Configurações quando a interface do usuário é visível.</string>
     <string name="settings__foreground_category__title">Primeiro plano</string>
+    <string name="settings__installer__native__title">Instalador nativo</string>
+    <string name="settings__installer__root__summary">Usa a permissão de root para instalar ou atualizar aplicativos sem interagir com o usuário. Isso requer um smartphone com root.</string>
+    <string name="settings__installer__root__title">Instalador root</string>
+    <string name="settings__installer__session__summary">Recomendado para a maioria dos dispositivos.</string>
+    <string name="settings__installer__session__title">Instalador de sessão</string>
+    <string name="settings__installer_category__title">Instalador</string>
     <string name="settings__theme_battery_saver">Usar escuro se a Economia da Bateria for ativada</string>
     <string name="settings__theme_dark">Escuro</string>
     <string name="settings__theme_light">Claro</string>
     <string name="settings__theme_system_default">Adaptar do sistema</string>
-    <string name="app_warning_before_installation_dialog__title">Aviso</string>
-    <string name="installation_success_notification__message">O aplicativo foi atualizado com sucesso em segundo plano.</string>
-    <string name="installation_success_notification__channel_description">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
-    <string name="installation_success_notification__channel_name">%1$s notificação de atualização bem sucedida</string>
-    <string name="installation_success_notification__title">%1$s foi atualizado.</string>
     <string name="ungoogled_chromium__description">Google Chromium, sem integração com o Google.\n\nSem ter que acessar uma conta do Google, Chromium se sai muito bem em termos de segurança e privacidade. No entanto, o Chromium ainda tem algumas dependências de serviços web e binários do Google. Além disso, o Google criou o Chromium para ser fácil e intuitivo aos usuários, o que significa que eles comprometem a transparência e o controle das operações internas.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- O Ungoogled Chromium implementa a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
@@ -180,46 +222,4 @@
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto.
 \n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
-    <string name="download_running_notification__message">Baixando atualização para %1$s (%2$s).</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">%1$s tem o seguinte problema:
-\n
-\n%2$s
-\n
-\nAinda quer instalar %1$s\?</item>
-        <item quantity="other">%1$s tem os seguintes problemas:
-\n
-\n%2$s
-\n
-\nAinda quer instalar %1$s\?</item>
-    </plurals>
-    <string name="install_activity__file_uri_exposed_toast">Não é possível expor o caminho do arquivo para outros aplicativos. Abra a pasta você mesmo com seu gerenciador de arquivos preferido.</string>
-    <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade.</string>
-    <string name="kiwi__warning">- O Kiwi implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. 
-\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a addons. 
-\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.</string>
-    <string name="kiwi__title">Navegador Kiwi Next</string>
-    <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
-    <string name="crash_report___explain_text__install_activity_download_file">O seguinte erro ocorreu durante o download. Se esse erro ocorrer com frequência, sinta-se à vontade para reportá-lo em notabug.org, GitHub ou GitLab. Adicione o relatório do erro da área de transferência ao relatório.</string>
-    <string name="firefox_release__warning">- Uma versão melhorada do Firefox também está disponível no F-Droid com o nome Fennec F-Droid.</string>
-    <string name="settings__installer_category__title">Instalador</string>
-    <string name="settings__b_f__delete_cache_if_install_successful">Excluir a atualização baixada se a instalação for bem sucedida.</string>
-    <string name="settings__b_f__delete_cache_if_install_failed">Excluir a atualização baixada se a instalação falhar.</string>
-    <string name="install_activity__open_folder">Abrir pasta</string>
-    <string name="intent_installer__likely_storage_failure">A operação provavelmente falhou devido a problemas de armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço ou a mídia externa pode estar indisponível. O usuário pode ajudar a liberar espaço ou inserir diferentes mídias externas.</string>
-    <string name="app_warning_dialog__title">Atenção</string>
-    <string name="settings__installer__session__summary">Recomendado para a maioria dos dispositivos.</string>
-    <string name="settings__installer__session__title">Instalador de sessão</string>
-    <string name="settings__installer__native__title">Instalador nativo</string>
-    <string name="settings__installer__root__summary">Usa a permissão de root para instalar ou atualizar aplicativos sem interagir com o usuário. Isso requer um smartphone com root.</string>
-    <string name="settings__installer__root__title">Instalador root</string>
-    <string name="install_activity__different_installer_info__text">Se a instalação falhar com frequência, tente mudar para o \'instalador nativo\' nas configurações.</string>
-    <plurals name="app_warning_dialog__message">
-        <item quantity="one">%1$s tem o seguinte problema:
-\n
-\n%2$s</item>
-        <item quantity="other">%1$s tem o seguintes problemas:
-\n
-\n%2$s</item>
-    </plurals>
 </resources>

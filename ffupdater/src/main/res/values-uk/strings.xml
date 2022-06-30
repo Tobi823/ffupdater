@@ -4,6 +4,7 @@
     <string name="app_description">Програма оновлення для конфіденційних браузерів</string>
     <string name="app_icon">значок програми</string>
     <string name="app_name">FFUpdater</string>
+    <string name="app_warning_before_installation_dialog__title">Увага</string>
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
     <string name="application_successfully_installed">Програма успішно встановлена</string>
     <string name="available_version">в наявності: %1$s</string>
@@ -41,10 +42,6 @@
     <string name="download_the_app">завантажити додаток</string>
     <string name="error_notification__channel_description">Показати помилки перевірки фонового оновлення</string>
     <string name="error_notification__channel_name">Фонові помилки</string>
-    <string name="installation_error_notification__channel_description">Канал сповіщень про невдалі оновлення %1$s.</string>
-    <string name="installation_error_notification__channel_name">Повідомлення про помилку оновлення %1$s</string>
-    <string name="installation_error_notification__message">Помилка (%1$d): %2$s</string>
-    <string name="installation_error_notification__title">Не вдалося оновити %1$s.</string>
     <string name="firefox_beta__description">Firefox для Android — це за замовчуванням конфіденційний і неймовірно швидкий браузер. Щодня тисячі онлайн-трекерів стежать за тобою, збираючи інформацію про твоє життя в Інтернеті і уповільнюючи швидкість твоєї роботи. Firefox за замовчуванням блокує більше 2000 таких трекерів і дозволяє встановити доповнення, що блокують рекламу, якщо ти захочеш настроювати свій браузер ще більше. З Firefox ти отримаєш безпеку, на яку заслуговуєш, а також високу швидкість роботи, — і все це в конфіденційному мобільному браузері.</string>
     <string name="firefox_beta__title">Firefox для Android Beta</string>
     <string name="firefox_beta__warning">- Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером.</string>
@@ -61,6 +58,7 @@
     <string name="firefox_nightly__warning">- Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером.</string>
     <string name="firefox_release__description">Firefox для Android — це за замовчуванням конфіденційний і неймовірно швидкий браузер. Щодня тисячі онлайн-трекерів стежать за тобою, збираючи інформацію про твоє життя в Інтернеті і уповільнюючи швидкість твоєї роботи. Firefox за замовчуванням блокує більше 2000 таких трекерів і дозволяє встановити доповнення, що блокують рекламу, якщо ти захочеш настроювати свій браузер ще більше. З Firefox ти отримаєш безпеку, на яку заслуговуєш, а також високу швидкість роботи, — і все це в конфіденційному мобільному браузері.</string>
     <string name="firefox_release__title">Веб-браузер Firefox</string>
+    <string name="firefox_release__warning">- Покращена версія Firefox під назвою Fennec F-Droid також доступна на F-Droid.</string>
     <string name="go_back">Повертайся</string>
     <string name="iceraven__description">Безумовно, вас не привезла Mozilla! \n\nIceraven Browser - це веб-браузер для Android, заснований на версії Firefox, GeckoView та Mozilla Android Components від Mozilla Fenix. \n\nНаша мета - стати близьким розвитком нового Firefox для Android, який прагне надати користувачам більше можливостей, більше можливостей для налаштування (включаючи широку бібліотеку розширень) і більше інформації про сторінки, які вони відвідують, і про взаємодію їх браузерів ці сторінки.</string>
     <string name="iceraven__title">Ицеравен Браузер</string>
@@ -92,6 +90,14 @@
     <string name="install_new_app">Встановіть новий додаток</string>
     <string name="install_same_version_dialog__message">Останню версію цього додатка вже встановлено. Завантажити та встановити останню версію знову?</string>
     <string name="install_same_version_dialog__title">Встановлена та сама версія</string>
+    <string name="installation_error_notification__channel_description">Канал сповіщень про невдалі оновлення %1$s.</string>
+    <string name="installation_error_notification__channel_name">Повідомлення про помилку оновлення %1$s</string>
+    <string name="installation_error_notification__message">Помилка (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">Не вдалося оновити %1$s.</string>
+    <string name="installation_success_notification__channel_description">Канал сповіщень про успішні оновлення %1$s.</string>
+    <string name="installation_success_notification__channel_name">%1$s сповіщення про успішне оновлення</string>
+    <string name="installation_success_notification__message">Додаток успішно оновлено у фоновому режимі.</string>
+    <string name="installation_success_notification__title">%1$s оновлено.</string>
     <string name="installed_app_is_not_verified">Встановлений додаток НЕ підтверджений</string>
     <string name="installed_application_is_verified">Встановлена програма перевірена</string>
     <string name="installed_version">встановлено: %1$s</string>
@@ -150,11 +156,6 @@
     <string name="settings__theme_dark">Темний</string>
     <string name="settings__theme_light">Світло</string>
     <string name="settings__theme_system_default">Використовуйте системний стандарт за замовчуванням</string>
-    <string name="app_warning_before_installation_dialog__title">Увага</string>
-    <string name="installation_success_notification__message">Додаток успішно оновлено у фоновому режимі.</string>
-    <string name="installation_success_notification__channel_description">Канал сповіщень про успішні оновлення %1$s.</string>
-    <string name="installation_success_notification__channel_name">%1$s сповіщення про успішне оновлення</string>
-    <string name="installation_success_notification__title">%1$s оновлено.</string>
     <string name="ungoogled_chromium__description">Google Chromium, без інтеграції з Google.\n\nБез входу в обліковий запис Google Chromium працює досить добре з точки зору безпеки та конфіденційності. Однак Chromium все ще певна залежність від веб-сервісів і бінарних файлів Google. Крім того, Google створив Chromium, щоб він був простим та інтуїтивно зрозумілим для користувачів, що означає, що вони йдуть на компроміс щодо прозорості та контролю внутрішніх операцій.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
@@ -186,5 +187,4 @@
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi є лише частково відкритим кодом.
 \n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
-    <string name="firefox_release__warning">- Покращена версія Firefox під назвою Fennec F-Droid також доступна на F-Droid.</string>
 </resources>

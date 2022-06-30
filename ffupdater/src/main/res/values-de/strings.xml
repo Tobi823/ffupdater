@@ -4,6 +4,28 @@
     <string name="app_description">Updater für datenschutzfreundliche Browser</string>
     <string name="app_icon">Applikations-Icon</string>
     <string name="app_name">FFUpdater</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s hat folgendes Problem:
+\n
+\n%2$s
+\n
+\nWillst du immer noch %1$s installieren\?</item>
+        <item quantity="other">%1$s hat folgende Probleme:
+\n
+\n%2$s
+\n
+\nWillst du immer noch %1$s installieren\?</item>
+    </plurals>
+    <string name="app_warning_before_installation_dialog__title">Warnung</string>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">%1$s hat folgendes Problem:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s hat folgende Probleme:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="app_warning_dialog__title">Warnung</string>
     <string name="application_installation_was_not_successful">Installation der Anwendung schlug fehl</string>
     <string name="application_successfully_installed">Anwendung erfolgreich installiert</string>
     <string name="available_version">Verfügbar: %1$s</string>
@@ -24,6 +46,8 @@
     <string name="bromite__warning">- Bromite nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium Rendering Engine.</string>
     <string name="bromite_systemwebview__description">Das SystemWebView-Paket enthält die Kern-Browser/Rendering-Engine von Bromite und die gleichen Funktionen. Es bietet die Möglichkeit, die Standard-Browser-Komponente für das gesamte Android-System zu ersetzen.</string>
     <string name="bromite_systemwebview__title">Bromit SystemWebView</string>
+    <string name="crash_report___explain_text__install_activity_download_file">Der folgende Fehler ist während des Downloads aufgetreten. Wenn dieser Fehler häufig auftritt, kannst du ihn auf notabug.org, GitHub oder GitLab melden. Bitte füge auch den Absturzbericht aus der Zwischenablage hinzu.</string>
+    <string name="crash_report___explain_text__install_activity_install_file">Der folgende Fehler ist während der Installation aufgetreten. Wenn dieser Fehler häufig auftritt, kannst du ihn auf notabug.org, GitHub oder GitLab melden. Bitte füge auch den Absturzbericht aus der Zwischenablage hinzu.</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopieren des Absturzberichts in die Zwischenablage</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">Der folgende Fehler trat auf, als die Download-URL abgerufen wurde. Wenn dieser Fehler häufig auftritt, können Sie ihn auf notabug.org, GitHub oder GitLab melden. Vergessen Sie bitte nicht, Ihren Absturzbericht aus der Zwischenablage und die Beschreibung, wie Sie diesen Fehler reproduzieren, hinzuzufügen.</string>
     <string name="crash_report__explain_text__main_activity_update_check">Bei der Suche nach Aktualisierungen in der Hauptansicht ist der folgende Fehler aufgetreten. Wenn dieser Fehler häufig auftritt, können Sie ihn gerne auf notabug.org, GitHub oder GitLab melden. Bitte vergessen Sie nicht, Ihren Absturzbericht aus der Zwischenablage und die Beschreibung, wie Sie diesen Fehler reproduzieren, hinzuzufügen.</string>
@@ -37,14 +61,11 @@
     <string name="dialog_button__yes">Ja</string>
     <string name="download_running_notification__channel_description">Zeigt an, wenn App-Updates im Hintergrund heruntergeladen werden.</string>
     <string name="download_running_notification__channel_name">Benachrichtigung über Downloads im Hintergrund</string>
+    <string name="download_running_notification__message">Lade Update für %1$s herunter (%2$s).</string>
     <string name="download_running_notification__title">Herunterladen von App-Updates</string>
     <string name="download_the_app">Applikation herunterladen</string>
     <string name="error_notification__channel_description">Fehler des Hintergrund-Update-Checkers anzeigen</string>
     <string name="error_notification__channel_name">Fehler im Hintergrund</string>
-    <string name="installation_error_notification__channel_description">Benachrichtigungskanal für fehlgeschlagene %1$s-Updates.</string>
-    <string name="installation_error_notification__channel_name">%1$s Benachrichtigung über Aktualisierungsfehler</string>
-    <string name="installation_error_notification__message">Fehler (%1$d): %2$s</string>
-    <string name="installation_error_notification__title">%1$s konnte nicht aktualisiert werden.</string>
     <string name="firefox_beta__description">Der Firefox Browser für Android blockt standardmäßig über 2000 Online-Tracker, die dir jeden Tag durchs Web folgen wollen – automatisch und mit dem verbesserten Tracking-Schutz. Warum? Um deine Privatsphäre zu schützen und Unternehmen davon abzuhalten, deine persönlichen Daten ohne deine Zustimmung zu sammeln und daraus Profit zu schlagen. Außerdem kannst du so noch schneller durchs Web surfen und bekommst nicht nur die Privatsphäre, die du verdienst, sondern auch den schnellen mobilen Browser, den du brauchst. Mit Adblocker Add-ons kannst du deinen Browser zusätzlich auf deine Bedürfnisse anpassen.</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
     <string name="firefox_beta__warning">- Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können.</string>
@@ -57,15 +78,18 @@
     <string name="firefox_nightly__warning">- Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können.</string>
     <string name="firefox_release__description">Der Firefox Browser für Android blockt standardmäßig über 2000 Online-Tracker, die dir jeden Tag durchs Web folgen wollen – automatisch und mit dem verbesserten Tracking-Schutz. Warum? Um deine Privatsphäre zu schützen und Unternehmen davon abzuhalten, deine persönlichen Daten ohne deine Zustimmung zu sammeln und daraus Profit zu schlagen. Außerdem kannst du so noch schneller durchs Web surfen und bekommst nicht nur die Privatsphäre, die du verdienst, sondern auch den schnellen mobilen Browser, den du brauchst. Mit Adblocker Add-ons kannst du deinen Browser zusätzlich auf deine Bedürfnisse anpassen.</string>
     <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- Eine verbesserte Version von Firefox ist auch auf F-Droid unter dem Namen Fennec F-Droid verfügbar.</string>
     <string name="go_back">Zurück</string>
     <string name="iceraven__description">Definitiv nicht von Mozilla für Sie entwickelt! \n\nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert. \n\nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
     <string name="iceraven__title">Iceraven Browser</string>
+    <string name="iceraven__warning">- Der Maintainer gibt keine Garantien oder Gewährleistungen für Sicherheit oder Updates oder gar Stabilität.</string>
     <string name="infobox">Dies ist ein Updater für unterschiedliche Browser. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern.
 \n
 \nLetzte erfolgreiche Hintergrundaktualisierungsprüfung: %1$s</string>
     <string name="information_about_the_app">Information über die Applikation</string>
     <string name="install_activity__delete_cache_button_text">Cache leeren</string>
     <string name="install_activity__delete_cache_explanation">Wenn du glaubst, dass FFUpdater ein fehlerhaftes App-Update heruntergeladen hat, oder wenn du Speicherplatz sparen möchtest, dann klicke auf den Button um die Datei zu löschen.</string>
+    <string name="install_activity__different_installer_info__text">Wenn die App-Installation häufig fehlschlägt, versuche in den Einstellungen die native Installationsmethode zu aktivieren.</string>
     <string name="install_activity__download_app_with_status">Lade Anwendung herunter (%1$s)</string>
     <string name="install_activity__download_failed">Download schlug fehl</string>
     <string name="install_activity__downloaded_application_from">Anwendung wurde heruntergeladen von:</string>
@@ -74,9 +98,11 @@
     <string name="install_activity__external_storage_not_accessible">Externer Speicher ist nicht verfügbar - kann den Download nicht starten. Aktueller Status ist:</string>
     <string name="install_activity__fetch_url_for_download">Abruf der Download-URL von %1$s</string>
     <string name="install_activity__fetched_url_for_download_successfully">Download-URL von %1$s wurde abgerufen</string>
+    <string name="install_activity__file_uri_exposed_toast">Der Dateipfad kann nicht an andere Apps weitergeleitet werden. Bitte öffne den Ordner selbst mit deinem bevorzugten Dateimanager.</string>
     <string name="install_activity__github_rate_limit_exceeded">Das Ratenlimit der GitHub-API ist überschritten. Bitte versuchen Sie den Download in der nächsten Stunde erneut.</string>
     <string name="install_activity__open_cache_explanation">Du kannst den Cache-Ordner öffnen, um die APK-Datei an einen Ort mit mehr freiem Speicherplatz zu kopieren. Leider können unter Android 11+ nur wenige Dateimanager auf diesen Ordner innerhalb von Android/data zugreifen.</string>
     <string name="install_activity__open_cache_folder_button_text">Cache-Ordner öffnen</string>
+    <string name="install_activity__open_folder">Öffne Ordner</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 Fingerabdruck des Zertifikats:</string>
     <string name="install_activity__temporary_network_issue">Es ist ein vorübergehendes Netzwerkproblem aufgetreten. Bitte versuchen Sie es später erneut.</string>
     <string name="install_activity__too_low_memory_description">Auf Ihrem Gerät ist nur %1$d MB Speicherplatz verfügbar. Dies kann zu einem Download- oder Installationsfehler führen.</string>
@@ -88,9 +114,24 @@
     <string name="install_new_app">Neue Anwendung installieren</string>
     <string name="install_same_version_dialog__message">Die neueste Version dieser App ist bereits installiert. Möchten Sie die neueste Version erneut herunterladen und installieren?</string>
     <string name="install_same_version_dialog__title">Gleiche Version installiert</string>
+    <string name="installation_error_notification__channel_description">Benachrichtigungskanal für fehlgeschlagene %1$s-Updates.</string>
+    <string name="installation_error_notification__channel_name">%1$s Benachrichtigung über Aktualisierungsfehler</string>
+    <string name="installation_error_notification__message">Fehler (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">%1$s konnte nicht aktualisiert werden.</string>
+    <string name="installation_success_notification__channel_description">Benachrichtigungskanal für erfolgreiche %1$s Updates.</string>
+    <string name="installation_success_notification__channel_name">%1$s Benachrichtigung über erfolgreiche Aktualisierung</string>
+    <string name="installation_success_notification__message">Die App wurde erfolgreich im Hintergrund aktualisiert.</string>
+    <string name="installation_success_notification__title">%1$s wurde aktualisiert.</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
     <string name="installed_application_is_verified">Installierte Anwendung ist verifiziert</string>
     <string name="installed_version">Installiert: %1$s</string>
+    <string name="intent_installer__likely_storage_failure">Der Vorgang ist wahrscheinlich wegen Speicherproblemen fehlgeschlagen. Beispielsweise kann der Speicherplatz auf dem Gerät knapp werden, oder es sind keine externen Medien verfügbar. Der Benutzer kann möglicherweise helfen, Speicherplatz freizugeben oder andere externe Medien einzulegen.</string>
+    <string name="kiwi__description">Kiwi Browser wurde entwickelt, um im Internet zu surfen, Nachrichten zu lesen, Videos anzuschauen und Musik zu hören, ohne dabei zu stören.</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="kiwi__warning">- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.
+\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.
+\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.
+\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - Sie können dies jedoch deaktivieren, indem Sie die Entdeckungsfunktion deaktivieren. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
     <string name="lockwise__description">PASSWORT-ZUGANG FÜR SIE, &amp; NUR SIE
 \n
 \nVerfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen.</string>
@@ -120,6 +161,8 @@
     <string name="session_installer__status_failure_invalid">Der Vorgang ist fehlgeschlagen, weil eine oder mehrere der APKs ungültig waren. Sie könnten z. B. missgebildet, beschädigt, falsch signiert, nicht übereinstimmend usw. sein.</string>
     <string name="session_installer__status_failure_storage">Der Vorgang ist aufgrund von Speicherproblemen fehlgeschlagen. Beispielsweise kann der Speicherplatz auf dem Gerät knapp werden, oder es sind keine externen Medien verfügbar. Der Benutzer kann möglicherweise helfen, Speicherplatz freizugeben oder andere externe Medien einzulegen.</string>
     <string name="settings__activity_label">Einstellungen</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Lösche die heruntergeladene Datei wenn die Installation nicht erfolgreich war.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Lösche das heruntergeladene Update wenn die Installation erfolgreich war.</string>
     <string name="settings__background__download__enabled__summary">Wenn eine Aktualisierung erkannt wird, laden Sie sie herunter. Dadurch wird der Aktualisierungsvorgang später beschleunigt.</string>
     <string name="settings__background__download__enabled__title">App-Updates herunterladen</string>
     <string name="settings__background__download__metered__summary">Nicht empfohlen für Benutzer mit begrenzten mobilen Daten.</string>
@@ -136,21 +179,24 @@
     <string name="settings__background_category__title">Hintergrund</string>
     <string name="settings__foreground__download__metered__summary">Nützlich für Nutzer mit begrenzten mobilen Daten.</string>
     <string name="settings__foreground__download__metered__title">Herunterladen von Aktualisierungen in gebührenpflichtigen Netzen</string>
+    <string name="settings__foreground__hide_warning_buttons">Blende den Button für Warnungen von installierten Apps aus.</string>
     <string name="settings__foreground__theme_preference__summary">Wechsle zwischen Dark und Light Theme</string>
     <string name="settings__foreground__theme_preference__title">Theme auswählen</string>
     <string name="settings__foreground__update_check__metered__summary">Erlauben Sie Aktualisierungsprüfungen in gebührenpflichtigen Netzen wie mobilen Daten.</string>
     <string name="settings__foreground__update_check__metered__title">Aktualisierungskontrollen in gemessenen Netzen</string>
     <string name="settings__foreground_category__summary">Einstellungen, wenn die Benutzeroberfläche sichtbar ist.</string>
     <string name="settings__foreground_category__title">Vorderseite</string>
+    <string name="settings__installer__native__summary">Alternative Installationsmethode, wenn die Session-Installationsmethode nicht auf deinem Smartphone funktioniert.</string>
+    <string name="settings__installer__native__title">Native Installationsmethode</string>
+    <string name="settings__installer__root__summary">Verwende Root-Rechte, um Apps ohne Benutzerinteraktion zu installieren oder zu aktualisieren. Dies benötigt ein gerootetes Smartphone.</string>
+    <string name="settings__installer__root__title">Root-Installationsmethode</string>
+    <string name="settings__installer__session__summary">Empfohlen für die meisten Geräte.</string>
+    <string name="settings__installer__session__title">Session-Installationsmethode</string>
+    <string name="settings__installer_category__title">Allgemein</string>
     <string name="settings__theme_battery_saver">Dark wenn Energiesparmodus aktiv</string>
     <string name="settings__theme_dark">Dunkles Farbschema</string>
     <string name="settings__theme_light">Helles Farbschema</string>
     <string name="settings__theme_system_default">Systemeinstellung</string>
-    <string name="app_warning_before_installation_dialog__title">Warnung</string>
-    <string name="installation_success_notification__message">Die App wurde erfolgreich im Hintergrund aktualisiert.</string>
-    <string name="installation_success_notification__channel_description">Benachrichtigungskanal für erfolgreiche %1$s Updates.</string>
-    <string name="installation_success_notification__channel_name">%1$s Benachrichtigung über erfolgreiche Aktualisierung</string>
-    <string name="installation_success_notification__title">%1$s wurde aktualisiert.</string>
     <string name="ungoogled_chromium__description">Google Chromium, ohne die Integration mit Google.\n\nOhne Anmeldung bei einem Google-Konto schneidet Chromium in puncto Sicherheit und Datenschutz recht gut ab. Allerdings ist Chromium immer noch von Google-Webdiensten und -Binärdateien abhängig. Außerdem hat Google Chromium so konzipiert, dass es für die Benutzer einfach und intuitiv zu bedienen ist, was bedeutet, dass es bei der Transparenz und der Kontrolle der internen Vorgänge Kompromisse eingeht.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium Rendering Engine.</string>
@@ -182,50 +228,4 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen.
 \n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
-    <string name="settings__installer_category__title">Allgemein</string>
-    <string name="download_running_notification__message">Lade Update für %1$s herunter (%2$s).</string>
-    <string name="install_activity__open_folder">Öffne Ordner</string>
-    <string name="install_activity__file_uri_exposed_toast">Der Dateipfad kann nicht an andere Apps weitergeleitet werden. Bitte öffne den Ordner selbst mit deinem bevorzugten Dateimanager.</string>
-    <string name="settings__b_f__delete_cache_if_install_successful">Lösche das heruntergeladene Update wenn die Installation erfolgreich war.</string>
-    <string name="settings__b_f__delete_cache_if_install_failed">Lösche die heruntergeladene Datei wenn die Installation nicht erfolgreich war.</string>
-    <string name="crash_report___explain_text__install_activity_download_file">Der folgende Fehler ist während des Downloads aufgetreten. Wenn dieser Fehler häufig auftritt, kannst du ihn auf notabug.org, GitHub oder GitLab melden. Bitte füge auch den Absturzbericht aus der Zwischenablage hinzu.</string>
-    <string name="app_warning_dialog__title">Warnung</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">%1$s hat folgendes Problem:
-\n
-\n%2$s
-\n
-\nWillst du immer noch %1$s installieren\?</item>
-        <item quantity="other">%1$s hat folgende Probleme:
-\n
-\n%2$s
-\n
-\nWillst du immer noch %1$s installieren\?</item>
-    </plurals>
-    <plurals name="app_warning_dialog__message">
-        <item quantity="one">%1$s hat folgendes Problem:
-\n
-\n%2$s</item>
-        <item quantity="other">%1$s hat folgende Probleme:
-\n
-\n%2$s</item>
-    </plurals>
-    <string name="firefox_release__warning">- Eine verbesserte Version von Firefox ist auch auf F-Droid unter dem Namen Fennec F-Droid verfügbar.</string>
-    <string name="intent_installer__likely_storage_failure">Der Vorgang ist wahrscheinlich wegen Speicherproblemen fehlgeschlagen. Beispielsweise kann der Speicherplatz auf dem Gerät knapp werden, oder es sind keine externen Medien verfügbar. Der Benutzer kann möglicherweise helfen, Speicherplatz freizugeben oder andere externe Medien einzulegen.</string>
-    <string name="iceraven__warning">- Der Maintainer gibt keine Garantien oder Gewährleistungen für Sicherheit oder Updates oder gar Stabilität.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__description">Kiwi Browser wurde entwickelt, um im Internet zu surfen, Nachrichten zu lesen, Videos anzuschauen und Musik zu hören, ohne dabei zu stören.</string>
-    <string name="settings__installer__session__summary">Empfohlen für die meisten Geräte.</string>
-    <string name="settings__installer__session__title">Session-Installationsmethode</string>
-    <string name="settings__installer__native__summary">Alternative Installationsmethode, wenn die Session-Installationsmethode nicht auf deinem Smartphone funktioniert.</string>
-    <string name="settings__installer__native__title">Native Installationsmethode</string>
-    <string name="settings__installer__root__summary">Verwende Root-Rechte, um Apps ohne Benutzerinteraktion zu installieren oder zu aktualisieren. Dies benötigt ein gerootetes Smartphone.</string>
-    <string name="settings__installer__root__title">Root-Installationsmethode</string>
-    <string name="install_activity__different_installer_info__text">Wenn die App-Installation häufig fehlschlägt, versuche in den Einstellungen die native Installationsmethode zu aktivieren.</string>
-    <string name="kiwi__warning">- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.
-\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.
-\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.
-\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - Sie können dies jedoch deaktivieren, indem Sie die Entdeckungsfunktion deaktivieren. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
-    <string name="crash_report___explain_text__install_activity_install_file">Der folgende Fehler ist während der Installation aufgetreten. Wenn dieser Fehler häufig auftritt, kannst du ihn auf notabug.org, GitHub oder GitLab melden. Bitte füge auch den Absturzbericht aus der Zwischenablage hinzu.</string>
-    <string name="settings__foreground__hide_warning_buttons">Blende den Button für Warnungen von installierten Apps aus.</string>
 </resources>

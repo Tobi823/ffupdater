@@ -1,7 +1,26 @@
+#!/usr/bin/python3
 import re
+import pathlib
 
 # add your files here
-strings_files = ["path/to/strings.xml"]
+strings_files = [
+    "ffupdater/src/main/res/values-pt-rBR/strings.xml",
+    "ffupdater/src/main/res/values-pl/strings.xml",
+    "ffupdater/src/main/res/values-ru/strings.xml",
+    "ffupdater/src/main/res/values-fr/strings.xml",
+    "ffupdater/src/main/res/values-de/strings.xml",
+    "ffupdater/src/main/res/values-uk/strings.xml",
+    "ffupdater/src/main/res/values/strings.xml",
+    "ffupdater/src/main/res/values-bg/strings.xml",
+    "ffupdater/src/main/res/values-ja/strings.xml",
+    "ffupdater/src/main/res/values-cs/strings.xml",
+    "ffupdater/src/main/res/values-it/strings.xml",
+    "ffupdater/src/main/res/values-nb-rNO/strings.xml",
+    "ffupdater/src/main/res/values-tr/strings.xml",
+    "ffupdater/src/main/res/values-zh-rCN/strings.xml",
+    "ffupdater/src/main/res/values-es/strings.xml",
+    "ffupdater/src/main/res/values-hu/strings.xml",
+]
 
 
 # 1. transform the strings.xml file to a dict
@@ -39,4 +58,5 @@ def sort_strings_xml_file(path_to_file: str):
 
 
 for strings_file in strings_files:
+    strings_file = f"{(pathlib.Path(__file__).parent.parent.absolute())}/{strings_file}"
     sort_strings_xml_file(strings_file)

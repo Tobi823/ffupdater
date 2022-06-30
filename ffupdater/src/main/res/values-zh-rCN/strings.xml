@@ -1,93 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">关于 FFUpdater</string>
+    <string name="app_card__app_warning_button_description">显示关于此应用的警告</string>
+    <string name="app_description">为隐私友好型浏览器打造的升级器</string>
     <string name="app_icon">应用图标</string>
     <string name="app_name">FFUpdater</string>
-    <string name="application_installation_was_not_successful">应用程序安装未成功</string>
-    <string name="application_successfully_installed">已成功安装应用程序</string>
-    <string name="available_version">可用版本：%1$s</string>
-    <string name="available_version_error"><u>错误</u></string>
-    <string name="available_version_loading">正在加载…</string>
-    <string name="app_description">为隐私友好型浏览器打造的升级器</string>
-    <string name="background_notification__text">请报告此错误。点击查看错误报告。</string>
-    <string name="background_notification__title">后台检查更新失败</string>
-    <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
-    <string name="brave__title">Brave 隐私浏览器</string>
-    <string name="brave__warning">- Brave 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。
-\n- 由于其以太坊区块链上的 Basic Attention Token（BAT）技术，该项目与加密货币有联系。 区块链有很多问题，在我看来应该避免。</string>
-    <string name="brave_nightly__title">Brave 浏览器（每夜版）</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">在拉取下载 URL 时出现以下错误。如果这个错误经常出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。记得从剪贴板里添加崩溃报告并描述如何复现这个错误。</string>
-    <string name="crash_report__explain_text__main_activity_update_check">在主视图中检查更新时出现以下错误。如果这个错误经常出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。记得从剪贴板里添加崩溃报告并描述如何复现这个错误。</string>
-    <string name="crash_report__go_to_github">跳转到 GitHub</string>
-    <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
-    <string name="crash_report__got_to_notabug_org">跳转到 notabug.org</string>
-    <string name="device_too_old_dialog__message">此应用要求使用 Android %1$s。但是您的设备仅运行着 Android %2$s。请选择其他应用、更新操作系统或换用更新的智能手机。</string>
-    <string name="device_too_old_dialog__title">设备太旧</string>
-    <string name="dialog_button__do_not_install">不，请不要安装</string>
-    <string name="dialog_button__yes">是</string>
-    <string name="download_running_notification__channel_description">显示何时在后台下载了更新。</string>
-    <string name="download_running_notification__channel_name">后台下载通知</string>
-    <string name="download_running_notification__title">正在下载应用程序更新</string>
-    <string name="download_the_app">下载应用程序</string>
-    <string name="error_notification__channel_description">显示后台更新检查器错误</string>
-    <string name="error_notification__channel_name">后台错误</string>
-    <string name="installation_error_notification__channel_description">%1$s 更新失败通知通道。</string>
-    <string name="installation_error_notification__channel_name">%1$s 更新失败通知</string>
-    <string name="installation_error_notification__message">错误（%1$d）：%2$s</string>
-    <string name="installation_error_notification__title">无法更新 %1$s。</string>
-    <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！
-\n尝试最新功能并给予早期反馈：https://brave.com/msupport
-\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 公测版。</string>
-    <string name="brave_nightly__description">欢迎使用 Brave 浏览器 Android 每夜版（开发者版）！
-\n尝试最新功能并给予早期反馈：https://brave.com/msupport
-\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
-    <string name="brave_beta__title">Brave 浏览器（公测版）</string>
-    <string name="bromite__description">Bromite 致力于提供清爽的浏览体验，无隐私侵害性功能，并附带一个快速的广告拦截引擎。应用了精简的用户界面，帮助抑制浏览器成为广告泛滥的平台。</string>
-    <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎和相同功能。这使其代替成为 Android 系统默认浏览器成为可能。</string>
-    <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
-    <string name="crash_report__explain_text__uncaught_throwable">FFUpdater 上次不幸崩溃了，并记录到以下错误。请在 notabug.org、GitHub 或 GitLab 上报告。请从剪贴板里复制崩溃报告到信息中，并描述如何复现这个错误。</string>
-    <string name="firefox_release__description">Android上的Firefox能自动实现隐私保护，还有着难以置信的速度。成千上万的在线追踪器每天都在跟踪你，收集你上网的信息还减慢你的浏览速度。Firefox默认拦截了2000多个追踪器，并且还有广告屏蔽插件能让你进一步定制你的浏览器。使用Firefox，你将在一个私密的移动浏览器中获得你应得的安全和你想要的速度。</string>
-    <string name="infobox">多个 Mozilla 和其他公司的浏览器的更新程序。 单击加号按钮进行安装，单击向下箭头按钮进行更新。 您可以通过向下滑动或重新打开应用程序来检查更新。 默认情况下，该应用程序会定期在后台检查更新。 我已尽我所能来确保安装和更新过程的安全——请随意反复检查或通过创建pull request来改进它。
-\n
-\n上次成功的后台更新检查：%1$s</string>
-    <string name="install_same_version_dialog__message">已安装此应用程序的最新版本。是否要再次下载并安装最新版本？</string>
-    <string name="install_activity__use_cached_downloaded_apk">使用此处已下载的文件：</string>
-    <string name="installed_app_is_not_verified">已安装的应用未经验证</string>
-    <string name="installed_application_is_verified">已安装的应用程序已验证</string>
-    <string name="main_activity__github_api_limit_exceeded"><u>超过GitHub API限制。下一小时重试。</u></string>
-    <string name="main_activity__subtitle">隐私友好浏览器的更新器</string>
-    <string name="manage_storage_activity__explanation">FFUpdater 会缓存已下载的应用更新并将它们保存在\'Android/data/de.marmaro.krt.ffupdater/files/Download\'文件夹。
-\n
-\n这能节省流量以防安装或更新失败。同时，这一缓存对于稍后安装在后台下载的更新也是必要的。
-\n
-\n如果您决定删除这些应用更新，您可能需要再次下载它们。</string>
-    <string name="running_downloads_dialog__message">此应用程序现在正在后台下载更新。您想开始一个可能需要更长时间的新下载吗？</string>
-    <string name="session_installer__status_failure_blocked">操作因被阻止而失败。例如，设备策略可能阻止操作，包验证程序可能阻止了操作，或者此应用程序为核心系统操作所需。</string>
-    <string name="session_installer__require_user_interaction">需要用户交互。您必须首先通过 FFUpdater 用户界面更新应用程序。只有这样才能允许相应应用程序的静默后台更新。</string>
-    <string name="session_installer__status_failure_incompatible">操作失败，因为它与此设备根本不兼容。例如，应用程序可能需要不存在的硬件特性，可能缺少设备支持的 ABI 的本机代码，或者需要更新的SDK版本等。</string>
-    <string name="settings__background__download__enabled__summary">当检测到更新时下载此更新。这样做将在以后加快更新过程。</string>
-    <string name="settings__background__installation__enabled__summary">尝试在没有用户交互的情况下安装更新。</string>
-    <string name="settings__background__update_check__excluded_apps__summary">如果您不想更新应用程序且不想接收它的更新通知，这很有用。</string>
-    <string name="ungoogled_chromium__description">Google Chromium，没有与Google整合。
-\n
-\n在不登录 Google 帐户的情况下，Chromium 在安全和隐私方面做得很好。但Chromium仍然对Google网络服务和二进制文件有一些依赖。此外，Google将Chromium设计得对用户而言简单直观，这意味着他们会在透明度和内部运营控制方面做出妥协。</string>
-    <string name="install_activity__open_folder">打开文件夹</string>
-    <string name="vivaldi__title">Vivaldi 浏览器</string>
-    <string name="vivaldi__warning">- Vivaldi 只是部分开源。
-\n- 它还使用了谷歌浏览器的技术基础，从而间接维护了Chromium渲染引擎的垄断地位。</string>
-    <string name="settings__installer_category__title">安装器</string>
-    <string name="install_activity__file_uri_exposed_toast">无法将文件路径暴露给其他应用。请使用您喜欢的文件管理器自行打开该文件夹。</string>
-    <string name="settings__b_f__delete_cache_if_install_failed">应用安装失败后删除此前下载的更新。</string>
-    <string name="crash_report___explain_text__install_activity_install_file">安装过程中出现以下错误。如果此错误频繁发生，请随时在notabug.org、GitHub或GitLab上报告。请将剪贴板中的崩溃报告添加到报告中。</string>
-    <string name="settings__b_f__delete_cache_if_install_successful">应用安装成功后删除此前下载的更新。</string>
-    <string name="settings__installer__native__summary">如果会话安装程序无法在您的智能手机上运行，则回退。三星或小米的设备更常出现这种情况。</string>
-    <string name="kiwi__warning">- Kiwi使用了Google Chrome的技术基础，从而间接维护了 Chromium 渲染引擎的垄断地位。
-\n- Kiwi不是一个理想的隐私浏览器，但有很好的插件支持。
-\n- 使用Kiwi浏览器完成的每次搜索，搜索引擎都会为浏览器付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。
-\n- Kiwi中的Google Ads可能会将位置数据用于广告——但您可以通过禁用发现功能来禁用它。但这很快就会改变。有关详细信息，请参阅 https://privacy.kiwibrowser.org/。</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="other">%1$s 存在以下问题：
 \n
@@ -95,12 +12,62 @@
 \n
 \n您还要安装 %1$s 吗？</item>
     </plurals>
-    <string name="settings__foreground__hide_warning_buttons">隐藏已安装应用程序的警告按钮。</string>
+    <string name="app_warning_before_installation_dialog__title">警告</string>
     <plurals name="app_warning_dialog__message">
         <item quantity="other">%1$s 存在以下问题：
 \n
 \n%2$s</item>
     </plurals>
+    <string name="app_warning_dialog__title">警告</string>
+    <string name="application_installation_was_not_successful">应用程序安装未成功</string>
+    <string name="application_successfully_installed">已成功安装应用程序</string>
+    <string name="available_version">可用版本：%1$s</string>
+    <string name="available_version_error"><u>错误</u></string>
+    <string name="available_version_loading">正在加载…</string>
+    <string name="background_notification__text">请报告此错误。点击查看错误报告。</string>
+    <string name="background_notification__title">后台检查更新失败</string>
+    <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
+    <string name="brave__title">Brave 隐私浏览器</string>
+    <string name="brave__warning">- Brave 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。
+\n- 由于其以太坊区块链上的 Basic Attention Token（BAT）技术，该项目与加密货币有联系。 区块链有很多问题，在我看来应该避免。</string>
+    <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！
+\n尝试最新功能并给予早期反馈：https://brave.com/msupport
+\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 公测版。</string>
+    <string name="brave_beta__title">Brave 浏览器（公测版）</string>
+    <string name="brave_nightly__description">欢迎使用 Brave 浏览器 Android 每夜版（开发者版）！
+\n尝试最新功能并给予早期反馈：https://brave.com/msupport
+\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
+    <string name="brave_nightly__title">Brave 浏览器（每夜版）</string>
+    <string name="bromite__description">Bromite 致力于提供清爽的浏览体验，无隐私侵害性功能，并附带一个快速的广告拦截引擎。应用了精简的用户界面，帮助抑制浏览器成为广告泛滥的平台。</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="bromite__warning">- Bromite 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎和相同功能。这使其代替成为 Android 系统默认浏览器成为可能。</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report___explain_text__install_activity_download_file">下载过程中出现以下错误。如果此错误频繁发生，请随时在notabug.org、GitHub 或GitLab上报告。请将剪贴板中的崩溃报告添加到报告中。</string>
+    <string name="crash_report___explain_text__install_activity_install_file">安装过程中出现以下错误。如果此错误频繁发生，请随时在notabug.org、GitHub或GitLab上报告。请将剪贴板中的崩溃报告添加到报告中。</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">在拉取下载 URL 时出现以下错误。如果这个错误经常出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。记得从剪贴板里添加崩溃报告并描述如何复现这个错误。</string>
+    <string name="crash_report__explain_text__main_activity_update_check">在主视图中检查更新时出现以下错误。如果这个错误经常出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。记得从剪贴板里添加崩溃报告并描述如何复现这个错误。</string>
+    <string name="crash_report__explain_text__uncaught_throwable">FFUpdater 上次不幸崩溃了，并记录到以下错误。请在 notabug.org、GitHub 或 GitLab 上报告。请从剪贴板里复制崩溃报告到信息中，并描述如何复现这个错误。</string>
+    <string name="crash_report__go_to_github">跳转到 GitHub</string>
+    <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
+    <string name="crash_report__got_to_notabug_org">跳转到 notabug.org</string>
+    <string name="device_too_old_dialog__message">此应用要求使用 Android %1$s。但是您的设备仅运行着 Android %2$s。请选择其他应用、更新操作系统或换用更新的智能手机。</string>
+    <string name="device_too_old_dialog__title">设备太旧</string>
+    <string name="dialog_button__do_not_install">不，请不要安装</string>
+    <string name="dialog_button__yes">是</string>
+    <string name="download_error_notification__channel_description">当后台应用程序下载失败时显示。</string>
+    <string name="download_error_notification__channel_name">后台下载错误通知</string>
+    <string name="download_error_notification__description">后台下载 %1$s 的更新失败。如果此错误频繁发生，请随时在notabug.org、GitHub或GitLab上报告。</string>
+    <string name="download_error_notification__message">后台下载 %1$s 的更新失败。如果此错误经常发生，请单击此处查看错误报告。</string>
+    <string name="download_error_notification__title">后台下载应用更新失败</string>
+    <string name="download_running_notification__channel_description">显示何时在后台下载了更新。</string>
+    <string name="download_running_notification__channel_name">后台下载通知</string>
+    <string name="download_running_notification__message">下载%1$s的更新（%2$s）。</string>
+    <string name="download_running_notification__title">正在下载应用程序更新</string>
+    <string name="download_the_app">下载应用程序</string>
+    <string name="error_notification__channel_description">显示后台更新检查器错误</string>
+    <string name="error_notification__channel_name">后台错误</string>
     <string name="firefox_beta__description">Android上的Firefox能自动实现隐私保护，还有着难以置信的速度。成千上万的在线追踪器每天都在跟踪你，收集你上网的信息还减慢你的浏览速度。Firefox默认拦截了2000多个追踪器，并且还有广告屏蔽插件能让你进一步定制你的浏览器。使用Firefox，你将在一个私密的移动浏览器中获得你应得的安全和你想要的速度。</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
     <string name="firefox_beta__warning">- 此程序是为开发测试人员设计的。它可能包含各种可能影响您正常使用浏览器的错误。</string>
@@ -115,6 +82,7 @@
 \nFirefox Nightly 旨在展示 Firefox 的更多实验特性。 Nightly 频道允许用户在不稳定的环境中体验最新的 Firefox 创新，并提供有关功能和性能的反馈以便确定最终版本的构成。</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_nightly__warning">- 此程序是为开发测试人员设计的。它可能包含各种可能影响您正常使用浏览器的错误。</string>
+    <string name="firefox_release__description">Android上的Firefox能自动实现隐私保护，还有着难以置信的速度。成千上万的在线追踪器每天都在跟踪你，收集你上网的信息还减慢你的浏览速度。Firefox默认拦截了2000多个追踪器，并且还有广告屏蔽插件能让你进一步定制你的浏览器。使用Firefox，你将在一个私密的移动浏览器中获得你应得的安全和你想要的速度。</string>
     <string name="firefox_release__title">Firefox 浏览器</string>
     <string name="firefox_release__warning">- F-Droid上还有一个改进版的 Firefox，名为 Fennec F-Droid。</string>
     <string name="go_back">返回</string>
@@ -124,9 +92,14 @@
 \n
 \n我们的目标是成为新的Firefox for Android的紧密分支，旨在为用户提供包含更多选项、更多自定义能力（包括广泛的扩展库），以及关于他们正在访问的页面的更多信息和浏览器如何与这些页面交互。</string>
     <string name="iceraven__title">Iceraven Browser</string>
+    <string name="iceraven__warning">- 维护者不提供关于安全性或更新或稳定性的保证。</string>
+    <string name="infobox">多个 Mozilla 和其他公司的浏览器的更新程序。 单击加号按钮进行安装，单击向下箭头按钮进行更新。 您可以通过向下滑动或重新打开应用程序来检查更新。 默认情况下，该应用程序会定期在后台检查更新。 我已尽我所能来确保安装和更新过程的安全——请随意反复检查或通过创建pull request来改进它。
+\n
+\n上次成功的后台更新检查：%1$s</string>
     <string name="information_about_the_app">关于此应用程序</string>
     <string name="install_activity__delete_cache_button_text">清除缓存</string>
     <string name="install_activity__delete_cache_explanation">如果您认为 FFUpdater 缓存了错误的应用更新，或者您想节省存储空间，请单击按钮删除已下载的文件。</string>
+    <string name="install_activity__different_installer_info__text">如果安装经常失败，请尝试在设置中切换到“本地安装程序”。</string>
     <string name="install_activity__download_app_with_status">下载应用程序（%1$s）</string>
     <string name="install_activity__download_failed">下载失败</string>
     <string name="install_activity__downloaded_application_from">从此处下载程序：</string>
@@ -135,47 +108,85 @@
     <string name="install_activity__external_storage_not_accessible">内部存储不可用——无法开始下载。当前状态：</string>
     <string name="install_activity__fetch_url_for_download">从 %1$s 获取下载地址</string>
     <string name="install_activity__fetched_url_for_download_successfully">已从 %1$s 获取下载地址</string>
+    <string name="install_activity__file_uri_exposed_toast">无法将文件路径暴露给其他应用。请使用您喜欢的文件管理器自行打开该文件夹。</string>
     <string name="install_activity__github_rate_limit_exceeded">已超出 GitHub API 速率限制。 请在一个小时后尝试下载。</string>
     <string name="install_activity__open_cache_explanation">您可以打开缓存文件夹将APK文件复制到具有更多可用空间的位置。不幸的是，在 Android 11+ 上，只有少数文件管理器可以访问 Android/data 中的文件夹。</string>
     <string name="install_activity__open_cache_folder_button_text">打开缓存文件夹</string>
+    <string name="install_activity__open_folder">打开文件夹</string>
     <string name="install_activity__sha_256_certificate_fingerprint">SHA-256 证书指纹：</string>
     <string name="install_activity__temporary_network_issue">出现临时网络问题。请稍后再试。</string>
     <string name="install_activity__too_low_memory_description">您的设备存储空间不足（仅剩 %1$d MB）。这将导致下载或安装失败。</string>
     <string name="install_activity__too_low_memory_title">存储空间不足</string>
+    <string name="install_activity__use_cached_downloaded_apk">使用此处已下载的文件：</string>
     <string name="install_activity__you_can_now_close_this_window">现在您可以关闭此窗口</string>
     <string name="install_activity_label">安装应用程序</string>
     <string name="install_app">安装应用</string>
     <string name="install_new_app">安装新应用</string>
+    <string name="install_same_version_dialog__message">已安装此应用程序的最新版本。是否要再次下载并安装最新版本？</string>
     <string name="install_same_version_dialog__title">已安装相同版本</string>
+    <string name="installation_error_notification__channel_description">%1$s 更新失败通知通道。</string>
+    <string name="installation_error_notification__channel_name">%1$s 更新失败通知</string>
+    <string name="installation_error_notification__message">错误（%1$d）：%2$s</string>
+    <string name="installation_error_notification__title">无法更新 %1$s。</string>
+    <string name="installation_success_notification__channel_description">%1$s 更新成功的通知通道。</string>
+    <string name="installation_success_notification__channel_name">%1$s 更新成功的通知</string>
+    <string name="installation_success_notification__message">应用已在后台成功更新。</string>
+    <string name="installation_success_notification__title">%1$s 更新成功。</string>
+    <string name="installed_app_is_not_verified">已安装的应用未经验证</string>
+    <string name="installed_application_is_verified">已安装的应用程序已验证</string>
     <string name="installed_version">已安装：%1$s</string>
+    <string name="intent_installer__likely_storage_failure">该操作可能由于存储问题失败。例如，设备可能空间不足，或者外部媒体可能不可用。用户可以尝试释放存储空间或插入不同的外部媒体。</string>
+    <string name="kiwi__description">Kiwi 浏览器可以轻松浏览互联网、阅读新闻、观看视频和听音乐。</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="kiwi__warning">- Kiwi使用了Google Chrome的技术基础，从而间接维护了 Chromium 渲染引擎的垄断地位。
+\n- Kiwi不是一个理想的隐私浏览器，但有很好的插件支持。
+\n- 使用Kiwi浏览器完成的每次搜索，搜索引擎都会为浏览器付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。
+\n- Kiwi中的Google Ads可能会将位置数据用于广告——但您可以通过禁用发现功能来禁用它。但这很快就会改变。有关详细信息，请参阅 https://privacy.kiwibrowser.org/。</string>
     <string name="lockwise__description">您的密码访问权限，仅限您自己
 \n
 \n安全地跟踪您的Firefox密码并在任何地方访问它们。从应用程序中快速打开任何网站并登入您的帐户。</string>
+    <string name="lockwise__eol_reason">Mozilla在2021年12月放弃了对它的支持。请使用其他密码管理器。</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>超过GitHub API限制。下一小时重试。</u></string>
     <string name="main_activity__no_unmetered_network">没有不按流量计费的网络</string>
+    <string name="main_activity__subtitle">隐私友好浏览器的更新器</string>
     <string name="main_activity__temporary_network_issue"><u>临时网络问题。稍后重试。</u></string>
     <string name="manage_storage_activity__delete_button">删除已缓存的应用更新。</string>
+    <string name="manage_storage_activity__explanation">FFUpdater 会缓存已下载的应用更新并将它们保存在\'Android/data/de.marmaro.krt.ffupdater/files/Download\'文件夹。
+\n
+\n这能节省流量以防安装或更新失败。同时，这一缓存对于稍后安装在后台下载的更新也是必要的。
+\n
+\n如果您决定删除这些应用更新，您可能需要再次下载它们。</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">取消</string>
     <string name="request_installation_permission_dialog__grant_permission">授予权限</string>
     <string name="request_installation_permission_dialog__message">FFUpdater没有安装和更新应用程序的权限。您需要授予这些权限否则FFUpdater无法工作。</string>
     <string name="request_installation_permission_dialog__title">安装器权限</string>
+    <string name="running_downloads_dialog__message">此应用程序现在正在后台下载更新。您想开始一个可能需要更长时间的新下载吗？</string>
     <string name="running_downloads_dialog__negative">不，不要下载它</string>
     <string name="running_downloads_dialog__title">运行中的下载</string>
     <string name="running_downloads_dialog__yes">是</string>
     <string name="session_installer__not_enough_storage">操作失败，因为没有足够的可用存储空间：%1$s</string>
+    <string name="session_installer__require_user_interaction">需要用户交互。您必须首先通过 FFUpdater 用户界面更新应用程序。只有这样才能允许相应应用程序的静默后台更新。</string>
     <string name="session_installer__status_failure">该操作以一般方式失败。系统将始终尝试提供更具体的故障原因，但在极少数情况下可能会提供。</string>
     <string name="session_installer__status_failure_aborted">操作失败，因为它被主动中止。例如，用户主动拒绝了请求的权限，或者会话被放弃。</string>
+    <string name="session_installer__status_failure_blocked">操作因被阻止而失败。例如，设备策略可能阻止操作，包验证程序可能阻止了操作，或者此应用程序为核心系统操作所需。</string>
     <string name="session_installer__status_failure_conflict">操作失败，因为它与设备上已安装的另一个包冲突（或不一致）。例如，现有权限、不兼容的证书等。用户可能通过卸载另一个应用程序来解决问题。</string>
+    <string name="session_installer__status_failure_incompatible">操作失败，因为它与此设备根本不兼容。例如，应用程序可能需要不存在的硬件特性，可能缺少设备支持的 ABI 的本机代码，或者需要更新的SDK版本等。</string>
     <string name="session_installer__status_failure_invalid">操作失败，因为一个或多个 APK 无效。例如，它们可能格式不正确、损坏、签名错误、不匹配等。</string>
     <string name="session_installer__status_failure_storage">操作由于存储问题失败。例如，设备可能存储空间不足，或者外部媒体不可用。用户可以尝试释放存储空间或插入不同的外部媒体。</string>
     <string name="settings__activity_label">设置</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">应用安装失败后删除此前下载的更新。</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">应用安装成功后删除此前下载的更新。</string>
+    <string name="settings__background__download__enabled__summary">当检测到更新时下载此更新。这样做将在以后加快更新过程。</string>
     <string name="settings__background__download__enabled__title">下载应用更新</string>
     <string name="settings__background__download__metered__summary">不建议移动数据流量不足的用户使用。</string>
     <string name="settings__background__download__metered__title">在按流量计费的网络中下载应用更新</string>
+    <string name="settings__background__installation__enabled__summary">尝试在没有用户交互的情况下安装更新。</string>
     <string name="settings__background__installation__enabled__title">安装更新</string>
     <string name="settings__background__update_check__enabled__summary">定期检查新的更新。</string>
     <string name="settings__background__update_check__enabled__title">更新检查</string>
+    <string name="settings__background__update_check__excluded_apps__summary">如果您不想更新应用程序且不想接收它的更新通知，这很有用。</string>
     <string name="settings__background__update_check__excluded_apps__title">从更新检查中排除应用程序</string>
     <string name="settings__background__update_check__interval__title">更新检查间隔</string>
     <string name="settings__background__update_check__metered__title">在按流量计费的网络中检查更新</string>
@@ -183,17 +194,27 @@
     <string name="settings__background_category__title">后台</string>
     <string name="settings__foreground__download__metered__summary">对移动数据流量有限的用户很有用。</string>
     <string name="settings__foreground__download__metered__title">在按流量计费的网络中下载更新</string>
+    <string name="settings__foreground__hide_warning_buttons">隐藏已安装应用程序的警告按钮。</string>
     <string name="settings__foreground__theme_preference__summary">在浅色和深色主题之间进行选择</string>
     <string name="settings__foreground__theme_preference__title">选择主题</string>
     <string name="settings__foreground__update_check__metered__summary">允许在按流量计费的网络（如移动数据）中检查更新。</string>
     <string name="settings__foreground__update_check__metered__title">在按流量计费的网络中检查更新</string>
     <string name="settings__foreground_category__summary">用户界面可见时的设置。</string>
     <string name="settings__foreground_category__title">前台</string>
+    <string name="settings__installer__native__summary">如果会话安装程序无法在您的智能手机上运行，则回退。三星或小米的设备更常出现这种情况。</string>
+    <string name="settings__installer__native__title">本地安装程序</string>
+    <string name="settings__installer__root__summary">使用root权限安装或更新应用程序，无需用户交互。这需要有root权限的智能手机。</string>
+    <string name="settings__installer__root__title">Root安装器</string>
+    <string name="settings__installer__session__summary">推荐用于大多数设备。</string>
+    <string name="settings__installer__session__title">会话安装程序</string>
+    <string name="settings__installer_category__title">安装器</string>
     <string name="settings__theme_battery_saver">省电模式启用时使用深色模式</string>
     <string name="settings__theme_dark">深色</string>
     <string name="settings__theme_light">浅色</string>
     <string name="settings__theme_system_default">跟随系统</string>
-    <string name="app_warning_before_installation_dialog__title">警告</string>
+    <string name="ungoogled_chromium__description">Google Chromium，没有与Google整合。
+\n
+\n在不登录 Google 帐户的情况下，Chromium 在安全和隐私方面做得很好。但Chromium仍然对Google网络服务和二进制文件有一些依赖。此外，Google将Chromium设计得对用户而言简单直观，这意味着他们会在透明度和内部运营控制方面做出妥协。</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium使用了Google Chrome的技术基础，从而间接维护了Chromium渲染引擎的垄断地位。</string>
     <string name="unsupported_abi_dialog__message">所选浏览器与您手机的处理器不兼容。请选择其他浏览器。</string>
@@ -221,28 +242,7 @@
     <string name="update_notification__text">点击以安装更新</string>
     <string name="update_notification__title">%1$s有更新可用</string>
     <string name="vivaldi__description">发现速度极快的网络浏览器！Vivaldi是一个新的、免费的、私人的网络浏览器，在构建时考虑到了灵活性。它包含有用的功能，包括内置的广告拦截器（弹出窗口阻止程序）、跟踪保护和私有翻译。诸如适当的桌面样式选项卡、深色/浅色主题和布局选择等浏览器选项可帮助您将其打造为您的专属。</string>
-    <string name="intent_installer__likely_storage_failure">该操作可能由于存储问题失败。例如，设备可能空间不足，或者外部媒体可能不可用。用户可以尝试释放存储空间或插入不同的外部媒体。</string>
-    <string name="crash_report___explain_text__install_activity_download_file">下载过程中出现以下错误。如果此错误频繁发生，请随时在notabug.org、GitHub 或GitLab上报告。请将剪贴板中的崩溃报告添加到报告中。</string>
-    <string name="app_warning_dialog__title">警告</string>
-    <string name="settings__installer__session__summary">推荐用于大多数设备。</string>
-    <string name="settings__installer__session__title">会话安装程序</string>
-    <string name="settings__installer__native__title">本地安装程序</string>
-    <string name="settings__installer__root__summary">使用root权限安装或更新应用程序，无需用户交互。这需要有root权限的智能手机。</string>
-    <string name="settings__installer__root__title">Root安装器</string>
-    <string name="install_activity__different_installer_info__text">如果安装经常失败，请尝试在设置中切换到“本地安装程序”。</string>
-    <string name="iceraven__warning">- 维护者不提供关于安全性或更新或稳定性的保证。</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__description">Kiwi 浏览器可以轻松浏览互联网、阅读新闻、观看视频和听音乐。</string>
-    <string name="installation_success_notification__message">应用已在后台成功更新。</string>
-    <string name="installation_success_notification__channel_description">%1$s 更新成功的通知通道。</string>
-    <string name="installation_success_notification__channel_name">%1$s 更新成功的通知</string>
-    <string name="installation_success_notification__title">%1$s 更新成功。</string>
-    <string name="download_running_notification__message">下载%1$s的更新（%2$s）。</string>
-    <string name="download_error_notification__channel_name">后台下载错误通知</string>
-    <string name="download_error_notification__channel_description">当后台应用程序下载失败时显示。</string>
-    <string name="download_error_notification__title">后台下载应用更新失败</string>
-    <string name="download_error_notification__message">后台下载 %1$s 的更新失败。如果此错误经常发生，请单击此处查看错误报告。</string>
-    <string name="download_error_notification__description">后台下载 %1$s 的更新失败。如果此错误频繁发生，请随时在notabug.org、GitHub或GitLab上报告。</string>
-    <string name="lockwise__eol_reason">Mozilla在2021年12月放弃了对它的支持。请使用其他密码管理器。</string>
-    <string name="app_card__app_warning_button_description">显示关于此应用的警告</string>
+    <string name="vivaldi__title">Vivaldi 浏览器</string>
+    <string name="vivaldi__warning">- Vivaldi 只是部分开源。
+\n- 它还使用了谷歌浏览器的技术基础，从而间接维护了Chromium渲染引擎的垄断地位。</string>
 </resources>

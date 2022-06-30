@@ -4,6 +4,7 @@
     <string name="app_description">プライバシーを重視したブラウザ用のアップデータ</string>
     <string name="app_icon">アプリアイコン</string>
     <string name="app_name">FFUpdater</string>
+    <string name="app_warning_before_installation_dialog__title">警告</string>
     <string name="application_installation_was_not_successful">アプリのインストールに失敗しました</string>
     <string name="application_successfully_installed">アプリのインストールに成功しました</string>
     <string name="available_version">利用可能: %1$s</string>
@@ -41,10 +42,6 @@
     <string name="download_the_app">アプリをダウンロード</string>
     <string name="error_notification__channel_description">バックグラウンドの更新チェックのエラーを表示します</string>
     <string name="error_notification__channel_name">バックグラウンドチェックのエラー</string>
-    <string name="installation_error_notification__channel_description">失敗した %1$s 更新の通知チャネル。</string>
-    <string name="installation_error_notification__channel_name">%1$s 更新失敗通知</string>
-    <string name="installation_error_notification__message">エラー (%1$d): %2$s</string>
-    <string name="installation_error_notification__title">%1$s は更新できませんでした。</string>
     <string name="firefox_beta__description">Android用Firefoxブラウザは、プライベートで、非常に高速に動作します。何千ものオンライントラッカーが毎日あなたを追跡し、あなたがオンラインで何にアクセスしたか等の情報を収集し、ブラウジング速度を低下させています。Firefoxは、これらのトラッカーの2000以上をデフォルトでブロックし、さらにブラウザをカスタマイズしたい場合は、広告ブロックのアドオンも利用できます。Firefoxは、あなたが必要とするセキュリティとスピードを、プライベートなモバイルブラウザで実現します。</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
     <string name="firefox_beta__warning">- このアプリは開発者やテスター向けに作られたものです。作業に影響を与える様々なバグが含まれている可能性があります。</string>
@@ -88,6 +85,14 @@
     <string name="install_new_app">新規アプリをインストール</string>
     <string name="install_same_version_dialog__message">このアプリの最新版はすでにインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>
     <string name="install_same_version_dialog__title">同じバージョンがインストール済み</string>
+    <string name="installation_error_notification__channel_description">失敗した %1$s 更新の通知チャネル。</string>
+    <string name="installation_error_notification__channel_name">%1$s 更新失敗通知</string>
+    <string name="installation_error_notification__message">エラー (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">%1$s は更新できませんでした。</string>
+    <string name="installation_success_notification__channel_description">成功した %1$s 更新の通知チャネル。</string>
+    <string name="installation_success_notification__channel_name">%1$s 正常に更新された通知</string>
+    <string name="installation_success_notification__message">アプリはバックグラウンドで正常に更新されました。</string>
+    <string name="installation_success_notification__title">%1$s が更新されました。</string>
     <string name="installed_app_is_not_verified">インストールしたアプリが検証できませんでした</string>
     <string name="installed_application_is_verified">インストールしたアプリは検証されました</string>
     <string name="installed_version">インストール済み: %1$s</string>
@@ -143,11 +148,6 @@
     <string name="settings__theme_dark">ダークテーマ</string>
     <string name="settings__theme_light">ライトテーマ</string>
     <string name="settings__theme_system_default">システム標準に従う</string>
-    <string name="app_warning_before_installation_dialog__title">警告</string>
-    <string name="installation_success_notification__message">アプリはバックグラウンドで正常に更新されました。</string>
-    <string name="installation_success_notification__channel_description">成功した %1$s 更新の通知チャネル。</string>
-    <string name="installation_success_notification__channel_name">%1$s 正常に更新された通知</string>
-    <string name="installation_success_notification__title">%1$s が更新されました。</string>
     <string name="ungoogled_chromium__description">Googleとの統合がないGoogle Chromium。\n\nGoogleアカウントにサインインしなくても、Chromiumはセキュリティとプライバシーの面で非常に優れています。しかし、ChromiumはGoogleのウェブサービスやバイナリに依存しています。さらに、GoogleはChromiumをユーザーにとって簡単で直感的なものにするように設計しているため、内部操作の透明性とコントロールに妥協していることになる。</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled ChromiumはGoogle Chromeの技術基盤を利用しているため、間接的にChromiumレンダーエンジンの独占的な地位を支えていることになるのです。</string>

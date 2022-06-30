@@ -4,6 +4,7 @@
     <string name="app_description">Program aktualizujący dla przeglądarek chroniących prywatność</string>
     <string name="app_icon">ikona aplikacji</string>
     <string name="app_name">FFUpdater</string>
+    <string name="app_warning_before_installation_dialog__title">Ostrzeżenie</string>
     <string name="application_installation_was_not_successful">Instalacja aplikacji się nie powidła</string>
     <string name="application_successfully_installed">Aplikacja została zainstalowana pomyślnie</string>
     <string name="available_version">Dostępne: %1$s</string>
@@ -41,14 +42,11 @@
     <string name="dialog_button__yes">Tak</string>
     <string name="download_running_notification__channel_description">Pokazuje, kiedy aktualizacje aplikacji są pobierane w tle.</string>
     <string name="download_running_notification__channel_name">Powiadomienie o pobranych plikach w tle</string>
+    <string name="download_running_notification__message">Pobierz aktualizację dla %1$s (%2$s).</string>
     <string name="download_running_notification__title">Pobieranie aktualizacji aplikacji</string>
     <string name="download_the_app">Pobierz aplikację</string>
     <string name="error_notification__channel_description">Pokaż błędy sprawdzania aktualizacji w tle</string>
     <string name="error_notification__channel_name">Błędy w tle</string>
-    <string name="installation_error_notification__channel_description">Kanał powiadamiania o nieudanych aktualizacjach %1$s.</string>
-    <string name="installation_error_notification__channel_name">Powiadomienie o niepowodzeniu aktualizacji %1$s</string>
-    <string name="installation_error_notification__message">Błąd (%1$d): %2$s</string>
-    <string name="installation_error_notification__title">Nie można zaktualizować %1$s.</string>
     <string name="firefox_beta__description">Przeglądarka Firefox dla Androida zapewnia prywatność i niewiarygodną szybkość. Tysiące skryptów śledzących śledzi Cię każdego dnia, zbierając informacje o tym, gdzie jesteś w sieci, spowalniając Twoją przeglądarkę. Firefox domyślnie blokuje ponad 2000 takich skryptów, a jeśli chcesz jeszcze bardziej dostosować przeglądarkę do swoich potrzeb, dostępne są dodatki blokujące reklamy. Dzięki Firefoxowi uzyskasz bezpieczeństwo, na które zasługujesz, i szybkość, jakiej potrzebujesz, w prywatnej, mobilnej przeglądarce.</string>
     <string name="firefox_beta__title">Firefox dla Android Beta</string>
     <string name="firefox_beta__warning">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
@@ -61,6 +59,7 @@
     <string name="firefox_nightly__warning">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
     <string name="firefox_release__description">Przeglądarka Firefox dla Androida zapewnia prywatność i niewiarygodną szybkość. Tysiące skryptów śledzących śledzi Cię każdego dnia, zbierając informacje o tym, gdzie jesteś w sieci, spowalniając Twoją przeglądarkę. Firefox domyślnie blokuje ponad 2000 takich skryptów, a jeśli chcesz jeszcze bardziej dostosować przeglądarkę do swoich potrzeb, dostępne są dodatki blokujące reklamy. Dzięki Firefoxowi uzyskasz bezpieczeństwo, na które zasługujesz, i szybkość, jakiej potrzebujesz, w prywatnej, mobilnej przeglądarce.</string>
     <string name="firefox_release__title">Przeglądarka Firefox</string>
+    <string name="firefox_release__warning">- Ulepszona wersja Firefox jest również dostępna w systemie F-Droid pod nazwą Fennec F-Droid.</string>
     <string name="go_back">Wstecz</string>
     <string name="iceraven__description">To nie jest usługa Mozilli! \n\nIceraven Browser to przeglądarka internetowa dla systemu Android, oparta na wersji Fenix przeglądarki Firefox, GeckoView i Mozilla Android Components. \n\nNaszym celem jest być bliskim forkiem nowego Firefoksa, który stara się zapewnić użytkownikom więcej opcji, więcej możliwości personalizacji (w tym szeroką bibliotekę rozszerzeń) oraz dostarczać więcej informacji o stronach, które odwiedzają użytkownicy i o tym, jak ich przeglądarki wchodzą w interakcję z tymi stronami.</string>
     <string name="iceraven__title">Przeglądarka Iceraven</string>
@@ -90,6 +89,14 @@
     <string name="install_new_app">Zainstaluj nową aplikację</string>
     <string name="install_same_version_dialog__message">Najnowsza wersja tej aplikacji jest już zainstalowana. Czy chcesz ponownie pobrać i zainstalować najnowszą wersję?</string>
     <string name="install_same_version_dialog__title">Ta sama wersja jest już zainstalowana</string>
+    <string name="installation_error_notification__channel_description">Kanał powiadamiania o nieudanych aktualizacjach %1$s.</string>
+    <string name="installation_error_notification__channel_name">Powiadomienie o niepowodzeniu aktualizacji %1$s</string>
+    <string name="installation_error_notification__message">Błąd (%1$d): %2$s</string>
+    <string name="installation_error_notification__title">Nie można zaktualizować %1$s.</string>
+    <string name="installation_success_notification__channel_description">Kanał powiadamiania o udanych aktualizacjach %1$s.</string>
+    <string name="installation_success_notification__channel_name">%1$s powiadomienie o udanej aktualizacji</string>
+    <string name="installation_success_notification__message">Aplikacja została pomyślnie zaktualizowana w tle.</string>
+    <string name="installation_success_notification__title">%1$s został zaktualizowany.</string>
     <string name="installed_app_is_not_verified">Zainstalowana aplikacja NIE została zweryfikowana</string>
     <string name="installed_application_is_verified">Zainstalowana aplikacja została zweryfikowana</string>
     <string name="installed_version">Zainstalowane: %1$s</string>
@@ -144,15 +151,11 @@
     <string name="settings__foreground__update_check__metered__title">Kontrola aktualizacji w sieciach opomiarowanych</string>
     <string name="settings__foreground_category__summary">Ustawienia, kiedy interfejs użytkownika jest widoczny.</string>
     <string name="settings__foreground_category__title">Nowa wiedza</string>
+    <string name="settings__installer_category__title">Instalator</string>
     <string name="settings__theme_battery_saver">Ciemny kiedy oszczędzanie baterii jest włączone</string>
     <string name="settings__theme_dark">Ciemny</string>
     <string name="settings__theme_light">Jasny</string>
     <string name="settings__theme_system_default">Użyj motywu systemowego</string>
-    <string name="app_warning_before_installation_dialog__title">Ostrzeżenie</string>
-    <string name="installation_success_notification__message">Aplikacja została pomyślnie zaktualizowana w tle.</string>
-    <string name="installation_success_notification__channel_description">Kanał powiadamiania o udanych aktualizacjach %1$s.</string>
-    <string name="installation_success_notification__channel_name">%1$s powiadomienie o udanej aktualizacji</string>
-    <string name="installation_success_notification__title">%1$s został zaktualizowany.</string>
     <string name="ungoogled_chromium__description">Google Chromium, bez integracji z Google.\n\nBez logowania się na konto Google, Chromium radzi sobie całkiem dobrze pod względem bezpieczeństwa i prywatności. Jednakże, Chromium nadal jest w pewnym stopniu zależne od usług sieciowych i plików binarnych Google. Ponadto, Google zaprojektowało Chromium tak, aby było łatwe i intuicyjne dla użytkowników, co oznacza, że poszło na kompromis w kwestii przejrzystości i kontroli operacji wewnętrznych.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium wykorzystuje techniczne podstawy Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
@@ -184,7 +187,4 @@
     <string name="vivaldi__title">Przeglądarka Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi jest tylko częściowo open source.
 \n- Wykorzystuje również techniczne podstawy przeglądarki Google Chrome, przez co pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
-    <string name="settings__installer_category__title">Instalator</string>
-    <string name="firefox_release__warning">- Ulepszona wersja Firefox jest również dostępna w systemie F-Droid pod nazwą Fennec F-Droid.</string>
-    <string name="download_running_notification__message">Pobierz aktualizację dla %1$s (%2$s).</string>
 </resources>
