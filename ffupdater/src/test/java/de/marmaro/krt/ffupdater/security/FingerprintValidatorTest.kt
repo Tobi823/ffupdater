@@ -16,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import java.io.File
+import java.security.cert.CertificateException
 import kotlin.io.path.createTempFile
 import kotlin.random.Random
 
@@ -93,7 +94,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
-        assertThrows(FingerprintValidator.UnableCheckApkException::class.java) {
+        assertThrows(CertificateException::class.java) {
             runBlocking {
                 fingerprintValidator.checkApkFile(file, MaintainedApp.FIREFOX_RELEASE.detail)
             }
@@ -125,7 +126,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageInfo(MaintainedApp.FIREFOX_RELEASE.detail.packageName, GET_SIGNATURES)
         } returns packageInfo
 
-        assertThrows(FingerprintValidator.UnableCheckApkException::class.java) {
+        assertThrows(CertificateException::class.java) {
             runBlocking {
                 fingerprintValidator.checkInstalledApp(MaintainedApp.FIREFOX_RELEASE.detail)
             }

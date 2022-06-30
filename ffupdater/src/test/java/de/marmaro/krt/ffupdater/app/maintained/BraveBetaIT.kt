@@ -50,7 +50,7 @@ class BraveBetaIT {
         } returns packageInfo
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
 
-        val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/BraveBeta"
+        val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/BraveBeta"
         coEvery {
             apiConsumer.consumeAsync("$API_URl?per_page=20&page=1", Array<Release>::class).await()
         } returns Gson().fromJson(

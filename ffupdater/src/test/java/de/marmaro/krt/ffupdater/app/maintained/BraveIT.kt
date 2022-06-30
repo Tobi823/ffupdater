@@ -75,7 +75,7 @@ class BraveIT {
     }
 
     private fun prepareNetworkForReleaseAfterTwoRequests() {
-        val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave"
+        val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/Brave"
 
         coEvery {
             apiConsumer.consumeAsync("$API_URl/latest", Release::class).await()
@@ -93,7 +93,7 @@ class BraveIT {
     }
 
     private fun prepareNetworkForReleaseAfterThreeRequests() {
-        val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Brave"
+        val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/Brave"
 
         coEvery {
             apiConsumer.consumeAsync("$API_URl/latest", Release::class).await()

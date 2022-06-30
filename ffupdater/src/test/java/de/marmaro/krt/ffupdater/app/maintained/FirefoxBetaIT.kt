@@ -86,7 +86,7 @@ class FirefoxBetaIT {
     }
 
     private fun makeChainOfTrustTextAvailableUnderUrl(url: String) {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxBeta/" +
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/FirefoxBeta/" +
                 "chain_of_trust.log"
         coEvery {
             apiConsumer.consumeAsync(url, String::class).await()

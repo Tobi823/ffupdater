@@ -84,7 +84,7 @@ class FirefoxReleaseIT {
     }
 
     private fun makeChainOfTrustTextAvailableUnderUrl(url: String) {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxRelease/" +
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/FirefoxRelease/" +
                 "chain-of-trust.log"
         coEvery {
             apiConsumer.consumeAsync(url, String::class).await()

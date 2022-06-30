@@ -88,7 +88,7 @@ class KiwiIT {
     }
 
     private fun makeReleaseJsonObjectAvailable() {
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Kiwi/releases.json"
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/Kiwi/releases.json"
         coEvery {
             apiConsumer.consumeAsync(API_URL, Array<Release>::class).await()
         } returns Gson().fromJson(FileReader(path), Array<Release>::class.java)

@@ -64,7 +64,7 @@ class BromiteSystemWebViewIT {
     companion object {
         private const val DOWNLOAD_URL = "https://github.com/bromite/bromite/releases/download/100.0.4896.92"
         private const val FOLDER_PATH =
-            "src/test/resources/de/marmaro/krt/ffupdater/app/impl/BromiteSystemWebView"
+            "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/BromiteSystemWebView"
         private const val EXPECTED_VERSION = "100.0.4896.92"
         private val EXPECTED_RELEASE_TIMESTAMP = "2022-04-15T14:41:46Z"
 

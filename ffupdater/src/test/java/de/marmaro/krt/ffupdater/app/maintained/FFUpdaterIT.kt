@@ -43,7 +43,7 @@ class FFUpdaterIT {
             packageManager.getPackageInfo(MaintainedApp.FFUPDATER.detail.packageName, any())
         } returns packageInfo
 
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FFUpdater/latest.json"
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/FFUpdater/latest.json"
         coEvery {
             apiConsumer.consumeAsync("$API_URL/latest", GithubConsumer.Release::class).await()
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)

@@ -44,7 +44,7 @@ class VivaldiIT {
             packageManager.getPackageInfo(MaintainedApp.VIVALDI.detail.packageName, any())
         } returns packageInfo
 
-        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Vivaldi/download.html"
+        val path = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/Vivaldi/download.html"
         coEvery {
             apiConsumer.consumeAsync("https://vivaldi.com/download/", String::class).await()
         } returns File(path).readText()
