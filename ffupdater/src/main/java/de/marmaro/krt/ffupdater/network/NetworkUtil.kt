@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download
+package de.marmaro.krt.ffupdater.network
 
 import android.content.Context
 import android.net.ConnectivityManager

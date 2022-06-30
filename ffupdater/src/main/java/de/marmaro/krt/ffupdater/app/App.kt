@@ -1,8 +1,8 @@
 package de.marmaro.krt.ffupdater.app
 
 import de.marmaro.krt.ffupdater.app.maintained.*
-import de.marmaro.krt.ffupdater.app.network.ApiConsumer
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.network.ApiConsumer
 
 private val apiConsumer = ApiConsumer()
 private val deviceAbis = DeviceAbiExtractor.findSupportedAbis()

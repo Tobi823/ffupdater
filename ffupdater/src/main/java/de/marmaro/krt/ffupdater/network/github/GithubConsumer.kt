@@ -1,9 +1,9 @@
-package de.marmaro.krt.ffupdater.app.network.github
+package de.marmaro.krt.ffupdater.network.github
 
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
-import de.marmaro.krt.ffupdater.app.exceptions.InvalidApiResponseException
-import de.marmaro.krt.ffupdater.app.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import java.util.*
 import java.util.function.Predicate
 

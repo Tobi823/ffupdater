@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.maintained.*
-import de.marmaro.krt.ffupdater.app.network.ApiConsumer
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.network.ApiConsumer
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension

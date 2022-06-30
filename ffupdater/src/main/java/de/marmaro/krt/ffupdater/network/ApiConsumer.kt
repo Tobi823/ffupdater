@@ -1,11 +1,11 @@
-package de.marmaro.krt.ffupdater.app.network
+package de.marmaro.krt.ffupdater.network
 
 import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.app.exceptions.GithubRateLimitExceededException
-import de.marmaro.krt.ffupdater.app.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

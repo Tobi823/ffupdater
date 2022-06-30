@@ -7,9 +7,9 @@ import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.network.ApiConsumer
-import de.marmaro.krt.ffupdater.app.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK

@@ -7,10 +7,10 @@ import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableVersionResult
 import de.marmaro.krt.ffupdater.app.BaseApp
-import de.marmaro.krt.ffupdater.app.network.ApiConsumer
-import de.marmaro.krt.ffupdater.app.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.security.FileHashCalculator
 import java.io.File
 import java.time.ZonedDateTime

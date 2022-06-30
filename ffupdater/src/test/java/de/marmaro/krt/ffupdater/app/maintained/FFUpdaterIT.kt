@@ -7,8 +7,8 @@ import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.network.ApiConsumer
-import de.marmaro.krt.ffupdater.app.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
