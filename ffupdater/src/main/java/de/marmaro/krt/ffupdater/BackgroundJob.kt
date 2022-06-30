@@ -10,8 +10,6 @@ import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.download.AppCache
-import de.marmaro.krt.ffupdater.download.StorageUtil
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
@@ -23,6 +21,8 @@ import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.ROOT_INSTALLER
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.SESSION_INSTALLER
+import de.marmaro.krt.ffupdater.storage.AppCache
+import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope

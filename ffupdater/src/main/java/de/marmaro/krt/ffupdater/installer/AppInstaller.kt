@@ -65,7 +65,7 @@ abstract class SecureAppInstaller(
 
         val appResult = try {
             validator.checkInstalledApp(app.detail)
-        } catch (e: FingerprintValidator.UnableCheckApkException) {
+        } catch (e: Exception) {
             val errorMessage = "Fail to check APK file. Please retry again. Click to view the error report."
             return ExtendedInstallResult(false, null, -102, errorMessage, e)
         }

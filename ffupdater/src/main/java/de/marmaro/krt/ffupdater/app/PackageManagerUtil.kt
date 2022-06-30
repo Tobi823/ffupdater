@@ -9,7 +9,6 @@ import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.app.maintained.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.download.ApkSignatureNotFoundException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -18,13 +17,13 @@ import java.io.FileNotFoundException
 class PackageManagerUtil(private val packageManager: PackageManager) {
 
     @MainThread
-    @Throws(FileNotFoundException::class, ApkSignatureNotFoundException::class)
+    @Throws(FileNotFoundException::class)
     fun getPackageArchiveInfo(path: String): Signature {
         if (!File(path).exists()) {
             throw FileNotFoundException("File '$path' does not exists.")
         }
-        return extractSignature { flags: Int -> packageManager.getPackageArchiveInfo(path, flags) }
-            ?: throw ApkSignatureNotFoundException("Can't extract the signature from the APK file.")
+        val signature = extractSignature { flags -> packageManager.getPackageArchiveInfo(path, flags) }
+        return requireNotNull(signature) { "Can't extract the signature from the APK file." }
     }
 
     @MainThread
@@ -34,10 +33,9 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
         }
     }
 
-    @Throws(ApkSignatureNotFoundException::class)
     fun getInstalledAppInfo(app: AppBase): Signature {
-        return extractSignature { flags: Int -> packageManager.getPackageInfo(app.packageName, flags) }
-            ?: throw ApkSignatureNotFoundException("Can't extract the signature from app.")
+        val signature = extractSignature { flags -> packageManager.getPackageInfo(app.packageName, flags) }
+        return requireNotNull(signature) { "Can't extract the signature from app." }
     }
 
     fun getInstalledAppVersionName(packageName: String): String? {

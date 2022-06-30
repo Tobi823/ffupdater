@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.download
+package de.marmaro.krt.ffupdater.storage
 
 import android.content.Context
 import android.os.Environment
