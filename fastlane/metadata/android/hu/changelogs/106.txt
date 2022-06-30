@@ -1,0 +1,6 @@
+* Köszönet MkQtS, Nagy Viktória, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner javításáért.
+  fordítást.
+* A Mozilla Lockwise-ot életciklusának végeként jelöljük meg (köszönet p0yskaa-nak az információért).
+* Figyelmeztetés megjelenítése, ha egy lejárt életű alkalmazást használunk.
+* Cache UpdateCheckResult a preferenciákban - ennek megbízhatóbbnak kell lennie, mint a korábbi cache módszer.
+* A színek kontrasztjának javítása.
