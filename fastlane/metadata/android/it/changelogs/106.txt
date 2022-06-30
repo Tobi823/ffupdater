@@ -1,6 +1,6 @@
-* Si ringraziano MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner per aver migliorato la traduzione.
-  traduzione.
-* Contrassegnare Mozilla Lockwise come fine vita (grazie a p0yskaa per l'informazione).
-* Mostra un avviso quando viene usata un'applicazione a fine vita.
-* Cache di UpdateCheckResult nelle preferenze - dovrebbe essere più affidabile del precedente metodo di cache.
-* Migliorare i contrasti dei colori.
+* Grazie a MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner per aver migliorato
+  la traduzione.
+* Contrassegnato Mozilla Lockwise come fine del ciclo di vita(grazie a p0yskaa per l'informazione).
+* Mostra un avviso quando viene usata un'applicazione a fine del ciclo di vita.
+* Cache UpdateCheckResult nelle preferenze - dovrebbe essere più affidabile del precedente metodo di cache.
+* Migliorati i contrasti dei colori.
