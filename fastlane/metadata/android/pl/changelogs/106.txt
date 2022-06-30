@@ -1,0 +1,6 @@
+* Podziękowania dla MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner za poprawę tłumaczenia.
+  tłumaczenie.
+* Oznacz Mozillę Lockwise jako wycofaną z użytku (dzięki p0yskaa za informację).
+* Wyświetlanie ostrzeżenia, gdy używana jest aplikacja wycofana z użytku.
+* Cache UpdateCheckResult w preferencjach - powinno to być bardziej niezawodne niż poprzednia metoda buforowania.
+* Poprawiono kontrast kolorów.
