@@ -12,7 +12,7 @@ class DataStoreHelper(context: Context) {
     var lastBackgroundCheck: LocalDateTime?
         get() {
             val timestamp = preferences.getString(LAST_BACKGROUND_CHECK_TIMESTAMP, null)
-                    ?: return null
+                ?: return null
             return try {
                 LocalDateTime.parse(timestamp, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
             } catch (e: DateTimeParseException) {
@@ -22,8 +22,15 @@ class DataStoreHelper(context: Context) {
         set(value) {
             val timestamp = value?.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
             preferences.edit()
-                    .putString(LAST_BACKGROUND_CHECK_TIMESTAMP, timestamp)
-                    .apply()
+                .putString(LAST_BACKGROUND_CHECK_TIMESTAMP, timestamp)
+                .apply()
+        }
+
+    val lastBackgroundCheckString: String
+        get() {
+            return lastBackgroundCheck
+                ?.let { DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(it) }
+                ?: "/"
         }
 
     companion object {

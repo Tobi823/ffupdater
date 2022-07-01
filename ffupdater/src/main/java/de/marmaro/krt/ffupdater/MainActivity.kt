@@ -37,7 +37,6 @@ import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -63,9 +62,9 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(foregroundSettings.themePreference)
         Migrator().migrate(this)
 
-        val deviceAbis = DeviceAbiExtractor.findSupportedAbis()
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            InstallNewAppDialog.newInstance(deviceAbis).show(supportFragmentManager)
+            InstallNewAppDialog.newInstance(DeviceAbiExtractor.findSupportedAbis())
+                .show(supportFragmentManager)
         }
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
@@ -99,12 +98,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val itemId = item.itemId
         if (itemId == R.id.action_about) {
-            val timestamp = DataStoreHelper(this).lastBackgroundCheck
-                ?.let { DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(it) }
-                ?: "/"
             AlertDialog.Builder(this@MainActivity)
                 .setTitle(R.string.action_about_title)
-                .setMessage(getString(R.string.infobox, timestamp))
+                .setMessage(getString(R.string.infobox, DataStoreHelper(this).lastBackgroundCheckString))
                 .setNeutralButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .create()
                 .show()
