@@ -11,13 +11,12 @@ import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRE
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -32,20 +31,17 @@ abstract class SessionInstallerBase(
     private val installationStatus = CompletableDeferred<InstallResult>()
     private var intentReceiver: BroadcastReceiver? = null
 
-    override suspend fun uncheckInstallAsync(context: Context): Deferred<InstallResult> {
-        requireNotNull(intentReceiver) { "SessionInstaller is not initialized" }
+    override suspend fun executeInstallerSpecificLogic(context: Context): InstallResult {
         require(file.exists()) { "File does not exists." }
-        try {
-            withContext(Dispatchers.Main) {
-                install(context)
+        return withContext(Dispatchers.Main) {
+            registerIntentReceiver(context)
+            install(context)
+            try {
+                installationStatus.await()
+            } finally {
+                unregisterIntentReceiver(context)
             }
-            return installationStatus
-        } catch (e: IOException) {
-            installationStatus.completeExceptionally(Exception("Fail to install app.", e))
-        } catch (e: Exception) {
-            installationStatus.completeExceptionally(e)
         }
-        return installationStatus
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
@@ -111,6 +107,7 @@ abstract class SessionInstallerBase(
     }
 
     private fun handleAppInstallationResult(c: Context?, intent: Intent?) {
+        Log.e("SessionInstallerBase", "handleAppInstallationResult")
         requireNotNull(c)
         requireNotNull(intent)
         val bundle = requireNotNull(intent.extras)
@@ -147,6 +144,7 @@ abstract class SessionInstallerBase(
             // if PackageInstaller fail to call handleAppInstallationResult()
             // one installationStatus has been completed, its value can not be changed
             if (!success) {
+                Log.e("SessionInstallerBase", "failure2()")
                 installationStatus.complete(InstallResult(false, STATUS_FAILURE_ABORTED, abortedErrorMessage))
             }
         }
@@ -156,10 +154,12 @@ abstract class SessionInstallerBase(
     protected abstract fun requestInstallationPermission(context: Context, bundle: Bundle)
 
     protected fun failure(errorCode: Int, errorMessage: String) {
+        Log.e("SessionInstallerBase", "failure()")
         installationStatus.complete(InstallResult(false, errorCode, errorMessage))
     }
 
     protected fun success() {
+        Log.e("SessionInstallerBase", "success()")
         installationStatus.complete(InstallResult(true, null, null))
     }
 

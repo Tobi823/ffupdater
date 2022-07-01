@@ -3,9 +3,7 @@ package de.marmaro.krt.ffupdater.installer
 import android.content.Context
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.MaintainedApp
-import de.marmaro.krt.ffupdater.installer.AppInstaller.InstallResult
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -19,7 +17,7 @@ class RootInstaller(
     private val file: File
 ) :
     SecureAppInstaller(app, file), ForegroundAppInstaller, BackgroundAppInstaller {
-    private val status = CompletableDeferred<InstallResult>()
+    private val installationStatus = CompletableDeferred<InstallResult>()
     private val allowListAbsoluteFilePath = ArrayList<String>()
     private val allowListFileName = ArrayList<String>()
 
@@ -32,11 +30,11 @@ class RootInstaller(
         }
     }
 
-    override suspend fun uncheckInstallAsync(context: Context): Deferred<InstallResult> {
+    override suspend fun executeInstallerSpecificLogic(context: Context): InstallResult {
         withContext(Dispatchers.IO) {
             install()
         }
-        return status
+        return installationStatus.await()
     }
 
     private fun install() {
@@ -59,7 +57,7 @@ class RootInstaller(
         if (Shell.getShell().isRoot) {
             return true
         }
-        status.complete(InstallResult(false, -90, "Missing root access."))
+        installationStatus.complete(InstallResult(false, -90, "Missing root access."))
         return false
     }
 
@@ -72,7 +70,7 @@ class RootInstaller(
         val sessionIdMatcher = sessionIdPattern.matcher(response[0])
         val found = sessionIdMatcher.find()
         if (!found) {
-            status.complete(InstallResult(false, -91, "Could not find session ID."))
+            installationStatus.complete(InstallResult(false, -91, "Could not find session ID."))
             return null
         }
         return sessionIdMatcher.group(1)?.toInt()
@@ -88,7 +86,7 @@ class RootInstaller(
         result.addAll(shellResult.out)
         result.addAll(shellResult.err)
         val output = result.joinToString(";")
-        status.complete(InstallResult(shellResult.isSuccess, null, output))
+        installationStatus.complete(InstallResult(shellResult.isSuccess, null, output))
     }
 
     private fun areFileNamesValid(filePath: String, fileName: String): Boolean {
@@ -97,7 +95,7 @@ class RootInstaller(
             filePath !in allowListAbsoluteFilePath ||
             fileName !in allowListFileName
         ) {
-            status.complete(InstallResult(false, -110, "file path or file name is invalid"))
+            installationStatus.complete(InstallResult(false, -110, "file path or file name is invalid"))
             return false
         }
         return true

@@ -4,36 +4,31 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
-import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.Deferred
 import java.io.File
-import java.io.IOException
 
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class IntentInstaller(
     context: Context,
     private val activityResultRegistry: ActivityResultRegistry,
     app: MaintainedApp,
     private val file: File,
 ) : ForegroundAppInstaller, SecureAppInstaller(app, file) {
-    private val status = CompletableDeferred<AppInstaller.InstallResult>()
+    private val installationStatus = CompletableDeferred<InstallResult>()
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
 
     private val appResultCallback = lambda@{ activityResult: ActivityResult ->
         if (activityResult.resultCode == Activity.RESULT_OK) {
-            status.complete(AppInstaller.InstallResult(true, null, null))
+            installationStatus.complete(InstallResult(true, null, null))
             return@lambda
         }
 
@@ -42,7 +37,7 @@ class IntentInstaller(
             -11 -> context.getString(R.string.intent_installer__likely_storage_failure)
             else -> "resultCode: ${activityResult.resultCode}, INSTALL_RESULT: $installResult"
         }
-        status.complete(AppInstaller.InstallResult(false, activityResult.resultCode, errorMessage))
+        installationStatus.complete(InstallResult(false, activityResult.resultCode, errorMessage))
     }
 
     override fun onCreate(owner: LifecycleOwner) {
@@ -54,18 +49,11 @@ class IntentInstaller(
         )
     }
 
-    override suspend fun uncheckInstallAsync(context: Context): Deferred<AppInstaller.InstallResult> {
+    override suspend fun executeInstallerSpecificLogic(context: Context): InstallResult {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
-        try {
-            installInternal(context, file)
-            return status
-        } catch (e: IOException) {
-            status.completeExceptionally(Exception("fail to install app", e))
-        } catch (e: Exception) {
-            status.completeExceptionally(e)
-        }
-        return status
+        installInternal(context, file)
+        return installationStatus.await()
     }
 
     /**

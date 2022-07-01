@@ -12,6 +12,8 @@ import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid10
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
+import de.marmaro.krt.ffupdater.installer.Installer.ROOT_INSTALLER
+import de.marmaro.krt.ffupdater.installer.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.GithubRateLimitExceededException
@@ -20,8 +22,6 @@ import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
-import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.ROOT_INSTALLER
-import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.storage.AppCache
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.CancellationException

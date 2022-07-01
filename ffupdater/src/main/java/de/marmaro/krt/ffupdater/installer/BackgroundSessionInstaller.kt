@@ -5,10 +5,6 @@ import android.content.pm.PackageInstaller
 import android.os.Bundle
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.withContext
 import java.io.File
 
 class BackgroundSessionInstaller(
@@ -16,19 +12,6 @@ class BackgroundSessionInstaller(
     app: MaintainedApp,
     file: File
 ) : BackgroundAppInstaller, SessionInstallerBase(context, app, file) {
-
-    override suspend fun uncheckInstallAsync(context: Context): Deferred<AppInstaller.InstallResult> {
-        return withContext(Dispatchers.Main) {
-            async {
-                registerIntentReceiver(context)
-                try {
-                    super.uncheckInstallAsync(context).await()
-                } finally {
-                    unregisterIntentReceiver(context)
-                }
-            }
-        }
-    }
 
     override fun getIntentNameForAppInstallationCallback(): String {
         return "de.marmaro.krt.ffupdater.installer.BackgroundSessionInstaller.app_installed"
