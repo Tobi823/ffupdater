@@ -68,7 +68,7 @@ abstract class AppBase {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
                 mutex.withLock {
-                    checkForUpdateAndCacheIt(context, useCache = true, useExpiredCache = false)
+                    checkForUpdateAndCacheIt(context, useCache = true)
                 }
             }
         }
@@ -79,40 +79,20 @@ abstract class AppBase {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
                 mutex.withLock {
-                    checkForUpdateAndCacheIt(context, useCache = false, useExpiredCache = false)
+                    checkForUpdateAndCacheIt(context, useCache = false)
                 }
             }
         }
     }
 
-    suspend fun checkForUpdateWithEvenExpiredCacheAsync(context: Context): Deferred<AppUpdateResult> {
-        return withContext(Dispatchers.IO) {
-            async {
-                // - use mutex lock to prevent multiple simultaneously update check for a single app
-                mutex.withLock {
-                    checkForUpdateAndCacheIt(context, useCache = true, useExpiredCache = true)
-                }
-            }
-        }
-    }
+    private suspend fun checkForUpdateAndCacheIt(context: Context, useCache: Boolean): AppUpdateResult {
 
-    private suspend fun checkForUpdateAndCacheIt(
-        context: Context,
-        useCache: Boolean,
-        useExpiredCache: Boolean
-    ): AppUpdateResult {
-        val cacheKey = "cached_update_check_result__${packageName}"
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        try {
-            if (useCache) {
-                preferences.getString(cacheKey, null)
-                    ?.let { gson.fromJson(it, AppUpdateResult::class.java) }
-                    ?.takeIf { useExpiredCache || (System.currentTimeMillis() - it.timestamp <= CACHE_TIME) }
-                    ?.let { return it }
-            }
-        } catch (e: JsonSyntaxException) {
-            // just ignore the invalid cache
+        if (useCache) {
+            getUpdateCache(context)
+                ?.takeIf { System.currentTimeMillis() - it.timestamp <= CACHE_TIME }
+                ?.let { return it }
         }
+
 
         val available = checkForUpdate()
         val result = AppUpdateResult(
@@ -120,9 +100,26 @@ abstract class AppBase {
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available),
             displayVersion = getDisplayAvailableVersion(context, available)
         )
-
-        preferences.edit().putString(cacheKey, gson.toJson(result)).apply()
+        setUpdateCache(context, result)
         return result
+    }
+
+    fun getUpdateCache(context: Context): AppUpdateResult? {
+        return try {
+            PreferenceManager.getDefaultSharedPreferences(context)
+                .getString("${CACHE_KEY_PREFIX}__${packageName}", null)
+                ?.let { gson.fromJson(it, AppUpdateResult::class.java) }
+        } catch (e: JsonSyntaxException) {
+            null
+        }
+    }
+
+    fun setUpdateCache(context: Context, appUpdateResult: AppUpdateResult) {
+        val jsonString = gson.toJson(appUpdateResult)
+        PreferenceManager.getDefaultSharedPreferences(context)
+            .edit()
+            .putString("${CACHE_KEY_PREFIX}__${packageName}", jsonString)
+            .apply()
     }
 
     @MainThread
@@ -150,6 +147,7 @@ abstract class AppBase {
 
     companion object {
         const val CACHE_TIME = 600_000L // 10 minutes
+        const val CACHE_KEY_PREFIX = "cached_update_check_result__"
         val gson = Gson()
     }
 }

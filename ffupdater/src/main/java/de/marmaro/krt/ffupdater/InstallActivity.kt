@@ -22,7 +22,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.R.string.*
-import de.marmaro.krt.ffupdater.app.AppUpdateResult
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -60,7 +59,6 @@ class InstallActivity : AppCompatActivity() {
     class InstallActivityViewModel : ViewModel() {
         var app: MaintainedApp? = null
         var fileDownloader: FileDownloader? = null
-        var appUpdateResult: AppUpdateResult? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,13 +73,13 @@ class InstallActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(InstallActivityViewModel::class.java)
         if (viewModel.app == null) {
-            viewModel.app = intent.extras?.getString(EXTRA_APP_NAME)
-                ?.let { MaintainedApp.valueOf(it) }
-                ?: run {
-                    // InstallActivity was unintentionally started again after finishing the download
-                    finish()
-                    return
-                }
+            val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
+            if (appFromExtras == null) {
+                // InstallActivity was unintentionally started again after finishing the download
+                finish()
+                return
+            }
+            viewModel.app = MaintainedApp.valueOf(appFromExtras)
         }
 
         foregroundSettings = ForegroundSettingsHelper(this)
@@ -109,9 +107,9 @@ class InstallActivity : AppCompatActivity() {
     }
 
     private fun tryOpenDownloadFolderInFileManager() {
-        val intent = Intent(Intent.ACTION_VIEW)
         val parentFolder = appCache.getFile(this).parentFile ?: return
         val uri = Uri.parse("file://${parentFolder.absolutePath}/")
+        val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, "resource/folder")
         val chooser = Intent.createChooser(intent, getString(install_activity__open_folder))
 
@@ -174,21 +172,20 @@ class InstallActivity : AppCompatActivity() {
 
     private suspend fun fetchDownloadInformation() {
         show(R.id.fetchUrl)
-        val downloadSource = getString(viewModel.app!!.detail.displayDownloadSource)
+        val app = viewModel.app!!
+        val downloadSource = getString(app.detail.displayDownloadSource)
         setText(R.id.fetchUrlTextView, getString(install_activity__fetch_url_for_download, downloadSource))
 
-        // check if network type requirements are met
-        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-            failureShowFetchUrlException(getString(main_activity__no_unmetered_network))
-            return
-        }
+        // only check for updates if the cache is empty
+        if (app.detail.getUpdateCache(this) == null) {
+            // only check for updates if network type requirements are met
+            if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+                failureShowFetchUrlException(getString(main_activity__no_unmetered_network))
+                return
+            }
 
-        if (viewModel.appUpdateResult == null) {
-            viewModel.appUpdateResult = try {
-                // InstallActivity should work even if there is no internet connection for a long time
-                // -> use even expired cache data to potentially use already downloaded APK files
-                // Risk: old version will be installed
-                viewModel.app!!.detail.checkForUpdateWithEvenExpiredCacheAsync(this).await()
+            try {
+                app.detail.checkForUpdateAsync(this).await()
             } catch (e: GithubRateLimitExceededException) {
                 failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
                 return
@@ -202,7 +199,8 @@ class InstallActivity : AppCompatActivity() {
         show(R.id.fetchedUrlSuccess)
         val finishedText = getString(install_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
-        if (appCache.isAvailable(this, viewModel.appUpdateResult!!.availableResult)) {
+        val appUpdateResult = app.detail.getUpdateCache(this)!!.availableResult
+        if (appCache.isAvailable(this, appUpdateResult)) {
             show(R.id.useCachedDownloadedApk)
             setText(R.id.useCachedDownloadedApk__path, appCache.getFile(this).absolutePath)
             installApp()
@@ -224,7 +222,8 @@ class InstallActivity : AppCompatActivity() {
         }
 
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, viewModel.appUpdateResult!!.downloadUrl)
+        val downloadUrl = viewModel.app!!.detail.getUpdateCache(this)!!.downloadUrl
+        setText(R.id.downloadingFileUrl, downloadUrl)
 
         val fileDownloader = FileDownloader()
         viewModel.fileDownloader = fileDownloader
@@ -244,32 +243,31 @@ class InstallActivity : AppCompatActivity() {
         val display = getString(install_activity__download_app_with_status, "")
         setText(R.id.downloadingFileText, display)
 
-        val url = viewModel.appUpdateResult!!.availableResult.downloadUrl
         appCache.delete(this)
         val file = appCache.getFile(this)
 
         // this coroutine should survive a screen rotation and should live as long as the view model
         try {
             withContext(viewModel.viewModelScope.coroutineContext) {
-                fileDownloader.downloadFileAsync(url, file).await()
+                fileDownloader.downloadFileAsync(downloadUrl, file).await()
             }
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, viewModel.appUpdateResult!!.downloadUrl)
+            setText(R.id.downloadedFileUrl, downloadUrl)
             installApp()
         } catch (e: NetworkException) {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, viewModel.appUpdateResult!!.downloadUrl)
+            setText(R.id.downloadedFileUrl, downloadUrl)
             failureDownloadUnsuccessful(e)
         }
     }
 
     @MainThread
     private suspend fun reuseCurrentDownload() {
-        val updateCheckResult = requireNotNull(viewModel.appUpdateResult)
+        val downloadUrl = viewModel.app!!.detail.getUpdateCache(this)!!.downloadUrl
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, updateCheckResult.downloadUrl)
+        setText(R.id.downloadingFileUrl, downloadUrl)
         val fileDownloader = requireNotNull(viewModel.fileDownloader)
         fileDownloader.onProgress = { percentage, mb ->
             runOnUiThread {
@@ -308,7 +306,7 @@ class InstallActivity : AppCompatActivity() {
             show(R.id.fingerprintInstalledGood)
             setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
 
-            val available = requireNotNull(viewModel.appUpdateResult).availableResult
+            val available = viewModel.app!!.detail.getUpdateCache(this)!!.availableResult
             viewModel.app!!.detail.appIsInstalled(this, available)
 
             if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
@@ -353,10 +351,10 @@ class InstallActivity : AppCompatActivity() {
 
     @MainThread
     private fun failureDownloadUnsuccessful(exception: Exception) {
-        val updateCheckResult = requireNotNull(viewModel.appUpdateResult)
+        val downloadUrl = viewModel.app!!.detail.getUpdateCache(this)!!.downloadUrl
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
-        setText(R.id.downloadFileFailedUrl, updateCheckResult.downloadUrl)
+        setText(R.id.downloadFileFailedUrl, downloadUrl)
 
         findViewById<TextView>(R.id.downloadFileFailedShowException).setOnClickListener {
             val description = getString(crash_report___explain_text__install_activity_download_file)

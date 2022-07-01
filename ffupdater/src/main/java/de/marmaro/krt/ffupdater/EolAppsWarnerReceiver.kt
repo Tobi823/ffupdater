@@ -13,8 +13,10 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
         require(intent.`package` == BuildConfig.APPLICATION_ID)
         requireNotNull(context)
 
-        EolApp.values()
+        val eolAppsInstalled = EolApp.values()
             .any { it.impl.isInstalled(context) }
-            .let { BackgroundNotificationBuilder.showEolAppsWarning(context) }
+        if (eolAppsInstalled) {
+            BackgroundNotificationBuilder.showEolAppsWarning(context)
+        }
     }
 }

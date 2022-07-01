@@ -11,7 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
 
 class CrashReportActivity : AppCompatActivity() {
 
@@ -39,10 +39,8 @@ class CrashReportActivity : AppCompatActivity() {
     }
 
     private fun copyErrorMessageToClipboard() {
-        val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        val crashReport = getCrashReport()
-        val clip = ClipData.newPlainText("FFUpdater crash report", crashReport)
-        clipboardManager.setPrimaryClip(clip)
+        val clip = ClipData.newPlainText("FFUpdater crash report", getCrashReport())
+        (getSystemService(CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(clip)
         Toast.makeText(this, "Crash report is copied to your clipboard", Toast.LENGTH_LONG)
             .show()
     }
@@ -67,8 +65,8 @@ class CrashReportActivity : AppCompatActivity() {
             || manufacturer | ${Build.MANUFACTURER} |
             || model | ${Build.MODEL} |
             || product | ${Build.PRODUCT} |
-            || SOC manufacturer | ${if (DeviceSdkTester.supportsAndroid12()) Build.SOC_MANUFACTURER else "/"} |
-            || SOC model | ${if (DeviceSdkTester.supportsAndroid12()) Build.SOC_MODEL else "/"} |
+            || SOC manufacturer | ${if (supportsAndroid12()) Build.SOC_MANUFACTURER else "/"} |
+            || SOC model | ${if (supportsAndroid12()) Build.SOC_MODEL else "/"} |
             || supported ABIs | ${Build.SUPPORTED_ABIS.joinToString()} |
             || tags | ${Build.TAGS} |
             || build time | ${Build.TIME} |
