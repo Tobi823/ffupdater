@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app.eol
 
 import android.content.Context
 import androidx.annotation.AnyThread
-import de.marmaro.krt.ffupdater.app.PackageManagerUtil
+import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
 interface AppBase {
     val packageName: String

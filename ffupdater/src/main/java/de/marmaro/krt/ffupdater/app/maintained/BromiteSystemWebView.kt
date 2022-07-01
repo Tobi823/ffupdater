@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableAppVersion
+import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -30,7 +30,7 @@ class BromiteSystemWebView(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
 
-    override suspend fun checkForUpdate(): AvailableAppVersion {
+    override suspend fun checkForUpdate(): LatestUpdate {
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val fileName = when (filteredAbis.firstOrNull()) {
@@ -50,7 +50,7 @@ class BromiteSystemWebView(
         )
         val result = githubConsumer.updateCheck()
         // tag name can be "90.0.4430.59"
-        return AvailableAppVersion(
+        return LatestUpdate(
             downloadUrl = result.url,
             version = result.tagName,
             publishDate = result.releaseDate,

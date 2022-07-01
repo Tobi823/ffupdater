@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableAppVersion
+import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -33,7 +33,7 @@ class Kiwi(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
 
-    override suspend fun checkForUpdate(): AvailableAppVersion {
+    override suspend fun checkForUpdate(): LatestUpdate {
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val filePrefix = "com.kiwibrowser.browser-"
@@ -55,7 +55,7 @@ class Kiwi(
         )
         val result = githubConsumer.updateCheck()
         // tag name can be "2232087292" (the id of the build runner)
-        return AvailableAppVersion(
+        return LatestUpdate(
             downloadUrl = result.url,
             version = result.tagName,
             publishDate = result.releaseDate,
@@ -68,7 +68,7 @@ class Kiwi(
     override suspend fun isAvailableVersionEqualToArchive(
         context: Context,
         file: File,
-        available: AvailableAppVersion,
+        available: LatestUpdate,
     ): Boolean {
         // identify file (and the correctness of the cache) by its size
         // (not perfect but the last 30 releases every file has a different size)
@@ -79,7 +79,7 @@ class Kiwi(
 
     override fun isAvailableVersionHigherThanInstalled(
         context: Context,
-        available: AvailableAppVersion,
+        available: LatestUpdate,
     ): Boolean {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val runnerId = preferences.getString(BUILD_RUNNER_ID, null)
@@ -87,7 +87,7 @@ class Kiwi(
         return runnerId != available.version || fileSize != available.fileSizeBytes
     }
 
-    override fun appIsInstalled(context: Context, available: AvailableAppVersion) {
+    override fun appIsInstalled(context: Context, available: LatestUpdate) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.version)
             .putLong(APK_FILE_SIZE, available.fileSizeBytes!!)

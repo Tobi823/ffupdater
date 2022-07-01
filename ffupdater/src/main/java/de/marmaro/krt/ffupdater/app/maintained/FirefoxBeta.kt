@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableAppVersion
+import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -29,7 +29,7 @@ class FirefoxBeta(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
-    override suspend fun checkForUpdate(): AvailableAppVersion {
+    override suspend fun checkForUpdate(): LatestUpdate {
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
@@ -45,7 +45,7 @@ class FirefoxBeta(
             apiConsumer = apiConsumer,
         )
         val result = mozillaCiConsumer.updateCheck()
-        return AvailableAppVersion(
+        return LatestUpdate(
             downloadUrl = result.url,
             version = result.version,
             publishDate = result.releaseDate,

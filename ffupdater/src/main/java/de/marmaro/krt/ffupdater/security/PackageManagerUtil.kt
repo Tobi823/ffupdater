@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.app
+package de.marmaro.krt.ffupdater.security
 
 import android.annotation.SuppressLint
 import android.content.pm.PackageInfo

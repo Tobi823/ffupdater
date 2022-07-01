@@ -22,8 +22,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.R.string.*
-import de.marmaro.krt.ffupdater.app.AppUpdateResult
 import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
@@ -60,7 +60,7 @@ class InstallActivity : AppCompatActivity() {
     class InstallActivityViewModel : ViewModel() {
         var app: MaintainedApp? = null
         var fileDownloader: FileDownloader? = null
-        var appUpdateResult: AppUpdateResult? = null
+        var appAppUpdateStatus: AppUpdateStatus? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -178,11 +178,11 @@ class InstallActivity : AppCompatActivity() {
         val downloadSource = getString(app.detail.displayDownloadSource)
         setText(R.id.fetchUrlTextView, getString(install_activity__fetch_url_for_download, downloadSource))
 
-        if (viewModel.appUpdateResult == null) {
+        if (viewModel.appAppUpdateStatus == null) {
             // only check for updates if the cache is empty
             val updateCache = app.detail.getUpdateCache(this)
             if (updateCache != null) {
-                viewModel.appUpdateResult = updateCache
+                viewModel.appAppUpdateStatus = updateCache
             } else {
                 // only check for updates if network type requirements are met
                 if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
@@ -191,7 +191,7 @@ class InstallActivity : AppCompatActivity() {
                 }
 
                 try {
-                    viewModel.appUpdateResult = app.detail.checkForUpdateAsync(this).await()
+                    viewModel.appAppUpdateStatus = app.detail.checkForUpdateAsync(this).await()
                 } catch (e: GithubRateLimitExceededException) {
                     failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
                     return
@@ -206,7 +206,7 @@ class InstallActivity : AppCompatActivity() {
         show(R.id.fetchedUrlSuccess)
         val finishedText = getString(install_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
-        val appUpdateResult = viewModel.appUpdateResult!!.availableResult
+        val appUpdateResult = viewModel.appAppUpdateStatus!!.latestUpdate
         if (appCache.isAvailable(this, appUpdateResult)) {
             show(R.id.useCachedDownloadedApk)
             setText(R.id.useCachedDownloadedApk__path, appCache.getFile(this).absolutePath)
@@ -229,7 +229,7 @@ class InstallActivity : AppCompatActivity() {
         }
 
         show(R.id.downloadingFile)
-        val downloadUrl = viewModel.appUpdateResult!!.downloadUrl
+        val downloadUrl = viewModel.appAppUpdateStatus!!.downloadUrl
         setText(R.id.downloadingFileUrl, downloadUrl)
 
         val fileDownloader = FileDownloader()
@@ -272,7 +272,7 @@ class InstallActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun reuseCurrentDownload() {
-        val downloadUrl = viewModel.appUpdateResult!!.downloadUrl
+        val downloadUrl = viewModel.appAppUpdateStatus!!.downloadUrl
         show(R.id.downloadingFile)
         setText(R.id.downloadingFileUrl, downloadUrl)
         val fileDownloader = requireNotNull(viewModel.fileDownloader)
@@ -313,7 +313,7 @@ class InstallActivity : AppCompatActivity() {
             show(R.id.fingerprintInstalledGood)
             setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
 
-            val available = viewModel.appUpdateResult!!.availableResult
+            val available = viewModel.appAppUpdateStatus!!.latestUpdate
             viewModel.app!!.detail.appIsInstalled(this, available)
 
             if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
@@ -358,7 +358,7 @@ class InstallActivity : AppCompatActivity() {
 
     @MainThread
     private fun failureDownloadUnsuccessful(exception: Exception) {
-        val downloadUrl = viewModel.appUpdateResult!!.downloadUrl
+        val downloadUrl = viewModel.appAppUpdateStatus!!.downloadUrl
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, downloadUrl)

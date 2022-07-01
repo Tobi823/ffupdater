@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableAppVersion
+import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -27,7 +27,7 @@ class FFUpdater(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
 
-    override suspend fun checkForUpdate(): AvailableAppVersion {
+    override suspend fun checkForUpdate(): LatestUpdate {
         val githubConsumer = GithubConsumer(
             repoOwner = "Tobi823",
             repoName = "ffupdater",
@@ -37,7 +37,7 @@ class FFUpdater(
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
-        return AvailableAppVersion(
+        return LatestUpdate(
             downloadUrl = result.url,
             version = result.tagName,
             publishDate = result.releaseDate,

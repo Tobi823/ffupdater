@@ -7,12 +7,12 @@ import androidx.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AppUpdateResult
-import de.marmaro.krt.ffupdater.app.AvailableAppVersion
-import de.marmaro.krt.ffupdater.app.PackageManagerUtil
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
+import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
+import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
+import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -55,15 +55,15 @@ abstract class AppBase {
     }
 
     @AnyThread
-    fun getDisplayAvailableVersion(context: Context, availableVersionResult: AvailableAppVersion): String {
+    fun getDisplayAvailableVersion(context: Context, availableVersionResult: LatestUpdate): String {
         return context.getString(R.string.available_version, availableVersionResult.version)
     }
 
     @AnyThread
-    open fun appIsInstalled(context: Context, available: AvailableAppVersion) {
+    open fun appIsInstalled(context: Context, available: LatestUpdate) {
     }
 
-    suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateResult> {
+    suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateStatus> {
         return withContext(Dispatchers.IO) {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
@@ -74,7 +74,7 @@ abstract class AppBase {
         }
     }
 
-    suspend fun checkForUpdateWithoutCacheAsync(context: Context): Deferred<AppUpdateResult> {
+    suspend fun checkForUpdateWithoutCacheAsync(context: Context): Deferred<AppUpdateStatus> {
         return withContext(Dispatchers.IO) {
             async {
                 // - use mutex lock to prevent multiple simultaneously update check for a single app
@@ -85,7 +85,7 @@ abstract class AppBase {
         }
     }
 
-    private suspend fun checkForUpdateAndCacheIt(context: Context, useCache: Boolean): AppUpdateResult {
+    private suspend fun checkForUpdateAndCacheIt(context: Context, useCache: Boolean): AppUpdateStatus {
 
         if (useCache) {
             getUpdateCache(context)
@@ -95,8 +95,8 @@ abstract class AppBase {
 
 
         val available = checkForUpdate()
-        val result = AppUpdateResult(
-            availableResult = available,
+        val result = AppUpdateStatus(
+            latestUpdate = available,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available),
             displayVersion = getDisplayAvailableVersion(context, available)
         )
@@ -104,18 +104,18 @@ abstract class AppBase {
         return result
     }
 
-    fun getUpdateCache(context: Context): AppUpdateResult? {
+    fun getUpdateCache(context: Context): AppUpdateStatus? {
         return try {
             PreferenceManager.getDefaultSharedPreferences(context)
                 .getString("${CACHE_KEY_PREFIX}__${packageName}", null)
-                ?.let { gson.fromJson(it, AppUpdateResult::class.java) }
+                ?.let { gson.fromJson(it, AppUpdateStatus::class.java) }
         } catch (e: JsonSyntaxException) {
             null
         }
     }
 
-    fun setUpdateCache(context: Context, appUpdateResult: AppUpdateResult) {
-        val jsonString = gson.toJson(appUpdateResult)
+    fun setUpdateCache(context: Context, appAppUpdateStatus: AppUpdateStatus) {
+        val jsonString = gson.toJson(appAppUpdateStatus)
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit()
             .putString("${CACHE_KEY_PREFIX}__${packageName}", jsonString)
@@ -123,13 +123,13 @@ abstract class AppBase {
     }
 
     @MainThread
-    protected abstract suspend fun checkForUpdate(): AvailableAppVersion
+    protected abstract suspend fun checkForUpdate(): LatestUpdate
 
     @MainThread
     open suspend fun isAvailableVersionEqualToArchive(
         context: Context,
         file: File,
-        available: AvailableAppVersion
+        available: LatestUpdate
     ): Boolean {
         val archiveVersion = PackageManagerUtil(context.packageManager)
             .getPackageArchiveVersionNameOrNull(file.absolutePath) ?: return false
@@ -139,7 +139,7 @@ abstract class AppBase {
     @AnyThread
     open fun isAvailableVersionHigherThanInstalled(
         context: Context,
-        available: AvailableAppVersion
+        available: LatestUpdate
     ): Boolean {
         val installedVersion = getInstalledVersion(context) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)

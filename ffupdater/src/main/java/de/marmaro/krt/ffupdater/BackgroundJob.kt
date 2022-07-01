@@ -152,7 +152,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         val appCache = AppCache(app)
         val updateResult = app.detail.checkForUpdateAsync(context).await() // this result should be cached
-        val availableResult = updateResult.availableResult
+        val availableResult = updateResult.latestUpdate
         if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return true

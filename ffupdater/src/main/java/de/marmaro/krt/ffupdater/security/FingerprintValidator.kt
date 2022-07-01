@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.security
 
 import android.content.pm.PackageManager
 import android.content.pm.Signature
-import de.marmaro.krt.ffupdater.app.PackageManagerUtil
 import de.marmaro.krt.ffupdater.app.maintained.AppBase
 import java.io.File
 import java.security.MessageDigest

@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableAppVersion
+import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -31,7 +31,7 @@ class FirefoxKlar(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
-    override suspend fun checkForUpdate(): AvailableAppVersion {
+    override suspend fun checkForUpdate(): LatestUpdate {
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val fileSuffix = when (filteredAbis.firstOrNull()) {
@@ -64,7 +64,7 @@ class FirefoxKlar(
             matchGroup.value
         }
 
-        return AvailableAppVersion(
+        return LatestUpdate(
             downloadUrl = result.url,
             version = extractVersion(),
             publishDate = result.releaseDate,

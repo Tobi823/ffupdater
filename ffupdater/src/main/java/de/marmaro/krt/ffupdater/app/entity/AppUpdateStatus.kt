@@ -1,32 +1,32 @@
-package de.marmaro.krt.ffupdater.app
+package de.marmaro.krt.ffupdater.app.entity
 
 import android.os.Parcelable
 import de.marmaro.krt.ffupdater.security.Sha256Hash
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class AppUpdateResult(
-    val availableResult: AvailableAppVersion,
+data class AppUpdateStatus(
+    val latestUpdate: LatestUpdate,
     val isUpdateAvailable: Boolean,
     val displayVersion: String,
     val timestamp: Long = System.currentTimeMillis()
 ) : Parcelable {
 
     val downloadUrl: String
-        get() = availableResult.downloadUrl
+        get() = latestUpdate.downloadUrl
 
     val version: String
-        get() = availableResult.version
+        get() = latestUpdate.version
 
     val publishDate: String?
-        get() = availableResult.publishDate
+        get() = latestUpdate.publishDate
 
     val fileSizeBytes: Long?
-        get() = availableResult.fileSizeBytes
+        get() = latestUpdate.fileSizeBytes
 
     val fileHash: Sha256Hash?
-        get() = availableResult.fileHash
+        get() = latestUpdate.fileHash
 
     val firstReleaseHasAssets: Boolean
-        get() = availableResult.firstReleaseHasAssets
+        get() = latestUpdate.firstReleaseHasAssets
 }

@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.AvailableAppVersion
+import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -28,7 +28,7 @@ class Vivaldi(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
 
-    override suspend fun checkForUpdate(): AvailableAppVersion {
+    override suspend fun checkForUpdate(): LatestUpdate {
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val regexPattern = when (filteredAbis.firstOrNull()) {
@@ -45,7 +45,7 @@ class Vivaldi(
         val availableVersion = regexMatch.groups[2]
         checkNotNull(availableVersion) { "Can't extract available version from regex match." }
 
-        return AvailableAppVersion(
+        return LatestUpdate(
             downloadUrl = downloadUrl.value,
             version = availableVersion.value,
             publishDate = null,
