@@ -4,6 +4,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableAppVersion
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
 
@@ -12,8 +13,8 @@ import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
  * https://www.apkmirror.com/apk/mozilla/firefox/
  */
 class FirefoxRelease(
-    private val apiConsumer: ApiConsumer,
-    private val deviceAbis: List<ABI>,
+    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.mozilla.firefox"
     override val displayTitle = R.string.firefox_release__title
@@ -29,7 +30,8 @@ class FirefoxRelease(
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
     override suspend fun checkForUpdate(): AvailableAppVersion {
-        val filteredAbis = deviceAbis.filter { it in supportedAbis }
+        val filteredAbis = deviceAbiExtractor.supportedAbis
+            .filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
             ABI.ARM64_V8A -> "arm64-v8a"

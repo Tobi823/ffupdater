@@ -9,15 +9,16 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
-import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.utils.applyIf
 
 /**
  * Allow the user to select an app from the dialog to install.
  * Show warning or error message (if ABI is not supported) if necessary.
  */
 class InstallNewAppDialog(
-    private val deviceAbis: List<ABI>,
+    private val deviceAbiExtractor: DeviceAbiExtractor,
 ) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
@@ -35,10 +36,10 @@ class InstallNewAppDialog(
 
     private fun triggerAppInstallation(app: MaintainedApp) {
         // do not install an app which incompatible ABIs
-        if (deviceAbis.all { it !in app.detail.supportedAbis }) {
-            UnsupportedAbiDialog.newInstance().show(parentFragmentManager)
-            return
-        }
+        deviceAbiExtractor.supportedAbis
+            .none { abi -> abi in app.detail.supportedAbis }
+            .applyIf(true) { UnsupportedAbiDialog.newInstance().show(parentFragmentManager); return }
+
         // do not install an app which require a newer Android version
         if (DeviceSdkTester.sdkInt < app.detail.minApiLevel) {
             DeviceTooOldDialog.newInstance(app).show(parentFragmentManager)
@@ -64,8 +65,8 @@ class InstallNewAppDialog(
     }
 
     companion object {
-        fun newInstance(deviceAbis: List<ABI>): InstallNewAppDialog {
-            return InstallNewAppDialog(deviceAbis)
+        fun newInstance(deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE): InstallNewAppDialog {
+            return InstallNewAppDialog(deviceAbiExtractor)
         }
     }
 }

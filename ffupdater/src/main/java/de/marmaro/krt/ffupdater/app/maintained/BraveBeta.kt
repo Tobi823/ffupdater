@@ -4,6 +4,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableAppVersion
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -13,8 +14,8 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/brave-software/brave-browser-beta/
  */
 class BraveBeta(
-    private val apiConsumer: ApiConsumer,
-    private val deviceAbis: List<ABI>,
+    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.brave.browser_beta"
     override val displayTitle = R.string.brave_beta__title
@@ -30,7 +31,8 @@ class BraveBeta(
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
     override suspend fun checkForUpdate(): AvailableAppVersion {
-        val filteredAbis = deviceAbis.filter { it in supportedAbis }
+        val filteredAbis = deviceAbiExtractor.supportedAbis
+            .filter { it in supportedAbis }
         val fileName = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
             ABI.ARM64_V8A -> "BraveMonoarm64.apk"

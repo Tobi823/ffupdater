@@ -117,15 +117,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
-
-        // check for updates
         val outdatedApps = MaintainedApp.values()
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { app -> app.detail.isInstalled(context) }
-            .filter { app ->
-                app.detail.checkForUpdateWithoutCacheAsync(context).await()
-                    .isUpdateAvailable
-            }
+            .filter { app -> app.detail.checkForUpdateWithoutCacheAsync(context).await().isUpdateAvailable }
         return outdatedApps to null
     }
 
@@ -295,18 +290,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             interval: Duration? = null,
         ) {
             val minutes = (interval ?: settings.updateCheckInterval).toMinutes()
-            val networkType = if (settings.isUpdateCheckOnMeteredAllowed) {
-                NOT_REQUIRED
-            } else {
-                UNMETERED
-            }
+            val requiredNetworkType = if (settings.isUpdateCheckOnMeteredAllowed) NOT_REQUIRED else UNMETERED
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)
                 .setConstraints(
                     Constraints.Builder()
                         .setRequiredNetworkType(NetworkType.CONNECTED)
                         .setRequiresBatteryNotLow(true)
                         .setRequiresStorageNotLow(true)
-                        .setRequiredNetworkType(networkType)
+                        .setRequiredNetworkType(requiredNetworkType)
                         .build()
                 )
                 .build()

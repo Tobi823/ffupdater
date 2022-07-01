@@ -4,6 +4,7 @@ import android.os.Build
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableAppVersion
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -14,8 +15,8 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/
  */
 class FirefoxFocus(
-    private val apiConsumer: ApiConsumer,
-    private val deviceAbis: List<ABI>,
+    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.mozilla.focus"
     override val displayTitle = R.string.firefox_focus__title
@@ -31,7 +32,8 @@ class FirefoxFocus(
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
     override suspend fun checkForUpdate(): AvailableAppVersion {
-        val filteredAbis = deviceAbis.filter { it in supportedAbis }
+        val filteredAbis = deviceAbiExtractor.supportedAbis
+            .filter { it in supportedAbis }
         val fileSuffix = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
             ABI.ARM64_V8A -> "arm64-v8a.apk"

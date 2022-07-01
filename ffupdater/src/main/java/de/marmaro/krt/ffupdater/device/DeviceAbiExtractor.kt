@@ -2,8 +2,10 @@ package de.marmaro.krt.ffupdater.device
 
 import android.os.Build
 
-object DeviceAbiExtractor {
-    fun findSupportedAbis(): List<ABI> {
+class DeviceAbiExtractor {
+    val supportedAbis = findSupportedAbis()
+
+    private fun findSupportedAbis(): List<ABI> {
         val supportedAbis = Build.SUPPORTED_ABIS ?: return listOf()
         return supportedAbis.mapNotNull {
             when (it) {
@@ -17,5 +19,9 @@ object DeviceAbiExtractor {
                 else -> throw IllegalArgumentException("Unknown ABI '$it'")
             }
         }
+    }
+
+    companion object {
+        val INSTANCE = DeviceAbiExtractor()
     }
 }

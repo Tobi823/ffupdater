@@ -80,5 +80,6 @@ class ApiConsumer {
 
     companion object {
         const val GITHUB_URL = "https://api.github.com"
+        val INSTANCE = ApiConsumer()
     }
 }

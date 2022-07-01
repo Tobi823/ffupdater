@@ -1,26 +1,21 @@
 package de.marmaro.krt.ffupdater.app
 
 import de.marmaro.krt.ffupdater.app.maintained.*
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
-
-private val apiConsumer = ApiConsumer()
-private val deviceAbis = DeviceAbiExtractor.findSupportedAbis()
 
 enum class MaintainedApp(appDetail: AppBase) {
-    BRAVE(Brave(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    BRAVE_BETA(BraveBeta(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    BRAVE_NIGHTLY(BraveNightly(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    BROMITE(Bromite(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    BROMITE_SYSTEMWEBVIEW(BromiteSystemWebView(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    FFUPDATER(FFUpdater(apiConsumer = apiConsumer)),
-    FIREFOX_BETA(FirefoxBeta(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    FIREFOX_FOCUS(FirefoxFocus(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    FIREFOX_KLAR(FirefoxKlar(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    FIREFOX_NIGHTLY(FirefoxNightly(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    FIREFOX_RELEASE(FirefoxRelease(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    KIWI(Kiwi(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
-    VIVALDI(Vivaldi(apiConsumer = apiConsumer, deviceAbis = deviceAbis)),
+    BRAVE(Brave()),
+    BRAVE_BETA(BraveBeta()),
+    BRAVE_NIGHTLY(BraveNightly()),
+    BROMITE(Bromite()),
+    BROMITE_SYSTEMWEBVIEW(BromiteSystemWebView()),
+    FFUPDATER(FFUpdater()),
+    FIREFOX_BETA(FirefoxBeta()),
+    FIREFOX_FOCUS(FirefoxFocus()),
+    FIREFOX_KLAR(FirefoxKlar()),
+    FIREFOX_NIGHTLY(FirefoxNightly()),
+    FIREFOX_RELEASE(FirefoxRelease()),
+    KIWI(Kiwi()),
+    VIVALDI(Vivaldi()),
     ;
 
     val detail: AppBase = appDetail

@@ -6,6 +6,7 @@ import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.AvailableAppVersion
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import java.io.File
@@ -16,8 +17,8 @@ import java.io.File
  * https://www.apkmirror.com/apk/geometry-ou/kiwi-browser-fast-quiet/
  */
 class Kiwi(
-    private val apiConsumer: ApiConsumer,
-    private val deviceAbis: List<ABI>,
+    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.kiwibrowser.browser"
     override val displayTitle = R.string.kiwi__title
@@ -33,7 +34,8 @@ class Kiwi(
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
 
     override suspend fun checkForUpdate(): AvailableAppVersion {
-        val filteredAbis = deviceAbis.filter { it in supportedAbis }
+        val filteredAbis = deviceAbiExtractor.supportedAbis
+            .filter { it in supportedAbis }
         val filePrefix = "com.kiwibrowser.browser-"
         val fileSuffix = when (filteredAbis.firstOrNull()) {
             ABI.ARMEABI_V7A -> "-arm-github.apk"

@@ -25,7 +25,6 @@ import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__main_activi
 import de.marmaro.krt.ffupdater.app.EolApp
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.crash.CrashListener
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
 import de.marmaro.krt.ffupdater.network.FileDownloader
@@ -63,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         Migrator().migrate(this)
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            InstallNewAppDialog.newInstance(DeviceAbiExtractor.findSupportedAbis())
+            InstallNewAppDialog.newInstance()
                 .show(supportFragmentManager)
         }
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)

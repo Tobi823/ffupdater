@@ -11,7 +11,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://api.github.com/repos/brave/brave-browser/releases
  */
 class FFUpdater(
-    private val apiConsumer: ApiConsumer,
+    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
 ) : AppBase() {
     override val packageName = "de.marmaro.krt.ffupdater"
     override val displayTitle = R.string.app_name
