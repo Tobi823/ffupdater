@@ -123,8 +123,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { app -> app.detail.isInstalled(context) }
             .filter { app ->
-                val updateCheckResult = app.detail.checkForUpdateWithoutCacheAsync(context).await()
-                updateCheckResult.isUpdateAvailable
+                app.detail.checkForUpdateWithoutCacheAsync(context).await()
+                    .isUpdateAvailable
             }
         return outdatedApps to null
     }
