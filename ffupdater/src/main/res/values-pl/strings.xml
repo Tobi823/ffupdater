@@ -9,7 +9,7 @@
     <string name="application_successfully_installed">Aplikacja została zainstalowana pomyślnie</string>
     <string name="available_version">Dostępne: %1$s</string>
     <string name="available_version_error">"<u>BŁĄD</u>"</string>
-    <string name="available_version_loading">Ładowanie…</string>
+    <string name="main_activity__available_version_loading">Ładowanie…</string>
     <string name="background_notification__text">Proszę zgłosić ten błąd. Kliknij, aby wyświetlić raport o błędzie.</string>
     <string name="background_notification__title">Aktualizacja w tle się nie powiodła</string>
     <string name="brave__description">Przeglądaj internet prywatnie, za darmo! Brave to Twoja szybka, darmowa i bezpieczna przeglądarka internetowa z blokadą reklam i wyskakujących okienek. Prywatne przeglądanie i wyszukiwanie w Internecie bez śledzenia przez reklamodawców, złośliwego oprogramowania i wyskakujących okienek.</string>

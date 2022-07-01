@@ -31,7 +31,7 @@
     <string name="application_successfully_installed">Applicazione installata con successo</string>
     <string name="available_version">Disponibile: %1$s</string>
     <string name="available_version_error">"<u>ERRORE</u>"</string>
-    <string name="available_version_loading">Caricamento…</string>
+    <string name="main_activity__available_version_loading">Caricamento…</string>
     <string name="background_notification__text">Si prega di segnalare questo errore. Clicca per visualizzare il rapporto di errore.</string>
     <string name="background_notification__title">Verifica aggiornamenti in background fallita</string>
     <string name="brave__description">Naviga su internet privatamente, gratis! Brave Private Browser App è il tuo browser web privato, veloce, gratuito e sicuro con blocco di annunci e pop-up. Naviga e cerca su internet privatamente, senza essere tracciato da inserzionisti, malware e pop-up.</string>

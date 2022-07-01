@@ -16,13 +16,12 @@ class ManageStorageActivity : AppCompatActivity() {
 
         setContentView(R.layout.manage_storage_activity)
         findViewById<Button>(R.id.manage_storage_activity__delete_cached_apk_files).setOnClickListener {
-            val folder = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-            checkNotNull(folder) { "The external 'Download' folder of the app should exists." }
-            val files = folder.listFiles()
-            checkNotNull(files) { "Array of files in download folder should exists." }
-            files.forEach {
-                check(it.delete()) { "Fail to delete file '${it.name}'." }
-            }
+            getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+                ?.listFiles()
+                ?.forEach {
+                    check(it.delete()) { "Fail to delete file '${it.name}'." }
+                }
+                ?: throw IllegalStateException("Folder does not exists.")
             finish()
         }
     }

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.preference.PreferenceManager
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME
 import java.time.format.DateTimeParseException
 
 class DataStoreHelper(context: Context) {
@@ -11,16 +12,15 @@ class DataStoreHelper(context: Context) {
 
     var lastBackgroundCheck: LocalDateTime?
         get() {
-            val timestamp = preferences.getString(LAST_BACKGROUND_CHECK_TIMESTAMP, null)
-                ?: return null
             return try {
-                LocalDateTime.parse(timestamp, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+                preferences.getString(LAST_BACKGROUND_CHECK_TIMESTAMP, null)
+                    ?.let { str -> LocalDateTime.parse(str, ISO_LOCAL_DATE_TIME) }
             } catch (e: DateTimeParseException) {
                 null
             }
         }
         set(value) {
-            val timestamp = value?.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+            val timestamp = value?.format(ISO_LOCAL_DATE_TIME)
             preferences.edit()
                 .putString(LAST_BACKGROUND_CHECK_TIMESTAMP, timestamp)
                 .apply()

@@ -197,14 +197,14 @@ class MainActivity : AppCompatActivity() {
             .filter { it.detail.isInstalled(this@MainActivity) }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-            setAvailableVersion(apps, getString(R.string.main_activity__no_unmetered_network))
             setLoadAnimationState(false)
+            setAvailableVersion(apps, getString(R.string.main_activity__no_unmetered_network))
             showToast(R.string.main_activity__no_unmetered_network)
             return
         }
 
         setLoadAnimationState(true)
-        setAvailableVersion(apps, getString(R.string.available_version_loading))
+        setAvailableVersion(apps, getString(R.string.main_activity__available_version_loading))
         apps.forEach { checkForAppUpdate(it, useCache) }
         setLoadAnimationState(false)
     }
@@ -219,11 +219,7 @@ class MainActivity : AppCompatActivity() {
             }
             setAvailableVersion(app, updateResult.displayVersion)
             sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable
-            if (updateResult.isUpdateAvailable) {
-                setDownloadButtonState(app, true)
-            } else {
-                setDownloadButtonState(app, false)
-            }
+            setDownloadButtonState(app, updateResult.isUpdateAvailable)
         } catch (e: GithubRateLimitExceededException) {
             showUpdateCheckError(app, R.string.main_activity__github_api_limit_exceeded, e)
         } catch (e: NetworkException) {

@@ -19,7 +19,7 @@
     <string name="application_successfully_installed">Application successfully installed</string>
     <string name="available_version">Available: %1$s</string>
     <string name="available_version_error">"<u>ERROR</u>"</string>
-    <string name="available_version_loading">Loading…</string>
+    <string name="main_activity__available_version_loading">Loading…</string>
     <string name="background_notification__text">Please report this error. Click to view the error report.</string>
     <string name="background_notification__title">Background update check failed</string>
     <string name="brave__description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>

@@ -9,7 +9,7 @@
     <string name="application_successfully_installed">Installert</string>
     <string name="available_version">Tilgjengelig: %1$s</string>
     <string name="available_version_error"><u>FEIL</u></string>
-    <string name="available_version_loading">Laster inn …</string>
+    <string name="main_activity__available_version_loading">Laster inn …</string>
     <string name="background_notification__text">Innrapporter denne feilen. Klikk for å vise feilrapporten.</string>
     <string name="background_notification__title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
     <string name="brave__description">Mer privat surfing, gratis. Har blokkering av reklame og oppsprett. Søk på Internett uten at reklameselskap, skadevare og oppsprett sporer deg.</string>

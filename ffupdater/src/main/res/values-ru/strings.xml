@@ -46,7 +46,7 @@
     <string name="application_successfully_installed">Приложение успешно установлено</string>
     <string name="available_version">Доступен: %1$s</string>
     <string name="available_version_error">"<u>ОШИБКА</u>"</string>
-    <string name="available_version_loading">Загрузка…</string>
+    <string name="main_activity__available_version_loading">Загрузка…</string>
     <string name="background_notification__text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
     <string name="background_notification__title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>

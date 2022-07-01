@@ -23,7 +23,7 @@
     <string name="application_successfully_installed">已成功安装应用程序</string>
     <string name="available_version">可用版本：%1$s</string>
     <string name="available_version_error"><u>错误</u></string>
-    <string name="available_version_loading">正在加载…</string>
+    <string name="main_activity__available_version_loading">正在加载…</string>
     <string name="background_notification__text">请报告此错误。点击查看错误报告。</string>
     <string name="background_notification__title">后台检查更新失败</string>
     <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>

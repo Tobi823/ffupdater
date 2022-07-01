@@ -31,7 +31,7 @@
     <string name="application_successfully_installed">Uygulama başarıyla kuruldu</string>
     <string name="available_version">Kullanılabilir: %1$s</string>
     <string name="available_version_error">"<u>HATA</u>"</string>
-    <string name="available_version_loading">Yükleniyor…</string>
+    <string name="main_activity__available_version_loading">Yükleniyor…</string>
     <string name="background_notification__text">Lütfen bu hatayı bildirin. Hata raporunu görüntülemek için tıklayın.</string>
     <string name="background_notification__title">Arka plan güncelleme denetimi başarısız oldu</string>
     <string name="brave__description">İnternette ücretsiz olarak gizli bir şekilde gezinin! Brave Gizli Tarayıcı uygulaması, reklam engelleyicisi ve açılır pencere engelleyicisi ile hızlı, özel, güvenli ve ücretsiz bir web tarayıcısıdır. Reklamlar, kötü amaçlı yazılımlar ve açılır pencereler tarafından izlenmeden internette gizli olarak gezinin ve arama yapın.</string>

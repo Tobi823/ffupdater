@@ -31,7 +31,7 @@
     <string name="application_successfully_installed">Приложението е успешно инсталирано</string>
     <string name="available_version">Налично: %1$s</string>
     <string name="available_version_error">"<u>ГРЕШКА</u>"</string>
-    <string name="available_version_loading">Зареждане…</string>
+    <string name="main_activity__available_version_loading">Зареждане…</string>
     <string name="background_notification__text">Докладвайте за тази грешка. Докоснете, за да видите доклада.</string>
     <string name="background_notification__title">Грешка при проверка за обновяване във фонов режим</string>
     <string name="brave__description">Разглеждайте интернет поверително и безплатно! Приложението поверителен четец на Brave е вашият бърз, безплатен и безопасен личен мрежов четец със спиране на реклами и изскачащи прозорци. Разглеждайте и търсете в интернет в поверителен режим, без да бъдете следени от рекламодатели, зловреден софтуер и изскачащи прозорци.</string>
