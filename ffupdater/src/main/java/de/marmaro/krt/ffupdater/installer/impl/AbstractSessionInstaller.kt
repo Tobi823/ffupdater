@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.installer
+package de.marmaro.krt.ffupdater.installer.impl
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
@@ -16,6 +16,7 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.ShortInstallResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -23,15 +24,17 @@ import java.io.File
 import java.io.IOException
 
 
-abstract class SessionInstallerBase(
+abstract class AbstractSessionInstaller(
     context: Context,
     private val app: MaintainedApp,
     private val file: File,
-) : SecureAppInstaller(app, file) {
-    private val installationStatus = CompletableDeferred<InstallResult>()
+) : AbstractAppInstaller(app, file) {
+    protected abstract val intentNameForAppInstallationCallback: String
+
+    private val installationStatus = CompletableDeferred<ShortInstallResult>()
     private var intentReceiver: BroadcastReceiver? = null
 
-    override suspend fun executeInstallerSpecificLogic(context: Context): InstallResult {
+    override suspend fun executeInstallerSpecificLogic(context: Context): ShortInstallResult {
         require(file.exists()) { "File does not exists." }
         return withContext(Dispatchers.Main) {
             registerIntentReceiver(context)
@@ -95,7 +98,7 @@ abstract class SessionInstallerBase(
     }
 
     private fun createSessionChangeReceiver(context: Context, sessionId: Int): IntentSender {
-        val intent = Intent(getIntentNameForAppInstallationCallback())
+        val intent = Intent(intentNameForAppInstallationCallback)
         intent.`package` = "de.marmaro.krt.ffupdater"
         val flags = if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_MUTABLE
@@ -145,7 +148,13 @@ abstract class SessionInstallerBase(
             // one installationStatus has been completed, its value can not be changed
             if (!success) {
                 Log.e("SessionInstallerBase", "failure2()")
-                installationStatus.complete(InstallResult(false, STATUS_FAILURE_ABORTED, abortedErrorMessage))
+                installationStatus.complete(
+                    ShortInstallResult(
+                        false,
+                        STATUS_FAILURE_ABORTED,
+                        abortedErrorMessage
+                    )
+                )
             }
         }
 
@@ -155,25 +164,23 @@ abstract class SessionInstallerBase(
 
     protected fun failure(errorCode: Int, errorMessage: String) {
         Log.e("SessionInstallerBase", "failure()")
-        installationStatus.complete(InstallResult(false, errorCode, errorMessage))
+        installationStatus.complete(ShortInstallResult(false, errorCode, errorMessage))
     }
 
     protected fun success() {
         Log.e("SessionInstallerBase", "success()")
-        installationStatus.complete(InstallResult(true, null, null))
+        installationStatus.complete(ShortInstallResult(true, null, null))
     }
 
     protected fun registerIntentReceiver(context: Context) {
         intentReceiver = object : BroadcastReceiver() {
             override fun onReceive(c: Context?, i: Intent?) = handleAppInstallationResult(c, i)
         }
-        context.registerReceiver(intentReceiver, IntentFilter(getIntentNameForAppInstallationCallback()))
+        context.registerReceiver(intentReceiver, IntentFilter(intentNameForAppInstallationCallback))
     }
 
     protected fun unregisterIntentReceiver(context: Context) {
         context.unregisterReceiver(intentReceiver)
         intentReceiver = null
     }
-
-    protected abstract fun getIntentNameForAppInstallationCallback(): String
 }

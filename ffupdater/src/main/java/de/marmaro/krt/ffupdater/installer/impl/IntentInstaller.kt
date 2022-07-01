@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.installer
+package de.marmaro.krt.ffupdater.installer.impl
 
 import android.app.Activity
 import android.content.Context
@@ -13,6 +13,8 @@ import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
+import de.marmaro.krt.ffupdater.installer.ShortInstallResult
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File
 
@@ -22,13 +24,13 @@ class IntentInstaller(
     private val activityResultRegistry: ActivityResultRegistry,
     app: MaintainedApp,
     private val file: File,
-) : ForegroundAppInstaller, SecureAppInstaller(app, file) {
-    private val installationStatus = CompletableDeferred<InstallResult>()
+) : ForegroundAppInstaller, AbstractAppInstaller(app, file) {
+    private val installationStatus = CompletableDeferred<ShortInstallResult>()
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
 
     private val appResultCallback = lambda@{ activityResult: ActivityResult ->
         if (activityResult.resultCode == Activity.RESULT_OK) {
-            installationStatus.complete(InstallResult(true, null, null))
+            installationStatus.complete(ShortInstallResult(true, null, null))
             return@lambda
         }
 
@@ -37,7 +39,7 @@ class IntentInstaller(
             -11 -> context.getString(R.string.intent_installer__likely_storage_failure)
             else -> "resultCode: ${activityResult.resultCode}, INSTALL_RESULT: $installResult"
         }
-        installationStatus.complete(InstallResult(false, activityResult.resultCode, errorMessage))
+        installationStatus.complete(ShortInstallResult(false, activityResult.resultCode, errorMessage))
     }
 
     override fun onCreate(owner: LifecycleOwner) {
@@ -49,7 +51,7 @@ class IntentInstaller(
         )
     }
 
-    override suspend fun executeInstallerSpecificLogic(context: Context): InstallResult {
+    override suspend fun executeInstallerSpecificLogic(context: Context): ShortInstallResult {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         installInternal(context, file)

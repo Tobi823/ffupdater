@@ -1,8 +1,11 @@
-package de.marmaro.krt.ffupdater.installer
+package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.Context
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
+import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
+import de.marmaro.krt.ffupdater.installer.ShortInstallResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -16,8 +19,8 @@ class RootInstaller(
     app: MaintainedApp,
     private val file: File
 ) :
-    SecureAppInstaller(app, file), ForegroundAppInstaller, BackgroundAppInstaller {
-    private val installationStatus = CompletableDeferred<InstallResult>()
+    AbstractAppInstaller(app, file), BackgroundAppInstaller, ForegroundAppInstaller {
+    private val installationStatus = CompletableDeferred<ShortInstallResult>()
     private val allowListAbsoluteFilePath = ArrayList<String>()
     private val allowListFileName = ArrayList<String>()
 
@@ -30,7 +33,7 @@ class RootInstaller(
         }
     }
 
-    override suspend fun executeInstallerSpecificLogic(context: Context): InstallResult {
+    override suspend fun executeInstallerSpecificLogic(context: Context): ShortInstallResult {
         withContext(Dispatchers.IO) {
             install()
         }
@@ -57,7 +60,7 @@ class RootInstaller(
         if (Shell.getShell().isRoot) {
             return true
         }
-        installationStatus.complete(InstallResult(false, -90, "Missing root access."))
+        installationStatus.complete(ShortInstallResult(false, -90, "Missing root access."))
         return false
     }
 
@@ -70,7 +73,7 @@ class RootInstaller(
         val sessionIdMatcher = sessionIdPattern.matcher(response[0])
         val found = sessionIdMatcher.find()
         if (!found) {
-            installationStatus.complete(InstallResult(false, -91, "Could not find session ID."))
+            installationStatus.complete(ShortInstallResult(false, -91, "Could not find session ID."))
             return null
         }
         return sessionIdMatcher.group(1)?.toInt()
@@ -86,7 +89,7 @@ class RootInstaller(
         result.addAll(shellResult.out)
         result.addAll(shellResult.err)
         val output = result.joinToString(";")
-        installationStatus.complete(InstallResult(shellResult.isSuccess, null, output))
+        installationStatus.complete(ShortInstallResult(shellResult.isSuccess, null, output))
     }
 
     private fun areFileNamesValid(filePath: String, fileName: String): Boolean {
@@ -95,7 +98,7 @@ class RootInstaller(
             filePath !in allowListAbsoluteFilePath ||
             fileName !in allowListFileName
         ) {
-            installationStatus.complete(InstallResult(false, -110, "file path or file name is invalid"))
+            installationStatus.complete(ShortInstallResult(false, -110, "file path or file name is invalid"))
             return false
         }
         return true

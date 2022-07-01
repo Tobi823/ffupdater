@@ -1,21 +1,21 @@
-package de.marmaro.krt.ffupdater.installer
+package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
 import java.io.File
 
 class ForegroundSessionInstaller(
     context: Context,
     app: MaintainedApp,
     file: File
-) : ForegroundAppInstaller, SessionInstallerBase(context, app, file) {
+) : ForegroundAppInstaller, AbstractSessionInstaller(context, app, file) {
 
-    override fun getIntentNameForAppInstallationCallback(): String {
-        return "de.marmaro.krt.ffupdater.installer.ForegroundSessionInstaller.app_installed"
-    }
+    override val intentNameForAppInstallationCallback =
+        "de.marmaro.krt.ffupdater.installer.impl.ForegroundSessionInstaller.app_installed"
 
     override fun requestInstallationPermission(context: Context, bundle: Bundle) {
         try {
