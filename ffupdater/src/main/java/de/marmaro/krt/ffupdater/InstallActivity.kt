@@ -27,7 +27,7 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.Installer.SESSION_INSTALLER
+import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.GithubRateLimitExceededException

@@ -5,7 +5,7 @@ import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.ShortInstallResult
+import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

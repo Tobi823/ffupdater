@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.settings
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import de.marmaro.krt.ffupdater.installer.Installer
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 
 class InstallerSettingsHelper(context: Context) {
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)

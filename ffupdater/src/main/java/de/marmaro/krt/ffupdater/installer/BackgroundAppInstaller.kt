@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.installer
 
 import android.content.Context
 import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.impl.BackgroundSessionInstaller
 import de.marmaro.krt.ffupdater.installer.impl.RootInstaller
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper

@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.installer
+package de.marmaro.krt.ffupdater.installer.entity
 
 enum class Installer {
     SESSION_INSTALLER,

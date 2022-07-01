@@ -12,8 +12,8 @@ import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid10
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.Installer.ROOT_INSTALLER
-import de.marmaro.krt.ffupdater.installer.Installer.SESSION_INSTALLER
+import de.marmaro.krt.ffupdater.installer.entity.Installer.ROOT_INSTALLER
+import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.GithubRateLimitExceededException

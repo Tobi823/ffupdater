@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.installer
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.DefaultLifecycleObserver
 import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.impl.ForegroundSessionInstaller
 import de.marmaro.krt.ffupdater.installer.impl.IntentInstaller
 import de.marmaro.krt.ffupdater.installer.impl.RootInstaller

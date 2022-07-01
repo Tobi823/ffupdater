@@ -16,7 +16,7 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.ShortInstallResult
+import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -5,8 +5,8 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.install_activity__downloaded_application_is_not_verified
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.installer.AppInstaller
-import de.marmaro.krt.ffupdater.installer.InstallResult
-import de.marmaro.krt.ffupdater.installer.ShortInstallResult
+import de.marmaro.krt.ffupdater.installer.entity.InstallResult
+import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
