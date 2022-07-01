@@ -11,7 +11,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.utils.applyIf
+import de.marmaro.krt.ffupdater.utils.ifTrue
 
 /**
  * Allow the user to select an app from the dialog to install.
@@ -23,11 +23,11 @@ class InstallNewAppDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
         val apps = MaintainedApp.values()
-            .filter { it.detail.normalInstallation }
-            .filterNot { it.detail.isInstalled(context) }
+            .filter { app -> app.detail.normalInstallation }
+            .filterNot { app -> app.detail.isInstalled(context) }
+        val names = apps.map { app -> context.getString(app.detail.displayTitle) }
+            .toTypedArray()
 
-
-        val names = apps.map { context.getString(it.detail.displayTitle) }.toTypedArray()
         return AlertDialog.Builder(activity)
             .setTitle(R.string.install_new_app)
             .setItems(names) { _, which -> triggerAppInstallation(apps[which]) }
@@ -38,7 +38,7 @@ class InstallNewAppDialog(
         // do not install an app which incompatible ABIs
         deviceAbiExtractor.supportedAbis
             .none { abi -> abi in app.detail.supportedAbis }
-            .applyIf(true) { UnsupportedAbiDialog.newInstance().show(parentFragmentManager); return }
+            .ifTrue { UnsupportedAbiDialog.newInstance().show(parentFragmentManager); return }
 
         // do not install an app which require a newer Android version
         if (DeviceSdkTester.sdkInt < app.detail.minApiLevel) {

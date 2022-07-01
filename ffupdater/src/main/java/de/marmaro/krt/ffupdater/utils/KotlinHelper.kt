@@ -1,6 +1,18 @@
 package de.marmaro.krt.ffupdater.utils
 
-// https://stackoverflow.com/a/51607022
-inline fun <T> T.applyIf(condition: Boolean, block: T.() -> Unit): T = apply {
-    if (condition) block(this)
+// https://stackoverflow.com/a/47280844
+inline fun Boolean?.ifTrue(block: Boolean.() -> Unit): Boolean? {
+    if (this == true) {
+        block()
+    }
+    return this
+}
+
+// https://stackoverflow.com/a/47280844
+inline fun Boolean?.ifFalse(block: Boolean?.() -> Unit): Boolean? {
+    if (null == this || !this) {
+        block()
+    }
+
+    return this
 }

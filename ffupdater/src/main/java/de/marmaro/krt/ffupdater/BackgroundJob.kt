@@ -117,11 +117,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
-        val outdatedApps = MaintainedApp.values()
+        MaintainedApp.values()
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { app -> app.detail.isInstalled(context) }
             .filter { app -> app.detail.checkForUpdateWithoutCacheAsync(context).await().isUpdateAvailable }
-        return outdatedApps to null
+            .let { apps -> return apps to null }
     }
 
     private suspend fun downloadUpdates(apps: List<MaintainedApp>): Pair<List<MaintainedApp>, Result?> {
