@@ -32,10 +32,12 @@ import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit.MINUTES
 
 /**
- * This class will call the [WorkManager] to check regularly for app updates in the background.
- * When an app update is available, a notification will be displayed.
+ * BackgroundJob will be regularly called by the AndroidX WorkManager to:
+ * - check for app updates
+ * - download them
+ * - install them
  *
- * doWork can be interrupted at any time and cause a CancellationException.
+ * Depending on the device and the settings from the user not all steps will be executed.
  */
 class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {
@@ -45,39 +47,50 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     private val dataStoreHelper = DataStoreHelper(context)
 
     /**
-     * If:
-     * - airplane mode is enabled
-     * - internet is not available
-     * - the app is currently downloading an app update
-     * then delay the background job execution by 30s, 1m, 2m, 4m, ...
-     * <a>https://developer.android.com/reference/androidx/work/BackoffPolicy?hl=en#EXPONENTIAL</a>
-     * <a>https://developer.android.com/reference/androidx/work/WorkRequest#DEFAULT_BACKOFF_DELAY_MILLIS</a>
+     * Execute the logic for update checking, downloading and installation.
      *
-     * The coroutineScope ensures that stopping the BackgroundJob will also stop the app update check, app
-     * download and app installation.
+     * If an common exception (like CancellationException, GithubRateLimitExceededException or
+     * NetworkException) occurs, then retry in a short time.
+     * The wait time between every run is logarithmic with a max value:
+     * 15s,30s,1m,2m,4m,8m,16m,32m,64m,128m,256m,300m,300m,...
      *
-     * Result.failure will remove the scheduled job (and that's unwanted).
-     * Result.success will execute the job in the next period.
-     * Result.retry will retry the job with exponentially increased wait time (30s, 1m, 2m, ...).
+     * If an uncommon exception (anything else) occurs, then retry in the next regular execution interval.
+     *
+     * I can't return Result.error() because even if an unknown exception occurs, I want that BackgroundJob
+     * is still regularly executed.
+     * But Result.error() will remove BackgroundJob from the WorkManager job schedule.
      */
     @MainThread
     override suspend fun doWork(): Result = coroutineScope {
+        val maxRetries: Int
+        val exception: Exception
         try {
             Log.i(LOG_TAG, "Execute background job for update check.")
-            executeBackgroundJob()
+            return@coroutineScope executeBackgroundJob()
         } catch (e: CancellationException) {
             Log.w(LOG_TAG, "Background job failed (CancellationException)", e)
-            handleRetryableError(e, RUN_ATTEMPTS_FOR_1HOUR)
+            maxRetries = RUN_ATTEMPTS_FOR_MAX_1HOUR
+            exception = e
         } catch (e: GithubRateLimitExceededException) {
             Log.w(LOG_TAG, "Background job failed (GithubRateLimitExceededException)", e)
-            handleRetryableError(e, RUN_ATTEMPTS_FOR_2DAYS)
+            maxRetries = RUN_ATTEMPTS_FOR_MAX_2DAYS
+            exception = e
         } catch (e: NetworkException) {
             Log.w(LOG_TAG, "Background job failed (NetworkException)", e)
-            handleRetryableError(e, RUN_ATTEMPTS_FOR_2DAYS)
+            maxRetries = RUN_ATTEMPTS_FOR_MAX_2DAYS
+            exception = e
         } catch (e: Exception) {
             Log.e(LOG_TAG, "Background job failed due to an unexpected exception", e)
-            showErrorNotification(e)
-            Result.success()
+            maxRetries = 0
+            exception = e
+        }
+
+        if (runAttemptCount < maxRetries) {
+            Log.i(LOG_TAG, "Retry background job.", exception)
+            Result.retry()
+        } else {
+            showErrorNotification(exception)
+            Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
     }
 
@@ -146,7 +159,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return false
         }
 
-        val updateCheckResult = app.detail.checkForUpdateAsync(context).await()
+        val updateCheckResult = app.detail.checkForUpdateWithoutCacheAsync(context).await()
         return updateCheckResult.isUpdateAvailable
     }
 
@@ -268,16 +281,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         appsWithUpdates.forEach { BackgroundNotificationBuilder.showUpdateIsAvailable(context, it) }
     }
 
-    private fun handleRetryableError(e: Exception, maxRetries: Int): Result {
-        if (runAttemptCount <= maxRetries) {
-            Log.i(LOG_TAG, "Retry background job.", e)
-            return Result.retry()
-        }
-
-        showErrorNotification(e)
-        return Result.success()
-    }
-
     private fun showErrorNotification(e: Exception) {
         val message = context.getString(R.string.background_notification__text)
         BackgroundNotificationBuilder.showError(context, e, message)
@@ -288,10 +291,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         private const val LOG_TAG = "BackgroundJob"
 
         // retry delays: 15s,30s,1m,2m,4m,8m,16m,32m
-        private const val RUN_ATTEMPTS_FOR_1HOUR = 8
+        private const val RUN_ATTEMPTS_FOR_MAX_1HOUR = 8
 
         // retry delays: 15s,30s,1m,2m,4m,8m,16m,32m,64m,128m,256m,300m,300m,300m,300m,300m,300m,300m,300m
-        private const val RUN_ATTEMPTS_FOR_2DAYS = 19
+        private const val RUN_ATTEMPTS_FOR_MAX_2DAYS = 19
 
         /**
          * Should be called when the user minimize the app to make sure that the background update check
