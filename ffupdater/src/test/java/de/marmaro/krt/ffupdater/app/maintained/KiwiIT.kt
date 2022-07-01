@@ -8,6 +8,7 @@ import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer.Release
 import io.mockk.coEvery
@@ -34,6 +35,9 @@ class KiwiIT {
 
     @MockK
     lateinit var apiConsumer: ApiConsumer
+
+    @MockK
+    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
 
     val packageInfo = PackageInfo()
     private val sharedPreferences = SPMockBuilder().createSharedPreferences()
@@ -84,7 +88,8 @@ class KiwiIT {
     }
 
     private fun createSut(deviceAbi: ABI): Kiwi {
-        return Kiwi(apiConsumer = apiConsumer, deviceAbis = listOf(deviceAbi))
+        every { deviceAbiExtractor.supportedAbis } returns listOf(deviceAbi)
+        return Kiwi(apiConsumer = apiConsumer, deviceAbiExtractor)
     }
 
     private fun makeReleaseJsonObjectAvailable() {

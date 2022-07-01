@@ -8,6 +8,7 @@ import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer.Release
 import io.mockk.*
@@ -33,6 +34,9 @@ class BraveBetaIT {
 
     @MockK
     lateinit var apiConsumer: ApiConsumer
+
+    @MockK
+    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
 
     val packageInfo = PackageInfo()
     private val sharedPreferences = SPMockBuilder().createSharedPreferences()
@@ -75,7 +79,8 @@ class BraveBetaIT {
     }
 
     private fun createSut(deviceAbi: ABI): BraveBeta {
-        return BraveBeta(apiConsumer = apiConsumer, deviceAbis = listOf(deviceAbi))
+        every { deviceAbiExtractor.supportedAbis } returns listOf(deviceAbi)
+        return BraveBeta(apiConsumer = apiConsumer, deviceAbiExtractor)
     }
 
     @ParameterizedTest(name = "check download info for ABI \"{0}\"")

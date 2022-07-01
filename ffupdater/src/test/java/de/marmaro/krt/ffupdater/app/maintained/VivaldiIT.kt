@@ -7,6 +7,7 @@ import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import io.mockk.coEvery
 import io.mockk.every
@@ -29,11 +30,16 @@ class VivaldiIT {
 
     @MockK
     lateinit var packageManager: PackageManager
-    private var packageInfo = PackageInfo()
 
     @MockK
     lateinit var apiConsumer: ApiConsumer
+
+    @MockK
+    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
+
     private val sharedPreferences = SPMockBuilder().createSharedPreferences()
+
+    private var packageInfo = PackageInfo()
 
     @BeforeEach
     fun setUp() {
@@ -65,7 +71,8 @@ class VivaldiIT {
     }
 
     private fun createSut(deviceAbi: ABI): Vivaldi {
-        return Vivaldi(apiConsumer = apiConsumer, deviceAbis = listOf(deviceAbi))
+        every { deviceAbiExtractor.supportedAbis } returns listOf(deviceAbi)
+        return Vivaldi(apiConsumer = apiConsumer, deviceAbiExtractor)
     }
 
     @ParameterizedTest(name = "check download info for ABI \"{0}\"")

@@ -7,6 +7,7 @@ import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import io.mockk.coEvery
 import io.mockk.every
@@ -31,10 +32,15 @@ class FirefoxBetaIT {
 
     @MockK
     private lateinit var packageManager: PackageManager
-    private var packageInfo = PackageInfo()
 
     @MockK
     lateinit var apiConsumer: ApiConsumer
+
+    @MockK
+    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
+
+    private var packageInfo = PackageInfo()
+
     private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @BeforeEach
@@ -82,7 +88,8 @@ class FirefoxBetaIT {
     }
 
     private fun createSut(deviceAbi: ABI): FirefoxBeta {
-        return FirefoxBeta(apiConsumer = apiConsumer, deviceAbis = listOf(deviceAbi))
+        every { deviceAbiExtractor.supportedAbis } returns listOf(deviceAbi)
+        return FirefoxBeta(apiConsumer = apiConsumer, deviceAbiExtractor)
     }
 
     private fun makeChainOfTrustTextAvailableUnderUrl(url: String) {
