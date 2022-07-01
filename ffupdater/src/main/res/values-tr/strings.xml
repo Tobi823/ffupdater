@@ -253,4 +253,9 @@
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
     <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır.
 \n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
+    <string name="eol_apps_notification__message">Artık kullanılmaması gereken güncel olmayan uygulamalarınız var. Daha fazla bilgi için tıklayın.</string>
+    <string name="eol_apps_notification__channel_description">Güncel olmayan uygulamalarla ilgili uyarılar için bildirim kanalı.</string>
+    <string name="eol_apps_notification__title">Güncel olmayan uygulamalar kurulu</string>
+    <string name="generic_eol_reason__browser_to_old">Tarayıcı uzun süredir güncellenmedi, bu nedenle geçici olarak başka bir tarayıcı kullanmanızı tavsiye ederim. Geliştiriciler yeni bir güncelleme yayınladığında, bu uyarıyı kaldıracağım.</string>
+    <string name="eol_apps_notification__channel_name">Güncel olmayan uygulamalar bildirimi</string>
 </resources>
