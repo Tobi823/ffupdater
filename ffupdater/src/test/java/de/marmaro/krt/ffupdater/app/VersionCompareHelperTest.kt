@@ -8,6 +8,17 @@ import org.junit.jupiter.api.Test
 class VersionCompareHelperTest {
 
     @Test
+    fun name() {
+        val (test: Int, test2: Int) = try {
+            print("")
+            1 to 2
+        } catch (e: Exception) {
+            3 to 4
+        }
+        print("$test $test2")
+    }
+
+    @Test
     fun isAvailableVersionHigher_invalidInstalledVersion_returnTrue() {
         assertTrue(VersionCompareHelper.isAvailableVersionHigher("v1.0.0", "1.0.0"))
     }

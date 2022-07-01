@@ -2,9 +2,7 @@ package de.marmaro.krt.ffupdater.installer
 
 import android.content.Context
 import android.content.pm.PackageInstaller
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import kotlinx.coroutines.Deferred
@@ -13,7 +11,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import java.io.File
 
-@RequiresApi(Build.VERSION_CODES.N)
 class BackgroundSessionInstaller(
     context: Context,
     app: MaintainedApp,

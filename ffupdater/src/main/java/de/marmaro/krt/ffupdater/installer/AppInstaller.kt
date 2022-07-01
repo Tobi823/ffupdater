@@ -1,9 +1,7 @@
 package de.marmaro.krt.ffupdater.installer
 
 import android.content.Context
-import android.os.Build
 import androidx.activity.ComponentActivity
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.DefaultLifecycleObserver
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.install_activity__downloaded_application_is_not_verified
@@ -79,7 +77,6 @@ abstract class SecureAppInstaller(
 
 interface BackgroundAppInstaller : AppInstaller {
     companion object {
-        @RequiresApi(Build.VERSION_CODES.N)
         fun create(context: Context, app: MaintainedApp, file: File): BackgroundAppInstaller {
             return when (InstallerSettingsHelper(context).getInstaller()) {
                 SESSION_INSTALLER -> BackgroundSessionInstaller(context, app, file)

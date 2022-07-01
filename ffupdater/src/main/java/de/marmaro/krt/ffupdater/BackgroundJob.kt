@@ -9,7 +9,8 @@ import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
 import de.marmaro.krt.ffupdater.app.MaintainedApp
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid10
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
@@ -62,27 +63,21 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      */
     @MainThread
     override suspend fun doWork(): Result = coroutineScope {
-        val maxRetries: Int
-        val exception: Exception
-        try {
+        val (exception, maxRetries) = try {
             Log.i(LOG_TAG, "Execute background job for update check.")
-            return@coroutineScope executeBackgroundJob()
+            return@coroutineScope checkDownloadAndInstallApps()
         } catch (e: CancellationException) {
             Log.w(LOG_TAG, "Background job failed (CancellationException)", e)
-            maxRetries = RUN_ATTEMPTS_FOR_MAX_1HOUR
-            exception = e
+            e to RUN_ATTEMPTS_FOR_MAX_1HOUR
         } catch (e: GithubRateLimitExceededException) {
             Log.w(LOG_TAG, "Background job failed (GithubRateLimitExceededException)", e)
-            maxRetries = RUN_ATTEMPTS_FOR_MAX_2DAYS
-            exception = e
+            e to RUN_ATTEMPTS_FOR_MAX_2DAYS
         } catch (e: NetworkException) {
             Log.w(LOG_TAG, "Background job failed (NetworkException)", e)
-            maxRetries = RUN_ATTEMPTS_FOR_MAX_2DAYS
-            exception = e
+            e to RUN_ATTEMPTS_FOR_MAX_2DAYS
         } catch (e: Exception) {
             Log.e(LOG_TAG, "Background job failed due to an unexpected exception", e)
-            maxRetries = 0
-            exception = e
+            e to 0
         }
 
         if (runAttemptCount < maxRetries) {
@@ -95,92 +90,64 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     @MainThread
-    private suspend fun executeBackgroundJob(): Result {
-        areUpdateCheckPreconditionsUnfulfilled()?.let { return it }
-        dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
+    private suspend fun checkDownloadAndInstallApps(): Result {
+        val (outdatedApps, abortCheckResult) = checkForUpdates()
+        abortCheckResult?.let { result -> return result }
 
-        // check for updates
-        val apps = MaintainedApp.values().asList()
-        val outdatedApps = apps.filter { checkForUpdateAndReturnAvailability(it) }
-//        val outdatedApps = listOf(App.FIREFOX_RELEASE)
-        if (outdatedApps.isEmpty()) {
-            return Result.success()
-        }
+        val (downloadedUpdates, abortDownloadResult) = downloadUpdates(outdatedApps)
+        abortDownloadResult?.let { result -> return result }
 
-        // download updates
-        areDownloadPreconditionsUnfulfilled()?.let {
-            showUpdateNotification(outdatedApps)
-            return it
-        }
-        BackgroundNotificationBuilder.hideDownloadError(context)
-        val downloadedUpdates = outdatedApps.filter { downloadUpdateAndReturnAvailability(it) }
-        Log.e("BackgroundJob", "downloadUpdates: $downloadedUpdates")
-
-        // install updates
-        areInstallationPreconditionsUnfulfilled()?.let {
-            showUpdateNotification(downloadedUpdates)
-            return it
-        }
-        BackgroundNotificationBuilder.hideInstallationSuccess(context)
-        BackgroundNotificationBuilder.hideInstallationError(context)
-        downloadedUpdates.forEach { installApplication(it) }
-        return Result.success()
+        return installUpdates(downloadedUpdates)
     }
 
-    /**
-     * Actually, WorkManager should ensure that most of these conditions are met.
-     * But this does not always happen reliably.
-     */
-    private fun areUpdateCheckPreconditionsUnfulfilled(): Result? {
+    private suspend fun checkForUpdates(): Pair<List<MaintainedApp>, Result?> {
         if (!backgroundSettings.isUpdateCheckEnabled) {
             Log.i(LOG_TAG, "Background should be disabled - disable it now.")
-            return Result.failure()
+            return listOf<MaintainedApp>() to Result.failure()
         }
 
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
             Log.i(LOG_TAG, "Retry background job because other downloads are running.")
-            return Result.retry()
+            return listOf<MaintainedApp>() to Result.retry()
         }
 
         if (!backgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(context)) {
             Log.i(LOG_TAG, "No unmetered network available for update check.")
-            return Result.retry()
+            return listOf<MaintainedApp>() to Result.retry()
         }
 
-        return null
+        dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
+
+        // check for updates
+        val outdatedApps = MaintainedApp.values()
+            .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
+            .filter { app -> app.detail.isInstalled(context) }
+            .filter { app ->
+                val updateCheckResult = app.detail.checkForUpdateWithoutCacheAsync(context).await()
+                updateCheckResult.isUpdateAvailable
+            }
+        return outdatedApps to null
     }
 
-    private suspend fun checkForUpdateAndReturnAvailability(app: MaintainedApp): Boolean {
-        if (app in backgroundSettings.excludedAppsFromUpdateCheck) {
-            return false
-        }
-
-        if (!app.detail.isInstalled(context)) {
-            return false
-        }
-
-        val updateCheckResult = app.detail.checkForUpdateWithoutCacheAsync(context).await()
-        return updateCheckResult.isUpdateAvailable
-    }
-
-    private fun areDownloadPreconditionsUnfulfilled(): Result? {
+    private suspend fun downloadUpdates(apps: List<MaintainedApp>): Pair<List<MaintainedApp>, Result?> {
         if (!backgroundSettings.isDownloadEnabled) {
             Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
-            return Result.success()
+            showUpdateNotification(apps)
+            return listOf<MaintainedApp>() to Result.success()
         }
 
         if (!backgroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(context)) {
             Log.i(LOG_TAG, "No unmetered network available for download.")
-            return Result.success()
+            showUpdateNotification(apps)
+            return listOf<MaintainedApp>() to Result.success()
         }
 
-        return null
+        BackgroundNotificationBuilder.hideDownloadError(context)
+        val downloadedUpdates = apps.filter { downloadUpdateAndReturnAvailability(it) }
+        Log.e("BackgroundJob", "these updates were downloaded: $downloadedUpdates")
+        return downloadedUpdates to null
     }
 
-    /**
-     * If the app update is not already been cached, then start the download and wait until the
-     * download is finished.
-     */
     @MainThread
     private suspend fun downloadUpdateAndReturnAvailability(app: MaintainedApp): Boolean {
         if (!StorageUtil.isEnoughStorageAvailable(context)) {
@@ -189,7 +156,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         val appCache = AppCache(app)
-        val updateResult = app.detail.checkForUpdateAsync(context).await()
+        val updateResult = app.detail.checkForUpdateAsync(context).await() // this result should be cached
         val availableResult = updateResult.availableResult
         if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
@@ -216,49 +183,47 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
     }
 
-    private fun areInstallationPreconditionsUnfulfilled(): Result? {
-        if (!DeviceSdkTester.supportsAndroid10()) {
-            return Result.success()
-        }
-
-        if (!context.packageManager.canRequestPackageInstalls()) {
+    private suspend fun installUpdates(apps: List<MaintainedApp>): Result {
+        if (supportsAndroid10() && !context.packageManager.canRequestPackageInstalls()) {
             Log.i(LOG_TAG, "Missing installation permission")
+            showUpdateNotification(apps)
             return Result.retry()
         }
 
         if (!backgroundSettings.isInstallationEnabled) {
             Log.i(LOG_TAG, "Automatic background app installation is not enabled.")
+            showUpdateNotification(apps)
             return Result.success()
         }
 
-        if (installerSettings.getInstaller() == ROOT_INSTALLER) {
-            return null
+        val installerAvailable = when {
+            installerSettings.getInstaller() == ROOT_INSTALLER -> true
+            supportsAndroid12() && installerSettings.getInstaller() == SESSION_INSTALLER -> true
+            else -> false
+        }
+        if (!installerAvailable) {
+            Log.i(LOG_TAG, "The current installer can not update apps in the background")
+            showUpdateNotification(apps)
+            return Result.success()
         }
 
-        if (DeviceSdkTester.supportsAndroid12() && installerSettings.getInstaller() == SESSION_INSTALLER) {
-            return null
-        }
-
-        Log.i(LOG_TAG, "The current installer can not update apps in the background")
+        BackgroundNotificationBuilder.hideInstallationSuccess(context)
+        BackgroundNotificationBuilder.hideInstallationError(context)
+        apps.forEach { installApplication(it) }
         return Result.success()
     }
 
     private suspend fun installApplication(app: MaintainedApp) {
-        // a previous check pretends that this method is called with Android < 10
-        // but I have to add this check to make the compiler happy
-        if (!DeviceSdkTester.supportsAndroid10()) {
-            return
-        }
-
         val appCache = AppCache(app)
         val file = appCache.getFile(context)
         if (!file.exists()) {
             val errorMessage = "AppCache has no cached APK file"
             BackgroundNotificationBuilder.showInstallationError(context, app, -100, errorMessage)
+            return
         }
 
-        val installer = BackgroundAppInstaller.create(context, app, file)
         withContext(Dispatchers.Main) {
+            val installer = BackgroundAppInstaller.create(context, app, file)
             val result = installer.installAsync(context).await()
             if (result.success) {
                 BackgroundNotificationBuilder.showInstallationSuccess(context, app)
@@ -327,25 +292,23 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             context: Context,
             settings: BackgroundSettingsHelper,
             existingPeriodicWorkPolicy: ExistingPeriodicWorkPolicy,
-            _interval: Duration? = null,
+            interval: Duration? = null,
         ) {
-            val requiredNetworkType = if (settings.isUpdateCheckOnMeteredAllowed) {
+            val minutes = (interval ?: settings.updateCheckInterval).toMinutes()
+            val networkType = if (settings.isUpdateCheckOnMeteredAllowed) {
                 NOT_REQUIRED
             } else {
                 UNMETERED
             }
-            val constraints = Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED)
-                .setRequiresBatteryNotLow(true)
-                .setRequiresStorageNotLow(true)
-                .setRequiredNetworkType(requiredNetworkType)
-
-            WorkRequest.MAX_BACKOFF_MILLIS
-
-            val interval = _interval ?: settings.updateCheckInterval
-            val minutes = interval.toMinutes()
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)
-                .setConstraints(constraints.build())
+                .setConstraints(
+                    Constraints.Builder()
+                        .setRequiredNetworkType(NetworkType.CONNECTED)
+                        .setRequiresBatteryNotLow(true)
+                        .setRequiresStorageNotLow(true)
+                        .setRequiredNetworkType(networkType)
+                        .build()
+                )
                 .build()
 
             WorkManager.getInstance(context)
