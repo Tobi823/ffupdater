@@ -168,7 +168,7 @@
     <string name="settings__background__download__metered__summary">Nicht empfohlen für Benutzer mit begrenzten Datenvolumen.</string>
     <string name="settings__background__download__metered__title">Updates in getakteten Netzen herunterladen</string>
     <string name="settings__background__installation__enabled__summary">Es wird versucht, Updates ohne Benutzerinteraktion zu installieren.</string>
-    <string name="settings__background__installation__enabled__title">Update installieren</string>
+    <string name="settings__background__installation__enabled__title">Updates installieren</string>
     <string name="settings__background__update_check__enabled__summary">Prüfen Sie in regelmäßigen Abständen, ob es neue Updates gibt.</string>
     <string name="settings__background__update_check__enabled__title">Regelmäßige Updateprüfung</string>
     <string name="settings__background__update_check__excluded_apps__summary">Nützlich, wenn Sie eine App nicht aktualisieren wollen.</string>
