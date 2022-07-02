@@ -31,7 +31,7 @@
     <string name="application_successfully_installed">Applicazione installata con successo</string>
     <string name="available_version">Disponibile: %1$s</string>
     <string name="available_version_error">"<u>ERRORE</u>"</string>
-    <string name="background_notification__text">Si prega di segnalare questo errore. Clicca per visualizzare il rapporto di errore.</string>
+    <string name="background_notification__message">Si prega di segnalare questo errore. Clicca per visualizzare il rapporto di errore.</string>
     <string name="background_notification__title">Verifica aggiornamenti in background fallita</string>
     <string name="brave__description">Naviga su internet privatamente, gratis! Brave Private Browser App è il tuo browser web privato, veloce, gratuito e sicuro con blocco di annunci e pop-up. Naviga e cerca su internet privatamente, senza essere tracciato da inserzionisti, malware e pop-up.</string>
     <string name="brave__title">Brave Private Browser</string>
@@ -233,7 +233,7 @@
     <string name="update_interval__8h">8 ore</string>
     <string name="update_notification__channel_description">Canale di notifica per %1$s aggiornamenti disponibili.</string>
     <string name="update_notification__channel_name">"%1$s" notifica di aggiornamento</string>
-    <string name="update_notification__text">Clicca per installare l\'aggiornamento</string>
+    <string name="update_notification__message">Clicca per installare l\'aggiornamento</string>
     <string name="update_notification__title">Aggiornamento disponibile per "%1$s"</string>
     <string name="vivaldi__description">Scopri un browser Internet incredibilmente veloce! Vivaldi è un browser web nuovo, gratuito, e privato costruito pensando alla flessibilità. Viene fornito con funzioni utili tra cui un blocco delle pubblicità incorporato (blocco dei pop-up), protezione dal tracciamento e traduzione privata. Opzioni del browser come schede appropriate in stile desktop, temi chiaro/scuro, e le scelte di layout ti aiutano a renderlo tuo.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>

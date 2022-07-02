@@ -9,7 +9,7 @@
     <string name="application_successfully_installed">Aplikacja została zainstalowana pomyślnie</string>
     <string name="available_version">Dostępne: %1$s</string>
     <string name="available_version_error">"<u>BŁĄD</u>"</string>
-    <string name="background_notification__text">Proszę zgłosić ten błąd. Kliknij, aby wyświetlić raport o błędzie.</string>
+    <string name="background_notification__message">Proszę zgłosić ten błąd. Kliknij, aby wyświetlić raport o błędzie.</string>
     <string name="background_notification__title">Aktualizacja w tle się nie powiodła</string>
     <string name="brave__description">Przeglądaj internet prywatnie, za darmo! Brave to Twoja szybka, darmowa i bezpieczna przeglądarka internetowa z blokadą reklam i wyskakujących okienek. Prywatne przeglądanie i wyszukiwanie w Internecie bez śledzenia przez reklamodawców, złośliwego oprogramowania i wyskakujących okienek.</string>
     <string name="brave__title">Przeglądarka Brave</string>
@@ -180,7 +180,7 @@
     <string name="update_interval__8h">8 godzin</string>
     <string name="update_notification__channel_description">Kanał powiadamiania o dostępnych aktualizacjach %1$s.</string>
     <string name="update_notification__channel_name">Powiadomienie o aktualizacji "%1$s"</string>
-    <string name="update_notification__text">Kliknij aby zainstalować aktualizację</string>
+    <string name="update_notification__message">Kliknij aby zainstalować aktualizację</string>
     <string name="update_notification__title">Dostępna jest aktualizacja dla "%1$s"</string>
     <string name="vivaldi__description">Vivaldi to nowa, prywatna przeglądarka zbudowana z myślą o elastyczności. Posiada użyteczne funkcje, takie jak blokowanie reklam, ochronę przed śledzeniem czy prywatny tłumacz. Narzedzia, w tym notatki czy przechwytywanie ekranu, oszczędzają dużo czasu. Wreszcie opcje, jak klasyczny pasek kart czy motywy, pozwalają Ci urządzić się po swojemu. Pobierz za darmo i przeglądaj sieć szybciej.</string>
     <string name="vivaldi__title">Przeglądarka Vivaldi</string>

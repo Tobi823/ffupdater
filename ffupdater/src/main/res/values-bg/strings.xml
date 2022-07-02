@@ -31,7 +31,7 @@
     <string name="application_successfully_installed">Приложението е успешно инсталирано</string>
     <string name="available_version">Налично: %1$s</string>
     <string name="available_version_error">"<u>ГРЕШКА</u>"</string>
-    <string name="background_notification__text">Докладвайте за тази грешка. Докоснете, за да видите доклада.</string>
+    <string name="background_notification__message">Докладвайте за тази грешка. Докоснете, за да видите доклада.</string>
     <string name="background_notification__title">Неуспешна проверка за обновяване във фонов режим</string>
     <string name="brave__description">Разглеждайте интернет поверително и безплатно! Приложението поверителен четец на Brave е вашият бърз, безплатен и безопасен личен мрежов четец със спиране на реклами и изскачащи прозорци. Разглеждайте и търсете в интернет в поверителен режим, без да бъдете следени от рекламодатели, зловреден софтуер и изскачащи прозорци.</string>
     <string name="brave__title">Поверителен четец Brave</string>
@@ -249,7 +249,7 @@
     <string name="update_interval__8h">8 часа</string>
     <string name="update_notification__channel_description">Категория известия за достъпни издания на %1$s.</string>
     <string name="update_notification__channel_name">Известие за достъпно издание на %1$s</string>
-    <string name="update_notification__text">Докоснете за обновяване</string>
+    <string name="update_notification__message">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
     <string name="vivaldi__description">Открийте изключително бърз мрежов четец! Vivaldi е нов, безплатен и поверителен мрежов четец, създаден с мисъл за гъвкавост. Той е снабден с полезни функции, включително вградено спиране на реклами (изскачащи прозорци също), защита от проследяване и поверително превеждане. Възможностите на четеца, като например подходящи раздели в настолен стил, тъмни/светли теми и избор на оформление, ви помагат да го направите свой.</string>
     <string name="vivaldi__title">Четецът Vivaldi</string>

@@ -10,7 +10,7 @@
     <string name="application_successfully_installed">Aplikace byla úspěšně nainstalována</string>
     <string name="available_version">K dispozici: %1$s</string>
     <string name="available_version_error">"<u>CHYBA</u>"</string>
-    <string name="background_notification__text">Prosím nahlaste tuto chybu. Kliknutím zobrazíte chybové hlášení.</string>
+    <string name="background_notification__message">Prosím nahlaste tuto chybu. Kliknutím zobrazíte chybové hlášení.</string>
     <string name="background_notification__title">Aktualizace na pozadí se nezdařila</string>
     <string name="brave__description">Webový prohlížeč Brave je rychlá a bezpečná aplikace k prohlížení webu pro Android s vestavěným blokátorem na reklamy třetích stran. Brave je bleskově rychlý, bezpečný a soukromý, který zabraňuje reklamám sledovat Vás, zamezuje infekci malware a blokuje vyskakovací okna.</string>
     <string name="brave__title">Brave Soukromý prohlížeč</string>
@@ -187,7 +187,7 @@
     <string name="update_interval__8h">8 hodin</string>
     <string name="update_notification__channel_description">Kanál upozornění na dostupné aktualizace %1$s.</string>
     <string name="update_notification__channel_name">Oznámení o aktualizaci "%1$s"</string>
-    <string name="update_notification__text">Klikněte pro instalaci aktualizací</string>
+    <string name="update_notification__message">Klikněte pro instalaci aktualizací</string>
     <string name="update_notification__title">Dostupné aktualizace pro "%1$s"</string>
     <string name="vivaldi__description">Vivaldi je nový soukromý webový prohlížeč, postavený s ohledem na flexibilitu. Přináší řadu užitečných funkcí, včetně vestavěného blokování reklam (ve výchozím nastavení vypnuto), ochranou proti sledování a soukromým překladačem. Poznámky a zachycení stránky vám ušetří čas. Přizpůsobte si vše podle sebe s možnostmi typu listy jako na počítači, tmavý a světlý vzhled, či úpravy rozložení rozhraní. Stáhněte si zdarma Vivaldi a začněte prohlížejte rychleji.</string>
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>

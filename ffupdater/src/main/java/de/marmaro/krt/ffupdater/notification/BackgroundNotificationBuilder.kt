@@ -31,7 +31,7 @@ object BackgroundNotificationBuilder {
             channelDescription = context.getString(error_notification__channel_description),
             notificationId = 300,
             notificationTitle = context.getString(background_notification__title),
-            notificationMessage = context.getString(background_notification__text),
+            notificationMessage = context.getString(background_notification__message),
             intent = CrashReportActivity.createIntent(context, exception, message),
         )
     }
@@ -45,7 +45,7 @@ object BackgroundNotificationBuilder {
             channelDescription = context.getString(update_notification__channel_description, appTitle),
             notificationId = 200 + app.ordinal,
             notificationTitle = context.getString(update_notification__title, appTitle),
-            notificationMessage = context.getString(update_notification__text),
+            notificationMessage = context.getString(update_notification__message),
             intent = InstallActivity.createIntent(context, app)
         )
     }
@@ -131,12 +131,7 @@ object BackgroundNotificationBuilder {
         nm.cancel(500 + app.ordinal)
     }
 
-    fun showInstallationError(
-        context: Context,
-        app: MaintainedApp,
-        errorCode: Int?,
-        errorMessage: String?
-    ) {
+    fun showInstallationError(context: Context, app: MaintainedApp, code: Int?, message: String?) {
         val appTitle: String = context.getString(app.detail.displayTitle)
         showNotification(
             context = context,
@@ -148,11 +143,7 @@ object BackgroundNotificationBuilder {
             ),
             notificationId = 600 + app.ordinal,
             notificationTitle = context.getString(installation_error_notification__title, appTitle),
-            notificationMessage = context.getString(
-                installation_error_notification__message,
-                errorCode,
-                errorMessage
-            ),
+            notificationMessage = context.getString(installation_error_notification__message, code, message),
             intent = InstallActivity.createIntent(context, app)
         )
     }

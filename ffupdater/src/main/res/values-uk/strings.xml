@@ -9,7 +9,7 @@
     <string name="application_successfully_installed">Програма успішно встановлена</string>
     <string name="available_version">в наявності: %1$s</string>
     <string name="available_version_error">"<u>ПОМИЛКА</u>"</string>
-    <string name="background_notification__text">Повідомте про цю помилку. Натисніть, щоб переглянути звіт про помилку.</string>
+    <string name="background_notification__message">Повідомте про цю помилку. Натисніть, щоб переглянути звіт про помилку.</string>
     <string name="background_notification__title">Не вдалося перевірити фонове оновлення</string>
     <string name="brave__description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення. \n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
     <string name="brave__title">Brave Browser</string>
@@ -180,7 +180,7 @@
     <string name="update_interval__8h">8 годин</string>
     <string name="update_notification__channel_description">Канал сповіщення про доступні оновлення %1$s.</string>
     <string name="update_notification__channel_name">Повідомлення про оновлення %1$s</string>
-    <string name="update_notification__text">Клацніть, щоб встановити оновлення</string>
+    <string name="update_notification__message">Клацніть, щоб встановити оновлення</string>
     <string name="update_notification__title">Обновление для "%1$s" доступно</string>
     <string name="vivaldi__description">Vivaldi - це новий приватний браузер з унікальною гнучкістю в налаштуванні. Він має такі корисні інстументи, як блокувальник реклами (вимкнений за промовчанням), захист від стеження та приватний перекладач. Нотатки та знімки сторінок прискорюють та полегшують робочий процес. Налаштування теми оформлення та вигляду й розташування вкладок додають індивідуальність браузерові. Завантажте безкоштовно та переглядайте сайти з насолодою.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>

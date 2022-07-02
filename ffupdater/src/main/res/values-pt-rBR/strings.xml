@@ -30,7 +30,7 @@
     <string name="application_successfully_installed">Navegador instalado com sucesso</string>
     <string name="available_version">Disponível: %1$s</string>
     <string name="available_version_error">"<u>ERRO</u>"</string>
-    <string name="background_notification__text">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
+    <string name="background_notification__message">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
     <string name="background_notification__title">Verificação em segundo plano falhou</string>
     <string name="brave__description">Navegue livremente e de modo privado! Brave é rápido, gratuito e seguro com bloqueador de pop-ups e anúncios. Navegue e pesquise na internet sem malware e rastreamento.</string>
     <string name="brave__title">Brave</string>
@@ -215,7 +215,7 @@
     <string name="update_interval__8h">8 horas</string>
     <string name="update_notification__channel_description">Canal de notificação para %1$s atualizações disponíveis.</string>
     <string name="update_notification__channel_name">"%1$s" notificações de atualização</string>
-    <string name="update_notification__text">Clique para instalar a atualização</string>
+    <string name="update_notification__message">Clique para instalar a atualização</string>
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
     <string name="vivaldi__description">Descubra um navegador extremamente veloz! Vivaldi é um navegador novo, gratuito, privado e muito flexível. Ele vem repleto de recursos úteis incluindo um AdBlocker (bloqueador de pop-ups) integrado, proteção contra rastreamento e opção de tradução privada. Navegador vem com abas especiais no estilo desktop, temas escuros/claros e muitas opções de layout.</string>
     <string name="vivaldi__title">Vivaldi</string>

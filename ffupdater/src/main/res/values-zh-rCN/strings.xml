@@ -23,7 +23,7 @@
     <string name="application_successfully_installed">已成功安装应用程序</string>
     <string name="available_version">可用版本：%1$s</string>
     <string name="available_version_error"><u>错误</u></string>
-    <string name="background_notification__text">请报告此错误。点击查看错误报告。</string>
+    <string name="background_notification__message">请报告此错误。点击查看错误报告。</string>
     <string name="background_notification__title">后台检查更新失败</string>
     <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
     <string name="brave__title">Brave 隐私浏览器</string>
@@ -243,7 +243,7 @@
     <string name="update_interval__8h">8 小时</string>
     <string name="update_notification__channel_description">%1$s 更新可用的通知通道。</string>
     <string name="update_notification__channel_name">%1$s 更新通知</string>
-    <string name="update_notification__text">点击以安装更新</string>
+    <string name="update_notification__message">点击以安装更新</string>
     <string name="update_notification__title">%1$s 有更新可用</string>
     <string name="vivaldi__description">来了解速度极快的网络浏览器！Vivaldi 是一款时时注重灵活性的新型、免费和隐私的网络浏览器。它包含了内置的广告拦截器（弹出窗口拦截器）、跟踪保护和隐私翻译等有用的功能。合适的桌面样式选项卡、深色/浅色主题和布局选择等浏览器选项可帮助您将其打造为您的专属浏览器。</string>
     <string name="vivaldi__title">Vivaldi 浏览器</string>

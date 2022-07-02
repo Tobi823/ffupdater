@@ -242,7 +242,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun showErrorNotification(e: Exception) {
-        val message = context.getString(R.string.background_notification__text)
+        val message = context.getString(R.string.background_notification__message)
         BackgroundNotificationBuilder.showError(context, e, message)
     }
 
