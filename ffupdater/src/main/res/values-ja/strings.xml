@@ -9,7 +9,6 @@
     <string name="application_successfully_installed">アプリのインストールに成功しました</string>
     <string name="available_version">利用可能: %1$s</string>
     <string name="available_version_error">"<u>エラー</u>"</string>
-    <string name="main_activity__available_version_loading">読み込み中…</string>
     <string name="background_notification__text">このエラーを報告してください。クリックするとエラーレポートが表示されます。</string>
     <string name="background_notification__title">バックグラウンドのチェックに失敗しました</string>
     <string name="brave__description">自由で、プライベートにインターネットを閲覧することができます。Braveは、広告ブロック機能とポップアップブロック機能を備えた、高速、無料、かつ安全なプライベートウェブブラウザです。広告主やマルウェア、ポップアップに追跡されることなく、プライベートにインターネットを閲覧、検索することができます。</string>
@@ -97,6 +96,7 @@
     <string name="installed_application_is_verified">インストールしたアプリは検証されました</string>
     <string name="installed_version">インストール済み: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">読み込み中…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-APIの制限を超えました。次の時間に再試行します。</u>"</string>
     <string name="main_activity__no_unmetered_network">アンメットネットワークなし</string>
     <string name="main_activity__subtitle">あなたのブラウザをアップデートします</string>

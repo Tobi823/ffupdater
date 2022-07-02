@@ -23,7 +23,6 @@
     <string name="application_successfully_installed">已成功安装应用程序</string>
     <string name="available_version">可用版本：%1$s</string>
     <string name="available_version_error"><u>错误</u></string>
-    <string name="main_activity__available_version_loading">正在加载…</string>
     <string name="background_notification__text">请报告此错误。点击查看错误报告。</string>
     <string name="background_notification__title">后台检查更新失败</string>
     <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
@@ -66,6 +65,10 @@
     <string name="download_running_notification__message">正在下载 %1$s 的更新（%2$s）。</string>
     <string name="download_running_notification__title">正在下载应用程序更新</string>
     <string name="download_the_app">下载应用程序</string>
+    <string name="eol_apps_notification__channel_description">用于警告过时应用有关信息的通知通道。</string>
+    <string name="eol_apps_notification__channel_name">过时应用通知</string>
+    <string name="eol_apps_notification__message">您有不应当再继续使用的过时应用。点击了解更多信息。</string>
+    <string name="eol_apps_notification__title">已安装的过时应用</string>
     <string name="error_notification__channel_description">显示后台更新检查器错误</string>
     <string name="error_notification__channel_name">后台错误</string>
     <string name="firefox_beta__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且还有广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，安全与速度将在这个私密的移动浏览器中双全。</string>
@@ -85,6 +88,7 @@
     <string name="firefox_release__description">Firefox 浏览器 Android 天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且还有广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，安全与速度将在这个私密的移动浏览器中双全。</string>
     <string name="firefox_release__title">Firefox 浏览器</string>
     <string name="firefox_release__warning">- F-Droid上还有一个改进版的 Firefox，名为 Fennec F-Droid。</string>
+    <string name="generic_eol_reason__browser_to_old">这个浏览器已经很长时间没有更新了，建议暂时使用其他的浏览器。如果其开发者发布了更新，将会移除这个警告。</string>
     <string name="go_back">返回</string>
     <string name="iceraven__description">此应用程序并非由 Mozilla 提供！
 \n
@@ -147,6 +151,7 @@
 \n安全地跟踪您的 Firefox 密码变化并在任何地方访问它们。快速从应用程序中打开任何网站并登入您的帐户。</string>
     <string name="lockwise__eol_reason">Mozilla 在 2021 年 12 月放弃了对它的支持。请切换到其他密码管理器。</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">正在加载…</string>
     <string name="main_activity__github_api_limit_exceeded"><u>超过 GitHub API 限制。请在下一小时重试。</u></string>
     <string name="main_activity__no_unmetered_network">没有不按流量计费的网络</string>
     <string name="main_activity__subtitle">隐私友好的浏览器的更新器</string>
@@ -245,9 +250,4 @@
     <string name="vivaldi__title">Vivaldi 浏览器</string>
     <string name="vivaldi__warning">- Vivaldi 只有部分开源。
 \n- 它还使用了 Google Chrome 的技术基础，从而间接维护了 Chromium 渲染引擎的垄断地位。</string>
-    <string name="eol_apps_notification__channel_name">过时应用通知</string>
-    <string name="generic_eol_reason__browser_to_old">这个浏览器已经很长时间没有更新了，建议暂时使用其他的浏览器。如果其开发者发布了更新，将会移除这个警告。</string>
-    <string name="eol_apps_notification__message">您有不应当再继续使用的过时应用。点击了解更多信息。</string>
-    <string name="eol_apps_notification__title">已安装的过时应用</string>
-    <string name="eol_apps_notification__channel_description">用于警告过时应用有关信息的通知通道。</string>
 </resources>

@@ -10,7 +10,6 @@
     <string name="application_successfully_installed">Aplikace byla úspěšně nainstalována</string>
     <string name="available_version">K dispozici: %1$s</string>
     <string name="available_version_error">"<u>CHYBA</u>"</string>
-    <string name="main_activity__available_version_loading">Načítání…</string>
     <string name="background_notification__text">Prosím nahlaste tuto chybu. Kliknutím zobrazíte chybové hlášení.</string>
     <string name="background_notification__title">Aktualizace na pozadí se nezdařila</string>
     <string name="brave__description">Webový prohlížeč Brave je rychlá a bezpečná aplikace k prohlížení webu pro Android s vestavěným blokátorem na reklamy třetích stran. Brave je bleskově rychlý, bezpečný a soukromý, který zabraňuje reklamám sledovat Vás, zamezuje infekci malware a blokuje vyskakovací okna.</string>
@@ -108,6 +107,7 @@
 \n
 \nBezpečně ukládá hesla, ať jste kdekoli. V aplikaci rychle otevřete jakoukoli stránku a přistupte ke svým účtům.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Načítání…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</u>"</string>
     <string name="main_activity__no_unmetered_network">Žádná neměřená síť</string>
     <string name="main_activity__subtitle">Aktualizátor pro prohlížeče šetrné k soukromí</string>

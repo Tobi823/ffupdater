@@ -30,7 +30,6 @@
     <string name="application_successfully_installed">Navegador instalado com sucesso</string>
     <string name="available_version">Disponível: %1$s</string>
     <string name="available_version_error">"<u>ERRO</u>"</string>
-    <string name="main_activity__available_version_loading">Carregando…</string>
     <string name="background_notification__text">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
     <string name="background_notification__title">Verificação em segundo plano falhou</string>
     <string name="brave__description">Navegue livremente e de modo privado! Brave é rápido, gratuito e seguro com bloqueador de pop-ups e anúncios. Navegue e pesquise na internet sem malware e rastreamento.</string>
@@ -132,6 +131,7 @@
 \n
 \nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via app para entrar em suas contas.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Carregando…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nenhuma rede não contatada</string>
     <string name="main_activity__subtitle">Atualize seus navegadores</string>

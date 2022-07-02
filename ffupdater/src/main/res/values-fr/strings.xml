@@ -9,7 +9,6 @@
     <string name="application_successfully_installed">Installation de l\'application réussie</string>
     <string name="available_version">Disponible : %1$s</string>
     <string name="available_version_error">"<u>ERREUR</u>"</string>
-    <string name="main_activity__available_version_loading">Chargement…</string>
     <string name="background_notification__text">Veuillez signaler cette erreur. Cliquez pour afficher le rapport d\'erreur.</string>
     <string name="background_notification__title">Échec de la vérification de la mise à jour des antécédents</string>
     <string name="brave__description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !
@@ -110,6 +109,7 @@
 \n
 \nSuivez en toute sécurité vos mots de passe Firefox et accédez-y partout. Ouvrez rapidement n\'importe quel site Web depuis l\'application pour accéder à vos comptes.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Chargement…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>"</string>
     <string name="main_activity__no_unmetered_network">Pas de réseau non mesuré</string>
     <string name="main_activity__subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>

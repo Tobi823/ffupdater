@@ -30,7 +30,6 @@
     <string name="application_successfully_installed">Anwendung erfolgreich installiert</string>
     <string name="available_version">Verfügbar: %1$s</string>
     <string name="available_version_error">"<u>FEHLER</u>"</string>
-    <string name="main_activity__available_version_loading">Laden…</string>
     <string name="background_notification__text">Bitte melden Sie diesen Fehler. Klicken Sie auf diese Benachrichtigung, um den Fehlerbericht anzuzeigen.</string>
     <string name="background_notification__title">Hintergrundprüfung auf Updates ist fehlgeschlagen</string>
     <string name="brave__description">Der Brave Web Browser ist Ihr privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert! \n\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass Sie mit Anzeigen überladen oder mit Malware und Popups verseucht werden.</string>
@@ -136,6 +135,7 @@
 \n
 \nVerfolgen Sie Ihre Firefox-Passwörter sicher und greifen Sie überall darauf zu Schnelles Öffnen einer beliebigen Website aus der Anwendung heraus, um in Ihre Konten zu gelangen.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Laden…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
     <string name="main_activity__no_unmetered_network">Kein ungebremstes Netz</string>
     <string name="main_activity__subtitle">Aktualisierungsprogramm für datenschutzfreundliche Browser</string>

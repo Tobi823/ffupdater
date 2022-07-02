@@ -30,7 +30,6 @@
     <string name="application_successfully_installed">Aplicación exitosamente instalada</string>
     <string name="available_version">Disponible: %1$s</string>
     <string name="available_version_error"><u>ERROR</u></string>
-    <string name="main_activity__available_version_loading">Cargando…</string>
     <string name="background_notification__text">Por favor, reporte este error. Haga clic para ver el reporte de error.</string>
     <string name="background_notification__title">Falló la comprobación de actualizaciones en segundo plano</string>
     <string name="brave__description">Navegue el internet en privado, ¡gratis! La aplicación Navegador web privado Brave es su navegador rápido, gratis y seguro con bloqueador de anuncios y ventanas emergentes. Navegue y busque en Internet de forma privada sin ser rastreado por los anunciantes, el malware y las ventanas emergentes.</string>
@@ -148,6 +147,7 @@
 \n
 \nSiga de forma segura sus contraseñas de Firefox y acceda a ellas en cualquier lugar. Abra rápidamente cualquier sitio web desde la aplicación para entrar a cuentas.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Cargando…</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Límite de solicitudes de GitHub-API superado. Inténtelo de nuevo en la próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">Ninguna red no medida</string>
     <string name="main_activity__subtitle">Actualice sus navegadores desde la fuente oficial</string>

@@ -31,7 +31,6 @@
     <string name="application_successfully_installed">Приложението е успешно инсталирано</string>
     <string name="available_version">Налично: %1$s</string>
     <string name="available_version_error">"<u>ГРЕШКА</u>"</string>
-    <string name="main_activity__available_version_loading">Зареждане…</string>
     <string name="background_notification__text">Докладвайте за тази грешка. Докоснете, за да видите доклада.</string>
     <string name="background_notification__title">Неуспешна проверка за обновяване във фонов режим</string>
     <string name="brave__description">Разглеждайте интернет поверително и безплатно! Приложението поверителен четец на Brave е вашият бърз, безплатен и безопасен личен мрежов четец със спиране на реклами и изскачащи прозорци. Разглеждайте и търсете в интернет в поверителен режим, без да бъдете следени от рекламодатели, зловреден софтуер и изскачащи прозорци.</string>
@@ -74,6 +73,10 @@
     <string name="download_running_notification__message">Изтегля се обновяване за %1$s (%2$s).</string>
     <string name="download_running_notification__title">Изтегляне на обновяване</string>
     <string name="download_the_app">изтегляне на приложение</string>
+    <string name="eol_apps_notification__channel_description">Категория известия за наличие на изведени от употреба приложения.</string>
+    <string name="eol_apps_notification__channel_name">Известие за наличие на изведено от употреба приложение</string>
+    <string name="eol_apps_notification__message">Имате изведени от употреба приложения, които не бива да ползвате. Докоснете за детайли.</string>
+    <string name="eol_apps_notification__title">Инсталирано е изведено от употреба приложение</string>
     <string name="error_notification__channel_description">Категория известия за грешки при проверката за обновяване във фонов режим.</string>
     <string name="error_notification__channel_name">Известие за грешка при проверка за обновяване във фонов режим</string>
     <string name="firefox_beta__description">Четецът Firefox за Андроид е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
@@ -93,6 +96,7 @@
     <string name="firefox_release__description">Четецът Firefox за Андроид е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Firefox по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Firefox получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
     <string name="firefox_release__title">Четецът Firefox</string>
     <string name="firefox_release__warning">- Подобрена версия на Firefox е налична в F-Droid под името Fennec F-Droid.</string>
+    <string name="generic_eol_reason__browser_to_old">Мрежовият четец не е получавал обновяване дълго време, и за това ви препоръчваме временно да използвате друг. Ако се появи обновяване, предупреждението ще се скрие.</string>
     <string name="go_back">Назад</string>
     <string name="iceraven__description">Определено не е произведено от Мозила!
 \n
@@ -155,6 +159,7 @@
 \nНадежден достъп и управление на паролите ви от Firefox. Бързо отваряйте страници от приложението и влизайте в профилите си.</string>
     <string name="lockwise__eol_reason">Мозила е спряла поддръжката през декември 2021 г. Изберете друго приложение за пазене на пароли.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Зареждане…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превишено е ограничение на GitHub-API. Опитайте отново след час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Няма мрежи без отчитане</string>
     <string name="main_activity__subtitle">Приложение за обновяване на поверителни четци</string>
@@ -251,9 +256,4 @@
     <string name="vivaldi__title">Четецът Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi е само частично с отворен код.
 \n- Освен това е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
-    <string name="eol_apps_notification__channel_description">Категория известия за наличие на изведени от употреба приложения.</string>
-    <string name="eol_apps_notification__message">Имате изведени от употреба приложения, които не бива да ползвате. Докоснете за детайли.</string>
-    <string name="eol_apps_notification__channel_name">Известие за наличие на изведено от употреба приложение</string>
-    <string name="eol_apps_notification__title">Инсталирано е изведено от употреба приложение</string>
-    <string name="generic_eol_reason__browser_to_old">Мрежовият четец не е получавал обновяване дълго време, и за това ви препоръчваме временно да използвате друг. Ако се появи обновяване, предупреждението ще се скрие.</string>
 </resources>

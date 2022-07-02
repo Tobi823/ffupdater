@@ -46,7 +46,6 @@
     <string name="application_successfully_installed">Приложение успешно установлено</string>
     <string name="available_version">Доступен: %1$s</string>
     <string name="available_version_error">"<u>ОШИБКА</u>"</string>
-    <string name="main_activity__available_version_loading">Загрузка…</string>
     <string name="background_notification__text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
     <string name="background_notification__title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
@@ -152,6 +151,7 @@
 \n
 \nНадежно отслеживайте свои пароли Firefox и получайте доступ к ним в любом месте. Быстро откройте любой сайт из приложения, чтобы попасть в свои учетные записи.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Загрузка…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превышен лимит GitHub-API. Повторите попытку через час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Отсутствие сети без оплаты</string>
     <string name="main_activity__subtitle">Программа для обновления браузеров, уважающих конфиденциальность</string>

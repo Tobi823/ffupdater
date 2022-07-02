@@ -9,7 +9,6 @@
     <string name="application_successfully_installed">Installert</string>
     <string name="available_version">Tilgjengelig: %1$s</string>
     <string name="available_version_error"><u>FEIL</u></string>
-    <string name="main_activity__available_version_loading">Laster inn …</string>
     <string name="background_notification__text">Innrapporter denne feilen. Klikk for å vise feilrapporten.</string>
     <string name="background_notification__title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
     <string name="brave__description">Mer privat surfing, gratis. Har blokkering av reklame og oppsprett. Søk på Internett uten at reklameselskap, skadevare og oppsprett sporer deg.</string>
@@ -89,6 +88,7 @@
     <string name="installed_application_is_verified">Det installerte programmet er bekreftet</string>
     <string name="installed_version">Installert: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Laster inn …</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Grense for GitHub-API overskredet. Prøv igjen om en time.</u></string>
     <string name="main_activity__subtitle">Oppgrader dine Mozilla-nettlesere</string>
     <string name="main_activity__temporary_network_issue"><u>Midlertidig nettverksproblem. Prøv igjen senere.</u></string>

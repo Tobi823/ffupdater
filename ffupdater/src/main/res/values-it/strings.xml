@@ -31,7 +31,6 @@
     <string name="application_successfully_installed">Applicazione installata con successo</string>
     <string name="available_version">Disponibile: %1$s</string>
     <string name="available_version_error">"<u>ERRORE</u>"</string>
-    <string name="main_activity__available_version_loading">Caricamento…</string>
     <string name="background_notification__text">Si prega di segnalare questo errore. Clicca per visualizzare il rapporto di errore.</string>
     <string name="background_notification__title">Verifica aggiornamenti in background fallita</string>
     <string name="brave__description">Naviga su internet privatamente, gratis! Brave Private Browser App è il tuo browser web privato, veloce, gratuito e sicuro con blocco di annunci e pop-up. Naviga e cerca su internet privatamente, senza essere tracciato da inserzionisti, malware e pop-up.</string>
@@ -70,6 +69,10 @@
     <string name="download_running_notification__message">Scarica aggiornamento per %1$s (%2$s).</string>
     <string name="download_running_notification__title">Scaricare gli aggiornamenti delle app</string>
     <string name="download_the_app">scarica l\'app</string>
+    <string name="eol_apps_notification__channel_description">Canale di notifica per avvisi su app obsolete.</string>
+    <string name="eol_apps_notification__channel_name">Notifica per app obsolete</string>
+    <string name="eol_apps_notification__message">Hai app obsolete che non dovrebbero essere più usate. Clicca per maggiori informazioni.</string>
+    <string name="eol_apps_notification__title">App obsolete installate</string>
     <string name="error_notification__channel_description">Mostra errori della verifica degli aggiornamenti in sfondo</string>
     <string name="error_notification__channel_name">Errori in sfondo</string>
     <string name="firefox_beta__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
@@ -85,6 +88,7 @@
     <string name="firefox_release__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="firefox_release__warning">- Una versione migliorata di Firefox è disponibile anche su F-Droid con il nome Fennec F-Droid.</string>
+    <string name="generic_eol_reason__browser_to_old">Il browser non è stato aggiornato per molto tempo, quindi consiglio di utilizzare temporaneamente un altro browser. Quando gli sviluppatori rilasciano un nuovo aggiornamento, rimuoverò questo avviso.</string>
     <string name="go_back">Vai indietro</string>
     <string name="iceraven__description">Sicuramente non offerto da Mozilla! \n\nIceraven Browser è un browser per Android, basato sulla versione Fenix di Mozilla Firefox, GeckoView e Mozilla Android Components. \n\nIl nostro obiettivo è di essere un fork vicino al nuovo Firefox per Android che cerca di fornire agli utenti più opzioni, più opportunità di personalizzazione (tra cui una larga collezione di estensioni) e più informazioni sulle pagine che visitano e in che modo i loro browser interagiscono con quelle pagine.</string>
     <string name="iceraven__title">Iceraven Browser</string>
@@ -143,6 +147,7 @@
 \nTraccia in modo sicuro le tue password di Firefox e accedi a esse ovunque. Apri rapidamente qualsiasi sito web dall\'app per entrare nei tuoi account.</string>
     <string name="lockwise__eol_reason">Mozilla ha abbandonato il supporto a dicembre 2021. Si prega di passare a un altro gestore di password.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Caricamento…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Limite di GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nessuna rete non misurata</string>
     <string name="main_activity__subtitle">Aggiorna i browser che rispettano la tua privacy</string>
@@ -235,9 +240,4 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi è open source solo parzialmente.
 \n- Inoltre usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
-    <string name="eol_apps_notification__channel_name">Notifica per app obsolete</string>
-    <string name="eol_apps_notification__message">Hai app obsolete che non dovrebbero essere più usate. Clicca per maggiori informazioni.</string>
-    <string name="generic_eol_reason__browser_to_old">Il browser non è stato aggiornato per molto tempo, quindi consiglio di utilizzare temporaneamente un altro browser. Quando gli sviluppatori rilasciano un nuovo aggiornamento, rimuoverò questo avviso.</string>
-    <string name="eol_apps_notification__title">App obsolete installate</string>
-    <string name="eol_apps_notification__channel_description">Canale di notifica per avvisi su app obsolete.</string>
 </resources>

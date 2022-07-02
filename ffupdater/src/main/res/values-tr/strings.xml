@@ -31,7 +31,6 @@
     <string name="application_successfully_installed">Uygulama başarıyla kuruldu</string>
     <string name="available_version">Kullanılabilir: %1$s</string>
     <string name="available_version_error">"<u>HATA</u>"</string>
-    <string name="main_activity__available_version_loading">Yükleniyor…</string>
     <string name="background_notification__text">Lütfen bu hatayı bildirin. Hata raporunu görüntülemek için tıklayın.</string>
     <string name="background_notification__title">Arka plan güncelleme denetimi başarısız oldu</string>
     <string name="brave__description">İnternette ücretsiz olarak gizli bir şekilde gezinin! Brave Gizli Tarayıcı uygulaması, reklam engelleyicisi ve açılır pencere engelleyicisi ile hızlı, özel, güvenli ve ücretsiz bir web tarayıcısıdır. Reklamlar, kötü amaçlı yazılımlar ve açılır pencereler tarafından izlenmeden internette gizli olarak gezinin ve arama yapın.</string>
@@ -74,6 +73,10 @@
     <string name="download_running_notification__message">%1$s (%2$s) için güncelleme indiriliyor.</string>
     <string name="download_running_notification__title">Uygulama güncellemeleri indiriliyor</string>
     <string name="download_the_app">uygulamayı indir</string>
+    <string name="eol_apps_notification__channel_description">Güncel olmayan uygulamalarla ilgili uyarılar için bildirim kanalı.</string>
+    <string name="eol_apps_notification__channel_name">Güncel olmayan uygulamalar bildirimi</string>
+    <string name="eol_apps_notification__message">Artık kullanılmaması gereken güncel olmayan uygulamalarınız var. Daha fazla bilgi için tıklayın.</string>
+    <string name="eol_apps_notification__title">Güncel olmayan uygulamalar kurulu</string>
     <string name="error_notification__channel_description">Arka plan güncelleme denetleyicisinin hatalarını göster</string>
     <string name="error_notification__channel_name">Arka plan hataları</string>
     <string name="firefox_beta__description">Android için Firefox tarayıcı, ışık hızında sayfa yükleme ve gizliliğinizi kolayca koruma olanağı sunuyor. Gelişmiş İzlenme Koruması, gizliliğinizi ihlal eden ve sayfalarınızı yavaşlatan 2.000\'den fazla çevrimiçi takipçiyi otomatik olarak engelliyor. Ayrıca Firefox tarayıcı, daha verimli ve daha hızlı kullanım sağlayan yeni ve sade bir tasarım sunuyor. Üstelik Firefox, yerleşik akıllı gezinti özellikleriyle gizliliğinizi, parolalarınızı ve yer imlerinizi gittiğiniz her yere güvenle taşıyor.</string>
@@ -93,6 +96,7 @@
     <string name="firefox_release__description">Android için Firefox tarayıcı, ışık hızında sayfa yükleme ve gizliliğinizi kolayca koruma olanağı sunuyor. Gelişmiş İzlenme Koruması, gizliliğinizi ihlal eden ve sayfalarınızı yavaşlatan 2.000\'den fazla çevrimiçi takipçiyi otomatik olarak engelliyor. Ayrıca Firefox tarayıcı, daha verimli ve daha hızlı kullanım sağlayan yeni ve sade bir tasarım sunuyor. Üstelik Firefox, yerleşik akıllı gezinti özellikleriyle gizliliğinizi, parolalarınızı ve yer imlerinizi gittiğiniz her yere güvenle taşıyor.</string>
     <string name="firefox_release__title">Firefox Tarayıcı</string>
     <string name="firefox_release__warning">- F-Droid\'de Fennec F-Droid adı altında Firefox\'un iyileştirilmiş bir sürümü de bulunmakdır.</string>
+    <string name="generic_eol_reason__browser_to_old">Tarayıcı uzun süredir güncellenmedi, bu nedenle geçici olarak başka bir tarayıcı kullanmanızı tavsiye ederim. Geliştiriciler yeni bir güncelleme yayınladığında, bu uyarıyı kaldıracağım.</string>
     <string name="go_back">Geri git</string>
     <string name="iceraven__description">Kesinlikle Mozilla tarafından size getirilmedi!
 \n
@@ -155,6 +159,7 @@
 \nFirefox parolalarınızı güvenle takip edin ve onlara her yerden erişin. Hesaplarınıza girmek için uygulamadan herhangi bir web sitesini hızla açın.</string>
     <string name="lockwise__eol_reason">Mozilla, Aralık 2021\'de desteği bıraktı. Lütfen başka bir parola yöneticisine geçin.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Yükleniyor…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u>"</string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>
     <string name="main_activity__subtitle">Gizlilik dostu tarayıcılar için bir güncelleyici</string>
@@ -253,9 +258,4 @@
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
     <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır.
 \n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
-    <string name="eol_apps_notification__message">Artık kullanılmaması gereken güncel olmayan uygulamalarınız var. Daha fazla bilgi için tıklayın.</string>
-    <string name="eol_apps_notification__channel_description">Güncel olmayan uygulamalarla ilgili uyarılar için bildirim kanalı.</string>
-    <string name="eol_apps_notification__title">Güncel olmayan uygulamalar kurulu</string>
-    <string name="generic_eol_reason__browser_to_old">Tarayıcı uzun süredir güncellenmedi, bu nedenle geçici olarak başka bir tarayıcı kullanmanızı tavsiye ederim. Geliştiriciler yeni bir güncelleme yayınladığında, bu uyarıyı kaldıracağım.</string>
-    <string name="eol_apps_notification__channel_name">Güncel olmayan uygulamalar bildirimi</string>
 </resources>
