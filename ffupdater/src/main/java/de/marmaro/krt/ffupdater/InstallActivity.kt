@@ -343,7 +343,7 @@ class InstallActivity : AppCompatActivity() {
 
         if (result.errorException != null) {
             findViewById<TextView>(R.id.installerFailedReason).setOnClickListener {
-                val description = getString(crash_report___explain_text__install_activity_install_file)
+                val description = getString(crash_report__explain_text__install_activity_install_file)
                 val intent = CrashReportActivity.createIntent(this, result.errorException, description)
                 startActivity(intent)
             }
@@ -364,7 +364,7 @@ class InstallActivity : AppCompatActivity() {
         setText(R.id.downloadFileFailedUrl, downloadUrl)
 
         findViewById<TextView>(R.id.downloadFileFailedShowException).setOnClickListener {
-            val description = getString(crash_report___explain_text__install_activity_download_file)
+            val description = getString(crash_report__explain_text__install_activity_download_file)
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }

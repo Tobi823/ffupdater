@@ -33,8 +33,8 @@
     <string name="bromite__warning">- Bromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="bromite_systemwebview__description">The SystemWebView package contains the core browser/rendering engine of Bromite and its same features. It offers the possibility to replace the default browser component for the whole Android system.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="crash_report___explain_text__install_activity_download_file">The following error occurred during download. If this error occurs frequently, feel free to submit the crash report to notabug.org, GitHub or GitLab.</string>
-    <string name="crash_report___explain_text__install_activity_install_file">This error occurred during installation. If this error occurs frequently, feel free to submit the crash report to notabug.org, GitHub or GitLab.</string>
+    <string name="crash_report__explain_text__install_activity_download_file">The following error occurred during download. If this error occurs frequently, feel free to submit the crash report to notabug.org, GitHub or GitLab.</string>
+    <string name="crash_report__explain_text__install_activity_install_file">This error occurred during installation. If this error occurs frequently, feel free to submit the crash report to notabug.org, GitHub or GitLab.</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copy crash report to clipboard</string>
     <string name="crash_report__explain_text__install_activity_fetching_url">This error occurred when the download metadata was fetched. If this error occurs frequently, feel free to submit the crash report to notabug.org, GitHub or GitLab.</string>
     <string name="crash_report__explain_text__main_activity_update_check">This error occurred when checking for updates in the main view. If this error occurs frequently, feel free to submit the crash report to notabug.org, GitHub or GitLab.</string>
