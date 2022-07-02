@@ -116,11 +116,11 @@
     <string name="installation_error_notification__channel_description">Benachrichtigungskanal für fehlgeschlagene %1$s-Updates.</string>
     <string name="installation_error_notification__channel_name">%1$s Benachrichtigung über Aktualisierungsfehler</string>
     <string name="installation_error_notification__message">Fehler (%1$d): %2$s</string>
-    <string name="installation_error_notification__title">%1$s konnte nicht aktualisiert werden.</string>
+    <string name="installation_error_notification__title">%1$s konnte nicht aktualisiert werden</string>
     <string name="installation_success_notification__channel_description">Benachrichtigungskanal für erfolgreiche %1$s Updates.</string>
     <string name="installation_success_notification__channel_name">%1$s Benachrichtigung über erfolgreiche Aktualisierung</string>
     <string name="installation_success_notification__message">Die App wurde erfolgreich im Hintergrund aktualisiert.</string>
-    <string name="installation_success_notification__title">%1$s wurde aktualisiert.</string>
+    <string name="installation_success_notification__title">%1$s wurde aktualisiert</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
     <string name="installed_application_is_verified">Installierte Anwendung ist verifiziert</string>
     <string name="installed_version">Installiert: %1$s</string>
@@ -222,7 +222,7 @@
     <string name="update_notification__channel_description">Benachrichtigungskanal für verfügbare %1$s Updates.</string>
     <string name="update_notification__channel_name">Update-Benachrichtigung für %1$s</string>
     <string name="update_notification__text">Hier klicken, um das Update zu installieren</string>
-    <string name="update_notification__title">Update für "%1$s" verfügbar</string>
+    <string name="update_notification__title">Update für %1$s verfügbar</string>
     <string name="vivaldi__description">Vivaldi ist ein privater Browser mit einzigartigen Anpassungsmöglichkeiten. Es bietet viele Funktionen, wie z. B. Werbe- und Trackerblocker (standardmäßig deaktiviert), Webseitenübersetzung. Notizen und Screenshots helfen, Ihre Arbeit zu beschleunigen. Die Anpassung der Tabs, der Designthemen und des Aussehens verleihen dem System Persönlichkeit. Laden Sie Vivaldi kostenlos herunter surfen Sie mit Vergnügen im Internet.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen.
