@@ -119,7 +119,7 @@
     <string name="installation_error_notification__title">%1$s konnte nicht aktualisiert werden</string>
     <string name="installation_success_notification__channel_description">Benachrichtigungskanal für erfolgreiche %1$s Updates.</string>
     <string name="installation_success_notification__channel_name">%1$s Benachrichtigung über erfolgreiche Aktualisierung</string>
-    <string name="installation_success_notification__message">Die App wurde erfolgreich im Hintergrund aktualisiert.</string>
+    <string name="installation_success_notification__message">Die App wurde im Hintergrund aktualisiert.</string>
     <string name="installation_success_notification__title">%1$s wurde aktualisiert</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
     <string name="installed_application_is_verified">Installierte Anwendung ist verifiziert</string>
@@ -161,8 +161,8 @@
     <string name="session_installer__status_failure_invalid">Der Vorgang ist fehlgeschlagen, weil eine oder mehrere der APKs ungültig waren. Sie könnten z. B. missgebildet, beschädigt, falsch signiert, nicht übereinstimmend usw. sein.</string>
     <string name="session_installer__status_failure_storage">Der Vorgang ist aufgrund von Speicherproblemen fehlgeschlagen. Beispielsweise kann der Speicherplatz auf dem Gerät knapp werden, oder es sind keine externen Medien verfügbar. Der Benutzer kann möglicherweise helfen, Speicherplatz freizugeben oder andere externe Medien einzulegen.</string>
     <string name="settings__activity_label">Einstellungen</string>
-    <string name="settings__b_f__delete_cache_if_install_failed">Lösche die heruntergeladene Datei, wenn die Installation nicht erfolgreich war</string>
-    <string name="settings__b_f__delete_cache_if_install_successful">Lösche das heruntergeladene Update, wenn die Installation erfolgreich war</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Lösche die heruntergeladene Datei, wenn die Installation nicht erfolgreich war.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Lösche das heruntergeladene Update, wenn die Installation erfolgreich war.</string>
     <string name="settings__background__download__enabled__summary">Wenn ein Update gefunden wird, wird es heruntergeladen und für später zwischengespeichert.</string>
     <string name="settings__background__download__enabled__title">Updates herunterladen</string>
     <string name="settings__background__download__metered__summary">Nicht empfohlen für Benutzer mit begrenzten Datenvolumen.</string>
@@ -178,7 +178,7 @@
     <string name="settings__background_category__summary">Einstellungen, wenn die App im Hintergrund arbeitet.</string>
     <string name="settings__background_category__title">Hintergrund</string>
     <string name="settings__foreground__download__metered__title">Updates in getakteten Netzen herunterladen</string>
-    <string name="settings__foreground__hide_warning_buttons">Blende Warnungen für installierten Apps aus</string>
+    <string name="settings__foreground__hide_warning_buttons">Blende Warnungen für installierten Apps aus.</string>
     <string name="settings__foreground__theme_preference__summary">Wechsle zwischen Dark und Light Theme</string>
     <string name="settings__foreground__theme_preference__title">Theme auswählen</string>
     <string name="settings__foreground__update_check__metered__summary">Erlauben Sie Updateprüfungen in gebührenpflichtigen Netzen wie mobilen Daten.</string>
@@ -227,4 +227,16 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen.
 \n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
+    <string name="app_card__app_warning_button_description">Zeige Warnungen dieser App an</string>
+    <string name="lockwise__eol_reason">Mozilla unterstützt die App seit Dezember 2021 nicht mehr. Bitte wechsle zu einem anderen Passwortspeicher.</string>
+    <string name="generic_eol_reason__browser_to_old">Dieser Browser wurde eine längere Zeit nicht mehr aktualisiert. Daher empfehle ich, fürs Erste einen anderen Browser zu verwenden. Wenn die Entwickler eine neue Version veröffentlichen, dann werde ich diese Warnung entfernen.</string>
+    <string name="download_error_notification__channel_description">Zeige wenn Downloads von Updates im Hintergrund fehlschlagen.</string>
+    <string name="download_error_notification__channel_name">Benachrichtigungen über Downloadfehler im Hintergrund</string>
+    <string name="download_error_notification__description">Der Hintergrunddownload des Updates von %1$s ist fehlgeschlagen. Wenn dieser Fehler häufiger auftritt, kannst du auf notabug.org, GitHub oder GitLab melden.</string>
+    <string name="eol_apps_notification__channel_description">Benachrichtigungskanal für Warnungen vor veralteten Apps.</string>
+    <string name="eol_apps_notification__channel_name">Benachrichtigung bei veralteten Apps</string>
+    <string name="download_error_notification__title">Hintergrunddownload des Updates ist fehlgeschlagen</string>
+    <string name="eol_apps_notification__title">Veraltete Apps installiert</string>
+    <string name="download_error_notification__message">Der Hintergrunddownload des Updates von %1$s ist fehlgeschlagen. Wenn dieser Fehler häufiger auftritt, klicke hier um den Fehlerbericht zu sehen.</string>
+    <string name="eol_apps_notification__message">Du hast veraltete Apps, die nicht mehr verwendet werden sollten. Klicke hier, um mehr zu erfahren.</string>
 </resources>
