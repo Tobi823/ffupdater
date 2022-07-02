@@ -11,8 +11,7 @@
     <string name="notification__error__title">Updateprüfung ist fehlgeschlagen</string>
     <string name="brave__description">Der Brave Web Browser ist dein privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert! \n \nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass du mit Anzeigen überladen oder mit Malware und Popups verseucht wirst.</string>
     <string name="brave__title">Brave Browser</string>
-    <string name="brave__warning">- Brave nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Render-Engine.
-\n- Durch seinen Basic Attention Token BAT auf der Ethereum-Blockchain hat das Projekt Verbindungen zur Kryptowährung. Blockchains haben viele Probleme und sollten meiner Meinung nach vermieden werden.</string>
+    <string name="brave__warning">- Brave nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Render-Engine. \n- Durch seinen Basic Attention Token BAT auf der Ethereum-Blockchain hat das Projekt Verbindungen zur Kryptowährung. Blockchains haben viele Probleme und sollten meiner Meinung nach vermieden werden.</string>
     <string name="brave_beta__description">Willkommen bei Brave Beta für Android! \nTeste die neuesten Funktionen und gib frühzeitig Feedback: https://brave.com/msupport \nDu kannst Brave Beta neben deiner aktuellen Version von Brave für Android installieren.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Willkommen bei Brave Nightly (Developer) für Android! \nTeste die neuesten Funktionen und gib frühzeitig Feedback: https://brave.com/msupport \nDu kannst Brave Nightly neben deiner aktuellen Version von Brave für Android installieren.</string>
@@ -46,9 +45,7 @@
     <string name="iceraven__description">Definitiv nicht von Mozilla für dich entwickelt! \n \nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert. \n \nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="iceraven__warning">- Der Maintainer gibt keine Garantien oder Gewährleistungen für Sicherheit oder Updates oder gar Stabilität.\n - Das Projekt braucht länger als üblich, um Sicherheitsaktualisierungen bereitzustellen.</string>
-    <string name="infobox">Dies ist ein Aktualisierungsprogramm für datenschutzfreundliche Browser. Klicke auf den Plus-Button, um neue Apps zu installieren. Wische nach unten, um eine Prüfung auf neue Updates zu erzwingen. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates, die dann heruntergeladen und eventuell auch installiert werden. Klicke auf das Zahnrad, um das Verhalten in den Einstellungen anzupassen.
-\n
-\nLetzte erfolgreiche Überprüfung auf Updates im Hintergrund: %1$s</string>
+    <string name="infobox">Dies ist ein Aktualisierungsprogramm für datenschutzfreundliche Browser. Klicke auf den Plus-Button, um neue Apps zu installieren. Wische nach unten, um eine Prüfung auf neue Updates zu erzwingen. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates, die dann heruntergeladen und eventuell auch installiert werden. Klicke auf das Zahnrad, um das Verhalten in den Einstellungen anzupassen. \n \nLetzte erfolgreiche Überprüfung auf Updates im Hintergrund: %1$s</string>
     <string name="app_card__information_about_the_app">Information über die Applikation</string>
     <string name="download_activity__delete_cache_button_text">Cache leeren</string>
     <string name="download_activity__delete_cache_explanation">Wenn du glaubst, dass FFUpdater ein fehlerhaftes App-Update heruntergeladen hat, oder wenn du Speicherplatz sparen möchtest, dann klicke auf den Button, um die Datei zu löschen.</string>
@@ -162,8 +159,7 @@
     <string name="update_notification__title">Update für %1$s verfügbar</string>
     <string name="vivaldi__description">Vivaldi ist ein privater Browser mit einzigartigen Anpassungsmöglichkeiten. Es bietet viele Funktionen, wie z. B. Werbe- und Trackerblocker (standardmäßig deaktiviert), Webseitenübersetzung. Notizen und Screenshots helfen, deine Arbeit zu beschleunigen. Die Anpassung der Tabs, dunkle/helle Designs und Layoutoptionen helfen dir, den Browser nach deinen Wünschen zu gestalten.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen.
-\n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
+    <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen. \n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
     <string name="notification__eol_apps__channel_description">Benachrichtigungskanal für Warnungen vor veralteten Apps.</string>
     <string name="notification__eol_apps__channel_name">Benachrichtigung bei veralteten Apps</string>
     <string name="notification__eol_apps__title">Veraltete Apps installiert</string>
