@@ -1,19 +1,11 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
-import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer.Release
 import io.mockk.coEvery
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -26,32 +18,10 @@ import java.io.FileReader
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class KiwiIT {
-    @MockK
-    lateinit var context: Context
-
-    @MockK
-    lateinit var packageManager: PackageManager
-
-    @MockK
-    lateinit var apiConsumer: ApiConsumer
-
-    @MockK
-    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
-
-    val packageInfo = PackageInfo()
-    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
-
-
+class KiwiIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        every { context.packageManager } returns packageManager
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getString(R.string.available_version, any()) } returns "/"
-        every {
-            packageManager.getPackageInfo(MaintainedApp.KIWI.detail.packageName, any())
-        } returns packageInfo
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
+        setUp(MaintainedApp.KIWI)
     }
 
     companion object {
@@ -60,7 +30,7 @@ class KiwiIT {
         private const val DOWNLOAD_URL =
             "https://github.com/kiwibrowser/src.next/releases/download/2232087292"
         private const val EXPECTED_RUNNER_ID = "2232087292"
-        private val EXPECTED_RELEASE_TIMESTAMP = "2022-04-27T09:24:16Z"
+        private const val EXPECTED_RELEASE_TIMESTAMP = "2022-04-27T09:24:16Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(

@@ -1,19 +1,11 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
-import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import io.mockk.coEvery
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -26,43 +18,18 @@ import java.io.FileReader
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class BromiteIT {
-    @MockK
-    lateinit var context: Context
-
-    @MockK
-    lateinit var packageManager: PackageManager
-
-    @MockK
-    lateinit var apiConsumer: ApiConsumer
-
-    @MockK
-    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
-
-    val packageInfo = PackageInfo()
-    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
-
+class BromiteIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        every { context.packageManager } returns packageManager
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getString(R.string.available_version, any()) } returns "/"
-        every {
-            packageManager.getPackageInfo(
-                MaintainedApp.BROMITE.detail.packageName,
-                0
-            )
-        } returns packageInfo
+        setUp(MaintainedApp.BROMITE)
+
         coEvery {
-            apiConsumer.consumeAsync(
-                "https://api.github.com/repos/bromite/bromite/releases/latest",
-                GithubConsumer.Release::class
-            ).await()
+            val url = "https://api.github.com/repos/bromite/bromite/releases/latest"
+            apiConsumer.consumeAsync(url, GithubConsumer.Release::class).await()
         } returns Gson().fromJson(
             FileReader("$FOLDER_PATH/latest_contains_release_version.json"),
             GithubConsumer.Release::class.java
         )
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
     }
 
     companion object {

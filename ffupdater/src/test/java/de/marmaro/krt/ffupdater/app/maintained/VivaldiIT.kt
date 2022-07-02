@@ -1,17 +1,9 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
-import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import io.mockk.coEvery
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -24,38 +16,15 @@ import java.io.File
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class VivaldiIT {
-    @MockK
-    lateinit var context: Context
-
-    @MockK
-    lateinit var packageManager: PackageManager
-
-    @MockK
-    lateinit var apiConsumer: ApiConsumer
-
-    @MockK
-    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
-
-    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
-
-    private var packageInfo = PackageInfo()
-
+class VivaldiIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        every { context.packageManager } returns packageManager
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getString(R.string.available_version, any()) } returns "/"
-        every {
-            packageManager.getPackageInfo(MaintainedApp.VIVALDI.detail.packageName, any())
-        } returns packageInfo
+        setUp(MaintainedApp.VIVALDI)
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/Vivaldi/download.html"
         coEvery {
             apiConsumer.consumeAsync("https://vivaldi.com/download/", String::class).await()
         } returns File(path).readText()
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-
     }
 
     companion object {

@@ -1,18 +1,10 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
-import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer.Release
 import io.mockk.*
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -25,41 +17,17 @@ import java.io.FileReader
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class BraveIT {
-    @MockK
-    lateinit var context: Context
-
-    @MockK
-    lateinit var packageManager: PackageManager
-
-    @MockK
-    lateinit var apiConsumer: ApiConsumer
-
-    @MockK
-    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
-
-    val packageInfo = PackageInfo()
-    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
-
+class BraveIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        every { context.packageManager } returns packageManager
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getString(R.string.available_version, any()) } returns "/"
-        every {
-            packageManager.getPackageInfo(
-                MaintainedApp.BRAVE.detail.packageName,
-                any()
-            )
-        } returns packageInfo
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
+        setUp(MaintainedApp.BRAVE)
     }
 
     companion object {
         private const val API_URl = "https://api.github.com/repos/brave/brave-browser/releases"
         private const val DOWNLOAD_URL = "https://github.com/brave/brave-browser/releases/download"
         private const val EXPECTED_VERSION = "1.20.103"
-        private val EXPECTED_RELEASE_TIMESTAMP = "2021-02-10T11:30:45Z"
+        private const val EXPECTED_RELEASE_TIMESTAMP = "2021-02-10T11:30:45Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(

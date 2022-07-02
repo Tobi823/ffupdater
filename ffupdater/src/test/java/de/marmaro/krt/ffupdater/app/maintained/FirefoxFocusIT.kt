@@ -1,19 +1,11 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
-import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import io.mockk.coEvery
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions
@@ -26,46 +18,22 @@ import java.io.FileReader
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class FirefoxFocusIT {
-    @MockK
-    private lateinit var context: Context
-
-    @MockK
-    private lateinit var packageManager: PackageManager
-
-    @MockK
-    lateinit var apiConsumer: ApiConsumer
-
-    @MockK
-    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
-
-    private var packageInfo = PackageInfo()
-
-    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
-
+class FirefoxFocusIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        every { context.packageManager } returns packageManager
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        packageInfo.versionName = ""
-        every {
-            packageManager.getPackageInfo(MaintainedApp.FIREFOX_FOCUS.detail.packageName, any())
-        } returns packageInfo
-        every { context.getString(R.string.available_version, any()) } returns "/"
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
+        setUp(MaintainedApp.FIREFOX_FOCUS)
 
-        val url = "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest"
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/FirefoxFocus/latest.json"
         coEvery {
+            val url = "https://api.github.com/repos/mozilla-mobile/focus-android/releases/latest"
             apiConsumer.consumeAsync(url, GithubConsumer.Release::class).await()
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
     }
 
     companion object {
         private const val DOWNLOAD_URL = "https://github.com/mozilla-mobile/focus-android/releases/download"
         private const val EXPECTED_VERSION = "99.1.1"
-        private val EXPECTED_RELEASE_TIMESTAMP = "2022-03-31T05:06:42Z"
+        private const val EXPECTED_RELEASE_TIMESTAMP = "2022-03-31T05:06:42Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(

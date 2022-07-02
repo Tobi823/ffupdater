@@ -1,17 +1,9 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
-import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import io.mockk.coEvery
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -24,34 +16,10 @@ import java.io.File
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class FirefoxReleaseIT {
-    @MockK
-    private lateinit var context: Context
-
-    @MockK
-    private lateinit var packageManager: PackageManager
-
-    @MockK
-    lateinit var apiConsumer: ApiConsumer
-
-    @MockK
-    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
-
-    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
-
-    private var packageInfo = PackageInfo()
-
+class FirefoxReleaseIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        every { context.packageManager } returns packageManager
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        packageInfo.versionName = ""
-        every {
-            packageManager.getPackageInfo(MaintainedApp.FIREFOX_RELEASE.detail.packageName, any())
-        } returns packageInfo
-        every { context.getString(R.string.available_version, any()) } returns "/"
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
+        setUp(MaintainedApp.FIREFOX_RELEASE)
     }
 
     companion object {

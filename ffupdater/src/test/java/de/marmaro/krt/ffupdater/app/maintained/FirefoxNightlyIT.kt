@@ -1,19 +1,11 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
-import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import io.mockk.coEvery
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -27,44 +19,17 @@ import java.io.FileReader
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class FirefoxNightlyIT {
-    @MockK
-    private lateinit var context: Context
-
-    @MockK
-    private lateinit var packageManager: PackageManager
-
-    @MockK
-    lateinit var apiConsumer: ApiConsumer
-
-    @MockK
-    private lateinit var deviceAbiExtractor: DeviceAbiExtractor
-
-    private var packageInfo = PackageInfo()
-
-    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
-
+class FirefoxNightlyIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        every { context.packageManager } returns packageManager
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getString(R.string.available_version, any()) } returns "/"
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-
-        every {
-            packageManager.getPackageInfo(
-                MaintainedApp.FIREFOX_NIGHTLY.detail.packageName,
-                0
-            )
-        } returns packageInfo
+        setUp(MaintainedApp.FIREFOX_NIGHTLY)
     }
 
     companion object {
         private const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.nightly.latest"
         private const val EXPECTED_VERSION = "2021-05-06 17:02"
-        private val EXPECTED_RELEASE_TIMESTAMP = "2021-05-06T17:02:55.865Z"
+        private const val EXPECTED_RELEASE_TIMESTAMP = "2021-05-06T17:02:55.865Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(

@@ -1,17 +1,9 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
-import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.MaintainedApp
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import io.mockk.coEvery
-import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -21,33 +13,16 @@ import org.junit.jupiter.api.extension.ExtendWith
 import java.io.FileReader
 
 @ExtendWith(MockKExtension::class)
-class FFUpdaterIT {
-    @MockK
-    lateinit var context: Context
-
-    @MockK
-    lateinit var packageManager: PackageManager
-
-    @MockK
-    lateinit var apiConsumer: ApiConsumer
-
-    val packageInfo = PackageInfo()
-    private val sharedPreferences = SPMockBuilder().createSharedPreferences()
-
+class FFUpdaterIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        every { context.packageManager } returns packageManager
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getString(R.string.available_version, any()) } returns "/"
-        every {
-            packageManager.getPackageInfo(MaintainedApp.FFUPDATER.detail.packageName, any())
-        } returns packageInfo
+        setUp(MaintainedApp.FFUPDATER)
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/maintained/FFUpdater/latest.json"
         coEvery {
-            apiConsumer.consumeAsync("$API_URL/latest", GithubConsumer.Release::class).await()
+            val url = "$API_URL/latest"
+            apiConsumer.consumeAsync(url, GithubConsumer.Release::class).await()
         } returns Gson().fromJson(FileReader(path), GithubConsumer.Release::class.java)
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
     }
 
     companion object {
