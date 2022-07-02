@@ -1,4 +1,4 @@
-* 感谢109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername和metezd的改进。
-  翻译
+* 感谢 109247019824、AHOHNMYC、Oğuz Ersen、Artem、Hin Weisner、AbsurdUsername 和 metezd 的对翻译的
+  改进
 * 尝试修复后台下载更新失败时的崩溃问题
 * 增加隐藏警告按钮的选项
