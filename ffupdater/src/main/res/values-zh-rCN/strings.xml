@@ -68,7 +68,7 @@
     <string name="download_the_app">下载应用程序</string>
     <string name="error_notification__channel_description">显示后台更新检查器错误</string>
     <string name="error_notification__channel_name">后台错误</string>
-    <string name="firefox_beta__description">Firefox 浏览器 Android 天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且还有广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，安全与速度将在这个私密的移动浏览器中双全。</string>
+    <string name="firefox_beta__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且还有广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，安全与速度将在这个私密的移动浏览器中双全。</string>
     <string name="firefox_beta__title">Firefox for Android Beta（公测版）</string>
     <string name="firefox_beta__warning">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
     <string name="firefox_focus__description">这是 Firefox 的一个衍生修改版，旨在增强隐私。</string>
