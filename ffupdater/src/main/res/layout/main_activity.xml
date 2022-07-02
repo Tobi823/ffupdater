@@ -20,30 +20,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
             app:collapsedTitleTextAppearance="@style/main_activity__main_title_small"
+            app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginBottom="70dp"
             app:expandedTitleMarginStart="32dp"
             app:expandedTitleTextAppearance="@style/main_activity__main_title_big"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="32dp"
-                android:singleLine="true"
-                android:text="@string/main_activity__subtitle"
-                android:textAppearance="@style/main_activity__sub_title"
-                app:layout_collapseMode="parallax" />
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.DayNight" />
+                app:layout_collapseMode="parallax"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.DayNight"
+                app:title="@string/app_name" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="190dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/main_activity__subtitle"
+                android:textAppearance="@style/main_activity__sub_title"
+                app:layout_collapseMode="parallax" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -79,11 +79,11 @@
         android:layout_height="94dp"
         android:layout_gravity="end|center"
         android:layout_margin="10dp"
+        android:contentDescription="@string/install_new_app"
         android:visibility="visible"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="end|bottom"
-        app:srcCompat="@drawable/ic_add_black"
-        android:contentDescription="@string/install_new_app" />
+        app:srcCompat="@drawable/ic_add_black" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
