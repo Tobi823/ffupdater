@@ -174,7 +174,7 @@
     <string name="settings__background__update_check__excluded_apps__summary">Nützlich, wenn Sie eine App nicht aktualisieren und keine Aktualisierungsbenachrichtigungen für sie erhalten möchten.</string>
     <string name="settings__background__update_check__excluded_apps__title">Anwendungen von der Update-Prüfung ausschließen</string>
     <string name="settings__background__update_check__interval__title">Intervall der Aktualisierungsprüfung</string>
-    <string name="settings__background__update_check__metered__title">Aktualisierungskontrollen in gemessenen Netzen</string>
+    <string name="settings__background__update_check__metered__title">Updateprüfung in getakteten Netzen</string>
     <string name="settings__background_category__summary">Einstellungen, wenn die App im Hintergrund arbeitet und für den Benutzer unsichtbar ist.</string>
     <string name="settings__background_category__title">Hintergrund</string>
     <string name="settings__foreground__download__metered__summary">Nützlich für Nutzer mit begrenzten mobilen Daten.</string>
@@ -182,10 +182,10 @@
     <string name="settings__foreground__hide_warning_buttons">Blende den Button für Warnungen von installierten Apps aus.</string>
     <string name="settings__foreground__theme_preference__summary">Wechsle zwischen Dark und Light Theme</string>
     <string name="settings__foreground__theme_preference__title">Theme auswählen</string>
-    <string name="settings__foreground__update_check__metered__summary">Erlauben Sie Aktualisierungsprüfungen in gebührenpflichtigen Netzen wie mobilen Daten.</string>
-    <string name="settings__foreground__update_check__metered__title">Aktualisierungskontrollen in gemessenen Netzen</string>
-    <string name="settings__foreground_category__summary">Einstellungen, wenn die Benutzeroberfläche sichtbar ist.</string>
-    <string name="settings__foreground_category__title">Vorderseite</string>
+    <string name="settings__foreground__update_check__metered__summary">Erlauben Sie Updateprüfungen in gebührenpflichtigen Netzen wie mobilen Daten.</string>
+    <string name="settings__foreground__update_check__metered__title">Updateprüfung in getakteten Netzen</string>
+    <string name="settings__foreground_category__summary">Einstellungen, die in der Benutzeroberfläche sichtbar ist.</string>
+    <string name="settings__foreground_category__title">Vordergrund</string>
     <string name="settings__installer__native__summary">Alternative Installationsmethode, wenn die Session-Installationsmethode nicht auf deinem Smartphone funktioniert.</string>
     <string name="settings__installer__native__title">Native Installationsmethode</string>
     <string name="settings__installer__root__summary">Verwende Root-Rechte, um Apps ohne Benutzerinteraktion zu installieren oder zu aktualisieren. Dies benötigt ein gerootetes Smartphone.</string>
