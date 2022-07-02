@@ -138,7 +138,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
     <string name="main_activity__no_unmetered_network">Kein ungebremstes Netz</string>
-    <string name="main_activity__subtitle">Aktualisiere datenschutzfreundliche Browser</string>
+    <string name="main_activity__subtitle">Aktualisierungsprogramm für datenschutzfreundliche Browser</string>
     <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Später erneut versuchen.</u>"</string>
     <string name="manage_storage_activity__delete_button">Lösche zwischengespeicherte App-Updates.</string>
     <string name="manage_storage_activity__explanation">FFUpdater speichert bereits heruntergeladene App-Updates im Zwischenspeicher im Ordner \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nDies spart Bandbreite, wenn eine App nicht erfolgreich installiert oder aktualisiert wird. Außerdem wird der Cache benötigt, damit Updates, die im Hintergrund heruntergeladen wurden, später installiert werden können.\n\nWenn Sie sich entscheiden, diese App-Updates zu löschen, müssen Sie sie möglicherweise erneut herunterladen.</string>
