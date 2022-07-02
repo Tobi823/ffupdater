@@ -95,8 +95,8 @@
     <string name="install_activity__downloaded_application_is_not_verified">Heruntergeladene Anwendung ist NICHT verifiziert</string>
     <string name="install_activity__exception__show_button">"<u>Zeige den detaillierten Fehlerbericht an.</u>"</string>
     <string name="install_activity__external_storage_not_accessible">Externer Speicher ist nicht verfügbar - kann den Download nicht starten. Aktueller Status ist:</string>
-    <string name="install_activity__fetch_url_for_download">Abruf der Download-URL von %1$s</string>
-    <string name="install_activity__fetched_url_for_download_successfully">Download-URL von %1$s wurde abgerufen</string>
+    <string name="install_activity__fetch_url_for_download">Abruf der Metainformation von %1$s</string>
+    <string name="install_activity__fetched_url_for_download_successfully">Metainformationen von %1$s wurde abgerufen</string>
     <string name="install_activity__file_uri_exposed_toast">Der Dateipfad kann nicht an andere Apps weitergeleitet werden. Bitte öffne den Ordner selbst mit deinem bevorzugten Dateimanager.</string>
     <string name="install_activity__github_rate_limit_exceeded">Das Ratenlimit der GitHub-API ist überschritten. Bitte versuchen Sie den Download in der nächsten Stunde erneut.</string>
     <string name="install_activity__open_cache_explanation">Du kannst den Cache-Ordner öffnen, um die APK-Datei an einen Ort mit mehr freiem Speicherplatz zu kopieren. Leider können unter Android 11+ nur wenige Dateimanager auf diesen Ordner innerhalb von Android/data zugreifen.</string>
