@@ -60,8 +60,8 @@
     <string name="dialog_button__yes">Ja</string>
     <string name="download_running_notification__channel_description">Zeigt Status von Downloads von Updates im Hintergrund an.</string>
     <string name="download_running_notification__channel_name">Benachrichtigungen über Downloads im Hintergrund</string>
-    <string name="download_running_notification__message">Lade Update für %1$s herunter (%2$s).</string>
-    <string name="download_running_notification__title">Herunterladen von App-Updates</string>
+    <string name="download_running_notification__message">%1$s (%2$s).</string>
+    <string name="download_running_notification__title">Lade Update herunter</string>
     <string name="download_the_app">Applikation herunterladen</string>
     <string name="error_notification__channel_description">Fehler des Hintergrund-Updateprüfung anzeigen</string>
     <string name="error_notification__channel_name">Fehler im Hintergrund</string>

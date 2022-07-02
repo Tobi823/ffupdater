@@ -47,7 +47,7 @@
     <string name="device_too_old_dialog__title">Device is too old</string>
     <string name="dialog_button__do_not_install">No, don\'t install it</string>
     <string name="dialog_button__yes">Yes</string>
-    <string name="download_error_notification__channel_description">Shows when app downloads in the background fail.</string>
+    <string name="download_error_notification__channel_description">Shows when update downloads in the background fail.</string>
     <string name="download_error_notification__channel_name">Notification about download errors in the background</string>
     <string name="download_error_notification__description">The background download of the %1$s update failed. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab.</string>
     <string name="download_error_notification__message">The background download of the %1$s update failed. If this error occurs frequently, click here to view the error report.</string>
