@@ -186,7 +186,7 @@
     <string name="settings__foreground__update_check__metered__title">Updateprüfung in getakteten Netzen</string>
     <string name="settings__foreground_category__summary">Einstellungen, die in der Benutzeroberfläche sichtbar ist.</string>
     <string name="settings__foreground_category__title">Vordergrund</string>
-    <string name="settings__installer__native__summary">Alternative Installationsmethode, wenn die Session-Installationsmethode funktioniert.</string>
+    <string name="settings__installer__native__summary">Alternative Installationsmethode, wenn die Session-Installationsmethode nicht funktioniert.</string>
     <string name="settings__installer__native__title">Native Installationsmethode</string>
     <string name="settings__installer__root__summary">Nutze Root-Rechte, um Apps ohne Benutzerinteraktion zu installieren oder zu aktualisieren. Dies benötigt ein gerootetes Smartphone.</string>
     <string name="settings__installer__root__title">Root-Installationsmethode</string>
