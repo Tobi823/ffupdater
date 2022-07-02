@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.MaintainedApp.FIREFOX_BETA
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -47,20 +47,17 @@ class FirefoxBetaIT {
     fun setUp() {
         every { context.packageManager } returns packageManager
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        packageInfo.versionName = ""
-        every {
-            packageManager.getPackageInfo(MaintainedApp.FIREFOX_BETA.detail.packageName, any())
-        } returns packageInfo
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
-        every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
+        every { context.getString(R.string.available_version, any()) } returns "/"
+        packageInfo.versionName = ""
+        every { packageManager.getPackageInfo(FIREFOX_BETA.detail.packageName, any()) } returns packageInfo
     }
 
     companion object {
         private const val BASE_URL = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v2.fenix.beta.latest"
         private const val EXPECTED_VERSION = "91.0.0-beta.3"
-        private val EXPECTED_RELEASE_TIMESTAMP = "2021-07-22T13:29:07Z"
+        private const val EXPECTED_RELEASE_TIMESTAMP = "2021-07-22T13:29:07Z"
 
         @JvmStatic
         fun abisWithMetaData(): Stream<Arguments> = Stream.of(
