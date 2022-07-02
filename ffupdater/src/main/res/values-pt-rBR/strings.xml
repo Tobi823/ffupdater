@@ -173,7 +173,6 @@
     <string name="settings__background__update_check__metered__title">Atualização de verificações em redes dosadoras</string>
     <string name="settings__background_category__summary">Configurações quando o aplicativo está trabalhando em segundo plano e é invisível para o usuário.</string>
     <string name="settings__background_category__title">Antecedentes</string>
-    <string name="settings__foreground__download__metered__summary">Útil para usuários com dados móveis limitados.</string>
     <string name="settings__foreground__download__metered__title">Download de atualizações em redes dosadoras</string>
     <string name="settings__foreground__theme_preference__summary">Define o tema preferido</string>
     <string name="settings__foreground__theme_preference__title">Escolha o tema</string>

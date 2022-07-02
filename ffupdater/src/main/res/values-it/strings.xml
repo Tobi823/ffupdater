@@ -189,7 +189,6 @@
     <string name="settings__background__update_check__metered__title">Controlli di aggiornamento sulle reti a misurazione</string>
     <string name="settings__background_category__summary">Impostazioni quando l\'app lavora in background ed è invisibile all\'utente.</string>
     <string name="settings__background_category__title">Sfondo</string>
-    <string name="settings__foreground__download__metered__summary">Utile per gli utenti con dati mobili limitati.</string>
     <string name="settings__foreground__download__metered__title">Scarica gli aggiornamenti sulle reti a pagamento</string>
     <string name="settings__foreground__hide_warning_buttons">Nascondi il pulsante di avviso per le app installate.</string>
     <string name="settings__foreground__theme_preference__summary">Scegli tra il tema chiaro e scuro</string>

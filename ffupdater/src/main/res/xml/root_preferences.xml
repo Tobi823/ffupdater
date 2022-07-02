@@ -16,7 +16,6 @@
             app:dependency="foreground__update_check__metered"
             app:key="foreground__download__metered"
             app:singleLineTitle="false"
-            app:summary="@string/settings__foreground__download__metered__summary"
             app:title="@string/settings__foreground__download__metered__title" />
 
         <ListPreference

@@ -193,7 +193,6 @@
     <string name="settings__background__update_check__metered__title">Проверка обновлений в сетях с дозированной оплатой</string>
     <string name="settings__background_category__summary">Настройки, когда приложение работает в фоновом режиме и невидимо для пользователя.</string>
     <string name="settings__background_category__title">Справочная информация</string>
-    <string name="settings__foreground__download__metered__summary">Полезно для пользователей с ограниченным объемом мобильных данных.</string>
     <string name="settings__foreground__download__metered__title">Загрузка обновлений в сетях с дозированной оплатой</string>
     <string name="settings__foreground__hide_warning_buttons">Скрыть предупреждения для установленных приложений.</string>
     <string name="settings__foreground__theme_preference__summary">Выбор между светлой и тёмной темой</string>

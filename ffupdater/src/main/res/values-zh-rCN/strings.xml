@@ -197,7 +197,6 @@
     <string name="settings__background__update_check__metered__title">在按流量计费的网络中检查更新</string>
     <string name="settings__background_category__summary">当应用程序在后台运行并对用户不可见时的设置。</string>
     <string name="settings__background_category__title">后台</string>
-    <string name="settings__foreground__download__metered__summary">对移动数据流量有限的用户很有用。</string>
     <string name="settings__foreground__download__metered__title">在按流量计费的网络中下载更新</string>
     <string name="settings__foreground__hide_warning_buttons">隐藏已安装应用程序的警告按钮。</string>
     <string name="settings__foreground__theme_preference__summary">在浅色和深色主题之间进行选择</string>

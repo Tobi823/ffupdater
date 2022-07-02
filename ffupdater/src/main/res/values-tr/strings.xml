@@ -205,7 +205,6 @@
     <string name="settings__background__update_check__metered__title">Ölçülü ağlarda güncelleme denetimleri</string>
     <string name="settings__background_category__summary">Uygulamanın arka planda çalıştığı ve kullanıcı tarafından görülmediği ayarlar.</string>
     <string name="settings__background_category__title">Arka plan</string>
-    <string name="settings__foreground__download__metered__summary">Sınırlı mobil veriye sahip kullanıcılar için kullanışlıdır.</string>
     <string name="settings__foreground__download__metered__title">Ölçülü ağlarda güncellemeleri indir</string>
     <string name="settings__foreground__hide_warning_buttons">Kurulu uygulama için uyarı düğmesini gizle.</string>
     <string name="settings__foreground__theme_preference__summary">Açık ve koyu tema arasında seçim yapın</string>

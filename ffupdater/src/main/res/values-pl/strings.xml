@@ -143,7 +143,6 @@
     <string name="settings__background__update_check__metered__title">Kontrola aktualizacji w sieciach opomiarowanych</string>
     <string name="settings__background_category__summary">Ustawienia, gdy aplikacja działa w tle i jest niewidoczna dla użytkownika.</string>
     <string name="settings__background_category__title">Tło</string>
-    <string name="settings__foreground__download__metered__summary">Przydatne dla użytkowników z ograniczoną ilością danych komórkowych.</string>
     <string name="settings__foreground__download__metered__title">Pobieranie aktualizacji w sieciach z licznikiem</string>
     <string name="settings__foreground__theme_preference__summary">Wybierz pomiędzy jasny a ciemnym motywem</string>
     <string name="settings__foreground__theme_preference__title">Wybierz motyw</string>

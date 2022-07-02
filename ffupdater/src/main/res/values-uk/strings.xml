@@ -144,7 +144,6 @@
     <string name="settings__background__update_check__metered__title">Оновлення перевірок у лічених мережах</string>
     <string name="settings__background_category__summary">Налаштування, коли програма працює у фоновому режимі та невидима для користувача.</string>
     <string name="settings__background_category__title">Фон</string>
-    <string name="settings__foreground__download__metered__summary">Корисно для користувачів із обмеженим мобільним трафіком.</string>
     <string name="settings__foreground__download__metered__title">Завантажуйте оновлення в мережах із лічильником</string>
     <string name="settings__foreground__theme_preference__summary">Вибирайте світлу та темну тему</string>
     <string name="settings__foreground__theme_preference__title">Виберіть тему</string>

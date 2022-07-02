@@ -205,7 +205,6 @@
     <string name="settings__background__update_check__metered__title">Проверка за обновяване в мрежи с отчитане на трафика</string>
     <string name="settings__background_category__summary">Настройки на приложението, когато работи във фонов режим и е невидимо за потребителя.</string>
     <string name="settings__background_category__title">Работа във фонов режим</string>
-    <string name="settings__foreground__download__metered__summary">Полезно за потребители с ограничен обем мобилни данни.</string>
     <string name="settings__foreground__download__metered__title">Изтегляне на обновявания в мрежи с отчитане на трафика</string>
     <string name="settings__foreground__hide_warning_buttons">Скриване на предупреждението на инсталираните приложения</string>
     <string name="settings__foreground__theme_preference__summary">На разположение са светла и тъмна тема.</string>

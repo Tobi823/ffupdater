@@ -179,7 +179,6 @@
     <string name="settings__background__update_check__metered__title">Update checks on metered networks</string>
     <string name="settings__background_category__summary">Settings when the app is working in the background and is invisible to the user.</string>
     <string name="settings__background_category__title">Background</string>
-    <string name="settings__foreground__download__metered__summary">Useful for users with limited mobile data.</string>
     <string name="settings__foreground__download__metered__title">Download updates on metered networks</string>
     <string name="settings__foreground__hide_warning_buttons">Hide the warning button for installed app.</string>
     <string name="settings__foreground__theme_preference__summary">Choose between light and dark theme</string>

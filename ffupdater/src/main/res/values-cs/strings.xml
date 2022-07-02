@@ -149,7 +149,6 @@
     <string name="settings__background__update_check__metered__title">Kontrolovat aktualizace v měřených sítích</string>
     <string name="settings__background_category__summary">Nastavení, když aplikace pracuje na pozadí a je pro uživatele neviditelná.</string>
     <string name="settings__background_category__title">Pozadí</string>
-    <string name="settings__foreground__download__metered__summary">Užitečné pro uživatele s omezenými mobilními daty.</string>
     <string name="settings__foreground__download__metered__title">Stahovat aktualizace v měřených sítích</string>
     <string name="settings__foreground__theme_preference__summary">Vyberte si, zda preferujete světlý nebo tmavý motiv</string>
     <string name="settings__foreground__theme_preference__title">Motiv</string>

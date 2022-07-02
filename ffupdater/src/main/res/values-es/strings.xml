@@ -193,7 +193,6 @@
     <string name="settings__background__update_check__metered__title">Comprobaciones de actualizaciones en redes medidas</string>
     <string name="settings__background_category__summary">Ajustes cuando la aplicación está trabajando en segundo plano y es invisible para el usuario.</string>
     <string name="settings__background_category__title">Segundo Plano</string>
-    <string name="settings__foreground__download__metered__summary">Útil para usuarios con datos móviles limitados.</string>
     <string name="settings__foreground__download__metered__title">Descargar actualizaciones en redes medidas</string>
     <string name="settings__foreground__theme_preference__summary">Elegir entre tema claro y oscuro</string>
     <string name="settings__foreground__theme_preference__title">Elegir tema</string>

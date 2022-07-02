@@ -149,7 +149,6 @@
     <string name="settings__background__update_check__metered__title">Contrôles de mise à jour sur les réseaux de compteurs</string>
     <string name="settings__background_category__summary">Paramètres lorsque l\'application fonctionne en arrière-plan et est invisible pour l\'utilisateur.</string>
     <string name="settings__background_category__title">Contexte</string>
-    <string name="settings__foreground__download__metered__summary">Utile pour les utilisateurs dont les données mobiles sont limitées.</string>
     <string name="settings__foreground__download__metered__title">Télécharger les mises à jour sur les réseaux avec compteur</string>
     <string name="settings__foreground__theme_preference__summary">Choisissez entre un thème clair et un thème sombre</string>
     <string name="settings__foreground__theme_preference__title">Choisissez un thème</string>

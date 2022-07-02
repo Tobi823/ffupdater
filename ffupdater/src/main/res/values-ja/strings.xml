@@ -136,7 +136,6 @@
     <string name="settings__background__update_check__metered__title">従量制ネットワークでの更新チェック</string>
     <string name="settings__background_category__summary">アプリがバックグラウンドで動作し、ユーザーから見えない場合の設定。</string>
     <string name="settings__background_category__title">背景</string>
-    <string name="settings__foreground__download__metered__summary">モバイルデータの制限があるユーザーには便利です。</string>
     <string name="settings__foreground__download__metered__title">従量制のネットワークでアップデートをダウンロード</string>
     <string name="settings__foreground__theme_preference__summary">ダークテーマを使用するかライトテーマを使用するかを選択します</string>
     <string name="settings__foreground__theme_preference__title">テーマを選択</string>

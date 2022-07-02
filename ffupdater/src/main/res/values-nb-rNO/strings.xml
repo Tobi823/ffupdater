@@ -120,7 +120,6 @@
     <string name="settings__background__update_check__metered__title">Oppgraderingssjekker på kvotebaserte nettverk</string>
     <string name="settings__background_category__summary">Innstillinger når programmet jobber i bakgrunnen, usynlig for brukeren.</string>
     <string name="settings__background_category__title">Bakgrunn</string>
-    <string name="settings__foreground__download__metered__summary">Nyttig for brukere med begrenset mobildata.</string>
     <string name="settings__foreground__download__metered__title">Last ned oppgraderinger på kvotebaserte nettverk</string>
     <string name="settings__foreground__theme_preference__summary">Velg mellom lys og mørk drakt</string>
     <string name="settings__foreground__theme_preference__title">Velg drakt</string>

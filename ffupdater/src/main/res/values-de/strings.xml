@@ -177,7 +177,6 @@
     <string name="settings__background__update_check__metered__title">Updateprüfung in getakteten Netzen</string>
     <string name="settings__background_category__summary">Einstellungen, wenn die App im Hintergrund arbeitet.</string>
     <string name="settings__background_category__title">Hintergrund</string>
-    <string name="settings__foreground__download__metered__summary">Nützlich für Nutzer mit begrenzten Datenvolumen..</string>
     <string name="settings__foreground__download__metered__title">Updates in getakteten Netzen herunterladen</string>
     <string name="settings__foreground__hide_warning_buttons">Blende Warnungen für installierten Apps aus</string>
     <string name="settings__foreground__theme_preference__summary">Wechsle zwischen Dark und Light Theme</string>
