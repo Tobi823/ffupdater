@@ -1,6 +1,6 @@
-* 感谢MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner的改进。
-  翻译。
-* 标记Mozilla Lockwise为终结版（感谢p0yskaa提供的信息）。
-* 当使用一个终结期的应用程序时显示警告。
-* 在偏好设置中缓存UpdateCheckResult - 这应该比之前的缓存方法更可靠。
-* 改善颜色的对比度。
+* 感谢 MkQtS、Viktória Nagy、109247019824、AbsurdUsername、Oğuz Ersen、Artem、Hin Weisner 对翻译的
+  改进。
+* 将 Mozilla Lockwise 标记为生命周期结束（感谢 p0yskaa 提供的信息）。
+* 使用生命周期结束的应用程序时显示警告。
+* 在偏好设置中缓存 UpdateCheckResult（更新检查结果）——这应该比之前的缓存方法更可靠
+* 提高颜色的对比度。
