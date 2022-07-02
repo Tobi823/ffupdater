@@ -83,9 +83,9 @@
     <string name="iceraven__description">Definitiv nicht von Mozilla für Sie entwickelt! \n\nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert. \n\nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="iceraven__warning">- Der Maintainer gibt keine Garantien oder Gewährleistungen für Sicherheit oder Updates oder gar Stabilität.</string>
-    <string name="infobox">Dies ist ein Updater für unterschiedliche Browser. Klicke auf den Plus-Button zur Installation und auf den Pfeil-nach-unten-Button zur Aktualisierung eines Browsers. Du kannst nach neuen Updates suchen, indem du nach unten wischt oder die Anwendung erneut öffnest. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates. Ich habe mein Bestes getan, um den Installations-/Aktualisierungsprozess abzusichern - du kannst es gerne überprüfen oder ggf. mit einem Pull-Request verbessern.
+    <string name="infobox">Dies ist ein Aktualisierungsprogramm für datenschutzfreundliche Browser. Klicke auf den Plus-Button, um neue Apps zu installieren. Wische nach unten, um eine Prüfung auf neue Updates zu erzwingen. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates, die dann heruntergeladen und eventuell auch installiert werden. Klicke auf das Zahnrad, um das Verhalten in den Einstellungen anzupassen.
 \n
-\nLetzte erfolgreiche Hintergrundaktualisierungsprüfung: %1$s</string>
+\nLetzte erfolgreiche Überprüfung auf Updates im Hintergrund: %1$s</string>
     <string name="information_about_the_app">Information über die Applikation</string>
     <string name="install_activity__delete_cache_button_text">Cache leeren</string>
     <string name="install_activity__delete_cache_explanation">Wenn du glaubst, dass FFUpdater ein fehlerhaftes App-Update heruntergeladen hat, oder wenn du Speicherplatz sparen möchtest, dann klicke auf den Button um die Datei zu löschen.</string>
@@ -139,7 +139,7 @@
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
     <string name="main_activity__no_unmetered_network">Kein ungebremstes Netz</string>
     <string name="main_activity__subtitle">Aktualisierungsprogramm für datenschutzfreundliche Browser</string>
-    <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Später erneut versuchen.</u>"</string>
+    <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Versuche es später nochmal.</u>"</string>
     <string name="manage_storage_activity__delete_button">Lösche zwischengespeicherte App-Updates.</string>
     <string name="manage_storage_activity__explanation">FFUpdater speichert bereits heruntergeladene App-Updates im Zwischenspeicher im Ordner \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nDies spart Bandbreite, wenn eine App nicht erfolgreich installiert oder aktualisiert wird. Außerdem wird der Cache benötigt, damit Updates, die im Hintergrund heruntergeladen wurden, später installiert werden können.\n\nWenn Sie sich entscheiden, diese App-Updates zu löschen, müssen Sie sie möglicherweise erneut herunterladen.</string>
     <string name="ok">OK</string>
