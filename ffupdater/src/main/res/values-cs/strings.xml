@@ -28,8 +28,8 @@
     <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje základní prohlížeč/vykreslovací jádro Bromite a jeho stejné vlastnosti. Nabízí možnost nahradit výchozí komponent prohlížeče pro celý systém Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Zkopírovat chybové hlášení do schránky</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">Při načítání adresy URL pro stahování došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
-    <string name="crash_report__explain_text__main_activity_update_check">Při kontrole aktualizací v hlavním zobrazení došlo k následující chybě. Pokud se tato chyba vyskytuje často, můžete ji nahlásit na stránkách notabug.org, GitHub nebo GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">K této chybě došlo při načítání metadat ke stažení. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">K této chybě došlo při kontrole aktualizací v hlavním zobrazení. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Bohužel došlo k pádu FFUpdateru. Nahlašte prosím tuto chybu na stránkách notabug.org, GitHub or GitLab. Nezapomeňte přidat hlášení o chybě ze schránky a popis, jak chybu reprodukovat.</string>
     <string name="crash_report__go_to_github">Přejít na GitHub</string>
     <string name="crash_report__go_to_gitlab">Přejít na GitLab</string>
@@ -193,4 +193,35 @@
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">- Vivaldi je pouze částečně open source.
 \n- Používá také technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">%1$s má následující problém:
+\n
+\n%2$s</item>
+        <item quantity="few">%1$s má následující problémy:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s má následující problémy:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="app_card__app_warning_button_description">Zobrazit varování o této aplikaci</string>
+    <string name="crash_report__explain_text__install_activity_install_file">K této chybě došlo při instalaci. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
+    <string name="crash_report__explain_text__install_activity_download_file">Při stahování došlo k následující chybě. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s má následující problém:
+\n
+\n%2$s
+\n
+\nChcete pořád nainstalovat %1$s\?</item>
+        <item quantity="few">%1$s má následující problémy:
+\n
+\n%2$s
+\n
+\nChcete pořád nainstalovat %1$s\?</item>
+        <item quantity="other">%1$s má následující problémy:
+\n
+\n%2$s
+\n
+\nChcete pořád nainstalovat %1$s\?</item>
+    </plurals>
 </resources>
