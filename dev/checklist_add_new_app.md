@@ -1,7 +1,7 @@
 # Checklist for adding new apps:
 - download icon (ic_launcher)
-- add new class in de.marmaro.krt.ffupdater.app.impl
-- add entry in de.marmaro.krt.ffupdater.app.App
+- add new class in de.marmaro.krt.ffupdater.app.maintained
+- add entry in de.marmaro.krt.ffupdater.app.MaintainedApp
 - add entry in the arrays background__update_check__excluded_apps__entries +
   background__update_check__excluded_apps__values in src/main/res/values/arrays.xml
 - add entry in AndroidManifest.xml <queries>

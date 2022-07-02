@@ -42,6 +42,7 @@
         <package android:name="org.mozilla.focus" />
         <package android:name="org.mozilla.klar" />
         <package android:name="org.mozilla.rocket" />
+        <package android:name="us.spotco.fennec_dos" />
         <package android:name="org.ungoogled.chromium.stable" />
 
         <!-- Detect outdated/eol apps -->

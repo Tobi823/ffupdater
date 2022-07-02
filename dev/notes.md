@@ -33,7 +33,7 @@ A period work returned "failed" (instead of "success") will not be executed agai
 
 ## Commands
 
-get certificate hash
+get certificate hash / signature
 
 `keytool -list -printcert -jarfile *.apk`
 

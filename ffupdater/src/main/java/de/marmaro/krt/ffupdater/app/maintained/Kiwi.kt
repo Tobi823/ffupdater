@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -87,7 +88,8 @@ class Kiwi(
         return runnerId != available.version || fileSize != available.fileSizeBytes
     }
 
-    override fun appIsInstalled(context: Context, available: LatestUpdate) {
+    override fun appIsInstalled(context: Context, available: AppUpdateStatus) {
+        super.appIsInstalled(context, available)
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.version)
             .putLong(APK_FILE_SIZE, available.fileSizeBytes!!)

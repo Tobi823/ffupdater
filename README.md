@@ -13,6 +13,8 @@ Browsers from Mozilla or based on Firefox:
 - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus),
   [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
   ([GitHub Repository](https://github.com/mozilla-mobile/focus-android))
+- [Mull Browser](https://f-droid.org/en/packages/us.spotco.fennec_dos/)
+  ([GitLab Repository](https://gitlab.com/divested-mobile/mull-fenix))
 
 Good privacy browsers:
 

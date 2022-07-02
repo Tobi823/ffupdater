@@ -3,11 +3,10 @@ Installs and updates the following browsers:
 Browsers from Mozilla or based on Firefox:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
-- Iceraven
+- Mull Browser
 
 Good privacy browsers:
 - Bromite, Bromite SystemWebView
-- Ungoogled Chromium
 
 Browser which are better than Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

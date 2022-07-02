@@ -313,8 +313,7 @@ class InstallActivity : AppCompatActivity() {
             show(R.id.fingerprintInstalledGood)
             setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
 
-            val available = viewModel.appAppUpdateStatus!!.latestUpdate
-            viewModel.app!!.detail.appIsInstalled(this, available)
+            viewModel.app!!.detail.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
 
             if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
                 appCache.delete(this)

@@ -229,4 +229,8 @@
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
+    <string name="mull__title">Mull Browser</string>
+    <string name="mull__description">This is a privacy oriented and deblobbed web browser based on Mozilla technology. It enables many features upstreamed by the Tor Uplift project using preferences from the arkenfox-user.js project. It is recommended to install \'uBlock Origin\'.</string>
+    <string name="mull__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
+    <string name="download_source__fdroid" translatable="false">F-Droid</string>
 </resources>

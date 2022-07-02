@@ -60,7 +60,9 @@ abstract class AppBase {
     }
 
     @AnyThread
-    open fun appIsInstalled(context: Context, available: LatestUpdate) {
+    open fun appIsInstalled(context: Context, available: AppUpdateStatus) {
+        // make sure that the main application uses the correct information about "update available status"
+        setUpdateCache(context, available)
     }
 
     suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateStatus> {
@@ -86,13 +88,11 @@ abstract class AppBase {
     }
 
     private suspend fun checkForUpdateAndCacheIt(context: Context, useCache: Boolean): AppUpdateStatus {
-
         if (useCache) {
             getUpdateCache(context)
                 ?.takeIf { System.currentTimeMillis() - it.timestamp <= CACHE_TIME }
                 ?.let { return it }
         }
-
 
         val available = checkForUpdate()
         val result = AppUpdateStatus(
@@ -114,7 +114,7 @@ abstract class AppBase {
         }
     }
 
-    fun setUpdateCache(context: Context, appAppUpdateStatus: AppUpdateStatus) {
+    private fun setUpdateCache(context: Context, appAppUpdateStatus: AppUpdateStatus) {
         val jsonString = gson.toJson(appAppUpdateStatus)
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit()

@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -90,7 +91,8 @@ class FirefoxNightly(
         }
     }
 
-    override fun appIsInstalled(context: Context, available: LatestUpdate) {
+    override fun appIsInstalled(context: Context, available: AppUpdateStatus) {
+        super.appIsInstalled(context, available)
         try {
             PreferenceManager.getDefaultSharedPreferences(context).edit()
                 .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))

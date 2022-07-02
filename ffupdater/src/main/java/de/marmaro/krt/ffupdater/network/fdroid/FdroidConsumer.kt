@@ -9,7 +9,7 @@ class FdroidConsumer(
 ) {
 
     @MainThread
-    suspend fun updateCheck(): Result {
+    suspend fun updateCheck(): List<Result> {
         val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = apiConsumer.consumeAsync(apiUrl, AppInfo::class).await()
 
@@ -17,9 +17,17 @@ class FdroidConsumer(
         val versionName = appInfo.packages
             .first { p -> p.versionCode == versionCode }
             .versionName
-        val downloadUrl = "https://f-droid.org/repo/us.spotco.fennec_dos_$versionCode.apk"
 
-        return Result(versionName, downloadUrl)
+        return appInfo.packages
+            .filter { p -> p.versionName == versionName }
+            .sortedBy { p -> p.versionCode }
+            .map { p ->
+                Result(
+                    versionName = p.versionName,
+                    versionCode = p.versionCode,
+                    url = "https://f-droid.org/repo/us.spotco.fennec_dos_${p.versionCode}.apk"
+                )
+            }
     }
 
     data class AppInfo(
@@ -34,7 +42,8 @@ class FdroidConsumer(
     )
 
     data class Result(
-        val version: String,
+        val versionName: String,
+        val versionCode: Long,
         val url: String,
     )
 }
