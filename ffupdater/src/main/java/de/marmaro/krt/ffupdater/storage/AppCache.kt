@@ -11,12 +11,12 @@ class AppCache(val app: MaintainedApp) {
         return File(getCacheFolder(context), "${app.detail.packageName}.apk")
     }
 
-    suspend fun isAvailable(context: Context, available: LatestUpdate): Boolean {
+    suspend fun isAvailable(context: Context, available: LatestUpdate?): Boolean {
         val file = getFile(context)
-        if (file.exists() && file.length() > 0L) {
-            return app.detail.isAvailableVersionEqualToArchive(context, file, available)
+        if (available == null || !file.exists() || file.length() == 0L) {
+            return false
         }
-        return false
+        return app.detail.isAvailableVersionEqualToArchive(context, file, available)
     }
 
     private fun getCacheFolder(context: Context): File {
