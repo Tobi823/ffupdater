@@ -1,7 +1,7 @@
 安装和更新以下浏览器。
 
-来自Mozilla或基于Firefox的浏览器：
-- Firefox浏览器、Firefox for Android Beta、Firefox Nightly
+来自 Mozilla 或基于 Firefox 的浏览器：
+- Firefox 浏览器、Firefox for Android Beta（公测版）、Firefox Nightly（每夜版）
 - Firefox Focus、Firefox Klar
 - Iceraven
 
@@ -9,11 +9,11 @@
 - Bromite、Bromite SystemWebView
 - Ungoogled Chromium
 
-比Google Chrome更好的浏览器：
-- Brave Private Browser、Brave Browser (Beta)、Brave Browser (Nightly)
+比 Google Chrome 更好的浏览器：
+- Brave 隐私浏览器、Brave 浏览器（公测版）、Brave 浏览器（每夜版）
 - Kiwi Browser Next
 - Vivaldi
 
-FFUpdater能在后台检查和下载更新。在安卓12+或已root设备上，FFUpdater也可以在没有用户互动的情况下更新应用程序。
+FFUpdater 能在后台检查和下载更新。在 Android 12+ 或已 root 设备上，FFUpdater 也可以在没有用户互动的情况下更新应用程序。
 
 访问 https://notabug.org/Tobiwan/ffupdater/src/master/README.md 可了解更多信息。
