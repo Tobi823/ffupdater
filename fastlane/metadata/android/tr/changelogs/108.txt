@@ -1,0 +1,6 @@
+* Çevirileri iyileştirdikleri için WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS,
+  Hin Weisner ve Giovanni Donisi'ye teşekkürler.
+* Ungoogled Chromium ve Iceraven geçici olarak kullanım ömrünün sonuna geldi olarak işaretlendi.
+* Mull tarayıcı eklendi.
+* Güncelleme bilgilerinin önbelleğe alınması iyileştirildi.
+* Kaynak kodu yeniden düzenlendi/iyileştirildi.
