@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
+import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -29,23 +30,22 @@ class Mull(
     override val signatureHash = "ff81f5be56396594eee70fef2832256e15214122e2ba9cedd26005ffd4bcaaa8"
 
     override suspend fun checkForUpdate(): LatestUpdate {
-        val updateIndex = deviceAbiExtractor.supportedAbis
-            .first { abi -> abi in supportedAbis }
-            .let { abi ->
-                when (abi) {
-                    ABI.ARMEABI_V7A -> 0
-                    ABI.ARM64_V8A -> 1
-                    else -> throw IllegalArgumentException("ABI '$abi' is not supported")
-                }
-            }
+        Log.i(LOG_TAG, "check for latest version")
+        val abi = deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }
 
         val fdroidConsumer = FdroidConsumer(packageName, apiConsumer)
-        val updates = fdroidConsumer.updateCheck()
+        val result = fdroidConsumer.updateCheck()
 
-        check(updates.size == 2) { "Mull must have two releases with the same version name" }
-        val result = updates[updateIndex]
+        check(result.versionCodesAndDownloadUrls.size == 2)
+        val versionCodeAndDownloadUrl = if (abi == ABI.ARM64_V8A) {
+            result.versionCodesAndDownloadUrls.maxByOrNull { it.versionCode }!!
+        } else {
+            result.versionCodesAndDownloadUrls.minByOrNull { it.versionCode }!!
+        }
+
+        Log.i(LOG_TAG, "found latest version ${result.versionName}")
         return LatestUpdate(
-            downloadUrl = result.url,
+            downloadUrl = versionCodeAndDownloadUrl.downloadUrl,
             version = result.versionName,
             publishDate = null,
             fileSizeBytes = null,
@@ -54,4 +54,7 @@ class Mull(
         )
     }
 
+    companion object {
+        const val LOG_TAG = "Mull"
+    }
 }
