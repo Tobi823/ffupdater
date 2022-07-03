@@ -58,7 +58,7 @@ class FirefoxKlarIT : BaseAppIT() {
         url: String,
         fileSize: Long,
     ) {
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -71,7 +71,7 @@ class FirefoxKlarIT : BaseAppIT() {
         abi: ABI,
     ) {
         packageInfo.versionName = "97.2.0"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -81,7 +81,7 @@ class FirefoxKlarIT : BaseAppIT() {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

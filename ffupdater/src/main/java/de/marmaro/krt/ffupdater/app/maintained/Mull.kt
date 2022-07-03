@@ -6,14 +6,13 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
 
 /**
  * https://f-droid.org/en/packages/us.spotco.fennec_dos/
  */
 class Mull(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val fdroidConsumer: FdroidConsumer = FdroidConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "us.spotco.fennec_dos"
@@ -29,12 +28,11 @@ class Mull(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "ff81f5be56396594eee70fef2832256e15214122e2ba9cedd26005ffd4bcaaa8"
 
-    override suspend fun checkForUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
         val abi = deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }
 
-        val fdroidConsumer = FdroidConsumer(packageName, apiConsumer)
-        val result = fdroidConsumer.updateCheck()
+        val result = fdroidConsumer.getLatestUpdate(packageName)
 
         check(result.versionCodesAndDownloadUrls.size == 2)
         val versionCodeAndDownloadUrl = if (abi == ABI.ARM64_V8A) {

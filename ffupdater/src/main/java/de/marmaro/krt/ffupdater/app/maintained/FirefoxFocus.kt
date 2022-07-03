@@ -32,7 +32,7 @@ class FirefoxFocus(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
-    override suspend fun checkForUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }

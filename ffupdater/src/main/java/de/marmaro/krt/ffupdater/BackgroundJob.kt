@@ -120,7 +120,9 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         MaintainedApp.values()
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { app -> app.detail.isInstalled(context) }
-            .filter { app -> app.detail.checkForUpdateWithoutCacheAsync(context).await().isUpdateAvailable }
+            .filter { app ->
+                app.detail.checkForUpdateWithoutUsingCacheAsync(context).await().isUpdateAvailable
+            }
             .let { apps -> return apps to null }
     }
 

@@ -29,13 +29,13 @@ class Vivaldi(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
 
-    override suspend fun checkForUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val abi = deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }
 
         val content = apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, String::class).await()
+        val (version, downloadUrl) = extractVersionAndDownloadUrl(content, abi)
 
-        val (version, downloadUrl) = extractVersion(content, abi)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
@@ -47,7 +47,7 @@ class Vivaldi(
         )
     }
 
-    private fun extractVersion(content: String, abi: ABI): Pair<String, String> {
+    private fun extractVersionAndDownloadUrl(content: String, abi: ABI): Pair<String, String> {
         val regexPattern = when (abi) {
             ABI.ARMEABI_V7A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_armeabi-v7a.apk)""""
             ABI.ARM64_V8A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_arm64-v8a.apk)""""

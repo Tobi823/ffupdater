@@ -28,7 +28,7 @@ class FFUpdater(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
 
-    override suspend fun checkForUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val githubConsumer = GithubConsumer(
             repoOwner = "Tobi823",

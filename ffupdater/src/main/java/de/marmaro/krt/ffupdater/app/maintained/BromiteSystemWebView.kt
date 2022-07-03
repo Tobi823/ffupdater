@@ -31,7 +31,7 @@ class BromiteSystemWebView(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
 
-    override suspend fun checkForUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }

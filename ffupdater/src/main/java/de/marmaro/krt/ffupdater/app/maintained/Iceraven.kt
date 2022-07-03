@@ -36,7 +36,7 @@ class Iceraven(
         return installedVersion?.replace("iceraven-", "")
     }
 
-    override suspend fun checkForUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(): LatestUpdate {
         TODO("Iceraven is currently outdated and should not be used")
         Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis

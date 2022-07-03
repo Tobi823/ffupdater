@@ -4,13 +4,12 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 
 class FdroidConsumer(
-    private val packageName: String,
-    private val apiConsumer: ApiConsumer,
+    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
 ) {
-    private val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
 
     @MainThread
-    suspend fun updateCheck(): Result {
+    suspend fun getLatestUpdate(packageName: String): Result {
+        val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = apiConsumer.consumeAsync(apiUrl, AppInfo::class).await()
 
         val versionName = appInfo.packages
@@ -20,22 +19,21 @@ class FdroidConsumer(
         val versionCodesAndUrls = appInfo.packages
             .filter { p -> p.versionName == versionName }
             .sortedBy { p -> p.versionCode }
-            .map { p -> VersionCodeAndDownloadUrl(p.versionCode, getDownloadUrl(p.versionCode)) }
+            .map { p ->
+                val downloadUrl = "https://f-droid.org/repo/${packageName}_${p.versionCode}.apk"
+                VersionCodeAndDownloadUrl(p.versionCode, downloadUrl)
+            }
 
         return Result(versionName, versionCodesAndUrls)
     }
 
-    private fun getDownloadUrl(versionCode: Long): String {
-        return "https://f-droid.org/repo/${packageName}_${versionCode}.apk"
-    }
-
-    data class AppInfo(
+    internal data class AppInfo(
         val packageName: String,
         val suggestedVersionCode: Long,
         val packages: List<Package>,
     )
 
-    data class Package(
+    internal data class Package(
         val versionName: String,
         val versionCode: Long
     )
@@ -49,4 +47,8 @@ class FdroidConsumer(
         val versionCode: Long,
         val downloadUrl: String,
     )
+
+    companion object {
+        val INSTANCE = FdroidConsumer()
+    }
 }

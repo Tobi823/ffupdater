@@ -30,7 +30,7 @@ class UngoogledChromium(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"
 
-    override suspend fun checkForUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(): LatestUpdate {
         TODO("UngoogledChromium is currently outdated and should not be used")
         Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis

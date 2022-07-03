@@ -76,7 +76,7 @@ class FirefoxBetaIT : BaseAppIT() {
         downloadUrl: String,
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         Assertions.assertEquals(downloadUrl, result.downloadUrl)
         Assertions.assertEquals(EXPECTED_VERSION, result.version)
         Assertions.assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
@@ -90,7 +90,7 @@ class FirefoxBetaIT : BaseAppIT() {
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
         packageInfo.versionName = "86.0.0-beta.3"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -102,7 +102,7 @@ class FirefoxBetaIT : BaseAppIT() {
     ) {
         makeChainOfTrustTextAvailableUnderUrl(logUrl)
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

@@ -215,7 +215,7 @@ class MainActivity : AppCompatActivity() {
             val updateResult = if (useCache) {
                 app.detail.checkForUpdateAsync(applicationContext).await()
             } else {
-                app.detail.checkForUpdateWithoutCacheAsync(applicationContext).await()
+                app.detail.checkForUpdateWithoutUsingCacheAsync(applicationContext).await()
             }
             setAvailableVersion(app, updateResult.displayVersion)
             sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable

@@ -85,7 +85,7 @@ class FirefoxNightlyIT : BaseAppIT() {
         hash: String,
     ) {
         makeChainOfTrustAvailableUnderUrl(logUrl)
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertEquals(downloadUrl, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(EXPECTED_RELEASE_TIMESTAMP, result.publishDate)
@@ -109,7 +109,7 @@ class FirefoxNightlyIT : BaseAppIT() {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = 1000
 
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 
@@ -131,7 +131,7 @@ class FirefoxNightlyIT : BaseAppIT() {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = differentVersionCode
 
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -153,7 +153,7 @@ class FirefoxNightlyIT : BaseAppIT() {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = 1000
 
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -176,7 +176,7 @@ class FirefoxNightlyIT : BaseAppIT() {
         packageInfo.versionName = EXPECTED_VERSION
         packageInfo.versionCode = differentVersionCode
 
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 }

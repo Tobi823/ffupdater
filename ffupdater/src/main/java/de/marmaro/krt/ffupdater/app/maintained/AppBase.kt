@@ -68,40 +68,34 @@ abstract class AppBase {
     suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateStatus> {
         return withContext(Dispatchers.IO) {
             async {
-                // - use mutex lock to prevent multiple simultaneously update check for a single app
                 mutex.withLock {
-                    checkForUpdateAndCacheIt(context, useCache = true)
+                    getUpdateCache(context)
+                        ?.takeIf { System.currentTimeMillis() - it.timestamp <= CACHE_TIME }
+                        ?.let { return@withLock it }
+
+                    findAppUpdateStatus(context)
                 }
             }
         }
     }
 
-    suspend fun checkForUpdateWithoutCacheAsync(context: Context): Deferred<AppUpdateStatus> {
+    suspend fun checkForUpdateWithoutUsingCacheAsync(context: Context): Deferred<AppUpdateStatus> {
         return withContext(Dispatchers.IO) {
             async {
-                // - use mutex lock to prevent multiple simultaneously update check for a single app
                 mutex.withLock {
-                    checkForUpdateAndCacheIt(context, useCache = false)
+                    findAppUpdateStatus(context)
                 }
             }
         }
     }
 
-    private suspend fun checkForUpdateAndCacheIt(context: Context, useCache: Boolean): AppUpdateStatus {
-        if (useCache) {
-            getUpdateCache(context)
-                ?.takeIf { System.currentTimeMillis() - it.timestamp <= CACHE_TIME }
-                ?.let { return it }
-        }
-
-        val available = checkForUpdate()
-        val result = AppUpdateStatus(
+    private suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
+        val available = findLatestUpdate()
+        return AppUpdateStatus(
             latestUpdate = available,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available),
             displayVersion = getDisplayAvailableVersion(context, available)
-        )
-        setUpdateCache(context, result)
-        return result
+        ).also { result -> setUpdateCache(context, result) }
     }
 
     fun getUpdateCache(context: Context): AppUpdateStatus? {
@@ -123,7 +117,7 @@ abstract class AppBase {
     }
 
     @MainThread
-    protected abstract suspend fun checkForUpdate(): LatestUpdate
+    internal abstract suspend fun findLatestUpdate(): LatestUpdate
 
     @MainThread
     open suspend fun isAvailableVersionEqualToArchive(

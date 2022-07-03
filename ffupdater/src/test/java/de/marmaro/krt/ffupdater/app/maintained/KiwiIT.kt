@@ -77,7 +77,7 @@ class KiwiIT : BaseAppIT() {
         fileSize: Long,
     ) {
         makeReleaseJsonObjectAvailable()
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_RUNNER_ID, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -95,7 +95,7 @@ class KiwiIT : BaseAppIT() {
             .putLong(Kiwi.APK_FILE_SIZE, 226448284L)
             .apply()
         packageInfo.versionName = "101.0.4951.28"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -113,7 +113,7 @@ class KiwiIT : BaseAppIT() {
             .putLong(Kiwi.APK_FILE_SIZE, fileSize)
             .apply()
         packageInfo.versionName = "101.0.4951.48"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutCacheAsync(context).await() }
+        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }
