@@ -3,11 +3,10 @@
 От Mozilla или на основата на Firefox:
 - Firefox Browser, Firefox за Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
-- Iceraven
+- Mull Browser
 
 поверителни четци:
 - Bromite, Bromite SystemWebView
-- Ungoogled Chromium
 
 четци, по-добри от Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

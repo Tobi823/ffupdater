@@ -3,11 +3,10 @@ Telepíti és frissíti a következő böngészőket:
 Mozilla vagy Firefox alapú böngészők:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly.
 - Firefox Focus, Firefox Klar
-- Iceraven
+- Mull Browser
 
 Jó adatvédelmi böngészők:
 - Bromite, Bromite SystemWebView
-- Ungoogled Chromium
 
 A Google Chrome-nál jobb böngészők:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

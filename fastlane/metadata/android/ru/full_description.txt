@@ -1,11 +1,10 @@
 Загружайте, устанавливайте и обновляйте браузеры от Mozilla или основанные на Firefox:
 - Firefox Browser, Firefox для Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
-- Iceraven
+- Mull Browser
 
 хорошие браузеры для обеспечения конфиденциальности:
 - Bromite, Bromite SystemWebView
-- Ungoogled Chromium
 
 браузеры, которые лучше, чем Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

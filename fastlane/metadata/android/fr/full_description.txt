@@ -1,11 +1,10 @@
 Téléchargez, installez et mettez à jour les navigateurs de Mozilla ou basés sur Firefox :
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
-- Iceraven
+- Mull Browser
 
 bons navigateurs de confidentialité :
 - Bromite, Bromite SystemWebView
-- Ungoogled Chromium
 
 navigateurs qui sont meilleurs que Google Chrome :
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

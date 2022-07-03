@@ -3,11 +3,10 @@ Installiert und aktualisiert folgende Browser:
 Browser von Mozilla oder Browser auf des Firefoxes:
 - Firefox Browser, Firefox für Android Beta, Firefox Nightly
 - Firefox Fokus, Firefox Klar
-- Iceraven
+- Mull Browser
 
 Gute Datenschutz-Browser:
 - Bromite, Bromite SystemWebView
-- Ungegoogeltes Chromium
 
 Browser, die besser sind als Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
