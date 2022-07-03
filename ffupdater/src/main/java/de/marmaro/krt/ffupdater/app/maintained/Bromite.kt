@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
+import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -31,6 +32,7 @@ class Bromite(
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
 
     override suspend fun checkForUpdate(): LatestUpdate {
+        Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val fileName = when (filteredAbis.firstOrNull()) {
@@ -50,6 +52,7 @@ class Bromite(
         )
         val result = githubConsumer.updateCheck()
         // tag name can be "90.0.4430.59"
+        Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(
             downloadUrl = result.url,
             version = result.tagName,
@@ -58,5 +61,9 @@ class Bromite(
             fileHash = null,
             firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
+    }
+
+    companion object {
+        private const val LOG_TAG = "Bromite"
     }
 }

@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
+import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -32,6 +33,7 @@ class FirefoxKlar(
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
 
     override suspend fun checkForUpdate(): LatestUpdate {
+        Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val fileSuffix = when (filteredAbis.firstOrNull()) {
@@ -64,13 +66,19 @@ class FirefoxKlar(
             matchGroup.value
         }
 
+        val version = extractVersion()
+        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = extractVersion(),
+            version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
             firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
+    }
+
+    companion object {
+        private const val LOG_TAG = "FirefoxKlar"
     }
 }

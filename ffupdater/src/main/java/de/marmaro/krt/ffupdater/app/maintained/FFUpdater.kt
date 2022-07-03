@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
+import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -28,6 +29,7 @@ class FFUpdater(
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
 
     override suspend fun checkForUpdate(): LatestUpdate {
+        Log.d(LOG_TAG, "check for latest version")
         val githubConsumer = GithubConsumer(
             repoOwner = "Tobi823",
             repoName = "ffupdater",
@@ -37,6 +39,7 @@ class FFUpdater(
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
+        Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(
             downloadUrl = result.url,
             version = result.tagName,
@@ -45,5 +48,9 @@ class FFUpdater(
             fileHash = null,
             firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
+    }
+
+    companion object {
+        private const val LOG_TAG = "FFUpdater"
     }
 }

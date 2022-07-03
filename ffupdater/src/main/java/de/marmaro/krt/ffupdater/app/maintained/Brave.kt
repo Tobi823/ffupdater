@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
+import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -31,6 +32,7 @@ class Brave(
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
     override suspend fun checkForUpdate(): LatestUpdate {
+        Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val fileName = when (filteredAbis.firstOrNull()) {
@@ -51,6 +53,7 @@ class Brave(
         )
         val result = githubConsumer.updateCheck()
         val version = result.tagName.replace("v", "")
+        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
             version = version,
@@ -59,5 +62,9 @@ class Brave(
             fileHash = null,
             firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
+    }
+
+    companion object {
+        private const val LOG_TAG = "Brave"
     }
 }

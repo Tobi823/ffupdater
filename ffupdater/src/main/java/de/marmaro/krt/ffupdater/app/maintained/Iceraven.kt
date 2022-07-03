@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -37,6 +38,7 @@ class Iceraven(
 
     override suspend fun checkForUpdate(): LatestUpdate {
         TODO("Iceraven is currently outdated and should not be used")
+        Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val fileSuffix = when (filteredAbis.firstOrNull()) {
@@ -55,13 +57,19 @@ class Iceraven(
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
+        val version = result.tagName.replace("iceraven-", "")
+        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = result.tagName.replace("iceraven-", ""),
+            version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             firstReleaseHasAssets = result.firstReleaseHasAssets,
             fileHash = null,
         )
+    }
+
+    companion object {
+        private const val LOG_TAG = "Iceraven"
     }
 }

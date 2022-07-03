@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
@@ -35,6 +36,7 @@ class Kiwi(
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
 
     override suspend fun checkForUpdate(): LatestUpdate {
+        Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val filePrefix = "com.kiwibrowser.browser-"
@@ -56,6 +58,7 @@ class Kiwi(
         )
         val result = githubConsumer.updateCheck()
         // tag name can be "2232087292" (the id of the build runner)
+        Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(
             downloadUrl = result.url,
             version = result.tagName,
@@ -97,6 +100,7 @@ class Kiwi(
     }
 
     companion object {
+        private const val LOG_TAG = "Kiwi"
         const val BUILD_RUNNER_ID = "kiwi__build_runner_id"
         const val APK_FILE_SIZE = "kiwi__file_size"
     }

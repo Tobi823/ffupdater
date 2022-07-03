@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.util.Log
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
@@ -39,6 +40,7 @@ class FirefoxNightly(
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
 
     override suspend fun checkForUpdate(): LatestUpdate {
+        Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
@@ -56,6 +58,7 @@ class FirefoxNightly(
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val version = formatter.format(releaseDate)
+        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
             version = version,
@@ -119,6 +122,7 @@ class FirefoxNightly(
     }
 
     companion object {
+        private const val LOG_TAG = "FirefoxNightly"
         const val INSTALLED_VERSION_CODE = "firefox_nightly_installed_version_code"
         const val INSTALLED_SHA256_HASH = "firefox_nightly_installed_sha256_hash"
     }

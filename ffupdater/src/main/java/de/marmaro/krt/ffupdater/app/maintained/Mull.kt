@@ -55,6 +55,6 @@ class Mull(
     }
 
     companion object {
-        const val LOG_TAG = "Mull"
+        private const val LOG_TAG = "Mull"
     }
 }

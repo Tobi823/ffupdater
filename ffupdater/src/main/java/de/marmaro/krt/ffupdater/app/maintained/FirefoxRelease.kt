@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
 import android.os.Build
+import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -30,6 +31,7 @@ class FirefoxRelease(
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
 
     override suspend fun checkForUpdate(): LatestUpdate {
+        Log.d(LOG_TAG, "check for latest version")
         val filteredAbis = deviceAbiExtractor.supportedAbis
             .filter { it in supportedAbis }
         val abiString = when (filteredAbis.firstOrNull()) {
@@ -45,6 +47,7 @@ class FirefoxRelease(
             apiConsumer = apiConsumer,
         )
         val result = mozillaCiConsumer.updateCheck()
+        Log.i(LOG_TAG, "found latest version ${result.version}")
         return LatestUpdate(
             downloadUrl = result.url,
             version = result.version,
@@ -55,5 +58,7 @@ class FirefoxRelease(
         )
     }
 
-    companion object
+    companion object {
+        private const val LOG_TAG = "FirefoxRelease"
+    }
 }
