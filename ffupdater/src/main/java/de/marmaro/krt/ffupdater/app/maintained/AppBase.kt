@@ -62,7 +62,7 @@ abstract class AppBase {
     @AnyThread
     open fun appIsInstalled(context: Context, available: AppUpdateStatus) {
         // make sure that the main application uses the correct information about "update available status"
-        setUpdateCache(context, available)
+        updateCacheAfterInstallation(context, available)
     }
 
     suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateStatus> {
@@ -108,13 +108,20 @@ abstract class AppBase {
         }
     }
 
-    private fun setUpdateCache(context: Context, appAppUpdateStatus: AppUpdateStatus?) {
-        val jsonString = appAppUpdateStatus
-            ?.let { gson.toJson(it) }
+    private fun setUpdateCache(context: Context, appAppUpdateStatus: AppUpdateStatus) {
+        val jsonString = gson.toJson(appAppUpdateStatus)
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit()
             .putString("${CACHE_KEY_PREFIX}__${packageName}", jsonString)
             .apply()
+    }
+
+    private fun updateCacheAfterInstallation(context: Context, available: AppUpdateStatus): AppUpdateStatus {
+        return AppUpdateStatus(
+            latestUpdate = available.latestUpdate,
+            isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available.latestUpdate),
+            displayVersion = getDisplayAvailableVersion(context, available.latestUpdate)
+        ).also { result -> setUpdateCache(context, result) }
     }
 
     @MainThread
