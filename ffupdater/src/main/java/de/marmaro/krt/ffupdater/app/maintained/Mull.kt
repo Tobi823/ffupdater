@@ -30,20 +30,18 @@ class Mull(
 
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
-        val abi = deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }
-
         val result = fdroidConsumer.getLatestUpdate(packageName)
 
         check(result.versionCodesAndDownloadUrls.size == 2)
-        val versionCodeAndDownloadUrl = if (abi == ABI.ARM64_V8A) {
-            result.versionCodesAndDownloadUrls.maxByOrNull { it.versionCode }!!
-        } else {
-            result.versionCodesAndDownloadUrls.minByOrNull { it.versionCode }!!
+        val codeAndUrl = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
+            ABI.ARM64_V8A -> result.versionCodesAndDownloadUrls.maxByOrNull { it.versionCode }!!
+            ABI.ARMEABI_V7A -> result.versionCodesAndDownloadUrls.minByOrNull { it.versionCode }!!
+            else -> throw IllegalArgumentException("ABI is not supported")
         }
 
         Log.i(LOG_TAG, "found latest version ${result.versionName}")
         return LatestUpdate(
-            downloadUrl = versionCodeAndDownloadUrl.downloadUrl,
+            downloadUrl = codeAndUrl.downloadUrl,
             version = result.versionName,
             publishDate = null,
             fileSizeBytes = null,

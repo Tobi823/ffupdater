@@ -37,16 +37,14 @@ class Kiwi(
 
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val filteredAbis = deviceAbiExtractor.supportedAbis
-            .filter { it in supportedAbis }
-        val filePrefix = "com.kiwibrowser.browser-"
-        val fileSuffix = when (filteredAbis.firstOrNull()) {
+        val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "-arm-github.apk"
             ABI.ARM64_V8A -> "-arm64-github.apk"
             ABI.X86 -> "-x86-github.apk"
             ABI.X86_64 -> "-x64-github.apk"
-            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+            else -> throw IllegalArgumentException("ABI is not supported")
         }
+        val filePrefix = "com.kiwibrowser.browser-"
         val githubConsumer = GithubConsumer(
             repoOwner = "kiwibrowser",
             repoName = "src.next",

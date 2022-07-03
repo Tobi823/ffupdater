@@ -33,13 +33,11 @@ class UngoogledChromium(
     override suspend fun findLatestUpdate(): LatestUpdate {
         TODO("UngoogledChromium is currently outdated and should not be used")
         Log.d(LOG_TAG, "check for latest version")
-        val filteredAbis = deviceAbiExtractor.supportedAbis
-            .filter { it in supportedAbis }
-        val fileName = when (filteredAbis.firstOrNull()) {
+        val fileName = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"
             ABI.ARM64_V8A -> "ChromeModernPublic_arm64.apk"
             ABI.X86 -> "ChromeModernPublic_x86.apk"
-            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+            else -> throw IllegalArgumentException("ABI is not supported")
         }
         val githubConsumer = GithubConsumer(
             repoOwner = "ungoogled-software",

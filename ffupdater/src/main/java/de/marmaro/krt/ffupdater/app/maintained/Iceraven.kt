@@ -39,14 +39,12 @@ class Iceraven(
     override suspend fun findLatestUpdate(): LatestUpdate {
         TODO("Iceraven is currently outdated and should not be used")
         Log.d(LOG_TAG, "check for latest version")
-        val filteredAbis = deviceAbiExtractor.supportedAbis
-            .filter { it in supportedAbis }
-        val fileSuffix = when (filteredAbis.firstOrNull()) {
+        val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
             ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
             ABI.X86 -> "browser-x86-forkRelease.apk"
             ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
-            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+            else -> throw IllegalArgumentException("ABI is not supported")
         }
         val githubConsumer = GithubConsumer(
             repoOwner = "fork-maintainers",

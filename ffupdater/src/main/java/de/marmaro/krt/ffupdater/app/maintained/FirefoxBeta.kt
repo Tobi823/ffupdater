@@ -32,14 +32,12 @@ class FirefoxBeta(
 
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val filteredAbis = deviceAbiExtractor.supportedAbis
-            .filter { it in supportedAbis }
-        val abiString = when (filteredAbis.firstOrNull()) {
+        val abiString = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
             ABI.ARM64_V8A -> "arm64-v8a"
             ABI.X86 -> "x86"
             ABI.X86_64 -> "x86_64"
-            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+            else -> throw IllegalArgumentException("ABI is not supported")
         }
         val mozillaCiConsumer = MozillaCiLogConsumer(
             task = "mobile.v2.fenix.beta.latest.$abiString",

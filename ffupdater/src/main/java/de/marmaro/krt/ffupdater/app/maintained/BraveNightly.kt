@@ -33,14 +33,12 @@ class BraveNightly(
 
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val filteredAbis = deviceAbiExtractor.supportedAbis
-            .filter { it in supportedAbis }
-        val fileName = when (filteredAbis.firstOrNull()) {
+        val fileName = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
             ABI.ARM64_V8A -> "BraveMonoarm64.apk"
             ABI.X86 -> "BraveMonox86.apk"
             ABI.X86_64 -> "BraveMonox64.apk"
-            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+            else -> throw IllegalArgumentException("ABI is not supported")
         }
         val githubConsumer = GithubConsumer(
             repoOwner = "brave",

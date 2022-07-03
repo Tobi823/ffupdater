@@ -34,14 +34,12 @@ class FirefoxKlar(
 
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val filteredAbis = deviceAbiExtractor.supportedAbis
-            .filter { it in supportedAbis }
-        val fileSuffix = when (filteredAbis.firstOrNull()) {
+        val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
             ABI.ARM64_V8A -> "arm64-v8a.apk"
             ABI.X86 -> "x86.apk"
             ABI.X86_64 -> "x86_64.apk"
-            else -> throw IllegalArgumentException("ABI '${filteredAbis.firstOrNull()}' is not supported")
+            else -> throw IllegalArgumentException("ABI is not supported")
         }
         val githubConsumer = GithubConsumer(
             repoOwner = "mozilla-mobile",
