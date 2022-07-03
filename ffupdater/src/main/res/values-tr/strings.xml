@@ -52,10 +52,10 @@
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Çökme raporunu panoya kopyala</string>
     <string name="crash_report__explain_text__install_activity_download_file">İndirme sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, bunu notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen çökme raporunu panodan bildirime ekleyin.</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">İndirme URL\'si getirildiğinde aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodaki çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">İndirme üst verileri getirildiğinde bu hata oluştu. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
     <string name="crash_report__explain_text__install_activity_install_file">Kurulum sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodaki çökme raporunuzu eklemeyi unutmayın.</string>
-    <string name="crash_report__explain_text__main_activity_update_check">Ana görünümde güncellemeler kontrol edilirken aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin. Lütfen panodaki çökme raporunuzu ve bu hatayı nasıl yeniden ürettiğinizin açıklamasını eklemeyi unutmayın.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Ne yazık ki, FFUpdater geçen sefer çöktü ve aşağıdaki hatayı kaydetti. Lütfen bu hatayı notabug.org, GitHub veya GitLab üzerinden bildirin. Çökme raporunu panodan mesaja kopyalayın ve hatanın nasıl yeniden oluşturulacağına dair bir açıklama ekleyin.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">Ana görünümde güncellemeler denetlenirken bu hata oluştu. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Ne yazık ki, FFUpdater geçen sefer çöktü ve bu hatayı kaydetti. Lütfen çökme raporunu notabug.org, GitHub veya GitLab\'a gönderin.</string>
     <string name="crash_report__go_to_github">GitHub\'a git</string>
     <string name="crash_report__go_to_gitlab">GitLab\'a git</string>
     <string name="crash_report__got_to_notabug_org">notabug.org\'a git</string>
@@ -63,14 +63,14 @@
     <string name="device_too_old_dialog__title">Aygıt çok eski</string>
     <string name="dialog_button__do_not_install">Hayır, kurma</string>
     <string name="dialog_button__yes">Evet</string>
-    <string name="download_error_notification__channel_description">Arka planda uygulama indirmeleri başarısız olduğunda gösterilir.</string>
+    <string name="download_error_notification__channel_description">Arka planda güncelleme indirmeleri başarısız olduğunda gösterilir.</string>
     <string name="download_error_notification__channel_name">Arka planda indirme hataları hakkında bildirim</string>
     <string name="download_error_notification__description">%1$s güncellemesinin arka planda indirilmesi başarısız oldu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin.</string>
     <string name="download_error_notification__message">%1$s güncellemesinin arka planda indirilmesi başarısız oldu. Bu hata sık sık meydana geliyorsa, hata raporunu görüntülemek için buraya tıklayın.</string>
-    <string name="download_error_notification__title">Uygulama güncellemesinin arka planda indirilmesi başarısız oldu</string>
+    <string name="download_error_notification__title">Güncellemenin arka planda indirilmesi başarısız oldu</string>
     <string name="download_running_notification__channel_description">Arka planda uygulama güncellemelerinin ne zaman indirildiğini gösterir.</string>
     <string name="download_running_notification__channel_name">Arka planda indirmeler hakkında bildirim</string>
-    <string name="download_running_notification__message">%1$s (%2$s) için güncelleme indiriliyor.</string>
+    <string name="download_running_notification__message">%1$s (%2$s)</string>
     <string name="download_running_notification__title">Uygulama güncellemeleri indiriliyor</string>
     <string name="download_the_app">uygulamayı indir</string>
     <string name="eol_apps_notification__channel_description">Güncel olmayan uygulamalarla ilgili uyarılar için bildirim kanalı.</string>
@@ -105,7 +105,7 @@
 \nAmacımız, kullanıcılara daha fazla seçenek, daha fazla özelleştirme fırsatı (geniş bir uzantı kitaplığı dahil) ve ziyaret ettikleri sayfalar ve tarayıcılarının nasıl çalıştığı hakkında daha fazla bilgi sağlamayı amaçlayan yeni Android için Firefox\'un yakın bir çatalı olmaktır.</string>
     <string name="iceraven__title">Iceraven Tarayıcı</string>
     <string name="iceraven__warning">- Geliştiricisi, güvenlik veya güncellemeler ve hatta kararlılık konusunda hiçbir garanti vermez.</string>
-    <string name="infobox">Bu uygulama Mozilla ve diğerlerinden birden fazla tarayıcı için bir güncelleyicidir. Kurulum için artı düğmesine ve güncelleme için aşağı ok düğmesine tıklayın. Uygulamayı aşağı kaydırarak veya yeniden açarak yeni güncellemeleri denetleyebilirsiniz. Öntanımlı olarak uygulama, arka planda güncellemeleri düzenli olarak denetleyecektir. Kurulum/güncelleme sürecini güvenceye almak için elimden gelenin en iyisini yaptım - tekrar denetlemekten veya bir çekme talebi oluşturarak geliştirmekten çekinmeyin.
+    <string name="infobox">Bu, gizlilik dostu tarayıcılar için bir güncelleyicidir. Yeni uygulamalar kurmak için artı düğmesine tıklayın. Yeni güncellemeleri denetlemeye zorlamak için aşağı kaydırın. Öntanımlı olarak, uygulama arka planda güncellemeleri düzenli olarak denetleyecek, daha sonra indirecek ve kuracaktır. Ayarlarda davranışı özelleştirmek için dişli simgesine tıklayın.
 \n
 \nSon başarılı arka plan güncelleme denetimi: %1$s</string>
     <string name="information_about_the_app">uygulama hakkında bilgi</string>
@@ -118,8 +118,8 @@
     <string name="install_activity__downloaded_application_is_not_verified">İndirilen uygulama doğrulanmadı</string>
     <string name="install_activity__exception__show_button">"<u>Ayrıntılı hata raporunu göster.</u>"</string>
     <string name="install_activity__external_storage_not_accessible">Harici depolama kullanılamıyor - indirme başlatılamıyor. Geçerli durum:</string>
-    <string name="install_activity__fetch_url_for_download">İndirme URL\'sini %1$s değerinden getir</string>
-    <string name="install_activity__fetched_url_for_download_successfully">İndirme URL\'si %1$s değerinden getirildi</string>
+    <string name="install_activity__fetch_url_for_download">Üst verileri %1$s değerinden getir</string>
+    <string name="install_activity__fetched_url_for_download_successfully">Üst veriler %1$s değerinden getirildi</string>
     <string name="install_activity__file_uri_exposed_toast">Dosya yolu diğer uygulamalara gösterilemiyor. Lütfen tercih ettiğiniz dosya yöneticisi ile klasörü kendiniz açın.</string>
     <string name="install_activity__github_rate_limit_exceeded">GitHub-API hız sınırı aşıldı. Lütfen indirmeyi bir saat içinde tekrar deneyin.</string>
     <string name="install_activity__open_cache_explanation">APK dosyasını daha fazla boş depolama alanına sahip bir yere kopyalamak için önbellek klasörünü açabilirsiniz. Ne yazık ki, Android 11 ve sonrasında, Android/data içindeki bu klasöre yalnızca birkaç dosya yöneticisi erişebilir.</string>
@@ -139,11 +139,11 @@
     <string name="installation_error_notification__channel_description">Başarısız %1$s güncellemeleri için bildirim kanalı.</string>
     <string name="installation_error_notification__channel_name">%1$s güncelleme hatası bildirimi</string>
     <string name="installation_error_notification__message">Hata (%1$d): %2$s</string>
-    <string name="installation_error_notification__title">%1$s güncellenemedi.</string>
+    <string name="installation_error_notification__title">%1$s güncellenemedi</string>
     <string name="installation_success_notification__channel_description">Başarılı %1$s güncellemeleri için bildirim kanalı.</string>
     <string name="installation_success_notification__channel_name">%1$s başarılı güncelleme bildirimi</string>
-    <string name="installation_success_notification__message">Uygulama arka planda başarıyla güncellendi.</string>
-    <string name="installation_success_notification__title">%1$s güncellendi.</string>
+    <string name="installation_success_notification__message">Uygulama arka planda güncellendi.</string>
+    <string name="installation_success_notification__title">%1$s güncellendi</string>
     <string name="installed_app_is_not_verified">Kurulan uygulama doğrulanmadı</string>
     <string name="installed_application_is_verified">Kurulan uygulama doğrulandı</string>
     <string name="installed_version">Kuruldu: %1$s</string>
@@ -193,7 +193,7 @@
     <string name="settings__b_f__delete_cache_if_install_successful">Kurulum başarılı olursa indirilen güncellemeyi sil.</string>
     <string name="settings__background__download__enabled__summary">Bir güncelleme algılandığında indirin. Bu daha sonra güncelleme işlemini hızlandıracaktır.</string>
     <string name="settings__background__download__enabled__title">Uygulama güncellemelerini indir</string>
-    <string name="settings__background__download__metered__summary">Sınırlı mobil veriye sahip kullanıcılar için önerilmez.</string>
+    <string name="settings__background__download__metered__summary">Sınırlı mobil veriye sahip kullanıcılar için tavsiye edilmez.</string>
     <string name="settings__background__download__metered__title">Ölçülü ağlarda uygulama güncellemelerini indir</string>
     <string name="settings__background__installation__enabled__summary">Kullanıcı etkileşimi olmadan güncellemeleri kurmayı deneyin.</string>
     <string name="settings__background__installation__enabled__title">Güncellemeyi kur</string>
@@ -217,7 +217,7 @@
     <string name="settings__installer__native__title">Yerel kurucu</string>
     <string name="settings__installer__root__summary">Kullanıcı etkileşimi olmadan uygulamaları kurmak veya güncellemek için root iznini kullanır. Bu, root yapılmış bir akıllı telefon gerektirir.</string>
     <string name="settings__installer__root__title">Root kurucusu</string>
-    <string name="settings__installer__session__summary">Çoğu aygıt için önerilir.</string>
+    <string name="settings__installer__session__summary">Çoğu aygıt için tavsiye edilir.</string>
     <string name="settings__installer__session__title">Oturum kurucusu</string>
     <string name="settings__installer_category__title">Kurucu</string>
     <string name="settings__theme_battery_saver">Pil Tasarrufu etkinken koyu</string>
@@ -257,4 +257,7 @@
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
     <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır.
 \n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
+    <string name="mull__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
+    <string name="mull__title">Mull Tarayıcı</string>
+    <string name="mull__description">Bu, Mozilla teknolojisine dayanan gizlilik odaklı ve açık olmayan kısımları temizlenen bir web tarayıcısıdır. arkenfox-user.js projesindeki tercihleri kullanarak Tor Uplift projesi tarafından geliştirilen birçok özelliği etkinleştirir. \'uBlock Origin\' eklentisini kurmanız tavsiye edilir.</string>
 </resources>
