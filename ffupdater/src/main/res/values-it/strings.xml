@@ -48,10 +48,10 @@
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copia il rapporto di arresto anomalo negli appunti</string>
     <string name="crash_report__explain_text__install_activity_download_file">Durante il download si è verificato il seguente errore. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Aggiungi il rapporto sull\'arresto anomalo dagli appunti alla segnalazione.</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">Si è verificato il seguente errore quando è stato recuperato l\'URL di download. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">Si è verificato un errore quando sono stati recuperati i metadati del download. Se questo errore si verifica frequentemente, sentiti libero di segnalare il rapporto di arresto anomalo su notabug.org, GitHub o GitLab.</string>
     <string name="crash_report__explain_text__install_activity_install_file">Si è verificato il seguente errore durante l\'installazione. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Aggiungi il rapporto sull\'arresto anomalo dagli appunti alla segnalazione.</string>
-    <string name="crash_report__explain_text__main_activity_update_check">Si è verificato il seguente errore durante il controllo degli aggiornamenti nella pagina principale. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Non dimenticarti di aggiungere il tuo rapporto di arresto anomalo dagli appunti e una descrizione di come riprodurre questo errore.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Sfortunatamente, FFUpdater si è bloccato l\'ultima volta e ha registrato il seguente errore. Si prega di segnalare questo errore su notabug.org, GitHub o GitLab. Copia il rapporto sull\'arresto anomalo dagli appunti nel messaggio e aggiungi una descrizione su come replicare l\'errore.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">Si è verificato un errore durante il controllo degli aggiornamenti nella pagina principale. Se questo errore si verifica frequentemente, sentiti libero di segnalare il rapporto di arresto anomalo su notabug.org, GitHub o GitLab.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Sfortunatamente, FFUpdater si è bloccato l\'ultima volta e ha registrato un errore. Si prega di segnalare il rapporto di arresto anomalo su notabug.org, GitHub o GitLab.</string>
     <string name="crash_report__go_to_github">Vai su GitHub</string>
     <string name="crash_report__go_to_gitlab">Vai su GitLab</string>
     <string name="crash_report__got_to_notabug_org">Vai su notabug.org</string>
@@ -59,14 +59,14 @@
     <string name="device_too_old_dialog__title">Il dispositivo è troppo vecchio</string>
     <string name="dialog_button__do_not_install">No, non installarlo</string>
     <string name="dialog_button__yes">Sì</string>
-    <string name="download_error_notification__channel_description">Mostra quando i download dell\'app in background falliscono.</string>
+    <string name="download_error_notification__channel_description">Mostra quando gli aggiornamenti dei download in background falliscono.</string>
     <string name="download_error_notification__channel_name">Notifica sugli errori di download in background</string>
     <string name="download_error_notification__description">Il download in background dell\'aggiornamento %1$s non è riuscito. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab.</string>
     <string name="download_error_notification__message">Il download in background dell\'aggiornamento %1$s non è riuscito. Se questo errore si verifica frequentemente, clicca qui per visualizzare il rapporto dell\'errore.</string>
-    <string name="download_error_notification__title">Download in background dell\'aggiornamento dell\'app non riuscito</string>
+    <string name="download_error_notification__title">Download in background dell\'aggiornamento non riuscito</string>
     <string name="download_running_notification__channel_description">Mostra quando gli aggiornamenti delle app vengono scaricati in sfondo.</string>
     <string name="download_running_notification__channel_name">Notifica di scaricamento in sfondo</string>
-    <string name="download_running_notification__message">Scarica aggiornamento per %1$s (%2$s).</string>
+    <string name="download_running_notification__message">%1$s (%2$s)</string>
     <string name="download_running_notification__title">Scaricare gli aggiornamenti delle app</string>
     <string name="download_the_app">scarica l\'app</string>
     <string name="eol_apps_notification__channel_description">Canale di notifica per avvisi su app obsolete.</string>
@@ -93,7 +93,7 @@
     <string name="iceraven__description">Sicuramente non offerto da Mozilla! \n\nIceraven Browser è un browser per Android, basato sulla versione Fenix di Mozilla Firefox, GeckoView e Mozilla Android Components. \n\nIl nostro obiettivo è di essere un fork vicino al nuovo Firefox per Android che cerca di fornire agli utenti più opzioni, più opportunità di personalizzazione (tra cui una larga collezione di estensioni) e più informazioni sulle pagine che visitano e in che modo i loro browser interagiscono con quelle pagine.</string>
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="iceraven__warning">- Il manutentore non fornisce garanzie o assicurazioni di sicurezza o aggiornamenti e neanche stabilità.</string>
-    <string name="infobox">Questo è un updater per più browser di Mozilla e altri. Clicca sul pulsante Più per l\'installazione e il pulsante di freccia verso il basso per l\'aggiornamento. È possibile verificare la presenza di nuovi aggiornamenti scorrendo verso il basso o riaprendo l\'app. Per impostazione predefinita, l\'app verificherà regolarmente gli aggiornamenti in background. Ho fatto del mio meglio per garantire sicurezza durante il processo di installazione/aggiornamento - sentiti libero di ricontrollare o migliorarlo creando un pull request.
+    <string name="infobox">Questo è un updater per browser rispettosi della privacy. Clicca sul pulsante Più per installare nuove app. Scorri verso il basso per cercare nuovi aggiornamenti. Per impostazione predefinita, l\'app verificherà regolarmente gli aggiornamenti in background, che verranno poi scaricati ed eventualmente installati. Fai clic sull\'ingranaggio per personalizzare il comportamento nelle impostazioni.
 \n
 \nUltima verifica riuscita degli aggiornamenti in background: %1$s</string>
     <string name="information_about_the_app">informazioni sull\'app</string>
@@ -106,8 +106,8 @@
     <string name="install_activity__downloaded_application_is_not_verified">L\'applicazione scaricata NON è verificata</string>
     <string name="install_activity__exception__show_button">"<u>Mostra il rapporto di errore dettagliato.</u>"</string>
     <string name="install_activity__external_storage_not_accessible">La memoria esterna non è disponibile - impossibile iniziare il download. Lo stato attuale è:</string>
-    <string name="install_activity__fetch_url_for_download">Recupera l\'URL di download da %1$s</string>
-    <string name="install_activity__fetched_url_for_download_successfully">Recuperato l\'URL di download da %1$s</string>
+    <string name="install_activity__fetch_url_for_download">Recupera metadati da %1$s</string>
+    <string name="install_activity__fetched_url_for_download_successfully">Recuperati metadati da %1$s</string>
     <string name="install_activity__file_uri_exposed_toast">Impossibile esporre il percorso del file ad altre app. Si prega di aprire la cartella con il suo file manager preferito.</string>
     <string name="install_activity__github_rate_limit_exceeded">Limite di chiamate GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</string>
     <string name="install_activity__open_cache_explanation">Puoi aprire la cartella di cache per copiare il file APK in un luogo con una memoria più libera. Sfortunatamente, su Android 11+ solo pochi file manager possono accedere a questa cartella all\'interno di Android/data.</string>
@@ -127,11 +127,11 @@
     <string name="installation_error_notification__channel_description">Canale di notifica per aggiornamenti falliti %1$s.</string>
     <string name="installation_error_notification__channel_name">%1$s notifica di fallimento dell\'aggiornamento</string>
     <string name="installation_error_notification__message">Errore (%1$d): %2$s</string>
-    <string name="installation_error_notification__title">%1$s non può essere aggiornato.</string>
+    <string name="installation_error_notification__title">%1$s non può essere aggiornato</string>
     <string name="installation_success_notification__channel_description">Canale di notifica per aggiornamenti di successo %1$s.</string>
     <string name="installation_success_notification__channel_name">%1$s notifica di aggiornamento riuscito</string>
-    <string name="installation_success_notification__message">L\'app è stata aggiornata con successo in background.</string>
-    <string name="installation_success_notification__title">%1$s è stato aggiornato.</string>
+    <string name="installation_success_notification__message">L\'app è stata aggiornata in background.</string>
+    <string name="installation_success_notification__title">%1$s è stato aggiornato</string>
     <string name="installed_app_is_not_verified">L\'app installata NON è verificata</string>
     <string name="installed_application_is_verified">L\'applicazione installata è verificata</string>
     <string name="installed_version">Installata: %1$s</string>
@@ -239,4 +239,7 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi è open source solo parzialmente.
 \n- Inoltre usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
+    <string name="mull__warning">FFUpdater scarica i file dai server F-Droid e quindi non è veloce.</string>
+    <string name="mull__description">Questo è un browser web orientato alla privacy e deblobbed basato sulla tecnologia Mozilla. Abilita molte funzionalità a monte del progetto Tor Uplift usando le preferenze del progetto arkenfox-user.js. Si consiglia di installare \'uBlock Origin\'.</string>
+    <string name="mull__title">Mull Browser</string>
 </resources>

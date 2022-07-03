@@ -3,11 +3,10 @@ Aşağıdaki tarayıcıları kurar ve günceller:
 Mozilla veya Firefox tabanlı tarayıcılar
 - Firefox Tarayıcı, Android için Firefox Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
-- Iceraven
+- Mull Tarayıcı
 
 Gizlilik açısından iyi tarayıcılar:
 - Bromit, Bromit SystemWebView
-- Ungoogled Chromium
 
 Google Chrome'dan daha iyi olan tarayıcılar:
 - Brave Gizli Tarayıcı, Brave Tarayıcı (Beta), Brave Tarayıcı (Gecelik)
