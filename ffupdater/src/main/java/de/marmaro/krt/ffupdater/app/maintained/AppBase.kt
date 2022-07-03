@@ -108,8 +108,9 @@ abstract class AppBase {
         }
     }
 
-    private fun setUpdateCache(context: Context, appAppUpdateStatus: AppUpdateStatus) {
-        val jsonString = gson.toJson(appAppUpdateStatus)
+    private fun setUpdateCache(context: Context, appAppUpdateStatus: AppUpdateStatus?) {
+        val jsonString = appAppUpdateStatus
+            ?.let { gson.toJson(it) }
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit()
             .putString("${CACHE_KEY_PREFIX}__${packageName}", jsonString)
