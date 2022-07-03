@@ -1,0 +1,6 @@
+* Grazie a WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS, Hin Weisner e
+  Giovanni Donisi per aver migliorato la traduzione.
+* Contrassegnato Ungoogled Chromium e Iceraven temporaneamente come fine del ciclo di vita.
+* Aggiunto il browser Mull.
+* Migliorata la memorizzazione nella cache delle informazioni di aggiornamento.
+* Refactor/Miglioramento del codice sorgente.
