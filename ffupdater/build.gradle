@@ -28,7 +28,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3'
 
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'com.google.code.gson:gson:2.9.0'
@@ -47,8 +47,8 @@ android {
     compileSdkVersion 32
 
     defaultConfig {
-        versionCode 107
-        versionName "76.0.1" // MAJOR.MINOR.PATCH
+        versionCode 108
+        versionName "77.0.0" // MAJOR.MINOR.PATCH
         // MAJOR version when you make incompatible API changes,
         // MINOR version when you add functionality in a backwards compatible manner, and
         // PATCH version when you make backwards compatible bug fixes.

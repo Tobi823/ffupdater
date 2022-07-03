@@ -1,7 +1,11 @@
-# 2022-06-30 Version 76.1.0 (108)
+# 2022-07-03 Version 77.0.0 (108)
 
-* Mark Ungoogled Chromium and Iceraven temporary as end-of-life
-*
+* Thanks for WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS, Hin Weisner and
+  Giovanni Donisi for improving the translation.
+* Mark Ungoogled Chromium and Iceraven temporary as end-of-life.
+* Add Mull browser.
+* Improve caching of update information.
+* Refactor/Improve source code.
 
 # 2022-06-27 Version 76.0.1 (107)
 
