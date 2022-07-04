@@ -16,3 +16,5 @@
 FFUpdater 能在后台检查和下载更新。在 Android 12+ 或已 root 设备上，FFUpdater 也可以在没有用户互动的情况下更新应用程序。
 
 访问 https://notabug.org/Tobiwan/ffupdater/src/master/README.md 可了解更多信息。
+
+翻译的更新日志 https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/zh-CN/changelogs

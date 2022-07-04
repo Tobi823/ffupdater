@@ -16,3 +16,5 @@ Browser, die besser sind als Google Chrome:
 FFUpdater sucht im Hintergrund nach Updates und lädt diese auch herunter. Auf Android 12+ oder Root-Geräten kann FFUpdater die Apps auch ohne Benutzerinteraktion aktualisieren.
 
 Gehe auf https://notabug.org/Tobiwan/ffupdater/src/master/README.md für mehr Informationen.
+
+Übersetztes Changelog: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/de/changelogs
