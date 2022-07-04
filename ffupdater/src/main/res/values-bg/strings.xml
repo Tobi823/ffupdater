@@ -255,4 +255,5 @@
     <string name="vivaldi__title">Четецът Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi е само частично с отворен код.
 \n- Освен това е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
+    <string name="mull__title">Четецът Мул</string>
 </resources>
