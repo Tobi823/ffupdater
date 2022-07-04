@@ -1,0 +1,6 @@
+* Podziękowania dla WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS, Hin Weisner i
+  Giovanni Donisi za poprawę tłumaczenia.
+* Oznacz Ungoogled Chromium i Iceraven tymczasowe jako koniec życia.
+* Dodaj przeglądarkę Mull.
+* Poprawiono buforowanie informacji o aktualizacjach.
+* Refaktoryzacja/ulepszenie kodu źródłowego.
