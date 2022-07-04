@@ -44,10 +44,10 @@
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
     <string name="crash_report__explain_text__install_activity_download_file">下载过程中出现以下错误。如果这个错误频繁出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。请从剪贴板中向报告中添加崩溃报告。</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">在拉取下载 URL 时出现以下错误。如果这个错误频繁出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。记得从剪贴板里添加崩溃报告并描述如何复现这个错误。</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">在拉取下载元数据时出现错误。如果这个错误频繁出现，可以尽管向 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__explain_text__install_activity_install_file">安装过程中出现以下错误。如果这个错误频繁出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。请从剪贴板中向报告中添加崩溃报告。</string>
-    <string name="crash_report__explain_text__main_activity_update_check">在主视图中检查更新时出现以下错误。如果这个错误频繁出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。记得从剪贴板里添加崩溃报告并描述如何复现这个错误。</string>
-    <string name="crash_report__explain_text__uncaught_throwable">FFUpdater 上次不幸崩溃了，并记录到以下错误。请在 notabug.org、GitHub 或 GitLab 上报告。请从剪贴板里复制崩溃报告到信息中，并描述如何复现这个错误。</string>
+    <string name="crash_report__explain_text__main_activity_update_check">在主视图中检查更新时出现错误。如果这个错误频繁出现，可以尽管向 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__uncaught_throwable">FFUpdater 上次不幸崩溃了，并记录到此次错误。请向 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__go_to_github">跳转到 GitHub</string>
     <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
     <string name="crash_report__got_to_notabug_org">跳转到 notabug.org</string>
@@ -55,14 +55,14 @@
     <string name="device_too_old_dialog__title">设备太旧</string>
     <string name="dialog_button__do_not_install">不，请不要安装</string>
     <string name="dialog_button__yes">是</string>
-    <string name="download_error_notification__channel_description">当后台应用程序下载失败时显示。</string>
+    <string name="download_error_notification__channel_description">当在后台下载更新失败时显示。</string>
     <string name="download_error_notification__channel_name">后台下载错误通知</string>
     <string name="download_error_notification__description">后台下载 %1$s 的更新失败。如果这个错误频繁出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。</string>
     <string name="download_error_notification__message">后台下载 %1$s 的更新失败。如果此错误频繁发生，请单击此处查看错误报告。</string>
-    <string name="download_error_notification__title">后台下载应用更新失败</string>
+    <string name="download_error_notification__title">后台下载更新失败</string>
     <string name="download_running_notification__channel_description">显示何时在后台下载了更新。</string>
     <string name="download_running_notification__channel_name">后台下载通知</string>
-    <string name="download_running_notification__message">正在下载 %1$s 的更新（%2$s）。</string>
+    <string name="download_running_notification__message">%1$s（%2$s）</string>
     <string name="download_running_notification__title">正在下载应用程序更新</string>
     <string name="download_the_app">下载应用程序</string>
     <string name="eol_apps_notification__channel_description">用于警告过时应用有关信息的通知通道。</string>
@@ -97,9 +97,9 @@
 \n我们的目标是成为新版 Firefox for Android 的亲密分支，追求为用户提供更多选项和更多自定义能力（包括广泛的扩展库），以及提供更多关于他们访问的网页的信息和让他们了解浏览器如何与这些网页互动。</string>
     <string name="iceraven__title">Iceraven 浏览器</string>
     <string name="iceraven__warning">- 维护者不提供安全性、更新或稳定性的保证。</string>
-    <string name="infobox">这是一款为来自 Mozilla 和其他公司的多款浏览器打造的更新器。点击加号按钮进行安装，点击向下箭头按钮进行更新。您可以通过向下滑动或重新打开应用程序来检查更新。 默认情况下，该应用程序会定期在后台检查更新。作者已尽所能来确保安装和更新过程中的安全——欢迎仔细检查或通过创建 Pull Request 来改进它。
+    <string name="infobox">这是一款为隐私友好型浏览器打造的更新器。点击加号按钮安装新应用。向下滑动以立刻检查新的更新。 默认情况下，该应用程序会定期在后台检查更新、下载并最终安装更新。点击小齿轮以在设置中自定义行为。
 \n
-\n上次成功的后台更新检查时间：%1$s</string>
+\n上次成功后台更新检查时间：%1$s</string>
     <string name="information_about_the_app">关于此应用程序</string>
     <string name="install_activity__delete_cache_button_text">清除缓存</string>
     <string name="install_activity__delete_cache_explanation">如果您认为 FFUpdater 缓存了错误的应用更新，或者您想节省存储空间，请单击按钮删除已下载的文件。</string>
@@ -110,8 +110,8 @@
     <string name="install_activity__downloaded_application_is_not_verified">下载的应用未经验证</string>
     <string name="install_activity__exception__show_button"><u>显示详细的错误报告。</u></string>
     <string name="install_activity__external_storage_not_accessible">内部存储不可用——无法开始下载。当前状态：</string>
-    <string name="install_activity__fetch_url_for_download">从 %1$s 获取下载地址</string>
-    <string name="install_activity__fetched_url_for_download_successfully">已从 %1$s 获取下载地址</string>
+    <string name="install_activity__fetch_url_for_download">从 %1$s 获取元数据</string>
+    <string name="install_activity__fetched_url_for_download_successfully">已从 %1$s 获取元数据</string>
     <string name="install_activity__file_uri_exposed_toast">无法将文件路径暴露给其他应用。请使用您喜欢的文件管理器自行打开该文件夹。</string>
     <string name="install_activity__github_rate_limit_exceeded">已超出 GitHub API 访问率限制。 请在一个小时后尝试下载。</string>
     <string name="install_activity__open_cache_explanation">您可以打开缓存文件夹来将 APK 文件复制到有存储空间更大的位置。遗憾的是，在 Android 11+ 上，只有非常少的文件管理器可以访问 Android/data 中的这个文件夹。</string>
@@ -131,11 +131,11 @@
     <string name="installation_error_notification__channel_description">%1$s 更新失败通知通道。</string>
     <string name="installation_error_notification__channel_name">%1$s 更新失败通知</string>
     <string name="installation_error_notification__message">错误（%1$d）：%2$s</string>
-    <string name="installation_error_notification__title">无法更新 %1$s。</string>
+    <string name="installation_error_notification__title">无法更新 %1$s</string>
     <string name="installation_success_notification__channel_description">%1$s 更新成功的通知通道。</string>
     <string name="installation_success_notification__channel_name">%1$s 更新成功的通知</string>
-    <string name="installation_success_notification__message">应用已在后台成功更新。</string>
-    <string name="installation_success_notification__title">%1$s 更新成功。</string>
+    <string name="installation_success_notification__message">应用已在后台更新。</string>
+    <string name="installation_success_notification__title">%1$s 已更新</string>
     <string name="installed_app_is_not_verified">未验证已安装的应用</string>
     <string name="installed_application_is_verified">已验证已安装的应用</string>
     <string name="installed_version">已安装：%1$s</string>
@@ -249,4 +249,7 @@
     <string name="vivaldi__title">Vivaldi 浏览器</string>
     <string name="vivaldi__warning">- Vivaldi 只有部分开源。
 \n- 它还使用了 Google Chrome 的技术基础，从而间接维护了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="mull__title">Mull 浏览器</string>
+    <string name="mull__description">这是一款基于 Mozilla 技术、以隐私为导向的完全开源的网页浏览器。其使用了 arkenfox-user.js 项目的偏好设置，开启了许多以 Tor Uplift 项目为上游实现的功能。推荐同时安装 \'uBlock Origin\' 扩展。</string>
+    <string name="mull__warning">FFUpdater 要从 F-Droid 服务器下载文件，因此速度不会更快。</string>
 </resources>
