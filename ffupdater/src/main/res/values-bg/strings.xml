@@ -256,4 +256,6 @@
     <string name="vivaldi__warning">- Vivaldi е само частично с отворен код.
 \n- Освен това е на основата на Google Chrome и по този начин косвено подкрепя монополното положение на машината за изчертаване на Chromium.</string>
     <string name="mull__title">Четецът Мул</string>
+    <string name="mull__description">Това е мрежов четец, ориентиран към защита на личните данни и базиран на технологията на Мозила. Включва много от възможностите, разработени от проекта Tor Uplift, а също използва настройките от проекта arkenfox-user.js. Препоръчително е да инсталирате „uBlock Origin“.</string>
+    <string name="mull__warning">FFUpdater изтегля файловете от сървърите на F-Droid и затова не е по-бърз.</string>
 </resources>
