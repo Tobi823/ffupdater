@@ -10,7 +10,13 @@ git fetch --tags
   - `./gradlew clean adviceRelease`
 - fix and add unit tests
 - edit build.gradle to increase `versionCode` and `versionName`
-- add changelog and supporter to CHANGELOG.md (don't forget commits from Weblate)
+- add changelog and supporter to CHANGELOG.md
+- add Weblate contribution (don't forget commits from Weblate)
+  - apply suggestions from Weblate
+  - https://hosted.weblate.org/projects/ffupdater/ffupdater-app-translations/#reports
+  - https://hosted.weblate.org/projects/ffupdater/ffupdater-release-notes/#reports
+  - export as HTML
+  - copy to excel + delete unnecessary data + convert to pivot
 - copy changelog from CHANGELOG.md to `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt`
 - commit changes with references to the issues/pull requests
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org

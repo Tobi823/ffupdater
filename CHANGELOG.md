@@ -1,5 +1,7 @@
-# 2022-07-04 Version 77.0.01 (109)
+# 2022-07-04 Version 77.0.1 (109)
 
+* Thanks for Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 and Hin Weisner for improving
+  the translation.
 * Fix logic bug in extracting the signature from apps or apk files.
 
 # 2022-07-03 Version 77.0.0 (108)
