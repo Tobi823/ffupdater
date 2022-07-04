@@ -13,6 +13,9 @@ inline fun Boolean?.ifFalse(block: Boolean?.() -> Unit): Boolean? {
     if (null == this || !this) {
         block()
     }
-
     return this
 }
+
+//fun Boolean.ifTrueThen(): Boolean? {
+//    return if (this) true else null
+//}
