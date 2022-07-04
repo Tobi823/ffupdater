@@ -249,4 +249,5 @@
     <string name="vivaldi__title">Vivaldi 浏览器</string>
     <string name="vivaldi__warning">- Vivaldi 只有部分开源。
 \n- 它还使用了 Google Chrome 的技术基础，从而间接维护了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="mull__title">Mull 浏览器</string>
 </resources>
