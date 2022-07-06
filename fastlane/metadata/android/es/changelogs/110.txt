@@ -1,0 +1,3 @@
+* Gracias a los colaboradores de Weblate: TODO
+* Mejorar el texto de notificación cuando la comprobación de la actualización en segundo plano falla durante cinco días seguidos (valor antiguo: dos
+  días, pero era demasiado bajo para algunos usuarios).
