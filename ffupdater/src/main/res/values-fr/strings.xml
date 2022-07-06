@@ -9,7 +9,7 @@
     <string name="application_successfully_installed">Installation de l\'application réussie</string>
     <string name="available_version">Disponible : %1$s</string>
     <string name="available_version_error">"<u>ERREUR</u>"</string>
-    <string name="background_notification__message">Veuillez signaler cette erreur. Cliquez pour afficher le rapport d\'erreur.</string>
+    <string name="background_notification__text">Veuillez signaler cette erreur. Cliquez pour afficher le rapport d\'erreur.</string>
     <string name="background_notification__title">Échec de la vérification de la mise à jour des antécédents</string>
     <string name="brave__description">Le Navigateur Internet Brave est votre navigateur rapide, privé et sécurisé qui bloque gratuitement les publicités émises par des tiers !
 \n
@@ -41,7 +41,7 @@
     <string name="dialog_button__yes">Oui</string>
     <string name="download_running_notification__channel_description">Indique quand les mises à jour des applications sont téléchargées en arrière-plan.</string>
     <string name="download_running_notification__channel_name">Notification des téléchargements en arrière-plan</string>
-    <string name="download_running_notification__message">Télécharger la mise à jour pour %1$s (%2$s).</string>
+    <string name="download_running_notification__text">Télécharger la mise à jour pour %1$s (%2$s).</string>
     <string name="download_running_notification__title">Téléchargement des mises à jour des applications</string>
     <string name="download_the_app">télécharger l\'application</string>
     <string name="error_notification__channel_description">Afficher les erreurs du vérificateur de mise à jour des antécédents</string>
@@ -96,11 +96,11 @@
     <string name="install_same_version_dialog__title">Même version installée</string>
     <string name="installation_error_notification__channel_description">Canal de notification des échecs de mise à jour de %1$s.</string>
     <string name="installation_error_notification__channel_name">notification d\'échec de la mise à jour de %1$s</string>
-    <string name="installation_error_notification__message">Erreur (%1$d) : %2$s</string>
+    <string name="installation_error_notification__text">Erreur (%1$d) : %2$s</string>
     <string name="installation_error_notification__title">%1$s n\'a pas pu être mis à jour.</string>
     <string name="installation_success_notification__channel_description">Canal de notification pour les mises à jour réussies de %1$s.</string>
     <string name="installation_success_notification__channel_name">Notification de mise à jour réussie de %1$s</string>
-    <string name="installation_success_notification__message">L\'application a été mise à jour avec succès en arrière-plan.</string>
+    <string name="installation_success_notification__text">L\'application a été mise à jour avec succès en arrière-plan.</string>
     <string name="installation_success_notification__title">%1$s a été mis à jour.</string>
     <string name="installed_app_is_not_verified">L\'application installée n\'est PAS vérifiée</string>
     <string name="installed_application_is_verified">La demande installée est vérifiée</string>
@@ -186,7 +186,7 @@
     <string name="update_interval__8h">8 heures</string>
     <string name="update_notification__channel_description">Canal de notification des mises à jour disponibles pour %1$s.</string>
     <string name="update_notification__channel_name">Notification de mise à jour de %1$s</string>
-    <string name="update_notification__message">Cliquez pour installer la mise à jour</string>
+    <string name="update_notification__text">Cliquez pour installer la mise à jour</string>
     <string name="update_notification__title">Mise à jour pour "%1$s" disponible</string>
     <string name="vivaldi__description">Vivaldi est un navigateur pratique et très respectueux de la vie privée. Il intègre des nombreuses fonctions dont un bloqueur de pubs et traqueurs (désactivé par défaut) et un traducteur de pages. Des outils judicieux de prise de notes et de capture de page vous feront gagner du temps. En option, vous pouvez afficher les onglets comme sur ordinateurs, des thèmes clair et sombre ou personnaliser l’interface. Téléchargez-le et profitez de ses performances.</string>
     <string name="vivaldi__title">Navigateur Vivaldi</string>

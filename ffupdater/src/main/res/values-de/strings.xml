@@ -30,7 +30,7 @@
     <string name="application_successfully_installed">Anwendung erfolgreich installiert</string>
     <string name="available_version">Verfügbar: %1$s</string>
     <string name="available_version_error">"<u>FEHLER</u>"</string>
-    <string name="background_notification__message">Bitte melden Sie diesen Fehler. Klicken Sie auf diese Benachrichtigung, um den Fehlerbericht anzuzeigen.</string>
+    <string name="background_notification__text">Bitte melden Sie diesen Fehler. Klicken Sie auf diese Benachrichtigung, um den Fehlerbericht anzuzeigen.</string>
     <string name="background_notification__title">Updateprüfung ist fehlgeschlagen</string>
     <string name="brave__description">Der Brave Web Browser ist Ihr privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert! \n\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass Sie mit Anzeigen überladen oder mit Malware und Popups verseucht werden.</string>
     <string name="brave__title">Brave Browser</string>
@@ -60,7 +60,7 @@
     <string name="dialog_button__yes">Ja</string>
     <string name="download_running_notification__channel_description">Zeigt Status von Downloads von Updates im Hintergrund an.</string>
     <string name="download_running_notification__channel_name">Benachrichtigungen über Downloads im Hintergrund</string>
-    <string name="download_running_notification__message">%1$s (%2$s)</string>
+    <string name="download_running_notification__text">%1$s (%2$s)</string>
     <string name="download_running_notification__title">Lade Update herunter</string>
     <string name="download_the_app">Applikation herunterladen</string>
     <string name="error_notification__channel_description">Fehler des Hintergrund-Updateprüfung anzeigen</string>
@@ -115,11 +115,11 @@
     <string name="install_same_version_dialog__title">Gleiche Version installiert</string>
     <string name="installation_error_notification__channel_description">Benachrichtigungskanal für fehlgeschlagene %1$s-Updates.</string>
     <string name="installation_error_notification__channel_name">%1$s Benachrichtigung über Aktualisierungsfehler</string>
-    <string name="installation_error_notification__message">Fehler (%1$d): %2$s</string>
+    <string name="installation_error_notification__text">Fehler (%1$d): %2$s</string>
     <string name="installation_error_notification__title">%1$s konnte nicht aktualisiert werden</string>
     <string name="installation_success_notification__channel_description">Benachrichtigungskanal für erfolgreiche %1$s Updates.</string>
     <string name="installation_success_notification__channel_name">%1$s Benachrichtigung über erfolgreiche Aktualisierung</string>
-    <string name="installation_success_notification__message">Die App wurde im Hintergrund aktualisiert.</string>
+    <string name="installation_success_notification__text">Die App wurde im Hintergrund aktualisiert.</string>
     <string name="installation_success_notification__title">%1$s wurde aktualisiert</string>
     <string name="installed_app_is_not_verified">Installierte Anwendung ist NICHT verifiziert</string>
     <string name="installed_application_is_verified">Installierte Anwendung ist verifiziert</string>
@@ -221,7 +221,7 @@
     <string name="update_interval__8h">8 Stunden</string>
     <string name="update_notification__channel_description">Benachrichtigungskanal für verfügbare %1$s Updates.</string>
     <string name="update_notification__channel_name">Update-Benachrichtigung für %1$s</string>
-    <string name="update_notification__message">Hier klicken, um das Update zu installieren</string>
+    <string name="update_notification__text">Hier klicken, um das Update zu installieren</string>
     <string name="update_notification__title">Update für %1$s verfügbar</string>
     <string name="vivaldi__description">Vivaldi ist ein privater Browser mit einzigartigen Anpassungsmöglichkeiten. Es bietet viele Funktionen, wie z. B. Werbe- und Trackerblocker (standardmäßig deaktiviert), Webseitenübersetzung. Notizen und Screenshots helfen, Ihre Arbeit zu beschleunigen. Die Anpassung der Tabs, der Designthemen und des Aussehens verleihen dem System Persönlichkeit. Laden Sie Vivaldi kostenlos herunter surfen Sie mit Vergnügen im Internet.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
@@ -237,6 +237,6 @@
     <string name="eol_apps_notification__channel_name">Benachrichtigung bei veralteten Apps</string>
     <string name="download_error_notification__title">Hintergrunddownload des Updates ist fehlgeschlagen</string>
     <string name="eol_apps_notification__title">Veraltete Apps installiert</string>
-    <string name="download_error_notification__message">Der Hintergrunddownload des Updates von %1$s ist fehlgeschlagen. Wenn dieser Fehler häufiger auftritt, klicke hier um den Fehlerbericht zu sehen.</string>
-    <string name="eol_apps_notification__message">Du hast veraltete Apps, die nicht mehr verwendet werden sollten. Klicke hier, um mehr zu erfahren.</string>
+    <string name="download_error_notification__text">Der Hintergrunddownload des Updates von %1$s ist fehlgeschlagen. Wenn dieser Fehler häufiger auftritt, klicke hier um den Fehlerbericht zu sehen.</string>
+    <string name="eol_apps_notification__text">Du hast veraltete Apps, die nicht mehr verwendet werden sollten. Klicke hier, um mehr zu erfahren.</string>
 </resources>

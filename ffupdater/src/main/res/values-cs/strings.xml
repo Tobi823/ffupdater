@@ -10,7 +10,7 @@
     <string name="application_successfully_installed">Aplikace byla úspěšně nainstalována</string>
     <string name="available_version">K dispozici: %1$s</string>
     <string name="available_version_error">"<u>CHYBA</u>"</string>
-    <string name="background_notification__message">Prosím nahlaste tuto chybu. Kliknutím zobrazíte chybové hlášení.</string>
+    <string name="background_notification__text">Prosím nahlaste tuto chybu. Kliknutím zobrazíte chybové hlášení.</string>
     <string name="background_notification__title">Aktualizace na pozadí se nezdařila</string>
     <string name="brave__description">Webový prohlížeč Brave je rychlá a bezpečná aplikace k prohlížení webu pro Android s vestavěným blokátorem na reklamy třetích stran. Brave je bleskově rychlý, bezpečný a soukromý, který zabraňuje reklamám sledovat Vás, zamezuje infekci malware a blokuje vyskakovací okna.</string>
     <string name="brave__title">Brave Soukromý prohlížeč</string>
@@ -40,7 +40,7 @@
     <string name="dialog_button__yes">Ano</string>
     <string name="download_running_notification__channel_description">Zobrazí se, když se stahují aktualizace na pozadí.</string>
     <string name="download_running_notification__channel_name">Upozornění na stahování na pozadí</string>
-    <string name="download_running_notification__message">%1$s (%2$s)</string>
+    <string name="download_running_notification__text">%1$s (%2$s)</string>
     <string name="download_running_notification__title">Stahování aktualizací aplikací</string>
     <string name="download_the_app">stáhnout aplikaci</string>
     <string name="error_notification__channel_description">Zobrazit chyby z nástroje pro kontrolu aktualizací na pozadí</string>
@@ -93,11 +93,11 @@
     <string name="install_same_version_dialog__title">Tato verze už je nainstalovaná</string>
     <string name="installation_error_notification__channel_description">Kanál oznámení o neúspěšných aktualizacích %1$s.</string>
     <string name="installation_error_notification__channel_name">Upozornění na selhání aktualizace %1$s</string>
-    <string name="installation_error_notification__message">Chyba (%1$d): %2$s</string>
+    <string name="installation_error_notification__text">Chyba (%1$d): %2$s</string>
     <string name="installation_error_notification__title">%1$s nelze aktualizovat</string>
     <string name="installation_success_notification__channel_description">Kanál oznámení o úspěšných aktualizacích %1$s.</string>
     <string name="installation_success_notification__channel_name">Oznámení o úspěšné aktualizaci %1$s</string>
-    <string name="installation_success_notification__message">Aplikace byla aktualizována na pozadí.</string>
+    <string name="installation_success_notification__text">Aplikace byla aktualizována na pozadí.</string>
     <string name="installation_success_notification__title">Aplikace %1$s byla aktualizována</string>
     <string name="installed_app_is_not_verified">Nainstalovaná aplikace NEBYLA ověřena</string>
     <string name="installed_application_is_verified">Nainstalovaná aplikace je ověřena</string>
@@ -187,7 +187,7 @@
     <string name="update_interval__8h">8 hodin</string>
     <string name="update_notification__channel_description">Kanál upozornění na dostupné aktualizace %1$s.</string>
     <string name="update_notification__channel_name">Oznámení o aktualizaci "%1$s"</string>
-    <string name="update_notification__message">Klikněte pro instalaci aktualizací</string>
+    <string name="update_notification__text">Klikněte pro instalaci aktualizací</string>
     <string name="update_notification__title">Dostupné aktualizace pro "%1$s"</string>
     <string name="vivaldi__description">Vivaldi je nový soukromý webový prohlížeč, postavený s ohledem na flexibilitu. Přináší řadu užitečných funkcí, včetně vestavěného blokování reklam (ve výchozím nastavení vypnuto), ochranou proti sledování a soukromým překladačem. Poznámky a zachycení stránky vám ušetří čas. Přizpůsobte si vše podle sebe s možnostmi typu listy jako na počítači, tmavý a světlý vzhled, či úpravy rozložení rozhraní. Stáhněte si zdarma Vivaldi a začněte prohlížejte rychleji.</string>
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
@@ -233,10 +233,10 @@
     <string name="settings__installer__native__title">Nativní instalátor</string>
     <string name="settings__foreground__hide_warning_buttons">Skrýt tlačítko s upozorněním pro nainstalované aplikace.</string>
     <string name="download_error_notification__description">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, neváhejte ji nahlásit na stránkách notabug.org, GitHub nebo GitLab.</string>
-    <string name="download_error_notification__message">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, klikněte pro zobrazení chybového hlášení.</string>
+    <string name="download_error_notification__text">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, klikněte pro zobrazení chybového hlášení.</string>
     <string name="download_error_notification__title">Stažení aktualizace na pozadí se nezdařilo</string>
     <string name="eol_apps_notification__channel_description">Kanál upozornění na zastaralé aplikace.</string>
-    <string name="eol_apps_notification__message">Máte zastaralé aplikace, které by se již neměli dál používat. Klikněte pro více informací.</string>
+    <string name="eol_apps_notification__text">Máte zastaralé aplikace, které by se již neměli dál používat. Klikněte pro více informací.</string>
     <string name="settings__installer__root__title">Root instalátor</string>
     <string name="settings__installer__root__summary">Používá oprávnění root k instalaci nebo aktualizaci aplikací bez zásahu uživatele. To vyžaduje rootnutý smartphone.</string>
     <string name="settings__installer__session__title">Session instalátor</string>

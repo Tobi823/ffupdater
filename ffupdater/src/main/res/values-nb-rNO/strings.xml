@@ -9,7 +9,7 @@
     <string name="application_successfully_installed">Installert</string>
     <string name="available_version">Tilgjengelig: %1$s</string>
     <string name="available_version_error"><u>FEIL</u></string>
-    <string name="background_notification__message">Innrapporter denne feilen. Klikk for å vise feilrapporten.</string>
+    <string name="background_notification__text">Innrapporter denne feilen. Klikk for å vise feilrapporten.</string>
     <string name="background_notification__title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
     <string name="brave__description">Mer privat surfing, gratis. Har blokkering av reklame og oppsprett. Søk på Internett uten at reklameselskap, skadevare og oppsprett sporer deg.</string>
     <string name="brave__title">Brave-nettleseren</string>
@@ -37,7 +37,7 @@
     <string name="dialog_button__yes">Ja</string>
     <string name="download_running_notification__channel_description">Viser når programoppgraderinger lastes ned i bakgrunnen.</string>
     <string name="download_running_notification__channel_name">Merknad om nedlastinger i bakgrunnen</string>
-    <string name="download_running_notification__message">Last ned oppgradering for %1$s (%2$s).</string>
+    <string name="download_running_notification__text">Last ned oppgradering for %1$s (%2$s).</string>
     <string name="download_running_notification__title">Laster ned programoppgraderinger</string>
     <string name="download_the_app">last ned programmet</string>
     <string name="error_notification__channel_description">Vis feil i bakgrunnsoppdateringssjekken</string>
@@ -79,10 +79,10 @@
     <string name="install_same_version_dialog__message">Nyeste versjon av dette programmet er allerede installert. Last det ned og installer nyeste versjon igjen\?</string>
     <string name="install_same_version_dialog__title">Samme versjon installert</string>
     <string name="installation_error_notification__channel_description">Merknadskanal for mislykkede %1$s-oppgraderinger.</string>
-    <string name="installation_error_notification__message">Feil (%1$d): %2$s</string>
+    <string name="installation_error_notification__text">Feil (%1$d): %2$s</string>
     <string name="installation_error_notification__title">%1$s kunne ikke oppgraderes.</string>
     <string name="installation_success_notification__channel_description">Merknadskanal for %1$s-oppgraderinger.</string>
-    <string name="installation_success_notification__message">Programmet ble oppgradert i bakgrunnen.</string>
+    <string name="installation_success_notification__text">Programmet ble oppgradert i bakgrunnen.</string>
     <string name="installation_success_notification__title">%1$s har blitt oppgradert.</string>
     <string name="installed_app_is_not_verified">Det installerte programmet er IKKE bekreftet</string>
     <string name="installed_application_is_verified">Det installerte programmet er bekreftet</string>
@@ -151,7 +151,7 @@
     <string name="update_interval__8h">8 timer</string>
     <string name="update_notification__channel_description">Merknadskanal for tilgjengelige %1$s-oppgraderinger.</string>
     <string name="update_notification__channel_name">%1$s-oppgraderingsmerknad</string>
-    <string name="update_notification__message">Klikk for å installere</string>
+    <string name="update_notification__text">Klikk for å installere</string>
     <string name="update_notification__title">Ny versjon av %1$s tilgjengelig</string>
     <string name="vivaldi__title">Vivaldi-nettleseren</string>
 </resources>

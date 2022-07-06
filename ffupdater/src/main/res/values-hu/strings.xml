@@ -8,7 +8,7 @@
     <string name="application_successfully_installed">Az alkalmazás sikeresen telepítve</string>
     <string name="available_version">Elérhető: %1$s</string>
     <string name="available_version_error"><u>HIBA</u></string>
-    <string name="background_notification__message">Kérjük, jelezze ezt a hibát. Kattintson a hibajelentés megtekintéséhez.</string>
+    <string name="background_notification__text">Kérjük, jelezze ezt a hibát. Kattintson a hibajelentés megtekintéséhez.</string>
     <string name="background_notification__title">A háttérfrissítés ellenőrzése sikertelen</string>
     <string name="brave__description">Böngésszen privátban az interneten, ingyen! A Brave Private Browser App a gyors, ingyenes és biztonságos privát böngészője reklámblokkolóval és felugró ablakok blokkolójával. Privát böngészés és keresés az interneten anélkül, hogy a hirdetők, rosszindulatú programok és felugró ablakok követnék.</string>
     <string name="brave__title">Brave Private Browser</string>

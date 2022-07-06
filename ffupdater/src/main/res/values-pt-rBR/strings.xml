@@ -30,7 +30,7 @@
     <string name="application_successfully_installed">Navegador instalado com sucesso</string>
     <string name="available_version">Disponível: %1$s</string>
     <string name="available_version_error">"<u>ERRO</u>"</string>
-    <string name="background_notification__message">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
+    <string name="background_notification__text">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
     <string name="background_notification__title">Verificação em segundo plano falhou</string>
     <string name="brave__description">Navegue livremente e de modo privado! Brave é rápido, gratuito e seguro com bloqueador de pop-ups e anúncios. Navegue e pesquise na internet sem malware e rastreamento.</string>
     <string name="brave__title">Brave</string>
@@ -59,7 +59,7 @@
     <string name="dialog_button__yes">Sim</string>
     <string name="download_running_notification__channel_description">Mostra quando as atualizações do aplicativo são baixadas em segundo plano.</string>
     <string name="download_running_notification__channel_name">Notificação sobre downloads em segundo plano</string>
-    <string name="download_running_notification__message">Baixando atualização para %1$s (%2$s).</string>
+    <string name="download_running_notification__text">Baixando atualização para %1$s (%2$s).</string>
     <string name="download_running_notification__title">Download de atualizações do aplicativo</string>
     <string name="download_the_app">baixar o navegador</string>
     <string name="error_notification__channel_description">Mostrar erros ao verificar por atualizações em segundo plano</string>
@@ -112,11 +112,11 @@
     <string name="install_same_version_dialog__title">Mesma versão instalada</string>
     <string name="installation_error_notification__channel_description">Canal de notificação para atualizações de %1$s falhadas.</string>
     <string name="installation_error_notification__channel_name">%1$s notificação de falha de atualização</string>
-    <string name="installation_error_notification__message">Erro (%1$d): %2$s</string>
+    <string name="installation_error_notification__text">Erro (%1$d): %2$s</string>
     <string name="installation_error_notification__title">%1$s não puderam ser atualizados.</string>
     <string name="installation_success_notification__channel_description">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
     <string name="installation_success_notification__channel_name">%1$s notificação de atualização bem sucedida</string>
-    <string name="installation_success_notification__message">O aplicativo foi atualizado com sucesso em segundo plano.</string>
+    <string name="installation_success_notification__text">O aplicativo foi atualizado com sucesso em segundo plano.</string>
     <string name="installation_success_notification__title">%1$s foi atualizado.</string>
     <string name="installed_app_is_not_verified">O navegador instalado NÃO foi verificado</string>
     <string name="installed_application_is_verified">O navegador instalado foi verificado</string>
@@ -215,7 +215,7 @@
     <string name="update_interval__8h">8 horas</string>
     <string name="update_notification__channel_description">Canal de notificação para %1$s atualizações disponíveis.</string>
     <string name="update_notification__channel_name">"%1$s" notificações de atualização</string>
-    <string name="update_notification__message">Clique para instalar a atualização</string>
+    <string name="update_notification__text">Clique para instalar a atualização</string>
     <string name="update_notification__title">Atualização para "%1$s" disponível</string>
     <string name="vivaldi__description">Descubra um navegador extremamente veloz! Vivaldi é um navegador novo, gratuito, privado e muito flexível. Ele vem repleto de recursos úteis incluindo um AdBlocker (bloqueador de pop-ups) integrado, proteção contra rastreamento e opção de tradução privada. Navegador vem com abas especiais no estilo desktop, temas escuros/claros e muitas opções de layout.</string>
     <string name="vivaldi__title">Vivaldi</string>

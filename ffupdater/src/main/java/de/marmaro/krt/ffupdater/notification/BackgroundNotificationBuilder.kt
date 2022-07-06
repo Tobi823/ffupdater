@@ -24,7 +24,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 
 object BackgroundNotificationBuilder {
     fun showError(context: Context, exception: Exception) {
-        val message = context.getString(background_notification__message)
+        val message = context.getString(background_notification__text)
         showNotification(
             context = context,
             channelId = "background_notification",
@@ -32,7 +32,7 @@ object BackgroundNotificationBuilder {
             channelDescription = context.getString(error_notification__channel_description),
             notificationId = 300,
             notificationTitle = context.getString(background_notification__title),
-            notificationMessage = message,
+            notificationText = message,
             intent = CrashReportActivity.createIntent(context, exception, message),
         )
     }
@@ -46,7 +46,7 @@ object BackgroundNotificationBuilder {
             channelDescription = context.getString(update_notification__channel_description, appTitle),
             notificationId = 200 + app.ordinal,
             notificationTitle = context.getString(update_notification__title, appTitle),
-            notificationMessage = context.getString(update_notification__message),
+            notificationText = context.getString(update_notification__text),
             intent = InstallActivity.createIntent(context, app)
         )
     }
@@ -74,7 +74,7 @@ object BackgroundNotificationBuilder {
             channelDescription = context.getString(download_running_notification__channel_description),
             notificationId = 400 + app.ordinal,
             notificationTitle = context.getString(download_running_notification__title),
-            notificationMessage = context.getString(download_running_notification__message, appTitle, status),
+            notificationText = context.getString(download_running_notification__text, appTitle, status),
             intent = null
         )
     }
@@ -94,7 +94,7 @@ object BackgroundNotificationBuilder {
             channelDescription = context.getString(download_error_notification__channel_description),
             notificationId = 700 + app.ordinal,
             notificationTitle = context.getString(download_error_notification__title),
-            notificationMessage = context.getString(download_error_notification__message, appTitle),
+            notificationText = context.getString(download_error_notification__text, appTitle),
             intent = CrashReportActivity.createIntent(context, exception, description),
         )
     }
@@ -118,7 +118,7 @@ object BackgroundNotificationBuilder {
             ),
             notificationId = 500 + app.ordinal,
             notificationTitle = context.getString(installation_success_notification__title, appTitle),
-            notificationMessage = context.getString(installation_success_notification__message),
+            notificationText = context.getString(installation_success_notification__text),
             intent = null
         )
     }
@@ -144,7 +144,7 @@ object BackgroundNotificationBuilder {
             ),
             notificationId = 600 + app.ordinal,
             notificationTitle = context.getString(installation_error_notification__title, appTitle),
-            notificationMessage = context.getString(installation_error_notification__message, code, message),
+            notificationText = context.getString(installation_error_notification__text, code, message),
             intent = InstallActivity.createIntent(context, app)
         )
     }
@@ -166,22 +166,21 @@ object BackgroundNotificationBuilder {
             channelDescription = context.getString(eol_apps_notification__channel_description),
             notificationId = 800,
             notificationTitle = context.getString(eol_apps_notification__title),
-            notificationMessage = context.getString(eol_apps_notification__message),
+            notificationText = context.getString(eol_apps_notification__text),
             intent = MainActivity.createIntent(context)
         )
     }
 
     fun showLongTimeNoBackgroundUpdateCheck(context: Context, e: Exception) {
-        val message =
-            "In the last five days FFUpdater was not able to check for updates in the background. If you had your smartphone in flight mode for a long time, you can ignore this message. If not, click here to view the error report."
+        val message = context.getString(notification__no_update_check__text)
         showNotification(
             context = context,
             channelId = "no_update_check_notification",
-            channelName = "No background update check",
-            channelDescription = "Notification channel for warning that no background update check was successful in the last five days.",
+            channelName = context.getString(notification__no_update_check__channel_name),
+            channelDescription = context.getString(notification__no_update_check__channel_description),
             notificationId = 900,
-            notificationTitle = "No successful background update check for five days",
-            notificationMessage = message,
+            notificationTitle = context.getString(notification__no_update_check__title),
+            notificationText = message,
             intent = CrashReportActivity.createIntent(context, e, message),
         )
     }
@@ -194,7 +193,7 @@ object BackgroundNotificationBuilder {
         channelDescription: String,
         notificationId: Int,
         notificationTitle: String,
-        notificationMessage: String,
+        notificationText: String,
         intent: Intent?,
     ) {
         val notificationManager = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
@@ -208,9 +207,9 @@ object BackgroundNotificationBuilder {
         notificationBuilder
             .setSmallIcon(R.mipmap.transparent, 0)
             .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
-            .setStyle(Notification.BigTextStyle().bigText(notificationMessage))
+            .setStyle(Notification.BigTextStyle().bigText(notificationText))
             .setContentTitle(notificationTitle)
-            .setContentText(notificationMessage)
+            .setContentText(notificationText)
             .setOnlyAlertOnce(true)
             .setAutoCancel(true)
         if (intent != null) {

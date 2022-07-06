@@ -19,7 +19,7 @@
     <string name="application_successfully_installed">Application successfully installed</string>
     <string name="available_version">Available: %1$s</string>
     <string name="available_version_error">"<u>ERROR</u>"</string>
-    <string name="background_notification__message">Please report this error. Click to view the error report.</string>
+    <string name="background_notification__text">Please report this error. Click to view the error report.</string>
     <string name="background_notification__title">Background update check failed</string>
     <string name="brave__description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
     <string name="brave__title">Brave Private Browser</string>
@@ -50,16 +50,16 @@
     <string name="download_error_notification__channel_description">Shows when update downloads in the background fail.</string>
     <string name="download_error_notification__channel_name">Notification about download errors in the background</string>
     <string name="download_error_notification__description">The background download of the %1$s update failed. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab.</string>
-    <string name="download_error_notification__message">The background download of the %1$s update failed. If this error occurs frequently, click here to view the error report.</string>
+    <string name="download_error_notification__text">The background download of the %1$s update failed. If this error occurs frequently, click here to view the error report.</string>
     <string name="download_error_notification__title">Background download of update failed</string>
     <string name="download_running_notification__channel_description">Shows when app updates are downloaded in the background.</string>
     <string name="download_running_notification__channel_name">Notification about downloads in the background</string>
-    <string name="download_running_notification__message">%1$s (%2$s)</string>
+    <string name="download_running_notification__text">%1$s (%2$s)</string>
     <string name="download_running_notification__title">Downloading app updates</string>
     <string name="download_the_app">download the app</string>
     <string name="eol_apps_notification__channel_description">Notification channel for warnings about outdated apps.</string>
     <string name="eol_apps_notification__channel_name">Outdated apps notification</string>
-    <string name="eol_apps_notification__message">You have outdated apps which should not be used anymore. Click for more information.</string>
+    <string name="eol_apps_notification__text">You have outdated apps which should not be used anymore. Click for more information.</string>
     <string name="eol_apps_notification__title">Outdated apps installed</string>
     <string name="error_notification__channel_description">Show errors of the background update checker</string>
     <string name="error_notification__channel_name">Background errors</string>
@@ -115,11 +115,11 @@
     <string name="install_same_version_dialog__title">Same version installed</string>
     <string name="installation_error_notification__channel_description">Notification channel for failed %1$s updates.</string>
     <string name="installation_error_notification__channel_name">%1$s update failure notification</string>
-    <string name="installation_error_notification__message">Error (%1$d): %2$s</string>
+    <string name="installation_error_notification__text">Error (%1$d): %2$s</string>
     <string name="installation_error_notification__title">%1$s could not be updated</string>
     <string name="installation_success_notification__channel_description">Notification channel for successful %1$s updates.</string>
     <string name="installation_success_notification__channel_name">%1$s successful update notification</string>
-    <string name="installation_success_notification__message">App has been updated in the background.</string>
+    <string name="installation_success_notification__text">App has been updated in the background.</string>
     <string name="installation_success_notification__title">%1$s has been updated</string>
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
@@ -223,7 +223,7 @@
     <string name="update_interval__8h">8 hours</string>
     <string name="update_notification__channel_description">Notification channel for available %1$s updates.</string>
     <string name="update_notification__channel_name">"%1$s" update notification</string>
-    <string name="update_notification__message">Click to install update</string>
+    <string name="update_notification__text">Click to install update</string>
     <string name="update_notification__title">Update for %1$s available</string>
     <string name="vivaldi__description">Discover a blazingly fast Internet browser! Vivaldi is a new, free, and private web browser built with flexibility in mind. It comes packed with useful features including a built-in AdBlocker (pop-up blocker), tracking protection, and private translation. Browser options like proper desktop-style tabs, dark/light Themes, and layout choices help you make it yours.</string>
     <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
@@ -233,4 +233,8 @@
     <string name="mull__description">This is a privacy oriented and deblobbed web browser based on Mozilla technology. It enables many features upstreamed by the Tor Uplift project using preferences from the arkenfox-user.js project. It is recommended to install \'uBlock Origin\'.</string>
     <string name="mull__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
     <string name="download_source__fdroid" translatable="false">F-Droid</string>
+    <string name="notification__no_update_check__channel_name">No background update check</string>
+    <string name="notification__no_update_check__channel_description">Notification channel for warning that no background update check was successful in the last five days.</string>
+    <string name="notification__no_update_check__title">No successful background update check for five days</string>
+    <string name="notification__no_update_check__text">In the last five days FFUpdater was not able to check for updates in the background. If you had your smartphone in flight mode for a long time, you can ignore this message. If not, click here to view the error report.</string>
 </resources>

@@ -46,7 +46,7 @@
     <string name="application_successfully_installed">Приложение успешно установлено</string>
     <string name="available_version">Доступен: %1$s</string>
     <string name="available_version_error">"<u>ОШИБКА</u>"</string>
-    <string name="background_notification__message">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
+    <string name="background_notification__text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
     <string name="background_notification__title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
     <string name="brave__title">Браузер Brave</string>
@@ -76,7 +76,7 @@
     <string name="dialog_button__yes">Да</string>
     <string name="download_running_notification__channel_description">Показывает, когда обновления приложений загружаются в фоновом режиме.</string>
     <string name="download_running_notification__channel_name">Уведомление о загрузках в фоновом режиме</string>
-    <string name="download_running_notification__message">Загрузка обновления для %1$s (%2$s).</string>
+    <string name="download_running_notification__text">Загрузка обновления для %1$s (%2$s).</string>
     <string name="download_running_notification__title">Загрузка обновлений приложений</string>
     <string name="download_the_app">загрузить приложение</string>
     <string name="error_notification__channel_description">Показать ошибки проверки фонового обновления</string>
@@ -131,11 +131,11 @@
     <string name="install_same_version_dialog__title">Установлена та же версия</string>
     <string name="installation_error_notification__channel_description">Канал уведомления о неудачных обновлениях %1$s.</string>
     <string name="installation_error_notification__channel_name">Уведомление о сбое обновления %1$s</string>
-    <string name="installation_error_notification__message">Ошибка (%1$d): %2$s</string>
+    <string name="installation_error_notification__text">Ошибка (%1$d): %2$s</string>
     <string name="installation_error_notification__title">%1$s не удалось обновить.</string>
     <string name="installation_success_notification__channel_description">Канал уведомления об успешных обновлениях %1$s.</string>
     <string name="installation_success_notification__channel_name">%1$s уведомление об успешном обновлении</string>
-    <string name="installation_success_notification__message">Приложение было успешно обновлено в фоновом режиме.</string>
+    <string name="installation_success_notification__text">Приложение было успешно обновлено в фоновом режиме.</string>
     <string name="installation_success_notification__title">%1$s был обновлен.</string>
     <string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
@@ -237,7 +237,7 @@
     <string name="update_interval__8h">8 часов</string>
     <string name="update_notification__channel_description">Канал уведомлений для доступных обновлений %1$s.</string>
     <string name="update_notification__channel_name">Уведомление об обновлении %1$s</string>
-    <string name="update_notification__message">Нажмите, чтобы установить обновление</string>
+    <string name="update_notification__text">Нажмите, чтобы установить обновление</string>
     <string name="update_notification__title">Доступно обновление для "%1$s"</string>
     <string name="vivaldi__description">Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования. Меняйте внешний вид. Меняйте интерфейс браузера для Android с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели. Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве. Используйте несколько поисковых систем. Переключайтесь между ними в одно касание. Используйте префиксы в адресной строке для выбора нужной поисковой системы.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
