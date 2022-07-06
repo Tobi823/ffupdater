@@ -261,4 +261,7 @@
     <string name="mull__title">Mull Tarayıcı</string>
     <string name="mull__description">Bu, Mozilla teknolojisine dayanan gizlilik odaklı ve açık olmayan kısımları temizlenen bir web tarayıcısıdır. arkenfox-user.js projesindeki tercihleri kullanarak Tor Uplift projesi tarafından geliştirilen birçok özelliği etkinleştirir. \'uBlock Origin\' eklentisini kurmanız tavsiye edilir.</string>
     <string name="notification__no_update_check__channel_name">Arka plan güncelleme denetimi yok</string>
+    <string name="notification__no_update_check__channel_description">Son beş gün içinde hiçbir arka plan güncelleme denetiminin başarılı olmadığına dair uyarı için bildirim kanalı.</string>
+    <string name="notification__no_update_check__text">Son beş gün içinde FFUpdater arka planda güncellemeleri denetleyemedi. Akıllı telefonunuzu uzun süre uçuş modunda tuttuysanız, bu mesajı görmezden gelebilirsiniz. Değilse, hata raporunu görüntülemek için buraya tıklayın.</string>
+    <string name="notification__no_update_check__title">Beş gün boyunca başarılı bir arka planda güncelleme denetimi yapılmadı</string>
 </resources>
