@@ -1,2 +1,3 @@
 * Grazie a Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 e Hin Weisner per aver migliorato la traduzione.
-* Corretto un bug logico nell'estrazione della firma da app o file apk.
+  la traduzione.
+* Correzione di un bug logico nell'estrazione della firma da app o file apk.
