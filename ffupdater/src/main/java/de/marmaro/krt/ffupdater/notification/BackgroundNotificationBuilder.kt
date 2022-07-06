@@ -110,7 +110,7 @@ object BackgroundNotificationBuilder {
         val appTitle: String = context.getString(app.detail.displayTitle)
         showNotification(
             context = context,
-            channelId = "installation_success_notification__${app.name.lowercase()}",
+            channelId = "installation_success_notification",
             channelName = context.getString(notification__install_success__channel_name, appTitle),
             channelDescription = context.getString(notification__install_success__channel_descr, appTitle),
             notificationId = 500 + app.ordinal,
@@ -133,7 +133,7 @@ object BackgroundNotificationBuilder {
         val appTitle: String = context.getString(app.detail.displayTitle)
         showNotification(
             context = context,
-            channelId = "installation_error_notification__${app.name.lowercase()}",
+            channelId = "installation_error_notification",
             channelName = context.getString(notification__install_error__channel_name, appTitle),
             channelDescription = context.getString(notification__install_error__channel_descr, appTitle),
             notificationId = 600 + app.ordinal,
