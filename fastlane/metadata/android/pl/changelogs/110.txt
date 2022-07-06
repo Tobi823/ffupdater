@@ -1,0 +1,3 @@
+* Podziękowania dla współtwórców Weblate: TODO
+* Popraw tekst powiadomienia, gdy sprawdzanie aktualizacji w tle nie powiedzie się przez pięć dni z rzędu (stara wartość: dwa
+  dni, ale była zbyt niska dla niektórych użytkowników).
