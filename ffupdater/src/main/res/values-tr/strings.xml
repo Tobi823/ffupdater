@@ -260,4 +260,5 @@
     <string name="mull__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="mull__title">Mull Tarayıcı</string>
     <string name="mull__description">Bu, Mozilla teknolojisine dayanan gizlilik odaklı ve açık olmayan kısımları temizlenen bir web tarayıcısıdır. arkenfox-user.js projesindeki tercihleri kullanarak Tor Uplift projesi tarafından geliştirilen birçok özelliği etkinleştirir. \'uBlock Origin\' eklentisini kurmanız tavsiye edilir.</string>
+    <string name="notification__no_update_check__channel_name">Arka plan güncelleme denetimi yok</string>
 </resources>
