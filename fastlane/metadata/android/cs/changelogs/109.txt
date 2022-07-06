@@ -1,0 +1,3 @@
+* Děkujeme Juraji Motuzovi, Oğuzu Ersenovi, WhiredPlanckovi, Deleted User, 109247019824 a Hinovi Weisnerovi za vylepšení.
+  překladu.
+* Oprava logické chyby při extrakci podpisu z aplikací nebo souborů apk.
