@@ -1,6 +1,6 @@
 * Gracias a WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS, Hin Weisner y
   Giovanni Donisi por mejorar la traducción.
-* Marcar Ungoogled Chromium e Iceraven temporal como fin de vida.
+* Marcar Ungoogled Chromium e Iceraven temporalmente como fin de vida.
 * Añadir el navegador Mull.
 * Mejorar el almacenamiento en caché de la información de actualización.
 * Refactorizar/Mejorar el código fuente.

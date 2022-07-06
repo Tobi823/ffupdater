@@ -1,0 +1,3 @@
+* Gracias a Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 y Hin Weisner por mejorar
+  la traducción.
+* Arreglar error lógico en la extracción de la firma de las aplicaciones o archivos apk.
