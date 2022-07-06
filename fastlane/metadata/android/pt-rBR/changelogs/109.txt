@@ -1,0 +1,3 @@
+* Obrigado a Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 e Hin Weisner por melhorar
+  a tradução.
+* Corrigir bug lógico na extracção da assinatura de aplicações ou ficheiros apk.
