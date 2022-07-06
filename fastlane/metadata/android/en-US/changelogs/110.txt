@@ -1,0 +1,3 @@
+* Thanks for the Weblate contributors: TODO
+* Improve notification text when the background update check fails for five days in a row (old value: two
+  days, but was too low for some users).
