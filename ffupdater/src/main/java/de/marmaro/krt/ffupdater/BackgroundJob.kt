@@ -82,7 +82,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun handleRecoverableError(e: Exception): Result {
-        return if (runAttemptCount < RUN_ATTEMPTS_FOR_MAX_2DAYS) {
+        return if (runAttemptCount < RUN_ATTEMPTS_FOR_MAX_5DAYS) {
             Log.i(LOG_TAG, "Retry background job.", e)
             Result.retry()
         } else {
@@ -254,11 +254,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         private const val WORK_MANAGER_KEY = "update_checker"
         private const val LOG_TAG = "BackgroundJob"
 
-        // retry delays: 15s,30s,1m,2m,4m,8m,16m,32m
-        private const val RUN_ATTEMPTS_FOR_MAX_1HOUR = 8
-
-        // retry delays: 15s,30s,1m,2m,4m,8m,16m,32m,64m,128m,256m,300m,300m,300m,300m,300m,300m,300m,300m
-        private const val RUN_ATTEMPTS_FOR_MAX_2DAYS = 19
+        // first 11 delays: 15s,30s,1min,2min,4min,8min,16min,32min,64min,128min,256min = 512min
+        // 12th, 13th, ... delay: 300min
+        // 512min + 23*300min = 7412min = 5d 3h 32min
+        private const val RUN_ATTEMPTS_FOR_MAX_5DAYS = 11 + 23
 
         /**
          * Should be called when the user minimize the app to make sure that the background update check
