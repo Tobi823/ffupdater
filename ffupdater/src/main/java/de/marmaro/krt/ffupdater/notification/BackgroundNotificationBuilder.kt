@@ -24,14 +24,14 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 
 object BackgroundNotificationBuilder {
     fun showError(context: Context, exception: Exception) {
-        val message = context.getString(background_notification__text)
+        val message = context.getString(notification__error__text)
         showNotification(
             context = context,
             channelId = "background_notification",
-            channelName = context.getString(error_notification__channel_name),
-            channelDescription = context.getString(error_notification__channel_description),
+            channelName = context.getString(notification__error__channel_name),
+            channelDescription = context.getString(notification__error__channel_descr),
             notificationId = 300,
-            notificationTitle = context.getString(background_notification__title),
+            notificationTitle = context.getString(notification__error__title),
             notificationText = message,
             intent = CrashReportActivity.createIntent(context, exception, message),
         )
@@ -42,8 +42,8 @@ object BackgroundNotificationBuilder {
         showNotification(
             context = context,
             channelId = "update_notification__${app.name.lowercase()}",
-            channelName = context.getString(update_notification__channel_name, appTitle),
-            channelDescription = context.getString(update_notification__channel_description, appTitle),
+            channelName = context.getString(notification__update_available__channel_name, appTitle),
+            channelDescription = context.getString(notification__update_available__channel_descr, appTitle),
             notificationId = 200 + app.ordinal,
             notificationTitle = context.getString(update_notification__title, appTitle),
             notificationText = context.getString(update_notification__text),
@@ -70,11 +70,11 @@ object BackgroundNotificationBuilder {
         showNotification(
             context = context,
             channelId = "download_running_notification",
-            channelName = context.getString(download_running_notification__channel_name),
-            channelDescription = context.getString(download_running_notification__channel_description),
+            channelName = context.getString(notification__download_running__channel_name),
+            channelDescription = context.getString(notification__download_running__channel_descr),
             notificationId = 400 + app.ordinal,
-            notificationTitle = context.getString(download_running_notification__title),
-            notificationText = context.getString(download_running_notification__text, appTitle, status),
+            notificationTitle = context.getString(notification__download_running__title),
+            notificationText = context.getString(notification__download_running__text, appTitle, status),
             intent = null
         )
     }
@@ -86,15 +86,15 @@ object BackgroundNotificationBuilder {
 
     fun showDownloadError(context: Context, app: MaintainedApp, exception: NetworkException) {
         val appTitle = context.getString(app.detail.displayTitle)
-        val description = context.getString(download_error_notification__description, appTitle)
+        val description = context.getString(notification__download_error__descr, appTitle)
         showNotification(
             context = context,
             channelId = "download_error_notification",
-            channelName = context.getString(download_error_notification__channel_name),
-            channelDescription = context.getString(download_error_notification__channel_description),
+            channelName = context.getString(notification__download_error__channel_name),
+            channelDescription = context.getString(notification__download_error__channel_descr),
             notificationId = 700 + app.ordinal,
-            notificationTitle = context.getString(download_error_notification__title),
-            notificationText = context.getString(download_error_notification__text, appTitle),
+            notificationTitle = context.getString(notification__download_error__title),
+            notificationText = context.getString(notification__download_error__text, appTitle),
             intent = CrashReportActivity.createIntent(context, exception, description),
         )
     }
@@ -111,14 +111,11 @@ object BackgroundNotificationBuilder {
         showNotification(
             context = context,
             channelId = "installation_success_notification__${app.name.lowercase()}",
-            channelName = context.getString(installation_success_notification__channel_name, appTitle),
-            channelDescription = context.getString(
-                installation_success_notification__channel_description,
-                appTitle
-            ),
+            channelName = context.getString(notification__install_success__channel_name, appTitle),
+            channelDescription = context.getString(notification__install_success__channel_descr, appTitle),
             notificationId = 500 + app.ordinal,
-            notificationTitle = context.getString(installation_success_notification__title, appTitle),
-            notificationText = context.getString(installation_success_notification__text),
+            notificationTitle = context.getString(notification__install_success__title, appTitle),
+            notificationText = context.getString(notification__install_success__text),
             intent = null
         )
     }
@@ -137,14 +134,11 @@ object BackgroundNotificationBuilder {
         showNotification(
             context = context,
             channelId = "installation_error_notification__${app.name.lowercase()}",
-            channelName = context.getString(installation_error_notification__channel_name, appTitle),
-            channelDescription = context.getString(
-                installation_error_notification__channel_description,
-                appTitle
-            ),
+            channelName = context.getString(notification__install_error__channel_name, appTitle),
+            channelDescription = context.getString(notification__install_error__channel_descr, appTitle),
             notificationId = 600 + app.ordinal,
-            notificationTitle = context.getString(installation_error_notification__title, appTitle),
-            notificationText = context.getString(installation_error_notification__text, code, message),
+            notificationTitle = context.getString(notification__install_error__title, appTitle),
+            notificationText = context.getString(notification__install_error__text, code, message),
             intent = InstallActivity.createIntent(context, app)
         )
     }
@@ -162,11 +156,11 @@ object BackgroundNotificationBuilder {
         showNotification(
             context = context,
             channelId = "eol_apps_notification",
-            channelName = context.getString(eol_apps_notification__channel_name),
-            channelDescription = context.getString(eol_apps_notification__channel_description),
+            channelName = context.getString(notification__eol_apps__channel_name),
+            channelDescription = context.getString(notification__eol_apps__channel_description),
             notificationId = 800,
-            notificationTitle = context.getString(eol_apps_notification__title),
-            notificationText = context.getString(eol_apps_notification__text),
+            notificationTitle = context.getString(notification__eol_apps__title),
+            notificationText = context.getString(notification__eol_apps__text),
             intent = MainActivity.createIntent(context)
         )
     }
