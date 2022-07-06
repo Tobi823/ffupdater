@@ -63,30 +63,37 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      */
     @MainThread
     override suspend fun doWork(): Result = coroutineScope {
-        val (exception, maxRetries) = try {
+        try {
             Log.i(LOG_TAG, "Execute background job for update check.")
-            return@coroutineScope checkDownloadAndInstallApps()
+            checkDownloadAndInstallApps()
         } catch (e: CancellationException) {
             Log.w(LOG_TAG, "Background job failed (CancellationException)", e)
-            e to RUN_ATTEMPTS_FOR_MAX_1HOUR
+            handleRecoverableError(e)
         } catch (e: GithubRateLimitExceededException) {
             Log.w(LOG_TAG, "Background job failed (GithubRateLimitExceededException)", e)
-            e to RUN_ATTEMPTS_FOR_MAX_2DAYS
+            handleRecoverableError(e)
         } catch (e: NetworkException) {
             Log.w(LOG_TAG, "Background job failed (NetworkException)", e)
-            e to RUN_ATTEMPTS_FOR_MAX_2DAYS
+            handleRecoverableError(e)
         } catch (e: Exception) {
             Log.e(LOG_TAG, "Background job failed due to an unexpected exception", e)
-            e to 0
+            handleUnrecoverableError(e)
         }
+    }
 
-        if (runAttemptCount < maxRetries) {
-            Log.i(LOG_TAG, "Retry background job.", exception)
+    private fun handleRecoverableError(e: Exception): Result {
+        return if (runAttemptCount < RUN_ATTEMPTS_FOR_MAX_2DAYS) {
+            Log.i(LOG_TAG, "Retry background job.", e)
             Result.retry()
         } else {
-            showErrorNotification(exception)
+            BackgroundNotificationBuilder.showLongTimeNoBackgroundUpdateCheck(context, e)
             Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
+    }
+
+    private fun handleUnrecoverableError(e: Exception): Result {
+        BackgroundNotificationBuilder.showError(context, e)
+        return Result.success() // BackgroundJob should not be removed from WorkManager schedule
     }
 
     @MainThread
@@ -241,11 +248,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     private fun showUpdateNotification(appsWithUpdates: List<MaintainedApp>) {
         BackgroundNotificationBuilder.hideUpdateIsAvailable(context)
         appsWithUpdates.forEach { BackgroundNotificationBuilder.showUpdateIsAvailable(context, it) }
-    }
-
-    private fun showErrorNotification(e: Exception) {
-        val message = context.getString(R.string.background_notification__message)
-        BackgroundNotificationBuilder.showError(context, e, message)
     }
 
     companion object {

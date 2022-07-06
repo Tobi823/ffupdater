@@ -23,7 +23,8 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 
 object BackgroundNotificationBuilder {
-    fun showError(context: Context, exception: Exception, message: String) {
+    fun showError(context: Context, exception: Exception) {
+        val message = context.getString(background_notification__message)
         showNotification(
             context = context,
             channelId = "background_notification",
@@ -31,7 +32,7 @@ object BackgroundNotificationBuilder {
             channelDescription = context.getString(error_notification__channel_description),
             notificationId = 300,
             notificationTitle = context.getString(background_notification__title),
-            notificationMessage = context.getString(background_notification__message),
+            notificationMessage = message,
             intent = CrashReportActivity.createIntent(context, exception, message),
         )
     }
@@ -167,6 +168,21 @@ object BackgroundNotificationBuilder {
             notificationTitle = context.getString(eol_apps_notification__title),
             notificationMessage = context.getString(eol_apps_notification__message),
             intent = MainActivity.createIntent(context)
+        )
+    }
+
+    fun showLongTimeNoBackgroundUpdateCheck(context: Context, e: Exception) {
+        val message =
+            "In the last five days FFUpdater was not able to check for updates in the background. If you had your smartphone in flight mode for a long time, you can ignore this message. If not, click here to view the error report."
+        showNotification(
+            context = context,
+            channelId = "no_update_check_notification",
+            channelName = "No background update check",
+            channelDescription = "Notification channel for warning that no background update check was successful in the last five days.",
+            notificationId = 900,
+            notificationTitle = "No successful background update check for five days",
+            notificationMessage = message,
+            intent = CrashReportActivity.createIntent(context, e, message),
         )
     }
 
