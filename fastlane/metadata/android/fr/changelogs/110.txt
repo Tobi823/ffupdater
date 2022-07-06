@@ -1,0 +1,3 @@
+* Merci aux contributeurs de Weblate : TODO
+* Améliorer le texte de la notification lorsque la vérification de la mise à jour en arrière-plan échoue pendant cinq jours d'affilée (ancienne valeur : deux jours, mais trop peu pour certains utilisateurs).
+  jours, mais était trop faible pour certains utilisateurs).
