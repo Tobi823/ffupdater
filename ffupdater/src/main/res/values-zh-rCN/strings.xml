@@ -252,4 +252,8 @@
     <string name="mull__title">Mull 浏览器</string>
     <string name="mull__description">这是一款基于 Mozilla 技术、以隐私为导向的完全开源的网页浏览器。其使用了 arkenfox-user.js 项目的偏好设置，开启了许多以 Tor Uplift 项目为上游实现的功能。推荐同时安装 \'uBlock Origin\' 扩展。</string>
     <string name="mull__warning">FFUpdater 要从 F-Droid 服务器下载文件，因此速度不会更快。</string>
+    <string name="notification__no_update_check__channel_name">没有后台更新检查</string>
+    <string name="notification__no_update_check__channel_description">用于警告过去五天没有成功进行后台更新检查的通知渠道。</string>
+    <string name="notification__no_update_check__title">五天内没有成功后台更新检查</string>
+    <string name="notification__no_update_check__text">在过去的五天里，FFUpdater无法在后台检查更新。如果您的智能手机长时间处于飞行模式，那么可以忽略此消息。如果不是，请单击此处查看错误报告。</string>
 </resources>
