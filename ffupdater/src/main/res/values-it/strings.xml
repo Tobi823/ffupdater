@@ -242,4 +242,8 @@
     <string name="mull__warning">FFUpdater scarica i file dai server F-Droid e quindi non è veloce.</string>
     <string name="mull__description">Questo è un browser web orientato alla privacy e deblobbed basato sulla tecnologia Mozilla. Abilita molte funzionalità a monte del progetto Tor Uplift usando le preferenze del progetto arkenfox-user.js. Si consiglia di installare \'uBlock Origin\'.</string>
     <string name="mull__title">Mull Browser</string>
+    <string name="notification__no_update_check__channel_name">Nessun controllo di aggiornamento in background</string>
+    <string name="notification__no_update_check__text">Negli ultimi cinque giorni FFUpdater non è stato in grado di controllare gli aggiornamenti in background. Se lo smartphone è rimasto a lungo in modalità aereo, puoi ignorare questo messaggio. In caso contrario, clicca qui per visualizzare il rapporto di errore.</string>
+    <string name="notification__no_update_check__channel_description">Canale di notifica per avvertire che nessun controllo di aggiornamento in background è stato eseguito con successo negli ultimi cinque giorni.</string>
+    <string name="notification__no_update_check__title">Nessun controllo di aggiornamento in background andato a buon fine per cinque giorni</string>
 </resources>

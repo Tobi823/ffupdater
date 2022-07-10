@@ -1,0 +1,3 @@
+* Weblate üzerinde katkıda bulunanlara teşekkürler: TODO
+* Arka plan güncelleme denetimi arka arkaya beş gün başarısız olduğunda bildirim metnini iyileştirildi (eski değer: iki
+  gün, ancak bazı kullanıcılar için çok düşüktü).

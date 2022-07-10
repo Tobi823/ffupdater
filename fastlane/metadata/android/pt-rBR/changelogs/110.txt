@@ -1,0 +1,3 @@
+* Obrigado pelos colaboradores da Weblate: TODO
+* Melhorar o texto de notificação quando a verificação de actualização de fundo falhar durante cinco dias seguidos (valor antigo: dois
+  dias, mas era demasiado baixo para alguns utilizadores).

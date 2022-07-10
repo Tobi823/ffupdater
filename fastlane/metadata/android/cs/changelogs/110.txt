@@ -1,0 +1,3 @@
+* Děkujeme za přispěvatele Weblate: TODO
+* Vylepšit text oznámení, když se kontrola aktualizace na pozadí nezdaří pět dní po sobě (stará hodnota: dva dny).
+  ale pro některé uživatele byla příliš nízká).

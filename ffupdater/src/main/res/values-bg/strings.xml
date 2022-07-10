@@ -258,4 +258,8 @@
     <string name="mull__title">Четецът Мул</string>
     <string name="mull__description">Това е мрежов четец, ориентиран към защита на личните данни и базиран на технологията на Мозила. Включва много от възможностите, разработени от проекта Tor Uplift, а също използва настройките от проекта arkenfox-user.js. Препоръчително е да инсталирате „uBlock Origin“.</string>
     <string name="mull__warning">FFUpdater изтегля файловете от сървърите на F-Droid и затова не е по-бърз.</string>
+    <string name="notification__no_update_check__channel_description">Категория известия за липса на успешни проверки на обновяване във фонов режим в последните пет дена.</string>
+    <string name="notification__no_update_check__channel_name">Известие за липса на проверка във фонов режим</string>
+    <string name="notification__no_update_check__title">Няма успешна проверка на обновяване във фонов режим в последните пет дена</string>
+    <string name="notification__no_update_check__text">През последните пет дена FFUpdater не е направил проверка за обновяване във фонов режим. Ако сте държали устройството си на самолетен режим дълги периоди от време, можете да пренебрегнете съобщението. В противен случай докоснете, за да видите доклада за грешката.</string>
 </resources>

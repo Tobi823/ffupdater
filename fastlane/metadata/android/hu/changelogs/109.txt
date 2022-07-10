@@ -1,0 +1,3 @@
+* Köszönet Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 és Hin Weisner javításáért.
+  a fordítás javításáért.
+* Logikai hiba javítása az alkalmazások vagy apk fájlok aláírásainak kivonásakor.

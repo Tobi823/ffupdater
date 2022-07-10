@@ -1,0 +1,3 @@
+* Köszönet a Weblate közreműködőknek: TODO
+* Javítsuk az értesítés szövegét, ha a háttérfrissítés ellenőrzése öt egymást követő napon keresztül sikertelen (régi érték: kettő).
+  nap, de néhány felhasználó számára túl alacsony volt).
