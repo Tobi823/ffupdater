@@ -1,8 +1,9 @@
-# 2022-07-08 Version 77.0.2 (110)
+# 2022-07-10 Version 77.0.2 (110)
 
 * Thanks for the Weblate contributors: TODO
 * Improve notification text when the background update check fails for five days in a row (old value: two
   days, but was too low for some users).
+* Improve crash report and timestamp of last successful background update check
 
 # 2022-07-04 Version 77.0.1 (109)
 
