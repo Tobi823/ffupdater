@@ -29,7 +29,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 import java.time.Duration
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit.MINUTES
 
 /**
@@ -51,11 +51,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * Execute the logic for update checking, downloading and installation.
      *
      * If an common exception (like CancellationException, GithubRateLimitExceededException or
-     * NetworkException) occurs, then retry in a short time.
-     * The wait time between every run is logarithmic with a max value:
-     * 15s,30s,1m,2m,4m,8m,16m,32m,64m,128m,256m,300m,300m,...
+     * NetworkException) occurs, then retry it later.
+     * If after 24 retries (five days) the background check still fails, then show a notification and
+     * retry in the next regular execution interval.
      *
-     * If an uncommon exception (anything else) occurs, then retry in the next regular execution interval.
+     * If an uncommon exception (anything else) occurs, then show a notification and retry in the next
+     * regular execution interval.
      *
      * I can't return Result.error() because even if an unknown exception occurs, I want that BackgroundJob
      * is still regularly executed.
@@ -123,7 +124,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return listOf<MaintainedApp>() to Result.retry()
         }
 
-        dataStoreHelper.lastBackgroundCheck = LocalDateTime.now()
+        dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
         MaintainedApp.values()
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { app -> app.detail.isInstalled(context) }
