@@ -1,4 +1,4 @@
-# 2022-07-10 Version 77.0.2 (110)
+# 2022-07-10 Version 77.0.3 (111)
 
 * Thanks for the Weblate contributors: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS and Hin
   Weisner

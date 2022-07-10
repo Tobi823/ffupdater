@@ -1,0 +1,5 @@
+* Thanks for the Weblate contributors: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS and Hin
+  Weisner
+* Improve notification text when the background update check fails for five days in a row (old value: two
+  days, but was too low for some users).
+* Improve crash report and timestamp of last successful background update check
