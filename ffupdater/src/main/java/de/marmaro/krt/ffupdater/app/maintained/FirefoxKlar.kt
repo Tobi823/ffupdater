@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import de.marmaro.krt.ffupdater.R
@@ -28,6 +29,7 @@ class FirefoxKlar(
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
     override val normalInstallation = true
+    override val projectPage: Uri = Uri.parse("https://github.com/mozilla-mobile/focus-android")
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"

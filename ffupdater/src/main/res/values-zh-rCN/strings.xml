@@ -64,7 +64,7 @@
     <string name="notification__download_running__channel_name">后台下载通知</string>
     <string name="notification__download_running__text">%1$s（%2$s）</string>
     <string name="notification__download_running__title">正在下载应用程序更新</string>
-    <string name="download_the_app">下载应用程序</string>
+    <string name="app_card__download_the_app">下载应用程序</string>
     <string name="notification__eol_apps__channel_description">用于警告过时应用有关信息的通知通道。</string>
     <string name="notification__eol_apps__channel_name">过时应用通知</string>
     <string name="notification__eol_apps__text">您有不应当再继续使用的过时应用。点击了解更多信息。</string>
@@ -100,7 +100,7 @@
     <string name="infobox">这是一款为隐私友好型浏览器打造的更新器。点击加号按钮安装新应用。向下滑动以立刻检查新的更新。 默认情况下，该应用程序会定期在后台检查更新、下载并最终安装更新。点击小齿轮以在设置中自定义行为。
 \n
 \n上次成功后台更新检查时间：%1$s</string>
-    <string name="information_about_the_app">关于此应用程序</string>
+    <string name="app_card__information_about_the_app">关于此应用程序</string>
     <string name="install_activity__delete_cache_button_text">清除缓存</string>
     <string name="install_activity__delete_cache_explanation">如果您认为 FFUpdater 缓存了错误的应用更新，或者您想节省存储空间，请单击按钮删除已下载的文件。</string>
     <string name="install_activity__different_installer_info__text">如果安装频繁失败，请尝试在设置中切换到“原生安装器”。</string>

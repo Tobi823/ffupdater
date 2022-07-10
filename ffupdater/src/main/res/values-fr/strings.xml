@@ -43,7 +43,7 @@
     <string name="notification__download_running__channel_name">Notification des téléchargements en arrière-plan</string>
     <string name="notification__download_running__text">Télécharger la mise à jour pour %1$s (%2$s).</string>
     <string name="notification__download_running__title">Téléchargement des mises à jour des applications</string>
-    <string name="download_the_app">télécharger l\'application</string>
+    <string name="app_card__download_the_app">télécharger l\'application</string>
     <string name="notification__error__channel_descr">Afficher les erreurs du vérificateur de mise à jour des antécédents</string>
     <string name="notification__error__channel_name">Erreurs de fond</string>
     <string name="firefox_beta__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
@@ -68,7 +68,7 @@
     <string name="infobox">Il s\'agit d\'une mise à jour pour plusieurs navigateurs à partir de Mozilla. Cliquez sur le bouton plus pour installer et sur le bouton flèche vers le bas pour mettre à jour un navigateur. Vous pouvez vérifier les nouvelles mises à jour en effaçant ou en rouvrant l\'application. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan. J\'ai fait de mon mieux pour sécuriser le processus d\'installation/mise à jour - n\'hésitez pas à le vérifier ou, si nécessaire, à l\'améliorer par une demande de retrait.
 \n
 \nDernière vérification réussie de la mise à jour des antécédents : %1$s</string>
-    <string name="information_about_the_app">informations sur l\'application</string>
+    <string name="app_card__information_about_the_app">informations sur l\'application</string>
     <string name="install_activity__delete_cache_button_text">vider le cache</string>
     <string name="install_activity__delete_cache_explanation">Si vous pensez que FFUpdater a mis en cache une mise à jour d\'application défectueuse, cliquez sur le bouton \"Effacer le cache\" pour supprimer le cache de cette application.</string>
     <string name="install_activity__download_app_with_status">Télécharger l\'application (%1$s)</string>

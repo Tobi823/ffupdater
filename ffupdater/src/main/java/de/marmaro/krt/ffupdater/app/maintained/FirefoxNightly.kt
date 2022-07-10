@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import androidx.preference.PreferenceManager
@@ -35,6 +36,8 @@ class FirefoxNightly(
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
     override val normalInstallation = true
+    override val projectPage: Uri =
+        Uri.parse("https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest")
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"

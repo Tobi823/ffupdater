@@ -39,7 +39,7 @@
     <string name="notification__download_running__channel_name">Merknad om nedlastinger i bakgrunnen</string>
     <string name="notification__download_running__text">Last ned oppgradering for %1$s (%2$s).</string>
     <string name="notification__download_running__title">Laster ned programoppgraderinger</string>
-    <string name="download_the_app">last ned programmet</string>
+    <string name="app_card__download_the_app">last ned programmet</string>
     <string name="notification__error__channel_descr">Vis feil i bakgrunnsoppdateringssjekken</string>
     <string name="notification__error__channel_name">Bakgrunnsfeil</string>
     <string name="firefox_beta__warning">- Programmet er designet for utviklere og testere. Det kan inneholde forskjellige feil som kan ha innvirkning på vanlig bruk av nettleseren.</string>
@@ -52,7 +52,7 @@
     <string name="firefox_release__title">Firefox-nettleseren</string>
     <string name="go_back">Tilbake</string>
     <string name="iceraven__title">Iceraven-nettleseren</string>
-    <string name="information_about_the_app">info om programmet</string>
+    <string name="app_card__information_about_the_app">info om programmet</string>
     <string name="install_activity__delete_cache_button_text">tøm hurtiglager</string>
     <string name="install_activity__delete_cache_explanation">Hvis du tror FFUpdater har hurtiglagret en feilaktig programoppgradering kan du trykke «Tøm hurtiglager»-knappen for å slette hurtiglageret for dette programmet.</string>
     <string name="install_activity__download_app_with_status">Last ned program (%1$s)</string>

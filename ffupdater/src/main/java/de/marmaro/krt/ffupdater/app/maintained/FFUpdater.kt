@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import de.marmaro.krt.ffupdater.R
@@ -24,6 +25,7 @@ class FFUpdater(
     override val supportedAbis =
         listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64, ABI.X86, ABI.MIPS, ABI.MIPS64)
     override val normalInstallation = false
+    override val projectPage: Uri = Uri.parse("https://github.com/Tobi823/ffupdater")
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"

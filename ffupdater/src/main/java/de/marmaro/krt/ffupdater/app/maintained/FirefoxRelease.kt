@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import de.marmaro.krt.ffupdater.R
@@ -26,6 +27,8 @@ class FirefoxRelease(
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
     override val normalInstallation = true
+    override val projectPage: Uri =
+        Uri.parse("https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest")
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"

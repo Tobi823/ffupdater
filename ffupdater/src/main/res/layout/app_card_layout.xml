@@ -16,70 +16,6 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp">
 
-        <TextView
-            style="@style/TextAppearance.AppCompat.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="sans-serif-light"
-            android:singleLine="true"
-            android:tag="appCardTitle"
-            app:layout_constraintStart_toEndOf="@+id/appIcon"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/appInstalledVersion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:tag="appInstalledVersion"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appIcon" />
-
-        <TextView
-            style="@style/TextAppearance.AppCompat.Small"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:tag="appAvailableVersion"
-            app:layout_constraintEnd_toStartOf="@id/appWarningButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appInstalledVersion" />
-
-        <ImageButton
-            android:id="@+id/appWarningButton"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="8dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/app_card__app_warning_button_description"
-            android:tag="appWarningButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/appInfoButton"
-            app:srcCompat="@drawable/ic_baseline_warning_36dp" />
-
-        <ImageButton
-            android:id="@+id/appInfoButton"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="8dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/information_about_the_app"
-            android:tag="appInfoButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/appDownloadButton"
-            app:srcCompat="@drawable/ic_info_outline_blue_36dp" />
-
-        <ImageButton
-            android:id="@+id/appDownloadButton"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/download_the_app"
-            android:tag="appDownloadButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_file_download_grey" />
-
         <ImageView
             android:id="@+id/appIcon"
             android:layout_width="32dp"
@@ -88,6 +24,86 @@
             android:tag="appIcon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/appTitle"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="start"
+            android:tag="appCardTitle"
+            app:layout_constraintEnd_toStartOf="@id/appWarningButton"
+            app:layout_constraintStart_toEndOf="@id/appIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/appWarningButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/app_card__app_warning_button_description"
+            android:tag="appWarningButton"
+            app:layout_constraintEnd_toStartOf="@+id/appInfoButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_warning" />
+
+        <ImageButton
+            android:id="@+id/appInfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/app_card__information_about_the_app"
+            android:tag="appInfoButton"
+            app:layout_constraintEnd_toStartOf="@id/openProjectPage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_info_outline_blue" />
+
+        <ImageButton
+            android:id="@+id/openProjectPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/app_card__open_project_page"
+            android:tag="appOpenProjectPage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_open_in_browser_24" />
+
+        <TextView
+            android:id="@+id/appInstalledVersion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:tag="appInstalledVersion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appTitle" />
+
+        <TextView
+            android:id="@+id/appAvailableVersion"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:tag="appAvailableVersion"
+            app:layout_constraintEnd_toStartOf="@id/appDownloadButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appInstalledVersion" />
+
+        <ImageButton
+            android:id="@+id/appDownloadButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/app_card__download_the_app"
+            android:tag="appDownloadButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_file_download_grey" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import de.marmaro.krt.ffupdater.R
@@ -24,6 +25,7 @@ class Mull(
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A)
     override val normalInstallation = true
+    override val projectPage: Uri = Uri.parse("https://f-droid.org/en/packages/us.spotco.fennec_dos/")
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "ff81f5be56396594eee70fef2832256e15214122e2ba9cedd26005ffd4bcaaa8"

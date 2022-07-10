@@ -62,7 +62,7 @@
     <string name="notification__download_running__channel_name">Benachrichtigungen über Downloads im Hintergrund</string>
     <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Lade Update herunter</string>
-    <string name="download_the_app">Applikation herunterladen</string>
+    <string name="app_card__download_the_app">Applikation herunterladen</string>
     <string name="notification__error__channel_descr">Fehler des Hintergrund-Updateprüfung anzeigen</string>
     <string name="notification__error__channel_name">Fehler im Hintergrund</string>
     <string name="firefox_beta__description">Der Firefox Browser für Android blockt standardmäßig über 2000 Online-Tracker, die dir jeden Tag durchs Web folgen wollen – automatisch und mit dem verbesserten Tracking-Schutz. Warum? Um deine Privatsphäre zu schützen und Unternehmen davon abzuhalten, deine persönlichen Daten ohne deine Zustimmung zu sammeln und daraus Profit zu schlagen. Außerdem kannst du so noch schneller durchs Web surfen und bekommst nicht nur die Privatsphäre, die du verdienst, sondern auch den schnellen mobilen Browser, den du brauchst. Mit Adblocker Add-ons kannst du deinen Browser zusätzlich auf deine Bedürfnisse anpassen.</string>
@@ -85,7 +85,7 @@
     <string name="infobox">Dies ist ein Aktualisierungsprogramm für datenschutzfreundliche Browser. Klicke auf den Plus-Button, um neue Apps zu installieren. Wische nach unten, um eine Prüfung auf neue Updates zu erzwingen. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates, die dann heruntergeladen und eventuell auch installiert werden. Klicke auf das Zahnrad, um das Verhalten in den Einstellungen anzupassen.
 \n
 \nLetzte erfolgreiche Überprüfung auf Updates im Hintergrund: %1$s</string>
-    <string name="information_about_the_app">Information über die Applikation</string>
+    <string name="app_card__information_about_the_app">Information über die Applikation</string>
     <string name="install_activity__delete_cache_button_text">Cache leeren</string>
     <string name="install_activity__delete_cache_explanation">Wenn du glaubst, dass FFUpdater ein fehlerhaftes App-Update heruntergeladen hat, oder wenn du Speicherplatz sparen möchtest, dann klicke auf den Button um die Datei zu löschen.</string>
     <string name="install_activity__different_installer_info__text">Wenn die App-Installation häufig fehlschlägt, versuche in den Einstellungen die native Installationsmethode zu aktivieren.</string>

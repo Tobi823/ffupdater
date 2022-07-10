@@ -42,7 +42,7 @@
     <string name="notification__download_running__channel_name">Upozornění na stahování na pozadí</string>
     <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Stahování aktualizací aplikací</string>
-    <string name="download_the_app">stáhnout aplikaci</string>
+    <string name="app_card__download_the_app">stáhnout aplikaci</string>
     <string name="notification__error__channel_descr">Zobrazit chyby z nástroje pro kontrolu aktualizací na pozadí</string>
     <string name="notification__error__channel_name">Chyby na pozadí</string>
     <string name="firefox_beta__description">Prohlížeč Firefox pro Android je automaticky a úžasně rychlý. Každý den vás monitorují tisíce online sledovacích prvků, shromažďují informace o tom, jaké stránky navštívíte, a zpomalují vaši rychlost. Firefox ve výchozím nastavení blokuje více než 2 000 těchto sledovacích prvků, a pokud chcete svůj prohlížeč ještě více přizpůsobit, máte k dispozici doplňky pro blokování reklam. Díky prohlížeči Firefox získáte zabezpečení, jaké si zasloužíte, a rychlost, kterou potřebujete v soukromém mobilním prohlížeči.</string>
@@ -64,7 +64,7 @@
     <string name="infobox">Aktualizační nástroj pro prohlížeče šetrné k soukromí. Klepnutím na tlačítko plus nainstalujete nové aplikace. Nové aktualizace můžete zkontrolovat přejetím prstem směrem dolů. Ve výchozím nastavení bude aplikace pravidelně kontrolovat aktualizace na pozadí, které se poté stáhnou a případně nainstalují. Klepnutím na tlačítko s ozubeným kolečkem si můžete přizpůsobit nastavení.
 \n
 \nPoslední úspěšná kontrola aktualizací na pozadí: %1$s</string>
-    <string name="information_about_the_app">informace o aplikaci</string>
+    <string name="app_card__information_about_the_app">informace o aplikaci</string>
     <string name="install_activity__delete_cache_button_text">vyčistit mezipaměť</string>
     <string name="install_activity__delete_cache_explanation">Pokud si myslíte, že FFUpdater uložil do mezipaměti chybnou aktualizaci aplikace nebo pokud chcete ušetřit trochu místa, kliknutím na tlačítko odstraníte stažené soubory.</string>
     <string name="install_activity__download_app_with_status">Stahování aplikace (%1$s)</string>

@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import de.marmaro.krt.ffupdater.R
@@ -27,6 +28,7 @@ class BraveBeta(
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
     override val normalInstallation = true
+    override val projectPage: Uri = Uri.parse("https://github.com/brave/brave-browser")
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"

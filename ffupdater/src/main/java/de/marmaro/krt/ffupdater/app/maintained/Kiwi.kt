@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import androidx.preference.PreferenceManager
@@ -31,6 +32,7 @@ class Kiwi(
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86, ABI.X86_64)
     override val normalInstallation = true
+    override val projectPage: Uri = Uri.parse("https://github.com/kiwibrowser/src.next")
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"

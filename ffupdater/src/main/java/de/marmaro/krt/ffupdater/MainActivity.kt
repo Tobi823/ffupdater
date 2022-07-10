@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -24,6 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__main_activity_update_check
 import de.marmaro.krt.ffupdater.app.EolApp
 import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
@@ -36,6 +38,9 @@ import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.DateTimeException
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -186,6 +191,12 @@ class MainActivity : AppCompatActivity() {
         cardView.findViewWithTag<ImageButton>("appInfoButton").setOnClickListener {
             AppInfoDialog.newInstance(app).show(supportFragmentManager)
         }
+
+        cardView.findViewWithTag<ImageButton>("appOpenProjectPage").setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, app.detail.projectPage)
+            startActivity(browserIntent)
+        }
+
         cardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.displayTitle)
         cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.detail.displayIcon)
         mainLayout.addView(cardView)
@@ -217,7 +228,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 app.detail.checkForUpdateWithoutUsingCacheAsync(applicationContext).await()
             }
-            setAvailableVersion(app, updateResult.displayVersion)
+            setAvailableVersion(app, updateResult)
             sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable
             setDownloadButtonState(app, updateResult.isUpdateAvailable)
         } catch (e: GithubRateLimitExceededException) {
@@ -230,16 +241,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun setAvailableVersion(app: MaintainedApp, message: String) {
+    private fun setAvailableVersion(app: MaintainedApp, appUpdateStatus: AppUpdateStatus) {
         // it is possible that MainActivity is destroyed but the coroutine wants to update
         // the "available version" text field (which does not longer exists)
-        availableVersions[app]?.text = message
+        val creationDate = try {
+            appUpdateStatus.publishDate
+                ?.let { date -> ZonedDateTime.parse(date, ISO_ZONED_DATE_TIME) }
+        } catch (e: DateTimeException) {
+            null
+        }
+        val availableVersion = if (creationDate != null) {
+            val relative = DateUtils.getRelativeDateTimeString(
+                this,
+                DateUtils.SECOND_IN_MILLIS * creationDate.toEpochSecond(),
+                DateUtils.MINUTE_IN_MILLIS,
+                DateUtils.DAY_IN_MILLIS * 100,
+                0
+            )
+            "${appUpdateStatus.displayVersion} ($relative)"
+        } else {
+            appUpdateStatus.displayVersion
+        }
+        availableVersions[app]?.text = availableVersion
         errorsDuringUpdateCheck[app] = null
     }
 
     @MainThread
     private fun setAvailableVersion(apps: List<MaintainedApp>, message: String) {
-        apps.forEach { setAvailableVersion(it, message) }
+        apps.forEach { app ->
+            availableVersions[app]?.text = message
+            errorsDuringUpdateCheck[app] = null
+        }
     }
 
     @UiThread

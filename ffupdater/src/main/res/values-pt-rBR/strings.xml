@@ -61,7 +61,7 @@
     <string name="notification__download_running__channel_name">Notificação sobre downloads em segundo plano</string>
     <string name="notification__download_running__text">Baixando atualização para %1$s (%2$s).</string>
     <string name="notification__download_running__title">Download de atualizações do aplicativo</string>
-    <string name="download_the_app">baixar o navegador</string>
+    <string name="app_card__download_the_app">baixar o navegador</string>
     <string name="notification__error__channel_descr">Mostrar erros ao verificar por atualizações em segundo plano</string>
     <string name="notification__error__channel_name">Erros em segundo plano</string>
     <string name="firefox_beta__description">Firefox para Android e incrivelmente rápido é seguro. Milhares de rastreadores estão acompanhando você todos os dias, coletando informações sobre onde você vai e portanto diminuindo a velocidade de navegação. Firefox bloqueia por padrão mais de 2000 destes rastreadores e tem disponíveis extensões de bloqueadores de anúncios, caso precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa.</string>
@@ -82,7 +82,7 @@
     <string name="iceraven__title">Iceraven</string>
     <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade.</string>
     <string name="infobox">Este app instala e atualiza vários navegadores web. Clique no botão \"+\" para instalar ou no botão com \"seta para baixo\" para atualizar. Você pode verificar por novas atualizações, deslizando para baixo ou reabrindo este app. Por padrão, ele verificará regularmente por atualizações em segundo plano. Fiz o melhor para garantir a segurança do processo de instalação/atualização - fique a vontade para verificá-lo ou melhorá-lo, criando um PR. \n\nÚltima verificação em segundo plano: %1$s</string>
-    <string name="information_about_the_app">detalhes sobre o app</string>
+    <string name="app_card__information_about_the_app">detalhes sobre o app</string>
     <string name="install_activity__delete_cache_button_text">limpar cache</string>
     <string name="install_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização do navegador defeituosa ou deseja economizar espaço, clique no botão para apagar o arquivo baixado.</string>
     <string name="install_activity__different_installer_info__text">Se a instalação falhar com frequência, tente mudar para o \'instalador nativo\' nas configurações.</string>

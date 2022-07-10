@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.maintained
 
 import android.content.Context
+import android.net.Uri
 import androidx.annotation.AnyThread
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
@@ -35,6 +36,7 @@ abstract class AppBase {
 
     // The installation does not require special actions like rooting the smartphone
     abstract val normalInstallation: Boolean
+    abstract val projectPage: Uri
 
     private val mutex = Mutex()
 
@@ -70,7 +72,7 @@ abstract class AppBase {
             async {
                 mutex.withLock {
                     getUpdateCache(context)
-                        ?.takeIf { System.currentTimeMillis() - it.timestamp <= CACHE_TIME }
+                        ?.takeIf { System.currentTimeMillis() - it.objectCreationTimestamp <= CACHE_TIME }
                         ?.let { return@withLock it }
 
                     findAppUpdateStatus(context)

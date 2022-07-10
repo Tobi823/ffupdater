@@ -56,7 +56,7 @@
     <string name="notification__download_running__channel_name">Notification about downloads in the background</string>
     <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Downloading app updates</string>
-    <string name="download_the_app">download the app</string>
+    <string name="app_card__download_the_app">download the app</string>
     <string name="notification__eol_apps__channel_description">Notification channel for warnings about outdated apps.</string>
     <string name="notification__eol_apps__channel_name">Outdated apps notification</string>
     <string name="notification__eol_apps__text">You have outdated apps which should not be used anymore. Click for more information.</string>
@@ -85,7 +85,7 @@
     <string name="infobox">This is an updater for privacy-friendly browsers. Click the plus button to install new apps. Swipe down to force a check for new updates. By default, the app will periodically check for updates in the background, which will then be downloaded and eventually installed. Click the gear to customize the behavior in the settings.
 \n
 \nLast successful background update check: %1$s</string>
-    <string name="information_about_the_app">information about the app</string>
+    <string name="app_card__information_about_the_app">Information about the app</string>
     <string name="install_activity__delete_cache_button_text">clear cache</string>
     <string name="install_activity__delete_cache_explanation">If you think that FFUpdater has cached a faulty app update or if you want to save space, click the button to delete the downloaded file.</string>
     <string name="install_activity__different_installer_info__text">If the installation fails frequently, try switching to the \'native installer\' in the settings.</string>
@@ -237,4 +237,5 @@
     <string name="notification__no_update_check__channel_description">Notification channel for warning that no background update check was successful in the last five days.</string>
     <string name="notification__no_update_check__title">No successful background update check for five days</string>
     <string name="notification__no_update_check__text">In the last five days FFUpdater was not able to check for updates in the background. If you had your smartphone in flight mode for a long time, you can ignore this message. If not, click here to view the error report.</string>
+    <string name="app_card__open_project_page">Open project page in browser</string>
 </resources>

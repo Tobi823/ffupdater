@@ -72,7 +72,7 @@
     <string name="notification__download_running__channel_name">Arka planda indirmeler hakkında bildirim</string>
     <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Uygulama güncellemeleri indiriliyor</string>
-    <string name="download_the_app">uygulamayı indir</string>
+    <string name="app_card__download_the_app">uygulamayı indir</string>
     <string name="notification__eol_apps__channel_description">Güncel olmayan uygulamalarla ilgili uyarılar için bildirim kanalı.</string>
     <string name="notification__eol_apps__channel_name">Güncel olmayan uygulamalar bildirimi</string>
     <string name="notification__eol_apps__text">Artık kullanılmaması gereken güncel olmayan uygulamalarınız var. Daha fazla bilgi için tıklayın.</string>
@@ -108,7 +108,7 @@
     <string name="infobox">Bu, gizlilik dostu tarayıcılar için bir güncelleyicidir. Yeni uygulamalar kurmak için artı düğmesine tıklayın. Yeni güncellemeleri denetlemeye zorlamak için aşağı kaydırın. Öntanımlı olarak, uygulama arka planda güncellemeleri düzenli olarak denetleyecek, daha sonra indirecek ve kuracaktır. Ayarlarda davranışı özelleştirmek için dişli simgesine tıklayın.
 \n
 \nSon başarılı arka plan güncelleme denetimi: %1$s</string>
-    <string name="information_about_the_app">uygulama hakkında bilgi</string>
+    <string name="app_card__information_about_the_app">uygulama hakkında bilgi</string>
     <string name="install_activity__delete_cache_button_text">önbelleği temizle</string>
     <string name="install_activity__delete_cache_explanation">FFUpdater\'ın hatalı bir uygulama güncellemesini önbelleğe aldığını düşünüyorsanız veya yerden tasarruf etmek istiyorsanız, indirilen dosyayı silmek için düğmeye tıklayın.</string>
     <string name="install_activity__different_installer_info__text">Yükleme sık sık başarısız oluyorsa, ayarlardan \'yerel yükleyiciye\' geçmeyi deneyin.</string>
