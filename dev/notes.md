@@ -61,3 +61,31 @@ adb shell svc data disable
   GitHub#86)
 - `packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)` does not always work on Android 9 or
   later (-> if not successful, use fallback with old method)
+
+# Vanadium
+
+https://gitlab.com/api/v4/projects/grapheneos%2Fplatform_external_vanadium/repository/tags?page=1&per_page=1
+-> extract commit.id
+
+https://gitlab.com/api/v4/projects/grapheneos%2Fplatform_external_vanadium/repository/files/prebuilt%2Farm64%2FTrichromeLibrary.apk/raw?ref=d460c77a1d63556491ca9e32c03f5192492a450b
+
+https://gitlab.com/api/v4/projects/grapheneos%2Fplatform_external_vanadium/repository/files/prebuilt%2Farm64%2FTrichromeChrome.apk/raw?ref=d460c77a1d63556491ca9e32c03f5192492a450b
+
+minSdk 29
+
+Zum Abfragen der aktuellen Version:
+
+- commit.id vergleichen
+- Version aus Tag-Nachricht extrahieren
+- vielleicht Android lastUpdateTime
+
+103.0.5060.71 506007136 org.chromium.chrome
+
+app.vanadium.trichromelibrary 103.0.5060.71 506007134
+
+lastUpdateTime wird geändert, selbst wenn die gleiche Version rüberinstalliert wird
+(vielleicht als Fallback, falls keine Version hinterlegt wurde? Lieber nicht)
+
+# Links
+
+https://privacytests.org/android.html
