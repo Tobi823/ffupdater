@@ -18,6 +18,7 @@ import java.io.FileNotFoundException
 
 class PackageManagerUtil(private val packageManager: PackageManager) {
 
+    @Suppress("DEPRECATION")
     @MainThread
     @Throws(FileNotFoundException::class)
     fun getPackageArchiveInfo(path: String): Signature {
@@ -38,6 +39,7 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
         throw IllegalArgumentException("Can't extract the signature from the APK file.")
     }
 
+    @Suppress("DEPRECATION")
     @SuppressLint("PackageManagerGetSignatures")
     fun getInstalledAppInfo(app: AppBase): Signature {
         if (DeviceSdkTester.supportsAndroid9()) {
@@ -65,6 +67,7 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
         return signature
     }
 
+    @Suppress("DEPRECATION")
     private fun extractSignatureFromSignatures(packageInfo: PackageInfo?): Signature? {
         val signatures = packageInfo?.signatures ?: return null
         check(signatures.isNotEmpty()) { "Signatures must not be empty." }
