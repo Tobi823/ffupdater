@@ -3,6 +3,7 @@ Installa e aggiorna i seguenti browser:
 Browser di Mozilla o basati su Firefox:
 - Firefox Browser, Firefox per Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
+- Iceraven
 - Mull Browser
 
 Buoni browser per la privacy:

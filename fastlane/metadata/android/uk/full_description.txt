@@ -3,6 +3,7 @@
 Браузери з Mozilla або на основі Firefox:
 - Firefox браузер, Firefox для Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
+- Iceraven
 - Mull Browser
 
 Добрі конфіденційні браузери:

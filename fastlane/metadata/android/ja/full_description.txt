@@ -1,6 +1,7 @@
 Mozilla 製または Firefox ベースのブラウザのダウンロード、インストール、アップデートを行います。
 - Firefox ブラウザ、Android Beta 版 Firefox、Firefox Nightly
 - Firefox Focus、Firefox Klar
+- Iceraven
 - Mull Browser
 
 優れたプライバシーブラウザ

@@ -7,6 +7,10 @@ import de.marmaro.krt.ffupdater.R
  * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
  */
 class Iceraven : AppBase {
+    init {
+        TODO("Iceraven is not longer EOL. This class should not be called")
+    }
+
     override val packageName = "io.github.forkmaintainers.iceraven"
     override val displayTitle = R.string.iceraven__title
     override val displayIcon = R.mipmap.ic_logo_iceraven

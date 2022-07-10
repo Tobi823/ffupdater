@@ -39,7 +39,6 @@ class Iceraven(
     }
 
     override suspend fun findLatestUpdate(): LatestUpdate {
-        TODO("Iceraven is currently outdated and should not be used")
         Log.d(LOG_TAG, "check for latest version")
         val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"

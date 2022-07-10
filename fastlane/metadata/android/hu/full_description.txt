@@ -3,6 +3,7 @@ Telepíti és frissíti a következő böngészőket:
 Mozilla vagy Firefox alapú böngészők:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly.
 - Firefox Focus, Firefox Klar
+- Iceraven
 - Mull Browser
 
 Jó adatvédelmi böngészők:

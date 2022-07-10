@@ -15,6 +15,7 @@ Browsers from Mozilla or based on Firefox:
   ([GitHub Repository](https://github.com/mozilla-mobile/focus-android))
 - [Mull Browser](https://f-droid.org/en/packages/us.spotco.fennec_dos/)
   ([GitLab Repository](https://gitlab.com/divested-mobile/mull-fenix))
+- [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 
 Good privacy browsers:
 

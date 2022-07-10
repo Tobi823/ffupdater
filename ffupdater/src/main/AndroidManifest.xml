@@ -43,10 +43,10 @@
         <package android:name="org.mozilla.klar" />
         <package android:name="org.mozilla.rocket" />
         <package android:name="us.spotco.fennec_dos" />
-        <package android:name="org.ungoogled.chromium.stable" />
 
         <!-- Detect outdated/eol apps -->
         <package android:name="mozilla.lockbox" />
+        <package android:name="org.ungoogled.chromium.stable" />
     </queries>
 
     <application

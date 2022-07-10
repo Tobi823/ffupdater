@@ -3,6 +3,7 @@ Nainstaluje a aktualizuje následující prohlížeče:
 Prohlížeče od společnosti Mozilla nebo založené na Firefoxu:
 - Firefox prohlížeč, Firefox Beta pro Android, Firefox Nightly
 - Firefox Focus, Firefox Klar
+- Iceraven
 - Mull prohlížeč
 
 Prohlížeče dobré pro ochranu soukromí:

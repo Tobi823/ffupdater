@@ -1,6 +1,7 @@
 Téléchargez, installez et mettez à jour les navigateurs de Mozilla ou basés sur Firefox :
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
+- Iceraven
 - Mull Browser
 
 bons navigateurs de confidentialité :

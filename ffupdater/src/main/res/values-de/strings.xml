@@ -81,7 +81,7 @@
     <string name="go_back">Zurück</string>
     <string name="iceraven__description">Definitiv nicht von Mozilla für Sie entwickelt! \n\nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert. \n\nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
     <string name="iceraven__title">Iceraven Browser</string>
-    <string name="iceraven__warning">- Der Maintainer gibt keine Garantien oder Gewährleistungen für Sicherheit oder Updates oder gar Stabilität.</string>
+    <string name="iceraven__warning">- Der Maintainer gibt keine Garantien oder Gewährleistungen für Sicherheit oder Updates oder gar Stabilität.\n - Das Projekt braucht länger als üblich, um Sicherheitsaktualisierungen bereitzustellen.</string>
     <string name="infobox">Dies ist ein Aktualisierungsprogramm für datenschutzfreundliche Browser. Klicke auf den Plus-Button, um neue Apps zu installieren. Wische nach unten, um eine Prüfung auf neue Updates zu erzwingen. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates, die dann heruntergeladen und eventuell auch installiert werden. Klicke auf das Zahnrad, um das Verhalten in den Einstellungen anzupassen.
 \n
 \nLetzte erfolgreiche Überprüfung auf Updates im Hintergrund: %1$s</string>

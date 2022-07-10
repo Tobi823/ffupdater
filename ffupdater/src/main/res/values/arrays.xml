@@ -54,6 +54,7 @@
         <item>@string/firefox_klar__title</item>
         <item>@string/firefox_nightly__title</item>
         <item>@string/firefox_release__title</item>
+        <item>@string/iceraven__title</item>
         <item>@string/kiwi__title</item>
         <item>@string/mull__title</item>
         <item>@string/vivaldi__title</item>
@@ -71,6 +72,7 @@
         <item>FIREFOX_KLAR</item>
         <item>FIREFOX_NIGHTLY</item>
         <item>FIREFOX_RELEASE</item>
+        <item>ICERAVEN</item>
         <item>KIWI</item>
         <item>MULL</item>
         <item>VIVALDI</item>

@@ -1,6 +1,7 @@
 Pobieraj, instaluj i aktualizuj przeglądarki z Mozilli lub oparte na przeglądarce Firefox:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
+- Iceraven
 - Mull Browser
 
 dobre przeglądarki do ochrony prywatności:

@@ -1,6 +1,7 @@
 Baixar, instalar e atualizar navegadores do Mozilla ou baseados no Firefox:
 - Firefox Browser, Firefox para Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
+- Iceraven
 - Mull Browser
 
 bons navegadores de privacidade:

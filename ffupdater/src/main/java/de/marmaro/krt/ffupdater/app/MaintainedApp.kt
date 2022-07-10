@@ -14,6 +14,7 @@ enum class MaintainedApp(appDetail: AppBase) {
     FIREFOX_KLAR(FirefoxKlar()),
     FIREFOX_NIGHTLY(FirefoxNightly()),
     FIREFOX_RELEASE(FirefoxRelease()),
+    ICERAVEN(Iceraven()),
     KIWI(Kiwi()),
     MULL(Mull()),
     VIVALDI(Vivaldi()),
