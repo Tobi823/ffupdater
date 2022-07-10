@@ -5,13 +5,15 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
+import android.os.Build.*
+import android.os.Build.VERSION.RELEASE
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
+import de.marmaro.krt.ffupdater.BuildConfig.*
 
 class CrashReportActivity : AppCompatActivity() {
 
@@ -52,24 +54,14 @@ class CrashReportActivity : AppCompatActivity() {
             |${intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE)}
             |```
             |Device information:
-            || key | value |
+            || Key | Value |
             || --- | --- |
-            || version name | ${BuildConfig.VERSION_NAME} |
-            || version code | ${BuildConfig.VERSION_CODE} |
-            || build type | ${BuildConfig.BUILD_TYPE} |
-            || SDK version | ${Build.VERSION.SDK_INT} |
-            || android release | ${Build.VERSION.RELEASE} |
-            || board | ${Build.BOARD} |
-            || brand | ${Build.BRAND} |
-            || device | ${Build.DEVICE} |
-            || manufacturer | ${Build.MANUFACTURER} |
-            || model | ${Build.MODEL} |
-            || product | ${Build.PRODUCT} |
-            || SOC manufacturer | ${if (supportsAndroid12()) Build.SOC_MANUFACTURER else "/"} |
-            || SOC model | ${if (supportsAndroid12()) Build.SOC_MODEL else "/"} |
-            || supported ABIs | ${Build.SUPPORTED_ABIS.joinToString()} |
-            || tags | ${Build.TAGS} |
-            || build time | ${Build.TIME} |
+            || FFUpdater version | $VERSION_NAME ($VERSION_CODE) $BUILD_TYPE |
+            || Device | $MODEL ($PRODUCT, $DEVICE, $BOARD) |
+            || Manufacturer | $BRAND ($MANUFACTURER) | 
+            || Supported ABIs | ${SUPPORTED_ABIS.joinToString()} |
+            || Android version | $RELEASE (SDK: $SDK_INT) |
+            || OS | $HOST, $USER, $TAGS, $TIME |         
         """.trimMargin()
     }
 
