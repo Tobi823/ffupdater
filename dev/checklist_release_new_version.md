@@ -9,6 +9,7 @@ git fetch --tags
   - `./gradlew wrapper --gradle-version=6.8.2` https://gradle.org/releases/
   - `./gradlew clean adviceRelease`
 - fix and add unit tests
+- `,ff_weblate`
 - edit build.gradle to increase `versionCode` and `versionName`
 - add changelog and supporter to CHANGELOG.md
 - add Weblate contribution (don't forget commits from Weblate)

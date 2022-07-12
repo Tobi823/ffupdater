@@ -1,0 +1,3 @@
+* Thanks for the Weblate contribution from: Oğuz Ersen and 109247019824
+* Restore Iceraven
+* Rework UI to allow the download of EOL apps
