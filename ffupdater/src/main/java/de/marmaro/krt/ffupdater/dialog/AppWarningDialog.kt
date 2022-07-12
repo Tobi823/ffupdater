@@ -17,14 +17,14 @@ class AppWarningDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)
-        val warning = getString(app.detail.installationWarning!!)
+        val warning = getString(app.impl.installationWarning!!)
         val counter = warning.lines()
             .filter { it.startsWith("- ") }
             .count()
         val message = resources.getQuantityString(
             R.plurals.app_warning_dialog__message,
             counter,
-            getString(app.detail.title),
+            getString(app.impl.title),
             warning
         )
         return AlertDialog.Builder(activity)
@@ -48,7 +48,7 @@ class AppWarningDialog : DialogFragment() {
         private const val BUNDLE_APP_NAME = "app_name"
 
         fun newInstance(app: App): AppWarningDialog {
-            requireNotNull(app.detail.installationWarning)
+            requireNotNull(app.impl.installationWarning)
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
             val fragment = AppWarningDialog()

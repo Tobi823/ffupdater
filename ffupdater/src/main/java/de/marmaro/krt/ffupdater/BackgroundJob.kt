@@ -127,9 +127,9 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
         App.values()
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
-            .filter { app -> app.detail.isInstalled(context) }
+            .filter { app -> app.impl.isInstalled(context) }
             .filter { app ->
-                app.detail.checkForUpdateWithoutUsingCacheAsync(context).await().isUpdateAvailable
+                app.impl.checkForUpdateWithoutUsingCacheAsync(context).await().isUpdateAvailable
             }
             .let { apps -> return apps to null }
     }
@@ -161,7 +161,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         val appCache = AppCache(app)
-        val updateResult = app.detail.checkForUpdateAsync(context).await() // this result should be cached
+        val updateResult = app.impl.checkForUpdateAsync(context).await() // this result should be cached
         val availableResult = updateResult.latestUpdate
         if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")

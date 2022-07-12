@@ -70,10 +70,10 @@ abstract class AbstractSessionInstaller(
     private fun createSessionParams(context: Context): SessionParams {
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
         val params = SessionParams(MODE_FULL_INSTALL)
-        val displayIcon = app.detail.icon // store display icon id in variable to prevent crash
+        val displayIcon = app.impl.icon // store display icon id in variable to prevent crash
         params.setAppIcon(BitmapFactory.decodeResource(context.resources, displayIcon))
-        params.setAppLabel(context.getString(app.detail.title))
-        params.setAppPackageName(app.detail.packageName)
+        params.setAppLabel(context.getString(app.impl.title))
+        params.setAppPackageName(app.impl.packageName)
         params.setSize(file.length())
         if (DeviceSdkTester.supportsAndroidNougat()) {
             params.setOriginatingUid(android.os.Process.myUid())
@@ -88,7 +88,7 @@ abstract class AbstractSessionInstaller(
     }
 
     private fun copyApkToSession(session: Session) {
-        val name = "${app.detail.packageName}_${System.currentTimeMillis()}"
+        val name = "${app.impl.packageName}_${System.currentTimeMillis()}"
         session.openWrite(name, 0, file.length()).use { sessionStream ->
             file.inputStream().use { downloadedFileStream ->
                 downloadedFileStream.copyTo(sessionStream)

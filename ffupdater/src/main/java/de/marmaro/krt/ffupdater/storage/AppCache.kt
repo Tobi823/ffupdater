@@ -8,7 +8,7 @@ import java.io.File
 
 class AppCache(val app: App) {
     fun getFile(context: Context): File {
-        return File(getCacheFolder(context), "${app.detail.packageName}.apk")
+        return File(getCacheFolder(context), "${app.impl.packageName}.apk")
     }
 
     suspend fun isAvailable(context: Context, available: LatestUpdate?): Boolean {
@@ -16,7 +16,7 @@ class AppCache(val app: App) {
         if (available == null || !file.exists() || file.length() == 0L) {
             return false
         }
-        return app.detail.isAvailableVersionEqualToArchive(context, file, available)
+        return app.impl.isAvailableVersionEqualToArchive(context, file, available)
     }
 
     private fun getCacheFolder(context: Context): File {

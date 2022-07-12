@@ -23,9 +23,9 @@ class InstallNewAppDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
         val apps = App.values()
-            .filter { app -> app.detail.showAsInstallable() }
-            .filterNot { app -> app.detail.isInstalled(context) }
-        val names = apps.map { app -> context.getString(app.detail.title) }
+            .filter { app -> app.impl.showAsInstallable() }
+            .filterNot { app -> app.impl.isInstalled(context) }
+        val names = apps.map { app -> context.getString(app.impl.title) }
             .toTypedArray()
 
         return AlertDialog.Builder(activity)
@@ -37,16 +37,16 @@ class InstallNewAppDialog(
     private fun triggerAppInstallation(app: App) {
         // do not install an app which incompatible ABIs
         deviceAbiExtractor.supportedAbis
-            .none { abi -> abi in app.detail.supportedAbis }
+            .none { abi -> abi in app.impl.supportedAbis }
             .ifTrue { UnsupportedAbiDialog.newInstance().show(parentFragmentManager); return }
 
         // do not install an app which require a newer Android version
-        if (DeviceSdkTester.sdkInt < app.detail.minApiLevel) {
+        if (DeviceSdkTester.sdkInt < app.impl.minApiLevel) {
             DeviceTooOldDialog.newInstance(app).show(parentFragmentManager)
             return
         }
 
-        if (app.detail.installationWarning != null) {
+        if (app.impl.installationWarning != null) {
             AppWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
             return
         }

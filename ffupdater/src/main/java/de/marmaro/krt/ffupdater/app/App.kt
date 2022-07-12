@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app
 
 import de.marmaro.krt.ffupdater.app.impl.*
 
-enum class App(appDetail: AppBase) {
+enum class App(appBase: AppBase) {
     BRAVE(Brave()),
     BRAVE_BETA(BraveBeta()),
     BRAVE_NIGHTLY(BraveNightly()),
@@ -22,5 +22,5 @@ enum class App(appDetail: AppBase) {
     VIVALDI(Vivaldi()),
     ;
 
-    val detail: AppBase = appDetail
+    val impl: AppBase = appBase
 }

@@ -75,7 +75,7 @@ class SettingsActivity : AppCompatActivity() {
             val excludedApps =
                 findPreference<MultiSelectListPreference>("background__update_check__excluded_apps")
             excludedApps?.entries = App.values()
-                .map { app -> getString(app.detail.title) }
+                .map { app -> getString(app.impl.title) }
                 .toTypedArray()
             excludedApps?.entryValues = App.values()
                 .map { app -> app.name }

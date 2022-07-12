@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         mainLayout.removeAllViews()
         cleanUpObjects()
         App.values()
-            .filter { it.detail.isInstalled(this) }
+            .filter { it.impl.isInstalled(this) }
             .forEach { initUIForApp(mainLayout, it, ForegroundSettingsHelper(this)) }
     }
 
@@ -142,13 +142,13 @@ class MainActivity : AppCompatActivity() {
     ) {
         val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
-        cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.detail.icon)
-        cardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.title)
+        cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.impl.icon)
+        cardView.findViewWithTag<TextView>("appCardTitle").setText(app.impl.title)
 
         val warningButton = cardView.findViewWithTag<ImageButton>("appWarningButton")
         when {
             settingsHelper.isHideWarningButtonForInstalledApps -> warningButton.visibility = View.GONE
-            app.detail.installationWarning == null -> warningButton.visibility = View.GONE
+            app.impl.installationWarning == null -> warningButton.visibility = View.GONE
             else -> {
                 warningButton.setOnClickListener {
                     AppWarningDialog.newInstance(app).show(supportFragmentManager)
@@ -161,17 +161,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         cardView.findViewWithTag<ImageButton>("appOpenProjectPage").setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.detail.projectPage))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.impl.projectPage))
             startActivity(browserIntent)
         }
 
         val eolReason = cardView.findViewWithTag<TextView>("eolReason")
-        app.detail.isEol()
-            .ifTrue { eolReason.text = getString(app.detail.eolReason!!) }
+        app.impl.isEol()
+            .ifTrue { eolReason.text = getString(app.impl.eolReason!!) }
             .ifFalse { eolReason.visibility = View.GONE }
 
         val installedVersion = cardView.findViewWithTag<TextView>("appInstalledVersion")
-        installedVersion.text = app.detail.getDisplayInstalledVersion(this)
+        installedVersion.text = app.impl.getDisplayInstalledVersion(this)
 
         val availableVersion = cardView.findViewWithTag<TextView>("appAvailableVersion")
         availableVersions[app] = availableVersion
@@ -200,7 +200,7 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private suspend fun checkForUpdates(useCache: Boolean = true) {
         val apps = App.values()
-            .filter { it.detail.isInstalled(this@MainActivity) }
+            .filter { it.impl.isInstalled(this@MainActivity) }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
@@ -219,9 +219,9 @@ class MainActivity : AppCompatActivity() {
     private suspend fun checkForAppUpdate(app: App, useCache: Boolean) {
         try {
             val updateResult = if (useCache) {
-                app.detail.checkForUpdateAsync(applicationContext).await()
+                app.impl.checkForUpdateAsync(applicationContext).await()
             } else {
-                app.detail.checkForUpdateWithoutUsingCacheAsync(applicationContext).await()
+                app.impl.checkForUpdateWithoutUsingCacheAsync(applicationContext).await()
             }
             setAvailableVersion(app, updateResult)
             sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable

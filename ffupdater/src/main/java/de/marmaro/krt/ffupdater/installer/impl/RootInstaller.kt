@@ -26,7 +26,7 @@ class RootInstaller(
 
     init {
         App.values().forEach {
-            val packageName = it.detail.packageName
+            val packageName = it.impl.packageName
             val basePath = "/storage/emulated/0/Android/data/de.marmaro.krt.ffupdater/files/Download"
             allowListAbsoluteFilePath.add("$basePath/${packageName}.apk")
             allowListFileName.add("${packageName}.apk")

@@ -175,12 +175,12 @@ class InstallActivity : AppCompatActivity() {
     private suspend fun fetchDownloadInformation() {
         show(R.id.fetchUrl)
         val app = viewModel.app!!
-        val downloadSource = getString(app.detail.downloadSource)
+        val downloadSource = getString(app.impl.downloadSource)
         setText(R.id.fetchUrlTextView, getString(install_activity__fetch_url_for_download, downloadSource))
 
         if (viewModel.appAppUpdateStatus == null) {
             // only check for updates if the cache is empty
-            val updateCache = app.detail.getUpdateCache(this)
+            val updateCache = app.impl.getUpdateCache(this)
             if (updateCache != null) {
                 viewModel.appAppUpdateStatus = updateCache
             } else {
@@ -191,7 +191,7 @@ class InstallActivity : AppCompatActivity() {
                 }
 
                 try {
-                    viewModel.appAppUpdateStatus = app.detail.checkForUpdateAsync(this).await()
+                    viewModel.appAppUpdateStatus = app.impl.checkForUpdateAsync(this).await()
                 } catch (e: GithubRateLimitExceededException) {
                     failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
                     return
@@ -313,7 +313,7 @@ class InstallActivity : AppCompatActivity() {
             show(R.id.fingerprintInstalledGood)
             setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
 
-            viewModel.app!!.detail.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
+            viewModel.app!!.impl.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
 
             if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
                 appCache.delete(this)

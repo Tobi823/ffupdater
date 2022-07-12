@@ -54,7 +54,7 @@ class MullIT {
 
         packageInfo = PackageInfo()
         packageInfo.versionName = ""
-        every { packageManager.getPackageInfo(MULL.detail.packageName, any()) } returns packageInfo
+        every { packageManager.getPackageInfo(MULL.impl.packageName, any()) } returns packageInfo
 
         sut = Mull(fdroidConsumer, deviceAbiExtractor)
     }
@@ -113,7 +113,7 @@ class MullIT {
                 )
             ).let { if (invertedFdroidConsumerResult) it.reversed() else it }
         )
-        coEvery { fdroidConsumer.getLatestUpdate(MULL.detail.packageName) } returns appInfo
+        coEvery { fdroidConsumer.getLatestUpdate(MULL.impl.packageName) } returns appInfo
 
         val result = runBlocking {
             sut.findLatestUpdate()

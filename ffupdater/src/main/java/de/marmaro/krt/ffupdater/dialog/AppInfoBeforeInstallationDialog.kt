@@ -20,8 +20,8 @@ class AppInfoBeforeInstallationDialog : DialogFragment() {
         val app = App.valueOf(appName)
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-            .setTitle(app.detail.title)
-            .setMessage(app.detail.description)
+            .setTitle(app.impl.title)
+            .setMessage(app.impl.description)
             .setPositiveButton(R.string.install_app) { dialog, _ ->
                 dialog.dismiss()
                 mainActivity.installApp(app, askForConfirmationIfOtherDownloadsAreRunning = true)

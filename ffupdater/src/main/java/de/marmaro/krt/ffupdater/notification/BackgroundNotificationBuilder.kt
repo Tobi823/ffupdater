@@ -38,7 +38,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showUpdateIsAvailable(context: Context, app: App) {
-        val appTitle: String = context.getString(app.detail.title)
+        val appTitle: String = context.getString(app.impl.title)
         showNotification(
             context = context,
             channelId = "update_notification__${app.name.lowercase()}",
@@ -61,7 +61,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showDownloadIsRunning(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
-        val appTitle = context.getString(app.detail.title)
+        val appTitle = context.getString(app.impl.title)
         val status = when {
             progressInPercent != null -> "$progressInPercent %"
             totalMB != null -> "$totalMB MB"
@@ -85,7 +85,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showDownloadError(context: Context, app: App, exception: NetworkException) {
-        val appTitle = context.getString(app.detail.title)
+        val appTitle = context.getString(app.impl.title)
         val description = context.getString(notification__download_error__descr, appTitle)
         showNotification(
             context = context,
@@ -107,7 +107,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showInstallationSuccess(context: Context, app: App) {
-        val appTitle: String = context.getString(app.detail.title)
+        val appTitle: String = context.getString(app.impl.title)
         showNotification(
             context = context,
             channelId = "installation_success_notification",
@@ -130,7 +130,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showInstallationError(context: Context, app: App, code: Int?, message: String?) {
-        val appTitle: String = context.getString(app.detail.title)
+        val appTitle: String = context.getString(app.impl.title)
         showNotification(
             context = context,
             channelId = "installation_error_notification",

@@ -39,6 +39,6 @@ open class BaseAppIT {
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
         every { context.getString(R.string.available_version, any()) } returns "/"
         packageInfo.versionName = ""
-        every { packageManager.getPackageInfo(app.detail.packageName, any()) } returns packageInfo
+        every { packageManager.getPackageInfo(app.impl.packageName, any()) } returns packageInfo
     }
 }
