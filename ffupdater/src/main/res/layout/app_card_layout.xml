@@ -75,13 +75,23 @@
             app:srcCompat="@drawable/ic_baseline_open_in_browser_24" />
 
         <TextView
+            android:id="@+id/eol_reason"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:tag="eolReason"
+            android:textColor="@color/errorRed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appTitle" />
+
+        <TextView
             android:id="@+id/appInstalledVersion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:tag="appInstalledVersion"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appTitle" />
+            app:layout_constraintTop_toBottomOf="@id/eol_reason" />
 
         <TextView
             android:id="@+id/appAvailableVersion"

@@ -18,13 +18,12 @@ class FFUpdater(
     override val packageName = "de.marmaro.krt.ffupdater"
     override val displayTitle = R.string.app_name
     override val displayDescription = R.string.app_description
-    override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_launcher
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis =
         listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64, ABI.X86, ABI.MIPS, ABI.MIPS64)
-    override val normalInstallation = false
+    override val installableWithDefaultPermission = false
     override val projectPage: Uri = Uri.parse("https://github.com/Tobi823/ffupdater")
 
     @Suppress("SpellCheckingInspection")

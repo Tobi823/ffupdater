@@ -23,7 +23,7 @@ class InstallNewAppDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
         val apps = MaintainedApp.values()
-            .filter { app -> app.detail.normalInstallation }
+            .filter { app -> app.detail.showAsInstallable() }
             .filterNot { app -> app.detail.isInstalled(context) }
         val names = apps.map { app -> context.getString(app.detail.displayTitle) }
             .toTypedArray()

@@ -23,12 +23,11 @@ class FirefoxKlar(
     override val packageName = "org.mozilla.klar"
     override val displayTitle = R.string.firefox_klar__title
     override val displayDescription = R.string.firefox_klar__description
-    override val displayWarning: Int? = null
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_logo_firefox_focus_klar
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
-    override val normalInstallation = true
+    override val installableWithDefaultPermission = true
     override val projectPage: Uri = Uri.parse("https://github.com/mozilla-mobile/focus-android")
 
     @Suppress("SpellCheckingInspection")

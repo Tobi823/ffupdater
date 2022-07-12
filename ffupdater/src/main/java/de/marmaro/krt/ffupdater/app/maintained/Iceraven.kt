@@ -27,7 +27,7 @@ class Iceraven(
     override val displayIcon = R.mipmap.ic_logo_iceraven
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
-    override val normalInstallation = true
+    override val installableWithDefaultPermission = true
     override val projectPage: Uri = Uri.parse("https://github.com/fork-maintainers/iceraven-browser")
 
     @Suppress("SpellCheckingInspection")

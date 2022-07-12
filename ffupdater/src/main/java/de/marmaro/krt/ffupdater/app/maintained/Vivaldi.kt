@@ -25,7 +25,7 @@ class Vivaldi(
     override val displayIcon = R.mipmap.ic_logo_vivaldi
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64)
-    override val normalInstallation = true
+    override val installableWithDefaultPermission = true
     override val projectPage: Uri = Uri.parse("https://vivaldi.com/de/download/")
 
     @Suppress("SpellCheckingInspection")

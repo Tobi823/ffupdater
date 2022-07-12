@@ -27,16 +27,15 @@ abstract class AppBase {
     abstract val packageName: String
     abstract val displayTitle: Int
     abstract val displayDescription: Int
-    abstract val displayWarning: Int?
+    open val displayWarning: Int? = null
     abstract val displayDownloadSource: Int
     abstract val displayIcon: Int
     abstract val minApiLevel: Int
     abstract val supportedAbis: List<ABI>
     abstract val signatureHash: String
-
-    // The installation does not require special actions like rooting the smartphone
-    abstract val normalInstallation: Boolean
+    abstract val installableWithDefaultPermission: Boolean
     abstract val projectPage: Uri
+    open val eolReason: Int? = null
 
     private val mutex = Mutex()
 
@@ -60,6 +59,10 @@ abstract class AppBase {
     fun getDisplayAvailableVersion(context: Context, availableVersionResult: LatestUpdate): String {
         return context.getString(R.string.available_version, availableVersionResult.version)
     }
+
+    fun isEol() = (eolReason != null)
+
+    fun showAsInstallable() = installableWithDefaultPermission && !isEol()
 
     @AnyThread
     open fun appIsInstalled(context: Context, available: AppUpdateStatus) {

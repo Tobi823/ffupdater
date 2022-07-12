@@ -23,7 +23,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__main_activity_update_check
-import de.marmaro.krt.ffupdater.app.EolApp
 import de.marmaro.krt.ffupdater.app.MaintainedApp
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
@@ -36,6 +35,8 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import de.marmaro.krt.ffupdater.utils.ifFalse
+import de.marmaro.krt.ffupdater.utils.ifTrue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.DateTimeException
@@ -127,22 +128,9 @@ class MainActivity : AppCompatActivity() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
         mainLayout.removeAllViews()
         cleanUpObjects()
-        val settingsHelper = ForegroundSettingsHelper(this)
-        EolApp.values()
-            .filter { it.impl.isInstalled(this) }
-            .forEach { initUIForEolApp(mainLayout, it) }
         MaintainedApp.values()
             .filter { it.detail.isInstalled(this) }
-            .forEach { initUIForApp(mainLayout, it, settingsHelper) }
-    }
-
-    @UiThread
-    private fun initUIForEolApp(mainLayout: LinearLayout, app: EolApp) {
-        val cardView = layoutInflater.inflate(R.layout.eol_app_card_layout, mainLayout, false)
-        cardView.findViewWithTag<TextView>("app_title").setText(app.impl.displayTitle)
-        cardView.findViewWithTag<ImageView>("app_icon").setImageResource(app.impl.displayIcon)
-        cardView.findViewWithTag<TextView>("eol_reason").setText(app.impl.eolReason)
-        mainLayout.addView(cardView)
+            .forEach { initUIForApp(mainLayout, it, ForegroundSettingsHelper(this)) }
     }
 
     @UiThread
@@ -152,6 +140,34 @@ class MainActivity : AppCompatActivity() {
         settingsHelper: ForegroundSettingsHelper
     ) {
         val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
+
+        cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.detail.displayIcon)
+        cardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.displayTitle)
+
+        val warningButton = cardView.findViewWithTag<ImageButton>("appWarningButton")
+        when {
+            settingsHelper.isHideWarningButtonForInstalledApps -> warningButton.visibility = View.GONE
+            app.detail.displayWarning == null -> warningButton.visibility = View.GONE
+            else -> {
+                warningButton.setOnClickListener {
+                    AppWarningDialog.newInstance(app).show(supportFragmentManager)
+                }
+            }
+        }
+
+        cardView.findViewWithTag<ImageButton>("appInfoButton").setOnClickListener {
+            AppInfoDialog.newInstance(app).show(supportFragmentManager)
+        }
+
+        cardView.findViewWithTag<ImageButton>("appOpenProjectPage").setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, app.detail.projectPage)
+            startActivity(browserIntent)
+        }
+
+        val eolReason = cardView.findViewWithTag<TextView>("eolReason")
+        app.detail.isEol()
+            .ifTrue { eolReason.text = getString(app.detail.eolReason!!) }
+            .ifFalse { eolReason.visibility = View.GONE }
 
         val installedVersion = cardView.findViewWithTag<TextView>("appInstalledVersion")
         installedVersion.text = app.detail.getDisplayInstalledVersion(this)
@@ -177,28 +193,6 @@ class MainActivity : AppCompatActivity() {
         downloadButtons[app] = downloadButton
         setDownloadButtonState(app, false)
 
-        val warningButton = cardView.findViewWithTag<ImageButton>("appWarningButton")
-        when {
-            settingsHelper.isHideWarningButtonForInstalledApps -> warningButton.visibility = View.GONE
-            app.detail.displayWarning == null -> warningButton.visibility = View.GONE
-            else -> {
-                warningButton.setOnClickListener {
-                    AppWarningDialog.newInstance(app).show(supportFragmentManager)
-                }
-            }
-        }
-
-        cardView.findViewWithTag<ImageButton>("appInfoButton").setOnClickListener {
-            AppInfoDialog.newInstance(app).show(supportFragmentManager)
-        }
-
-        cardView.findViewWithTag<ImageButton>("appOpenProjectPage").setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, app.detail.projectPage)
-            startActivity(browserIntent)
-        }
-
-        cardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.displayTitle)
-        cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.detail.displayIcon)
         mainLayout.addView(cardView)
     }
 

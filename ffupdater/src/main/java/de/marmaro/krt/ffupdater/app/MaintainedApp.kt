@@ -17,6 +17,7 @@ enum class MaintainedApp(appDetail: AppBase) {
     ICERAVEN(Iceraven()),
     KIWI(Kiwi()),
     MULL(Mull()),
+    UNGOOGLED_CHROMIUM(UngoogledChromium()),
     VIVALDI(Vivaldi()),
     ;
 
