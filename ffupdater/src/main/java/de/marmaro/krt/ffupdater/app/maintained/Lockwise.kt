@@ -15,7 +15,7 @@ class Lockwise(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
 ) : AppBase() {
     override val packageName = "mozilla.lockbox"
-    override val displayTitle = R.string.lockwise__title
+    override val title = R.string.lockwise__title
     override val displayDescription = R.string.lockwise__description
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_logo_lockwise

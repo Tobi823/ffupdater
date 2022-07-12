@@ -19,7 +19,7 @@ class FirefoxRelease(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.mozilla.firefox"
-    override val displayTitle = R.string.firefox_release__title
+    override val title = R.string.firefox_release__title
     override val displayDescription = R.string.firefox_release__description
     override val displayWarning = R.string.firefox_release__warning
     override val displayDownloadSource = R.string.mozilla_ci

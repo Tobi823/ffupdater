@@ -28,7 +28,7 @@ class FirefoxNightly(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.mozilla.fenix"
-    override val displayTitle = R.string.firefox_nightly__title
+    override val title = R.string.firefox_nightly__title
     override val displayDescription = R.string.firefox_nightly__description
     override val displayWarning = R.string.firefox_nightly__warning
     override val displayDownloadSource = R.string.mozilla_ci

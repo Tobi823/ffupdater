@@ -20,7 +20,7 @@ class BraveNightly(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.brave.browser_nightly"
-    override val displayTitle = R.string.brave_nightly__title
+    override val title = R.string.brave_nightly__title
     override val displayDescription = R.string.brave_nightly__description
     override val displayWarning = R.string.brave__warning
     override val displayDownloadSource = R.string.github

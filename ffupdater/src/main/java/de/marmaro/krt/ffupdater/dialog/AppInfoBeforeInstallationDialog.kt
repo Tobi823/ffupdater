@@ -20,7 +20,7 @@ class AppInfoBeforeInstallationDialog : DialogFragment() {
         val app = MaintainedApp.valueOf(appName)
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
-            .setTitle(app.detail.displayTitle)
+            .setTitle(app.detail.title)
             .setMessage(app.detail.displayDescription)
             .setPositiveButton(R.string.install_app) { dialog, _ ->
                 dialog.dismiss()

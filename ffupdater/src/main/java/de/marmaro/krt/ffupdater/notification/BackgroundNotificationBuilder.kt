@@ -38,7 +38,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showUpdateIsAvailable(context: Context, app: MaintainedApp) {
-        val appTitle: String = context.getString(app.detail.displayTitle)
+        val appTitle: String = context.getString(app.detail.title)
         showNotification(
             context = context,
             channelId = "update_notification__${app.name.lowercase()}",
@@ -61,7 +61,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showDownloadIsRunning(context: Context, app: MaintainedApp, progressInPercent: Int?, totalMB: Long?) {
-        val appTitle = context.getString(app.detail.displayTitle)
+        val appTitle = context.getString(app.detail.title)
         val status = when {
             progressInPercent != null -> "$progressInPercent %"
             totalMB != null -> "$totalMB MB"
@@ -85,7 +85,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showDownloadError(context: Context, app: MaintainedApp, exception: NetworkException) {
-        val appTitle = context.getString(app.detail.displayTitle)
+        val appTitle = context.getString(app.detail.title)
         val description = context.getString(notification__download_error__descr, appTitle)
         showNotification(
             context = context,
@@ -107,7 +107,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showInstallationSuccess(context: Context, app: MaintainedApp) {
-        val appTitle: String = context.getString(app.detail.displayTitle)
+        val appTitle: String = context.getString(app.detail.title)
         showNotification(
             context = context,
             channelId = "installation_success_notification",
@@ -130,7 +130,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showInstallationError(context: Context, app: MaintainedApp, code: Int?, message: String?) {
-        val appTitle: String = context.getString(app.detail.displayTitle)
+        val appTitle: String = context.getString(app.detail.title)
         showNotification(
             context = context,
             channelId = "installation_error_notification",

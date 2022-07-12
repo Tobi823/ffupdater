@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
         val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
         cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.detail.displayIcon)
-        cardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.displayTitle)
+        cardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.title)
 
         val warningButton = cardView.findViewWithTag<ImageButton>("appWarningButton")
         when {

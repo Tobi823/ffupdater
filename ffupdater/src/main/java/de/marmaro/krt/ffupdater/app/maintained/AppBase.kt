@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app.maintained
 
 import android.content.Context
 import android.net.Uri
+import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import androidx.annotation.AnyThread
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
@@ -12,6 +13,7 @@ import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.ABI.*
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 import kotlinx.coroutines.Deferred
@@ -25,7 +27,7 @@ import java.io.File
 
 abstract class AppBase {
     abstract val packageName: String
-    abstract val displayTitle: Int
+    abstract val title: Int
     abstract val displayDescription: Int
     open val displayWarning: Int? = null
     abstract val displayDownloadSource: Int
@@ -153,15 +155,11 @@ abstract class AppBase {
     }
 
     companion object {
-        const val CACHE_TIME = 600_000L // 10 minutes
+        const val CACHE_TIME = 10 * MINUTE_IN_MILLIS
         const val CACHE_KEY_PREFIX = "cached_update_check_result__"
+        val ALL_ABIS = listOf(ARM64_V8A, ARMEABI_V7A, ARMEABI, X86_64, X86, MIPS, MIPS64)
+        val ARM_AND_X_ABIS = listOf(ARM64_V8A, ARMEABI_V7A, X86_64, X86)
+        val ARM_ABIS = listOf(ARM64_V8A, ARMEABI_V7A)
         val gson = Gson()
-        val ALL_ABIS = listOf(
-            ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64, ABI.X86, ABI.MIPS,
-            ABI.MIPS64
-        )
-        val ARM_AND_X_ABIS = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
-        val ARM_ABIS = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A)
-
     }
 }

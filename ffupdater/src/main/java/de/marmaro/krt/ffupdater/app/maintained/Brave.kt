@@ -20,7 +20,7 @@ class Brave(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.brave.browser"
-    override val displayTitle = R.string.brave__title
+    override val title = R.string.brave__title
     override val displayDescription = R.string.brave__description
     override val displayWarning = R.string.brave__warning
     override val displayDownloadSource = R.string.github

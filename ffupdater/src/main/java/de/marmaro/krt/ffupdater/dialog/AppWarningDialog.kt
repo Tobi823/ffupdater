@@ -24,7 +24,7 @@ class AppWarningDialog : DialogFragment() {
         val message = resources.getQuantityString(
             R.plurals.app_warning_dialog__message,
             counter,
-            getString(app.detail.displayTitle),
+            getString(app.detail.title),
             warning
         )
         return AlertDialog.Builder(activity)

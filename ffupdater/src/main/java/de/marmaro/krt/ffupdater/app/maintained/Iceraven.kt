@@ -20,7 +20,7 @@ class Iceraven(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "io.github.forkmaintainers.iceraven"
-    override val displayTitle = R.string.iceraven__title
+    override val title = R.string.iceraven__title
     override val displayDescription = R.string.iceraven__description
     override val displayWarning = R.string.iceraven__warning
     override val displayDownloadSource = R.string.github

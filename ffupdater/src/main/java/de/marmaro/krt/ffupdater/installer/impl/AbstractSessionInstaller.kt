@@ -72,7 +72,7 @@ abstract class AbstractSessionInstaller(
         val params = SessionParams(MODE_FULL_INSTALL)
         val displayIcon = app.detail.displayIcon // store display icon id in variable to prevent crash
         params.setAppIcon(BitmapFactory.decodeResource(context.resources, displayIcon))
-        params.setAppLabel(context.getString(app.detail.displayTitle))
+        params.setAppLabel(context.getString(app.detail.title))
         params.setAppPackageName(app.detail.packageName)
         params.setSize(file.length())
         if (DeviceSdkTester.supportsAndroidNougat()) {

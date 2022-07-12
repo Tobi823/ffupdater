@@ -24,7 +24,7 @@ class Kiwi(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.kiwibrowser.browser"
-    override val displayTitle = R.string.kiwi__title
+    override val title = R.string.kiwi__title
     override val displayDescription = R.string.kiwi__description
     override val displayWarning = R.string.kiwi__warning
     override val displayDownloadSource = R.string.github

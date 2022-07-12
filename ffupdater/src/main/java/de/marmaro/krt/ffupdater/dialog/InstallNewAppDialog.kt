@@ -25,7 +25,7 @@ class InstallNewAppDialog(
         val apps = MaintainedApp.values()
             .filter { app -> app.detail.showAsInstallable() }
             .filterNot { app -> app.detail.isInstalled(context) }
-        val names = apps.map { app -> context.getString(app.detail.displayTitle) }
+        val names = apps.map { app -> context.getString(app.detail.title) }
             .toTypedArray()
 
         return AlertDialog.Builder(activity)

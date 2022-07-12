@@ -15,7 +15,7 @@ class FFUpdater(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
 ) : AppBase() {
     override val packageName = "de.marmaro.krt.ffupdater"
-    override val displayTitle = R.string.app_name
+    override val title = R.string.app_name
     override val displayDescription = R.string.app_description
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_launcher

@@ -19,7 +19,7 @@ class UngoogledChromium(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.ungoogled.chromium.stable"
-    override val displayTitle = R.string.ungoogled_chromium__title
+    override val title = R.string.ungoogled_chromium__title
     override val displayDescription = R.string.ungoogled_chromium__description
     override val displayWarning = R.string.ungoogled_chromium__warning
     override val displayDownloadSource = R.string.github
@@ -34,7 +34,6 @@ class UngoogledChromium(
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"
 
     override suspend fun findLatestUpdate(): LatestUpdate {
-        TODO("UngoogledChromium is currently outdated and should not be used")
         Log.d(LOG_TAG, "check for latest version")
         val fileName = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"

@@ -24,7 +24,7 @@ class AppWarningBeforeInstallationDialog : DialogFragment() {
         val message = resources.getQuantityString(
             R.plurals.app_warning_before_installation_dialog__installation_question,
             counter,
-            getString(app.detail.displayTitle),
+            getString(app.detail.title),
             warning
         )
 

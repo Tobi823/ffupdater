@@ -21,7 +21,7 @@ class FirefoxFocus(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.mozilla.focus"
-    override val displayTitle = R.string.firefox_focus__title
+    override val title = R.string.firefox_focus__title
     override val displayDescription = R.string.firefox_focus__description
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_logo_firefox_focus_klar
