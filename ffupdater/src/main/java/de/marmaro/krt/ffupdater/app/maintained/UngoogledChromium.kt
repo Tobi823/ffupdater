@@ -25,8 +25,7 @@ class UngoogledChromium(
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_logo_ungoogled_chromium
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = listOf(ABI.ARMEABI_V7A, ABI.ARM64_V8A, ABI.X86)
-    override val installableWithDefaultPermission = true
+    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86)
     override val projectPage: Uri =
         Uri.parse("https://github.com/ungoogled-software/ungoogled-chromium-android")
     override val eolReason = R.string.generic_eol_reason__browser_to_old

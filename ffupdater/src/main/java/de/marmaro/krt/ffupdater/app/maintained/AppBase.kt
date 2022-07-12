@@ -33,7 +33,7 @@ abstract class AppBase {
     abstract val minApiLevel: Int
     abstract val supportedAbis: List<ABI>
     abstract val signatureHash: String
-    abstract val installableWithDefaultPermission: Boolean
+    open val installableWithDefaultPermission: Boolean = true
     abstract val projectPage: Uri
     open val eolReason: Int? = null
 
@@ -156,5 +156,12 @@ abstract class AppBase {
         const val CACHE_TIME = 600_000L // 10 minutes
         const val CACHE_KEY_PREFIX = "cached_update_check_result__"
         val gson = Gson()
+        val ALL_ABIS = listOf(
+            ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64, ABI.X86, ABI.MIPS,
+            ABI.MIPS64
+        )
+        val ARM_AND_X_ABIS = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
+        val ARM_ABIS = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A)
+
     }
 }

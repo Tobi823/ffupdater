@@ -25,8 +25,7 @@ class FirefoxRelease(
     override val displayDownloadSource = R.string.mozilla_ci
     override val displayIcon = R.mipmap.ic_logo_firefox_release
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64, ABI.X86)
-    override val installableWithDefaultPermission = true
+    override val supportedAbis = ARM_AND_X_ABIS
     override val projectPage: Uri =
         Uri.parse("https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest")
 

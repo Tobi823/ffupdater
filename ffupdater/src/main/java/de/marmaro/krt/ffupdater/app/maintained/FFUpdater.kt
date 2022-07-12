@@ -5,7 +5,6 @@ import android.os.Build
 import android.util.Log
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -21,8 +20,7 @@ class FFUpdater(
     override val displayDownloadSource = R.string.github
     override val displayIcon = R.mipmap.ic_launcher
     override val minApiLevel = Build.VERSION_CODES.N
-    override val supportedAbis =
-        listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.ARMEABI, ABI.X86_64, ABI.X86, ABI.MIPS, ABI.MIPS64)
+    override val supportedAbis = ALL_ABIS
     override val installableWithDefaultPermission = false
     override val projectPage: Uri = Uri.parse("https://github.com/Tobi823/ffupdater")
 
