@@ -28,7 +28,6 @@ class Brave(
     override val supportedAbis = ARM_AND_X_ABIS
     override val projectPage = "https://github.com/brave/brave-browser"
 
-
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
