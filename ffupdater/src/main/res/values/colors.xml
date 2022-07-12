@@ -5,6 +5,8 @@
     <color name="cardview_background_color">@color/cardview_light_background</color>
     <color name="red_background_for_text">#FFCDD2</color>
 
+    <color name="red_for_eol_reason">#880E4F</color>
+
     <color name="error_red_contrasting_current_theme">#D32F2F</color>
     <color name="colorAccent">#FFC107</color>
     <color name="colorPrimary">#004acc</color>

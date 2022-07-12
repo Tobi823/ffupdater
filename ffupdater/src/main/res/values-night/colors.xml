@@ -6,6 +6,9 @@
     <color name="red_background_for_text">#A81A1A</color>
 
     <color name="error_red_contrasting_current_theme">#FFEBEE</color>
+
+    <color name="red_for_eol_reason">#FFC9CF</color>
+
     <color name="errorRed">#D50000</color>
     <color name="successGreen">#33691E</color>
     <color name="warningOrange">#EF6C00</color>

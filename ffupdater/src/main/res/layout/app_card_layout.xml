@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:tag="eolReason"
-            android:textColor="@color/errorRed"
+            android:textColor="@color/red_for_eol_reason"
             android:autoLink="web"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appTitle" />
