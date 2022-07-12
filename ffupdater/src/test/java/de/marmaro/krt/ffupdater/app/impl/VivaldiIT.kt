@@ -1,6 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.ABI
 import io.mockk.coEvery
 import io.mockk.every
@@ -19,7 +19,7 @@ import java.util.stream.Stream
 class VivaldiIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        setUp(MaintainedApp.VIVALDI)
+        setUp(App.VIVALDI)
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/Vivaldi/download.html"
         coEvery {

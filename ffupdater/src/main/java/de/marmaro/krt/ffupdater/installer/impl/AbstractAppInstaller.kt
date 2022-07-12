@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.installer.impl
 import android.content.Context
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.install_activity__downloaded_application_is_not_verified
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 
 abstract class AbstractAppInstaller(
-    private val app: MaintainedApp,
+    private val app: App,
     private val file: File,
 ) : AppInstaller {
     override suspend fun installAsync(context: Context): Deferred<InstallResult> {

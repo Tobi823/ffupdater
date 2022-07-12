@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app
 
 import de.marmaro.krt.ffupdater.app.impl.*
 
-enum class MaintainedApp(appDetail: AppBase) {
+enum class App(appDetail: AppBase) {
     BRAVE(Brave()),
     BRAVE_BETA(BraveBeta()),
     BRAVE_NIGHTLY(BraveNightly()),

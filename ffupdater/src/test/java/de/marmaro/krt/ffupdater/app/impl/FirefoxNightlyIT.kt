@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import io.mockk.coEvery
@@ -22,7 +22,7 @@ import java.util.stream.Stream
 class FirefoxNightlyIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        setUp(MaintainedApp.FIREFOX_NIGHTLY)
+        setUp(App.FIREFOX_NIGHTLY)
     }
 
     companion object {

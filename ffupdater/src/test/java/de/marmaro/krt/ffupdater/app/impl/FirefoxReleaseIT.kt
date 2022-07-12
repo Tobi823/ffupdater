@@ -1,6 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.ABI
 import io.mockk.coEvery
 import io.mockk.every
@@ -19,7 +19,7 @@ import java.util.stream.Stream
 class FirefoxReleaseIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        setUp(MaintainedApp.FIREFOX_RELEASE)
+        setUp(App.FIREFOX_RELEASE)
     }
 
     companion object {

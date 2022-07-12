@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.R.string.*
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -58,7 +58,7 @@ class InstallActivity : AppCompatActivity() {
 
     // persistent data across orientation changes
     class InstallActivityViewModel : ViewModel() {
-        var app: MaintainedApp? = null
+        var app: App? = null
         var fileDownloader: FileDownloader? = null
         var appAppUpdateStatus: AppUpdateStatus? = null
     }
@@ -81,7 +81,7 @@ class InstallActivity : AppCompatActivity() {
                 finish()
                 return
             }
-            viewModel.app = MaintainedApp.valueOf(appFromExtras)
+            viewModel.app = App.valueOf(appFromExtras)
         }
 
         foregroundSettings = ForegroundSettingsHelper(this)
@@ -394,7 +394,7 @@ class InstallActivity : AppCompatActivity() {
         /**
          * Create a new InstallActivity which have to check if app is up-to-date
          */
-        fun createIntent(context: Context, app: MaintainedApp): Intent {
+        fun createIntent(context: Context, app: App): Intent {
             val intent = Intent(context, InstallActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)

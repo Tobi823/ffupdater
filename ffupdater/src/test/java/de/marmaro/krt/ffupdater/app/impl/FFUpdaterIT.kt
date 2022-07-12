@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import io.mockk.coEvery
 import io.mockk.junit5.MockKExtension
@@ -16,7 +16,7 @@ import java.io.FileReader
 class FFUpdaterIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        setUp(MaintainedApp.FFUPDATER)
+        setUp(App.FFUPDATER)
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FFUpdater/latest.json"
         coEvery {

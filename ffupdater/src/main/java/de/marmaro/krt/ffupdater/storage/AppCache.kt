@@ -2,11 +2,11 @@ package de.marmaro.krt.ffupdater.storage
 
 import android.content.Context
 import android.os.Environment
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import java.io.File
 
-class AppCache(val app: MaintainedApp) {
+class AppCache(val app: App) {
     fun getFile(context: Context): File {
         return File(getCacheFolder(context), "${app.detail.packageName}.apk")
     }

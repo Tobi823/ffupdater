@@ -8,7 +8,7 @@ import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid10
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
@@ -108,24 +108,24 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return installUpdates(downloadedUpdates)
     }
 
-    private suspend fun checkForUpdates(): Pair<List<MaintainedApp>, Result?> {
+    private suspend fun checkForUpdates(): Pair<List<App>, Result?> {
         if (!backgroundSettings.isUpdateCheckEnabled) {
             Log.i(LOG_TAG, "Background should be disabled - disable it now.")
-            return listOf<MaintainedApp>() to Result.failure()
+            return listOf<App>() to Result.failure()
         }
 
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
             Log.i(LOG_TAG, "Retry background job because other downloads are running.")
-            return listOf<MaintainedApp>() to Result.retry()
+            return listOf<App>() to Result.retry()
         }
 
         if (!backgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(context)) {
             Log.i(LOG_TAG, "No unmetered network available for update check.")
-            return listOf<MaintainedApp>() to Result.retry()
+            return listOf<App>() to Result.retry()
         }
 
         dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
-        MaintainedApp.values()
+        App.values()
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { app -> app.detail.isInstalled(context) }
             .filter { app ->
@@ -134,17 +134,17 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             .let { apps -> return apps to null }
     }
 
-    private suspend fun downloadUpdates(apps: List<MaintainedApp>): Pair<List<MaintainedApp>, Result?> {
+    private suspend fun downloadUpdates(apps: List<App>): Pair<List<App>, Result?> {
         if (!backgroundSettings.isDownloadEnabled) {
             Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
             showUpdateNotification(apps)
-            return listOf<MaintainedApp>() to Result.success()
+            return listOf<App>() to Result.success()
         }
 
         if (!backgroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(context)) {
             Log.i(LOG_TAG, "No unmetered network available for download.")
             showUpdateNotification(apps)
-            return listOf<MaintainedApp>() to Result.success()
+            return listOf<App>() to Result.success()
         }
 
         BackgroundNotificationBuilder.hideDownloadError(context)
@@ -154,7 +154,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     @MainThread
-    private suspend fun downloadUpdateAndReturnAvailability(app: MaintainedApp): Boolean {
+    private suspend fun downloadUpdateAndReturnAvailability(app: App): Boolean {
         if (!StorageUtil.isEnoughStorageAvailable(context)) {
             Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
             return false
@@ -188,7 +188,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
     }
 
-    private suspend fun installUpdates(apps: List<MaintainedApp>): Result {
+    private suspend fun installUpdates(apps: List<App>): Result {
         if (supportsAndroid10() && !context.packageManager.canRequestPackageInstalls()) {
             Log.i(LOG_TAG, "Missing installation permission")
             showUpdateNotification(apps)
@@ -218,7 +218,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return Result.success()
     }
 
-    private suspend fun installApplication(app: MaintainedApp) {
+    private suspend fun installApplication(app: App) {
         val appCache = AppCache(app)
         val file = appCache.getFile(context)
         if (!file.exists()) {
@@ -246,7 +246,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
     }
 
-    private fun showUpdateNotification(appsWithUpdates: List<MaintainedApp>) {
+    private fun showUpdateNotification(appsWithUpdates: List<App>) {
         BackgroundNotificationBuilder.hideUpdateIsAvailable(context)
         appsWithUpdates.forEach { BackgroundNotificationBuilder.showUpdateIsAvailable(context, it) }
     }

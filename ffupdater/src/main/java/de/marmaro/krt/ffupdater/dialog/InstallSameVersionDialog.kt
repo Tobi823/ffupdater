@@ -9,12 +9,12 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 
 class InstallSameVersionDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
-        val app = MaintainedApp.valueOf(appName)
+        val app = App.valueOf(appName)
         val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
             .setTitle(R.string.install_same_version_dialog__title)
@@ -40,7 +40,7 @@ class InstallSameVersionDialog : DialogFragment() {
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
 
-        fun newInstance(app: MaintainedApp): InstallSameVersionDialog {
+        fun newInstance(app: App): InstallSameVersionDialog {
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
             val fragment = InstallSameVersionDialog()

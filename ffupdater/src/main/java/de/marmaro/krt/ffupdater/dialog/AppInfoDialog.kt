@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 
 /**
  * Show a dialog with the app description.
@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.app.MaintainedApp
 class AppInfoDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
-        val app = MaintainedApp.valueOf(appName)
+        val app = App.valueOf(appName)
         return AlertDialog.Builder(activity)
             .setTitle(app.detail.title)
             .setMessage(app.detail.description)
@@ -37,7 +37,7 @@ class AppInfoDialog : DialogFragment() {
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
 
-        fun newInstance(app: MaintainedApp): AppInfoDialog {
+        fun newInstance(app: App): AppInfoDialog {
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
             val fragment = AppInfoDialog()

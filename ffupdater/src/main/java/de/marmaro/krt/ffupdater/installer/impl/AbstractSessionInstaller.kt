@@ -14,7 +14,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
 import kotlinx.coroutines.CompletableDeferred
@@ -26,7 +26,7 @@ import java.io.IOException
 
 abstract class AbstractSessionInstaller(
     context: Context,
-    private val app: MaintainedApp,
+    private val app: App,
     private val file: File,
 ) : AbstractAppInstaller(app, file) {
     protected abstract val intentNameForAppInstallationCallback: String

@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer.Release
 import io.mockk.*
@@ -20,7 +20,7 @@ import java.util.stream.Stream
 class BraveBetaIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        setUp(MaintainedApp.BRAVE_BETA)
+        setUp(App.BRAVE_BETA)
 
         val basePath = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/BraveBeta"
         coEvery {

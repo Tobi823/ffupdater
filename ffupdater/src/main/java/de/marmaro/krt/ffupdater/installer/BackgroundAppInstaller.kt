@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.installer
 
 import android.content.Context
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.impl.BackgroundSessionInstaller
 import de.marmaro.krt.ffupdater.installer.impl.RootInstaller
@@ -10,7 +10,7 @@ import java.io.File
 
 interface BackgroundAppInstaller : AppInstaller {
     companion object {
-        fun create(context: Context, app: MaintainedApp, file: File): BackgroundAppInstaller {
+        fun create(context: Context, app: App, file: File): BackgroundAppInstaller {
             return when (InstallerSettingsHelper(context).getInstaller()) {
                 Installer.SESSION_INSTALLER -> BackgroundSessionInstaller(context, app, file)
                 Installer.NATIVE_INSTALLER -> throw Exception("Installer can not update apps in background")

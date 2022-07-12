@@ -4,13 +4,13 @@ import android.content.Context
 import android.content.pm.PackageInstaller
 import android.os.Bundle
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
 import java.io.File
 
 class BackgroundSessionInstaller(
     context: Context,
-    app: MaintainedApp,
+    app: App,
     file: File
 ) : BackgroundAppInstaller, AbstractSessionInstaller(context, app, file) {
 

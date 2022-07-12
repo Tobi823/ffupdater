@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import io.mockk.coEvery
@@ -21,7 +21,7 @@ import java.util.stream.Stream
 class BromiteIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        setUp(MaintainedApp.BROMITE)
+        setUp(App.BROMITE)
 
         coEvery {
             val url = "https://api.github.com/repos/bromite/bromite/releases/latest"

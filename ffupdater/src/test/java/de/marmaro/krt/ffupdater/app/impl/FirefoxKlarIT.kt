@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import io.mockk.coEvery
@@ -21,7 +21,7 @@ import java.util.stream.Stream
 class FirefoxKlarIT : BaseAppIT() {
     @BeforeEach
     fun setUp() {
-        setUp(MaintainedApp.FIREFOX_KLAR)
+        setUp(App.FIREFOX_KLAR)
 
         val path = "src/test/resources/de/marmaro/krt/ffupdater/app/impl/FirefoxKlar/latest.json"
         coEvery {

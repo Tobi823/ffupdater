@@ -6,7 +6,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import io.mockk.every
@@ -32,7 +32,7 @@ open class BaseAppIT {
 
     lateinit var sharedPreferences: SharedPreferences
 
-    fun setUp(app: MaintainedApp) {
+    fun setUp(app: App) {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
         every { context.packageManager } returns packageManager
         every { context.packageName } returns "de.marmaro.krt.ffupdater"

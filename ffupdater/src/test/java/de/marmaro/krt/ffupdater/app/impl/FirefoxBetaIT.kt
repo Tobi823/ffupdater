@@ -1,6 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import de.marmaro.krt.ffupdater.app.MaintainedApp.FIREFOX_BETA
+import de.marmaro.krt.ffupdater.app.App.FIREFOX_BETA
 import de.marmaro.krt.ffupdater.device.ABI
 import io.mockk.coEvery
 import io.mockk.every

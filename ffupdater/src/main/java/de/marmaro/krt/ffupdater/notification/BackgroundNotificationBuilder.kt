@@ -18,7 +18,7 @@ import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.*
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 
@@ -37,7 +37,7 @@ object BackgroundNotificationBuilder {
         )
     }
 
-    fun showUpdateIsAvailable(context: Context, app: MaintainedApp) {
+    fun showUpdateIsAvailable(context: Context, app: App) {
         val appTitle: String = context.getString(app.detail.title)
         showNotification(
             context = context,
@@ -52,15 +52,15 @@ object BackgroundNotificationBuilder {
     }
 
     fun hideUpdateIsAvailable(context: Context) {
-        MaintainedApp.values().forEach { hideUpdateIsAvailable(context, it) }
+        App.values().forEach { hideUpdateIsAvailable(context, it) }
     }
 
-    fun hideUpdateIsAvailable(context: Context, app: MaintainedApp) {
+    fun hideUpdateIsAvailable(context: Context, app: App) {
         val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         nm.cancel(200 + app.ordinal)
     }
 
-    fun showDownloadIsRunning(context: Context, app: MaintainedApp, progressInPercent: Int?, totalMB: Long?) {
+    fun showDownloadIsRunning(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
         val appTitle = context.getString(app.detail.title)
         val status = when {
             progressInPercent != null -> "$progressInPercent %"
@@ -79,12 +79,12 @@ object BackgroundNotificationBuilder {
         )
     }
 
-    fun hideDownloadIsRunning(context: Context, app: MaintainedApp) {
+    fun hideDownloadIsRunning(context: Context, app: App) {
         val notificationManager = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         notificationManager.cancel(400 + app.ordinal)
     }
 
-    fun showDownloadError(context: Context, app: MaintainedApp, exception: NetworkException) {
+    fun showDownloadError(context: Context, app: App, exception: NetworkException) {
         val appTitle = context.getString(app.detail.title)
         val description = context.getString(notification__download_error__descr, appTitle)
         showNotification(
@@ -100,13 +100,13 @@ object BackgroundNotificationBuilder {
     }
 
     fun hideDownloadError(context: Context) {
-        MaintainedApp.values().forEach {
+        App.values().forEach {
             val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
             nm.cancel(700 + it.ordinal)
         }
     }
 
-    fun showInstallationSuccess(context: Context, app: MaintainedApp) {
+    fun showInstallationSuccess(context: Context, app: App) {
         val appTitle: String = context.getString(app.detail.title)
         showNotification(
             context = context,
@@ -121,15 +121,15 @@ object BackgroundNotificationBuilder {
     }
 
     fun hideInstallationSuccess(context: Context) {
-        MaintainedApp.values().forEach { hideInstallationSuccess(context, it) }
+        App.values().forEach { hideInstallationSuccess(context, it) }
     }
 
-    fun hideInstallationSuccess(context: Context, app: MaintainedApp) {
+    fun hideInstallationSuccess(context: Context, app: App) {
         val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         nm.cancel(500 + app.ordinal)
     }
 
-    fun showInstallationError(context: Context, app: MaintainedApp, code: Int?, message: String?) {
+    fun showInstallationError(context: Context, app: App, code: Int?, message: String?) {
         val appTitle: String = context.getString(app.detail.title)
         showNotification(
             context = context,
@@ -144,10 +144,10 @@ object BackgroundNotificationBuilder {
     }
 
     fun hideInstallationError(context: Context) {
-        MaintainedApp.values().forEach { hideInstallationError(context, it) }
+        App.values().forEach { hideInstallationError(context, it) }
     }
 
-    fun hideInstallationError(context: Context, app: MaintainedApp) {
+    fun hideInstallationError(context: Context, app: App) {
         val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
         nm.cancel(600 + app.ordinal)
     }

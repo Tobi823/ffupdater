@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.MaintainedApp
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
@@ -22,7 +22,7 @@ import java.io.File
 class IntentInstaller(
     context: Context,
     private val activityResultRegistry: ActivityResultRegistry,
-    app: MaintainedApp,
+    app: App,
     private val file: File,
 ) : ForegroundAppInstaller, AbstractAppInstaller(app, file) {
     private val installationStatus = CompletableDeferred<ShortInstallResult>()
