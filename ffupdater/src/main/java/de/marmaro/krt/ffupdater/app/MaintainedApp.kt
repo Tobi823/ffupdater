@@ -16,6 +16,7 @@ enum class MaintainedApp(appDetail: AppBase) {
     FIREFOX_RELEASE(FirefoxRelease()),
     ICERAVEN(Iceraven()),
     KIWI(Kiwi()),
+    LOCKWISE(Lockwise()),
     MULL(Mull()),
     UNGOOGLED_CHROMIUM(UngoogledChromium()),
     VIVALDI(Vivaldi()),

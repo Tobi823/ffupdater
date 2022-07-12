@@ -28,7 +28,7 @@ class UngoogledChromium(
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86)
     override val projectPage: Uri =
         Uri.parse("https://github.com/ungoogled-software/ungoogled-chromium-android")
-    override val eolReason = R.string.generic_eol_reason__browser_to_old
+    override val eolReason = R.string.ungoogled_chromium__eol_reason
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"

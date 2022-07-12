@@ -81,6 +81,7 @@
             android:layout_marginTop="8dp"
             android:tag="eolReason"
             android:textColor="@color/errorRed"
+            android:autoLink="web"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appTitle" />
 
