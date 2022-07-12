@@ -6,6 +6,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.view.Menu
@@ -160,7 +161,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         cardView.findViewWithTag<ImageButton>("appOpenProjectPage").setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, app.detail.projectPage)
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.detail.projectPage))
             startActivity(browserIntent)
         }
 

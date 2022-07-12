@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater
 import android.content.Context
 import android.content.pm.PackageManager
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
-import de.marmaro.krt.ffupdater.app.maintained.*
+import de.marmaro.krt.ffupdater.app.impl.*
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -72,7 +72,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 7
+        val maxDays = 2 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
         // don't check for firstReleaseHasAssets because it is common that some releases has no APK files
     }

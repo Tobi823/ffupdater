@@ -1,6 +1,6 @@
 package de.marmaro.krt.ffupdater.app
 
-import de.marmaro.krt.ffupdater.app.maintained.*
+import de.marmaro.krt.ffupdater.app.impl.*
 
 enum class MaintainedApp(appDetail: AppBase) {
     BRAVE(Brave()),

@@ -237,10 +237,11 @@ class BackgroundSettingsHelperTest {
                 "FIREFOX_KLAR",
                 "FIREFOX_NIGHTLY",
                 "FIREFOX_RELEASE",
-//                "ICERAVEN",
+                "ICERAVEN",
                 "KIWI",
+                "LOCKWISE",
                 "MULL",
-//                "UNGOOGLED_CHROMIUM",
+                "UNGOOGLED_CHROMIUM",
                 "VIVALDI",
             )
         ).commit()

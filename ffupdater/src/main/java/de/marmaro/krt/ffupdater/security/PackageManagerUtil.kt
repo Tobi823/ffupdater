@@ -9,7 +9,7 @@ import android.content.pm.Signature
 import android.os.Build
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
-import de.marmaro.krt.ffupdater.app.maintained.AppBase
+import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
