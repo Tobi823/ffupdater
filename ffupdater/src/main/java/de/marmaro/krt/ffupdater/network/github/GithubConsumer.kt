@@ -12,7 +12,7 @@ class GithubConsumer(
     repoName: String,
     private val resultsPerPage: Int,
     private val isValidRelease: Predicate<Release>,
-    private val isCorrectAsset: Predicate<Asset>,
+    private val isSuitableAsset: Predicate<Asset>,
     // false -> contact "$url/latest" and then "$url?per_page=..&page=.."
     // true -> contact only "$url?per_page=..&page=.."
     // set it to true if it is unlikely that the latest release is a valid release
@@ -42,7 +42,7 @@ class GithubConsumer(
                 .filter { release -> isValidRelease.test(release) }
                 .forEach { release ->
                     release.assets
-                        .firstOrNull { asset -> isCorrectAsset.test(asset) }
+                        .firstOrNull { asset -> isSuitableAsset.test(asset) }
                         ?.let { asset ->
                             return Result(
                                 tagName = release.tagName,
