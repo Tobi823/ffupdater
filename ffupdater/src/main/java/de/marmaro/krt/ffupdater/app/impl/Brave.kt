@@ -46,7 +46,7 @@ class Brave(
             repoName = "brave-browser",
             resultsPerPage = 20,
             isValidRelease = { release -> !release.isPreRelease && release.name.startsWith("Release v") },
-            isCorrectAsset = { asset -> asset.name == fileName },
+            isSuitableAsset = { asset -> asset.name == fileName },
             dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )

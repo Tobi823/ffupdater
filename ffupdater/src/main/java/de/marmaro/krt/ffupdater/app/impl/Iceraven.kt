@@ -50,7 +50,7 @@ class Iceraven(
             repoName = "iceraven-browser",
             resultsPerPage = 3,
             isValidRelease = { release -> !release.isPreRelease },
-            isCorrectAsset = { asset -> asset.name.endsWith(fileSuffix) },
+            isSuitableAsset = { asset -> asset.name.endsWith(fileSuffix) },
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

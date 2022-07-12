@@ -45,7 +45,7 @@ class Bromite(
             repoName = "bromite",
             resultsPerPage = 5,
             isValidRelease = { release -> !release.isPreRelease },
-            isCorrectAsset = { asset -> asset.name == fileName },
+            isSuitableAsset = { asset -> asset.name == fileName },
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

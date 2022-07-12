@@ -50,7 +50,7 @@ class Kiwi(
             repoName = "src.next",
             resultsPerPage = 1,
             isValidRelease = { true },
-            isCorrectAsset = { asset -> asset.name.startsWith(filePrefix) && asset.name.endsWith(fileSuffix) },
+            isSuitableAsset = { asset -> asset.name.startsWith(filePrefix) && asset.name.endsWith(fileSuffix) },
             dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )

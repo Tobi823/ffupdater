@@ -45,7 +45,7 @@ class FirefoxKlar(
             repoName = "focus-android",
             resultsPerPage = 3,
             isValidRelease = { release -> !release.isPreRelease && "beta" !in release.name },
-            isCorrectAsset = { asset -> asset.name.startsWith("klar") && asset.name.endsWith(fileSuffix) },
+            isSuitableAsset = { asset -> asset.name.startsWith("klar") && asset.name.endsWith(fileSuffix) },
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()

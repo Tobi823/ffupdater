@@ -32,7 +32,7 @@ class Lockwise(
             repoName = "lockwise-android",
             resultsPerPage = 5,
             isValidRelease = { release -> !release.isPreRelease },
-            isCorrectAsset = { asset -> asset.name.endsWith(".apk") },
+            isSuitableAsset = { asset -> asset.name.endsWith(".apk") },
             apiConsumer = apiConsumer,
         )
         val result = githubConsumer.updateCheck()
