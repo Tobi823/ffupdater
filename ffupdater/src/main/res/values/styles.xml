@@ -4,7 +4,7 @@
     <style name="main_activity__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/crash_report__color_accent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -52,9 +52,9 @@
     </style>
 
     <style name="crash_report__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/errorRed</item>
-        <item name="colorPrimaryDark">@color/errorRed</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/crash_report__error_red</item>
+        <item name="colorPrimaryDark">@color/crash_report__error_red</item>
+        <item name="colorAccent">@color/crash_report__color_accent</item>
     </style>
 
     <style name="manage_storage_activity__bold_text">

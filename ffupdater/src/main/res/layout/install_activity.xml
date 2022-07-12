@@ -18,7 +18,7 @@
         <LinearLayout
             android:id="@+id/tooLowMemory"
             style="@style/install_activity__segment"
-            android:background="@color/warningOrange"
+            android:background="@color/install_activity__warning_orange"
             android:padding="8dp">
 
             <TextView
@@ -34,7 +34,7 @@
         <LinearLayout
             android:id="@+id/externalStorageNotAccessible"
             style="@style/install_activity__segment"
-            android:background="@color/red_background_for_text"
+            android:background="@color/install_activity__red_background_for_text"
             android:padding="8dp">
 
             <TextView
@@ -129,7 +129,7 @@
         <LinearLayout
             android:id="@+id/downloadFileFailed"
             style="@style/install_activity__segment"
-            android:background="@color/red_background_for_text"
+            android:background="@color/install_activity__red_background_for_text"
             android:padding="8dp">
 
             <TextView
@@ -167,7 +167,7 @@
         <LinearLayout
             android:id="@+id/fingerprintInstalledGood"
             style="@style/install_activity__segment"
-            android:background="@color/successGreen"
+            android:background="@color/install_activity__success_green"
             android:padding="8dp">
 
             <TextView
@@ -187,7 +187,7 @@
         <LinearLayout
             android:id="@+id/installerSuccess"
             style="@style/install_activity__segment"
-            android:background="@color/successGreen"
+            android:background="@color/install_activity__success_green"
             android:padding="8dp">
 
             <TextView
@@ -203,7 +203,7 @@
         <LinearLayout
             android:id="@+id/installerFailed"
             style="@style/install_activity__segment"
-            android:background="@color/red_background_for_text"
+            android:background="@color/install_activity__red_background_for_text"
             android:padding="8dp">
 
             <TextView
@@ -223,7 +223,7 @@
         <LinearLayout
             android:id="@+id/install_activity__exception"
             style="@style/install_activity__segment"
-            android:background="@color/red_background_for_text"
+            android:background="@color/install_activity__red_background_for_text"
             android:padding="8dp">
 
             <TextView

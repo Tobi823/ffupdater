@@ -2,16 +2,13 @@
 <resources>
     <!-- https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
     <!-- https://coolors.co/contrast-checker -->
-    <color name="cardview_background_color">@color/cardview_light_background</color>
-    <color name="red_background_for_text">#FFCDD2</color>
-
-    <color name="red_for_eol_reason">#880E4F</color>
-
-    <color name="error_red_contrasting_current_theme">#D32F2F</color>
-    <color name="colorAccent">#FFC107</color>
     <color name="colorPrimary">#004acc</color>
     <color name="colorPrimaryDark">#003eaa</color>
-    <color name="errorRed">#D32F2F</color>
-    <color name="successGreen">#8BC34A</color>
-    <color name="warningOrange">#FF9800</color>
+    <color name="crash_report__color_accent">#FFC107</color>
+    <color name="crash_report__error_red">#D32F2F</color>
+    <color name="install_activity__red_background_for_text">#FFCDD2</color>
+    <color name="install_activity__success_green">#8BC34A</color>
+    <color name="install_activity__warning_orange">#FF9800</color>
+    <color name="main_activity__cardview_background_color">@color/cardview_light_background</color>
+    <color name="main_activity__red_for_eol_reason">#880E4F</color>
 </resources>
