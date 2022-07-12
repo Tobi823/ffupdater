@@ -264,4 +264,5 @@
     <string name="notification__no_update_check__channel_description">Son beş gün içinde hiçbir arka plan güncelleme denetiminin başarılı olmadığına dair uyarı için bildirim kanalı.</string>
     <string name="notification__no_update_check__text">Son beş gün içinde FFUpdater arka planda güncellemeleri denetleyemedi. Akıllı telefonunuzu uzun süre uçuş modunda tuttuysanız, bu mesajı görmezden gelebilirsiniz. Değilse, hata raporunu görüntülemek için buraya tıklayın.</string>
     <string name="notification__no_update_check__title">Beş gün boyunca başarılı bir arka planda güncelleme denetimi yapılmadı</string>
+    <string name="app_card__open_project_page">Proje sayfasını tarayıcıda aç</string>
 </resources>

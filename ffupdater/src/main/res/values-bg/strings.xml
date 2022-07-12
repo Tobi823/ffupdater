@@ -262,4 +262,5 @@
     <string name="notification__no_update_check__channel_name">Известие за липса на проверка във фонов режим</string>
     <string name="notification__no_update_check__title">Няма успешна проверка на обновяване във фонов режим в последните пет дена</string>
     <string name="notification__no_update_check__text">През последните пет дена FFUpdater не е направил проверка за обновяване във фонов режим. Ако сте държали устройството си на самолетен режим дълги периоди от време, можете да пренебрегнете съобщението. В противен случай докоснете, за да видите доклада за грешката.</string>
+    <string name="app_card__open_project_page">Отваряне на страницата на проекта</string>
 </resources>
