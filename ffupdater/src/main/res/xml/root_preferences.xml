@@ -71,8 +71,6 @@
 
         <MultiSelectListPreference
             app:dependency="background__update_check__enabled"
-            app:entries="@array/background__update_check__excluded_apps__entries"
-            app:entryValues="@array/background__update_check__excluded_apps__values"
             app:key="background__update_check__excluded_apps"
             app:singleLineTitle="false"
             app:summary="@string/settings__background__update_check__excluded_apps__summary"

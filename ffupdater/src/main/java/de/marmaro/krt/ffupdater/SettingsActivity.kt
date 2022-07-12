@@ -5,8 +5,10 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
+import androidx.preference.MultiSelectListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import java.time.Duration
@@ -51,21 +53,34 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
             findListPref("foreground__theme_preference")?.setOnPreferenceChangeListener { _, newValue ->
                 AppCompatDelegate.setDefaultNightMode((newValue as String).toInt())
                 true
             }
+
             findSwitchPref("background__update_check__enabled")?.setOnPreferenceChangeListener { _, newValue ->
                 val enabled = newValue as Boolean
                 BackgroundJob.changeBackgroundUpdateCheck(requireContext(), enabled, null)
                 true
             }
+
             findListPref("background__update_check__interval")?.setOnPreferenceChangeListener { _, newValue ->
                 val minutes = (newValue as String).toLong()
                 val duration = Duration.ofMinutes(minutes)
                 BackgroundJob.changeBackgroundUpdateCheck(requireContext(), null, duration)
                 true
             }
+
+            val excludedApps =
+                findPreference<MultiSelectListPreference>("background__update_check__excluded_apps")
+            excludedApps?.entries = App.values()
+                .map { app -> getString(app.detail.title) }
+                .toTypedArray()
+            excludedApps?.entryValues = App.values()
+                .map { app -> app.name }
+                .toTypedArray()
+
             val sessionInstaller = findSwitchPref("installer__session")
             val nativeInstaller = findSwitchPref("installer__native")
             val rootInstaller = findSwitchPref("installer__root")

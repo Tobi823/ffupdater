@@ -42,42 +42,6 @@
         <item>40320</item>
     </string-array>
 
-    <string-array name="background__update_check__excluded_apps__entries">
-        <item>@string/app_name</item>
-        <item>@string/brave__title</item>
-        <item>@string/brave_beta__title</item>
-        <item>@string/brave_nightly__title</item>
-        <item>@string/bromite__title</item>
-        <item>@string/bromite_systemwebview__title</item>
-        <item>@string/firefox_beta__title</item>
-        <item>@string/firefox_focus__title</item>
-        <item>@string/firefox_klar__title</item>
-        <item>@string/firefox_nightly__title</item>
-        <item>@string/firefox_release__title</item>
-        <item>@string/iceraven__title</item>
-        <item>@string/kiwi__title</item>
-        <item>@string/mull__title</item>
-        <item>@string/vivaldi__title</item>
-    </string-array>
-
-    <string-array name="background__update_check__excluded_apps__values">
-        <item>BRAVE</item>
-        <item>BRAVE_BETA</item>
-        <item>BRAVE_NIGHTLY</item>
-        <item>BROMITE</item>
-        <item>BROMITE_SYSTEMWEBVIEW</item>
-        <item>FFUPDATER</item>
-        <item>FIREFOX_BETA</item>
-        <item>FIREFOX_FOCUS</item>
-        <item>FIREFOX_KLAR</item>
-        <item>FIREFOX_NIGHTLY</item>
-        <item>FIREFOX_RELEASE</item>
-        <item>ICERAVEN</item>
-        <item>KIWI</item>
-        <item>MULL</item>
-        <item>VIVALDI</item>
-    </string-array>
-
     <string-array name="foreground__theme_preference__entries" tools:ignore="InconsistentArrays">
         <item>@string/settings__theme_light</item>
         <item>@string/settings__theme_dark</item>
