@@ -21,10 +21,10 @@ class BraveBeta(
 ) : AppBase() {
     override val packageName = "com.brave.browser_beta"
     override val title = R.string.brave_beta__title
-    override val displayDescription = R.string.brave_beta__description
-    override val displayWarning = R.string.brave__warning
-    override val displayDownloadSource = R.string.github
-    override val displayIcon = R.mipmap.ic_logo_brave_beta
+    override val description = R.string.brave_beta__description
+    override val installationWarning = R.string.brave__warning
+    override val downloadSource = R.string.github
+    override val icon = R.mipmap.ic_logo_brave_beta
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ARM_AND_X_ABIS
     override val projectPage: Uri = Uri.parse("https://github.com/brave/brave-browser")

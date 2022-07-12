@@ -21,10 +21,10 @@ class BraveNightly(
 ) : AppBase() {
     override val packageName = "com.brave.browser_nightly"
     override val title = R.string.brave_nightly__title
-    override val displayDescription = R.string.brave_nightly__description
-    override val displayWarning = R.string.brave__warning
-    override val displayDownloadSource = R.string.github
-    override val displayIcon = R.mipmap.ic_logo_brave_nightly
+    override val description = R.string.brave_nightly__description
+    override val installationWarning = R.string.brave__warning
+    override val downloadSource = R.string.github
+    override val icon = R.mipmap.ic_logo_brave_nightly
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ARM_AND_X_ABIS
     override val projectPage: Uri = Uri.parse("https://github.com/brave/brave-browser")

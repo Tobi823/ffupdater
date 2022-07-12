@@ -25,10 +25,10 @@ class Kiwi(
 ) : AppBase() {
     override val packageName = "com.kiwibrowser.browser"
     override val title = R.string.kiwi__title
-    override val displayDescription = R.string.kiwi__description
-    override val displayWarning = R.string.kiwi__warning
-    override val displayDownloadSource = R.string.github
-    override val displayIcon = R.mipmap.ic_logo_kiwi
+    override val description = R.string.kiwi__description
+    override val installationWarning = R.string.kiwi__warning
+    override val downloadSource = R.string.github
+    override val icon = R.mipmap.ic_logo_kiwi
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ARM_AND_X_ABIS
     override val projectPage: Uri = Uri.parse("https://github.com/kiwibrowser/src.next")

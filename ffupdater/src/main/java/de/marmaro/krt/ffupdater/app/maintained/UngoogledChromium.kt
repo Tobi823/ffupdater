@@ -20,10 +20,10 @@ class UngoogledChromium(
 ) : AppBase() {
     override val packageName = "org.ungoogled.chromium.stable"
     override val title = R.string.ungoogled_chromium__title
-    override val displayDescription = R.string.ungoogled_chromium__description
-    override val displayWarning = R.string.ungoogled_chromium__warning
-    override val displayDownloadSource = R.string.github
-    override val displayIcon = R.mipmap.ic_logo_ungoogled_chromium
+    override val description = R.string.ungoogled_chromium__description
+    override val installationWarning = R.string.ungoogled_chromium__warning
+    override val downloadSource = R.string.github
+    override val icon = R.mipmap.ic_logo_ungoogled_chromium
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86)
     override val projectPage: Uri =

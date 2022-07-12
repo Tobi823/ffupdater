@@ -46,7 +46,7 @@ class InstallNewAppDialog(
             return
         }
 
-        if (app.detail.displayWarning != null) {
+        if (app.detail.installationWarning != null) {
             AppWarningBeforeInstallationDialog.newInstance(app).show(parentFragmentManager)
             return
         }

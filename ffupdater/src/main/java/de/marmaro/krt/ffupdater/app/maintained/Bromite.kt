@@ -21,10 +21,10 @@ class Bromite(
 ) : AppBase() {
     override val packageName = "org.bromite.bromite"
     override val title = R.string.bromite__title
-    override val displayDescription = R.string.bromite__description
-    override val displayWarning = R.string.bromite__warning
-    override val displayDownloadSource = R.string.github
-    override val displayIcon = R.mipmap.ic_logo_bromite
+    override val description = R.string.bromite__description
+    override val installationWarning = R.string.bromite__warning
+    override val downloadSource = R.string.github
+    override val icon = R.mipmap.ic_logo_bromite
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM_AND_X_ABIS
     override val projectPage: Uri = Uri.parse("https://github.com/bromite/bromite")

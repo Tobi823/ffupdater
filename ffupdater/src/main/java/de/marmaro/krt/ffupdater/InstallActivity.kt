@@ -175,7 +175,7 @@ class InstallActivity : AppCompatActivity() {
     private suspend fun fetchDownloadInformation() {
         show(R.id.fetchUrl)
         val app = viewModel.app!!
-        val downloadSource = getString(app.detail.displayDownloadSource)
+        val downloadSource = getString(app.detail.downloadSource)
         setText(R.id.fetchUrlTextView, getString(install_activity__fetch_url_for_download, downloadSource))
 
         if (viewModel.appAppUpdateStatus == null) {

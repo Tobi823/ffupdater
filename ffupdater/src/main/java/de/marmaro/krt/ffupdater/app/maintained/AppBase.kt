@@ -28,10 +28,10 @@ import java.io.File
 abstract class AppBase {
     abstract val packageName: String
     abstract val title: Int
-    abstract val displayDescription: Int
-    open val displayWarning: Int? = null
-    abstract val displayDownloadSource: Int
-    abstract val displayIcon: Int
+    abstract val description: Int
+    open val installationWarning: Int? = null
+    abstract val downloadSource: Int
+    abstract val icon: Int
     abstract val minApiLevel: Int
     abstract val supportedAbis: List<ABI>
     abstract val signatureHash: String

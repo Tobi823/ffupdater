@@ -16,9 +16,9 @@ class Lockwise(
 ) : AppBase() {
     override val packageName = "mozilla.lockbox"
     override val title = R.string.lockwise__title
-    override val displayDescription = R.string.lockwise__description
-    override val displayDownloadSource = R.string.github
-    override val displayIcon = R.mipmap.ic_logo_lockwise
+    override val description = R.string.lockwise__description
+    override val downloadSource = R.string.github
+    override val icon = R.mipmap.ic_logo_lockwise
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ALL_ABIS
     override val projectPage: Uri = Uri.parse("https://github.com/mozilla-lockwise/lockwise-android")

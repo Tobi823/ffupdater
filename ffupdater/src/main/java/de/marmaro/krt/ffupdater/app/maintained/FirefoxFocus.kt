@@ -22,9 +22,9 @@ class FirefoxFocus(
 ) : AppBase() {
     override val packageName = "org.mozilla.focus"
     override val title = R.string.firefox_focus__title
-    override val displayDescription = R.string.firefox_focus__description
-    override val displayDownloadSource = R.string.github
-    override val displayIcon = R.mipmap.ic_logo_firefox_focus_klar
+    override val description = R.string.firefox_focus__description
+    override val downloadSource = R.string.github
+    override val icon = R.mipmap.ic_logo_firefox_focus_klar
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM_AND_X_ABIS
     override val projectPage: Uri = Uri.parse("https://github.com/mozilla-mobile/focus-android")

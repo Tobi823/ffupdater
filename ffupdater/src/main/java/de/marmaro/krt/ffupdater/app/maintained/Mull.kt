@@ -18,10 +18,10 @@ class Mull(
 ) : AppBase() {
     override val packageName = "us.spotco.fennec_dos"
     override val title = R.string.mull__title
-    override val displayDescription = R.string.mull__description
-    override val displayWarning = R.string.mull__warning
-    override val displayDownloadSource = R.string.download_source__fdroid
-    override val displayIcon = R.mipmap.ic_logo_mull
+    override val description = R.string.mull__description
+    override val installationWarning = R.string.mull__warning
+    override val downloadSource = R.string.download_source__fdroid
+    override val icon = R.mipmap.ic_logo_mull
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM_ABIS
     override val projectPage: Uri = Uri.parse("https://f-droid.org/en/packages/us.spotco.fennec_dos/")

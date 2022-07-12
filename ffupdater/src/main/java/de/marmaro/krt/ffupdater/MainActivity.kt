@@ -141,13 +141,13 @@ class MainActivity : AppCompatActivity() {
     ) {
         val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
-        cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.detail.displayIcon)
+        cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.detail.icon)
         cardView.findViewWithTag<TextView>("appCardTitle").setText(app.detail.title)
 
         val warningButton = cardView.findViewWithTag<ImageButton>("appWarningButton")
         when {
             settingsHelper.isHideWarningButtonForInstalledApps -> warningButton.visibility = View.GONE
-            app.detail.displayWarning == null -> warningButton.visibility = View.GONE
+            app.detail.installationWarning == null -> warningButton.visibility = View.GONE
             else -> {
                 warningButton.setOnClickListener {
                     AppWarningDialog.newInstance(app).show(supportFragmentManager)

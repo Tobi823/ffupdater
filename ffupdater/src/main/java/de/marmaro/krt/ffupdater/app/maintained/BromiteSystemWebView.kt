@@ -21,10 +21,10 @@ class BromiteSystemWebView(
 ) : AppBase() {
     override val packageName = "org.bromite.webview"
     override val title = R.string.bromite_systemwebview__title
-    override val displayDescription = R.string.bromite_systemwebview__description
-    override val displayWarning = R.string.bromite__warning
-    override val displayDownloadSource = R.string.github
-    override val displayIcon = R.mipmap.ic_logo_bromite_systemwebview
+    override val description = R.string.bromite_systemwebview__description
+    override val installationWarning = R.string.bromite__warning
+    override val downloadSource = R.string.github
+    override val icon = R.mipmap.ic_logo_bromite_systemwebview
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM_AND_X_ABIS
     override val installableWithDefaultPermission = false

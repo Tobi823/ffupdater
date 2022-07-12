@@ -29,10 +29,10 @@ class FirefoxNightly(
 ) : AppBase() {
     override val packageName = "org.mozilla.fenix"
     override val title = R.string.firefox_nightly__title
-    override val displayDescription = R.string.firefox_nightly__description
-    override val displayWarning = R.string.firefox_nightly__warning
-    override val displayDownloadSource = R.string.mozilla_ci
-    override val displayIcon = R.mipmap.ic_logo_firefox_nightly
+    override val description = R.string.firefox_nightly__description
+    override val installationWarning = R.string.firefox_nightly__warning
+    override val downloadSource = R.string.mozilla_ci
+    override val icon = R.mipmap.ic_logo_firefox_nightly
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM_AND_X_ABIS
     override val projectPage: Uri =
