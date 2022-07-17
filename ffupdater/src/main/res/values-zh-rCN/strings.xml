@@ -96,7 +96,8 @@
 \n
 \n我们的目标是成为新版 Firefox for Android 的亲密分支，追求为用户提供更多选项和更多自定义能力（包括广泛的扩展库），以及提供更多关于他们访问的网页的信息和让他们了解浏览器如何与这些网页互动。</string>
     <string name="iceraven__title">Iceraven 浏览器</string>
-    <string name="iceraven__warning">- 维护者不提供安全性、更新或稳定性的保证。</string>
+    <string name="iceraven__warning">- 维护者不提供安全性、更新或稳定性的保证。
+\n- 该项目需要比平时更长的时间来提供安全更新。</string>
     <string name="infobox">这是一款为隐私友好型浏览器打造的更新器。点击加号按钮安装新应用。向下滑动以立刻检查新的更新。 默认情况下，该应用程序会定期在后台检查更新、下载并最终安装更新。点击小齿轮以在设置中自定义行为。
 \n
 \n上次成功后台更新检查时间：%1$s</string>
@@ -256,4 +257,6 @@
     <string name="notification__no_update_check__channel_description">用于警告过去五天没有成功进行后台更新检查的通知渠道。</string>
     <string name="notification__no_update_check__title">五天内没有成功后台更新检查</string>
     <string name="notification__no_update_check__text">在过去的五天里，FFUpdater无法在后台检查更新。如果您的智能手机长时间处于飞行模式，那么可以忽略此消息。如果不是，请单击此处查看错误报告。</string>
+    <string name="app_card__open_project_page">在浏览器中打开项目页面</string>
+    <string name="ungoogled_chromium__eol_reason">开发者发布的消息：“我将有一段时间无法更新版本。 如果可能，请同时使用FFUpdater支持的浏览器之一。” https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
 </resources>
