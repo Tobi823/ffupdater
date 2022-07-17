@@ -1,0 +1,3 @@
+* 感谢Weblate的贡献者：Oğuz Ersen 以及 109247019824
+* 恢复Iceraven
+* 改进界面以允许下载EOL应用
