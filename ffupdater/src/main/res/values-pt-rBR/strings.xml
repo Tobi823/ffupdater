@@ -47,9 +47,9 @@
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copiar o relatório do erro ao Clipboard</string>
     <string name="crash_report__explain_text__install_activity_download_file">O seguinte erro ocorreu durante o download. Se esse erro ocorrer com frequência, sinta-se à vontade para reportá-lo em notabug.org, GitHub ou GitLab. Adicione o relatório do erro da área de transferência ao relatório.</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">O seguinte erro ocorreu quando a URL de download foi consultada. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
-    <string name="crash_report__explain_text__main_activity_update_check">O seguinte erro ocorreu ao verificar por atualizações na interface principal. Se este erro ocorrer frequentemente, fique a vontade para relatá-lo via notabug.org, GitHub ou GitLab. Por favor, não se esqueça de adicionar o relatório do Clipboard ao descrição e os passos de como reproduzir este erro.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Infelizmente, o FFUpdater travou da última vez e gerou o seguinte relatório. Por favor, relate este erro via notabug.org, GitHub ou GitLab. Copie o relatório do erro da árra de trasferência para a mensagem e adicione uma descrição com os passos de como reproduzir o erro.</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">Este erro ocorreu quando os metadados de download foram consultados. Se este erro ocorrer frequentemente, fique a vontade para enviar o relatório de falha via notabug.org, GitHub ou GitLab.</string>
+    <string name="crash_report__explain_text__main_activity_update_check">Este erro ocorreu ao verificar atualizações na interface principal. Se este erro ocorrer frequentemente, fique à vontade para enviar o relatório de falha via notabug.org, GitHub ou GitLab.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Infelizmente, o FFUpdater travou da última vez e gerou este relatório. Por favor, envie o relatório de falha via notabug.org, GitHub ou GitLab.</string>
     <string name="crash_report__go_to_github">Vá para GitHub</string>
     <string name="crash_report__go_to_gitlab">Vá para GitLab</string>
     <string name="crash_report__got_to_notabug_org">Vá para notabug.org</string>
@@ -80,7 +80,8 @@
     <string name="go_back">Voltar</string>
     <string name="iceraven__description">Definitivamente não criado pela Mozilla! \n\nIceraven é um navegador baseado na versão Fenix da Mozilla, GeckoView e Componentes da Mozilla. \n\nSeu objetivo é ser uma modificação bem próxima ao novo Firefox que tenta oferecer aos usuários mais opções, mais possibilidades de customização (incluindo uma ampla biblioteca de extensões) e mais informações sobre os sites visitados e como o navegador está interagindo com eles.</string>
     <string name="iceraven__title">Iceraven</string>
-    <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade.</string>
+    <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade.
+\n - O projeto demora mais do que o normal para fornecer atualizações de segurança.</string>
     <string name="infobox">Este app instala e atualiza vários navegadores web. Clique no botão \"+\" para instalar ou no botão com \"seta para baixo\" para atualizar. Você pode verificar por novas atualizações, deslizando para baixo ou reabrindo este app. Por padrão, ele verificará regularmente por atualizações em segundo plano. Fiz o melhor para garantir a segurança do processo de instalação/atualização - fique a vontade para verificá-lo ou melhorá-lo, criando um PR. \n\nÚltima verificação em segundo plano: %1$s</string>
     <string name="app_card__information_about_the_app">detalhes sobre o app</string>
     <string name="install_activity__delete_cache_button_text">limpar cache</string>
@@ -221,4 +222,15 @@
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto.
 \n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
+    <string name="app_card__app_warning_button_description">Mostre avisos sobre este aplicativo</string>
+    <string name="crash_report__explain_text__install_activity_install_file">Este erro ocorreu durante a instalação. Se este erro ocorrer frequentemente, fique a vontade para enviar o relatório de falha via notabug.org, GitHub ou GitLab.</string>
+    <string name="notification__download_error__channel_descr">Mostra quando os downloads de atualização em segundo plano falham.</string>
+    <string name="notification__download_error__channel_name">Notificação sobre erros de download em segundo plano</string>
+    <string name="notification__download_error__descr">O download em segundo plano da atualização do %1$s falhou. Se esse erro ocorrer com frequência, sinta-se à vontade para reportá-lo via notabug.org, GitHub ou GitLab.</string>
+    <string name="notification__download_error__title">Erro no download da atualização em segundo plano</string>
+    <string name="notification__eol_apps__channel_description">Canal de notificação para avisos sobre aplicativos desatualizados.</string>
+    <string name="notification__eol_apps__channel_name">Notificação de aplicativos desatualizados</string>
+    <string name="notification__eol_apps__text">Você tem apps desatualizados que não devem mais ser usados. Clique para mais informações.</string>
+    <string name="notification__eol_apps__title">Aplicativos desatualizados instalados</string>
+    <string name="generic_eol_reason__browser_to_old">O navegador não é atualizado há muito tempo, então recomendo usar outro navegador temporariamente. Quando os desenvolvedores lançarem uma nova atualização, removerei este aviso.</string>
 </resources>
