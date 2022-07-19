@@ -31,7 +31,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
-import de.marmaro.krt.ffupdater.network.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
@@ -221,12 +221,12 @@ class MainActivity : AppCompatActivity() {
             val updateResult = if (useCache) {
                 app.impl.checkForUpdateAsync(applicationContext).await()
             } else {
-                app.impl.checkForUpdateWithoutUsingCacheAsync(applicationContext).await()
+                app.impl.checkForUpdateWithoutLoadingFromCacheAsync(applicationContext).await()
             }
             setAvailableVersion(app, updateResult)
             sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable
             setDownloadButtonState(app, updateResult.isUpdateAvailable)
-        } catch (e: GithubRateLimitExceededException) {
+        } catch (e: ApiRateLimitExceededException) {
             showUpdateCheckError(app, R.string.main_activity__github_api_limit_exceeded, e)
         } catch (e: NetworkException) {
             showUpdateCheckError(app, R.string.main_activity__temporary_network_issue, e)

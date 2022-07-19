@@ -30,7 +30,7 @@ import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
-import de.marmaro.krt.ffupdater.network.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
@@ -192,7 +192,7 @@ class InstallActivity : AppCompatActivity() {
 
                 try {
                     viewModel.appAppUpdateStatus = app.impl.checkForUpdateAsync(this).await()
-                } catch (e: GithubRateLimitExceededException) {
+                } catch (e: ApiRateLimitExceededException) {
                     failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
                     return
                 } catch (e: NetworkException) {

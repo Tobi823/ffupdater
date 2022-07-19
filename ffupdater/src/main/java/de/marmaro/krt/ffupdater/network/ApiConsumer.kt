@@ -4,7 +4,7 @@ import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.network.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +30,7 @@ class ApiConsumer {
      * If clazz is String, then the network response is returned as a string.
      * If class is not a String, then the network response is parsed as JSON and returned as object.
      * @throws NetworkException if the network resource is not available after 5 retires.
-     * @throws GithubRateLimitExceededException if the GitHub-API rate limit is exceeded.
+     * @throws ApiRateLimitExceededException if the GitHub-API rate limit is exceeded.
      */
     @MainThread
     @Throws(NetworkException::class)
@@ -47,12 +47,15 @@ class ApiConsumer {
                 } catch (e: SocketTimeoutException) {
                     // for java.net.SocketTimeoutException: timeout
                     throw NetworkException("Fail to consume '$url'.", e)
+                } catch (e: ApiRateLimitExceededException) {
+                    throw NetworkException("Fail to consume '$url'.", e)
                 }
             }
         }
     }
 
     @WorkerThread
+    @Throws(ApiRateLimitExceededException::class)
     private fun <T : Any> consume(url: String, clazz: KClass<T>): T {
         require(url.startsWith("https://"))
         TrafficStats.setThreadStatsTag(threadId)
@@ -64,7 +67,7 @@ class ApiConsumer {
             .execute()
             .use { response ->
                 if (url.startsWith(GITHUB_URL) && response.code == 403) {
-                    throw GithubRateLimitExceededException(Exception("response code is ${response.code}"))
+                    throw ApiRateLimitExceededException(Exception("response code is ${response.code}"))
                 }
 
                 val body = requireNotNull(response.body)

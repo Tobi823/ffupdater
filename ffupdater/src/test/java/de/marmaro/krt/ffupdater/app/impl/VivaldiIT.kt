@@ -50,7 +50,8 @@ class VivaldiIT : BaseAppIT() {
         abi: ABI,
         url: String,
     ) {
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
     }
@@ -61,7 +62,8 @@ class VivaldiIT : BaseAppIT() {
         abi: ABI,
     ) {
         packageInfo.versionName = "4.3.2439.43"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -71,7 +73,8 @@ class VivaldiIT : BaseAppIT() {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

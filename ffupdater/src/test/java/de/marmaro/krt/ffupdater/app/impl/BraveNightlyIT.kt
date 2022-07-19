@@ -59,7 +59,8 @@ class BraveNightlyIT : BaseAppIT() {
         url: String,
         fileSize: Long,
     ) {
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -72,7 +73,8 @@ class BraveNightlyIT : BaseAppIT() {
         abi: ABI,
     ) {
         packageInfo.versionName = "1.18.12"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -82,7 +84,8 @@ class BraveNightlyIT : BaseAppIT() {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

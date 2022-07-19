@@ -103,7 +103,8 @@ class BraveIT : BaseAppIT() {
             3 -> prepareNetworkForReleaseAfterThreeRequests()
             else -> throw IllegalStateException()
         }
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertEquals(url, result.downloadUrl)
         assertEquals(EXPECTED_VERSION, result.version)
         assertEquals(fileSize, result.fileSizeBytes)
@@ -122,7 +123,8 @@ class BraveIT : BaseAppIT() {
             else -> throw IllegalStateException()
         }
         packageInfo.versionName = "1.18.12"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertTrue(result.isUpdateAvailable)
     }
 
@@ -138,7 +140,8 @@ class BraveIT : BaseAppIT() {
             else -> throw IllegalStateException()
         }
         packageInfo.versionName = "1.20.103"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         assertFalse(result.isUpdateAvailable)
     }
 }

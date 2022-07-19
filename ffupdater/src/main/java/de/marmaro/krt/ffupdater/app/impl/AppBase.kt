@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.ABI.*
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 import kotlinx.coroutines.Deferred
@@ -71,6 +72,7 @@ abstract class AppBase {
         updateCacheAfterInstallation(context, available)
     }
 
+    @Throws(NetworkException::class)
     suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateStatus> {
         return withContext(Dispatchers.IO) {
             async {
@@ -85,7 +87,8 @@ abstract class AppBase {
         }
     }
 
-    suspend fun checkForUpdateWithoutUsingCacheAsync(context: Context): Deferred<AppUpdateStatus> {
+    @Throws(NetworkException::class)
+    suspend fun checkForUpdateWithoutLoadingFromCacheAsync(context: Context): Deferred<AppUpdateStatus> {
         return withContext(Dispatchers.IO) {
             async {
                 mutex.withLock {
@@ -95,6 +98,7 @@ abstract class AppBase {
         }
     }
 
+    @Throws(NetworkException::class)
     private suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
         val available = findLatestUpdate()
         return AppUpdateStatus(
@@ -130,6 +134,8 @@ abstract class AppBase {
         ).also { result -> setUpdateCache(context, result) }
     }
 
+    @MainThread
+    @Throws(NetworkException::class)
     internal abstract suspend fun findLatestUpdate(): LatestUpdate
 
     @MainThread

@@ -56,7 +56,8 @@ class FirefoxFocusIT : BaseAppIT() {
         url: String,
         fileSize: Long,
     ) {
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         Assertions.assertEquals(url, result.downloadUrl)
         Assertions.assertEquals(EXPECTED_VERSION, result.version)
         Assertions.assertEquals(fileSize, result.fileSizeBytes)
@@ -69,7 +70,8 @@ class FirefoxFocusIT : BaseAppIT() {
         abi: ABI,
     ) {
         packageInfo.versionName = "97.2.0"
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         Assertions.assertTrue(result.isUpdateAvailable)
     }
 
@@ -79,7 +81,8 @@ class FirefoxFocusIT : BaseAppIT() {
         abi: ABI,
     ) {
         packageInfo.versionName = EXPECTED_VERSION
-        val result = runBlocking { createSut(abi).checkForUpdateWithoutUsingCacheAsync(context).await() }
+        val result =
+            runBlocking { createSut(abi).checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         Assertions.assertFalse(result.isUpdateAvailable)
     }
 }

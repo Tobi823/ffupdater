@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.installer.entity.Installer.ROOT_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
-import de.marmaro.krt.ffupdater.network.exceptions.GithubRateLimitExceededException
+import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
@@ -70,7 +70,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         } catch (e: CancellationException) {
             Log.w(LOG_TAG, "Background job failed (CancellationException)", e)
             handleRecoverableError(e)
-        } catch (e: GithubRateLimitExceededException) {
+        } catch (e: ApiRateLimitExceededException) {
             Log.w(LOG_TAG, "Background job failed (GithubRateLimitExceededException)", e)
             handleRecoverableError(e)
         } catch (e: NetworkException) {
@@ -129,7 +129,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { app -> app.impl.isInstalled(context) }
             .filter { app ->
-                app.impl.checkForUpdateWithoutUsingCacheAsync(context).await().isUpdateAvailable
+                val updateResult = try {
+                    app.impl.checkForUpdateWithoutLoadingFromCacheAsync(context).await()
+                } catch (e: NetworkException) {
+                    throw NetworkException("Fail to request latest version of ${app.name} in background.", e)
+                }
+                updateResult.isUpdateAvailable
             }
             .let { apps -> return apps to null }
     }
@@ -161,7 +166,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         val appCache = AppCache(app)
-        val updateResult = app.impl.checkForUpdateAsync(context).await() // this result should be cached
+        val updateResult = try {
+            app.impl.checkForUpdateAsync(context).await() // this result should be cached
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of ${app.name} in BackgroundJob.", e)
+        }
+
         val availableResult = updateResult.latestUpdate
         if (appCache.isAvailable(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
