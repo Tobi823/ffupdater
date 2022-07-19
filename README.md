@@ -79,7 +79,6 @@ The applications are downloaded from these locations:
 - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
 - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
 - Kiwi Browser Next: <https://api.github.com/repos/kiwibrowser/src.next/releases>
-- Ungoogled Chromium: <https://api.github.com/repos/ungoogled-software/ungoogled-chromium-android/releases>
 - Vivaldi: <https://vivaldi.com/download/>
 
 ## Other distribution channels
