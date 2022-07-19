@@ -25,7 +25,7 @@ class MozillaCiLogConsumer(
         val response = try {
             apiConsumer.consumeAsync(logUrl, String::class).await()
         } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of $task from F-Droid.", e)
+            throw NetworkException("Fail to request the latest version of $task from Mozilla (log).", e)
         }
         val extractVersion = {
             val regexMatch = Regex("""'(version|tag_name)': 'v?(.+)'""")

@@ -52,7 +52,7 @@ class FirefoxRelease(
         val result = try {
             mozillaCiConsumer.updateCheck()
         } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Firefox Beta.", e)
+            throw NetworkException("Fail to request the latest version of Firefox Release.", e)
         }
         Log.i(LOG_TAG, "found latest version ${result.version}")
         return LatestUpdate(

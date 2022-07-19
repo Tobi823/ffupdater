@@ -26,7 +26,7 @@ class MozillaCiJsonConsumer(
         val response = try {
             apiConsumer.consumeAsync(jsonUrl, ChainOfTrustJson::class).await()
         } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of $task from Mozilla.", e)
+            throw NetworkException("Fail to request the latest version of $task from Mozilla (json).", e)
         }
         val artifact = response.artifacts[apkArtifact]
         checkNotNull(artifact) {
