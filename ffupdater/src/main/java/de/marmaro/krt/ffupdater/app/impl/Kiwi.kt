@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
@@ -10,6 +11,7 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import java.io.File
 
@@ -35,6 +37,8 @@ class Kiwi(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
@@ -54,7 +58,11 @@ class Kiwi(
             dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )
-        val result = githubConsumer.updateCheck()
+        val result = try {
+            githubConsumer.updateCheck()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of Kiwi.", e)
+        }
         // tag name can be "2232087292" (the id of the build runner)
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(

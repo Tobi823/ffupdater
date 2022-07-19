@@ -8,7 +8,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
  * Consume the "chain_of_trust.log".
  */
 class MozillaCiLogConsumer(
-    task: String,
+    private val task: String,
     private val apkArtifact: String,
     private val apiConsumer: ApiConsumer,
 ) {
@@ -22,7 +22,11 @@ class MozillaCiLogConsumer(
      */
     @MainThread
     suspend fun updateCheck(): Result {
-        val response = apiConsumer.consumeAsync(logUrl, String::class).await()
+        val response = try {
+            apiConsumer.consumeAsync(logUrl, String::class).await()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of $task from F-Droid.", e)
+        }
         val extractVersion = {
             val regexMatch = Regex("""'(version|tag_name)': 'v?(.+)'""")
                 .find(response)

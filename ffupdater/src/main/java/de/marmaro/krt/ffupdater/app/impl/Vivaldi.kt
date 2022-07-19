@@ -2,11 +2,13 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import android.util.Log
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 
 /**
  * https://vivaldi.com/de/download/
@@ -29,9 +31,15 @@ class Vivaldi(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val content = apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, String::class).await()
+        val content = try {
+            apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, String::class).await()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest Vivaldi version.", e)
+        }
 
         val (version, downloadUrl) = extractVersionAndDownloadUrl(content)
         Log.i(LOG_TAG, "found latest version $version")

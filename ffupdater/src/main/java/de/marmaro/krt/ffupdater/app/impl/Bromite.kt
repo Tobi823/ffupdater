@@ -2,11 +2,13 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import android.util.Log
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -31,6 +33,8 @@ class Bromite(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
@@ -48,7 +52,11 @@ class Bromite(
             isSuitableAsset = { asset -> asset.name == fileName },
             apiConsumer = apiConsumer,
         )
-        val result = githubConsumer.updateCheck()
+        val result = try {
+            githubConsumer.updateCheck()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of Bromite.", e)
+        }
         // tag name can be "90.0.4430.59"
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(

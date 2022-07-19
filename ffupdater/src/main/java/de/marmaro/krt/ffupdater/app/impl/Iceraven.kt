@@ -3,11 +3,13 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -36,6 +38,8 @@ class Iceraven(
         return installedVersion?.replace("iceraven-", "")
     }
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
@@ -53,7 +57,11 @@ class Iceraven(
             isSuitableAsset = { asset -> asset.name.endsWith(fileSuffix) },
             apiConsumer = apiConsumer,
         )
-        val result = githubConsumer.updateCheck()
+        val result = try {
+            githubConsumer.updateCheck()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of Iceraven.", e)
+        }
         val version = result.tagName.replace("iceraven-", "")
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(

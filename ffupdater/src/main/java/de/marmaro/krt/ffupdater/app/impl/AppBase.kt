@@ -130,7 +130,6 @@ abstract class AppBase {
         ).also { result -> setUpdateCache(context, result) }
     }
 
-    @MainThread
     internal abstract suspend fun findLatestUpdate(): LatestUpdate
 
     @MainThread

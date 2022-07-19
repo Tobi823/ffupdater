@@ -2,11 +2,13 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import android.util.Log
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -31,6 +33,8 @@ class BraveBeta(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
@@ -49,7 +53,11 @@ class BraveBeta(
             dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )
-        val result = githubConsumer.updateCheck()
+        val result = try {
+            githubConsumer.updateCheck()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of Brave Beta.", e)
+        }
         val version = result.tagName.replace("v", "")
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
+import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
@@ -12,6 +13,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.security.FileHashCalculator
 import java.io.File
@@ -40,6 +42,8 @@ class FirefoxNightly(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val abiString = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {

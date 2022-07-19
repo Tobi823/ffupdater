@@ -2,11 +2,13 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import android.util.Log
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -31,6 +33,8 @@ class UngoogledChromium(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
@@ -48,7 +52,11 @@ class UngoogledChromium(
             dontUseApiForLatestRelease = true,
             apiConsumer = apiConsumer,
         )
-        val result = githubConsumer.updateCheck()
+        val result = try {
+            githubConsumer.updateCheck()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of Ungoogled Chromium.", e)
+        }
 
         val extractVersion = {
             val regexMatch = Regex("""^([.0-9]+)-\d+$""")

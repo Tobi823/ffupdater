@@ -9,7 +9,7 @@ import de.marmaro.krt.ffupdater.security.Sha256Hash
  * Consume the "chain_of_trust.json".
  */
 class MozillaCiJsonConsumer(
-    task: String,
+    private val task: String,
     private val apkArtifact: String,
     private val apiConsumer: ApiConsumer,
 ) {
@@ -23,7 +23,11 @@ class MozillaCiJsonConsumer(
      */
     @MainThread
     suspend fun updateCheck(): Result {
-        val response = apiConsumer.consumeAsync(jsonUrl, ChainOfTrustJson::class).await()
+        val response = try {
+            apiConsumer.consumeAsync(jsonUrl, ChainOfTrustJson::class).await()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of $task from Mozilla.", e)
+        }
         val artifact = response.artifacts[apkArtifact]
         checkNotNull(artifact) {
             "Missing artifact '$apkArtifact'. Only [${response.artifacts.keys.joinToString()}] " +

@@ -33,6 +33,7 @@ class ApiConsumer {
      * @throws GithubRateLimitExceededException if the GitHub-API rate limit is exceeded.
      */
     @MainThread
+    @Throws(NetworkException::class)
     suspend fun <T : Any> consumeAsync(url: String, clazz: KClass<T>): Deferred<T> {
         return withContext(Dispatchers.IO) {
             async {

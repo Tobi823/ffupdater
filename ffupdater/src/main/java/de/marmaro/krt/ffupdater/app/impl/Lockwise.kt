@@ -1,9 +1,11 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -26,6 +28,8 @@ class Lockwise(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         val githubConsumer = GithubConsumer(
             repoOwner = "mozilla-lockwise",
@@ -35,7 +39,11 @@ class Lockwise(
             isSuitableAsset = { asset -> asset.name.endsWith(".apk") },
             apiConsumer = apiConsumer,
         )
-        val result = githubConsumer.updateCheck()
+        val result = try {
+            githubConsumer.updateCheck()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of Lockwise.", e)
+        }
 
         val extractVersion = {
             // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"

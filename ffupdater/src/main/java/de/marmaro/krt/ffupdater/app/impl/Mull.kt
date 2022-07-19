@@ -2,10 +2,12 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.os.Build
 import android.util.Log
+import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
 
 /**
@@ -28,6 +30,8 @@ class Mull(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "ff81f5be56396594eee70fef2832256e15214122e2ba9cedd26005ffd4bcaaa8"
 
+    @MainThread
+    @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
         val result = fdroidConsumer.getLatestUpdate(packageName)
