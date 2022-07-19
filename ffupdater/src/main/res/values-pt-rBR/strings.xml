@@ -239,4 +239,6 @@
     <string name="settings__foreground__hide_warning_buttons">Ocultar o botão de aviso do aplicativo instalado.</string>
     <string name="settings__installer__native__summary">Alternativa se o instalador da sessão não funcionar em seu smartphone. Este é mais frequentemente o caso de dispositivos da Samsung ou Xiaomi.</string>
     <string name="mull__title">Navegador Mull</string>
+    <string name="mull__description">Este é um navegador web orientado à privacidade e deblobbed baseado na tecnologia Mozilla. Ele habilita muitos recursos enviados pelo projeto Tor Uplift usando as preferências do projeto arkenfox-user.js. Recomenda-se instalar o \'uBlock Origin\'.</string>
+    <string name="mull__warning">O FFUpdater baixa os arquivos dos servidores F-Droid e, portanto, não é mais rápido.</string>
 </resources>
