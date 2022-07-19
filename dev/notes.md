@@ -89,3 +89,26 @@ lastUpdateTime wird geändert, selbst wenn die gleiche Version rüberinstalliert
 # Links
 
 https://privacytests.org/android.html
+
+# Tor
+
+https://www.torproject.org/download/#android abrufen und mit dieser Regex nach Download-URLs suchen:
+
+href="((https:\/\/dist\.torproject\.org\/torbrowser\/([0-9\.]+))\/([a-zA-Z\-0-9\._]+\.apk))">
+
+Match 1: href="https://dist.torproject.org/torbrowser/11.0.15/tor-browser-11.0.15-android-aarch64-multi.apk">
+Group 1: https://dist.torproject.org/torbrowser/11.0.15/tor-browser-11.0.15-android-aarch64-multi.apk
+Group 2: https://dist.torproject.org/torbrowser/11.0.15
+Group 3: 11.0.15 Group 4: tor-browser-11.0.15-android-aarch64-multi.apk
+
+APK: android:versionName="11.0.15 (96.3.0-Release)"
+Webseite: 11.0.15
+
+Für
+Release-Datum: https://dist.torproject.org/torbrowser/11.0.15/?P=tor-browser-11.0.15-android-aarch64-multi.apk
+
+(tor-browser-11.0.15-android-aarch64-multi.apk)<\/a>\s+([0-9\-]+ [0-9\:]+)
+
+Match 1: tor-browser-11.0.15-android-aarch64-multi.apk</a>               2022-07-01 17:33 Group 1:
+tor-browser-11.0.15-android-aarch64-multi.apk Group 2: 2022-07-01 17:33
+
