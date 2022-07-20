@@ -37,9 +37,9 @@ class FileDownloader {
                     numberOfRunningDownloads.incrementAndGet()
                     downloadFileInternal(url, file)
                 } catch (e: IOException) {
-                    throw NetworkException("File download failed.", e)
+                    throw NetworkException("Download of $url failed.", e)
                 } catch (e: NetworkException) {
-                    throw NetworkException("File download failed.", e)
+                    throw NetworkException("Download of $url failed.", e)
                 } finally {
                     lastChange = System.currentTimeMillis()
                     numberOfRunningDownloads.decrementAndGet()
