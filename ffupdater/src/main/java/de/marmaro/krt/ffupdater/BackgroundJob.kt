@@ -9,6 +9,8 @@ import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.background.RecoverableBackgroundException
+import de.marmaro.krt.ffupdater.background.UnrecoverableBackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid10
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
@@ -16,7 +18,6 @@ import de.marmaro.krt.ffupdater.installer.entity.Installer.ROOT_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
-import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
@@ -68,17 +69,17 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             Log.i(LOG_TAG, "Execute background job for update check.")
             checkDownloadAndInstallApps()
         } catch (e: CancellationException) {
-            Log.w(LOG_TAG, "Background job failed (CancellationException)", e)
-            handleRecoverableError(e)
-        } catch (e: ApiRateLimitExceededException) {
-            Log.w(LOG_TAG, "Background job failed (GithubRateLimitExceededException)", e)
-            handleRecoverableError(e)
+            val wrappedException = RecoverableBackgroundException(e)
+            Log.w(LOG_TAG, "Background job failed (CancellationException)", wrappedException)
+            handleRecoverableError(wrappedException)
         } catch (e: NetworkException) {
-            Log.w(LOG_TAG, "Background job failed (NetworkException)", e)
-            handleRecoverableError(e)
+            val wrappedException = RecoverableBackgroundException(e)
+            Log.w(LOG_TAG, "Background job failed (NetworkException)", wrappedException)
+            handleRecoverableError(wrappedException)
         } catch (e: Exception) {
-            Log.e(LOG_TAG, "Background job failed due to an unexpected exception", e)
-            handleUnrecoverableError(e)
+            val wrappedException = UnrecoverableBackgroundException(e)
+            Log.e(LOG_TAG, "Background job failed due to an unexpected exception", wrappedException)
+            handleUnrecoverableError(wrappedException)
         }
     }
 
