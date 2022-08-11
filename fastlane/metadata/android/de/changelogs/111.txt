@@ -1,0 +1,5 @@
+* Dank an die Weblate-Mitwirkenden: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS und Hin
+  Weisner
+* Verbesserung des Benachrichtigungstextes, wenn die Prüfung der Hintergrundaktualisierung fünf Tage in Folge fehlschlägt (alter Wert: zwei
+  Tage, war aber für einige Benutzer zu niedrig).
+* Verbesserung des Absturzberichts und des Zeitstempels der letzten erfolgreichen Hintergrundaktualisierungsprüfung
