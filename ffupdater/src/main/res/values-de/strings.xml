@@ -58,7 +58,7 @@
     <string name="device_too_old_dialog__title">Gerät ist zu alt</string>
     <string name="dialog_button__do_not_install">Nein, nicht installieren</string>
     <string name="dialog_button__yes">Ja</string>
-    <string name="notification__download_running__channel_descr">Zeigt Status von Downloads von Updates im Hintergrund an.</string>
+    <string name="notification__download_running__channel_descr">Zeigt an, wann Downloads im Hintergrund heruntergeladen werden.</string>
     <string name="notification__download_running__channel_name">Benachrichtigungen über Downloads im Hintergrund</string>
     <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Lade Update herunter</string>
@@ -230,7 +230,7 @@
     <string name="app_card__app_warning_button_description">Zeige Warnungen dieser App an</string>
     <string name="lockwise__eol_reason">Mozilla unterstützt die App seit Dezember 2021 nicht mehr. Bitte wechsle zu einem anderen Passwortspeicher.</string>
     <string name="generic_eol_reason__browser_to_old">Dieser Browser wurde eine längere Zeit nicht mehr aktualisiert. Daher empfehle ich, fürs Erste einen anderen Browser zu verwenden. Wenn die Entwickler eine neue Version veröffentlichen, dann werde ich diese Warnung entfernen.</string>
-    <string name="notification__download_error__channel_descr">Zeige wenn Downloads von Updates im Hintergrund fehlschlagen.</string>
+    <string name="notification__download_error__channel_descr">Zeigt an, wenn Downloads von Updates im Hintergrund fehlschlagen.</string>
     <string name="notification__download_error__channel_name">Benachrichtigungen über Downloadfehler im Hintergrund</string>
     <string name="notification__download_error__descr">Der Hintergrunddownload des Updates von %1$s ist fehlgeschlagen. Wenn dieser Fehler häufiger auftritt, kannst du auf notabug.org, GitHub oder GitLab melden.</string>
     <string name="notification__eol_apps__channel_description">Benachrichtigungskanal für Warnungen vor veralteten Apps.</string>
@@ -246,4 +246,6 @@
     <string name="notification__no_update_check__title">Keine erfolgreiche Updateprüfung im Hintergrund seit fünf Tagen</string>
     <string name="notification__no_update_check__channel_description">Benachrichtigungskanal für die Warnung, dass in den letzten fünf Tagen keine Updateprüfung im Hintergrund erfolgreich war.</string>
     <string name="notification__no_update_check__text">In den letzten fünf Tagen war FFUpdater nicht in der Lage, im Hintergrund nach Updates zu suchen. Wenn Sie Ihr Smartphone für längere Zeit im Flugmodus hatten, können Sie diese Meldung ignorieren. Wenn nicht, klicken Sie hier, um den Fehlerbericht anzuzeigen.</string>
+    <string name="app_card__open_project_page">Projektseite im Browser öffnen</string>
+    <string name="ungoogled_chromium__eol_reason">Der Entwickler schrieb: \"Ich werde für einige Zeit nicht in der Lage sein, die Versionen zu aktualisieren. Wenn möglich, verwenden Sie bitte in der Zwischenzeit einen der Browser [die FFUpdater unterstützt].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
 </resources>
