@@ -43,11 +43,11 @@
     <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎和相同功能。这使其代替成为 Android 系统默认浏览器成为可能。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
-    <string name="crash_report__explain_text__install_activity_download_file">下载过程中出现以下错误。如果这个错误频繁出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。请从剪贴板中向报告中添加崩溃报告。</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">在拉取下载元数据时出现错误。如果这个错误频繁出现，可以尽管向 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
-    <string name="crash_report__explain_text__install_activity_install_file">安装过程中出现以下错误。如果这个错误频繁出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。请从剪贴板中向报告中添加崩溃报告。</string>
-    <string name="crash_report__explain_text__main_activity_update_check">在主视图中检查更新时出现错误。如果这个错误频繁出现，可以尽管向 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
-    <string name="crash_report__explain_text__uncaught_throwable">FFUpdater 上次不幸崩溃了，并记录到此次错误。请向 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__install_activity_download_file">下载过程中出现以下错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__install_activity_fetching_url">在拉取下载元数据时出现错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__install_activity_install_file">安装过程中出现以下错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__main_activity_update_check">在主视图中检查更新时出现错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__uncaught_throwable">FFUpdater 上次不幸崩溃了，此次错误已被记录。请在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__go_to_github">跳转到 GitHub</string>
     <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
     <string name="crash_report__got_to_notabug_org">跳转到 notabug.org</string>
@@ -71,7 +71,7 @@
     <string name="notification__eol_apps__title">已安装的过时应用</string>
     <string name="notification__error__channel_descr">显示后台更新检查器错误</string>
     <string name="notification__error__channel_name">后台错误</string>
-    <string name="firefox_beta__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且还有广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，安全与速度将在这个私密的移动浏览器中双全。</string>
+    <string name="firefox_beta__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
     <string name="firefox_beta__title">Firefox for Android Beta（公测版）</string>
     <string name="firefox_beta__warning">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
     <string name="firefox_focus__description">这是 Firefox 的一个衍生修改版，旨在增强隐私。</string>
@@ -85,7 +85,7 @@
 \nFirefox Nightly （每夜版）旨在展示 Firefox 的更多实验特性。 Nightly 通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
     <string name="firefox_nightly__title">Firefox Nightly（每夜版）</string>
     <string name="firefox_nightly__warning">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
-    <string name="firefox_release__description">Firefox 浏览器 Android 天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且还有广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，安全与速度将在这个私密的移动浏览器中双全。</string>
+    <string name="firefox_release__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
     <string name="firefox_release__title">Firefox 浏览器</string>
     <string name="firefox_release__warning">- F-Droid上还有一个改进版的 Firefox，名为 Fennec F-Droid。</string>
     <string name="generic_eol_reason__browser_to_old">这个浏览器已经很长时间没有更新了，建议暂时使用其他的浏览器。如果其开发者发布了更新，将会移除这个警告。</string>
