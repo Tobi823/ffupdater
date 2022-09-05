@@ -9,6 +9,7 @@ import android.os.FileUriExposedException
 import android.os.StrictMode
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -27,6 +28,7 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
+import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
@@ -103,6 +105,9 @@ class InstallActivity : AppCompatActivity() {
         BackgroundNotificationBuilder.hideInstallationSuccess(this, viewModel.app!!)
         BackgroundNotificationBuilder.hideInstallationError(this, viewModel.app!!)
 
+        // prevent network timeouts when the displayed is automatically turned off
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
         }
@@ -157,7 +162,7 @@ class InstallActivity : AppCompatActivity() {
             checkIfEnoughStorageAvailable()
             return
         }
-        failureExternalStorageNotAccessible()
+        showThatExternalStorageIsNotAccessible()
     }
 
     private suspend fun checkIfEnoughStorageAvailable() {
@@ -186,17 +191,17 @@ class InstallActivity : AppCompatActivity() {
             } else {
                 // only check for updates if network type requirements are met
                 if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-                    failureShowFetchUrlException(getString(main_activity__no_unmetered_network))
+                    showThatUrlFetchingFailed(getString(main_activity__no_unmetered_network))
                     return
                 }
 
                 try {
                     viewModel.appAppUpdateStatus = app.impl.checkForUpdateAsync(this).await()
                 } catch (e: ApiRateLimitExceededException) {
-                    failureShowFetchUrlException(getString(install_activity__github_rate_limit_exceeded), e)
+                    showThatUrlFetchingFailed(getString(install_activity__github_rate_limit_exceeded), e)
                     return
                 } catch (e: NetworkException) {
-                    failureShowFetchUrlException(getString(install_activity__temporary_network_issue), e)
+                    showThatUrlFetchingFailed(getString(install_activity__temporary_network_issue), e)
                     return
                 }
             }
@@ -224,7 +229,7 @@ class InstallActivity : AppCompatActivity() {
     @MainThread
     private suspend fun startDownload() {
         if (!foregroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
-            failureShowFetchUrlException(getString(main_activity__no_unmetered_network))
+            showThatUrlFetchingFailed(getString(main_activity__no_unmetered_network))
             return
         }
 
@@ -266,7 +271,7 @@ class InstallActivity : AppCompatActivity() {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
             setText(R.id.downloadedFileUrl, downloadUrl)
-            failureDownloadUnsuccessful(e)
+            showThatDownloadFailed(e)
         }
     }
 
@@ -293,7 +298,7 @@ class InstallActivity : AppCompatActivity() {
             fileDownloader.currentDownload?.await()
             installApp()
         } catch (e: NetworkException) {
-            failureDownloadUnsuccessful(e)
+            showThatDownloadFailed(e)
         }
     }
 
@@ -308,21 +313,14 @@ class InstallActivity : AppCompatActivity() {
         BackgroundNotificationBuilder.hideInstallationError(this, viewModel.app!!)
 
         if (result.success) {
-            hide(R.id.installingApplication)
-            show(R.id.installerSuccess)
-            show(R.id.fingerprintInstalledGood)
-            setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
-
-            viewModel.app!!.impl.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
-
-            if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                appCache.delete(this)
-            } else {
-                show(R.id.install_activity__delete_cache)
-            }
-            return
+            showThatAppIsInstalled(result)
+        } else {
+            showThatAppInstallationFailed(result)
         }
+    }
 
+    @MainThread
+    private fun showThatAppInstallationFailed(result: InstallResult) {
         hide(R.id.installingApplication)
         show(R.id.installerFailed)
         if (installerSettingsHelper.getInstaller() == SESSION_INSTALLER) {
@@ -347,16 +345,34 @@ class InstallActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
     @MainThread
-    private fun failureExternalStorageNotAccessible() {
+    private fun showThatAppIsInstalled(result: InstallResult) {
+        hide(R.id.installingApplication)
+        show(R.id.installerSuccess)
+        show(R.id.fingerprintInstalledGood)
+        setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
+        viewModel.app!!.impl.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
+        if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
+            appCache.delete(this)
+        } else {
+            show(R.id.install_activity__delete_cache)
+        }
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    }
+
+    @MainThread
+    private fun showThatExternalStorageIsNotAccessible() {
         show(R.id.externalStorageNotAccessible)
         setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
     @MainThread
-    private fun failureDownloadUnsuccessful(exception: Exception) {
+    private fun showThatDownloadFailed(exception: Exception) {
         val downloadUrl = viewModel.appAppUpdateStatus!!.downloadUrl
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
@@ -369,10 +385,11 @@ class InstallActivity : AppCompatActivity() {
         }
         show(R.id.installerFailed)
         appCache.delete(this)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
     @MainThread
-    private fun failureShowFetchUrlException(message: String, exception: Exception? = null) {
+    private fun showThatUrlFetchingFailed(message: String, exception: Exception? = null) {
         hide(R.id.fetchUrl)
         show(R.id.install_activity__exception)
         setText(R.id.install_activity__exception__text, message)
@@ -380,12 +397,12 @@ class InstallActivity : AppCompatActivity() {
             hide(R.id.install_activity__exception__show_button)
             return
         }
-
         findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
             val description = getString(crash_report__explain_text__install_activity_fetching_url)
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
     companion object {
