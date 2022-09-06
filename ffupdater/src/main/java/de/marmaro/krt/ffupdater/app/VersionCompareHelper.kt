@@ -4,22 +4,53 @@ import io.github.g00fy2.versioncompare.Version
 
 object VersionCompareHelper {
     fun isAvailableVersionHigher(installedVersion: String, availableVersion: String): Boolean {
-        return try {
-            val installed = Version(installedVersion, true)
-            val available = Version(availableVersion, true)
-            available.isHigherThan(installed)
+        try {
+            val installed = convertToVersion(installedVersion)
+            val available = convertToVersion(availableVersion)
+            if (areVersionsNotComparable(installed, available)) {
+                return true
+            }
+            return available > installed
         } catch (e: IllegalArgumentException) {
-            installedVersion != availableVersion
+            return installedVersion != availableVersion
         }
     }
 
     fun isAvailableVersionEqual(installedVersion: String, availableVersion: String): Boolean {
         return try {
-            val installed = Version(installedVersion, true)
-            val available = Version(availableVersion, true)
-            available.isEqual(installed)
+            val installed = convertToVersion(installedVersion)
+            val available = convertToVersion(availableVersion)
+            if (areVersionsNotComparable(installed, available)) {
+                return false
+            }
+            available == installed
         } catch (e: IllegalArgumentException) {
             installedVersion == availableVersion
         }
+    }
+
+    private fun convertToVersion(rawVersion: String): Version {
+        val cleanedUpVersion = replaceLettersWithSubversions(rawVersion)
+        return Version(cleanedUpVersion, true)
+    }
+
+    private fun replaceLettersWithSubversions(rawVersion: String): String {
+        var cleanedUpVersion = ""
+        for (character: Char in rawVersion) {
+            if (character.isDigit() || character == '.') {
+                cleanedUpVersion += character
+            } else {
+                if (!cleanedUpVersion.endsWith('.')) {
+                    cleanedUpVersion += '.'
+                }
+                cleanedUpVersion += character.code.toString()
+                cleanedUpVersion += '.'
+            }
+        }
+        return cleanedUpVersion
+    }
+
+    private fun areVersionsNotComparable(version1: Version, version2: Version): Boolean {
+        return version1.subversionNumbers.size != version2.subversionNumbers.size
     }
 }
