@@ -1,3 +1,6 @@
+For the F-Droid-Maintainers: I want to migrate the source git repository
+from https://notabug.org/Tobiwan/ffupdater to https://github.com/Tobi823/ffupdater
+
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 
 # Firefox-Updater
@@ -58,8 +61,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
   A malicious certificate can prevent FFUpdater finding new updates.
 - When using root permission, check for dangerous characters and use only values from an allow list. Only
   src/main/java/de/marmaro/krt/ffupdater/installer/RootInstaller.kt uses root permission.
-- I will sign my commits with the GPG key
-  CE72BFF6A293A85762D4901E426C5FB1C7840C5F [public key](dev/signatures/ffupdater_gpg_public.key)
+- I will sign my commits with the GPG key CE72BFF6A293A85762D4901E426C5FB1C7840C5F [public key](dev/signatures/ffupdater_gpg_public.key)
 
 Feel free to check my source code ;)
 
@@ -71,8 +73,7 @@ The applications are downloaded from these locations:
   <https://api.github.com/repos/brave/brave-browser/releases/latest>
 - Bromite, Bromite SystemWebView: <https://api.github.com/repos/bromite/bromite/releases/latest>
 - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
-- Firefox for Android
-  Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
+- Firefox for Android Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
 - Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
 - Firefox Focus, Firefox Klar:
   <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
@@ -157,8 +158,7 @@ repository or the official *F-Droid* repository) the app version was installed
 - [android-junit5](https://github.com/mannodermaus/android-junit5) by Marcel Schnelle (Apache 2.0): *use
   JUnit5 software tests with Android*
 - [MockK](https://mockk.io/) (Apache 2.0): *for easier software testing*
-- Partially copy and
-  modify [Root app installer](https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt)
+- Partially copy and modify [Root app installer](https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt)
   by Aurora Store / Rahul Patel (GPL): *for installing/updating apps without user interaction*
 - [libsu](https://github.com/topjohnwu/libsu) by John Wu (Apache 2.0): *for executing root commands*
 
