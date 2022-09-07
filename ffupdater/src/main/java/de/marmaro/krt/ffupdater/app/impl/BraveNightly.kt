@@ -7,6 +7,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -26,8 +27,8 @@ class BraveNightly(
     override val installationWarning = R.string.brave__warning
     override val downloadSource = R.string.github
     override val icon = R.mipmap.ic_logo_brave_nightly
-    override val minApiLevel = Build.VERSION_CODES.N
-    override val supportedAbis = ARM_AND_X_ABIS
+    override val minApiLevel = Build.VERSION_CODES.M
+    override val supportedAbis = ARM32_ARM64_X86_X64
     override val projectPage = "https://github.com/brave/brave-browser"
 
     @Suppress("SpellCheckingInspection")
@@ -37,13 +38,7 @@ class BraveNightly(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val fileName = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
-            ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
-            ABI.ARM64_V8A -> "BraveMonoarm64.apk"
-            ABI.X86 -> "BraveMonox86.apk"
-            ABI.X86_64 -> "BraveMonox64.apk"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
+        val fileName = getNameOfApkFile()
         val githubConsumer = GithubConsumer(
             repoOwner = "brave",
             repoName = "brave-browser",
@@ -56,7 +51,7 @@ class BraveNightly(
         val result = try {
             githubConsumer.updateCheck()
         } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Firefox Nightly.", e)
+            throw NetworkException("Fail to request the latest version of Brave Nightly.", e)
         }
         val version = result.tagName.replace("v", "")
         Log.i(LOG_TAG, "found latest version $version")
@@ -68,6 +63,24 @@ class BraveNightly(
             fileHash = null,
             firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
+    }
+
+    private fun getNameOfApkFile(): String {
+        return if (DeviceSdkTester.supportsAndroidNougat()) {
+            when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
+                ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
+                ABI.ARM64_V8A -> "BraveMonoarm64.apk"
+                ABI.X86 -> "BraveMonox86.apk"
+                ABI.X86_64 -> "BraveMonox64.apk"
+                else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
+            }
+        } else {
+            when (deviceAbiExtractor.supportedAbis.first { abi -> abi in ARM32_X86 }) {
+                ABI.ARMEABI_V7A -> "Bravearm.apk"
+                ABI.X86 -> "Bravex86.apk"
+                else -> throw IllegalArgumentException("ABI for Android 6 is not supported")
+            }
+        }
     }
 
     companion object {

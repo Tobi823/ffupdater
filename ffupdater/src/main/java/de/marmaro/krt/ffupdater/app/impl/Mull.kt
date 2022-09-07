@@ -24,7 +24,7 @@ class Mull(
     override val downloadSource = R.string.download_source__fdroid
     override val icon = R.mipmap.ic_logo_mull
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = ARM_ABIS
+    override val supportedAbis = ARM32_ARM64
     override val projectPage = "https://f-droid.org/en/packages/us.spotco.fennec_dos/"
 
     @Suppress("SpellCheckingInspection")

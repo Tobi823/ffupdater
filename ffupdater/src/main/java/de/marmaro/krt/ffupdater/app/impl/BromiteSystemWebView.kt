@@ -27,7 +27,7 @@ class BromiteSystemWebView(
     override val downloadSource = R.string.github
     override val icon = R.mipmap.ic_logo_bromite_systemwebview
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = ARM_AND_X_ABIS
+    override val supportedAbis = ARM32_ARM64_X86_X64
     override val installableWithDefaultPermission = false
     override val projectPage = "https://github.com/bromite/bromite"
 

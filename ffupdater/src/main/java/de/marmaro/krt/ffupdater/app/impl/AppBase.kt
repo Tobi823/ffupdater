@@ -162,8 +162,9 @@ abstract class AppBase {
         const val CACHE_TIME = 10 * MINUTE_IN_MILLIS
         const val CACHE_KEY_PREFIX = "cached_update_check_result__"
         val ALL_ABIS = listOf(ARM64_V8A, ARMEABI_V7A, ARMEABI, X86_64, X86, MIPS, MIPS64)
-        val ARM_AND_X_ABIS = listOf(ARM64_V8A, ARMEABI_V7A, X86_64, X86)
-        val ARM_ABIS = listOf(ARM64_V8A, ARMEABI_V7A)
+        val ARM32_ARM64_X86_X64 = listOf(ARM64_V8A, ARMEABI_V7A, X86_64, X86)
+        val ARM32_ARM64 = listOf(ARM64_V8A, ARMEABI_V7A)
+        val ARM32_X86 = listOf(ARMEABI_V7A, X86)
         val gson = Gson()
     }
 }

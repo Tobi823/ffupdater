@@ -31,7 +31,7 @@ class Kiwi(
     override val downloadSource = R.string.github
     override val icon = R.mipmap.ic_logo_kiwi
     override val minApiLevel = Build.VERSION_CODES.M
-    override val supportedAbis = ARM_AND_X_ABIS
+    override val supportedAbis = ARM32_ARM64_X86_X64
     override val projectPage = "https://github.com/kiwibrowser/src.next"
 
     @Suppress("SpellCheckingInspection")
