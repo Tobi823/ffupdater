@@ -1,12 +1,21 @@
 package de.marmaro.krt.ffupdater.settings
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
-class ForegroundSettingsHelper(context: Context) {
-    private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+class ForegroundSettingsHelper {
+    private val preferences: SharedPreferences
+
+    constructor(context: Context) {
+        preferences = PreferenceManager.getDefaultSharedPreferences(context)
+    }
+
+    constructor(preferences: SharedPreferences) {
+        this.preferences = preferences
+    }
 
     val isUpdateCheckOnMeteredAllowed
         get() = preferences.getBoolean("foreground__update_check__metered", true)

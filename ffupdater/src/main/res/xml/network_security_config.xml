@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<network-security-config xmlns:tools="http://schemas.android.com/tools">
+<network-security-config>
     <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
-            <!-- Trust preinstalled CAs -->
+            <!-- Only trust preinstalled CAs. But this can be ignored in the app settings. -->
             <certificates src="system" />
-            <!-- Additionally trust user added CAs -->
-            <certificates src="user" tools:ignore="AcceptsUserCertificates" />
         </trust-anchors>
     </base-config>
 </network-security-config>

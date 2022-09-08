@@ -148,4 +148,15 @@
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="Network">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="network__trust_user_cas"
+            app:singleLineTitle="false"
+            app:summary="Enable if data traffic should be inspected and altered by other apps. If you unsure, keep this option disabled."
+            app:title="Trust user-added CAs" />
+
+    </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
+
 </PreferenceScreen>

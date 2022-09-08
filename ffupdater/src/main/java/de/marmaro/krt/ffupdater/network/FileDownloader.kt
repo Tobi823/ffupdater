@@ -4,6 +4,7 @@ import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -16,16 +17,24 @@ import okio.buffer
 import ru.gildor.coroutines.okhttp.await
 import java.io.File
 import java.io.IOException
+import java.security.KeyStore
+import java.security.SecureRandom
 import java.util.concurrent.atomic.AtomicInteger
+import javax.net.ssl.KeyManagerFactory
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManagerFactory
+import javax.net.ssl.X509TrustManager
 import kotlin.reflect.KMutableProperty0
 
-class FileDownloader {
+class FileDownloader(networkSettingsHelper: NetworkSettingsHelper) {
     private val trafficStatsThreadId = 10001
 
     var onProgress: (progressInPercent: Int?, totalMB: Long) -> Unit = @WorkerThread { _, _ -> }
 
     // fallback to wait for the download when the activity was recreated
     var currentDownload: Deferred<Any>? = null
+
+    private val onlyTrustSystemCAs = !networkSettingsHelper.areUserCAsTrusted
 
     @MainThread
     @Throws(NetworkException::class)
@@ -76,7 +85,11 @@ class FileDownloader {
     private suspend fun callUrl(url: String): Response {
         require(url.startsWith("https://"))
         TrafficStats.setThreadStatsTag(trafficStatsThreadId)
-        val client = createClient()
+        val client = if (onlyTrustSystemCAs) {
+            createClientTrustingOnlySystemCAs()
+        } else {
+            createClientAcceptingSystemAndUserCAs()
+        }
         val request = Request.Builder()
             .url(url)
             .build()
@@ -84,8 +97,38 @@ class FileDownloader {
             .await()
     }
 
-    private fun createClient(): OkHttpClient {
+    private fun createClientTrustingOnlySystemCAs(): OkHttpClient {
         return OkHttpClient.Builder()
+            .addNetworkInterceptor { chain: Interceptor.Chain ->
+                val original = chain.proceed(chain.request())
+                val body = requireNotNull(original.body)
+                original.newBuilder()
+                    .body(ProgressResponseBody(body, this::onProgress))
+                    .build()
+            }
+            .build()
+    }
+
+    private fun createClientAcceptingSystemAndUserCAs(): OkHttpClient {
+        // https://developer.android.com/reference/java/security/KeyStore
+        val systemAndUserCAStore = KeyStore.getInstance("AndroidCAStore")
+        systemAndUserCAStore.load(null)
+
+        // https://stackoverflow.com/a/24401795
+        // https://github.com/bitfireAT/davx5-ose/blob/0e93a47d6d7277d3a18e31c6528f578c467a56ea/app/src/main/java/at/bitfire/davdroid/HttpClient.kt
+        val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
+        trustManagerFactory.init(systemAndUserCAStore)
+
+        val keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm())
+        keyManagerFactory.init(systemAndUserCAStore, "keystore_pass".toCharArray())
+
+        val sslContext = SSLContext.getInstance("TLS")
+        sslContext.init(keyManagerFactory.keyManagers, trustManagerFactory.trustManagers, SecureRandom())
+
+        val trustManager = trustManagerFactory.trustManagers.first() as X509TrustManager
+
+        return OkHttpClient.Builder()
+            .sslSocketFactory(sslContext.socketFactory, trustManager)
             .addNetworkInterceptor { chain: Interceptor.Chain ->
                 val original = chain.proceed(chain.request())
                 val body = requireNotNull(original.body)

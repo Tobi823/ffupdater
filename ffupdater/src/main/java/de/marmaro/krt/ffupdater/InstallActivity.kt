@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
@@ -37,6 +38,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import de.marmaro.krt.ffupdater.storage.AppCache
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.Dispatchers
@@ -56,7 +58,8 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var appInstaller: ForegroundAppInstaller
     private lateinit var appCache: AppCache
     private lateinit var foregroundSettings: ForegroundSettingsHelper
-    private lateinit var installerSettingsHelper: InstallerSettingsHelper
+    private lateinit var installerSettings: InstallerSettingsHelper
+    private lateinit var networkSettings: NetworkSettingsHelper
 
     // persistent data across orientation changes
     class InstallActivityViewModel : ViewModel() {
@@ -75,7 +78,7 @@ class InstallActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        viewModel = ViewModelProvider(this).get(InstallActivityViewModel::class.java)
+        viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
         if (viewModel.app == null) {
             val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
             if (appFromExtras == null) {
@@ -86,8 +89,10 @@ class InstallActivity : AppCompatActivity() {
             viewModel.app = App.valueOf(appFromExtras)
         }
 
-        foregroundSettings = ForegroundSettingsHelper(this)
-        installerSettingsHelper = InstallerSettingsHelper(this)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        foregroundSettings = ForegroundSettingsHelper(preferences)
+        installerSettings = InstallerSettingsHelper(preferences)
+        networkSettings = NetworkSettingsHelper(preferences)
         appCache = AppCache(viewModel.app!!)
         appInstaller = ForegroundAppInstaller.create(this, viewModel.app!!, appCache.getFile(this))
         lifecycle.addObserver(appInstaller)
@@ -237,7 +242,7 @@ class InstallActivity : AppCompatActivity() {
         val downloadUrl = viewModel.appAppUpdateStatus!!.downloadUrl
         setText(R.id.downloadingFileUrl, downloadUrl)
 
-        val fileDownloader = FileDownloader()
+        val fileDownloader = FileDownloader(networkSettings)
         viewModel.fileDownloader = fileDownloader
         fileDownloader.onProgress = { percentage, mb ->
             runOnUiThread {
@@ -328,7 +333,7 @@ class InstallActivity : AppCompatActivity() {
             R.id.install_activity__exception__text,
             getString(application_installation_was_not_successful)
         )
-        if (installerSettingsHelper.getInstaller() == SESSION_INSTALLER) {
+        if (installerSettings.getInstaller() == SESSION_INSTALLER) {
             show(R.id.install_activity__different_installer_info)
         }
 

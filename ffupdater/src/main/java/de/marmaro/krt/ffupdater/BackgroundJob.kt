@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater
 import android.content.Context
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
@@ -25,6 +26,7 @@ import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.showI
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import de.marmaro.krt.ffupdater.storage.AppCache
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.CancellationException
@@ -46,8 +48,10 @@ import java.util.concurrent.TimeUnit.MINUTES
 class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {
     private val context = applicationContext
-    private val backgroundSettings = BackgroundSettingsHelper(context)
-    private val installerSettings = InstallerSettingsHelper(context)
+    private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+    private val backgroundSettings = BackgroundSettingsHelper(preferences)
+    private val installerSettings = InstallerSettingsHelper(preferences)
+    private val networkSettings = NetworkSettingsHelper(preferences)
     private val dataStoreHelper = DataStoreHelper(context)
 
     /**
@@ -182,7 +186,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
-        val downloader = FileDownloader()
+        val downloader = FileDownloader(networkSettings)
         downloader.onProgress = { progressInPercent, totalMB ->
             BackgroundNotificationBuilder.showDownloadIsRunning(context, app, progressInPercent, totalMB)
         }
