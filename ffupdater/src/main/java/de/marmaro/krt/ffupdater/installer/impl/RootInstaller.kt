@@ -33,11 +33,11 @@ class RootInstaller(
         }
     }
 
-    override suspend fun executeInstallerSpecificLogic(context: Context): ShortInstallResult {
+    override suspend fun executeInstallerSpecificLogic(context: Context) {
         withContext(Dispatchers.IO) {
             install()
         }
-        return installationStatus.await()
+        installationStatus.await()
     }
 
     private fun install() {

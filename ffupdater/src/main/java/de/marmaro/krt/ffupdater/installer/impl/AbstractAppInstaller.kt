@@ -6,7 +6,6 @@ import de.marmaro.krt.ffupdater.R.string.install_activity__downloaded_applicatio
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
-import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import kotlinx.coroutines.Deferred
@@ -42,10 +41,8 @@ abstract class AbstractAppInstaller(
             throw InstallationFailedException("Downloaded application is NOT verified", -100, errorMessage)
         }
 
-        val installResult = executeInstallerSpecificLogic(context)
-        if (!installResult.success) {
-            return InstallResult(fileCertHash)
-        }
+        // in failure, this will throw InstallationFailedException
+        executeInstallerSpecificLogic(context)
 
         val appResult = try {
             validator.checkInstalledApp(app.impl)
@@ -60,5 +57,5 @@ abstract class AbstractAppInstaller(
         return InstallResult(fileCertHash)
     }
 
-    protected abstract suspend fun executeInstallerSpecificLogic(context: Context): ShortInstallResult
+    protected abstract suspend fun executeInstallerSpecificLogic(context: Context)
 }

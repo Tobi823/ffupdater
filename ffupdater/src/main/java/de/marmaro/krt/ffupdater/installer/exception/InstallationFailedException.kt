@@ -5,9 +5,9 @@ class InstallationFailedException : Exception {
     val errorCode: Int
     val errorMessage: String
 
-    constructor(message: String?, errorCode: Int, errorMessage: String) : super(message) {
+    constructor(message: String?, errorCode: Int, displayErrorMessage: String) : super(message) {
         this.errorCode = errorCode
-        this.errorMessage = errorMessage
+        this.errorMessage = displayErrorMessage
     }
 
     constructor(message: String?, cause: Throwable?, errorCode: Int, errorMessage: String) : super(

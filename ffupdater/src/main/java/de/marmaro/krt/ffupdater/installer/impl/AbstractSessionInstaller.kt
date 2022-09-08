@@ -14,9 +14,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_aborted
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
+import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -31,10 +32,10 @@ abstract class AbstractSessionInstaller(
 ) : AbstractAppInstaller(app, file) {
     protected abstract val intentNameForAppInstallationCallback: String
 
-    private val installationStatus = CompletableDeferred<ShortInstallResult>()
+    private val installationStatus = CompletableDeferred<Boolean>()
     private var intentReceiver: BroadcastReceiver? = null
 
-    override suspend fun executeInstallerSpecificLogic(context: Context): ShortInstallResult {
+    override suspend fun executeInstallerSpecificLogic(context: Context) {
         require(file.exists()) { "File does not exists." }
         return withContext(Dispatchers.Main) {
             registerIntentReceiver(context)
@@ -56,7 +57,12 @@ abstract class AbstractSessionInstaller(
             installer.createSession(params)
         } catch (e: IOException) {
             val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
-            failure(STATUS_FAILURE_STORAGE, errorMessage)
+            fail(
+                "The installation failed because not enough storage is available.",
+                e,
+                STATUS_FAILURE_STORAGE,
+                errorMessage
+            )
             return
         }
         installer.registerSessionCallback(fallbackAppInstallationResultListener)
@@ -113,15 +119,36 @@ abstract class AbstractSessionInstaller(
         val bundle = requireNotNull(intent.extras)
         when (val status = bundle.getInt(EXTRA_STATUS)) {
             STATUS_PENDING_USER_ACTION -> requestInstallationPermission(c, bundle)
-            STATUS_SUCCESS -> success()
-            else -> failure(status, getErrorMessage(c, status, bundle))
+            STATUS_SUCCESS -> {
+                installationStatus.complete(true)
+            }
+            else -> {
+                fail(
+                    getShortErrorMessage(status, bundle),
+                    status,
+                    getTranslatedErrorMessage(c, status, bundle)
+                )
+            }
         }
     }
 
-    private fun getErrorMessage(c: Context, status: Int, bundle: Bundle): String {
+    private fun getShortErrorMessage(status: Int, bundle: Bundle): String {
+        return when (status) {
+            STATUS_FAILURE -> "The installation failed in a generic way."
+            STATUS_FAILURE_ABORTED -> "The installation failed because it was actively aborted."
+            STATUS_FAILURE_BLOCKED -> "The installation failed because it was blocked."
+            STATUS_FAILURE_CONFLICT -> "The installation failed because it conflicts (or is inconsistent with) with another package already installed on the device."
+            STATUS_FAILURE_INCOMPATIBLE -> "The installation failed because it is fundamentally incompatible with this device."
+            STATUS_FAILURE_INVALID -> "The installation failed because one or more of the APKs was invalid."
+            STATUS_FAILURE_STORAGE -> "The installation failed because of storage issues."
+            else -> "The installation failed. ($status) ${bundle.getString(EXTRA_STATUS_MESSAGE)}"
+        }
+    }
+
+    private fun getTranslatedErrorMessage(c: Context, status: Int, bundle: Bundle): String {
         return when (status) {
             STATUS_FAILURE -> c.getString(R.string.session_installer__status_failure)
-            STATUS_FAILURE_ABORTED -> c.getString(R.string.session_installer__status_failure_aborted)
+            STATUS_FAILURE_ABORTED -> c.getString(session_installer__status_failure_aborted)
             STATUS_FAILURE_BLOCKED -> c.getString(R.string.session_installer__status_failure_blocked)
             STATUS_FAILURE_CONFLICT -> c.getString(R.string.session_installer__status_failure_conflict)
             STATUS_FAILURE_INCOMPATIBLE -> c.getString(R.string.session_installer__status_failure_incompatible)
@@ -132,8 +159,7 @@ abstract class AbstractSessionInstaller(
     }
 
     private val fallbackAppInstallationResultListener = object : SessionCallback() {
-        private val abortedErrorMessage =
-            context.getString(R.string.session_installer__status_failure_aborted)
+        private val abortedErrorMessage = context.getString(session_installer__status_failure_aborted)
 
         override fun onCreated(sessionId: Int) {}
         override fun onBadgingChanged(sessionId: Int) {}
@@ -144,13 +170,10 @@ abstract class AbstractSessionInstaller(
             // if PackageInstaller fail to call handleAppInstallationResult()
             // one installationStatus has been completed, its value can not be changed
             if (!success) {
-                Log.e("SessionInstallerBase", "failure2()")
-                installationStatus.complete(
-                    ShortInstallResult(
-                        false,
-                        STATUS_FAILURE_ABORTED,
-                        abortedErrorMessage
-                    )
+                fail(
+                    "The installation failed because it was actively aborted.",
+                    STATUS_FAILURE_ABORTED,
+                    abortedErrorMessage
                 )
             }
         }
@@ -159,14 +182,20 @@ abstract class AbstractSessionInstaller(
 
     protected abstract fun requestInstallationPermission(context: Context, bundle: Bundle)
 
-    protected fun failure(errorCode: Int, errorMessage: String) {
-        Log.e("SessionInstallerBase", "failure()")
-        installationStatus.complete(ShortInstallResult(false, errorCode, errorMessage))
+    protected fun fail(message: String, errorCode: Int, displayErrorMessage: String) {
+        installationStatus.completeExceptionally(
+            InstallationFailedException(
+                message, errorCode, displayErrorMessage,
+            )
+        )
     }
 
-    protected fun success() {
-        Log.e("SessionInstallerBase", "success()")
-        installationStatus.complete(ShortInstallResult(true, null, null))
+    protected fun fail(message: String, cause: Throwable, errorCode: Int, displayErrorMessage: String) {
+        installationStatus.completeExceptionally(
+            InstallationFailedException(
+                message, cause, errorCode, displayErrorMessage,
+            )
+        )
     }
 
     protected fun registerIntentReceiver(context: Context) {

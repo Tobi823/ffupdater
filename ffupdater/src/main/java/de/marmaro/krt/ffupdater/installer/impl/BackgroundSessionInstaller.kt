@@ -19,6 +19,10 @@ class BackgroundSessionInstaller(
 
     override fun requestInstallationPermission(context: Context, bundle: Bundle) {
         val status = bundle.getInt(PackageInstaller.EXTRA_STATUS)
-        failure(status, context.getString(R.string.session_installer__require_user_interaction))
+        fail(
+            "Installation failed because user interaction is required.",
+            status,
+            context.getString(R.string.session_installer__require_user_interaction)
+        )
     }
 }

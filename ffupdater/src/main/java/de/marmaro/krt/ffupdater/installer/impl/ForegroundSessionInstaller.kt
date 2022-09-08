@@ -23,7 +23,7 @@ class ForegroundSessionInstaller(
             val requestPermission = bundle.get(Intent.EXTRA_INTENT) as Intent
             context.startActivity(requestPermission)
         } catch (e: ActivityNotFoundException) {
-            failure(-99, e.message ?: "/")
+            fail("Installation failed because Activity is not available.", e, -110, e.message ?: "/")
         }
     }
 }

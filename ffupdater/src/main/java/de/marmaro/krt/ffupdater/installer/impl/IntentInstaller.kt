@@ -14,7 +14,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
+import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File
 
@@ -25,12 +25,12 @@ class IntentInstaller(
     app: App,
     private val file: File,
 ) : ForegroundAppInstaller, AbstractAppInstaller(app, file) {
-    private val installationStatus = CompletableDeferred<ShortInstallResult>()
+    private val installationStatus = CompletableDeferred<Boolean>()
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
 
     private val appResultCallback = lambda@{ activityResult: ActivityResult ->
         if (activityResult.resultCode == Activity.RESULT_OK) {
-            installationStatus.complete(ShortInstallResult(true, null, null))
+            installationStatus.complete(true)
             return@lambda
         }
 
@@ -39,7 +39,13 @@ class IntentInstaller(
             -11 -> context.getString(R.string.intent_installer__likely_storage_failure)
             else -> "resultCode: ${activityResult.resultCode}, INSTALL_RESULT: $installResult"
         }
-        installationStatus.complete(ShortInstallResult(false, activityResult.resultCode, errorMessage))
+        installationStatus.completeExceptionally(
+            InstallationFailedException(
+                "Installation failed. $errorMessage",
+                activityResult.resultCode,
+                errorMessage
+            )
+        )
     }
 
     override fun onCreate(owner: LifecycleOwner) {
@@ -51,11 +57,11 @@ class IntentInstaller(
         )
     }
 
-    override suspend fun executeInstallerSpecificLogic(context: Context): ShortInstallResult {
+    override suspend fun executeInstallerSpecificLogic(context: Context) {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         installInternal(context, file)
-        return installationStatus.await()
+        installationStatus.await()
     }
 
     /**
