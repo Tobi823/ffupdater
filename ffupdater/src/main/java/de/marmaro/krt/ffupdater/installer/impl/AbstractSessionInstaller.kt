@@ -90,10 +90,7 @@ abstract class AbstractSessionInstaller(
     private fun copyApkToSession(session: Session) {
         val name = "${app.impl.packageName}_${System.currentTimeMillis()}"
         session.openWrite(name, 0, file.length()).use { sessionStream ->
-            file.inputStream().use { downloadedFileStream ->
-                downloadedFileStream.copyTo(sessionStream)
-                session.fsync(sessionStream)
-            }
+            file.inputStream().use { downloadedFileStream -> downloadedFileStream.copyTo(sessionStream) }
         }
     }
 
