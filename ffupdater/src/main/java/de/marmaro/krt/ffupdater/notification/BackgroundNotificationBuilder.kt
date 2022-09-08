@@ -129,8 +129,9 @@ object BackgroundNotificationBuilder {
         nm.cancel(500 + app.ordinal)
     }
 
-    fun showInstallationError(context: Context, app: App, code: Int?, message: String?) {
+    fun showInstallationError(context: Context, app: App, code: Int, message: String, exception: Exception) {
         val appTitle: String = context.getString(app.impl.title)
+        val description = context.getString(crash_report__explain_text__install_activity_install_file)
         showNotification(
             context = context,
             channelId = "installation_error_notification",
@@ -139,7 +140,7 @@ object BackgroundNotificationBuilder {
             notificationId = 600 + app.ordinal,
             notificationTitle = context.getString(notification__install_error__title, appTitle),
             notificationText = context.getString(notification__install_error__text, code, message),
-            intent = InstallActivity.createIntent(context, app)
+            intent = CrashReportActivity.createIntent(context, exception, description),
         )
     }
 

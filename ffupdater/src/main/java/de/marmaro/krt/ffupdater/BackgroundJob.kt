@@ -21,6 +21,7 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.showInstallationError
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
@@ -233,11 +234,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     private suspend fun installApplication(app: App) {
         val appCache = AppCache(app)
         val file = appCache.getFile(context)
-        if (!file.exists()) {
-            val errorMessage = "AppCache has no cached APK file"
-            BackgroundNotificationBuilder.showInstallationError(context, app, -100, errorMessage)
-            return
-        }
+        require(file.exists()) { "AppCache has no cached APK file" }
 
         withContext(Dispatchers.Main) {
             val installer = BackgroundAppInstaller.create(context, app, file)
@@ -249,7 +246,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 }
             } catch (e: InstallationFailedException) {
                 val ex = RuntimeException("Failed to install ${app.name} in the background.", e)
-                BackgroundNotificationBuilder.showInstallationError(context, app, e.errorCode, e.errorMessage)
+                showInstallationError(context, app, e.errorCode, e.errorMessage, ex)
                 if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
                     appCache.delete(context)
                 }
