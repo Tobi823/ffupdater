@@ -8,7 +8,6 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -17,7 +16,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
  */
 class Iceraven(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "io.github.forkmaintainers.iceraven"
@@ -40,7 +39,7 @@ class Iceraven(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
@@ -49,16 +48,16 @@ class Iceraven(
             ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val githubConsumer = GithubConsumer(
-            repoOwner = "fork-maintainers",
-            repoName = "iceraven-browser",
-            resultsPerPage = 3,
-            isValidRelease = { release -> !release.isPreRelease },
-            isSuitableAsset = { asset -> asset.name.endsWith(fileSuffix) },
-            apiConsumer = apiConsumer,
-        )
         val result = try {
-            githubConsumer.updateCheck()
+            consumer.updateCheck(
+                repoOwner = "fork-maintainers",
+                repoName = "iceraven-browser",
+                resultsPerPage = 3,
+                isValidRelease = { release -> !release.isPreRelease },
+                isSuitableAsset = { asset -> asset.name.endsWith(fileSuffix) },
+                dontUseApiForLatestRelease = false,
+                context
+            )
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of Iceraven.", e)
         }

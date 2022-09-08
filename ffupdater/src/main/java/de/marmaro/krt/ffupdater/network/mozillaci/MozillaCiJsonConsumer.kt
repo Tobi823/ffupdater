@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
+import android.content.Context
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -8,30 +9,25 @@ import de.marmaro.krt.ffupdater.security.Sha256Hash
 /**
  * Consume the "chain_of_trust.json".
  */
-class MozillaCiJsonConsumer(
-    private val task: String,
-    private val apkArtifact: String,
-    private val apiConsumer: ApiConsumer,
-) {
-    private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
-    private val jsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
+class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
 
-    /**
-     * This method must not be called from the main thread or a android.os.NetworkOnMainThreadException
-     * will be thrown
-     * @throws NetworkException
-     */
     @MainThread
-    suspend fun updateCheck(): Result {
+    suspend fun updateCheck(
+        task: String,
+        apkArtifact: String,
+        context: Context
+    ): Result {
+        val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
+        val jsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
+
         val response = try {
-            apiConsumer.consumeAsync(jsonUrl, ChainOfTrustJson::class).await()
+            apiConsumer.consumeAsync(jsonUrl, ChainOfTrustJson::class, context).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $task from Mozilla (json).", e)
         }
         val artifact = response.artifacts[apkArtifact]
         checkNotNull(artifact) {
-            "Missing artifact '$apkArtifact'. Only [${response.artifacts.keys.joinToString()}] " +
-                    "are available."
+            "Missing artifact '$apkArtifact'. Only [${response.artifacts.keys.joinToString()}] are available."
         }
         return Result(
             fileHash = Sha256Hash(artifact.sha256),
@@ -58,4 +54,8 @@ class MozillaCiJsonConsumer(
         val url: String,
         val releaseDate: String,
     )
+
+    companion object {
+        val INSTANCE = MozillaCiJsonConsumer(ApiConsumer.INSTANCE)
+    }
 }

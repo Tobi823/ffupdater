@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
@@ -7,7 +8,6 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -17,7 +17,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/bromite/bromite-system-webview-2/
  */
 class BromiteSystemWebView(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.bromite.webview"
@@ -36,7 +36,7 @@ class BromiteSystemWebView(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "arm_SystemWebView.apk"
@@ -45,16 +45,16 @@ class BromiteSystemWebView(
             ABI.X86_64 -> "x64_SystemWebView.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val githubConsumer = GithubConsumer(
-            repoOwner = "bromite",
-            repoName = "bromite",
-            resultsPerPage = 5,
-            isValidRelease = { release -> !release.isPreRelease },
-            isSuitableAsset = { asset -> asset.name == fileName },
-            apiConsumer = apiConsumer,
-        )
         val result = try {
-            githubConsumer.updateCheck()
+            consumer.updateCheck(
+                repoOwner = "bromite",
+                repoName = "bromite",
+                resultsPerPage = 5,
+                isValidRelease = { release -> !release.isPreRelease },
+                isSuitableAsset = { asset -> asset.name == fileName },
+                dontUseApiForLatestRelease = false,
+                context
+            )
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of Bromite System WebView.", e)
         }

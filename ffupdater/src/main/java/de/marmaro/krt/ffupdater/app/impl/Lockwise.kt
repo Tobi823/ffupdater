@@ -1,10 +1,10 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -13,7 +13,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/mozilla/firefox-lockwise/
  */
 class Lockwise(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
     override val packageName = "mozilla.lockbox"
     override val title = R.string.lockwise__title
@@ -30,17 +30,17 @@ class Lockwise(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
-        val githubConsumer = GithubConsumer(
-            repoOwner = "mozilla-lockwise",
-            repoName = "lockwise-android",
-            resultsPerPage = 5,
-            isValidRelease = { release -> !release.isPreRelease },
-            isSuitableAsset = { asset -> asset.name.endsWith(".apk") },
-            apiConsumer = apiConsumer,
-        )
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         val result = try {
-            githubConsumer.updateCheck()
+            consumer.updateCheck(
+                repoOwner = "mozilla-lockwise",
+                repoName = "lockwise-android",
+                resultsPerPage = 5,
+                isValidRelease = { release -> !release.isPreRelease },
+                isSuitableAsset = { asset -> asset.name.endsWith(".apk") },
+                dontUseApiForLatestRelease = false,
+                context
+            )
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of Lockwise.", e)
         }

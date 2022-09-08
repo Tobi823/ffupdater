@@ -12,7 +12,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.security.FileHashCalculator
@@ -25,7 +24,7 @@ import java.time.format.DateTimeFormatter
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
  */
 class FirefoxNightly(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val consumer: MozillaCiJsonConsumer = MozillaCiJsonConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.mozilla.fenix"
@@ -44,7 +43,7 @@ class FirefoxNightly(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val abiString = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
@@ -53,11 +52,15 @@ class FirefoxNightly(
             ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = MozillaCiJsonConsumer(
-            task = "mobile.v2.fenix.nightly.latest.$abiString",
-            apkArtifact = "public/build/$abiString/target.apk",
-            apiConsumer = apiConsumer,
-        ).updateCheck()
+        val result = try {
+            consumer.updateCheck(
+                task = "mobile.v2.fenix.nightly.latest.$abiString",
+                apkArtifact = "public/build/$abiString/target.apk",
+                context
+            )
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to request the latest version of Firefox Nightly.", e)
+        }
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val version = formatter.format(releaseDate)

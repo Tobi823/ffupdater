@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
+import android.content.Context
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -7,23 +8,19 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 /**
  * Consume the "chain_of_trust.log".
  */
-class MozillaCiLogConsumer(
-    private val task: String,
-    private val apkArtifact: String,
-    private val apiConsumer: ApiConsumer,
-) {
-    private val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
-    private val logUrl = "$baseUrl/artifacts/public/logs/chain_of_trust.log"
+class MozillaCiLogConsumer(private val apiConsumer: ApiConsumer) {
 
-    /**
-     * This method must not be called from the main thread or a android.os.NetworkOnMainThreadException
-     * will be thrown
-     * @throws NetworkException
-     */
     @MainThread
-    suspend fun updateCheck(): Result {
+    suspend fun updateCheck(
+        task: String,
+        apkArtifact: String,
+        context: Context
+    ): Result {
+        val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
+        val logUrl = "$baseUrl/artifacts/public/logs/chain_of_trust.log"
+
         val response = try {
-            apiConsumer.consumeAsync(logUrl, String::class).await()
+            apiConsumer.consumeAsync(logUrl, String::class, context).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $task from Mozilla (log).", e)
         }
@@ -65,4 +62,8 @@ class MozillaCiLogConsumer(
         val url: String,
         val releaseDate: String,
     )
+
+    companion object {
+        val INSTANCE = MozillaCiLogConsumer(ApiConsumer.INSTANCE)
+    }
 }

@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
+import android.content.Context
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -9,10 +10,10 @@ class FdroidConsumer(
 ) {
 
     @MainThread
-    suspend fun getLatestUpdate(packageName: String): Result {
+    suspend fun getLatestUpdate(packageName: String, context: Context): Result {
         val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = try {
-            apiConsumer.consumeAsync(apiUrl, AppInfo::class).await()
+            apiConsumer.consumeAsync(apiUrl, AppInfo::class, context).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $packageName from F-Droid.", e)
         }

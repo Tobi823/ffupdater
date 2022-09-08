@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
@@ -8,7 +9,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -18,7 +18,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/brave-software/brave-browser-beta/
  */
 class BraveBeta(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.brave.browser_beta"
@@ -36,20 +36,19 @@ class BraveBeta(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = getNameOfApkFile()
-        val githubConsumer = GithubConsumer(
-            repoOwner = "brave",
-            repoName = "brave-browser",
-            resultsPerPage = 20,
-            isValidRelease = { release -> !release.isPreRelease && release.name.startsWith("Beta v") },
-            isSuitableAsset = { asset -> asset.name == fileName },
-            dontUseApiForLatestRelease = true,
-            apiConsumer = apiConsumer,
-        )
         val result = try {
-            githubConsumer.updateCheck()
+            consumer.updateCheck(
+                repoOwner = "brave",
+                repoName = "brave-browser",
+                resultsPerPage = 20,
+                isValidRelease = { release -> !release.isPreRelease && release.name.startsWith("Beta v") },
+                isSuitableAsset = { asset -> asset.name == fileName },
+                dontUseApiForLatestRelease = true,
+                context
+            )
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of Brave Beta.", e)
         }

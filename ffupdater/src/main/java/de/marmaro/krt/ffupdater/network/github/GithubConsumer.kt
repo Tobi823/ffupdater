@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.network.github
 
+import android.content.Context
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -8,37 +9,34 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import java.util.*
 import java.util.function.Predicate
 
-class GithubConsumer(
-    repoOwner: String,
-    private val repoName: String,
-    private val resultsPerPage: Int,
-    private val isValidRelease: Predicate<Release>,
-    private val isSuitableAsset: Predicate<Asset>,
-    // false -> contact "$url/latest" and then "$url?per_page=..&page=.."
-    // true -> contact only "$url?per_page=..&page=.."
-    // set it to true if it is unlikely that the latest release is a valid release
-    private val dontUseApiForLatestRelease: Boolean = false,
-    private val apiConsumer: ApiConsumer,
-) {
-    private val url = "https://api.github.com/repos/$repoOwner/$repoName/releases"
-
-    init {
-        check(resultsPerPage > 0)
-    }
+class GithubConsumer(private val apiConsumer: ApiConsumer) {
 
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun updateCheck(): Result {
+    suspend fun updateCheck(
+        repoOwner: String,
+        repoName: String,
+        resultsPerPage: Int,
+        isValidRelease: Predicate<Release>,
+        isSuitableAsset: Predicate<Asset>,
+        // false -> contact "$url/latest" and then "$url?per_page=..&page=.."
+        // true -> contact only "$url?per_page=..&page=.."
+        // set it to true if it is unlikely that the latest release is a valid release
+        dontUseApiForLatestRelease: Boolean = false,
+        context: Context
+    ): Result {
+        check(resultsPerPage > 0)
         val start = if (dontUseApiForLatestRelease) 1 else 0
         var firstReleaseHasAssets = true
         for (tries in start..5) {
             val releases = try {
+                val baseUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases"
                 if (tries == 0) {
-                    val url = "$url/latest"
-                    arrayOf(apiConsumer.consumeAsync(url, Release::class).await())
+                    val url = "$baseUrl/latest"
+                    arrayOf(apiConsumer.consumeAsync(url, Release::class, context).await())
                 } else {
-                    val url = "$url?per_page=$resultsPerPage&page=${tries}"
-                    apiConsumer.consumeAsync(url, Array<Release>::class).await()
+                    val url = "$baseUrl?per_page=$resultsPerPage&page=${tries}"
+                    apiConsumer.consumeAsync(url, Array<Release>::class, context).await()
                 }
             } catch (e: NetworkException) {
                 throw NetworkException("Fail to request the latest version of $repoName from GitHub.", e)
@@ -94,4 +92,8 @@ class GithubConsumer(
         val releaseDate: String,
         val firstReleaseHasAssets: Boolean
     )
+
+    companion object {
+        val INSTANCE = GithubConsumer(ApiConsumer.INSTANCE)
+    }
 }

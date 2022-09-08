@@ -100,7 +100,7 @@ abstract class AppBase {
 
     @Throws(NetworkException::class)
     private suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
-        val available = findLatestUpdate()
+        val available = findLatestUpdate(context)
         return AppUpdateStatus(
             latestUpdate = available,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available),
@@ -136,7 +136,7 @@ abstract class AppBase {
 
     @MainThread
     @Throws(NetworkException::class)
-    internal abstract suspend fun findLatestUpdate(): LatestUpdate
+    internal abstract suspend fun findLatestUpdate(context: Context): LatestUpdate
 
     @MainThread
     open suspend fun isAvailableVersionEqualToArchive(

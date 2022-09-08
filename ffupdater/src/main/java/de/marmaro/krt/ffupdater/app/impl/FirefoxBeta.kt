@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
@@ -7,7 +8,6 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
 
@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
  */
 class FirefoxBeta(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val consumer: MozillaCiLogConsumer = MozillaCiLogConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.mozilla.firefox_beta"
@@ -35,7 +35,7 @@ class FirefoxBeta(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val abiString = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
@@ -44,13 +44,12 @@ class FirefoxBeta(
             ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val mozillaCiConsumer = MozillaCiLogConsumer(
-            task = "mobile.v2.fenix.beta.latest.$abiString",
-            apkArtifact = "public/build/$abiString/target.apk",
-            apiConsumer = apiConsumer,
-        )
         val result = try {
-            mozillaCiConsumer.updateCheck()
+            consumer.updateCheck(
+                task = "mobile.v2.fenix.beta.latest.$abiString",
+                apkArtifact = "public/build/$abiString/target.apk",
+                context
+            )
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of Firefox Beta.", e)
         }

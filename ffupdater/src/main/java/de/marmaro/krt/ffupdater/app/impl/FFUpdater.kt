@@ -1,11 +1,11 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -13,7 +13,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://api.github.com/repos/brave/brave-browser/releases
  */
 class FFUpdater(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
     override val packageName = "de.marmaro.krt.ffupdater"
     override val title = R.string.app_name
@@ -30,18 +30,17 @@ class FFUpdater(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val githubConsumer = GithubConsumer(
-            repoOwner = "Tobi823",
-            repoName = "ffupdater",
-            resultsPerPage = 5,
-            isValidRelease = { release -> !release.isPreRelease },
-            isSuitableAsset = { asset -> asset.name.endsWith(".apk") },
-            apiConsumer = apiConsumer,
-        )
         val result = try {
-            githubConsumer.updateCheck()
+            consumer.updateCheck(
+                repoOwner = "Tobi823",
+                repoName = "ffupdater",
+                resultsPerPage = 5,
+                isValidRelease = { release -> !release.isPreRelease },
+                isSuitableAsset = { asset -> asset.name.endsWith(".apk") },
+                dontUseApiForLatestRelease = false, context
+            )
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of FFUpdater.", e)
         }

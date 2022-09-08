@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
@@ -32,9 +33,9 @@ class Mull(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
-        val result = fdroidConsumer.getLatestUpdate(packageName)
+        val result = fdroidConsumer.getLatestUpdate(packageName, context)
 
         check(result.versionCodesAndDownloadUrls.size == 2)
         val codeAndUrl = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {

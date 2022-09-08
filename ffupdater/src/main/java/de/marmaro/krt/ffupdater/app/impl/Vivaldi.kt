@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
@@ -33,10 +34,10 @@ class Vivaldi(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val content = try {
-            apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, String::class).await()
+            apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, String::class, context).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

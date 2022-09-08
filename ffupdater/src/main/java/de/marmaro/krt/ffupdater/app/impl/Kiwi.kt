@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import java.io.File
@@ -21,7 +20,7 @@ import java.io.File
  * https://www.apkmirror.com/apk/geometry-ou/kiwi-browser-fast-quiet/
  */
 class Kiwi(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.kiwibrowser.browser"
@@ -39,7 +38,7 @@ class Kiwi(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "-arm-github.apk"
@@ -49,17 +48,20 @@ class Kiwi(
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val filePrefix = "com.kiwibrowser.browser-"
-        val githubConsumer = GithubConsumer(
-            repoOwner = "kiwibrowser",
-            repoName = "src.next",
-            resultsPerPage = 1,
-            isValidRelease = { true },
-            isSuitableAsset = { asset -> asset.name.startsWith(filePrefix) && asset.name.endsWith(fileSuffix) },
-            dontUseApiForLatestRelease = true,
-            apiConsumer = apiConsumer,
-        )
         val result = try {
-            githubConsumer.updateCheck()
+            consumer.updateCheck(
+                repoOwner = "kiwibrowser",
+                repoName = "src.next",
+                resultsPerPage = 1,
+                isValidRelease = { true },
+                isSuitableAsset = { asset ->
+                    asset.name.startsWith(filePrefix) && asset.name.endsWith(
+                        fileSuffix
+                    )
+                },
+                dontUseApiForLatestRelease = true,
+                context
+            )
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of Kiwi.", e)
         }
