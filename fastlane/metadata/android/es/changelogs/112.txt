@@ -1,0 +1,3 @@
+* Gracias por la contribución en Weblate de: Oğuz Ersen y 109247019824
+* Restaurar Iceraven
+* Rehacer la interfaz de usuario para permitir la descarga de aplicaciones EOL
