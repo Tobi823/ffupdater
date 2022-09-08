@@ -1,10 +1,14 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
+import android.content.Context
+import android.content.SharedPreferences
+import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer.AppInfo
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer.VersionCodeAndDownloadUrl
 import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
@@ -20,15 +24,23 @@ class FdroidConsumerIT {
     @MockK
     lateinit var apiConsumer: ApiConsumer
 
+    @MockK
+    lateinit var context: Context
+
+    lateinit var sharedPreferences: SharedPreferences
+
     @BeforeEach
     fun setUp() {
+        sharedPreferences = SPMockBuilder().createSharedPreferences()
+        every { context.packageName } returns "de.marmaro.krt.ffupdater"
+        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
+        sharedPreferences.edit().putBoolean("network__trust_user_cas", false)
+
         prepareApiResponse()
     }
 
     companion object {
-        private const val PACKAGE_NAME = ""
         private const val API_URL = "https://f-droid.org/api/v1/packages/us.spotco.fennec_dos"
-        private const val DOWNLOAD_URL = "https://f-droid.org/repo/us.spotco.fennec_dos_"
     }
 
     private fun prepareApiResponse() {
@@ -57,7 +69,7 @@ class FdroidConsumerIT {
             }
         """.trimIndent()
         coEvery {
-            apiConsumer.consumeAsync(API_URL, AppInfo::class).await()
+            apiConsumer.consumeAsync(API_URL, AppInfo::class, context).await()
         } returns Gson().fromJson(apiResponse, AppInfo::class.java)
     }
 
@@ -65,7 +77,7 @@ class FdroidConsumerIT {
     fun `get version codes and download urls from api call`() {
         val fdroidConsumer = FdroidConsumer(apiConsumer)
         val result = runBlocking {
-            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos")
+            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", context)
         }
         assertEquals("101.1.1", result.versionName)
         assertEquals(2, result.versionCodesAndDownloadUrls.size)

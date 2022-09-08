@@ -7,6 +7,9 @@ import de.marmaro.krt.ffupdater.app.impl.*
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
+import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
@@ -55,7 +58,7 @@ class DownloadApiChecker {
 
     @Test
     fun brave() {
-        val brave = Brave(ApiConsumer(), deviceAbiExtractor)
+        val brave = Brave(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { brave.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -67,7 +70,7 @@ class DownloadApiChecker {
 
     @Test
     fun braveBeta() {
-        val brave = BraveBeta(ApiConsumer(), deviceAbiExtractor)
+        val brave = BraveBeta(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { brave.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -79,7 +82,7 @@ class DownloadApiChecker {
 
     @Test
     fun braveNightly() {
-        val brave = BraveNightly(ApiConsumer(), deviceAbiExtractor)
+        val brave = BraveNightly(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { brave.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -91,7 +94,7 @@ class DownloadApiChecker {
 
     @Test
     fun bromite() {
-        val bromite = Bromite(ApiConsumer(), deviceAbiExtractor)
+        val bromite = Bromite(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { bromite.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -103,7 +106,7 @@ class DownloadApiChecker {
 
     @Test
     fun bromiteSystemWebView() {
-        val bromite = BromiteSystemWebView(ApiConsumer(), deviceAbiExtractor)
+        val bromite = BromiteSystemWebView(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { bromite.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -115,7 +118,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxBeta() {
-        val firefoxBeta = FirefoxBeta(ApiConsumer(), deviceAbiExtractor)
+        val firefoxBeta = FirefoxBeta(MozillaCiLogConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { firefoxBeta.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -129,7 +132,10 @@ class DownloadApiChecker {
     fun firefoxFocus() {
         val result =
             runBlocking {
-                FirefoxFocus(ApiConsumer(), deviceAbiExtractor).checkForUpdateWithoutLoadingFromCacheAsync(
+                FirefoxFocus(
+                    GithubConsumer.INSTANCE,
+                    deviceAbiExtractor
+                ).checkForUpdateWithoutLoadingFromCacheAsync(
                     context
                 ).await()
             }
@@ -143,7 +149,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxKlar() {
-        val firefoxKlar = FirefoxKlar(ApiConsumer(), deviceAbiExtractor)
+        val firefoxKlar = FirefoxKlar(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { firefoxKlar.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -156,7 +162,7 @@ class DownloadApiChecker {
     @Test
     fun firefoxNightly() {
         sharedPreferences.edit().putLong("firefox_nightly_installed_version_code", 0)
-        val firefoxNightly = FirefoxNightly(ApiConsumer(), deviceAbiExtractor)
+        val firefoxNightly = FirefoxNightly(MozillaCiJsonConsumer.INSTANCE, deviceAbiExtractor)
         val result =
             runBlocking { firefoxNightly.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
@@ -169,7 +175,7 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxRelease() {
-        val firefoxRelease = FirefoxRelease(ApiConsumer(), deviceAbiExtractor)
+        val firefoxRelease = FirefoxRelease(MozillaCiLogConsumer.INSTANCE, deviceAbiExtractor)
         val result =
             runBlocking { firefoxRelease.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
@@ -182,7 +188,7 @@ class DownloadApiChecker {
 
     @Test
     fun kiwi() {
-        val kiwi = Kiwi(ApiConsumer(), deviceAbiExtractor)
+        val kiwi = Kiwi(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { kiwi.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -194,7 +200,7 @@ class DownloadApiChecker {
 
     @Test
     fun vivaldi() {
-        val vivaldi = Vivaldi(ApiConsumer(), deviceAbiExtractor)
+        val vivaldi = Vivaldi(ApiConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { vivaldi.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertFalse(result.version.isEmpty())
@@ -203,7 +209,7 @@ class DownloadApiChecker {
 
     @Test
     fun ffupdater() {
-        val ffupdater = FFUpdater(ApiConsumer())
+        val ffupdater = FFUpdater(GithubConsumer.INSTANCE)
         val result = runBlocking { ffupdater.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertTrue(result.firstReleaseHasAssets)
