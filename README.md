@@ -1,6 +1,3 @@
-For the F-Droid-Maintainers: I want to migrate the source git repository
-from https://notabug.org/Tobiwan/ffupdater to https://github.com/Tobi823/ffupdater
-
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 
 # Firefox-Updater
@@ -132,8 +129,8 @@ repository or the official *F-Droid* repository) the app version was installed
 
 ## Git repositories
 
-- Main repository: https://notabug.org/Tobiwan/ffupdater
-- Mirror repository on Github: https://github.com/Tobi823/ffupdater
+- Main repository: https://github.com/Tobi823/ffupdater
+- Mirror repository on notabug.org: https://notabug.org/Tobiwan/ffupdater
 - Mirror repository on Gitlab: https://gitlab.com/Tobiwan/ffupdater_gitlab
 
 ## 3rd-party libraries
