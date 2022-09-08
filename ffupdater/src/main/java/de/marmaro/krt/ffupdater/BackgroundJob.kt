@@ -16,6 +16,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.ROOT_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
+import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -240,16 +241,15 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         withContext(Dispatchers.Main) {
             val installer = BackgroundAppInstaller.create(context, app, file)
-            val result = installer.installAsync(context).await()
-            if (result.success) {
+            try {
+                installer.installAsync(context).await()
                 BackgroundNotificationBuilder.showInstallationSuccess(context, app)
                 if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                     appCache.delete(context)
                 }
-            } else {
-                val code = result.errorCode
-                val message = result.errorMessage
-                BackgroundNotificationBuilder.showInstallationError(context, app, code, message)
+            } catch (e: InstallationFailedException) {
+                val ex = RuntimeException("Failed to install ${app.name} in the background.", e)
+                BackgroundNotificationBuilder.showInstallationError(context, app, e.errorCode, e.errorMessage)
                 if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
                     appCache.delete(context)
                 }

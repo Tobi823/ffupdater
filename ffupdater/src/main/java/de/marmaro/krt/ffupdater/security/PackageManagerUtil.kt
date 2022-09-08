@@ -1,11 +1,11 @@
 package de.marmaro.krt.ffupdater.security
 
 import android.annotation.SuppressLint
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
 import android.content.pm.Signature
+import android.content.pm.SigningInfo
 import android.os.Build
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
@@ -28,15 +28,15 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
 
         if (DeviceSdkTester.supportsAndroid9()) {
             packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
-                ?.let { extractSignatureFromSigningInfo(it) }
-                ?.let { return it }
+                ?.signingInfo
+                ?.let { return extractSignature(it) }
         }
 
         packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
-            ?.let { extractSignatureFromSignatures(it) }
-            ?.let { return it }
+            ?.signatures
+            ?.let { return extractSignature(it) }
 
-        throw IllegalArgumentException("Can't extract the signature from the APK file.")
+        throw IllegalArgumentException("Can't extract the signature from APK file '$path'.")
     }
 
     @Suppress("DEPRECATION")
@@ -44,34 +44,32 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
     fun getInstalledAppInfo(app: AppBase): Signature {
         if (DeviceSdkTester.supportsAndroid9()) {
             packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
-                ?.let { extractSignatureFromSigningInfo(it) }
-                ?.let { return it }
+                ?.signingInfo
+                ?.let { return extractSignature(it) }
         }
 
         packageManager.getPackageInfo(app.packageName, GET_SIGNATURES)
-            ?.let { extractSignatureFromSignatures(it) }
-            ?.let { return it }
+            ?.signatures
+            ?.let { return extractSignature(it) }
 
-        throw IllegalArgumentException("Can't extract the signature from app.")
+        throw IllegalArgumentException("Can't extract the signature from app ${app.packageName}.")
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
-    private fun extractSignatureFromSigningInfo(packageInfo: PackageInfo?): Signature? {
-        val signingInfo = packageInfo?.signingInfo ?: return null
+    private fun extractSignature(signingInfo: SigningInfo): Signature {
         check(!signingInfo.hasMultipleSigners()) { "Multiple signers are not allowed." }
         val signatures = signingInfo.signingCertificateHistory
-        check(signatures.isNotEmpty()) { "Signing certificate history must not be empty." }
-        check(signatures.size == 1) { "Multiple signatures are not allowed." }
+        check(signatures.isNotEmpty()) { "Signatures must not be empty." }
+        check(signatures.size == 1) { "Found multiple signatures." }
         val signature = signatures[0]
         checkNotNull(signature)
         return signature
     }
 
     @Suppress("DEPRECATION")
-    private fun extractSignatureFromSignatures(packageInfo: PackageInfo?): Signature? {
-        val signatures = packageInfo?.signatures ?: return null
+    private fun extractSignature(signatures: Array<Signature>): Signature {
         check(signatures.isNotEmpty()) { "Signatures must not be empty." }
-        check(signatures.size == 1) { "Multiple signatures are not allowed." }
+        check(signatures.size == 1) { "Found multiple signatures." }
         return signatures[0]
     }
 

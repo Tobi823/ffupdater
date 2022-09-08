@@ -143,13 +143,18 @@
             <TextView
                 android:id="@+id/downloadFileFailedText"
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__temporary_network_issue"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/install_activity__temporary_network_issue" />
 
             <TextView
                 android:id="@+id/downloadFileFailedShowException"
                 style="@style/install_activity__default_text"
                 android:text="@string/install_activity__exception__show_button" />
+
+            <TextView
+                style="@style/install_activity__default_text"
+                android:text="@string/install_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 
@@ -201,26 +206,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/installerFailed"
-            style="@style/install_activity__segment"
-            android:background="@color/install_activity__red_background_for_text"
-            android:padding="8dp">
-
-            <TextView
-                style="@style/install_activity__bold_text"
-                android:text="@string/application_installation_was_not_successful" />
-
-            <TextView
-                android:id="@+id/installerFailedReason"
-                style="@style/install_activity__monospace_text" />
-
-            <TextView
-                style="@style/install_activity__default_text"
-                android:text="@string/install_activity__you_can_now_close_this_window" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/install_activity__exception"
             style="@style/install_activity__segment"
             android:background="@color/install_activity__red_background_for_text"
@@ -229,6 +214,12 @@
             <TextView
                 android:id="@+id/install_activity__exception__text"
                 style="@style/install_activity__bold_text" />
+
+            <TextView
+                android:id="@+id/install_activity__exception__description"
+                style="@style/install_activity__default_text"
+                android:paddingBottom="8dp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/install_activity__exception__show_button"

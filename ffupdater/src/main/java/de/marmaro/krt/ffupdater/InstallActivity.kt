@@ -28,8 +28,8 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
+import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
@@ -305,33 +305,42 @@ class InstallActivity : AppCompatActivity() {
     @MainThread
     private suspend fun installApp() {
         show(R.id.installingApplication)
-        val result = appInstaller.installAsync(this).await()
-
-        // hide existing background notification for this app
-        BackgroundNotificationBuilder.hideUpdateIsAvailable(this, viewModel.app!!)
-        BackgroundNotificationBuilder.hideInstallationSuccess(this, viewModel.app!!)
-        BackgroundNotificationBuilder.hideInstallationError(this, viewModel.app!!)
-
-        if (result.success) {
-            showThatAppIsInstalled(result)
-        } else {
-            showThatAppInstallationFailed(result)
+        try {
+            val certificateHash = appInstaller.installAsync(this).await().certificateHash ?: ""
+            showThatAppIsInstalled(certificateHash)
+        } catch (e: InstallationFailedException) {
+            val ex = RuntimeException("Failed to install ${viewModel.app?.name} in the foreground.", e)
+            showThatAppInstallationFailed(e.errorMessage, ex)
+        } finally {
+            // hide existing background notification for this app
+            BackgroundNotificationBuilder.hideUpdateIsAvailable(this, viewModel.app!!)
+            BackgroundNotificationBuilder.hideInstallationSuccess(this, viewModel.app!!)
+            BackgroundNotificationBuilder.hideInstallationError(this, viewModel.app!!)
         }
     }
 
     @MainThread
-    private fun showThatAppInstallationFailed(result: InstallResult) {
+    private fun showThatAppInstallationFailed(errorMessage: String, exception: Exception) {
         hide(R.id.installingApplication)
-        show(R.id.installerFailed)
+        show(R.id.install_activity__exception)
+        show(R.id.install_activity__exception__description)
+        setText(
+            R.id.install_activity__exception__text,
+            getString(application_installation_was_not_successful)
+        )
         if (installerSettingsHelper.getInstaller() == SESSION_INSTALLER) {
             show(R.id.install_activity__different_installer_info)
         }
 
+        findViewById<TextView>(R.id.install_activity__exception__description).text = errorMessage
+        findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
+            val description = getString(crash_report__explain_text__install_activity_install_file)
+            val intent = CrashReportActivity.createIntent(this, exception, description)
+            startActivity(intent)
+        }
 
         val cacheFolder = appCache.getFile(this).parentFile?.absolutePath ?: ""
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
-        setText(R.id.installerFailedReason, result.errorMessage ?: "/")
-
         if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
             appCache.delete(this)
         } else {
@@ -339,23 +348,15 @@ class InstallActivity : AppCompatActivity() {
             show(R.id.install_activity__open_cache_folder)
         }
 
-        if (result.errorException != null) {
-            findViewById<TextView>(R.id.installerFailedReason).setOnClickListener {
-                val description = getString(crash_report__explain_text__install_activity_install_file)
-                val intent = CrashReportActivity.createIntent(this, result.errorException, description)
-                startActivity(intent)
-            }
-        }
-
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
     @MainThread
-    private fun showThatAppIsInstalled(result: InstallResult) {
+    private fun showThatAppIsInstalled(certificateHash: String) {
         hide(R.id.installingApplication)
         show(R.id.installerSuccess)
         show(R.id.fingerprintInstalledGood)
-        setText(R.id.fingerprintInstalledGoodHash, result.certificateHash ?: "/")
+        setText(R.id.fingerprintInstalledGoodHash, certificateHash)
         viewModel.app!!.impl.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
         if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
             appCache.delete(this)
@@ -379,13 +380,11 @@ class InstallActivity : AppCompatActivity() {
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, downloadUrl)
-
         findViewById<TextView>(R.id.downloadFileFailedShowException).setOnClickListener {
             val description = getString(crash_report__explain_text__install_activity_download_file)
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
-        show(R.id.installerFailed)
         appCache.delete(this)
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
