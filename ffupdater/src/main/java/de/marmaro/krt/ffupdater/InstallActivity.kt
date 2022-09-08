@@ -327,7 +327,7 @@ class InstallActivity : AppCompatActivity() {
             show(R.id.install_activity__different_installer_info)
         }
 
-        show(R.id.install_activity__open_cache_folder)
+
         val cacheFolder = appCache.getFile(this).parentFile?.absolutePath ?: ""
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
         setText(R.id.installerFailedReason, result.errorMessage ?: "/")
@@ -336,6 +336,7 @@ class InstallActivity : AppCompatActivity() {
             appCache.delete(this)
         } else {
             show(R.id.install_activity__delete_cache)
+            show(R.id.install_activity__open_cache_folder)
         }
 
         if (result.errorException != null) {
@@ -360,6 +361,7 @@ class InstallActivity : AppCompatActivity() {
             appCache.delete(this)
         } else {
             show(R.id.install_activity__delete_cache)
+            show(R.id.install_activity__open_cache_folder)
         }
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
