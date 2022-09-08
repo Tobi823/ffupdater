@@ -22,21 +22,35 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
     @MainThread
     @Throws(FileNotFoundException::class)
     fun getPackageArchiveInfo(path: String): Signature {
-        if (!File(path).exists()) {
+        val file = File(path)
+        if (!file.exists()) {
             throw FileNotFoundException("File '$path' does not exists.")
         }
 
-        if (DeviceSdkTester.supportsAndroid9()) {
-            packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
-                ?.signingInfo
+//        TODO
+//        if (DeviceSdkTester.supportsAndroid13()) {
+//              https://developer.android.com/reference/android/content/pm/PackageManager#getPackageArchiveInfo(java.lang.String,%20android.content.pm.PackageManager.PackageInfoFlags)
+//        }
+
+        repeat(10) {
+            if (DeviceSdkTester.supportsAndroid9()) {
+                packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
+                    ?.signingInfo
+                    ?.let { return extractSignature(it) }
+            }
+
+            packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
+                ?.signatures
                 ?.let { return extractSignature(it) }
+
+            Thread.sleep(1000)
         }
 
-        packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
-            ?.signatures
-            ?.let { return extractSignature(it) }
-
-        throw IllegalArgumentException("Can't extract the signature from APK file '$path'.")
+        throw IllegalArgumentException(
+            "Can't extract the signature from APK file '$path', " +
+                    "length: ${file.length()}, absolutePath: ${file.absolutePath}, isFile: ${file.isFile}, " +
+                    "execute: ${file.canExecute()}, read: ${file.canRead()}, write: ${file.canExecute()}"
+        )
     }
 
     @Suppress("DEPRECATION")
