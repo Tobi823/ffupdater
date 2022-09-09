@@ -72,7 +72,7 @@
             android:tag="appOpenProjectPage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_open_in_browser_24" />
+            app:srcCompat="@drawable/ic_open_in_browser_24" />
 
         <TextView
             android:id="@+id/eol_reason"

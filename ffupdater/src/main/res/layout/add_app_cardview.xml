@@ -71,7 +71,7 @@
             android:tag="open_project_page"
             app:layout_constraintEnd_toStartOf="@id/add_app"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_open_in_browser_24" />
+            app:srcCompat="@drawable/ic_open_in_browser_24" />
 
         <TextView
             android:id="@+id/eol_reason"
@@ -93,7 +93,7 @@
             android:tag="add_app"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+            app:srcCompat="@drawable/ic_add_circle_outline_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
