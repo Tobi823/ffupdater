@@ -10,18 +10,28 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.MainThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.Category.*
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.AppWarningDialog
+import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
+import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
+import de.marmaro.krt.ffupdater.network.FileDownloader
+import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 
 class AddAppActivity : AppCompatActivity() {
+    private lateinit var foregroundSettings: ForegroundSettingsHelper
+    private var finishActivityOnNextResume = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_app)
@@ -30,9 +40,17 @@ class AddAppActivity : AppCompatActivity() {
             return
         }
         StrictModeSetup.enableStrictMode()
+        foregroundSettings = ForegroundSettingsHelper(this)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        initUI()
+        addAppsToUserInterface()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (finishActivityOnNextResume) {
+            finish()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -44,7 +62,7 @@ class AddAppActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun initUI() {
+    private fun addAppsToUserInterface() {
         val mozillaBrowsers = findViewById<LinearLayout>(R.id.list_mozilla_browsers)
         mozillaBrowsers.removeAllViews()
         App.values()
@@ -52,7 +70,7 @@ class AddAppActivity : AppCompatActivity() {
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
-            .forEach { initUIForApp(mozillaBrowsers, it) }
+            .forEach { addAppToUserInterface(mozillaBrowsers, it) }
 
         val firefoxBasedBrowsers = findViewById<LinearLayout>(R.id.list_firefox_based_browsers)
         firefoxBasedBrowsers.removeAllViews()
@@ -61,7 +79,7 @@ class AddAppActivity : AppCompatActivity() {
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
-            .forEach { initUIForApp(firefoxBasedBrowsers, it) }
+            .forEach { addAppToUserInterface(firefoxBasedBrowsers, it) }
 
         val goodPrivacyBrowsers = findViewById<LinearLayout>(R.id.list_good_privacy_browsers)
         goodPrivacyBrowsers.removeAllViews()
@@ -70,7 +88,7 @@ class AddAppActivity : AppCompatActivity() {
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
-            .forEach { initUIForApp(goodPrivacyBrowsers, it) }
+            .forEach { addAppToUserInterface(goodPrivacyBrowsers, it) }
 
         val betterThanChromeBrowsers = findViewById<LinearLayout>(R.id.list_better_than_chrome_browsers)
         betterThanChromeBrowsers.removeAllViews()
@@ -79,7 +97,7 @@ class AddAppActivity : AppCompatActivity() {
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
-            .forEach { initUIForApp(betterThanChromeBrowsers, it) }
+            .forEach { addAppToUserInterface(betterThanChromeBrowsers, it) }
 
         val eolBrowsers = findViewById<LinearLayout>(R.id.list_eol_browsers)
         eolBrowsers.removeAllViews()
@@ -88,11 +106,11 @@ class AddAppActivity : AppCompatActivity() {
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
-            .forEach { initUIForApp(eolBrowsers, it) }
+            .forEach { addAppToUserInterface(eolBrowsers, it) }
     }
 
     @UiThread
-    private fun initUIForApp(mainLayout: LinearLayout, app: App) {
+    private fun addAppToUserInterface(mainLayout: LinearLayout, app: App) {
         val cardView = layoutInflater.inflate(R.layout.add_app_cardview, mainLayout, false)
 
         cardView.findViewWithTag<ImageView>("icon").setImageResource(app.impl.icon)
@@ -121,12 +139,36 @@ class AddAppActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
         cardView.findViewWithTag<ImageButton>("add_app").setOnClickListener {
-            val intent = InstallActivity.createIntent(this, app)
-            startActivity(intent)
-            finish()
+            installApp(app)
         }
 
         mainLayout.addView(cardView)
+    }
+
+    @MainThread
+    private fun installApp(app: App) {
+        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(this)) {
+            showToast(R.string.main_activity__no_unmetered_network)
+            return
+        }
+        if (DeviceSdkTester.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
+            RequestInstallationPermissionDialog().show(supportFragmentManager)
+            return
+        }
+        if (FileDownloader.areDownloadsCurrentlyRunning()) {
+            // this may updates the app
+            RunningDownloadsDialog.newInstance(app, true).show(supportFragmentManager)
+            return
+        }
+        val intent = InstallActivity.createIntent(this, app)
+        startActivity(intent)
+        finish()
+    }
+
+    @UiThread
+    private fun showToast(message: Int) {
+        val layout = findViewById<View>(R.id.coordinatorLayout)
+        Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
     }
 
     companion object {

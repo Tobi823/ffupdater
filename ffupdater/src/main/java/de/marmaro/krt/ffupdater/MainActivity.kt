@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     override fun onResume() {
         super.onResume()
-        initUI()
+        addAppsToUserInterface()
         lifecycleScope.launch(Dispatchers.Main) { checkForUpdates() }
     }
 
@@ -125,17 +125,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun initUI() {
+    private fun addAppsToUserInterface() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
         mainLayout.removeAllViews()
         cleanUpObjects()
         App.values()
             .filter { it.impl.isInstalled(this) }
-            .forEach { initUIForApp(mainLayout, it, ForegroundSettingsHelper(this)) }
+            .forEach { addAppToUserInterface(mainLayout, it, ForegroundSettingsHelper(this)) }
     }
 
     @UiThread
-    private fun initUIForApp(mainLayout: LinearLayout, app: App, settingsHelper: ForegroundSettingsHelper) {
+    private fun addAppToUserInterface(
+        mainLayout: LinearLayout,
+        app: App,
+        settingsHelper: ForegroundSettingsHelper
+    ) {
         val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
         cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.impl.icon)
@@ -283,7 +287,7 @@ class MainActivity : AppCompatActivity() {
         }
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
             // this may updates the app
-            RunningDownloadsDialog.newInstance(app).show(supportFragmentManager)
+            RunningDownloadsDialog.newInstance(app, false).show(supportFragmentManager)
             return
         }
         val intent = InstallActivity.createIntent(this@MainActivity, app)

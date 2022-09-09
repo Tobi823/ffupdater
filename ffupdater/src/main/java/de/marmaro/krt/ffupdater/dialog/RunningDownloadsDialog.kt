@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.dialog
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
@@ -22,6 +23,9 @@ class RunningDownloadsDialog : DialogFragment() {
                 dialog.dismiss()
                 val intent = InstallActivity.createIntent(requireContext(), app)
                 startActivity(intent)
+                if (requireArguments().getBoolean(BUNDLE_FINISH_ACTIVITY_WHEN_INSTALLING)) {
+                    (requireContext() as Activity).finish()
+                }
             }
             .setNegativeButton(R.string.running_downloads_dialog__negative) { dialog, _ -> dialog.dismiss() }
             .create()
@@ -39,10 +43,12 @@ class RunningDownloadsDialog : DialogFragment() {
 
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
+        private const val BUNDLE_FINISH_ACTIVITY_WHEN_INSTALLING = "finish_activity_when_installing"
 
-        fun newInstance(app: App): RunningDownloadsDialog {
+        fun newInstance(app: App, finishActivityWhenInstalling: Boolean): RunningDownloadsDialog {
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
+            bundle.putBoolean(BUNDLE_FINISH_ACTIVITY_WHEN_INSTALLING, finishActivityWhenInstalling)
             val fragment = RunningDownloadsDialog()
             fragment.arguments = bundle
             return fragment

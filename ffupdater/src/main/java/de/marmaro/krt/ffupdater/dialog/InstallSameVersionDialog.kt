@@ -22,7 +22,7 @@ class InstallSameVersionDialog : DialogFragment() {
             .setPositiveButton(R.string.dialog_button__yes) { dialog, _ ->
                 dialog.dismiss()
                 if (FileDownloader.areDownloadsCurrentlyRunning()) {
-                    RunningDownloadsDialog.newInstance(app).show(parentFragmentManager)
+                    RunningDownloadsDialog.newInstance(app, false).show(parentFragmentManager)
                 } else {
                     val intent = InstallActivity.createIntent(requireContext(), app)
                     startActivity(intent)
