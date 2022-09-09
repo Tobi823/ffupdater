@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.entity.Category
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -26,12 +27,13 @@ class FirefoxRelease(
     override val downloadSource = R.string.mozilla_ci
     override val icon = R.mipmap.ic_logo_firefox_release
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = ARM32_ARM64_X86_X64
-    override val projectPage =
-        "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest"
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
+    override val supportedAbis = ARM32_ARM64_X86_X64
+    override val projectPage =
+        "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest"
+    override val category = Category.FROM_MOZILLA
 
     @MainThread
     @Throws(NetworkException::class)

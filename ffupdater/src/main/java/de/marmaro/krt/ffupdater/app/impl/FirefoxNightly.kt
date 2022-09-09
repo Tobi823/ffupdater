@@ -8,6 +8,7 @@ import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
+import de.marmaro.krt.ffupdater.app.entity.Category
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -34,12 +35,13 @@ class FirefoxNightly(
     override val downloadSource = R.string.mozilla_ci
     override val icon = R.mipmap.ic_logo_firefox_nightly
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = ARM32_ARM64_X86_X64
-    override val projectPage =
-        "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest"
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
+    override val supportedAbis = ARM32_ARM64_X86_X64
+    override val projectPage =
+        "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest"
+    override val category = Category.FROM_MOZILLA
 
     @MainThread
     @Throws(NetworkException::class)

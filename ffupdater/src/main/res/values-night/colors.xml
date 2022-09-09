@@ -2,10 +2,12 @@
 <resources>
     <!-- https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
     <!-- https://coolors.co/contrast-checker -->
+    <!-- background is 0x303030-->
     <color name="crash_report__error_red">#D50000</color>
     <color name="install_activity__red_background_for_text">#A81A1A</color>
     <color name="install_activity__success_green">#33691E</color>
     <color name="install_activity__warning_orange">#EF6C00</color>
     <color name="main_activity__cardview_background_color">@color/cardview_dark_background</color>
     <color name="main_activity__red_for_eol_reason">#FFC9CF</color>
+    <color name="button_green">#4CAF50</color>
 </resources>

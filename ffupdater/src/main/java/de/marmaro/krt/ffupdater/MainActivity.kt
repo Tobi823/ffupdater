@@ -56,12 +56,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_activity)
         if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
             finish()
             return
         }
 
-        setContentView(R.layout.main_activity)
         setSupportActionBar(findViewById(R.id.toolbar))
         StrictModeSetup.enableStrictMode()
         foregroundSettings = ForegroundSettingsHelper(this)
@@ -69,11 +69,8 @@ class MainActivity : AppCompatActivity() {
         Migrator().migrate(this)
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-//            InstallNewAppDialog.newInstance()
-//                .show(supportFragmentManager)
             val intent = AddAppActivity.createIntent(this)
             startActivity(intent)
-            // TODO
         }
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
@@ -138,11 +135,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun initUIForApp(
-        mainLayout: LinearLayout,
-        app: App,
-        settingsHelper: ForegroundSettingsHelper
-    ) {
+    private fun initUIForApp(mainLayout: LinearLayout, app: App, settingsHelper: ForegroundSettingsHelper) {
         val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
 
         cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.impl.icon)
@@ -187,13 +180,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val downloadButton = cardView.findViewWithTag<ImageButton>("appDownloadButton")
-        downloadButton.setOnClickListener {
-            if (sameAppVersionIsAlreadyInstalled[app] == true) {
-                InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
-            } else {
-                installApp(app, askForConfirmationIfOtherDownloadsAreRunning = true)
-            }
-        }
+        downloadButton.setOnClickListener { updateApp(app) }
         downloadButtons[app] = downloadButton
         setDownloadButtonState(app, false)
 
@@ -280,7 +267,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    fun installApp(app: App, askForConfirmationIfOtherDownloadsAreRunning: Boolean = false) {
+    private fun updateApp(app: App) {
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             showToast(R.string.main_activity__no_unmetered_network)
             return
@@ -289,11 +276,16 @@ class MainActivity : AppCompatActivity() {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }
-        if (askForConfirmationIfOtherDownloadsAreRunning && FileDownloader.areDownloadsCurrentlyRunning()) {
+        if (sameAppVersionIsAlreadyInstalled[app] == true) {
+            // this may displays RunningDownloadsDialog and updates the app
+            InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
+            return
+        }
+        if (FileDownloader.areDownloadsCurrentlyRunning()) {
+            // this may updates the app
             RunningDownloadsDialog.newInstance(app).show(supportFragmentManager)
             return
         }
-
         val intent = InstallActivity.createIntent(this@MainActivity, app)
         startActivity(intent)
     }

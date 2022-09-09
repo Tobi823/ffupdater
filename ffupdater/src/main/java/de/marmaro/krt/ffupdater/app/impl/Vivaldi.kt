@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.entity.Category
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -27,10 +28,11 @@ class Vivaldi(
     override val icon = R.mipmap.ic_logo_vivaldi
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64)
-    override val projectPage = "https://vivaldi.com/de/download/"
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
+    override val projectPage = "https://vivaldi.com/de/download/"
+    override val category = Category.BETTER_THAN_GOOGLE_CHROME
 
     @MainThread
     @Throws(NetworkException::class)

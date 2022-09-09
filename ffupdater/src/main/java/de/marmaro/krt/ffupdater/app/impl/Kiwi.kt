@@ -7,6 +7,7 @@ import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
+import de.marmaro.krt.ffupdater.app.entity.Category
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -31,10 +32,11 @@ class Kiwi(
     override val icon = R.mipmap.ic_logo_kiwi
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ARM32_ARM64_X86_X64
-    override val projectPage = "https://github.com/kiwibrowser/src.next"
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
+    override val projectPage = "https://github.com/kiwibrowser/src.next"
+    override val category = Category.BETTER_THAN_GOOGLE_CHROME
 
     @MainThread
     @Throws(NetworkException::class)

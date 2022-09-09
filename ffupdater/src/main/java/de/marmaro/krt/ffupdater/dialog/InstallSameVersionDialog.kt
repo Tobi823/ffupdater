@@ -7,21 +7,26 @@ import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import de.marmaro.krt.ffupdater.MainActivity
+import de.marmaro.krt.ffupdater.InstallActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.network.FileDownloader
 
 class InstallSameVersionDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)
-        val mainActivity = activity as MainActivity
         return AlertDialog.Builder(activity)
             .setTitle(R.string.install_same_version_dialog__title)
             .setMessage(R.string.install_same_version_dialog__message)
             .setPositiveButton(R.string.dialog_button__yes) { dialog, _ ->
                 dialog.dismiss()
-                mainActivity.installApp(app, askForConfirmationIfOtherDownloadsAreRunning = true)
+                if (FileDownloader.areDownloadsCurrentlyRunning()) {
+                    RunningDownloadsDialog.newInstance(app).show(parentFragmentManager)
+                } else {
+                    val intent = InstallActivity.createIntent(requireContext(), app)
+                    startActivity(intent)
+                }
             }
             .setNegativeButton(R.string.dialog_button__do_not_install) { dialog, _ -> dialog.dismiss() }
             .create()

@@ -3,38 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
     app:cardBackgroundColor="@color/main_activity__cardview_background_color"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp">
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/app_icon"
-            android:tag="appIcon"
+            android:scaleType="centerInside"
+            android:tag="icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/appTitle"
-            style="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/title"
+            style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="sans-serif-light"
             android:gravity="start"
-            android:tag="appCardTitle"
+            android:tag="title"
             app:layout_constraintEnd_toStartOf="@id/warning_icon"
             app:layout_constraintStart_toEndOf="@id/icon"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,11 +43,10 @@
             android:id="@+id/warning_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_card__app_warning_button_description"
-            android:tag="appWarningButton"
-            app:layout_constraintEnd_toStartOf="@+id/info_button"
+            android:tag="warning_icon"
+            app:layout_constraintEnd_toStartOf="@id/info_button"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_warning" />
 
@@ -55,10 +54,9 @@
             android:id="@+id/info_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_card__information_about_the_app"
-            android:tag="appInfoButton"
+            android:tag="info_button"
             app:layout_constraintEnd_toStartOf="@id/open_project_page"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_info_outline_blue" />
@@ -67,10 +65,11 @@
             android:id="@+id/open_project_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_card__open_project_page"
-            android:tag="appOpenProjectPage"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:tag="open_project_page"
+            app:layout_constraintEnd_toStartOf="@id/add_app"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_open_in_browser_24" />
 
@@ -78,43 +77,23 @@
             android:id="@+id/eol_reason"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:tag="eolReason"
-            android:textColor="@color/main_activity__red_for_eol_reason"
+            android:layout_marginTop="4dp"
             android:autoLink="web"
+            android:tag="eol_reason"
+            android:textColor="@color/main_activity__red_for_eol_reason"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appTitle" />
-
-        <TextView
-            android:id="@+id/appInstalledVersion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:tag="appInstalledVersion"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/eol_reason" />
-
-        <TextView
-            android:id="@+id/appAvailableVersion"
-            style="@style/TextAppearance.AppCompat.Small"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:tag="appAvailableVersion"
-            app:layout_constraintEnd_toStartOf="@id/appDownloadButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appInstalledVersion" />
+            app:layout_constraintTop_toBottomOf="@id/warning_icon" />
 
         <ImageButton
-            android:id="@+id/appDownloadButton"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:id="@+id/add_app"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:background="@android:color/transparent"
-            android:contentDescription="@string/app_card__download_the_app"
-            android:tag="appDownloadButton"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="Add new app"
+            android:tag="add_app"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_file_download_grey" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

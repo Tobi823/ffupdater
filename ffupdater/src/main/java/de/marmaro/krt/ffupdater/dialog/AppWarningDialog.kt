@@ -18,18 +18,9 @@ class AppWarningDialog : DialogFragment() {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)
         val warning = getString(app.impl.installationWarning!!)
-        val counter = warning.lines()
-            .filter { it.startsWith("- ") }
-            .count()
-        val message = resources.getQuantityString(
-            R.plurals.app_warning_dialog__message,
-            counter,
-            getString(app.impl.title),
-            warning
-        )
         return AlertDialog.Builder(activity)
             .setTitle(getString(R.string.app_warning_dialog__title))
-            .setMessage(message)
+            .setMessage(warning)
             .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
             .create()
     }

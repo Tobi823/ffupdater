@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.entity.Category
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -28,10 +29,11 @@ class FirefoxKlar(
     override val icon = R.mipmap.ic_logo_firefox_focus_klar
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
-    override val projectPage = "https://github.com/mozilla-mobile/focus-android"
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
+    override val projectPage = "https://github.com/mozilla-mobile/focus-android"
+    override val category = Category.FROM_MOZILLA
 
     @MainThread
     @Throws(NetworkException::class)

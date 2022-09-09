@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.entity.Category
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -22,11 +23,12 @@ class Lockwise(
     override val icon = R.mipmap.ic_logo_lockwise
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ALL_ABIS
-    override val projectPage = "https://github.com/mozilla-lockwise/lockwise-android"
-    override val eolReason = R.string.lockwise__eol_reason
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
+    override val projectPage = "https://github.com/mozilla-lockwise/lockwise-android"
+    override val eolReason = R.string.lockwise__eol_reason
+    override val category = Category.EOL
 
     @MainThread
     @Throws(NetworkException::class)

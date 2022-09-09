@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.entity.Category
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -29,10 +30,11 @@ class BraveBeta(
     override val icon = R.mipmap.ic_logo_brave_beta
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ARM32_ARM64_X86_X64
-    override val projectPage = "https://github.com/brave/brave-browser"
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
+    override val projectPage = "https://github.com/brave/brave-browser"
+    override val category = Category.BETTER_THAN_GOOGLE_CHROME
 
     @MainThread
     @Throws(NetworkException::class)

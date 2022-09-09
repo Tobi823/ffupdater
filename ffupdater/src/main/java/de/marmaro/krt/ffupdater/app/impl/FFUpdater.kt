@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.entity.Category
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -22,11 +23,12 @@ class FFUpdater(
     override val icon = R.mipmap.ic_launcher
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ALL_ABIS
-    override val installableWithDefaultPermission = false
-    override val projectPage = "https://github.com/Tobi823/ffupdater"
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
+    override val installableWithDefaultPermission = false
+    override val projectPage = "https://github.com/Tobi823/ffupdater"
+    override val category = Category.OTHER
 
     @MainThread
     @Throws(NetworkException::class)
