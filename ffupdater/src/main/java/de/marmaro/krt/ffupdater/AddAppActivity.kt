@@ -111,7 +111,7 @@ class AddAppActivity : AppCompatActivity() {
 
     @UiThread
     private fun addAppToUserInterface(mainLayout: LinearLayout, app: App) {
-        val cardView = layoutInflater.inflate(R.layout.add_app_cardview, mainLayout, false)
+        val cardView = layoutInflater.inflate(R.layout.activity_add_app_cardview, mainLayout, false)
 
         cardView.findViewWithTag<ImageView>("icon").setImageResource(app.impl.icon)
         cardView.findViewWithTag<TextView>("title").setText(app.impl.title)
