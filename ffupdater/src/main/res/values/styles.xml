@@ -9,6 +9,17 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="crash_report__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/crash_report__error_red</item>
+        <item name="colorPrimaryDark">@color/crash_report__error_red</item>
+        <item name="colorAccent">@color/crash_report__color_accent</item>
+    </style>
+
+    <style name="add_app__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
     <style name="main_activity__main_title_small" parent="@android:style/TextAppearance.Large">
         <item name="android:textColor">@android:color/white</item>
     </style>
@@ -49,12 +60,6 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:visibility">gone</item>
-    </style>
-
-    <style name="crash_report__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/crash_report__error_red</item>
-        <item name="colorPrimaryDark">@color/crash_report__error_red</item>
-        <item name="colorAccent">@color/crash_report__color_accent</item>
     </style>
 
     <style name="manage_storage_activity__bold_text">

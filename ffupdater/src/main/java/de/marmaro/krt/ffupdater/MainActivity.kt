@@ -69,8 +69,11 @@ class MainActivity : AppCompatActivity() {
         Migrator().migrate(this)
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            InstallNewAppDialog.newInstance()
-                .show(supportFragmentManager)
+//            InstallNewAppDialog.newInstance()
+//                .show(supportFragmentManager)
+            val intent = AddAppActivity.createIntent(this)
+            startActivity(intent)
+            // TODO
         }
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
