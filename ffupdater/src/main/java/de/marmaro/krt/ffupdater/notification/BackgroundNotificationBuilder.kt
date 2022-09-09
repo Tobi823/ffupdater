@@ -14,7 +14,7 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.CrashReportActivity
-import de.marmaro.krt.ffupdater.InstallActivity
+import de.marmaro.krt.ffupdater.DownloadActivity
 import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.*
@@ -47,7 +47,7 @@ object BackgroundNotificationBuilder {
             notificationId = 200 + app.ordinal,
             notificationTitle = context.getString(update_notification__title, appTitle),
             notificationText = context.getString(update_notification__text),
-            intent = InstallActivity.createIntent(context, app)
+            intent = DownloadActivity.createIntent(context, app)
         )
     }
 

@@ -124,7 +124,7 @@
     <string name="install_activity__too_low_memory_title">磁盘空间不足</string>
     <string name="install_activity__use_cached_downloaded_apk">使用此处已下载的文件：</string>
     <string name="install_activity__you_can_now_close_this_window">现在您可以关闭此窗口</string>
-    <string name="install_activity_label">安装应用程序</string>
+    <string name="download_activity__label">安装应用程序</string>
     <string name="install_app">安装应用</string>
     <string name="install_new_app">安装新应用</string>
     <string name="install_same_version_dialog__message">已安装此应用程序的最新版本。是否要再次下载并安装最新版本？</string>

@@ -132,7 +132,7 @@
     <string name="install_activity__too_low_memory_title">Недостатъчно свободно пространство</string>
     <string name="install_activity__use_cached_downloaded_apk">Използва се изтегления файл:</string>
     <string name="install_activity__you_can_now_close_this_window">Можете да затворите прозореца</string>
-    <string name="install_activity_label">Инсталиране</string>
+    <string name="download_activity__label">Инсталиране</string>
     <string name="install_app">Инсталиране</string>
     <string name="install_new_app">Инсталиране</string>
     <string name="install_same_version_dialog__message">Последното издание на приложението вече е инсталирано. Желаете ли да бъде изтеглено и инсталирано отново последното издание?</string>

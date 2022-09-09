@@ -57,20 +57,20 @@
         tools:targetApi="Q">
         <activity
             android:name=".AddAppActivity"
-            android:label="Install App"
+            android:label="Add New Application"
             android:launchMode="singleTop"
             android:theme="@style/add_app__theme" />
         <activity
             android:name=".CrashReportActivity"
-            android:label="FFUpdater Crash Reporter"
+            android:label="Crash Reporter"
             android:theme="@style/crash_report__theme" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings__activity_label"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".InstallActivity"
-            android:label="@string/install_activity_label"
+            android:name=".DownloadActivity"
+            android:label="@string/download_activity__label"
             android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity

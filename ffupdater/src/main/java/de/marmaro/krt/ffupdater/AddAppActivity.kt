@@ -160,7 +160,7 @@ class AddAppActivity : AppCompatActivity() {
             RunningDownloadsDialog.newInstance(app, true).show(supportFragmentManager)
             return
         }
-        val intent = InstallActivity.createIntent(this, app)
+        val intent = DownloadActivity.createIntent(this, app)
         startActivity(intent)
         finish()
     }

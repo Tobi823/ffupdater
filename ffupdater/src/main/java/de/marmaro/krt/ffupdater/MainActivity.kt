@@ -290,7 +290,7 @@ class MainActivity : AppCompatActivity() {
             RunningDownloadsDialog.newInstance(app, false).show(supportFragmentManager)
             return
         }
-        val intent = InstallActivity.createIntent(this@MainActivity, app)
+        val intent = DownloadActivity.createIntent(this@MainActivity, app)
         startActivity(intent)
     }
 

@@ -83,7 +83,7 @@
     <string name="install_activity__too_low_memory_title">Mało Miejsca w Pamięci</string>
     <string name="install_activity__use_cached_downloaded_apk">Użyj pobranego już pliku z:</string>
     <string name="install_activity__you_can_now_close_this_window">Możesz teraz zamknąć to okno</string>
-    <string name="install_activity_label">Zainstaluj aplikację</string>
+    <string name="download_activity__label">Zainstaluj aplikację</string>
     <string name="install_app">Zainstaluj aplikację</string>
     <string name="install_new_app">Zainstaluj nową aplikację</string>
     <string name="install_same_version_dialog__message">Najnowsza wersja tej aplikacji jest już zainstalowana. Czy chcesz ponownie pobrać i zainstalować najnowszą wersję?</string>

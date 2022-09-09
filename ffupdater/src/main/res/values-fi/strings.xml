@@ -26,7 +26,7 @@
     <string name="install_same_version_dialog__title">Sama versio asennettu</string>
     <string name="install_new_app">Asenna uusi sovellus</string>
     <string name="install_app">Asenna sovellus</string>
-    <string name="install_activity_label">Asenna sovellus</string>
+    <string name="download_activity__label">Asenna sovellus</string>
     <string name="install_activity__use_cached_downloaded_apk">Käytä jo ladattua tiedostoa kohteesta:</string>
     <string name="install_activity__too_low_memory_title">Vähäinen tallennustila</string>
     <string name="install_activity__too_low_memory_description">Tallennustila on vähissä (vain %1$d Mt vapaana). Tämä johtaa latauksen tai asennuksen epäonnistumiseen.</string>

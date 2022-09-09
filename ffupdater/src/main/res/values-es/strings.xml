@@ -120,7 +120,7 @@
     <string name="install_activity__too_low_memory_title">Poco Espacio en el Disco</string>
     <string name="install_activity__use_cached_downloaded_apk">Usar archivo ya descargado de:</string>
     <string name="install_activity__you_can_now_close_this_window">Ahora puede cerrar esta ventana</string>
-    <string name="install_activity_label">Instalar Aplicación</string>
+    <string name="download_activity__label">Instalar Aplicación</string>
     <string name="install_app">Instalar app</string>
     <string name="install_new_app">Instalar nueva aplicación</string>
     <string name="install_same_version_dialog__message">La última versión de esta aplicación ya está instalada. ¿Quiere descargar e instalar la última versión otra vez\?</string>

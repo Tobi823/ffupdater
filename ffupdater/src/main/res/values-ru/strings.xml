@@ -124,7 +124,7 @@
     <string name="install_activity__too_low_memory_title">Недостаточно места на диске</string>
     <string name="install_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
     <string name="install_activity__you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
-    <string name="install_activity_label">Установить приложение</string>
+    <string name="download_activity__label">Установить приложение</string>
     <string name="install_app">установить</string>
     <string name="install_new_app">Установить новое приложение</string>
     <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите снова загрузить и установить её?</string>

@@ -79,7 +79,7 @@
     <string name="install_activity__too_low_memory_title">ストレージ容量不足</string>
     <string name="install_activity__use_cached_downloaded_apk">すでにダウンロード済みのファイルを使用します:</string>
     <string name="install_activity__you_can_now_close_this_window">ウィンドウを閉じても構いません</string>
-    <string name="install_activity_label">アプリをインストール</string>
+    <string name="download_activity__label">アプリをインストール</string>
     <string name="install_app">アプリをインストール</string>
     <string name="install_new_app">新規アプリをインストール</string>
     <string name="install_same_version_dialog__message">このアプリの最新版はすでにインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>

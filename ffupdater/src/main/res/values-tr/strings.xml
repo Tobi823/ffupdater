@@ -132,7 +132,7 @@
     <string name="install_activity__too_low_memory_title">Düşük Disk Alanı</string>
     <string name="install_activity__use_cached_downloaded_apk">Şuradan indirilmiş dosyayı kullanın:</string>
     <string name="install_activity__you_can_now_close_this_window">Artık bu pencereyi kapatabilirsiniz</string>
-    <string name="install_activity_label">Uygulamayı Kur</string>
+    <string name="download_activity__label">Uygulamayı Kur</string>
     <string name="install_app">Uygulamayı kur</string>
     <string name="install_new_app">Yeni uygulama kur</string>
     <string name="install_same_version_dialog__message">Bu uygulamanın en son sürümü zaten kurulu. En son sürümü tekrar indirip kurmak istiyor musunuz\?</string>

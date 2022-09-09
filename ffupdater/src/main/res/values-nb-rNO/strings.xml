@@ -73,7 +73,7 @@
     <string name="install_activity__too_low_memory_title">Lite lagringsplass igjen</string>
     <string name="install_activity__use_cached_downloaded_apk">Bruk allerede nedlastet fil fra:</string>
     <string name="install_activity__you_can_now_close_this_window">Du kan lukke vinduet</string>
-    <string name="install_activity_label">Installer program</string>
+    <string name="download_activity__label">Installer program</string>
     <string name="install_app">Installer program</string>
     <string name="install_new_app">Installer nytt program</string>
     <string name="install_same_version_dialog__message">Nyeste versjon av dette programmet er allerede installert. Last det ned og installer nyeste versjon igjen\?</string>

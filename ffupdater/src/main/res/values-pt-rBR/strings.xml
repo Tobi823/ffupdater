@@ -108,7 +108,7 @@
     <string name="install_activity__too_low_memory_title">Pouco espaço disponível</string>
     <string name="install_activity__use_cached_downloaded_apk">Use o navegador baixado do:</string>
     <string name="install_activity__you_can_now_close_this_window">Pode fechar este aviso</string>
-    <string name="install_activity_label">Instalar o navegador</string>
+    <string name="download_activity__label">Instalar o navegador</string>
     <string name="install_app">Instalar o navegador</string>
     <string name="install_new_app">Instalar outro navegador</string>
     <string name="install_same_version_dialog__message">A versão mais recente deste navegador já foi instalada. Você quer baixar e instalar ela outra vez?</string>

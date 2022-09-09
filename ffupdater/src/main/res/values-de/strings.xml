@@ -108,7 +108,7 @@
     <string name="install_activity__too_low_memory_title">Wenig freier Speicher</string>
     <string name="install_activity__use_cached_downloaded_apk">Verwende die bereits heruntergeladene Datei von:</string>
     <string name="install_activity__you_can_now_close_this_window">Sie können dieses Fenster jetzt schließen</string>
-    <string name="install_activity_label">Anwendung installieren</string>
+    <string name="download_activity__label">Anwendung installieren</string>
     <string name="install_app">App installieren</string>
     <string name="install_new_app">Neue Anwendung installieren</string>
     <string name="install_same_version_dialog__message">Die neueste Version dieser App ist bereits installiert. Möchten Sie die neueste Version erneut herunterladen und installieren?</string>

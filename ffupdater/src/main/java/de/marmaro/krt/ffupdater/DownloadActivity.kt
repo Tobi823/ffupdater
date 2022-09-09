@@ -53,7 +53,7 @@ import kotlinx.coroutines.withContext
  * The DownloadManager is more difficult to use then the default java way, but the DownloadManager offers more features
  * like restarting downloads, showing the current download status etc.
  */
-class InstallActivity : AppCompatActivity() {
+class DownloadActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
     private lateinit var appInstaller: ForegroundAppInstaller
     private lateinit var appCache: AppCache
@@ -70,7 +70,7 @@ class InstallActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.install_activity)
+        setContentView(R.layout.activity_download)
         if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
             finish()
             return
@@ -418,7 +418,7 @@ class InstallActivity : AppCompatActivity() {
          * Create a new InstallActivity which have to check if app is up-to-date
          */
         fun createIntent(context: Context, app: App): Intent {
-            val intent = Intent(context, InstallActivity::class.java)
+            val intent = Intent(context, DownloadActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)
             return intent

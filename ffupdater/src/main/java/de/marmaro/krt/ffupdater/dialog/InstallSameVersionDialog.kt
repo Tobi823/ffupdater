@@ -7,7 +7,7 @@ import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import de.marmaro.krt.ffupdater.InstallActivity
+import de.marmaro.krt.ffupdater.DownloadActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.network.FileDownloader
@@ -24,7 +24,7 @@ class InstallSameVersionDialog : DialogFragment() {
                 if (FileDownloader.areDownloadsCurrentlyRunning()) {
                     RunningDownloadsDialog.newInstance(app, false).show(parentFragmentManager)
                 } else {
-                    val intent = InstallActivity.createIntent(requireContext(), app)
+                    val intent = DownloadActivity.createIntent(requireContext(), app)
                     startActivity(intent)
                 }
             }

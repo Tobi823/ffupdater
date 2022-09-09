@@ -8,7 +8,7 @@ import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import de.marmaro.krt.ffupdater.InstallActivity
+import de.marmaro.krt.ffupdater.DownloadActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 
@@ -21,7 +21,7 @@ class RunningDownloadsDialog : DialogFragment() {
             .setMessage(R.string.running_downloads_dialog__message)
             .setPositiveButton(R.string.running_downloads_dialog__yes) { dialog, _ ->
                 dialog.dismiss()
-                val intent = InstallActivity.createIntent(requireContext(), app)
+                val intent = DownloadActivity.createIntent(requireContext(), app)
                 startActivity(intent)
                 if (requireArguments().getBoolean(BUNDLE_FINISH_ACTIVITY_WHEN_INSTALLING)) {
                     (requireContext() as Activity).finish()

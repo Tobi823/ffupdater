@@ -84,7 +84,7 @@
     <string name="install_activity__too_low_memory_title">Мало місця на диску</string>
     <string name="install_activity__use_cached_downloaded_apk">Використовуйте вже завантажений файл із:</string>
     <string name="install_activity__you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
-    <string name="install_activity_label">Встановити програму</string>
+    <string name="download_activity__label">Встановити програму</string>
     <string name="install_app">встановити додаток</string>
     <string name="install_new_app">Встановіть новий додаток</string>
     <string name="install_same_version_dialog__message">Останню версію цього додатка вже встановлено. Завантажити та встановити останню версію знову?</string>
