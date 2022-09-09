@@ -123,14 +123,14 @@ class DownloadActivity : AppCompatActivity() {
         val uri = Uri.parse("file://${parentFolder.absolutePath}/")
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, "resource/folder")
-        val chooser = Intent.createChooser(intent, getString(install_activity__open_folder))
+        val chooser = Intent.createChooser(intent, getString(download_activity__open_folder))
 
         if (DeviceSdkTester.supportsAndroidNougat()) {
             StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
             try {
                 startActivity(chooser)
             } catch (e: FileUriExposedException) {
-                Toast.makeText(this, install_activity__file_uri_exposed_toast, LENGTH_LONG)
+                Toast.makeText(this, download_activity__file_uri_exposed_toast, LENGTH_LONG)
                     .show()
             }
         } else {
@@ -177,7 +177,7 @@ class DownloadActivity : AppCompatActivity() {
         }
         show(R.id.tooLowMemory)
         val mbs = StorageUtil.getFreeStorageInMebibytes(this)
-        val message = getString(install_activity__too_low_memory_description, mbs)
+        val message = getString(download_activity__too_low_memory_description, mbs)
         setText(R.id.tooLowMemoryDescription, message)
         fetchDownloadInformation()
     }
@@ -186,7 +186,7 @@ class DownloadActivity : AppCompatActivity() {
         show(R.id.fetchUrl)
         val app = viewModel.app!!
         val downloadSource = getString(app.impl.downloadSource)
-        setText(R.id.fetchUrlTextView, getString(install_activity__fetch_url_for_download, downloadSource))
+        setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
         if (viewModel.appAppUpdateStatus == null) {
             // only check for updates if the cache is empty
@@ -203,10 +203,10 @@ class DownloadActivity : AppCompatActivity() {
                 try {
                     viewModel.appAppUpdateStatus = app.impl.checkForUpdateAsync(this).await()
                 } catch (e: ApiRateLimitExceededException) {
-                    showThatUrlFetchingFailed(getString(install_activity__github_rate_limit_exceeded), e)
+                    showThatUrlFetchingFailed(getString(download_activity__github_rate_limit_exceeded), e)
                     return
                 } catch (e: NetworkException) {
-                    showThatUrlFetchingFailed(getString(install_activity__temporary_network_issue), e)
+                    showThatUrlFetchingFailed(getString(download_activity__temporary_network_issue), e)
                     return
                 }
             }
@@ -214,7 +214,7 @@ class DownloadActivity : AppCompatActivity() {
 
         hide(R.id.fetchUrl)
         show(R.id.fetchedUrlSuccess)
-        val finishedText = getString(install_activity__fetched_url_for_download_successfully, downloadSource)
+        val finishedText = getString(download_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
         val appUpdateResult = viewModel.appAppUpdateStatus!!.latestUpdate
         if (appCache.isAvailable(this, appUpdateResult)) {
@@ -252,12 +252,12 @@ class DownloadActivity : AppCompatActivity() {
                 } else {
                     "${mb}MB"
                 }
-                val display = getString(install_activity__download_app_with_status, status)
+                val display = getString(download_activity__download_app_with_status, status)
                 setText(R.id.downloadingFileText, display)
             }
         }
 
-        val display = getString(install_activity__download_app_with_status, "")
+        val display = getString(download_activity__download_app_with_status, "")
         setText(R.id.downloadingFileText, display)
 
         appCache.delete(this)
@@ -294,7 +294,7 @@ class DownloadActivity : AppCompatActivity() {
                 } else {
                     "${mb}MB"
                 }
-                val display = getString(install_activity__download_app_with_status, status)
+                val display = getString(download_activity__download_app_with_status, status)
                 setText(R.id.downloadingFileText, display)
             }
         }
@@ -339,7 +339,7 @@ class DownloadActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.install_activity__exception__description).text = errorMessage
         findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
-            val description = getString(crash_report__explain_text__install_activity_install_file)
+            val description = getString(crash_report__explain_text__download_activity_install_file)
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
@@ -386,7 +386,7 @@ class DownloadActivity : AppCompatActivity() {
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, downloadUrl)
         findViewById<TextView>(R.id.downloadFileFailedShowException).setOnClickListener {
-            val description = getString(crash_report__explain_text__install_activity_download_file)
+            val description = getString(crash_report__explain_text__download_activity_download_file)
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
@@ -404,7 +404,7 @@ class DownloadActivity : AppCompatActivity() {
             return
         }
         findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
-            val description = getString(crash_report__explain_text__install_activity_fetching_url)
+            val description = getString(crash_report__explain_text__download_activity_fetching_url)
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }

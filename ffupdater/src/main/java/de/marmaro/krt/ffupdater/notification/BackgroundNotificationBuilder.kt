@@ -131,7 +131,7 @@ object BackgroundNotificationBuilder {
 
     fun showInstallationError(context: Context, app: App, code: Int, message: String, exception: Exception) {
         val appTitle: String = context.getString(app.impl.title)
-        val description = context.getString(crash_report__explain_text__install_activity_install_file)
+        val description = context.getString(crash_report__explain_text__download_activity_install_file)
         showNotification(
             context = context,
             channelId = "installation_error_notification",

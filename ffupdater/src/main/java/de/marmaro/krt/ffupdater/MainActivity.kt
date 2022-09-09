@@ -23,7 +23,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
-import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__main_activity_update_check
+import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_update_check
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
@@ -177,7 +177,7 @@ class MainActivity : AppCompatActivity() {
         availableVersions[app] = availableVersion
         availableVersion.setOnClickListener {
             errorsDuringUpdateCheck[app]?.let { exception ->
-                val description = getString(crash_report__explain_text__main_activity_update_check)
+                val description = getString(crash_report__explain_text__download_activity_update_check)
                 val intent = CrashReportActivity.createIntent(this, exception, description)
                 startActivity(intent)
             }

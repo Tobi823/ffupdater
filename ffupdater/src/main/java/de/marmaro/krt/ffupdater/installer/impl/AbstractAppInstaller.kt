@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.Context
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.R.string.install_activity__downloaded_application_is_not_verified
+import de.marmaro.krt.ffupdater.R.string.download_activity__downloaded_application_is_not_verified
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
@@ -37,7 +37,7 @@ abstract class AbstractAppInstaller(
         }
         val fileCertHash = fileResult.hexString
         if (!fileResult.isValid) {
-            val errorMessage = context.getString(install_activity__downloaded_application_is_not_verified)
+            val errorMessage = context.getString(download_activity__downloaded_application_is_not_verified)
             throw InstallationFailedException("Downloaded application is NOT verified", -100, errorMessage)
         }
 

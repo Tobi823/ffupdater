@@ -23,7 +23,7 @@
 
             <TextView
                 style="@style/install_activity__bold_text"
-                android:text="@string/install_activity__too_low_memory_title" />
+                android:text="@string/download_activity__too_low_memory_title" />
 
             <TextView
                 android:id="@+id/tooLowMemoryDescription"
@@ -39,7 +39,7 @@
 
             <TextView
                 style="@style/install_activity__bold_text"
-                android:text="@string/install_activity__external_storage_not_accessible" />
+                android:text="@string/download_activity__external_storage_not_accessible" />
 
             <TextView
                 android:id="@+id/externalStorageNotAccessible_state"
@@ -55,7 +55,7 @@
             <TextView
                 android:id="@+id/fetchUrlTextView"
                 style="@style/install_activity__bold_text"
-                android:text="@string/install_activity__fetch_url_for_download" />
+                android:text="@string/download_activity__fetch_url_for_download" />
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -72,7 +72,7 @@
             <TextView
                 android:id="@+id/fetchedUrlSuccessTextView"
                 style="@style/install_activity__bold_text"
-                android:text="@string/install_activity__fetched_url_for_download_successfully" />
+                android:text="@string/download_activity__fetched_url_for_download_successfully" />
 
         </LinearLayout>
 
@@ -83,7 +83,7 @@
             <TextView
                 android:id="@+id/downloadingFileText"
                 style="@style/install_activity__bold_text"
-                android:text="@string/install_activity__download_app_with_status" />
+                android:text="@string/download_activity__download_app_with_status" />
 
             <TextView
                 android:id="@+id/downloadingFileUrl"
@@ -104,7 +104,7 @@
 
             <TextView
                 style="@style/install_activity__bold_text"
-                android:text="@string/install_activity__downloaded_application_from" />
+                android:text="@string/download_activity__downloaded_application_from" />
 
             <TextView
                 android:id="@+id/downloadedFileUrl"
@@ -118,7 +118,7 @@
 
             <TextView
                 style="@style/install_activity__bold_text"
-                android:text="@string/install_activity__use_cached_downloaded_apk" />
+                android:text="@string/download_activity__use_cached_downloaded_apk" />
 
             <TextView
                 android:id="@+id/useCachedDownloadedApk__path"
@@ -134,7 +134,7 @@
 
             <TextView
                 style="@style/install_activity__bold_text"
-                android:text="@string/install_activity__download_failed" />
+                android:text="@string/download_activity__download_failed" />
 
             <TextView
                 android:id="@+id/downloadFileFailedUrl"
@@ -145,16 +145,16 @@
                 style="@style/install_activity__default_text"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/install_activity__temporary_network_issue" />
+                android:text="@string/download_activity__temporary_network_issue" />
 
             <TextView
                 android:id="@+id/downloadFileFailedShowException"
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__exception__show_button" />
+                android:text="@string/download_activity__exception__show_button" />
 
             <TextView
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__you_can_now_close_this_window" />
+                android:text="@string/download_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 
@@ -181,7 +181,7 @@
 
             <TextView
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__sha_256_certificate_fingerprint" />
+                android:text="@string/download_activity__sha_256_certificate_fingerprint" />
 
             <TextView
                 android:id="@+id/fingerprintInstalledGoodHash"
@@ -201,7 +201,7 @@
 
             <TextView
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__you_can_now_close_this_window" />
+                android:text="@string/download_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 
@@ -224,11 +224,11 @@
             <TextView
                 android:id="@+id/install_activity__exception__show_button"
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__exception__show_button" />
+                android:text="@string/download_activity__exception__show_button" />
 
             <TextView
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__you_can_now_close_this_window" />
+                android:text="@string/download_activity__you_can_now_close_this_window" />
 
         </LinearLayout>
 
@@ -239,7 +239,7 @@
 
             <TextView
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__different_installer_info__text" />
+                android:text="@string/download_activity__different_installer_info__text" />
 
         </LinearLayout>
 
@@ -250,12 +250,12 @@
 
             <TextView
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__delete_cache_explanation" />
+                android:text="@string/download_activity__delete_cache_explanation" />
 
             <Button
                 android:id="@+id/install_activity__delete_cache_button"
                 style="@style/install_activity__button"
-                android:text="@string/install_activity__delete_cache_button_text" />
+                android:text="@string/download_activity__delete_cache_button_text" />
 
         </LinearLayout>
 
@@ -266,7 +266,7 @@
 
             <TextView
                 style="@style/install_activity__default_text"
-                android:text="@string/install_activity__open_cache_explanation" />
+                android:text="@string/download_activity__open_cache_explanation" />
 
             <TextView
                 android:id="@+id/install_activity__cache_folder_path"
@@ -275,7 +275,7 @@
             <Button
                 android:id="@+id/install_activity__open_cache_folder_button"
                 style="@style/install_activity__button"
-                android:text="@string/install_activity__open_cache_folder_button_text" />
+                android:text="@string/download_activity__open_cache_folder_button_text" />
 
         </LinearLayout>
 

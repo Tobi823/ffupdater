@@ -28,8 +28,8 @@
     <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje základní prohlížeč/vykreslovací jádro Bromite a jeho stejné vlastnosti. Nabízí možnost nahradit výchozí komponent prohlížeče pro celý systém Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Zkopírovat chybové hlášení do schránky</string>
-    <string name="crash_report__explain_text__install_activity_fetching_url">K této chybě došlo při načítání metadat ke stažení. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
-    <string name="crash_report__explain_text__main_activity_update_check">K této chybě došlo při kontrole aktualizací v hlavním zobrazení. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">K této chybě došlo při načítání metadat ke stažení. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">K této chybě došlo při kontrole aktualizací v hlavním zobrazení. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Bohužel FFUpdater spadl a zaznamenal tuto chybu. Nahlašte prosím tuto chybu na stránkách notabug.org, GitHub nebo GitLab.</string>
     <string name="crash_report__go_to_github">Přejít na GitHub</string>
     <string name="crash_report__go_to_gitlab">Přejít na GitLab</string>
@@ -65,27 +65,27 @@
 \n
 \nPoslední úspěšná kontrola aktualizací na pozadí: %1$s</string>
     <string name="app_card__information_about_the_app">informace o aplikaci</string>
-    <string name="install_activity__delete_cache_button_text">vyčistit mezipaměť</string>
-    <string name="install_activity__delete_cache_explanation">Pokud si myslíte, že FFUpdater uložil do mezipaměti chybnou aktualizaci aplikace nebo pokud chcete ušetřit trochu místa, kliknutím na tlačítko odstraníte stažené soubory.</string>
-    <string name="install_activity__download_app_with_status">Stahování aplikace (%1$s)</string>
-    <string name="install_activity__download_failed">Stahování selhalo</string>
-    <string name="install_activity__downloaded_application_from">Aplikace stažená z:</string>
-    <string name="install_activity__downloaded_application_is_not_verified">Stažená aplikace NEBYLA ověřena</string>
-    <string name="install_activity__exception__show_button">"<u>Zobrazit detailní chybové hlášení.</u>"</string>
-    <string name="install_activity__external_storage_not_accessible">Externí úložiště není k dispozici - stahování nelze spustit. Součastný status je:</string>
-    <string name="install_activity__fetch_url_for_download">Načítání metadat pro stahování z %1$s</string>
-    <string name="install_activity__fetched_url_for_download_successfully">Metadata načtena z %1$s</string>
-    <string name="install_activity__file_uri_exposed_toast">Nelze zobrazit cestu k souboru jiným aplikacím. Adresář otevřete pomocí preferovaného správce souborů.</string>
-    <string name="install_activity__github_rate_limit_exceeded">Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</string>
-    <string name="install_activity__open_cache_explanation">Můžete otevřít složku mezipaměti a zkopírovat soubor APK do umístění s větším množstvím volného místa. Bohužel na Androidu 11+ má přístup ke složce Android/data pouze několik správců souborů.</string>
-    <string name="install_activity__open_cache_folder_button_text">otevřít složku mezipaměti</string>
-    <string name="install_activity__open_folder">Otevřít složku</string>
-    <string name="install_activity__sha_256_certificate_fingerprint">Otisk certifikátu SHA-256:</string>
-    <string name="install_activity__temporary_network_issue">Došlo k dočasnému problému se sítí. Zkuste to prosím později.</string>
-    <string name="install_activity__too_low_memory_description">Nedostatek volného místa (k dispozici pouze %1$d MB). To může vést k neúspěšnému stažení nebo instalaci aplikace.</string>
-    <string name="install_activity__too_low_memory_title">Málo místa v paměti</string>
-    <string name="install_activity__use_cached_downloaded_apk">Použít již stažený soubor z:</string>
-    <string name="install_activity__you_can_now_close_this_window">Toto okno můžete zavřít</string>
+    <string name="download_activity__delete_cache_button_text">vyčistit mezipaměť</string>
+    <string name="download_activity__delete_cache_explanation">Pokud si myslíte, že FFUpdater uložil do mezipaměti chybnou aktualizaci aplikace nebo pokud chcete ušetřit trochu místa, kliknutím na tlačítko odstraníte stažené soubory.</string>
+    <string name="download_activity__download_app_with_status">Stahování aplikace (%1$s)</string>
+    <string name="download_activity__download_failed">Stahování selhalo</string>
+    <string name="download_activity__downloaded_application_from">Aplikace stažená z:</string>
+    <string name="download_activity__downloaded_application_is_not_verified">Stažená aplikace NEBYLA ověřena</string>
+    <string name="download_activity__exception__show_button">"<u>Zobrazit detailní chybové hlášení.</u>"</string>
+    <string name="download_activity__external_storage_not_accessible">Externí úložiště není k dispozici - stahování nelze spustit. Součastný status je:</string>
+    <string name="download_activity__fetch_url_for_download">Načítání metadat pro stahování z %1$s</string>
+    <string name="download_activity__fetched_url_for_download_successfully">Metadata načtena z %1$s</string>
+    <string name="download_activity__file_uri_exposed_toast">Nelze zobrazit cestu k souboru jiným aplikacím. Adresář otevřete pomocí preferovaného správce souborů.</string>
+    <string name="download_activity__github_rate_limit_exceeded">Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</string>
+    <string name="download_activity__open_cache_explanation">Můžete otevřít složku mezipaměti a zkopírovat soubor APK do umístění s větším množstvím volného místa. Bohužel na Androidu 11+ má přístup ke složce Android/data pouze několik správců souborů.</string>
+    <string name="download_activity__open_cache_folder_button_text">otevřít složku mezipaměti</string>
+    <string name="download_activity__open_folder">Otevřít složku</string>
+    <string name="download_activity__sha_256_certificate_fingerprint">Otisk certifikátu SHA-256:</string>
+    <string name="download_activity__temporary_network_issue">Došlo k dočasnému problému se sítí. Zkuste to prosím později.</string>
+    <string name="download_activity__too_low_memory_description">Nedostatek volného místa (k dispozici pouze %1$d MB). To může vést k neúspěšnému stažení nebo instalaci aplikace.</string>
+    <string name="download_activity__too_low_memory_title">Málo místa v paměti</string>
+    <string name="download_activity__use_cached_downloaded_apk">Použít již stažený soubor z:</string>
+    <string name="download_activity__you_can_now_close_this_window">Toto okno můžete zavřít</string>
     <string name="download_activity__label">Instalace aplikace</string>
     <string name="install_app">Instalovat aplikaci</string>
     <string name="install_new_app">Instalovat novou aplikaci</string>
@@ -205,8 +205,8 @@
 \n%2$s</item>
     </plurals>
     <string name="app_card__app_warning_button_description">Zobrazit varování o této aplikaci</string>
-    <string name="crash_report__explain_text__install_activity_install_file">K této chybě došlo při instalaci. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
-    <string name="crash_report__explain_text__install_activity_download_file">Při stahování došlo k následující chybě. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">K této chybě došlo při instalaci. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_download_file">Při stahování došlo k následující chybě. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="one">%1$s má následující problém:
 \n
@@ -250,7 +250,7 @@
     <string name="mull__title">Mull prohlížeč</string>
     <string name="mull__warning">FFUpdater stahuje soubory ze serverů F-Droid, a proto není rychlejší.</string>
     <string name="mull__description">Jedná se o webový prohlížeč zaměřený na ochranu soukromí založený na technologii Mozilla a očištěný od nesvobodného kódu. Umožňuje mnoho funkcí vyvinutých projektem Tor Uplift pomocí předvoleb z projektu arkenfox-user.js. Doporučuje se nainstalovat doplněk \"uBlock Origin\".</string>
-    <string name="install_activity__different_installer_info__text">Pokud instalace často selhává, zkuste v nastavení zapnout \"nativní instalátor\".</string>
+    <string name="download_activity__different_installer_info__text">Pokud instalace často selhává, zkuste v nastavení zapnout \"nativní instalátor\".</string>
     <string name="settings__installer__native__summary">Náhradní řešení, pokud session instalátor ve smartphonu nefunguje. To se častěji stává u zařízení Samsung nebo Xiaomi.</string>
     <string name="notification__download_error__channel_descr">Zobrazí se, když selže stahování aktualizace na pozadí.</string>
     <string name="app_card__open_project_page">Otevřít stránku projektu v prohlížeči</string>
