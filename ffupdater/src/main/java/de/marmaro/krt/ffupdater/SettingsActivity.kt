@@ -24,7 +24,7 @@ class SettingsActivity : AppCompatActivity() {
             finish()
             return
         }
-        setContentView(R.layout.settings_activity)
+        setContentView(R.layout.activity_settings)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385
             supportFragmentManager.beginTransaction()

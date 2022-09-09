@@ -19,7 +19,7 @@ class CrashReportActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.crash_report_layout)
+        setContentView(R.layout.activity_crash_report)
 
         findViewById<TextView>(R.id.crash_report__explanation_textview).text =
             intent.extras?.getString(EXTRA_EXCEPTION_EXPLANATION, "/")

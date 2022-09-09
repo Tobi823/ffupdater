@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.activity_main)
         if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
             finish()
             return
@@ -140,7 +140,7 @@ class MainActivity : AppCompatActivity() {
         app: App,
         settingsHelper: ForegroundSettingsHelper
     ) {
-        val cardView = layoutInflater.inflate(R.layout.app_card_layout, mainLayout, false)
+        val cardView = layoutInflater.inflate(R.layout.activity_main_cardview, mainLayout, false)
 
         cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.impl.icon)
         cardView.findViewWithTag<TextView>("appCardTitle").setText(app.impl.title)
