@@ -104,7 +104,8 @@
 \n
 \nAmacımız, kullanıcılara daha fazla seçenek, daha fazla özelleştirme fırsatı (geniş bir uzantı kitaplığı dahil) ve ziyaret ettikleri sayfalar ve tarayıcılarının nasıl çalıştığı hakkında daha fazla bilgi sağlamayı amaçlayan yeni Android için Firefox\'un yakın bir çatalı olmaktır.</string>
     <string name="iceraven__title">Iceraven Tarayıcı</string>
-    <string name="iceraven__warning">- Geliştiricisi, güvenlik veya güncellemeler ve hatta kararlılık konusunda hiçbir garanti vermez.</string>
+    <string name="iceraven__warning">- Geliştiricisi, güvenlik veya güncellemeler ve hatta kararlılık konusunda hiçbir garanti vermez.
+\n- Projenin güvenlik güncellemelerini sağlaması normalden daha uzun sürer.</string>
     <string name="infobox">Bu, gizlilik dostu tarayıcılar için bir güncelleyicidir. Yeni uygulamalar kurmak için artı düğmesine tıklayın. Yeni güncellemeleri denetlemeye zorlamak için aşağı kaydırın. Öntanımlı olarak, uygulama arka planda güncellemeleri düzenli olarak denetleyecek, daha sonra indirecek ve kuracaktır. Ayarlarda davranışı özelleştirmek için dişli simgesine tıklayın.
 \n
 \nSon başarılı arka plan güncelleme denetimi: %1$s</string>
@@ -265,4 +266,5 @@
     <string name="notification__no_update_check__text">Son beş gün içinde FFUpdater arka planda güncellemeleri denetleyemedi. Akıllı telefonunuzu uzun süre uçuş modunda tuttuysanız, bu mesajı görmezden gelebilirsiniz. Değilse, hata raporunu görüntülemek için buraya tıklayın.</string>
     <string name="notification__no_update_check__title">Beş gün boyunca başarılı bir arka planda güncelleme denetimi yapılmadı</string>
     <string name="app_card__open_project_page">Proje sayfasını tarayıcıda aç</string>
+    <string name="ungoogled_chromium__eol_reason">Geliştirici şunları paylaştı: \"Sürümleri bir süre güncelleyemeyeceğim. Mümkünse lütfen bu arada [FFUpdater\'ın desteklediği] tarayıcılardan birini kullanın.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
 </resources>

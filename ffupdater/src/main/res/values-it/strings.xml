@@ -92,7 +92,8 @@
     <string name="go_back">Vai indietro</string>
     <string name="iceraven__description">Sicuramente non offerto da Mozilla! \n\nIceraven Browser è un browser per Android, basato sulla versione Fenix di Mozilla Firefox, GeckoView e Mozilla Android Components. \n\nIl nostro obiettivo è di essere un fork vicino al nuovo Firefox per Android che cerca di fornire agli utenti più opzioni, più opportunità di personalizzazione (tra cui una larga collezione di estensioni) e più informazioni sulle pagine che visitano e in che modo i loro browser interagiscono con quelle pagine.</string>
     <string name="iceraven__title">Iceraven Browser</string>
-    <string name="iceraven__warning">- Il manutentore non fornisce garanzie o assicurazioni di sicurezza o aggiornamenti e neanche stabilità.</string>
+    <string name="iceraven__warning">- Il manutentore non fornisce garanzie o assicurazioni di sicurezza o aggiornamenti e neanche stabilità.
+\n- Il progetto impiega più tempo del solito per fornire gli aggiornamenti di sicurezza.</string>
     <string name="infobox">Questo è un updater per browser rispettosi della privacy. Clicca sul pulsante Più per installare nuove app. Scorri verso il basso per cercare nuovi aggiornamenti. Per impostazione predefinita, l\'app verificherà regolarmente gli aggiornamenti in background, che verranno poi scaricati ed eventualmente installati. Fai clic sull\'ingranaggio per personalizzare il comportamento nelle impostazioni.
 \n
 \nUltima verifica riuscita degli aggiornamenti in background: %1$s</string>
@@ -246,4 +247,6 @@
     <string name="notification__no_update_check__text">Negli ultimi cinque giorni FFUpdater non è stato in grado di controllare gli aggiornamenti in background. Se lo smartphone è rimasto a lungo in modalità aereo, puoi ignorare questo messaggio. In caso contrario, clicca qui per visualizzare il rapporto di errore.</string>
     <string name="notification__no_update_check__channel_description">Canale di notifica per avvertire che nessun controllo di aggiornamento in background è stato eseguito con successo negli ultimi cinque giorni.</string>
     <string name="notification__no_update_check__title">Nessun controllo di aggiornamento in background andato a buon fine per cinque giorni</string>
+    <string name="app_card__open_project_page">Apri la pagina del progetto nel browser</string>
+    <string name="ungoogled_chromium__eol_reason">Lo sviluppatore ha scritto: \"Non sarò in grado di aggiornare le versioni per un po\' di tempo. Se possibile, utilizza uno dei browser [che FFUpdater supporta] nel frattempo.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
 </resources>

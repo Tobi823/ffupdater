@@ -1,0 +1,3 @@
+* Dank für den Weblate-Beitrag von: Oğuz Ersen und 109247019824
+* Wiederherstellung von Iceraven
+* Überarbeitung der Benutzeroberfläche, um den Download von EOL-Anwendungen zu ermöglichen

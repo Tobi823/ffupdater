@@ -1,0 +1,5 @@
+* Gracias a los colaboradores de Weblate: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS y Hin
+  Weisner
+* Mejorar el texto de notificación cuando la comprobación de la actualización en segundo plano falla durante cinco días seguidos (valor antiguo: dos
+  días, pero era demasiado bajo para algunos usuarios).
+* Mejorar el informe de fallos y la marca de tiempo de la última comprobación exitosa de actualización en segundo plano

@@ -229,7 +229,8 @@
     <string name="kiwi__title">Prohlížeč Kiwi Next</string>
     <string name="notification__download_error__channel_name">Upozornění na chyby při stahování na pozadí</string>
     <string name="notification__eol_apps__channel_name">Oznámení o zastaralých aplikacích</string>
-    <string name="iceraven__warning">- Správce neposkytuje žádnou záruku bezpečnosti, aktualizací nebo dokonce stability.</string>
+    <string name="iceraven__warning">- Správce neposkytuje žádnou záruku bezpečnosti, aktualizací nebo dokonce stability.
+\n- Poskytování aktualizací zabezpečení projektu trvá déle než obvykle.</string>
     <string name="settings__installer__native__title">Nativní instalátor</string>
     <string name="settings__foreground__hide_warning_buttons">Skrýt tlačítko s upozorněním pro nainstalované aplikace.</string>
     <string name="notification__download_error__descr">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, neváhejte ji nahlásit na stránkách notabug.org, GitHub nebo GitLab.</string>
@@ -252,4 +253,10 @@
     <string name="install_activity__different_installer_info__text">Pokud instalace často selhává, zkuste v nastavení zapnout \"nativní instalátor\".</string>
     <string name="settings__installer__native__summary">Náhradní řešení, pokud session instalátor ve smartphonu nefunguje. To se častěji stává u zařízení Samsung nebo Xiaomi.</string>
     <string name="notification__download_error__channel_descr">Zobrazí se, když selže stahování aktualizace na pozadí.</string>
+    <string name="app_card__open_project_page">Otevřít stránku projektu v prohlížeči</string>
+    <string name="notification__no_update_check__channel_name">Žádné kontroly aktualizací na pozadí</string>
+    <string name="notification__no_update_check__channel_description">Kanál oznámení pro upozornění, že v posledních pěti dnech neproběhla úspěšná kontrola aktualizací na pozadí.</string>
+    <string name="notification__no_update_check__title">Žádná úspěšná kontrola aktualizací na pozadí po dobu pěti dnů</string>
+    <string name="notification__no_update_check__text">V posledních pěti dnech nebyl program FFUpdater schopen kontrolovat aktualizace na pozadí. Pokud jste měli smartphone dlouho v režimu letadlo, můžete tuto zprávu ignorovat. V opačném případě klikněte sem pro zobrazení chybového hlášení.</string>
+    <string name="ungoogled_chromium__eol_reason">Vývojář napsal: \"Nějakou dobu nebudu moci aktualizovat verze. Pokud je to možné, používejte prosím do té doby některý z prohlížečů [které FFUpdater podporuje].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
 </resources>

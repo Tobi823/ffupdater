@@ -1,0 +1,3 @@
+* Poděkování za příspěvek na Weblate od: Oğuz Ersen a 109247019824
+* Obnova Iceravenu
+* Přepracované uživatelské rozhraní tak, aby umožňovalo stahování aplikací EOL

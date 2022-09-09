@@ -1,0 +1,3 @@
+* Un ringraziamento ai collaboratori di Weblate: Oğuz Ersen e 109247019824
+* Ripristinato Iceraven
+* Rielaborata l'interfaccia utente per consentire il download delle applicazioni EOL
