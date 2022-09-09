@@ -239,4 +239,7 @@
     <string name="notification__no_update_check__text">In the last five days FFUpdater was not able to check for updates in the background. If you had your smartphone in flight mode for a long time, you can ignore this message. If not, click here to view the error report.</string>
     <string name="app_card__open_project_page">Open project page in browser</string>
     <string name="ungoogled_chromium__eol_reason">"The developer posted: \"I won't be able to update the versions for some time. If possible please use one of the browsers [that FFUpdater supports] in the meantime.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123"</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Tor Browser for Android is the only official mobile browser supported by the Tor Project, developers of the world’s strongest tool for privacy and freedom online.</string>
+    <string name="tor_browser__source" translatable="false">https://www.torproject.org/download/#android</string>
 </resources>

@@ -39,7 +39,7 @@ abstract class AppBase {
     open val installableWithDefaultPermission: Boolean = true
     abstract val projectPage: String
     open val eolReason: Int? = null
-    abstract val category: Category
+    abstract val displayCategory: Category
 
     private val mutex = Mutex()
 
@@ -65,8 +65,6 @@ abstract class AppBase {
     }
 
     fun isEol() = (eolReason != null)
-
-    fun showAsInstallable() = installableWithDefaultPermission && !isEol()
 
     @AnyThread
     open fun appIsInstalled(context: Context, available: AppUpdateStatus) {

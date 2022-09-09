@@ -215,6 +215,17 @@ class DownloadApiChecker {
         assertTrue(result.firstReleaseHasAssets)
     }
 
+    @Test
+    fun torBrowser() {
+        val torBrowser = TorBrowser(ApiConsumer.INSTANCE, deviceAbiExtractor)
+        val result = runBlocking { torBrowser.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        val maxDays = 4 * 7
+        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+    }
+
     private fun verifyThatDownloadLinkAvailable(urlString: String) {
         val url = URL(urlString)
         val connection = url.openConnection() as HttpsURLConnection

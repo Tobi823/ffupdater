@@ -34,7 +34,7 @@ class Brave(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
     override val projectPage = "https://github.com/brave/brave-browser"
-    override val category = Category.BETTER_THAN_GOOGLE_CHROME
+    override val displayCategory = Category.BETTER_THAN_GOOGLE_CHROME
 
     @MainThread
     @Throws(NetworkException::class)

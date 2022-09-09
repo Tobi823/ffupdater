@@ -28,7 +28,7 @@ class Lockwise(
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
     override val projectPage = "https://github.com/mozilla-lockwise/lockwise-android"
     override val eolReason = R.string.lockwise__eol_reason
-    override val category = Category.EOL
+    override val displayCategory = Category.EOL
 
     @MainThread
     @Throws(NetworkException::class)

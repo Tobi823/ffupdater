@@ -66,7 +66,7 @@ class AddAppActivity : AppCompatActivity() {
         val mozillaBrowsers = findViewById<LinearLayout>(R.id.list_mozilla_browsers)
         mozillaBrowsers.removeAllViews()
         App.values()
-            .filter { it.impl.category == FROM_MOZILLA }
+            .filter { it.impl.displayCategory == FROM_MOZILLA }
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
@@ -75,7 +75,7 @@ class AddAppActivity : AppCompatActivity() {
         val firefoxBasedBrowsers = findViewById<LinearLayout>(R.id.list_firefox_based_browsers)
         firefoxBasedBrowsers.removeAllViews()
         App.values()
-            .filter { it.impl.category == BASED_ON_FIREFOX }
+            .filter { it.impl.displayCategory == BASED_ON_FIREFOX }
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
@@ -84,7 +84,7 @@ class AddAppActivity : AppCompatActivity() {
         val goodPrivacyBrowsers = findViewById<LinearLayout>(R.id.list_good_privacy_browsers)
         goodPrivacyBrowsers.removeAllViews()
         App.values()
-            .filter { it.impl.category == GOOD_PRIVACY_BROWSER }
+            .filter { it.impl.displayCategory == GOOD_PRIVACY_BROWSER }
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
@@ -93,7 +93,7 @@ class AddAppActivity : AppCompatActivity() {
         val betterThanChromeBrowsers = findViewById<LinearLayout>(R.id.list_better_than_chrome_browsers)
         betterThanChromeBrowsers.removeAllViews()
         App.values()
-            .filter { it.impl.category == BETTER_THAN_GOOGLE_CHROME }
+            .filter { it.impl.displayCategory == BETTER_THAN_GOOGLE_CHROME }
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }
@@ -102,7 +102,7 @@ class AddAppActivity : AppCompatActivity() {
         val eolBrowsers = findViewById<LinearLayout>(R.id.list_eol_browsers)
         eolBrowsers.removeAllViews()
         App.values()
-            .filter { it.impl.category == EOL }
+            .filter { it.impl.displayCategory == EOL }
             .filter { it.impl.installableWithDefaultPermission }
             .filterNot { it.impl.isInstalled(this) }
             .sortedBy { getString(it.impl.title) }

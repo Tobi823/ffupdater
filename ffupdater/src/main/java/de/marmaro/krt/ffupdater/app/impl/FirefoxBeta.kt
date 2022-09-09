@@ -33,7 +33,7 @@ class FirefoxBeta(
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
     override val projectPage =
         "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest"
-    override val category = Category.FROM_MOZILLA
+    override val displayCategory = Category.FROM_MOZILLA
 
     @MainThread
     @Throws(NetworkException::class)

@@ -33,7 +33,7 @@ class FirefoxRelease(
     override val supportedAbis = ARM32_ARM64_X86_X64
     override val projectPage =
         "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest"
-    override val category = Category.FROM_MOZILLA
+    override val displayCategory = Category.FROM_MOZILLA
 
     @MainThread
     @Throws(NetworkException::class)

@@ -33,7 +33,7 @@ class UngoogledChromium(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"
     override val eolReason = R.string.ungoogled_chromium__eol_reason
-    override val category = Category.EOL
+    override val displayCategory = Category.EOL
 
     @MainThread
     @Throws(NetworkException::class)
