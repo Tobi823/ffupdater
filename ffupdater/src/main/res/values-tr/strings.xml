@@ -269,4 +269,6 @@
     <string name="ungoogled_chromium__eol_reason">Geliştirici şunları paylaştı: \"Sürümleri bir süre güncelleyemeyeceğim. Mümkünse lütfen bu arada [FFUpdater\'ın desteklediği] tarayıcılardan birini kullanın.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Android için Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracının geliştiricileri olan Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.</string>
+    <string name="orbot__description">Orbot, diğer uygulamaların interneti daha güvenli kullanmasını sağlayan ücretsiz bir vekil uygulamasıdır. Orbot, internet trafiğinizi şifrelemek için Tor kullanır ve daha sonra dünyanın dört bir yanındaki bir dizi bilgisayardan geçirerek onu gizler. Tor, kişisel özgürlüğü ve mahremiyeti, gizli iş faaliyetlerini ve ilişkilerini ve trafik analizi olarak bilinen devlet güvenliğini tehdit eden bir tür ağ gözetimine karşı savunmanıza yardımcı olan özgür bir yazılım ve açık bir ağdır.</string>
+    <string name="orbot__title">Orbot: Android için Tor</string>
 </resources>
