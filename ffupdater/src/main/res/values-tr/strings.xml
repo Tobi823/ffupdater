@@ -267,4 +267,6 @@
     <string name="notification__no_update_check__title">Beş gün boyunca başarılı bir arka planda güncelleme denetimi yapılmadı</string>
     <string name="app_card__open_project_page">Proje sayfasını tarayıcıda aç</string>
     <string name="ungoogled_chromium__eol_reason">Geliştirici şunları paylaştı: \"Sürümleri bir süre güncelleyemeyeceğim. Mümkünse lütfen bu arada [FFUpdater\'ın desteklediği] tarayıcılardan birini kullanın.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Android için Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracının geliştiricileri olan Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.</string>
 </resources>
