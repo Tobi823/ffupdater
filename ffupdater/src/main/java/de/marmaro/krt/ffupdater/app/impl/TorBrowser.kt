@@ -15,7 +15,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 /**
  * https://www.torproject.org/download/#android
  * https://www.apkmirror.com/apk/the-tor-project/tor-browser/
- *
  */
 class TorBrowser(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
@@ -34,6 +33,19 @@ class TorBrowser(
     override val signatureHash = "20061f045e737c67375c17794cfedb436a03cec6bacb7cb9f96642205ca2cec8"
     override val projectPage = "https://www.torproject.org/download/#android"
     override val displayCategory = Category.BASED_ON_FIREFOX
+
+    override fun getInstalledVersion(context: Context): String? {
+        val rawVersion = super.getInstalledVersion(context)
+        if (rawVersion != null) {
+            val pattern = """\((.+)\)"""
+            val match = Regex(pattern).find(rawVersion)
+            checkNotNull(match) { "Can't find version with regex pattern '$pattern'." }
+            val version = match.groups[1]?.value
+            checkNotNull(version) { "Can't extract version from match." }
+            return version
+        }
+        return null
+    }
 
     @MainThread
     @Throws(NetworkException::class)

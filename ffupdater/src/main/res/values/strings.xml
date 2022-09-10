@@ -242,4 +242,6 @@
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser for Android is the only official mobile browser supported by the Tor Project, developers of the world’s strongest tool for privacy and freedom online.</string>
     <string name="tor_browser__source" translatable="false">https://www.torproject.org/download</string>
+    <string name="orbot__description">Orbot is a free proxy app that empowers other apps to use the internet more securely. Orbot uses Tor to encrypt your Internet traffic and then hides it by bouncing through a series of computers around the world. Tor is free software and an open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, confidential business activities and relationships, and state security known as traffic analysis.</string>
+    <string name="orbot__title">Orbot: Tor for Android</string>
 </resources>

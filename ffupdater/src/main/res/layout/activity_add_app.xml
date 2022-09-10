@@ -50,7 +50,7 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Good privacy browsers" />
+                android:text="Good Privacy Browsers" />
 
             <LinearLayout
                 android:id="@+id/list_good_privacy_browsers"
@@ -67,6 +67,19 @@
 
             <LinearLayout
                 android:id="@+id/list_better_than_chrome_browsers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other Applications" />
+
+            <LinearLayout
+                android:id="@+id/other_applications"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"

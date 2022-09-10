@@ -41,6 +41,7 @@
         <package android:name="org.mozilla.focus" />
         <package android:name="org.mozilla.klar" />
         <package android:name="org.mozilla.rocket" />
+        <package android:name="org.torproject.android" />
         <package android:name="org.torproject.torbrowser" />
         <package android:name="org.ungoogled.chromium.stable" />
         <package android:name="us.spotco.fennec_dos" />

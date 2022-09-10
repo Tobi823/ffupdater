@@ -99,6 +99,15 @@ class AddAppActivity : AppCompatActivity() {
             .sortedBy { getString(it.impl.title) }
             .forEach { addAppToUserInterface(betterThanChromeBrowsers, it) }
 
+        val otherApplications = findViewById<LinearLayout>(R.id.other_applications)
+        otherApplications.removeAllViews()
+        App.values()
+            .filter { it.impl.displayCategory == OTHER }
+            .filter { it.impl.installableWithDefaultPermission }
+            .filterNot { it.impl.isInstalled(this) }
+            .sortedBy { getString(it.impl.title) }
+            .forEach { addAppToUserInterface(otherApplications, it) }
+
         val eolBrowsers = findViewById<LinearLayout>(R.id.list_eol_browsers)
         eolBrowsers.removeAllViews()
         App.values()

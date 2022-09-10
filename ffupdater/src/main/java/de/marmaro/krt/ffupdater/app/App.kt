@@ -18,9 +18,10 @@ enum class App(appBase: AppBase) {
     KIWI(Kiwi()),
     LOCKWISE(Lockwise()),
     MULL(Mull()),
+    ORBOT(Orbot()),
+    TOR_BROWSER(TorBrowser()),
     UNGOOGLED_CHROMIUM(UngoogledChromium()),
     VIVALDI(Vivaldi()),
-    TOR_BROWSER(TorBrowser()),
     ;
 
     val impl: AppBase = appBase
