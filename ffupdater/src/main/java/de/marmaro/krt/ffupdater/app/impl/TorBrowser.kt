@@ -101,6 +101,6 @@ class TorBrowser(
 
     companion object {
         private const val LOG_TAG = "Tor Browser"
-        const val MAIN_URL = "https://www.torproject.org/download/#android"
+        const val MAIN_URL = "https://www.torproject.org/download"
     }
 }

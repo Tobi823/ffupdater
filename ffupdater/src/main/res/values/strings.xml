@@ -241,5 +241,5 @@
     <string name="ungoogled_chromium__eol_reason">"The developer posted: \"I won't be able to update the versions for some time. If possible please use one of the browsers [that FFUpdater supports] in the meantime.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123"</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser for Android is the only official mobile browser supported by the Tor Project, developers of the world’s strongest tool for privacy and freedom online.</string>
-    <string name="tor_browser__source" translatable="false">https://www.torproject.org/download/#android</string>
+    <string name="tor_browser__source" translatable="false">https://www.torproject.org/download</string>
 </resources>
