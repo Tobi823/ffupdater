@@ -243,6 +243,7 @@ class BackgroundSettingsHelperTest {
                 "MULL",
                 "UNGOOGLED_CHROMIUM",
                 "VIVALDI",
+                "TOR_BROWSER",
             )
         ).commit()
         Assertions.assertEquals(
