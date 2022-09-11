@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.entity.Category
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -33,7 +33,7 @@ class Orbot(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "a454b87a1847a89ed7f5e70fba6bba96f3ef29c26e0981204fe347bf231dfd5b"
     override val projectPage = "https://github.com/guardianproject/orbot"
-    override val displayCategory = Category.OTHER
+    override val displayCategory = DisplayCategory.OTHER
 
     @MainThread
     @Throws(NetworkException::class)

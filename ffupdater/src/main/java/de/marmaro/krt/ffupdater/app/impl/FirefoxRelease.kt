@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.entity.Category
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -33,7 +33,7 @@ class FirefoxRelease(
     override val supportedAbis = ARM32_ARM64_X86_X64
     override val projectPage =
         "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest"
-    override val displayCategory = Category.FROM_MOZILLA
+    override val displayCategory = DisplayCategory.FROM_MOZILLA
 
     @MainThread
     @Throws(NetworkException::class)

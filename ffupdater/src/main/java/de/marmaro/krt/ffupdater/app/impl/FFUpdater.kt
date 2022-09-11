@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.entity.Category
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -28,7 +28,7 @@ class FFUpdater(
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
     override val installableWithDefaultPermission = false
     override val projectPage = "https://github.com/Tobi823/ffupdater"
-    override val displayCategory = Category.OTHER
+    override val displayCategory = DisplayCategory.OTHER
 
     @MainThread
     @Throws(NetworkException::class)

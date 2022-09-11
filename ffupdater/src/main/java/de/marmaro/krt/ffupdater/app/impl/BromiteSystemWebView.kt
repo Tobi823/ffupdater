@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.entity.Category
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -34,7 +34,7 @@ class BromiteSystemWebView(
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
     override val installableWithDefaultPermission = false
     override val projectPage = "https://github.com/bromite/bromite"
-    override val displayCategory = Category.GOOD_PRIVACY_BROWSER
+    override val displayCategory = DisplayCategory.GOOD_PRIVACY_BROWSER
 
     @MainThread
     @Throws(NetworkException::class)

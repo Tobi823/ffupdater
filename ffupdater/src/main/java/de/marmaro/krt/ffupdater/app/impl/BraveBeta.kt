@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.entity.Category
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -34,7 +34,7 @@ class BraveBeta(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
     override val projectPage = "https://github.com/brave/brave-browser"
-    override val displayCategory = Category.BETTER_THAN_GOOGLE_CHROME
+    override val displayCategory = DisplayCategory.BETTER_THAN_GOOGLE_CHROME
 
     @MainThread
     @Throws(NetworkException::class)

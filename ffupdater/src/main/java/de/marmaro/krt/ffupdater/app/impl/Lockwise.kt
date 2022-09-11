@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.entity.Category
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -28,7 +28,7 @@ class Lockwise(
     override val signatureHash = "64d26b507078deba2fee42d6bd0bfad41d39ffc4e791f281028e5e73d3c8d2f2"
     override val projectPage = "https://github.com/mozilla-lockwise/lockwise-android"
     override val eolReason = R.string.lockwise__eol_reason
-    override val displayCategory = Category.EOL
+    override val displayCategory = DisplayCategory.EOL
 
     @MainThread
     @Throws(NetworkException::class)

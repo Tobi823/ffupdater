@@ -10,7 +10,7 @@ import com.google.gson.JsonSyntaxException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
-import de.marmaro.krt.ffupdater.app.entity.Category
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.ABI.*
@@ -39,7 +39,7 @@ abstract class AppBase {
     open val installableWithDefaultPermission: Boolean = true
     abstract val projectPage: String
     open val eolReason: Int? = null
-    abstract val displayCategory: Category
+    abstract val displayCategory: DisplayCategory
 
     private val mutex = Mutex()
 

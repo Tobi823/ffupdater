@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.entity.Category
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -31,7 +31,7 @@ class Mull(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "ff81f5be56396594eee70fef2832256e15214122e2ba9cedd26005ffd4bcaaa8"
     override val projectPage = "https://f-droid.org/en/packages/us.spotco.fennec_dos/"
-    override val displayCategory = Category.BASED_ON_FIREFOX
+    override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
 
     @MainThread
     @Throws(NetworkException::class)
