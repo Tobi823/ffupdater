@@ -1,0 +1,6 @@
+* Thanks for the Weblate contribution from: John doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem and Eduardo Malaspina
+* Add Chromium, Orbot, Tor,
+* Improve UI for adding new applications
+* Don't trust user CA on default (this can be disabled)
+* Bugfixes
+* Cleanup and refactor code
