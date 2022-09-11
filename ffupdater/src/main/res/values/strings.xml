@@ -252,4 +252,5 @@
     <string name="add_app_activity__title_better_than_google_chrome">Better than Google Chrome</string>
     <string name="add_app_activity__title_other_applications">Other Applications</string>
     <string name="add_app_activity__title_end_of_live_browser">End of live browser</string>
+    <string name="add_app_activity__add_new_application">Add new application</string>
 </resources>
