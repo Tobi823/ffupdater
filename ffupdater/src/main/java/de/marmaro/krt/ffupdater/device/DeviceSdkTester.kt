@@ -45,13 +45,6 @@ object DeviceSdkTester {
     }
 
     /**
-     * API level 30
-     */
-    fun supportsAndroid11(): Boolean {
-        return SDK_INT >= Build.VERSION_CODES.R
-    }
-
-    /**
      * API level 31
      */
     fun supportsAndroid12(): Boolean {

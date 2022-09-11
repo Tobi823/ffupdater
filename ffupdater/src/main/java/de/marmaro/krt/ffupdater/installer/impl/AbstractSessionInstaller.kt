@@ -198,14 +198,14 @@ abstract class AbstractSessionInstaller(
         )
     }
 
-    protected fun registerIntentReceiver(context: Context) {
+    private fun registerIntentReceiver(context: Context) {
         intentReceiver = object : BroadcastReceiver() {
             override fun onReceive(c: Context?, i: Intent?) = handleAppInstallationResult(c, i)
         }
         context.registerReceiver(intentReceiver, IntentFilter(intentNameForAppInstallationCallback))
     }
 
-    protected fun unregisterIntentReceiver(context: Context) {
+    private fun unregisterIntentReceiver(context: Context) {
         context.unregisterReceiver(intentReceiver)
         intentReceiver = null
     }

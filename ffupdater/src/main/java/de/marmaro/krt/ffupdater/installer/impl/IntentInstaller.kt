@@ -34,10 +34,11 @@ class IntentInstaller(
             return@lambda
         }
 
-        val installResult = activityResult.data?.extras?.getInt("android.intent.extra.INSTALL_RESULT")
-        val errorMessage = when (installResult) {
+
+        val bundle = activityResult.data?.extras
+        val errorMessage = when (val result = bundle?.getInt("android.intent.extra.INSTALL_RESULT")) {
             -11 -> context.getString(R.string.intent_installer__likely_storage_failure)
-            else -> "resultCode: ${activityResult.resultCode}, INSTALL_RESULT: $installResult"
+            else -> "resultCode: ${activityResult.resultCode}, INSTALL_RESULT: $result"
         }
         installationStatus.completeExceptionally(
             InstallationFailedException(
