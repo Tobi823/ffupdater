@@ -29,6 +29,7 @@ Browser which are better than Google Chrome:
   [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
   [Brave Browser (Nightly)](https://play.google.com/store/apps/details?id=com.brave.browser_nightly&gl=US)
   ([GitHub Repository](https://github.com/brave/brave-browser))
+- [Chromium](https://www.chromium.org/chromium-projects/)
 - [Kiwi Browser Next](https://github.com/kiwibrowser/src.next)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 
@@ -59,20 +60,21 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
 
 The applications are downloaded from these locations:
 
-- Brave Private Browser, Brave Browser (Beta), [Brave Browser (Nightly):
-  <https://api.github.com/repos/brave/brave-browser/releases/latest>
+- Brave Private Browser, Brave Browser (Beta), [Brave Browser (
+  Nightly): <https://api.github.com/repos/brave/brave-browser/releases/latest>
 - Bromite, Bromite SystemWebView: <https://api.github.com/repos/bromite/bromite/releases/latest>
+- Chromium: <https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android%2F>
 - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
+- Firefox Focus, Firefox
+  Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
+- Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
+- Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
 - Firefox for Android
   Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
-- Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
-- Firefox Focus, Firefox Klar:
-  <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
-- Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
 - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
 - Kiwi Browser Next: <https://api.github.com/repos/kiwibrowser/src.next/releases>
-- Vivaldi: <https://vivaldi.com/download/>
 - Tor Browser: <https://www.torproject.org/download>
+- Vivaldi: <https://vivaldi.com/download/>
 
 ## Other distribution channels
 

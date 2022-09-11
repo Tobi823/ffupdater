@@ -144,6 +144,5 @@ class Chromium(
 
         @Suppress("SpellCheckingInspection")
         const val LATEST_REVISION_URL = "${BASE_URL}/Android%2FLAST_CHANGE?alt=media"
-
     }
 }
