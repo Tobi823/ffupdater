@@ -129,7 +129,7 @@
     <string name="session_installer__status_failure_incompatible">Операція не вдалася, оскільки вона принципово несумісна з цим пристроєм. Наприклад, для програми може знадобитися апаратна функція, якої не існує, у ній може бути відсутній рідний код для ABI, що підтримується пристроєм, або потрібна новіша версія SDK тощо.</string>
     <string name="session_installer__status_failure_invalid">Не вдалося виконати операцію, оскільки один або кілька файлів .apk були недійсними. Наприклад, вони можуть бути неправильно сформованими, пошкодженими, неправильно підписаними, невідповідними тощо.</string>
     <string name="session_installer__status_failure_storage">Операцію не вдалося виконати через проблеми зі зберіганням. Наприклад, на пристрої може не вистачати місця, або зовнішній носій може бути недоступний. Користувач може допомогти звільнити місце або вставити різні зовнішні носії.</string>
-    <string name="settings__activity_label">Налаштування</string>
+    <string name="settings_activity__label">Налаштування</string>
     <string name="settings__background__download__enabled__summary">Коли буде виявлено оновлення, завантажте його. </string>
     <string name="settings__background__download__enabled__title">Завантажте оновлення програми</string>
     <string name="settings__background__download__metered__summary">Не рекомендується користувачам з обмеженим мобільним трафіком.</string>

@@ -134,7 +134,7 @@
     <string name="session_installer__status_failure_incompatible">L\'opération a échoué car elle est fondamentalement incompatible avec cet appareil. Par exemple, l\'application peut nécessiter une fonctionnalité matérielle qui n\'existe pas, il peut manquer du code natif pour les ABI prises en charge par l\'appareil, ou elle nécessite une version plus récente du SDK, etc.</string>
     <string name="session_installer__status_failure_invalid">L\'opération a échoué car un ou plusieurs des APK n\'étaient pas valides. Par exemple, ils peuvent être malformés, corrompus, mal signés, mal assortis, etc.</string>
     <string name="session_installer__status_failure_storage">L\'opération a échoué en raison de problèmes de stockage. Par exemple, l\'appareil peut manquer d\'espace, ou les supports externes peuvent être indisponibles. L\'utilisateur peut aider à libérer de l\'espace ou à insérer un autre support externe.</string>
-    <string name="settings__activity_label">Réglages</string>
+    <string name="settings_activity__label">Réglages</string>
     <string name="settings__background__download__enabled__summary">Lorsqu\'une mise à jour est détectée, téléchargez-la. Cela accélérera ensuite le processus de mise à jour.</string>
     <string name="settings__background__download__enabled__title">Télécharger les mises à jour de l\'application</string>
     <string name="settings__background__download__metered__summary">Non recommandé pour les utilisateurs disposant de peu de données mobiles.</string>

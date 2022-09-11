@@ -38,7 +38,7 @@
     <string name="download_activity__downloaded_application_from">Ladattu sovellus kohteesta:</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="settings__activity_label">Asetukset</string>
+    <string name="settings_activity__label">Asetukset</string>
     <string name="running_downloads_dialog__yes">Kyllä</string>
     <string name="running_downloads_dialog__title">Käynnissä olevat lataukset</string>
     <string name="request_installation_permission_dialog__abort">Peru</string>

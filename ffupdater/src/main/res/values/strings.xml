@@ -162,7 +162,7 @@
     <string name="session_installer__status_failure_incompatible">The operation failed because it is fundamentally incompatible with this device. For example, the app may require a hardware feature that doesn\'t exist, it may be missing native code for the ABIs supported by the device, or it requires a newer SDK version, etc.</string>
     <string name="session_installer__status_failure_invalid">The operation failed because one or more of the APKs was invalid. For example, they might be malformed, corrupt, incorrectly signed, mismatched, etc.</string>
     <string name="session_installer__status_failure_storage">The operation failed because of storage issues. For example, the device may be running low on space, or external media may be unavailable. The user may be able to help free space or insert different external media.</string>
-    <string name="settings__activity_label">Settings</string>
+    <string name="settings_activity__label">Settings</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Delete the downloaded update if the installation fails.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Delete the downloaded update if the installation is successful.</string>
     <string name="settings__background__download__enabled__summary">When an update is detected, download it. This will later speed up the update process.</string>
@@ -244,4 +244,6 @@
     <string name="tor_browser__source" translatable="false">https://www.torproject.org/download</string>
     <string name="orbot__description">Orbot is a free proxy app that empowers other apps to use the internet more securely. Orbot uses Tor to encrypt your Internet traffic and then hides it by bouncing through a series of computers around the world. Tor is free software and an open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, confidential business activities and relationships, and state security known as traffic analysis.</string>
     <string name="orbot__title">Orbot: Tor for Android</string>
+    <string name="add_app_activity__label">Add New Application</string>
+    <string name="crash_report_activity__label">Crash Reporter</string>
 </resources>

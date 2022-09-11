@@ -132,7 +132,7 @@
     <string name="session_installer__status_failure_incompatible">Operace selhala, protože je s tímto zařízením nekompatibilní. Například aplikace může vyžadovat hardwarovou funkci, která neexistuje, může postrádat nativní kód pro ABI podporované zařízením nebo vyžaduje novější verzi SDK aj.</string>
     <string name="session_installer__status_failure_invalid">Operace selhala, protože jeden nebo více balíčků APK byly neplatné. Například špatně vytvořené, poškozené, nesprávně podepsané, neschodující se aj.</string>
     <string name="session_installer__status_failure_storage">Operace selhala, kvůli problémům s umístěním. Například nemusí být v zařízení dostatek volného místa, nebo není k dispozici externí úložiště. Můžete zkusit uvolnit místo v zařízení nebo vložit externí úložiště.</string>
-    <string name="settings__activity_label">Nastavení</string>
+    <string name="settings_activity__label">Nastavení</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Smazat staženou aktualizaci, pokud instalace selhá.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Smazat staženou aktualizaci, pokud je instalace úspěšná.</string>
     <string name="settings__background__download__enabled__summary">Když je nalezena aktualizace, stáhne se. Urychlí se tak pozdější proces aktualizace.</string>

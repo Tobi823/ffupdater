@@ -106,7 +106,7 @@
     <string name="session_installer__require_user_interaction">Krev brukerinteraksjon.</string>
     <string name="session_installer__status_failure">Operasjonen mislyktes på generisk måte. Systemet vil alltid prøve å tilby en mer spesifikk grunn, men i sjeldne tilfeller kan det altså gå slik.</string>
     <string name="session_installer__status_failure_aborted">Operasjonen mislyktes fordi den ble aktivt avbrutt. Brukeren kan for eksempel ha avslått forespurte tilganger, eller økten kan ha blitt forlatt.</string>
-    <string name="settings__activity_label">Innstillinger</string>
+    <string name="settings_activity__label">Innstillinger</string>
     <string name="settings__background__download__enabled__title">Last ned programoppgraderinger</string>
     <string name="settings__background__download__metered__summary">Ikke anbefalt for brukere med begrenset mobildata.</string>
     <string name="settings__background__download__metered__title">Last ned programoppgraderinger på kvotebaserte nettverk</string>

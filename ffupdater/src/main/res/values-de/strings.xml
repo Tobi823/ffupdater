@@ -160,7 +160,7 @@
     <string name="session_installer__status_failure_incompatible">Der Vorgang ist fehlgeschlagen, weil er mit diesem Gerät grundsätzlich nicht kompatibel ist. Die App kann zum Beispiel eine Hardwarefunktion erfordern, die nicht vorhanden ist, es kann nativer Code für die vom Gerät unterstützten ABIs fehlen, oder sie erfordert eine neuere SDK-Version usw.</string>
     <string name="session_installer__status_failure_invalid">Der Vorgang ist fehlgeschlagen, weil eine oder mehrere der APKs ungültig waren. Sie könnten z. B. missgebildet, beschädigt, falsch signiert, nicht übereinstimmend usw. sein.</string>
     <string name="session_installer__status_failure_storage">Der Vorgang ist aufgrund von Speicherproblemen fehlgeschlagen. Beispielsweise kann der Speicherplatz auf dem Gerät knapp werden, oder es sind keine externen Medien verfügbar. Der Benutzer kann möglicherweise helfen, Speicherplatz freizugeben oder andere externe Medien einzulegen.</string>
-    <string name="settings__activity_label">Einstellungen</string>
+    <string name="settings_activity__label">Einstellungen</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Lösche die heruntergeladene Datei, wenn die Installation nicht erfolgreich war.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Lösche das heruntergeladene Update, wenn die Installation erfolgreich war.</string>
     <string name="settings__background__download__enabled__summary">Wenn ein Update gefunden wird, wird es heruntergeladen und für später zwischengespeichert.</string>

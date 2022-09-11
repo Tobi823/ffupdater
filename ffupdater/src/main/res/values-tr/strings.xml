@@ -189,7 +189,7 @@
     <string name="session_installer__status_failure_incompatible">Bu aygıtla temelde uyumlu olmadığı için işlem başarısız oldu. Örneğin, uygulama mevcut olmayan bir donanım özelliği gerektirebilir, aygıt tarafından desteklenen ABI\'ler için yerel kod eksik olabilir veya daha yeni bir SDK sürümü vb. gerektirebilir.</string>
     <string name="session_installer__status_failure_invalid">APK\'lardan biri veya daha fazlası geçersiz olduğundan işlem başarısız oldu. Örneğin, hatalı biçimlendirilmiş, bozuk, yanlış imzalanmış, uyumsuz vb. olabilir.</string>
     <string name="session_installer__status_failure_storage">İşlem, depolama sorunları nedeniyle başarısız oldu. Örneğin, aygıtın alanı azalıyor veya harici ortam kullanılamıyor olabilir. Kullanıcı, boş alan sağlamaya veya farklı harici ortamlar yerleştirmeye yardımcı olabilir.</string>
-    <string name="settings__activity_label">Ayarlar</string>
+    <string name="settings_activity__label">Ayarlar</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Kurulum başarısız olursa indirilen güncellemeyi sil.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Kurulum başarılı olursa indirilen güncellemeyi sil.</string>
     <string name="settings__background__download__enabled__summary">Bir güncelleme algılandığında indirin. Bu daha sonra güncelleme işlemini hızlandıracaktır.</string>

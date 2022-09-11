@@ -181,7 +181,7 @@
     <string name="session_installer__status_failure_incompatible">L\'operazione è fallita perché è fondamentalmente incompatibile con questo dispositivo. Ad esempio, l\'app potrebbe richiedere una funzione hardware che non esiste, potrebbe mancare il codice nativo per le ABI supportate dal dispositivo, o richiede una versione più recente del SDK, ecc.</string>
     <string name="session_installer__status_failure_invalid">L\'operazione è fallita perché un APK o più non era valido. Ad esempio, potrebbero essere malformati, corrotti, firmati in modo errato, non corrispondenti, ecc.</string>
     <string name="session_installer__status_failure_storage">L\'operazione è fallita a causa di problemi di archiviazione. Ad esempio, il dispositivo potrebbe avere poca memoria, o supporti esterni potrebbero non essere disponibili. L\'utente potrebbe essere in grado di aiutare liberando spazio o inserire diversi supporti esterni.</string>
-    <string name="settings__activity_label">Impostazioni</string>
+    <string name="settings_activity__label">Impostazioni</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Elimina l\'aggiornamento scaricato se l\'installazione non riesce.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Elimina l\'aggiornamento scaricato se l\'installazione ha esito positivo.</string>
     <string name="settings__background__download__enabled__summary">Quando viene rilevato un aggiornamento, scaricalo. Questo accelererà in seguito il processo di aggiornamento.</string>

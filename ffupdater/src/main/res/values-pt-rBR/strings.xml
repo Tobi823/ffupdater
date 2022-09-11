@@ -159,7 +159,7 @@
     <string name="session_installer__status_failure_incompatible">O processo falhou porque é fundamentalmente incompatível com este dispositivo. Por exemplo, o app pode requerer um recurso de hardware que não existe, pode estar faltando código nativo para as ABIs suportadas pelo dispositivo ou requerer uma versão mais recente do SDK, etc.</string>
     <string name="session_installer__status_failure_invalid">O processo falhou porque um ou mais dos APKs era inválido. Por exemplo, eles podem ser malformados, corruptos, assinados incorretamente, desajustados, etc.</string>
     <string name="session_installer__status_failure_storage">O processo falhou por causa de problemas com armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço ou a memória  externa pode não estar disponível. Você pode liberar espaço ou inserir outra mídia externa.</string>
-    <string name="settings__activity_label">Configurações</string>
+    <string name="settings_activity__label">Configurações</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Excluir a atualização baixada se a instalação falhar.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Excluir a atualização baixada se a instalação for bem sucedida.</string>
     <string name="settings__background__download__enabled__summary">Quando uma atualização é detectada, faça o download. Isto irá mais tarde acelerar o processo de atualização.</string>

@@ -176,7 +176,7 @@
     <string name="session_installer__status_failure_incompatible">Операция не удалась, потому что она принципиально несовместима с данным устройством. Например, приложение может требовать несуществующую аппаратную функцию, в нем может отсутствовать встроенный код для ABI, поддерживаемых устройством, или требуется более новая версия SDK и т.д.</string>
     <string name="session_installer__status_failure_invalid">Операция не удалась, потому что один или несколько APK недействительны. Например, они могут быть неправильно сформированы, повреждены, неправильно подписаны, несовместимы и т. д.</string>
     <string name="session_installer__status_failure_storage">Операция не удалась из-за проблем с хранением данных. Например, на устройстве может быть мало места, или внешний носитель может быть недоступен. Пользователь может помочь освободить место или вставить другой внешний носитель.</string>
-    <string name="settings__activity_label">Настройки</string>
+    <string name="settings_activity__label">Настройки</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Удалить обновление, если установка не удалась.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Удалить обновление, если установка прошла успешно.</string>
     <string name="settings__background__download__enabled__summary">При обнаружении обновления загрузите его. Это впоследствии ускорит процесс обновления.</string>

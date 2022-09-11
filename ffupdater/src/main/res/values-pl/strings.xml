@@ -128,7 +128,7 @@
     <string name="session_installer__status_failure_incompatible">Operacja nie powiodła się, ponieważ jest zasadniczo niekompatybilna z tym urządzeniem. Na przykład, aplikacja może wymagać funkcji sprzętowej, która nie istnieje, może brakować jej natywnego kodu dla ABI obsługiwanych przez urządzenie lub wymaga nowszej wersji SDK itp.</string>
     <string name="session_installer__status_failure_invalid">Operacja nie powiodła się, ponieważ jeden lub więcej pakietów APK był nieprawidłowy. Na przykład, mogą one być nieprawidłowo sformowane, uszkodzone, nieprawidłowo podpisane, niedopasowane itp.</string>
     <string name="session_installer__status_failure_storage">Operacja nie powiodła się z powodu problemów z pamięcią masową. Na przykład na urządzeniu może brakować miejsca lub nośniki zewnętrzne mogą być niedostępne. Użytkownik może pomóc w zwolnieniu miejsca lub włożeniu innego nośnika zewnętrznego.</string>
-    <string name="settings__activity_label">Ustawienia</string>
+    <string name="settings_activity__label">Ustawienia</string>
     <string name="settings__background__download__enabled__summary">Gdy zostanie wykryta aktualizacja, pobierz ją. Przyspieszy to później proces aktualizacji.</string>
     <string name="settings__background__download__enabled__title">Pobierz aktualizacje aplikacji</string>
     <string name="settings__background__download__metered__summary">Nie zalecane dla użytkowników z ograniczoną ilością danych komórkowych.</string>

@@ -13,16 +13,16 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
-    <!--
- Necessary for gaining read/write access to "Android/data/de.marmaro.krt.ffupdater/files/"
+    <!-- Necessary for gaining read/write access to "Android/data/de.marmaro.krt.ffupdater/files/"
          on older devices. For Amazon devices, I have to download the APK files into this folder
          or I'll get a "Permission Denial: reading ... DownloadProvider uri ... requires
-         android.permission.ACCESS_ALL_DOWNLOADS or grantUriPermission()" exception.
-    -->
+         android.permission.ACCESS_ALL_DOWNLOADS or grantUriPermission()" exception. -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" /> <!-- If FFUpdater wants to check if an app is installed, this app must be listed here -->
+        tools:ignore="ScopedStorage" />
+
+    <!-- If FFUpdater wants to check if an app is installed, this app must be listed here -->
     <!-- https://developer.android.com/about/versions/11/privacy/package-visibility -->
     <queries>
         <package android:name="com.brave.browser" />
@@ -58,16 +58,16 @@
         tools:targetApi="S">
         <activity
             android:name=".AddAppActivity"
-            android:label="Add New Application"
+            android:label="@string/add_app_activity__label"
             android:launchMode="singleTop"
             android:theme="@style/add_app__theme" />
         <activity
             android:name=".CrashReportActivity"
-            android:label="Crash Reporter"
+            android:label="@string/crash_report_activity__label"
             android:theme="@style/crash_report__theme" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/settings__activity_label"
+            android:label="@string/settings_activity__label"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".DownloadActivity"

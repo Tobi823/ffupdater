@@ -181,7 +181,7 @@
     <string name="session_installer__status_failure_incompatible">操作失败，因为软件包从根本上与此设备不兼容。例如，应用程序可能需要不存在的硬件特性、可能缺少设备支持的 ABI 的原生代码，或者需要更新的 SDK 版本等。</string>
     <string name="session_installer__status_failure_invalid">操作失败，因为一个或多个 APK 无效。例如，它们可能格式不正确、损坏、签名错误或签名不匹配等。</string>
     <string name="session_installer__status_failure_storage">操作由于存储问题失败。例如，设备可能存储空间不足，或者外部媒介不可用。用户或许能帮助释放存储空间或插入其他的的外部媒介。</string>
-    <string name="settings__activity_label">设置</string>
+    <string name="settings_activity__label">设置</string>
     <string name="settings__b_f__delete_cache_if_install_failed">应用安装失败后删除已下载的更新。</string>
     <string name="settings__b_f__delete_cache_if_install_successful">应用安装成功后删除已下载的更新。</string>
     <string name="settings__background__download__enabled__summary">当检测到更新时下载此更新。这样做将在以后加快更新过程。</string>

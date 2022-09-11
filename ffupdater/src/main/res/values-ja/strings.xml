@@ -121,7 +121,7 @@
     <string name="session_installer__status_failure_incompatible">このデバイスと根本的に互換性がないため、操作に失敗しました。たとえば、アプリが存在しないハードウェア機能を必要とする、デバイスがサポートするABIのネイティブコードがない、または新しいSDKバージョンを必要とする、などです。</string>
     <string name="session_installer__status_failure_invalid">1 つ以上の APK が無効であったため、操作に失敗しました。たとえば、不正な形式、破損、不正な署名、不一致などです。</string>
     <string name="session_installer__status_failure_storage">ストレージに問題があるため、操作に失敗しました。例えば、デバイスの容量が不足している、または外部メディアが使用できない可能性があります。ユーザーは、空き容量を増やすか、別の外部メディアを挿入することができるかもしれません。</string>
-    <string name="settings__activity_label">設定</string>
+    <string name="settings_activity__label">設定</string>
     <string name="settings__background__download__enabled__summary">アップデートが検出されたら、ダウンロードしてください。そうすることで、後にアップデートの処理が速くなります。</string>
     <string name="settings__background__download__enabled__title">アプリのアップデートをダウンロードする</string>
     <string name="settings__background__download__metered__summary">モバイルデータを制限されているユーザーにはお勧めできません。</string>
