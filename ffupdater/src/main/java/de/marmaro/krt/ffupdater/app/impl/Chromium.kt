@@ -28,7 +28,7 @@ class Chromium(
     override val downloadSource = R.string.chromium__source
     override val icon = R.mipmap.ic_logo_chromium
     override val minApiLevel = Build.VERSION_CODES.M
-    override val supportedAbis = ARM32_ARM64_X86_X64
+    override val supportedAbis = ARM32_ARM64
     override val signatureHash = "32a2fc74d731105859e5a85df16d95f102d85b22099b8064c5d8915c61dad1e0"
     override val projectPage = "https://www.chromium.org/chromium-projects/"
     override val displayCategory = DisplayCategory.BETTER_THAN_GOOGLE_CHROME
@@ -63,7 +63,7 @@ class Chromium(
 
     private suspend fun findStorageObject(context: Context, revision: String): StorageObject {
         val url = "https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o?delimiter=/" +
-                "&prefix=Android/${revision}/chrome-android.zi" +
+                "&prefix=Android/${revision}/chrome-android" +
                 "&fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken"
 
         val storageObjects = try {

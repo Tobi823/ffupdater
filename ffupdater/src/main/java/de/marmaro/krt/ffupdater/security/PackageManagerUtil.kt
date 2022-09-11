@@ -56,15 +56,19 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
     @Suppress("DEPRECATION")
     @SuppressLint("PackageManagerGetSignatures")
     fun getInstalledAppInfo(app: AppBase): Signature {
-        if (DeviceSdkTester.supportsAndroid9()) {
-            packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
-                ?.signingInfo
-                ?.let { return extractSignature(it) }
-        }
+        try {
+            if (DeviceSdkTester.supportsAndroid9()) {
+                packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
+                    ?.signingInfo
+                    ?.let { return extractSignature(it) }
+            }
 
-        packageManager.getPackageInfo(app.packageName, GET_SIGNATURES)
-            ?.signatures
-            ?.let { return extractSignature(it) }
+            packageManager.getPackageInfo(app.packageName, GET_SIGNATURES)
+                ?.signatures
+                ?.let { return extractSignature(it) }
+        } catch (e: PackageManager.NameNotFoundException) {
+            throw RuntimeException("app.packageName is not whitelisted in AndroidManifest.xml", e)
+        }
 
         throw IllegalArgumentException("Can't extract the signature from app ${app.packageName}.")
     }
