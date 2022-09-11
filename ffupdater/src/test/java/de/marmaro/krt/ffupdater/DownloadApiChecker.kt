@@ -222,7 +222,18 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 4 * 7
+        val maxDays = 8 * 7
+        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+    }
+
+    @Test
+    fun orbot() {
+        val orbot = Orbot(GithubConsumer.INSTANCE, deviceAbiExtractor)
+        val result = runBlocking { orbot.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        val maxDays = 8 * 7
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
     }
 

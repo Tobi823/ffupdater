@@ -122,6 +122,7 @@ class VersionCompareHelperTest {
     @Test
     fun isAvailableVersionEqual_differentVersion_firefoxBeta_returnTrue() {
         assertFalse(VersionCompareHelper.isAvailableVersionEqual("86.0.0-beta.3", "86.0.0-beta.4"))
+        assertFalse(VersionCompareHelper.isAvailableVersionEqual("86.0.0b3", "86.0.0b4"))
         assertFalse(VersionCompareHelper.isAvailableVersionEqual("86.0.0-beta.3", "91.0.0-beta.3"))
     }
 
