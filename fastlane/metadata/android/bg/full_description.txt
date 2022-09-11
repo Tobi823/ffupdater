@@ -4,7 +4,8 @@
 - Firefox Browser, Firefox за Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
-- Mull Browser
+- Четецът Мул
+- Четецът Тор
 
 поверителни четци:
 - Bromite, Bromite SystemWebView
@@ -14,7 +15,7 @@
 - Kiwi Browser Next
 - Vivaldi
 
-FFUpdater проверява за обновявания във фонов режим и ги изтегля. При устройства с Android 12+ или достъп до суперпотребителя FFUpdater може да обновява приложенията и без действие от страна на потребителя.
+FFUpdater проверява за обновявания във фонов режим и ги изтегля. При устройства с Android 12+ или достъп до суперпотребителя, FFUpdater може да обновява приложенията и без действие от страна на потребителя.
 
 Посетете https://notabug.org/Tobiwan/ffupdater/src/master/README.md за повече информация.
 

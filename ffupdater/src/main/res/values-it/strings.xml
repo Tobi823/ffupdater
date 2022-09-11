@@ -11,6 +11,11 @@
 \n%2$s
 \n
 \nVuoi ancora installare %1$s\?</item>
+        <item quantity="many">%1$s ha i seguenti problemi:
+\n
+\n%2$s
+\n
+\nVuoi ancora installare %1$s\?</item>
         <item quantity="other">%1$s ha i seguenti problemi:
 \n
 \n%2$s
@@ -20,6 +25,9 @@
     <string name="app_warning_before_installation_dialog__title">Avvertimento</string>
     <plurals name="app_warning_dialog__message">
         <item quantity="one">%1$s ha il seguente problema:
+\n
+\n%2$s</item>
+        <item quantity="many">%1$s ha i seguenti problemi:
 \n
 \n%2$s</item>
         <item quantity="other">%1$s ha i seguenti problemi:
@@ -249,4 +257,6 @@
     <string name="notification__no_update_check__title">Nessun controllo di aggiornamento in background andato a buon fine per cinque giorni</string>
     <string name="app_card__open_project_page">Apri la pagina del progetto nel browser</string>
     <string name="ungoogled_chromium__eol_reason">Lo sviluppatore ha scritto: \"Non sarò in grado di aggiornare le versioni per un po\' di tempo. Se possibile, utilizza uno dei browser [che FFUpdater supporta] nel frattempo.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Tor Browser per Android è l\'unico browser per dispositivi mobile supportato ufficialmente da Tor Project, sviluppatori del più potente strumento al mondo per la privacy e la libertà online.</string>
 </resources>
