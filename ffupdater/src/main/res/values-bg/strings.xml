@@ -269,4 +269,13 @@
     <string name="tor_browser__description">Четецът Тор за Андроид е единственият официален мобилен четец, поддържан от проекта Тор, разработчик на най-добрия в света инструмент за защита на личния живот и свободата онлайн.</string>
     <string name="orbot__title">Орбот: Тор за Андроид</string>
     <string name="orbot__description">Орбот е безплатно приложение за мрежов посредник, което дава възможност на други приложения да използват интернет по-сигурно. Орбот използва мрежата на Тор, за да шифрова трафика ви в интернет, и след това го скрива, като препраща през поредица от компютри по целия свят. Тор е безплатен софтуер и отворена мрежа, които ви помагат да се защитите от форма на мрежово наблюдение, която застрашава личната ви свобода и неприкосновеност на личния ви живот, поверителните бизнес дейности и взаимоотношения и държавната сигурност, известна като анализ на трафика.</string>
+    <string name="crash_report_activity__label">Доклад за срив</string>
+    <string name="add_app_activity__title_from_mozilla">От Мозила</string>
+    <string name="add_app_activity__title_based_on_firefox">Базирани на Firefox</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Добри поверителни четци</string>
+    <string name="add_app_activity__title_better_than_google_chrome">По-добри от Гугъл Хром</string>
+    <string name="add_app_activity__title_other_applications">Други приложения</string>
+    <string name="add_app_activity__title_end_of_live_browser">Четец, изведен от употреба</string>
+    <string name="add_app_activity__label">Добавяне на приложение</string>
+    <string name="add_app_activity__add_new_application">Добавяне на приложение</string>
 </resources>
