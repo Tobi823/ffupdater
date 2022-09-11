@@ -22,6 +22,7 @@ enum class App(appBase: AppBase) {
     TOR_BROWSER(TorBrowser()),
     UNGOOGLED_CHROMIUM(UngoogledChromium()),
     VIVALDI(Vivaldi()),
+    CHROMIUM(Chromium()),
     ;
 
     val impl: AppBase = appBase

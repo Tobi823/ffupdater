@@ -255,4 +255,8 @@
     <string name="add_app_activity__add_new_application">Add new application</string>
     <string name="settings__network__trust_user_cas__summary">Enable if data traffic should be inspected and altered by other apps. If you unsure, keep this option disabled.</string>
     <string name="settings__network__trust_user_cas__title">Trust user-added CAs</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__description">Chromium is an open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web. This site contains design documents, architecture overviews, testing information, and more to help you learn to build and work with the Chromium source code.</string>
+    <string name="chromium__warning">- Chromium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
+    <string name="chromium__source" translatable="false">https://storage.googleapis.com/chromium-browser-snapshots</string>
 </resources>

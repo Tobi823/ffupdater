@@ -180,7 +180,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         val availableResult = updateResult.latestUpdate
-        if (appCache.isAvailable(context, availableResult)) {
+        if (appCache.isLatestAppVersionCached(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return true
         }
@@ -192,7 +192,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
         BackgroundNotificationBuilder.showDownloadIsRunning(context, app, null, null)
 
-        val file = appCache.getFile(context)
+        val file = appCache.getApkFile(context)
         return try {
             downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
             BackgroundNotificationBuilder.hideDownloadIsRunning(context, app)
@@ -237,7 +237,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     private suspend fun installApplication(app: App) {
         val appCache = AppCache(app)
-        val file = appCache.getFile(context)
+        val file = appCache.getApkFile(context)
         require(file.exists()) { "AppCache has no cached APK file" }
 
         withContext(Dispatchers.Main) {

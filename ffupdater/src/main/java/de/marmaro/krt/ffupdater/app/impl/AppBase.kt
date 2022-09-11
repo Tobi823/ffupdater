@@ -24,6 +24,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.util.zip.ZipInputStream
 
 
 abstract class AppBase {
@@ -40,6 +41,7 @@ abstract class AppBase {
     abstract val projectPage: String
     open val eolReason: Int? = null
     abstract val displayCategory: DisplayCategory
+    open val fileNameInZipArchive: String? = null
 
     private val mutex = Mutex()
 
@@ -65,6 +67,8 @@ abstract class AppBase {
     }
 
     fun isEol() = (eolReason != null)
+
+    fun isDownloadAnApkFile() = (fileNameInZipArchive == null)
 
     @AnyThread
     open fun appIsInstalled(context: Context, available: AppUpdateStatus) {
@@ -156,6 +160,28 @@ abstract class AppBase {
     ): Boolean {
         val installedVersion = getInstalledVersion(context) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
+    }
+
+    open suspend fun convertZipArchiveToApkFile(zipArchive: File, apkFile: File) {
+        require(!isDownloadAnApkFile())
+        ZipInputStream(zipArchive.inputStream().buffered()).use { zip ->
+            while (true) {
+                val entry = zip.nextEntry
+                    ?: throw RuntimeException("Zip archive does not contain '$fileNameInZipArchive'.")
+
+                if (entry.name == fileNameInZipArchive) {
+                    apkFile.outputStream().buffered().use { apk ->
+                        zip.copyTo(apk)
+                    }
+                    @Suppress("BlockingMethodInNonBlockingContext")
+                    zip.closeEntry()
+                    return
+                }
+
+                @Suppress("BlockingMethodInNonBlockingContext")
+                zip.closeEntry()
+            }
+        }
     }
 
     companion object {

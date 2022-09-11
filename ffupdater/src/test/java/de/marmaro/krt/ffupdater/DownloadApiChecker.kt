@@ -237,6 +237,17 @@ class DownloadApiChecker {
         assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
     }
 
+    @Test
+    fun chromium() {
+        val orbot = Chromium(ApiConsumer.INSTANCE)
+        val result = runBlocking { orbot.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        val maxDays = 8 * 7
+        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+    }
+
     private fun verifyThatDownloadLinkAvailable(urlString: String) {
         val url = URL(urlString)
         val connection = url.openConnection() as HttpsURLConnection

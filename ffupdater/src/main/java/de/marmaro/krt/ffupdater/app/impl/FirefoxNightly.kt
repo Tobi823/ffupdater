@@ -110,10 +110,7 @@ class FirefoxNightly(
                 .putString(INSTALLED_SHA256_HASH, available.fileHash?.hexValue)
                 .apply()
         } catch (e: PackageManager.NameNotFoundException) {
-            throw Exception(
-                "app should be installed because this method was called - but the app " +
-                        "is not installed", e
-            )
+            throw e
         }
     }
 
