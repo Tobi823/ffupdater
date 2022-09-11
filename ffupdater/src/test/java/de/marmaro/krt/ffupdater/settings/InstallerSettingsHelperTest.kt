@@ -1,11 +1,8 @@
 package de.marmaro.krt.ffupdater.settings
 
-import android.content.Context
 import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.installer.entity.Installer
-import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -18,15 +15,11 @@ import java.util.stream.Stream
 @ExtendWith(MockKExtension::class)
 class InstallerSettingsHelperTest {
 
-    @MockK
-    lateinit var context: Context
     private lateinit var sharedPreferences: SharedPreferences
 
     @BeforeEach
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
     }
 
     companion object {
@@ -90,7 +83,7 @@ class InstallerSettingsHelperTest {
         if (installer__root != null) {
             sharedPreferences.edit().putBoolean("installer__root", installer__root).commit()
         }
-        val sut = InstallerSettingsHelper(context)
+        val sut = InstallerSettingsHelper(sharedPreferences)
         assertEquals(expected, sut.getInstaller())
     }
 }

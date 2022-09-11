@@ -1,11 +1,8 @@
 package de.marmaro.krt.ffupdater.settings
 
-import android.content.Context
 import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.App
-import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
@@ -19,15 +16,12 @@ import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
 class BackgroundSettingsHelperTest {
-    @MockK
-    lateinit var context: Context
+
     private lateinit var sharedPreferences: SharedPreferences
 
     @BeforeEach
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
     }
 
     companion object {
@@ -96,7 +90,7 @@ class BackgroundSettingsHelperTest {
         defaultValue: Boolean,
         getValue: (BackgroundSettingsHelper) -> Boolean,
     ) {
-        val sut = BackgroundSettingsHelper(context)
+        val sut = BackgroundSettingsHelper(sharedPreferences)
         val actual = getValue(sut)
         Assertions.assertEquals(defaultValue, actual)
     }
@@ -110,7 +104,7 @@ class BackgroundSettingsHelperTest {
         getValue: (BackgroundSettingsHelper) -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, true).commit()
-        val sut = BackgroundSettingsHelper(context)
+        val sut = BackgroundSettingsHelper(sharedPreferences)
         val actual = getValue(sut)
         Assertions.assertTrue(actual)
     }
@@ -124,7 +118,7 @@ class BackgroundSettingsHelperTest {
         getValue: (BackgroundSettingsHelper) -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, false).commit()
-        val sut = BackgroundSettingsHelper(context)
+        val sut = BackgroundSettingsHelper(sharedPreferences)
         val actual = getValue(sut)
         Assertions.assertFalse(actual)
     }
@@ -137,7 +131,7 @@ class BackgroundSettingsHelperTest {
         defaultValue: Boolean,
         getValue: (BackgroundSettingsHelper) -> Boolean,
     ) {
-        val sut = BackgroundSettingsHelper(context)
+        val sut = BackgroundSettingsHelper(sharedPreferences)
         sharedPreferences.edit().putBoolean(preferenceKey, false).commit()
         Assertions.assertFalse(getValue(sut))
         sharedPreferences.edit().putBoolean(preferenceKey, true).commit()
@@ -146,61 +140,82 @@ class BackgroundSettingsHelperTest {
 
     @Test
     fun `backgroundUpdateCheckInterval with no settings`() {
-        Assertions.assertEquals(Duration.ofHours(6), BackgroundSettingsHelper(context).updateCheckInterval)
+        Assertions.assertEquals(
+            Duration.ofHours(6),
+            BackgroundSettingsHelper(sharedPreferences).updateCheckInterval
+        )
     }
 
     @Test
     fun `backgroundUpdateCheckInterval with invalid setting null`() {
         sharedPreferences.edit().putString("background__update_check__interval", null).commit()
-        Assertions.assertEquals(Duration.ofHours(6), BackgroundSettingsHelper(context).updateCheckInterval)
+        Assertions.assertEquals(
+            Duration.ofHours(6),
+            BackgroundSettingsHelper(sharedPreferences).updateCheckInterval
+        )
     }
 
     @Test
     fun `backgroundUpdateCheckInterval with invalid setting empty string`() {
         sharedPreferences.edit().putString("background__update_check__interval", "").commit()
-        Assertions.assertEquals(Duration.ofHours(6), BackgroundSettingsHelper(context).updateCheckInterval)
+        Assertions.assertEquals(
+            Duration.ofHours(6),
+            BackgroundSettingsHelper(sharedPreferences).updateCheckInterval
+        )
     }
 
     @Test
     fun `backgroundUpdateCheckInterval with invalid setting string`() {
         sharedPreferences.edit().putString("background__update_check__interval", "lorem ipsum").commit()
-        Assertions.assertEquals(Duration.ofHours(6), BackgroundSettingsHelper(context).updateCheckInterval)
+        Assertions.assertEquals(
+            Duration.ofHours(6),
+            BackgroundSettingsHelper(sharedPreferences).updateCheckInterval
+        )
     }
 
     @Test
     fun `backgroundUpdateCheckInterval with 42 minutes`() {
         sharedPreferences.edit().putString("background__update_check__interval", "42").commit()
-        Assertions.assertEquals(Duration.ofMinutes(42), BackgroundSettingsHelper(context).updateCheckInterval)
+        Assertions.assertEquals(
+            Duration.ofMinutes(42),
+            BackgroundSettingsHelper(sharedPreferences).updateCheckInterval
+        )
     }
 
     @Test
     fun `backgroundUpdateCheckInterval with too low value`() {
         sharedPreferences.edit().putString("background__update_check__interval", "-1").commit()
-        Assertions.assertEquals(Duration.ofMinutes(15), BackgroundSettingsHelper(context).updateCheckInterval)
+        Assertions.assertEquals(
+            Duration.ofMinutes(15),
+            BackgroundSettingsHelper(sharedPreferences).updateCheckInterval
+        )
     }
 
     @Test
     fun `backgroundUpdateCheckInterval with too high value`() {
         sharedPreferences.edit().putString("background__update_check__interval", "100000").commit()
-        Assertions.assertEquals(Duration.ofDays(28), BackgroundSettingsHelper(context).updateCheckInterval)
+        Assertions.assertEquals(
+            Duration.ofDays(28),
+            BackgroundSettingsHelper(sharedPreferences).updateCheckInterval
+        )
     }
 
 
     @Test
     fun `excludedAppsFromBackgroundUpdateCheck with default value`() {
-        Assertions.assertTrue(BackgroundSettingsHelper(context).excludedAppsFromUpdateCheck.isEmpty())
+        Assertions.assertTrue(BackgroundSettingsHelper(sharedPreferences).excludedAppsFromUpdateCheck.isEmpty())
     }
 
     @Test
     fun `excludedAppsFromBackgroundUpdateCheck with null`() {
         sharedPreferences.edit().putStringSet("background__update_check__excluded_apps", null).commit()
-        Assertions.assertTrue(BackgroundSettingsHelper(context).excludedAppsFromUpdateCheck.isEmpty())
+        Assertions.assertTrue(BackgroundSettingsHelper(sharedPreferences).excludedAppsFromUpdateCheck.isEmpty())
     }
 
     @Test
     fun `excludedAppsFromBackgroundUpdateCheck with empty set`() {
         sharedPreferences.edit().putStringSet("background__update_check__excluded_apps", setOf()).commit()
-        Assertions.assertTrue(BackgroundSettingsHelper(context).excludedAppsFromUpdateCheck.isEmpty())
+        Assertions.assertTrue(BackgroundSettingsHelper(sharedPreferences).excludedAppsFromUpdateCheck.isEmpty())
     }
 
     @ParameterizedTest(name = "excludedAppsFromBackgroundUpdateCheck with app \"{0}\"")
@@ -209,7 +224,7 @@ class BackgroundSettingsHelperTest {
         sharedPreferences.edit()
             .putStringSet("background__update_check__excluded_apps", setOf(name))
             .commit()
-        val disabledApps = BackgroundSettingsHelper(context).excludedAppsFromUpdateCheck
+        val disabledApps = BackgroundSettingsHelper(sharedPreferences).excludedAppsFromUpdateCheck
         Assertions.assertTrue(app in disabledApps)
     }
 
@@ -217,7 +232,7 @@ class BackgroundSettingsHelperTest {
     fun `excludedAppsFromBackgroundUpdateCheck with invalid value`() {
         sharedPreferences.edit().putStringSet("background__update_check__excluded_apps", setOf("invalid"))
             .commit()
-        val disabledApps = BackgroundSettingsHelper(context).excludedAppsFromUpdateCheck
+        val disabledApps = BackgroundSettingsHelper(sharedPreferences).excludedAppsFromUpdateCheck
         Assertions.assertTrue(disabledApps.isEmpty())
     }
 
@@ -249,7 +264,7 @@ class BackgroundSettingsHelperTest {
         ).commit()
         Assertions.assertEquals(
             App.values().toList().sorted(),
-            BackgroundSettingsHelper(context).excludedAppsFromUpdateCheck.sorted()
+            BackgroundSettingsHelper(sharedPreferences).excludedAppsFromUpdateCheck.sorted()
         )
     }
 }

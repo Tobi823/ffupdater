@@ -1,12 +1,10 @@
 package de.marmaro.krt.ffupdater.settings
 
-import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockkObject
 import io.mockk.unmockkObject
@@ -20,15 +18,11 @@ import java.util.stream.Stream
 @ExtendWith(MockKExtension::class)
 class ForegroundSettingsHelperTest {
 
-    @MockK
-    lateinit var context: Context
     private lateinit var sharedPreferences: SharedPreferences
 
     @BeforeEach
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
-        every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-        every { context.packageName } returns "de.marmaro.krt.ffupdater"
     }
 
     companion object {
@@ -86,7 +80,7 @@ class ForegroundSettingsHelperTest {
         defaultValue: Boolean,
         getValue: (ForegroundSettingsHelper) -> Boolean,
     ) {
-        val sut = ForegroundSettingsHelper(context)
+        val sut = ForegroundSettingsHelper(sharedPreferences)
         val actual = getValue(sut)
         Assertions.assertEquals(defaultValue, actual)
     }
@@ -100,7 +94,7 @@ class ForegroundSettingsHelperTest {
         getValue: (ForegroundSettingsHelper) -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, true).commit()
-        val sut = ForegroundSettingsHelper(context)
+        val sut = ForegroundSettingsHelper(sharedPreferences)
         val actual = getValue(sut)
         Assertions.assertTrue(actual)
     }
@@ -114,7 +108,7 @@ class ForegroundSettingsHelperTest {
         getValue: (ForegroundSettingsHelper) -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, false).commit()
-        val sut = ForegroundSettingsHelper(context)
+        val sut = ForegroundSettingsHelper(sharedPreferences)
         val actual = getValue(sut)
         Assertions.assertFalse(actual)
     }
@@ -127,7 +121,7 @@ class ForegroundSettingsHelperTest {
         defaultValue: Boolean,
         getValue: (ForegroundSettingsHelper) -> Boolean,
     ) {
-        val sut = ForegroundSettingsHelper(context)
+        val sut = ForegroundSettingsHelper(sharedPreferences)
         sharedPreferences.edit().putBoolean(preferenceKey, false).commit()
         Assertions.assertFalse(getValue(sut))
         sharedPreferences.edit().putBoolean(preferenceKey, true).commit()
@@ -139,7 +133,7 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -148,7 +142,7 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -159,13 +153,13 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
 
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -176,13 +170,13 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
 
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -193,13 +187,13 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
 
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -210,13 +204,13 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
 
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -227,13 +221,13 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
 
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -244,13 +238,13 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_NO,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
 
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_NO,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -261,13 +255,13 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_YES,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
 
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_YES,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 
@@ -278,13 +272,13 @@ class ForegroundSettingsHelperTest {
         every { DeviceSdkTester.supportsAndroid10() } returns false
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
 
         every { DeviceSdkTester.supportsAndroid10() } returns true
         Assertions.assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(context).themePreference
+            ForegroundSettingsHelper(sharedPreferences).themePreference
         )
     }
 }
