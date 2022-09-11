@@ -253,4 +253,6 @@
     <string name="add_app_activity__title_other_applications">Other Applications</string>
     <string name="add_app_activity__title_end_of_live_browser">End of live browser</string>
     <string name="add_app_activity__add_new_application">Add new application</string>
+    <string name="settings__network__trust_user_cas__summary">Enable if data traffic should be inspected and altered by other apps. If you unsure, keep this option disabled.</string>
+    <string name="settings__network__trust_user_cas__title">Trust user-added CAs</string>
 </resources>
