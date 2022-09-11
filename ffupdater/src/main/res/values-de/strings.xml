@@ -252,4 +252,9 @@
     <string name="tor_browser__description">Tor Browser für Android ist der einzige offizielle mobile Browser, der vom Tor-Projekt unterstützt wird, den Entwicklern des weltweit stärksten Tools für Privatsphäre und Freiheit im Internet.</string>
     <string name="orbot__description">Orbot ist eine kostenlose Proxy-App, die es anderen Apps ermöglicht, das Internet sicherer zu nutzen. Orbot verwendet Tor, um deinen Internetverkehr zu verschlüsseln und versteckt ihn dann, indem er durch eine Reihe von Computern auf der ganzen Welt geschickt wird. Tor ist eine kostenlose Software und ein offenes Netzwerk, das dir hilft, dich gegen eine Form der Netzwerküberwachung zu wehren, die die persönliche Freiheit und Privatsphäre, vertrauliche Geschäftsaktivitäten und -beziehungen sowie die staatliche Sicherheit bedroht, bekannt als Verkehrsanalyse.</string>
     <string name="orbot__title">Orbot: Tor für Android</string>
+    <string name="add_app_activity__label">Neue App hinzufügen</string>
+    <string name="add_app_activity__title_from_mozilla">Von Mozilla</string>
+    <string name="add_app_activity__title_based_on_firefox">Basierend auf Firefox</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Besser als Google Chrome</string>
+    <string name="add_app_activity__title_other_applications">Andere Apps</string>
 </resources>

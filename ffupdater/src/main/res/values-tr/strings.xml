@@ -271,4 +271,13 @@
     <string name="tor_browser__description">Android için Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracının geliştiricileri olan Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.</string>
     <string name="orbot__description">Orbot, diğer uygulamaların interneti daha güvenli kullanmasını sağlayan ücretsiz bir vekil uygulamasıdır. Orbot, internet trafiğinizi şifrelemek için Tor kullanır ve daha sonra dünyanın dört bir yanındaki bir dizi bilgisayardan geçirerek onu gizler. Tor, kişisel özgürlüğü ve mahremiyeti, gizli iş faaliyetlerini ve ilişkilerini ve trafik analizi olarak bilinen devlet güvenliğini tehdit eden bir tür ağ gözetimine karşı savunmanıza yardımcı olan özgür bir yazılım ve açık bir ağdır.</string>
     <string name="orbot__title">Orbot: Android için Tor</string>
+    <string name="add_app_activity__label">Yeni Uygulama Ekle</string>
+    <string name="crash_report_activity__label">Çökme Bildirici</string>
+    <string name="add_app_activity__title_based_on_firefox">Firefox Tabanlı</string>
+    <string name="add_app_activity__title_good_privacy_browsers">İyi Gizlilik Tarayıcıları</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Google Chrome\'dan Daha İyi</string>
+    <string name="add_app_activity__title_end_of_live_browser">Artık desteklenmeyen tarayıcı</string>
+    <string name="add_app_activity__add_new_application">Yeni uygulama ekle</string>
+    <string name="add_app_activity__title_other_applications">Diğer Uygulamalar</string>
+    <string name="add_app_activity__title_from_mozilla">Mozilla\'dan</string>
 </resources>
