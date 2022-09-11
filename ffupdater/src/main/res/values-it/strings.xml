@@ -259,4 +259,13 @@
     <string name="ungoogled_chromium__eol_reason">Lo sviluppatore ha scritto: \"Non sarò in grado di aggiornare le versioni per un po\' di tempo. Se possibile, utilizza uno dei browser [che FFUpdater supporta] nel frattempo.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser per Android è l\'unico browser per dispositivi mobile supportato ufficialmente da Tor Project, sviluppatori del più potente strumento al mondo per la privacy e la libertà online.</string>
+    <string name="orbot__description">Orbot è un\'app proxy gratuita che consente ad altre applicazioni di utilizzare Internet in modo più sicuro. Orbot utilizza Tor per crittografare il traffico Internet e poi lo nasconde rimbalzando attraverso una serie di computer in tutto il mondo. Tor è un software gratuito e una rete aperta che aiuta a difendersi da una forma di sorveglianza della rete che minaccia la libertà personale e la privacy, le attività e le relazioni commerciali riservate e la sicurezza dello stato, nota come analisi del traffico.</string>
+    <string name="orbot__title">Orbot: Tor per Android</string>
+    <string name="add_app_activity__title_based_on_firefox">Basato su Firefox</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Browser buoni per la privacy</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Meglio di Google Chrome</string>
+    <string name="add_app_activity__title_other_applications">Altre applicazioni</string>
+    <string name="add_app_activity__add_new_application">Aggiungi nuova applicazione</string>
+    <string name="add_app_activity__label">Aggiungi nuova applicazione</string>
+    <string name="add_app_activity__title_from_mozilla">Da Mozilla</string>
 </resources>
