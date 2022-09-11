@@ -248,4 +248,8 @@
     <string name="notification__no_update_check__text">In den letzten fünf Tagen war FFUpdater nicht in der Lage, im Hintergrund nach Updates zu suchen. Wenn Sie Ihr Smartphone für längere Zeit im Flugmodus hatten, können Sie diese Meldung ignorieren. Wenn nicht, klicken Sie hier, um den Fehlerbericht anzuzeigen.</string>
     <string name="app_card__open_project_page">Projektseite im Browser öffnen</string>
     <string name="ungoogled_chromium__eol_reason">Der Entwickler schrieb: \"Ich werde für einige Zeit nicht in der Lage sein, die Versionen zu aktualisieren. Wenn möglich, verwenden Sie bitte in der Zwischenzeit einen der Browser [die FFUpdater unterstützt].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Tor Browser für Android ist der einzige offizielle mobile Browser, der vom Tor-Projekt unterstützt wird, den Entwicklern des weltweit stärksten Tools für Privatsphäre und Freiheit im Internet.</string>
+    <string name="orbot__description">Orbot ist eine kostenlose Proxy-App, die es anderen Apps ermöglicht, das Internet sicherer zu nutzen. Orbot verwendet Tor, um deinen Internetverkehr zu verschlüsseln und versteckt ihn dann, indem er durch eine Reihe von Computern auf der ganzen Welt geschickt wird. Tor ist eine kostenlose Software und ein offenes Netzwerk, das dir hilft, dich gegen eine Form der Netzwerküberwachung zu wehren, die die persönliche Freiheit und Privatsphäre, vertrauliche Geschäftsaktivitäten und -beziehungen sowie die staatliche Sicherheit bedroht, bekannt als Verkehrsanalyse.</string>
+    <string name="orbot__title">Orbot: Tor für Android</string>
 </resources>
