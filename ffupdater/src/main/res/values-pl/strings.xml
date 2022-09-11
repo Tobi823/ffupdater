@@ -31,7 +31,7 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Następujący błąd wystąpił podczas pobierania adresu URL pobierania. Jeśli ten błąd pojawia się często, zapraszamy do zgłoszenia go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Podczas sprawdzania dostępności aktualizacji w widoku głównym wystąpił następujący błąd. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Niestety, FFUpdater się zawiesił. Proszę zgłoś ten błąd na notabug.org, GitHub lub GitLab. Dodaj do zgłoszenia raport o awarii z pamięci podręcznej oraz opis, jak odtworzyć błąd.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Niestety, FFUpdater się zawiesił. Proszę zgłoś ten błąd na notabug.org, GitHub lub GitLab.</string>
     <string name="crash_report__go_to_github">Idź na GitHub</string>
     <string name="crash_report__go_to_gitlab">Przejdź do GitLab</string>
     <string name="crash_report__got_to_notabug_org">Idź do notabug.org</string>
@@ -186,4 +186,11 @@
     <string name="vivaldi__title">Przeglądarka Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi jest tylko częściowo open source.
 \n- Wykorzystuje również techniczne podstawy przeglądarki Google Chrome, przez co pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
+    <string name="app_card__app_warning_button_description">Pokaż ostrzeżenie o tej aplikacji</string>
+    <string name="app_warning_dialog__title">Ostrzeżenie</string>
+    <string name="notification__download_error__channel_descr">Pokaż gdy instalacja w tle się nie powiodła.</string>
+    <string name="notification__download_error__channel_name">Powiadomienie o błędach podczas pobierania w tle</string>
+    <string name="notification__download_error__title">Pobieranie w tle się nie powiodło.</string>
+    <string name="notification__eol_apps__channel_name">Powiadomienie o nie aktualnej wersji</string>
+    <string name="notification__eol_apps__text">Masz nie aktualną aplikacje która nie może być już więcej używana. Kliknij po więcej informacji.</string>
 </resources>
