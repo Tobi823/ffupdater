@@ -24,7 +24,7 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="From Mozilla" />
+                android:text="@string/add_app_activity__title_from_mozilla" />
 
             <LinearLayout
                 android:id="@+id/list_mozilla_browsers"
@@ -37,7 +37,7 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Based on Firefox" />
+                android:text="@string/add_app_activity__title_based_on_firefox" />
 
             <LinearLayout
                 android:id="@+id/list_firefox_based_browsers"
@@ -50,7 +50,7 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Good Privacy Browsers" />
+                android:text="@string/add_app_activity__title_good_privacy_browsers" />
 
             <LinearLayout
                 android:id="@+id/list_good_privacy_browsers"
@@ -63,7 +63,7 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Better than Google Chrome" />
+                android:text="@string/add_app_activity__title_better_than_google_chrome" />
 
             <LinearLayout
                 android:id="@+id/list_better_than_chrome_browsers"
@@ -76,7 +76,7 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Other Applications" />
+                android:text="@string/add_app_activity__title_other_applications" />
 
             <LinearLayout
                 android:id="@+id/other_applications"
@@ -89,7 +89,7 @@
                 style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="End of live browser" />
+                android:text="@string/add_app_activity__title_end_of_live_browser" />
 
             <LinearLayout
                 android:id="@+id/list_eol_browsers"

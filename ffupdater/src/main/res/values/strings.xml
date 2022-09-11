@@ -246,4 +246,10 @@
     <string name="orbot__title">Orbot: Tor for Android</string>
     <string name="add_app_activity__label">Add New Application</string>
     <string name="crash_report_activity__label">Crash Reporter</string>
+    <string name="add_app_activity__title_from_mozilla">From Mozilla</string>
+    <string name="add_app_activity__title_based_on_firefox">Based on Firefox</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Good Privacy Browsers</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Better than Google Chrome</string>
+    <string name="add_app_activity__title_other_applications">Other Applications</string>
+    <string name="add_app_activity__title_end_of_live_browser">End of live browser</string>
 </resources>
