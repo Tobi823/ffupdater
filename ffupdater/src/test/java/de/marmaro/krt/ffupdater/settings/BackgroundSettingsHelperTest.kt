@@ -246,6 +246,7 @@ class BackgroundSettingsHelperTest {
                 "BRAVE_NIGHTLY",
                 "BROMITE",
                 "BROMITE_SYSTEMWEBVIEW",
+                "CHROMIUM",
                 "FFUPDATER",
                 "FIREFOX_BETA",
                 "FIREFOX_FOCUS",
@@ -256,10 +257,10 @@ class BackgroundSettingsHelperTest {
                 "KIWI",
                 "LOCKWISE",
                 "MULL",
+                "ORBOT",
+                "TOR_BROWSER",
                 "UNGOOGLED_CHROMIUM",
                 "VIVALDI",
-                "TOR_BROWSER",
-                "ORBOT",
             )
         ).commit()
         Assertions.assertEquals(
