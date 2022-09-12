@@ -257,4 +257,8 @@
     <string name="add_app_activity__title_based_on_firefox">Basierend auf Firefox</string>
     <string name="add_app_activity__title_better_than_google_chrome">Besser als Google Chrome</string>
     <string name="add_app_activity__title_other_applications">Andere Apps</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__description">Chromium ist ein Open-Source-Browser-Projekt, das darauf abzielt, das Internet für alle Benutzer sicherer, schneller und stabiler zu machen. Diese Website enthält Designdokumente, Architekturübersichten, Testinformationen und mehr, um dir zu helfen, den Chromium-Quellcode zu erstellen und mit ihm zu arbeiten.</string>
+    <string name="chromium__warning">- Chromium nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Renderengine.</string>
+    <string name="add_app_activity__add_new_application">Neue App hinzufügen</string>
 </resources>
