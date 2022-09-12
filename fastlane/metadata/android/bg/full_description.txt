@@ -12,8 +12,9 @@
 
 четци, по-добри от Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Хромиум
 - Kiwi Browser Next
-- Vivaldi
+- Вивалди
 
 FFUpdater проверява за обновявания във фонов режим и ги изтегля. При устройства с Android 12+ или достъп до суперпотребителя, FFUpdater може да обновява приложенията и без действие от страна на потребителя.
 
