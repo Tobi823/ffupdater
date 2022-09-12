@@ -1,0 +1,6 @@
+* Grazie per il contributo di Weblate da parte di: John doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem and Eduardo Malaspina
+* Aggiunti Chromium, Orbot, Tor
+* Migliorata l'interfaccia utente per l'aggiunta di nuove applicazioni
+* Inattendibilità della CA dell'utente per impostazione predefinita (può essere disabilitata).
+* Correzioni di bug
+* Pulizia e refactoring del codice
