@@ -280,4 +280,9 @@
     <string name="add_app_activity__add_new_application">Yeni uygulama ekle</string>
     <string name="add_app_activity__title_other_applications">Diğer Uygulamalar</string>
     <string name="add_app_activity__title_from_mozilla">Mozilla\'dan</string>
+    <string name="settings__network__trust_user_cas__summary">Veri trafiğinin diğer uygulamalar tarafından incelenmesi ve değiştirilmesi gerekiyorsa etkinleştirin. Emin değilseniz, bu seçeneği devre dışı bırakın.</string>
+    <string name="settings__network__trust_user_cas__title">Kullanıcı tarafından eklenen CA\'lara güven</string>
+    <string name="chromium__description">Chromium, tüm kullanıcıların interneti deneyimlemesi için daha güvenli, daha hızlı ve daha kararlı bir yol oluşturmayı amaçlayan açık kaynaklı bir tarayıcı projesidir. Bu site, Chromium kaynak kodunu derlemeyi ve onunla çalışmayı öğrenmenize yardımcı olacak tasarım belgeleri, mimariye genel bakış, test bilgileri ve daha fazlasını içerir.</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__warning">- Chromium, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
 </resources>
