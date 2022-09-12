@@ -12,6 +12,7 @@ Gizlilik açısından iyi tarayıcılar:
 
 Google Chrome'dan daha iyi olan tarayıcılar:
 - Brave Gizli Tarayıcı, Brave Tarayıcı (Beta), Brave Tarayıcı (Gecelik)
+- Chromium
 - Kiwi Browser Next
 - Vivaldi
 

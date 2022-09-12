@@ -1,0 +1,6 @@
+* Weblate üzerinde katkıda bulunanlara teşekkürler: John doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem ve Eduardo Malaspina
+* Chromium, Orbot ve Tor eklendi
+* Yeni uygulamalar eklemek için kullanıcı arayüzü iyileştirildi
+* Öntanımlı olarak kullanıcı CA'sına güvenme (bu devre dışı bırakılabilir)
+* Hata düzeltmeleri
+* Kaynak kodları temizlendi ve yeniden düzenlendi
