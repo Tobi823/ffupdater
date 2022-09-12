@@ -268,4 +268,9 @@
     <string name="add_app_activity__add_new_application">Aggiungi nuova applicazione</string>
     <string name="add_app_activity__label">Aggiungi nuova applicazione</string>
     <string name="add_app_activity__title_from_mozilla">Da Mozilla</string>
+    <string name="settings__network__trust_user_cas__summary">Abilita se il traffico dati deve essere ispezionato e modificato da altre app. Se non sei sicuro, mantieni questa opzione disabilitata.</string>
+    <string name="chromium__warning">- Chromium utilizza le base tecniche di Google Chrome e quindi sostiene indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__description">Chromium è un progetto di browser open-source che mira a costruire un modo più sicuro, più veloce e più stabile per tutti gli utenti di vivere il web. Questo sito contiene documenti di progettazione, panoramiche sull\'architettura, informazioni sui test e altro ancora per aiutaryi a imparare a costruire e lavorare con il codice sorgente di Chromium.</string>
+    <string name="settings__network__trust_user_cas__title">Considera attendibili le CA aggiunte dall\'utente</string>
 </resources>
