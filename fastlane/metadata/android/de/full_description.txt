@@ -12,6 +12,7 @@ Gute Datenschutz-Browser:
 
 Browser, die besser sind als Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
 - Kiwi Browser Next
 - Vivaldi
 

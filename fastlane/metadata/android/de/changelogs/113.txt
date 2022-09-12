@@ -1,0 +1,6 @@
+* Dank für den Weblate-Beitrag von: John doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem und Eduardo Malaspina
+*Chromium, Orbot, Tor hinzugefügt
+* UI für das Hinzufügen neuer Apps verbessert
+* Vertraut der Benutzer-CA standardmäßig nicht (dies kann deaktiviert werden)
+* Fehlerbehebungen
+* Aufräumen und Refaktorierung des Codes
