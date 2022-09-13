@@ -259,4 +259,22 @@
     <string name="notification__no_update_check__title">Žádná úspěšná kontrola aktualizací na pozadí po dobu pěti dnů</string>
     <string name="notification__no_update_check__text">V posledních pěti dnech nebyl program FFUpdater schopen kontrolovat aktualizace na pozadí. Pokud jste měli smartphone dlouho v režimu letadlo, můžete tuto zprávu ignorovat. V opačném případě klikněte sem pro zobrazení chybového hlášení.</string>
     <string name="ungoogled_chromium__eol_reason">Vývojář napsal: \"Nějakou dobu nebudu moci aktualizovat verze. Pokud je to možné, používejte prosím do té doby některý z prohlížečů [které FFUpdater podporuje].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Tor Browser pro Android je jediný oficiální mobilní prohlížeč podporovaný organizací Tor Project, vývojáři nejsilnějšího nástroje pro ochranu soukromí a svobody internetu na světě.</string>
+    <string name="orbot__description">Orbot je bezplatná proxy aplikace, která umožňuje ostatním aplikacím bezpečněji používat internet. Orbot používává Tor k šifrování vašeho internetového provozu a následně jej skrývá tím, že jej posílá přes řadu počítačů po celém světě. Tor je bezplatný software a otevřená síť, která vám pomůže bránit se proti formě síťového dohledu, která ohrožuje osobní svobodu a soukromí, důvěrné obchodní aktivity a vztahy a bezpečnost státu, tzv. analýza síťového provozu.</string>
+    <string name="orbot__title">Orbot: Tor pro Android</string>
+    <string name="add_app_activity__label">Přidat novou aplikaci</string>
+    <string name="crash_report_activity__label">Hlášení pádů</string>
+    <string name="add_app_activity__title_from_mozilla">Od Mozilly</string>
+    <string name="add_app_activity__title_based_on_firefox">Založeno na Firefoxu</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Dobré prohlížeče pro ochranu soukromí</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Lepší než Google Chrome</string>
+    <string name="add_app_activity__title_other_applications">Ostatní aplikace</string>
+    <string name="add_app_activity__title_end_of_live_browser">Prohlížeče s ukončenou podporou</string>
+    <string name="add_app_activity__add_new_application">Přidat novou aplikaci</string>
+    <string name="settings__network__trust_user_cas__summary">Povolte, pokud by měl být datový provoz kontrolován a měněn jinými aplikacemi. Pokud si nejste jisti, ponechejte tuto možnost vypnutou.</string>
+    <string name="settings__network__trust_user_cas__title">Důvěřovat certifikačním autoritám přidaným uživatelem</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__warning">- Chromium používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
+    <string name="chromium__description">Chromium je prohlížeč s otevřeným zdrojovým kódem, jehož cílem je vytvořit bezpečnější, rychlejší a stabilnější způsob používání webu pro všechny uživatele.</string>
 </resources>
