@@ -64,7 +64,7 @@
     <string name="dialog_button__yes">Sí</string>
     <string name="notification__download_running__channel_descr">Muestra cuándo se descargan las actualizaciones de las aplicaciones en segundo plano.</string>
     <string name="notification__download_running__channel_name">Notificación acerca de descargas en segundo plano</string>
-    <string name="notification__download_running__text">Descargar actualización para %1$s (%2$s).</string>
+    <string name="notification__download_running__text">Descargar actualización para %1$s (%2$s)</string>
     <string name="notification__download_running__title">Descargando actualizaciones de aplicaciones</string>
     <string name="app_card__download_the_app">descargar la aplicación</string>
     <string name="notification__error__channel_descr">Mostrar errores del comprobador de actualizaciones en segundo plano</string>
@@ -129,7 +129,7 @@
     <string name="notification__install_error__channel_descr">Canal de notificaciones para actualizaciones fallidas de %1$s.</string>
     <string name="notification__install_error__channel_name">Notificación de fallo de actualización de %1$s</string>
     <string name="notification__install_error__text">Error (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s no pudo ser actualizado.</string>
+    <string name="notification__install_error__title">%1$s no pudo ser actualizado</string>
     <string name="notification__install_success__channel_descr">Canal de notificaciones para actualizaciones exitosas de %1$s.</string>
     <string name="notification__install_success__channel_name">Notificación de actualización exitosa de %1$s</string>
     <string name="notification__install_success__text">La aplicación ha sido actualizada exitosamente en segundo plano.</string>
