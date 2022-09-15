@@ -95,9 +95,9 @@
     <string name="iceraven__title">Navegador Iceraven</string>
     <string name="iceraven__warning">- El creador no da ninguna garantía de seguridad, ni de actualizaciones, ni siquiera de estabilidad.
 \n - El proyecto tarda más de lo habitual en proporcionar actualizaciones de seguridad.</string>
-    <string name="infobox">Este es un actualizador para varios navegadores de Mozilla y otros. Haga clic en el botón más para instalar y el botón de flecha para abajo para actualizar. Puede comprobar si hay nuevas actualizaciones deslizando el dedo hacia abajo o reabriendo la aplicación. Por defecto, la aplicación comprobará regularmente si hay actualizaciones en segundo plano. He hecho todo lo posible para reforzar el proceso de instalación/actualización - no dude en volver a revisarlo o mejorarlo creando un pull request.
-\n
-\nÚltima comprobación de actualizaciones en segundo plano exitosa: %1$s</string>
+    <string name="infobox">Este es un actualizador para navegadores amigables con la privacidad. Haga clic en el botón más para instalar nuevas aplicaciones. Deslice hacia abajo para forzar una verificación de nuevas actualizaciones. De forma predeterminada, la aplicación comprobará periódicamente si hay actualizaciones en segundo plano, que luego se descargarán y, finalmente, se instalarán. Haga clic en el engranaje para personalizar el comportamiento en la configuración. 
+\n 
+\nÚltima comprobación de actualización de fondo exitosa: %1$s</string>
     <string name="app_card__information_about_the_app">información acerca de la aplicación</string>
     <string name="download_activity__delete_cache_button_text">limpiar caché</string>
     <string name="download_activity__delete_cache_explanation">Si cree que FFUpdater ha almacenado en la caché una actualización de aplicación defectuosa o si quieres ahorrar espacio, haga clic en el botón para eliminar el archivo descargado.</string>
@@ -133,7 +133,7 @@
     <string name="notification__install_success__channel_descr">Canal de notificaciones para actualizaciones exitosas de %1$s.</string>
     <string name="notification__install_success__channel_name">Notificación de actualización exitosa de %1$s</string>
     <string name="notification__install_success__text">La aplicación ha sido actualizada exitosamente en segundo plano.</string>
-    <string name="notification__install_success__title">%1$s ha sido actualizado.</string>
+    <string name="notification__install_success__title">%1$s ha sido actualizado</string>
     <string name="installed_app_is_not_verified">La aplicación instalada NO está verificada</string>
     <string name="installed_application_is_verified">La aplicación instalada está verificada</string>
     <string name="installed_version">Instalado: %1$s</string>
@@ -271,4 +271,13 @@
     <string name="add_app_activity__label">Agregar nueva aplicación</string>
     <string name="add_app_activity__title_from_mozilla">De Mozilla</string>
     <string name="add_app_activity__title_based_on_firefox">Basado en Firefox</string>
+    <string name="add_app_activity__title_other_applications">Otras Aplicaciones</string>
+    <string name="add_app_activity__add_new_application">Añadir nueva aplicación</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Buenos navegadores para la privacidad</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Mejor que Google Chrome</string>
+    <string name="settings__network__trust_user_cas__summary">Activa si el tráfico de datos debe ser inspeccionado y alterado por otras aplicaciones. Si no está seguro, mantenga esta opción desactivada.</string>
+    <string name="settings__network__trust_user_cas__title">Confiar en las CA agregadas por el usuario</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__description">Chromium es un proyecto de navegador de código abierto cuyo objetivo es construir una forma más segura, rápida y estable para que todos los usuarios en la web. Este sitio contiene documentos de diseño, descripciones de la arquitectura, información sobre las pruebas y mucho más para ayudarte a construir y trabajar con el código fuente de Chromium.</string>
+    <string name="chromium__warning">- Chromium utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado de Chrome.</string>
 </resources>
