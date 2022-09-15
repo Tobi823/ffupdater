@@ -54,7 +54,7 @@
     <string name="crash_report__explain_text__download_activity_fetching_url">Se ha producido el siguiente error al obtener la URL de descarga. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, no olvide añadir su informe de fallo del portapapeles y la descripción de cómo reproducir este error.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Se ha producido el siguiente error durante la instalación. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, añada el informe de fallo del portapapeles al reporte.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Se ha producido el siguiente error al comprobar las actualizaciones en la vista principal. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, no olvide añadir su informe de fallo del portapapeles y la descripción de cómo reproducir este error.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Desafortunadamente, FFUpdater falló la última vez y registró el siguiente error. Por favor repórtelo en notabug.org, GitHub o GitLab. Copie el informe de fallo del portapapeles en el mensaje y añada una descripción de cómo reproducir el error.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Desafortunadamente, FFUpdater se bloqueó la última vez y registró un error. Envíe el informe de ese error a notabug.org, GitHub o GitLab.</string>
     <string name="crash_report__go_to_github">Ir a GitHub</string>
     <string name="crash_report__go_to_gitlab">Ir a GitLab</string>
     <string name="crash_report__got_to_notabug_org">Ir a notabug.org</string>
@@ -93,7 +93,8 @@
 \n
 \nNuestro objetivo es ser una bifurcación cercana del nuevo Firefox para Android que busca proporcionar a los usuarios más opciones, más oportunidades de personalización (incluyendo una amplia biblioteca de extensiones), y más información sobre las páginas que visitan y cómo sus navegadores están interactuando con esas páginas.</string>
     <string name="iceraven__title">Navegador Iceraven</string>
-    <string name="iceraven__warning">- El mantenedor no da ninguna garantía de seguridad, ni de actualizaciones, ni siquiera de estabilidad.</string>
+    <string name="iceraven__warning">- El creador no da ninguna garantía de seguridad, ni de actualizaciones, ni siquiera de estabilidad.
+\n - El proyecto tarda más de lo habitual en proporcionar actualizaciones de seguridad.</string>
     <string name="infobox">Este es un actualizador para varios navegadores de Mozilla y otros. Haga clic en el botón más para instalar y el botón de flecha para abajo para actualizar. Puede comprobar si hay nuevas actualizaciones deslizando el dedo hacia abajo o reabriendo la aplicación. Por defecto, la aplicación comprobará regularmente si hay actualizaciones en segundo plano. He hecho todo lo posible para reforzar el proceso de instalación/actualización - no dude en volver a revisarlo o mejorarlo creando un pull request.
 \n
 \nÚltima comprobación de actualizaciones en segundo plano exitosa: %1$s</string>
@@ -150,7 +151,7 @@
     <string name="main_activity__available_version_loading">Cargando…</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Límite de solicitudes de GitHub-API superado. Inténtelo de nuevo en la próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">Ninguna red no medida</string>
-    <string name="main_activity__subtitle">Actualice sus navegadores desde la fuente oficial</string>
+    <string name="main_activity__subtitle">Actualizador para navegadores respetuosos con la privacidad</string>
     <string name="main_activity__temporary_network_issue"><u>Problema temporal de red. Inténtelo más tarde.</u></string>
     <string name="manage_storage_activity__delete_button">Eliminar las actualizaciones de aplicaciones en caché.</string>
     <string name="manage_storage_activity__explanation">FFUpdater guarda en caché las actualizaciones de aplicaciones ya descargadas y las almacena en la carpeta \"Android/data/de.marmaro.krt.ffupdater/files/Download\".
@@ -244,4 +245,30 @@
     <string name="vivaldi__title">Navegador Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi es solo parcialmente de código abierto.
 \n- También utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
+    <string name="settings__foreground__hide_warning_buttons">Oculte el botón de advertencia de la aplicación instalada.</string>
+    <string name="notification__eol_apps__title">Aplicaciones obsoletas instaladas</string>
+    <string name="notification__no_update_check__text">En los últimos cinco días FFUpdater no ha podido comprobar las actualizaciones en segundo plano. Si has tenido tu smartphone en modo avión durante mucho tiempo, puedes ignorar este mensaje. Si no, haz clic aquí para ver el informe de error.</string>
+    <string name="app_card__open_project_page">Abrir la página del proyecto en el navegador</string>
+    <string name="orbot__description">Orbot es una aplicación de proxy gratuita que permite a otras aplicaciones utilizar Internet de forma más segura. Orbot usa Tor para encriptar su tráfico de Internet y luego lo oculta rebotando a través de una serie de computadoras en todo el mundo. Tor es un software gratuito y una red abierta que lo ayuda a defenderse contra una forma de vigilancia de la red que amenaza la libertad personal y la privacidad, las actividades y relaciones comerciales confidenciales y la seguridad del estado conocida como análisis de tráfico.</string>
+    <string name="ungoogled_chromium__eol_reason">El desarrollador publicó: \"No podré actualizar las versiones durante algún tiempo. Si es posible, utilice uno de los navegadores [compatibles con FFUpdater] mientras tanto\". https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="app_card__app_warning_button_description">Mostrar advertencias sobre esta aplicación</string>
+    <string name="generic_eol_reason__browser_to_old">El navegador no ha sido actualizado desde hace mucho tiempo, por lo que le recomiendo utilizar otro navegador temporalmente. Cuando los desarrolladores publiquen una nueva actualización, eliminaré esta advertencia.</string>
+    <string name="lockwise__eol_reason">Mozilla abandonó el soporte en diciembre de 2021. Cambie a otra contraseña segura.</string>
+    <string name="mull__title">Mull Browser</string>
+    <string name="mull__description">Este es un navegador web depurado y orientado a la privacidad basado en la tecnología de Mozilla. Habilita muchas características mejoradas por el proyecto Tor Uplift utilizando las preferencias del proyecto arkenfox-user.js. Se recomienda instalar \'uBlock Origin\'.</string>
+    <string name="mull__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es más rápido.</string>
+    <string name="notification__download_error__channel_descr">Mostrar cuando fallan las descargas de actualizaciones en segundo plano.</string>
+    <string name="notification__download_error__channel_name">Notificación los errores de la descarga en segundo plano</string>
+    <string name="notification__download_error__descr">La descarga en segundo plano de la actualización %1$s ha fallado. Si este error se produce con frecuencia, no dudes en informarlo en notabug.org, GitHub o GitLab.</string>
+    <string name="notification__download_error__text">La descarga en segundo plano de la actualización de %1$s ha fallado. Si este error se produce con frecuencia, haga clic aquí para ver el informe de errores.</string>
+    <string name="notification__download_error__title">La descarga en segundo plano de la actualización falló</string>
+    <string name="notification__eol_apps__channel_description">Canal de notificación para la advertencias sobre aplicaciones obsoletas.</string>
+    <string name="notification__eol_apps__channel_name">Notificación de aplicaciones obsoletas</string>
+    <string name="notification__eol_apps__text">Tiene aplicaciones obsoletas que ya no deberían usarse. Haga clic para obtener más información.</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Tor Browser para Android es el único navegador móvil oficial compatible con Tor Project, desarrolladores de la herramienta más sólida del mundo para la privacidad y la libertad en línea.</string>
+    <string name="orbot__title">Orbot: Tor para Android</string>
+    <string name="add_app_activity__label">Agregar nueva aplicación</string>
+    <string name="add_app_activity__title_from_mozilla">De Mozilla</string>
+    <string name="add_app_activity__title_based_on_firefox">Basado en Firefox</string>
 </resources>
