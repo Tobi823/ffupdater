@@ -10,6 +10,8 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import java.time.Duration
 
@@ -50,9 +52,31 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         private fun findSwitchPref(key: String) = findPreference<SwitchPreferenceCompat>(key)
         private fun findListPref(key: String) = findPreference<ListPreference>(key)
+        private fun findMultiPref(key: String) = findPreference<MultiSelectListPreference>(key)
+
+        private fun changeBackgroundUpdateCheck(
+            enabled: Boolean?,
+            interval: Duration?,
+            onlyWhenIdle: Boolean?
+        ): Boolean {
+            val settings = BackgroundSettingsHelper(requireContext())
+            BackgroundJob.changeBackgroundUpdateCheck(
+                requireContext(),
+                enabled ?: settings.isUpdateCheckEnabled,
+                interval ?: settings.updateCheckInterval,
+                onlyWhenIdle ?: settings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
+            )
+            return true
+        }
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+            if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
+                findSwitchPref("background__update_check__when_device_idle")?.summary =
+                    getString(R.string.settings__background__update_check__when_device_idle__unsupported)
+                findSwitchPref("background__update_check__when_device_idle")?.isEnabled = false
+            }
 
             findListPref("foreground__theme_preference")?.setOnPreferenceChangeListener { _, newValue ->
                 AppCompatDelegate.setDefaultNightMode((newValue as String).toInt())
@@ -60,20 +84,18 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             findSwitchPref("background__update_check__enabled")?.setOnPreferenceChangeListener { _, newValue ->
-                val enabled = newValue as Boolean
-                BackgroundJob.changeBackgroundUpdateCheck(requireContext(), enabled, null)
-                true
+                changeBackgroundUpdateCheck(newValue as Boolean, null, null)
             }
 
             findListPref("background__update_check__interval")?.setOnPreferenceChangeListener { _, newValue ->
-                val minutes = (newValue as String).toLong()
-                val duration = Duration.ofMinutes(minutes)
-                BackgroundJob.changeBackgroundUpdateCheck(requireContext(), null, duration)
-                true
+                changeBackgroundUpdateCheck(null, Duration.ofMinutes((newValue as String).toLong()), null)
             }
 
-            val excludedApps =
-                findPreference<MultiSelectListPreference>("background__update_check__excluded_apps")
+            findSwitchPref("background__update_check__when_device_idle")?.setOnPreferenceChangeListener { _, newValue ->
+                changeBackgroundUpdateCheck(null, null, newValue as Boolean)
+            }
+
+            val excludedApps = findMultiPref("background__update_check__excluded_apps")
             excludedApps?.entries = App.values()
                 .map { app -> getString(app.impl.title) }
                 .toTypedArray()
@@ -81,30 +103,28 @@ class SettingsActivity : AppCompatActivity() {
                 .map { app -> app.name }
                 .toTypedArray()
 
-            val sessionInstaller = findSwitchPref("installer__session")
-            val nativeInstaller = findSwitchPref("installer__native")
-            val rootInstaller = findSwitchPref("installer__root")
-            sessionInstaller?.setOnPreferenceChangeListener { _, newValue ->
-                if (newValue as Boolean) {
-                    nativeInstaller?.isChecked = false
-                    rootInstaller?.isChecked = false
-                }
-                true
+            findSwitchPref("installer__session")?.setOnPreferenceChangeListener { _, newValue ->
+                disableOtherInstallMethods(newValue as Boolean, null, null)
             }
-            nativeInstaller?.setOnPreferenceChangeListener { _, newValue ->
-                if (newValue as Boolean) {
-                    sessionInstaller?.isChecked = false
-                    rootInstaller?.isChecked = false
-                }
-                true
+            findSwitchPref("installer__native")?.setOnPreferenceChangeListener { _, newValue ->
+                disableOtherInstallMethods(null, newValue as Boolean, null)
             }
-            rootInstaller?.setOnPreferenceChangeListener { _, newValue ->
-                if (newValue as Boolean) {
-                    sessionInstaller?.isChecked = false
-                    nativeInstaller?.isChecked = false
-                }
-                true
+            findSwitchPref("installer__root")?.setOnPreferenceChangeListener { _, newValue ->
+                disableOtherInstallMethods(null, null, newValue as Boolean)
             }
+        }
+
+        private fun disableOtherInstallMethods(session: Boolean?, native: Boolean?, root: Boolean?): Boolean {
+            if (native == true || root == true) {
+                findSwitchPref("installer__session")?.isChecked = false
+            }
+            if (session == true || root == true) {
+                findSwitchPref("installer__native")?.isChecked = false
+            }
+            if (session == true || native == true) {
+                findSwitchPref("installer__root")?.isChecked = false
+            }
+            return true
         }
     }
 }

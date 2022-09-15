@@ -12,6 +12,7 @@ import androidx.work.NetworkType.UNMETERED
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.background.RecoverableBackgroundException
 import de.marmaro.krt.ffupdater.background.UnrecoverableBackgroundException
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid10
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
 import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
@@ -277,11 +278,32 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
          * is running.
          */
         fun initBackgroundUpdateCheck(context: Context) {
-            val backgroundSettings = BackgroundSettingsHelper(context)
-            if (backgroundSettings.isUpdateCheckEnabled) {
-                startBackgroundUpdateCheck(context, backgroundSettings, KEEP)
+            val settings = BackgroundSettingsHelper(context)
+            if (settings.isUpdateCheckEnabled) {
+                start(
+                    context,
+                    settings,
+                    KEEP,
+                    settings.updateCheckInterval,
+                    settings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
+                )
             } else {
-                stopBackgroundUpdateCheck(context)
+                stop(context)
+            }
+        }
+
+        fun forceRestartBackgroundUpdateCheck(context: Context) {
+            val settings = BackgroundSettingsHelper(context)
+            if (settings.isUpdateCheckEnabled) {
+                start(
+                    context,
+                    settings,
+                    REPLACE,
+                    settings.updateCheckInterval,
+                    settings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
+                )
+            } else {
+                stop(context)
             }
         }
 
@@ -289,40 +311,47 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
          * Should be called when the user changes specific background settings.
          * If value is null, the value from SharedPreferences will be used.
          */
-        fun changeBackgroundUpdateCheck(context: Context, _enabled: Boolean?, interval: Duration?) {
-            val backgroundSettings = BackgroundSettingsHelper(context)
-            val enabled = _enabled ?: backgroundSettings.isUpdateCheckEnabled
+        fun changeBackgroundUpdateCheck(
+            context: Context,
+            enabled: Boolean,
+            interval: Duration,
+            onlyWhenIdle: Boolean
+        ) {
             if (enabled) {
-                startBackgroundUpdateCheck(context, backgroundSettings, REPLACE, interval)
+                start(context, BackgroundSettingsHelper(context), REPLACE, interval, onlyWhenIdle)
             } else {
-                stopBackgroundUpdateCheck(context)
+                stop(context)
             }
         }
 
-        private fun startBackgroundUpdateCheck(
+        private fun start(
             context: Context,
             settings: BackgroundSettingsHelper,
-            existingPeriodicWorkPolicy: ExistingPeriodicWorkPolicy,
-            interval: Duration? = null,
+            policy: ExistingPeriodicWorkPolicy,
+            interval: Duration,
+            onlyWhenIdle: Boolean
         ) {
-            val minutes = (interval ?: settings.updateCheckInterval).toMinutes()
             val requiredNetworkType = if (settings.isUpdateCheckOnMeteredAllowed) NOT_REQUIRED else UNMETERED
+            val builder = Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiresBatteryNotLow(true)
+                .setRequiresStorageNotLow(true)
+                .setRequiredNetworkType(requiredNetworkType)
+
+            if (DeviceSdkTester.supportsAndroidMarshmallow()) {
+                builder.setRequiresDeviceIdle(onlyWhenIdle)
+            }
+
+            val minutes = interval.toMinutes()
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)
-                .setConstraints(
-                    Constraints.Builder()
-                        .setRequiredNetworkType(NetworkType.CONNECTED)
-                        .setRequiresBatteryNotLow(true)
-                        .setRequiresStorageNotLow(true)
-                        .setRequiredNetworkType(requiredNetworkType)
-                        .build()
-                )
+                .setConstraints(builder.build())
                 .build()
 
             WorkManager.getInstance(context)
-                .enqueueUniquePeriodicWork(WORK_MANAGER_KEY, existingPeriodicWorkPolicy, workRequest)
+                .enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
         }
 
-        private fun stopBackgroundUpdateCheck(context: Context) {
+        private fun stop(context: Context) {
             WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY)
         }
     }

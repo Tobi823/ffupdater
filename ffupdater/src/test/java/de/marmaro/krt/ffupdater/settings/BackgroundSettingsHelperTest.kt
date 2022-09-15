@@ -38,6 +38,11 @@ class BackgroundSettingsHelperTest {
                 true,
                 { helper: BackgroundSettingsHelper -> helper.isUpdateCheckOnMeteredAllowed }),
             Arguments.of(
+                "isUpdateCheckOnlyAllowedWhenDeviceIsIdle",
+                "background__update_check__when_device_idle",
+                false,
+                { helper: BackgroundSettingsHelper -> helper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle }),
+            Arguments.of(
                 "isDownloadEnabled",
                 "background__download__enabled",
                 true,

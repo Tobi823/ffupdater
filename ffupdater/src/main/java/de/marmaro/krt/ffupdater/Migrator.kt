@@ -17,7 +17,7 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
             migrateOldSettings2(preferences)
         }
         if (lastVersionCode != currentVersionCode) {
-            restartBackgroundJobAfterUpgrade(context)
+            BackgroundJob.forceRestartBackgroundUpdateCheck(context)
         }
 
         preferences.edit().putInt(FFUPDATER_VERSION_CODE, currentVersionCode).apply()
@@ -61,10 +61,6 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
                 .putBoolean("installer__root", true)
                 .apply()
         }
-    }
-
-    private fun restartBackgroundJobAfterUpgrade(context: Context) {
-        BackgroundJob.changeBackgroundUpdateCheck(context, null, null)
     }
 
     private fun migrateStringSetting(preferences: SharedPreferences, oldKey: String, newKey: String) {
