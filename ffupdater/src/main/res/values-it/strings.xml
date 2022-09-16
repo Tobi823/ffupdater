@@ -273,4 +273,7 @@
     <string name="chromium__title">Chromium</string>
     <string name="chromium__description">Chromium è un progetto di browser open-source che mira a costruire un modo più sicuro, più veloce e più stabile per tutti gli utenti di vivere il web. Questo sito contiene documenti di progettazione, panoramiche sull\'architettura, informazioni sui test e altro ancora per aiutaryi a imparare a costruire e lavorare con il codice sorgente di Chromium.</string>
     <string name="settings__network__trust_user_cas__title">Considera attendibili le CA aggiunte dall\'utente</string>
+    <string name="settings__background__update_check__when_device_idle__title">Verifica la disponibilità degli aggiornamenti solo se il dispositivo è inattivo</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Questa opzione è disponibile solo su Android Marshmallow o versioni successive.</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Attiva questa opzione se non desideri che le applicazioni vengano riavviate da un aggiornamento in background. Disattiva questa opzione se desideri una pianificazione più prevedibile per le verifiche degli aggiornamenti in background.</string>
 </resources>
