@@ -285,4 +285,7 @@
     <string name="chromium__description">Chromium, tüm kullanıcıların interneti deneyimlemesi için daha güvenli, daha hızlı ve daha kararlı bir yol oluşturmayı amaçlayan açık kaynaklı bir tarayıcı projesidir. Bu site, Chromium kaynak kodunu derlemeyi ve onunla çalışmayı öğrenmenize yardımcı olacak tasarım belgeleri, mimariye genel bakış, test bilgileri ve daha fazlasını içerir.</string>
     <string name="chromium__title">Chromium</string>
     <string name="chromium__warning">- Chromium, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Uygulamalarınızın bir arka plan güncellemesi tarafından yeniden başlatılmasını istemiyorsanız bunu etkinleştirin. Arka plan güncelleme denetimleri için daha öngörülebilir bir zamanlama istiyorsanız bunu devre dışı bırakın.</string>
+    <string name="settings__background__update_check__when_device_idle__title">Yalnızca aygıt boştaysa güncellemeleri denetle</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Bu seçenek yalnızca Android Marshmallow veya sonraki sürümlerde kullanılabilir.</string>
 </resources>
