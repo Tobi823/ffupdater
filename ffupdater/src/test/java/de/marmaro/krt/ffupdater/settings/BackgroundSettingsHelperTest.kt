@@ -262,6 +262,7 @@ class BackgroundSettingsHelperTest {
                 "KIWI",
                 "LOCKWISE",
                 "MULL",
+                "MULL_FROM_REPO",
                 "ORBOT",
                 "TOR_BROWSER",
                 "UNGOOGLED_CHROMIUM",
