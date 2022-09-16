@@ -23,13 +23,14 @@ class Mull(
     override val title = R.string.mull__title
     override val description = R.string.mull__description
     override val installationWarning = R.string.mull__warning
-    override val downloadSource = R.string.download_source__fdroid
+    override val downloadSource = "F-Droid"
     override val icon = R.mipmap.ic_logo_mull
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "ff81f5be56396594eee70fef2832256e15214122e2ba9cedd26005ffd4bcaaa8"
+    override val installableWithDefaultPermission = false // MullFromRepo should be used
     override val projectPage = "https://f-droid.org/en/packages/us.spotco.fennec_dos/"
     override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
 

@@ -77,7 +77,6 @@
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="firefox_release__warning">- An improved version of Firefox is also available on F-Droid under the name "Fennec F-Droid".</string>
     <string name="generic_eol_reason__browser_to_old">The browser has not been updated for a long time, so I recommend using another browser temporarily. When the developers release a new update, I will remove this warning.</string>
-    <string name="github" translatable="false">GitHub</string>
     <string name="go_back">Go back</string>
     <string name="iceraven__description">Definitely not brought to you by Mozilla! \n\nIceraven Browser is a web browser for Android, based on Mozilla\'s Fenix version of Firefox, GeckoView and Mozilla Android Components. \n\nOur goal is to be a close fork of the new Firefox for Android that seeks to provide users with more options, more opportunities to customize (including a broad extension library), and more information about the pages they visit and how their browsers are interacting with those pages.</string>
     <string name="iceraven__title">Iceraven Browser</string>
@@ -143,7 +142,6 @@
     <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
     <string name="manage_storage_activity__delete_button">Delete cached app updates.</string>
     <string name="manage_storage_activity__explanation">FFUpdater caches already downloaded app updates and stores them in the \'Android/data/de.marmaro.krt.ffupdater/files/Download\' folder.\n\nThis saves bandwidth when an app is not successfully installed or updated. Also, the cache is needed so that updates that were downloaded in the background can be installed later.\n\nIf you decide to delete these app updates, you may have to download them again.</string>
-    <string name="mozilla_ci" translatable="false">Mozilla CI</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abort</string>
     <string name="request_installation_permission_dialog__grant_permission">Grant permission</string>
@@ -226,13 +224,11 @@
     <string name="update_notification__text">Click to install update</string>
     <string name="update_notification__title">Update for %1$s available</string>
     <string name="vivaldi__description">Discover a blazingly fast Internet browser! Vivaldi is a new, free, and private web browser built with flexibility in mind. It comes packed with useful features including a built-in AdBlocker (pop-up blocker), tracking protection, and private translation. Browser options like proper desktop-style tabs, dark/light Themes, and layout choices help you make it yours.</string>
-    <string name="vivaldi__source" translatable="false">https://vivaldi.com/download/</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="mull__title">Mull Browser</string>
     <string name="mull__description">This is a privacy oriented and deblobbed web browser based on Mozilla technology. It enables many features upstreamed by the Tor Uplift project using preferences from the arkenfox-user.js project. It is recommended to install \'uBlock Origin\'.</string>
     <string name="mull__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
-    <string name="download_source__fdroid" translatable="false">F-Droid</string>
     <string name="notification__no_update_check__channel_name">No background update check</string>
     <string name="notification__no_update_check__channel_description">Notification channel for warning that no background update check was successful in the last five days.</string>
     <string name="notification__no_update_check__title">No successful background update check for five days</string>
@@ -241,7 +237,6 @@
     <string name="ungoogled_chromium__eol_reason">"The developer posted: \"I won't be able to update the versions for some time. If possible please use one of the browsers [that FFUpdater supports] in the meantime.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123"</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser for Android is the only official mobile browser supported by the Tor Project, developers of the world’s strongest tool for privacy and freedom online.</string>
-    <string name="tor_browser__source" translatable="false">https://www.torproject.org/download</string>
     <string name="orbot__description">Orbot is a free proxy app that empowers other apps to use the internet more securely. Orbot uses Tor to encrypt your Internet traffic and then hides it by bouncing through a series of computers around the world. Tor is free software and an open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, confidential business activities and relationships, and state security known as traffic analysis.</string>
     <string name="orbot__title">Orbot: Tor for Android</string>
     <string name="add_app_activity__label">Add New Application</string>
@@ -258,7 +253,6 @@
     <string name="chromium__title">Chromium</string>
     <string name="chromium__description">Chromium is an open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web. This site contains design documents, architecture overviews, testing information, and more to help you learn to build and work with the Chromium source code.</string>
     <string name="chromium__warning">- Chromium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
-    <string name="chromium__source" translatable="false">https://storage.googleapis.com/chromium-browser-snapshots</string>
     <string name="settings__background__update_check__when_device_idle__title">Update checks only if the device is idle</string>
     <string name="settings__background__update_check__when_device_idle__summary">Enable this if you do not want your applications being restarted by an background update. Disable this if you want a more predictable schedule for background update checks.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">This option is only available on Android Marshmallow or later.</string>

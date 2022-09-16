@@ -7,6 +7,7 @@ import de.marmaro.krt.ffupdater.app.impl.*
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
@@ -54,6 +55,7 @@ class DownloadApiChecker {
         } throws PackageManager.NameNotFoundException()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
         every { deviceAbiExtractor.supportedAbis } returns listOf(ABI.ARMEABI_V7A)
+        every { deviceAbiExtractor.supportedAbiStrings } returns arrayOf("armeabi-v7a")
     }
 
     @Test
@@ -241,6 +243,17 @@ class DownloadApiChecker {
     fun chromium() {
         val orbot = Chromium(ApiConsumer.INSTANCE)
         val result = runBlocking { orbot.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        val maxDays = 8 * 7
+        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+    }
+
+    @Test
+    fun mullFromRepo() {
+        val mull = MullFromRepo(CustomRepositoryConsumer(ApiConsumer.INSTANCE, deviceAbiExtractor))
+        val result = runBlocking { mull.findLatestUpdate(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

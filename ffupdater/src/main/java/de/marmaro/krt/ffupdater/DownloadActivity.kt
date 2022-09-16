@@ -185,7 +185,7 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun fetchDownloadInformation() {
         show(R.id.fetchUrl)
         val app = viewModel.app!!
-        val downloadSource = getString(app.impl.downloadSource)
+        val downloadSource = app.impl.downloadSource
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
         if (viewModel.appAppUpdateStatus == null) {

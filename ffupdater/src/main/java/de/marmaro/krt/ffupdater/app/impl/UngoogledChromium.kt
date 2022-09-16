@@ -24,7 +24,7 @@ class UngoogledChromium(
     override val title = R.string.ungoogled_chromium__title
     override val description = R.string.ungoogled_chromium__description
     override val installationWarning = R.string.ungoogled_chromium__warning
-    override val downloadSource = R.string.github
+    override val downloadSource = "GitHub"
     override val icon = R.mipmap.ic_logo_ungoogled_chromium
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86)

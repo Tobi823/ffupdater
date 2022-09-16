@@ -19,7 +19,7 @@ class FFUpdater(
     override val packageName = "de.marmaro.krt.ffupdater"
     override val title = R.string.app_name
     override val description = R.string.app_description
-    override val downloadSource = R.string.github
+    override val downloadSource = "GitHub"
     override val icon = R.mipmap.ic_launcher
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ALL_ABIS

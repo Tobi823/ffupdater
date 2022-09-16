@@ -25,7 +25,7 @@ class Bromite(
     override val title = R.string.bromite__title
     override val description = R.string.bromite__description
     override val installationWarning = R.string.bromite__warning
-    override val downloadSource = R.string.github
+    override val downloadSource = "GitHub"
     override val icon = R.mipmap.ic_logo_bromite
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64

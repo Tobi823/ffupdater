@@ -24,7 +24,7 @@ class FirefoxRelease(
     override val title = R.string.firefox_release__title
     override val description = R.string.firefox_release__description
     override val installationWarning = R.string.firefox_release__warning
-    override val downloadSource = R.string.mozilla_ci
+    override val downloadSource = "Mozilla CI"
     override val icon = R.mipmap.ic_logo_firefox_release
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
 

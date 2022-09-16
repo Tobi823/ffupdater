@@ -32,7 +32,7 @@ abstract class AppBase {
     abstract val title: Int
     abstract val description: Int
     open val installationWarning: Int? = null
-    abstract val downloadSource: Int
+    abstract val downloadSource: String
     abstract val icon: Int
     abstract val minApiLevel: Int
     abstract val supportedAbis: List<ABI>

@@ -25,7 +25,7 @@ class Chromium(
     override val title = R.string.chromium__title
     override val description = R.string.chromium__description
     override val installationWarning = R.string.chromium__warning
-    override val downloadSource = R.string.chromium__source
+    override val downloadSource = "https://storage.googleapis.com/chromium-browser-snapshots"
     override val icon = R.mipmap.ic_logo_chromium
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ARM32_ARM64

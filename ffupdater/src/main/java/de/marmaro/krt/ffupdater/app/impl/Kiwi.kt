@@ -28,7 +28,7 @@ class Kiwi(
     override val title = R.string.kiwi__title
     override val description = R.string.kiwi__description
     override val installationWarning = R.string.kiwi__warning
-    override val downloadSource = R.string.github
+    override val downloadSource = "GitHub"
     override val icon = R.mipmap.ic_logo_kiwi
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ARM32_ARM64_X86_X64

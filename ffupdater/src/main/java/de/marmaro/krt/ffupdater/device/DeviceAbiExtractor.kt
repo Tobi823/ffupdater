@@ -3,11 +3,11 @@ package de.marmaro.krt.ffupdater.device
 import android.os.Build
 
 class DeviceAbiExtractor {
+    val supportedAbiStrings: Array<String> = Build.SUPPORTED_ABIS ?: emptyArray()
     val supportedAbis = findSupportedAbis()
 
     private fun findSupportedAbis(): List<ABI> {
-        val supportedAbis = Build.SUPPORTED_ABIS ?: return listOf()
-        return supportedAbis.mapNotNull {
+        return supportedAbiStrings.map {
             when (it) {
                 "arm64-v8a" -> ABI.ARM64_V8A
                 "armeabi-v7a" -> ABI.ARMEABI_V7A

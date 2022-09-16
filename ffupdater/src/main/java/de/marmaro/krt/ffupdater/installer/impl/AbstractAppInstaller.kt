@@ -37,8 +37,10 @@ abstract class AbstractAppInstaller(
         }
         val fileCertHash = fileResult.hexString
         if (!fileResult.isValid) {
+            val message = "Downloaded application is NOT verified. Expected ${app.impl.signatureHash} but " +
+                    "was $fileCertHash."
             val errorMessage = context.getString(download_activity__downloaded_application_is_not_verified)
-            throw InstallationFailedException("Downloaded application is NOT verified", -100, errorMessage)
+            throw InstallationFailedException(message, -100, errorMessage)
         }
 
         // in failure, this will throw InstallationFailedException
