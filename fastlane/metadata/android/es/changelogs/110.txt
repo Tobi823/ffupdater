@@ -2,4 +2,4 @@
   Weisner 
 * Mejorado el texto de notificación cuando la comprobación de la actualización en segundo plano, cuando falla durante cinco días seguidos (valor antiguo: dos
   días, pero era demasiado bajo para algunos usuarios).  
-* Mejorar el informe de fallos y la marca de tiempo de la última comprobación de actualización en segundo plano con éxito.
+* Mejorar el informe de fallos y la marca de tiempo de la última comprobación de actualización en segundo plano con éxito
