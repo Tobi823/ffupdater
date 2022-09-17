@@ -10,7 +10,12 @@
 \n%2$s
 \n
 \n¿Todavía quiere instalar %1$s\?</item>
-        <item quantity="other">%1$s tiene los siguientes problemas:
+        <item quantity="many">%1$s tienen los siguientes problemas:
+\n
+\n%2$s
+\n
+\n¿Todavía quiere instalar %1$s\?</item>
+        <item quantity="other">%1$s tienen los siguientes problemas:
 \n
 \n%2$s
 \n
@@ -21,7 +26,12 @@
         <item quantity="one">%1$s tiene el siguiente problema:
 \n
 \n%2$s</item>
-        <item quantity="other">%1$s tiene los siguientes problemas:
+        <item quantity="many">%1$s tienen los siguientes problemas:
+\n
+\n%2$s
+\n
+\n¿Todavía quiere instalar %1$s\?</item>
+        <item quantity="other">%1$s tienen los siguientes problemas:
 \n
 \n%2$s</item>
     </plurals>
@@ -280,4 +290,7 @@
     <string name="chromium__title">Chromium</string>
     <string name="chromium__description">Chromium es un proyecto de navegador de código abierto cuyo objetivo es construir una forma más segura, rápida y estable para que todos los usuarios en la web. Este sitio contiene documentos de diseño, descripciones de la arquitectura, información sobre las pruebas y mucho más para ayudarte a construir y trabajar con el código fuente de Chromium.</string>
     <string name="chromium__warning">- Chromium utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado de Chrome.</string>
+    <string name="settings__background__update_check__when_device_idle__title">Las actualizaciones sólo se comprueban si el dispositivo está inactivo</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Esta opción solo está disponible en Android Marshmallow o posterior.</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Habilite esta opción si no desea que sus aplicaciones se reinicien por una actualización en segundo plano. Desactívela si desea un horario más predecible para las comprobaciones de las actualizaciones en segundo plano.</string>
 </resources>
