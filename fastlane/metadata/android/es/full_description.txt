@@ -1,21 +1,23 @@
 Instala y actualiza los siguientes navegadores:
 
 Navegadores de Mozilla o basados en Firefox:
-- Firefox Browser, Firefox para Android Beta, Firefox Nightly
+- Navegador Firefox, Firefox para Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
-_ Iceraven
+- Iceraven
 - Navegador Mull
+- Navegador Tor
 
-Buenos navegadores de privacidad:
+Buenos navegadores con la privacidad:
 - Bromite, Bromite SystemWebView
 
-Navegadores que son mejores que Google Chrome:
+Navegadores que son mejores que Google Chrome
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
-- Kiwi Browser Siguiente
+- Chromium
+- Kiwi Browser
 - Vivaldi
 
 FFUpdater comprueba las actualizaciones en segundo plano y también las descarga. En dispositivos Android 12+ o con root, FFUpdater también puede actualizar las aplicaciones sin la interacción del usuario.
 
 Visita https://notabug.org/Tobiwan/ffupdater/src/master/README.md para más información.
 
-Registro de cambios traducido: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/es/changelogs
+Registro de cambios: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/en-US/changelogs
