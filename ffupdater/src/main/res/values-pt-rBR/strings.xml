@@ -10,15 +10,23 @@
 \n%2$s
 \n
 \nAinda quer instalar %1$s\?</item>
+        <item quantity="many">%1$s tem os seguintes problemas:
+\n
+\n%2$s
+\n
+\nVocê ainda quer instalar %1$s\?</item>
         <item quantity="other">%1$s tem os seguintes problemas:
 \n
 \n%2$s
 \n
-\nAinda quer instalar %1$s\?</item>
+\nVocê ainda quer instalar %1$s\?</item>
     </plurals>
     <string name="app_warning_before_installation_dialog__title">Aviso</string>
     <plurals name="app_warning_dialog__message">
         <item quantity="one">%1$s tem o seguinte problema:
+\n
+\n%2$s</item>
+        <item quantity="many">%1$s tem os seguintes problemas:
 \n
 \n%2$s</item>
         <item quantity="other">%1$s tem o seguintes problemas:
