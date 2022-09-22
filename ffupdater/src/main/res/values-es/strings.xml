@@ -293,4 +293,8 @@
     <string name="settings__background__update_check__when_device_idle__title">Las actualizaciones sólo se comprueban si el dispositivo está inactivo</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Esta opción solo está disponible en Android Marshmallow o posterior.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Habilite esta opción si no desea que sus aplicaciones se reinicien por una actualización en segundo plano. Desactívela si desea un horario más predecible para las comprobaciones de las actualizaciones en segundo plano.</string>
+    <string name="notification__no_update_check__title">No se ha realizado correctamente la comprobación de actualizaciones durante cinco días</string>
+    <string name="crash_report_activity__label">Reportador de fallos</string>
+    <string name="notification__no_update_check__channel_description">Forma de notificar para advertir que ninguna verificación de actualización de antecedentes fue exitosa en los últimos cinco días.</string>
+    <string name="notification__no_update_check__channel_name">No hay comprobación de actualizaciones antiguas</string>
 </resources>
