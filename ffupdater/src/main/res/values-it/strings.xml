@@ -276,4 +276,6 @@
     <string name="settings__background__update_check__when_device_idle__title">Verifica la disponibilità degli aggiornamenti solo se il dispositivo è inattivo</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Questa opzione è disponibile solo su Android Marshmallow o versioni successive.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Attiva questa opzione se non desideri che le applicazioni vengano riavviate da un aggiornamento in background. Disattiva questa opzione se desideri una pianificazione più prevedibile per le verifiche degli aggiornamenti in background.</string>
+    <string name="crash_report_activity__label">Segnalatore di arresti anomali</string>
+    <string name="add_app_activity__title_end_of_live_browser">Fine del browser live</string>
 </resources>
