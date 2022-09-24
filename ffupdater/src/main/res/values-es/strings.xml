@@ -28,9 +28,7 @@
 \n%2$s</item>
         <item quantity="many">%1$s tienen los siguientes problemas:
 \n
-\n%2$s
-\n
-\n¿Todavía quiere instalar %1$s\?</item>
+\n%2$s</item>
         <item quantity="other">%1$s tienen los siguientes problemas:
 \n
 \n%2$s</item>
