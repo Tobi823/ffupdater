@@ -277,4 +277,7 @@
     <string name="chromium__title">Chromium</string>
     <string name="chromium__warning">- Chromium používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="chromium__description">Chromium je prohlížeč s otevřeným zdrojovým kódem, jehož cílem je vytvořit bezpečnější, rychlejší a stabilnější způsob používání webu pro všechny uživatele.</string>
+    <string name="settings__background__update_check__when_device_idle__title">Kontrola aktualizací pouze v případě, že je zařízení nečinné</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Tuto možnost povolte, pokud nechcete, aby se vaše aplikace restartovaly při aktualizaci na pozadí. Zakažte tuto možnost, pokud chcete předvídatelnější plán kontrol aktualizací na pozadí.</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Tato možnost je dostupná pouze pro Android Marshmallow nebo novější.</string>
 </resources>
