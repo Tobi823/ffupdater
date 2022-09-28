@@ -3,12 +3,15 @@ Pobieraj, instaluj i aktualizuj przeglądarki z Mozilli lub oparte na przegląda
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
+- Tor Browser
 
 dobre przeglądarki do ochrony prywatności:
 - Bromite, Bromite SystemWebView
 
 przeglądarki, które są lepsze niż Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- Kiwi Browser Next
 - Vivaldi
 
 FFUpdater ser etter nye versjoner i bakgrunnen og laster dem ned. På Android 12+, eller enheter med rot-tilgang kan det også oppgradere programmer uten interaksjon fra brukeren.
