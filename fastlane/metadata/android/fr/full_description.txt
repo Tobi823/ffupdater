@@ -3,12 +3,15 @@ Téléchargez, installez et mettez à jour les navigateurs de Mozilla ou basés 
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
+- Tor Browser
 
 bons navigateurs de confidentialité :
 - Bromite, Bromite SystemWebView
 
 navigateurs qui sont meilleurs que Google Chrome :
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- Kiwi Browser Next
 - Vivaldi
 
 FFUpdater vérifie les mises à jour en arrière-plan et les télécharge également. Sur les appareils Android 12+ ou root, FFUpdater peut également mettre à jour les applications sans interaction de l'utilisateur.
