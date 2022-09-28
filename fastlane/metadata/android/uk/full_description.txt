@@ -5,12 +5,14 @@
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
+- Tor Browser
 
 Добрі конфіденційні браузери:
 - Bromite, Bromite SystemWebView
 
 Браузери, що кращі, ніж Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
 - Kiwi Browser Next
 - Vivaldi
 
