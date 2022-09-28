@@ -5,12 +5,14 @@ Mozilla vagy Firefox alapú böngészők:
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
+- Tor Browser
 
 Jó adatvédelmi böngészők:
 - Bromite, Bromite SystemWebView
 
 A Google Chrome-nál jobb böngészők:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
 - Kiwi Browser Következő
 - Vivaldi
 
