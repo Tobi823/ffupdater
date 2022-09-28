@@ -3,12 +3,16 @@ Mozilla 製または Firefox ベースのブラウザのダウンロード、イ
 - Firefox Focus、Firefox Klar
 - Iceraven
 - Mull Browser
+- Tor Browser
 
 優れたプライバシーブラウザ
 - Bromite、Bromite SystemWebView
 
 Google Chromeより優れたブラウザ
-- Brave Private Browser、Brave Browser (Beta)、Brave Browser (Nightly)。
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- Kiwi Browser Next
+- Vivaldi。
 - ヴィヴァルディ
 
 FFUpdaterは、バックグラウンドでアップデートをチェックし、ダウンロードも行います。Android 12+またはrootデバイスでは、FFUpdaterはユーザーの操作なしでアプリを更新することも可能です。
