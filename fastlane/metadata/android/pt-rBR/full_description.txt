@@ -5,7 +5,7 @@ Baixar, instalar e atualizar navegadores do Mozilla ou baseados no Firefox:
 - Mull Browser
 - Tor Browser
 
-bons navegadores de privacidade:
+Bons navegadores de privacidade:
 - Bromite, Bromite SystemWebView
 
 navegadores que são melhores que o Google Chrome:
