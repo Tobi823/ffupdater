@@ -3,12 +3,15 @@
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
+- Tor Browser
 
 хорошие браузеры для обеспечения конфиденциальности:
 - Bromite, Bromite SystemWebView
 
 браузеры, которые лучше, чем Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- Kiwi Browser Next
 - Vivaldi
 
 FFUpdater проверяет наличие обновлений в фоновом режиме и также загружает их. На устройствах с Android 12+ или root FFUpdater также может обновлять приложения без участия пользователя.
