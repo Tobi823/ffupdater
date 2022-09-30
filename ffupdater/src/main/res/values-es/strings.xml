@@ -295,4 +295,5 @@
     <string name="crash_report_activity__label">Reportador de fallos</string>
     <string name="notification__no_update_check__channel_description">Forma de notificar para advertir que ninguna verificación de actualización de antecedentes fue exitosa en los últimos cinco días.</string>
     <string name="notification__no_update_check__channel_name">No hay comprobación de actualizaciones antiguas</string>
+    <string name="add_app_activity__title_end_of_live_browser">Fin del navegador en vivo</string>
 </resources>
