@@ -5,32 +5,32 @@
     <string name="app_icon">icono de aplicación</string>
     <string name="app_name">FFUpdater</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">%1$s tiene el siguiente problema:
-\n
-\n%2$s
-\n
-\n¿Todavía quiere instalar %1$s\?</item>
-        <item quantity="many">%1$s tienen los siguientes problemas:
-\n
-\n%2$s
-\n
-\n¿Todavía quiere instalar %1$s\?</item>
-        <item quantity="other">%1$s tienen los siguientes problemas:
-\n
-\n%2$s
-\n
-\n¿Todavía quiere instalar %1$s\?</item>
+        <item quantity="one">"Tiene el siguiente problema:  %1$s
+\n 
+\n%2$s 
+\n  
+\n¿Todavía quiere instalar %1$s\?"</item>
+        <item quantity="many">"Tienen los siguientes problemas:  %1$s
+\n 
+\n%2$s 
+\n  
+\n¿Todavía quiere instalar %1$s\?"</item>
+        <item quantity="other">"Tienen los siguientes problemas:  %1$s
+\n 
+\n%2$s 
+\n  
+\n¿Todavía quiere instalar %1$s\?"</item>
     </plurals>
     <string name="app_warning_before_installation_dialog__title">Advertencia</string>
     <plurals name="app_warning_dialog__message">
-        <item quantity="one">%1$s tiene el siguiente problema:
-\n
+        <item quantity="one">Tiene el siguiente problema: %1$s 
+\n 
 \n%2$s</item>
-        <item quantity="many">%1$s tienen los siguientes problemas:
-\n
+        <item quantity="many">Tienen los siguientes problemas: %1$s 
+\n 
 \n%2$s</item>
-        <item quantity="other">%1$s tienen los siguientes problemas:
-\n
+        <item quantity="other">Tienen los siguientes problemas: %1$s 
+\n 
 \n%2$s</item>
     </plurals>
     <string name="app_warning_dialog__title">Advertencia</string>
@@ -103,9 +103,7 @@
     <string name="iceraven__title">Navegador Iceraven</string>
     <string name="iceraven__warning">- El creador no da ninguna garantía de seguridad, ni de actualizaciones, ni siquiera de estabilidad.
 \n - El proyecto tarda más de lo habitual en proporcionar actualizaciones de seguridad.</string>
-    <string name="infobox">Este es un actualizador para navegadores amigables con la privacidad. Haga clic en el botón más para instalar nuevas aplicaciones. Deslice hacia abajo para forzar una verificación de nuevas actualizaciones. De forma predeterminada, la aplicación comprobará periódicamente si hay actualizaciones en segundo plano, que luego se descargarán y, finalmente, se instalarán. Haga clic en el engranaje para personalizar el comportamiento en la configuración. 
-\n 
-\nÚltima comprobación de actualización de fondo exitosa: %1$s</string>
+    <string name="infobox">Esta es una actualización para navegadores amigables con la privacidad. Haga clic en el botón más para instalar nuevas aplicaciones. Deslice hacia abajo para forzar una verificación de nuevas actualizaciones. De forma predeterminada, la aplicación buscará periódicamente actualizaciones en segundo plano, que luego se descargarán y finalmente se instalarán. Haga clic en el engranaje para personalizar el comportamiento en la configuración. Última verificación de actualización de antecedentes exitosa: %1$s</string>
     <string name="app_card__information_about_the_app">información acerca de la aplicación</string>
     <string name="download_activity__delete_cache_button_text">limpiar caché</string>
     <string name="download_activity__delete_cache_explanation">Si cree que FFUpdater ha almacenado en la caché una actualización de aplicación defectuosa o si quieres ahorrar espacio, haga clic en el botón para eliminar el archivo descargado.</string>
@@ -137,7 +135,7 @@
     <string name="notification__install_error__channel_descr">Canal de notificaciones para actualizaciones fallidas de %1$s.</string>
     <string name="notification__install_error__channel_name">Notificación de fallo de actualización de %1$s</string>
     <string name="notification__install_error__text">Error (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s no pudo ser actualizado</string>
+    <string name="notification__install_error__title">%1$s no se pudo actualizar</string>
     <string name="notification__install_success__channel_descr">Canal de notificaciones para actualizaciones exitosas de %1$s.</string>
     <string name="notification__install_success__channel_name">Notificación de actualización exitosa de %1$s</string>
     <string name="notification__install_success__text">La aplicación ha sido actualizada exitosamente en segundo plano.</string>
@@ -281,7 +279,7 @@
     <string name="add_app_activity__title_based_on_firefox">Basado en Firefox</string>
     <string name="add_app_activity__title_other_applications">Otras Aplicaciones</string>
     <string name="add_app_activity__add_new_application">Añadir nueva aplicación</string>
-    <string name="add_app_activity__title_good_privacy_browsers">Buenos navegadores para la privacidad</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Buenos navegadores de privacidad</string>
     <string name="add_app_activity__title_better_than_google_chrome">Mejor que Google Chrome</string>
     <string name="settings__network__trust_user_cas__summary">Activa si el tráfico de datos debe ser inspeccionado y alterado por otras aplicaciones. Si no está seguro, mantenga esta opción desactivada.</string>
     <string name="settings__network__trust_user_cas__title">Confiar en las CA agregadas por el usuario</string>
@@ -292,8 +290,8 @@
     <string name="settings__background__update_check__when_device_idle__unsupported">Esta opción solo está disponible en Android Marshmallow o posterior.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Habilite esta opción si no desea que sus aplicaciones se reinicien por una actualización en segundo plano. Desactívela si desea un horario más predecible para las comprobaciones de las actualizaciones en segundo plano.</string>
     <string name="notification__no_update_check__title">No se ha realizado correctamente la comprobación de actualizaciones durante cinco días</string>
-    <string name="crash_report_activity__label">Reportador de fallos</string>
+    <string name="crash_report_activity__label">Reportero de fallos</string>
     <string name="notification__no_update_check__channel_description">Forma de notificar para advertir que ninguna verificación de actualización de antecedentes fue exitosa en los últimos cinco días.</string>
-    <string name="notification__no_update_check__channel_name">No hay comprobación de actualizaciones antiguas</string>
-    <string name="add_app_activity__title_end_of_live_browser">Fin del navegador en vivo</string>
+    <string name="notification__no_update_check__channel_name">No hay verificación de antecedentes de la actualización</string>
+    <string name="add_app_activity__title_end_of_live_browser">Fin de la navegación en vivo</string>
 </resources>
