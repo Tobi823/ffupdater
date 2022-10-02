@@ -1,5 +1,5 @@
-* Gracias a Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat y Francois Marier por mejorar la traducción.
-* Gracias a François Marier por arreglar la lógica del actualizador de Brave - las versiones beta y nightly no probadas por Q&amp;A serán ignoradas (Tobiwan/ffupdater#105)
-* Hacer FFUpdater más resistente para los casos en que las firmas de un archivo APK no se puede extraer
-* Manejar mejor los problemas temporales de la red
+* Gracias a Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat y Francois Marier por mejorar la traducción. 
+* Gracias a François Marier por arreglar la lógica del actualizador de Brave - las versiones beta y nightly no probadas por Q&amp;A serán ignoradas (Tobiwan/ffupdater#105) 
+* Hacer FFUpdater más resistente para los casos en que las firmas de un archivo APK no se puede extraer 
+* Manejar mejor los problemas temporales de la red 
 * Actualizar las dependencias
