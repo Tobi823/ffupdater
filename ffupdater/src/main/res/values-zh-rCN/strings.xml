@@ -72,7 +72,7 @@
     <string name="notification__error__channel_descr">显示后台更新检查器错误</string>
     <string name="notification__error__channel_name">后台错误</string>
     <string name="firefox_beta__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
-    <string name="firefox_beta__title">Firefox for Android Beta（公测版）</string>
+    <string name="firefox_beta__title">Firefox 公测版</string>
     <string name="firefox_beta__warning">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
     <string name="firefox_focus__description">这是 Firefox 的一个衍生修改版，旨在增强隐私。</string>
     <string name="firefox_focus__title">Firefox Focus</string>
@@ -82,8 +82,8 @@
 \n
 \nFirefox Nightly（每夜版） 是 Mozilla Firefox 新版本的开发者通道。
 \n
-\nFirefox Nightly （每夜版）旨在展示 Firefox 的更多实验特性。 Nightly 通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
-    <string name="firefox_nightly__title">Firefox Nightly（每夜版）</string>
+\nFirefox 每夜版旨在展示 Firefox 的更多实验特性。 每夜版通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
+    <string name="firefox_nightly__title">Firefox 每夜版</string>
     <string name="firefox_nightly__warning">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
     <string name="firefox_release__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
     <string name="firefox_release__title">Firefox 浏览器</string>
@@ -142,7 +142,7 @@
     <string name="installed_version">已安装：%1$s</string>
     <string name="intent_installer__likely_storage_failure">该操作可能由于存储问题失败。例如，设备可能空间不足，或者外部存储媒介可能不可用。用户可以帮助释放存储空间或插入其他的的外部存储媒介。</string>
     <string name="kiwi__description">Kiwi 浏览器可以轻松浏览互联网、阅读新闻、观看视频和听音乐。</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="kiwi__title">Kiwi Next 浏览器</string>
     <string name="kiwi__warning">- Kiwi 基于了 Google Chrome 的技术，从而间接维护了 Chromium 渲染引擎的垄断地位。
 \n- Kiwi 不是一个理想的隐私浏览器，但其有良好的插件支持。
 \n- 搜索引擎会为使用 Kiwi 浏览器完成的每一次搜索而对其付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。
@@ -220,7 +220,7 @@
     <string name="ungoogled_chromium__description">Google Chromium，没有与 Google 整合。
 \n
 \n在不登录 Google 帐户的情况下，Chromium 在安全和隐私方面做得很好。但 Chromium 仍然部分依赖于 Google 网络服务和二进制文件。此外，Google 对用户将 Chromium 设计得非常简单直观，这意味着他们在内部操作的透明度和控制方面做出了妥协。</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="ungoogled_chromium__title">去 Google 化（Ungoogled）Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium 使用了 Google Chrome 的技术基础，从而间接维护了 Chromium 渲染引擎的垄断地位。</string>
     <string name="unsupported_abi_dialog__message">所选浏览器与您手机的处理器不兼容。请选择其他浏览器。</string>
     <string name="unsupported_abi_dialog__title">不支持的设备</string>
@@ -254,9 +254,30 @@
     <string name="mull__description">这是一款基于 Mozilla 技术、以隐私为导向的完全开源的网页浏览器。其使用了 arkenfox-user.js 项目的偏好设置，开启了许多以 Tor Uplift 项目为上游实现的功能。推荐同时安装 \'uBlock Origin\' 扩展。</string>
     <string name="mull__warning">FFUpdater 要从 F-Droid 服务器下载文件，因此速度不会更快。</string>
     <string name="notification__no_update_check__channel_name">没有后台更新检查</string>
-    <string name="notification__no_update_check__channel_description">用于警告过去五天没有成功进行后台更新检查的通知渠道。</string>
-    <string name="notification__no_update_check__title">五天内没有成功后台更新检查</string>
-    <string name="notification__no_update_check__text">在过去的五天里，FFUpdater无法在后台检查更新。如果您的智能手机长时间处于飞行模式，那么可以忽略此消息。如果不是，请单击此处查看错误报告。</string>
+    <string name="notification__no_update_check__channel_description">用于警告过去五天没有成功进行后台更新检查的通知通道。</string>
+    <string name="notification__no_update_check__title">五天内没有成功后台检查更新</string>
+    <string name="notification__no_update_check__text">在过去的五天里，FFUpdater 无法在后台检查更新。如果您的智能手机长时间处于飞行模式，那么可以忽略此消息。如果不是，请单击此处查看错误报告。</string>
     <string name="app_card__open_project_page">在浏览器中打开项目页面</string>
-    <string name="ungoogled_chromium__eol_reason">开发者发布的消息：“我将有一段时间无法更新版本。 如果可能，请同时使用FFUpdater支持的浏览器之一。” https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="ungoogled_chromium__eol_reason">开发者消息：“我将有一段时间无法更新版本。 如果可能，请同时使用 FFUpdater 支持的其他浏览器之一。” https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="orbot__title">Orbot：Android 版 Tor</string>
+    <string name="settings__background__update_check__when_device_idle__title">仅在设备空闲时检查更新</string>
+    <string name="settings__background__update_check__when_device_idle__summary">如果不希望应用因后台更新而重启，请启用该选项。如果希望更好预测后台检查更新的时间，请禁用该选项。</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">此选项仅在 Android 棉花糖（6.0）及以上版本可用。</string>
+    <string name="tor_browser__title">Tor 浏览器</string>
+    <string name="tor_browser__description">Tor 浏览器 Android 版是 Tor 项目支持的唯一官方移动浏览器，他们是世界上最强大的在线隐私和自由工具的一群开发者。</string>
+    <string name="orbot__description">Orbot 是一款免费的代理应用程序，可以让其他应用程序更安全地使用互联网。Orbot 使用 Tor 来加密你的互联网流量，后者通过在世界各地的一系列计算机之间“跳跃”来隐藏流量。Tor 是一款自由软件，也代表一个开放的网络，它可以帮助您抵御威胁个人自由和隐私、机密商业活动和商业关系以及所谓流量分析形式的网络监视。</string>
+    <string name="chromium__description">Chromium 是一个开源浏览器项目，致力于为各种用户打造更安全、更快和更稳定的用网之路。这个网站包含了设计文档、架构总览、测试信息和更多帮助您学习构建和使用 Chromium 源代码。</string>
+    <string name="add_app_activity__label">添加新应用</string>
+    <string name="crash_report_activity__label">崩溃报告器</string>
+    <string name="add_app_activity__title_good_privacy_browsers">优秀的隐私浏览器</string>
+    <string name="add_app_activity__title_better_than_google_chrome">比 Google Chrome 更优良</string>
+    <string name="add_app_activity__title_from_mozilla">Mozilla 出品</string>
+    <string name="add_app_activity__title_based_on_firefox">基于 Firefox</string>
+    <string name="add_app_activity__title_other_applications">其他应用</string>
+    <string name="add_app_activity__title_end_of_live_browser">停止更新的浏览器</string>
+    <string name="add_app_activity__add_new_application">添加新应用</string>
+    <string name="settings__network__trust_user_cas__summary">如果数据流量应该由其他应用程序检查和更改，则启用。如果不确定，请禁用此选项。</string>
+    <string name="settings__network__trust_user_cas__title">信任用户添加的证书</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__warning">- Chromium 使用了 Google Chrome 的技术基础，因此间接支持了 Chromium 渲染引擎的垄断地位。</string>
 </resources>
