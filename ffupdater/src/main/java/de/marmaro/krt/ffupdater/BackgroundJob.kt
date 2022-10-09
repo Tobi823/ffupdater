@@ -19,11 +19,13 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroun
 import de.marmaro.krt.ffupdater.installer.entity.Installer.ROOT_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exception.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.showInstallationError
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.showUpdateIsAvailable
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
@@ -249,6 +251,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                     appCache.delete(context)
                 }
+            } catch (e: UserInteractionIsRequiredException) {
+                showUpdateIsAvailable(context, app)
+                if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
+                    appCache.delete(context)
+                }
             } catch (e: InstallationFailedException) {
                 val ex = RuntimeException("Failed to install ${app.name} in the background.", e)
                 showInstallationError(context, app, e.errorCode, e.errorMessage, ex)
@@ -261,7 +268,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     private fun showUpdateNotification(appsWithUpdates: List<App>) {
         BackgroundNotificationBuilder.hideUpdateIsAvailable(context)
-        appsWithUpdates.forEach { BackgroundNotificationBuilder.showUpdateIsAvailable(context, it) }
+        appsWithUpdates.forEach { showUpdateIsAvailable(context, it) }
     }
 
     companion object {
