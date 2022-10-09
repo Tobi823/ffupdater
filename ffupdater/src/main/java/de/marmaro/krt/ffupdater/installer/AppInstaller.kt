@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.installer
 import android.content.Context
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -16,10 +15,6 @@ import java.io.File
 
 interface AppInstaller : DefaultLifecycleObserver {
     suspend fun installAsync(context: Context): Deferred<InstallResult>
-
-    override fun onCreate(owner: LifecycleOwner) {
-        throw Exception("Not needed by this installer")
-    }
 
     companion object {
         fun createForegroundAppInstaller(activity: ComponentActivity, app: App, file: File): AppInstaller {
