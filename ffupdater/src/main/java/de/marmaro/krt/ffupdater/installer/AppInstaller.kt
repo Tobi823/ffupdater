@@ -18,7 +18,7 @@ interface AppInstaller : DefaultLifecycleObserver {
     suspend fun installAsync(context: Context): Deferred<InstallResult>
 
     override fun onCreate(owner: LifecycleOwner) {
-        throw Exception("Is not supported by this installer")
+        throw Exception("Not needed by this installer")
     }
 
     companion object {
