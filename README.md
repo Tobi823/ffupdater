@@ -33,6 +33,10 @@ Browser which are better than Google Chrome:
 - [Kiwi Browser Next](https://github.com/kiwibrowser/src.next)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 
+Other applications:
+
+- [Orbot](https://github.com/guardianproject/orbot)
+
 FFUpdater checks for updates in the background and downloads them as well. On Android 12+ or root devices,
 FFUpdater can also update the apps without user interaction.
 
@@ -73,6 +77,7 @@ The applications are downloaded from these locations:
   Beta: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.beta.latest>
 - Iceraven: <https://api.github.com/repos/fork-maintainers/iceraven-browser/releases/latest>
 - Kiwi Browser Next: <https://api.github.com/repos/kiwibrowser/src.next/releases>
+- Orbot: <https://api.github.com/repos/kiwibrowser/guardianproject/orbot>
 - Tor Browser: <https://www.torproject.org/download>
 - Vivaldi: <https://vivaldi.com/download/>
 
@@ -118,10 +123,6 @@ repository or the official *F-Droid* repository) the app version was installed
 - Firefox Nightly: Replace the minutes with 'xx' because FFUpdater can only access the start time of the build
   and not the version name of the app update (finish time). The builds always starts at 5:00 and 17:00 and
   usually takes a few minutes.
-- Tor Browser / Orbot: I will not support them because they can be installed with F-Droid.
-  (Go to Settings > Repositories > Enable "Guardian Project Official Releases".)
-  I don't feel confident enough that I can install and update the Tor Browser / Orbot securely
-  (because I think there is much more at stake than with other browsers).
 - Please reopen FFUpdater after moving it to the internal/external storage.
 
 ## Git repositories
