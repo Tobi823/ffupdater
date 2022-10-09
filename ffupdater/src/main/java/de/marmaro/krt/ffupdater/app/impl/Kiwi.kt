@@ -42,7 +42,7 @@ class Kiwi(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
+        val fileSuffix = when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "-arm-github.apk"
             ABI.ARM64_V8A -> "-arm64-github.apk"
             ABI.X86 -> "-x86-github.apk"

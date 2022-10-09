@@ -57,12 +57,13 @@ class Vivaldi(
     }
 
     private fun extractVersionAndDownloadUrl(content: String): Pair<String, String> {
-        val regexPattern = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
-            ABI.ARMEABI_V7A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_armeabi-v7a.apk)""""
-            ABI.ARM64_V8A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_arm64-v8a.apk)""""
-            ABI.X86_64 -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_x86-64.apk)""""
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
+        val regexPattern =
+            when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
+                ABI.ARMEABI_V7A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_armeabi-v7a.apk)""""
+                ABI.ARM64_V8A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_arm64-v8a.apk)""""
+                ABI.X86_64 -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_x86-64.apk)""""
+                else -> throw IllegalArgumentException("ABI is not supported")
+            }
 
         val regexMatch = Regex(regexPattern).find(content)
         checkNotNull(regexMatch) { "Can't find download link with regex pattern '$regexPattern'." }

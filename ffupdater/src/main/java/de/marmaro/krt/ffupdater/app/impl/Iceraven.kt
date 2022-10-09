@@ -43,7 +43,7 @@ class Iceraven(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val fileSuffix = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
+        val fileSuffix = when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
             ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
             ABI.X86 -> "browser-x86-forkRelease.apk"

@@ -67,7 +67,7 @@ class Orbot(
     }
 
     private fun getAssetSuffix(): String {
-        return when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
+        return when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
             ABI.ARMEABI_V7A -> "-fullperm-universal-release.apk"
             ABI.ARM64_V8A -> "-fullperm-arm64-v8a-release.apk"
             ABI.X86 -> "-fullperm-universal-release.apk"

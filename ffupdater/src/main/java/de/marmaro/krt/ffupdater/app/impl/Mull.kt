@@ -41,7 +41,7 @@ class Mull(
         val result = fdroidConsumer.getLatestUpdate(packageName, context)
 
         check(result.versionCodesAndDownloadUrls.size == 2)
-        val codeAndUrl = when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
+        val codeAndUrl = when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
             ABI.ARM64_V8A -> result.versionCodesAndDownloadUrls.maxByOrNull { it.versionCode }!!
             ABI.ARMEABI_V7A -> result.versionCodesAndDownloadUrls.minByOrNull { it.versionCode }!!
             else -> throw IllegalArgumentException("ABI is not supported")

@@ -68,7 +68,7 @@ class Brave(
 
     private fun getNameOfApkFile(): String {
         return if (DeviceSdkTester.supportsAndroidNougat()) {
-            when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
+            when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
                 ARMEABI_V7A -> "BraveMonoarm.apk"
                 ARM64_V8A -> "BraveMonoarm64.apk"
                 X86 -> "BraveMonox86.apk"
@@ -76,7 +76,7 @@ class Brave(
                 else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
             }
         } else {
-            when (deviceAbiExtractor.supportedAbis.first { abi -> abi in ARM32_X86 }) {
+            when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in ARM32_X86 }) {
                 ARMEABI_V7A -> "Bravearm.apk"
                 X86 -> "Bravex86.apk"
                 else -> throw IllegalArgumentException("ABI for Android 6 is not supported")

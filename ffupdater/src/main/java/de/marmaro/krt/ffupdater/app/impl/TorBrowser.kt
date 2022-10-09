@@ -82,7 +82,7 @@ class TorBrowser(
     }
 
     private fun getAbiString(): String {
-        return when (deviceAbiExtractor.supportedAbis.first { abi -> abi in supportedAbis }) {
+        return when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
             ABI.ARM64_V8A -> "aarch64"
             ABI.ARMEABI_V7A -> "armv7"
             ABI.X86_64 -> "x86_64"
