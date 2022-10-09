@@ -15,16 +15,16 @@ import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import java.net.URL
 import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import javax.net.ssl.HttpsURLConnection
 
 
 /**
@@ -246,11 +246,18 @@ class DownloadApiChecker {
         assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
     }
 
-    private fun verifyThatDownloadLinkAvailable(urlString: String) {
-        val url = URL(urlString)
-        val connection = url.openConnection() as HttpsURLConnection
-        val status = connection.responseCode
-        assertTrue(status >= 200) { "$status of connection must be >= 200" }
-        assertTrue(status < 300) { "$status of connection must be < 300" }
+    private fun verifyThatDownloadLinkAvailable(url: String) {
+        OkHttpClient.Builder()
+            .build()
+            .newCall(
+                Request.Builder()
+                    .url(url)
+                    .method("HEAD", null)
+                    .build()
+            )
+            .execute()
+            .use { response ->
+                assertTrue(response.isSuccessful)
+            }
     }
 }
