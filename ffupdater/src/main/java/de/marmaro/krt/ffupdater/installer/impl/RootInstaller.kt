@@ -3,8 +3,6 @@ package de.marmaro.krt.ffupdater.installer.impl
 import android.content.Context
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.installer.BackgroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
@@ -18,8 +16,7 @@ import java.util.regex.Pattern
 class RootInstaller(
     app: App,
     private val file: File
-) :
-    AbstractAppInstaller(app, file), BackgroundAppInstaller, ForegroundAppInstaller {
+) : AbstractAppInstaller(app, file) {
     private val installationStatus = CompletableDeferred<ShortInstallResult>()
     private val allowListAbsoluteFilePath = ArrayList<String>()
     private val allowListFileName = ArrayList<String>()

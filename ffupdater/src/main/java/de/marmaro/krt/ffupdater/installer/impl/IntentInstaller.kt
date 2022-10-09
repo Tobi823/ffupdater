@@ -13,7 +13,6 @@ import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File
@@ -24,7 +23,7 @@ class IntentInstaller(
     private val activityResultRegistry: ActivityResultRegistry,
     app: App,
     private val file: File,
-) : ForegroundAppInstaller, AbstractAppInstaller(app, file) {
+) : AbstractAppInstaller(app, file) {
     private val installationStatus = CompletableDeferred<Boolean>()
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
 
@@ -33,7 +32,6 @@ class IntentInstaller(
             installationStatus.complete(true)
             return@lambda
         }
-
 
         val bundle = activityResult.data?.extras
         val errorMessage = when (val result = bundle?.getInt("android.intent.extra.INSTALL_RESULT")) {

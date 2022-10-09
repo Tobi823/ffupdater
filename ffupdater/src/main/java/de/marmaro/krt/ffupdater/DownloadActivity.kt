@@ -28,7 +28,8 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.ForegroundAppInstaller
+import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.FileDownloader
@@ -56,7 +57,7 @@ import kotlinx.coroutines.withContext
  */
 class DownloadActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
-    private lateinit var appInstaller: ForegroundAppInstaller
+    private lateinit var appInstaller: AppInstaller
     private lateinit var appCache: AppCache
     private lateinit var foregroundSettings: ForegroundSettingsHelper
     private lateinit var installerSettings: InstallerSettingsHelper
@@ -95,7 +96,7 @@ class DownloadActivity : AppCompatActivity() {
         installerSettings = InstallerSettingsHelper(preferences)
         networkSettings = NetworkSettingsHelper(preferences)
         appCache = AppCache(viewModel.app!!)
-        appInstaller = ForegroundAppInstaller.create(this, viewModel.app!!, appCache.getApkFile(this))
+        appInstaller = createForegroundAppInstaller(this, viewModel.app!!, appCache.getApkFile(this))
         lifecycle.addObserver(appInstaller)
 
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
