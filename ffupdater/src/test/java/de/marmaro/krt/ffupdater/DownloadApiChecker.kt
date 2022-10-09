@@ -15,7 +15,6 @@ import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -45,6 +44,9 @@ class DownloadApiChecker {
     @MockK
     private lateinit var deviceAbiExtractor: DeviceAbiExtractor
 
+    @MockK
+    private lateinit var deviceSdkTester: DeviceSdkTester
+
     private val sharedPreferences = SPMockBuilder().createSharedPreferences()
 
     @BeforeEach
@@ -62,9 +64,8 @@ class DownloadApiChecker {
 
     @Test
     fun brave() {
-        val a = mockk<DeviceSdkTester>()
-        every { a.supportsAndroidNougat() } returns true
-        val brave = Brave(GithubConsumer.INSTANCE, deviceAbiExtractor, a)
+        every { deviceSdkTester.supportsAndroidNougat() } returns true
+        val brave = Brave(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
         val result = runBlocking { brave.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -75,7 +76,8 @@ class DownloadApiChecker {
 
     @Test
     fun braveBeta() {
-        val brave = BraveBeta(GithubConsumer.INSTANCE, deviceAbiExtractor)
+        every { deviceSdkTester.supportsAndroidNougat() } returns true
+        val brave = BraveBeta(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
         val result = runBlocking { brave.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -86,7 +88,8 @@ class DownloadApiChecker {
 
     @Test
     fun braveNightly() {
-        val brave = BraveNightly(GithubConsumer.INSTANCE, deviceAbiExtractor)
+        every { deviceSdkTester.supportsAndroidNougat() } returns true
+        val brave = BraveNightly(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
         val result = runBlocking { brave.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
@@ -160,7 +163,8 @@ class DownloadApiChecker {
     @Test
     fun firefoxNightly() {
         sharedPreferences.edit().putLong("firefox_nightly_installed_version_code", 0)
-        val firefoxNightly = FirefoxNightly(MozillaCiJsonConsumer.INSTANCE, deviceAbiExtractor)
+        val firefoxNightly =
+            FirefoxNightly(MozillaCiJsonConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
         val result =
             runBlocking { firefoxNightly.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
