@@ -16,6 +16,9 @@ Prohlížeče, které jsou lepší než Google Chrome:
 - Kiwi Browser Next
 - Vivaldi
 
+Další aplikace:
+- Orbot
+
 FFUpdater kontroluje aktualizace na pozadí a také je stahuje. V zařízeních se systémem Android 12+ nebo s rootnutým zařízením může FFUpdater aktualizovat aplikace i bez interakce uživatele.
 
 Navštivte stránku https://notabug.org/Tobiwan/ffupdater/src/master/README.md pro více informací.

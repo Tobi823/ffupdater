@@ -14,6 +14,9 @@ navigateurs qui sont meilleurs que Google Chrome :
 - Kiwi Browser Next
 - Vivaldi
 
+Autres applications :
+- Orbot
+
 FFUpdater vérifie les mises à jour en arrière-plan et les télécharge également. Sur les appareils Android 12+ ou root, FFUpdater peut également mettre à jour les applications sans interaction de l'utilisateur.
 
 Visitez https://notabug.org/Tobiwan/ffupdater/src/master/README.md ou utilisez le lien "Code source" ci-dessous pour obtenir plus d'informations sur les mesures de sécurité, les autres canaux de distribution, les limitations, les bogues, les FAQ, les instructions de construction, les bibliothèques tierces utilisées, les détails techniques, etc.

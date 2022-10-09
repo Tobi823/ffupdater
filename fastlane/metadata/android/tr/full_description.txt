@@ -16,6 +16,9 @@ Google Chrome'dan daha iyi olan tarayıcılar:
 - Kiwi Browser Next
 - Vivaldi
 
+Diğer uygulamalar:
+- Orbot
+
 FFUpdater arka planda güncellemeleri denetler ve ayrıca onları indirir. Android 12+ veya root yapılmış aygıtlarda, FFUpdater kullanıcı etkileşimi olmadan da uygulamaları güncelleyebilir.
 
 Daha fazla bilgi için https://notabug.org/Tobiwan/ffupdater/src/master/README.md adresini ziyaret edin.

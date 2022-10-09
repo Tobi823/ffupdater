@@ -16,6 +16,9 @@
 - Kiwi Browser Next
 - Vivaldi
 
+Інші програми:
+- Орбот
+
 FFUpdater перевіряє оновлення у фоновому режимі й завантажує їх. На Android 12+ або пристроях з root FFUPDater також може оновити програми без взаємодії з користувачем.
 
 Відвідайте https://notabug.org/Tobiwan/ffupdater/src/master/README.md для отримання додаткової інформації.

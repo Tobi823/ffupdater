@@ -16,6 +16,9 @@ A Google Chrome-nál jobb böngészők:
 - Kiwi Browser Következő
 - Vivaldi
 
+Egyéb alkalmazások:
+- Orbot
+
 Az FFUpdater a háttérben ellenőrzi a frissítéseket, és le is tölti azokat. Android 12+ vagy root eszközökön az FFUpdater a felhasználó beavatkozása nélkül is képes frissíteni az alkalmazásokat.
 
 További információkért látogasson el a https://notabug.org/Tobiwan/ffupdater/src/master/README.md weboldalra.

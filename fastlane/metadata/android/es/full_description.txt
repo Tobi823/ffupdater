@@ -14,10 +14,13 @@ Buenos navegadores con la privacidad:
 Navegadores mejores que Google Chrome: 
  
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly) 
- 
+- Chromium
 - Kiwi Browser Siguiente 
 - Vivaldi 
- 
+
+Otras aplicaciones:
+- Orbot
+
 FFUpdater comprueba las actualizaciones en segundo plano y también las descarga. En dispositivos Android 12+ o con root, FFUpdater también puede actualizar las aplicaciones sin la interacción del usuario. 
  
 Visita: 
