@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_abort
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exception.UserInteractionIsRequiredException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -25,13 +26,14 @@ import java.io.File
 import java.io.IOException
 
 
-abstract class AbstractSessionInstaller(
+class SessionInstaller(
     context: Context,
     private val app: App,
     private val file: File,
+    private val foreground: Boolean
 ) : AbstractAppInstaller(app, file) {
-    protected abstract val intentNameForAppInstallationCallback: String
-
+    private val intentNameForAppInstallationCallback =
+        "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
     private val installationStatus = CompletableDeferred<Boolean>()
     private var intentReceiver: BroadcastReceiver? = null
 
@@ -177,12 +179,24 @@ abstract class AbstractSessionInstaller(
                 )
             }
         }
-
     }
 
-    protected abstract fun requestInstallationPermission(context: Context, bundle: Bundle)
+    private fun requestInstallationPermission(context: Context, bundle: Bundle) {
+        if (!foreground) {
+            fail(UserInteractionIsRequiredException(bundle.getInt(EXTRA_STATUS), context))
+            return
+        }
 
-    protected fun fail(message: String, errorCode: Int, displayErrorMessage: String) {
+        try {
+            // ignore UnsafeIntentLaunchViolation because at least OnePlus needs this exact intent
+            val requestPermission = bundle.get(Intent.EXTRA_INTENT) as Intent
+            context.startActivity(requestPermission)
+        } catch (e: ActivityNotFoundException) {
+            fail("Installation failed because Activity is not available.", e, -110, e.message ?: "/")
+        }
+    }
+
+    private fun fail(message: String, errorCode: Int, displayErrorMessage: String) {
         installationStatus.completeExceptionally(
             InstallationFailedException(
                 message, errorCode, displayErrorMessage,
@@ -190,12 +204,16 @@ abstract class AbstractSessionInstaller(
         )
     }
 
-    protected fun fail(message: String, cause: Throwable, errorCode: Int, displayErrorMessage: String) {
+    private fun fail(message: String, cause: Throwable, errorCode: Int, displayErrorMessage: String) {
         installationStatus.completeExceptionally(
             InstallationFailedException(
                 message, cause, errorCode, displayErrorMessage,
             )
         )
+    }
+
+    private fun fail(exception: Exception) {
+        installationStatus.completeExceptionally(exception)
     }
 
     private fun registerIntentReceiver(context: Context) {

@@ -1,6 +1,6 @@
 package de.marmaro.krt.ffupdater.installer.exception
 
-class InstallationFailedException : Exception {
+open class InstallationFailedException : Exception {
 
     val errorCode: Int
     val errorMessage: String
