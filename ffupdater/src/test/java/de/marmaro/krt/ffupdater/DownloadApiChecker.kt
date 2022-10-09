@@ -65,8 +65,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 4 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 4 * 7) { "${age.toDays()} days is too old" }
         // don't check for firstReleaseHasAssets because it is common that some releases has no APK files
     }
 
@@ -77,8 +76,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 2 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 2 * 7) { "${age.toDays()} days is too old" }
         // don't check for firstReleaseHasAssets because it is common that some releases has no APK files
     }
 
@@ -89,8 +87,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 7) { "${age.toDays()} days is too old" }
         // don't check for firstReleaseHasAssets because it is common that some releases has no APK files
     }
 
@@ -101,8 +98,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 5 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 5 * 7) { "${age.toDays()} days is too old" }
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -113,8 +109,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 9 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 9 * 7) { "${age.toDays()} days is too old" }
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -125,8 +120,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 3 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 3 * 7) { "${age.toDays()} days is too old" }
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -144,8 +138,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 8 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -156,8 +149,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 2 * 30
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 2 * 30) { "${age.toDays()} days is too old" }
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -170,8 +162,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 1 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 1 * 7) { "${age.toDays()} days is too old" }
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -183,8 +174,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 6 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 6 * 7) { "${age.toDays()} days is too old" }
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -195,8 +185,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 9 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 9 * 7) { "${age.toDays()} days is too old" }
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -224,8 +213,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 8 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
     }
 
     @Test
@@ -235,8 +223,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 8 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 12 * 7) { "${age.toDays()} days is too old" }
     }
 
     @Test
@@ -246,8 +233,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 8 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
     }
 
     @Test
@@ -257,8 +243,7 @@ class DownloadApiChecker {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        val maxDays = 8 * 7
-        assertTrue(age.toDays() < maxDays) { "${age.toDays()} must be smaller then $maxDays days" }
+        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
     }
 
     private fun verifyThatDownloadLinkAvailable(urlString: String) {
