@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.background.UnrecoverableBackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid10
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester.supportsAndroid12
-import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.ROOT_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
@@ -242,7 +242,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         require(file.exists()) { "AppCache has no cached APK file" }
 
         withContext(Dispatchers.Main) {
-            val installer = AppInstaller.createBackgroundAppInstaller(context, app, file)
+            val installer = createBackgroundAppInstaller(context, app, file)
             try {
                 installer.installAsync(context).await()
                 BackgroundNotificationBuilder.showInstallationSuccess(context, app)
