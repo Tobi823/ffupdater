@@ -16,7 +16,10 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileNotFoundException
 
-class PackageManagerUtil(private val packageManager: PackageManager) {
+class PackageManagerUtil(
+    private val packageManager: PackageManager,
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
+) {
 
     @Suppress("DEPRECATION")
     @MainThread
@@ -28,12 +31,12 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
         }
 
 //        TODO
-//        if (DeviceSdkTester.supportsAndroid13()) {
+//        if (deviceSdkTester.supportsAndroid13()) {
 //              https://developer.android.com/reference/android/content/pm/PackageManager#getPackageArchiveInfo(java.lang.String,%20android.content.pm.PackageManager.PackageInfoFlags)
 //        }
 
         repeat(10) {
-            if (DeviceSdkTester.supportsAndroid9()) {
+            if (deviceSdkTester.supportsAndroid9()) {
                 packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
                     ?.signingInfo
                     ?.let { return extractSignature(it) }
@@ -57,7 +60,7 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
     @SuppressLint("PackageManagerGetSignatures")
     fun getInstalledAppInfo(app: AppBase): Signature {
         try {
-            if (DeviceSdkTester.supportsAndroid9()) {
+            if (deviceSdkTester.supportsAndroid9()) {
                 packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
                     ?.signingInfo
                     ?.let { return extractSignature(it) }

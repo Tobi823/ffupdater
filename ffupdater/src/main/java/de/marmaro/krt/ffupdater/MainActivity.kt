@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(findViewById(R.id.toolbar))
-        StrictModeSetup.enableStrictMode()
+        StrictModeSetup.INSTANCE.enableStrictMode()
         foregroundSettings = ForegroundSettingsHelper(this)
         AppCompatDelegate.setDefaultNightMode(foregroundSettings.themePreference)
         Migrator().migrate(this)
@@ -276,7 +276,7 @@ class MainActivity : AppCompatActivity() {
             showToast(R.string.main_activity__no_unmetered_network)
             return
         }
-        if (DeviceSdkTester.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
+        if (DeviceSdkTester.INSTANCE.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }

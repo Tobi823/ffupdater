@@ -20,6 +20,6 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
         App.values()
             .filter { app -> app.impl.isEol() }
             .any { app -> app.impl.isInstalled(context) }
-            .ifTrue { BackgroundNotificationBuilder.showEolAppsWarning(context) }
+            .ifTrue { BackgroundNotificationBuilder.INSTANCE.showEolAppsWarning(context) }
     }
 }

@@ -23,6 +23,7 @@ class IntentInstaller(
     private val activityResultRegistry: ActivityResultRegistry,
     app: App,
     private val file: File,
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AbstractAppInstaller(app, file) {
     private val installationStatus = CompletableDeferred<Boolean>()
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
@@ -70,7 +71,7 @@ class IntentInstaller(
     private fun installInternal(context: Context, file: File) {
         @Suppress("DEPRECATION")
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
-        intent.data = if (DeviceSdkTester.supportsAndroidNougat()) {
+        intent.data = if (deviceSdkTester.supportsAndroidNougat()) {
             FileProvider.getUriForFile(context, FILE_PROVIDER_AUTHORITY, file)
         } else {
             Uri.fromFile(file)

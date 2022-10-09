@@ -6,6 +6,7 @@ import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.app.impl.*
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -14,6 +15,7 @@ import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -54,13 +56,15 @@ class DownloadApiChecker {
             packageManager.getPackageInfo(any<String>(), 0)
         } throws PackageManager.NameNotFoundException()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-        every { deviceAbiExtractor.supportedAbis } returns listOf(ABI.ARMEABI_V7A)
-        every { deviceAbiExtractor.supportedAbiStrings } returns arrayOf("armeabi-v7a")
+        every { deviceAbiExtractor.supportedAbis } returns listOf(ABI.ARM64_V8A)
+        every { deviceAbiExtractor.supportedAbiStrings } returns arrayOf("arm64-v8a")
     }
 
     @Test
     fun brave() {
-        val brave = Brave(GithubConsumer.INSTANCE, deviceAbiExtractor)
+        val a = mockk<DeviceSdkTester>()
+        every { a.supportsAndroidNougat() } returns true
+        val brave = Brave(GithubConsumer.INSTANCE, deviceAbiExtractor, a)
         val result = runBlocking { brave.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)

@@ -108,9 +108,9 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         // hide existing background notification for this app
-        BackgroundNotificationBuilder.hideUpdateIsAvailable(this, viewModel.app!!)
-        BackgroundNotificationBuilder.hideInstallationSuccess(this, viewModel.app!!)
-        BackgroundNotificationBuilder.hideInstallationError(this, viewModel.app!!)
+        BackgroundNotificationBuilder.INSTANCE.hideUpdateIsAvailable(this, viewModel.app!!)
+        BackgroundNotificationBuilder.INSTANCE.hideInstallationSuccess(this, viewModel.app!!)
+        BackgroundNotificationBuilder.INSTANCE.hideInstallationError(this, viewModel.app!!)
 
         // prevent network timeouts when the displayed is automatically turned off
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -126,7 +126,7 @@ class DownloadActivity : AppCompatActivity() {
         intent.setDataAndType(uri, "resource/folder")
         val chooser = Intent.createChooser(intent, getString(download_activity__open_folder))
 
-        if (DeviceSdkTester.supportsAndroidNougat()) {
+        if (DeviceSdkTester.INSTANCE.supportsAndroidNougat()) {
             StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
             try {
                 startActivity(chooser)
@@ -337,9 +337,9 @@ class DownloadActivity : AppCompatActivity() {
             showThatAppInstallationFailed(e.errorMessage, ex)
         } finally {
             // hide existing background notification for this app
-            BackgroundNotificationBuilder.hideUpdateIsAvailable(this, app)
-            BackgroundNotificationBuilder.hideInstallationSuccess(this, app)
-            BackgroundNotificationBuilder.hideInstallationError(this, app)
+            BackgroundNotificationBuilder.INSTANCE.hideUpdateIsAvailable(this, app)
+            BackgroundNotificationBuilder.INSTANCE.hideInstallationSuccess(this, app)
+            BackgroundNotificationBuilder.INSTANCE.hideInstallationError(this, app)
         }
     }
 

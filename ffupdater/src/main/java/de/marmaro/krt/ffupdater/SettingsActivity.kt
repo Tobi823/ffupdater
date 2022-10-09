@@ -72,7 +72,7 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
-            if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
+            if (!DeviceSdkTester.INSTANCE.supportsAndroidMarshmallow()) {
                 findSwitchPref("background__update_check__when_device_idle")?.summary =
                     getString(R.string.settings__background__update_check__when_device_idle__unsupported)
                 findSwitchPref("background__update_check__when_device_idle")?.isEnabled = false

@@ -21,6 +21,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 class BraveNightly(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.brave.browser_nightly"
     override val title = R.string.brave_nightly__title
@@ -67,7 +68,7 @@ class BraveNightly(
     }
 
     private fun getNameOfApkFile(): String {
-        return if (DeviceSdkTester.supportsAndroidNougat()) {
+        return if (deviceSdkTester.supportsAndroidNougat()) {
             when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
                 ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
                 ABI.ARM64_V8A -> "BraveMonoarm64.apk"

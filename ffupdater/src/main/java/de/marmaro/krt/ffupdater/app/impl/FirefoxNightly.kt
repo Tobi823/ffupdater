@@ -27,6 +27,7 @@ import java.time.format.DateTimeFormatter
 class FirefoxNightly(
     private val consumer: MozillaCiJsonConsumer = MozillaCiJsonConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
     override val packageName = "org.mozilla.fenix"
     override val title = R.string.firefox_nightly__title
@@ -119,7 +120,7 @@ class FirefoxNightly(
      */
     private fun getVersionCode(context: Context): Long {
         val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
-        if (DeviceSdkTester.supportsAndroid9()) {
+        if (deviceSdkTester.supportsAndroid9()) {
             return packageInfo.longVersionCode
         }
         @Suppress("DEPRECATION")

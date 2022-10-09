@@ -20,7 +20,8 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  */
 class Brave(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE
+    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
     override val packageName = "com.brave.browser"
     override val title = R.string.brave__title
@@ -67,7 +68,7 @@ class Brave(
     }
 
     private fun getNameOfApkFile(): String {
-        return if (DeviceSdkTester.supportsAndroidNougat()) {
+        return if (deviceSdkTester.supportsAndroidNougat()) {
             when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
                 ARMEABI_V7A -> "BraveMonoarm.apk"
                 ARM64_V8A -> "BraveMonoarm64.apk"

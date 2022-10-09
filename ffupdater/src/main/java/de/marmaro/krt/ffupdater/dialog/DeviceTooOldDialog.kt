@@ -15,12 +15,14 @@ import de.marmaro.krt.ffupdater.utils.AndroidVersionCodes
 /**
  * Show the user that the app could not be installed because the operating system is too old.
  */
-class DeviceTooOldDialog : DialogFragment() {
+class DeviceTooOldDialog(
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
+) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)
         val required = AndroidVersionCodes.getVersionForApiLevel(app.impl.minApiLevel)
-        val actual = AndroidVersionCodes.getVersionForApiLevel(DeviceSdkTester.sdkInt)
+        val actual = AndroidVersionCodes.getVersionForApiLevel(deviceSdkTester.sdkInt)
         return AlertDialog.Builder(activity)
             .setTitle(R.string.device_too_old_dialog__title)
             .setMessage(getString(R.string.device_too_old_dialog__message, required, actual))

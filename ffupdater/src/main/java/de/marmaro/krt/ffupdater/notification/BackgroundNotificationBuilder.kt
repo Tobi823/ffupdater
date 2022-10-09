@@ -22,7 +22,9 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 
-object BackgroundNotificationBuilder {
+class BackgroundNotificationBuilder(
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
+) {
     fun showError(context: Context, exception: Exception) {
         val message = context.getString(notification__error__text)
         showNotification(
@@ -215,7 +217,7 @@ object BackgroundNotificationBuilder {
     }
 
     private fun getFlags(): Int {
-        return if (DeviceSdkTester.supportsAndroid12()) {
+        return if (deviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_IMMUTABLE
         } else {
             FLAG_UPDATE_CURRENT
@@ -229,7 +231,7 @@ object BackgroundNotificationBuilder {
         channelName: String,
         channelDescription: String
     ): Notification.Builder {
-        if (DeviceSdkTester.supportsAndroidOreo()) {
+        if (deviceSdkTester.supportsAndroidOreo()) {
             createNotificationChannel(notificationManager, channelId, channelName, channelDescription)
             return Notification.Builder(context, channelId)
         }
@@ -252,5 +254,9 @@ object BackgroundNotificationBuilder {
         )
         channel.description = channelDescription
         notificationManager.createNotificationChannel(channel)
+    }
+
+    companion object {
+        val INSTANCE = BackgroundNotificationBuilder()
     }
 }

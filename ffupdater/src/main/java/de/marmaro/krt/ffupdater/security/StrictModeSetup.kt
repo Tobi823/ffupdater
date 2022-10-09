@@ -9,7 +9,9 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 /**
  * Configure StrictMode to find bugs or other problems.
  */
-object StrictModeSetup {
+class StrictModeSetup(
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
+) {
     fun enableStrictMode() {
         if (BuildMetadata.isDebugBuild()) {
             enableStrictModeForDebugging()
@@ -31,7 +33,7 @@ object StrictModeSetup {
 
         val vmPolicy = VmPolicy.Builder()
             .detectAll()
-        if (DeviceSdkTester.supportsAndroidMarshmallow()) {
+        if (deviceSdkTester.supportsAndroidMarshmallow()) {
             vmPolicy.penaltyDeathOnCleartextNetwork()
         }
         StrictMode.setVmPolicy(
@@ -49,12 +51,16 @@ object StrictModeSetup {
                 .build()
         )
 
-        if (DeviceSdkTester.supportsAndroidMarshmallow()) {
+        if (deviceSdkTester.supportsAndroidMarshmallow()) {
             StrictMode.setVmPolicy(
                 VmPolicy.Builder()
                     .penaltyDeathOnCleartextNetwork()
                     .build()
             )
         }
+    }
+
+    companion object {
+        val INSTANCE = StrictModeSetup()
     }
 }
