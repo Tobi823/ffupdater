@@ -7,6 +7,7 @@ Baixar, instalar e atualizar navegadores do Mozilla ou baseados no Firefox:
 
 Bons navegadores de privacidade:
 - Bromite, Bromite SystemWebView
+- Mulch
 
 navegadores que são melhores que o Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

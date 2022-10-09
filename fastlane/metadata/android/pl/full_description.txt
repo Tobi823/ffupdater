@@ -7,6 +7,7 @@ Pobieraj, instaluj i aktualizuj przeglądarki z Mozilli lub oparte na przegląda
 
 dobre przeglądarki do ochrony prywatności:
 - Bromite, Bromite SystemWebView
+- Mulch
 
 przeglądarki, które są lepsze niż Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

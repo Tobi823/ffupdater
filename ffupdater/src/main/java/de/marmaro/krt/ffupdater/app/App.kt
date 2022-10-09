@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.app
 
 import de.marmaro.krt.ffupdater.app.impl.*
-import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
 
 enum class App(appBase: AppBase) {
     BRAVE(Brave()),
@@ -9,6 +8,7 @@ enum class App(appBase: AppBase) {
     BRAVE_NIGHTLY(BraveNightly()),
     BROMITE(Bromite()),
     BROMITE_SYSTEMWEBVIEW(BromiteSystemWebView()),
+    CHROMIUM(Chromium()),
     FFUPDATER(FFUpdater()),
     FIREFOX_BETA(FirefoxBeta()),
     FIREFOX_FOCUS(FirefoxFocus()),
@@ -18,13 +18,13 @@ enum class App(appBase: AppBase) {
     ICERAVEN(Iceraven()),
     KIWI(Kiwi()),
     LOCKWISE(Lockwise()),
+    MULCH(Mulch()),
     MULL(Mull()),
+    MULL_FROM_REPO(MullFromRepo()),
     ORBOT(Orbot()),
     TOR_BROWSER(TorBrowser()),
     UNGOOGLED_CHROMIUM(UngoogledChromium()),
     VIVALDI(Vivaldi()),
-    CHROMIUM(Chromium()),
-    MULL_FROM_REPO(MullFromRepo(CustomRepositoryConsumer.INSTANCE))
     ;
 
     val impl: AppBase = appBase

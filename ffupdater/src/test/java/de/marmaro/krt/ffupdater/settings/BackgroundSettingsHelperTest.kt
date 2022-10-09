@@ -261,6 +261,7 @@ class BackgroundSettingsHelperTest {
                 "ICERAVEN",
                 "KIWI",
                 "LOCKWISE",
+                "MULCH",
                 "MULL",
                 "MULL_FROM_REPO",
                 "ORBOT",

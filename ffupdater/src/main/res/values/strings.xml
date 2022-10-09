@@ -256,4 +256,7 @@
     <string name="settings__background__update_check__when_device_idle__title">Update checks only if the device is idle</string>
     <string name="settings__background__update_check__when_device_idle__summary">Enable this if you do not want your applications being restarted by an background update. Disable this if you want a more predictable schedule for background update checks.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">This option is only available on Android Marshmallow or later.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="mulch__description">This is a security oriented and hardened web browser based on Chromium technology. Many anti-features are disabled/removed and a handful security features are enabled/added thanks to patches from the Vanadium project. The source repo also includes prebuilts and makefiles to allow other operating systems to include Mulch as their system WebView.</string>
+    <string name="mulch__warning">- Mulch uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
 </resources>

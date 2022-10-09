@@ -9,6 +9,7 @@
 
 好的隐私浏览器：
 - Bromite、Bromite SystemWebView
+- Mulch
 
 比 Google Chrome 更好的浏览器：
 - Brave 隐私浏览器、Brave 浏览器（公测版）、Brave 浏览器（每夜版）

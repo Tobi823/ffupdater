@@ -9,6 +9,7 @@ Browser von Mozilla oder Browser auf des Firefoxes:
 
 Gute Datenschutz-Browser:
 - Bromite, Bromite SystemWebView
+- Mulch
 
 Browser, die besser sind als Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

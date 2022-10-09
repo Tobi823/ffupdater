@@ -7,6 +7,7 @@ Téléchargez, installez et mettez à jour les navigateurs de Mozilla ou basés 
 
 bons navigateurs de confidentialité :
 - Bromite, Bromite SystemWebView
+- Mulch
 
 navigateurs qui sont meilleurs que Google Chrome :
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

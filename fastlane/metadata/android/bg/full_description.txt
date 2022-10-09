@@ -9,6 +9,7 @@
 
 поверителни четци:
 - Bromite, Bromite SystemWebView
+- Mulch
 
 четци, по-добри от Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

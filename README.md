@@ -13,7 +13,7 @@ Browsers from Mozilla or based on Firefox:
 - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus),
   [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
   ([GitHub Repository](https://github.com/mozilla-mobile/focus-android))
-- [Mull Browser](https://f-droid.org/en/packages/us.spotco.fennec_dos/)
+- [Mull Browser](https://divestos.org/index.php?page=our_apps)
   ([GitLab Repository](https://gitlab.com/divested-mobile/mull-fenix))
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download)
@@ -22,6 +22,7 @@ Good privacy browsers:
 
 - [Bromite](https://github.com/bromite/bromite),
   [Bromite SystemWebView](https://www.bromite.org/system_web_view)
+- [Mulch](https://divestos.org/index.php?page=our_apps)
 
 Browser which are better than Google Chrome:
 

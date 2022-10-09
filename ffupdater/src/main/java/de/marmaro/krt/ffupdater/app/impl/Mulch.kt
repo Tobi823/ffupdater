@@ -7,27 +7,26 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
 
-/**
- * https://f-droid.org/en/packages/us.spotco.fennec_dos/
- */
-class MullFromRepo(
+class Mulch(
     private val customRepositoryConsumer: CustomRepositoryConsumer = CustomRepositoryConsumer.INSTANCE,
 ) : AppBase() {
-    override val packageName = "us.spotco.fennec_dos"
-    override val title = R.string.mull__title
-    override val description = R.string.mull__description
+    override val packageName = "us.spotco.mulch"
+    override val title = R.string.mulch__title
+    override val description = R.string.mulch__description
+    override val installationWarning = R.string.mulch__warning
     override val downloadSource = "https://divestos.org/fdroid/official"
-    override val icon = R.mipmap.ic_logo_mull
-    override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = ARM32_ARM64
+    override val icon = R.mipmap.ic_logo_mulch
+    override val minApiLevel = Build.VERSION_CODES.M
+    override val supportedAbis = listOf(ABI.ARM64_V8A)
 
     @Suppress("SpellCheckingInspection")
-    override val signatureHash = "e4be8d6abfa4d9d4feef03cdda7ff62a73fd64b75566f6dd4e5e577550be8467"
+    override val signatureHash = "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2"
     override val projectPage = "https://divestos.org/fdroid/official/"
-    override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
+    override val displayCategory = DisplayCategory.GOOD_PRIVACY_BROWSER
 
     @MainThread
     @Throws(NetworkException::class)
@@ -43,6 +42,6 @@ class MullFromRepo(
     }
 
     companion object {
-        private const val LOG_TAG = "MullFromRepo"
+        private const val LOG_TAG = "Mulch"
     }
 }

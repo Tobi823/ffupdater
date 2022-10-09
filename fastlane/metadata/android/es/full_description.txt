@@ -7,12 +7,11 @@ Navegadores de Mozilla o basados en Firefox:
 - Fennec Fdroid 
 - Navegador Mull 
  
-Buenos navegadores con la privacidad: 
+Buenos navegadores con la privacidad:
+- Bromite, Bromite SystemWebView
+- Mulch
  
-- Bromite, Bromite SystemWebView 
- 
-Navegadores mejores que Google Chrome: 
- 
+Navegadores mejores que Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly) 
 - Chromium
 - Kiwi Browser Siguiente 

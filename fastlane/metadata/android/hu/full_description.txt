@@ -9,6 +9,7 @@ Mozilla vagy Firefox alapú böngészők:
 
 Jó adatvédelmi böngészők:
 - Bromite, Bromite SystemWebView
+- Mulch
 
 A Google Chrome-nál jobb böngészők:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
