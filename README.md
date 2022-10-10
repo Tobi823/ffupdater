@@ -6,6 +6,7 @@ Installs and updates the following browsers:
 
 Browsers from Mozilla or based on Firefox:
 
+- [Fennec F-Droid](https://f-droid.org/packages/org.mozilla.fennec_fdroid/)
 - [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox),
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
   [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
@@ -69,6 +70,7 @@ The applications are downloaded from these locations:
   Nightly): <https://api.github.com/repos/brave/brave-browser/releases/latest>
 - Bromite, Bromite SystemWebView: <https://api.github.com/repos/bromite/bromite/releases/latest>
 - Chromium: <https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android%2F>
+- Fennec F-Droid: <https://f-droid.org/repo/org.mozilla.fennec_fdroid_XXXXXXX.apk>
 - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
 - Firefox Focus, Firefox
   Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>

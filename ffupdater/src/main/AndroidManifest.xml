@@ -37,6 +37,7 @@
         <package android:name="org.bromite.webview" />
         <package android:name="org.chromium.chrome" />
         <package android:name="org.mozilla.fenix" />
+        <package android:name="org.mozilla.fennec_fdroid" />
         <package android:name="org.mozilla.firefox" />
         <package android:name="org.mozilla.firefox_beta" />
         <package android:name="org.mozilla.focus" />

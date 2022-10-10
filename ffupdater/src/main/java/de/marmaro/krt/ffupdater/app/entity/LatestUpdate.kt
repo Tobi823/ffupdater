@@ -8,8 +8,8 @@ import kotlinx.parcelize.Parcelize
 data class LatestUpdate(
         val downloadUrl: String,
         val version: String,
-        val publishDate: String?,
-        val fileSizeBytes: Long?,
-        val fileHash: Sha256Hash?,
-        val firstReleaseHasAssets: Boolean,
+        val publishDate: String? = null,
+        val fileSizeBytes: Long? = null,
+        val fileHash: Sha256Hash? = null,
+        val firstReleaseHasAssets: Boolean = true,
 ) : Parcelable

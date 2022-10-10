@@ -51,10 +51,7 @@ class Mull(
         return LatestUpdate(
             downloadUrl = codeAndUrl.downloadUrl,
             version = result.versionName,
-            publishDate = null,
-            fileSizeBytes = null,
-            fileHash = null,
-            firstReleaseHasAssets = true
+            publishDate = result.createdAt
         )
     }
 

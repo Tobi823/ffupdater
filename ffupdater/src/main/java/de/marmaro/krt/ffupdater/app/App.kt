@@ -9,6 +9,7 @@ enum class App(appBase: AppBase) {
     BROMITE(Bromite()),
     BROMITE_SYSTEMWEBVIEW(BromiteSystemWebView()),
     CHROMIUM(Chromium()),
+    FENNEC_FDROID(FennecFdroid()),
     FFUPDATER(FFUpdater()),
     FIREFOX_BETA(FirefoxBeta()),
     FIREFOX_FOCUS(FirefoxFocus()),

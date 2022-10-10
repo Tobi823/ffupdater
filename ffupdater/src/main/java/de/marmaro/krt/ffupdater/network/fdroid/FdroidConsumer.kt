@@ -30,7 +30,31 @@ class FdroidConsumer(
                 VersionCodeAndDownloadUrl(p.versionCode, downloadUrl)
             }
 
-        return Result(versionName, versionCodesAndUrls)
+        val commitId = getLastCommitId(packageName, context)
+        val createdAt = getCreateDate(commitId, context)
+
+        return Result(versionName, versionCodesAndUrls, createdAt)
+    }
+
+    private suspend fun getLastCommitId(packageName: String, context: Context): String {
+        val url = "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2F${packageName}.yml" +
+                "?ref=master"
+        val metadata = try {
+            apiConsumer.consumeAsync(url, GitlabRepositoryFilesMetadata::class, context).await()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to get the latest commit id of $packageName.", e)
+        }
+        return metadata.last_commit_id
+    }
+
+    private suspend fun getCreateDate(commitId: String, context: Context): String {
+        val url = "https://gitlab.com/api/v4/projects/36528/repository/commits/$commitId"
+        val commits = try {
+            apiConsumer.consumeAsync(url, GitlabRepositoryCommits::class, context).await()
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to get the creation date of commit $commitId.", e)
+        }
+        return commits.created_at
     }
 
     internal data class AppInfo(
@@ -47,11 +71,20 @@ class FdroidConsumer(
     data class Result(
         val versionName: String,
         val versionCodesAndDownloadUrls: List<VersionCodeAndDownloadUrl>,
+        val createdAt: String,
     )
 
     data class VersionCodeAndDownloadUrl(
         val versionCode: Long,
         val downloadUrl: String,
+    )
+
+    data class GitlabRepositoryFilesMetadata(
+        val last_commit_id: String
+    )
+
+    data class GitlabRepositoryCommits(
+        val created_at: String
     )
 
     companion object {
