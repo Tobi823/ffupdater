@@ -288,4 +288,10 @@
     <string name="settings__background__update_check__when_device_idle__summary">Uygulamalarınızın bir arka plan güncellemesi tarafından yeniden başlatılmasını istemiyorsanız bunu etkinleştirin. Arka plan güncelleme denetimleri için daha öngörülebilir bir zamanlama istiyorsanız bunu devre dışı bırakın.</string>
     <string name="settings__background__update_check__when_device_idle__title">Yalnızca aygıt boştaysa güncellemeleri denetle</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Bu seçenek yalnızca Android Marshmallow veya sonraki sürümlerde kullanılabilir.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="mulch__description">Bu, Chromium teknolojisine dayanan güvenlik odaklı ve güçlendirilmiş bir web tarayıcısıdır. Vanadium projesinden gelen yamalar sayesinde birçok anti özellik devre dışı bırakılmış/kaldırılmış ve birkaç güvenlik özelliği etkinleştirilmiş/eklenmiştir. Kaynak deposu ayrıca, diğer işletim sistemlerinin Mulch\'u sistem WebView\'leri olarak dahil etmelerine olanak sağlamak için hazır derlemeler ve make dosyaları içerir.</string>
+    <string name="mulch__warning">- Mulch, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
+    <string name="fennecfdroid__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
+    <string name="fennecfdroid__description">Fennec F-Droid en son Firefox sürümüne (kod adı Fenix) dayanmaktadır. Açık kaynaklı olmayan bitler ve telemetri kaldırılmıştır, ancak yine de kullanıcıları izleyebilen çeşitli Mozilla ve Google hizmetlerine bağlanır.</string>
 </resources>
