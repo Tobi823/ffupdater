@@ -1,7 +1,9 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.MainThread
+import de.marmaro.krt.ffupdater.AddAppActivity.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 
@@ -10,30 +12,39 @@ class FdroidConsumer(
 ) {
 
     @MainThread
-    suspend fun getLatestUpdate(packageName: String, context: Context): Result {
+    suspend fun getLatestUpdate(packageName: String, context: Context, index: Int): Result {
         val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = try {
             apiConsumer.consumeAsync(apiUrl, AppInfo::class, context).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $packageName from F-Droid.", e)
         }
-
-        val versionName = appInfo.packages
-            .first { p -> p.versionCode == appInfo.suggestedVersionCode }
-            .versionName
-
-        val versionCodesAndUrls = appInfo.packages
-            .filter { p -> p.versionName == versionName }
-            .sortedBy { p -> p.versionCode }
-            .map { p ->
-                val downloadUrl = "https://f-droid.org/repo/${packageName}_${p.versionCode}.apk"
-                VersionCodeAndDownloadUrl(p.versionCode, downloadUrl)
-            }
+        val latestVersions = getLatestVersionsSortedByTheirCode(appInfo)
+        check(latestVersions.size > index)
+        val latestVersion = latestVersions[index]
 
         val commitId = getLastCommitId(packageName, context)
         val createdAt = getCreateDate(commitId, context)
 
-        return Result(versionName, versionCodesAndUrls, createdAt)
+        Log.i(LOG_TAG, "found latest version ${latestVersion.versionName}")
+        return Result(
+            latestVersion.versionName,
+            latestVersion.versionCode,
+            "https://f-droid.org/repo/${packageName}_${latestVersion.versionCode}.apk",
+            createdAt
+        )
+    }
+
+    private fun getLatestVersionsSortedByTheirCode(appInfo: AppInfo): List<Package> {
+        val latestVersionCode = appInfo.packages
+            .maxOf { p -> p.versionCode }
+        val latestVersionName = appInfo.packages
+            .firstOrNull { p -> p.versionCode == latestVersionCode }
+            ?.versionName
+            ?: throw Exception("Can't find version with code $latestVersionCode")
+        return appInfo.packages
+            .filter { p -> p.versionName == latestVersionName }
+            .sortedBy { p -> p.versionCode }
     }
 
     private suspend fun getLastCommitId(packageName: String, context: Context): String {
@@ -70,13 +81,9 @@ class FdroidConsumer(
 
     data class Result(
         val versionName: String,
-        val versionCodesAndDownloadUrls: List<VersionCodeAndDownloadUrl>,
-        val createdAt: String,
-    )
-
-    data class VersionCodeAndDownloadUrl(
         val versionCode: Long,
         val downloadUrl: String,
+        val createdAt: String,
     )
 
     data class GitlabRepositoryFilesMetadata(

@@ -21,6 +21,11 @@ class DeviceAbiExtractor {
         }
     }
 
+    fun findBestSupportedAbisByDeviceAndApp(abisSupportedByApp: List<ABI>): ABI {
+        return supportedAbis.firstOrNull { it in abisSupportedByApp }
+            ?: throw Exception("The app does not support the device")
+    }
+
     companion object {
         val INSTANCE = DeviceAbiExtractor()
     }
