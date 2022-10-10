@@ -1,6 +1,7 @@
 Instala y actualiza los siguientes navegadores:
 
 Navegadores de Mozilla o basados en Firefox:
+- Fennec F-Droid
 - Firefox Browser, Firefox para Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
@@ -17,6 +18,9 @@ Navegadores que son mejores que Google Chrome
 - Chromium
 - Kiwi Browser Siguiente
 - Vivaldi
+
+Otras aplicaciones:
+- Orbot
 
 FFUpdater comprueba las actualizaciones en segundo plano y también las descarga. En dispositivos Android 12+ o con root, FFUpdater también puede actualizar las aplicaciones sin la interacción del usuario.
 

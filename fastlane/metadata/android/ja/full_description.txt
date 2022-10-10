@@ -1,4 +1,7 @@
-Mozilla 製または Firefox ベースのブラウザのダウンロード、インストール、アップデートを行います。
+次のブラウザをインストールして更新します。
+
+Mozilla または Firefox ベースのブラウザ:
+- Fennec F-Droid
 - Firefox ブラウザ、Android Beta 版 Firefox、Firefox Nightly
 - Firefox Focus、Firefox Klar
 - Iceraven

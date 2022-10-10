@@ -1,6 +1,7 @@
 Installa e aggiorna i seguenti browser:
 
 Browser di Mozilla o basati su Firefox:
+- Fennec F-Droid
 - Firefox Browser, Firefox per Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven

@@ -1,4 +1,7 @@
-Pobieraj, instaluj i aktualizuj przeglądarki z Mozilli lub oparte na przeglądarce Firefox:
+Instaluje i aktualizuje następujące przeglądarki:
+
+Przeglądarki z Mozilli lub oparte na Firefoksie:
+- Fennec F-Droid
 - Przeglądarka Firefox, Firefox dla Androida Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven

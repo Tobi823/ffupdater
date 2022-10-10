@@ -1,4 +1,7 @@
-Pobieraj, instaluj i aktualizuj przeglądarki z Mozilli lub oparte na przeglądarce Firefox:
+Installerer og oppdaterer følgende nettlesere:
+
+Nettlesere fra Mozilla eller basert på Firefox:
+- Fennec F-Droid
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven

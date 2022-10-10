@@ -1,4 +1,7 @@
-Baixar, instalar e atualizar navegadores do Mozilla ou baseados no Firefox:
+Instala e atualiza os seguintes navegadores:
+
+Navegadores da Mozilla ou baseados no Firefox:
+- Fennec F-Droid
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven

@@ -1,4 +1,7 @@
-Загружайте, устанавливайте и обновляйте браузеры от Mozilla или основанные на Firefox:
+Устанавливает и обновляет следующие браузеры:
+
+Браузеры от Mozilla или на базе Firefox:
+- Fennec F-Droid
 - Firefox Browser, Firefox для Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
