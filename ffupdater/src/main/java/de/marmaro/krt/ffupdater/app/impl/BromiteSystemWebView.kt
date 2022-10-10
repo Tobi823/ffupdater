@@ -40,7 +40,7 @@ class BromiteSystemWebView(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val fileName = when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
+        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> "arm_SystemWebView.apk"
             ABI.ARM64_V8A -> "arm64_SystemWebView.apk"
             ABI.X86 -> "x86_SystemWebView.apk"

@@ -38,7 +38,7 @@ class Mull(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
-        val index = when (deviceAbiExtractor.findBestSupportedAbisByDeviceAndApp(supportedAbis)) {
+        val index = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARM64_V8A -> 2
             ABI.ARMEABI_V7A -> 1
             else -> throw IllegalArgumentException("ABI is not supported")

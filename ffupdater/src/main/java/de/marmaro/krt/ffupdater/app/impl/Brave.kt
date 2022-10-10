@@ -69,7 +69,7 @@ class Brave(
 
     private fun getNameOfApkFile(): String {
         return if (deviceSdkTester.supportsAndroidNougat()) {
-            when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
+            when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
                 ARMEABI_V7A -> "BraveMonoarm.apk"
                 ARM64_V8A -> "BraveMonoarm64.apk"
                 X86 -> "BraveMonox86.apk"

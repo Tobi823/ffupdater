@@ -39,7 +39,7 @@ class UngoogledChromium(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val fileName = when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
+        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"
             ABI.ARM64_V8A -> "ChromeModernPublic_arm64.apk"
             ABI.X86 -> "ChromeModernPublic_x86.apk"

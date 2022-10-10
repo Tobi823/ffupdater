@@ -39,7 +39,7 @@ class Bromite(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val fileName = when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in supportedAbis }) {
+        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> "arm_ChromePublic.apk"
             ABI.ARM64_V8A -> "arm64_ChromePublic.apk"
             ABI.X86 -> "x86_ChromePublic.apk"
