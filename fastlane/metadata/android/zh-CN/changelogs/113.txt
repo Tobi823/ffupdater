@@ -1,0 +1,6 @@
+* 感谢来自 Weblate 的翻译贡献：John doe、Oğuz Ersen、atilluF、Vitor Henrique、109247019824、nautilusx、Juraj Motuz、MkQtS、Giovanni Donisi、Artem 和 Eduardo Malaspina 
+* 添加 Chromium、Orbot、Tor 
+* 改进添加新应用时的 UI 
+* 默认不信任用户证书（此选项可禁用） 
+* 问题修复 
+* 清理和重构代码

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Acerca de FFUpdater</string>
-    <string name="app_description">Actualizador para navegadores que respetan la privacidad</string>
-    <string name="app_icon">icono de aplicación</string>
+    <string name="app_description">Actualizador para navegadores respetuosos con la privacidad</string>
+    <string name="app_icon">icono de la aplicación</string>
     <string name="app_name">FFUpdater</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
         <item quantity="one">Tiene el siguiente problema: %1$s
@@ -34,34 +34,34 @@
 \n%2$s</item>
     </plurals>
     <string name="app_warning_dialog__title">Advertencia</string>
-    <string name="application_installation_was_not_successful">La instalación de la aplicación no fue exitosa</string>
-    <string name="application_successfully_installed">Aplicación exitosamente instalada</string>
+    <string name="application_installation_was_not_successful">La instalación de la aplicación no se ha realizado correctamente</string>
+    <string name="application_successfully_installed">Aplicación instalada con éxito</string>
     <string name="available_version">Disponible: %1$s</string>
     <string name="available_version_error"><u>ERROR</u></string>
-    <string name="notification__error__text">Por favor, reporte este error. Haga clic para ver el reporte de error.</string>
-    <string name="notification__error__title">Falló la comprobación de actualizaciones en segundo plano</string>
-    <string name="brave__description">Navegue el internet en privado, ¡gratis! La aplicación Navegador web privado Brave es su navegador rápido, gratis y seguro con bloqueador de anuncios y ventanas emergentes. Navegue y busque en Internet de forma privada sin ser rastreado por los anunciantes, el malware y las ventanas emergentes.</string>
-    <string name="brave__title">Navegador web privado Brave</string>
+    <string name="notification__error__text">Por favor, informe de este error. Haga clic para ver el informe de error.</string>
+    <string name="notification__error__title">La verificación de actualización en segundo plano falló</string>
+    <string name="brave__description">Navega de forma privada por Internet, ¡gratis! La aplicación Brave Private Browser es tu navegador web privado, rápido, gratuito y seguro con bloqueador de anuncios y bloqueador de ventanas emergentes. Navega y busca en Internet de forma privada sin ser rastreado por los anunciantes, el malware y las ventanas emergentes.</string>
+    <string name="brave__title">Navegador privado Brave</string>
     <string name="brave__warning">- Brave utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.
-\n- Debido a su Token de Atención Básica BAT en la blockchain de Ethereum, el proyecto tiene vínculos con las criptomonedas. Las Blockchains tienen muchos problemas y deben ser evitados en mi opinión.</string>
-    <string name="brave_beta__description">¡Bienvenido/a a Brave Beta para Android!
-\nPruebe las nuevas funciones y dé sus primeras impresiones: https://brave.com/msupport
-\nPuede instalar Brave Beta junto a su versión actual de Brave para Android.</string>
+\n- Debido a su Token de Atención Básica BAT en la blockchain de Ethereum el proyecto tiene vínculos con la criptodivisa. Blockchains tienen muchos problemas y deben ser evitados en mi opinión.</string>
+    <string name="brave_beta__description">¡Bienvenido a Brave Beta para Android!
+\nPrueba las nuevas características y da tus primeros comentarios: https://brave.com/msupport
+\nPuedes instalar Brave Beta junto con tu versión actual de Brave para Android.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
-    <string name="brave_nightly__description">¡Bienvenido/a a Brave Nightly (Developer) para Android!
-\nPruebe las nuevas funciones y dé sus primeras impresiones: https://brave.com/msupport
-\nPuede instalar Brave Nightly junto a su versión actual de Brave para Android.</string>
+    <string name="brave_nightly__description">¡Bienvenido a Brave Nightly (Developer) para Android!
+\nPrueba las nuevas características y da tus primeros comentarios: https://brave.com/msupport
+\nPuedes instalar Brave Nightly junto a tu versión actual de Brave para Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
-    <string name="bromite__description">El objetivo de Bromite es proporcionar una experiencia de navegación sin interrupciones, sin características que invadan la privacidad y con la adición de un rápido motor bloqueador de anuncios. Se aplican cambios mínimos a la interfaz de usuario para ayudar a frenar la idea de que el navegador es una plataforma publicitaria.</string>
+    <string name="bromite__description">El objetivo de Bromite es ofrecer una experiencia de navegación sin desorden, sin funciones que invadan la privacidad y con la incorporación de un rápido motor de bloqueo de anuncios. Se aplican cambios mínimos en la interfaz de usuario para ayudar a frenar la idea de que el navegador es una plataforma publicitaria.</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">- Bromite utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
-    <string name="bromite_systemwebview__description">El paquete SystemWebView contiene el núcleo del motor de navegación/renderizado de Bromite y sus mismas características. Ofrece la posibilidad de sustituir el componente del navegador por defecto para todo el sistema Android.</string>
+    <string name="bromite_systemwebview__description">El paquete SystemWebView contiene el núcleo del motor de navegación/representación de Bromite y sus mismas características. Ofrece la posibilidad de sustituir el componente del navegador por defecto para todo el sistema Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="crash_report__copy_crash_report_to_clipboard">Copiar informe de fallos al portapapeles</string>
-    <string name="crash_report__explain_text__download_activity_download_file">Se ha producido el siguiente error durante la descarga. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, añada el informe de fallo del portapapeles al reporte.</string>
-    <string name="crash_report__explain_text__download_activity_fetching_url">Se ha producido el siguiente error al obtener la URL de descarga. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, no olvide añadir su informe de fallo del portapapeles y la descripción de cómo reproducir este error.</string>
-    <string name="crash_report__explain_text__download_activity_install_file">Se ha producido el siguiente error durante la instalación. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, añada el informe de fallo del portapapeles al reporte.</string>
-    <string name="crash_report__explain_text__download_activity_update_check">Se ha producido el siguiente error al comprobar las actualizaciones en la vista principal. Si este error se produce con frecuencia, no dude en reportarlo en notabug.org, GitHub o GitLab. Por favor, no olvide añadir su informe de fallo del portapapeles y la descripción de cómo reproducir este error.</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Copiar el informe de los errores en el portapapeles</string>
+    <string name="crash_report__explain_text__download_activity_download_file">Se ha producido el siguiente error durante la descarga. Si este error se produce con frecuencia, no dude en enviar el informe del fallo a notabug.org, GitHub o GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">Este error se produjo cuando se obtuvieron los metadatos de la descarga. Si este error se produce con frecuencia, no dude en enviar el informe del fallo en notabug.org, GitHub o GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Este error se produjo durante la instalación. Si este error se produce con frecuencia, no dude en enviar el informe de fallo a notabug.org, GitHub o GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">Este error se produjo al comprobar las actualizaciones en la vista principal. Si este error se produce con frecuencia, no dudes en enviar el informe de fallo a notabug.org, GitHub o GitLab.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Desafortunadamente, FFUpdater se bloqueó la última vez y registró un error. Envíe el informe de ese error a notabug.org, GitHub o GitLab.</string>
     <string name="crash_report__go_to_github">Ir a GitHub</string>
     <string name="crash_report__go_to_gitlab">Ir a GitLab</string>
@@ -70,71 +70,71 @@
     <string name="device_too_old_dialog__title">El dispositivo es muy antiguo</string>
     <string name="dialog_button__do_not_install">No, no lo instales</string>
     <string name="dialog_button__yes">Sí</string>
-    <string name="notification__download_running__channel_descr">Muestra cuándo se descargan las actualizaciones de las aplicaciones en segundo plano.</string>
-    <string name="notification__download_running__channel_name">Notificación acerca de descargas en segundo plano</string>
+    <string name="notification__download_running__channel_descr">Aparece cuando las actualizaciones de la aplicación se descargan en segundo plano.</string>
+    <string name="notification__download_running__channel_name">Notificación sobre descargas en segundo plano</string>
     <string name="notification__download_running__text">Descargar actualización para %1$s (%2$s)</string>
     <string name="notification__download_running__title">Descargando actualizaciones de aplicaciones</string>
     <string name="app_card__download_the_app">descargar la aplicación</string>
-    <string name="notification__error__channel_descr">Mostrar errores del comprobador de actualizaciones en segundo plano</string>
+    <string name="notification__error__channel_descr">Mostrar los errores al comprobar las actualizaciones en segundo plano</string>
     <string name="notification__error__channel_name">Errores en segundo plano</string>
-    <string name="firefox_beta__description">El navegador Firefox para Android es automáticamente privado e increíblemente rápido. Miles de rastreadores en línea le siguen cada día, recopilando información sobre dónde se conecta y ralentizando su velocidad. Firefox bloquea a más de 2000 de estos rastreadores por defecto y hay complementos de bloqueo de anuncios disponibles si quiere personalizar su navegador aún más. Con Firefox, obtendrá la seguridad que se merece y la velocidad que necesita en un navegador privado y móvil.</string>
+    <string name="firefox_beta__description">El navegador Firefox para Android es automáticamente privado e increíblemente rápido. Miles de rastreadores en línea te siguen cada día, recopilando información sobre dónde te conectas y ralentizando tu velocidad. Firefox bloquea más de 2000 de estos rastreadores por defecto y hay complementos de bloqueo de anuncios disponibles si quieres personalizar tu navegador aún más. Con Firefox, obtendrás la seguridad que mereces y la velocidad que necesitas en un navegador privado y móvil.</string>
     <string name="firefox_beta__title">Beta de Firefox para Android</string>
-    <string name="firefox_beta__warning">- Esta aplicación está diseñada para desarrolladores y probadores. Puede contener varios errores que pueden afectar su trabajo habitual con el navegador.</string>
-    <string name="firefox_focus__description">Esta es una modificación del navegador Firefox cuyo objetivo es mejorar la privacidad.</string>
+    <string name="firefox_beta__warning">- Esta aplicación está diseñada para desarrolladores y testeadores. Puede contener varios errores que pueden afectar a tu trabajo habitual con el navegador.</string>
+    <string name="firefox_focus__description">Se trata de una modificación del navegador Firefox destinada a aumentar la privacidad.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
-    <string name="firefox_klar__description">Firefox Klar está desarrollado para Alemania, Austria y Suiza, pero puede ser utilizado por usuarios de cualquier país. Es muy similar a Firefox Focus, pero el nombre fue cambiado en los países de habla alemana para evitar la confusión con la revista Focus del grupo Hubert Burda Media. A diferencia de Firefox Focus, Firefox Klar tiene la telemetría desactivada por defecto debido a las estrictas leyes de privacidad alemanas.</string>
+    <string name="firefox_klar__description">Firefox Klar ha sido desarrollado para Alemania, Austria y Suiza, pero puede ser utilizado por usuarios de cualquier país. Es muy similar a Firefox Focus, pero el nombre fue cambiado en los países de habla alemana para evitar la confusión con la revista Focus del grupo Hubert Burda Media. A diferencia de Firefox Focus, Firefox Klar tiene la telemetría desactivada por defecto debido a las estrictas leyes de privacidad alemanas.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">Por favor, tenga en cuenta que esta aplicación solía llamarse Firefox Preview. Ahora ha pasado a ser Firefox Nightly.
+    <string name="firefox_nightly__description">Ten en cuenta que esta aplicación solía llamarse Firefox Preview. Ahora se llama Firefox Nightly. 
 \n
-\nFirefox Nightly es un canal de desarrollo para las nuevas versiones de Mozilla Firefox.
+\nFirefox Nightly es el canal de desarrollo para las nuevas versiones de Mozilla Firefox. 
 \n
-\nFirefox Nightly está diseñado para mostrar las versiones más experimentales de Firefox. El canal Nightly permite a los usuarios experimentar las últimas innovaciones de Firefox en un entorno inestable y proporcionar comentarios sobre las características y el rendimiento para ayudar a determinar lo que llega a la versión final.</string>
+\nFirefox Nightly está diseñado para mostrar las versiones experimentales de Firefox. El canal Nightly permite a los usuarios experimentar las últimas innovaciones de Firefox en un entorno inestable y comentar las características y rendimiento para ayudar a la versión final.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_nightly__warning">- Esta aplicación está diseñada para desarrolladores y probadores. Puede contener varios errores que pueden afectar su trabajo habitual con el navegador.</string>
-    <string name="firefox_release__description">El navegador Firefox para Android es automáticamente privado e increíblemente rápido. Miles de rastreadores en línea le siguen cada día, recopilando información sobre dónde se conecta y ralentizando su velocidad. Firefox bloquea a más de 2000 de estos rastreadores por defecto y hay complementos de bloqueo de anuncios disponibles si quiere personalizar su navegador aún más. Con Firefox, obtendrá la seguridad que se merece y la velocidad que necesita en un navegador privado y móvil.</string>
+    <string name="firefox_release__description">El navegador Firefox para Android es automáticamente privado e increíblemente rápido. Miles de rastreadores en línea te siguen cada día, recopilando información sobre dónde te conectas y ralentizando tu velocidad. Firefox bloquea más de 2000 de estos rastreadores por defecto y hay complementos de bloqueo de anuncios disponibles si quieres personalizar tu navegador aún más. Con Firefox, obtendrás la seguridad que mereces y la velocidad que necesitas en un navegador privado y móvil.</string>
     <string name="firefox_release__title">Navegador Firefox</string>
-    <string name="firefox_release__warning">- Una versión mejorada de Firefox también está disponible en F-Droid bajo el nombre de Fennec F-Droid.</string>
+    <string name="firefox_release__warning">- Una versión mejorada de Firefox también está disponible en F-Droid con el nombre de Fennec F-Droid.</string>
     <string name="go_back">Volver</string>
-    <string name="iceraven__description">¡Definitivamente, no presentado por Mozilla!
+    <string name="iceraven__description">Definitivamente, ¡no lo ha traído Mozilla!
 \n
-\nEl Navegador Iceraven es un navegador web para Android, basado en la versión Fenix de Mozilla de Firefox, GeckoView y Mozilla Android Components.
+\nIceraven Browser es un navegador web para Android, basado en la versión Fenix de Mozilla de Firefox, GeckoView y Mozilla Android Components.
 \n
-\nNuestro objetivo es ser una bifurcación cercana del nuevo Firefox para Android que busca proporcionar a los usuarios más opciones, más oportunidades de personalización (incluyendo una amplia biblioteca de extensiones), y más información sobre las páginas que visitan y cómo sus navegadores están interactuando con esas páginas.</string>
+\nNuestro objetivo es ser un fork cercano del nuevo Firefox para Android que busca proporcionar a los usuarios más opciones, más oportunidades de personalización (incluyendo una amplia biblioteca de extensiones), y más información sobre las páginas que visitan y cómo sus navegadores están interactuando con esas páginas.</string>
     <string name="iceraven__title">Navegador Iceraven</string>
-    <string name="iceraven__warning">- El creador no da ninguna garantía de seguridad, ni de actualizaciones, ni siquiera de estabilidad.
+    <string name="iceraven__warning">- El desarrollador no da ninguna garantía de seguridad, ni de actualizaciones, ni siquiera de estabilidad.
 \n - El proyecto tarda más de lo habitual en proporcionar actualizaciones de seguridad.</string>
-    <string name="infobox">Esta es una actualización para navegadores amigables con la privacidad. Haga clic en el botón más para instalar nuevas aplicaciones. Deslice hacia abajo para forzar una verificación de nuevas actualizaciones. De forma predeterminada, la aplicación buscará periódicamente actualizaciones en segundo plano, que luego se descargarán y finalmente se instalarán. Haga clic en el engranaje para personalizar el comportamiento en la configuración. 
-\n 
-\nÚltima verificación de actualización de antecedentes exitosa: %1$s</string>
-    <string name="app_card__information_about_the_app">información acerca de la aplicación</string>
+    <string name="infobox">Este es un actualizador para los navegadores que respetan la privacidad. Pulsa el botón más para instalar nuevas aplicaciones. Desliza el dedo hacia abajo para forzar la búsqueda de nuevas actualizaciones. Por defecto, la aplicación buscará periódicamente actualizaciones en segundo plano, que se descargarán y finalmente se instalarán. Haz clic en el engranaje para personalizar el comportamiento en la configuración.
+\n
+\nÚltima comprobación exitosa de actualizaciones en segundo plano: %1$s</string>
+    <string name="app_card__information_about_the_app">Información sobre la aplicación</string>
     <string name="download_activity__delete_cache_button_text">limpiar caché</string>
-    <string name="download_activity__delete_cache_explanation">Si cree que FFUpdater ha almacenado en la caché una actualización de aplicación defectuosa o si quieres ahorrar espacio, haga clic en el botón para eliminar el archivo descargado.</string>
-    <string name="download_activity__different_installer_info__text">Si la instalación falla frecuentemente, intenta cambiar al \"instalador nativo\" en los ajustes.</string>
-    <string name="download_activity__download_app_with_status">Descargar aplicación (%1$s)</string>
-    <string name="download_activity__download_failed">Descarga fallida</string>
-    <string name="download_activity__downloaded_application_from">Aplicación descargada desde:</string>
+    <string name="download_activity__delete_cache_explanation">Si cree que FFUpdater ha almacenado en la caché una actualización defectuosa o si quieres ahorrar espacio, haga clic en el botón para eliminar el archivo descargado.</string>
+    <string name="download_activity__different_installer_info__text">Si la instalación falla con frecuencia, prueba a cambiar al \"instalador nativo\" en la configuración.</string>
+    <string name="download_activity__download_app_with_status">Descargando aplicación (%1$s)</string>
+    <string name="download_activity__download_failed">La descarga fallo</string>
+    <string name="download_activity__downloaded_application_from">Descargó la aplicación desde:</string>
     <string name="download_activity__downloaded_application_is_not_verified">La aplicación descargada NO está verificada</string>
-    <string name="download_activity__exception__show_button"><u>Mostrar el informe de error detallado.</u></string>
-    <string name="download_activity__external_storage_not_accessible">El almacenamiento externo no está disponible - no se puede iniciar la descarga. El estado actual es:</string>
-    <string name="download_activity__fetch_url_for_download">Obtener URL de descarga de %1$s</string>
-    <string name="download_activity__fetched_url_for_download_successfully">URL de descarga obtenida de %1$s</string>
-    <string name="download_activity__file_uri_exposed_toast">No se puede exponer la ruta del archivo a otras aplicaciones. Por favor, abra la carpeta usted mismo con su administrador de archivos preferido.</string>
-    <string name="download_activity__github_rate_limit_exceeded">Se ha superado el límite de solicitudes de GitHub-API. Por favor, intente la descarga de nuevo en la próxima hora.</string>
-    <string name="download_activity__open_cache_explanation">Puede abrir la carpeta de caché para copiar el archivo APK a un lugar con más espacio libre. Desafortunadamente, en Android 11+ solo algunos administradores de archivos tienen acceso a esta carpeta en Android/data.</string>
-    <string name="download_activity__open_cache_folder_button_text">abrir carpeta de caché</string>
-    <string name="download_activity__open_folder">Abrir carpeta</string>
+    <string name="download_activity__exception__show_button"><u>Mostrar el informe de errores detallado.</u></string>
+    <string name="download_activity__external_storage_not_accessible">El almacenamiento externo no está disponible; no se puede iniciar la descarga. El estado actual es:</string>
+    <string name="download_activity__fetch_url_for_download">Obtener metadatos de %1$s</string>
+    <string name="download_activity__fetched_url_for_download_successfully">Metadatos recuperados de %1$s</string>
+    <string name="download_activity__file_uri_exposed_toast">No se puede mostrar la ruta del archivo a otras aplicaciones. Abra la carpeta usted mismo con su administrador de archivos preferido.</string>
+    <string name="download_activity__github_rate_limit_exceeded">Se ha superado el límite de solicitudes a la aplicación GitHub. Por favor, intente la descarga de nuevo en la próxima hora.</string>
+    <string name="download_activity__open_cache_explanation">Puedes abrir la carpeta de la caché para copiar el archivo APK en un lugar con más almacenamiento libre. Desafortunadamente, en Android 11+ sólo unos pocos gestores de archivos pueden acceder a esta carpeta dentro de Android/data.</string>
+    <string name="download_activity__open_cache_folder_button_text">abrir la carpeta de la caché</string>
+    <string name="download_activity__open_folder">Abrir la carpeta</string>
     <string name="download_activity__sha_256_certificate_fingerprint">Huella digital del certificado SHA-256:</string>
     <string name="download_activity__temporary_network_issue">Se ha producido un problema temporal en la red. Por favor, vuelva a intentarlo más tarde.</string>
     <string name="download_activity__too_low_memory_description">Su dispositivo tiene poca capacidad de almacenamiento (solo %1$d MB libres). Esto provocará un fallo en la descarga o en la instalación.</string>
-    <string name="download_activity__too_low_memory_title">Poco Espacio en el Disco</string>
-    <string name="download_activity__use_cached_downloaded_apk">Usar archivo ya descargado de:</string>
+    <string name="download_activity__too_low_memory_title">Poco espacio en el disco</string>
+    <string name="download_activity__use_cached_downloaded_apk">Utilizar el archivo ya descargado de:</string>
     <string name="download_activity__you_can_now_close_this_window">Ahora puede cerrar esta ventana</string>
-    <string name="download_activity__label">Instalar Aplicación</string>
-    <string name="install_app">Instalar app</string>
-    <string name="install_new_app">Instalar nueva aplicación</string>
-    <string name="install_same_version_dialog__message">La última versión de esta aplicación ya está instalada. ¿Quiere descargar e instalar la última versión otra vez\?</string>
-    <string name="install_same_version_dialog__title">Misma versión ya instalada</string>
-    <string name="notification__install_error__channel_descr">Canal de notificaciones para actualizaciones fallidas de %1$s.</string>
+    <string name="download_activity__label">Descargar la aplicación</string>
+    <string name="install_app">Instalar la aplicación</string>
+    <string name="install_new_app">Instalar una nueva aplicación</string>
+    <string name="install_same_version_dialog__message">La última versión de esta aplicación ya está instalada. ¿Quieres descargar e instalar la última versión de nuevo\?</string>
+    <string name="install_same_version_dialog__title">La misma versión ya está instalada</string>
+    <string name="notification__install_error__channel_descr">Canal de notificación para actualizaciones fallidas de %1$s.</string>
     <string name="notification__install_error__channel_name">Notificación de fallo de actualización de %1$s</string>
     <string name="notification__install_error__text">Error (%1$d): %2$s</string>
     <string name="notification__install_error__title">%1$s no se pudo actualizar</string>
@@ -145,84 +145,84 @@
     <string name="installed_app_is_not_verified">La aplicación instalada NO está verificada</string>
     <string name="installed_application_is_verified">La aplicación instalada está verificada</string>
     <string name="installed_version">Instalado: %1$s</string>
-    <string name="intent_installer__likely_storage_failure">La operación probablemente falló por problemas de almacenamiento. Por ejemplo, es posible que el dispositivo tenga poco espacio o que los medios externos no estén disponibles. El usuario puede ayudar a liberar espacio o insertar un medio externo diferente.</string>
-    <string name="kiwi__description">El Navegador Kiwi está hecho para navegar el internet, leer noticias, ver videos y escuchar música, sin molestias.</string>
+    <string name="intent_installer__likely_storage_failure">Es probable que la operación haya fallado por problemas de almacenamiento. Por ejemplo, es posible que el dispositivo tenga poco espacio o que los medios externos no estén disponibles. El usuario puede ayudar a liberar espacio o insertar un medio externo diferente.</string>
+    <string name="kiwi__description">Kiwi Browser está hecho para navegar por internet, leer noticias, ver videos y escuchar música, sin molestias.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
     <string name="kiwi__warning">- Kiwi utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.
-\n- Kiwi no es un navegador de privacidad ideal, pero tiene buen soporte para complementos.
-\n- El navegador recibe es pagado por motores de búsqueda por cada búsqueda realizada con Kiwi Browser. Dependiendo de la elección del motor de búsqueda, las solicitudes pueden pasar a través de los servidores de Kiwibrowser / Kiwisearchservices.
-\n- Google Ads en Kiwi puede usar los datos de ubicación con fines publicitarios - pero puede desactivarlos deshabilitando la función de Descubrimiento. Pero esto cambiará pronto. Consulte https://privacy.kiwibrowser.org/ para obtener más detalles.</string>
-    <string name="lockwise__description">ACCESO DE CONTRASEÑAS PARA TI Y SOLO PARA TI
+\n- Kiwi no es un navegador ideal para la privacidad, pero tiene un buen soporte de complementos.
+\n- El navegador recibe un pago de los motores de búsqueda por cada búsqueda realizada con Kiwi Browser. Dependiendo de la elección del motor de búsqueda, las solicitudes pueden ir a través de los servidores de Kiwibrowser / Kiwisearchservices.
+\n- Los anuncios de Google en Kiwi pueden utilizar los datos de ubicación para los anuncios - pero se puede desactivar mediante la desactivación de la función de descubrimiento. Pero esto cambiará pronto. Consulte https://privacy.kiwibrowser.org/ para obtener más detalles.</string>
+    <string name="lockwise__description">ACCESO A LAS CONTRASEÑAS PARA TI, Y SÓLO PARA TI
 \n
-\nSiga de forma segura sus contraseñas de Firefox y acceda a ellas en cualquier lugar. Abra rápidamente cualquier sitio web desde la aplicación para entrar a cuentas.</string>
+\nSigue de forma segura tus contraseñas de Firefox y accede a ellas en cualquier lugar. Abre rápidamente cualquier sitio web desde la aplicación para entrar en tus cuentas.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__available_version_loading">Cargando…</string>
-    <string name="main_activity__github_api_limit_exceeded"><u>Límite de solicitudes de GitHub-API superado. Inténtelo de nuevo en la próxima hora.</u></string>
-    <string name="main_activity__no_unmetered_network">Ninguna red no medida</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Límite de la aplicación de GitHub superado. Vuelva a intentar en la próxima hora.</u></string>
+    <string name="main_activity__no_unmetered_network">No hay ninguna red sin límite en el uso de datos</string>
     <string name="main_activity__subtitle">Actualizador para navegadores respetuosos con la privacidad</string>
     <string name="main_activity__temporary_network_issue"><u>Problema temporal de red. Inténtelo más tarde.</u></string>
-    <string name="manage_storage_activity__delete_button">Eliminar las actualizaciones de aplicaciones en caché.</string>
-    <string name="manage_storage_activity__explanation">FFUpdater guarda en caché las actualizaciones de aplicaciones ya descargadas y las almacena en la carpeta \"Android/data/de.marmaro.krt.ffupdater/files/Download\".
+    <string name="manage_storage_activity__delete_button">Eliminar las actualizaciones de la aplicación en caché.</string>
+    <string name="manage_storage_activity__explanation">FFUpdater guarda en caché las actualizaciones de las aplicaciones ya descargadas y las almacena en la carpeta \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.
 \n
-\nEsto ahorra ancho de banda cuando una aplicación no se instala o actualiza correctamente. Además, la caché es necesaria para que las actualizaciones que se descargaron en segundo plano puedan instalarse más tarde.
+\nEsto ahorra ancho de banda cuando una aplicación no se instala o actualiza con éxito. Además, la caché es necesaria para que las actualizaciones que se descargaron en segundo plano puedan instalarse más tarde.
 \n
-\nSi decide eliminar estas actualizaciones de aplicaciones, es posible que tenga que volver a descargarlas.</string>
-    <string name="ok">OK</string>
-    <string name="request_installation_permission_dialog__abort">Abortar</string>
+\nSi decides eliminar estas actualizaciones de las aplicaciones, es posible que tengas que volver a descargarlas.</string>
+    <string name="ok">De acuerdo</string>
+    <string name="request_installation_permission_dialog__abort">Cancelar</string>
     <string name="request_installation_permission_dialog__grant_permission">Conceder permiso</string>
-    <string name="request_installation_permission_dialog__message">FFUpdater no tiene permiso para instalar y actualizar aplicaciones. Tiene que concederle estos permisos o FFUpdater no funcionará.</string>
-    <string name="request_installation_permission_dialog__title">Permiso de instalador</string>
-    <string name="running_downloads_dialog__message">La aplicación está descargando actualizaciones en segundo plano. ¿Quiere iniciar una nueva descarga que puede tardar más\?</string>
+    <string name="request_installation_permission_dialog__message">A FFUpdater le falta el permiso para instalar y actualizar las aplicaciones. Tienes que conceder estos permisos o FFUpdater no funcionará.</string>
+    <string name="request_installation_permission_dialog__title">Permiso del instalador</string>
+    <string name="running_downloads_dialog__message">La aplicación está descargando las actualizaciones en segundo plano. Quieres iniciar una nueva descarga que puede tomar más tiempo\?</string>
     <string name="running_downloads_dialog__negative">No, no lo descargues</string>
-    <string name="running_downloads_dialog__title">Descargas en progreso</string>
+    <string name="running_downloads_dialog__title">Descargas en curso</string>
     <string name="running_downloads_dialog__yes">Sí</string>
-    <string name="session_installer__not_enough_storage">La operación falló porque no hay suficiente almacenamiento disponible: %1$s</string>
-    <string name="session_installer__require_user_interaction">Requiere interacción del usuario. Debe actualizar primero la aplicación desde la interfaz de usuario de FFUpdater. Solo entonces se permiten las actualizaciones silenciosas en segundo plano de la aplicación correspondiente.</string>
-    <string name="session_installer__status_failure">La operación falló de forma genérica. El sistema siempre tratará de proporcionar una razón de fallo más específica, pero en algunos casos raros esto puede ser entregado.</string>
-    <string name="session_installer__status_failure_aborted">La operación falló porque ha sido abortada activamente. Por ejemplo, el usuario rechazó activamente los permisos solicitados o se abandonó la sesión.</string>
-    <string name="session_installer__status_failure_blocked">La operación ha fallado porque fue bloqueada. Por ejemplo, una política del dispositivo puede estar bloqueando la operación, un verificador de paquete puede haber bloqueado la operación o la aplicación puede ser necesaria para el funcionamiento básico del sistema.</string>
-    <string name="session_installer__status_failure_conflict">La operación falló porque entra en conflicto (o es incompatible) con otro paquete ya instalado en el dispositivo. Por ejemplo, un permiso existente, certificados incompatibles, etc. El usuario puede desinstalar la otra aplicación para solucionar el problema.</string>
-    <string name="session_installer__status_failure_incompatible">La operación falló porque es fundamentalmente incompatible con este dispositivo. Por ejemplo, la aplicación puede requerir una característica de hardware que no existe, puede faltar código nativo para las ABIs soportadas por el dispositivo o requiere una versión más reciente del SDK, etc.</string>
-    <string name="session_installer__status_failure_invalid">La operación falló porque uno o más de los APKs eran inválidos. Por ejemplo, pueden estar mal formados, corruptos, firmados incorrectamente, no coinciden, etc.</string>
-    <string name="session_installer__status_failure_storage">La operación falló por problemas de almacenamiento. Por ejemplo, es posible que el dispositivo tenga poco espacio o que los medios externos no estén disponibles. El usuario puede ayudar a liberar espacio o insertar un medio externo diferente.</string>
-    <string name="settings_activity__label">Ajustes</string>
-    <string name="settings__b_f__delete_cache_if_install_failed">Eliminar la actualización descargada si la actualización falla.</string>
-    <string name="settings__b_f__delete_cache_if_install_successful">Eliminar la actualización descargada si la instalación es exitosa.</string>
+    <string name="session_installer__not_enough_storage">La operación ha fallado porque no hay suficiente espacio disponible: %1$s</string>
+    <string name="session_installer__require_user_interaction">Requiere la interacción del usuario. Primero debes actualizar la aplicación a través de la interfaz de usuario de FFUpdater. Solo entonces se permiten las actualizaciones silenciosas en segundo plano de la aplicación correspondiente.</string>
+    <string name="session_installer__status_failure">La operación ha fallado de forma genérica. El sistema siempre tratará de proporcionar una razón de fallo más específica, pero en algunos casos raros esto puede ser entregado.</string>
+    <string name="session_installer__status_failure_aborted">La operación ha fallado porque ha sido cancelada. Por ejemplo, el usuario rechazó los permisos solicitados o se abandonó la sesión.</string>
+    <string name="session_installer__status_failure_blocked">La operación ha fallado porque se ha bloqueado. Por ejemplo, una política de dispositivo puede bloquear la operación, un verificador de paquetes puede haber bloqueado la operación o la aplicación puede ser necesaria para el funcionamiento del sistema central.</string>
+    <string name="session_installer__status_failure_conflict">La operación ha fallado porque entra en conflicto (o es incompatible) con otro paquete ya instalado en el dispositivo. Por ejemplo, un permiso existente, certificados incompatibles, etc. El usuario puede desinstalar la otra aplicación para solucionar el problema.</string>
+    <string name="session_installer__status_failure_incompatible">La operación ha fallado porque es fundamentalmente incompatible con este dispositivo. Por ejemplo, la aplicación puede requerir una característica de hardware que no existe, puede faltar el código nativo para las ABIs soportadas por el dispositivo, o requiere una versión más reciente del SDK, etc.</string>
+    <string name="session_installer__status_failure_invalid">La operación falló porque uno o más de los APKs no eran válidos. Por ejemplo, pueden estar mal formados, corruptos, firmados incorrectamente, no coinciden, etc.</string>
+    <string name="session_installer__status_failure_storage">La operación ha fallado por problemas de almacenamiento. Por ejemplo, es posible que el dispositivo tenga poco espacio o que los medios externos no estén disponibles. El usuario puede ayudar a liberar espacio o insertar un medio externo diferente.</string>
+    <string name="settings_activity__label">Configuración</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Elimine la actualización descargada si la instalación falla.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Elimine la actualización descargada si la instalación es exitosa.</string>
     <string name="settings__background__download__enabled__summary">Cuando se detecte una actualización, descárgala. Esto acelerará posteriormente el proceso de actualización.</string>
-    <string name="settings__background__download__enabled__title">Descargar actualizaciones de aplicaciones</string>
-    <string name="settings__background__download__metered__summary">No recomendado para usuarios con datos móviles limitados.</string>
-    <string name="settings__background__download__metered__title">Descargar actualizaciones de aplicaciones en redes medidas</string>
-    <string name="settings__background__installation__enabled__summary">Intentar instalar actualizaciones sin interacción del usuario.</string>
+    <string name="settings__background__download__enabled__title">Descargar las actualizaciones de las aplicaciones</string>
+    <string name="settings__background__download__metered__summary">No se recomienda para usuarios con datos móviles limitados.</string>
+    <string name="settings__background__download__metered__title">Descargar las actualizaciones de las aplicaciones en las redes con límites de datos</string>
+    <string name="settings__background__installation__enabled__summary">Intenta instalar las actualizaciones sin la interacción del usuario.</string>
     <string name="settings__background__installation__enabled__title">Instalar actualización</string>
-    <string name="settings__background__update_check__enabled__summary">Comprobar si hay actualizaciones nuevas en intervalos regulares.</string>
-    <string name="settings__background__update_check__enabled__title">Comprobación de actualizaciones</string>
-    <string name="settings__background__update_check__excluded_apps__summary">Útil si no quiere actualizar una aplicación y no quiere recibir notificaciones de actualización de esta.</string>
-    <string name="settings__background__update_check__excluded_apps__title">Excluir aplicaciones de la comprobación de actualizaciones</string>
+    <string name="settings__background__update_check__enabled__summary">Compruebe si hay nuevas actualizaciones a intervalos regulares.</string>
+    <string name="settings__background__update_check__enabled__title">Buscar actualizaciones</string>
+    <string name="settings__background__update_check__excluded_apps__summary">Útil si no quieres actualizar una aplicación y no quieres recibir notificaciones de actualizar la misma.</string>
+    <string name="settings__background__update_check__excluded_apps__title">Excluir aplicaciones en la comprobación de actualizaciones</string>
     <string name="settings__background__update_check__interval__title">Intervalo de comprobación de actualizaciones</string>
-    <string name="settings__background__update_check__metered__title">Comprobaciones de actualizaciones en redes medidas</string>
+    <string name="settings__background__update_check__metered__title">Comprobaciones de actualizaciones en redes con límites de datos</string>
     <string name="settings__background_category__summary">Ajustes cuando la aplicación está trabajando en segundo plano y es invisible para el usuario.</string>
     <string name="settings__background_category__title">Segundo Plano</string>
-    <string name="settings__foreground__download__metered__title">Descargar actualizaciones en redes medidas</string>
-    <string name="settings__foreground__theme_preference__summary">Elegir entre tema claro y oscuro</string>
-    <string name="settings__foreground__theme_preference__title">Elegir tema</string>
-    <string name="settings__foreground__update_check__metered__summary">Permitir comprobaciones de actualizaciones en redes medidas, como datos móviles.</string>
-    <string name="settings__foreground__update_check__metered__title">Comprobaciones de actualizaciones en redes medidas</string>
+    <string name="settings__foreground__download__metered__title">Descargar actualizaciones en redes con límites de datos</string>
+    <string name="settings__foreground__theme_preference__summary">Elige entre el tema claro u oscuro</string>
+    <string name="settings__foreground__theme_preference__title">Elija el tema</string>
+    <string name="settings__foreground__update_check__metered__summary">Permitir comprobaciones de actualizaciones en redes con gasto de datos, como datos móviles.</string>
+    <string name="settings__foreground__update_check__metered__title">Comprobaciones de actualizaciones en redes con límite de datos</string>
     <string name="settings__foreground_category__summary">Ajustes cuando la interfaz de usuario es visible.</string>
     <string name="settings__foreground_category__title">Primer Plano</string>
-    <string name="settings__installer__native__summary">Alternativa si el instalador de sesión no funciona en su smartphone. Esto es más a menudo el caso de los dispositivos de Samsung o Xiaomi.</string>
+    <string name="settings__installer__native__summary">Es una alternativa si el instalador de la sesión no funciona en su smartphone. Esto es más a menudo el caso de los dispositivos de Samsung o Xiaomi.</string>
     <string name="settings__installer__native__title">Instalador nativo</string>
-    <string name="settings__installer__root__summary">Utiliza permisos de root para instalar o actualizar aplicaciones sin interacción del usuario. Esto requiere un smartphone rooteado.</string>
-    <string name="settings__installer__root__title">Instalador de root</string>
+    <string name="settings__installer__root__summary">Utiliza el permiso de root para instalar o actualizar aplicaciones sin la interacción del usuario. Esto requiere un smartphone rooteado.</string>
+    <string name="settings__installer__root__title">Instalador root</string>
     <string name="settings__installer__session__summary">Recomendado para la mayoría de dispositivos.</string>
     <string name="settings__installer__session__title">Instalador de sesión</string>
     <string name="settings__installer_category__title">Instalador</string>
-    <string name="settings__theme_battery_saver">Oscuro cuando el Ahorrador de Batería está activo</string>
+    <string name="settings__theme_battery_saver">Oscuro cuando el ahorro de batería esté activo</string>
     <string name="settings__theme_dark">Oscuro</string>
     <string name="settings__theme_light">Claro</string>
     <string name="settings__theme_system_default">Usar predeterminado del sistema</string>
     <string name="ungoogled_chromium__description">Google Chromium, sin integración con Google.
 \n
-\nSin necesidad de acceder a una cuenta de Google, Chromium es bastante bueno en términos de seguridad y privacidad. Sin embargo, Chromium sigue teniendo cierta dependencia de los servicios web y los binarios de Google. Además, Google diseñó Chromium para que fuera fácil e intuitivo para los usuarios, lo que significa que compromete la transparencia y el control de las operaciones internas.</string>
+\nSin necesidad de acceder a una cuenta de Google, Chromium lo hace bastante bien en términos de seguridad y privacidad. Sin embargo, Chromium sigue teniendo cierta dependencia de los servicios web y los binarios de Google. Además, Google diseñó Chromium para que fuera fácil e intuitivo para los usuarios, lo que significa que compromete la transparencia y el control de las operaciones internas.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="ungoogled_chromium__warning">- Ungoogled Chromium utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="unsupported_abi_dialog__message">El navegador seleccionado es incompatible con el procesador de su smartphone. Por favor, seleccione un navegador diferente.</string>
@@ -249,28 +249,28 @@
     <string name="notification__update_available__channel_name">Notificación de actualización de %1$s</string>
     <string name="update_notification__text">Haga clic para instalar actualización</string>
     <string name="update_notification__title">Actualización para %1$s disponible</string>
-    <string name="vivaldi__description">¡Descubra un navegador de Internet increíblemente rápido! Vivaldi es un nuevo navegador web gratuito y privado hecho con flexibilidad en mente. Viene repleto de funciones útiles, como un AdBlocker (bloqueador de ventanas emergentes) integrado, protección contra el rastreo y traducción privada. Las opciones del navegador, como las pestañas propias del estilo del escritorio, los temas oscuros o claros y las opciones de diseño, le ayudan a hacerlo suyo.</string>
+    <string name="vivaldi__description">¡Descubra un navegador de Internet increíblemente rápido!. Vivaldi es un nuevo navegador web gratuito y privado construido con flexibilidad. Viene repleto de funciones útiles, como un AdBlocker (bloqueador de ventanas emergentes) integrado, protección contra el rastreo y traducción privada. Las opciones del navegador, como las pestañas propias del estilo del escritorio, los temas oscuros o claros y las opciones de diseño, te ayudan a hacerlo tuyo.</string>
     <string name="vivaldi__title">Navegador Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi es solo parcialmente de código abierto.
 \n- También utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
-    <string name="settings__foreground__hide_warning_buttons">Oculte el botón de advertencia de la aplicación instalada.</string>
+    <string name="settings__foreground__hide_warning_buttons">Oculte el botón de advertencia para la aplicación instalada.</string>
     <string name="notification__eol_apps__title">Aplicaciones obsoletas instaladas</string>
     <string name="notification__no_update_check__text">En los últimos cinco días FFUpdater no ha podido comprobar las actualizaciones en segundo plano. Si has tenido tu smartphone en modo avión durante mucho tiempo, puedes ignorar este mensaje. Si no, haz clic aquí para ver el informe de error.</string>
     <string name="app_card__open_project_page">Abrir la página del proyecto en el navegador</string>
     <string name="orbot__description">Orbot es una aplicación de proxy gratuita que permite a otras aplicaciones utilizar Internet de forma más segura. Orbot usa Tor para encriptar su tráfico de Internet y luego lo oculta rebotando a través de una serie de computadoras en todo el mundo. Tor es un software gratuito y una red abierta que lo ayuda a defenderse contra una forma de vigilancia de la red que amenaza la libertad personal y la privacidad, las actividades y relaciones comerciales confidenciales y la seguridad del estado conocida como análisis de tráfico.</string>
     <string name="ungoogled_chromium__eol_reason">El desarrollador publicó: \"No podré actualizar las versiones durante algún tiempo. Si es posible, utilice uno de los navegadores [compatibles con FFUpdater] mientras tanto\". https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="app_card__app_warning_button_description">Mostrar advertencias sobre esta aplicación</string>
-    <string name="generic_eol_reason__browser_to_old">El navegador no ha sido actualizado desde hace mucho tiempo, por lo que le recomiendo utilizar otro navegador temporalmente. Cuando los desarrolladores publiquen una nueva actualización, eliminaré esta advertencia.</string>
-    <string name="lockwise__eol_reason">Mozilla abandonó el soporte en diciembre de 2021. Cambie a otra contraseña segura.</string>
+    <string name="generic_eol_reason__browser_to_old">El navegador no ha sido actualizado desde hace mucho tiempo, por lo que recomiendo utilizar otro navegador temporalmente. Cuando los desarrolladores publiquen una nueva actualización, eliminaré esta advertencia.</string>
+    <string name="lockwise__eol_reason">Mozilla eliminó el soporte en diciembre de 2021. Cambie a otra contraseña segura.</string>
     <string name="mull__title">Mull Browser</string>
     <string name="mull__description">Este es un navegador web depurado y orientado a la privacidad basado en la tecnología de Mozilla. Habilita muchas características mejoradas por el proyecto Tor Uplift utilizando las preferencias del proyecto arkenfox-user.js. Se recomienda instalar \'uBlock Origin\'.</string>
     <string name="mull__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es más rápido.</string>
-    <string name="notification__download_error__channel_descr">Mostrar cuando fallan las descargas de actualizaciones en segundo plano.</string>
-    <string name="notification__download_error__channel_name">Notificación los errores de la descarga en segundo plano</string>
+    <string name="notification__download_error__channel_descr">Muestra cuando fallan las descargas de las actualizaciones en segundo plano.</string>
+    <string name="notification__download_error__channel_name">Notificacar los errores en la descarga en segundo plano</string>
     <string name="notification__download_error__descr">La descarga en segundo plano de la actualización %1$s ha fallado. Si este error se produce con frecuencia, no dudes en informarlo en notabug.org, GitHub o GitLab.</string>
     <string name="notification__download_error__text">La descarga en segundo plano de la actualización de %1$s ha fallado. Si este error se produce con frecuencia, haga clic aquí para ver el informe de errores.</string>
     <string name="notification__download_error__title">La descarga en segundo plano de la actualización falló</string>
-    <string name="notification__eol_apps__channel_description">Canal de notificación para la advertencias sobre aplicaciones obsoletas.</string>
+    <string name="notification__eol_apps__channel_description">Canal de notificaciones para avisar de aplicaciones obsoletas.</string>
     <string name="notification__eol_apps__channel_name">Notificación de aplicaciones obsoletas</string>
     <string name="notification__eol_apps__text">Tiene aplicaciones obsoletas que ya no deberían usarse. Haga clic para obtener más información.</string>
     <string name="tor_browser__title">Tor Browser</string>
@@ -281,7 +281,7 @@
     <string name="add_app_activity__title_based_on_firefox">Basado en Firefox</string>
     <string name="add_app_activity__title_other_applications">Otras Aplicaciones</string>
     <string name="add_app_activity__add_new_application">Añadir nueva aplicación</string>
-    <string name="add_app_activity__title_good_privacy_browsers">Buenos navegadores de privacidad</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Buenos navegadores para la privacidad</string>
     <string name="add_app_activity__title_better_than_google_chrome">Mejor que Google Chrome</string>
     <string name="settings__network__trust_user_cas__summary">Activa si el tráfico de datos debe ser inspeccionado y alterado por otras aplicaciones. Si no está seguro, mantenga esta opción desactivada.</string>
     <string name="settings__network__trust_user_cas__title">Confiar en las CA agregadas por el usuario</string>
