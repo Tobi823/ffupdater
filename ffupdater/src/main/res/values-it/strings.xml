@@ -219,7 +219,7 @@
     <string name="settings__theme_system_default">Usa predefinito di sistema</string>
     <string name="ungoogled_chromium__description">Google Chromium, senza l\'integrazione con Google.\n\nSenza fare l\'accesso a un Account Google, Chromium fa abbastanza bene in termini di sicurezza e privacy. Tuttavia, Chromium ha ancora una certa dipendenza dai binari e dai servizi web di  Google. Inoltre, Google ha progettato Chromium in modo che fosse facile e intuitivo per gli utenti, il che significa che compromettono la trasparenza e il controllo delle operazioni interne.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium usa la base tecnica di Google Chrome (Chromium) - ciò non piace ad alcune persone e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="unsupported_abi_dialog__message">Il browser selezionato non è compatibile con il processore del tuo smartphone. Seleziona un browser diverso.</string>
     <string name="unsupported_abi_dialog__title">Dispositivo non supportato</string>
     <string name="update_interval__12h">12 ore</string>
@@ -269,7 +269,7 @@
     <string name="add_app_activity__label">Aggiungi nuova applicazione</string>
     <string name="add_app_activity__title_from_mozilla">Da Mozilla</string>
     <string name="settings__network__trust_user_cas__summary">Abilita se il traffico dati deve essere ispezionato e modificato da altre app. Se non sei sicuro, mantieni questa opzione disabilitata.</string>
-    <string name="chromium__warning">- Chromium utilizza le base tecniche di Google Chrome e quindi sostiene indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
+    <string name="chromium__warning">- Chromium usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="chromium__title">Chromium</string>
     <string name="chromium__description">Chromium è un progetto di browser open-source che mira a costruire un modo più sicuro, più veloce e più stabile per tutti gli utenti di vivere il web. Questo sito contiene documenti di progettazione, panoramiche sull\'architettura, informazioni sui test e altro ancora per aiutaryi a imparare a costruire e lavorare con il codice sorgente di Chromium.</string>
     <string name="settings__network__trust_user_cas__title">Considera attendibili le CA aggiunte dall\'utente</string>
@@ -278,4 +278,10 @@
     <string name="settings__background__update_check__when_device_idle__summary">Attiva questa opzione se non desideri che le applicazioni vengano riavviate da un aggiornamento in background. Disattiva questa opzione se desideri una pianificazione più prevedibile per le verifiche degli aggiornamenti in background.</string>
     <string name="crash_report_activity__label">Segnalatore di arresti anomali</string>
     <string name="add_app_activity__title_end_of_live_browser">Fine del browser live</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="fennecfdroid__description">Fennec F-Droid è basato sull\'ultima versione di Firefox (nome in codice Fenix). Sono stati rimossi i bit proprietari e la telemetria, ma si connette comunque a vari servizi di Mozilla e Google che possono tracciare gli utenti.</string>
+    <string name="mulch__description">Si tratta di un browser web rafforzato e orientato alla sicurezza, basato sulla tecnologia Chromium. Molte anti-funzionalità sono state disabilitate o rimosse, e una manciata di funzionalità di sicurezza sono state abilitate o aggiunte grazie alle patch del progetto Vanadium. Il repository di origine include anche prebuilt e makefile per consentire ad altri sistemi operativi di includere Mulch come WebView di sistema.</string>
+    <string name="mulch__warning">- Mulch usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
+    <string name="fennecfdroid__warning">FFUpdater scarica i file dai server di F-Droid e quindi non è più veloce di quest\'ultimo.</string>
 </resources>
