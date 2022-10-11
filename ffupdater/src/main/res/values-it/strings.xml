@@ -278,4 +278,5 @@
     <string name="settings__background__update_check__when_device_idle__summary">Attiva questa opzione se non desideri che le applicazioni vengano riavviate da un aggiornamento in background. Disattiva questa opzione se desideri una pianificazione più prevedibile per le verifiche degli aggiornamenti in background.</string>
     <string name="crash_report_activity__label">Segnalatore di arresti anomali</string>
     <string name="add_app_activity__title_end_of_live_browser">Fine del browser live</string>
+    <string name="mulch__title">Mulch</string>
 </resources>
