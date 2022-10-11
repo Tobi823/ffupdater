@@ -35,7 +35,8 @@ class FennecFdroid(
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
         val index = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
-            ABI.ARM64_V8A -> 1
+            ABI.ARMEABI_V7A -> 1
+            ABI.ARM64_V8A -> 2
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val result = fdroidConsumer.getLatestUpdate(packageName, context, index)
