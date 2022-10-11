@@ -1,7 +1,12 @@
-# 2022-10-09 Version 77.2.1 (114)
+# 2022-10-11 Version 77.3.0 (114)
 
+* Thanks for the Weblate contribution from: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
 * If the background update fails (due to missing user interaction), show the "update is available"
   notification
+* Fix crash when checking for Mull (from F-Droid) updates
+* Add Fennec from F-Droid
+* Add Mulch
 
 # 2022-09-11 Version 77.2.0 (113)
 
