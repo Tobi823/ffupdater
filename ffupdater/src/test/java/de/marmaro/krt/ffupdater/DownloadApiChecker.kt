@@ -58,8 +58,7 @@ class DownloadApiChecker {
             packageManager.getPackageInfo(any<String>(), 0)
         } throws PackageManager.NameNotFoundException()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-        every { deviceAbiExtractor.supportedAbis } returns listOf(ABI.ARM64_V8A)
-        every { deviceAbiExtractor.supportedAbiStrings } returns arrayOf("arm64-v8a")
+        every { deviceAbiExtractor.findBestAbiForDeviceAndApp(any()) } returns ABI.ARM64_V8A
     }
 
     @Test
@@ -246,7 +245,7 @@ class DownloadApiChecker {
 
     @Test
     fun mullFromRepo() {
-        val mull = MullFromRepo(CustomRepositoryConsumer(ApiConsumer.INSTANCE, deviceAbiExtractor))
+        val mull = MullFromRepo(CustomRepositoryConsumer(ApiConsumer.INSTANCE), deviceAbiExtractor)
         val result = runBlocking { mull.findLatestUpdate(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)

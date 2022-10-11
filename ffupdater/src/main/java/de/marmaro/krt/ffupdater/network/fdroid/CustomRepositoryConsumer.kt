@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
@@ -12,11 +12,15 @@ import java.time.Instant
 
 class CustomRepositoryConsumer(
     private val apiConsumer: ApiConsumer,
-    private val deviceAbiExtractor: DeviceAbiExtractor,
 ) {
 
     @MainThread
-    suspend fun getLatestUpdate(context: Context, repoUrl: String, packageName: String): LatestUpdate {
+    suspend fun getLatestUpdate(
+        context: Context,
+        repoUrl: String,
+        packageName: String,
+        abi: ABI
+    ): LatestUpdate {
         val mainObject = try {
             apiConsumer.consumeAsync("$repoUrl/index-v1.json", MainObject::class, context).await()
         } catch (e: NetworkException) {
@@ -24,12 +28,9 @@ class CustomRepositoryConsumer(
         }
 
         val packageObject = checkNotNull(mainObject.packages[packageName])
-        val abis = packageObject.flatMap { apkObject -> apkObject.abis ?: emptyList() }
-        val abi = deviceAbiExtractor.supportedAbiStrings.firstOrNull { abi -> abi in abis }
-
         val apk = packageObject
             // always accept APKs without ABI requirements
-            .filter { apkObject -> apkObject.abis?.contains(abi) ?: true }
+            .filter { apkObject -> apkObject.abis?.contains(abi.name) ?: true }
             .maxBy { apkObject -> apkObject.versionCode }
 
         return LatestUpdate(
@@ -65,6 +66,6 @@ class CustomRepositoryConsumer(
     )
 
     companion object {
-        val INSTANCE = CustomRepositoryConsumer(ApiConsumer.INSTANCE, DeviceAbiExtractor.INSTANCE)
+        val INSTANCE = CustomRepositoryConsumer(ApiConsumer.INSTANCE)
     }
 }

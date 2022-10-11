@@ -5,15 +5,13 @@ import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.network.ApiConsumer
-import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer.AppInfo
-import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer.VersionCodeAndDownloadUrl
+import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer.*
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -71,28 +69,53 @@ class FdroidConsumerIT {
         coEvery {
             apiConsumer.consumeAsync(API_URL, AppInfo::class, context).await()
         } returns Gson().fromJson(apiResponse, AppInfo::class.java)
+
+        val apiResponse2 = """
+            {
+                "last_commit_id":"5eb1934163f60fe64757dc81effa33255ecd5808"
+            }
+        """.trimIndent()
+        coEvery {
+            apiConsumer.consumeAsync(
+                "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2Fus.spotco.fennec_dos.yml?ref=master",
+                GitlabRepositoryFilesMetadata::class,
+                context
+            ).await()
+        } returns Gson().fromJson(apiResponse2, GitlabRepositoryFilesMetadata::class.java)
+
+        val apiResponse3 = """
+            {
+                "created_at":"2022-10-11T08:02:58.000+00:00"
+            }
+        """.trimIndent()
+        coEvery {
+            apiConsumer.consumeAsync(
+                "https://gitlab.com/api/v4/projects/36528/repository/commits/5eb1934163f60fe64757dc81effa33255ecd5808",
+                GitlabRepositoryCommits::class,
+                context
+            ).await()
+        } returns Gson().fromJson(apiResponse3, GitlabRepositoryCommits::class.java)
     }
 
     @Test
-    fun `get version codes and download urls from api call`() {
+    fun `get first version code and download url from api call`() {
         val fdroidConsumer = FdroidConsumer(apiConsumer)
         val result = runBlocking {
-            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", context)
+            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", context, 1)
         }
         assertEquals("101.1.1", result.versionName)
-        assertEquals(2, result.versionCodesAndDownloadUrls.size)
+        assertEquals(21011100, result.versionCode)
+        assertEquals("https://f-droid.org/repo/us.spotco.fennec_dos_21011100.apk", result.downloadUrl)
+    }
 
-        assertTrue(
-            VersionCodeAndDownloadUrl(
-                21011120,
-                "https://f-droid.org/repo/us.spotco.fennec_dos_21011120.apk"
-            ) in result.versionCodesAndDownloadUrls
-        )
-        assertTrue(
-            VersionCodeAndDownloadUrl(
-                21011100,
-                "https://f-droid.org/repo/us.spotco.fennec_dos_21011100.apk"
-            ) in result.versionCodesAndDownloadUrls
-        )
+    @Test
+    fun `get second version code and download url from api call`() {
+        val fdroidConsumer = FdroidConsumer(apiConsumer)
+        val result = runBlocking {
+            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", context, 2)
+        }
+        assertEquals("101.1.1", result.versionName)
+        assertEquals(21011120, result.versionCode)
+        assertEquals("https://f-droid.org/repo/us.spotco.fennec_dos_21011120.apk", result.downloadUrl)
     }
 }

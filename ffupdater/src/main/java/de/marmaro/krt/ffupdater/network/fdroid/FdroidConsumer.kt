@@ -13,6 +13,7 @@ class FdroidConsumer(
 
     @MainThread
     suspend fun getLatestUpdate(packageName: String, context: Context, index: Int): Result {
+        require(index >= 1)
         val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = try {
             apiConsumer.consumeAsync(apiUrl, AppInfo::class, context).await()
@@ -20,8 +21,8 @@ class FdroidConsumer(
             throw NetworkException("Fail to request the latest version of $packageName from F-Droid.", e)
         }
         val latestVersions = getLatestVersionsSortedByTheirCode(appInfo)
-        check(latestVersions.size > index)
-        val latestVersion = latestVersions[index]
+        check(latestVersions.size >= index)
+        val latestVersion = latestVersions[index - 1]
 
         val commitId = getLastCommitId(packageName, context)
         val createdAt = getCreateDate(commitId, context)

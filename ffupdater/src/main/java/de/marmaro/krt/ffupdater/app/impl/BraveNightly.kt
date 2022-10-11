@@ -77,7 +77,7 @@ class BraveNightly(
                 else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
             }
         } else {
-            when (deviceAbiExtractor.supportedAbis.firstOrNull { abi -> abi in ARM32_X86 }) {
+            when (deviceAbiExtractor.findBestAbiForDeviceAndApp(ARM32_X86)) {
                 ABI.ARMEABI_V7A -> "Bravearm.apk"
                 ABI.X86 -> "Bravex86.apk"
                 else -> throw IllegalArgumentException("ABI for Android 6 is not supported")

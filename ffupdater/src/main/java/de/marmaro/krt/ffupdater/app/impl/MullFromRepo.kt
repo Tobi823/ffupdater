@@ -7,6 +7,7 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
 
@@ -15,6 +16,7 @@ import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
  */
 class MullFromRepo(
     private val customRepositoryConsumer: CustomRepositoryConsumer = CustomRepositoryConsumer.INSTANCE,
+    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val packageName = "us.spotco.fennec_dos"
     override val title = R.string.mull__title
@@ -33,10 +35,12 @@ class MullFromRepo(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
+        val abi = deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)
         val result = customRepositoryConsumer.getLatestUpdate(
             context,
             "https://divestos.org/fdroid/official",
-            packageName
+            packageName,
+            abi
         )
         Log.i(LOG_TAG, "found latest version ${result.version}")
         return result
