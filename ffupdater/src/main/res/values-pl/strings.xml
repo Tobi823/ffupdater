@@ -193,4 +193,23 @@
     <string name="notification__download_error__title">Pobieranie w tle się nie powiodło.</string>
     <string name="notification__eol_apps__channel_name">Powiadomienie o nie aktualnej wersji</string>
     <string name="notification__eol_apps__text">Masz nie aktualną aplikacje która nie może być już więcej używana. Kliknij po więcej informacji.</string>
+    <string name="settings__installer__root__title">Instalator root</string>
+    <string name="settings__installer__session__title">Instalator sesji</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Przeglądarki dobre dla prywatności</string>
+    <string name="add_app_activity__title_other_applications">Inne aplikacje</string>
+    <string name="mull__title">Przeglądarka Mull</string>
+    <string name="add_app_activity__label">Dodaj nową aplikację</string>
+    <string name="crash_report_activity__label">Zgłoś usterkę</string>
+    <string name="add_app_activity__title_from_mozilla">Od Mozilli</string>
+    <string name="add_app_activity__title_based_on_firefox">Na podstawie Firefoksa</string>
+    <string name="settings__installer__root__summary">Wykorzystuje uprawnienia roota do instalowania lub aktualizowania aplikacji bez interakcji użytkownika. Wymaga to posiadania zrootowanego smartfona.</string>
+    <string name="settings__installer__native__title">Natywny instalator</string>
+    <string name="settings__foreground__hide_warning_buttons">Ukryj przycisk ostrzegawczy dla zainstalowanej aplikacji.</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Usuń pobraną aktualizację, jeśli instalacja nie powiedzie się.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Usuń pobraną aktualizację, jeśli instalacja zakończy się pomyślnie.</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Lepsze niż Google Chrome</string>
+    <string name="add_app_activity__title_end_of_live_browser">Przeglądarki które nie są już rozwijane</string>
+    <string name="add_app_activity__add_new_application">Dodaj nową aplikację</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="settings__installer__session__summary">Zalecane dla większości urządzeń.</string>
 </resources>
