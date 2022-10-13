@@ -261,4 +261,11 @@
     <string name="chromium__description">Chromium ist ein Open-Source-Browser-Projekt, das darauf abzielt, das Internet für alle Benutzer sicherer, schneller und stabiler zu machen. Diese Website enthält Designdokumente, Architekturübersichten, Testinformationen und mehr, um dir zu helfen, den Chromium-Quellcode zu erstellen und mit ihm zu arbeiten.</string>
     <string name="chromium__warning">- Chromium nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Renderengine.</string>
     <string name="add_app_activity__add_new_application">Neue App hinzufügen</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Diese Option ist nur unter Android Marshmallow oder höher verfügbar.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="mulch__warning">- Mulch nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="fennecfdroid__description">Fennec F-Droid basiert auf der neuesten Firefox-Version (Codename Fenix). Es hat proprietäre Bits und Telemetrie entfernt, aber immer noch eine Verbindung zu verschiedenen Mozilla und Google-Dienste, die Benutzer verfolgen können.</string>
+    <string name="fennecfdroid__warning">FFUpdater lädt die Dateien von den F-Droid-Servern herunter und ist daher nicht schneller.</string>
+    <string name="mulch__description">Dies ist ein sicherheitsorientierter und gehärteter Webbrowser, der auf der Chromium-Technologie basiert. Dank der Patches aus dem Vanadium-Projekt wurden viele Anti-Features deaktiviert/entfernt und eine Handvoll Sicherheitsfunktionen aktiviert/hinzugefügt. Das Quellcode-Repository enthält auch Prebuilts und Makefiles, die es anderen Betriebssystemen ermöglichen, Mulch als System-WebView einzubinden.</string>
 </resources>
