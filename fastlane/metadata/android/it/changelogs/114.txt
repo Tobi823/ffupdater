@@ -1,0 +1,7 @@
+* Per il contributo da Weblate si ringraziano gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Se l'aggiornamento in background fallisce (a causa della mancata interazione dell'utente),
+  visualizzata la notifica "l'aggiornamento è disponibile"
+* Corretto l'arresto anomalo durante la verifica degli aggiornamenti di Mull (da F-Droid)
+* Aggiunto Fennec da F-Droid
+* Aggiunto Mulch

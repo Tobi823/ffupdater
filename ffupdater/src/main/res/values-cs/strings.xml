@@ -280,4 +280,10 @@
     <string name="settings__background__update_check__when_device_idle__title">Kontrola aktualizací pouze v případě, že je zařízení nečinné</string>
     <string name="settings__background__update_check__when_device_idle__summary">Tuto možnost povolte, pokud nechcete, aby se vaše aplikace restartovaly při aktualizaci na pozadí. Zakažte tuto možnost, pokud chcete předvídatelnější plán kontrol aktualizací na pozadí.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Tato možnost je dostupná pouze pro Android Marshmallow nebo novější.</string>
+    <string name="fennecfdroid__description">Fennec F-Droid je založen na nejnovější verzi prohlížeče Firefox (kódové označení Fenix). Má odstraněné proprietární bity a telemetrii, ale stále se připojuje k různým službám Mozilly a Googlu, které mohou sledovat uživatele.</string>
+    <string name="fennecfdroid__warning">FFUpdater stahuje soubory ze F-Droid serverů, a proto není rychlejší.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="mulch__warning">- Mulch používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="mulch__description">Tohle je prohlížeč zaměřený na ochranu soukromí založený na technologii Chromium. Mnoho antifunkcí je zakázáno/odstraněno a několik bezpečnostních funkcí je povoleno/přidáno díky záplatam z projektu Vanadium. Zdrojové repozitáře obsahují také předem sestavené soubory a makefile soubory, které umožňují ostatním operačním systémům začlenit Mulch jako systémový WebView prohlížeč.</string>
 </resources>

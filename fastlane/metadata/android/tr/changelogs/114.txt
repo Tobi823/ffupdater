@@ -1,0 +1,7 @@
+* Weblate üzerinde katkıda bulunanlara teşekkürler: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz, 
+  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Arka plan güncellemesi başarısız olursa (eksik kullanıcı etkileşimi nedeniyle), "güncelleme var" bildirimini
+  göster
+* Mull (F-Droid'deki) güncellemeleri denetlenirken oluşan çökme düzeltildi
+* F-Droid'deki Fennec eklendi
+* Mulch eklendi
