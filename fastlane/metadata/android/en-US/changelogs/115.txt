@@ -1,0 +1,3 @@
+* Thanks for the Weblate contribution from: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
+  Motuz, Giovanni Donisi and Oğuz Ersen
+* Fix Kiwi update bug: Ignore GitHub releases without APK files
