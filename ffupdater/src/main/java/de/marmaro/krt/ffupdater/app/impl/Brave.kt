@@ -47,8 +47,14 @@ class Brave(
                 repoOwner = "brave",
                 repoName = "brave-browser",
                 resultsPerPage = 20,
-                isValidRelease = { release -> !release.isPreRelease && release.name.startsWith("Release v") },
-                isSuitableAsset = { asset -> asset.name == fileName },
+                isValidRelease = { release ->
+                    !release.isPreRelease &&
+                            release.name.startsWith("Release v") &&
+                            release.assets.any { asset -> asset.name.endsWith(".apk") }
+                },
+                isSuitableAsset = { asset ->
+                    asset.name == fileName
+                },
                 dontUseApiForLatestRelease = true,
                 context
             )

@@ -51,8 +51,15 @@ class FirefoxKlar(
                 repoOwner = "mozilla-mobile",
                 repoName = "focus-android",
                 resultsPerPage = 3,
-                isValidRelease = { release -> !release.isPreRelease && "beta" !in release.name },
-                isSuitableAsset = { asset -> asset.name.startsWith("klar") && asset.name.endsWith(fileSuffix) },
+                isValidRelease = { release ->
+                    !release.isPreRelease &&
+                            "beta" !in release.name &&
+                            release.assets.any { asset -> asset.name.endsWith(".apk") }
+                },
+                isSuitableAsset = { asset ->
+                    asset.name.startsWith("klar") &&
+                            asset.name.endsWith(fileSuffix)
+                },
                 dontUseApiForLatestRelease = false,
                 context
             )

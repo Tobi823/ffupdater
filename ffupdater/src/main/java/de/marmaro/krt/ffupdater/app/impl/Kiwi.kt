@@ -54,12 +54,12 @@ class Kiwi(
             consumer.updateCheck(
                 repoOwner = "kiwibrowser",
                 repoName = "src.next",
-                resultsPerPage = 1,
-                isValidRelease = { true },
+                resultsPerPage = 3,
+                isValidRelease = { release ->
+                    release.assets.any { asset -> asset.name.endsWith(".apk") }
+                },
                 isSuitableAsset = { asset ->
-                    asset.name.startsWith(filePrefix) && asset.name.endsWith(
-                        fileSuffix
-                    )
+                    asset.name.startsWith(filePrefix) && asset.name.endsWith(fileSuffix)
                 },
                 dontUseApiForLatestRelease = true,
                 context

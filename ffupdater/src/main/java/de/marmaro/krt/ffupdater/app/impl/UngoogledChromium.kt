@@ -50,8 +50,14 @@ class UngoogledChromium(
                 repoOwner = "ungoogled-software",
                 repoName = "ungoogled-chromium-android",
                 resultsPerPage = 2,
-                isValidRelease = { release -> !release.isPreRelease && "webview" !in release.name },
-                isSuitableAsset = { asset -> asset.name == fileName },
+                isValidRelease = { release ->
+                    !release.isPreRelease &&
+                            "webview" !in release.name &&
+                            release.assets.any { asset -> asset.name.endsWith(".apk") }
+                },
+                isSuitableAsset = { asset ->
+                    asset.name == fileName
+                },
                 dontUseApiForLatestRelease = true,
                 context
             )

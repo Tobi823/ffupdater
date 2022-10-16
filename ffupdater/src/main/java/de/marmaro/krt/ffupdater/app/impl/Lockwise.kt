@@ -38,8 +38,13 @@ class Lockwise(
                 repoOwner = "mozilla-lockwise",
                 repoName = "lockwise-android",
                 resultsPerPage = 5,
-                isValidRelease = { release -> !release.isPreRelease },
-                isSuitableAsset = { asset -> asset.name.endsWith(".apk") },
+                isValidRelease = { release ->
+                    !release.isPreRelease &&
+                            release.assets.any { asset -> asset.name.endsWith(".apk") }
+                },
+                isSuitableAsset = { asset ->
+                    asset.name.endsWith(".apk")
+                },
                 dontUseApiForLatestRelease = false,
                 context
             )

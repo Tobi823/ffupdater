@@ -52,8 +52,13 @@ class BromiteSystemWebView(
                 repoOwner = "bromite",
                 repoName = "bromite",
                 resultsPerPage = 5,
-                isValidRelease = { release -> !release.isPreRelease },
-                isSuitableAsset = { asset -> asset.name == fileName },
+                isValidRelease = { release ->
+                    !release.isPreRelease &&
+                            release.assets.any { asset -> asset.name.endsWith(".apk") }
+                },
+                isSuitableAsset = { asset ->
+                    asset.name == fileName
+                },
                 dontUseApiForLatestRelease = false,
                 context
             )

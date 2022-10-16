@@ -57,7 +57,7 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
                             )
                         }
                     // this will only be called if the first valid release has no valid assets
-                    firstReleaseHasAssets = true
+                    firstReleaseHasAssets = false
                 }
         }
         throw InvalidApiResponseException("can't find release after all tries - abort")

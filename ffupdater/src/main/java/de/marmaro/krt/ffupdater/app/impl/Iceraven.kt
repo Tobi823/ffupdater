@@ -55,8 +55,13 @@ class Iceraven(
                 repoOwner = "fork-maintainers",
                 repoName = "iceraven-browser",
                 resultsPerPage = 3,
-                isValidRelease = { release -> !release.isPreRelease },
-                isSuitableAsset = { asset -> asset.name.endsWith(fileSuffix) },
+                isValidRelease = { release ->
+                    !release.isPreRelease &&
+                            release.assets.any { asset -> asset.name.endsWith(".apk") }
+                },
+                isSuitableAsset = { asset ->
+                    asset.name.endsWith(fileSuffix)
+                },
                 dontUseApiForLatestRelease = false,
                 context
             )
