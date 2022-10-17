@@ -1,0 +1,3 @@
+* Danke für den Weblate-Beitrag von: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
+  Motuz, Giovanni Donisi und Oğuz Ersen
+* Behebt den Kiwi-Update-Fehler: Ignoriere GitHub-Veröffentlichungen ohne APK-Dateien

@@ -1,0 +1,7 @@
+* Dank für den Weblate-Beitrag von: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Wenn die Hintergrundaktualisierung fehlschlägt (wegen fehlender Benutzerinteraktion), zeige die
+ Benachrichtigung "Aktualisierung ist verfügbar"
+* Behebt einen Absturz bei der Suche nach Mull-Updates (von F-Droid)
+* Hinzufügen von Fennec von F-Droid
+* Hinzufügen von Mulch
