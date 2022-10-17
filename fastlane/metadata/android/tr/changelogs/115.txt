@@ -1,0 +1,3 @@
+* Weblate üzerinde katkıda bulunanlara teşekkürler: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj 
+  Motuz, Giovanni Donisi and Oğuz Ersen
+* Kiwi güncelleme hatası düzeltildi: APK dosyaları olmayan GitHub sürümlerini yoksay
