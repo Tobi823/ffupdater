@@ -1,0 +1,7 @@
+* Gracias por la contribución de Weblate de: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Si la actualización de fondo falla (debido a la falta de interacción del usuario), mostrar la «actualización está disponible»
+  notificación
+* Corregir el bloqueo al comprobar para Mull (de F-Droid) actualizaciones
+* Añadido Fennec de F-Droid
+* Añadido Mulch
