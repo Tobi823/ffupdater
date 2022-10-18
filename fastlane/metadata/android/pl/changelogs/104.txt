@@ -1,1 +1,1 @@
-* Spróbuj naprawić błąd "Can't find signatures of the APK file.".
+* Spróbuj naprawić błąd "Can't find signatures of the APK file."
