@@ -84,11 +84,11 @@
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar ha sido desarrollado para Alemania, Austria y Suiza, pero puede ser utilizado por usuarios de cualquier país. Es muy similar a Firefox Focus, pero el nombre fue cambiado en los países de habla alemana para evitar la confusión con la revista Focus del grupo Hubert Burda Media. A diferencia de Firefox Focus, Firefox Klar tiene la telemetría desactivada por defecto debido a las estrictas leyes de privacidad alemanas.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">Ten en cuenta que esta aplicación solía llamarse Firefox Preview. Ahora se llama Firefox Nightly. 
+    <string name="firefox_nightly__description">Ten en cuenta que esta aplicación solía llamarse Firefox Preview. Ahora ha pasado a llamarse Firefox Nightly.
 \n
-\nFirefox Nightly es el canal de desarrollo para las nuevas versiones de Mozilla Firefox. 
+\nNightly es un canal de desarrollo para las nuevas versiones de Mozilla Firefox.
 \n
-\nFirefox Nightly está diseñado para mostrar las versiones experimentales de Firefox. El canal Nightly permite a los usuarios experimentar las últimas innovaciones de Firefox en un entorno inestable y comentar las características y rendimiento para ayudar a la versión final.</string>
+\nNightly está diseñado para mostrar las versiones más experimentales de Firefox. El canal Nightly permite a los usuarios experimentar las últimas innovaciones de Firefox en un entorno inestable y proporcionar comentarios sobre las características y el rendimiento para ayudar a determinar lo que hace la versión final.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_nightly__warning">- Esta aplicación está diseñada para desarrolladores y probadores. Puede contener varios errores que pueden afectar su trabajo habitual con el navegador.</string>
     <string name="firefox_release__description">El navegador Firefox para Android es automáticamente privado e increíblemente rápido. Miles de rastreadores en línea te siguen cada día, recopilando información sobre dónde te conectas y ralentizando tu velocidad. Firefox bloquea más de 2000 de estos rastreadores por defecto y hay complementos de bloqueo de anuncios disponibles si quieres personalizar tu navegador aún más. Con Firefox, obtendrás la seguridad que mereces y la velocidad que necesitas en un navegador privado y móvil.</string>
@@ -262,7 +262,7 @@
     <string name="app_card__app_warning_button_description">Mostrar advertencias sobre esta aplicación</string>
     <string name="generic_eol_reason__browser_to_old">El navegador no ha sido actualizado desde hace mucho tiempo, por lo que recomiendo utilizar otro navegador temporalmente. Cuando los desarrolladores publiquen una nueva actualización, eliminaré esta advertencia.</string>
     <string name="lockwise__eol_reason">Mozilla eliminó el soporte en diciembre de 2021. Cambie a otra contraseña segura.</string>
-    <string name="mull__title">Mull Browser</string>
+    <string name="mull__title">Mull Browser (Basado en Firefox Móvil con arkenfox-user.js)</string>
     <string name="mull__description">Este es un navegador web depurado y orientado a la privacidad basado en la tecnología de Mozilla. Habilita muchas características mejoradas por el proyecto Tor Uplift utilizando las preferencias del proyecto arkenfox-user.js. Se recomienda instalar \'uBlock Origin\'.</string>
     <string name="mull__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es más rápido.</string>
     <string name="notification__download_error__channel_descr">Muestra cuando fallan las descargas de las actualizaciones en segundo plano.</string>
@@ -285,7 +285,7 @@
     <string name="add_app_activity__title_better_than_google_chrome">Mejor que Google Chrome</string>
     <string name="settings__network__trust_user_cas__summary">Activa si el tráfico de datos debe ser inspeccionado y alterado por otras aplicaciones. Si no está seguro, mantenga esta opción desactivada.</string>
     <string name="settings__network__trust_user_cas__title">Confiar en las CA agregadas por el usuario</string>
-    <string name="chromium__title">Chromium</string>
+    <string name="chromium__title">Chromium (Navegador web basado en Chrome)</string>
     <string name="chromium__description">Chromium es un proyecto de navegador de código abierto cuyo objetivo es construir una forma más segura, rápida y estable para que todos los usuarios en la web. Este sitio contiene documentos de diseño, descripciones de la arquitectura, información sobre las pruebas y mucho más para ayudarte a construir y trabajar con el código fuente de Chromium.</string>
     <string name="chromium__warning">- Chromium utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado de Chrome.</string>
     <string name="settings__background__update_check__when_device_idle__title">Las actualizaciones sólo se comprueban si el dispositivo está inactivo</string>
@@ -296,7 +296,7 @@
     <string name="notification__no_update_check__channel_description">Forma de notificar para advertir que ninguna verificación de actualización de antecedentes fue exitosa en los últimos cinco días.</string>
     <string name="notification__no_update_check__channel_name">No hay verificación de antecedentes de la actualización</string>
     <string name="add_app_activity__title_end_of_live_browser">Fin de la navegación en vivo</string>
-    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="fennecfdroid__title">Fennec F-Droid (Basado Firefox Móvil)</string>
     <string name="fennecfdroid__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es muy rápido.</string>
     <string name="mulch__title">Mulch browser</string>
     <string name="mulch__warning">- Mulch utiliza la base de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
