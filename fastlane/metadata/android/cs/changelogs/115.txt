@@ -1,0 +1,3 @@
+* Děkujeme za příspěvek na Weblate od: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj 
+Motuz, Giovanni Donisi a Oğuz Ersen
+* Oprava chyby při aktualizaci Kiwi: Ignorovat vydání na GitHubu bez souborů APK

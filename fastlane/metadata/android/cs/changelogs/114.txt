@@ -1,0 +1,7 @@
+* Děkujeme za příspěvek na Weblate od: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz, 
+109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Pokud se aktualizace na pozadí nezdaří (kvůli chybějící interakci uživatele), zobrazí se 
+oznámení "aktualizace je k dispozici "
+* Opraven pád při kontrole aktualizací Mull (z F-Droid)
+* Přidán Fennec z F-Droid
+* Přidán Mulch
