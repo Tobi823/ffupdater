@@ -169,7 +169,7 @@
     <string name="settings__background__download__metered__title">Updates in getakteten Netzen herunterladen</string>
     <string name="settings__background__installation__enabled__summary">Es wird versucht, Updates ohne Benutzerinteraktion zu installieren.</string>
     <string name="settings__background__installation__enabled__title">Updates installieren</string>
-    <string name="settings__background__update_check__enabled__summary">Prüfen Sie in regelmäßigen Abständen, ob es neue Updates gibt.</string>
+    <string name="settings__background__update_check__enabled__summary">In regelmäßigen Abständen nach neuen Updates suchen.</string>
     <string name="settings__background__update_check__enabled__title">Regelmäßige Updateprüfung</string>
     <string name="settings__background__update_check__excluded_apps__summary">Nützlich, wenn Sie eine App nicht aktualisieren wollen.</string>
     <string name="settings__background__update_check__excluded_apps__title">Apps von regelmäßiger Updateprüfung ausschließen</string>
@@ -268,4 +268,11 @@
     <string name="fennecfdroid__description">Fennec F-Droid basiert auf der neuesten Firefox-Version (Codename Fenix). Es hat proprietäre Bits und Telemetrie entfernt, aber immer noch eine Verbindung zu verschiedenen Mozilla und Google-Dienste, die Benutzer verfolgen können.</string>
     <string name="fennecfdroid__warning">FFUpdater lädt die Dateien von den F-Droid-Servern herunter und ist daher nicht schneller.</string>
     <string name="mulch__description">Dies ist ein sicherheitsorientierter und gehärteter Webbrowser, der auf der Chromium-Technologie basiert. Dank der Patches aus dem Vanadium-Projekt wurden viele Anti-Features deaktiviert/entfernt und eine Handvoll Sicherheitsfunktionen aktiviert/hinzugefügt. Das Quellcode-Repository enthält auch Prebuilts und Makefiles, die es anderen Betriebssystemen ermöglichen, Mulch als System-WebView einzubinden.</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Datenschutzfreundliche Browser</string>
+    <string name="crash_report_activity__label">Crash Reporter</string>
+    <string name="settings__network__trust_user_cas__summary">Aktiviere diese Option, wenn der Datenverkehr von anderen Apps inspiziert und verändert werden soll. Wenn du unsicher bist, lass diese Option deaktiviert.</string>
+    <string name="settings__network__trust_user_cas__title">Vom Benutzer hinzugefügte CAs vertrauen</string>
+    <string name="settings__background__update_check__when_device_idle__title">Aktualisierungsprüfungen nur, wenn das Gerät im Leerlauf ist</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Aktiviere diese Option, wenn du nicht möchtest, dass deine Apps durch eine Hintergrundaktualisierung neu gestartet werden. Deaktiviere diese Option, wenn du einen regelmäßigeren Zeitplan für die Überprüfung der Hintergrundaktualisierung haben möchtest.</string>
+    <string name="add_app_activity__title_end_of_live_browser">Eingestellte Browser</string>
 </resources>
