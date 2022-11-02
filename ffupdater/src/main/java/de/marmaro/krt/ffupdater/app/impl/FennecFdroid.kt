@@ -24,7 +24,7 @@ class FennecFdroid(
     override val downloadSource = "F-Droid"
     override val icon = R.mipmap.ic_logo_fennec_fdroid
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
-    override val supportedAbis = listOf(ABI.ARM64_V8A)
+    override val supportedAbis = ARM32_ARM64
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "06665358efd8ba05be236a47a12cb0958d7d75dd939d77c2b31f5398537ebdc5"

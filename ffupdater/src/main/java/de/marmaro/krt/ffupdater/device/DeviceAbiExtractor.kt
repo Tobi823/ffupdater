@@ -7,8 +7,14 @@ class DeviceAbiExtractor {
     private val supportedAbis = supportedAbiStrings.map { ABI.findByCodeName(it) }
 
     fun findBestAbiForDeviceAndApp(abisSupportedByApp: List<ABI>): ABI {
-        return supportedAbis.firstOrNull { it in abisSupportedByApp }
-            ?: throw Exception("The app does not support the device")
+        return try {
+            supportedAbis.first { it in abisSupportedByApp }
+        } catch (e: NoSuchElementException) {
+            throw NoSuchElementException(
+                "The device is not supported by the app. It wants $abisSupportedByApp but the device has " +
+                        "only $supportedAbis. ${e.message}"
+            )
+        }
     }
 
     companion object {
