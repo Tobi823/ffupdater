@@ -1,4 +1,0 @@
-* Çevirileri iyileştirdikleri için 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername and metezd'e
-  teşekkürler
-* Güncellemelerin indirilmesi arka planda başarısız olduğunda oluşan çökmeler düzeltilmeye çalışıldı
-* Uyarı düğmelerini gizleme seçeneği eklendi

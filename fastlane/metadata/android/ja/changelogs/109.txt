@@ -1,3 +1,0 @@
-* Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824, Hin Weisner に感謝します。
-  に感謝します。
-* アプリやapkファイルから署名を抽出する際のロジックバグを修正しました。

@@ -1,6 +1,0 @@
-* Melhorar as traduções - obrigado:
-  * Oğuz Ersen: Turco
-  * 109247019824: Búlgaro
-* Adicionar opção para utilizar o instalador nativo mais antigo para dispositivos cuja implementação do buggy PackageInstaller (por exemplo, Samsung e Xiaomi)
-* Mostrar melhor os avisos/downsides para cada browser
-* Código de limpeza e refactor

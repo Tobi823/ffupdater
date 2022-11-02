@@ -1,3 +1,0 @@
-* Merci à Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 et Hin Weisner pour avoir amélioré la traduction.
-  la traduction.
-* Correction d'un bug logique dans l'extraction de la signature des applications ou des fichiers apk.

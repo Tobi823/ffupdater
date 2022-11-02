@@ -1,6 +1,0 @@
-* Dank an WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS, Hin Weisner und
-  Giovanni Donisi für die Verbesserung der Übersetzung.
-* Markieren Sie Ungoogled Chromium und Iceraven vorübergehend als End-of-Life.
-* Hinzufügen des Mull-Browsers.
-* Verbesserte Zwischenspeicherung von Update-Informationen.
-* Refactor/Verbesserung des Quellcodes.

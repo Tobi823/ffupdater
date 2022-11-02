@@ -1,4 +1,0 @@
-* Obrigado 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername e metezd por melhorar o
-  tradução
-* Tentar corrigir falhas quando o download de actualizações falhou em segundo plano
-* Adicionar opção para ocultar botões de aviso

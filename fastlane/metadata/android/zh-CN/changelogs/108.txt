@@ -1,6 +1,0 @@
-* 感谢 WhiredPlanck、Juraj Motuz、109247019824、AbsurdUsername、Oğuz Ersen、MkQtS、Hin Weisner 和
-  Giovanni Donisi 对翻译的改进。
-* 暂时将 Ungoogled Chromium 和 Iceraven 标记为生命周期结束。
-* 添加 Mull 浏览器。
-* 改进更新信息的缓存。
-* 重构/改进源代码。

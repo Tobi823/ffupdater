@@ -1,1 +1,0 @@
-* 修复OnePlus设备上会话安装程序的崩溃（Tobi823/ffupdater#153）。

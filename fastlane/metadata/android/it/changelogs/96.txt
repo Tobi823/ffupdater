@@ -1,2 +1,0 @@
-* Correggere il bug "impossibile installare una nuova app".
-* Aggiunta la traduzione in russo del changelog (grazie Nickoriginal - Tobi823/ffupdater#127)

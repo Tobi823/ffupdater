@@ -1,6 +1,0 @@
-* WhiredPlanck、Juraj Motuz、109247019824、AbsurdUsername、Oğuz Ersen、MkQtS、Hin Weisner、およびJiovanni Donisiに感謝します。
-  Giovanni Donisi が翻訳を改良してくれました。
-* Ungoogled ChromiumとIceravenを一時的に終了とマーク。
-* Mull ブラウザを追加しました。
-* 更新情報のキャッシュを改善しました。
-* ソースコードのリファクタリングと改善。

@@ -1,3 +1,0 @@
-* Podziękowania dla Juraja Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 i Hin Weisner za poprawę
-  tłumaczenie.
-* Napraw błąd logiczny w wyodrębnianiu podpisu z aplikacji lub plików apk.

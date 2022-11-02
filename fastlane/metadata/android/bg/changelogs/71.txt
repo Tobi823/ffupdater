@@ -1,1 +1,0 @@
-* Поправяне на Firefox Beta чрез адаптиране към новата структура на chain_of_trust.log (Tobi823/ffupdater#44)

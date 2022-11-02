@@ -1,4 +1,0 @@
-* 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername, metezd に感謝します。
-  翻訳
-* 更新のダウンロードがバックグラウンドで失敗したときのクラッシュを修正しようとする
-* 警告ボタンを非表示にするオプションを追加

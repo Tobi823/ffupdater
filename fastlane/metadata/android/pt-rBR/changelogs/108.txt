@@ -1,6 +1,0 @@
-* Obrigado por WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS, Hin Weisner e
-  Giovanni Donisi por melhorar a tradução.
-* Mark Ungoogled Chromium e Iceraven temporários como fim de vida.
-* Adicionar Mull browser.
-* Melhorar o cache de informação actualizada.
-* Refactor/Improve source code.

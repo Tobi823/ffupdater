@@ -1,3 +1,0 @@
-* Çevirileri iyileştirdikleri için Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 ve Hin Weisner'e
-  teşekkürler.
-* Uygulamalardan veya apk dosyalarından imzanın çıkarılmasındaki mantık hatası düzeltildi.

@@ -1,2 +1,0 @@
-* Correction du bogue "impossible d'installer une nouvelle application".
-* Ajout d'une traduction russe pour le changelog (merci Nickoriginal - Tobi823/ffupdater#127)

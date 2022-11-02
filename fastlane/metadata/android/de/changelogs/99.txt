@@ -1,6 +1,0 @@
-* Verbesserung der Übersetzungen - danke:
-  * Oğuz Ersen: Türkisch
-  * 109247019824: Bulgarisch
-* Hinzufügen der Option zur Verwendung des älteren nativen Installers für Geräte mit fehlerhafter PackageInstaller-Implementierung (z.B. Samsung und Xiaomi)
-* Bessere Anzeige der Warnungen/Nachteile für jeden Browser
-* Aufräumen und Refaktorierung des Codes
