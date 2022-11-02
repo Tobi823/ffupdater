@@ -42,14 +42,13 @@ class Kiwi(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val fileSuffix = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
-            ABI.ARMEABI_V7A -> "-arm-github.apk"
-            ABI.ARM64_V8A -> "-arm64-github.apk"
-            ABI.X86 -> "-x86-github.apk"
-            ABI.X86_64 -> "-x64-github.apk"
+        val fileRegex = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+            ABI.ARMEABI_V7A -> """com\.kiwibrowser\.browser-arm-\d+-github\.apk"""
+            ABI.ARM64_V8A -> """com\.kiwibrowser\.browser-arm64-\d+-github\.apk"""
+            ABI.X86 -> """com\.kiwibrowser\.browser-x86-\d+-github\.apk"""
+            ABI.X86_64 -> """com\.kiwibrowser\.browser-x64-\d+-github\.apk"""
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val filePrefix = "com.kiwibrowser.browser-"
         val result = try {
             consumer.updateCheck(
                 repoOwner = "kiwibrowser",
@@ -59,7 +58,7 @@ class Kiwi(
                     release.assets.any { asset -> asset.name.endsWith(".apk") }
                 },
                 isSuitableAsset = { asset ->
-                    asset.name.startsWith(filePrefix) && asset.name.endsWith(fileSuffix)
+                    Regex(fileRegex).matches(asset.name)
                 },
                 dontUseApiForLatestRelease = true,
                 context

@@ -1,0 +1,3 @@
+* Thanks for the Weblate contribution from: Jacek, nautilusx, 109247019824, gallegonovato, Juraj Motuz, Oğuz
+  Ersen and atilluF
+* Fix Kiwi update check
