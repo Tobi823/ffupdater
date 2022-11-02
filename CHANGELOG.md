@@ -1,3 +1,7 @@
+# 2022-11-02 Version 77.3.3 (117)
+
+* Improve logging
+
 # 2022-11-02 Version 77.3.2 (116)
 
 * Thanks for the Weblate contribution from: Jacek, nautilusx, 109247019824, gallegonovato, Juraj Motuz, Oğuz
