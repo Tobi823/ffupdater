@@ -23,8 +23,8 @@ git fetch --tags
   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
 - build signed APK file
 - copy message of the release commit
-- `/dev/create_release.sh` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
-- paste message of the release commit + add
+- `,ff_release "???"` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
+- `,repomaker` to update private repo
 
 ```
 Changelogs:
