@@ -1,3 +1,7 @@
+# 2022-11-02 Release 77.3.5 (119)
+
+* fix wrong signatureHash for Mull (divestos.org version)
+
 # 2022-11-02 Release 77.3.4 (118)
 
 * Mull (F-Droid version) is no longer supported. Please switch to Mull (divestos.org version) by installing it
