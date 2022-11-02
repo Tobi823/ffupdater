@@ -28,7 +28,7 @@ class MullFromRepo(
     override val supportedAbis = ARM32_ARM64
 
     @Suppress("SpellCheckingInspection")
-    override val signatureHash = "e4be8d6abfa4d9d4feef03cdda7ff62a73fd64b75566f6dd4e5e577550be8467"
+    override val signatureHash = "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2"
     override val projectPage = "https://divestos.org/fdroid/official/"
     override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
 
