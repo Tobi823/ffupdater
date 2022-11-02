@@ -1,2 +1,0 @@
- * Add Polish language (thanks Eryk Michalak, Tobiwan/ffupdater_gitlab#11)
- * Fix crash when checking for "Firefox Release" updates (Tobi823/ffupdater#52)

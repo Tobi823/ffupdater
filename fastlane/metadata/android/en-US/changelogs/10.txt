@@ -1,3 +1,0 @@
- * Update to 43.0
- * Mozilla does not populate /latest/ anymore, see
-   https://bugzilla.mozilla.org/show_bug.cgi?id=1233399

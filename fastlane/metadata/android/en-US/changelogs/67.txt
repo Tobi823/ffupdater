@@ -1,1 +1,0 @@
- * fix crash caused by the new Firefox Nightly version name schema (Tobiwan/ffupdater#40 Tobiwan/ffupdater#66)

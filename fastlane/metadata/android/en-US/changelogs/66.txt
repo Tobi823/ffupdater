@@ -1,1 +1,0 @@
- * If it is likely that it is just a network error during manual update search, then display "No network connection" instead of crashing (Tobi823/ffupdater#38)

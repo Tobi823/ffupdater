@@ -1,6 +1,0 @@
- * Notification (for a Firefox update) now works on Android 9
- * Replace BackgroundService with WorkManager (AndroidX) for requesting Mozilla's API
- * Clean up code (thanks DeenHyper74)
- * Fix some minor bugs (thanks DeenHyper74)
- * App requires API level 18 because Firefox requires API level 18
- * Update translation

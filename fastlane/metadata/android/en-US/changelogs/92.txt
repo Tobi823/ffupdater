@@ -1,1 +1,0 @@
-* Adapt Firefox Klar and Firefox Focus to the new file names in the Github repository (fix missed Focus/Klar updates)

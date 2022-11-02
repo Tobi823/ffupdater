@@ -1,2 +1,0 @@
- * Check if system download app is installed (thanks Quantumrider)
- * Fix crash during downloading (thanks hsol)

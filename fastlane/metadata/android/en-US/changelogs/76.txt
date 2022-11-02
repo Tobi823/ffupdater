@@ -1,2 +1,0 @@
- * Fix crash when checking for "Firefox Focus" or "Firefox Klar"
- * Update Firefox Focus/Klar icon

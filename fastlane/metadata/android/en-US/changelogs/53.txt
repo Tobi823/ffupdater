@@ -1,3 +1,0 @@
- * Disable error when the already installed app has a different signature (because Android won't install an update with a different signature) - thanks pheki for reporting this bug
- * Add translations for this bug
- * Make the installation activity a little big more resilient

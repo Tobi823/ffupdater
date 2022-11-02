@@ -1,3 +1,0 @@
-* Thanks for Juraj Motuz, Oğuz Ersen, WhiredPlanck, Deleted User, 109247019824 and Hin Weisner for improving
-  the translation.
-* Fix logic bug in extracting the signature from apps or apk files.

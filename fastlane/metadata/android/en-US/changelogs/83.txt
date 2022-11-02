@@ -1,5 +1,0 @@
- * Improve handling of Kotlin coroutine errors (Tobiwan/ffupdater#85 Tobi823/ffupdater#86)
- * Improve and speed up internet check
- * Handle disabled "Download Manager" better
- * Improve translation
- * Update dependencies

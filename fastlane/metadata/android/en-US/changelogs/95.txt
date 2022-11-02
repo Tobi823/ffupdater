@@ -1,3 +1,0 @@
-* If FFUpdater is installed from the GitHub/GitLab/Repository, it can update itself.
-* Overhauled settings menu with more control over network and background activities.
-* More background network retries to avoid unnecessary error messages

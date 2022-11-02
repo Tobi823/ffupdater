@@ -1,3 +1,13 @@
+# 2022-11-02 Release 77.3.4 (118)
+
+* Mull (F-Droid version) is no longer supported. Please switch to Mull (divestos.org version) by installing it
+  with FFUpdater or use F-Droid to update Mull (F-Droid version)
+* improve handling of apps with different certificate fingerprints
+* fix Mulch update failure for arm32 devices
+* fix FennecFdroid.kt update failure for arm32 devices
+* add unit tests
+* cleanup
+
 # 2022-11-02 Version 77.3.3 (117)
 
 * Improve logging

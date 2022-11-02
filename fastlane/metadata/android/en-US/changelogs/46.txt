@@ -1,5 +1,0 @@
- * Add Fenix Beta, Fenix Nightly and Lockwise
- * Download Fenix Release/Beta/Nightly, Focus and Klar from Mozilla's Taskcluster (continuous integration server)
- * Fix "Light theme is always shown at first run"
- * Thanks Rail Aliiev and Johan Lorenzo from Mozilla for their support <https://bugzilla.mozilla.org/show_bug.cgi?id=1627518>
- * Thanks KarlHeinz and DeenHyper74 for their error reporting and support

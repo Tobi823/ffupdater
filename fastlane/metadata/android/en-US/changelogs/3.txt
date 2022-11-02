@@ -1,5 +1,0 @@
- * Remove FTP lookup since Mozilla is shutting down the servers.
- * Handle both request type by a single button.
- * "I am feeling lucky" now gets the next release, not the latest.
- * Add preferences to restrict connections: WiFi-only, metered, roaming.
- * Use actionbar.

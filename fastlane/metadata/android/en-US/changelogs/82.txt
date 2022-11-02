@@ -1,5 +1,0 @@
- * Improve handling of concurrent code
- * Fix crash when starting app (NetworkOnMainThreadException) ()
- * Fix missing icon (in repomaker and maybe F-Droid)
- * Improve translation files
- * Cleanup and refactor code

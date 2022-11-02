@@ -1,1 +1,0 @@
-* Try to fix the "Can't find signatures of the APK file." bug

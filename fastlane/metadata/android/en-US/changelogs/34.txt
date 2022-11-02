@@ -1,2 +1,0 @@
- * Fix Fenix download from Github (thanks yhoyhoj)
- * Show correct download progress when downloading an app

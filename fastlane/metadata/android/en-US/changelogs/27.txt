@@ -1,3 +1,0 @@
- * Fix broken nightly download (thanks dannycolin for the info)
- * Display warning when switching from 'Release' channel to the 'Nightly' or 'Beta' channel (thanks DeenHyper74)
- * Interval between update checks is now configurable (thanks aplufr, wah6Me1l and DeenHyper74)

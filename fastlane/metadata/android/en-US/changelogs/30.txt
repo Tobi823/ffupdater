@@ -1,1 +1,0 @@
- * Fix crash when selecting an entry after rotating the channel dialog (thanks DeenHyper74)

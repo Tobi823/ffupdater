@@ -1,2 +1,0 @@
-* Update warning for Vivaldi (thanks gnuhead-chieb - Tobi823/ffupdater#92)
-* Make links in dialogs clickable
