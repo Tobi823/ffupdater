@@ -16,6 +16,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 class FFUpdater(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
+    override val codeName = "FFUpdater"
     override val packageName = "de.marmaro.krt.ffupdater"
     override val title = R.string.app_name
     override val description = R.string.app_description
@@ -34,23 +35,19 @@ class FFUpdater(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "Tobi823",
-                repoName = "ffupdater",
-                resultsPerPage = 5,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name.endsWith(".apk")
-                },
-                dontUseApiForLatestRelease = false, context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of FFUpdater.", e)
-        }
+        val result = consumer.updateCheck(
+            repoOwner = "Tobi823",
+            repoName = "ffupdater",
+            resultsPerPage = 5,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name.endsWith(".apk")
+            },
+            dontUseApiForLatestRelease = false, context
+        )
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(
             downloadUrl = result.url,

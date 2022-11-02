@@ -20,6 +20,7 @@ class UngoogledChromium(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "UngoogledChromium"
     override val packageName = "org.ungoogled.chromium.stable"
     override val title = R.string.ungoogled_chromium__title
     override val description = R.string.ungoogled_chromium__description
@@ -45,25 +46,21 @@ class UngoogledChromium(
             ABI.X86 -> "ChromeModernPublic_x86.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "ungoogled-software",
-                repoName = "ungoogled-chromium-android",
-                resultsPerPage = 2,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            "webview" !in release.name &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name == fileName
-                },
-                dontUseApiForLatestRelease = true,
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Ungoogled Chromium.", e)
-        }
+        val result = consumer.updateCheck(
+            repoOwner = "ungoogled-software",
+            repoName = "ungoogled-chromium-android",
+            resultsPerPage = 2,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        "webview" !in release.name &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name == fileName
+            },
+            dontUseApiForLatestRelease = true,
+            context
+        )
 
         val extractVersion = {
             val regexMatch = Regex("""^([.0-9]+)-\d+$""")

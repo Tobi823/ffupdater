@@ -23,6 +23,7 @@ class BraveNightly(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
+    override val codeName = "BraveNightly"
     override val packageName = "com.brave.browser_nightly"
     override val title = R.string.brave_nightly__title
     override val description = R.string.brave_nightly__description
@@ -42,25 +43,21 @@ class BraveNightly(
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = getNameOfApkFile()
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "brave",
-                repoName = "brave-browser",
-                resultsPerPage = 10,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            release.name.startsWith("Nightly v") &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name == fileName
-                },
-                dontUseApiForLatestRelease = true,
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Brave Nightly.", e)
-        }
+        val result = consumer.updateCheck(
+            repoOwner = "brave",
+            repoName = "brave-browser",
+            resultsPerPage = 10,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        release.name.startsWith("Nightly v") &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name == fileName
+            },
+            dontUseApiForLatestRelease = true,
+            context
+        )
         val version = result.tagName.replace("v", "")
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(

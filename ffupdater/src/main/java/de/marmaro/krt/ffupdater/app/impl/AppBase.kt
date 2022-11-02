@@ -14,6 +14,8 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.ABI.*
+import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
+import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
@@ -28,6 +30,7 @@ import java.util.zip.ZipInputStream
 
 
 abstract class AppBase {
+    abstract val codeName: String
     abstract val packageName: String
     abstract val title: Int
     abstract val description: Int
@@ -78,27 +81,47 @@ abstract class AppBase {
 
     @Throws(NetworkException::class)
     suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateStatus> {
-        return withContext(Dispatchers.IO) {
-            async {
-                mutex.withLock {
-                    getUpdateCache(context)
-                        ?.takeIf { System.currentTimeMillis() - it.objectCreationTimestamp <= CACHE_TIME }
-                        ?.let { return@withLock it }
+        return try {
+            withContext(Dispatchers.IO) {
+                async {
+                    mutex.withLock {
+                        getUpdateCache(context)
+                            ?.takeIf { System.currentTimeMillis() - it.objectCreationTimestamp <= CACHE_TIME }
+                            ?.let { return@withLock it }
 
-                    findAppUpdateStatus(context)
+                        findAppUpdateStatus(context)
+                    }
                 }
             }
+        } catch (e: ApiRateLimitExceededException) {
+            throw ApiRateLimitExceededException("API rate limit exceeded for $codeName.", e)
+        } catch (e: InvalidApiResponseException) {
+            throw InvalidApiResponseException("Invalid API response for $codeName.", e)
+        } catch (e: NetworkException) {
+            throw NetworkException("Network exception for $codeName.")
+        } catch (e: Exception) {
+            throw Exception("Fail to request the latest version of $codeName", e)
         }
     }
 
     @Throws(NetworkException::class)
     suspend fun checkForUpdateWithoutLoadingFromCacheAsync(context: Context): Deferred<AppUpdateStatus> {
-        return withContext(Dispatchers.IO) {
-            async {
-                mutex.withLock {
-                    findAppUpdateStatus(context)
+        return try {
+            withContext(Dispatchers.IO) {
+                async {
+                    mutex.withLock {
+                        findAppUpdateStatus(context)
+                    }
                 }
             }
+        } catch (e: ApiRateLimitExceededException) {
+            throw ApiRateLimitExceededException("API rate limit exceeded for $codeName.", e)
+        } catch (e: InvalidApiResponseException) {
+            throw InvalidApiResponseException("Invalid API response for $codeName.", e)
+        } catch (e: NetworkException) {
+            throw NetworkException("Network exception for $codeName.")
+        } catch (e: Exception) {
+            throw Exception("Fail to request the latest version of $codeName", e)
         }
     }
 

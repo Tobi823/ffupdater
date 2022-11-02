@@ -1,3 +1,6 @@
 package de.marmaro.krt.ffupdater.network.exceptions
 
-class InvalidApiResponseException(message: String) : Exception(message)
+class InvalidApiResponseException : Exception {
+    constructor(message: String) : super(message)
+    constructor(message: String, exception: Exception) : super(message, exception)
+}

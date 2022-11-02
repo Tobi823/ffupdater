@@ -23,6 +23,7 @@ class BraveBeta(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
+    override val codeName = "BraveBeta"
     override val packageName = "com.brave.browser_beta"
     override val title = R.string.brave_beta__title
     override val description = R.string.brave_beta__description
@@ -42,25 +43,21 @@ class BraveBeta(
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = getNameOfApkFile()
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "brave",
-                repoName = "brave-browser",
-                resultsPerPage = 20,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            release.name.startsWith("Beta v") &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name == fileName
-                },
-                dontUseApiForLatestRelease = true,
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Brave Beta.", e)
-        }
+        val result = consumer.updateCheck(
+            repoOwner = "brave",
+            repoName = "brave-browser",
+            resultsPerPage = 20,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        release.name.startsWith("Beta v") &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name == fileName
+            },
+            dontUseApiForLatestRelease = true,
+            context
+        )
         val version = result.tagName.replace("v", "")
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(

@@ -24,6 +24,7 @@ class Kiwi(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "Kiwi"
     override val packageName = "com.kiwibrowser.browser"
     override val title = R.string.kiwi__title
     override val description = R.string.kiwi__description
@@ -49,23 +50,19 @@ class Kiwi(
             ABI.X86_64 -> """com\.kiwibrowser\.browser-x64-\d+-github\.apk"""
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "kiwibrowser",
-                repoName = "src.next",
-                resultsPerPage = 3,
-                isValidRelease = { release ->
-                    release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    Regex(fileRegex).matches(asset.name)
-                },
-                dontUseApiForLatestRelease = true,
+        val result = consumer.updateCheck(
+            repoOwner = "kiwibrowser",
+            repoName = "src.next",
+            resultsPerPage = 3,
+            isValidRelease = { release ->
+                release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                Regex(fileRegex).matches(asset.name)
+            },
+            dontUseApiForLatestRelease = true,
                 context
             )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Kiwi.", e)
-        }
         // tag name can be "2232087292" (the id of the build runner)
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(

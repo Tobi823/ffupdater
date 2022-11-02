@@ -21,6 +21,7 @@ class Orbot(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "Orbot"
     override val packageName = "org.torproject.android"
     override val title = R.string.orbot__title
     override val description = R.string.orbot__description
@@ -39,26 +40,22 @@ class Orbot(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val result = try {
-            val assetSuffix = getAssetSuffix()
-            consumer.updateCheck(
-                repoOwner = "guardianproject",
-                repoName = "orbot",
-                resultsPerPage = 3,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name.startsWith("Orbot") &&
-                            asset.name.endsWith(assetSuffix)
-                },
-                dontUseApiForLatestRelease = false,
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Orbot.", e)
-        }
+        val assetSuffix = getAssetSuffix()
+        val result = consumer.updateCheck(
+            repoOwner = "guardianproject",
+            repoName = "orbot",
+            resultsPerPage = 3,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name.startsWith("Orbot") &&
+                        asset.name.endsWith(assetSuffix)
+            },
+            dontUseApiForLatestRelease = false,
+            context
+        )
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(
             downloadUrl = result.url,

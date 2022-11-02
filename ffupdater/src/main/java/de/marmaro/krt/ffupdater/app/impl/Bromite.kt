@@ -21,6 +21,7 @@ class Bromite(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "Bromite"
     override val packageName = "org.bromite.bromite"
     override val title = R.string.bromite__title
     override val description = R.string.bromite__description
@@ -46,24 +47,20 @@ class Bromite(
             ABI.X86_64 -> "x64_ChromePublic.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "bromite",
-                repoName = "bromite",
-                resultsPerPage = 5,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name == fileName
-                },
-                dontUseApiForLatestRelease = false,
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Bromite.", e)
-        }
+        val result = consumer.updateCheck(
+            repoOwner = "bromite",
+            repoName = "bromite",
+            resultsPerPage = 5,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name == fileName
+            },
+            dontUseApiForLatestRelease = false,
+            context
+        )
         // tag name can be "90.0.4430.59"
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(

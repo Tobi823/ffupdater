@@ -22,6 +22,7 @@ class FirefoxFocus(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "FirefoxFocus"
     override val packageName = "org.mozilla.focus"
     override val title = R.string.firefox_focus__title
     override val description = R.string.firefox_focus__description
@@ -46,26 +47,22 @@ class FirefoxFocus(
             ABI.X86_64 -> "x86_64.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "mozilla-mobile",
-                repoName = "focus-android",
-                resultsPerPage = 3,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            "beta" !in release.name &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name.startsWith("focus") &&
-                            asset.name.endsWith(fileSuffix)
-                },
-                dontUseApiForLatestRelease = false,
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Firefox Focus.", e)
-        }
+        val result = consumer.updateCheck(
+            repoOwner = "mozilla-mobile",
+            repoName = "focus-android",
+            resultsPerPage = 3,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        "beta" !in release.name &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name.startsWith("focus") &&
+                        asset.name.endsWith(fileSuffix)
+            },
+            dontUseApiForLatestRelease = false,
+            context
+        )
 
         val extractVersion = {
             val regexMatch = Regex("""^v((\d)+(\.\d+)*)""")

@@ -20,6 +20,7 @@ class FirefoxRelease(
     private val consumer: MozillaCiLogConsumer = MozillaCiLogConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "FirefoxRelease"
     override val packageName = "org.mozilla.firefox"
     override val title = R.string.firefox_release__title
     override val description = R.string.firefox_release__description
@@ -46,14 +47,10 @@ class FirefoxRelease(
             ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = try {
-            consumer.updateCheck(
-                task = "mobile.v2.fenix.release.latest.$abiString",
-                apkArtifact = "public/build/$abiString/target.apk", context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Firefox Release.", e)
-        }
+        val result = consumer.updateCheck(
+            task = "mobile.v2.fenix.release.latest.$abiString",
+            apkArtifact = "public/build/$abiString/target.apk", context
+        )
         Log.i(LOG_TAG, "found latest version ${result.version}")
         return LatestUpdate(
             downloadUrl = result.url,

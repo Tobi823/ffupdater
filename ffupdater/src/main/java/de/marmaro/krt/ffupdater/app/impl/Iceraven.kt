@@ -20,6 +20,7 @@ class Iceraven(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "Iceraven"
     override val packageName = "io.github.forkmaintainers.iceraven"
     override val title = R.string.iceraven__title
     override val description = R.string.iceraven__description
@@ -50,24 +51,20 @@ class Iceraven(
             ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "fork-maintainers",
-                repoName = "iceraven-browser",
-                resultsPerPage = 3,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name.endsWith(fileSuffix)
-                },
-                dontUseApiForLatestRelease = false,
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Iceraven.", e)
-        }
+        val result = consumer.updateCheck(
+            repoOwner = "fork-maintainers",
+            repoName = "iceraven-browser",
+            resultsPerPage = 3,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name.endsWith(fileSuffix)
+            },
+            dontUseApiForLatestRelease = false,
+            context
+        )
         val version = result.tagName.replace("iceraven-", "")
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(

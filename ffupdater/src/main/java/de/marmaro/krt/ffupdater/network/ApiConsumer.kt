@@ -80,7 +80,10 @@ class ApiConsumer {
             .execute()
             .use { response ->
                 if (url.startsWith(GITHUB_URL) && response.code == 403) {
-                    throw ApiRateLimitExceededException(Exception("response code is ${response.code}"))
+                    throw ApiRateLimitExceededException(
+                        "API rate limit for GitHub is exceeded.",
+                        Exception("response code is ${response.code}")
+                    )
                 }
 
                 val body = requireNotNull(response.body)

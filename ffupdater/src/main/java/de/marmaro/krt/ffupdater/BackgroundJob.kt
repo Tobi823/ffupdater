@@ -137,11 +137,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { app -> app.impl.isInstalled(context) }
             .filter { app ->
-                val updateResult = try {
-                    app.impl.checkForUpdateWithoutLoadingFromCacheAsync(context).await()
-                } catch (e: NetworkException) {
-                    throw NetworkException("Fail to request latest version of ${app.name} in background.", e)
-                }
+                val updateResult = app.impl.checkForUpdateWithoutLoadingFromCacheAsync(context).await()
                 updateResult.isUpdateAvailable
             }
             .let { apps -> return apps to null }
@@ -174,11 +170,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         val appCache = AppCache(app)
-        val updateResult = try {
-            app.impl.checkForUpdateAsync(context).await() // this result should be cached
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of ${app.name} in BackgroundJob.", e)
-        }
+        val updateResult = app.impl.checkForUpdateAsync(context).await() // this result should be cached
 
         val availableResult = updateResult.latestUpdate
         if (appCache.isLatestAppVersionCached(context, availableResult)) {

@@ -16,6 +16,7 @@ class FennecFdroid(
     private val fdroidConsumer: FdroidConsumer = FdroidConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "FennecFdroid"
     override val packageName = "org.mozilla.fennec_fdroid"
     override val title = R.string.fennecfdroid__title
     override val description = R.string.fennecfdroid__description

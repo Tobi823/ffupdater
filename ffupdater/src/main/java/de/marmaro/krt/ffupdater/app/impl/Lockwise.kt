@@ -16,6 +16,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 class Lockwise(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
+    override val codeName = "Lockwise"
     override val packageName = "mozilla.lockbox"
     override val title = R.string.lockwise__title
     override val description = R.string.lockwise__description
@@ -33,24 +34,20 @@ class Lockwise(
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
-        val result = try {
-            consumer.updateCheck(
-                repoOwner = "mozilla-lockwise",
-                repoName = "lockwise-android",
-                resultsPerPage = 5,
-                isValidRelease = { release ->
-                    !release.isPreRelease &&
-                            release.assets.any { asset -> asset.name.endsWith(".apk") }
-                },
-                isSuitableAsset = { asset ->
-                    asset.name.endsWith(".apk")
-                },
-                dontUseApiForLatestRelease = false,
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Lockwise.", e)
-        }
+        val result = consumer.updateCheck(
+            repoOwner = "mozilla-lockwise",
+            repoName = "lockwise-android",
+            resultsPerPage = 5,
+            isValidRelease = { release ->
+                !release.isPreRelease &&
+                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            },
+            isSuitableAsset = { asset ->
+                asset.name.endsWith(".apk")
+            },
+            dontUseApiForLatestRelease = false,
+            context
+        )
 
         val extractVersion = {
             // tag_name can be: "release-v4.0.3", "release-v4.0.0-RC-2"

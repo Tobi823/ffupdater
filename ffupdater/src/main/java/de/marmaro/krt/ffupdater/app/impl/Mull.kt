@@ -19,6 +19,7 @@ class Mull(
     private val fdroidConsumer: FdroidConsumer = FdroidConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val codeName = "Mull"
     override val packageName = "us.spotco.fennec_dos"
     override val title = R.string.mull__title
     override val description = R.string.mull__description

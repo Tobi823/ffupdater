@@ -29,6 +29,7 @@ class FirefoxNightly(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
+    override val codeName = "FirefoxNightly"
     override val packageName = "org.mozilla.fenix"
     override val title = R.string.firefox_nightly__title
     override val description = R.string.firefox_nightly__description
@@ -55,15 +56,11 @@ class FirefoxNightly(
             ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = try {
-            consumer.updateCheck(
-                task = "mobile.v2.fenix.nightly.latest.$abiString",
-                apkArtifact = "public/build/$abiString/target.apk",
-                context
-            )
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of Firefox Nightly.", e)
-        }
+        val result = consumer.updateCheck(
+            task = "mobile.v2.fenix.nightly.latest.$abiString",
+            apkArtifact = "public/build/$abiString/target.apk",
+            context
+        )
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val version = formatter.format(releaseDate)

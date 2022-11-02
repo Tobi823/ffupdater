@@ -21,6 +21,7 @@ import java.io.File
 class Chromium(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
 ) : AppBase() {
+    override val codeName = "Chromium"
     override val packageName = "org.chromium.chrome"
     override val title = R.string.chromium__title
     override val description = R.string.chromium__description
