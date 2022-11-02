@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.*
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.NOT_INSTALLED
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
@@ -63,58 +64,45 @@ class AddAppActivity : AppCompatActivity() {
 
     @UiThread
     private fun addAppsToUserInterface() {
+        val installedApps = App.values()
+            .filter { it.impl.installableByUser }
+            .filter { it.impl.isInstalled(this) == NOT_INSTALLED }
+            .sortedBy { getString(it.impl.title) }
+
         val mozillaBrowsers = findViewById<LinearLayout>(R.id.list_mozilla_browsers)
         mozillaBrowsers.removeAllViews()
-        App.values()
+        installedApps
             .filter { it.impl.displayCategory == FROM_MOZILLA }
-            .filter { it.impl.installableWithDefaultPermission }
-            .filterNot { it.impl.isInstalled(this) }
-            .sortedBy { getString(it.impl.title) }
             .forEach { addAppToUserInterface(mozillaBrowsers, it) }
 
         val firefoxBasedBrowsers = findViewById<LinearLayout>(R.id.list_firefox_based_browsers)
         firefoxBasedBrowsers.removeAllViews()
-        App.values()
+        installedApps
             .filter { it.impl.displayCategory == BASED_ON_FIREFOX }
-            .filter { it.impl.installableWithDefaultPermission }
-            .filterNot { it.impl.isInstalled(this) }
-            .sortedBy { getString(it.impl.title) }
             .forEach { addAppToUserInterface(firefoxBasedBrowsers, it) }
 
         val goodPrivacyBrowsers = findViewById<LinearLayout>(R.id.list_good_privacy_browsers)
         goodPrivacyBrowsers.removeAllViews()
-        App.values()
+        installedApps
             .filter { it.impl.displayCategory == GOOD_PRIVACY_BROWSER }
-            .filter { it.impl.installableWithDefaultPermission }
-            .filterNot { it.impl.isInstalled(this) }
-            .sortedBy { getString(it.impl.title) }
             .forEach { addAppToUserInterface(goodPrivacyBrowsers, it) }
 
         val betterThanChromeBrowsers = findViewById<LinearLayout>(R.id.list_better_than_chrome_browsers)
         betterThanChromeBrowsers.removeAllViews()
-        App.values()
+        installedApps
             .filter { it.impl.displayCategory == BETTER_THAN_GOOGLE_CHROME }
-            .filter { it.impl.installableWithDefaultPermission }
-            .filterNot { it.impl.isInstalled(this) }
-            .sortedBy { getString(it.impl.title) }
             .forEach { addAppToUserInterface(betterThanChromeBrowsers, it) }
 
         val otherApplications = findViewById<LinearLayout>(R.id.other_applications)
         otherApplications.removeAllViews()
-        App.values()
+        installedApps
             .filter { it.impl.displayCategory == OTHER }
-            .filter { it.impl.installableWithDefaultPermission }
-            .filterNot { it.impl.isInstalled(this) }
-            .sortedBy { getString(it.impl.title) }
             .forEach { addAppToUserInterface(otherApplications, it) }
 
         val eolBrowsers = findViewById<LinearLayout>(R.id.list_eol_browsers)
         eolBrowsers.removeAllViews()
-        App.values()
+        installedApps
             .filter { it.impl.displayCategory == EOL }
-            .filter { it.impl.installableWithDefaultPermission }
-            .filterNot { it.impl.isInstalled(this) }
-            .sortedBy { getString(it.impl.title) }
             .forEach { addAppToUserInterface(eolBrowsers, it) }
     }
 

@@ -27,7 +27,7 @@ class FFUpdater(
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
-    override val installableWithDefaultPermission = false
+    override val installableByUser = false
     override val projectPage = "https://github.com/Tobi823/ffupdater"
     override val displayCategory = DisplayCategory.OTHER
 

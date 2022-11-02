@@ -26,6 +26,8 @@ import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_update_check
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
@@ -129,9 +131,20 @@ class MainActivity : AppCompatActivity() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
         mainLayout.removeAllViews()
         cleanUpObjects()
-        App.values()
-            .filter { it.impl.isInstalled(this) }
-            .forEach { addAppToUserInterface(mainLayout, it, ForegroundSettingsHelper(this)) }
+
+
+        val appByCategories = App.values().groupBy { it.impl.isInstalled(this) }
+        appByCategories[INSTALLED]?.forEach {
+            addAppToUserInterface(mainLayout, it, ForegroundSettingsHelper(this))
+        }
+
+        val wrongFingerprintApps = (appByCategories[INSTALLED_WITH_DIFFERENT_FINGERPRINT] ?: listOf())
+            .filter { it != App.FFUPDATER } // because it can't be installed with FFUpdater
+        if (wrongFingerprintApps.isNotEmpty()) {
+            wrongFingerprintApps
+                .joinToString { getString(it.impl.title) }
+                .let { addTextBoxToUserInterface(mainLayout, it) }
+        }
     }
 
     @UiThread
@@ -191,10 +204,21 @@ class MainActivity : AppCompatActivity() {
         mainLayout.addView(cardView)
     }
 
+    @UiThread
+    private fun addTextBoxToUserInterface(
+        mainLayout: LinearLayout,
+        text: String
+    ) {
+        val textbox = layoutInflater.inflate(R.layout.activity_main_textbox, mainLayout, false)
+        textbox.findViewWithTag<TextView>("text").text =
+            getString(R.string.main_activity__ignored_apps_due_fingerprints, text)
+        mainLayout.addView(textbox)
+    }
+
     @MainThread
     private suspend fun checkForUpdates(useCache: Boolean = true) {
         val apps = App.values()
-            .filter { it.impl.isInstalled(this@MainActivity) }
+            .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)

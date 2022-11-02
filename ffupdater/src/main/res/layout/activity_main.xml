@@ -85,5 +85,4 @@
         app:layout_anchorGravity="end|bottom"
         app:srcCompat="@drawable/ic_add_black" />
 
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

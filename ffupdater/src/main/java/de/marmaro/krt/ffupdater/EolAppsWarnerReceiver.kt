@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.utils.ifTrue
 
@@ -19,7 +20,7 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
 
         App.values()
             .filter { app -> app.impl.isEol() }
-            .any { app -> app.impl.isInstalled(context) }
+            .any { app -> app.impl.isInstalled(context) == InstallationStatus.INSTALLED }
             .ifTrue { BackgroundNotificationBuilder.INSTANCE.showEolAppsWarning(context) }
     }
 }

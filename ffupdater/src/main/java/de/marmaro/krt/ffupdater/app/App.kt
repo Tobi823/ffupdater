@@ -20,7 +20,6 @@ enum class App(appBase: AppBase) {
     KIWI(Kiwi()),
     LOCKWISE(Lockwise()),
     MULCH(Mulch()),
-    MULL(Mull()),
     MULL_FROM_REPO(MullFromRepo()),
     ORBOT(Orbot()),
     TOR_BROWSER(TorBrowser()),

@@ -262,4 +262,5 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid is based on the latest Firefox release (codenamed Fenix). It has proprietary bits and telemetry removed, but still connects to various Mozilla and Google services that can track users.</string>
     <string name="fennecfdroid__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">The following apps have different certificate fingerprints and will be ignored by FFUpdater. You can fix it by uninstalling and then installing them with FFUpdater: %s</string>
 </resources>

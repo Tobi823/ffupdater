@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.ABI.*
@@ -40,7 +41,7 @@ abstract class AppBase {
     abstract val minApiLevel: Int
     abstract val supportedAbis: List<ABI>
     abstract val signatureHash: String
-    open val installableWithDefaultPermission: Boolean = true
+    open val installableByUser: Boolean = true
     abstract val projectPage: String
     open val eolReason: Int? = null
     abstract val displayCategory: DisplayCategory
@@ -49,9 +50,16 @@ abstract class AppBase {
     private val mutex = Mutex()
 
     @AnyThread
-    fun isInstalled(context: Context): Boolean {
-        return PackageManagerUtil(context.packageManager).isAppInstalled(packageName) &&
-                FingerprintValidator(context.packageManager).checkInstalledApp(this).isValid
+    fun isInstalled(context: Context): InstallationStatus {
+        return if (PackageManagerUtil(context.packageManager).isAppInstalled(packageName)) {
+            if (FingerprintValidator(context.packageManager).checkInstalledApp(this).isValid) {
+                InstallationStatus.INSTALLED
+            } else {
+                InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
+            }
+        } else {
+            InstallationStatus.NOT_INSTALLED
+        }
     }
 
     @AnyThread

@@ -10,6 +10,7 @@ import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.background.RecoverableBackgroundException
 import de.marmaro.krt.ffupdater.background.UnrecoverableBackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -135,7 +136,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
         App.values()
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
-            .filter { app -> app.impl.isInstalled(context) }
+            .filter { app -> app.impl.isInstalled(context) == InstallationStatus.INSTALLED }
             .filter { app ->
                 val updateResult = app.impl.checkForUpdateWithoutLoadingFromCacheAsync(context).await()
                 updateResult.isUpdateAvailable
