@@ -7,7 +7,6 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
@@ -24,7 +23,7 @@ class Mulch(
     override val downloadSource = "https://divestos.org/fdroid/official"
     override val icon = R.mipmap.ic_logo_mulch
     override val minApiLevel = Build.VERSION_CODES.M
-    override val supportedAbis = listOf(ABI.ARM64_V8A)
+    override val supportedAbis = ARM32_ARM64
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2"
