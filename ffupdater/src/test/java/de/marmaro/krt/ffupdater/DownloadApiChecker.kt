@@ -9,6 +9,7 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
+import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
@@ -120,6 +121,26 @@ class DownloadApiChecker {
     }
 
     @Test
+    fun chromium() {
+        val orbot = Chromium(ApiConsumer.INSTANCE)
+        val result = runBlocking { orbot.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
+    }
+
+    @Test
+    fun fennecFdroid() {
+        val fennec = FennecFdroid(FdroidConsumer.INSTANCE, deviceAbiExtractor)
+        val result = runBlocking { fennec.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
+    }
+
+    @Test
     fun firefoxBeta() {
         val firefoxBeta = FirefoxBeta(MozillaCiLogConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { firefoxBeta.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
@@ -197,6 +218,26 @@ class DownloadApiChecker {
     }
 
     @Test
+    fun mulch() {
+        val mulch = Mulch(CustomRepositoryConsumer(ApiConsumer.INSTANCE), deviceAbiExtractor)
+        val result = runBlocking { mulch.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
+    }
+
+    @Test
+    fun mullFromRepo() {
+        val mull = MullFromRepo(CustomRepositoryConsumer(ApiConsumer.INSTANCE), deviceAbiExtractor)
+        val result = runBlocking { mull.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
+    }
+
+    @Test
     fun vivaldi() {
         val vivaldi = Vivaldi(ApiConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { vivaldi.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
@@ -214,16 +255,6 @@ class DownloadApiChecker {
     }
 
     @Test
-    fun torBrowser() {
-        val torBrowser = TorBrowser(ApiConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { torBrowser.findLatestUpdate(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
-        val age = Duration.between(releaseDate, ZonedDateTime.now())
-        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
-    }
-
-    @Test
     fun orbot() {
         val orbot = Orbot(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { orbot.findLatestUpdate(context) }
@@ -234,19 +265,9 @@ class DownloadApiChecker {
     }
 
     @Test
-    fun chromium() {
-        val orbot = Chromium(ApiConsumer.INSTANCE)
-        val result = runBlocking { orbot.findLatestUpdate(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
-        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
-        val age = Duration.between(releaseDate, ZonedDateTime.now())
-        assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
-    }
-
-    @Test
-    fun mullFromRepo() {
-        val mull = MullFromRepo(CustomRepositoryConsumer(ApiConsumer.INSTANCE), deviceAbiExtractor)
-        val result = runBlocking { mull.findLatestUpdate(context) }
+    fun torBrowser() {
+        val torBrowser = TorBrowser(ApiConsumer.INSTANCE, deviceAbiExtractor)
+        val result = runBlocking { torBrowser.findLatestUpdate(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
