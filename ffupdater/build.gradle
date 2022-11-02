@@ -21,7 +21,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
 
     // solve dependency conflict https://stackoverflow.com/a/69832319
@@ -31,7 +31,7 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.0'
 
     // has coordinatorlayout, constraintlayout, cardview and more
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
 
     // additional layout for then main screen
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
@@ -59,8 +59,8 @@ android {
     compileSdkVersion 32
 
     defaultConfig {
-        versionCode 116
-        versionName "77.3.2" // MAJOR.MINOR.PATCH
+        versionCode 117
+        versionName "77.3.3" // MAJOR.MINOR.PATCH
         // MAJOR version when you make incompatible API changes,
         // MINOR version when you add functionality in a backwards compatible manner, and
         // PATCH version when you make backwards compatible bug fixes.
