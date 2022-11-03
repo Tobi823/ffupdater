@@ -86,7 +86,7 @@
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Ten en cuenta que esta aplicación solía llamarse Firefox Preview. Ahora ha pasado a llamarse Firefox Nightly.
 \n
-\nNightly es un canal de desarrollo para las nuevas versiones de Mozilla Firefox.
+\nFirefox Nightly es un canal de desarrollo para las nuevas versiones de Mozilla Firefox.
 \n
 \nNightly está diseñado para mostrar las versiones más experimentales de Firefox. El canal Nightly permite a los usuarios experimentar las últimas innovaciones de Firefox en un entorno inestable y proporcionar comentarios sobre las características y el rendimiento para ayudar a determinar lo que hace la versión final.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
@@ -302,4 +302,5 @@
     <string name="mulch__warning">- Mulch utiliza la base de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="mulch__description">Se trata de un navegador web orientado a la seguridad, basado en la tecnología Chromium. Se han deshabilitado/eliminado muchas anti-funciones y se han habilitado/añadido un puñado de funciones de seguridad gracias a los parches del proyecto Vanadium. El repositorio de fuentes también incluye prebuilts y makefiles para permitir que otros sistemas operativos incluyan Mulch como su WebView de sistema.</string>
     <string name="fennecfdroid__description">Fennec F-Droid se basa en la última versión de Firefox (cuyo nombre en código es Fenix). Ha eliminado los bits propietarios y la telemetría, pero sigue conectándose a varios servicios de Mozilla y Google que pueden rastrear a los usuarios.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Las siguientes aplicaciones tienen diferentes huellas digitales en sus certificados y serán ignoradas por FFUpdater: %s. Puedes solucionarlo desinstalando y luego instalándolas con FFUpdater.</string>
 </resources>
