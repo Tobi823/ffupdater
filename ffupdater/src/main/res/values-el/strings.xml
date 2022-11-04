@@ -1,2 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="firefox_nightly__description">Λάβετε υπόψη ότι αυτή η εφαρμογή είχε τον τίτλο Firefox Preview. Τώρα έχει μεταφερθεί σε Firefox Nightly.
+\n
+\nΤο Firefox Nightly είναι ένα αναπτυξιακό κανάλι για νέες εκδόσεις του Mozilla Firefox.
+\n
+\nΤο Firefox Nightly έχει σχεδιαστεί για να παρουσιάζει τις πιο πειραματικές εκδόσεις του Firefox. Το κανάλι Nightly επιτρέπει στους χρήστες να βιώσουν τις πιο πρόσφατες καινοτομίες του Firefox σε ένα ασταθές περιβάλλον και να παρέχουν σχόλια σχετικά με τις λειτουργίες και την απόδοση για να προσδιορίσουν τι κάνει την τελική έκδοση.</string>
+    <string name="firefox_release__description">Το πρόγραμμα περιήγησης Firefox για Android είναι αυτόματα ιδιωτικό και απίστευτα γρήγορο. Χιλιάδες διαδικτυακοί ιχνηλάτες σας ακολουθούν καθημερινά, συλλέγοντας πληροφορίες σχετικά με το πού πηγαίνετε στο διαδίκτυο και μειώνοντας την ταχύτητά σας. Ο Firefox αποκλείει πάνω από 2000 από αυτούς τους ιχνηλάτες από προεπιλογή και υπάρχουν διαθέσιμα πρόσθετα αποκλεισμού διαφημίσεων εάν θέλετε να προσαρμόσετε το πρόγραμμα περιήγησής σας ακόμη περισσότερο. Με τον Firefox, θα έχετε την ασφάλεια που σας αξίζει και την ταχύτητα που χρειάζεστε σε ένα ιδιωτικό πρόγραμμα περιήγησης για κινητά.</string>
+    <string name="iceraven__description">Σίγουρα δεν σας το έφερε η Mozilla!
+\n
+\nΤο Iceraven Browser είναι ένα πρόγραμμα περιήγησης ιστού για Android, που βασίζεται στην έκδοση Fenix του Firefox, GeckoView και της Mozilla Android Components.
+\n
+\nΟ στόχος μας είναι να γίνουμε ο νέος Firefox για Android που επιδιώκει να παρέχει στους χρήστες περισσότερες επιλογές, περισσότερες ευκαιρίες προσαρμογής (συμπεριλαμβανομένης μιας βιβλιοθήκης ευρείας επέκτασης) και περισσότερες πληροφορίες σχετικά με τις σελίδες που επισκέπτονται και τον τρόπο με τον οποίο αλληλεπιδρούν τα προγράμματα περιήγησής τους αυτές οι σελίδες.</string>
+    <string name="app_icon">εικονίδιο εφαρμογής</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="app_warning_before_installation_dialog__title">Προειδοποίηση</string>
+    <string name="app_warning_dialog__title">Προειδοποίηση</string>
+    <string name="available_version">Διαθέσιμο: %1$s</string>
+    <string name="brave__description">Περιηγηθείτε ιδιωτικά στο διαδίκτυο, δωρεάν! Η εφαρμογή Brave Private Browser είναι το γρήγορο, δωρεάν και ασφαλές ιδιωτικό πρόγραμμα περιήγησης ιστού με πρόγραμμα αποκλεισμού διαφημίσεων και αποκλεισμού αναδυόμενων παραθύρων. Περιηγηθείτε και αναζητήστε ιδιωτικά στο διαδίκτυο χωρίς να παρακολουθείστε από διαφημιστές, κακόβουλο λογισμικό και αναδυόμενα παράθυρα.</string>
+    <string name="brave__title">Brave Private Browser</string>
+    <string name="brave__warning">- Το Brave χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.
+\n- Λόγω του Basic Attention Token BAT στο blockchain Ethereum, το έργο έχει δεσμούς με κρυπτονομίσματα. Τα Blockchain έχουν πολλά προβλήματα και πρέπει να αποφεύγονται κατά την άποψή μου.</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="brave_nightly__description">Καλώς ήρθατε στο Brave Nightly (Developer) για Android!
+\nΔοκιμάστε τις τελευταίες δυνατότητες και δώστε έγκαιρα σχόλια: https://brave.com/msupport
+\nΜπορείτε να εγκαταστήσετε το Brave Nightly μαζί με την τρέχουσα έκδοση του Brave για Android.</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="bromite_systemwebview__description">Το πακέτο SystemWebView περιέχει το βασικό πρόγραμμα περιήγησης/μηχανή απόδοσης του Bromite και τα ίδια χαρακτηριστικά του. Προσφέρει τη δυνατότητα αντικατάστασης του προεπιλεγμένου στοιχείου προγράμματος περιήγησης για ολόκληρο το σύστημα Android.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Αυτό το σφάλμα παρουσιάστηκε κατά την εγκατάσταση. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">Αυτό το σφάλμα παρουσιάστηκε κατά τον έλεγχο για ενημερώσεις στην κύρια προβολή. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Δυστυχώς, το FFUpdater συνετρίβη την τελευταία φορά και κατέγραψε αυτό το σφάλμα. Υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="crash_report__go_to_github">Μεταβείτε στο GitHub</string>
+    <string name="crash_report__go_to_gitlab">Μεταβείτε στο GitLab</string>
+    <string name="device_too_old_dialog__title">Η συσκευή είναι πολύ παλιά</string>
+    <string name="dialog_button__do_not_install">Όχι, μην το εγκαταστήσετε</string>
+    <string name="dialog_button__yes">Ναί</string>
+    <string name="notification__download_error__channel_descr">Εμφανίζεται όταν αποτυγχάνουν οι λήψεις ενημέρωσης στο παρασκήνιο.</string>
+    <string name="notification__download_error__descr">Η λήψη στο παρασκήνιο της ενημέρωσης %1$s απέτυχε. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να το αναφέρετε στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="notification__download_running__channel_name">Ειδοποίηση για λήψεις στο παρασκήνιο</string>
+    <string name="notification__download_running__text">%1$s (%2$s)</string>
+    <string name="notification__download_running__title">Λήψη ενημερώσεων εφαρμογών</string>
+    <string name="app_card__download_the_app">κατεβάστε την εφαρμογή</string>
+    <string name="notification__eol_apps__channel_description">Κανάλι ειδοποιήσεων για προειδοποιήσεις σχετικά με παλιές εφαρμογές.</string>
+    <string name="notification__eol_apps__channel_name">Ειδοποίηση παλιών εφαρμογών</string>
+    <string name="firefox_beta__title">Firefox για Android Beta</string>
+    <string name="firefox_beta__warning">- Αυτή η εφαρμογή έχει σχεδιαστεί για προγραμματιστές και δοκιμαστές. Μπορεί να περιέχει διάφορα σφάλματα που μπορεί να επηρεάσουν τη συνήθη εργασία σας με το πρόγραμμα περιήγησης.</string>
+    <string name="firefox_focus__title">Firefox Focus</string>
+    <string name="firefox_klar__title">Firefox Klar</string>
+    <string name="firefox_nightly__title">Firefox Nightly</string>
+    <string name="firefox_nightly__warning">- Αυτή η εφαρμογή έχει σχεδιαστεί για προγραμματιστές και δοκιμαστές. Μπορεί να περιέχει διάφορα σφάλματα που μπορεί να επηρεάσουν τη συνήθη εργασία σας με το πρόγραμμα περιήγησης.</string>
+    <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- Μια βελτιωμένη έκδοση του Firefox είναι επίσης διαθέσιμη στο F-Droid με το όνομα Fennec F-Droid.</string>
+    <string name="generic_eol_reason__browser_to_old">Το πρόγραμμα περιήγησης δεν έχει ενημερωθεί εδώ και πολύ καιρό, γι\' αυτό προτείνω να χρησιμοποιήσετε προσωρινά άλλο πρόγραμμα περιήγησης. Όταν οι προγραμματιστές κυκλοφορήσουν μια νέα ενημέρωση, θα αφαιρέσω αυτήν την προειδοποίηση.</string>
+    <string name="go_back">Πήγαινε πίσω</string>
+    <string name="iceraven__title">Iceraven Browser</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">Το %1$s έχει το ακόλουθο πρόβλημα:
+\n
+\n%2$s
+\n
+\nΘέλετε ακόμα να εγκαταστήσετε το %1$s;</item>
+        <item quantity="other">Το %1$s έχει τα ακόλουθα προβλήματα:
+\n
+\n%2$s
+\n
+\nΘέλετε ακόμα να εγκαταστήσετε το %1$s;</item>
+    </plurals>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">Το %1$s έχει το ακόλουθο πρόβλημα:
+\n
+\n%2$s</item>
+        <item quantity="other">Το %1$s έχει τα ακόλουθα προβλήματα:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="application_installation_was_not_successful">Η εγκατάσταση της εφαρμογής δεν ήταν επιτυχής</string>
+    <string name="action_about_title">Σχετικά με το FFUpdater</string>
+    <string name="app_card__app_warning_button_description">Εμφάνιση προειδοποιήσεων σχετικά με αυτήν την εφαρμογή</string>
+    <string name="app_description">Ενημέρωση για προγράμματα περιήγησης φιλικά προς το απόρρητο</string>
+    <string name="notification__error__text">Παρακαλώ αναφέρετε αυτό το σφάλμα. Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
+    <string name="notification__error__title">Ο έλεγχος ενημέρωσης παρασκηνίου απέτυχε</string>
+    <string name="available_version_error"><u>ΣΦΑΛΜΑ</u></string>
+    <string name="application_successfully_installed">Η εφαρμογή εγκαταστάθηκε με επιτυχία</string>
+    <string name="bromite__description">Το Bromite στοχεύει στην παροχή μιας εμπειρίας περιήγησης χωρίς ακαταστασία χωρίς λειτουργίες που επεμβαίνουν στο απόρρητο και με την προσθήκη ενός γρήγορου μηχανισμού αποκλεισμού διαφημίσεων. Εφαρμόζονται ελάχιστες αλλαγές διεπαφής χρήστη για να περιοριστεί η ιδέα του προγράμματος περιήγησης ως πλατφόρμας διαφήμισης.</string>
+    <string name="brave_beta__description">Καλώς ήρθατε στο Brave Beta για Android!
+\nΔοκιμάστε τις τελευταίες δυνατότητες και δώστε έγκαιρα σχόλια: https://brave.com/msupport
+\nΜπορείτε να εγκαταστήσετε το Brave Beta μαζί με την τρέχουσα έκδοση του Brave για Android.</string>
+    <string name="bromite__warning">- Το Bromite χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
+    <string name="crash_report__got_to_notabug_org">Μεταβείτε στο notabug.org</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Αντιγράψτε την αναφορά σφαλμάτων στο πρόχειρο</string>
+    <string name="crash_report__explain_text__download_activity_download_file">Παρουσιάστηκε το ακόλουθο σφάλμα κατά τη λήψη. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="firefox_focus__description">Αυτή είναι μια τροποποίηση του προγράμματος περιήγησης Firefox με στόχο την αύξηση του απορρήτου.</string>
+    <string name="firefox_klar__description">Το Firefox Klar έχει αναπτυχθεί για τη Γερμανία, την Αυστρία και την Ελβετία, αλλά μπορεί να χρησιμοποιηθεί από χρήστες σε οποιαδήποτε χώρα. Μοιάζει πολύ με το Firefox Focus, αλλά το όνομα άλλαξε στις γερμανόφωνες χώρες για να αποφευχθεί η σύγχυση με το περιοδικό Focus από τον όμιλο Hubert Burda Media. Σε αντίθεση με το Firefox Focus, ο Firefox Klar έχει απενεργοποιημένη την τηλεμετρία από προεπιλογή λόγω αυστηρών γερμανικών νόμων περί απορρήτου.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">Αυτό το σφάλμα προέκυψε κατά την ανάκτηση των μεταδεδομένων λήψης. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="device_too_old_dialog__message">Η εφαρμογή απαιτεί Android %1$s. Αλλά η συσκευή σας χρησιμοποιεί μόνο Android %2$s. Είτε επιλέξτε μια διαφορετική εφαρμογή, ενημερώστε το λειτουργικό σας σύστημα είτε μεταβείτε σε ένα νεότερο smartphone.</string>
+    <string name="notification__download_error__channel_name">Ειδοποίηση σχετικά με σφάλματα λήψης στο παρασκήνιο</string>
+    <string name="notification__download_error__text">Η λήψη στο παρασκήνιο της ενημέρωσης %1$s απέτυχε. Εάν αυτό το σφάλμα εμφανίζεται συχνά, κάντε κλικ εδώ για να δείτε την αναφορά σφάλματος.</string>
+    <string name="notification__eol_apps__title">Εγκαταστάθηκαν παλιές εφαρμογές</string>
+    <string name="notification__error__channel_descr">Εμφάνιση σφαλμάτων του ελεγκτή ενημέρωσης παρασκηνίου</string>
+    <string name="notification__error__channel_name">Σφάλματα παρασκηνίου</string>
+    <string name="notification__download_error__title">Η λήψη της ενημέρωσης στο παρασκήνιο απέτυχε</string>
+    <string name="notification__download_running__channel_descr">Εμφανίζεται όταν γίνεται λήψη ενημερώσεων εφαρμογών στο παρασκήνιο.</string>
+    <string name="notification__eol_apps__text">Έχετε παλιές εφαρμογές που δεν πρέπει να χρησιμοποιούνται πλέον. Κάντε κλικ για περισσότερες πληροφορίες.</string>
+    <string name="firefox_beta__description">Το πρόγραμμα περιήγησης Firefox για Android είναι αυτόματα ιδιωτικό και απίστευτα γρήγορο. Χιλιάδες διαδικτυακοί ιχνηλάτες σας ακολουθούν καθημερινά, συλλέγοντας πληροφορίες σχετικά με το πού πηγαίνετε στο διαδίκτυο και μειώνοντας την ταχύτητά σας. Ο Firefox αποκλείει πάνω από 2000 από αυτούς τους ιχνηλάτες από προεπιλογή και υπάρχουν διαθέσιμα πρόσθετα αποκλεισμού διαφημίσεων εάν θέλετε να προσαρμόσετε το πρόγραμμα περιήγησής σας ακόμη περισσότερο. Με τον Firefox, θα έχετε την ασφάλεια που σας αξίζει και την ταχύτητα που χρειάζεστε σε ένα ιδιωτικό πρόγραμμα περιήγησης για κινητά.</string>
+</resources>
