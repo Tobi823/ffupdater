@@ -1,0 +1,3 @@
+* Ευχαριστώ για την συνεισφορά τους στο Weblate, τους: Jacek, NautilusX, 109247019824, Gallegonovato, Juraj Motuz, Oğuz
+   Ersen και atilluF
+* Διόρθωση έλεγχου ενημέρωσης του Kiwi

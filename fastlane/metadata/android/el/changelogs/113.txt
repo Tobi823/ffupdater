@@ -1,0 +1,6 @@
+* Ευχαριστούμε για τη συνεισφορά τους στο Weblate, τους: John Doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem και Eduardo Malaspina
+* Προσθήκη Chromium, Orbot, Tor,
+* Βελτιώση τη διεπαφής χρήστη για την προσθήκη νέων εφαρμογών
+* Μην εμπιστοσύνη της CA του χρήστη ως προεπιλογή (αυτό μπορεί να απενεργοποιηθεί)
+* Διορθώσεις σφαλμάτων
+* Καθαρισμός και ανακατασκευή κώδικα

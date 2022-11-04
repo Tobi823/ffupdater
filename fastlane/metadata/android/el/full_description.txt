@@ -1,0 +1,28 @@
+Εγκαθιστά και ενημερώνει τα ακόλουθα προγράμματα περιήγησης:
+
+Προγράμματα περιήγησης από το Mozilla ή βασισμένα στον Firefox:
+- Fennec F-Droid
+- Firefox Browser, Firefox για Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Klar
+- Iceraven
+- Mull Browser
+- Tor Browser
+
+Καλά προγράμματα περιήγησης απορρήτου:
+- Bromite, Bromite SystemWebView
+- Mulch
+
+Πρόγραμμα περιήγησης που είναι καλύτερo από το Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- Kiwi Browser Next
+- Vivaldi
+
+Άλλες εφαρμογές:
+- Orbot
+
+Το FFUpdater ελέγχει για ενημερώσεις στο παρασκήνιο και τις κατεβάζει επίσης. Σε συσκευές Android 12+ ή root, το FFUpdater μπορεί επίσης να ενημερώσει τις εφαρμογές χωρίς αλληλεπίδραση με τον χρήστη.
+
+Επισκεφτείτε τη https://notabug.org/Tobiwan/ffupdater/src/master/README.md για περισσότερες πληροφορίες.
+
+Καταγραφή αλλαγών: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/en-US/changelogs
