@@ -211,7 +211,7 @@
 \nΑυτό εξοικονομεί εύρος ζώνης όταν μια εφαρμογή δεν εγκατασταθεί ή δεν ενημερωθεί με επιτυχία. Επίσης, απαιτείται η προσωρινή μνήμη, ώστε οι ενημερώσεις που λήφθηκαν στο παρασκήνιο να μπορούν να εγκατασταθούν αργότερα.
 \n
 \nΕάν αποφασίσετε να διαγράψετε αυτές τις ενημερώσεις εφαρμογών, ίσως χρειαστεί να τις κατεβάσετε ξανά.</string>
-    <string name="ok">OK</string>
+    <string name="ok">Εντάξει</string>
     <string name="request_installation_permission_dialog__abort">Ματαίωση</string>
     <string name="main_activity__no_unmetered_network">Δεν υπάρχει μη μετρήσιμo δίκτυο</string>
     <string name="request_installation_permission_dialog__title">Άδεια εγκαταστάτη</string>
