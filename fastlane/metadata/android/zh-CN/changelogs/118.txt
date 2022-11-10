@@ -1,0 +1,6 @@
+* Mull（F-droid 版）不再受支持。请使用 FFUpdater 切换到 Mull（divestos.org 版），或使用 F-froid 来更新 Mull（F-droid 版）
+* 改进对具有不同签名的应用的处理
+* 修复 Arm32 设备升级 Mulch 失败
+* 修复 Arm32 设备升级 FennecFdroid.kt 失败
+* 添加单元测试
+* 清理

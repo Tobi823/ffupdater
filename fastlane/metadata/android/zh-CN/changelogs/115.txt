@@ -1,0 +1,3 @@
+* 感谢 Weblate 的贡献者：Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
+  Motuz, Giovanni Donisi and Oğuz Ersen
+* 修复 Kiwi 升级问题：忽略没有 APK 文件的GitHub releases

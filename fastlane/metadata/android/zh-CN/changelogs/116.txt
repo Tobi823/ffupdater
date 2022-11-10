@@ -1,0 +1,2 @@
+* 感谢 Weblate 的贡献者：Jacek, nautilusx, 109247019824, gallegonovato, Juraj Motuz, Oğuz Ersen, atilluF
+* 修复 Kiwi 检查更新
