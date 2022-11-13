@@ -9,8 +9,10 @@ import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.NOT_REQUIRED
 import androidx.work.NetworkType.UNMETERED
+import androidx.work.WorkRequest.DEFAULT_BACKOFF_DELAY_MILLIS
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
+import de.marmaro.krt.ffupdater.background.AppsOrResult
 import de.marmaro.krt.ffupdater.background.RecoverableBackgroundException
 import de.marmaro.krt.ffupdater.background.UnrecoverableBackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -56,6 +58,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     private val notification = BackgroundNotificationBuilder.INSTANCE
     private val sdkTester = DeviceSdkTester.INSTANCE
 
+
     /**
      * Execute the logic for update checking, downloading and installation.
      *
@@ -77,60 +80,60 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             Log.i(LOG_TAG, "Execute background job for update check.")
             checkDownloadAndInstallApps()
         } catch (e: CancellationException) {
-            val wrappedException = RecoverableBackgroundException(e)
-            Log.w(LOG_TAG, "Background job failed (CancellationException)", wrappedException)
-            handleRecoverableError(wrappedException)
+            val message = "Background job because of an CancellationException."
+            handleRecoverableError(message, RecoverableBackgroundException(e))
         } catch (e: NetworkException) {
-            val wrappedException = RecoverableBackgroundException(e)
-            Log.w(LOG_TAG, "Background job failed (NetworkException)", wrappedException)
-            handleRecoverableError(wrappedException)
+            val message = "Background job because of an NetworkException."
+            handleRecoverableError(message, RecoverableBackgroundException(e))
         } catch (e: Exception) {
             val wrappedException = UnrecoverableBackgroundException(e)
             Log.e(LOG_TAG, "Background job failed due to an unexpected exception", wrappedException)
-            handleUnrecoverableError(wrappedException)
+            notification.showError(context, wrappedException)
+            Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
     }
 
-    private fun handleRecoverableError(e: Exception): Result {
-        return if (runAttemptCount < RUN_ATTEMPTS_FOR_MAX_5DAYS) {
-            Log.i(LOG_TAG, "Retry background job.", e)
+    private fun handleRecoverableError(m: String, e: Exception): Result {
+        return if (runAttemptCount < MAX_RETRIES) {
+            Log.w(LOG_TAG, m, e)
+            Log.i(LOG_TAG, "Restart background job in ${calculateBackoffTime(runAttemptCount)}")
             Result.retry()
         } else {
+            Log.e(LOG_TAG, m, e)
             notification.showLongTimeNoBackgroundUpdateCheck(context, e)
             Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
     }
 
-    private fun handleUnrecoverableError(e: Exception): Result {
-        notification.showError(context, e)
-        return Result.success() // BackgroundJob should not be removed from WorkManager schedule
-    }
-
     @MainThread
     private suspend fun checkDownloadAndInstallApps(): Result {
-        val (outdatedApps, abortCheckResult) = checkForUpdates()
-        abortCheckResult?.let { result -> return result }
+        val outdatedApps = checkForUpdates()
+        if (outdatedApps.hasFailure()) {
+            return outdatedApps.failure
+        }
 
-        val (downloadedUpdates, abortDownloadResult) = downloadUpdates(outdatedApps)
-        abortDownloadResult?.let { result -> return result }
+        val downloadedApps = downloadUpdates(outdatedApps.value)
+        if (downloadedApps.hasFailure()) {
+            return downloadedApps.failure
+        }
 
-        return installUpdates(downloadedUpdates)
+        return installUpdates(downloadedApps.value)
     }
 
-    private suspend fun checkForUpdates(): Pair<List<App>, Result?> {
+    private suspend fun checkForUpdates(): AppsOrResult {
         if (!backgroundSettings.isUpdateCheckEnabled) {
             Log.i(LOG_TAG, "Background should be disabled - disable it now.")
-            return listOf<App>() to Result.failure()
+            return AppsOrResult.abortCompletely()
         }
 
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
             Log.i(LOG_TAG, "Retry background job because other downloads are running.")
-            return listOf<App>() to Result.retry()
+            return AppsOrResult.retryInIncreasingIntervals()
         }
 
         if (!backgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(context)) {
             Log.i(LOG_TAG, "No unmetered network available for update check.")
-            return listOf<App>() to Result.retry()
+            return AppsOrResult.retryInIncreasingIntervals()
         }
 
         dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
@@ -141,26 +144,26 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 val updateResult = app.impl.checkForUpdateWithoutLoadingFromCacheAsync(context).await()
                 updateResult.isUpdateAvailable
             }
-            .let { apps -> return apps to null }
+            .let { apps -> return AppsOrResult.apps(apps) }
     }
 
-    private suspend fun downloadUpdates(apps: List<App>): Pair<List<App>, Result?> {
+    private suspend fun downloadUpdates(apps: List<App>): AppsOrResult {
         if (!backgroundSettings.isDownloadEnabled) {
             Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
             showUpdateNotification(apps)
-            return listOf<App>() to Result.success()
+            return AppsOrResult.retryNextRegularTimeSlot()
         }
 
         if (!backgroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(context)) {
             Log.i(LOG_TAG, "No unmetered network available for download.")
             showUpdateNotification(apps)
-            return listOf<App>() to Result.success()
+            return AppsOrResult.retryNextRegularTimeSlot()
         }
 
         notification.hideDownloadError(context)
         val downloadedUpdates = apps.filter { downloadUpdateAndReturnAvailability(it) }
         Log.e("BackgroundJob", "these updates were downloaded: $downloadedUpdates")
-        return downloadedUpdates to null
+        return AppsOrResult(downloadedUpdates)
     }
 
     @MainThread
@@ -265,11 +268,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     companion object {
         private const val WORK_MANAGER_KEY = "update_checker"
         private const val LOG_TAG = "BackgroundJob"
-
-        // first 11 delays: 15s,30s,1min,2min,4min,8min,16min,32min,64min,128min,256min = 512min
-        // 12th, 13th, ... delay: 300min
-        // 512min + 23*300min = 7412min = 5d 3h 32min
-        private const val RUN_ATTEMPTS_FOR_MAX_5DAYS = 11 + 23
+        private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofDays(5))
 
         /**
          * Should be called when the user minimize the app to make sure that the background update check
@@ -351,6 +350,26 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         private fun stop(context: Context) {
             WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY)
+        }
+
+        private fun calculateBackoffTime(runAttempts: Int): Duration {
+            val unlimitedBackoffTime = Math.scalb(DEFAULT_BACKOFF_DELAY_MILLIS.toDouble(), runAttempts)
+            val limitedBackoffTime = unlimitedBackoffTime.coerceIn(
+                WorkRequest.MIN_BACKOFF_MILLIS.toDouble(),
+                WorkRequest.MAX_BACKOFF_MILLIS.toDouble()
+            )
+            return Duration.ofMillis(limitedBackoffTime.toLong())
+        }
+
+        private fun getRetriesForTotalBackoffTime(totalTime: Duration): Int {
+            var totalTimeMs = 0L
+            repeat(1000) { runAttempt -> // runAttempt is zero-based
+                totalTimeMs += calculateBackoffTime(runAttempt).toMillis()
+                if (totalTimeMs >= totalTime.toMillis()) {
+                    return runAttempt + 1
+                }
+            }
+            throw RuntimeException("Endless loop")
         }
     }
 }
