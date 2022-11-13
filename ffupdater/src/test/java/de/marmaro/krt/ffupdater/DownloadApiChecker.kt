@@ -141,6 +141,14 @@ class DownloadApiChecker {
     }
 
     @Test
+    fun ffupdater() {
+        val ffupdater = FFUpdater(GithubConsumer.INSTANCE)
+        val result = runBlocking { ffupdater.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        assertTrue(result.firstReleaseHasAssets)
+    }
+
+    @Test
     fun firefoxBeta() {
         val firefoxBeta = FirefoxBeta(MozillaCiLogConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { firefoxBeta.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
@@ -153,15 +161,8 @@ class DownloadApiChecker {
 
     @Test
     fun firefoxFocus() {
-        val result =
-            runBlocking {
-                FirefoxFocus(
-                    GithubConsumer.INSTANCE,
-                    deviceAbiExtractor
-                ).checkForUpdateWithoutLoadingFromCacheAsync(
-                    context
-                ).await()
-            }
+        val firefoxFocus = FirefoxFocus(GithubConsumer.INSTANCE, deviceAbiExtractor)
+        val result = runBlocking { firefoxFocus.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
@@ -207,6 +208,17 @@ class DownloadApiChecker {
     }
 
     @Test
+    fun iceraven() {
+        val iceraven = Iceraven(GithubConsumer.INSTANCE, deviceAbiExtractor)
+        val result = runBlocking { iceraven.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val age = Duration.between(releaseDate, ZonedDateTime.now())
+        assertTrue(age.toDays() < 9 * 7) { "${age.toDays()} days is too old" }
+        assertTrue(result.firstReleaseHasAssets)
+    }
+
+    @Test
     fun kiwi() {
         val kiwi = Kiwi(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { kiwi.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
@@ -214,6 +226,14 @@ class DownloadApiChecker {
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 9 * 7) { "${age.toDays()} days is too old" }
+        assertTrue(result.firstReleaseHasAssets)
+    }
+
+    @Test
+    fun lockwise() {
+        val lockwise = Lockwise(GithubConsumer.INSTANCE)
+        val result = runBlocking { lockwise.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertTrue(result.firstReleaseHasAssets)
     }
 
@@ -238,23 +258,6 @@ class DownloadApiChecker {
     }
 
     @Test
-    fun vivaldi() {
-        val vivaldi = Vivaldi(ApiConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { vivaldi.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
-        assertFalse(result.version.isEmpty())
-        assertTrue(result.firstReleaseHasAssets)
-    }
-
-    @Test
-    fun ffupdater() {
-        val ffupdater = FFUpdater(GithubConsumer.INSTANCE)
-        val result = runBlocking { ffupdater.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
-        assertTrue(result.firstReleaseHasAssets)
-    }
-
-    @Test
     fun orbot() {
         val orbot = Orbot(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { orbot.findLatestUpdate(context) }
@@ -272,6 +275,24 @@ class DownloadApiChecker {
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }
+    }
+
+    @Test
+    fun ungoogledChromium() {
+        val ungoogledChromium = UngoogledChromium(GithubConsumer.INSTANCE, deviceAbiExtractor)
+        val result =
+            runBlocking { ungoogledChromium.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        assertTrue(result.firstReleaseHasAssets)
+    }
+
+    @Test
+    fun vivaldi() {
+        val vivaldi = Vivaldi(ApiConsumer.INSTANCE, deviceAbiExtractor)
+        val result = runBlocking { vivaldi.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        assertFalse(result.version.isEmpty())
+        assertTrue(result.firstReleaseHasAssets)
     }
 
     private fun verifyThatDownloadLinkAvailable(url: String) {
