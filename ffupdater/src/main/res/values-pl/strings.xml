@@ -18,7 +18,7 @@
     <string name="brave_beta__description">Witamy w programie Brave Beta dla systemu Android!
 \nWypróbuj najnowsze funkcje i przekaż wczesne opinie: https://brave.com/msupport
 \nMożesz zainstalować Brave Beta równolegle z obecną wersją Brave na Androida.</string>
-    <string name="brave_beta__title">Bave (Beta)</string>
+    <string name="brave_beta__title">Brave (Beta)</string>
     <string name="brave_nightly__description">Witamy w Brave Nightly (Developer) dla systemu Android!
 \nWypróbuj najnowsze funkcje i przekaż wczesną opinię: https://brave.com/msupport
 \nMożesz zainstalować Brave Nightly obok swojej obecnej wersji Brave dla Androida.</string>
@@ -31,7 +31,7 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Następujący błąd wystąpił podczas pobierania adresu URL pobierania. Jeśli ten błąd pojawia się często, zapraszamy do zgłoszenia go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Podczas sprawdzania dostępności aktualizacji w widoku głównym wystąpił następujący błąd. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Niestety, FFUpdater się zawiesił. Proszę zgłoś ten błąd na notabug.org, GitHub lub GitLab.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Niestety, FFUpdater uległ awarii i zapisał ten błąd. Proszę zgłoś ten błąd na notabug.org, GitHub lub GitLab.</string>
     <string name="crash_report__go_to_github">Przejdź do GitHub</string>
     <string name="crash_report__go_to_gitlab">Przejdź do GitLab</string>
     <string name="crash_report__got_to_notabug_org">Przejdź do notabug.org</string>
@@ -69,8 +69,8 @@
     <string name="infobox">Ta aplikacja to aktualizator dla przeglądarek chroniących prywatność. Kliknij przycisk plusa, aby zainstalować nowe aplikacje. Przeciągnij palcem w dół, aby wymusić sprawdzenie nowych aktualizacji. Domyślnie aplikacja będzie okresowo sprawdzać aktualizacje w tle, które następnie zostaną pobrane i ostatecznie zainstalowane. Kliknij koło zębate, aby dostosować zachowanie w ustawieniach.
 \n
 \nOstatnie udane sprawdzenie aktualizacji w tle: %1$s</string>
-    <string name="app_card__information_about_the_app">informacje o aplikacji</string>
-    <string name="download_activity__delete_cache_button_text">wyczyść pamięć podręczną</string>
+    <string name="app_card__information_about_the_app">Informacje o aplikacji</string>
+    <string name="download_activity__delete_cache_button_text">Wyczyść pamięć podręczną</string>
     <string name="download_activity__delete_cache_explanation">Jeśli uważasz, że program FFUpdater zbuforował wadliwą aktualizację aplikacji lub chcesz zaoszczędzić miejsce, kliknij przycisk, aby usunąć pobrany plik.</string>
     <string name="download_activity__download_app_with_status">Pobierz aplikację (%1$s)</string>
     <string name="download_activity__download_failed">Pobieranie nie powiodło się</string>
@@ -86,8 +86,8 @@
     <string name="download_activity__sha_256_certificate_fingerprint">Odcisk palca certyfikatu SHA-256:</string>
     <string name="download_activity__temporary_network_issue">Wystąpił tymczasowy problem z siecią. Proszę spróbować ponownie później.</string>
     <string name="download_activity__too_low_memory_description">Na Twoim urządzeniu dostępne jest tylko %1$d MB wolnego miejsca. Może to prowadzić do niepowodzenia pobierania lub instalacji aplikacji.</string>
-    <string name="download_activity__too_low_memory_title">Mało Miejsca w Pamięci</string>
-    <string name="download_activity__use_cached_downloaded_apk">Użyj pobranego już pliku z:</string>
+    <string name="download_activity__too_low_memory_title">Mało miejsca na dysku</string>
+    <string name="download_activity__use_cached_downloaded_apk">Użyj pobranego pliku z:</string>
     <string name="download_activity__you_can_now_close_this_window">Możesz teraz zamknąć to okno</string>
     <string name="download_activity__label">Zainstaluj aplikację</string>
     <string name="install_app">Zainstaluj aplikację</string>
@@ -105,13 +105,13 @@
     <string name="installed_app_is_not_verified">Zainstalowana aplikacja NIE została zweryfikowana</string>
     <string name="installed_application_is_verified">Zainstalowana aplikacja została zweryfikowana</string>
     <string name="installed_version">Zainstalowane: %1$s</string>
-    <string name="lockwise__description">DOSTĘP DO HASŁA DLA CIEBIE - TYLKO DLA CIEBIE
+    <string name="lockwise__description">DOSTĘP DO HASEŁ DLA CIEBIE - TYLKO DLA CIEBIE
 \n
 \nBezpiecznie śledź swoje hasła do Firefoksa i uzyskuj do nich dostęp w dowolnym miejscu. Szybko otwórz dowolną stronę internetową z poziomu aplikacji, aby dostać się do swoich kont.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__available_version_loading">Ładowanie…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Przekroczono limit GitHub-API. Ponów próbę w ciągu następnej godziny.</u>"</string>
-    <string name="main_activity__no_unmetered_network">Brak sieci niepłatnej</string>
+    <string name="main_activity__no_unmetered_network">Brak sieci bez limitu danych</string>
     <string name="main_activity__subtitle">Aktualizator dla przeglądarek chroniących prywatność</string>
     <string name="main_activity__temporary_network_issue">"<u>Tymczasowy problem z siecią. Spróbuj ponownie później.</u>"</string>
     <string name="manage_storage_activity__delete_button">Usuń aktualizacje aplikacji z pamięci podręcznej.</string>
@@ -125,7 +125,7 @@
     <string name="running_downloads_dialog__negative">Nie, nie pobieraj tego</string>
     <string name="running_downloads_dialog__title">Pobieranie plików w trybie ciągłym</string>
     <string name="running_downloads_dialog__yes">Tak</string>
-    <string name="session_installer__not_enough_storage">Operacja nie powiodła się, ponieważ nie jest dostępna wystarczająca ilość pamięci masowej: %1$s</string>
+    <string name="session_installer__not_enough_storage">Operacja nie powiodła się, ponieważ nie jest dostępna wystarczająca ilość pamięci: %1$s</string>
     <string name="session_installer__require_user_interaction">Wymagana jest interakcja użytkownika. Najpierw trzeba zaktualizować aplikację poprzez interfejs FFUpdater. Tylko wtedy aktualizacje w tle będą dostępne dla wybranej aplikacji.</string>
     <string name="session_installer__status_failure">Operacja nie powiodła się w sposób ogólny. System zawsze będzie próbował podać bardziej szczegółowy powód niepowodzenia, ale w niektórych rzadkich przypadkach może to być dostarczone.</string>
     <string name="session_installer__status_failure_aborted">Operacja nie powiodła się, ponieważ została aktywnie przerwana. Na przykład, użytkownik aktywnie odmówił żądanych uprawnień lub sesja została porzucona.</string>
@@ -138,24 +138,24 @@
     <string name="settings__background__download__enabled__summary">Gdy zostanie wykryta aktualizacja, pobierz ją. Przyspieszy to później proces aktualizacji.</string>
     <string name="settings__background__download__enabled__title">Pobierz aktualizacje aplikacji</string>
     <string name="settings__background__download__metered__summary">Nie zalecane dla użytkowników z ograniczoną ilością danych komórkowych.</string>
-    <string name="settings__background__download__metered__title">Pobieraj aktualizacje aplikacji w sieciach płatnych</string>
+    <string name="settings__background__download__metered__title">Pobierz aktualizacje używając sieci z limitem danych</string>
     <string name="settings__background__installation__enabled__summary">Spróbuj zainstalować aktualizacje bez interakcji z użytkownikiem.</string>
     <string name="settings__background__installation__enabled__title">Zainstaluj aktualizację</string>
-    <string name="settings__background__update_check__enabled__summary">W regularnych odstępach czasu należy sprawdzać dostępność nowych aktualizacji.</string>
-    <string name="settings__background__update_check__enabled__title">Kontrola aktualizacji</string>
+    <string name="settings__background__update_check__enabled__summary">Sprawdź dostępność nowych aktualizacji w regularnych odstępach czasu.</string>
+    <string name="settings__background__update_check__enabled__title">Sprawdź aktualizację</string>
     <string name="settings__background__update_check__excluded_apps__summary">Przydatne, jeśli nie chcesz aktualizować aplikacji i nie chcesz otrzymywać powiadomień o jej aktualizacjach.</string>
-    <string name="settings__background__update_check__excluded_apps__title">Wykluczanie aplikacji z kontroli aktualizacji</string>
+    <string name="settings__background__update_check__excluded_apps__title">Wyklucz aplikacje ze sprawdzania aktualizacji</string>
     <string name="settings__background__update_check__interval__title">Częstotliwość sprawdzania aktualizacji</string>
-    <string name="settings__background__update_check__metered__title">Kontrola aktualizacji w sieciach opomiarowanych</string>
+    <string name="settings__background__update_check__metered__title">Sprawdź aktualizację używając sieci z limitem danych</string>
     <string name="settings__background_category__summary">Ustawienia, gdy aplikacja działa w tle i jest niewidoczna dla użytkownika.</string>
-    <string name="settings__background_category__title">Tło</string>
-    <string name="settings__foreground__download__metered__title">Pobieranie aktualizacji w sieciach z licznikiem</string>
-    <string name="settings__foreground__theme_preference__summary">Wybierz pomiędzy jasny a ciemnym motywem</string>
+    <string name="settings__background_category__title">W tle</string>
+    <string name="settings__foreground__download__metered__title">Pobierz aktualizacje używając sieci z limitem danych</string>
+    <string name="settings__foreground__theme_preference__summary">Wybierz pomiędzy jasnym a ciemnym motywem</string>
     <string name="settings__foreground__theme_preference__title">Wybierz motyw</string>
-    <string name="settings__foreground__update_check__metered__summary">Zezwalaj na sprawdzanie aktualizacji w sieciach z odliczanymi kosztami, takich jak sieć komórkowa.</string>
-    <string name="settings__foreground__update_check__metered__title">Kontrola aktualizacji w sieciach opomiarowanych</string>
+    <string name="settings__foreground__update_check__metered__summary">Zezwól na sprawdzanie aktualizacji w sieciach z limitem danych, takich jak dane komórkowe.</string>
+    <string name="settings__foreground__update_check__metered__title">Sprawdź aktualizację używając sieci z limitem danych</string>
     <string name="settings__foreground_category__summary">Ustawienia, kiedy interfejs użytkownika jest widoczny.</string>
-    <string name="settings__foreground_category__title">Nowa wiedza</string>
+    <string name="settings__foreground_category__title">W aplikacji</string>
     <string name="settings__installer_category__title">Instalator</string>
     <string name="settings__theme_battery_saver">Ciemny kiedy oszczędzanie baterii jest włączone</string>
     <string name="settings__theme_dark">Ciemny</string>
@@ -169,7 +169,7 @@
     <string name="update_interval__12h">12 godzin</string>
     <string name="update_interval__15min">15 minut</string>
     <string name="update_interval__18h">18 godzin</string>
-    <string name="update_interval__1d">1 day</string>
+    <string name="update_interval__1d">1 dzień</string>
     <string name="update_interval__1h">1 godzina</string>
     <string name="update_interval__1m">1 miesiąc</string>
     <string name="update_interval__1w">1 tydzień</string>
@@ -275,7 +275,7 @@
     <string name="iceraven__warning">- Ten deweloper nie daje żadnych gwarancji bezpieczeństwa, aktualizacji, ani nawet stabilności.
 \n- Ten projekt wydaje aktualizacje zabezpieczeń wolniej niż zwykle.</string>
     <string name="kiwi__title">Kiwi Next</string>
-    <string name="kiwi__description">Przeglądarka Kiwi jest stworzony do przeglądania internetu, czytania wiadomości, oglądania filmów i słuchania muzyki, bez zbędnych irytacji.</string>
+    <string name="kiwi__description">Przeglądarka Kiwi jest stworzona do przeglądania internetu, czytania wiadomości, oglądania filmów i słuchania muzyki, bez zbędnych irytacji.</string>
     <string name="intent_installer__likely_storage_failure">Operacja prawdopodobnie nie powiodła się z powodu problemów z pamięcią masową. Na przykład w urządzeniu może brakować miejsca lub nośniki zewnętrzne mogą być niedostępne. Użytkownik może pomóc w zwolnieniu miejsca lub włożeniu innego nośnika zewnętrznego.</string>
     <string name="settings__installer__native__summary">Alternatywa, jeśli instalator sesji nie działa na twoim smartfonie. Częściej zdarza się to w przypadku urządzeń od Samsunga lub Xiaomi.</string>
     <string name="crash_report__explain_text__download_activity_download_file">Ten błąd wystąpił podczas pobierania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab. Nie zapomnij dodać swojego raportu awaryjnego ze schowka i opisu, jak odtworzyć ten błąd.</string>
