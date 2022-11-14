@@ -1,1 +1,1 @@
-Program aktualizujący dla przeglądarek chroniących prywatność
+Aktualizator dla przeglądarek chroniących prywatność
