@@ -1,0 +1,7 @@
+* Podziękowania za wkład w Weblate dla: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Jeśli aktualizacja w tle nie powiedzie się (z powodu braku interakcji użytkownika), pokaż powiadomienie
+  "aktualizacja jest dostępna"
+* Naprawiono awarię podczas sprawdzania aktualizacji Mull (z F-Droid)
+* Dodano Fennec z F-Droid
+* Dodano Mull

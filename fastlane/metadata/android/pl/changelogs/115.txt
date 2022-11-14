@@ -1,3 +1,3 @@
-* Podziękowania za wkład w Weblate od: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
+* Podziękowania za wkład w Weblate dla: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
   Motuz, Giovanni Donisi i Oğuz Ersen
 * Naprawiono błąd aktualizacji Kiwi: Ignoruj wydania GitHub bez plików APK

@@ -1,0 +1,6 @@
+John doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem i Eduardo Malaspina
+* Dodaj Chromium, Orbot, Tor,
+* Poprawić UI dla dodawania nowych aplikacji
+* Domyślnie nie ufaj certyfikatom użytkownika (można to wyłączyć)
+* Naprawiono błędy.
+* Czyszczenie i refaktoryzacja kodu
