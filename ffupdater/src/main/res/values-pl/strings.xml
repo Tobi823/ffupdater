@@ -300,4 +300,5 @@
 \n- Kiwi nie jest idealną przeglądarką do ochrony prywatności, ale ma dobre wsparcie dla dodatków.
 \n- Przeglądarka otrzymuje pieniądze od wyszukiwarek za każde wyszukiwanie wykonane przy użyciu Kiwi. W zależności od wyboru wyszukiwarki, zapytania mogą przechodzić przez serwery Kiwibrowser / Kiwisearchservices.
 \n- Google Ads w Kiwi może używać danych o lokalizacji do reklam - ale można to wyłączyć, wyłączając funkcję Discovery. Ale to się wkrótce zmieni. Zobacz https://privacy.kiwibrowser.org/, aby uzyskać więcej szczegółów.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Następujące aplikacje mają różne odciski palców certyfikatów i będą ignorowane przez FFUpdater: %s. Możesz to naprawić, odinstalowując, a następnie instalując je za pomocą FFUpdater.</string>
 </resources>
