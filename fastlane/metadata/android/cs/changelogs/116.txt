@@ -1,0 +1,3 @@
+* Poděkování za příspěvky na Weblate patří: Jacek, nautilusx, 109247019824, gallegonovato, Juraj Motuz, Oğuz
+  Ersen a atilluF
+* Opravena kontrola aktualizací Kiwi

@@ -1,0 +1,6 @@
+* Mull (verze F-Droid) již není podporován. Přejděte prosím na Mull (verze divestos.org) instalací pomocí FFUpdater nebo použijte F-Droid k aktualizaci Mull (verze F-Droid).
+* Opravena podpora aplikací s různými otisky certifikátů.
+* Opravena chyba v aktualizaci Mulch pro zařízení arm32.
+* Opravena chyba v aktualizaci FennecFdroid.kt pro zařízení arm32.
+* Přidání unit testů
+* Úklid
