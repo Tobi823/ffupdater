@@ -78,7 +78,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     override suspend fun doWork(): Result = coroutineScope {
         try {
             Log.i(LOG_TAG, "Execute background job for update check.")
-            checkDownloadAndInstallApps()
+            internalDoWork()
         } catch (e: CancellationException) {
             val message = "Background job because of an CancellationException."
             handleRecoverableError(message, RecoverableBackgroundException(e))
@@ -106,7 +106,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     @MainThread
-    private suspend fun checkDownloadAndInstallApps(): Result {
+    private suspend fun internalDoWork(): Result {
         val outdatedApps = checkForUpdates()
         if (outdatedApps.hasFailure()) {
             return outdatedApps.failure

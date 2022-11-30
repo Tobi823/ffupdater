@@ -1,0 +1,8 @@
+[user]
+	name=Tobi823
+    signingkey=CE72BFF6A293A85762D4901E426C5FB1C7840C5F
+    email=ffupdater@mailbox.org
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true

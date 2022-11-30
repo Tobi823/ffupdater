@@ -68,6 +68,13 @@ class DownloadActivity : AppCompatActivity() {
         var app: App? = null
         var fileDownloader: FileDownloader? = null
         var appAppUpdateStatus: AppUpdateStatus? = null
+
+        fun isEmpty() = (app == null)
+        fun clear() {
+            app = null
+            fileDownloader = null
+            appAppUpdateStatus = null
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,7 +88,7 @@ class DownloadActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
-        if (viewModel.app == null) {
+        if (viewModel.isEmpty()) {
             val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
             if (appFromExtras == null) {
                 // InstallActivity was unintentionally started again after finishing the download
@@ -344,6 +351,22 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     @MainThread
+    private fun showThatAppIsInstalled(certificateHash: String) {
+        hide(R.id.installingApplication)
+        show(R.id.installerSuccess)
+        show(R.id.fingerprintInstalledGood)
+        setText(R.id.fingerprintInstalledGoodHash, certificateHash)
+        viewModel.app!!.impl.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
+        if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
+            appCache.delete(this)
+        } else {
+            show(R.id.install_activity__delete_cache)
+            show(R.id.install_activity__open_cache_folder)
+        }
+        cleanupUi()
+    }
+
+    @MainThread
     private fun showThatAppInstallationFailed(errorMessage: String, exception: Exception) {
         hide(R.id.installingApplication)
         show(R.id.install_activity__exception)
@@ -371,31 +394,14 @@ class DownloadActivity : AppCompatActivity() {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }
-
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-    }
-
-    @MainThread
-    private fun showThatAppIsInstalled(certificateHash: String) {
-        hide(R.id.installingApplication)
-        show(R.id.installerSuccess)
-        show(R.id.fingerprintInstalledGood)
-        setText(R.id.fingerprintInstalledGoodHash, certificateHash)
-        viewModel.app!!.impl.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
-        if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
-            appCache.delete(this)
-        } else {
-            show(R.id.install_activity__delete_cache)
-            show(R.id.install_activity__open_cache_folder)
-        }
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        cleanupUi()
     }
 
     @MainThread
     private fun showThatExternalStorageIsNotAccessible() {
         show(R.id.externalStorageNotAccessible)
         setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        cleanupUi()
     }
 
     @MainThread
@@ -410,7 +416,7 @@ class DownloadActivity : AppCompatActivity() {
             startActivity(intent)
         }
         appCache.delete(this)
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        cleanupUi()
     }
 
     @MainThread
@@ -427,7 +433,13 @@ class DownloadActivity : AppCompatActivity() {
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
+        cleanupUi()
+    }
+
+    @MainThread
+    private fun cleanupUi() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        viewModel.clear()
     }
 
     companion object {
