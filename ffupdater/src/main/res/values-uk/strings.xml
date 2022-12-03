@@ -7,7 +7,7 @@
     <string name="app_warning_before_installation_dialog__title">Увага</string>
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
     <string name="application_successfully_installed">Програма успішно встановлена</string>
-    <string name="available_version">в наявності: %1$s</string>
+    <string name="available_version">У наявності: %1$s</string>
     <string name="available_version_error">"<u>ПОМИЛКА</u>"</string>
     <string name="notification__error__text">Повідомте про цю помилку. Натисніть, щоб переглянути звіт про помилку.</string>
     <string name="notification__error__title">Не вдалося перевірити фонове оновлення</string>
@@ -186,4 +186,59 @@
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi є лише частково відкритим кодом.
 \n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
+    <string name="app_card__app_warning_button_description">Показати попередження про цей застосунок</string>
+    <string name="iceraven__warning">- Супроводжувач не дає жодних гарантій чи гарантій безпеки, оновлень чи навіть стабільності.
+\n - Проект потребує більше часу, ніж зазвичай, для надання оновлень безпеки.</string>
+    <string name="app_warning_dialog__title">Увага</string>
+    <string name="notification__download_error__channel_name">Сповіщення про помилки завантаження у фоновому режимі</string>
+    <string name="notification__download_error__title">Не вдалося завантажити оновлення у фоновому режимі</string>
+    <string name="notification__download_running__text">%1$s (%2$s)</string>
+    <string name="notification__eol_apps__channel_description">Канал сповіщень про застарілі програми.</string>
+    <string name="notification__eol_apps__title">Встановлено застарілі застосунки</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s має наступну проблему:
+\n
+\n%2$s
+\n
+\nВи все ще хочете встановити %1$s\?</item>
+        <item quantity="few">%1$s має наступні проблеми:
+\n
+\n%2$s
+\n
+\nВи все ще хочете встановити %1$s\?</item>
+        <item quantity="many">%1$s має наступні проблеми:
+\n
+\n%2$s
+\n
+\nВи все ще хочете встановити %1$s\?</item>
+        <item quantity="other">%1$s має наступні проблеми:
+\n
+\n%2$s
+\n
+\nВи все ще хочете встановити %1$s\?</item>
+    </plurals>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">%1$s має наступну проблему:
+\n
+\n%2$s</item>
+        <item quantity="few">%1$s має наступні проблеми:
+\n
+\n%2$s</item>
+        <item quantity="many">%1$s має наступні проблеми:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s має наступні проблеми:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="notification__download_error__channel_descr">Відображається, коли завантаження оновлень у фоновому режимі не вдається.</string>
+    <string name="notification__download_error__descr">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, не соромтеся повідомити про неї на notabug.org, GitHub або GitLab.</string>
+    <string name="notification__download_error__text">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, натисніть тут, щоб переглянути звіт про помилку.</string>
+    <string name="generic_eol_reason__browser_to_old">Цей браузер давно не оновлювався, тому рекомендую тимчасово використовувати інший браузер. Коли розробники випустять нове оновлення, я приберу це попередження.</string>
+    <string name="notification__eol_apps__text">У вас є застарілі програми, якими більше не слід користуватися. Натисніть для отримання додаткової інформації.</string>
+    <string name="notification__eol_apps__channel_name">Сповіщення про застарілі застосунки</string>
+    <string name="download_activity__different_installer_info__text">Якщо встановлення часто зазнає помилок, спробуйте переключитися на \"рідний інсталятор\" у налаштуваннях.</string>
+    <string name="download_activity__file_uri_exposed_toast">Неможливо відкрити шлях до файлу іншим програмам. Будь ласка, відкрийте теку самостійно за допомогою вашого улюбленого файлового менеджера.</string>
+    <string name="crash_report__explain_text__download_activity_download_file">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час інсталяції. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
 </resources>
