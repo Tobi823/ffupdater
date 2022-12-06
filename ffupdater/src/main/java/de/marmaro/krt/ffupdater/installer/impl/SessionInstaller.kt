@@ -63,8 +63,7 @@ class SessionInstaller(
             fail(getShortErrorMessage(STATUS_FAILURE_STORAGE), e, STATUS_FAILURE_STORAGE, errorMessage)
             return
         }
-        installer.registerSessionCallback(fallbackAppInstallationResultListener)
-        installer.openSession(id).use {
+        installer.openSession(sessionId).use {
             copyApkToSession(it)
             val intentSender = createSessionChangeReceiver(context, sessionId)
             it.commit(intentSender)
@@ -161,27 +160,6 @@ class SessionInstaller(
         return when (val statusMessage = bundle?.getString(EXTRA_STATUS_MESSAGE)) {
             null -> errorMessage
             else -> "$errorMessage Debug message: $statusMessage"
-        }
-    }
-
-    private val fallbackAppInstallationResultListener = object : SessionCallback() {
-        private val abortedErrorMessage = context.getString(session_installer__status_failure_aborted)
-
-        override fun onCreated(sessionId: Int) {}
-        override fun onBadgingChanged(sessionId: Int) {}
-        override fun onActiveChanged(sessionId: Int, active: Boolean) {}
-        override fun onProgressChanged(sessionId: Int, progress: Float) {}
-        override fun onFinished(sessionId: Int, success: Boolean) {
-            // this should be called after handleAppInstallationResult() and it is only a fallback
-            // if PackageInstaller fail to call handleAppInstallationResult()
-            // one installationStatus has been completed, its value can not be changed
-            if (!success) {
-                fail(
-                    "The installation failed because it was actively aborted.",
-                    STATUS_FAILURE_ABORTED,
-                    abortedErrorMessage
-                )
-            }
         }
     }
 
