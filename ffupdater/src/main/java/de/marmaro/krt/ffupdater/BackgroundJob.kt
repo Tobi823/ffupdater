@@ -32,7 +32,6 @@ import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import de.marmaro.krt.ffupdater.storage.AppCache
 import de.marmaro.krt.ffupdater.storage.StorageUtil
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
@@ -80,29 +79,17 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         try {
             Log.i(LOG_TAG, "Execute background job for update check.")
             internalDoWork()
-        } catch (e: CancellationException) {
-            val message = "Background job because of an CancellationException."
-            handleRecoverableError(message, RecoverableBackgroundException(e))
-        } catch (e: NetworkException) {
-            val message = "Background job because of an NetworkException."
-            handleRecoverableError(message, RecoverableBackgroundException(e))
         } catch (e: Exception) {
-            val wrappedException = UnrecoverableBackgroundException(e)
-            Log.e(LOG_TAG, "Background job failed due to an unexpected exception", wrappedException)
-            notification.showError(context, wrappedException)
-            Result.success() // BackgroundJob should not be removed from WorkManager schedule
-        }
-    }
-
-    private fun handleRecoverableError(m: String, e: Exception): Result {
-        return if (runAttemptCount < MAX_RETRIES) {
-            Log.w(LOG_TAG, m, e)
-            Log.i(LOG_TAG, "Restart background job in ${calculateBackoffTime(runAttemptCount)}")
-            Result.retry()
-        } else {
-            Log.e(LOG_TAG, m, e)
-            notification.showLongTimeNoBackgroundUpdateCheck(context, e)
-            Result.success() // BackgroundJob should not be removed from WorkManager schedule
+            if (runAttemptCount < MAX_RETRIES) {
+                Log.w(LOG_TAG, "Background job failed.", RecoverableBackgroundException(e))
+                Log.i(LOG_TAG, "Restart background job in ${calculateBackoffTime(runAttemptCount)}")
+                Result.retry()
+            } else {
+                val wrappedException = UnrecoverableBackgroundException(e)
+                Log.e(LOG_TAG, "Background job failed.", wrappedException)
+                notification.showError(context, wrappedException)
+                Result.success() // BackgroundJob should not be removed from WorkManager schedule
+            }
         }
     }
 
@@ -270,7 +257,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     companion object {
         private const val WORK_MANAGER_KEY = "update_checker"
         private const val LOG_TAG = "BackgroundJob"
-        private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofDays(5))
+        private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofHours(8))
 
         /**
          * Should be called when the user minimize the app to make sure that the background update check
