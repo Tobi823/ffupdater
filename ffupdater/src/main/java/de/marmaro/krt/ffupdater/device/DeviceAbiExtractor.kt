@@ -17,6 +17,10 @@ class DeviceAbiExtractor {
         }
     }
 
+    fun supportsOneOf(abisSupportedByApp: List<ABI>): Boolean {
+        return supportedAbis.any { it in abisSupportedByApp }
+    }
+
     companion object {
         val INSTANCE = DeviceAbiExtractor()
     }

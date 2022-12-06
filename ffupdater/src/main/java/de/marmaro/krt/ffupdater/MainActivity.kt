@@ -29,6 +29,7 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
 import de.marmaro.krt.ffupdater.network.FileDownloader
@@ -218,6 +219,7 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private suspend fun checkForUpdates(useCache: Boolean = true) {
         val apps = App.values()
+            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {

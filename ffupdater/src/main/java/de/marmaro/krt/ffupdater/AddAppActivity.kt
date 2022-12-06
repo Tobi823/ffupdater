@@ -19,6 +19,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.*
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.NOT_INSTALLED
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.AppWarningDialog
@@ -66,6 +67,7 @@ class AddAppActivity : AppCompatActivity() {
     private fun addAppsToUserInterface() {
         val installedApps = App.values()
             .filter { it.impl.installableByUser }
+            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { it.impl.isInstalled(this) == NOT_INSTALLED }
             .sortedBy { getString(it.impl.title) }
 

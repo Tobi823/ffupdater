@@ -15,6 +15,7 @@ import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.background.AppsOrResult
 import de.marmaro.krt.ffupdater.background.RecoverableBackgroundException
 import de.marmaro.krt.ffupdater.background.UnrecoverableBackgroundException
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.ROOT_INSTALLER
@@ -139,6 +140,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
         App.values()
             .filter { app -> app !in backgroundSettings.excludedAppsFromUpdateCheck }
+            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { app -> app.impl.isInstalled(context) == InstallationStatus.INSTALLED }
             .filter { app ->
                 val updateResult = app.impl.checkForUpdateWithoutLoadingFromCacheAsync(context).await()
