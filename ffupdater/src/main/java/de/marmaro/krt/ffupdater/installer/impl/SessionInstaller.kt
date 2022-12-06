@@ -56,22 +56,17 @@ class SessionInstaller(
     private fun install(context: Context) {
         val params = createSessionParams(context)
         val installer = context.packageManager.packageInstaller
-        val id = try {
+        val sessionId = try {
             installer.createSession(params)
         } catch (e: IOException) {
             val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
-            fail(
-                "The installation failed because not enough storage is available.",
-                e,
-                STATUS_FAILURE_STORAGE,
-                errorMessage
-            )
+            fail(getShortErrorMessage(STATUS_FAILURE_STORAGE), e, STATUS_FAILURE_STORAGE, errorMessage)
             return
         }
         installer.registerSessionCallback(fallbackAppInstallationResultListener)
         installer.openSession(id).use {
             copyApkToSession(it)
-            val intentSender = createSessionChangeReceiver(context, id)
+            val intentSender = createSessionChangeReceiver(context, sessionId)
             it.commit(intentSender)
         }
     }
@@ -135,8 +130,8 @@ class SessionInstaller(
         }
     }
 
-    private fun getShortErrorMessage(status: Int, bundle: Bundle): String {
-        return when (status) {
+    private fun getShortErrorMessage(status: Int, bundle: Bundle? = null): String {
+        val errorMessage = when (status) {
             STATUS_FAILURE -> "The installation failed in a generic way."
             STATUS_FAILURE_ABORTED -> "The installation failed because it was actively aborted."
             STATUS_FAILURE_BLOCKED -> "The installation failed because it was blocked."
@@ -144,12 +139,16 @@ class SessionInstaller(
             STATUS_FAILURE_INCOMPATIBLE -> "The installation failed because it is fundamentally incompatible with this device."
             STATUS_FAILURE_INVALID -> "The installation failed because one or more of the APKs was invalid."
             STATUS_FAILURE_STORAGE -> "The installation failed because of storage issues."
-            else -> "The installation failed. ($status) ${bundle.getString(EXTRA_STATUS_MESSAGE)}"
+            else -> "The installation failed. Status: $status."
+        }
+        return when (val statusMessage = bundle?.getString(EXTRA_STATUS_MESSAGE)) {
+            null -> errorMessage
+            else -> "$errorMessage Debug message: $statusMessage"
         }
     }
 
-    private fun getTranslatedErrorMessage(c: Context, status: Int, bundle: Bundle): String {
-        return when (status) {
+    private fun getTranslatedErrorMessage(c: Context, status: Int, bundle: Bundle? = null): String {
+        val errorMessage = when (status) {
             STATUS_FAILURE -> c.getString(R.string.session_installer__status_failure)
             STATUS_FAILURE_ABORTED -> c.getString(session_installer__status_failure_aborted)
             STATUS_FAILURE_BLOCKED -> c.getString(R.string.session_installer__status_failure_blocked)
@@ -157,7 +156,11 @@ class SessionInstaller(
             STATUS_FAILURE_INCOMPATIBLE -> c.getString(R.string.session_installer__status_failure_incompatible)
             STATUS_FAILURE_INVALID -> c.getString(R.string.session_installer__status_failure_invalid)
             STATUS_FAILURE_STORAGE -> c.getString(R.string.session_installer__status_failure_storage)
-            else -> "($status) ${bundle.getString(EXTRA_STATUS_MESSAGE)}"
+            else -> "The installation failed. Status: $status."
+        }
+        return when (val statusMessage = bundle?.getString(EXTRA_STATUS_MESSAGE)) {
+            null -> errorMessage
+            else -> "$errorMessage Debug message: $statusMessage"
         }
     }
 
