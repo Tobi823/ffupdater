@@ -1,0 +1,3 @@
+* Merci à la contribution du projet Weblate de : Oğuz Ersen et 109247019824
+* Restaurer par Iceraven
+* Reactualisation de l'interface utilisateur pour permettre le téléchargement d'applications: EOL

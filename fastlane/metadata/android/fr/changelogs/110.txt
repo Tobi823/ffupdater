@@ -1,3 +1,5 @@
-* Merci aux contributeurs de Weblate : TODO
+* Merci aux contributeurs de Weblate : WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS and Hin
+  Weisner, Yolateng0 
 * Améliorer le texte de la notification lorsque la vérification de la mise à jour en arrière-plan échoue pendant cinq jours d'affilée (ancienne valeur : deux jours, mais trop peu pour certains utilisateurs).
-  jours, mais était trop faible pour certains utilisateurs).
+  2 jours, mais était trop rapide pour certains utilisateurs).
+* Améliorer le rapport d'incident et l'horodatage de la dernière vérification réussie de la mise à jour de l'arrière-plan.
