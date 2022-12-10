@@ -15,4 +15,68 @@
     <string name="brave__warning">- A Brave a Google Chrome technikai alapjait használja, és így közvetve támogatja a Chromium renderelőmotor monopolhelyzetét.
 \n- Az Ethereum blokkláncon lévő Basic Attention Token BAT-jának köszönhetően a projekt kötődik a kriptopénzekhez. A blokkláncok számos problémával járnak, és véleményem szerint kerülendőek.</string>
     <string name="main_activity__available_version_loading">Betöltés…</string>
+    <string name="brave_beta__description">Üdvözöljük a Brave Beta androidos verziójában!
+\nPróbálja ki a legújabb funkciókat és küldjön visszajelzést: https://brave.com/msupport
+\nA Brave Beta-t a Brave jelenlegi verziója mellé is telepítheti.</string>
+    <string name="brave_nightly__description">Üdvözöljük a Brave Nightly (fejlesztői) androidos változatában!
+\nPróbálja ki a legújabb funkciókat és küldjön visszajelzést: https://brave.com/msupport
+\nA Brave Nightly-t a Brave jelenlegi verziója mellé telepítheti.</string>
+    <string name="bromite_systemwebview__description">A SystemWebView csomag tartalmazza a Bromite alapvető böngésző/megjelenítő motorját és ugyanazokat a funkciókat. Lehetőséget kínál az alapértelmezett böngésző komponens helyettesítésére az egész Android rendszerben.</string>
+    <string name="device_too_old_dialog__message">Az alkalmazáshoz Android %1$s szükséges. De az Ön készülékén csak Android %2$s fut. Válasszon másik alkalmazást, vagy frissítse az operációs rendszerét, vagy váltson újabb okostelefonra.</string>
+    <string name="app_card__download_the_app">az alkalmazás letöltése</string>
+    <string name="app_card__app_warning_button_description">Figyelmeztetések megjelenítése erről az alkalmazásról</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s a következő problémával küzd:
+\n
+\n%2$s
+\n
+\nMég mindig szeretné telepíteni a %1$s-t\?</item>
+        <item quantity="other">%1$s a következő problémákkal küzd:
+\n
+\n%2$s
+\n
+\nMég mindig szeretné telepíteni a %1$s-t\?</item>
+    </plurals>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">%1$s a következő problémával küzd:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s a következő problémákkal küzd:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="app_warning_before_installation_dialog__title">Figyelmeztetés</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Összeomlási jelentés másolása a vágólapra</string>
+    <string name="device_too_old_dialog__title">A készülék túl régi</string>
+    <string name="dialog_button__do_not_install">Nem, ne telepítse</string>
+    <string name="crash_report__go_to_github">GitHub megnyitása</string>
+    <string name="crash_report__go_to_gitlab">GitLab megnyitása</string>
+    <string name="crash_report__got_to_notabug_org">notabug.org megnyitása</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Sajnos az FFUpdater legutóbb összeomlott, és ezt a hibát naplózta. Kérjük, küldje el az összeomlásról szóló jelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
+    <string name="notification__download_error__channel_descr">Megjelenik, ha a frissítés letöltése a háttérben sikertelen.</string>
+    <string name="notification__download_error__channel_name">Értesítés a letöltési hibákról a háttérben</string>
+    <string name="notification__download_error__descr">A %1$s frissítés háttérben történő letöltése sikertelen volt. Ha ez a hiba gyakran előfordul, nyugodtan jelentse a notabug.org, a GitHub vagy a GitLab oldalon.</string>
+    <string name="notification__download_error__text">A %1$s frissítés háttérben történő letöltése sikertelen volt. Ha ez a hiba gyakran előfordul, kattintson ide a hibajelentés megtekintéséhez.</string>
+    <string name="notification__download_error__title">A frissítés háttérben történő letöltése sikertelen</string>
+    <string name="notification__download_running__channel_descr">Megjeleníti, amikor az alkalmazás frissítései a háttérben letöltődnek.</string>
+    <string name="notification__download_running__channel_name">Értesítés a letöltésekről a háttérben</string>
+    <string name="notification__download_running__text">%1$s (%2$s)</string>
+    <string name="notification__download_running__title">Alkalmazás frissítések letöltése</string>
+    <string name="notification__eol_apps__channel_description">Értesítési csatorna az elavult alkalmazásokra vonatkozó figyelmeztetésekhez.</string>
+    <string name="notification__eol_apps__channel_name">Elavult alkalmazások értesítése</string>
+    <string name="notification__eol_apps__text">Vannak elavult alkalmazásai, amelyeket már nem szabad használni. Kattintson ide további információkért.</string>
+    <string name="notification__eol_apps__title">Elavult alkalmazások telepítése</string>
+    <string name="notification__error__channel_descr">A háttérben futó frissítésellenőrző hibáinak megjelenítése</string>
+    <string name="brave_beta__title">Brave Böngésző (Béta)</string>
+    <string name="brave_nightly__title">Brave Böngésző (Nightly)</string>
+    <string name="bromite__description">A Bromite célja, hogy a böngészés élményét a magánéletet sértő funkciók nélkül, valamint egy gyors reklámblokkoló motorral kiegészítve biztosítsa. Minimális UI-változtatásokat alkalmaznak, hogy segítsenek megfékezni a böngésző reklámplatformként való elképzelését.</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="bromite__warning">- A Bromite a Google Chrome technikai alapjait használja, és így közvetve támogatja a Chromium renderelőmotor monopolhelyzetét.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="dialog_button__yes">Igen</string>
+    <string name="app_warning_dialog__title">Figyelmeztetés</string>
+    <string name="crash_report__explain_text__download_activity_download_file">A letöltés során a következő hiba lépett fel. Ha ez a hiba gyakran előfordul, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">Ez a hiba a letöltési metaadatok lekérdezésekor lépett fel. Ha ez a hiba gyakran fordul elő, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Ez a hiba a telepítés során lépett fel. Ha ez a hiba gyakran előfordul, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">Ez a hiba a fő nézetben a frissítések ellenőrzése során jelentkezett. Ha ez a hiba gyakran fordul elő, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
 </resources>
