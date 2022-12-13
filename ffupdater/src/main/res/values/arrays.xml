@@ -53,4 +53,24 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+
+    <string-array name="network__dns_provider__entries">
+        <item>Use system DNS</item>
+        <item>DNS over HTTPS: Digital Society Switzerland</item>
+        <item>DNS over HTTPS: Quad9</item>
+        <item>DNS over HTTPS: Cloudflare</item>
+        <item>DNS over HTTPS: Google</item>
+        <item>Custom DNS over HTTPS server</item>
+        <item>No DNS (just for testing)</item>
+    </string-array>
+
+    <string-array name="network__dns_provider__values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>

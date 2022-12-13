@@ -165,6 +165,27 @@
             app:summary="@string/settings__network__trust_user_cas__summary"
             app:title="@string/settings__network__trust_user_cas__title" />
 
+        <ListPreference
+            app:defaultValue="0"
+            app:entries="@array/network__dns_provider__entries"
+            app:entryValues="@array/network__dns_provider__values"
+            app:key="network__dns_provider"
+            app:singleLineTitle="false"
+            app:title="DNS settings"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="network__custom_doh_server"
+            app:singleLineTitle="false"
+            app:summary="Enter the details to connect to a custom DoH server. Format: url,ip1,... Example: https://dns.google/dns-query,8.8.8.8 or https://dns.quad9.net/dns-query,2620:fe::fe,2620:fe::9"
+            app:title="Custom DNS over HTTPS server" />
+
+        <EditTextPreference
+            app:key="network__proxy"
+            app:singleLineTitle="false"
+            app:summary="If you want to use a SOCKS or HTTP proxy, enter the connection details here. Leave it empty if you want to use the system proxy configuration. Format: SOCKS/HTTP:ip:port Example: SOCKS:1.2.3.4:22 or HTTP:5.6.7.8:80"
+            app:title="Proxy" />
+
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
 </PreferenceScreen>

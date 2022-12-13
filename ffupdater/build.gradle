@@ -44,6 +44,8 @@ dependencies {
 
     // for file downloader
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:okhttp-dnsoverhttps:4.10.0'
+
     implementation 'ru.gildor.coroutines:kotlin-coroutines-okhttp:1.0'
 
     // for root installer

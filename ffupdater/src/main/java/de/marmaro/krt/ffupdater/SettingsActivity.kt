@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.ListPreference
-import androidx.preference.MultiSelectListPreference
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreferenceCompat
+import androidx.preference.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -51,8 +48,9 @@ class SettingsActivity : AppCompatActivity() {
 
     class SettingsFragment : PreferenceFragmentCompat() {
         private fun findSwitchPref(key: String) = findPreference<SwitchPreferenceCompat>(key)
-        private fun findListPref(key: String) = findPreference<ListPreference>(key)
+        private fun findListPref(key: String) = findPreference<ListPreference>(key)!!
         private fun findMultiPref(key: String) = findPreference<MultiSelectListPreference>(key)
+        private fun findTextPref(key: String) = findPreference<EditTextPreference>(key)!!
 
         private fun changeBackgroundUpdateCheck(
             enabled: Boolean?,
@@ -78,7 +76,7 @@ class SettingsActivity : AppCompatActivity() {
                 findSwitchPref("background__update_check__when_device_idle")?.isEnabled = false
             }
 
-            findListPref("foreground__theme_preference")?.setOnPreferenceChangeListener { _, newValue ->
+            findListPref("foreground__theme_preference").setOnPreferenceChangeListener { _, newValue ->
                 AppCompatDelegate.setDefaultNightMode((newValue as String).toInt())
                 true
             }
@@ -87,7 +85,7 @@ class SettingsActivity : AppCompatActivity() {
                 changeBackgroundUpdateCheck(newValue as Boolean, null, null)
             }
 
-            findListPref("background__update_check__interval")?.setOnPreferenceChangeListener { _, newValue ->
+            findListPref("background__update_check__interval").setOnPreferenceChangeListener { _, newValue ->
                 changeBackgroundUpdateCheck(null, Duration.ofMinutes((newValue as String).toLong()), null)
             }
 
@@ -111,6 +109,13 @@ class SettingsActivity : AppCompatActivity() {
             }
             findSwitchPref("installer__root")?.setOnPreferenceChangeListener { _, newValue ->
                 disableOtherInstallMethods(null, null, newValue as Boolean)
+            }
+
+            findTextPref("network__custom_doh_server").isVisible =
+                findListPref("network__dns_provider").value == "5"
+            findListPref("network__dns_provider").setOnPreferenceChangeListener { _, newValue ->
+                findTextPref("network__custom_doh_server").isVisible = (newValue == "5")
+                true
             }
         }
 

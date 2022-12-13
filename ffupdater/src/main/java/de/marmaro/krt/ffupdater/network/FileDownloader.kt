@@ -17,16 +17,11 @@ import okio.buffer
 import ru.gildor.coroutines.okhttp.await
 import java.io.File
 import java.io.IOException
-import java.security.KeyStore
-import java.security.SecureRandom
 import java.util.concurrent.atomic.AtomicInteger
-import javax.net.ssl.KeyManagerFactory
-import javax.net.ssl.SSLContext
-import javax.net.ssl.TrustManagerFactory
-import javax.net.ssl.X509TrustManager
 import kotlin.reflect.KMutableProperty0
 
-class FileDownloader(networkSettingsHelper: NetworkSettingsHelper) {
+
+class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
     private val trafficStatsThreadId = 10001
 
     var onProgress: (progressInPercent: Int?, totalMB: Long) -> Unit = @WorkerThread { _, _ -> }
@@ -34,7 +29,8 @@ class FileDownloader(networkSettingsHelper: NetworkSettingsHelper) {
     // fallback to wait for the download when the activity was recreated
     var currentDownload: Deferred<Any>? = null
 
-    private val onlyTrustSystemCAs = !networkSettingsHelper.areUserCAsTrusted
+    // It is safe to reuse the OkHttpClient -> Don't recreate it every callUrl() execution
+    private val okHttpClient = createClient()
 
     @MainThread
     @Throws(NetworkException::class)
@@ -85,58 +81,35 @@ class FileDownloader(networkSettingsHelper: NetworkSettingsHelper) {
     private suspend fun callUrl(url: String): Response {
         require(url.startsWith("https://"))
         TrafficStats.setThreadStatsTag(trafficStatsThreadId)
-        val client = if (onlyTrustSystemCAs) {
-            createClientTrustingOnlySystemCAs()
-        } else {
-            createClientAcceptingSystemAndUserCAs()
-        }
         val request = Request.Builder()
             .url(url)
             .build()
-        return client.newCall(request)
-            .await()
+        val call = okHttpClient.newCall(request)
+        return call.await()
     }
 
-    private fun createClientTrustingOnlySystemCAs(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addNetworkInterceptor { chain: Interceptor.Chain ->
-                val original = chain.proceed(chain.request())
-                val body = requireNotNull(original.body)
-                original.newBuilder()
-                    .body(ProgressResponseBody(body, this::onProgress))
-                    .build()
-            }
-            .build()
-    }
+    private fun createClient(): OkHttpClient {
+        val builder = OkHttpClient.Builder()
 
-    private fun createClientAcceptingSystemAndUserCAs(): OkHttpClient {
-        // https://developer.android.com/reference/java/security/KeyStore
-        val systemAndUserCAStore = KeyStore.getInstance("AndroidCAStore")
-        systemAndUserCAStore.load(null)
+        builder.addNetworkInterceptor { chain: Interceptor.Chain ->
+            val original = chain.proceed(chain.request())
+            val body = requireNotNull(original.body)
+            original.newBuilder()
+                .body(ProgressResponseBody(body, this::onProgress))
+                .build()
+        }
 
-        // https://stackoverflow.com/a/24401795
-        // https://github.com/bitfireAT/davx5-ose/blob/0e93a47d6d7277d3a18e31c6528f578c467a56ea/app/src/main/java/at/bitfire/davdroid/HttpClient.kt
-        val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
-        trustManagerFactory.init(systemAndUserCAStore)
+        networkSettingsHelper.createSslSocketFactory()?.let {
+            builder.sslSocketFactory(it.first, it.second)
+        }
+        networkSettingsHelper.createDnsConfiguration()?.let {
+            builder.dns(it)
+        }
+        networkSettingsHelper.createProxyConfiguration()?.let {
+            builder.proxy(it)
+        }
 
-        val keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm())
-        keyManagerFactory.init(systemAndUserCAStore, "keystore_pass".toCharArray())
-
-        val sslContext = SSLContext.getInstance("TLS")
-        sslContext.init(keyManagerFactory.keyManagers, trustManagerFactory.trustManagers, SecureRandom())
-
-        val trustManager = trustManagerFactory.trustManagers.first() as X509TrustManager
-
-        return OkHttpClient.Builder()
-            .sslSocketFactory(sslContext.socketFactory, trustManager)
-            .addNetworkInterceptor { chain: Interceptor.Chain ->
-                val original = chain.proceed(chain.request())
-                val body = requireNotNull(original.body)
-                original.newBuilder()
-                    .body(ProgressResponseBody(body, this::onProgress))
-                    .build()
-            }
-            .build()
+        return builder.build()
     }
 
     // simple communication between WorkManager and the InstallActivity to prevent duplicated downloads
