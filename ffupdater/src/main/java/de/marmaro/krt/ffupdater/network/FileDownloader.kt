@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.network
 import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
+import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import kotlinx.coroutines.Deferred
@@ -34,14 +35,16 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
 
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun downloadFileAsync(url: String, file: File): Deferred<Any> {
+    suspend fun downloadBigFileAsync(url: String, file: File): Deferred<Any> {
         return withContext(Dispatchers.IO) {
             currentDownload = async {
                 try {
                     lastChange = System.currentTimeMillis()
                     numberOfRunningDownloads.incrementAndGet()
-                    downloadFileInternal(url, file)
+                    downloadBigFileInternal(url, file)
                 } catch (e: IOException) {
+                    throw NetworkException("Download of $url failed.", e)
+                } catch (e: IllegalArgumentException) {
                     throw NetworkException("Download of $url failed.", e)
                 } catch (e: NetworkException) {
                     throw NetworkException("Download of $url failed.", e)
@@ -55,17 +58,9 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
     }
 
     @WorkerThread
-    private suspend fun downloadFileInternal(url: String, file: File) {
-        val okhttpCallResponse = callUrl(url)
-        okhttpCallResponse.use { response ->
-            TrafficStats.setThreadStatsTag(trafficStatsThreadId)
-            val body = response.body
-            if (!response.isSuccessful) {
-                throw NetworkException("Response is unsuccessful. HTTP code: '${response.code}'.")
-            }
-            if (body == null) {
-                throw NetworkException("Response is unsuccessful. Body is null.")
-            }
+    private suspend fun downloadBigFileInternal(url: String, file: File) {
+        callUrl(url).use { response ->
+            val body = validateAndReturnResponseBody(url, response)
             if (file.exists()) {
                 file.delete()
             }
@@ -76,6 +71,48 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
                 }
             }
         }
+    }
+
+    /**
+     * onProgress and currentDownload will stay null because the download is small.
+     */
+    @MainThread
+    @Throws(NetworkException::class)
+    suspend fun downloadSmallFileAsync(url: String): Deferred<String> {
+        return withContext(Dispatchers.IO) {
+            async {
+                try {
+                    downloadSmallFileInternal(url)
+                } catch (e: IOException) {
+                    throw NetworkException("Request of HTTP-API $url failed.", e)
+                } catch (e: IllegalArgumentException) {
+                    throw NetworkException("Request of HTTP-API $url failed.", e)
+                } catch (e: NetworkException) {
+                    throw NetworkException("Request of HTTP-API $url failed.", e)
+                }
+            }
+        }
+    }
+
+    @WorkerThread
+    private suspend fun downloadSmallFileInternal(url: String): String {
+        callUrl(url).use { response ->
+            val body = validateAndReturnResponseBody(url, response)
+            return body.string()
+        }
+    }
+
+    private fun validateAndReturnResponseBody(url: String, response: Response): ResponseBody {
+        if (url.startsWith(GITHUB_URL) && response.code == 403) {
+            throw ApiRateLimitExceededException(
+                "API rate limit for GitHub is exceeded.",
+                Exception("response code is ${response.code}")
+            )
+        }
+        if (!response.isSuccessful) {
+            throw NetworkException("Response is unsuccessful. HTTP code: '${response.code}'.")
+        }
+        return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
     }
 
     private suspend fun callUrl(url: String): Response {
@@ -122,6 +159,8 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
         private var lastChange = System.currentTimeMillis()
         fun areDownloadsCurrentlyRunning() = (numberOfRunningDownloads.get() != 0) &&
                 ((System.currentTimeMillis() - lastChange) < 3600_000)
+
+        const val GITHUB_URL = "https://api.github.com"
     }
 }
 

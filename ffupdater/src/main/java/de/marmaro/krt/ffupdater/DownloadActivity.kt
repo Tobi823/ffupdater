@@ -274,7 +274,7 @@ class DownloadActivity : AppCompatActivity() {
         try {
             val file = appCache.getFileForDownloader(this)
             withContext(viewModel.viewModelScope.coroutineContext) {
-                fileDownloader.downloadFileAsync(downloadUrl, file).await()
+                fileDownloader.downloadBigFileAsync(downloadUrl, file).await()
             }
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)

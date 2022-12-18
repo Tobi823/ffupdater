@@ -180,7 +180,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         val file = appCache.getApkFile(context)
         return try {
-            downloader.downloadFileAsync(availableResult.downloadUrl, file).await()
+            downloader.downloadBigFileAsync(availableResult.downloadUrl, file).await()
             notification.hideDownloadIsRunning(context, app)
             true
         } catch (e: NetworkException) {
