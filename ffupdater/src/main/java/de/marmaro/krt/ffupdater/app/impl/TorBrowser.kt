@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://www.torproject.org/download/#android
@@ -52,8 +53,9 @@ class TorBrowser(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val (version, downloadUrl) = extractVersionAndDownloadUrl(context)
-        val (date, size) = extractDateAndSize(context, version)
+        val settings = NetworkSettingsHelper(context)
+        val (version, downloadUrl) = extractVersionAndDownloadUrl(settings)
+        val (date, size) = extractDateAndSize(settings, version)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
@@ -65,9 +67,9 @@ class TorBrowser(
         )
     }
 
-    private suspend fun extractVersionAndDownloadUrl(context: Context): Pair<String, String> {
+    private suspend fun extractVersionAndDownloadUrl(settings: NetworkSettingsHelper): Pair<String, String> {
         val content = try {
-            apiConsumer.consumeAsync(MAIN_URL, String::class, context).await()
+            apiConsumer.consumeAsync(MAIN_URL, settings, String::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -92,10 +94,13 @@ class TorBrowser(
         }
     }
 
-    private suspend fun extractDateAndSize(context: Context, version: String): Pair<String, Long> {
+    private suspend fun extractDateAndSize(
+        settings: NetworkSettingsHelper,
+        version: String
+    ): Pair<String, Long> {
         val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-${getAbiString()}-multi.apk"
         val content = try {
-            apiConsumer.consumeAsync(url, String::class, context).await()
+            apiConsumer.consumeAsync(url, settings, String::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

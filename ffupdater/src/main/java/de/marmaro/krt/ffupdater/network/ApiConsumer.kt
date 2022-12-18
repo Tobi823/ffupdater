@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.network
 
-import android.content.Context
 import androidx.annotation.MainThread
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -21,10 +20,14 @@ class ApiConsumer {
 
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun <T : Any> consumeAsync(url: String, clazz: KClass<T>, context: Context): Deferred<T> {
+    suspend fun <T : Any> consumeAsync(
+        url: String,
+        settings: NetworkSettingsHelper,
+        clazz: KClass<T>
+    ): Deferred<T> {
         return withContext(Dispatchers.IO) {
             async {
-                val fileDownloader = FileDownloader(NetworkSettingsHelper(context))
+                val fileDownloader = FileDownloader(settings)
                 val stringResponse = fileDownloader.downloadSmallFileAsync(url).await()
                 if (clazz == String::class) {
                     @Suppress("UNCHECKED_CAST")

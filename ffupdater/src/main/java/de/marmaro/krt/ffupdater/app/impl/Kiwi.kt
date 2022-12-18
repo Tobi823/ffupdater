@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.io.File
 
 /**
@@ -43,6 +44,7 @@ class Kiwi(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val fileRegex = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> """com\.kiwibrowser\.browser-arm-\d+-github\.apk"""
             ABI.ARM64_V8A -> """com\.kiwibrowser\.browser-arm64-\d+-github\.apk"""
@@ -61,7 +63,7 @@ class Kiwi(
                 Regex(fileRegex).matches(asset.name)
             },
             dontUseApiForLatestRelease = true,
-                context
+            settings = settings
             )
         // tag name can be "2232087292" (the id of the build runner)
         Log.i(LOG_TAG, "found latest version ${result.tagName}")

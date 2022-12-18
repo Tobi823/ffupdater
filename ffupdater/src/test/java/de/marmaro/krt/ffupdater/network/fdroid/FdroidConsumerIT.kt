@@ -6,6 +6,7 @@ import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer.*
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -24,6 +25,9 @@ class FdroidConsumerIT {
 
     @MockK
     lateinit var context: Context
+
+    @MockK
+    lateinit var settings: NetworkSettingsHelper
 
     lateinit var sharedPreferences: SharedPreferences
 
@@ -67,7 +71,7 @@ class FdroidConsumerIT {
             }
         """.trimIndent()
         coEvery {
-            apiConsumer.consumeAsync(API_URL, AppInfo::class, context).await()
+            apiConsumer.consumeAsync(API_URL, settings, AppInfo::class).await()
         } returns Gson().fromJson(apiResponse, AppInfo::class.java)
 
         val apiResponse2 = """
@@ -78,8 +82,8 @@ class FdroidConsumerIT {
         coEvery {
             apiConsumer.consumeAsync(
                 "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2Fus.spotco.fennec_dos.yml?ref=master",
-                GitlabRepositoryFilesMetadata::class,
-                context
+                settings,
+                GitlabRepositoryFilesMetadata::class
             ).await()
         } returns Gson().fromJson(apiResponse2, GitlabRepositoryFilesMetadata::class.java)
 
@@ -91,8 +95,8 @@ class FdroidConsumerIT {
         coEvery {
             apiConsumer.consumeAsync(
                 "https://gitlab.com/api/v4/projects/36528/repository/commits/5eb1934163f60fe64757dc81effa33255ecd5808",
-                GitlabRepositoryCommits::class,
-                context
+                settings,
+                GitlabRepositoryCommits::class
             ).await()
         } returns Gson().fromJson(apiResponse3, GitlabRepositoryCommits::class.java)
     }
@@ -101,7 +105,7 @@ class FdroidConsumerIT {
     fun `get first version code and download url from api call`() {
         val fdroidConsumer = FdroidConsumer(apiConsumer)
         val result = runBlocking {
-            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", context, 1)
+            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", settings, 1)
         }
         assertEquals("101.1.1", result.versionName)
         assertEquals(21011100, result.versionCode)
@@ -112,7 +116,7 @@ class FdroidConsumerIT {
     fun `get second version code and download url from api call`() {
         val fdroidConsumer = FdroidConsumer(apiConsumer)
         val result = runBlocking {
-            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", context, 2)
+            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", settings, 2)
         }
         assertEquals("101.1.1", result.versionName)
         assertEquals(21011120, result.versionCode)

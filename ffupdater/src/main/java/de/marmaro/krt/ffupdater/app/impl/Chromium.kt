@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.io.File
 
 /**
@@ -39,8 +40,9 @@ class Chromium(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val revision = findLatestRevision(context)
-        val storageObject = findStorageObject(context, revision)
+        val settings = NetworkSettingsHelper(context)
+        val revision = findLatestRevision(settings)
+        val storageObject = findStorageObject(settings, revision)
         Log.i(LOG_TAG, "found latest version $revision")
         return LatestUpdate(
             downloadUrl = storageObject.downloadUrl,
@@ -52,9 +54,9 @@ class Chromium(
         )
     }
 
-    private suspend fun findLatestRevision(context: Context): String {
+    private suspend fun findLatestRevision(settings: NetworkSettingsHelper): String {
         val content = try {
-            apiConsumer.consumeAsync(LATEST_REVISION_URL, String::class, context).await()
+            apiConsumer.consumeAsync(LATEST_REVISION_URL, settings, String::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -62,13 +64,13 @@ class Chromium(
         return content
     }
 
-    private suspend fun findStorageObject(context: Context, revision: String): StorageObject {
+    private suspend fun findStorageObject(settings: NetworkSettingsHelper, revision: String): StorageObject {
         val url = "https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o?delimiter=/" +
                 "&prefix=Android/${revision}/chrome-android" +
                 "&fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken"
 
         val storageObjects = try {
-            apiConsumer.consumeAsync(url, StorageObjects::class, context).await()
+            apiConsumer.consumeAsync(url, settings, StorageObjects::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

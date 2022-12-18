@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/mozilla-mobile/focus-android
@@ -40,6 +41,7 @@ class FirefoxFocus(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val fileSuffix = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
             ABI.ARM64_V8A -> "arm64-v8a.apk"
@@ -61,7 +63,7 @@ class FirefoxFocus(
                         asset.name.endsWith(fileSuffix)
             },
             dontUseApiForLatestRelease = false,
-            context
+            settings = settings
         )
 
         val extractVersion = {

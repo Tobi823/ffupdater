@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/fork-maintainers/iceraven-browser
@@ -44,6 +45,7 @@ class Iceraven(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val fileSuffix = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
             ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
@@ -63,7 +65,7 @@ class Iceraven(
                 asset.name.endsWith(fileSuffix)
             },
             dontUseApiForLatestRelease = false,
-            context
+            settings = settings
         )
         val version = result.tagName.replace("iceraven-", "")
         Log.i(LOG_TAG, "found latest version $version")

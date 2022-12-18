@@ -16,6 +16,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.security.FileHashCalculator
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.io.File
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -49,6 +50,7 @@ class FirefoxNightly(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val abiString = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
             ABI.ARM64_V8A -> "arm64-v8a"
@@ -59,7 +61,7 @@ class FirefoxNightly(
         val result = consumer.updateCheck(
             task = "mobile.v2.fenix.nightly.latest.$abiString",
             apkArtifact = "public/build/$abiString/target.apk",
-            context
+            settings = settings
         )
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)

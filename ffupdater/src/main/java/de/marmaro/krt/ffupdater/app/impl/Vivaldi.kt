@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://vivaldi.com/de/download/
@@ -39,8 +40,9 @@ class Vivaldi(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val content = try {
-            apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, String::class, context).await()
+            apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, settings, String::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

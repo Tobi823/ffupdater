@@ -1,22 +1,22 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
-import android.content.Context
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.AddAppActivity.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 class FdroidConsumer(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
 ) {
 
     @MainThread
-    suspend fun getLatestUpdate(packageName: String, context: Context, index: Int): Result {
+    suspend fun getLatestUpdate(packageName: String, settings: NetworkSettingsHelper, index: Int): Result {
         require(index >= 1)
         val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = try {
-            apiConsumer.consumeAsync(apiUrl, AppInfo::class, context).await()
+            apiConsumer.consumeAsync(apiUrl, settings, AppInfo::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $packageName from F-Droid.", e)
         }
@@ -24,8 +24,8 @@ class FdroidConsumer(
         check(latestVersions.size >= index)
         val latestVersion = latestVersions[index - 1]
 
-        val commitId = getLastCommitId(packageName, context)
-        val createdAt = getCreateDate(commitId, context)
+        val commitId = getLastCommitId(packageName, settings)
+        val createdAt = getCreateDate(commitId, settings)
 
         Log.i(LOG_TAG, "found latest version ${latestVersion.versionName}")
         return Result(
@@ -48,21 +48,21 @@ class FdroidConsumer(
             .sortedBy { p -> p.versionCode }
     }
 
-    private suspend fun getLastCommitId(packageName: String, context: Context): String {
+    private suspend fun getLastCommitId(packageName: String, settings: NetworkSettingsHelper): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2F${packageName}.yml" +
                 "?ref=master"
         val metadata = try {
-            apiConsumer.consumeAsync(url, GitlabRepositoryFilesMetadata::class, context).await()
+            apiConsumer.consumeAsync(url, settings, GitlabRepositoryFilesMetadata::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the latest commit id of $packageName.", e)
         }
         return metadata.last_commit_id
     }
 
-    private suspend fun getCreateDate(commitId: String, context: Context): String {
+    private suspend fun getCreateDate(commitId: String, settings: NetworkSettingsHelper): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/commits/$commitId"
         val commits = try {
-            apiConsumer.consumeAsync(url, GitlabRepositoryCommits::class, context).await()
+            apiConsumer.consumeAsync(url, settings, GitlabRepositoryCommits::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the creation date of commit $commitId.", e)
         }

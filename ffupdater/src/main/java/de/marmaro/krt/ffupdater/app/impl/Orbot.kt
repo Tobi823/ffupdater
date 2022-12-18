@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/guardianproject/orbot
@@ -40,6 +41,7 @@ class Orbot(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val assetSuffix = getAssetSuffix()
         val result = consumer.updateCheck(
             repoOwner = "guardianproject",
@@ -54,7 +56,7 @@ class Orbot(
                         asset.name.endsWith(assetSuffix)
             },
             dontUseApiForLatestRelease = false,
-            context
+            settings = settings
         )
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(

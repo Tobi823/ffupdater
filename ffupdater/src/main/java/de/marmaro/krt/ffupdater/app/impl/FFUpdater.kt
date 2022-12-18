@@ -9,6 +9,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://api.github.com/repos/brave/brave-browser/releases
@@ -35,6 +36,7 @@ class FFUpdater(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val result = consumer.updateCheck(
             repoOwner = "Tobi823",
             repoName = "ffupdater",
@@ -46,7 +48,8 @@ class FFUpdater(
             isSuitableAsset = { asset ->
                 asset.name.endsWith(".apk")
             },
-            dontUseApiForLatestRelease = false, context
+            dontUseApiForLatestRelease = false,
+            settings = settings
         )
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(

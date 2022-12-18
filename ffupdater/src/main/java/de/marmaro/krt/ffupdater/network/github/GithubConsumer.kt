@@ -1,11 +1,11 @@
 package de.marmaro.krt.ffupdater.network.github
 
-import android.content.Context
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.util.*
 import java.util.function.Predicate
 
@@ -23,7 +23,7 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         // true -> contact only "$url?per_page=..&page=.."
         // set it to true if it is unlikely that the latest release is a valid release
         dontUseApiForLatestRelease: Boolean = false,
-        context: Context
+        settings: NetworkSettingsHelper
     ): Result {
         check(resultsPerPage > 0)
         val start = if (dontUseApiForLatestRelease) 1 else 0
@@ -33,10 +33,10 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
                 val baseUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases"
                 if (tries == 0) {
                     val url = "$baseUrl/latest"
-                    arrayOf(apiConsumer.consumeAsync(url, Release::class, context).await())
+                    arrayOf(apiConsumer.consumeAsync(url, settings, Release::class).await())
                 } else {
                     val url = "$baseUrl?per_page=$resultsPerPage&page=${tries}"
-                    apiConsumer.consumeAsync(url, Array<Release>::class, context).await()
+                    apiConsumer.consumeAsync(url, settings, Array<Release>::class).await()
                 }
             } catch (e: NetworkException) {
                 throw NetworkException("Fail to request the latest version of $repoName from GitHub.", e)

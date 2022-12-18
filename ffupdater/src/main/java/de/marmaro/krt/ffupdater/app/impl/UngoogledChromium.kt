@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/ungoogled-software/ungoogled-chromium-android/releases
@@ -40,6 +41,7 @@ class UngoogledChromium(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"
             ABI.ARM64_V8A -> "ChromeModernPublic_arm64.apk"
@@ -59,7 +61,7 @@ class UngoogledChromium(
                 asset.name == fileName
             },
             dontUseApiForLatestRelease = true,
-            context
+            settings = settings
         )
 
         val extractVersion = {

@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest
@@ -40,6 +41,7 @@ class FirefoxRelease(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val abiString = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
             ABI.ARM64_V8A -> "arm64-v8a"
@@ -49,7 +51,8 @@ class FirefoxRelease(
         }
         val result = consumer.updateCheck(
             task = "mobile.v2.fenix.release.latest.$abiString",
-            apkArtifact = "public/build/$abiString/target.apk", context
+            apkArtifact = "public/build/$abiString/target.apk",
+            settings = settings
         )
         Log.i(LOG_TAG, "found latest version ${result.version}")
         return LatestUpdate(

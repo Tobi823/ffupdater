@@ -1,10 +1,10 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
-import android.content.Context
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * Consume the "chain_of_trust.json".
@@ -15,13 +15,13 @@ class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
     suspend fun updateCheck(
         task: String,
         apkArtifact: String,
-        context: Context
+        settings: NetworkSettingsHelper
     ): Result {
         val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
         val jsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
 
         val response = try {
-            apiConsumer.consumeAsync(jsonUrl, ChainOfTrustJson::class, context).await()
+            apiConsumer.consumeAsync(jsonUrl, settings, ChainOfTrustJson::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $task from Mozilla (json).", e)
         }

@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
-import android.content.Context
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -8,6 +7,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.time.Instant
 
 class CustomRepositoryConsumer(
@@ -16,13 +16,13 @@ class CustomRepositoryConsumer(
 
     @MainThread
     suspend fun getLatestUpdate(
-        context: Context,
+        settings: NetworkSettingsHelper,
         repoUrl: String,
         packageName: String,
         abi: ABI
     ): LatestUpdate {
         val mainObject = try {
-            apiConsumer.consumeAsync("$repoUrl/index-v1.json", MainObject::class, context).await()
+            apiConsumer.consumeAsync("$repoUrl/index-v1.json", settings, MainObject::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to find the latest version from index-v1.json.", e)
         }

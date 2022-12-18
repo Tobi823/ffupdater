@@ -10,6 +10,7 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://f-droid.org/en/packages/us.spotco.fennec_dos/
@@ -36,9 +37,10 @@ class MullFromRepo(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
+        val settings = NetworkSettingsHelper(context)
         val abi = deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)
         val result = customRepositoryConsumer.getLatestUpdate(
-            context,
+            settings = settings,
             "https://divestos.org/fdroid/official",
             packageName,
             abi

@@ -9,6 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -39,6 +40,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import de.marmaro.krt.ffupdater.utils.ifFalse
 import de.marmaro.krt.ffupdater.utils.ifTrue
 import kotlinx.coroutines.Dispatchers
@@ -86,7 +88,13 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         addAppsToUserInterface()
-        lifecycleScope.launch(Dispatchers.Main) { checkForUpdates() }
+        lifecycleScope.launch(Dispatchers.Main) {
+            checkForUpdates()
+            val value =
+                FileDownloader(NetworkSettingsHelper(applicationContext)).downloadSmallFileAsync("https://api.ipify.org?format=json")
+                    .await()
+            Log.e("Main", value)
+        }
     }
 
     override fun onPause() {
