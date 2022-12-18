@@ -108,6 +108,9 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
         networkSettingsHelper.createProxyConfiguration()?.let {
             builder.proxy(it)
         }
+        networkSettingsHelper.createProxyAuthenticatorConfiguration()?.let {
+            builder.proxyAuthenticator(it)
+        }
 
         return builder.build()
     }

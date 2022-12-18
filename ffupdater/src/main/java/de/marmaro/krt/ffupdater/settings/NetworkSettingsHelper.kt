@@ -3,6 +3,8 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import de.marmaro.krt.ffupdater.network.ProxyAuthenticator
+import okhttp3.Authenticator
 import okhttp3.Dns
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
@@ -102,39 +104,42 @@ class NetworkSettingsHelper {
         }
 
         // reset value to notify the user that the server connection details are invalid
-        if (proxyString.count { it == ':' } != 2) {
-            resetProxyConfiguration()
-            return null
+        if (proxyString.count { it == ':' } !in listOf(2, 4)) {
+            throw IllegalArgumentException("Invalid proxy configuration. Please fix the 'Proxy' setting.")
         }
         val (typeString, ipString, portString) = proxyString.split(':')
 
         val type = when (typeString) {
             "SOCKS" -> SOCKS
             "HTTP" -> HTTP
-            else -> {
-                resetProxyConfiguration()
-                return null
-            }
+            else -> throw IllegalArgumentException("Invalid proxy configuration. Only SOCKS or HTTP are allowed. Please fix the 'Proxy' setting.")
         }
         val host = try {
             InetAddress.getByName(ipString)
         } catch (e: UnknownHostException) {
-            return null
+            throw IllegalArgumentException("Invalid proxy configuration. Please fix the 'Proxy' setting.")
         }
         val port = portString.toIntOrNull()
-        if (port == null) {
-            resetProxyConfiguration()
-            return null
-        }
+            ?: throw IllegalArgumentException("Invalid proxy configuration. Please fix the 'Proxy' setting.")
 
         return Proxy(type, InetSocketAddress(host, port))
     }
 
-    private fun resetProxyConfiguration(): Unit? {
-        preferences.edit()
-            .putString("network__proxy", "")
-            .apply()
-        return null
+    fun createProxyAuthenticatorConfiguration(): Authenticator? {
+        val proxyString = preferences.getString("network__proxy", "")?.trim()
+        if (proxyString == null || proxyString.isEmpty()) {
+            return null
+        }
+
+        // reset value to notify the user that the server connection details are invalid
+        val (_, _, _, username, password) = when (proxyString.count { it == ':' }) {
+            2 -> return null // no username/password is given
+            3 -> throw IllegalArgumentException("Invalid proxy configuration. You have to specify a password.")
+            4 -> proxyString.split(':')
+            else -> throw IllegalArgumentException("Invalid proxy configuration format.")
+        }
+
+        return ProxyAuthenticator(username, password)
     }
 
     companion object {

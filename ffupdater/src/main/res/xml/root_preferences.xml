@@ -177,13 +177,15 @@
         <EditTextPreference
             app:key="network__custom_doh_server"
             app:singleLineTitle="false"
-            app:summary="Enter the details to connect to a custom DoH server. Format: url,ip1,... Example: https://dns.google/dns-query,8.8.8.8 or https://dns.quad9.net/dns-query,2620:fe::fe,2620:fe::9"
+            app:dialogMessage="Enter the connection details for the DoH server in one of these formats:\n\nurl,ip1\n\nurl,ip1,ip2\n\nurl,ip1,ip2,ip3\n\nurl,ip1,ip2,ip3,ip4\n\nFor example: https://dns.google/dns-query,8.8.8.8 or https://dns.quad9.net/dns-query,2620:fe::fe,2620:fe::9"
+            app:summary="Enter the details to connect to the custom DoH server."
             app:title="Custom DNS over HTTPS server" />
 
         <EditTextPreference
+            app:dialogMessage="Enter the connection details in one of these formats:\n\nSOCKS/HTTP:ip:port\n\nSOCKS/HTTP:ip:port:username:password\n\nFor example: SOCKS:1.2.3.4:22 or HTTP:5.6.7.8:80:user1:pw123. Leave it empty if you want to use the system proxy configuration."
             app:key="network__proxy"
             app:singleLineTitle="false"
-            app:summary="If you want to use a SOCKS or HTTP proxy, enter the connection details here. Leave it empty if you want to use the system proxy configuration. Format: SOCKS/HTTP:ip:port Example: SOCKS:1.2.3.4:22 or HTTP:5.6.7.8:80"
+            app:summary="If you want to use a SOCKS or HTTP proxy, enter the connection details here."
             app:title="Proxy" />
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
