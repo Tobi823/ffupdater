@@ -295,4 +295,29 @@
     <string name="fennecfdroid__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="fennecfdroid__description">Fennec F-Droid en son Firefox sürümüne (kod adı Fenix) dayanmaktadır. Açık kaynaklı olmayan bitler ve telemetri kaldırılmıştır, ancak yine de kullanıcıları izleyebilen çeşitli Mozilla ve Google hizmetlerine bağlanır.</string>
     <string name="main_activity__ignored_apps_due_fingerprints">Şu uygulamalar farklı sertifika parmak izlerine sahiptir ve FFUpdater tarafından yok sayılacaktır: %s. Kaldırarak ve ardından FFUpdater ile kurarak bunu düzeltebilirsiniz.</string>
+    <string name="network__proxy__title">Vekil</string>
+    <string name="network__custom_doh_server__summary">Özel DoH sunucusuna bağlanmak için ayrıntıları girin.</string>
+    <string name="network__dns_provider__title">DNS ayarları</string>
+    <string name="network__custom_doh_server__title">Özel HTTPS üzerinden DNS sunucusu</string>
+    <string name="network__custom_doh_server__dialog_message">DoH sunucusu için bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
+\n
+\nURL;IP1
+\n
+\nURL;IP1;IP2
+\n
+\nURL;IP1;IP2;IP3
+\n
+\nURL;IP1;IP2;IP3;IP4
+\n
+\nÖrneğin: https://dns.google/dns-query;8.8.8.8 veya https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__summary">SOCKS veya HTTP vekili kullanmak istiyorsanız bağlantı ayrıntılarını buraya girin.</string>
+    <string name="network__proxy__dialog_meesage">Bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
+\n
+\nSOCKS/HTTP;IP/etkialanı;bağlantınoktası
+\n
+\nSOCKS/HTTP;IP/etkialanı;bağlantınoktası;kullanıcıadı;parola
+\n
+\nÖrneğin: SOCKS;1.2.3.4;22 veya HTTP;5.6.7.8;80;user1;pw123 veya HTTP;p.webshare.io;80;u;p. Sistem vekil yapılandırmasını kullanmak istiyorsanız boş bırakın.
+\n
+\nSınırlama: Ayarlarda \'DNS ayarlarını\' bir HTTPS üzerinden DNS sunucusu olarak değiştirirseniz, vekil sunucusunun etki alanını girmeniz gerekir. IP adresleri çalışmayacaktır.</string>
 </resources>
