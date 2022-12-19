@@ -320,4 +320,8 @@
 \nÖrneğin: SOCKS;1.2.3.4;22 veya HTTP;5.6.7.8;80;user1;pw123 veya HTTP;p.webshare.io;80;u;p. Sistem vekil yapılandırmasını kullanmak istiyorsanız boş bırakın.
 \n
 \nSınırlama: Ayarlarda \'DNS ayarlarını\' bir HTTPS üzerinden DNS sunucusu olarak değiştirirseniz, vekil sunucusunun etki alanını girmeniz gerekir. IP adresleri çalışmayacaktır.</string>
+    <string name="settings__network_category__title">Ağ</string>
+    <string name="device__prefer_32bit_apks__title">32-Bit APK\'ları tercih et</string>
+    <string name="settings__device_category__title">Aygıt</string>
+    <string name="device__prefer_32bit_apks__summary">Aygıtınız gerçekten düşük belleğe sahipse etkinleştirin.</string>
 </resources>
