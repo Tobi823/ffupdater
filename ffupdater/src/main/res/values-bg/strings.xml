@@ -294,4 +294,17 @@
     <string name="mulch__description">Това е ориентиран към сигурността и защитен мрежов четец, базиран на технологията на Хромиум. Много нежелани функции са изключени или премахнати, а няколко функции за сигурност са включени или добавени, благодарение на кръпки от проекта Ванадиум. Хранилището с изходния код включва също така предварителни настройки и makefiles, които позволяват на други операционни системи да включат Мулч като системен WebView.</string>
     <string name="main_activity__ignored_apps_due_fingerprints">Следните приложения имат различни отпечатъци на сертификатите и ще бъдат пренебрегнати от FFUpdater: %s. Можете да поправите това, като ги премахнете и след това инсталирате от FFUpdater.</string>
     <string name="network__dns_provider__title">Настройки на DNS</string>
+    <string name="network__custom_doh_server__dialog_message">Въведете и формацията за сървъра на DoH по един от следните начини:
+\n
+\nадрес;IP1
+\n
+\nадрес;IP1;IP2
+\n
+\nадрес;IP1;IP2;IP3
+\n
+\nадрес;IP1;IP2;IP3;IP4
+\n
+\nНапример: https://dns.google/dns-query;8.8.8.8 или https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__summary">Въведете данните за връзка с потребителски сървър за DoH.</string>
+    <string name="network__custom_doh_server__title">Потребителски сървър за DNS по HTTPS</string>
 </resources>
