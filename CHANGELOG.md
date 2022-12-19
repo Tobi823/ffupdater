@@ -1,3 +1,7 @@
+# 2022-11-02 Release 77.4.0 (120)
+
+* Add internal support for HTTP/SOCKS-proxies and DNS-over-HTTPS server
+
 # 2022-11-02 Release 77.3.5 (119)
 
 * fix wrong signatureHash for Mull (divestos.org version)

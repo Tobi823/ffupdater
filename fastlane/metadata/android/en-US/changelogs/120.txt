@@ -1,0 +1,1 @@
+* Add internal support for HTTP/SOCKS-proxies and DNS-over-HTTPS server
