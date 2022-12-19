@@ -51,7 +51,6 @@ class NetworkSettingsHelper {
         return DohConnectionDetails(server, ips)
     }
 
-
     data class ProxyConnectionDetails(
         val type: Type,
         val host: InetAddress,
