@@ -162,8 +162,8 @@
             app:defaultValue="false"
             app:key="device__prefer_32bit_apks"
             app:singleLineTitle="false"
-            app:summary="Enable if your device has really low memory."
-            app:title="Prefer 32-Bit APKs" />
+            app:summary="@string/device__prefer_32bit_apks__summary"
+            app:title="@string/device__prefer_32bit_apks__title" />
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 

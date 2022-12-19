@@ -272,4 +272,6 @@
     <string name="network__proxy__title">Proxy</string>
     <string name="settings__network_category__title">Network</string>
     <string name="settings__device_category__title">Device</string>
+    <string name="device__prefer_32bit_apks__summary">Enable if your device has really low memory.</string>
+    <string name="device__prefer_32bit_apks__title">Prefer 32-Bit APKs</string>
 </resources>
