@@ -1,3 +1,0 @@
-* 感谢 109247019824、Oğuz Ersen 和 Vitor Henrique 对翻译的改进
-* 后台工作可以通过操作系统更可靠地停止（Tobi823/ffupdater#148）
-* 改进对 GitHub 访问率限制的检查（Tobi823/ffupdater#152）

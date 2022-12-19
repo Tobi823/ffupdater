@@ -1,5 +1,0 @@
-* Dodaj Brave Beta i Brave Nightly
-* Dodaj tłumaczenie na język turecki (dzięki metezd - Tobi823/ffupdater#129)
-* Dodanie Bromite SystemWebView
-* Obsługa cichych aktualizacji w tle dla Androida 12+ i urządzeń zrootowanych
-* Spróbuj ulepszyć SessionInstaller

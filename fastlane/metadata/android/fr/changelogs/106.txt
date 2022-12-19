@@ -1,6 +1,0 @@
-* Merci à MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner pour avoir amélioré la
-  traduction.
-* Marquer Mozilla Lockwise comme étant en fin de vie (merci à p0yskaa pour l'information).
-* Afficher un avertissement lorsqu'une application en fin de vie est utilisée.
-* Cache UpdateCheckResult dans les préférences - cela devrait être plus fiable que la méthode de cache précédente.
-* Améliorer les contrastes des couleurs.

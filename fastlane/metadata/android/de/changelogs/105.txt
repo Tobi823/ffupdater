@@ -1,4 +1,0 @@
-* Dank 109247019824, AHOHNMYC, Oğuz Ersen, Artem, Hin Weisner, AbsurdUsername und metezd für die Verbesserung der
-  Übersetzung
-* Versuch, Abstürze zu beheben, wenn der Download von Updates im Hintergrund fehlschlägt
-* Hinzufügen der Option zum Ausblenden von Warnschaltflächen

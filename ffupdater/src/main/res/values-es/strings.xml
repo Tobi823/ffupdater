@@ -5,20 +5,20 @@
     <string name="app_icon">icono de la aplicación</string>
     <string name="app_name">FFUpdater</string>
     <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">Tiene el siguiente problema: %1$s
-\n 
-\n%2$s 
-\n 
+        <item quantity="one">%1$s tiene el siguiente problema:
+\n
+\n%2$s
+\n
 \n¿Todavía quiere instalar %1$s\?</item>
-        <item quantity="many">Tienen los siguientes problemas: %1$s
-\n 
-\n%2$s 
-\n 
+        <item quantity="many">%1$s tienen los siguientes problemas:
+\n
+\n%2$s
+\n
 \n¿Todavía quiere instalar %1$s\?</item>
-        <item quantity="other">Tienen los siguientes problemas: %1$s
-\n 
-\n%2$s 
-\n 
+        <item quantity="other">%1$s tienen los siguientes problemas:
+\n
+\n%2$s
+\n
 \n¿Todavía quiere instalar %1$s\?</item>
     </plurals>
     <string name="app_warning_before_installation_dialog__title">Advertencia</string>
@@ -35,7 +35,7 @@
     </plurals>
     <string name="app_warning_dialog__title">Advertencia</string>
     <string name="application_installation_was_not_successful">La instalación de la aplicación no se ha realizado correctamente</string>
-    <string name="application_successfully_installed">Aplicación instalada con éxito</string>
+    <string name="application_successfully_installed">Aplicación instalada exitosamente</string>
     <string name="available_version">Disponible: %1$s</string>
     <string name="available_version_error"><u>ERROR</u></string>
     <string name="notification__error__text">Por favor, informe de este error. Haga clic para ver el informe de error.</string>
@@ -86,7 +86,7 @@
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Ten en cuenta que esta aplicación solía llamarse Firefox Preview. Ahora ha pasado a llamarse Firefox Nightly.
 \n
-\nNightly es un canal de desarrollo para las nuevas versiones de Mozilla Firefox.
+\nFirefox Nightly es un canal de desarrollo para las nuevas versiones de Mozilla Firefox.
 \n
 \nNightly está diseñado para mostrar las versiones más experimentales de Firefox. El canal Nightly permite a los usuarios experimentar las últimas innovaciones de Firefox en un entorno inestable y proporcionar comentarios sobre las características y el rendimiento para ayudar a determinar lo que hace la versión final.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
@@ -119,7 +119,7 @@
     <string name="download_activity__fetch_url_for_download">Obtener metadatos de %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Metadatos recuperados de %1$s</string>
     <string name="download_activity__file_uri_exposed_toast">No se puede mostrar la ruta del archivo a otras aplicaciones. Abra la carpeta usted mismo con su administrador de archivos preferido.</string>
-    <string name="download_activity__github_rate_limit_exceeded">Se ha superado el límite de solicitudes a la aplicación GitHub. Por favor, intente la descarga de nuevo en la próxima hora.</string>
+    <string name="download_activity__github_rate_limit_exceeded">Se ha superado el límite de solicitudes al API de GitHub. Por favor, intente la descarga de nuevo en la próxima hora.</string>
     <string name="download_activity__open_cache_explanation">Puedes abrir la carpeta de la caché para copiar el archivo APK en un lugar con más almacenamiento libre. Desafortunadamente, en Android 11+ sólo unos pocos gestores de archivos pueden acceder a esta carpeta dentro de Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">abrir la carpeta de la caché</string>
     <string name="download_activity__open_folder">Abrir la carpeta</string>
@@ -157,7 +157,7 @@
 \nSigue de forma segura tus contraseñas de Firefox y accede a ellas en cualquier lugar. Abre rápidamente cualquier sitio web desde la aplicación para entrar en tus cuentas.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__available_version_loading">Cargando…</string>
-    <string name="main_activity__github_api_limit_exceeded"><u>Límite de la aplicación de GitHub superado. Vuelva a intentar en la próxima hora.</u></string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Límite del API de GitHub superado. Vuelva a intentar en la próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">No hay ninguna red sin límite en el uso de datos</string>
     <string name="main_activity__subtitle">Actualizador para navegadores respetuosos con la privacidad</string>
     <string name="main_activity__temporary_network_issue"><u>Problema temporal de red. Inténtelo más tarde.</u></string>
@@ -259,9 +259,9 @@
     <string name="app_card__open_project_page">Abrir la página del proyecto en el navegador</string>
     <string name="orbot__description">Orbot es una aplicación de proxy gratuita que permite a otras aplicaciones utilizar Internet de forma más segura. Orbot usa Tor para encriptar su tráfico de Internet y luego lo oculta rebotando a través de una serie de computadoras en todo el mundo. Tor es un software gratuito y una red abierta que lo ayuda a defenderse contra una forma de vigilancia de la red que amenaza la libertad personal y la privacidad, las actividades y relaciones comerciales confidenciales y la seguridad del estado conocida como análisis de tráfico.</string>
     <string name="ungoogled_chromium__eol_reason">El desarrollador publicó: \"No podré actualizar las versiones durante algún tiempo. Si es posible, utilice uno de los navegadores [compatibles con FFUpdater] mientras tanto\". https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
-    <string name="app_card__app_warning_button_description">Mostrar advertencias sobre esta aplicación</string>
+    <string name="app_card__app_warning_button_description">Mostrar alertas sobre esta aplicación</string>
     <string name="generic_eol_reason__browser_to_old">El navegador no ha sido actualizado desde hace mucho tiempo, por lo que recomiendo utilizar otro navegador temporalmente. Cuando los desarrolladores publiquen una nueva actualización, eliminaré esta advertencia.</string>
-    <string name="lockwise__eol_reason">Mozilla eliminó el soporte en diciembre de 2021. Cambie a otra contraseña segura.</string>
+    <string name="lockwise__eol_reason">Mozilla eliminó el soporte en diciembre de 2021. Cambie a otro gestor de contraseñas.</string>
     <string name="mull__title">Mull Browser (Basado en Firefox Móvil con arkenfox-user.js)</string>
     <string name="mull__description">Este es un navegador web depurado y orientado a la privacidad basado en la tecnología de Mozilla. Habilita muchas características mejoradas por el proyecto Tor Uplift utilizando las preferencias del proyecto arkenfox-user.js. Se recomienda instalar \'uBlock Origin\'.</string>
     <string name="mull__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es más rápido.</string>
@@ -295,11 +295,12 @@
     <string name="crash_report_activity__label">Reportero de fallos</string>
     <string name="notification__no_update_check__channel_description">Forma de notificar para advertir que ninguna verificación de actualización de antecedentes fue exitosa en los últimos cinco días.</string>
     <string name="notification__no_update_check__channel_name">No hay verificación de antecedentes de la actualización</string>
-    <string name="add_app_activity__title_end_of_live_browser">Fin de la navegación en vivo</string>
+    <string name="add_app_activity__title_end_of_live_browser">Navegadores al fin de su vida útil</string>
     <string name="fennecfdroid__title">Fennec F-Droid (Basado Firefox Móvil)</string>
     <string name="fennecfdroid__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es muy rápido.</string>
     <string name="mulch__title">Mulch browser</string>
     <string name="mulch__warning">- Mulch utiliza la base de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="mulch__description">Se trata de un navegador web orientado a la seguridad, basado en la tecnología Chromium. Se han deshabilitado/eliminado muchas anti-funciones y se han habilitado/añadido un puñado de funciones de seguridad gracias a los parches del proyecto Vanadium. El repositorio de fuentes también incluye prebuilts y makefiles para permitir que otros sistemas operativos incluyan Mulch como su WebView de sistema.</string>
     <string name="fennecfdroid__description">Fennec F-Droid se basa en la última versión de Firefox (cuyo nombre en código es Fenix). Ha eliminado los bits propietarios y la telemetría, pero sigue conectándose a varios servicios de Mozilla y Google que pueden rastrear a los usuarios.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Las siguientes aplicaciones tienen diferentes huellas digitales en sus certificados y serán ignoradas por FFUpdater: %s. Puedes solucionarlo desinstalando y luego instalándolas con FFUpdater.</string>
 </resources>

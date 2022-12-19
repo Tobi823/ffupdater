@@ -1,0 +1,3 @@
+* Weblate üzerinde katkıda bulunanlara teşekkürler: Jacek, nautilusx, 109247019824, gallegonovato, Juraj Motuz, 
+  Oğuz Ersen ve atilluF
+* Kiwi güncelleme denetimi düzeltildi

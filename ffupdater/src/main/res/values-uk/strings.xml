@@ -7,7 +7,7 @@
     <string name="app_warning_before_installation_dialog__title">Увага</string>
     <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
     <string name="application_successfully_installed">Програма успішно встановлена</string>
-    <string name="available_version">в наявності: %1$s</string>
+    <string name="available_version">У наявності: %1$s</string>
     <string name="available_version_error">"<u>ПОМИЛКА</u>"</string>
     <string name="notification__error__text">Повідомте про цю помилку. Натисніть, щоб переглянути звіт про помилку.</string>
     <string name="notification__error__title">Не вдалося перевірити фонове оновлення</string>
@@ -186,4 +186,88 @@
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi є лише частково відкритим кодом.
 \n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
+    <string name="app_card__app_warning_button_description">Показати попередження про цей застосунок</string>
+    <string name="iceraven__warning">- Супроводжувач не дає жодних гарантій чи гарантій безпеки, оновлень чи навіть стабільності.
+\n - Проект потребує більше часу, ніж зазвичай, для надання оновлень безпеки.</string>
+    <string name="app_warning_dialog__title">Увага</string>
+    <string name="notification__download_error__channel_name">Сповіщення про помилки завантаження у фоновому режимі</string>
+    <string name="notification__download_error__title">Не вдалося завантажити оновлення у фоновому режимі</string>
+    <string name="notification__download_running__text">%1$s (%2$s)</string>
+    <string name="notification__eol_apps__channel_description">Канал сповіщень про застарілі програми.</string>
+    <string name="notification__eol_apps__title">Встановлено застарілі застосунки</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">%1$s має наступну проблему:
+\n
+\n%2$s
+\n
+\nВи все ще хочете встановити %1$s\?</item>
+        <item quantity="few">%1$s має наступні проблеми:
+\n
+\n%2$s
+\n
+\nВи все ще хочете встановити %1$s\?</item>
+        <item quantity="many">%1$s має наступні проблеми:
+\n
+\n%2$s
+\n
+\nВи все ще хочете встановити %1$s\?</item>
+        <item quantity="other">%1$s має наступні проблеми:
+\n
+\n%2$s
+\n
+\nВи все ще хочете встановити %1$s\?</item>
+    </plurals>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">%1$s має наступну проблему:
+\n
+\n%2$s</item>
+        <item quantity="few">%1$s має наступні проблеми:
+\n
+\n%2$s</item>
+        <item quantity="many">%1$s має наступні проблеми:
+\n
+\n%2$s</item>
+        <item quantity="other">%1$s має наступні проблеми:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="notification__download_error__channel_descr">Відображається, коли завантаження оновлень у фоновому режимі не вдається.</string>
+    <string name="notification__download_error__descr">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, не соромтеся повідомити про неї на notabug.org, GitHub або GitLab.</string>
+    <string name="notification__download_error__text">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, натисніть тут, щоб переглянути звіт про помилку.</string>
+    <string name="generic_eol_reason__browser_to_old">Цей браузер давно не оновлювався, тому рекомендую тимчасово використовувати інший браузер. Коли розробники випустять нове оновлення, я приберу це попередження.</string>
+    <string name="notification__eol_apps__text">У вас є застарілі програми, якими більше не слід користуватися. Натисніть для отримання додаткової інформації.</string>
+    <string name="notification__eol_apps__channel_name">Сповіщення про застарілі застосунки</string>
+    <string name="download_activity__different_installer_info__text">Якщо встановлення часто зазнає помилок, спробуйте переключитися на \"рідний інсталятор\" у налаштуваннях.</string>
+    <string name="download_activity__file_uri_exposed_toast">Неможливо відкрити шлях до файлу іншим програмам. Будь ласка, відкрийте теку самостійно за допомогою вашого улюбленого файлового менеджера.</string>
+    <string name="crash_report__explain_text__download_activity_download_file">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час інсталяції. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
+    <string name="notification__no_update_check__channel_name">Відсутня фонова перевірка оновлення</string>
+    <string name="notification__no_update_check__title">Жодної успішної фонової перевірки оновлень протягом п\'яти днів</string>
+    <string name="app_card__open_project_page">Відкрити сторінку проєкту в браузері</string>
+    <string name="ungoogled_chromium__eol_reason">Розробник опублікував: \"Я не зможу оновлювати версії протягом деякого часу. Якщо це можливо, будь ласка, використовуйте один з браузерів [який підтримує FFUpdater] у цей час.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="lockwise__eol_reason">Mozilla припинила підтримку в грудні 2021 року. Будь ласка, перейдіть на інший сейф для зберігання паролів.</string>
+    <string name="settings__installer__native__title">Рідний установлювач</string>
+    <string name="settings__foreground__hide_warning_buttons">Приховати кнопку попередження для встановленого застосунку.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Видаляти завантажене оновлення, якщо встановлення пройшло успішно.</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Видаляти завантажене оновлення, якщо встановлення завершилося невдало.</string>
+    <string name="mull__warning">FFUpdater завантажує файли з серверів F-Droid і тому не працює швидше.</string>
+    <string name="settings__installer_category__title">Встановлювач</string>
+    <string name="download_activity__open_folder">Відкрити теку</string>
+    <string name="intent_installer__likely_storage_failure">Операцію не вдалося виконати, ймовірно, через проблеми зі зберіганням. Наприклад, на пристрої може не вистачати місця, або зовнішній носій може бути недоступний. Користувач може допомогти звільнити місце або вставити інші зовнішні носії.</string>
+    <string name="kiwi__description">Kiwi Browser створений для перегляду веб-сторінок, читання новин, перегляду відео та прослуховування музики без зайвих роздратувань.</string>
+    <string name="notification__no_update_check__channel_description">Канал сповіщень для попередження про відсутність успішної фонової перевірки оновлень протягом останніх п’яти днів.</string>
+    <string name="kiwi__warning">- Kiwi використовує технічну базу Google Chrome і таким чином опосередковано підтримує монопольне становище рушія рендерингу Chromium.
+\n- Kiwi не є ідеальним браузером для забезпечення конфіденційності, але має хорошу підтримку аддонів.
+\n- Браузер отримує плату від пошукових систем за кожен пошук, здійснений за допомогою Kiwi Browser. Залежно від вибору пошукової системи, запити можуть йти через сервери Kiwibrowser / Kiwisearchservices.
+\n- Google Ads в Kiwi може використовувати дані про місцезнаходження для реклами - але ви можете відключити її, вимкнувши функцію Discovery. Але це скоро зміниться. Дивіться https://privacy.kiwibrowser.org/ для більш детальної інформації.</string>
+    <string name="settings__installer__native__summary">Запасний варіант, якщо на вашому смартфоні не працює сесійний встановлювач. Найчастіше це трапляється з пристроями від Samsung або Xiaomi.</string>
+    <string name="settings__installer__root__summary">Використовує root-дозвіл для встановлення або оновлення програм без участі користувача. Для цього потрібен рутований смартфон.</string>
+    <string name="settings__installer__root__title">Root-установлювач</string>
+    <string name="mull__title">Mull Browser</string>
+    <string name="settings__installer__session__summary">Рекомендується для більшості пристроїв.</string>
+    <string name="mull__description">Це орієнтований на конфіденційність і deblobbed веб-браузер, заснований на технології Mozilla. Він дозволяє використовувати багато функцій, що надаються проектом Tor Uplift, використовуючи налаштування з проекту arkenfox-user.js. Рекомендується встановити \"uBlock Origin\".</string>
+    <string name="notification__no_update_check__text">За останні п\'ять днів FFUpdater не зміг перевірити наявність оновлень у фоновому режимі. Якщо ваш смартфон тривалий час перебував у режимі польоту, ви можете проігнорувати це повідомлення. Якщо ні, натисніть тут, щоб переглянути звіт про помилку.</string>
+    <string name="tor_browser__description">Tor Browser для Android - єдиний офіційний мобільний браузер, що підтримується проєктом Tor, розробником найсильнішого в світі інструменту для забезпечення конфіденційності та свободи в Інтернеті.</string>
+    <string name="tor_browser__title">Tor Browser</string>
 </resources>

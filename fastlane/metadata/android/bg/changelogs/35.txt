@@ -1,2 +1,0 @@
-* Опитайте се да поправите грешката "Failed to check certificate hash", като преминете от apksig-library към PackageManager#getPackageArchiveInfo (благодаря на rvandegrift). Това ще намали размера на FFUpdater и ще подобри поддръжката на бъдещите версии.
- * Цветът на сгънатото заглавие ще бъде винаги бял (благодаря на DeenHyper74)

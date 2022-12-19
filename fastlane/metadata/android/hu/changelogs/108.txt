@@ -1,6 +1,0 @@
-* Köszönet WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS, Hin Weisner és
-  Giovanni Donisi a fordítás javításáért.
-* Mark Ungoogled Chromium és Iceraven ideiglenesen lejárt életűnek.
-* Mull böngésző hozzáadása.
-* A frissítési információk gyorsítótárazásának javítása.
-* Refaktorálás/javítás a forráskódban.

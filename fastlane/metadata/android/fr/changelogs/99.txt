@@ -1,6 +1,0 @@
-* Améliorer les traductions - merci :
-  * Oğuz Ersen : turc
-  * 109247019824 : Bulgare
-* Ajouter une option pour utiliser l'ancien installateur natif pour les appareils qui ont une implémentation boguée de PackageInstaller (par exemple Samsung et Xiaomi).
-* Meilleur affichage des avertissements / inconvénients pour chaque navigateur
-* Nettoyage et refactorisation du code

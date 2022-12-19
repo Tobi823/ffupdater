@@ -1,3 +1,0 @@
-* Merci à 109247019824, Oğuz Ersen et Vitor Henrique pour l'amélioration de la traduction
-* Le travail en arrière-plan peut être arrêté de manière plus fiable par le système d'exploitation (Tobi823/ffupdater#148)
-* Amélioration de la vérification de la limite de débit de GitHub (Tobi823/ffupdater#152)

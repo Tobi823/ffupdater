@@ -1,5 +1,0 @@
-* Grazie a Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat, Francois Marier per aver migliorato la traduzione
-* Grazie a Francois Marier per aver sistemato la logica di aggiornamento di Brave - versioni beta e nightly non testate da Q&amp;A saranno ignorate (Tobiwan/ffupdater#105)
-* Maggiore resilienza nei casi in cui è impossibile estrarre le firme di un file APK
-* Miglior gestione di problemi temporanei di rete
-* Aggiornate dipendenze

@@ -1,5 +1,0 @@
-* Çevirileri iyileştirdikleri için Hin Weisner, WhiredPlanck, Giovanni Donisi, Vitor Henrique, 109247019824, AHOHNMYC, Oğuz Ersen, ToldYouThat ve Francois Marier'e teşekkürler
-* Brave güncelleyici mantığını düzelttiği için Francois Marier'e teşekkürler - Q&amp;A tarafından test edilmeyen beta ve gecelik sürümler göz ardı edilecek
-* Bir APK dosyasının imzalarının çıkarılamadığı durumlar için FFUpdater'ı daha esnek hale getir
-* Geçici ağ sorunlarını daha iyi ele al
-* Bağımlılıkları yükselt

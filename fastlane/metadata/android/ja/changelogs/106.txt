@@ -1,6 +1,0 @@
-* MkQtS, Viktória Nagy, 109247019824, AbsurdUsername, Oğuz Ersen, Artem, Hin Weisner に感謝します。
-  翻訳を改善しました。
-* Mozilla Lockwiseを製造中止としてマークする（情報を提供してくれたp0yskaaに感謝します）。
-* 終了したアプリが使用されている場合、警告を表示します。
-* UpdateCheckResultを環境設定にキャッシュするようにした - これは以前のキャッシュ方法よりも信頼性が高くなるはずです。
-* 色のコントラストを改善しました。

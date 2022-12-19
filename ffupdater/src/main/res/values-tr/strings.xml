@@ -294,4 +294,5 @@
     <string name="mulch__warning">- Mulch, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="fennecfdroid__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="fennecfdroid__description">Fennec F-Droid en son Firefox sürümüne (kod adı Fenix) dayanmaktadır. Açık kaynaklı olmayan bitler ve telemetri kaldırılmıştır, ancak yine de kullanıcıları izleyebilen çeşitli Mozilla ve Google hizmetlerine bağlanır.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Şu uygulamalar farklı sertifika parmak izlerine sahiptir ve FFUpdater tarafından yok sayılacaktır: %s. Kaldırarak ve ardından FFUpdater ile kurarak bunu düzeltebilirsiniz.</string>
 </resources>

@@ -1,1 +1,0 @@
-Versuche, den Fehler "Can't find signatures of the APK file." zu beheben

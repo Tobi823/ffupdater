@@ -1,2 +1,0 @@
-* 翻訳を改善してくれた109247019824、WaldiS、Oğuz Ersenに感謝します。
-* Kiwi Browserの追加 Next

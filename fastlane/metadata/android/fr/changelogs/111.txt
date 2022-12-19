@@ -1,0 +1,5 @@
+* Merci aux contributeurs de Weblate : WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS et Hin
+  Weisner
+* Amélioration du texte de notification lorsque la vérification de la mise à jour en arrière-plan échoue pendant cinq jours d'affilée (ancienne valeur : deux jours, mais trop faible pour certains).
+  jours, mais était trop faible pour certains utilisateurs).
+* Amélioration du rapport de crash et de l'horodatage de la dernière vérification de mise à jour en arrière-plan réussie.

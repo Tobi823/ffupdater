@@ -1,1 +1,0 @@
-* поправяне на срив, причинен от новата схема на имената на версиите на Firefox Nightly (Tobiwan/ffupdater#40 Tobiwan/ffupdater#66)

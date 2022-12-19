@@ -27,7 +27,7 @@
     <string name="notification__error__title">后台检查更新失败</string>
     <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
     <string name="brave__title">Brave 隐私浏览器</string>
-    <string name="brave__warning">- Brave 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。
+    <string name="brave__warning">- Brave 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
 \n- 由于其以太坊区块链上的 Basic Attention Token（BAT）技术，该项目与加密货币有联系。 区块链有很多问题，在我看来应该避免。</string>
     <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！
 \n尝试最新功能并给予早期反馈：https://brave.com/msupport
@@ -39,7 +39,7 @@
     <string name="brave_nightly__title">Brave 浏览器（每夜版）</string>
     <string name="bromite__description">Bromite 致力于提供清爽的浏览体验，无隐私侵害性功能，并附带一个快速的广告拦截引擎。应用了精简的用户界面，帮助抑制浏览器成为广告泛滥的平台。</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite 基于了 Google Chrome 的技术，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="bromite__warning">- Bromite 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎和相同功能。这使其代替成为 Android 系统默认浏览器成为可能。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
@@ -47,7 +47,7 @@
     <string name="crash_report__explain_text__download_activity_fetching_url">在拉取下载元数据时出现错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__explain_text__download_activity_install_file">安装过程中出现以下错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__explain_text__download_activity_update_check">在主视图中检查更新时出现错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
-    <string name="crash_report__explain_text__uncaught_throwable">FFUpdater 上次不幸崩溃了，此次错误已被记录。请在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__uncaught_throwable">上次 FFUpdater 不幸崩溃了，此错误已被记录。请在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__go_to_github">跳转到 GitHub</string>
     <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
     <string name="crash_report__got_to_notabug_org">跳转到 notabug.org</string>
@@ -143,7 +143,7 @@
     <string name="intent_installer__likely_storage_failure">该操作可能由于存储问题失败。例如，设备可能空间不足，或者外部存储媒介可能不可用。用户可以帮助释放存储空间或插入其他的的外部存储媒介。</string>
     <string name="kiwi__description">Kiwi 浏览器可以轻松浏览互联网、阅读新闻、观看视频和听音乐。</string>
     <string name="kiwi__title">Kiwi Next 浏览器</string>
-    <string name="kiwi__warning">- Kiwi 基于了 Google Chrome 的技术，从而间接维护了 Chromium 渲染引擎的垄断地位。
+    <string name="kiwi__warning">- Kiwi 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
 \n- Kiwi 不是一个理想的隐私浏览器，但其有良好的插件支持。
 \n- 搜索引擎会为使用 Kiwi 浏览器完成的每一次搜索而对其付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。
 \n- Kiwi 中的 Google Ads 可能会将位置数据用于广告——但您可以通过禁用发现功能来禁用它。但这一行为将很快发生变化。请参阅 https://privacy.kiwibrowser.org/ 了解更多详情。</string>
@@ -221,7 +221,7 @@
 \n
 \n在不登录 Google 帐户的情况下，Chromium 在安全和隐私方面做得很好。但 Chromium 仍然部分依赖于 Google 网络服务和二进制文件。此外，Google 对用户将 Chromium 设计得非常简单直观，这意味着他们在内部操作的透明度和控制方面做出了妥协。</string>
     <string name="ungoogled_chromium__title">去 Google 化（Ungoogled）Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium 使用了 Google Chrome 的技术基础，从而间接维护了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="unsupported_abi_dialog__message">所选浏览器与您手机的处理器不兼容。请选择其他浏览器。</string>
     <string name="unsupported_abi_dialog__title">不支持的设备</string>
     <string name="update_interval__12h">12 小时</string>
@@ -249,7 +249,7 @@
     <string name="vivaldi__description">来了解速度极快的网络浏览器！Vivaldi 是一款时时注重灵活性的新型、免费和隐私的网络浏览器。它包含了内置的广告拦截器（弹出窗口拦截器）、跟踪保护和隐私翻译等有用的功能。合适的桌面样式选项卡、深色/浅色主题和布局选择等浏览器选项可帮助您将其打造为您的专属浏览器。</string>
     <string name="vivaldi__title">Vivaldi 浏览器</string>
     <string name="vivaldi__warning">- Vivaldi 只有部分开源。
-\n- 它还使用了 Google Chrome 的技术基础，从而间接维护了 Chromium 渲染引擎的垄断地位。</string>
+\n- 它还使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="mull__title">Mull 浏览器</string>
     <string name="mull__description">这是一款基于 Mozilla 技术、以隐私为导向的完全开源的网页浏览器。其使用了 arkenfox-user.js 项目的偏好设置，开启了许多以 Tor Uplift 项目为上游实现的功能。推荐同时安装 \'uBlock Origin\' 扩展。</string>
     <string name="mull__warning">FFUpdater 要从 F-Droid 服务器下载文件，因此速度不会更快。</string>
@@ -279,5 +279,12 @@
     <string name="settings__network__trust_user_cas__summary">如果数据流量应该由其他应用程序检查和更改，则启用。如果不确定，请禁用此选项。</string>
     <string name="settings__network__trust_user_cas__title">信任用户添加的证书</string>
     <string name="chromium__title">Chromium</string>
-    <string name="chromium__warning">- Chromium 使用了 Google Chrome 的技术基础，因此间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="chromium__warning">- Chromium 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="mulch__description">这是一个安全导向的基于 Chromium 强化的网络浏览器。由于 Vanadium 项目的补丁，许多不被欢迎的特性被禁用/删除，少数安全功能被启用/添加。源代码库还包括预构建和生成文件，以便其他操作系统将 Mulch 作为系统 WebView。</string>
+    <string name="mulch__warning">- Mulch 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="fennecfdroid__warning">FFUpdater 从 F-Droid 服务器下载文件，因此速度不理想。</string>
+    <string name="fennecfdroid__description">Fennec F-Droid 基于最新版本的 Firefox（代号 Fenix）。它删除了专有代码和遥测，但仍会连接到一些跟踪用户的 Mozilla 和 Google 服务。</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">以下应用因签名不同将被 FFUpdater 忽略：%s。要修复此问题，您可以在卸载这些应用后通过 FFUpdater 重新安装。</string>
 </resources>

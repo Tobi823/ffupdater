@@ -1,5 +1,0 @@
-* Добавьте Brave Beta и Brave Nightly.
-* Добавьте перевод на турецкий язык (спасибо metezd - Tobi823/ffupdater#129)
-* Добавьте Bromite SystemWebView
-* Поддержка бесшумных фоновых обновлений для Android 12+ и рутированных устройств
-* Попробуйте улучшить SessionInstaller

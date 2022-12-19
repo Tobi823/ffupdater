@@ -1,0 +1,3 @@
+* Ευχαριστούμε για τη συνεισφορά τους στο Weblate, τους: Jacek, Gallegonovato, AtilluF, 109247019824, Nautilusx, Juraj
+   Motuz, Giovanni Donisi και Oğuz Ersen
+* Διορθώθηκε το σφάλμα ενημέρωσης Kiwi: Αγνόησή των εκδόσεων του GitHub χωρίς αρχεία APK

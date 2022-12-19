@@ -1,2 +1,0 @@
-* Naprawić błąd "nie można zainstalować nowej aplikacji".
-* Dodać rosyjskie tłumaczenie do changelogu (dzięki Nickoriginal - Tobi823/ffupdater#127)

@@ -1,2 +1,0 @@
-* Behebt den Fehler "kann keine neue App installieren".
-* Russische Übersetzung für das Changelog hinzugefügt (danke Nickoriginal - Tobi823/ffupdater#127)

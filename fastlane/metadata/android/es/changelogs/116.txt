@@ -1,0 +1,3 @@
+* Gracias por la contribución en Weblate de: Jacek, nautilusx, 109247019824, gallegonovato, Juraj Motuz, Oğuz
+  Ersen y atilluF
+* Arreglar la comprobación de la actualización de Kiwi

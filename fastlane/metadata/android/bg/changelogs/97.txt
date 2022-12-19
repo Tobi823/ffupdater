@@ -1,5 +1,0 @@
-* Добавени са Brave Beta и Brave Nightly
-* Добавен превод на турски (благодарение на metezd - Tobi823/ffupdater#129)
-* Добавен Bromite SystemWebView
-* Поддръжка на обновявания във фонов режим за Android 12+ и за устройства с достъп до суперпотребител
-* Опит за подобряване на SessionInstaller

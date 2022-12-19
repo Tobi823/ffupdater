@@ -1,3 +1,5 @@
-* Podziękowania dla współtwórców Weblate: TODO
-* Popraw tekst powiadomienia, gdy sprawdzanie aktualizacji w tle nie powiedzie się przez pięć dni z rzędu (stara wartość: dwa
+* Podziękowania dla współtwórców Weblate: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS and Hin
+  Weisner
+* Poprawiono tekst powiadomienia, gdy sprawdzanie aktualizacji w tle nie powiedzie się przez pięć dni z rzędu (stara wartość: dwa
   dni, ale była zbyt niska dla niektórych użytkowników)
+* Poprawiono raport o awariach i znacznik czasu ostatniego udanego sprawdzenia aktualizacji tła

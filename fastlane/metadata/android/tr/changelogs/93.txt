@@ -1,5 +1,0 @@
-* İtalyanca çeviri eklendi (teşekkürler Giovanni - Tobi823/ffupdater#111)
-* Bulgarca çeviri güncellendi (teşekkürler StoyanDimitrov - Tobi823/ffupdater#119)
-* Rusça çeviri güncellendi (teşekkürler Nickoriginal - Tobi823/ffupdater#116)
-* Brezilya Portekizcesi çevirisi güncellendi (teşekkürler Ghost ve ms - Tobiwan/ffupdater#98)
-* Bağımlılıklar güncellendi

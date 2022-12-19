@@ -1,1 +1,0 @@
-* Correction d'un plantage de l'installateur de session sur les appareils OnePlus (Tobi823/ffupdater#153)

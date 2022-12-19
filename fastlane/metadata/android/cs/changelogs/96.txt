@@ -1,2 +1,0 @@
-* Opravte chybu "Nelze nainstalovat novou aplikaci"
-* Přidat ruský překlad pro Changelog (Díky Nickoriginal - Tobi823/ffupdater#127)

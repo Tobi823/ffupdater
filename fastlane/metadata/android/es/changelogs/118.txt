@@ -1,0 +1,6 @@
+* Mull (versión F-Droid) ya no es compatible. Por favor, cambie a Mull (versión divestos.org) instalándola con FFUpdater o utilice F-Droid para actualizar Mull (versión F-Droid)
+* Mejorar el manejo de las aplicaciones con diferentes huellas digitales de certificados
+* arreglado el fallo al actualizar Mulch para dispositivos arm32
+* arreglado el fallo al actualizar FennecFdroid.kt para dispositivos arm32
+* añadir pruebas de unidad
+* Limpiar

@@ -1,1 +1,0 @@
-* Intente solucionar el problema "No se pueden encontrar las firmas del archivo APK"

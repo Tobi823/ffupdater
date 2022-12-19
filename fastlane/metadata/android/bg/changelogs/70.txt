@@ -1,1 +1,0 @@
-* Добавете Brave Browser, защото APK файловете са публикувани отново в GitHub. (https://github.com/brave/brave-browser/issues/15878)

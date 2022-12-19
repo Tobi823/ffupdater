@@ -1,7 +1,0 @@
-* Премахване на Fennec Release, защото вече не се поддържа от Mozilla
- * Преименуване на Fenix Release, Fenix Beta и Fenix Nightly на Firefox Release, Firefox Beta, Firefox Nightly
- * Поправяне на URL адресите за изтегляне на Firefox Release, Firefox Beta, Firefox Nightly
- * Използване на по-надеждния метод PackageInstaller за инсталиране на приложенията (вместо стария метод ACTION_INSTALL_PACKAGE)
- * Увеличете минималния SDK за FFUpdater до Lollipop/21 (защото PackageInstaller се нуждае от 21, а всички браузъри Firefox се нуждаят от поне 21)
- * Отстраняване на грешка "празно поле за инсталиран текст"
- * Благодаря на trymeout, guysoft, rantpalas и RomainL972 за съобщаването на бъгове

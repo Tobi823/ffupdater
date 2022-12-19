@@ -1,0 +1,3 @@
+* Podziękowania za wkład w Weblate dla: Oğuz Ersen and 109247019824
+* Przywrócono Iceraven
+* Rekonstrukcja interfejsu, aby umożliwić pobieranie aplikacji które nie są już rozwijane

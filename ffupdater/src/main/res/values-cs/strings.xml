@@ -286,4 +286,5 @@
     <string name="mulch__warning">- Mulch používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="mulch__description">Tohle je prohlížeč zaměřený na ochranu soukromí založený na technologii Chromium. Mnoho antifunkcí je zakázáno/odstraněno a několik bezpečnostních funkcí je povoleno/přidáno díky záplatam z projektu Vanadium. Zdrojové repozitáře obsahují také předem sestavené soubory a makefile soubory, které umožňují ostatním operačním systémům začlenit Mulch jako systémový WebView prohlížeč.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Následující aplikace mají odlišné otisky certifikátů a FFUpdater je bude ignorovat: %s. To můžete napravit jejich odinstalováním a následnou instalací pomocí FFUpdater.</string>
 </resources>

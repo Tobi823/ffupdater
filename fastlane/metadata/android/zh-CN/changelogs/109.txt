@@ -1,3 +1,0 @@
-* 感谢 Juraj Motuz、Oğuz Ersen、WhiredPlanck、Deleted User、109247019824 和 Hin Weisner 对翻译的
-  改进。
-* 修复从应用程序或 APK 文件中提取签名的逻辑错误。

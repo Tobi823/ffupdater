@@ -1,9 +1,0 @@
-* Добавяне на браузър Iceraven
- * Показване на реалните налични версии за Release, Beta, Nightly, Focus и Klar
- * Намаляване на вероятността от фонови грешки
- * Отстраняване на проблеми с инсталирането на по-стари устройства
- * Мигриране от Java към Kotlin за по-добра едновременност
- * Благодаря на StoyanDimitrov за обновяването на българския превод
- * Поправки на грешки и много други
- * Благодаря на mega-stoffel, Iey4iej3, Redpillbug, NANASHI0X74, StoyanDimitrov, lucker999, codingepaduli, borisovg, H-Sachse, mpeter, DeenHyper74, duck-rh, mikeklem и darkludao за съобщенията за грешки
- * Благодаря на CharmCityCrab, TheOneWithTheBraid, codingepaduli и User1l0 за заявките за функции

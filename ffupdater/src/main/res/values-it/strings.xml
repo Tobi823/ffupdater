@@ -277,11 +277,12 @@
     <string name="settings__background__update_check__when_device_idle__unsupported">Questa opzione è disponibile solo su Android Marshmallow o versioni successive.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Attiva questa opzione se non desideri che le applicazioni vengano riavviate da un aggiornamento in background. Disattiva questa opzione se desideri una pianificazione più prevedibile per le verifiche degli aggiornamenti in background.</string>
     <string name="crash_report_activity__label">Segnalatore di arresti anomali</string>
-    <string name="add_app_activity__title_end_of_live_browser">Fine del browser live</string>
+    <string name="add_app_activity__title_end_of_live_browser">Browser a fine vita</string>
     <string name="mulch__title">Mulch</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid è basato sull\'ultima versione di Firefox (nome in codice Fenix). Sono stati rimossi i bit proprietari e la telemetria, ma si connette comunque a vari servizi di Mozilla e Google che possono tracciare gli utenti.</string>
     <string name="mulch__description">Si tratta di un browser web rafforzato e orientato alla sicurezza, basato sulla tecnologia Chromium. Molte anti-funzionalità sono state disabilitate o rimosse, e una manciata di funzionalità di sicurezza sono state abilitate o aggiunte grazie alle patch del progetto Vanadium. Il repository di origine include anche prebuilt e makefile per consentire ad altri sistemi operativi di includere Mulch come WebView di sistema.</string>
     <string name="mulch__warning">- Mulch usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="fennecfdroid__warning">FFUpdater scarica i file dai server di F-Droid e quindi non è più veloce di quest\'ultimo.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Le seguenti app hanno impronte digitali dei certificati diverse e saranno ignorate da FFUpdater: %s. È possibile risolvere il problema disinstallandole e poi installandole con FFUpdater.</string>
 </resources>

@@ -1,6 +1,0 @@
-* Děkujeme za WhiredPlanck, Juraj Motuz, 109247019824, AbsurdUsername, Oğuz Ersen, MkQtS, Hin Weisner a
-  Giovannimu Donisimu za vylepšení překladu.
-* Označte Ungoogled Chromium a Iceraven dočasně jako ukončené.
-* Přidejte prohlížeč Mull.
-* Zlepšení ukládání informací o aktualizacích do mezipaměti.
-* Přepracovat/vylepšit zdrojový kód.

@@ -1,0 +1,6 @@
+* Mull (F-Droid sürümü) artık desteklenmiyor. Lütfen FFUpdater ile kurarak Mull (divestos.org sürümüne) geçin veya Mull (F-Droid sürümünü) güncellemek için F-Droid'i kullanın
+* Farklı sertifika parmak izlerine sahip uygulamaların işlenmesi iyileştirildi
+* arm32 aygıtlar için Mulch güncelleme hatası düzeltildi
+* arm32 aygıtlar için FennecFdroid.kt güncelleme hatası düzeltildi
+* Birim testleri eklendi
+* Temizlik

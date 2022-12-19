@@ -1,5 +1,0 @@
-* 感谢 Hin Weisner、WhiredPlanck、Giovanni Donisi、Vitor Henrique、109247019824、AHOHNMYC、Oğuz Ersen、ToldYouThat 和 Francois Marier 对翻译的改进
-* 感谢 Francois Marier 修复 Brave 浏览器的更新逻辑——忽略未经质量保证系统测试的公测版和每夜版（Tobiwan/ffupdater#105）
-* 让 FFUpdater 更灵活地处理无法提取 APK 文件签名的情况
-* 更好地处理临时网络问题
-* 升级依赖

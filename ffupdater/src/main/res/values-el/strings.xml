@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="firefox_nightly__description">Λάβετε υπόψη ότι αυτή η εφαρμογή είχε τον τίτλο Firefox Preview. Τώρα έχει μεταφερθεί σε Firefox Nightly.
+\n
+\nΤο Firefox Nightly είναι ένα αναπτυξιακό κανάλι για νέες εκδόσεις του Mozilla Firefox.
+\n
+\nΤο Firefox Nightly έχει σχεδιαστεί για να παρουσιάζει τις πιο πειραματικές εκδόσεις του Firefox. Το κανάλι Nightly επιτρέπει στους χρήστες να βιώσουν τις πιο πρόσφατες καινοτομίες του Firefox σε ένα ασταθές περιβάλλον και να παρέχουν σχόλια σχετικά με τις λειτουργίες και την απόδοση για να προσδιορίσουν τι κάνει την τελική έκδοση.</string>
+    <string name="firefox_release__description">Το πρόγραμμα περιήγησης Firefox για Android είναι αυτόματα ιδιωτικό και απίστευτα γρήγορο. Χιλιάδες διαδικτυακοί ιχνηλάτες σας ακολουθούν καθημερινά, συλλέγοντας πληροφορίες σχετικά με το πού πηγαίνετε στο διαδίκτυο και μειώνοντας την ταχύτητά σας. Ο Firefox αποκλείει πάνω από 2000 από αυτούς τους ιχνηλάτες από προεπιλογή και υπάρχουν διαθέσιμα πρόσθετα αποκλεισμού διαφημίσεων εάν θέλετε να προσαρμόσετε το πρόγραμμα περιήγησής σας ακόμη περισσότερο. Με τον Firefox, θα έχετε την ασφάλεια που σας αξίζει και την ταχύτητα που χρειάζεστε σε ένα ιδιωτικό πρόγραμμα περιήγησης για κινητά.</string>
+    <string name="iceraven__description">Σίγουρα δεν σας το έφερε η Mozilla!
+\n
+\nΤο Iceraven Browser είναι ένα πρόγραμμα περιήγησης ιστού για Android, που βασίζεται στην έκδοση Fenix του Firefox, GeckoView και της Mozilla Android Components.
+\n
+\nΟ στόχος μας είναι να γίνουμε ο νέος Firefox για Android που επιδιώκει να παρέχει στους χρήστες περισσότερες επιλογές, περισσότερες ευκαιρίες προσαρμογής (συμπεριλαμβανομένης μιας βιβλιοθήκης ευρείας επέκτασης) και περισσότερες πληροφορίες σχετικά με τις σελίδες που επισκέπτονται και τον τρόπο με τον οποίο αλληλεπιδρούν τα προγράμματα περιήγησής τους αυτές οι σελίδες.</string>
+    <string name="app_icon">εικονίδιο εφαρμογής</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="app_warning_before_installation_dialog__title">Προειδοποίηση</string>
+    <string name="app_warning_dialog__title">Προειδοποίηση</string>
+    <string name="available_version">Διαθέσιμο: %1$s</string>
+    <string name="brave__description">Περιηγηθείτε ιδιωτικά στο διαδίκτυο, δωρεάν! Η εφαρμογή Brave Private Browser είναι το γρήγορο, δωρεάν και ασφαλές ιδιωτικό πρόγραμμα περιήγησης ιστού με πρόγραμμα αποκλεισμού διαφημίσεων και αποκλεισμού αναδυόμενων παραθύρων. Περιηγηθείτε και αναζητήστε ιδιωτικά στο διαδίκτυο χωρίς να παρακολουθείστε από διαφημιστές, κακόβουλο λογισμικό και αναδυόμενα παράθυρα.</string>
+    <string name="brave__title">Brave Private Browser</string>
+    <string name="brave__warning">- Το Brave χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.
+\n- Λόγω του Basic Attention Token BAT στο blockchain Ethereum, το έργο έχει δεσμούς με κρυπτονομίσματα. Τα Blockchain έχουν πολλά προβλήματα και πρέπει να αποφεύγονται κατά την άποψή μου.</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="brave_nightly__description">Καλώς ήρθατε στο Brave Nightly (Developer) για Android!
+\nΔοκιμάστε τις τελευταίες δυνατότητες και δώστε έγκαιρα σχόλια: https://brave.com/msupport
+\nΜπορείτε να εγκαταστήσετε το Brave Nightly μαζί με την τρέχουσα έκδοση του Brave για Android.</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="bromite_systemwebview__description">Το πακέτο SystemWebView περιέχει το βασικό πρόγραμμα περιήγησης/μηχανή απόδοσης του Bromite και τα ίδια χαρακτηριστικά του. Προσφέρει τη δυνατότητα αντικατάστασης του προεπιλεγμένου στοιχείου προγράμματος περιήγησης για ολόκληρο το σύστημα Android.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Αυτό το σφάλμα παρουσιάστηκε κατά την εγκατάσταση. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">Αυτό το σφάλμα παρουσιάστηκε κατά τον έλεγχο για ενημερώσεις στην κύρια προβολή. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Δυστυχώς, το FFUpdater συνετρίβη την τελευταία φορά και κατέγραψε αυτό το σφάλμα. Υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="crash_report__go_to_github">Μεταβείτε στο GitHub</string>
+    <string name="crash_report__go_to_gitlab">Μεταβείτε στο GitLab</string>
+    <string name="device_too_old_dialog__title">Η συσκευή είναι πολύ παλιά</string>
+    <string name="dialog_button__do_not_install">Όχι, μην το εγκαταστήσετε</string>
+    <string name="dialog_button__yes">Ναί</string>
+    <string name="notification__download_error__channel_descr">Εμφανίζεται όταν αποτυγχάνουν οι λήψεις ενημέρωσης στο παρασκήνιο.</string>
+    <string name="notification__download_error__descr">Η λήψη στο παρασκήνιο της ενημέρωσης %1$s απέτυχε. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να το αναφέρετε στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="notification__download_running__channel_name">Ειδοποίηση για λήψεις στο παρασκήνιο</string>
+    <string name="notification__download_running__text">%1$s (%2$s)</string>
+    <string name="notification__download_running__title">Λήψη ενημερώσεων εφαρμογών</string>
+    <string name="app_card__download_the_app">κατεβάστε την εφαρμογή</string>
+    <string name="notification__eol_apps__channel_description">Κανάλι ειδοποιήσεων για προειδοποιήσεις σχετικά με παλιές εφαρμογές.</string>
+    <string name="notification__eol_apps__channel_name">Ειδοποίηση παλιών εφαρμογών</string>
+    <string name="firefox_beta__title">Firefox για Android Beta</string>
+    <string name="firefox_beta__warning">- Αυτή η εφαρμογή έχει σχεδιαστεί για προγραμματιστές και δοκιμαστές. Μπορεί να περιέχει διάφορα σφάλματα που μπορεί να επηρεάσουν τη συνήθη εργασία σας με το πρόγραμμα περιήγησης.</string>
+    <string name="firefox_focus__title">Firefox Focus</string>
+    <string name="firefox_klar__title">Firefox Klar</string>
+    <string name="firefox_nightly__title">Firefox Nightly</string>
+    <string name="firefox_nightly__warning">- Αυτή η εφαρμογή έχει σχεδιαστεί για προγραμματιστές και δοκιμαστές. Μπορεί να περιέχει διάφορα σφάλματα που μπορεί να επηρεάσουν τη συνήθη εργασία σας με το πρόγραμμα περιήγησης.</string>
+    <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- Μια βελτιωμένη έκδοση του Firefox είναι επίσης διαθέσιμη στο F-Droid με το όνομα Fennec F-Droid.</string>
+    <string name="generic_eol_reason__browser_to_old">Το πρόγραμμα περιήγησης δεν έχει ενημερωθεί εδώ και πολύ καιρό, γι\' αυτό προτείνω να χρησιμοποιήσετε προσωρινά άλλο πρόγραμμα περιήγησης. Όταν οι προγραμματιστές κυκλοφορήσουν μια νέα ενημέρωση, θα αφαιρέσω αυτήν την προειδοποίηση.</string>
+    <string name="go_back">Πήγαινε πίσω</string>
+    <string name="iceraven__title">Iceraven Browser</string>
+    <plurals name="app_warning_before_installation_dialog__installation_question">
+        <item quantity="one">Το %1$s έχει το ακόλουθο πρόβλημα:
+\n
+\n%2$s
+\n
+\nΘέλετε ακόμα να εγκαταστήσετε το %1$s;</item>
+        <item quantity="other">Το %1$s έχει τα ακόλουθα προβλήματα:
+\n
+\n%2$s
+\n
+\nΘέλετε ακόμα να εγκαταστήσετε το %1$s;</item>
+    </plurals>
+    <plurals name="app_warning_dialog__message">
+        <item quantity="one">Το %1$s έχει το ακόλουθο πρόβλημα:
+\n
+\n%2$s</item>
+        <item quantity="other">Το %1$s έχει τα ακόλουθα προβλήματα:
+\n
+\n%2$s</item>
+    </plurals>
+    <string name="application_installation_was_not_successful">Η εγκατάσταση της εφαρμογής δεν ήταν επιτυχής</string>
+    <string name="action_about_title">Σχετικά με το FFUpdater</string>
+    <string name="app_card__app_warning_button_description">Εμφάνιση προειδοποιήσεων σχετικά με αυτήν την εφαρμογή</string>
+    <string name="app_description">Ενημέρωση για προγράμματα περιήγησης φιλικά προς το απόρρητο</string>
+    <string name="notification__error__text">Παρακαλώ αναφέρετε αυτό το σφάλμα. Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
+    <string name="notification__error__title">Ο έλεγχος ενημέρωσης παρασκηνίου απέτυχε</string>
+    <string name="available_version_error"><u>ΣΦΑΛΜΑ</u></string>
+    <string name="application_successfully_installed">Η εφαρμογή εγκαταστάθηκε με επιτυχία</string>
+    <string name="bromite__description">Το Bromite στοχεύει στην παροχή μιας εμπειρίας περιήγησης χωρίς ακαταστασία χωρίς λειτουργίες που επεμβαίνουν στο απόρρητο και με την προσθήκη ενός γρήγορου μηχανισμού αποκλεισμού διαφημίσεων. Εφαρμόζονται ελάχιστες αλλαγές διεπαφής χρήστη για να περιοριστεί η ιδέα του προγράμματος περιήγησης ως πλατφόρμας διαφήμισης.</string>
+    <string name="brave_beta__description">Καλώς ήρθατε στο Brave Beta για Android!
+\nΔοκιμάστε τις τελευταίες δυνατότητες και δώστε έγκαιρα σχόλια: https://brave.com/msupport
+\nΜπορείτε να εγκαταστήσετε το Brave Beta μαζί με την τρέχουσα έκδοση του Brave για Android.</string>
+    <string name="bromite__warning">- Το Bromite χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
+    <string name="crash_report__got_to_notabug_org">Μεταβείτε στο notabug.org</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Αντιγράψτε την αναφορά σφαλμάτων στο πρόχειρο</string>
+    <string name="crash_report__explain_text__download_activity_download_file">Παρουσιάστηκε το ακόλουθο σφάλμα κατά τη λήψη. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="firefox_focus__description">Αυτή είναι μια τροποποίηση του προγράμματος περιήγησης Firefox με στόχο την αύξηση του απορρήτου.</string>
+    <string name="firefox_klar__description">Το Firefox Klar έχει αναπτυχθεί για τη Γερμανία, την Αυστρία και την Ελβετία, αλλά μπορεί να χρησιμοποιηθεί από χρήστες σε οποιαδήποτε χώρα. Μοιάζει πολύ με το Firefox Focus, αλλά το όνομα άλλαξε στις γερμανόφωνες χώρες για να αποφευχθεί η σύγχυση με το περιοδικό Focus από τον όμιλο Hubert Burda Media. Σε αντίθεση με το Firefox Focus, ο Firefox Klar έχει απενεργοποιημένη την τηλεμετρία από προεπιλογή λόγω αυστηρών γερμανικών νόμων περί απορρήτου.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">Αυτό το σφάλμα προέκυψε κατά την ανάκτηση των μεταδεδομένων λήψης. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
+    <string name="device_too_old_dialog__message">Η εφαρμογή απαιτεί Android %1$s. Αλλά η συσκευή σας χρησιμοποιεί μόνο Android %2$s. Είτε επιλέξτε μια διαφορετική εφαρμογή, ενημερώστε το λειτουργικό σας σύστημα είτε μεταβείτε σε ένα νεότερο smartphone.</string>
+    <string name="notification__download_error__channel_name">Ειδοποίηση σχετικά με σφάλματα λήψης στο παρασκήνιο</string>
+    <string name="notification__download_error__text">Η λήψη στο παρασκήνιο της ενημέρωσης %1$s απέτυχε. Εάν αυτό το σφάλμα εμφανίζεται συχνά, κάντε κλικ εδώ για να δείτε την αναφορά σφάλματος.</string>
+    <string name="notification__eol_apps__title">Εγκαταστάθηκαν παλιές εφαρμογές</string>
+    <string name="notification__error__channel_descr">Εμφάνιση σφαλμάτων του ελεγκτή ενημέρωσης παρασκηνίου</string>
+    <string name="notification__error__channel_name">Σφάλματα παρασκηνίου</string>
+    <string name="notification__download_error__title">Η λήψη της ενημέρωσης στο παρασκήνιο απέτυχε</string>
+    <string name="notification__download_running__channel_descr">Εμφανίζεται όταν γίνεται λήψη ενημερώσεων εφαρμογών στο παρασκήνιο.</string>
+    <string name="notification__eol_apps__text">Έχετε παλιές εφαρμογές που δεν πρέπει να χρησιμοποιούνται πλέον. Κάντε κλικ για περισσότερες πληροφορίες.</string>
+    <string name="firefox_beta__description">Το πρόγραμμα περιήγησης Firefox για Android είναι αυτόματα ιδιωτικό και απίστευτα γρήγορο. Χιλιάδες διαδικτυακοί ιχνηλάτες σας ακολουθούν καθημερινά, συλλέγοντας πληροφορίες σχετικά με το πού πηγαίνετε στο διαδίκτυο και μειώνοντας την ταχύτητά σας. Ο Firefox αποκλείει πάνω από 2000 από αυτούς τους ιχνηλάτες από προεπιλογή και υπάρχουν διαθέσιμα πρόσθετα αποκλεισμού διαφημίσεων εάν θέλετε να προσαρμόσετε το πρόγραμμα περιήγησής σας ακόμη περισσότερο. Με τον Firefox, θα έχετε την ασφάλεια που σας αξίζει και την ταχύτητα που χρειάζεστε σε ένα ιδιωτικό πρόγραμμα περιήγησης για κινητά.</string>
+    <string name="iceraven__warning">- Ο συντηρητής δεν παρέχει εγγυήσεις ή εγγυήσεις ασφάλειας ή ενημερώσεων ή ακόμα και σταθερότητας.
+\n - Το έργο χρειάζεται περισσότερο από το συνηθισμένο για την παροχή ενημερώσεων ασφαλείας.</string>
+    <string name="infobox">Αυτό είναι ένα πρόγραμμα ενημέρωσης για προγράμματα περιήγησης φιλικά προς το απόρρητο. Κάντε κλικ στο κουμπί συν για να εγκαταστήσετε νέες εφαρμογές. Σύρετε προς τα κάτω για να κάνετε έλεγχο για νέες ενημερώσεις. Από προεπιλογή, η εφαρμογή θα ελέγχει περιοδικά για ενημερώσεις στο παρασκήνιο, οι οποίες στη συνέχεια θα ληφθούν και τελικά θα εγκατασταθούν. Κάντε κλικ στο γρανάζι για να προσαρμόσετε τη συμπεριφορά στις ρυθμίσεις.
+\n
+\nΤελευταίος επιτυχής έλεγχος ενημέρωσης παρασκηνίου: %1$s</string>
+    <string name="download_activity__sha_256_certificate_fingerprint">Δακτυλικό αποτύπωμα πιστοποιητικού SHA-256:</string>
+    <string name="download_activity__exception__show_button"><u>Εμφάνιση της λεπτομερούς αναφοράς σφάλματος.</u></string>
+    <string name="download_activity__external_storage_not_accessible">Ο εξωτερικός χώρος αποθήκευσης δεν είναι διαθέσιμος - δεν είναι δυνατή η έναρξη της λήψης. Η τρέχουσα κατάσταση είναι:</string>
+    <string name="download_activity__fetch_url_for_download">Λήψη μεταδεδομένων από %1$s</string>
+    <string name="download_activity__fetched_url_for_download_successfully">Λήφθηκαν μεταδεδομένα από %1$s</string>
+    <string name="download_activity__file_uri_exposed_toast">Δεν είναι δυνατή η έκθεση της διαδρομής του αρχείου σε άλλες εφαρμογές. Ανοίξτε τον φάκελο μόνοι σας με τον διαχειριστή αρχείων που προτιμάτε.</string>
+    <string name="download_activity__open_cache_explanation">Μπορείτε να ανοίξετε το φάκελο της προσωρινής μνήμης για να αντιγράψετε το αρχείο APK σε ένα μέρος με περισσότερο ελεύθερο χώρο αποθήκευσης. Δυστυχώς, στο Android 11+, μόνο λίγοι διαχειριστές αρχείων μπορούν να έχουν πρόσβαση σε αυτόν τον φάκελο στο Android/data.</string>
+    <string name="download_activity__temporary_network_issue">Παρουσιάστηκε ένα προσωρινό πρόβλημα δικτύου. Δοκιμάστε ξανά αργότερα.</string>
+    <string name="download_activity__too_low_memory_description">Ο αποθηκευτικός χώρος της συσκευής σας είναι χαμηλός (μόνο %1$d MB ελεύθερα). Αυτό θα οδηγήσει σε αποτυχία λήψης ή εγκατάστασης.</string>
+    <string name="download_activity__you_can_now_close_this_window">Μπορείτε να κλείσετε αυτό το παράθυρο τώρα</string>
+    <string name="install_new_app">Εγκατάσταση νέας εφαρμογής</string>
+    <string name="install_app">Εγκατάσταση Εφαρμογής</string>
+    <string name="install_same_version_dialog__message">Η πιο πρόσφατη έκδοση αυτής της εφαρμογής είναι ήδη εγκατεστημένη. Θέλετε να κατεβάσετε και να εγκαταστήσετε ξανά την πιο πρόσφατη έκδοση;</string>
+    <string name="install_same_version_dialog__title">Εγκατεστημένη η ίδια έκδοση</string>
+    <string name="notification__install_error__title">Δεν ήταν δυνατή η ενημέρωση του %1$s</string>
+    <string name="notification__install_error__channel_descr">Κανάλι ειδοποιήσεων για αποτυχημένες ενημερώσεις %1$s.</string>
+    <string name="notification__install_error__channel_name">%1$s ειδοποίηση αποτυχίας ενημέρωσης</string>
+    <string name="notification__install_error__text">Σφάλμα (%1$d): %2$s</string>
+    <string name="notification__install_success__channel_descr">Κανάλι ειδοποιήσεων για επιτυχημένες ενημερώσεις %1$s.</string>
+    <string name="notification__install_success__channel_name">%1$s ειδοποίηση επιτυχούς ενημέρωσης</string>
+    <string name="notification__install_success__text">Η εφαρμογή έχει ενημερωθεί στο παρασκήνιο.</string>
+    <string name="intent_installer__likely_storage_failure">Η λειτουργία πιθανότατα απέτυχε λόγω προβλημάτων αποθήκευσης. Για παράδειγμα, ο χώρος της συσκευής μπορεί να εξαντλείται ή τα εξωτερικά μέσα μπορεί να μην είναι διαθέσιμα. Ο χρήστης μπορεί να βοηθήσει στην απελευθέρωση χώρου ή στην εισαγωγή διαφορετικών εξωτερικών μέσων.</string>
+    <string name="kiwi__warning">- Το Kiwi χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.
+\n- Το Kiwi δεν είναι ένα ιδανικό πρόγραμμα περιήγησης απορρήτου, αλλά έχει καλή υποστήριξη πρόσθετων.
+\n- Το πρόγραμμα περιήγησης πληρώνεται από τις μηχανές αναζήτησης για κάθε αναζήτηση που γίνεται χρησιμοποιώντας το πρόγραμμα περιήγησης Kiwi. Ανάλογα με την επιλογή της μηχανής αναζήτησης, τα αιτήματα μπορεί να υποβάλλονται μέσω διακομιστών Kiwibrowser / Kiwisearchservices.
+\n- Το Google Ads στο Kiwi μπορεί να χρησιμοποιεί τα δεδομένα τοποθεσίας για διαφημίσεις - αλλά μπορείτε να τα απενεργοποιήσετε απενεργοποιώντας τη λειτουργία Discovery. Αυτό όμως θα αλλάξει σύντομα. Δείτε https://privacy.kiwibrowser.org/ για περισσότερες λεπτομέρειες.</string>
+    <string name="request_installation_permission_dialog__grant_permission">Χορήγηση άδειας</string>
+    <string name="request_installation_permission_dialog__message">Το FFUpdater δεν έχει το δικαίωμα εγκατάστασης και ενημέρωσης εφαρμογών. Πρέπει να παραχωρήσετε αυτά τα δικαιώματα διαφορετικά το FFUpdater δεν θα λειτουργήσει.</string>
+    <string name="running_downloads_dialog__yes">Ναί</string>
+    <string name="running_downloads_dialog__message">Η εφαρμογή κατεβάζει ενημερώσεις στο παρασκήνιο τώρα. Θέλετε να ξεκινήσετε μια νέα λήψη που μπορεί να διαρκέσει περισσότερο;</string>
+    <string name="session_installer__not_enough_storage">Η λειτουργία απέτυχε επειδή δεν υπάρχει αρκετός χώρος αποθήκευσης: %1$s</string>
+    <string name="session_installer__require_user_interaction">Απαιτείται αλληλεπίδραση με τον χρήστη. Πρέπει πρώτα να ενημερώσετε την εφαρμογή μέσω της διεπαφής χρήστη του FFUpdater. Μόνο τότε θα επιτρέπονται οι σιωπηλές ενημερώσεις παρασκηνίου για την αντίστοιχη εφαρμογή.</string>
+    <string name="session_installer__status_failure_aborted">Η επιχείρηση απέτυχε επειδή ματαιώθηκε ενεργά. Για παράδειγμα, ο χρήστης απέρριψε ενεργά τα ζητούμενα δικαιώματα ή η περίοδος λειτουργίας εγκαταλείφθηκε.</string>
+    <string name="session_installer__status_failure_conflict">Η λειτουργία απέτυχε επειδή έρχεται σε διένεξη (ή δεν συνάδει με) με άλλο πακέτο που είναι ήδη εγκατεστημένο στη συσκευή. Για παράδειγμα, μια υπάρχουσα άδεια, μη συμβατά πιστοποιητικά κ.λπ. Ο χρήστης ενδέχεται να μπορεί να απεγκαταστήσει μια άλλη εφαρμογή για να διορθώσει το πρόβλημα.</string>
+    <string name="session_installer__status_failure_incompatible">Η λειτουργία απέτυχε επειδή είναι ουσιαστικά ασύμβατη με αυτήν τη συσκευή. Για παράδειγμα, η εφαρμογή μπορεί να απαιτεί μια δυνατότητα υλικού που δεν υπάρχει, μπορεί να λείπει ο εγγενής κώδικας για τα ABI που υποστηρίζονται από τη συσκευή ή να απαιτεί μια νεότερη έκδοση SDK κ.λπ.</string>
+    <string name="session_installer__status_failure_storage">Η λειτουργία απέτυχε λόγω προβλημάτων αποθήκευσης. Για παράδειγμα, ο χώρος της συσκευής μπορεί να εξαντλείται ή τα εξωτερικά μέσα μπορεί να μην είναι διαθέσιμα. Ο χρήστης μπορεί να βοηθήσει στην απελευθέρωση χώρου ή στην εισαγωγή διαφορετικών εξωτερικών μέσων.</string>
+    <string name="notification__no_update_check__channel_name">Δεν υπάρχει έλεγχος ενημέρωσης παρασκηνίου</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Διαγραφή της ληφθέν ενημέρωσης εάν η εγκατάσταση αποτύχει.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Διαγραφή της ληφθέν ενημέρωσης εάν η εγκατάσταση είναι επιτυχής.</string>
+    <string name="settings__background__update_check__metered__title">Έλεγχος ενημέρωσης σε μετρήσιμα δίκτυα</string>
+    <string name="update_notification__text">Κάντε κλικ για να εγκαταστήσετε την ενημέρωση</string>
+    <string name="settings__background__update_check__interval__title">Διάστημα ελέγχου ενημέρωσης</string>
+    <string name="ungoogled_chromium__description">Google Chromium, χωρίς ενσωμάτωση με την Google.
+\n
+\nΧωρίς σύνδεση σε Λογαριασμό Google, το Chromium τα πάει πολύ καλά όσον αφορά την ασφάλεια και το απόρρητο. Ωστόσο, το Chromium εξακολουθεί να εξαρτάται από τις υπηρεσίες ιστού και τα δυαδικά αρχεία της Google. Επιπλέον, η Google σχεδίασε το Chromium ώστε να είναι εύκολο και διαισθητικό για τους χρήστες, πράγμα που σημαίνει ότι συμβιβάζονται με τη διαφάνεια και τον έλεγχο των εσωτερικών λειτουργιών.</string>
+    <string name="settings__background_category__summary">Ρυθμίσεις όταν η εφαρμογή λειτουργεί στο παρασκήνιο και είναι αόρατη στον χρήστη.</string>
+    <string name="settings__background_category__title">Παρασκήνιο</string>
+    <string name="settings__foreground__download__metered__title">Λήψη ενημερώσεων για μετρήσιμα δίκτυα</string>
+    <string name="update_interval__6h">6 ώρες</string>
+    <string name="update_notification__title">Διαθέσιμη ενημέρωση για %1$s</string>
+    <string name="vivaldi__description">Ανακαλύψτε ένα απίστευτα γρήγορο πρόγραμμα περιήγησης στο Διαδίκτυο! Το Vivaldi είναι ένα νέο, δωρεάν και ιδιωτικό πρόγραμμα περιήγησης ιστού που δημιουργήθηκε με γνώμονα την ευελιξία. Έρχεται γεμάτο με χρήσιμες λειτουργίες, όπως ένα ενσωματωμένο AdBlocker (μπλοκάρισμα αναδυόμενων παραθύρων), προστασία παρακολούθησης και ιδιωτική μετάφραση. Οι επιλογές του προγράμματος περιήγησης, όπως οι κατάλληλες καρτέλες σε στυλ επιφάνειας εργασίας, τα σκούρα/ανοιχτόχρωμα θέματα και οι επιλογές διάταξης σάς βοηθούν να το κάνετε δικό σας.</string>
+    <string name="mull__description">Αυτό είναι ένα πρόγραμμα περιήγησης ιστού με γνώμονα το απόρρητο και αφαιρεθεί το blobbed που βασίζεται στην τεχνολογία Mozilla. Επιτρέπει πολλές δυνατότητες που προέρχονται από το έργο Tor Uplift χρησιμοποιώντας προτιμήσεις από το έργο arkenfox-user.js. Συνιστάται η εγκατάσταση του \'uBlock Origin\'.</string>
+    <string name="notification__no_update_check__channel_description">Κανάλι ειδοποίησης για προειδοποίηση ότι κανένας έλεγχος ενημέρωσης παρασκηνίου δεν ήταν επιτυχής τις τελευταίες πέντε ημέρες.</string>
+    <string name="notification__no_update_check__title">Κανένας επιτυχής έλεγχος ενημέρωσης παρασκηνίου εδώ και πέντε ημέρες</string>
+    <string name="app_card__open_project_page">Ανοίξτε τη σελίδα του έργου στο πρόγραμμα περιήγησης</string>
+    <string name="notification__no_update_check__text">Τις τελευταίες πέντε ημέρες το FFUpdater δεν ήταν σε θέση να ελέγξει για ενημερώσεις στο παρασκήνιο. Εάν είχατε το smartphone σας σε λειτουργία πτήσης για μεγάλο χρονικό διάστημα, μπορείτε να αγνοήσετε αυτό το μήνυμα. Εάν όχι, κάντε κλικ εδώ για να δείτε την αναφορά σφάλματος.</string>
+    <string name="ungoogled_chromium__eol_reason">Ο προγραμματιστής δημοσίευσε: \"Δεν θα μπορώ να ενημερώσω τις εκδόσεις για κάποιο χρονικό διάστημα. Εάν είναι δυνατόν, χρησιμοποιήστε ένα από τα προγράμματα περιήγησης [που υποστηρίζει το FFUpdater] στο μεταξύ.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Το Tor Browser για Android είναι το μόνο επίσημο πρόγραμμα περιήγησης για κινητά που υποστηρίζεται από το Tor Project, τους προγραμματιστές του ισχυρότερου εργαλείου στον κόσμο για την ιδιωτικότητα και την ελευθερία στο διαδίκτυο.</string>
+    <string name="orbot__description">Το Orbot είναι μια δωρεάν εφαρμογή διακομιστή μεσολάβησης που δίνει τη δυνατότητα σε άλλες εφαρμογές να χρησιμοποιούν το διαδίκτυο με μεγαλύτερη ασφάλεια. Το Orbot χρησιμοποιεί το Tor για να κρυπτογραφήσει την κυκλοφορία σας στο Διαδίκτυο και στη συνέχεια το κρύβει αναπηδώντας μέσα από μια σειρά υπολογιστών σε όλο τον κόσμο. Το Tor είναι δωρεάν λογισμικό και ένα ανοιχτό δίκτυο που σας βοηθά να αμυνθείτε ενάντια σε μια μορφή επιτήρησης δικτύου που απειλεί την προσωπική ελευθερία και ιδιωτικότητα, τις εμπιστευτικές επιχειρηματικές δραστηριότητες και σχέσεις και την κρατική ασφάλεια, γνωστή ως ανάλυση κυκλοφορίας.</string>
+    <string name="chromium__description">Το Chromium είναι ένα έργο προγράμματος περιήγησης ανοιχτού κώδικα που στοχεύει να δημιουργήσει έναν ασφαλέστερο, ταχύτερο και πιο σταθερό τρόπο για όλους τους χρήστες να βιώσουν τον ιστό. Αυτός ο ιστότοπος περιέχει έγγραφα σχεδίασης, επισκοπήσεις αρχιτεκτονικής, πληροφορίες δοκιμών και πολλά άλλα για να σας βοηθήσει να μάθετε να δημιουργείτε και να εργάζεστε με τον πηγαίο κώδικα του Chromium.</string>
+    <string name="mulch__description">Αυτό είναι ένα πρόγραμμα περιήγησης ιστού προσανατολισμένο στην ασφάλεια και σκληρυμένο και βασίζεται στην τεχνολογία Chromium. Πολλά αντι-χαρακτηριστικά απενεργοποιούνται/καταργούνται και ορισμένες δυνατότητες ασφαλείας ενεργοποιούνται/προστίθενται χάρη σε ενημερώσεις κώδικα από το έργο Vanadium. Το αποθετήριο πηγής περιλαμβάνει επίσης προκατασκευασμένα αρχεία και makefiles που επιτρέπουν σε άλλα λειτουργικά συστήματα να περιλαμβάνουν το Mulch ως το σύστημά τους WebView.</string>
+    <string name="mulch__warning">- Το Mulch χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="fennecfdroid__description">Το Fennec F-Droid βασίζεται στην τελευταία έκδοση του Firefox (με την κωδική ονομασία Fenix). Έχει αφαιρεθεί τα ιδιόκτητα bit και η τηλεμετρία, αλλά εξακολουθεί να συνδέεται με διάφορες υπηρεσίες Mozilla και Google που μπορούν να παρακολουθούν τους χρήστες.</string>
+    <string name="fennecfdroid__warning">Το FFUpdater κατεβάζει τα αρχεία από τους διακομιστές F-Droid και επομένως δεν είναι πιο γρήγορο.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Οι ακόλουθες εφαρμογές έχουν διαφορετικά δακτυλικά αποτυπώματα πιστοποιητικού και θα αγνοηθούν από το FFUpdater: %s. Μπορείτε να το διορθώσετε απεγκαταστώντας τα και στη συνέχεια εγκαθιστώντας τα με το FFUpdater.</string>
+    <string name="app_card__information_about_the_app">Πληροφορίες σχετικά με την εφαρμογή</string>
+    <string name="download_activity__delete_cache_button_text">εκκαθάριση προσωρινής μνήμης</string>
+    <string name="download_activity__delete_cache_explanation">Εάν πιστεύετε ότι το FFUpdater έχει αποθηκεύσει στην προσωρινή μνήμη μια ελαττωματική ενημέρωση εφαρμογής ή εάν θέλετε να εξοικονομήσετε χώρο, κάντε κλικ στο κουμπί για να διαγράψετε το ληφθέν αρχείο.</string>
+    <string name="download_activity__different_installer_info__text">Εάν η εγκατάσταση αποτυγχάνει συχνά, δοκιμάστε να μεταβείτε στο \"εγγενές πρόγραμμα εγκατάστασης\" στις ρυθμίσεις.</string>
+    <string name="download_activity__download_app_with_status">Λήψη εφαρμογής (%1$s)</string>
+    <string name="download_activity__download_failed">Η λήψη απέτυχε</string>
+    <string name="download_activity__downloaded_application_from">Κατέβασε την εφαρμογή από:</string>
+    <string name="download_activity__downloaded_application_is_not_verified">Η εφαρμογή που κατεβάσατε ΔΕΝ έχει επαληθευτεί</string>
+    <string name="download_activity__github_rate_limit_exceeded">Υπέρβαση του ορίου ρυθμού GitHub-API. Δοκιμάστε τη λήψη ξανά την επόμενη ώρα.</string>
+    <string name="download_activity__open_cache_folder_button_text">ανοίξτε το φάκελο της προσωρινής μνήμης</string>
+    <string name="download_activity__open_folder">Άνοιγμα φακέλου</string>
+    <string name="download_activity__too_low_memory_title">Λίγος Χώρος στο Δίσκο</string>
+    <string name="download_activity__use_cached_downloaded_apk">Χρησιμοποιήστε ένα ήδη ληφθέν αρχείο από:</string>
+    <string name="download_activity__label">Λήψη Εφαρμογής</string>
+    <string name="notification__install_success__title">Το %1$s ενημερώθηκε</string>
+    <string name="installed_app_is_not_verified">Η εγκατεστημένη εφαρμογή ΔΕΝ έχει επαληθευτεί</string>
+    <string name="installed_application_is_verified">Η εγκατεστημένη εφαρμογή έχει επαληθευτεί</string>
+    <string name="installed_version">Εγκατεστημένο: %1$s</string>
+    <string name="kiwi__description">Το Kiwi Browser είναι φτιαγμένο για να περιηγείται στο διαδίκτυο, να διαβάζει ειδήσεις, να παρακολουθεί βίντεο και να ακούει μουσική, χωρίς ενοχλήσεις.</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="lockwise__description">ΠΡΟΣΒΑΣΗ ΚΩΔΙΚΟΣ ΓΙΑ ΕΣΑΣ, &amp; ΜΟΝΟ ΕΣΑΣ
+\n
+\nΠαρακολουθήστε με ασφάλεια τους κωδικούς πρόσβασης του Firefox και αποκτήστε πρόσβαση σε αυτούς οπουδήποτε. Ανοίξτε γρήγορα οποιονδήποτε ιστότοπο από την εφαρμογή για να μπείτε στους λογαριασμούς σας.</string>
+    <string name="lockwise__eol_reason">Η Mozilla διέκοψε την υποστήριξη τον Δεκέμβριο του 2021. Μεταβείτε σε άλλο χρηματοκιβώτιο κωδικού πρόσβασης.</string>
+    <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__available_version_loading">Φόρτωση…</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Υπέρβαση του ορίου GitHub-API. Δοκιμάστε ξανά την επόμενη ώρα.</u></string>
+    <string name="main_activity__subtitle">Ενημέρωση για προγράμματα περιήγησης φιλικά προς το απόρρητο</string>
+    <string name="main_activity__temporary_network_issue"><u>Προσωρινό πρόβλημα δικτύου. Δοκιμάστε ξανά αργότερα.</u></string>
+    <string name="manage_storage_activity__delete_button">Διαγραφή αποθηκευμένων ενημερώσεων εφαρμογών.</string>
+    <string name="manage_storage_activity__explanation">Το FFUpdater αποθηκεύει προσωρινά τις ενημερώσεις εφαρμογών που έχουν ήδη ληφθεί και τις αποθηκεύει στο φάκελο \"Android/data/de.marmaro.krt.ffupdater/files/Download\".
+\n
+\nΑυτό εξοικονομεί εύρος ζώνης όταν μια εφαρμογή δεν εγκατασταθεί ή δεν ενημερωθεί με επιτυχία. Επίσης, απαιτείται η προσωρινή μνήμη, ώστε οι ενημερώσεις που λήφθηκαν στο παρασκήνιο να μπορούν να εγκατασταθούν αργότερα.
+\n
+\nΕάν αποφασίσετε να διαγράψετε αυτές τις ενημερώσεις εφαρμογών, ίσως χρειαστεί να τις κατεβάσετε ξανά.</string>
+    <string name="ok">Εντάξει</string>
+    <string name="request_installation_permission_dialog__abort">Ματαίωση</string>
+    <string name="main_activity__no_unmetered_network">Δεν υπάρχει μη μετρήσιμo δίκτυο</string>
+    <string name="request_installation_permission_dialog__title">Άδεια εγκαταστάτη</string>
+    <string name="running_downloads_dialog__negative">Όχι, μην το κατεβάσετε</string>
+    <string name="running_downloads_dialog__title">Εκτελούνται λήψεις</string>
+    <string name="session_installer__status_failure">Η επέμβαση απέτυχε με γενικό τρόπο. Το σύστημα θα προσπαθεί πάντα να παρέχει μια πιο συγκεκριμένη αιτία αποτυχίας, αλλά σε ορισμένες σπάνιες περιπτώσεις μπορεί να παραδοθεί.</string>
+    <string name="session_installer__status_failure_blocked">Η λειτουργία απέτυχε επειδή μπλοκαρίστηκε. Για παράδειγμα, μια πολιτική συσκευής μπορεί να αποκλείει τη λειτουργία, ένας επαληθευτής πακέτου μπορεί να έχει μπλοκάρει τη λειτουργία ή η εφαρμογή μπορεί να απαιτείται για τη λειτουργία του βασικού συστήματος.</string>
+    <string name="session_installer__status_failure_invalid">Η λειτουργία απέτυχε επειδή ένα ή περισσότερα από τα APK δεν ήταν έγκυρα. Για παράδειγμα, μπορεί να είναι εσφαλμένα, διεφθαρμένα, εσφαλμένα υπογεγραμμένα, αναντιστοιχία κ.λπ.</string>
+    <string name="settings_activity__label">Ρυθμίσεις</string>
+    <string name="settings__background__download__enabled__summary">Όταν εντοπιστεί μια ενημέρωση, πραγματοποιήστε λήψη της. Αυτό θα επιταχύνει αργότερα τη διαδικασία ενημέρωσης.</string>
+    <string name="settings__background__download__enabled__title">Λήψη ενημερώσεων εφαρμογών</string>
+    <string name="settings__background__download__metered__summary">Δεν συνιστάται για χρήστες με περιορισμένα δεδομένα κινητής τηλεφωνίας.</string>
+    <string name="settings__background__installation__enabled__summary">Προσπαθήστε να εγκαταστήσετε ενημερώσεις χωρίς αλληλεπίδραση με τον χρήστη.</string>
+    <string name="settings__background__installation__enabled__title">Εγκατάσταση ενημέρωσης</string>
+    <string name="settings__background__download__metered__title">Λήψη ενημερώσεων εφαρμογών σε μετρήσιμα δίκτυα</string>
+    <string name="settings__background__update_check__enabled__summary">Ελέγχει για νέες ενημερώσεις σε τακτά χρονικά διαστήματα.</string>
+    <string name="settings__background__update_check__enabled__title">Έλεγχος ενημέρωσης</string>
+    <string name="settings__background__update_check__excluded_apps__summary">Χρήσιμο εάν δεν θέλετε να ενημερώσετε μια εφαρμογή και δεν θέλετε να λαμβάνετε ειδοποιήσεις ενημέρωσης για αυτήν.</string>
+    <string name="settings__background__update_check__excluded_apps__title">Εξαίρεση εφαρμογών από τον έλεγχο ενημέρωσης</string>
+    <string name="settings__foreground__hide_warning_buttons">Απόκρυψη του κουμπιού προειδοποίησης για την εγκατεστημένη εφαρμογή.</string>
+    <string name="settings__foreground__theme_preference__summary">Επιλέξτε ανάμεσα σε ανοιχτό και σκοτεινό θέμα</string>
+    <string name="settings__foreground__theme_preference__title">Επιλέξτε θέμα</string>
+    <string name="settings__foreground__update_check__metered__summary">Επιτρέπονται οι έλεγχοι ενημέρωσης σε μετρήσιμα δίκτυα, όπως δεδομένα κινητής τηλεφωνίας.</string>
+    <string name="settings__foreground__update_check__metered__title">Ενημέρωση ελέγχων σε μετρήσιμα δίκτυα</string>
+    <string name="settings__foreground_category__summary">Ρυθμίσεις όταν η διεπαφή χρήστη είναι ορατή.</string>
+    <string name="settings__foreground_category__title">Προσκήνιο</string>
+    <string name="settings__installer__native__summary">Υποχώρηση εάν το πρόγραμμα εγκατάστασης περιόδου λειτουργίας δεν λειτουργεί στο smartphone σας. Αυτό συμβαίνει συχνότερα με συσκευές Samsung ή Xiaomi.</string>
+    <string name="settings__installer__native__title">Εγγενής εγκατάσταση</string>
+    <string name="settings__installer__root__summary">Χρησιμοποιεί άδεια root για εγκατάσταση ή ενημέρωση εφαρμογών χωρίς αλληλεπίδραση με τον χρήστη. Αυτό απαιτεί ένα rooted smartphone.</string>
+    <string name="settings__installer__root__title">Εγκατάσταση Root</string>
+    <string name="settings__installer__session__summary">Συνιστάται για τις περισσότερες συσκευές.</string>
+    <string name="settings__installer__session__title">Πρόγραμμα εγκατάστασης συνεδρίας</string>
+    <string name="settings__installer_category__title">Εγκαταστάτης</string>
+    <string name="settings__theme_battery_saver">Σκοτεινό όταν είναι ενεργή η Εξοικονόμηση Mπαταρίας</string>
+    <string name="settings__theme_dark">Σκοτεινό</string>
+    <string name="settings__theme_light">Ανοιχτό</string>
+    <string name="settings__theme_system_default">Χρήση προεπιλογής συστήματος</string>
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="ungoogled_chromium__warning">- Το Ungoogled Chromium χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
+    <string name="unsupported_abi_dialog__message">Το επιλεγμένο πρόγραμμα περιήγησης δεν είναι συμβατό με τον επεξεργαστή του smartphone σας. Επιλέξτε διαφορετικό πρόγραμμα περιήγησης.</string>
+    <string name="unsupported_abi_dialog__title">Μη υποστηριζόμενη συσκευή</string>
+    <string name="update_interval__12h">12 ώρες</string>
+    <string name="update_interval__15min">15 λεπτά</string>
+    <string name="update_interval__18h">18 ώρες</string>
+    <string name="update_interval__1d">1 ημέρα</string>
+    <string name="update_interval__1h">1 ώρα</string>
+    <string name="update_interval__1m">1 μήνα</string>
+    <string name="update_interval__1w">1 εβδομάδα</string>
+    <string name="update_interval__2d">2 μέρες</string>
+    <string name="update_interval__2h">2 ώρες</string>
+    <string name="update_interval__2w">2 εβδομάδες</string>
+    <string name="update_interval__30min">30 λεπτά</string>
+    <string name="update_interval__3d">3 ημέρες</string>
+    <string name="update_interval__4d">4 ημέρες</string>
+    <string name="update_interval__4h">4 ώρες</string>
+    <string name="update_interval__5d">5 ημέρες</string>
+    <string name="update_interval__6d">6 ημέρες</string>
+    <string name="update_interval__8h">8 ώρες</string>
+    <string name="notification__update_available__channel_descr">Κανάλι ειδοποιήσεων για διαθέσιμες ενημερώσεις %1$s.</string>
+    <string name="notification__update_available__channel_name">%1$s ειδοποίηση ενημέρωσης</string>
+    <string name="vivaldi__title">Vivaldi Browser</string>
+    <string name="vivaldi__warning">- Το Vivaldi είναι μόνο εν μέρει ανοιχτού κώδικα.
+\n- Χρησιμοποιεί επίσης την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
+    <string name="mull__title">Mull Browser</string>
+    <string name="mull__warning">Το FFUpdater κατεβάζει τα αρχεία από τους διακομιστές F-Droid και επομένως δεν είναι πιο γρήγορο.</string>
+    <string name="orbot__title">Orbot: Tor για Android</string>
+    <string name="add_app_activity__label">Προσθήκη Νέας Εφαρμογής</string>
+    <string name="crash_report_activity__label">Αναφορά Συντριβής</string>
+    <string name="add_app_activity__title_from_mozilla">Από Mozilla</string>
+    <string name="add_app_activity__title_based_on_firefox">Βασισμένο στον Firefox</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Καλά Προγράμματα περιήγησης Απορρήτου</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Καλύτερο από το Google Chrome</string>
+    <string name="add_app_activity__title_other_applications">Άλλες Εφαρμογές</string>
+    <string name="add_app_activity__title_end_of_live_browser">Τέλος ζωής προγράμματος περιήγησης</string>
+    <string name="add_app_activity__add_new_application">Προσθήκη νέας εφαρμογής</string>
+    <string name="settings__network__trust_user_cas__summary">Ενεργοποίηση εάν η κυκλοφορία δεδομένων πρέπει να επιθεωρηθεί και να τροποποιηθεί από άλλες εφαρμογές. Εάν δεν είστε σίγουροι, διατηρήστε αυτήν την επιλογή απενεργοποιημένη.</string>
+    <string name="settings__network__trust_user_cas__title">Εμπιστευτείτε τις CA που προστέθηκαν από τους χρήστες</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__warning">- Το Chromium χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
+    <string name="settings__background__update_check__when_device_idle__title">Η ενημέρωση ελέγχει μόνο εάν η συσκευή είναι σε αδράνεια</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Ενεργοποιήστε αυτό εάν δεν θέλετε να γίνει επανεκκίνηση των εφαρμογών σας με μια ενημέρωση παρασκηνίου. Απενεργοποιήστε το εάν θέλετε ένα πιο προβλέψιμο χρονοδιάγραμμα για ελέγχους ενημέρωσης παρασκηνίου.</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Αυτή η επιλογή είναι διαθέσιμη μόνο σε Android Marshmallow ή νεότερη έκδοση.</string>
+    <string name="mulch__title">Mulch</string>
+</resources>

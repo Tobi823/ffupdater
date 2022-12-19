@@ -1,2 +1,0 @@
-* Çekçe çeviri eklendi (teşekkürler Juraj Motuz - Tobi823/ffupdater#122)
-* Android DownloadManager, OkHttp kütüphanesiyle değiştirildi

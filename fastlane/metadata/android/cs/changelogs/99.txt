@@ -1,6 +1,0 @@
-* Zlepšit překlady - díky:
-  * Oğuz Ersen: turečtina
-  * 109247019824: bulharština
-* Přidat možnost použití staršího nativního instalátoru pro zařízení, která mají chybnou implementaci PackageInstaller (např. Samsung a Xiaomi).
-* Lepší zobrazení varování/záporů pro jednotlivé prohlížeče
-* Vyčištění a refaktorizace kódu

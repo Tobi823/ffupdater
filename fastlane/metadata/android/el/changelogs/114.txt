@@ -1,0 +1,7 @@
+* Ευχαριστούμε για τη συνεισφορά τους στο Weblate, τους: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+   109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Εάν η ενημέρωση παρασκηνίου αποτύχει (λόγω αλληλεπίδρασης που λείπει από τον χρήστη), να εμφανίζεται το "η ενημέρωση είναι διαθέσιμη"
+   Ειδοποίηση
+* Διόρθωση του σφάλματος κατά τον έλεγχο για ενημερώσεις Mull (από το F-Droid).
+* Προσθήκη του Fennec από το F-Droid
+* Προσθήκη του Mulch

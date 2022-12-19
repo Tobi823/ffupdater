@@ -1,1 +1,0 @@
-* Corregir el bloqueo del instalador de sesiones en los dispositivos OnePlus (Tobi823/ffupdater#153)

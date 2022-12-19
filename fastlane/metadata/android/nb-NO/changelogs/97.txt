@@ -1,5 +1,0 @@
-* Brave Beta og Brave Nightly lagt til
-* Tyrkisk oversettelse ved metezd - Tobi823/ffupdater#129)
-* Bromite SystemWebView lagt til
-* Støtte for stille bakgrunnsoppgraderinger for Android 12+ og enheter med rot-tilgang
-* Forsøk på å forbedre økt-installasjonsprogrammet

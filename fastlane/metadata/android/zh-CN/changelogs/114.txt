@@ -1,0 +1,5 @@
+* 感谢 Weblate 的贡献者：gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz, 109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* 当后台升级失败（因缺失用户交互）时，显示“有更新可用”通知
+* 修复检查 Mull（来自 F-froid）更新时崩溃
+* 添加来自 F-froid 的 Fennec
+* 添加 Mulch
