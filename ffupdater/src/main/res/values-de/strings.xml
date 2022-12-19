@@ -284,7 +284,7 @@
     <string name="mulch__description">Dies ist ein sicherheitsorientierter und gehärteter Webbrowser, der auf der Chromium-Technologie basiert. Dank der Patches aus dem Vanadium-Projekt wurden viele Anti-Features deaktiviert/entfernt und eine Handvoll Sicherheitsfunktionen aktiviert/hinzugefügt. Das Quellcode-Repository enthält auch Prebuilts und Makefiles, die es anderen Betriebssystemen ermöglichen, Mulch als System-WebView einzubinden.</string>
     <string name="add_app_activity__title_good_privacy_browsers">Datenschutzfreundliche Browser</string>
     <string name="crash_report_activity__label">Crash Reporter</string>
-    <string name="settings__network__trust_user_cas__summary">Aktiviere diese Option, wenn der Datenverkehr von anderen Apps inspiziert und verändert werden soll. Wenn du unsicher bist, lass diese Option deaktiviert.</string>
+    <string name="settings__network__trust_user_cas__summary">Aktivieren, wenn der Datenverkehr von anderen Apps inspiziert und verändert werden soll. Bist du dir unsicher, lass diese Option deaktiviert.</string>
     <string name="settings__network__trust_user_cas__title">Vom Benutzer hinzugefügte CAs vertrauen</string>
     <string name="settings__background__update_check__when_device_idle__title">Aktualisierungsprüfungen nur, wenn das Gerät im Leerlauf ist</string>
     <string name="settings__background__update_check__when_device_idle__summary">Aktiviere diese Option, wenn du nicht möchtest, dass deine Apps durch eine Hintergrundaktualisierung neu gestartet werden. Deaktiviere diese Option, wenn du einen regelmäßigeren Zeitplan für die Überprüfung der Hintergrundaktualisierung haben möchtest.</string>
