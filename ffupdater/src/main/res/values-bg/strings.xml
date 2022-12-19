@@ -275,7 +275,7 @@
     <string name="add_app_activity__title_good_privacy_browsers">Добри поверителни четци</string>
     <string name="add_app_activity__title_better_than_google_chrome">По-добри от Гугъл Хром</string>
     <string name="add_app_activity__title_other_applications">Други приложения</string>
-    <string name="add_app_activity__title_end_of_live_browser">Изведени от употреба</string>
+    <string name="add_app_activity__title_end_of_live_browser">Изведени от употреба четци</string>
     <string name="add_app_activity__label">Добавяне на приложение</string>
     <string name="add_app_activity__add_new_application">Добавяне на приложение</string>
     <string name="settings__network__trust_user_cas__summary">Ако е отметнато трафикът може да бъде проверяван или променян от други приложения. Ако не сте сигурни, оставете без отметка.</string>
@@ -293,4 +293,5 @@
     <string name="fennecfdroid__description">Фенек от F-Droid е на основата на последното издание на Файърфокс (с кодово име Феникс). В него са премахнати собственическия код и телеметрията, но все още се свързва с различни услуги на Мозила и Гугъл, които могат да проследяват потребителите.</string>
     <string name="mulch__description">Това е ориентиран към сигурността и защитен мрежов четец, базиран на технологията на Хромиум. Много нежелани функции са изключени или премахнати, а няколко функции за сигурност са включени или добавени, благодарение на кръпки от проекта Ванадиум. Хранилището с изходния код включва също така предварителни настройки и makefiles, които позволяват на други операционни системи да включат Мулч като системен WebView.</string>
     <string name="main_activity__ignored_apps_due_fingerprints">Следните приложения имат различни отпечатъци на сертификатите и ще бъдат пренебрегнати от FFUpdater: %s. Можете да поправите това, като ги премахнете и след това инсталирате от FFUpdater.</string>
+    <string name="network__dns_provider__title">Настройки на DNS</string>
 </resources>
