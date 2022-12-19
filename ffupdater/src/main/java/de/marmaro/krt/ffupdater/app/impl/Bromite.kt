@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -11,6 +12,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
@@ -41,8 +43,14 @@ class Bromite(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+            supportedAbis,
+            deviceSettings.prefer32BitApks
+        )) {
             ABI.ARMEABI_V7A -> "arm_ChromePublic.apk"
             ABI.ARM64_V8A -> "arm64_ChromePublic.apk"
             ABI.X86 -> "x86_ChromePublic.apk"
@@ -61,7 +69,7 @@ class Bromite(
                 asset.name == fileName
             },
             dontUseApiForLatestRelease = false,
-            settings = settings
+            settings = networkSettings
         )
         // tag name can be "90.0.4430.59"
         Log.i(LOG_TAG, "found latest version ${result.tagName}")

@@ -4,12 +4,14 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
@@ -37,10 +39,13 @@ class MullFromRepo(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val abi = deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val abi = deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, deviceSettings.prefer32BitApks)
         val result = customRepositoryConsumer.getLatestUpdate(
-            settings = settings,
+            settings = networkSettings,
             "https://divestos.org/fdroid/official",
             packageName,
             abi

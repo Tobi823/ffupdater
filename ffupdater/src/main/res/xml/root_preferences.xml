@@ -156,7 +156,18 @@
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
-    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="Network">
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__device_category__title">
+
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="device__prefer_32bit_apks"
+            app:singleLineTitle="false"
+            app:summary="Enable if your device has really low memory."
+            app:title="Prefer 32-Bit APKs" />
+
+    </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
+
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__network_category__title">
 
         <SwitchPreferenceCompat
             app:defaultValue="false"
@@ -175,9 +186,9 @@
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
+            app:dialogMessage="@string/network__custom_doh_server__dialog_message"
             app:key="network__custom_doh_server"
             app:singleLineTitle="false"
-            app:dialogMessage="@string/network__custom_doh_server__dialog_message"
             app:summary="@string/network__custom_doh_server__summary"
             app:title="@string/network__custom_doh_server__title" />
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -11,6 +12,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
@@ -41,8 +43,14 @@ class UngoogledChromium(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+            supportedAbis,
+            deviceSettings.prefer32BitApks
+        )) {
             ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"
             ABI.ARM64_V8A -> "ChromeModernPublic_arm64.apk"
             ABI.X86 -> "ChromeModernPublic_x86.apk"
@@ -61,7 +69,7 @@ class UngoogledChromium(
                 asset.name == fileName
             },
             dontUseApiForLatestRelease = true,
-            settings = settings
+            settings = networkSettings
         )
 
         val extractVersion = {

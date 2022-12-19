@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -11,6 +12,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
@@ -40,14 +42,17 @@ class Vivaldi(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
         val content = try {
-            apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, settings, String::class).await()
+            apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, networkSettings, String::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
 
-        val (version, downloadUrl) = extractVersionAndDownloadUrl(content)
+        val (version, downloadUrl) = extractVersionAndDownloadUrl(content, deviceSettings)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
@@ -59,9 +64,12 @@ class Vivaldi(
         )
     }
 
-    private fun extractVersionAndDownloadUrl(content: String): Pair<String, String> {
+    private fun extractVersionAndDownloadUrl(
+        content: String,
+        settings: DeviceSettingsHelper
+    ): Pair<String, String> {
         val regexPattern =
-            when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+            when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, settings.prefer32BitApks)) {
                 ABI.ARMEABI_V7A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_armeabi-v7a.apk)""""
                 ABI.ARM64_V8A -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_arm64-v8a.apk)""""
                 ABI.X86_64 -> """<a href="(https://downloads.vivaldi.com/stable/Vivaldi.([.0-9]{1,24})_x86-64.apk)""""

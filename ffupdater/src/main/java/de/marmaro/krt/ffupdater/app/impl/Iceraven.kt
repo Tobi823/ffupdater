@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -11,6 +12,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
@@ -45,8 +47,14 @@ class Iceraven(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val fileSuffix = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val fileSuffix = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+            supportedAbis,
+            deviceSettings.prefer32BitApks
+        )) {
             ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
             ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
             ABI.X86 -> "browser-x86-forkRelease.apk"
@@ -65,7 +73,7 @@ class Iceraven(
                 asset.name.endsWith(fileSuffix)
             },
             dontUseApiForLatestRelease = false,
-            settings = settings
+            settings = networkSettings
         )
         val version = result.tagName.replace("iceraven-", "")
         Log.i(LOG_TAG, "found latest version $version")

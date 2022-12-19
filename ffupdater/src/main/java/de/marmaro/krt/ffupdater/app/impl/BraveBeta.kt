@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -12,6 +13,7 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
@@ -43,8 +45,11 @@ class BraveBeta(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val fileName = getNameOfApkFile()
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val fileName = getNameOfApkFile(deviceSettings)
         val result = consumer.updateCheck(
             repoOwner = "brave",
             repoName = "brave-browser",
@@ -58,7 +63,7 @@ class BraveBeta(
                 asset.name == fileName
             },
             dontUseApiForLatestRelease = true,
-            settings = settings
+            settings = networkSettings
         )
         val version = result.tagName.replace("v", "")
         Log.i(LOG_TAG, "found latest version $version")
@@ -72,9 +77,9 @@ class BraveBeta(
         )
     }
 
-    private fun getNameOfApkFile(): String {
+    private fun getNameOfApkFile(settings: DeviceSettingsHelper): String {
         val fileName = if (deviceSdkTester.supportsAndroidNougat()) {
-            when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+            when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, settings.prefer32BitApks)) {
                 ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
                 ABI.ARM64_V8A -> "BraveMonoarm64.apk"
                 ABI.X86 -> "BraveMonox86.apk"
@@ -82,7 +87,7 @@ class BraveBeta(
                 else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
             }
         } else {
-            when (deviceAbiExtractor.findBestAbiForDeviceAndApp(ARM32_X86)) {
+            when (deviceAbiExtractor.findBestAbiForDeviceAndApp(ARM32_X86, settings.prefer32BitApks)) {
                 ABI.ARMEABI_V7A -> "Bravearm.apk"
                 ABI.X86 -> "Bravex86.apk"
                 else -> throw IllegalArgumentException("ABI for Android 6 is not supported")

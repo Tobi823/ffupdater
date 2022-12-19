@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -11,6 +12,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 class FennecFdroid(
@@ -36,13 +38,19 @@ class FennecFdroid(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val index = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val index = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+            supportedAbis,
+            deviceSettings.prefer32BitApks
+        )) {
             ABI.ARMEABI_V7A -> 1
             ABI.ARM64_V8A -> 2
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = fdroidConsumer.getLatestUpdate(packageName, settings, index)
+        val result = fdroidConsumer.getLatestUpdate(packageName, networkSettings, index)
 
         Log.i(LOG_TAG, "found latest version ${result.versionName}")
         return LatestUpdate(

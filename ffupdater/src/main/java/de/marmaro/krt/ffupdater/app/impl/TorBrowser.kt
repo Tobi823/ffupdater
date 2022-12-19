@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -11,6 +12,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
@@ -53,9 +55,12 @@ class TorBrowser(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val (version, downloadUrl) = extractVersionAndDownloadUrl(settings)
-        val (date, size) = extractDateAndSize(settings, version)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val (version, downloadUrl) = extractVersionAndDownloadUrl(networkSettings, deviceSettings)
+        val (date, size) = extractDateAndSize(networkSettings, deviceSettings, version)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
@@ -67,14 +72,17 @@ class TorBrowser(
         )
     }
 
-    private suspend fun extractVersionAndDownloadUrl(settings: NetworkSettingsHelper): Pair<String, String> {
+    private suspend fun extractVersionAndDownloadUrl(
+        networkSettings: NetworkSettingsHelper,
+        deviceSettings: DeviceSettingsHelper,
+    ): Pair<String, String> {
         val content = try {
-            apiConsumer.consumeAsync(MAIN_URL, settings, String::class).await()
+            apiConsumer.consumeAsync(MAIN_URL, networkSettings, String::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
         val pattern = """(https://dist\.torproject\.org""" +
-                """/torbrowser/(.+)/.+-android-${getAbiString()}-multi\.apk)"""
+                """/torbrowser/(.+)/.+-android-${getAbiString(deviceSettings)}-multi\.apk)"""
         val match = Regex(pattern).find(content)
         checkNotNull(match) { "Can't find download url with regex pattern '$pattern'." }
         val downloadUrl = match.groups[1]
@@ -84,8 +92,8 @@ class TorBrowser(
         return availableVersion.value to downloadUrl.value
     }
 
-    private fun getAbiString(): String {
-        return when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+    private fun getAbiString(settings: DeviceSettingsHelper): String {
+        return when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, settings.prefer32BitApks)) {
             ABI.ARM64_V8A -> "aarch64"
             ABI.ARMEABI_V7A -> "armv7"
             ABI.X86_64 -> "x86_64"
@@ -95,12 +103,14 @@ class TorBrowser(
     }
 
     private suspend fun extractDateAndSize(
-        settings: NetworkSettingsHelper,
+        networkSettings: NetworkSettingsHelper,
+        deviceSettingsHelper: DeviceSettingsHelper,
         version: String
     ): Pair<String, Long> {
-        val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-${getAbiString()}-multi.apk"
+        val param = "*android-${getAbiString(deviceSettingsHelper)}-multi.apk"
+        val url = "https://dist.torproject.org/torbrowser/$version/?P=$param"
         val content = try {
-            apiConsumer.consumeAsync(url, settings, String::class).await()
+            apiConsumer.consumeAsync(url, networkSettings, String::class).await()
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

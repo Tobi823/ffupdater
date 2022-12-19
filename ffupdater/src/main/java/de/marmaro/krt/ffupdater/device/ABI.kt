@@ -8,24 +8,21 @@ package de.marmaro.krt.ffupdater.device
  * @see [List of official supported ABIS](https://developer.android.com/ndk/guides/abis)
  * @see [ABI descriptions](https://pspdfkit.com/guides/android/current/faq/architectures/)
  */
-enum class ABI(val codeName: String) {
-    ARM64_V8A("arm64-v8a"),     // 64-bit ARMv8
-    ARMEABI_V7A("armeabi-v7a"), // 32-bit ARMv7
-    ARMEABI("armeabi"),         // ARMv5/6 are old architectures that haven’t been used in years
-    X86("x86"),                 // 32-bit x86
-    X86_64("x86_64"),           // 64-bit x86
-    MIPS("mips"),               // MIPS is exclusively used for some rare embedded uses of Android
-    MIPS64("mips64")            // MIPS is exclusively used for some rare embedded uses of Android
+enum class ABI(val codeName: String, val is32Bit: Boolean) {
+    ARM64_V8A("arm64-v8a", false),     // 64-bit ARMv8
+    ARMEABI_V7A("armeabi-v7a", true),  // 32-bit ARMv7
+    ARMEABI("armeabi", true),          // ARMv5/6 are old architectures that haven’t been used in years
+    X86("x86", false),                 // 32-bit x86
+    X86_64("x86_64", true),            // 64-bit x86
+    MIPS("mips", false),               // MIPS is exclusively used for some rare embedded uses of Android
+    MIPS64("mips64", true),            // MIPS is exclusively used for some rare embedded uses of Android
     ;
 
     companion object {
         fun findByCodeName(codeName: String): ABI {
-            for (abi in values()) {
-                if (codeName == abi.codeName) {
-                    return abi
-                }
-            }
-            throw IllegalArgumentException("Unknown ABI '$codeName'")
+            return values()
+                .firstOrNull { it.codeName == codeName }
+                ?: throw IllegalArgumentException("Unknown ABI '$codeName'")
         }
     }
 }

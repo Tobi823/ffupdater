@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -11,6 +12,7 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
@@ -41,8 +43,11 @@ class Orbot(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val assetSuffix = getAssetSuffix()
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val assetSuffix = getAssetSuffix(deviceSettings)
         val result = consumer.updateCheck(
             repoOwner = "guardianproject",
             repoName = "orbot",
@@ -56,7 +61,7 @@ class Orbot(
                         asset.name.endsWith(assetSuffix)
             },
             dontUseApiForLatestRelease = false,
-            settings = settings
+            settings = networkSettings
         )
         Log.i(LOG_TAG, "found latest version ${result.tagName}")
         return LatestUpdate(
@@ -69,8 +74,8 @@ class Orbot(
         )
     }
 
-    private fun getAssetSuffix(): String {
-        return when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis)) {
+    private fun getAssetSuffix(settings: DeviceSettingsHelper): String {
+        return when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, settings.prefer32BitApks)) {
             ABI.ARMEABI_V7A -> "-fullperm-universal-release.apk"
             ABI.ARM64_V8A -> "-fullperm-arm64-v8a-release.apk"
             ABI.X86 -> "-fullperm-universal-release.apk"

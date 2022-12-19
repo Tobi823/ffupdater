@@ -270,4 +270,6 @@
     <string name="network__proxy__dialog_meesage">Enter the connection details in one of these formats:\n\nSOCKS/HTTP;ip/domain;port\n\nSOCKS/HTTP;ip/domain;port;username;password\n\nFor example: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;user1;pw123 or HTTP;p.webshare.io;80;u;p. Leave it empty if you want to use the system proxy configuration.\n\nLimitation: If you change \'DNS settings\' in the settings to a DNS over HTTPS server, you have to enter the domain of the proxy server. IPs will not work.</string>
     <string name="network__proxy__summary">If you want to use a SOCKS or HTTP proxy, enter the connection details here.</string>
     <string name="network__proxy__title">Proxy</string>
+    <string name="settings__network_category__title">Network</string>
+    <string name="settings__device_category__title">Device</string>
 </resources>
