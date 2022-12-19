@@ -142,7 +142,7 @@ class SessionInstaller(
         }
         return when (val statusMessage = bundle?.getString(EXTRA_STATUS_MESSAGE)) {
             null -> errorMessage
-            else -> "$errorMessage Debug message: $statusMessage"
+            else -> "$statusMessage. $errorMessage"
         }
     }
 
@@ -159,7 +159,7 @@ class SessionInstaller(
         }
         return when (val statusMessage = bundle?.getString(EXTRA_STATUS_MESSAGE)) {
             null -> errorMessage
-            else -> "$errorMessage Debug message: $statusMessage"
+            else -> "$statusMessage. $errorMessage"
         }
     }
 
