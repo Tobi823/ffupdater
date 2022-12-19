@@ -1,0 +1,1 @@
+* HTTP/SOCKS vekilleri ve HTTPS üzerinden DNS sunucusu için dahili destek eklendi
