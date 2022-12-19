@@ -106,7 +106,7 @@ abstract class AppBase {
         } catch (e: InvalidApiResponseException) {
             throw InvalidApiResponseException("Invalid API response for $codeName.", e)
         } catch (e: NetworkException) {
-            throw NetworkException("Network exception for $codeName.")
+            throw NetworkException("Network exception for $codeName.", e)
         } catch (e: Exception) {
             throw Exception("Fail to request the latest version of $codeName", e)
         }
@@ -127,7 +127,7 @@ abstract class AppBase {
         } catch (e: InvalidApiResponseException) {
             throw InvalidApiResponseException("Invalid API response for $codeName.", e)
         } catch (e: NetworkException) {
-            throw NetworkException("Network exception for $codeName.")
+            throw NetworkException("Network exception for $codeName.", e)
         } catch (e: Exception) {
             throw Exception("Fail to request the latest version of $codeName", e)
         }

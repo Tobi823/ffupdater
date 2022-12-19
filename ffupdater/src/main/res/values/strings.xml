@@ -264,10 +264,10 @@
     <string name="fennecfdroid__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
     <string name="main_activity__ignored_apps_due_fingerprints">The following apps have different certificate fingerprints and will be ignored by FFUpdater: %s. You can fix it by uninstalling and then installing them with FFUpdater.</string>
     <string name="network__dns_provider__title">DNS settings</string>
-    <string name="network__custom_doh_server__dialog_message">Enter the connection details for the DoH server in one of these formats:\n\nurl,ip1\n\nurl,ip1,ip2\n\nurl,ip1,ip2,ip3\n\nurl,ip1,ip2,ip3,ip4\n\nFor example: https://dns.google/dns-query,8.8.8.8 or https://dns.quad9.net/dns-query,2620:fe::fe,2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">Enter the connection details for the DoH server in one of these formats:\n\nurl;ip1\n\nurl;ip1;ip2\n\nurl;ip1;ip2;ip3\n\nurl;ip1;ip2;ip3;ip4\n\nFor example: https://dns.google/dns-query;8.8.8.8 or https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__custom_doh_server__summary">Enter the details to connect to the custom DoH server.</string>
     <string name="network__custom_doh_server__title">Custom DNS over HTTPS server</string>
-    <string name="network__proxy__dialog_meesage">Enter the connection details in one of these formats:\n\nSOCKS/HTTP:ip:port\n\nSOCKS/HTTP:ip:port:username:password\n\nFor example: SOCKS:1.2.3.4:22 or HTTP:5.6.7.8:80:user1:pw123. Leave it empty if you want to use the system proxy configuration.</string>
+    <string name="network__proxy__dialog_meesage">Enter the connection details in one of these formats:\n\nSOCKS/HTTP;ip/domain;port\n\nSOCKS/HTTP;ip/domain;port;username;password\n\nFor example: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;user1;pw123 or HTTP;p.webshare.io;80;u;p. Leave it empty if you want to use the system proxy configuration.\n\nLimitation: If you change \'DNS settings\' in the settings to a DNS over HTTPS server, you have to enter the domain of the proxy server. IPs will not work.</string>
     <string name="network__proxy__summary">If you want to use a SOCKS or HTTP proxy, enter the connection details here.</string>
     <string name="network__proxy__title">Proxy</string>
 </resources>

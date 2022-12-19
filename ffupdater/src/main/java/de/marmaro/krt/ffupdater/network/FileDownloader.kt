@@ -203,7 +203,7 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
 
     private fun createProxyConfiguration(): Proxy? {
         val proxy = networkSettingsHelper.proxy() ?: return null
-        return Proxy(proxy.type, InetSocketAddress(proxy.host, proxy.port))
+        return Proxy(proxy.type, InetSocketAddress.createUnresolved(proxy.host, proxy.port))
     }
 
     private fun createProxyAuthenticatorConfiguration(): Authenticator? {

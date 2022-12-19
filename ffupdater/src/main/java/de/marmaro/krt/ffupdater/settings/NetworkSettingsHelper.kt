@@ -3,10 +3,8 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import java.net.InetAddress
 import java.net.Proxy
 import java.net.Proxy.Type
-import java.net.UnknownHostException
 
 
 class NetworkSettingsHelper {
@@ -41,11 +39,13 @@ class NetworkSettingsHelper {
 
     fun customDohServer(): DohConnectionDetails {
         val rawString = preferences.getString("network__custom_doh_server", "")?.trim()
-            ?: throw IllegalArgumentException("Missing connection details for custom DoH server.")
-        if (!rawString.contains(",")) {
+        if (rawString == null || rawString.isEmpty()) {
+            throw IllegalArgumentException("Missing connection details for custom DoH server.")
+        }
+        val arguments = rawString.split(";")
+        if (arguments.size < 2) {
             throw IllegalArgumentException("Wrong formatted connection details for the DoH server.")
         }
-        val arguments = rawString.split(",")
         val server = arguments[0]
         val ips = arguments.subList(1, arguments.size)
         return DohConnectionDetails(server, ips)
@@ -53,15 +53,18 @@ class NetworkSettingsHelper {
 
     data class ProxyConnectionDetails(
         val type: Type,
-        val host: InetAddress,
+        val host: String,
         val port: Int,
         val username: String?,
         val password: String?
     )
 
     fun proxy(): ProxyConnectionDetails? {
-        val proxy = preferences.getString("network__proxy", "")?.trim() ?: return null
-        val proxyArguments = proxy.split(':')
+        val rawString = preferences.getString("network__proxy", "")?.trim()
+        if (rawString == null || rawString.isEmpty()) {
+            return null
+        }
+        val proxyArguments = rawString.split(';')
         if (proxyArguments.size !in listOf(3, 5)) {
             throw IllegalArgumentException("Invalid proxy configuration. Please fix the 'Proxy' setting.")
         }
@@ -72,17 +75,12 @@ class NetworkSettingsHelper {
             "HTTP" -> Proxy.Type.HTTP
             else -> throw IllegalArgumentException("Invalid proxy configuration. Only SOCKS or HTTP are allowed. Please fix the 'Proxy' setting.")
         }
-        val host = try {
-            InetAddress.getByName(ipString)
-        } catch (e: UnknownHostException) {
-            throw IllegalArgumentException("Invalid proxy configuration. Please fix the 'Proxy' setting.")
-        }
         val port = portString.toIntOrNull()
             ?: throw IllegalArgumentException("Invalid proxy configuration. Please fix the 'Proxy' setting.")
 
         val username = if (proxyArguments.size == 5) proxyArguments[3] else null
         val password = if (proxyArguments.size == 5) proxyArguments[4] else null
 
-        return ProxyConnectionDetails(type, host, port, username, password)
+        return ProxyConnectionDetails(type, ipString, port, username, password)
     }
 }
