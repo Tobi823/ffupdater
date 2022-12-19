@@ -8,14 +8,14 @@ Nettlesere fra Mozilla eller basert på Firefox:
 - Mull Browser
 - Tor Browser
 
-dobre przeglądarki do ochrony prywatności:
+Gode personvernnettlesere:
 - Bromite, Bromite SystemWebView
 - Mulch
 
-przeglądarki, które są lepsze niż Google Chrome:
+Nettleser som er bedre enn Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
-- Chromium
-- Kiwi Browser Next
+- Krom
+- Kiwi-nettleseren neste
 - Vivaldi
 
 Andre applikasjoner:
