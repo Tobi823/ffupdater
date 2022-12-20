@@ -1,0 +1,1 @@
+* Agregado soporte interno para servidores HTTP/SOCKS-proxies y DNS-over-HTTPS
