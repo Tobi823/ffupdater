@@ -59,7 +59,7 @@ class DownloadApiChecker {
             packageManager.getPackageInfo(any<String>(), 0)
         } throws PackageManager.NameNotFoundException()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-        every { deviceAbiExtractor.findBestAbiForDeviceAndApp(any()) } returns ABI.ARM64_V8A
+        every { deviceAbiExtractor.findBestAbiForDeviceAndApp(any(), false) } returns ABI.ARM64_V8A
     }
 
     @Test
