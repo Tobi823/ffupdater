@@ -30,7 +30,7 @@ class CustomRepositoryConsumer(
         val packageObject = checkNotNull(mainObject.packages[packageName])
         val apk = packageObject
             // always accept APKs without ABI requirements
-            .filter { apkObject -> apkObject.abis?.contains(abi.name) ?: true }
+            .filter { apkObject -> apkObject.abis!!.contains(abi.codeName) }
             .maxBy { apkObject -> apkObject.versionCode }
 
         return LatestUpdate(
@@ -53,7 +53,7 @@ class CustomRepositoryConsumer(
         val added: Long,
         @SerializedName("apkName")
         val apkName: String,
-        @SerializedName("nativeCode")
+        @SerializedName("nativecode")
         val abis: List<String>?,
         @SerializedName("hash")
         val hash: String,
