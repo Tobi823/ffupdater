@@ -169,6 +169,13 @@ abstract class AppBase {
         ).also { result -> setUpdateCache(context, result) }
     }
 
+    fun clearMetadataCache(context: Context) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+            .edit()
+            .putString("${CACHE_KEY_PREFIX}__${packageName}", null)
+            .apply()
+    }
+
     @MainThread
     @Throws(NetworkException::class)
     internal abstract suspend fun findLatestUpdate(context: Context): LatestUpdate

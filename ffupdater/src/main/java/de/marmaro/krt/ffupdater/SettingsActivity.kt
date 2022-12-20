@@ -10,6 +10,7 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import de.marmaro.krt.ffupdater.storage.AppCache
 import java.time.Duration
 
 
@@ -47,9 +48,9 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
-        private fun findSwitchPref(key: String) = findPreference<SwitchPreferenceCompat>(key)
+        private fun findSwitchPref(key: String) = findPreference<SwitchPreferenceCompat>(key)!!
         private fun findListPref(key: String) = findPreference<ListPreference>(key)!!
-        private fun findMultiPref(key: String) = findPreference<MultiSelectListPreference>(key)
+        private fun findMultiPref(key: String) = findPreference<MultiSelectListPreference>(key)!!
         private fun findTextPref(key: String) = findPreference<EditTextPreference>(key)!!
 
         private fun changeBackgroundUpdateCheck(
@@ -71,9 +72,9 @@ class SettingsActivity : AppCompatActivity() {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
             if (!DeviceSdkTester.INSTANCE.supportsAndroidMarshmallow()) {
-                findSwitchPref("background__update_check__when_device_idle")?.summary =
+                findSwitchPref("background__update_check__when_device_idle").summary =
                     getString(R.string.settings__background__update_check__when_device_idle__unsupported)
-                findSwitchPref("background__update_check__when_device_idle")?.isEnabled = false
+                findSwitchPref("background__update_check__when_device_idle").isEnabled = false
             }
 
             findListPref("foreground__theme_preference").setOnPreferenceChangeListener { _, newValue ->
@@ -81,7 +82,7 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
-            findSwitchPref("background__update_check__enabled")?.setOnPreferenceChangeListener { _, newValue ->
+            findSwitchPref("background__update_check__enabled").setOnPreferenceChangeListener { _, newValue ->
                 changeBackgroundUpdateCheck(newValue as Boolean, null, null)
             }
 
@@ -89,26 +90,34 @@ class SettingsActivity : AppCompatActivity() {
                 changeBackgroundUpdateCheck(null, Duration.ofMinutes((newValue as String).toLong()), null)
             }
 
-            findSwitchPref("background__update_check__when_device_idle")?.setOnPreferenceChangeListener { _, newValue ->
+            findSwitchPref("background__update_check__when_device_idle").setOnPreferenceChangeListener { _, newValue ->
                 changeBackgroundUpdateCheck(null, null, newValue as Boolean)
             }
 
             val excludedApps = findMultiPref("background__update_check__excluded_apps")
-            excludedApps?.entries = App.values()
+            excludedApps.entries = App.values()
                 .map { app -> getString(app.impl.title) }
                 .toTypedArray()
-            excludedApps?.entryValues = App.values()
+            excludedApps.entryValues = App.values()
                 .map { app -> app.name }
                 .toTypedArray()
 
-            findSwitchPref("installer__session")?.setOnPreferenceChangeListener { _, newValue ->
+            findSwitchPref("installer__session").setOnPreferenceChangeListener { _, newValue ->
                 disableOtherInstallMethods(newValue as Boolean, null, null)
             }
-            findSwitchPref("installer__native")?.setOnPreferenceChangeListener { _, newValue ->
+            findSwitchPref("installer__native").setOnPreferenceChangeListener { _, newValue ->
                 disableOtherInstallMethods(null, newValue as Boolean, null)
             }
-            findSwitchPref("installer__root")?.setOnPreferenceChangeListener { _, newValue ->
+            findSwitchPref("installer__root").setOnPreferenceChangeListener { _, newValue ->
                 disableOtherInstallMethods(null, null, newValue as Boolean)
+            }
+
+            findSwitchPref("device__prefer_32bit_apks").setOnPreferenceChangeListener { _, _ ->
+                App.values().forEach {
+                    it.impl.clearMetadataCache(requireContext())
+                    AppCache(it).delete(requireContext())
+                }
+                true
             }
 
             findTextPref("network__custom_doh_server").isVisible =
@@ -121,13 +130,13 @@ class SettingsActivity : AppCompatActivity() {
 
         private fun disableOtherInstallMethods(session: Boolean?, native: Boolean?, root: Boolean?): Boolean {
             if (native == true || root == true) {
-                findSwitchPref("installer__session")?.isChecked = false
+                findSwitchPref("installer__session").isChecked = false
             }
             if (session == true || root == true) {
-                findSwitchPref("installer__native")?.isChecked = false
+                findSwitchPref("installer__native").isChecked = false
             }
             if (session == true || native == true) {
-                findSwitchPref("installer__root")?.isChecked = false
+                findSwitchPref("installer__root").isChecked = false
             }
             return true
         }

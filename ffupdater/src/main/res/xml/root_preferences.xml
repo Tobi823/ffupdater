@@ -158,7 +158,7 @@
 
     <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__device_category__title">
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             app:defaultValue="false"
             app:key="device__prefer_32bit_apks"
             app:singleLineTitle="false"
