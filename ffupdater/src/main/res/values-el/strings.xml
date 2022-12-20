@@ -285,7 +285,7 @@
     <string name="add_app_activity__title_good_privacy_browsers">Καλά Προγράμματα περιήγησης Απορρήτου</string>
     <string name="add_app_activity__title_better_than_google_chrome">Καλύτερο από το Google Chrome</string>
     <string name="add_app_activity__title_other_applications">Άλλες Εφαρμογές</string>
-    <string name="add_app_activity__title_end_of_live_browser">Τέλος ζωής προγράμματος περιήγησης</string>
+    <string name="add_app_activity__title_end_of_live_browser">Απαρχαιωμένο πρόγραμμα περιήγησης</string>
     <string name="add_app_activity__add_new_application">Προσθήκη νέας εφαρμογής</string>
     <string name="settings__network__trust_user_cas__summary">Ενεργοποίηση εάν η κυκλοφορία δεδομένων πρέπει να επιθεωρηθεί και να τροποποιηθεί από άλλες εφαρμογές. Εάν δεν είστε σίγουροι, διατηρήστε αυτήν την επιλογή απενεργοποιημένη.</string>
     <string name="settings__network__trust_user_cas__title">Εμπιστευτείτε τις CA που προστέθηκαν από τους χρήστες</string>
@@ -295,4 +295,5 @@
     <string name="settings__background__update_check__when_device_idle__summary">Ενεργοποιήστε αυτό εάν δεν θέλετε να γίνει επανεκκίνηση των εφαρμογών σας με μια ενημέρωση παρασκηνίου. Απενεργοποιήστε το εάν θέλετε ένα πιο προβλέψιμο χρονοδιάγραμμα για ελέγχους ενημέρωσης παρασκηνίου.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Αυτή η επιλογή είναι διαθέσιμη μόνο σε Android Marshmallow ή νεότερη έκδοση.</string>
     <string name="mulch__title">Mulch</string>
+    <string name="network__dns_provider__title">Ρυθμίσεις DNS</string>
 </resources>
