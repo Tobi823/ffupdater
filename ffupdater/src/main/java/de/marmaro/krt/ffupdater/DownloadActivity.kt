@@ -198,7 +198,7 @@ class DownloadActivity : AppCompatActivity() {
 
         if (viewModel.appAppUpdateStatus == null) {
             // only check for updates if the cache is empty
-            val updateCache = app.impl.getUpdateCache(this)
+            val updateCache = app.impl.getMetadataCache(this)
             if (updateCache != null) {
                 viewModel.appAppUpdateStatus = updateCache
             } else {

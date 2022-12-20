@@ -84,7 +84,12 @@ abstract class AppBase {
     @AnyThread
     open fun appIsInstalled(context: Context, available: AppUpdateStatus) {
         // make sure that the main application uses the correct information about "update available status"
-        updateCacheAfterInstallation(context, available)
+        val newMetadata = AppUpdateStatus(
+            latestUpdate = available.latestUpdate,
+            isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available.latestUpdate),
+            displayVersion = getDisplayAvailableVersion(context, available.latestUpdate)
+        )
+        updateMetadataCache(context, newMetadata)
     }
 
     @Throws(NetworkException::class)
@@ -93,11 +98,7 @@ abstract class AppBase {
             withContext(Dispatchers.IO) {
                 async {
                     mutex.withLock {
-                        getUpdateCache(context)
-                            ?.takeIf { System.currentTimeMillis() - it.objectCreationTimestamp <= CACHE_TIME }
-                            ?.let { return@withLock it }
-
-                        findAppUpdateStatus(context)
+                        getMetadataCacheOrNullIfOutdated(context) ?: findAppUpdateStatus(context)
                     }
                 }
             }
@@ -136,37 +137,36 @@ abstract class AppBase {
     @Throws(NetworkException::class)
     private suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
         val available = findLatestUpdate(context)
-        return AppUpdateStatus(
+        val newMetadata = AppUpdateStatus(
             latestUpdate = available,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available),
             displayVersion = getDisplayAvailableVersion(context, available)
-        ).also { result -> setUpdateCache(context, result) }
+        )
+        return updateMetadataCache(context, newMetadata)
     }
 
-    fun getUpdateCache(context: Context): AppUpdateStatus? {
+    fun getMetadataCache(context: Context): AppUpdateStatus? {
         return try {
-            PreferenceManager.getDefaultSharedPreferences(context)
-                .getString("${CACHE_KEY_PREFIX}__${packageName}", null)
+            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+            preferences.getString("${CACHE_KEY_PREFIX}__${packageName}", null)
                 ?.let { gson.fromJson(it, AppUpdateStatus::class.java) }
         } catch (e: JsonSyntaxException) {
             null
         }
     }
 
-    private fun setUpdateCache(context: Context, appAppUpdateStatus: AppUpdateStatus) {
-        val jsonString = gson.toJson(appAppUpdateStatus)
-        PreferenceManager.getDefaultSharedPreferences(context)
-            .edit()
-            .putString("${CACHE_KEY_PREFIX}__${packageName}", jsonString)
-            .apply()
+    private fun getMetadataCacheOrNullIfOutdated(context: Context): AppUpdateStatus? {
+        return getMetadataCache(context)
+            ?.takeIf { System.currentTimeMillis() - it.objectCreationTimestamp <= CACHE_TIME }
     }
 
-    private fun updateCacheAfterInstallation(context: Context, available: AppUpdateStatus): AppUpdateStatus {
-        return AppUpdateStatus(
-            latestUpdate = available.latestUpdate,
-            isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available.latestUpdate),
-            displayVersion = getDisplayAvailableVersion(context, available.latestUpdate)
-        ).also { result -> setUpdateCache(context, result) }
+    private fun updateMetadataCache(context: Context, appAppUpdateStatus: AppUpdateStatus): AppUpdateStatus {
+        val jsonString = gson.toJson(appAppUpdateStatus)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        preferences.edit()
+            .putString("${CACHE_KEY_PREFIX}__${packageName}", jsonString)
+            .apply()
+        return appAppUpdateStatus
     }
 
     fun clearMetadataCache(context: Context) {
