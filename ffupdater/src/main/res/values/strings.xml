@@ -262,7 +262,7 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid is based on the latest Firefox release (codenamed Fenix). It has proprietary bits and telemetry removed, but still connects to various Mozilla and Google services that can track users.</string>
     <string name="fennecfdroid__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">The following apps have different certificate fingerprints and will be ignored by FFUpdater: %s. You can fix it by uninstalling and then installing them with FFUpdater.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">The following apps have different certificate fingerprints and will be ignored: %s. You can fix it by uninstalling and then installing them with FFUpdater.</string>
     <string name="network__dns_provider__title">DNS settings</string>
     <string name="network__custom_doh_server__dialog_message">Enter the connection details for the DoH server in one of these formats:\n\nurl;ip1\n\nurl;ip1;ip2\n\nurl;ip1;ip2;ip3\n\nurl;ip1;ip2;ip3;ip4\n\nFor example: https://dns.google/dns-query;8.8.8.8 or https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__custom_doh_server__summary">Enter the details to connect to the custom DoH server.</string>
