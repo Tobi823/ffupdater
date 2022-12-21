@@ -1,1 +1,13 @@
-* Add internal support for HTTP/SOCKS-proxies and DNS-over-HTTPS server
+* Thanks for the Weblate contribution from: Retrial, kotyhoroshko, Jacek, Viktória Nagy, gallegonovato, Oğuz
+  Ersen, 109247019824, nautilusx, MkQtS, Yo, Juraj Motuz, Translator-3000, atilluF, Giovanni Donisi, Brodie
+  Avoult, Eric
+* Add support for HTTP/SOCKS-proxies with and without authentication (Tobi823/ffupdater#229)
+* Add support for DNS-over-HTTPS server (Tobi823/ffupdater#229)
+* Add option to prefer 32-bit versions of apps (Tobi823/ffupdater#280)
+* Fix a race condition which displays a wrong installation failure reason
+* Display additional information about an installation failure
+* Display and update only apps which support the ABI of the current smartphone
+* Fix bug: After installing the first update (with a notification), the second installation (with a
+  notification) will reinstall the first update
+* Improve error handling of the background job
+* Add missing unit tests
