@@ -40,7 +40,6 @@ import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
-import de.marmaro.krt.ffupdater.storage.AppCache
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -58,7 +57,6 @@ import kotlinx.coroutines.withContext
 class DownloadActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
     private lateinit var appInstaller: AppInstaller
-    private lateinit var appCache: AppCache
     private lateinit var foregroundSettings: ForegroundSettingsHelper
     private lateinit var installerSettings: InstallerSettingsHelper
     private lateinit var networkSettings: NetworkSettingsHelper
@@ -97,17 +95,17 @@ class DownloadActivity : AppCompatActivity() {
             }
             viewModel.app = App.valueOf(appFromExtras)
         }
+        val app = viewModel.app!!
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         foregroundSettings = ForegroundSettingsHelper(preferences)
         installerSettings = InstallerSettingsHelper(preferences)
         networkSettings = NetworkSettingsHelper(preferences)
-        appCache = AppCache(viewModel.app!!)
-        appInstaller = createForegroundAppInstaller(this, viewModel.app!!, appCache.getApkFile(this))
+        appInstaller = createForegroundAppInstaller(this, app, app.downloadedFileCache.getApkFile(this))
         lifecycle.addObserver(appInstaller)
 
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
-            appCache.delete(this)
+            app.downloadedFileCache.delete(this)
             hide(R.id.install_activity__delete_cache)
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
@@ -115,9 +113,9 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         // hide existing background notification for this app
-        BackgroundNotificationBuilder.INSTANCE.hideUpdateIsAvailable(this, viewModel.app!!)
-        BackgroundNotificationBuilder.INSTANCE.hideInstallationSuccess(this, viewModel.app!!)
-        BackgroundNotificationBuilder.INSTANCE.hideInstallationError(this, viewModel.app!!)
+        BackgroundNotificationBuilder.INSTANCE.hideUpdateIsAvailable(this, app)
+        BackgroundNotificationBuilder.INSTANCE.hideInstallationSuccess(this, app)
+        BackgroundNotificationBuilder.INSTANCE.hideInstallationError(this, app)
 
         // prevent network timeouts when the displayed is automatically turned off
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -128,7 +126,8 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun tryOpenDownloadFolderInFileManager() {
-        val uri = Uri.parse("file://${appCache.getCacheFolder(this).absolutePath}/")
+        val absolutePath = viewModel.app!!.downloadedFileCache.getCacheFolder(this).absolutePath
+        val uri = Uri.parse("file://$absolutePath/")
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, "resource/folder")
         val chooser = Intent.createChooser(intent, getString(download_activity__open_folder))
@@ -225,9 +224,9 @@ class DownloadActivity : AppCompatActivity() {
         val finishedText = getString(download_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
         val appUpdateResult = viewModel.appAppUpdateStatus!!.latestUpdate
-        if (appCache.isLatestAppVersionCached(this, appUpdateResult)) {
+        if (app.downloadedFileCache.isLatestAppVersionCached(this, appUpdateResult)) {
             show(R.id.useCachedDownloadedApk)
-            setText(R.id.useCachedDownloadedApk__path, appCache.getApkFile(this).absolutePath)
+            setText(R.id.useCachedDownloadedApk__path, app.downloadedFileCache.getApkFile(this).absolutePath)
             installApp()
             return
         }
@@ -241,6 +240,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownload() {
+        val app = viewModel.app!!
         if (!foregroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
             showThatUrlFetchingFailed(getString(main_activity__no_unmetered_network))
             return
@@ -268,11 +268,11 @@ class DownloadActivity : AppCompatActivity() {
         val display = getString(download_activity__download_app_with_status, "")
         setText(R.id.downloadingFileText, display)
 
-        appCache.delete(this)
+        app.downloadedFileCache.delete(this)
 
         // this coroutine should survive a screen rotation and should live as long as the view model
         try {
-            val file = appCache.getFileForDownloader(this)
+            val file = app.downloadedFileCache.getFileForDownloader(this)
             withContext(viewModel.viewModelScope.coroutineContext) {
                 fileDownloader.downloadBigFileAsync(downloadUrl, file).await()
             }
@@ -320,8 +320,8 @@ class DownloadActivity : AppCompatActivity() {
         val app = viewModel.app!!
         // if the download was an ZIP archive, then extract the APK file
         if (!app.impl.isDownloadAnApkFile()) {
-            val zipArchive = appCache.getZipFile(this)
-            val apkFile = appCache.getApkFile(this)
+            val zipArchive = app.downloadedFileCache.getZipFile(this)
+            val apkFile = app.downloadedFileCache.getApkFile(this)
             withContext(Dispatchers.IO) {
                 async {
                     app.impl.convertZipArchiveToApkFile(zipArchive, apkFile)
@@ -352,13 +352,14 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun showThatAppIsInstalled(certificateHash: String) {
+        val app = viewModel.app!!
         hide(R.id.installingApplication)
         show(R.id.installerSuccess)
         show(R.id.fingerprintInstalledGood)
         setText(R.id.fingerprintInstalledGoodHash, certificateHash)
-        viewModel.app!!.impl.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
+        app.impl.appIsInstalled(this, viewModel.appAppUpdateStatus!!)
         if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
-            appCache.delete(this)
+            app.downloadedFileCache.delete(this)
         } else {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
@@ -368,6 +369,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun showThatAppInstallationFailed(errorMessage: String, exception: Exception) {
+        val app = viewModel.app!!
         hide(R.id.installingApplication)
         show(R.id.install_activity__exception)
         show(R.id.install_activity__exception__description)
@@ -386,10 +388,10 @@ class DownloadActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val cacheFolder = appCache.getCacheFolder(this).absolutePath
+        val cacheFolder = app.downloadedFileCache.getCacheFolder(this).absolutePath
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
         if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
-            appCache.delete(this)
+            app.downloadedFileCache.delete(this)
         } else {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
@@ -415,7 +417,7 @@ class DownloadActivity : AppCompatActivity() {
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
-        appCache.delete(this)
+        viewModel.app!!.downloadedFileCache.delete(this)
         cleanupUi()
     }
 

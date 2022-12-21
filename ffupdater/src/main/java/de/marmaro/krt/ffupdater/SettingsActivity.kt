@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
-import de.marmaro.krt.ffupdater.storage.AppCache
 import java.time.Duration
 
 
@@ -115,7 +114,7 @@ class SettingsActivity : AppCompatActivity() {
             findSwitchPref("device__prefer_32bit_apks").setOnPreferenceChangeListener { _, _ ->
                 App.values().forEach {
                     it.impl.clearMetadataCache(requireContext())
-                    AppCache(it).delete(requireContext())
+                    it.downloadedFileCache.delete(requireContext())
                 }
                 true
             }

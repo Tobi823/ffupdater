@@ -6,7 +6,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import java.io.File
 
-class AppCache(val app: App) {
+class DownloadedFileCache(private val app: App) {
     fun getApkFile(context: Context): File {
         return File(getCacheFolder(context), "${app.impl.packageName}.apk")
     }

@@ -30,7 +30,6 @@ import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
-import de.marmaro.krt.ffupdater.storage.AppCache
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -162,11 +161,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return false
         }
 
-        val appCache = AppCache(app)
         val updateResult = app.impl.checkForUpdateAsync(context).await() // this result should be cached
 
         val availableResult = updateResult.latestUpdate
-        if (appCache.isLatestAppVersionCached(context, availableResult)) {
+        if (app.downloadedFileCache.isLatestAppVersionCached(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return true
         }
@@ -178,7 +176,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
         notification.showDownloadIsRunning(context, app, null, null)
 
-        val file = appCache.getApkFile(context)
+        val file = app.downloadedFileCache.getApkFile(context)
         return try {
             downloader.downloadBigFileAsync(availableResult.downloadUrl, file).await()
             notification.hideDownloadIsRunning(context, app)
@@ -186,7 +184,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         } catch (e: NetworkException) {
             notification.hideDownloadIsRunning(context, app)
             notification.showDownloadError(context, app, e)
-            appCache.delete(context)
+            app.downloadedFileCache.delete(context)
             false
         }
     }
@@ -222,8 +220,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private suspend fun installApplication(app: App) {
-        val appCache = AppCache(app)
-        val file = appCache.getApkFile(context)
+        val file = app.downloadedFileCache.getApkFile(context)
         require(file.exists()) { "AppCache has no cached APK file" }
 
         withContext(Dispatchers.Main) {
@@ -232,18 +229,18 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 installer.installAsync(context).await()
                 notification.showInstallationSuccess(context, app)
                 if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                    appCache.delete(context)
+                    app.downloadedFileCache.delete(context)
                 }
             } catch (e: UserInteractionIsRequiredException) {
                 notification.showUpdateIsAvailable(context, app)
                 if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
-                    appCache.delete(context)
+                    app.downloadedFileCache.delete(context)
                 }
             } catch (e: InstallationFailedException) {
                 val ex = RuntimeException("Failed to install ${app.name} in the background.", e)
                 notification.showInstallationError(context, app, e.errorCode, e.errorMessage, ex)
                 if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
-                    appCache.delete(context)
+                    app.downloadedFileCache.delete(context)
                 }
             }
         }

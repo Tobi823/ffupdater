@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app
 
 import de.marmaro.krt.ffupdater.app.impl.*
+import de.marmaro.krt.ffupdater.storage.DownloadedFileCache
 
 enum class App(appBase: AppBase) {
     BRAVE(Brave()),
@@ -28,4 +29,6 @@ enum class App(appBase: AppBase) {
     ;
 
     val impl: AppBase = appBase
+    val downloadedFileCache by lazy { DownloadedFileCache(this) }
+    // TODO val metadataCache
 }
