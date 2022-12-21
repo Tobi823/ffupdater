@@ -9,6 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -86,6 +87,8 @@ class MainActivity : AppCompatActivity() {
         if (BuildMetadata.isDebugBuild()) {
             App.values()
                 .forEach { require(it == it.impl.app) { "Failed for $it" } }
+            Log.i(LOG_TAG, "supported ABIs: ${DeviceAbiExtractor.INSTANCE.supportedAbis}")
+            Log.i(LOG_TAG, "supported 32-bit ABIs: ${DeviceAbiExtractor.INSTANCE.supported32BitAbis}")
         }
     }
 

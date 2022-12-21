@@ -3,8 +3,8 @@ package de.marmaro.krt.ffupdater.device
 import android.os.Build
 
 class DeviceAbiExtractor {
-    private val supportedAbis = Build.SUPPORTED_ABIS?.map { ABI.findByCodeName(it) } ?: listOf()
-    private val supported32BitAbis = supportedAbis.filter { it.is32Bit }
+    val supportedAbis = Build.SUPPORTED_ABIS?.map { ABI.findByCodeName(it) } ?: listOf()
+    val supported32BitAbis = supportedAbis.filter { it.is32Bit }
 
     fun findBestAbiForDeviceAndApp(abisSupportedByApp: List<ABI>, prefer32Bit: Boolean): ABI {
         if (prefer32Bit) {

@@ -12,8 +12,11 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.io.File
 
@@ -22,6 +25,7 @@ import java.io.File
  */
 class Chromium(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
+    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.CHROMIUM
     override val codeName = "Chromium"
@@ -42,9 +46,19 @@ class Chromium(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
-        val revision = findLatestRevision(settings)
-        val storageObject = findStorageObject(settings, revision)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val networkSettings = NetworkSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(preferences)
+
+        val abi = deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, deviceSettings.prefer32BitApks)
+        val platform = when (abi) {
+            ABI.ARM64_V8A -> "Android_Arm64"
+            ABI.ARMEABI_V7A -> "Android"
+            else -> throw IllegalArgumentException("ABI $abi is not supported")
+        }
+
+        val revision = findLatestRevision(networkSettings, platform)
+        val storageObject = findStorageObject(networkSettings, revision, platform)
         Log.i(LOG_TAG, "found latest version $revision")
         return LatestUpdate(
             downloadUrl = storageObject.downloadUrl,
@@ -56,9 +70,10 @@ class Chromium(
         )
     }
 
-    private suspend fun findLatestRevision(settings: NetworkSettingsHelper): String {
+    private suspend fun findLatestRevision(settings: NetworkSettingsHelper, platform: String): String {
+        val url = "$BASE_DOWNLOAD_URL/$platform%2FLAST_CHANGE?alt=media"
         val content = try {
-            apiConsumer.consume(LATEST_REVISION_URL, settings)
+            apiConsumer.consume(url, settings)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -66,11 +81,12 @@ class Chromium(
         return content
     }
 
-    private suspend fun findStorageObject(settings: NetworkSettingsHelper, revision: String): StorageObject {
-        val url = "https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o?delimiter=/" +
-                "&prefix=Android/${revision}/chrome-android" +
-                "&fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken"
-
+    private suspend fun findStorageObject(
+        settings: NetworkSettingsHelper,
+        revision: String,
+        platform: String
+    ): StorageObject {
+        val url = "$BASE_API_URL?delimiter=/&prefix=$platform/${revision}/chrome-android&$ALL_FIELDS"
         val storageObjects = try {
             apiConsumer.consume(url, settings, StorageObjects::class)
         } catch (e: NetworkException) {
@@ -80,7 +96,7 @@ class Chromium(
         check(storageObjects.items.size == 1)
 
         val storageObject = storageObjects.items[0]
-        check(storageObject.name == "Android/${revision}/chrome-android.zip")
+        check(storageObject.name == "$platform/$revision/chrome-android.zip")
         return storageObject
     }
 
@@ -142,9 +158,10 @@ class Chromium(
         const val INSTALLED_VERSION_REVISION = "chromium__installed_version_revision"
         const val INSTALLED_VERSION_TIMESTAMP = "chromium__installed_version_timestamp"
 
-        const val BASE_URL = "https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o"
-
-        @Suppress("SpellCheckingInspection")
-        const val LATEST_REVISION_URL = "${BASE_URL}/Android%2FLAST_CHANGE?alt=media"
+        const val BASE_API_URL = "https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o"
+        const val BASE_DOWNLOAD_URL =
+            "https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o"
+        const val ALL_FIELDS =
+            "fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken"
     }
 }
