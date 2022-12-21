@@ -14,9 +14,9 @@ import java.time.format.DateTimeFormatter
 internal class ChromiumIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
-        val orbot = Chromium(ApiConsumer.INSTANCE)
-        val result = runBlocking { orbot.findLatestUpdate(context) }
+    fun findLatestUpdate() {
+        val chromium = Chromium(ApiConsumer.INSTANCE, deviceAbiExtractor)
+        val result = runBlocking { chromium.findLatestUpdate(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
