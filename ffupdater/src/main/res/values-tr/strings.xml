@@ -294,7 +294,7 @@
     <string name="mulch__warning">- Mulch, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="fennecfdroid__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="fennecfdroid__description">Fennec F-Droid en son Firefox sürümüne (kod adı Fenix) dayanmaktadır. Açık kaynaklı olmayan bitler ve telemetri kaldırılmıştır, ancak yine de kullanıcıları izleyebilen çeşitli Mozilla ve Google hizmetlerine bağlanır.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">Şu uygulamalar farklı sertifika parmak izlerine sahiptir ve FFUpdater tarafından yok sayılacaktır: %s. Kaldırarak ve ardından FFUpdater ile kurarak bunu düzeltebilirsiniz.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Şu uygulamalar farklı sertifika parmak izlerine sahip ve yok sayılacak: %s. Kaldırarak ve ardından FFUpdater ile kurarak bunu düzeltebilirsiniz.</string>
     <string name="network__proxy__title">Vekil</string>
     <string name="network__custom_doh_server__summary">Özel DoH sunucusuna bağlanmak için ayrıntıları girin.</string>
     <string name="network__dns_provider__title">DNS ayarları</string>
@@ -323,5 +323,5 @@
     <string name="settings__network_category__title">Ağ</string>
     <string name="device__prefer_32bit_apks__title">32-Bit APK\'ları tercih et</string>
     <string name="settings__device_category__title">Aygıt</string>
-    <string name="device__prefer_32bit_apks__summary">Aygıtınız gerçekten düşük belleğe sahipse etkinleştirin.</string>
+    <string name="device__prefer_32bit_apks__summary">Aygıtınızın belleği genellikle düşükse etkinleştirin. FFUpdater daha sonra genellikle daha az bellek gerektiren 32 bit APK\'ları kullanacaktır.</string>
 </resources>
