@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -17,6 +18,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 class Lockwise(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
+    override val app = App.LOCKWISE
     override val codeName = "Lockwise"
     override val packageName = "mozilla.lockbox"
     override val title = R.string.lockwise__title

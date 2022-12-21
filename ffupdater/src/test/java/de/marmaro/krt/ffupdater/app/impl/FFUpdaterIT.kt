@@ -11,9 +11,9 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class FFUpdaterIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
+    fun findAppUpdateStatus() {
         val ffupdater = FFUpdater(GithubConsumer.INSTANCE)
-        val result = runBlocking { ffupdater.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        val result = runBlocking { ffupdater.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertTrue(result.firstReleaseHasAssets)
     }

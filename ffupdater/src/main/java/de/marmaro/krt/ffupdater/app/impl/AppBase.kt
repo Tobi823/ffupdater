@@ -8,6 +8,7 @@ import androidx.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
@@ -20,17 +21,11 @@ import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
 import java.io.File
-import java.util.zip.ZipInputStream
 
 
 abstract class AppBase {
+    abstract val app: App
     abstract val codeName: String
     abstract val packageName: String
     abstract val title: Int
@@ -46,8 +41,6 @@ abstract class AppBase {
     open val eolReason: Int? = null
     abstract val displayCategory: DisplayCategory
     open val fileNameInZipArchive: String? = null
-
-    private val mutex = Mutex()
 
     // TODO this must be executed on Dispatchers.IO
     @AnyThread
@@ -83,67 +76,34 @@ abstract class AppBase {
     fun isDownloadAnApkFile() = (fileNameInZipArchive == null)
 
     @AnyThread
-    open fun appIsInstalled(context: Context, available: AppUpdateStatus) {
+    open fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         // make sure that the main application uses the correct information about "update available status"
         val newMetadata = AppUpdateStatus(
             latestUpdate = available.latestUpdate,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available.latestUpdate),
             displayVersion = getDisplayAvailableVersion(context, available.latestUpdate)
         )
-        updateMetadataCache(context, newMetadata)
+        app.metadataCache.updateMetadataCache(context, newMetadata)
     }
 
     @Throws(NetworkException::class)
-    suspend fun checkForUpdateAsync(context: Context): Deferred<AppUpdateStatus> {
-        return try {
-            withContext(Dispatchers.IO) {
-                async {
-                    mutex.withLock {
-                        getMetadataCacheOrNullIfOutdated(context) ?: findAppUpdateStatus(context)
-                    }
-                }
-            }
+    suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
+        val available = try {
+            findLatestUpdate(context)
         } catch (e: ApiRateLimitExceededException) {
-            throw ApiRateLimitExceededException("API rate limit exceeded for $codeName.", e)
+            throw ApiRateLimitExceededException("Can't find latest update for $codeName.", e)
         } catch (e: InvalidApiResponseException) {
-            throw InvalidApiResponseException("Invalid API response for $codeName.", e)
+            throw InvalidApiResponseException("Can't find latest update for $codeName.", e)
         } catch (e: NetworkException) {
-            throw NetworkException("Network exception for $codeName.", e)
+            throw NetworkException("Can't find latest update for $codeName.", e)
         } catch (e: Exception) {
-            throw Exception("Fail to request the latest version of $codeName", e)
+            throw Exception("Can't find latest update for $codeName.", e)
         }
-    }
-
-    @Throws(NetworkException::class)
-    suspend fun checkForUpdateWithoutLoadingFromCacheAsync(context: Context): Deferred<AppUpdateStatus> {
-        return try {
-            withContext(Dispatchers.IO) {
-                async {
-                    mutex.withLock {
-                        findAppUpdateStatus(context)
-                    }
-                }
-            }
-        } catch (e: ApiRateLimitExceededException) {
-            throw ApiRateLimitExceededException("API rate limit exceeded for $codeName.", e)
-        } catch (e: InvalidApiResponseException) {
-            throw InvalidApiResponseException("Invalid API response for $codeName.", e)
-        } catch (e: NetworkException) {
-            throw NetworkException("Network exception for $codeName.", e)
-        } catch (e: Exception) {
-            throw Exception("Fail to request the latest version of $codeName", e)
-        }
-    }
-
-    @Throws(NetworkException::class)
-    private suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
-        val available = findLatestUpdate(context)
-        val newMetadata = AppUpdateStatus(
+        return AppUpdateStatus(
             latestUpdate = available,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available),
             displayVersion = getDisplayAvailableVersion(context, available)
         )
-        return updateMetadataCache(context, newMetadata)
     }
 
     fun getMetadataCache(context: Context): AppUpdateStatus? {
@@ -156,11 +116,6 @@ abstract class AppBase {
         }
     }
 
-    private fun getMetadataCacheOrNullIfOutdated(context: Context): AppUpdateStatus? {
-        return getMetadataCache(context)
-            ?.takeIf { System.currentTimeMillis() - it.objectCreationTimestamp <= CACHE_TIME }
-    }
-
     private fun updateMetadataCache(context: Context, appAppUpdateStatus: AppUpdateStatus): AppUpdateStatus {
         val jsonString = gson.toJson(appAppUpdateStatus)
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -168,13 +123,6 @@ abstract class AppBase {
             .putString("${CACHE_KEY_PREFIX}__${packageName}", jsonString)
             .apply()
         return appAppUpdateStatus
-    }
-
-    fun clearMetadataCache(context: Context) {
-        PreferenceManager.getDefaultSharedPreferences(context)
-            .edit()
-            .putString("${CACHE_KEY_PREFIX}__${packageName}", null)
-            .apply()
     }
 
     @MainThread
@@ -199,28 +147,6 @@ abstract class AppBase {
     ): Boolean {
         val installedVersion = getInstalledVersion(context) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
-    }
-
-    open suspend fun convertZipArchiveToApkFile(zipArchive: File, apkFile: File) {
-        require(!isDownloadAnApkFile())
-        ZipInputStream(zipArchive.inputStream().buffered()).use { zip ->
-            while (true) {
-                val entry = zip.nextEntry
-                    ?: throw RuntimeException("Zip archive does not contain '$fileNameInZipArchive'.")
-
-                if (entry.name == fileNameInZipArchive) {
-                    apkFile.outputStream().buffered().use { apk ->
-                        zip.copyTo(apk)
-                    }
-                    @Suppress("BlockingMethodInNonBlockingContext")
-                    zip.closeEntry()
-                    return
-                }
-
-                @Suppress("BlockingMethodInNonBlockingContext")
-                zip.closeEntry()
-            }
-        }
     }
 
     companion object {

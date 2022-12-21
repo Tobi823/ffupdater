@@ -14,12 +14,12 @@ import java.time.format.DateTimeFormatter
 internal class FirefoxNightlyIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
+    fun findAppUpdateStatus() {
         sharedPreferences.edit().putLong("firefox_nightly_installed_version_code", 0)
         val firefoxNightly =
             FirefoxNightly(MozillaCiJsonConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
         val result =
-            runBlocking { firefoxNightly.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+            runBlocking { firefoxNightly.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

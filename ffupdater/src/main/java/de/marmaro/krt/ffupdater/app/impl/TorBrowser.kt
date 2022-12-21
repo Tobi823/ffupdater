@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -23,6 +24,7 @@ class TorBrowser(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val app = App.TOR_BROWSER
     override val codeName = "TorBrowser"
     override val packageName = "org.torproject.torbrowser"
     override val title = R.string.tor_browser__title
@@ -77,7 +79,7 @@ class TorBrowser(
         deviceSettings: DeviceSettingsHelper,
     ): Pair<String, String> {
         val content = try {
-            apiConsumer.consumeAsync(MAIN_URL, networkSettings, String::class).await()
+            apiConsumer.consume(MAIN_URL, networkSettings)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -110,7 +112,7 @@ class TorBrowser(
         val param = "*android-${getAbiString(deviceSettingsHelper)}-multi.apk"
         val url = "https://dist.torproject.org/torbrowser/$version/?P=$param"
         val content = try {
-            apiConsumer.consumeAsync(url, networkSettings, String::class).await()
+            apiConsumer.consume(url, networkSettings)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

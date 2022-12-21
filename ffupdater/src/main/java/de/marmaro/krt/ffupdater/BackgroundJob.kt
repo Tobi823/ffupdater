@@ -129,7 +129,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { app -> app.impl.isInstalled(context) == InstallationStatus.INSTALLED }
             .filter { app ->
-                val updateResult = app.impl.checkForUpdateWithoutLoadingFromCacheAsync(context).await()
+                val updateResult = app.metadataCache.getCachedOrFetchIfOutdated(context)
                 updateResult.isUpdateAvailable
             }
             .let { apps -> return AppsOrResult.apps(apps) }
@@ -161,7 +161,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return false
         }
 
-        val updateResult = app.impl.checkForUpdateAsync(context).await() // this result should be cached
+        val updateResult = app.metadataCache.getCachedOrFetchIfOutdated(context)
 
         val availableResult = updateResult.latestUpdate
         if (app.downloadedFileCache.isLatestAppVersionCached(context, availableResult)) {
@@ -184,7 +184,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         } catch (e: NetworkException) {
             notification.hideDownloadIsRunning(context, app)
             notification.showDownloadError(context, app, e)
-            app.downloadedFileCache.delete(context)
+            app.downloadedFileCache.deleteApkFile(context)
             false
         }
     }
@@ -227,20 +227,24 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             val installer = createBackgroundAppInstaller(context, app, file)
             try {
                 installer.installAsync(context).await()
+
                 notification.showInstallationSuccess(context, app)
+                val metadata = app.metadataCache.getCachedOrNullIfOutdated(context)
+                app.impl.appIsInstalledCallback(context, metadata!!)
+
                 if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                    app.downloadedFileCache.delete(context)
+                    app.downloadedFileCache.deleteApkFile(context)
                 }
             } catch (e: UserInteractionIsRequiredException) {
                 notification.showUpdateIsAvailable(context, app)
                 if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
-                    app.downloadedFileCache.delete(context)
+                    app.downloadedFileCache.deleteApkFile(context)
                 }
             } catch (e: InstallationFailedException) {
                 val ex = RuntimeException("Failed to install ${app.name} in the background.", e)
                 notification.showInstallationError(context, app, e.errorCode, e.errorMessage, ex)
                 if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
-                    app.downloadedFileCache.delete(context)
+                    app.downloadedFileCache.deleteApkFile(context)
                 }
             }
         }

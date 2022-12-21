@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -31,6 +32,7 @@ class FirefoxNightly(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
+    override val app = App.FIREFOX_NIGHTLY
     override val codeName = "FirefoxNightly"
     override val packageName = "org.mozilla.fenix"
     override val title = R.string.firefox_nightly__title
@@ -109,16 +111,13 @@ class FirefoxNightly(
         }
     }
 
-    override fun appIsInstalled(context: Context, available: AppUpdateStatus) {
-        super.appIsInstalled(context, available)
-        try {
-            PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
-                .putString(INSTALLED_SHA256_HASH, available.fileHash?.hexValue)
-                .apply()
-        } catch (e: PackageManager.NameNotFoundException) {
-            throw e
-        }
+    override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+            .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
+            .putString(INSTALLED_SHA256_HASH, available.fileHash?.hexValue)
+            .apply()
+        // this must be called last because the update is only recognized after setting the other values
+        super.appIsInstalledCallback(context, available)
     }
 
     /**

@@ -8,6 +8,7 @@ import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -22,6 +23,7 @@ import java.io.File
 class Chromium(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
 ) : AppBase() {
+    override val app = App.CHROMIUM
     override val codeName = "Chromium"
     override val packageName = "org.chromium.chrome"
     override val title = R.string.chromium__title
@@ -56,7 +58,7 @@ class Chromium(
 
     private suspend fun findLatestRevision(settings: NetworkSettingsHelper): String {
         val content = try {
-            apiConsumer.consumeAsync(LATEST_REVISION_URL, settings, String::class).await()
+            apiConsumer.consume(LATEST_REVISION_URL, settings)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -70,7 +72,7 @@ class Chromium(
                 "&fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken"
 
         val storageObjects = try {
-            apiConsumer.consumeAsync(url, settings, StorageObjects::class).await()
+            apiConsumer.consume(url, settings, StorageObjects::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -82,16 +84,13 @@ class Chromium(
         return storageObject
     }
 
-    override fun appIsInstalled(context: Context, available: AppUpdateStatus) {
-        super.appIsInstalled(context, available)
-        try {
-            PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .putString(INSTALLED_VERSION_REVISION, available.version)
-                .putString(INSTALLED_VERSION_TIMESTAMP, available.publishDate)
-                .apply()
-        } catch (e: PackageManager.NameNotFoundException) {
-            throw e
-        }
+    override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+            .putString(INSTALLED_VERSION_REVISION, available.version)
+            .putString(INSTALLED_VERSION_TIMESTAMP, available.publishDate)
+            .apply()
+        // this must be called last because the update is only recognized after setting the other values
+        super.appIsInstalledCallback(context, available)
     }
 
     override suspend fun isAvailableVersionEqualToArchive(

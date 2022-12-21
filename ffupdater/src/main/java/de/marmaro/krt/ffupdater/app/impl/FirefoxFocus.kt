@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -25,6 +26,7 @@ class FirefoxFocus(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val app = App.FIREFOX_FOCUS
     override val codeName = "FirefoxFocus"
     override val packageName = "org.mozilla.focus"
     override val title = R.string.firefox_focus__title

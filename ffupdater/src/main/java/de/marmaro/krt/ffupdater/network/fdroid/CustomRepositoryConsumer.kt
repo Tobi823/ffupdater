@@ -22,7 +22,7 @@ class CustomRepositoryConsumer(
         abi: ABI
     ): LatestUpdate {
         val mainObject = try {
-            apiConsumer.consumeAsync("$repoUrl/index-v1.json", settings, MainObject::class).await()
+            apiConsumer.consume("$repoUrl/index-v1.json", settings, MainObject::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to find the latest version from index-v1.json.", e)
         }

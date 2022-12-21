@@ -14,9 +14,9 @@ import java.time.format.DateTimeFormatter
 internal class BromiteSystemWebViewIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
+    fun findAppUpdateStatus() {
         val bromite = BromiteSystemWebView(GithubConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { bromite.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        val result = runBlocking { bromite.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

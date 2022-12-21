@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -23,6 +24,7 @@ class Vivaldi(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val app = App.VIVALDI
     override val codeName = "Vivaldi"
     override val packageName = "com.vivaldi.browser"
     override val title = R.string.vivaldi__title
@@ -47,7 +49,7 @@ class Vivaldi(
         val deviceSettings = DeviceSettingsHelper(preferences)
 
         val content = try {
-            apiConsumer.consumeAsync(DOWNLOAD_WEBSITE_URL, networkSettings, String::class).await()
+            apiConsumer.consume(DOWNLOAD_WEBSITE_URL, networkSettings)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

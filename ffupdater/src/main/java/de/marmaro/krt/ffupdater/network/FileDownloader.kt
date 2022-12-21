@@ -86,18 +86,16 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
      */
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun downloadSmallFileAsync(url: String): Deferred<String> {
+    suspend fun downloadSmallFileAsync(url: String): String {
         return withContext(Dispatchers.IO) {
-            async {
-                try {
-                    downloadSmallFileInternal(url)
-                } catch (e: IOException) {
-                    throw NetworkException("Request of HTTP-API $url failed.", e)
-                } catch (e: IllegalArgumentException) {
-                    throw NetworkException("Request of HTTP-API $url failed.", e)
-                } catch (e: NetworkException) {
-                    throw NetworkException("Request of HTTP-API $url failed.", e)
-                }
+            try {
+                downloadSmallFileInternal(url)
+            } catch (e: IOException) {
+                throw NetworkException("Request of HTTP-API $url failed.", e)
+            } catch (e: IllegalArgumentException) {
+                throw NetworkException("Request of HTTP-API $url failed.", e)
+            } catch (e: NetworkException) {
+                throw NetworkException("Request of HTTP-API $url failed.", e)
             }
         }
     }

@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -19,6 +20,7 @@ class FennecFdroid(
     private val fdroidConsumer: FdroidConsumer = FdroidConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val app = App.FENNEC_FDROID
     override val codeName = "FennecFdroid"
     override val packageName = "org.mozilla.fennec_fdroid"
     override val title = R.string.fennecfdroid__title

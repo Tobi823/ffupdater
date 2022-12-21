@@ -16,7 +16,7 @@ class FdroidConsumer(
         require(index >= 1)
         val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = try {
-            apiConsumer.consumeAsync(apiUrl, settings, AppInfo::class).await()
+            apiConsumer.consume(apiUrl, settings, AppInfo::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $packageName from F-Droid.", e)
         }
@@ -52,7 +52,7 @@ class FdroidConsumer(
         val url = "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2F${packageName}.yml" +
                 "?ref=master"
         val metadata = try {
-            apiConsumer.consumeAsync(url, settings, GitlabRepositoryFilesMetadata::class).await()
+            apiConsumer.consume(url, settings, GitlabRepositoryFilesMetadata::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the latest commit id of $packageName.", e)
         }
@@ -62,7 +62,7 @@ class FdroidConsumer(
     private suspend fun getCreateDate(commitId: String, settings: NetworkSettingsHelper): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/commits/$commitId"
         val commits = try {
-            apiConsumer.consumeAsync(url, settings, GitlabRepositoryCommits::class).await()
+            apiConsumer.consume(url, settings, GitlabRepositoryCommits::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the creation date of commit $commitId.", e)
         }

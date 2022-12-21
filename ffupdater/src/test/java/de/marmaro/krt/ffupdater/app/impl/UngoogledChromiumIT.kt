@@ -11,10 +11,10 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class UngoogledChromiumIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
+    fun findAppUpdateStatus() {
         val ungoogledChromium = UngoogledChromium(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result =
-            runBlocking { ungoogledChromium.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+            runBlocking { ungoogledChromium.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertTrue(result.firstReleaseHasAssets)
     }

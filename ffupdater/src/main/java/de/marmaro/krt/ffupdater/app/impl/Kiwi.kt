@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -26,6 +27,7 @@ class Kiwi(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val app = App.KIWI
     override val codeName = "Kiwi"
     override val packageName = "com.kiwibrowser.browser"
     override val title = R.string.kiwi__title
@@ -106,12 +108,13 @@ class Kiwi(
         return runnerId != available.version || fileSize != available.fileSizeBytes
     }
 
-    override fun appIsInstalled(context: Context, available: AppUpdateStatus) {
-        super.appIsInstalled(context, available)
+    override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.version)
             .putLong(APK_FILE_SIZE, available.fileSizeBytes!!)
             .apply()
+        // this must be called last because the update is only recognized after setting the other values
+        super.appIsInstalledCallback(context, available)
     }
 
     companion object {

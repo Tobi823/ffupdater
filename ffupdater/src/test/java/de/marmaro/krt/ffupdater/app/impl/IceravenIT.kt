@@ -14,9 +14,9 @@ import java.time.format.DateTimeFormatter
 internal class IceravenIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
+    fun findAppUpdateStatus() {
         val iceraven = Iceraven(GithubConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { iceraven.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        val result = runBlocking { iceraven.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -23,6 +24,7 @@ class FirefoxBeta(
     private val consumer: MozillaCiLogConsumer = MozillaCiLogConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
+    override val app = App.FIREFOX_BETA
     override val codeName = "FirefoxBeta"
     override val packageName = "org.mozilla.firefox_beta"
     override val title = R.string.firefox_beta__title

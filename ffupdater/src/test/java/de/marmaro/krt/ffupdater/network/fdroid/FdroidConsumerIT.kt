@@ -71,7 +71,7 @@ class FdroidConsumerIT {
             }
         """.trimIndent()
         coEvery {
-            apiConsumer.consumeAsync(API_URL, settings, AppInfo::class).await()
+            apiConsumer.consume(API_URL, settings, AppInfo::class)
         } returns Gson().fromJson(apiResponse, AppInfo::class.java)
 
         val apiResponse2 = """
@@ -80,11 +80,11 @@ class FdroidConsumerIT {
             }
         """.trimIndent()
         coEvery {
-            apiConsumer.consumeAsync(
+            apiConsumer.consume(
                 "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2Fus.spotco.fennec_dos.yml?ref=master",
                 settings,
                 GitlabRepositoryFilesMetadata::class
-            ).await()
+            )
         } returns Gson().fromJson(apiResponse2, GitlabRepositoryFilesMetadata::class.java)
 
         val apiResponse3 = """
@@ -93,11 +93,11 @@ class FdroidConsumerIT {
             }
         """.trimIndent()
         coEvery {
-            apiConsumer.consumeAsync(
+            apiConsumer.consume(
                 "https://gitlab.com/api/v4/projects/36528/repository/commits/5eb1934163f60fe64757dc81effa33255ecd5808",
                 settings,
                 GitlabRepositoryCommits::class
-            ).await()
+            )
         } returns Gson().fromJson(apiResponse3, GitlabRepositoryCommits::class.java)
     }
 

@@ -14,9 +14,9 @@ import java.time.format.DateTimeFormatter
 internal class FirefoxFocusIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
+    fun findAppUpdateStatus() {
         val firefoxFocus = FirefoxFocus(GithubConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { firefoxFocus.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        val result = runBlocking { firefoxFocus.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

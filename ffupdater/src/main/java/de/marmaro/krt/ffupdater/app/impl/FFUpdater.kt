@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -17,6 +18,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 class FFUpdater(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
+    override val app = App.FFUPDATER
     override val codeName = "FFUpdater"
     override val packageName = "de.marmaro.krt.ffupdater"
     override val title = R.string.app_name

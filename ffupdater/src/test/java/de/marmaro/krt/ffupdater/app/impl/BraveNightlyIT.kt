@@ -15,10 +15,10 @@ import java.time.format.DateTimeFormatter
 internal class BraveNightlyIT : BaseAppIT() {
 
     @Test
-    fun braveNightly() {
+    fun findAppUpdateStatus() {
         every { deviceSdkTester.supportsAndroidNougat() } returns true
         val brave = BraveNightly(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
-        val result = runBlocking { brave.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        val result = runBlocking { brave.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

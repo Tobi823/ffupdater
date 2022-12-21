@@ -20,7 +20,7 @@ class MozillaCiLogConsumer(private val apiConsumer: ApiConsumer) {
         val logUrl = "$baseUrl/artifacts/public/logs/chain_of_trust.log"
 
         val response = try {
-            apiConsumer.consumeAsync(logUrl, settings, String::class).await()
+            apiConsumer.consume(logUrl, settings)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $task from Mozilla (log).", e)
         }

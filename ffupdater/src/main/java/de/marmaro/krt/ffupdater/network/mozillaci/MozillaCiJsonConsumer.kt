@@ -21,7 +21,7 @@ class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
         val jsonUrl = "$baseUrl/artifacts/public/chain-of-trust.json"
 
         val response = try {
-            apiConsumer.consumeAsync(jsonUrl, settings, ChainOfTrustJson::class).await()
+            apiConsumer.consume(jsonUrl, settings, ChainOfTrustJson::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $task from Mozilla (json).", e)
         }

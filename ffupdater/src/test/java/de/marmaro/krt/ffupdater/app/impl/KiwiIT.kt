@@ -14,9 +14,9 @@ import java.time.format.DateTimeFormatter
 internal class KiwiIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
+    fun findAppUpdateStatus() {
         val kiwi = Kiwi(GithubConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { kiwi.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        val result = runBlocking { kiwi.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

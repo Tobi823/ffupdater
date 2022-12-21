@@ -9,6 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -29,6 +30,7 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.BuildMetadata
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
@@ -81,6 +83,14 @@ class MainActivity : AppCompatActivity() {
             lifecycleScope.launch(Dispatchers.Main) { checkForUpdates(false) }
         }
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
+
+        if (BuildMetadata.isDebugBuild()) {
+            for (value in App.values()) {
+                Log.e("Main", "${value.impl.app}")
+            }
+            App.values()
+                .forEach { require(it == it.impl.app) { "Failed for $it" } }
+        }
     }
 
     @MainThread
@@ -245,11 +255,10 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private suspend fun checkForAppUpdate(app: App, useCache: Boolean) {
         try {
-            val updateResult = if (useCache) {
-                app.impl.checkForUpdateAsync(applicationContext).await()
-            } else {
-                app.impl.checkForUpdateWithoutLoadingFromCacheAsync(applicationContext).await()
+            if (!useCache) {
+                app.metadataCache.invalidateCache(applicationContext)
             }
+            val updateResult = app.metadataCache.getCachedOrFetchIfOutdated(applicationContext)
             setAvailableVersion(app, updateResult)
             sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable
             setDownloadButtonState(app, updateResult.isUpdateAvailable)

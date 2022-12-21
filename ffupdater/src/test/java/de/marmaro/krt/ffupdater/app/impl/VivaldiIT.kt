@@ -11,9 +11,9 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class VivaldiIT : BaseAppIT() {
 
     @Test
-    fun checkForUpdateWithoutLoadingFromCacheAsync() {
+    fun findAppUpdateStatus() {
         val vivaldi = Vivaldi(ApiConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { vivaldi.checkForUpdateWithoutLoadingFromCacheAsync(context).await() }
+        val result = runBlocking { vivaldi.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertFalse(result.version.isEmpty())
         assertTrue(result.firstReleaseHasAssets)

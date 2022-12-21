@@ -33,10 +33,10 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
                 val baseUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases"
                 if (tries == 0) {
                     val url = "$baseUrl/latest"
-                    arrayOf(apiConsumer.consumeAsync(url, settings, Release::class).await())
+                    arrayOf(apiConsumer.consume(url, settings, Release::class))
                 } else {
                     val url = "$baseUrl?per_page=$resultsPerPage&page=${tries}"
-                    apiConsumer.consumeAsync(url, settings, Array<Release>::class).await()
+                    apiConsumer.consume(url, settings, Array<Release>::class)
                 }
             } catch (e: NetworkException) {
                 throw NetworkException("Fail to request the latest version of $repoName from GitHub.", e)
