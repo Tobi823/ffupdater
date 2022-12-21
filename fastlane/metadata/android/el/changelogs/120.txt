@@ -1,0 +1,1 @@
+* Προσθήκη εσωτερικής υποστήριξης για HTTP/SOCKS-proxies και διακομιστή DNS-over-HTTPS
