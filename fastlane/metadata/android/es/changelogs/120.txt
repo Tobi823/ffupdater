@@ -1,1 +1,13 @@
-* Agregado soporte interno para servidores HTTP/SOCKS-proxies y DNS-over-HTTPS
+* Gracias por la contribución de Weblate de: Retrial, kotyhoroshko, Jacek, Viktória Nagy, gallegonovato, Oğuz
+  Ersen, 109247019824, nautilusx, MkQtS, Yo, Juraj Motuz, Traductor-3000, nombre F, Giovanni Donisi, Brodie
+  Avult, Eric
+* Agregue soporte para servidores proxy HTTP/SOCKS con y sin autenticación (Tobi823/ffupdater#229)
+* Agregar soporte para servidor DNS sobre HTTPS (Tobi823/ffupdater#229)
+* Agregar opción para preferir versiones de aplicaciones de 32 bits (Tobi823/ffupdater#280)
+* Solucione una condición de carrera que muestra un motivo de falla de instalación incorrecto
+* Mostrar información adicional sobre un error de instalación
+* Mostrar y actualizar solo aplicaciones compatibles con la ABI del teléfono inteligente actual
+* Solucionar error: después de instalar la primera actualización (con una notificación), la segunda instalación (con una
+  notificación) reinstalará la primera actualización
+* Mejorar el manejo de errores del trabajo en segundo plano
+* Agregar pruebas unitarias faltantes
