@@ -9,7 +9,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateUtils
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -85,9 +84,6 @@ class MainActivity : AppCompatActivity() {
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
 
         if (BuildMetadata.isDebugBuild()) {
-            for (value in App.values()) {
-                Log.e("Main", "${value.impl.app}")
-            }
             App.values()
                 .forEach { require(it == it.impl.app) { "Failed for $it" } }
         }

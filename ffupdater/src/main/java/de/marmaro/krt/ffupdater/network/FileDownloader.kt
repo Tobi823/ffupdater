@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.network
 
-import android.net.TrafficStats
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
@@ -31,7 +30,6 @@ import kotlin.reflect.KMutableProperty0
 
 
 class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
-    private val trafficStatsThreadId = 10001
 
     var onProgress: (progressInPercent: Int?, totalMB: Long) -> Unit = @WorkerThread { _, _ -> }
 
@@ -123,7 +121,6 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
 
     private suspend fun callUrl(url: String): Response {
         require(url.startsWith("https://"))
-        TrafficStats.setThreadStatsTag(trafficStatsThreadId)
         val request = Request.Builder()
             .url(url)
             .build()

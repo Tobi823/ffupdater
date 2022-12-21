@@ -32,10 +32,20 @@ class StrictModeSetup(
         )
 
         val vmPolicy = VmPolicy.Builder()
-            .detectAll()
-        if (deviceSdkTester.supportsAndroidMarshmallow()) {
-            vmPolicy.penaltyDeathOnCleartextNetwork()
-        }
+        vmPolicy.detectActivityLeaks()
+        if (deviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.detectCleartextNetwork()
+        if (deviceSdkTester.supportsAndroidOreo()) vmPolicy.detectContentUriWithoutPermission()
+        if (deviceSdkTester.supportsAndroid10()) vmPolicy.detectCredentialProtectedWhileLocked()
+        vmPolicy.detectFileUriExposure()
+        if (deviceSdkTester.supportsAndroid10()) vmPolicy.detectImplicitDirectBoot()
+        if (deviceSdkTester.supportsAndroid12()) vmPolicy.detectIncorrectContextUse()
+        vmPolicy.detectLeakedClosableObjects()
+        vmPolicy.detectLeakedRegistrationObjects()
+        vmPolicy.detectLeakedSqlLiteObjects()
+        if (deviceSdkTester.supportsAndroid9()) vmPolicy.detectNonSdkApiUsage()
+        if (deviceSdkTester.supportsAndroid12()) vmPolicy.detectUnsafeIntentLaunch()
+        if (deviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.penaltyDeathOnCleartextNetwork()
+
         StrictMode.setVmPolicy(
             vmPolicy.build()
         )

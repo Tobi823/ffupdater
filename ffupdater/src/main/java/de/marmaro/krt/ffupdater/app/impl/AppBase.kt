@@ -1,12 +1,10 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
-import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import androidx.annotation.AnyThread
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
+import androidx.annotation.WorkerThread
 import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
@@ -86,7 +84,6 @@ abstract class AppBase {
         app.metadataCache.updateMetadataCache(context, newMetadata)
     }
 
-    @Throws(NetworkException::class)
     suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
         val available = try {
             findLatestUpdate(context)
@@ -106,27 +103,7 @@ abstract class AppBase {
         )
     }
 
-    fun getMetadataCache(context: Context): AppUpdateStatus? {
-        return try {
-            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-            preferences.getString("${CACHE_KEY_PREFIX}__${packageName}", null)
-                ?.let { gson.fromJson(it, AppUpdateStatus::class.java) }
-        } catch (e: JsonSyntaxException) {
-            null
-        }
-    }
-
-    private fun updateMetadataCache(context: Context, appAppUpdateStatus: AppUpdateStatus): AppUpdateStatus {
-        val jsonString = gson.toJson(appAppUpdateStatus)
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        preferences.edit()
-            .putString("${CACHE_KEY_PREFIX}__${packageName}", jsonString)
-            .apply()
-        return appAppUpdateStatus
-    }
-
-    @MainThread
-    @Throws(NetworkException::class)
+    @WorkerThread
     internal abstract suspend fun findLatestUpdate(context: Context): LatestUpdate
 
     @MainThread
@@ -150,8 +127,6 @@ abstract class AppBase {
     }
 
     companion object {
-        const val CACHE_TIME = 10 * MINUTE_IN_MILLIS
-        const val CACHE_KEY_PREFIX = "cached_update_check_result__"
         val ALL_ABIS = listOf(ARM64_V8A, ARMEABI_V7A, ARMEABI, X86_64, X86, MIPS, MIPS64)
         val ARM32_ARM64_X86_X64 = listOf(ARM64_V8A, ARMEABI_V7A, X86_64, X86)
         val ARM32_ARM64 = listOf(ARM64_V8A, ARMEABI_V7A)
