@@ -49,6 +49,7 @@ abstract class AppBase {
 
     private val mutex = Mutex()
 
+    // TODO this must be executed on Dispatchers.IO
     @AnyThread
     fun isInstalled(context: Context): InstallationStatus {
         return if (PackageManagerUtil(context.packageManager).isAppInstalled(packageName)) {

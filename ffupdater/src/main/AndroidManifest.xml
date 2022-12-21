@@ -22,6 +22,10 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
+    <profileable
+        android:shell="true"
+        tools:targetApi="q" />
+
     <!-- If FFUpdater wants to check if an app is installed, this app must be listed here -->
     <!-- https://developer.android.com/about/versions/11/privacy/package-visibility -->
     <queries>

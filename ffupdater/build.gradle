@@ -112,4 +112,8 @@ android {
     lint {
         abortOnError false
     }
+
+    aaptOptions {
+        additionalParameters = ["--warn-manifest-validation"]
+    }
 }

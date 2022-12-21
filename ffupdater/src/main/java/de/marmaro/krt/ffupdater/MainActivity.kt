@@ -43,6 +43,7 @@ import de.marmaro.krt.ffupdater.utils.ifFalse
 import de.marmaro.krt.ffupdater.utils.ifTrue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.DateTimeException
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
@@ -85,8 +86,8 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     override fun onResume() {
         super.onResume()
-        addAppsToUserInterface()
         lifecycleScope.launch(Dispatchers.Main) {
+            addAppsToUserInterface()
             checkForUpdates()
         }
     }
@@ -130,13 +131,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun addAppsToUserInterface() {
+    private suspend fun addAppsToUserInterface() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
         mainLayout.removeAllViews()
         cleanUpObjects()
 
 
-        val appByCategories = App.values().groupBy { it.impl.isInstalled(this) }
+        val appByCategories = withContext(Dispatchers.IO) {
+            App.values().groupBy { it.impl.isInstalled(applicationContext) }
+        }
         appByCategories[INSTALLED]?.forEach {
             addAppToUserInterface(mainLayout, it, ForegroundSettingsHelper(this))
         }
@@ -220,9 +223,11 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun checkForUpdates(useCache: Boolean = true) {
-        val apps = App.values()
-            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
-            .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
+        val apps = withContext(Dispatchers.IO) {
+            App.values()
+                .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
+                .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
+        }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
