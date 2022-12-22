@@ -1,0 +1,13 @@
+* Děkujeme za příspěvek Weblate od: Viktória Nagy, gallegonovato, Oğuz
+  Ersen, 109247019824, nautilusx, MkQtS, Yo, Juraj Motuz, Translator-3000, atilluF, Giovanni Donisi, Brodie
+  Avoult, Eric
+* Přidání podpory pro HTTP/SOCKS-proxy s ověřením a bez ověření (Tobi823/ffupdater#229)
+* Přidání podpory pro server DNS-over-HTTPS (Tobi823/ffupdater#229)
+* Přidání možnosti preferovat 32bitové verze aplikací (Tobi823/ffupdater#280)
+* Oprava race podmínky, která zobrazuje nesprávný důvod selhání instalace
+* Zobrazení dodatečných informací o selhání instalace
+* Zobrazení a aktualizace pouze aplikací, které podporují ABI aktuálního smartphonu
+* Oprava chyby: Po instalaci první aktualizace (s oznámením) se při druhé instalaci (s oznámením)
+  znovu nainstaluje první aktualizace
+* Vylepšení zpracování chyb úlohy na pozadí
+* Přidání chybějících unit testů
