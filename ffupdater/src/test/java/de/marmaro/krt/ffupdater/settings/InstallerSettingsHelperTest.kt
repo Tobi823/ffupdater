@@ -25,65 +25,25 @@ class InstallerSettingsHelperTest {
     companion object {
         @JvmStatic
         fun testDataForInstaller(): Stream<Arguments> = Stream.of(
-            Arguments.of(null, null, null, Installer.SESSION_INSTALLER),
-            Arguments.of(null, null, false, Installer.SESSION_INSTALLER),
-            Arguments.of(null, null, true, Installer.ROOT_INSTALLER),
-
-            Arguments.of(null, false, null, Installer.SESSION_INSTALLER),
-            Arguments.of(null, false, false, Installer.SESSION_INSTALLER),
-            Arguments.of(null, false, true, Installer.ROOT_INSTALLER),
-
-            Arguments.of(null, true, null, Installer.NATIVE_INSTALLER),
-            Arguments.of(null, true, false, Installer.NATIVE_INSTALLER),
-            Arguments.of(null, true, true, Installer.ROOT_INSTALLER),
-
-            Arguments.of(false, null, null, Installer.SESSION_INSTALLER),
-            Arguments.of(false, null, false, Installer.SESSION_INSTALLER),
-            Arguments.of(false, null, true, Installer.ROOT_INSTALLER),
-
-            Arguments.of(false, false, null, Installer.SESSION_INSTALLER),
-            Arguments.of(false, false, false, Installer.SESSION_INSTALLER),
-            Arguments.of(false, false, true, Installer.ROOT_INSTALLER),
-
-            Arguments.of(false, true, null, Installer.NATIVE_INSTALLER),
-            Arguments.of(false, true, false, Installer.NATIVE_INSTALLER),
-            Arguments.of(false, true, true, Installer.ROOT_INSTALLER),
-
-            Arguments.of(true, null, null, Installer.SESSION_INSTALLER),
-            Arguments.of(true, null, false, Installer.SESSION_INSTALLER),
-            Arguments.of(true, null, true, Installer.ROOT_INSTALLER),
-
-            Arguments.of(true, false, null, Installer.SESSION_INSTALLER),
-            Arguments.of(true, false, false, Installer.SESSION_INSTALLER),
-            Arguments.of(true, false, true, Installer.ROOT_INSTALLER),
-
-            Arguments.of(true, true, null, Installer.NATIVE_INSTALLER),
-            Arguments.of(true, true, false, Installer.NATIVE_INSTALLER),
-            Arguments.of(true, true, true, Installer.ROOT_INSTALLER),
+            Arguments.of(null, Installer.SESSION_INSTALLER),
+            Arguments.of("", Installer.SESSION_INSTALLER),
+            Arguments.of("invalid", Installer.SESSION_INSTALLER),
+            Arguments.of("NATIVE_INSTALLER", Installer.NATIVE_INSTALLER),
+            Arguments.of("ROOT_INSTALLER", Installer.ROOT_INSTALLER),
+            Arguments.of("SHIZUKU_INSTALLER", Installer.SHIZUKU_INSTALLER),
         )
     }
 
     @ParameterizedTest(
-        name = "returns getInstaller() \"{3}\" if installer__session is \"{0}\", " +
-                "installer__native is \"{1}\" and installer__root is \"{2}\""
+        name = "returns getInstaller() \"{1}\" if string is \"{0}\""
     )
     @MethodSource("testDataForInstaller")
     fun `getInstaller()`(
-        installer__session: Boolean?,
-        installer__native: Boolean?,
-        installer__root: Boolean?,
+        string_value: String?,
         expected: Installer
     ) {
-        if (installer__session != null) {
-            sharedPreferences.edit().putBoolean("installer__session", installer__session).commit()
-        }
-        if (installer__native != null) {
-            sharedPreferences.edit().putBoolean("installer__native", installer__native).commit()
-        }
-        if (installer__root != null) {
-            sharedPreferences.edit().putBoolean("installer__root", installer__root).commit()
-        }
+        sharedPreferences.edit().putString("installer__method", string_value).apply()
         val sut = InstallerSettingsHelper(sharedPreferences)
-        assertEquals(expected, sut.getInstaller())
+        assertEquals(expected, sut.getInstallerMethod())
     }
 }

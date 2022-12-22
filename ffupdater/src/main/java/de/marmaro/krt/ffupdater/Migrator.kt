@@ -1,8 +1,8 @@
 package de.marmaro.krt.ffupdater
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
@@ -10,11 +10,29 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
-        if (lastVersionCode < 94) { // 75.1.0
-            migrateOldSettings1(preferences)
-        }
-        if (lastVersionCode < 98) { // 75.4.0
-            migrateOldSettings2(preferences)
+        if (lastVersionCode < 121) { // 77.5.0
+            val editor = PreferenceManager.getDefaultSharedPreferences(context).edit()
+
+            if (preferences.getBoolean("installer__root", false)) {
+                editor.putString("installer__method", Installer.ROOT_INSTALLER.name)
+            } else if (preferences.getBoolean("installer__native", false)) {
+                editor.putString("installer__method", Installer.NATIVE_INSTALLER.name)
+            } else if (preferences.getBoolean("installer__session", false)) {
+                editor.putString("installer__method", Installer.SESSION_INSTALLER.name)
+            }
+
+            when (preferences.getString("network__dns_provider", null)?.toIntOrNull()) {
+                0 -> editor.putString("network__dns_provider", "SYSTEM")
+                1 -> editor.putString("network__dns_provider", "DIGITAL_SOCIETY_SWITZERLAND_DOH")
+                2 -> editor.putString("network__dns_provider", "QUAD9_DOH")
+                3 -> editor.putString("network__dns_provider", "CLOUDFLARE_DOH")
+                4 -> editor.putString("network__dns_provider", "GOOGLE_DOH")
+                5 -> editor.putString("network__dns_provider", "CUSTOM_SERVER")
+                6 -> editor.putString("network__dns_provider", "NO")
+                else -> {}
+            }
+
+            editor.apply()
         }
         if (lastVersionCode != currentVersionCode) {
             BackgroundJob.forceRestartBackgroundUpdateCheck(context)
@@ -23,69 +41,6 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         preferences.edit().putInt(FFUPDATER_VERSION_CODE, currentVersionCode).apply()
     }
 
-    private fun migrateOldSettings1(preferences: SharedPreferences) {
-        migrateBooleanSetting(
-            preferences,
-            "automaticCheck", "background__update_check__enabled",
-            defaultValue = true,
-            invertValue = false
-        )
-        migrateBooleanSetting(
-            preferences,
-            "onlyUnmeteredNetwork", "background__update_check__metered",
-            defaultValue = false,
-            invertValue = true
-        )
-        migrateStringSetting(
-            preferences,
-            "checkInterval",
-            "background__update_check__interval"
-        )
-        migrateSetSetting(
-            preferences,
-            "disableApps",
-            "background__update_check__excluded_apps"
-        )
-        migrateStringSetting(
-            preferences,
-            "themePreference",
-            "foreground__theme_preference"
-        )
-    }
-
-    private fun migrateOldSettings2(preferences: SharedPreferences) {
-        if (preferences.getBoolean("general__use_root", false)) {
-            preferences.edit()
-                .putBoolean("installer__session", false)
-                .putBoolean("installer__native", false)
-                .putBoolean("installer__root", true)
-                .apply()
-        }
-    }
-
-    private fun migrateStringSetting(preferences: SharedPreferences, oldKey: String, newKey: String) {
-        val value = preferences.getString(oldKey, null)
-        preferences.edit().putString(newKey, value).apply()
-    }
-
-    private fun migrateSetSetting(preferences: SharedPreferences, oldKey: String, newKey: String) {
-        val value = preferences.getStringSet(oldKey, null)
-        preferences.edit().putStringSet(newKey, value).apply()
-    }
-
-    private fun migrateBooleanSetting(
-        preferences: SharedPreferences,
-        oldKey: String,
-        newKey: String,
-        defaultValue: Boolean,
-        invertValue: Boolean
-    ) {
-        var value = preferences.getBoolean(oldKey, defaultValue)
-        if (invertValue) {
-            value = !value
-        }
-        preferences.edit().putBoolean(newKey, value).apply()
-    }
 
     companion object {
         const val FFUPDATER_VERSION_CODE = "migrator_ffupdater_version_code"

@@ -112,6 +112,10 @@ class Chromium(
     override suspend fun isAvailableVersionEqualToArchive(
         context: Context, file: File, available: LatestUpdate,
     ): Boolean {
+        // TODO funktioniert nicht bei ZIP-Archiven
+        // die APK Dateien brauchen im Dateinamen einen identifier
+        // muss aufpassen, dass ich kein Dupletten etc. habe
+        // vielleicht eine Prüfsumme vom Identifier?
         return file.length() == available.fileSizeBytes
     }
 

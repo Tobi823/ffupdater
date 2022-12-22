@@ -40,9 +40,8 @@ abstract class AppBase {
     abstract val displayCategory: DisplayCategory
     open val fileNameInZipArchive: String? = null
 
-    // TODO this must be executed on Dispatchers.IO
     @AnyThread
-    fun isInstalled(context: Context): InstallationStatus {
+    suspend fun isInstalled(context: Context): InstallationStatus {
         return if (PackageManagerUtil(context.packageManager).isAppInstalled(packageName)) {
             if (FingerprintValidator(context.packageManager).checkInstalledApp(this).isValid) {
                 InstallationStatus.INSTALLED

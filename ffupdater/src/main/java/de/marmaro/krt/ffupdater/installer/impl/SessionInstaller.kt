@@ -11,7 +11,6 @@ import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRE
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_aborted
@@ -27,8 +26,7 @@ import java.io.IOException
 
 
 class SessionInstaller(
-    context: Context,
-    private val app: App,
+    app: App,
     private val file: File,
     private val foreground: Boolean,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
@@ -110,7 +108,6 @@ class SessionInstaller(
     }
 
     private fun handleAppInstallationResult(c: Context?, intent: Intent?) {
-        Log.e("SessionInstallerBase", "handleAppInstallationResult")
         requireNotNull(c)
         requireNotNull(intent)
         val bundle = requireNotNull(intent.extras)

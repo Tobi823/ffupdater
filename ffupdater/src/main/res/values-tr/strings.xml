@@ -311,7 +311,7 @@
 \n
 \nÖrneğin: https://dns.google/dns-query;8.8.8.8 veya https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__proxy__summary">SOCKS veya HTTP vekili kullanmak istiyorsanız bağlantı ayrıntılarını buraya girin.</string>
-    <string name="network__proxy__dialog_meesage">Bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
+    <string name="network__proxy__dialog_message">Bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
 \n
 \nSOCKS/HTTP;IP/etkialanı;bağlantınoktası
 \n

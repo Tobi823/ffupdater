@@ -1,15 +1,21 @@
 package de.marmaro.krt.ffupdater
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.*
+import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper.DnsProvider.CUSTOM_SERVER
+import rikka.shizuku.Shizuku
 import java.time.Duration
 
 
@@ -101,16 +107,6 @@ class SettingsActivity : AppCompatActivity() {
                 .map { app -> app.name }
                 .toTypedArray()
 
-            findSwitchPref("installer__session").setOnPreferenceChangeListener { _, newValue ->
-                disableOtherInstallMethods(newValue as Boolean, null, null)
-            }
-            findSwitchPref("installer__native").setOnPreferenceChangeListener { _, newValue ->
-                disableOtherInstallMethods(null, newValue as Boolean, null)
-            }
-            findSwitchPref("installer__root").setOnPreferenceChangeListener { _, newValue ->
-                disableOtherInstallMethods(null, null, newValue as Boolean)
-            }
-
             findSwitchPref("device__prefer_32bit_apks").setOnPreferenceChangeListener { _, _ ->
                 App.values().forEach {
                     it.metadataCache.invalidateCache(requireContext())
@@ -120,24 +116,45 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             findTextPref("network__custom_doh_server").isVisible =
-                findListPref("network__dns_provider").value == "5"
+                findListPref("network__dns_provider").value == CUSTOM_SERVER.name
             findListPref("network__dns_provider").setOnPreferenceChangeListener { _, newValue ->
-                findTextPref("network__custom_doh_server").isVisible = (newValue == "5")
+                findTextPref("network__custom_doh_server").isVisible = (newValue == CUSTOM_SERVER.name)
                 true
             }
-        }
 
-        private fun disableOtherInstallMethods(session: Boolean?, native: Boolean?, root: Boolean?): Boolean {
-            if (native == true || root == true) {
-                findSwitchPref("installer__session").isChecked = false
+            findListPref("installer__method").setOnPreferenceChangeListener { _, newValue ->
+                when (newValue) {
+                    Installer.ROOT_INSTALLER.name -> {
+                        Shell.getShell().use {
+                            if (it.isRoot) {
+                                return@setOnPreferenceChangeListener true
+                            }
+
+                            val text = getString(R.string.installer__method__root_not_granted)
+                            Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+                            return@setOnPreferenceChangeListener false
+                        }
+                    }
+                    Installer.SHIZUKU_INSTALLER.name -> {
+                        if (!DeviceSdkTester.INSTANCE.supportsAndroidMarshmallow()) {
+                            val text = "Your Android is too old."
+                            Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+                            return@setOnPreferenceChangeListener false
+                        }
+                        try {
+                            if (Shizuku.checkSelfPermission() != PackageManager.PERMISSION_GRANTED) {
+                                Shizuku.requestPermission(42)
+                            }
+                            return@setOnPreferenceChangeListener true
+                        } catch (e: IllegalStateException) {
+                            val text = getString(R.string.installer__method__shizuku_not_installed)
+                            Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+                            return@setOnPreferenceChangeListener false
+                        }
+                    }
+                    else -> true
+                }
             }
-            if (session == true || root == true) {
-                findSwitchPref("installer__native").isChecked = false
-            }
-            if (session == true || native == true) {
-                findSwitchPref("installer__root").isChecked = false
-            }
-            return true
         }
     }
 }

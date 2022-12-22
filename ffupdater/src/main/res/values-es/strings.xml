@@ -323,7 +323,7 @@
     <string name="network__dns_provider__title">Configurar las DNS</string>
     <string name="settings__network_category__title">Red</string>
     <string name="network__custom_doh_server__summary">Introduzca los datos para conectarse al servidor DoH personalizado.</string>
-    <string name="network__proxy__dialog_meesage">Introduzca los detalles de la conexión en uno de estos formatos:
+    <string name="network__proxy__dialog_message">Introduzca los detalles de la conexión en uno de estos formatos:
 \n
 \nSOCKS/HTTP;ip/dominio;puerto
 \n

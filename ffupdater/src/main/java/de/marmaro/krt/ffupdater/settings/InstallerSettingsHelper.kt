@@ -16,16 +16,13 @@ class InstallerSettingsHelper {
         this.preferences = preferences
     }
 
-    fun getInstaller(): Installer {
-        if (preferences.getBoolean("installer__root", false)) {
-            return Installer.ROOT_INSTALLER
+    fun getInstallerMethod(): Installer {
+        val methodName = preferences.getString("installer__method", Installer.SESSION_INSTALLER.name)
+            ?: return Installer.SESSION_INSTALLER
+        return try {
+            Installer.valueOf(methodName)
+        } catch (e: IllegalArgumentException) {
+            Installer.SESSION_INSTALLER
         }
-        if (preferences.getBoolean("installer__native", false)) {
-            return Installer.NATIVE_INSTALLER
-        }
-        if (preferences.getBoolean("installer__session", true)) {
-            return Installer.SESSION_INSTALLER
-        }
-        return Installer.SESSION_INSTALLER
     }
 }

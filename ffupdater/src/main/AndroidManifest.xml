@@ -26,6 +26,14 @@
         android:shell="true"
         tools:targetApi="q" />
 
+    <!-- Shizuku needs API 23, but I still want to use API 21-->
+    <uses-sdk tools:overrideLibrary="
+        rikka.shizuku.aidl,
+        rikka.shizuku.api,
+        rikka.shizuku.provider,
+        rikka.shizuku.shared,
+        " />
+
     <!-- If FFUpdater wants to check if an app is installed, this app must be listed here -->
     <!-- https://developer.android.com/about/versions/11/privacy/package-visibility -->
     <queries>
@@ -100,6 +108,14 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:enabled="true"
+            android:exported="true"
+            android:multiprocess="false"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
         <receiver
             android:name=".EolAppsWarnerReceiver"

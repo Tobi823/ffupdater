@@ -55,22 +55,37 @@
     </string-array>
 
     <string-array name="network__dns_provider__entries">
-        <item>Use system DNS</item>
-        <item>DNS over HTTPS: Digital Society Switzerland</item>
-        <item>DNS over HTTPS: Quad9</item>
-        <item>DNS over HTTPS: Cloudflare</item>
-        <item>DNS over HTTPS: Google</item>
-        <item>Custom DNS over HTTPS server</item>
-        <item>No DNS (just for testing)</item>
+        <item>@string/network__dns_provider__system</item>
+        <item>@string/network__dns_provider__digital_society_ch</item>
+        <item>@string/network__dns_provider__quad9</item>
+        <item>@string/network__dns_provider__cloudflare</item>
+        <item>@string/network__dns_provider__google</item>
+        <item>@string/network__dns_provider__custom</item>
+        <item>@string/network__dns_provider__no</item>
     </string-array>
 
     <string-array name="network__dns_provider__values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item>SYSTEM</item>
+        <item>DIGITAL_SOCIETY_SWITZERLAND_DOH</item>
+        <item>QUAD9_DOH</item>
+        <item>CLOUDFLARE_DOH</item>
+        <item>GOOGLE_DOH</item>
+        <item>CUSTOM_SERVER</item>
+        <item>NO</item>
     </string-array>
+
+    <string-array name="installer__method__entries">
+        <item>@string/installer__method__session</item>
+        <item>@string/installer__method__native</item>
+        <item>@string/installer__method__root</item>
+        <item>@string/installer__method__shizuku</item>
+    </string-array>
+
+    <string-array name="installer__method__values">
+        <item>SESSION_INSTALLER</item>
+        <item>NATIVE_INSTALLER</item>
+        <item>ROOT_INSTALLER</item>
+        <item>SHIZUKU_INSTALLER</item>
+    </string-array>
+
 </resources>

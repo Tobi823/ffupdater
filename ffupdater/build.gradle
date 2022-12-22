@@ -51,6 +51,10 @@ dependencies {
     // for root installer
     implementation 'com.github.topjohnwu.libsu:core:4.0.3'
 
+    // for Shizuku installer
+    implementation "dev.rikka.shizuku:api:12.2.0"
+    implementation "dev.rikka.shizuku:provider:12.2.0"
+
     // Aggregator dependency on JUnit api, engine, and params
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation 'io.mockk:mockk:1.10.5'
@@ -66,6 +70,7 @@ android {
         // MAJOR version when you make incompatible API changes,
         // MINOR version when you add functionality in a backwards compatible manner, and
         // PATCH version when you make backwards compatible bug fixes.
+
         minSdkVersion 21
         targetSdkVersion 32
         vectorDrawables.useSupportLibrary = true

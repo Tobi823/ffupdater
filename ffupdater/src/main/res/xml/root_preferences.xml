@@ -133,26 +133,14 @@
 
     <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__installer_category__title">
 
-        <SwitchPreferenceCompat
-            app:defaultValue="true"
-            app:key="installer__session"
+        <ListPreference
+            app:defaultValue="SESSION_INSTALLER"
+            app:entries="@array/installer__method__entries"
+            app:entryValues="@array/installer__method__values"
+            app:key="installer__method"
             app:singleLineTitle="false"
-            app:summary="@string/settings__installer__session__summary"
-            app:title="@string/settings__installer__session__title" />
-
-        <SwitchPreferenceCompat
-            app:defaultValue="false"
-            app:key="installer__native"
-            app:singleLineTitle="false"
-            app:summary="@string/settings__installer__native__summary"
-            app:title="@string/settings__installer__native__title" />
-
-        <SwitchPreferenceCompat
-            app:defaultValue="false"
-            app:key="installer__root"
-            app:singleLineTitle="false"
-            app:summary="@string/settings__installer__root__summary"
-            app:title="@string/settings__installer__root__title" />
+            app:title="Installer method"
+            app:useSimpleSummaryProvider="true" />
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
@@ -189,14 +177,13 @@
             app:dialogMessage="@string/network__custom_doh_server__dialog_message"
             app:key="network__custom_doh_server"
             app:singleLineTitle="false"
-            app:summary="@string/network__custom_doh_server__summary"
             app:title="@string/network__custom_doh_server__title" />
 
         <EditTextPreference
-            app:dialogMessage="@string/network__proxy__dialog_meesage"
+            app:dialogMessage="@string/network__proxy__dialog_message"
             app:key="network__proxy"
             app:singleLineTitle="false"
-            app:summary="@string/network__proxy__summary"
+            app:useSimpleSummaryProvider="true"
             app:title="@string/network__proxy__title" />
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>

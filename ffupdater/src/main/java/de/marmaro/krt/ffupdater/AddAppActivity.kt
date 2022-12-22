@@ -14,6 +14,7 @@ import androidx.annotation.MainThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.*
@@ -29,6 +30,8 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AddAppActivity : AppCompatActivity() {
     private lateinit var foregroundSettings: ForegroundSettingsHelper
@@ -45,7 +48,10 @@ class AddAppActivity : AppCompatActivity() {
         foregroundSettings = ForegroundSettingsHelper(this)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        addAppsToUserInterface()
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            addAppsToUserInterface()
+        }
     }
 
     override fun onResume() {
@@ -64,7 +70,7 @@ class AddAppActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun addAppsToUserInterface() {
+    private suspend fun addAppsToUserInterface() {
         val installedApps = App.values()
             .filter { it.impl.installableByUser }
             .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }

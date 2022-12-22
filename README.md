@@ -39,8 +39,12 @@ Other applications:
 
 - [Orbot](https://github.com/guardianproject/orbot)
 
-FFUpdater checks for updates in the background and downloads them as well. On Android 12+ or root devices,
-FFUpdater can also update the apps without user interaction.
+FFUpdater checks for updates in the background and downloads them as well. Apps can be updated without user
+interaction with:
+
+- Android 12 or higher
+- rooted smartphone
+- [Shizuku](https://shizuku.rikka.app/) / [Sui](https://github.com/RikkaApps/Sui) with Android 6 or higher
 
 ## How to contribute
 
@@ -160,6 +164,10 @@ repository or the official *F-Droid* repository) the app version was installed
   modify [Root app installer](https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt)
   by Aurora Store / Rahul Patel (GPL): *for installing/updating apps without user interaction*
 - [libsu](https://github.com/topjohnwu/libsu) by John Wu (Apache 2.0): *for executing root commands*
+- [Shizuku](https://github.com/RikkaApps/Shizuku) by RikkaW and haruue (Apache 2.0): install APKs without user
+  interaction
+- Inspiration from [Droid-ify](https://github.com/Iamlooker/Droid-ify) by Iamlooker (GPL 3.0) on how to use
+  Shizuku
 
 ## My motivation / Project goals
 

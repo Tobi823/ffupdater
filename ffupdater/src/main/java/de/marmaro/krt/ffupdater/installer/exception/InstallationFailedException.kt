@@ -5,6 +5,11 @@ open class InstallationFailedException : Exception {
     val errorCode: Int
     val errorMessage: String
 
+    constructor(message: String, errorCode: Int) : super(message) {
+        this.errorCode = errorCode
+        this.errorMessage = message
+    }
+
     constructor(message: String?, errorCode: Int, displayErrorMessage: String) : super(message) {
         this.errorCode = errorCode
         this.errorMessage = displayErrorMessage

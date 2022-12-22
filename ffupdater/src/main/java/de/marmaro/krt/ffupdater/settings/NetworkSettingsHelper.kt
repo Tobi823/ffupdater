@@ -10,7 +10,6 @@ import java.net.Proxy.Type
 class NetworkSettingsHelper {
     private val preferences: SharedPreferences
 
-
     constructor(context: Context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context)
     }
@@ -22,15 +21,22 @@ class NetworkSettingsHelper {
     val areUserCAsTrusted
         get() = preferences.getBoolean("network__trust_user_cas", false)
 
+    // must match @array/network__dns_provider__values
     enum class DnsProvider {
         // order of enums is important and must not change
         SYSTEM, DIGITAL_SOCIETY_SWITZERLAND_DOH, QUAD9_DOH, CLOUDFLARE_DOH, GOOGLE_DOH, CUSTOM_SERVER, NO
     }
 
-    val dnsProvider
-        get() = DnsProvider.values().getOrNull(
-            preferences.getString("network__dns_provider", "0")?.toIntOrNull() ?: 0
-        ) ?: DnsProvider.SYSTEM
+    val dnsProvider: DnsProvider
+        get() {
+            val methodName = preferences.getString("network__dns_provider", DnsProvider.SYSTEM.name)
+                ?: return DnsProvider.SYSTEM
+            return try {
+                DnsProvider.valueOf(methodName)
+            } catch (e: IllegalArgumentException) {
+                DnsProvider.SYSTEM
+            }
+        }
 
     data class DohConnectionDetails(
         val host: String,

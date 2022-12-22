@@ -3,8 +3,7 @@ package de.marmaro.krt.ffupdater.installer.impl
 import android.content.Context
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.installer.entity.ShortInstallResult
-import kotlinx.coroutines.CompletableDeferred
+import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -17,88 +16,55 @@ class RootInstaller(
     app: App,
     private val file: File
 ) : AbstractAppInstaller(app, file) {
-    private val installationStatus = CompletableDeferred<ShortInstallResult>()
-    private val allowListAbsoluteFilePath = ArrayList<String>()
-    private val allowListFileName = ArrayList<String>()
-
-    init {
-        App.values().forEach {
-            val packageName = it.impl.packageName
-            val basePath = "/storage/emulated/0/Android/data/de.marmaro.krt.ffupdater/files/Download"
-            allowListAbsoluteFilePath.add("$basePath/${packageName}.apk")
-            allowListFileName.add("${packageName}.apk")
-        }
-    }
 
     override suspend fun executeInstallerSpecificLogic(context: Context) {
-        withContext(Dispatchers.IO) {
-            install()
-        }
-        installationStatus.await()
-    }
-
-    private fun install() {
-        if (!hasRootPermission()) {
-            return
-        }
-        val size = file.length().toInt()
-        val sessionId = createInstallationSession(size) ?: return
-
         val filePath = file.absolutePath
         val fileName = file.name
-        if (!areFileNamesValid(filePath, fileName)) {
-            return
-        }
+        require(!hasDangerousCharacter(filePath))
+        require(!hasDangerousCharacter(fileName))
+        require(filePath == "/storage/emulated/0/Android/data/de.marmaro.krt.ffupdater/files/Download/${app.impl.packageName}.apk")
+        require(fileName == "${app.impl.packageName}.apk")
 
+        failIfRootPermissionIsMissing()
+        val size = file.length().toInt()
+        val sessionId = createInstallationSession(size) ?: return
         installApp(sessionId, size, filePath, fileName)
     }
 
-    private fun hasRootPermission(): Boolean {
-        if (Shell.getShell().isRoot) {
-            return true
+    private fun failIfRootPermissionIsMissing() {
+        if (!Shell.getShell().isRoot) {
+            throw InstallationFailedException("Missing root permission", -302)
         }
-        installationStatus.complete(ShortInstallResult(false, -90, "Missing root access."))
-        return false
     }
 
-    private fun createInstallationSession(size: Int): Int? {
-        val response = Shell.cmd("pm install-create -i com.android.vending --user 0 -r -S $size")
-            .exec()
-            .out
-
+    private suspend fun createInstallationSession(size: Int): Int? {
+        val response = execute("pm install-create -i com.android.vending --user 0 -r -S $size")
         val sessionIdPattern = Pattern.compile("(\\d+)")
         val sessionIdMatcher = sessionIdPattern.matcher(response[0])
         val found = sessionIdMatcher.find()
         if (!found) {
-            installationStatus.complete(ShortInstallResult(false, -91, "Could not find session ID."))
-            return null
+            throw InstallationFailedException("Could not find session ID. Output was: '$response'", -301)
         }
         return sessionIdMatcher.group(1)?.toInt()
     }
 
-    private fun installApp(sessionId: Int, size: Int, filePath: String, fileName: String) {
-        Shell.cmd("cat \"$filePath\" | pm install-write -S $size $sessionId \"${fileName}\"")
-            .exec()
-        val shellResult = Shell.cmd("pm install-commit $sessionId")
-            .exec()
-
-        val result = ArrayList<String>()
-        result.addAll(shellResult.out)
-        result.addAll(shellResult.err)
-        val output = result.joinToString(";")
-        installationStatus.complete(ShortInstallResult(shellResult.isSuccess, null, output))
+    private suspend fun installApp(sessionId: Int, size: Int, filePath: String, fileName: String) {
+        execute("cat \"$filePath\" | pm install-write -S $size $sessionId \"${fileName}\"")
+        execute("pm install-commit $sessionId")
     }
 
-    private fun areFileNamesValid(filePath: String, fileName: String): Boolean {
-        if (hasDangerousCharacter(filePath) ||
-            hasDangerousCharacter(fileName) ||
-            filePath !in allowListAbsoluteFilePath ||
-            fileName !in allowListFileName
-        ) {
-            installationStatus.complete(ShortInstallResult(false, -110, "file path or file name is invalid"))
-            return false
+    private suspend fun execute(command: String): List<String> {
+        return withContext(Dispatchers.IO) {
+            val result = Shell.cmd(command).exec()
+            if (result.code != 0) {
+                throw InstallationFailedException(
+                    "Root command '$command' failed. Result code is: '${result.code}', " +
+                            "stdout: '${result.out}', stderr: '${result.err}'",
+                    -403
+                )
+            }
+            result.out
         }
-        return true
     }
 
     private fun hasDangerousCharacter(value: String): Boolean {

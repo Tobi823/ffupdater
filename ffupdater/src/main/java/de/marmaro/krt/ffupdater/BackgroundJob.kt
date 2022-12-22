@@ -18,8 +18,7 @@ import de.marmaro.krt.ffupdater.background.UnrecoverableBackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.entity.Installer.ROOT_INSTALLER
-import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
+import de.marmaro.krt.ffupdater.installer.entity.Installer.*
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exception.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.FileDownloader
@@ -202,10 +201,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.success()
         }
 
-        val installerAvailable = when {
-            installerSettings.getInstaller() == ROOT_INSTALLER -> true
-            sdkTester.supportsAndroid12() && installerSettings.getInstaller() == SESSION_INSTALLER -> true
-            else -> false
+        val installerAvailable = when (installerSettings.getInstallerMethod()) {
+            SESSION_INSTALLER -> sdkTester.supportsAndroid12()
+            NATIVE_INSTALLER -> false
+            ROOT_INSTALLER, SHIZUKU_INSTALLER -> true
         }
         if (!installerAvailable) {
             Log.i(LOG_TAG, "The current installer can not update apps in the background")
@@ -226,7 +225,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         withContext(Dispatchers.Main) {
             val installer = createBackgroundAppInstaller(context, app, file)
             try {
-                installer.installAsync(context).await()
+                installer.startInstallation(context)
 
                 notification.showInstallationSuccess(context, app)
                 val metadata = app.metadataCache.getCachedOrNullIfOutdated(context)

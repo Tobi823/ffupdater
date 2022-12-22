@@ -25,12 +25,12 @@ class IntentInstaller(
     private val file: File,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AbstractAppInstaller(app, file) {
-    private val installationStatus = CompletableDeferred<Boolean>()
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
+    private val installationStatusFromCallback = CompletableDeferred<Boolean>()
 
     private val appResultCallback = lambda@{ activityResult: ActivityResult ->
         if (activityResult.resultCode == Activity.RESULT_OK) {
-            installationStatus.complete(true)
+            installationStatusFromCallback.complete(true)
             return@lambda
         }
 
@@ -39,7 +39,7 @@ class IntentInstaller(
             -11 -> context.getString(R.string.intent_installer__likely_storage_failure)
             else -> "resultCode: ${activityResult.resultCode}, INSTALL_RESULT: $result"
         }
-        installationStatus.completeExceptionally(
+        installationStatusFromCallback.completeExceptionally(
             InstallationFailedException(
                 "Installation failed. $errorMessage",
                 activityResult.resultCode,
@@ -61,7 +61,7 @@ class IntentInstaller(
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         installInternal(context, file)
-        installationStatus.await()
+        installationStatusFromCallback.await()
     }
 
     /**

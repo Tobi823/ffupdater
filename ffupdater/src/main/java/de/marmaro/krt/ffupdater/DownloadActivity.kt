@@ -330,7 +330,7 @@ class DownloadActivity : AppCompatActivity() {
         show(R.id.installingApplication)
         val app = viewModel.app!!
         try {
-            val certificateHash = appInstaller.installAsync(this).await().certificateHash ?: ""
+            val certificateHash = appInstaller.startInstallation(this).certificateHash ?: ""
             showThatAppIsInstalled(certificateHash)
         } catch (e: InstallationFailedException) {
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
@@ -370,7 +370,7 @@ class DownloadActivity : AppCompatActivity() {
             R.id.install_activity__exception__text,
             getString(application_installation_was_not_successful)
         )
-        if (installerSettings.getInstaller() == SESSION_INSTALLER) {
+        if (installerSettings.getInstallerMethod() == SESSION_INSTALLER) {
             show(R.id.install_activity__different_installer_info)
         }
 

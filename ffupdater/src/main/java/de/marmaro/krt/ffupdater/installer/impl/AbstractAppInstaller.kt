@@ -8,27 +8,23 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import java.io.File
 
 abstract class AbstractAppInstaller(
-    private val app: App,
+    protected val app: App,
     private val file: File,
 ) : AppInstaller {
 
-    override suspend fun installAsync(context: Context): Deferred<InstallResult> {
+    override suspend fun startInstallation(context: Context): InstallResult {
         return withContext(Dispatchers.IO) {
-            async {
-                install(context)
-            }
+            install2Internal(context)
         }
     }
 
     @Throws(InstallationFailedException::class)
-    private suspend fun install(context: Context): InstallResult {
+    private suspend fun install2Internal(context: Context): InstallResult {
         val validator = FingerprintValidator(context.packageManager)
         val fileResult = try {
             validator.checkApkFile(file, app.impl)
