@@ -286,5 +286,34 @@
     <string name="mulch__warning">- Mulch používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="mulch__description">Tohle je prohlížeč zaměřený na ochranu soukromí založený na technologii Chromium. Mnoho antifunkcí je zakázáno/odstraněno a několik bezpečnostních funkcí je povoleno/přidáno díky záplatam z projektu Vanadium. Zdrojové repozitáře obsahují také předem sestavené soubory a makefile soubory, které umožňují ostatním operačním systémům začlenit Mulch jako systémový WebView prohlížeč.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">Následující aplikace mají odlišné otisky certifikátů a FFUpdater je bude ignorovat: %s. To můžete napravit jejich odinstalováním a následnou instalací pomocí FFUpdater.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Následující aplikace mají odlišné otisky certifikátů a budou ignorovány: %s. To můžete napravit jejich odinstalováním a následnou instalací pomocí FFUpdater.</string>
+    <string name="network__dns_provider__title">Nastavení DNS</string>
+    <string name="network__custom_doh_server__title">Vlastní server DNS přes HTTPS</string>
+    <string name="network__proxy__summary">Pokud chcete použít SOCKS nebo HTTP proxy, zadejte sem údaje o připojení.</string>
+    <string name="settings__network_category__title">Síť</string>
+    <string name="device__prefer_32bit_apks__title">Preferovat 32bitové APK</string>
+    <string name="network__custom_doh_server__dialog_message">Zadejte údaje o připojení k DoH serveru v jednom z těchto formátů:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nNapříklad: https://dns.google/dns-query;8.8.8.8 nebo https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__summary">Zadejte údaje pro připojení k vlastnímu DoH serveru.</string>
+    <string name="network__proxy__dialog_meesage">Zadejte údaje o připojení v jednom z těchto formátů:
+\n
+\nSOCKS/HTTP;ip/doména;port
+\n
+\nSOCKS/HTTP;ip/doména;port;uživatel;heslo
+\n
+\nNapříklad: SOCKS;1.2.3.4;22 nebo HTTP;5.6.7.8;80;uzivatel1;pw123 nebo HTTP;p.webshare.io;80;u;p. Pokud chcete použít systémovou konfiguraci proxy serveru, ponechte pole prázdné.
+\n
+\nOmezení: Pokud v nastavení změníte \"Nastavení DNS\" na server DNS přes HTTPS, musíte zadat doménu proxy serveru. IP adresy nebudou fungovat.</string>
+    <string name="network__proxy__title">Proxy</string>
+    <string name="settings__device_category__title">Zařízení</string>
+    <string name="device__prefer_32bit_apks__summary">Povolte, pokud má vaše zařízení obvykle málo paměti. FFUpdater pak použije 32bitové soubory APK, které obvykle vyžadují méně paměti.</string>
 </resources>
