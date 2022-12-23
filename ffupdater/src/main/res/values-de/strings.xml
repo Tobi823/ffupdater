@@ -290,4 +290,9 @@
     <string name="settings__background__update_check__when_device_idle__summary">Aktiviere diese Option, wenn du nicht möchtest, dass deine Apps durch eine Hintergrundaktualisierung neu gestartet werden. Deaktiviere diese Option, wenn du einen regelmäßigeren Zeitplan für die Überprüfung der Hintergrundaktualisierung haben möchtest.</string>
     <string name="add_app_activity__title_end_of_live_browser">Eingestellte Browser</string>
     <string name="main_activity__ignored_apps_due_fingerprints">Die folgenden Apps haben unterschiedliche Zertifikatsfingerabdrücke und werden von FFUpdater ignoriert: %s. Du kannst das Problem beheben, indem du sie deinstallierst und dann mit FFUpdater installierst.</string>
+    <string name="network__proxy__title">Proxy</string>
+    <string name="settings__network_category__title">Netzwerk</string>
+    <string name="network__dns_provider__title">DNS-Einstellungen</string>
+    <string name="settings__device_category__title">Gerät</string>
+    <string name="device__prefer_32bit_apks__title">32-Bit-APKs bevorzugen</string>
 </resources>
