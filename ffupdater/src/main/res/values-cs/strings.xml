@@ -289,7 +289,6 @@
     <string name="main_activity__ignored_apps_due_fingerprints">Následující aplikace mají odlišné otisky certifikátů a budou ignorovány: %s. To můžete napravit jejich odinstalováním a následnou instalací pomocí FFUpdater.</string>
     <string name="network__dns_provider__title">Nastavení DNS</string>
     <string name="network__custom_doh_server__title">Vlastní server DNS přes HTTPS</string>
-    <string name="network__proxy__summary">Pokud chcete použít SOCKS nebo HTTP proxy, zadejte sem údaje o připojení.</string>
     <string name="settings__network_category__title">Síť</string>
     <string name="device__prefer_32bit_apks__title">Preferovat 32bitové APK</string>
     <string name="network__custom_doh_server__dialog_message">Zadejte údaje o připojení k DoH serveru v jednom z těchto formátů:
@@ -303,7 +302,6 @@
 \nurl;ip1;ip2;ip3;ip4
 \n
 \nNapříklad: https://dns.google/dns-query;8.8.8.8 nebo https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__custom_doh_server__summary">Zadejte údaje pro připojení k vlastnímu DoH serveru.</string>
     <string name="network__proxy__dialog_meesage">Zadejte údaje o připojení v jednom z těchto formátů:
 \n
 \nSOCKS/HTTP;ip/doména;port

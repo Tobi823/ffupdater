@@ -304,7 +304,6 @@
     <string name="fennecfdroid__description">Fennec F-Droid se basa en la última versión de Firefox (cuyo nombre en código es Fenix). Ha eliminado los bits propietarios y la telemetría, pero sigue conectándose a varios servicios de Mozilla y Google que pueden rastrear a los usuarios.</string>
     <string name="main_activity__ignored_apps_due_fingerprints">Las siguientes aplicaciones tienen diferentes huellas digitales de certificado y serán ignoradas: %s. Puedes solucionarlo desinstalándolas y volviéndolas a instalar con FFUpdater.</string>
     <string name="network__custom_doh_server__title">Servidor DNS personalizado sobre HTTPS</string>
-    <string name="network__proxy__summary">Si desea utilizar un proxy SOCKS o HTTP, introduzca aquí los datos de conexión.</string>
     <string name="network__proxy__title">Proxy</string>
     <string name="settings__device_category__title">Dispositivo</string>
     <string name="device__prefer_32bit_apks__summary">Actívala si tu dispositivo suele tener poca memoria. FFUpdater utilizará entonces APKs de 32 bits que suelen requerir menos memoria.</string>
@@ -322,7 +321,6 @@
 \nPor ejemplo: https://dns.google/dns-query;8.8.8.8 o https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__dns_provider__title">Configurar las DNS</string>
     <string name="settings__network_category__title">Red</string>
-    <string name="network__custom_doh_server__summary">Introduzca los datos para conectarse al servidor DoH personalizado.</string>
     <string name="network__proxy__dialog_message">Introduzca los detalles de la conexión en uno de estos formatos:
 \n
 \nSOCKS/HTTP;ip/dominio;puerto

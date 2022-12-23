@@ -305,7 +305,6 @@
 \nадрес;IP1;IP2;IP3;IP4
 \n
 \nНапример: https://dns.google/dns-query;8.8.8.8 или https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__custom_doh_server__summary">Въведете данните за връзка с потребителски сървър за DoH.</string>
     <string name="network__custom_doh_server__title">Потребителски сървър за DNS по HTTPS</string>
     <string name="network__proxy__title">Мрежов посредник</string>
     <string name="settings__network_category__title">Мрежа</string>
