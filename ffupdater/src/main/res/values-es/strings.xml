@@ -308,7 +308,7 @@
     <string name="settings__device_category__title">Dispositivo</string>
     <string name="device__prefer_32bit_apks__summary">Actívala si tu dispositivo suele tener poca memoria. FFUpdater utilizará entonces APKs de 32 bits que suelen requerir menos memoria.</string>
     <string name="device__prefer_32bit_apks__title">Prefiero APKs de 32 bits</string>
-    <string name="network__custom_doh_server__dialog_message">Introduzca los detalles de conexión para el servidor DoH en uno de estos formatos:
+    <string name="network__custom_doh_server__dialog_message">Introduzca los detalles de conexión para el servidor DoH personalizado en uno de estos formatos:
 \n
 \nurl;ip1
 \n
@@ -330,4 +330,17 @@
 \nPor ejemplo SOCKS;1.2.3.4;22 o HTTP;5.6.7.8;80;user1;pw123 o HTTP;p.webshare.io;80;u;p. Déjelo vacío si desea utilizar la configuración de proxy del sistema.
 \n
 \nLimitación: Si cambias \'Configuración DNS\' en los ajustes a un servidor DNS sobre HTTPS, tienes que introducir el dominio del servidor proxy. Las IPs no funcionarán.</string>
+    <string name="network__dns_provider__system">Utilizar las DNS del sistema</string>
+    <string name="network__dns_provider__quad9">DNS a través de HTTPS: Quad9</string>
+    <string name="network__dns_provider__cloudflare">DNS a través de HTTPS: Cloudflare</string>
+    <string name="network__dns_provider__google">DNS a través de HTTPS: Google</string>
+    <string name="network__dns_provider__custom">Servidor DNS sobre HTTPS personalizado</string>
+    <string name="installer__method__native">Instalador nativo: respaldo si el instalador de la sesión no funciona en su teléfono inteligente.</string>
+    <string name="installer__method__root">Instalador Root: Actualizar aplicaciones sin diálogo de confirmación. Esto requiere un smartphone rooteado.</string>
+    <string name="installer__method__root_not_granted">¡Permiso de root no concedido!</string>
+    <string name="installer__method__shizuku_not_installed">¡Shizuku no está instalado!</string>
+    <string name="installer__method__session">Instalador de sesión: Recomendado para la mayoría de los dispositivos. En Android 12 o superior, las aplicaciones pueden actualizarse sin el diálogo de confirmación.</string>
+    <string name="network__dns_provider__digital_society_ch">DNS sobre HTTPS: Sociedad Digital Suiza</string>
+    <string name="installer__method__shizuku">Instalador Shizuku: Actualizar aplicaciones sin diálogo de confirmación. Esto requiere la aplicación Shizuku o el módulo Sui Magisk.</string>
+    <string name="network__dns_provider__no">Sin DNS (sólo para pruebas)</string>
 </resources>
