@@ -13,8 +13,7 @@ import androidx.work.WorkRequest.DEFAULT_BACKOFF_DELAY_MILLIS
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.background.AppsOrResult
-import de.marmaro.krt.ffupdater.background.RecoverableBackgroundException
-import de.marmaro.krt.ffupdater.background.UnrecoverableBackgroundException
+import de.marmaro.krt.ffupdater.background.BackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
@@ -79,11 +78,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             internalDoWork()
         } catch (e: Exception) {
             if (runAttemptCount < MAX_RETRIES) {
-                Log.w(LOG_TAG, "Background job failed.", RecoverableBackgroundException(e))
+                Log.w(LOG_TAG, "Background job failed.", e)
                 Log.i(LOG_TAG, "Restart background job in ${calculateBackoffTime(runAttemptCount)}")
                 Result.retry()
             } else {
-                val wrappedException = UnrecoverableBackgroundException(e)
+                val wrappedException = BackgroundException(e)
                 Log.e(LOG_TAG, "Background job failed.", wrappedException)
                 notification.showError(context, wrappedException)
                 Result.success() // BackgroundJob should not be removed from WorkManager schedule

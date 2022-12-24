@@ -1,4 +1,4 @@
 package de.marmaro.krt.ffupdater.background
 
-class UnrecoverableBackgroundException(throwable: Throwable) :
+class BackgroundException(throwable: Throwable) :
     RuntimeException("The background job fails due to an unrecoverable exception.", throwable)
