@@ -291,7 +291,7 @@
     <string name="network__custom_doh_server__title">Vlastní server DNS přes HTTPS</string>
     <string name="settings__network_category__title">Síť</string>
     <string name="device__prefer_32bit_apks__title">Preferovat 32bitové APK</string>
-    <string name="network__custom_doh_server__dialog_message">Zadejte údaje o připojení k DoH serveru v jednom z těchto formátů:
+    <string name="network__custom_doh_server__dialog_message">Zadejte údaje o připojení k vlastnímu DoH serveru v jednom z těchto formátů:
 \n
 \nurl;ip1
 \n
@@ -302,7 +302,20 @@
 \nurl;ip1;ip2;ip3;ip4
 \n
 \nNapříklad: https://dns.google/dns-query;8.8.8.8 nebo https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__proxy__dialog_meesage">Zadejte údaje o připojení v jednom z těchto formátů:
+    <string name="network__proxy__title">Proxy</string>
+    <string name="settings__device_category__title">Zařízení</string>
+    <string name="device__prefer_32bit_apks__summary">Povolte, pokud má vaše zařízení obvykle málo paměti. FFUpdater pak použije 32bitové soubory APK, které obvykle vyžadují méně paměti.</string>
+    <string name="installer__method__root_not_granted">Nebylo uděleno root oprávnění!</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku není nainstalován!</string>
+    <string name="network__dns_provider__system">Použít systémové DNS</string>
+    <string name="network__dns_provider__digital_society_ch">DNS přes HTTPS: Digital Society Switzerland</string>
+    <string name="network__dns_provider__quad9">DNS přes HTTPS: Quad9</string>
+    <string name="network__dns_provider__cloudflare">DNS přes HTTPS: Cloudflare</string>
+    <string name="network__dns_provider__google">DNS přes HTTPS: Google</string>
+    <string name="network__dns_provider__no">Nepoužívat DNS (pouze pro testování)</string>
+    <string name="installer__method__native">Nativní instalátor: Náhradní řešení, pokud \"session instalátor\" na vašem zařízení nefunguje.</string>
+    <string name="installer__method__root">Root instalátor: Aktualizuje aplikace bez potvrzovacího dialogu. To vyžaduje rootnutý smartphone.</string>
+    <string name="network__proxy__dialog_message">Pokud používáte proxy server SOCKS nebo HTTP, zadejte zde údaje o připojení. Použijte jeden z těchto formátů:
 \n
 \nSOCKS/HTTP;ip/doména;port
 \n
@@ -310,8 +323,8 @@
 \n
 \nNapříklad: SOCKS;1.2.3.4;22 nebo HTTP;5.6.7.8;80;uzivatel1;pw123 nebo HTTP;p.webshare.io;80;u;p. Pokud chcete použít systémovou konfiguraci proxy serveru, ponechte pole prázdné.
 \n
-\nOmezení: Pokud v nastavení změníte \"Nastavení DNS\" na server DNS přes HTTPS, musíte zadat doménu proxy serveru. IP adresy nebudou fungovat.</string>
-    <string name="network__proxy__title">Proxy</string>
-    <string name="settings__device_category__title">Zařízení</string>
-    <string name="device__prefer_32bit_apks__summary">Povolte, pokud má vaše zařízení obvykle málo paměti. FFUpdater pak použije 32bitové soubory APK, které obvykle vyžadují méně paměti.</string>
+\nOmezení: Pokud v nastavení změníte \"DNS nastavení\" na server DNS přes HTTPS, musíte zadat doménu proxy serveru. IP adresy nebudou fungovat.</string>
+    <string name="installer__method__session">Session instalátor: Doporučeno pro většinu zařízení. Na Androidu 12 nebo novějším lze aplikace aktualizovat bez potvrzovacího dialogu.</string>
+    <string name="network__dns_provider__custom">Vlastní server DNS přes HTTPS</string>
+    <string name="installer__method__shizuku">Shizuku instalátor: Aktualizuje aplikace bez potvrzovacího dialogu. Vyžaduje aplikaci Shizuku nebo modul Sui pro Magisk.</string>
 </resources>
