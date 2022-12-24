@@ -325,4 +325,14 @@
     <string name="installer__method__root_not_granted">Root izni verilmedi!</string>
     <string name="installer__method__shizuku_not_installed">Shizuku kurulu değil!</string>
     <string name="network__dns_provider__system">Sistem DNS\'sini kullan</string>
+    <string name="network__dns_provider__quad9">HTTPS üzerinden DNS: Quad9</string>
+    <string name="network__dns_provider__cloudflare">HTTPS üzerinden DNS: Cloudflare</string>
+    <string name="network__dns_provider__google">HTTPS üzerinden DNS: Google</string>
+    <string name="network__dns_provider__custom">Özel HTTPS üzerinden DNS sunucusu</string>
+    <string name="network__dns_provider__no">DNS yok (yalnızca test için)</string>
+    <string name="installer__method__root">Root kurucusu: Uygulamaları bir onay iletişim kutusu olmadan güncelleyin. Bunun için root yapılmış bir akıllı telefon gerekir.</string>
+    <string name="network__dns_provider__digital_society_ch">HTTPS üzerinden DNS: Dijital Toplum İsviçre</string>
+    <string name="installer__method__native">Yerel kurucu: Oturum kurucusu akıllı telefonunuzda çalışmazsa kullanılır.</string>
+    <string name="installer__method__shizuku">Shizuku kurucusu: Uygulamaları onay iletişim kutusu olmadan güncelleyin. Bunun için Shizuku uygulaması veya Sui Magisk modülü gerekir.</string>
+    <string name="installer__method__session">Oturum kurucusu: Çoğu aygıt için tavsiye edilir. Android 12 veya üzerinde, uygulamalar bir onay iletişim kutusu olmadan güncellenebilir.</string>
 </resources>
