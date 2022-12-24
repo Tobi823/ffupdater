@@ -298,7 +298,7 @@
     <string name="network__proxy__title">Vekil</string>
     <string name="network__dns_provider__title">DNS ayarları</string>
     <string name="network__custom_doh_server__title">Özel HTTPS üzerinden DNS sunucusu</string>
-    <string name="network__custom_doh_server__dialog_message">DoH sunucusu için bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
+    <string name="network__custom_doh_server__dialog_message">Özel DoH sunucusu için bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
 \n
 \nURL;IP1
 \n
@@ -322,4 +322,7 @@
     <string name="device__prefer_32bit_apks__title">32-Bit APK\'ları tercih et</string>
     <string name="settings__device_category__title">Aygıt</string>
     <string name="device__prefer_32bit_apks__summary">Aygıtınızın belleği genellikle düşükse etkinleştirin. FFUpdater daha sonra genellikle daha az bellek gerektiren 32 bit APK\'ları kullanacaktır.</string>
+    <string name="installer__method__root_not_granted">Root izni verilmedi!</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku kurulu değil!</string>
+    <string name="network__dns_provider__system">Sistem DNS\'sini kullan</string>
 </resources>
