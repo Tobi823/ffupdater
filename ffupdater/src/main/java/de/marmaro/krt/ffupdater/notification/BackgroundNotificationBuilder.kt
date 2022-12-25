@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
@@ -11,8 +12,6 @@ import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.os.Build
-import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.CrashReportActivity
 import de.marmaro.krt.ffupdater.DownloadActivity
 import de.marmaro.krt.ffupdater.MainActivity
@@ -21,242 +20,224 @@ import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
+
 
 class BackgroundNotificationBuilder(
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) {
-    fun showError(context: Context, exception: Exception) {
-        val message = context.getString(notification__error__text)
-        showNotification(
-            context = context,
-            channelId = "background_notification",
-            channelName = context.getString(notification__error__channel_name),
-            channelDescription = context.getString(notification__error__channel_descr),
-            notificationId = 300,
-            notificationTitle = context.getString(notification__error__title),
-            notificationText = message,
-            intent = CrashReportActivity.createIntent(context, exception, message),
+    data class ChannelData(val id: String, val name: String, val description: String)
+    data class NotificationData(val id: Int, val title: String, val text: String)
+
+    fun showErrorNotification(context: Context, exception: Exception) {
+        val channel = ChannelData(
+            id = "background_notification",
+            name = context.getString(notification__error__channel_name),
+            description = context.getString(notification__error__channel_descr)
         )
+        val notification = NotificationData(
+            id = ERROR_CODE,
+            title = context.getString(notification__error__title),
+            text = context.getString(notification__error__text),
+        )
+        val intent = CrashReportActivity.createIntent(context, exception, notification.text)
+        showNotification(context, channel, notification, intent)
     }
 
-    fun showUpdateIsAvailable(context: Context, app: App) {
+    fun showUpdateAvailableNotification(context: Context, apps: List<App>) {
+        apps.forEach {
+            showUpdateAvailableNotification(context, it)
+        }
+    }
+
+    fun showUpdateAvailableNotification(context: Context, app: App) {
+        val useDifferentChannels = BackgroundSettingsHelper(context).useDifferentNotificationChannels
         val appTitle: String = context.getString(app.impl.title)
-        showNotification(
-            context = context,
-            channelId = "update_notification__${app.name.lowercase()}",
-            channelName = context.getString(notification__update_available__channel_name, appTitle),
-            channelDescription = context.getString(notification__update_available__channel_descr, appTitle),
-            notificationId = 200 + app.ordinal,
-            notificationTitle = context.getString(update_notification__title, appTitle),
-            notificationText = context.getString(update_notification__text),
-            intent = DownloadActivity.createIntent(context, app)
+        val channel = ChannelData(
+            id = if (useDifferentChannels) {
+                "update_notification__${app.name.lowercase()}"
+            } else {
+                "update_notification__general"
+            }, name = if (useDifferentChannels) {
+                context.getString(notification__update_available__channel_name, appTitle)
+            } else {
+                context.getString(notification__update_available__generic_channel_name)
+            }, description = if (useDifferentChannels) {
+                context.getString(notification__update_available__channel_descr, appTitle)
+            } else {
+                context.getString(notification__update_available__generic_channel_descr)
+            }
         )
+        val notification = NotificationData(
+            id = UPDATE_AVAILABLE_CODE + app.ordinal,
+            title = context.getString(update_notification__title, appTitle),
+            text = context.getString(update_notification__text),
+        )
+        showNotification(context, channel, notification, DownloadActivity.createIntent(context, app))
     }
 
-    fun hideUpdateIsAvailable(context: Context) {
-        App.values().forEach { hideUpdateIsAvailable(context, it) }
-    }
-
-    fun hideUpdateIsAvailable(context: Context, app: App) {
-        val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-        nm.cancel(200 + app.ordinal)
-    }
-
-    fun showDownloadIsRunning(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
+    fun showDownloadRunningNotification(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
         val appTitle = context.getString(app.impl.title)
+        val channel = ChannelData(
+            id = "download_running_notification",
+            name = context.getString(notification__download_running__channel_name),
+            description = context.getString(notification__download_running__channel_descr),
+        )
         val status = when {
             progressInPercent != null -> "$progressInPercent %"
             totalMB != null -> "$totalMB MB"
             else -> ""
         }
-        showNotification(
-            context = context,
-            channelId = "download_running_notification",
-            channelName = context.getString(notification__download_running__channel_name),
-            channelDescription = context.getString(notification__download_running__channel_descr),
-            notificationId = 400 + app.ordinal,
-            notificationTitle = context.getString(notification__download_running__title),
-            notificationText = context.getString(notification__download_running__text, appTitle, status),
-            intent = null
+        val notification = NotificationData(
+            id = DOWNLOAD_IS_RUNNING_CODE + app.ordinal,
+            title = context.getString(notification__download_running__title),
+            text = context.getString(notification__download_running__text, appTitle, status),
         )
+        showNotification(context, channel, notification, null)
     }
 
-    fun hideDownloadIsRunning(context: Context, app: App) {
-        val notificationManager = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-        notificationManager.cancel(400 + app.ordinal)
-    }
-
-    fun showDownloadError(context: Context, app: App, exception: NetworkException) {
+    fun showDownloadNotification(context: Context, app: App, exception: NetworkException) {
         val appTitle = context.getString(app.impl.title)
+        val channel = ChannelData(
+            id = "download_error_notification",
+            name = context.getString(notification__download_error__channel_name),
+            description = context.getString(notification__download_error__channel_descr),
+        )
+        val notification = NotificationData(
+            id = DOWNLOAD_ERROR_CODE + app.ordinal,
+            title = context.getString(notification__download_error__title),
+            text = context.getString(notification__download_error__text, appTitle),
+        )
         val description = context.getString(notification__download_error__descr, appTitle)
-        showNotification(
-            context = context,
-            channelId = "download_error_notification",
-            channelName = context.getString(notification__download_error__channel_name),
-            channelDescription = context.getString(notification__download_error__channel_descr),
-            notificationId = 700 + app.ordinal,
-            notificationTitle = context.getString(notification__download_error__title),
-            notificationText = context.getString(notification__download_error__text, appTitle),
-            intent = CrashReportActivity.createIntent(context, exception, description),
-        )
+        val intent = CrashReportActivity.createIntent(context, exception, description)
+        showNotification(context, channel, notification, intent)
     }
 
-    fun hideDownloadError(context: Context) {
-        App.values().forEach {
-            val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-            nm.cancel(700 + it.ordinal)
-        }
-    }
-
-    fun showInstallationSuccess(context: Context, app: App) {
+    fun showInstallSuccessNotification(context: Context, app: App) {
         val appTitle: String = context.getString(app.impl.title)
-        showNotification(
-            context = context,
-            channelId = "installation_success_notification",
-            channelName = context.getString(notification__install_success__channel_name, appTitle),
-            channelDescription = context.getString(notification__install_success__channel_descr, appTitle),
-            notificationId = 500 + app.ordinal,
-            notificationTitle = context.getString(notification__install_success__title, appTitle),
-            notificationText = context.getString(notification__install_success__text),
-            intent = null
+        val channel = ChannelData(
+            id = "installation_success_notification",
+            name = context.getString(notification__install_success__channel_name, appTitle),
+            description = context.getString(notification__install_success__channel_descr, appTitle),
         )
+        val notification = NotificationData(
+            id = INSTALL_SUCCESS_CODE + app.ordinal,
+            title = context.getString(notification__install_success__title, appTitle),
+            text = context.getString(notification__install_success__text),
+        )
+        showNotification(context, channel, notification, null)
     }
 
-    fun hideInstallationSuccess(context: Context) {
-        App.values().forEach { hideInstallationSuccess(context, it) }
-    }
-
-    fun hideInstallationSuccess(context: Context, app: App) {
-        val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-        nm.cancel(500 + app.ordinal)
-    }
-
-    fun showInstallationError(context: Context, app: App, code: Int, message: String, exception: Exception) {
+    fun showInstallFailureNotification(
+        context: Context,
+        app: App,
+        code: Int,
+        message: String,
+        exception: Exception
+    ) {
+        val useDifferentChannels = BackgroundSettingsHelper(context).useDifferentNotificationChannels
         val appTitle: String = context.getString(app.impl.title)
+        val channel = ChannelData(
+            id = if (useDifferentChannels) {
+                "installation_error_notification__${app.name.lowercase()}"
+            } else {
+                "installation_error_notification__general"
+            }, name = if (useDifferentChannels) {
+                context.getString(notification__install_error__channel_name, appTitle)
+            } else {
+                context.getString(notification__install_error__generic_channel_name)
+            }, description = if (useDifferentChannels) {
+                context.getString(notification__install_error__channel_descr, appTitle)
+            } else {
+                context.getString(notification__install_error__generic_channel_descr)
+            }
+        )
+        val notification = NotificationData(
+            id = INSTALL_FAILURE_ERROR + app.ordinal,
+            title = context.getString(notification__install_error__title, appTitle),
+            text = context.getString(notification__install_error__text, code, message),
+        )
         val description = context.getString(crash_report__explain_text__download_activity_install_file)
-        showNotification(
-            context = context,
-            channelId = "installation_error_notification",
-            channelName = context.getString(notification__install_error__channel_name, appTitle),
-            channelDescription = context.getString(notification__install_error__channel_descr, appTitle),
-            notificationId = 600 + app.ordinal,
-            notificationTitle = context.getString(notification__install_error__title, appTitle),
-            notificationText = context.getString(notification__install_error__text, code, message),
-            intent = CrashReportActivity.createIntent(context, exception, description),
+        val intent = CrashReportActivity.createIntent(context, exception, description)
+        showNotification(context, channel, notification, intent)
+    }
+
+    fun showEolAppsNotification(context: Context) {
+        val channel = ChannelData(
+            id = "eol_apps_notification",
+            name = context.getString(notification__eol_apps__channel_name),
+            description = context.getString(notification__eol_apps__channel_description)
         )
-    }
-
-    fun hideInstallationError(context: Context) {
-        App.values().forEach { hideInstallationError(context, it) }
-    }
-
-    fun hideInstallationError(context: Context, app: App) {
-        val nm = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-        nm.cancel(600 + app.ordinal)
-    }
-
-    fun showEolAppsWarning(context: Context) {
-        showNotification(
-            context = context,
-            channelId = "eol_apps_notification",
-            channelName = context.getString(notification__eol_apps__channel_name),
-            channelDescription = context.getString(notification__eol_apps__channel_description),
-            notificationId = 800,
-            notificationTitle = context.getString(notification__eol_apps__title),
-            notificationText = context.getString(notification__eol_apps__text),
-            intent = MainActivity.createIntent(context)
+        val notification = NotificationData(
+            id = EOL_APPS_CODE,
+            title = context.getString(notification__eol_apps__title),
+            text = context.getString(notification__eol_apps__text),
         )
+        showNotification(context, channel, notification, MainActivity.createIntent(context))
     }
 
-    fun showLongTimeNoBackgroundUpdateCheck(context: Context, e: Exception) {
-        val message = context.getString(notification__no_update_check__text)
-        showNotification(
-            context = context,
-            channelId = "no_update_check_notification",
-            channelName = context.getString(notification__no_update_check__channel_name),
-            channelDescription = context.getString(notification__no_update_check__channel_description),
-            notificationId = 900,
-            notificationTitle = context.getString(notification__no_update_check__title),
-            notificationText = message,
-            intent = CrashReportActivity.createIntent(context, e, message),
+    fun showLongTimeNoBackgroundUpdateCheckNotification(context: Context, e: Exception) {
+        val channel = ChannelData(
+            id = "no_update_check_notification",
+            name = context.getString(notification__no_update_check__channel_name),
+            description = context.getString(notification__no_update_check__channel_description),
         )
+        val notification = NotificationData(
+            id = 900,
+            title = context.getString(notification__no_update_check__title),
+            text = context.getString(notification__no_update_check__text),
+        )
+        val intent = CrashReportActivity.createIntent(context, e, notification.text)
+        showNotification(context, channel, notification, intent)
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
     fun showNotification(
-        context: Context,
-        channelId: String,
-        channelName: String,
-        channelDescription: String,
-        notificationId: Int,
-        notificationTitle: String,
-        notificationText: String,
-        intent: Intent?,
+        context: Context, channelData: ChannelData, notification: NotificationData, intent: Intent?
     ) {
-        val notificationManager = (context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
-        val notificationBuilder = getNotificationBuilder(
-            context,
-            notificationManager,
-            channelId,
-            channelName,
-            channelDescription
-        )
+        val notificationManager = getNotificationManager(context)
+
+        val notificationBuilder = if (deviceSdkTester.supportsAndroidOreo()) {
+            val channel = NotificationChannel(channelData.id, channelData.name, IMPORTANCE_DEFAULT)
+            channel.description = channelData.description
+            notificationManager.createNotificationChannel(channel)
+            Notification.Builder(context, channelData.id)
+        } else {
+            @Suppress("DEPRECATION") Notification.Builder(context)
+        }
+
         notificationBuilder
             .setSmallIcon(R.mipmap.transparent, 0)
             .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
-            .setStyle(Notification.BigTextStyle().bigText(notificationText))
-            .setContentTitle(notificationTitle)
-            .setContentText(notificationText)
-            .setOnlyAlertOnce(true)
+            .setStyle(Notification.BigTextStyle().bigText(notification.text))
+            .setContentTitle(notification.title).setContentText(notification.text).setOnlyAlertOnce(true)
             .setAutoCancel(true)
-        if (intent != null) {
-            val updateAppIntent = PendingIntent.getActivity(context, 0, intent, getFlags())
-            notificationBuilder.setContentIntent(updateAppIntent)
-        }
-        notificationManager.notify(notificationId, notificationBuilder.build())
-    }
 
-    private fun getFlags(): Int {
-        return if (deviceSdkTester.supportsAndroid12()) {
+        val flags = if (deviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_IMMUTABLE
         } else {
             FLAG_UPDATE_CURRENT
         }
+
+        intent
+            ?.let { PendingIntent.getActivity(context, 0, it, flags) }
+            ?.let { notificationBuilder.setContentIntent(it) }
+
+        notificationManager.notify(notification.id, notificationBuilder.build())
     }
 
-    private fun getNotificationBuilder(
-        context: Context,
-        notificationManager: NotificationManager,
-        channelId: String,
-        channelName: String,
-        channelDescription: String
-    ): Notification.Builder {
-        if (deviceSdkTester.supportsAndroidOreo()) {
-            createNotificationChannel(notificationManager, channelId, channelName, channelDescription)
-            return Notification.Builder(context, channelId)
-        }
-
-        @Suppress("DEPRECATION")
-        return Notification.Builder(context)
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private fun createNotificationChannel(
-        notificationManager: NotificationManager,
-        channelId: String,
-        channelName: String,
-        channelDescription: String
-    ) {
-        val channel = NotificationChannel(
-            channelId,
-            channelName,
-            NotificationManager.IMPORTANCE_DEFAULT
-        )
-        channel.description = channelDescription
-        notificationManager.createNotificationChannel(channel)
+    private fun getNotificationManager(context: Context): NotificationManager {
+        return context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
     }
 
     companion object {
         val INSTANCE = BackgroundNotificationBuilder()
+        const val UPDATE_AVAILABLE_CODE = 200
+        const val ERROR_CODE = 300
+        const val DOWNLOAD_IS_RUNNING_CODE = 400
+        const val INSTALL_SUCCESS_CODE = 500
+        const val INSTALL_FAILURE_ERROR = 600
+        const val DOWNLOAD_ERROR_CODE = 700
+        const val EOL_APPS_CODE = 800
     }
 }

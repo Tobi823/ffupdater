@@ -285,4 +285,10 @@
     <string name="installer__method__native">Native installer: Fallback if the session installer does not work on your smartphone.</string>
     <string name="installer__method__root">Root installer: Update apps without a confirmation dialog. This requires a rooted smartphone.</string>
     <string name="installer__method__shizuku">Shizuku installer: Update apps without a confirmation dialog. This requires the Shizuku app or the Sui Magisk module.</string>
+    <string name="background__separate_notification_channels__summary">Use different notification channels for each individual app</string>
+    <string name="background__separate_notification_channels__title">Different notification channels</string>
+    <string name="notification__update_available__generic_channel_name">App update notification</string>
+    <string name="notification__update_available__generic_channel_descr">Notification channel for available app updates.</string>
+    <string name="notification__install_error__generic_channel_descr">Notification channel for failed app updates.</string>
+    <string name="notification__install_error__generic_channel_name">App update failure notification</string>
 </resources>

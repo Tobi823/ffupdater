@@ -20,6 +20,9 @@ class BackgroundSettingsHelper {
     val isUpdateCheckEnabled
         get() = preferences.getBoolean("background__update_check__enabled", true)
 
+    val useDifferentNotificationChannels
+        get() = preferences.getBoolean("background__separate_notification_channels", false)
+
     val updateCheckInterval: Duration
         get() {
             val minutes = preferences.getString("background__update_check__interval", null)?.toLongOrNull()

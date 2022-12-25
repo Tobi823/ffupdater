@@ -59,6 +59,14 @@
             app:summary="@string/settings__background__update_check__enabled__summary"
             app:title="@string/settings__background__update_check__enabled__title" />
 
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:dependency="background__update_check__enabled"
+            app:key="background__separate_notification_channels"
+            app:singleLineTitle="false"
+            app:summary="@string/background__separate_notification_channels__summary"
+            app:title="@string/background__separate_notification_channels__title" />
+
         <ListPreference
             app:defaultValue="360"
             app:dependency="background__update_check__enabled"

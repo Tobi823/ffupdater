@@ -36,7 +36,7 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
@@ -59,6 +59,7 @@ class DownloadActivity : AppCompatActivity() {
     private lateinit var foregroundSettings: ForegroundSettingsHelper
     private lateinit var installerSettings: InstallerSettingsHelper
     private lateinit var networkSettings: NetworkSettingsHelper
+    private val notificationRemover = BackgroundNotificationRemover.INSTANCE
 
     // persistent data across orientation changes
     class InstallActivityViewModel : ViewModel() {
@@ -112,9 +113,7 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         // hide existing background notification for this app
-        BackgroundNotificationBuilder.INSTANCE.hideUpdateIsAvailable(this, app)
-        BackgroundNotificationBuilder.INSTANCE.hideInstallationSuccess(this, app)
-        BackgroundNotificationBuilder.INSTANCE.hideInstallationError(this, app)
+        notificationRemover.removeAppStatusNotifications(this, app)
 
         // prevent network timeouts when the displayed is automatically turned off
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -337,9 +336,7 @@ class DownloadActivity : AppCompatActivity() {
             showThatAppInstallationFailed(e.errorMessage, ex)
         } finally {
             // hide existing background notification for this app
-            BackgroundNotificationBuilder.INSTANCE.hideUpdateIsAvailable(this, app)
-            BackgroundNotificationBuilder.INSTANCE.hideInstallationSuccess(this, app)
-            BackgroundNotificationBuilder.INSTANCE.hideInstallationError(this, app)
+            notificationRemover.removeAppStatusNotifications(this, app)
         }
     }
 
