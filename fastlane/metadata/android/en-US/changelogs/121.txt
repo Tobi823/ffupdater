@@ -1,0 +1,6 @@
+* Thanks for the Weblate contribution from: Juraj Motuz, gallegonovato, nautilusx, Oğuz Ersen, Ettore Atalan,
+  109247019824, Retrial and Deleted User
+* Add support for the Shizuku installer
+* Add support for 64-bit Chromium
+* Add option to choose between one or many (for each app) notification channels for update or install success or install failure notification
+* Refactor and cleanup

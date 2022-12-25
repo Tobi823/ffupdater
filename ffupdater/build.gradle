@@ -65,8 +65,8 @@ android {
     compileSdkVersion 32
 
     defaultConfig {
-        versionCode 120
-        versionName "77.4.0" // MAJOR.MINOR.PATCH
+        versionCode 121
+        versionName "77.5.0" // MAJOR.MINOR.PATCH
         // MAJOR version when you make incompatible API changes,
         // MINOR version when you add functionality in a backwards compatible manner, and
         // PATCH version when you make backwards compatible bug fixes.
