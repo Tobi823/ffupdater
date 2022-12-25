@@ -40,11 +40,17 @@ class ShizukuInstaller(
     }
 
     private fun failIfShizukuPermissionIsMissing() {
-        if (Shizuku.checkSelfPermission() != PackageManager.PERMISSION_GRANTED) {
+        val permission = try {
+            Shizuku.checkSelfPermission()
+        } catch (e: IllegalStateException) {
+            throw InstallationFailedException(
+                "Shizuku is not running. Please start the Shizuku service.",
+                -432
+            )
+        }
+        if (permission != PackageManager.PERMISSION_GRANTED) {
             Shizuku.requestPermission(42)
-            if (Shizuku.checkSelfPermission() != PackageManager.PERMISSION_GRANTED) {
-                throw InstallationFailedException("Missing Shizuku permission", -402)
-            }
+            throw InstallationFailedException("Missing Shizuku permission. Retry again.", -431)
         }
     }
 
