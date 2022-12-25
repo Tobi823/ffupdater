@@ -294,12 +294,11 @@
     <string name="mulch__warning">- Mulch, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="fennecfdroid__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="fennecfdroid__description">Fennec F-Droid en son Firefox sürümüne (kod adı Fenix) dayanmaktadır. Açık kaynaklı olmayan bitler ve telemetri kaldırılmıştır, ancak yine de kullanıcıları izleyebilen çeşitli Mozilla ve Google hizmetlerine bağlanır.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">Şu uygulamalar farklı sertifika parmak izlerine sahiptir ve FFUpdater tarafından yok sayılacaktır: %s. Kaldırarak ve ardından FFUpdater ile kurarak bunu düzeltebilirsiniz.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Şu uygulamalar farklı sertifika parmak izlerine sahip ve yok sayılacak: %s. Kaldırarak ve ardından FFUpdater ile kurarak bunu düzeltebilirsiniz.</string>
     <string name="network__proxy__title">Vekil</string>
-    <string name="network__custom_doh_server__summary">Özel DoH sunucusuna bağlanmak için ayrıntıları girin.</string>
     <string name="network__dns_provider__title">DNS ayarları</string>
     <string name="network__custom_doh_server__title">Özel HTTPS üzerinden DNS sunucusu</string>
-    <string name="network__custom_doh_server__dialog_message">DoH sunucusu için bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
+    <string name="network__custom_doh_server__dialog_message">Özel DoH sunucusu için bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
 \n
 \nURL;IP1
 \n
@@ -310,7 +309,6 @@
 \nURL;IP1;IP2;IP3;IP4
 \n
 \nÖrneğin: https://dns.google/dns-query;8.8.8.8 veya https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__proxy__summary">SOCKS veya HTTP vekili kullanmak istiyorsanız bağlantı ayrıntılarını buraya girin.</string>
     <string name="network__proxy__dialog_message">Bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
 \n
 \nSOCKS/HTTP;IP/etkialanı;bağlantınoktası
@@ -323,5 +321,18 @@
     <string name="settings__network_category__title">Ağ</string>
     <string name="device__prefer_32bit_apks__title">32-Bit APK\'ları tercih et</string>
     <string name="settings__device_category__title">Aygıt</string>
-    <string name="device__prefer_32bit_apks__summary">Aygıtınız gerçekten düşük belleğe sahipse etkinleştirin.</string>
+    <string name="device__prefer_32bit_apks__summary">Aygıtınızın belleği genellikle düşükse etkinleştirin. FFUpdater daha sonra genellikle daha az bellek gerektiren 32 bit APK\'ları kullanacaktır.</string>
+    <string name="installer__method__root_not_granted">Root izni verilmedi!</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku kurulu değil!</string>
+    <string name="network__dns_provider__system">Sistem DNS\'sini kullan</string>
+    <string name="network__dns_provider__quad9">HTTPS üzerinden DNS: Quad9</string>
+    <string name="network__dns_provider__cloudflare">HTTPS üzerinden DNS: Cloudflare</string>
+    <string name="network__dns_provider__google">HTTPS üzerinden DNS: Google</string>
+    <string name="network__dns_provider__custom">Özel HTTPS üzerinden DNS sunucusu</string>
+    <string name="network__dns_provider__no">DNS yok (yalnızca test için)</string>
+    <string name="installer__method__root">Root kurucusu: Uygulamaları bir onay iletişim kutusu olmadan güncelleyin. Bunun için root yapılmış bir akıllı telefon gerekir.</string>
+    <string name="network__dns_provider__digital_society_ch">HTTPS üzerinden DNS: Dijital Toplum İsviçre</string>
+    <string name="installer__method__native">Yerel kurucu: Oturum kurucusu akıllı telefonunuzda çalışmazsa kullanılır.</string>
+    <string name="installer__method__shizuku">Shizuku kurucusu: Uygulamaları onay iletişim kutusu olmadan güncelleyin. Bunun için Shizuku uygulaması veya Sui Magisk modülü gerekir.</string>
+    <string name="installer__method__session">Oturum kurucusu: Çoğu aygıt için tavsiye edilir. Android 12 veya üzerinde, uygulamalar bir onay iletişim kutusu olmadan güncellenebilir.</string>
 </resources>

@@ -175,7 +175,7 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Το Fennec F-Droid βασίζεται στην τελευταία έκδοση του Firefox (με την κωδική ονομασία Fenix). Έχει αφαιρεθεί τα ιδιόκτητα bit και η τηλεμετρία, αλλά εξακολουθεί να συνδέεται με διάφορες υπηρεσίες Mozilla και Google που μπορούν να παρακολουθούν τους χρήστες.</string>
     <string name="fennecfdroid__warning">Το FFUpdater κατεβάζει τα αρχεία από τους διακομιστές F-Droid και επομένως δεν είναι πιο γρήγορο.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">Οι ακόλουθες εφαρμογές έχουν διαφορετικά δακτυλικά αποτυπώματα πιστοποιητικού και θα αγνοηθούν από το FFUpdater: %s. Μπορείτε να το διορθώσετε απεγκαταστώντας τα και στη συνέχεια εγκαθιστώντας τα με το FFUpdater.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">"Οι ακόλουθες εφαρμογές έχουν διαφορετικά δακτυλικά αποτυπώματα πιστοποιητικού και θα αγνοηθούν: %s.  Μπορείτε να το διορθώσετε απεγκαταστώντας τα και στη συνέχεια εγκαθιστώντας τα με το FFUpdater."</string>
     <string name="app_card__information_about_the_app">Πληροφορίες σχετικά με την εφαρμογή</string>
     <string name="download_activity__delete_cache_button_text">εκκαθάριση προσωρινής μνήμης</string>
     <string name="download_activity__delete_cache_explanation">Εάν πιστεύετε ότι το FFUpdater έχει αποθηκεύσει στην προσωρινή μνήμη μια ελαττωματική ενημέρωση εφαρμογής ή εάν θέλετε να εξοικονομήσετε χώρο, κάντε κλικ στο κουμπί για να διαγράψετε το ληφθέν αρχείο.</string>

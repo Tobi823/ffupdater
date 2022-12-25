@@ -286,5 +286,5 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater 从 F-Droid 服务器下载文件，因此速度不理想。</string>
     <string name="fennecfdroid__description">Fennec F-Droid 基于最新版本的 Firefox（代号 Fenix）。它删除了专有代码和遥测，但仍会连接到一些跟踪用户的 Mozilla 和 Google 服务。</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">以下应用因签名不同将被 FFUpdater 忽略：%s。要修复此问题，您可以在卸载这些应用后通过 FFUpdater 重新安装。</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">以下应用因签名不同将被忽略：%s。要修复此问题，您可以在卸载这些应用后通过 FFUpdater 重新安装。</string>
 </resources>
