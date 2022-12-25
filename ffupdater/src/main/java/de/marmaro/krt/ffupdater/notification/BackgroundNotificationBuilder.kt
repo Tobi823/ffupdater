@@ -176,21 +176,6 @@ class BackgroundNotificationBuilder(
         showNotification(context, channel, notification, MainActivity.createIntent(context))
     }
 
-    fun showLongTimeNoBackgroundUpdateCheckNotification(context: Context, e: Exception) {
-        val channel = ChannelData(
-            id = "no_update_check_notification",
-            name = context.getString(notification__no_update_check__channel_name),
-            description = context.getString(notification__no_update_check__channel_description),
-        )
-        val notification = NotificationData(
-            id = 900,
-            title = context.getString(notification__no_update_check__title),
-            text = context.getString(notification__no_update_check__text),
-        )
-        val intent = CrashReportActivity.createIntent(context, e, notification.text)
-        showNotification(context, channel, notification, intent)
-    }
-
     @SuppressLint("UnspecifiedImmutableFlag")
     fun showNotification(
         context: Context, channelData: ChannelData, notification: NotificationData, intent: Intent?
