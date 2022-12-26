@@ -343,4 +343,10 @@
     <string name="network__dns_provider__digital_society_ch">DNS sobre HTTPS: Sociedad Digital Suiza</string>
     <string name="installer__method__shizuku">Instalador Shizuku: Actualizar aplicaciones sin diálogo de confirmación. Esto requiere la aplicación Shizuku o el módulo Sui Magisk.</string>
     <string name="network__dns_provider__no">Sin DNS (sólo para pruebas)</string>
+    <string name="background__separate_notification_channels__title">Distintos canales de notificación</string>
+    <string name="notification__update_available__generic_channel_name">Notificaciones de actualización de la aplicación</string>
+    <string name="notification__install_error__generic_channel_descr">Canal de notificación de actualizaciones fallidas de las aplicaciones.</string>
+    <string name="notification__install_error__generic_channel_name">Notificación de fallo en la actualización de la aplicación</string>
+    <string name="background__separate_notification_channels__summary">Utiliza distintos canales de notificación para cada aplicación</string>
+    <string name="notification__update_available__generic_channel_descr">Canal de notificaciones para las actualizaciones disponibles de la aplicación.</string>
 </resources>
