@@ -1,0 +1,12 @@
+* Danke für die Weblate-Übersetzung von: Retrial, kotyhoroshko, Jacek, Viktória Nagy, gallegonovato, Oğuz
+  Ersen, 109247019824, nautilusx, MkQtS, Yo, Juraj Motuz, Translator-3000, atilluF, Giovanni Donisi, Brodie
+  Avoult, Eric
+* Support für HTTP/SOCKS-Proxys mit und ohne Anmeldung hinzugefügt (Tobi823/ffupdater#229)
+* Support für DNS-over-HTTPS-Server hinzugefügt (Tobi823/ffupdater#229)
+* Option zum Bevorzugen der 32-Bit-Versionen von Apps hinzugefügt (Tobi823/ffupdater#280)
+* Race Condition, welche zur Darstellung einer falschen Installationsfehlermeldung führt, behoben
+* Zeige weitere Informationen bei einem Installationsfehler an
+* Zeige und aktualisieren nur die Apps, die vom aktuellen Smartphone unterstützt werden (ABI: 32-Bit vs 64-Bit)
+* Behebe Fehler: Nach dem ersten Update (gestartet durch eine Benachrichtigung) wird das zweite Update (gestartet durch eine Benachrichtigung) fehlerhafterweise die erste App wieder aktualisieren.
+* Fehlerbehandlung im Hintergrund verbessert
+* Fehlende Tests hinzugefügt
