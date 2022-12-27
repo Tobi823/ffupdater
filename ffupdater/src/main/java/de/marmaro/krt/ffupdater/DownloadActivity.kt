@@ -278,7 +278,7 @@ class DownloadActivity : AppCompatActivity() {
             val file = app.downloadedFileCache.getFileForDownloader(this)
             val (deferred, progressChannel) = withContext(viewModel.viewModelScope.coroutineContext) {
                 // run async with await later
-                fileDownloader.downloadBigFileAsync2(downloadUrl, file)
+                fileDownloader.downloadBigFileAsync(downloadUrl, file)
             }
             viewModel.downloadDeferred = deferred
             viewModel.downloadProgressChannel = progressChannel

@@ -192,8 +192,9 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         val file = app.downloadedFileCache.getApkFile(context)
         return try {
+            // run async with await later
             val (deferred, progressChannel) =
-                downloader.downloadBigFileAsync2(availableResult.downloadUrl, file)
+                downloader.downloadBigFileAsync(availableResult.downloadUrl, file)
 
             notificationBuilder.showDownloadRunningNotification(context, app, null, null)
             for (progress in progressChannel) {
