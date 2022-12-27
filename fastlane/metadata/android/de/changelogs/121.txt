@@ -1,0 +1,6 @@
+* Danke für den Weblate-Beitrag von: Juraj Motuz, gallegonovato, nautilusx, Oğuz Ersen, Ettore Atalan,
+  109247019824,  Erneute Prüfung und gelöschter Benutzer
+* Unterstützung für das Shizuku-Installationsprogramm hinzugefügt
+* Unterstützung für 64-Bit Chromium hinzugefügt
+* Hinzufügen der Option, zwischen einem oder mehreren (für jede Anwendung) Benachrichtigungskanälen für die Benachrichtigung über erfolgreiche oder fehlgeschlagene Updates oder Installationen zu wählen.
+* Refaktorierung und Bereinigung
