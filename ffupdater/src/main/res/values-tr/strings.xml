@@ -341,4 +341,6 @@
     <string name="notification__install_error__generic_channel_name">Uygulama güncelleme hatası bildirimi</string>
     <string name="background__separate_notification_channels__summary">Her bir uygulama için farklı bildirim kanalları kullanın</string>
     <string name="background__separate_notification_channels__title">Farklı bildirim kanalları</string>
+    <string name="notification__network_error__title">Arka plan işinde ağ hatası</string>
+    <string name="notification__network_error__text">Bu hata nadiren meydana gelmelidir. Ancak, sık sık meydana geliyorsa bunu bildirmelisiniz. Ayrıntılı hata mesajını görüntülemek için buraya tıklayın.</string>
 </resources>
