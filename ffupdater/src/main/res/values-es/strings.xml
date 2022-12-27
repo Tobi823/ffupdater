@@ -349,4 +349,6 @@
     <string name="notification__install_error__generic_channel_name">Notificación de fallo en la actualización de la aplicación</string>
     <string name="background__separate_notification_channels__summary">Utiliza distintos canales de notificación para cada aplicación</string>
     <string name="notification__update_available__generic_channel_descr">Canal de notificaciones para las actualizaciones disponibles de la aplicación.</string>
+    <string name="notification__network_error__title">Error del funcionamiento de la red en segundo plano</string>
+    <string name="notification__network_error__text">Este error sólo debería producirse en raras ocasiones. Sin embargo, si se produce con frecuencia, debe notificarlo. Haga clic aquí para ver el mensaje de error detallado.</string>
 </resources>
