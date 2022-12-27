@@ -28,7 +28,6 @@ import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
 import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil
-import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,7 +43,6 @@ class AddAppActivity : AppCompatActivity() {
             finish()
             return
         }
-        StrictModeSetup.INSTANCE.enableStrictMode()
         foregroundSettings = ForegroundSettingsHelper(this)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
