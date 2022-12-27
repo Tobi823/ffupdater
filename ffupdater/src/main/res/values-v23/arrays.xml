@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string-array name="installer__method__entries" tools:ignore="InconsistentArrays">
+        <item>@string/installer__method__session</item>
+        <item>@string/installer__method__native</item>
+        <item>@string/installer__method__root</item>
+        <item>@string/installer__method__shizuku</item>
+    </string-array>
+
+    <string-array name="installer__method__values" tools:ignore="InconsistentArrays">
+        <item>SESSION_INSTALLER</item>
+        <item>NATIVE_INSTALLER</item>
+        <item>ROOT_INSTALLER</item>
+        <item>SHIZUKU_INSTALLER</item>
+    </string-array>
+</resources>

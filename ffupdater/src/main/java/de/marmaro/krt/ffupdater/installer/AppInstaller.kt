@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.DefaultLifecycleObserver
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.impl.IntentInstaller
@@ -22,19 +21,13 @@ interface AppInstaller : DefaultLifecycleObserver {
             activity: ComponentActivity,
             app: App,
             file: File,
-            deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE
         ): AppInstaller {
             val registry = activity.activityResultRegistry
             return when (InstallerSettingsHelper(activity).getInstallerMethod()) {
                 Installer.SESSION_INSTALLER -> SessionInstaller(app, file, true)
                 Installer.NATIVE_INSTALLER -> IntentInstaller(activity, registry, app, file)
                 Installer.ROOT_INSTALLER -> RootInstaller(app, file)
-                Installer.SHIZUKU_INSTALLER -> {
-                    if (deviceSdkTester.supportsAndroidMarshmallow()) {
-                        return ShizukuInstaller(app, file)
-                    }
-                    throw RuntimeException("Shizuku is not supported on this device")
-                }
+                Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app, file)
             }
         }
 
@@ -42,18 +35,12 @@ interface AppInstaller : DefaultLifecycleObserver {
             context: Context,
             app: App,
             file: File,
-            deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE
         ): AppInstaller {
             return when (InstallerSettingsHelper(context).getInstallerMethod()) {
                 Installer.SESSION_INSTALLER -> SessionInstaller(app, file, false)
                 Installer.NATIVE_INSTALLER -> throw Exception("Installer can not update apps in background")
                 Installer.ROOT_INSTALLER -> RootInstaller(app, file)
-                Installer.SHIZUKU_INSTALLER -> {
-                    if (deviceSdkTester.supportsAndroidMarshmallow()) {
-                        return ShizukuInstaller(app, file)
-                    }
-                    throw RuntimeException("Shizuku is not supported on this device")
-                }
+                Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app, file)
             }
         }
     }

@@ -2,8 +2,6 @@ package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Build
-import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
@@ -18,12 +16,17 @@ import java.util.regex.Pattern
  *
  * For further improvements: https://www.xda-developers.com/implementing-shizuku/
  */
-@RequiresApi(Build.VERSION_CODES.M)
 class ShizukuInstaller(
     app: App,
     private val file: File,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE
 ) : AbstractAppInstaller(app, file) {
+
+    init {
+        if (!deviceSdkTester.supportsAndroidMarshmallow()) {
+            throw RuntimeException("Shizuku is not supported on this device")
+        }
+    }
 
     override suspend fun executeInstallerSpecificLogic(context: Context) {
         val filePath = file.absolutePath
