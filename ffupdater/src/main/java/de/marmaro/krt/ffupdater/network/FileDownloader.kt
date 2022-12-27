@@ -286,33 +286,48 @@ internal class ProgressResponseBody(
 
     private fun trackTransmittedBytes(source: Source): Source {
         return object : ForwardingSource(source) {
-            private val sourceIsExhausted = -1L
             var totalBytesRead = 0L
-            var totalProgress = -1
-            var totalMB = 0L
+            var reportedPercentage = -1
+            var reportedMB = -1L
 
             @Throws(IOException::class)
             override fun read(sink: Buffer, byteCount: Long): Long {
                 val bytesRead = super.read(sink, byteCount)
-                if (bytesRead != sourceIsExhausted) {
+                if (bytesRead != SOURCE_IS_EXHAUSTED) {
                     totalBytesRead += bytesRead
                 }
                 if (contentLength() > 0L) {
-                    val progress = (100 * totalBytesRead / contentLength()).toInt()
-                    if (progress != totalProgress) {
-                        totalProgress = progress
-                        val totalMegabytesRead = totalBytesRead / 1_048_576
-                        processChannel.trySend(FileDownloader.DownloadStatus(progress, totalMegabytesRead))
-                    }
+                    reportPercentage()
                 } else {
-                    val totalMegabytesRead = totalBytesRead / 1_048_576
-                    if (totalMegabytesRead != totalMB) {
-                        totalMB = totalMegabytesRead
-                        processChannel.trySend(FileDownloader.DownloadStatus(null, totalMegabytesRead))
-                    }
+                    reportMB()
                 }
                 return bytesRead
             }
+
+            private fun reportPercentage() {
+                val progress = (100 * totalBytesRead / contentLength()).toInt()
+                if (progress != reportedPercentage) {
+                    reportedPercentage = progress
+                    processChannel.trySend(FileDownloader.DownloadStatus(progress, toMB(totalBytesRead)))
+                }
+            }
+
+            private fun reportMB() {
+                val totalMegabytesRead = toMB(totalBytesRead)
+                if (totalMegabytesRead != reportedMB) {
+                    reportedMB = totalMegabytesRead
+                    processChannel.trySend(FileDownloader.DownloadStatus(null, totalMegabytesRead))
+                }
+            }
+        }
+    }
+
+    companion object {
+        private const val BYTES_IN_MB = 1_048_576
+        private const val SOURCE_IS_EXHAUSTED = -1L
+
+        private fun toMB(bytes: Long): Long {
+            return bytes / BYTES_IN_MB
         }
     }
 }
