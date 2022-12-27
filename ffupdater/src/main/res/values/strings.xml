@@ -291,4 +291,6 @@
     <string name="notification__update_available__generic_channel_descr">Notification channel for available app updates.</string>
     <string name="notification__install_error__generic_channel_descr">Notification channel for failed app updates.</string>
     <string name="notification__install_error__generic_channel_name">App update failure notification</string>
+    <string name="notification__network_error__title">Network error in background job</string>
+    <string name="notification__network_error__text">This error should occur only rarely. However, if it occurs frequently, you should report it. Click here to view the detailed error message.</string>
 </resources>

@@ -75,17 +75,26 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         try {
             Log.i(LOG_TAG, "Execute background job for update check.")
             internalDoWork()
+        } catch (e: NetworkException) {
+            handleDoWorkException(e, true)
         } catch (e: Exception) {
-            if (runAttemptCount < MAX_RETRIES) {
-                Log.w(LOG_TAG, "Background job failed.", e)
-                Log.i(LOG_TAG, "Restart background job in ${calculateBackoffTime(runAttemptCount)}")
-                Result.retry()
+            handleDoWorkException(e, false)
+        }
+    }
+
+    private fun handleDoWorkException(e: Exception, isNetworkException: Boolean): Result {
+        return if (runAttemptCount < 1) {
+            Log.w(LOG_TAG, "Background job failed. Restart in ${calcBackoffTime(runAttemptCount)}", e)
+            Result.retry()
+        } else {
+            val wrappedException = BackgroundException(e)
+            Log.e(LOG_TAG, "Background job failed.", wrappedException)
+            if (isNetworkException) {
+                notificationBuilder.showNetworkErrorNotification(context, wrappedException)
             } else {
-                val wrappedException = BackgroundException(e)
-                Log.e(LOG_TAG, "Background job failed.", wrappedException)
                 notificationBuilder.showErrorNotification(context, wrappedException)
-                Result.success() // BackgroundJob should not be removed from WorkManager schedule
             }
+            Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
     }
 
@@ -317,7 +326,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY)
         }
 
-        private fun calculateBackoffTime(runAttempts: Int): Duration {
+        private fun calcBackoffTime(runAttempts: Int): Duration {
             val unlimitedBackoffTime = Math.scalb(DEFAULT_BACKOFF_DELAY_MILLIS.toDouble(), runAttempts)
             val limitedBackoffTime = unlimitedBackoffTime.coerceIn(
                 WorkRequest.MIN_BACKOFF_MILLIS.toDouble(),
@@ -329,7 +338,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         private fun getRetriesForTotalBackoffTime(totalTime: Duration): Int {
             var totalTimeMs = 0L
             repeat(1000) { runAttempt -> // runAttempt is zero-based
-                totalTimeMs += calculateBackoffTime(runAttempt).toMillis()
+                totalTimeMs += calcBackoffTime(runAttempt).toMillis()
                 if (totalTimeMs >= totalTime.toMillis()) {
                     return runAttempt + 1
                 }

@@ -44,6 +44,21 @@ class BackgroundNotificationBuilder(
         showNotification(context, channel, notification, intent)
     }
 
+    fun showNetworkErrorNotification(context: Context, exception: Exception) {
+        val channel = ChannelData(
+            id = "background_notification",
+            name = context.getString(notification__error__channel_name),
+            description = context.getString(notification__error__channel_descr)
+        )
+        val notification = NotificationData(
+            id = ERROR_CODE + 1,
+            title = context.getString(notification__network_error__title),
+            text = context.getString(notification__network_error__text),
+        )
+        val intent = CrashReportActivity.createIntent(context, exception, notification.text)
+        showNotification(context, channel, notification, intent)
+    }
+
     fun showUpdateAvailableNotification(context: Context, apps: List<App>) {
         apps.forEach {
             showUpdateAvailableNotification(context, it)
