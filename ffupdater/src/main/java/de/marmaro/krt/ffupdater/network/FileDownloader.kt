@@ -118,9 +118,9 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
         val request = Request.Builder()
             .url(url)
             .build()
-        val okHttpClient = createClient(processChannel)
-        val call = okHttpClient.newCall(request)
-        return call.await()
+        return createClient(processChannel)
+            .newCall(request)
+            .await()
     }
 
     private fun createClient(processChannel: Channel<DownloadStatus>? = null): OkHttpClient {

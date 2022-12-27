@@ -22,10 +22,6 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
-    <profileable
-        android:shell="true"
-        tools:targetApi="q" />
-
     <!-- Shizuku needs API 23, but I still want to use API 21-->
     <uses-sdk tools:overrideLibrary="
         rikka.shizuku.aidl,
@@ -124,6 +120,10 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
+
+        <profileable
+            android:shell="true"
+            tools:targetApi="q" />
     </application>
 
 </manifest>
