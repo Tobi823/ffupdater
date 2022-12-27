@@ -13,6 +13,7 @@ import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File
@@ -25,6 +26,7 @@ class IntentInstaller(
     private val file: File,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AbstractAppInstaller(app, file) {
+    override val type = Installer.NATIVE_INSTALLER
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
     private val installationStatusFromCallback = CompletableDeferred<Boolean>()
 

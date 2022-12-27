@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.installer.impl
 import android.content.Context
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -16,6 +17,7 @@ class RootInstaller(
     app: App,
     private val file: File
 ) : AbstractAppInstaller(app, file) {
+    override val type = Installer.ROOT_INSTALLER
 
     override suspend fun executeInstallerSpecificLogic(context: Context) {
         val filePath = file.absolutePath

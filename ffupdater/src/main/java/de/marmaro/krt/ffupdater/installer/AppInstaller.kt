@@ -14,6 +14,7 @@ import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import java.io.File
 
 interface AppInstaller : DefaultLifecycleObserver {
+    val type: Installer
     suspend fun startInstallation(context: Context): InstallResult
 
     companion object {

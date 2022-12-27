@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -21,6 +22,7 @@ class ShizukuInstaller(
     private val file: File,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE
 ) : AbstractAppInstaller(app, file) {
+    override val type = Installer.SHIZUKU_INSTALLER
 
     init {
         if (!deviceSdkTester.supportsAndroidMarshmallow()) {

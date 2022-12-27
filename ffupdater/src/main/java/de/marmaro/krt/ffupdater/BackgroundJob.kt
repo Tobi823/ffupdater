@@ -215,9 +215,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         } catch (e: UserInteractionIsRequiredException) {
             notificationBuilder.showUpdateAvailableNotification(context, app)
         } catch (e: InstallationFailedException) {
-            val ex = RuntimeException("Failed to install ${app.name} in the background.", e)
+            val wrappedException = InstallationFailedException(
+                "Failed to install ${app.name} in the background with ${installer.type}.", -532, e
+            )
             notificationBuilder.showInstallFailureNotification(
-                context, app, e.errorCode, e.translatedMessage, ex
+                context, app, e.errorCode, e.translatedMessage, wrappedException
             )
         }
 

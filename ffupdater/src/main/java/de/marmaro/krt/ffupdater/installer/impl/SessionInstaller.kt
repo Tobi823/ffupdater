@@ -16,6 +16,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_aborted
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exception.UserInteractionIsRequiredException
 import kotlinx.coroutines.CompletableDeferred
@@ -31,6 +32,7 @@ class SessionInstaller(
     private val foreground: Boolean,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AbstractAppInstaller(app, file) {
+    override val type = Installer.SESSION_INSTALLER
     private val intentNameForAppInstallationCallback =
         "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
     private val installationStatus = CompletableDeferred<Boolean>()

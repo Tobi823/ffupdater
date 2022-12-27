@@ -7,11 +7,18 @@ open class InstallationFailedException(
     val translatedMessage: String
 ) : Exception(message, cause) {
 
-    constructor(translatedMessage: String, errorCode: Int) : this(
-        translatedMessage,
+    constructor(message: String, errorCode: Int) : this(
+        message,
         null,
         errorCode,
-        translatedMessage,
+        message,
+    )
+
+    constructor(message: String, errorCode: Int, cause: Throwable) : this(
+        message,
+        cause,
+        errorCode,
+        message,
     )
 
     constructor(message: String, errorCode: Int, translatedMessage: String) : this(
