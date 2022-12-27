@@ -1,25 +1,23 @@
 package de.marmaro.krt.ffupdater.installer.exception
 
-open class InstallationFailedException : Exception {
+open class InstallationFailedException(
+    message: String,
+    cause: Throwable?,
+    val errorCode: Int,
+    val translatedMessage: String
+) : Exception(message, cause) {
 
-    val errorCode: Int
-    val errorMessage: String
+    constructor(translatedMessage: String, errorCode: Int) : this(
+        translatedMessage,
+        null,
+        errorCode,
+        translatedMessage,
+    )
 
-    constructor(message: String, errorCode: Int) : super(message) {
-        this.errorCode = errorCode
-        this.errorMessage = message
-    }
-
-    constructor(message: String?, errorCode: Int, displayErrorMessage: String) : super(message) {
-        this.errorCode = errorCode
-        this.errorMessage = displayErrorMessage
-    }
-
-    constructor(message: String?, cause: Throwable?, errorCode: Int, errorMessage: String) : super(
+    constructor(message: String, errorCode: Int, translatedMessage: String) : this(
         message,
-        cause
-    ) {
-        this.errorCode = errorCode
-        this.errorMessage = errorMessage
-    }
+        null,
+        errorCode,
+        translatedMessage,
+    )
 }

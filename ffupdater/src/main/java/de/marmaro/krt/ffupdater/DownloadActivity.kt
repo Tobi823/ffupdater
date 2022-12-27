@@ -333,7 +333,7 @@ class DownloadActivity : AppCompatActivity() {
             showThatAppIsInstalled(certificateHash)
         } catch (e: InstallationFailedException) {
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
-            showThatAppInstallationFailed(e.errorMessage, ex)
+            showThatAppInstallationFailed(e.translatedMessage, ex)
         } finally {
             // hide existing background notification for this app
             notificationRemover.removeAppStatusNotifications(this, app)
