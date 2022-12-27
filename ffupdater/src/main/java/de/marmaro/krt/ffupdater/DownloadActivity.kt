@@ -41,7 +41,9 @@ import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import de.marmaro.krt.ffupdater.storage.StorageUtil
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -64,14 +66,19 @@ class DownloadActivity : AppCompatActivity() {
     // persistent data across orientation changes
     class InstallActivityViewModel : ViewModel() {
         var app: App? = null
-        var fileDownloader: FileDownloader? = null
         var appAppUpdateStatus: AppUpdateStatus? = null
 
-        fun isEmpty() = (app == null)
+        var downloadDeferred: Deferred<Any>? = null
+        var downloadProgressChannel: Channel<FileDownloader.DownloadStatus>? = null
+
+        var deleteDownloadedFileWhenOnPause = false
+
         fun clear() {
             app = null
-            fileDownloader = null
             appAppUpdateStatus = null
+            downloadDeferred = null
+            downloadProgressChannel = null
+            deleteDownloadedFileWhenOnPause = false
         }
     }
 
@@ -86,7 +93,10 @@ class DownloadActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
-        if (viewModel.isEmpty()) {
+        if (intent?.extras?.getBoolean(EXTRA_FRESH_START, false) == true) {
+            intent?.removeExtra(EXTRA_FRESH_START)
+            viewModel.clear()
+
             val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
             if (appFromExtras == null) {
                 // InstallActivity was unintentionally started again after finishing the download
@@ -120,6 +130,15 @@ class DownloadActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // only delete a successfully downloaded file if the activity is closed
+        // (to prevent unnecessary downloads when the screen is rotated)
+        if (viewModel.deleteDownloadedFileWhenOnPause) {
+            viewModel.app!!.downloadedFileCache.deleteApkFile(this)
         }
     }
 
@@ -229,7 +248,7 @@ class DownloadActivity : AppCompatActivity() {
             return
         }
 
-        if (viewModel.fileDownloader?.currentDownload != null) {
+        if (viewModel.downloadDeferred?.isActive == true) {
             reuseCurrentDownload()
             return
         }
@@ -249,20 +268,6 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.downloadingFileUrl, downloadUrl)
 
         val fileDownloader = FileDownloader(networkSettings)
-        viewModel.fileDownloader = fileDownloader
-        fileDownloader.onProgress = { percentage, mb ->
-            runOnUiThread {
-                val status = if (percentage != null) {
-                    findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
-                    "${percentage}%"
-                } else {
-                    "${mb}MB"
-                }
-                val display = getString(download_activity__download_app_with_status, status)
-                setText(R.id.downloadingFileText, display)
-            }
-        }
-
         val display = getString(download_activity__download_app_with_status, "")
         setText(R.id.downloadingFileText, display)
 
@@ -271,9 +276,28 @@ class DownloadActivity : AppCompatActivity() {
         // this coroutine should survive a screen rotation and should live as long as the view model
         try {
             val file = app.downloadedFileCache.getFileForDownloader(this)
-            withContext(viewModel.viewModelScope.coroutineContext) {
-                fileDownloader.downloadBigFileAsync(downloadUrl, file).await()
+            val (deferred, progressChannel) = withContext(viewModel.viewModelScope.coroutineContext) {
+                // run async with await later
+                fileDownloader.downloadBigFileAsync2(downloadUrl, file)
             }
+            viewModel.downloadDeferred = deferred
+            viewModel.downloadProgressChannel = progressChannel
+
+            for (progress in progressChannel) {
+                progress.progressInPercent
+                    ?.also { findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = it }
+
+                val textStatus = when {
+                    progress.progressInPercent != null -> "${progress.progressInPercent}%"
+                    else -> "${progress.totalMB}MB"
+                }
+                setText(
+                    R.id.downloadingFileText,
+                    getString(download_activity__download_app_with_status, textStatus)
+                )
+            }
+            deferred.await()
+
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
             setText(R.id.downloadedFileUrl, downloadUrl)
@@ -291,22 +315,22 @@ class DownloadActivity : AppCompatActivity() {
         val downloadUrl = viewModel.appAppUpdateStatus!!.downloadUrl
         show(R.id.downloadingFile)
         setText(R.id.downloadingFileUrl, downloadUrl)
-        val fileDownloader = requireNotNull(viewModel.fileDownloader)
-        fileDownloader.onProgress = { percentage, mb ->
-            runOnUiThread {
-                val status = if (percentage != null) {
-                    findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = percentage
-                    "${percentage}%"
-                } else {
-                    "${mb}MB"
-                }
-                val display = getString(download_activity__download_app_with_status, status)
-                setText(R.id.downloadingFileText, display)
-            }
+
+        for (progress in viewModel.downloadProgressChannel!!) {
+            progress.progressInPercent
+                ?.also { findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = it }
+
+            val textStatus = progress.progressInPercent
+                ?.let { "$it%" }
+                ?: "${progress.totalMB}MB"
+            setText(
+                R.id.downloadingFileText,
+                getString(download_activity__download_app_with_status, textStatus)
+            )
         }
 
         try {
-            fileDownloader.currentDownload?.await()
+            viewModel.downloadDeferred!!.await()
             postProcessDownload()
         } catch (e: NetworkException) {
             showThatDownloadFailed(e)
@@ -342,14 +366,13 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun showThatAppIsInstalled(certificateHash: String) {
-        val app = viewModel.app!!
         hide(R.id.installingApplication)
         show(R.id.installerSuccess)
         show(R.id.fingerprintInstalledGood)
         setText(R.id.fingerprintInstalledGoodHash, certificateHash)
-        app.impl.appIsInstalledCallback(this, viewModel.appAppUpdateStatus!!)
+        viewModel.app!!.impl.appIsInstalledCallback(this, viewModel.appAppUpdateStatus!!)
         if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
-            app.downloadedFileCache.deleteApkFile(this)
+            viewModel.deleteDownloadedFileWhenOnPause = true
         } else {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
@@ -436,6 +459,7 @@ class DownloadActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
+        const val EXTRA_FRESH_START = "fresh_start"
 
         /**
          * Create a new InstallActivity which have to check if app is up-to-date
@@ -444,6 +468,7 @@ class DownloadActivity : AppCompatActivity() {
             val intent = Intent(context, DownloadActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)
+            intent.putExtra(EXTRA_FRESH_START, true)
             return intent
         }
     }

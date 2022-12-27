@@ -5,17 +5,12 @@ import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.dnsoverhttps.DnsOverHttps
-import okio.Buffer
-import okio.ForwardingSource
-import okio.Source
-import okio.buffer
+import okio.*
 import ru.gildor.coroutines.okhttp.await
 import java.io.File
 import java.io.IOException
@@ -26,18 +21,18 @@ import java.security.KeyStore
 import java.security.SecureRandom
 import java.util.concurrent.atomic.AtomicInteger
 import javax.net.ssl.*
+import kotlin.io.use
 import kotlin.reflect.KMutableProperty0
 
 
 class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
 
+    data class DownloadStatus(val progressInPercent: Int?, val totalMB: Long)
+
     var onProgress: (progressInPercent: Int?, totalMB: Long) -> Unit = @WorkerThread { _, _ -> }
 
     // fallback to wait for the download when the activity was recreated
     var currentDownload: Deferred<Any>? = null
-
-    // It is safe to reuse the OkHttpClient -> Don't recreate it every callUrl() execution
-    private val okHttpClient = createClient()
 
     @MainThread
     @Throws(NetworkException::class)
@@ -63,9 +58,38 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
         }
     }
 
+    suspend fun downloadBigFileAsync2(
+        url: String,
+        file: File,
+    ): Pair<Deferred<Any>, Channel<DownloadStatus>> {
+        val processChannel = Channel<DownloadStatus>(Channel.CONFLATED)
+        val deferred = CoroutineScope(Dispatchers.IO).async {
+            try {
+                lastChange = System.currentTimeMillis()
+                numberOfRunningDownloads.incrementAndGet()
+                downloadBigFileInternal(url, file, processChannel)
+            } catch (e: IOException) {
+                throw NetworkException("Download of $url failed.", e)
+            } catch (e: IllegalArgumentException) {
+                throw NetworkException("Download of $url failed.", e)
+            } catch (e: NetworkException) {
+                throw NetworkException("Download of $url failed.", e)
+            } finally {
+                lastChange = System.currentTimeMillis()
+                numberOfRunningDownloads.decrementAndGet()
+                processChannel.close()
+            }
+        }
+        return Pair(deferred, processChannel)
+    }
+
     @WorkerThread
-    private suspend fun downloadBigFileInternal(url: String, file: File) {
-        callUrl(url).use { response ->
+    private suspend fun downloadBigFileInternal(
+        url: String,
+        file: File,
+        processChannel: Channel<DownloadStatus>? = null
+    ) {
+        callUrl(url, processChannel).use { response ->
             val body = validateAndReturnResponseBody(url, response)
             if (file.exists()) {
                 file.delete()
@@ -119,24 +143,31 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
         return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
     }
 
-    private suspend fun callUrl(url: String): Response {
+    private suspend fun callUrl(url: String, processChannel: Channel<DownloadStatus>? = null): Response {
         require(url.startsWith("https://"))
         val request = Request.Builder()
             .url(url)
             .build()
+        val okHttpClient = createClient(processChannel)
         val call = okHttpClient.newCall(request)
         return call.await()
     }
 
-    private fun createClient(): OkHttpClient {
+    private fun createClient(processChannel: Channel<DownloadStatus>? = null): OkHttpClient {
         val builder = OkHttpClient.Builder()
 
         builder.addNetworkInterceptor { chain: Interceptor.Chain ->
             val original = chain.proceed(chain.request())
             val body = requireNotNull(original.body)
-            original.newBuilder()
-                .body(ProgressResponseBody(body, this::onProgress))
-                .build()
+            if (processChannel == null) {
+                original.newBuilder()
+                    .body(ProgressResponseBody(body, this::onProgress))
+                    .build()
+            } else {
+                original.newBuilder()
+                    .body(ProgressResponseBody2(body, processChannel))
+                    .build()
+            }
         }
 
         createSslSocketFactory()?.let {
@@ -312,6 +343,47 @@ internal class ProgressResponseBody(
                     if (totalMegabytesRead != totalMB) {
                         totalMB = totalMegabytesRead
                         onProgress.get().invoke(null, totalMegabytesRead)
+                    }
+                }
+                return bytesRead
+            }
+        }
+    }
+}
+
+internal class ProgressResponseBody2(
+    private val responseBody: ResponseBody,
+    private var processChannel: Channel<FileDownloader.DownloadStatus>
+) : ResponseBody() {
+    override fun contentType() = responseBody.contentType()
+    override fun contentLength() = responseBody.contentLength()
+    override fun source() = trackTransmittedBytes(responseBody.source()).buffer()
+
+    private fun trackTransmittedBytes(source: Source): Source {
+        return object : ForwardingSource(source) {
+            private val sourceIsExhausted = -1L
+            var totalBytesRead = 0L
+            var totalProgress = -1
+            var totalMB = 0L
+
+            @Throws(IOException::class)
+            override fun read(sink: Buffer, byteCount: Long): Long {
+                val bytesRead = super.read(sink, byteCount)
+                if (bytesRead != sourceIsExhausted) {
+                    totalBytesRead += bytesRead
+                }
+                if (contentLength() > 0L) {
+                    val progress = (100 * totalBytesRead / contentLength()).toInt()
+                    if (progress != totalProgress) {
+                        totalProgress = progress
+                        val totalMegabytesRead = totalBytesRead / 1_048_576
+                        processChannel.trySend(FileDownloader.DownloadStatus(progress, totalMegabytesRead))
+                    }
+                } else {
+                    val totalMegabytesRead = totalBytesRead / 1_048_576
+                    if (totalMegabytesRead != totalMB) {
+                        totalMB = totalMegabytesRead
+                        processChannel.trySend(FileDownloader.DownloadStatus(null, totalMegabytesRead))
                     }
                 }
                 return bytesRead

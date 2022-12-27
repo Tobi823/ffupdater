@@ -188,16 +188,22 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
-        notificationBuilder.showDownloadRunningNotification(context, app, null, null)
-
         val downloader = FileDownloader(networkSettings)
-        downloader.onProgress = { progressInPercent, totalMB ->
-            notificationBuilder.showDownloadRunningNotification(context, app, progressInPercent, totalMB)
-        }
 
         val file = app.downloadedFileCache.getApkFile(context)
         return try {
-            downloader.downloadBigFileAsync(availableResult.downloadUrl, file).await()
+            val (deferred, progressChannel) =
+                downloader.downloadBigFileAsync2(availableResult.downloadUrl, file)
+
+            notificationBuilder.showDownloadRunningNotification(context, app, null, null)
+            for (progress in progressChannel) {
+                notificationBuilder.showDownloadRunningNotification(
+                    context, app, progress.progressInPercent, progress.totalMB
+                )
+            }
+
+            deferred.await()
+
             notificationRemover.removeDownloadRunningNotification(context, app)
             true
         } catch (e: NetworkException) {
