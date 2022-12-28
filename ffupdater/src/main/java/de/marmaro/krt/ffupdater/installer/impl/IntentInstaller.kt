@@ -4,17 +4,18 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.manifacturer.HuaweiInstallResultDecoder
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File
 
@@ -37,15 +38,15 @@ class IntentInstaller(
         }
 
         val bundle = activityResult.data?.extras
-        val errorMessage = when (val result = bundle?.getInt("android.intent.extra.INSTALL_RESULT")) {
-            -11 -> context.getString(R.string.intent_installer__likely_storage_failure)
-            else -> "resultCode: ${activityResult.resultCode}, INSTALL_RESULT: $result"
-        }
+        val resultCode = activityResult.resultCode
+        val installResult = bundle?.getInt("android.intent.extra.INSTALL_RESULT")
+        val shortErrorMessage = getShortErrorMessage(installResult)
+        val translatedErrorMessage = getTranslatedErrorMessage(context, installResult)
         installationStatusFromCallback.completeExceptionally(
             InstallationFailedException(
-                "Installation failed. $errorMessage",
+                "$shortErrorMessage ResultCode: $resultCode, INSTALL_RESULT: $installResult",
                 activityResult.resultCode,
-                errorMessage
+                "$translatedErrorMessage ResultCode: $resultCode, INSTALL_RESULT: $installResult",
             )
         )
     }
@@ -83,6 +84,24 @@ class IntentInstaller(
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
         intent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, "com.android.vending")
         appInstallationCallback.launch(intent)
+    }
+
+    private fun getShortErrorMessage(installResult: Int?): String {
+        // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
+        if (Build.MANUFACTURER == "HUAWEI") {
+            HuaweiInstallResultDecoder.getShortErrorMessage(installResult)
+                ?.let { return it }
+        }
+        return "Installation failed."
+    }
+
+    private fun getTranslatedErrorMessage(context: Context, installResult: Int?): String {
+        // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
+        if (Build.MANUFACTURER == "HUAWEI") {
+            HuaweiInstallResultDecoder.getTranslatedErrorMessage(context, installResult)
+                ?.let { return it }
+        }
+        return "Installation failed."
     }
 
     companion object {
