@@ -287,4 +287,52 @@
     <string name="fennecfdroid__warning">FFUpdater 从 F-Droid 服务器下载文件，因此速度不理想。</string>
     <string name="fennecfdroid__description">Fennec F-Droid 基于最新版本的 Firefox（代号 Fenix）。它删除了专有代码和遥测，但仍会连接到一些跟踪用户的 Mozilla 和 Google 服务。</string>
     <string name="main_activity__ignored_apps_due_fingerprints">以下应用因签名不同将被忽略：%s。要修复此问题，您可以在卸载这些应用后通过 FFUpdater 重新安装。</string>
+    <string name="network__custom_doh_server__dialog_message">输入自定义 DoH 服务器的配置信息，在以下格式中选择一种：
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\n例如：https://dns.google/dns-query;8.8.8.8 或 https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__dns_provider__title">DNS 设置</string>
+    <string name="network__custom_doh_server__title">自定义 DNS over HTTPS 服务器</string>
+    <string name="network__proxy__title">代理</string>
+    <string name="settings__device_category__title">设备</string>
+    <string name="device__prefer_32bit_apks__summary">若您的设备总是缺少运行内存则可启用此项。启用后 FFUpdater 将使用通常消耗内存更少的 32 位安装包。</string>
+    <string name="network__proxy__dialog_message">若您希望使用 SOCKS 或 HTTP 代理，请在这里输入配置信息。在以下格式中选择一种：
+\n
+\nSOCKS/HTTP;ip/domain;port
+\n
+\nSOCKS/HTTP;ip/domain;port;username;password
+\n
+\n例如：SOCKS;1.2.3.4;22 或 HTTP;5.6.7.8;80;user1;pw123 或 HTTP;p.webshare.io;80;u;p。如果要使用系统代理配置，请留空。
+\n
+\n限制：如果您在设置中将“DNS 设置”修改为 DNS over HTTPS 服务器，您需要输入代理服务器的域名，IP 将不起作用。</string>
+    <string name="settings__network_category__title">网络</string>
+    <string name="installer__method__root_not_granted">未授予 Root 权限！</string>
+    <string name="installer__method__shizuku_not_installed">未安装 Shizuku！</string>
+    <string name="network__dns_provider__system">使用系统 DNS</string>
+    <string name="network__dns_provider__digital_society_ch">DNS over HTTPS: Digital Society Switzerland</string>
+    <string name="network__dns_provider__quad9">DNS over HTTPS: Quad9</string>
+    <string name="network__dns_provider__cloudflare">DNS over HTTPS: Cloudflare</string>
+    <string name="network__dns_provider__google">DNS over HTTPS: Google</string>
+    <string name="network__dns_provider__custom">自定义 DNS over HTTPS 服务器</string>
+    <string name="network__dns_provider__no">无 DNS（仅用于测试）</string>
+    <string name="installer__method__session">会话安装器。推荐用于大多数设备。在安卓 12 及以上系统中，应用程序可以在没有确认对话框的情况下更新。</string>
+    <string name="installer__method__root">Root 安装器：在没有确认对话框的情况下更新应用程序。需要已获取 Root 的智能手机。</string>
+    <string name="notification__update_available__generic_channel_name">APP 升级通知</string>
+    <string name="notification__update_available__generic_channel_descr">APP 更新可用的通知通道。</string>
+    <string name="notification__install_error__generic_channel_descr">APP 更新失败的通知通道。</string>
+    <string name="background__separate_notification_channels__title">不同的通知通道</string>
+    <string name="background__separate_notification_channels__summary">为每个单独的 APP 使用不同的通知通道</string>
+    <string name="notification__network_error__title">后台任务中的网络错误</string>
+    <string name="notification__network_error__text">此错误应该很少发生。但是，如果它经常发生，您应该向我们报告。单击此处查看详细的错误消息。</string>
+    <string name="installer__method__shizuku">Shizuku 安装器：在没有确认对话框的情况下更新应用程序。这需要 Shizuku APP 或 Sui Magisk 模块。</string>
+    <string name="notification__install_error__generic_channel_name">APP 更新失败通知</string>
+    <string name="installer__method__native">本机安装器：如果会话安装程序在您的智能手机上不起作用，则进行回退。</string>
+    <string name="device__prefer_32bit_apks__title">32 位安装包优先</string>
 </resources>
