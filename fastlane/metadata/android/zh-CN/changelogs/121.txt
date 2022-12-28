@@ -1,0 +1,6 @@
+* 感谢来自 Weblate 的贡献者：Juraj Motuz, gallegonovato, nautilusx, Oğuz Ersen, Ettore Atalan,
+  109247019824, Retrial 及 Deleted User
+* 新增支持 Shizuku 安装器
+* 新增支持 64位 Chromium
+* 添加选项支持设置一个或多个（针对每个 APP）更新或安装成功或安装失败的通知通道
+* 重构和清理代码

@@ -1,0 +1,12 @@
+* 感谢来自 Weblate 的贡献者：Retrial, kotyhoroshko, Jacek, Viktória Nagy, gallegonovato, Oğuz
+  Ersen, 109247019824, nautilusx, MkQtS, Yo, Juraj Motuz, Translator-3000, atilluF, Giovanni Donisi,
+  Brodie Avoult, Eric
+* 新增支持需要认证及无需认证的 HTTP/SOCKS 代理(Tobi823/ffupdater#229)
+* 新增支持 DNS-over-HTTPS 服务器(Tobi823/ffupdater#229)
+* 添加 32 位 APP 优先的选项(Tobi823/ffupdater#280)
+* 修复了一个会显示错误的安装失败原因的竞争条件
+* 显示安装失败的附加信息
+* 仅显示和升级支持当前设备 ABI 的 APP
+* 修复：在安装第一个升级（带通知）后，第二个安装（带通知）将会再次安装第一个升级
+* 改进后台任务的错误处理
+* 添加缺失的单元测试
