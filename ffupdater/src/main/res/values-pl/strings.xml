@@ -340,4 +340,13 @@
     <string name="network__dns_provider__custom">Własny DNS przez serwer HTTPS</string>
     <string name="installer__method__shizuku">Instalator Shizuku: Aktualizacja aplikacji potwierdzania. Wymaga to aplikacji Shizuku lub modułu Sui Magisk.</string>
     <string name="installer__method__session">Instalator sesji: Zalecane dla większości urządzeń. W systemie Android 12 lub nowszym aplikacje można aktualizować bez potwierdzania.</string>
+    <string name="network__proxy__dialog_message">Jeśli chcesz użyć proxy SOCKS lub HTTP, wprowadź tutaj szczegóły połączenia. Użyj jednego z tych formatów:
+\n
+\nSOCKS/HTTP;ip/domena;port
+\n
+\nSOCKS/HTTP;ip/domena;port;użytkownik;hasło
+\n
+\nNa przykład: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;użytkownik123;hasło123 or HTTP;p.webshare.io;80;u;h. Pozostaw to puste, jeśli chcesz użyć systemowej konfiguracji proxy.
+\n
+\nOgraniczenie: Jeśli zmienisz \"Ustawienia DNS\" w ustawieniach na serwer DNS over HTTPS, musisz podać domenę serwera proxy. IP nie będzie działać.</string>
 </resources>
