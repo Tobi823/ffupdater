@@ -1,0 +1,6 @@
+* Podziękowania za wkład w Weblate dla: Juraj Motuz, gallegonovato, nautilusx, Oğuz Ersen, Ettore Atalan,
+  109247019824, Retrial i Deleted User
+* Dodano wsparcie dla instalatora Shizuku
+* Dodano wsparcia dla 64-bitowego Chromium
+* Dodano możliwości wyboru jednego lub wielu (dla każdej aplikacji) kanałów powiadomień o aktualizacji, sukcesie instalacji lub niepowodzeniu instalacji
+* Refaktoryzacja i czyszczenie kodu
