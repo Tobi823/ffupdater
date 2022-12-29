@@ -300,5 +300,44 @@
 \n- Kiwi nie jest idealną przeglądarką do ochrony prywatności, ale ma dobre wsparcie dla dodatków.
 \n- Przeglądarka otrzymuje pieniądze od wyszukiwarek za każde wyszukiwanie wykonane przy użyciu Kiwi. W zależności od wyboru wyszukiwarki, zapytania mogą przechodzić przez serwery Kiwibrowser / Kiwisearchservices.
 \n- Google Ads w Kiwi może używać danych o lokalizacji do reklam - ale można to wyłączyć, wyłączając funkcję Discovery. Ale to się wkrótce zmieni. Zobacz https://privacy.kiwibrowser.org/, aby uzyskać więcej szczegółów.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">Następujące aplikacje mają różne odciski palców certyfikatów i będą ignorowane przez FFUpdater: %s. Możesz to naprawić, odinstalowując, a następnie instalując je za pomocą FFUpdater.</string>
+    <string name="main_activity__ignored_apps_due_fingerprints">Następujące aplikacje mają różne odciski palców certyfikatów i będą ignorowane: %s. Możesz to naprawić, odinstalowując, a następnie instalując je za pomocą FFUpdater.</string>
+    <string name="network__dns_provider__title">Ustawienia DNS</string>
+    <string name="network__custom_doh_server__title">Własny DNS przez serwer HTTPS</string>
+    <string name="settings__network_category__title">Sieć</string>
+    <string name="settings__device_category__title">Urządzenie</string>
+    <string name="device__prefer_32bit_apks__title">Preferuj 32-bitowe APK</string>
+    <string name="device__prefer_32bit_apks__summary">Włącz, jeśli twoje urządzenie ma zazwyczaj mało pamięci. FFUpdater będzie wtedy używał 32-bitowych APK, które zwykle wymagają mniej pamięci.</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku nie jest zainstalowany!</string>
+    <string name="network__dns_provider__system">Użyj systemowego DNS</string>
+    <string name="network__dns_provider__digital_society_ch">DNS przez HTTPS: Społeczeństwo cyfrowe Szwajcarii</string>
+    <string name="network__dns_provider__quad9">DNS przez HTTPS: Quad9</string>
+    <string name="network__dns_provider__google">DNS przez HTTPS: Google</string>
+    <string name="network__dns_provider__no">Bez DNS (tylko do testów)</string>
+    <string name="installer__method__native">Instalator natywny: Rezerwowy, jeśli instalator sesji nie działa na twoim smartfonie.</string>
+    <string name="installer__method__root">Instalator root: Aktualizacja aplikacji bez potwierdzania. Wymaga to posiadania zrootowanego smartfona.</string>
+    <string name="background__separate_notification_channels__summary">Używanie różnych kanałów powiadomień dla poszczególnych aplikacji</string>
+    <string name="background__separate_notification_channels__title">Różne kanały powiadomień</string>
+    <string name="notification__update_available__generic_channel_name">Powiadomienie o aktualizacji aplikacji</string>
+    <string name="notification__update_available__generic_channel_descr">Kanał powiadomień o dostępnych aktualizacjach aplikacji.</string>
+    <string name="notification__install_error__generic_channel_descr">Kanał powiadamiania o nieudanych aktualizacjach aplikacji.</string>
+    <string name="notification__install_error__generic_channel_name">Powiadomienie o niepowodzeniu aktualizacji aplikacji</string>
+    <string name="notification__network_error__title">Błąd sieci podczas zadania w tle</string>
+    <string name="notification__network_error__text">Ten błąd powinien występować rzadko. Jeśli jednak występuje często, powinieneś go zgłosić. Kliknij tutaj, aby zobaczyć szczegółowy komunikat o błędzie.</string>
+    <string name="network__custom_doh_server__dialog_message">Wprowadź szczegóły połączenia dla niestandardowego serwera DoH w jednym z tych formatów:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nNa przykład: https://dns.google/dns-query;8.8.8.8 lub https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__title">Proxy</string>
+    <string name="installer__method__root_not_granted">Nie przyznano uprawnień roota!</string>
+    <string name="network__dns_provider__cloudflare">DNS przez HTTPS: Cloudflare</string>
+    <string name="network__dns_provider__custom">Własny DNS przez serwer HTTPS</string>
+    <string name="installer__method__shizuku">Instalator Shizuku: Aktualizacja aplikacji potwierdzania. Wymaga to aplikacji Shizuku lub modułu Sui Magisk.</string>
+    <string name="installer__method__session">Instalator sesji: Zalecane dla większości urządzeń. W systemie Android 12 lub nowszym aplikacje można aktualizować bez potwierdzania.</string>
 </resources>
