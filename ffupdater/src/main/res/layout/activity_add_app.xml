@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_app_activity__title_from_mozilla" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_mozilla_browsers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_app_activity__title_based_on_firefox" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_firefox_based_browsers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_app_activity__title_good_privacy_browsers" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_good_privacy_browsers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_app_activity__title_better_than_google_chrome" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_better_than_chrome_browsers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_app_activity__title_other_applications" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/other_applications"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_app_activity__title_end_of_live_browser" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_eol_browsers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -4,19 +4,22 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.MainThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.*
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -74,104 +77,19 @@ class AddAppActivity : AppCompatActivity() {
             .filter { !it.impl.isInstalledWithoutFingerprintVerification(applicationContext) }
             .sortedBy { getString(it.impl.title) }
 
-
-        val mozillaBrowsers = findViewById<LinearLayout>(R.id.list_mozilla_browsers)
-        mozillaBrowsers.removeAllViews()
-        installedApps
-            .filter { it.impl.displayCategory == FROM_MOZILLA }
-            .forEach { addAppToUserInterface(mozillaBrowsers, it) }
-
-        val firefoxBasedBrowsers = findViewById<LinearLayout>(R.id.list_firefox_based_browsers)
-        firefoxBasedBrowsers.removeAllViews()
-        installedApps
-            .filter { it.impl.displayCategory == BASED_ON_FIREFOX }
-            .forEach { addAppToUserInterface(firefoxBasedBrowsers, it) }
-
-        val goodPrivacyBrowsers = findViewById<LinearLayout>(R.id.list_good_privacy_browsers)
-        goodPrivacyBrowsers.removeAllViews()
-        installedApps
-            .filter { it.impl.displayCategory == GOOD_PRIVACY_BROWSER }
-            .forEach { addAppToUserInterface(goodPrivacyBrowsers, it) }
-
-        val betterThanChromeBrowsers = findViewById<LinearLayout>(R.id.list_better_than_chrome_browsers)
-        betterThanChromeBrowsers.removeAllViews()
-        installedApps
-            .filter { it.impl.displayCategory == BETTER_THAN_GOOGLE_CHROME }
-            .forEach { addAppToUserInterface(betterThanChromeBrowsers, it) }
-
-        val otherApplications = findViewById<LinearLayout>(R.id.other_applications)
-        otherApplications.removeAllViews()
-        installedApps
-            .filter { it.impl.displayCategory == OTHER }
-            .forEach { addAppToUserInterface(otherApplications, it) }
-
-        val eolBrowsers = findViewById<LinearLayout>(R.id.list_eol_browsers)
-        eolBrowsers.removeAllViews()
-        installedApps
-            .filter { it.impl.displayCategory == EOL }
-            .forEach { addAppToUserInterface(eolBrowsers, it) }
+        addCategoryToUi(installedApps, FROM_MOZILLA, R.id.list_mozilla_browsers)
+        addCategoryToUi(installedApps, BASED_ON_FIREFOX, R.id.list_firefox_based_browsers)
+        addCategoryToUi(installedApps, GOOD_PRIVACY_BROWSER, R.id.list_good_privacy_browsers)
+        addCategoryToUi(installedApps, BETTER_THAN_GOOGLE_CHROME, R.id.list_better_than_chrome_browsers)
+        addCategoryToUi(installedApps, OTHER, R.id.other_applications)
+        addCategoryToUi(installedApps, EOL, R.id.list_eol_browsers)
     }
 
-    @UiThread
-    private fun addAppToUserInterface(mainLayout: LinearLayout, app: App) {
-        val cardView = layoutInflater.inflate(R.layout.activity_add_app_cardview, mainLayout, false)
-
-        cardView.findViewWithTag<ImageView>("icon").setImageResource(app.impl.icon)
-        cardView.findViewWithTag<TextView>("title").setText(app.impl.title)
-
-        val warningButton = cardView.findViewWithTag<ImageButton>("warning_icon")
-        if (app.impl.installationWarning == null) {
-            warningButton.visibility = View.INVISIBLE
-        }
-
-        val eolReason = cardView.findViewWithTag<TextView>("eol_reason")
-        if (app.impl.isEol()) {
-            eolReason.text = getString(app.impl.eolReason!!)
-        } else {
-            eolReason.visibility = View.GONE
-        }
-
-        warningButton.setOnClickListener {
-            AppWarningDialog.newInstance(app).show(supportFragmentManager)
-        }
-        cardView.findViewWithTag<ImageButton>("info_button").setOnClickListener {
-            AppInfoDialog.newInstance(app).show(supportFragmentManager)
-        }
-        cardView.findViewWithTag<ImageButton>("open_project_page").setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.impl.projectPage))
-            startActivity(browserIntent)
-        }
-        cardView.findViewWithTag<ImageButton>("add_app").setOnClickListener {
-            installApp(app)
-        }
-
-        mainLayout.addView(cardView)
-    }
-
-    @MainThread
-    private fun installApp(app: App) {
-        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(this)) {
-            showToast(R.string.main_activity__no_unmetered_network)
-            return
-        }
-        if (DeviceSdkTester.INSTANCE.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
-            RequestInstallationPermissionDialog().show(supportFragmentManager)
-            return
-        }
-        if (FileDownloader.areDownloadsCurrentlyRunning()) {
-            // this may updates the app
-            RunningDownloadsDialog.newInstance(app, true).show(supportFragmentManager)
-            return
-        }
-        val intent = DownloadActivity.createIntent(this, app)
-        startActivity(intent)
-        finish()
-    }
-
-    @UiThread
-    private fun showToast(message: Int) {
-        val layout = findViewById<View>(R.id.coordinatorLayout)
-        Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
+    private fun addCategoryToUi(apps: List<App>, displayCategory: DisplayCategory, id: Int) {
+        val categoryApps = apps.filter { it.impl.displayCategory == displayCategory }
+        val view = findViewById<RecyclerView>(id)
+        view.adapter = AppsAdapter(categoryApps, this)
+        view.layoutManager = LinearLayoutManager(this)
     }
 
     companion object {
@@ -179,6 +97,98 @@ class AddAppActivity : AppCompatActivity() {
         fun createIntent(context: Context): Intent {
             return Intent(context, AddAppActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+    }
+
+    class AppsAdapter(private val apps: List<App>, private val activity: AppCompatActivity) :
+        RecyclerView.Adapter<AppsAdapter.ViewHolder>() {
+
+        // Provide a direct reference to each of the views within a data item
+        // Used to cache the views within the item layout for fast access
+        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            // Your holder should contain and initialize a member variable
+            // for any view that will be set as you render a row
+            val title: TextView = itemView.findViewWithTag<TextView>("title")
+            val icon: ImageView = itemView.findViewWithTag<ImageView>("icon")
+            val warningIcon: ImageButton = itemView.findViewWithTag<ImageButton>("warning_icon")
+            val eolReason: TextView = itemView.findViewWithTag<TextView>("eol_reason")
+            val infoButton: ImageButton = itemView.findViewWithTag<ImageButton>("info_button")
+            val openProjectPageButton: ImageButton =
+                itemView.findViewWithTag<ImageButton>("open_project_page")
+            val addAppButton: ImageButton = itemView.findViewWithTag<ImageButton>("add_app")
+        }
+
+        // ... constructor and member variables
+        // Usually involves inflating a layout from XML and returning the holder
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppsAdapter.ViewHolder {
+            val context = parent.context
+            val inflater = LayoutInflater.from(context)
+            // Inflate the custom layout
+            val contactView = inflater.inflate(R.layout.activity_add_app_cardview, parent, false)
+            // Return a new holder instance
+            return ViewHolder(contactView)
+        }
+
+        // Involves populating data into the item through holder
+        override fun onBindViewHolder(viewHolder: AppsAdapter.ViewHolder, position: Int) {
+            val app = apps[position]
+            viewHolder.title.setText(app.impl.title)
+            viewHolder.icon.setImageResource(app.impl.icon)
+
+            val warning = app.impl.installationWarning != null
+            viewHolder.warningIcon.visibility = if (warning) View.INVISIBLE else View.VISIBLE
+
+            viewHolder.eolReason.visibility = if (app.impl.isEol()) View.VISIBLE else View.GONE
+            app.impl.eolReason?.let { viewHolder.eolReason.setText(it) }
+
+            viewHolder.warningIcon.setOnClickListener {
+                AppWarningDialog.newInstance(app).show(activity.supportFragmentManager)
+            }
+
+            viewHolder.infoButton.setOnClickListener {
+                AppInfoDialog.newInstance(app).show(activity.supportFragmentManager)
+            }
+
+            viewHolder.openProjectPageButton.setOnClickListener {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.impl.projectPage))
+                activity.startActivity(browserIntent)
+            }
+
+            viewHolder.addAppButton.setOnClickListener {
+                installApp(app)
+            }
+        }
+
+        private fun installApp(app: App) {
+            if (!ForegroundSettingsHelper(activity).isUpdateCheckOnMeteredAllowed &&
+                NetworkUtil.isNetworkMetered(activity)
+            ) {
+                showToast(R.string.main_activity__no_unmetered_network)
+                return
+            }
+            if (DeviceSdkTester.INSTANCE.supportsAndroidOreo() && !activity.packageManager.canRequestPackageInstalls()) {
+                RequestInstallationPermissionDialog().show(activity.supportFragmentManager)
+                return
+            }
+            if (FileDownloader.areDownloadsCurrentlyRunning()) {
+                // this may updates the app
+                RunningDownloadsDialog.newInstance(app, true).show(activity.supportFragmentManager)
+                return
+            }
+            val intent = DownloadActivity.createIntent(activity, app)
+            activity.startActivity(intent)
+            activity.finish()
+        }
+
+        @UiThread
+        private fun showToast(message: Int) {
+            val layout = activity.findViewById<View>(R.id.coordinatorLayout)
+            Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
+        }
+
+        // Returns the total count of items in the list
+        override fun getItemCount(): Int {
+            return apps.size
         }
     }
 }
