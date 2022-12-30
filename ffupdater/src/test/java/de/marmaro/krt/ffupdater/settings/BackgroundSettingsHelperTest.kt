@@ -268,6 +268,7 @@ class BackgroundSettingsHelperTest {
                 "MULL_FROM_REPO",
                 "ORBOT",
                 "TOR_BROWSER",
+                "TOR_BROWSER_ALPHA",
                 "UNGOOGLED_CHROMIUM",
                 "VIVALDI",
             )

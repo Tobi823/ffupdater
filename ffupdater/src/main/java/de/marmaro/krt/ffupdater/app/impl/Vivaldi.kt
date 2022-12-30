@@ -76,9 +76,12 @@ class Vivaldi(
             ABI.X86_64 -> "x86-64.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val regexPattern = Regex.escape("""<a href="https://downloads.vivaldi.com/stable/Vivaldi.""") +
+        val regexPattern = Regex.escape("<a href=\"") +
+                "(" +
+                Regex.escape("https://downloads.vivaldi.com/stable/Vivaldi.") +
                 "([.0-9]{1,24})" +
-                Regex.escape("""_$abiString.apk"""")
+                Regex.escape("_$abiString.apk") +
+                ")\""
 
         val regexMatch = Regex(regexPattern).find(content)
         checkNotNull(regexMatch) { "Can't find download link with regex pattern: $regexPattern." }
