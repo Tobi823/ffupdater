@@ -38,7 +38,7 @@ class FirefoxKlar(
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
-    override val projectPage = "https://github.com/mozilla-mobile/focus-android"
+    override val projectPage = "https://github.com/mozilla-mobile/firefox-android"
     override val displayCategory = DisplayCategory.FROM_MOZILLA
 
     @MainThread
@@ -53,43 +53,27 @@ class FirefoxKlar(
             supportedAbis,
             deviceSettings.prefer32BitApks
         )) {
-            ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
-            ABI.ARM64_V8A -> "arm64-v8a.apk"
-            ABI.X86 -> "x86.apk"
-            ABI.X86_64 -> "x86_64.apk"
+            ABI.ARMEABI_V7A -> "-armeabi-v7a.apk"
+            ABI.ARM64_V8A -> "-arm64-v8a.apk"
+            ABI.X86 -> "-x86.apk"
+            ABI.X86_64 -> "-x86_64.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val result = consumer.updateCheck(
             repoOwner = "mozilla-mobile",
-            repoName = "focus-android",
-            resultsPerPage = 3,
-            isValidRelease = { release ->
-                !release.isPreRelease &&
-                        "beta" !in release.name &&
-                        release.assets.any { asset -> asset.name.endsWith(".apk") }
+            repoName = "firefox-android",
+            resultsPerPage = 5,
+            isValidRelease = {
+                !it.isPreRelease && "Klar" in it.name && it.anyAssetNameEndsWith(fileSuffix)
             },
-            isSuitableAsset = { asset ->
-                asset.name.startsWith("klar") &&
-                        asset.name.endsWith(fileSuffix)
+            isSuitableAsset = {
+                it.name.startsWith("klar-") && it.name.endsWith(fileSuffix)
             },
             dontUseApiForLatestRelease = false,
             settings = networkSettings
         )
 
-        val extractVersion = {
-            val regexMatch = Regex("""^v((\d)+(\.\d+)*)""")
-                .find(result.tagName)
-            checkNotNull(regexMatch) {
-                "Fail to extract the version with regex from string: \"${result.tagName}\""
-            }
-            val matchGroup = regexMatch.groups[1]
-            checkNotNull(matchGroup) {
-                "Fail to extract the version value from regex match: \"${regexMatch.value}\""
-            }
-            matchGroup.value
-        }
-
-        val version = extractVersion()
+        val version = result.tagName.trim { it == 'v' } //convert v108.1.1 to 108.1.1
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
