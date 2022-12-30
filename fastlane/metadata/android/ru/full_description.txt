@@ -6,7 +6,7 @@
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 хорошие браузеры для обеспечения конфиденциальности:
 - Bromite, Bromite SystemWebView

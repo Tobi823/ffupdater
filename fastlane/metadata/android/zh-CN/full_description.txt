@@ -6,7 +6,7 @@
 - Firefox Focus、Firefox Klar
 - Iceraven
 - Mull 浏览器
-- Tor 浏览器
+- Tor 浏览器, Tor Browser Alpha
 
 优秀的隐私浏览器：
 - Bromite、Bromite SystemWebView

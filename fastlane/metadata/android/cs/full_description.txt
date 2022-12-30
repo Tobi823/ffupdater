@@ -6,7 +6,7 @@ Prohlížeče od společnosti Mozilla nebo založené na Firefoxu:
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull prohlížeč
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 Prohlížeče dobré pro ochranu soukromí:
 - Bromite, Bromite SystemWebView

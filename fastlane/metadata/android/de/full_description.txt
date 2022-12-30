@@ -6,7 +6,7 @@ Browser von Mozilla oder Browser auf des Firefoxes:
 - Firefox Fokus, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 Gute Datenschutz-Browser:
 - Bromite, Bromite SystemWebView

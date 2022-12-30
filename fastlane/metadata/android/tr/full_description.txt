@@ -6,7 +6,7 @@ Mozilla veya Firefox tabanlı tarayıcılar
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Tarayıcı
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 Gizlilik açısından iyi tarayıcılar:
 - Bromit, Bromit SystemWebView

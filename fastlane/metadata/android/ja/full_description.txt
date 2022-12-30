@@ -6,7 +6,7 @@ Mozilla または Firefox ベースのブラウザ:
 - Firefox Focus、Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 優れたプライバシーブラウザ
 - Bromite、Bromite SystemWebView

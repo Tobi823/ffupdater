@@ -6,7 +6,7 @@ Nettlesere fra Mozilla eller basert på Firefox:
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 Gode personvernnettlesere:
 - Bromite, Bromite SystemWebView

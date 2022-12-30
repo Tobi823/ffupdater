@@ -6,7 +6,7 @@ Browser di Mozilla o basati su Firefox:
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 Buoni browser per la privacy:
 - Bromite, Bromite SystemWebView

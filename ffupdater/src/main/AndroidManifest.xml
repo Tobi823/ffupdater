@@ -53,6 +53,7 @@
         <package android:name="org.mozilla.rocket" />
         <package android:name="org.torproject.android" />
         <package android:name="org.torproject.torbrowser" />
+        <package android:name="org.torproject.torbrowser_alpha" />
         <package android:name="org.ungoogled.chromium.stable" />
         <package android:name="us.spotco.fennec_dos" />
         <package android:name="us.spotco.mulch" />

@@ -54,6 +54,11 @@ abstract class AppBase {
     }
 
     @AnyThread
+    fun isInstalledWithoutFingerprintVerification(context: Context): Boolean {
+        return PackageManagerUtil(context.packageManager).isAppInstalled(packageName)
+    }
+
+    @AnyThread
     open fun getInstalledVersion(context: Context): String? {
         return PackageManagerUtil(context.packageManager).getInstalledAppVersionName(packageName)
     }

@@ -6,7 +6,7 @@ Przeglądarki Mozilli lub oparte na Firefoksie:
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull
-- Tor
+- Tor, Tor Browser Alpha
 
 Przeglądarki dla ochrony Twojej prywatności:
 - Bromite, Bromite SystemWebView

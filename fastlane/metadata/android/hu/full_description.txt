@@ -6,7 +6,7 @@ Mozilla vagy Firefox alapú böngészők:
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 Jó adatvédelmi böngészők:
 - Bromite, Bromite SystemWebView

@@ -25,6 +25,7 @@ enum class App(val implFactory: () -> AppBase) {
     MULL_FROM_REPO({ MullFromRepo() }),
     ORBOT({ Orbot() }),
     TOR_BROWSER({ TorBrowser() }),
+    TOR_BROWSER_ALPHA({ TorBrowserAlpha() }),
     UNGOOGLED_CHROMIUM({ UngoogledChromium() }),
     VIVALDI({ Vivaldi() }),
     ;

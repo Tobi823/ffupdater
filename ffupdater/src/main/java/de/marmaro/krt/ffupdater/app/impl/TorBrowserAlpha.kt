@@ -17,27 +17,27 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
- * https://www.torproject.org/download/#android
- * https://www.apkmirror.com/apk/the-tor-project/tor-browser/
+ * https://www.torproject.org/download/alpha/
+ * https://www.apkmirror.com/apk/the-tor-project/tor-browser-for-android-alpha/
  */
-class TorBrowser(
+class TorBrowserAlpha(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
-    override val app = App.TOR_BROWSER
-    override val codeName = "TorBrowser"
-    override val packageName = "org.torproject.torbrowser"
-    override val title = R.string.tor_browser__title
-    override val description = R.string.tor_browser__description
-    override val installationWarning: Int? = null
-    override val downloadSource = "https://www.torproject.org/download"
-    override val icon = R.mipmap.ic_logo_tor_browser
+    override val app = App.TOR_BROWSER_ALPHA
+    override val codeName = "TorBrowserAlpha"
+    override val packageName = "org.torproject.torbrowser_alpha"
+    override val title = R.string.tor_browser_alpha__title
+    override val description = R.string.tor_browser_alpha__description
+    override val installationWarning = R.string.tor_browser_alpha__warning
+    override val downloadSource = "https://www.torproject.org/download/alpha/"
+    override val icon = R.mipmap.ic_logo_tor_browser_alpha
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
 
     @Suppress("SpellCheckingInspection")
-    override val signatureHash = "20061f045e737c67375c17794cfedb436a03cec6bacb7cb9f96642205ca2cec8"
-    override val projectPage = "https://www.torproject.org/download/#android"
+    override val signatureHash = "15f760b41acbe4783e667102c9f67119be2af62fab07763f9d57f01e5e1074e1"
+    override val projectPage = "https://www.torproject.org/download/alpha/"
     override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
 
     override fun getInstalledVersion(context: Context): String? {
@@ -77,13 +77,13 @@ class TorBrowser(
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
         val pattern = Regex.escape("https://dist.torproject.org/torbrowser/") +
-                "([0-9.]{4,})" +
+                "([0-9a-z.]{4,})" +
                 Regex.escape("/tor-browser-") +
-                "[0-9.]{4,}+" +
+                "[0-9a-z.]{4,}+" +
                 Regex.escape("-android-${getAbiString(deviceSettings)}-multi.apk")
 
         val match = Regex(pattern).find(content)
-        checkNotNull(match) { "Can't find download url with regex pattern '$pattern'." }
+        checkNotNull(match) { "Can't find download url with regex pattern: $pattern." }
 
         val downloadUrl = match.groups[0]
         checkNotNull(downloadUrl) { "Can't extract download url from regex match." }
@@ -145,6 +145,6 @@ class TorBrowser(
 
     companion object {
         private const val LOG_TAG = "Tor Browser"
-        const val MAIN_URL = "https://www.torproject.org/download"
+        const val MAIN_URL = "https://www.torproject.org/download/alpha/"
     }
 }

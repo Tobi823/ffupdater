@@ -18,7 +18,6 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.*
-import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.NOT_INSTALLED
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -72,8 +71,9 @@ class AddAppActivity : AppCompatActivity() {
         val installedApps = App.values()
             .filter { it.impl.installableByUser }
             .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
-            .filter { it.impl.isInstalled(this) == NOT_INSTALLED }
+            .filter { !it.impl.isInstalledWithoutFingerprintVerification(applicationContext) }
             .sortedBy { getString(it.impl.title) }
+
 
         val mozillaBrowsers = findViewById<LinearLayout>(R.id.list_mozilla_browsers)
         mozillaBrowsers.removeAllViews()

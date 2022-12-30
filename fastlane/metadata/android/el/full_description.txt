@@ -6,7 +6,7 @@
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 Καλά προγράμματα περιήγησης απορρήτου:
 - Bromite, Bromite SystemWebView

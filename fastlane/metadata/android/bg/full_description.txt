@@ -6,7 +6,7 @@
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Четецът Мул
-- Четецът Тор
+- Четецът Тор, Tor Browser Alpha
 
 поверителни четци:
 - Bromite, Bromite SystemWebView

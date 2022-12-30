@@ -1,3 +1,7 @@
+# 2022-12-?? Release 77.6.0 (122)
+
+* Add support for Tor Browser Alpha
+
 # 2022-12-25 Release 77.5.0 (121)
 
 * Thanks for the Weblate contribution from: Juraj Motuz, gallegonovato, nautilusx, Oğuz Ersen, Ettore Atalan,

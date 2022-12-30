@@ -18,6 +18,7 @@ Browsers from Mozilla or based on Firefox:
   ([GitLab Repository](https://gitlab.com/divested-mobile/mull-fenix))
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download)
+  [Tor Browser Alpha](https://www.torproject.org/download/alpha/)
 
 Good privacy browsers:
 
@@ -86,6 +87,7 @@ The applications are downloaded from these locations:
 - Kiwi Browser Next: <https://api.github.com/repos/kiwibrowser/src.next/releases>
 - Orbot: <https://api.github.com/repos/kiwibrowser/guardianproject/orbot>
 - Tor Browser: <https://www.torproject.org/download>
+- Tor Browser Alpha: <https://www.torproject.org/download/alpha/>
 - Vivaldi: <https://vivaldi.com/download/>
 
 ## Other distribution channels

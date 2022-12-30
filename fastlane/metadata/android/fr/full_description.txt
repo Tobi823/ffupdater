@@ -6,7 +6,7 @@ Navigateurs de Mozilla ou basés sur Firefox:
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Alpha
 
 bons navigateurs de confidentialité :
 - Bromite, Bromite SystemWebView
