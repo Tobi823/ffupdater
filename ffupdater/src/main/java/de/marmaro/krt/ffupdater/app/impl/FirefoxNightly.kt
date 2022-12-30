@@ -57,7 +57,7 @@ class FirefoxNightly(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val abiString = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+        val abiString = when (deviceAbiExtractor.findBestAbi(
             supportedAbis,
             deviceSettings.prefer32BitApks
         )) {

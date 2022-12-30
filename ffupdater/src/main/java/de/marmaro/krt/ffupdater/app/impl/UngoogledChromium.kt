@@ -19,7 +19,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 /**
  * https://github.com/ungoogled-software/ungoogled-chromium-android/releases
  */
-
+@Deprecated("app is no longer supported")
 class UngoogledChromium(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
@@ -49,7 +49,7 @@ class UngoogledChromium(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+        val fileName = when (deviceAbiExtractor.findBestAbi(
             supportedAbis,
             deviceSettings.prefer32BitApks
         )) {
@@ -74,19 +74,7 @@ class UngoogledChromium(
             settings = networkSettings
         )
 
-        val extractVersion = {
-            val regexMatch = Regex("""^([.0-9]+)-\d+$""")
-                .find(result.tagName)
-            checkNotNull(regexMatch) {
-                "Fail to extract the version with regex from string '${result.tagName}'."
-            }
-            val matchGroup = regexMatch.groups[1]
-            checkNotNull(matchGroup) {
-                "Fail to extract the version value from regex match: '${regexMatch.value}'."
-            }
-            matchGroup.value
-        }
-        val version = extractVersion()
+        val version = result.tagName
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,

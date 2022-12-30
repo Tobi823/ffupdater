@@ -43,7 +43,7 @@ class Mulch(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val abi = deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, deviceSettings.prefer32BitApks)
+        val abi = deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)
         val result = customRepositoryConsumer.getLatestUpdate(
             settings = networkSettings,
             "https://divestos.org/fdroid/official",

@@ -15,6 +15,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  * https://www.apkmirror.com/apk/mozilla/firefox-lockwise/
  */
+@Deprecated("app is no longer supported")
 class Lockwise(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {

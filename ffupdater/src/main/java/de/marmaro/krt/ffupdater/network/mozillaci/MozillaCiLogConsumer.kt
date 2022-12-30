@@ -28,11 +28,11 @@ class MozillaCiLogConsumer(private val apiConsumer: ApiConsumer) {
             val regexMatch = Regex("""'(version|tag_name)': 'v?(.+)'""")
                 .find(response)
             checkNotNull(regexMatch) {
-                "Fail to extract the version with regex from string: \"\"\"$response\"\"\""
+                "Fail to extract the version with regex from string: $response"
             }
             val matchGroup = regexMatch.groups[2]
             checkNotNull(matchGroup) {
-                "Fail to extract the version value from regex match: \"${regexMatch.value}\""
+                "Fail to extract the version value from regex match: ${regexMatch.value}"
             }
             matchGroup.value
         }
@@ -41,11 +41,11 @@ class MozillaCiLogConsumer(private val apiConsumer: ApiConsumer) {
             val regexMatch = Regex("""'(published_at|now)': '(.+)'""")
                 .find(response)
             checkNotNull(regexMatch) {
-                "Fail to extract the date with regex from string: \"\"\"$response\"\"\""
+                "Fail to extract the date with regex from string: $response"
             }
             val matchGroup = regexMatch.groups[2]
             checkNotNull(matchGroup) {
-                "Fail to extract the date value from regex match: \"${regexMatch.value}\""
+                "Fail to extract the date value from regex match: ${regexMatch.value}"
             }
             matchGroup.value
         }

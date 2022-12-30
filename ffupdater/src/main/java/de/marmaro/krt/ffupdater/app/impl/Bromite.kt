@@ -49,7 +49,7 @@ class Bromite(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val fileName = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+        val fileName = when (deviceAbiExtractor.findBestAbi(
             supportedAbis,
             deviceSettings.prefer32BitApks
         )) {

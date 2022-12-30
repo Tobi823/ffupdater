@@ -83,25 +83,22 @@ class TorBrowser(
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
-        val pattern = """(https://dist\.torproject\.org""" +
-                """/torbrowser/(.+)/.+-android-${getAbiString(deviceSettings)}-multi\.apk)"""
+        val pattern = Regex.escape("https://dist.torproject.org/torbrowser/") +
+                "([0-9.]{4,})" +
+                Regex.escape("/tor-browser-") +
+                "[0-9.]{4,}+" +
+                Regex.escape("-android-${getAbiString(deviceSettings)}-multi.apk")
+
         val match = Regex(pattern).find(content)
         checkNotNull(match) { "Can't find download url with regex pattern '$pattern'." }
-        val downloadUrl = match.groups[1]
-        checkNotNull(downloadUrl) { "Can't extract download url from regex match." }
-        val availableVersion = match.groups[2]
-        checkNotNull(availableVersion) { "Can't extract available version from regex match." }
-        return availableVersion.value to downloadUrl.value
-    }
 
-    private fun getAbiString(settings: DeviceSettingsHelper): String {
-        return when (deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, settings.prefer32BitApks)) {
-            ABI.ARM64_V8A -> "aarch64"
-            ABI.ARMEABI_V7A -> "armv7"
-            ABI.X86_64 -> "x86_64"
-            ABI.X86 -> "x86"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
+        val downloadUrl = match.groups[0]
+        checkNotNull(downloadUrl) { "Can't extract download url from regex match." }
+
+        val availableVersion = match.groups[1]
+        checkNotNull(availableVersion) { "Can't extract available version from regex match." }
+
+        return availableVersion.value to downloadUrl.value
     }
 
     private suspend fun extractDateAndSize(
@@ -109,24 +106,48 @@ class TorBrowser(
         deviceSettingsHelper: DeviceSettingsHelper,
         version: String
     ): Pair<String, Long> {
-        val param = "*android-${getAbiString(deviceSettingsHelper)}-multi.apk"
-        val url = "https://dist.torproject.org/torbrowser/$version/?P=$param"
+        val abi = getAbiString(deviceSettingsHelper)
+        val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-$abi-multi.apk"
         val content = try {
             apiConsumer.consume(url, networkSettings)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
-        val pattern = """</a>[ ]*([0-9\-]{10}) ([0-9:]{5})[ ]*([0-9:]+)M( )*\n"""
+
+        val spaces = """\s+"""
+        val pattern = Regex.escape("</a>") +
+                spaces +
+                """(\d{4}-\d{1,2}-\d{1,2}) """ + //for example 2022-12-16
+                """(\d{1,2}:\d{1,2})""" + //for example 13:30
+                spaces +
+                """(\d){2,3}M""" + //for 82M
+                spaces +
+                """\n"""
+
         val match = Regex(pattern).find(content)
-        checkNotNull(match) { "Can't find creation date or size with regex pattern '$pattern'." }
+        checkNotNull(match) { "Can't find creation date or size with regex pattern: $pattern" }
+
         val date = match.groups[1]
         checkNotNull(date) { "Can't extract date from regex match." }
+
         val time = match.groups[2]
         checkNotNull(time) { "Can't extract time from regex match." }
+
         val size = match.groups[3]
         checkNotNull(size) { "Can't extract size from regex match." }
+
         val sizeBytes = (size.value.toLong() + 1) * 1024 * 1024
         return "${date.value}T${time.value}:00Z" to sizeBytes
+    }
+
+    private fun getAbiString(settings: DeviceSettingsHelper): String {
+        return when (deviceAbiExtractor.findBestAbi(supportedAbis, settings.prefer32BitApks)) {
+            ABI.ARM64_V8A -> "aarch64"
+            ABI.ARMEABI_V7A -> "armv7"
+            ABI.X86_64 -> "x86_64"
+            ABI.X86 -> "x86"
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
     }
 
     companion object {

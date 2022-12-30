@@ -10,7 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import rikka.shizuku.Shizuku
 import java.io.File
-import java.util.regex.Pattern
 
 /**
  * https://github.com/Iamlooker/Droid-ify/blob/59e4675f220520c9416b55697987ce6f374bd179/installer/src/main/java/com/looker/installer/installer/ShizukuInstaller.kt
@@ -60,19 +59,19 @@ class ShizukuInstaller(
     }
 
     private suspend fun createInstallationSession(size: Int): Int {
-        val response = if (deviceSdkTester.supportsAndroidNougat()) {
+        val result = if (deviceSdkTester.supportsAndroidNougat()) {
             execute("pm install-create --user current -i ${app.impl.packageName} -S $size")
         } else {
             execute("pm install-create -i ${app.impl.packageName} -S $size")
         }
 
-        val sessionIdPattern = Pattern.compile("(\\d+)")
-        val sessionIdMatcher = sessionIdPattern.matcher(response)
-        val found = sessionIdMatcher.find()
-        if (!found) {
-            throw InstallationFailedException("Could not find session ID. Output was: '$response'", -401)
-        }
-        return sessionIdMatcher.group(1)!!.toInt()
+        val sessionIdMatch = Regex("""\d+""").find(result)
+        checkNotNull(sessionIdMatch) { "Can't find session id with regex pattern. Output: $result" }
+
+        val sessionId = sessionIdMatch.groups[0]
+        checkNotNull(sessionId) { "Can't find match group containing the session id. Output: $result" }
+
+        return sessionId.value.toInt()
     }
 
     private suspend fun installApp(sessionId: Int, size: Int, filePath: String, fileName: String) {

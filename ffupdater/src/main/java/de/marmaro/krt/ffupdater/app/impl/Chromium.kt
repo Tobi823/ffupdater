@@ -50,7 +50,7 @@ class Chromium(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val abi = deviceAbiExtractor.findBestAbiForDeviceAndApp(supportedAbis, deviceSettings.prefer32BitApks)
+        val abi = deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)
         val platform = when (abi) {
             ABI.ARM64_V8A -> "Android_Arm64"
             ABI.ARMEABI_V7A -> "Android"

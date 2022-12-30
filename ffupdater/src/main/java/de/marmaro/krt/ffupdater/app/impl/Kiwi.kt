@@ -51,16 +51,17 @@ class Kiwi(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val fileRegex = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
-            supportedAbis,
-            deviceSettings.prefer32BitApks
-        )) {
-            ABI.ARMEABI_V7A -> """com\.kiwibrowser\.browser-arm-\d+-github\.apk"""
-            ABI.ARM64_V8A -> """com\.kiwibrowser\.browser-arm64-\d+-github\.apk"""
-            ABI.X86 -> """com\.kiwibrowser\.browser-x86-\d+-github\.apk"""
-            ABI.X86_64 -> """com\.kiwibrowser\.browser-x64-\d+-github\.apk"""
+        val abiString = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "arm"
+            ABI.ARM64_V8A -> "arm64"
+            ABI.X86 -> "x86"
+            ABI.X86_64 -> "x64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
+        val fileRegex = Regex.escape("com.kiwibrowser.browser-$abiString-") +
+                """\d+""" +
+                Regex.escape("-github.apk")
+
         val result = consumer.updateCheck(
             repoOwner = "kiwibrowser",
             repoName = "src.next",

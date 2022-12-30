@@ -6,7 +6,10 @@ class DeviceAbiExtractor {
     val supportedAbis = Build.SUPPORTED_ABIS?.map { ABI.findByCodeName(it) } ?: listOf()
     val supported32BitAbis = supportedAbis.filter { it.is32Bit }
 
-    fun findBestAbiForDeviceAndApp(abisSupportedByApp: List<ABI>, prefer32Bit: Boolean): ABI {
+    /**
+     * findBestAbiForDeviceAndApp
+     */
+    fun findBestAbi(abisSupportedByApp: List<ABI>, prefer32Bit: Boolean): ABI {
         if (prefer32Bit) {
             supported32BitAbis
                 .firstOrNull { it in abisSupportedByApp }

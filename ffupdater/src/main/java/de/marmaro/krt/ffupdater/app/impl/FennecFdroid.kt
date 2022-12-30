@@ -44,7 +44,7 @@ class FennecFdroid(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val index = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+        val index = when (deviceAbiExtractor.findBestAbi(
             supportedAbis,
             deviceSettings.prefer32BitApks
         )) {

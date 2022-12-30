@@ -39,7 +39,7 @@ open class BaseAppIT {
             packageManager.getPackageInfo(any<String>(), 0)
         } throws PackageManager.NameNotFoundException()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
-        every { deviceAbiExtractor.findBestAbiForDeviceAndApp(any(), false) } returns ABI.ARM64_V8A
+        every { deviceAbiExtractor.findBestAbi(any(), false) } returns ABI.ARM64_V8A
     }
 
     fun verifyThatDownloadLinkAvailable(url: String) {

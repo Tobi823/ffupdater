@@ -8,7 +8,6 @@ import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
-import java.util.regex.Pattern
 
 /**
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
@@ -29,7 +28,7 @@ class RootInstaller(
 
         failIfRootPermissionIsMissing()
         val size = file.length().toInt()
-        val sessionId = createInstallationSession(size) ?: return
+        val sessionId = createInstallationSession(size)
         installApp(sessionId, size, filePath, fileName)
     }
 
@@ -39,15 +38,17 @@ class RootInstaller(
         }
     }
 
-    private suspend fun createInstallationSession(size: Int): Int? {
+    private suspend fun createInstallationSession(size: Int): Int {
         val response = execute("pm install-create -i com.android.vending --user 0 -r -S $size")
-        val sessionIdPattern = Pattern.compile("(\\d+)")
-        val sessionIdMatcher = sessionIdPattern.matcher(response[0])
-        val found = sessionIdMatcher.find()
-        if (!found) {
-            throw InstallationFailedException("Could not find session ID. Output was: '$response'", -301)
-        }
-        return sessionIdMatcher.group(1)?.toInt()
+        val result = response[0]
+
+        val sessionIdMatch = Regex("""\d+""").find(result)
+        checkNotNull(sessionIdMatch) { "Can't find session id with regex pattern. Output: $result" }
+
+        val sessionId = sessionIdMatch.groups[0]
+        checkNotNull(sessionId) { "Can't find match group containing the session id. Output: $result" }
+
+        return sessionId.value.toInt()
     }
 
     private suspend fun installApp(sessionId: Int, size: Int, filePath: String, fileName: String) {

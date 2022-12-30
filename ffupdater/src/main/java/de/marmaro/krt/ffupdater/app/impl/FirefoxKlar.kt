@@ -49,7 +49,7 @@ class FirefoxKlar(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val fileSuffix = when (deviceAbiExtractor.findBestAbiForDeviceAndApp(
+        val fileSuffix = when (deviceAbiExtractor.findBestAbi(
             supportedAbis,
             deviceSettings.prefer32BitApks
         )) {
