@@ -296,4 +296,51 @@
     <string name="settings__background__update_check__when_device_idle__unsupported">Αυτή η επιλογή είναι διαθέσιμη μόνο σε Android Marshmallow ή νεότερη έκδοση.</string>
     <string name="mulch__title">Mulch</string>
     <string name="network__dns_provider__title">Ρυθμίσεις DNS</string>
+    <string name="network__custom_doh_server__title">Προσαρμοσμένο DNS μέσω διακομιστή HTTPS</string>
+    <string name="settings__network_category__title">Δίκτυο</string>
+    <string name="settings__device_category__title">Συσκευή</string>
+    <string name="device__prefer_32bit_apks__title">Προτιμήστε τα APKs 32-Bit</string>
+    <string name="network__proxy__title">Proxy</string>
+    <string name="installer__method__root_not_granted">Δεν έχει δοθεί άδεια root!</string>
+    <string name="network__dns_provider__system">Χρησιμοποιήστε DNS συστήματος</string>
+    <string name="network__dns_provider__digital_society_ch">DNS μέσω HTTPS: Digital Society Switzerland</string>
+    <string name="network__dns_provider__quad9">DNS μέσω HTTPS: Quad9</string>
+    <string name="network__dns_provider__cloudflare">DNS μέσω HTTPS: Cloudflare</string>
+    <string name="network__dns_provider__google">DNS μέσω HTTPS: Google</string>
+    <string name="network__dns_provider__no">Χωρίς DNS (μόνο για δοκιμή)</string>
+    <string name="installer__method__native">Εγγενές πρόγραμμα εγκατάστασης: Εναλλακτικό εάν το πρόγραμμα εγκατάστασης περιόδου λειτουργίας δεν λειτουργεί στο smartphone σας.</string>
+    <string name="background__separate_notification_channels__summary">Χρησιμοποιήστε διαφορετικά κανάλια ειδοποιήσεων για κάθε μεμονωμένη εφαρμογή</string>
+    <string name="background__separate_notification_channels__title">Διαφορετικά κανάλια ειδοποιήσεων</string>
+    <string name="notification__update_available__generic_channel_name">Ειδοποίηση ενημέρωσης εφαρμογής</string>
+    <string name="notification__update_available__generic_channel_descr">Κανάλι ειδοποιήσεων για διαθέσιμες ενημερώσεις εφαρμογών.</string>
+    <string name="notification__install_error__generic_channel_descr">Κανάλι ειδοποιήσεων για αποτυχημένες ενημερώσεις εφαρμογών.</string>
+    <string name="notification__install_error__generic_channel_name">Ειδοποίηση αποτυχίας ενημέρωσης εφαρμογής</string>
+    <string name="notification__network_error__title">Σφάλμα δικτύου στην εργασία παρασκηνίου</string>
+    <string name="notification__network_error__text">Αυτό το σφάλμα θα πρέπει να εμφανίζεται μόνο σπάνια. Ωστόσο, εάν εμφανίζεται συχνά, θα πρέπει να το αναφέρετε. Κάντε κλικ εδώ για να δείτε το αναλυτικό μήνυμα σφάλματος.</string>
+    <string name="network__custom_doh_server__dialog_message">Εισαγάγετε τις λεπτομέρειες σύνδεσης για τον προσαρμοσμένο διακομιστή DoH σε μία από αυτές τις μορφές:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nΓια παράδειγμα: https://dns.google/dns-query;8.8.8.8 ή https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__dialog_message">Εάν θέλετε να χρησιμοποιήσετε διακομιστή μεσολάβησης SOCKS ή HTTP, εισαγάγετε τα στοιχεία σύνδεσης εδώ. Χρησιμοποιήστε μία από αυτές τις μορφές:
+\n
+\nSOCKS/HTTP;ip/domain;port
+\n
+\nSOCKS/HTTP;ip/domain;port;όνομα χρήστη;κωδικός πρόσβασης
+\n
+\nΓια παράδειγμα: SOCKS;1.2.3.4;22 ή HTTP;5.6.7.8;80;user1;pw123 ή HTTP;p.webshare.io;80;u;p. Αφήστε το κενό εάν θέλετε να χρησιμοποιήσετε τη διαμόρφωση διακομιστή μεσολάβησης συστήματος.
+\n
+\nΠεριορισμός: Εάν αλλάξετε τις «Ρυθμίσεις DNS» στις ρυθμίσεις σε διακομιστή DNS μέσω HTTPS, πρέπει να εισαγάγετε τον τομέα του διακομιστή μεσολάβησης. Οι IP δεν θα λειτουργήσουν.</string>
+    <string name="device__prefer_32bit_apks__summary">Ενεργοποιήστε εάν η μνήμη της συσκευής σας είναι συνήθως χαμηλή. Στη συνέχεια, το FFUpdater θα χρησιμοποιήσει APK 32-bit που συνήθως απαιτούν λιγότερη μνήμη.</string>
+    <string name="installer__method__shizuku_not_installed">Το Shizuku δεν έχει εγκατασταθεί!</string>
+    <string name="network__dns_provider__custom">Προσαρμοσμένο DNS μέσω διακομιστή HTTPS</string>
+    <string name="installer__method__session">Πρόγραμμα εγκατάστασης περιόδου λειτουργίας: Συνιστάται για τις περισσότερες συσκευές. Σε Android 12 ή νεότερη έκδοση, οι εφαρμογές μπορούν να ενημερωθούν χωρίς παράθυρο διαλόγου επιβεβαίωσης.</string>
+    <string name="installer__method__root">Πρόγραμμα εγκατάστασης Root: Ενημέρωση εφαρμογών χωρίς παράθυρο διαλόγου επιβεβαίωσης. Αυτό απαιτεί ένα smartphone με root.</string>
+    <string name="installer__method__shizuku">Πρόγραμμα εγκατάστασης Shizuku: Ενημέρωση εφαρμογών χωρίς παράθυρο διαλόγου επιβεβαίωσης. Αυτό απαιτεί την εφαρμογή Shizuku ή το Sui Magisk Module.</string>
 </resources>
