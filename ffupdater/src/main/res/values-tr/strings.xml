@@ -343,4 +343,11 @@
     <string name="background__separate_notification_channels__title">Farklı bildirim kanalları</string>
     <string name="notification__network_error__title">Arka plan işinde ağ hatası</string>
     <string name="notification__network_error__text">Bu hata nadiren meydana gelmelidir. Ancak, sık sık meydana geliyorsa bunu bildirmelisiniz. Ayrıntılı hata mesajını görüntülemek için buraya tıklayın.</string>
+    <string name="tor_browser_alpha__title">Tor Browser Alfa</string>
+    <string name="tor_browser_alpha__warning">- Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir.</string>
+    <string name="tor_browser_alpha__description">Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracını geliştiren Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.
+\n
+\nTor Browser HER ZAMAN ücretsiz olacaktır, ancak bağışlar bunu mümkün kılmaktadır. Tor Projesi ABD merkezli 501(c)(3) kar amacı gütmeyen bir kuruluştur. Lütfen bugün bir katkıda bulunmayı düşünün. Her hediye bir fark yaratır: https://donate.torproject.org.
+\n
+\nHataları nasıl bildireceğinizi ve geri bildirimde bulunacağınızı https://support.torproject.org/misc/bug-or-feedback/ adresinden öğrenin!</string>
 </resources>
