@@ -284,14 +284,14 @@
     <string name="notification__no_update_check__title">Brak pomyślnego sprawdzenia aktualizacji w tle przez pięć dni</string>
     <string name="notification__eol_apps__title">Zainstalowane nieaktualne aplikacje</string>
     <string name="notification__no_update_check__channel_name">Brak sprawdzania aktualizacji w tle</string>
-    <string name="tor_browser__title">Tor</string>
+    <string name="tor_browser__title">Przeglądarka Tor</string>
     <string name="chromium__description">Chromium to projekt przeglądarki o otwartym kodzie źródłowym, którego celem jest stworzenie bezpieczniejszego, szybszego i bardziej stabilnego sposobu korzystania z sieci przez wszystkich użytkowników. Ta strona zawiera dokumenty projektowe, przegląd architektury, informacje o testach i wiele innych informacji, które pomogą Ci nauczyć się budować i pracować z kodem źródłowym Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ten błąd wystąpił podczas instalowania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
     <string name="notification__download_error__descr">Pobieranie w tle aktualizacji %1$s nie powiodło się. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
     <string name="notification__download_error__text">Pobieranie w tle aktualizacji %1$s nie powiodło się. Jeśli ten błąd występuje często, kliknij tutaj, aby wyświetlić raport o błędzie.</string>
     <string name="notification__eol_apps__channel_description">Kanał powiadomień dla ostrzeżeń o nieaktualnych aplikacjach.</string>
     <string name="notification__no_update_check__text">W ciągu ostatnich pięciu dni FFUpdater nie był w stanie sprawdzić aktualizacji w tle. Jeśli przez dłuższy czas miałeś smartfon w trybie samolotowym, możesz zignorować ten komunikat. Jeśli nie, kliknij tutaj, aby zobaczyć raport o błędzie.</string>
-    <string name="tor_browser__description">Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.</string>
+    <string name="tor_browser__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Włącz to, jeśli nie chcesz, aby twoje aplikacje były ponownie uruchamiane przez aktualizację w tle. Wyłącz to, jeśli chcesz mieć bardziej przewidywalny harmonogram sprawdzania aktualizacji w tle.</string>
     <string name="mulch__warning">- Mulch wykorzystuje techniczne fundamenty Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="fennecfdroid__description">Fennec F-Droid jest oparty na najnowszym wydaniu Firefoksa (o nazwie kodowej Fenix). Ma usunięte zastrzeżone bity i telemetrię, ale nadal łączy się z różnymi usługami Mozilli i Google, które mogą śledzić użytkowników.</string>
@@ -349,4 +349,11 @@
 \nNa przykład: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;użytkownik123;hasło123 or HTTP;p.webshare.io;80;u;h. Pozostaw to puste, jeśli chcesz użyć systemowej konfiguracji proxy.
 \n
 \nOgraniczenie: Jeśli zmienisz \"Ustawienia DNS\" w ustawieniach na serwer DNS over HTTPS, musisz podać domenę serwera proxy. IP nie będzie działać.</string>
+    <string name="tor_browser_alpha__title">Przeglądarka Tor Alpha</string>
+    <string name="tor_browser_alpha__warning">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
+    <string name="tor_browser_alpha__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.
+\n
+\nDobrowolne darowizny sprawiają, że Przeglądarka Tor ZAWSZE będzie darmowa. Projekt Tor jest 501(c)(3) organizacją non-profit z siedzibą w USA. Proszę rozważyć wsparcie projektu dobrowolną wpłatą: https://donate.torproject.org.
+\n
+\nMożesz dowiedzieć się jak zgłaszać błędy i opinie na stronie https://support.torproject.org/misc/bug-or-feedback/!</string>
 </resources>
