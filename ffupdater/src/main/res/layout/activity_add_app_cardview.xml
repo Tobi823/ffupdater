@@ -46,6 +46,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_card__app_warning_button_description"
             android:tag="warning_icon"
+            android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@id/info_button"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_warning" />

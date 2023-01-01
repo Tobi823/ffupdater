@@ -14,9 +14,9 @@ import android.widget.TextView
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
@@ -29,10 +29,9 @@ import de.marmaro.krt.ffupdater.dialog.AppWarningDialog
 import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
 import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
 import de.marmaro.krt.ffupdater.network.FileDownloader
-import de.marmaro.krt.ffupdater.network.NetworkUtil
+import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+
 
 class AddAppActivity : AppCompatActivity() {
     private lateinit var foregroundSettings: ForegroundSettingsHelper
@@ -49,9 +48,7 @@ class AddAppActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        lifecycleScope.launch(Dispatchers.Main) {
-            addAppsToUserInterface()
-        }
+        addAppsToUserInterface()
     }
 
     override fun onResume() {
@@ -70,25 +67,34 @@ class AddAppActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private suspend fun addAppsToUserInterface() {
+    private fun addAppsToUserInterface() {
         val installedApps = App.values()
             .filter { it.impl.installableByUser }
             .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { !it.impl.isInstalledWithoutFingerprintVerification(applicationContext) }
             .sortedBy { getString(it.impl.title) }
 
-        addCategoryToUi(installedApps, FROM_MOZILLA, R.id.list_mozilla_browsers)
-        addCategoryToUi(installedApps, BASED_ON_FIREFOX, R.id.list_firefox_based_browsers)
-        addCategoryToUi(installedApps, GOOD_PRIVACY_BROWSER, R.id.list_good_privacy_browsers)
-        addCategoryToUi(installedApps, BETTER_THAN_GOOGLE_CHROME, R.id.list_better_than_chrome_browsers)
-        addCategoryToUi(installedApps, OTHER, R.id.other_applications)
-        addCategoryToUi(installedApps, EOL, R.id.list_eol_browsers)
-    }
+        val items = mutableListOf<AppsAdapter.ItemWrapper>()
 
-    private fun addCategoryToUi(apps: List<App>, displayCategory: DisplayCategory, id: Int) {
-        val categoryApps = apps.filter { it.impl.displayCategory == displayCategory }
-        val view = findViewById<RecyclerView>(id)
-        view.adapter = AppsAdapter(categoryApps, this)
+        for (displayCategory in DisplayCategory.values()) {
+            val titleText = when (displayCategory) {
+                FROM_MOZILLA -> getString(R.string.add_app_activity__title_from_mozilla)
+                BASED_ON_FIREFOX -> getString(R.string.add_app_activity__title_from_mozilla)
+                GOOD_PRIVACY_BROWSER -> getString(R.string.add_app_activity__title_good_privacy_browsers)
+                BETTER_THAN_GOOGLE_CHROME -> getString(R.string.add_app_activity__title_better_than_google_chrome)
+                OTHER -> getString(R.string.add_app_activity__title_other_applications)
+                EOL -> getString(R.string.add_app_activity__title_end_of_live_browser)
+            }
+            items.add(AppsAdapter.WrappedTitle(titleText))
+
+            val categoryApps = installedApps
+                .filter { it.impl.displayCategory == displayCategory }
+                .map { AppsAdapter.WrappedApp(it) }
+            items.addAll(categoryApps)
+        }
+
+        val view = findViewById<RecyclerView>(R.id.add_app_activity__recycler_view)
+        view.adapter = AppsAdapter(items, this)
         view.layoutManager = LinearLayoutManager(this)
     }
 
@@ -100,14 +106,26 @@ class AddAppActivity : AppCompatActivity() {
         }
     }
 
-    class AppsAdapter(private val apps: List<App>, private val activity: AppCompatActivity) :
-        RecyclerView.Adapter<AppsAdapter.ViewHolder>() {
+    class AppsAdapter(private val elements: List<ItemWrapper>, private val activity: AppCompatActivity) :
+        RecyclerView.Adapter<ViewHolder>() {
 
-        // Provide a direct reference to each of the views within a data item
-        // Used to cache the views within the item layout for fast access
-        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            // Your holder should contain and initialize a member variable
-            // for any view that will be set as you render a row
+        enum class ItemType(val id: Int) {
+            APP(0), TITLE(1)
+        }
+
+        interface ItemWrapper {
+            fun getType(): ItemType
+        }
+
+        class WrappedApp(val app: App) : ItemWrapper {
+            override fun getType() = ItemType.APP
+        }
+
+        class WrappedTitle(val text: String) : ItemWrapper {
+            override fun getType() = ItemType.TITLE
+        }
+
+        inner class AppHolder(itemView: View) : ViewHolder(itemView) {
             val title: TextView = itemView.findViewWithTag<TextView>("title")
             val icon: ImageView = itemView.findViewWithTag<ImageView>("icon")
             val warningIcon: ImageButton = itemView.findViewWithTag<ImageButton>("warning_icon")
@@ -118,20 +136,44 @@ class AddAppActivity : AppCompatActivity() {
             val addAppButton: ImageButton = itemView.findViewWithTag<ImageButton>("add_app")
         }
 
-        // ... constructor and member variables
-        // Usually involves inflating a layout from XML and returning the holder
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppsAdapter.ViewHolder {
-            val context = parent.context
-            val inflater = LayoutInflater.from(context)
-            // Inflate the custom layout
-            val contactView = inflater.inflate(R.layout.activity_add_app_cardview, parent, false)
-            // Return a new holder instance
-            return ViewHolder(contactView)
+        inner class HeadingHolder(itemView: View) : ViewHolder(itemView) {
+            val text: TextView = itemView.findViewWithTag("text")
         }
 
-        // Involves populating data into the item through holder
-        override fun onBindViewHolder(viewHolder: AppsAdapter.ViewHolder, position: Int) {
-            val app = apps[position]
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val inflater = LayoutInflater.from(parent.context)
+            return when (viewType) {
+                ItemType.APP.id -> {
+                    val appView = inflater.inflate(R.layout.activity_add_app_cardview, parent, false)
+                    AppHolder(appView)
+                }
+                ItemType.TITLE.id -> {
+                    val titleView = inflater.inflate(R.layout.activity_add_app_title, parent, false)
+                    HeadingHolder(titleView)
+                }
+                else -> throw IllegalArgumentException()
+            }
+        }
+
+        override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+            when (getItemViewType(position)) {
+                ItemType.APP.id -> onBindViewHolderApp(viewHolder as AppHolder, position)
+                ItemType.TITLE.id -> onBindViewHolderTitle(viewHolder as HeadingHolder, position)
+                else -> throw IllegalArgumentException()
+            }
+        }
+
+        override fun getItemCount(): Int {
+            return elements.size
+        }
+
+        override fun getItemViewType(position: Int): Int {
+            return elements[position].getType().id
+        }
+
+        private fun onBindViewHolderApp(viewHolder: AppHolder, position: Int) {
+            val wrappedApp = elements[position] as WrappedApp
+            val app = wrappedApp.app
             viewHolder.title.setText(app.impl.title)
             viewHolder.icon.setImageResource(app.impl.icon)
 
@@ -159,10 +201,13 @@ class AddAppActivity : AppCompatActivity() {
             }
         }
 
+        private fun onBindViewHolderTitle(viewHolder: HeadingHolder, position: Int) {
+            val heading = elements[position] as WrappedTitle
+            viewHolder.text.text = heading.text
+        }
+
         private fun installApp(app: App) {
-            if (!ForegroundSettingsHelper(activity).isUpdateCheckOnMeteredAllowed &&
-                NetworkUtil.isNetworkMetered(activity)
-            ) {
+            if (!ForegroundSettingsHelper(activity).isUpdateCheckOnMeteredAllowed && isNetworkMetered(activity)) {
                 showToast(R.string.main_activity__no_unmetered_network)
                 return
             }
@@ -184,11 +229,6 @@ class AddAppActivity : AppCompatActivity() {
         private fun showToast(message: Int) {
             val layout = activity.findViewById<View>(R.id.coordinatorLayout)
             Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
-        }
-
-        // Returns the total count of items in the list
-        override fun getItemCount(): Int {
-            return apps.size
         }
     }
 }
