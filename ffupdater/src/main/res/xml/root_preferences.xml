@@ -45,6 +45,12 @@
             app:singleLineTitle="false"
             app:title="@string/settings__foreground__hide_warning_buttons" />
 
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="foreground__hide_apps_signed_by_different_certificate"
+            app:singleLineTitle="false"
+            app:title="@string/foreground__hide_apps_signed_by_different_certificate__title" />
+
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
 

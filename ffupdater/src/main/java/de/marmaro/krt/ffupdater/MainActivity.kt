@@ -137,7 +137,11 @@ class MainActivity : AppCompatActivity() {
             val items = App.values()
                 .groupBy { it.impl.isInstalled(applicationContext) }
             val installedCorrectFingerprint = items[INSTALLED] ?: listOf()
-            val installedWrongFingerprint = items[INSTALLED_WITH_DIFFERENT_FINGERPRINT] ?: listOf()
+            val installedWrongFingerprint = if (foregroundSettings.isHideAppsSignedByDifferentCertificate) {
+                listOf()
+            } else {
+                items[INSTALLED_WITH_DIFFERENT_FINGERPRINT] ?: listOf()
+            }
             recycleViewAdapter.notifyInstalledApps(installedCorrectFingerprint, installedWrongFingerprint)
         }
     }

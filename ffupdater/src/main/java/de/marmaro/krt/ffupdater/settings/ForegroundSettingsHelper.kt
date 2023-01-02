@@ -58,4 +58,8 @@ class ForegroundSettingsHelper {
 
     val isHideWarningButtonForInstalledApps
         get() = preferences.getBoolean("foreground__hide_warning_button_for_installed_apps", false)
+
+    val isHideAppsSignedByDifferentCertificate
+        get() = preferences.getBoolean("foreground__hide_apps_signed_by_different_certificate", false)
+
 }
