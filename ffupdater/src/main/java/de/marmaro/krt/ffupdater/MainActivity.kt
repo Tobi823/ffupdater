@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater
 
 import android.R.color.holo_blue_dark
 import android.R.color.holo_blue_light
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
@@ -10,21 +11,19 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.MainThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
-import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_update_check
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
@@ -41,25 +40,19 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
-import de.marmaro.krt.ffupdater.utils.ifFalse
-import de.marmaro.krt.ffupdater.utils.ifTrue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.time.DateTimeException
+import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.*
 
 
-// TODO recyclerview
 class MainActivity : AppCompatActivity() {
-    private val sameAppVersionIsAlreadyInstalled: EnumMap<App, Boolean> =
-        EnumMap(App::class.java)
-    private val availableVersions: EnumMap<App, TextView> = EnumMap(App::class.java)
-    private val downloadButtons: EnumMap<App, ImageButton> = EnumMap(App::class.java)
-    private val errorsDuringUpdateCheck: EnumMap<App, Exception?> =
-        EnumMap(App::class.java)
     private lateinit var foregroundSettings: ForegroundSettingsHelper
+    private lateinit var recycleViewAdapter: InstalledAppsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +74,9 @@ class MainActivity : AppCompatActivity() {
         }
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
-            lifecycleScope.launch(Dispatchers.Main) { checkForUpdates(false) }
+            lifecycleScope.launch(Dispatchers.Main) {
+                updateMetadataOfApps(false)
+            }
         }
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
 
@@ -91,20 +86,17 @@ class MainActivity : AppCompatActivity() {
             Log.i(LOG_TAG, "supported ABIs: ${DeviceAbiExtractor.INSTANCE.supportedAbis}")
             Log.i(LOG_TAG, "supported 32-bit ABIs: ${DeviceAbiExtractor.INSTANCE.supported32BitAbis}")
         }
+
+        initRecyclerView()
     }
 
     @MainThread
     override fun onResume() {
         super.onResume()
+        showInstalledAppsInRecyclerView()
         lifecycleScope.launch(Dispatchers.Main) {
-            addAppsToUserInterface()
-            checkForUpdates()
+            updateMetadataOfApps(true)
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        cleanUpObjects()
     }
 
     override fun onStop() {
@@ -133,184 +125,76 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    @UiThread
-    private fun cleanUpObjects() {
-        availableVersions.clear()
-        downloadButtons.clear()
-        errorsDuringUpdateCheck.clear()
+    private fun initRecyclerView() {
+        recycleViewAdapter = InstalledAppsAdapter(this@MainActivity)
+        val view = findViewById<RecyclerView>(R.id.main_activity__apps)
+        view.adapter = recycleViewAdapter
+        view.layoutManager = LinearLayoutManager(this@MainActivity)
     }
 
-    @UiThread
-    private suspend fun addAppsToUserInterface() {
-        val mainLayout = findViewById<LinearLayout>(R.id.mainLinearLayout)
-        mainLayout.removeAllViews()
-        cleanUpObjects()
-
-        val appByCategories = App.values()
-            .groupBy { it.impl.isInstalled(applicationContext) }
-
-        appByCategories[INSTALLED]?.forEach {
-            addAppToUserInterface(mainLayout, it, ForegroundSettingsHelper(this))
+    private fun showInstalledAppsInRecyclerView() {
+        runBlocking {
+            val items = App.values()
+                .groupBy { it.impl.isInstalled(applicationContext) }
+            val installedCorrectFingerprint = items[INSTALLED] ?: listOf()
+            val installedWrongFingerprint = items[INSTALLED_WITH_DIFFERENT_FINGERPRINT] ?: listOf()
+            recycleViewAdapter.notifyInstalledApps(installedCorrectFingerprint, installedWrongFingerprint)
         }
-
-        val wrongFingerprintApps = (appByCategories[INSTALLED_WITH_DIFFERENT_FINGERPRINT] ?: listOf())
-            .filter { it != App.FFUPDATER } // because it can't be installed with FFUpdater
-        if (wrongFingerprintApps.isNotEmpty()) {
-            wrongFingerprintApps
-                .joinToString { getString(it.impl.title) }
-                .let { addTextBoxToUserInterface(mainLayout, it) }
-        }
-    }
-
-    @UiThread
-    private fun addAppToUserInterface(
-        mainLayout: LinearLayout,
-        app: App,
-        settingsHelper: ForegroundSettingsHelper
-    ) {
-        val cardView = layoutInflater.inflate(R.layout.activity_main_cardview, mainLayout, false)
-
-        cardView.findViewWithTag<ImageView>("appIcon").setImageResource(app.impl.icon)
-        cardView.findViewWithTag<TextView>("appCardTitle").setText(app.impl.title)
-
-        val warningButton = cardView.findViewWithTag<ImageButton>("appWarningButton")
-        when {
-            settingsHelper.isHideWarningButtonForInstalledApps -> warningButton.visibility = View.GONE
-            app.impl.installationWarning == null -> warningButton.visibility = View.GONE
-            else -> {
-                warningButton.setOnClickListener {
-                    AppWarningDialog.newInstance(app).show(supportFragmentManager)
-                }
-            }
-        }
-
-        cardView.findViewWithTag<ImageButton>("appInfoButton").setOnClickListener {
-            AppInfoDialog.newInstance(app).show(supportFragmentManager)
-        }
-
-        cardView.findViewWithTag<ImageButton>("appOpenProjectPage").setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.impl.projectPage))
-            startActivity(browserIntent)
-        }
-
-        val eolReason = cardView.findViewWithTag<TextView>("eolReason")
-        app.impl.isEol()
-            .ifTrue { eolReason.text = getString(app.impl.eolReason!!) }
-            .ifFalse { eolReason.visibility = View.GONE }
-
-        val installedVersion = cardView.findViewWithTag<TextView>("appInstalledVersion")
-        installedVersion.text = app.impl.getDisplayInstalledVersion(this)
-
-        val availableVersion = cardView.findViewWithTag<TextView>("appAvailableVersion")
-        availableVersions[app] = availableVersion
-        availableVersion.setOnClickListener {
-            errorsDuringUpdateCheck[app]?.let { exception ->
-                val description = getString(crash_report__explain_text__download_activity_update_check)
-                val intent = CrashReportActivity.createIntent(this, exception, description)
-                startActivity(intent)
-            }
-        }
-
-        val downloadButton = cardView.findViewWithTag<ImageButton>("appDownloadButton")
-        downloadButton.setOnClickListener { updateApp(app) }
-        downloadButtons[app] = downloadButton
-        setDownloadButtonState(app, false)
-
-        mainLayout.addView(cardView)
-    }
-
-    @UiThread
-    private fun addTextBoxToUserInterface(
-        mainLayout: LinearLayout,
-        text: String
-    ) {
-        val textbox = layoutInflater.inflate(R.layout.activity_main_textbox, mainLayout, false)
-        textbox.findViewWithTag<TextView>("text").text =
-            getString(R.string.main_activity__ignored_apps_due_fingerprints, text)
-        mainLayout.addView(textbox)
     }
 
     @MainThread
-    private suspend fun checkForUpdates(useCache: Boolean = true) {
+    private suspend fun updateMetadataOfApps(useCache: Boolean = true) {
         val apps = App.values()
             .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
-            setAvailableVersion(apps, getString(R.string.main_activity__no_unmetered_network))
+            val errorText = getString(R.string.main_activity__no_unmetered_network)
+            apps.forEach {
+                recycleViewAdapter.notifyErrorForApp(it, errorText, null)
+            }
             showToast(R.string.main_activity__no_unmetered_network)
             return
         }
 
         setLoadAnimationState(true)
-        setAvailableVersion(apps, getString(R.string.main_activity__available_version_loading))
-        apps.forEach { checkForAppUpdate(it, useCache) }
+        apps.forEach {
+            updateMetadataOf(it, useCache)
+        }
         setLoadAnimationState(false)
     }
 
     @MainThread
-    private suspend fun checkForAppUpdate(app: App, useCache: Boolean) {
+    private suspend fun updateMetadataOf(app: App, useCache: Boolean) {
+        if (!useCache) {
+            app.metadataCache.invalidateCache(applicationContext)
+            recycleViewAdapter.notifyAppChange(app)
+        }
+
         try {
-            if (!useCache) {
-                app.metadataCache.invalidateCache(applicationContext)
-            }
-            val updateResult = app.metadataCache.getCachedOrFetchIfOutdated(applicationContext)
-            setAvailableVersion(app, updateResult)
-            sameAppVersionIsAlreadyInstalled[app] = !updateResult.isUpdateAvailable
-            setDownloadButtonState(app, updateResult.isUpdateAvailable)
+            app.metadataCache.getCachedOrFetchIfOutdated(applicationContext)
         } catch (e: ApiRateLimitExceededException) {
-            showUpdateCheckError(app, R.string.main_activity__github_api_limit_exceeded, e)
-        } catch (e: NetworkException) {
-            showUpdateCheckError(app, R.string.main_activity__temporary_network_issue, e)
-        } catch (e: Exception) {
-            showUpdateCheckError(app, R.string.available_version_error, e)
-        }
-    }
-
-    @MainThread
-    private fun setAvailableVersion(app: App, appUpdateStatus: AppUpdateStatus) {
-        // it is possible that MainActivity is destroyed but the coroutine wants to update
-        // the "available version" text field (which does not longer exists)
-        val creationDate = try {
-            appUpdateStatus.publishDate
-                ?.let { date -> ZonedDateTime.parse(date, ISO_ZONED_DATE_TIME) }
-        } catch (e: DateTimeException) {
-            null
-        }
-        val availableVersion = if (creationDate != null) {
-            val relative = DateUtils.getRelativeDateTimeString(
-                this,
-                DateUtils.SECOND_IN_MILLIS * creationDate.toEpochSecond(),
-                DateUtils.MINUTE_IN_MILLIS,
-                DateUtils.DAY_IN_MILLIS * 100,
-                0
+            recycleViewAdapter.notifyErrorForApp(
+                app, getString(R.string.main_activity__github_api_limit_exceeded), e
             )
-            "${appUpdateStatus.displayVersion} ($relative)"
-        } else {
-            appUpdateStatus.displayVersion
+            return
+        } catch (e: NetworkException) {
+            recycleViewAdapter.notifyErrorForApp(
+                app, getString(R.string.main_activity__temporary_network_issue), e
+            )
+            return
+        } catch (e: Exception) {
+            recycleViewAdapter.notifyErrorForApp(app, getString(R.string.available_version_error), e)
+            return
         }
-        availableVersions[app]?.text = availableVersion
-        errorsDuringUpdateCheck[app] = null
+
+        recycleViewAdapter.notifyClearedErrorForApp(app)
+        recycleViewAdapter.notifyAppChange(app)
     }
 
     @MainThread
-    private fun setAvailableVersion(apps: List<App>, message: String) {
-        apps.forEach { app ->
-            availableVersions[app]?.text = message
-            errorsDuringUpdateCheck[app] = null
-        }
-    }
-
-    @UiThread
-    private fun showUpdateCheckError(app: App, message: Int, exception: Exception) {
-        errorsDuringUpdateCheck[app] = exception
-        availableVersions[app]?.setText(message)
-        setDownloadButtonState(app, false)
-    }
-
-    @MainThread
-    private fun updateApp(app: App) {
+    private fun installOrDownloadApp(app: App) {
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             showToast(R.string.main_activity__no_unmetered_network)
             return
@@ -319,7 +203,8 @@ class MainActivity : AppCompatActivity() {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }
-        if (sameAppVersionIsAlreadyInstalled[app] == true) {
+        val metadata = app.metadataCache.getCachedOrNullIfOutdated(this)
+        if (metadata?.isUpdateAvailable == false) {
             // this may displays RunningDownloadsDialog and updates the app
             InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
             return
@@ -340,14 +225,165 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun setDownloadButtonState(app: App, enabled: Boolean) {
-        val icon = if (enabled) R.drawable.ic_file_download_orange else R.drawable.ic_file_download_grey
-        downloadButtons[app]?.setImageResource(icon)
-    }
-
-    @UiThread
     private fun setLoadAnimationState(visible: Boolean) {
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = visible
+    }
+
+    class InstalledAppsAdapter(private val activity: MainActivity) :
+        RecyclerView.Adapter<InstalledAppsAdapter.AppHolder>() {
+
+        private data class ExceptionWrapper(val message: String, val exception: Exception?)
+
+        private var elements = listOf<App>()
+
+        private var errors = mutableMapOf<App, ExceptionWrapper>()
+
+        private var appsWithWrongFingerprint = listOf<App>()
+
+        @SuppressLint("NotifyDataSetChanged")
+        fun notifyInstalledApps(appsWithCorrectFingerprint: List<App>, appsWithWrongFingerprint: List<App>) {
+            val allElements = appsWithCorrectFingerprint + appsWithWrongFingerprint
+            if (elements != allElements || this.appsWithWrongFingerprint != appsWithWrongFingerprint) {
+                Log.e(LOG_TAG, "notifyDataSetChanged")
+                elements = allElements
+                this.appsWithWrongFingerprint = appsWithWrongFingerprint
+                notifyDataSetChanged()
+            }
+        }
+
+        fun notifyAppChange(app: App) {
+            val index = elements.indexOf(app)
+            require(index != -1)
+            notifyItemChanged(index)
+        }
+
+        fun notifyErrorForApp(app: App, message: String, exception: Exception?) {
+            errors[app] = ExceptionWrapper(message, exception)
+
+            val index = elements.indexOf(app)
+            require(index != -1)
+            notifyItemChanged(index)
+        }
+
+        fun notifyClearedErrorForApp(app: App) {
+            if (errors.containsKey(app)) {
+                errors.remove(app)
+                val index = elements.indexOf(app)
+                require(index != -1)
+                notifyItemChanged(index)
+            }
+        }
+
+        inner class AppHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val title: TextView = itemView.findViewWithTag("appCardTitle")
+            val icon: ImageView = itemView.findViewWithTag("appIcon")
+            val warningIcon: ImageButton = itemView.findViewWithTag("appWarningButton")
+            val eolReason: TextView = itemView.findViewWithTag("eolReason")
+            val infoButton: ImageButton = itemView.findViewWithTag("appInfoButton")
+            val openProjectPageButton: ImageButton = itemView.findViewWithTag("appOpenProjectPage")
+            val installedVersion: TextView = itemView.findViewWithTag("appInstalledVersion")
+            val availableVersion: TextView = itemView.findViewWithTag("appAvailableVersion")
+            val downloadButton: ImageButton = itemView.findViewWithTag("appDownloadButton")
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppHolder {
+            val inflater = LayoutInflater.from(parent.context)
+            val appView = inflater.inflate(R.layout.activity_main_cardview, parent, false)
+            return AppHolder(appView)
+        }
+
+        override fun onBindViewHolder(view: AppHolder, position: Int) {
+            val app = elements[position]
+            val metadata = app.metadataCache.getCachedOrNullIfOutdated(activity)
+            val error = errors[app]
+            val fragmentManager = activity.supportFragmentManager
+
+            view.title.setText(app.impl.title)
+            view.icon.setImageResource(app.impl.icon)
+
+            when {
+                appsWithWrongFingerprint.contains(app) -> onBindViewHolderWhenWrongFingerprint(view)
+                error != null -> onBindViewHolderWhenError(view, app, error)
+                else -> onBindViewHolderWhenNormal(view, app, metadata)
+            }
+
+            view.downloadButton.setOnClickListener {
+                activity.installOrDownloadApp(app)
+            }
+
+            val hideWarningButtons = activity.foregroundSettings.isHideWarningButtonForInstalledApps
+            when {
+                hideWarningButtons -> view.warningIcon.visibility = View.GONE
+                app.impl.installationWarning == null -> view.warningIcon.visibility = View.GONE
+                else -> AppWarningDialog.newInstanceOnClick(view.warningIcon, app, fragmentManager)
+            }
+
+            AppInfoDialog.newInstanceOnClick(view.infoButton, app, fragmentManager)
+
+            view.openProjectPageButton.setOnClickListener {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.impl.projectPage))
+                activity.startActivity(browserIntent)
+            }
+        }
+
+        private fun onBindViewHolderWhenWrongFingerprint(view: AppHolder) {
+            view.installedVersion.text =
+                activity.getString(R.string.main_activity__app_was_signed_by_different_certificate)
+            view.availableVersion.text = ""
+            view.downloadButton.visibility = View.GONE
+            view.availableVersion.visibility = View.GONE
+            view.eolReason.visibility = View.GONE
+        }
+
+        private fun onBindViewHolderWhenError(view: AppHolder, app: App, error: ExceptionWrapper) {
+            view.installedVersion.text = app.impl.getDisplayInstalledVersion(activity)
+            view.availableVersion.text = error.message
+            if (error.exception != null) {
+                view.availableVersion.setOnClickListener {
+                    val description =
+                        activity.getString(R.string.crash_report__explain_text__download_activity_update_check)
+                    val intent = CrashReportActivity.createIntent(activity, error.exception, description)
+                    activity.startActivity(intent)
+                }
+            }
+            view.downloadButton.setImageResource(R.drawable.ic_file_download_grey)
+            view.eolReason.visibility = if (app.impl.isEol()) View.VISIBLE else View.GONE
+            app.impl.eolReason?.let { view.eolReason.setText(it) }
+        }
+
+        private fun onBindViewHolderWhenNormal(view: AppHolder, app: App, metadata: AppUpdateStatus?) {
+            view.installedVersion.text = app.impl.getDisplayInstalledVersion(activity)
+            view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
+            view.downloadButton.setImageResource(
+                if (metadata?.isUpdateAvailable == true) {
+                    R.drawable.ic_file_download_orange
+                } else {
+                    R.drawable.ic_file_download_grey
+                }
+            )
+            view.eolReason.visibility = if (app.impl.isEol()) View.VISIBLE else View.GONE
+            app.impl.eolReason?.let { view.eolReason.setText(it) }
+        }
+
+
+        private fun getDisplayAvailableVersionWithAge(metadata: AppUpdateStatus?): String {
+            val version = metadata?.displayVersion ?: "..."
+            val dateString = metadata?.publishDate ?: return version
+            val date = try {
+                ZonedDateTime.parse(dateString, ISO_ZONED_DATE_TIME)
+            } catch (e: DateTimeException) {
+                return version
+            }
+            val unixMillis = DateUtils.SECOND_IN_MILLIS * date.toEpochSecond()
+            val min = Duration.ofMinutes(1).toMillis()
+            val max = Duration.ofDays(100).toMillis()
+            val relative = DateUtils.getRelativeDateTimeString(activity, unixMillis, min, max, 0)
+            return "$version ($relative)"
+        }
+
+        override fun getItemCount(): Int {
+            return elements.size
+        }
     }
 
     companion object {
