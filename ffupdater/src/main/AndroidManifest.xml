@@ -124,6 +124,7 @@
 
         <profileable
             android:shell="true"
+            android:enabled="true"
             tools:targetApi="q" />
     </application>
 

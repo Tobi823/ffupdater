@@ -74,7 +74,7 @@ class AddAppActivity : AppCompatActivity() {
             .filter { !it.impl.isInstalledWithoutFingerprintVerification(applicationContext) }
             .sortedBy { getString(it.impl.title) }
 
-        val items = mutableListOf<AppsAdapter.ItemWrapper>()
+        val items = mutableListOf<AvailableAppsAdapter.ItemWrapper>()
 
         for (displayCategory in DisplayCategory.values()) {
             val titleText = when (displayCategory) {
@@ -85,16 +85,16 @@ class AddAppActivity : AppCompatActivity() {
                 OTHER -> getString(R.string.add_app_activity__title_other_applications)
                 EOL -> getString(R.string.add_app_activity__title_end_of_live_browser)
             }
-            items.add(AppsAdapter.WrappedTitle(titleText))
+            items.add(AvailableAppsAdapter.WrappedTitle(titleText))
 
             val categoryApps = installedApps
                 .filter { it.impl.displayCategory == displayCategory }
-                .map { AppsAdapter.WrappedApp(it) }
+                .map { AvailableAppsAdapter.WrappedApp(it) }
             items.addAll(categoryApps)
         }
 
         val view = findViewById<RecyclerView>(R.id.add_app_activity__recycler_view)
-        view.adapter = AppsAdapter(items, this)
+        view.adapter = AvailableAppsAdapter(items, this)
         view.layoutManager = LinearLayoutManager(this)
     }
 
@@ -106,7 +106,10 @@ class AddAppActivity : AppCompatActivity() {
         }
     }
 
-    class AppsAdapter(private val elements: List<ItemWrapper>, private val activity: AppCompatActivity) :
+    class AvailableAppsAdapter(
+        private val elements: List<ItemWrapper>,
+        private val activity: AppCompatActivity
+    ) :
         RecyclerView.Adapter<ViewHolder>() {
 
         enum class ItemType(val id: Int) {

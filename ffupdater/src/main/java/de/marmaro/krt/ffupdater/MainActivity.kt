@@ -51,6 +51,7 @@ import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.*
 
 
+// TODO recyclerview
 class MainActivity : AppCompatActivity() {
     private val sameAppVersionIsAlreadyInstalled: EnumMap<App, Boolean> =
         EnumMap(App::class.java)
