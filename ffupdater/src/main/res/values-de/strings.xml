@@ -330,4 +330,19 @@
 \n
 \nEinschränkung: Wenn du in den Einstellungen \"DNS-Einstellungen\" auf einen DNS-über-HTTPS-Server umstellst, musst du die Domäne des Proxy-Servers angeben. IPs werden nicht funktionieren.</string>
     <string name="network__dns_provider__no">Kein DNS (nur zu Testzwecken)</string>
+    <string name="background__separate_notification_channels__summary">Benutze verschiedene Benachrichtigungskanäle für jede App</string>
+    <string name="background__separate_notification_channels__title">Verschiedene Benachrichtigungskanäle</string>
+    <string name="notification__update_available__generic_channel_name">App-Aktualisierungsbenachrichtigung</string>
+    <string name="notification__update_available__generic_channel_descr">Benachrichtigungskanal für verfügbare App-Updates.</string>
+    <string name="notification__install_error__generic_channel_descr">Benachrichtigungskanal für fehlgeschlagene App-Updates.</string>
+    <string name="notification__install_error__generic_channel_name">Benachrichtigung über fehlgeschlagene App-Updates</string>
+    <string name="notification__network_error__title">Netzwerkfehler in Hintergrundaufgabe</string>
+    <string name="notification__network_error__text">Dieser Fehler sollte nur selten auftreten. Wenn er doch öfter auftritt, melde ihn bitte. Tippe hier um eine detaillierte Fehlermeldung zu sehen.</string>
+    <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
+    <string name="tor_browser_alpha__description">Tor Browser ist der einzig offiziell unterstützte Browser des Tor Projekts, den Entwicklern des weltweit sichersten Tool für Privatsphäre und Freiheit online.
+\n
+\nTor Browser wird immer KOSTENLOS sein, wobei Spenden dies ermöglichen. Das Tor Projekt ist eine 501(c)(3) nonprofit in den USA. Bitte spende, wenn du kannst. Jede Spende macht einen Unterschied: https://donate.torproject.org.
+\n
+\nErfahre, wie du Fehler melden und Feedback geben kannst unter https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__warning">- Diese App ist für Entwickler und Tester gemacht. Es könnten verschiedene Fehler auftreten, welche die normale Nutzung des Browser beeinflussen können.</string>
 </resources>
