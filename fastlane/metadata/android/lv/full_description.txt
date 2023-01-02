@@ -1,0 +1,28 @@
+Uzstāda un atjaunina sekojošas pārlūkprogrammas:
+
+Pārlūkprogrammas no Mozilla vai uz Firefox balstītas:
+- Fennec F-Droid
+- Firefox Browser, Firefox priekš Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Klar
+- Iceraven
+- Mull Browser
+- Tor Browser, Tor Browser Alpha
+
+Pārlūkprogrammas, kas nodrošina labu privātumu:
+- Bromite, Bromite SystemWebView
+- Mulch
+
+Pārlūkprogrammas, kas ir labākas par Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- Kiwi Browser Next
+- Vivaldi
+
+Pārējās programmas:
+- Orbot
+
+FFUpdater pārbauda atjauninājumus fonā. Kā arī lejupielādē tos. Ierīces ar operētājsistēmu Android 12+ vai ierīces, kurām ir root pieeja, FFUpdater var atjaunināt lietotnes bez lietotāja iejaukšanās.
+
+Apmeklējiet vietni https://notabug.org/Tobiwan/ffupdater/src/master/README.md, lai iegūtu vairāk informācijas.
+
+Pārtulkotais izmaiņu žurnāls: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/lv/changelogs
