@@ -129,14 +129,13 @@ class AddAppActivity : AppCompatActivity() {
         }
 
         inner class AppHolder(itemView: View) : ViewHolder(itemView) {
-            val title: TextView = itemView.findViewWithTag<TextView>("title")
-            val icon: ImageView = itemView.findViewWithTag<ImageView>("icon")
-            val warningIcon: ImageButton = itemView.findViewWithTag<ImageButton>("warning_icon")
-            val eolReason: TextView = itemView.findViewWithTag<TextView>("eol_reason")
-            val infoButton: ImageButton = itemView.findViewWithTag<ImageButton>("info_button")
-            val openProjectPageButton: ImageButton =
-                itemView.findViewWithTag<ImageButton>("open_project_page")
-            val addAppButton: ImageButton = itemView.findViewWithTag<ImageButton>("add_app")
+            val title: TextView = itemView.findViewWithTag("title")
+            val icon: ImageView = itemView.findViewWithTag("icon")
+            val warningIcon: ImageButton = itemView.findViewWithTag("warning_icon")
+            val eolReason: TextView = itemView.findViewWithTag("eol_reason")
+            val infoButton: ImageButton = itemView.findViewWithTag("info_button")
+            val openProjectPageButton: ImageButton = itemView.findViewWithTag("open_project_page")
+            val addAppButton: ImageButton = itemView.findViewWithTag("add_app")
         }
 
         inner class HeadingHolder(itemView: View) : ViewHolder(itemView) {
