@@ -5,19 +5,6 @@
     <string name="app_description">为隐私友好型浏览器打造的升级器</string>
     <string name="app_icon">应用图标</string>
     <string name="app_name">FFUpdater</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="other">%1$s 存在以下问题：
-\n
-\n%2$s
-\n
-\n您还要安装 %1$s 吗？</item>
-    </plurals>
-    <string name="app_warning_before_installation_dialog__title">警告</string>
-    <plurals name="app_warning_dialog__message">
-        <item quantity="other">%1$s 存在以下问题：
-\n
-\n%2$s</item>
-    </plurals>
     <string name="app_warning_dialog__title">警告</string>
     <string name="application_installation_was_not_successful">应用程序安装未成功</string>
     <string name="application_successfully_installed">已成功安装应用程序</string>
@@ -84,12 +71,9 @@
 \n
 \nFirefox 每夜版旨在展示 Firefox 的更多实验特性。 每夜版通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
     <string name="firefox_nightly__title">Firefox 每夜版</string>
-    <string name="firefox_nightly__warning">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
     <string name="firefox_release__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
     <string name="firefox_release__title">Firefox 浏览器</string>
     <string name="firefox_release__warning">- F-Droid上还有一个改进版的 Firefox，名为 Fennec F-Droid。</string>
-    <string name="generic_eol_reason__browser_to_old">这个浏览器已经很长时间没有更新了，建议暂时使用其他的浏览器。如果其开发者发布了更新，将会移除这个警告。</string>
-    <string name="go_back">返回</string>
     <string name="iceraven__description">此应用程序并非由 Mozilla 提供！
 \n
 \nIceraven 浏览器是一款适用于 Android 的网络浏览器，基于 Mozilla 的 Fenix 版 Firefox、GeckoView 和 Mozilla Android 组件。
@@ -125,7 +109,6 @@
     <string name="download_activity__use_cached_downloaded_apk">使用此处已下载的文件：</string>
     <string name="download_activity__you_can_now_close_this_window">现在您可以关闭此窗口</string>
     <string name="download_activity__label">安装应用程序</string>
-    <string name="install_app">安装应用</string>
     <string name="install_new_app">安装新应用</string>
     <string name="install_same_version_dialog__message">已安装此应用程序的最新版本。是否要再次下载并安装最新版本？</string>
     <string name="install_same_version_dialog__title">已安装相同版本</string>
@@ -140,7 +123,6 @@
     <string name="installed_app_is_not_verified">未验证已安装的应用</string>
     <string name="installed_application_is_verified">已验证已安装的应用</string>
     <string name="installed_version">已安装：%1$s</string>
-    <string name="intent_installer__likely_storage_failure">该操作可能由于存储问题失败。例如，设备可能空间不足，或者外部存储媒介可能不可用。用户可以帮助释放存储空间或插入其他的的外部存储媒介。</string>
     <string name="kiwi__description">Kiwi 浏览器可以轻松浏览互联网、阅读新闻、观看视频和听音乐。</string>
     <string name="kiwi__title">Kiwi Next 浏览器</string>
     <string name="kiwi__warning">- Kiwi 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
@@ -152,17 +134,10 @@
 \n安全地跟踪您的 Firefox 密码变化并在任何地方访问它们。快速从应用程序中打开任何网站并登入您的帐户。</string>
     <string name="lockwise__eol_reason">Mozilla 在 2021 年 12 月放弃了对它的支持。请切换到其他密码管理器。</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">正在加载…</string>
     <string name="main_activity__github_api_limit_exceeded"><u>超过 GitHub API 限制。请在下一小时重试。</u></string>
     <string name="main_activity__no_unmetered_network">没有不按流量计费的网络</string>
     <string name="main_activity__subtitle">隐私友好的浏览器的更新器</string>
     <string name="main_activity__temporary_network_issue"><u>临时网络问题。请稍后重试。</u></string>
-    <string name="manage_storage_activity__delete_button">删除已缓存的应用更新。</string>
-    <string name="manage_storage_activity__explanation">FFUpdater 会缓存已下载的应用更新并将它们保存在 \'Android/data/de.marmaro.krt.ffupdater/files/Download\' 文件夹。
-\n
-\n这能节省带宽以防安装或更新失败。同时，这一缓存对于之后安装在后台下载的更新也是必要的。
-\n
-\n如果您决定删除这些应用更新，您可能需要再次下载它们。</string>
     <string name="ok">好的</string>
     <string name="request_installation_permission_dialog__abort">放弃</string>
     <string name="request_installation_permission_dialog__grant_permission">授予权限</string>
@@ -206,12 +181,6 @@
     <string name="settings__foreground__update_check__metered__title">在按流量计费的网络中检查更新</string>
     <string name="settings__foreground_category__summary">用户界面可见时的设置。</string>
     <string name="settings__foreground_category__title">前台</string>
-    <string name="settings__installer__native__summary">如果会话安装器无法在您的智能手机上运行，则回退安装。三星或小米的设备更常出现这种情况。</string>
-    <string name="settings__installer__native__title">原生安装器</string>
-    <string name="settings__installer__root__summary">使用 root 权限安装或更新应用程序，从而无需用户交互。这需要有 root 权限的智能手机。</string>
-    <string name="settings__installer__root__title">Root 安装器</string>
-    <string name="settings__installer__session__summary">推荐用于大多数设备。</string>
-    <string name="settings__installer__session__title">会话安装器</string>
     <string name="settings__installer_category__title">安装器</string>
     <string name="settings__theme_battery_saver">省电模式启用时使用深色模式</string>
     <string name="settings__theme_dark">深色</string>
@@ -252,11 +221,6 @@
 \n- 它还使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="mull__title">Mull 浏览器</string>
     <string name="mull__description">这是一款基于 Mozilla 技术、以隐私为导向的完全开源的网页浏览器。其使用了 arkenfox-user.js 项目的偏好设置，开启了许多以 Tor Uplift 项目为上游实现的功能。推荐同时安装 \'uBlock Origin\' 扩展。</string>
-    <string name="mull__warning">FFUpdater 要从 F-Droid 服务器下载文件，因此速度不会更快。</string>
-    <string name="notification__no_update_check__channel_name">没有后台更新检查</string>
-    <string name="notification__no_update_check__channel_description">用于警告过去五天没有成功进行后台更新检查的通知通道。</string>
-    <string name="notification__no_update_check__title">五天内没有成功后台检查更新</string>
-    <string name="notification__no_update_check__text">在过去的五天里，FFUpdater 无法在后台检查更新。如果您的智能手机长时间处于飞行模式，那么可以忽略此消息。如果不是，请单击此处查看错误报告。</string>
     <string name="app_card__open_project_page">在浏览器中打开项目页面</string>
     <string name="ungoogled_chromium__eol_reason">开发者消息：“我将有一段时间无法更新版本。 如果可能，请同时使用 FFUpdater 支持的其他浏览器之一。” https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="orbot__title">Orbot：Android 版 Tor</string>
@@ -272,7 +236,6 @@
     <string name="add_app_activity__title_good_privacy_browsers">优秀的隐私浏览器</string>
     <string name="add_app_activity__title_better_than_google_chrome">比 Google Chrome 更优良</string>
     <string name="add_app_activity__title_from_mozilla">Mozilla 出品</string>
-    <string name="add_app_activity__title_based_on_firefox">基于 Firefox</string>
     <string name="add_app_activity__title_other_applications">其他应用</string>
     <string name="add_app_activity__title_end_of_live_browser">停止更新的浏览器</string>
     <string name="add_app_activity__add_new_application">添加新应用</string>
@@ -286,7 +249,6 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater 从 F-Droid 服务器下载文件，因此速度不理想。</string>
     <string name="fennecfdroid__description">Fennec F-Droid 基于最新版本的 Firefox（代号 Fenix）。它删除了专有代码和遥测，但仍会连接到一些跟踪用户的 Mozilla 和 Google 服务。</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">以下应用因签名不同将被忽略：%s。要修复此问题，您可以在卸载这些应用后通过 FFUpdater 重新安装。</string>
     <string name="network__custom_doh_server__dialog_message">输入自定义 DoH 服务器的配置信息，在以下格式中选择一种：
 \n
 \nurl;ip1

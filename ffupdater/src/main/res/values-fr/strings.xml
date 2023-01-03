@@ -4,7 +4,6 @@
     <string name="app_description">Mise à jour pour les navigateurs respectueux de la vie privée</string>
     <string name="app_icon">icône de l\'application</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_before_installation_dialog__title">Avertissement</string>
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
     <string name="application_successfully_installed">Installation de l\'application réussie</string>
     <string name="available_version">Disponible : %1$s</string>
@@ -55,10 +54,8 @@
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Veuillez noter que Firefox Preview n’est plus disponible et a été remplacé par Firefox Nightly. \n\nFirefox Nightly est un canal de développement pour les nouvelles versions de Mozilla Firefox. \n\nFirefox Nightly est conçu pour mettre en valeur les versions les plus expérimentales de Firefox. Le canal Nightly permet aux utilisateurs de découvrir les dernières innovations de Firefox dans un environnement instable et de faire part de leur avis sur les fonctionnalités et les performances pour aider à déterminer ce qui figurera dans la version finale.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">- Cette application est conçue pour les développeurs et les testeurs. Elle peut contenir divers bogues qui peuvent affecter votre travail habituel avec le navigateur.</string>
     <string name="firefox_release__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_release__title">Firefox</string>
-    <string name="go_back">retourner</string>
     <string name="iceraven__description">Ce n\'est certainement pas Mozilla qui vous l\'a apporté !
 \n
 \nIceraven Browser est un navigateur web pour Android, basé sur la version Fenix de Firefox, GeckoView et Mozilla Android Components de Mozilla.
@@ -90,7 +87,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de :</string>
     <string name="download_activity__you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
     <string name="download_activity__label">Installer l\'application</string>
-    <string name="install_app">installer l\'application</string>
     <string name="install_new_app">Installer une nouvelle application</string>
     <string name="install_same_version_dialog__message">La dernière version de cette application est déjà installée. Voulez-vous télécharger et installer à nouveau la dernière version ?</string>
     <string name="install_same_version_dialog__title">Même version installée</string>
@@ -109,13 +105,10 @@
 \n
 \nSuivez en toute sécurité vos mots de passe Firefox et accédez-y partout. Ouvrez rapidement n\'importe quel site Web depuis l\'application pour accéder à vos comptes.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">Chargement…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>"</string>
     <string name="main_activity__no_unmetered_network">Pas de réseau non mesuré</string>
     <string name="main_activity__subtitle">Mettez à jour vos navigateurs à partir de Mozilla</string>
     <string name="main_activity__temporary_network_issue">"<u>Problème de réseau temporaire. Réessayez plus tard.</u>"</string>
-    <string name="manage_storage_activity__delete_button">Supprimez les mises à jour d\'applications mises en cache.</string>
-    <string name="manage_storage_activity__explanation">FFUpdater met en cache les mises à jour d\'applications déjà téléchargées et les stocke dans le dossier \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nCela permet d\'économiser de la bande passante lorsqu\'une application n\'est pas installée ou mise à jour avec succès. Le cache est également nécessaire pour que les mises à jour téléchargées en arrière-plan puissent être installées ultérieurement.\n\nSi vous décidez de supprimer ces mises à jour d\'applications, vous devrez peut-être les télécharger à nouveau.</string>
     <string name="ok">D\'accord</string>
     <string name="request_installation_permission_dialog__abort">Abandonner</string>
     <string name="request_installation_permission_dialog__grant_permission">Accorder la permission</string>
@@ -193,18 +186,5 @@
     <string name="vivaldi__warning">- Vivaldi n\'est que partiellement open source.
 \n- Il utilise également le fondement technique de Google Chrome et soutient donc indirectement la position monopolistique du moteur de rendu Chromium.</string>
     <string name="app_card__app_warning_button_description">Afficher les signalements de l\'application</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">%1$s a ce problème suivant:
-\n
-\n%2$s
-\n
-\nVoulez vous néanmoins l\'installer %1$s\?</item>
-        <item quantity="many">%1$s ont ces problemes:
-\n
-\n%2$s
-\n
-\nVoulez vous continuer l\'installation %1$s\?</item>
-        <item quantity="other"/>
-    </plurals>
     <string name="app_warning_dialog__title">Avertissement</string>
 </resources>

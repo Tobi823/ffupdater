@@ -95,7 +95,6 @@
             app:layout_constraintTop_toBottomOf="@id/eol_reason" />
 
         <TextView
-            android:id="@+id/appAvailableVersion"
             style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

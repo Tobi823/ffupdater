@@ -5,27 +5,6 @@
     <string name="app_description">Приложение за обновяване на поверителни четци</string>
     <string name="app_icon">пиктограма на приложение</string>
     <string name="app_name">FFUpdater</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">%1$s има следния проблем:
-\n
-\n%2$s
-\n
-\nВсе още ли желаете да инсталирате %1$s\?</item>
-        <item quantity="other">%1$s има следните проблеми:
-\n
-\n%2$s
-\n
-\nВсе още ли желаете да инсталирате %1$s\?</item>
-    </plurals>
-    <string name="app_warning_before_installation_dialog__title">Внимание</string>
-    <plurals name="app_warning_dialog__message">
-        <item quantity="one">%1$s има следния проблем:
-\n
-\n%2$s</item>
-        <item quantity="other">%1$s има следните проблеми:
-\n
-\n%2$s</item>
-    </plurals>
     <string name="app_warning_dialog__title">Внимание</string>
     <string name="application_installation_was_not_successful">Приложението не е инсталирано</string>
     <string name="application_successfully_installed">Приложението е инсталирано</string>
@@ -92,12 +71,9 @@
 \n
 \nНайтли е проектиран да предоставя експериментални издания на Файърфокс. Каналът Найтли дава възможност на потребителите да изпитат най-новите способности на Файърфокс в нестабилна среда и да предоставят обратна връзка за възможностите и производителността и така да определят какво ще бъде окончателното издание.</string>
     <string name="firefox_nightly__title">Файърфокс Найтли</string>
-    <string name="firefox_nightly__warning">- Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната работа с него.</string>
     <string name="firefox_release__description">Четецът Файърфокс за Андроид е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Файърфокс по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Файърфокс получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
     <string name="firefox_release__title">Четецът Файърфокс</string>
     <string name="firefox_release__warning">- Подобрена версия на Firefox е налична във F-Droid под името Фенек F-Droid.</string>
-    <string name="generic_eol_reason__browser_to_old">Мрежовият четец не е получавал обновяване дълго време, и за това ви препоръчваме временно да използвате друг. Ако се появи обновяване, предупреждението ще се скрие.</string>
-    <string name="go_back">Назад</string>
     <string name="iceraven__description">Определено не е произведено от Мозила!
 \n
 \nIceraven е мрежов четец за Андроид основан на версиите на Файърфокс, GeckoView и Компонентите за Андроид на Феникс от Мозила.
@@ -133,7 +109,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Използва се изтегления файл:</string>
     <string name="download_activity__you_can_now_close_this_window">Можете да затворите прозореца</string>
     <string name="download_activity__label">Инсталиране</string>
-    <string name="install_app">Инсталиране</string>
     <string name="install_new_app">Инсталиране</string>
     <string name="install_same_version_dialog__message">Последното издание на приложението вече е инсталирано. Желаете ли да бъде изтеглено и инсталирано отново\?</string>
     <string name="install_same_version_dialog__title">Инсталирано е същото издание</string>
@@ -148,7 +123,6 @@
     <string name="installed_app_is_not_verified">Инсталираното приложение НЕ е проверено</string>
     <string name="installed_application_is_verified">Инсталираното приложение е проверено</string>
     <string name="installed_version">Инсталирано: %1$s</string>
-    <string name="intent_installer__likely_storage_failure">Операцията е неуспешна вероятно поради проблеми с хранилището. Например, устройството може няма достатъчно свободно пространство или външният носител да не е наличен. Потребителят може да помогне за освобождаване на място или за поставяне на друг външен носител.</string>
     <string name="kiwi__description">Четецът Киви е създаден за разглеждане, четене на новини, гледане на видеоклипове и слушане на музика без досадните неща.</string>
     <string name="kiwi__title">Четецът Киви некст</string>
     <string name="kiwi__warning">- Четецът Киви е на основата на Гугъл Хром и по този начин косвено подкрепя монополното положение на машината за изчертаване на Хромиум.
@@ -160,17 +134,10 @@
 \nНадежден достъп и управление на паролите ви от Файърфокс. Бързо отваряйте страници от приложението и влизайте в профилите си.</string>
     <string name="lockwise__eol_reason">Мозила е спряла поддръжката през декември 2021 г. Изберете друго приложение за пазене на пароли.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">Зареждане…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превишено е ограничение на GitHub-API. Опитайте отново след час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Няма мрежи без отчитане</string>
     <string name="main_activity__subtitle">Приложение за обновяване на поверителни четци</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
-    <string name="manage_storage_activity__delete_button">Изчистване на обновяванията от междинната памет.</string>
-    <string name="manage_storage_activity__explanation">FFUpdater временно разполага изтеглените обновявания в папката „Android/data/de.marmaro.krt.ffupdater/files/Download“.
-\n
-\nПо този начин се пести трафик ако приложението не е успешно инсталирано или обновено. Освен това, междинната памет е необходима, за да може изтеглените във фонов режим обновявания да бъдат инсталирани по-късно.
-\n
-\nАко решите да изтриете тези обновявания, ще се наложи да бъдат изтеглени отново.</string>
     <string name="ok">Добре</string>
     <string name="request_installation_permission_dialog__abort">Относно</string>
     <string name="request_installation_permission_dialog__grant_permission">Разрешаване</string>
@@ -214,12 +181,6 @@
     <string name="settings__foreground__update_check__metered__title">Проверка за обновяване в мрежи с отчитане на трафика</string>
     <string name="settings__foreground_category__summary">Настройки на приложението, когато потребителският интерфейс е видим.</string>
     <string name="settings__foreground_category__title">Работа на преден план</string>
-    <string name="settings__installer__native__summary">Резервен вариант ако сесийният инсталатор не работи на устройството. Най-често се случва на устройства от Samsung и Xiaomi.</string>
-    <string name="settings__installer__native__title">Вграден инсталатор</string>
-    <string name="settings__installer__root__summary">Използва правата на суперпотребителя, за да инсталира или обновява приложения без участието на потребителя. Изисква достъп до правата на суперпотребителя на устройството.</string>
-    <string name="settings__installer__root__title">Инсталиране чрез суперпотербителя</string>
-    <string name="settings__installer__session__summary">Препоръчано за повечето устройства.</string>
-    <string name="settings__installer__session__title">Сесиен инсталатор</string>
     <string name="settings__installer_category__title">Основни</string>
     <string name="settings__theme_battery_saver">Тъмна при режим на пестене на батерия</string>
     <string name="settings__theme_dark">Тъмна</string>
@@ -258,11 +219,6 @@
 \n- Освен това е на основата на Гугъл Хром и по този начин косвено подкрепя монополното положение на машината за изчертаване на Хромиум.</string>
     <string name="mull__title">Четецът Мул</string>
     <string name="mull__description">Това е мрежов четец, ориентиран към защита на личните данни и базиран на технологията на Мозила. Включва много от възможностите, разработени от проекта Tor Uplift, а също използва настройките от проекта arkenfox-user.js. Препоръчително е да инсталирате „uBlock Origin“.</string>
-    <string name="mull__warning">FFUpdater изтегля файловете от сървърите на F-Droid и затова не е по-бърз.</string>
-    <string name="notification__no_update_check__channel_description">Категория известия за липса на успешни проверки на обновяване във фонов режим в последните пет дена.</string>
-    <string name="notification__no_update_check__channel_name">Известие за липса на проверка във фонов режим</string>
-    <string name="notification__no_update_check__title">Няма успешна проверка на обновяване във фонов режим в последните пет дена</string>
-    <string name="notification__no_update_check__text">През последните пет дена FFUpdater не е направил проверка за обновяване във фонов режим. Ако сте държали устройството си на самолетен режим дълги периоди от време, можете да пренебрегнете съобщението. В противен случай докоснете, за да видите доклада за грешката.</string>
     <string name="app_card__open_project_page">Отваряне на страницата на проекта</string>
     <string name="ungoogled_chromium__eol_reason">Разработчикът е написал: „За известно време няма да мога да правя нови издания. Ако е възможно междувременно ползвайте някой от другите [поддържани от FFUpdater] мрежови четци.“ https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Четецът Тор</string>
@@ -271,7 +227,6 @@
     <string name="orbot__description">Орбот е безплатно приложение за мрежов посредник, което дава възможност на други приложения да използват интернет по-сигурно. Орбот използва мрежата на Тор, за да шифрова трафика ви в интернет, и след това го скрива, като препраща през поредица от компютри по целия свят. Тор е безплатен софтуер и отворена мрежа, които ви помагат да се защитите от форма на мрежово наблюдение, която застрашава личната ви свобода и неприкосновеност на личния ви живот, поверителните бизнес дейности и взаимоотношения и държавната сигурност, известна като анализ на трафика.</string>
     <string name="crash_report_activity__label">Доклад за срив</string>
     <string name="add_app_activity__title_from_mozilla">От Мозила</string>
-    <string name="add_app_activity__title_based_on_firefox">Базирани на Firefox</string>
     <string name="add_app_activity__title_good_privacy_browsers">Добри поверителни четци</string>
     <string name="add_app_activity__title_better_than_google_chrome">По-добри от Гугъл Хром</string>
     <string name="add_app_activity__title_other_applications">Други приложения</string>
@@ -292,7 +247,6 @@
     <string name="mulch__warning">- Мулч е на основата на Гугъл Хром и по този начин косвено подкрепя монополното положение на машината за изчертаване на Хромиум.</string>
     <string name="fennecfdroid__description">Фенек от F-Droid е на основата на последното издание на Файърфокс (с кодово име Феникс). В него са премахнати собственическия код и телеметрията, но все още се свързва с различни услуги на Мозила и Гугъл, които могат да проследяват потребителите.</string>
     <string name="mulch__description">Това е ориентиран към сигурността и защитен мрежов четец, базиран на технологията на Хромиум. Много нежелани функции са изключени или премахнати, а няколко функции за сигурност са включени или добавени, благодарение на кръпки от проекта Ванадиум. Хранилището с изходния код включва също така предварителни настройки и makefiles, които позволяват на други операционни системи да включат Мулч като системен WebView.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">Следните приложения имат различни отпечатъци на сертификатите и ще бъдат пренебрегнати от FFUpdater: %s. Можете да поправите това, като ги премахнете и след това инсталирате от FFUpdater.</string>
     <string name="network__dns_provider__title">Настройки на DNS</string>
     <string name="network__custom_doh_server__dialog_message">Въведете и формацията за сървъра на DoH по един от следните начини:
 \n

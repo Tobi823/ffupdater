@@ -6,7 +6,6 @@
     <string name="app_icon">sovelluskuvake</string>
     <string name="app_warning_dialog__title">Varoitus</string>
     <string name="application_installation_was_not_successful">Sovelluksen asennus ei onnistunut</string>
-    <string name="app_warning_before_installation_dialog__title">Varoitus</string>
     <string name="application_successfully_installed">Sovellus asennettu onnistuneesti</string>
     <string name="available_version">Saatavilla: %1$s</string>
     <string name="available_version_error"><u>VIRHE</u></string>
@@ -25,7 +24,6 @@
     <string name="notification__install_error__channel_descr">Ilmoituskanava epäonnistuneille %1$s päivityksille.</string>
     <string name="install_same_version_dialog__title">Sama versio asennettu</string>
     <string name="install_new_app">Asenna uusi sovellus</string>
-    <string name="install_app">Asenna sovellus</string>
     <string name="download_activity__label">Asenna sovellus</string>
     <string name="download_activity__use_cached_downloaded_apk">Käytä jo ladattua tiedostoa kohteesta:</string>
     <string name="download_activity__too_low_memory_title">Vähäinen tallennustila</string>
@@ -43,7 +41,6 @@
     <string name="running_downloads_dialog__title">Käynnissä olevat lataukset</string>
     <string name="request_installation_permission_dialog__abort">Peru</string>
     <string name="ok">OK</string>
-    <string name="manage_storage_activity__delete_button">Poista välimuistiin tallennetut sovelluspäivitykset.</string>
     <string name="main_activity__subtitle">Yksityisyyttä arvostavien selainten päivittäjä</string>
     <string name="settings__background__installation__enabled__title">Asenna päivitys</string>
     <string name="settings__foreground__download__metered__title">Lataa päivitykset kulutukseen perustuvissa verkoissa</string>
@@ -53,11 +50,6 @@
     <string name="settings__theme_dark">Tumma</string>
     <string name="settings__theme_battery_saver">Tumma virransäästötilassa</string>
     <string name="settings__installer_category__title">Asentaja</string>
-    <string name="settings__installer__session__title">Sessioasentaja</string>
-    <string name="settings__installer__session__summary">Suositeltu lähes kaikille laitteille.</string>
-    <string name="settings__installer__root__title">Root-asentaja</string>
-    <string name="settings__installer__root__summary">Käyttää root-oikeuksia asentaakseen ja päivittääkseen sovellukset ilman käyttäjän toimia. Tämä vaatii rootatun puhelimen.</string>
-    <string name="settings__installer__native__title">Alkuperäinen asentaja</string>
     <string name="settings__foreground_category__title">Edusta</string>
     <string name="settings__foreground__update_check__metered__title">Päivitystarkastusten toistuvuus kulutukseen perustuvissa verkoissa</string>
     <string name="settings__foreground__theme_preference__title">Valitse teema</string>
@@ -98,5 +90,4 @@
     <string name="settings__background_category__title">Tausta</string>
     <string name="request_installation_permission_dialog__title">Asentajan lupa</string>
     <string name="request_installation_permission_dialog__grant_permission">Salli lupa</string>
-    <string name="main_activity__available_version_loading">Ladataan…</string>
 </resources>

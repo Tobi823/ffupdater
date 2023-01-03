@@ -4,7 +4,6 @@
     <string name="app_description">Oppgraderinger for personvernsvennlige nettlesere</string>
     <string name="app_icon">programikon</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_before_installation_dialog__title">Advarsel</string>
     <string name="application_installation_was_not_successful">Kunne ikke installere programmet</string>
     <string name="application_successfully_installed">Installert</string>
     <string name="available_version">Tilgjengelig: %1$s</string>
@@ -48,9 +47,7 @@
     <string name="firefox_klar__description">Utviklet for Tyskland, Østerrike, og Sveits, men kan brukes av alle. Ligner Firefox Focus, men navnet ble endret i tysktalende land for å skille seg fra magasinet Focus av Hubert Burda-mediagruppen. Til forskjell fra Firefox Focus har Klar telemetri avslått som forvalg, som følge av strenge personvernslover i Tyskland.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__title">Firefox nattlig</string>
-    <string name="firefox_nightly__warning">- Programmet er designet for utviklere og testere. Det kan inneholde feil som påvirker vanlig bruk.</string>
     <string name="firefox_release__title">Firefox-nettleseren</string>
-    <string name="go_back">Tilbake</string>
     <string name="iceraven__title">Iceraven-nettleseren</string>
     <string name="app_card__information_about_the_app">info om programmet</string>
     <string name="download_activity__delete_cache_button_text">tøm hurtiglager</string>
@@ -74,7 +71,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Bruk allerede nedlastet fil fra:</string>
     <string name="download_activity__you_can_now_close_this_window">Du kan lukke vinduet</string>
     <string name="download_activity__label">Installer program</string>
-    <string name="install_app">Installer program</string>
     <string name="install_new_app">Installer nytt program</string>
     <string name="install_same_version_dialog__message">Nyeste versjon av dette programmet er allerede installert. Last det ned og installer nyeste versjon igjen\?</string>
     <string name="install_same_version_dialog__title">Samme versjon installert</string>
@@ -88,11 +84,9 @@
     <string name="installed_application_is_verified">Det installerte programmet er bekreftet</string>
     <string name="installed_version">Installert: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">Laster inn …</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Grense for GitHub-API overskredet. Prøv igjen om en time.</u></string>
     <string name="main_activity__subtitle">Oppgrader dine Mozilla-nettlesere</string>
     <string name="main_activity__temporary_network_issue"><u>Midlertidig nettverksproblem. Prøv igjen senere.</u></string>
-    <string name="manage_storage_activity__delete_button">Slett hurtiglagrede programoppgraderinger.</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Avbryt</string>
     <string name="request_installation_permission_dialog__grant_permission">Innvilg tilgang</string>

@@ -141,7 +141,6 @@
                 style="@style/install_activity__monospace_text" />
 
             <TextView
-                android:id="@+id/downloadFileFailedText"
                 style="@style/install_activity__default_text"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"

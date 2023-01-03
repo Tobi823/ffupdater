@@ -4,43 +4,6 @@
     <string name="app_description">Программа обновления приватных браузеров</string>
     <string name="app_icon">иконка приложения</string>
     <string name="app_name">FFUpdater</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">У %1$s имеется проблема:
-\n
-\n%2$s
-\n
-\nВы хотите продолжить установку %1$s\?</item>
-        <item quantity="few">У %1$s имеются проблемы:
-\n
-\n%2$s
-\n
-\nВы хотите продолжить установку %1$s\?</item>
-        <item quantity="many">У %1$s имеются проблемы:
-\n
-\n%2$s
-\n
-\nВы хотите продолжить установку %1$s\?</item>
-        <item quantity="other">У %1$s имеются проблемы:
-\n
-\n%2$s
-\n
-\nВы хотите продолжить установку %1$s\?</item>
-    </plurals>
-    <string name="app_warning_before_installation_dialog__title">Предупреждение</string>
-    <plurals name="app_warning_dialog__message">
-        <item quantity="one">У %1$s имеется проблема:
-\n
-\n%2$s</item>
-        <item quantity="few">У %1$s имеются проблемы:
-\n
-\n%2$s</item>
-        <item quantity="many">У %1$s имеются проблемы:
-\n
-\n%2$s</item>
-        <item quantity="other">У %1$s имеются проблемы:
-\n
-\n%2$s</item>
-    </plurals>
     <string name="app_warning_dialog__title">Предупреждение</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
     <string name="application_successfully_installed">Приложение успешно установлено</string>
@@ -90,11 +53,9 @@
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Обратите внимание: данное приложение раньше называлось Firefox Preview. Теперь оно называется Firefox Nightly. \n\nFirefox Nightly - это канал для разработки новых выпусков Mozilla Firefox. \n\nFirefox Nightly был создан, чтобы тестировать новые, экспериментальные сборки Firefox. "Ночной" канал позволяет пользователям изучать новейшие инновации Firefox в нестабильной среде, оставлять отзывы о новых функциях и улучшениях производительности, чтобы помочь понять, как должен выглядеть стабильный выпуск.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">- Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером.</string>
     <string name="firefox_release__description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за вами каждый день, собирая информацию о вашей жизни в Интернете и замедляя скорость вашей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если вы захотите настроить свой браузер под себя. С Firefox вы получите безопасность, которую заслуживаете, а также высокую скорость работы — и всё это в конфиденциальном мобильном браузере.</string>
     <string name="firefox_release__title">Firefox</string>
     <string name="firefox_release__warning">- Улучшенная версия Firefox под названием Fennec F-Droid доступна на F-Droid.</string>
-    <string name="go_back">Вернуться</string>
     <string name="iceraven__description">Определенно не от Mozilla! \n\nIceraven Browser - это веб-браузер для Android, основанный на версиях Firefox, GeckoView и Mozilla Android Components от Mozilla Fenix. \n\nНашей целью является создание как можно более точной копии нового Firefox для Android, который стремится предоставить пользователям больше возможностей для настройки (включая широкую библиотеку расширений), больше информации о страницах, которые они посещают, и как их браузеры взаимодействуют с этими страницами.</string>
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="iceraven__warning">- Поддерживающий не даёт никаких гарантий по безопасности, и даже стабильности.</string>
@@ -125,7 +86,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
     <string name="download_activity__you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
     <string name="download_activity__label">Установить приложение</string>
-    <string name="install_app">установить</string>
     <string name="install_new_app">Установить новое приложение</string>
     <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите снова загрузить и установить её?</string>
     <string name="install_same_version_dialog__title">Установлена та же версия</string>
@@ -140,7 +100,6 @@
     <string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
     <string name="installed_version">Установлен: %1$s</string>
-    <string name="intent_installer__likely_storage_failure">Из-за проблем с хранилищем операция провалилась. Скорее всего, на устройстве закончилось место, или внешний накопитель недоступен. Вы можете высвободить место на устройстве или вставить другой внешний накопитель.</string>
     <string name="kiwi__description">Kiwi Browser сделан, чтобы обозревать интернет, читать новости, смотреть видео и слушать музыку без раздражающих элементов.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi использует кодовую базу Google Chrome и тем самым поддерживает монопольную позицию движка отрисовки Chromium.
@@ -151,13 +110,10 @@
 \n
 \nНадежно отслеживайте свои пароли Firefox и получайте доступ к ним в любом месте. Быстро откройте любой сайт из приложения, чтобы попасть в свои учетные записи.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">Загрузка…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превышен лимит GitHub-API. Повторите попытку через час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Отсутствие сети без оплаты</string>
     <string name="main_activity__subtitle">Программа для обновления браузеров, уважающих конфиденциальность</string>
     <string name="main_activity__temporary_network_issue">"<u>Временная проблема сети. Повторите попытку позже.</u>"</string>
-    <string name="manage_storage_activity__delete_button">Удаление кэшированных обновлений приложений.</string>
-    <string name="manage_storage_activity__explanation">FFUpdater кэширует уже загруженные обновления приложений и хранит их в папке \'Android/data/de.marmaro.krt.ffupdater/files/Download\'.\n\nЭто экономит пропускную способность, когда приложение не удается установить или обновить. Кроме того, кэш необходим для того, чтобы обновления, загруженные в фоновом режиме, можно было установить позже.\n\nЕсли вы решите удалить эти обновления приложений, вам, возможно, придется загрузить их снова.</string>
     <string name="ok">ОК</string>
     <string name="request_installation_permission_dialog__abort">Прервать</string>
     <string name="request_installation_permission_dialog__grant_permission">Разрешение</string>
@@ -201,12 +157,6 @@
     <string name="settings__foreground__update_check__metered__title">Проверка обновлений в сетях с дозированной оплатой</string>
     <string name="settings__foreground_category__summary">Настройки, когда пользовательский интерфейс виден.</string>
     <string name="settings__foreground_category__title">Передний план</string>
-    <string name="settings__installer__native__summary">План Б, на случай, если сессионный установщик не поддерживается вашим телефоном. Такое часто случается на Samsung и Xiaomi.</string>
-    <string name="settings__installer__native__title">Родной установщик</string>
-    <string name="settings__installer__root__summary">Использует права суперпользователя для установки и обновления приложений без участия пользователя. Требуется root.</string>
-    <string name="settings__installer__root__title">Root-установка</string>
-    <string name="settings__installer__session__summary">Рекомендовано для большинства устройств.</string>
-    <string name="settings__installer__session__title">Сессионный установщик</string>
     <string name="settings__installer_category__title">Установщик</string>
     <string name="settings__theme_battery_saver">Тёмная, когда активна экономия батареи</string>
     <string name="settings__theme_dark">Тёмная</string>

@@ -5,27 +5,6 @@
     <string name="app_description">Gizlilik dostu tarayıcılar için bir güncelleyici</string>
     <string name="app_icon">uygulama simgesi</string>
     <string name="app_name">FFUpdater</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">%1$s aşağıdaki soruna sahiptir:
-\n
-\n%2$s
-\n
-\nYine de %1$s kurmak istiyor musunuz\?</item>
-        <item quantity="other">%1$s aşağıdaki sorunlara sahiptir:
-\n
-\n%2$s
-\n
-\nYine de %1$s kurmak istiyor musunuz\?</item>
-    </plurals>
-    <string name="app_warning_before_installation_dialog__title">Uyarı</string>
-    <plurals name="app_warning_dialog__message">
-        <item quantity="one">%1$s aşağıdaki soruna sahiptir:
-\n
-\n%2$s</item>
-        <item quantity="other">%1$s aşağıdaki sorunlara sahiptir:
-\n
-\n%2$s</item>
-    </plurals>
     <string name="app_warning_dialog__title">Uyarı</string>
     <string name="application_installation_was_not_successful">Uygulama kurulumu başarısız oldu</string>
     <string name="application_successfully_installed">Uygulama başarıyla kuruldu</string>
@@ -92,12 +71,9 @@
 \n
 \nFirefox Nightly, Firefox’un daha deneysel sürümlerini sergilemek amacıyla tasarlandı. Nightly kanalı, en yeni Firefox özelliklerini kararlı olmayan bir ortamda denemenize, özellikler ve performansla ilgili geri bildirimlerde bulunmanıza olanak tanıyor. Böylece neleri son sürüme aktaracağımızı belirlememize yardımcı oluyorsunuz.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">- Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir.</string>
     <string name="firefox_release__description">Android için Firefox tarayıcı, ışık hızında sayfa yükleme ve gizliliğinizi kolayca koruma olanağı sunuyor. Gelişmiş İzlenme Koruması, gizliliğinizi ihlal eden ve sayfalarınızı yavaşlatan 2.000\'den fazla çevrimiçi takipçiyi otomatik olarak engelliyor. Ayrıca Firefox tarayıcı, daha verimli ve daha hızlı kullanım sağlayan yeni ve sade bir tasarım sunuyor. Üstelik Firefox, yerleşik akıllı gezinti özellikleriyle gizliliğinizi, parolalarınızı ve yer imlerinizi gittiğiniz her yere güvenle taşıyor.</string>
     <string name="firefox_release__title">Firefox Tarayıcı</string>
     <string name="firefox_release__warning">- F-Droid\'de Fennec F-Droid adı altında Firefox\'un iyileştirilmiş bir sürümü de bulunmakdır.</string>
-    <string name="generic_eol_reason__browser_to_old">Tarayıcı uzun süredir güncellenmedi, bu nedenle geçici olarak başka bir tarayıcı kullanmanızı tavsiye ederim. Geliştiriciler yeni bir güncelleme yayınladığında, bu uyarıyı kaldıracağım.</string>
-    <string name="go_back">Geri git</string>
     <string name="iceraven__description">Kesinlikle Mozilla tarafından size getirilmedi!
 \n
 \nIceraven Tarayıcı, Mozilla\'nın Firefox, GeckoView ve Mozilla Android bileşenlerinin Fenix sürümünü temel alan Android için bir web tarayıcısıdır.
@@ -133,7 +109,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Şuradan indirilmiş dosyayı kullanın:</string>
     <string name="download_activity__you_can_now_close_this_window">Artık bu pencereyi kapatabilirsiniz</string>
     <string name="download_activity__label">Uygulamayı İndir</string>
-    <string name="install_app">Uygulamayı kur</string>
     <string name="install_new_app">Yeni uygulama kur</string>
     <string name="install_same_version_dialog__message">Bu uygulamanın en son sürümü zaten kurulu. En son sürümü tekrar indirip kurmak istiyor musunuz\?</string>
     <string name="install_same_version_dialog__title">Aynı sürüm kurulu</string>
@@ -148,7 +123,6 @@
     <string name="installed_app_is_not_verified">Kurulan uygulama doğrulanmadı</string>
     <string name="installed_application_is_verified">Kurulan uygulama doğrulandı</string>
     <string name="installed_version">Kuruldu: %1$s</string>
-    <string name="intent_installer__likely_storage_failure">İşlem, büyük olasılıkla depolama sorunları nedeniyle başarısız oldu. Örneğin, aygıtın alanı azalıyor veya harici ortam kullanılamıyor olabilir. Kullanıcının boş alan sağlaması veya farklı harici ortamlar yerleştirmesi yardımcı olabilir.</string>
     <string name="kiwi__description">Kiwi Browser, rahatsız edilmeden internette gezinmek, haber okumak, video izlemek ve müzik dinlemek için yapılmıştır.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.
@@ -160,17 +134,10 @@
 \nFirefox parolalarınızı güvenle takip edin ve onlara her yerden erişin. Hesaplarınıza girmek için uygulamadan herhangi bir web sitesini hızla açın.</string>
     <string name="lockwise__eol_reason">Mozilla, Aralık 2021\'de desteği bıraktı. Lütfen başka bir parola yöneticisine geçin.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">Yükleniyor…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u>"</string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>
     <string name="main_activity__subtitle">Gizlilik dostu tarayıcılar için bir güncelleyici</string>
     <string name="main_activity__temporary_network_issue">"<u>Geçici ağ sorunu. Daha sonra tekrar deneyin.</u>"</string>
-    <string name="manage_storage_activity__delete_button">Önbelleğe alınmış uygulama güncellemelerini silin.</string>
-    <string name="manage_storage_activity__explanation">FFUpdater önceden indirilmiş uygulama güncellemelerini önbelleğe alır ve bunları \'Android/data/de.marmaro.krt.ffupdater/files/Download\' klasöründe saklar.
-\n
-\nBu, bir uygulama başarıyla kurulmadığında veya güncellenmediğinde bant genişliğinden tasarruf sağlar. Ayrıca, arka planda indirilen güncellemelerin daha sonra kurulabilmesi için önbelleğe ihtiyaç vardır.
-\n
-\nBu uygulama güncellemelerini silmeye karar verirseniz, bunları yeniden indirmeniz gerekebilir.</string>
     <string name="ok">Tamam</string>
     <string name="request_installation_permission_dialog__abort">İptal</string>
     <string name="request_installation_permission_dialog__grant_permission">İzin ver</string>
@@ -214,12 +181,6 @@
     <string name="settings__foreground__update_check__metered__title">Ölçülü ağlarda güncelleme denetimleri</string>
     <string name="settings__foreground_category__summary">Kullanıcı arayüzü görünür olduğunda ayarlar.</string>
     <string name="settings__foreground_category__title">Ön plan</string>
-    <string name="settings__installer__native__summary">Oturum kurucusu akıllı telefonunuzda çalışmıyorsa onun yerine kullanılır. Bu, Samsung veya Xiaomi marka aygıtlarda daha sık görülür.</string>
-    <string name="settings__installer__native__title">Yerel kurucu</string>
-    <string name="settings__installer__root__summary">Kullanıcı etkileşimi olmadan uygulamaları kurmak veya güncellemek için root iznini kullanır. Bu, root yapılmış bir akıllı telefon gerektirir.</string>
-    <string name="settings__installer__root__title">Root kurucusu</string>
-    <string name="settings__installer__session__summary">Çoğu aygıt için tavsiye edilir.</string>
-    <string name="settings__installer__session__title">Oturum kurucusu</string>
     <string name="settings__installer_category__title">Kurucu</string>
     <string name="settings__theme_battery_saver">Pil Tasarrufu etkinken koyu</string>
     <string name="settings__theme_dark">Koyu</string>
@@ -258,13 +219,8 @@
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
     <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır.
 \n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
-    <string name="mull__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="mull__title">Mull Tarayıcı</string>
     <string name="mull__description">Bu, Mozilla teknolojisine dayanan gizlilik odaklı ve açık olmayan kısımları temizlenen bir web tarayıcısıdır. arkenfox-user.js projesindeki tercihleri kullanarak Tor Uplift projesi tarafından geliştirilen birçok özelliği etkinleştirir. \'uBlock Origin\' eklentisini kurmanız tavsiye edilir.</string>
-    <string name="notification__no_update_check__channel_name">Arka plan güncelleme denetimi yok</string>
-    <string name="notification__no_update_check__channel_description">Son beş gün içinde hiçbir arka plan güncelleme denetiminin başarılı olmadığına dair uyarı için bildirim kanalı.</string>
-    <string name="notification__no_update_check__text">Son beş gün içinde FFUpdater arka planda güncellemeleri denetleyemedi. Akıllı telefonunuzu uzun süre uçuş modunda tuttuysanız, bu mesajı görmezden gelebilirsiniz. Değilse, hata raporunu görüntülemek için buraya tıklayın.</string>
-    <string name="notification__no_update_check__title">Beş gün boyunca başarılı bir arka planda güncelleme denetimi yapılmadı</string>
     <string name="app_card__open_project_page">Proje sayfasını tarayıcıda aç</string>
     <string name="ungoogled_chromium__eol_reason">Geliştirici şunları paylaştı: \"Sürümleri bir süre güncelleyemeyeceğim. Mümkünse lütfen bu arada [FFUpdater\'ın desteklediği] tarayıcılardan birini kullanın.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
@@ -273,7 +229,6 @@
     <string name="orbot__title">Orbot: Android için Tor</string>
     <string name="add_app_activity__label">Yeni Uygulama Ekle</string>
     <string name="crash_report_activity__label">Çökme Bildirici</string>
-    <string name="add_app_activity__title_based_on_firefox">Firefox Tabanlı</string>
     <string name="add_app_activity__title_good_privacy_browsers">İyi Gizlilik Tarayıcıları</string>
     <string name="add_app_activity__title_better_than_google_chrome">Google Chrome\'dan Daha İyi</string>
     <string name="add_app_activity__title_end_of_live_browser">Artık desteklenmeyen tarayıcı</string>
@@ -294,7 +249,6 @@
     <string name="mulch__warning">- Mulch, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="fennecfdroid__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="fennecfdroid__description">Fennec F-Droid en son Firefox sürümüne (kod adı Fenix) dayanmaktadır. Açık kaynaklı olmayan bitler ve telemetri kaldırılmıştır, ancak yine de kullanıcıları izleyebilen çeşitli Mozilla ve Google hizmetlerine bağlanır.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">Şu uygulamalar farklı sertifika parmak izlerine sahip ve yok sayılacak: %s. Kaldırarak ve ardından FFUpdater ile kurarak bunu düzeltebilirsiniz.</string>
     <string name="network__proxy__title">Vekil</string>
     <string name="network__dns_provider__title">DNS ayarları</string>
     <string name="network__custom_doh_server__title">Özel HTTPS üzerinden DNS sunucusu</string>

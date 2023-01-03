@@ -4,7 +4,6 @@
     <string name="app_description">Aktualizator dla przeglądarek chroniących prywatność</string>
     <string name="app_icon">ikona aplikacji</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_before_installation_dialog__title">Ostrzeżenie</string>
     <string name="application_installation_was_not_successful">Instalacja aplikacji nie powiodła się</string>
     <string name="application_successfully_installed">Aplikacja została zainstalowana pomyślnie</string>
     <string name="available_version">Dostępne: %1$s</string>
@@ -55,11 +54,9 @@
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Proszę zauważyć, że ta aplikacja była zatytułowana Firefox Preview. Została ona teraz zmieniona na Firefox Nightly. \n\nFirefox Nightly to kanał rozwojowy dla nowych wydań przeglądarki Mozilla Firefox. \n\nFirefox Nightly został zaprojektowany, by prezentować eksperymentalne wersje Firefoksa. Kanał Nightly pozwala użytkownikom zapoznać się z najnowszymi innowacjami Firefoksa w niestabilnym środowisku i dostarczyć informacje zwrotne na temat funkcji i wydajności, które pomogą określić, co trafi do ostatecznego wydania.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
     <string name="firefox_release__description">Przeglądarka Firefox dla Androida zapewnia prywatność i niewiarygodną szybkość. Tysiące skryptów śledzących śledzi Cię każdego dnia, zbierając informacje o tym, gdzie jesteś w sieci, spowalniając Twoją przeglądarkę. Firefox domyślnie blokuje ponad 2000 takich skryptów, a jeśli chcesz jeszcze bardziej dostosować przeglądarkę do swoich potrzeb, dostępne są dodatki blokujące reklamy. Dzięki Firefoxowi uzyskasz bezpieczeństwo, na które zasługujesz, i szybkość, jakiej potrzebujesz, w prywatnej, mobilnej przeglądarce.</string>
     <string name="firefox_release__title">Firefox</string>
     <string name="firefox_release__warning">- Ulepszona wersja Firefox jest również dostępna w systemie F-Droid pod nazwą Fennec F-Droid.</string>
-    <string name="go_back">Wstecz</string>
     <string name="iceraven__description">To nie jest usługa Mozilli!
 \n
 \nIceraven to przeglądarka internetowa dla systemu Android, oparta na wersji Fenix przeglądarki Firefox, GeckoView i Mozilla Android Components.
@@ -90,7 +87,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Użyj wcześniej pobranego pliku z:</string>
     <string name="download_activity__you_can_now_close_this_window">Możesz teraz zamknąć to okno</string>
     <string name="download_activity__label">Zainstaluj aplikację</string>
-    <string name="install_app">Zainstaluj aplikację</string>
     <string name="install_new_app">Zainstaluj nową aplikację</string>
     <string name="install_same_version_dialog__message">Najnowsza wersja tej aplikacji jest już zainstalowana. Czy chcesz ponownie pobrać i zainstalować najnowszą wersję?</string>
     <string name="install_same_version_dialog__title">Ta sama wersja jest już zainstalowana</string>
@@ -109,13 +105,10 @@
 \n
 \nBezpiecznie śledź swoje hasła do Firefoksa i uzyskuj do nich dostęp w dowolnym miejscu. Szybko otwórz dowolną stronę internetową z poziomu aplikacji, aby dostać się do swoich kont.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">Ładowanie…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Przekroczono limit GitHub-API. Ponów próbę w ciągu następnej godziny.</u>"</string>
     <string name="main_activity__no_unmetered_network">Brak sieci bez limitu danych</string>
     <string name="main_activity__subtitle">Aktualizator dla przeglądarek chroniących prywatność</string>
     <string name="main_activity__temporary_network_issue">"<u>Tymczasowy problem z siecią. Spróbuj ponownie później.</u>"</string>
-    <string name="manage_storage_activity__delete_button">Usuń aktualizacje aplikacji z pamięci podręcznej.</string>
-    <string name="manage_storage_activity__explanation">"FFUpdater buforuje już pobrane aktualizacje aplikacji i przechowuje je w folderze 'Android/data/de.marmaro.krt.ffupdater/files/Download'.\n\nOszczędza to przepustowość, gdy aplikacja nie zostanie pomyślnie zainstalowana lub zaktualizowana. Ponadto, pamięć podręczna jest potrzebna, aby aktualizacje, które zostały pobrane w tle, mogły być zainstalowane później.\n\nJeśli zdecydujesz się usunąć te aktualizacje aplikacji, być może będziesz musiał pobrać je ponownie."</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Przerwij</string>
     <string name="request_installation_permission_dialog__grant_permission">Udzielenie pozwolenia</string>
@@ -199,17 +192,12 @@
     <string name="notification__download_error__title">Pobieranie aktualizacji w tle nie powiodło się</string>
     <string name="notification__eol_apps__channel_name">Powiadomienie o nieaktualnych aplikacjach</string>
     <string name="notification__eol_apps__text">Masz nieaktualne aplikacje, które nie powinny być już używane. Kliknij po więcej informacji.</string>
-    <string name="settings__installer__root__title">Instalator root</string>
-    <string name="settings__installer__session__title">Instalator sesji</string>
     <string name="add_app_activity__title_good_privacy_browsers">Przeglądarki dobre dla prywatności</string>
     <string name="add_app_activity__title_other_applications">Inne aplikacje</string>
     <string name="mull__title">Mull</string>
     <string name="add_app_activity__label">Dodaj nową aplikację</string>
     <string name="crash_report_activity__label">Zgłoś usterkę</string>
     <string name="add_app_activity__title_from_mozilla">Od Mozilli</string>
-    <string name="add_app_activity__title_based_on_firefox">Na podstawie Firefoksa</string>
-    <string name="settings__installer__root__summary">Wykorzystuje uprawnienia roota do instalowania lub aktualizowania aplikacji bez interwencji użytkownika. Wymaga to posiadania zrootowanego smartfona.</string>
-    <string name="settings__installer__native__title">Natywny instalator</string>
     <string name="settings__foreground__hide_warning_buttons">Ukryj przycisk ostrzegawczy dla zainstalowanej aplikacji.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Usuń pobraną aktualizację, jeśli instalacja nie powiedzie się.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Usuń pobraną aktualizację, jeśli instalacja zakończy się pomyślnie.</string>
@@ -217,11 +205,8 @@
     <string name="add_app_activity__title_end_of_live_browser">Przeglądarki które nie są już rozwijane</string>
     <string name="add_app_activity__add_new_application">Dodaj nową aplikację</string>
     <string name="chromium__title">Chromium</string>
-    <string name="settings__installer__session__summary">Zalecane dla większości urządzeń.</string>
     <string name="mulch__title">Mulch</string>
     <string name="mulch__description">Jest to zorientowana na bezpieczeństwo i wzmocniona przeglądarka internetowa oparta na technologii Chromium. Wiele anty-funkcji zostało wyłączonych/usuniętych, a garść funkcji bezpieczeństwa została włączona/dodana dzięki łatkom z projektu Vanadium. Źródło zawiera również (prebuilds i makefile), które pozwalają innym systemom operacyjnym na włączenie Mulch jako systemowego WebView.</string>
-    <string name="mull__warning">FFUpdater pobiera pliki z serwerów F-Droid i dlatego nie jest szybszy.</string>
-    <string name="notification__no_update_check__channel_description">Kanał powiadomień dla ostrzeżenia, że w ciągu ostatnich pięciu dni nie powiodło się sprawdzenie aktualizacji w tle.</string>
     <string name="settings__background__update_check__when_device_idle__title">Sprawdź aktualizacje tylko wtedy, gdy urządzenie jest bezczynne</string>
     <string name="download_activity__different_installer_info__text">Jeśli instalacja często się nie udaje, spróbuj przełączyć się na \"natywny instalator\" w ustawieniach.</string>
     <string name="download_activity__open_folder">Otwórz folder</string>
@@ -236,61 +221,19 @@
     <string name="lockwise__eol_reason">Mozilla porzuciła wsparcie w grudniu 2021 roku. Prosimy o wybranie innego menadżera haseł.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater pobiera pliki z serwerów F-Droid i dlatego nie jest szybszy.</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">%1$s ma następujący problem:
-\n
-\n%2$s
-\n
-\nCzy nadal chcesz zainstalować %1$s\?</item>
-        <item quantity="few">%1$s ma następujące problemy:
-\n
-\n%2$s
-\n
-\nCzy nadal chcesz zainstalować %1$s\?</item>
-        <item quantity="many">%1$s ma następujące problemy:
-\n
-\n%2$s
-\n
-\nCzy nadal chcesz zainstalować %1$s\?</item>
-        <item quantity="other">%1$s ma następujące problemy:
-\n
-\n%2$s
-\n
-\nCzy nadal chcesz zainstalować %1$s\?</item>
-    </plurals>
-    <plurals name="app_warning_dialog__message">
-        <item quantity="one">%1$s ma następujący problem:
-\n
-\n%2$s</item>
-        <item quantity="few">%1$s ma następujący problemy:
-\n
-\n%2$s</item>
-        <item quantity="many">%1$s ma następujący problemy:
-\n
-\n%2$s</item>
-        <item quantity="other">%1$s ma następujący problemy:
-\n
-\n%2$s</item>
-    </plurals>
     <string name="iceraven__warning">- Ten deweloper nie daje żadnych gwarancji bezpieczeństwa, aktualizacji, ani nawet stabilności.
 \n- Ten projekt wydaje aktualizacje zabezpieczeń wolniej niż zwykle.</string>
     <string name="kiwi__title">Kiwi Next</string>
     <string name="kiwi__description">Przeglądarka Kiwi jest stworzona do przeglądania internetu, czytania wiadomości, oglądania filmów i słuchania muzyki, bez zbędnych irytacji.</string>
-    <string name="intent_installer__likely_storage_failure">Operacja prawdopodobnie nie powiodła się z powodu problemów z pamięcią masową. Na przykład w urządzeniu może brakować miejsca lub nośniki zewnętrzne mogą być niedostępne. Użytkownik może pomóc w zwolnieniu miejsca lub włożeniu innego nośnika zewnętrznego.</string>
-    <string name="settings__installer__native__summary">Alternatywa, jeśli instalator sesji nie działa na twoim smartfonie. Częściej zdarza się to w przypadku urządzeń od Samsunga lub Xiaomi.</string>
     <string name="crash_report__explain_text__download_activity_download_file">Ten błąd wystąpił podczas pobierania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
-    <string name="generic_eol_reason__browser_to_old">Przeglądarka nie była aktualizowana od dłuższego czasu, więc zalecam tymczasowe użycie innej przeglądarki. Gdy twórcy wydadzą nową aktualizację, usunę to ostrzeżenie.</string>
     <string name="download_activity__file_uri_exposed_toast">Nie można udostępnić ścieżki pliku innym aplikacjom. Otwórz folder samodzielnie za pomocą preferowanego menedżera plików.</string>
-    <string name="notification__no_update_check__title">Brak pomyślnego sprawdzenia aktualizacji w tle przez pięć dni</string>
     <string name="notification__eol_apps__title">Zainstalowane nieaktualne aplikacje</string>
-    <string name="notification__no_update_check__channel_name">Brak sprawdzania aktualizacji w tle</string>
     <string name="tor_browser__title">Przeglądarka Tor</string>
     <string name="chromium__description">Chromium to projekt przeglądarki o otwartym kodzie źródłowym, którego celem jest stworzenie bezpieczniejszego, szybszego i bardziej stabilnego sposobu korzystania z sieci przez wszystkich użytkowników. Ta strona zawiera dokumenty projektowe, przegląd architektury, informacje o testach i wiele innych informacji, które pomogą Ci nauczyć się budować i pracować z kodem źródłowym Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ten błąd wystąpił podczas instalowania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
     <string name="notification__download_error__descr">Pobieranie w tle aktualizacji %1$s nie powiodło się. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
     <string name="notification__download_error__text">Pobieranie w tle aktualizacji %1$s nie powiodło się. Jeśli ten błąd występuje często, kliknij tutaj, aby wyświetlić raport o błędzie.</string>
     <string name="notification__eol_apps__channel_description">Kanał powiadomień dla ostrzeżeń o nieaktualnych aplikacjach.</string>
-    <string name="notification__no_update_check__text">W ciągu ostatnich pięciu dni FFUpdater nie był w stanie sprawdzić aktualizacji w tle. Jeśli przez dłuższy czas miałeś smartfon w trybie samolotowym, możesz zignorować ten komunikat. Jeśli nie, kliknij tutaj, aby zobaczyć raport o błędzie.</string>
     <string name="tor_browser__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Włącz to, jeśli nie chcesz, aby twoje aplikacje były ponownie uruchamiane przez aktualizację w tle. Wyłącz to, jeśli chcesz mieć bardziej przewidywalny harmonogram sprawdzania aktualizacji w tle.</string>
     <string name="mulch__warning">- Mulch wykorzystuje techniczne fundamenty Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
@@ -300,7 +243,6 @@
 \n- Kiwi nie jest idealną przeglądarką do ochrony prywatności, ale ma dobre wsparcie dla dodatków.
 \n- Przeglądarka otrzymuje pieniądze od wyszukiwarek za każde wyszukiwanie wykonane przy użyciu Kiwi. W zależności od wyboru wyszukiwarki, zapytania mogą przechodzić przez serwery Kiwibrowser / Kiwisearchservices.
 \n- Google Ads w Kiwi może używać danych o lokalizacji do reklam - ale można to wyłączyć, wyłączając funkcję Discovery. Ale to się wkrótce zmieni. Zobacz https://privacy.kiwibrowser.org/, aby uzyskać więcej szczegółów.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">Następujące aplikacje mają różne odciski palców certyfikatów i będą ignorowane: %s. Możesz to naprawić, odinstalowując, a następnie instalując je za pomocą FFUpdater.</string>
     <string name="network__dns_provider__title">Ustawienia DNS</string>
     <string name="network__custom_doh_server__title">Własny DNS przez serwer HTTPS</string>
     <string name="settings__network_category__title">Sieć</string>

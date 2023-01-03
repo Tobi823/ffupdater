@@ -4,7 +4,6 @@
     <string name="app_description">プライバシーを重視したブラウザ用のアップデータ</string>
     <string name="app_icon">アプリアイコン</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_before_installation_dialog__title">警告</string>
     <string name="application_installation_was_not_successful">アプリのインストールに失敗しました</string>
     <string name="application_successfully_installed">アプリのインストールに成功しました</string>
     <string name="available_version">利用可能: %1$s</string>
@@ -50,10 +49,8 @@
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">このアプリは以前は「Firefox Preview」という名称で、現在は、Firefox Nightly に移行しています。\n\nFirefox Nightly は、Firefox の新しいリリースに向けた開発チャンネルです。\n\nFirefox Nightly は、Firefox のより実験的な機能を紹介するために設計されています。Nightly チャンネルでは、ユーザーが不安定なFirefox の最新の革新的な機能を体験し、機能やパフォーマンスに関するフィードバックを提供することで、最終的なリリースの決定に役立てています。</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">- このアプリは開発者やテスター向けに作られたものです。作業に影響を与える様々なバグが含まれている可能性があります。</string>
     <string name="firefox_release__description">Android用Firefoxブラウザは、プライベートで、非常に高速に動作します。何千ものオンライントラッカーが毎日あなたを追跡し、あなたがオンラインで何にアクセスしたか等の情報を収集し、ブラウジング速度を低下させています。Firefoxは、これらのトラッカーの2000以上をデフォルトでブロックし、さらにブラウザをカスタマイズしたい場合は、広告ブロックのアドオンも利用できます。Firefoxは、あなたが必要とするセキュリティとスピードを、プライベートなモバイルブラウザで実現します。</string>
     <string name="firefox_release__title">Firefoxブラウザ</string>
-    <string name="go_back">戻る</string>
     <string name="iceraven__description">このアプリはMozillaにより提供されていません。\n\nIceravenは、MozillaのFenixバージョンのFirefox、GeckoView、Mozilla Android Componentsをベースにした、Android向けのウェブブラウザです。 \n\nこのアプリの目標は、より多くの選択肢、より多くのカスタマイズの機会（幅広い拡張ライブラリを含む）、訪問したページやそれらのページとブラウザの相互作用に関するより多くの情報をユーザーに提供することを目指す、新しいAndroid用Firefoxの親密なフォークとなることです。</string>
     <string name="iceraven__title">Iceravenブラウザ</string>
     <string name="infobox">Mozillaの複数のブラウザに対応したアップデータです。プラスボタンをクリックするとインストール、下矢印ボタンをクリックするとアップデートが行われます。アップデートの確認は、アプリをダウンスワイプまたは開き直すことで行えます。デフォルトでは、アプリはバックグラウンドで定期的に更新をチェックします。インストールとアップデートのプロセスを安全にするために最善を尽くしました - プルリクエストを作成することによって、それをダブルチェックするか、それを改善するために自由に感じなさい。
@@ -80,7 +77,6 @@
     <string name="download_activity__use_cached_downloaded_apk">すでにダウンロード済みのファイルを使用します:</string>
     <string name="download_activity__you_can_now_close_this_window">ウィンドウを閉じても構いません</string>
     <string name="download_activity__label">アプリをインストール</string>
-    <string name="install_app">アプリをインストール</string>
     <string name="install_new_app">新規アプリをインストール</string>
     <string name="install_same_version_dialog__message">このアプリの最新版はすでにインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>
     <string name="install_same_version_dialog__title">同じバージョンがインストール済み</string>
@@ -96,13 +92,10 @@
     <string name="installed_application_is_verified">インストールしたアプリは検証されました</string>
     <string name="installed_version">インストール済み: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">読み込み中…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-APIの制限を超えました。次の時間に再試行します。</u>"</string>
     <string name="main_activity__no_unmetered_network">アンメットネットワークなし</string>
     <string name="main_activity__subtitle">あなたのブラウザをアップデートします</string>
     <string name="main_activity__temporary_network_issue">"<u>一時的なネットワークの問題です。後で再試行します。</u>"</string>
-    <string name="manage_storage_activity__delete_button">キャッシュされたアプリのアップデートを削除します。</string>
-    <string name="manage_storage_activity__explanation">FFUpdaterは、すでにダウンロードされたアプリのアップデートをキャッシュし、「Android/data/de.marmaro.ktr.ffupdater/files/Download」フォルダに保存します。\n\nこれにより、アプリのインストールやアップデートが正常に行われなかった場合の帯域幅を節約できます。また、バックグラウンドでダウンロードされたアップデートを後からインストールするためにも、キャッシュは必要です。\n\nこれらのアプリのアップデートを削除することにした場合、再度ダウンロードしなければならない可能性があります。</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">中止</string>
     <string name="request_installation_permission_dialog__grant_permission">許可する</string>

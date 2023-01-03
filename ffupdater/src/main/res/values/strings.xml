@@ -5,15 +5,6 @@
     <string name="app_description">Updater for privacy friendly browsers</string>
     <string name="app_icon">app icon</string>
     <string name="app_name">FFUpdater</string>
-    <plurals name="app_warning_before_installation_dialog__installation_question">
-        <item quantity="one">%1$s has the following problem:\n\n%2$s\n\nDo you still want to install %1$s?</item>
-        <item quantity="other">%1$s has the following problems:\n\n%2$s\n\nDo you still want to install %1$s?</item>
-    </plurals>
-    <string name="app_warning_before_installation_dialog__title">Warning</string>
-    <plurals name="app_warning_dialog__message">
-        <item quantity="one">%1$s has the following problem:\n\n%2$s</item>
-        <item quantity="other">%1$s has the following problems:\n\n%2$s</item>
-    </plurals>
     <string name="app_warning_dialog__title">Warning</string>
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successfully_installed">Application successfully installed</string>
@@ -72,12 +63,9 @@
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__description">Please note that this app used to be titled Firefox Preview. It has now been transitioned to Firefox Nightly. \n\nFirefox Nightly is a developmental channel for new Mozilla Firefox releases. \n\nFirefox Nightly is designed to showcase the more experimental builds of Firefox. The Nightly channel allows users to experience the newest Firefox innovations in an unstable environment and provide feedback on features and performance to help determine what makes the final release.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_nightly__warning">- This app is designed for developers and testers. It may contain various bugs that can affect your usual work with the browser.</string>
     <string name="firefox_release__description">Firefox Browser for Android is automatically private and incredibly fast. Thousands of online trackers are following you every day, collecting information about where you go online and slowing down your speed. Firefox blocks over 2000 of these trackers by default and there are ad blocker add-ons available if you want to customize your browser even more. With Firefox, you’ll get the security you deserve and the speed you need in a private, mobile browser.</string>
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="firefox_release__warning">- An improved version of Firefox is also available on F-Droid under the name "Fennec F-Droid".</string>
-    <string name="generic_eol_reason__browser_to_old">The browser has not been updated for a long time, so I recommend using another browser temporarily. When the developers release a new update, I will remove this warning.</string>
-    <string name="go_back">Go back</string>
     <string name="iceraven__description">Definitely not brought to you by Mozilla! \n\nIceraven Browser is a web browser for Android, based on Mozilla\'s Fenix version of Firefox, GeckoView and Mozilla Android Components. \n\nOur goal is to be a close fork of the new Firefox for Android that seeks to provide users with more options, more opportunities to customize (including a broad extension library), and more information about the pages they visit and how their browsers are interacting with those pages.</string>
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="iceraven__warning">- The maintainer gives no warranties or guarantees of security or updates or even stability.\n - The project takes longer than usual to provide security updates.</string>
@@ -108,7 +96,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Use already downloaded file from:</string>
     <string name="download_activity__you_can_now_close_this_window">You can now close this window</string>
     <string name="download_activity__label">Download Application</string>
-    <string name="install_app">Install app</string>
     <string name="install_new_app">Install new app</string>
     <string name="install_same_version_dialog__message">The latest version of this app is already installed. Do you want to download and install the latest version again?</string>
     <string name="install_same_version_dialog__title">Same version installed</string>
@@ -123,7 +110,6 @@
     <string name="installed_app_is_not_verified">Installed app is NOT verified</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="installed_version">Installed: %1$s</string>
-    <string name="intent_installer__likely_storage_failure">The operation likely failed because of storage issues. For example, the device may be running low on space, or external media may be unavailable. The user may be able to help free space or insert different external media.</string>
     <string name="kiwi__description">Kiwi Browser is made to browse the internet, read news, watch videos and listen to music, without annoyances.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.
@@ -135,13 +121,10 @@
 \nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts.</string>
     <string name="lockwise__eol_reason">Mozilla dropped the support in December 2021. Please switch to another password safe.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__available_version_loading">Loading…</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API limit exceeded. Retry next hour.</u>"</string>
     <string name="main_activity__no_unmetered_network">No unmetered network</string>
     <string name="main_activity__subtitle">Updater for privacy friendly browsers</string>
     <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
-    <string name="manage_storage_activity__delete_button">Delete cached app updates.</string>
-    <string name="manage_storage_activity__explanation">FFUpdater caches already downloaded app updates and stores them in the \'Android/data/de.marmaro.krt.ffupdater/files/Download\' folder.\n\nThis saves bandwidth when an app is not successfully installed or updated. Also, the cache is needed so that updates that were downloaded in the background can be installed later.\n\nIf you decide to delete these app updates, you may have to download them again.</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abort</string>
     <string name="request_installation_permission_dialog__grant_permission">Grant permission</string>
@@ -185,12 +168,6 @@
     <string name="settings__foreground__update_check__metered__title">Update checks on metered networks</string>
     <string name="settings__foreground_category__summary">Settings when the user interface is visible.</string>
     <string name="settings__foreground_category__title">Foreground</string>
-    <string name="settings__installer__native__summary">Fallback if the session installer does not work on your smartphone. This is more often the case with devices from Samsung or Xiaomi.</string>
-    <string name="settings__installer__native__title">Native installer</string>
-    <string name="settings__installer__root__summary">Uses root permission to install or update apps without user interaction. This requires a rooted smartphone.</string>
-    <string name="settings__installer__root__title">Root installer</string>
-    <string name="settings__installer__session__summary">Recommended for most devices.</string>
-    <string name="settings__installer__session__title">Session installer</string>
     <string name="settings__installer_category__title">Installer</string>
     <string name="settings__theme_battery_saver">Dark when Battery Saver active</string>
     <string name="settings__theme_dark">Dark</string>
@@ -228,11 +205,6 @@
     <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="mull__title">Mull Browser</string>
     <string name="mull__description">This is a privacy oriented and deblobbed web browser based on Mozilla technology. It enables many features upstreamed by the Tor Uplift project using preferences from the arkenfox-user.js project. It is recommended to install \'uBlock Origin\'.</string>
-    <string name="mull__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
-    <string name="notification__no_update_check__channel_name">No background update check</string>
-    <string name="notification__no_update_check__channel_description">Notification channel for warning that no background update check was successful in the last five days.</string>
-    <string name="notification__no_update_check__title">No successful background update check for five days</string>
-    <string name="notification__no_update_check__text">In the last five days FFUpdater was not able to check for updates in the background. If you had your smartphone in flight mode for a long time, you can ignore this message. If not, click here to view the error report.</string>
     <string name="app_card__open_project_page">Open project page in browser</string>
     <string name="ungoogled_chromium__eol_reason">"The developer posted: \"I won't be able to update the versions for some time. If possible please use one of the browsers [that FFUpdater supports] in the meantime.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123"</string>
     <string name="tor_browser__title">Tor Browser</string>
@@ -242,7 +214,6 @@
     <string name="add_app_activity__label">Add New Application</string>
     <string name="crash_report_activity__label">Crash Reporter</string>
     <string name="add_app_activity__title_from_mozilla">From Mozilla</string>
-    <string name="add_app_activity__title_based_on_firefox">Based on Firefox</string>
     <string name="add_app_activity__title_good_privacy_browsers">Good Privacy Browsers</string>
     <string name="add_app_activity__title_better_than_google_chrome">Better than Google Chrome</string>
     <string name="add_app_activity__title_other_applications">Other Applications</string>
@@ -262,7 +233,6 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid is based on the latest Firefox release (codenamed Fenix). It has proprietary bits and telemetry removed, but still connects to various Mozilla and Google services that can track users.</string>
     <string name="fennecfdroid__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
-    <string name="main_activity__ignored_apps_due_fingerprints">The following apps have different certificate fingerprints and will be ignored: %s. You can fix it by uninstalling and then installing them with FFUpdater.</string>
     <string name="network__dns_provider__title">DNS settings</string>
     <string name="network__custom_doh_server__dialog_message">Enter the connection details for the custom DoH server in one of these formats:\n\nurl;ip1\n\nurl;ip1;ip2\n\nurl;ip1;ip2;ip3\n\nurl;ip1;ip2;ip3;ip4\n\nFor example: https://dns.google/dns-query;8.8.8.8 or https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__custom_doh_server__title">Custom DNS over HTTPS server</string>
