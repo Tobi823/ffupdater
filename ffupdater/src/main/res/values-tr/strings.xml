@@ -350,4 +350,5 @@
 \nTor Browser HER ZAMAN ücretsiz olacaktır, ancak bağışlar bunu mümkün kılmaktadır. Tor Projesi ABD merkezli 501(c)(3) kar amacı gütmeyen bir kuruluştur. Lütfen bugün bir katkıda bulunmayı düşünün. Her hediye bir fark yaratır: https://donate.torproject.org.
 \n
 \nHataları nasıl bildireceğinizi ve geri bildirimde bulunacağınızı https://support.torproject.org/misc/bug-or-feedback/ adresinden öğrenin!</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Bu uygulama farklı bir sertifika ile imzalandı ve FFUpdater ile güncellenemez.</string>
 </resources>
