@@ -127,15 +127,7 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         val assets: List<Asset>,
         @SerializedName("published_at")
         val publishedAt: String,
-    ) {
-        fun anyAssetNameEndsWith(suffix: String): Boolean {
-            return assets.any { it.name.endsWith(suffix) }
-        }
-
-        fun anyAssetNameStartsAndEnds(prefix: String, suffix: String): Boolean {
-            return assets.any { it.nameStartsOrEnds(prefix, suffix) }
-        }
-    }
+    )
 
     data class Asset(
         @SerializedName("name")

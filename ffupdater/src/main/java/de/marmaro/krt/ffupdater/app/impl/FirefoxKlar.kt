@@ -67,7 +67,7 @@ class FirefoxKlar(
             settings = networkSettings
         )
 
-        val version = result.tagName.trim { it == 'v' } //convert v108.1.1 to 108.1.1
+        val version = result.tagName.removePrefix("v") //convert v108.1.1 to 108.1.1
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
