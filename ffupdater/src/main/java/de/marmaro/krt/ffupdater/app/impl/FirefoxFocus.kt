@@ -17,7 +17,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
- * https://github.com/mozilla-mobile/focus-android
+ * https://github.com/mozilla-mobile/firefox-android
  * https://api.github.com/repos/mozilla-mobile/focus-android/releases
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/

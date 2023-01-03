@@ -37,7 +37,7 @@ class FirefoxNightly(
     override val packageName = "org.mozilla.fenix"
     override val title = R.string.firefox_nightly__title
     override val description = R.string.firefox_nightly__description
-    override val installationWarning = R.string.firefox_nightly__warning
+    override val installationWarning = R.string.generic_app_warning__beta_version
     override val downloadSource = "Mozilla CI"
     override val icon = R.mipmap.ic_logo_firefox_nightly
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP

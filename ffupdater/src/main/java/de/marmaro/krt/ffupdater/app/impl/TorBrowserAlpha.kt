@@ -29,7 +29,7 @@ class TorBrowserAlpha(
     override val packageName = "org.torproject.torbrowser_alpha"
     override val title = R.string.tor_browser_alpha__title
     override val description = R.string.tor_browser_alpha__description
-    override val installationWarning = R.string.tor_browser_alpha__warning
+    override val installationWarning = R.string.generic_app_warning__beta_version
     override val downloadSource = "https://www.torproject.org/download/alpha/"
     override val icon = R.mipmap.ic_logo_tor_browser_alpha
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
