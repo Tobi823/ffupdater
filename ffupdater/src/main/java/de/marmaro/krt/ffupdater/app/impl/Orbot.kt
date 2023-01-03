@@ -54,14 +54,8 @@ class Orbot(
             repoOwner = "guardianproject",
             repoName = "orbot",
             initResultsPerPage = 3,
-            isValidRelease = { release ->
-                !release.isPreRelease &&
-                        release.assets.any { asset -> asset.name.endsWith(".apk") }
-            },
-            isSuitableAsset = { asset ->
-                asset.name.startsWith("Orbot") &&
-                        asset.name.endsWith(assetSuffix)
-            },
+            isValidRelease = { !it.isPreRelease },
+            isSuitableAsset = { it.nameStartsOrEnds("Orbot", assetSuffix) },
             dontUseApiForLatestRelease = false,
             settings = networkSettings
         )

@@ -56,14 +56,8 @@ class BraveBeta(
             repoOwner = "brave",
             repoName = "brave-browser",
             initResultsPerPage = 20,
-            isValidRelease = { release ->
-                !release.isPreRelease &&
-                        release.name.startsWith("Beta v") &&
-                        release.assets.any { asset -> asset.name.endsWith(".apk") }
-            },
-            isSuitableAsset = { asset ->
-                asset.name == fileName
-            },
+            isValidRelease = { !it.isPreRelease && it.name.startsWith("Beta v") },
+            isSuitableAsset = { it.name == fileName },
             dontUseApiForLatestRelease = true,
             settings = networkSettings
         )

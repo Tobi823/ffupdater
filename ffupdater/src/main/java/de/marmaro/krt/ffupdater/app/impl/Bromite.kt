@@ -49,10 +49,7 @@ class Bromite(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val fileName = when (deviceAbiExtractor.findBestAbi(
-            supportedAbis,
-            deviceSettings.prefer32BitApks
-        )) {
+        val fileName = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
             ABI.ARMEABI_V7A -> "arm_ChromePublic.apk"
             ABI.ARM64_V8A -> "arm64_ChromePublic.apk"
             ABI.X86 -> "x86_ChromePublic.apk"
@@ -63,13 +60,8 @@ class Bromite(
             repoOwner = "bromite",
             repoName = "bromite",
             initResultsPerPage = 5,
-            isValidRelease = { release ->
-                !release.isPreRelease &&
-                        release.assets.any { asset -> asset.name.endsWith(".apk") }
-            },
-            isSuitableAsset = { asset ->
-                asset.name == fileName
-            },
+            isValidRelease = { !it.isPreRelease },
+            isSuitableAsset = { it.name == fileName },
             dontUseApiForLatestRelease = false,
             settings = networkSettings
         )

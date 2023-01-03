@@ -66,12 +66,8 @@ class Kiwi(
             repoOwner = "kiwibrowser",
             repoName = "src.next",
             initResultsPerPage = 3,
-            isValidRelease = { release ->
-                release.assets.any { asset -> asset.name.endsWith(".apk") }
-            },
-            isSuitableAsset = { asset ->
-                Regex(fileRegex).matches(asset.name)
-            },
+            isValidRelease = { true },
+            isSuitableAsset = { Regex(fileRegex).matches(it.name) },
             dontUseApiForLatestRelease = true,
             settings = networkSettings
         )

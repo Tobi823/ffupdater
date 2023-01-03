@@ -49,26 +49,20 @@ class FirefoxKlar(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val fileSuffix = when (deviceAbiExtractor.findBestAbi(
-            supportedAbis,
-            deviceSettings.prefer32BitApks
-        )) {
-            ABI.ARMEABI_V7A -> "-armeabi-v7a.apk"
-            ABI.ARM64_V8A -> "-arm64-v8a.apk"
-            ABI.X86 -> "-x86.apk"
-            ABI.X86_64 -> "-x86_64.apk"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
+        val fileSuffix =
+            when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
+                ABI.ARMEABI_V7A -> "-armeabi-v7a.apk"
+                ABI.ARM64_V8A -> "-arm64-v8a.apk"
+                ABI.X86 -> "-x86.apk"
+                ABI.X86_64 -> "-x86_64.apk"
+                else -> throw IllegalArgumentException("ABI is not supported")
+            }
         val result = consumer.updateCheck(
             repoOwner = "mozilla-mobile",
             repoName = "firefox-android",
             initResultsPerPage = 5,
-            isValidRelease = {
-                !it.isPreRelease && "Klar" in it.name && it.anyAssetNameEndsWith(fileSuffix)
-            },
-            isSuitableAsset = {
-                it.name.startsWith("klar-") && it.name.endsWith(fileSuffix)
-            },
+            isValidRelease = { !it.isPreRelease && "Klar" in it.name },
+            isSuitableAsset = { it.nameStartsOrEnds("klar-", fileSuffix) },
             dontUseApiForLatestRelease = false,
             settings = networkSettings
         )

@@ -43,13 +43,8 @@ class FFUpdater(
             repoOwner = "Tobi823",
             repoName = "ffupdater",
             initResultsPerPage = 5,
-            isValidRelease = { release ->
-                !release.isPreRelease &&
-                        release.assets.any { asset -> asset.name.endsWith(".apk") }
-            },
-            isSuitableAsset = { asset ->
-                asset.name.endsWith(".apk")
-            },
+            isValidRelease = { !it.isPreRelease },
+            isSuitableAsset = { it.name.endsWith(".apk") },
             dontUseApiForLatestRelease = false,
             settings = settings
         )

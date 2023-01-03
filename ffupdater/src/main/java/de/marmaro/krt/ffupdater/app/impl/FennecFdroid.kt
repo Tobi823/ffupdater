@@ -44,10 +44,7 @@ class FennecFdroid(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val index = when (deviceAbiExtractor.findBestAbi(
-            supportedAbis,
-            deviceSettings.prefer32BitApks
-        )) {
+        val index = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
             ABI.ARMEABI_V7A -> 1
             ABI.ARM64_V8A -> 2
             else -> throw IllegalArgumentException("ABI is not supported")

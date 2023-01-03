@@ -56,14 +56,8 @@ class BraveNightly(
             repoOwner = "brave",
             repoName = "brave-browser",
             initResultsPerPage = 10,
-            isValidRelease = { release ->
-                !release.isPreRelease &&
-                        release.name.startsWith("Nightly v") &&
-                        release.assets.any { asset -> asset.name.endsWith(".apk") }
-            },
-            isSuitableAsset = { asset ->
-                asset.name == fileName
-            },
+            isValidRelease = { !it.isPreRelease && it.name.startsWith("Nightly v") },
+            isSuitableAsset = { it.name == fileName },
             dontUseApiForLatestRelease = true,
             settings = networkSettings
         )

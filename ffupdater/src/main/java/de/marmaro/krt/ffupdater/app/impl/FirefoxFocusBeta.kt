@@ -64,12 +64,8 @@ class FirefoxFocusBeta(
             repoOwner = "mozilla-mobile",
             repoName = "firefox-android",
             initResultsPerPage = 5,
-            isValidRelease = {
-                it.isPreRelease && "Focus" in it.name && it.anyAssetNameStartsAndEnds("focus-", fileSuffix)
-            },
-            isSuitableAsset = {
-                it.nameStartsOrEnds("focus-", fileSuffix)
-            },
+            isValidRelease = { it.isPreRelease && "Focus" in it.name },
+            isSuitableAsset = { it.nameStartsOrEnds("focus-", fileSuffix) },
             dontUseApiForLatestRelease = false,
             settings = networkSettings
         )
