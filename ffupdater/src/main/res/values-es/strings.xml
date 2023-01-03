@@ -358,4 +358,5 @@
 \nEl Navegador Tor SIEMPRE será gratuito, pero las donaciones lo hacen posible. El Proyecto Tor es una organización sin ánimo de lucro 501(c)(3) con sede en los EE.UU.. Por favor, considere hacer una contribución hoy. Cada donación marca la diferencia: https://donate.torproject.org.
 \n
 \n¡Aprenda cómo informar de errores y dar su opinión en https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Esta aplicación se firmó con un certificado diferente y no se puede actualizar con FFUpdater.</string>
 </resources>
