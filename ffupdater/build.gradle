@@ -17,11 +17,12 @@ repositories {
 }
 
 dependencies {
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.8'
+    // TODO upgrade to 2.0.0 after com.android.tools.build:gradle:7.4.0 is available
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
 
     // solve dependency conflict https://stackoverflow.com/a/69832319
@@ -66,11 +67,8 @@ android {
 
     defaultConfig {
         versionCode 121
-        versionName "77.5.0" // MAJOR.MINOR.PATCH
-        // MAJOR version when you make incompatible API changes,
-        // MINOR version when you add functionality in a backwards compatible manner, and
-        // PATCH version when you make backwards compatible bug fixes.
-
+        // (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
+        versionName "77.5.0"
         minSdkVersion 21
         targetSdkVersion 33
         vectorDrawables.useSupportLibrary = true
