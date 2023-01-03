@@ -303,4 +303,7 @@
     <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
     <string name="duckduckgo_android__description">The DuckDuckGo app provides the most comprehensive online privacy protection with the push of a button. With one download, you get a new everyday browser that offers seamless protection while you search and browse, and access to tracking protections for emails you receive and apps you use. Many of these protections are not offered in most popular browsers by default.</string>
     <string name="duckduckgo_android__warning">- DuckDuckGo uses the system webview to display websites.\n- There was a controversy about not blocking all cookies from Microsoft - but this has been fixed.</string>
+    <string name="privacy_browser__title">Privacy Browser</string>
+    <string name="privacy_browser__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
+    <string name="privacy_browser__description">The only way to prevent data from being abused is to prevent it from being collected in the first place. Privacy Browser has two primary goals: Minimize the data that is sent to the internet and minimize the data that is stored on the device.</string>
 </resources>

@@ -269,6 +269,7 @@ class BackgroundSettingsHelperTest {
                 "MULL",
                 "MULL_FROM_REPO",
                 "ORBOT",
+                "PRIVACY_BROWSER",
                 "TOR_BROWSER",
                 "TOR_BROWSER_ALPHA",
                 "UNGOOGLED_CHROMIUM",

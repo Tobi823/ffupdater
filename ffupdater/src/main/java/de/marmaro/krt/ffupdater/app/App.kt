@@ -26,6 +26,7 @@ enum class App(val implFactory: () -> AppBase) {
     MULCH({ Mulch() }),
     MULL_FROM_REPO({ MullFromRepo() }),
     ORBOT({ Orbot() }),
+    PRIVACY_BROWSER({ PrivacyBrowser() }),
     TOR_BROWSER({ TorBrowser() }),
     TOR_BROWSER_ALPHA({ TorBrowserAlpha() }),
     UNGOOGLED_CHROMIUM({ UngoogledChromium() }),
