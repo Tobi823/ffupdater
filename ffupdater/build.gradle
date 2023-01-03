@@ -64,6 +64,8 @@ dependencies {
 }
 
 android {
+    namespace = 'de.marmaro.krt.ffupdater'
+
     compileSdkVersion 33
 
     defaultConfig {

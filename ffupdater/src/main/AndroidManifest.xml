@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="de.marmaro.krt.ffupdater"
     android:installLocation="auto">
     <!-- Touchscreen is enabled by default but not always needed -->
     <uses-feature
