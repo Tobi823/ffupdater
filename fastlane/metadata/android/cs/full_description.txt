@@ -17,6 +17,7 @@ Prohlížeče, které jsou lepší než Google Chrome:
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Browser Next
+- Privacy Browser (F-Droid)
 - Vivaldi
 
 Další aplikace:

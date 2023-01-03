@@ -17,6 +17,7 @@
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Next 浏览器
+- Privacy Browser (F-Droid)
 - Vivaldi
 
 其他应用：

@@ -17,6 +17,7 @@ navigateurs qui sont meilleurs que Google Chrome :
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Browser Next
+- Privacy Browser (F-Droid)
 - Vivaldi
 
 Autres applications :

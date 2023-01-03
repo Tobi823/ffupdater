@@ -17,6 +17,7 @@ Google Chrome'dan daha iyi olan tarayıcılar:
 - DuckDuckGo Browser
 - Chromium
 - Kiwi Browser Next
+- Privacy Browser (F-Droid)
 - Vivaldi
 
 Diğer uygulamalar:

@@ -17,6 +17,7 @@ A Google Chrome-nál jobb böngészők:
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Browser Következő
+- Privacy Browser (F-Droid)
 - Vivaldi
 
 Egyéb alkalmazások:

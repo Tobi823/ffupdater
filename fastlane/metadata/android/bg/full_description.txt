@@ -17,6 +17,7 @@
 - Хромиум
 - DuckDuckGo Browser
 - Kiwi Browser Next
+- Privacy Browser (F-Droid)
 - Вивалди
 
 Други приложения:

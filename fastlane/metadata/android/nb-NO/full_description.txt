@@ -17,6 +17,7 @@ Nettleser som er bedre enn Google Chrome:
 - Krom
 - DuckDuckGo Browser
 - Kiwi-nettleseren neste
+- Privacy Browser (F-Droid)
 - Vivaldi
 
 Andre applikasjoner:

@@ -17,8 +17,8 @@ Google Chromeより優れたブラウザ
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Browser Next
-- Vivaldi。
-- ヴィヴァルディ
+- Privacy Browser (F-Droid)
+- Vivaldi
 
 その他のアプリケーション
 - オルボ
