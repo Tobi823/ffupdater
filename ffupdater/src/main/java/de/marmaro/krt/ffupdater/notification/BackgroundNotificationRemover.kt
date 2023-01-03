@@ -11,12 +11,7 @@ import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.Compa
 
 class BackgroundNotificationRemover {
 
-    fun removeUpdateAvailableNotification(context: Context) {
-        App.values()
-            .forEach { removeUpdateAvailableNotification(context, it) }
-    }
-
-    fun removeUpdateAvailableNotification(context: Context, app: App) {
+    private fun removeUpdateAvailableNotification(context: Context, app: App) {
         getNotificationManager(context)
             .cancel(UPDATE_AVAILABLE_CODE + app.ordinal)
     }
@@ -33,22 +28,12 @@ class BackgroundNotificationRemover {
         }
     }
 
-    fun removeInstallSuccessNotification(context: Context) {
-        App.values()
-            .forEach { removeInstallSuccessNotification(context, it) }
-    }
-
-    fun removeInstallSuccessNotification(context: Context, app: App) {
+    private fun removeInstallSuccessNotification(context: Context, app: App) {
         getNotificationManager(context)
             .cancel(INSTALL_SUCCESS_CODE + app.ordinal)
     }
 
-    fun removeInstallFailureNotification(context: Context) {
-        App.values()
-            .forEach { removeInstallFailureNotification(context, it) }
-    }
-
-    fun removeInstallFailureNotification(context: Context, app: App) {
+    private fun removeInstallFailureNotification(context: Context, app: App) {
         getNotificationManager(context)
             .cancel(INSTALL_FAILURE_ERROR + app.ordinal)
     }
