@@ -14,6 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.time.Duration
 import java.util.stream.Stream
 
+@Suppress("UNUSED_PARAMETER")
 @ExtendWith(MockKExtension::class)
 class BackgroundSettingsHelperTest {
 
@@ -90,8 +91,8 @@ class BackgroundSettingsHelperTest {
     @ParameterizedTest(name = "has \"{0}\" the correct default value \"{2}\"")
     @MethodSource("testDataForBooleanSettings")
     fun `has boolean settings the correct default value`(
-        @Suppress("unused") name: String,
-        @Suppress("unused") preferenceKey: String,
+        name: String,
+        preferenceKey: String,
         defaultValue: Boolean,
         getValue: (BackgroundSettingsHelper) -> Boolean,
     ) {
@@ -103,9 +104,9 @@ class BackgroundSettingsHelperTest {
     @ParameterizedTest(name = "has \"{0}\" the correct value when changed to true")
     @MethodSource("testDataForBooleanSettings")
     fun `has boolean settings the correct value when changed to true`(
-        @Suppress("unused") name: String,
+        name: String,
         preferenceKey: String,
-        @Suppress("unused") defaultValue: Boolean,
+        defaultValue: Boolean,
         getValue: (BackgroundSettingsHelper) -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, true).commit()
@@ -117,9 +118,9 @@ class BackgroundSettingsHelperTest {
     @ParameterizedTest(name = "has \"{0}\" the correct value when changed to false")
     @MethodSource("testDataForBooleanSettings")
     fun `has boolean settings the correct value when changed to false`(
-        @Suppress("unused") name: String,
+        name: String,
         preferenceKey: String,
-        @Suppress("unused") defaultValue: Boolean,
+        defaultValue: Boolean,
         getValue: (BackgroundSettingsHelper) -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, false).commit()
@@ -131,9 +132,9 @@ class BackgroundSettingsHelperTest {
     @ParameterizedTest(name = "has \"{0}\" the correct value when changing values")
     @MethodSource("testDataForBooleanSettings")
     fun `has boolean settings the correct value when changing values`(
-        @Suppress("unused") name: String,
+        name: String,
         preferenceKey: String,
-        @Suppress("unused") defaultValue: Boolean,
+        defaultValue: Boolean,
         getValue: (BackgroundSettingsHelper) -> Boolean,
     ) {
         val sut = BackgroundSettingsHelper(sharedPreferences)

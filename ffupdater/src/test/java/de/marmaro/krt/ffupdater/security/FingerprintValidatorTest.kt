@@ -63,6 +63,7 @@ class FingerprintValidatorTest {
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns signatureBytes
         every {
+            @Suppress("DEPRECATION")
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
@@ -76,9 +77,11 @@ class FingerprintValidatorTest {
     @Test
     fun checkApkFile_withWrongApp_returnInvalid() {
         val packageInfo = PackageInfo()
+        @Suppress("DEPRECATION")
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns signatureBytes
         every {
+            @Suppress("DEPRECATION")
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
@@ -89,9 +92,11 @@ class FingerprintValidatorTest {
     @Test
     fun checkApkFile_withIncorrectSignature_throwException() {
         val packageInfo = PackageInfo()
+        @Suppress("DEPRECATION")
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns Random.nextBytes(938)
         every {
+            @Suppress("DEPRECATION")
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
@@ -105,9 +110,11 @@ class FingerprintValidatorTest {
     @Test
     fun checkInstalledApp_withFirefoxRelease_returnValid() {
         val packageInfo = PackageInfo()
+        @Suppress("DEPRECATION")
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns signatureBytes
         every {
+            @Suppress("DEPRECATION")
             packageManager.getPackageInfo(App.FIREFOX_RELEASE.impl.packageName, GET_SIGNATURES)
         } returns packageInfo
         val actual = runBlocking {
@@ -121,9 +128,11 @@ class FingerprintValidatorTest {
     @Test
     fun checkInstalledApp_withInvalidCertificate_throwException() {
         val packageInfo = PackageInfo()
+        @Suppress("DEPRECATION")
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns Random.nextBytes(938)
         every {
+            @Suppress("DEPRECATION")
             packageManager.getPackageInfo(App.FIREFOX_RELEASE.impl.packageName, GET_SIGNATURES)
         } returns packageInfo
 
