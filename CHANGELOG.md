@@ -1,6 +1,16 @@
-# 2022-12-?? Release 77.6.0 (122)
+# 2023-01-03 Release 77.6.0 (122)
 
-* Add support for Tor Browser Alpha
+* Thanks for the Weblate contribution from: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
+  Oğuz Ersen, Marlon, mondstern
+* Speed up the UI by using RecycleViews
+* Add support for Tor Browser Alpha, DuckDuckGo Browser and Privacy Browser (from F-Droid)
+* Add new type of notification for network errors
+* Use new Github repository for Firefox Focus/Klar
+* Add meta information for Huawei error codes
+* Upgrade to Android 13 and update dependencies
+* Improve regex searches in the code
+* Improve async code with Channels
+* Refactor and cleanup
 
 # 2022-12-25 Release 77.5.0 (121)
 
@@ -366,11 +376,13 @@
 
 # 2021-05-29 Version 74.1.0 (70)
 
-* Add Brave Browser because the APK files are published on GitHub again. (https://github.com/brave/brave-browser/issues/15878)
+* Add Brave Browser because the APK files are published on GitHub
+  again. (https://github.com/brave/brave-browser/issues/15878)
 
 # 2021-05-18 Version 74.0.0 (69)
 
-* Remove Brave Browser because the APK files are no longer published on GitHub. (https://github.com/brave/brave-browser/issues/15878)
+* Remove Brave Browser because the APK files are no longer published on
+  GitHub. (https://github.com/brave/brave-browser/issues/15878)
 
 # 2021-05-18 Version 73.1.4 (68)
 
@@ -391,12 +403,14 @@
 
 # 2021-04-18 Version 73.1.0 (64)
 
-* Trust user certificates when checking for updates and downloading updates (for AdGuard, Tobi823/ffupdater#37)
+* Trust user certificates when checking for updates and downloading updates (for AdGuard,
+  Tobi823/ffupdater#37)
 * Prevent automatic backup of failed downloads by Google's "Auto Backup for Apps"
 
 # 2021-04-17 Version 73.0.1 (63)
 
-* There has been a discussion on Github if the Kiwi browser is spyware: https://github.com/Tobi823/ffupdater/issues/35 (Tobi823/ffupdater#35)
+* There has been a discussion on Github if the Kiwi browser is
+  spyware: https://github.com/Tobi823/ffupdater/issues/35 (Tobi823/ffupdater#35)
   I think that Kiwi is not spyware but stays removed because FFUpdater is about privacy and Kiwi has no
   additional privacy features. F-Droid users can use other stores (like Aurora Store) to install the Kiwi
   browser.
@@ -430,7 +444,8 @@
 
 # 2021-03-14 Version 72.0.0 (60)
 
-* !!! Remove support for Firefox Light because updates are no longer signed and therefore pose a security risk (thanks opened and mega-stoffel)
+* !!! Remove support for Firefox Light because updates are no longer signed and therefore pose a security
+  risk (thanks opened and mega-stoffel)
 * User can disable the background update check on metered networks (thanks williamtheaker)
 * By clicking on the "i"-Icon, you can see the time of the last successful background update check.
 * Fix Brazilian Portuguese translation (thanks mezysinc)
@@ -537,7 +552,8 @@
 * Download Fenix Release/Beta/Nightly, Focus and Klar from Mozilla's Taskcluster (continuous integration
   server)
 * Fix "Light theme is always shown at first run"
-* Thanks Rail Aliiev and Johan Lorenzo from Mozilla for their support <https://bugzilla.mozilla.org/show_bug.cgi?id=1627518>
+* Thanks Rail Aliiev and Johan Lorenzo from Mozilla for their
+  support <https://bugzilla.mozilla.org/show_bug.cgi?id=1627518>
 * Thanks KarlHeinz and DeenHyper74 for their error reporting and support
 
 # 2020-05-20 Version 68.3.7 (42)
@@ -578,7 +594,8 @@
 * Verify the certificate of the downloaded and installed app
 * Many improvements
 * Thanks DeenHyper74 and xin for translations
-* Remove Fennec Beta and Fennec Nightly because their are not developed anymore https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
+* Remove Fennec Beta and Fennec Nightly because their are not developed
+  anymore https://bugzilla.mozilla.org/show_bug.cgi?id=1627518
 
 # 2019-06-28 Version 67.4 (31)
 
@@ -599,7 +616,8 @@
 # 2019-06-28 Version 67.0 (27)
 
 * Fix broken nightly download (thanks dannycolin for the info)
-* Display warning when switching from 'Release' channel to the 'Nightly' or 'Beta' channel (thanks DeenHyper74)
+* Display warning when switching from 'Release' channel to the 'Nightly' or 'Beta' channel (thanks
+  DeenHyper74)
 * Interval between update checks is now configurable (thanks aplufr, wah6Me1l and DeenHyper74)
 
 # 2019-04-25 Version 66.2 (26)
