@@ -15,6 +15,7 @@ Prohlížeče dobré pro ochranu soukromí:
 Prohlížeče, které jsou lepší než Google Chrome:
 - Brave Soukromý prohlížeč, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium
+- DuckDuckGo Browser
 - Kiwi Browser Next
 - Vivaldi
 

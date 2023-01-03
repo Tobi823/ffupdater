@@ -15,6 +15,7 @@ Gode personvernnettlesere:
 Nettleser som er bedre enn Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Krom
+- DuckDuckGo Browser
 - Kiwi-nettleseren neste
 - Vivaldi
 

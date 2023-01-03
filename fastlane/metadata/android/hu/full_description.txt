@@ -15,6 +15,7 @@ Jó adatvédelmi böngészők:
 A Google Chrome-nál jobb böngészők:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium
+- DuckDuckGo Browser
 - Kiwi Browser Következő
 - Vivaldi
 

@@ -11,6 +11,7 @@ enum class App(val implFactory: () -> AppBase) {
     BROMITE({ Bromite() }),
     BROMITE_SYSTEMWEBVIEW({ BromiteSystemWebView() }),
     CHROMIUM({ Chromium() }),
+    DUCKDUCKGO_ANDROID({ DuckDuckGoAndroid() }),
     FENNEC_FDROID({ FennecFdroid() }),
     FFUPDATER({ FFUpdater() }),
     FIREFOX_BETA({ FirefoxBeta() }),

@@ -15,6 +15,7 @@ Przeglądarki dla ochrony Twojej prywatności:
 Przeglądarki, które są lepsze niż Google Chrome:
 - Przegląrarka: Brave, Brave (Beta), Brave (Nightly)
 - Chromium
+- DuckDuckGo Browser
 - Kiwi Browser Next
 - Vivaldi
 

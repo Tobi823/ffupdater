@@ -15,6 +15,7 @@ Buenos navegadores para la privacidad:
 Navegador que son mejores que Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium
+- DuckDuckGo Browser
 - Kiwi Browser Next
 - Vivaldi
 

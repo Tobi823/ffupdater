@@ -300,4 +300,7 @@
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Hide apps that are signed by a different certificate.</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="firefox_focus_beta__description">Use Firefox Focus for everything you want to keep separate from your main browser — for all those get in get out and forget about it moments. No tabs, no fuss, no muss. Block online trackers too. One tap, and your browsing history is completely destroyed.\n\nFirefox Focus is the perfect get in/get out, search and destroy, I’m on a mission that’s none-of-your-business — web browser.</string>
+    <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
+    <string name="duckduckgo_android__description">The DuckDuckGo app provides the most comprehensive online privacy protection with the push of a button. With one download, you get a new everyday browser that offers seamless protection while you search and browse, and access to tracking protections for emails you receive and apps you use. Many of these protections are not offered in most popular browsers by default.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo uses the system webview to display websites.\n- There was a controversy about not blocking all cookies from Microsoft - but this has been fixed.</string>
 </resources>

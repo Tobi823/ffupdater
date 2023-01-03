@@ -252,6 +252,7 @@ class BackgroundSettingsHelperTest {
                 "BROMITE",
                 "BROMITE_SYSTEMWEBVIEW",
                 "CHROMIUM",
+                "DUCKDUCKGO_ANDROID",
                 "FENNEC_FDROID",
                 "FFUPDATER",
                 "FIREFOX_BETA",

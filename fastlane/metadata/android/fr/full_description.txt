@@ -15,6 +15,7 @@ bons navigateurs de confidentialité :
 navigateurs qui sont meilleurs que Google Chrome :
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium
+- DuckDuckGo Browser
 - Kiwi Browser Next
 - Vivaldi
 

@@ -15,6 +15,7 @@ Pārlūkprogrammas, kas nodrošina labu privātumu:
 Pārlūkprogrammas, kas ir labākas par Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium
+- DuckDuckGo Browser
 - Kiwi Browser Next
 - Vivaldi
 

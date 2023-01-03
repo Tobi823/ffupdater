@@ -33,6 +33,7 @@ Browser which are better than Google Chrome:
   [Brave Browser (Nightly)](https://play.google.com/store/apps/details?id=com.brave.browser_nightly&gl=US)
   ([GitHub Repository](https://github.com/brave/brave-browser))
 - [Chromium](https://www.chromium.org/chromium-projects/)
+- [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
 - [Kiwi Browser Next](https://github.com/kiwibrowser/src.next)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 
@@ -75,6 +76,7 @@ The applications are downloaded from these locations:
   Nightly): <https://api.github.com/repos/brave/brave-browser/releases/latest>
 - Bromite, Bromite SystemWebView: <https://api.github.com/repos/bromite/bromite/releases/latest>
 - Chromium: <https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android%2F>
+- DuckDuckGo Browser: <https://api.github.com/repos/duckduckgo/Android/releases/latest>
 - Fennec F-Droid: <https://f-droid.org/repo/org.mozilla.fennec_fdroid_XXXXXXX.apk>
 - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
 - Firefox Focus, Firefox Focus Beta, Firefox
