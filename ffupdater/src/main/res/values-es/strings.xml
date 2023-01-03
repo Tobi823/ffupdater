@@ -351,7 +351,6 @@
     <string name="notification__update_available__generic_channel_descr">Canal de notificaciones para las actualizaciones disponibles de la aplicación.</string>
     <string name="notification__network_error__title">Error del funcionamiento de la red en segundo plano</string>
     <string name="notification__network_error__text">Este error sólo debería producirse en raras ocasiones. Sin embargo, si se produce con frecuencia, debe notificarlo. Haga clic aquí para ver el mensaje de error detallado.</string>
-    <string name="tor_browser_alpha__warning">- Esta aplicación está diseñada para desarrolladores y testeadores. Puede contener varios errores que pueden afectar a tu trabajo habitual con el navegador.</string>
     <string name="tor_browser_alpha__title">Navegador Tor Alfa</string>
     <string name="tor_browser_alpha__description">Tor Browser es el único navegador móvil oficial apoyado por el Proyecto Tor, desarrolladores de la herramienta más fuerte del mundo para la privacidad y la libertad en línea.
 \n

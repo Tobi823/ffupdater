@@ -350,7 +350,6 @@
 \n
 \nOgraniczenie: Jeśli zmienisz \"Ustawienia DNS\" w ustawieniach na serwer DNS over HTTPS, musisz podać domenę serwera proxy. IP nie będzie działać.</string>
     <string name="tor_browser_alpha__title">Przeglądarka Tor Alpha</string>
-    <string name="tor_browser_alpha__warning">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
     <string name="tor_browser_alpha__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.
 \n
 \nDobrowolne darowizny sprawiają, że Przeglądarka Tor ZAWSZE będzie darmowa. Projekt Tor jest 501(c)(3) organizacją non-profit z siedzibą w USA. Proszę rozważyć wsparcie projektu dobrowolną wpłatą: https://donate.torproject.org.

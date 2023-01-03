@@ -337,7 +337,6 @@
     <string name="device__prefer_32bit_apks__title">32 位安装包优先</string>
     <string name="main_activity__app_was_signed_by_different_certificate">此应用使用了不同的证书签名，无法使用 FFUpdater 更新。</string>
     <string name="tor_browser_alpha__title">Tor 浏览器 Alpha 版本</string>
-    <string name="tor_browser_alpha__warning">- 此应用是为开发和测试人员设计的。它可能包含各种会影响你日常使用浏览器体验的错误。</string>
     <string name="tor_browser_alpha__description">Tor 浏览器是 Tor 项目官方支持的唯一移动浏览器，此项目开发者维护着世界上最强大的在线隐私和自由工具。
 \n
 \nTor 浏览器将永远是免费的，但捐赠使其存在。Tor 项目是一个位于美国的 501 (c)(3) 非营利组织。请考虑现在做出捐赠。每一份支持都能发挥作用：https://donate.torproject.org。
