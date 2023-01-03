@@ -346,8 +346,14 @@
     <string name="tor_browser_alpha__title">Tor Browser Alfa</string>
     <string name="tor_browser_alpha__description">Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracını geliştiren Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.
 \n
-\nTor Browser HER ZAMAN ücretsiz olacaktır, ancak bağışlar bunu mümkün kılmaktadır. Tor Projesi ABD merkezli 501(c)(3) kar amacı gütmeyen bir kuruluştur. Lütfen bugün bir katkıda bulunmayı düşünün. Her hediye bir fark yaratır: https://donate.torproject.org.
+\nTor Browser HER ZAMAN ücretsiz olacaktır, ancak bağışlar bunu mümkün kılmaktadır. Tor Projesi ABD merkezli 501©(3) kar amacı gütmeyen bir kuruluştur. Lütfen bugün bir katkıda bulunmayı düşünün. Her hediye bir fark yaratır: https://donate.torproject.org.
 \n
 \nHataları nasıl bildireceğinizi ve geri bildirimde bulunacağınızı https://support.torproject.org/misc/bug-or-feedback/ adresinden öğrenin!</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Bu uygulama farklı bir sertifika ile imzalandı ve FFUpdater ile güncellenemez.</string>
+    <string name="generic_app_warning__beta_version">- Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir.</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Farklı bir sertifika tarafından imzalanan uygulamaları gizle.</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="firefox_focus_beta__description">Ana tarayıcınızdan ayrı tutmak istediğiniz her şey için Firefox Focus\'u kullanın — tüm o girip çıktığınız ve unuttuğunuz anlar için. Sekme yok, telaş yok, karışıklık yok. Çevrim içi izleyicileri de engelleyin. Tek bir dokunuşla tarama geçmişiniz tamamen yok olur.
+\n
+\nFirefox Focus, mükemmel bir giriş/çıkış, arama ve yok etme, sizi ilgilendirmeyen bir görevdeyim — web tarayıcısıdır.</string>
 </resources>
