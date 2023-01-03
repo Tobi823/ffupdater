@@ -12,6 +12,7 @@ internal class LockwiseIT : BaseAppIT() {
 
     @Test
     fun findAppUpdateStatus() {
+        @Suppress("DEPRECATION")
         val lockwise = Lockwise(GithubConsumer.INSTANCE)
         val result = runBlocking { lockwise.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)

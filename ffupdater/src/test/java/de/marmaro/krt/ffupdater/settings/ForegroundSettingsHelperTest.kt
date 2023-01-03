@@ -66,8 +66,8 @@ class ForegroundSettingsHelperTest {
     @ParameterizedTest(name = "has \"{0}\" the correct default value \"{2}\"")
     @MethodSource("testDataForBooleanSettings")
     fun `has boolean settings the correct default value`(
-        name: String,
-        preferenceKey: String,
+        @Suppress("unused") name: String,
+        @Suppress("unused") preferenceKey: String,
         defaultValue: Boolean,
         getValue: (ForegroundSettingsHelper) -> Boolean,
     ) {
@@ -79,9 +79,9 @@ class ForegroundSettingsHelperTest {
     @ParameterizedTest(name = "has \"{0}\" the correct value when changed to true")
     @MethodSource("testDataForBooleanSettings")
     fun `has boolean settings the correct value when changed to true`(
-        name: String,
+        @Suppress("unused") name: String,
         preferenceKey: String,
-        defaultValue: Boolean,
+        @Suppress("unused") defaultValue: Boolean,
         getValue: (ForegroundSettingsHelper) -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, true).commit()
@@ -93,9 +93,9 @@ class ForegroundSettingsHelperTest {
     @ParameterizedTest(name = "has \"{0}\" the correct value when changed to false")
     @MethodSource("testDataForBooleanSettings")
     fun `has boolean settings the correct value when changed to false`(
-        name: String,
+        @Suppress("unused") name: String,
         preferenceKey: String,
-        defaultValue: Boolean,
+        @Suppress("unused") defaultValue: Boolean,
         getValue: (ForegroundSettingsHelper) -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, false).commit()
@@ -107,9 +107,9 @@ class ForegroundSettingsHelperTest {
     @ParameterizedTest(name = "has \"{0}\" the correct value when changing values")
     @MethodSource("testDataForBooleanSettings")
     fun `has boolean settings the correct value when changing values`(
-        name: String,
+        @Suppress("unused") name: String,
         preferenceKey: String,
-        defaultValue: Boolean,
+        @Suppress("unused") defaultValue: Boolean,
         getValue: (ForegroundSettingsHelper) -> Boolean,
     ) {
         val sut = ForegroundSettingsHelper(sharedPreferences, deviceSdkTester)

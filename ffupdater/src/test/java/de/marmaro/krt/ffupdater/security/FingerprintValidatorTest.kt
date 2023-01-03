@@ -59,6 +59,7 @@ class FingerprintValidatorTest {
     @Test
     fun checkApkFile_withCorrectSignature_returnValid() {
         val packageInfo = PackageInfo()
+        @Suppress("DEPRECATION")
         packageInfo.signatures = arrayOf(signature)
         every { signature.toByteArray() } returns signatureBytes
         every {
