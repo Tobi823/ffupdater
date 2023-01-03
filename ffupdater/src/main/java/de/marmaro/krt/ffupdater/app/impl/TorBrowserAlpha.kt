@@ -63,7 +63,6 @@ class TorBrowserAlpha(
             publishDate = date,
             fileSizeBytes = size,
             fileHash = null,
-            firstReleaseHasAssets = true,
         )
     }
 

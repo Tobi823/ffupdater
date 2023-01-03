@@ -65,7 +65,7 @@ class Kiwi(
         val result = consumer.updateCheck(
             repoOwner = "kiwibrowser",
             repoName = "src.next",
-            resultsPerPage = 3,
+            initResultsPerPage = 3,
             isValidRelease = { release ->
                 release.assets.any { asset -> asset.name.endsWith(".apk") }
             },
@@ -83,7 +83,6 @@ class Kiwi(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 

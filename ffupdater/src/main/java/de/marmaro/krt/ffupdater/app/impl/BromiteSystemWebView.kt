@@ -63,7 +63,7 @@ class BromiteSystemWebView(
         val result = consumer.updateCheck(
             repoOwner = "bromite",
             repoName = "bromite",
-            resultsPerPage = 5,
+            initResultsPerPage = 5,
             isValidRelease = { release ->
                 !release.isPreRelease &&
                         release.assets.any { asset -> asset.name.endsWith(".apk") }
@@ -82,7 +82,6 @@ class BromiteSystemWebView(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 

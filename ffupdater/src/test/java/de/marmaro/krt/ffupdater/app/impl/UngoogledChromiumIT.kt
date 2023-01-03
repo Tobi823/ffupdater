@@ -16,6 +16,5 @@ internal class UngoogledChromiumIT : BaseAppIT() {
         val result =
             runBlocking { ungoogledChromium.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
-        assertTrue(result.firstReleaseHasAssets)
     }
 }

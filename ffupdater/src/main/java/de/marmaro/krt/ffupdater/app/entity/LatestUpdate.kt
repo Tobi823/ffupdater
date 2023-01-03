@@ -11,5 +11,4 @@ data class LatestUpdate(
         val publishDate: String? = null,
         val fileSizeBytes: Long? = null,
         val fileHash: Sha256Hash? = null,
-        val firstReleaseHasAssets: Boolean = true,
 ) : Parcelable

@@ -42,7 +42,7 @@ class FFUpdater(
         val result = consumer.updateCheck(
             repoOwner = "Tobi823",
             repoName = "ffupdater",
-            resultsPerPage = 5,
+            initResultsPerPage = 5,
             isValidRelease = { release ->
                 !release.isPreRelease &&
                         release.assets.any { asset -> asset.name.endsWith(".apk") }
@@ -60,7 +60,6 @@ class FFUpdater(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 

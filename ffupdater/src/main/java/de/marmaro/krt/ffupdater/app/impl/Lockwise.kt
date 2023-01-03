@@ -42,7 +42,7 @@ class Lockwise(
         val result = consumer.updateCheck(
             repoOwner = "mozilla-lockwise",
             repoName = "lockwise-android",
-            resultsPerPage = 5,
+            initResultsPerPage = 5,
             isValidRelease = { release ->
                 !release.isPreRelease &&
                         release.assets.any { asset -> asset.name.endsWith(".apk") }
@@ -74,7 +74,6 @@ class Lockwise(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 }

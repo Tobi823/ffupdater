@@ -61,7 +61,7 @@ class UngoogledChromium(
         val result = consumer.updateCheck(
             repoOwner = "ungoogled-software",
             repoName = "ungoogled-chromium-android",
-            resultsPerPage = 2,
+            initResultsPerPage = 2,
             isValidRelease = { release ->
                 !release.isPreRelease &&
                         "webview" !in release.name &&
@@ -81,7 +81,6 @@ class UngoogledChromium(
             version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
             fileHash = null
         )
     }

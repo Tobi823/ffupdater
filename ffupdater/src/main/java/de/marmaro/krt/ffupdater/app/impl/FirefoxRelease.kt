@@ -71,7 +71,6 @@ class FirefoxRelease(
             publishDate = result.releaseDate,
             fileSizeBytes = null,
             fileHash = null,
-            firstReleaseHasAssets = true,
         )
     }
 

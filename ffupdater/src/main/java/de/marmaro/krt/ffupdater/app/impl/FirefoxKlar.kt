@@ -62,7 +62,7 @@ class FirefoxKlar(
         val result = consumer.updateCheck(
             repoOwner = "mozilla-mobile",
             repoName = "firefox-android",
-            resultsPerPage = 5,
+            initResultsPerPage = 5,
             isValidRelease = {
                 !it.isPreRelease && "Klar" in it.name && it.anyAssetNameEndsWith(fileSuffix)
             },
@@ -81,7 +81,6 @@ class FirefoxKlar(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 

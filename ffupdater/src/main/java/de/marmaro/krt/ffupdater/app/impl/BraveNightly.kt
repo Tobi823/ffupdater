@@ -55,7 +55,7 @@ class BraveNightly(
         val result = consumer.updateCheck(
             repoOwner = "brave",
             repoName = "brave-browser",
-            resultsPerPage = 10,
+            initResultsPerPage = 10,
             isValidRelease = { release ->
                 !release.isPreRelease &&
                         release.name.startsWith("Nightly v") &&
@@ -75,7 +75,6 @@ class BraveNightly(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 

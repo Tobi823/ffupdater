@@ -66,7 +66,7 @@ class Iceraven(
         val result = consumer.updateCheck(
             repoOwner = "fork-maintainers",
             repoName = "iceraven-browser",
-            resultsPerPage = 3,
+            initResultsPerPage = 3,
             isValidRelease = { release ->
                 !release.isPreRelease &&
                         release.assets.any { asset -> asset.name.endsWith(".apk") }
@@ -84,7 +84,6 @@ class Iceraven(
             version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
             fileHash = null,
         )
     }

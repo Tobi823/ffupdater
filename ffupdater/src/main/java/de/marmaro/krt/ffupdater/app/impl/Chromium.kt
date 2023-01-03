@@ -66,7 +66,6 @@ class Chromium(
             publishDate = storageObject.timestamp,
             fileSizeBytes = storageObject.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = true,
         )
     }
 

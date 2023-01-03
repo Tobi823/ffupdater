@@ -53,7 +53,7 @@ class Orbot(
         val result = consumer.updateCheck(
             repoOwner = "guardianproject",
             repoName = "orbot",
-            resultsPerPage = 3,
+            initResultsPerPage = 3,
             isValidRelease = { release ->
                 !release.isPreRelease &&
                         release.assets.any { asset -> asset.name.endsWith(".apk") }
@@ -71,7 +71,6 @@ class Orbot(
             version = result.tagName,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
             fileHash = null,
         )
     }

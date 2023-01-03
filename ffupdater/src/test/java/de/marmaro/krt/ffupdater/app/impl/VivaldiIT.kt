@@ -16,6 +16,5 @@ internal class VivaldiIT : BaseAppIT() {
         val result = runBlocking { vivaldi.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         assertFalse(result.version.isEmpty())
-        assertTrue(result.firstReleaseHasAssets)
     }
 }

@@ -15,6 +15,5 @@ internal class LockwiseIT : BaseAppIT() {
         val lockwise = Lockwise(GithubConsumer.INSTANCE)
         val result = runBlocking { lockwise.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
-        assertTrue(result.firstReleaseHasAssets)
     }
 }

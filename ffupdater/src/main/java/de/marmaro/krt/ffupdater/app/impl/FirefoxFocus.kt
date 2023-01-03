@@ -62,7 +62,7 @@ class FirefoxFocus(
         val result = consumer.updateCheck(
             repoOwner = "mozilla-mobile",
             repoName = "firefox-android",
-            resultsPerPage = 5,
+            initResultsPerPage = 5,
             isValidRelease = {
                 !it.isPreRelease && "Focus" in it.name && it.anyAssetNameEndsWith(fileSuffix)
             },
@@ -80,7 +80,6 @@ class FirefoxFocus(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 

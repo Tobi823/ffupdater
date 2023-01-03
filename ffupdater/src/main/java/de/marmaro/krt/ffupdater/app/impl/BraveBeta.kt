@@ -55,7 +55,7 @@ class BraveBeta(
         val result = consumer.updateCheck(
             repoOwner = "brave",
             repoName = "brave-browser",
-            resultsPerPage = 20,
+            initResultsPerPage = 20,
             isValidRelease = { release ->
                 !release.isPreRelease &&
                         release.name.startsWith("Beta v") &&
@@ -75,7 +75,6 @@ class BraveBeta(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            firstReleaseHasAssets = result.firstReleaseHasAssets,
         )
     }
 

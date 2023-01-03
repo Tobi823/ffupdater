@@ -26,7 +26,4 @@ data class AppUpdateStatus(
 
     val fileHash: Sha256Hash?
         get() = latestUpdate.fileHash
-
-    val firstReleaseHasAssets: Boolean
-        get() = latestUpdate.firstReleaseHasAssets
 }

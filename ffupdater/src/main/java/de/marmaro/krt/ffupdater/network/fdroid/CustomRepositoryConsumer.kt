@@ -38,8 +38,7 @@ class CustomRepositoryConsumer(
             version = apk.versionName,
             publishDate = Instant.ofEpochMilli(apk.added).toString(),
             fileSizeBytes = apk.size,
-            fileHash = Sha256Hash(apk.hash),
-            firstReleaseHasAssets = true
+            fileHash = Sha256Hash(apk.hash)
         )
     }
 
