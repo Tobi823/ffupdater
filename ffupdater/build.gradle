@@ -18,6 +18,7 @@ repositories {
 
 dependencies {
     // TODO upgrade to 2.0.0 after com.android.tools.build:gradle:7.4.0 is available
+    //noinspection GradleDependency
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
 
     implementation 'androidx.appcompat:appcompat:1.5.1'

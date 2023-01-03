@@ -142,6 +142,11 @@ class DownloadActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
     private fun tryOpenDownloadFolderInFileManager() {
         val absolutePath = viewModel.app!!.downloadedFileCache.getCacheFolder(this).absolutePath
         val uri = Uri.parse("file://$absolutePath/")

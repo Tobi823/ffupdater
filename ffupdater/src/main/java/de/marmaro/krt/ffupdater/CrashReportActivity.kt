@@ -20,6 +20,7 @@ class CrashReportActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crash_report)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         findViewById<TextView>(R.id.crash_report__explanation_textview).text =
             intent.extras?.getString(EXTRA_EXCEPTION_EXPLANATION, "/")
@@ -38,6 +39,11 @@ class CrashReportActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.crash_report__exception_stack_trace).text =
             intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE) ?: "/"
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
     private fun copyErrorMessageToClipboard() {

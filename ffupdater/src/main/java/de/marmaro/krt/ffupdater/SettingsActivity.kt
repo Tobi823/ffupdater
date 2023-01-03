@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater
 
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -44,12 +43,9 @@ class SettingsActivity : AppCompatActivity() {
         BackgroundJob.initBackgroundUpdateCheck(this)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
