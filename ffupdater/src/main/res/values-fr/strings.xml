@@ -204,6 +204,7 @@
 \n%2$s
 \n
 \nVoulez vous continuer l\'installation %1$s\?</item>
-        <item quantity="other"></item>
+        <item quantity="other"/>
     </plurals>
+    <string name="app_warning_dialog__title">Avertissement</string>
 </resources>
