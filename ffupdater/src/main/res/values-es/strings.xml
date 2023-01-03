@@ -354,8 +354,14 @@
     <string name="tor_browser_alpha__title">Navegador Tor Alfa</string>
     <string name="tor_browser_alpha__description">Tor Browser es el único navegador móvil oficial apoyado por el Proyecto Tor, desarrolladores de la herramienta más fuerte del mundo para la privacidad y la libertad en línea.
 \n
-\nEl Navegador Tor SIEMPRE será gratuito, pero las donaciones lo hacen posible. El Proyecto Tor es una organización sin ánimo de lucro 501(c)(3) con sede en los EE.UU.. Por favor, considere hacer una contribución hoy. Cada donación marca la diferencia: https://donate.torproject.org.
+\nEl Navegador Tor SIEMPRE será gratuito, pero las donaciones lo hacen posible. El Proyecto Tor es una organización sin ánimo de lucro 501©(3) con sede en los EE.UU.. Por favor, considere hacer una contribución hoy. Cada donación marca la diferencia: https://donate.torproject.org.
 \n
 \n¡Aprenda cómo informar de errores y dar su opinión en https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Esta aplicación se firmó con un certificado diferente y no se puede actualizar con FFUpdater.</string>
+    <string name="generic_app_warning__beta_version">- Esta aplicación está diseñada para desarrolladores y testeadores. Puede contener varios errores que pueden afectar a tu trabajo habitual con el navegador.</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Ocultar aplicaciones firmadas por un certificado diferente.</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="firefox_focus_beta__description">Usa Firefox Focus para todo lo que quieras mantener separado de tu navegador principal, para todos esos momentos en los que entras, sales y te olvidas de todo. Sin pestañas, sin líos, sin complicaciones. Bloquea también los rastreadores online. Un toque y tu historial de navegación será completamente destruido.
+\n
+\nFirefox Focus es el navegador perfecto para entrar/salir, buscar y destruir, estoy en una misión que no es de tu incumbencia.</string>
 </resources>
