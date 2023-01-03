@@ -3,7 +3,7 @@
 От Mozilla или на основата на Firefox:
 - Fennec F-Droid
 - Firefox Browser, Firefox за Android Beta, Firefox Nightly
-- Firefox Focus, Firefox Klar
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Четецът Мул
 - Четецът Тор, Tor Browser Alpha

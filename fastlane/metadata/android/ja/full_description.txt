@@ -3,7 +3,7 @@
 Mozilla または Firefox ベースのブラウザ:
 - Fennec F-Droid
 - Firefox ブラウザ、Android Beta 版 Firefox、Firefox Nightly
-- Firefox Focus、Firefox Klar
+- Firefox Focus、Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull Browser
 - Tor Browser, Tor Browser Alpha

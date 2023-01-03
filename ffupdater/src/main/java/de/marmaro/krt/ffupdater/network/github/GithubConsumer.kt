@@ -78,6 +78,10 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         fun anyAssetNameEndsWith(suffix: String): Boolean {
             return assets.any { it.name.endsWith(suffix) }
         }
+
+        fun anyAssetNameStartsAndEnds(prefix: String, suffix: String): Boolean {
+            return assets.any { it.nameStartsOrEnds(prefix, suffix) }
+        }
     }
 
     data class Asset(
@@ -87,7 +91,11 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         val downloadUrl: String,
         @SerializedName("size")
         val fileSizeBytes: Long,
-    )
+    ) {
+        fun nameStartsOrEnds(prefix: String, suffix: String): Boolean {
+            return name.startsWith(prefix) && name.endsWith(suffix)
+        }
+    }
 
     data class Result(
         val tagName: String,

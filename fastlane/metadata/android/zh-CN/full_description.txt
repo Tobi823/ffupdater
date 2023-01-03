@@ -3,7 +3,7 @@
 来自 Mozilla 或基于 Firefox 的浏览器：
 - Fennec F-Droid
 - Firefox 浏览器、Firefox 公测版、Firefox 每夜版
-- Firefox Focus、Firefox Klar
+- Firefox Focus、Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull 浏览器
 - Tor 浏览器, Tor Browser Alpha

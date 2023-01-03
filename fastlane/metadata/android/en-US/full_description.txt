@@ -3,7 +3,7 @@ Installs and updates the following browsers:
 Browsers from Mozilla or based on Firefox:
 - Fennec F-Droid
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
-- Firefox Focus, Firefox Klar
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull Browser
 - Tor Browser, Tor Browser Alpha

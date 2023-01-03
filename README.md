@@ -11,7 +11,7 @@ Browsers from Mozilla or based on Firefox:
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
   [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
   ([GitHub Repository](https://github.com/mozilla-mobile/fenix))
-- [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus),
+- [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus), Firefox Focus Beta,
   [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
   ([GitHub Repository](https://github.com/mozilla-mobile/focus-android))
 - [Mull Browser](https://divestos.org/index.php?page=our_apps)
@@ -77,7 +77,7 @@ The applications are downloaded from these locations:
 - Chromium: <https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android%2F>
 - Fennec F-Droid: <https://f-droid.org/repo/org.mozilla.fennec_fdroid_XXXXXXX.apk>
 - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
-- Firefox Focus, Firefox
+- Firefox Focus, Firefox Focus Beta, Firefox
   Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
 - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
 - Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>

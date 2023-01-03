@@ -3,7 +3,7 @@
 Браузеры от Mozilla или на базе Firefox:
 - Fennec F-Droid
 - Firefox Browser, Firefox для Android Beta, Firefox Nightly
-- Firefox Focus, Firefox Klar
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull Browser
 - Tor Browser, Tor Browser Alpha

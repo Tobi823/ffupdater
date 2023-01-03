@@ -3,7 +3,7 @@ Aşağıdaki tarayıcıları kurar ve günceller:
 Mozilla veya Firefox tabanlı tarayıcılar
 - Fennec F-Droid
 - Firefox Tarayıcı, Android için Firefox Beta, Firefox Nightly
-- Firefox Focus, Firefox Klar
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull Tarayıcı
 - Tor Browser, Tor Browser Alpha

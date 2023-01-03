@@ -256,6 +256,7 @@ class BackgroundSettingsHelperTest {
                 "FFUPDATER",
                 "FIREFOX_BETA",
                 "FIREFOX_FOCUS",
+                "FIREFOX_FOCUS_BETA",
                 "FIREFOX_KLAR",
                 "FIREFOX_NIGHTLY",
                 "FIREFOX_RELEASE",

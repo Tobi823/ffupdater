@@ -3,7 +3,7 @@ Instaluje i aktualizuje następujące przeglądarki:
 Przeglądarki Mozilli lub oparte na Firefoksie:
 - Fennec F-Droid
 - Przeglądarka: Firefox, Firefox Beta, Firefox Nightly
-- Firefox Focus, Firefox Klar
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull
 - Tor, Tor Browser Alpha

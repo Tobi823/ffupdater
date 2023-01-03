@@ -15,6 +15,7 @@ enum class App(val implFactory: () -> AppBase) {
     FFUPDATER({ FFUpdater() }),
     FIREFOX_BETA({ FirefoxBeta() }),
     FIREFOX_FOCUS({ FirefoxFocus() }),
+    FIREFOX_FOCUS_BETA({ FirefoxFocusBeta() }),
     FIREFOX_KLAR({ FirefoxKlar() }),
     FIREFOX_NIGHTLY({ FirefoxNightly() }),
     FIREFOX_RELEASE({ FirefoxRelease() }),

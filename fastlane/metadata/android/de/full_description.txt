@@ -3,7 +3,7 @@ Installiert und aktualisiert folgende Browser:
 Browser von Mozilla oder Browser auf des Firefoxes:
 - Fennec F-Droid
 - Firefox Browser, Firefox für Android Beta, Firefox Nightly
-- Firefox Fokus, Firefox Klar
+- Firefox Fokus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull Browser
 - Tor Browser, Tor Browser Alpha

@@ -3,7 +3,7 @@ Instala y actualiza los siguientes navegadores:
 Navegadores de Mozilla o basados en Firefox:
 - Fennec F-Droid
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
-- Firefox Focus, Firefox Klar
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull Browser
 - Tor Browser, Tor Browser Alpha

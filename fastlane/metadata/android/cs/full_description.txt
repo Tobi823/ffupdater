@@ -3,7 +3,7 @@ Nainstaluje a aktualizuje následující prohlížeče:
 Prohlížeče od společnosti Mozilla nebo založené na Firefoxu:
 - Fennec F-Droid
 - Firefox prohlížeč, Firefox Beta pro Android, Firefox Nightly
-- Firefox Focus, Firefox Klar
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Mull prohlížeč
 - Tor Browser, Tor Browser Alpha
