@@ -310,4 +310,11 @@
     <string name="firefox_focus_beta__description">Ana tarayıcınızdan ayrı tutmak istediğiniz her şey için Firefox Focus\'u kullanın — tüm o girip çıktığınız ve unuttuğunuz anlar için. Sekme yok, telaş yok, karışıklık yok. Çevrim içi izleyicileri de engelleyin. Tek bir dokunuşla tarama geçmişiniz tamamen yok olur.
 \n
 \nFirefox Focus, mükemmel bir giriş/çıkış, arama ve yok etme, sizi ilgilendirmeyen bir görevdeyim — web tarayıcısıdır.</string>
+    <string name="duckduckgo_android__title">DuckDuckGo Özel Tarayıcı</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo web sitelerini görüntülemek için sistem web görünümünü kullanır.
+\n- Microsoft\'tan gelen tüm çerezleri engellememe konusunda bir tartışma vardı - ancak bu düzeltildi.</string>
+    <string name="privacy_browser__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
+    <string name="privacy_browser__title">Privacy Browser</string>
+    <string name="duckduckgo_android__description">DuckDuckGo uygulaması, tek bir düğmeye basarak en kapsamlı çevrim içi gizlilik korumasını sağlar. Tek bir indirme ile, arama yaparken ve gezinirken sorunsuz koruma sunan yeni bir günlük tarayıcıya sahip olursunuz ve aldığınız e-postalar ve kullandığınız uygulamalar için izleme korumalarına erişirsiniz. Bu korumaların çoğu, birçok yaygın tarayıcıda öntanımlı olarak sunulmaz.</string>
+    <string name="privacy_browser__description">Verilerin kötüye kullanılmasını önlemenin tek yolu, en başta toplanmasını önlemektir. Privacy Browser\'ın iki temel hedefi vardır: İnternete gönderilen ve aygıtta depolanan verileri en aza indirmek.</string>
 </resources>

@@ -297,4 +297,18 @@
 \nDobrowolne darowizny sprawiają, że Przeglądarka Tor ZAWSZE będzie darmowa. Projekt Tor jest 501©(3) organizacją non-profit z siedzibą w USA. Proszę rozważyć wsparcie projektu dobrowolną wpłatą: https://donate.torproject.org.
 \n
 \nMożesz dowiedzieć się jak zgłaszać błędy i opinie na stronie https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo wykorzystuje systemowy silnik webview do wyświetlania stron internetowych.
+\n- Były kontrowersje związane z nie blokowaniem wszystkich ciasteczek od Microsoftu - ale zostało to naprawione.</string>
+    <string name="privacy_browser__title">Przeglądarka Privacy Browser</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Ta aplikacja została podpisana innym certyfikatem i nie może być aktualizowana za pomocą FFUpdater.</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Ukryj aplikacje, które są podpisane innym certyfikatem.</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="duckduckgo_android__title">Przeglądarka DuckDuckGo</string>
+    <string name="privacy_browser__description">Jedynym sposobem, aby zapobiec wyciekom danych jest zapobieganie ich gromadzenia w pierwszej kolejności. Privacy Browser ma dwa podstawowe cele: Minimalizacja danych, które są wysyłane do Internetu i minimalizacja danych, które są przechowywane na urządzeniu.</string>
+    <string name="privacy_browser__warning">FFUpdater pobiera pliki z serwerów F-Droid i dlatego nie jest szybszy.</string>
+    <string name="generic_app_warning__beta_version">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
+    <string name="firefox_focus_beta__description">Używaj Firefox Focus do wszystkiego, co chcesz mieć oddzielone od głównej przeglądarki - do wszystkich chwil, kiedy chcesz wejść, wyjść i zapomnieć o tym. Bez kart, bez zamieszania, bez kłopotów. Blokuje także internetowe trackery. Jedno stuknięcie i historia przeglądania zostanie całkowicie wyczyszczona.
+\n
+\nFirefox Focus to idealna przeglądarka internetowa, w której możesz wejść/wyjść, wyszukać i wyczyścić wszystko.</string>
+    <string name="duckduckgo_android__description">Aplikacja DuckDuckGo zapewnia najbardziej wszechstronną ochronę prywatności online za naciśnięciem jednego przycisku. Za jednym pobraniem otrzymujesz nową codzienną przeglądarkę, która oferuje bezproblemową ochronę podczas wyszukiwania i przeglądania, a także dostęp do zabezpieczeń przed śledzeniem wiadomości e-mail, które otrzymujesz i aplikacji, z których korzystasz. Wiele z tych zabezpieczeń nie jest domyślnie oferowanych w większości popularnych przeglądarek.</string>
 </resources>
