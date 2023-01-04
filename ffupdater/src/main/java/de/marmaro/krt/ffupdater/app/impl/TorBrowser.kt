@@ -42,8 +42,9 @@ class TorBrowser(
 
     override fun getInstalledVersion(context: Context): String? {
         val rawVersion = super.getInstalledVersion(context) ?: return null
-        val rightPart = rawVersion.split(" ")[1]
-        return rightPart.trim { it in listOf('(', ')') }
+        return rawVersion.split(" ").last()
+            .removePrefix("(")
+            .removeSuffix(")")
     }
 
     @MainThread
