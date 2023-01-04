@@ -235,4 +235,72 @@
     <string name="mulch__description">Si tratta di un browser web rafforzato e orientato alla sicurezza, basato sulla tecnologia Chromium. Molte anti-funzionalità sono state disabilitate o rimosse, e una manciata di funzionalità di sicurezza sono state abilitate o aggiunte grazie alle patch del progetto Vanadium. Il repository di origine include anche prebuilt e makefile per consentire ad altri sistemi operativi di includere Mulch come WebView di sistema.</string>
     <string name="mulch__warning">- Mulch usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="fennecfdroid__warning">FFUpdater scarica i file dai server di F-Droid e quindi non è più veloce di quest\'ultimo.</string>
+    <string name="network__dns_provider__title">Impostazioni DNS</string>
+    <string name="network__custom_doh_server__title">Server DNS su HTTPS personalizzato</string>
+    <string name="network__proxy__title">Proxy</string>
+    <string name="installer__method__native">Installatore nativo: Un ripiego se l\'installatore di sessione non funziona sul vostro smartphone.</string>
+    <string name="notification__update_available__generic_channel_name">Notifica aggiornamento dell\'app</string>
+    <string name="notification__install_error__generic_channel_descr">Canale di notifica per gli aggiornamenti dell\'app non riusciti.</string>
+    <string name="notification__network_error__title">Errore di rete nel lavoro in background</string>
+    <string name="generic_app_warning__beta_version">- Questa app è stata progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo lavoro abituale con il browser.</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Questa app è stata firmata con un certificato diverso e non può essere aggiornata con FFUpdater.</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Nascondi le app firmate da un certificato diverso.</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="settings__device_category__title">Dispositivo</string>
+    <string name="network__dns_provider__quad9">DNS su HTTPS: Quad9</string>
+    <string name="installer__method__shizuku">Installatore Shizuku: Aggiorna le applicazioni senza una finestra di conferma. Richiede l\'app Shizuku o il modulo Magisk Sui.</string>
+    <string name="installer__method__root">Installatore root: Aggiorna le app senza una finestra di conferma. Richiede uno smartphone rootato.</string>
+    <string name="network__dns_provider__google">DNS over HTTPS: Google</string>
+    <string name="network__dns_provider__custom">Server DNS su HTTPS personalizzato</string>
+    <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
+    <string name="firefox_focus_beta__description">Usa Firefox Focus per tutto ciò che vuoi tenere separato dal tuo browser principale, per tutti quei momenti in cui si entra, si esce e ci si dimentica. Nessuna scheda, nessun problema, nessuna confusione. Blocca anche i tracker online. Basta un tocco per distruggere completamente la cronologia di navigazione.
+\n
+\nFirefox Focus è il browser web perfetto per entrare/uscire, cercare e distruggere, sono in missione e non sono affari vostri.</string>
+    <string name="network__dns_provider__no">Nessun DNS (solo per i test)</string>
+    <string name="settings__network_category__title">Rete</string>
+    <string name="device__prefer_32bit_apks__summary">Attiva se il dispositivo è solitamente povero di memoria. FFUpdater utilizzerà quindi APK a 32 bit che di solito richiedono meno memoria.</string>
+    <string name="device__prefer_32bit_apks__title">Preferisci gli APK a 32 bit</string>
+    <string name="installer__method__root_not_granted">Permesso di root non concesso!</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku non è installato!</string>
+    <string name="network__dns_provider__system">Usa il DNS di sistema</string>
+    <string name="network__dns_provider__digital_society_ch">DNS su HTTPS: Digital Society Switzerland</string>
+    <string name="network__dns_provider__cloudflare">DNS su HTTPS: Cloudflare</string>
+    <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo utilizza la webview di sistema per visualizzare i siti web.
+\n- C\'è stata una controversia sul mancato blocco di tutti i cookie di Microsoft, ma il problema è stato risolto.</string>
+    <string name="privacy_browser__title">Privacy Browser</string>
+    <string name="privacy_browser__warning">FFUpdater scarica i file dai server di F-Droid e quindi non è più veloce.</string>
+    <string name="privacy_browser__description">L\'unico modo per evitare che i dati vengano abusati è quello di impedire che vengano raccolti in primo luogo. Privacy Browser ha due obiettivi principali: ridurre al minimo i dati inviati a Internet e ridurre al minimo i dati memorizzati sul dispositivo.</string>
+    <string name="network__proxy__dialog_message">Se vuoi usare un proxy SOCKS o HTTP, inserisci qui i dettagli della connessione. Usa uno dei seguenti formati:
+\n
+\nSOCKS/HTTP;ip/domain;port
+\n
+\nSOCKS/HTTP;ip/domain;port;username;password
+\n
+\nPer esempio: For example: SOCKS;1.2.3.4;22 o HTTP;5.6.7.8;80;user1;pw123 or HTTP;p.webshare.io;80;u;p. Lascia vuoto se vuoi usare la configurazione proxy di sistema.
+\n
+\nLimitazione: Se si modificano le \"impostazioni DNS\" nelle impostazioni in un server DNS su HTTPS, è necessario inserire il dominio del server proxy. Gli IP non funzionano.</string>
+    <string name="network__custom_doh_server__dialog_message">Immetti i dettagli di connessione per il server DoH personalizzato in uno dei seguenti formati
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nPer esempio: https://dns.google/dns-query;8.8.8.8 o https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="installer__method__session">Installatore di sessione: Consigliato per la maggior parte dei dispositivi. Su Android 12 o superiore, le app possono essere aggiornate senza una finestra di conferma.</string>
+    <string name="notification__install_error__generic_channel_name">Notifica di mancato aggiornamento dell\'app</string>
+    <string name="background__separate_notification_channels__summary">Usa canali di notifica diversi per ogni singola app</string>
+    <string name="background__separate_notification_channels__title">Canali di notifica diversi</string>
+    <string name="notification__update_available__generic_channel_descr">Canale di notifica per gli aggiornamenti dell\'app disponibili.</string>
+    <string name="notification__network_error__text">Questo errore dovrebbe verificarsi solo raramente. Tuttavia, se si verifica frequentemente, è necessario segnalarlo. Clicca qui per visualizzare il messaggio di errore dettagliato.</string>
+    <string name="tor_browser_alpha__description">Tor Browser è l\'unico browser mobile ufficiale supportato da Tor Project, sviluppatori del più potente strumento al mondo per la privacy e la libertà online.
+\n
+\nTor Browser sarà SEMPRE gratuito, ma le donazioni lo rendono possibile. Il Tor Project è un\'associazione 501©(3) senza scopo di lucro con sede negli Stati Uniti. Considera di dare un contributo oggi stesso. Ogni dono fa la differenza: https://donate.torproject.org.
+\n
+\nPer sapere come segnalare i bug e fornire feedback, visita il sito: https://support.torproject.org/misc/bug-or-feedback/</string>
+    <string name="duckduckgo_android__description">L\'app DuckDuckGo offre la più completa protezione della privacy online con la semplice pressione di un pulsante. Con un solo download, si ottiene un nuovo browser quotidiano che offre una protezione continua durante la ricerca e la navigazione e l\'accesso alle protezioni per il tracciamento delle e-mail ricevute e delle app utilizzate. Molte di queste protezioni non sono disponibili di default nei browser più diffusi.</string>
 </resources>
