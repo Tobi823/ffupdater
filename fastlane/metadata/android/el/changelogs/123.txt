@@ -1,0 +1,2 @@
+* Ευχαριστούμε για τη συνεισφορά τους στο Weblate τους: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+ * Διορθώθηκε το σφάλμα όταν η έκδοση του εγκατεστημένου Tor Browser είναι διαφορετική από την αναμενόμενη
