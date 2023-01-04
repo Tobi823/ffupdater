@@ -1,0 +1,11 @@
+* Ευχαριστούμε για τη συνεισφορά στο Weblate τους: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
+   Oğuz Ersen, Marlon, mondstern
+* Επιτάχυνση διεπαφής χρήστη χρησιμοποιώντας το RecycleViews
+* Προστέθηκε η υποστήριξη για Tor Browser Alpha, DuckDuckGo Browser και Privacy Browser (από το F-Droid)
+* Προστέθηκε νέος τύπος ειδοποίησης για σφάλματα δικτύου
+* Χρησιμοποίηση του νέο αποθετηριού Github για το Firefox Focus/Klar
+* Προστέθηκαν πληροφορίες meta για κωδικούς σφαλμάτων Huawei
+* Αναβάθμιση σε Android 13 και ενημέρωση εξαρτήσεων
+* Βελτιώθηκαν οι αναζητήσεις regex στον κώδικα
+* Βελτιώθηκε ο ασύγχρονος κώδικας με τα κανάλια
+* Αναδιαμόρφωση και καθαρισμός
