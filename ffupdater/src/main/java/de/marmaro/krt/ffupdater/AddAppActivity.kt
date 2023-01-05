@@ -175,7 +175,7 @@ class AddAppActivity : AppCompatActivity() {
             viewHolder.icon.setImageResource(app.impl.icon)
 
             val warning = app.impl.installationWarning != null
-            viewHolder.warningIcon.visibility = if (warning) View.INVISIBLE else View.VISIBLE
+            viewHolder.warningIcon.visibility = if (warning) View.VISIBLE else View.INVISIBLE
 
             viewHolder.eolReason.visibility = if (app.impl.isEol()) View.VISIBLE else View.GONE
             app.impl.eolReason?.let { viewHolder.eolReason.setText(it) }

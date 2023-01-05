@@ -40,7 +40,7 @@ class AppWarningDialog : DialogFragment() {
         private const val BUNDLE_APP_NAME = "app_name"
 
         fun newInstance(app: App): AppWarningDialog {
-            requireNotNull(app.impl.installationWarning)
+            requireNotNull(app.impl.installationWarning) { "$app has no installation warning!" }
             val bundle = Bundle()
             bundle.putString(BUNDLE_APP_NAME, app.name)
             val fragment = AppWarningDialog()
