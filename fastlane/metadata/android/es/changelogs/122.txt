@@ -1,4 +1,4 @@
-* Gracias por la contribución Weblate de: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
+* Gracias por la contribución en Weblate de: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
   Oğuz Ersen, Marlon, mondstern
 * Acelerar la interfaz de usuario mediante el uso de RecycleViews
 * Añadir soporte para Tor Browser Alpha, DuckDuckGo Browser y Privacy Browser (de F-Droid)
@@ -7,5 +7,5 @@
 * Añadir meta información para los códigos de error de Huawei
 * Actualizar a Android 13 y actualizar dependencias
 * Mejorar las búsquedas regex en el código
-* Mejorar el código asíncrono con los Canales
+* Mejorar el código asíncrono con Channels
 * Refactorización y limpieza
