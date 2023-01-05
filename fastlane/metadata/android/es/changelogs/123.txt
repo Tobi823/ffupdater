@@ -1,0 +1,2 @@
+* Gracias por la contribución en Weblate de: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Arreglado el fallo cuando la versión del Navegador Tor instalado es diferente a la esperada

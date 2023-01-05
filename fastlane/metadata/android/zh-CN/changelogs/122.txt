@@ -1,0 +1,10 @@
+* 感谢来自 Weblate 的贡献者：Retrial, Jacek, gallegonovato, MkQtS, Coool(github.com/Coool), Oğuz Ersen, Marlon, mondstern
+* 通过使用回收视图加快 UI
+* 添加对 Tor Browser Alpha、DuckDuckGo 浏览器和隐私浏览器（来自 F-Droid）的支持
+* 为网络错误添加新类型的通知
+* 使用 Firefox Focus/Klar 的新 Github 仓库
+* 为华为错误代码添加元信息
+* 升级到安卓 13 并更新依赖项
+* 改进代码中的正则表达式搜索
+* 使用 Channels 改进异步代码
+* 重构和清理

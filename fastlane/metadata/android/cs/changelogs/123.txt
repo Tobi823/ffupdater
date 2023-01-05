@@ -1,0 +1,2 @@
+* Poděkování za příspěvek na Weblate od: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Oprava pádu, když je verze nainstalovaného Tor Browseru jiná, než se očekává

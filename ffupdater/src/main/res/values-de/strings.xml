@@ -284,18 +284,32 @@
 \n
 \nEinschränkung: Wenn du in den Einstellungen \"DNS-Einstellungen\" auf einen DNS-über-HTTPS-Server umstellst, musst du die Domäne des Proxy-Servers angeben. IPs werden nicht funktionieren.</string>
     <string name="network__dns_provider__no">Kein DNS (nur zu Testzwecken)</string>
-    <string name="background__separate_notification_channels__summary">Benutze verschiedene Benachrichtigungskanäle für jede App</string>
+    <string name="background__separate_notification_channels__summary">Verschiedene Benachrichtigungskanäle für jede einzelne App benutzen</string>
     <string name="background__separate_notification_channels__title">Verschiedene Benachrichtigungskanäle</string>
-    <string name="notification__update_available__generic_channel_name">App-Aktualisierungsbenachrichtigung</string>
+    <string name="notification__update_available__generic_channel_name">Benachrichtigung über App-Update</string>
     <string name="notification__update_available__generic_channel_descr">Benachrichtigungskanal für verfügbare App-Updates.</string>
     <string name="notification__install_error__generic_channel_descr">Benachrichtigungskanal für fehlgeschlagene App-Updates.</string>
     <string name="notification__install_error__generic_channel_name">Benachrichtigung über fehlgeschlagene App-Updates</string>
     <string name="notification__network_error__title">Netzwerkfehler in Hintergrundaufgabe</string>
-    <string name="notification__network_error__text">Dieser Fehler sollte nur selten auftreten. Wenn er doch öfter auftritt, melde ihn bitte. Tippe hier um eine detaillierte Fehlermeldung zu sehen.</string>
+    <string name="notification__network_error__text">Dieser Fehler sollte nur selten auftreten. Wenn er jedoch häufig auftritt, melde ihn bitte. Tippe hier, um eine detaillierte Fehlermeldung anzuzeigen.</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
     <string name="tor_browser_alpha__description">Tor Browser ist der einzig offiziell unterstützte Browser des Tor Projekts, den Entwicklern des weltweit sichersten Tool für Privatsphäre und Freiheit online.
 \n
 \nTor Browser wird immer KOSTENLOS sein, wobei Spenden dies ermöglichen. Das Tor Projekt ist eine 501©(3) nonprofit in den USA. Bitte spende, wenn du kannst. Jede Spende macht einen Unterschied: https://donate.torproject.org.
 \n
 \nErfahre, wie du Fehler melden und Feedback geben kannst unter https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Apps ausblenden, die mit einem anderen Zertifikat signiert sind.</string>
+    <string name="firefox_focus_beta__description">Nutze Firefox Focus für alles, was du getrennt von deinem Hauptbrowser aufbewahren willst - für all die Momente, in denen du einsteigen und wieder aussteigen willst und es vergessen willst. Keine Tabs, kein Aufheben, kein Durcheinander. Blockiere auch Online-Tracker. Ein Fingertipp, und dein Browserverlauf ist komplett gelöscht.
+\n
+\nFirefox Focus ist der perfekte Webbrowser zum Rein- und Rausgehen, zum Suchen und Löschen, zum \"Ich bin auf einer Mission, die dich nichts angeht\".</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Diese App wurde mit einem anderen Zertifikat signiert und kann nicht mit FFUpdater aktualisiert werden.</string>
+    <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
+    <string name="privacy_browser__warning">FFUpdater lädt die Dateien von den F-Droid-Servern herunter und ist daher nicht schneller.</string>
+    <string name="privacy_browser__title">Privacy Browser</string>
+    <string name="generic_app_warning__beta_version">- Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die deine normale Arbeit mit dem Browser beeinträchtigen können.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo verwendet die System-Webansicht zur Anzeige von Webseiten.
+\n- Es gab eine Kontroverse darüber, dass nicht alle Cookies von Microsoft blockiert werden - dies wurde jedoch behoben.</string>
+    <string name="privacy_browser__description">Die einzige Möglichkeit, den Missbrauch von Daten zu verhindern, besteht darin, sie gar nicht erst zu sammeln. Privacy Browser hat zwei Hauptziele: Minimierung der Daten, die an das Internet gesendet werden und Minimierung der Daten, die auf dem Gerät gespeichert werden.</string>
+    <string name="duckduckgo_android__description">Die DuckDuckGo-App bietet den umfassendsten Online-Datenschutz mit nur einem Tastendruck. Mit einem Download erhältst du einen neuen, alltäglichen Browser, der nahtlosen Schutz bietet, während du suchst und browst, und Zugriff auf Tracking-Schutz für E-Mails, die du erhältst, und Apps, die du nutzt. Viele dieser Schutzmaßnahmen werden in den meisten gängigen Browsern standardmäßig nicht angeboten.</string>
 </resources>
