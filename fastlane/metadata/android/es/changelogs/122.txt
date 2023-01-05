@@ -1,11 +1,11 @@
-* Gracias por la contribución en Weblate de: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
+* Gracias por contribuir en Weblate: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
   Oğuz Ersen, Marlon, mondstern
-* Acelerar la interfaz de usuario mediante el uso de RecycleViews
-* Añadir soporte para Tor Browser Alpha, DuckDuckGo Browser y Privacy Browser (de F-Droid)
-* Añadir un nuevo tipo de notificación de errores de red
-* Usar nuevo repositorio Github para Firefox Focus/Klar
-* Añadir meta información para los códigos de error de Huawei
-* Actualizar a Android 13 y actualizar dependencias
+* Nueva interfaz con RecycleViews
+* Añadido Tor Browser Alpha, DuckDuckGo Browser y Privacy Browser (de F-Droid)
+* Nueva notificaciones de fallos
+* Nuevo repositorio Github para Firefox Focus/Klar
+* Meta información en los fallos de Huawei
+* Actualizar a Android 13
 * Mejorar las búsquedas regex en el código
-* Mejorar el código asíncrono con Channels
+* Mejoras en el código
 * Refactorización y limpieza
