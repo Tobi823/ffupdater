@@ -1,0 +1,6 @@
+* Za příspěvek na Weblate děkuji: Juraj Motuz, gallegonovato, nautilusx, Oğuz Ersen, Ettore Atalan,
+  109247019824, Retrial a Deleted User
+* Přidání podpory pro instalační program Shizuku
+* Přidání podpory pro 64bitové Chromium
+* Přidání možnosti volby mezi jedním nebo více (pro každou aplikaci) oznamovacími kanály pro oznámení o úspěšné nebo neúspěšné aktualizaci či instalaci
+* Přepracování a vyčištění kódu
