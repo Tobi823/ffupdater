@@ -1,0 +1,2 @@
+* 感谢来自 Weblate 的贡献者：Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* 修复当安装的 Tor 浏览器的版本与预期不同时的崩溃
