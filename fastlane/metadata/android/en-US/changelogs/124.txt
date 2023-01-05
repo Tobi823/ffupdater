@@ -1,0 +1,4 @@
+* Thanks for the Weblate contribution from: Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato, Juraj
+  Motuz, MkQtS, Oğuz Ersen
+* Fix bug: if the user wants to add a new app, warn icon should only be displayed for apps with an
+  installation warning (Tobi823/ffupdater#306)
