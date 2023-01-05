@@ -1,0 +1,2 @@
+* Dank für den Weblate-Beitrag von: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Behebt einen Absturz, wenn die Version des installierten Tor-Browsers von der erwarteten abweicht
