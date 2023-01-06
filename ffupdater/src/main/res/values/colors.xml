@@ -13,4 +13,5 @@
     <color name="main_activity__cardview_background_color">@color/cardview_light_background</color>
     <color name="main_activity__red_for_eol_reason">#880E4F</color>
     <color name="button_green">#2E7D32</color>
+    <color name="app_icon_background_blue">#2195f1</color>
 </resources>
