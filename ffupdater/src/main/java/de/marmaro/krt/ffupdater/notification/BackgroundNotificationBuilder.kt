@@ -192,8 +192,8 @@ class BackgroundNotificationBuilder(
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
-    fun showNotification(
-        context: Context, channelData: ChannelData, notification: NotificationData, intent: Intent?
+    private fun showNotification(
+        context: Context, channelData: ChannelData, notification: NotificationData, intent: Intent?,
     ) {
         val notificationManager = getNotificationManager(context)
 
@@ -207,7 +207,7 @@ class BackgroundNotificationBuilder(
         }
 
         notificationBuilder
-            .setSmallIcon(R.mipmap.transparent, 0)
+            .setSmallIcon(R.drawable.ic_launcher_small_monochrome, 0)
             .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
             .setStyle(Notification.BigTextStyle().bigText(notification.text))
             .setContentTitle(notification.title).setContentText(notification.text).setOnlyAlertOnce(true)

@@ -26,7 +26,7 @@ class Mulch(
     override val description = R.string.mulch__description
     override val installationWarning = R.string.mulch__warning
     override val downloadSource = "https://divestos.org/fdroid/official"
-    override val icon = R.mipmap.ic_logo_mulch
+    override val icon = R.drawable.ic_logo_mulch
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ARM32_ARM64
 

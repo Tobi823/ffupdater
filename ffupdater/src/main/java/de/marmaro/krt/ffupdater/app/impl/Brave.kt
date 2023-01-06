@@ -34,7 +34,7 @@ class Brave(
     override val description = R.string.brave__description
     override val installationWarning = R.string.brave__warning
     override val downloadSource = "GitHub"
-    override val icon = R.mipmap.ic_logo_brave
+    override val icon = R.drawable.ic_logo_brave
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ARM32_ARM64_X86_X64
 

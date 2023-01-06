@@ -31,7 +31,7 @@ class Vivaldi(
     override val description = R.string.vivaldi__description
     override val installationWarning = R.string.vivaldi__warning
     override val downloadSource = "https://vivaldi.com/download/"
-    override val icon = R.mipmap.ic_logo_vivaldi
+    override val icon = R.drawable.ic_logo_vivaldi
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64)
 

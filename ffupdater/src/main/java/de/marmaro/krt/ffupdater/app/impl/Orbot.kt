@@ -32,7 +32,7 @@ class Orbot(
     override val description = R.string.orbot__description
     override val installationWarning: Int? = null
     override val downloadSource = "GitHub"
-    override val icon = R.mipmap.ic_logo_orbot
+    override val icon = R.drawable.ic_logo_orbot
     override val minApiLevel = Build.VERSION_CODES.JELLY_BEAN
     override val supportedAbis = ARM32_ARM64_X86_X64
 

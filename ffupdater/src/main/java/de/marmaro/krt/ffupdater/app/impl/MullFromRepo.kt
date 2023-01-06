@@ -28,7 +28,7 @@ class MullFromRepo(
     override val title = R.string.mull__title
     override val description = R.string.mull__description
     override val downloadSource = "https://divestos.org/fdroid/official"
-    override val icon = R.mipmap.ic_logo_mull
+    override val icon = R.drawable.ic_logo_mull
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64
 

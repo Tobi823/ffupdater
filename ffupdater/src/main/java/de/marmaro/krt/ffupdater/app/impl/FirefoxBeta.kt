@@ -31,7 +31,7 @@ class FirefoxBeta(
     override val description = R.string.firefox_beta__description
     override val installationWarning = R.string.firefox_beta__warning
     override val downloadSource = "Mozilla CI"
-    override val icon = R.mipmap.ic_logo_firefox_beta
+    override val icon = R.drawable.ic_logo_firefox_beta
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
 

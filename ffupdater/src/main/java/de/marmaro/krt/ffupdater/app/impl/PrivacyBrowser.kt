@@ -27,7 +27,7 @@ class PrivacyBrowser(
     override val description = R.string.privacy_browser__description
     override val installationWarning = R.string.privacy_browser__warning
     override val downloadSource = "F-Droid"
-    override val icon = R.mipmap.ic_logo_privacybrowser
+    override val icon = R.drawable.ic_logo_privacybrowser
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ALL_ABIS
 

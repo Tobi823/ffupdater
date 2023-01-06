@@ -27,7 +27,7 @@ class DuckDuckGoAndroid(
     override val description = R.string.duckduckgo_android__description
     override val installationWarning = R.string.duckduckgo_android__warning
     override val downloadSource = "GitHub"
-    override val icon = R.mipmap.ic_logo_duckduckgo_android
+    override val icon = R.drawable.ic_logo_duckduckgo_android
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ALL_ABIS
 

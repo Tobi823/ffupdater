@@ -25,7 +25,7 @@ class Lockwise(
     override val title = R.string.lockwise__title
     override val description = R.string.lockwise__description
     override val downloadSource = "GitHub"
-    override val icon = R.mipmap.ic_logo_lockwise
+    override val icon = R.drawable.ic_logo_lockwise
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ALL_ABIS
 
