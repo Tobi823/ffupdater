@@ -1,0 +1,4 @@
+* 感谢来自 Weblate 的贡献者：Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato,
+  Juraj Motuz, MkQtS, Oğuz Ersen
+* 修复错误：如果用户想添加一个新的应用程序，应只在应用程序有安装警告时
+  显示警告图标(Tobi823/ffupdater#306)
