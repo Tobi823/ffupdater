@@ -7,7 +7,7 @@ import androidx.preference.PreferenceManager
 import androidx.work.*
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
-import androidx.work.NetworkType.NOT_REQUIRED
+import androidx.work.NetworkType.CONNECTED
 import androidx.work.NetworkType.UNMETERED
 import androidx.work.WorkRequest.DEFAULT_BACKOFF_DELAY_MILLIS
 import de.marmaro.krt.ffupdater.app.App
@@ -144,7 +144,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         if (sdkTester.supportsAndroid10() && !context.packageManager.canRequestPackageInstalls()) {
             Log.i(LOG_TAG, "Missing installation permission")
             notificationBuilder.showUpdateAvailableNotification(context, downloadedApps)
-            return Result.retry()
+            return Result.success()
         }
 
         if (!backgroundSettings.isInstallationEnabled) {
@@ -309,12 +309,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             interval: Duration,
             onlyWhenIdle: Boolean
         ) {
-            val requiredNetworkType = if (settings.isUpdateCheckOnMeteredAllowed) NOT_REQUIRED else UNMETERED
+            val requiredNetworkType = if (settings.isUpdateCheckOnMeteredAllowed) CONNECTED else UNMETERED
             val builder = Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiredNetworkType(requiredNetworkType)
                 .setRequiresBatteryNotLow(true)
                 .setRequiresStorageNotLow(true)
-                .setRequiredNetworkType(requiredNetworkType)
 
             if (DeviceSdkTester.INSTANCE.supportsAndroidMarshmallow()) {
                 builder.setRequiresDeviceIdle(onlyWhenIdle)
