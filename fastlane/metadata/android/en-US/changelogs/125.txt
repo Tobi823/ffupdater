@@ -1,0 +1,2 @@
+* Thanks for the Weblate contribution from: nautilusx, Juraj Motuz, MkQtS, gallegonovato, Retrial
+* Adapt to new naming schema for Firefox Focus and Firefox Klar (Tobi823/ffupdater#307)
