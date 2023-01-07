@@ -1,0 +1,4 @@
+* Gracias por contribuir en Weblate a: Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato, Juraj
+   Motuz, MkQtS, Oguz Ersen
+* Corrección de errores: si el usuario desea agregar una nueva aplicación, el ícono de advertencia solo debe mostrarse para aplicaciones con la
+   advertencia de instalación (Tobi823/ffupdater#306)

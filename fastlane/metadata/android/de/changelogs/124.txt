@@ -1,0 +1,4 @@
+* Danke für den Weblate-Beitrag von: Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato, Juraj
+  Motuz, MkQtS, Oğuz Ersen
+* Fehler behoben: wenn der Benutzer eine neue App hinzufügen möchte, sollte das Warnsymbol nur für Apps mit einer
+  Installationswarnung angezeigt werden (Tobi823/ffupdater#306)
