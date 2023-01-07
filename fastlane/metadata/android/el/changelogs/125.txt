@@ -1,0 +1,2 @@
+* Ευχαριστούμε για τη συνεισφορά τους στο Weblate τους: nautilusx, Juraj Motuz, MkQtS, gallegonovato, Retrial
+* Προσαρμογή σε νέο σχήμα ονομασίας για Firefox Focus και Firefox Klar (Tobi823/ffupdater#307)
