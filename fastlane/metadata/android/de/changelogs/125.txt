@@ -1,0 +1,2 @@
+* Dank für den Weblate-Beitrag von: nautilusx, Juraj Motuz, MkQtS, gallegonovato, Retrial
+* Anpassung an das neue Benennungsschema für Firefox Focus und Firefox Klar (Tobi823/ffupdater#307)
