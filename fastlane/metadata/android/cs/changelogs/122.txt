@@ -1,7 +1,7 @@
-* Poděkování za příspěvky na Weblate patří: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
+* Děkujeme za příspěvky na Weblate: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
   Oğuz Ersen, Marlon, mondstern
-* Zrychlení uživatelského rozhraní pomocí RecycleViews
-* Přidána podpora pro prohlížeče Tor Browser Alpha, DuckDuckGo Browser a Privacy Browser (s F-Droid)
+* Zrychlení UI pomocí RecycleViews
+* Přidána podpora pro Tor Browser Alpha, DuckDuckGo Browser a Privacy Browser (s F-Droid)
 * Přidání nového typu oznámení pro chyby sítě
 * Nový repozitář Github pro Firefox Focus/Klar
 * Přidány metainformace pro chybové kódy Huawei
