@@ -79,15 +79,13 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
 
 [Maintainer](docs/maintainer.md)
 
+[My goals](GOALS.md)
+
 ## Git repositories
 
 - Main repository: https://github.com/Tobi823/ffupdater
 - Mirror repository on notabug.org: https://notabug.org/Tobiwan/ffupdater
 - Mirror repository on Gitlab: https://gitlab.com/Tobiwan/ffupdater_gitlab
-
-## My motivation / Project goals
-
-[Goals](GOALS.md)
 
 ## License
 
