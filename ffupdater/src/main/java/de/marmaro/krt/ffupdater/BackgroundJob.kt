@@ -132,7 +132,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.retry()
         }
 
-        val downloadedApps = outdatedApps.filter {
+        val downloadingApps = outdatedApps.filter {
             if (!StorageUtil.isEnoughStorageAvailable(context)) {
                 Log.i(LOG_TAG, "Skip $it because not enough storage is available.")
                 notificationBuilder.showUpdateAvailableNotification(context, it)
@@ -143,13 +143,13 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         if (sdkTester.supportsAndroid10() && !context.packageManager.canRequestPackageInstalls()) {
             Log.i(LOG_TAG, "Missing installation permission")
-            notificationBuilder.showUpdateAvailableNotification(context, downloadedApps)
+            notificationBuilder.showUpdateAvailableNotification(context, downloadingApps)
             return Result.success()
         }
 
         if (!backgroundSettings.isInstallationEnabled) {
             Log.i(LOG_TAG, "Automatic background app installation is not enabled.")
-            notificationBuilder.showUpdateAvailableNotification(context, downloadedApps)
+            notificationBuilder.showUpdateAvailableNotification(context, downloadingApps)
             return Result.success()
         }
 
@@ -160,11 +160,20 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
         if (!installerAvailable) {
             Log.i(LOG_TAG, "The current installer can not update apps in the background")
-            notificationBuilder.showUpdateAvailableNotification(context, downloadedApps)
+            notificationBuilder.showUpdateAvailableNotification(context, downloadingApps)
             return Result.success()
         }
 
-        downloadedApps.forEach { installApplication(it) }
+        // update FFUpdater at last because an update will kill this update process
+        val appsForInstallation = downloadingApps.toMutableList()
+        if (appsForInstallation.contains(App.FFUPDATER)) {
+            appsForInstallation.remove(App.FFUPDATER)
+            appsForInstallation.add(App.FFUPDATER)
+        }
+
+        appsForInstallation.forEach {
+            installApplication(it)
+        }
         return Result.success()
     }
 
@@ -193,11 +202,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val file = app.downloadedFileCache.getApkFile(context)
         return try {
             // run async with await later
-            val (deferred, progressChannel) =
-                downloader.downloadBigFileAsync(availableResult.downloadUrl, file)
+            val (deferred, channel) = downloader.downloadBigFileAsync(availableResult.downloadUrl, file)
 
             notificationBuilder.showDownloadRunningNotification(context, app, null, null)
-            for (progress in progressChannel) {
+            for (progress in channel) {
                 notificationBuilder.showDownloadRunningNotification(
                     context, app, progress.progressInPercent, progress.totalMB
                 )
