@@ -58,9 +58,9 @@
     <string name="firefox_release__warning">- Покращена версія Firefox під назвою Fennec F-Droid також доступна на F-Droid.</string>
     <string name="iceraven__description">Безумовно, вас не привезла Mozilla! \n\nIceraven Browser - це веб-браузер для Android, заснований на версії Firefox, GeckoView та Mozilla Android Components від Mozilla Fenix. \n\nНаша мета - стати близьким розвитком нового Firefox для Android, який прагне надати користувачам більше можливостей, більше можливостей для налаштування (включаючи широку бібліотеку розширень) і більше інформації про сторінки, які вони відвідують, і про взаємодію їх браузерів ці сторінки.</string>
     <string name="iceraven__title">Ицеравен Браузер</string>
-    <string name="infobox">Це оновлення для декількох браузерів від Mozilla та інших. Натисніть кнопку «плюс», щоб встановити, і кнопку «стрілка вниз», щоб оновити веб-переглядач. Ви можете перевірити наявність нових оновлень, провівши пальцем вниз або повторно відкривши програму. За промовчанням застосунок регулярно перевіряє наявність оновлень у фоновому режимі. Я зробив усе можливе, щоб збільшити безпеку процесу встановлення/оновлення - не соромтеся перевірити ще раз або покращити, створивши pull-request.
+    <string name="infobox">Це оновлювач для браузерів, дружніх до конфіденційності. Натисніть кнопку \"плюс\", щоб встановити нові застосунки. Проведіть вниз, щоб примусово перевірити наявність нових оновлень. За замовчуванням застосунок періодично перевірятиме наявність оновлень у фоновому режимі, які потім будуть завантажені та зрештою встановлені. Натисніть на шестерню, щоб налаштувати поведінку.
 \n
-\nОстання успішна перевірка фонового оновлення: %1$s</string>
+\nОстання успішна перевірка оновлень у фоновому режимі: %1$s</string>
     <string name="app_card__information_about_the_app">інформація про додаток</string>
     <string name="download_activity__delete_cache_button_text">очистити кеш</string>
     <string name="download_activity__delete_cache_explanation">"Якщо ви вважаєте, що FFUpdater кешував несправне оновлення програми, натисніть кнопку «очистити кеш», щоб видалити кеш цієї програми."</string>
@@ -134,7 +134,7 @@
     <string name="settings__background__update_check__excluded_apps__summary">Корисно, якщо ви не хочете оновлювати програму і не хочете отримувати для неї сповіщення про оновлення.</string>
     <string name="settings__background__update_check__excluded_apps__title">Виключити програми з перевірки оновлень</string>
     <string name="settings__background__update_check__interval__title">Інтервал перевірки оновлення</string>
-    <string name="settings__background__update_check__metered__title">Оновлення перевірок у лічених мережах</string>
+    <string name="settings__background__update_check__metered__title">Перевірка оновлень у лічених мережах</string>
     <string name="settings__background_category__summary">Налаштування, коли програма працює у фоновому режимі та невидима для користувача.</string>
     <string name="settings__background_category__title">Фон</string>
     <string name="settings__foreground__download__metered__title">Завантажуйте оновлення в мережах із лічильником</string>
