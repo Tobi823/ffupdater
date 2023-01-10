@@ -83,7 +83,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun handleDoWorkException(e: Exception, isNetworkException: Boolean): Result {
-        return if (runAttemptCount < 1) {
+        return if (runAttemptCount < MAX_RETRIES) {
             Log.w(LOG_TAG, "Background job failed. Restart in ${calcBackoffTime(runAttemptCount)}", e)
             Result.retry()
         } else {
