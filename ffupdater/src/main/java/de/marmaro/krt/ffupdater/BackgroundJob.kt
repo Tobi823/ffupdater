@@ -191,18 +191,19 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val updateResult = app.metadataCache.getCachedOrFetchIfOutdated(context)
 
         val availableResult = updateResult.latestUpdate
-        if (app.downloadedFileCache.isLatestAppVersionCached(context, availableResult)) {
+        val cache = app.downloadedFileCache
+        if (cache.isApkFileCached(context, availableResult)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return true
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
         val downloader = FileDownloader(networkSettings)
-
-        val file = app.downloadedFileCache.getApkFile(context)
+        val downloadFile = cache.getApkOrZipTargetFileForDownload(context, availableResult)
+        val url = availableResult.downloadUrl
         return try {
             // run async with await later
-            val (deferred, channel) = downloader.downloadBigFileAsync(availableResult.downloadUrl, file)
+            val (deferred, channel) = downloader.downloadBigFileAsync(url, downloadFile)
 
             notificationBuilder.showDownloadRunningNotification(context, app, null, null)
             for (progress in channel) {
@@ -213,12 +214,17 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
             deferred.await()
 
+            if (app.impl.isAppPublishedAsZipArchive()) {
+                cache.convertZipArchiveToApkFile(context)
+                cache.deleteZipFile(context)
+            }
+
             notificationRemover.removeDownloadRunningNotification(context, app)
             true
         } catch (e: NetworkException) {
             notificationRemover.removeDownloadRunningNotification(context, app)
             notificationBuilder.showDownloadNotification(context, app, e)
-            app.downloadedFileCache.deleteApkFile(context)
+            cache.deleteApkFile(context)
             false
         }
     }
