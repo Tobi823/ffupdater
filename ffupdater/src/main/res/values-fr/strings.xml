@@ -290,4 +290,15 @@
     <string name="notification__install_error__generic_channel_descr">Canal de notification pour les mises à jour qui ont échouées.</string>
     <string name="notification__install_error__generic_channel_name">Notification d\'échec de mise à jour</string>
     <string name="notification__network_error__title">Erreur de réseau en arrière plan</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Cette application est signée avec un certificat différent et ne peut pas être mise à jour avec FFUpdater.</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Cacher les applications signées avec un certificat différent.</string>
+    <string name="firefox_focus_beta__description">Utilisez Firefox Focus pour tout ce que vous voulez garder séparé de votre navigateur principal. Pas d\'onglets, pas de désordre. Bloquez les traqueurs en ligne aussi. Un bouton, et votre historique de navigation est complètement supprimé.</string>
+    <string name="duckduckgo_android__title">Navigateur privé DuckDuckGo</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="tor_browser_alpha__description">Le navigateur Tor est le seul navigateur mobile officiellement supporté par le projet Tor, les développeurs des outils les plus puissants en matière de confidentialité et de liberté en ligne.
+\n
+\nLe navigateur Tor sera TOUJOURS gratuit, mais les donations le font exister. Le projet Tor est un 501©(3) sans profit basé aux USA. Veuillez penser à donner dès maintenant. Chaque don fais la différence : https://donate.torproject.org.
+\n
+\nApprenez comment reporter des bugs et envoyer des commentaires sur https://support.torproject.org/misc/bug-or-feedback/ !</string>
+    <string name="generic_app_warning__beta_version">- Cette application est conçue pour les testeurs et développeurs. Elle peut contenir divers bugs qui peuvent affecter l\'utilisation normale du navigateur.</string>
 </resources>
