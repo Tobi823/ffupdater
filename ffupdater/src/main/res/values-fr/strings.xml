@@ -38,11 +38,7 @@
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar est développé pour l\'Allemagne, l\'Autriche et la Suisse, mais peut être utilisé par les utilisateurs de n\'importe quel pays. Il est très similaire à Firefox Focus, mais son nom a été modifié dans les pays germanophones pour éviter toute confusion avec le magazine Focus du groupe Hubert Burda Media. Contrairement à Firefox Focus, Firefox Klar a la télémétrie désactivée par défaut en raison des lois allemandes strictes sur la protection de la vie privée.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">Veuillez noter que Firefox Preview n’est plus disponible.Il a été remplacé par Firefox Nightly.
-\n
-\nFirefox Nightly est un canal de développement pour les nouvelles versions de Mozilla Firefox.
-\n
-\nFirefox Nightly est conçu pour mettre en valeur les versions les plus expérimentales de Firefox. Le canal Nightly permet aux utilisateurs de découvrir les dernières innovations de Firefox dans un environnement instable et de faire part de leur avis sur les fonctionnalités et les performances pour aider à déterminer ce qui figurera dans la version finale.</string>
+    <string name="firefox_nightly__description">Veuillez noter que Firefox Preview n’est plus disponible.Il a été remplacé par Firefox Nightly. \n \nFirefox Nightly est un canal de développement pour les nouvelles versions de Mozilla Firefox. \n \nFirefox Nightly est conçu pour mettre en valeur les versions les plus expérimentales de Firefox. Le canal Nightly permet aux utilisateurs de découvrir les dernières innovations de Firefox dans un environnement instable et de faire part de leur avis sur les fonctionnalités et les performances pour aider à déterminer ce qui figurera dans la version finale.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_release__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_release__title">Firefox</string>
@@ -52,9 +48,7 @@
 \n
 \nNotre objectif est d\'être une bifurcation proche du nouveau Firefox pour Android qui cherche à fournir aux utilisateurs plus d\'options, plus de possibilités de personnalisation (y compris une large bibliothèque d\'extensions), et plus d\'informations sur les pages qu\'ils visitent et sur la façon dont leur navigateur interagit avec ces pages.</string>
     <string name="iceraven__title">Navigateur Iceraven</string>
-    <string name="infobox">Il s\'agit d\'une application qui met à jour plusieurs navigateurs respectueux de la vie privée. Cliquez sur le bouton plus pour installer de nouvelles applis. Glissez vers le bas pour forcer la vérification de mises à jour. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan, qui vont ensuite être téléchargées et éventuellement installées. Appuyez sur l’icône de paramètres pour personnaliser le comportement de l\'application.
-\n
-\nDernière vérification réussie des mise à jour : %1$s</string>
+    <string name="infobox">Il s\'agit d\'une application qui met à jour plusieurs navigateurs respectueux de la vie privée. Cliquez sur le bouton plus pour installer de nouvelles applis. Glissez vers le bas pour forcer la vérification de mises à jour. Par défaut, l\'application vérifie régulièrement les mises à jour en arrière-plan, qui vont ensuite être téléchargées et éventuellement installées. Appuyez sur l’icône de paramètres pour personnaliser le comportement de l\'application. \n \nDernière vérification réussie des mise à jour : %1$s</string>
     <string name="app_card__information_about_the_app">informations sur l\'application</string>
     <string name="download_activity__delete_cache_button_text">vider le cache</string>
     <string name="download_activity__delete_cache_explanation">Si vous pensez que FFUpdater a mis en cache une mise à jour d\'application défectueuse, cliquez sur le bouton \"Effacer le cache\" pour supprimer le cache de cette application.</string>
@@ -165,8 +159,7 @@
 \n- Il utilise également le fondement technique de Google Chrome et soutient donc indirectement la position monopolistique du moteur de rendu Chromium.</string>
     <string name="kiwi__description">Le navigateur Kiwi est fait pour explorer Internet, lire les news, regarder des vidéos et écouter de la musique, sans ennuis.</string>
     <string name="kiwi__title">Navigateur Kiwi Next</string>
-    <string name="iceraven__warning">- Le développeur ne donne aucune garantie de mises à jour de sécurité ou même de stabilité.
-\n - Le projet prend du temps à fournir des mises à jour de sécurité.</string>
+    <string name="iceraven__warning">- Le développeur ne donne aucune garantie de mises à jour de sécurité ou même de stabilité. \n - Le projet prend du temps à fournir des mises à jour de sécurité.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Supprimer la mise à jour téléchargée si l\'installation réussit.</string>
     <string name="firefox_release__warning">- Une version améliorée de Firefox est aussi disponible sur F-Droid sous le nom de Fennec F-Droid.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Supprimer la mise à jour téléchargée si l\'installation échoue.</string>
@@ -201,26 +194,8 @@
     <string name="orbot__description">Orbot est une application gratuite de proxy qui renforce les autres applis pour utiliser Internet de manière plus sécurisée. Orbot utilise Tor pour encrypter votre trafic Internet et le cache ensuite en le faisant passer par une série d\'ordinateurs situés partout dans le monde. Tor est gratuit et est un réseau ouvert qui vous aide à vous défendre de surveillances qui menacent votre confidentialité et liberté personnelle, des activités commerciales et relations confidentielles, et la sécurité d\'états connue sous le nom d\'analyse du trafic.</string>
     <string name="add_app_activity__title_better_than_google_chrome">Mieux que Google Chrome</string>
     <string name="settings__background__update_check__when_device_idle__summary">Activez ceci si vous ne voulez pas que vos applications soient redémarrées par une mise à jour en arrière plan. Désactivez ceci si vous voulez une intervalle plus précise entre les mises à jour en arrière plan.</string>
-    <string name="network__custom_doh_server__dialog_message">Entrez les détails de connexion pour les serveurs DoH dans l\'un de ces formats :
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nPar exemple : https://dns.google/dns-query;8.8.8.8 or https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__proxy__dialog_message">Si vous voulez utiliser un proxy SOCKS ou HTTP, entrez les détails de connexion ici. Utilisez un de ces formats : 
-\n
-\nSOCKS/HTTP;ip/domain;port
-\n
-\nSOCKS/HTTP;ip/domain;port;username;password
-\n
-\nPar exemple : SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;user1;pw123 ou HTTP;p.webshare.io;80;u;p. Laissez vide si vous voulez utiliser la configuration système du proxy.
-\n
-\nLimitation : Si vous changez \'Paramètres DNS\' dans les paramètres en un serveur DNS sur HTTPS, vous devez entrer le nom de domaine du serveur proxy. Les IP ne fonctionneront pas.</string>
+    <string name="network__custom_doh_server__dialog_message">Entrez les détails de connexion pour les serveurs DoH dans l\'un de ces formats : \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nPar exemple : https://dns.google/dns-query;8.8.8.8 or https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__dialog_message">Si vous voulez utiliser un proxy SOCKS ou HTTP, entrez les détails de connexion ici. Utilisez un de ces formats : \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;username;password \n \nPar exemple : SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;user1;pw123 ou HTTP;p.webshare.io;80;u;p. Laissez vide si vous voulez utiliser la configuration système du proxy. \n \nLimitation : Si vous changez \'Paramètres DNS\' dans les paramètres en un serveur DNS sur HTTPS, vous devez entrer le nom de domaine du serveur proxy. Les IP ne fonctionneront pas.</string>
     <string name="notification__network_error__text">Cette erreur ne devrait avoir lieu que rarement. Cependant, si celle-ci est fréquente, vous devriez la reporter. Appuyez ici pour voir le message d\'erreur détaillé.</string>
     <string name="tor_browser_alpha__title">Navigateur Tor Alpha</string>
     <string name="tor_browser__title">Navigateur Tor</string>
@@ -253,19 +228,12 @@
     <string name="notification__network_error__title">Erreur de réseau en arrière plan</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Cette application est signée avec un certificat différent et ne peut pas être mise à jour avec FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Cacher les applications signées avec un certificat différent.</string>
-    <string name="firefox_focus_beta__description">Utilisez Firefox Focus pour tout ce que vous voulez garder séparé de votre navigateur principal - pour tous ceux qui entrent et sortent et oublient des moments. Pas d\'onglets, pas de chichi, pas de soucis. Bloquez également les traqueurs en ligne. Une touche, et votre historique de navigation est complètement détruit.
-\n
-\nFirefox Focus est le parfait entrer / sortir, rechercher puis détruire, je suis sur une mission qui ne vous regarde pas - le navigateur Web.</string>
+    <string name="firefox_focus_beta__description">Utilisez Firefox Focus pour tout ce que vous voulez garder séparé de votre navigateur principal - pour tous ceux qui entrent et sortent et oublient des moments. Pas d\'onglets, pas de chichi, pas de soucis. Bloquez également les traqueurs en ligne. Une touche, et votre historique de navigation est complètement détruit. \n \nFirefox Focus est le parfait entrer / sortir, rechercher puis détruire, je suis sur une mission qui ne vous regarde pas - le navigateur Web.</string>
     <string name="duckduckgo_android__title">Navigateur privé DuckDuckGo</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
-    <string name="tor_browser_alpha__description">Le navigateur Tor est le seul navigateur mobile officiellement supporté par le projet Tor, les développeurs des outils les plus puissants en matière de confidentialité et de liberté en ligne.
-\n
-\nLe navigateur Tor sera TOUJOURS gratuit, mais les donations le font exister. Le projet Tor est un 501©(3) sans profit basé aux USA. Veuillez penser à donner dès maintenant. Chaque don fais la différence : https://donate.torproject.org.
-\n
-\nApprenez comment reporter des bugs et envoyer des commentaires sur https://support.torproject.org/misc/bug-or-feedback/ !</string>
+    <string name="tor_browser_alpha__description">Le navigateur Tor est le seul navigateur mobile officiellement supporté par le projet Tor, les développeurs des outils les plus puissants en matière de confidentialité et de liberté en ligne. \n \nLe navigateur Tor sera TOUJOURS gratuit, mais les donations le font exister. Le projet Tor est un 501©(3) sans profit basé aux USA. Veuillez penser à donner dès maintenant. Chaque don fais la différence : https://donate.torproject.org. \n \nApprenez comment reporter des bugs et envoyer des commentaires sur https://support.torproject.org/misc/bug-or-feedback/ !</string>
     <string name="generic_app_warning__beta_version">- Cette application est conçue pour les testeurs et développeurs. Elle peut contenir divers bugs qui peuvent affecter l\'utilisation normale du navigateur.</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo utilise la WebView système pour afficher les sites.
-\n- Il y avait une controverse sur le fait que les cookies de Microsoft n\'étaient pas tous bloqués. - mais cela a été corrigé.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo utilise la WebView système pour afficher les sites. \n- Il y avait une controverse sur le fait que les cookies de Microsoft n\'étaient pas tous bloqués. - mais cela a été corrigé.</string>
     <string name="duckduckgo_android__description">L\'application DuckDuckGo fournit la protection de confidentialité en ligne la plus compréhensive avec un appui sur un bouton. Avec un seul téléchargement, vous avez un nouveau navigateur quotidien qui offre une protection pendant que vous cherchez et naviguez, et accédez aux protections de traqueurs pour les E-mails que vous recevez et les applications que vous utilisez. Beaucoup de ces protections ne sont pas incluses par défaut dans la plupart des navigateurs populaires.</string>
     <string name="privacy_browser__title">Navigateur confidentiel</string>
     <string name="privacy_browser__warning">FFUpdater télécharge les fichiers depuis les serveurs de F-Droid et n\'est donc pas plus rapide.</string>
