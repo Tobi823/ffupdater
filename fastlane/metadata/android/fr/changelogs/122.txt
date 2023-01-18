@@ -1,0 +1,11 @@
+* Merci aux contributions Weblate de : Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
+  Oğuz Ersen, Marlon, mondstern
+* Amélioration de la vitesse de l'UI
+* Ajout des navigateurs Tor Alpha, DuckDuckGo et
+  Confidentiel (depuis F-Droid)
+* Ajout de notifications pour les erreurs réseau
+* Utilisation de la nouvelle repo de Firefox Focus/Klar
+* Amélioration des erreurs Huawei
+* Mise à niveau vers Android 13
+* Amélioration du code (async et regex)
+* Réorganisation et nettoyage

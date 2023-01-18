@@ -1,0 +1,2 @@
+* Merci aux contributions Weblate de : nautilusx, Juraj Motuz, MkQtS, gallegonovato, Retrial
+* Adaptation à la nouvelle façon de nommage pour Firefox Focus/Klar (Tobi823/ffupdater#307)
