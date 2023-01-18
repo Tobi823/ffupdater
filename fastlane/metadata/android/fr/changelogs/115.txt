@@ -1,0 +1,3 @@
+* Merci aux contributions Weblate de : Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
+  Motuz, Giovanni Donisi and Oğuz Ersen
+* Correction d'un bug de la mise à jour de Kiwi : Les releases GitHub sans APK sont ignorées

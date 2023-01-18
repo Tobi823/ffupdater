@@ -1,0 +1,7 @@
+* Merci aux contributions Weblate de : gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Si la mise à jour en arrière plan échoue (à cause d'une interaction utilisateur manquante), 
+  la notification "une mise à jour est disponible" est affichée.
+* Correction du crash qui avait lieu pendant la vérification des mises à jour de Mull (depuis F-Droid)
+* Ajout de Fennec depuis F-Droid
+* Ajout de Mulch
