@@ -50,7 +50,11 @@
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar est développé pour l\'Allemagne, l\'Autriche et la Suisse, mais peut être utilisé par les utilisateurs de n\'importe quel pays. Il est très similaire à Firefox Focus, mais son nom a été modifié dans les pays germanophones pour éviter toute confusion avec le magazine Focus du groupe Hubert Burda Media. Contrairement à Firefox Focus, Firefox Klar a la télémétrie désactivée par défaut en raison des lois allemandes strictes sur la protection de la vie privée.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">Veuillez noter que Firefox Preview n’est plus disponible et a été remplacé par Firefox Nightly. \n\nFirefox Nightly est un canal de développement pour les nouvelles versions de Mozilla Firefox. \n\nFirefox Nightly est conçu pour mettre en valeur les versions les plus expérimentales de Firefox. Le canal Nightly permet aux utilisateurs de découvrir les dernières innovations de Firefox dans un environnement instable et de faire part de leur avis sur les fonctionnalités et les performances pour aider à déterminer ce qui figurera dans la version finale.</string>
+    <string name="firefox_nightly__description">Veuillez noter que Firefox Preview n’est plus disponible.Il a été remplacé par Firefox Nightly.
+\n
+\nFirefox Nightly est un canal de développement pour les nouvelles versions de Mozilla Firefox.
+\n
+\nFirefox Nightly est conçu pour mettre en valeur les versions les plus expérimentales de Firefox. Le canal Nightly permet aux utilisateurs de découvrir les dernières innovations de Firefox dans un environnement instable et de faire part de leur avis sur les fonctionnalités et les performances pour aider à déterminer ce qui figurera dans la version finale.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_release__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
     <string name="firefox_release__title">Firefox</string>
@@ -292,7 +296,9 @@
     <string name="notification__network_error__title">Erreur de réseau en arrière plan</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Cette application est signée avec un certificat différent et ne peut pas être mise à jour avec FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Cacher les applications signées avec un certificat différent.</string>
-    <string name="firefox_focus_beta__description">Utilisez Firefox Focus pour tout ce que vous voulez garder séparé de votre navigateur principal. Pas d\'onglets, pas de désordre. Bloquez les traqueurs en ligne aussi. Un bouton, et votre historique de navigation est complètement supprimé.</string>
+    <string name="firefox_focus_beta__description">Utilisez Firefox Focus pour tout ce que vous voulez garder séparé de votre navigateur principal - pour tous ceux qui entrent et sortent et oublient des moments. Pas d\'onglets, pas de chichi, pas de soucis. Bloquez également les traqueurs en ligne. Une touche, et votre historique de navigation est complètement détruit.
+\n
+\nFirefox Focus est le parfait entrer / sortir, rechercher puis détruire, je suis sur une mission qui ne vous regarde pas - le navigateur Web.</string>
     <string name="duckduckgo_android__title">Navigateur privé DuckDuckGo</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="tor_browser_alpha__description">Le navigateur Tor est le seul navigateur mobile officiellement supporté par le projet Tor, les développeurs des outils les plus puissants en matière de confidentialité et de liberté en ligne.
@@ -301,4 +307,10 @@
 \n
 \nApprenez comment reporter des bugs et envoyer des commentaires sur https://support.torproject.org/misc/bug-or-feedback/ !</string>
     <string name="generic_app_warning__beta_version">- Cette application est conçue pour les testeurs et développeurs. Elle peut contenir divers bugs qui peuvent affecter l\'utilisation normale du navigateur.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo utilise la WebView système pour afficher les sites.
+\n- Il y avait une controverse sur le fait que les cookies de Microsoft n\'étaient pas tous bloqués. - mais cela a été corrigé.</string>
+    <string name="duckduckgo_android__description">L\'application DuckDuckGo fournit la protection de confidentialité en ligne la plus compréhensive avec un appui sur un bouton. Avec un seul téléchargement, vous avez un nouveau navigateur quotidien qui offre une protection pendant que vous cherchez et naviguez, et accédez aux protections de traqueurs pour les E-mails que vous recevez et les applications que vous utilisez. Beaucoup de ces protections ne sont pas incluses par défaut dans la plupart des navigateurs populaires.</string>
+    <string name="privacy_browser__title">Navigateur confidentiel</string>
+    <string name="privacy_browser__warning">FFUpdater télécharge les fichiers depuis les serveurs de F-Droid et n\'est donc pas plus rapide.</string>
+    <string name="privacy_browser__description">Le seul moyen d\'empêcher que les données soient abusées est d\'empêcher d\'abord qu\'elles soient collectées. Navigateur Confidentiel (Privacy Browser) a 2 buts primaires : Minimiser les données qui sont envoyées sur Internet et minimiser les données qui sont stockées sur l\'appareil.</string>
 </resources>
