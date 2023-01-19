@@ -1,0 +1,6 @@
+* Grazie per il contributo su Weblate a: Juraj Motuz, gallegonovato, nautilusx, Oğuz Ersen, Ettore Atalan,
+  109247019824, Retrial e Deleted User
+* Aggiunto supporto per l'installatore Shizuku
+* Aggiunto supporto per Chromium a 64 bit
+* Aggiunta opzione per scegliere tra uno o più canali di notifica (per ogni app) per l'aggiornamento o la notifica del successo o del fallimento dell'installazione.
+* Rifattorizzazione e pulizia
