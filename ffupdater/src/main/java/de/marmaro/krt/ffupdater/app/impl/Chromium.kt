@@ -18,7 +18,6 @@ import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
-import java.io.File
 
 /**
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android/
@@ -66,7 +65,7 @@ class Chromium(
             publishDate = storageObject.timestamp,
             fileSizeBytes = storageObject.fileSizeBytes,
             fileHash = null,
-            downloadRevision = null,
+            downloadRevision = revision,
         )
     }
 
@@ -108,16 +107,6 @@ class Chromium(
             .apply()
         // this must be called last because the update is only recognized after setting the other values
         super.appIsInstalledCallback(context, available)
-    }
-
-    override suspend fun isAvailableVersionEqualToArchive(
-        context: Context, file: File, available: LatestUpdate,
-    ): Boolean {
-        // TODO funktioniert nicht bei ZIP-Archiven
-        // die APK Dateien brauchen im Dateinamen einen identifier
-        // muss aufpassen, dass ich kein Dupletten etc. habe
-        // vielleicht eine Prüfsumme vom Identifier?
-        return file.length() == available.fileSizeBytes
     }
 
     override fun isAvailableVersionHigherThanInstalled(

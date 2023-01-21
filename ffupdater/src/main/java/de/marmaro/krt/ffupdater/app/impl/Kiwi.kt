@@ -16,7 +16,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
-import java.io.File
 
 /**
  * https://github.com/kiwibrowser/src.next
@@ -82,18 +81,6 @@ class Kiwi(
             fileHash = null,
             downloadRevision = version,
         )
-    }
-
-    override suspend fun isAvailableVersionEqualToArchive(
-        context: Context,
-        file: File,
-        available: LatestUpdate,
-    ): Boolean {
-        // identify file (and the correctness of the cache) by its size
-        // (not perfect but the last 30 releases every file has a different size)
-        // chance of 100 releases that two released files has the same size is 0,031%
-        // (assuming that 10^8 file sizes exists)
-        return file.length() == available.fileSizeBytes
     }
 
     override fun isAvailableVersionHigherThanInstalled(

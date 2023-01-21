@@ -16,10 +16,8 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
-import de.marmaro.krt.ffupdater.security.FileHashCalculator
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
-import java.io.File
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
@@ -81,15 +79,6 @@ class FirefoxNightly(
             fileHash = result.fileHash,
             downloadRevision = version,
         )
-    }
-
-    override suspend fun isAvailableVersionEqualToArchive(
-        context: Context,
-        file: File,
-        available: LatestUpdate,
-    ): Boolean {
-        val hash = FileHashCalculator.getSHA256ofFile(file)
-        return hash == available.fileHash
     }
 
     override fun isAvailableVersionHigherThanInstalled(

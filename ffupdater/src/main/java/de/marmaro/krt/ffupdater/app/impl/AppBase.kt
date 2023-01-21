@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import androidx.annotation.AnyThread
-import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.R
@@ -19,7 +18,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
-import java.io.File
 
 
 abstract class AppBase {
@@ -112,18 +110,6 @@ abstract class AppBase {
 
     @WorkerThread
     internal abstract suspend fun findLatestUpdate(context: Context): LatestUpdate
-
-    @MainThread
-    @Deprecated("wird nicht mehr gebraucht")
-    open suspend fun isAvailableVersionEqualToArchive(
-        context: Context,
-        file: File,
-        available: LatestUpdate
-    ): Boolean {
-        val archiveVersion = PackageManagerUtil(context.packageManager)
-            .getPackageArchiveVersionNameOrNull(file.absolutePath) ?: return false
-        return VersionCompareHelper.isAvailableVersionEqual(archiveVersion, available.version)
-    }
 
     @AnyThread
     open fun isAvailableVersionHigherThanInstalled(
