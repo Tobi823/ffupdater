@@ -48,7 +48,11 @@ class MetadataCache(private val app: App) {
             ?.takeIf { System.currentTimeMillis() - it.objectCreationTimestamp <= CACHE_TIME.toMillis() }
     }
 
-    private fun getCached(context: Context): AppUpdateStatus? {
+    fun getCachedOrExceptionIfOutdated(context: Context): AppUpdateStatus {
+        return getCached(context) ?: throw IllegalArgumentException("cache is outdated")
+    }
+
+    fun getCached(context: Context): AppUpdateStatus? {
         return try {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
             preferences.getString(preferenceKey, null)

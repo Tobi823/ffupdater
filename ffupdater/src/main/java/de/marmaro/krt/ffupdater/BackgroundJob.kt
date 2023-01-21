@@ -118,7 +118,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.retry()
         }
 
-        val outdatedApps = checkForUpdates()
+        val outdatedApps = checkForOutdatedApps()
 
         if (!backgroundSettings.isDownloadEnabled) {
             Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
@@ -174,36 +174,41 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         appsForInstallation.forEach {
             installApplication(it)
         }
+
         return Result.success()
     }
 
-    private suspend fun checkForUpdates(): List<App> {
+    private suspend fun checkForOutdatedApps(): List<App> {
         dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
-        return App.values()
+        val apps = App.values()
             .filter { it !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { it.impl.isInstalled(context) == InstallationStatus.INSTALLED }
             .filter { it.metadataCache.getCachedOrFetchIfOutdated(context).isUpdateAvailable }
+
+        apps.forEach {
+            val latestUpdate = it.metadataCache.getCached(context)!!.latestUpdate
+            it.downloadedFileCache.deleteAllExceptLatestApkFile(context, latestUpdate)
+        }
+
+        return apps
     }
 
     @MainThread
     private suspend fun downloadUpdateAndReturnAvailability(app: App): Boolean {
         val updateResult = app.metadataCache.getCachedOrFetchIfOutdated(context)
-
-        val availableResult = updateResult.latestUpdate
-        val cache = app.downloadedFileCache
-        if (cache.isApkFileCached(context, availableResult)) {
+        val latestUpdate = updateResult.latestUpdate
+        if (app.downloadedFileCache.isApkFileCached(context, latestUpdate)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return true
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
         val downloader = FileDownloader(networkSettings)
-        val downloadFile = cache.getApkOrZipTargetFileForDownload(context, availableResult)
-        val url = availableResult.downloadUrl
+        val downloadFile = app.downloadedFileCache.getApkOrZipTargetFileForDownload(context, latestUpdate)
         return try {
             // run async with await later
-            val (deferred, channel) = downloader.downloadBigFileAsync(url, downloadFile)
+            val (deferred, channel) = downloader.downloadBigFileAsync(latestUpdate.downloadUrl, downloadFile)
 
             notificationBuilder.showDownloadRunningNotification(context, app, null, null)
             for (progress in channel) {
@@ -215,22 +220,24 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             deferred.await()
 
             if (app.impl.isAppPublishedAsZipArchive()) {
-                cache.convertZipArchiveToApkFile(context)
-                cache.deleteZipFile(context)
+                app.downloadedFileCache.extractApkFromZipArchive(context, latestUpdate)
+                app.downloadedFileCache.deleteZipFile(context)
             }
 
             notificationRemover.removeDownloadRunningNotification(context, app)
+            app.downloadedFileCache.deleteAllExceptLatestApkFile(context, latestUpdate)
             true
         } catch (e: NetworkException) {
             notificationRemover.removeDownloadRunningNotification(context, app)
             notificationBuilder.showDownloadNotification(context, app, e)
-            cache.deleteApkFile(context)
+            app.downloadedFileCache.deleteAllApkFileForThisApp(context)
             false
         }
     }
 
     private suspend fun installApplication(app: App) {
-        val file = app.downloadedFileCache.getApkFile(context)
+        val availableResult = app.metadataCache.getCachedOrExceptionIfOutdated(context).latestUpdate
+        val file = app.downloadedFileCache.getApkFile(context, availableResult)
         require(file.exists()) { "AppCache has no cached APK file" }
         var success = false
 
@@ -256,7 +263,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         if ((success && backgroundSettings.isDeleteUpdateIfInstallSuccessful) ||
             (!success && backgroundSettings.isDeleteUpdateIfInstallFailed)
         ) {
-            app.downloadedFileCache.deleteApkFile(context)
+            app.downloadedFileCache.deleteAllApkFileForThisApp(context)
         }
     }
 
@@ -307,7 +314,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             context: Context,
             enabled: Boolean,
             interval: Duration,
-            onlyWhenIdle: Boolean
+            onlyWhenIdle: Boolean,
         ) {
             if (enabled) {
                 start(context, BackgroundSettingsHelper(context), REPLACE, interval, onlyWhenIdle)
@@ -321,7 +328,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             settings: BackgroundSettingsHelper,
             policy: ExistingPeriodicWorkPolicy,
             interval: Duration,
-            onlyWhenIdle: Boolean
+            onlyWhenIdle: Boolean,
         ) {
             val requiredNetworkType = if (settings.isUpdateCheckOnMeteredAllowed) CONNECTED else UNMETERED
             val builder = Constraints.Builder()

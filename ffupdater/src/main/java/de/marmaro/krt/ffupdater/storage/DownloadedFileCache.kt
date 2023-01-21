@@ -3,37 +3,46 @@ package de.marmaro.krt.ffupdater.storage
 import android.content.Context
 import android.os.Environment
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
-import java.util.zip.ZipInputStream
+import java.util.zip.ZipFile
 
 class DownloadedFileCache(private val app: App) {
-    fun getApkFile(context: Context): File {
-        return File(getCacheFolder(context), "${app.impl.packageName}.apk")
+
+    fun getApkFile(context: Context, latestUpdate: LatestUpdate): File {
+        val packageName = app.impl.packageName
+            .replace('.', '_')
+            .replace("""\W""", "_")
+        val revision = latestUpdate.downloadRevision ?: ""
+            .replace('.', '_')
+            .replace("""\W""", "_")
+        return File(getCacheFolder(context), "${packageName}_${revision}.apk")
     }
 
-    suspend fun isLatestAppVersionCached(context: Context, available: LatestUpdate?): Boolean {
-        val file = getApkFile(context)
-        if (available == null || !file.exists() || file.length() == 0L) {
-            return false
-        }
-        return app.impl.isAvailableVersionEqualToArchive(context, file, available)
+    fun isApkFileCached(context: Context, latestUpdate: LatestUpdate): Boolean {
+        return getApkFile(context, latestUpdate).exists()
     }
 
     fun getZipFile(context: Context): File {
         return File(getCacheFolder(context), "${app.impl.packageName}.zip")
     }
 
+
+    fun getApkOrZipTargetFileForDownload(context: Context, appAppUpdateStatus: AppUpdateStatus): File {
+        return getApkOrZipTargetFileForDownload(context, appAppUpdateStatus.latestUpdate)
+    }
+
     /**
      * The downloader may download an APK file or an ZIP archive.
      */
-    fun getFileForDownloader(context: Context): File {
-        if (app.impl.isDownloadAnApkFile()) {
-            return getApkFile(context)
+    fun getApkOrZipTargetFileForDownload(context: Context, latestUpdate: LatestUpdate): File {
+        if (app.impl.isAppPublishedAsZipArchive()) {
+            return getZipFile(context)
         }
-        return getZipFile(context)
+        return getApkFile(context, latestUpdate)
     }
 
     fun getCacheFolder(context: Context): File {
@@ -41,16 +50,24 @@ class DownloadedFileCache(private val app: App) {
         return checkNotNull(downloadFolder) { "The external 'Download' folder of the app should exists." }
     }
 
-    fun deleteApkFile(context: Context) {
-        val file = getApkFile(context)
-        if (file.exists()) {
-            val success = file.delete()
-            check(success) { "Fail to delete file '${file.absolutePath}'." }
-        }
+    fun deleteAllApkFileForThisApp(context: Context) {
+        getCacheFolder(context)
+            .listFiles()
+            ?.filter { it.name.startsWith("${app.impl.packageName}_") && it.name.endsWith(".apk") }
+            ?.forEach { it.delete() }
+    }
+
+    fun deleteAllExceptLatestApkFile(context: Context, latestUpdate: LatestUpdate) {
+        val latest = getApkFile(context, latestUpdate)
+        getCacheFolder(context)
+            .listFiles()
+            ?.filter { it != latest }
+            ?.filter { it.name.startsWith("${app.impl.packageName}_") && it.name.endsWith(".apk") }
+            ?.forEach { it.delete() }
     }
 
     fun deleteZipFile(context: Context) {
-        require(!app.impl.isDownloadAnApkFile())
+        require(app.impl.isAppPublishedAsZipArchive())
         val file = getZipFile(context)
         if (file.exists()) {
             val success = file.delete()
@@ -58,30 +75,32 @@ class DownloadedFileCache(private val app: App) {
         }
     }
 
-    suspend fun convertZipArchiveToApkFile(context: Context) {
-        require(!app.impl.isDownloadAnApkFile())
+    suspend fun extractApkFromZipArchive(context: Context, latestUpdate: LatestUpdate) {
+        require(app.impl.isAppPublishedAsZipArchive())
+
         val zipArchive = getZipFile(context)
-        val apkFile = getApkFile(context)
+        require(zipArchive.exists())
+        val apkFile = getApkFile(context, latestUpdate)
+        apkFile.delete()
+
         withContext(Dispatchers.IO) {
-            ZipInputStream(zipArchive.inputStream().buffered()).use { zip ->
-                while (true) {
-                    val entry = zip.nextEntry
-                        ?: throw RuntimeException("Zip does not contain ${app.impl.fileNameInZipArchive}.")
-
-                    if (entry.name == app.impl.fileNameInZipArchive) {
-                        apkFile.outputStream().buffered().use { apk ->
-                            zip.copyTo(apk)
-                        }
-                        @Suppress("BlockingMethodInNonBlockingContext")
-                        zip.closeEntry()
-                        return@withContext
-                    }
-
-                    @Suppress("BlockingMethodInNonBlockingContext")
-                    zip.closeEntry()
-                }
+            ZipFile(zipArchive).use { zipFile ->
+                internalExtractApkFromZipArchive(zipFile, apkFile)
             }
         }
+    }
 
+    private fun internalExtractApkFromZipArchive(zipFile: ZipFile, apkFile: File) {
+        requireNotNull(app.impl.fileNameInZipArchive)
+
+        val zipEntries = zipFile.entries().toList()
+        val apkEntry = zipEntries.firstOrNull { it.name == app.impl.fileNameInZipArchive }
+            ?: throw RuntimeException("Missing APK in ZIP. It contains: ${zipEntries.map { it.name }}")
+
+        zipFile.getInputStream(apkEntry).buffered().use { apkZipEntryStream ->
+            apkFile.outputStream().buffered().use { apkFileStream ->
+                apkZipEntryStream.copyTo(apkFileStream)
+            }
+        }
     }
 }

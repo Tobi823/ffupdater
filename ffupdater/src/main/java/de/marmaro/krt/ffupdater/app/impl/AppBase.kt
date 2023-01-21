@@ -75,7 +75,10 @@ abstract class AppBase {
 
     fun isEol() = (eolReason != null)
 
+    @Deprecated("ersetzen")
     fun isDownloadAnApkFile() = (fileNameInZipArchive == null)
+
+    fun isAppPublishedAsZipArchive() = (fileNameInZipArchive != null)
 
     @AnyThread
     open fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
@@ -111,6 +114,7 @@ abstract class AppBase {
     internal abstract suspend fun findLatestUpdate(context: Context): LatestUpdate
 
     @MainThread
+    @Deprecated("wird nicht mehr gebraucht")
     open suspend fun isAvailableVersionEqualToArchive(
         context: Context,
         file: File,

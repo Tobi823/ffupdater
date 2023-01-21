@@ -106,7 +106,7 @@ class SettingsActivity : AppCompatActivity() {
             findSwitchPref("device__prefer_32bit_apks").setOnPreferenceChangeListener { _, _ ->
                 App.values().forEach {
                     it.metadataCache.invalidateCache(requireContext())
-                    it.downloadedFileCache.deleteApkFile(requireContext())
+                    it.downloadedFileCache.deleteAllApkFileForThisApp(requireContext())
                 }
                 true
             }

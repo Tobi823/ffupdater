@@ -22,6 +22,7 @@ import java.io.File
 
 /**
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android/
+ * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android_Arm64/
  */
 class Chromium(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
@@ -65,11 +66,13 @@ class Chromium(
             publishDate = storageObject.timestamp,
             fileSizeBytes = storageObject.fileSizeBytes,
             fileHash = null,
+            downloadRevision = revision,
         )
     }
 
     private suspend fun findLatestRevision(settings: NetworkSettingsHelper, platform: String): String {
-        val url = "$BASE_DOWNLOAD_URL/$platform%2FLAST_CHANGE?alt=media"
+        val slash = "%2F"
+        val url = "$BASE_DOWNLOAD_URL/${platform}${slash}LAST_CHANGE?alt=media"
         val content = try {
             apiConsumer.consume(url, settings)
         } catch (e: NetworkException) {
