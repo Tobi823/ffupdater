@@ -69,6 +69,7 @@ class BraveBeta(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
+            downloadRevision = version,
         )
     }
 

@@ -33,12 +33,14 @@ class CustomRepositoryConsumer(
             .filter { apkObject -> apkObject.abis!!.contains(abi.codeName) }
             .maxBy { apkObject -> apkObject.versionCode }
 
+        val version = apk.versionName
         return LatestUpdate(
             downloadUrl = "$repoUrl/${apk.apkName}",
-            version = apk.versionName,
+            version = version,
             publishDate = Instant.ofEpochMilli(apk.added).toString(),
             fileSizeBytes = apk.size,
-            fileHash = Sha256Hash(apk.hash)
+            fileHash = Sha256Hash(apk.hash),
+            downloadRevision = version,
         )
     }
 

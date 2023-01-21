@@ -68,7 +68,8 @@ class Brave(
             version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
-            fileHash = null
+            fileHash = null,
+            downloadRevision = version,
         )
     }
 

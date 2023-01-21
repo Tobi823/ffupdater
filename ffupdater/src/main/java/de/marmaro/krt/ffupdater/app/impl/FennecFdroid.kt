@@ -51,11 +51,13 @@ class FennecFdroid(
         }
         val result = fdroidConsumer.getLatestUpdate(packageName, networkSettings, index)
 
-        Log.i(LOG_TAG, "found latest version ${result.versionName}")
+        val version = result.versionName
+        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.downloadUrl,
-            version = result.versionName,
-            publishDate = result.createdAt
+            version = version,
+            publishDate = result.createdAt,
+            downloadRevision = version,
         )
     }
 

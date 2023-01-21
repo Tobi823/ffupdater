@@ -79,6 +79,7 @@ class FirefoxFocusBeta(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
+            downloadRevision = version,
         )
     }
 

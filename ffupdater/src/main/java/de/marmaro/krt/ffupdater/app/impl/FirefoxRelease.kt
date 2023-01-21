@@ -61,13 +61,15 @@ class FirefoxRelease(
             apkArtifact = "public/build/$abiString/target.apk",
             settings = networkSettings
         )
-        Log.i(LOG_TAG, "found latest version ${result.version}")
+        val version = result.version
+        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = result.version,
+            version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = null,
             fileHash = null,
+            downloadRevision = version,
         )
     }
 

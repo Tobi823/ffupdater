@@ -48,13 +48,15 @@ class FFUpdater(
             dontUseApiForLatestRelease = false,
             settings = settings
         )
-        Log.i(LOG_TAG, "found latest version ${result.tagName}")
+        val version = result.tagName
+        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = result.tagName,
+            version = version,
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
+            downloadRevision = version,
         )
     }
 
