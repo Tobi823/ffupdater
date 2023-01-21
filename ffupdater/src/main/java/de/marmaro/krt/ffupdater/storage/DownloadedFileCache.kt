@@ -16,9 +16,7 @@ class DownloadedFileCache(private val app: App) {
         val packageName = app.impl.packageName
             .replace('.', '_')
             .replace("""\W""", "_")
-        val revision = latestUpdate.downloadRevision ?: ""
-            .replace('.', '_')
-            .replace("""\W""", "_")
+        val revision = latestUpdate.version
         return File(getCacheFolder(context), "${packageName}_${revision}.apk")
     }
 

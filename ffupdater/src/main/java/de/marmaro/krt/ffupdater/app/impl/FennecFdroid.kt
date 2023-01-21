@@ -57,7 +57,6 @@ class FennecFdroid(
             downloadUrl = result.downloadUrl,
             version = version,
             publishDate = result.createdAt,
-            downloadRevision = version,
         )
     }
 

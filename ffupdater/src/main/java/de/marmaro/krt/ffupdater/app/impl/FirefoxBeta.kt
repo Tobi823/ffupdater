@@ -69,7 +69,6 @@ class FirefoxBeta(
             publishDate = result.releaseDate,
             fileSizeBytes = null,
             fileHash = null,
-            downloadRevision = version,
         )
     }
 

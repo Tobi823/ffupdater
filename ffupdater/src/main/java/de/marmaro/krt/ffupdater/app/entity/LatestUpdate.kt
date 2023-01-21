@@ -11,6 +11,4 @@ data class LatestUpdate(
         val publishDate: String? = null,
         val fileSizeBytes: Long? = null,
         val fileHash: Sha256Hash? = null,
-        // check if a downloaded file is still the latest download file
-        val downloadRevision: String? = null,
 ) : Parcelable

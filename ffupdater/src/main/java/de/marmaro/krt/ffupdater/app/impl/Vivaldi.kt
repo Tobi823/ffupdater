@@ -62,7 +62,6 @@ class Vivaldi(
             publishDate = null,
             fileSizeBytes = null,
             fileHash = null,
-            downloadRevision = version,
         )
     }
 

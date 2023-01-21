@@ -60,7 +60,6 @@ class DuckDuckGoAndroid(
             publishDate = result.releaseDate,
             fileSizeBytes = result.fileSizeBytes,
             fileHash = null,
-            downloadRevision = version,
         )
     }
 
