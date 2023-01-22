@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.FileUriExposedException
 import android.os.StrictMode
-import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
@@ -164,14 +163,6 @@ class DownloadActivity : AppCompatActivity() {
         } else {
             startActivity(chooser)
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun show(viewId: Int) {
