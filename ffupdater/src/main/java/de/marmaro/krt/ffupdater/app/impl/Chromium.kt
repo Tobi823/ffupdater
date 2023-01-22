@@ -101,7 +101,7 @@ class Chromium(
 
     override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(INSTALLED_VERSION_REVISION, available.version)
+            .putString(INSTALLED_VERSION_REVISION, available.latestUpdate.version)
             .putString(INSTALLED_VERSION_TIMESTAMP, available.publishDate)
             .apply()
         // this must be called last because the update is only recognized after setting the other values
