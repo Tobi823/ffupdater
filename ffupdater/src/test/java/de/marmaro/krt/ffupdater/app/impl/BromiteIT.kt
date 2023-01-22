@@ -17,7 +17,7 @@ internal class BromiteIT : BaseAppIT() {
     fun findAppUpdateStatus() {
         val bromite = Bromite(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { bromite.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 5 * 7) { "${age.toDays()} days is too old" }

@@ -14,7 +14,7 @@ internal class VivaldiIT : BaseAppIT() {
     fun findAppUpdateStatus() {
         val vivaldi = Vivaldi(ApiConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { vivaldi.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
         assertFalse(result.version.isEmpty())
     }
 }

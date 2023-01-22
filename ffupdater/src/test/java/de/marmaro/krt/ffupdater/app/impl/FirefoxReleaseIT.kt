@@ -18,7 +18,7 @@ internal class FirefoxReleaseIT : BaseAppIT() {
         val firefoxRelease = FirefoxRelease(MozillaCiLogConsumer.INSTANCE, deviceAbiExtractor)
         val result =
             runBlocking { firefoxRelease.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 6 * 7) { "${age.toDays()} days is too old" }

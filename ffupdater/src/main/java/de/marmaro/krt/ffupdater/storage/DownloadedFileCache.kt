@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.storage
 import android.content.Context
 import android.os.Environment
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -13,11 +12,8 @@ import java.util.zip.ZipFile
 class DownloadedFileCache(private val app: App) {
 
     fun getApkFile(context: Context, latestUpdate: LatestUpdate): File {
-        val packageName = app.impl.packageName
-            .replace('.', '_')
-            .replace("""\W""", "_")
-        val revision = latestUpdate.version
-        return File(getCacheFolder(context), "${packageName}_${revision}.apk")
+        val fileName = "${getSanitizedPackageName()}_${getSanitizedVersion(latestUpdate)}.apk"
+        return File(getCacheFolder(context), fileName)
     }
 
     fun isApkFileCached(context: Context, latestUpdate: LatestUpdate): Boolean {
@@ -26,11 +22,6 @@ class DownloadedFileCache(private val app: App) {
 
     fun getZipFile(context: Context): File {
         return File(getCacheFolder(context), "${app.impl.packageName}.zip")
-    }
-
-
-    fun getApkOrZipTargetFileForDownload(context: Context, appAppUpdateStatus: AppUpdateStatus): File {
-        return getApkOrZipTargetFileForDownload(context, appAppUpdateStatus.latestUpdate)
     }
 
     /**
@@ -51,7 +42,8 @@ class DownloadedFileCache(private val app: App) {
     fun deleteAllApkFileForThisApp(context: Context) {
         getCacheFolder(context)
             .listFiles()
-            ?.filter { it.name.startsWith("${app.impl.packageName}_") && it.name.endsWith(".apk") }
+            ?.filter { it.name.startsWith(getSanitizedPackageName()) }
+            ?.filter { it.name.endsWith(".apk") }
             ?.forEach { it.delete() }
     }
 
@@ -60,7 +52,8 @@ class DownloadedFileCache(private val app: App) {
         getCacheFolder(context)
             .listFiles()
             ?.filter { it != latest }
-            ?.filter { it.name.startsWith("${app.impl.packageName}_") && it.name.endsWith(".apk") }
+            ?.filter { it.name.startsWith(getSanitizedPackageName()) }
+            ?.filter { it.name.endsWith(".apk") }
             ?.forEach { it.delete() }
     }
 
@@ -100,5 +93,17 @@ class DownloadedFileCache(private val app: App) {
                 apkZipEntryStream.copyTo(apkFileStream)
             }
         }
+    }
+
+    private fun getSanitizedPackageName(): String {
+        return app.impl.packageName
+            .replace('.', '_')
+            .replace("""\W""", "_")
+    }
+
+    private fun getSanitizedVersion(latestUpdate: LatestUpdate): String {
+        return latestUpdate.version
+            .replace('.', '_')
+            .replace("""\W""", "_")
     }
 }

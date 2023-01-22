@@ -20,7 +20,7 @@ internal class FirefoxNightlyIT : BaseAppIT() {
             FirefoxNightly(MozillaCiJsonConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
         val result =
             runBlocking { firefoxNightly.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 1 * 7) { "${age.toDays()} days is too old" }

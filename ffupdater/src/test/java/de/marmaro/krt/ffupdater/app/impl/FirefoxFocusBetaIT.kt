@@ -17,7 +17,7 @@ internal class FirefoxFocusBetaIT : BaseAppIT() {
     fun findAppUpdateStatus() {
         val firefoxFocusBeta = FirefoxFocusBeta(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { firefoxFocusBeta.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 3 * 7) { "${age.toDays()} days is too old" }

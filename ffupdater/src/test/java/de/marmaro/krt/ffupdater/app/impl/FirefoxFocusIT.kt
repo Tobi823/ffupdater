@@ -17,7 +17,7 @@ internal class FirefoxFocusIT : BaseAppIT() {
     fun findAppUpdateStatus() {
         val firefoxFocus = FirefoxFocus(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { firefoxFocus.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 8 * 7) { "${age.toDays()} days is too old" }

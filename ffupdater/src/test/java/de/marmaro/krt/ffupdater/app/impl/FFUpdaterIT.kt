@@ -14,6 +14,6 @@ internal class FFUpdaterIT : BaseAppIT() {
     fun findAppUpdateStatus() {
         val ffupdater = FFUpdater(GithubConsumer.INSTANCE)
         val result = runBlocking { ffupdater.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
     }
 }

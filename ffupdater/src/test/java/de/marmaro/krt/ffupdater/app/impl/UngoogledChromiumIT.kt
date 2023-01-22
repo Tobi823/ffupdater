@@ -15,6 +15,6 @@ internal class UngoogledChromiumIT : BaseAppIT() {
         @Suppress("DEPRECATION")
         val ungoogledChromium = UngoogledChromium(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val result = runBlocking { ungoogledChromium.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
     }
 }
