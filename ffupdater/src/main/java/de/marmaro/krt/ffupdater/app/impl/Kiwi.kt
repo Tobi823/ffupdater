@@ -95,7 +95,7 @@ class Kiwi(
     override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.latestUpdate.version)
-            .putLong(APK_FILE_SIZE, available.fileSizeBytes!!)
+            .putLong(APK_FILE_SIZE, available.latestUpdate.fileSizeBytes!!)
             .apply()
         // this must be called last because the update is only recognized after setting the other values
         super.appIsInstalledCallback(context, available)

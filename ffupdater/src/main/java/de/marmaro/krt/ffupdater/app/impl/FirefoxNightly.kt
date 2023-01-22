@@ -99,7 +99,7 @@ class FirefoxNightly(
     override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
-            .putString(INSTALLED_SHA256_HASH, available.fileHash?.hexValue)
+            .putString(INSTALLED_SHA256_HASH, available.latestUpdate.fileHash?.hexValue)
             .apply()
         // this must be called last because the update is only recognized after setting the other values
         super.appIsInstalledCallback(context, available)

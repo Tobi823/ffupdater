@@ -372,7 +372,7 @@ class MainActivity : AppCompatActivity() {
 
         private fun getDisplayAvailableVersionWithAge(metadata: AppUpdateStatus?): String {
             val version = metadata?.displayVersion ?: "..."
-            val dateString = metadata?.publishDate ?: return version
+            val dateString = metadata?.let { it.latestUpdate.publishDate } ?: return version
             val date = try {
                 ZonedDateTime.parse(dateString, ISO_ZONED_DATE_TIME)
             } catch (e: DateTimeException) {

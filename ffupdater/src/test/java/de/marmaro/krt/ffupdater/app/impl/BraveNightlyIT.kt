@@ -20,7 +20,8 @@ internal class BraveNightlyIT : BaseAppIT() {
         val brave = BraveNightly(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
         val result = runBlocking { brave.findAppUpdateStatus(context) }
         verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
-        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val releaseDate = ZonedDateTime.parse(result.latestUpdate.publishDate,
+            DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 7) { "${age.toDays()} days is too old" }
         // don't check for firstReleaseHasAssets because it is common that some releases has no APK files
