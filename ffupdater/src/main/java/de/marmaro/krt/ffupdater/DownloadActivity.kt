@@ -253,7 +253,7 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         show(R.id.downloadingFile)
-        val downloadUrl = viewModel.appUpdateStatus!!.downloadUrl
+        val downloadUrl = viewModel.appUpdateStatus!!.latestUpdate.downloadUrl
         val latestUpdate = viewModel.appUpdateStatus!!.latestUpdate
         setText(R.id.downloadingFileUrl, downloadUrl)
 
@@ -302,7 +302,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun reuseCurrentDownload() {
-        val downloadUrl = viewModel.appUpdateStatus!!.downloadUrl
+        val downloadUrl = viewModel.appUpdateStatus!!.latestUpdate.downloadUrl
         show(R.id.downloadingFile)
         setText(R.id.downloadingFileUrl, downloadUrl)
 
@@ -418,7 +418,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun showThatDownloadFailed(exception: Exception) {
-        val downloadUrl = viewModel.appUpdateStatus!!.downloadUrl
+        val downloadUrl = viewModel.appUpdateStatus!!.latestUpdate.downloadUrl
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, downloadUrl)

@@ -12,9 +12,6 @@ data class AppUpdateStatus(
     val objectCreationTimestamp: Long = System.currentTimeMillis()
 ) : Parcelable {
 
-    val downloadUrl: String
-        get() = latestUpdate.downloadUrl
-
     val version: String
         get() = latestUpdate.version
 
