@@ -18,9 +18,9 @@ internal class BraveBetaIT : BaseAppIT() {
     fun checkForUpdateWithoutLoadingFromCacheAsync() {
         every { deviceSdkTester.supportsAndroidNougat() } returns true
         val brave = BraveBeta(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
-        val result = runBlocking { brave.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
-        val releaseDate = ZonedDateTime.parse(result.latestUpdate.publishDate,
+        val result = runBlocking { brave.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate,
             DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 2 * 7) { "${age.toDays()} days is too old" }

@@ -16,10 +16,9 @@ internal class FirefoxKlarIT : BaseAppIT() {
     @Test
     fun findAppUpdateStatus() {
         val firefoxKlar = FirefoxKlar(GithubConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { firefoxKlar.findAppUpdateStatus(context) }
-        verifyThatDownloadLinkAvailable(result.latestUpdate.downloadUrl)
-        val releaseDate = ZonedDateTime.parse(result.latestUpdate.publishDate,
-            DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        val result = runBlocking { firefoxKlar.findLatestUpdate(context) }
+        verifyThatDownloadLinkAvailable(result.downloadUrl)
+        val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
         assertTrue(age.toDays() < 2 * 30) { "${age.toDays()} days is too old" }
     }
