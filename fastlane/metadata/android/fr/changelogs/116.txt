@@ -1,0 +1,3 @@
+* Merci aux contributions Weblate de : Jacek, nautilusx, 109247019824, gallegonovato, Juraj Motuz, Oğuz
+  Ersen and atilluF
+* Correction de la vérification de mises à jour de Kiwi

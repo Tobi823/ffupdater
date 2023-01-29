@@ -263,4 +263,7 @@
     <string name="network__proxy__title">Мрежов посредник</string>
     <string name="settings__network_category__title">Мрежа</string>
     <string name="settings__device_category__title">Устройство</string>
+    <string name="device__prefer_32bit_apks__summary">Отметнете ако устройството е с малко памет. Така ще бъдат инсталирани 32 разрядни пакети, които обикновено използват по-малко памет.</string>
+    <string name="device__prefer_32bit_apks__title">Предпочитане на 32 разрядни приложения</string>
+    <string name="installer__method__root_not_granted">Не е даден достъп до суперпотребителя!</string>
 </resources>

@@ -1,0 +1,2 @@
+* 感谢来自 Weblate 的贡献者：nautilusx, Juraj Motuz, MkQtS, gallegonovato, Retrial
+* 适应 Firefox Focus 和 Firefox Klar 的新命名模式(Tobi823/ffupdater#307)

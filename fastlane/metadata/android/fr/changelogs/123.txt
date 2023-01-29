@@ -1,0 +1,2 @@
+* Merci pour les contributions Weblate de : Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Correction du crash quand la version installée du navigateur Tor est différente que celle attendue

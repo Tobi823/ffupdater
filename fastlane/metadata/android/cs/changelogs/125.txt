@@ -1,0 +1,2 @@
+* Za příspěvek na Weblate děkujeme: nautilusx, Juraj Motuz, MkQtS, gallegonovato, Retrial
+* Přizpůsobení novému schématu pojmenování pro Firefox Focus a Firefox Klar (Tobi823/ffupdater#307)

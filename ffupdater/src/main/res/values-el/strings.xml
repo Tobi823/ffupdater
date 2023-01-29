@@ -196,8 +196,8 @@
     <string name="settings__foreground__hide_warning_buttons">Απόκρυψη του κουμπιού προειδοποίησης για την εγκατεστημένη εφαρμογή.</string>
     <string name="settings__foreground__theme_preference__summary">Επιλέξτε ανάμεσα σε ανοιχτό και σκοτεινό θέμα</string>
     <string name="settings__foreground__theme_preference__title">Επιλέξτε θέμα</string>
-    <string name="settings__foreground__update_check__metered__summary">Επιτρέπονται οι έλεγχοι ενημέρωσης σε μετρήσιμα δίκτυα, όπως δεδομένα κινητής τηλεφωνίας.</string>
-    <string name="settings__foreground__update_check__metered__title">Ενημέρωση ελέγχων σε μετρήσιμα δίκτυα</string>
+    <string name="settings__foreground__update_check__metered__summary">Να επιτρέπονται οι έλεγχοι ενημερώσεων σε μετρήσιμα δίκτυα, όπως δεδομένα κινητής τηλεφωνίας.</string>
+    <string name="settings__foreground__update_check__metered__title">Έλεγχος ενημερώσεων σε μετρήσιμα δίκτυα</string>
     <string name="settings__foreground_category__summary">Ρυθμίσεις όταν η διεπαφή χρήστη είναι ορατή.</string>
     <string name="settings__foreground_category__title">Προσκήνιο</string>
     <string name="settings__installer_category__title">Εγκαταστάτης</string>

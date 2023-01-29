@@ -1,0 +1,4 @@
+* Merci aux contributions Weblate de : Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato, Juraj
+  Motuz, MkQtS, Oğuz Ersen
+* Correction de bug : Si l'utilisateur essaye d'ajouter une application, l'icône d'avertissement
+  devrait seulement être affichée pour les applications qui ont un avertissement d'installation (Tobi823/ffupdater#306)

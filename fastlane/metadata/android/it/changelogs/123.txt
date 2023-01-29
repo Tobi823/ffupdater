@@ -1,0 +1,2 @@
+* Grazie per il contributo su Weblate a: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Corretto crash quando la versione di Tor Browser installata è diversa da quella prevista

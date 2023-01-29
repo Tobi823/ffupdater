@@ -1,0 +1,6 @@
+* La version Mull de F-Droid n'est plus supportée. Veuillez changer pour Mull version divestos.org en l'installant avec FFUpdater ou en utilisant F-Droid pour mettre à jour Mull
+* Amélioration de la gestion des applications avec des certificats différents
+* Correction de l'échec de la mise à jour de Mulch pour les appareils avec un arm32
+* Correction de l'échec de la mise à jour de Fennec F-Droid pour les appareils avec un arm32
+* Ajout des test d'unité
+* Nettoyage

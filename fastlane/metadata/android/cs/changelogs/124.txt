@@ -1,0 +1,4 @@
+* Za příspěvek na Weblate děkujeme: Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato, Juraj
+  Motuz, MkQtS, Oğuz Ersen 
+* Oprava chyby: pokud chce uživatel přidat novou aplikaci, měla by se varovná ikona zobrazit pouze
+  u aplikací s příznakem varování před instalací (Tobi823/ffupdater#306)
