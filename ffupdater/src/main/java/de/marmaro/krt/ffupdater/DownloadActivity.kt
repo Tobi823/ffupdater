@@ -60,25 +60,33 @@ class DownloadActivity : AppCompatActivity() {
     private lateinit var networkSettings: NetworkSettingsHelper
     private val notificationRemover = BackgroundNotificationRemover.INSTANCE
 
-    // persistent data across orientation changes
+    private lateinit var app: App
+    private lateinit var appUpdateStatus: AppUpdateStatus
+
+    // persistent data for already running downloads
     class InstallActivityViewModel : ViewModel() {
-        var app: App? = null
-
-        // prevent race condition: this value should remain constant and must not be changed by the
-        // background job during activity execution
-        var appUpdateStatus: AppUpdateStatus? = null
-
+        private var downloadApp: App? = null
         var downloadDeferred: Deferred<Any>? = null
         var downloadProgressChannel: Channel<FileDownloader.DownloadStatus>? = null
 
-        var deleteDownloadedFileWhenOnPause = false
+        fun storeNewRunningDownload(
+            app: App,
+            deferred: Deferred<Any>,
+            progressChannel: Channel<FileDownloader.DownloadStatus>,
+        ) {
+            downloadApp = app
+            downloadDeferred = deferred
+            downloadProgressChannel = progressChannel
+        }
+
+        fun isAValidDownloadForTheCurrentAppAlreadyRunning(currentApp: App): Boolean {
+            return downloadApp == currentApp && downloadDeferred?.isActive == true
+        }
 
         fun clear() {
-            app = null
-            appUpdateStatus = null
+            downloadApp = null
             downloadDeferred = null
             downloadProgressChannel = null
-            deleteDownloadedFileWhenOnPause = false
         }
     }
 
@@ -92,20 +100,15 @@ class DownloadActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
-        if (intent?.extras?.getBoolean(EXTRA_FRESH_START, false) == true) {
-            intent?.removeExtra(EXTRA_FRESH_START)
-            viewModel.clear()
-
-            val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
-            if (appFromExtras == null) {
-                // InstallActivity was unintentionally started again after finishing the download
-                finish()
-                return
-            }
-            viewModel.app = App.valueOf(appFromExtras)
+        val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
+        if (appFromExtras == null) {
+            // InstallActivity was unintentionally started again after finishing the download
+            finish()
+            return
         }
-        val app = viewModel.app!!
+        app = App.valueOf(appFromExtras)
+
+        viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         foregroundSettings = ForegroundSettingsHelper(preferences)
@@ -131,22 +134,13 @@ class DownloadActivity : AppCompatActivity() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        // only delete a successfully downloaded file if the activity is closed
-        // (to prevent unnecessary downloads when the screen is rotated)
-        if (viewModel.deleteDownloadedFileWhenOnPause) {
-            viewModel.app!!.downloadedFileCache.deleteAllApkFileForThisApp(this)
-        }
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
     }
 
     private fun tryOpenDownloadFolderInFileManager() {
-        val absolutePath = viewModel.app!!.downloadedFileCache.getCacheFolder(this).absolutePath
+        val absolutePath = app.downloadedFileCache.getCacheFolder(this).absolutePath
         val uri = Uri.parse("file://$absolutePath/")
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, "resource/folder")
@@ -203,59 +197,57 @@ class DownloadActivity : AppCompatActivity() {
 
     private suspend fun fetchDownloadInformationOrUseCache() {
         show(R.id.fetchUrl)
-        val app = viewModel.app!!
         val downloadSource = app.impl.downloadSource
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
-        viewModel.appUpdateStatus = app.metadataCache.getCachedOrNullIfOutdated(this)
-        if (viewModel.appUpdateStatus == null) {
-            // only check for updates if network type requirements are met
-            if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-                showThatUrlFetchingFailed(getString(main_activity__no_unmetered_network))
-                return
-            }
-
-            try {
-                viewModel.appUpdateStatus = viewModel.app!!.metadataCache.getCachedOrFetchIfOutdated(this)
-            } catch (e: ApiRateLimitExceededException) {
-                showThatUrlFetchingFailed(getString(download_activity__github_rate_limit_exceeded), e)
-                return
-            } catch (e: NetworkException) {
-                showThatUrlFetchingFailed(getString(download_activity__temporary_network_issue), e)
-                return
-            }
-        }
+        appUpdateStatus = app.metadataCache.getCachedOrNullIfOutdated(this)
+            ?: fetchDownloadInformationHelper()
+                    ?: return
 
         hide(R.id.fetchUrl)
         show(R.id.fetchedUrlSuccess)
         val finishedText = getString(download_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
 
-        val latestUpdate = viewModel.appUpdateStatus!!.latestUpdate
         when {
-            app.downloadedFileCache.isApkFileCached(this, latestUpdate) -> {
+            app.downloadedFileCache.isApkFileCached(this, appUpdateStatus.latestUpdate) -> {
                 show(R.id.useCachedDownloadedApk)
-                val file = app.downloadedFileCache.getApkFile(this, latestUpdate)
+                val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
                 setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
                 installApp()
             }
-            viewModel.downloadDeferred?.isActive == true -> reuseCurrentDownload()
+            viewModel.isAValidDownloadForTheCurrentAppAlreadyRunning(app) -> reuseCurrentDownload()
             else -> startDownload()
+        }
+    }
+
+    private suspend fun fetchDownloadInformationHelper(): AppUpdateStatus? {
+        // only check for updates if network type requirements are met
+        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+            showThatUrlFetchingFailed(getString(main_activity__no_unmetered_network))
+            return null
+        }
+
+        return try {
+            app.metadataCache.getCachedOrFetchIfOutdated(this)
+        } catch (e: ApiRateLimitExceededException) {
+            showThatUrlFetchingFailed(getString(download_activity__github_rate_limit_exceeded), e)
+            null
+        } catch (e: NetworkException) {
+            showThatUrlFetchingFailed(getString(download_activity__temporary_network_issue), e)
+            null
         }
     }
 
     @MainThread
     private suspend fun startDownload() {
-        val app = viewModel.app!!
         if (!foregroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
             showThatUrlFetchingFailed(getString(main_activity__no_unmetered_network))
             return
         }
 
         show(R.id.downloadingFile)
-        val downloadUrl = viewModel.appUpdateStatus!!.latestUpdate.downloadUrl
-        val latestUpdate = viewModel.appUpdateStatus!!.latestUpdate
-        setText(R.id.downloadingFileUrl, downloadUrl)
+        setText(R.id.downloadingFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
 
         val fileDownloader = FileDownloader(networkSettings)
         val display = getString(download_activity__download_app_with_status, "")
@@ -265,13 +257,13 @@ class DownloadActivity : AppCompatActivity() {
 
         // this coroutine should survive a screen rotation and should live as long as the view model
         try {
+            val latestUpdate = appUpdateStatus.latestUpdate
             val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(this, latestUpdate)
             val (deferred, progressChannel) = withContext(viewModel.viewModelScope.coroutineContext) {
                 // run async with await later
-                fileDownloader.downloadBigFileAsync(downloadUrl, file)
+                fileDownloader.downloadBigFileAsync(appUpdateStatus.latestUpdate.downloadUrl, file)
             }
-            viewModel.downloadDeferred = deferred
-            viewModel.downloadProgressChannel = progressChannel
+            viewModel.storeNewRunningDownload(app, deferred, progressChannel)
 
             for (progress in progressChannel) {
                 progress.progressInPercent
@@ -290,21 +282,21 @@ class DownloadActivity : AppCompatActivity() {
 
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, downloadUrl)
+            setText(R.id.downloadedFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
             postProcessDownload()
         } catch (e: NetworkException) {
+            viewModel.clear()
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, downloadUrl)
+            setText(R.id.downloadedFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
             showThatDownloadFailed(e)
         }
     }
 
     @MainThread
     private suspend fun reuseCurrentDownload() {
-        val downloadUrl = viewModel.appUpdateStatus!!.latestUpdate.downloadUrl
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, downloadUrl)
+        setText(R.id.downloadingFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
 
         for (progress in viewModel.downloadProgressChannel!!) {
             progress.progressInPercent
@@ -329,23 +321,19 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun postProcessDownload() {
-        val app = viewModel.app!!
-        val latestUpdate = viewModel.appUpdateStatus!!.latestUpdate
         // if the download was an ZIP archive, then extract the APK file
         if (app.impl.isAppPublishedAsZipArchive()) {
-            app.downloadedFileCache.extractApkFromZipArchive(this, latestUpdate)
+            app.downloadedFileCache.extractApkFromZipArchive(this, appUpdateStatus.latestUpdate)
             app.downloadedFileCache.deleteZipFile(this)
         }
-        app.downloadedFileCache.deleteAllExceptLatestApkFile(this, latestUpdate)
+        app.downloadedFileCache.deleteAllExceptLatestApkFile(this, appUpdateStatus.latestUpdate)
         installApp()
     }
 
     @MainThread
     private suspend fun installApp() {
         show(R.id.installingApplication)
-        val app = viewModel.app!!
-        val latestUpdate = viewModel.appUpdateStatus!!.latestUpdate
-        val file = app.downloadedFileCache.getApkFile(this, latestUpdate)
+        val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
         val appInstaller = createForegroundAppInstaller(this, app, file)
         lifecycle.addObserver(appInstaller)
 
@@ -367,10 +355,8 @@ class DownloadActivity : AppCompatActivity() {
         show(R.id.installerSuccess)
         show(R.id.fingerprintInstalledGood)
         setText(R.id.fingerprintInstalledGoodHash, certificateHash)
-        viewModel.app!!.impl.appIsInstalledCallback(this, viewModel.appUpdateStatus!!)
-        if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
-            viewModel.deleteDownloadedFileWhenOnPause = true
-        } else {
+        app.impl.appIsInstalledCallback(this, appUpdateStatus)
+        if (!foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }
@@ -379,7 +365,6 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun showThatAppInstallationFailed(errorMessage: String, exception: Exception) {
-        val app = viewModel.app!!
         hide(R.id.installingApplication)
         show(R.id.install_activity__exception)
         show(R.id.install_activity__exception__description)
@@ -418,7 +403,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun showThatDownloadFailed(exception: Exception) {
-        val downloadUrl = viewModel.appUpdateStatus!!.latestUpdate.downloadUrl
+        val downloadUrl = appUpdateStatus.latestUpdate.downloadUrl
         hide(R.id.downloadingFile)
         show(R.id.downloadFileFailed)
         setText(R.id.downloadFileFailedUrl, downloadUrl)
@@ -427,7 +412,7 @@ class DownloadActivity : AppCompatActivity() {
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
-        viewModel.app!!.downloadedFileCache.deleteAllApkFileForThisApp(this)
+        app.downloadedFileCache.deleteAllApkFileForThisApp(this)
         cleanupUi()
     }
 
@@ -456,7 +441,6 @@ class DownloadActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
-        const val EXTRA_FRESH_START = "fresh_start"
 
         /**
          * Create a new InstallActivity which have to check if app is up-to-date
@@ -465,7 +449,6 @@ class DownloadActivity : AppCompatActivity() {
             val intent = Intent(context, DownloadActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)
-            intent.putExtra(EXTRA_FRESH_START, true)
             return intent
         }
     }
