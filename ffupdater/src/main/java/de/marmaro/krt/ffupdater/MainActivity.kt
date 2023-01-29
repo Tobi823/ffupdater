@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater
 
+import android.Manifest.permission.POST_NOTIFICATIONS
 import android.R.color.holo_blue_dark
 import android.R.color.holo_blue_light
 import android.annotation.SuppressLint
@@ -7,7 +8,9 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
@@ -15,10 +18,12 @@ import android.view.*
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.MainThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -67,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         foregroundSettings = ForegroundSettingsHelper(this)
         AppCompatDelegate.setDefaultNightMode(foregroundSettings.themePreference)
         Migrator().migrate(this)
+        requestForNotificationPermissionIfNecessary()
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             val intent = AddAppActivity.createIntent(this)
@@ -231,6 +237,27 @@ class MainActivity : AppCompatActivity() {
     @UiThread
     private fun setLoadAnimationState(visible: Boolean) {
         findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = visible
+    }
+
+    private fun requestForNotificationPermissionIfNecessary() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            return
+        }
+        if (ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+            return
+        }
+
+        val request =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+                if (!isGranted) {
+                    Snackbar.make(
+                        findViewById(R.id.coordinatorLayout),
+                        R.string.main_activity__denied_notification_permission,
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            }
+        request.launch(POST_NOTIFICATIONS)
     }
 
     class InstalledAppsAdapter(private val activity: MainActivity) :

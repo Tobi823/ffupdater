@@ -51,12 +51,12 @@ class DeviceSdkTester {
         return SDK_INT >= Build.VERSION_CODES.S
     }
 
-//    /**
-//     * API level 33
-//     */
-//    fun supportsAndroid13(): Boolean {
-//        return SDK_INT >= Build.VERSION_CODES.TIRAMISU
-//    }
+    /**
+     * API level 33
+     */
+    fun supportsAndroid13(): Boolean {
+        return SDK_INT >= Build.VERSION_CODES.TIRAMISU
+    }
 
     companion object {
         val INSTANCE = DeviceSdkTester()
