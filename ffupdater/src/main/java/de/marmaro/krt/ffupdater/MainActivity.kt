@@ -173,11 +173,12 @@ class MainActivity : AppCompatActivity() {
     private suspend fun updateMetadataOf(app: App, useCache: Boolean) {
         if (!useCache) {
             app.metadataCache.invalidateCache(applicationContext)
-            recycleViewAdapter.notifyAppChange(app)
         }
 
         try {
+            recycleViewAdapter.notifyAppChange(app)
             app.metadataCache.getCachedOrFetchIfOutdated(applicationContext)
+            recycleViewAdapter.notifyAppChange(app)
         } catch (e: ApiRateLimitExceededException) {
             recycleViewAdapter.notifyErrorForApp(
                 app, getString(R.string.main_activity__github_api_limit_exceeded), e
@@ -194,7 +195,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         recycleViewAdapter.notifyClearedErrorForApp(app)
-        recycleViewAdapter.notifyAppChange(app)
     }
 
     @MainThread
@@ -372,7 +372,7 @@ class MainActivity : AppCompatActivity() {
 
         private fun getDisplayAvailableVersionWithAge(metadata: AppUpdateStatus?): String {
             val version = metadata?.displayVersion ?: "..."
-            val dateString = metadata?.let { it.latestUpdate.publishDate } ?: return version
+            val dateString = metadata?.latestUpdate?.publishDate ?: return version
             val date = try {
                 ZonedDateTime.parse(dateString, ISO_ZONED_DATE_TIME)
             } catch (e: DateTimeException) {
