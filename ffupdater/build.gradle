@@ -60,7 +60,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation 'io.mockk:mockk:1.10.5'
     //noinspection GradleDependency
-    testImplementation 'com.github.IvanShafran:shared-preferences-mock:1.0.0'
+    testImplementation 'io.github.ivanshafran:shared-preferences-mock:1.2.4'
 }
 
 android {
