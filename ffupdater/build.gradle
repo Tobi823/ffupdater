@@ -32,7 +32,7 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.0'
 
     // has coordinatorlayout, constraintlayout, cardview and more
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.8.0'
 
     // additional layout for then main screen
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
@@ -59,7 +59,8 @@ dependencies {
     // Aggregator dependency on JUnit api, engine, and params
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation 'io.mockk:mockk:1.10.5'
-    testImplementation 'com.github.IvanShafran:shared-preferences-mock:1.2.4'
+    //noinspection GradleDependency
+    testImplementation 'com.github.IvanShafran:shared-preferences-mock:1.0.0'
 }
 
 android {
