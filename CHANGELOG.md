@@ -1,3 +1,12 @@
+# 2023-01-29 Release 77.7.0 (126)
+
+* Thanks for the Weblate contribution from: SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824,
+  Retrial, nautilusx,gallegonovato and MkQtS
+* BackgroundJob should retry multiple times before showing error notifications
+* Improve cache of downloaded APK files
+* Asks for notification permission on Android 13
+* Fix UI bug in main view
+
 # 2023-01-07 Release 77.6.3 (125)
 
 * Thanks for the Weblate contribution from: nautilusx, Juraj Motuz, MkQtS, gallegonovato, Retrial
