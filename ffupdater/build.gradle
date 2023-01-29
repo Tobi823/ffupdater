@@ -10,7 +10,6 @@ repositories {
     maven {
         url 'https://jitpack.io'
         content {
-            includeModule('com.github.IvanShafran', 'shared-preferences-mock')
             includeModule('com.github.topjohnwu.libsu', 'core')
         }
     }
@@ -21,7 +20,7 @@ dependencies {
     //noinspection GradleDependency
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
 
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
@@ -60,7 +59,7 @@ dependencies {
     // Aggregator dependency on JUnit api, engine, and params
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation 'io.mockk:mockk:1.10.5'
-    testImplementation 'com.github.IvanShafran:shared-preferences-mock:1.1'
+    testImplementation 'com.github.IvanShafran:shared-preferences-mock:1.2.4'
 }
 
 android {
@@ -119,8 +118,8 @@ android {
     lint {
         abortOnError false
     }
-
-    aaptOptions {
-        additionalParameters = ["--warn-manifest-validation"]
+    androidResources {
+        additionalParameters '--warn-manifest-validation'
     }
+
 }
