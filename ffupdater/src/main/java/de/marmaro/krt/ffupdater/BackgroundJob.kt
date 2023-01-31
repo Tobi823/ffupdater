@@ -241,7 +241,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         require(file.exists()) { "AppCache has no cached APK file" }
         var success = false
 
-        val installer = createBackgroundAppInstaller(context, app, file)
+        val installer = createBackgroundAppInstaller(context, app)
         try {
             installer.startInstallation(context, file)
             success = true
