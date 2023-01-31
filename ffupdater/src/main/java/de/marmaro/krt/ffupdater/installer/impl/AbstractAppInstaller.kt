@@ -14,17 +14,16 @@ import java.io.File
 
 abstract class AbstractAppInstaller(
     protected val app: App,
-    private val file: File,
 ) : AppInstaller {
 
-    override suspend fun startInstallation(context: Context): InstallResult {
+    override suspend fun startInstallation(context: Context, file: File): InstallResult {
         return withContext(Dispatchers.IO) {
-            install2Internal(context)
+            install2Internal(context, file)
         }
     }
 
     @Throws(InstallationFailedException::class)
-    private suspend fun install2Internal(context: Context): InstallResult {
+    private suspend fun install2Internal(context: Context, file: File): InstallResult {
         val validator = FingerprintValidator(context.packageManager)
         val fileResult = try {
             validator.checkApkFile(file, app.impl)
@@ -41,7 +40,7 @@ abstract class AbstractAppInstaller(
         }
 
         // in failure, this will throw InstallationFailedException
-        executeInstallerSpecificLogic(context)
+        executeInstallerSpecificLogic(context, file)
 
         val appResult = try {
             validator.checkInstalledApp(app.impl)
@@ -56,5 +55,5 @@ abstract class AbstractAppInstaller(
         return InstallResult(fileCertHash)
     }
 
-    protected abstract suspend fun executeInstallerSpecificLogic(context: Context)
+    protected abstract suspend fun executeInstallerSpecificLogic(context: Context, file: File)
 }

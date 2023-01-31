@@ -18,9 +18,8 @@ import java.io.File
  */
 class ShizukuInstaller(
     app: App,
-    private val file: File,
-    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE
-) : AbstractAppInstaller(app, file) {
+    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
+) : AbstractAppInstaller(app) {
     override val type = Installer.SHIZUKU_INSTALLER
 
     init {
@@ -29,7 +28,7 @@ class ShizukuInstaller(
         }
     }
 
-    override suspend fun executeInstallerSpecificLogic(context: Context) {
+    override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
         val filePath = file.absolutePath
         val fileName = file.name
         require(!hasDangerousCharacter(filePath))

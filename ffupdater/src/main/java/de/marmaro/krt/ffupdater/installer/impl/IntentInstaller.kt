@@ -24,9 +24,8 @@ class IntentInstaller(
     context: Context,
     private val activityResultRegistry: ActivityResultRegistry,
     app: App,
-    private val file: File,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-) : AbstractAppInstaller(app, file) {
+) : AbstractAppInstaller(app) {
     override val type = Installer.NATIVE_INSTALLER
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
     private val installationStatusFromCallback = CompletableDeferred<Boolean>()
@@ -60,7 +59,7 @@ class IntentInstaller(
         )
     }
 
-    override suspend fun executeInstallerSpecificLogic(context: Context) {
+    override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         installInternal(context, file)

@@ -12,13 +12,10 @@ import java.io.File
 /**
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
  */
-class RootInstaller(
-    app: App,
-    private val file: File
-) : AbstractAppInstaller(app, file) {
+class RootInstaller(app: App) : AbstractAppInstaller(app) {
     override val type = Installer.ROOT_INSTALLER
 
-    override suspend fun executeInstallerSpecificLogic(context: Context) {
+    override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
         val filePath = file.absolutePath
         val fileName = file.name
         require(!hasDangerousCharacter(filePath))

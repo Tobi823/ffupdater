@@ -27,6 +27,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
@@ -62,6 +63,7 @@ class DownloadActivity : AppCompatActivity() {
 
     private lateinit var app: App
     private lateinit var appUpdateStatus: AppUpdateStatus
+    private lateinit var appInstaller: AppInstaller
 
     // persistent data for already running downloads
     class InstallActivityViewModel : ViewModel() {
@@ -132,6 +134,9 @@ class DownloadActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
         }
+
+        appInstaller = createForegroundAppInstaller(this, app)
+        lifecycle.addObserver(appInstaller)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -334,11 +339,9 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun installApp() {
         show(R.id.installingApplication)
         val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
-        val appInstaller = createForegroundAppInstaller(this, app, file)
-        lifecycle.addObserver(appInstaller)
-
         try {
-            val certificateHash = appInstaller.startInstallation(this).certificateHash ?: "error"
+            val installResult = appInstaller.startInstallation(this, file)
+            val certificateHash = installResult.certificateHash ?: "error"
             showThatAppIsInstalled(certificateHash)
         } catch (e: InstallationFailedException) {
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)

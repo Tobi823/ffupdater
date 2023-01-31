@@ -24,7 +24,6 @@ git fetch --tags
 - build signed APK file
 - copy message of the release commit
 - `,ff_release "???"` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
-- `,repomaker` to update private repo
 
 ```
 Changelogs:

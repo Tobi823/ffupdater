@@ -15,33 +15,31 @@ import java.io.File
 
 interface AppInstaller : DefaultLifecycleObserver {
     val type: Installer
-    suspend fun startInstallation(context: Context): InstallResult
+    suspend fun startInstallation(context: Context, file: File): InstallResult
 
     companion object {
         fun createForegroundAppInstaller(
             activity: ComponentActivity,
             app: App,
-            file: File,
         ): AppInstaller {
             val registry = activity.activityResultRegistry
             return when (InstallerSettingsHelper(activity).getInstallerMethod()) {
-                Installer.SESSION_INSTALLER -> SessionInstaller(app, file, true)
-                Installer.NATIVE_INSTALLER -> IntentInstaller(activity, registry, app, file)
-                Installer.ROOT_INSTALLER -> RootInstaller(app, file)
-                Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app, file)
+                Installer.SESSION_INSTALLER -> SessionInstaller(app, true)
+                Installer.NATIVE_INSTALLER -> IntentInstaller(activity, registry, app)
+                Installer.ROOT_INSTALLER -> RootInstaller(app)
+                Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app)
             }
         }
 
         fun createBackgroundAppInstaller(
             context: Context,
             app: App,
-            file: File,
         ): AppInstaller {
             return when (InstallerSettingsHelper(context).getInstallerMethod()) {
-                Installer.SESSION_INSTALLER -> SessionInstaller(app, file, false)
+                Installer.SESSION_INSTALLER -> SessionInstaller(app, false)
                 Installer.NATIVE_INSTALLER -> throw Exception("Installer can not update apps in background")
-                Installer.ROOT_INSTALLER -> RootInstaller(app, file)
-                Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app, file)
+                Installer.ROOT_INSTALLER -> RootInstaller(app)
+                Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app)
             }
         }
     }

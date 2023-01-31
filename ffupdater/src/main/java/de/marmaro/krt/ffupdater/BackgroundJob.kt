@@ -243,7 +243,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         val installer = createBackgroundAppInstaller(context, app, file)
         try {
-            installer.startInstallation(context)
+            installer.startInstallation(context, file)
             success = true
 
             notificationBuilder.showInstallSuccessNotification(context, app)

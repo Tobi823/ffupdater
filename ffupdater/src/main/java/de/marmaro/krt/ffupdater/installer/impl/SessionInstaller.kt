@@ -28,21 +28,20 @@ import java.io.IOException
 
 class SessionInstaller(
     app: App,
-    private val file: File,
     private val foreground: Boolean,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-) : AbstractAppInstaller(app, file) {
+) : AbstractAppInstaller(app) {
     override val type = Installer.SESSION_INSTALLER
     private val intentNameForAppInstallationCallback =
         "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
     private val installationStatus = CompletableDeferred<Boolean>()
     private var intentReceiver: BroadcastReceiver? = null
 
-    override suspend fun executeInstallerSpecificLogic(context: Context) {
+    override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
         require(file.exists()) { "File does not exists." }
         return withContext(Dispatchers.Main) {
             registerIntentReceiver(context)
-            install(context)
+            install(context, file)
             try {
                 installationStatus.await()
             } finally {
@@ -53,8 +52,8 @@ class SessionInstaller(
 
     @SuppressLint("UnspecifiedImmutableFlag")
     @MainThread
-    private fun install(context: Context) {
-        val params = createSessionParams(context)
+    private fun install(context: Context, file: File) {
+        val params = createSessionParams(context, file)
         val installer = context.packageManager.packageInstaller
         val sessionId = try {
             installer.createSession(params)
@@ -64,13 +63,13 @@ class SessionInstaller(
             return
         }
         installer.openSession(sessionId).use {
-            copyApkToSession(it)
+            copyApkToSession(it, file)
             val intentSender = createSessionChangeReceiver(context, sessionId)
             it.commit(intentSender)
         }
     }
 
-    private fun createSessionParams(context: Context): SessionParams {
+    private fun createSessionParams(context: Context, file: File): SessionParams {
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
         val params = SessionParams(MODE_FULL_INSTALL)
         val displayIcon = app.impl.icon // store display icon id in variable to prevent crash
@@ -90,7 +89,7 @@ class SessionInstaller(
         return params
     }
 
-    private fun copyApkToSession(session: Session) {
+    private fun copyApkToSession(session: Session, file: File) {
         val name = "${app.impl.packageName}_${System.currentTimeMillis()}"
         session.openWrite(name, 0, file.length()).use { sessionStream ->
             file.inputStream().use { downloadedFileStream -> downloadedFileStream.copyTo(sessionStream) }
