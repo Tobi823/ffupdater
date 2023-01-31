@@ -91,8 +91,12 @@ class SessionInstaller(
 
     private fun copyApkToSession(session: Session, file: File) {
         val name = "${app.impl.packageName}_${System.currentTimeMillis()}"
-        session.openWrite(name, 0, file.length()).use { sessionStream ->
-            file.inputStream().use { downloadedFileStream -> downloadedFileStream.copyTo(sessionStream) }
+        file.inputStream().buffered().use { downloadedFileStream ->
+            session.openWrite(name, 0, file.length()).buffered().use { sessionStream ->
+                downloadedFileStream.copyTo(sessionStream)
+                sessionStream.flush()
+                session.fsync(sessionStream)
+            }
         }
     }
 

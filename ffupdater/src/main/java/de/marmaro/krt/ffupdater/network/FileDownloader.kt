@@ -68,6 +68,7 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
                 body.byteStream().buffered().use { responseReader ->
                     // this method blocks until download is finished
                     responseReader.copyTo(fileWriter)
+                    fileWriter.flush()
                 }
             }
         }

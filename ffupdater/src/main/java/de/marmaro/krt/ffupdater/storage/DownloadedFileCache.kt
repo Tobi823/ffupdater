@@ -91,6 +91,7 @@ class DownloadedFileCache(private val app: App) {
         zipFile.getInputStream(apkEntry).buffered().use { apkZipEntryStream ->
             apkFile.outputStream().buffered().use { apkFileStream ->
                 apkZipEntryStream.copyTo(apkFileStream)
+                apkFileStream.flush()
             }
         }
     }

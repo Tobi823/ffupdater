@@ -35,19 +35,15 @@ class PackageManagerUtil(
 //              https://developer.android.com/reference/android/content/pm/PackageManager#getPackageArchiveInfo(java.lang.String,%20android.content.pm.PackageManager.PackageInfoFlags)
 //        }
 
-        repeat(10) {
-            if (deviceSdkTester.supportsAndroid9()) {
-                packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
-                    ?.signingInfo
-                    ?.let { return extractSignature(it) }
-            }
-
-            packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
-                ?.signatures
+        if (deviceSdkTester.supportsAndroid9()) {
+            packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
+                ?.signingInfo
                 ?.let { return extractSignature(it) }
-
-            Thread.sleep(1000)
         }
+
+        packageManager.getPackageArchiveInfo(path, GET_SIGNATURES)
+            ?.signatures
+            ?.let { return extractSignature(it) }
 
         throw IllegalArgumentException(
             "Can't extract the signature from APK file '$path', " +
