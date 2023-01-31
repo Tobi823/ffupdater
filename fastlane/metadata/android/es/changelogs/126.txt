@@ -1,0 +1,6 @@
+* Gracias por la contribución en Weblate de: SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824,
+  Retrial, nautilusx,gallegonovato y MkQtS
+* BackgroundJob debería reintentar varias veces antes de mostrar notificaciones de error
+* Mejora la caché de los archivos APK descargados
+* Pide permiso para notificaciones en Android 13
+* Arreglado un fallo de la interfaz del usuario en la vista principal
