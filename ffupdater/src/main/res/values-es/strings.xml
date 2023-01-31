@@ -317,4 +317,5 @@
     <string name="privacy_browser__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es más rápido.</string>
     <string name="duckduckgo_android__description">La aplicación DuckDuckGo proporciona la protección de privacidad en línea más completa con sólo pulsar un botón. Con una sola descarga, obtienes un nuevo navegador de uso diario que ofrece protección sin fisuras mientras buscas y navegas, y acceso a protecciones de rastreo para los correos electrónicos que recibes y las aplicaciones que utilizas. Muchas de estas protecciones no se ofrecen por defecto en los navegadores más populares.</string>
     <string name="privacy_browser__description">La única forma de evitar que se abuse de los datos es impedir que se recojan en primer lugar. Privacy Browser tiene dos objetivos principales: Minimizar los datos que se envían a Internet y minimizar los datos que se almacenan en el dispositivo.</string>
+    <string name="main_activity__denied_notification_permission">FFUpdater necesita el permiso para informarle sobre las actualizaciones.</string>
 </resources>
