@@ -1,0 +1,6 @@
+* Za příspěvek na Weblate děkují: SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824,
+  Retrial, nautilusx,gallegonovato a MkQtS
+* BackgroundJob by se měl před zobrazením oznámení o chybě opakovat vícekrát
+* Vylepšení mezipaměťi stažených souborů APK
+* Povolení oznámení v systému Android 13
+* Oprava UI chyby v hlavním zobrazení
