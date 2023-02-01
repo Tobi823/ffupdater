@@ -313,4 +313,5 @@
     <string name="privacy_browser__title">Navigateur confidentiel</string>
     <string name="privacy_browser__warning">FFUpdater télécharge les fichiers depuis les serveurs de F-Droid et n\'est donc pas plus rapide.</string>
     <string name="privacy_browser__description">Le seul moyen d\'empêcher que les données soient abusées est d\'empêcher d\'abord qu\'elles soient collectées. Navigateur Confidentiel (Privacy Browser) a 2 buts primaires : Minimiser les données qui sont envoyées sur Internet et minimiser les données qui sont stockées sur l\'appareil.</string>
+    <string name="main_activity__denied_notification_permission">FFUpdater a besoin de votre permission pour vous informez a propos des mise à jour.</string>
 </resources>
