@@ -303,4 +303,5 @@
 \n
 \nPer sapere come segnalare i bug e fornire feedback, visita il sito: https://support.torproject.org/misc/bug-or-feedback/</string>
     <string name="duckduckgo_android__description">L\'app DuckDuckGo offre la più completa protezione della privacy online con la semplice pressione di un pulsante. Con un solo download, si ottiene un nuovo browser quotidiano che offre una protezione continua durante la ricerca e la navigazione e l\'accesso alle protezioni per il tracciamento delle e-mail ricevute e delle app utilizzate. Molte di queste protezioni non sono disponibili di default nei browser più diffusi.</string>
+    <string name="main_activity__denied_notification_permission">FFUpdater ha bisogno dell\'autorizzazione per informarti sugli aggiornamenti.</string>
 </resources>
