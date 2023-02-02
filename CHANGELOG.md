@@ -1,3 +1,13 @@
+# 2023-02-02 Release 77.7.1 (127)
+
+* Thanks for the Weblate contributions from: 109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow,
+  Oğuz Ersen and Giovanni Donisi
+* Try to fix "LifecycleOwners must call register before they are STARTED." in DownloadActivity.kt
+  (Tobi823/ffupdater#327, Tobi823/ffupdater#328, Tobi823/ffupdater#319)
+* Try to fix "PackageManagerUtil.getPackageArchiveInfo can't parse APK file" bug by using flush(), buffered()
+  and fsync() (Tobiwan/ffupdater#116)
+* Fixed the "Failed requirement" bug in ShizukuInstaller.kt (Tobi823/ffupdater#330)
+
 # 2023-01-29 Release 77.7.0 (126)
 
 * Thanks for the Weblate contribution from: SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824,

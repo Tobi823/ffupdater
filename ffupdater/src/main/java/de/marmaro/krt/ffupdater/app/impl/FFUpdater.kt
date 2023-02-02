@@ -13,7 +13,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
- * https://api.github.com/repos/brave/brave-browser/releases
+ * https://api.github.com/repos/Tobi823/ffupdater/releases
  */
 class FFUpdater(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
