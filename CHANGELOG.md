@@ -1,3 +1,7 @@
+# 2023-02-02 Release 77.7.2 (128)
+
+* Fix the 'Unrecognized stream' exception (Tobi823/ffupdater#331, Tobi823/ffupdater#332)
+
 # 2023-02-02 Release 77.7.1 (127)
 
 * Thanks for the Weblate contributions from: 109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow,
