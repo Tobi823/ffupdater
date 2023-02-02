@@ -92,7 +92,8 @@ class SessionInstaller(
     private fun copyApkToSession(session: Session, file: File) {
         val name = "${app.impl.packageName}_${System.currentTimeMillis()}"
         file.inputStream().buffered().use { downloadedFileStream ->
-            session.openWrite(name, 0, file.length()).buffered().use { sessionStream ->
+            // don't use buffered because I think this causes the 'Unrecognized stream' exception
+            session.openWrite(name, 0, file.length()).use { sessionStream ->
                 downloadedFileStream.copyTo(sessionStream)
                 sessionStream.flush()
                 session.fsync(sessionStream)
