@@ -1,0 +1,6 @@
+* 感谢来自 Weblate 的贡献者：SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824,
+  Retrial, nautilusx, gallegonovato 和 MkQtS
+* BackgroundJob 应该在显示错误通知之前重试多次
+* 改进对下载的 APK 文件的缓存
+* 在 Android 13 上请求通知权限
+* 修复主视图中的 UI 错误

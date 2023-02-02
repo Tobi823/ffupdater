@@ -317,4 +317,5 @@
     <string name="firefox_focus_beta__description">将 Firefox Focus 用于您希望与主浏览器分开的所有内容——所有那些进入退出的忘我时刻。没有标签页，没有打扰，没有混乱。同时阻止在线跟踪器。轻轻一按，您的浏览历史就会被彻底删除。
 \n
 \nFirefox Focus 是打开、退出、搜索和销毁的完美工具，我正在执行一项与您无关的任务——网络浏览器。</string>
+    <string name="main_activity__denied_notification_permission">FFUpdater 需要向您通知更新信息的权限。</string>
 </resources>
