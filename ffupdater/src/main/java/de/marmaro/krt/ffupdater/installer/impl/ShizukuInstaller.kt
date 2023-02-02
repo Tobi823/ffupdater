@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Environment
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -29,17 +30,20 @@ class ShizukuInstaller(
     }
 
     override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
-        val filePath = file.absolutePath
-        val fileName = file.name
-        require(!hasDangerousCharacter(filePath))
-        require(!hasDangerousCharacter(fileName))
-        require(filePath == "/storage/emulated/0/Android/data/de.marmaro.krt.ffupdater/files/Download/${app.impl.packageName}.apk")
-        require(fileName == "${app.impl.packageName}.apk")
+        val downloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+        require(file.parentFile == downloadFolder)
+
+        val appName = app.impl.packageName
+            .replace('.', '_')
+            .replace("""\W""", "_")
+        require(file.name.startsWith(appName))
+        require(file.name.endsWith(".apk"))
+        require(!file.name.removeSuffix(".apk").contains(Regex("""\W""")))
 
         failIfShizukuPermissionIsMissing()
         val size = file.length().toInt()
         val sessionId = createInstallationSession(size)
-        installApp(sessionId, size, filePath, fileName)
+        installApp(sessionId, size, file)
     }
 
     private fun failIfShizukuPermissionIsMissing() {
@@ -73,9 +77,9 @@ class ShizukuInstaller(
         return sessionId.value.toInt()
     }
 
-    private suspend fun installApp(sessionId: Int, size: Int, filePath: String, fileName: String) {
-        execute("cat \"$filePath\" | pm install-write -S $size $sessionId \"${fileName}\"")
-        execute("pm install-commit $sessionId")
+    private suspend fun installApp(sessionId: Int, size: Int, file: File) {
+        execute("""cat "${file.absolutePath}" | pm install-write -S $size $sessionId "${file.name}"""")
+        execute("""pm install-commit $sessionId""")
     }
 
     private suspend fun execute(command: String): String {
@@ -93,12 +97,5 @@ class ShizukuInstaller(
             }
             stdout
         }
-    }
-
-    private fun hasDangerousCharacter(value: String): Boolean {
-        val dangerous = listOf(
-            "`", ";", "(", ")", "$", "\"", " ", "&", "|", "<", ">", "*", "?", "{", "}", "[", "]", "!", "#"
-        )
-        return dangerous.any { it in value }
     }
 }
