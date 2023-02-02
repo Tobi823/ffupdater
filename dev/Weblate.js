@@ -8,10 +8,6 @@
 // @description 02/02/2023, 10:54:50
 // ==/UserScript==
 
-const button = document.createElement("button");
-button.innerText = "Generate text for changelog";
-
-
 function getDateOfLastFFUpdaterRelease() {
     return new Promise(resolve => {
         let control = GM_xmlhttpRequest({
@@ -78,6 +74,9 @@ function getContributorStats(startDate) {
     });
 }
 
+const button = document.createElement("button");
+button.innerText = "Generate text for changelog";
+
 button.addEventListener("click", async () => {
     let startDate = await getDateOfLastFFUpdaterRelease();
     let contributors = await getContributorStats(startDate);
@@ -88,6 +87,3 @@ button.addEventListener("click", async () => {
 });
 
 document.getElementById("reports").append(button)
-
-
-
