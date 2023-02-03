@@ -1,0 +1,7 @@
+* 感谢来自 Weblate 的贡献者：109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow,
+  Oğuz Ersen and Giovanni Donisi
+* 尝试修复 DownloadActivity.kt 中的“LifecycleOwners must call register before they are STARTED.”问题
+  (Tobi823/ffupdater#327, Tobi823/ffupdater#328, Tobi823/ffupdater#319)
+* 尝试通过使用 flush(), buffered() 和 fsync() 修复“PackageManagerUtil.getPackageArchiveInfo can't parse APK file”问题
+  (Tobiwan/ffupdater#116)
+* 修复 ShizukuInstaller.kt 中的“Failed requirement”问题 (Tobi823/ffupdater#330)
