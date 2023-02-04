@@ -285,6 +285,12 @@ class DownloadActivity : AppCompatActivity() {
             }
             deferred.await()
 
+            if (latestUpdate.fileSizeBytes != null && latestUpdate.fileSizeBytes != file.length()) {
+                val message = "Wrong file was downloaded. It should be ${latestUpdate.fileSizeBytes} bytes " +
+                        "long but actual it was ${file.length()} bytes. Please retry the download."
+                throw NetworkException(message)
+            }
+
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
             setText(R.id.downloadedFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
@@ -340,12 +346,6 @@ class DownloadActivity : AppCompatActivity() {
         show(R.id.installingApplication)
         val latestUpdate = appUpdateStatus.latestUpdate
         val file = app.downloadedFileCache.getApkFile(this, latestUpdate)
-
-        if (latestUpdate.fileSizeBytes != null && latestUpdate.fileSizeBytes != file.length()) {
-            val error = "Download should be ${latestUpdate.fileSizeBytes} bytes big but actual it " +
-                    "was ${file.length()} bytes. Please retry downloading the file."
-            showThatAppInstallationFailed(error, RuntimeException(error))
-        }
 
         try {
             val installResult = appInstaller.startInstallation(this, file)
