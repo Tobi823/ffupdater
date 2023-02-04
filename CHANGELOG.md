@@ -1,3 +1,8 @@
+# 2023-02-02 Release 77.7.3 (129)
+
+* Thanks for the Weblate contribution from: gallegonovato, MkQtS, Juraj Motuz and Retrial
+* Check file size of download and display warning + abort installation if the size is different (if possible)
+
 # 2023-02-02 Release 77.7.2 (128)
 
 * Fix the 'Unrecognized stream' exception (Tobi823/ffupdater#331, Tobi823/ffupdater#332)
