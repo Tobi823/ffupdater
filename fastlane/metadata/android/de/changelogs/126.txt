@@ -1,0 +1,6 @@
+* Danke für den Weblate-Beitrag von: SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824,
+  Retrial, nautilusx, gallegonovato und MkQtS
+* BackgroundJob sollte mehrere Versuche starten, bevor er Fehlerbenachrichtigungen anzeigt
+* Verbesserter Cache für heruntergeladene APK-Dateien
+* Fragt auf Android 13 nach der Erlaubnis für Benachrichtigungen
+* UI-Fehler in der Hauptansicht behoben

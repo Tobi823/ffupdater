@@ -1,0 +1,2 @@
+* Dank für den Weblate-Beitrag von: gallegonovato, MkQtS, Juraj Motuz und Retrial
+* Überprüfen der Dateigröße des Downloads und Anzeige einer Warnung + Abbruch der Installation, wenn die Größe abweicht (falls möglich)
