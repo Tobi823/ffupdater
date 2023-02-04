@@ -1,0 +1,1 @@
+* Corrección de la excepción "Flujo no reconocido" (Tobi823/ffupdater#331, Tobi823/ffupdater#332)

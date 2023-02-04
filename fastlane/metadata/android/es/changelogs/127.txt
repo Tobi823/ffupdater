@@ -1,0 +1,7 @@
+* Gracias por las contribuciones en Weblate de: 109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow,
+  Oğuz Ersen a Giovanni Donisi
+* Pokus o opravu chyby "Los LifecycleOwners deben llamar a registrarse antes de COMENZAR". v Actividad de descarga.kt
+  (Tobi823/ffupdater#327, Tobi823/ffupdater#328, Tobi823/ffupdater#319)
+* Intente corregir el error "PackageManagerUtil.getPackageArchiveInfo no puede analizar el archivo APK" usando flush(), buffered().
+  fsync() (Tobiwan/ffupdater#116)
+* Se corrigió el error "Requisito fallido" en el archivo ShizukuInstaller.kt (Tobi823/ffupdater#330)

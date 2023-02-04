@@ -1,0 +1,7 @@
+* Ευχαριστούμε για τις συνεισφορές τους στο Weblate τους: 109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow,
+   Oğuz Ersen και Giovanni Donisi
+ * Προσπάθεια διόρθωσης "LifecycleOwners πρέπει να καλέσουν εγγραφή πριν ξεκινήσουν."  στο DownloadActivity.kt
+   (Tobi823/ffupdater#327, Tobi823/ffupdater#328, Tobi823/ffupdater#319)
+ * Προσπάθεια διόρθωσης του σφάλματος "PackageManagerUtil.getPackageArchiveInfo δεν μπορεί να αναλύσει το αρχείο APK" χρησιμοποιώντας flush(), buffered()
+   και fsync() (Tobiwan/ffupdater#116)
+ * Διορθώθηκε το σφάλμα "Αποτυχία απαίτησης" στο ShizukuInstaller.kt (Tobi823/ffupdater#330)

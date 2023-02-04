@@ -1,0 +1,7 @@
+* Děkujeme za příspěvky na Weblate od: 109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow,
+  Oğuz Ersen a Giovanni Donisi
+* Pokus o opravu chyby "LifecycleOwners must call register before they are STARTED." v DownloadActivity.kt
+  (Tobi823/ffupdater#327, Tobi823/ffupdater#328, Tobi823/ffupdater#319)
+* Pokus o opravu chyby "PackageManagerUtil.getPackageArchiveInfo can't parse APK file" pomocí flush(), buffered().
+  a fsync() (Tobiwan/ffupdater#116)
+* Opravena chyba "Failed requirement" v souboru ShizukuInstaller.kt (Tobi823/ffupdater#330)

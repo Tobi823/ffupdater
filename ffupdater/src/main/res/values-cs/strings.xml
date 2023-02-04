@@ -289,7 +289,7 @@
     <string name="main_activity__app_was_signed_by_different_certificate">Aplikace byla podepsána s jiným certifikátem a nelze ji aktualizovat s FFUpdaterem.</string>
     <string name="background__separate_notification_channels__summary">Použit různé oznamovací kanály pro každou aplikaci</string>
     <string name="notification__install_error__generic_channel_descr">Oznamovací kanál pro nezdařilé aktualizace aplikací.</string>
-    <string name="foreground__hide_apps_signed_by_different_certificate__title">Schovat aplikace podepsané odlišným certifikátem.</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Skrýt aplikace podepsané odlišným certifikátem.</string>
     <string name="tor_browser_alpha__description">Tor Browser pro Android je jediný oficiální mobilní prohlížeč podporovaný organizací Tor Project, vývojáři nejsilnějšího nástroje pro ochranu soukromí a svobody internetu na světě.
 \n
 \nTor Browser bude VŽDY zadarmo, ale to jen kvůli dobrovolným darům. Tor Project je 501©(3) nezisková organizace se sídlem v USA. Zvažte prosím podporu projektu dobrovolným příspěvkem: https://donate.torproject.org.

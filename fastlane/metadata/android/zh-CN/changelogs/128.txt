@@ -1,0 +1,1 @@
+* 修复“Unrecognized stream”例外 (Tobi823/ffupdater#331, Tobi823/ffupdater#332)
