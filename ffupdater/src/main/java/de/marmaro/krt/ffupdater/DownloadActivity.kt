@@ -338,7 +338,17 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private suspend fun installApp() {
         show(R.id.installingApplication)
-        val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
+        val latestUpdate = appUpdateStatus.latestUpdate
+        val file = app.downloadedFileCache.getApkFile(this, latestUpdate)
+
+        if (latestUpdate.fileSizeBytes != null && latestUpdate.fileSizeBytes != file.length()) {
+            val expected = latestUpdate.fileSizeBytes
+            val actual = file.length()
+            val error = "Download should be $expected bytes big but actual it was $actual bytes. " +
+                    "Please retry downloading the file."
+            showThatAppInstallationFailed(error, RuntimeException(error))
+        }
+
         try {
             val installResult = appInstaller.startInstallation(this, file)
             val certificateHash = installResult.certificateHash ?: "error"

@@ -47,8 +47,7 @@ class PackageManagerUtil(
 
         throw IllegalArgumentException(
             "Can't extract the signature from APK file '$path', " +
-                    "length: ${file.length()}, absolutePath: ${file.absolutePath}, isFile: ${file.isFile}, " +
-                    "execute: ${file.canExecute()}, read: ${file.canRead()}, write: ${file.canExecute()}"
+                    "length: ${file.length()}, absolutePath: ${file.absolutePath}, isFile: ${file.isFile}"
         )
     }
 
