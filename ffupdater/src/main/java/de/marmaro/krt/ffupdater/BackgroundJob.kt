@@ -227,10 +227,9 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             if (latestUpdate.fileSizeBytes != null && latestUpdate.fileSizeBytes != downloadFile.length()) {
                 val expected = latestUpdate.fileSizeBytes
                 val actual = downloadFile.length()
-                throw NetworkException(
-                    "Wrong file was downloaded. It should be $expected bytes long but " +
-                            "actual it was $actual bytes. FFUpdater will retry the download later."
-                )
+                val message = "Wrong file was downloaded. It should be $expected bytes long but actual " +
+                        "it was $actual bytes. FFUpdater will retry the download later."
+                throw NetworkException(message)
             }
 
             notificationRemover.removeDownloadRunningNotification(context, app)
