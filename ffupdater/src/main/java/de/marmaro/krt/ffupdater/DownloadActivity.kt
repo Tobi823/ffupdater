@@ -342,10 +342,8 @@ class DownloadActivity : AppCompatActivity() {
         val file = app.downloadedFileCache.getApkFile(this, latestUpdate)
 
         if (latestUpdate.fileSizeBytes != null && latestUpdate.fileSizeBytes != file.length()) {
-            val expected = latestUpdate.fileSizeBytes
-            val actual = file.length()
-            val error = "Download should be $expected bytes big but actual it was $actual bytes. " +
-                    "Please retry downloading the file."
+            val error = "Download should be ${latestUpdate.fileSizeBytes} bytes big but actual it " +
+                    "was ${file.length()} bytes. Please retry downloading the file."
             showThatAppInstallationFailed(error, RuntimeException(error))
         }
 
