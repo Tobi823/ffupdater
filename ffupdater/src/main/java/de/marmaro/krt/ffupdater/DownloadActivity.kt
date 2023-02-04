@@ -285,6 +285,7 @@ class DownloadActivity : AppCompatActivity() {
             }
             deferred.await()
 
+            // I suspect that sometimes the server offers the wrong file for download
             if (latestUpdate.fileSizeBytes != null && latestUpdate.fileSizeBytes != file.length()) {
                 val message = "Wrong file was downloaded. It should be ${latestUpdate.fileSizeBytes} bytes " +
                         "long but actual it was ${file.length()} bytes. Please retry the download."
