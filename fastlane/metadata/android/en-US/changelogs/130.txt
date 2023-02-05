@@ -1,0 +1,3 @@
+* Thanks for the Weblate contributions from: nautilusx, Juraj Motuz, Retrial, gallegonovato and MkQtS
+* Avoid weird UI inconsistencies caused by asynchronous storage of the latest available versions (Tobi823/ffupdater#335)
+* Add check to downloader: Any downloaded APK file must be a valid ZIP file. I hope to detect invalid downloads which will lead to strange error messages.

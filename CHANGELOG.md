@@ -1,6 +1,14 @@
-# 2023-02-02 Release 77.7.3 (129)
+# 2023-02-04 Release 77.7.4 (130)
 
-* Thanks for the Weblate contribution from: gallegonovato, MkQtS, Juraj Motuz and Retrial
+* Thanks for the Weblate contributions from: nautilusx, Juraj Motuz, Retrial, gallegonovato and MkQtS
+* Avoid weird UI inconsistencies caused by asynchronous storage of the latest available versions (
+  Tobi823/ffupdater#335)
+* Add check to downloader: Any downloaded APK file must be a valid ZIP file. I hope to detect invalid
+  downloads which will lead to strange error messages.
+
+# 2023-02-04 Release 77.7.3 (129)
+
+* Thanks for the Weblate contributions from: gallegonovato, MkQtS, Juraj Motuz and Retrial
 * Check file size of download and display warning + abort installation if the size is different (if possible)
 
 # 2023-02-02 Release 77.7.2 (128)
