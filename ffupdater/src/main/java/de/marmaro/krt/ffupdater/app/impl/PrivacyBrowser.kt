@@ -48,6 +48,8 @@ class PrivacyBrowser(
             downloadUrl = result.downloadUrl,
             version = version,
             publishDate = result.createdAt,
+            fileSizeBytesOfDownload = null,
+            fileHash = null,
         )
     }
 

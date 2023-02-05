@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.annotation.AnyThread
 import androidx.annotation.WorkerThread
 import com.google.gson.Gson
+import de.marmaro.krt.ffupdater.FFUpdaterException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
@@ -13,9 +14,6 @@ import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.ABI.*
-import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
-import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
-import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
@@ -92,12 +90,8 @@ abstract class AppBase {
     suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
         val available = try {
             findLatestUpdate(context)
-        } catch (e: ApiRateLimitExceededException) {
-            throw ApiRateLimitExceededException("Can't find latest update for $codeName.", e)
-        } catch (e: InvalidApiResponseException) {
-            throw InvalidApiResponseException("Can't find latest update for $codeName.", e)
-        } catch (e: NetworkException) {
-            throw NetworkException("Can't find latest update for $codeName.", e)
+        } catch (e: FFUpdaterException) {
+            throw FFUpdaterException("Can't find latest update for $codeName.", e)
         } catch (e: Exception) {
             throw Exception("Can't find latest update for $codeName.", e)
         }

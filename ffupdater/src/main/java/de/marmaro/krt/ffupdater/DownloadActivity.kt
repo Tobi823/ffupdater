@@ -27,10 +27,11 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.ApkChecker
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
-import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
@@ -286,17 +287,15 @@ class DownloadActivity : AppCompatActivity() {
             deferred.await()
 
             // I suspect that sometimes the server offers the wrong file for download
-            if (latestUpdate.fileSizeBytes != null && latestUpdate.fileSizeBytes != file.length()) {
-                val message = "Wrong file was downloaded. It should be ${latestUpdate.fileSizeBytes} bytes " +
-                        "long but actual it was ${file.length()} bytes. Please retry the download."
-                throw NetworkException(message)
-            }
+            ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
+            val apkFile = app.downloadedFileCache.getApkFile(this@DownloadActivity, latestUpdate)
+            ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
 
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
             setText(R.id.downloadedFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
             postProcessDownload()
-        } catch (e: NetworkException) {
+        } catch (e: FFUpdaterException) {
             viewModel.clear()
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)

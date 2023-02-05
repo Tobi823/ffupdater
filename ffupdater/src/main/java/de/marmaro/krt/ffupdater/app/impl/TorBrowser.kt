@@ -62,7 +62,7 @@ class TorBrowser(
             downloadUrl = downloadUrl,
             version = version,
             publishDate = date,
-            fileSizeBytes = size,
+            fileSizeBytesOfDownload = size,
             fileHash = null,
         )
     }

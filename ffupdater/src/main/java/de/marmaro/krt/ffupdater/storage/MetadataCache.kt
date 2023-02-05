@@ -4,12 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import androidx.preference.PreferenceManager
 import com.google.gson.JsonSyntaxException
+import de.marmaro.krt.ffupdater.FFUpdaterException
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
-import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
-import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
-import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.time.Duration
@@ -29,12 +27,8 @@ class MetadataCache(private val app: App) {
 
             val appUpdateStatus = try {
                 app.impl.findAppUpdateStatus(context)
-            } catch (e: ApiRateLimitExceededException) {
-                throw ApiRateLimitExceededException("Can't find latest update for ${app.name}.", e)
-            } catch (e: InvalidApiResponseException) {
-                throw InvalidApiResponseException("Can't find latest update for ${app.name}.", e)
-            } catch (e: NetworkException) {
-                throw NetworkException("Can't find latest update for ${app.name}.", e)
+            } catch (e: FFUpdaterException) {
+                throw FFUpdaterException("Can't find latest update for ${app.name}.", e)
             } catch (e: Exception) {
                 throw Exception("Can't find latest update for ${app.name}.", e)
             }

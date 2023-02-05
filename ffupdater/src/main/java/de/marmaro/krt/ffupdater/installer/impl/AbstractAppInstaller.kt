@@ -6,7 +6,7 @@ import de.marmaro.krt.ffupdater.R.string.download_activity__downloaded_applicati
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
-import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

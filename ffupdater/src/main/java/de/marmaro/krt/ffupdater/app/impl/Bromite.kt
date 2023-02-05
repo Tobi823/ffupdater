@@ -72,7 +72,7 @@ class Bromite(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,
-            fileSizeBytes = result.fileSizeBytes,
+            fileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
     }

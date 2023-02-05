@@ -17,8 +17,8 @@ import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_abort
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
-import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
-import de.marmaro.krt.ffupdater.installer.exception.UserInteractionIsRequiredException
+import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

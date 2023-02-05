@@ -15,10 +15,11 @@ import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.background.BackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.ApkChecker
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.*
-import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
-import de.marmaro.krt.ffupdater.installer.exception.UserInteractionIsRequiredException
+import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -224,17 +225,15 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 app.downloadedFileCache.deleteZipFile(context)
             }
 
-            if (latestUpdate.fileSizeBytes != null && latestUpdate.fileSizeBytes != downloadFile.length()) {
-                val message = "Wrong file was downloaded. It should be ${latestUpdate.fileSizeBytes} bytes " +
-                        "long but actual it was ${downloadFile.length()} bytes. " +
-                        "FFUpdater will retry the download later."
-                throw NetworkException(message)
-            }
+            // I suspect that sometimes the server offers the wrong file for download
+            ApkChecker.throwIfDownloadedFileHasDifferentSize(downloadFile, latestUpdate)
+            val apkFile = app.downloadedFileCache.getApkFile(context, latestUpdate)
+            ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
 
             notificationRemover.removeDownloadRunningNotification(context, app)
             app.downloadedFileCache.deleteAllExceptLatestApkFile(context, latestUpdate)
             true
-        } catch (e: NetworkException) {
+        } catch (e: FFUpdaterException) {
             notificationRemover.removeDownloadRunningNotification(context, app)
             notificationBuilder.showDownloadNotification(context, app, e)
             app.downloadedFileCache.deleteAllApkFileForThisApp(context)

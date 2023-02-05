@@ -38,7 +38,7 @@ class CustomRepositoryConsumer(
             downloadUrl = "$repoUrl/${apk.apkName}",
             version = version,
             publishDate = Instant.ofEpochMilli(apk.added).toString(),
-            fileSizeBytes = apk.size,
+            fileSizeBytesOfDownload = apk.size,
             fileHash = Sha256Hash(apk.hash),
         )
     }

@@ -14,7 +14,7 @@ import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
-import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.manifacturer.HuaweiInstallResultDecoder
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File

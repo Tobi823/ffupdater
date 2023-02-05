@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.installer.exception
+package de.marmaro.krt.ffupdater.installer.exceptions
 
 import android.content.Context
 import de.marmaro.krt.ffupdater.R

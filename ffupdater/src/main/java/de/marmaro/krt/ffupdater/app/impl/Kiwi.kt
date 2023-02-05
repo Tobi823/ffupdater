@@ -78,7 +78,7 @@ class Kiwi(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,
-            fileSizeBytes = result.fileSizeBytes,
+            fileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
     }
@@ -90,14 +90,14 @@ class Kiwi(
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val runnerId = preferences.getString(BUILD_RUNNER_ID, null)
         val fileSize = preferences.getLong(APK_FILE_SIZE, -1)
-        return runnerId != available.version || fileSize != available.fileSizeBytes
+        return runnerId != available.version || fileSize != available.fileSizeBytesOfDownload
     }
 
     @SuppressLint("ApplySharedPref")
     override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.latestUpdate.version)
-            .putLong(APK_FILE_SIZE, available.latestUpdate.fileSizeBytes!!)
+            .putLong(APK_FILE_SIZE, available.latestUpdate.fileSizeBytesOfDownload!!)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
         super.appIsInstalledCallback(context, available)

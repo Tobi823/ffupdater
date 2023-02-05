@@ -6,7 +6,7 @@ import android.os.Environment
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
-import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import rikka.shizuku.Shizuku

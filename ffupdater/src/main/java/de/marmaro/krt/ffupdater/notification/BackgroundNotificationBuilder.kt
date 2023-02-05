@@ -12,14 +12,10 @@ import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.graphics.BitmapFactory
-import de.marmaro.krt.ffupdater.CrashReportActivity
-import de.marmaro.krt.ffupdater.DownloadActivity
-import de.marmaro.krt.ffupdater.MainActivity
-import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.*
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 
 
@@ -111,7 +107,7 @@ class BackgroundNotificationBuilder(
         showNotification(context, channel, notification, null)
     }
 
-    fun showDownloadNotification(context: Context, app: App, exception: NetworkException) {
+    fun showDownloadNotification(context: Context, app: App, exception: FFUpdaterException) {
         val appTitle = context.getString(app.impl.title)
         val channel = ChannelData(
             id = "download_error_notification",

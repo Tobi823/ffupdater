@@ -4,7 +4,7 @@ import android.content.Context
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.entity.Installer
-import de.marmaro.krt.ffupdater.installer.exception.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
