@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.storage
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.preference.PreferenceManager
 import com.google.gson.JsonSyntaxException
@@ -62,20 +63,23 @@ class MetadataCache(private val app: App) {
         }
     }
 
+    @SuppressLint("ApplySharedPref")
     internal fun updateMetadataCache(context: Context, appAppUpdateStatus: AppUpdateStatus): AppUpdateStatus {
         val jsonString = AppBase.gson.toJson(appAppUpdateStatus)
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         preferences.edit()
             .putString(preferenceKey, jsonString)
-            .apply()
+            .commit()
         return appAppUpdateStatus
     }
 
+
+    @SuppressLint("ApplySharedPref")
     fun invalidateCache(context: Context) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         preferences.edit()
             .putString(preferenceKey, null)
-            .apply()
+            .commit()
     }
 
     companion object {

@@ -1,11 +1,13 @@
 package de.marmaro.krt.ffupdater
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
+    @SuppressLint("ApplySharedPref")
     fun migrate(context: Context) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
@@ -32,13 +34,15 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
                 else -> {}
             }
 
-            editor.apply()
+            editor.commit()
         }
         if (lastVersionCode != currentVersionCode) {
             BackgroundJob.forceRestartBackgroundUpdateCheck(context)
         }
 
-        preferences.edit().putInt(FFUPDATER_VERSION_CODE, currentVersionCode).apply()
+        preferences.edit()
+            .putInt(FFUPDATER_VERSION_CODE, currentVersionCode)
+            .apply()
     }
 
 

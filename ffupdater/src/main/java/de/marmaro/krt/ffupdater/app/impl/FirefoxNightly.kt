@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
@@ -96,11 +97,12 @@ class FirefoxNightly(
         }
     }
 
+    @SuppressLint("ApplySharedPref")
     override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
             .putString(INSTALLED_SHA256_HASH, available.latestUpdate.fileHash?.hexValue)
-            .apply()
+            .commit()
         // this must be called last because the update is only recognized after setting the other values
         super.appIsInstalledCallback(context, available)
     }

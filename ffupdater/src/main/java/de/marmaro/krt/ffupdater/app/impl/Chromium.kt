@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
@@ -99,11 +100,12 @@ class Chromium(
         return storageObject
     }
 
+    @SuppressLint("ApplySharedPref")
     override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(INSTALLED_VERSION_REVISION, available.latestUpdate.version)
             .putString(INSTALLED_VERSION_TIMESTAMP, available.latestUpdate.publishDate)
-            .apply()
+            .commit()
         // this must be called last because the update is only recognized after setting the other values
         super.appIsInstalledCallback(context, available)
     }

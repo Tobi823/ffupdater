@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.app.impl
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.util.Log
@@ -92,11 +93,12 @@ class Kiwi(
         return runnerId != available.version || fileSize != available.fileSizeBytes
     }
 
+    @SuppressLint("ApplySharedPref")
     override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.latestUpdate.version)
             .putLong(APK_FILE_SIZE, available.latestUpdate.fileSizeBytes!!)
-            .apply()
+            .commit()
         // this must be called last because the update is only recognized after setting the other values
         super.appIsInstalledCallback(context, available)
     }
