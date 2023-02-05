@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import java.net.Proxy
 import java.net.Proxy.Type
 
 
@@ -77,8 +76,8 @@ class NetworkSettingsHelper {
 
         val (typeString, ipString, portString) = proxyArguments
         val type = when (typeString) {
-            "SOCKS" -> Proxy.Type.SOCKS
-            "HTTP" -> Proxy.Type.HTTP
+            "SOCKS" -> Type.SOCKS
+            "HTTP" -> Type.HTTP
             else -> throw IllegalArgumentException("Invalid proxy configuration. Only SOCKS or HTTP are allowed. Please fix the 'Proxy' setting.")
         }
         val port = portString.toIntOrNull()
