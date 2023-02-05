@@ -1,0 +1,2 @@
+* Děkujeme za příspěvek na Weblate od: gallegonovato, MkQtS, Juraj Motuz a Retrial
+* Kontrola velikosti stahovaného souboru a zobrazení varování + přerušení instalace, pokud se velikost liší (pokud je to možné)
