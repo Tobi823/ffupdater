@@ -1,0 +1,2 @@
+* 感谢来自 Weblate 的贡献者：gallegonovato, MkQtS, Juraj Motuz 和 Retrial
+* 检查下载的文件大小，如果大小不同，则显示警告 + 中止安装（如果可能的话）
