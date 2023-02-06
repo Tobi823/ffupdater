@@ -1,4 +1,10 @@
-# 2023-02-04 Release 77.7.4 (130)
+# 2023-02-06 Release 77.7.5 (131)
+
+* Thanks for the Weblate contributions from: Juraj Motuz, Retrial, gallegonovato and MkQtS
+* fix download bug with Tor Browser / Tor Browser Alpha (Tobi823/ffupdater#336)
+* refactor DownloadActivity.kt to make it more reliable
+
+# 2023-02-05 Release 77.7.4 (130)
 
 * Thanks for the Weblate contributions from: nautilusx, Juraj Motuz, Retrial, gallegonovato and MkQtS
 * Avoid weird UI inconsistencies caused by asynchronous storage of the latest available versions (

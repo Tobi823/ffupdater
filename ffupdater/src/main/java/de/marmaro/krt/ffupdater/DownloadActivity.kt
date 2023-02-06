@@ -71,6 +71,7 @@ class DownloadActivity : AppCompatActivity() {
         private var downloadApp: App? = null
         var downloadDeferred: Deferred<Any>? = null
         var downloadProgressChannel: Channel<FileDownloader.DownloadStatus>? = null
+        var installationSuccess: Boolean = false
 
         fun storeNewRunningDownload(
             app: App,
@@ -90,6 +91,7 @@ class DownloadActivity : AppCompatActivity() {
             downloadApp = null
             downloadDeferred = null
             downloadProgressChannel = null
+            installationSuccess = false
         }
     }
 
@@ -140,12 +142,21 @@ class DownloadActivity : AppCompatActivity() {
         lifecycle.addObserver(appInstaller)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
 
         if (!isChangingConfigurations) {
             // if the device is not rotated, delete information about the download to allow a new download
             // next time
+            if (viewModel.installationSuccess) {
+                if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
+                    app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+                }
+            } else {
+                if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
+                    app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+                }
+            }
             viewModel.clear()
         }
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -210,16 +221,11 @@ class DownloadActivity : AppCompatActivity() {
             }
         }
 
-        if (installApp()) {
+        val installationSuccess = installApp()
+        if (installationSuccess) {
             app.impl.appIsInstalledCallback(this, appUpdateStatus)
-            if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                app.downloadedFileCache.deleteAllApkFileForThisApp(this)
-            }
-        } else {
-            if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
-                app.downloadedFileCache.deleteAllApkFileForThisApp(this)
-            }
         }
+        viewModel.installationSuccess = installationSuccess
     }
 
     private fun checkIfStorageIsMounted(): Boolean {
