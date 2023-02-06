@@ -1,0 +1,3 @@
+* Děkujeme za příspěvky na Weblate od: nautilusx, Juraj Motuz, Retrial, gallegonovato a MkQtS
+* Zamezení podivným nekonzistencím uživatelského rozhraní způsobeným asynchronním ukládáním nejnovějších dostupných verzí (Tobi823/ffupdater#335)
+* Přidání kontroly do downloaderu: Každý stahovaný soubor APK musí být platným souborem ZIP. Doufám, že se podaří odhalit neplatné stahování, které povede k podivným chybovým hlášením.
