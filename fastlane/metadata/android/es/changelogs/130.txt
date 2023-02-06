@@ -1,0 +1,3 @@
+* Gracias por las contribuciones Weblate de: nautilusx, Juraj Motuz, Retrial, gallegonovato y MkQtS
+* Evitar inconsistencias en la interfaz de usuario causadas por el almacenamiento asíncrono de las últimas versiones disponibles (Tobi823/ffupdater#335)
+* Añadir comprobación al descargador: Cualquier archivo APK descargado debe ser un archivo ZIP válido. Espero detectar descargas inválidas que provoquen mensajes de error extraños.
