@@ -140,6 +140,17 @@ class DownloadActivity : AppCompatActivity() {
         lifecycle.addObserver(appInstaller)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        if (!isChangingConfigurations) {
+            // if the device is not rotated, delete information about the download to allow a new download
+            // next time
+            viewModel.clear()
+        }
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
@@ -209,14 +220,12 @@ class DownloadActivity : AppCompatActivity() {
                 app.downloadedFileCache.deleteAllApkFileForThisApp(this)
             }
         }
-        cleanupUi()
     }
 
     private fun checkIfStorageIsMounted(): Boolean {
         if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
             show(R.id.externalStorageNotAccessible)
             setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
-            cleanupUi()
             return false
         }
         return true
@@ -242,7 +251,6 @@ class DownloadActivity : AppCompatActivity() {
         }
         hide(R.id.fetchUrl)
         if (status == null) {
-            cleanupUi()
             return false
         }
         appUpdateStatus = status
@@ -318,11 +326,9 @@ class DownloadActivity : AppCompatActivity() {
         } catch (e: NetworkException) {
             displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
             app.downloadedFileCache.deleteAllApkFileForThisApp(this)
-            cleanupUi()
         } catch (e: FFUpdaterException) {
             displayDownloadFailure(e.message ?: e.javaClass.name, e)
             app.downloadedFileCache.deleteAllApkFileForThisApp(this)
-            cleanupUi()
         } finally {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
@@ -361,10 +367,8 @@ class DownloadActivity : AppCompatActivity() {
             return true
         } catch (e: NetworkException) {
             displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
-            cleanupUi()
         } catch (e: FFUpdaterException) {
             displayDownloadFailure(e.message ?: e.javaClass.name, e)
-            cleanupUi()
         } finally {
             hide(R.id.downloadingFile)
         }
@@ -468,12 +472,6 @@ class DownloadActivity : AppCompatActivity() {
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
-    }
-
-    @MainThread
-    private fun cleanupUi() {
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        viewModel.clear()
     }
 
     companion object {
