@@ -60,7 +60,7 @@ class Vivaldi(
             downloadUrl = downloadUrl,
             version = version,
             publishDate = null,
-            fileSizeBytesOfDownload = null,
+            exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )
     }

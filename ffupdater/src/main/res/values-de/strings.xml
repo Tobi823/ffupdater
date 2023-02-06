@@ -31,7 +31,7 @@
     <string name="bromite_systemwebview__description">Das SystemWebView-Paket enthält die Kern-Browser/Rendering-Engine von Bromite und die gleichen Funktionen. Es bietet die Möglichkeit, die Standard-Browser-Komponente für das gesamte Android-System zu ersetzen.</string>
     <string name="bromite_systemwebview__title">Bromit SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopieren des Absturzberichts in die Zwischenablage</string>
-    <string name="crash_report__explain_text__download_activity_download_file">Dieser Fehler ist während des Downloads aufgetreten. Wenn dieser Fehler häufig auftritt, lade den Absturzbericht auf notabug.org, GitHub oder GitLab hoch.</string>
+    <string name="install_activity__download_file_failed__crash_text">Dieser Fehler ist während des Downloads aufgetreten. Wenn dieser Fehler häufig auftritt, lade den Absturzbericht auf notabug.org, GitHub oder GitLab hoch.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Dieses Fehler trat auf, als die Metainformationen abgerufen wurde. Wenn dieser Fehler häufig auftritt, lade den Absturzbericht auf notabug.org, GitHub oder GitLab hoch.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Dieser Fehler ist während der Installation aufgetreten. Wenn dieser Fehler häufig auftritt, lade den Absturzbericht auf notabug.org, GitHub oder GitLab hoch.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Bei der Suche nach Updates in der Hauptansicht ist dieser Fehler aufgetreten. Wenn dieser Fehler häufig auftritt, lade den Absturzbericht auf notabug.org, GitHub oder GitLab hoch.</string>

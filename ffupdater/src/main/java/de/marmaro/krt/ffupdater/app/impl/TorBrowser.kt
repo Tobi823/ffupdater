@@ -19,6 +19,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 /**
  * https://www.torproject.org/download/#android
  * https://www.apkmirror.com/apk/the-tor-project/tor-browser/
+ * https://dist.torproject.org/torbrowser/
  */
 class TorBrowser(
     private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
@@ -55,19 +56,19 @@ class TorBrowser(
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
-        val (version, downloadUrl) = extractVersionAndDownloadUrl(networkSettings, deviceSettings)
-        val (date, size) = extractDateAndSize(networkSettings, deviceSettings, version)
+        val (version, downloadUrl) = findVersionAndDownloadUrl(networkSettings, deviceSettings)
+        val dateTime = findDateTime(networkSettings, deviceSettings, version)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
             version = version,
-            publishDate = date,
-            fileSizeBytesOfDownload = size,
+            publishDate = dateTime,
+            exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )
     }
 
-    private suspend fun extractVersionAndDownloadUrl(
+    private suspend fun findVersionAndDownloadUrl(
         networkSettings: NetworkSettingsHelper,
         deviceSettings: DeviceSettingsHelper,
     ): Pair<String, String> {
@@ -94,11 +95,11 @@ class TorBrowser(
         return availableVersion.value to downloadUrl.value
     }
 
-    private suspend fun extractDateAndSize(
+    private suspend fun findDateTime(
         networkSettings: NetworkSettingsHelper,
         deviceSettingsHelper: DeviceSettingsHelper,
-        version: String
-    ): Pair<String, Long> {
+        version: String,
+    ): String {
         val abi = getAbiString(deviceSettingsHelper)
         val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-$abi-multi.apk"
         val content = try {
@@ -113,7 +114,7 @@ class TorBrowser(
                 """(\d{4}-\d{1,2}-\d{1,2}) """ + //for example 2022-12-16
                 """(\d{1,2}:\d{1,2})""" + //for example 13:30
                 spaces +
-                """(\d){2,3}M""" + //for 82M
+                """((\d){2,3})M""" + //for 82M
                 spaces +
                 """\n"""
 
@@ -126,11 +127,7 @@ class TorBrowser(
         val time = match.groups[2]
         checkNotNull(time) { "Can't extract time from regex match." }
 
-        val size = match.groups[3]
-        checkNotNull(size) { "Can't extract size from regex match." }
-
-        val sizeBytes = (size.value.toLong() + 1) * 1024 * 1024
-        return "${date.value}T${time.value}:00Z" to sizeBytes
+        return "${date.value}T${time.value}:00Z"
     }
 
     private fun getAbiString(settings: DeviceSettingsHelper): String {

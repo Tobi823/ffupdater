@@ -67,7 +67,7 @@ class Lockwise(
             downloadUrl = result.url,
             version = extractVersion(),
             publishDate = result.releaseDate,
-            fileSizeBytesOfDownload = result.fileSizeBytes,
+            exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
     }

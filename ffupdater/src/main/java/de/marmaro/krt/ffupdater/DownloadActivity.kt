@@ -82,7 +82,7 @@ class DownloadActivity : AppCompatActivity() {
             downloadProgressChannel = progressChannel
         }
 
-        fun isAValidDownloadForTheCurrentAppAlreadyRunning(currentApp: App): Boolean {
+        fun isDownloadForCurrentAppRunning(currentApp: App): Boolean {
             return downloadApp == currentApp && downloadDeferred?.isActive == true
         }
 
@@ -178,93 +178,117 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun startInstallationProcess() {
-        checkIfStorageIsMounted()
-    }
+        if (!checkIfStorageIsMounted()) return
+        checkIfEnoughStorageAvailable()
 
-    private suspend fun checkIfStorageIsMounted() {
-        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-            checkIfEnoughStorageAvailable()
-            return
-        }
-        showThatExternalStorageIsNotAccessible()
-    }
-
-    private suspend fun checkIfEnoughStorageAvailable() {
-        if (StorageUtil.isEnoughStorageAvailable(this)) {
-            fetchDownloadInformationOrUseCache()
-            return
-        }
-        show(R.id.tooLowMemory)
-        val mbs = StorageUtil.getFreeStorageInMebibytes(this)
-        val message = getString(download_activity__too_low_memory_description, mbs)
-        setText(R.id.tooLowMemoryDescription, message)
-        fetchDownloadInformationOrUseCache()
-    }
-
-    private suspend fun fetchDownloadInformationOrUseCache() {
-        show(R.id.fetchUrl)
-        val downloadSource = app.impl.downloadSource
-        setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
-
-        appUpdateStatus = app.metadataCache.getCachedOrNullIfOutdated(this)
-            ?: fetchDownloadInformationHelper()
-                    ?: return
-
-        hide(R.id.fetchUrl)
-        show(R.id.fetchedUrlSuccess)
-        val finishedText = getString(download_activity__fetched_url_for_download_successfully, downloadSource)
-        setText(R.id.fetchedUrlSuccessTextView, finishedText)
+        if (!fetchDownloadInformationOrUseCache()) return
 
         when {
+            viewModel.isDownloadForCurrentAppRunning(app) -> {
+                if (!reuseCurrentDownload()) return
+                postProcessDownload()
+            }
             app.downloadedFileCache.isApkFileCached(this, appUpdateStatus.latestUpdate) -> {
                 show(R.id.useCachedDownloadedApk)
                 val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
                 setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
-                installApp()
             }
-            viewModel.isAValidDownloadForTheCurrentAppAlreadyRunning(app) -> reuseCurrentDownload()
-            else -> startDownload()
+            else -> {
+                if (!startDownload()) return
+                postProcessDownload()
+            }
         }
+
+        if (installApp()) {
+            app.impl.appIsInstalledCallback(this, appUpdateStatus)
+            if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
+                app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+            }
+        } else {
+            if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
+                app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+            }
+        }
+        cleanupUi()
+    }
+
+    private fun checkIfStorageIsMounted(): Boolean {
+        if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
+            show(R.id.externalStorageNotAccessible)
+            setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
+            cleanupUi()
+            return false
+        }
+        return true
+    }
+
+    private fun checkIfEnoughStorageAvailable() {
+        if (!StorageUtil.isEnoughStorageAvailable(this)) {
+            show(R.id.tooLowMemory)
+            val mbs = StorageUtil.getFreeStorageInMebibytes(this)
+            val message = getString(download_activity__too_low_memory_description, mbs)
+            setText(R.id.tooLowMemoryDescription, message)
+        }
+    }
+
+    private suspend fun fetchDownloadInformationOrUseCache(): Boolean {
+        show(R.id.fetchUrl)
+        val downloadSource = app.impl.downloadSource
+        setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
+
+        var status = app.metadataCache.getCachedOrNullIfOutdated(this)
+        if (status == null) {
+            status = fetchDownloadInformationHelper()
+        }
+        hide(R.id.fetchUrl)
+        if (status == null) {
+            cleanupUi()
+            return false
+        }
+        appUpdateStatus = status
+
+        show(R.id.fetchedUrlSuccess)
+        val finishedText = getString(download_activity__fetched_url_for_download_successfully, downloadSource)
+        setText(R.id.fetchedUrlSuccessTextView, finishedText)
+        return true
     }
 
     private suspend fun fetchDownloadInformationHelper(): AppUpdateStatus? {
         // only check for updates if network type requirements are met
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-            showThatUrlFetchingFailed(getString(main_activity__no_unmetered_network))
+            displayFetchFailure(getString(main_activity__no_unmetered_network))
             return null
         }
 
-        return try {
-            app.metadataCache.getCachedOrFetchIfOutdated(this)
+        try {
+            return app.metadataCache.getCachedOrFetchIfOutdated(this)
         } catch (e: ApiRateLimitExceededException) {
-            showThatUrlFetchingFailed(getString(download_activity__github_rate_limit_exceeded), e)
-            null
+            displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
         } catch (e: NetworkException) {
-            showThatUrlFetchingFailed(getString(download_activity__temporary_network_issue), e)
-            null
+            displayFetchFailure(getString(download_activity__temporary_network_issue), e)
         }
+        return null
     }
 
     @MainThread
-    private suspend fun startDownload() {
+    private suspend fun startDownload(): Boolean {
         if (!foregroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
-            showThatUrlFetchingFailed(getString(main_activity__no_unmetered_network))
-            return
+            displayFetchFailure(getString(main_activity__no_unmetered_network))
+            return false
         }
 
         show(R.id.downloadingFile)
         setText(R.id.downloadingFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
+        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status, ""))
 
         val fileDownloader = FileDownloader(networkSettings)
-        val display = getString(download_activity__download_app_with_status, "")
-        setText(R.id.downloadingFileText, display)
-
         app.downloadedFileCache.deleteAllApkFileForThisApp(this)
 
         // this coroutine should survive a screen rotation and should live as long as the view model
+        val latestUpdate = appUpdateStatus.latestUpdate
+        val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(this, latestUpdate)
+
         try {
-            val latestUpdate = appUpdateStatus.latestUpdate
-            val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(this, latestUpdate)
             val (deferred, progressChannel) = withContext(viewModel.viewModelScope.coroutineContext) {
                 // run async with await later
                 fileDownloader.downloadBigFileAsync(appUpdateStatus.latestUpdate.downloadUrl, file)
@@ -290,24 +314,28 @@ class DownloadActivity : AppCompatActivity() {
             ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
             val apkFile = app.downloadedFileCache.getApkFile(this@DownloadActivity, latestUpdate)
             ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
-
-            hide(R.id.downloadingFile)
-            show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
-            postProcessDownload()
+            return true
+        } catch (e: NetworkException) {
+            displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
+            app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+            cleanupUi()
         } catch (e: FFUpdaterException) {
-            viewModel.clear()
+            displayDownloadFailure(e.message ?: e.javaClass.name, e)
+            app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+            cleanupUi()
+        } finally {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
             setText(R.id.downloadedFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
-            showThatDownloadFailed(e)
         }
+        return false
     }
 
     @MainThread
-    private suspend fun reuseCurrentDownload() {
+    private suspend fun reuseCurrentDownload(): Boolean {
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
+        val latestUpdate = appUpdateStatus.latestUpdate
+        setText(R.id.downloadingFileUrl, latestUpdate.downloadUrl)
 
         for (progress in viewModel.downloadProgressChannel!!) {
             progress.progressInPercent
@@ -324,10 +352,23 @@ class DownloadActivity : AppCompatActivity() {
 
         try {
             viewModel.downloadDeferred!!.await()
-            postProcessDownload()
+
+            // I suspect that sometimes the server offers the wrong file for download
+            val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(this, latestUpdate)
+            ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
+            val apkFile = app.downloadedFileCache.getApkFile(this@DownloadActivity, latestUpdate)
+            ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
+            return true
         } catch (e: NetworkException) {
-            showThatDownloadFailed(e)
+            displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
+            cleanupUi()
+        } catch (e: FFUpdaterException) {
+            displayDownloadFailure(e.message ?: e.javaClass.name, e)
+            cleanupUi()
+        } finally {
+            hide(R.id.downloadingFile)
         }
+        return false
     }
 
     @MainThread
@@ -338,45 +379,42 @@ class DownloadActivity : AppCompatActivity() {
             app.downloadedFileCache.deleteZipFile(this)
         }
         app.downloadedFileCache.deleteAllExceptLatestApkFile(this, appUpdateStatus.latestUpdate)
-        installApp()
     }
 
     @MainThread
-    private suspend fun installApp() {
+    private suspend fun installApp(): Boolean {
         show(R.id.installingApplication)
-        val latestUpdate = appUpdateStatus.latestUpdate
-        val file = app.downloadedFileCache.getApkFile(this, latestUpdate)
+        val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
 
         try {
             val installResult = appInstaller.startInstallation(this, file)
             val certificateHash = installResult.certificateHash ?: "error"
-            showThatAppIsInstalled(certificateHash)
+            displayAppInstallationSuccess(certificateHash)
+            return true
         } catch (e: InstallationFailedException) {
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
-            showThatAppInstallationFailed(e.translatedMessage, ex)
+            displayAppInstallationFailure(e.translatedMessage, ex)
         } finally {
             // hide existing background notification for this app
             notificationRemover.removeAppStatusNotifications(this, app)
+            hide(R.id.installingApplication)
         }
+        return false
     }
 
     @MainThread
-    private fun showThatAppIsInstalled(certificateHash: String) {
-        hide(R.id.installingApplication)
+    private fun displayAppInstallationSuccess(certificateHash: String) {
         show(R.id.installerSuccess)
         show(R.id.fingerprintInstalledGood)
         setText(R.id.fingerprintInstalledGoodHash, certificateHash)
-        app.impl.appIsInstalledCallback(this, appUpdateStatus)
         if (!foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }
-        cleanupUi()
     }
 
     @MainThread
-    private fun showThatAppInstallationFailed(errorMessage: String, exception: Exception) {
-        hide(R.id.installingApplication)
+    private fun displayAppInstallationFailure(errorMessage: String, exception: Exception) {
         show(R.id.install_activity__exception)
         show(R.id.install_activity__exception__description)
         setText(
@@ -396,40 +434,29 @@ class DownloadActivity : AppCompatActivity() {
 
         val cacheFolder = app.downloadedFileCache.getCacheFolder(this).absolutePath
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
-        if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
-            app.downloadedFileCache.deleteAllApkFileForThisApp(this)
-        } else {
+        if (!foregroundSettings.isDeleteUpdateIfInstallFailed) {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }
-        cleanupUi()
     }
 
     @MainThread
-    private fun showThatExternalStorageIsNotAccessible() {
-        show(R.id.externalStorageNotAccessible)
-        setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
-        cleanupUi()
-    }
-
-    @MainThread
-    private fun showThatDownloadFailed(exception: Exception) {
+    private fun displayDownloadFailure(description: String, exception: Exception?) {
         val downloadUrl = appUpdateStatus.latestUpdate.downloadUrl
-        hide(R.id.downloadingFile)
-        show(R.id.downloadFileFailed)
-        setText(R.id.downloadFileFailedUrl, downloadUrl)
-        findViewById<TextView>(R.id.downloadFileFailedShowException).setOnClickListener {
-            val description = getString(crash_report__explain_text__download_activity_download_file)
-            val intent = CrashReportActivity.createIntent(this, exception, description)
-            startActivity(intent)
+        show(R.id.install_activity__download_file_failed)
+        setText(R.id.install_activity__download_file_failed__url, downloadUrl)
+        setText(R.id.install_activity__download_file_failed__text, description)
+        if (exception != null) {
+            val text = findViewById<TextView>(R.id.install_activity__download_file_failed__show_exception)
+            text.setOnClickListener {
+                val intent = CrashReportActivity.createIntent(this, exception, description)
+                startActivity(intent)
+            }
         }
-        app.downloadedFileCache.deleteAllApkFileForThisApp(this)
-        cleanupUi()
     }
 
     @MainThread
-    private fun showThatUrlFetchingFailed(message: String, exception: Exception? = null) {
-        hide(R.id.fetchUrl)
+    private fun displayFetchFailure(message: String, exception: Exception? = null) {
         show(R.id.install_activity__exception)
         setText(R.id.install_activity__exception__text, message)
         if (exception == null) {
@@ -441,7 +468,6 @@ class DownloadActivity : AppCompatActivity() {
             val intent = CrashReportActivity.createIntent(this, exception, description)
             startActivity(intent)
         }
-        cleanupUi()
     }
 
     @MainThread

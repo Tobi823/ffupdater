@@ -26,7 +26,7 @@ class ApkChecker {
 
         fun throwIfDownloadedFileHasDifferentSize(file: File, latestUpdate: LatestUpdate) {
             require(file.exists())
-            val expectedBytes = latestUpdate.fileSizeBytesOfDownload
+            val expectedBytes = latestUpdate.exactFileSizeBytesOfDownload
             if (expectedBytes != null && expectedBytes != file.length()) {
                 val message = "Wrong file was downloaded. It should be $expectedBytes bytes long but " +
                         "actual it was ${file.length()} bytes."

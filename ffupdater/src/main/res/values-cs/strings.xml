@@ -186,7 +186,7 @@
 \n- Používá také technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="app_card__app_warning_button_description">Zobrazit varování o této aplikaci</string>
     <string name="crash_report__explain_text__download_activity_install_file">K této chybě došlo při instalaci. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
-    <string name="crash_report__explain_text__download_activity_download_file">Při stahování došlo k následující chybě. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
+    <string name="install_activity__download_file_failed__crash_text">Při stahování došlo k následující chybě. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <string name="lockwise__eol_reason">Mozilla ukončila podporu v prosinci 2021. Přejděte prosím na jiného správce hesel.</string>
     <string name="kiwi__description">Prohlížeč Kiwi je navržen tak, abyste mohli nerušeně surfovat po webu, číst zprávy, sledovat videa a poslouchat hudbu.</string>
     <string name="kiwi__title">Prohlížeč Kiwi Next</string>

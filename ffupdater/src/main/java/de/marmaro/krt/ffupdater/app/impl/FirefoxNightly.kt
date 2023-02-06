@@ -76,7 +76,7 @@ class FirefoxNightly(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,
-            fileSizeBytesOfDownload = null,
+            exactFileSizeBytesOfDownload = null,
             fileHash = result.fileHash,
         )
     }

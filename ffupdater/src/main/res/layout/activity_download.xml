@@ -127,7 +127,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/downloadFileFailed"
+            android:id="@+id/install_activity__download_file_failed"
             style="@style/install_activity__segment"
             android:background="@color/install_activity__red_background_for_text"
             android:padding="8dp">
@@ -137,17 +137,18 @@
                 android:text="@string/download_activity__download_failed" />
 
             <TextView
-                android:id="@+id/downloadFileFailedUrl"
+                android:id="@+id/install_activity__download_file_failed__url"
                 style="@style/install_activity__monospace_text" />
 
             <TextView
                 style="@style/install_activity__default_text"
+                android:id="@+id/install_activity__download_file_failed__text"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/download_activity__temporary_network_issue" />
 
             <TextView
-                android:id="@+id/downloadFileFailedShowException"
+                android:id="@+id/install_activity__download_file_failed__show_exception"
                 style="@style/install_activity__default_text"
                 android:text="@string/download_activity__exception__show_button" />
 

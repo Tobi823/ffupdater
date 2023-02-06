@@ -67,7 +67,7 @@ class FirefoxRelease(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,
-            fileSizeBytesOfDownload = null,
+            exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )
     }

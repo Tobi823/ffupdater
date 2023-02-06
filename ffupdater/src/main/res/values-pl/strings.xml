@@ -225,7 +225,7 @@
 \n- Ten projekt wydaje aktualizacje zabezpieczeń wolniej niż zwykle.</string>
     <string name="kiwi__title">Kiwi Next</string>
     <string name="kiwi__description">Przeglądarka Kiwi jest stworzona do przeglądania internetu, czytania wiadomości, oglądania filmów i słuchania muzyki, bez zbędnych irytacji.</string>
-    <string name="crash_report__explain_text__download_activity_download_file">Ten błąd wystąpił podczas pobierania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
+    <string name="install_activity__download_file_failed__crash_text">Ten błąd wystąpił podczas pobierania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
     <string name="download_activity__file_uri_exposed_toast">Nie można udostępnić ścieżki pliku innym aplikacjom. Otwórz folder samodzielnie za pomocą preferowanego menedżera plików.</string>
     <string name="notification__eol_apps__title">Zainstalowane nieaktualne aplikacje</string>
     <string name="tor_browser__title">Przeglądarka Tor</string>

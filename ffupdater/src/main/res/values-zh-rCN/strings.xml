@@ -30,7 +30,7 @@
     <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎和相同功能。这使其代替成为 Android 系统默认浏览器成为可能。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
-    <string name="crash_report__explain_text__download_activity_download_file">下载过程中出现以下错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="install_activity__download_file_failed__crash_text">下载过程中出现以下错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">在拉取下载元数据时出现错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__explain_text__download_activity_install_file">安装过程中出现以下错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__explain_text__download_activity_update_check">在主视图中检查更新时出现错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>

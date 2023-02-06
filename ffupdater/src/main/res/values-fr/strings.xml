@@ -208,7 +208,7 @@
     <string name="notification__eol_apps__channel_name">Notifications d\'applis obsolètes</string>
     <string name="notification__eol_apps__text">Vous avez des applications obsolètes qui ne devraient plus être utilisées. Cliquez pour plus d\'informations.</string>
     <string name="notification__eol_apps__title">Applis obsolètes installées</string>
-    <string name="crash_report__explain_text__download_activity_download_file">L\'erreur suivante est survenue pendant le téléchargement. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
+    <string name="install_activity__download_file_failed__crash_text">L\'erreur suivante est survenue pendant le téléchargement. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">L\'erreur suivante est survenue pendant l\'installation. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
     <string name="notification__download_error__text">Le téléchargement en arrière plan de la mise à jour de %1$s a échoué. Si cette erreur a lieu fréquemment, cliquez ici pour voir le rapport d\'erreur.</string>
     <string name="download_activity__different_installer_info__text">Si l\'installation échoue souvent, essayez de changer pour l\' \"installateur natif\" dans les paramètres.</string>

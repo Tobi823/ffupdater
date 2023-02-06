@@ -30,7 +30,7 @@
     <string name="bromite_systemwebview__description">SystemWebView paketi, Bromite\'ın temel tarayıcı/görselleştirme motorunu ve onunla aynı özellikleri içerir. Tüm Android sistemi için öntanımlı tarayıcı bileşenini değiştirme imkanı sunar.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Çökme raporunu panoya kopyala</string>
-    <string name="crash_report__explain_text__download_activity_download_file">İndirme sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
+    <string name="install_activity__download_file_failed__crash_text">İndirme sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Bu hata, indirme üst verileri getirilirken oluştu. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Bu hata kurulum sırasında meydana geldi. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Bu hata, ana görünümde güncellemeleri denetlerken meydana geldi. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>

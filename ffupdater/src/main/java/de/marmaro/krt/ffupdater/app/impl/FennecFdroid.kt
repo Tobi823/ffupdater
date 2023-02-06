@@ -57,7 +57,7 @@ class FennecFdroid(
             downloadUrl = result.downloadUrl,
             version = version,
             publishDate = result.createdAt,
-            fileSizeBytesOfDownload = null,
+            exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )
     }

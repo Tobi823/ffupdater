@@ -75,7 +75,7 @@ class FirefoxKlar(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,
-            fileSizeBytesOfDownload = result.fileSizeBytes,
+            exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
     }
