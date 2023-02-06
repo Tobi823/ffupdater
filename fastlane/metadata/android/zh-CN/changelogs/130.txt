@@ -1,0 +1,3 @@
+* 感谢来自 Weblate 的贡献者：nautilusx, Juraj Motuz, Retrial, gallegonovato 和 MkQtS
+* 避免由最新可用版本的异步存储引起的奇怪的 UI 不一致 (Tobi823/ffupdater#335)
+* 添加检查下载器：任何下载的 APK 文件必须是有效的 ZIP 文件。我希望能检测到会引发奇怪错误消息的无效下载。
