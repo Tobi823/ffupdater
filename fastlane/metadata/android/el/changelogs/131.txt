@@ -1,0 +1,3 @@
+* Ευχαριστούμε για την συνεισφορά τους στο Weblate, τους: Juraj Motuz, Retrial, gallegonovato και MkQtS
+ * Διόρθωση σφάλματος λήψης με το Tor Browser / Tor Browser Alpha (Tobi823/ffupdater#336)
+ * Αναδιάρθρωση του DownloadActivity.kt για να γίνει πιο αξιόπιστο
