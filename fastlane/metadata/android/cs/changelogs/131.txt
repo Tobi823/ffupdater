@@ -1,0 +1,3 @@
+* Děkujeme za příspěvky na Weblate od: Juraj Motuz, Retrial, gallegonovato a MkQtS
+* Oprava chyby při stahování prohlížečů Tor Browser / Tor Browser Alpha (Tobi823/ffupdater#336)
+* Refaktor DownloadActivity.kt, aby byl spolehlivější
