@@ -1,0 +1,3 @@
+* Dank für die Weblate-Beiträge von: nautilusx, Juraj Motuz, Retrial, gallegonovato und MkQtS
+* Vermeidung von seltsamen UI-Inkonsistenzen, die durch asynchrone Speicherung der letzten verfügbaren Versionen verursacht werden (Tobi823/ffupdater#335)
+* Überprüfung zum Downloader hinzufügt: Jede heruntergeladene APK-Datei muss eine gültige ZIP-Datei sein. Ich hoffe, damit ungültige Downloads zu erkennen, die zu seltsamen Fehlermeldungen führen.

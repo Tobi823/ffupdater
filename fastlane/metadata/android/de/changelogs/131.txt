@@ -1,0 +1,3 @@
+* Danke für die Weblate-Beiträge von: Juraj Motuz, Retrial, gallegonovato und MkQtS
+* Behebung des Download-Bugs mit Tor Browser / Tor Browser Alpha (Tobi823/ffupdater#336)
+* DownloadActivity.kt umgestaltet, um es zuverlässiger zu machen
