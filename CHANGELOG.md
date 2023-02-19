@@ -1,3 +1,8 @@
+# 2023-02-19 Release 77.7.6 (132)
+
+* Thanks for the Weblate contributions from: nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial and gnu-ewm
+* Fix root installer
+
 # 2023-02-06 Release 77.7.5 (131)
 
 * Thanks for the Weblate contributions from: Juraj Motuz, Retrial, gallegonovato and MkQtS

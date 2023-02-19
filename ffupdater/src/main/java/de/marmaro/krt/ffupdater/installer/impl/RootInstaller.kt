@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.Context
+import android.os.Environment
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -16,17 +17,28 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
     override val type = Installer.ROOT_INSTALLER
 
     override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
-        val filePath = file.absolutePath
-        val fileName = file.name
-        require(!hasDangerousCharacter(filePath))
-        require(!hasDangerousCharacter(fileName))
-        require(filePath == "/storage/emulated/0/Android/data/de.marmaro.krt.ffupdater/files/Download/${app.impl.packageName}.apk")
-        require(fileName == "${app.impl.packageName}.apk")
-
+        fileIsSafeOrThrow(context, file)
         failIfRootPermissionIsMissing()
         val size = file.length().toInt()
         val sessionId = createInstallationSession(size)
-        installApp(sessionId, size, filePath, fileName)
+        installApp(sessionId, size, file.canonicalPath, file.name)
+    }
+
+    private fun fileIsSafeOrThrow(context: Context, file: File) {
+        require(!hasDangerousCharacter(file.canonicalPath)) { "File path has dangerous characters: ${file.canonicalPath}" }
+        require(!hasDangerousCharacter(file.name)) { "File name has dangerous characters: ${file.name}" }
+
+        val downloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+        require(file.parentFile == downloadFolder) { "Wrong folder: ${file.parentFile}" }
+
+        val appName = app.impl.packageName
+            .replace('.', '_')
+            .replace("""\W""", "_")
+        require(file.name.startsWith(appName)) { "Invalid file prefix: ${file.name}" }
+        require(file.name.endsWith(".apk")) { "Invalid file suffix: ${file.name}" }
+        require(
+            !file.name.removeSuffix(".apk").contains(Regex("""\W"""))
+        ) { "Invalid characters in file name: ${file.name}" }
     }
 
     private fun failIfRootPermissionIsMissing() {
