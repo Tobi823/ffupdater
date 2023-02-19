@@ -1,0 +1,2 @@
+* Danke für die Weblate Beiträge von: nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial und gnu-ewm
+* Fix root installer
