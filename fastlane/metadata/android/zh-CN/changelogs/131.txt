@@ -1,0 +1,3 @@
+* 感谢来自 Weblate 的贡献者：Juraj Motuz, Retrial, gallegonovato 和 MkQtS
+* 修复下载 Tor Browser / Tor Browser Alpha 的 bug (Tobi823/ffupdater#336)
+* 重构 DownloadActivity.kt 使其更可靠
