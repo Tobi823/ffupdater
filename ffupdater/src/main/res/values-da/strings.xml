@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_about_title">Om FFUpdater</string>
+    <string name="app_card__app_warning_button_description">Vis advarsler om denne app</string>
+    <string name="app_description">Opdateringsværktøj for privatlivsvenlige browsere</string>
+    <string name="app_icon">appikon</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="app_warning_dialog__title">Advarsel</string>
+    <string name="application_installation_was_not_successful">Appinstallation mislykkedes</string>
+    <string name="available_version">Tilgængelig: %1$s</string>
+    <string name="available_version_error"><u>FEJL</u></string>
+    <string name="notification__error__text">Rapportér venligst denne fejl. Klik for at se fejlrapporten.</string>
+    <string name="notification__error__title">Kontrol af baggrundsopdatering mislykkedes</string>
+    <string name="brave__title">Brave Private Browser</string>
+    <string name="brave_beta__description">Velkommen til Brave Beta til Android!
+\nPrøv de nyeste funktioner og giv tidlig feedback: https://brave.com/msupport
+\nDu kan installere Brave Beta sammen med din nuværende version af Brave til Android.</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="application_successfully_installed">App installeret</string>
+    <string name="brave__warning">- Brave bruger det tekniske grundlag i Google Chrome og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.
+\n- På grund af dets Basic Attention Token BAT på Ethereum blockchain har projektet bånd til kryptovaluta. Blockchains har mange problemer og bør efter min mening undgås.</string>
+    <string name="brave__description">Bevar dit privatliv på internettet, gratis! Brave Private Browser er din hurtige, gratis og sikre private webbrowser med annonceblokering og pop op-blokering. Bevar dit privatliv og søg på internettet uden at blive sporet af annoncører, malware og pop-ups.</string>
+</resources>
