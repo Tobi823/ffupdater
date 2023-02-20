@@ -2,7 +2,7 @@
 <resources>
     <string name="action_about_title">Om FFUpdater</string>
     <string name="app_card__app_warning_button_description">Vis advarsler om denne app</string>
-    <string name="app_description">Opdateringsværktøj for privatlivsvenlige browsere</string>
+    <string name="app_description">Opdateringsværktøj til privatlivsvenlige browsere</string>
     <string name="app_icon">appikon</string>
     <string name="app_name">FFUpdater</string>
     <string name="app_warning_dialog__title">Advarsel</string>
@@ -20,4 +20,8 @@
     <string name="brave__warning">- Brave bruger det tekniske grundlag i Google Chrome og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.
 \n- På grund af dets Basic Attention Token BAT på Ethereum blockchain har projektet bånd til kryptovaluta. Blockchains har mange problemer og bør efter min mening undgås.</string>
     <string name="brave__description">Bevar dit privatliv på internettet, gratis! Brave Private Browser er din hurtige, gratis og sikre private webbrowser med annonceblokering og pop op-blokering. Bevar dit privatliv og søg på internettet uden at blive sporet af annoncører, malware og pop-ups.</string>
+    <string name="brave_nightly__description">Velkommen til Brave Nightly (Developer) til Android!
+\nPrøv de nyeste funktioner og giv tidlig feedback: https://brave.com/msupport
+\nDu kan installere Brave Nightly sammen med din nuværende version af Brave til Android.</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
 </resources>
