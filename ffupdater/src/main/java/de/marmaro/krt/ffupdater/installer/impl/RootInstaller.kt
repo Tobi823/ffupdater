@@ -17,6 +17,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
     override val type = Installer.ROOT_INSTALLER
 
     override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
+        restartInternalShellToGetAlwaysRootPermission()
         fileIsSafeOrThrow(context, file)
         failIfRootPermissionIsMissing()
         val size = file.length().toInt()
@@ -41,9 +42,15 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         ) { "Invalid characters in file name: ${file.name}" }
     }
 
+    private fun restartInternalShellToGetAlwaysRootPermission() {
+        Shell.getShell().waitAndClose()
+        Shell.getShell().waitAndClose()
+    }
+
     private fun failIfRootPermissionIsMissing() {
-        if (!Shell.getShell().isRoot) {
-            throw InstallationFailedException("Missing root permission", -302)
+        val rootGranted = Shell.isAppGrantedRoot()
+        if (rootGranted != true) {
+            throw InstallationFailedException("Missing root permission. Permission is $rootGranted", -302)
         }
     }
 
