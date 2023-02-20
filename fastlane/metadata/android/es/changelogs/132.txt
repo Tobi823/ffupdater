@@ -1,0 +1,2 @@
+* Gracias por las contribuciones en Weblate de: nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial y gnu-ewm
+* Arreglado el instalador root
