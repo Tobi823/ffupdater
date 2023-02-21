@@ -24,4 +24,23 @@
 \nPrøv de nyeste funktioner og giv tidlig feedback: https://brave.com/msupport
 \nDu kan installere Brave Nightly sammen med din nuværende version af Brave til Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">Denne fejl opstod, da downloadmetadata blev hentet. Hvis denne fejl opstår ofte, er du velkommen til at indsende nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Desværre gik FFUpdater ned sidste gang og loggede denne fejl. Send venligst nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
+    <string name="bromite__description">Bromite sigter mod at give en browsingoplevelse uden rod uden privatlivsindgribende funktioner og med tilføjelsen af en hurtig reklameblokerende motor. Minimale UI-ændringer anvendes for at hjælpe med at dæmme op for ideen om browser som en reklameplatform.</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="bromite__warning">- Bromite bruger det tekniske grundlag for Google Chrome og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
+    <string name="bromite_systemwebview__description">SystemWebView-pakken indeholder Bromites browser/gengivelsesmotor og dens funktioner. Den giver mulighed for at erstatte standardbrowserkomponenten for hele Android-systemet.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Kopiér nedbrudsrapport til udklipsholder</string>
+    <string name="install_activity__download_file_failed__crash_text">Følgende fejl opstod under download. Hvis denne fejl opstår ofte, er du velkommen til at indsende nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Fejlen opstod under installation. Hvis fejlen opstår ofte, er du velkommen til at indsende nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">Fejlen opstod ved søgning efter opdateringer i hovedvisningen. Hvis fejlen opstår ofte er du velkommen til at sende nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
+    <string name="crash_report__go_to_github">Gå til GitHub</string>
+    <string name="crash_report__go_to_gitlab">Gå til GitLab</string>
+    <string name="crash_report__got_to_notabug_org">Gå til notabug.org</string>
+    <string name="device_too_old_dialog__message">Appen kræver Android %1$s. Men din enhed kører kun Android %2$s. Vælg enten en anden app, opdater dit operativsystem eller skift til en nyere smartphone.</string>
+    <string name="device_too_old_dialog__title">Enhed er for gammel</string>
+    <string name="dialog_button__do_not_install">Nej, installer den ikke</string>
+    <string name="dialog_button__yes">Ja</string>
+    <string name="notification__download_error__channel_descr">Viser, når download af opdateringer i baggrunden mislykkes.</string>
 </resources>
