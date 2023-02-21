@@ -43,4 +43,188 @@
     <string name="dialog_button__do_not_install">Nej, installer den ikke</string>
     <string name="dialog_button__yes">Ja</string>
     <string name="notification__download_error__channel_descr">Viser, når download af opdateringer i baggrunden mislykkes.</string>
+    <string name="notification__error__channel_descr">Vis fejl i baggrundsopdateringskontrollen</string>
+    <string name="firefox_beta__description">Firefox Browser til Android er automatisk privat og utrolig hurtig. Tusindvis af online-trackere følger dig hver dag, indsamler information om, hvor du går online og sænker din hastighed. Firefox blokerer som standard over 2000 af disse trackere, og der er tilføjelsesprogrammer til reklameblokering, hvis du vil tilpasse din browser endnu mere. Med Firefox får du den sikkerhed, du fortjener, og den hastighed, du har brug for, i en privat, mobil browser.</string>
+    <string name="firefox_klar__description">Firefox Klar er udviklet til Tyskland, Østrig og Schweiz, men kan bruges af brugere i alle lande. Den minder meget om Firefox Focus, men navnet blev ændret i tysktalende lande for at undgå forveksling med magasinet Focus af Hubert Burda Media group. I modsætning til Firefox Focus har Firefox Klar telemetri deaktiveret som standard på grund af strenge tyske privatlivslove.</string>
+    <string name="firefox_nightly__description">Bemærk venligst, at denne app før hed Firefox Preview. Den er nu blevet overført til Firefox Nightly.
+\n
+\nFirefox Nightly er en udviklingskanal for nye Mozilla Firefox-udgivelser.
+\n
+\nFirefox Nightly er designet til at vise de mere eksperimentelle builds af Firefox. Nightly-kanalen giver brugere mulighed for at opleve de nyeste Firefox-innovationer i et ustabilt miljø og give feedback om funktioner og ydeevne for at hjælpe med at bestemme, hvad der ender i den endelige udgivelse.</string>
+    <string name="firefox_release__description">Firefox Browser til Android er automatisk privat og utrolig hurtig. Tusindvis af online-trackere følger dig hver dag, indsamler information om, hvor du går online og sænker din hastighed. Firefox blokerer som standard over 2000 af disse trackere, og der er tilføjelsesprogrammer til reklameblokering, hvis du vil tilpasse din browser endnu mere. Med Firefox får du den sikkerhed, du fortjener, og den hastighed, du har brug for, i en privat, mobil browser.</string>
+    <string name="download_activity__too_low_memory_description">Din enhed mangler lagerplads. (Kun %1$d MB ledig.) Dette vil føre til download- eller installationsfejl.</string>
+    <string name="download_activity__delete_cache_explanation">Hvis du tror, at FFUpdater har cachelagret en defekt appopdatering, eller hvis du vil spare plads: Klik på knappen for at slette den downloadede fil.</string>
+    <string name="download_activity__different_installer_info__text">Hvis installation mislykkes ofte, kan du prøve at skifte til \'native installer\' i indstillingerne.</string>
+    <string name="download_activity__fetch_url_for_download">Hent metadata fra %1$s</string>
+    <string name="download_activity__github_rate_limit_exceeded">GitHub-API-grænsen er overskredet. Prøv venligst at downloade igen om en time.</string>
+    <string name="download_activity__open_cache_explanation">Du kan åbne cache-mappen for at kopiere APK-filen til et sted med mere ledig lagerplads. Desværre kan kun få filhåndteringer på Android 11+ få adgang til denne mappe i Android/data.</string>
+    <string name="download_activity__too_low_memory_title">Lav Lagringsplads</string>
+    <string name="download_activity__use_cached_downloaded_apk">Brug allerede downloadet fil fra:</string>
+    <string name="install_same_version_dialog__message">Den seneste version af denne app er allerede installeret. Vil du downloade og installere den nyeste version igen\?</string>
+    <string name="notification__install_success__title">%1$s er blevet opdateret</string>
+    <string name="kiwi__warning">- Kiwi bruger det tekniske grundlag i Google Chrome og understøtter dermed indirekte Chromiums monopolposition.
+\n- Kiwi er ikke en ideel privatlivsbrowser, men har god understøttelse af tilføjelser.
+\n- Browseren betales af søgemaskiner for hver søgning, der udføres ved hjælp af Kiwi Browser. Afhængigt af valg af søgemaskine kan anmodninger gå via Kiwibrowser / Kiwisearchservices servere.
+\n- Google Ads i Kiwi kan bruge placeringsdata til annoncer - men det kan deaktiveres ved at deaktivere Discovery-funktionen. Men dette vil snart ændre sig. Se https://privacy.kiwibrowser.org/ for flere detaljer.</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API-grænse overskredet. Prøv igen om en time.</u></string>
+    <string name="ok">OK</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater mangler tilladelse til at installere og opdatere apps. Du skal give disse tilladelser, ellers vil FFUpdater ikke fungere.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Slet den downloadede opdatering, hvis installationen lykkes.</string>
+    <string name="session_installer__require_user_interaction">Kræver brugerinteraktion. Du skal først opdatere appen via FFUpdater-brugergrænsefladen. Derefter er automatiske baggrundsopdateringer for den respektive app tilladt.</string>
+    <string name="installed_application_is_verified">Installeret app er verificeret</string>
+    <string name="kiwi__description">Kiwi Browser er lavet til at surfe på internettet, læse nyheder, se videoer og lytte til musik uden gener.</string>
+    <string name="settings__background__download__metered__summary">Anbefales ikke til brugere med begrænset mobildata.</string>
+    <string name="settings__background__installation__enabled__summary">Prøv at installere opdateringer uden brugerinteraktion.</string>
+    <string name="settings__background__installation__enabled__title">Installer opdatering</string>
+    <string name="settings__background__update_check__excluded_apps__summary">Nyttigt, hvis du ikke ønsker at opdatere en app og ikke ønsker at modtage opdateringsmeddelelser om den.</string>
+    <string name="settings__foreground__download__metered__title">Download opdateringer på forbrugsafregnede netværk</string>
+    <string name="settings__foreground__hide_warning_buttons">Skjul advarselsknappen for installeret app.</string>
+    <string name="settings__foreground__theme_preference__summary">Vælg mellem lyst og mørkt tema</string>
+    <string name="settings__foreground__update_check__metered__summary">Tillad opdateringstjek på forbrugsafregnede netværk såsom mobildata.</string>
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium bruger Google Chromes tekniskegrundlag og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
+    <string name="update_interval__5d">5 dage</string>
+    <string name="notification__update_available__channel_descr">Notifikationskanal for tilgængelige %1$s-opdateringer.</string>
+    <string name="settings__theme_battery_saver">Mørk når Strømbesparelse er aktiv</string>
+    <string name="ungoogled_chromium__description">Google Chromium, uden integration med Google.
+\n
+\nUden at logge ind på en Google-konto klarer Chromium sig ret godt med hensyn til sikkerhed og privatliv. Chromium har dog stadig en vis afhængighed af Googles webtjenester og binære filer. Derudover har Google designet Chromium til at være nemt og intuitivt for brugerne, hvilket betyder, at de går på kompromis med gennemsigtighed og kontrol over interne operationer.</string>
+    <string name="download_activity__download_app_with_status">Downloader app (%1$s)</string>
+    <string name="download_activity__download_failed">Download fejlede</string>
+    <string name="download_activity__downloaded_application_from">Hentede app fra:</string>
+    <string name="download_activity__downloaded_application_is_not_verified">Den downloadede app er IKKE verificeret</string>
+    <string name="download_activity__exception__show_button"><u>Vis den detaljerede fejlrapport.</u></string>
+    <string name="download_activity__external_storage_not_accessible">Eksternt lager er ikke tilgængeligt - kan ikke starte download. Status er:</string>
+    <string name="download_activity__fetched_url_for_download_successfully">Hentede metadata fra %1$s</string>
+    <string name="download_activity__file_uri_exposed_toast">Kan ikke vise filstien til andre apps. Åbn venligst selv mappen med din foretrukne filhåndtering.</string>
+    <string name="download_activity__open_cache_folder_button_text">åbn cache-mappe</string>
+    <string name="download_activity__open_folder">Åbn mappe</string>
+    <string name="download_activity__sha_256_certificate_fingerprint">SHA-256-certifikat fingeraftryk:</string>
+    <string name="download_activity__temporary_network_issue">Midlertidigt netværksproblem. Prøv venligst igen senere.</string>
+    <string name="download_activity__you_can_now_close_this_window">Du kan nu lukke dette vindue</string>
+    <string name="download_activity__label">Download App</string>
+    <string name="install_new_app">Installer ny app</string>
+    <string name="install_same_version_dialog__title">Samme version installeret</string>
+    <string name="notification__install_error__channel_descr">Underretningskanal for mislykkede %1$s opdateringer.</string>
+    <string name="notification__install_error__channel_name">Meddelelse om %1$s opdateringsfejl</string>
+    <string name="notification__install_error__text">Fejl (%1$d): %2$s</string>
+    <string name="notification__install_error__title">%1$s kunne ikke opdateres</string>
+    <string name="notification__install_success__channel_descr">Notifikationskanal for vellykkede %1$s opdateringer.</string>
+    <string name="notification__install_success__channel_name">%1$s notifikation om vellykket opdatering</string>
+    <string name="notification__install_success__text">App er blevet opdateret i baggrunden.</string>
+    <string name="installed_version">Installeret: %1$s</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="lockwise__description">PASSWORDADGANG FOR DIG OG KUN DIG
+\n
+\nSpor dine Firefox-passwords sikkert og få adgang til dem hvor som helst. Åbn hurtigt websteder fra appen for at komme ind på dine konti.</string>
+    <string name="lockwise__eol_reason">Mozilla droppede supporten i december 2021. Skift venligst til en anden adgangskodemanager.</string>
+    <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__no_unmetered_network">Intet ikke-forbrugsbaseret netværk</string>
+    <string name="main_activity__subtitle">Opdateringsværktøj til privatlivsvenlige browsere</string>
+    <string name="main_activity__temporary_network_issue"><u>Midlertidigt netværksproblem. Prøv senere.</u></string>
+    <string name="request_installation_permission_dialog__abort">Afbryd</string>
+    <string name="request_installation_permission_dialog__grant_permission">Giv tilladelse</string>
+    <string name="request_installation_permission_dialog__title">Tilladelse til at installere</string>
+    <string name="running_downloads_dialog__message">Appen downloader opdateringer i baggrunden nu. Vil du starte en ny download, der kan tage længere tid\?</string>
+    <string name="running_downloads_dialog__negative">Nej, download den ikke</string>
+    <string name="running_downloads_dialog__title">Kører downloads</string>
+    <string name="running_downloads_dialog__yes">Ja</string>
+    <string name="session_installer__not_enough_storage">Handlingen mislykkedes, fordi der ikke er nok lagerplads: %1$s</string>
+    <string name="session_installer__status_failure">Operationen mislykkedes på en generisk måde. Systemet vil altid forsøge at give en mere specifik fejlårsag, men i sjældne tilfælde er det ikke muligt.</string>
+    <string name="session_installer__status_failure_aborted">Handlingen mislykkedes, fordi den aktivt blev afbrudt. For eksempel afviste brugeren anmodning om tilladelser, eller sessionen blev afbrudt.</string>
+    <string name="session_installer__status_failure_blocked">Handlingen mislykkedes, fordi den blev blokeret. For eksempel kan en enhedspolitik blokere handlingen, en pakkeverifikator kan have blokeret handlingen, eller appen kan være nødvendig for systemet.</string>
+    <string name="session_installer__status_failure_conflict">Handlingen mislykkedes, fordi den er i konflikt (eller i uoverensstemmelse) med en anden pakke på enheden. For eksempel en eksisterende tilladelse, inkompatible certifikater osv. Brugeren kan muligvis afinstallere en anden app for at løse problemet.</string>
+    <string name="session_installer__status_failure_incompatible">Handlingen mislykkedes, fordi den er inkompatibel med denne enhed. For eksempel kan appen kræve en hardwarefunktion, der ikke eksisterer, den kan mangle indbygget kode til de ABI\'er, der understøttes af enheden, eller den kræver en nyere SDK-version osv.</string>
+    <string name="session_installer__status_failure_invalid">Handlingen mislykkedes, fordi en eller flere af APK\'erne var ugyldige. De kan f.eks. være forkert udformet, ødelagte, forkert underskrevne, uoverensstemmende osv.</string>
+    <string name="session_installer__status_failure_storage">Handlingen mislykkedes på grund af lagerproblemer. Enheden kan f.eks. være ved at løbe tør for plads, eller eksterne medier kan være utilgængelige. Brugeren kan muligvis hjælpe med at frigøre plads eller indsætte forskellige eksterne medier.</string>
+    <string name="settings_activity__label">Indstillinger</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Slet den downloadede opdatering, hvis installationen mislykkes.</string>
+    <string name="settings__background__download__enabled__summary">Når en opdatering er fundet: Download den. Dette vil senere fremskynde opdateringsprocessen.</string>
+    <string name="settings__background__download__enabled__title">Download app-opdateringer</string>
+    <string name="settings__background__download__metered__title">Download appopdateringer på forbrugsafregnede netværk</string>
+    <string name="settings__background__update_check__enabled__summary">Se efter nye opdateringer med jævne mellemrum.</string>
+    <string name="settings__background__update_check__enabled__title">Opdateringstjek</string>
+    <string name="settings__background__update_check__excluded_apps__title">Udeluk apps fra opdateringstjek</string>
+    <string name="settings__background__update_check__interval__title">Interval for opdateringskontrol</string>
+    <string name="settings__background__update_check__metered__title">Opdateringstjek på forbrugsafregnede netværk</string>
+    <string name="settings__background_category__summary">Indstillinger når appen arbejder i baggrunden og er usynlig for brugeren.</string>
+    <string name="settings__background_category__title">Baggrund</string>
+    <string name="settings__foreground__theme_preference__title">Vælg tema</string>
+    <string name="settings__foreground__update_check__metered__title">Opdateringstjek på forbrugsafregnede netværk</string>
+    <string name="settings__foreground_category__summary">Indstillinger, når brugergrænsefladen er synlig.</string>
+    <string name="settings__foreground_category__title">Forgrund</string>
+    <string name="settings__installer_category__title">Installer</string>
+    <string name="settings__theme_dark">Mørk</string>
+    <string name="settings__theme_light">Lys</string>
+    <string name="settings__theme_system_default">Brug systemstandard</string>
+    <string name="unsupported_abi_dialog__message">Den valgte browser er inkompatibel med din smartphones processor. Vælg venligst en anden browser.</string>
+    <string name="unsupported_abi_dialog__title">Ikke-understøttet enhed</string>
+    <string name="update_interval__12h">12 timer</string>
+    <string name="update_interval__15min">15 minutter</string>
+    <string name="update_interval__18h">18 timer</string>
+    <string name="update_interval__1d">1 dag</string>
+    <string name="update_interval__1h">1 time</string>
+    <string name="update_interval__1m">1 måned</string>
+    <string name="update_interval__1w">1 uge</string>
+    <string name="update_interval__2d">2 dage</string>
+    <string name="update_interval__2h">2 timer</string>
+    <string name="update_interval__2w">2 uger</string>
+    <string name="update_interval__30min">30 minutter</string>
+    <string name="update_interval__3d">3 dage</string>
+    <string name="update_interval__4d">4 dage</string>
+    <string name="update_interval__4h">4 timer</string>
+    <string name="update_interval__6d">6 dage</string>
+    <string name="update_interval__6h">6 timer</string>
+    <string name="update_interval__8h">8 timer</string>
+    <string name="notification__update_available__channel_name">%1$s opdateringsmeddelelse</string>
+    <string name="update_notification__text">Klik for at installere opdatering</string>
+    <string name="update_notification__title">Opdatering til %1$s tilgængelig</string>
+    <string name="vivaldi__title">Vivaldi Browser</string>
+    <string name="mull__title">Mull Browser</string>
+    <string name="mull__description">Dette er en privatlivsorienteret og deblobbet webbrowser baseret på Mozilla-teknologi. Den rummer mange funktioner upstreamet af Tor Uplift-projektet ved hjælp af præferencer fra arkenfox-user.js-projektet. Det anbefales at installere \'uBlock Origin\'.</string>
+    <string name="app_card__open_project_page">Åbn projektside i browser</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Tor Browser til Android er den eneste officielle mobilbrowser, der understøttes af Tor Project, udviklere af verdens stærkeste værktøj til privatliv og frihed online.</string>
+    <string name="orbot__title">Orbot: Tor for Android</string>
+    <string name="notification__download_error__channel_name">Meddelelse om downloadfejl i baggrunden</string>
+    <string name="notification__download_error__text">Baggrundsdownload af %1$s-opdateringen mislykkedes. Hvisdenne fejl opstår ofte, skal du klikke her for at se fejlrapporten.</string>
+    <string name="notification__download_error__descr">Baggrundsdownload af %1$s-opdateringen mislykkedes. Hvis denne fejl opstår ofte, er du velkommen til at rapportere den på notabug.org, GitHub eller GitLab.</string>
+    <string name="notification__download_error__title">Baggrundsdownload af opdatering mislykkedes</string>
+    <string name="notification__download_running__channel_descr">Vises, når appopdateringer downloades i baggrunden.</string>
+    <string name="notification__download_running__channel_name">Notifikation om downloads i baggrunden</string>
+    <string name="notification__download_running__text">%1$s (%2$s)</string>
+    <string name="notification__download_running__title">Downloader appopdateringer</string>
+    <string name="app_card__download_the_app">download appen</string>
+    <string name="notification__eol_apps__channel_description">Notifikationskanal for advarsler om forældede apps.</string>
+    <string name="notification__eol_apps__channel_name">Notifikation om forældede apps</string>
+    <string name="notification__eol_apps__text">Du har forældede apps, som ikke bør bruges længere. Klik for mere information.</string>
+    <string name="notification__eol_apps__title">Forældede apps installeret</string>
+    <string name="notification__error__channel_name">Baggrundsfejl</string>
+    <string name="firefox_beta__title">Firefox til Android Beta</string>
+    <string name="firefox_beta__warning">- Denne app er designet til udviklere og testere. Den kan indeholde forskellige fejl, der kan påvirke dit sædvanlige arbejde med browseren.</string>
+    <string name="firefox_focus__description">Dette er en ændring af Firefox-browseren, der har til formål at øge privatlivets fred.</string>
+    <string name="firefox_focus__title">Firefox Focus</string>
+    <string name="firefox_klar__title">Firefox Klar</string>
+    <string name="firefox_nightly__title">Firefox Nightly</string>
+    <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- En forbedret version af Firefox er også tilgængelig på F-Droid under navnet Fennec F-Droid.</string>
+    <string name="iceraven__description">Absolut ikke bragt til dig af Mozilla!
+\n
+\nIceraven Browser er en browser til Android, baseret på Mozillas Fenix-version af Firefox, GeckoView og Mozilla Android-komponenter.
+\n
+\nVores mål er at være en fork af den nye Firefox til Android, der giver brugerne flere indstilliner, flere muligheder for at tilpasse (herunder et bredt udvidelsesbibliotek) og mere information om de sider, de besøger, og hvordan deres browsere interagerer med de sider.</string>
+    <string name="iceraven__title">Iceraven Browser</string>
+    <string name="iceraven__warning">- Vedligeholderen giver ingen garantier for sikkerhed eller opdateringer eller endda stabilitet.
+\n - Projektet er længere tid end normalt om at levere sikkerhedsopdateringer.</string>
+    <string name="infobox">Dette er et opdateringsværktøj til privatlivsvenlige browsere. Klik på plusknappen for at installere nye apps. Stryg ned for at søge efter nye opdateringer. Som standard søger appen jævnligt efter opdateringer i baggrunden, som så bliver downloadet og installeret. Klik på tandhjulet for at tilpasse adfærden i indstillingerne.
+\n
+\nSidste vellykkede kontrol af baggrundsopdatering: %1$s</string>
+    <string name="app_card__information_about_the_app">Information om appen</string>
+    <string name="download_activity__delete_cache_button_text">ryd cache</string>
+    <string name="ungoogled_chromium__eol_reason">Udvikleren skrev: \"Jeg vil ikke være i stand til at opdatere versionerne i nogen tid. Hvis det er muligt, så brug en af de browsere [som FFUpdater understøtter] i mellemtiden.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="orbot__description">Orbot er en gratis proxy-app, der giver andre apps mulighed for at bruge internettet mere sikkert. Orbot bruger Tor til at kryptere din internettrafik og skjuler den derefter ved at hoppe gennem en række computere rundt om i verden. Tor er gratis software og et åbent netværk, der hjælper dig med at forsvare dig mod en form for netværksovervågning, der truer personlig frihed og privatliv, fortrolige forretningsaktiviteter og relationer og statsovervågning kendt som trafikanalyse.</string>
+    <string name="vivaldi__description">Oplev en lynhurtig internetbrowser! Vivaldi er en ny, gratis og privat webbrowser bygget med fleksibilitet i tankerne. Den kommer spækket med nyttige funktioner, herunder en indbygget AdBlocker (pop-up-blokering), sporingsbeskyttelse og privat oversættelse. Browserindstillinger såsom rigtige faner i skrivebordsstil, mørke/lyse temaer og layoutvalg hjælper dig med at gøre den til din.</string>
+    <string name="vivaldi__warning">- Vivaldi er kun delvist open source.
+\n- Den bruger også Google Chromes tekniske fundament og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
+    <string name="installed_app_is_not_verified">Installeret app er IKKE verificeret</string>
 </resources>
