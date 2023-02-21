@@ -1,0 +1,30 @@
+Installerer og opdaterer følgende browsere:
+
+Browsere fra Mozilla eller baseret på Firefox:
+- Fennec F-Droid
+- Firefox Browser, Firefox til Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Mull Browser
+- Tor Browser, Tor Browser Alpha
+
+Gode privatlivsbrowsere:
+- Bromite, Bromite SystemWebView
+- Mulch
+
+Browsere, der er bedre end Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium 
+- DuckDuckGo Browser
+- Kiwi Browser Next
+- Privacy Browser (F-Droid)
+- Vivaldi
+
+Andre applikationer:
+- Orbot
+
+FFUpdater søger efter opdateringer i baggrunden og downloader dem også. På Android 12+ eller root-enheder kan FFUpdater også opdatere apps uden brugerinteraktion.
+
+Besøg https://notabug.org/Tobiwan/ffupdater/src/master/README.md for mere information.
+
+Ændringslogs: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/en-US/changelogs
