@@ -1,0 +1,2 @@
+* 感谢来自 Weblate 的贡献者：nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial 和 gnu-ewm
+* 修复 Root 安装器
