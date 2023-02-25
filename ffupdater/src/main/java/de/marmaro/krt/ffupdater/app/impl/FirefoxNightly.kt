@@ -24,7 +24,6 @@ import java.time.format.DateTimeFormatter
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest
- * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
  */
 class FirefoxNightly(
