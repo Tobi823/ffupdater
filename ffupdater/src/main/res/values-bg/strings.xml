@@ -53,7 +53,7 @@
     <string name="notification__download_running__title">Изтегляне на обновяване</string>
     <string name="app_card__download_the_app">изтегляне на приложение</string>
     <string name="notification__eol_apps__channel_description">Категория известия за наличие на изведени от употреба приложения.</string>
-    <string name="notification__eol_apps__channel_name">Известие за наличие на изведено от употреба приложение</string>
+    <string name="notification__eol_apps__channel_name">Известие при наличие на изведено от употреба приложение</string>
     <string name="notification__eol_apps__text">Имате изведени от употреба приложения, които не бива да ползвате. Докоснете за детайли.</string>
     <string name="notification__eol_apps__title">Инсталирано е изведено от употреба приложение</string>
     <string name="notification__error__channel_descr">Категория известия за грешки при проверката за обновяване във фонов режим.</string>
@@ -113,11 +113,11 @@
     <string name="install_same_version_dialog__message">Последното издание на приложението вече е инсталирано. Желаете ли да бъде изтеглено и инсталирано отново\?</string>
     <string name="install_same_version_dialog__title">Инсталирано е същото издание</string>
     <string name="notification__install_error__channel_descr">Категория известия за неуспешни обновявания на %1$s.</string>
-    <string name="notification__install_error__channel_name">Известие за неуспешно обновяване на %1$s</string>
+    <string name="notification__install_error__channel_name">Известие при неуспешно обновяване на %1$s</string>
     <string name="notification__install_error__text">Грешка (%1$d): %2$s</string>
     <string name="notification__install_error__title">Приложението %1$s не е обновено</string>
     <string name="notification__install_success__channel_descr">Категория известия за успешни обновявания на %1$s.</string>
-    <string name="notification__install_success__channel_name">Известие за успешно обновяване на %1$s</string>
+    <string name="notification__install_success__channel_name">Известие при успешно обновяване на %1$s</string>
     <string name="notification__install_success__text">Приложение е обновено във фонов режим.</string>
     <string name="notification__install_success__title">Приложението %1$s е обновено</string>
     <string name="installed_app_is_not_verified">Инсталираното приложение НЕ е проверено</string>
@@ -210,7 +210,7 @@
     <string name="update_interval__6h">6 часа</string>
     <string name="update_interval__8h">8 часа</string>
     <string name="notification__update_available__channel_descr">Категория известия за достъпни издания на %1$s.</string>
-    <string name="notification__update_available__channel_name">Известие за достъпно издание на %1$s</string>
+    <string name="notification__update_available__channel_name">Известие при достъпно издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
     <string name="update_notification__title">Налично издание на %1$s</string>
     <string name="vivaldi__description">Открийте изключително бърз мрежов четец! Vivaldi е нов, безплатен и поверителен мрежов четец, създаден с мисъл за гъвкавост. Той е снабден с полезни функции, включително вградено спиране на реклами (изскачащи прозорци също), защита от проследяване и поверително превеждане. Възможностите на четеца, като например подходящи раздели в настолен стил, тъмни/светли теми и избор на оформление, ви помагат да го направите свой.</string>
@@ -278,7 +278,7 @@
     <string name="installer__method__shizuku">Инсталатор на Shizuku: Обновяване на приложения без потвърждение. Изисква приложението Shizuku или модула Sui Magisk.</string>
     <string name="installer__method__root">Инсталатор на сиперпотребителя: Обновяване на приложения без потвърждение. Изисква достъп до суперпотребителя на устройството.</string>
     <string name="background__separate_notification_channels__summary">Използване на отделен канал за известие за всяко приложение</string>
-    <string name="notification__update_available__generic_channel_name">Известие за обновяване на приложение</string>
+    <string name="notification__update_available__generic_channel_name">Известие при обновяване на приложение</string>
     <string name="background__separate_notification_channels__title">Отделни канали за известия</string>
     <string name="notification__update_available__generic_channel_descr">Категория известия за налични обновявания на приложения.</string>
     <string name="notification__install_error__generic_channel_descr">Категория известия за неуспешни обновявания на приложения.</string>
@@ -287,4 +287,11 @@
     <string name="network__dns_provider__system">Използване на системния DNS</string>
     <string name="installer__method__native">Воден инсталатор: Резервен вариант, ако инсталаторът на сесии не работи на устройството.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Скриване на приложения, подписани с различен сертификат.</string>
+    <string name="tor_browser_alpha__title">Четецът Тор алфа</string>
+    <string name="generic_app_warning__beta_version">- Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната работа с него.</string>
+    <string name="firefox_focus_beta__title">Файърфокс Фокус бета</string>
+    <string name="notification__install_error__generic_channel_name">Известие при неуспешно обновяване на приложение</string>
+    <string name="notification__network_error__title">Грешка в мрежата при работа във фонов режим</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Приложение е подписано с различен сертификат и не може да бъде обновено с FFUpdater.</string>
+    <string name="privacy_browser__title">Поверителни четци</string>
 </resources>
