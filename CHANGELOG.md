@@ -1,3 +1,9 @@
+# 2023-02-27 Release 77.7.7 (133)
+
+* Thanks Jerry Jean-Baptiste for fixing Firefox Beta and Firefox Nightly (Tobi823/ffupdater#353)
+* Thanks for the Weblate contributions from: Michael Bæk, mondstern, 109247019824, Retrial, gallegonovato and
+  MkQtS
+
 # 2023-02-19 Release 77.7.6 (132)
 
 * Thanks for the Weblate contributions from: nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial and gnu-ewm
