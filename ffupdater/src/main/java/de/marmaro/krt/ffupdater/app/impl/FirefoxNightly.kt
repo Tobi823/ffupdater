@@ -110,12 +110,12 @@ class FirefoxNightly(
     /**
      * @throws PackageManager.NameNotFoundException
      */
+    @Suppress("DEPRECATION")
     private fun getVersionCode(context: Context): Long {
         val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
         if (deviceSdkTester.supportsAndroid9()) {
             return packageInfo.longVersionCode
         }
-        @Suppress("DEPRECATION")
         return packageInfo.versionCode.toLong()
     }
 

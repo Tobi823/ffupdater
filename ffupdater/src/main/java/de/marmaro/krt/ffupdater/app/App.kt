@@ -22,6 +22,8 @@ enum class App(val implFactory: () -> AppBase) {
     FIREFOX_RELEASE({ FirefoxRelease() }),
     ICERAVEN({ Iceraven() }),
     KIWI({ Kiwi() }),
+
+    @Suppress("DEPRECATION")
     LOCKWISE({ Lockwise() }),
     MULCH({ Mulch() }),
     MULL_FROM_REPO({ MullFromRepo() }),
@@ -29,6 +31,8 @@ enum class App(val implFactory: () -> AppBase) {
     PRIVACY_BROWSER({ PrivacyBrowser() }),
     TOR_BROWSER({ TorBrowser() }),
     TOR_BROWSER_ALPHA({ TorBrowserAlpha() }),
+
+    @Suppress("DEPRECATION")
     UNGOOGLED_CHROMIUM({ UngoogledChromium() }),
     VIVALDI({ Vivaldi() }),
     ;

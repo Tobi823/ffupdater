@@ -92,12 +92,14 @@ class PackageManagerUtil(
     @MainThread
     suspend fun getPackageArchiveVersionNameOrNull(path: String): String? {
         return withContext(Dispatchers.IO) {
+            @Suppress("DEPRECATION")
             packageManager.getPackageArchiveInfo(path, 0)?.versionName
         }
     }
 
     fun getInstalledAppVersionName(packageName: String): String? {
         return try {
+            @Suppress("DEPRECATION")
             packageManager.getPackageInfo(packageName, 0)?.versionName
         } catch (e: PackageManager.NameNotFoundException) {
             null

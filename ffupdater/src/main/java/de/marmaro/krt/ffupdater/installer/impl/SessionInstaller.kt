@@ -174,6 +174,7 @@ class SessionInstaller(
 
         try {
             // ignore UnsafeIntentLaunchViolation because at least OnePlus needs this exact intent
+            @Suppress("DEPRECATION")
             val requestPermission = bundle.get(Intent.EXTRA_INTENT) as Intent
             context.startActivity(requestPermission)
         } catch (e: ActivityNotFoundException) {

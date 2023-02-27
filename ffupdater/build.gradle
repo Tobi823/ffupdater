@@ -51,7 +51,7 @@ dependencies {
     // for root installer
     // TODO
     //noinspection GradleDependency
-    implementation 'com.github.topjohnwu.libsu:core:4.0.3'
+    implementation 'com.github.topjohnwu.libsu:core:5.0.4'
 
     // for Shizuku installer
     implementation "dev.rikka.shizuku:api:12.2.0"

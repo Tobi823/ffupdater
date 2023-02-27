@@ -84,6 +84,7 @@ class ShizukuInstaller(
 
     private suspend fun execute(command: String): String {
         return withContext(Dispatchers.IO) {
+            @Suppress("DEPRECATION")
             val process = Shizuku.newProcess(arrayOf("sh", "-c", command), null, null)
             val resultCode = process.waitFor()
             val stdout = process.inputStream.bufferedReader().use { it.readText() }
