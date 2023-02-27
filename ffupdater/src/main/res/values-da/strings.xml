@@ -316,4 +316,6 @@
     <string name="privacy_browser__description">Den eneste måde at forhindre, at data bliver misbrugt på, er at forhindre, at de overhovedet bliver indsamlet. Privacy Browser har to primære mål: Minimere de data, der sendes til internettet, og minimere de data, der er gemt på enheden.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater har brug for tilladelse til at informere dig om opdateringer.</string>
     <string name="mulch__description">Dette er en sikkerhedsorienteret og hærdet webbrowser baseret på Chromium-teknologi. Mange anti-funktioner er deaktiveret/fjernet, og en håndfuld sikkerhedsfunktioner er aktiveret/tilføjet takket være patches fra Vanadium-projektet. Kilde-depotet inkluderer også prebuilts og make-filer for at tillade andre operativsystemer at inkludere Mulch som deres system WebView.</string>
+    <string name="crash_report_activity__label">Crash Reporter</string>
+    <string name="add_app_activity__title_end_of_live_browser">End-of-life browser</string>
 </resources>
