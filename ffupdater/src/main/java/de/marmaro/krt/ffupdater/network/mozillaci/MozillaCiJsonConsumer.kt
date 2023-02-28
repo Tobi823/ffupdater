@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
 import androidx.annotation.MainThread
+import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
@@ -37,16 +38,20 @@ class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
     }
 
     data class ChainOfTrustJson(
+        @SerializedName("artifacts")
         val artifacts: Map<String, JsonValue>,
-        val task: TaskValue
+        @SerializedName("task")
+        val task: TaskValue,
     )
 
     data class JsonValue(
-        val sha256: String
+        @SerializedName("sha256")
+        val sha256: String,
     )
 
     data class TaskValue(
-        val created: String
+        @SerializedName("created")
+        val created: String,
     )
 
     data class Result(

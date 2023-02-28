@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.network.fdroid
 
 import android.util.Log
 import androidx.annotation.MainThread
+import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.AddAppActivity.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -70,14 +71,19 @@ class FdroidConsumer(
     }
 
     internal data class AppInfo(
+        @SerializedName("packageName")
         val packageName: String,
+        @SerializedName("suggestedVersionCode")
         val suggestedVersionCode: Long,
+        @SerializedName("packages")
         val packages: List<Package>,
     )
 
     internal data class Package(
+        @SerializedName("versionName")
         val versionName: String,
-        val versionCode: Long
+        @SerializedName("versionCode")
+        val versionCode: Long,
     )
 
     data class Result(
@@ -88,11 +94,13 @@ class FdroidConsumer(
     )
 
     data class GitlabRepositoryFilesMetadata(
-        val last_commit_id: String
+        @SerializedName("last_commit_id")
+        val last_commit_id: String,
     )
 
     data class GitlabRepositoryCommits(
-        val created_at: String
+        @SerializedName("created_at")
+        val created_at: String,
     )
 
     companion object {
