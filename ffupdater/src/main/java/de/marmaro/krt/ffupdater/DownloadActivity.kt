@@ -25,6 +25,7 @@ import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
+import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ApkChecker
@@ -208,7 +209,7 @@ class DownloadActivity : AppCompatActivity() {
         when {
             viewModel.isDownloadForCurrentAppRunning(app) -> {
                 if (!reuseCurrentDownload()) return
-                postProcessDownload()
+                postProcessDownload(appUpdateStatus.latestUpdate)
             }
             app.downloadedFileCache.isApkFileCached(this, appUpdateStatus.latestUpdate) -> {
                 show(R.id.useCachedDownloadedApk)
@@ -217,7 +218,7 @@ class DownloadActivity : AppCompatActivity() {
             }
             else -> {
                 if (!startDownload()) return
-                postProcessDownload()
+                postProcessDownload(appUpdateStatus.latestUpdate)
             }
         }
 
@@ -326,8 +327,6 @@ class DownloadActivity : AppCompatActivity() {
 
             // I suspect that sometimes the server offers the wrong file for download
             ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
-            val apkFile = app.downloadedFileCache.getApkFile(this@DownloadActivity, latestUpdate)
-            ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
             return true
         } catch (e: NetworkException) {
             displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
@@ -368,8 +367,6 @@ class DownloadActivity : AppCompatActivity() {
             // I suspect that sometimes the server offers the wrong file for download
             val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(this, latestUpdate)
             ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
-            val apkFile = app.downloadedFileCache.getApkFile(this@DownloadActivity, latestUpdate)
-            ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
             return true
         } catch (e: NetworkException) {
             displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
@@ -382,13 +379,15 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private suspend fun postProcessDownload() {
+    private suspend fun postProcessDownload(latestUpdate: LatestUpdate) {
         // if the download was an ZIP archive, then extract the APK file
         if (app.impl.isAppPublishedAsZipArchive()) {
             app.downloadedFileCache.extractApkFromZipArchive(this, appUpdateStatus.latestUpdate)
             app.downloadedFileCache.deleteZipFile(this)
         }
         app.downloadedFileCache.deleteAllExceptLatestApkFile(this, appUpdateStatus.latestUpdate)
+        val apkFile = app.downloadedFileCache.getApkFile(this@DownloadActivity, latestUpdate)
+        ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
     }
 
     @MainThread
