@@ -245,18 +245,23 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val availableResult = app.metadataCache.getCachedOrExceptionIfOutdated(context).latestUpdate
         val file = app.downloadedFileCache.getApkFile(context, availableResult)
         require(file.exists()) { "AppCache has no cached APK file" }
-        var success = false
 
         val installer = createBackgroundAppInstaller(context, app)
         try {
             installer.startInstallation(context, file)
-            success = true
 
             notificationBuilder.showInstallSuccessNotification(context, app)
             val metadata = app.metadataCache.getCachedOrNullIfOutdated(context)
             app.impl.appIsInstalledCallback(context, metadata!!)
+
+            if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
+                app.downloadedFileCache.deleteAllApkFileForThisApp(context)
+            }
         } catch (e: UserInteractionIsRequiredException) {
             notificationBuilder.showUpdateAvailableNotification(context, app)
+            if (backgroundSettings.isDeleteUpdateIfInstallFailed) {
+                app.downloadedFileCache.deleteAllApkFileForThisApp(context)
+            }
         } catch (e: InstallationFailedException) {
             val wrappedException = InstallationFailedException(
                 "Failed to install ${app.name} in the background with ${installer.type}.", -532, e
@@ -264,11 +269,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             notificationBuilder.showInstallFailureNotification(
                 context, app, e.errorCode, e.translatedMessage, wrappedException
             )
-        }
-
-        if ((success && backgroundSettings.isDeleteUpdateIfInstallSuccessful) ||
-            (!success && backgroundSettings.isDeleteUpdateIfInstallFailed)
-        ) {
             app.downloadedFileCache.deleteAllApkFileForThisApp(context)
         }
     }
