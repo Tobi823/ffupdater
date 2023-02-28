@@ -281,7 +281,7 @@
     <string name="network__dns_provider__cloudflare">DNS przez HTTPS: Cloudflare</string>
     <string name="network__dns_provider__custom">Własny DNS przez serwer HTTPS</string>
     <string name="installer__method__shizuku">Instalator Shizuku: Aktualizacja aplikacji potwierdzania. Wymaga to aplikacji Shizuku lub modułu Sui Magisk.</string>
-    <string name="installer__method__session">Instalator sesji: Zalecane dla większości urządzeń. W systemie Android 12 lub nowszym aplikacje można aktualizować bez potwierdzania.</string>
+    <string name="installer__method__session">Instalator sesji: Zalecane dla większości urządzeń. W systemie Android 12 lub nowszym aplikacje można aktualizować w tle po zatwierdzeniu przez użytkownika.</string>
     <string name="network__proxy__dialog_message">Jeśli chcesz użyć proxy SOCKS lub HTTP, wprowadź tutaj szczegóły połączenia. Użyj jednego z tych formatów:
 \n
 \nSOCKS/HTTP;ip/domena;port
