@@ -288,7 +288,7 @@
     <string name="network__dns_provider__digital_society_ch">HTTPS üzerinden DNS: Dijital Toplum İsviçre</string>
     <string name="installer__method__native">Yerel kurucu: Oturum kurucusu akıllı telefonunuzda çalışmazsa kullanılır.</string>
     <string name="installer__method__shizuku">Shizuku kurucusu: Uygulamaları onay iletişim kutusu olmadan güncelleyin. Bunun için Shizuku uygulaması veya Sui Magisk modülü gerekir.</string>
-    <string name="installer__method__session">Oturum kurucusu: Çoğu aygıt için tavsiye edilir. Android 12 veya üzerinde, uygulamalar bir onay iletişim kutusu olmadan güncellenebilir.</string>
+    <string name="installer__method__session">Oturum kurucusu: Çoğu aygıt için tavsiye edilir. Android 12 veya üzerinde, uygulamalar bir kullanıcı onayından sonra sessizce güncellenebilir.</string>
     <string name="notification__update_available__generic_channel_name">Uygulama güncelleme bildirimi</string>
     <string name="notification__update_available__generic_channel_descr">Kullanılabilir uygulama güncellemeleri için bildirim kanalı.</string>
     <string name="notification__install_error__generic_channel_descr">Başarısız uygulama güncellemeleri için bildirim kanalı.</string>
