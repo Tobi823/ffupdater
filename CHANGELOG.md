@@ -1,3 +1,8 @@
+# 2023-02-28 Release 77.7.8 (134)
+
+* Thanks for the Weblate contributions from: Juraj Motuz, Retrial, gallegonovato and Michael Bæk
+* Firefox Nightly is now fixed: Use the correct Proguard rule and annotation for Gson classes.
+
 # 2023-02-27 Release 77.7.7 (133)
 
 * Thanks Jerry Jean-Baptiste for fixing Firefox Beta and Firefox Nightly (Tobi823/ffupdater#353)
