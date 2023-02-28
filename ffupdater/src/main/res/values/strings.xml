@@ -251,7 +251,7 @@
     <string name="network__dns_provider__google">DNS over HTTPS: Google</string>
     <string name="network__dns_provider__custom">Custom DNS over HTTPS server</string>
     <string name="network__dns_provider__no">No DNS (just for testing)</string>
-    <string name="installer__method__session">Session installer: Recommended for most devices. On Android 12 or above, apps can be updated without a confirmation dialog.</string>
+    <string name="installer__method__session">Session installer: Recommended for most devices. On Android 12 or above, apps can be updated silently after one user confirmation.</string>
     <string name="installer__method__native">Native installer: Fallback if the session installer does not work on your smartphone.</string>
     <string name="installer__method__root">Root installer: Update apps without a confirmation dialog. This requires a rooted smartphone.</string>
     <string name="installer__method__shizuku">Shizuku installer: Update apps without a confirmation dialog. This requires the Shizuku app or the Sui Magisk module.</string>
