@@ -1,3 +1,7 @@
+# 2023-02-28 Release 77.7.9 (135)
+
+* Fix Chromium crash
+
 # 2023-02-28 Release 77.7.8 (134)
 
 * Thanks for the Weblate contributions from: Juraj Motuz, Retrial, gallegonovato and Michael Bæk
