@@ -261,7 +261,7 @@
     <string name="network__dns_provider__digital_society_ch">DNS über HTTPS: Digitale Gesellschaft Schweiz</string>
     <string name="installer__method__shizuku_not_installed">Shizuku ist nicht installiert!</string>
     <string name="installer__method__root_not_granted">Root-Berechtigung nicht erteilt!</string>
-    <string name="installer__method__session">Session-Installer: Für die meisten Geräte empfohlen. Unter Android 12 oder höher können Apps ohne Bestätigungsdialog aktualisiert werden.</string>
+    <string name="installer__method__session">Session-Installer: Für die meisten Geräte empfohlen. Unter Android 12 oder höher können Apps nach einer Benutzerbestätigung im Hintergrund aktualisiert werden.</string>
     <string name="installer__method__root">Root-Installer: Apps ohne Bestätigungsdialog aktualisieren. Voraussetzung dafür ist ein gerootetes Smartphone.</string>
     <string name="network__custom_doh_server__dialog_message">Gib die Verbindungsdetails für den benutzerdefinierten DoH-Server in einem der folgenden Formate ein:
 \n
