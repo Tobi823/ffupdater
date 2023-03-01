@@ -284,7 +284,7 @@
     <string name="network__dns_provider__google">DNS over HTTPS: Google</string>
     <string name="network__dns_provider__custom">自定义 DNS over HTTPS 服务器</string>
     <string name="network__dns_provider__no">无 DNS（仅用于测试）</string>
-    <string name="installer__method__session">会话安装器。推荐用于大多数设备。在安卓 12 及以上系统中，应用程序可以在没有确认对话框的情况下更新。</string>
+    <string name="installer__method__session">会话安装器。推荐用于大多数设备。在安卓 12 及以上系统中，应用程序可以在一次用户确认后静默更新。</string>
     <string name="installer__method__root">Root 安装器：在没有确认对话框的情况下更新应用程序。需要已获取 Root 的智能手机。</string>
     <string name="notification__update_available__generic_channel_name">APP 升级通知</string>
     <string name="notification__update_available__generic_channel_descr">APP 更新可用的通知通道。</string>
