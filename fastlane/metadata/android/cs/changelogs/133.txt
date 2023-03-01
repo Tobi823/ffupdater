@@ -1,0 +1,2 @@
+* Děkujeme Jerrymu Jean-Baptistovi za opravu Firefoxu Beta a Firefoxu Nightly (Tobi823/ffupdater#353)
+* Děkujeme za překlady na Weblate od: Michael Bæk, mondstern, 109247019824, Retrial, gallegonovato a MkQtS

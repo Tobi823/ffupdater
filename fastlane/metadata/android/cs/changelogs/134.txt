@@ -1,0 +1,2 @@
+* Děkujeme za překlady na Weblate od: Juraj Motuz, Retrial, gallegonovato a Michael Bæk
+* Firefox Nightly je nyní opraven: Použití správného pravidla Proguard a anotace pro třídy Gson.

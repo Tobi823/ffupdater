@@ -1,0 +1,2 @@
+* Děkujeme za překlady na Weblate od: nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial a gnu-ewm
+* Oprava root instalátoru
