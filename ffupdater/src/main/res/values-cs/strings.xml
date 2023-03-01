@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="action_about_title">O aplikaci FFUpdater</string>
+    <string name="action_about_title">O FFUpdateru</string>
     <string name="app_description">Aktualizátor pro prohlížeče šetrný k soukromí</string>
     <string name="app_icon">ikona aplikace</string>
     <string name="app_name">FFUpdater</string>
@@ -274,7 +274,7 @@
 \nNapříklad: SOCKS;1.2.3.4;22 nebo HTTP;5.6.7.8;80;uzivatel1;pw123 nebo HTTP;p.webshare.io;80;u;p. Pokud chcete použít systémovou konfiguraci proxy serveru, ponechte pole prázdné.
 \n
 \nOmezení: Pokud v nastavení změníte \"DNS nastavení\" na server DNS přes HTTPS, musíte zadat doménu proxy serveru. IP adresy nebudou fungovat.</string>
-    <string name="installer__method__session">Session instalátor: Doporučeno pro většinu zařízení. Na Androidu 12 nebo novějším lze aplikace aktualizovat bez potvrzovacího dialogu.</string>
+    <string name="installer__method__session">Session instalátor: Doporučeno pro většinu zařízení. Na Androidu 12 nebo novějším lze aplikace aktualizovat po jednom potvrzovacím dialogu.</string>
     <string name="network__dns_provider__custom">Vlastní server DNS přes HTTPS</string>
     <string name="installer__method__shizuku">Shizuku instalátor: Aktualizuje aplikace bez potvrzovacího dialogu. Vyžaduje aplikaci Shizuku nebo modul Sui pro Magisk.</string>
     <string name="notification__network_error__text">Tato chyba by se měla vyskytovat vzácně. Pokud se ale tato chyba objevuje častěji, měli byste to nahlásit. Kliknutím sem zobrazíte podrobnou chybovou zprávu.</string>
