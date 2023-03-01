@@ -1,0 +1,2 @@
+* 感谢 Jerry Jean-Baptiste 修复了 Firefox Beta 和 Firefox Nightly (Tobi823/ffupdater#353)
+* 感谢来自 Weblate 的贡献者：Michael Bæk, mondstern, 109247019824, Retrial, gallegonovato 和 MkQtS

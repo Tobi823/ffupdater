@@ -1,0 +1,2 @@
+* 感谢来自 Weblate 的贡献者：Juraj Motuz, Retrial, gallegonovato 和 Michael Bæk
+* Firefox Nightly 现在被修复了：对 Gson 类使用正确的 Proguard 规则和注释。
