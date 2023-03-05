@@ -1,3 +1,12 @@
+# 2023-03-05 Release 77.7.10 (136)
+
+* Thanks for the Weblate contributions from: gallegonovato, Juraj Motuz, Retrial, MkQtS, 109247019824,
+  Giovanni Donisi, gnu-ewm, nautilusx, Oğuz Ersen and meep
+* Dont download updates in the background when the data saver is enabled
+* Kiwi is now EOL
+* Improve error messages
+* Bug fixes
+
 # 2023-02-28 Release 77.7.9 (135)
 
 * Fix Chromium crash
