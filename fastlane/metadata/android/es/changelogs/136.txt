@@ -1,0 +1,6 @@
+* Gracias por las contribuciones de Weblate de: gallegonovato, Juraj Motuz, Retrial, MkQtS, 109247019824,
+  Giovanni Donisi, gnu-ewm, nautilusx, Oğuz Ersen und meep
+* Las actualizaciones ya no se descargan en segundo plano cuando el ahorro de datos está habilitado
+* Kiwi ahora es EOL
+* Mensajes de error mejorados
+* Corrección de errores
