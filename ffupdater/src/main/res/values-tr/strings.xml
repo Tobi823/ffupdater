@@ -318,4 +318,5 @@
     <string name="duckduckgo_android__description">DuckDuckGo uygulaması, tek bir düğmeye basarak en kapsamlı çevrim içi gizlilik korumasını sağlar. Tek bir indirme ile, arama yaparken ve gezinirken sorunsuz koruma sunan yeni bir günlük tarayıcıya sahip olursunuz ve aldığınız e-postalar ve kullandığınız uygulamalar için izleme korumalarına erişirsiniz. Bu korumaların çoğu, birçok yaygın tarayıcıda öntanımlı olarak sunulmaz.</string>
     <string name="privacy_browser__description">Verilerin kötüye kullanılmasını önlemenin tek yolu, en başta toplanmasını önlemektir. Privacy Browser\'ın iki temel hedefi vardır: İnternete gönderilen ve aygıtta depolanan verileri en aza indirmek.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater\'ın sizi güncellemeler hakkında bilgilendirmek için izne ihtiyacı var.</string>
+    <string name="generic__eol_reason__too_old">Uygulama uzun süredir güncellenmedi.</string>
 </resources>
