@@ -13,19 +13,21 @@ class ApkChecker {
 
     companion object {
         suspend fun throwIfApkFileIsNoValidZipFile(file: File) {
-            require(file.extension == "apk")
-            require(file.exists())
+            if (file.extension != "apk") throw FFUpdaterException("Wrong file downloaded: $file")
+            if (!file.exists()) throw FFUpdaterException("Missing file: $file")
+
             try {
                 withContext(Dispatchers.IO) {
                     ZipFile(file)
                 }
             } catch (e: ZipException) {
-                throw FFUpdaterException("Downloaded or extracted APK file is not a valid ZIP file.")
+                throw FFUpdaterException("Downloaded or extracted APK file is not a valid ZIP file.", e)
             }
         }
 
         fun throwIfDownloadedFileHasDifferentSize(file: File, latestUpdate: LatestUpdate) {
-            require(file.exists())
+            if (!file.exists()) throw NetworkException("File was not downloaded: $file")
+
             val expectedBytes = latestUpdate.exactFileSizeBytesOfDownload
             if (expectedBytes != null && expectedBytes != file.length()) {
                 val message = "Wrong file was downloaded. It should be $expectedBytes bytes long but " +
