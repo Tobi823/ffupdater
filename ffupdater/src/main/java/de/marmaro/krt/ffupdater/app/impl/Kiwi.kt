@@ -23,6 +23,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
  * https://api.github.com/repos/kiwibrowser/src.next/releases
  * https://www.apkmirror.com/apk/geometry-ou/kiwi-browser-fast-quiet/
  */
+@Deprecated("app is too old")
 class Kiwi(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
@@ -41,7 +42,8 @@ class Kiwi(
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
     override val projectPage = "https://github.com/kiwibrowser/src.next"
-    override val displayCategory = DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+    override val displayCategory = DisplayCategory.EOL
+    override val eolReason = R.string.generic__eol_reason__too_old
 
     @MainThread
     @Throws(NetworkException::class)
