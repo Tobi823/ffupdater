@@ -1,6 +1,8 @@
 package de.marmaro.krt.ffupdater
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.ConnectivityManager.RESTRICT_BACKGROUND_STATUS_ENABLED
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
@@ -17,7 +19,8 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ApkChecker
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.entity.Installer.*
+import de.marmaro.krt.ffupdater.installer.entity.Installer.NATIVE_INSTALLER
+import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.FileDownloader
@@ -104,33 +107,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         notificationRemover.removeDownloadErrorNotification(context)
         notificationRemover.removeAppStatusNotifications(context)
 
-        if (!backgroundSettings.isUpdateCheckEnabled) {
-            Log.i(LOG_TAG, "Background should be disabled - disable it now.")
-            return Result.failure()
-        }
-
-        if (FileDownloader.areDownloadsCurrentlyRunning()) {
-            Log.i(LOG_TAG, "Retry background job because other downloads are running.")
-            return Result.retry()
-        }
-
-        if (!backgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(context)) {
-            Log.i(LOG_TAG, "No unmetered network available for update check.")
-            return Result.retry()
-        }
+        shouldUpdateCheckBeAborted()?.let { return it }
 
         val outdatedApps = checkForOutdatedApps()
 
-        if (!backgroundSettings.isDownloadEnabled) {
-            Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
+        shouldDownloadsBeAborted()?.let {
+            // execute if downloads should be aborted
             notificationBuilder.showUpdateAvailableNotification(context, outdatedApps)
-            return Result.retry()
-        }
-
-        if (!backgroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(context)) {
-            Log.i(LOG_TAG, "No unmetered network available for download.")
-            notificationBuilder.showUpdateAvailableNotification(context, outdatedApps)
-            return Result.retry()
+            return it
         }
 
         val downloadingApps = outdatedApps.filter {
@@ -142,27 +126,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             downloadUpdateAndReturnAvailability(it)
         }
 
-        if (sdkTester.supportsAndroid10() && !context.packageManager.canRequestPackageInstalls()) {
-            Log.i(LOG_TAG, "Missing installation permission")
+        shouldInstallationBeAborted()?.let {
+            // execute if installation should be aborted
             notificationBuilder.showUpdateAvailableNotification(context, downloadingApps)
-            return Result.success()
-        }
-
-        if (!backgroundSettings.isInstallationEnabled) {
-            Log.i(LOG_TAG, "Automatic background app installation is not enabled.")
-            notificationBuilder.showUpdateAvailableNotification(context, downloadingApps)
-            return Result.success()
-        }
-
-        val installerAvailable = when (installerSettings.getInstallerMethod()) {
-            SESSION_INSTALLER -> sdkTester.supportsAndroid12()
-            NATIVE_INSTALLER -> false
-            ROOT_INSTALLER, SHIZUKU_INSTALLER -> true
-        }
-        if (!installerAvailable) {
-            Log.i(LOG_TAG, "The current installer can not update apps in the background")
-            notificationBuilder.showUpdateAvailableNotification(context, downloadingApps)
-            return Result.success()
+            return it
         }
 
         // update FFUpdater at last because an update will kill this update process
@@ -179,6 +146,25 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return Result.success()
     }
 
+    private fun shouldUpdateCheckBeAborted(): Result? {
+        if (!backgroundSettings.isUpdateCheckEnabled) {
+            Log.i(LOG_TAG, "Background should be disabled - disable it now.")
+            return Result.failure()
+        }
+
+        if (FileDownloader.areDownloadsCurrentlyRunning()) {
+            Log.i(LOG_TAG, "Retry background job because other downloads are running.")
+            return Result.retry()
+        }
+
+        if (!backgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(context)) {
+            Log.i(LOG_TAG, "No unmetered network available for update check.")
+            return Result.retry()
+        }
+
+        return null
+    }
+
     private suspend fun checkForOutdatedApps(): List<App> {
         dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
         val apps = App.values()
@@ -193,6 +179,28 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         return apps
+    }
+
+    private fun shouldDownloadsBeAborted(): Result? {
+        if (!backgroundSettings.isDownloadEnabled) {
+            Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
+            return Result.retry()
+        }
+
+        if (!backgroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(context)) {
+            Log.i(LOG_TAG, "No unmetered network available for download.")
+            return Result.retry()
+        }
+
+        if (sdkTester.supportsAndroidNougat()) {
+            val manager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (manager.restrictBackgroundStatus == RESTRICT_BACKGROUND_STATUS_ENABLED) {
+                Log.i(LOG_TAG, "Data Saver is enabled. Do not download updates in the background.")
+                return Result.retry()
+            }
+        }
+
+        return null
     }
 
     @MainThread
@@ -239,6 +247,31 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             app.downloadedFileCache.deleteAllApkFileForThisApp(context)
             false
         }
+    }
+
+    private fun shouldInstallationBeAborted(): Result? {
+        if (sdkTester.supportsAndroid10() && !context.packageManager.canRequestPackageInstalls()) {
+            Log.i(LOG_TAG, "Missing installation permission")
+
+            return Result.success()
+        }
+
+        if (!backgroundSettings.isInstallationEnabled) {
+            Log.i(LOG_TAG, "Automatic background app installation is not enabled.")
+            return Result.success()
+        }
+
+        if (!sdkTester.supportsAndroid12() && installerSettings.getInstallerMethod() == SESSION_INSTALLER) {
+            Log.i(LOG_TAG, "The current installer can not update apps in the background")
+            return Result.success()
+        }
+
+        if (installerSettings.getInstallerMethod() == NATIVE_INSTALLER) {
+            Log.i(LOG_TAG, "The current installer can not update apps in the background")
+            return Result.success()
+        }
+
+        return null
     }
 
     private suspend fun installApplication(app: App) {
