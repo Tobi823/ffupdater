@@ -13,7 +13,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.format.DateUtils
-import android.util.Log
 import android.view.*
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -34,7 +33,6 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
 import de.marmaro.krt.ffupdater.crash.CrashListener
-import de.marmaro.krt.ffupdater.device.BuildMetadata
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
@@ -85,13 +83,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
-
-        if (BuildMetadata.isDebugBuild()) {
-            App.values()
-                .forEach { require(it == it.impl.app) { "Failed for $it" } }
-            Log.i(LOG_TAG, "supported ABIs: ${DeviceAbiExtractor.INSTANCE.supportedAbis}")
-            Log.i(LOG_TAG, "supported 32-bit ABIs: ${DeviceAbiExtractor.INSTANCE.supported32BitAbis}")
-        }
 
         initRecyclerView()
     }
@@ -275,7 +266,6 @@ class MainActivity : AppCompatActivity() {
         fun notifyInstalledApps(appsWithCorrectFingerprint: List<App>, appsWithWrongFingerprint: List<App>) {
             val allElements = appsWithCorrectFingerprint + appsWithWrongFingerprint
             if (elements != allElements || this.appsWithWrongFingerprint != appsWithWrongFingerprint) {
-                Log.e(LOG_TAG, "notifyDataSetChanged")
                 elements = allElements
                 this.appsWithWrongFingerprint = appsWithWrongFingerprint
                 notifyDataSetChanged()
