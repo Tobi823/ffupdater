@@ -208,8 +208,8 @@ class DownloadActivity : AppCompatActivity() {
 
         when {
             viewModel.isDownloadForCurrentAppRunning(app) -> {
-                if (!reuseCurrentDownload()) return
-                postProcessDownload(appUpdateStatus.latestUpdate)
+                val fileDownloaded = reuseCurrentDownload()
+                if (fileDownloaded) postProcessDownload(appUpdateStatus.latestUpdate)
             }
             app.downloadedFileCache.isApkFileCached(this, appUpdateStatus.latestUpdate) -> {
                 show(R.id.useCachedDownloadedApk)
@@ -362,7 +362,8 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         try {
-            viewModel.downloadDeferred!!.await()
+            // NPE was thrown in #359 - it should be safe to ignore null values
+            viewModel.downloadDeferred?.await()
 
             // I suspect that sometimes the server offers the wrong file for download
             val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(this, latestUpdate)
