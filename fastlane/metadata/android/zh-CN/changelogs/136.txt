@@ -1,0 +1,6 @@
+* 感谢来自 来自Weblate 的贡献者：gallegonovato, Juraj Motuz, Retrial, MkQtS, 109247019824,
+  Giovanni Donisi, gnu-ewm, nautilusx, Oğuz Ersen 和 meep
+* 在启用流量节省时不在后台下载更新
+* Kiwi 现已结束支持
+* 改进错误消息
+* 修复错误
