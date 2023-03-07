@@ -10,7 +10,7 @@ The apps are downloaded from these locations:
 - Fennec F-Droid: <https://f-droid.org/repo/org.mozilla.fennec_fdroid_XXXXXXX.apk>
 - Firefox Browser: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest>
 - Firefox Focus, Firefox Focus Beta, Firefox
-  Klar: <https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest>
+  Klar: <https://api.github.com/repos/mozilla-mobile/firefox-android/releases/latest>
 - Firefox Lockwise: <https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases/latest>
 - Firefox Nightly: <https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.nightly.latest>
 - Firefox for Android
