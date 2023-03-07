@@ -33,12 +33,11 @@ class ShizukuInstaller(
         val downloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
         require(file.parentFile == downloadFolder)
 
-        val appName = app.impl.packageName
-            .replace('.', '_')
-            .replace("""\W""", "_")
-        require(file.name.startsWith(appName))
-        require(file.name.endsWith(".apk"))
-        require(!file.name.removeSuffix(".apk").contains(Regex("""\W""")))
+        val invalidChars = """\W""".toRegex()
+        val appName = app.impl.packageName.replace(invalidChars, "_")
+        require(file.name.startsWith(appName)) { "Invalid file prefix: ${file.name}" }
+        require(file.extension == "apk") { "Invalid file suffix: ${file.name}" }
+        require(!file.nameWithoutExtension.contains(invalidChars)) { "Invalid chars in file name: ${file.name}" }
 
         failIfShizukuPermissionIsMissing()
         val size = file.length().toInt()

@@ -32,14 +32,11 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         val downloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
         require(file.parentFile == downloadFolder) { "Wrong folder: ${file.parentFile}" }
 
-        val appName = app.impl.packageName
-            .replace('.', '_')
-            .replace("""\W""", "_")
+        val invalidChars = """\W""".toRegex()
+        val appName = app.impl.packageName.replace(invalidChars, "_")
         require(file.name.startsWith(appName)) { "Invalid file prefix: ${file.name}" }
-        require(file.name.endsWith(".apk")) { "Invalid file suffix: ${file.name}" }
-        require(
-            !file.name.removeSuffix(".apk").contains(Regex("""\W"""))
-        ) { "Invalid characters in file name: ${file.name}" }
+        require(file.extension == "apk") { "Invalid file suffix: ${file.name}" }
+        require(!file.nameWithoutExtension.contains(invalidChars)) { "Invalid chars in file name: ${file.name}" }
     }
 
     private fun restartInternalShellToGetAlwaysRootPermission() {

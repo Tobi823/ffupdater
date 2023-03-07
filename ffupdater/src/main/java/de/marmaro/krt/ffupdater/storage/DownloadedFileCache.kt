@@ -97,14 +97,10 @@ class DownloadedFileCache(private val app: App) {
     }
 
     private fun getSanitizedPackageName(): String {
-        return app.impl.packageName
-            .replace('.', '_')
-            .replace("""\W""", "_")
+        return app.impl.packageName.replace("""\W""".toRegex(), "_")
     }
 
     private fun getSanitizedVersion(latestUpdate: LatestUpdate): String {
-        return latestUpdate.version
-            .replace('.', '_')
-            .replace("""\W""", "_")
+        return latestUpdate.version.replace("""\W""".toRegex(), "_")
     }
 }
