@@ -1,0 +1,6 @@
+* Dank für die Weblate-Beiträge von: gallegonovato, Juraj Motuz, Retrial, MkQtS, 109247019824,
+  Giovanni Donisi, gnu-ewm, nautilusx, Oğuz Ersen und meep
+* Updates werden nicht mehr im Hintergrund heruntergeladen, wenn der Datensparmodus aktiviert ist
+* Kiwi ist jetzt EOL
+* Verbesserte Fehlermeldungen
+* Fehlerbehebungen

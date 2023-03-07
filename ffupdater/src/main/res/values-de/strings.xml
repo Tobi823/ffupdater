@@ -313,4 +313,5 @@
     <string name="privacy_browser__description">Die einzige Möglichkeit, den Missbrauch von Daten zu verhindern, besteht darin, sie gar nicht erst zu sammeln. Privacy Browser hat zwei Hauptziele: Minimierung der Daten, die an das Internet gesendet werden und Minimierung der Daten, die auf dem Gerät gespeichert werden.</string>
     <string name="duckduckgo_android__description">Die DuckDuckGo-App bietet den umfassendsten Online-Datenschutz mit nur einem Tastendruck. Mit einem Download erhältst du einen neuen, alltäglichen Browser, der nahtlosen Schutz bietet, während du suchst und browst, und Zugriff auf Tracking-Schutz für E-Mails, die du erhältst, und Apps, die du nutzt. Viele dieser Schutzmaßnahmen werden in den meisten gängigen Browsern standardmäßig nicht angeboten.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater benötigt die Berechtigung, dich über Updates zu informieren.</string>
+    <string name="generic__eol_reason__too_old">App wurde seit langem nicht mehr aktualisiert.</string>
 </resources>

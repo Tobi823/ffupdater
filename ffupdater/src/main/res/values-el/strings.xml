@@ -294,7 +294,7 @@
     <string name="device__prefer_32bit_apks__summary">Ενεργοποιήστε εάν η μνήμη της συσκευής σας είναι συνήθως χαμηλή. Στη συνέχεια, το FFUpdater θα χρησιμοποιήσει APK 32-bit που συνήθως απαιτούν λιγότερη μνήμη.</string>
     <string name="installer__method__shizuku_not_installed">Το Shizuku δεν έχει εγκατασταθεί!</string>
     <string name="network__dns_provider__custom">Προσαρμοσμένο DNS μέσω διακομιστή HTTPS</string>
-    <string name="installer__method__session">Πρόγραμμα εγκατάστασης περιόδου λειτουργίας: Συνιστάται για τις περισσότερες συσκευές. Σε Android 12 ή νεότερη έκδοση, οι εφαρμογές μπορούν να ενημερωθούν χωρίς παράθυρο διαλόγου επιβεβαίωσης.</string>
+    <string name="installer__method__session">Πρόγραμμα εγκατάστασης περιόδου λειτουργίας: Συνιστάται για τις περισσότερες συσκευές. Σε Android 12 ή νεότερη έκδοση, οι εφαρμογές μπορούν να ενημερωθούν αθόρυβα μετά από επιβεβαίωση ενός χρήστη.</string>
     <string name="installer__method__root">Πρόγραμμα εγκατάστασης Root: Ενημέρωση εφαρμογών χωρίς παράθυρο διαλόγου επιβεβαίωσης. Αυτό απαιτεί ένα smartphone με root.</string>
     <string name="installer__method__shizuku">Πρόγραμμα εγκατάστασης Shizuku: Ενημέρωση εφαρμογών χωρίς παράθυρο διαλόγου επιβεβαίωσης. Αυτό απαιτεί την εφαρμογή Shizuku ή το Sui Magisk Module.</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
@@ -318,4 +318,5 @@
     <string name="privacy_browser__warning">Το FFUpdater κατεβάζει τα αρχεία από τους διακομιστές F-Droid και επομένως δεν είναι πιο γρήγορο.</string>
     <string name="privacy_browser__description">Ο μόνος τρόπος για να αποφευχθεί η κατάχρηση δεδομένων είναι να αποτραπεί εξαρχής η συλλογή τους. Το Privacy Browser έχει δύο πρωταρχικούς στόχους: Ελαχιστοποίηση των δεδομένων που αποστέλλονται στο διαδίκτυο και ελαχιστοποίηση των δεδομένων που είναι αποθηκευμένα στη συσκευή.</string>
     <string name="main_activity__denied_notification_permission">Το FFUpdater χρειάζεται την άδεια για να σας ενημερώσει για ενημερώσεις.</string>
+    <string name="generic__eol_reason__too_old">Η εφαρμογή δεν έχει ενημερωθεί εδώ και πολύ καιρό.</string>
 </resources>
