@@ -1,3 +1,8 @@
+# 2023-03-07 Release 77.7.11 (137)
+
+* Thanks for the Weblate contributions from: Dan, nautilusx, Retrial, gallegonovato, MkQtS and Oğuz Ersen
+* Fix root installer bug with Firefox Nightly
+
 # 2023-03-05 Release 77.7.10 (136)
 
 * Thanks for the Weblate contributions from: gallegonovato, Juraj Motuz, Retrial, MkQtS, 109247019824,
