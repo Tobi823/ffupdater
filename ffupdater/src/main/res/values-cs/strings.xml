@@ -306,4 +306,5 @@
     <string name="privacy_browser__warning">FFUpdater stahuje soubory ze F-Droid serverů, a proto není rychlejší.</string>
     <string name="privacy_browser__description">Jediný způsob, jak zabránit únikům dat, je v první řadě zabránit jejich shromažďování. Privacy Browser má dva hlavní cíle: Minimalizovat množství dat odesílaných na internet a minimalizovat množství dat uložených v zařízení.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater vyžaduje oprávnění, aby vás mohl informovat o aktualizacích.</string>
+    <string name="generic__eol_reason__too_old">Aplikace již dlouho nebyla aktualizována.</string>
 </resources>
