@@ -1,0 +1,2 @@
+* Obrigado pela contribuição Weblate de: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Corrigir o crash quando a versão do Tor Browser instalado é diferente do esperado

@@ -1,0 +1,11 @@
+* Obrigado pela contribuição da Weblate: Retrial, Jacek, gallegonovato, MkQtS, Coool (github.com/Coool),
+  Oğuz Ersen, Marlon, mondstern
+* Acelerar a interface de utilizador utilizando RecycleViews
+* Adicionar suporte para Tor Browser Alpha, DuckDuckGo Browser e Privacy Browser (de F-Droid)
+* Adicionar novo tipo de notificação para erros de rede
+* Usar novo repositório Github para Firefox Focus/Klar
+* Acrescentar meta-informação para códigos de erro Huawei
+* Atualizar para Android 13 e actualizar as dependências
+* Melhorar as pesquisas regex no código
+* Melhorar o código assimétrico com os Canais
+* Refactor e limpeza

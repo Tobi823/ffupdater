@@ -1,0 +1,1 @@
+* Corrigir quebra do Chromium

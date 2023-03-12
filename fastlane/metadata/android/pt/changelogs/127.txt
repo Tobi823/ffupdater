@@ -1,0 +1,7 @@
+* Obrigado pelas contribuições Weblate de: 109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow,
+  Oğuz Ersen e Giovanni Donisi
+* Tente fixar "Os Proprietários do Ciclo de Vida têm de chamar o registo antes de serem INICIADOS" em DownloadActivity.kt
+  (Tobi823/ffupdater#327, Tobi823/ffupdater#328, Tobi823/ffupdater#319)
+* Tente corrigir o bug "PackageManagerUtil.getPackageArchiveInfo não pode analisar o ficheiro APK" usando o ficheiro flush(), buffered()
+  e fsync() (Tobiwan/ffupdater#116)
+* Corrigido o bug "Failed requirement" no ShizukuInstaller.kt (Tobi823/ffupdater#330)

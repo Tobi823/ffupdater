@@ -1,0 +1,4 @@
+* Obrigado pela contribuição Weblate de: Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato, Juraj
+  Motuz, MkQtS, Oğuz Ersen
+* Corrigir bug: se o utilizador quiser adicionar uma nova aplicação, o ícone de aviso só deve ser exibido para aplicações com um
+  aviso de instalação (Tobi823/ffupdater#306)

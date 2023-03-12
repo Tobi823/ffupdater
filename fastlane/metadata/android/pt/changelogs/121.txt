@@ -1,0 +1,6 @@
+* Obrigado pela contribuição Weblate de: Juraj Motuz, gallegonovato, nautilusx, Oğuz Ersen, Ettore Atalan,
+  109247019824, Novo julgamento e Utilizador eliminado
+* Acrescentar apoio para o instalador Shizuku
+* Acrescentar suporte para crómio de 64 bits
+* Adicionar opção para escolher entre um ou muitos (para cada aplicação) canais de notificação para atualização ou instalação de notificação de sucesso ou falha de instalação
+* Refactor e limpeza
