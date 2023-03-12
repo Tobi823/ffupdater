@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">FFUpdater</string>
+    <string name="app_warning_dialog__title">Advertência</string>
+    <string name="available_version">Disponível: %1$s</string>
+    <string name="available_version_error"><u>ERRO</u></string>
+    <string name="notification__error__title">Verificação de atualização de antecedentes falhou</string>
+    <string name="brave__title">Brave Navegador Privado</string>
+    <string name="brave__warning">- A Brave utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
+\n- Devido ao seu Token de Atenção Básica BAT na cadeia de bloqueio Ethereum, o projeto tem ligações com a moeda criptográfica. As correntes de bloqueio têm muitos problemas e devem ser evitadas, a meu ver.</string>
+    <string name="brave_beta__title">Navegador Brave (Beta)</string>
+    <string name="brave_nightly__title">Navegador Brave (Nocturno)</string>
+    <string name="bromite__description">Bromite tem como objetivo proporcionar uma experiência de navegação sem problemas, sem características invasivas da privacidade e com a adição de um motor de desbloqueio rápido. São aplicadas alterações mínimas de IU para ajudar a refrear a ideia de navegador como plataforma publicitária.</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="brave_nightly__description">Bem-vindo ao Brave Nightly (Developer) para Android!
+\nExperimente as mais recentes características e dê o seu feedback antecipado: https://brave.com/msupport
+\nPode instalar o Brave Nightly juntamente com a sua versão atual do Brave for Android.</string>
+    <string name="app_description">Atualizador para navegadores amigos da privacidade</string>
+    <string name="action_about_title">Sobre FFUpdater</string>
+    <string name="application_installation_was_not_successful">A instalação da aplicação não foi bem sucedida</string>
+    <string name="notification__error__text">Queira comunicar este erro. Clique para ver o relatório de erro.</string>
+    <string name="app_card__app_warning_button_description">Mostrar avisos sobre esta aplicação</string>
+    <string name="app_icon">ícone da aplicação</string>
+    <string name="application_successfully_installed">Aplicação instalada com sucesso</string>
+    <string name="brave_beta__description">Bem-vindo à Brave Beta para Android!
+\nExperimente as mais recentes características e dê o seu feedback antecipado: https://brave.com/msupport
+\nPode instalar o Brave Beta juntamente com a sua versão atual do Brave for Android.</string>
+    <string name="brave__description">Navegue em privado na Internet, de graça! O Brave Private Browser App é o seu browser privado rápido, gratuito e seguro com bloqueador de anúncios e bloqueador de pop-ups. Navegue e pesquise privadamente na Internet sem ser rastreado por anunciantes, malware e pop-ups.</string>
+</resources>
