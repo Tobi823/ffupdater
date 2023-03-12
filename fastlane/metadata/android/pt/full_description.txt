@@ -1,0 +1,30 @@
+Instala e actualiza os seguintes browsers:
+
+Navegadores da Mozilla ou baseados no Firefox:
+- Fennec F-Droid
+- Firefox Browser, Firefox para Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Mull Browser
+- Navegador Tor, Navegador Tor Alfa
+
+Bons navegadores de privacidade:
+- Bromite, Bromite SystemWebView
+- Mulch
+
+Navegador que é melhor que o Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Crómio
+- Navegador DuckDuckGo
+- Kiwi Browser Próximo
+- Navegador de Privacidade (F-Droid)
+- Vivaldi
+
+Outras aplicações:
+- Orbot
+
+O FFUpdater verifica se há actualizações no fundo e descarrega-as também. No Android 12+ ou dispositivos raiz, o FFUpdater também pode actualizar as aplicações sem interacção do utilizador.
+
+Visite https://notabug.org/Tobiwan/ffupdater/src/master/README.md para mais informações.
+
+Changelogs: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/en-US/changelogs
