@@ -1,0 +1,2 @@
+* 感谢来自 Weblate 的贡献者：Dan, nautilusx, Retrial, gallegonovato, MkQtS 和 Oğuz Ersen
+* 修复与 Firefox Nightly 相关的 root 安装程序错误
