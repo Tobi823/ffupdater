@@ -71,4 +71,6 @@
     <string name="notification__download_error__title">Falha no download da atualização em segundo plano</string>
     <string name="notification__download_running__channel_name">Notificação sobre downloads em segundo plano</string>
     <string name="notification__download_running__title">Download de atualizações do aplicativo</string>
+    <string name="notification__error__channel_name">Erros de segundo plano</string>
+    <string name="notification__error__channel_descr">Mostrar erros do verificador de atualizações de segundo plano</string>
 </resources>
