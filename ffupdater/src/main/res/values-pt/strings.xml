@@ -73,4 +73,178 @@
     <string name="notification__download_running__title">Download de atualizações do aplicativo</string>
     <string name="notification__error__channel_name">Erros de segundo plano</string>
     <string name="notification__error__channel_descr">Mostrar erros do verificador de atualizações de segundo plano</string>
+    <string name="firefox_beta__description">O Firefox Browser para Android é automaticamente privado e incrivelmente rápido. Milhares de rastreadores online seguem-no todos os dias, recolhendo informação sobre onde vai online e diminuindo a sua velocidade. O Firefox bloqueia por defeito mais de 2000 destes localizadores e existem suplementos de bloqueadores de anúncios disponíveis se quiser personalizar ainda mais o seu navegador. Com o Firefox, terá a segurança que merece e a velocidade que necessita num navegador privado e móvel.</string>
+    <string name="firefox_beta__title">Firefox para Android Beta</string>
+    <string name="firefox_beta__warning">- Esta aplicação foi concebida para programadores e testadores. Pode conter vários bugs que podem afetar o seu trabalho habitual com o browser.</string>
+    <string name="firefox_focus__description">Esta é uma modificação do navegador Firefox destinada a aumentar a privacidade.</string>
+    <string name="firefox_focus__title">Firefox Focus</string>
+    <string name="firefox_klar__description">Firefox Klar é desenvolvido para a Alemanha, Áustria e Suíça, mas pode ser utilizado por utilizadores em qualquer país. É muito semelhante ao Firefox Focus, mas o nome foi alterado nos países de língua alemã para evitar confusão com a revista Focus do grupo Hubert Burda Media. Ao contrário do Firefox Focus, o Firefox Klar tem a telemetria desativada por defeito devido às rígidas leis de privacidade alemãs.</string>
+    <string name="firefox_klar__title">Firefox Klar</string>
+    <string name="firefox_nightly__description">Por favor, note que este aplicativo costumava ser intitulado Firefox Preview. Agora foi transferido para o Firefox Nightly.
+\n
+\nO Firefox Nightly é um canal de desenvolvimento para novas versões do Mozilla Firefox.
+\n
+\nO Firefox Nightly foi concebido para mostrar as versões mais experimentais do Firefox. O canal Nightly permite que os usuários experimentem as mais recentes inovações do Firefox em um ambiente instável e forneçam feedback sobre recursos e desempenho para ajudar a determinar o que faz a versão final.</string>
+    <string name="firefox_nightly__title">Firefox Nightly</string>
+    <string name="firefox_release__description">O Firefox Browser para Android é automaticamente privado e incrivelmente rápido. Milhares de rastreadores online seguem-no todos os dias, recolhendo informação sobre onde vai online e diminuindo a sua velocidade. O Firefox bloqueia por defeito mais de 2000 destes localizadores e existem suplementos de bloqueadores de anúncios disponíveis se quiser personalizar ainda mais o seu navegador. Com o Firefox, terá a segurança que merece e a velocidade que necessita num navegador privado e móvel.</string>
+    <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- Uma versão melhorada do Firefox também está disponível no F-Droid com o nome Fennec F-Droid.</string>
+    <string name="iceraven__description">Definitivamente não trazido até si por Mozilla!
+\n
+\nIceraven Browser é um navegador web para Android, baseado na versão Fenix da Mozilla do Firefox, GeckoView e Mozilla Android Components.
+\n
+\nO nosso objetivo é ser um garfo próximo do novo Firefox para Android que procura fornecer aos utilizadores mais opções, mais oportunidades de personalização (incluindo uma ampla biblioteca de extensão), e mais informação sobre as páginas que visitam e como os seus navegadores estão a interagir com essas páginas.</string>
+    <string name="iceraven__warning">- O responsável não dá qualquer garantia ou garantia de segurança ou de atualizações ou mesmo de estabilidade.
+\n- O projeto leva mais tempo do que o habitual para fornecer atualizações de segurança.</string>
+    <string name="infobox">Este é um atualizador para navegadores amigos da privacidade. Clique no botão \"mais\" para instalar novas aplicações. Deslize para baixo para forçar a verificação de novas atualizações. Por defeito, a aplicação verificará periodicamente se há atualizações em segundo plano, que serão depois descarregadas e eventualmente instaladas. Clique no equipamento para personalizar o comportamento nas definições.
+\n
+\nÚltima verificação bem sucedida das atualizações em segundo plano: %1$s</string>
+    <string name="iceraven__title">Iceraven Browser</string>
+    <string name="app_card__information_about_the_app">Informação sobre a aplicação</string>
+    <string name="download_activity__delete_cache_button_text">Limpar cache</string>
+    <string name="download_activity__delete_cache_explanation">Se achar que o FFUpdater armazenou em cache uma atualização de aplicativo com defeito ou se deseja economizar espaço, clique no botão para excluir o arquivo baixado.</string>
+    <string name="download_activity__different_installer_info__text">Se a instalação falhar frequentemente, tente mudar para o \'instalador nativo\' nas definições.</string>
+    <string name="download_activity__download_app_with_status">Transferir a aplicação (%1$s)</string>
+    <string name="download_activity__download_failed">Transferência Falhou</string>
+    <string name="download_activity__downloaded_application_from">Aplicação transferida a partir de:</string>
+    <string name="download_activity__downloaded_application_is_not_verified">A aplicação transferida NÃO é verificada</string>
+    <string name="download_activity__exception__show_button"><u>Mostrar o relatório de erro detalhado.</u></string>
+    <string name="download_activity__external_storage_not_accessible">O armazenamento externo não está disponível - não pode começar a descarregar. O estado atual é:</string>
+    <string name="download_activity__fetch_url_for_download">Obter metadados a partir de %1$s</string>
+    <string name="install_same_version_dialog__title">Mesma versão instalada</string>
+    <string name="notification__install_error__channel_descr">Canal de notificação para atualizações falhadas %1$s.</string>
+    <string name="notification__install_error__channel_name">%1$s notificação de falha de atualização</string>
+    <string name="notification__install_error__text">Erro (%1$d): %2$s</string>
+    <string name="notification__install_error__title">%1$s não pôde ser atualizado</string>
+    <string name="notification__install_success__channel_descr">Canal de Notificação para atualizações bem sucedidas de %1$s.</string>
+    <string name="notification__install_success__channel_name">Notificação de atualização com sucesso de %1$s</string>
+    <string name="notification__install_success__text">A aplicação foi atualizada em segundo plano.</string>
+    <string name="notification__install_success__title">%1$s foi atualizado</string>
+    <string name="installed_app_is_not_verified">O aplicativo instalado NÃO é verificado</string>
+    <string name="installed_application_is_verified">A aplicação instalada é verificada</string>
+    <string name="installed_version">Instalado: %1$s</string>
+    <string name="kiwi__description">O Kiwi Browser é feito para navegar na Internet, ler notícias, ver vídeos e ouvir música, sem aborrecimentos.</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="kiwi__warning">- Kiwi utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
+\n- Kiwi não é um navegador de privacidade ideal, mas tem um bom suporte adicional.
+\n- O navegador está a ser pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.
+\n- Os anúncios Google no Kiwi podem utilizar os dados de localização para anúncios - mas pode desativá-los desativando a funcionalidade de Descoberta. Mas isto irá mudar em breve. Ver https://privacy.kiwibrowser.org/ para mais detalhes.</string>
+    <string name="lockwise__description">ACESSO POR PALAVRA-PASSE PARA SI E APENAS PARA SI
+\n
+\nRastreie com segurança suas senhas do Firefox e acesse-as em qualquer lugar. Abra rapidamente qualquer site do aplicativo para entrar em suas contas.</string>
+    <string name="lockwise__eol_reason">A Mozilla abandonou o apoio em Dezembro de 2021. Por favor mude para outra palavra-passe segura.</string>
+    <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Limite de GitHub-API excedido. Tentativa na próxima hora.</u></string>
+    <string name="main_activity__no_unmetered_network">Sem rede ilimitada</string>
+    <string name="main_activity__subtitle">Atualizador para navegadores amigos da privacidade</string>
+    <string name="main_activity__temporary_network_issue"><u>Entrada de rede temporária. Tenta mais tarde.</u></string>
+    <string name="ok">OK</string>
+    <string name="request_installation_permission_dialog__abort">Abortar</string>
+    <string name="request_installation_permission_dialog__grant_permission">Conceder permissão</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater está a perder a permissão para instalar e atualizar aplicações. Tem de conceder estas permissões ou o FFUpdater não funcionará.</string>
+    <string name="request_installation_permission_dialog__title">Permissão do instalador</string>
+    <string name="running_downloads_dialog__negative">Não, não o transfira</string>
+    <string name="running_downloads_dialog__title">Executando downloads</string>
+    <string name="running_downloads_dialog__yes">Sim</string>
+    <string name="session_installer__not_enough_storage">A operação falhou porque não há armazenamento suficiente: %1$s</string>
+    <string name="session_installer__require_user_interaction">Exigir a interação do utilizador. Deve primeiro atualizar a aplicação através da interface de utilizador FFUpdater. Só então são permitidas atualizações silenciosas de fundo para a respetiva aplicação.</string>
+    <string name="session_installer__status_failure">A operação falhou de uma forma genérica. O sistema tentará sempre fornecer uma razão de falha mais específica, mas em alguns casos raros esta pode ser entregue.</string>
+    <string name="session_installer__status_failure_blocked">A operação falhou porque foi bloqueada. Por exemplo, uma política de dispositivos pode estar a bloquear a operação, um verificador de pacotes pode ter bloqueado a operação, ou a aplicação pode ser necessária para o funcionamento do sistema central.</string>
+    <string name="session_installer__status_failure_conflict">A operação falhou porque entra em conflito (ou é inconsistente com) com outro pacote já instalado no dispositivo. Por exemplo, uma permissão existente, certificados incompatíveis, etc. O utilizador pode ser capaz de desinstalar outro aplicativo para corrigir o problema.</string>
+    <string name="session_installer__status_failure_invalid">A operação falhou porque um ou mais dos APKs era inválido. Por exemplo, podiam ser mal-formados, corruptos, incorretamente assinados, desajustados, etc.</string>
+    <string name="settings_activity__label">Definições</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Eliminar a atualização descarregada se a instalação falhar.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Eliminar a atualização descarregada se a instalação for bem sucedida.</string>
+    <string name="settings__background__download__enabled__summary">Quando uma atualização é detetada, descarregue-a. Isto irá mais tarde acelerar o processo de atualização.</string>
+    <string name="settings__background__download__enabled__title">Transferir atualizações do aplicativo</string>
+    <string name="settings__background__download__metered__title">Transferir atualizações de aplicações em redes de medição</string>
+    <string name="settings__background__installation__enabled__title">Instalar atualização</string>
+    <string name="settings__background__update_check__enabled__summary">Verificar novas atualizações a intervalos regulares.</string>
+    <string name="settings__background__update_check__excluded_apps__summary">Útil se não quiser atualizar uma aplicação e não quiser receber notificações de atualização para a mesma.</string>
+    <string name="settings__background__update_check__interval__title">Intervalo de verificação de atualização</string>
+    <string name="settings__background__update_check__metered__title">Atualização de verificações em redes de medição</string>
+    <string name="settings__foreground__theme_preference__title">Escolha o tema</string>
+    <string name="settings__background_category__summary">Configurações quando a aplicação está a trabalhar em segundo plano e é invisível para o utilizador.</string>
+    <string name="settings__background_category__title">Segundo Plano</string>
+    <string name="settings__foreground__download__metered__title">Transferir actualizações sobre redes com medição</string>
+    <string name="settings__foreground__hide_warning_buttons">Ocultar o botão de aviso para a aplicação instalada.</string>
+    <string name="settings__foreground__theme_preference__summary">Escolha entre tema claro e escuro</string>
+    <string name="settings__foreground__update_check__metered__title">Atualização de verificações em redes de medição</string>
+    <string name="settings__foreground_category__summary">Configurações quando a interface do utilizador é visível.</string>
+    <string name="settings__foreground__update_check__metered__summary">Permitir verificações de atualização em redes de medição, tais como dados móveis.</string>
+    <string name="settings__foreground_category__title">Primeiro plano</string>
+    <string name="settings__installer_category__title">Instalador</string>
+    <string name="settings__theme_battery_saver">Escuro quando a poupança de bateria está activa</string>
+    <string name="settings__theme_dark">Escuro</string>
+    <string name="settings__theme_light">Claro</string>
+    <string name="settings__theme_system_default">Usar o sistema por defeito</string>
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="ungoogled_chromium__warning">- O Ungoogled Chromium utiliza a base técnica do Google Chrome e, por conseguinte, apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
+    <string name="unsupported_abi_dialog__message">O navegador selecionado é incompatível com o processador do seu smartphone. Por favor, selecione um browser diferente.</string>
+    <string name="unsupported_abi_dialog__title">Dispositivo sem suporte</string>
+    <string name="update_interval__12h">12 horas</string>
+    <string name="update_interval__15min">15 minutos</string>
+    <string name="update_interval__18h">18 horas</string>
+    <string name="update_interval__1d">1 dia</string>
+    <string name="update_interval__1h">1 hora</string>
+    <string name="update_interval__1m">1 mês</string>
+    <string name="update_interval__1w">1 semana</string>
+    <string name="update_interval__2d">2 dias</string>
+    <string name="update_interval__2h">2 horas</string>
+    <string name="update_interval__2w">2 semanas</string>
+    <string name="update_interval__3d">3 dias</string>
+    <string name="update_interval__4d">4 dias</string>
+    <string name="update_interval__4h">4 horas</string>
+    <string name="update_interval__6d">6 dias</string>
+    <string name="update_interval__6h">6 horas</string>
+    <string name="update_interval__8h">8 horas</string>
+    <string name="notification__update_available__channel_name">%1$s notificação de atualização</string>
+    <string name="update_notification__text">Clique para instalar atualização</string>
+    <string name="update_notification__title">Atualização para %1$s disponíveis</string>
+    <string name="vivaldi__title">Vivaldi Browser</string>
+    <string name="vivaldi__warning">- Vivaldi é apenas parcialmente código aberto.
+\n- Utiliza também a base técnica do Google Chrome e, assim, apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
+    <string name="mull__title">Mull Browser</string>
+    <string name="app_card__open_project_page">Abrir página do projeto no browser</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">O Tor Browser para Android é o único navegador móvel oficial suportado pelo Projecto Tor, o qual desenvolve a ferramenta mais forte do mundo para a privacidade e liberdade online.</string>
+    <string name="orbot__title">Orbot: Tor para Android</string>
+    <string name="add_app_activity__label">Adicionar Nova Aplicação</string>
+    <string name="crash_report_activity__label">Repórter de acidentes</string>
+    <string name="add_app_activity__title_from_mozilla">De Mozilla</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Bons Navegadores de Privacidade</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Melhor que o Google Chrome</string>
+    <string name="add_app_activity__title_other_applications">Outras aplicações</string>
+    <string name="add_app_activity__title_end_of_live_browser">Navegador em fim de vida</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__warning">- O Chromium utiliza a base técnica do Google Chrome e, por conseguinte, apoia indiretamente a posição de monopólio do motor Chromium render.</string>
+    <string name="settings__background__update_check__when_device_idle__title">Atualização de verificações apenas se o dispositivo estiver inactivo</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Habilite isto se não quiser que as suas candidaturas sejam reiniciadas por uma atualização de fundo. Desativar isto se quiser um calendário mais previsível de verificações de atualizações de antecedentes.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="mulch__warning">- Mulch utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="session_installer__status_failure_aborted">A operação falhou porque foi ativamente abortada. Por exemplo, o utilizador recusou ativamente pedir permissões, ou a sessão foi abandonada.</string>
+    <string name="running_downloads_dialog__message">A aplicação está agora a descarregar atualizações em segundo plano. Quer iniciar um novo descarregamento que pode demorar mais tempo\?</string>
+    <string name="settings__background__installation__enabled__summary">Tentar instalar atualizações sem interação do utilizador.</string>
+    <string name="session_installer__status_failure_incompatible">A operação falhou porque é fundamentalmente incompatível com este dispositivo. Por exemplo, o aplicativo pode requerer uma característica de hardware que não existe, pode faltar código nativo para as ABIs suportadas pelo dispositivo, ou requerer uma versão mais recente do SDK, etc.</string>
+    <string name="session_installer__status_failure_storage">A operação falhou devido a problemas de armazenamento. Por exemplo, o dispositivo pode estar a funcionar com pouco espaço, ou os meios externos podem não estar disponíveis. O utilizador pode ser capaz de ajudar a libertar espaço ou a inserir diferentes suportes externos.</string>
+    <string name="settings__background__download__metered__summary">Não recomendado para utilizadores com dados móveis limitados.</string>
+    <string name="settings__background__update_check__enabled__title">Verificação de atualização</string>
+    <string name="settings__background__update_check__excluded_apps__title">Excluir aplicações da verificação de atualização</string>
+    <string name="ungoogled_chromium__description">Google Chromium, sem integração com Google.
+\n
+\nSem ter uma conta Google, Chromium sai-se muito bem em termos de segurança e privacidade. No entanto, a Chromium ainda tem alguma dependência dos serviços web e binários do Google. Além disso, o Google concebeu o Chromium para ser fácil e intuitivo para os utilizadores, o que significa que estes comprometem a transparência e o controlo das operações internas.</string>
+    <string name="update_interval__5d">5 dias</string>
+    <string name="ungoogled_chromium__eol_reason">O programador publicou: \"Não vou poder atualizar as versões durante algum tempo. Se possível, por favor use um dos browsers [que o FFUpdater suporta] entretanto\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="update_interval__30min">30 minutos</string>
+    <string name="notification__update_available__channel_descr">Canal de notificação para atualizações disponíveis %1$s.</string>
+    <string name="vivaldi__description">Descubra um navegador de Internet extremamente rápido! Vivaldi é um novo navegador de Internet gratuito e privado, construído com flexibilidade em mente. Vem repleto de características úteis, incluindo um AdBlocker (bloqueador de pop-ups) incorporado, proteção de rastreio, e tradução privada. Opções de browser como separadores adequados ao estilo desktop, Temas escuros/claros, e opções de layout ajudam-no a torná-lo seu.</string>
+    <string name="mull__description">Este é um navegador web orientado para a privacidade e deblobbed baseado na tecnologia Mozilla. Permite muitas características a montante do projeto Tor Uplift, utilizando preferências do projeto arkenfox-user.js. Recomenda-se a instalação de \'uBlock Origin\'.</string>
+    <string name="orbot__description">Orbot é uma aplicação proxy gratuita que permite a outras aplicações utilizar a Internet de forma mais segura. Orbot usa o Tor para encriptar o seu tráfego na Internet e depois esconde-o saltando através de uma série de computadores em todo o mundo. Tor é software livre e uma rede aberta que o ajuda a defender-se contra uma forma de vigilância de rede que ameaça a liberdade e privacidade pessoal, atividades e relações comerciais confidenciais, e segurança estatal conhecida como análise de tráfego.</string>
+    <string name="settings__network__trust_user_cas__summary">Habilitar se o tráfego de dados deve ser inspecionado e alterado por outras aplicações. Se não tiver a certeza, mantenha esta opção desativada.</string>
+    <string name="add_app_activity__add_new_application">Adicionar nova aplicação</string>
+    <string name="settings__network__trust_user_cas__title">Confiança CAs adicionado pelo utilizador</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Esta opção só está disponível no Android Marshmallow ou posterior.</string>
+    <string name="chromium__description">Chromium é um projeto de navegador de código aberto que visa construir uma forma mais segura, rápida e estável para que todos os utilizadores possam experimentar a web. Este site contém documentos de design, panorâmicas de arquitetura, informação de teste, e mais para o ajudar a aprender a construir e trabalhar com o código fonte Chromium.</string>
+    <string name="mulch__description">Este é um navegador web orientado para a segurança e endurecido, baseado na tecnologia Chromium. Muitas funcionalidades anti-featureza são desativadas/removidas e um punhado de funcionalidades de segurança são ativadas/adicionadas graças aos patches do projeto Vanadium. A fonte repo inclui também pré-construções e makefiles para permitir a outros sistemas operativos incluir Mulch como o seu sistema WebView.</string>
 </resources>
