@@ -295,4 +295,5 @@
     <string name="main_activity__app_was_signed_by_different_certificate">Приложение е подписано с различен сертификат и не може да бъде обновено с FFUpdater.</string>
     <string name="privacy_browser__title">Поверителни четци</string>
     <string name="notification__network_error__text">Тази грешка трябва да се появява рядко. Ако въпреки това се появява често, трябва да я докладвате. Щракнете тук, за да видите пълния текст на грешката.</string>
+    <string name="generic__eol_reason__too_old">Приложението не е обновявано отдавна.</string>
 </resources>
