@@ -247,4 +247,76 @@
     <string name="settings__background__update_check__when_device_idle__unsupported">Esta opção só está disponível no Android Marshmallow ou posterior.</string>
     <string name="chromium__description">Chromium é um projeto de navegador de código aberto que visa construir uma forma mais segura, rápida e estável para que todos os utilizadores possam experimentar a web. Este site contém documentos de design, panorâmicas de arquitetura, informação de teste, e mais para o ajudar a aprender a construir e trabalhar com o código fonte Chromium.</string>
     <string name="mulch__description">Este é um navegador web orientado para a segurança e endurecido, baseado na tecnologia Chromium. Muitas funcionalidades anti-featureza são desativadas/removidas e um punhado de funcionalidades de segurança são ativadas/adicionadas graças aos patches do projeto Vanadium. A fonte repo inclui também pré-construções e makefiles para permitir a outros sistemas operativos incluir Mulch como o seu sistema WebView.</string>
+    <string name="fennecfdroid__warning">O FFUpdater transfere os ficheiros dos servidores F-Droid e, por conseguinte, não é mais rápido.</string>
+    <string name="fennecfdroid__description">Fennec F-Droid é baseado na última versão do Firefox (nome de código Fenix). Tem bits proprietários e telemetria removidos, mas ainda se liga a vários serviços Mozilla e Google que podem seguir os utilizadores.</string>
+    <string name="network__dns_provider__title">Definições de DNS</string>
+    <string name="network__custom_doh_server__dialog_message">Introduza os detalhes da ligação para o servidor DoH personalizado num destes formatos:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nPor exemplo: https://dns.google/dns-query;8.8.8.8 ou https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__title">DNS personalizado sobre servidor HTTPS</string>
+    <string name="network__proxy__title">Proxy</string>
+    <string name="settings__network_category__title">Rede</string>
+    <string name="settings__device_category__title">Dispositivo</string>
+    <string name="device__prefer_32bit_apks__summary">Habilite se o seu dispositivo estiver normalmente com pouca memória. O FFUpdater utilizará então APKs de 32 bits que normalmente requerem menos memória.</string>
+    <string name="device__prefer_32bit_apks__title">Preferir APKs de 32-Bit</string>
+    <string name="installer__method__root_not_granted">Autorização de raiz não concedida!</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku não está instalada!</string>
+    <string name="network__dns_provider__google">DNS sobre HTTPS: Google</string>
+    <string name="network__dns_provider__custom">DNS personalizado sobre servidor HTTPS</string>
+    <string name="network__dns_provider__no">Sem DNS (apenas para testes)</string>
+    <string name="installer__method__session">Instalador da sessão: Recomendado para a maioria dos dispositivos. No Android 12 ou superior, as aplicações podem ser atualizadas silenciosamente após uma confirmação do utilizador.</string>
+    <string name="installer__method__root">Instalador de raiz: Atualizar aplicações sem um diálogo de confirmação. Isto requer um smartphone enraizado.</string>
+    <string name="installer__method__shizuku">Instalador Shizuku: Atualizar aplicações sem um diálogo de confirmação. Isto requer a aplicação Shizuku ou o módulo Sui Magisk.</string>
+    <string name="background__separate_notification_channels__summary">Utilizar canais de notificação diferentes para cada aplicação individual</string>
+    <string name="background__separate_notification_channels__title">Diferentes canais de notificação</string>
+    <string name="notification__update_available__generic_channel_name">Notificação de atualização do aplicativo</string>
+    <string name="notification__update_available__generic_channel_descr">Canal de notificação para atualizações de aplicações disponíveis.</string>
+    <string name="notification__install_error__generic_channel_descr">Canal de notificação para atualizações de aplicações falhadas.</string>
+    <string name="notification__install_error__generic_channel_name">Notificação de falha de atualização do aplicativo</string>
+    <string name="notification__network_error__title">Erro de rede em trabalho de fundo</string>
+    <string name="notification__network_error__text">Este erro só deve ocorrer raramente. No entanto, se ocorrer com frequência, deve reportar o erro. Clique aqui para ver a mensagem de erro detalhada.</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
+    <string name="duckduckgo_android__description">A aplicação DuckDuckGo fornece a mais completa proteção de privacidade online com o premir de um botão. Com um download, obtém um novo browser diário que oferece uma proteção sem falhas enquanto procura e navega, e acesso a proteções de rastreio para e-mails que recebe e aplicações que utiliza. Muitas destas proteções não são oferecidas na maioria dos browsers populares por defeito.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo utiliza a visualização do sistema na web para exibir sítios web.
+\n- Houve uma controvérsia sobre não bloquear todos os cookies da Microsoft - mas isto foi corrigido.</string>
+    <string name="privacy_browser__title">Privacy Browser</string>
+    <string name="privacy_browser__warning">FFUpdater transfere os ficheiros a partir dos servidores F-Droid e não é, portanto, mais rápido.</string>
+    <string name="privacy_browser__description">A única forma de evitar que os dados sejam abusados é evitar, em primeiro lugar, que sejam recolhidos. O Privacy Browser tem dois objetivos principais: Minimizar os dados que são enviados para a Internet e minimizar os dados que são armazenados no dispositivo.</string>
+    <string name="generic__eol_reason__too_old">A aplicação não foi atualizada durante muito tempo.</string>
+    <string name="tor_browser_alpha__description">O Tor Browser é o único navegador móvel oficial apoiado pelo Projecto Tor, o que desenvolve a ferramenta mais forte do mundo para a privacidade e liberdade online.
+\n
+\nO Tor Browser será SEMPRE gratuito, mas as doações tornam-no possível. O Projecto Tor é um 501©(3) sem fins lucrativos baseado nos EUA. Por favor, considere fazer uma contribuição hoje. Cada donativo faz a diferença: https://donate.torproject.org.
+\n
+\nSaiba como reportar bugs e dar feedback em https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="network__proxy__dialog_message">Se quiser utilizar um proxy SOCKS ou HTTP, introduza aqui os detalhes da ligação. Use um destes formatos:
+\n
+\nSOCKS/HTTP;ip/domínio;porto
+\n
+\nSOCKS/HTTP;ip/domínio;porto;nome de utilizador;palavra-passe
+\n
+\nPor exemplo: SOCKS;1.2.3.4;22 ou HTTP;5.6.7.8;80;user1;pw123 ou HTTP;p.webshare.io;80;u;p. Deixe-o vazio se quiser utilizar a configuração de proxy do sistema.
+\n
+\nLimitação: Se alterar \'DNS settings\' nas definições para um DNS sobre servidor HTTPS, tem de introduzir o domínio do servidor proxy. Os IPs não funcionarão.</string>
+    <string name="network__dns_provider__system">Utilizar DNS do sistema</string>
+    <string name="network__dns_provider__digital_society_ch">DNS sobre HTTPS: Sociedade Digital Suíça</string>
+    <string name="network__dns_provider__cloudflare">DNS sobre HTTPS: Cloudflare</string>
+    <string name="network__dns_provider__quad9">DNS sobre HTTPS: Quad9</string>
+    <string name="installer__method__native">Instalador nativo: Fallback se o instalador da sessão não funcionar no seu smartphone.</string>
+    <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
+    <string name="generic_app_warning__beta_version">- Esta aplicação foi concebida para programadores e testadores. Pode conter vários bugs que podem afetar o seu trabalho habitual com o browser.</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Esta aplicação foi assinada com um certificado diferente e não pode ser atualizada com o FFUpdater.</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Ocultar aplicações que são assinadas por um certificado diferente.</string>
+    <string name="firefox_focus_beta__description">Use Firefox Focus para tudo o que quiser manter separado do seu navegador principal - para todos os que entram, saiam e esqueçam-no nos momentos em que o quiserem. Sem abas, sem alarido, sem confusão. Bloqueie também os localizadores online. Um toque, e o seu histórico de navegação é completamente destruído.
+\n
+\nFirefox Focus é o perfeito para entrar/sair, procurar e destruir, estou numa missão que não é do seu negócio - web browser.</string>
+    <string name="main_activity__denied_notification_permission">O FFUpdater precisa da permissão para o informar sobre atualizações.</string>
 </resources>
