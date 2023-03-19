@@ -1,3 +1,11 @@
+# 2023-03-19 Release 77.7.12 (138)
+
+* Thanks for the Weblate contributions from: Alexthegib, Juraj Motuz, Retrial, gallegonovato, MkQtS and
+  109247019824
+* Hotfix: Update urls to download the latest Firefox release
+* Improve cache reuse across apps with OkHttp
+* Due to hotfix: Forground setting "Update checks on metered networks" is currently ignored
+
 # 2023-03-07 Release 77.7.11 (137)
 
 * Thanks for the Weblate contributions from: Dan, nautilusx, Retrial, gallegonovato, MkQtS and Oğuz Ersen

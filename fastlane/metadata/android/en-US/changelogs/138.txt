@@ -1,0 +1,4 @@
+* Thanks for the Weblate contributions from: Alexthegib, Juraj Motuz, Retrial, gallegonovato, MkQtS and 109247019824
+* Hotfix: Update urls to download the latest Firefox release
+* Improve cache reuse across apps with OkHttp
+* Due to hotfix: Forground setting "Update checks on metered networks" is currently ignored
