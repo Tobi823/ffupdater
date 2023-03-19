@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import java.io.File
 
 @ExtendWith(MockKExtension::class)
 class FdroidConsumerIT {
@@ -38,6 +39,7 @@ class FdroidConsumerIT {
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
+        every { context.cacheDir } returns File(".")
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
         sharedPreferences.edit().putBoolean("network__trust_user_cas", false)
         fileDownloader = FileDownloader(NetworkSettingsHelper(context), context, FORCE_NETWORK)
