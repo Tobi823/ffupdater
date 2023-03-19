@@ -254,9 +254,9 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
         val network = NetworkSettingsHelper(applicationContext)
-        // TODO es fehlt der Netzwerkcheck
         val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
         var status = app.impl.findAppUpdateStatus(this, fileDownloader)
+        // TODO es fehlt der Netzwerkcheck
         if (status == null) {
             fileDownloader.changeCacheBehaviour(USE_CACHE_IF_NOT_TOO_OLD)
             status = fetchDownloadInformationHelper(fileDownloader)
