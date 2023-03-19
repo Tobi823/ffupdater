@@ -13,6 +13,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
+import java.io.File
 
 open class BaseAppIT {
 
@@ -35,6 +36,7 @@ open class BaseAppIT {
         every { context.packageManager } returns packageManager
         every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
+        every { context.cacheDir } returns File(".")
         every {
             @Suppress("DEPRECATION")
             packageManager.getPackageInfo(any<String>(), 0)

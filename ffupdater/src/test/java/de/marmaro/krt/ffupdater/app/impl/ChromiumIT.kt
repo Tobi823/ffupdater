@@ -1,6 +1,9 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.FileDownloader
+import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.FORCE_NETWORK
+import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -16,7 +19,9 @@ internal class ChromiumIT : BaseAppIT() {
     @Test
     fun findLatestUpdate() {
         val chromium = Chromium(ApiConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { chromium.findLatestUpdate(context, , false) }
+        val fileDownloader = FileDownloader(NetworkSettingsHelper(context), context, FORCE_NETWORK)
+        val result = runBlocking { chromium.findLatestUpdate(context, fileDownloader) }
+        requireNotNull(result)
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
