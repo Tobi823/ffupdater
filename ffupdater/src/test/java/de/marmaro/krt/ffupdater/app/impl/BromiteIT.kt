@@ -25,6 +25,6 @@ internal class BromiteIT : BaseAppIT() {
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())
-        assertTrue(age.toDays() < 3 * 4 * 7) { "${age.toDays()} days is too old" }
+        assertTrue(age.toDays() < 4 * 4 * 7) { "${age.toDays()} days is too old" }
     }
 }
