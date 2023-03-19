@@ -1,0 +1,3 @@
+* Obrigado pelas contribuições Weblate de: Juraj Motuz, Retrial, Gallegonovato e MkQtS
+* corrigir erro de descarga com Tor Browser / Tor Browser Alpha (Tobi823/ffupdater#336)
+* refactor DownloadActivity.kt para o tornar mais fiável

@@ -1,0 +1,2 @@
+* Děkujeme překladatelům z Weblate: Dan, nautilusx, Retrial, gallegonovato, MkQtS a Oğuz Ersen
+* Oprava chyby s Firefox Nighly a rootovým instalérem

@@ -1,0 +1,2 @@
+* Gracias por las contribuciones en Weblate de: Dan, nautilusx, Retrial, gallegonovato, MkQtS y Oğuz Ersen
+* Arreglado el error del instalador raíz con Firefox Nightly

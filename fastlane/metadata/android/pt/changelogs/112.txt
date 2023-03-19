@@ -1,0 +1,3 @@
+* Obrigado pela contribuição do Weblate de: o Psoruz Ersen e 109247019824
+* Restaurar Iceraven
+* Reelaborar a UI para permitir o download das aplicações EOL

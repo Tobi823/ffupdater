@@ -1,0 +1,13 @@
+* Obrigado pela contribuição da Weblate: Retrial, kotyhoroshko, Jacek, Viktória Nagy, gallegonovato, Oğuz
+  Ersen, 109247019824, nautilusx, MkQtS, Yo, Juraj Motuz, Translator-3000, atilluF, Giovanni Donisi, Brodie
+  Avoult, Eric
+* Acrescentar suporte para os proxys HTTP/SOCKS com e sem autenticação (Tobi823/ffupdater#229)
+* Adicionar suporte para servidor DNS-over-HTTPS (Tobi823/ffupdater#229)
+* Adicionar opção para preferir versões 32-bit das aplicações (Tobi823/ffupdater#280)
+* Corrigir uma condição de corrida que apresenta uma razão de falha de instalação errada
+* Mostrar informação adicional sobre uma falha de instalação
+* Mostrar e atualizar apenas aplicações que suportam a ABI do smartphone atual
+* Corrigir o bug: Após a instalação da primeira atualização (com uma notificação), a segunda instalação (com uma
+  notificação) irá reinstalar a primeira atualização
+* Melhorar o tratamento de erros do trabalho de fundo
+* Adicionar testes unitários em falta

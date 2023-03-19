@@ -1,0 +1,3 @@
+* Obrigado pela contribuição Weblate de: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
+  Motuz, Giovanni Donisi e Oğuz Ersen
+* Corrigir o bug de atualização do Kiwi: Ignorar lançamentos do GitHub sem ficheiros APK

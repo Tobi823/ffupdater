@@ -1,0 +1,6 @@
+* Obrigado pelas contribuições Weblate de: gallegonovato, Juraj Motuz, Retrial, MkQtS, 109247019824,
+  Giovanni Donisi, gnu-ewm, nautilusx, Oğuz Ersen e meep
+* Não descarregar atualizações em segundo plano quando o protetor de dados estiver ativado
+* Kiwi é agora EOL
+* Melhorar as mensagens de erro
+* Correções de bugs

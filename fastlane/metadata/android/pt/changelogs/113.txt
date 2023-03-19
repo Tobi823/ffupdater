@@ -1,0 +1,6 @@
+* Agradecimentos pela contribuição do Weblate de: John doe, o Elimuz Ersen, atilluF, Vitor Henrique, 109247019824, Nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem e Eduardo Malaspina
+* Adicionar Crómio, Orbot, Tor,
+* Melhorar a interface do Usuário para adicionar novas aplicações
+* Não confie na CA Do Utilizador por defeito (pode ser desativada)
+* Correções de erros
+* Código de limpeza e refatoração

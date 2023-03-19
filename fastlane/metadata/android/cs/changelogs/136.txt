@@ -1,0 +1,6 @@
+* Děkujeme překladatelům z Weblate: gallegonovato, Juraj Motuz, Retrial, MkQtS, 109247019824,
+  Giovanni Donisi, gnu-ewm, nautilusx, Oğuz Ersen a meep
+* Vypnutí stahování aktualizací, pokud je zapnut limit datových přenosů
+* Prohlížeč Kiwi je nyní s ukončenou životností
+* Vylepšení chybové zprávy
+* Oprava chyb

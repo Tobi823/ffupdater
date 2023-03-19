@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições do Weblate de: nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial e gnu-EWM
+* Corrigir instalador raiz

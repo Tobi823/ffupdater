@@ -1,0 +1,5 @@
+* Obrigado pelos colaboradores da Weblate: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS e Hin
+  Weisner
+* Melhorar o texto de notificação quando a verificação de atualização de fundo falhar durante cinco dias seguidos (valor antigo: dois
+  dias, mas era demasiado baixo para alguns utilizadores).
+* Melhorar o relatório de crash e o carimbo de data/hora da última verificação bem sucedida da atualização de antecedentes
