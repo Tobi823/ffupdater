@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
@@ -15,7 +14,6 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-beta.latest
@@ -50,10 +48,7 @@ class FirefoxBeta(
         fileDownloader: FileDownloader,
     ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
-        val deviceSettings = DeviceSettingsHelper(preferences)
-
+        val deviceSettings = DeviceSettingsHelper(context)
         val abiString = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
             ABI.ARM64_V8A -> "arm64-v8a"
@@ -61,6 +56,10 @@ class FirefoxBeta(
             ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
+        // clicking on public/logs/chain_of_trust.log in
+        // https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-beta.latest/arm64-v8a
+        // will lead you to
+        // https://firefoxci.taskcluster-artifacts.net/GgEWrni0Rlq9B4ETyJnb4g/0/public/logs/chain_of_trust.log
         val result = consumer.updateCheck(
             taskId = "GgEWrni0Rlq9B4ETyJnb4g",
             fileDownloader = fileDownloader,

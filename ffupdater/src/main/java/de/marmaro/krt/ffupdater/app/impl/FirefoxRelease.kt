@@ -18,9 +18,9 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
- * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest
+ * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-release.latest
  * https://www.apkmirror.com/apk/mozilla/firefox/
- * https://firefox-ci-tc.services.mozilla.com/tasks/MQ88QvSETLGx-7NgSwdBTw
+ * https://firefoxci.taskcluster-artifacts.net/ZYeFGUrdRSyOeZbmawuBGA/0/public/logs/chain_of_trust.log
  */
 class FirefoxRelease(
     private val consumer: MozillaCiLogConsumer = MozillaCiLogConsumer.INSTANCE,
@@ -61,8 +61,13 @@ class FirefoxRelease(
             ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
+        // clicking on public/logs/chain_of_trust.log in
+        // https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-release.latest/arm64-v8a
+        // will lead you to
+        // https://firefoxci.taskcluster-artifacts.net/ZYeFGUrdRSyOeZbmawuBGA/0/public/logs/chain_of_trust.log
+        // - this url contains the taskId
         val result = consumer.updateCheck(
-            taskId = "MQ88QvSETLGx-7NgSwdBTw",
+            taskId = "ZYeFGUrdRSyOeZbmawuBGA",
             fileDownloader = fileDownloader
         )
         val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +

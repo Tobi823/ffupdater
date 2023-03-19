@@ -65,6 +65,10 @@ class FirefoxNightly(
             ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
+        // clicking on public/logs/chain_of_trust.log in
+        // https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest/arm64-v8a
+        // will lead you to
+        // https://firefoxci.taskcluster-artifacts.net/CeuwnI5oTuSiZPrCjjc8kA/0/public/logs/chain_of_trust.log
         val result = consumer.updateCheck(
             taskId = "CeuwnI5oTuSiZPrCjjc8kA",
             abiString = abiString,
