@@ -71,7 +71,7 @@ class FirefoxRelease(
             fileDownloader = fileDownloader
         )
         val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v2.fenix.release.latest.${abiString}/artifacts/public%2Fbuild%2F${abiString}%2Ftarget.apk"
+                "mobile.v3.fenix.release.latest.${abiString}/artifacts/public%2Fbuild%2F${abiString}%2Ftarget.apk"
         val version = result.version
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
