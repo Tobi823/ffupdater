@@ -34,6 +34,7 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroun
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.FileDownloader
+import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.USE_CACHE_IF_NOT_TOO_OLD
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -252,9 +253,13 @@ class DownloadActivity : AppCompatActivity() {
         val downloadSource = app.impl.downloadSource
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
-        var status = app.metadataCache.getCachedOrNullIfOutdated(this)
+        val network = NetworkSettingsHelper(applicationContext)
+        // TODO es fehlt der Netzwerkcheck
+        val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
+        var status = app.impl.findAppUpdateStatus(this, fileDownloader)
         if (status == null) {
-            status = fetchDownloadInformationHelper()
+            fileDownloader.changeCacheBehaviour(USE_CACHE_IF_NOT_TOO_OLD)
+            status = fetchDownloadInformationHelper(fileDownloader)
         }
         hide(R.id.fetchUrl)
         if (status == null) {
@@ -268,7 +273,7 @@ class DownloadActivity : AppCompatActivity() {
         return true
     }
 
-    private suspend fun fetchDownloadInformationHelper(): AppUpdateStatus? {
+    private suspend fun fetchDownloadInformationHelper(fileDownloader: FileDownloader): AppUpdateStatus? {
         // only check for updates if network type requirements are met
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             displayFetchFailure(getString(main_activity__no_unmetered_network))
@@ -276,7 +281,9 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         try {
-            return app.metadataCache.getCachedOrFetchIfOutdated(this)
+            val updateStatus = app.impl.findAppUpdateStatus(this, fileDownloader)
+            requireNotNull(updateStatus) { "impossible because of USE_CACHE_IF_NOT_TOO_OLD" }
+            return updateStatus
         } catch (e: ApiRateLimitExceededException) {
             displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
         } catch (e: NetworkException) {
@@ -296,7 +303,7 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.downloadingFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status, ""))
 
-        val fileDownloader = FileDownloader(networkSettings)
+        val fileDownloader = FileDownloader(networkSettings, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
         app.downloadedFileCache.deleteAllApkFileForThisApp(this)
 
         // this coroutine should survive a screen rotation and should live as long as the view model

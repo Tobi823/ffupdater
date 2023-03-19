@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
@@ -43,7 +44,10 @@ class FirefoxFocus(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val networkSettings = NetworkSettingsHelper(preferences)
@@ -57,14 +61,10 @@ class FirefoxFocus(
                 ABI.X86_64 -> "-x86_64.apk"
                 else -> throw IllegalArgumentException("ABI is not supported")
             }
-        val result = consumer.updateCheck(
-            repoOwner = "mozilla-mobile",
-            repoName = "firefox-android",
-            initResultsPerPage = 5,
+        val result = consumer.updateCheckFor_MozillaMobile_FirefoxAndroid(
             isValidRelease = { !it.isPreRelease && "Focus" in it.name },
             isSuitableAsset = { it.nameStartsOrEnds("focus-", fileSuffix) },
-            dontUseApiForLatestRelease = false,
-            settings = networkSettings
+            fileDownloader = fileDownloader,
         )
         val version = result.tagName
             .removePrefix("focus-v") //convert v108.1.1 or focus-v108.1.1 to 108.1.1

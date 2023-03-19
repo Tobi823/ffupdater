@@ -4,17 +4,16 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/ungoogled-software/ungoogled-chromium-android/releases
@@ -43,11 +42,12 @@ class UngoogledChromium(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
-        val deviceSettings = DeviceSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(context)
 
         val fileName = when (deviceAbiExtractor.findBestAbi(
             supportedAbis,
@@ -65,7 +65,7 @@ class UngoogledChromium(
             isValidRelease = { !it.isPreRelease && "webview" !in it.name },
             isSuitableAsset = { it.name == fileName },
             dontUseApiForLatestRelease = true,
-            settings = networkSettings
+            fileDownloader = fileDownloader,
         )
 
         val version = result.tagName

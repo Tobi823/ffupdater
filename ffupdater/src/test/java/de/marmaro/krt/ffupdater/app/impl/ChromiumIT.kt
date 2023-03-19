@@ -16,7 +16,7 @@ internal class ChromiumIT : BaseAppIT() {
     @Test
     fun findLatestUpdate() {
         val chromium = Chromium(ApiConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { chromium.findLatestUpdate(context) }
+        val result = runBlocking { chromium.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

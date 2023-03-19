@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
@@ -43,7 +44,10 @@ class Bromite(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val networkSettings = NetworkSettingsHelper(preferences)
@@ -56,14 +60,10 @@ class Bromite(
             ABI.X86_64 -> "x64_ChromePublic.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = consumer.updateCheck(
-            repoOwner = "bromite",
-            repoName = "bromite",
-            initResultsPerPage = 5,
+        val result = consumer.updateCheckFor_Bromite_Bromite(
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
-            dontUseApiForLatestRelease = false,
-            settings = networkSettings
+            fileDownloader = fileDownloader,
         )
         // tag name can be "90.0.4430.59"
         val version = result.tagName

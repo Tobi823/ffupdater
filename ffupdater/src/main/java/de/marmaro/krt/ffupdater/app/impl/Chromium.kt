@@ -16,9 +16,9 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android/
@@ -45,11 +45,12 @@ class Chromium(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
-        val deviceSettings = DeviceSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(context)
 
         val platform = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
             ABI.ARM64_V8A -> "Android_Arm64"
@@ -57,8 +58,8 @@ class Chromium(
             else -> throw IllegalArgumentException("ABI is not supported")
         }
 
-        val revision = findLatestRevision(networkSettings, platform)
-        val storageObject = findStorageObject(networkSettings, revision, platform)
+        val revision = findLatestRevision(fileDownloader, platform)
+        val storageObject = findStorageObject(fileDownloader, revision, platform)
         Log.i(LOG_TAG, "found latest version $revision")
         return LatestUpdate(
             downloadUrl = storageObject.downloadUrl,
@@ -69,11 +70,11 @@ class Chromium(
         )
     }
 
-    private suspend fun findLatestRevision(settings: NetworkSettingsHelper, platform: String): String {
+    private suspend fun findLatestRevision(fileDownloader: FileDownloader, platform: String): String {
         val slash = "%2F"
         val url = "$BASE_DOWNLOAD_URL/${platform}${slash}LAST_CHANGE?alt=media"
         val content = try {
-            apiConsumer.consume(url, settings)
+            apiConsumer.consume(url, fileDownloader)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -82,13 +83,13 @@ class Chromium(
     }
 
     private suspend fun findStorageObject(
-        settings: NetworkSettingsHelper,
+        fileDownloader: FileDownloader,
         revision: String,
-        platform: String
+        platform: String,
     ): StorageObject {
         val url = "$BASE_API_URL?delimiter=/&prefix=$platform/${revision}/chrome-android&$ALL_FIELDS"
         val storageObjects = try {
-            apiConsumer.consume(url, settings, StorageObjects::class)
+            apiConsumer.consume(url, fileDownloader, StorageObjects::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

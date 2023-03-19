@@ -16,7 +16,7 @@ internal class BromiteIT : BaseAppIT() {
     @Test
     fun findAppUpdateStatus() {
         val bromite = Bromite(GithubConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { bromite.findLatestUpdate(context) }
+        val result = runBlocking { bromite.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

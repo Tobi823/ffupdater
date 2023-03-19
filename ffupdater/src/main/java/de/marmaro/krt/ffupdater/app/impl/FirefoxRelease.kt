@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
@@ -19,6 +20,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v2.fenix.release.latest
  * https://www.apkmirror.com/apk/mozilla/firefox/
+ * https://firefox-ci-tc.services.mozilla.com/tasks/MQ88QvSETLGx-7NgSwdBTw
  */
 class FirefoxRelease(
     private val consumer: MozillaCiLogConsumer = MozillaCiLogConsumer.INSTANCE,
@@ -43,7 +45,10 @@ class FirefoxRelease(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val networkSettings = NetworkSettingsHelper(preferences)
@@ -57,14 +62,15 @@ class FirefoxRelease(
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val result = consumer.updateCheck(
-            task = "mobile.v2.fenix.release.latest.$abiString",
-            apkArtifact = "public/build/$abiString/target.apk",
-            settings = networkSettings
+            taskId = "MQ88QvSETLGx-7NgSwdBTw",
+            fileDownloader = fileDownloader
         )
+        val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+                "mobile.v2.fenix.release.latest.${abiString}/artifacts/public%2Fbuild%2F${abiString}%2Ftarget.apk"
         val version = result.version
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
-            downloadUrl = result.url,
+            downloadUrl = downloadUrl,
             version = version,
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = null,

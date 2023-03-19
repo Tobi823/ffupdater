@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.FileDownloader
+import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.FORCE_NETWORK
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer.*
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import io.mockk.coEvery
@@ -30,6 +32,7 @@ class FdroidConsumerIT {
     lateinit var settings: NetworkSettingsHelper
 
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var fileDownloader: FileDownloader
 
     @BeforeEach
     fun setUp() {
@@ -37,6 +40,7 @@ class FdroidConsumerIT {
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
         sharedPreferences.edit().putBoolean("network__trust_user_cas", false)
+        fileDownloader = FileDownloader(NetworkSettingsHelper(context), context, FORCE_NETWORK)
 
         prepareApiResponse()
     }
@@ -71,7 +75,7 @@ class FdroidConsumerIT {
             }
         """.trimIndent()
         coEvery {
-            apiConsumer.consume(API_URL, settings, AppInfo::class)
+            apiConsumer.consume(API_URL, fileDownloader, AppInfo::class)
         } returns Gson().fromJson(apiResponse, AppInfo::class.java)
 
         val apiResponse2 = """
@@ -82,7 +86,7 @@ class FdroidConsumerIT {
         coEvery {
             apiConsumer.consume(
                 "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2Fus.spotco.fennec_dos.yml?ref=master",
-                settings,
+                fileDownloader,
                 GitlabRepositoryFilesMetadata::class
             )
         } returns Gson().fromJson(apiResponse2, GitlabRepositoryFilesMetadata::class.java)
@@ -95,7 +99,7 @@ class FdroidConsumerIT {
         coEvery {
             apiConsumer.consume(
                 "https://gitlab.com/api/v4/projects/36528/repository/commits/5eb1934163f60fe64757dc81effa33255ecd5808",
-                settings,
+                fileDownloader,
                 GitlabRepositoryCommits::class
             )
         } returns Gson().fromJson(apiResponse3, GitlabRepositoryCommits::class.java)
@@ -105,7 +109,7 @@ class FdroidConsumerIT {
     fun `get first version code and download url from api call`() {
         val fdroidConsumer = FdroidConsumer(apiConsumer)
         val result = runBlocking {
-            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", settings, 1)
+            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", fileDownloader, 1)
         }
         assertEquals("101.1.1", result.versionName)
         assertEquals(21011100, result.versionCode)
@@ -116,7 +120,7 @@ class FdroidConsumerIT {
     fun `get second version code and download url from api call`() {
         val fdroidConsumer = FdroidConsumer(apiConsumer)
         val result = runBlocking {
-            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", settings, 2)
+            fdroidConsumer.getLatestUpdate("us.spotco.fennec_dos", fileDownloader, 2)
         }
         assertEquals("101.1.1", result.versionName)
         assertEquals(21011120, result.versionCode)

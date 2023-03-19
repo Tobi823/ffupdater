@@ -16,7 +16,7 @@ internal class FirefoxFocusBetaIT : BaseAppIT() {
     @Test
     fun findAppUpdateStatus() {
         val firefoxFocusBeta = FirefoxFocusBeta(GithubConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { firefoxFocusBeta.findLatestUpdate(context) }
+        val result = runBlocking { firefoxFocusBeta.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

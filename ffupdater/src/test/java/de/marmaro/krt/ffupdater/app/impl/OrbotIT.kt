@@ -16,7 +16,7 @@ internal class OrbotIT : BaseAppIT() {
     @Test
     fun checkForUpdateWithoutLoadingFromCacheAsync() {
         val orbot = Orbot(GithubConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { orbot.findLatestUpdate(context) }
+        val result = runBlocking { orbot.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

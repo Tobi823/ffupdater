@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.network
 
 import com.google.gson.Gson
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.reflect.KClass
@@ -13,14 +12,17 @@ import kotlin.reflect.KClass
 class ApiConsumer {
     private val gson = Gson()
 
-    suspend fun consume(url: String, settings: NetworkSettingsHelper): String {
-        val fileDownloader = FileDownloader(settings)
+    suspend fun consume(url: String, fileDownloader: FileDownloader): String {
         return fileDownloader.downloadSmallFileAsync(url)
     }
 
-    suspend fun <T : Any> consume(url: String, settings: NetworkSettingsHelper, clazz: KClass<T>): T {
+    suspend fun <T : Any> consume(
+        url: String,
+        fileDownloader: FileDownloader,
+        clazz: KClass<T>,
+    ): T {
         return withContext(Dispatchers.IO) {
-            val stringResponse = consume(url, settings)
+            val stringResponse = consume(url, fileDownloader)
             gson.fromJson(stringResponse, clazz.java) // in IO thread because it could be a lot of work
         }
     }

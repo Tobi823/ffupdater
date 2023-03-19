@@ -3,15 +3,72 @@ package de.marmaro.krt.ffupdater.network.github
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.util.*
 import java.util.function.Predicate
 
 class GithubConsumer(private val apiConsumer: ApiConsumer) {
 
     data class ResultPerPageAndPageNumber(val resultsPerPage: Int, val pageNumber: Int)
+
+    // use this method for the repository mozilla-mobile/firefox-android for improved caching
+    @MainThread
+    @Throws(NetworkException::class)
+    suspend fun updateCheckFor_MozillaMobile_FirefoxAndroid(
+        isValidRelease: Predicate<Release>,
+        isSuitableAsset: Predicate<Asset>,
+        fileDownloader: FileDownloader,
+    ): Result {
+        return updateCheck(
+            repoOwner = "mozilla-mobile",
+            repoName = "firefox-android",
+            initResultsPerPage = 20,
+            isValidRelease = isValidRelease,
+            isSuitableAsset = isSuitableAsset,
+            dontUseApiForLatestRelease = true,
+            fileDownloader = fileDownloader,
+        )
+    }
+
+    // use this method for the repository brave/brave-browser for improved caching
+    @MainThread
+    @Throws(NetworkException::class)
+    suspend fun updateCheckFor_Brave_BraveBrowser(
+        isValidRelease: Predicate<Release>,
+        isSuitableAsset: Predicate<Asset>,
+        fileDownloader: FileDownloader,
+    ): Result {
+        return updateCheck(
+            repoOwner = "brave",
+            repoName = "brave-browser",
+            initResultsPerPage = 20,
+            isValidRelease = isValidRelease,
+            isSuitableAsset = isSuitableAsset,
+            dontUseApiForLatestRelease = true,
+            fileDownloader = fileDownloader,
+        )
+    }
+
+    // use this method for the repository bromite/bromite for improved caching
+    @MainThread
+    @Throws(NetworkException::class)
+    suspend fun updateCheckFor_Bromite_Bromite(
+        isValidRelease: Predicate<Release>,
+        isSuitableAsset: Predicate<Asset>,
+        fileDownloader: FileDownloader,
+    ): Result {
+        return updateCheck(
+            repoOwner = "bromite",
+            repoName = "bromite",
+            initResultsPerPage = 5,
+            isValidRelease = isValidRelease,
+            isSuitableAsset = isSuitableAsset,
+            dontUseApiForLatestRelease = true,
+            fileDownloader = fileDownloader,
+        )
+    }
 
     @MainThread
     @Throws(NetworkException::class)
@@ -25,11 +82,11 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         // true -> contact only "$url?per_page=..&page=.."
         // set it to true if it is unlikely that the latest release is a valid release
         dontUseApiForLatestRelease: Boolean = false,
-        settings: NetworkSettingsHelper,
+        fileDownloader: FileDownloader,
     ): Result {
         check(initResultsPerPage > 0)
         if (!dontUseApiForLatestRelease) {
-            val latestRelease = getLatestRelease(repoOwner, repoName, settings)
+            val latestRelease = getLatestRelease(repoOwner, repoName, fileDownloader)
             tryToFindResultInReleases(arrayOf(latestRelease), isValidRelease, isSuitableAsset)
                 ?.let { return it }
         }
@@ -39,7 +96,7 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
             check(resultsPerPage <= 100)
             val pageNumber = resultsPerPageAndPageNumber.pageNumber
 
-            val releases = getReleaseFromPage(repoOwner, repoName, resultsPerPage, pageNumber, settings)
+            val releases = getReleaseFromPage(repoOwner, repoName, resultsPerPage, pageNumber, fileDownloader)
             tryToFindResultInReleases(releases, isValidRelease, isSuitableAsset)
                 ?.let { return it }
         }
@@ -50,11 +107,11 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
     private suspend fun getLatestRelease(
         repoOwner: String,
         repoName: String,
-        settings: NetworkSettingsHelper,
+        fileDownloader: FileDownloader,
     ): Release {
         return try {
             val baseUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases"
-            apiConsumer.consume("$baseUrl/latest", settings, Release::class)
+            apiConsumer.consume("$baseUrl/latest", fileDownloader, Release::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $repoName from GitHub.", e)
         }
@@ -86,12 +143,12 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         repoName: String,
         resultsPerPage: Int,
         page: Int,
-        settings: NetworkSettingsHelper,
+        fileDownloader: FileDownloader,
     ): Array<Release> {
         return try {
             val baseUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases"
             val url = "$baseUrl?per_page=$resultsPerPage&page=$page"
-            apiConsumer.consume(url, settings, Array<Release>::class)
+            apiConsumer.consume(url, fileDownloader, Array<Release>::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $repoName from GitHub.", e)
         }
@@ -146,7 +203,7 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         val tagName: String,
         val url: String,
         val fileSizeBytes: Long,
-        val releaseDate: String
+        val releaseDate: String,
     )
 
     companion object {

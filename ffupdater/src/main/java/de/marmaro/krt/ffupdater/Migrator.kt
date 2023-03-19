@@ -12,6 +12,17 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
+        if (lastVersionCode < 137) { // 77.7.11
+            val editor = PreferenceManager.getDefaultSharedPreferences(context).edit()
+
+            preferences.all
+                .map { it.key }
+                .filter { it.startsWith("cached_update_check_result__") }
+                .forEach { editor.remove(it) }
+
+            editor.commit()
+        }
+
         if (lastVersionCode < 121) { // 77.5.0
             val editor = PreferenceManager.getDefaultSharedPreferences(context).edit()
 

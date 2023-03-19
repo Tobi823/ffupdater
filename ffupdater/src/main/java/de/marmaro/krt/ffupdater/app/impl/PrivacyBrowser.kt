@@ -9,6 +9,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
@@ -38,10 +39,13 @@ class PrivacyBrowser(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.i(LOG_TAG, "check for latest version")
         val networkSettings = NetworkSettingsHelper(context)
-        val result = fdroidConsumer.getLatestUpdate(packageName, networkSettings, 1)
+        val result = fdroidConsumer.getLatestUpdate(packageName, fileDownloader, 1)
         val version = result.versionName
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(

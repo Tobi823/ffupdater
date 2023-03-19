@@ -12,6 +12,7 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
@@ -45,21 +46,20 @@ class BraveNightly(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
         val fileName = getNameOfApkFile(deviceSettings)
-        val result = consumer.updateCheck(
-            repoOwner = "brave",
-            repoName = "brave-browser",
-            initResultsPerPage = 10,
+        val result = consumer.updateCheckFor_Brave_BraveBrowser(
             isValidRelease = { !it.isPreRelease && it.name.startsWith("Nightly v") },
             isSuitableAsset = { it.name == fileName },
-            dontUseApiForLatestRelease = true,
-            settings = networkSettings
+            fileDownloader = fileDownloader,
         )
         val version = result.tagName.replace("v", "")
         Log.i(LOG_TAG, "found latest version $version")

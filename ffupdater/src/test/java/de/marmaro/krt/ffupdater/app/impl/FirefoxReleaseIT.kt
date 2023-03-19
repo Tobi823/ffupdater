@@ -16,7 +16,7 @@ internal class FirefoxReleaseIT : BaseAppIT() {
     @Test
     fun findAppUpdateStatus() {
         val firefoxRelease = FirefoxRelease(MozillaCiLogConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { firefoxRelease.findLatestUpdate(context) }
+        val result = runBlocking { firefoxRelease.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

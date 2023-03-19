@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
@@ -12,9 +11,9 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://www.torproject.org/download/alpha/
@@ -48,14 +47,15 @@ class TorBrowserAlpha(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
-        val deviceSettings = DeviceSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(context)
 
-        val (version, downloadUrl) = findVersionAndDownloadUrl(networkSettings, deviceSettings)
-        val dateTime = findDateTime(networkSettings, deviceSettings, version)
+        val (version, downloadUrl) = findVersionAndDownloadUrl(fileDownloader, deviceSettings)
+        val dateTime = findDateTime(fileDownloader, deviceSettings, version)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
@@ -67,11 +67,11 @@ class TorBrowserAlpha(
     }
 
     private suspend fun findVersionAndDownloadUrl(
-        networkSettings: NetworkSettingsHelper,
+        fileDownloader: FileDownloader,
         deviceSettings: DeviceSettingsHelper,
     ): Pair<String, String> {
         val content = try {
-            apiConsumer.consume(MAIN_URL, networkSettings)
+            apiConsumer.consume(MAIN_URL, fileDownloader)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -94,14 +94,14 @@ class TorBrowserAlpha(
     }
 
     private suspend fun findDateTime(
-        networkSettings: NetworkSettingsHelper,
+        fileDownloader: FileDownloader,
         deviceSettingsHelper: DeviceSettingsHelper,
         version: String,
     ): String {
         val abi = getAbiString(deviceSettingsHelper)
         val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-$abi-multi.apk"
         val content = try {
-            apiConsumer.consume(url, networkSettings)
+            apiConsumer.consume(url, fileDownloader)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

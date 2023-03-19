@@ -15,16 +15,17 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
+ * https://firefox-ci-tc.services.mozilla.com/tasks/CeuwnI5oTuSiZPrCjjc8kA
  */
 class FirefoxNightly(
     private val consumer: MozillaCiJsonConsumer = MozillaCiJsonConsumer.INSTANCE,
@@ -50,11 +51,12 @@ class FirefoxNightly(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
-        val deviceSettings = DeviceSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(context)
 
         val abiString = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
@@ -64,16 +66,19 @@ class FirefoxNightly(
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val result = consumer.updateCheck(
-            task = "mobile.v3.firefox-android.apks.fenix-nightly.latest.$abiString",
-            apkArtifact = "public/build/fenix/$abiString/target.apk",
-            settings = networkSettings
+            taskId = "CeuwnI5oTuSiZPrCjjc8kA",
+            abiString = abiString,
+            fileDownloader = fileDownloader,
         )
+        val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+                "mobile.v3.firefox-android.apks.fenix-nightly.latest.${abiString}/artifacts/" +
+                "public%2Fbuild%2Ffenix%2F${abiString}%2Ftarget.apk"
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val version = formatter.format(releaseDate)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
-            downloadUrl = result.url,
+            downloadUrl = downloadUrl,
             version = version,
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = null,

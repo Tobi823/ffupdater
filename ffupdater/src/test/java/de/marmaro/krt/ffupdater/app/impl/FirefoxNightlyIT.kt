@@ -18,7 +18,7 @@ internal class FirefoxNightlyIT : BaseAppIT() {
         sharedPreferences.edit().putLong("firefox_nightly_installed_version_code", 0)
         val firefoxNightly =
             FirefoxNightly(MozillaCiJsonConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
-        val result = runBlocking { firefoxNightly.findLatestUpdate(context) }
+        val result = runBlocking { firefoxNightly.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
@@ -19,6 +20,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-beta.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-beta/
+ * https://firefoxci.taskcluster-artifacts.net/GgEWrni0Rlq9B4ETyJnb4g/0/public/logs/chain_of_trust.log
  */
 class FirefoxBeta(
     private val consumer: MozillaCiLogConsumer = MozillaCiLogConsumer.INSTANCE,
@@ -43,7 +45,10 @@ class FirefoxBeta(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val networkSettings = NetworkSettingsHelper(preferences)
@@ -57,14 +62,16 @@ class FirefoxBeta(
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val result = consumer.updateCheck(
-            task = "mobile.v3.firefox-android.apks.fenix-beta.latest.$abiString",
-            apkArtifact = "public/build/fenix/$abiString/target.apk",
-            settings = networkSettings
+            taskId = "GgEWrni0Rlq9B4ETyJnb4g",
+            fileDownloader = fileDownloader,
         )
+        val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
+                "mobile.v3.firefox-android.apks.fenix-beta.latest.${abiString}/artifacts/" +
+                "public%2Fbuild%2Ffenix%2F${abiString}%2Ftarget.apk"
         val version = result.version
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
-            downloadUrl = result.url,
+            downloadUrl = downloadUrl,
             version = version,
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = null,

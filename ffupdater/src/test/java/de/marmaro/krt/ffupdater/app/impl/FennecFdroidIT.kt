@@ -16,7 +16,7 @@ internal class FennecFdroidIT : BaseAppIT() {
     @Test
     fun checkForUpdateWithoutLoadingFromCacheAsync() {
         val fennec = FennecFdroid(FdroidConsumer.INSTANCE, deviceAbiExtractor)
-        val result = runBlocking { fennec.findLatestUpdate(context) }
+        val result = runBlocking { fennec.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

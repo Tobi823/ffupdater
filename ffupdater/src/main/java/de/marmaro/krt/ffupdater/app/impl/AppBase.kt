@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.AnyThread
 import androidx.annotation.WorkerThread
 import com.google.gson.Gson
@@ -14,6 +15,8 @@ import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.ABI.*
+import de.marmaro.krt.ffupdater.network.FileDownloader
+import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
@@ -78,18 +81,12 @@ abstract class AppBase {
 
     @AnyThread
     open fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
-        // make sure that the main application uses the correct information about "update available status"
-        val newMetadata = AppUpdateStatus(
-            latestUpdate = available.latestUpdate,
-            isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available.latestUpdate),
-            displayVersion = getDisplayAvailableVersion(context, available.latestUpdate)
-        )
-        app.metadataCache.updateMetadataCache(context, newMetadata)
     }
 
-    suspend fun findAppUpdateStatus(context: Context): AppUpdateStatus {
+    suspend fun findAppUpdateStatus(context: Context, fileDownloader: FileDownloader): AppUpdateStatus? {
+        Log.i("FileDownloader", "findAppUpdateStatus $app")
         val available = try {
-            findLatestUpdate(context)
+            findLatestUpdate(context, fileDownloader) ?: return null
         } catch (e: FFUpdaterException) {
             throw FFUpdaterException("Can't find latest update for $codeName.", e)
         } catch (e: Exception) {
@@ -103,12 +100,15 @@ abstract class AppBase {
     }
 
     @WorkerThread
-    internal abstract suspend fun findLatestUpdate(context: Context): LatestUpdate
+    internal abstract suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate?
 
     @AnyThread
     open fun isAvailableVersionHigherThanInstalled(
         context: Context,
-        available: LatestUpdate
+        available: LatestUpdate,
     ): Boolean {
         val installedVersion = getInstalledVersion(context) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)

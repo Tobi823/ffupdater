@@ -8,6 +8,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
@@ -38,7 +39,10 @@ class DuckDuckGoAndroid(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         Log.d(LOG_TAG, "check for latest version")
         val networkSettings = NetworkSettingsHelper(context)
 
@@ -49,7 +53,7 @@ class DuckDuckGoAndroid(
             isValidRelease = { true },
             isSuitableAsset = { it.nameStartsOrEnds("duckduckgo-", "-play-release.apk") },
             dontUseApiForLatestRelease = false,
-            settings = networkSettings
+            fileDownloader = fileDownloader,
         )
         // tag name can be "5.45.4"
         val version = result.tagName

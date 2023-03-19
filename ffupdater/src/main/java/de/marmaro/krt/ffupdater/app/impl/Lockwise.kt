@@ -7,9 +7,9 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
@@ -37,8 +37,10 @@ class Lockwise(
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context): LatestUpdate {
-        val settings = NetworkSettingsHelper(context)
+    override suspend fun findLatestUpdate(
+        context: Context,
+        fileDownloader: FileDownloader,
+    ): LatestUpdate? {
         val result = consumer.updateCheck(
             repoOwner = "mozilla-lockwise",
             repoName = "lockwise-android",
@@ -46,7 +48,7 @@ class Lockwise(
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(".apk") },
             dontUseApiForLatestRelease = false,
-            settings = settings
+            fileDownloader = fileDownloader,
         )
 
         val extractVersion = {

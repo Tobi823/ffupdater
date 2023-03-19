@@ -1,5 +1,7 @@
 package de.marmaro.krt.ffupdater.network
 
+import android.content.Context
+import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
@@ -19,25 +21,41 @@ import java.net.InetSocketAddress
 import java.net.Proxy
 import java.security.KeyStore
 import java.security.SecureRandom
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import javax.net.ssl.*
 import kotlin.io.use
 
-
-class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
+/**
+ * This class can be reused to a certain extend and must only be used synchronous.
+ * Also the class must be recreated to respect changed settings like proxy configuration etc.
+ */
+class FileDownloader(
+    private val networkSettingsHelper: NetworkSettingsHelper,
+    context: Context,
+    private var cacheBehaviour: CacheBehaviour,
+) {
+    private val progressResponseBody = ProgressResponseBody()
+    private val client: OkHttpClient = createOkHttpClient(context)
 
     data class DownloadStatus(val progressInPercent: Int?, val totalMB: Long)
+
+    enum class CacheBehaviour { FORCE_CACHE, FORCE_NETWORK, USE_CACHE_IF_NOT_TOO_OLD }
+
+    fun changeCacheBehaviour(newBehaviour: CacheBehaviour) {
+        cacheBehaviour = newBehaviour
+    }
 
     suspend fun downloadBigFileAsync(
         url: String,
         file: File,
     ): Pair<Deferred<Any>, Channel<DownloadStatus>> {
-        val processChannel = Channel<DownloadStatus>(Channel.CONFLATED)
+        val processChannel = progressResponseBody.startNewProgressChannel()
         val deferred = CoroutineScope(Dispatchers.IO).async {
             try {
                 lastChange = System.currentTimeMillis()
                 numberOfRunningDownloads.incrementAndGet()
-                downloadBigFileInternal(url, file, processChannel)
+                downloadBigFileInternal(url, file)
             } catch (e: IOException) {
                 throw NetworkException("Download of $url failed.", e)
             } catch (e: IllegalArgumentException) {
@@ -57,9 +75,9 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
     private suspend fun downloadBigFileInternal(
         url: String,
         file: File,
-        processChannel: Channel<DownloadStatus>
     ) {
-        callUrl(url, processChannel).use { response ->
+        // TODO maybe us for own code to cache APKs?
+        callUrl(url, CacheBehaviour.FORCE_NETWORK).use { response ->
             val body = validateAndReturnResponseBody(url, response)
             if (file.exists()) {
                 file.delete()
@@ -80,6 +98,7 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
     @MainThread
     @Throws(NetworkException::class)
     suspend fun downloadSmallFileAsync(url: String): String {
+        progressResponseBody.useNoProgressChannel()
         return withContext(Dispatchers.IO) {
             try {
                 downloadSmallFileInternal(url)
@@ -95,7 +114,7 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
 
     @WorkerThread
     private suspend fun downloadSmallFileInternal(url: String): String {
-        callUrl(url).use { response ->
+        callUrl(url, cacheBehaviour).use { response ->
             val body = validateAndReturnResponseBody(url, response)
             return body.string()
         }
@@ -114,43 +133,44 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
         return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
     }
 
-    private suspend fun callUrl(url: String, processChannel: Channel<DownloadStatus>? = null): Response {
+    private suspend fun callUrl(url: String, cacheControl: CacheBehaviour): Response {
         require(url.startsWith("https://"))
         val request = Request.Builder()
             .url(url)
-            .build()
-        return createClient(processChannel)
-            .newCall(request)
+            .cacheControl(
+                when (cacheControl) {
+                    CacheBehaviour.FORCE_CACHE -> CacheControl.FORCE_CACHE
+                    CacheBehaviour.FORCE_NETWORK -> CacheControl.FORCE_NETWORK
+                    CacheBehaviour.USE_CACHE_IF_NOT_TOO_OLD -> {
+                        CacheControl.Builder()
+                            .maxStale(1, TimeUnit.HOURS)
+                            .build()
+                    }
+                }
+            )
+        return client
+            .newCall(request.build())
             .await()
     }
 
-    private fun createClient(processChannel: Channel<DownloadStatus>? = null): OkHttpClient {
-        val builder = OkHttpClient.Builder()
+    private fun createOkHttpClient(context: Context): OkHttpClient {
+        val cacheDir = File(context.cacheDir, "http_cache")
+        cacheDir.mkdir()
+        require(cacheDir.exists()) { "$cacheDir must exists" }
 
-        if (processChannel != null) {
-            builder.addNetworkInterceptor { chain: Interceptor.Chain ->
-                val original = chain.proceed(chain.request())
-                val responseBody = ProgressResponseBody(requireNotNull(original.body), processChannel)
-                original.newBuilder()
-                    .body(responseBody)
-                    .build()
-            }
-        }
-
-        createSslSocketFactory()?.let {
-            builder.sslSocketFactory(it.first, it.second)
-        }
-        createDnsConfiguration()?.let {
-            builder.dns(it)
-        }
-        createProxyConfiguration()?.let {
-            builder.proxy(it)
-        }
-        createProxyAuthenticatorConfiguration()?.let {
-            builder.proxyAuthenticator(it)
-        }
-
-        return builder.build()
+        return OkHttpClient.Builder()
+            .cache(
+                Cache(
+                    directory = cacheDir,
+                    maxSize = CACHE_SIZE
+                )
+            )
+            .addNetworkInterceptor(progressResponseBody)
+            .apply { createSslSocketFactory()?.let { this.sslSocketFactory(it.first, it.second) } }
+            .apply { createDnsConfiguration()?.let { this.dns(it) } }
+            .apply { createProxyConfiguration()?.let { this.proxy(it) } }
+            .apply { createProxyAuthenticatorConfiguration()?.let { this.proxyAuthenticator(it) } }
+            .build()
     }
 
     private fun createSslSocketFactory(): Pair<SSLSocketFactory, X509TrustManager>? {
@@ -210,6 +230,8 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
     // simple communication between WorkManager and the InstallActivity to prevent duplicated downloads
     // persistence/consistence is not very important -> global available variables are ok
     companion object {
+        private const val CACHE_SIZE = 10L * 1024L * 1024L // 10 MiB
+
         private var numberOfRunningDownloads = AtomicInteger(0)
         private var lastChange = System.currentTimeMillis()
         fun areDownloadsCurrentlyRunning() = (numberOfRunningDownloads.get() != 0) &&
@@ -277,15 +299,45 @@ class FileDownloader(private val networkSettingsHelper: NetworkSettingsHelper) {
     }
 }
 
-internal class ProgressResponseBody(
-    private val responseBody: ResponseBody,
-    private var processChannel: Channel<FileDownloader.DownloadStatus>
-) : ResponseBody() {
+internal class ProgressResponseBody : ResponseBody(), Interceptor {
+    private lateinit var responseBody: ResponseBody
+    private var processChannel: Channel<FileDownloader.DownloadStatus>? = null
+
+    init {
+        startNewProgressChannel()
+    }
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val original = chain.proceed(chain.request())
+        responseBody = requireNotNull(original.body) { "original.body is null! Maybe called by cache?" }
+        return original.newBuilder()
+            .body(this)
+            .build()
+    }
+
+    fun startNewProgressChannel(): Channel<FileDownloader.DownloadStatus> {
+        val channel = Channel<FileDownloader.DownloadStatus>(Channel.CONFLATED)
+        processChannel = channel
+        return channel
+    }
+
+    fun useNoProgressChannel() {
+        processChannel = null
+    }
+
     override fun contentType() = responseBody.contentType()
     override fun contentLength() = responseBody.contentLength()
+
     override fun source() = trackTransmittedBytes(responseBody.source()).buffer()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private fun trackTransmittedBytes(source: Source): Source {
+        Log.i("FileDownloader", "make network request")
+        if (processChannel?.isClosedForSend == true) {
+            processChannel = null
+        }
+
+        // create a new object for tracking
         return object : ForwardingSource(source) {
             var totalBytesRead = 0L
             var reportedPercentage = -1
@@ -309,7 +361,7 @@ internal class ProgressResponseBody(
                 val progress = (100 * totalBytesRead / contentLength()).toInt()
                 if (progress != reportedPercentage) {
                     reportedPercentage = progress
-                    processChannel.trySend(FileDownloader.DownloadStatus(progress, toMB(totalBytesRead)))
+                    processChannel?.trySend(FileDownloader.DownloadStatus(progress, toMB(totalBytesRead)))
                 }
             }
 
@@ -317,8 +369,13 @@ internal class ProgressResponseBody(
                 val totalMegabytesRead = toMB(totalBytesRead)
                 if (totalMegabytesRead != reportedMB) {
                     reportedMB = totalMegabytesRead
-                    processChannel.trySend(FileDownloader.DownloadStatus(null, totalMegabytesRead))
+                    processChannel?.trySend(FileDownloader.DownloadStatus(null, totalMegabytesRead))
                 }
+            }
+
+            override fun close() {
+                source.close()
+                super.close()
             }
         }
     }
@@ -326,7 +383,6 @@ internal class ProgressResponseBody(
     companion object {
         private const val BYTES_IN_MB = 1_048_576
         private const val SOURCE_IS_EXHAUSTED = -1L
-
         private fun toMB(bytes: Long): Long {
             return bytes / BYTES_IN_MB
         }

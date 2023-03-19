@@ -17,7 +17,7 @@ internal class MulchIT : BaseAppIT() {
     @Test
     fun checkForUpdateWithoutLoadingFromCacheAsync() {
         val mulch = Mulch(CustomRepositoryConsumer(ApiConsumer.INSTANCE), deviceAbiExtractor)
-        val result = runBlocking { mulch.findLatestUpdate(context) }
+        val result = runBlocking { mulch.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

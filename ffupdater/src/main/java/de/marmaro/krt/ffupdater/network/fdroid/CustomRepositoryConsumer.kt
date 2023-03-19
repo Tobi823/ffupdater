@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import java.time.Instant
 
 class CustomRepositoryConsumer(
@@ -16,13 +16,13 @@ class CustomRepositoryConsumer(
 
     @MainThread
     suspend fun getLatestUpdate(
-        settings: NetworkSettingsHelper,
+        fileDownloader: FileDownloader,
         repoUrl: String,
         packageName: String,
-        abi: ABI
+        abi: ABI,
     ): LatestUpdate {
         val mainObject = try {
-            apiConsumer.consume("$repoUrl/index-v1.json", settings, MainObject::class)
+            apiConsumer.consume("$repoUrl/index-v1.json", fileDownloader, MainObject::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to find the latest version from index-v1.json.", e)
         }

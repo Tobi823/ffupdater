@@ -2,8 +2,8 @@ package de.marmaro.krt.ffupdater.network.mozillaci
 
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.network.ApiConsumer
+import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * Consume the "chain_of_trust.log".
@@ -12,25 +12,22 @@ class MozillaCiLogConsumer(private val apiConsumer: ApiConsumer) {
 
     @MainThread
     suspend fun updateCheck(
-        task: String,
-        apkArtifact: String,
-        settings: NetworkSettingsHelper
+        taskId: String,
+        fileDownloader: FileDownloader,
     ): Result {
-        val baseUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/$task"
-        val logUrl = "$baseUrl/artifacts/public/logs/chain_of_trust.log"
-
+        val logUrl = "https://firefoxci.taskcluster-artifacts.net/${taskId}/0/public/logs/chain_of_trust.log"
         val response = try {
-            apiConsumer.consume(logUrl, settings)
+            apiConsumer.consume(logUrl, fileDownloader)
         } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of $task from Mozilla (log).", e)
+            throw NetworkException("Fail to request the latest version of $taskId from Mozilla (log).", e)
         }
         val extractVersion = {
-            val regexMatch = Regex("""'(version|tag_name)': 'v?(.+)'""")
+            val regexMatch = Regex("""'(version|tag_name)': 'v?(?<version>.+)'""")
                 .find(response)
             checkNotNull(regexMatch) {
                 "Fail to extract the version with regex from string: $response"
             }
-            val matchGroup = regexMatch.groups[2]
+            val matchGroup = regexMatch.groups["version"]
             checkNotNull(matchGroup) {
                 "Fail to extract the version value from regex match: ${regexMatch.value}"
             }
@@ -38,12 +35,12 @@ class MozillaCiLogConsumer(private val apiConsumer: ApiConsumer) {
         }
 
         val extractDateString = {
-            val regexMatch = Regex("""'(published_at|now)': '(.+)'""")
+            val regexMatch = Regex("""'(published_at|now)': '(?<date>.+)'""")
                 .find(response)
             checkNotNull(regexMatch) {
                 "Fail to extract the date with regex from string: $response"
             }
-            val matchGroup = regexMatch.groups[2]
+            val matchGroup = regexMatch.groups["date"]
             checkNotNull(matchGroup) {
                 "Fail to extract the date value from regex match: ${regexMatch.value}"
             }
@@ -52,14 +49,12 @@ class MozillaCiLogConsumer(private val apiConsumer: ApiConsumer) {
 
         return Result(
             version = extractVersion(),
-            url = "$baseUrl/artifacts/$apkArtifact",
             releaseDate = extractDateString()
         )
     }
 
     data class Result(
         val version: String,
-        val url: String,
         val releaseDate: String,
     )
 

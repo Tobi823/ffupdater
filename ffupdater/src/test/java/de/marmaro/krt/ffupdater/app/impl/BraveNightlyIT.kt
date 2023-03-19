@@ -18,7 +18,7 @@ internal class BraveNightlyIT : BaseAppIT() {
     fun findAppUpdateStatus() {
         every { deviceSdkTester.supportsAndroidNougat() } returns true
         val brave = BraveNightly(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester)
-        val result = runBlocking { brave.findLatestUpdate(context) }
+        val result = runBlocking { brave.findLatestUpdate(context, , false) }
         verifyThatDownloadLinkAvailable(result.downloadUrl)
         val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val age = Duration.between(releaseDate, ZonedDateTime.now())

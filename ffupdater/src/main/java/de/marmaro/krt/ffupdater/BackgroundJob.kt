@@ -13,6 +13,8 @@ import androidx.work.NetworkType.CONNECTED
 import androidx.work.NetworkType.UNMETERED
 import androidx.work.WorkRequest.DEFAULT_BACKOFF_DELAY_MILLIS
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.AppAndUpdateStatus
+import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.background.BackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -24,6 +26,7 @@ import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.FileDownloader
+import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.USE_CACHE_IF_NOT_TOO_OLD
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
@@ -113,34 +116,34 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         shouldDownloadsBeAborted()?.let {
             // execute if downloads should be aborted
-            notificationBuilder.showUpdateAvailableNotification(context, outdatedApps)
+            val apps = outdatedApps.map { (app, _) -> app }
+            notificationBuilder.showUpdateAvailableNotification(context, apps)
             return it
         }
 
-        val downloadingApps = outdatedApps.filter {
+        val downloadedApps = outdatedApps.filter { (app, updateStatus) ->
             if (!StorageUtil.isEnoughStorageAvailable(context)) {
-                Log.i(LOG_TAG, "Skip $it because not enough storage is available.")
-                notificationBuilder.showUpdateAvailableNotification(context, it)
+                Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
+                notificationBuilder.showUpdateAvailableNotification(context, app)
                 return@filter false
             }
-            downloadUpdateAndReturnAvailability(it)
+            downloadUpdateAndReturnAvailability(app, updateStatus)
         }
 
         shouldInstallationBeAborted()?.let {
             // execute if installation should be aborted
-            notificationBuilder.showUpdateAvailableNotification(context, downloadingApps)
+            val apps = downloadedApps.map { (app, _) -> app }
+            notificationBuilder.showUpdateAvailableNotification(context, apps)
             return it
         }
 
         // update FFUpdater at last because an update will kill this update process
-        val appsForInstallation = downloadingApps.toMutableList()
-        if (appsForInstallation.contains(App.FFUPDATER)) {
-            appsForInstallation.remove(App.FFUPDATER)
-            appsForInstallation.add(App.FFUPDATER)
+        val appsForInstallation = downloadedApps.sortedBy { (app, _) ->
+            if (app != App.FFUPDATER) app.ordinal else Int.MAX_VALUE
         }
 
-        appsForInstallation.forEach {
-            installApplication(it)
+        appsForInstallation.forEach { (app, updateStatus) ->
+            installApplication(app, updateStatus)
         }
 
         return Result.success()
@@ -165,20 +168,30 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return null
     }
 
-    private suspend fun checkForOutdatedApps(): List<App> {
+    private suspend fun checkForOutdatedApps(): List<AppAndUpdateStatus> {
         dataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
-        val apps = App.values()
+        val network = NetworkSettingsHelper(applicationContext)
+        val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
+        val appsAndUpdateStatus = App.values()
+            // simple and fast checks
             .filter { it !in backgroundSettings.excludedAppsFromUpdateCheck }
             .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { it.impl.isInstalled(context) == InstallationStatus.INSTALLED }
-            .filter { it.metadataCache.getCachedOrFetchIfOutdated(context).isUpdateAvailable }
+            // query latest available update
+            .map {
+                val updateStatus = it.impl.findAppUpdateStatus(context, fileDownloader)
+                requireNotNull(updateStatus) { "impossible because of USE_CACHE_IF_NOT_TOO_OLD" }
+                AppAndUpdateStatus(it, updateStatus)
+            }
 
-        apps.forEach {
-            val latestUpdate = it.metadataCache.getCached(context)!!.latestUpdate
-            it.downloadedFileCache.deleteAllExceptLatestApkFile(context, latestUpdate)
+        // delete old cached APK files
+        appsAndUpdateStatus.forEach { (app, appUpdateStatus) ->
+            app.downloadedFileCache.deleteAllExceptLatestApkFile(context, appUpdateStatus.latestUpdate)
         }
 
-        return apps
+        // return outdated apps with available updates
+        return appsAndUpdateStatus
+            .filter { (_, appUpdateStatus) -> appUpdateStatus.isUpdateAvailable }
     }
 
     private fun shouldDownloadsBeAborted(): Result? {
@@ -204,16 +217,15 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     @MainThread
-    private suspend fun downloadUpdateAndReturnAvailability(app: App): Boolean {
-        val updateResult = app.metadataCache.getCachedOrFetchIfOutdated(context)
-        val latestUpdate = updateResult.latestUpdate
+    private suspend fun downloadUpdateAndReturnAvailability(app: App, updateStatus: AppUpdateStatus): Boolean {
+        val latestUpdate = updateStatus.latestUpdate
         if (app.downloadedFileCache.isApkFileCached(context, latestUpdate)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return true
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
-        val downloader = FileDownloader(networkSettings)
+        val downloader = FileDownloader(networkSettings, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
         val downloadFile = app.downloadedFileCache.getApkOrZipTargetFileForDownload(context, latestUpdate)
         return try {
             // run async with await later
@@ -274,9 +286,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return null
     }
 
-    private suspend fun installApplication(app: App) {
-        val availableResult = app.metadataCache.getCachedOrExceptionIfOutdated(context).latestUpdate
-        val file = app.downloadedFileCache.getApkFile(context, availableResult)
+    private suspend fun installApplication(app: App, updateStatus: AppUpdateStatus) {
+        val file = app.downloadedFileCache.getApkFile(context, updateStatus.latestUpdate)
         require(file.exists()) { "AppCache has no cached APK file" }
 
         val installer = createBackgroundAppInstaller(context, app)
@@ -284,8 +295,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             installer.startInstallation(context, file)
 
             notificationBuilder.showInstallSuccessNotification(context, app)
-            val metadata = app.metadataCache.getCachedOrNullIfOutdated(context)
-            app.impl.appIsInstalledCallback(context, metadata!!)
+            app.impl.appIsInstalledCallback(context, updateStatus)
 
             if (backgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                 app.downloadedFileCache.deleteAllApkFileForThisApp(context)
