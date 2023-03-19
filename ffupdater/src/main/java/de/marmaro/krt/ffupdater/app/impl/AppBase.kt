@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.AnyThread
 import androidx.annotation.WorkerThread
-import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.FFUpdaterException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -84,7 +83,7 @@ abstract class AppBase {
     }
 
     suspend fun findAppUpdateStatus(context: Context, fileDownloader: FileDownloader): AppUpdateStatus? {
-        Log.i("FileDownloader", "findAppUpdateStatus $app")
+        Log.d(LOG_TAG, "$app: findAppUpdateStatus")
         val available = try {
             findLatestUpdate(context, fileDownloader) ?: return null
         } catch (e: FFUpdaterException) {
@@ -119,6 +118,6 @@ abstract class AppBase {
         val ARM32_ARM64_X86_X64 = listOf(ARM64_V8A, ARMEABI_V7A, X86_64, X86)
         val ARM32_ARM64 = listOf(ARM64_V8A, ARMEABI_V7A)
         val ARM32_X86 = listOf(ARMEABI_V7A, X86)
-        val gson = Gson()
+        val LOG_TAG = "AppBase"
     }
 }

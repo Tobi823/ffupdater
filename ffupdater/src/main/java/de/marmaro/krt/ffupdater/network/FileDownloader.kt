@@ -332,7 +332,7 @@ internal class ProgressResponseBody : ResponseBody(), Interceptor {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun trackTransmittedBytes(source: Source): Source {
-        Log.i("FileDownloader", "make network request")
+        Log.d(LOG_TAG, "Make network request")
         if (processChannel?.isClosedForSend == true) {
             processChannel = null
         }
@@ -381,6 +381,7 @@ internal class ProgressResponseBody : ResponseBody(), Interceptor {
     }
 
     companion object {
+        private const val LOG_TAG = "ProgressResponseBody"
         private const val BYTES_IN_MB = 1_048_576
         private const val SOURCE_IS_EXHAUSTED = -1L
         private fun toMB(bytes: Long): Long {
