@@ -39,7 +39,7 @@ class Lockwise(
     override suspend fun findLatestUpdate(
         context: Context,
         fileDownloader: FileDownloader,
-    ): LatestUpdate? {
+    ): LatestUpdate {
         val result = consumer.updateCheck(
             repoOwner = "mozilla-lockwise",
             repoName = "lockwise-android",

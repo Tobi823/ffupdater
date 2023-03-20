@@ -49,7 +49,7 @@ class TorBrowserAlpha(
     override suspend fun findLatestUpdate(
         context: Context,
         fileDownloader: FileDownloader,
-    ): LatestUpdate? {
+    ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val deviceSettings = DeviceSettingsHelper(context)
 

@@ -82,10 +82,10 @@ abstract class AppBase {
     open fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
     }
 
-    suspend fun findAppUpdateStatus(context: Context, fileDownloader: FileDownloader): AppUpdateStatus? {
+    suspend fun findAppUpdateStatus(context: Context, fileDownloader: FileDownloader): AppUpdateStatus {
         Log.d(LOG_TAG, "$app: findAppUpdateStatus")
         val available = try {
-            findLatestUpdate(context, fileDownloader) ?: return null
+            findLatestUpdate(context, fileDownloader)
         } catch (e: NetworkException) {
             throw NetworkException("Can't find latest update for ${app.name}")
         } catch (e: DisplayableException) {
@@ -104,7 +104,7 @@ abstract class AppBase {
     internal abstract suspend fun findLatestUpdate(
         context: Context,
         fileDownloader: FileDownloader,
-    ): LatestUpdate?
+    ): LatestUpdate
 
     @AnyThread
     open fun isAvailableVersionHigherThanInstalled(

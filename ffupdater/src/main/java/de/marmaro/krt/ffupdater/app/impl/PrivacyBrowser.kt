@@ -41,7 +41,7 @@ class PrivacyBrowser(
     override suspend fun findLatestUpdate(
         context: Context,
         fileDownloader: FileDownloader,
-    ): LatestUpdate? {
+    ): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
         val networkSettings = NetworkSettingsHelper(context)
         val result = fdroidConsumer.getLatestUpdate(packageName, fileDownloader, 1)

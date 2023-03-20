@@ -43,7 +43,7 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         return updateCheck(
             repoOwner = "brave",
             repoName = "brave-browser",
-            initResultsPerPage = 20,
+            initResultsPerPage = 40,
             isValidRelease = isValidRelease,
             isSuitableAsset = isSuitableAsset,
             dontUseApiForLatestRelease = true,

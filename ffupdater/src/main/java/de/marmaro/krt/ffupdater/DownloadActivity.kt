@@ -257,8 +257,7 @@ class DownloadActivity : AppCompatActivity() {
         val network = NetworkSettingsHelper(applicationContext)
         val fileDownloader = FileDownloader(network, applicationContext, USE_EVEN_VERY_OLD_CACHE)
         try {
-            appUpdateStatus = requireNotNull(app.impl.findAppUpdateStatus(this, fileDownloader))
-            { "could not be null because of USE_CACHE_IF_NOT_TOO_OLD" }
+            appUpdateStatus = app.impl.findAppUpdateStatus(this, fileDownloader)
         } catch (e: ApiRateLimitExceededException) {
             displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
         } catch (e: DisplayableException) {

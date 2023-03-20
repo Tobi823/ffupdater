@@ -42,7 +42,7 @@ class MullFromRepo(
     override suspend fun findLatestUpdate(
         context: Context,
         fileDownloader: FileDownloader,
-    ): LatestUpdate? {
+    ): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val networkSettings = NetworkSettingsHelper(preferences)

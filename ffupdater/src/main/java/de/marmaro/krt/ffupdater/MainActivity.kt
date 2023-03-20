@@ -48,6 +48,7 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.time.DateTimeException
 import java.time.Duration
 import java.time.ZonedDateTime
@@ -145,11 +146,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @MainThread
+    @UiThread
     private suspend fun updateMetadataOfApps(useCache: Boolean = true) {
-        val apps = App.values()
-            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
-            .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
+        val apps = withContext(Dispatchers.IO) {
+            App.values()
+                .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
+                .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
+        }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
@@ -175,8 +178,9 @@ class MainActivity : AppCompatActivity() {
     private suspend fun updateMetadataOf(app: App, fileDownloader: FileDownloader) {
         try {
             recycleViewAdapter.notifyAppChange(app, null)
-            val updateStatus = app.impl.findAppUpdateStatus(applicationContext, fileDownloader)
-            requireNotNull(updateStatus) { "impossible because of USE_CACHE_IF_NOT_TOO_OLD / FORCE_NETWORK" }
+            val updateStatus = withContext(Dispatchers.IO) {
+                app.impl.findAppUpdateStatus(applicationContext, fileDownloader)
+            }
             recycleViewAdapter.notifyAppChange(app, updateStatus)
         } catch (e: ApiRateLimitExceededException) {
             recycleViewAdapter.notifyErrorForApp(
@@ -209,7 +213,7 @@ class MainActivity : AppCompatActivity() {
         val network = NetworkSettingsHelper(applicationContext)
         val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
         val metadata = app.impl.findAppUpdateStatus(this, fileDownloader)
-        if (metadata?.isUpdateAvailable == false) {
+        if (!metadata.isUpdateAvailable) {
             // this may displays RunningDownloadsDialog and updates the app
             InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
             return
@@ -269,6 +273,7 @@ class MainActivity : AppCompatActivity() {
         private var appAndUpdateStatus = mutableMapOf<App, AppUpdateStatus>()
 
 
+        @UiThread
         @SuppressLint("NotifyDataSetChanged")
         fun notifyInstalledApps(appsWithCorrectFingerprint: List<App>, appsWithWrongFingerprint: List<App>) {
             val allElements = appsWithCorrectFingerprint + appsWithWrongFingerprint
@@ -279,6 +284,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        @UiThread
         fun notifyAppChange(app: App, updateStatus: AppUpdateStatus?) {
             if (updateStatus == null) {
                 appAndUpdateStatus.remove(app)
@@ -290,6 +296,7 @@ class MainActivity : AppCompatActivity() {
             notifyItemChanged(index)
         }
 
+        @UiThread
         fun notifyErrorForApp(app: App, message: String, exception: Exception?) {
             errors[app] = ExceptionWrapper(message, exception)
 
@@ -298,6 +305,7 @@ class MainActivity : AppCompatActivity() {
             notifyItemChanged(index)
         }
 
+        @UiThread
         fun notifyClearedErrorForApp(app: App) {
             if (errors.containsKey(app)) {
                 errors.remove(app)

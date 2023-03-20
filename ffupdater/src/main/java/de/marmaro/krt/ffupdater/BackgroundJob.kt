@@ -180,7 +180,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             // query latest available update
             .map {
                 val updateStatus = it.impl.findAppUpdateStatus(context, fileDownloader)
-                requireNotNull(updateStatus) { "impossible because of USE_CACHE_IF_NOT_TOO_OLD" }
                 AppAndUpdateStatus(it, updateStatus)
             }
 
