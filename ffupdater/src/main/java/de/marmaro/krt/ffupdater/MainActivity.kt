@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity() {
         setLoadAnimationState(true)
         val network = NetworkSettingsHelper(applicationContext)
         val cacheBehaviour = if (useCache) USE_CACHE_IF_NOT_TOO_OLD else FORCE_NETWORK
-        val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
+        val fileDownloader = FileDownloader(network, applicationContext, cacheBehaviour)
         apps.forEach {
             updateMetadataOf(it, fileDownloader)
         }

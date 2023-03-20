@@ -40,7 +40,7 @@ class FileDownloader(
 
     data class DownloadStatus(val progressInPercent: Int?, val totalMB: Long)
 
-    enum class CacheBehaviour { FORCE_NETWORK, USE_CACHE_IF_NOT_TOO_OLD }
+    enum class CacheBehaviour { FORCE_NETWORK, USE_CACHE_IF_NOT_TOO_OLD, USE_EVEN_VERY_OLD_CACHE }
 
     suspend fun downloadBigFileAsync(
         url: String,
@@ -95,6 +95,7 @@ class FileDownloader(
     @Throws(NetworkException::class)
     suspend fun downloadSmallFileAsync(url: String): String {
         progressResponseBody.useNoProgressChannel()
+        progressResponseBody.currentUrl = url
         return withContext(Dispatchers.IO) {
             try {
                 downloadSmallFileInternal(url)
@@ -104,6 +105,8 @@ class FileDownloader(
                 throw NetworkException("Request of HTTP-API $url failed.", e)
             } catch (e: NetworkException) {
                 throw NetworkException("Request of HTTP-API $url failed.", e)
+            } finally {
+                progressResponseBody.currentUrl = null
             }
         }
     }
@@ -138,7 +141,12 @@ class FileDownloader(
                     CacheBehaviour.FORCE_NETWORK -> CacheControl.FORCE_NETWORK
                     CacheBehaviour.USE_CACHE_IF_NOT_TOO_OLD -> {
                         CacheControl.Builder()
-                            .maxStale(1, TimeUnit.HOURS)
+                            .maxAge(1, TimeUnit.HOURS)
+                            .build()
+                    }
+                    CacheBehaviour.USE_EVEN_VERY_OLD_CACHE -> {
+                        CacheControl.Builder()
+                            .maxAge(2, TimeUnit.DAYS)
                             .build()
                     }
                 }
@@ -297,6 +305,7 @@ class FileDownloader(
 internal class ProgressResponseBody : ResponseBody(), Interceptor {
     private lateinit var responseBody: ResponseBody
     private var processChannel: Channel<FileDownloader.DownloadStatus>? = null
+    var currentUrl: String? = null
 
     init {
         startNewProgressChannel()
@@ -306,6 +315,13 @@ internal class ProgressResponseBody : ResponseBody(), Interceptor {
         val original = chain.proceed(chain.request())
         responseBody = requireNotNull(original.body) { "original.body is null! Maybe called by cache?" }
         return original.newBuilder()
+            // ignore must-revalidate for cache-control
+            // override max-age because I want to keep cache entries for USE_EVEN_VERY_OLD_CACHE up to 2 days
+            .header("cache-control", "max-age=172800")
+            // the age should be determined by OkHttp-Received-Millis and not by the server
+            .removeHeader("last-modified")
+            .removeHeader("date")
+            .removeHeader("age")
             .body(this)
             .build()
     }
@@ -327,7 +343,7 @@ internal class ProgressResponseBody : ResponseBody(), Interceptor {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun trackTransmittedBytes(source: Source): Source {
-        Log.d(LOG_TAG, "Make network request")
+        Log.i(LOG_TAG, "Make network request: $currentUrl")
         if (processChannel?.isClosedForSend == true) {
             processChannel = null
         }

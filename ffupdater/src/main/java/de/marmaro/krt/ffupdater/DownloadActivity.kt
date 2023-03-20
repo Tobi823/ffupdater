@@ -35,6 +35,7 @@ import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.USE_CACHE_IF_NOT_TOO_OLD
+import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.USE_EVEN_VERY_OLD_CACHE
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -254,7 +255,7 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
         val network = NetworkSettingsHelper(applicationContext)
-        val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
+        val fileDownloader = FileDownloader(network, applicationContext, USE_EVEN_VERY_OLD_CACHE)
         try {
             appUpdateStatus = requireNotNull(app.impl.findAppUpdateStatus(this, fileDownloader))
             { "could not be null because of USE_CACHE_IF_NOT_TOO_OLD" }
