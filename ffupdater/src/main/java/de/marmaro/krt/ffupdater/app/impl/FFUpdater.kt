@@ -20,7 +20,6 @@ class FFUpdater(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
     override val app = App.FFUPDATER
-    override val codeName = "FFUpdater"
     override val packageName = "de.marmaro.krt.ffupdater"
     override val title = R.string.app_name
     override val description = R.string.app_description

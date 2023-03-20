@@ -28,7 +28,6 @@ class FirefoxKlar(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.FIREFOX_KLAR
-    override val codeName = "FirefoxKlar"
     override val packageName = "org.mozilla.klar"
     override val title = R.string.firefox_klar__title
     override val description = R.string.firefox_klar__description

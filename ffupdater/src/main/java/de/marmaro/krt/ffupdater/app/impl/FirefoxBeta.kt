@@ -25,7 +25,6 @@ class FirefoxBeta(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.FIREFOX_BETA
-    override val codeName = "FirefoxBeta"
     override val packageName = "org.mozilla.firefox_beta"
     override val title = R.string.firefox_beta__title
     override val description = R.string.firefox_beta__description

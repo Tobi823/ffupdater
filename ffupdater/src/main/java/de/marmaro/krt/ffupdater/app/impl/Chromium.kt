@@ -29,7 +29,6 @@ class Chromium(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.CHROMIUM
-    override val codeName = "Chromium"
     override val packageName = "org.chromium.chrome"
     override val title = R.string.chromium__title
     override val description = R.string.chromium__description

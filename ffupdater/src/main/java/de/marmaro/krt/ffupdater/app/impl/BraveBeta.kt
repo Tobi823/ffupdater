@@ -29,7 +29,6 @@ class BraveBeta(
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
     override val app = App.BRAVE_BETA
-    override val codeName = "BraveBeta"
     override val packageName = "com.brave.browser_beta"
     override val title = R.string.brave_beta__title
     override val description = R.string.brave_beta__description

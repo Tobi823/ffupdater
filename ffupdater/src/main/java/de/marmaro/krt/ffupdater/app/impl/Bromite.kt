@@ -27,7 +27,6 @@ class Bromite(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.BROMITE
-    override val codeName = "Bromite"
     override val packageName = "org.bromite.bromite"
     override val title = R.string.bromite__title
     override val description = R.string.bromite__description

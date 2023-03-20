@@ -1,8 +1,8 @@
 package de.marmaro.krt.ffupdater.network.exceptions
 
-import de.marmaro.krt.ffupdater.FFUpdaterException
+import de.marmaro.krt.ffupdater.DisplayableException
 
-class InvalidApiResponseException : FFUpdaterException {
+class InvalidApiResponseException : DisplayableException {
     constructor(message: String) : super(message)
     constructor(message: String, exception: Exception) : super(message, exception)
 }

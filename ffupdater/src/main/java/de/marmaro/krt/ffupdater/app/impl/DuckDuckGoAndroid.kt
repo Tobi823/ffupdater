@@ -22,7 +22,6 @@ class DuckDuckGoAndroid(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
     override val app = App.DUCKDUCKGO_ANDROID
-    override val codeName = "DuckDuckGo Android"
     override val packageName = "com.duckduckgo.mobile.android"
     override val title = R.string.duckduckgo_android__title
     override val description = R.string.duckduckgo_android__description

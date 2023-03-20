@@ -27,7 +27,6 @@ class BromiteSystemWebView(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.BROMITE_SYSTEMWEBVIEW
-    override val codeName = "BromiteSystemWebView"
     override val packageName = "org.bromite.webview"
     override val title = R.string.bromite_systemwebview__title
     override val description = R.string.bromite_systemwebview__description

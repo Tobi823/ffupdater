@@ -33,7 +33,6 @@ class FirefoxNightly(
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
     override val app = App.FIREFOX_NIGHTLY
-    override val codeName = "FirefoxNightly"
     override val packageName = "org.mozilla.fenix"
     override val title = R.string.firefox_nightly__title
     override val description = R.string.firefox_nightly__description

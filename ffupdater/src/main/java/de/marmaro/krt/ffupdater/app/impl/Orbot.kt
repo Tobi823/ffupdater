@@ -25,7 +25,6 @@ class Orbot(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.ORBOT
-    override val codeName = "Orbot"
     override val packageName = "org.torproject.android"
     override val title = R.string.orbot__title
     override val description = R.string.orbot__description

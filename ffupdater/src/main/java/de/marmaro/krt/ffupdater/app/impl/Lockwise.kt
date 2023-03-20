@@ -20,7 +20,6 @@ class Lockwise(
     private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
 ) : AppBase() {
     override val app = App.LOCKWISE
-    override val codeName = "Lockwise"
     override val packageName = "mozilla.lockbox"
     override val title = R.string.lockwise__title
     override val description = R.string.lockwise__description

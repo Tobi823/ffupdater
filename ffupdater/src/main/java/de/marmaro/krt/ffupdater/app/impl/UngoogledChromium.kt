@@ -24,7 +24,6 @@ class UngoogledChromium(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.UNGOOGLED_CHROMIUM
-    override val codeName = "UngoogledChromium"
     override val packageName = "org.ungoogled.chromium.stable"
     override val title = R.string.ungoogled_chromium__title
     override val description = R.string.ungoogled_chromium__description

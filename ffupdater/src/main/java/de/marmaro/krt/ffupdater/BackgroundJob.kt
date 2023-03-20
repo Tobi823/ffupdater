@@ -253,7 +253,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             notificationRemover.removeDownloadRunningNotification(context, app)
             app.downloadedFileCache.deleteAllExceptLatestApkFile(context, latestUpdate)
             true
-        } catch (e: FFUpdaterException) {
+        } catch (e: DisplayableException) {
             notificationRemover.removeDownloadRunningNotification(context, app)
             notificationBuilder.showDownloadNotification(context, app, e)
             app.downloadedFileCache.deleteAllApkFileForThisApp(context)

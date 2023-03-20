@@ -107,7 +107,7 @@ class BackgroundNotificationBuilder(
         showNotification(context, channel, notification, null)
     }
 
-    fun showDownloadNotification(context: Context, app: App, exception: FFUpdaterException) {
+    fun showDownloadNotification(context: Context, app: App, exception: DisplayableException) {
         val appTitle = context.getString(app.impl.title)
         val channel = ChannelData(
             id = "download_error_notification",

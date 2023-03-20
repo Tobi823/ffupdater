@@ -21,7 +21,6 @@ class Mulch(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.MULCH
-    override val codeName = "Mulch"
     override val packageName = "us.spotco.mulch"
     override val title = R.string.mulch__title
     override val description = R.string.mulch__description

@@ -28,7 +28,6 @@ class FirefoxFocusBeta(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.FIREFOX_FOCUS_BETA
-    override val codeName = "FirefoxFocusBea"
     override val packageName = "org.mozilla.focus.beta"
     override val title = R.string.firefox_focus_beta__title
     override val description = R.string.firefox_focus_beta__description

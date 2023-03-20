@@ -22,7 +22,6 @@ class PrivacyBrowser(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.PRIVACY_BROWSER
-    override val codeName = "PrivacyBrowser"
     override val packageName = "com.stoutner.privacybrowser.standard"
     override val title = R.string.privacy_browser__title
     override val description = R.string.privacy_browser__description

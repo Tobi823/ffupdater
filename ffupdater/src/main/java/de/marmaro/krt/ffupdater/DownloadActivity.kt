@@ -338,7 +338,7 @@ class DownloadActivity : AppCompatActivity() {
         } catch (e: NetworkException) {
             displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
             app.downloadedFileCache.deleteAllApkFileForThisApp(this)
-        } catch (e: FFUpdaterException) {
+        } catch (e: DisplayableException) {
             displayDownloadFailure(e.message ?: e.javaClass.name, e)
             app.downloadedFileCache.deleteAllApkFileForThisApp(this)
         } finally {
@@ -378,7 +378,7 @@ class DownloadActivity : AppCompatActivity() {
             return true
         } catch (e: NetworkException) {
             displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
-        } catch (e: FFUpdaterException) {
+        } catch (e: DisplayableException) {
             displayDownloadFailure(e.message ?: e.javaClass.name, e)
         } finally {
             hide(R.id.downloadingFile)

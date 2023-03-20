@@ -24,7 +24,6 @@ class Vivaldi(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.VIVALDI
-    override val codeName = "Vivaldi"
     override val packageName = "com.vivaldi.browser"
     override val title = R.string.vivaldi__title
     override val description = R.string.vivaldi__description

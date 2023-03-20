@@ -24,7 +24,6 @@ class TorBrowserAlpha(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.TOR_BROWSER_ALPHA
-    override val codeName = "TorBrowserAlpha"
     override val packageName = "org.torproject.torbrowser_alpha"
     override val title = R.string.tor_browser_alpha__title
     override val description = R.string.tor_browser_alpha__description

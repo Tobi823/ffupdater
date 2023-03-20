@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.AnyThread
 import androidx.annotation.WorkerThread
-import de.marmaro.krt.ffupdater.FFUpdaterException
+import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
@@ -16,13 +16,13 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.ABI.*
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.*
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
 
 abstract class AppBase {
     abstract val app: App
-    abstract val codeName: String
     abstract val packageName: String
     abstract val title: Int
     abstract val description: Int
@@ -86,10 +86,12 @@ abstract class AppBase {
         Log.d(LOG_TAG, "$app: findAppUpdateStatus")
         val available = try {
             findLatestUpdate(context, fileDownloader) ?: return null
-        } catch (e: FFUpdaterException) {
-            throw FFUpdaterException("Can't find latest update for $codeName.", e)
+        } catch (e: NetworkException) {
+            throw NetworkException("Can't find latest update for ${app.name}")
+        } catch (e: DisplayableException) {
+            throw DisplayableException("Can't find latest update for ${app.name}.", e)
         } catch (e: Exception) {
-            throw Exception("Can't find latest update for $codeName.", e)
+            throw Exception("Can't find latest update for ${app.name}.", e)
         }
         return AppUpdateStatus(
             latestUpdate = available,

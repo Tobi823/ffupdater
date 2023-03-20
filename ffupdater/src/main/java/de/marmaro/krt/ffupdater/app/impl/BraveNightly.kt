@@ -29,7 +29,6 @@ class BraveNightly(
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) : AppBase() {
     override val app = App.BRAVE_NIGHTLY
-    override val codeName = "BraveNightly"
     override val packageName = "com.brave.browser_nightly"
     override val title = R.string.brave_nightly__title
     override val description = R.string.brave_nightly__description
