@@ -255,41 +255,20 @@ class DownloadActivity : AppCompatActivity() {
 
         val network = NetworkSettingsHelper(applicationContext)
         val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
-        var status = app.impl.findAppUpdateStatus(this, fileDownloader)
-        // TODO es fehlt der Netzwerkcheck
-        if (status == null) {
-            fileDownloader.changeCacheBehaviour(USE_CACHE_IF_NOT_TOO_OLD)
-            status = fetchDownloadInformationHelper(fileDownloader)
+        try {
+            appUpdateStatus = requireNotNull(app.impl.findAppUpdateStatus(this, fileDownloader))
+            { "could not be null because of USE_CACHE_IF_NOT_TOO_OLD" }
+        } catch (e: ApiRateLimitExceededException) {
+            displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
+        } catch (e: DisplayableException) {
+            displayFetchFailure(getString(download_activity__temporary_network_issue), e)
         }
-        hide(R.id.fetchUrl)
-        if (status == null) {
-            return false
-        }
-        appUpdateStatus = status
 
+        hide(R.id.fetchUrl)
         show(R.id.fetchedUrlSuccess)
         val finishedText = getString(download_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
         return true
-    }
-
-    private suspend fun fetchDownloadInformationHelper(fileDownloader: FileDownloader): AppUpdateStatus? {
-        // only check for updates if network type requirements are met
-        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-            displayFetchFailure(getString(main_activity__no_unmetered_network))
-            return null
-        }
-
-        try {
-            val updateStatus = app.impl.findAppUpdateStatus(this, fileDownloader)
-            requireNotNull(updateStatus) { "impossible because of USE_CACHE_IF_NOT_TOO_OLD" }
-            return updateStatus
-        } catch (e: ApiRateLimitExceededException) {
-            displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
-        } catch (e: NetworkException) {
-            displayFetchFailure(getString(download_activity__temporary_network_issue), e)
-        }
-        return null
     }
 
     @MainThread

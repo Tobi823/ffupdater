@@ -40,11 +40,7 @@ class FileDownloader(
 
     data class DownloadStatus(val progressInPercent: Int?, val totalMB: Long)
 
-    enum class CacheBehaviour { FORCE_CACHE, FORCE_NETWORK, USE_CACHE_IF_NOT_TOO_OLD }
-
-    fun changeCacheBehaviour(newBehaviour: CacheBehaviour) {
-        cacheBehaviour = newBehaviour
-    }
+    enum class CacheBehaviour { FORCE_NETWORK, USE_CACHE_IF_NOT_TOO_OLD }
 
     suspend fun downloadBigFileAsync(
         url: String,
@@ -139,7 +135,6 @@ class FileDownloader(
             .url(url)
             .cacheControl(
                 when (cacheControl) {
-                    CacheBehaviour.FORCE_CACHE -> CacheControl.FORCE_CACHE
                     CacheBehaviour.FORCE_NETWORK -> CacheControl.FORCE_NETWORK
                     CacheBehaviour.USE_CACHE_IF_NOT_TOO_OLD -> {
                         CacheControl.Builder()
