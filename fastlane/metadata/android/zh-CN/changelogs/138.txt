@@ -1,0 +1,4 @@
+* 感谢来自 Weblate 的贡献者：Alexthegib, Juraj Motuz, Retrial, gallegonovato, MkQtS 和 109247019824
+* 热修复：更新下载最新版 Firefox 的下载链接
+* 使用 OkHttp 改进跨应用程序的缓存重用
+* 基于热修复：Forground 设置“在计量网络上更新检查”目前被忽略
