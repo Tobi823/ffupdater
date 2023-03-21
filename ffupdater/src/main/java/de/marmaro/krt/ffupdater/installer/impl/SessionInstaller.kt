@@ -19,6 +19,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
+import de.marmaro.krt.ffupdater.installer.manifacturer.GeneralInstallResultDecoder
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -137,11 +138,14 @@ class SessionInstaller(
             STATUS_FAILURE -> "The installation failed in a generic way."
             STATUS_FAILURE_ABORTED -> "The installation failed because it was actively aborted."
             STATUS_FAILURE_BLOCKED -> "The installation failed because it was blocked."
-            STATUS_FAILURE_CONFLICT -> "The installation failed because it conflicts (or is inconsistent with) with another package already installed on the device."
-            STATUS_FAILURE_INCOMPATIBLE -> "The installation failed because it is fundamentally incompatible with this device."
+            STATUS_FAILURE_CONFLICT -> "The installation failed because it conflicts (or is inconsistent with) with " +
+                    "another package already installed on the device."
+            STATUS_FAILURE_INCOMPATIBLE -> "The installation failed because it is fundamentally incompatible with " +
+                    "this device."
             STATUS_FAILURE_INVALID -> "The installation failed because one or more of the APKs was invalid."
             STATUS_FAILURE_STORAGE -> "The installation failed because of storage issues."
-            else -> "The installation failed. Status: $status."
+            else -> "The installation failed. Status: $status. Maybe " +
+                    "${GeneralInstallResultDecoder.getShortErrorMessage(status)} ?"
         }
         return when (val statusMessage = bundle?.getString(EXTRA_STATUS_MESSAGE)) {
             null -> errorMessage
