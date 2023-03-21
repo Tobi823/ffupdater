@@ -15,6 +15,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
+import de.marmaro.krt.ffupdater.installer.manifacturer.GeneralInstallResultDecoder
 import de.marmaro.krt.ffupdater.installer.manifacturer.HuaweiInstallResultDecoder
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File
@@ -87,20 +88,26 @@ class IntentInstaller(
 
     private fun getShortErrorMessage(installResult: Int?): String {
         // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
+        var message: String? = null
         if (Build.MANUFACTURER == "HUAWEI") {
-            HuaweiInstallResultDecoder.getShortErrorMessage(installResult)
-                ?.let { return it }
+            message = HuaweiInstallResultDecoder.getShortErrorMessage(installResult)
         }
-        return "Installation failed."
+        if (message == null) {
+            message = GeneralInstallResultDecoder.getShortErrorMessage(installResult)
+        }
+        return message ?: "Installation failed."
     }
 
     private fun getTranslatedErrorMessage(context: Context, installResult: Int?): String {
         // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
+        var message: String? = null
         if (Build.MANUFACTURER == "HUAWEI") {
-            HuaweiInstallResultDecoder.getTranslatedErrorMessage(context, installResult)
-                ?.let { return it }
+            message = HuaweiInstallResultDecoder.getTranslatedErrorMessage(context, installResult)
         }
-        return "Installation failed."
+        if (message == null) {
+            message = GeneralInstallResultDecoder.getShortErrorMessage(installResult)
+        }
+        return message ?: "Installation failed."
     }
 
     companion object {
