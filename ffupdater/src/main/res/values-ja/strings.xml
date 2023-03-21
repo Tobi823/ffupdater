@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="action_about_title">FFUpdaterについて</string>
-    <string name="app_description">プライバシーを重視したブラウザ用のアップデータ</string>
+    <string name="action_about_title">FFUpdater について</string>
+    <string name="app_description">プライバシーを重視したブラウザー用のアップデーター</string>
     <string name="app_icon">アプリアイコン</string>
     <string name="app_name">FFUpdater</string>
-    <string name="application_installation_was_not_successful">アプリのインストールに失敗しました</string>
-    <string name="application_successfully_installed">アプリのインストールに成功しました</string>
+    <string name="application_installation_was_not_successful">アプリをインストールできませんでした</string>
+    <string name="application_successfully_installed">アプリを正常にインストールしました</string>
     <string name="available_version">利用可能: %1$s</string>
     <string name="available_version_error">"<u>エラー</u>"</string>
-    <string name="notification__error__text">このエラーを報告してください。クリックするとエラーレポートが表示されます。</string>
-    <string name="notification__error__title">バックグラウンドのチェックに失敗しました</string>
-    <string name="brave__description">自由で、プライベートにインターネットを閲覧することができます。Braveは、広告ブロック機能とポップアップブロック機能を備えた、高速、無料、かつ安全なプライベートウェブブラウザです。広告主やマルウェア、ポップアップに追跡されることなく、プライベートにインターネットを閲覧、検索することができます。</string>
-    <string name="brave__title">Brave ウェブブラウザ</string>
-    <string name="brave__warning">- Braveは、Google Chromeのレンダリングエンジン（Chromium）を使用しており、これを好まない人もいます。このアプリをインストールしますか？
-\n- Ethereumブロックチェーン上のBasic Attention Token BATのため、このプロジェクトは暗号通貨との結びつきがあります。ブロックチェーンには多くの問題があり、避けるべきと私は考えています。</string>
-    <string name="brave_beta__description">Android版Brave Betaへようこそ!\n最新機能をお試しいただき、早い段階でフィードバックをお願いします。https://brave.com/msupport \nブレイブベータは、現在お使いのAndroid版ブレイブと一緒にインストールすることができます。</string>
-    <string name="brave_beta__title">ブレイブブラウザ（ベータ版）</string>
-    <string name="brave_nightly__description">Android版Brave Nightly (Developer)へようこそ!\n最新機能を試し、早い段階でフィードバックしてください: https://brave.com/msupport\nBrave Nightlyは、現在お使いのBrave for Androidと一緒にインストールすることができます。</string>
-    <string name="brave_nightly__title">ブレイブブラウザ（ナイトリー）</string>
-    <string name="bromite__description">Bromiteは、プライバシーを侵害する機能を排除し、高速な広告ブロック機能を追加することで、高速なブラウジング体験を提供することを目的としています。</string>
+    <string name="notification__error__text">このエラーの報告をお願いします。クリックするとエラーレポートが表示されます。</string>
+    <string name="notification__error__title">バックグラウンドでの更新確認に失敗しました</string>
+    <string name="brave__description">自由で、プライベートにインターネットを閲覧しましょう！ Brave は、広告ブロック機能とポップアップブロック機能を備えた、高速、無料、かつ安全なプライベートウェブブラウザです。広告主やマルウェア、ポップアップに追跡されることなく、プライベートにインターネットを閲覧、検索できます。</string>
+    <string name="brave__title">Brave プライベートブラウザ</string>
+    <string name="brave__warning">- Brave は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。
+\n- Brave の Basic Attention Token BAT は Ethereum ブロックチェーン上にあるため、このプロジェクトは暗号通貨との結びつきがあります。ブロックチェーンには多くの問題があり、避けるべきと私は考えています。</string>
+    <string name="brave_beta__description">Android 版 Brave Beta へようこそ！
+\n最新機能をお試しいただき、早い段階でフィードバックをお願いします: https://brave.com/msupport
+\nBrave Beta は、現在お使いの Android 版 Brave と一緒にインストールできます。</string>
+    <string name="brave_beta__title">Brave ブラウザ (ベータ版)</string>
+    <string name="brave_nightly__description">Android 版 Brave Nightly (Developer) へようこそ！
+\n最新機能をお試しいただき、早い段階でフィードバックをお願いします: https://brave.com/msupport
+\nBrave Nightly は、現在お使いの Android 版 Brave と一緒にインストールできます。</string>
+    <string name="brave_nightly__title">Brave ブラウザ (Nightly)</string>
+    <string name="bromite__description">Bromite は、プライバシーを侵害する機能を排除し、高速広告ブロックエンジンを追加して、快適なブラウジング体験を提供することを目的としています。ブラウザの広告プラットフォームとしての考え方を抑制するために、最小限の UI 変更が適用されています。</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- BromiteはGoogle Chromeの技術基盤を利用しているため、間接的にChromiumレンダーエンジンの独占的な地位を支えていることになります。</string>
-    <string name="bromite_systemwebview__description">SystemWebViewパッケージは、Bromiteのコアブラウザ／レンダリングエンジンと同じ機能を持ち、Androidシステム全体のデフォルトブラウザコンポーネントを置き換える可能性を提供します。</string>
+    <string name="bromite__warning">- Bromite は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
+    <string name="bromite_systemwebview__description">SystemWebView パッケージは Bromite のコアブラウザ／レンダリングエンジンを含み、同じ機能を持ちます。Android システム全体のデフォルトブラウザコンポーネントを置き換える可能性を提供します。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピーする</string>
-    <string name="crash_report__explain_text__download_activity_fetching_url">ダウンロードURLを取得する際に以下のエラーが発生しました。このエラーが頻繁に発生する場合は、notabug.org、GitHub、またはGitLabで自由に報告してください。その際、クリップボードからのクラッシュレポートと、このエラーを再現する方法の説明を忘れずに付け加えてください。</string>
-    <string name="crash_report__explain_text__download_activity_update_check">メインビューでアップデートをチェックする際に、以下のエラーが発生しました。このエラーが頻繁に発生する場合は、notabug.org、GitHub、またはGitLabで自由に報告してください。その際には、クリップボードからのクラッシュレポートと、このエラーを再現する方法の説明を忘れずに付け加えてください。</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピー</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">ダウンロードメタデータの取得中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
+    <string name="crash_report__explain_text__download_activity_update_check">メインビューでの更新の確認中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
     <string name="crash_report__explain_text__uncaught_throwable">残念ながら、FFUpdaterはクラッシュしました。このエラーを notabug.org、GitHub または GitLab で報告してください。クリップボードからのクラッシュレポートと、バグを再現する方法の説明を課題に追加してください。</string>
     <string name="crash_report__go_to_github">GitHub に移動</string>
     <string name="crash_report__go_to_gitlab">GitLab に移動</string>
@@ -171,4 +175,8 @@
     <string name="vivaldi__title">Vivaldiブラウザ</string>
     <string name="vivaldi__warning">- Vivaldiは部分的なオープンソースに過ぎません。
 \n- また、Google Chromeの技術基盤を利用しているため、Chromiumレンダーエンジンの独占的な地位を間接的に支えている。</string>
+    <string name="app_card__app_warning_button_description">このアプリについての警告を表示</string>
+    <string name="install_activity__download_file_failed__crash_text">ダウンロード中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
+    <string name="crash_report__explain_text__download_activity_install_file">インストール中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
+    <string name="app_warning_dialog__title">警告</string>
 </resources>
