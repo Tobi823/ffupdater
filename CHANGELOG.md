@@ -1,4 +1,8 @@
-# 2023-03-19 Release 77.7.13 (139)
+# 2023-03-22 Release 77.7.14 (140)
+
+* Improve error handling in main activity (Tobi823/ffupdater#376)
+
+# 2023-03-22 Release 77.7.13 (139)
 
 * Thanks for the Weblate contributions from: Kazushi Hayama, nautilusx, gallegonovato and MkQtS
 * Firefox Beta and Firefox Release will be downloaded from GitHub

@@ -1,0 +1,1 @@
+* Improve error handling in main activity (Tobi823/ffupdater#376)
