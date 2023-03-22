@@ -125,6 +125,7 @@
     <string name="main_activity__no_unmetered_network">No unmetered network</string>
     <string name="main_activity__subtitle">Updater for privacy friendly browsers</string>
     <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
+    <string name="main_activity__an_error_occurred">"<u>An error occurred. Retry later.</u>"</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abort</string>
     <string name="request_installation_permission_dialog__grant_permission">Grant permission</string>

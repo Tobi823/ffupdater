@@ -48,7 +48,6 @@ import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import java.time.DateTimeException
 import java.time.Duration
 import java.time.ZonedDateTime
@@ -154,9 +153,8 @@ class MainActivity : AppCompatActivity() {
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
-            val errorText = getString(R.string.main_activity__no_unmetered_network)
             apps.forEach {
-                recycleViewAdapter.notifyErrorForApp(it, errorText, null)
+                recycleViewAdapter.notifyErrorForApp(it, R.string.main_activity__no_unmetered_network, null)
             }
             showToast(R.string.main_activity__no_unmetered_network)
             return
@@ -173,27 +171,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private suspend fun updateMetadataOf(app: App, fileDownloader: FileDownloader) {
+    private suspend fun updateMetadataOf(app: App, fileDownloader: FileDownloader): AppUpdateStatus? {
         try {
             recycleViewAdapter.notifyAppChange(app, null)
             val updateStatus = app.impl.findAppUpdateStatus(applicationContext, fileDownloader)
             recycleViewAdapter.notifyAppChange(app, updateStatus)
+            recycleViewAdapter.notifyClearedErrorForApp(app)
+            return updateStatus
         } catch (e: ApiRateLimitExceededException) {
-            recycleViewAdapter.notifyErrorForApp(
-                app, getString(R.string.main_activity__github_api_limit_exceeded), e
-            )
-            return
+            recycleViewAdapter.notifyErrorForApp(app, R.string.main_activity__github_api_limit_exceeded, e)
+            showToast(getString(R.string.main_activity__github_api_limit_exceeded))
         } catch (e: NetworkException) {
-            recycleViewAdapter.notifyErrorForApp(
-                app, getString(R.string.main_activity__temporary_network_issue), e
-            )
-            return
-        } catch (e: Exception) {
-            recycleViewAdapter.notifyErrorForApp(app, getString(R.string.available_version_error), e)
-            return
+            recycleViewAdapter.notifyErrorForApp(app, R.string.main_activity__temporary_network_issue, e)
+            showToast(getString(R.string.main_activity__temporary_network_issue))
+        } catch (e: DisplayableException) {
+            recycleViewAdapter.notifyErrorForApp(app, R.string.main_activity__an_error_occurred, e)
+            showToast(getString(R.string.main_activity__an_error_occurred))
         }
-
-        recycleViewAdapter.notifyClearedErrorForApp(app)
+        return null
     }
 
     @MainThread
@@ -208,7 +203,7 @@ class MainActivity : AppCompatActivity() {
         }
         val network = NetworkSettingsHelper(applicationContext)
         val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
-        val metadata = app.impl.findAppUpdateStatus(this, fileDownloader)
+        val metadata = updateMetadataOf(app, fileDownloader) ?: return
         if (!metadata.isUpdateAvailable) {
             // this may displays RunningDownloadsDialog and updates the app
             InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
@@ -225,6 +220,12 @@ class MainActivity : AppCompatActivity() {
 
     @UiThread
     private fun showToast(message: Int) {
+        val layout = findViewById<View>(R.id.coordinatorLayout)
+        Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
+    }
+
+    @UiThread
+    private fun showToast(message: String) {
         val layout = findViewById<View>(R.id.coordinatorLayout)
         Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
     }
@@ -258,7 +259,7 @@ class MainActivity : AppCompatActivity() {
     class InstalledAppsAdapter(private val activity: MainActivity) :
         RecyclerView.Adapter<InstalledAppsAdapter.AppHolder>() {
 
-        private data class ExceptionWrapper(val message: String, val exception: Exception?)
+        private data class ExceptionWrapper(val message: Int, val exception: Exception?)
 
         private var elements = listOf<App>()
 
@@ -293,7 +294,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         @UiThread
-        fun notifyErrorForApp(app: App, message: String, exception: Exception?) {
+        fun notifyErrorForApp(app: App, message: Int, exception: Exception?) {
             errors[app] = ExceptionWrapper(message, exception)
 
             val index = elements.indexOf(app)
@@ -376,7 +377,7 @@ class MainActivity : AppCompatActivity() {
 
         private fun onBindViewHolderWhenError(view: AppHolder, app: App, error: ExceptionWrapper) {
             view.installedVersion.text = app.impl.getDisplayInstalledVersion(activity)
-            view.availableVersion.text = error.message
+            view.availableVersion.setText(error.message)
             if (error.exception != null) {
                 view.availableVersion.setOnClickListener {
                     val description =

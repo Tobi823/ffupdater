@@ -46,7 +46,7 @@ abstract class AppBase {
         // only for faster development
         if (BuildConfig.DEBUG &&
             limitFoundAppsForDevelop.isNotEmpty() &&
-            packageName !in listOf(App.KIWI).map { it.impl.packageName }
+            packageName !in limitFoundAppsForDevelop.map { it.impl.packageName }
         ) {
             return InstallationStatus.NOT_INSTALLED
         }
@@ -67,7 +67,7 @@ abstract class AppBase {
         // only for faster development
         if (BuildConfig.DEBUG &&
             limitFoundAppsForDevelop.isNotEmpty() &&
-            packageName !in listOf(App.KIWI).map { it.impl.packageName }
+            packageName !in limitFoundAppsForDevelop.map { it.impl.packageName }
         ) {
             return false
         }
@@ -109,8 +109,6 @@ abstract class AppBase {
             throw NetworkException("Can't find latest update for ${app.name}")
         } catch (e: DisplayableException) {
             throw DisplayableException("Can't find latest update for ${app.name}.", e)
-        } catch (e: Exception) {
-            throw Exception("Can't find latest update for ${app.name}.", e)
         }
         return AppUpdateStatus(
             latestUpdate = available,
