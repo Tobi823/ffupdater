@@ -2,7 +2,7 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.FORCE_NETWORK
-import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiLogConsumer
+import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
@@ -18,7 +18,7 @@ internal class FirefoxBetaIT : BaseAppIT() {
 
     @Test
     fun findAppUpdateStatus() {
-        val firefoxBeta = FirefoxBeta(MozillaCiLogConsumer.INSTANCE, deviceAbiExtractor)
+        val firefoxBeta = FirefoxBeta(GithubConsumer.INSTANCE, deviceAbiExtractor)
         val fileDownloader = FileDownloader(NetworkSettingsHelper(context), context, FORCE_NETWORK)
         val result = runBlocking { firefoxBeta.findLatestUpdate(context, fileDownloader) }
         requireNotNull(result)

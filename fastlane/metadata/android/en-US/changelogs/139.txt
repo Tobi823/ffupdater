@@ -1,0 +1,3 @@
+* Thanks for the Weblate contributions from: Kazushi Hayama, nautilusx, gallegonovato and MkQtS
+* Firefox Beta and Firefox Release will be downloaded from GitHub
+* Kiwi is no longer EOL

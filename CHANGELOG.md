@@ -1,3 +1,9 @@
+# 2023-03-19 Release 77.7.13 (139)
+
+* Thanks for the Weblate contributions from: Kazushi Hayama, nautilusx, gallegonovato and MkQtS
+* Firefox Beta and Firefox Release will be downloaded from GitHub
+* Kiwi is no longer EOL
+
 # 2023-03-19 Release 77.7.12 (138)
 
 * Thanks for the Weblate contributions from: Alexthegib, Juraj Motuz, Retrial, gallegonovato, MkQtS and
