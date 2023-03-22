@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.network.github
 
+import android.util.Log
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.network.ApiConsumer
@@ -148,7 +149,10 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         return try {
             val baseUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases"
             val url = "$baseUrl?per_page=$resultsPerPage&page=$page"
-            apiConsumer.consume(url, fileDownloader, Array<Release>::class)
+            val time = System.nanoTime()
+            val a = apiConsumer.consume(url, fileDownloader, Array<Release>::class)
+            Log.e("GithubConsumer", "getReleaseFromPage after ${(System.nanoTime() - time) / 1000000} ms $url")
+            a
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $repoName from GitHub.", e)
         }
