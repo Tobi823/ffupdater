@@ -1,55 +1,52 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
-import androidx.annotation.MainThread
-import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 
 /**
  * Consume the "chain_of_trust.json".
  */
 class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
 
-    @MainThread
-    suspend fun updateCheck(
-        taskId: String,
-        abiString: String,
-        fileDownloader: FileDownloader,
-    ): Result {
-        val jsonUrl = "https://firefoxci.taskcluster-artifacts.net/${taskId}/0/public/chain-of-trust.json"
-        val response = try {
-            apiConsumer.consume(jsonUrl, fileDownloader, ChainOfTrustJson::class)
+    suspend fun findTaskId(fileDownloader: FileDownloader, indexPath: String): String {
+        val pageUrl = "https://firefox-ci-tc.services.mozilla.com/graphql"
+        val requestJson = """{"operationName":"IndexedTask","variables":{"indexPath":"$indexPath"},"query":"query """ +
+                """IndexedTask(${'$'}indexPath: String!) {indexedTask(indexPath: ${'$'}indexPath) {taskId}}"}"""
+        val requestBody = requestJson.toRequestBody("application/json".toMediaType())
+        val responseString = try {
+            apiConsumer.consume(pageUrl, fileDownloader, "POST", requestBody)
         } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of $taskId from Mozilla (json).", e)
+            throw NetworkException("Fail to get the taskId from graphql API.", e)
         }
-        val artifact = response.artifacts["public/build/fenix/${abiString}/target.apk"]
-        checkNotNull(artifact) {
-            "Missing artifact '$abiString'. Only [${response.artifacts.keys.joinToString()}] are available."
+        val regex = """taskId":"(?<taskId>[\w-]+)"""".toRegex()
+        val matches = regex.find(responseString)
+        val taskId = matches?.groups?.get("taskId")?.value
+        checkNotNull(taskId) {
+            "Missing taskId. Data: $responseString, Matches: $matches."
         }
-        return Result(
-            fileHash = Sha256Hash(artifact.sha256),
-            releaseDate = response.task.created
-        )
+        return taskId
     }
 
-    data class ChainOfTrustJson(
-        @SerializedName("artifacts")
-        val artifacts: Map<String, JsonValue>,
-        @SerializedName("task")
-        val task: TaskValue,
-    )
-
-    data class JsonValue(
-        @SerializedName("sha256")
-        val sha256: String,
-    )
-
-    data class TaskValue(
-        @SerializedName("created")
-        val created: String,
-    )
+    suspend fun findChainOfTrustJson(fileDownloader: FileDownloader, taskId: String, abiString: String): Result {
+        val url = "https://firefoxci.taskcluster-artifacts.net/$taskId/0/public/chain-of-trust.json"
+        val json = try {
+            fileDownloader.downloadJsonAsync(url)
+        } catch (e: NetworkException) {
+            throw NetworkException("Fail to get the taskId from graphql API.", e)
+        }
+        val fileHash = json.asJsonObject["artifacts"]
+            .asJsonObject["public/build/fenix/$abiString/target.apk"]
+            .asJsonObject["sha256"]
+            .asString
+        val releaseDate = json.asJsonObject["task"]
+            .asJsonObject["created"]
+            .asString
+        return Result(Sha256Hash(fileHash), releaseDate)
+    }
 
     data class Result(
         val fileHash: Sha256Hash,

@@ -19,13 +19,13 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
+import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /**
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
- * https://firefox-ci-tc.services.mozilla.com/tasks/CeuwnI5oTuSiZPrCjjc8kA
  */
 class FirefoxNightly(
     private val consumer: MozillaCiJsonConsumer = MozillaCiJsonConsumer.INSTANCE,
@@ -64,15 +64,21 @@ class FirefoxNightly(
             ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        // clicking on public/logs/chain_of_trust.log in
-        // https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest/arm64-v8a
-        // will lead you to
-        // https://firefoxci.taskcluster-artifacts.net/CeuwnI5oTuSiZPrCjjc8kA/0/public/logs/chain_of_trust.log
-        val result = consumer.updateCheck(
-            taskId = "CeuwnI5oTuSiZPrCjjc8kA",
-            abiString = abiString,
-            fileDownloader = fileDownloader,
-        )
+
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        var taskId = preferences.getString("cache__firefox_nightly__task_id", null)
+        var cacheAge = preferences.getLong("cache__firefox_nightly__age_ms", 0)
+        if (taskId == null || (System.currentTimeMillis() - cacheAge) >= Duration.ofHours(24).toMillis()) {
+            val indexPath = "mobile.v3.firefox-android.apks.fenix-nightly.latest.arm64-v8a"
+            taskId = consumer.findTaskId(fileDownloader, indexPath)
+            cacheAge = System.currentTimeMillis()
+            preferences.edit()
+                .putString("cache__firefox_nightly__task_id", taskId)
+                .putLong("cache__firefox_nightly__age_ms", cacheAge)
+                .apply()
+        }
+
+        val result = consumer.findChainOfTrustJson(fileDownloader, taskId, abiString)
         val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v3.firefox-android.apks.fenix-nightly.latest.${abiString}/artifacts/" +
                 "public%2Fbuild%2Ffenix%2F${abiString}%2Ftarget.apk"

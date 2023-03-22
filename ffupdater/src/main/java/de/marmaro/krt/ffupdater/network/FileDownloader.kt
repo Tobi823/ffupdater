@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
+import com.google.gson.JsonElement
+import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
@@ -73,7 +75,7 @@ class FileDownloader(
         file: File,
     ) {
         // TODO maybe us for own code to cache APKs?
-        callUrl(url, CacheBehaviour.FORCE_NETWORK).use { response ->
+        callUrl(url, CacheBehaviour.FORCE_NETWORK, "GET", null).use { response ->
             val body = validateAndReturnResponseBody(url, response)
             if (file.exists()) {
                 file.delete()
@@ -93,12 +95,15 @@ class FileDownloader(
      */
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun downloadSmallFileAsync(url: String): String {
+    suspend fun downloadSmallFileAsync(url: String, method: String = "GET", requestBody: RequestBody? = null): String {
         progressResponseBody.useNoProgressChannel()
         progressResponseBody.currentUrl = url
         return withContext(Dispatchers.IO) {
             try {
-                downloadSmallFileInternal(url)
+                callUrl(url, cacheBehaviour, method, requestBody).use { response ->
+                    val body = validateAndReturnResponseBody(url, response)
+                    body.string()
+                }
             } catch (e: IOException) {
                 throw NetworkException("Request of HTTP-API $url failed.", e)
             } catch (e: IllegalArgumentException) {
@@ -111,11 +116,28 @@ class FileDownloader(
         }
     }
 
-    @WorkerThread
-    private suspend fun downloadSmallFileInternal(url: String): String {
-        callUrl(url, cacheBehaviour).use { response ->
-            val body = validateAndReturnResponseBody(url, response)
-            return body.string()
+    @MainThread
+    @Throws(NetworkException::class)
+    suspend fun downloadJsonAsync(url: String, method: String = "GET", requestBody: RequestBody? = null): JsonElement {
+        progressResponseBody.useNoProgressChannel()
+        progressResponseBody.currentUrl = url
+        return withContext(Dispatchers.IO) {
+            try {
+                callUrl(url, cacheBehaviour, method, requestBody).use { response ->
+                    val body = validateAndReturnResponseBody(url, response)
+                    body.byteStream().bufferedReader().use { reader ->
+                        JsonParser.parseReader(reader)
+                    }
+                }
+            } catch (e: IOException) {
+                throw NetworkException("Request of HTTP-API $url failed.", e)
+            } catch (e: IllegalArgumentException) {
+                throw NetworkException("Request of HTTP-API $url failed.", e)
+            } catch (e: NetworkException) {
+                throw NetworkException("Request of HTTP-API $url failed.", e)
+            } finally {
+                progressResponseBody.currentUrl = null
+            }
         }
     }
 
@@ -132,7 +154,12 @@ class FileDownloader(
         return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
     }
 
-    private suspend fun callUrl(url: String, cacheControl: CacheBehaviour): Response {
+    private suspend fun callUrl(
+        url: String,
+        cacheControl: CacheBehaviour,
+        method: String,
+        requestBody: RequestBody?,
+    ): Response {
         require(url.startsWith("https://"))
         val request = Request.Builder()
             .url(url)
@@ -151,6 +178,7 @@ class FileDownloader(
                     }
                 }
             )
+            .method(method, requestBody)
         return client
             .newCall(request.build())
             .await()
