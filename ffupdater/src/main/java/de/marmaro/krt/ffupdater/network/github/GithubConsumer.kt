@@ -198,7 +198,7 @@ class GithubConsumer(private val apiConsumer: ApiConsumer) {
         @SerializedName("size")
         val fileSizeBytes: Long,
     ) {
-        fun nameStartsOrEnds(prefix: String, suffix: String): Boolean {
+        fun nameStartsAndEndsWith(prefix: String, suffix: String): Boolean {
             return name.startsWith(prefix) && name.endsWith(suffix)
         }
     }
