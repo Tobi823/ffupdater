@@ -49,6 +49,7 @@ class Brave(
         context: Context,
         fileDownloader: FileDownloader,
     ): LatestUpdate {
+        val time = System.nanoTime()
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val networkSettings = NetworkSettingsHelper(preferences)
@@ -61,7 +62,7 @@ class Brave(
             fileDownloader = fileDownloader,
         )
         val version = result.tagName.replace("v", "")
-        Log.i(LOG_TAG, "found latest version $version")
+        Log.i(LOG_TAG, "found latest version $version after ${(System.nanoTime() - time) / 1000000}ms")
         return LatestUpdate(
             downloadUrl = result.url,
             version = version,
