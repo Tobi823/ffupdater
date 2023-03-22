@@ -319,4 +319,5 @@
     <string name="privacy_browser__description">La única forma de evitar que se abuse de los datos es impedir que se recojan en primer lugar. Privacy Browser tiene dos objetivos principales: Minimizar los datos que se envían a Internet y minimizar los datos que se almacenan en el dispositivo.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater necesita el permiso para informarle sobre las actualizaciones.</string>
     <string name="generic__eol_reason__too_old">La aplicación no se ha actualizado durante mucho tiempo.</string>
+    <string name="main_activity__an_error_occurred"><u>Se ha producido un error. Vuelve a intentarlo más tarde.</u></string>
 </resources>
