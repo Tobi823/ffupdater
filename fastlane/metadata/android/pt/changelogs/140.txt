@@ -1,0 +1,1 @@
+* Melhorar o tratamento de erros na atividade principal (Tobi823/ffupdater#376)

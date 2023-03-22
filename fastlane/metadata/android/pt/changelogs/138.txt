@@ -1,0 +1,4 @@
+* Obrigado pelas contribuições Weblate de: Alexthegib, Juraj Motuz, Retrial, gallegonovato, MkQtS e 109247019824
+* Hotfix: Atualizar urls para descarregar a última versão do Firefox
+* Melhorar a reutilização da cache através de aplicações com OkHttp
+* Devido à correção de calor: A definição Forground "Update checks on metered networks" é atualmente ignorada

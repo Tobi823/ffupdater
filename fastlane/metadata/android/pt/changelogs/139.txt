@@ -1,0 +1,3 @@
+* Obrigado pelas contribuições de: Kazushi Hayama, nautilusx, gallegonovato e MkQtS
+* Firefox Beta e Firefox Release serão descarregados a partir do GitHub
+* Kiwi já não é EOL
