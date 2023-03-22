@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.AnyThread
 import androidx.annotation.WorkerThread
+import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -38,8 +39,18 @@ abstract class AppBase {
     abstract val displayCategory: DisplayCategory
     open val fileNameInZipArchive: String? = null
 
+    private val limitFoundAppsForDevelop: List<App> = listOf()
+
     @AnyThread
     suspend fun isInstalled(context: Context): InstallationStatus {
+        // only for faster development
+        if (BuildConfig.DEBUG &&
+            limitFoundAppsForDevelop.isNotEmpty() &&
+            packageName !in listOf(App.KIWI).map { it.impl.packageName }
+        ) {
+            return InstallationStatus.NOT_INSTALLED
+        }
+
         return if (PackageManagerUtil(context.packageManager).isAppInstalled(packageName)) {
             if (FingerprintValidator(context.packageManager).checkInstalledApp(this).isValid) {
                 InstallationStatus.INSTALLED
@@ -53,6 +64,14 @@ abstract class AppBase {
 
     @AnyThread
     fun isInstalledWithoutFingerprintVerification(context: Context): Boolean {
+        // only for faster development
+        if (BuildConfig.DEBUG &&
+            limitFoundAppsForDevelop.isNotEmpty() &&
+            packageName !in listOf(App.KIWI).map { it.impl.packageName }
+        ) {
+            return false
+        }
+
         return PackageManagerUtil(context.packageManager).isAppInstalled(packageName)
     }
 
