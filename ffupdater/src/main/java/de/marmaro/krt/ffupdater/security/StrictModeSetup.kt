@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.security
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
-import de.marmaro.krt.ffupdater.device.BuildMetadata
+import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 /**
@@ -13,7 +13,7 @@ class StrictModeSetup(
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) {
     fun enableStrictMode() {
-        if (BuildMetadata.isDebugBuild()) {
+        if (BuildConfig.DEBUG) {
             enableStrictModeForDebugging()
         } else {
             enableStrictModeForRelease()
