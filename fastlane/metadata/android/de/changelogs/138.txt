@@ -1,0 +1,4 @@
+* Dank für die Weblate-Beiträge von: Alexthegib, Juraj Motuz, Retrial, gallegonovato, MkQtS und 109247019824
+* Hotfix: Aktualisierung der URLs zum Herunterladen der neuesten Firefox-Version
+* Verbesserung der Cache-Wiederverwendung über Apps hinweg mit OkHttp
+* Aufgrund von Hotfix: Vordergrundeinstellung "Updateprüfungen bei getakteten Netzwerken" wird derzeit ignoriert

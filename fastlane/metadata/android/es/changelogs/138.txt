@@ -1,0 +1,4 @@
+* Gracias por las contribuciones a Weblate de: Alexthegib, Juraj Motuz, Retrial, gallegonovato, MkQtS y 109247019824
+* Corrección: Actualizar urls para descargar la última versión de Firefox
+* Mejorar la reutilización de la caché entre aplicaciones con OkHttp
+* Debido a una revisión: El ajuste de "Comprobaciones de actualización en redes con límites de datos" se ignora actualmente
