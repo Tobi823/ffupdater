@@ -50,7 +50,7 @@ class DuckDuckGoAndroid(
             repoName = "Android",
             initResultsPerPage = 3,
             isValidRelease = { true },
-            isSuitableAsset = { it.nameStartsOrEnds("duckduckgo-", "-play-release.apk") },
+            isSuitableAsset = { it.nameStartsAndEndsWith("duckduckgo-", "-play-release.apk") },
             dontUseApiForLatestRelease = false,
             fileDownloader = fileDownloader,
         )

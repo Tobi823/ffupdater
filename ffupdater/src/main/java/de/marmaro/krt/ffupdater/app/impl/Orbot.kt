@@ -54,7 +54,7 @@ class Orbot(
             repoName = "orbot",
             initResultsPerPage = 3,
             isValidRelease = { !it.isPreRelease },
-            isSuitableAsset = { it.nameStartsOrEnds("Orbot", assetSuffix) },
+            isSuitableAsset = { it.nameStartsAndEndsWith("Orbot", assetSuffix) },
             dontUseApiForLatestRelease = false,
             fileDownloader = fileDownloader,
         )

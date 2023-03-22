@@ -64,8 +64,8 @@ class FirefoxFocusBeta(
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val result = consumer.updateCheckFor_MozillaMobile_FirefoxAndroid(
-            isValidRelease = { it.isPreRelease && "Focus" in it.name },
-            isSuitableAsset = { it.nameStartsOrEnds("focus-", fileSuffix) },
+            isValidRelease = { it.isPreRelease && """^Focus \d""".toRegex().containsMatchIn(it.name) },
+            isSuitableAsset = { it.nameStartsAndEndsWith("focus-", fileSuffix) },
             fileDownloader = fileDownloader,
         )
         val version = result.tagName

@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
@@ -15,12 +14,10 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/mozilla-mobile/focus-android
  * https://api.github.com/repos/mozilla-mobile/focus-android/releases
- * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/
  */
 class FirefoxKlar(
@@ -48,9 +45,7 @@ class FirefoxKlar(
         fileDownloader: FileDownloader,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
-        val deviceSettings = DeviceSettingsHelper(preferences)
+        val deviceSettings = DeviceSettingsHelper(context)
 
         val fileSuffix =
             when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
@@ -61,8 +56,8 @@ class FirefoxKlar(
                 else -> throw IllegalArgumentException("ABI is not supported")
             }
         val result = consumer.updateCheckFor_MozillaMobile_FirefoxAndroid(
-            isValidRelease = { !it.isPreRelease && "Klar" in it.name },
-            isSuitableAsset = { it.nameStartsOrEnds("klar-", fileSuffix) },
+            isValidRelease = { !it.isPreRelease && """^Klar \d""".toRegex().containsMatchIn(it.name) },
+            isSuitableAsset = { it.nameStartsAndEndsWith("klar-", fileSuffix) },
             fileDownloader = fileDownloader,
         )
 
