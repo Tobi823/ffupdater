@@ -45,7 +45,7 @@
     <string name="notification__error__channel_descr">バックグラウンドでの更新確認のエラーを表示します</string>
     <string name="notification__error__channel_name">バックグラウンドのエラー</string>
     <string name="firefox_beta__description">Android 版 Firefox ブラウザーは、プライベートで、非常に高速です。何千ものオンライントラッカーが毎日あなたを追跡し、あなたがオンラインで何にアクセスしたかなどの情報を収集し、ブラウジング速度を低下させています。Firefox は、デフォルトで 2000 以上のこのようなトラッカーをブロックしていて、広告ブロックのアドオンを利用したカスタマイズもできます。Firefox は、あなたが必要とするセキュリティとスピードを実現するプライベートなモバイルブラウザーです。</string>
-    <string name="firefox_beta__title">Android 版 Firefox Beta</string>
+    <string name="firefox_beta__title">Firefox Beta</string>
     <string name="firefox_beta__warning">- このアプリは開発者やテスター向けに開発されたものです。作業に影響を与えるさまざまなバグが含まれている可能性があります。</string>
     <string name="firefox_focus__description">このアプリはより良いプライバシーを目的とした Firefox ブラウザーの変種です。</string>
     <string name="firefox_focus__title">Firefox Focus</string>
@@ -84,7 +84,7 @@
     <string name="download_activity__open_cache_explanation">キャッシュフォルダーを開いて、APK ファイルをより空き容量の多い場所に移動できます。残念ながら、Android 11 以上では Android/data 内のフォルダーにアクセスできるファイルマネージャーは限られています。</string>
     <string name="download_activity__open_cache_folder_button_text">キャッシュフォルダーを開く</string>
     <string name="download_activity__sha_256_certificate_fingerprint">SHA-256 証明書フィンガープリント:</string>
-    <string name="download_activity__temporary_network_issue">一時的なネットワークの問題が発生しました。後で再試行してください。</string>
+    <string name="download_activity__temporary_network_issue">一時的なネットワークの問題が発生しました。後でもう一度お試しください。</string>
     <string name="download_activity__too_low_memory_description">このデバイスには %1$d MB の空き容量しかありません。これにより、ダウンロードやインストールに失敗する可能性があります。</string>
     <string name="download_activity__too_low_memory_title">ストレージ容量不足</string>
     <string name="download_activity__use_cached_downloaded_apk">すでにダウンロード済みのファイルを使用します:</string>
