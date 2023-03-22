@@ -319,4 +319,5 @@
 \n
 \nFirefox Focus é o perfeito para entrar/sair, procurar e destruir, estou numa missão que não é do seu negócio - web browser.</string>
     <string name="main_activity__denied_notification_permission">O FFUpdater precisa da permissão para o informar sobre atualizações.</string>
+    <string name="main_activity__an_error_occurred"><u>Ocorreu um erro. Volte a tentar mais tarde.</u></string>
 </resources>
