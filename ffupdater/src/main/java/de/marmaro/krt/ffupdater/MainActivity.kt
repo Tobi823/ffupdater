@@ -148,11 +148,9 @@ class MainActivity : AppCompatActivity() {
 
     @UiThread
     private suspend fun updateMetadataOfApps(useCache: Boolean = true) {
-        val apps = withContext(Dispatchers.IO) {
-            App.values()
-                .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
-                .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
-        }
+        val apps = App.values()
+            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
+            .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
 
         if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
@@ -178,9 +176,7 @@ class MainActivity : AppCompatActivity() {
     private suspend fun updateMetadataOf(app: App, fileDownloader: FileDownloader) {
         try {
             recycleViewAdapter.notifyAppChange(app, null)
-            val updateStatus = withContext(Dispatchers.IO) {
-                app.impl.findAppUpdateStatus(applicationContext, fileDownloader)
-            }
+            val updateStatus = app.impl.findAppUpdateStatus(applicationContext, fileDownloader)
             recycleViewAdapter.notifyAppChange(app, updateStatus)
         } catch (e: ApiRateLimitExceededException) {
             recycleViewAdapter.notifyErrorForApp(
