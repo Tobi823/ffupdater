@@ -319,4 +319,5 @@
     <string name="privacy_browser__description">Ο μόνος τρόπος για να αποφευχθεί η κατάχρηση δεδομένων είναι να αποτραπεί εξαρχής η συλλογή τους. Το Privacy Browser έχει δύο πρωταρχικούς στόχους: Ελαχιστοποίηση των δεδομένων που αποστέλλονται στο διαδίκτυο και ελαχιστοποίηση των δεδομένων που είναι αποθηκευμένα στη συσκευή.</string>
     <string name="main_activity__denied_notification_permission">Το FFUpdater χρειάζεται την άδεια για να σας ενημερώσει για ενημερώσεις.</string>
     <string name="generic__eol_reason__too_old">Η εφαρμογή δεν έχει ενημερωθεί εδώ και πολύ καιρό.</string>
+    <string name="main_activity__an_error_occurred"><u>Παρουσιάστηκε σφάλμα. Δοκιμάστε ξανά αργότερα.</u></string>
 </resources>
