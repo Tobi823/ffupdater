@@ -1,0 +1,3 @@
+* Ευχαριστούμε για τις συνεισφορές τους στο Weblate τους: Kazushi Hayama, nautilusx, gallegonovato και MkQtS
+ * Η λήψη του Frefox Beta και του Firefox Release θα γίνεται από το GitHub
+ * Το Kiwi δεν είναι πλέον EOL
