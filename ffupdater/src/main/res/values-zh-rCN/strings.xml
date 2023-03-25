@@ -319,4 +319,5 @@
 \nFirefox Focus 是打开、退出、搜索和销毁的完美工具，我正在执行一项与您无关的任务——网络浏览器。</string>
     <string name="main_activity__denied_notification_permission">FFUpdater 需要向您通知更新信息的权限。</string>
     <string name="generic__eol_reason__too_old">应用已经很久没有更新了。</string>
+    <string name="main_activity__an_error_occurred"><u>发生错误。请稍后重试。</u></string>
 </resources>
