@@ -1,0 +1,3 @@
+* 感谢来自 Weblate 的贡献者：Kazushi Hayama, nautilusx, gallegonovato 和 MkQtS
+* 将会从 GitHub 下载 Firefox Beta 和 正式版
+* Kiwi 不再处于停止维护状态
