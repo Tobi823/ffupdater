@@ -314,4 +314,5 @@
     <string name="duckduckgo_android__description">Die DuckDuckGo-App bietet den umfassendsten Online-Datenschutz mit nur einem Tastendruck. Mit einem Download erhältst du einen neuen, alltäglichen Browser, der nahtlosen Schutz bietet, während du suchst und browst, und Zugriff auf Tracking-Schutz für E-Mails, die du erhältst, und Apps, die du nutzt. Viele dieser Schutzmaßnahmen werden in den meisten gängigen Browsern standardmäßig nicht angeboten.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater benötigt die Berechtigung, dich über Updates zu informieren.</string>
     <string name="generic__eol_reason__too_old">App wurde seit langem nicht mehr aktualisiert.</string>
+    <string name="main_activity__an_error_occurred"><u>Ein Fehler ist aufgetreten. Versuchen Sie es später erneut.</u></string>
 </resources>
