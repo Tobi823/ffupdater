@@ -312,4 +312,6 @@
 \nFirefox Focus to idealna przeglądarka internetowa, w której możesz wejść/wyjść, wyszukać i wyczyścić wszystko.</string>
     <string name="duckduckgo_android__description">Aplikacja DuckDuckGo zapewnia najbardziej wszechstronną ochronę prywatności online za naciśnięciem jednego przycisku. Za jednym pobraniem otrzymujesz nową codzienną przeglądarkę, która oferuje bezproblemową ochronę podczas wyszukiwania i przeglądania, a także dostęp do zabezpieczeń przed śledzeniem wiadomości e-mail, które otrzymujesz i aplikacji, z których korzystasz. Wiele z tych zabezpieczeń nie jest domyślnie oferowanych w większości popularnych przeglądarek.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater potrzebuje pozwolenia, aby informować Cię o aktualizacjach.</string>
+    <string name="main_activity__an_error_occurred"><u>Wystąpił błąd. Spróbuj ponownie później.</u></string>
+    <string name="generic__eol_reason__too_old">Aplikacja od dłuższego czasu nie była aktualizowana.</string>
 </resources>
