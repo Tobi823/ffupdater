@@ -1,0 +1,1 @@
+* Verbesserte Fehlerbehandlung in der Hauptaktivität (Tobi823/ffupdater#376)
