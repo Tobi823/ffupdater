@@ -1,0 +1,3 @@
+* Merci aux contributions Weblate de : nautilusx, Juraj Motuz, Retrial, gallegonovato et MkQtS
+* Évite des incohérences de l'interface causé par un stockage asynchrone des dernières versions (Tobi823/ffupdater#335)
+* Ajoute une vérification de téléchargement : Chaque APK téléchargée doit être un ZIP valide. (en espérant détecter des téléchargements invalides).

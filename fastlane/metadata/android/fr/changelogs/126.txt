@@ -1,0 +1,6 @@
+* Merci aux contributions Weblate de : SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824,
+  Retrial, nautilusx, gallegonovato et MkQtS
+* La vérification en arrière-plan devrait réessayer plusieurs fois avant d'afficher des notifications d'erreurs
+* Amélioration du cache des APK téléchargées
+* Demande la permission des notifications sous Android 13
+* Correction d'un bug de l'interface dans la vue principale

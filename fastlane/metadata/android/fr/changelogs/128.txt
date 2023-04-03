@@ -1,0 +1,1 @@
+* Correction de l'erreur 'Unrecognized stream' (Tobi823/ffupdater#331, Tobi823/ffupdater#332)

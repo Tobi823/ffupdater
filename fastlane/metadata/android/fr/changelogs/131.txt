@@ -1,0 +1,3 @@
+* Merci aux contributions Weblate de : Juraj Motuz, Retrial, gallegonovato et MkQtS
+* Correction d'un bug de téléchargement avec le navigateur Tor (Alpha ou non) (Tobi823/ffupdater#336)
+* Réorganisation de DownloadActivity.kt pour qu'il soit plus sûr

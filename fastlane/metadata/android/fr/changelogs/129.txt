@@ -1,0 +1,2 @@
+* Merci aux contributions Weblate de : gallegonovato, MkQtS, Juraj Motuz and Retrial
+* Vérifie la taille du téléchargement et affiche un avertissement + annule l'installation si la taille est différente (si possible)
