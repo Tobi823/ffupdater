@@ -1,4 +1,4 @@
 * Grazie per il contributo su Weblate a: Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato, Juraj
   Motuz, MkQtS, Oğuz Ersen
-* Corretto un bug: se l'utente aggiunge una nuova app, l'icona di avviso deve essere visualizzata solo per le app con avviso di
+* Corretto un bug: se l'utente aggiunge una nuova app, l'icona di avviso deve essere visualizzata solo per le app con avviso
   di installazione (Tobi823/ffupdater#306)
