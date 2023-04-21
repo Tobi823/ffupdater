@@ -204,4 +204,15 @@
     <string name="firefox_release__warning">- 改良版の Firefox は F-Droid でも Fennec F-Droid という名前で利用できます。</string>
     <string name="download_activity__different_installer_info__text">頻繁にインストールに失敗する場合は、設定で「ネイティブのインストーラー」に変更してお試しください。</string>
     <string name="download_activity__file_uri_exposed_toast">他のアプリのファイルパス (保存領域) にはアクセスできません。ファイルマネージャーで直接フォルダーを開いてください。</string>
+    <string name="ungoogled_chromium__eol_reason">開発者は「当分の間、バージョンを更新できません。可能であればその間は（FFUpdaterがサポートしている） ブラウザのいずれかを使用してください」と投稿しています。https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="chromium__warning">- Chromium は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">別の証明書によって署名されたアプリを非表示にする。</string>
+    <string name="privacy_browser__warning">FFUpdaterはF-Droidのサーバーからファイルをダウンロードするため、高速ではありません。</string>
+    <string name="device__prefer_32bit_apks__summary">デバイスのメモリが不足している場合に有効にします。FFUpdaterは、通常より必要なメモリの少ない32ビットAPKsを使用します。</string>
+    <string name="device__prefer_32bit_apks__title">32 ビットのAPKを優先</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGoは、システムのwebviewを使用してウェブサイトを表示します。
+\n- MicrosoftからのすべてのCookieをブロックしないことについて論争がありましたが、これは修正されました。</string>
+    <string name="mulch__warning">- Mulchは Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">このアプリは別の証明書で署名されており、FFUpdaterでアップデートすることはできません。</string>
+    <string name="tor_browser__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。</string>
 </resources>
