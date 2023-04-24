@@ -67,7 +67,6 @@
     <string name="iceraven__title">Iceraven ブラウザー</string>
     <string name="infobox">このアプリはプライバシーを尊重するブラウザーに対応したアップデーターです。プラスボタンをクリックすると新しいアプリをインストールできます。下にスワイプすると、今すぐ更新を確認します。デフォルトでは、アプリはバックグラウンドで更新を定期的に確認し、ダウンロードして最終的にインストールします。歯車をクリックして設定を開き、動作をカスタマイズできます。
 \n
-\n
 \nバックグラウンドでの最終更新確認: %1$s</string>
     <string name="app_card__information_about_the_app">このアプリについて</string>
     <string name="download_activity__delete_cache_button_text">キャッシュをクリア</string>
@@ -96,18 +95,18 @@
     <string name="notification__install_error__channel_descr">失敗した %1$s 更新の通知チャネル。</string>
     <string name="notification__install_error__channel_name">%1$s 更新失敗通知</string>
     <string name="notification__install_error__text">エラー (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s は更新できませんでした。</string>
+    <string name="notification__install_error__title">%1$s は更新できませんでした</string>
     <string name="notification__install_success__channel_descr">成功した %1$s 更新の通知チャネル。</string>
     <string name="notification__install_success__channel_name">%1$s 正常に更新された通知</string>
     <string name="notification__install_success__text">アプリはバックグラウンドで正常に更新されました。</string>
-    <string name="notification__install_success__title">%1$s が更新されました。</string>
+    <string name="notification__install_success__title">%1$s が更新されました</string>
     <string name="installed_app_is_not_verified">インストールしたアプリが検証できませんでした</string>
     <string name="installed_application_is_verified">インストールしたアプリは検証されました</string>
     <string name="installed_version">インストール済み: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-APIの制限を超えました。次の時間に再試行します。</u>"</string>
     <string name="main_activity__no_unmetered_network">アンメットネットワークなし</string>
-    <string name="main_activity__subtitle">あなたのブラウザをアップデートします</string>
+    <string name="main_activity__subtitle">プライバシーに配慮したブラウザ用のアップデーター</string>
     <string name="main_activity__temporary_network_issue">"<u>一時的なネットワークの問題です。後で再試行します。</u>"</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">中止</string>
@@ -119,7 +118,7 @@
     <string name="running_downloads_dialog__title">ランニング・ダウンロード</string>
     <string name="running_downloads_dialog__yes">はい。</string>
     <string name="session_installer__not_enough_storage">十分なストレージがないため、操作に失敗しました。%1$s</string>
-    <string name="session_installer__require_user_interaction">ユーザーのインタラクションを必要とする。</string>
+    <string name="session_installer__require_user_interaction">ユーザーの操作が必要です。最初にFFUpdaterユーザーインターフェイスを介してアプリを更新する必要があります。そうして、各アプリのサイレントバックグラウンド更新が許可されます。</string>
     <string name="session_installer__status_failure">一般的な方法で操作に失敗しました。システムは常により具体的な失敗理由を提供しようとしますが、稀なケースでこれが配信されることがあります。</string>
     <string name="session_installer__status_failure_aborted">操作が失敗したのは、積極的に中止されたからです。たとえば、ユーザーが要求された権限を積極的に拒否した場合や、セッションが放棄された場合などです。</string>
     <string name="session_installer__status_failure_blocked">操作がブロックされたため、失敗しました。たとえば、デバイス ポリシーが操作をブロックしている、パッケージ ベリファイアが操作をブロックしている、またはアプリがシステムのコア操作に必要である可能性があります。</string>
@@ -198,7 +197,7 @@
     <string name="notification__download_error__text">%1$s のバックグラウンドでのダウンロードに失敗しました。同様のエラーが頻繁に発生する場合は、ここをクリックしてエラーレポートを確認してください。</string>
     <string name="notification__download_error__title">バックグラウンドでのダウンロードに失敗</string>
     <string name="notification__download_running__text">%1$s (%2$s)</string>
-    <string name="notification__eol_apps__channel_description">開発が終了したアプリについての警告の通知チャンネル</string>
+    <string name="notification__eol_apps__channel_description">開発が終了したアプリについての警告の通知チャンネル。</string>
     <string name="notification__eol_apps__channel_name">開発終了アプリの通知</string>
     <string name="notification__eol_apps__title">開発終了したアプリがあります</string>
     <string name="firefox_release__warning">- 改良版の Firefox は F-Droid でも Fennec F-Droid という名前で利用できます。</string>
@@ -215,4 +214,40 @@
     <string name="mulch__warning">- Mulchは Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
     <string name="main_activity__app_was_signed_by_different_certificate">このアプリは別の証明書で署名されており、FFUpdaterでアップデートすることはできません。</string>
     <string name="tor_browser__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。</string>
+    <string name="main_activity__denied_notification_permission">FFUpdater には、アップデートについて通知する権限が必要です。</string>
+    <string name="generic__eol_reason__too_old">アプリは長い間更新されていません。</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Google Chromeより優れている</string>
+    <string name="lockwise__eol_reason">Mozillaは2021年12月にサポートを終了しました。他のパスワードセーフに切り替えてください。</string>
+    <string name="lockwise__description">あなただけのためのパスワードアクセス
+\n
+\nFirefoxのパスワードを安全に追跡し、どこからでもアクセスできます。アプリから任意のウェブサイトを素早く開き、アカウントにアクセスできます。</string>
+    <string name="settings__foreground__hide_warning_buttons">インストール済みアプリの警告ボタンを非表示にします。</string>
+    <string name="background__separate_notification_channels__title">異なる通知チャネル</string>
+    <string name="notification__update_available__generic_channel_name">アプリのアップデート通知</string>
+    <string name="background__separate_notification_channels__summary">各アプリごとに異なる通知チャンネルを使用します</string>
+    <string name="main_activity__an_error_occurred"><u>エラーが発生しました。後で再試行してください。</u></string>
+    <string name="settings__b_f__delete_cache_if_install_successful">インストールに成功した場合は、ダウンロードした更新プログラムを削除します。</string>
+    <string name="mull__description">これは、Mozillaの技術をベースにしたプライバシー重視のデブロブ化されたWebブラウザです。arkenfox-user.jsプロジェクトの設定を使用して、Tor Upliftプロジェクトによってアップストリームされた多くの機能を有効にしています。uBlock Originのインストールを推奨します。</string>
+    <string name="add_app_activity__title_good_privacy_browsers">優れたプライバシーブラウザ</string>
+    <string name="add_app_activity__title_other_applications">その他のアプリ</string>
+    <string name="add_app_activity__title_end_of_live_browser">サポートの終了したブラウザ</string>
+    <string name="add_app_activity__add_new_application">新しいアプリの追加</string>
+    <string name="settings__network__trust_user_cas__summary">データトラフィックを他のアプリで検査および変更する必要がある場合に有効にします。よくわからない場合は、このオプションを無効にしてください。</string>
+    <string name="settings__network__trust_user_cas__title">ユーザーが追加したCAを信頼する</string>
+    <string name="chromium__description">Chromiumは、すべてのユーザーがより安全かつ高速に、そして安定してウェブ体験できるようにすることを目的としたオープンソースのブラウザプロジェクトです。このサイトでは、設計ドキュメント、アーキテクチャの概要、テスト情報など、Chromiumソースコードのビルドと作業を学ぶのに役立つ情報を紹介しています。</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">このオプションは、Android Marshmallow以降でのみ使用できます。</string>
+    <string name="kiwi__description">Kiwi Browserは、インターネットを閲覧したり、ニュースを読んだり、ビデオを見たり、音楽を聴いたりするために、煩わしさを感じることなく作られています。</string>
+    <string name="settings__installer_category__title">インストーラー</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">インストールに失敗した場合は、ダウンロードした更新プログラムを削除します。</string>
+    <string name="crash_report_activity__label">クラッシュレポーター</string>
+    <string name="add_app_activity__title_from_mozilla">Mozilla</string>
+    <string name="add_app_activity__label">新しいアプリの追加</string>
+    <string name="app_card__open_project_page">ブラウザでプロジェクトページを開く</string>
+    <string name="kiwi__warning">- Kiwiは Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。
+\n- Kiwiは理想的なプライバシーブラウザではありませんが、アドオンサポートは充実しています。
+\n- このブラウザは、Kiwi Browserを使用して検索を行うたびに、検索エンジンからの報酬を受け取ります。検索エンジンの選択次第では、リクエストはKiwibrowser/Kiwisearchservicesサーバーを経由する場合があります。
+\n- KiwiのGoogle Adsは位置情報データを広告に使用する場合がありますが、検出機能を無効にすることで無効にできます。しかし、これはすぐに変更されるでしょう。詳細は、https://privacy.kiwibrowser.org/を参照してください。</string>
+    <string name="orbot__description">Orbotは、他のアプリがより安全にインターネットを使用できるようにする無料のプロキシアプリです。OrbotはTorを使用してインターネットトラフィックを暗号化し、世界中のコンピュータを経由してこれを隠蔽します。Torは、個人の自由とプライバシー、機密性の高いビジネス活動や対人関係、並びにトラフィック分析と呼ばれるセキュリティを脅かすネットワーク監視の形態から防御するのに役立つフリーソフトウェア及びオープンネットワークです。</string>
+    <string name="settings__background__update_check__when_device_idle__summary">バックグラウンド更新によってアプリを再起動させたくない場合は、これを有効にします。バックグラウンド更新チェックのスケジュールをより予測可能にしたい場合は無効にします。</string>
+    <string name="settings__background__update_check__when_device_idle__title">デバイスがアイドル状態の時のみ更新をチェック</string>
 </resources>
