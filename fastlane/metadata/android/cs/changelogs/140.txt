@@ -1,0 +1,1 @@
+* Vylepšené zpracování chyb v main activity (Tobi823/ffupdater#376)
