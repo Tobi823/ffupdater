@@ -1,0 +1,4 @@
+* Děkujeme za překlady na Weblate od: Alexthegib, Juraj Motuz, Retrial, gallegonovato, MkQtS a 109247019824
+* Hotfix: Aktualizovaze URL adresy pro stažení nejnovější verze Firefoxu
+* Zlepšení opakovaného použití mezipaměti napříč aplikacemi pomocí OkHttp
+* Kvůli hotfixu: Nastavení Popředí "Kontrolovat aktualizace v měřených sítích" je v současné době ignorováno
