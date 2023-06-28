@@ -1,3 +1,9 @@
+# 2023-06-28 Release 77.7.15 (141)
+
+* Thanks for the Weblate contributions from: SiniKraft, Kazushi Hayama, 109247019824, Retrial, Alexthegib,
+  Meiru, Juraj Motuz, atilluF, gallegonovato, nautilusx, MkQtS, Eryk Michalak, Ettore Atalan and Oğuz Ersen
+* Fix broken download of Firefox Nightly (Tobi823/ffupdater#428)
+
 # 2023-03-22 Release 77.7.14 (140)
 
 * Improve error handling in main activity (Tobi823/ffupdater#376)

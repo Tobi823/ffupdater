@@ -4,19 +4,17 @@ git fetch --tags
 
 # release new version
 
-- are you on the master branch?
+- on master branch?
 - optional:
   - `./gradlew wrapper --gradle-version=6.8.2` https://gradle.org/releases/
   - `./gradlew clean adviceRelease`
 - fix and add unit tests
-- `,ff_weblate`
-- edit build.gradle to increase `versionCode` and `versionName`
-- add changelog and supporter to CHANGELOG.md
-- add Weblate contribution (don't forget commits from Weblate)
-  - apply suggestions from Weblate
-  - use button on https://hosted.weblate.org/projects/ffupdater/#reports
-- copy changelog from CHANGELOG.md to `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt`
-- commit changes with references to the issues/pull requests
+- ,ff_weblate
+- build.gradle: versionCode + versionName
+- CHANGELOG.md: Weblate (https://hosted.weblate.org/projects/ffupdater/#reports) + changelog + supporter
+- copy changelog to `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt`
+- commit changes:
+  - Release version xx (xx)
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
   - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab

@@ -1,0 +1,3 @@
+* Thanks for the Weblate contributions from: SiniKraft, Kazushi Hayama, 109247019824, Retrial, Alexthegib,
+  Meiru, Juraj Motuz, atilluF, gallegonovato, nautilusx, MkQtS, Eryk Michalak, Ettore Atalan and Oğuz Ersen
+* Fix broken download of Firefox Nightly (Tobi823/ffupdater#428)
