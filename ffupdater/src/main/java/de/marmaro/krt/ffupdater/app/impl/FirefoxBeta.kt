@@ -10,8 +10,8 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -20,10 +20,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/mozilla-mobile/focus-android/releases
  * https://www.apkmirror.com/apk/mozilla/firefox-beta
  */
-class FirefoxBeta(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class FirefoxBeta : AppBase() {
     override val app = App.FIREFOX_BETA
     override val packageName = "org.mozilla.firefox_beta"
     override val title = R.string.firefox_beta__title
@@ -43,24 +40,17 @@ class FirefoxBeta(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val deviceSettings = DeviceSettingsHelper(context)
-        val fileSuffix = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
-            ABI.ARM64_V8A -> "arm64-v8a.apk"
-            ABI.X86 -> "x86.apk"
-            ABI.X86_64 -> "x86_64.apk"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
-        val result = consumer.findLatestRelease(
+        val fileSuffix = findFileSuffix()
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__FIREFOX_ANDROID,
             dontUseApiForLatestRelease = true,
             isValidRelease = { it.isPreRelease && """^Firefox Beta \d""".toRegex().containsMatchIn(it.name) },
             isSuitableAsset = { it.nameStartsAndEndsWith("fenix-", "-$fileSuffix") },
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
         val version = result.tagName
             .removePrefix("fenix-v") //convert fenix-v112.0b5 to 112.0b5
@@ -73,6 +63,17 @@ class FirefoxBeta(
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
+    }
+
+    private fun findFileSuffix(): String {
+        val fileSuffix = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
+            ABI.ARM64_V8A -> "arm64-v8a.apk"
+            ABI.X86 -> "x86.apk"
+            ABI.X86_64 -> "x86_64.apk"
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
+        return fileSuffix
     }
 
     companion object {

@@ -1,6 +1,10 @@
-package de.marmaro.krt.ffupdater.network
+package de.marmaro.krt.ffupdater.network.file
 
-import okhttp3.*
+import okhttp3.Authenticator
+import okhttp3.Credentials
+import okhttp3.Request
+import okhttp3.Response
+import okhttp3.Route
 
 class ProxyAuthenticator(username: String, password: String) : Authenticator {
     private val credential = Credentials.basic(username, password)

@@ -10,8 +10,8 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -20,10 +20,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/guardianproject/orbot/releases
  * https://www.apkmirror.com/apk/the-tor-project/orbot-proxy-with-tor/
  */
-class Orbot(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class Orbot : AppBase() {
     override val app = App.ORBOT
     override val packageName = "org.torproject.android"
     override val title = R.string.orbot__title
@@ -43,19 +40,17 @@ class Orbot(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val deviceSettings = DeviceSettingsHelper(context)
-
-        val assetSuffix = getAssetSuffix(deviceSettings)
-        val result = consumer.findLatestRelease(
+        val assetSuffix = getAssetSuffix()
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("guardianproject", "orbot"),
             resultsPerApiCall = 3,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.nameStartsAndEndsWith("Orbot", assetSuffix) },
             dontUseApiForLatestRelease = false,
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
         val version = result.tagName
         Log.i(LOG_TAG, "found latest version $version")
@@ -68,8 +63,8 @@ class Orbot(
         )
     }
 
-    private fun getAssetSuffix(settings: DeviceSettingsHelper): String {
-        return when (deviceAbiExtractor.findBestAbi(supportedAbis, settings.prefer32BitApks)) {
+    private fun getAssetSuffix(): String {
+        return when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
             ABI.ARMEABI_V7A -> "-fullperm-universal-release.apk"
             ABI.ARM64_V8A -> "-fullperm-arm64-v8a-release.apk"
             ABI.X86 -> "-fullperm-universal-release.apk"

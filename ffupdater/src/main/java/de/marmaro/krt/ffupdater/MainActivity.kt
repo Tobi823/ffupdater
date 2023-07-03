@@ -36,15 +36,15 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
-import de.marmaro.krt.ffupdater.network.FileDownloader
-import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.*
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -56,7 +56,6 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var foregroundSettings: ForegroundSettingsHelper
     private lateinit var recycleViewAdapter: InstalledAppsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,8 +68,7 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.toolbar))
         StrictModeSetup.INSTANCE.enableStrictMode()
-        foregroundSettings = ForegroundSettingsHelper(this)
-        AppCompatDelegate.setDefaultNightMode(foregroundSettings.themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
         Migrator().migrate(this)
         requestForNotificationPermissionIfNecessary()
 
@@ -111,9 +109,10 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val itemId = item.itemId
         if (itemId == R.id.action_about) {
+            val backgroundCheckString = DataStoreHelper.getLastBackgroundCheckString(applicationContext)
             AlertDialog.Builder(this@MainActivity)
                 .setTitle(R.string.action_about_title)
-                .setMessage(getString(R.string.infobox, DataStoreHelper(this).lastBackgroundCheckString))
+                .setMessage(getString(R.string.infobox, backgroundCheckString))
                 .setNeutralButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .create()
                 .show()
@@ -136,7 +135,7 @@ class MainActivity : AppCompatActivity() {
             val items = App.values()
                 .groupBy { it.impl.isInstalled(applicationContext) }
             val installedCorrectFingerprint = items[INSTALLED] ?: listOf()
-            val installedWrongFingerprint = if (foregroundSettings.isHideAppsSignedByDifferentCertificate) {
+            val installedWrongFingerprint = if (ForegroundSettingsHelper.isHideAppsSignedByDifferentCertificate) {
                 listOf()
             } else {
                 items[INSTALLED_WITH_DIFFERENT_FINGERPRINT] ?: listOf()
@@ -151,7 +150,7 @@ class MainActivity : AppCompatActivity() {
             .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
             .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
 
-        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+        if (!ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
             apps.forEach {
                 recycleViewAdapter.notifyErrorForApp(it, R.string.main_activity__no_unmetered_network, null)
@@ -161,20 +160,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         setLoadAnimationState(true)
-        val network = NetworkSettingsHelper(applicationContext)
-        val cacheBehaviour = if (useCache) USE_CACHE_IF_NOT_TOO_OLD else FORCE_NETWORK
-        val fileDownloader = FileDownloader(network, applicationContext, cacheBehaviour)
+        val cacheBehaviour = if (useCache) USE_CACHE else FORCE_NETWORK
         apps.forEach {
-            updateMetadataOf(it, fileDownloader)
+            updateMetadataOf(it, cacheBehaviour)
         }
         setLoadAnimationState(false)
     }
 
     @MainThread
-    private suspend fun updateMetadataOf(app: App, fileDownloader: FileDownloader): AppUpdateStatus? {
+    private suspend fun updateMetadataOf(app: App, cacheBehaviour: CacheBehaviour): AppUpdateStatus? {
         try {
             recycleViewAdapter.notifyAppChange(app, null)
-            val updateStatus = app.impl.findAppUpdateStatus(applicationContext, fileDownloader)
+            val updateStatus = app.impl.findAppUpdateStatus(applicationContext, cacheBehaviour)
             recycleViewAdapter.notifyAppChange(app, updateStatus)
             recycleViewAdapter.notifyClearedErrorForApp(app)
             return updateStatus
@@ -193,7 +190,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun installOrDownloadApp(app: App) {
-        if (!foregroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+        if (!ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             showToast(R.string.main_activity__no_unmetered_network)
             return
         }
@@ -201,9 +198,7 @@ class MainActivity : AppCompatActivity() {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }
-        val network = NetworkSettingsHelper(applicationContext)
-        val fileDownloader = FileDownloader(network, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
-        val metadata = updateMetadataOf(app, fileDownloader) ?: return
+        val metadata = updateMetadataOf(app, USE_CACHE) ?: return
         if (!metadata.isUpdateAvailable) {
             // this may displays RunningDownloadsDialog and updates the app
             InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
@@ -351,7 +346,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            val hideWarningButtons = activity.foregroundSettings.isHideWarningButtonForInstalledApps
+            val hideWarningButtons = ForegroundSettingsHelper.isHideWarningButtonForInstalledApps
             when {
                 hideWarningButtons -> view.warningIcon.visibility = View.GONE
                 app.impl.installationWarning == null -> view.warningIcon.visibility = View.GONE

@@ -23,7 +23,7 @@ interface AppInstaller : DefaultLifecycleObserver {
             app: App,
         ): AppInstaller {
             val registry = activity.activityResultRegistry
-            return when (InstallerSettingsHelper(activity).getInstallerMethod()) {
+            return when (InstallerSettingsHelper.getInstallerMethod()) {
                 Installer.SESSION_INSTALLER -> SessionInstaller(app, true)
                 Installer.NATIVE_INSTALLER -> IntentInstaller(activity, registry, app)
                 Installer.ROOT_INSTALLER -> RootInstaller(app)
@@ -35,7 +35,7 @@ interface AppInstaller : DefaultLifecycleObserver {
             context: Context,
             app: App,
         ): AppInstaller {
-            return when (InstallerSettingsHelper(context).getInstallerMethod()) {
+            return when (InstallerSettingsHelper.getInstallerMethod()) {
                 Installer.SESSION_INSTALLER -> SessionInstaller(app, false)
                 Installer.NATIVE_INSTALLER -> throw Exception("Installer can not update apps in background")
                 Installer.ROOT_INSTALLER -> RootInstaller(app)

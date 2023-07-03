@@ -8,16 +8,14 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
  * https://api.github.com/repos/Tobi823/ffupdater/releases
  */
-class FFUpdater(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-) : AppBase() {
+class FFUpdater : AppBase() {
     override val app = App.FFUPDATER
     override val packageName = "de.marmaro.krt.ffupdater"
     override val title = R.string.app_name
@@ -37,16 +35,16 @@ class FFUpdater(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val result = consumer.findLatestRelease(
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("Tobi823", "ffupdater"),
             resultsPerApiCall = 5,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(".apk") },
             dontUseApiForLatestRelease = false,
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
         val version = result.tagName
         Log.i(LOG_TAG, "found latest version $version")

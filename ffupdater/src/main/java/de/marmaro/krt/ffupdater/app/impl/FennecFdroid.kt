@@ -10,15 +10,12 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
-class FennecFdroid(
-    private val fdroidConsumer: FdroidConsumer = FdroidConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class FennecFdroid : AppBase() {
     override val app = App.FENNEC_FDROID
     override val packageName = "org.mozilla.fennec_fdroid"
     override val title = R.string.fennecfdroid__title
@@ -38,18 +35,11 @@ class FennecFdroid(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
-        val deviceSettings = DeviceSettingsHelper(context)
-
-        val index = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> 1
-            ABI.ARM64_V8A -> 2
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
-        val result = fdroidConsumer.getLatestUpdate(packageName, fileDownloader, index)
-
+        val index = findIndex()
+        val result = FdroidConsumer.getLatestUpdate(packageName, index, cacheBehaviour)
         val version = result.versionName
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
@@ -59,6 +49,15 @@ class FennecFdroid(
             exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )
+    }
+
+    private fun findIndex(): Int {
+        val index = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> 1
+            ABI.ARM64_V8A -> 2
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
+        return index
     }
 
     companion object {

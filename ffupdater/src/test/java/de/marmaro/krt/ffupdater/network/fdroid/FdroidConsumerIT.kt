@@ -3,9 +3,8 @@ package de.marmaro.krt.ffupdater.network.fdroid
 import android.content.Context
 import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
-import de.marmaro.krt.ffupdater.network.FileDownloader
-import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.FORCE_NETWORK
-import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer.*
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.FORCE_NETWORK
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -33,7 +32,7 @@ class FdroidConsumerIT {
         every { context.cacheDir } returns File(".")
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
         sharedPreferences.edit().putBoolean("network__trust_user_cas", false)
-        fileDownloader = FileDownloader(NetworkSettingsHelper(context), context, FORCE_NETWORK)
+        fileDownloader = FileDownloader(context, FORCE_NETWORK)
 
 //        prepareApiResponse()
     }

@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.AnyThread
 import androidx.annotation.WorkerThread
-import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -15,9 +14,9 @@ import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.ABI.*
-import de.marmaro.krt.ffupdater.network.FileDownloader
-import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
@@ -39,18 +38,8 @@ abstract class AppBase {
     abstract val displayCategory: DisplayCategory
     open val fileNameInZipArchive: String? = null
 
-    private val limitFoundAppsForDevelop: List<App> = listOf()
-
     @AnyThread
     suspend fun isInstalled(context: Context): InstallationStatus {
-        // only for faster development
-        if (BuildConfig.DEBUG &&
-            limitFoundAppsForDevelop.isNotEmpty() &&
-            packageName !in limitFoundAppsForDevelop.map { it.impl.packageName }
-        ) {
-            return InstallationStatus.NOT_INSTALLED
-        }
-
         return if (PackageManagerUtil(context.packageManager).isAppInstalled(packageName)) {
             if (FingerprintValidator(context.packageManager).checkInstalledApp(this).isValid) {
                 InstallationStatus.INSTALLED
@@ -64,14 +53,6 @@ abstract class AppBase {
 
     @AnyThread
     fun isInstalledWithoutFingerprintVerification(context: Context): Boolean {
-        // only for faster development
-        if (BuildConfig.DEBUG &&
-            limitFoundAppsForDevelop.isNotEmpty() &&
-            packageName !in limitFoundAppsForDevelop.map { it.impl.packageName }
-        ) {
-            return false
-        }
-
         return PackageManagerUtil(context.packageManager).isAppInstalled(packageName)
     }
 
@@ -101,10 +82,10 @@ abstract class AppBase {
     open fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
     }
 
-    suspend fun findAppUpdateStatus(context: Context, fileDownloader: FileDownloader): AppUpdateStatus {
+    suspend fun findAppUpdateStatus(context: Context, cacheBehaviour: CacheBehaviour): AppUpdateStatus {
         Log.d(LOG_TAG, "$app: findAppUpdateStatus")
         val available = try {
-            findLatestUpdate(context, fileDownloader)
+            findLatestUpdate(context.applicationContext, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Can't find latest update for ${app.name}")
         } catch (e: DisplayableException) {
@@ -120,7 +101,7 @@ abstract class AppBase {
     @WorkerThread
     internal abstract suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate
 
     @AnyThread

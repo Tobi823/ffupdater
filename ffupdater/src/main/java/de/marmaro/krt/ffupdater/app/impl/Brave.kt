@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
@@ -12,8 +11,8 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI.*
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -22,11 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/brave/brave-browser/releases
  * https://www.apkmirror.com/apk/brave-software/brave-browser/
  */
-class Brave(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-) : AppBase() {
+class Brave : AppBase() {
     override val app: App = App.BRAVE
     override val packageName = "com.brave.browser"
     override val title = R.string.brave__title
@@ -46,21 +41,18 @@ class Brave(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         val time = System.nanoTime()
         Log.d(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val deviceSettings = DeviceSettingsHelper(preferences)
-
-        val fileName = getNameOfApkFile(deviceSettings)
-        val result = consumer.findLatestRelease(
+        val fileName = findNameOfApkFile()
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BRAVE__BRAVE_BROWSER,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BRAVE_BROWSER,
             dontUseApiForLatestRelease = true,
             isValidRelease = { !it.isPreRelease && it.name.startsWith("Release v") },
             isSuitableAsset = { it.name == fileName },
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
         val version = result.tagName.replace("v", "")
         Log.i(LOG_TAG, "found latest version $version after ${(System.nanoTime() - time) / 1000000}ms")
@@ -73,22 +65,21 @@ class Brave(
         )
     }
 
-    private fun getNameOfApkFile(settings: DeviceSettingsHelper): String {
-        return if (deviceSdkTester.supportsAndroidNougat()) {
-            when (deviceAbiExtractor.findBestAbi(supportedAbis, settings.prefer32BitApks)) {
-                ARMEABI_V7A -> "BraveMonoarm.apk"
-                ARM64_V8A -> "BraveMonoarm64.apk"
-                X86 -> "BraveMonox86.apk"
-                X86_64 -> "BraveMonox64.apk"
-                else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
-            }
+    private fun findNameOfApkFile(): String {
+        val strings = if (DeviceSdkTester.supportsAndroidNougat()) {
+            DeviceAbiExtractor.StringsForAbi(
+                armeabi_v7a = "BraveMonoarm.apk",
+                arm64_v8a = "BraveMonoarm64.apk",
+                x86 = "BraveMonox86.apk",
+                x86_64 = "BraveMonox64.apk"
+            )
         } else {
-            when (deviceAbiExtractor.findBestAbi(ARM32_X86, settings.prefer32BitApks)) {
-                ARMEABI_V7A -> "Bravearm.apk"
-                X86 -> "Bravex86.apk"
-                else -> throw IllegalArgumentException("ABI for Android 6 is not supported")
-            }
+            DeviceAbiExtractor.StringsForAbi(
+                armeabi_v7a = "Bravearm.apk",
+                x86 = "Bravex86.apk",
+            )
         }
+        return DeviceAbiExtractor.findStringForBestAbi(strings, DeviceSettingsHelper.prefer32BitApks)
     }
 
     companion object {

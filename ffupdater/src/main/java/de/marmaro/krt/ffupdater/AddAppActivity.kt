@@ -19,7 +19,12 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.*
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BASED_ON_FIREFOX
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.FROM_MOZILLA
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -27,8 +32,8 @@ import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.AppWarningDialog
 import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
 import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 
 
@@ -43,8 +48,7 @@ class AddAppActivity : AppCompatActivity() {
             finish()
             return
         }
-        foregroundSettings = ForegroundSettingsHelper(this)
-        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         addAppsToUserInterface()
@@ -204,7 +208,7 @@ class AddAppActivity : AppCompatActivity() {
         }
 
         private fun installApp(app: App) {
-            if (!ForegroundSettingsHelper(activity).isUpdateCheckOnMeteredAllowed && isNetworkMetered(activity)) {
+            if (!ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(activity)) {
                 showToast(R.string.main_activity__no_unmetered_network)
                 return
             }

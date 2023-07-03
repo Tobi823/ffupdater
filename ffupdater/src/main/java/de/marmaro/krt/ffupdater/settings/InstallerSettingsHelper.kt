@@ -1,19 +1,16 @@
 package de.marmaro.krt.ffupdater.settings
 
-import android.content.Context
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 
-class InstallerSettingsHelper {
-    private val preferences: SharedPreferences
+object InstallerSettingsHelper {
+    private lateinit var preferences: SharedPreferences
 
-    constructor(context: Context) {
-        preferences = PreferenceManager.getDefaultSharedPreferences(context)
-    }
-
-    constructor(preferences: SharedPreferences) {
-        this.preferences = preferences
+    /**
+     * This function must be called from Application.onCreate() or this singleton can't be used
+     */
+    fun init(sharedPreferences: SharedPreferences) {
+        preferences = sharedPreferences
     }
 
     fun getInstallerMethod(): Installer {

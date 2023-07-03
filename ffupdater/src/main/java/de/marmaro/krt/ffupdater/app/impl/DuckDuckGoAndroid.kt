@@ -8,8 +8,8 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -17,9 +17,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://api.github.com/repos/duckduckgo/Android/releases
  * https://www.apkmirror.com/apk/duckduckgo/duckduckgo-privacy-browser/
  */
-class DuckDuckGoAndroid(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-) : AppBase() {
+class DuckDuckGoAndroid : AppBase() {
     override val app = App.DUCKDUCKGO_ANDROID
     override val packageName = "com.duckduckgo.mobile.android"
     override val title = R.string.duckduckgo_android__title
@@ -39,16 +37,16 @@ class DuckDuckGoAndroid(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val result = consumer.findLatestRelease(
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("duckduckgo", "Android"),
             resultsPerApiCall = 3,
             isValidRelease = { true },
             isSuitableAsset = { it.nameStartsAndEndsWith("duckduckgo-", "-play-release.apk") },
             dontUseApiForLatestRelease = false,
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
         // tag name can be "5.45.4"
         val version = result.tagName

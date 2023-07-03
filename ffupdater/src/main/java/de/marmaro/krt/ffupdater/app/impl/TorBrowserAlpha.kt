@@ -10,17 +10,16 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 /**
  * https://www.torproject.org/download/alpha/
  * https://www.apkmirror.com/apk/the-tor-project/tor-browser-for-android-alpha/
  */
-class TorBrowserAlpha(
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class TorBrowserAlpha : AppBase() {
     override val app = App.TOR_BROWSER_ALPHA
     override val packageName = "org.torproject.torbrowser_alpha"
     override val title = R.string.tor_browser_alpha__title
@@ -46,13 +45,11 @@ class TorBrowserAlpha(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val deviceSettings = DeviceSettingsHelper(context)
-
-        val (version, downloadUrl) = findVersionAndDownloadUrl(fileDownloader, deviceSettings)
-        val dateTime = findDateTime(fileDownloader, deviceSettings, version)
+        val (version, downloadUrl) = findVersionAndDownloadUrl(cacheBehaviour)
+        val dateTime = findDateTime(version, cacheBehaviour)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
@@ -63,12 +60,9 @@ class TorBrowserAlpha(
         )
     }
 
-    private suspend fun findVersionAndDownloadUrl(
-        fileDownloader: FileDownloader,
-        deviceSettings: DeviceSettingsHelper,
-    ): Pair<String, String> {
+    private suspend fun findVersionAndDownloadUrl(cacheBehaviour: CacheBehaviour): Pair<String, String> {
         val content = try {
-            fileDownloader.downloadSmallFileAsString(MAIN_URL)
+            FileDownloader.downloadStringWithCache(MAIN_URL, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -76,7 +70,7 @@ class TorBrowserAlpha(
                 "([0-9a-z.]{4,})" +
                 Regex.escape("/tor-browser-") +
                 "[0-9a-z.]{4,}+" +
-                Regex.escape("-android-${getAbiString(deviceSettings)}-multi.apk")
+                Regex.escape("-android-${getAbiString()}-multi.apk")
 
         val match = Regex(pattern).find(content)
         checkNotNull(match) { "Can't find download url with regex pattern: $pattern." }
@@ -90,15 +84,11 @@ class TorBrowserAlpha(
         return availableVersion.value to downloadUrl.value
     }
 
-    private suspend fun findDateTime(
-        fileDownloader: FileDownloader,
-        deviceSettingsHelper: DeviceSettingsHelper,
-        version: String,
-    ): String {
-        val abi = getAbiString(deviceSettingsHelper)
+    private suspend fun findDateTime(version: String, cacheBehaviour: CacheBehaviour): String {
+        val abi = getAbiString()
         val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-$abi-multi.apk"
         val content = try {
-            fileDownloader.downloadSmallFileAsString(url)
+            FileDownloader.downloadStringWithCache(url, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -125,8 +115,8 @@ class TorBrowserAlpha(
         return "${date.value}T${time.value}:00Z"
     }
 
-    private fun getAbiString(settings: DeviceSettingsHelper): String {
-        return when (deviceAbiExtractor.findBestAbi(supportedAbis, settings.prefer32BitApks)) {
+    private fun getAbiString(): String {
+        return when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
             ABI.ARM64_V8A -> "aarch64"
             ABI.ARMEABI_V7A -> "armv7"
             ABI.X86_64 -> "x86_64"

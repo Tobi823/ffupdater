@@ -7,8 +7,8 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -16,9 +16,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/mozilla/firefox-lockwise/
  */
 @Deprecated("app is no longer supported")
-class Lockwise(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-) : AppBase() {
+class Lockwise : AppBase() {
     override val app = App.LOCKWISE
     override val packageName = "mozilla.lockbox"
     override val title = R.string.lockwise__title
@@ -38,15 +36,15 @@ class Lockwise(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
-        val result = consumer.findLatestRelease(
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("mozilla-lockwise", "lockwise-android"),
             resultsPerApiCall = 5,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(".apk") },
             dontUseApiForLatestRelease = false,
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
 
         val extractVersion = {

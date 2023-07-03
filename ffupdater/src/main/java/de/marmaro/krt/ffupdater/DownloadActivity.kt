@@ -21,8 +21,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import androidx.preference.PreferenceManager
-import de.marmaro.krt.ffupdater.R.string.*
+import de.marmaro.krt.ffupdater.R.string.application_installation_was_not_successful
+import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_fetching_url
+import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_install_file
+import de.marmaro.krt.ffupdater.R.string.download_activity__download_app_with_status
+import de.marmaro.krt.ffupdater.R.string.download_activity__fetch_url_for_download
+import de.marmaro.krt.ffupdater.R.string.download_activity__fetched_url_for_download_successfully
+import de.marmaro.krt.ffupdater.R.string.download_activity__file_uri_exposed_toast
+import de.marmaro.krt.ffupdater.R.string.download_activity__github_rate_limit_exceeded
+import de.marmaro.krt.ffupdater.R.string.download_activity__open_folder
+import de.marmaro.krt.ffupdater.R.string.download_activity__temporary_network_issue
+import de.marmaro.krt.ffupdater.R.string.download_activity__too_low_memory_description
+import de.marmaro.krt.ffupdater.R.string.install_activity__download_file_failed__crash_text
+import de.marmaro.krt.ffupdater.R.string.main_activity__no_unmetered_network
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -33,16 +44,15 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
-import de.marmaro.krt.ffupdater.network.FileDownloader
-import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.USE_CACHE_IF_NOT_TOO_OLD
-import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.USE_EVEN_VERY_OLD_CACHE
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CACHE
+import de.marmaro.krt.ffupdater.network.file.DownloadStatus
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -60,11 +70,6 @@ import kotlinx.coroutines.withContext
  */
 class DownloadActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
-    private lateinit var foregroundSettings: ForegroundSettingsHelper
-    private lateinit var installerSettings: InstallerSettingsHelper
-    private lateinit var networkSettings: NetworkSettingsHelper
-    private val notificationRemover = BackgroundNotificationRemover.INSTANCE
-
     private lateinit var app: App
     private lateinit var appUpdateStatus: AppUpdateStatus
     private lateinit var appInstaller: AppInstaller
@@ -73,13 +78,13 @@ class DownloadActivity : AppCompatActivity() {
     class InstallActivityViewModel : ViewModel() {
         private var downloadApp: App? = null
         var downloadDeferred: Deferred<Any>? = null
-        var downloadProgressChannel: Channel<FileDownloader.DownloadStatus>? = null
+        var downloadProgressChannel: Channel<DownloadStatus>? = null
         var installationSuccess: Boolean = false
 
         fun storeNewRunningDownload(
             app: App,
             deferred: Deferred<Any>,
-            progressChannel: Channel<FileDownloader.DownloadStatus>,
+            progressChannel: Channel<DownloadStatus>,
         ) {
             downloadApp = app
             downloadDeferred = deferred
@@ -105,7 +110,7 @@ class DownloadActivity : AppCompatActivity() {
             finish()
             return
         }
-        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
@@ -117,12 +122,6 @@ class DownloadActivity : AppCompatActivity() {
         app = App.valueOf(appFromExtras)
 
         viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
-
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        foregroundSettings = ForegroundSettingsHelper(preferences)
-        installerSettings = InstallerSettingsHelper(preferences)
-        networkSettings = NetworkSettingsHelper(preferences)
-
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
             app.downloadedFileCache.deleteAllApkFileForThisApp(this)
             hide(R.id.install_activity__delete_cache)
@@ -132,7 +131,7 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         // hide existing background notification for this app
-        notificationRemover.removeAppStatusNotifications(this, app)
+        BackgroundNotificationRemover.removeAppStatusNotifications(this, app)
 
         // prevent network timeouts when the displayed is automatically turned off
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -152,11 +151,11 @@ class DownloadActivity : AppCompatActivity() {
             // if the device is not rotated, delete information about the download to allow a new download
             // next time
             if (viewModel.installationSuccess) {
-                if (foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
+                if (ForegroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
                     app.downloadedFileCache.deleteAllApkFileForThisApp(this)
                 }
             } else {
-                if (foregroundSettings.isDeleteUpdateIfInstallFailed) {
+                if (ForegroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
                     app.downloadedFileCache.deleteAllApkFileForThisApp(this)
                 }
             }
@@ -254,10 +253,8 @@ class DownloadActivity : AppCompatActivity() {
         val downloadSource = app.impl.downloadSource
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
-        val network = NetworkSettingsHelper(applicationContext)
-        val fileDownloader = FileDownloader(network, applicationContext, USE_EVEN_VERY_OLD_CACHE)
         try {
-            appUpdateStatus = app.impl.findAppUpdateStatus(this, fileDownloader)
+            appUpdateStatus = app.impl.findAppUpdateStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         } catch (e: ApiRateLimitExceededException) {
             displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
         } catch (e: DisplayableException) {
@@ -273,16 +270,15 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownload(): Boolean {
-        if (!foregroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
+        if (!ForegroundSettingsHelper.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
             displayFetchFailure(getString(main_activity__no_unmetered_network))
             return false
         }
 
+        val url = appUpdateStatus.latestUpdate.downloadUrl
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
+        setText(R.id.downloadingFileUrl, url)
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status, ""))
-
-        val fileDownloader = FileDownloader(networkSettings, applicationContext, USE_CACHE_IF_NOT_TOO_OLD)
         app.downloadedFileCache.deleteAllApkFileForThisApp(this)
 
         // this coroutine should survive a screen rotation and should live as long as the view model
@@ -292,7 +288,7 @@ class DownloadActivity : AppCompatActivity() {
         try {
             val (deferred, progressChannel) = withContext(viewModel.viewModelScope.coroutineContext) {
                 // run async with await later
-                fileDownloader.downloadBigFileAsync(appUpdateStatus.latestUpdate.downloadUrl, file)
+                FileDownloader.downloadFile(url, file)
             }
             viewModel.storeNewRunningDownload(app, deferred, progressChannel)
 
@@ -323,7 +319,7 @@ class DownloadActivity : AppCompatActivity() {
         } finally {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
+            setText(R.id.downloadedFileUrl, url)
         }
         return false
     }
@@ -392,7 +388,7 @@ class DownloadActivity : AppCompatActivity() {
             displayAppInstallationFailure(e.translatedMessage, ex)
         } finally {
             // hide existing background notification for this app
-            notificationRemover.removeAppStatusNotifications(this, app)
+            BackgroundNotificationRemover.removeAppStatusNotifications(this, app)
             hide(R.id.installingApplication)
         }
         return false
@@ -403,7 +399,7 @@ class DownloadActivity : AppCompatActivity() {
         show(R.id.installerSuccess)
         show(R.id.fingerprintInstalledGood)
         setText(R.id.fingerprintInstalledGoodHash, certificateHash)
-        if (!foregroundSettings.isDeleteUpdateIfInstallSuccessful) {
+        if (!ForegroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }
@@ -417,7 +413,7 @@ class DownloadActivity : AppCompatActivity() {
             R.id.install_activity__exception__text,
             getString(application_installation_was_not_successful)
         )
-        if (installerSettings.getInstallerMethod() == SESSION_INSTALLER) {
+        if (InstallerSettingsHelper.getInstallerMethod() == SESSION_INSTALLER) {
             show(R.id.install_activity__different_installer_info)
         }
 
@@ -430,7 +426,7 @@ class DownloadActivity : AppCompatActivity() {
 
         val cacheFolder = app.downloadedFileCache.getCacheFolder(this).absolutePath
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
-        if (!foregroundSettings.isDeleteUpdateIfInstallFailed) {
+        if (!ForegroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }

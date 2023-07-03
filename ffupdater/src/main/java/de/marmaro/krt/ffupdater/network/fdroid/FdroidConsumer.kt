@@ -4,24 +4,25 @@ import android.util.Log
 import androidx.annotation.MainThread
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.AddAppActivity.Companion.LOG_TAG
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 
-class FdroidConsumer {
+object FdroidConsumer {
 
     @MainThread
-    suspend fun getLatestUpdate(packageName: String, fileDownloader: FileDownloader, index: Int): Result {
+    suspend fun getLatestUpdate(packageName: String, index: Int, cacheBehaviour: CacheBehaviour): Result {
         require(index >= 1)
         val url = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = try {
-            fileDownloader.downloadObject(url, AppInfo::class)
+            FileDownloader.downloadObjectWithCache(url, AppInfo::class, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $packageName from F-Droid.", e)
         }
 
         val latestVersion = getLatestUpdate(appInfo, index)
-        val commitId = getLastCommitId(packageName, fileDownloader)
-        val createdAt = getCreateDate(commitId, fileDownloader)
+        val commitId = getLastCommitId(packageName, cacheBehaviour)
+        val createdAt = getCreateDate(commitId, cacheBehaviour)
 
         Log.i(LOG_TAG, "found latest version ${latestVersion.versionName}")
         return Result(
@@ -52,20 +53,20 @@ class FdroidConsumer {
         return latestVersions[index - 1]
     }
 
-    private suspend fun getLastCommitId(packageName: String, fileDownloader: FileDownloader): String {
+    private suspend fun getLastCommitId(packageName: String, cacheBehaviour: CacheBehaviour): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2F${packageName}.yml?ref=master"
         val metadata = try {
-            fileDownloader.downloadObject(url, GitlabRepositoryFilesMetadata::class)
+            FileDownloader.downloadObjectWithCache(url, GitlabRepositoryFilesMetadata::class, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the latest commit id of $packageName.", e)
         }
         return metadata.last_commit_id
     }
 
-    private suspend fun getCreateDate(commitId: String, fileDownloader: FileDownloader): String {
+    private suspend fun getCreateDate(commitId: String, cacheBehaviour: CacheBehaviour): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/commits/$commitId"
         val commits = try {
-            fileDownloader.downloadObject(url, GitlabRepositoryCommits::class)
+            FileDownloader.downloadObjectWithCache(url, GitlabRepositoryCommits::class, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the creation date of commit $commitId.", e)
         }
@@ -104,8 +105,4 @@ class FdroidConsumer {
         @SerializedName("created_at")
         val created_at: String,
     )
-
-    companion object {
-        val INSTANCE = FdroidConsumer()
-    }
 }

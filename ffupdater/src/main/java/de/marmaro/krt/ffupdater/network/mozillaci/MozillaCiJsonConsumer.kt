@@ -1,8 +1,9 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
 import com.google.gson.JsonParser
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.Sha256Hash
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -10,15 +11,15 @@ import okhttp3.RequestBody.Companion.toRequestBody
 /**
  * Consume the "chain_of_trust.json".
  */
-class MozillaCiJsonConsumer {
+object MozillaCiJsonConsumer {
 
-    suspend fun findTaskId(fileDownloader: FileDownloader, indexPath: String): String {
+    suspend fun findTaskId(indexPath: String, cacheBehaviour: CacheBehaviour): String {
         val pageUrl = "https://firefox-ci-tc.services.mozilla.com/graphql"
         val requestJson = """{"operationName":"IndexedTask","variables":{"indexPath":"$indexPath"},"query":"query """ +
                 """IndexedTask(${'$'}indexPath: String!) {indexedTask(indexPath: ${'$'}indexPath) {taskId}}"}"""
         val requestBody = requestJson.toRequestBody("application/json".toMediaType())
         val responseString = try {
-            fileDownloader.downloadSmallFileAsString(pageUrl, "POST", requestBody)
+            FileDownloader.downloadStringWithCache(pageUrl, cacheBehaviour, "POST", requestBody)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the taskId from graphql API.", e)
         }
@@ -31,10 +32,14 @@ class MozillaCiJsonConsumer {
         return taskId
     }
 
-    suspend fun findChainOfTrustJson(fileDownloader: FileDownloader, taskId: String, abiString: String): Result {
+    suspend fun findChainOfTrustJson(
+        taskId: String,
+        abiString: String,
+        cacheBehaviour: CacheBehaviour,
+    ): Result {
         val url = "https://firefoxci.taskcluster-artifacts.net/$taskId/0/public/chain-of-trust.json"
         val json = try {
-            fileDownloader.downloadSmallFile(url).use {
+            FileDownloader.downloadWithCache(url, cacheBehaviour).use {
                 JsonParser.parseReader(it.charStream().buffered())
             }
         } catch (e: NetworkException) {
@@ -54,8 +59,4 @@ class MozillaCiJsonConsumer {
         val fileHash: Sha256Hash,
         val releaseDate: String,
     )
-
-    companion object {
-        val INSTANCE = MozillaCiJsonConsumer()
-    }
 }

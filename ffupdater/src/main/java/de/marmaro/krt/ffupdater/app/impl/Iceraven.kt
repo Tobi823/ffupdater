@@ -10,8 +10,8 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -19,10 +19,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://github.com/fork-maintainers/iceraven-browser
  * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
  */
-class Iceraven(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class Iceraven : AppBase() {
     override val app = App.ICERAVEN
     override val packageName = "io.github.forkmaintainers.iceraven"
     override val title = R.string.iceraven__title
@@ -47,28 +44,17 @@ class Iceraven(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val deviceSettings = DeviceSettingsHelper(context)
-
-        val fileSuffix = when (deviceAbiExtractor.findBestAbi(
-            supportedAbis,
-            deviceSettings.prefer32BitApks
-        )) {
-            ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
-            ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
-            ABI.X86 -> "browser-x86-forkRelease.apk"
-            ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
-        val result = consumer.findLatestRelease(
+        val fileSuffix = findFileSuffix()
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("fork-maintainers", "iceraven-browser"),
             resultsPerApiCall = 3,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(fileSuffix) },
             dontUseApiForLatestRelease = false,
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
         val version = result.tagName.replace("iceraven-", "")
         Log.i(LOG_TAG, "found latest version $version")
@@ -79,6 +65,17 @@ class Iceraven(
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
+    }
+
+    private fun findFileSuffix(): String {
+        val fileSuffix = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
+            ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
+            ABI.X86 -> "browser-x86-forkRelease.apk"
+            ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
+        return fileSuffix
     }
 
     companion object {

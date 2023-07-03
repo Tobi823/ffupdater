@@ -5,12 +5,17 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.*
+import androidx.preference.EditTextPreference
+import androidx.preference.ListPreference
+import androidx.preference.MultiSelectListPreference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper.DnsProvider.CUSTOM_SERVER
@@ -29,7 +34,7 @@ class SettingsActivity : AppCompatActivity() {
             return
         }
         setContentView(R.layout.activity_settings)
-        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper(this).themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385
             supportFragmentManager.beginTransaction()
                 .replace(R.id.settings, SettingsFragment())
@@ -59,12 +64,11 @@ class SettingsActivity : AppCompatActivity() {
             interval: Duration?,
             onlyWhenIdle: Boolean?
         ): Boolean {
-            val settings = BackgroundSettingsHelper(requireContext())
             BackgroundJob.changeBackgroundUpdateCheck(
                 requireContext(),
-                enabled ?: settings.isUpdateCheckEnabled,
-                interval ?: settings.updateCheckInterval,
-                onlyWhenIdle ?: settings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
+                enabled ?: BackgroundSettingsHelper.isUpdateCheckEnabled,
+                interval ?: BackgroundSettingsHelper.updateCheckInterval,
+                onlyWhenIdle ?: BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
             )
             return true
         }
@@ -110,12 +114,29 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
-            findTextPref("network__custom_doh_server").isVisible =
-                findListPref("network__dns_provider").value == CUSTOM_SERVER.name
-            findListPref("network__dns_provider").setOnPreferenceChangeListener { _, newValue ->
-                findTextPref("network__custom_doh_server").isVisible = (newValue == CUSTOM_SERVER.name)
+            findSwitchPref("network__trust_user_cas").setOnPreferenceChangeListener { _, _ ->
+                FileDownloader.restart(requireContext().applicationContext)
                 true
             }
+
+            findListPref("network__dns_provider").setOnPreferenceChangeListener { _, newValue ->
+                findTextPref("network__custom_doh_server").isVisible = (newValue == CUSTOM_SERVER.name)
+                FileDownloader.restart(requireContext().applicationContext)
+                true
+            }
+
+            findTextPref("network__custom_doh_server").isVisible =
+                findListPref("network__dns_provider").value == CUSTOM_SERVER.name
+            findTextPref("network__custom_doh_server").setOnPreferenceChangeListener { _, _ ->
+                FileDownloader.restart(requireContext().applicationContext)
+                true
+            }
+
+            findTextPref("network__proxy").setOnPreferenceChangeListener { _, _ ->
+                FileDownloader.restart(requireContext().applicationContext)
+                true
+            }
+
 
             findListPref("installer__method").setOnPreferenceChangeListener { _, newValue ->
                 when (newValue) {

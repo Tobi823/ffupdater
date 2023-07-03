@@ -1,20 +1,18 @@
 package de.marmaro.krt.ffupdater.settings
 
-import android.content.Context
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
+import android.util.Log
 import java.net.Proxy.Type
 
 
-class NetworkSettingsHelper {
-    private val preferences: SharedPreferences
+object NetworkSettingsHelper {
+    private lateinit var preferences: SharedPreferences
 
-    constructor(context: Context) {
-        preferences = PreferenceManager.getDefaultSharedPreferences(context)
-    }
-
-    constructor(preferences: SharedPreferences) {
-        this.preferences = preferences
+    /**
+     * This function must be called from Application.onCreate() or this singleton can't be used
+     */
+    fun init(sharedPreferences: SharedPreferences) {
+        preferences = sharedPreferences
     }
 
     val areUserCAsTrusted
@@ -44,12 +42,17 @@ class NetworkSettingsHelper {
 
     fun customDohServer(): DohConnectionDetails {
         val rawString = preferences.getString("network__custom_doh_server", "")?.trim()
-        if (rawString == null || rawString.isEmpty()) {
-            throw IllegalArgumentException("Missing connection details for custom DoH server.")
+        if (rawString.isNullOrEmpty()) {
+            Log.w(LOG_TAG, "Missing connection details for custom DoH server.")
+            return DohConnectionDetails(
+                "http://missing_connection_details_for_custom_doh_server.local",
+                listOf("172.0.0.1")
+            )
         }
         val arguments = rawString.split(";")
         if (arguments.size < 2) {
-            throw IllegalArgumentException("Wrong formatted connection details for the DoH server.")
+            Log.w(LOG_TAG, "Wrong formatted connection details for the DoH server. Reset connection details")
+            return DohConnectionDetails("http://invalid_doh_connection_details.local", listOf("172.0.0.1"))
         }
         val server = arguments[0]
         val ips = arguments.subList(1, arguments.size)
@@ -61,7 +64,7 @@ class NetworkSettingsHelper {
         val host: String,
         val port: Int,
         val username: String?,
-        val password: String?
+        val password: String?,
     )
 
     fun proxy(): ProxyConnectionDetails? {
@@ -88,4 +91,6 @@ class NetworkSettingsHelper {
 
         return ProxyConnectionDetails(type, ipString, port, username, password)
     }
+
+    private const val LOG_TAG = "NetworkSettingsHelper"
 }

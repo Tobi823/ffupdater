@@ -19,9 +19,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 
 
-class BackgroundNotificationBuilder(
-    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-) {
+object BackgroundNotificationBuilder {
     data class ChannelData(val id: String, val name: String, val description: String)
     data class NotificationData(val id: Int, val title: String, val text: String)
 
@@ -62,7 +60,7 @@ class BackgroundNotificationBuilder(
     }
 
     fun showUpdateAvailableNotification(context: Context, app: App) {
-        val useDifferentChannels = BackgroundSettingsHelper(context).useDifferentNotificationChannels
+        val useDifferentChannels = BackgroundSettingsHelper.useDifferentNotificationChannels
         val appTitle: String = context.getString(app.impl.title)
         val channel = ChannelData(
             id = if (useDifferentChannels) {
@@ -144,9 +142,9 @@ class BackgroundNotificationBuilder(
         app: App,
         code: Int,
         message: String,
-        exception: Exception
+        exception: Exception,
     ) {
-        val useDifferentChannels = BackgroundSettingsHelper(context).useDifferentNotificationChannels
+        val useDifferentChannels = BackgroundSettingsHelper.useDifferentNotificationChannels
         val appTitle: String = context.getString(app.impl.title)
         val channel = ChannelData(
             id = if (useDifferentChannels) {
@@ -193,7 +191,7 @@ class BackgroundNotificationBuilder(
     ) {
         val notificationManager = getNotificationManager(context)
 
-        val notificationBuilder = if (deviceSdkTester.supportsAndroidOreo()) {
+        val notificationBuilder = if (DeviceSdkTester.supportsAndroidOreo()) {
             val channel = NotificationChannel(channelData.id, channelData.name, IMPORTANCE_DEFAULT)
             channel.description = channelData.description
             notificationManager.createNotificationChannel(channel)
@@ -209,7 +207,7 @@ class BackgroundNotificationBuilder(
             .setContentTitle(notification.title).setContentText(notification.text).setOnlyAlertOnce(true)
             .setAutoCancel(true)
 
-        val flags = if (deviceSdkTester.supportsAndroid12()) {
+        val flags = if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_IMMUTABLE
         } else {
             FLAG_UPDATE_CURRENT
@@ -226,14 +224,12 @@ class BackgroundNotificationBuilder(
         return context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
     }
 
-    companion object {
-        val INSTANCE = BackgroundNotificationBuilder()
-        const val UPDATE_AVAILABLE_CODE = 200
-        const val ERROR_CODE = 300
-        const val DOWNLOAD_IS_RUNNING_CODE = 400
-        const val INSTALL_SUCCESS_CODE = 500
-        const val INSTALL_FAILURE_ERROR = 600
-        const val DOWNLOAD_ERROR_CODE = 700
-        const val EOL_APPS_CODE = 800
-    }
+    const val UPDATE_AVAILABLE_CODE = 200
+    const val ERROR_CODE = 300
+    const val DOWNLOAD_IS_RUNNING_CODE = 400
+    const val INSTALL_SUCCESS_CODE = 500
+    const val INSTALL_FAILURE_ERROR = 600
+    const val DOWNLOAD_ERROR_CODE = 700
+    const val EOL_APPS_CODE = 800
+
 }

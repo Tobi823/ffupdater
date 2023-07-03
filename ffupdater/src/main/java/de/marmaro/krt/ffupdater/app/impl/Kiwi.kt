@@ -13,8 +13,8 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -23,10 +23,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/kiwibrowser/src.next/releases
  * https://www.apkmirror.com/apk/geometry-ou/kiwi-browser-fast-quiet/
  */
-class Kiwi(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class Kiwi : AppBase() {
     override val app = App.KIWI
     override val packageName = "com.kiwibrowser.browser"
     override val title = R.string.kiwi__title
@@ -46,29 +43,21 @@ class Kiwi(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val deviceSettings = DeviceSettingsHelper(context)
-
-        val abiString = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> "arm"
-            ABI.ARM64_V8A -> "arm64"
-            ABI.X86 -> "x86"
-            ABI.X86_64 -> "x64"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
+        val abiString = findAbiString()
         val fileRegex = Regex.escape("com.kiwibrowser.browser-$abiString-") +
                 """\d+""" +
                 Regex.escape("-github.apk")
 
-        val result = consumer.findLatestRelease(
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("kiwibrowser", "src.next"),
             resultsPerApiCall = 3,
             isValidRelease = { true },
             isSuitableAsset = { Regex(fileRegex).matches(it.name) },
             dontUseApiForLatestRelease = true,
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
         // tag name can be "2232087292" (the id of the build runner)
         val version = result.tagName
@@ -80,6 +69,17 @@ class Kiwi(
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
+    }
+
+    private fun findAbiString(): String {
+        val abiString = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "arm"
+            ABI.ARM64_V8A -> "arm64"
+            ABI.X86 -> "x86"
+            ABI.X86_64 -> "x64"
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
+        return abiString
     }
 
     override fun isAvailableVersionHigherThanInstalled(

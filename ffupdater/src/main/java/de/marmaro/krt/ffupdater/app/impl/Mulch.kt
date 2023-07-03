@@ -4,21 +4,17 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
-class Mulch(
-    private val customRepositoryConsumer: CustomRepositoryConsumer = CustomRepositoryConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class Mulch : AppBase() {
     override val app = App.MULCH
     override val packageName = "us.spotco.mulch"
     override val title = R.string.mulch__title
@@ -38,18 +34,15 @@ class Mulch(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val deviceSettings = DeviceSettingsHelper(preferences)
-
-        val abi = deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)
-        val result = customRepositoryConsumer.getLatestUpdate(
-            fileDownloader = fileDownloader,
+        val abi = DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)
+        val result = CustomRepositoryConsumer.getLatestUpdate(
             "https://divestos.org/fdroid/official",
             packageName,
             abi,
+            cacheBehaviour
         )
         Log.i(LOG_TAG, "found latest version ${result.version}")
         return result

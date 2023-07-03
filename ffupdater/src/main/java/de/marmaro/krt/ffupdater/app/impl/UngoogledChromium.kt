@@ -10,8 +10,8 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -19,10 +19,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://github.com/ungoogled-software/ungoogled-chromium-android/releases
  */
 @Deprecated("app is no longer supported")
-class UngoogledChromium(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class UngoogledChromium : AppBase() {
     override val app = App.UNGOOGLED_CHROMIUM
     override val packageName = "org.ungoogled.chromium.stable"
     override val title = R.string.ungoogled_chromium__title
@@ -43,27 +40,17 @@ class UngoogledChromium(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val deviceSettings = DeviceSettingsHelper(context)
-
-        val fileName = when (deviceAbiExtractor.findBestAbi(
-            supportedAbis,
-            deviceSettings.prefer32BitApks
-        )) {
-            ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"
-            ABI.ARM64_V8A -> "ChromeModernPublic_arm64.apk"
-            ABI.X86 -> "ChromeModernPublic_x86.apk"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
-        val result = consumer.findLatestRelease(
+        val fileName = findFileName()
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("ungoogled-software", "ungoogled-chromium-android"),
             resultsPerApiCall = 2,
             isValidRelease = { !it.isPreRelease && "webview" !in it.name },
             isSuitableAsset = { it.name == fileName },
             dontUseApiForLatestRelease = true,
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
 
         val version = result.tagName
@@ -75,6 +62,16 @@ class UngoogledChromium(
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null
         )
+    }
+
+    private fun findFileName(): String {
+        val fileName = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "ChromeModernPublic_arm.apk"
+            ABI.ARM64_V8A -> "ChromeModernPublic_arm64.apk"
+            ABI.X86 -> "ChromeModernPublic_x86.apk"
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
+        return fileName
     }
 
     companion object {

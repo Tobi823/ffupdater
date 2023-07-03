@@ -1,13 +1,14 @@
 package de.marmaro.krt.ffupdater.network.github
 
 import androidx.annotation.MainThread
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import java.util.*
 import java.util.function.Predicate
 
-class GithubConsumer {
+object GithubConsumer {
 
     @MainThread
     @Throws(NetworkException::class)
@@ -17,15 +18,15 @@ class GithubConsumer {
         isValidRelease: Predicate<SearchParameterForRelease>,
         isSuitableAsset: Predicate<SearchParameterForAsset>,
         dontUseApiForLatestRelease: Boolean = false,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): Result {
         check(resultsPerApiCall > 0)
         if (!dontUseApiForLatestRelease) {
-            findWithFirstApi(repository, isValidRelease, isSuitableAsset, fileDownloader)
+            findWithFirstApi(repository, isValidRelease, isSuitableAsset, cacheBehaviour)
                 ?.let { return it } // return if not null
         }
 
-        findWithSecondApi(repository, resultsPerApiCall, isValidRelease, isSuitableAsset, fileDownloader)
+        findWithSecondApi(repository, resultsPerApiCall, isValidRelease, isSuitableAsset, cacheBehaviour)
             ?.let { return it } // return if not null
 
         throw InvalidApiResponseException("can't find latest release")
@@ -35,10 +36,10 @@ class GithubConsumer {
         repository: GithubRepo,
         isValidRelease: Predicate<SearchParameterForRelease>,
         isSuitableAsset: Predicate<SearchParameterForAsset>,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): Result? {
         val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases/latest"
-        fileDownloader.downloadSmallFile(url).use {
+        FileDownloader.downloadWithCache(url, cacheBehaviour).use {
             val jsonConsumer = GithubReleaseJsonConsumer(it, isValidRelease, isSuitableAsset)
             return jsonConsumer.parseReleaseJson()
         }
@@ -49,12 +50,12 @@ class GithubConsumer {
         resultsPerApiCall: Int,
         isValidRelease: Predicate<SearchParameterForRelease>,
         isSuitableAsset: Predicate<SearchParameterForAsset>,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): Result? {
         for (page in 1..10) {
             val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases?" +
                     "per_page=$resultsPerApiCall&page=$page"
-            fileDownloader.downloadSmallFile("$url?per_page=$resultsPerApiCall&page=$page").use {
+            FileDownloader.downloadWithCache(url, cacheBehaviour).use {
                 val jsonConsumer = GithubReleaseJsonConsumer(it, isValidRelease, isSuitableAsset)
                 jsonConsumer.parseReleaseArrayJson()
                     ?.let { result -> return result } // return if not null
@@ -88,13 +89,10 @@ class GithubConsumer {
         val name: String,
     )
 
-    companion object {
-        val INSTANCE = GithubConsumer()
-        val REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID = GithubRepo("mozilla-mobile", "firefox-android")
-        val REPOSITORY__BRAVE__BRAVE_BROWSER = GithubRepo("brave", "brave-browser")
-        val REPOSITORY__BROMITE__BROMITE = GithubRepo("bromite", "bromite")
-        const val RESULTS_PER_API_CALL__FIREFOX_ANDROID = 20
-        const val RESULTS_PER_API_CALL__BRAVE_BROWSER = 40
-        const val RESULTS_PER_API_CALL__BROMITE = 5
-    }
+    val REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID = GithubRepo("mozilla-mobile", "firefox-android")
+    val REPOSITORY__BRAVE__BRAVE_BROWSER = GithubRepo("brave", "brave-browser")
+    val REPOSITORY__BROMITE__BROMITE = GithubRepo("bromite", "bromite")
+    const val RESULTS_PER_API_CALL__FIREFOX_ANDROID = 20
+    const val RESULTS_PER_API_CALL__BRAVE_BROWSER = 40
+    const val RESULTS_PER_API_CALL__BROMITE = 5
 }

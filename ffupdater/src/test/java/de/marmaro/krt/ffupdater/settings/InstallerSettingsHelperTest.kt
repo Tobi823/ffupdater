@@ -20,6 +20,7 @@ class InstallerSettingsHelperTest {
     @BeforeEach
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
+        InstallerSettingsHelper.init(sharedPreferences)
     }
 
     companion object {
@@ -43,7 +44,6 @@ class InstallerSettingsHelperTest {
         expected: Installer
     ) {
         sharedPreferences.edit().putString("installer__method", string_value).apply()
-        val sut = InstallerSettingsHelper(sharedPreferences)
-        assertEquals(expected, sut.getInstallerMethod())
+        assertEquals(expected, InstallerSettingsHelper.getInstallerMethod())
     }
 }

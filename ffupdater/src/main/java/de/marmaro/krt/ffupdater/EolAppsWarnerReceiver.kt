@@ -28,7 +28,7 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
             App.values()
                 .filter { app -> app.impl.isEol() }
                 .any { app -> app.impl.isInstalled(context) == InstallationStatus.INSTALLED }
-                .ifTrue { BackgroundNotificationBuilder.INSTANCE.showEolAppsNotification(context) }
+                .ifTrue { BackgroundNotificationBuilder.showEolAppsNotification(context) }
         }
     }
 }

@@ -3,13 +3,13 @@ package de.marmaro.krt.ffupdater.notification
 import android.app.NotificationManager
 import android.content.Context
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.Companion.DOWNLOAD_ERROR_CODE
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.Companion.DOWNLOAD_IS_RUNNING_CODE
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.Companion.INSTALL_FAILURE_ERROR
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.Companion.INSTALL_SUCCESS_CODE
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.Companion.UPDATE_AVAILABLE_CODE
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.DOWNLOAD_ERROR_CODE
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.DOWNLOAD_IS_RUNNING_CODE
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.INSTALL_FAILURE_ERROR
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.INSTALL_SUCCESS_CODE
+import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.UPDATE_AVAILABLE_CODE
 
-class BackgroundNotificationRemover {
+object BackgroundNotificationRemover {
 
     private fun removeUpdateAvailableNotification(context: Context, app: App) {
         getNotificationManager(context)
@@ -51,9 +51,5 @@ class BackgroundNotificationRemover {
 
     private fun getNotificationManager(context: Context): NotificationManager {
         return context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-    }
-
-    companion object {
-        val INSTANCE = BackgroundNotificationRemover()
     }
 }

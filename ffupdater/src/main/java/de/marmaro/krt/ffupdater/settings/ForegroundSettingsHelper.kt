@@ -1,29 +1,17 @@
 package de.marmaro.krt.ffupdater.settings
 
-import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
-class ForegroundSettingsHelper {
-    private val preferences: SharedPreferences
-    private val deviceSdkTester: DeviceSdkTester
+object ForegroundSettingsHelper {
+    private lateinit var preferences: SharedPreferences
 
-    constructor(
-        context: Context,
-        deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-    ) {
-        preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        this.deviceSdkTester = deviceSdkTester
-    }
-
-    constructor(
-        preferences: SharedPreferences,
-        deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-    ) {
-        this.preferences = preferences
-        this.deviceSdkTester = deviceSdkTester
+    /**
+     * This function must be called from Application.onCreate() or this singleton can't be used
+     */
+    fun init(sharedPreferences: SharedPreferences) {
+        preferences = sharedPreferences
     }
 
     val isUpdateCheckOnMeteredAllowed
@@ -45,7 +33,7 @@ class ForegroundSettingsHelper {
             return when {
                 theme in validAndroidThemes -> theme!!
                 // return default values because theme is invalid and could be null
-                deviceSdkTester.supportsAndroid10() -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                DeviceSdkTester.supportsAndroid10() -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
                 else -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
             }
         }

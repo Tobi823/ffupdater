@@ -6,7 +6,7 @@ import android.os.Build.VERSION.SDK_INT
 /**
  * This class makes SDK checks testable because Mockk can't mock/change Android classes.
  */
-class DeviceSdkTester {
+object DeviceSdkTester {
     val sdkInt = SDK_INT
 
     /**
@@ -58,7 +58,6 @@ class DeviceSdkTester {
         return SDK_INT >= Build.VERSION_CODES.TIRAMISU
     }
 
-    companion object {
-        val INSTANCE = DeviceSdkTester()
-    }
+
+    val INSTANCE = DeviceSdkTester
 }

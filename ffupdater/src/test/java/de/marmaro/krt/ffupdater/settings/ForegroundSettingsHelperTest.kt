@@ -6,8 +6,10 @@ import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import io.mockk.every
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockk
-import org.junit.jupiter.api.Assertions
+import io.mockk.mockkObject
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -20,12 +22,12 @@ import java.util.stream.Stream
 class ForegroundSettingsHelperTest {
 
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var deviceSdkTester: DeviceSdkTester
 
     @BeforeEach
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
-        deviceSdkTester = mockk()
+        ForegroundSettingsHelper.init(sharedPreferences)
+        mockkObject(DeviceSdkTester)
     }
 
     companion object {
@@ -35,31 +37,31 @@ class ForegroundSettingsHelperTest {
                 "isUpdateCheckOnMeteredAllowed",
                 "foreground__update_check__metered",
                 true,
-                { helper: ForegroundSettingsHelper -> helper.isUpdateCheckOnMeteredAllowed }),
+                { ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed }),
 
             Arguments.of(
                 "isDownloadOnMeteredAllowed",
                 "foreground__download__metered",
                 true,
-                { helper: ForegroundSettingsHelper -> helper.isDownloadOnMeteredAllowed }),
+                { ForegroundSettingsHelper.isDownloadOnMeteredAllowed }),
 
             Arguments.of(
                 "isDeleteUpdateIfInstallSuccessful",
                 "foreground__delete_cache_if_install_successful",
                 true,
-                { helper: ForegroundSettingsHelper -> helper.isDeleteUpdateIfInstallSuccessful }),
+                { ForegroundSettingsHelper.isDeleteUpdateIfInstallSuccessful }),
 
             Arguments.of(
                 "isDeleteUpdateIfInstallFailed",
                 "foreground__delete_cache_if_install_failed",
                 true,
-                { helper: ForegroundSettingsHelper -> helper.isDeleteUpdateIfInstallFailed }),
+                { ForegroundSettingsHelper.isDeleteUpdateIfInstallFailed }),
 
             Arguments.of(
                 "isHideWarningButtonForInstalledApps",
                 "foreground__hide_warning_button_for_installed_apps",
                 false,
-                { helper: ForegroundSettingsHelper -> helper.isHideWarningButtonForInstalledApps }),
+                { ForegroundSettingsHelper.isHideWarningButtonForInstalledApps }),
         )
     }
 
@@ -69,11 +71,10 @@ class ForegroundSettingsHelperTest {
         @Suppress("unused") name: String,
         @Suppress("unused") preferenceKey: String,
         defaultValue: Boolean,
-        getValue: (ForegroundSettingsHelper) -> Boolean,
+        getValue: () -> Boolean,
     ) {
-        val sut = ForegroundSettingsHelper(sharedPreferences, deviceSdkTester)
-        val actual = getValue(sut)
-        Assertions.assertEquals(defaultValue, actual)
+        val actual = getValue()
+        assertEquals(defaultValue, actual)
     }
 
     @ParameterizedTest(name = "has \"{0}\" the correct value when changed to true")
@@ -82,12 +83,11 @@ class ForegroundSettingsHelperTest {
         @Suppress("unused") name: String,
         preferenceKey: String,
         @Suppress("unused") defaultValue: Boolean,
-        getValue: (ForegroundSettingsHelper) -> Boolean,
+        getValue: () -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, true).commit()
-        val sut = ForegroundSettingsHelper(sharedPreferences, deviceSdkTester)
-        val actual = getValue(sut)
-        Assertions.assertTrue(actual)
+        val actual = getValue()
+        assertTrue(actual)
     }
 
     @ParameterizedTest(name = "has \"{0}\" the correct value when changed to false")
@@ -96,12 +96,11 @@ class ForegroundSettingsHelperTest {
         @Suppress("unused") name: String,
         preferenceKey: String,
         @Suppress("unused") defaultValue: Boolean,
-        getValue: (ForegroundSettingsHelper) -> Boolean,
+        getValue: () -> Boolean,
     ) {
         sharedPreferences.edit().putBoolean(preferenceKey, false).commit()
-        val sut = ForegroundSettingsHelper(sharedPreferences, deviceSdkTester)
-        val actual = getValue(sut)
-        Assertions.assertFalse(actual)
+        val actual = getValue()
+        assertFalse(actual)
     }
 
     @ParameterizedTest(name = "has \"{0}\" the correct value when changing values")
@@ -110,30 +109,29 @@ class ForegroundSettingsHelperTest {
         @Suppress("unused") name: String,
         preferenceKey: String,
         @Suppress("unused") defaultValue: Boolean,
-        getValue: (ForegroundSettingsHelper) -> Boolean,
+        getValue: () -> Boolean,
     ) {
-        val sut = ForegroundSettingsHelper(sharedPreferences, deviceSdkTester)
         sharedPreferences.edit().putBoolean(preferenceKey, false).commit()
-        Assertions.assertFalse(getValue(sut))
+        assertFalse(getValue())
         sharedPreferences.edit().putBoolean(preferenceKey, true).commit()
-        Assertions.assertTrue(getValue(sut))
+        assertTrue(getValue())
     }
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidPAndBelow_returnDefaultValue() {
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidQAndHigher_returnDefaultValue() {
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
@@ -141,16 +139,16 @@ class ForegroundSettingsHelperTest {
     fun getThemePreference_withInvalidValue_null_returnDefault() {
         sharedPreferences.edit().putString("foreground__theme_preference", null).commit()
 
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
 
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
@@ -158,16 +156,16 @@ class ForegroundSettingsHelperTest {
     fun getThemePreference_withInvalidValue_emptyString_returnDefault() {
         sharedPreferences.edit().putString("foreground__theme_preference", "").commit()
 
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
 
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
@@ -175,16 +173,16 @@ class ForegroundSettingsHelperTest {
     fun getThemePreference_withInvalidValue_text_returnDefault() {
         sharedPreferences.edit().putString("foreground__theme_preference", "lorem ipsum").commit()
 
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
 
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
@@ -192,16 +190,16 @@ class ForegroundSettingsHelperTest {
     fun getThemePreference_withInvalidValue_nonExistingNumber_returnDefault() {
         sharedPreferences.edit().putString("foreground__theme_preference", "6").commit()
 
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
 
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
@@ -209,16 +207,16 @@ class ForegroundSettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_FOLLOW_SYSTEM_returnValue() {
         sharedPreferences.edit().putString("foreground__theme_preference", "-1").commit()
 
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
 
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
@@ -226,16 +224,16 @@ class ForegroundSettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_NO_returnValue() {
         sharedPreferences.edit().putString("foreground__theme_preference", "1").commit()
 
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_NO,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
 
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_NO,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
@@ -243,16 +241,16 @@ class ForegroundSettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_YES_returnValue() {
         sharedPreferences.edit().putString("foreground__theme_preference", "2").commit()
 
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_YES,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
 
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_YES,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 
@@ -260,16 +258,16 @@ class ForegroundSettingsHelperTest {
     fun getThemePreference_withValidValue_MODE_NIGHT_AUTO_BATTERY_returnValue() {
         sharedPreferences.edit().putString("foreground__theme_preference", "3").commit()
 
-        every { deviceSdkTester.supportsAndroid10() } returns false
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns false
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
 
-        every { deviceSdkTester.supportsAndroid10() } returns true
-        Assertions.assertEquals(
+        every { DeviceSdkTester.supportsAndroid10() } returns true
+        assertEquals(
             AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
-            ForegroundSettingsHelper(sharedPreferences, deviceSdkTester).themePreference
+            ForegroundSettingsHelper.themePreference
         )
     }
 }

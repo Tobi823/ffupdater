@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentManager
 import de.marmaro.krt.ffupdater.DownloadActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.network.FileDownloader
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 
 class InstallSameVersionDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

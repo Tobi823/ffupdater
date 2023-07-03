@@ -10,17 +10,16 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
+import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 /**
  * https://vivaldi.com/de/download/
  * https://www.apkmirror.com/apk/vivaldi-technologies/vivaldi-browser-beta/
  */
-class Vivaldi(
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class Vivaldi : AppBase() {
     override val app = App.VIVALDI
     override val packageName = "com.vivaldi.browser"
     override val title = R.string.vivaldi__title
@@ -40,18 +39,15 @@ class Vivaldi(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val deviceSettings = DeviceSettingsHelper(context)
-
         val content = try {
-            fileDownloader.downloadSmallFileAsString(DOWNLOAD_WEBSITE_URL)
+            FileDownloader.downloadStringWithCache(DOWNLOAD_WEBSITE_URL, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
-
-        val (version, downloadUrl) = extractVersionAndDownloadUrl(content, deviceSettings)
+        val (version, downloadUrl) = extractVersionAndDownloadUrl(content)
         Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
@@ -62,11 +58,8 @@ class Vivaldi(
         )
     }
 
-    private fun extractVersionAndDownloadUrl(
-        content: String,
-        settings: DeviceSettingsHelper
-    ): Pair<String, String> {
-        val abiString = when (deviceAbiExtractor.findBestAbi(supportedAbis, settings.prefer32BitApks)) {
+    private fun extractVersionAndDownloadUrl(content: String): Pair<String, String> {
+        val abiString = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
             ABI.ARMEABI_V7A -> "armeabi-v7a"
             ABI.ARM64_V8A -> "arm64-v8a"
             ABI.X86_64 -> "x86-64.apk"

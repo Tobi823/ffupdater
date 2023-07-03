@@ -4,15 +4,14 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -22,10 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-beta/
  */
-class FirefoxFocusBeta(
-    private val consumer: GithubConsumer = GithubConsumer.INSTANCE,
-    private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-) : AppBase() {
+class FirefoxFocusBeta : AppBase() {
     override val app = App.FIREFOX_FOCUS_BETA
     override val packageName = "org.mozilla.focus.beta"
     override val title = R.string.firefox_focus_beta__title
@@ -45,29 +41,17 @@ class FirefoxFocusBeta(
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(
         context: Context,
-        fileDownloader: FileDownloader,
+        cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val deviceSettings = DeviceSettingsHelper(preferences)
-
-        val fileSuffix = when (deviceAbiExtractor.findBestAbi(
-            supportedAbis,
-            deviceSettings.prefer32BitApks
-        )) {
-            ABI.ARMEABI_V7A -> "-armeabi-v7a.apk"
-            ABI.ARM64_V8A -> "-arm64-v8a.apk"
-            ABI.X86 -> "-x86.apk"
-            ABI.X86_64 -> "-x86_64.apk"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
-        val result = consumer.findLatestRelease(
+        val fileSuffix = findFileSuffix()
+        val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__FIREFOX_ANDROID,
             dontUseApiForLatestRelease = true,
             isValidRelease = { it.isPreRelease && """^Focus \d""".toRegex().containsMatchIn(it.name) },
             isSuitableAsset = { it.nameStartsAndEndsWith("focus-", fileSuffix) },
-            fileDownloader = fileDownloader,
+            cacheBehaviour = cacheBehaviour,
         )
         val version = result.tagName
             .removePrefix("focus-v") //convert focus-v109.0b4 to 109.0b4
@@ -80,6 +64,17 @@ class FirefoxFocusBeta(
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
+    }
+
+    private fun findFileSuffix(): String {
+        val fileSuffix = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "-armeabi-v7a.apk"
+            ABI.ARM64_V8A -> "-arm64-v8a.apk"
+            ABI.X86 -> "-x86.apk"
+            ABI.X86_64 -> "-x86_64.apk"
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
+        return fileSuffix
     }
 
     companion object {
