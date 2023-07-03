@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.network.github
 
 import androidx.annotation.MainThread
-import com.google.gson.stream.JsonReader
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -40,8 +39,7 @@ class GithubConsumer {
     ): Result? {
         val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases/latest"
         fileDownloader.downloadSmallFile(url).use {
-            val reader = JsonReader(it.charStream().buffered())
-            val jsonConsumer = GithubReleaseJsonConsumer(reader, isValidRelease, isSuitableAsset)
+            val jsonConsumer = GithubReleaseJsonConsumer(it, isValidRelease, isSuitableAsset)
             return jsonConsumer.parseReleaseJson()
         }
     }
@@ -57,8 +55,7 @@ class GithubConsumer {
             val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases?" +
                     "per_page=$resultsPerApiCall&page=$page"
             fileDownloader.downloadSmallFile("$url?per_page=$resultsPerApiCall&page=$page").use {
-                val reader = JsonReader(it.charStream().buffered())
-                val jsonConsumer = GithubReleaseJsonConsumer(reader, isValidRelease, isSuitableAsset)
+                val jsonConsumer = GithubReleaseJsonConsumer(it, isValidRelease, isSuitableAsset)
                 jsonConsumer.parseReleaseArrayJson()
                     ?.let { result -> return result } // return if not null
             }
