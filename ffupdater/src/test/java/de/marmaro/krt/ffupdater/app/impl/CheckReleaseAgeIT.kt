@@ -9,6 +9,10 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.FORCE_NETWORK
+import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
+import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
+import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import io.mockk.every
 import io.mockk.mockk
@@ -39,30 +43,30 @@ class CheckReleaseAgeIT {
 
         @JvmStatic
         fun `generate test data`(): List<TestData> = listOf(
-//            TestData(Brave(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester), 28),
-//            TestData(BraveBeta(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester), 14),
-//            TestData(BraveNightly(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester), 7),
-//            TestData(Bromite(GithubConsumer.INSTANCE, deviceAbiExtractor), 112),
-//            TestData(BromiteSystemWebView(GithubConsumer.INSTANCE, deviceAbiExtractor), 112),
-//            TestData(Chromium(deviceAbiExtractor), 56),
-//            TestData(DuckDuckGoAndroid(GithubConsumer.INSTANCE), 28),
-//            TestData(FennecFdroid(FdroidConsumer.INSTANCE, deviceAbiExtractor), 28),
-//            TestData(FFUpdater(GithubConsumer.INSTANCE), 365),
-//            TestData(FirefoxBeta(GithubConsumer.INSTANCE, deviceAbiExtractor), 21),
-//            TestData(FirefoxFocusBeta(GithubConsumer.INSTANCE, deviceAbiExtractor), 21),
-//            TestData(FirefoxFocus(GithubConsumer.INSTANCE, deviceAbiExtractor), 56),
-//            TestData(FirefoxKlar(GithubConsumer.INSTANCE, deviceAbiExtractor), 56),
-//            TestData(FirefoxNightly(MozillaCiJsonConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester), 7),
-//            TestData(FirefoxRelease(GithubConsumer.INSTANCE, deviceAbiExtractor), 42),
-//            TestData(Iceraven(GithubConsumer.INSTANCE, deviceAbiExtractor), 84),
-////            TestData(Lockwise(GithubConsumer.INSTANCE), 84),
-//            TestData(Mulch(CustomRepositoryConsumer.INSTANCE, deviceAbiExtractor), 56),
-//            TestData(MullFromRepo(CustomRepositoryConsumer.INSTANCE, deviceAbiExtractor), 56),
-//            TestData(Orbot(GithubConsumer.INSTANCE, deviceAbiExtractor), 84),
-//            TestData(PrivacyBrowser(FdroidConsumer.INSTANCE, deviceAbiExtractor), 56),
-//            TestData(TorBrowserAlpha(deviceAbiExtractor), 56),
-//            TestData(TorBrowser(deviceAbiExtractor), 56),
-//            TestData(UngoogledChromium(GithubConsumer.INSTANCE, deviceAbiExtractor), 56),
+            TestData(Brave(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester), 28),
+            TestData(BraveBeta(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester), 14),
+            TestData(BraveNightly(GithubConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester), 7),
+            TestData(Bromite(GithubConsumer.INSTANCE, deviceAbiExtractor), 112),
+            TestData(BromiteSystemWebView(GithubConsumer.INSTANCE, deviceAbiExtractor), 112),
+            TestData(Chromium(deviceAbiExtractor), 56),
+            TestData(DuckDuckGoAndroid(GithubConsumer.INSTANCE), 28),
+            TestData(FennecFdroid(FdroidConsumer.INSTANCE, deviceAbiExtractor), 28),
+            TestData(FFUpdater(GithubConsumer.INSTANCE), 365),
+            TestData(FirefoxBeta(GithubConsumer.INSTANCE, deviceAbiExtractor), 21),
+            TestData(FirefoxFocusBeta(GithubConsumer.INSTANCE, deviceAbiExtractor), 21),
+            TestData(FirefoxFocus(GithubConsumer.INSTANCE, deviceAbiExtractor), 56),
+            TestData(FirefoxKlar(GithubConsumer.INSTANCE, deviceAbiExtractor), 56),
+            TestData(FirefoxNightly(MozillaCiJsonConsumer.INSTANCE, deviceAbiExtractor, deviceSdkTester), 7),
+            TestData(FirefoxRelease(GithubConsumer.INSTANCE, deviceAbiExtractor), 42),
+            TestData(Iceraven(GithubConsumer.INSTANCE, deviceAbiExtractor), 84),
+//            TestData(Lockwise(GithubConsumer.INSTANCE), 84),
+            TestData(Mulch(CustomRepositoryConsumer.INSTANCE, deviceAbiExtractor), 56),
+            TestData(MullFromRepo(CustomRepositoryConsumer.INSTANCE, deviceAbiExtractor), 56),
+            TestData(Orbot(GithubConsumer.INSTANCE, deviceAbiExtractor), 84),
+            TestData(PrivacyBrowser(FdroidConsumer.INSTANCE, deviceAbiExtractor), 56),
+            TestData(TorBrowserAlpha(deviceAbiExtractor), 56),
+            TestData(TorBrowser(deviceAbiExtractor), 56),
+            TestData(UngoogledChromium(GithubConsumer.INSTANCE, deviceAbiExtractor), 56),
             TestData(Vivaldi(deviceAbiExtractor), null),
         )
     }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
+import com.google.gson.Gson
 import de.marmaro.krt.ffupdater.network.annotation.ReturnValueMustBeClosed
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import javax.net.ssl.*
 import kotlin.io.use
+import kotlin.reflect.KClass
 
 /**
  * This class can be reused to a certain extend and must only be used synchronous.
@@ -38,6 +40,7 @@ class FileDownloader(
 ) {
     private val progressInterceptor = ProgressInterceptor()
     private val client: OkHttpClient = createOkHttpClient(context)
+    private val gson = Gson()
 
     data class DownloadStatus(val progressInPercent: Int?, val totalMB: Long)
 
@@ -112,6 +115,19 @@ class FileDownloader(
             } catch (e: NetworkException) {
                 throw NetworkException("Request of HTTP-API $url failed.", e)
             }
+        }
+    }
+
+    @MainThread
+    @Throws(NetworkException::class)
+    suspend fun <T : Any> downloadObject(
+        url: String,
+        clazz: KClass<T>,
+        method: String = "GET",
+        requestBody: RequestBody? = null,
+    ): T {
+        downloadSmallFile(url, method, requestBody).use {
+            return gson.fromJson(it.charStream().buffered(), clazz.java)
         }
     }
 

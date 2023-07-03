@@ -7,7 +7,6 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -26,7 +25,6 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  */
 class Chromium(
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
-    private val gson: Gson = Gson(),
 ) : AppBase() {
     override val app = App.CHROMIUM
     override val packageName = "org.chromium.chrome"
@@ -85,9 +83,7 @@ class Chromium(
     ): StorageObject {
         val url = "$BASE_API_URL?delimiter=/&prefix=$platform/${revision}/chrome-android&$ALL_FIELDS"
         val storageObjects = try {
-            fileDownloader.downloadSmallFile(url).use {
-                gson.fromJson(it.charStream().buffered(), StorageObjects::class.java)
-            }
+            fileDownloader.downloadObject(url, StorageObjects::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

@@ -2,32 +2,24 @@ package de.marmaro.krt.ffupdater.network.fdroid
 
 import android.util.Log
 import androidx.annotation.MainThread
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.AddAppActivity.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 
-class FdroidConsumer(
-    private val gson: Gson = Gson(),
-) {
+class FdroidConsumer {
 
     @MainThread
     suspend fun getLatestUpdate(packageName: String, fileDownloader: FileDownloader, index: Int): Result {
         require(index >= 1)
-        val apiUrl = "https://f-droid.org/api/v1/packages/$packageName"
+        val url = "https://f-droid.org/api/v1/packages/$packageName"
         val appInfo = try {
-            fileDownloader.downloadSmallFile(apiUrl).use {
-                //TODO
-                gson.fromJson(it.charStream().buffered(), AppInfo::class.java)
-            }
+            fileDownloader.downloadObject(url, AppInfo::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest version of $packageName from F-Droid.", e)
         }
-        val latestVersions = getLatestVersionsSortedByTheirCode(appInfo)
-        check(latestVersions.size >= index)
-        val latestVersion = latestVersions[index - 1]
 
+        val latestVersion = getLatestUpdate(appInfo, index)
         val commitId = getLastCommitId(packageName, fileDownloader)
         val createdAt = getCreateDate(commitId, fileDownloader)
 
@@ -40,25 +32,30 @@ class FdroidConsumer(
         )
     }
 
-    private fun getLatestVersionsSortedByTheirCode(appInfo: AppInfo): List<Package> {
+    /**
+     * For FennecFdroid two different versions with the same version number are released.
+     * The first version is for ARMEABI_V7A devices and the second version for ARM64_V8A.
+     * This method helps to extract a specific version from the APi response.
+     */
+    private fun getLatestUpdate(appInfo: AppInfo, index: Int): Package {
         val latestVersionCode = appInfo.packages
             .maxOf { p -> p.versionCode }
         val latestVersionName = appInfo.packages
             .firstOrNull { p -> p.versionCode == latestVersionCode }
             ?.versionName
             ?: throw Exception("Can't find version with code $latestVersionCode")
-        return appInfo.packages
+        val latestVersions = appInfo.packages
             .filter { p -> p.versionName == latestVersionName }
             .sortedBy { p -> p.versionCode }
+
+        check(latestVersions.size >= index)
+        return latestVersions[index - 1]
     }
 
     private suspend fun getLastCommitId(packageName: String, fileDownloader: FileDownloader): String {
-        val url = "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2F${packageName}.yml" +
-                "?ref=master"
+        val url = "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2F${packageName}.yml?ref=master"
         val metadata = try {
-            fileDownloader.downloadSmallFile(url).use {
-                gson.fromJson(it.charStream().buffered(), GitlabRepositoryFilesMetadata::class.java)
-            }
+            fileDownloader.downloadObject(url, GitlabRepositoryFilesMetadata::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the latest commit id of $packageName.", e)
         }
@@ -68,9 +65,7 @@ class FdroidConsumer(
     private suspend fun getCreateDate(commitId: String, fileDownloader: FileDownloader): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/commits/$commitId"
         val commits = try {
-            fileDownloader.downloadSmallFile(url).use {
-                gson.fromJson(it.charStream().buffered(), GitlabRepositoryCommits::class.java)
-            }
+            fileDownloader.downloadObject(url, GitlabRepositoryCommits::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the creation date of commit $commitId.", e)
         }

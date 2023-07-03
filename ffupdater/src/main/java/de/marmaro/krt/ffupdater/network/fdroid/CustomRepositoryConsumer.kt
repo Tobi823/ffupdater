@@ -22,10 +22,7 @@ class CustomRepositoryConsumer(
         abi: ABI,
     ): LatestUpdate {
         val mainObject = try {
-            fileDownloader.downloadSmallFile("$repoUrl/index-v1.json").use {
-                //TODO
-                gson.fromJson(it.charStream().buffered(), MainObject::class.java)
-            }
+            fileDownloader.downloadObject("$repoUrl/index-v1.json", MainObject::class)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to find the latest version from index-v1.json.", e)
         }
