@@ -21,30 +21,50 @@ class GithubConsumer {
         fileDownloader: FileDownloader,
     ): Result {
         check(resultsPerApiCall > 0)
-        val baseUrl = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases"
         if (!dontUseApiForLatestRelease) {
-            fileDownloader.downloadSmallFile("$baseUrl/latest").use {
-                val reader = JsonReader(it.charStream().buffered())
-                val jsonConsumer = GithubReleaseJsonConsumer(reader, isValidRelease, isSuitableAsset)
-                val result = jsonConsumer.parseReleaseJson()
-                result?.let { return it }
-            }
+            findWithFirstApi(repository, isValidRelease, isSuitableAsset, fileDownloader)
+                ?.let { return it } // return if not null
         }
 
-        for (page in 1..10) {
-            fileDownloader.downloadSmallFile("$baseUrl?per_page=$resultsPerApiCall&page=$page").use {
-                val reader = JsonReader(it.charStream().buffered())
-                val jsonConsumer = GithubReleaseJsonConsumer(reader, isValidRelease, isSuitableAsset)
-                val result = jsonConsumer.parseReleaseArrayJson()
-                if (result != null) {
-                    return result
-                }
-            }
-        }
+        findWithSecondApi(repository, resultsPerApiCall, isValidRelease, isSuitableAsset, fileDownloader)
+            ?.let { return it } // return if not null
 
-        throw InvalidApiResponseException("can't find release after all tries - abort")
+        throw InvalidApiResponseException("can't find latest release")
     }
 
+    private suspend fun findWithFirstApi(
+        repository: GithubRepo,
+        isValidRelease: Predicate<SearchParameterForRelease>,
+        isSuitableAsset: Predicate<SearchParameterForAsset>,
+        fileDownloader: FileDownloader,
+    ): Result? {
+        val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases/latest"
+        fileDownloader.downloadSmallFile(url).use {
+            val reader = JsonReader(it.charStream().buffered())
+            val jsonConsumer = GithubReleaseJsonConsumer(reader, isValidRelease, isSuitableAsset)
+            return jsonConsumer.parseReleaseJson()
+        }
+    }
+
+    private suspend fun findWithSecondApi(
+        repository: GithubRepo,
+        resultsPerApiCall: Int,
+        isValidRelease: Predicate<SearchParameterForRelease>,
+        isSuitableAsset: Predicate<SearchParameterForAsset>,
+        fileDownloader: FileDownloader,
+    ): Result? {
+        for (page in 1..10) {
+            val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases?" +
+                    "per_page=$resultsPerApiCall&page=$page"
+            fileDownloader.downloadSmallFile("$url?per_page=$resultsPerApiCall&page=$page").use {
+                val reader = JsonReader(it.charStream().buffered())
+                val jsonConsumer = GithubReleaseJsonConsumer(reader, isValidRelease, isSuitableAsset)
+                jsonConsumer.parseReleaseArrayJson()
+                    ?.let { result -> return result } // return if not null
+            }
+        }
+        return null
+    }
 
     data class SearchParameterForRelease(
         val name: String,
