@@ -57,7 +57,7 @@ class UngoogledChromium(
             ABI.X86 -> "ChromeModernPublic_x86.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("ungoogled-software", "ungoogled-chromium-android"),
             resultsPerApiCall = 2,
             isValidRelease = { !it.isPreRelease && "webview" !in it.name },

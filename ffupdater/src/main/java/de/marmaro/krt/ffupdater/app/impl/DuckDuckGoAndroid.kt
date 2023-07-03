@@ -42,7 +42,7 @@ class DuckDuckGoAndroid(
         fileDownloader: FileDownloader,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("duckduckgo", "Android"),
             resultsPerApiCall = 3,
             isValidRelease = { true },

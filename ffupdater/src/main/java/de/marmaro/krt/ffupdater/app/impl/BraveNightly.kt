@@ -53,7 +53,7 @@ class BraveNightly(
         val deviceSettings = DeviceSettingsHelper(preferences)
 
         val fileName = getNameOfApkFile(deviceSettings)
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BRAVE__BRAVE_BROWSER,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BRAVE_BROWSER,
             dontUseApiForLatestRelease = true,

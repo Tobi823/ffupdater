@@ -62,7 +62,7 @@ class Kiwi(
                 """\d+""" +
                 Regex.escape("-github.apk")
 
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("kiwibrowser", "src.next"),
             resultsPerApiCall = 3,
             isValidRelease = { true },

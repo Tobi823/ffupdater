@@ -57,7 +57,7 @@ class Bromite(
             ABI.X86_64 -> "x64_ChromePublic.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BROMITE__BROMITE,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BROMITE,
             dontUseApiForLatestRelease = true,

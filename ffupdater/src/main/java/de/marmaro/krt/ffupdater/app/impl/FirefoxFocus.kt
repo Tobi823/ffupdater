@@ -58,7 +58,7 @@ class FirefoxFocus(
                 ABI.X86_64 -> "-x86_64.apk"
                 else -> throw IllegalArgumentException("ABI is not supported")
             }
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__FIREFOX_ANDROID,
             dontUseApiForLatestRelease = true,

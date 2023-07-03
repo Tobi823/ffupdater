@@ -40,7 +40,7 @@ class Lockwise(
         context: Context,
         fileDownloader: FileDownloader,
     ): LatestUpdate {
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("mozilla-lockwise", "lockwise-android"),
             resultsPerApiCall = 5,
             isValidRelease = { !it.isPreRelease },

@@ -12,14 +12,11 @@ class GithubConsumer {
 
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun updateCheck(
+    suspend fun findLatestRelease(
         repository: GithubRepo,
         resultsPerApiCall: Int,
         isValidRelease: Predicate<SearchParameterForRelease>,
         isSuitableAsset: Predicate<SearchParameterForAsset>,
-        // false -> contact "$url/latest" and then "$url?per_page=..&page=.."
-        // true -> contact only "$url?per_page=..&page=.."
-        // set it to true if it is unlikely that the latest release is a valid release
         dontUseApiForLatestRelease: Boolean = false,
         fileDownloader: FileDownloader,
     ): Result {
@@ -39,12 +36,15 @@ class GithubConsumer {
                 val reader = JsonReader(it.charStream().buffered())
                 val jsonConsumer = GithubReleaseJsonConsumer(reader, isValidRelease, isSuitableAsset)
                 val result = jsonConsumer.parseReleaseArrayJson()
-                result?.let { return it }
+                if (result != null) {
+                    return result
+                }
             }
         }
 
         throw InvalidApiResponseException("can't find release after all tries - abort")
     }
+
 
     data class SearchParameterForRelease(
         val name: String,

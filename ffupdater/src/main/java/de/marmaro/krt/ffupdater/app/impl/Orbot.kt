@@ -49,7 +49,7 @@ class Orbot(
         val deviceSettings = DeviceSettingsHelper(context)
 
         val assetSuffix = getAssetSuffix(deviceSettings)
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("guardianproject", "orbot"),
             resultsPerApiCall = 3,
             isValidRelease = { !it.isPreRelease },

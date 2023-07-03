@@ -62,7 +62,7 @@ class Iceraven(
             ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("fork-maintainers", "iceraven-browser"),
             resultsPerApiCall = 3,
             isValidRelease = { !it.isPreRelease },

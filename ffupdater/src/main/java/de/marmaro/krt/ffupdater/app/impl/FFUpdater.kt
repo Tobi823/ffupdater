@@ -40,7 +40,7 @@ class FFUpdater(
         fileDownloader: FileDownloader,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val result = consumer.updateCheck(
+        val result = consumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("Tobi823", "ffupdater"),
             resultsPerApiCall = 5,
             isValidRelease = { !it.isPreRelease },
