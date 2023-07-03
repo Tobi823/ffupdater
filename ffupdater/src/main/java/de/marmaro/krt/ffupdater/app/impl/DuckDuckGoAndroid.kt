@@ -11,7 +11,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/duckduckgo/Android/releases
@@ -43,12 +42,9 @@ class DuckDuckGoAndroid(
         fileDownloader: FileDownloader,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val networkSettings = NetworkSettingsHelper(context)
-
         val result = consumer.updateCheck(
-            repoOwner = "duckduckgo",
-            repoName = "Android",
-            initResultsPerPage = 3,
+            repository = GithubConsumer.GithubRepo("duckduckgo", "Android"),
+            resultsPerApiCall = 3,
             isValidRelease = { true },
             isSuitableAsset = { it.nameStartsAndEndsWith("duckduckgo-", "-play-release.apk") },
             dontUseApiForLatestRelease = false,

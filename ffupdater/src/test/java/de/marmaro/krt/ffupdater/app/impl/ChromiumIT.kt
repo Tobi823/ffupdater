@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.FORCE_NETWORK
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
@@ -18,7 +17,7 @@ internal class ChromiumIT : BaseAppIT() {
 
     @Test
     fun findLatestUpdate() {
-        val chromium = Chromium(ApiConsumer.INSTANCE, deviceAbiExtractor)
+        val chromium = Chromium(deviceAbiExtractor)
         val fileDownloader = FileDownloader(NetworkSettingsHelper(context), context, FORCE_NETWORK)
         val result = runBlocking { chromium.findLatestUpdate(context, fileDownloader) }
         requireNotNull(result)

@@ -15,7 +15,6 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/bromite/bromite/releases
@@ -49,7 +48,6 @@ class Bromite(
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
         val fileName = when (deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)) {
@@ -59,7 +57,10 @@ class Bromite(
             ABI.X86_64 -> "x64_ChromePublic.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        val result = consumer.updateCheckFor_Bromite_Bromite(
+        val result = consumer.updateCheck(
+            repository = GithubConsumer.REPOSITORY__BROMITE__BROMITE,
+            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BROMITE,
+            dontUseApiForLatestRelease = true,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
             fileDownloader = fileDownloader,

@@ -16,7 +16,6 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/brave/brave-browser/releases
@@ -52,11 +51,13 @@ class Brave(
         val time = System.nanoTime()
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
         val fileName = getNameOfApkFile(deviceSettings)
-        val result = consumer.updateCheckFor_Brave_BraveBrowser(
+        val result = consumer.updateCheck(
+            repository = GithubConsumer.REPOSITORY__BRAVE__BRAVE_BROWSER,
+            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BRAVE_BROWSER,
+            dontUseApiForLatestRelease = true,
             isValidRelease = { !it.isPreRelease && it.name.startsWith("Release v") },
             isSuitableAsset = { it.name == fileName },
             fileDownloader = fileDownloader,

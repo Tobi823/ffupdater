@@ -58,9 +58,8 @@ class UngoogledChromium(
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val result = consumer.updateCheck(
-            repoOwner = "ungoogled-software",
-            repoName = "ungoogled-chromium-android",
-            initResultsPerPage = 2,
+            repository = GithubConsumer.GithubRepo("ungoogled-software", "ungoogled-chromium-android"),
+            resultsPerApiCall = 2,
             isValidRelease = { !it.isPreRelease && "webview" !in it.name },
             isSuitableAsset = { it.name == fileName },
             dontUseApiForLatestRelease = true,

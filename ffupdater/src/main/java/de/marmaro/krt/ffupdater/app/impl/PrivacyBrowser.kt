@@ -12,7 +12,6 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/
@@ -43,7 +42,6 @@ class PrivacyBrowser(
         fileDownloader: FileDownloader,
     ): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
-        val networkSettings = NetworkSettingsHelper(context)
         val result = fdroidConsumer.getLatestUpdate(packageName, fileDownloader, 1)
         val version = result.versionName
         Log.i(LOG_TAG, "found latest version $version")

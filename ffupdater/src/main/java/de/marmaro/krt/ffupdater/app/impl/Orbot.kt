@@ -50,9 +50,8 @@ class Orbot(
 
         val assetSuffix = getAssetSuffix(deviceSettings)
         val result = consumer.updateCheck(
-            repoOwner = "guardianproject",
-            repoName = "orbot",
-            initResultsPerPage = 3,
+            repository = GithubConsumer.GithubRepo("guardianproject", "orbot"),
+            resultsPerApiCall = 3,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.nameStartsAndEndsWith("Orbot", assetSuffix) },
             dontUseApiForLatestRelease = false,

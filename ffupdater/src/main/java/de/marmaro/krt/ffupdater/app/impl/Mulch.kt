@@ -14,7 +14,6 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 class Mulch(
     private val customRepositoryConsumer: CustomRepositoryConsumer = CustomRepositoryConsumer.INSTANCE,
@@ -43,7 +42,6 @@ class Mulch(
     ): LatestUpdate {
         Log.i(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
         val abi = deviceAbiExtractor.findBestAbi(supportedAbis, deviceSettings.prefer32BitApks)

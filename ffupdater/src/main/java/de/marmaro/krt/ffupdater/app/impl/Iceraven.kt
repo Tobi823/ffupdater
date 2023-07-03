@@ -63,9 +63,8 @@ class Iceraven(
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         val result = consumer.updateCheck(
-            repoOwner = "fork-maintainers",
-            repoName = "iceraven-browser",
-            initResultsPerPage = 3,
+            repository = GithubConsumer.GithubRepo("fork-maintainers", "iceraven-browser"),
+            resultsPerApiCall = 3,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(fileSuffix) },
             dontUseApiForLatestRelease = false,

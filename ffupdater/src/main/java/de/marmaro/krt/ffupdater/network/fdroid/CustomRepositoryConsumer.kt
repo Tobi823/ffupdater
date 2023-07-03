@@ -1,17 +1,17 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
 import androidx.annotation.MainThread
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
 import java.time.Instant
 
 class CustomRepositoryConsumer(
-    private val apiConsumer: ApiConsumer,
+    private val gson: Gson = Gson(),
 ) {
 
     @MainThread
@@ -22,7 +22,10 @@ class CustomRepositoryConsumer(
         abi: ABI,
     ): LatestUpdate {
         val mainObject = try {
-            apiConsumer.consume("$repoUrl/index-v1.json", fileDownloader, MainObject::class)
+            fileDownloader.downloadSmallFile("$repoUrl/index-v1.json").use {
+                //TODO
+                gson.fromJson(it.charStream().buffered(), MainObject::class.java)
+            }
         } catch (e: NetworkException) {
             throw NetworkException("Fail to find the latest version from index-v1.json.", e)
         }
@@ -66,6 +69,6 @@ class CustomRepositoryConsumer(
     )
 
     companion object {
-        val INSTANCE = CustomRepositoryConsumer(ApiConsumer.INSTANCE)
+        val INSTANCE = CustomRepositoryConsumer()
     }
 }

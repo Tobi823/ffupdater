@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
@@ -20,7 +19,6 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/vivaldi-technologies/vivaldi-browser-beta/
  */
 class Vivaldi(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.VIVALDI
@@ -48,7 +46,7 @@ class Vivaldi(
         val deviceSettings = DeviceSettingsHelper(context)
 
         val content = try {
-            apiConsumer.consume(DOWNLOAD_WEBSITE_URL, fileDownloader)
+            fileDownloader.downloadSmallFileAsString(DOWNLOAD_WEBSITE_URL)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

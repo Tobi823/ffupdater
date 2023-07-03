@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
@@ -21,7 +20,6 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://dist.torproject.org/torbrowser/
  */
 class TorBrowser(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
 ) : AppBase() {
     override val app = App.TOR_BROWSER
@@ -72,7 +70,7 @@ class TorBrowser(
         deviceSettings: DeviceSettingsHelper,
     ): Pair<String, String> {
         val content = try {
-            apiConsumer.consume(MAIN_URL, fileDownloader)
+            fileDownloader.downloadSmallFileAsString(MAIN_URL)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
@@ -102,7 +100,7 @@ class TorBrowser(
         val abi = getAbiString(deviceSettingsHelper)
         val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-$abi-multi.apk"
         val content = try {
-            apiConsumer.consume(url, fileDownloader)
+            fileDownloader.downloadSmallFileAsString(url)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

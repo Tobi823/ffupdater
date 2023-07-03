@@ -7,6 +7,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -15,7 +16,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
@@ -25,8 +25,8 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android_Arm64/
  */
 class Chromium(
-    private val apiConsumer: ApiConsumer = ApiConsumer.INSTANCE,
     private val deviceAbiExtractor: DeviceAbiExtractor = DeviceAbiExtractor.INSTANCE,
+    private val gson: Gson = Gson(),
 ) : AppBase() {
     override val app = App.CHROMIUM
     override val packageName = "org.chromium.chrome"
@@ -70,15 +70,12 @@ class Chromium(
     }
 
     private suspend fun findLatestRevision(fileDownloader: FileDownloader, platform: String): String {
-        val slash = "%2F"
-        val url = "$BASE_DOWNLOAD_URL/${platform}${slash}LAST_CHANGE?alt=media"
-        val content = try {
-            apiConsumer.consume(url, fileDownloader)
+        return try {
+            val slash = "%2F"
+            fileDownloader.downloadSmallFileAsString("$BASE_DOWNLOAD_URL/${platform}${slash}LAST_CHANGE?alt=media")
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
-
-        return content
     }
 
     private suspend fun findStorageObject(
@@ -88,7 +85,9 @@ class Chromium(
     ): StorageObject {
         val url = "$BASE_API_URL?delimiter=/&prefix=$platform/${revision}/chrome-android&$ALL_FIELDS"
         val storageObjects = try {
-            apiConsumer.consume(url, fileDownloader, StorageObjects::class)
+            fileDownloader.downloadSmallFile(url).use {
+                gson.fromJson(it.charStream().buffered(), StorageObjects::class.java)
+            }
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }

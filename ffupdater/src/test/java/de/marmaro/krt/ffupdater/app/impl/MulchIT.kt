@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import de.marmaro.krt.ffupdater.network.ApiConsumer
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.FileDownloader.CacheBehaviour.FORCE_NETWORK
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
@@ -19,7 +18,7 @@ internal class MulchIT : BaseAppIT() {
 
     @Test
     fun checkForUpdateWithoutLoadingFromCacheAsync() {
-        val mulch = Mulch(CustomRepositoryConsumer(ApiConsumer.INSTANCE), deviceAbiExtractor)
+        val mulch = Mulch(CustomRepositoryConsumer(), deviceAbiExtractor)
         val fileDownloader = FileDownloader(NetworkSettingsHelper(context), context, FORCE_NETWORK)
         val result = runBlocking { mulch.findLatestUpdate(context, fileDownloader) }
         requireNotNull(result)

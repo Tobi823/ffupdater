@@ -1,6 +1,6 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
-import de.marmaro.krt.ffupdater.network.ApiConsumer
+import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.security.Sha256Hash
@@ -10,7 +10,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 /**
  * Consume the "chain_of_trust.json".
  */
-class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
+class MozillaCiJsonConsumer {
 
     suspend fun findTaskId(fileDownloader: FileDownloader, indexPath: String): String {
         val pageUrl = "https://firefox-ci-tc.services.mozilla.com/graphql"
@@ -18,7 +18,7 @@ class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
                 """IndexedTask(${'$'}indexPath: String!) {indexedTask(indexPath: ${'$'}indexPath) {taskId}}"}"""
         val requestBody = requestJson.toRequestBody("application/json".toMediaType())
         val responseString = try {
-            apiConsumer.consume(pageUrl, fileDownloader, "POST", requestBody)
+            fileDownloader.downloadSmallFileAsString(pageUrl, "POST", requestBody)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the taskId from graphql API.", e)
         }
@@ -34,7 +34,9 @@ class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
     suspend fun findChainOfTrustJson(fileDownloader: FileDownloader, taskId: String, abiString: String): Result {
         val url = "https://firefoxci.taskcluster-artifacts.net/$taskId/0/public/chain-of-trust.json"
         val json = try {
-            fileDownloader.downloadJsonAsync(url)
+            fileDownloader.downloadSmallFile(url).use {
+                JsonParser.parseReader(it.charStream().buffered())
+            }
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the taskId from graphql API.", e)
         }
@@ -54,6 +56,6 @@ class MozillaCiJsonConsumer(private val apiConsumer: ApiConsumer) {
     )
 
     companion object {
-        val INSTANCE = MozillaCiJsonConsumer(ApiConsumer.INSTANCE)
+        val INSTANCE = MozillaCiJsonConsumer()
     }
 }

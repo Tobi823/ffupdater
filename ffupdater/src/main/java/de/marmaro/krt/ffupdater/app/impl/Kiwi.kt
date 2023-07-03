@@ -63,9 +63,8 @@ class Kiwi(
                 Regex.escape("-github.apk")
 
         val result = consumer.updateCheck(
-            repoOwner = "kiwibrowser",
-            repoName = "src.next",
-            initResultsPerPage = 3,
+            repository = GithubConsumer.GithubRepo("kiwibrowser", "src.next"),
+            resultsPerApiCall = 3,
             isValidRelease = { true },
             isSuitableAsset = { Regex(fileRegex).matches(it.name) },
             dontUseApiForLatestRelease = true,

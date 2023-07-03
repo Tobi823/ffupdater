@@ -11,7 +11,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://api.github.com/repos/Tobi823/ffupdater/releases
@@ -41,11 +40,9 @@ class FFUpdater(
         fileDownloader: FileDownloader,
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
-        val settings = NetworkSettingsHelper(context)
         val result = consumer.updateCheck(
-            repoOwner = "Tobi823",
-            repoName = "ffupdater",
-            initResultsPerPage = 5,
+            repository = GithubConsumer.GithubRepo("Tobi823", "ffupdater"),
+            resultsPerApiCall = 5,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(".apk") },
             dontUseApiForLatestRelease = false,

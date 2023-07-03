@@ -4,7 +4,16 @@ import android.os.Build
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.google.gson.stream.JsonReader
-import com.google.gson.stream.JsonToken
+import com.google.gson.stream.JsonToken.BEGIN_ARRAY
+import com.google.gson.stream.JsonToken.BEGIN_OBJECT
+import com.google.gson.stream.JsonToken.BOOLEAN
+import com.google.gson.stream.JsonToken.END_ARRAY
+import com.google.gson.stream.JsonToken.END_DOCUMENT
+import com.google.gson.stream.JsonToken.END_OBJECT
+import com.google.gson.stream.JsonToken.NAME
+import com.google.gson.stream.JsonToken.NULL
+import com.google.gson.stream.JsonToken.NUMBER
+import com.google.gson.stream.JsonToken.STRING
 import de.marmaro.krt.ffupdater.network.ProgressResponseBody
 import kotlinx.coroutines.runBlocking
 import okhttp3.CacheControl
@@ -17,6 +26,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import ru.gildor.coroutines.okhttp.await
 import java.io.File
+import java.util.function.Predicate
 import kotlin.system.measureNanoTime
 
 class UtilsTest {
@@ -28,7 +38,6 @@ class UtilsTest {
 
 
     @Test
-    @Disabled
     fun aaab() {
         val request = Request.Builder()
             .url("https://api.github.com/repos/brave/brave-browser/releases?per_page=40&page=1")
@@ -46,8 +55,6 @@ class UtilsTest {
             val startTime2 = System.nanoTime()
             val test = JsonParser.parseString(stringValue)
             println("JsonParser.parseString() took ${(System.nanoTime() - startTime2) / 1000000} ms")
-
-            println(test)
         }
     }
 
@@ -166,22 +173,22 @@ class UtilsTest {
 
         while (true) {
             when (reader.peek()) {
-                JsonToken.BEGIN_OBJECT -> reader.beginObject()
-                JsonToken.BEGIN_ARRAY -> reader.beginArray()
-                JsonToken.END_ARRAY -> reader.endArray()
-                JsonToken.END_OBJECT -> reader.endObject()
-                JsonToken.NAME -> {
+                BEGIN_OBJECT -> reader.beginObject()
+                BEGIN_ARRAY -> reader.beginArray()
+                END_ARRAY -> reader.endArray()
+                END_OBJECT -> reader.endObject()
+                NAME -> {
                     val nextName = reader.nextName()
                     when (nextName) {
                         "author", "uploader" -> reader.skipValue()
                     }
                 }
 
-                JsonToken.STRING -> reader.skipValue()
-                JsonToken.NUMBER -> reader.skipValue()
-                JsonToken.BOOLEAN -> reader.skipValue()
-                JsonToken.NULL -> reader.skipValue()
-                JsonToken.END_DOCUMENT -> return
+                STRING -> reader.skipValue()
+                NUMBER -> reader.skipValue()
+                BOOLEAN -> reader.skipValue()
+                NULL -> reader.skipValue()
+                END_DOCUMENT -> return
                 null -> return
             }
 
@@ -190,10 +197,193 @@ class UtilsTest {
 
     }
 
+    data class Release(
+        val name: String,
+        val prerelease: Boolean,
+    ) {
+        constructor(currentRelease: CurrentRelease) : this(currentRelease.name!!, currentRelease.prerelease!!)
+    }
+
+    data class CurrentRelease(
+        var name: String? = null,
+        var prerelease: Boolean? = null,
+        var tagName: String? = null,
+        var publishedAt: String? = null,
+        var asset: FoundAsset? = null,
+    )
+
+    data class Asset(val name: String) {
+        constructor(currentAsset: CurrentAsset) : this(currentAsset.name!!)
+        constructor(foundAsset: FoundAsset) : this(foundAsset.name)
+    }
+
+    data class CurrentAsset(var name: String? = null, var size: Long? = null, var downloadUrl: String? = null)
+
+    data class FoundAsset(
+        val name: String,
+        val size: Long,
+        val downloadUrl: String,
+    ) {
+        constructor(currentAsset: CurrentAsset) : this(
+            currentAsset.name!!, currentAsset.size!!, currentAsset.downloadUrl!!
+        )
+    }
+
+    data class SearchConditions(
+        val correctRelease: Predicate<Release>,
+        val correctAsset: Predicate<Asset>,
+    )
+
+
     @Test
     fun aaag() {
         var json = File("/home/hacker/Desktop/file.txt")
-        JsonParser.parseReader(json.bufferedReader())
+        val reader = JsonReader(json.bufferedReader())
+
+        val searchConditions = SearchConditions(
+            correctRelease = { it.name.startsWith("Nightly v1.54.70 (Chromium 114.0.5735.133)") },
+            correctAsset = { it.name.startsWith("policy_templates.zip.sha256.asc") }
+        )
+        handleReleaseArray(reader, searchConditions)
+    }
+
+    fun handleReleaseArray(reader: JsonReader, searchConditions: SearchConditions) {
+        assert(reader.peek() == BEGIN_ARRAY)
+        reader.beginArray()
+
+        while (reader.peek() == BEGIN_OBJECT) {
+            handleReleaseObject(reader, searchConditions)
+        }
+
+        assert(reader.peek() == END_ARRAY)
+        reader.endArray()
+    }
+
+    fun handleReleaseObject(reader: JsonReader, searchConditions: SearchConditions) {
+        assert(reader.peek() == BEGIN_OBJECT)
+        reader.beginObject()
+
+        val currentRelease = CurrentRelease()
+
+        while (reader.peek() == NAME) {
+            when (reader.nextName()) {
+                "tag_name" -> currentRelease.tagName = reader.nextString()
+                "published_at" -> currentRelease.publishedAt = reader.nextString()
+                "name" -> currentRelease.name = reader.nextString()
+                "prerelease" -> currentRelease.prerelease = reader.nextBoolean()
+                "assets" -> {
+                    if (currentRelease.name != null && currentRelease.prerelease != null) {
+                        val release = Release(currentRelease)
+                        if (searchConditions.correctRelease.test(release)) {
+                            currentRelease.asset = handleAssetArray(reader, searchConditions)
+                        } else {
+                            // ignore assets if release is not correct
+                            skipNextEntry(reader)
+                        }
+                    } else {
+                        // should not happen, because assets comes after name and prerelease
+                        currentRelease.asset = handleAssetArray(reader, searchConditions)
+                    }
+                }
+
+                else -> skipNextEntry(reader)
+            }
+        }
+
+        if (currentRelease.name != null && currentRelease.prerelease != null && currentRelease.asset != null) {
+            val release = Release(currentRelease)
+            val asset = Asset(currentRelease.asset!!)
+            if (searchConditions.correctRelease.test(release) && searchConditions.correctAsset.test(asset)) {
+                throw Exception("found release")
+            }
+        }
+
+        assert(reader.peek() == END_OBJECT)
+        reader.endObject()
+    }
+
+    fun handleAssetArray(reader: JsonReader, searchConditions: SearchConditions): FoundAsset? {
+        assert(reader.peek() == BEGIN_ARRAY)
+        reader.beginArray()
+
+        var foundAsset: FoundAsset? = null
+
+        while (reader.peek() == BEGIN_OBJECT) {
+            // only store, don't abort JsonReader - maybe we have to read more data from JSON
+            handleAssetObject(reader, searchConditions)
+                ?.let { foundAsset = it }
+        }
+
+        assert(reader.peek() == END_ARRAY)
+        reader.endArray()
+        return foundAsset
+    }
+
+    fun handleAssetObject(reader: JsonReader, searchConditions: SearchConditions): FoundAsset? {
+        assert(reader.peek() == BEGIN_OBJECT)
+        reader.beginObject()
+
+        val currentAsset = CurrentAsset()
+        var foundAsset: FoundAsset? = null
+
+        while (reader.peek() == NAME) {
+            // process asset
+            when (reader.nextName()) {
+                "name" -> currentAsset.name = reader.nextString()
+                "size" -> currentAsset.size = reader.nextLong()
+                "browser_download_url" -> currentAsset.downloadUrl = reader.nextString()
+                else -> skipNextEntry(reader)
+            }
+
+            // store asset if it matches the given search conditions
+            if (currentAsset.name != null && currentAsset.size != null && currentAsset.downloadUrl != null) {
+                val asset = Asset(currentAsset)
+                if (searchConditions.correctAsset.test(asset)) {
+                    // only store, don't abort JsonReader - maybe we have to read more data from JSON
+                    foundAsset = FoundAsset(currentAsset)
+                }
+            }
+        }
+
+        assert(reader.peek() == END_OBJECT)
+        reader.endObject()
+        return foundAsset
+    }
+
+    fun skipNextEntry(reader: JsonReader) {
+        when (reader.peek()) {
+            BEGIN_ARRAY -> {
+                reader.beginArray()
+                while (reader.peek() != END_ARRAY) {
+                    if (reader.peek() == NAME) {
+                        reader.nextName()
+                    }
+                    skipNextEntry(reader)
+                }
+                reader.endArray()
+            }
+
+            END_ARRAY -> {}
+            BEGIN_OBJECT -> {
+                reader.beginObject()
+                while (reader.peek() != END_OBJECT) {
+                    if (reader.peek() == NAME) {
+                        reader.nextName()
+                    }
+                    skipNextEntry(reader)
+                }
+                reader.endObject()
+            }
+
+            END_OBJECT -> {}
+            NAME -> throw IllegalArgumentException("a")
+            STRING -> reader.nextString()
+            NUMBER -> reader.nextDouble()
+            BOOLEAN -> reader.nextBoolean()
+            NULL -> reader.nextNull()
+            END_DOCUMENT -> {}
+            null -> {}
+        }
 
     }
 }

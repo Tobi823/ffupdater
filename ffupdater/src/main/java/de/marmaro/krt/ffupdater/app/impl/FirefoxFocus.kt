@@ -15,7 +15,6 @@ import de.marmaro.krt.ffupdater.network.FileDownloader
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 
 /**
  * https://github.com/mozilla-mobile/firefox-android
@@ -49,7 +48,6 @@ class FirefoxFocus(
     ): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val networkSettings = NetworkSettingsHelper(preferences)
         val deviceSettings = DeviceSettingsHelper(preferences)
 
         val fileSuffix =
@@ -60,7 +58,10 @@ class FirefoxFocus(
                 ABI.X86_64 -> "-x86_64.apk"
                 else -> throw IllegalArgumentException("ABI is not supported")
             }
-        val result = consumer.updateCheckFor_MozillaMobile_FirefoxAndroid(
+        val result = consumer.updateCheck(
+            repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
+            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__FIREFOX_ANDROID,
+            dontUseApiForLatestRelease = true,
             isValidRelease = { !it.isPreRelease && """^Focus \d""".toRegex().containsMatchIn(it.name) },
             isSuitableAsset = { it.nameStartsAndEndsWith("focus-", fileSuffix) },
             fileDownloader = fileDownloader,

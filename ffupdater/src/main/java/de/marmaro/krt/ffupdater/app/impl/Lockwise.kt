@@ -41,9 +41,8 @@ class Lockwise(
         fileDownloader: FileDownloader,
     ): LatestUpdate {
         val result = consumer.updateCheck(
-            repoOwner = "mozilla-lockwise",
-            repoName = "lockwise-android",
-            initResultsPerPage = 5,
+            repository = GithubConsumer.GithubRepo("mozilla-lockwise", "lockwise-android"),
+            resultsPerApiCall = 5,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(".apk") },
             dontUseApiForLatestRelease = false,
