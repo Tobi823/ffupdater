@@ -104,8 +104,6 @@ class GithubReleaseJsonConsumer(
         reader.beginObject()
 
         val currentAsset = CurrentAsset()
-        var foundAsset: FoundAsset? = null
-
         while (reader.peek() == JsonToken.NAME) {
             // process asset
             when (reader.nextName()) {
@@ -114,19 +112,17 @@ class GithubReleaseJsonConsumer(
                 "browser_download_url" -> currentAsset.downloadUrl = reader.nextString()
                 else -> skipNextJsonEntry(reader)
             }
-
-            // store asset if it matches the given search conditions
-            if (currentAsset.isDataSetForSearchParameterConversion()) {
-                if (correctAsset.test(currentAsset.toSearchParameterForAsset())) {
-                    // only store, don't abort JsonReader - maybe we have to read more data from JSON
-                    foundAsset = FoundAsset(currentAsset)
-                }
-            }
         }
 
         assert(reader.peek() == JsonToken.END_OBJECT)
         reader.endObject()
-        return foundAsset
+
+        if (currentAsset.isDataSetForSearchParameterConversion() &&
+            correctAsset.test(currentAsset.toSearchParameterForAsset())
+        ) {
+            return FoundAsset(currentAsset)
+        }
+        return null
     }
 
     private fun skipNextJsonEntry(reader: JsonReader) {
