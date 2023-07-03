@@ -4,8 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
-import com.google.gson.JsonElement
-import com.google.gson.JsonParser
+import de.marmaro.krt.ffupdater.network.annotation.ReturnValueMustBeClosed
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
@@ -37,7 +36,7 @@ class FileDownloader(
     context: Context,
     private var cacheBehaviour: CacheBehaviour,
 ) {
-    private val progressResponseBody = ProgressResponseBody()
+    private val progressInterceptor = ProgressInterceptor()
     private val client: OkHttpClient = createOkHttpClient(context)
 
     data class DownloadStatus(val progressInPercent: Int?, val totalMB: Long)
@@ -48,12 +47,12 @@ class FileDownloader(
         url: String,
         file: File,
     ): Pair<Deferred<Any>, Channel<DownloadStatus>> {
-        val processChannel = progressResponseBody.startNewProgressChannel()
+        val processChannel = Channel<DownloadStatus>(Channel.CONFLATED)
         val deferred = CoroutineScope(Dispatchers.IO).async {
             try {
                 lastChange = System.currentTimeMillis()
                 numberOfRunningDownloads.incrementAndGet()
-                downloadBigFileInternal(url, file)
+                downloadBigFileInternal(url, file, processChannel)
             } catch (e: IOException) {
                 throw NetworkException("Download of $url failed.", e)
             } catch (e: IllegalArgumentException) {
@@ -73,9 +72,10 @@ class FileDownloader(
     private suspend fun downloadBigFileInternal(
         url: String,
         file: File,
+        processChannel: Channel<DownloadStatus>,
     ) {
         // TODO maybe us for own code to cache APKs?
-        callUrl(url, CacheBehaviour.FORCE_NETWORK, "GET", null).use { response ->
+        callUrl(url, CacheBehaviour.FORCE_NETWORK, "GET", null, processChannel).use { response ->
             val body = validateAndReturnResponseBody(url, response)
             if (file.exists()) {
                 file.delete()
@@ -91,53 +91,40 @@ class FileDownloader(
     }
 
     /**
-     * onProgress and currentDownload will stay null because the download is small.
+     *
      */
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun downloadSmallFileAsync(url: String, method: String = "GET", requestBody: RequestBody? = null): String {
-        progressResponseBody.useNoProgressChannel()
-        progressResponseBody.currentUrl = url
+    @ReturnValueMustBeClosed
+    suspend fun downloadSmallFile(
+        url: String,
+        method: String = "GET",
+        requestBody: RequestBody? = null,
+    ): ResponseBody {
         return withContext(Dispatchers.IO) {
             try {
-                callUrl(url, cacheBehaviour, method, requestBody).use { response ->
-                    val body = validateAndReturnResponseBody(url, response)
-                    body.string()
-                }
+                val response = callUrl(url, cacheBehaviour, method, requestBody, null)
+                validateAndReturnResponseBody(url, response)
             } catch (e: IOException) {
                 throw NetworkException("Request of HTTP-API $url failed.", e)
             } catch (e: IllegalArgumentException) {
                 throw NetworkException("Request of HTTP-API $url failed.", e)
             } catch (e: NetworkException) {
                 throw NetworkException("Request of HTTP-API $url failed.", e)
-            } finally {
-                progressResponseBody.currentUrl = null
             }
         }
     }
 
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun downloadJsonAsync(url: String, method: String = "GET", requestBody: RequestBody? = null): JsonElement {
-        progressResponseBody.useNoProgressChannel()
-        progressResponseBody.currentUrl = url
-        return withContext(Dispatchers.IO) {
-            try {
-                callUrl(url, cacheBehaviour, method, requestBody).use { response ->
-                    val body = validateAndReturnResponseBody(url, response)
-                    body.byteStream().bufferedReader().use { reader ->
-                        JsonParser.parseReader(reader)
-                    }
-                }
-            } catch (e: IOException) {
-                throw NetworkException("Request of HTTP-API $url failed.", e)
-            } catch (e: IllegalArgumentException) {
-                throw NetworkException("Request of HTTP-API $url failed.", e)
-            } catch (e: NetworkException) {
-                throw NetworkException("Request of HTTP-API $url failed.", e)
-            } finally {
-                progressResponseBody.currentUrl = null
-            }
+    @ReturnValueMustBeClosed
+    suspend fun downloadSmallFileAsString(
+        url: String,
+        method: String = "GET",
+        requestBody: RequestBody? = null,
+    ): String {
+        return downloadSmallFile(url, method, requestBody).use {
+            it.string()
         }
     }
 
@@ -159,6 +146,7 @@ class FileDownloader(
         cacheControl: CacheBehaviour,
         method: String,
         requestBody: RequestBody?,
+        processChannel: Channel<DownloadStatus>?,
     ): Response {
         require(url.startsWith("https://"))
         val request = Request.Builder()
@@ -171,6 +159,7 @@ class FileDownloader(
                             .maxAge(1, TimeUnit.HOURS)
                             .build()
                     }
+
                     CacheBehaviour.USE_EVEN_VERY_OLD_CACHE -> {
                         CacheControl.Builder()
                             .maxAge(2, TimeUnit.DAYS)
@@ -179,6 +168,7 @@ class FileDownloader(
                 }
             )
             .method(method, requestBody)
+            .tag(processChannel) // use tag to transfer a Channel to the Interceptor
         return client
             .newCall(request.build())
             .await()
@@ -196,7 +186,7 @@ class FileDownloader(
                     maxSize = CACHE_SIZE
                 )
             )
-            .addNetworkInterceptor(progressResponseBody)
+            .addNetworkInterceptor(progressInterceptor)
             .apply { createSslSocketFactory()?.let { this.sslSocketFactory(it.first, it.second) } }
             .apply { createDnsConfiguration()?.let { this.dns(it) } }
             .apply { createProxyConfiguration()?.let { this.proxy(it) } }
@@ -330,18 +320,12 @@ class FileDownloader(
     }
 }
 
-internal class ProgressResponseBody : ResponseBody(), Interceptor {
-    private lateinit var responseBody: ResponseBody
-    private var processChannel: Channel<FileDownloader.DownloadStatus>? = null
-    var currentUrl: String? = null
-
-    init {
-        startNewProgressChannel()
-    }
+internal class ProgressInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.proceed(chain.request())
-        responseBody = requireNotNull(original.body) { "original.body is null! Maybe called by cache?" }
+        val responseBody = requireNotNull(original.body) { "original.body is null! Maybe called by cache?" }
+        val processChannel = original.request.tag() as Channel<FileDownloader.DownloadStatus>?
         return original.newBuilder()
             // ignore must-revalidate for cache-control
             // override max-age because I want to keep cache entries for USE_EVEN_VERY_OLD_CACHE up to 2 days
@@ -350,28 +334,24 @@ internal class ProgressResponseBody : ResponseBody(), Interceptor {
             .removeHeader("last-modified")
             .removeHeader("date")
             .removeHeader("age")
-            .body(this)
+            .body(ProgressInterceptorResponseBody(original.request.url, responseBody, processChannel))
             .build()
     }
+}
 
-    fun startNewProgressChannel(): Channel<FileDownloader.DownloadStatus> {
-        val channel = Channel<FileDownloader.DownloadStatus>(Channel.CONFLATED)
-        processChannel = channel
-        return channel
-    }
-
-    fun useNoProgressChannel() {
-        processChannel = null
-    }
+internal class ProgressInterceptorResponseBody(
+    private val originalUrl: HttpUrl,
+    private val responseBody: ResponseBody,
+    private var processChannel: Channel<FileDownloader.DownloadStatus>?,
+) : ResponseBody() {
 
     override fun contentType() = responseBody.contentType()
     override fun contentLength() = responseBody.contentLength()
-
     override fun source() = trackTransmittedBytes(responseBody.source()).buffer()
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun trackTransmittedBytes(source: Source): Source {
-        Log.i(LOG_TAG, "Make network request: $currentUrl")
+        Log.i(LOG_TAG, "Make network request: $originalUrl")
         if (processChannel?.isClosedForSend == true) {
             processChannel = null
         }
@@ -400,7 +380,12 @@ internal class ProgressResponseBody : ResponseBody(), Interceptor {
                 val progress = (100 * totalBytesRead / contentLength()).toInt()
                 if (progress != reportedPercentage) {
                     reportedPercentage = progress
-                    processChannel?.trySend(FileDownloader.DownloadStatus(progress, toMB(totalBytesRead)))
+                    processChannel?.trySend(
+                        FileDownloader.DownloadStatus(
+                            progress,
+                            toMB(totalBytesRead)
+                        )
+                    )
                 }
             }
 
@@ -418,13 +403,13 @@ internal class ProgressResponseBody : ResponseBody(), Interceptor {
             }
         }
     }
-
     companion object {
-        private const val LOG_TAG = "ProgressResponseBody"
+        private const val LOG_TAG = "FileDownloader"
         private const val BYTES_IN_MB = 1_048_576
         private const val SOURCE_IS_EXHAUSTED = -1L
         private fun toMB(bytes: Long): Long {
             return bytes / BYTES_IN_MB
         }
     }
+
 }
