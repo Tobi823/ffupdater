@@ -59,7 +59,8 @@ dependencies {
 
     // Aggregator dependency on JUnit api, engine, and params
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-    testImplementation 'io.mockk:mockk:1.10.5'
+    testImplementation 'org.hamcrest:hamcrest-all:1.3'
+    testImplementation 'io.mockk:mockk:1.13.5'
     //noinspection GradleDependency
     testImplementation 'io.github.ivanshafran:shared-preferences-mock:1.2.4'
 }
