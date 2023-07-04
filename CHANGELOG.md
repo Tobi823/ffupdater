@@ -1,3 +1,8 @@
+# 2023-07-04 Release 78.0.1 (143)
+
+* Thanks for the Weblate contributions from: Kazushi Hayama, 109247019824 and Oğuz Ersen
+* Fix crash on startup
+
 # 2023-07-04 Release 78.0.0 (142)
 
 * Thanks for the Weblate contributions from: Kazushi Hayama, gallegonovato, Alexthegib and Oğuz Ersen
