@@ -1,5 +1,20 @@
 # Deprecated browsers
 
+## Bromite / Bromite System WebView
+
+04.07.2023: The latest release is from 19.12.2022 and therefore too old (https://github.com/bromite/bromite).
+I wish the developers all the best and hope they are doing well.
+
+## Ungoogled Chromium
+
+26.04.2022: The developer wrote
+in https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123:
+
+> I won't be able to update the versions for some time. If possible please use one of the browsers listed here
+> in the meantime.
+
+Thank you for your work and good luck.
+
 ## Mozilla Lockwise
 
 27.06.2022: Mozilla Lockwise is removed from FFUpdater. https://github.com/Tobi823/ffupdater/issues/194

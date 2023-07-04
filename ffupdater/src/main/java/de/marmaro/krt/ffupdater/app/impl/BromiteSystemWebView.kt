@@ -20,6 +20,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/bromite/bromite/releases
  * https://www.apkmirror.com/apk/bromite/bromite-system-webview-2/
  */
+@Deprecated("latest release is too old")
 class BromiteSystemWebView : AppBase() {
     override val app = App.BROMITE_SYSTEMWEBVIEW
     override val packageName = "org.bromite.webview"
@@ -30,12 +31,13 @@ class BromiteSystemWebView : AppBase() {
     override val icon = R.drawable.ic_logo_bromite_systemwebview
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
+    override val eolReason = R.string.eol_reason__browser_no_longer_maintained
 
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
     override val installableByUser = false
     override val projectPage = "https://github.com/bromite/bromite"
-    override val displayCategory = DisplayCategory.GOOD_PRIVACY_BROWSER
+    override val displayCategory = DisplayCategory.EOL
 
     @MainThread
     @Throws(NetworkException::class)

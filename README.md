@@ -22,8 +22,6 @@ Browsers from Mozilla or based on Firefox:
 
 Good privacy browsers:
 
-- [Bromite](https://github.com/bromite/bromite),
-  [Bromite SystemWebView](https://www.bromite.org/system_web_view)
 - [Mulch](https://divestos.org/index.php?page=our_apps)
 
 Browser which are better than Google Chrome:
