@@ -17,7 +17,7 @@ Browsers from Mozilla or based on Firefox:
 - [Mull Browser](https://divestos.org/index.php?page=our_apps)
   ([GitLab Repository](https://gitlab.com/divested-mobile/mull-fenix))
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
-- [Tor Browser](https://www.torproject.org/download)
+- [Tor Browser](https://www.torproject.org/download),
   [Tor Browser Alpha](https://www.torproject.org/download/alpha/)
 
 Good privacy browsers:
