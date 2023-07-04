@@ -320,4 +320,5 @@
     <string name="main_activity__denied_notification_permission">FFUpdater\'ın sizi güncellemeler hakkında bilgilendirmek için izne ihtiyacı var.</string>
     <string name="generic__eol_reason__too_old">Uygulama uzun süredir güncellenmedi.</string>
     <string name="main_activity__an_error_occurred"><u>Bir hata oluştu. Daha sonra yeniden deneyin.</u></string>
+    <string name="eol_reason__browser_no_longer_maintained">Tarayıcı artık geliştirilmiyor.</string>
 </resources>
