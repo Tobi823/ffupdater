@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.network.annotation.ReturnValueMustBeClosed
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -157,6 +159,20 @@ object FileDownloader {
     ): String {
         return downloadWithCache(url, cacheBehaviour, method, requestBody).use {
             it.string()
+        }
+    }
+
+    @MainThread
+    @Throws(NetworkException::class)
+    @ReturnValueMustBeClosed
+    suspend fun downloadJsonObjectWithCache(
+        url: String,
+        cacheBehaviour: CacheBehaviour,
+        method: String = "GET",
+        requestBody: RequestBody? = null,
+    ): JsonObject {
+        return downloadWithCache(url, cacheBehaviour, method, requestBody).use {
+            JsonParser.parseReader(it.charStream()).asJsonObject
         }
     }
 

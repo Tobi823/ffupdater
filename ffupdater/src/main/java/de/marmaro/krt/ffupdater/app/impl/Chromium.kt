@@ -7,7 +7,6 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
-import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
@@ -88,16 +87,26 @@ class Chromium : AppBase() {
     ): StorageObject {
         val url = "$BASE_API_URL?delimiter=/&prefix=$platform/${revision}/chrome-android&$ALL_FIELDS"
         val storageObjects = try {
-            FileDownloader.downloadObjectWithCache(url, StorageObjects::class, cacheBehaviour)
+            FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to request the latest Vivaldi version.", e)
         }
-        checkNotNull(storageObjects.items)
-        check(storageObjects.items.size == 1)
 
-        val storageObject = storageObjects.items[0]
-        check(storageObject.name == "$platform/$revision/chrome-android.zip")
-        return storageObject
+        val items = storageObjects["items"].asJsonArray
+        checkNotNull(items)
+        check(items.size() == 1)
+        val storageObject = items[0].asJsonObject
+        val storageObjectKotlin = StorageObject(
+            kind = storageObject["kind"].asString,
+            downloadUrl = storageObject["mediaLink"].asString,
+            name = storageObject["name"].asString,
+            fileSizeBytes = storageObject["size"].asLong,
+            timestamp = storageObject["updated"].asString,
+        )
+
+        check(storageObjectKotlin.kind == "storage#object")
+        check(storageObjectKotlin.name == "$platform/$revision/chrome-android.zip")
+        return storageObjectKotlin
     }
 
     @SuppressLint("ApplySharedPref")
@@ -128,23 +137,11 @@ class Chromium : AppBase() {
         }
     }
 
-    data class StorageObjects(
-        @SerializedName("kind")
-        val kind: String,
-        @SerializedName("items")
-        val items: List<StorageObject>,
-    )
-
     data class StorageObject(
-        @SerializedName("kind")
         val kind: String,
-        @SerializedName("mediaLink")
         val downloadUrl: String,
-        @SerializedName("name")
         val name: String,
-        @SerializedName("size")
         val fileSizeBytes: Long,
-        @SerializedName("updated")
         val timestamp: String,
     )
 
