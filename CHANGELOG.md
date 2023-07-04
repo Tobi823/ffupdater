@@ -1,3 +1,10 @@
+# 2023-07-04 Release 78.0.0 (142)
+
+* Thanks for the Weblate contributions from: Kazushi Hayama, gallegonovato, Alexthegib and Oğuz Ersen
+* Fix the "file was not downloaded" bug (use for every OkHttp request a new Interceptor)
+* Improve update check from GitHub (use JsonReader instead of Gson)
+* Bromite and Bromite SystemWebView are EOL
+
 # 2023-06-28 Release 77.7.15 (141)
 
 * Thanks for the Weblate contributions from: SiniKraft, Kazushi Hayama, 109247019824, Retrial, Alexthegib,

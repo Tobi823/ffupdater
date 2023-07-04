@@ -1,0 +1,4 @@
+* Thanks for the Weblate contributions from: Kazushi Hayama, gallegonovato, Alexthegib and Oğuz Ersen
+* Fix the "file was not downloaded" bug (use for every OkHttp request a new Interceptor)
+* Improve update check from GitHub (use JsonReader instead of Gson)
+* Bromite and Bromite SystemWebView are EOL
