@@ -72,7 +72,7 @@
     <string name="download_activity__delete_cache_button_text">キャッシュをクリア</string>
     <string name="download_activity__delete_cache_explanation">FFUpdater が欠陥のあるアプリの更新をキャッシュしたと思われる場合や空き容量を増やしたい場合は、ボタンをクリックしてダウンロードされたファイルを削除してください。</string>
     <string name="download_activity__download_app_with_status">アプリをダウンロード中 (%1$s)</string>
-    <string name="download_activity__download_failed">ダウンロード失敗</string>
+    <string name="download_activity__download_failed">ダウンロードに失敗しました</string>
     <string name="download_activity__downloaded_application_from">アプリのダウンロード元:</string>
     <string name="download_activity__downloaded_application_is_not_verified">ダウンロードしたアプリを検証できませんでした</string>
     <string name="download_activity__exception__show_button"><u>詳細なエラーレポートを表示</u></string>
@@ -92,16 +92,16 @@
     <string name="install_new_app">新しいアプリをインストール</string>
     <string name="install_same_version_dialog__message">このアプリの最新版はすでにインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>
     <string name="install_same_version_dialog__title">同じバージョンがインストール済み</string>
-    <string name="notification__install_error__channel_descr">失敗した %1$s 更新の通知チャネル。</string>
-    <string name="notification__install_error__channel_name">%1$s 更新失敗通知</string>
+    <string name="notification__install_error__channel_descr">%1$s の更新失敗の通知チャンネル。</string>
+    <string name="notification__install_error__channel_name">%1$s の更新失敗の通知</string>
     <string name="notification__install_error__text">エラー (%1$d): %2$s</string>
     <string name="notification__install_error__title">%1$s は更新できませんでした</string>
-    <string name="notification__install_success__channel_descr">成功した %1$s 更新の通知チャネル。</string>
-    <string name="notification__install_success__channel_name">%1$s 正常に更新された通知</string>
+    <string name="notification__install_success__channel_descr">%1$s の更新完了の通知チャンネル。</string>
+    <string name="notification__install_success__channel_name">%1$s の更新完了の通知</string>
     <string name="notification__install_success__text">アプリはバックグラウンドで正常に更新されました。</string>
     <string name="notification__install_success__title">%1$s が更新されました</string>
-    <string name="installed_app_is_not_verified">インストールしたアプリが検証できませんでした</string>
-    <string name="installed_application_is_verified">インストールしたアプリは検証されました</string>
+    <string name="installed_app_is_not_verified">インストールされたアプリは検証されていません</string>
+    <string name="installed_application_is_verified">インストールされたアプリは検証済みです</string>
     <string name="installed_version">インストール済み: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-APIの制限を超えました。次の時間に再試行します。</u>"</string>
@@ -236,18 +236,19 @@
     <string name="settings__network__trust_user_cas__title">ユーザーが追加したCAを信頼する</string>
     <string name="chromium__description">Chromiumは、すべてのユーザーがより安全かつ高速に、そして安定してウェブ体験できるようにすることを目的としたオープンソースのブラウザプロジェクトです。このサイトでは、設計ドキュメント、アーキテクチャの概要、テスト情報など、Chromiumソースコードのビルドと作業を学ぶのに役立つ情報を紹介しています。</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">このオプションは、Android Marshmallow以降でのみ使用できます。</string>
-    <string name="kiwi__description">Kiwi Browserは、インターネットを閲覧したり、ニュースを読んだり、ビデオを見たり、音楽を聴いたりするために、煩わしさを感じることなく作られています。</string>
+    <string name="kiwi__description">Kiwi Browser は、煩わしさを感じることなくインターネットを閲覧したり、ニュースを読んだり、ビデオを見たり、音楽を聴いたりできるように作られています。</string>
     <string name="settings__installer_category__title">インストーラー</string>
     <string name="settings__b_f__delete_cache_if_install_failed">インストールに失敗した場合は、ダウンロードした更新プログラムを削除します。</string>
     <string name="crash_report_activity__label">クラッシュレポーター</string>
     <string name="add_app_activity__title_from_mozilla">Mozilla</string>
     <string name="add_app_activity__label">新しいアプリの追加</string>
     <string name="app_card__open_project_page">ブラウザでプロジェクトページを開く</string>
-    <string name="kiwi__warning">- Kiwiは Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。
-\n- Kiwiは理想的なプライバシーブラウザではありませんが、アドオンサポートは充実しています。
-\n- このブラウザは、Kiwi Browserを使用して検索を行うたびに、検索エンジンからの報酬を受け取ります。検索エンジンの選択次第では、リクエストはKiwibrowser/Kiwisearchservicesサーバーを経由する場合があります。
-\n- KiwiのGoogle Adsは位置情報データを広告に使用する場合がありますが、検出機能を無効にすることで無効にできます。しかし、これはすぐに変更されるでしょう。詳細は、https://privacy.kiwibrowser.org/を参照してください。</string>
+    <string name="kiwi__warning">- Kiwi は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。
+\n- Kiwi は理想的なプライバシーブラウザではありませんが、拡張機能に対応しています。
+\n- Kiwi Browser で検索を行うたびに、検索エンジンからの報酬を受け取ります。検索エンジンの選択によっては、リクエストが Kiwibrowser / Kiwisearchservices のサーバーを経由する場合があります。
+\n- Kiwi の Google Ads は広告に位置情報を使用されることがありますが、検出機能を無効にできます。ただし、まもなく変更される予定です。詳細は https://privacy.kiwibrowser.org/ を参照してください。</string>
     <string name="orbot__description">Orbotは、他のアプリがより安全にインターネットを使用できるようにする無料のプロキシアプリです。OrbotはTorを使用してインターネットトラフィックを暗号化し、世界中のコンピュータを経由してこれを隠蔽します。Torは、個人の自由とプライバシー、機密性の高いビジネス活動や対人関係、並びにトラフィック分析と呼ばれるセキュリティを脅かすネットワーク監視の形態から防御するのに役立つフリーソフトウェア及びオープンネットワークです。</string>
     <string name="settings__background__update_check__when_device_idle__summary">バックグラウンド更新によってアプリを再起動させたくない場合は、これを有効にします。バックグラウンド更新チェックのスケジュールをより予測可能にしたい場合は無効にします。</string>
     <string name="settings__background__update_check__when_device_idle__title">デバイスがアイドル状態の時のみ更新をチェック</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
 </resources>
