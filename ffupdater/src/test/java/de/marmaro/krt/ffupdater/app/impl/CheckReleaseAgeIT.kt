@@ -73,15 +73,15 @@ class CheckReleaseAgeIT {
 
     private val context = mockk<Context>()
     private val sharedPreferences = SPMockBuilder().createSharedPreferences()!!
-    lateinit var fileDownloader: FileDownloader
 
     @BeforeEach
     fun setUp() {
         val packageManager = mockk<PackageManager>()
         every { context.cacheDir } returns File(".")
+        every { context.applicationContext } returns context
         every { context.packageManager } returns packageManager
-        every { context.getString(R.string.available_version, any()) } returns "/"
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
+        every { context.getString(R.string.available_version, any()) } returns "/"
         every {
             @Suppress("DEPRECATION")
             packageManager.getPackageInfo(any<String>(), 0)
@@ -102,7 +102,7 @@ class CheckReleaseAgeIT {
         mockkObject(DeviceSdkTester)
         every { DeviceSdkTester.supportsAndroidNougat() } returns true
 
-        fileDownloader = FileDownloader(context, FORCE_NETWORK)
+        FileDownloader.init(context)
     }
 
     private fun isDownloadAvailable(url: String) {
@@ -124,7 +124,7 @@ class CheckReleaseAgeIT {
     @ParameterizedTest
     @MethodSource("generate test data")
     fun `is the latest version of app not too old`(testData: TestData) {
-        val result = runBlocking { testData.app.findLatestUpdate(context) }
+        val result = runBlocking { testData.app.findLatestUpdate(context, FORCE_NETWORK) }
         isDownloadAvailable(result.downloadUrl)
 
         if (testData.maxAgeInDays != null) {
