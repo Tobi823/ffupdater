@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.network.file
 import android.content.Context
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
-import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.network.annotation.ReturnValueMustBeClosed
@@ -28,7 +27,6 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import javax.net.ssl.*
 import kotlin.io.use
-import kotlin.reflect.KClass
 
 /**
  * This class can be reused to a certain extend and must only be used synchronous.
@@ -38,7 +36,6 @@ object FileDownloader {
     private val progressInterceptor = ProgressInterceptor()
     private lateinit var client: OkHttpClient
     private lateinit var clientWithCache: OkHttpClient
-    private val gson = Gson()
 
     /**
      * This function must be called in Activity.onCreate to initialise the object.
@@ -131,20 +128,6 @@ object FileDownloader {
             } catch (e: NetworkException) {
                 throw NetworkException("Request of HTTP-API $url failed.", e)
             }
-        }
-    }
-
-    @MainThread
-    @Throws(NetworkException::class)
-    suspend fun <T : Any> downloadObjectWithCache(
-        url: String,
-        clazz: KClass<T>,
-        cacheBehaviour: CacheBehaviour,
-        method: String = "GET",
-        requestBody: RequestBody? = null,
-    ): T {
-        downloadWithCache(url, cacheBehaviour, method, requestBody).use {
-            return gson.fromJson(it.charStream().buffered(), clazz.java)
         }
     }
 

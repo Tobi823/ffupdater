@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
 import androidx.annotation.MainThread
-import com.google.gson.annotations.SerializedName
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -19,47 +18,45 @@ object CustomRepositoryConsumer {
         abi: ABI,
         cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
-        val mainObject = try {
-            FileDownloader.downloadObjectWithCache("$repoUrl/index-v1.json", MainObject::class, cacheBehaviour)
+        val jsonRoot = try {
+            FileDownloader.downloadJsonObjectWithCache("$repoUrl/index-v1.json", cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to find the latest version from index-v1.json.", e)
         }
+        val listOfPackages = jsonRoot["packages"].asJsonObject
+        val listOfApks = listOfPackages[packageName].asJsonArray
+        val apk = listOfApks
+            .map { it.asJsonObject }
+            .map {
+                ApkObject(
+                    added = it["added"].asLong,
+                    apkName = it["apkName"].asString,
+                    abis = it["nativecode"].asJsonArray.map { it.asString },
+                    hash = it["hash"].asString,
+                    size = it["size"].asLong,
+                    versionCode = it["versionCode"].asLong,
+                    versionName = it["versionName"].asString,
+                )
+            }
+            .filter { abi.codeName in it.abis }
+            .maxBy { it.versionCode }
 
-        val packageObject = checkNotNull(mainObject.packages[packageName])
-        val apk = packageObject
-            // always accept APKs without ABI requirements
-            .filter { apkObject -> apkObject.abis!!.contains(abi.codeName) }
-            .maxBy { apkObject -> apkObject.versionCode }
-
-        val version = apk.versionName
         return LatestUpdate(
             downloadUrl = "$repoUrl/${apk.apkName}",
-            version = version,
+            version = apk.versionName,
             publishDate = Instant.ofEpochMilli(apk.added).toString(),
             exactFileSizeBytesOfDownload = apk.size,
             fileHash = Sha256Hash(apk.hash),
         )
     }
 
-    data class MainObject(
-        @SerializedName("packages")
-        val packages: Map<String, List<ApkObject>>,
-    )
-
     data class ApkObject(
-        @SerializedName("added")
         val added: Long,
-        @SerializedName("apkName")
         val apkName: String,
-        @SerializedName("nativecode")
-        val abis: List<String>?,
-        @SerializedName("hash")
+        val abis: List<String>,
         val hash: String,
-        @SerializedName("size")
         val size: Long,
-        @SerializedName("versionCode")
         val versionCode: Long,
-        @SerializedName("versionName")
         val versionName: String,
     )
 }
