@@ -23,5 +23,7 @@ class FFUpdater : Application() {
         NetworkSettingsHelper.init(sharedPreferences)
 
         FileDownloader.init(applicationContext)
+
+        Migrator().migrate(applicationContext)
     }
 }

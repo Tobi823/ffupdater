@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         StrictModeSetup.INSTANCE.enableStrictMode()
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
-        Migrator().migrate(this)
         requestForNotificationPermissionIfNecessary()
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
