@@ -308,4 +308,5 @@
     <string name="main_activity__denied_notification_permission">FFUpdater vyžaduje oprávnění, aby vás mohl informovat o aktualizacích.</string>
     <string name="generic__eol_reason__too_old">Aplikace již dlouho nebyla aktualizována.</string>
     <string name="main_activity__an_error_occurred"><u>Došlo k neočekávané chybě. Zkuste to znovu později.</u></string>
+    <string name="eol_reason__browser_no_longer_maintained">Prohlížeč není nadále spravován.</string>
 </resources>
