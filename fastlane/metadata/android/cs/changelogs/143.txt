@@ -1,0 +1,2 @@
+* Děkujeme za překlady na Weblate: Kazushi Hayama, 109247019824 a Oğuz Ersen
+* Oprava pádu při spuštění

@@ -1,0 +1,4 @@
+* Děkujeme za překlady na Weblate: Kazushi Hayama, gallegonovato, Alexthegib a Oğuz Ersen
+* Oprava chyby "soubor se nepodařilo stáhnout" (pro každý požadavek OkHttp se použije nový Interceptor)
+* Vylepšena kontrola aktualizací z GitHubu (místo Gsonu se používá JsonReader)
+* Bromite a Bromite SystemWebView jsou nyní EOL
