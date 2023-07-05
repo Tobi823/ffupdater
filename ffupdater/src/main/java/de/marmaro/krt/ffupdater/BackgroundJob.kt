@@ -9,13 +9,12 @@ import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
-import androidx.work.ExistingPeriodicWorkPolicy.REPLACE
 import androidx.work.NetworkType.CONNECTED
 import androidx.work.NetworkType.UNMETERED
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
-import androidx.work.WorkRequest.DEFAULT_BACKOFF_DELAY_MILLIS
+import androidx.work.WorkRequest.Companion.DEFAULT_BACKOFF_DELAY_MILLIS
 import androidx.work.WorkerParameters
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppAndUpdateStatus
@@ -335,7 +334,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             if (BackgroundSettingsHelper.isUpdateCheckEnabled) {
                 start(
                     context,
-                    REPLACE,
+                    ExistingPeriodicWorkPolicy.UPDATE,
                     BackgroundSettingsHelper.updateCheckInterval,
                     BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
                 )
@@ -355,7 +354,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             onlyWhenIdle: Boolean,
         ) {
             if (enabled) {
-                start(context, REPLACE, interval, onlyWhenIdle)
+                start(context, ExistingPeriodicWorkPolicy.UPDATE, interval, onlyWhenIdle)
             } else {
                 stop(context)
             }
