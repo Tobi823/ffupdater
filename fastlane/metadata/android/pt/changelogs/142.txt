@@ -1,0 +1,4 @@
+* Obrigado pelas contribuições do Weblate de: Kazushi Hayama, gallegonovato, Alexthegib e Oğuz Ersen
+* Corrigir o bug "o ficheiro não foi descarregado" (usar um novo Intercetor para cada pedido OkHttp)
+* Melhorar a verificação de atualização do GitHub (usar JsonReader em vez de Gson)
+* Bromite e Bromite SystemWebView são EOL
