@@ -1,0 +1,4 @@
+* Gracias por las contribuciones en Weblate de: Kazushi Hayama, gallegonovato, Alexthegib y Oğuz Ersen.
+* Arreglar el bug "el archivo no se descargó" (usar para cada petición OkHttp un nuevo Interceptor)
+* Mejorar la comprobación de actualizaciones desde GitHub (usar JsonReader en lugar de Gson)
+* Bromite y Bromite SystemWebView son EOL

@@ -1,0 +1,2 @@
+* Gracias por las contribuciones en Weblate de: Kazushi Hayama, 109247019824 y Oğuz Ersen
+* Arreglar el fallo en el arranque
