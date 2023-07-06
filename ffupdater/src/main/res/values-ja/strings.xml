@@ -104,7 +104,7 @@
     <string name="installed_application_is_verified">インストールされたアプリは検証済みです</string>
     <string name="installed_version">インストール済み: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-APIの制限を超えました。次の時間に再試行します。</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API の制限を超過しました。次の時間に再試行します。</u></string>
     <string name="main_activity__no_unmetered_network">アンメットネットワークなし</string>
     <string name="main_activity__subtitle">プライバシーに配慮したブラウザ用のアップデーター</string>
     <string name="main_activity__temporary_network_issue">"<u>一時的なネットワークの問題です。後で再試行します。</u>"</string>
@@ -217,10 +217,10 @@
     <string name="main_activity__denied_notification_permission">FFUpdater には、アップデートについて通知する権限が必要です。</string>
     <string name="generic__eol_reason__too_old">アプリは長い間更新されていません。</string>
     <string name="add_app_activity__title_better_than_google_chrome">Google Chromeより優れている</string>
-    <string name="lockwise__eol_reason">Mozillaは2021年12月にサポートを終了しました。他のパスワードセーフに切り替えてください。</string>
+    <string name="lockwise__eol_reason">Mozilla は 2021 年 12 月にサポートを終了しました。他のパスワード管理アプリに移行してください。</string>
     <string name="lockwise__description">あなただけのためのパスワードアクセス
 \n
-\nFirefoxのパスワードを安全に追跡し、どこからでもアクセスできます。アプリから任意のウェブサイトを素早く開き、アカウントにアクセスできます。</string>
+\nFirefox のパスワードを安全に追跡し、どこからでもアクセスできます。アプリからウェブサイトを素早く開き、アカウントにアクセスしましょう。</string>
     <string name="settings__foreground__hide_warning_buttons">インストール済みアプリの警告ボタンを非表示にします。</string>
     <string name="background__separate_notification_channels__title">異なる通知チャネル</string>
     <string name="notification__update_available__generic_channel_name">アプリのアップデート通知</string>
