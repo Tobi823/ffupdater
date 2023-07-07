@@ -65,20 +65,21 @@ class Brave : AppBase() {
     }
 
     private fun findNameOfApkFile(): String {
-        val strings = if (DeviceSdkTester.supportsAndroidNougat()) {
-            DeviceAbiExtractor.StringsForAbi(
-                armeabi_v7a = "BraveMonoarm.apk",
-                arm64_v8a = "BraveMonoarm64.apk",
-                x86 = "BraveMonox86.apk",
-                x86_64 = "BraveMonox64.apk"
-            )
+        return if (DeviceSdkTester.supportsAndroidNougat()) {
+            when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+                ARMEABI_V7A -> "BraveMonoarm.apk"
+                ARM64_V8A -> "BraveMonoarm64.apk"
+                X86 -> "BraveMonox86.apk"
+                X86_64 -> "BraveMonox64.apk"
+                else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
+            }
         } else {
-            DeviceAbiExtractor.StringsForAbi(
-                armeabi_v7a = "Bravearm.apk",
-                x86 = "Bravex86.apk",
-            )
+            when (DeviceAbiExtractor.findBestAbi(ARM32_X86, DeviceSettingsHelper.prefer32BitApks)) {
+                ARMEABI_V7A -> "Bravearm.apk"
+                X86 -> "Bravex86.apk"
+                else -> throw IllegalArgumentException("ABI for Android 6 is not supported")
+            }
         }
-        return DeviceAbiExtractor.findStringForBestAbi(strings, DeviceSettingsHelper.prefer32BitApks)
     }
 
     companion object {
