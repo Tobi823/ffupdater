@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.network.fdroid
 import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
-import de.marmaro.krt.ffupdater.AddAppActivity.Companion.LOG_TAG
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader

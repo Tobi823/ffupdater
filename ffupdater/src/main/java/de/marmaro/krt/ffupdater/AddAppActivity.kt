@@ -98,7 +98,6 @@ class AddAppActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val LOG_TAG = "AddAppActivity"
         fun createIntent(context: Context): Intent {
             return Intent(context, AddAppActivity::class.java)
             // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK

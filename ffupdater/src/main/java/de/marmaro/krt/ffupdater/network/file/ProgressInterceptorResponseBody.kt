@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.network.file
 
 import android.util.Log
 import androidx.annotation.Keep
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import okhttp3.HttpUrl
@@ -74,7 +75,6 @@ class ProgressInterceptorResponseBody(
     }
 
     companion object {
-        private const val LOG_TAG = "FileDownloader"
         private const val BYTES_IN_MB = 1_048_576
         private const val SOURCE_IS_EXHAUSTED = -1L
         private fun toMB(bytes: Long): Long {

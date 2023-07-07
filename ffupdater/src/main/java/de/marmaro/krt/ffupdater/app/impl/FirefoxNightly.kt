@@ -126,7 +126,6 @@ object FirefoxNightly : AppBase() {
         return packageInfo.versionCode.toLong()
     }
 
-    private const val LOG_TAG = "FirefoxNightly"
     const val INSTALLED_VERSION_CODE = "firefox_nightly_installed_version_code"
     const val INSTALLED_SHA256_HASH = "firefox_nightly_installed_sha256_hash"
 }

@@ -16,6 +16,7 @@ import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import androidx.work.WorkRequest.Companion.DEFAULT_BACKOFF_DELAY_MILLIS
 import androidx.work.WorkerParameters
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppAndUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
@@ -311,7 +312,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     companion object {
         private const val WORK_MANAGER_KEY = "update_checker"
-        private const val LOG_TAG = "BackgroundJob"
         private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofHours(8))
 
         fun start(context: Context, policy: ExistingPeriodicWorkPolicy) {

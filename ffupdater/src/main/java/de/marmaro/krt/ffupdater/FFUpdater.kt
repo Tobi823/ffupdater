@@ -33,5 +33,11 @@ class FFUpdater : Application() {
         Migrator().migrate(applicationContext)
 
         start(applicationContext.applicationContext, KEEP)
+
+//        CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)
+    }
+
+    companion object {
+        const val LOG_TAG = "FFUpdater"
     }
 }

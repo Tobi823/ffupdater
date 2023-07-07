@@ -59,6 +59,5 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
     companion object {
         const val FFUPDATER_VERSION_CODE = "migrator_ffupdater_version_code"
-        const val LOG_TAG = "Migrator"
     }
 }

@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.SharedPreferences
 import android.util.Log
 import androidx.annotation.Keep
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import java.net.Proxy.Type
 
 
@@ -95,6 +96,4 @@ object NetworkSettingsHelper {
 
         return ProxyConnectionDetails(type, ipString, port, username, password)
     }
-
-    private const val LOG_TAG = "NetworkSettingsHelper"
 }

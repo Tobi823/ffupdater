@@ -6,6 +6,7 @@ import androidx.annotation.AnyThread
 import androidx.annotation.Keep
 import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.DisplayableException
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
@@ -122,6 +123,5 @@ abstract class AppBase {
         val ARM32_ARM64_X86_X64 = listOf(ARM64_V8A, ARMEABI_V7A, X86_64, X86)
         val ARM32_ARM64 = listOf(ARM64_V8A, ARMEABI_V7A)
         val ARM32_X86 = listOf(ARMEABI_V7A, X86)
-        const val LOG_TAG = "AppBase"
     }
 }

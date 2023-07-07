@@ -142,7 +142,6 @@ object Chromium : AppBase() {
         val timestamp: String,
     )
 
-    private const val LOG_TAG = "Chromium"
     const val INSTALLED_VERSION_REVISION = "chromium__installed_version_revision"
     const val INSTALLED_VERSION_TIMESTAMP = "chromium__installed_version_timestamp"
 

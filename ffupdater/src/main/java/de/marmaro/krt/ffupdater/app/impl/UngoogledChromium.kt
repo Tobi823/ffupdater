@@ -66,6 +66,4 @@ object UngoogledChromium : AppBase() {
         }
         return fileName
     }
-
-    private const val LOG_TAG = "UngooChromium"
 }

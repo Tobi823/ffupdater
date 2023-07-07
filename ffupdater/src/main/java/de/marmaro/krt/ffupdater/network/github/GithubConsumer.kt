@@ -42,10 +42,15 @@ object GithubConsumer {
         cacheBehaviour: CacheBehaviour,
     ): Result? {
         val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases/latest"
-        FileDownloader.downloadWithCache(url, cacheBehaviour).charStream().buffered().use {
-            val jsonConsumer = GithubReleaseJsonConsumer(JsonReader(it), isValidRelease, isSuitableAsset)
-            return jsonConsumer.parseReleaseJson()
-        }
+//        FileDownloader.downloadWithCache(url, cacheBehaviour).charStream().buffered().use {
+//            val jsonConsumer = GithubReleaseJsonConsumer(JsonReader(it), isValidRelease, isSuitableAsset)
+//            return jsonConsumer.parseReleaseJson()
+//        }
+
+        val a = FileDownloader.downloadWithCache(url, cacheBehaviour).charStream().buffered()
+        val jsonConsumer = GithubReleaseJsonConsumer(JsonReader(a), isValidRelease, isSuitableAsset)
+        return jsonConsumer.parseReleaseJson()
+
     }
 
     private suspend fun findWithSecondApi(
