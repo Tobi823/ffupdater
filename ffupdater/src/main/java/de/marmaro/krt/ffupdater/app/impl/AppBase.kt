@@ -14,10 +14,15 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
-import de.marmaro.krt.ffupdater.device.ABI.*
+import de.marmaro.krt.ffupdater.device.ABI.ARM64_V8A
+import de.marmaro.krt.ffupdater.device.ABI.ARMEABI
+import de.marmaro.krt.ffupdater.device.ABI.ARMEABI_V7A
+import de.marmaro.krt.ffupdater.device.ABI.MIPS
+import de.marmaro.krt.ffupdater.device.ABI.MIPS64
+import de.marmaro.krt.ffupdater.device.ABI.X86
+import de.marmaro.krt.ffupdater.device.ABI.X86_64
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
@@ -74,9 +79,6 @@ abstract class AppBase {
     }
 
     fun isEol() = (eolReason != null)
-
-    @Deprecated("ersetzen")
-    fun isDownloadAnApkFile() = (fileNameInZipArchive == null)
 
     fun isAppPublishedAsZipArchive() = (fileNameInZipArchive != null)
 
