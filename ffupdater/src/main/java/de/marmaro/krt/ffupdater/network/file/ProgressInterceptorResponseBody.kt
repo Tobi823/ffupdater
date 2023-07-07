@@ -70,11 +70,6 @@ class ProgressInterceptorResponseBody(
                     processChannel?.trySend(DownloadStatus(null, totalMegabytesRead))
                 }
             }
-
-            override fun close() {
-                source.close()
-                super.close()
-            }
         }
     }
 
