@@ -29,10 +29,12 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
             throw FileNotFoundException("File '$path' does not exists.")
         }
 
-//        TODO
-//        if (deviceSdkTester.supportsAndroid13()) {
-//              https://developer.android.com/reference/android/content/pm/PackageManager#getPackageArchiveInfo(java.lang.String,%20android.content.pm.PackageManager.PackageInfoFlags)
-//        }
+        if (DeviceSdkTester.supportsAndroid13()) {
+            val flags = PackageManager.PackageInfoFlags.of(GET_SIGNING_CERTIFICATES.toLong())
+            packageManager.getPackageArchiveInfo(path, flags)
+                ?.signingInfo
+                ?.let { return extractSignature(it) }
+        }
 
         if (DeviceSdkTester.supportsAndroid9()) {
             packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
