@@ -177,7 +177,7 @@
     <string name="update_interval__6d">6 日</string>
     <string name="update_interval__6h">6 時間</string>
     <string name="update_interval__8h">8 時間</string>
-    <string name="notification__update_available__channel_descr">%1$s の更新の通知チャンネル。</string>
+    <string name="notification__update_available__channel_descr">利用できる %1$s の更新の通知チャンネル。</string>
     <string name="notification__update_available__channel_name">%1$s 更新の通知</string>
     <string name="update_notification__text">タップして更新をインストール</string>
     <string name="update_notification__title">%1$s を更新できます</string>
@@ -207,14 +207,14 @@
     <string name="download_activity__file_uri_exposed_toast">他のアプリのファイルパス (保存領域) にはアクセスできません。ファイルマネージャーで直接フォルダーを開いてください。</string>
     <string name="ungoogled_chromium__eol_reason">開発者は「当分の間、バージョンを更新できません。その間は、可能な限り『FFUpdater が対応している』 ブラウザーのいずれかを使用してください」と投稿しています。https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="chromium__warning">- Chromium は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
-    <string name="foreground__hide_apps_signed_by_different_certificate__title">別の証明書によって署名されたアプリを非表示にする。</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">異なる証明書で署名されたアプリを非表示にする</string>
     <string name="privacy_browser__warning">FFUpdaterはF-Droidのサーバーからファイルをダウンロードするため、高速ではありません。</string>
-    <string name="device__prefer_32bit_apks__summary">デバイスのメモリが不足している場合に有効にします。FFUpdaterは、通常より必要なメモリの少ない32ビットAPKsを使用します。</string>
-    <string name="device__prefer_32bit_apks__title">32 ビットのAPKを優先</string>
+    <string name="device__prefer_32bit_apks__summary">端末のメモリーが不足している場合に有効にしてください。FFUpdater は、通常より必要なメモリーの少ない 32 ビット APK を使用します。</string>
+    <string name="device__prefer_32bit_apks__title">32 ビット APK を優先</string>
     <string name="duckduckgo_android__warning">- DuckDuckGoは、システムのwebviewを使用してウェブサイトを表示します。
 \n- MicrosoftからのすべてのCookieをブロックしないことについて論争がありましたが、これは修正されました。</string>
     <string name="mulch__warning">- Mulch は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
-    <string name="main_activity__app_was_signed_by_different_certificate">このアプリは別の証明書で署名されており、FFUpdaterでアップデートすることはできません。</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">このアプリは異なる証明書で署名されており、FFUpdater で更新できません。</string>
     <string name="tor_browser__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。</string>
     <string name="main_activity__denied_notification_permission">FFUpdater には、アップデートについて通知する権限が必要です。</string>
     <string name="generic__eol_reason__too_old">アプリは長い間更新されていません。</string>
@@ -224,9 +224,9 @@
 \n
 \nFirefox のパスワードを安全に追跡し、どこからでもアクセスできます。アプリからウェブサイトを素早く開き、アカウントにアクセスしましょう。</string>
     <string name="settings__foreground__hide_warning_buttons">インストール済みのアプリは警告ボタンを非表示にする</string>
-    <string name="background__separate_notification_channels__title">異なる通知チャネル</string>
-    <string name="notification__update_available__generic_channel_name">アプリのアップデート通知</string>
-    <string name="background__separate_notification_channels__summary">各アプリごとに異なる通知チャンネルを使用します</string>
+    <string name="background__separate_notification_channels__title">通知チャンネルを分割</string>
+    <string name="notification__update_available__generic_channel_name">アプリの更新通知</string>
+    <string name="background__separate_notification_channels__summary">アプリごとに異なる通知チャンネルを使用します</string>
     <string name="main_activity__an_error_occurred"><u>エラーが発生しました。時間を置いて再試行してください。</u></string>
     <string name="settings__b_f__delete_cache_if_install_successful">インストールを正常に完了したとき、ダウンロードした更新を削除</string>
     <string name="mull__description">Mozilla の技術をベースに、プライバシーを重視し、デブロブされたウェブブラウザーです。arkenfox-user.js プロジェクトの構成を使用する、Tor Uplift プロジェクトによりアップストリームされた多くの機能を有効にしています。uBlock Origin のインストールを推奨します。</string>
@@ -270,6 +270,45 @@
 \n
 \nurl;ip1;ip2;ip3;ip4
 \n
-\n例えば: https://dns.google/dns-query;8.8.8.8 や https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9 のように記入してください。</string>
+\n例: https://dns.google/dns-query;8.8.8.8、https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__custom_doh_server__title">カスタム DNS over HTTPS サーバー</string>
+    <string name="network__proxy__title">プロキシー</string>
+    <string name="settings__network_category__title">ネットワーク</string>
+    <string name="settings__device_category__title">端末</string>
+    <string name="network__proxy__dialog_message">SOCKS または HTTP プロキシーを使用したい場合、接続の詳細を入力してください。以下のフォーマットのうちのいずれかを使用してください:
+\n
+\nSOCKS/HTTP;ip/domain;port
+\n
+\nSOCKS/HTTP;ip/domain;port;username;password
+\n
+\n例: SOCKS;1.2.3.4;22、 HTTP;5.6.7.8;80;user1;pw123、HTTP;p.webshare.io;80;u;p
+\nシステムのプロキシー設定を使用したい場合は、空白にしてください。
+\n
+\n制約:「DNS 設定」でDNS over HTTPS サーバーを設定した場合、プロキシーサーバーのドメインを入力してください。IP アドレスでは動作しません。</string>
+    <string name="network__dns_provider__google">DNS over HTTPS: Google</string>
+    <string name="network__dns_provider__custom">カスタム DNS over HTTPS サーバー</string>
+    <string name="network__dns_provider__no">DNS なし (テスト中)</string>
+    <string name="installer__method__native">ネイティブインストーラー: 端末のセッションインストーラーが機能しない場合に切り替わります。</string>
+    <string name="installer__method__root">root インストーラー: 確認ダイアログを表示せずアプリを更新します。root 取得済みの端末が必要です。</string>
+    <string name="installer__method__shizuku">Shizuku インストーラー: 確認ダイアログを表示せずアプリを更新します。Shizuku アプリまたは Sui Magisk モジュールが必要です。</string>
+    <string name="notification__network_error__title">バックグラウンドでのネットワークエラー</string>
+    <string name="notification__network_error__text">このエラーはめったに発生しないはずです。頻繁に発生する場合は、報告してください。タップすると、エラーメッセージの詳細を確認できます。</string>
+    <string name="generic_app_warning__beta_version">- このアプリは開発者とテスターのために設計されています。一般的なブラウザーの使用に影響する、複数のバグが含まれている可能性があります。</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="network__dns_provider__cloudflare">DNS over HTTPS: Cloudflare</string>
+    <string name="notification__update_available__generic_channel_descr">利用できるアプリ更新の通知チャンネル。</string>
+    <string name="notification__install_error__generic_channel_name">アプリの更新失敗の通知</string>
+    <string name="notification__install_error__generic_channel_descr">アプリの更新失敗の通知チャンネル。</string>
+    <string name="installer__method__root_not_granted">root 権限が付与されていません！</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku がインストールされていません！</string>
+    <string name="network__dns_provider__digital_society_ch">DNS over HTTPS: Digital Society Switzerland</string>
+    <string name="network__dns_provider__system">システムの DNS を使用</string>
+    <string name="network__dns_provider__quad9">DNS over HTTPS: Quad9</string>
+    <string name="installer__method__session">セッションインストーラー: ほとんどの端末で推奨。Android 12 以上では、一度ユーザーが同意すると、バックグラウンドでアプリを更新できます。</string>
+    <string name="tor_browser_alpha__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。
+\n
+\nTor Browser が無料であり続けるためには、寄付が必要です。Tor プロジェクトは、アメリカ合衆国の 501©(3) 非営利プロジェクトです。今日、貢献することを考えてみてください。すべてのギフトが変化を産み出します。
+\nhttps://donate.torproject.org
+\n
+\nバグ報告とフィードバックの方法は、https://support.torproject.org/misc/bug-or-feedback/ からご確認ください！</string>
 </resources>
