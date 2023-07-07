@@ -170,7 +170,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val appsAndUpdateStatus = App.values()
             // simple and fast checks
             .filter { it !in BackgroundSettingsHelper.excludedAppsFromUpdateCheck }
-            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.impl.supportedAbis) }
             .filter { it.impl.isInstalled(context) == InstallationStatus.INSTALLED }
             // query latest available update
             .map {

@@ -70,7 +70,7 @@ class AddAppActivity : AppCompatActivity() {
     private fun addAppsToUserInterface() {
         val installedApps = App.values()
             .filter { it.impl.installableByUser }
-            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.impl.supportedAbis) }
             .filter { !it.impl.isInstalledWithoutFingerprintVerification(applicationContext) }
 
         val items = mutableListOf<AvailableAppsAdapter.ItemWrapper>()

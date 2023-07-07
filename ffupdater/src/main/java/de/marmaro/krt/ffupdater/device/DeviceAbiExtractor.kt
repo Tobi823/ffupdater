@@ -6,22 +6,13 @@ object DeviceAbiExtractor {
     var supportedAbis: List<ABI> = Build.SUPPORTED_ABIS?.map { ABI.findByCodeName(it) } ?: listOf()
 
     fun findBestAbi(abisSupportedByApp: List<ABI>, prefer32Bit: Boolean): ABI {
-        return supportedAbis
-            .firstOrNull {
-                if (prefer32Bit) {
-                    it.is32Bit && it in abisSupportedByApp
-                } else {
-                    it in abisSupportedByApp
-                }
-            }
-            ?: throw NoSuchElementException(
-                "Your device is not supported. The app needs $abisSupportedByApp but your device has only $supportedAbis."
-            )
+        if (prefer32Bit) {
+            return supportedAbis.first { it.is32Bit && it in abisSupportedByApp }
+        }
+        return supportedAbis.first { it in abisSupportedByApp }
     }
 
     fun supportsOneOf(abisSupportedByApp: List<ABI>): Boolean {
         return supportedAbis.any { it in abisSupportedByApp }
     }
-
-    val INSTANCE = DeviceAbiExtractor
 }

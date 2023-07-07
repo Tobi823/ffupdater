@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
     @UiThread
     private suspend fun updateMetadataOfApps(useCache: Boolean = true) {
         val apps = App.values()
-            .filter { DeviceAbiExtractor.INSTANCE.supportsOneOf(it.impl.supportedAbis) }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.impl.supportedAbis) }
             .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
 
         if (!ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
