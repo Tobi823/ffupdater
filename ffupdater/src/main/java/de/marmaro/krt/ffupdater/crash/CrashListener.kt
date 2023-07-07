@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.CrashReportActivity
 import de.marmaro.krt.ffupdater.R
+import java.io.BufferedReader
 import java.io.File
-import java.time.LocalDateTime
 import kotlin.system.exitProcess
 
 @Keep
@@ -15,20 +15,26 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
         if (!file.exists()) {
             file.createNewFile()
         }
-        file.bufferedWriter().use {
+        file.bufferedWriter().use { fileWriter ->
             val stacktrace = e.stackTraceToString().trim()
-            it.write(stacktrace)
-            it.write("\n")
-            it.write("Timestamp: ${LocalDateTime.now()}")
-            it.write("\n")
-            it.flush()
+            fileWriter.write(stacktrace)
+            fileWriter.write("\n\nLogs:\n\n")
+            getLogs().use { it.copyTo(fileWriter) }
+            fileWriter.flush()
         }
         exitProcess(1)
     }
 
+    private fun getLogs(): BufferedReader {
+        return Runtime.getRuntime()
+            .exec(arrayOf("logcat", "-t", "100", "-v", "time", "*:E,StrictMode:V,FFUpdater:V"))
+            .inputStream
+            .bufferedReader()
+    }
+
     companion object {
         fun openCrashReporterForUncaughtExceptions(context: Context): Boolean {
-            val errorFile = getCrashReportFile(context)
+            val errorFile = getCrashReportFile(context.applicationContext)
             val crashListener = CrashListener(errorFile)
             Thread.setDefaultUncaughtExceptionHandler(crashListener)
             if (hasCrashOccurred(errorFile)) {
@@ -39,6 +45,12 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
             return false
         }
 
+        private fun getCrashReportFile(context: Context) = File(context.externalCacheDir, "crashlog.txt")
+
+        private fun hasCrashOccurred(errorFile: File): Boolean {
+            return errorFile.exists()
+        }
+
         private fun startCrashReport(context: Context, errorFile: File) {
             errorFile.bufferedReader().use {
                 val error = it.readText()
@@ -46,12 +58,6 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
                 val intent = CrashReportActivity.createIntent(context.applicationContext, error, description)
                 context.applicationContext.startActivity(intent)
             }
-        }
-
-        private fun getCrashReportFile(context: Context) = File(context.externalCacheDir, "crashlog.txt")
-
-        private fun hasCrashOccurred(errorFile: File): Boolean {
-            return errorFile.exists()
         }
     }
 }
