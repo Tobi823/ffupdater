@@ -23,7 +23,7 @@ class DownloadedFileCache(private val app: App) {
     }
 
     private fun getZipFile(context: Context): File {
-        return File(getCacheFolder(context), "${app.findImpl().packageName}.zip")
+        return File(getCacheFolder(context.applicationContext), "${app.findImpl().packageName}.zip")
     }
 
     /**

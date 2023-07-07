@@ -44,7 +44,7 @@ class AddAppActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_app)
-        if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
+        if (CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)) {
             finish()
             return
         }

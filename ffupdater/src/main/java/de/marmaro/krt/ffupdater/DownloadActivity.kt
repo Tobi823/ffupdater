@@ -108,7 +108,7 @@ class DownloadActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download)
-        if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
+        if (CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)) {
             finish()
             return
         }

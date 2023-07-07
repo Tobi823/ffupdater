@@ -32,7 +32,7 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
             val crashListener = CrashListener(errorFile)
             Thread.setDefaultUncaughtExceptionHandler(crashListener)
             if (hasCrashOccurred(errorFile)) {
-                startCrashReport(context, errorFile)
+                startCrashReport(context.applicationContext, errorFile)
                 errorFile.delete()
                 return true
             }
@@ -43,8 +43,8 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
             errorFile.bufferedReader().use {
                 val error = it.readText()
                 val description = context.getString(R.string.crash_report__explain_text__uncaught_throwable)
-                val intent = CrashReportActivity.createIntent(context, error, description)
-                context.startActivity(intent)
+                val intent = CrashReportActivity.createIntent(context.applicationContext, error, description)
+                context.applicationContext.startActivity(intent)
             }
         }
 

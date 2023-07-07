@@ -30,7 +30,7 @@ import rikka.shizuku.Shizuku
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (CrashListener.openCrashReporterForUncaughtExceptions(this)) {
+        if (CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)) {
             finish()
             return
         }

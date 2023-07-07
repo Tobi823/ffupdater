@@ -100,8 +100,8 @@ abstract class AppBase {
         Log.i(LOG_TAG, "find latest update ${available.version} for $app after $duration ms")
         return AppUpdateStatus(
             latestUpdate = available,
-            isUpdateAvailable = isAvailableVersionHigherThanInstalled(context, available),
-            displayVersion = getDisplayAvailableVersion(context, available)
+            isUpdateAvailable = isAvailableVersionHigherThanInstalled(context.applicationContext, available),
+            displayVersion = getDisplayAvailableVersion(context.applicationContext, available)
         )
     }
 
@@ -112,11 +112,8 @@ abstract class AppBase {
     ): LatestUpdate
 
     @AnyThread
-    open fun isAvailableVersionHigherThanInstalled(
-        context: Context,
-        available: LatestUpdate,
-    ): Boolean {
-        val installedVersion = getInstalledVersion(context) ?: return true
+    open fun isAvailableVersionHigherThanInstalled(context: Context, available: LatestUpdate): Boolean {
+        val installedVersion = getInstalledVersion(context.applicationContext) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
     }
 
