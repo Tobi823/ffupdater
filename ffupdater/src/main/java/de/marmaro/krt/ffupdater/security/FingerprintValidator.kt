@@ -52,22 +52,22 @@ class FingerprintValidator(private val packageManager: PackageManager) {
 
     @Throws(CertificateException::class, NoSuchAlgorithmException::class)
     private suspend fun verifyPackageInfo(signature: Signature, appDetail: AppBase): FingerprintValidatorResult {
-        return withContext(Dispatchers.IO) {
-            val stream = signature.toByteArray().inputStream().buffered()
-            val factory = CertificateFactory.getInstance("X509")
-            val certificate = factory.generateCertificate(stream)
+        val fingerprint = getFingerprintOfSignature(signature)
+        return FingerprintValidatorResult(
+            isValid = (fingerprint == appDetail.signatureHash),
+            hexString = fingerprint
+        )
+    }
 
-            val message = MessageDigest.getInstance("SHA-256")
-            val fingerprint = message.digest(certificate.encoded)
-            val fingerprintString = fingerprint.joinToString("") {
+    private suspend fun getFingerprintOfSignature(signature: Signature): String {
+        return withContext(Dispatchers.IO) {
+            val certificate = signature.toByteArray().inputStream().buffered().use { stream ->
+                CertificateFactory.getInstance("X509").generateCertificate(stream)
+            }
+            val fingerprint = MessageDigest.getInstance("SHA-256").digest(certificate.encoded)
+            fingerprint.joinToString("") {
                 String.format("%02x", (it.toInt() and 0xFF))
             }
-
-            val isValid = (fingerprintString == appDetail.signatureHash)
-            FingerprintValidatorResult(
-                isValid = isValid,
-                hexString = fingerprintString
-            )
         }
     }
 }
