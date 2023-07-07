@@ -218,7 +218,7 @@
     <string name="tor_browser__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。</string>
     <string name="main_activity__denied_notification_permission">FFUpdater には、アップデートについて通知する権限が必要です。</string>
     <string name="generic__eol_reason__too_old">アプリは長い間更新されていません。</string>
-    <string name="add_app_activity__title_better_than_google_chrome">Google Chromeより優れている</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Google Chrome より優秀</string>
     <string name="lockwise__eol_reason">Mozilla は 2021 年 12 月にサポートを終了しました。他のパスワード管理アプリに移行してください。</string>
     <string name="lockwise__description">あなただけのためのパスワードアクセス
 \n
@@ -230,28 +230,29 @@
     <string name="main_activity__an_error_occurred"><u>エラーが発生しました。時間を置いて再試行してください。</u></string>
     <string name="settings__b_f__delete_cache_if_install_successful">インストールを正常に完了したとき、ダウンロードした更新を削除</string>
     <string name="mull__description">Mozilla の技術をベースに、プライバシーを重視し、デブロブされたウェブブラウザーです。arkenfox-user.js プロジェクトの構成を使用する、Tor Uplift プロジェクトによりアップストリームされた多くの機能を有効にしています。uBlock Origin のインストールを推奨します。</string>
-    <string name="add_app_activity__title_good_privacy_browsers">優れたプライバシーブラウザ</string>
+    <string name="add_app_activity__title_good_privacy_browsers">優れたプライバシーブラウザー</string>
     <string name="add_app_activity__title_other_applications">その他のアプリ</string>
-    <string name="add_app_activity__title_end_of_live_browser">サポートの終了したブラウザ</string>
+    <string name="add_app_activity__title_end_of_live_browser">サポートの終了したブラウザー</string>
     <string name="add_app_activity__add_new_application">新しいアプリの追加</string>
     <string name="settings__network__trust_user_cas__summary">データトラフィックを他のアプリで検査および変更する必要がある場合に有効にします。よくわからない場合は、このオプションを無効にしてください。</string>
-    <string name="settings__network__trust_user_cas__title">ユーザーが追加したCAを信頼する</string>
-    <string name="chromium__description">Chromiumは、すべてのユーザーがより安全かつ高速に、そして安定してウェブ体験できるようにすることを目的としたオープンソースのブラウザプロジェクトです。このサイトでは、設計ドキュメント、アーキテクチャの概要、テスト情報など、Chromiumソースコードのビルドと作業を学ぶのに役立つ情報を紹介しています。</string>
-    <string name="settings__background__update_check__when_device_idle__unsupported">このオプションは、Android Marshmallow以降でのみ使用できます。</string>
+    <string name="settings__network__trust_user_cas__title">ユーザーが追加した CA を信頼</string>
+    <string name="chromium__description">Chromium は、すべてのユーザーがより安全かつ高速に、そして安定してウェブを体験できることを目的としたオープンソースのブラウザプロジェクトです。このサイトでは、設計ドキュメント、アーキテクチャの概要、テスト情報など、Chromium ソースコードのビルドと作業を学ぶのに役立つ情報を紹介しています。</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">このオプションは、Android 6.0 Marshmallow 以降でのみ使用できます。</string>
     <string name="kiwi__description">Kiwi Browser は、煩わしさを感じることなくインターネットを閲覧したり、ニュースを読んだり、ビデオを見たり、音楽を聴いたりできるように作られています。</string>
     <string name="settings__installer_category__title">インストーラー</string>
     <string name="settings__b_f__delete_cache_if_install_failed">インストールに失敗したとき、ダウンロードした更新を削除</string>
     <string name="crash_report_activity__label">クラッシュレポーター</string>
-    <string name="add_app_activity__title_from_mozilla">Mozilla</string>
+    <string name="add_app_activity__title_from_mozilla">Mozilla から</string>
     <string name="add_app_activity__label">新しいアプリの追加</string>
     <string name="app_card__open_project_page">ブラウザーでプロジェクトのページを開く</string>
     <string name="kiwi__warning">- Kiwi は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。
 \n- Kiwi は理想的なプライバシーブラウザではありませんが、拡張機能に対応しています。
 \n- Kiwi Browser で検索を行うたびに、検索エンジンからの報酬を受け取ります。検索エンジンの選択によっては、リクエストが Kiwibrowser / Kiwisearchservices のサーバーを経由する場合があります。
 \n- Kiwi の Google Ads は広告に位置情報を使用されることがありますが、検出機能を無効にできます。ただし、まもなく変更される予定です。詳細は https://privacy.kiwibrowser.org/ を参照してください。</string>
-    <string name="orbot__description">Orbotは、他のアプリがより安全にインターネットを使用できるようにする無料のプロキシアプリです。OrbotはTorを使用してインターネットトラフィックを暗号化し、世界中のコンピュータを経由してこれを隠蔽します。Torは、個人の自由とプライバシー、機密性の高いビジネス活動や対人関係、並びにトラフィック分析と呼ばれるセキュリティを脅かすネットワーク監視の形態から防御するのに役立つフリーソフトウェア及びオープンネットワークです。</string>
-    <string name="settings__background__update_check__when_device_idle__summary">バックグラウンド更新によってアプリを再起動させたくない場合は、これを有効にします。バックグラウンド更新チェックのスケジュールをより予測可能にしたい場合は無効にします。</string>
-    <string name="settings__background__update_check__when_device_idle__title">デバイスがアイドル状態の時のみ更新をチェック</string>
+    <string name="orbot__description">Orbot は、他のアプリがより安全にインターネットを使用できるようにする無料のプロキシーアプリです。Orbot は Tor を使用してインターネットトラフィックを暗号化し、世界中のコンピュータを経由してこれを隠蔽します。Tor は、個人の自由とプライバシー、機密性の高いビジネス活動や対人関係、並びにトラフィック分析と呼ばれるセキュリティを脅かすネットワーク監視の形態から防御するのに役立つフリーソフトウェア及びオープンネットワークです。</string>
+    <string name="settings__background__update_check__when_device_idle__summary">バックグラウンド更新によってアプリを再起動させたくない場合は、これを有効にしてください。バックグラウンドの更新確認のスケジュールをより予測可能にしたい場合は無効にしてください。</string>
+    <string name="settings__background__update_check__when_device_idle__title">端末がアイドル中のみ更新を確認</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="mull__title">Mull ブラウザー</string>
+    <string name="chromium__title">Chromium</string>
 </resources>
