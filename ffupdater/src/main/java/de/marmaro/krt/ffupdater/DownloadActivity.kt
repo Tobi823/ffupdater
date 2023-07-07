@@ -39,6 +39,9 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.crash.CrashReportActivity
+import de.marmaro.krt.ffupdater.crash.LogReader
+import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.ApkChecker
 import de.marmaro.krt.ffupdater.installer.AppInstaller
@@ -390,7 +393,7 @@ class DownloadActivity : AppCompatActivity() {
             displayAppInstallationFailure(e.translatedMessage, ex)
         } finally {
             // hide existing background notification for this app
-            BackgroundNotificationRemover.removeAppStatusNotifications(this, app)
+            BackgroundNotificationRemover.removeAppStatusNotifications(applicationContext, app)
             hide(R.id.installingApplication)
         }
         return false
@@ -419,10 +422,11 @@ class DownloadActivity : AppCompatActivity() {
             show(R.id.install_activity__different_installer_info)
         }
 
+        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
         findViewById<TextView>(R.id.install_activity__exception__description).text = errorMessage
         findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
             val description = getString(crash_report__explain_text__download_activity_install_file)
-            val intent = CrashReportActivity.createIntent(this, exception, description)
+            val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
             startActivity(intent)
         }
 
@@ -441,9 +445,10 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.install_activity__download_file_failed__url, downloadUrl)
         setText(R.id.install_activity__download_file_failed__text, description)
         if (exception != null) {
+            val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
             val text = findViewById<TextView>(R.id.install_activity__download_file_failed__show_exception)
             text.setOnClickListener {
-                val intent = CrashReportActivity.createIntent(this, exception, description)
+                val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
                 startActivity(intent)
             }
         }
@@ -457,9 +462,10 @@ class DownloadActivity : AppCompatActivity() {
             hide(R.id.install_activity__exception__show_button)
             return
         }
+        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
         findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
             val description = getString(crash_report__explain_text__download_activity_fetching_url)
-            val intent = CrashReportActivity.createIntent(this, exception, description)
+            val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
             startActivity(intent)
         }
     }

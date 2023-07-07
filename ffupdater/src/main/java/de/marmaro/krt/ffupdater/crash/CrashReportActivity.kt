@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater
+package de.marmaro.krt.ffupdater.crash
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity
 import de.marmaro.krt.ffupdater.BuildConfig.BUILD_TYPE
 import de.marmaro.krt.ffupdater.BuildConfig.VERSION_CODE
 import de.marmaro.krt.ffupdater.BuildConfig.VERSION_NAME
+import de.marmaro.krt.ffupdater.R
 
 @Keep
 class CrashReportActivity : AppCompatActivity() {
@@ -92,12 +93,12 @@ class CrashReportActivity : AppCompatActivity() {
         val GITHUB_URI: Uri = Uri.parse("https://github.com/Tobi823/ffupdater/issues")
         val GITLAB_URI: Uri = Uri.parse("https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues")
 
-        fun createIntent(context: Context, throwable: Throwable, description: String): Intent {
-            return createIntent(context, throwable.stackTraceToString().trim(), description)
+        fun createIntent(context: Context, throwableAndLogs: ThrowableAndLogs, description: String): Intent {
+            return createIntent(context, throwableAndLogs.toSingleString(), description)
         }
 
         fun createIntent(context: Context, error: String, description: String): Intent {
-            val intent = Intent(context, CrashReportActivity::class.java)
+            val intent = Intent(context.applicationContext, CrashReportActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_EXCEPTION_STACK_TRACE, error)
             intent.putExtra(EXTRA_EXCEPTION_EXPLANATION, description)

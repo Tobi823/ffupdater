@@ -79,7 +79,7 @@
             android:launchMode="singleTop"
             android:theme="@style/add_app__theme" />
         <activity
-            android:name=".CrashReportActivity"
+            android:name=".crash.CrashReportActivity"
             android:label="@string/crash_report_activity__label"
             android:theme="@style/crash_report__theme" />
         <activity

@@ -2,9 +2,7 @@ package de.marmaro.krt.ffupdater.crash
 
 import android.content.Context
 import androidx.annotation.Keep
-import de.marmaro.krt.ffupdater.CrashReportActivity
 import de.marmaro.krt.ffupdater.R
-import java.io.BufferedReader
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -18,18 +16,11 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
         file.bufferedWriter().use { fileWriter ->
             val stacktrace = e.stackTraceToString().trim()
             fileWriter.write(stacktrace)
-            fileWriter.write("\n\nLogs:\n\n")
-            getLogs().use { it.copyTo(fileWriter) }
+            fileWriter.write("\n\n")
+            fileWriter.write(LogReader.readLogs())
             fileWriter.flush()
         }
         exitProcess(1)
-    }
-
-    private fun getLogs(): BufferedReader {
-        return Runtime.getRuntime()
-            .exec(arrayOf("logcat", "-t", "100", "-v", "time", "*:E,StrictMode:V,FFUpdater:V"))
-            .inputStream
-            .bufferedReader()
     }
 
     companion object {

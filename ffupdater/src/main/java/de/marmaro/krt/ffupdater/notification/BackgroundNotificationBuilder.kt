@@ -16,6 +16,9 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.*
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.crash.CrashReportActivity
+import de.marmaro.krt.ffupdater.crash.LogReader
+import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 
@@ -29,33 +32,37 @@ object BackgroundNotificationBuilder {
     private data class NotificationData(val id: Int, val title: String, val text: String)
 
     fun showErrorNotification(context: Context, exception: Exception) {
+        val appContext = context.applicationContext
         val channel = ChannelData(
             id = "background_notification",
-            name = context.getString(notification__error__channel_name),
-            description = context.getString(notification__error__channel_descr)
+            name = appContext.getString(notification__error__channel_name),
+            description = appContext.getString(notification__error__channel_descr)
         )
         val notification = NotificationData(
             id = ERROR_CODE,
-            title = context.getString(notification__error__title),
-            text = context.getString(notification__error__text),
+            title = appContext.getString(notification__error__title),
+            text = appContext.getString(notification__error__text),
         )
-        val intent = CrashReportActivity.createIntent(context, exception, notification.text)
-        showNotification(context, channel, notification, intent)
+        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+        val intent = CrashReportActivity.createIntent(appContext, throwableAndLogs, notification.text)
+        showNotification(appContext, channel, notification, intent)
     }
 
     fun showNetworkErrorNotification(context: Context, exception: Exception) {
+        val appContext = context.applicationContext
         val channel = ChannelData(
             id = "background_notification",
-            name = context.getString(notification__error__channel_name),
-            description = context.getString(notification__error__channel_descr)
+            name = appContext.getString(notification__error__channel_name),
+            description = appContext.getString(notification__error__channel_descr)
         )
         val notification = NotificationData(
             id = ERROR_CODE + 1,
-            title = context.getString(notification__network_error__title),
-            text = context.getString(notification__network_error__text),
+            title = appContext.getString(notification__network_error__title),
+            text = appContext.getString(notification__network_error__text),
         )
-        val intent = CrashReportActivity.createIntent(context, exception, notification.text)
-        showNotification(context, channel, notification, intent)
+        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+        val intent = CrashReportActivity.createIntent(appContext, throwableAndLogs, notification.text)
+        showNotification(appContext, channel, notification, intent)
     }
 
     fun showUpdateAvailableNotification(context: Context, apps: List<App>) {
@@ -111,20 +118,22 @@ object BackgroundNotificationBuilder {
     }
 
     fun showDownloadNotification(context: Context, app: App, exception: DisplayableException) {
-        val appTitle = context.getString(app.findImpl().title)
+        val appContext = context.applicationContext
+        val appTitle = appContext.getString(app.findImpl().title)
         val channel = ChannelData(
             id = "download_error_notification",
-            name = context.getString(notification__download_error__channel_name),
-            description = context.getString(notification__download_error__channel_descr),
+            name = appContext.getString(notification__download_error__channel_name),
+            description = appContext.getString(notification__download_error__channel_descr),
         )
         val notification = NotificationData(
             id = DOWNLOAD_ERROR_CODE + app.ordinal,
-            title = context.getString(notification__download_error__title),
-            text = context.getString(notification__download_error__text, appTitle),
+            title = appContext.getString(notification__download_error__title),
+            text = appContext.getString(notification__download_error__text, appTitle),
         )
-        val description = context.getString(notification__download_error__descr, appTitle)
-        val intent = CrashReportActivity.createIntent(context, exception, description)
-        showNotification(context, channel, notification, intent)
+        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+        val description = appContext.getString(notification__download_error__descr, appTitle)
+        val intent = CrashReportActivity.createIntent(appContext, throwableAndLogs, description)
+        showNotification(appContext, channel, notification, intent)
     }
 
     fun showInstallSuccessNotification(context: Context, app: App) {
@@ -149,31 +158,33 @@ object BackgroundNotificationBuilder {
         message: String,
         exception: Exception,
     ) {
+        val appContext = context.applicationContext
         val useDifferentChannels = BackgroundSettingsHelper.useDifferentNotificationChannels
-        val appTitle: String = context.getString(app.findImpl().title)
+        val appTitle: String = appContext.getString(app.findImpl().title)
         val channel = ChannelData(
             id = if (useDifferentChannels) {
                 "installation_error_notification__${app.name.lowercase()}"
             } else {
                 "installation_error_notification__general"
             }, name = if (useDifferentChannels) {
-                context.getString(notification__install_error__channel_name, appTitle)
+                appContext.getString(notification__install_error__channel_name, appTitle)
             } else {
-                context.getString(notification__install_error__generic_channel_name)
+                appContext.getString(notification__install_error__generic_channel_name)
             }, description = if (useDifferentChannels) {
-                context.getString(notification__install_error__channel_descr, appTitle)
+                appContext.getString(notification__install_error__channel_descr, appTitle)
             } else {
-                context.getString(notification__install_error__generic_channel_descr)
+                appContext.getString(notification__install_error__generic_channel_descr)
             }
         )
         val notification = NotificationData(
             id = INSTALL_FAILURE_ERROR + app.ordinal,
-            title = context.getString(notification__install_error__title, appTitle),
-            text = context.getString(notification__install_error__text, code, message),
+            title = appContext.getString(notification__install_error__title, appTitle),
+            text = appContext.getString(notification__install_error__text, code, message),
         )
-        val description = context.getString(crash_report__explain_text__download_activity_install_file)
-        val intent = CrashReportActivity.createIntent(context, exception, description)
-        showNotification(context, channel, notification, intent)
+        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+        val description = appContext.getString(crash_report__explain_text__download_activity_install_file)
+        val intent = CrashReportActivity.createIntent(appContext, throwableAndLogs, description)
+        showNotification(appContext, channel, notification, intent)
     }
 
     fun showEolAppsNotification(context: Context) {

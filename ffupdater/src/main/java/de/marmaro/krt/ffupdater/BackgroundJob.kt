@@ -56,7 +56,6 @@ import java.util.concurrent.TimeUnit.MINUTES
 @Keep
 class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context.applicationContext, workerParams) {
-    private val context = applicationContext
 
 
     /**
@@ -91,12 +90,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             Log.w(LOG_TAG, "Background job failed. Restart in ${calcBackoffTime(runAttemptCount)}", e)
             Result.retry()
         } else {
-            val wrappedException = BackgroundException(e)
-            Log.e(LOG_TAG, "Background job failed.", wrappedException)
+            val backgroundException = BackgroundException(e)
+            Log.e(LOG_TAG, "Background job failed.", backgroundException)
             if (isNetworkException) {
-                BackgroundNotificationBuilder.showNetworkErrorNotification(context, wrappedException)
+                BackgroundNotificationBuilder.showNetworkErrorNotification(applicationContext, backgroundException)
             } else {
-                BackgroundNotificationBuilder.showErrorNotification(context, wrappedException)
+                BackgroundNotificationBuilder.showErrorNotification(applicationContext, backgroundException)
             }
             Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
@@ -104,8 +103,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     @MainThread
     private suspend fun internalDoWork(): Result {
-        BackgroundNotificationRemover.removeDownloadErrorNotification(context)
-        BackgroundNotificationRemover.removeAppStatusNotifications(context)
+        BackgroundNotificationRemover.removeDownloadErrorNotification(applicationContext)
+        BackgroundNotificationRemover.removeAppStatusNotifications(applicationContext)
 
         shouldUpdateCheckBeAborted()?.let { return it }
 
@@ -114,14 +113,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         shouldDownloadsBeAborted()?.let {
             // execute if downloads should be aborted
             val apps = outdatedApps.map { (app, _) -> app }
-            BackgroundNotificationBuilder.showUpdateAvailableNotification(context, apps)
+            BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, apps)
             return it
         }
 
         val downloadedApps = outdatedApps.filter { (app, updateStatus) ->
-            if (!StorageUtil.isEnoughStorageAvailable(context)) {
+            if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
                 Log.i(LOG_TAG, "Skip $app because not enough storage is available.")
-                BackgroundNotificationBuilder.showUpdateAvailableNotification(context, app)
+                BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, app)
                 return@filter false
             }
             downloadUpdateAndReturnAvailability(app, updateStatus)
@@ -130,7 +129,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         shouldInstallationBeAborted()?.let {
             // execute if installation should be aborted
             val apps = downloadedApps.map { (app, _) -> app }
-            BackgroundNotificationBuilder.showUpdateAvailableNotification(context, apps)
+            BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, apps)
             return it
         }
 
@@ -157,7 +156,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.retry()
         }
 
-        if (!BackgroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(context)) {
+        if (!BackgroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             Log.i(LOG_TAG, "No unmetered network available for update check.")
             return Result.retry()
         }
@@ -171,16 +170,16 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             // simple and fast checks
             .filter { it !in BackgroundSettingsHelper.excludedAppsFromUpdateCheck }
             .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
-            .filter { it.findImpl().isInstalled(context) == InstallationStatus.INSTALLED }
+            .filter { it.findImpl().isInstalled(applicationContext) == InstallationStatus.INSTALLED }
             // query latest available update
             .map {
-                val updateStatus = it.findImpl().findAppUpdateStatus(context, USE_CACHE)
+                val updateStatus = it.findImpl().findAppUpdateStatus(applicationContext, USE_CACHE)
                 AppAndUpdateStatus(it, updateStatus)
             }
 
         // delete old cached APK files
         appsAndUpdateStatus.forEach { (app, appUpdateStatus) ->
-            app.downloadedFileCache.deleteAllExceptLatestApkFile(context, appUpdateStatus.latestUpdate)
+            app.downloadedFileCache.deleteAllExceptLatestApkFile(applicationContext, appUpdateStatus.latestUpdate)
         }
 
         // return outdated apps with available updates
@@ -194,13 +193,13 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.retry()
         }
 
-        if (!BackgroundSettingsHelper.isDownloadOnMeteredAllowed && isNetworkMetered(context)) {
+        if (!BackgroundSettingsHelper.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             Log.i(LOG_TAG, "No unmetered network available for download.")
             return Result.retry()
         }
 
         if (DeviceSdkTester.supportsAndroidNougat()) {
-            val manager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val manager = applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             if (manager.restrictBackgroundStatus == RESTRICT_BACKGROUND_STATUS_ENABLED) {
                 Log.i(LOG_TAG, "Data Saver is enabled. Do not download updates in the background.")
                 return Result.retry()
@@ -213,50 +212,50 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     @MainThread
     private suspend fun downloadUpdateAndReturnAvailability(app: App, updateStatus: AppUpdateStatus): Boolean {
         val latestUpdate = updateStatus.latestUpdate
-        if (app.downloadedFileCache.isApkFileCached(context, latestUpdate)) {
+        if (app.downloadedFileCache.isApkFileCached(applicationContext, latestUpdate)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return true
         }
 
         Log.i(LOG_TAG, "Download update for $app.")
         val url = latestUpdate.downloadUrl
-        val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(context, latestUpdate)
+        val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(applicationContext, latestUpdate)
         return try {
             // run async with await later
             // TODO: two caches for the same file?
             val (deferred, channel) = FileDownloader.downloadFile(url, file)
-            BackgroundNotificationBuilder.showDownloadRunningNotification(context, app, null, null)
+            BackgroundNotificationBuilder.showDownloadRunningNotification(applicationContext, app, null, null)
             for (progress in channel) {
                 BackgroundNotificationBuilder.showDownloadRunningNotification(
-                    context, app, progress.progressInPercent, progress.totalMB
+                    applicationContext, app, progress.progressInPercent, progress.totalMB
                 )
             }
 
             deferred.await()
 
             if (app.findImpl().isAppPublishedAsZipArchive()) {
-                app.downloadedFileCache.extractApkFromZipArchive(context, latestUpdate)
-                app.downloadedFileCache.deleteZipFile(context)
+                app.downloadedFileCache.extractApkFromZipArchive(applicationContext, latestUpdate)
+                app.downloadedFileCache.deleteZipFile(applicationContext)
             }
 
             // I suspect that sometimes the server offers the wrong file for download
             ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
-            val apkFile = app.downloadedFileCache.getApkFile(context, latestUpdate)
+            val apkFile = app.downloadedFileCache.getApkFile(applicationContext, latestUpdate)
             ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
 
-            BackgroundNotificationRemover.removeDownloadRunningNotification(context, app)
-            app.downloadedFileCache.deleteAllExceptLatestApkFile(context, latestUpdate)
+            BackgroundNotificationRemover.removeDownloadRunningNotification(applicationContext, app)
+            app.downloadedFileCache.deleteAllExceptLatestApkFile(applicationContext, latestUpdate)
             true
         } catch (e: DisplayableException) {
-            BackgroundNotificationRemover.removeDownloadRunningNotification(context, app)
-            BackgroundNotificationBuilder.showDownloadNotification(context, app, e)
-            app.downloadedFileCache.deleteAllApkFileForThisApp(context)
+            BackgroundNotificationRemover.removeDownloadRunningNotification(applicationContext, app)
+            BackgroundNotificationBuilder.showDownloadNotification(applicationContext, app, e)
+            app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
             false
         }
     }
 
     private fun shouldInstallationBeAborted(): Result? {
-        if (DeviceSdkTester.supportsAndroid10() && !context.packageManager.canRequestPackageInstalls()) {
+        if (DeviceSdkTester.supportsAndroid10() && !applicationContext.packageManager.canRequestPackageInstalls()) {
             Log.i(LOG_TAG, "Missing installation permission")
 
             return Result.success()
@@ -281,32 +280,32 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private suspend fun installApplication(app: App, updateStatus: AppUpdateStatus) {
-        val file = app.downloadedFileCache.getApkFile(context, updateStatus.latestUpdate)
+        val file = app.downloadedFileCache.getApkFile(applicationContext, updateStatus.latestUpdate)
         require(file.exists()) { "AppCache has no cached APK file" }
 
-        val installer = createBackgroundAppInstaller(context, app)
+        val installer = createBackgroundAppInstaller(applicationContext, app)
         try {
-            installer.startInstallation(context, file)
+            installer.startInstallation(applicationContext, file)
 
-            BackgroundNotificationBuilder.showInstallSuccessNotification(context, app)
-            app.findImpl().appIsInstalledCallback(context, updateStatus)
+            BackgroundNotificationBuilder.showInstallSuccessNotification(applicationContext, app)
+            app.findImpl().appIsInstalledCallback(applicationContext, updateStatus)
 
             if (BackgroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
-                app.downloadedFileCache.deleteAllApkFileForThisApp(context)
+                app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
             }
         } catch (e: UserInteractionIsRequiredException) {
-            BackgroundNotificationBuilder.showUpdateAvailableNotification(context, app)
+            BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, app)
             if (BackgroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
-                app.downloadedFileCache.deleteAllApkFileForThisApp(context)
+                app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
             }
         } catch (e: InstallationFailedException) {
             val wrappedException = InstallationFailedException(
                 "Failed to install ${app.name} in the background with ${installer.type}.", -532, e
             )
             BackgroundNotificationBuilder.showInstallFailureNotification(
-                context, app, e.errorCode, e.translatedMessage, wrappedException
+                applicationContext, app, e.errorCode, e.translatedMessage, wrappedException
             )
-            app.downloadedFileCache.deleteAllApkFileForThisApp(context)
+            app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
         }
     }
 

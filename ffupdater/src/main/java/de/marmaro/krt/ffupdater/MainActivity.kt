@@ -34,6 +34,9 @@ import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.crash.CrashReportActivity
+import de.marmaro.krt.ffupdater.crash.LogReader
+import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.*
@@ -368,10 +371,12 @@ class MainActivity : AppCompatActivity() {
             view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
             view.availableVersion.setText(error.message)
             if (error.exception != null) {
+                val throwableAndLogs = ThrowableAndLogs(error.exception, LogReader.readLogs())
                 view.availableVersion.setOnClickListener {
                     val description =
                         activity.getString(R.string.crash_report__explain_text__download_activity_update_check)
-                    val intent = CrashReportActivity.createIntent(activity, error.exception, description)
+                    val intent =
+                        CrashReportActivity.createIntent(activity.applicationContext, throwableAndLogs, description)
                     activity.startActivity(intent)
                 }
             }
