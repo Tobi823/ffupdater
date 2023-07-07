@@ -106,7 +106,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API の制限を超過しました。次の時間に再試行します。</u></string>
     <string name="main_activity__no_unmetered_network">定額制ネットワークではありません</string>
-    <string name="main_activity__subtitle">プライバシーに配慮したブラウザーのアップデーター</string>
+    <string name="main_activity__subtitle">プライバシーを重視したブラウザー用のアップデーター</string>
     <string name="main_activity__temporary_network_issue"><u>一時的なネットワークの問題が発生しています。時間を置いて再試行してください。</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">中止</string>
@@ -208,15 +208,15 @@
     <string name="ungoogled_chromium__eol_reason">開発者は「当分の間、バージョンを更新できません。その間は、可能な限り『FFUpdater が対応している』 ブラウザーのいずれかを使用してください」と投稿しています。https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="chromium__warning">- Chromium は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">異なる証明書で署名されたアプリを非表示にする</string>
-    <string name="privacy_browser__warning">FFUpdaterはF-Droidのサーバーからファイルをダウンロードするため、高速ではありません。</string>
+    <string name="privacy_browser__warning">FFUpdater はファイルを F-Droid からダウンロードするため、時間がかかることがあります。</string>
     <string name="device__prefer_32bit_apks__summary">端末のメモリーが不足している場合に有効にしてください。FFUpdater は、通常より必要なメモリーの少ない 32 ビット APK を使用します。</string>
     <string name="device__prefer_32bit_apks__title">32 ビット APK を優先</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGoは、システムのwebviewを使用してウェブサイトを表示します。
-\n- MicrosoftからのすべてのCookieをブロックしないことについて論争がありましたが、これは修正されました。</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo は、システムの WebView を使用してウェブサイトを表示します。
+\n- Microsoft からのすべての Cookie をブロックしないことについて論争がありましたが、これは修正されました。</string>
     <string name="mulch__warning">- Mulch は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
     <string name="main_activity__app_was_signed_by_different_certificate">このアプリは異なる証明書で署名されており、FFUpdater で更新できません。</string>
     <string name="tor_browser__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。</string>
-    <string name="main_activity__denied_notification_permission">FFUpdater には、アップデートについて通知する権限が必要です。</string>
+    <string name="main_activity__denied_notification_permission">FFUpdater には、更新について通知する権限が必要です。</string>
     <string name="generic__eol_reason__too_old">アプリは長い間更新されていません。</string>
     <string name="add_app_activity__title_better_than_google_chrome">Google Chrome より優秀</string>
     <string name="lockwise__eol_reason">Mozilla は 2021 年 12 月にサポートを終了しました。他のパスワード管理アプリに移行してください。</string>
@@ -311,4 +311,16 @@
 \nhttps://donate.torproject.org
 \n
 \nバグ報告とフィードバックの方法は、https://support.torproject.org/misc/bug-or-feedback/ からご確認ください！</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
+    <string name="duckduckgo_android__description">DuckDuckGo アプリは、最も包括的なオンライン上のプライバシー保護をボタンひとつで提供します。1 回のダウンロードで、検索と閲覧中のシームレスな保護、受信したメールやアプリの追跡保護を提供するブラウザーを利用できます。このような保護はほとんどの有名ブラウザーではデフォルトでは提供されません。</string>
+    <string name="orbot__title">Orbot: Tor for Android</string>
+    <string name="firefox_focus_beta__description">メインブラウザーと分離したいことは Firefox Focus で — 閲覧履歴は、閲覧終了と同時に削除されます。タブさえない、シンプルなブラウザーです。オンライントラッカーをブロックします。1 回のタップで閲覧履歴が完全に削除されます。
+\n
+\nFirefox Focus は、完璧な「検索と忘却」で、あなたに干渉しないウェブブラウザーです。</string>
+    <string name="privacy_browser__description">データの悪用を防ぐ唯一の方法は、そもそもデータが収集されないようにすることです。Privacy Browser の 2 つの主な目標はインターネットに送信されるデータを最小限に抑えることと、デバイスに保存されるデータを最小限に抑えることです。</string>
+    <string name="eol_reason__browser_no_longer_maintained">長い間、メンテナンスされていないブラウザーです。</string>
+    <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
+    <string name="privacy_browser__title">Privacy Browser</string>
 </resources>
