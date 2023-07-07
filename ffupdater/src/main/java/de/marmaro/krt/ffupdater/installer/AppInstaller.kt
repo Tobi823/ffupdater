@@ -27,7 +27,7 @@ interface AppInstaller : DefaultLifecycleObserver {
             val registry = activity.activityResultRegistry
             return when (InstallerSettingsHelper.getInstallerMethod()) {
                 Installer.SESSION_INSTALLER -> SessionInstaller(app, true)
-                Installer.NATIVE_INSTALLER -> IntentInstaller(activity, registry, app)
+                Installer.NATIVE_INSTALLER -> IntentInstaller(activity.applicationContext, registry, app)
                 Installer.ROOT_INSTALLER -> RootInstaller(app)
                 Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app)
             }

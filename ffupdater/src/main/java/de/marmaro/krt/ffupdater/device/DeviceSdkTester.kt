@@ -59,7 +59,4 @@ object DeviceSdkTester {
     fun supportsAndroid13(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.TIRAMISU
     }
-
-
-    val INSTANCE = DeviceSdkTester
 }

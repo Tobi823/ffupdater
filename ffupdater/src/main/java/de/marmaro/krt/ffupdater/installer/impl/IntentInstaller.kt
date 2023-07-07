@@ -42,7 +42,7 @@ class IntentInstaller(
         val resultCode = activityResult.resultCode
         val installResult = bundle?.getInt("android.intent.extra.INSTALL_RESULT")
         val shortErrorMessage = getShortErrorMessage(installResult)
-        val translatedErrorMessage = getTranslatedErrorMessage(context, installResult)
+        val translatedErrorMessage = getTranslatedErrorMessage(context.applicationContext, installResult)
         installationStatusFromCallback.completeExceptionally(
             InstallationFailedException(
                 "$shortErrorMessage ResultCode: $resultCode, INSTALL_RESULT: $installResult",
@@ -64,7 +64,7 @@ class IntentInstaller(
     override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
-        installInternal(context, file)
+        installInternal(context.applicationContext, file)
         installationStatusFromCallback.await()
     }
 
@@ -76,7 +76,7 @@ class IntentInstaller(
         @Suppress("DEPRECATION")
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
         intent.data = if (DeviceSdkTester.supportsAndroidNougat()) {
-            FileProvider.getUriForFile(context, FILE_PROVIDER_AUTHORITY, file)
+            FileProvider.getUriForFile(context.applicationContext, FILE_PROVIDER_AUTHORITY, file)
         } else {
             Uri.fromFile(file)
         }
@@ -103,7 +103,7 @@ class IntentInstaller(
         // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
         var message: String? = null
         if (Build.MANUFACTURER == "HUAWEI") {
-            message = HuaweiInstallResultDecoder.getTranslatedErrorMessage(context, installResult)
+            message = HuaweiInstallResultDecoder.getTranslatedErrorMessage(context.applicationContext, installResult)
         }
         if (message == null) {
             message = GeneralInstallResultDecoder.getShortErrorMessage(installResult)
