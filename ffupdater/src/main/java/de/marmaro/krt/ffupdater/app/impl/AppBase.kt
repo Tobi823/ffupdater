@@ -70,7 +70,7 @@ abstract class AppBase {
 
     @AnyThread
     fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersion(context))
+        return context.getString(R.string.installed_version, getInstalledVersion(context.applicationContext))
     }
 
     @AnyThread
