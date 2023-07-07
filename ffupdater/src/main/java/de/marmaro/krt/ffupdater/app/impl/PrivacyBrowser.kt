@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -36,13 +35,10 @@ class PrivacyBrowser : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.i(LOG_TAG, "check for latest version")
         val result = FdroidConsumer.getLatestUpdate(packageName, 1, cacheBehaviour)
-        val version = result.versionName
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.downloadUrl,
-            version = version,
+            version = result.versionName,
             publishDate = result.createdAt,
             exactFileSizeBytesOfDownload = null,
             fileHash = null,

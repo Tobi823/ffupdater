@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -41,22 +40,17 @@ class UngoogledChromium : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
-        val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("ungoogled-software", "ungoogled-chromium-android"),
             resultsPerApiCall = 2,
             isValidRelease = { !it.isPreRelease && "webview" !in it.name },
-            isSuitableAsset = { it.name == fileName },
+            isSuitableAsset = { it.name == findFileName() },
             dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
         )
-
-        val version = result.tagName
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = version,
+            version = result.tagName,
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null

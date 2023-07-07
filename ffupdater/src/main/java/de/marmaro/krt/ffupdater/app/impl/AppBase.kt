@@ -86,13 +86,13 @@ abstract class AppBase {
 
     suspend fun findAppUpdateStatus(context: Context, cacheBehaviour: CacheBehaviour): AppUpdateStatus {
         val time = System.currentTimeMillis()
-        Log.d(LOG_TAG, "find latest update for $app")
+        Log.d(LOG_TAG, "find latest update for ${app.name}")
         val available = try {
             findLatestUpdate(context.applicationContext, cacheBehaviour)
         } catch (e: NetworkException) {
-            throw NetworkException("Can't find latest update for ${app.name}")
+            throw NetworkException("can't find latest update for ${app.name}", e)
         } catch (e: DisplayableException) {
-            throw DisplayableException("Can't find latest update for ${app.name}.", e)
+            throw DisplayableException("can't find latest update for ${app.name}", e)
         }
         val duration = System.currentTimeMillis() - time
         Log.i(LOG_TAG, "find latest update ${available.version} for $app after $duration ms")

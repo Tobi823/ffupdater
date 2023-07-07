@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -48,14 +47,11 @@ class TorBrowser : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
         val (version, downloadUrl) = findVersionAndDownloadUrl(cacheBehaviour)
-        val dateTime = findDateTime(version, cacheBehaviour)
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
             version = version,
-            publishDate = dateTime,
+            publishDate = findDateTime(version, cacheBehaviour),
             exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )

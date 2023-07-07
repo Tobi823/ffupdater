@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
@@ -44,7 +43,6 @@ class Kiwi : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
         val abiString = findAbiString()
         val fileRegex = Regex.escape("com.kiwibrowser.browser-$abiString-") +
                 """\d+""" +
@@ -58,12 +56,9 @@ class Kiwi : AppBase() {
             dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
         )
-        // tag name can be "2232087292" (the id of the build runner)
-        val version = result.tagName
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = version,
+            version = result.tagName,
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,

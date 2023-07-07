@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -37,16 +36,13 @@ class MullFromRepo : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.i(LOG_TAG, "check for latest version")
         val abi = DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)
-        val result = CustomRepositoryConsumer.getLatestUpdate(
+        return CustomRepositoryConsumer.getLatestUpdate(
             "https://divestos.org/fdroid/official",
             packageName,
             abi,
             cacheBehaviour
         )
-        Log.i(LOG_TAG, "found latest version ${result.version}")
-        return result
     }
 
     companion object {

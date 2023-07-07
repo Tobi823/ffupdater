@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -42,7 +41,6 @@ class FirefoxFocusBeta : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
         val fileSuffix = findFileSuffix()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
@@ -55,7 +53,6 @@ class FirefoxFocusBeta : AppBase() {
         val version = result.tagName
             .removePrefix("focus-v") //convert focus-v109.0b4 to 109.0b4
             .removePrefix("v") //convert v109.0b2 to 109.0b2
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
             version = version,

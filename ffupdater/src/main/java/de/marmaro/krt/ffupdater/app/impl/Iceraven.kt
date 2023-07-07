@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -45,7 +44,6 @@ class Iceraven : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
         val fileSuffix = findFileSuffix()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("fork-maintainers", "iceraven-browser"),
@@ -55,11 +53,9 @@ class Iceraven : AppBase() {
             dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
         )
-        val version = result.tagName.replace("iceraven-", "")
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = version,
+            version = result.tagName.replace("iceraven-", ""),
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,

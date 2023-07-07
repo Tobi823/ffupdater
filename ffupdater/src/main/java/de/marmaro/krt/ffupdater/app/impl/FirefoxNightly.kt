@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
@@ -49,7 +48,6 @@ class FirefoxNightly : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
         val abiString = findAbiString()
         val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
         var taskId = preferences.getString("cache__firefox_nightly__task_id", null)
@@ -63,7 +61,6 @@ class FirefoxNightly : AppBase() {
                 .putLong("cache__firefox_nightly__age_ms", cacheAge)
                 .apply()
         }
-
         val result = MozillaCiJsonConsumer.findChainOfTrustJson(taskId, abiString, cacheBehaviour)
         val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v3.firefox-android.apks.fenix-nightly.latest.${abiString}/artifacts/" +
@@ -71,7 +68,6 @@ class FirefoxNightly : AppBase() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val version = formatter.format(releaseDate)
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = downloadUrl,
             version = version,
