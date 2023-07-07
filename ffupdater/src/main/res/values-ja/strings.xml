@@ -260,4 +260,16 @@
     <string name="fennecfdroid__warning">FFUpdater はファイルを F-Droid からダウンロードするため、時間がかかることがあります。</string>
     <string name="network__dns_provider__title">DNS 設定</string>
     <string name="mulch__description">Chromium の技術に基づく、セキュリティ指向の強化されたウェブブラウザです。Vanadium プロジェクトからのパッチにより不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。ソースレポジトリには、プレビルドや他の OS で Mulch を WebView として使用するためのメイクファイルが含まれます。</string>
+    <string name="network__custom_doh_server__dialog_message">カスタム DoH サーバーの接続の詳細を、以下のいずれかのフォーマットで入力してください:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\n例えば: https://dns.google/dns-query;8.8.8.8 や https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9 のように記入してください。</string>
+    <string name="network__custom_doh_server__title">カスタム DNS over HTTPS サーバー</string>
 </resources>
