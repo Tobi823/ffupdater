@@ -43,7 +43,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import kotlinx.coroutines.Dispatchers
@@ -68,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(findViewById(R.id.toolbar))
-        StrictModeSetup.INSTANCE.enableStrictMode()
         AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
         requestForNotificationPermissionIfNecessary()
 
