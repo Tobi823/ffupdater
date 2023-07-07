@@ -76,7 +76,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     @MainThread
     override suspend fun doWork(): Result = coroutineScope {
         try {
-            Log.i(LOG_TAG, "Execute background job for update check.")
+            Log.i(LOG_TAG, "doWork(): Execute background job.")
             internalDoWork()
         } catch (e: NetworkException) {
             handleDoWorkException(e, true)
@@ -87,7 +87,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     private fun handleDoWorkException(e: Exception, isNetworkException: Boolean): Result {
         return if (runAttemptCount < MAX_RETRIES) {
-            Log.w(LOG_TAG, "Background job failed. Restart in ${calcBackoffTime(runAttemptCount)}", e)
+            Log.w(LOG_TAG, "Background job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
             Result.retry()
         } else {
             val backgroundException = BackgroundException(e)
@@ -109,6 +109,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         shouldUpdateCheckBeAborted()?.let { return it }
 
         val outdatedApps = checkForOutdatedApps()
+        Log.d(LOG_TAG, "internalDoWork(): ${outdatedApps.map { it.app }.joinToString(",")} are outdated.")
 
         shouldDownloadsBeAborted()?.let {
             // execute if downloads should be aborted
@@ -138,6 +139,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             if (app != App.FFUPDATER) app.ordinal else Int.MAX_VALUE
         }
 
+        Log.d(LOG_TAG, "internalDoWork(): Update ${appsForInstallation.joinToString(",")}.")
         appsForInstallation.forEach { (app, updateStatus) ->
             installApplication(app, updateStatus)
         }
@@ -211,6 +213,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     @MainThread
     private suspend fun downloadUpdateAndReturnAvailability(app: App, updateStatus: AppUpdateStatus): Boolean {
+        Log.d(LOG_TAG, "downloadUpdateAndReturnAvailability(): Download ${app.name} in background.")
         val latestUpdate = updateStatus.latestUpdate
         if (app.downloadedFileCache.isApkFileCached(applicationContext, latestUpdate)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
@@ -222,7 +225,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(applicationContext, latestUpdate)
         return try {
             // run async with await later
-            // TODO: two caches for the same file?
             val (deferred, channel) = FileDownloader.downloadFile(url, file)
             BackgroundNotificationBuilder.showDownloadRunningNotification(applicationContext, app, null, null)
             for (progress in channel) {

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.FileUriExposedException
 import android.os.StrictMode
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
@@ -22,6 +23,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R.string.application_installation_was_not_successful
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_fetching_url
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_install_file
@@ -207,6 +209,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun startInstallationProcess() {
+        Log.d(LOG_TAG, "startInstallationProcess(): Start process for ${app.name}.")
         if (!checkIfStorageIsMounted()) return
         checkIfEnoughStorageAvailable()
 
@@ -217,11 +220,14 @@ class DownloadActivity : AppCompatActivity() {
                 val fileDownloaded = reuseCurrentDownload()
                 if (fileDownloaded) postProcessDownload(appUpdateStatus.latestUpdate)
             }
+
             app.downloadedFileCache.isApkFileCached(this, appUpdateStatus.latestUpdate) -> {
+                Log.d(LOG_TAG, "startInstallationProcess(): use APK cache of ${app.name}.")
                 show(R.id.useCachedDownloadedApk)
                 val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
                 setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
             }
+
             else -> {
                 if (!startDownload()) return
                 postProcessDownload(appUpdateStatus.latestUpdate)
@@ -275,6 +281,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownload(): Boolean {
+        Log.d(LOG_TAG, "startInstallationProcess(): Start download of ${app.name}.")
         if (!ForegroundSettingsHelper.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
             displayFetchFailure(getString(main_activity__no_unmetered_network))
             return false
@@ -331,6 +338,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun reuseCurrentDownload(): Boolean {
+        Log.d(LOG_TAG, "reuseCurrentDownload(): Reuse running download of ${app.name}.")
         show(R.id.downloadingFile)
         val latestUpdate = appUpdateStatus.latestUpdate
         setText(R.id.downloadingFileUrl, latestUpdate.downloadUrl)
@@ -363,6 +371,7 @@ class DownloadActivity : AppCompatActivity() {
         } finally {
             hide(R.id.downloadingFile)
         }
+        Log.d(LOG_TAG, "reuseCurrentDownload(): Reusing failed for ${app.name}.")
         return false
     }
 
@@ -380,6 +389,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun installApp(): Boolean {
+        Log.d(LOG_TAG, "Install app ${app.name}.")
         show(R.id.installingApplication)
         val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
 

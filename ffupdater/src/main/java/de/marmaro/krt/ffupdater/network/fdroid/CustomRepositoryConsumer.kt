@@ -33,7 +33,7 @@ object CustomRepositoryConsumer {
                 ApkObject(
                     added = it["added"].asLong,
                     apkName = it["apkName"].asString,
-                    abis = it["nativecode"].asJsonArray.map { it.asString },
+                    abis = it["nativecode"].asJsonArray.map { nativecode -> nativecode.asString },
                     hash = it["hash"].asString,
                     size = it["size"].asLong,
                     versionCode = it["versionCode"].asLong,

@@ -13,6 +13,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.format.DateUtils
+import android.util.Log
 import android.view.*
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -29,6 +30,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
@@ -205,6 +207,7 @@ class MainActivity : AppCompatActivity() {
             RunningDownloadsDialog.newInstance(app, false).show(supportFragmentManager)
             return
         }
+        Log.d(LOG_TAG, "installOrDownloadApp(): Start DownloadActivity to install or update ${app.name}.")
         val intent = DownloadActivity.createIntent(this@MainActivity, app)
         startActivity(intent)
     }
@@ -234,16 +237,15 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val request =
-            registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-                if (!isGranted) {
-                    Snackbar.make(
-                        findViewById(R.id.coordinatorLayout),
-                        R.string.main_activity__denied_notification_permission,
-                        Snackbar.LENGTH_LONG
-                    ).show()
-                }
+        val request = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (!isGranted) {
+                Snackbar.make(
+                    findViewById(R.id.coordinatorLayout),
+                    R.string.main_activity__denied_notification_permission,
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
+        }
         request.launch(POST_NOTIFICATIONS)
     }
 
