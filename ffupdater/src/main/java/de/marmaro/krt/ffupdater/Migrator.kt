@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
+import androidx.work.ExistingPeriodicWorkPolicy.*
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 
 @Keep
@@ -48,9 +49,6 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
             }
 
             editor.commit()
-        }
-        if (lastVersionCode != currentVersionCode) {
-            BackgroundJob.forceRestartBackgroundUpdateCheck(context.applicationContext)
         }
 
         preferences.edit()

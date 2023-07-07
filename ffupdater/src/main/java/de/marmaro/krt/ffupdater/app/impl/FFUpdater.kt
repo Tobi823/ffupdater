@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://api.github.com/repos/Tobi823/ffupdater/releases
  */
 @Keep
-class FFUpdater : AppBase() {
+object FFUpdater : AppBase() {
     override val app = App.FFUPDATER
     override val packageName = "de.marmaro.krt.ffupdater"
     override val title = R.string.app_name
@@ -50,9 +50,5 @@ class FFUpdater : AppBase() {
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
-    }
-
-    companion object {
-        private const val LOG_TAG = "FFUpdater"
     }
 }

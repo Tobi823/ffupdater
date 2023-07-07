@@ -22,7 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/brave-software/brave-browser/
  */
 @Keep
-class Brave : AppBase() {
+object Brave : AppBase() {
     override val app: App = App.BRAVE
     override val packageName = "com.brave.browser"
     override val title = R.string.brave__title
@@ -75,9 +75,5 @@ class Brave : AppBase() {
                 else -> throw IllegalArgumentException("ABI for Android 6 is not supported")
             }
         }
-    }
-
-    companion object {
-        private const val LOG_TAG = "Brave"
     }
 }

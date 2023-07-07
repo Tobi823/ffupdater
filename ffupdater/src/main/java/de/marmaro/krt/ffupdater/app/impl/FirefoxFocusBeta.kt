@@ -22,7 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-beta/
  */
 @Keep
-class FirefoxFocusBeta : AppBase() {
+object FirefoxFocusBeta : AppBase() {
     override val app = App.FIREFOX_FOCUS_BETA
     override val packageName = "org.mozilla.focus.beta"
     override val title = R.string.firefox_focus_beta__title
@@ -71,9 +71,5 @@ class FirefoxFocusBeta : AppBase() {
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return fileSuffix
-    }
-
-    companion object {
-        private const val LOG_TAG = "FirefoxFocusBeta"
     }
 }

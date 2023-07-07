@@ -28,14 +28,14 @@ abstract class AbstractAppInstaller(
     private suspend fun install2Internal(context: Context, file: File): InstallResult {
         val validator = FingerprintValidator(context.packageManager)
         val fileResult = try {
-            validator.checkApkFile(file, app.impl)
+            validator.checkApkFile(file, app.findImpl())
         } catch (e: Exception) {
             val em = "Failed to validate the signature of the download."
             throw InstallationFailedException("Can't validate the signature of the APK file.", e, -103, em)
         }
         val fileCertHash = fileResult.hexString
         if (!fileResult.isValid) {
-            val message = "Downloaded application is NOT verified. Expected ${app.impl.signatureHash} but " +
+            val message = "Downloaded application is NOT verified. Expected ${app.findImpl().signatureHash} but " +
                     "was $fileCertHash."
             val errorMessage = context.getString(download_activity__downloaded_application_is_not_verified)
             throw InstallationFailedException(message, -100, errorMessage)
@@ -45,7 +45,7 @@ abstract class AbstractAppInstaller(
         executeInstallerSpecificLogic(context, file)
 
         val appResult = try {
-            validator.checkInstalledApp(app.impl)
+            validator.checkInstalledApp(app.findImpl())
         } catch (e: Exception) {
             val errorMessage = "Failed to check installed app."
             throw InstallationFailedException("Failed to check installed app.", e, -102, errorMessage)

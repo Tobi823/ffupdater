@@ -21,7 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://dist.torproject.org/torbrowser/
  */
 @Keep
-class TorBrowser : AppBase() {
+object TorBrowser : AppBase() {
     override val app = App.TOR_BROWSER
     override val packageName = "org.torproject.torbrowser"
     override val title = R.string.tor_browser__title
@@ -122,8 +122,5 @@ class TorBrowser : AppBase() {
         }
     }
 
-    companion object {
-        private const val LOG_TAG = "Tor Browser"
-        const val MAIN_URL = "https://www.torproject.org/download"
-    }
+    private const val MAIN_URL = "https://www.torproject.org/download"
 }

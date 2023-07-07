@@ -21,7 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/mozilla/firefox/
  */
 @Keep
-class FirefoxRelease : AppBase() {
+object FirefoxRelease : AppBase() {
     override val app = App.FIREFOX_RELEASE
     override val packageName = "org.mozilla.firefox"
     override val title = R.string.firefox_release__title
@@ -70,9 +70,5 @@ class FirefoxRelease : AppBase() {
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return fileSuffix
-    }
-
-    companion object {
-        private const val LOG_TAG = "FirefoxRelease"
     }
 }

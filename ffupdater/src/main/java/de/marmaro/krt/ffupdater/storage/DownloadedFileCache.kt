@@ -23,14 +23,14 @@ class DownloadedFileCache(private val app: App) {
     }
 
     private fun getZipFile(context: Context): File {
-        return File(getCacheFolder(context), "${app.impl.packageName}.zip")
+        return File(getCacheFolder(context), "${app.findImpl().packageName}.zip")
     }
 
     /**
      * The downloader may download an APK file or an ZIP archive.
      */
     fun getApkOrZipTargetFileForDownload(context: Context, latestUpdate: LatestUpdate): File {
-        if (app.impl.isAppPublishedAsZipArchive()) {
+        if (app.findImpl().isAppPublishedAsZipArchive()) {
             return getZipFile(context)
         }
         return getApkFile(context, latestUpdate)
@@ -60,7 +60,7 @@ class DownloadedFileCache(private val app: App) {
     }
 
     fun deleteZipFile(context: Context) {
-        require(app.impl.isAppPublishedAsZipArchive())
+        require(app.findImpl().isAppPublishedAsZipArchive())
         val file = getZipFile(context)
         if (file.exists()) {
             val success = file.delete()
@@ -69,7 +69,7 @@ class DownloadedFileCache(private val app: App) {
     }
 
     suspend fun extractApkFromZipArchive(context: Context, latestUpdate: LatestUpdate) {
-        require(app.impl.isAppPublishedAsZipArchive())
+        require(app.findImpl().isAppPublishedAsZipArchive())
 
         val zipArchive = getZipFile(context)
         require(zipArchive.exists())
@@ -84,10 +84,10 @@ class DownloadedFileCache(private val app: App) {
     }
 
     private fun internalExtractApkFromZipArchive(zipFile: ZipFile, apkFile: File) {
-        requireNotNull(app.impl.fileNameInZipArchive)
+        requireNotNull(app.findImpl().fileNameInZipArchive)
 
         val zipEntries = zipFile.entries().toList()
-        val apkEntry = zipEntries.firstOrNull { it.name == app.impl.fileNameInZipArchive }
+        val apkEntry = zipEntries.firstOrNull { it.name == app.findImpl().fileNameInZipArchive }
             ?: throw RuntimeException("Missing APK in ZIP. It contains: ${zipEntries.map { it.name }}")
 
         zipFile.getInputStream(apkEntry).buffered().use { apkZipEntryStream ->
@@ -99,7 +99,7 @@ class DownloadedFileCache(private val app: App) {
     }
 
     private fun getSanitizedPackageName(): String {
-        return app.impl.packageName.replace("""\W""".toRegex(), "_")
+        return app.findImpl().packageName.replace("""\W""".toRegex(), "_")
     }
 
     private fun getSanitizedVersion(latestUpdate: LatestUpdate): String {

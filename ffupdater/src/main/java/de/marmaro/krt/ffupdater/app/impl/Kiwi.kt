@@ -24,7 +24,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/geometry-ou/kiwi-browser-fast-quiet/
  */
 @Keep
-class Kiwi : AppBase() {
+object Kiwi : AppBase() {
     override val app = App.KIWI
     override val packageName = "com.kiwibrowser.browser"
     override val title = R.string.kiwi__title
@@ -96,9 +96,6 @@ class Kiwi : AppBase() {
         super.appIsInstalledCallback(context, available)
     }
 
-    companion object {
-        private const val LOG_TAG = "Kiwi"
-        const val BUILD_RUNNER_ID = "kiwi__build_runner_id"
-        const val APK_FILE_SIZE = "kiwi__file_size"
-    }
+    private const val BUILD_RUNNER_ID = "kiwi__build_runner_id"
+    private const val APK_FILE_SIZE = "kiwi__file_size"
 }

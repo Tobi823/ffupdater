@@ -21,8 +21,8 @@ class AppInfoDialog : DialogFragment() {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)
         return AlertDialog.Builder(activity)
-            .setTitle(app.impl.title)
-            .setMessage(app.impl.description)
+            .setTitle(app.findImpl().title)
+            .setMessage(app.findImpl().description)
             .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
             .create()
     }

@@ -22,7 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  */
 @Keep
 @Deprecated("latest release is too old")
-class BromiteSystemWebView : AppBase() {
+object BromiteSystemWebView : AppBase() {
     override val app = App.BROMITE_SYSTEMWEBVIEW
     override val packageName = "org.bromite.webview"
     override val title = R.string.bromite_systemwebview__title
@@ -70,9 +70,5 @@ class BromiteSystemWebView : AppBase() {
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return fileName
-    }
-
-    companion object {
-        private const val LOG_TAG = "BromiteSysView"
     }
 }

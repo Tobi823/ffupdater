@@ -20,7 +20,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
  */
 @Keep
-class Iceraven : AppBase() {
+object Iceraven : AppBase() {
     override val app = App.ICERAVEN
     override val packageName = "io.github.forkmaintainers.iceraven"
     override val title = R.string.iceraven__title
@@ -71,9 +71,5 @@ class Iceraven : AppBase() {
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return fileSuffix
-    }
-
-    companion object {
-        private const val LOG_TAG = "Iceraven"
     }
 }

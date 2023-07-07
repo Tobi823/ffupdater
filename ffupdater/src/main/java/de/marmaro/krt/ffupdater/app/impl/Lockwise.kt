@@ -18,7 +18,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  */
 @Keep
 @Deprecated("app is no longer supported")
-class Lockwise : AppBase() {
+object Lockwise : AppBase() {
     override val app = App.LOCKWISE
     override val packageName = "mozilla.lockbox"
     override val title = R.string.lockwise__title

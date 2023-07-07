@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 @Keep
-class FennecFdroid : AppBase() {
+object FennecFdroid : AppBase() {
     override val app = App.FENNEC_FDROID
     override val packageName = "org.mozilla.fennec_fdroid"
     override val title = R.string.fennecfdroid__title
@@ -53,9 +53,5 @@ class FennecFdroid : AppBase() {
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return index
-    }
-
-    companion object {
-        private const val LOG_TAG = "Fennec F-Droid"
     }
 }

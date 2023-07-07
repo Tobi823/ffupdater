@@ -66,7 +66,7 @@ object BackgroundNotificationBuilder {
 
     fun showUpdateAvailableNotification(context: Context, app: App) {
         val useDifferentChannels = BackgroundSettingsHelper.useDifferentNotificationChannels
-        val appTitle: String = context.getString(app.impl.title)
+        val appTitle: String = context.getString(app.findImpl().title)
         val channel = ChannelData(
             id = if (useDifferentChannels) {
                 "update_notification__${app.name.lowercase()}"
@@ -91,7 +91,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showDownloadRunningNotification(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
-        val appTitle = context.getString(app.impl.title)
+        val appTitle = context.getString(app.findImpl().title)
         val channel = ChannelData(
             id = "download_running_notification",
             name = context.getString(notification__download_running__channel_name),
@@ -111,7 +111,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showDownloadNotification(context: Context, app: App, exception: DisplayableException) {
-        val appTitle = context.getString(app.impl.title)
+        val appTitle = context.getString(app.findImpl().title)
         val channel = ChannelData(
             id = "download_error_notification",
             name = context.getString(notification__download_error__channel_name),
@@ -128,7 +128,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showInstallSuccessNotification(context: Context, app: App) {
-        val appTitle: String = context.getString(app.impl.title)
+        val appTitle: String = context.getString(app.findImpl().title)
         val channel = ChannelData(
             id = "installation_success_notification",
             name = context.getString(notification__install_success__channel_name, appTitle),
@@ -150,7 +150,7 @@ object BackgroundNotificationBuilder {
         exception: Exception,
     ) {
         val useDifferentChannels = BackgroundSettingsHelper.useDifferentNotificationChannels
-        val appTitle: String = context.getString(app.impl.title)
+        val appTitle: String = context.getString(app.findImpl().title)
         val channel = ChannelData(
             id = if (useDifferentChannels) {
                 "installation_error_notification__${app.name.lowercase()}"

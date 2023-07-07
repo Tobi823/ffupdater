@@ -21,7 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/mozilla/firefox-klar-the-privacy-browser-2/
  */
 @Keep
-class FirefoxKlar : AppBase() {
+object FirefoxKlar : AppBase() {
     override val app = App.FIREFOX_KLAR
     override val packageName = "org.mozilla.klar"
     override val title = R.string.firefox_klar__title
@@ -70,9 +70,5 @@ class FirefoxKlar : AppBase() {
                 else -> throw IllegalArgumentException("ABI is not supported")
             }
         return fileSuffix
-    }
-
-    companion object {
-        private const val LOG_TAG = "FirefoxKlar"
     }
 }

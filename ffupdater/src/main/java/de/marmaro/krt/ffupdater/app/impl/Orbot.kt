@@ -21,7 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/the-tor-project/orbot-proxy-with-tor/
  */
 @Keep
-class Orbot : AppBase() {
+object Orbot : AppBase() {
     override val app = App.ORBOT
     override val packageName = "org.torproject.android"
     override val title = R.string.orbot__title
@@ -66,9 +66,5 @@ class Orbot : AppBase() {
             ABI.X86_64 -> "-fullperm-universal-release.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-    }
-
-    companion object {
-        private const val LOG_TAG = "Orbot"
     }
 }

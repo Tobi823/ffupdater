@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 @Keep
-class Mulch : AppBase() {
+object Mulch : AppBase() {
     override val app = App.MULCH
     override val packageName = "us.spotco.mulch"
     override val title = R.string.mulch__title
@@ -41,9 +41,5 @@ class Mulch : AppBase() {
             abi,
             cacheBehaviour
         )
-    }
-
-    companion object {
-        private const val LOG_TAG = "Mulch"
     }
 }

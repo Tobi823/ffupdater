@@ -20,7 +20,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/the-tor-project/tor-browser-for-android-alpha/
  */
 @Keep
-class TorBrowserAlpha : AppBase() {
+object TorBrowserAlpha : AppBase() {
     override val app = App.TOR_BROWSER_ALPHA
     override val packageName = "org.torproject.torbrowser_alpha"
     override val title = R.string.tor_browser_alpha__title
@@ -120,8 +120,5 @@ class TorBrowserAlpha : AppBase() {
         }
     }
 
-    companion object {
-        private const val LOG_TAG = "Tor Browser"
-        const val MAIN_URL = "https://www.torproject.org/download/alpha/"
-    }
+    private const val MAIN_URL = "https://www.torproject.org/download/alpha/"
 }

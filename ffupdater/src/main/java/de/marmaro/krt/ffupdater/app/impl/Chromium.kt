@@ -24,7 +24,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android_Arm64/
  */
 @Keep
-class Chromium : AppBase() {
+object Chromium : AppBase() {
     override val app = App.CHROMIUM
     override val packageName = "org.chromium.chrome"
     override val title = R.string.chromium__title
@@ -142,15 +142,13 @@ class Chromium : AppBase() {
         val timestamp: String,
     )
 
-    companion object {
-        private const val LOG_TAG = "Chromium"
-        const val INSTALLED_VERSION_REVISION = "chromium__installed_version_revision"
-        const val INSTALLED_VERSION_TIMESTAMP = "chromium__installed_version_timestamp"
+    private const val LOG_TAG = "Chromium"
+    const val INSTALLED_VERSION_REVISION = "chromium__installed_version_revision"
+    const val INSTALLED_VERSION_TIMESTAMP = "chromium__installed_version_timestamp"
 
-        const val BASE_API_URL = "https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o"
-        const val BASE_DOWNLOAD_URL =
-            "https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o"
-        const val ALL_FIELDS =
-            "fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken"
-    }
+    const val BASE_API_URL = "https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o"
+    const val BASE_DOWNLOAD_URL =
+        "https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o"
+    const val ALL_FIELDS =
+        "fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken"
 }

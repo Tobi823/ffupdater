@@ -22,7 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  */
 @Keep
 @Deprecated("latest release is too old")
-class Bromite : AppBase() {
+object Bromite : AppBase() {
     override val app = App.BROMITE
     override val packageName = "org.bromite.bromite"
     override val title = R.string.bromite__title
@@ -69,9 +69,5 @@ class Bromite : AppBase() {
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return fileName
-    }
-
-    companion object {
-        private const val LOG_TAG = "Bromite"
     }
 }

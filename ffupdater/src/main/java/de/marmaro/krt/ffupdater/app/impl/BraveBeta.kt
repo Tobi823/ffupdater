@@ -22,7 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/brave-software/brave-browser-beta/
  */
 @Keep
-class BraveBeta : AppBase() {
+object BraveBeta : AppBase() {
     override val app = App.BRAVE_BETA
     override val packageName = "com.brave.browser_beta"
     override val title = R.string.brave_beta__title
@@ -76,9 +76,5 @@ class BraveBeta : AppBase() {
             }
         }
         return fileName
-    }
-
-    companion object {
-        private const val LOG_TAG = "BraveBeta"
     }
 }

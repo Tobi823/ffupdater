@@ -20,7 +20,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  */
 @Keep
 @Deprecated("app is no longer supported")
-class UngoogledChromium : AppBase() {
+object UngoogledChromium : AppBase() {
     override val app = App.UNGOOGLED_CHROMIUM
     override val packageName = "org.ungoogled.chromium.stable"
     override val title = R.string.ungoogled_chromium__title
@@ -67,7 +67,5 @@ class UngoogledChromium : AppBase() {
         return fileName
     }
 
-    companion object {
-        private const val LOG_TAG = "UngooChromium"
-    }
+    private const val LOG_TAG = "UngooChromium"
 }

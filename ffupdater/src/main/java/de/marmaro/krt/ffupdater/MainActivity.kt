@@ -94,11 +94,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        BackgroundJob.initBackgroundUpdateCheck(applicationContext)
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
@@ -131,7 +126,7 @@ class MainActivity : AppCompatActivity() {
     private fun showInstalledAppsInRecyclerView() {
         runBlocking {
             val items = App.values()
-                .groupBy { it.impl.isInstalled(applicationContext) }
+                .groupBy { it.findImpl().isInstalled(applicationContext) }
             val installedCorrectFingerprint = items[INSTALLED] ?: listOf()
             val installedWrongFingerprint = if (ForegroundSettingsHelper.isHideAppsSignedByDifferentCertificate) {
                 listOf()
@@ -145,8 +140,8 @@ class MainActivity : AppCompatActivity() {
     @UiThread
     private suspend fun updateMetadataOfApps(useCache: Boolean = true) {
         val apps = App.values()
-            .filter { DeviceAbiExtractor.supportsOneOf(it.impl.supportedAbis) }
-            .filter { it.impl.isInstalled(this@MainActivity) == INSTALLED }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
+            .filter { it.findImpl().isInstalled(this@MainActivity) == INSTALLED }
 
         if (!ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
@@ -169,7 +164,7 @@ class MainActivity : AppCompatActivity() {
     private suspend fun updateMetadataOf(app: App, cacheBehaviour: CacheBehaviour): AppUpdateStatus? {
         try {
             recycleViewAdapter.notifyAppChange(app, null)
-            val updateStatus = app.impl.findAppUpdateStatus(applicationContext, cacheBehaviour)
+            val updateStatus = app.findImpl().findAppUpdateStatus(applicationContext, cacheBehaviour)
             recycleViewAdapter.notifyAppChange(app, updateStatus)
             recycleViewAdapter.notifyClearedErrorForApp(app)
             return updateStatus
@@ -330,8 +325,8 @@ class MainActivity : AppCompatActivity() {
             val error = errors[app]
             val fragmentManager = activity.supportFragmentManager
 
-            view.title.setText(app.impl.title)
-            view.icon.setImageResource(app.impl.icon)
+            view.title.setText(app.findImpl().title)
+            view.icon.setImageResource(app.findImpl().icon)
 
             when {
                 appsWithWrongFingerprint.contains(app) -> onBindViewHolderWhenWrongFingerprint(view)
@@ -348,14 +343,14 @@ class MainActivity : AppCompatActivity() {
             val hideWarningButtons = ForegroundSettingsHelper.isHideWarningButtonForInstalledApps
             when {
                 hideWarningButtons -> view.warningIcon.visibility = View.GONE
-                app.impl.installationWarning == null -> view.warningIcon.visibility = View.GONE
+                app.findImpl().installationWarning == null -> view.warningIcon.visibility = View.GONE
                 else -> AppWarningDialog.newInstanceOnClick(view.warningIcon, app, fragmentManager)
             }
 
             AppInfoDialog.newInstanceOnClick(view.infoButton, app, fragmentManager)
 
             view.openProjectPageButton.setOnClickListener {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.impl.projectPage))
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.findImpl().projectPage))
                 activity.startActivity(browserIntent)
             }
         }
@@ -370,7 +365,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         private fun onBindViewHolderWhenError(view: AppHolder, app: App, error: ExceptionWrapper) {
-            view.installedVersion.text = app.impl.getDisplayInstalledVersion(activity)
+            view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
             view.availableVersion.setText(error.message)
             if (error.exception != null) {
                 view.availableVersion.setOnClickListener {
@@ -381,12 +376,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             view.downloadButton.setImageResource(R.drawable.ic_file_download_grey)
-            view.eolReason.visibility = if (app.impl.isEol()) View.VISIBLE else View.GONE
-            app.impl.eolReason?.let { view.eolReason.setText(it) }
+            view.eolReason.visibility = if (app.findImpl().isEol()) View.VISIBLE else View.GONE
+            app.findImpl().eolReason?.let { view.eolReason.setText(it) }
         }
 
         private fun onBindViewHolderWhenNormal(view: AppHolder, app: App, metadata: AppUpdateStatus?) {
-            view.installedVersion.text = app.impl.getDisplayInstalledVersion(activity)
+            view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
             view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
             view.downloadButton.setImageResource(
                 if (metadata?.isUpdateAvailable == true) {
@@ -395,8 +390,8 @@ class MainActivity : AppCompatActivity() {
                     R.drawable.ic_file_download_grey
                 }
             )
-            view.eolReason.visibility = if (app.impl.isEol()) View.VISIBLE else View.GONE
-            app.impl.eolReason?.let { view.eolReason.setText(it) }
+            view.eolReason.visibility = if (app.findImpl().isEol()) View.VISIBLE else View.GONE
+            app.findImpl().eolReason?.let { view.eolReason.setText(it) }
         }
 
 

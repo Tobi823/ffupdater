@@ -18,7 +18,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://www.apkmirror.com/apk/duckduckgo/duckduckgo-privacy-browser/
  */
 @Keep
-class DuckDuckGoAndroid : AppBase() {
+object DuckDuckGoAndroid : AppBase() {
     override val app = App.DUCKDUCKGO_ANDROID
     override val packageName = "com.duckduckgo.mobile.android"
     override val title = R.string.duckduckgo_android__title
@@ -52,9 +52,5 @@ class DuckDuckGoAndroid : AppBase() {
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
         )
-    }
-
-    companion object {
-        private const val LOG_TAG = "DuckDuckGo Android"
     }
 }

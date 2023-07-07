@@ -125,6 +125,6 @@ abstract class AppBase {
         val ARM32_ARM64_X86_X64 = listOf(ARM64_V8A, ARMEABI_V7A, X86_64, X86)
         val ARM32_ARM64 = listOf(ARM64_V8A, ARMEABI_V7A)
         val ARM32_X86 = listOf(ARMEABI_V7A, X86)
-        val LOG_TAG = "AppBase"
+        const val LOG_TAG = "AppBase"
     }
 }

@@ -3,6 +3,8 @@ package de.marmaro.krt.ffupdater
 import android.app.Application
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
+import androidx.work.ExistingPeriodicWorkPolicy.KEEP
+import de.marmaro.krt.ffupdater.BackgroundJob.Companion.start
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
@@ -29,5 +31,7 @@ class FFUpdater : Application() {
         FileDownloader.init(applicationContext)
 
         Migrator().migrate(applicationContext)
+
+        start(applicationContext.applicationContext, KEEP)
     }
 }

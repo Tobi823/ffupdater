@@ -21,7 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/mozilla/firefox-beta
  */
 @Keep
-class FirefoxBeta : AppBase() {
+object FirefoxBeta : AppBase() {
     override val app = App.FIREFOX_BETA
     override val packageName = "org.mozilla.firefox_beta"
     override val title = R.string.firefox_beta__title
@@ -70,9 +70,5 @@ class FirefoxBeta : AppBase() {
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return fileSuffix
-    }
-
-    companion object {
-        private const val LOG_TAG = "FirefoxBeta"
     }
 }

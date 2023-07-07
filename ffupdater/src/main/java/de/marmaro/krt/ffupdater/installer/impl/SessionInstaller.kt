@@ -71,10 +71,10 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
     private fun createSessionParams(context: Context, file: File): SessionParams {
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
         val params = SessionParams(MODE_FULL_INSTALL)
-        val displayIcon = app.impl.icon // store display icon id in variable to prevent crash
+        val displayIcon = app.findImpl().icon // store display icon id in variable to prevent crash
         params.setAppIcon(BitmapFactory.decodeResource(context.resources, displayIcon))
-        params.setAppLabel(context.getString(app.impl.title))
-        params.setAppPackageName(app.impl.packageName)
+        params.setAppLabel(context.getString(app.findImpl().title))
+        params.setAppPackageName(app.findImpl().packageName)
         params.setSize(file.length())
         if (DeviceSdkTester.supportsAndroidNougat()) {
             params.setOriginatingUid(android.os.Process.myUid())
@@ -89,7 +89,7 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
     }
 
     private fun copyApkToSession(session: Session, file: File) {
-        val name = "${app.impl.packageName}_${System.currentTimeMillis()}"
+        val name = "${app.findImpl().packageName}_${System.currentTimeMillis()}"
         file.inputStream().buffered().use { downloadedFileStream ->
             // don't use buffered because I think this causes the 'Unrecognized stream' exception
             session.openWrite(name, 0, file.length()).use { sessionStream ->

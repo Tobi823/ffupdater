@@ -21,7 +21,7 @@ class DeviceTooOldDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)
-        val required = AndroidVersionCodes.getVersionForApiLevel(app.impl.minApiLevel)
+        val required = AndroidVersionCodes.getVersionForApiLevel(app.findImpl().minApiLevel)
         val actual = AndroidVersionCodes.getVersionForApiLevel(DeviceSdkTester.sdkInt)
         return AlertDialog.Builder(activity)
             .setTitle(R.string.device_too_old_dialog__title)

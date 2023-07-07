@@ -20,7 +20,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/vivaldi-technologies/vivaldi-browser-beta/
  */
 @Keep
-class Vivaldi : AppBase() {
+object Vivaldi : AppBase() {
     override val app = App.VIVALDI
     override val packageName = "com.vivaldi.browser"
     override val title = R.string.vivaldi__title
@@ -76,8 +76,5 @@ class Vivaldi : AppBase() {
         return availableVersion.value to downloadUrl.value
     }
 
-    companion object {
-        private const val LOG_TAG = "Vivaldi"
-        const val DOWNLOAD_WEBSITE_URL = "https://vivaldi.com/download/"
-    }
+    private const val DOWNLOAD_WEBSITE_URL = "https://vivaldi.com/download/"
 }

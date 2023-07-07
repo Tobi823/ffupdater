@@ -11,17 +11,16 @@ import androidx.preference.ListPreference
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper.DnsProvider.CUSTOM_SERVER
 import rikka.shizuku.Shizuku
-import java.time.Duration
 
 
 /**
@@ -45,11 +44,6 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onPause() {
-        super.onPause()
-        BackgroundJob.initBackgroundUpdateCheck(applicationContext)
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
@@ -61,19 +55,7 @@ class SettingsActivity : AppCompatActivity() {
         private fun findMultiPref(key: String) = findPreference<MultiSelectListPreference>(key)!!
         private fun findTextPref(key: String) = findPreference<EditTextPreference>(key)!!
 
-        private fun changeBackgroundUpdateCheck(
-            enabled: Boolean?,
-            interval: Duration?,
-            onlyWhenIdle: Boolean?
-        ): Boolean {
-            BackgroundJob.changeBackgroundUpdateCheck(
-                requireContext().applicationContext,
-                enabled ?: BackgroundSettingsHelper.isUpdateCheckEnabled,
-                interval ?: BackgroundSettingsHelper.updateCheckInterval,
-                onlyWhenIdle ?: BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
-            )
-            return true
-        }
+        private var restartBackgroundJob = false
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
@@ -89,21 +71,24 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
-            findSwitchPref("background__update_check__enabled").setOnPreferenceChangeListener { _, newValue ->
-                changeBackgroundUpdateCheck(newValue as Boolean, null, null)
+            findSwitchPref("background__update_check__enabled").setOnPreferenceChangeListener { _, _ ->
+                restartBackgroundJob = true
+                true
             }
 
-            findListPref("background__update_check__interval").setOnPreferenceChangeListener { _, newValue ->
-                changeBackgroundUpdateCheck(null, Duration.ofMinutes((newValue as String).toLong()), null)
+            findListPref("background__update_check__interval").setOnPreferenceChangeListener { _, _ ->
+                restartBackgroundJob = true
+                true
             }
 
-            findSwitchPref("background__update_check__when_device_idle").setOnPreferenceChangeListener { _, newValue ->
-                changeBackgroundUpdateCheck(null, null, newValue as Boolean)
+            findSwitchPref("background__update_check__when_device_idle").setOnPreferenceChangeListener { _, _ ->
+                restartBackgroundJob = true
+                true
             }
 
             val excludedApps = findMultiPref("background__update_check__excluded_apps")
             excludedApps.entries = App.values()
-                .map { app -> getString(app.impl.title) }
+                .map { app -> getString(app.findImpl().title) }
                 .toTypedArray()
             excludedApps.entryValues = App.values()
                 .map { app -> app.name }
@@ -153,6 +138,7 @@ class SettingsActivity : AppCompatActivity() {
                             return@setOnPreferenceChangeListener false
                         }
                     }
+
                     Installer.SHIZUKU_INSTALLER.name -> {
                         if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
                             val text = "Your Android is too old."
@@ -170,8 +156,17 @@ class SettingsActivity : AppCompatActivity() {
                             return@setOnPreferenceChangeListener false
                         }
                     }
+
                     else -> true
                 }
+            }
+        }
+
+        override fun onPause() {
+            super.onPause()
+            if (restartBackgroundJob) {
+                restartBackgroundJob = false
+                BackgroundJob.start(requireContext().applicationContext, UPDATE)
             }
         }
     }

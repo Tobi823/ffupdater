@@ -22,7 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/
  */
 @Keep
-class FirefoxFocus : AppBase() {
+object FirefoxFocus : AppBase() {
     override val app = App.FIREFOX_FOCUS
     override val packageName = "org.mozilla.focus"
     override val title = R.string.firefox_focus__title
@@ -71,9 +71,5 @@ class FirefoxFocus : AppBase() {
                 else -> throw IllegalArgumentException("ABI is not supported")
             }
         return fileSuffix
-    }
-
-    companion object {
-        private const val LOG_TAG = "FirefoxFocus"
     }
 }

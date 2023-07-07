@@ -22,7 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/brave-software/brave-browser-nightly
  */
 @Keep
-class BraveNightly : AppBase() {
+object BraveNightly : AppBase() {
     override val app = App.BRAVE_NIGHTLY
     override val packageName = "com.brave.browser_nightly"
     override val title = R.string.brave_nightly__title
@@ -75,9 +75,5 @@ class BraveNightly : AppBase() {
                 else -> throw IllegalArgumentException("ABI for Android 6 is not supported")
             }
         }
-    }
-
-    companion object {
-        private const val LOG_TAG = "BraveNightly"
     }
 }

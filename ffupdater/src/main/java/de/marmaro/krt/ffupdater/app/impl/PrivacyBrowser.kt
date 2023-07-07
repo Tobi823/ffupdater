@@ -16,7 +16,7 @@ import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
  * https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/
  */
 @Keep
-class PrivacyBrowser : AppBase() {
+object PrivacyBrowser : AppBase() {
     override val app = App.PRIVACY_BROWSER
     override val packageName = "com.stoutner.privacybrowser.standard"
     override val title = R.string.privacy_browser__title
@@ -43,9 +43,5 @@ class PrivacyBrowser : AppBase() {
             exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )
-    }
-
-    companion object {
-        private const val LOG_TAG = "Fennec F-Droid"
     }
 }

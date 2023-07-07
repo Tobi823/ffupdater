@@ -69,9 +69,9 @@ class AddAppActivity : AppCompatActivity() {
     @UiThread
     private fun addAppsToUserInterface() {
         val installedApps = App.values()
-            .filter { it.impl.installableByUser }
-            .filter { DeviceAbiExtractor.supportsOneOf(it.impl.supportedAbis) }
-            .filter { !it.impl.isInstalledWithoutFingerprintVerification(applicationContext) }
+            .filter { it.findImpl().installableByUser }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
+            .filter { !it.findImpl().isInstalledWithoutFingerprintVerification(applicationContext) }
 
         val items = mutableListOf<AvailableAppsAdapter.ItemWrapper>()
 
@@ -87,7 +87,7 @@ class AddAppActivity : AppCompatActivity() {
             items.add(AvailableAppsAdapter.WrappedTitle(titleText))
 
             val categoryApps = installedApps
-                .filter { it.impl.displayCategory == displayCategory }
+                .filter { it.findImpl().displayCategory == displayCategory }
                 .map { AvailableAppsAdapter.WrappedApp(it) }
             items.addAll(categoryApps)
         }
@@ -175,14 +175,14 @@ class AddAppActivity : AppCompatActivity() {
         private fun onBindViewHolderApp(viewHolder: AppHolder, position: Int) {
             val wrappedApp = elements[position] as WrappedApp
             val app = wrappedApp.app
-            viewHolder.title.setText(app.impl.title)
-            viewHolder.icon.setImageResource(app.impl.icon)
+            viewHolder.title.setText(app.findImpl().title)
+            viewHolder.icon.setImageResource(app.findImpl().icon)
 
-            val warning = app.impl.installationWarning != null
+            val warning = app.findImpl().installationWarning != null
             viewHolder.warningIcon.visibility = if (warning) View.VISIBLE else View.INVISIBLE
 
-            viewHolder.eolReason.visibility = if (app.impl.isEol()) View.VISIBLE else View.GONE
-            app.impl.eolReason?.let { viewHolder.eolReason.setText(it) }
+            viewHolder.eolReason.visibility = if (app.findImpl().isEol()) View.VISIBLE else View.GONE
+            app.findImpl().eolReason?.let { viewHolder.eolReason.setText(it) }
 
             viewHolder.warningIcon.setOnClickListener {
                 AppWarningDialog.newInstance(app).show(activity.supportFragmentManager)
@@ -193,7 +193,7 @@ class AddAppActivity : AppCompatActivity() {
             }
 
             viewHolder.openProjectPageButton.setOnClickListener {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.impl.projectPage))
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.findImpl().projectPage))
                 activity.startActivity(browserIntent)
             }
 

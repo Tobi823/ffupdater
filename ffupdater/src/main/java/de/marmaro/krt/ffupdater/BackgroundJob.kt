@@ -9,7 +9,6 @@ import androidx.annotation.MainThread
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.NetworkType.CONNECTED
 import androidx.work.NetworkType.UNMETERED
 import androidx.work.PeriodicWorkRequest
@@ -170,11 +169,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val appsAndUpdateStatus = App.values()
             // simple and fast checks
             .filter { it !in BackgroundSettingsHelper.excludedAppsFromUpdateCheck }
-            .filter { DeviceAbiExtractor.supportsOneOf(it.impl.supportedAbis) }
-            .filter { it.impl.isInstalled(context) == InstallationStatus.INSTALLED }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
+            .filter { it.findImpl().isInstalled(context) == InstallationStatus.INSTALLED }
             // query latest available update
             .map {
-                val updateStatus = it.impl.findAppUpdateStatus(context, USE_CACHE)
+                val updateStatus = it.findImpl().findAppUpdateStatus(context, USE_CACHE)
                 AppAndUpdateStatus(it, updateStatus)
             }
 
@@ -234,7 +233,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
             deferred.await()
 
-            if (app.impl.isAppPublishedAsZipArchive()) {
+            if (app.findImpl().isAppPublishedAsZipArchive()) {
                 app.downloadedFileCache.extractApkFromZipArchive(context, latestUpdate)
                 app.downloadedFileCache.deleteZipFile(context)
             }
@@ -289,7 +288,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             installer.startInstallation(context, file)
 
             BackgroundNotificationBuilder.showInstallSuccessNotification(context, app)
-            app.impl.appIsInstalledCallback(context, updateStatus)
+            app.findImpl().appIsInstalledCallback(context, updateStatus)
 
             if (BackgroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
                 app.downloadedFileCache.deleteAllApkFileForThisApp(context)
@@ -315,59 +314,13 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         private const val LOG_TAG = "BackgroundJob"
         private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofHours(8))
 
-        /**
-         * Should be called when the user minimize the app to make sure that the background update check
-         * is running.
-         */
-        fun initBackgroundUpdateCheck(context: Context) {
-            if (BackgroundSettingsHelper.isUpdateCheckEnabled) {
-                start(
-                    context.applicationContext,
-                    KEEP,
-                    BackgroundSettingsHelper.updateCheckInterval,
-                    BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
-                )
-            } else {
-                stop(context.applicationContext)
+        fun start(context: Context, policy: ExistingPeriodicWorkPolicy) {
+            val instance = WorkManager.getInstance(context.applicationContext)
+            if (!BackgroundSettingsHelper.isUpdateCheckEnabled) {
+                instance.cancelUniqueWork(WORK_MANAGER_KEY)
+                return
             }
-        }
 
-        fun forceRestartBackgroundUpdateCheck(context: Context) {
-            if (BackgroundSettingsHelper.isUpdateCheckEnabled) {
-                start(
-                    context.applicationContext,
-                    ExistingPeriodicWorkPolicy.UPDATE,
-                    BackgroundSettingsHelper.updateCheckInterval,
-                    BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
-                )
-            } else {
-                stop(context.applicationContext)
-            }
-        }
-
-        /**
-         * Should be called when the user changes specific background settings.
-         * If value is null, the value from SharedPreferences will be used.
-         */
-        fun changeBackgroundUpdateCheck(
-            context: Context,
-            enabled: Boolean,
-            interval: Duration,
-            onlyWhenIdle: Boolean,
-        ) {
-            if (enabled) {
-                start(context.applicationContext, ExistingPeriodicWorkPolicy.UPDATE, interval, onlyWhenIdle)
-            } else {
-                stop(context.applicationContext)
-            }
-        }
-
-        private fun start(
-            context: Context,
-            policy: ExistingPeriodicWorkPolicy,
-            interval: Duration,
-            onlyWhenIdle: Boolean,
-        ) {
             val requiredNetworkType =
                 if (BackgroundSettingsHelper.isUpdateCheckOnMeteredAllowed) CONNECTED else UNMETERED
             val builder = Constraints.Builder()
@@ -376,20 +329,15 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 .setRequiresStorageNotLow(true)
 
             if (DeviceSdkTester.supportsAndroidMarshmallow()) {
-                builder.setRequiresDeviceIdle(onlyWhenIdle)
+                builder.setRequiresDeviceIdle(BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle)
             }
 
-            val minutes = interval.toMinutes()
+            val minutes = BackgroundSettingsHelper.updateCheckInterval.toMinutes()
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)
                 .setConstraints(builder.build())
                 .build()
 
-            WorkManager.getInstance(context)
-                .enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
-        }
-
-        private fun stop(context: Context) {
-            WorkManager.getInstance(context).cancelUniqueWork(WORK_MANAGER_KEY)
+            instance.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
         }
 
         private fun calcBackoffTime(runAttempts: Int): Duration {

@@ -42,7 +42,8 @@ object StrictModeSetup {
         vmPolicy.detectLeakedClosableObjects()
         vmPolicy.detectLeakedRegistrationObjects()
         vmPolicy.detectLeakedSqlLiteObjects()
-        if (DeviceSdkTester.supportsAndroid9()) vmPolicy.detectNonSdkApiUsage()
+        // because of https://stackoverflow.com/a/53736775
+//        if (DeviceSdkTester.supportsAndroid9()) vmPolicy.detectNonSdkApiUsage()
         if (DeviceSdkTester.supportsAndroid12()) vmPolicy.detectUnsafeIntentLaunch()
         if (DeviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.penaltyDeathOnCleartextNetwork()
 

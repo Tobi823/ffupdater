@@ -35,7 +35,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         require(file.parentFile == downloadFolder) { "Wrong folder: ${file.parentFile}" }
 
         val invalidChars = """\W""".toRegex()
-        val appName = app.impl.packageName.replace(invalidChars, "_")
+        val appName = app.findImpl().packageName.replace(invalidChars, "_")
         require(file.name.startsWith(appName)) { "Invalid file prefix: ${file.name}" }
         require(file.extension == "apk") { "Invalid file suffix: ${file.name}" }
         require(!file.nameWithoutExtension.contains(invalidChars)) { "Invalid chars in file name: ${file.name}" }

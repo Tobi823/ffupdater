@@ -227,7 +227,7 @@ class DownloadActivity : AppCompatActivity() {
 
         val installationSuccess = installApp()
         if (installationSuccess) {
-            app.impl.appIsInstalledCallback(this, appUpdateStatus)
+            app.findImpl().appIsInstalledCallback(this, appUpdateStatus)
         }
         viewModel.installationSuccess = installationSuccess
     }
@@ -252,11 +252,11 @@ class DownloadActivity : AppCompatActivity() {
 
     private suspend fun fetchDownloadInformationOrUseCache(): Boolean {
         show(R.id.fetchUrl)
-        val downloadSource = app.impl.downloadSource
+        val downloadSource = app.findImpl().downloadSource
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
         try {
-            appUpdateStatus = app.impl.findAppUpdateStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+            appUpdateStatus = app.findImpl().findAppUpdateStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         } catch (e: ApiRateLimitExceededException) {
             displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
         } catch (e: DisplayableException) {
@@ -366,7 +366,7 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private suspend fun postProcessDownload(latestUpdate: LatestUpdate) {
         // if the download was an ZIP archive, then extract the APK file
-        if (app.impl.isAppPublishedAsZipArchive()) {
+        if (app.findImpl().isAppPublishedAsZipArchive()) {
             app.downloadedFileCache.extractApkFromZipArchive(this, appUpdateStatus.latestUpdate)
             app.downloadedFileCache.deleteZipFile(this)
         }
