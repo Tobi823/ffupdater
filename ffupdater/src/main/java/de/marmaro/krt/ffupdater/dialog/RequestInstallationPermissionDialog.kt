@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
@@ -16,6 +17,7 @@ import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.request_installation_permission_dialog__abort
 
+@Keep
 @RequiresApi(api = Build.VERSION_CODES.O)
 class RequestInstallationPermissionDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

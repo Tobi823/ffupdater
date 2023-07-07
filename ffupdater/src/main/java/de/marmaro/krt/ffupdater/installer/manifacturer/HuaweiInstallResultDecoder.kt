@@ -1,9 +1,11 @@
 package de.marmaro.krt.ffupdater.installer.manifacturer
 
 import android.content.Context
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.R
 
 // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
+@Keep
 object HuaweiInstallResultDecoder {
     fun getShortErrorMessage(installResult: Int?): String? {
         return when (installResult) {

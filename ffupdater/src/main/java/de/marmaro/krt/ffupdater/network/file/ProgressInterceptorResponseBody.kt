@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.network.file
 
 import android.util.Log
+import androidx.annotation.Keep
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import okhttp3.HttpUrl
@@ -11,7 +12,8 @@ import okio.Source
 import okio.buffer
 import java.io.IOException
 
-internal class ProgressInterceptorResponseBody(
+@Keep
+class ProgressInterceptorResponseBody(
     private val originalUrl: HttpUrl,
     private val responseBody: ResponseBody,
     private var processChannel: Channel<DownloadStatus>?,

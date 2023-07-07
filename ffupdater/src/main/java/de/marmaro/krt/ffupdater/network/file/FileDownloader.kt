@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.network.file
 
 import android.content.Context
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.JsonObject
@@ -32,6 +33,7 @@ import kotlin.io.use
  * This class can be reused to a certain extend and must only be used synchronous.
  * Also the class must be recreated to respect changed settings like proxy configuration etc.
  */
+@Keep
 object FileDownloader {
     private val progressInterceptor = ProgressInterceptor()
     private lateinit var client: OkHttpClient

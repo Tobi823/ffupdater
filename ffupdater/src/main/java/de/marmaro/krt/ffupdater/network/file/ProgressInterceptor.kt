@@ -1,15 +1,20 @@
 package de.marmaro.krt.ffupdater.network.file
 
+import androidx.annotation.Keep
 import kotlinx.coroutines.channels.Channel
 import okhttp3.Interceptor
 import okhttp3.Response
 
-internal class ProgressInterceptor : Interceptor {
+@Keep
+class ProgressInterceptor : Interceptor {
+
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.proceed(chain.request())
         val responseBody = requireNotNull(original.body) { "original.body is null! Maybe called by cache?" }
-        val processChannel = original.request.tag() as Channel<DownloadStatus>?
+
+        @Suppress("UNCHECKED_CAST")
+        val processChannel = original.request.tag() as? Channel<DownloadStatus>
         return original.newBuilder()
             // ignore must-revalidate for cache-control
             // override max-age because I want to keep cache entries for USE_EVEN_VERY_OLD_CACHE up to 2 days

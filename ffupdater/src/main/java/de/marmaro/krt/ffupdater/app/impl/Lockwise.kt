@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -15,6 +16,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  * https://api.github.com/repos/mozilla-lockwise/lockwise-android/releases
  * https://www.apkmirror.com/apk/mozilla/firefox-lockwise/
  */
+@Keep
 @Deprecated("app is no longer supported")
 class Lockwise : AppBase() {
     override val app = App.LOCKWISE
@@ -34,10 +36,7 @@ class Lockwise : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("mozilla-lockwise", "lockwise-android"),
             resultsPerApiCall = 5,

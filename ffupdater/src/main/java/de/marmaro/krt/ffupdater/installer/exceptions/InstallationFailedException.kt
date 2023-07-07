@@ -1,7 +1,9 @@
 package de.marmaro.krt.ffupdater.installer.exceptions
 
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.DisplayableException
 
+@Keep
 open class InstallationFailedException(
     message: String,
     cause: Throwable?,

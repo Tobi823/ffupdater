@@ -1,12 +1,14 @@
 package de.marmaro.krt.ffupdater.crash
 
 import android.content.Context
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.CrashReportActivity
 import de.marmaro.krt.ffupdater.R
 import java.io.File
 import java.time.LocalDateTime
 import kotlin.system.exitProcess
 
+@Keep
 class CrashListener private constructor(private val file: File) : Thread.UncaughtExceptionHandler {
 
     override fun uncaughtException(t: Thread, e: Throwable) {

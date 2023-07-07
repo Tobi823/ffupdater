@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -36,9 +37,8 @@ import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 
-
+@Keep
 class AddAppActivity : AppCompatActivity() {
-    private lateinit var foregroundSettings: ForegroundSettingsHelper
     private var finishActivityOnNextResume = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

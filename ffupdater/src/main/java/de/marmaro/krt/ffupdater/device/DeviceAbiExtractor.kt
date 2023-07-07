@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.device
 
 import android.os.Build
+import androidx.annotation.Keep
 
 object DeviceAbiExtractor {
     var supportedAbis: List<ABI> = Build.SUPPORTED_ABIS?.map { ABI.findByCodeName(it) } ?: listOf()
@@ -19,6 +20,7 @@ object DeviceAbiExtractor {
             )
     }
 
+    @Keep
     data class StringsForAbi(
         val armeabi_v7a: String? = null,
         val arm64_v8a: String? = null,

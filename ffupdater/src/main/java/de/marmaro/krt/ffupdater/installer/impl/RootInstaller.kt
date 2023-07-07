@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.Context
 import android.os.Environment
+import androidx.annotation.Keep
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -13,6 +14,7 @@ import java.io.File
 /**
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
  */
+@Keep
 class RootInstaller(app: App) : AbstractAppInstaller(app) {
     override val type = Installer.ROOT_INSTALLER
 

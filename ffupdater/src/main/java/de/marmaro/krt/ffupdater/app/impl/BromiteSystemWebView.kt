@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -20,6 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/bromite/bromite/releases
  * https://www.apkmirror.com/apk/bromite/bromite-system-webview-2/
  */
+@Keep
 @Deprecated("latest release is too old")
 class BromiteSystemWebView : AppBase() {
     override val app = App.BROMITE_SYSTEMWEBVIEW
@@ -41,10 +43,7 @@ class BromiteSystemWebView : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(

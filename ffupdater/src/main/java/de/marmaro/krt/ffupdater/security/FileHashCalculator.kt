@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.security
 
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -8,6 +9,8 @@ import java.io.File
 import java.io.FileInputStream
 import java.security.MessageDigest
 
+
+@Keep
 object FileHashCalculator {
 
     @MainThread

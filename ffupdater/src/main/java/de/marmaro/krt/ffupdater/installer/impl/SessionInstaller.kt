@@ -11,6 +11,7 @@ import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRE
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_aborted
@@ -27,6 +28,7 @@ import java.io.File
 import java.io.IOException
 
 
+@Keep
 class SessionInstaller(
     app: App,
     private val foreground: Boolean,
@@ -123,6 +125,7 @@ class SessionInstaller(
             STATUS_SUCCESS -> {
                 installationStatus.complete(true)
             }
+
             else -> {
                 fail(
                     getShortErrorMessage(status, bundle),
@@ -140,8 +143,10 @@ class SessionInstaller(
             STATUS_FAILURE_BLOCKED -> "The installation failed because it was blocked."
             STATUS_FAILURE_CONFLICT -> "The installation failed because it conflicts (or is inconsistent with) with " +
                     "another package already installed on the device."
+
             STATUS_FAILURE_INCOMPATIBLE -> "The installation failed because it is fundamentally incompatible with " +
                     "this device."
+
             STATUS_FAILURE_INVALID -> "The installation failed because one or more of the APKs was invalid."
             STATUS_FAILURE_STORAGE -> "The installation failed because of storage issues."
             else -> "The installation failed. Status: $status. Maybe " +

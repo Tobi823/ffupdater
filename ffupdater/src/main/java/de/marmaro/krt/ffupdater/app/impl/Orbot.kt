@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -20,6 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/guardianproject/orbot/releases
  * https://www.apkmirror.com/apk/the-tor-project/orbot-proxy-with-tor/
  */
+@Keep
 class Orbot : AppBase() {
     override val app = App.ORBOT
     override val packageName = "org.torproject.android"
@@ -38,10 +40,7 @@ class Orbot : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val assetSuffix = getAssetSuffix()
         val result = GithubConsumer.findLatestRelease(

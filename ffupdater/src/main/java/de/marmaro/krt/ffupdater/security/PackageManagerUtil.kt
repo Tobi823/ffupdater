@@ -7,6 +7,7 @@ import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
 import android.content.pm.Signature
 import android.content.pm.SigningInfo
 import android.os.Build
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.app.impl.AppBase
@@ -16,6 +17,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileNotFoundException
 
+@Keep
 class PackageManagerUtil(
     private val packageManager: PackageManager,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,

@@ -18,6 +18,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
@@ -54,7 +55,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_ZONED_DATE_TIME
 import java.util.*
 
-
+@Keep
 class MainActivity : AppCompatActivity() {
     private lateinit var recycleViewAdapter: InstalledAppsAdapter
 
@@ -253,6 +254,7 @@ class MainActivity : AppCompatActivity() {
     class InstalledAppsAdapter(private val activity: MainActivity) :
         RecyclerView.Adapter<InstalledAppsAdapter.AppHolder>() {
 
+        @Keep
         private data class ExceptionWrapper(val message: Int, val exception: Exception?)
 
         private var elements = listOf<App>()

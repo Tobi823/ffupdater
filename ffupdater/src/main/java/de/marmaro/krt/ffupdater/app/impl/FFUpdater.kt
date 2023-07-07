@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -15,6 +16,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 /**
  * https://api.github.com/repos/Tobi823/ffupdater/releases
  */
+@Keep
 class FFUpdater : AppBase() {
     override val app = App.FFUPDATER
     override val packageName = "de.marmaro.krt.ffupdater"
@@ -33,10 +35,7 @@ class FFUpdater : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("Tobi823", "ffupdater"),

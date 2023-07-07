@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.security
 
 import android.content.pm.PackageManager
 import android.content.pm.Signature
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,6 +15,7 @@ import java.security.cert.CertificateFactory
 /**
  * Validation of downloaded and installed application.
  */
+@Keep
 class FingerprintValidator(private val packageManager: PackageManager) {
 
     /**
@@ -49,10 +51,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
     }
 
     @Throws(CertificateException::class, NoSuchAlgorithmException::class)
-    private suspend fun verifyPackageInfo(
-        signature: Signature,
-        appDetail: AppBase
-    ): FingerprintValidatorResult {
+    private suspend fun verifyPackageInfo(signature: Signature, appDetail: AppBase): FingerprintValidatorResult {
         return withContext(Dispatchers.IO) {
             val stream = signature.toByteArray().inputStream().buffered()
             val factory = CertificateFactory.getInstance("X509")

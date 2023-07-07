@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -21,6 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/project.mobile.focus.release/latest
  * https://www.apkmirror.com/apk/mozilla/firefox-focus-private-browser/
  */
+@Keep
 class FirefoxFocus : AppBase() {
     override val app = App.FIREFOX_FOCUS
     override val packageName = "org.mozilla.focus"
@@ -38,10 +40,7 @@ class FirefoxFocus : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileSuffix = findFileName()
         val result = GithubConsumer.findLatestRelease(

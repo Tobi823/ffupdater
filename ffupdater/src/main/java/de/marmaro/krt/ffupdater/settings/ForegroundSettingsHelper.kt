@@ -1,9 +1,11 @@
 package de.marmaro.krt.ffupdater.settings
 
 import android.content.SharedPreferences
+import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatDelegate
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
+@Keep
 object ForegroundSettingsHelper {
     private lateinit var preferences: SharedPreferences
 

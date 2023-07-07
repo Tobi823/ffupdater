@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
@@ -9,6 +10,7 @@ import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.Sha256Hash
 import java.time.Instant
 
+@Keep
 object CustomRepositoryConsumer {
 
     @MainThread
@@ -50,7 +52,8 @@ object CustomRepositoryConsumer {
         )
     }
 
-    data class ApkObject(
+    @Keep
+    private data class ApkObject(
         val added: Long,
         val apkName: String,
         val abis: List<String>,

@@ -1,8 +1,10 @@
 package de.marmaro.krt.ffupdater.settings
 
 import android.content.SharedPreferences
+import androidx.annotation.Keep
 
 
+@Keep
 object DeviceSettingsHelper {
     private lateinit var preferences: SharedPreferences
 

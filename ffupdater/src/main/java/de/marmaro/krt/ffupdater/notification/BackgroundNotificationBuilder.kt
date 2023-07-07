@@ -12,6 +12,7 @@ import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.graphics.BitmapFactory
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.*
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
@@ -19,9 +20,13 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 
 
+@Keep
 object BackgroundNotificationBuilder {
-    data class ChannelData(val id: String, val name: String, val description: String)
-    data class NotificationData(val id: Int, val title: String, val text: String)
+    @Keep
+    private data class ChannelData(val id: String, val name: String, val description: String)
+
+    @Keep
+    private data class NotificationData(val id: Int, val title: String, val text: String)
 
     fun showErrorNotification(context: Context, exception: Exception) {
         val channel = ChannelData(

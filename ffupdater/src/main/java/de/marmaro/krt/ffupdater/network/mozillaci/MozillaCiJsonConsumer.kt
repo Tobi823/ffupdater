@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
+import androidx.annotation.Keep
 import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
@@ -11,6 +12,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 /**
  * Consume the "chain_of_trust.json".
  */
+@Keep
 object MozillaCiJsonConsumer {
 
     suspend fun findTaskId(indexPath: String, cacheBehaviour: CacheBehaviour): String {
@@ -55,6 +57,7 @@ object MozillaCiJsonConsumer {
         return Result(Sha256Hash(fileHash), releaseDate)
     }
 
+    @Keep
     data class Result(
         val fileHash: Sha256Hash,
         val releaseDate: String,

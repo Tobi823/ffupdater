@@ -3,12 +3,14 @@ package de.marmaro.krt.ffupdater.security
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 /**
  * Configure StrictMode to find bugs or other problems.
  */
+@Keep
 class StrictModeSetup(
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
 ) {

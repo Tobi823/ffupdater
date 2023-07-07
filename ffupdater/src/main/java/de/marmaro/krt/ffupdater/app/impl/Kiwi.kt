@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
@@ -23,6 +24,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/kiwibrowser/src.next/releases
  * https://www.apkmirror.com/apk/geometry-ou/kiwi-browser-fast-quiet/
  */
+@Keep
 class Kiwi : AppBase() {
     override val app = App.KIWI
     override val packageName = "com.kiwibrowser.browser"
@@ -41,10 +43,7 @@ class Kiwi : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val abiString = findAbiString()
         val fileRegex = Regex.escape("com.kiwibrowser.browser-$abiString-") +

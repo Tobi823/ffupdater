@@ -2,10 +2,12 @@ package de.marmaro.krt.ffupdater.device
 
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
+import androidx.annotation.Keep
 
 /**
  * This class makes SDK checks testable because Mockk can't mock/change Android classes.
  */
+@Keep
 object DeviceSdkTester {
     val sdkInt = SDK_INT
 

@@ -1,6 +1,9 @@
 package de.marmaro.krt.ffupdater.installer.manifacturer
 
+import androidx.annotation.Keep
+
 // https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/content/pm/PackageManager.java
+@Keep
 object GeneralInstallResultDecoder {
     fun getShortErrorMessage(installResult: Int?): String? {
         return when (installResult) {

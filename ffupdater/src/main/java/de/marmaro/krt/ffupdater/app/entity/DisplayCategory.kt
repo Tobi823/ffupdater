@@ -1,5 +1,8 @@
 package de.marmaro.krt.ffupdater.app.entity
 
+import androidx.annotation.Keep
+
+@Keep
 enum class DisplayCategory {
     FROM_MOZILLA,
     BASED_ON_FIREFOX,

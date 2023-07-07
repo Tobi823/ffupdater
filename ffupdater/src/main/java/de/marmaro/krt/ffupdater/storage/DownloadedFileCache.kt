@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.storage
 
 import android.content.Context
 import android.os.Environment
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import kotlinx.coroutines.Dispatchers
@@ -9,6 +10,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.zip.ZipFile
 
+@Keep
 class DownloadedFileCache(private val app: App) {
 
     fun getApkFile(context: Context, latestUpdate: LatestUpdate): File {
@@ -20,7 +22,7 @@ class DownloadedFileCache(private val app: App) {
         return getApkFile(context, latestUpdate).exists()
     }
 
-    fun getZipFile(context: Context): File {
+    private fun getZipFile(context: Context): File {
         return File(getCacheFolder(context), "${app.impl.packageName}.zip")
     }
 

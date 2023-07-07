@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -21,6 +22,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://api.github.com/repos/brave/brave-browser/releases
  * https://www.apkmirror.com/apk/brave-software/brave-browser-nightly
  */
+@Keep
 class BraveNightly : AppBase() {
     override val app = App.BRAVE_NIGHTLY
     override val packageName = "com.brave.browser_nightly"
@@ -39,10 +41,7 @@ class BraveNightly : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = findNameOfApkFile()
         val result = GithubConsumer.findLatestRelease(

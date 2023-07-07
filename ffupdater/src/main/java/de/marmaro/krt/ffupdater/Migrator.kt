@@ -2,9 +2,11 @@ package de.marmaro.krt.ffupdater
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 
+@Keep
 class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
     @SuppressLint("ApplySharedPref")

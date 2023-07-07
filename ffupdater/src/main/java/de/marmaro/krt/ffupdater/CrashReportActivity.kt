@@ -5,16 +5,30 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build.*
+import android.os.Build.BOARD
+import android.os.Build.BRAND
+import android.os.Build.DEVICE
+import android.os.Build.HOST
+import android.os.Build.MANUFACTURER
+import android.os.Build.MODEL
+import android.os.Build.PRODUCT
+import android.os.Build.SUPPORTED_ABIS
+import android.os.Build.TAGS
+import android.os.Build.TIME
+import android.os.Build.USER
 import android.os.Build.VERSION.RELEASE
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatActivity
-import de.marmaro.krt.ffupdater.BuildConfig.*
+import de.marmaro.krt.ffupdater.BuildConfig.BUILD_TYPE
+import de.marmaro.krt.ffupdater.BuildConfig.VERSION_CODE
+import de.marmaro.krt.ffupdater.BuildConfig.VERSION_NAME
 
+@Keep
 class CrashReportActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

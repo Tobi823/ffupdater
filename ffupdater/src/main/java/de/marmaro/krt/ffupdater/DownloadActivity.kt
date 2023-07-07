@@ -14,6 +14,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -68,6 +69,7 @@ import kotlinx.coroutines.withContext
  * The DownloadManager is more difficult to use then the default java way, but the DownloadManager offers more features
  * like restarting downloads, showing the current download status etc.
  */
+@Keep
 class DownloadActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
     private lateinit var app: App

@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.EditTextPreference
@@ -26,6 +27,7 @@ import java.time.Duration
 /**
  * Activity for displaying the settings view.
  */
+@Keep
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

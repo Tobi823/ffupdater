@@ -1,9 +1,11 @@
 package de.marmaro.krt.ffupdater.settings
 
 import android.content.SharedPreferences
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
 import java.time.Duration
 
+@Keep
 object BackgroundSettingsHelper {
     private lateinit var preferences: SharedPreferences
 

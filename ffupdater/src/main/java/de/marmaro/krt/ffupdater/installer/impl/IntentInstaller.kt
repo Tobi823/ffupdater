@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+import androidx.annotation.Keep
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.app.App
@@ -21,6 +22,7 @@ import kotlinx.coroutines.CompletableDeferred
 import java.io.File
 
 
+@Keep
 class IntentInstaller(
     context: Context,
     private val activityResultRegistry: ActivityResultRegistry,

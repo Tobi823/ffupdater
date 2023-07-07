@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
@@ -27,6 +28,7 @@ import java.time.format.DateTimeFormatter
  * https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
  */
+@Keep
 class FirefoxNightly : AppBase() {
     override val app = App.FIREFOX_NIGHTLY
     override val packageName = "org.mozilla.fenix"
@@ -46,10 +48,7 @@ class FirefoxNightly : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val abiString = findAbiString()
         val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)

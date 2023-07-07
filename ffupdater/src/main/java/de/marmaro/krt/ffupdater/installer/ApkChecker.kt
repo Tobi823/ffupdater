@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.installer
 
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.installer.exceptions.InvalidApkException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -9,6 +10,7 @@ import java.io.File
 import java.util.zip.ZipException
 import java.util.zip.ZipFile
 
+@Keep
 class ApkChecker {
 
     companion object {

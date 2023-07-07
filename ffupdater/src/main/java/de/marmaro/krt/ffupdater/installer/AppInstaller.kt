@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.installer
 
 import android.content.Context
 import androidx.activity.ComponentActivity
+import androidx.annotation.Keep
 import androidx.lifecycle.DefaultLifecycleObserver
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
@@ -13,6 +14,7 @@ import de.marmaro.krt.ffupdater.installer.impl.ShizukuInstaller
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import java.io.File
 
+@Keep
 interface AppInstaller : DefaultLifecycleObserver {
     val type: Installer
     suspend fun startInstallation(context: Context, file: File): InstallResult

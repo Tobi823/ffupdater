@@ -3,10 +3,12 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.Context
 import android.content.SharedPreferences
 import android.text.format.DateUtils
+import androidx.annotation.Keep
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME
 import java.time.format.DateTimeParseException
 
+@Keep
 object DataStoreHelper {
     private lateinit var preferences: SharedPreferences
 

@@ -1,10 +1,23 @@
 package de.marmaro.krt.ffupdater.utils
 
-import android.os.Build.VERSION_CODES.*
+import android.os.Build.VERSION_CODES.LOLLIPOP
+import android.os.Build.VERSION_CODES.LOLLIPOP_MR1
+import android.os.Build.VERSION_CODES.M
+import android.os.Build.VERSION_CODES.N
+import android.os.Build.VERSION_CODES.N_MR1
+import android.os.Build.VERSION_CODES.O
+import android.os.Build.VERSION_CODES.O_MR1
+import android.os.Build.VERSION_CODES.P
+import android.os.Build.VERSION_CODES.Q
+import android.os.Build.VERSION_CODES.R
+import android.os.Build.VERSION_CODES.S
+import android.os.Build.VERSION_CODES.S_V2
+import androidx.annotation.Keep
 
 /**
  * Class with useful helper methods.
  */
+@Keep
 object AndroidVersionCodes {
 
     /**

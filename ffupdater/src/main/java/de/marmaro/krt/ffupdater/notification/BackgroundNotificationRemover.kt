@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.notification
 
 import android.app.NotificationManager
 import android.content.Context
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.DOWNLOAD_ERROR_CODE
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.DOWNLOAD_IS_RUNNING_CODE
@@ -9,6 +10,7 @@ import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.INSTA
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.INSTALL_SUCCESS_CODE
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.UPDATE_AVAILABLE_CODE
 
+@Keep
 object BackgroundNotificationRemover {
 
     private fun removeUpdateAvailableNotification(context: Context, app: App) {

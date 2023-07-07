@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.network.github
 
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -8,6 +9,7 @@ import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import java.util.*
 import java.util.function.Predicate
 
+@Keep
 object GithubConsumer {
 
     @MainThread
@@ -64,19 +66,17 @@ object GithubConsumer {
         return null
     }
 
-    data class SearchParameterForRelease(
-        val name: String,
-        val isPreRelease: Boolean,
-    )
+    @Keep
+    data class SearchParameterForRelease(val name: String, val isPreRelease: Boolean)
 
-    data class SearchParameterForAsset(
-        val name: String,
-    ) {
+    @Keep
+    data class SearchParameterForAsset(val name: String) {
         fun nameStartsAndEndsWith(prefix: String, suffix: String): Boolean {
             return name.startsWith(prefix) && name.endsWith(suffix)
         }
     }
 
+    @Keep
     data class Result(
         val tagName: String,
         val url: String,
@@ -84,10 +84,8 @@ object GithubConsumer {
         val releaseDate: String,
     )
 
-    data class GithubRepo(
-        val owner: String,
-        val name: String,
-    )
+    @Keep
+    data class GithubRepo(val owner: String, val name: String)
 
     val REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID = GithubRepo("mozilla-mobile", "firefox-android")
     val REPOSITORY__BRAVE__BRAVE_BROWSER = GithubRepo("brave", "brave-browser")

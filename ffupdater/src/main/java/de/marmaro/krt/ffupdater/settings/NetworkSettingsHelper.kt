@@ -2,9 +2,11 @@ package de.marmaro.krt.ffupdater.settings
 
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.annotation.Keep
 import java.net.Proxy.Type
 
 
+@Keep
 object NetworkSettingsHelper {
     private lateinit var preferences: SharedPreferences
 
@@ -35,6 +37,7 @@ object NetworkSettingsHelper {
             }
         }
 
+    @Keep
     data class DohConnectionDetails(
         val host: String,
         val ips: List<String>,
@@ -59,6 +62,7 @@ object NetworkSettingsHelper {
         return DohConnectionDetails(server, ips)
     }
 
+    @Keep
     data class ProxyConnectionDetails(
         val type: Type,
         val host: String,

@@ -3,12 +3,14 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.TextView
+import androidx.annotation.Keep
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceViewHolder
 
 /**
  * Copied from https://stackoverflow.com/a/60598784
  */
+@Keep
 class LongSummaryPreferenceCategory @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null

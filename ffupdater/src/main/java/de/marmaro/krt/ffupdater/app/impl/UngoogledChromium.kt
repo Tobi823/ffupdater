@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -18,6 +19,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 /**
  * https://github.com/ungoogled-software/ungoogled-chromium-android/releases
  */
+@Keep
 @Deprecated("app is no longer supported")
 class UngoogledChromium : AppBase() {
     override val app = App.UNGOOGLED_CHROMIUM
@@ -38,10 +40,7 @@ class UngoogledChromium : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(

@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.installer.impl
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Environment
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -17,6 +18,7 @@ import java.io.File
  *
  * For further improvements: https://www.xda-developers.com/implementing-shizuku/
  */
+@Keep
 class ShizukuInstaller(
     app: App,
     private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,

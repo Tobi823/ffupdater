@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl
 import android.content.Context
 import android.util.Log
 import androidx.annotation.AnyThread
+import androidx.annotation.Keep
 import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.R
@@ -21,6 +22,7 @@ import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
 
+@Keep
 abstract class AppBase {
     abstract val app: App
     abstract val packageName: String

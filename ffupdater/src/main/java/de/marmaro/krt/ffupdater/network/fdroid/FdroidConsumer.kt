@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.network.fdroid
 
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.AddAppActivity.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -84,17 +85,20 @@ object FdroidConsumer {
         return rootJson["created_at"].asString
     }
 
-    internal data class AppInfo(
+    @Keep
+    private data class AppInfo(
         val packageName: String,
         val suggestedVersionCode: Long,
         val packages: List<Package>,
     )
 
-    internal data class Package(
+    @Keep
+    private data class Package(
         val versionName: String,
         val versionCode: Long,
     )
 
+    @Keep
     data class Result(
         val versionName: String,
         val versionCode: Long,

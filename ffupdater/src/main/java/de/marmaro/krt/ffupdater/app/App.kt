@@ -1,8 +1,10 @@
 package de.marmaro.krt.ffupdater.app
 
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.impl.*
 import de.marmaro.krt.ffupdater.storage.DownloadedFileCache
 
+@Keep
 enum class App(val implFactory: () -> AppBase) {
     BRAVE({ Brave() }),
     BRAVE_BETA({ BraveBeta() }),

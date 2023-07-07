@@ -3,7 +3,9 @@ package de.marmaro.krt.ffupdater.storage
 import android.content.Context
 import android.os.Environment
 import android.os.StatFs
+import androidx.annotation.Keep
 
+@Keep
 object StorageUtil {
     private const val REQUIRED_MEBIBYTES = 500
     private const val BYTES_IN_MEBIBYTE = 1024 * 1024

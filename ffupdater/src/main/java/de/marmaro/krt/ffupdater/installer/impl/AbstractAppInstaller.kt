@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.Context
+import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.download_activity__downloaded_application_is_not_verified
 import de.marmaro.krt.ffupdater.app.App
@@ -12,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 
+@Keep
 abstract class AbstractAppInstaller(
     protected val app: App,
 ) : AppInstaller {

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
@@ -23,6 +24,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android/
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android_Arm64/
  */
+@Keep
 class Chromium : AppBase() {
     override val app = App.CHROMIUM
     override val packageName = "org.chromium.chrome"
@@ -40,10 +42,7 @@ class Chromium : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         Log.d(LOG_TAG, "check for latest version")
         val platform = findPlatform()
         val revision = findLatestRevision(platform, cacheBehaviour)
@@ -137,7 +136,8 @@ class Chromium : AppBase() {
         }
     }
 
-    data class StorageObject(
+    @Keep
+    private data class StorageObject(
         val kind: String,
         val downloadUrl: String,
         val name: String,

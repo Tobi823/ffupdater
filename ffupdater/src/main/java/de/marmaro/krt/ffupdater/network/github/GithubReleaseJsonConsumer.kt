@@ -1,11 +1,13 @@
 package de.marmaro.krt.ffupdater.network.github
 
+import androidx.annotation.Keep
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import okhttp3.ResponseBody
 import java.util.function.Predicate
 
 
+@Keep
 class GithubReleaseJsonConsumer(
     private val reader: JsonReader,
     private val correctRelease: Predicate<GithubConsumer.SearchParameterForRelease>,
@@ -167,11 +169,11 @@ class GithubReleaseJsonConsumer(
             JsonToken.END_DOCUMENT -> {}
             null -> {}
         }
-
     }
 
 
-    data class CurrentRelease(
+    @Keep
+    private data class CurrentRelease(
         var name: String? = null,
         var prerelease: Boolean? = null,
         var tagName: String? = null,
@@ -187,7 +189,8 @@ class GithubReleaseJsonConsumer(
     }
 
 
-    data class CurrentAsset(
+    @Keep
+    private data class CurrentAsset(
         var name: String? = null,
         var size: Long? = null,
         var downloadUrl: String? = null,
@@ -201,7 +204,8 @@ class GithubReleaseJsonConsumer(
         }
     }
 
-    data class FoundAsset(
+    @Keep
+    private data class FoundAsset(
         val name: String,
         val size: Long,
         val downloadUrl: String,

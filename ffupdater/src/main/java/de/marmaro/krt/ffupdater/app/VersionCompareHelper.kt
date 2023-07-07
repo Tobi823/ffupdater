@@ -1,7 +1,9 @@
 package de.marmaro.krt.ffupdater.app
 
+import androidx.annotation.Keep
 import io.github.g00fy2.versioncompare.Version
 
+@Keep
 object VersionCompareHelper {
     fun isAvailableVersionHigher(installedVersion: String, availableVersion: String): Boolean {
         try {

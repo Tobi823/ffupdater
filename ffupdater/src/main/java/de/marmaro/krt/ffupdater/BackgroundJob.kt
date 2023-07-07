@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.RESTRICT_BACKGROUND_STATUS_ENABLED
 import android.util.Log
+import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
@@ -52,6 +53,7 @@ import java.util.concurrent.TimeUnit.MINUTES
  *
  * Depending on the device and the settings from the user not all steps will be executed.
  */
+@Keep
 class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {
     private val context = applicationContext
