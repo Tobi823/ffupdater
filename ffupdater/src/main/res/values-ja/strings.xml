@@ -255,4 +255,9 @@
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="mull__title">Mull ブラウザー</string>
     <string name="chromium__title">Chromium</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="fennecfdroid__description">Fennec F-Droid は最新の Firefox (コードネーム Fenix) を基にしたブラウザーです。独自の部分とテレメトリーが削除されていますが、ユーザーを追跡する複数の Mozilla と Google のサービスに接続されます。</string>
+    <string name="fennecfdroid__warning">FFUpdater はファイルを F-Droid からダウンロードするため、時間がかかることがあります。</string>
+    <string name="network__dns_provider__title">DNS 設定</string>
+    <string name="mulch__description">Chromium の技術に基づく、セキュリティ指向の強化されたウェブブラウザです。Vanadium プロジェクトからのパッチにより不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。ソースレポジトリには、プレビルドや他の OS で Mulch を WebView として使用するためのメイクファイルが含まれます。</string>
 </resources>
