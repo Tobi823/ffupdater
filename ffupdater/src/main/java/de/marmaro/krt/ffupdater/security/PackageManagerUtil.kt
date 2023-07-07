@@ -18,10 +18,7 @@ import java.io.File
 import java.io.FileNotFoundException
 
 @Keep
-class PackageManagerUtil(
-    private val packageManager: PackageManager,
-    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-) {
+class PackageManagerUtil(private val packageManager: PackageManager) {
 
     @Suppress("DEPRECATION")
     @MainThread
@@ -37,7 +34,7 @@ class PackageManagerUtil(
 //              https://developer.android.com/reference/android/content/pm/PackageManager#getPackageArchiveInfo(java.lang.String,%20android.content.pm.PackageManager.PackageInfoFlags)
 //        }
 
-        if (deviceSdkTester.supportsAndroid9()) {
+        if (DeviceSdkTester.supportsAndroid9()) {
             packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)
                 ?.signingInfo
                 ?.let { return extractSignature(it) }
@@ -57,7 +54,7 @@ class PackageManagerUtil(
     @SuppressLint("PackageManagerGetSignatures")
     fun getInstalledAppInfo(app: AppBase): Signature {
         try {
-            if (deviceSdkTester.supportsAndroid9()) {
+            if (DeviceSdkTester.supportsAndroid9()) {
                 packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)
                     ?.signingInfo
                     ?.let { return extractSignature(it) }

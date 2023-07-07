@@ -29,11 +29,7 @@ import java.io.IOException
 
 
 @Keep
-class SessionInstaller(
-    app: App,
-    private val foreground: Boolean,
-    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-) : AbstractAppInstaller(app) {
+class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppInstaller(app) {
     override val type = Installer.SESSION_INSTALLER
     private val intentNameForAppInstallationCallback =
         "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
@@ -80,13 +76,13 @@ class SessionInstaller(
         params.setAppLabel(context.getString(app.impl.title))
         params.setAppPackageName(app.impl.packageName)
         params.setSize(file.length())
-        if (deviceSdkTester.supportsAndroidNougat()) {
+        if (DeviceSdkTester.supportsAndroidNougat()) {
             params.setOriginatingUid(android.os.Process.myUid())
         }
-        if (deviceSdkTester.supportsAndroidOreo()) {
+        if (DeviceSdkTester.supportsAndroidOreo()) {
             params.setInstallReason(PackageManager.INSTALL_REASON_USER)
         }
-        if (deviceSdkTester.supportsAndroid12()) {
+        if (DeviceSdkTester.supportsAndroid12()) {
             params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
         }
         return params
@@ -107,7 +103,7 @@ class SessionInstaller(
     private fun createSessionChangeReceiver(context: Context, sessionId: Int): IntentSender {
         val intent = Intent(intentNameForAppInstallationCallback)
         intent.`package` = "de.marmaro.krt.ffupdater"
-        val flags = if (deviceSdkTester.supportsAndroid12()) {
+        val flags = if (DeviceSdkTester.supportsAndroid12()) {
             FLAG_UPDATE_CURRENT + FLAG_MUTABLE
         } else {
             FLAG_UPDATE_CURRENT

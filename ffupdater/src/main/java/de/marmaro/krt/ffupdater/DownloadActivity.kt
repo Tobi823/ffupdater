@@ -178,7 +178,7 @@ class DownloadActivity : AppCompatActivity() {
         intent.setDataAndType(uri, "resource/folder")
         val chooser = Intent.createChooser(intent, getString(download_activity__open_folder))
 
-        if (DeviceSdkTester.INSTANCE.supportsAndroidNougat()) {
+        if (DeviceSdkTester.supportsAndroidNougat()) {
             StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
             try {
                 startActivity(chooser)

@@ -19,14 +19,11 @@ import java.io.File
  * For further improvements: https://www.xda-developers.com/implementing-shizuku/
  */
 @Keep
-class ShizukuInstaller(
-    app: App,
-    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-) : AbstractAppInstaller(app) {
+class ShizukuInstaller(app: App) : AbstractAppInstaller(app) {
     override val type = Installer.SHIZUKU_INSTALLER
 
     init {
-        if (!deviceSdkTester.supportsAndroidMarshmallow()) {
+        if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
             throw RuntimeException("Shizuku is not supported on this device")
         }
     }
@@ -63,7 +60,7 @@ class ShizukuInstaller(
     }
 
     private suspend fun createInstallationSession(size: Int): Int {
-        val result = if (deviceSdkTester.supportsAndroidNougat()) {
+        val result = if (DeviceSdkTester.supportsAndroidNougat()) {
             execute("pm install-create --user current -i ${app.impl.packageName} -S $size")
         } else {
             execute("pm install-create -i ${app.impl.packageName} -S $size")

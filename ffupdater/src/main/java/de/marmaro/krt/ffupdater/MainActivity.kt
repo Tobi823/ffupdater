@@ -194,7 +194,7 @@ class MainActivity : AppCompatActivity() {
             showToast(R.string.main_activity__no_unmetered_network)
             return
         }
-        if (DeviceSdkTester.INSTANCE.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
+        if (DeviceSdkTester.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }

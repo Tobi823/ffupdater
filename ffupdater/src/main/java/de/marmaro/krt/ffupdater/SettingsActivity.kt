@@ -78,7 +78,7 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
-            if (!DeviceSdkTester.INSTANCE.supportsAndroidMarshmallow()) {
+            if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
                 findSwitchPref("background__update_check__when_device_idle").summary =
                     getString(R.string.settings__background__update_check__when_device_idle__unsupported)
                 findSwitchPref("background__update_check__when_device_idle").isEnabled = false
@@ -154,7 +154,7 @@ class SettingsActivity : AppCompatActivity() {
                         }
                     }
                     Installer.SHIZUKU_INSTALLER.name -> {
-                        if (!DeviceSdkTester.INSTANCE.supportsAndroidMarshmallow()) {
+                        if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
                             val text = "Your Android is too old."
                             Toast.makeText(context, text, Toast.LENGTH_LONG).show()
                             return@setOnPreferenceChangeListener false

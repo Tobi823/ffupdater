@@ -212,7 +212,7 @@ class AddAppActivity : AppCompatActivity() {
                 showToast(R.string.main_activity__no_unmetered_network)
                 return
             }
-            if (DeviceSdkTester.INSTANCE.supportsAndroidOreo() && !activity.packageManager.canRequestPackageInstalls()) {
+            if (DeviceSdkTester.supportsAndroidOreo() && !activity.packageManager.canRequestPackageInstalls()) {
                 RequestInstallationPermissionDialog().show(activity.supportFragmentManager)
                 return
             }

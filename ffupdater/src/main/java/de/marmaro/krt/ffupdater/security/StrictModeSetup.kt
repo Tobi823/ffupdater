@@ -11,9 +11,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
  * Configure StrictMode to find bugs or other problems.
  */
 @Keep
-class StrictModeSetup(
-    private val deviceSdkTester: DeviceSdkTester = DeviceSdkTester.INSTANCE,
-) {
+object StrictModeSetup {
     fun enableStrictMode() {
         if (BuildConfig.DEBUG) {
             enableStrictModeForDebugging()
@@ -35,18 +33,18 @@ class StrictModeSetup(
 
         val vmPolicy = VmPolicy.Builder()
         vmPolicy.detectActivityLeaks()
-        if (deviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.detectCleartextNetwork()
-        if (deviceSdkTester.supportsAndroidOreo()) vmPolicy.detectContentUriWithoutPermission()
-        if (deviceSdkTester.supportsAndroid10()) vmPolicy.detectCredentialProtectedWhileLocked()
+        if (DeviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.detectCleartextNetwork()
+        if (DeviceSdkTester.supportsAndroidOreo()) vmPolicy.detectContentUriWithoutPermission()
+        if (DeviceSdkTester.supportsAndroid10()) vmPolicy.detectCredentialProtectedWhileLocked()
         vmPolicy.detectFileUriExposure()
-        if (deviceSdkTester.supportsAndroid10()) vmPolicy.detectImplicitDirectBoot()
-        if (deviceSdkTester.supportsAndroid12()) vmPolicy.detectIncorrectContextUse()
+        if (DeviceSdkTester.supportsAndroid10()) vmPolicy.detectImplicitDirectBoot()
+        if (DeviceSdkTester.supportsAndroid12()) vmPolicy.detectIncorrectContextUse()
         vmPolicy.detectLeakedClosableObjects()
         vmPolicy.detectLeakedRegistrationObjects()
         vmPolicy.detectLeakedSqlLiteObjects()
-        if (deviceSdkTester.supportsAndroid9()) vmPolicy.detectNonSdkApiUsage()
-        if (deviceSdkTester.supportsAndroid12()) vmPolicy.detectUnsafeIntentLaunch()
-        if (deviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.penaltyDeathOnCleartextNetwork()
+        if (DeviceSdkTester.supportsAndroid9()) vmPolicy.detectNonSdkApiUsage()
+        if (DeviceSdkTester.supportsAndroid12()) vmPolicy.detectUnsafeIntentLaunch()
+        if (DeviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.penaltyDeathOnCleartextNetwork()
 
         StrictMode.setVmPolicy(
             vmPolicy.build()
@@ -63,7 +61,7 @@ class StrictModeSetup(
                 .build()
         )
 
-        if (deviceSdkTester.supportsAndroidMarshmallow()) {
+        if (DeviceSdkTester.supportsAndroidMarshmallow()) {
             StrictMode.setVmPolicy(
                 VmPolicy.Builder()
                     .penaltyDeathOnCleartextNetwork()
@@ -72,7 +70,5 @@ class StrictModeSetup(
         }
     }
 
-    companion object {
-        val INSTANCE = StrictModeSetup()
-    }
+    val INSTANCE = StrictModeSetup
 }

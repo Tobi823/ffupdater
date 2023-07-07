@@ -375,7 +375,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 .setRequiresBatteryNotLow(true)
                 .setRequiresStorageNotLow(true)
 
-            if (DeviceSdkTester.INSTANCE.supportsAndroidMarshmallow()) {
+            if (DeviceSdkTester.supportsAndroidMarshmallow()) {
                 builder.setRequiresDeviceIdle(onlyWhenIdle)
             }
 
