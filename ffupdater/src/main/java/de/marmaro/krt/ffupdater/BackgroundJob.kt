@@ -55,7 +55,7 @@ import java.util.concurrent.TimeUnit.MINUTES
  */
 @Keep
 class BackgroundJob(context: Context, workerParams: WorkerParameters) :
-    CoroutineWorker(context, workerParams) {
+    CoroutineWorker(context.applicationContext, workerParams) {
     private val context = applicationContext
 
 
@@ -322,26 +322,26 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         fun initBackgroundUpdateCheck(context: Context) {
             if (BackgroundSettingsHelper.isUpdateCheckEnabled) {
                 start(
-                    context,
+                    context.applicationContext,
                     KEEP,
                     BackgroundSettingsHelper.updateCheckInterval,
                     BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
                 )
             } else {
-                stop(context)
+                stop(context.applicationContext)
             }
         }
 
         fun forceRestartBackgroundUpdateCheck(context: Context) {
             if (BackgroundSettingsHelper.isUpdateCheckEnabled) {
                 start(
-                    context,
+                    context.applicationContext,
                     ExistingPeriodicWorkPolicy.UPDATE,
                     BackgroundSettingsHelper.updateCheckInterval,
                     BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
                 )
             } else {
-                stop(context)
+                stop(context.applicationContext)
             }
         }
 
@@ -356,9 +356,9 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             onlyWhenIdle: Boolean,
         ) {
             if (enabled) {
-                start(context, ExistingPeriodicWorkPolicy.UPDATE, interval, onlyWhenIdle)
+                start(context.applicationContext, ExistingPeriodicWorkPolicy.UPDATE, interval, onlyWhenIdle)
             } else {
-                stop(context)
+                stop(context.applicationContext)
             }
         }
 

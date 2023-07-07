@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        BackgroundJob.initBackgroundUpdateCheck(this@MainActivity)
+        BackgroundJob.initBackgroundUpdateCheck(applicationContext)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

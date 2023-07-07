@@ -11,11 +11,11 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
 
     @SuppressLint("ApplySharedPref")
     fun migrate(context: Context) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
         if (lastVersionCode < 137) { // 77.7.11
-            val editor = PreferenceManager.getDefaultSharedPreferences(context).edit()
+            val editor = PreferenceManager.getDefaultSharedPreferences(context.applicationContext).edit()
 
             preferences.all
                 .map { it.key }
@@ -26,7 +26,7 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         }
 
         if (lastVersionCode < 121) { // 77.5.0
-            val editor = PreferenceManager.getDefaultSharedPreferences(context).edit()
+            val editor = PreferenceManager.getDefaultSharedPreferences(context.applicationContext).edit()
 
             if (preferences.getBoolean("installer__root", false)) {
                 editor.putString("installer__method", Installer.ROOT_INSTALLER.name)
@@ -50,7 +50,7 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
             editor.commit()
         }
         if (lastVersionCode != currentVersionCode) {
-            BackgroundJob.forceRestartBackgroundUpdateCheck(context)
+            BackgroundJob.forceRestartBackgroundUpdateCheck(context.applicationContext)
         }
 
         preferences.edit()

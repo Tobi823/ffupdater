@@ -47,7 +47,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        BackgroundJob.initBackgroundUpdateCheck(this)
+        BackgroundJob.initBackgroundUpdateCheck(applicationContext)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -67,7 +67,7 @@ class SettingsActivity : AppCompatActivity() {
             onlyWhenIdle: Boolean?
         ): Boolean {
             BackgroundJob.changeBackgroundUpdateCheck(
-                requireContext(),
+                requireContext().applicationContext,
                 enabled ?: BackgroundSettingsHelper.isUpdateCheckEnabled,
                 interval ?: BackgroundSettingsHelper.updateCheckInterval,
                 onlyWhenIdle ?: BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle
