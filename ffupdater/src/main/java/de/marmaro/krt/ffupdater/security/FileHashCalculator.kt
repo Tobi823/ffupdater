@@ -4,9 +4,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.BufferedInputStream
 import java.io.File
-import java.io.FileInputStream
 import java.security.MessageDigest
 
 
@@ -19,9 +17,9 @@ object FileHashCalculator {
         return withContext(Dispatchers.IO) {
             val digest = MessageDigest.getInstance("SHA-256")
             val buffer = ByteArray(4096)
-            createInputStream(file).use { bufferedInputStream ->
+            file.inputStream().buffered().use {
                 while (true) {
-                    val bytes = read(bufferedInputStream, buffer)
+                    val bytes = it.read(buffer)
                     if (bytes <= 0) {
                         break
                     }
@@ -31,19 +29,5 @@ object FileHashCalculator {
             val hash = digest.digest().joinToString("") { "%02x".format(it) }
             Sha256Hash(hash)
         }
-    }
-
-    /**
-     * Prevent false-positive "Inappropriate blocking method call"
-     */
-    private fun createInputStream(file: File): BufferedInputStream {
-        return BufferedInputStream(FileInputStream(file))
-    }
-
-    /**
-     * Prevent false-positive "Inappropriate blocking method call"
-     */
-    private fun read(bufferedInputStream: BufferedInputStream, buffer: ByteArray): Int {
-        return bufferedInputStream.read(buffer)
     }
 }

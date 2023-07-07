@@ -41,8 +41,8 @@ object MozillaCiJsonConsumer {
     ): Result {
         val url = "https://firefoxci.taskcluster-artifacts.net/$taskId/0/public/chain-of-trust.json"
         val json = try {
-            FileDownloader.downloadWithCache(url, cacheBehaviour).use {
-                JsonParser.parseReader(it.charStream().buffered())
+            FileDownloader.downloadWithCache(url, cacheBehaviour).charStream().buffered().use {
+                JsonParser.parseReader(it)
             }
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the taskId from graphql API.", e)

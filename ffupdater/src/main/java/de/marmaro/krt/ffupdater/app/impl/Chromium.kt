@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
@@ -43,11 +42,9 @@ class Chromium : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
         val platform = findPlatform()
         val revision = findLatestRevision(platform, cacheBehaviour)
         val storageObject = findStorageObject(revision, platform, cacheBehaviour)
-        Log.i(LOG_TAG, "found latest version $revision")
         return LatestUpdate(
             downloadUrl = storageObject.downloadUrl,
             version = revision,

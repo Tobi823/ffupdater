@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -44,7 +43,6 @@ class BromiteSystemWebView : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BROMITE__BROMITE,
@@ -54,12 +52,9 @@ class BromiteSystemWebView : AppBase() {
             isSuitableAsset = { it.name == fileName },
             cacheBehaviour = cacheBehaviour,
         )
-        // tag name can be "90.0.4430.59"
-        val version = result.tagName
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = version,
+            version = result.tagName,
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,

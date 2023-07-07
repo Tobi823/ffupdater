@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -42,8 +41,6 @@ class Brave : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        val time = System.nanoTime()
-        Log.d(LOG_TAG, "check for latest version")
         val fileName = findNameOfApkFile()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BRAVE__BRAVE_BROWSER,
@@ -53,11 +50,9 @@ class Brave : AppBase() {
             isSuitableAsset = { it.name == fileName },
             cacheBehaviour = cacheBehaviour,
         )
-        val version = result.tagName.replace("v", "")
-        Log.i(LOG_TAG, "found latest version $version after ${(System.nanoTime() - time) / 1000000}ms")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = version,
+            version = result.tagName.replace("v", ""),
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,

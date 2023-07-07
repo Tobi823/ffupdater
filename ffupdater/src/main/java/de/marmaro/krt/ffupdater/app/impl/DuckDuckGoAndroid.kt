@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -38,7 +37,6 @@ class DuckDuckGoAndroid : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
-        Log.d(LOG_TAG, "check for latest version")
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("duckduckgo", "Android"),
             resultsPerApiCall = 3,
@@ -47,12 +45,9 @@ class DuckDuckGoAndroid : AppBase() {
             dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
         )
-        // tag name can be "5.45.4"
-        val version = result.tagName
-        Log.i(LOG_TAG, "found latest version $version")
         return LatestUpdate(
             downloadUrl = result.url,
-            version = version,
+            version = result.tagName,
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,

@@ -156,8 +156,8 @@ object FileDownloader {
         method: String = "GET",
         requestBody: RequestBody? = null,
     ): JsonObject {
-        return downloadWithCache(url, cacheBehaviour, method, requestBody).use {
-            JsonParser.parseReader(it.charStream()).asJsonObject
+        return downloadWithCache(url, cacheBehaviour, method, requestBody).charStream().buffered().use {
+            JsonParser.parseReader(it).asJsonObject
         }
     }
 

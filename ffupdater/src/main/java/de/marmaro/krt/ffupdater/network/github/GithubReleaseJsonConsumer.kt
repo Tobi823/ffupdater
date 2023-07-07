@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.network.github
 import androidx.annotation.Keep
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
-import okhttp3.ResponseBody
 import java.util.function.Predicate
 
 
@@ -13,13 +12,6 @@ class GithubReleaseJsonConsumer(
     private val correctRelease: Predicate<GithubConsumer.SearchParameterForRelease>,
     private val correctAsset: Predicate<GithubConsumer.SearchParameterForAsset>,
 ) {
-
-    constructor(
-        responseBody: ResponseBody,
-        correctRelease: Predicate<GithubConsumer.SearchParameterForRelease>,
-        correctAsset: Predicate<GithubConsumer.SearchParameterForAsset>,
-    ) : this(JsonReader(responseBody.charStream().buffered()), correctRelease, correctAsset)
-
 
     fun parseReleaseArrayJson(): GithubConsumer.Result? {
         return handleReleaseArray()
