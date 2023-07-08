@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
 import androidx.annotation.Keep
-import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -41,13 +40,11 @@ object MozillaCiJsonConsumer {
     ): Result {
         val url = "https://firefoxci.taskcluster-artifacts.net/$taskId/0/public/chain-of-trust.json"
         val json = try {
-            FileDownloader.downloadWithCache(url, cacheBehaviour).charStream().buffered().use {
-                JsonParser.parseReader(it)
-            }
+            FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
         } catch (e: NetworkException) {
             throw NetworkException("Fail to get the taskId from graphql API.", e)
         }
-        val fileHash = json.asJsonObject["artifacts"]
+        val fileHash = json["artifacts"]
             .asJsonObject["public/build/fenix/$abiString/target.apk"]
             .asJsonObject["sha256"]
             .asString

@@ -1,22 +1,27 @@
 package de.marmaro.krt.ffupdater.network.file
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.network.annotation.ReturnValueMustBeClosed
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.dnsoverhttps.DnsOverHttps
 import okio.*
 import ru.gildor.coroutines.okhttp.await
+import java.io.BufferedReader
 import java.io.File
 import java.io.IOException
 import java.net.InetAddress
@@ -112,22 +117,27 @@ object FileDownloader {
     @MainThread
     @Throws(NetworkException::class)
     @ReturnValueMustBeClosed
-    suspend fun downloadWithCache(
+    suspend fun <R> downloadWithCache(
         url: String,
         cacheBehaviour: CacheBehaviour,
         method: String = "GET",
         requestBody: RequestBody? = null,
-    ): ResponseBody {
+        execute: (BufferedReader) -> R,
+    ): R {
         return withContext(Dispatchers.IO) {
-            try {
-                val response = callUrlWithCache(url, cacheBehaviour, method, requestBody, null)
-                validateAndReturnResponseBody(url, response)
-            } catch (e: IOException) {
-                throw NetworkException("Request of HTTP-API $url failed.", e)
-            } catch (e: IllegalArgumentException) {
-                throw NetworkException("Request of HTTP-API $url failed.", e)
-            } catch (e: NetworkException) {
-                throw NetworkException("Request of HTTP-API $url failed.", e)
+            getMutexForUrl(url).withLock {
+                try {
+                    val responseBody = callUrlWithCache(url, cacheBehaviour, method, requestBody, null)
+                    responseBody.charStream().buffered().use { reader ->
+                        execute(reader)
+                    }
+                } catch (e: IOException) {
+                    throw NetworkException("Request of HTTP-API $url failed.", e)
+                } catch (e: IllegalArgumentException) {
+                    throw NetworkException("Request of HTTP-API $url failed.", e)
+                } catch (e: NetworkException) {
+                    throw NetworkException("Request of HTTP-API $url failed.", e)
+                }
             }
         }
     }
@@ -141,21 +151,20 @@ object FileDownloader {
         method: String = "GET",
         requestBody: RequestBody? = null,
     ): String {
-        return downloadWithCache(url, cacheBehaviour, method, requestBody).use {
-            it.string()
+        return downloadWithCache(url, cacheBehaviour, method, requestBody) {
+            it.readText()
         }
     }
 
     @MainThread
     @Throws(NetworkException::class)
-    @ReturnValueMustBeClosed
     suspend fun downloadJsonObjectWithCache(
         url: String,
         cacheBehaviour: CacheBehaviour,
         method: String = "GET",
         requestBody: RequestBody? = null,
     ): JsonObject {
-        return downloadWithCache(url, cacheBehaviour, method, requestBody).charStream().buffered().use {
+        return downloadWithCache(url, cacheBehaviour, method, requestBody) {
             JsonParser.parseReader(it).asJsonObject
         }
     }
@@ -173,22 +182,45 @@ object FileDownloader {
         return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
     }
 
+    private val mutexForUrls = mutableMapOf<String, Mutex>()
+    private val mapMutex = Mutex()
+
+    /**
+     * An url is only cache after the first call is finish.
+     * If an url is simultaneously called multiple times, then the cache is not ready and unnecessary data is transmitted.
+     * Use Mutex to prevent simultaneous calls of the same url.
+     *
+     */
+    private suspend fun getMutexForUrl(url: String): Mutex {
+        mapMutex.withLock {
+            if (mutexForUrls.size > 30) {
+                Log.d(FFUpdater.LOG_TAG, "callUrlWithCache(): Cleanup mutexForUrls.")
+                mutexForUrls
+                    .filter { !it.value.isLocked }
+                    .map { it.key }
+                    .forEach { mutexForUrls.remove(it) }
+            }
+            return mutexForUrls.getOrPut(url) { Mutex() }// not atomic
+        }
+    }
+
     private suspend fun callUrlWithCache(
         url: String,
         cacheBehaviour: CacheBehaviour,
         method: String,
         requestBody: RequestBody?,
         processChannel: Channel<DownloadStatus>?,
-    ): Response {
+    ): ResponseBody {
         require(url.startsWith("https://"))
         val request = Request.Builder()
             .url(url)
             .cacheControl(convertCacheBehaviourToCacheControl(cacheBehaviour))
             .method(method, requestBody)
             .tag(processChannel) // use tag to transfer a Channel to the Interceptor
-        return clientWithCache
+        val response = clientWithCache
             .newCall(request.build())
             .await()
+        return validateAndReturnResponseBody(url, response)
     }
 
     private fun convertCacheBehaviourToCacheControl(cacheControl: CacheBehaviour) =

@@ -20,6 +20,7 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
             fileWriter.write(LogReader.readLogs())
             fileWriter.flush()
         }
+        e.printStackTrace()
         exitProcess(1)
     }
 
@@ -43,12 +44,11 @@ class CrashListener private constructor(private val file: File) : Thread.Uncaugh
         }
 
         private fun startCrashReport(context: Context, errorFile: File) {
-            errorFile.bufferedReader().use {
-                val error = it.readText()
-                val description = context.getString(R.string.crash_report__explain_text__uncaught_throwable)
-                val intent = CrashReportActivity.createIntent(context.applicationContext, error, description)
-                context.applicationContext.startActivity(intent)
-            }
+            val error = errorFile.bufferedReader().use { it.readText() }
+            val description = context.getString(R.string.crash_report__explain_text__uncaught_throwable)
+            val intent = CrashReportActivity.createIntent(context.applicationContext, error, description)
+            context.applicationContext.startActivity(intent)
+
         }
     }
 }

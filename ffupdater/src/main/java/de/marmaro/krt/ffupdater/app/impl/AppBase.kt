@@ -26,8 +26,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 
 
 @Keep
@@ -89,25 +87,19 @@ abstract class AppBase {
     open fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
     }
 
-    private val mutexMap: MutableMap<App, Mutex> = mutableMapOf()
-
     suspend fun findAppUpdateStatus(context: Context, cacheBehaviour: CacheBehaviour): AppUpdateStatus {
         val available = try {
-            // mutex to force the cache use
-            val mutex = mutexMap.getOrPut(app) { Mutex() }
-            mutex.withLock {
-                Log.d(LOG_TAG, "Search for latest ${app.name} update.")
-                val time = System.currentTimeMillis()
-                val available = findLatestUpdate(context.applicationContext, cacheBehaviour)
-                val duration = System.currentTimeMillis() - time
-                Log.i(LOG_TAG, "Found update ${available.version} for ${app.name} after ${duration}ms")
-                available
-            }
+            Log.d(LOG_TAG, "findAppUpdateStatus(): Search for latest ${app.name} update.")
+            val time = System.currentTimeMillis()
+            val available = findLatestUpdate(context.applicationContext, cacheBehaviour)
+            val duration = System.currentTimeMillis() - time
+            Log.i(LOG_TAG, "findAppUpdateStatus(): Found ${app.name} ${available.version} (${duration}ms).")
+            available
         } catch (e: NetworkException) {
-            Log.d(LOG_TAG, "Can't find latest update for ${app.name}.", e)
+            Log.d(LOG_TAG, "findAppUpdateStatus(): Can't find latest update for ${app.name}.", e)
             throw NetworkException("can't find latest update for ${app.name}.", e)
         } catch (e: DisplayableException) {
-            Log.d(LOG_TAG, "Can't find latest update for ${app.name}.", e)
+            Log.d(LOG_TAG, "findAppUpdateStatus(): Can't find latest update for ${app.name}.", e)
             throw DisplayableException("can't find latest update for ${app.name}.", e)
         }
         return AppUpdateStatus(

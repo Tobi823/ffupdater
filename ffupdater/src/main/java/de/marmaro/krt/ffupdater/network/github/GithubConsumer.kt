@@ -42,9 +42,9 @@ object GithubConsumer {
         cacheBehaviour: CacheBehaviour,
     ): Result? {
         val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases/latest"
-        FileDownloader.downloadWithCache(url, cacheBehaviour).charStream().buffered().use {
+        return FileDownloader.downloadWithCache(url, cacheBehaviour) {
             val jsonConsumer = GithubReleaseJsonConsumer(JsonReader(it), isValidRelease, isSuitableAsset)
-            return jsonConsumer.parseReleaseJson()
+            jsonConsumer.parseReleaseJson()
         }
     }
 
@@ -58,11 +58,11 @@ object GithubConsumer {
         for (page in 1..10) {
             val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases?" +
                     "per_page=$resultsPerApiCall&page=$page"
-            FileDownloader.downloadWithCache(url, cacheBehaviour).charStream().buffered().use {
+            val possibleResult = FileDownloader.downloadWithCache(url, cacheBehaviour) {
                 val jsonConsumer = GithubReleaseJsonConsumer(JsonReader(it), isValidRelease, isSuitableAsset)
                 jsonConsumer.parseReleaseArrayJson()
-                    ?.let { result -> return result } // return if not null
             }
+            possibleResult?.let { return it }
         }
         return null
     }
