@@ -291,11 +291,11 @@ class DownloadActivity : AppCompatActivity() {
         show(R.id.downloadingFile)
         setText(R.id.downloadingFileUrl, url)
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status, ""))
-        app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+        app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
 
         // this coroutine should survive a screen rotation and should live as long as the view model
         val latestUpdate = appUpdateStatus.latestUpdate
-        val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(this, latestUpdate)
+        val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(applicationContext, latestUpdate)
 
         try {
             val (deferred, progressChannel) = withContext(viewModel.viewModelScope.coroutineContext) {
@@ -379,11 +379,11 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun postProcessDownload(latestUpdate: LatestUpdate) {
         // if the download was an ZIP archive, then extract the APK file
         if (app.findImpl().isAppPublishedAsZipArchive()) {
-            app.downloadedFileCache.extractApkFromZipArchive(this, appUpdateStatus.latestUpdate)
-            app.downloadedFileCache.deleteZipFile(this)
+            app.downloadedFileCache.extractApkFromZipArchive(applicationContext, appUpdateStatus.latestUpdate)
+            app.downloadedFileCache.deleteZipFile(applicationContext)
         }
-        app.downloadedFileCache.deleteAllExceptLatestApkFile(this, appUpdateStatus.latestUpdate)
-        val apkFile = app.downloadedFileCache.getApkFile(this@DownloadActivity, latestUpdate)
+        app.downloadedFileCache.deleteAllExceptLatestApkFile(applicationContext, appUpdateStatus.latestUpdate)
+        val apkFile = app.downloadedFileCache.getApkFile(applicationContext, latestUpdate)
         ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
     }
 
