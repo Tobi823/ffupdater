@@ -1,0 +1,4 @@
+* Ευχαριστούμε για τις συνεισφορές τους Weblate τους: Kazushi Hayama, gallegonovato, Alexthegib και Oğuz Ersen
+* Διόρθωση του σφάλματος "δεν έγινε λήψη του αρχείου" (χρήση για κάθε αίτημα OkHttp ένα νέο Interceptor)
+* Βελτιώση του ελέγχου ενημέρωσης από το GitHub (χρησιμοποιήστε το JsonReader αντί για το Gson)
+* Το Bromite και το Bromite SystemWebView είναι EOL
