@@ -39,13 +39,12 @@ import de.marmaro.krt.ffupdater.R.string.install_activity__download_file_failed_
 import de.marmaro.krt.ffupdater.R.string.main_activity__no_unmetered_network
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.ApkChecker
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
@@ -55,7 +54,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
-import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
@@ -78,6 +76,7 @@ import kotlinx.coroutines.withContext
 class DownloadActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
     private lateinit var app: App
+    private lateinit var appImpl: AppBase
     private lateinit var appUpdateStatus: AppUpdateStatus
     private lateinit var appInstaller: AppInstaller
 
@@ -127,10 +126,11 @@ class DownloadActivity : AppCompatActivity() {
             return
         }
         app = App.valueOf(appFromExtras)
+        appImpl = app.findImpl()
 
         viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
-            app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+            app.findImpl().deleteFileCache(applicationContext)
             hide(R.id.install_activity__delete_cache)
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
@@ -138,7 +138,7 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         // hide existing background notification for this app
-        BackgroundNotificationRemover.removeAppStatusNotifications(this, app)
+        BackgroundNotificationRemover.removeAppStatusNotifications(applicationContext, app)
 
         // prevent network timeouts when the displayed is automatically turned off
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -159,11 +159,11 @@ class DownloadActivity : AppCompatActivity() {
             // next time
             if (viewModel.installationSuccess) {
                 if (ForegroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
-                    app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+                    appImpl.deleteFileCache(applicationContext)
                 }
             } else {
                 if (ForegroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
-                    app.downloadedFileCache.deleteAllApkFileForThisApp(this)
+                    appImpl.deleteFileCache(applicationContext)
                 }
             }
             viewModel.clear()
@@ -177,7 +177,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun tryOpenDownloadFolderInFileManager() {
-        val absolutePath = app.downloadedFileCache.getCacheFolder(this).absolutePath
+        val absolutePath = appImpl.getApkCacheFolder(applicationContext).absolutePath
         val uri = Uri.parse("file://$absolutePath/")
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, "resource/folder")
@@ -215,28 +215,28 @@ class DownloadActivity : AppCompatActivity() {
 
         if (!fetchDownloadInformationOrUseCache()) return
 
+        val appImpl = app.findImpl()
+        val latestUpdate = appUpdateStatus.latestUpdate
         when {
             viewModel.isDownloadForCurrentAppRunning(app) -> {
-                val fileDownloaded = reuseCurrentDownload()
-                if (fileDownloaded) postProcessDownload(appUpdateStatus.latestUpdate)
+                reuseCurrentDownload()
             }
 
-            app.downloadedFileCache.isApkFileCached(this, appUpdateStatus.latestUpdate) -> {
+            appImpl.isApkDownloaded(applicationContext, latestUpdate) -> {
                 Log.d(LOG_TAG, "startInstallationProcess(): use APK cache of ${app.name}.")
                 show(R.id.useCachedDownloadedApk)
-                val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
+                val file = appImpl.getApkFile(applicationContext, latestUpdate)
                 setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
             }
 
             else -> {
                 if (!startDownload()) return
-                postProcessDownload(appUpdateStatus.latestUpdate)
             }
         }
 
         val installationSuccess = installApp()
         if (installationSuccess) {
-            app.findImpl().appIsInstalledCallback(this, appUpdateStatus)
+            appImpl.installCallback(applicationContext, appUpdateStatus)
         }
         viewModel.installationSuccess = installationSuccess
     }
@@ -251,9 +251,9 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun checkIfEnoughStorageAvailable() {
-        if (!StorageUtil.isEnoughStorageAvailable(this)) {
+        if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             show(R.id.tooLowMemory)
-            val mbs = StorageUtil.getFreeStorageInMebibytes(this)
+            val mbs = StorageUtil.getFreeStorageInMebibytes(applicationContext)
             val message = getString(download_activity__too_low_memory_description, mbs)
             setText(R.id.tooLowMemoryDescription, message)
         }
@@ -261,11 +261,11 @@ class DownloadActivity : AppCompatActivity() {
 
     private suspend fun fetchDownloadInformationOrUseCache(): Boolean {
         show(R.id.fetchUrl)
-        val downloadSource = app.findImpl().downloadSource
+        val downloadSource = appImpl.downloadSource
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
         try {
-            appUpdateStatus = app.findImpl().findAppUpdateStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+            appUpdateStatus = appImpl.findAppUpdateStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         } catch (e: ApiRateLimitExceededException) {
             displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
         } catch (e: DisplayableException) {
@@ -282,56 +282,46 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private suspend fun startDownload(): Boolean {
         Log.d(LOG_TAG, "startInstallationProcess(): Start download of ${app.name}.")
-        if (!ForegroundSettingsHelper.isDownloadOnMeteredAllowed && isNetworkMetered(this)) {
+        if (!ForegroundSettingsHelper.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             displayFetchFailure(getString(main_activity__no_unmetered_network))
             return false
         }
 
-        val url = appUpdateStatus.latestUpdate.downloadUrl
+        val appImpl = app.findImpl()
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, url)
+        setText(R.id.downloadingFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status, ""))
-        app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
-
-        // this coroutine should survive a screen rotation and should live as long as the view model
-        val latestUpdate = appUpdateStatus.latestUpdate
-        val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(applicationContext, latestUpdate)
 
         try {
-            val (deferred, progressChannel) = withContext(viewModel.viewModelScope.coroutineContext) {
-                // run async with await later
-                FileDownloader.downloadFile(url, file)
-            }
-            viewModel.storeNewRunningDownload(app, deferred, progressChannel)
-
-            for (progress in progressChannel) {
-                progress.progressInPercent
-                    ?.also { findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = it }
-
-                val textStatus = when {
-                    progress.progressInPercent != null -> "${progress.progressInPercent}%"
-                    else -> "${progress.totalMB}MB"
+            withContext(viewModel.viewModelScope.coroutineContext) {
+                appImpl.download(applicationContext, appUpdateStatus.latestUpdate) { deferred, progressChannel ->
+                    viewModel.storeNewRunningDownload(app, deferred, progressChannel)
+                    for (progress in progressChannel) {
+                        if (progress.progressInPercent != null) {
+                            findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress =
+                                progress.progressInPercent
+                            setText(
+                                R.id.downloadingFileText,
+                                getString(download_activity__download_app_with_status, "${progress.progressInPercent}%")
+                            )
+                        } else {
+                            setText(
+                                R.id.downloadingFileText,
+                                getString(download_activity__download_app_with_status, "${progress.totalMB}MB")
+                            )
+                        }
+                    }
                 }
-                setText(
-                    R.id.downloadingFileText,
-                    getString(download_activity__download_app_with_status, textStatus)
-                )
             }
-            deferred.await()
-
-            // I suspect that sometimes the server offers the wrong file for download
-            ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
             return true
         } catch (e: NetworkException) {
             displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
-            app.downloadedFileCache.deleteAllApkFileForThisApp(this)
         } catch (e: DisplayableException) {
             displayDownloadFailure(e.message ?: e.javaClass.name, e)
-            app.downloadedFileCache.deleteAllApkFileForThisApp(this)
         } finally {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, url)
+            setText(R.id.downloadedFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
         }
         return false
     }
@@ -359,10 +349,6 @@ class DownloadActivity : AppCompatActivity() {
         try {
             // NPE was thrown in #359 - it should be safe to ignore null values
             viewModel.downloadDeferred?.await()
-
-            // I suspect that sometimes the server offers the wrong file for download
-            val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(this, latestUpdate)
-            ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
             return true
         } catch (e: NetworkException) {
             displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
@@ -376,25 +362,13 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private suspend fun postProcessDownload(latestUpdate: LatestUpdate) {
-        // if the download was an ZIP archive, then extract the APK file
-        if (app.findImpl().isAppPublishedAsZipArchive()) {
-            app.downloadedFileCache.extractApkFromZipArchive(applicationContext, appUpdateStatus.latestUpdate)
-            app.downloadedFileCache.deleteZipFile(applicationContext)
-        }
-        app.downloadedFileCache.deleteAllExceptLatestApkFile(applicationContext, appUpdateStatus.latestUpdate)
-        val apkFile = app.downloadedFileCache.getApkFile(applicationContext, latestUpdate)
-        ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
-    }
-
-    @MainThread
     private suspend fun installApp(): Boolean {
         Log.d(LOG_TAG, "Install app ${app.name}.")
         show(R.id.installingApplication)
-        val file = app.downloadedFileCache.getApkFile(this, appUpdateStatus.latestUpdate)
+        val file = appImpl.getApkFile(applicationContext, appUpdateStatus.latestUpdate)
 
         try {
-            val installResult = appInstaller.startInstallation(this, file)
+            val installResult = appInstaller.startInstallation(this@DownloadActivity, file)
             val certificateHash = installResult.certificateHash ?: "error"
             displayAppInstallationSuccess(certificateHash)
             return true
@@ -402,7 +376,7 @@ class DownloadActivity : AppCompatActivity() {
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
             displayAppInstallationFailure(e.translatedMessage, ex)
         } finally {
-            // hide existing background notification for this app
+            // hide existing background notification for applicationContext app
             BackgroundNotificationRemover.removeAppStatusNotifications(applicationContext, app)
             hide(R.id.installingApplication)
         }
@@ -440,7 +414,7 @@ class DownloadActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val cacheFolder = app.downloadedFileCache.getCacheFolder(this).absolutePath
+        val cacheFolder = appImpl.getApkCacheFolder(applicationContext).absolutePath
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
         if (!ForegroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
             show(R.id.install_activity__delete_cache)

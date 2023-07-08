@@ -34,7 +34,7 @@ object FennecFdroid : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         val index = findIndex()
         val result = FdroidConsumer.getLatestUpdate(packageName, index, cacheBehaviour)
         return LatestUpdate(

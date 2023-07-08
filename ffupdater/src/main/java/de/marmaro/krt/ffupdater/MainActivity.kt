@@ -331,12 +331,13 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(view: AppHolder, position: Int) {
             val app = elements[position]
+            val appImpl = app.findImpl()
             val metadata = appAndUpdateStatus.getOrDefault(app, null)
             val error = errors[app]
             val fragmentManager = activity.supportFragmentManager
 
-            view.title.setText(app.findImpl().title)
-            view.icon.setImageResource(app.findImpl().icon)
+            view.title.setText(appImpl.title)
+            view.icon.setImageResource(appImpl.icon)
 
             when {
                 appsWithWrongFingerprint.contains(app) -> onBindViewHolderWhenWrongFingerprint(view)
@@ -353,14 +354,14 @@ class MainActivity : AppCompatActivity() {
             val hideWarningButtons = ForegroundSettingsHelper.isHideWarningButtonForInstalledApps
             when {
                 hideWarningButtons -> view.warningIcon.visibility = View.GONE
-                app.findImpl().installationWarning == null -> view.warningIcon.visibility = View.GONE
+                appImpl.installationWarning == null -> view.warningIcon.visibility = View.GONE
                 else -> AppWarningDialog.newInstanceOnClick(view.warningIcon, app, fragmentManager)
             }
 
             AppInfoDialog.newInstanceOnClick(view.infoButton, app, fragmentManager)
 
             view.openProjectPageButton.setOnClickListener {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(app.findImpl().projectPage))
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(appImpl.projectPage))
                 activity.startActivity(browserIntent)
             }
         }

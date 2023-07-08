@@ -46,7 +46,7 @@ object TorBrowser : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         val (version, downloadUrl) = findVersionAndDownloadUrl(cacheBehaviour)
         return LatestUpdate(
             downloadUrl = downloadUrl,

@@ -42,7 +42,7 @@ object BromiteSystemWebView : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BROMITE__BROMITE,

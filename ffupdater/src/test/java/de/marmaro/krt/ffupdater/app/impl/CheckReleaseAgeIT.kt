@@ -124,7 +124,7 @@ class CheckReleaseAgeIT {
     @ParameterizedTest
     @MethodSource("generate test data")
     fun `is the latest version of app not too old`(testData: TestData) {
-        val result = runBlocking { testData.app.findLatestUpdate(context, FORCE_NETWORK) }
+        val result = runBlocking { testData.app.fetchLatestUpdate(context, FORCE_NETWORK) }
         isDownloadAvailable(result.downloadUrl)
 
         if (testData.maxAgeInDays != null) {

@@ -42,7 +42,7 @@ object Kiwi : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         val abiString = findAbiString()
         val fileRegex = Regex.escape("com.kiwibrowser.browser-$abiString-") +
                 """\d+""" +
@@ -87,13 +87,13 @@ object Kiwi : AppBase() {
     }
 
     @SuppressLint("ApplySharedPref")
-    override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
+    override fun installCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.latestUpdate.version)
             .putLong(APK_FILE_SIZE, available.latestUpdate.exactFileSizeBytesOfDownload!!)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
-        super.appIsInstalledCallback(context, available)
+        super.installCallback(context, available)
     }
 
     private const val BUILD_RUNNER_ID = "kiwi__build_runner_id"

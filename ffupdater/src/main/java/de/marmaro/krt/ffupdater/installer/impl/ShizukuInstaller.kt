@@ -60,10 +60,11 @@ class ShizukuInstaller(app: App) : AbstractAppInstaller(app) {
     }
 
     private suspend fun createInstallationSession(size: Int): Int {
+        val packageName = app.findImpl().packageName
         val result = if (DeviceSdkTester.supportsAndroidNougat()) {
-            execute("pm install-create --user current -i ${app.findImpl().packageName} -S $size")
+            execute("pm install-create --user current -i $packageName -S $size")
         } else {
-            execute("pm install-create -i ${app.findImpl().packageName} -S $size")
+            execute("pm install-create -i $packageName -S $size")
         }
 
         val sessionIdMatch = Regex("""\d+""").find(result)

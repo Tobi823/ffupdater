@@ -7,7 +7,6 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
-import de.marmaro.krt.ffupdater.utils.ifTrue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -26,10 +25,13 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
         }
 
         scope.launch(Dispatchers.Default) {
-            App.values()
-                .filter { app -> app.findImpl().isEol() }
-                .any { app -> app.findImpl().isInstalled(context) == InstallationStatus.INSTALLED }
-                .ifTrue { BackgroundNotificationBuilder.showEolAppsNotification(context) }
+            val eolInstalled = App.values()
+                .map { it.findImpl() }
+                .filter { it.isEol() }
+                .any { it.isInstalled(context.applicationContext) == InstallationStatus.INSTALLED }
+            if (eolInstalled) {
+                BackgroundNotificationBuilder.showEolAppsNotification(context.applicationContext)
+            }
         }
     }
 }

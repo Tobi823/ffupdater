@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app
 
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.impl.*
-import de.marmaro.krt.ffupdater.storage.DownloadedFileCache
 
 @Keep
 enum class App {
@@ -33,8 +32,6 @@ enum class App {
     UNGOOGLED_CHROMIUM,
     VIVALDI,
     ;
-
-    val downloadedFileCache by lazy { DownloadedFileCache(this) }
 
     fun findImpl(): AppBase {
         @Suppress("DEPRECATION")

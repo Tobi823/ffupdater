@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.security
 import android.content.pm.PackageManager
 import android.content.pm.Signature
 import androidx.annotation.Keep
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -16,7 +17,7 @@ import java.security.cert.CertificateFactory
  * Validation of downloaded and installed application.
  */
 @Keep
-class FingerprintValidator(private val packageManager: PackageManager) {
+object FingerprintValidator {
 
     /**
      * Validate the SHA256 fingerprint of the certificate of the downloaded application as APK file.
@@ -26,7 +27,7 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      * @param app  app
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
-    suspend fun checkApkFile(file: File, app: AppBase): FingerprintValidatorResult {
+    suspend fun checkApkFile(packageManager: PackageManager, file: File, app: AppBase): FingerprintValidatorResult {
         return withContext(Dispatchers.IO) {
             val signature = PackageManagerUtil(packageManager).getPackageArchiveInfo(file.absolutePath)
             verifyPackageInfo(signature, app)
@@ -43,10 +44,10 @@ class FingerprintValidator(private val packageManager: PackageManager) {
      *
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
-    suspend fun checkInstalledApp(app: AppBase): FingerprintValidatorResult {
+    suspend fun checkInstalledApp(packageManager: PackageManager, app: App): FingerprintValidatorResult {
         return withContext(Dispatchers.IO) {
-            val signature = PackageManagerUtil(packageManager).getInstalledAppInfo(app)
-            verifyPackageInfo(signature, app)
+            val signature = PackageManagerUtil(packageManager).getInstalledAppInfo(app.findImpl())
+            verifyPackageInfo(signature, app.findImpl())
         }
     }
 

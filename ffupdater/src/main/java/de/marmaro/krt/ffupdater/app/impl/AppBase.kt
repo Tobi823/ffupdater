@@ -4,17 +4,16 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.AnyThread
 import androidx.annotation.Keep
-import androidx.annotation.WorkerThread
 import de.marmaro.krt.ffupdater.DisplayableException
-import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
+import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
-import de.marmaro.krt.ffupdater.device.ABI
+import de.marmaro.krt.ffupdater.app.impl.base.ApkDownloader
+import de.marmaro.krt.ffupdater.app.impl.base.AppAttributes
+import de.marmaro.krt.ffupdater.app.impl.base.InstalledVersion
+import de.marmaro.krt.ffupdater.app.impl.base.UpdateFetcher
 import de.marmaro.krt.ffupdater.device.ABI.ARM64_V8A
 import de.marmaro.krt.ffupdater.device.ABI.ARMEABI
 import de.marmaro.krt.ffupdater.device.ABI.ARMEABI_V7A
@@ -24,50 +23,15 @@ import de.marmaro.krt.ffupdater.device.ABI.X86
 import de.marmaro.krt.ffupdater.device.ABI.X86_64
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
-import de.marmaro.krt.ffupdater.security.FingerprintValidator
-import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
 
 @Keep
-abstract class AppBase {
-    abstract val app: App
-    abstract val packageName: String
-    abstract val title: Int
-    abstract val description: Int
-    open val installationWarning: Int? = null
-    abstract val downloadSource: String
-    abstract val icon: Int
-    abstract val minApiLevel: Int
-    abstract val supportedAbis: List<ABI>
-    abstract val signatureHash: String
-    open val installableByUser: Boolean = true
-    abstract val projectPage: String
-    open val eolReason: Int? = null
-    abstract val displayCategory: DisplayCategory
-    open val fileNameInZipArchive: String? = null
+abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledVersion {
+    override val installationWarning: Int? = null
+    override val installableByUser = true
+    override val eolReason: Int? = null
+    override val fileNameInZipArchive: String? = null
 
-    @AnyThread
-    suspend fun isInstalled(context: Context): InstallationStatus {
-        return if (PackageManagerUtil(context.packageManager).isAppInstalled(packageName)) {
-            if (FingerprintValidator(context.packageManager).checkInstalledApp(this).isValid) {
-                InstallationStatus.INSTALLED
-            } else {
-                InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
-            }
-        } else {
-            InstallationStatus.NOT_INSTALLED
-        }
-    }
-
-    @AnyThread
-    fun isInstalledWithoutFingerprintVerification(context: Context): Boolean {
-        return PackageManagerUtil(context.packageManager).isAppInstalled(packageName)
-    }
-
-    @AnyThread
-    open fun getInstalledVersion(context: Context): String? {
-        return PackageManagerUtil(context.packageManager).getInstalledAppVersionName(packageName)
-    }
 
     @AnyThread
     fun getDisplayInstalledVersion(context: Context): String {
@@ -79,27 +43,25 @@ abstract class AppBase {
         return context.getString(R.string.available_version, availableVersionResult.version)
     }
 
-    fun isEol() = (eolReason != null)
-
-    fun isAppPublishedAsZipArchive() = (fileNameInZipArchive != null)
-
     @AnyThread
-    open fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
+    open fun isAvailableVersionHigherThanInstalled(context: Context, available: LatestUpdate): Boolean {
+        val installedVersion = getInstalledVersion(context.applicationContext) ?: return true
+        return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
     }
 
     suspend fun findAppUpdateStatus(context: Context, cacheBehaviour: CacheBehaviour): AppUpdateStatus {
         val available = try {
-            Log.d(LOG_TAG, "findAppUpdateStatus(): Search for latest ${app.name} update.")
+            Log.d(FFUpdater.LOG_TAG, "findAppUpdateStatus(): Search for latest ${app.name} update.")
             val time = System.currentTimeMillis()
-            val available = findLatestUpdate(context.applicationContext, cacheBehaviour)
+            val available = fetchLatestUpdate(context.applicationContext, cacheBehaviour)
             val duration = System.currentTimeMillis() - time
-            Log.i(LOG_TAG, "findAppUpdateStatus(): Found ${app.name} ${available.version} (${duration}ms).")
+            Log.i(FFUpdater.LOG_TAG, "findAppUpdateStatus(): Found ${app.name} ${available.version} (${duration}ms).")
             available
         } catch (e: NetworkException) {
-            Log.d(LOG_TAG, "findAppUpdateStatus(): Can't find latest update for ${app.name}.", e)
+            Log.d(FFUpdater.LOG_TAG, "findAppUpdateStatus(): Can't find latest update for ${app.name}.", e)
             throw NetworkException("can't find latest update for ${app.name}.", e)
         } catch (e: DisplayableException) {
-            Log.d(LOG_TAG, "findAppUpdateStatus(): Can't find latest update for ${app.name}.", e)
+            Log.d(FFUpdater.LOG_TAG, "findAppUpdateStatus(): Can't find latest update for ${app.name}.", e)
             throw DisplayableException("can't find latest update for ${app.name}.", e)
         }
         return AppUpdateStatus(
@@ -109,17 +71,13 @@ abstract class AppBase {
         )
     }
 
-    @WorkerThread
-    internal abstract suspend fun findLatestUpdate(
-        context: Context,
-        cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate
-
     @AnyThread
-    open fun isAvailableVersionHigherThanInstalled(context: Context, available: LatestUpdate): Boolean {
-        val installedVersion = getInstalledVersion(context.applicationContext) ?: return true
-        return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
+    open fun installCallback(context: Context, available: AppUpdateStatus) {
     }
+
+
+    fun isEol() = (eolReason != null)
+
 
     companion object {
         val ALL_ABIS = listOf(ARM64_V8A, ARMEABI_V7A, ARMEABI, X86_64, X86, MIPS, MIPS64)

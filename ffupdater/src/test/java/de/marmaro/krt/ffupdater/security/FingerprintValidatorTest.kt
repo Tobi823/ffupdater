@@ -68,10 +68,10 @@ class FingerprintValidatorTest {
         } returns packageInfo
 
         val actual =
-            runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE.impl) }
+            runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE.findImpl()) }
         assertTrue(actual.isValid)
         assertEquals(signatureFingerprint, actual.hexString)
-        assertEquals(signatureFingerprint, App.FIREFOX_RELEASE.impl.signatureHash)
+        assertEquals(signatureFingerprint, App.FIREFOX_RELEASE.findImpl().signatureHash)
     }
 
     @Test
@@ -85,7 +85,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
-        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BRAVE.impl) }
+        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BRAVE.findImpl()) }
         assertFalse(actual.isValid)
     }
 
@@ -102,7 +102,7 @@ class FingerprintValidatorTest {
 
         assertThrows(CertificateException::class.java) {
             runBlocking {
-                fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE.impl)
+                fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE.findImpl())
             }
         }
     }
@@ -115,14 +115,14 @@ class FingerprintValidatorTest {
         every { signature.toByteArray() } returns signatureBytes
         every {
             @Suppress("DEPRECATION")
-            packageManager.getPackageInfo(App.FIREFOX_RELEASE.impl.packageName, GET_SIGNATURES)
+            packageManager.getPackageInfo(App.FIREFOX_RELEASE.findImpl().packageName, GET_SIGNATURES)
         } returns packageInfo
         val actual = runBlocking {
-            fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE.impl)
+            fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE.findImpl())
         }
         assertTrue(actual.isValid)
         assertEquals(signatureFingerprint, actual.hexString)
-        assertEquals(signatureFingerprint, App.FIREFOX_RELEASE.impl.signatureHash)
+        assertEquals(signatureFingerprint, App.FIREFOX_RELEASE.findImpl().signatureHash)
     }
 
     @Test
@@ -133,12 +133,12 @@ class FingerprintValidatorTest {
         every { signature.toByteArray() } returns Random.nextBytes(938)
         every {
             @Suppress("DEPRECATION")
-            packageManager.getPackageInfo(App.FIREFOX_RELEASE.impl.packageName, GET_SIGNATURES)
+            packageManager.getPackageInfo(App.FIREFOX_RELEASE.findImpl().packageName, GET_SIGNATURES)
         } returns packageInfo
 
         assertThrows(CertificateException::class.java) {
             runBlocking {
-                fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE.impl)
+                fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE.findImpl())
             }
         }
     }

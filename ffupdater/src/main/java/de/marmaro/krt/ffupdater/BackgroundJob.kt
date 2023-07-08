@@ -24,7 +24,6 @@ import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.background.BackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.ApkChecker
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.NATIVE_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
@@ -171,17 +170,18 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val appsAndUpdateStatus = App.values()
             // simple and fast checks
             .filter { it !in BackgroundSettingsHelper.excludedAppsFromUpdateCheck }
-            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
-            .filter { it.findImpl().isInstalled(applicationContext) == InstallationStatus.INSTALLED }
+            .map { it.findImpl() }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.supportedAbis) }
+            .filter { it.isInstalled(applicationContext) == InstallationStatus.INSTALLED }
             // query latest available update
             .map {
-                val updateStatus = it.findImpl().findAppUpdateStatus(applicationContext, USE_CACHE)
-                AppAndUpdateStatus(it, updateStatus)
+                val updateStatus = it.findAppUpdateStatus(applicationContext, USE_CACHE)
+                AppAndUpdateStatus(it.app, updateStatus)
             }
 
         // delete old cached APK files
         appsAndUpdateStatus.forEach { (app, appUpdateStatus) ->
-            app.downloadedFileCache.deleteAllExceptLatestApkFile(applicationContext, appUpdateStatus.latestUpdate)
+            app.findImpl().deleteFileCacheExceptLatest(applicationContext, appUpdateStatus.latestUpdate)
         }
 
         // return outdated apps with available updates
@@ -215,44 +215,27 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     private suspend fun downloadUpdateAndReturnAvailability(app: App, updateStatus: AppUpdateStatus): Boolean {
         Log.d(LOG_TAG, "downloadUpdateAndReturnAvailability(): Download ${app.name} in background.")
         val latestUpdate = updateStatus.latestUpdate
-        if (app.downloadedFileCache.isApkFileCached(applicationContext, latestUpdate)) {
+        val appImpl = app.findImpl()
+        if (appImpl.isApkDownloaded(applicationContext, latestUpdate)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
             return true
         }
-
         Log.i(LOG_TAG, "Download update for $app.")
-        val url = latestUpdate.downloadUrl
-        val file = app.downloadedFileCache.getApkOrZipTargetFileForDownload(applicationContext, latestUpdate)
         return try {
-            // run async with await later
-            val (deferred, channel) = FileDownloader.downloadFile(url, file)
-            BackgroundNotificationBuilder.showDownloadRunningNotification(applicationContext, app, null, null)
-            for (progress in channel) {
-                BackgroundNotificationBuilder.showDownloadRunningNotification(
-                    applicationContext, app, progress.progressInPercent, progress.totalMB
-                )
+            appImpl.download(applicationContext, latestUpdate) { _, progressChannel ->
+                BackgroundNotificationBuilder.showDownloadRunningNotification(applicationContext, app, null, null)
+                for (progress in progressChannel) {
+                    BackgroundNotificationBuilder.showDownloadRunningNotification(
+                        applicationContext, app, progress.progressInPercent, progress.totalMB
+                    )
+                }
             }
-
-            deferred.await()
-
-            ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
-            if (app.findImpl().isAppPublishedAsZipArchive()) {
-                app.downloadedFileCache.extractApkFromZipArchive(applicationContext, latestUpdate)
-                app.downloadedFileCache.deleteZipFile(applicationContext)
-            }
-
-            // I suspect that sometimes the server offers the wrong file for download
-            val apkFile = app.downloadedFileCache.getApkFile(applicationContext, latestUpdate)
-            ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
-
-            BackgroundNotificationRemover.removeDownloadRunningNotification(applicationContext, app)
-            app.downloadedFileCache.deleteAllExceptLatestApkFile(applicationContext, latestUpdate)
             true
         } catch (e: DisplayableException) {
-            BackgroundNotificationRemover.removeDownloadRunningNotification(applicationContext, app)
             BackgroundNotificationBuilder.showDownloadNotification(applicationContext, app, e)
-            app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
             false
+        } finally {
+            BackgroundNotificationRemover.removeDownloadRunningNotification(applicationContext, app)
         }
     }
 
@@ -282,7 +265,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private suspend fun installApplication(app: App, updateStatus: AppUpdateStatus) {
-        val file = app.downloadedFileCache.getApkFile(applicationContext, updateStatus.latestUpdate)
+        val appImpl = app.findImpl()
+        val file = appImpl.getApkFile(applicationContext, updateStatus.latestUpdate)
         require(file.exists()) { "AppCache has no cached APK file" }
 
         val installer = createBackgroundAppInstaller(applicationContext, app)
@@ -290,16 +274,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             installer.startInstallation(applicationContext, file)
 
             BackgroundNotificationBuilder.showInstallSuccessNotification(applicationContext, app)
-            app.findImpl().appIsInstalledCallback(applicationContext, updateStatus)
+            appImpl.installCallback(applicationContext, updateStatus)
 
             if (BackgroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
-                app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
+                appImpl.getApkCacheFolder(applicationContext)
             }
+            return
         } catch (e: UserInteractionIsRequiredException) {
             BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, app)
-            if (BackgroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
-                app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
-            }
         } catch (e: InstallationFailedException) {
             val wrappedException = InstallationFailedException(
                 "Failed to install ${app.name} in the background with ${installer.type}.", -532, e
@@ -307,7 +289,9 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             BackgroundNotificationBuilder.showInstallFailureNotification(
                 applicationContext, app, e.errorCode, e.translatedMessage, wrappedException
             )
-            app.downloadedFileCache.deleteAllApkFileForThisApp(applicationContext)
+        }
+        if (BackgroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
+            appImpl.deleteFileCache(applicationContext)
         }
     }
 

@@ -47,7 +47,7 @@ object FirefoxNightly : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         val abiString = findAbiString()
         val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
         var taskId = preferences.getString("cache__firefox_nightly__task_id", null)
@@ -105,13 +105,13 @@ object FirefoxNightly : AppBase() {
     }
 
     @SuppressLint("ApplySharedPref")
-    override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
+    override fun installCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
             .putString(INSTALLED_SHA256_HASH, available.latestUpdate.fileHash?.hexValue)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
-        super.appIsInstalledCallback(context, available)
+        super.installCallback(context, available)
     }
 
     /**

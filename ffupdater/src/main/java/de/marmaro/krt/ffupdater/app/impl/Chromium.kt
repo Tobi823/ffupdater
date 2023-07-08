@@ -41,7 +41,7 @@ object Chromium : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         val platform = findPlatform()
         val revision = findLatestRevision(platform, cacheBehaviour)
         val storageObject = findStorageObject(revision, platform, cacheBehaviour)
@@ -106,13 +106,13 @@ object Chromium : AppBase() {
     }
 
     @SuppressLint("ApplySharedPref")
-    override fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
+    override fun installCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(INSTALLED_VERSION_REVISION, available.latestUpdate.version)
             .putString(INSTALLED_VERSION_TIMESTAMP, available.latestUpdate.publishDate)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
-        super.appIsInstalledCallback(context, available)
+        super.installCallback(context, available)
     }
 
     override fun isAvailableVersionHigherThanInstalled(

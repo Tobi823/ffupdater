@@ -70,11 +70,12 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
 
     private fun createSessionParams(context: Context, file: File): SessionParams {
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
+        val appImpl = app.findImpl()
         val params = SessionParams(MODE_FULL_INSTALL)
-        val displayIcon = app.findImpl().icon // store display icon id in variable to prevent crash
+        val displayIcon = appImpl.icon // store display icon id in variable to prevent crash
         params.setAppIcon(BitmapFactory.decodeResource(context.resources, displayIcon))
-        params.setAppLabel(context.getString(app.findImpl().title))
-        params.setAppPackageName(app.findImpl().packageName)
+        params.setAppLabel(context.getString(appImpl.title))
+        params.setAppPackageName(appImpl.packageName)
         params.setSize(file.length())
         if (DeviceSdkTester.supportsAndroidNougat()) {
             params.setOriginatingUid(android.os.Process.myUid())

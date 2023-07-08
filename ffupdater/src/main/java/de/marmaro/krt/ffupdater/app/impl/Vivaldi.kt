@@ -38,7 +38,7 @@ object Vivaldi : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun findLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
         val content = FileDownloader.downloadStringWithCache(DOWNLOAD_WEBSITE_URL, cacheBehaviour)
         val (version, downloadUrl) = extractVersionAndDownloadUrl(content)
         return LatestUpdate(
