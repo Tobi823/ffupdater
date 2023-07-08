@@ -95,9 +95,8 @@ abstract class AppBase {
         val available = try {
             // mutex to force the cache use
             val mutex = mutexMap.getOrPut(app) { Mutex() }
-            Log.d(LOG_TAG, "Search for latest ${app.name} update (wait for mutex).")
             mutex.withLock {
-                Log.d(LOG_TAG, "Start searching for latest ${app.name} update.")
+                Log.d(LOG_TAG, "Search for latest ${app.name} update.")
                 val time = System.currentTimeMillis()
                 val available = findLatestUpdate(context.applicationContext, cacheBehaviour)
                 val duration = System.currentTimeMillis() - time
