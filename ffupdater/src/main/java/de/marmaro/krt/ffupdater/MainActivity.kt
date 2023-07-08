@@ -62,6 +62,7 @@ import java.util.*
 @Keep
 class MainActivity : AppCompatActivity() {
     private lateinit var recycleViewAdapter: InstalledAppsAdapter
+    private var lastAutomaticUpdateCheck = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,8 +95,12 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         showInstalledAppsInRecyclerView()
-        lifecycleScope.launch(Dispatchers.Main) {
-            updateMetadataOfApps(true)
+        // reduce glitching in main view
+        if ((System.currentTimeMillis() - lastAutomaticUpdateCheck) > 1000 * 60) {
+            lastAutomaticUpdateCheck = System.currentTimeMillis()
+            lifecycleScope.launch(Dispatchers.Main) {
+                updateMetadataOfApps(true)
+            }
         }
     }
 
