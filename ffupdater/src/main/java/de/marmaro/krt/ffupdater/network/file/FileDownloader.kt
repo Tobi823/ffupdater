@@ -35,7 +35,6 @@ import kotlin.io.use
  */
 @Keep
 object FileDownloader {
-    private val progressInterceptor = ProgressInterceptor()
     private lateinit var client: OkHttpClient
     private lateinit var clientWithCache: OkHttpClient
 
@@ -218,7 +217,7 @@ object FileDownloader {
         }
 
         return builder
-            .addNetworkInterceptor(progressInterceptor)
+            .addNetworkInterceptor(ProgressInterceptor())
             .apply { createSslSocketFactory()?.let { this.sslSocketFactory(it.first, it.second) } }
             .apply { createDnsConfiguration()?.let { this.dns(it) } }
             .apply { createProxyConfiguration()?.let { this.proxy(it) } }

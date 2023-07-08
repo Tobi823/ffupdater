@@ -26,6 +26,8 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 
 @Keep
@@ -87,11 +89,21 @@ abstract class AppBase {
     open fun appIsInstalledCallback(context: Context, available: AppUpdateStatus) {
     }
 
+    private val mutexMap: MutableMap<App, Mutex> = mutableMapOf()
+
     suspend fun findAppUpdateStatus(context: Context, cacheBehaviour: CacheBehaviour): AppUpdateStatus {
-        val time = System.currentTimeMillis()
-        Log.d(LOG_TAG, "Search for latest ${app.name} update.")
         val available = try {
-            findLatestUpdate(context.applicationContext, cacheBehaviour)
+            // mutex to force the cache use
+            val mutex = mutexMap.getOrPut(app) { Mutex() }
+            Log.d(LOG_TAG, "Search for latest ${app.name} update (wait for mutex).")
+            mutex.withLock {
+                Log.d(LOG_TAG, "Start searching for latest ${app.name} update.")
+                val time = System.currentTimeMillis()
+                val available = findLatestUpdate(context.applicationContext, cacheBehaviour)
+                val duration = System.currentTimeMillis() - time
+                Log.i(LOG_TAG, "Found update ${available.version} for ${app.name} after ${duration}ms")
+                available
+            }
         } catch (e: NetworkException) {
             Log.d(LOG_TAG, "Can't find latest update for ${app.name}.", e)
             throw NetworkException("can't find latest update for ${app.name}.", e)
@@ -99,8 +111,6 @@ abstract class AppBase {
             Log.d(LOG_TAG, "Can't find latest update for ${app.name}.", e)
             throw DisplayableException("can't find latest update for ${app.name}.", e)
         }
-        val duration = System.currentTimeMillis() - time
-        Log.i(LOG_TAG, "Found latest update for ${app.name} (version number: ${available.version}) after ${duration}ms")
         return AppUpdateStatus(
             latestUpdate = available,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context.applicationContext, available),
