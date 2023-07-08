@@ -235,13 +235,13 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
             deferred.await()
 
+            ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
             if (app.findImpl().isAppPublishedAsZipArchive()) {
                 app.downloadedFileCache.extractApkFromZipArchive(applicationContext, latestUpdate)
                 app.downloadedFileCache.deleteZipFile(applicationContext)
             }
 
             // I suspect that sometimes the server offers the wrong file for download
-            ApkChecker.throwIfDownloadedFileHasDifferentSize(file, latestUpdate)
             val apkFile = app.downloadedFileCache.getApkFile(applicationContext, latestUpdate)
             ApkChecker.throwIfApkFileIsNoValidZipFile(apkFile)
 
