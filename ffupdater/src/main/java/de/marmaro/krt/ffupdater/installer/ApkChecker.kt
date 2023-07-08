@@ -19,7 +19,8 @@ object ApkChecker {
 
         try {
             withContext(Dispatchers.IO) {
-                ZipFile(file)
+                // ZipFile must be closed
+                ZipFile(file).close()
             }
         } catch (e: ZipException) {
             throw InvalidApkException("Downloaded or extracted APK file is not a valid ZIP file.", e)
