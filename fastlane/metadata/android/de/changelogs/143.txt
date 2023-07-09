@@ -1,0 +1,2 @@
+* Dank für die Weblate-Beiträge von: Kazushi Hayama, 109247019824 und Oğuz Ersen
+* Absturz beim Start behoben

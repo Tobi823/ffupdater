@@ -1,0 +1,4 @@
+* Danke für die Weblate-Beiträge von: Kazushi Hayama, gallegonovato, Alexthegib und Oğuz Ersen
+* Behebung des Fehlers "Datei wurde nicht heruntergeladen" (für jede OkHttp-Anfrage einen neuen Interceptor verwenden)
+* Verbesserung der Update-Prüfung von GitHub (Verwendung von JsonReader anstelle von Gson)
+* Bromite und Bromite SystemWebView sind EOL
