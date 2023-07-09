@@ -314,4 +314,5 @@
     <string name="main_activity__denied_notification_permission">FFUpdater potrzebuje pozwolenia, aby informować Cię o aktualizacjach.</string>
     <string name="main_activity__an_error_occurred"><u>Wystąpił błąd. Spróbuj ponownie później.</u></string>
     <string name="generic__eol_reason__too_old">Aplikacja od dłuższego czasu nie była aktualizowana.</string>
+    <string name="eol_reason__browser_no_longer_maintained">Ta przeglądarka nie jest już rozwijana.</string>
 </resources>
