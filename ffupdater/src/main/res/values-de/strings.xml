@@ -121,7 +121,7 @@
 \nVerwahre deine Firefox-Passwörter sicher und greife überall darauf zu. Schnelles Öffnen einer beliebigen Website aus der App heraus, um in deine Konten zu gelangen.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
-    <string name="main_activity__no_unmetered_network">Kein ungebremstes Netz</string>
+    <string name="main_activity__no_unmetered_network">Kein nicht getaktetes Netzwerk</string>
     <string name="main_activity__subtitle">Aktualisierungsprogramm für datenschutzfreundliche Browser</string>
     <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Versuche es später nochmal.</u>"</string>
     <string name="ok">OK</string>
@@ -315,4 +315,5 @@
     <string name="main_activity__denied_notification_permission">FFUpdater benötigt die Berechtigung, dich über Updates zu informieren.</string>
     <string name="generic__eol_reason__too_old">App wurde seit langem nicht mehr aktualisiert.</string>
     <string name="main_activity__an_error_occurred"><u>Ein Fehler ist aufgetreten. Versuche es später erneut.</u></string>
+    <string name="eol_reason__browser_no_longer_maintained">Der Browser wird nicht mehr gewartet.</string>
 </resources>
