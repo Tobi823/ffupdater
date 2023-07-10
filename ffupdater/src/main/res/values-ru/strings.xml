@@ -39,7 +39,7 @@
     <string name="dialog_button__yes">Да</string>
     <string name="notification__download_running__channel_descr">Показывает, когда обновления приложений загружаются в фоновом режиме.</string>
     <string name="notification__download_running__channel_name">Уведомление о загрузках в фоновом режиме</string>
-    <string name="notification__download_running__text">Загрузка обновления для %1$s (%2$s).</string>
+    <string name="notification__download_running__text">Загрузка обновления для %1$s (%2$s)</string>
     <string name="notification__download_running__title">Загрузка обновлений приложений</string>
     <string name="app_card__download_the_app">загрузить приложение</string>
     <string name="notification__error__channel_descr">Показать ошибки проверки фонового обновления</string>
@@ -58,7 +58,8 @@
     <string name="firefox_release__warning">- Улучшенная версия Firefox под названием Fennec F-Droid доступна на F-Droid.</string>
     <string name="iceraven__description">Определенно не от Mozilla! \n\nIceraven Browser - это веб-браузер для Android, основанный на версиях Firefox, GeckoView и Mozilla Android Components от Mozilla Fenix. \n\nНашей целью является создание как можно более точной копии нового Firefox для Android, который стремится предоставить пользователям больше возможностей для настройки (включая широкую библиотеку расширений), больше информации о страницах, которые они посещают, и как их браузеры взаимодействуют с этими страницами.</string>
     <string name="iceraven__title">Iceraven Browser</string>
-    <string name="iceraven__warning">- Поддерживающий не даёт никаких гарантий по безопасности, и даже стабильности.</string>
+    <string name="iceraven__warning">- Поддерживающий не даёт никаких гарантий по безопасности, и даже стабильности.
+\n- Проекту требуется больше времени для предоставления обновлений безопасности.</string>
     <string name="infobox">Это программа обновления для нескольких браузеров от Mozilla и других поставщиков. Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления. Вы можете проверить наличие новых обновлений, потянув вниз или открыв приложение заново. По умолчанию приложение будет регулярно проверять наличие обновлений в фоновом режиме. Я сделал все возможное, чтобы обезопасить процесс установки/обновления - не стесняйтесь, перепроверьте или улучшите его, создав pull-request.
 \n
 \nПоследняя успешная проверка фонового обновления: %1$s</string>
@@ -92,11 +93,11 @@
     <string name="notification__install_error__channel_descr">Канал уведомления о неудачных обновлениях %1$s.</string>
     <string name="notification__install_error__channel_name">Уведомление о сбое обновления %1$s</string>
     <string name="notification__install_error__text">Ошибка (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s не удалось обновить.</string>
+    <string name="notification__install_error__title">%1$s не удалось обновить</string>
     <string name="notification__install_success__channel_descr">Канал уведомления об успешных обновлениях %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s уведомление об успешном обновлении</string>
     <string name="notification__install_success__text">Приложение было успешно обновлено в фоновом режиме.</string>
-    <string name="notification__install_success__title">%1$s был обновлен.</string>
+    <string name="notification__install_success__title">%1$s был обновлен</string>
     <string name="installed_app_is_not_verified">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
     <string name="installed_version">Установлен: %1$s</string>
@@ -193,4 +194,6 @@
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi является лишь частично открытым исходным кодом.
 \n- Он также использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
+    <string name="app_card__app_warning_button_description">Показывать предупреждения о данном приложении</string>
+    <string name="notification__download_error__channel_descr">Показывает, когда загрузки обновлений в фоне завершаются неудачно.</string>
 </resources>
