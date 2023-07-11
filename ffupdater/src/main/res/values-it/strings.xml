@@ -306,4 +306,5 @@
     <string name="main_activity__denied_notification_permission">FFUpdater ha bisogno dell\'autorizzazione per informarti sugli aggiornamenti.</string>
     <string name="main_activity__an_error_occurred"><u>Si è verificato un errore. Riprovaìpiù tardi.</u></string>
     <string name="generic__eol_reason__too_old">L\'app non viene aggiornata da molto tempo.</string>
+    <string name="eol_reason__browser_no_longer_maintained">Il browser non viene più mantenuto.</string>
 </resources>
