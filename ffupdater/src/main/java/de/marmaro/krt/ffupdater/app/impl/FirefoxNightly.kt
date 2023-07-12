@@ -64,7 +64,7 @@ object FirefoxNightly : AppBase() {
         val result = MozillaCiJsonConsumer.findChainOfTrustJson(taskId, abiString, cacheBehaviour)
         val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v3.firefox-android.apks.fenix-nightly.latest.${abiString}/artifacts/" +
-                "public%2Fbuild%2Ffenix%2F${abiString}%2Ftarget.apk"
+                "public%2Fbuild%2Ftarget.${abiString}.apk"
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val version = formatter.format(releaseDate)

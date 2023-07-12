@@ -45,7 +45,7 @@ object MozillaCiJsonConsumer {
             throw NetworkException("Fail to get the taskId from graphql API.", e)
         }
         val fileHash = json["artifacts"]
-            .asJsonObject["public/build/fenix/$abiString/target.apk"]
+            .asJsonObject["public/build/target.${abiString}.apk"]
             .asJsonObject["sha256"]
             .asString
         val releaseDate = json.asJsonObject["task"]
