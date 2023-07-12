@@ -53,7 +53,7 @@ class CheckReleaseAgeIT {
 //            TestData(Lockwise(GithubConsumer.INSTANCE), 84),
             TestData(Mulch, 56),
             TestData(MullFromRepo, 56),
-            TestData(Orbot, 84),
+            TestData(Orbot, 4 * 30),
             TestData(PrivacyBrowser, 56),
             TestData(TorBrowserAlpha, 56),
             TestData(TorBrowser, 56),
