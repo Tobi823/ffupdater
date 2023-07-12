@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.pm.PackageInstaller.InstallConstraints.GENTLE_UPDATE
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.RESTRICT_BACKGROUND_STATUS_ENABLED
+import android.os.PowerManager
 import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
+import androidx.core.content.getSystemService
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
@@ -77,6 +79,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 return BackgroundJobResult(result)
             }
 
+            fun failure(result: Result, message: String): BackgroundJobResult {
+                Log.i(LOG_TAG, message)
+                return BackgroundJobResult(result)
+            }
+
             fun success(): BackgroundJobResult {
                 return BackgroundJobResult(null)
             }
@@ -103,9 +110,10 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     @MainThread
     override suspend fun doWork(): Result = coroutineScope {
         try {
-            Thread.sleep(10000)
             Log.i(LOG_TAG, "doWork(): Execute background job.")
-            internalDoWork()
+            val result = internalDoWork()
+            Log.i(LOG_TAG, "doWork(): Finish.")
+            result
         } catch (e: Exception) {
             if (runAttemptCount < MAX_RETRIES) {
                 Log.w(LOG_TAG, "Background job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
@@ -164,8 +172,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             if (shouldUpdateBeInstalled(app)) {
                 Log.i(LOG_TAG, "internalDoWork(): Update $app.")
                 installApplication(app, updateStatus)
-            } else {
-                Log.i(LOG_TAG, "internalDoWork(): Skip $app because it is still in use.")
             }
         }
         return Result.success()
@@ -331,8 +337,22 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 val gentle = it.areAllConstraintsSatisfied()
                 gentleUpdatePossible.complete(gentle)
             }
-            return gentleUpdatePossible.await()
+            val value = gentleUpdatePossible.await()
+            if (!value) {
+                Log.i(LOG_TAG, "internalDoWork(): Skip $app because it is still in use.")
+            }
+            return value
         }
+
+        if (BackgroundSettingsHelper.isInstallationWhenScreenOff) {
+            val powerManager = applicationContext.getSystemService<PowerManager>()!!
+            val value = !powerManager.isInteractive
+            if (!value) {
+                Log.i(LOG_TAG, "internalDoWork(): Skip $app because the device is still interactive.")
+            }
+            return value
+        }
+
         return true
     }
 
@@ -347,16 +367,11 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 return
             }
 
-            val requiredNetworkType =
-                if (BackgroundSettingsHelper.isUpdateCheckOnMeteredAllowed) CONNECTED else UNMETERED
+            val networkType = if (BackgroundSettingsHelper.isUpdateCheckOnMeteredAllowed) CONNECTED else UNMETERED
             val builder = Constraints.Builder()
-                .setRequiredNetworkType(requiredNetworkType)
+                .setRequiredNetworkType(networkType)
                 .setRequiresBatteryNotLow(true)
                 .setRequiresStorageNotLow(true)
-
-            if (DeviceSdkTester.supportsAndroidMarshmallow()) {
-                builder.setRequiresDeviceIdle(BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle)
-            }
 
             val minutes = BackgroundSettingsHelper.updateCheckInterval.toMinutes()
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)

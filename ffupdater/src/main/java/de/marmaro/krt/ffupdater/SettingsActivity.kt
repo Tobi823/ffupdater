@@ -60,12 +60,6 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
-            if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
-                findSwitchPref("background__update_check__when_device_idle").summary =
-                    getString(R.string.settings__background__update_check__when_device_idle__unsupported)
-                findSwitchPref("background__update_check__when_device_idle").isEnabled = false
-            }
-
             findListPref("foreground__theme_preference").setOnPreferenceChangeListener { _, newValue ->
                 AppCompatDelegate.setDefaultNightMode((newValue as String).toInt())
                 true
@@ -77,11 +71,6 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             findListPref("background__update_check__interval").setOnPreferenceChangeListener { _, _ ->
-                restartBackgroundJob = true
-                true
-            }
-
-            findSwitchPref("background__update_check__when_device_idle").setOnPreferenceChangeListener { _, _ ->
                 restartBackgroundJob = true
                 true
             }

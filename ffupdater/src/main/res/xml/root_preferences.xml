@@ -97,13 +97,7 @@
             app:singleLineTitle="false"
             app:title="@string/settings__background__update_check__metered__title" />
 
-        <SwitchPreferenceCompat
-            app:defaultValue="false"
-            app:dependency="background__update_check__enabled"
-            app:key="background__update_check__when_device_idle"
-            app:singleLineTitle="false"
-            app:summary="@string/settings__background__update_check__when_device_idle__summary"
-            app:title="@string/settings__background__update_check__when_device_idle__title" />
+
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
@@ -128,6 +122,14 @@
             app:singleLineTitle="false"
             app:summary="@string/settings__background__installation__enabled__summary"
             app:title="@string/settings__background__installation__enabled__title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:dependency="background__installation__enabled"
+            app:key="background__installation__when_screen_off"
+            app:singleLineTitle="false"
+            app:summary="@string/background__installation__when_screen_off__summary"
+            app:title="@string/background__installation__when_screen_off__title" />
 
         <SwitchPreferenceCompat
             app:defaultValue="true"

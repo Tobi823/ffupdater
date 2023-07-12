@@ -277,4 +277,6 @@
     <string name="privacy_browser__description">The only way to prevent data from being abused is to prevent it from being collected in the first place. Privacy Browser has two primary goals: Minimize the data that is sent to the internet and minimize the data that is stored on the device.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater needs the permission to inform you about updates.</string>
     <string name="eol_reason__browser_no_longer_maintained">The browser is no longer maintained.</string>
+    <string name="background__installation__when_screen_off__summary">Try to install updates only when the device screen is off.</string>
+    <string name="background__installation__when_screen_off__title">Install only when screen off</string>
 </resources>
