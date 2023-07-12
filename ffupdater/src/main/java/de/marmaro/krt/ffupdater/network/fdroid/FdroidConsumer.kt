@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.network.fdroid
 import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
+import com.google.gson.JsonObject
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
@@ -14,23 +15,9 @@ object FdroidConsumer {
     suspend fun getLatestUpdate(packageName: String, index: Int, cacheBehaviour: CacheBehaviour): Result {
         require(index >= 1)
         val url = "https://f-droid.org/api/v1/packages/$packageName"
-        val rootJson = try {
-            FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest version of $packageName from F-Droid.", e)
-        }
-        val appInfo = AppInfo(
-            packageName = rootJson["packageName"].asString,
-            suggestedVersionCode = rootJson["suggestedVersionCode"].asLong,
-            packages = rootJson["packages"].asJsonArray
-                .map { it.asJsonObject }
-                .map {
-                    Package(
-                        versionName = it["versionName"].asString,
-                        versionCode = it["versionCode"].asLong
-                    )
-                }
-        )
+        val rootJson = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
+
+        val appInfo = parseJson(rootJson)
 
         val latestVersion = getLatestUpdate(appInfo, index)
         val commitId = getLastCommitId(packageName, cacheBehaviour)
@@ -43,6 +30,33 @@ object FdroidConsumer {
             "https://f-droid.org/repo/${packageName}_${latestVersion.versionCode}.apk",
             createdAt
         )
+    }
+
+    private fun parseJson(rootJson: JsonObject): AppInfo {
+        return try {
+            AppInfo(
+                packageName = rootJson["packageName"].asString,
+                suggestedVersionCode = rootJson["suggestedVersionCode"].asLong,
+                packages = rootJson["packages"].asJsonArray
+                    .map { it.asJsonObject }
+                    .map {
+                        Package(
+                            versionName = it["versionName"].asString,
+                            versionCode = it["versionCode"].asLong
+                        )
+                    }
+            )
+        } catch (e: Exception) {
+            when (e) {
+                is NullPointerException,
+                is NumberFormatException,
+                is IllegalStateException,
+                is UnsupportedOperationException,
+                is IndexOutOfBoundsException,
+                -> throw NetworkException("Returned JSON is incorrect. Try delete the cache of FFUpdater.", e)
+            }
+            throw e
+        }
     }
 
     /**

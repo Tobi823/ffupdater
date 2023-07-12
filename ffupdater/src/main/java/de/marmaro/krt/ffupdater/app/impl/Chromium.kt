@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
+import com.google.gson.JsonObject
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
@@ -82,23 +83,36 @@ object Chromium : AppBase() {
         cacheBehaviour: CacheBehaviour,
     ): StorageObject {
         val url = "$BASE_API_URL?delimiter=/&prefix=$platform/${revision}/chrome-android&$ALL_FIELDS"
-        val storageObjects = try {
-            FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest Vivaldi version.", e)
-        }
+        val storageObjects = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
+        return parseJson(storageObjects, platform, revision)
+    }
 
-        val items = storageObjects["items"].asJsonArray
-        checkNotNull(items)
-        check(items.size() == 1)
-        val storageObject = items[0].asJsonObject
-        val storageObjectKotlin = StorageObject(
-            kind = storageObject["kind"].asString,
-            downloadUrl = storageObject["mediaLink"].asString,
-            name = storageObject["name"].asString,
-            fileSizeBytes = storageObject["size"].asLong,
-            timestamp = storageObject["updated"].asString,
-        )
+    private fun parseJson(
+        storageObjects: JsonObject,
+        platform: String,
+        revision: String,
+    ): StorageObject {
+        val storageObjectKotlin = try {
+            val items = storageObjects["items"].asJsonArray
+            val storageObject = items[0].asJsonObject
+            StorageObject(
+                kind = storageObject["kind"].asString,
+                downloadUrl = storageObject["mediaLink"].asString,
+                name = storageObject["name"].asString,
+                fileSizeBytes = storageObject["size"].asLong,
+                timestamp = storageObject["updated"].asString,
+            )
+        } catch (e: Exception) {
+            when (e) {
+                is NullPointerException,
+                is NumberFormatException,
+                is IllegalStateException,
+                is UnsupportedOperationException,
+                is IndexOutOfBoundsException,
+                -> throw NetworkException("Returned JSON is incorrect. Try delete the cache of FFUpdater.", e)
+            }
+            throw e
+        }
 
         check(storageObjectKotlin.kind == "storage#object")
         check(storageObjectKotlin.name == "$platform/$revision/chrome-android.zip")

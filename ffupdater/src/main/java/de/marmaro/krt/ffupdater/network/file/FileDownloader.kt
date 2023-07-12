@@ -6,6 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import com.google.gson.JsonObject
+import com.google.gson.JsonParseException
 import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.network.annotation.ReturnValueMustBeClosed
@@ -131,12 +132,14 @@ object FileDownloader {
                     responseBody.charStream().buffered().use { reader ->
                         execute(reader)
                     }
-                } catch (e: IOException) {
-                    throw NetworkException("Request of HTTP-API $url failed.", e)
-                } catch (e: IllegalArgumentException) {
-                    throw NetworkException("Request of HTTP-API $url failed.", e)
-                } catch (e: NetworkException) {
-                    throw NetworkException("Request of HTTP-API $url failed.", e)
+                } catch (e: Exception) {
+                    when (e) {
+                        is IOException,
+                        is IllegalArgumentException,
+                        is NetworkException,
+                        -> throw NetworkException("Request of HTTP-API $url failed.", e)
+                    }
+                    throw e
                 }
             }
         }
@@ -165,7 +168,16 @@ object FileDownloader {
         requestBody: RequestBody? = null,
     ): JsonObject {
         return downloadWithCache(url, cacheBehaviour, method, requestBody) {
-            JsonParser.parseReader(it).asJsonObject
+            try {
+                JsonParser.parseReader(it).asJsonObject
+            } catch (e: Exception) {
+                when (e) {
+                    is JsonParseException,
+                    is IllegalStateException,
+                    -> throw NetworkException("Invalid JSON response.", e)
+                }
+                throw e
+            }
         }
     }
 

@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.network.fdroid
 
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
+import com.google.gson.JsonObject
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -20,29 +21,11 @@ object CustomRepositoryConsumer {
         abi: ABI,
         cacheBehaviour: CacheBehaviour,
     ): LatestUpdate {
-        val jsonRoot = try {
-            FileDownloader.downloadJsonObjectWithCache("$repoUrl/index-v1.json", cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to find the latest version from index-v1.json.", e)
-        }
-        val listOfPackages = jsonRoot["packages"].asJsonObject
-        val listOfApks = listOfPackages[packageName].asJsonArray
-        val apk = listOfApks
-            .map { it.asJsonObject }
-            .map {
-                ApkObject(
-                    added = it["added"].asLong,
-                    apkName = it["apkName"].asString,
-                    abis = it["nativecode"].asJsonArray.map { nativecode -> nativecode.asString },
-                    hash = it["hash"].asString,
-                    size = it["size"].asLong,
-                    versionCode = it["versionCode"].asLong,
-                    versionName = it["versionName"].asString,
-                )
-            }
+        val jsonRoot = FileDownloader.downloadJsonObjectWithCache("$repoUrl/index-v1.json", cacheBehaviour)
+        val apkObjects = parseJson(jsonRoot, packageName)
+        val apk = apkObjects
             .filter { abi.codeName in it.abis }
             .maxBy { it.versionCode }
-
         return LatestUpdate(
             downloadUrl = "$repoUrl/${apk.apkName}",
             version = apk.versionName,
@@ -50,6 +33,40 @@ object CustomRepositoryConsumer {
             exactFileSizeBytesOfDownload = apk.size,
             fileHash = Sha256Hash(apk.hash),
         )
+    }
+
+    private fun parseJson(
+        jsonRoot: JsonObject,
+        packageName: String,
+    ): List<ApkObject> {
+        try {
+            val listOfPackages = jsonRoot["packages"].asJsonObject
+            val listOfApks = listOfPackages[packageName].asJsonArray
+            val apkObjects = listOfApks
+                .map { it.asJsonObject }
+                .map {
+                    ApkObject(
+                        added = it["added"].asLong,
+                        apkName = it["apkName"].asString,
+                        abis = it["nativecode"].asJsonArray.map { nativecode -> nativecode.asString },
+                        hash = it["hash"].asString,
+                        size = it["size"].asLong,
+                        versionCode = it["versionCode"].asLong,
+                        versionName = it["versionName"].asString,
+                    )
+                }
+            return apkObjects
+        } catch (e: Exception) {
+            when (e) {
+                is NullPointerException,
+                is NumberFormatException,
+                is IllegalStateException,
+                is UnsupportedOperationException,
+                is IndexOutOfBoundsException,
+                -> throw NetworkException("Returned JSON is incorrect. Try delete the cache of FFUpdater.", e)
+            }
+            throw e
+        }
     }
 
     @Keep

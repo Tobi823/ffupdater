@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
 import androidx.annotation.Keep
+import com.google.gson.JsonObject
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -19,11 +20,7 @@ object MozillaCiJsonConsumer {
         val requestJson = """{"operationName":"IndexedTask","variables":{"indexPath":"$indexPath"},"query":"query """ +
                 """IndexedTask(${'$'}indexPath: String!) {indexedTask(indexPath: ${'$'}indexPath) {taskId}}"}"""
         val requestBody = requestJson.toRequestBody("application/json".toMediaType())
-        val responseString = try {
-            FileDownloader.downloadStringWithCache(pageUrl, cacheBehaviour, "POST", requestBody)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to get the taskId from graphql API.", e)
-        }
+        val responseString = FileDownloader.downloadStringWithCache(pageUrl, cacheBehaviour, "POST", requestBody)
         val regex = """taskId":"(?<taskId>[\w-]+)"""".toRegex()
         val matches = regex.find(responseString)
         val taskId = matches?.groups?.get("taskId")?.value
@@ -39,24 +36,37 @@ object MozillaCiJsonConsumer {
         cacheBehaviour: CacheBehaviour,
     ): Result {
         val url = "https://firefoxci.taskcluster-artifacts.net/$taskId/0/public/chain-of-trust.json"
-        val json = try {
-            FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to get the taskId from graphql API.", e)
-        }
-        val fileHash = json["artifacts"]
-            .asJsonObject["public/build/target.${abiString}.apk"]
-            .asJsonObject["sha256"]
-            .asString
-        val releaseDate = json.asJsonObject["task"]
-            .asJsonObject["created"]
-            .asString
-        return Result(Sha256Hash(fileHash), releaseDate)
+        val json = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
+        return parseJson(json, abiString)
     }
 
-    @Keep
-    data class Result(
-        val fileHash: Sha256Hash,
-        val releaseDate: String,
-    )
+    private fun parseJson(json: JsonObject, abiString: String): Result {
+        try {
+            val fileHash = json["artifactsa"]
+                .asJsonObject["public/build/target.${abiString}.apk"]
+                .asJsonObject["sha256"]
+                .asString
+            val releaseDate = json.asJsonObject["task"]
+                .asJsonObject["created"]
+                .asString
+            return Result(Sha256Hash(fileHash), releaseDate)
+        } catch (e: Exception) {
+            when (e) {
+                is NullPointerException,
+                is NumberFormatException,
+                is IllegalStateException,
+                is UnsupportedOperationException,
+                is IndexOutOfBoundsException,
+                -> throw NetworkException("Returned JSON is incorrect. Try delete the cache of FFUpdater.", e)
+            }
+            throw e
+        }
+    }
 }
+
+@Keep
+data class Result(
+    val fileHash: Sha256Hash,
+    val releaseDate: String,
+)
+

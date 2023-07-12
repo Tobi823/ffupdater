@@ -77,26 +77,20 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         try {
             Log.i(LOG_TAG, "doWork(): Execute background job.")
             internalDoWork()
-        } catch (e: NetworkException) {
-            handleDoWorkException(e, true)
         } catch (e: Exception) {
-            handleDoWorkException(e, false)
-        }
-    }
-
-    private fun handleDoWorkException(e: Exception, isNetworkException: Boolean): Result {
-        return if (runAttemptCount < MAX_RETRIES) {
-            Log.w(LOG_TAG, "Background job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
-            Result.retry()
-        } else {
-            val backgroundException = BackgroundException(e)
-            Log.e(LOG_TAG, "Background job failed.", backgroundException)
-            if (isNetworkException) {
-                BackgroundNotificationBuilder.showNetworkErrorNotification(applicationContext, backgroundException)
+            if (runAttemptCount < MAX_RETRIES) {
+                Log.w(LOG_TAG, "Background job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
+                Result.retry()
             } else {
-                BackgroundNotificationBuilder.showErrorNotification(applicationContext, backgroundException)
+                val backgroundException = BackgroundException(e)
+                Log.e(LOG_TAG, "Background job failed.", backgroundException)
+                if (e is NetworkException) {
+                    BackgroundNotificationBuilder.showNetworkErrorNotification(applicationContext, backgroundException)
+                } else {
+                    BackgroundNotificationBuilder.showErrorNotification(applicationContext, backgroundException)
+                }
+                Result.success() // BackgroundJob should not be removed from WorkManager schedule
             }
-            Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
     }
 
