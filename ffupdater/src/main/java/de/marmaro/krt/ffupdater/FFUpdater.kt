@@ -30,7 +30,7 @@ class FFUpdater : Application() {
 
         FileDownloader.init(applicationContext)
 
-        Migrator().migrate(applicationContext)
+        Migrator.migrate(applicationContext)
 
         start(applicationContext.applicationContext, KEEP)
 

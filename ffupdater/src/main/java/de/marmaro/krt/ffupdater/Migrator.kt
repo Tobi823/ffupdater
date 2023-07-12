@@ -8,7 +8,7 @@ import androidx.work.ExistingPeriodicWorkPolicy.*
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 
 @Keep
-class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
+object Migrator {
 
     @SuppressLint("ApplySharedPref")
     fun migrate(context: Context) {
@@ -52,12 +52,9 @@ class Migrator(private val currentVersionCode: Int = BuildConfig.VERSION_CODE) {
         }
 
         preferences.edit()
-            .putInt(FFUPDATER_VERSION_CODE, currentVersionCode)
+            .putInt(FFUPDATER_VERSION_CODE, BuildConfig.VERSION_CODE)
             .apply()
     }
 
-
-    companion object {
-        const val FFUPDATER_VERSION_CODE = "migrator_ffupdater_version_code"
-    }
+    private const val FFUPDATER_VERSION_CODE = "migrator_ffupdater_version_code"
 }
