@@ -1,3 +1,10 @@
+# 2023-07-12 Release 78.0.3 (145)
+
+* Thanks for the Weblate contributions from: Priit Jõerüüt
+* Improve the handling of invalid API responses (Tobi823/ffupdater#434)
+* Fix double display of Firefox Nightly (Tobi823/ffupdater#435)
+* Try to configure Proguard to minimize the app size
+
 # 2023-07-12 Release 78.0.2 (144)
 
 * Thanks for the Weblate contributions from: Kazushi Hayama, Retrial, nautilusx, Juraj Motuz, gallegonovato,
