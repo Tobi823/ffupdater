@@ -21,4 +21,4 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 **Error message from FFUpdater**
-Please copy and paste the error message with the stacktrace here:
+Please copy and paste the error message with the stacktrace and error log here:
