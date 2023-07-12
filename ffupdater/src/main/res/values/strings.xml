@@ -9,7 +9,6 @@
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successfully_installed">Application successfully installed</string>
     <string name="available_version">Available: %1$s</string>
-    <string name="available_version_error">"<u>ERROR</u>"</string>
     <string name="notification__error__text">Please report this error. Click to view the error report.</string>
     <string name="notification__error__title">Background update check failed</string>
     <string name="brave__description">Privately browse the internet, for free! The Brave Private Browser App is your fast, free, and safe private web browser with ad blocker and pop-up blocker. Privately browse and search the internet without being tracked by advertisers, malware and pop-ups.</string>
@@ -45,7 +44,6 @@
     <string name="notification__download_error__title">Background download of update failed</string>
     <string name="notification__download_running__channel_descr">Shows when app updates are downloaded in the background.</string>
     <string name="notification__download_running__channel_name">Notification about downloads in the background</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Downloading app updates</string>
     <string name="app_card__download_the_app">download the app</string>
     <string name="notification__eol_apps__channel_description">Notification channel for warnings about outdated apps.</string>
@@ -76,7 +74,7 @@
     <string name="download_activity__delete_cache_button_text">clear cache</string>
     <string name="download_activity__delete_cache_explanation">If you think that FFUpdater has cached a faulty app update or if you want to save space, click the button to delete the downloaded file.</string>
     <string name="download_activity__different_installer_info__text">If the installation fails frequently, try switching to the \'native installer\' in the settings.</string>
-    <string name="download_activity__download_app_with_status">Downloading application (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Downloading application</string>
     <string name="download_activity__download_failed">Download failed</string>
     <string name="download_activity__downloaded_application_from">Downloaded application from:</string>
     <string name="download_activity__downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
@@ -278,6 +276,5 @@
     <string name="privacy_browser__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
     <string name="privacy_browser__description">The only way to prevent data from being abused is to prevent it from being collected in the first place. Privacy Browser has two primary goals: Minimize the data that is sent to the internet and minimize the data that is stored on the device.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater needs the permission to inform you about updates.</string>
-    <string name="generic__eol_reason__too_old">App has not been updated for a long time.</string>
     <string name="eol_reason__browser_no_longer_maintained">The browser is no longer maintained.</string>
 </resources>

@@ -8,7 +8,6 @@
     <string name="application_installation_was_not_successful">Instalace aplikace se nezdařila</string>
     <string name="application_successfully_installed">Aplikace byla úspěšně nainstalována</string>
     <string name="available_version">K dispozici: %1$s</string>
-    <string name="available_version_error">"<u>CHYBA</u>"</string>
     <string name="notification__error__text">Prosím nahlaste tuto chybu. Kliknutím zobrazíte chybové hlášení.</string>
     <string name="notification__error__title">Aktualizace na pozadí se nezdařila</string>
     <string name="brave__description">Webový prohlížeč Brave je rychlá a bezpečná aplikace k prohlížení webu pro Android s vestavěným blokátorem na reklamy třetích stran. Brave je bleskově rychlý, bezpečný a soukromý, který zabraňuje reklamám sledovat Vás, zamezuje infekci malware a blokuje vyskakovací okna.</string>
@@ -39,7 +38,6 @@
     <string name="dialog_button__yes">Ano</string>
     <string name="notification__download_running__channel_descr">Zobrazí se, když se stahují aktualizace na pozadí.</string>
     <string name="notification__download_running__channel_name">Upozornění na stahování na pozadí</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Stahování aktualizací aplikací</string>
     <string name="app_card__download_the_app">stáhnout aplikaci</string>
     <string name="notification__error__channel_descr">Zobrazit chyby z nástroje pro kontrolu aktualizací na pozadí</string>
@@ -64,7 +62,7 @@
     <string name="app_card__information_about_the_app">informace o aplikaci</string>
     <string name="download_activity__delete_cache_button_text">vyčistit mezipaměť</string>
     <string name="download_activity__delete_cache_explanation">Pokud si myslíte, že FFUpdater uložil do mezipaměti chybnou aktualizaci aplikace nebo pokud chcete ušetřit trochu místa, kliknutím na tlačítko odstraníte stažené soubory.</string>
-    <string name="download_activity__download_app_with_status">Stahování aplikace (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Stahování aplikace</string>
     <string name="download_activity__download_failed">Stahování selhalo</string>
     <string name="download_activity__downloaded_application_from">Aplikace stažená z:</string>
     <string name="download_activity__downloaded_application_is_not_verified">Stažená aplikace NEBYLA ověřena</string>
@@ -306,7 +304,6 @@
     <string name="privacy_browser__warning">FFUpdater stahuje soubory ze F-Droid serverů, a proto není rychlejší.</string>
     <string name="privacy_browser__description">Jediný způsob, jak zabránit únikům dat, je v první řadě zabránit jejich shromažďování. Privacy Browser má dva hlavní cíle: Minimalizovat množství dat odesílaných na internet a minimalizovat množství dat uložených v zařízení.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater vyžaduje oprávnění, aby vás mohl informovat o aktualizacích.</string>
-    <string name="generic__eol_reason__too_old">Aplikace již dlouho nebyla aktualizována.</string>
     <string name="main_activity__an_error_occurred"><u>Došlo k neočekávané chybě. Zkuste to znovu později.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Prohlížeč není nadále spravován.</string>
 </resources>

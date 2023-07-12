@@ -290,27 +290,13 @@ class DownloadActivity : AppCompatActivity() {
         val appImpl = app.findImpl()
         show(R.id.downloadingFile)
         setText(R.id.downloadingFileUrl, appUpdateStatus.latestUpdate.downloadUrl)
-        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status, ""))
+        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
         try {
             withContext(viewModel.viewModelScope.coroutineContext) {
                 appImpl.download(applicationContext, appUpdateStatus.latestUpdate) { deferred, progressChannel ->
                     viewModel.storeNewRunningDownload(app, deferred, progressChannel)
-                    for (progress in progressChannel) {
-                        if (progress.progressInPercent != null) {
-                            findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress =
-                                progress.progressInPercent
-                            setText(
-                                R.id.downloadingFileText,
-                                getString(download_activity__download_app_with_status, "${progress.progressInPercent}%")
-                            )
-                        } else {
-                            setText(
-                                R.id.downloadingFileText,
-                                getString(download_activity__download_app_with_status, "${progress.totalMB}MB")
-                            )
-                        }
-                    }
+                    showDownloadProgress(progressChannel)
                 }
             }
             return true
@@ -326,25 +312,30 @@ class DownloadActivity : AppCompatActivity() {
         return false
     }
 
+    private suspend fun showDownloadProgress(progressChannel: Channel<DownloadStatus>) {
+        for (progress in progressChannel) {
+            if (progress.progressInPercent != null) {
+                findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = progress.progressInPercent
+            }
+
+            val text = when {
+                progress.progressInPercent != null -> " (${progress.progressInPercent}%)"
+                else -> " (${progress.totalMB}MB)"
+            }
+            setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status) + text)
+        }
+    }
+
+
     @MainThread
     private suspend fun reuseCurrentDownload(): Boolean {
         Log.d(LOG_TAG, "reuseCurrentDownload(): Reuse running download of ${app.name}.")
         show(R.id.downloadingFile)
         val latestUpdate = appUpdateStatus.latestUpdate
         setText(R.id.downloadingFileUrl, latestUpdate.downloadUrl)
+        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
-        for (progress in viewModel.downloadProgressChannel!!) {
-            progress.progressInPercent
-                ?.also { findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = it }
-
-            val textStatus = progress.progressInPercent
-                ?.let { "$it%" }
-                ?: "${progress.totalMB}MB"
-            setText(
-                R.id.downloadingFileText,
-                getString(download_activity__download_app_with_status, textStatus)
-            )
-        }
+        showDownloadProgress(viewModel.downloadProgressChannel!!)
 
         try {
             // NPE was thrown in #359 - it should be safe to ignore null values

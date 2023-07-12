@@ -9,7 +9,6 @@
     <string name="application_installation_was_not_successful">Uygulama kurulumu başarısız oldu</string>
     <string name="application_successfully_installed">Uygulama başarıyla kuruldu</string>
     <string name="available_version">Kullanılabilir: %1$s</string>
-    <string name="available_version_error">"<u>HATA</u>"</string>
     <string name="notification__error__text">Lütfen bu hatayı bildirin. Hata raporunu görüntülemek için tıklayın.</string>
     <string name="notification__error__title">Arka plan güncelleme denetimi başarısız oldu</string>
     <string name="brave__description">İnternette ücretsiz olarak gizli bir şekilde gezinin! Brave Gizli Tarayıcı uygulaması, reklam engelleyicisi ve açılır pencere engelleyicisi ile hızlı, özel, güvenli ve ücretsiz bir web tarayıcısıdır. Reklamlar, kötü amaçlı yazılımlar ve açılır pencereler tarafından izlenmeden internette gizli olarak gezinin ve arama yapın.</string>
@@ -49,7 +48,6 @@
     <string name="notification__download_error__title">Güncellemenin arka planda indirilmesi başarısız oldu</string>
     <string name="notification__download_running__channel_descr">Arka planda uygulama güncellemelerinin ne zaman indirildiğini gösterir.</string>
     <string name="notification__download_running__channel_name">Arka planda indirmeler hakkında bildirim</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Uygulama güncellemeleri indiriliyor</string>
     <string name="app_card__download_the_app">uygulamayı indir</string>
     <string name="notification__eol_apps__channel_description">Güncel olmayan uygulamalarla ilgili uyarılar için bildirim kanalı.</string>
@@ -89,7 +87,7 @@
     <string name="download_activity__delete_cache_button_text">önbelleği temizle</string>
     <string name="download_activity__delete_cache_explanation">FFUpdater\'ın hatalı bir uygulama güncellemesini önbelleğe aldığını düşünüyorsanız veya yerden tasarruf etmek istiyorsanız, indirilen dosyayı silmek için düğmeye tıklayın.</string>
     <string name="download_activity__different_installer_info__text">Kurulum sık sık başarısız oluyorsa, ayarlardan \'yerel kurucuya\' geçmeyi deneyin.</string>
-    <string name="download_activity__download_app_with_status">Uygulama indiriliyor (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Uygulama indiriliyor</string>
     <string name="download_activity__download_failed">İndirme başarısız</string>
     <string name="download_activity__downloaded_application_from">Şuradan indirilen uygulama:</string>
     <string name="download_activity__downloaded_application_is_not_verified">İndirilen uygulama doğrulanmadı</string>
@@ -318,7 +316,6 @@
     <string name="duckduckgo_android__description">DuckDuckGo uygulaması, tek bir düğmeye basarak en kapsamlı çevrim içi gizlilik korumasını sağlar. Tek bir indirme ile, arama yaparken ve gezinirken sorunsuz koruma sunan yeni bir günlük tarayıcıya sahip olursunuz ve aldığınız e-postalar ve kullandığınız uygulamalar için izleme korumalarına erişirsiniz. Bu korumaların çoğu, birçok yaygın tarayıcıda öntanımlı olarak sunulmaz.</string>
     <string name="privacy_browser__description">Verilerin kötüye kullanılmasını önlemenin tek yolu, en başta toplanmasını önlemektir. Privacy Browser\'ın iki temel hedefi vardır: İnternete gönderilen ve aygıtta depolanan verileri en aza indirmek.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater\'ın sizi güncellemeler hakkında bilgilendirmek için izne ihtiyacı var.</string>
-    <string name="generic__eol_reason__too_old">Uygulama uzun süredir güncellenmedi.</string>
     <string name="main_activity__an_error_occurred"><u>Bir hata oluştu. Daha sonra yeniden deneyin.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Tarayıcı artık geliştirilmiyor.</string>
 </resources>

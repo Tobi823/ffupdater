@@ -8,7 +8,6 @@
     <string name="application_installation_was_not_successful">La instalación de la aplicación no se ha realizado correctamente</string>
     <string name="application_successfully_installed">Aplicación instalada exitosamente</string>
     <string name="available_version">Disponible: %1$s</string>
-    <string name="available_version_error"><u>ERROR</u></string>
     <string name="notification__error__text">Por favor, informe de este error. Haga clic para ver el informe de error.</string>
     <string name="notification__error__title">La verificación de actualización en segundo plano falló</string>
     <string name="brave__description">Navega de forma privada por Internet, ¡gratis! La aplicación Brave Private Browser es tu navegador web privado, rápido, gratuito y seguro con bloqueador de anuncios y bloqueador de ventanas emergentes. Navega y busca en Internet de forma privada sin ser rastreado por los anunciantes, el malware y las ventanas emergentes.</string>
@@ -43,7 +42,6 @@
     <string name="dialog_button__yes">Sí</string>
     <string name="notification__download_running__channel_descr">Aparece cuando las actualizaciones de la aplicación se descargan en segundo plano.</string>
     <string name="notification__download_running__channel_name">Notificación sobre descargas en segundo plano</string>
-    <string name="notification__download_running__text">Descargar actualización para %1$s (%2$s)</string>
     <string name="notification__download_running__title">Descargando actualizaciones de aplicaciones</string>
     <string name="app_card__download_the_app">descargar la aplicación</string>
     <string name="notification__error__channel_descr">Mostrar los errores al comprobar las actualizaciones en segundo plano</string>
@@ -79,7 +77,7 @@
     <string name="download_activity__delete_cache_button_text">limpiar caché</string>
     <string name="download_activity__delete_cache_explanation">Si cree que FFUpdater ha almacenado en la caché una actualización defectuosa o si quieres ahorrar espacio, haga clic en el botón para eliminar el archivo descargado.</string>
     <string name="download_activity__different_installer_info__text">Si la instalación falla con frecuencia, prueba a cambiar al \"instalador nativo\" en la configuración.</string>
-    <string name="download_activity__download_app_with_status">Descargando aplicación (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Descargando aplicación</string>
     <string name="download_activity__download_failed">La descarga fallo</string>
     <string name="download_activity__downloaded_application_from">Descargó la aplicación desde:</string>
     <string name="download_activity__downloaded_application_is_not_verified">La aplicación descargada NO está verificada</string>
@@ -318,7 +316,6 @@
     <string name="duckduckgo_android__description">La aplicación DuckDuckGo proporciona la protección de privacidad en línea más completa con sólo pulsar un botón. Con una sola descarga, obtienes un nuevo navegador de uso diario que ofrece protección sin fisuras mientras buscas y navegas, y acceso a protecciones de rastreo para los correos electrónicos que recibes y las aplicaciones que utilizas. Muchas de estas protecciones no se ofrecen por defecto en los navegadores más populares.</string>
     <string name="privacy_browser__description">La única forma de evitar que se abuse de los datos es impedir que se recojan en primer lugar. Privacy Browser tiene dos objetivos principales: Minimizar los datos que se envían a Internet y minimizar los datos que se almacenan en el dispositivo.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater necesita el permiso para informarle sobre las actualizaciones.</string>
-    <string name="generic__eol_reason__too_old">La aplicación no se ha actualizado durante mucho tiempo.</string>
     <string name="main_activity__an_error_occurred"><u>Se ha producido un error. Vuelve a intentarlo más tarde.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">El navegador ya no se actualiza.</string>
 </resources>

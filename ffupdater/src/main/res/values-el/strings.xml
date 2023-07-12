@@ -38,7 +38,6 @@
     <string name="notification__download_error__channel_descr">Εμφανίζεται όταν αποτυγχάνουν οι λήψεις ενημέρωσης στο παρασκήνιο.</string>
     <string name="notification__download_error__descr">Η λήψη στο παρασκήνιο της ενημέρωσης %1$s απέτυχε. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να το αναφέρετε στο notabug.org, στο GitHub ή στο GitLab.</string>
     <string name="notification__download_running__channel_name">Ειδοποίηση για λήψεις στο παρασκήνιο</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Λήψη ενημερώσεων εφαρμογών</string>
     <string name="app_card__download_the_app">κατεβάστε την εφαρμογή</string>
     <string name="notification__eol_apps__channel_description">Κανάλι ειδοποιήσεων για προειδοποιήσεις σχετικά με παλιές εφαρμογές.</string>
@@ -57,7 +56,6 @@
     <string name="app_description">Ενημέρωση για προγράμματα περιήγησης φιλικά προς το απόρρητο</string>
     <string name="notification__error__text">Παρακαλώ αναφέρετε αυτό το σφάλμα. Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
     <string name="notification__error__title">Ο έλεγχος ενημέρωσης παρασκηνίου απέτυχε</string>
-    <string name="available_version_error"><u>ΣΦΑΛΜΑ</u></string>
     <string name="application_successfully_installed">Η εφαρμογή εγκαταστάθηκε με επιτυχία</string>
     <string name="bromite__description">Το Bromite στοχεύει στην παροχή μιας εμπειρίας περιήγησης χωρίς ακαταστασία χωρίς λειτουργίες που επεμβαίνουν στο απόρρητο και με την προσθήκη ενός γρήγορου μηχανισμού αποκλεισμού διαφημίσεων. Εφαρμόζονται ελάχιστες αλλαγές διεπαφής χρήστη για να περιοριστεί η ιδέα του προγράμματος περιήγησης ως πλατφόρμας διαφήμισης.</string>
     <string name="brave_beta__description">Καλώς ήρθατε στο Brave Beta για Android!
@@ -149,7 +147,7 @@
     <string name="download_activity__delete_cache_button_text">εκκαθάριση προσωρινής μνήμης</string>
     <string name="download_activity__delete_cache_explanation">Εάν πιστεύετε ότι το FFUpdater έχει αποθηκεύσει στην προσωρινή μνήμη μια ελαττωματική ενημέρωση εφαρμογής ή εάν θέλετε να εξοικονομήσετε χώρο, κάντε κλικ στο κουμπί για να διαγράψετε το ληφθέν αρχείο.</string>
     <string name="download_activity__different_installer_info__text">Εάν η εγκατάσταση αποτυγχάνει συχνά, δοκιμάστε να μεταβείτε στο \"εγγενές πρόγραμμα εγκατάστασης\" στις ρυθμίσεις.</string>
-    <string name="download_activity__download_app_with_status">Λήψη εφαρμογής (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Λήψη εφαρμογής</string>
     <string name="download_activity__download_failed">Η λήψη απέτυχε</string>
     <string name="download_activity__downloaded_application_from">Κατέβασε την εφαρμογή από:</string>
     <string name="download_activity__downloaded_application_is_not_verified">Η εφαρμογή που κατεβάσατε ΔΕΝ έχει επαληθευτεί</string>
@@ -318,7 +316,6 @@
     <string name="privacy_browser__warning">Το FFUpdater κατεβάζει τα αρχεία από τους διακομιστές F-Droid και επομένως δεν είναι πιο γρήγορο.</string>
     <string name="privacy_browser__description">Ο μόνος τρόπος για να αποφευχθεί η κατάχρηση δεδομένων είναι να αποτραπεί εξαρχής η συλλογή τους. Το Privacy Browser έχει δύο πρωταρχικούς στόχους: Ελαχιστοποίηση των δεδομένων που αποστέλλονται στο διαδίκτυο και ελαχιστοποίηση των δεδομένων που είναι αποθηκευμένα στη συσκευή.</string>
     <string name="main_activity__denied_notification_permission">Το FFUpdater χρειάζεται την άδεια για να σας ενημερώσει για ενημερώσεις.</string>
-    <string name="generic__eol_reason__too_old">Η εφαρμογή δεν έχει ενημερωθεί εδώ και πολύ καιρό.</string>
     <string name="main_activity__an_error_occurred"><u>Παρουσιάστηκε σφάλμα. Δοκιμάστε ξανά αργότερα.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Το πρόγραμμα περιήγησης δεν διατηρείται πλέον.</string>
 </resources>

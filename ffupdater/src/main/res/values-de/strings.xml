@@ -8,7 +8,6 @@
     <string name="application_installation_was_not_successful">Installation der App schlug fehl</string>
     <string name="application_successfully_installed">App erfolgreich installiert</string>
     <string name="available_version">Verfügbar: %1$s</string>
-    <string name="available_version_error">"<u>FEHLER</u>"</string>
     <string name="notification__error__text">Bitte melden Sie diesen Fehler. Klicken Sie auf diese Benachrichtigung, um den Fehlerbericht anzuzeigen.</string>
     <string name="notification__error__title">Updateprüfung ist fehlgeschlagen</string>
     <string name="brave__description">Der Brave Web Browser ist dein privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert!
@@ -45,7 +44,6 @@
     <string name="dialog_button__yes">Ja</string>
     <string name="notification__download_running__channel_descr">Zeigt an, wann Downloads im Hintergrund heruntergeladen werden.</string>
     <string name="notification__download_running__channel_name">Benachrichtigungen über Downloads im Hintergrund</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Lade Update herunter</string>
     <string name="app_card__download_the_app">Applikation herunterladen</string>
     <string name="notification__error__channel_descr">Fehler des Hintergrund-Updateprüfung anzeigen</string>
@@ -76,7 +74,7 @@
     <string name="download_activity__delete_cache_button_text">Cache leeren</string>
     <string name="download_activity__delete_cache_explanation">Wenn du glaubst, dass FFUpdater ein fehlerhaftes App-Update heruntergeladen hat, oder wenn du Speicherplatz sparen möchtest, dann klicke auf den Button, um die Datei zu löschen.</string>
     <string name="download_activity__different_installer_info__text">Wenn die App-Installation häufig fehlschlägt, versuche in den Einstellungen die native Installationsmethode zu aktivieren.</string>
-    <string name="download_activity__download_app_with_status">Lade App herunter (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Lade App herunter</string>
     <string name="download_activity__download_failed">Download schlug fehl</string>
     <string name="download_activity__downloaded_application_from">App wurde heruntergeladen von:</string>
     <string name="download_activity__downloaded_application_is_not_verified">Heruntergeladene App ist NICHT verifiziert</string>
@@ -313,7 +311,6 @@
     <string name="privacy_browser__description">Die einzige Möglichkeit, den Missbrauch von Daten zu verhindern, besteht darin, sie gar nicht erst zu sammeln. Privacy Browser hat zwei Hauptziele: Minimierung der Daten, die an das Internet gesendet werden und Minimierung der Daten, die auf dem Gerät gespeichert werden.</string>
     <string name="duckduckgo_android__description">Die DuckDuckGo-App bietet den umfassendsten Online-Datenschutz mit nur einem Tastendruck. Mit einem Download erhältst du einen neuen, alltäglichen Browser, der nahtlosen Schutz bietet, während du suchst und browst, und Zugriff auf Tracking-Schutz für E-Mails, die du erhältst, und Apps, die du nutzt. Viele dieser Schutzmaßnahmen werden in den meisten gängigen Browsern standardmäßig nicht angeboten.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater benötigt die Berechtigung, dich über Updates zu informieren.</string>
-    <string name="generic__eol_reason__too_old">App wurde seit langem nicht mehr aktualisiert.</string>
     <string name="main_activity__an_error_occurred"><u>Ein Fehler ist aufgetreten. Versuche es später erneut.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Der Browser wird nicht mehr gewartet.</string>
 </resources>

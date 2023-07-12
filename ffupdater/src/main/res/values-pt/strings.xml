@@ -3,7 +3,6 @@
     <string name="app_name">FFUpdater</string>
     <string name="app_warning_dialog__title">Advertência</string>
     <string name="available_version">Disponível: %1$s</string>
-    <string name="available_version_error"><u>ERRO</u></string>
     <string name="notification__error__title">Verificação de atualização de antecedentes falhou</string>
     <string name="brave__title">Brave Navegador Privado</string>
     <string name="brave__warning">- A Brave utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
@@ -37,7 +36,6 @@
     <string name="dialog_button__yes">Sim</string>
     <string name="notification__download_error__channel_descr">Mostra quando os downloads de atualizações em segundo plano falham.</string>
     <string name="notification__download_error__channel_name">Notificação sobre erros de download em segundo plano</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="app_card__download_the_app">transferir o aplicativo</string>
     <string name="notification__eol_apps__channel_description">Canal de notificação para avisos sobre aplicações desatualizadas.</string>
     <string name="notification__eol_apps__channel_name">Notificação de aplicações desatualizadas</string>
@@ -104,7 +102,7 @@
     <string name="download_activity__delete_cache_button_text">Limpar cache</string>
     <string name="download_activity__delete_cache_explanation">Se achar que o FFUpdater armazenou em cache uma atualização de aplicativo com defeito ou se deseja economizar espaço, clique no botão para excluir o arquivo baixado.</string>
     <string name="download_activity__different_installer_info__text">Se a instalação falhar frequentemente, tente mudar para o \'instalador nativo\' nas definições.</string>
-    <string name="download_activity__download_app_with_status">Transferir a aplicação (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Transferir a aplicação</string>
     <string name="download_activity__download_failed">Transferência Falhou</string>
     <string name="download_activity__downloaded_application_from">Aplicação transferida a partir de:</string>
     <string name="download_activity__downloaded_application_is_not_verified">A aplicação transferida NÃO é verificada</string>
@@ -291,7 +289,6 @@
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="privacy_browser__warning">FFUpdater transfere os ficheiros a partir dos servidores F-Droid e não é, portanto, mais rápido.</string>
     <string name="privacy_browser__description">A única forma de evitar que os dados sejam abusados é evitar, em primeiro lugar, que sejam recolhidos. O Privacy Browser tem dois objetivos principais: Minimizar os dados que são enviados para a Internet e minimizar os dados que são armazenados no dispositivo.</string>
-    <string name="generic__eol_reason__too_old">A aplicação não foi atualizada durante muito tempo.</string>
     <string name="tor_browser_alpha__description">O Tor Browser é o único navegador móvel oficial apoiado pelo Projecto Tor, o que desenvolve a ferramenta mais forte do mundo para a privacidade e liberdade online.
 \n
 \nO Tor Browser será SEMPRE gratuito, mas as doações tornam-no possível. O Projecto Tor é um 501©(3) sem fins lucrativos baseado nos EUA. Por favor, considere fazer uma contribuição hoje. Cada donativo faz a diferença: https://donate.torproject.org.

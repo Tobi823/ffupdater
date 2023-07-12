@@ -7,7 +7,6 @@
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
     <string name="application_successfully_installed">Installation de l\'application réussie</string>
     <string name="available_version">Disponible : %1$s</string>
-    <string name="available_version_error">"<u>ERREUR</u>"</string>
     <string name="notification__error__text">Veuillez signaler cette erreur. Cliquez pour afficher le rapport d\'erreur.</string>
     <string name="notification__error__title">Échec de la vérification des mises à jour</string>
     <string name="brave__description">Naviguez privé sur Internet, gratuitement ! Le navigateur privé Brave est votre navigateur web rapide, gratuit et sûr avec un bloqueur de pubs et de pop-up intégré. Naviguez et cherchez sur Internet sans être traqué par des publicitaires, virus et pop-up.</string>
@@ -38,7 +37,6 @@
     <string name="dialog_button__yes">Oui</string>
     <string name="notification__download_running__channel_descr">Indique quand les mises à jour des applications sont téléchargées en arrière-plan.</string>
     <string name="notification__download_running__channel_name">Notification des téléchargements en arrière-plan</string>
-    <string name="notification__download_running__text">Téléchargement de la mise à jour pour %1$s (%2$s)</string>
     <string name="notification__download_running__title">Téléchargement des mises à jour des applications</string>
     <string name="app_card__download_the_app">télécharger l\'application</string>
     <string name="notification__error__channel_descr">Afficher les erreurs de vérification des mises à jour en arrière plan</string>
@@ -70,7 +68,7 @@
     <string name="app_card__information_about_the_app">informations sur l\'application</string>
     <string name="download_activity__delete_cache_button_text">vider le cache</string>
     <string name="download_activity__delete_cache_explanation">Si vous pensez que FFUpdater a mis en cache une mise à jour d\'application défectueuse, cliquez sur le bouton \"Effacer le cache\" pour supprimer le cache de cette application.</string>
-    <string name="download_activity__download_app_with_status">Téléchargement de l\'application (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Téléchargement de l\'application</string>
     <string name="download_activity__download_failed">Echec du téléchargement</string>
     <string name="download_activity__downloaded_application_from">Application téléchargée à partir de :</string>
     <string name="download_activity__downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
@@ -314,6 +312,5 @@
     <string name="privacy_browser__warning">FFUpdater télécharge les fichiers depuis les serveurs de F-Droid et n\'est donc pas plus rapide.</string>
     <string name="privacy_browser__description">Le seul moyen d\'empêcher que les données soient abusées est d\'empêcher d\'abord qu\'elles soient collectées. Navigateur Confidentiel (Privacy Browser) a 2 buts primaires : Minimiser les données qui sont envoyées sur Internet et minimiser les données qui sont stockées sur l\'appareil.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater a besoin de votre permission pour vous informez a propos des mise à jour.</string>
-    <string name="generic__eol_reason__too_old">L\'app n\'a pas été mise à jour pendant longtemps.</string>
     <string name="main_activity__an_error_occurred"><u>Une erreur est survenue. Réessayez plus tard.</u></string>
 </resources>

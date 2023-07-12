@@ -9,7 +9,6 @@
     <string name="application_installation_was_not_successful">应用程序安装未成功</string>
     <string name="application_successfully_installed">已成功安装应用程序</string>
     <string name="available_version">可用版本：%1$s</string>
-    <string name="available_version_error"><u>错误</u></string>
     <string name="notification__error__text">请报告此错误。点击查看错误报告。</string>
     <string name="notification__error__title">后台检查更新失败</string>
     <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
@@ -49,7 +48,6 @@
     <string name="notification__download_error__title">后台下载更新失败</string>
     <string name="notification__download_running__channel_descr">显示何时在后台下载了更新。</string>
     <string name="notification__download_running__channel_name">后台下载通知</string>
-    <string name="notification__download_running__text">%1$s（%2$s）</string>
     <string name="notification__download_running__title">正在下载应用程序更新</string>
     <string name="app_card__download_the_app">下载应用程序</string>
     <string name="notification__eol_apps__channel_description">用于警告过时应用有关信息的通知通道。</string>
@@ -89,7 +87,7 @@
     <string name="download_activity__delete_cache_button_text">清除缓存</string>
     <string name="download_activity__delete_cache_explanation">如果您认为 FFUpdater 缓存了错误的应用更新，或者您想节省存储空间，请单击按钮删除已下载的文件。</string>
     <string name="download_activity__different_installer_info__text">如果安装频繁失败，请尝试在设置中切换到“原生安装器”。</string>
-    <string name="download_activity__download_app_with_status">下载应用程序（%1$s）</string>
+    <string name="download_activity__download_app_with_status">下载应用程序</string>
     <string name="download_activity__download_failed">下载失败</string>
     <string name="download_activity__downloaded_application_from">从此处下载程序：</string>
     <string name="download_activity__downloaded_application_is_not_verified">下载的应用未经验证</string>
@@ -318,6 +316,5 @@
 \n
 \nFirefox Focus 是打开、退出、搜索和销毁的完美工具，我正在执行一项与您无关的任务——网络浏览器。</string>
     <string name="main_activity__denied_notification_permission">FFUpdater 需要向您通知更新信息的权限。</string>
-    <string name="generic__eol_reason__too_old">应用已经很久没有更新了。</string>
     <string name="main_activity__an_error_occurred"><u>发生错误。请稍后重试。</u></string>
 </resources>

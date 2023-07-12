@@ -8,7 +8,6 @@
     <string name="application_installation_was_not_successful">Instalação do navegador falhou</string>
     <string name="application_successfully_installed">Navegador instalado com sucesso</string>
     <string name="available_version">Disponível: %1$s</string>
-    <string name="available_version_error">"<u>ERRO</u>"</string>
     <string name="notification__error__text">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
     <string name="notification__error__title">Verificação em segundo plano falhou</string>
     <string name="brave__description">Navegue livremente e de modo privado! Brave é rápido, gratuito e seguro com bloqueador de pop-ups e anúncios. Navegue e pesquise na internet sem malware e rastreamento.</string>
@@ -38,7 +37,6 @@
     <string name="dialog_button__yes">Sim</string>
     <string name="notification__download_running__channel_descr">Mostra quando as atualizações do aplicativo são baixadas em segundo plano.</string>
     <string name="notification__download_running__channel_name">Notificação sobre downloads em segundo plano</string>
-    <string name="notification__download_running__text">Baixando atualização para %1$s (%2$s).</string>
     <string name="notification__download_running__title">Download de atualizações do aplicativo</string>
     <string name="app_card__download_the_app">baixar o navegador</string>
     <string name="notification__error__channel_descr">Mostrar erros ao verificar por atualizações em segundo plano</string>
@@ -66,7 +64,7 @@
     <string name="download_activity__delete_cache_button_text">limpar cache</string>
     <string name="download_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização do navegador defeituosa ou deseja economizar espaço, clique no botão para apagar o arquivo baixado.</string>
     <string name="download_activity__different_installer_info__text">Se a instalação falhar com frequência, tente mudar para o \'instalador nativo\' nas configurações.</string>
-    <string name="download_activity__download_app_with_status">Baixando aplicativo (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Baixando aplicativo</string>
     <string name="download_activity__download_failed">Download falhou</string>
     <string name="download_activity__downloaded_application_from">Navegador baixado do:</string>
     <string name="download_activity__downloaded_application_is_not_verified">O navegador baixado NÃO foi verificado</string>

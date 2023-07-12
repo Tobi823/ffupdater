@@ -7,7 +7,6 @@
     <string name="application_installation_was_not_successful">Az alkalmazás telepítése nem volt sikeres</string>
     <string name="application_successfully_installed">Az alkalmazás sikeresen telepítve</string>
     <string name="available_version">Elérhető: %1$s</string>
-    <string name="available_version_error"><u>HIBA</u></string>
     <string name="notification__error__text">Kérjük, jelezze ezt a hibát. Kattintson a hibajelentés megtekintéséhez.</string>
     <string name="notification__error__title">A háttérfrissítés ellenőrzése sikertelen</string>
     <string name="brave__description">Böngésszen privátban az interneten, ingyen! A Brave Private Browser App a gyors, ingyenes és biztonságos privát böngészője reklámblokkolóval és felugró ablakok blokkolójával. Privát böngészés és keresés az interneten anélkül, hogy a hirdetők, rosszindulatú programok és felugró ablakok követnék.</string>
@@ -38,7 +37,6 @@
     <string name="notification__download_error__title">A frissítés háttérben történő letöltése sikertelen</string>
     <string name="notification__download_running__channel_descr">Megjeleníti, amikor az alkalmazás frissítései a háttérben letöltődnek.</string>
     <string name="notification__download_running__channel_name">Értesítés a letöltésekről a háttérben</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Alkalmazás frissítések letöltése</string>
     <string name="notification__eol_apps__channel_description">Értesítési csatorna az elavult alkalmazásokra vonatkozó figyelmeztetésekhez.</string>
     <string name="notification__eol_apps__channel_name">Elavult alkalmazások értesítése</string>

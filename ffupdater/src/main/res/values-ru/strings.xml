@@ -8,7 +8,6 @@
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
     <string name="application_successfully_installed">Приложение успешно установлено</string>
     <string name="available_version">Доступен: %1$s</string>
-    <string name="available_version_error">"<u>ОШИБКА</u>"</string>
     <string name="notification__error__text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
     <string name="notification__error__title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
@@ -39,7 +38,6 @@
     <string name="dialog_button__yes">Да</string>
     <string name="notification__download_running__channel_descr">Показывает, когда обновления приложений загружаются в фоновом режиме.</string>
     <string name="notification__download_running__channel_name">Уведомление о загрузках в фоновом режиме</string>
-    <string name="notification__download_running__text">Загрузка обновления для %1$s (%2$s)</string>
     <string name="notification__download_running__title">Загрузка обновлений приложений</string>
     <string name="app_card__download_the_app">загрузить приложение</string>
     <string name="notification__error__channel_descr">Показать ошибки проверки фонового обновления</string>
@@ -67,7 +65,7 @@
     <string name="download_activity__delete_cache_button_text">очистить кэш</string>
     <string name="download_activity__delete_cache_explanation">Если вы считаете, что FFUpdater ошибочно сохранил в кэше обновление приложения или просто желаете очистить место, нажмите кнопку \"очистить кэш\", для удаления загруженного файла.</string>
     <string name="download_activity__different_installer_info__text">Если установка часто проваливается, попробуйте переключиться на \"Родной установщик\" в настройках.</string>
-    <string name="download_activity__download_app_with_status">Загрузка приложения (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Загрузка приложения</string>
     <string name="download_activity__download_failed">Не удалось загрузить</string>
     <string name="download_activity__downloaded_application_from">Приложение загружено с:</string>
     <string name="download_activity__downloaded_application_is_not_verified">Загруженное приложение НЕ проверяется</string>

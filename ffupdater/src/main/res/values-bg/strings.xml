@@ -9,7 +9,6 @@
     <string name="application_installation_was_not_successful">Приложението не е инсталирано</string>
     <string name="application_successfully_installed">Приложението е инсталирано</string>
     <string name="available_version">Налично: %1$s</string>
-    <string name="available_version_error">"<u>ГРЕШКА</u>"</string>
     <string name="notification__error__text">Съобщете за тази грешка. Докоснете, за да видите доклада.</string>
     <string name="notification__error__title">Неуспешна проверка за обновяване във фонов режим</string>
     <string name="brave__description">Разглеждайте интернет поверително и безплатно! Приложението поверителен четец на Брейв е вашият бърз, безплатен и безопасен личен мрежов четец със спиране на реклами и изскачащи прозорци. Разглеждайте и търсете в интернет в поверителен режим, без да бъдете следени от рекламодатели, зловреден софтуер и изскачащи прозорци.</string>
@@ -49,7 +48,6 @@
     <string name="notification__download_error__title">Неуспешно изтегляне на обновяване във фонов режим</string>
     <string name="notification__download_running__channel_descr">Категория известия за изтегляния на обновяване във фонов режим.</string>
     <string name="notification__download_running__channel_name">Известие при изтегляне във фонов режим</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Изтегляне на обновяване</string>
     <string name="app_card__download_the_app">изтегляне на приложение</string>
     <string name="notification__eol_apps__channel_description">Категория известия за наличие на изведени от употреба приложения.</string>
@@ -89,7 +87,7 @@
     <string name="download_activity__delete_cache_button_text">Изчистване</string>
     <string name="download_activity__delete_cache_explanation">Ако смятате, че FFUpdater е съхранил във врементата памет дефектно обновяване на някое от приложенията или искате да освободите дисково пространство натиснете бутона, за да го премахнете.</string>
     <string name="download_activity__different_installer_info__text">Ако често инсталацията е неуспешна изберете „вграден инсталатор“ в настройките.</string>
-    <string name="download_activity__download_app_with_status">Изтегляне на приложение (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Изтегляне на приложение</string>
     <string name="download_activity__download_failed">Изтеглянето е неуспешно</string>
     <string name="download_activity__downloaded_application_from">Приложението е изтеглено от:</string>
     <string name="download_activity__downloaded_application_is_not_verified">Изтегленото приложение НЕ е проверено</string>
@@ -295,7 +293,6 @@
     <string name="main_activity__app_was_signed_by_different_certificate">Приложение е подписано с различен сертификат и не може да бъде обновено с FFUpdater.</string>
     <string name="privacy_browser__title">Поверителни четци</string>
     <string name="notification__network_error__text">Тази грешка трябва да се появява рядко. Ако въпреки това се появява често, трябва да я докладвате. Щракнете тук, за да видите пълния текст на грешката.</string>
-    <string name="generic__eol_reason__too_old">Приложението не е обновявано отдавна.</string>
     <string name="main_activity__an_error_occurred"><u>Грешка. Опитайте по-късно.</u></string>
     <string name="network__proxy__dialog_message">Ако искате да използвате прокси сървър на SOCKS или HTTP, въведете данните за връзката тук. Използвайте един от тези формати:
 \n

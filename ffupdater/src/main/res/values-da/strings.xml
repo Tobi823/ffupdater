@@ -8,7 +8,6 @@
     <string name="app_warning_dialog__title">Advarsel</string>
     <string name="application_installation_was_not_successful">Appinstallation mislykkedes</string>
     <string name="available_version">Tilgængelig: %1$s</string>
-    <string name="available_version_error"><u>FEJL</u></string>
     <string name="notification__error__text">Rapportér venligst denne fejl. Klik for at se fejlrapporten.</string>
     <string name="notification__error__title">Kontrol af baggrundsopdatering mislykkedes</string>
     <string name="brave__title">Brave Private Browser</string>
@@ -89,7 +88,7 @@
     <string name="ungoogled_chromium__description">Google Chromium, uden integration med Google.
 \n
 \nUden at logge ind på en Google-konto klarer Chromium sig ret godt med hensyn til sikkerhed og privatliv. Chromium har dog stadig en vis afhængighed af Googles webtjenester og binære filer. Derudover har Google designet Chromium til at være nemt og intuitivt for brugerne, hvilket betyder, at de går på kompromis med gennemsigtighed og kontrol over interne operationer.</string>
-    <string name="download_activity__download_app_with_status">Downloader app (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Downloader app</string>
     <string name="download_activity__download_failed">Download fejlede</string>
     <string name="download_activity__downloaded_application_from">Hentede app fra:</string>
     <string name="download_activity__downloaded_application_is_not_verified">Den downloadede app er IKKE verificeret</string>
@@ -192,7 +191,6 @@
     <string name="notification__download_error__title">Baggrundsdownload af opdatering mislykkedes</string>
     <string name="notification__download_running__channel_descr">Vises, når appopdateringer downloades i baggrunden.</string>
     <string name="notification__download_running__channel_name">Notifikation om downloads i baggrunden</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Downloader appopdateringer</string>
     <string name="app_card__download_the_app">download appen</string>
     <string name="notification__eol_apps__channel_description">Notifikationskanal for advarsler om forældede apps.</string>

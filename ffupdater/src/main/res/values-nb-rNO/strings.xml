@@ -7,7 +7,6 @@
     <string name="application_installation_was_not_successful">Kunne ikke installere programmet</string>
     <string name="application_successfully_installed">Installert</string>
     <string name="available_version">Tilgjengelig: %1$s</string>
-    <string name="available_version_error"><u>FEIL</u></string>
     <string name="notification__error__text">Innrapporter denne feilen. Klikk for å vise feilrapporten.</string>
     <string name="notification__error__title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
     <string name="brave__description">Mer privat surfing, gratis. Har blokkering av reklame og oppsprett. Søk på Internett uten at reklameselskap, skadevare og oppsprett sporer deg.</string>
@@ -36,7 +35,6 @@
     <string name="dialog_button__yes">Ja</string>
     <string name="notification__download_running__channel_descr">Viser når programoppgraderinger lastes ned i bakgrunnen.</string>
     <string name="notification__download_running__channel_name">Merknad om nedlastinger i bakgrunnen</string>
-    <string name="notification__download_running__text">Last ned oppgradering for %1$s (%2$s).</string>
     <string name="notification__download_running__title">Laster ned programoppgraderinger</string>
     <string name="app_card__download_the_app">last ned programmet</string>
     <string name="notification__error__channel_descr">Vis feil i bakgrunnsoppdateringssjekken</string>
@@ -52,7 +50,7 @@
     <string name="app_card__information_about_the_app">info om programmet</string>
     <string name="download_activity__delete_cache_button_text">tøm hurtiglager</string>
     <string name="download_activity__delete_cache_explanation">Hvis du tror FFUpdater har hurtiglagret en feilaktig programoppgradering kan du trykke «Tøm hurtiglager»-knappen for å slette hurtiglageret for dette programmet.</string>
-    <string name="download_activity__download_app_with_status">Last ned program (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Last ned program</string>
     <string name="download_activity__download_failed">Nedlasting mislyktes</string>
     <string name="download_activity__downloaded_application_from">Last ned program fra:</string>
     <string name="download_activity__downloaded_application_is_not_verified">Nedlastet program er IKKE bekreftet</string>

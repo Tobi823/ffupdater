@@ -104,15 +104,15 @@ object BackgroundNotificationBuilder {
             name = context.getString(notification__download_running__channel_name),
             description = context.getString(notification__download_running__channel_descr),
         )
-        val status = when {
-            progressInPercent != null -> "$progressInPercent %"
-            totalMB != null -> "$totalMB MB"
-            else -> ""
+        val text = when {
+            progressInPercent != null -> "$appTitle ($progressInPercent %)"
+            totalMB != null -> "$appTitle ($totalMB MB)"
+            else -> appTitle
         }
         val notification = NotificationData(
             id = DOWNLOAD_IS_RUNNING_CODE + app.ordinal,
             title = context.getString(notification__download_running__title),
-            text = context.getString(notification__download_running__text, appTitle, status),
+            text = text,
         )
         showNotification(context, channel, notification, null)
     }

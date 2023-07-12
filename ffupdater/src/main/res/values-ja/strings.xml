@@ -7,7 +7,6 @@
     <string name="application_installation_was_not_successful">アプリをインストールできませんでした</string>
     <string name="application_successfully_installed">アプリを正常にインストールしました</string>
     <string name="available_version">利用可能: %1$s</string>
-    <string name="available_version_error">"<u>エラー</u>"</string>
     <string name="notification__error__text">このエラーの報告をお願いします。クリックするとエラーレポートが表示されます。</string>
     <string name="notification__error__title">バックグラウンドでの更新確認に失敗しました</string>
     <string name="brave__description">自由で、プライベートにインターネットを閲覧しましょう！ Brave は、広告ブロック機能とポップアップブロック機能を備えた、高速、無料、かつ安全なプライベートウェブブラウザです。広告主やマルウェア、ポップアップに追跡されることなく、プライベートにインターネットを閲覧、検索できます。</string>
@@ -71,7 +70,7 @@
     <string name="app_card__information_about_the_app">このアプリについて</string>
     <string name="download_activity__delete_cache_button_text">キャッシュをクリア</string>
     <string name="download_activity__delete_cache_explanation">FFUpdater が欠陥のあるアプリの更新をキャッシュしたと思われる場合や空き容量を増やしたい場合は、ボタンをクリックしてダウンロードされたファイルを削除してください。</string>
-    <string name="download_activity__download_app_with_status">アプリをダウンロード中 (%1$s)</string>
+    <string name="download_activity__download_app_with_status">アプリをダウンロード中</string>
     <string name="download_activity__download_failed">ダウンロードに失敗しました</string>
     <string name="download_activity__downloaded_application_from">アプリのダウンロード元:</string>
     <string name="download_activity__downloaded_application_is_not_verified">ダウンロードしたアプリを検証できませんでした</string>
@@ -198,7 +197,6 @@
     <string name="notification__download_error__descr">%1$s のバックグラウンドでのダウンロードに失敗しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
     <string name="notification__download_error__text">%1$s のバックグラウンドでのダウンロードに失敗しました。同様のエラーが頻繁に発生する場合は、ここをクリックしてエラーレポートを確認してください。</string>
     <string name="notification__download_error__title">バックグラウンドでのダウンロードに失敗</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__eol_apps__channel_description">開発が終了したアプリについての警告の通知チャンネル。</string>
     <string name="notification__eol_apps__channel_name">開発終了アプリの通知</string>
     <string name="notification__eol_apps__title">開発終了したアプリがあります</string>
@@ -217,7 +215,6 @@
     <string name="main_activity__app_was_signed_by_different_certificate">このアプリは異なる証明書で署名されており、FFUpdater で更新できません。</string>
     <string name="tor_browser__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。</string>
     <string name="main_activity__denied_notification_permission">FFUpdater には、更新について通知する権限が必要です。</string>
-    <string name="generic__eol_reason__too_old">アプリは長い間更新されていません。</string>
     <string name="add_app_activity__title_better_than_google_chrome">Google Chrome より優秀</string>
     <string name="lockwise__eol_reason">Mozilla は 2021 年 12 月にサポートを終了しました。他のパスワード管理アプリに移行してください。</string>
     <string name="lockwise__description">あなただけのためのパスワードアクセス

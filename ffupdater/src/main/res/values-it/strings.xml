@@ -9,7 +9,6 @@
     <string name="application_installation_was_not_successful">L\'installazione dell\'applicazione non è riuscita</string>
     <string name="application_successfully_installed">Applicazione installata con successo</string>
     <string name="available_version">Disponibile: %1$s</string>
-    <string name="available_version_error">"<u>ERRORE</u>"</string>
     <string name="notification__error__text">Si prega di segnalare questo errore. Clicca per visualizzare il rapporto di errore.</string>
     <string name="notification__error__title">Verifica aggiornamenti in background fallita</string>
     <string name="brave__description">Naviga su internet privatamente, gratis! Brave Private Browser App è il tuo browser web privato, veloce, gratuito e sicuro con blocco di annunci e pop-up. Naviga e cerca su internet privatamente, senza essere tracciato da inserzionisti, malware e pop-up.</string>
@@ -45,7 +44,6 @@
     <string name="notification__download_error__title">Download in background dell\'aggiornamento non riuscito</string>
     <string name="notification__download_running__channel_descr">Mostra quando gli aggiornamenti delle app vengono scaricati in sfondo.</string>
     <string name="notification__download_running__channel_name">Notifica di scaricamento in sfondo</string>
-    <string name="notification__download_running__text">%1$s (%2$s)</string>
     <string name="notification__download_running__title">Scaricare gli aggiornamenti delle app</string>
     <string name="app_card__download_the_app">scarica l\'app</string>
     <string name="notification__eol_apps__channel_description">Canale di notifica per avvisi su app obsolete.</string>
@@ -77,7 +75,7 @@
     <string name="download_activity__delete_cache_button_text">svuota cache</string>
     <string name="download_activity__delete_cache_explanation">Se pensi che FFupdater abbia memorizzato nella cache un aggiornamento di app difettoso o se vuoi risparmiare spazio, clicca sul pulsante per eliminare il file scaricato.</string>
     <string name="download_activity__different_installer_info__text">Se l\'installazione fallisce frequentemente, prova a passare al \'programma di installazione nativo\' nelle impostazioni.</string>
-    <string name="download_activity__download_app_with_status">Scaricando l\'applicazione (%1$s)</string>
+    <string name="download_activity__download_app_with_status">Scaricando l\'applicazione</string>
     <string name="download_activity__download_failed">Download fallito</string>
     <string name="download_activity__downloaded_application_from">Applicazione scaricata da:</string>
     <string name="download_activity__downloaded_application_is_not_verified">L\'applicazione scaricata NON è verificata</string>
@@ -305,6 +303,5 @@
     <string name="duckduckgo_android__description">L\'app DuckDuckGo offre la più completa protezione della privacy online con la semplice pressione di un pulsante. Con un solo download, si ottiene un nuovo browser quotidiano che offre una protezione continua durante la ricerca e la navigazione e l\'accesso alle protezioni per il tracciamento delle e-mail ricevute e delle app utilizzate. Molte di queste protezioni non sono disponibili di default nei browser più diffusi.</string>
     <string name="main_activity__denied_notification_permission">FFUpdater ha bisogno dell\'autorizzazione per informarti sugli aggiornamenti.</string>
     <string name="main_activity__an_error_occurred"><u>Si è verificato un errore. Riprovaìpiù tardi.</u></string>
-    <string name="generic__eol_reason__too_old">L\'app non viene aggiornata da molto tempo.</string>
     <string name="eol_reason__browser_no_longer_maintained">Il browser non viene più mantenuto.</string>
 </resources>

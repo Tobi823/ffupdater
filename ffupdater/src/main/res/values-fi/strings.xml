@@ -8,7 +8,6 @@
     <string name="application_installation_was_not_successful">Sovelluksen asennus ei onnistunut</string>
     <string name="application_successfully_installed">Sovellus asennettu onnistuneesti</string>
     <string name="available_version">Saatavilla: %1$s</string>
-    <string name="available_version_error"><u>VIRHE</u></string>
     <string name="notification__error__text">Ilmoitathan tästä virheestä. Klikkaa nähdäksesi virheraportin.</string>
     <string name="notification__error__title">Taustapäivityksen tarkastus epäonnistui</string>
     <string name="brave__title">Brave Private Browser</string>

@@ -9,7 +9,6 @@
     <string name="application_installation_was_not_successful">Rakenduse paigaldamine ei õnnestunud</string>
     <string name="application_successfully_installed">Rakenduse paigaldamine õnnestus</string>
     <string name="available_version">Saadaval: %1$s</string>
-    <string name="available_version_error"><u>VIGA</u></string>
     <string name="notification__error__title">Taustateenusena toimiv uuenduste kontroll ei õnnestunud</string>
     <string name="notification__error__text">Palun teata meile sellest veast. Veateate vaatamiseks klõpsa.</string>
 </resources>
