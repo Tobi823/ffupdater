@@ -42,7 +42,7 @@ object MozillaCiJsonConsumer {
 
     private fun parseJson(json: JsonObject, abiString: String): Result {
         try {
-            val fileHash = json["artifactsa"]
+            val fileHash = json["artifacts"]
                 .asJsonObject["public/build/target.${abiString}.apk"]
                 .asJsonObject["sha256"]
                 .asString
