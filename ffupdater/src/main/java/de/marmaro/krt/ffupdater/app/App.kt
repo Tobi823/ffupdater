@@ -38,7 +38,7 @@ enum class App {
         return when (this) {
             BRAVE -> Brave
             BRAVE_BETA -> BraveBeta
-            BRAVE_NIGHTLY -> FirefoxNightly
+            BRAVE_NIGHTLY -> BraveNightly
             BROMITE -> Bromite
             BROMITE_SYSTEMWEBVIEW -> BromiteSystemWebView
             CHROMIUM -> Chromium
