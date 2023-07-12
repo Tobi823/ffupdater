@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_card__app_warning_button_description">Näita selle rakenduse hoiatusi</string>
+    <string name="action_about_title">Rakenduse teave</string>
+    <string name="app_description">Privaatsussõbralike brauserite uuendaja</string>
+    <string name="app_icon">rakenduse ikoon</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="app_warning_dialog__title">Hoiatus</string>
+    <string name="application_installation_was_not_successful">Rakenduse paigaldamine ei õnnestunud</string>
+    <string name="application_successfully_installed">Rakenduse paigaldamine õnnestus</string>
+    <string name="available_version">Saadaval: %1$s</string>
+    <string name="available_version_error"><u>VIGA</u></string>
+    <string name="notification__error__title">Taustateenusena toimiv uuenduste kontroll ei õnnestunud</string>
+    <string name="notification__error__text">Palun teata meile sellest veast. Veateate vaatamiseks klõpsa.</string>
+</resources>
