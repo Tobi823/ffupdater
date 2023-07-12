@@ -13,7 +13,7 @@ interface InstalledVersion : AppAttributes {
     @AnyThread
     suspend fun isInstalled(context: Context): InstallationStatus {
         return if (isInstalledWithoutFingerprintVerification(context.applicationContext)) {
-            if (FingerprintValidator.checkInstalledApp(context.packageManager, app).isValid) {
+            if (FingerprintValidator.checkInstalledApp(context.packageManager, app.findImpl()).isValid) {
                 InstallationStatus.INSTALLED
             } else {
                 InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT

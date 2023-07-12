@@ -12,7 +12,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import java.io.File
@@ -28,7 +27,6 @@ class FingerprintValidatorTest {
 
     @MockK
     lateinit var signature: Signature
-    private lateinit var fingerprintValidator: FingerprintValidator
 
     companion object {
         lateinit var signatureBytes: ByteArray
@@ -51,11 +49,6 @@ class FingerprintValidatorTest {
         }
     }
 
-    @BeforeEach
-    fun setUp() {
-        fingerprintValidator = FingerprintValidator(packageManager)
-    }
-
     @Test
     fun checkApkFile_withCorrectSignature_returnValid() {
         val packageInfo = PackageInfo()
@@ -68,7 +61,7 @@ class FingerprintValidatorTest {
         } returns packageInfo
 
         val actual =
-            runBlocking { fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE.findImpl()) }
+            runBlocking { FingerprintValidator.checkApkFile(packageManager, file, App.FIREFOX_RELEASE.findImpl()) }
         assertTrue(actual.isValid)
         assertEquals(signatureFingerprint, actual.hexString)
         assertEquals(signatureFingerprint, App.FIREFOX_RELEASE.findImpl().signatureHash)
@@ -85,7 +78,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
-        val actual = runBlocking { fingerprintValidator.checkApkFile(file, App.BRAVE.findImpl()) }
+        val actual = runBlocking { FingerprintValidator.checkApkFile(packageManager, file, App.BRAVE.findImpl()) }
         assertFalse(actual.isValid)
     }
 
@@ -102,7 +95,7 @@ class FingerprintValidatorTest {
 
         assertThrows(CertificateException::class.java) {
             runBlocking {
-                fingerprintValidator.checkApkFile(file, App.FIREFOX_RELEASE.findImpl())
+                FingerprintValidator.checkApkFile(packageManager, file, App.FIREFOX_RELEASE.findImpl())
             }
         }
     }
@@ -118,7 +111,7 @@ class FingerprintValidatorTest {
             packageManager.getPackageInfo(App.FIREFOX_RELEASE.findImpl().packageName, GET_SIGNATURES)
         } returns packageInfo
         val actual = runBlocking {
-            fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE.findImpl())
+            FingerprintValidator.checkInstalledApp(packageManager, App.FIREFOX_RELEASE.findImpl())
         }
         assertTrue(actual.isValid)
         assertEquals(signatureFingerprint, actual.hexString)
@@ -138,7 +131,7 @@ class FingerprintValidatorTest {
 
         assertThrows(CertificateException::class.java) {
             runBlocking {
-                fingerprintValidator.checkInstalledApp(App.FIREFOX_RELEASE.findImpl())
+                FingerprintValidator.checkInstalledApp(packageManager, App.FIREFOX_RELEASE.findImpl())
             }
         }
     }

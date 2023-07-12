@@ -45,7 +45,7 @@ abstract class AbstractAppInstaller(
         executeInstallerSpecificLogic(context, file)
 
         val appResult = try {
-            FingerprintValidator.checkInstalledApp(context.packageManager, app)
+            FingerprintValidator.checkInstalledApp(context.packageManager, appImpl)
         } catch (e: Exception) {
             val errorMessage = "Failed to check installed app."
             throw InstallationFailedException("Failed to check installed app.", e, -102, errorMessage)

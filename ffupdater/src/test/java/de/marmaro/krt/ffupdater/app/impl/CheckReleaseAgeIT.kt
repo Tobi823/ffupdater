@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.content.pm.PackageManager
+import androidx.annotation.Keep
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.device.ABI
@@ -62,12 +63,10 @@ class CheckReleaseAgeIT {
         )
     }
 
-    data class TestData(
-        val app: AppBase,
-        val maxAgeInDays: Int?,
-    ) {
+    @Keep
+    data class TestData(val appImpl: AppBase, val maxAgeInDays: Int?) {
         override fun toString(): String {
-            return app.app.toString()
+            return appImpl.app.toString()
         }
     }
 
@@ -124,7 +123,7 @@ class CheckReleaseAgeIT {
     @ParameterizedTest
     @MethodSource("generate test data")
     fun `is the latest version of app not too old`(testData: TestData) {
-        val result = runBlocking { testData.app.fetchLatestUpdate(context, FORCE_NETWORK) }
+        val result = runBlocking { testData.appImpl.fetchLatestUpdate(context, FORCE_NETWORK) }
         isDownloadAvailable(result.downloadUrl)
 
         if (testData.maxAgeInDays != null) {
