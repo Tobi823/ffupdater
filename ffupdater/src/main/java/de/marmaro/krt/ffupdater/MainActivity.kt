@@ -10,7 +10,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
@@ -235,10 +234,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestForNotificationPermissionIfNecessary() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            return
-        }
-        if (ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+        if (!DeviceSdkTester.supportsAndroid13() ||
+            ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PERMISSION_GRANTED
+        ) {
             return
         }
 

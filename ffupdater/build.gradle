@@ -64,14 +64,14 @@ dependencies {
 android {
     namespace = 'de.marmaro.krt.ffupdater'
 
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         versionCode 145
         // (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
         versionName "78.0.3"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         vectorDrawables.useSupportLibrary = true
     }
 

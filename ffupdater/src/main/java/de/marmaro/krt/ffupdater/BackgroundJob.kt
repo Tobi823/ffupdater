@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater
 
 import android.content.Context
+import android.content.pm.PackageInstaller.InstallConstraints.GENTLE_UPDATE
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.RESTRICT_BACKGROUND_STATUS_ENABLED
 import android.util.Log
@@ -39,6 +40,7 @@ import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.storage.StorageUtil
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.coroutineScope
 import java.time.Duration
 import java.time.ZonedDateTime
@@ -55,6 +57,32 @@ import java.util.concurrent.TimeUnit.MINUTES
 @Keep
 class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context.applicationContext, workerParams) {
+
+    @Keep
+    data class BackgroundJobResult(private val result: Result?) {
+        fun <R> onFailure(block: (Result) -> Unit) {
+            if (result != null) {
+                block(result)
+            }
+        }
+
+        fun <R> onSuccess(block: () -> Unit) {
+            if (result == null) {
+                block()
+            }
+        }
+
+        companion object {
+            fun failure(result: Result): BackgroundJobResult {
+                return BackgroundJobResult(result)
+            }
+
+            fun success(): BackgroundJobResult {
+                return BackgroundJobResult(null)
+            }
+        }
+
+    }
 
 
     /**
@@ -75,6 +103,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     @MainThread
     override suspend fun doWork(): Result = coroutineScope {
         try {
+            Thread.sleep(10000)
             Log.i(LOG_TAG, "doWork(): Execute background job.")
             internalDoWork()
         } catch (e: Exception) {
@@ -131,12 +160,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         val appsForInstallation = downloadedApps.sortedBy { (app, _) ->
             if (app != App.FFUPDATER) app.ordinal else Int.MAX_VALUE
         }
-
-        Log.d(LOG_TAG, "internalDoWork(): Update ${appsForInstallation.joinToString(",")}.")
         appsForInstallation.forEach { (app, updateStatus) ->
-            installApplication(app, updateStatus)
+            if (shouldUpdateBeInstalled(app)) {
+                Log.i(LOG_TAG, "internalDoWork(): Update $app.")
+                installApplication(app, updateStatus)
+            } else {
+                Log.i(LOG_TAG, "internalDoWork(): Skip $app because it is still in use.")
+            }
         }
-
         return Result.success()
     }
 
@@ -180,7 +211,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         // return outdated apps with available updates
         return appsAndUpdateStatus
-            .filter { (_, appUpdateStatus) -> appUpdateStatus.isUpdateAvailable }
+//            .filter { (_, appUpdateStatus) -> appUpdateStatus.isUpdateAvailable }
     }
 
     private fun shouldDownloadsBeAborted(): Result? {
@@ -287,6 +318,22 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         if (BackgroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
             appImpl.deleteFileCache(applicationContext)
         }
+    }
+
+    private suspend fun shouldUpdateBeInstalled(app: App): Boolean {
+        if (DeviceSdkTester.supportsAndroid14()) {
+            val installer = applicationContext.packageManager.packageInstaller
+            val apps = listOf(app.findImpl().packageName)
+            val executor = applicationContext.mainExecutor
+            val gentleUpdatePossible = CompletableDeferred<Boolean>()
+
+            installer.checkInstallConstraints(apps, GENTLE_UPDATE, executor) {
+                val gentle = it.areAllConstraintsSatisfied()
+                gentleUpdatePossible.complete(gentle)
+            }
+            return gentleUpdatePossible.await()
+        }
+        return true
     }
 
     companion object {

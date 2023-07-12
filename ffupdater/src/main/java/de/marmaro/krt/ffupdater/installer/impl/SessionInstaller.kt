@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_MUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.*
+import android.content.Context.RECEIVER_NOT_EXPORTED
 import android.content.pm.PackageInstaller.*
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
@@ -53,15 +54,14 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
     @MainThread
     private fun install(context: Context, file: File) {
         val params = createSessionParams(context, file)
-        val installer = context.packageManager.packageInstaller
         val sessionId = try {
-            installer.createSession(params)
+            context.packageManager.packageInstaller.createSession(params)
         } catch (e: IOException) {
             val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
             fail(getShortErrorMessage(STATUS_FAILURE_STORAGE), e, STATUS_FAILURE_STORAGE, errorMessage)
             return
         }
-        installer.openSession(sessionId).use {
+        context.packageManager.packageInstaller.openSession(sessionId).use {
             copyApkToSession(it, file)
             val intentSender = createSessionChangeReceiver(context, sessionId)
             it.commit(intentSender)
@@ -85,6 +85,9 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         }
         if (DeviceSdkTester.supportsAndroid12()) {
             params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
+        }
+        if (DeviceSdkTester.supportsAndroid14()) {
+            params.setDontKillApp(true)
         }
         return params
     }
@@ -212,7 +215,12 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         intentReceiver = object : BroadcastReceiver() {
             override fun onReceive(c: Context?, i: Intent?) = handleAppInstallationResult(c, i)
         }
-        context.registerReceiver(intentReceiver, IntentFilter(intentNameForAppInstallationCallback))
+        val filter = IntentFilter(intentNameForAppInstallationCallback)
+        if (DeviceSdkTester.supportsAndroid13()) {
+            context.registerReceiver(intentReceiver, filter, RECEIVER_NOT_EXPORTED)
+        } else {
+            context.registerReceiver(intentReceiver, filter)
+        }
     }
 
     private fun unregisterIntentReceiver(context: Context) {

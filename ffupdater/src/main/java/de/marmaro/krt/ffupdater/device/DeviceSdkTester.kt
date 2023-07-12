@@ -59,4 +59,8 @@ object DeviceSdkTester {
     fun supportsAndroid13(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.TIRAMISU
     }
+
+    fun supportsAndroid14(): Boolean {
+        return SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+    }
 }
