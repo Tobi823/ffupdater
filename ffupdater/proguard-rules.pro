@@ -9,6 +9,4 @@
 -dontwarn org.openjsse.javax.net.ssl.SSLSocket
 -dontwarn org.openjsse.net.ssl.OpenJSSE
 -keep class de.marmaro.krt.ffupdater.** {*; }
--dontobfuscate
--dontoptimize
 -keepattributes SourceFile,LineNumberTable
