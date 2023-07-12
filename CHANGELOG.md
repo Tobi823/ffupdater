@@ -1,3 +1,17 @@
+# 2023-07-12 Release 78.0.2 (144)
+
+* Thanks for the Weblate contributions from: Kazushi Hayama, Retrial, nautilusx, Juraj Motuz, gallegonovato,
+  Alexthegib, markov, Priit Jõerüüt, 109247019824, Eryk Michalak, Giovanni Donisi and Oğuz Ersen
+* fix Firefox Nightly
+* reduce the network usage of FFUpdater by improving the network cache
+* try to configure Proguard correctly (software to compress the download and installation size of FFUpdater)
+* fix the "File was not downloaded" error
+* fix resource leaks
+* improve logging and error reporting
+* update dependencies
+* refactor and clean up code
+* fix unit tests
+
 # 2023-07-05 Release 78.0.1 (143)
 
 * Thanks for the Weblate contributions from: Kazushi Hayama, 109247019824 and Oğuz Ersen
