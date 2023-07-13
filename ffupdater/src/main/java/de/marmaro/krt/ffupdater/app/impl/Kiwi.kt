@@ -87,13 +87,13 @@ object Kiwi : AppBase() {
     }
 
     @SuppressLint("ApplySharedPref")
-    override fun installCallback(context: Context, available: InstalledAppStatus) {
+    override suspend fun appWasInstalledCallback(context: Context, available: InstalledAppStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.latestVersion.version)
             .putLong(APK_FILE_SIZE, available.latestVersion.exactFileSizeBytesOfDownload!!)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
-        super.installCallback(context, available)
+        super.appWasInstalledCallback(context, available)
     }
 
     private const val BUILD_RUNNER_ID = "kiwi__build_runner_id"

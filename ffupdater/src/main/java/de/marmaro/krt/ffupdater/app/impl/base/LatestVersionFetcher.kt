@@ -7,7 +7,7 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 
 @Keep
-interface UpdateFetcher {
+interface LatestVersionFetcher {
 
     @WorkerThread
     suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion

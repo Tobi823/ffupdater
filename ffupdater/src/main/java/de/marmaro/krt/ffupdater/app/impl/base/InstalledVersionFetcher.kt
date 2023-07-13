@@ -9,7 +9,7 @@ import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 
 @Keep
-interface InstalledVersion : AppAttributes {
+interface InstalledVersionFetcher : AppAttributes {
 
     @AnyThread
     suspend fun isInstalled(context: Context): InstallationStatus {

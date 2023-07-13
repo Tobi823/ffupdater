@@ -7,7 +7,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 
 @Keep
-interface VersionDisplay : InstalledVersion {
+interface VersionDisplay : InstalledVersionFetcher {
     @AnyThread
     fun getDisplayInstalledVersion(context: Context): String {
         return context.getString(R.string.installed_version, getInstalledVersion(context.packageManager))

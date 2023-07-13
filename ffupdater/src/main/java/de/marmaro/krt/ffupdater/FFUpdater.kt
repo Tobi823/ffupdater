@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
-import de.marmaro.krt.ffupdater.BackgroundJob.Companion.start
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
@@ -32,7 +31,7 @@ class FFUpdater : Application() {
 
         Migrator.migrate(applicationContext)
 
-        start(applicationContext.applicationContext, KEEP)
+        BackgroundJob.start(applicationContext.applicationContext, KEEP)
 
 //        CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)
     }

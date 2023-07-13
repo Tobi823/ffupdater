@@ -236,7 +236,7 @@ class DownloadActivity : AppCompatActivity() {
 
         val installationSuccess = installApp()
         if (installationSuccess) {
-            appImpl.installCallback(applicationContext, installedAppStatus)
+            appImpl.appWasInstalledCallback(applicationContext, installedAppStatus)
         }
         viewModel.installationSuccess = installationSuccess
     }

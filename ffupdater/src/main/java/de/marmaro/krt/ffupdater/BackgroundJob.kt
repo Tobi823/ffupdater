@@ -22,11 +22,11 @@ import androidx.work.WorkerParameters
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppAndUpdateStatus
-import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.BackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.NATIVE_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
@@ -199,16 +199,14 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     private suspend fun checkForOutdatedApps(): List<AppAndUpdateStatus> {
         DataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
-        val appsAndUpdateStatus = App.values()
-            // simple and fast checks
+        InstalledAppsCache.updateCache(applicationContext)
+        val appsAndUpdateStatus = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
             .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
-            .map { it.findImpl() }
-            .filter { DeviceAbiExtractor.supportsOneOf(it.supportedAbis) }
-            .filter { it.isInstalled(applicationContext) == InstallationStatus.INSTALLED }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
             // query latest available update
             .map {
-                val updateStatus = it.findAppUpdateStatus(applicationContext, USE_CACHE)
-                AppAndUpdateStatus(it.app, updateStatus)
+                val updateStatus = it.findImpl().findAppUpdateStatus(applicationContext, USE_CACHE)
+                AppAndUpdateStatus(it, updateStatus)
             }
 
         // delete old cached APK files
@@ -306,7 +304,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             installer.startInstallation(applicationContext, file)
 
             BackgroundNotificationBuilder.showInstallSuccessNotification(applicationContext, app)
-            appImpl.installCallback(applicationContext, updateStatus)
+            appImpl.appWasInstalledCallback(applicationContext, updateStatus)
 
             if (BackgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                 appImpl.getApkCacheFolder(applicationContext)

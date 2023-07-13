@@ -31,15 +31,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
-import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.dialog.*
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
@@ -51,7 +49,6 @@ import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.time.DateTimeException
 import java.time.Duration
 import java.time.ZonedDateTime
@@ -61,7 +58,6 @@ import java.util.*
 @Keep
 class MainActivity : AppCompatActivity() {
     private lateinit var recycleViewAdapter: InstalledAppsAdapter
-    private var lastAutomaticUpdateCheck = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,30 +72,31 @@ class MainActivity : AppCompatActivity() {
         requestForNotificationPermissionIfNecessary()
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
-            val intent = AddAppActivity.createIntent(this)
-            startActivity(intent)
+            lifecycleScope.launch(Dispatchers.Default) {
+                InstalledAppsCache.updateCache(applicationContext)
+                val intent = AddAppActivity.createIntent(applicationContext)
+                startActivity(intent)
+            }
         }
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
             lifecycleScope.launch(Dispatchers.Main) {
-                updateMetadataOfApps(false)
+                InstalledAppsCache.updateCache(applicationContext)
+                showInstalledAppsInRecyclerView(useNetworkCache = false)
             }
         }
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
-
+        lifecycleScope.launch(Dispatchers.Default) {
+            InstalledAppsCache.updateCache(applicationContext)
+        }
         initRecyclerView()
     }
 
     @MainThread
     override fun onResume() {
         super.onResume()
-        showInstalledAppsInRecyclerView()
-        // reduce glitching in main view
-        if ((System.currentTimeMillis() - lastAutomaticUpdateCheck) > 1000 * 60) {
-            lastAutomaticUpdateCheck = System.currentTimeMillis()
-            lifecycleScope.launch(Dispatchers.Main) {
-                updateMetadataOfApps(true)
-            }
+        lifecycleScope.launch(Dispatchers.Main) {
+            showInstalledAppsInRecyclerView(useNetworkCache = true)
         }
     }
 
@@ -132,26 +129,21 @@ class MainActivity : AppCompatActivity() {
         view.layoutManager = LinearLayoutManager(this@MainActivity)
     }
 
-    private fun showInstalledAppsInRecyclerView() {
-        runBlocking {
-            val items = App.values()
-                .groupBy { it.findImpl().isInstalled(applicationContext) }
-            val installedCorrectFingerprint = items[INSTALLED] ?: listOf()
-            val installedWrongFingerprint = if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) {
-                listOf()
-            } else {
-                items[INSTALLED_WITH_DIFFERENT_FINGERPRINT] ?: listOf()
-            }
-            recycleViewAdapter.notifyInstalledApps(installedCorrectFingerprint, installedWrongFingerprint)
+    private suspend fun showInstalledAppsInRecyclerView(useNetworkCache: Boolean) {
+        val appsWithCorrectFingerprint = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
+        val appsWithWrongFingerprint = if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) {
+            listOf()
+        } else {
+            InstalledAppsCache.getInstalledAppsWithDifferentFingerprint(applicationContext)
         }
+        recycleViewAdapter.notifyInstalledApps(
+            appsWithCorrectFingerprint,
+            appsWithWrongFingerprint
+        )
+        fetchLatestUpdates(appsWithCorrectFingerprint, useNetworkCache)
     }
 
-    @UiThread
-    private suspend fun updateMetadataOfApps(useCache: Boolean = true) {
-        val apps = App.values()
-            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
-            .filter { it.findImpl().isInstalled(this@MainActivity) == INSTALLED }
-
+    private suspend fun fetchLatestUpdates(apps: List<App>, useNetworkCache: Boolean) {
         if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
             apps.forEach {
@@ -162,14 +154,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         setLoadAnimationState(true)
-        val cacheBehaviour = if (useCache) USE_CACHE else FORCE_NETWORK
+        val cacheBehaviour = if (useNetworkCache) USE_CACHE else FORCE_NETWORK
         apps.forEach {
             updateMetadataOf(it, cacheBehaviour)
         }
         setLoadAnimationState(false)
     }
 
-    @MainThread
     private suspend fun updateMetadataOf(app: App, cacheBehaviour: CacheBehaviour): InstalledAppStatus? {
         try {
             recycleViewAdapter.notifyAppChange(app, null)

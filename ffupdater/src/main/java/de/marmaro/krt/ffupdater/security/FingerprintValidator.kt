@@ -44,10 +44,8 @@ object FingerprintValidator {
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
     suspend fun checkInstalledApp(packageManager: PackageManager, app: AppBase): FingerprintValidatorResult {
-        return withContext(Dispatchers.Default) {
-            val signature = PackageManagerUtil.getInstalledAppInfo(packageManager, app)
-            verifyPackageInfo(signature, app)
-        }
+        val signature = PackageManagerUtil.getInstalledAppInfo(packageManager, app)
+        return verifyPackageInfo(signature, app)
     }
 
     @Throws(CertificateException::class, NoSuchAlgorithmException::class)

@@ -120,13 +120,13 @@ object Chromium : AppBase() {
     }
 
     @SuppressLint("ApplySharedPref")
-    override fun installCallback(context: Context, available: InstalledAppStatus) {
+    override suspend fun appWasInstalledCallback(context: Context, available: InstalledAppStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(INSTALLED_VERSION_REVISION, available.latestVersion.version)
             .putString(INSTALLED_VERSION_TIMESTAMP, available.latestVersion.publishDate)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
-        super.installCallback(context, available)
+        super.appWasInstalledCallback(context, available)
     }
 
     override fun isInstalledAppOutdated(

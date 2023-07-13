@@ -105,13 +105,13 @@ object FirefoxNightly : AppBase() {
     }
 
     @SuppressLint("ApplySharedPref")
-    override fun installCallback(context: Context, available: InstalledAppStatus) {
+    override suspend fun appWasInstalledCallback(context: Context, available: InstalledAppStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
             .putString(INSTALLED_SHA256_HASH, available.latestVersion.fileHash?.hexValue)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
-        super.installCallback(context, available)
+        super.appWasInstalledCallback(context, available)
     }
 
     /**
