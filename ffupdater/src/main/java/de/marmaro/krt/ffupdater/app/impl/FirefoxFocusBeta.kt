@@ -7,7 +7,7 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -40,7 +40,7 @@ object FirefoxFocusBeta : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileSuffix = findFileSuffix()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
@@ -53,7 +53,7 @@ object FirefoxFocusBeta : AppBase() {
         val version = result.tagName
             .removePrefix("focus-v") //convert focus-v109.0b4 to 109.0b4
             .removePrefix("v") //convert v109.0b2 to 109.0b2
-        return LatestUpdate(
+        return LatestVersion(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,

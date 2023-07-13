@@ -10,7 +10,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -42,7 +42,7 @@ object Kiwi : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val abiString = findAbiString()
         val fileRegex = Regex.escape("com.kiwibrowser.browser-$abiString-") +
                 """\d+""" +
@@ -56,7 +56,7 @@ object Kiwi : AppBase() {
             dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
         )
-        return LatestUpdate(
+        return LatestVersion(
             downloadUrl = result.url,
             version = result.tagName,
             publishDate = result.releaseDate,
@@ -78,7 +78,7 @@ object Kiwi : AppBase() {
 
     override fun isAvailableVersionHigherThanInstalled(
         context: Context,
-        available: LatestUpdate,
+        available: LatestVersion,
     ): Boolean {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val runnerId = preferences.getString(BUILD_RUNNER_ID, null)
@@ -89,8 +89,8 @@ object Kiwi : AppBase() {
     @SuppressLint("ApplySharedPref")
     override fun installCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(BUILD_RUNNER_ID, available.latestUpdate.version)
-            .putLong(APK_FILE_SIZE, available.latestUpdate.exactFileSizeBytesOfDownload!!)
+            .putString(BUILD_RUNNER_ID, available.latestVersion.version)
+            .putLong(APK_FILE_SIZE, available.latestVersion.exactFileSizeBytesOfDownload!!)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
         super.installCallback(context, available)

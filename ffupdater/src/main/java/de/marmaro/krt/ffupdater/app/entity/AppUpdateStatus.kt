@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 @Keep
 @Parcelize
 data class AppUpdateStatus(
-    val latestUpdate: LatestUpdate,
+    val latestVersion: LatestVersion,
     val isUpdateAvailable: Boolean,
     val displayVersion: String,
     val objectCreationTimestamp: Long = System.currentTimeMillis(),

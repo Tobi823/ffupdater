@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.app.impl.base
 import android.content.Context
 import android.os.Environment
 import androidx.annotation.Keep
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.installer.exceptions.InvalidApkException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
@@ -21,29 +21,29 @@ interface ApkDownloader : AppAttributes {
 
     suspend fun <R> download(
         context: Context,
-        latestUpdate: LatestUpdate,
+        latestVersion: LatestVersion,
         progress: suspend (Deferred<Any>, Channel<DownloadStatus>) -> R,
     ) {
         val downloadFile = getDownloadFile(context.applicationContext)
         downloadFile.delete()
         try {
-            download(context, latestUpdate, downloadFile, progress)
+            download(context, latestVersion, downloadFile, progress)
         } finally {
             downloadFile.delete()
         }
     }
 
-    fun isApkDownloaded(context: Context, latestUpdate: LatestUpdate): Boolean {
-        return getApkFile(context.applicationContext, latestUpdate).exists()
+    fun isApkDownloaded(context: Context, latestVersion: LatestVersion): Boolean {
+        return getApkFile(context.applicationContext, latestVersion).exists()
     }
 
     fun getApkCacheFolder(context: Context): File {
         return context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!
     }
 
-    fun getApkFile(context: Context, latestUpdate: LatestUpdate): File {
+    fun getApkFile(context: Context, latestVersion: LatestVersion): File {
         val cacheFolder = getApkCacheFolder(context.applicationContext)
-        return File(cacheFolder, "${getSanitizedPackageName()}_${getSanitizedVersion(latestUpdate)}.apk")
+        return File(cacheFolder, "${getSanitizedPackageName()}_${getSanitizedVersion(latestVersion)}.apk")
     }
 
     fun deleteFileCache(context: Context) {
@@ -53,8 +53,8 @@ interface ApkDownloader : AppAttributes {
             .forEach { it.delete() }
     }
 
-    fun deleteFileCacheExceptLatest(context: Context, latestUpdate: LatestUpdate) {
-        val latestFile = getApkFile(context.applicationContext, latestUpdate)
+    fun deleteFileCacheExceptLatest(context: Context, latestVersion: LatestVersion) {
+        val latestFile = getApkFile(context.applicationContext, latestVersion)
         getApkCacheFolder(context.applicationContext).listFiles()!!
             .filter { it != latestFile }
             .filter { it.name.startsWith(getSanitizedPackageName()) }
@@ -71,28 +71,28 @@ interface ApkDownloader : AppAttributes {
         return packageName.replace("""\W""".toRegex(), "_")
     }
 
-    private fun getSanitizedVersion(latestUpdate: LatestUpdate): String {
-        return latestUpdate.version.replace("""\W""".toRegex(), "_")
+    private fun getSanitizedVersion(latestVersion: LatestVersion): String {
+        return latestVersion.version.replace("""\W""".toRegex(), "_")
     }
 
     private suspend fun <R> download(
         context: Context,
-        latestUpdate: LatestUpdate,
+        latestVersion: LatestVersion,
         downloadFile: File,
         progress: suspend (Deferred<Any>, Channel<DownloadStatus>) -> R,
     ) {
-        val (deferred, progressChannel) = FileDownloader.downloadFile(latestUpdate.downloadUrl, downloadFile)
+        val (deferred, progressChannel) = FileDownloader.downloadFile(latestVersion.downloadUrl, downloadFile)
         withContext(Dispatchers.Main) {
             progress(deferred, progressChannel)
         }
         deferred.await()
-        checkDownloadFile(downloadFile, latestUpdate)
-        processDownload(context.applicationContext, downloadFile, latestUpdate)
+        checkDownloadFile(downloadFile, latestVersion)
+        processDownload(context.applicationContext, downloadFile, latestVersion)
     }
 
-    private fun checkDownloadFile(file: File, latestUpdate: LatestUpdate) {
+    private fun checkDownloadFile(file: File, latestVersion: LatestVersion) {
         if (!file.exists()) throw NetworkException("File was not downloaded: $file")
-        val expectedBytes = latestUpdate.exactFileSizeBytesOfDownload
+        val expectedBytes = latestVersion.exactFileSizeBytesOfDownload
         if (expectedBytes != null && expectedBytes != file.length()) {
             throw NetworkException("Size of download should be $expectedBytes bytes, but it is ${file.length()} bytes.")
         }
@@ -101,9 +101,9 @@ interface ApkDownloader : AppAttributes {
     private suspend fun processDownload(
         context: Context,
         downloadFile: File,
-        latestUpdate: LatestUpdate,
+        latestVersion: LatestVersion,
     ) {
-        val apkFile = getApkFile(context.applicationContext, latestUpdate)
+        val apkFile = getApkFile(context.applicationContext, latestVersion)
         apkFile.delete()
         if (isAppPublishedAsZipArchive()) {
             processZipDownload(downloadFile, apkFile)

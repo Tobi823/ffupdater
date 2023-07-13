@@ -7,7 +7,7 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -38,10 +38,10 @@ object Vivaldi : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val content = FileDownloader.downloadStringWithCache(DOWNLOAD_WEBSITE_URL, cacheBehaviour)
         val (version, downloadUrl) = extractVersionAndDownloadUrl(content)
-        return LatestUpdate(
+        return LatestVersion(
             downloadUrl = downloadUrl,
             version = version,
             publishDate = null,

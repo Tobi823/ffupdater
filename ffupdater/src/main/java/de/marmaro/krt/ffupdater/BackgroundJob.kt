@@ -213,7 +213,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         // delete old cached APK files
         appsAndUpdateStatus.forEach { (app, appUpdateStatus) ->
-            app.findImpl().deleteFileCacheExceptLatest(applicationContext, appUpdateStatus.latestUpdate)
+            app.findImpl().deleteFileCacheExceptLatest(applicationContext, appUpdateStatus.latestVersion)
         }
 
         // return outdated apps with available updates
@@ -246,7 +246,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     @MainThread
     private suspend fun downloadUpdateAndReturnAvailability(app: App, updateStatus: AppUpdateStatus): Boolean {
         Log.d(LOG_TAG, "downloadUpdateAndReturnAvailability(): Download ${app.name} in background.")
-        val latestUpdate = updateStatus.latestUpdate
+        val latestUpdate = updateStatus.latestVersion
         val appImpl = app.findImpl()
         if (appImpl.isApkDownloaded(applicationContext, latestUpdate)) {
             Log.i(LOG_TAG, "Skip $app download because it's already cached.")
@@ -298,7 +298,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
     private suspend fun installApplication(app: App, updateStatus: AppUpdateStatus) {
         val appImpl = app.findImpl()
-        val file = appImpl.getApkFile(applicationContext, updateStatus.latestUpdate)
+        val file = appImpl.getApkFile(applicationContext, updateStatus.latestVersion)
         require(file.exists()) { "AppCache has no cached APK file" }
 
         val installer = createBackgroundAppInstaller(applicationContext, app)

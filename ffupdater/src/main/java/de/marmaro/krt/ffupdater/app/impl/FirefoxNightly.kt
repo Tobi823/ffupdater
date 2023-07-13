@@ -11,7 +11,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -47,7 +47,7 @@ object FirefoxNightly : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val abiString = findAbiString()
         val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
         var taskId = preferences.getString("cache__firefox_nightly__task_id", null)
@@ -68,7 +68,7 @@ object FirefoxNightly : AppBase() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         val version = formatter.format(releaseDate)
-        return LatestUpdate(
+        return LatestVersion(
             downloadUrl = downloadUrl,
             version = version,
             publishDate = result.releaseDate,
@@ -90,7 +90,7 @@ object FirefoxNightly : AppBase() {
 
     override fun isAvailableVersionHigherThanInstalled(
         context: Context,
-        available: LatestUpdate,
+        available: LatestVersion,
     ): Boolean {
         return try {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -108,7 +108,7 @@ object FirefoxNightly : AppBase() {
     override fun installCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putLong(INSTALLED_VERSION_CODE, getVersionCode(context))
-            .putString(INSTALLED_SHA256_HASH, available.latestUpdate.fileHash?.hexValue)
+            .putString(INSTALLED_SHA256_HASH, available.latestVersion.fileHash?.hexValue)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
         super.installCallback(context, available)

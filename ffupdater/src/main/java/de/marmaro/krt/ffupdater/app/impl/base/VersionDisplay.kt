@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.annotation.AnyThread
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 
 @Keep
 interface VersionDisplay : InstalledVersion {
@@ -14,7 +14,7 @@ interface VersionDisplay : InstalledVersion {
     }
 
     @AnyThread
-    fun getDisplayAvailableVersion(context: Context, availableVersionResult: LatestUpdate): String {
+    fun getDisplayAvailableVersion(context: Context, availableVersionResult: LatestVersion): String {
         return context.getString(R.string.available_version, availableVersionResult.version)
     }
 

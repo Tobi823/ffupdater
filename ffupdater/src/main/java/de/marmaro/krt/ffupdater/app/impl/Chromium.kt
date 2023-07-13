@@ -12,7 +12,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -42,11 +42,11 @@ object Chromium : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val platform = findPlatform()
         val revision = findLatestRevision(platform, cacheBehaviour)
         val storageObject = findStorageObject(revision, platform, cacheBehaviour)
-        return LatestUpdate(
+        return LatestVersion(
             downloadUrl = storageObject.downloadUrl,
             version = revision,
             publishDate = storageObject.timestamp,
@@ -122,8 +122,8 @@ object Chromium : AppBase() {
     @SuppressLint("ApplySharedPref")
     override fun installCallback(context: Context, available: AppUpdateStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(INSTALLED_VERSION_REVISION, available.latestUpdate.version)
-            .putString(INSTALLED_VERSION_TIMESTAMP, available.latestUpdate.publishDate)
+            .putString(INSTALLED_VERSION_REVISION, available.latestVersion.version)
+            .putString(INSTALLED_VERSION_TIMESTAMP, available.latestVersion.publishDate)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
         super.installCallback(context, available)
@@ -131,7 +131,7 @@ object Chromium : AppBase() {
 
     override fun isAvailableVersionHigherThanInstalled(
         context: Context,
-        available: LatestUpdate,
+        available: LatestVersion,
     ): Boolean {
         try {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)

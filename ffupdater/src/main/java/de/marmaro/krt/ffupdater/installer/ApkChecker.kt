@@ -1,7 +1,7 @@
 package de.marmaro.krt.ffupdater.installer
 
 import androidx.annotation.Keep
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.installer.exceptions.InvalidApkException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import kotlinx.coroutines.Dispatchers
@@ -27,10 +27,10 @@ object ApkChecker {
         }
     }
 
-    fun throwIfDownloadedFileHasDifferentSize(file: File, latestUpdate: LatestUpdate) {
+    fun throwIfDownloadedFileHasDifferentSize(file: File, latestVersion: LatestVersion) {
         if (!file.exists()) throw NetworkException("File was not downloaded: $file")
 
-        val expectedBytes = latestUpdate.exactFileSizeBytesOfDownload
+        val expectedBytes = latestVersion.exactFileSizeBytesOfDownload
         if (expectedBytes != null && expectedBytes != file.length()) {
             val message = "Wrong file was downloaded. It should be $expectedBytes bytes long but " +
                     "actual it was ${file.length()} bytes."

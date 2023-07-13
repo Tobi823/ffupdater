@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Keep
-data class LatestUpdate(
+data class LatestVersion(
     val downloadUrl: String,
     val version: String,
     val publishDate: String?,

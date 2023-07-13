@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.network.fdroid
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import com.google.gson.JsonObject
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
@@ -20,13 +20,13 @@ object CustomRepositoryConsumer {
         packageName: String,
         abi: ABI,
         cacheBehaviour: CacheBehaviour,
-    ): LatestUpdate {
+    ): LatestVersion {
         val jsonRoot = FileDownloader.downloadJsonObjectWithCache("$repoUrl/index-v1.json", cacheBehaviour)
         val apkObjects = parseJson(jsonRoot, packageName)
         val apk = apkObjects
             .filter { abi.codeName in it.abis }
             .maxBy { it.versionCode }
-        return LatestUpdate(
+        return LatestVersion(
             downloadUrl = "$repoUrl/${apk.apkName}",
             version = apk.versionName,
             publishDate = Instant.ofEpochMilli(apk.added).toString(),

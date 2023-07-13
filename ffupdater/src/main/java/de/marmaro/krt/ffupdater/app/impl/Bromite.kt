@@ -7,7 +7,7 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -41,7 +41,7 @@ object Bromite : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BROMITE__BROMITE,
@@ -51,7 +51,7 @@ object Bromite : AppBase() {
             isSuitableAsset = { it.name == fileName },
             cacheBehaviour = cacheBehaviour,
         )
-        return LatestUpdate(
+        return LatestVersion(
             downloadUrl = result.url,
             version = result.tagName,
             publishDate = result.releaseDate,

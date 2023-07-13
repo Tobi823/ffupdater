@@ -7,7 +7,7 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -39,7 +39,7 @@ object FirefoxFocus : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestUpdate {
+    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileSuffix = findFileName()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
@@ -52,7 +52,7 @@ object FirefoxFocus : AppBase() {
         val version = result.tagName
             .removePrefix("focus-v") //convert v108.1.1 or focus-v108.1.1 to 108.1.1
             .removePrefix("v") //fallback if the tag naming schema changed
-        return LatestUpdate(
+        return LatestVersion(
             downloadUrl = result.url,
             version = version,
             publishDate = result.releaseDate,

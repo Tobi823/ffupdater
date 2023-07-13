@@ -8,7 +8,7 @@ import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
-import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
+import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.app.impl.base.ApkDownloader
 import de.marmaro.krt.ffupdater.app.impl.base.AppAttributes
 import de.marmaro.krt.ffupdater.app.impl.base.InstalledVersion
@@ -34,7 +34,7 @@ abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledV
 
 
     @AnyThread
-    open fun isAvailableVersionHigherThanInstalled(context: Context, available: LatestUpdate): Boolean {
+    open fun isAvailableVersionHigherThanInstalled(context: Context, available: LatestVersion): Boolean {
         val installedVersion = getInstalledVersion(context.packageManager) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
     }
@@ -55,7 +55,7 @@ abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledV
             throw DisplayableException("can't find latest update for ${app.name}.", e)
         }
         return AppUpdateStatus(
-            latestUpdate = available,
+            latestVersion = available,
             isUpdateAvailable = isAvailableVersionHigherThanInstalled(context.applicationContext, available),
             displayVersion = getDisplayAvailableVersion(context.applicationContext, available)
         )
