@@ -254,10 +254,15 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return try {
             appImpl.download(applicationContext, latestUpdate) { _, progressChannel ->
                 BackgroundNotificationBuilder.showDownloadRunningNotification(applicationContext, app, null, null)
+                var lastTime = System.currentTimeMillis()
                 for (progress in progressChannel) {
-                    BackgroundNotificationBuilder.showDownloadRunningNotification(
-                        applicationContext, app, progress.progressInPercent, progress.totalMB
-                    )
+                    val time = System.currentTimeMillis()
+                    if ((time - lastTime) > 1000) {
+                        lastTime = time
+                        BackgroundNotificationBuilder.showDownloadRunningNotification(
+                            applicationContext, app, progress.progressInPercent, progress.totalMB
+                        )
+                    }
                 }
             }
             true
