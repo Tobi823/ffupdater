@@ -26,28 +26,28 @@ class NetworkSettingsHelperTest {
 
     @Test
     fun areUserCAsTrusted_withTrue_returnTrue() {
-        sharedPreferences.edit().putBoolean("network__trust_user_cas", true).apply()
+        sharedPreferences.edit().putBoolean("network__trust_user_cas", true).commit()
         assertTrue(NetworkSettingsHelper.areUserCAsTrusted)
     }
 
     @Test
     fun areUserCAsTrusted_withFalse_returnFalse() {
-        sharedPreferences.edit().putBoolean("network__trust_user_cas", false).apply()
+        sharedPreferences.edit().putBoolean("network__trust_user_cas", false).commit()
         assertFalse(NetworkSettingsHelper.areUserCAsTrusted)
     }
 
     @Test
     fun areUserCAsTrusted_withChangingValue_returnCorrectValue() {
-        sharedPreferences.edit().putBoolean("network__trust_user_cas", true).apply()
+        sharedPreferences.edit().putBoolean("network__trust_user_cas", true).commit()
         assertTrue(NetworkSettingsHelper.areUserCAsTrusted)
 
-        sharedPreferences.edit().putBoolean("network__trust_user_cas", false).apply()
+        sharedPreferences.edit().putBoolean("network__trust_user_cas", false).commit()
         assertFalse(NetworkSettingsHelper.areUserCAsTrusted)
 
-        sharedPreferences.edit().putBoolean("network__trust_user_cas", true).apply()
+        sharedPreferences.edit().putBoolean("network__trust_user_cas", true).commit()
         assertTrue(NetworkSettingsHelper.areUserCAsTrusted)
 
-        sharedPreferences.edit().putBoolean("network__trust_user_cas", false).apply()
+        sharedPreferences.edit().putBoolean("network__trust_user_cas", false).commit()
         assertFalse(NetworkSettingsHelper.areUserCAsTrusted)
     }
 }
