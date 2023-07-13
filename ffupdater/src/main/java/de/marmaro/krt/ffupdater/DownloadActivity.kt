@@ -38,7 +38,7 @@ import de.marmaro.krt.ffupdater.R.string.download_activity__too_low_memory_descr
 import de.marmaro.krt.ffupdater.R.string.install_activity__download_file_failed__crash_text
 import de.marmaro.krt.ffupdater.R.string.main_activity__no_unmetered_network
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
+import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
@@ -77,7 +77,7 @@ class DownloadActivity : AppCompatActivity() {
     private lateinit var viewModel: InstallActivityViewModel
     private lateinit var app: App
     private lateinit var appImpl: AppBase
-    private lateinit var appUpdateStatus: AppUpdateStatus
+    private lateinit var installedAppStatus: InstalledAppStatus
     private lateinit var appInstaller: AppInstaller
 
     // persistent data for already running downloads
@@ -216,7 +216,7 @@ class DownloadActivity : AppCompatActivity() {
         if (!fetchDownloadInformationOrUseCache()) return
 
         val appImpl = app.findImpl()
-        val latestUpdate = appUpdateStatus.latestVersion
+        val latestUpdate = installedAppStatus.latestVersion
         when {
             viewModel.isDownloadForCurrentAppRunning(app) -> {
                 reuseCurrentDownload()
@@ -236,7 +236,7 @@ class DownloadActivity : AppCompatActivity() {
 
         val installationSuccess = installApp()
         if (installationSuccess) {
-            appImpl.installCallback(applicationContext, appUpdateStatus)
+            appImpl.installCallback(applicationContext, installedAppStatus)
         }
         viewModel.installationSuccess = installationSuccess
     }
@@ -265,7 +265,7 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
         try {
-            appUpdateStatus = appImpl.findAppUpdateStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+            installedAppStatus = appImpl.findAppUpdateStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         } catch (e: ApiRateLimitExceededException) {
             displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
         } catch (e: DisplayableException) {
@@ -289,12 +289,12 @@ class DownloadActivity : AppCompatActivity() {
 
         val appImpl = app.findImpl()
         show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, appUpdateStatus.latestVersion.downloadUrl)
+        setText(R.id.downloadingFileUrl, installedAppStatus.latestVersion.downloadUrl)
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
         try {
             withContext(viewModel.viewModelScope.coroutineContext) {
-                appImpl.download(applicationContext, appUpdateStatus.latestVersion) { deferred, progressChannel ->
+                appImpl.download(applicationContext, installedAppStatus.latestVersion) { deferred, progressChannel ->
                     viewModel.storeNewRunningDownload(app, deferred, progressChannel)
                     showDownloadProgress(progressChannel)
                 }
@@ -307,7 +307,7 @@ class DownloadActivity : AppCompatActivity() {
         } finally {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, appUpdateStatus.latestVersion.downloadUrl)
+            setText(R.id.downloadedFileUrl, installedAppStatus.latestVersion.downloadUrl)
         }
         return false
     }
@@ -331,7 +331,7 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun reuseCurrentDownload(): Boolean {
         Log.d(LOG_TAG, "reuseCurrentDownload(): Reuse running download of ${app.name}.")
         show(R.id.downloadingFile)
-        val latestUpdate = appUpdateStatus.latestVersion
+        val latestUpdate = installedAppStatus.latestVersion
         setText(R.id.downloadingFileUrl, latestUpdate.downloadUrl)
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
@@ -356,7 +356,7 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun installApp(): Boolean {
         Log.d(LOG_TAG, "Install app ${app.name}.")
         show(R.id.installingApplication)
-        val file = appImpl.getApkFile(applicationContext, appUpdateStatus.latestVersion)
+        val file = appImpl.getApkFile(applicationContext, installedAppStatus.latestVersion)
 
         try {
             val installResult = appInstaller.startInstallation(this@DownloadActivity, file)
@@ -415,7 +415,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun displayDownloadFailure(description: String, exception: Exception?) {
-        val downloadUrl = appUpdateStatus.latestVersion.downloadUrl
+        val downloadUrl = installedAppStatus.latestVersion.downloadUrl
         show(R.id.install_activity__download_file_failed)
         setText(R.id.install_activity__download_file_failed__url, downloadUrl)
         setText(R.id.install_activity__download_file_failed__text, description)

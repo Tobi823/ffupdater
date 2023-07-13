@@ -7,7 +7,7 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
-import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
+import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.app.impl.base.ApkDownloader
 import de.marmaro.krt.ffupdater.app.impl.base.AppAttributes
@@ -34,12 +34,12 @@ abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledV
 
 
     @AnyThread
-    open fun isAvailableVersionHigherThanInstalled(context: Context, available: LatestVersion): Boolean {
+    open fun isInstalledAppOutdated(context: Context, available: LatestVersion): Boolean {
         val installedVersion = getInstalledVersion(context.packageManager) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
     }
 
-    suspend fun findAppUpdateStatus(context: Context, cacheBehaviour: CacheBehaviour): AppUpdateStatus {
+    suspend fun findAppUpdateStatus(context: Context, cacheBehaviour: CacheBehaviour): InstalledAppStatus {
         val available = try {
             Log.d(FFUpdater.LOG_TAG, "findAppUpdateStatus(): Search for latest ${app.name} update.")
             val time = System.currentTimeMillis()
@@ -54,15 +54,15 @@ abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledV
             Log.d(FFUpdater.LOG_TAG, "findAppUpdateStatus(): Can't find latest update for ${app.name}.", e)
             throw DisplayableException("can't find latest update for ${app.name}.", e)
         }
-        return AppUpdateStatus(
+        return InstalledAppStatus(
             latestVersion = available,
-            isUpdateAvailable = isAvailableVersionHigherThanInstalled(context.applicationContext, available),
+            isUpdateAvailable = isInstalledAppOutdated(context.applicationContext, available),
             displayVersion = getDisplayAvailableVersion(context.applicationContext, available)
         )
     }
 
     @AnyThread
-    open fun installCallback(context: Context, available: AppUpdateStatus) {
+    open fun installCallback(context: Context, available: InstalledAppStatus) {
     }
 
 

@@ -8,8 +8,8 @@ import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -76,7 +76,7 @@ object Kiwi : AppBase() {
         return abiString
     }
 
-    override fun isAvailableVersionHigherThanInstalled(
+    override fun isInstalledAppOutdated(
         context: Context,
         available: LatestVersion,
     ): Boolean {
@@ -87,7 +87,7 @@ object Kiwi : AppBase() {
     }
 
     @SuppressLint("ApplySharedPref")
-    override fun installCallback(context: Context, available: AppUpdateStatus) {
+    override fun installCallback(context: Context, available: InstalledAppStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .putString(BUILD_RUNNER_ID, available.latestVersion.version)
             .putLong(APK_FILE_SIZE, available.latestVersion.exactFileSizeBytesOfDownload!!)

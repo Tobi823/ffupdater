@@ -22,8 +22,8 @@ import androidx.work.WorkerParameters
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.AppAndUpdateStatus
-import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
+import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.BackgroundException
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -244,7 +244,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     @MainThread
-    private suspend fun downloadUpdateAndReturnAvailability(app: App, updateStatus: AppUpdateStatus): Boolean {
+    private suspend fun downloadUpdateAndReturnAvailability(app: App, updateStatus: InstalledAppStatus): Boolean {
         Log.d(LOG_TAG, "downloadUpdateAndReturnAvailability(): Download ${app.name} in background.")
         val latestUpdate = updateStatus.latestVersion
         val appImpl = app.findImpl()
@@ -296,7 +296,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return null
     }
 
-    private suspend fun installApplication(app: App, updateStatus: AppUpdateStatus) {
+    private suspend fun installApplication(app: App, updateStatus: InstalledAppStatus) {
         val appImpl = app.findImpl()
         val file = appImpl.getApkFile(applicationContext, updateStatus.latestVersion)
         require(file.exists()) { "AppCache has no cached APK file" }

@@ -31,9 +31,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
+import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
@@ -170,7 +170,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private suspend fun updateMetadataOf(app: App, cacheBehaviour: CacheBehaviour): AppUpdateStatus? {
+    private suspend fun updateMetadataOf(app: App, cacheBehaviour: CacheBehaviour): InstalledAppStatus? {
         try {
             recycleViewAdapter.notifyAppChange(app, null)
             val updateStatus = app.findImpl().findAppUpdateStatus(applicationContext, cacheBehaviour)
@@ -264,7 +264,7 @@ class MainActivity : AppCompatActivity() {
 
         private var appsWithWrongFingerprint = listOf<App>()
 
-        private var appAndUpdateStatus = mutableMapOf<App, AppUpdateStatus>()
+        private var appAndUpdateStatus = mutableMapOf<App, InstalledAppStatus>()
 
 
         @UiThread
@@ -279,7 +279,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         @UiThread
-        fun notifyAppChange(app: App, updateStatus: AppUpdateStatus?) {
+        fun notifyAppChange(app: App, updateStatus: InstalledAppStatus?) {
             if (updateStatus == null) {
                 appAndUpdateStatus.remove(app)
             } else {
@@ -391,7 +391,7 @@ class MainActivity : AppCompatActivity() {
             app.findImpl().eolReason?.let { view.eolReason.setText(it) }
         }
 
-        private fun onBindViewHolderWhenNormal(view: AppHolder, app: App, metadata: AppUpdateStatus?) {
+        private fun onBindViewHolderWhenNormal(view: AppHolder, app: App, metadata: InstalledAppStatus?) {
             view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
             view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
             view.downloadButton.setImageResource(
@@ -406,7 +406,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        private fun getDisplayAvailableVersionWithAge(metadata: AppUpdateStatus?): String {
+        private fun getDisplayAvailableVersionWithAge(metadata: InstalledAppStatus?): String {
             val version = metadata?.displayVersion ?: "..."
             val dateString = metadata?.latestVersion?.publishDate ?: return version
             val date = try {

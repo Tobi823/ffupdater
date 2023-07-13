@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-data class AppUpdateStatus(
+data class InstalledAppStatus(
     val latestVersion: LatestVersion,
     val isUpdateAvailable: Boolean,
     val displayVersion: String,
