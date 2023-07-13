@@ -204,4 +204,6 @@
     <string name="mull__title">Navegador Mull</string>
     <string name="mull__description">Este é um navegador web orientado à privacidade e deblobbed baseado na tecnologia Mozilla. Ele habilita muitos recursos enviados pelo projeto Tor Uplift usando as preferências do projeto arkenfox-user.js. Recomenda-se instalar o \'uBlock Origin\'.</string>
     <string name="app_card__open_project_page">Abrir página do projeto no navegador</string>
+    <string name="notification__download_error__text">O download em segundo plano da atualização do %1$s falhou. Se este erro ocorre frequentemente, clique aqui para ver o relatório do erro.</string>
+    <string name="main_activity__an_error_occurred"><u>Um erro aconteceu. Tente novamente mais tarde.</u></string>
 </resources>
