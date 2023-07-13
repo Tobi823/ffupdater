@@ -365,7 +365,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         private fun onBindViewHolderWhenError(view: AppHolder, app: App, error: ExceptionWrapper) {
+            view.installedVersion.visibility = View.VISIBLE
             view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
+            view.availableVersion.visibility = View.VISIBLE
             view.availableVersion.setText(error.message)
             if (error.exception != null) {
                 val throwableAndLogs = ThrowableAndLogs(error.exception, LogReader.readLogs())
@@ -383,7 +385,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         private fun onBindViewHolderWhenNormal(view: AppHolder, app: App, metadata: InstalledAppStatus?) {
+            view.installedVersion.visibility = View.VISIBLE
             view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
+            view.availableVersion.visibility = View.VISIBLE
             view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
             view.downloadButton.setImageResource(
                 if (metadata?.isUpdateAvailable == true) {
