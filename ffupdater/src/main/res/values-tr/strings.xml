@@ -318,4 +318,6 @@
     <string name="main_activity__denied_notification_permission">FFUpdater\'ın sizi güncellemeler hakkında bilgilendirmek için izne ihtiyacı var.</string>
     <string name="main_activity__an_error_occurred"><u>Bir hata oluştu. Daha sonra yeniden deneyin.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Tarayıcı artık geliştirilmiyor.</string>
+    <string name="background__installation__when_screen_off__summary">Güncellemeleri yalnızca aygıt ekranı kapalıyken kurmayı dene.</string>
+    <string name="background__installation__when_screen_off__title">Yalnızca ekran kapalıyken kur</string>
 </resources>
