@@ -64,12 +64,15 @@ object FileDownloader {
                 lastChange = System.currentTimeMillis()
                 numberOfRunningDownloads.incrementAndGet()
                 downloadFile(url, file, processChannel)
-            } catch (e: IOException) {
-                throw NetworkException("Download of $url failed.", e)
-            } catch (e: IllegalArgumentException) {
-                throw NetworkException("Download of $url failed.", e)
-            } catch (e: NetworkException) {
-                throw NetworkException("Download of $url failed.", e)
+            } catch (e: Exception) {
+                throw when (e) {
+                    is IOException,
+                    is IllegalArgumentException,
+                    is NetworkException,
+                    -> NetworkException("Download of $url failed.", e)
+
+                    else -> e
+                }
             } finally {
                 lastChange = System.currentTimeMillis()
                 numberOfRunningDownloads.decrementAndGet()
