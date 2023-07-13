@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.network.github
 
 import com.google.gson.stream.JsonReader
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -14,7 +15,7 @@ class GithubReleaseJsonConsumerTest {
             JsonReader(jsonText.bufferedReader()),
             { release -> release.name == "Nightly v1.55.92 (Chromium 115.0.5790.56) \n\n" },
             { asset -> asset.name == "brave-browser-nightly-1.55.92-1.aarch64.rpm" })
-        val result = consumer.parseReleaseArrayJson()!!
+        val result = runBlocking { consumer.parseReleaseArrayJson()!! }
 
         assertEquals("v1.55.92", result.tagName)
         assertEquals(
@@ -33,7 +34,7 @@ class GithubReleaseJsonConsumerTest {
             JsonReader(jsonText.bufferedReader()),
             { release -> release.name == "Nightly v1.55.10 (Chromium 115.0.5790.40) \n\n" },
             { asset -> asset.name == "policy_templates.zip.sha256.asc" })
-        val result = consumer.parseReleaseArrayJson()!!
+        val result = runBlocking { consumer.parseReleaseArrayJson()!! }
 
         assertEquals("v1.55.10", result.tagName)
         assertEquals(
@@ -52,7 +53,7 @@ class GithubReleaseJsonConsumerTest {
             JsonReader(jsonText.bufferedReader()),
             { release -> release.name == "Release v1.52.129 (Chromium 114.0.5735.198) \n\n" },
             { asset -> asset.name == "brave-browser-1.52.129-1.aarch64.rpm" })
-        val result = consumer.parseReleaseJson()!!
+        val result = runBlocking { consumer.parseReleaseJson()!! }
 
         assertEquals("v1.52.129", result.tagName)
         assertEquals(
@@ -71,7 +72,7 @@ class GithubReleaseJsonConsumerTest {
             JsonReader(jsonText.bufferedReader()),
             { release -> release.name == "Release v1.52.129 (Chromium 114.0.5735.198) \n\n" },
             { asset -> asset.name == "policy_templates.zip.sha256.asc" })
-        val result = consumer.parseReleaseJson()!!
+        val result = runBlocking { consumer.parseReleaseJson()!! }
 
         assertEquals("v1.52.129", result.tagName)
         assertEquals(
