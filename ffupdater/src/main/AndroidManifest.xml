@@ -19,6 +19,7 @@
          or I'll get a "Permission Denial: reading ... DownloadProvider uri ... requires
          android.permission.ACCESS_ALL_DOWNLOADS or grantUriPermission()" exception. -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />

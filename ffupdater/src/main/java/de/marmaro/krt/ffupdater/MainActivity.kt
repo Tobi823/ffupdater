@@ -36,6 +36,7 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
+import de.marmaro.krt.ffupdater.device.BatteryOptimizationsHelper
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.dialog.*
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         requestForNotificationPermissionIfNecessary()
+        BatteryOptimizationsHelper.disableBatteryOptimizationOnProblematicPhones(this)
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             lifecycleScope.launch(Dispatchers.Default) {

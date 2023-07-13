@@ -90,7 +90,7 @@ class IntentInstaller(
     private fun getShortErrorMessage(installResult: Int?): String {
         // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
         var message: String? = null
-        if (Build.MANUFACTURER == "HUAWEI") {
+        if (Build.MANUFACTURER.equals("HUAWEI", ignoreCase = true)) {
             message = HuaweiInstallResultDecoder.getShortErrorMessage(installResult)
         }
         if (message == null) {
@@ -102,7 +102,7 @@ class IntentInstaller(
     private fun getTranslatedErrorMessage(context: Context, installResult: Int?): String {
         // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
         var message: String? = null
-        if (Build.MANUFACTURER == "HUAWEI") {
+        if (Build.MANUFACTURER.equals("HUAWEI", ignoreCase = true)) {
             message = HuaweiInstallResultDecoder.getTranslatedErrorMessage(context.applicationContext, installResult)
         }
         if (message == null) {
