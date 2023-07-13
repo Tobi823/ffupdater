@@ -185,6 +185,7 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
             // ignore UnsafeIntentLaunchViolation because at least OnePlus needs this exact intent
             @Suppress("DEPRECATION")
             val requestPermission = bundle.get(Intent.EXTRA_INTENT) as Intent
+            requestPermission.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(requestPermission)
         } catch (e: ActivityNotFoundException) {
             fail("Installation failed because Activity is not available.", e, -110, e.message ?: "/")
