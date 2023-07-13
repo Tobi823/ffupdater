@@ -265,7 +265,7 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
 
         try {
-            installedAppStatus = appImpl.findAppUpdateStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+            installedAppStatus = appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         } catch (e: ApiRateLimitExceededException) {
             displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
         } catch (e: DisplayableException) {

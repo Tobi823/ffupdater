@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity() {
     private suspend fun updateMetadataOf(app: App, cacheBehaviour: CacheBehaviour): InstalledAppStatus? {
         try {
             recycleViewAdapter.notifyAppChange(app, null)
-            val updateStatus = app.findImpl().findAppUpdateStatus(applicationContext, cacheBehaviour)
+            val updateStatus = app.findImpl().findInstalledAppStatus(applicationContext, cacheBehaviour)
             recycleViewAdapter.notifyAppChange(app, updateStatus)
             recycleViewAdapter.notifyClearedErrorForApp(app)
             return updateStatus

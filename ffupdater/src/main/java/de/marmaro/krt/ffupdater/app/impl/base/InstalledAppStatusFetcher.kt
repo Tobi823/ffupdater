@@ -20,7 +20,7 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
     }
 
-    suspend fun findAppUpdateStatus(context: Context, cacheBehaviour: CacheBehaviour): InstalledAppStatus {
+    suspend fun findInstalledAppStatus(context: Context, cacheBehaviour: CacheBehaviour): InstalledAppStatus {
         val available = try {
             Log.d(FFUpdater.LOG_TAG, "findAppUpdateStatus(): Search for latest ${app.name} update.")
             val time = System.currentTimeMillis()
@@ -36,6 +36,7 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
             throw DisplayableException("can't find latest update for ${app.name}.", e)
         }
         return InstalledAppStatus(
+            app = app,
             latestVersion = available,
             isUpdateAvailable = isInstalledAppOutdated(context.applicationContext, available),
             displayVersion = getDisplayAvailableVersion(context.applicationContext, available)
