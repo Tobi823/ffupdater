@@ -165,9 +165,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             it.app.findImpl().deleteFileCacheExceptLatest(applicationContext, it.latestVersion)
         }
 
-        // TODO
         val outdatedApps = installedAppStatusList
-//            .filter { it.isUpdateAvailable }
+            .filter { it.isUpdateAvailable }
 
         Log.d(LOG_TAG, "BackgroundJob: [${outdatedApps.map { it.app }.joinToString(",")}] are outdated.")
         return outdatedApps
