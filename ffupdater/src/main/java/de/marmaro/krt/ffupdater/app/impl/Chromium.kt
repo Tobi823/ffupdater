@@ -19,6 +19,8 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android/
@@ -87,21 +89,23 @@ object Chromium : AppBase() {
         return parseJson(storageObjects, platform, revision)
     }
 
-    private fun parseJson(
+    private suspend fun parseJson(
         storageObjects: JsonObject,
         platform: String,
         revision: String,
     ): StorageObject {
         val storageObjectKotlin = try {
-            val items = storageObjects["items"].asJsonArray
-            val storageObject = items[0].asJsonObject
-            StorageObject(
-                kind = storageObject["kind"].asString,
-                downloadUrl = storageObject["mediaLink"].asString,
-                name = storageObject["name"].asString,
-                fileSizeBytes = storageObject["size"].asLong,
-                timestamp = storageObject["updated"].asString,
-            )
+            withContext(Dispatchers.Default) {
+                val items = storageObjects["items"].asJsonArray
+                val storageObject = items[0].asJsonObject
+                StorageObject(
+                    kind = storageObject["kind"].asString,
+                    downloadUrl = storageObject["mediaLink"].asString,
+                    name = storageObject["name"].asString,
+                    fileSizeBytes = storageObject["size"].asLong,
+                    timestamp = storageObject["updated"].asString,
+                )
+            }
         } catch (e: Exception) {
             when (e) {
                 is NullPointerException,

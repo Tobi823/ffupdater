@@ -123,7 +123,7 @@ object FileDownloader {
         cacheBehaviour: CacheBehaviour,
         method: String = "GET",
         requestBody: RequestBody? = null,
-        execute: (BufferedReader) -> R,
+        execute: suspend (BufferedReader) -> R,
     ): R {
         return withContext(Dispatchers.IO) {
             getMutexForUrl(url).withLock {

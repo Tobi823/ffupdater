@@ -9,6 +9,8 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.Sha256Hash
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.time.Instant
 
 @Keep
@@ -35,27 +37,28 @@ object CustomRepositoryConsumer {
         )
     }
 
-    private fun parseJson(
+    private suspend fun parseJson(
         jsonRoot: JsonObject,
         packageName: String,
     ): List<ApkObject> {
-        try {
-            val listOfPackages = jsonRoot["packages"].asJsonObject
-            val listOfApks = listOfPackages[packageName].asJsonArray
-            val apkObjects = listOfApks
-                .map { it.asJsonObject }
-                .map {
-                    ApkObject(
-                        added = it["added"].asLong,
-                        apkName = it["apkName"].asString,
-                        abis = it["nativecode"].asJsonArray.map { nativecode -> nativecode.asString },
-                        hash = it["hash"].asString,
-                        size = it["size"].asLong,
-                        versionCode = it["versionCode"].asLong,
-                        versionName = it["versionName"].asString,
-                    )
-                }
-            return apkObjects
+        return try {
+            withContext(Dispatchers.Default) {
+                val listOfPackages = jsonRoot["packages"].asJsonObject
+                val listOfApks = listOfPackages[packageName].asJsonArray
+                listOfApks
+                    .map { it.asJsonObject }
+                    .map {
+                        ApkObject(
+                            added = it["added"].asLong,
+                            apkName = it["apkName"].asString,
+                            abis = it["nativecode"].asJsonArray.map { nativecode -> nativecode.asString },
+                            hash = it["hash"].asString,
+                            size = it["size"].asLong,
+                            versionCode = it["versionCode"].asLong,
+                            versionName = it["versionName"].asString,
+                        )
+                    }
+            }
         } catch (e: Exception) {
             when (e) {
                 is NullPointerException,

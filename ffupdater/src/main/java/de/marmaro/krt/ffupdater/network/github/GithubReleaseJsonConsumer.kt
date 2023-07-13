@@ -3,6 +3,8 @@ package de.marmaro.krt.ffupdater.network.github
 import androidx.annotation.Keep
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.function.Predicate
 
 
@@ -13,12 +15,16 @@ class GithubReleaseJsonConsumer(
     private val correctAsset: Predicate<GithubConsumer.SearchParameterForAsset>,
 ) {
 
-    fun parseReleaseArrayJson(): GithubConsumer.Result? {
-        return handleReleaseArray()
+    suspend fun parseReleaseArrayJson(): GithubConsumer.Result? {
+        return withContext(Dispatchers.Default) {
+            handleReleaseArray()
+        }
     }
 
-    fun parseReleaseJson(): GithubConsumer.Result? {
-        return handleReleaseObject()
+    suspend fun parseReleaseJson(): GithubConsumer.Result? {
+        return withContext(Dispatchers.Default) {
+            handleReleaseObject()
+        }
     }
 
     private fun handleReleaseArray(): GithubConsumer.Result? {

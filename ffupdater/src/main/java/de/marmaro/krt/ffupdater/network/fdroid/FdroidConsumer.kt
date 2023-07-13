@@ -8,6 +8,8 @@ import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 object FdroidConsumer {
 
@@ -32,20 +34,22 @@ object FdroidConsumer {
         )
     }
 
-    private fun parseJson(rootJson: JsonObject): AppInfo {
+    private suspend fun parseJson(rootJson: JsonObject): AppInfo {
         return try {
-            AppInfo(
-                packageName = rootJson["packageName"].asString,
-                suggestedVersionCode = rootJson["suggestedVersionCode"].asLong,
-                packages = rootJson["packages"].asJsonArray
-                    .map { it.asJsonObject }
-                    .map {
-                        Package(
-                            versionName = it["versionName"].asString,
-                            versionCode = it["versionCode"].asLong
-                        )
-                    }
-            )
+            withContext(Dispatchers.Default) {
+                AppInfo(
+                    packageName = rootJson["packageName"].asString,
+                    suggestedVersionCode = rootJson["suggestedVersionCode"].asLong,
+                    packages = rootJson["packages"].asJsonArray
+                        .map { it.asJsonObject }
+                        .map {
+                            Package(
+                                versionName = it["versionName"].asString,
+                                versionCode = it["versionCode"].asLong
+                            )
+                        }
+                )
+            }
         } catch (e: Exception) {
             when (e) {
                 is NullPointerException,

@@ -14,6 +14,8 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * https://vivaldi.com/de/download/
@@ -50,30 +52,32 @@ object Vivaldi : AppBase() {
         )
     }
 
-    private fun extractVersionAndDownloadUrl(content: String): Pair<String, String> {
-        val abiString = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> "armeabi-v7a"
-            ABI.ARM64_V8A -> "arm64-v8a"
-            ABI.X86_64 -> "x86-64.apk"
-            else -> throw IllegalArgumentException("ABI is not supported")
+    private suspend fun extractVersionAndDownloadUrl(content: String): Pair<String, String> {
+        return withContext(Dispatchers.Default) {
+            val abiString = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+                ABI.ARMEABI_V7A -> "armeabi-v7a"
+                ABI.ARM64_V8A -> "arm64-v8a"
+                ABI.X86_64 -> "x86-64.apk"
+                else -> throw IllegalArgumentException("ABI is not supported")
+            }
+            val regexPattern = Regex.escape("<a href=\"") +
+                    "(" +
+                    Regex.escape("https://downloads.vivaldi.com/stable/Vivaldi.") +
+                    "([.0-9]{1,24})" +
+                    Regex.escape("_$abiString.apk") +
+                    ")\""
+
+            val regexMatch = Regex(regexPattern).find(content)
+            checkNotNull(regexMatch) { "Can't find download link with regex pattern: $regexPattern." }
+
+            val downloadUrl = regexMatch.groups[1]
+            checkNotNull(downloadUrl) { "Can't extract download url from regex match." }
+
+            val availableVersion = regexMatch.groups[2]
+            checkNotNull(availableVersion) { "Can't extract available version from regex match." }
+
+            availableVersion.value to downloadUrl.value
         }
-        val regexPattern = Regex.escape("<a href=\"") +
-                "(" +
-                Regex.escape("https://downloads.vivaldi.com/stable/Vivaldi.") +
-                "([.0-9]{1,24})" +
-                Regex.escape("_$abiString.apk") +
-                ")\""
-
-        val regexMatch = Regex(regexPattern).find(content)
-        checkNotNull(regexMatch) { "Can't find download link with regex pattern: $regexPattern." }
-
-        val downloadUrl = regexMatch.groups[1]
-        checkNotNull(downloadUrl) { "Can't extract download url from regex match." }
-
-        val availableVersion = regexMatch.groups[2]
-        checkNotNull(availableVersion) { "Can't extract available version from regex match." }
-
-        return availableVersion.value to downloadUrl.value
     }
 
     private const val DOWNLOAD_WEBSITE_URL = "https://vivaldi.com/download/"

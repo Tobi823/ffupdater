@@ -6,6 +6,8 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.Sha256Hash
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 
@@ -40,16 +42,18 @@ object MozillaCiJsonConsumer {
         return parseJson(json, abiString)
     }
 
-    private fun parseJson(json: JsonObject, abiString: String): Result {
-        try {
-            val fileHash = json["artifacts"]
-                .asJsonObject["public/build/target.${abiString}.apk"]
-                .asJsonObject["sha256"]
-                .asString
-            val releaseDate = json.asJsonObject["task"]
-                .asJsonObject["created"]
-                .asString
-            return Result(Sha256Hash(fileHash), releaseDate)
+    private suspend fun parseJson(json: JsonObject, abiString: String): Result {
+        return try {
+            withContext(Dispatchers.Default) {
+                val fileHash = json["artifacts"]
+                    .asJsonObject["public/build/target.${abiString}.apk"]
+                    .asJsonObject["sha256"]
+                    .asString
+                val releaseDate = json.asJsonObject["task"]
+                    .asJsonObject["created"]
+                    .asString
+                Result(Sha256Hash(fileHash), releaseDate)
+            }
         } catch (e: Exception) {
             when (e) {
                 is NullPointerException,
