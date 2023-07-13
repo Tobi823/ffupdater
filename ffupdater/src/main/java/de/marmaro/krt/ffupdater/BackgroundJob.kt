@@ -43,7 +43,6 @@ import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.coroutineScope
 import java.time.Duration
 import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit.MINUTES
@@ -106,10 +105,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
      * I can't return Result.error() because even if an unknown exception occurs, I want that BackgroundJob
      * is still regularly executed.
      * But Result.error() will remove BackgroundJob from the WorkManager job schedule.
+     *
+     * Getting cancelled after 10 minutes.
      */
     @MainThread
-    override suspend fun doWork(): Result = coroutineScope {
-        try {
+    override suspend fun doWork(): Result {
+        return try {
             Log.i(LOG_TAG, "doWork(): Execute background job.")
             val result = internalDoWork()
             Log.i(LOG_TAG, "doWork(): Finish.")

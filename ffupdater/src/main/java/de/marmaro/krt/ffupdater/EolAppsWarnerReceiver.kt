@@ -24,7 +24,7 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
             return
         }
 
-        scope.launch(Dispatchers.Default) {
+        scope.launch(Dispatchers.IO) {
             val eolInstalled = App.values()
                 .map { it.findImpl() }
                 .filter { it.isEol() }

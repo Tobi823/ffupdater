@@ -25,13 +25,13 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
     fun getPackageArchiveInfo(path: String): Signature {
         val file = File(path)
         check(file.exists()) { "File '$path' does not exists." }
-
         if (DeviceSdkTester.supportsAndroid13()) {
-            val flags = PackageManager.PackageInfoFlags.of(GET_SIGNING_CERTIFICATES.toLong())
-            extractSignature(packageManager.getPackageArchiveInfo(path, flags))?.let { return it }
+            extractSignature(packageManager.getPackageArchiveInfo(path, getPackageInfoFlags()))
+                ?.let { return it }
         }
         if (DeviceSdkTester.supportsAndroid9()) {
-            extractSignature(packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES))?.let { return it }
+            extractSignature(packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES))
+                ?.let { return it }
         }
         extractSignature(packageManager.getPackageArchiveInfo(path, GET_SIGNATURES))?.let { return it }
         throw IllegalArgumentException("APK file has no signature.")
@@ -42,18 +42,24 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
     fun getInstalledAppInfo(app: AppBase): Signature {
         try {
             if (DeviceSdkTester.supportsAndroid13()) {
-                val flags = PackageManager.PackageInfoFlags.of(GET_SIGNING_CERTIFICATES.toLong())
-                extractSignature(packageManager.getPackageInfo(app.packageName, flags))?.let { return it }
+                extractSignature(packageManager.getPackageInfo(app.packageName, getPackageInfoFlags()))
+                    ?.let { return it }
             }
             if (DeviceSdkTester.supportsAndroid9()) {
                 extractSignature(packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES))
                     ?.let { return it }
             }
-            extractSignature(packageManager.getPackageInfo(app.packageName, GET_SIGNATURES))?.let { return it }
+            extractSignature(packageManager.getPackageInfo(app.packageName, GET_SIGNATURES))
+                ?.let { return it }
             throw IllegalArgumentException("Can't extract the signature from app ${app.packageName}.")
         } catch (e: PackageManager.NameNotFoundException) {
             throw RuntimeException("app.packageName is not whitelisted in AndroidManifest.xml", e)
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun getPackageInfoFlags(): PackageManager.PackageInfoFlags {
+        return PackageManager.PackageInfoFlags.of(GET_SIGNING_CERTIFICATES.toLong())
     }
 
     @Suppress("DEPRECATION")

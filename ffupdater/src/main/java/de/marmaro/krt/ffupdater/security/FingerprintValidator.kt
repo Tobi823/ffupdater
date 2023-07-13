@@ -27,7 +27,7 @@ object FingerprintValidator {
      * @return the fingerprint of the app and if it matched with the stored fingerprint
      */
     suspend fun checkApkFile(packageManager: PackageManager, file: File, app: AppBase): FingerprintValidatorResult {
-        return withContext(Dispatchers.IO) {
+        return withContext(Dispatchers.Default) {
             val signature = PackageManagerUtil(packageManager).getPackageArchiveInfo(file.absolutePath)
             verifyPackageInfo(signature, app)
         }
@@ -44,7 +44,7 @@ object FingerprintValidator {
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
     suspend fun checkInstalledApp(packageManager: PackageManager, app: AppBase): FingerprintValidatorResult {
-        return withContext(Dispatchers.IO) {
+        return withContext(Dispatchers.Default) {
             val signature = PackageManagerUtil(packageManager).getInstalledAppInfo(app)
             verifyPackageInfo(signature, app)
         }
@@ -60,7 +60,7 @@ object FingerprintValidator {
     }
 
     private suspend fun getFingerprintOfSignature(signature: Signature): String {
-        return withContext(Dispatchers.IO) {
+        return withContext(Dispatchers.Default) {
             val certificate = signature.toByteArray().inputStream().buffered().use { stream ->
                 CertificateFactory.getInstance("X509").generateCertificate(stream)
             }
