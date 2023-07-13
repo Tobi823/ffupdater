@@ -1,0 +1,5 @@
+* Thanks for the Weblate contributions from: Priit Jõerüüt, Oğuz Ersen and Kazushi Hayama
+* Only update apps in the background if they are not used (requires Android 14) (Tobi823/ffupdater#400)
+* Add option to only update apps in the background if the screen is off (Tobi823/ffupdater#400)
+* Hide progress brackets if the download has not been started (Tobi823/ffupdater#401)
+* Refactor and clean up code

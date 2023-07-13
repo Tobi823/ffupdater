@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:1.10.1'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -69,9 +69,9 @@ android {
     compileSdkVersion 34
 
     defaultConfig {
-        versionCode 145
+        versionCode 146
         // (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
-        versionName "78.0.3"
+        versionName "78.0.4"
         minSdkVersion 21
         targetSdkVersion 34
         vectorDrawables.useSupportLibrary = true
