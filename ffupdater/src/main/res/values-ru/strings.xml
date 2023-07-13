@@ -28,7 +28,7 @@
     <string name="crash_report__explain_text__download_activity_fetching_url">При получении URL-адреса загрузки произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщить о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
     <string name="crash_report__explain_text__download_activity_install_file">При установке произошла ошибка. Если это случается очень часто, опишите проблему на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте прикрепить отчёт об ошибке из буфера обмена.</string>
     <string name="crash_report__explain_text__download_activity_update_check">При проверке обновлений в окне приложения произошла следующая ошибка. Если эта ошибка возникает часто, не стесняйтесь сообщать о ней на notabug.org, GitHub или GitLab. Пожалуйста, не забудьте добавить отчет о сбое из буфера обмена и описание того, как вы воспроизвели эту ошибку.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">К сожалению, программа FFUpdater потерпела крах из-за следующей ошибки. Пожалуйста, сообщите об этой ошибке на notabug.org, GitHub или GitLab. Скопируйте отчет о сбое из буфера обмена в сообщение и добавьте описание того, как воспроизвести ошибку.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">К сожалению, программа FFUpdater вылетела из-за следующей ошибки. Пожалуйста, сообщите об этой ошибке на notabug.org, GitHub или GitLab. Скопируйте отчет о сбое из буфера обмена в сообщение и добавьте описание того, как воспроизвести ошибку.</string>
     <string name="crash_report__go_to_github">Перейти на GitHub</string>
     <string name="crash_report__go_to_gitlab">Перейти на GitLab</string>
     <string name="crash_report__got_to_notabug_org">Перейти на notabug.org</string>
@@ -194,4 +194,8 @@
 \n- Он также использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
     <string name="app_card__app_warning_button_description">Показывать предупреждения о данном приложении</string>
     <string name="notification__download_error__channel_descr">Показывает, когда загрузки обновлений в фоне завершаются неудачно.</string>
+    <string name="notification__download_error__title">Фоновая загрузка обновления завершилась с ошибкой</string>
+    <string name="notification__download_error__text">Фоновая загрузка обновления %1$s завершилась с ошибкой. Если эта ошибка происходит часто, нажмите сюда, чтобы посмотреть отчёт об ошибке.</string>
+    <string name="notification__download_error__channel_name">Уведомление о ошибках загрузки в фоне</string>
+    <string name="notification__download_error__descr">Фоновая загрузка обновления %1$s завершилась с ошибкой. Если это происходит часто, не стесняйтесь сообщить об этом на notabug.org, GitHub или GitLab.</string>
 </resources>
