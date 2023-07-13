@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'de.mannodermaus.android-junit5'
 apply plugin: 'kotlin-parcelize'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 repositories {
     mavenCentral()
@@ -15,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'androidx.core:core-ktx:+'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'

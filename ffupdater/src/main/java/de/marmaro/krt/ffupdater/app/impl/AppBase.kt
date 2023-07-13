@@ -6,7 +6,6 @@ import androidx.annotation.AnyThread
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.AppUpdateStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestUpdate
@@ -14,6 +13,7 @@ import de.marmaro.krt.ffupdater.app.impl.base.ApkDownloader
 import de.marmaro.krt.ffupdater.app.impl.base.AppAttributes
 import de.marmaro.krt.ffupdater.app.impl.base.InstalledVersion
 import de.marmaro.krt.ffupdater.app.impl.base.UpdateFetcher
+import de.marmaro.krt.ffupdater.app.impl.base.VersionDisplay
 import de.marmaro.krt.ffupdater.device.ABI.ARM64_V8A
 import de.marmaro.krt.ffupdater.device.ABI.ARMEABI
 import de.marmaro.krt.ffupdater.device.ABI.ARMEABI_V7A
@@ -26,22 +26,12 @@ import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 
 
 @Keep
-abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledVersion {
+abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledVersion, VersionDisplay {
     override val installationWarning: Int? = null
     override val installableByUser = true
     override val eolReason: Int? = null
     override val fileNameInZipArchive: String? = null
 
-
-    @AnyThread
-    fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersion(context.packageManager))
-    }
-
-    @AnyThread
-    fun getDisplayAvailableVersion(context: Context, availableVersionResult: LatestUpdate): String {
-        return context.getString(R.string.available_version, availableVersionResult.version)
-    }
 
     @AnyThread
     open fun isAvailableVersionHigherThanInstalled(context: Context, available: LatestUpdate): Boolean {
@@ -74,9 +64,6 @@ abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledV
     @AnyThread
     open fun installCallback(context: Context, available: AppUpdateStatus) {
     }
-
-
-    fun isEol() = (eolReason != null)
 
 
     companion object {

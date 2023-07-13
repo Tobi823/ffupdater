@@ -22,4 +22,6 @@ interface AppAttributes {
     val eolReason: Int?
     val displayCategory: DisplayCategory
     val fileNameInZipArchive: String?
+
+    fun isEol() = (eolReason != null)
 }
