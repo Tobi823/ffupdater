@@ -185,14 +185,30 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         }
 
         try {
-            // ignore UnsafeIntentLaunchViolation because at least OnePlus needs this exact intent
-            @Suppress("DEPRECATION")
-            val requestPermission = bundle.get(Intent.EXTRA_INTENT) as Intent
-            requestPermission.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context.startActivity(requestPermission)
+            val newIntent = createConfirmInstallationIntent(bundle)
+            context.startActivity(newIntent)
         } catch (e: ActivityNotFoundException) {
             fail("Installation failed because Activity is not available.", e, -110, e.message ?: "/")
         }
+    }
+
+    private fun createConfirmInstallationIntent(bundle: Bundle): Intent {
+        val originalIntent = if (DeviceSdkTester.supportsAndroid13()) {
+            bundle.getParcelable(Intent.EXTRA_INTENT, Intent::class.java)
+        } else {
+            bundle.getParcelable(Intent.EXTRA_INTENT) as Intent?
+        }
+        requireNotNull(originalIntent)
+
+        // create new Intent to hide the "UnsafeIntentLaunchViolation"
+        require(originalIntent.action == ACTION_CONFIRM_INSTALL)
+        require(originalIntent.hasExtra(EXTRA_SESSION_ID))
+
+        val newIntent = Intent(ACTION_CONFIRM_INSTALL)
+        val sessionId = originalIntent.extras?.getInt(EXTRA_SESSION_ID)
+            ?: originalIntent.extras?.getLong(EXTRA_SESSION_ID)
+        newIntent.putExtra(EXTRA_SESSION_ID, sessionId)
+        return newIntent
     }
 
     private fun fail(message: String, errorCode: Int, displayErrorMessage: String) {
@@ -232,5 +248,10 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
     private fun unregisterIntentReceiver(context: Context) {
         context.unregisterReceiver(intentReceiver)
         intentReceiver = null
+    }
+
+    companion object {
+        private const val ACTION_CONFIRM_INSTALL = "android.content.pm.action.CONFIRM_INSTALL"
+        private const val EXTRA_SESSION_ID = "android.content.pm.extra.SESSION_ID"
     }
 }
