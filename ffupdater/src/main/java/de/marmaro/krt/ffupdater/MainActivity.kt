@@ -231,16 +231,8 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val request = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-            if (!isGranted) {
-                Snackbar.make(
-                    findViewById(R.id.coordinatorLayout),
-                    R.string.main_activity__denied_notification_permission,
-                    Snackbar.LENGTH_LONG
-                ).show()
-            }
-        }
-        request.launch(POST_NOTIFICATIONS)
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
+            .launch(POST_NOTIFICATIONS)
     }
 
     class InstalledAppsAdapter(private val activity: MainActivity) :
