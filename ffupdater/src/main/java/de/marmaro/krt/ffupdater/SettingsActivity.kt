@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.MultiSelectListPreference
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
@@ -55,106 +56,124 @@ class SettingsActivity : AppCompatActivity() {
         private fun findMultiPref(key: String) = findPreference<MultiSelectListPreference>(key)!!
         private fun findTextPref(key: String) = findPreference<EditTextPreference>(key)!!
 
-        private var restartBackgroundJob = false
-
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
+            hideOptionsForLowerApis()
+            loadExcludedAppNames()
+            listenForBackgroundJobRestarts()
+            listenForThemeChanges()
+            deleteFileCacheWhenChange32BitAppsPreference()
+            setupInstallerValidator()
+            setupNetworkSettingsValidator()
+        }
+
+        private fun hideOptionsForLowerApis() {
+            if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
+                findSwitchPref("background__update_check__when_device_idle").summary =
+                    getString(R.string.settings__background__update_check__when_device_idle__unsupported)
+                findSwitchPref("background__update_check__when_device_idle").isEnabled = false
+            }
+        }
+
+        private fun loadExcludedAppNames() {
+            val excludedApps = findMultiPref("background__update_check__excluded_apps")
+            excludedApps.entries = App.values()
+                .map { getString(it.findImpl().title) }
+                .toTypedArray()
+            excludedApps.entryValues = App.values()
+                .map { it.name }
+                .toTypedArray()
+        }
+
+        private fun listenForBackgroundJobRestarts() {
+            val listener = Preference.OnPreferenceChangeListener { _, _ ->
+                restartBackgroundJobAfterClosingActivity = true
+                true
+            }
+            findSwitchPref("background__update_check__enabled").onPreferenceChangeListener = listener
+            findListPref("background__update_check__interval").onPreferenceChangeListener = listener
+            findSwitchPref("background__update_check__when_device_idle").onPreferenceChangeListener = listener
+        }
+
+        private fun listenForThemeChanges() {
             findListPref("foreground__theme_preference").setOnPreferenceChangeListener { _, newValue ->
                 AppCompatDelegate.setDefaultNightMode((newValue as String).toInt())
                 true
             }
+        }
 
-            findSwitchPref("background__update_check__enabled").setOnPreferenceChangeListener { _, _ ->
-                restartBackgroundJob = true
-                true
-            }
-
-            findListPref("background__update_check__interval").setOnPreferenceChangeListener { _, _ ->
-                restartBackgroundJob = true
-                true
-            }
-
-            val excludedApps = findMultiPref("background__update_check__excluded_apps")
-            excludedApps.entries = App.values()
-                .map { app -> getString(app.findImpl().title) }
-                .toTypedArray()
-            excludedApps.entryValues = App.values()
-                .map { app -> app.name }
-                .toTypedArray()
-
+        private fun deleteFileCacheWhenChange32BitAppsPreference() {
             findSwitchPref("device__prefer_32bit_apks").setOnPreferenceChangeListener { _, _ ->
                 App.values().forEach {
                     it.findImpl().deleteFileCache(requireContext())
                 }
                 true
             }
+        }
 
-            findSwitchPref("network__trust_user_cas").setOnPreferenceChangeListener { _, _ ->
-                FileDownloader.restart(requireContext().applicationContext)
-                true
-            }
+        private var restartBackgroundJobAfterClosingActivity = false
 
-            findListPref("network__dns_provider").setOnPreferenceChangeListener { _, newValue ->
-                findTextPref("network__custom_doh_server").isVisible = (newValue == CUSTOM_SERVER.name)
-                FileDownloader.restart(requireContext().applicationContext)
-                true
-            }
-
-            findTextPref("network__custom_doh_server").isVisible =
-                findListPref("network__dns_provider").value == CUSTOM_SERVER.name
-            findTextPref("network__custom_doh_server").setOnPreferenceChangeListener { _, _ ->
-                FileDownloader.restart(requireContext().applicationContext)
-                true
-            }
-
-            findTextPref("network__proxy").setOnPreferenceChangeListener { _, _ ->
-                FileDownloader.restart(requireContext().applicationContext)
-                true
-            }
-
-
+        private fun setupInstallerValidator() {
             findListPref("installer__method").setOnPreferenceChangeListener { _, newValue ->
                 when (newValue) {
-                    Installer.ROOT_INSTALLER.name -> {
-                        Shell.getShell().use {
-                            if (it.isRoot) {
-                                return@setOnPreferenceChangeListener true
-                            }
-
-                            val text = getString(R.string.installer__method__root_not_granted)
-                            Toast.makeText(context, text, Toast.LENGTH_LONG).show()
-                            return@setOnPreferenceChangeListener false
-                        }
-                    }
-
-                    Installer.SHIZUKU_INSTALLER.name -> {
-                        if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
-                            val text = "Your Android is too old."
-                            Toast.makeText(context, text, Toast.LENGTH_LONG).show()
-                            return@setOnPreferenceChangeListener false
-                        }
-                        try {
-                            if (Shizuku.checkSelfPermission() != PackageManager.PERMISSION_GRANTED) {
-                                Shizuku.requestPermission(42)
-                            }
-                            return@setOnPreferenceChangeListener true
-                        } catch (e: IllegalStateException) {
-                            val text = getString(R.string.installer__method__shizuku_not_installed)
-                            Toast.makeText(context, text, Toast.LENGTH_LONG).show()
-                            return@setOnPreferenceChangeListener false
-                        }
-                    }
-
+                    Installer.ROOT_INSTALLER.name -> canRootInstallerBeUsed()
+                    Installer.SHIZUKU_INSTALLER.name -> canShizukuInstallerBeUsed()
                     else -> true
                 }
             }
         }
 
+        private fun canRootInstallerBeUsed(): Boolean {
+            Shell.getShell().use {
+                if (it.isRoot) {
+                    return true
+                }
+            }
+            Toast.makeText(context, R.string.installer__method__root_not_granted, Toast.LENGTH_LONG).show()
+            return false
+        }
+
+        private fun canShizukuInstallerBeUsed(): Boolean {
+            if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
+                Toast.makeText(context, "Your Android is too old for Shizuku.", Toast.LENGTH_LONG).show()
+                return false
+            }
+            return try {
+                if (Shizuku.checkSelfPermission() != PackageManager.PERMISSION_GRANTED) {
+                    Shizuku.requestPermission(42)
+                }
+                true
+            } catch (e: IllegalStateException) {
+                Toast.makeText(context, R.string.installer__method__shizuku_not_installed, Toast.LENGTH_LONG).show()
+                false
+            }
+        }
+
+        private fun setupNetworkSettingsValidator() {
+            val listener = Preference.OnPreferenceChangeListener { _, _ ->
+                FileDownloader.restart(requireContext().applicationContext)
+                true
+            }
+            val dnsProvider = findListPref("network__dns_provider")
+            val customDohServer = findTextPref("network__custom_doh_server")
+            val trustUserCA = findSwitchPref("network__trust_user_cas")
+            val networkProxy = findTextPref("network__proxy")
+
+            trustUserCA.onPreferenceChangeListener = listener
+            dnsProvider.setOnPreferenceChangeListener { pref, newValue ->
+                customDohServer.isVisible = (newValue == CUSTOM_SERVER.name)
+                listener.onPreferenceChange(pref, newValue)
+            }
+            customDohServer.isVisible = (dnsProvider.value == CUSTOM_SERVER.name)
+            customDohServer.onPreferenceChangeListener = listener
+            networkProxy.onPreferenceChangeListener = listener
+        }
+
         override fun onPause() {
             super.onPause()
-            if (restartBackgroundJob) {
-                restartBackgroundJob = false
+            if (restartBackgroundJobAfterClosingActivity) {
+                restartBackgroundJobAfterClosingActivity = false
                 BackgroundJob.start(requireContext().applicationContext, UPDATE)
             }
         }

@@ -373,6 +373,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 .setRequiredNetworkType(networkType)
                 .setRequiresBatteryNotLow(true)
                 .setRequiresStorageNotLow(true)
+                .setRequiresDeviceIdle(BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle)
 
             val minutes = BackgroundSettingsHelper.updateCheckInterval.toMinutes()
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)

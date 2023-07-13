@@ -58,6 +58,9 @@ object BackgroundSettingsHelper {
     val isDownloadOnMeteredAllowed
         get() = preferences.getBoolean("background__download__metered", false)
 
+    val isUpdateCheckOnlyAllowedWhenDeviceIsIdle
+        get() = preferences.getBoolean("background__update_check__when_device_idle", false)
+
     val isInstallationEnabled
         get() = preferences.getBoolean("background__installation__enabled", false)
 
