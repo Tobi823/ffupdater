@@ -39,32 +39,33 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
 
     override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
         require(file.exists()) { "File does not exists." }
-        return withContext(Dispatchers.Main) {
-            registerIntentReceiver(context)
-            install(context, file)
-            try {
-                installationStatus.await()
-            } finally {
-                unregisterIntentReceiver(context)
-            }
+        registerIntentReceiver(context)
+        install(context, file)
+        try {
+            installationStatus.await()
+        } finally {
+            unregisterIntentReceiver(context)
         }
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
     @MainThread
-    private fun install(context: Context, file: File) {
-        val params = createSessionParams(context, file)
-        val sessionId = try {
-            context.packageManager.packageInstaller.createSession(params)
-        } catch (e: IOException) {
-            val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
-            fail(getShortErrorMessage(STATUS_FAILURE_STORAGE), e, STATUS_FAILURE_STORAGE, errorMessage)
-            return
-        }
-        context.packageManager.packageInstaller.openSession(sessionId).use {
-            copyApkToSession(it, file)
-            val intentSender = createSessionChangeReceiver(context, sessionId)
-            it.commit(intentSender)
+    private suspend fun install(context: Context, file: File) {
+        withContext(Dispatchers.Main) {
+            val params = createSessionParams(context, file)
+            val sessionId = try {
+                context.packageManager.packageInstaller.createSession(params)
+            } catch (e: IOException) {
+                val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
+                fail(getShortErrorMessage(STATUS_FAILURE_STORAGE), e, STATUS_FAILURE_STORAGE, errorMessage)
+                return@withContext
+            }
+
+            context.packageManager.packageInstaller.openSession(sessionId).use {
+                copyApkToSession(it, file)
+                val intentSender = createSessionChangeReceiver(context, sessionId)
+                it.commit(intentSender)
+            }
         }
     }
 
@@ -92,14 +93,16 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         return params
     }
 
-    private fun copyApkToSession(session: Session, file: File) {
+    private suspend fun copyApkToSession(session: Session, file: File) {
         val name = "${app.findImpl().packageName}_${System.currentTimeMillis()}"
-        file.inputStream().buffered().use { downloadedFileStream ->
-            // don't use buffered because I think this causes the 'Unrecognized stream' exception
-            session.openWrite(name, 0, file.length()).use { sessionStream ->
-                downloadedFileStream.copyTo(sessionStream)
-                sessionStream.flush()
-                session.fsync(sessionStream)
+        withContext(Dispatchers.IO) {
+            file.inputStream().buffered().use { downloadedFileStream ->
+                // don't use buffered because I think this causes the 'Unrecognized stream' exception
+                session.openWrite(name, 0, file.length()).use { sessionStream ->
+                    downloadedFileStream.copyTo(sessionStream)
+                    sessionStream.flush()
+                    session.fsync(sessionStream)
+                }
             }
         }
     }
@@ -212,15 +215,17 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         installationStatus.completeExceptionally(exception)
     }
 
-    private fun registerIntentReceiver(context: Context) {
-        intentReceiver = object : BroadcastReceiver() {
-            override fun onReceive(c: Context?, i: Intent?) = handleAppInstallationResult(c, i)
-        }
-        val filter = IntentFilter(intentNameForAppInstallationCallback)
-        if (DeviceSdkTester.supportsAndroid13()) {
-            context.registerReceiver(intentReceiver, filter, RECEIVER_NOT_EXPORTED)
-        } else {
-            context.registerReceiver(intentReceiver, filter)
+    private suspend fun registerIntentReceiver(context: Context) {
+        withContext(Dispatchers.Main) {
+            intentReceiver = object : BroadcastReceiver() {
+                override fun onReceive(c: Context?, i: Intent?) = handleAppInstallationResult(c, i)
+            }
+            val filter = IntentFilter(intentNameForAppInstallationCallback)
+            if (DeviceSdkTester.supportsAndroid13()) {
+                context.registerReceiver(intentReceiver, filter, RECEIVER_NOT_EXPORTED)
+            } else {
+                context.registerReceiver(intentReceiver, filter)
+            }
         }
     }
 
