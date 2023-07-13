@@ -320,4 +320,6 @@
     <string name="eol_reason__browser_no_longer_maintained">長い間、メンテナンスされていないブラウザーです。</string>
     <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
     <string name="privacy_browser__title">Privacy Browser</string>
+    <string name="background__installation__when_screen_off__summary">端末の画面が消灯中のみインストールを試みます。</string>
+    <string name="background__installation__when_screen_off__title">画面消灯中のみインストール</string>
 </resources>
