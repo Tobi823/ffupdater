@@ -28,7 +28,7 @@ object FingerprintValidator {
      */
     suspend fun checkApkFile(packageManager: PackageManager, file: File, app: AppBase): FingerprintValidatorResult {
         return withContext(Dispatchers.Default) {
-            val signature = PackageManagerUtil(packageManager).getPackageArchiveInfo(file.absolutePath)
+            val signature = PackageManagerUtil.getPackageArchiveInfo(packageManager, file.absolutePath)
             verifyPackageInfo(signature, app)
         }
     }
@@ -45,7 +45,7 @@ object FingerprintValidator {
      */
     suspend fun checkInstalledApp(packageManager: PackageManager, app: AppBase): FingerprintValidatorResult {
         return withContext(Dispatchers.Default) {
-            val signature = PackageManagerUtil(packageManager).getInstalledAppInfo(app)
+            val signature = PackageManagerUtil.getInstalledAppInfo(packageManager, app)
             verifyPackageInfo(signature, app)
         }
     }

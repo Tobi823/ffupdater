@@ -17,41 +17,38 @@ import java.io.File
 import java.io.FileNotFoundException
 
 @Keep
-class PackageManagerUtil(private val packageManager: PackageManager) {
+object PackageManagerUtil {
 
     @Suppress("DEPRECATION")
     @MainThread
     @Throws(FileNotFoundException::class)
-    fun getPackageArchiveInfo(path: String): Signature {
+    fun getPackageArchiveInfo(pm: PackageManager, path: String): Signature {
         val file = File(path)
         check(file.exists()) { "File '$path' does not exists." }
+        val signatures = mutableListOf<() -> Signature?>()
         if (DeviceSdkTester.supportsAndroid13()) {
-            extractSignature(packageManager.getPackageArchiveInfo(path, getPackageInfoFlags()))
-                ?.let { return it }
+            signatures.add { extractSignature(pm.getPackageArchiveInfo(path, getPackageInfoFlags())) }
         }
         if (DeviceSdkTester.supportsAndroid9()) {
-            extractSignature(packageManager.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES))
-                ?.let { return it }
+            signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)) }
         }
-        extractSignature(packageManager.getPackageArchiveInfo(path, GET_SIGNATURES))?.let { return it }
-        throw IllegalArgumentException("APK file has no signature.")
+        signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNATURES)) }
+        return signatures.firstNotNullOf { it() }
     }
 
     @Suppress("DEPRECATION")
     @SuppressLint("PackageManagerGetSignatures")
-    fun getInstalledAppInfo(app: AppBase): Signature {
+    fun getInstalledAppInfo(pm: PackageManager, app: AppBase): Signature {
         try {
+            val signatures = mutableListOf<() -> Signature?>()
             if (DeviceSdkTester.supportsAndroid13()) {
-                extractSignature(packageManager.getPackageInfo(app.packageName, getPackageInfoFlags()))
-                    ?.let { return it }
+                signatures.add { extractSignature(pm.getPackageInfo(app.packageName, getPackageInfoFlags())) }
             }
             if (DeviceSdkTester.supportsAndroid9()) {
-                extractSignature(packageManager.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES))
-                    ?.let { return it }
+                signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)) }
             }
-            extractSignature(packageManager.getPackageInfo(app.packageName, GET_SIGNATURES))
-                ?.let { return it }
-            throw IllegalArgumentException("Can't extract the signature from app ${app.packageName}.")
+            signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNATURES)) }
+            return signatures.firstNotNullOf { it() }
         } catch (e: PackageManager.NameNotFoundException) {
             throw RuntimeException("app.packageName is not whitelisted in AndroidManifest.xml", e)
         }
@@ -64,13 +61,10 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
 
     @Suppress("DEPRECATION")
     private fun extractSignature(packageInfo: PackageInfo?): Signature? {
-        if (packageInfo == null) {
-            return null
-        }
-        if (DeviceSdkTester.supportsAndroid9() && packageInfo.signingInfo != null) {
+        if (DeviceSdkTester.supportsAndroid9() && packageInfo?.signingInfo != null) {
             return extractSignature(packageInfo.signingInfo)
         }
-        if (packageInfo.signatures != null) {
+        if (packageInfo?.signatures != null) {
             return extractSignature(packageInfo.signatures)
         }
         return null
@@ -92,18 +86,18 @@ class PackageManagerUtil(private val packageManager: PackageManager) {
         return signatures[0]
     }
 
-    fun getInstalledAppVersionName(packageName: String): String? {
+    fun getInstalledAppVersionName(pm: PackageManager, packageName: String): String? {
         return try {
             @Suppress("DEPRECATION")
-            packageManager.getPackageInfo(packageName, 0)?.versionName
+            pm.getPackageInfo(packageName, 0)?.versionName
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
     }
 
-    fun isAppInstalled(packageName: String): Boolean {
+    fun isAppInstalled(pm: PackageManager, packageName: String): Boolean {
         return try {
-            packageManager.getPackageInfo(packageName, 0)
+            pm.getPackageInfo(packageName, 0)
             true
         } catch (e: PackageManager.NameNotFoundException) {
             false

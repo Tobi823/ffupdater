@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Build
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
@@ -37,8 +38,8 @@ object TorBrowser : AppBase() {
     override val projectPage = "https://www.torproject.org/download/#android"
     override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
 
-    override fun getInstalledVersion(context: Context): String? {
-        val rawVersion = super.getInstalledVersion(context) ?: return null
+    override fun getInstalledVersion(packageManager: PackageManager): String? {
+        val rawVersion = super.getInstalledVersion(packageManager) ?: return null
         return rawVersion.split(" ").last()
             .removePrefix("(")
             .removeSuffix(")")

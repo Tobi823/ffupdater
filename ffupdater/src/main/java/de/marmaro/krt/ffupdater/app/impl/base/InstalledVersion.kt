@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.app.impl.base
 
 import android.content.Context
+import android.content.pm.PackageManager
 import androidx.annotation.AnyThread
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
@@ -12,7 +13,7 @@ interface InstalledVersion : AppAttributes {
 
     @AnyThread
     suspend fun isInstalled(context: Context): InstallationStatus {
-        return if (isInstalledWithoutFingerprintVerification(context.applicationContext)) {
+        return if (isInstalledWithoutFingerprintVerification(context.packageManager)) {
             if (FingerprintValidator.checkInstalledApp(context.packageManager, app.findImpl()).isValid) {
                 InstallationStatus.INSTALLED
             } else {
@@ -24,13 +25,13 @@ interface InstalledVersion : AppAttributes {
     }
 
     @AnyThread
-    fun isInstalledWithoutFingerprintVerification(context: Context): Boolean {
-        return PackageManagerUtil(context.packageManager).isAppInstalled(packageName)
+    fun isInstalledWithoutFingerprintVerification(packageManager: PackageManager): Boolean {
+        return PackageManagerUtil.isAppInstalled(packageManager, packageName)
     }
 
     @AnyThread
-    fun getInstalledVersion(context: Context): String? {
-        return PackageManagerUtil(context.packageManager).getInstalledAppVersionName(packageName)
+    fun getInstalledVersion(packageManager: PackageManager): String? {
+        return PackageManagerUtil.getInstalledAppVersionName(packageManager, packageName)
     }
 
 }

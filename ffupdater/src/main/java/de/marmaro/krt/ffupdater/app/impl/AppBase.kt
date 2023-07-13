@@ -35,7 +35,7 @@ abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledV
 
     @AnyThread
     fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersion(context.applicationContext))
+        return context.getString(R.string.installed_version, getInstalledVersion(context.packageManager))
     }
 
     @AnyThread
@@ -45,7 +45,7 @@ abstract class AppBase : AppAttributes, ApkDownloader, UpdateFetcher, InstalledV
 
     @AnyThread
     open fun isAvailableVersionHigherThanInstalled(context: Context, available: LatestUpdate): Boolean {
-        val installedVersion = getInstalledVersion(context.applicationContext) ?: return true
+        val installedVersion = getInstalledVersion(context.packageManager) ?: return true
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
     }
 
