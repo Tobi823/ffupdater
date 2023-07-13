@@ -12,7 +12,7 @@ import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.network.annotation.ReturnValueMustBeClosed
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
+import de.marmaro.krt.ffupdater.settings.NetworkSettings
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.sync.Mutex
@@ -270,7 +270,7 @@ object FileDownloader {
     }
 
     private fun createSslSocketFactory(): Pair<SSLSocketFactory, X509TrustManager>? {
-        if (!NetworkSettingsHelper.areUserCAsTrusted) {
+        if (!NetworkSettings.areUserCAsTrusted) {
             return null // use the system trust manager
         }
 
@@ -294,29 +294,29 @@ object FileDownloader {
     }
 
     private fun createDnsConfiguration(): Dns? {
-        return when (NetworkSettingsHelper.dnsProvider) {
-            NetworkSettingsHelper.DnsProvider.SYSTEM -> null
-            NetworkSettingsHelper.DnsProvider.DIGITAL_SOCIETY_SWITZERLAND_DOH -> digitalSocietySwitzerlandDoH
-            NetworkSettingsHelper.DnsProvider.QUAD9_DOH -> quad9DoH
-            NetworkSettingsHelper.DnsProvider.CLOUDFLARE_DOH -> cloudflareDoH
-            NetworkSettingsHelper.DnsProvider.GOOGLE_DOH -> googleDoH
-            NetworkSettingsHelper.DnsProvider.CUSTOM_SERVER -> createDnsConfigurationFromUserInput()
-            NetworkSettingsHelper.DnsProvider.NO -> fakeDnsResolver
+        return when (NetworkSettings.dnsProvider) {
+            NetworkSettings.DnsProvider.SYSTEM -> null
+            NetworkSettings.DnsProvider.DIGITAL_SOCIETY_SWITZERLAND_DOH -> digitalSocietySwitzerlandDoH
+            NetworkSettings.DnsProvider.QUAD9_DOH -> quad9DoH
+            NetworkSettings.DnsProvider.CLOUDFLARE_DOH -> cloudflareDoH
+            NetworkSettings.DnsProvider.GOOGLE_DOH -> googleDoH
+            NetworkSettings.DnsProvider.CUSTOM_SERVER -> createDnsConfigurationFromUserInput()
+            NetworkSettings.DnsProvider.NO -> fakeDnsResolver
         }
     }
 
     private fun createDnsConfigurationFromUserInput(): DnsOverHttps {
-        val customServer = NetworkSettingsHelper.customDohServer()
+        val customServer = NetworkSettings.customDohServer()
         return createDnsOverHttpsResolver(customServer.host, customServer.ips)
     }
 
     private fun createProxyConfiguration(): Proxy? {
-        val proxy = NetworkSettingsHelper.proxy() ?: return null
+        val proxy = NetworkSettings.proxy() ?: return null
         return Proxy(proxy.type, InetSocketAddress.createUnresolved(proxy.host, proxy.port))
     }
 
     private fun createProxyAuthenticatorConfiguration(): Authenticator? {
-        val proxy = NetworkSettingsHelper.proxy() ?: return null
+        val proxy = NetworkSettings.proxy() ?: return null
         val username = proxy.username ?: return null
         val password = proxy.password
             ?: throw IllegalArgumentException("Invalid proxy configuration. You have to specify a password.")

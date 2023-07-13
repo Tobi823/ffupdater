@@ -10,44 +10,44 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
 @ExtendWith(MockKExtension::class)
-class NetworkSettingsHelperTest {
+class NetworkSettingsTest {
     private lateinit var sharedPreferences: SharedPreferences
 
     @BeforeEach
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
-        NetworkSettingsHelper.init(sharedPreferences)
+        NetworkSettings.init(sharedPreferences)
     }
 
     @Test
     fun areUserCAsTrusted_withDefault_returnFalse() {
-        assertFalse(NetworkSettingsHelper.areUserCAsTrusted)
+        assertFalse(NetworkSettings.areUserCAsTrusted)
     }
 
     @Test
     fun areUserCAsTrusted_withTrue_returnTrue() {
         sharedPreferences.edit().putBoolean("network__trust_user_cas", true).commit()
-        assertTrue(NetworkSettingsHelper.areUserCAsTrusted)
+        assertTrue(NetworkSettings.areUserCAsTrusted)
     }
 
     @Test
     fun areUserCAsTrusted_withFalse_returnFalse() {
         sharedPreferences.edit().putBoolean("network__trust_user_cas", false).commit()
-        assertFalse(NetworkSettingsHelper.areUserCAsTrusted)
+        assertFalse(NetworkSettings.areUserCAsTrusted)
     }
 
     @Test
     fun areUserCAsTrusted_withChangingValue_returnCorrectValue() {
         sharedPreferences.edit().putBoolean("network__trust_user_cas", true).commit()
-        assertTrue(NetworkSettingsHelper.areUserCAsTrusted)
+        assertTrue(NetworkSettings.areUserCAsTrusted)
 
         sharedPreferences.edit().putBoolean("network__trust_user_cas", false).commit()
-        assertFalse(NetworkSettingsHelper.areUserCAsTrusted)
+        assertFalse(NetworkSettings.areUserCAsTrusted)
 
         sharedPreferences.edit().putBoolean("network__trust_user_cas", true).commit()
-        assertTrue(NetworkSettingsHelper.areUserCAsTrusted)
+        assertTrue(NetworkSettings.areUserCAsTrusted)
 
         sharedPreferences.edit().putBoolean("network__trust_user_cas", false).commit()
-        assertFalse(NetworkSettingsHelper.areUserCAsTrusted)
+        assertFalse(NetworkSettings.areUserCAsTrusted)
     }
 }

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 @Keep
-object ForegroundSettingsHelper {
+object ForegroundSettings {
     private lateinit var preferences: SharedPreferences
 
     /**

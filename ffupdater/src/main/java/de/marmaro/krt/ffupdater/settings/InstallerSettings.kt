@@ -5,7 +5,7 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 
 @Keep
-object InstallerSettingsHelper {
+object InstallerSettings {
     private lateinit var preferences: SharedPreferences
 
     /**

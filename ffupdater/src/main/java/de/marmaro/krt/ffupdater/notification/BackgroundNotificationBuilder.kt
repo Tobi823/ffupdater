@@ -20,7 +20,7 @@ import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
+import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 
 
 @Keep
@@ -72,7 +72,7 @@ object BackgroundNotificationBuilder {
     }
 
     fun showUpdateAvailableNotification(context: Context, app: App) {
-        val useDifferentChannels = BackgroundSettingsHelper.useDifferentNotificationChannels
+        val useDifferentChannels = BackgroundSettings.useDifferentNotificationChannels
         val appTitle: String = context.getString(app.findImpl().title)
         val channel = ChannelData(
             id = if (useDifferentChannels) {
@@ -159,7 +159,7 @@ object BackgroundNotificationBuilder {
         exception: Exception,
     ) {
         val appContext = context.applicationContext
-        val useDifferentChannels = BackgroundSettingsHelper.useDifferentNotificationChannels
+        val useDifferentChannels = BackgroundSettings.useDifferentNotificationChannels
         val appTitle: String = appContext.getString(app.findImpl().title)
         val channel = ChannelData(
             id = if (useDifferentChannels) {

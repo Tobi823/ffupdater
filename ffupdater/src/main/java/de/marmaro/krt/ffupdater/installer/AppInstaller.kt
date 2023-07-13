@@ -11,7 +11,7 @@ import de.marmaro.krt.ffupdater.installer.impl.IntentInstaller
 import de.marmaro.krt.ffupdater.installer.impl.RootInstaller
 import de.marmaro.krt.ffupdater.installer.impl.SessionInstaller
 import de.marmaro.krt.ffupdater.installer.impl.ShizukuInstaller
-import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
+import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import java.io.File
 
 @Keep
@@ -25,7 +25,7 @@ interface AppInstaller : DefaultLifecycleObserver {
             app: App,
         ): AppInstaller {
             val registry = activity.activityResultRegistry
-            return when (InstallerSettingsHelper.getInstallerMethod()) {
+            return when (InstallerSettings.getInstallerMethod()) {
                 Installer.SESSION_INSTALLER -> SessionInstaller(app, true)
                 Installer.NATIVE_INSTALLER -> IntentInstaller(activity.applicationContext, registry, app)
                 Installer.ROOT_INSTALLER -> RootInstaller(app)
@@ -37,7 +37,7 @@ interface AppInstaller : DefaultLifecycleObserver {
             context: Context,
             app: App,
         ): AppInstaller {
-            return when (InstallerSettingsHelper.getInstallerMethod()) {
+            return when (InstallerSettings.getInstallerMethod()) {
                 Installer.SESSION_INSTALLER -> SessionInstaller(app, false)
                 Installer.NATIVE_INSTALLER -> throw Exception("Installer can not update apps in background")
                 Installer.ROOT_INSTALLER -> RootInstaller(app)

@@ -8,7 +8,7 @@ import java.net.Proxy.Type
 
 
 @Keep
-object NetworkSettingsHelper {
+object NetworkSettings {
     private lateinit var preferences: SharedPreferences
 
     /**

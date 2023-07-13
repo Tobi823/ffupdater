@@ -6,7 +6,7 @@ import de.marmaro.krt.ffupdater.app.App
 import java.time.Duration
 
 @Keep
-object BackgroundSettingsHelper {
+object BackgroundSettings {
     private lateinit var preferences: SharedPreferences
 
     /**

@@ -13,14 +13,14 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class InstallerSettingsHelperTest {
+class InstallerSettingsTest {
 
     private lateinit var sharedPreferences: SharedPreferences
 
     @BeforeEach
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
-        InstallerSettingsHelper.init(sharedPreferences)
+        InstallerSettings.init(sharedPreferences)
     }
 
     companion object {
@@ -44,6 +44,6 @@ class InstallerSettingsHelperTest {
         expected: Installer
     ) {
         sharedPreferences.edit().putString("installer__method", string_value).apply()
-        assertEquals(expected, InstallerSettingsHelper.getInstallerMethod())
+        assertEquals(expected, InstallerSettings.getInstallerMethod())
     }
 }

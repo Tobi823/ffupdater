@@ -35,7 +35,7 @@ import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
 import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 
 @Keep
 class AddAppActivity : AppCompatActivity() {
@@ -48,7 +48,7 @@ class AddAppActivity : AppCompatActivity() {
             finish()
             return
         }
-        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         addAppsToUserInterface()
@@ -209,7 +209,7 @@ class AddAppActivity : AppCompatActivity() {
         }
 
         private fun installApp(app: App) {
-            if (!ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(activity)) {
+            if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(activity)) {
                 showToast(R.string.main_activity__no_unmetered_network)
                 return
             }

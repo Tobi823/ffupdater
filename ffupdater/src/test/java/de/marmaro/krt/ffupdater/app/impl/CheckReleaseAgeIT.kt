@@ -11,7 +11,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.FORCE_NETWORK
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper
+import de.marmaro.krt.ffupdater.settings.NetworkSettings
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
@@ -87,10 +87,10 @@ class CheckReleaseAgeIT {
         } throws PackageManager.NameNotFoundException()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences
 
-        mockkObject(NetworkSettingsHelper)
-        every { NetworkSettingsHelper.areUserCAsTrusted } returns false
-        every { NetworkSettingsHelper.dnsProvider } returns NetworkSettingsHelper.DnsProvider.SYSTEM
-        every { NetworkSettingsHelper.proxy() } returns null
+        mockkObject(NetworkSettings)
+        every { NetworkSettings.areUserCAsTrusted } returns false
+        every { NetworkSettings.dnsProvider } returns NetworkSettings.DnsProvider.SYSTEM
+        every { NetworkSettings.proxy() } returns null
 
         mockkObject(DeviceSettingsHelper)
         every { DeviceSettingsHelper.prefer32BitApks } returns false

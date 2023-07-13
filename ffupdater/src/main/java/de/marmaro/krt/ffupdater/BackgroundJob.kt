@@ -38,9 +38,9 @@ import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationRemover
-import de.marmaro.krt.ffupdater.settings.BackgroundSettingsHelper
+import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
-import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
+import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.CompletableDeferred
 import java.time.Duration
@@ -179,7 +179,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun shouldUpdateCheckBeAborted(): Result? {
-        if (!BackgroundSettingsHelper.isUpdateCheckEnabled) {
+        if (!BackgroundSettings.isUpdateCheckEnabled) {
             Log.i(LOG_TAG, "Background should be disabled - disable it now.")
             return Result.failure()
         }
@@ -189,7 +189,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.retry()
         }
 
-        if (!BackgroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             Log.i(LOG_TAG, "No unmetered network available for update check.")
             return Result.retry()
         }
@@ -201,7 +201,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         DataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
         val appsAndUpdateStatus = App.values()
             // simple and fast checks
-            .filter { it !in BackgroundSettingsHelper.excludedAppsFromUpdateCheck }
+            .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
             .map { it.findImpl() }
             .filter { DeviceAbiExtractor.supportsOneOf(it.supportedAbis) }
             .filter { it.isInstalled(applicationContext) == InstallationStatus.INSTALLED }
@@ -222,12 +222,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun shouldDownloadsBeAborted(): Result? {
-        if (!BackgroundSettingsHelper.isDownloadEnabled) {
+        if (!BackgroundSettings.isDownloadEnabled) {
             Log.i(LOG_TAG, "Don't download updates because the user don't want it.")
             return Result.retry()
         }
 
-        if (!BackgroundSettingsHelper.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+        if (!BackgroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             Log.i(LOG_TAG, "No unmetered network available for download.")
             return Result.retry()
         }
@@ -278,17 +278,17 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return Result.success()
         }
 
-        if (!BackgroundSettingsHelper.isInstallationEnabled) {
+        if (!BackgroundSettings.isInstallationEnabled) {
             Log.i(LOG_TAG, "Automatic background app installation is not enabled.")
             return Result.success()
         }
 
-        if (!DeviceSdkTester.supportsAndroid12() && InstallerSettingsHelper.getInstallerMethod() == SESSION_INSTALLER) {
+        if (!DeviceSdkTester.supportsAndroid12() && InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
             Log.i(LOG_TAG, "The current installer can not update apps in the background")
             return Result.success()
         }
 
-        if (InstallerSettingsHelper.getInstallerMethod() == NATIVE_INSTALLER) {
+        if (InstallerSettings.getInstallerMethod() == NATIVE_INSTALLER) {
             Log.i(LOG_TAG, "The current installer can not update apps in the background")
             return Result.success()
         }
@@ -308,7 +308,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             BackgroundNotificationBuilder.showInstallSuccessNotification(applicationContext, app)
             appImpl.installCallback(applicationContext, updateStatus)
 
-            if (BackgroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
+            if (BackgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                 appImpl.getApkCacheFolder(applicationContext)
             }
             return
@@ -322,7 +322,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 applicationContext, app, e.errorCode, e.translatedMessage, wrappedException
             )
         }
-        if (BackgroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
+        if (BackgroundSettings.isDeleteUpdateIfInstallFailed) {
             appImpl.deleteFileCache(applicationContext)
         }
     }
@@ -345,7 +345,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             return value
         }
 
-        if (BackgroundSettingsHelper.isInstallationWhenScreenOff) {
+        if (BackgroundSettings.isInstallationWhenScreenOff) {
             val powerManager = applicationContext.getSystemService<PowerManager>()!!
             val value = !powerManager.isInteractive
             if (!value) {
@@ -363,19 +363,19 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         fun start(context: Context, policy: ExistingPeriodicWorkPolicy) {
             val instance = WorkManager.getInstance(context.applicationContext)
-            if (!BackgroundSettingsHelper.isUpdateCheckEnabled) {
+            if (!BackgroundSettings.isUpdateCheckEnabled) {
                 instance.cancelUniqueWork(WORK_MANAGER_KEY)
                 return
             }
 
-            val networkType = if (BackgroundSettingsHelper.isUpdateCheckOnMeteredAllowed) CONNECTED else UNMETERED
+            val networkType = if (BackgroundSettings.isUpdateCheckOnMeteredAllowed) CONNECTED else UNMETERED
             val builder = Constraints.Builder()
                 .setRequiredNetworkType(networkType)
                 .setRequiresBatteryNotLow(true)
                 .setRequiresStorageNotLow(true)
-                .setRequiresDeviceIdle(BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle)
+                .setRequiresDeviceIdle(BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle)
 
-            val minutes = BackgroundSettingsHelper.updateCheckInterval.toMinutes()
+            val minutes = BackgroundSettings.updateCheckInterval.toMinutes()
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)
                 .setConstraints(builder.build())
                 .build()

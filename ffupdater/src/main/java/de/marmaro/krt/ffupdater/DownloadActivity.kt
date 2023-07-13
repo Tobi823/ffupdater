@@ -55,8 +55,8 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationRemover
-import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
-import de.marmaro.krt.ffupdater.settings.InstallerSettingsHelper
+import de.marmaro.krt.ffupdater.settings.ForegroundSettings
+import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -116,7 +116,7 @@ class DownloadActivity : AppCompatActivity() {
             finish()
             return
         }
-        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
@@ -158,11 +158,11 @@ class DownloadActivity : AppCompatActivity() {
             // if the device is not rotated, delete information about the download to allow a new download
             // next time
             if (viewModel.installationSuccess) {
-                if (ForegroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
+                if (ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
                     appImpl.deleteFileCache(applicationContext)
                 }
             } else {
-                if (ForegroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
+                if (ForegroundSettings.isDeleteUpdateIfInstallFailed) {
                     appImpl.deleteFileCache(applicationContext)
                 }
             }
@@ -282,7 +282,7 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private suspend fun startDownload(): Boolean {
         Log.d(LOG_TAG, "startInstallationProcess(): Start download of ${app.name}.")
-        if (!ForegroundSettingsHelper.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+        if (!ForegroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             displayFetchFailure(getString(main_activity__no_unmetered_network))
             return false
         }
@@ -379,7 +379,7 @@ class DownloadActivity : AppCompatActivity() {
         show(R.id.installerSuccess)
         show(R.id.fingerprintInstalledGood)
         setText(R.id.fingerprintInstalledGoodHash, certificateHash)
-        if (!ForegroundSettingsHelper.isDeleteUpdateIfInstallSuccessful) {
+        if (!ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }
@@ -393,7 +393,7 @@ class DownloadActivity : AppCompatActivity() {
             R.id.install_activity__exception__text,
             getString(application_installation_was_not_successful)
         )
-        if (InstallerSettingsHelper.getInstallerMethod() == SESSION_INSTALLER) {
+        if (InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
             show(R.id.install_activity__different_installer_info)
         }
 
@@ -407,7 +407,7 @@ class DownloadActivity : AppCompatActivity() {
 
         val cacheFolder = appImpl.getApkCacheFolder(applicationContext).absolutePath
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
-        if (!ForegroundSettingsHelper.isDeleteUpdateIfInstallFailed) {
+        if (!ForegroundSettings.isDeleteUpdateIfInstallFailed) {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }

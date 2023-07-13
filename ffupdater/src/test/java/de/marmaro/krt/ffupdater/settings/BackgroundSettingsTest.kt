@@ -16,14 +16,14 @@ import java.util.stream.Stream
 
 @Suppress("UNUSED_PARAMETER")
 @ExtendWith(MockKExtension::class)
-class BackgroundSettingsHelperTest {
+class BackgroundSettingsTest {
 
     private lateinit var sharedPreferences: SharedPreferences
 
     @BeforeEach
     fun setUp() {
         sharedPreferences = SPMockBuilder().createSharedPreferences()
-        BackgroundSettingsHelper.init(sharedPreferences)
+        BackgroundSettings.init(sharedPreferences)
     }
 
     companion object {
@@ -33,42 +33,42 @@ class BackgroundSettingsHelperTest {
                 "isUpdateCheckEnabled",
                 "background__update_check__enabled",
                 true,
-                { BackgroundSettingsHelper.isUpdateCheckEnabled }),
+                { BackgroundSettings.isUpdateCheckEnabled }),
             Arguments.of(
                 "isUpdateCheckOnMeteredAllowed",
                 "background__update_check__metered",
                 true,
-                { BackgroundSettingsHelper.isUpdateCheckOnMeteredAllowed }),
+                { BackgroundSettings.isUpdateCheckOnMeteredAllowed }),
             Arguments.of(
                 "isUpdateCheckOnlyAllowedWhenDeviceIsIdle",
                 "background__update_check__when_device_idle",
                 false,
-                { BackgroundSettingsHelper.isUpdateCheckOnlyAllowedWhenDeviceIsIdle }),
+                { BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle }),
             Arguments.of(
                 "isDownloadEnabled",
                 "background__download__enabled",
                 true,
-                { BackgroundSettingsHelper.isDownloadEnabled }),
+                { BackgroundSettings.isDownloadEnabled }),
             Arguments.of(
                 "isDownloadOnMeteredAllowed",
                 "background__download__metered",
                 false,
-                { BackgroundSettingsHelper.isDownloadOnMeteredAllowed }),
+                { BackgroundSettings.isDownloadOnMeteredAllowed }),
             Arguments.of(
                 "isInstallationEnabled",
                 "background__installation__enabled",
                 false,
-                { BackgroundSettingsHelper.isInstallationEnabled }),
+                { BackgroundSettings.isInstallationEnabled }),
             Arguments.of(
                 "isDeleteUpdateIfInstallSuccessful",
                 "background__delete_cache_if_install_successful",
                 true,
-                { BackgroundSettingsHelper.isDeleteUpdateIfInstallSuccessful }),
+                { BackgroundSettings.isDeleteUpdateIfInstallSuccessful }),
             Arguments.of(
                 "isDeleteUpdateIfInstallFailed",
                 "background__delete_cache_if_install_failed",
                 false,
-                { BackgroundSettingsHelper.isDeleteUpdateIfInstallFailed }),
+                { BackgroundSettings.isDeleteUpdateIfInstallFailed }),
         )
 
         @JvmStatic
@@ -145,7 +145,7 @@ class BackgroundSettingsHelperTest {
     fun `backgroundUpdateCheckInterval with no settings`() {
         Assertions.assertEquals(
             Duration.ofHours(6),
-            BackgroundSettingsHelper.updateCheckInterval
+            BackgroundSettings.updateCheckInterval
         )
     }
 
@@ -154,7 +154,7 @@ class BackgroundSettingsHelperTest {
         sharedPreferences.edit().putString("background__update_check__interval", null).commit()
         Assertions.assertEquals(
             Duration.ofHours(6),
-            BackgroundSettingsHelper.updateCheckInterval
+            BackgroundSettings.updateCheckInterval
         )
     }
 
@@ -163,7 +163,7 @@ class BackgroundSettingsHelperTest {
         sharedPreferences.edit().putString("background__update_check__interval", "").commit()
         Assertions.assertEquals(
             Duration.ofHours(6),
-            BackgroundSettingsHelper.updateCheckInterval
+            BackgroundSettings.updateCheckInterval
         )
     }
 
@@ -172,7 +172,7 @@ class BackgroundSettingsHelperTest {
         sharedPreferences.edit().putString("background__update_check__interval", "lorem ipsum").commit()
         Assertions.assertEquals(
             Duration.ofHours(6),
-            BackgroundSettingsHelper.updateCheckInterval
+            BackgroundSettings.updateCheckInterval
         )
     }
 
@@ -181,7 +181,7 @@ class BackgroundSettingsHelperTest {
         sharedPreferences.edit().putString("background__update_check__interval", "42").commit()
         Assertions.assertEquals(
             Duration.ofMinutes(42),
-            BackgroundSettingsHelper.updateCheckInterval
+            BackgroundSettings.updateCheckInterval
         )
     }
 
@@ -190,7 +190,7 @@ class BackgroundSettingsHelperTest {
         sharedPreferences.edit().putString("background__update_check__interval", "-1").commit()
         Assertions.assertEquals(
             Duration.ofMinutes(15),
-            BackgroundSettingsHelper.updateCheckInterval
+            BackgroundSettings.updateCheckInterval
         )
     }
 
@@ -199,26 +199,26 @@ class BackgroundSettingsHelperTest {
         sharedPreferences.edit().putString("background__update_check__interval", "100000").commit()
         Assertions.assertEquals(
             Duration.ofDays(28),
-            BackgroundSettingsHelper.updateCheckInterval
+            BackgroundSettings.updateCheckInterval
         )
     }
 
 
     @Test
     fun `excludedAppsFromBackgroundUpdateCheck with default value`() {
-        Assertions.assertTrue(BackgroundSettingsHelper.excludedAppsFromUpdateCheck.isEmpty())
+        Assertions.assertTrue(BackgroundSettings.excludedAppsFromUpdateCheck.isEmpty())
     }
 
     @Test
     fun `excludedAppsFromBackgroundUpdateCheck with null`() {
         sharedPreferences.edit().putStringSet("background__update_check__excluded_apps", null).commit()
-        Assertions.assertTrue(BackgroundSettingsHelper.excludedAppsFromUpdateCheck.isEmpty())
+        Assertions.assertTrue(BackgroundSettings.excludedAppsFromUpdateCheck.isEmpty())
     }
 
     @Test
     fun `excludedAppsFromBackgroundUpdateCheck with empty set`() {
         sharedPreferences.edit().putStringSet("background__update_check__excluded_apps", setOf()).commit()
-        Assertions.assertTrue(BackgroundSettingsHelper.excludedAppsFromUpdateCheck.isEmpty())
+        Assertions.assertTrue(BackgroundSettings.excludedAppsFromUpdateCheck.isEmpty())
     }
 
     @ParameterizedTest(name = "excludedAppsFromBackgroundUpdateCheck with app \"{0}\"")
@@ -227,7 +227,7 @@ class BackgroundSettingsHelperTest {
         sharedPreferences.edit()
             .putStringSet("background__update_check__excluded_apps", setOf(name))
             .commit()
-        val disabledApps = BackgroundSettingsHelper.excludedAppsFromUpdateCheck
+        val disabledApps = BackgroundSettings.excludedAppsFromUpdateCheck
         Assertions.assertTrue(app in disabledApps)
     }
 
@@ -235,7 +235,7 @@ class BackgroundSettingsHelperTest {
     fun `excludedAppsFromBackgroundUpdateCheck with invalid value`() {
         sharedPreferences.edit().putStringSet("background__update_check__excluded_apps", setOf("invalid"))
             .commit()
-        val disabledApps = BackgroundSettingsHelper.excludedAppsFromUpdateCheck
+        val disabledApps = BackgroundSettings.excludedAppsFromUpdateCheck
         Assertions.assertTrue(disabledApps.isEmpty())
     }
 
@@ -276,7 +276,7 @@ class BackgroundSettingsHelperTest {
         ).commit()
         Assertions.assertEquals(
             App.values().toList().sorted(),
-            BackgroundSettingsHelper.excludedAppsFromUpdateCheck.sorted()
+            BackgroundSettings.excludedAppsFromUpdateCheck.sorted()
         )
     }
 }

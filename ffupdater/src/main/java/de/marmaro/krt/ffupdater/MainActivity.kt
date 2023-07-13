@@ -48,7 +48,7 @@ import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
-import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
+import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(findViewById(R.id.toolbar))
-        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         requestForNotificationPermissionIfNecessary()
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
             val items = App.values()
                 .groupBy { it.findImpl().isInstalled(applicationContext) }
             val installedCorrectFingerprint = items[INSTALLED] ?: listOf()
-            val installedWrongFingerprint = if (ForegroundSettingsHelper.isHideAppsSignedByDifferentCertificate) {
+            val installedWrongFingerprint = if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) {
                 listOf()
             } else {
                 items[INSTALLED_WITH_DIFFERENT_FINGERPRINT] ?: listOf()
@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
             .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
             .filter { it.findImpl().isInstalled(this@MainActivity) == INSTALLED }
 
-        if (!ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+        if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
             apps.forEach {
                 recycleViewAdapter.notifyErrorForApp(it, R.string.main_activity__no_unmetered_network, null)
@@ -192,7 +192,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun installOrDownloadApp(app: App) {
-        if (!ForegroundSettingsHelper.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+        if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             showToast(R.string.main_activity__no_unmetered_network)
             return
         }
@@ -349,7 +349,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            val hideWarningButtons = ForegroundSettingsHelper.isHideWarningButtonForInstalledApps
+            val hideWarningButtons = ForegroundSettings.isHideWarningButtonForInstalledApps
             when {
                 hideWarningButtons -> view.warningIcon.visibility = View.GONE
                 appImpl.installationWarning == null -> view.warningIcon.visibility = View.GONE

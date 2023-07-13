@@ -19,8 +19,8 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.settings.ForegroundSettingsHelper
-import de.marmaro.krt.ffupdater.settings.NetworkSettingsHelper.DnsProvider.CUSTOM_SERVER
+import de.marmaro.krt.ffupdater.settings.ForegroundSettings
+import de.marmaro.krt.ffupdater.settings.NetworkSettings.DnsProvider.CUSTOM_SERVER
 import rikka.shizuku.Shizuku
 
 
@@ -36,7 +36,7 @@ class SettingsActivity : AppCompatActivity() {
             return
         }
         setContentView(R.layout.activity_settings)
-        AppCompatDelegate.setDefaultNightMode(ForegroundSettingsHelper.themePreference)
+        AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385
             supportFragmentManager.beginTransaction()
                 .replace(R.id.settings, SettingsFragment())
@@ -58,7 +58,6 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
-
             hideOptionsForLowerApis()
             loadExcludedAppNames()
             listenForBackgroundJobRestarts()
