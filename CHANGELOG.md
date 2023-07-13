@@ -1,3 +1,12 @@
+# 2023-07-14 Release 78.0.5 (147)
+
+* Thanks for the Weblate contributions from: markov, Oğuz Ersen and Kazushi Hayama
+* Fix background update check bug (left over from tests)
+* On problematic devices (https://dontkillmyapp.com): ask the user to be ignored from battery optimisation (
+  Tobi823/ffupdater#409)
+* Don't warn about missing notification permission if notifications are off (Tobi823/ffupdater#423)
+* Refactor and clean up code
+
 # 2023-07-13 Release 78.0.4 (146)
 
 * Thanks for the Weblate contributions from: Priit Jõerüüt, Oğuz Ersen and Kazushi Hayama
