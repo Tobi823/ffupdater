@@ -4,6 +4,11 @@ import android.content.Context
 import android.os.Environment
 import android.os.StatFs
 import androidx.annotation.Keep
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.io.File
+import java.util.zip.ZipException
+import java.util.zip.ZipFile
 
 @Keep
 object StorageUtil {
@@ -18,5 +23,17 @@ object StorageUtil {
         val folder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
         checkNotNull(folder) { "The external 'Download' folder of the app should exists." }
         return StatFs(folder.absolutePath).availableBytes / BYTES_IN_MEBIBYTE
+    }
+
+    suspend fun isValidZipFile(file: File): Boolean {
+        return try {
+            withContext(Dispatchers.IO) {
+                // ZipFile must be closed
+                ZipFile(file).close()
+            }
+            true
+        } catch (e: ZipException) {
+            false
+        }
     }
 }

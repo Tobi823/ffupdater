@@ -8,12 +8,12 @@ import de.marmaro.krt.ffupdater.installer.exceptions.InvalidApkException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
+import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.withContext
 import java.io.File
-import java.util.zip.ZipException
 import java.util.zip.ZipFile
 
 @Keep
@@ -132,15 +132,10 @@ interface ApkDownloader : AppAttributes {
         downloadFile.renameTo(apkFile)
     }
 
-    private suspend fun checkApkFile(apkFile: File) {
-        require(apkFile.exists())
-        try {
-            withContext(Dispatchers.IO) {
-                ZipFile(apkFile).close()
-            }
-        } catch (e: ZipException) {
-            throw InvalidApkException("APK file is not valid", e)
-        }
+    private suspend fun checkApkFile(file: File) {
+        if (file.extension != "apk") throw InvalidApkException("Wrong file downloaded: $file")
+        if (!file.exists()) throw InvalidApkException("Missing file: $file")
+        require(StorageUtil.isValidZipFile(file)) { "Downloaded or extracted APK file is not a valid ZIP file." }
     }
 
 }
