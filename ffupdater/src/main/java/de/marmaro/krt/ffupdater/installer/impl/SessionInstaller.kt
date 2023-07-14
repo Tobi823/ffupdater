@@ -201,14 +201,15 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         requireNotNull(originalIntent)
 
         // create new Intent to hide the "UnsafeIntentLaunchViolation"
-        require(originalIntent.action == ACTION_CONFIRM_INSTALL)
-        require(originalIntent.hasExtra(EXTRA_SESSION_ID))
-
-        val newIntent = Intent(ACTION_CONFIRM_INSTALL)
-        val sessionId = originalIntent.extras?.getInt(EXTRA_SESSION_ID)
-            ?: originalIntent.extras?.getLong(EXTRA_SESSION_ID)
-        newIntent.putExtra(EXTRA_SESSION_ID, sessionId)
-        return newIntent
+        return if (originalIntent.action == ACTION_CONFIRM_INSTALL && originalIntent.hasExtra(EXTRA_SESSION_ID)) {
+            val newIntent = Intent(ACTION_CONFIRM_INSTALL)
+            val sessionId = originalIntent.extras?.getInt(EXTRA_SESSION_ID)
+                ?: originalIntent.extras?.getLong(EXTRA_SESSION_ID)
+            newIntent.putExtra(EXTRA_SESSION_ID, sessionId)
+            newIntent
+        } else {
+            originalIntent
+        }
     }
 
     private fun fail(message: String, errorCode: Int, displayErrorMessage: String) {
