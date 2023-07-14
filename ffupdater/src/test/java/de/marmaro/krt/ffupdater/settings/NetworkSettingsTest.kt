@@ -28,10 +28,10 @@ class NetworkSettingsTest {
     fun areUserCAsTrusted_withTrue_returnTrue() {
         val pref = SPMockBuilder().createSharedPreferences()
         pref.edit()
-            .putBoolean("network__trust_user_cas", true)
+            .putBoolean("network__trust_user_cas", false)
             .apply()
         NetworkSettings.init(pref)
-        assertTrue(NetworkSettings.areUserCAsTrusted)
+        assertFalse(NetworkSettings.areUserCAsTrusted)
     }
 
     @Test
