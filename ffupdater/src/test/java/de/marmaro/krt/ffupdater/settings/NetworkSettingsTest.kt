@@ -28,6 +28,7 @@ class NetworkSettingsTest {
     fun areUserCAsTrusted_withTrue_returnTrue() {
         sharedPreferences.edit().putBoolean("network__trust_user_cas", true).commit()
         NetworkSettings.init(sharedPreferences)
+        println(sharedPreferences)
         assertTrue(sharedPreferences.getBoolean("network__trust_user_cas", false))
         assertTrue(NetworkSettings.areUserCAsTrusted)
     }
