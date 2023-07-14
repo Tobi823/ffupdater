@@ -21,7 +21,7 @@ object NetworkSettings {
     val areUserCAsTrusted: Boolean
         get() {
             println(preferences)
-            return preferences.getBoolean("network__trust_user_cas", false)
+            return preferences.getBoolean("network__trust_user_cas", true)
         }
 
     // must match @array/network__dns_provider__values
