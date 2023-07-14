@@ -18,8 +18,10 @@ object NetworkSettings {
         preferences = sharedPreferences
     }
 
-    val areUserCAsTrusted: () -> Boolean
-        get() = { preferences.getBoolean("network__trust_user_cas", false) }
+    val areUserCAsTrusted: Boolean
+        get() {
+            return preferences.getBoolean("network__trust_user_cas", false)
+        }
 
     // must match @array/network__dns_provider__values
     enum class DnsProvider {
