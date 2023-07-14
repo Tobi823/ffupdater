@@ -19,10 +19,7 @@ object NetworkSettings {
     }
 
     val areUserCAsTrusted: Boolean
-        get() {
-            println(preferences)
-            return preferences.getBoolean("network__trust_user_cas", true)
-        }
+        get() = preferences.getBoolean("network__trust_user_cas", false)
 
     // must match @array/network__dns_provider__values
     enum class DnsProvider {
