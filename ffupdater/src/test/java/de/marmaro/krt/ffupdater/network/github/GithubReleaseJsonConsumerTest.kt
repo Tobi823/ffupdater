@@ -1,11 +1,15 @@
 package de.marmaro.krt.ffupdater.network.github
 
 import com.google.gson.stream.JsonReader
+import de.marmaro.krt.ffupdater.BaseTest
+import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
-class GithubReleaseJsonConsumerTest {
+@ExtendWith(MockKExtension::class)
+class GithubReleaseJsonConsumerTest : BaseTest() {
 
     @Test
     fun `get the first asset of the first release of the latest 30 Brave releases`() {

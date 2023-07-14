@@ -1,10 +1,12 @@
 package de.marmaro.krt.ffupdater.app
 
+import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
-
+@ExtendWith(MockKExtension::class)
 class VersionCompareHelperTest {
 
     @Test

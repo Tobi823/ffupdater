@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettings
 import io.mockk.every
+import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.mockkObject
 import io.mockk.unmockkAll
@@ -25,6 +26,7 @@ import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import java.io.File
@@ -32,6 +34,7 @@ import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
+@ExtendWith(MockKExtension::class)
 class CheckReleaseAgeIT {
 
     companion object {

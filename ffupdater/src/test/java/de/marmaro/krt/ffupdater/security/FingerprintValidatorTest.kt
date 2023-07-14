@@ -4,6 +4,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.content.pm.Signature
+import de.marmaro.krt.ffupdater.BaseTest
 import de.marmaro.krt.ffupdater.app.App
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -20,7 +21,7 @@ import kotlin.io.path.createTempFile
 import kotlin.random.Random
 
 @ExtendWith(MockKExtension::class)
-class FingerprintValidatorTest {
+class FingerprintValidatorTest : BaseTest() {
 
     @MockK
     lateinit var packageManager: PackageManager

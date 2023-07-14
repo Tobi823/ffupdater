@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.settings
 
 import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
+import de.marmaro.krt.ffupdater.BaseTest
 import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
 @ExtendWith(MockKExtension::class)
-class NetworkSettingsTest {
+class NetworkSettingsTest : BaseTest() {
     private lateinit var sharedPreferences: SharedPreferences
 
     @BeforeEach

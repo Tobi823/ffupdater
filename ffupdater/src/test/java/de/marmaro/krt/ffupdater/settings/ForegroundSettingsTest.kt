@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
+import de.marmaro.krt.ffupdater.BaseTest
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import io.mockk.every
 import io.mockk.junit5.MockKExtension
@@ -19,7 +20,7 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class ForegroundSettingsTest {
+class ForegroundSettingsTest : BaseTest() {
 
     private lateinit var sharedPreferences: SharedPreferences
 

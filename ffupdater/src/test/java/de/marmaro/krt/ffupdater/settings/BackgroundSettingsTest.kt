@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.settings
 
 import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
+import de.marmaro.krt.ffupdater.BaseTest
 import de.marmaro.krt.ffupdater.app.App
 import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Assertions
@@ -14,9 +15,9 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.time.Duration
 import java.util.stream.Stream
 
-@Suppress("UNUSED_PARAMETER")
+
 @ExtendWith(MockKExtension::class)
-class BackgroundSettingsTest {
+class BackgroundSettingsTest : BaseTest() {
 
     private lateinit var sharedPreferences: SharedPreferences
 

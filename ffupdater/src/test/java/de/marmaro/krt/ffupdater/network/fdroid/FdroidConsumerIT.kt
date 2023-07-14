@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.network.fdroid
 import android.content.Context
 import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
+import de.marmaro.krt.ffupdater.BaseTest
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
@@ -11,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import java.io.File
 
 @ExtendWith(MockKExtension::class)
-class FdroidConsumerIT {
+class FdroidConsumerIT : BaseTest() {
 
     @MockK
     lateinit var context: Context

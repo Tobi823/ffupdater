@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.settings
 
 import android.content.SharedPreferences
 import com.github.ivanshafran.sharedpreferencesmock.SPMockBuilder
+import de.marmaro.krt.ffupdater.BaseTest
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -13,7 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
 @ExtendWith(MockKExtension::class)
-class InstallerSettingsTest {
+class InstallerSettingsTest : BaseTest() {
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -41,7 +42,7 @@ class InstallerSettingsTest {
     @MethodSource("testDataForInstaller")
     fun `getInstaller()`(
         string_value: String?,
-        expected: Installer
+        expected: Installer,
     ) {
         sharedPreferences.edit().putString("installer__method", string_value).apply()
         assertEquals(expected, InstallerSettings.getInstallerMethod())
