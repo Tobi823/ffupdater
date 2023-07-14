@@ -1,3 +1,7 @@
+# 2023-07-14 Release 78.0.6 (148)
+
+* Fix "FFUpdater crashing after downloading any apk/when trying to install the apk" (Tobi823/ffupdater#438)
+
 # 2023-07-14 Release 78.0.5 (147)
 
 * Thanks for the Weblate contributions from: markov, Oğuz Ersen and Kazushi Hayama

@@ -1,0 +1,1 @@
+* Fix "FFUpdater crashing after downloading any apk/when trying to install the apk" (Tobi823/ffupdater#438)
