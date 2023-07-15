@@ -15,6 +15,13 @@ object Migrator {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
+        if (lastVersionCode < 148) { // 78.0.6
+            PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
+                .edit()
+                .remove("lastBackgroundCheckTimestamp")
+                .commit()
+        }
+
         if (lastVersionCode < 137) { // 77.7.11
             val editor = PreferenceManager.getDefaultSharedPreferences(context.applicationContext).edit()
 

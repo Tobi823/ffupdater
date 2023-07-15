@@ -1,12 +1,7 @@
 package de.marmaro.krt.ffupdater.settings
 
-import android.content.Context
 import android.content.SharedPreferences
-import android.text.format.DateUtils
 import androidx.annotation.Keep
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME
-import java.time.format.DateTimeParseException
 
 @Keep
 object DataStoreHelper {
@@ -19,35 +14,9 @@ object DataStoreHelper {
         preferences = sharedPreferences
     }
 
-    var lastBackgroundCheck: ZonedDateTime?
-        get() {
-            return try {
-                preferences.getString(LAST_BACKGROUND_CHECK_TIMESTAMP, null)
-                    ?.let { str -> ZonedDateTime.parse(str, ISO_OFFSET_DATE_TIME) }
-            } catch (e: DateTimeParseException) {
-                null
-            }
-        }
-        set(value) {
-            preferences.edit()
-                .putString(LAST_BACKGROUND_CHECK_TIMESTAMP, value?.format(ISO_OFFSET_DATE_TIME))
-                .apply()
-        }
-
     var lastBackgroundCheck2: Long
         get() = preferences.getLong(LAST_BACKGROUND_CHECK2, 0)
         set(value) = preferences.edit().putLong(LAST_BACKGROUND_CHECK2, value).apply()
 
-    fun getLastBackgroundCheckString(context: Context): String {
-        return DateUtils.getRelativeDateTimeString(
-            context.applicationContext,
-            (lastBackgroundCheck?.toEpochSecond() ?: return "/") * 1000,
-            DateUtils.SECOND_IN_MILLIS,
-            DateUtils.WEEK_IN_MILLIS,
-            0
-        ).toString()
-    }
-
-    const val LAST_BACKGROUND_CHECK_TIMESTAMP = "lastBackgroundCheckTimestamp"
-    const val LAST_BACKGROUND_CHECK2 = "lastBackgroundCheck2"
+    private const val LAST_BACKGROUND_CHECK2 = "lastBackgroundCheck2"
 }
