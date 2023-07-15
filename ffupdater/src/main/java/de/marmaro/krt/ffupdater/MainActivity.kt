@@ -36,7 +36,6 @@ import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
-import de.marmaro.krt.ffupdater.device.BatteryOptimizationsHelper
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.dialog.*
@@ -46,6 +45,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         requestForNotificationPermissionIfNecessary()
-        BatteryOptimizationsHelper.disableBatteryOptimizationOnProblematicPhones(this)
+        askForIgnoringBatteryOptimizationIfNecessary()
 
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             lifecycleScope.launch(Dispatchers.Default) {
@@ -122,6 +122,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun askForIgnoringBatteryOptimizationIfNecessary() {
+        if (DeviceSdkTester.supportsAndroidMarshmallow() &&
+            !BackgroundJob.isBackgroundUpdateCheckReliableExecuted()
+        ) {
+            NotificationBuilder.showBackgroundUpdateCheckUnreliableExecutionNotification(this)
+        }
     }
 
     private fun initRecyclerView() {

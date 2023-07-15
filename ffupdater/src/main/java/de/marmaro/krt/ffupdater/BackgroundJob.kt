@@ -348,7 +348,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             instance.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
         }
 
-        fun wasBackgroundJobRegularlyExecutedAsExpected(): Boolean {
+        fun isBackgroundUpdateCheckReliableExecuted(): Boolean {
             if (!BackgroundSettings.isUpdateCheckEnabled) {
                 return true
             }
@@ -359,12 +359,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             }
 
             val intervalSettings = BackgroundSettings.updateCheckInterval
-            val maxIntervalRetries = Duration.ofHours(5)
-            val interval = if (intervalSettings > maxIntervalRetries) intervalSettings else maxIntervalRetries
+            val maxRetryInterval = Duration.ofHours(5)
+            val interval = if (intervalSettings > maxRetryInterval) intervalSettings else maxRetryInterval
             val intervalWithErrorMargin = interval + Duration.ofHours(24)
 
             val timeSinceExecution = Duration.ofMillis(System.currentTimeMillis() - lastExecutionTime)
-            return timeSinceExecution > intervalWithErrorMargin
+            return timeSinceExecution < intervalWithErrorMargin
         }
 
         private fun calcBackoffTime(runAttempts: Int): Duration {
