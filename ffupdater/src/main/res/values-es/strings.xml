@@ -318,4 +318,6 @@
     <string name="main_activity__denied_notification_permission">FFUpdater necesita el permiso para informarle sobre las actualizaciones.</string>
     <string name="main_activity__an_error_occurred"><u>Se ha producido un error. Vuelve a intentarlo más tarde.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">El navegador ya no se actualiza.</string>
+    <string name="background__installation__when_screen_off__summary">Intenta instalar las actualizaciones solo cuando la pantalla del dispositivo esté apagada.</string>
+    <string name="background__installation__when_screen_off__title">Instalar solo cuando la pantalla está apagada</string>
 </resources>
