@@ -8,9 +8,23 @@ inline fun Boolean?.ifTrue(block: Boolean.() -> Unit): Boolean? {
     return this
 }
 
+inline fun Boolean.ifTrue(block: Boolean.() -> Unit): Boolean {
+    if (this) {
+        block()
+    }
+    return this
+}
+
 // https://stackoverflow.com/a/47280844
 inline fun Boolean?.ifFalse(block: Boolean?.() -> Unit): Boolean? {
     if (null == this || !this) {
+        block()
+    }
+    return this
+}
+
+inline fun Boolean.ifFalse(block: Boolean?.() -> Unit): Boolean {
+    if (!this) {
         block()
     }
     return this

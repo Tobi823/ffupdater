@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
+import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.device.StorageCleaner
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.StrictModeSetup
@@ -35,8 +36,8 @@ class FFUpdater : Application() {
         NetworkSettings.init(sharedPreferences)
         PowerSettings.init(sharedPreferences)
 
+        PowerUtil.init(applicationContext)
         FileDownloader.init(applicationContext)
-
         Migrator.migrate(applicationContext)
 
 //        CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)

@@ -2,16 +2,11 @@ package de.marmaro.krt.ffupdater
 
 import android.content.Context
 import android.content.pm.PackageInstaller.InstallConstraints.GENTLE_UPDATE
-import android.os.PowerManager
 import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
-import androidx.core.content.getSystemService
-import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.NetworkType.CONNECTED
-import androidx.work.NetworkType.UNMETERED
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
@@ -30,6 +25,7 @@ import de.marmaro.krt.ffupdater.background.BackgroundJobResult.Companion.success
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
+import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createBackgroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.NATIVE_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
@@ -46,6 +42,7 @@ import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
+import de.marmaro.krt.ffupdater.utils.ifTrue
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import java.time.Duration
@@ -86,6 +83,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     override suspend fun doWork(): Result {
         try {
             Log.i(LOG_TAG, "BackgroundJob: Execute background job.")
+            areRunRequirementsMet()
+                .onFailure { return it }
             val result = internalDoWork()
             Log.i(LOG_TAG, "BackgroundJob: Finish.")
             return result
@@ -105,6 +104,22 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             }
             return Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
+    }
+
+    private fun areRunRequirementsMet(): BackgroundJobResult {
+        if (PowerUtil.isBatteryLow()) {
+            return retryRegularTimeSlot("BackgroundJob: Skip because battery is low.")
+        }
+        if (NetworkUtil.isDataSaverEnabled(applicationContext)) {
+            return retrySoon("BackgroundJob: Skip due to data saver.")
+        }
+        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(applicationContext)) {
+            return retrySoon("BackgroundJob: Skip because network is metered.")
+        }
+        if (BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle && PowerUtil.isDeviceInteractive()) {
+            return retrySoon("BackgroundJob: Skip because device is not idle.")
+        }
+        return success()
     }
 
     @MainThread
@@ -274,12 +289,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
 
         if (BackgroundSettings.isInstallationWhenScreenOff) {
-            val powerManager = applicationContext.getSystemService<PowerManager>()!!
-            val value = !powerManager.isInteractive
-            if (!value) {
-                Log.i(LOG_TAG, "internalDoWork(): Skip $app because the device is still interactive.")
-            }
-            return value
+            return PowerUtil.isDeviceInteractive()
+                .ifTrue { Log.i(LOG_TAG, "internalDoWork(): Skip $app because the device is still interactive.") }
         }
         return true
     }
@@ -327,18 +338,8 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 return
             }
 
-            val networkType = if (BackgroundSettings.isUpdateCheckOnMeteredAllowed) CONNECTED else UNMETERED
-            val builder = Constraints.Builder()
-                .setRequiredNetworkType(networkType)
-                .setRequiresBatteryNotLow(true)
-                .setRequiresStorageNotLow(true)
-                .setRequiresDeviceIdle(BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle)
-
             val minutes = BackgroundSettings.updateCheckInterval.toMinutes()
-            val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES)
-                .setConstraints(builder.build())
-                .build()
-
+            val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES).build()
             instance.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
         }
 
