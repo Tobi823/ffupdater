@@ -36,8 +36,8 @@ import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
 import de.marmaro.krt.ffupdater.notification.BackgroundNotificationRemover
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
@@ -83,6 +83,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     override suspend fun doWork(): Result {
         try {
             Log.i(LOG_TAG, "BackgroundJob: Execute background job.")
+            storeBackgroundJobExecutionTime()
             areRunRequirementsMet()
                 .onFailure { return it }
             val result = internalDoWork()
@@ -98,12 +99,16 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             Log.e(LOG_TAG, "BackgroundJob: Job failed.", backgroundException)
             when (e) {
                 is NetworkException, is CancellationException ->
-                    BackgroundNotificationBuilder.showNetworkErrorNotification(applicationContext, backgroundException)
+                    NotificationBuilder.showNetworkErrorNotification(applicationContext, backgroundException)
 
-                else -> BackgroundNotificationBuilder.showErrorNotification(applicationContext, backgroundException)
+                else -> NotificationBuilder.showErrorNotification(applicationContext, backgroundException)
             }
             return Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
+    }
+
+    private fun storeBackgroundJobExecutionTime() {
+        DataStoreHelper.lastBackgroundCheck2 = System.currentTimeMillis()
     }
 
     private fun areRunRequirementsMet(): BackgroundJobResult {
@@ -113,7 +118,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         if (NetworkUtil.isDataSaverEnabled(applicationContext)) {
             return retrySoon("BackgroundJob: Skip due to data saver.")
         }
-        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(applicationContext)) {
+        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             return retrySoon("BackgroundJob: Skip because network is metered.")
         }
         if (BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle && PowerUtil.isDeviceInteractive()) {
@@ -134,7 +139,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         checkDownloadsAllowed().onFailure {
             val apps = outdatedApps.map { app -> app.app }
-            BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, apps)
+            NotificationBuilder.showUpdateAvailableNotification(applicationContext, apps)
             return@internalDoWork it
         }
         filterAppsForDownload(outdatedApps)
@@ -142,7 +147,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
 
         shouldInstallationBeAborted().onFailure {
             val apps = outdatedApps.map { app -> app.app }
-            BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, apps)
+            NotificationBuilder.showUpdateAvailableNotification(applicationContext, apps)
             return@internalDoWork it
         }
         filterAppsForInstallation(outdatedApps)
@@ -208,7 +213,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
                 val enoughStorage = StorageUtil.isEnoughStorageAvailable(applicationContext)
                 if (!enoughStorage) {
                     Log.i(LOG_TAG, "BackgroundJob: Skip ${it.app} because not enough storage is available.")
-                    BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, it.app)
+                    NotificationBuilder.showUpdateAvailableNotification(applicationContext, it.app)
                 }
                 enoughStorage
             }
@@ -221,20 +226,20 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         Log.i(LOG_TAG, "BackgroundJob: Download update for $app.")
         try {
             appImpl.download(applicationContext, latestVersion) { _, progressChannel ->
-                BackgroundNotificationBuilder.showDownloadRunningNotification(applicationContext, app, null, null)
+                NotificationBuilder.showDownloadRunningNotification(applicationContext, app, null, null)
                 var lastTime = System.currentTimeMillis()
                 for (progress in progressChannel) {
                     val time = System.currentTimeMillis()
                     if ((time - lastTime) > 1000) {
                         lastTime = time
-                        BackgroundNotificationBuilder.showDownloadRunningNotification(
+                        NotificationBuilder.showDownloadRunningNotification(
                             applicationContext, app, progress.progressInPercent, progress.totalMB
                         )
                     }
                 }
             }
         } catch (e: DisplayableException) {
-            BackgroundNotificationBuilder.showDownloadNotification(applicationContext, app, e)
+            NotificationBuilder.showDownloadNotification(applicationContext, app, e)
         } finally {
             BackgroundNotificationRemover.removeDownloadRunningNotification(applicationContext, app)
         }
@@ -305,7 +310,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             Log.i(LOG_TAG, "BackgroundJob: Update $app.")
             installer.startInstallation(applicationContext, file)
 
-            BackgroundNotificationBuilder.showInstallSuccessNotification(applicationContext, app)
+            NotificationBuilder.showInstallSuccessNotification(applicationContext, app)
             appImpl.appWasInstalledCallback(applicationContext, installedAppStatus)
 
             if (BackgroundSettings.isDeleteUpdateIfInstallSuccessful) {
@@ -313,12 +318,12 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             }
             return
         } catch (e: UserInteractionIsRequiredException) {
-            BackgroundNotificationBuilder.showUpdateAvailableNotification(applicationContext, app)
+            NotificationBuilder.showUpdateAvailableNotification(applicationContext, app)
         } catch (e: InstallationFailedException) {
             val wrappedException = InstallationFailedException(
                 "Failed to install ${app.name} in the background with ${installer.type}.", -532, e
             )
-            BackgroundNotificationBuilder.showInstallFailureNotification(
+            NotificationBuilder.showInstallFailureNotification(
                 applicationContext, app, e.errorCode, e.translatedMessage, wrappedException
             )
         }
@@ -341,6 +346,25 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             val minutes = BackgroundSettings.updateCheckInterval.toMinutes()
             val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES).build()
             instance.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
+        }
+
+        fun wasBackgroundJobRegularlyExecutedAsExpected(): Boolean {
+            if (!BackgroundSettings.isUpdateCheckEnabled) {
+                return true
+            }
+            val lastExecutionTime = DataStoreHelper.lastBackgroundCheck2
+            // background job was not yet executed -> skip check
+            if (lastExecutionTime == 0L) {
+                return true
+            }
+
+            val intervalSettings = BackgroundSettings.updateCheckInterval
+            val maxIntervalRetries = Duration.ofHours(5)
+            val interval = if (intervalSettings > maxIntervalRetries) intervalSettings else maxIntervalRetries
+            val intervalWithErrorMargin = interval + Duration.ofHours(24)
+
+            val timeSinceExecution = Duration.ofMillis(System.currentTimeMillis() - lastExecutionTime)
+            return timeSinceExecution > intervalWithErrorMargin
         }
 
         private fun calcBackoffTime(runAttempts: Int): Duration {

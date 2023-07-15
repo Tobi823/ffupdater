@@ -12,7 +12,11 @@ import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Build
+import android.provider.Settings
 import androidx.annotation.Keep
+import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.*
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
@@ -24,7 +28,7 @@ import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 
 
 @Keep
-object BackgroundNotificationBuilder {
+object NotificationBuilder {
     @Keep
     private data class ChannelData(val id: String, val name: String, val description: String)
 
@@ -201,9 +205,29 @@ object BackgroundNotificationBuilder {
         showNotification(context, channel, notification, MainActivity.createIntent(context))
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun showBackgroundUpdateCheckUnreliableExecutionNotification(context: Context) {
+        val channel = ChannelData(
+            id = "background_job_was_killed_notification",
+            name = context.getString(notification__bg_update_check__unreliable_execution__channel_name),
+            description = context.getString(notification__bg_update_check__unreliable_execution__channel_description)
+        )
+        val notification = NotificationData(
+            id = EOL_APPS_CODE,
+            title = context.getString(notification__bg_update_check__unreliable_execution__title),
+            text = context.getString(notification__bg_update_check__unreliable_execution__text),
+        )
+        val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+        intent.data = Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+        showNotification(context, channel, notification, intent)
+    }
+
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun showNotification(
-        context: Context, channelData: ChannelData, notification: NotificationData, intent: Intent?,
+        context: Context,
+        channelData: ChannelData,
+        notification: NotificationData,
+        intent: Intent?,
     ) {
         val notificationManager = getNotificationManager(context)
 
@@ -223,15 +247,10 @@ object BackgroundNotificationBuilder {
             .setContentTitle(notification.title).setContentText(notification.text).setOnlyAlertOnce(true)
             .setAutoCancel(true)
 
-        val flags = if (DeviceSdkTester.supportsAndroid12()) {
-            FLAG_UPDATE_CURRENT + FLAG_IMMUTABLE
-        } else {
-            FLAG_UPDATE_CURRENT
+        if (intent != null) {
+            val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid12()) FLAG_IMMUTABLE else 0)
+            notificationBuilder.setContentIntent(PendingIntent.getActivity(context, 0, intent, flags))
         }
-
-        intent
-            ?.let { PendingIntent.getActivity(context, 0, it, flags) }
-            ?.let { notificationBuilder.setContentIntent(it) }
 
         notificationManager.notify(notification.id, notificationBuilder.build())
     }

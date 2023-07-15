@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -31,7 +31,7 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
                 .filter { it.isEol() }
                 .any()
             if (eolInstalled) {
-                BackgroundNotificationBuilder.showEolAppsNotification(context.applicationContext)
+                NotificationBuilder.showEolAppsNotification(context.applicationContext)
             }
         }
     }

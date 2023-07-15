@@ -4,11 +4,11 @@ import android.app.NotificationManager
 import android.content.Context
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.DOWNLOAD_ERROR_CODE
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.DOWNLOAD_IS_RUNNING_CODE
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.INSTALL_FAILURE_ERROR
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.INSTALL_SUCCESS_CODE
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationBuilder.UPDATE_AVAILABLE_CODE
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.DOWNLOAD_ERROR_CODE
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.DOWNLOAD_IS_RUNNING_CODE
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.INSTALL_FAILURE_ERROR
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.INSTALL_SUCCESS_CODE
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.UPDATE_AVAILABLE_CODE
 
 @Keep
 object BackgroundNotificationRemover {

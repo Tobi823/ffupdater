@@ -279,4 +279,8 @@
     <string name="eol_reason__browser_no_longer_maintained">The browser is no longer maintained.</string>
     <string name="background__installation__when_screen_off__summary">Try to install updates only when the device screen is off.</string>
     <string name="background__installation__when_screen_off__title">Install only when screen off</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Background update check not executed</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Warning about unreliable execution of the background update check</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Background update check is not executed reliably</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Maybe it is caused by the battery or performance settings for your device. Click this notification to disable battery optimization for this app.</string>
 </resources>

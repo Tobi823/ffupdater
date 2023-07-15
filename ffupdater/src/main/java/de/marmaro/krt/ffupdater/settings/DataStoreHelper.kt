@@ -19,7 +19,6 @@ object DataStoreHelper {
         preferences = sharedPreferences
     }
 
-
     var lastBackgroundCheck: ZonedDateTime?
         get() {
             return try {
@@ -35,6 +34,10 @@ object DataStoreHelper {
                 .apply()
         }
 
+    var lastBackgroundCheck2: Long
+        get() = preferences.getLong(LAST_BACKGROUND_CHECK2, 0)
+        set(value) = preferences.edit().putLong(LAST_BACKGROUND_CHECK2, value).apply()
+
     fun getLastBackgroundCheckString(context: Context): String {
         return DateUtils.getRelativeDateTimeString(
             context.applicationContext,
@@ -46,4 +49,5 @@ object DataStoreHelper {
     }
 
     const val LAST_BACKGROUND_CHECK_TIMESTAMP = "lastBackgroundCheckTimestamp"
+    const val LAST_BACKGROUND_CHECK2 = "lastBackgroundCheck2"
 }
