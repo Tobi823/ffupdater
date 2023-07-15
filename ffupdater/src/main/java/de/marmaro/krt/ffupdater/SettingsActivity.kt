@@ -15,6 +15,7 @@ import androidx.preference.SwitchPreferenceCompat
 import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -173,7 +174,7 @@ class SettingsActivity : AppCompatActivity() {
             super.onPause()
             if (restartBackgroundJobAfterClosingActivity) {
                 restartBackgroundJobAfterClosingActivity = false
-                BackgroundJob.start(requireContext().applicationContext, UPDATE)
+                BackgroundUpdateChecker.start(requireContext().applicationContext, UPDATE)
             }
         }
     }

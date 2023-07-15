@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
+import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.device.StorageCleaner
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -49,7 +50,7 @@ class FFUpdater : Application() {
     private fun startBackgroundJob() {
         CoroutineScope(Job() + Dispatchers.IO).launch {
             delay(30 * 1000)
-            BackgroundJob.start(applicationContext.applicationContext, KEEP)
+            BackgroundUpdateChecker.start(applicationContext.applicationContext, KEEP)
         }
     }
 

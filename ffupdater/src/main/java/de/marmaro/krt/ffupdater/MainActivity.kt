@@ -32,6 +32,7 @@ import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
+import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
@@ -135,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun askForIgnoringBatteryOptimizationIfNecessary() {
         if (DeviceSdkTester.supportsAndroidMarshmallow() &&
-            !BackgroundJob.isBackgroundUpdateCheckReliableExecuted()
+            !BackgroundUpdateChecker.isBackgroundUpdateCheckReliableExecuted()
         ) {
             NotificationBuilder.showBackgroundUpdateCheckUnreliableExecutionNotification(this)
         }

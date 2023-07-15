@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater
+package de.marmaro.krt.ffupdater.background
 
 import android.content.Context
 import android.content.pm.PackageInstaller.InstallConstraints.GENTLE_UPDATE
@@ -12,16 +12,15 @@ import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import androidx.work.WorkRequest.Companion.DEFAULT_BACKOFF_DELAY_MILLIS
 import androidx.work.WorkerParameters
+import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
-import de.marmaro.krt.ffupdater.background.BackgroundException
-import de.marmaro.krt.ffupdater.background.BackgroundJobResult
-import de.marmaro.krt.ffupdater.background.BackgroundJobResult.Companion.neverRetry
-import de.marmaro.krt.ffupdater.background.BackgroundJobResult.Companion.retryRegularTimeSlot
-import de.marmaro.krt.ffupdater.background.BackgroundJobResult.Companion.retrySoon
-import de.marmaro.krt.ffupdater.background.BackgroundJobResult.Companion.success
+import de.marmaro.krt.ffupdater.background.MethodWorkManagerResult.Companion.neverRetry
+import de.marmaro.krt.ffupdater.background.MethodWorkManagerResult.Companion.retryRegularTimeSlot
+import de.marmaro.krt.ffupdater.background.MethodWorkManagerResult.Companion.retrySoon
+import de.marmaro.krt.ffupdater.background.MethodWorkManagerResult.Companion.success
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
@@ -57,7 +56,7 @@ import java.util.concurrent.TimeUnit.MINUTES
  * Depending on the device and the settings from the user not all steps will be executed.
  */
 @Keep
-class BackgroundJob(context: Context, workerParams: WorkerParameters) :
+class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context.applicationContext, workerParams) {
 
 
@@ -110,7 +109,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         DataStoreHelper.lastBackgroundCheck2 = System.currentTimeMillis()
     }
 
-    private fun areRunRequirementsMet(): BackgroundJobResult {
+    private fun areRunRequirementsMet(): MethodWorkManagerResult {
         if (PowerUtil.isBatteryLow()) {
             return retryRegularTimeSlot("BackgroundJob: Skip because battery is low.")
         }
@@ -155,7 +154,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return Result.success()
     }
 
-    private fun checkUpdateCheckAllowed(): BackgroundJobResult {
+    private fun checkUpdateCheckAllowed(): MethodWorkManagerResult {
         return when {
             !BackgroundSettings.isUpdateCheckEnabled ->
                 neverRetry("Background should be disabled - disable it now.")
@@ -190,7 +189,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         return outdatedApps
     }
 
-    private fun checkDownloadsAllowed(): BackgroundJobResult {
+    private fun checkDownloadsAllowed(): MethodWorkManagerResult {
         return when {
             !BackgroundSettings.isDownloadEnabled ->
                 retrySoon("Don't download updates because the user don't want it.")
@@ -243,7 +242,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
         }
     }
 
-    private fun shouldInstallationBeAborted(): BackgroundJobResult {
+    private fun shouldInstallationBeAborted(): MethodWorkManagerResult {
         return when {
             DeviceSdkTester.supportsAndroid10() && !applicationContext.packageManager.canRequestPackageInstalls() ->
                 retryRegularTimeSlot("BackgroundJob: Missing installation permission.")
@@ -342,7 +341,7 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
             }
 
             val minutes = BackgroundSettings.updateCheckInterval.toMinutes()
-            val workRequest = PeriodicWorkRequest.Builder(BackgroundJob::class.java, minutes, MINUTES).build()
+            val workRequest = PeriodicWorkRequest.Builder(BackgroundUpdateChecker::class.java, minutes, MINUTES).build()
             instance.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
         }
 
