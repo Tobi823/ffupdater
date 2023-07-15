@@ -46,7 +46,6 @@ import de.marmaro.krt.ffupdater.utils.ifTrue
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import java.time.Duration
-import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit.MINUTES
 
 /**
@@ -172,7 +171,6 @@ class BackgroundJob(context: Context, workerParams: WorkerParameters) :
     }
 
     private suspend fun findForOutdatedApps(): List<InstalledAppStatus> {
-        DataStoreHelper.lastBackgroundCheck = ZonedDateTime.now()
         InstalledAppsCache.updateCache(applicationContext)
         val installedAppStatusList = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
             .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
