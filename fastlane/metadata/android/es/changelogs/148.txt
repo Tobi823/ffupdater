@@ -1,0 +1,1 @@
+* Arreglado "FFUpdater falla después de descargar cualquier apk/al intentar instalar el apk" (Tobi823/ffupdater#438)

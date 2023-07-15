@@ -1,0 +1,10 @@
+* Gracias por contribuir en Weblate: Kazushi Hayama, Retrial, nautilusx, Juraj Motuz, gallegonovato, Alexthegib, markov, Priit Jõerüüt, 109247019824, Eryk Michalak, Giovanni Donisi y Oğuz Ersen
+* Reparar Firefox Nightly
+* Reducir el uso de la red al mejorar el caché
+* Configurar Proguard (software para reducir el tamaño de FFUpdater)
+* Solucionado "El archivo no se descargó"
+* Arreglar el código
+* Mejorar los informes de errores
+* Actualizar dependencias
+* refactorizar y limpiar código
+* Pruebas

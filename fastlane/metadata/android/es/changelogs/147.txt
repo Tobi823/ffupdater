@@ -1,0 +1,5 @@
+* Gracias por las contribuciones en Weblate de: markov, Oğuz Ersen y Kazushi Hayama
+* Solucionado el error de verificación de la actualización en segundo plano (residuo de las pruebas)
+* En dispositivos problemáticos (https://dontkillmyapp.com): solicitar que sea ignorada la optimización de la batería (Tobi823/ffupdater#409)
+* No advertir sobre la falta de permiso de las notificaciones si están desactivadas (Tobi823/ffupdater#423)
+* Refactorizar y limpiar código

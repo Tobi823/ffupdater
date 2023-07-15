@@ -1,0 +1,5 @@
+* Gracias por las contribuciones en Weblate de: Priit Jõerüüt, Oğuz Ersen y Kazushi Hayama
+* Solo actualiza las aplicaciones en segundo plano si no se usan (requiere Android 14) (Tobi823/ffupdater#400)
+* Agregue la opción para actualizar solo las aplicaciones en segundo plano si la pantalla está apagada (Tobi823/ffupdater#400)
+* Ocultar la barra del progreso si la descarga no se ha iniciado (Tobi823/ffupdater#401)
+* Refactorizar y limpiar el código
