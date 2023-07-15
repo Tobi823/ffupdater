@@ -110,10 +110,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val itemId = item.itemId
         if (itemId == R.id.action_about) {
-            val backgroundCheckString = DataStoreHelper.getLastBackgroundCheckString(applicationContext)
+            val lastBackgroundUpdateCheckTime = DataStoreHelper.lastBackgroundCheck2
+            val lastBackgroundUpdateCheckText = if (lastBackgroundUpdateCheckTime != 0L) {
+                DateUtils.getRelativeDateTimeString(
+                    this,
+                    lastBackgroundUpdateCheckTime,
+                    DateUtils.SECOND_IN_MILLIS,
+                    DateUtils.WEEK_IN_MILLIS,
+                    0
+                )
+            } else "/"
             AlertDialog.Builder(this@MainActivity)
                 .setTitle(R.string.action_about_title)
-                .setMessage(getString(R.string.infobox, backgroundCheckString))
+                .setMessage(getString(R.string.infobox, lastBackgroundUpdateCheckText))
                 .setNeutralButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .create()
                 .show()
