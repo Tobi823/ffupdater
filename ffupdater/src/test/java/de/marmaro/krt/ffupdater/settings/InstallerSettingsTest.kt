@@ -36,9 +36,7 @@ class InstallerSettingsTest : BaseTest() {
         )
     }
 
-    @ParameterizedTest(
-        name = "returns getInstaller() \"{1}\" if string is \"{0}\""
-    )
+    @ParameterizedTest(name = "returns getInstaller() \"{1}\" if string is \"{0}\"")
     @MethodSource("testDataForInstaller")
     fun `getInstaller()`(
         string_value: String?,
