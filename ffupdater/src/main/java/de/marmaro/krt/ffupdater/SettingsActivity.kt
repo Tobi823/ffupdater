@@ -2,8 +2,8 @@ package de.marmaro.krt.ffupdater
 
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.widget.Toast
 import androidx.annotation.Keep
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.EditTextPreference
@@ -13,6 +13,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
+import com.google.android.material.snackbar.Snackbar
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
@@ -127,13 +128,13 @@ class SettingsActivity : AppCompatActivity() {
                     return true
                 }
             }
-            Toast.makeText(context, R.string.installer__method__root_not_granted, Toast.LENGTH_LONG).show()
+            showBriefMessage(R.string.installer__method__root_not_granted)
             return false
         }
 
         private fun canShizukuInstallerBeUsed(): Boolean {
             if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
-                Toast.makeText(context, "Your Android is too old for Shizuku.", Toast.LENGTH_LONG).show()
+                showBriefMessage(R.string.installer__android_too_old_for_shizuku)
                 return false
             }
             return try {
@@ -142,7 +143,7 @@ class SettingsActivity : AppCompatActivity() {
                 }
                 true
             } catch (e: IllegalStateException) {
-                Toast.makeText(context, R.string.installer__method__shizuku_not_installed, Toast.LENGTH_LONG).show()
+                showBriefMessage(R.string.installer__method__shizuku_not_installed)
                 false
             }
         }
@@ -165,6 +166,11 @@ class SettingsActivity : AppCompatActivity() {
             customDohServer.isVisible = (dnsProvider.value == CUSTOM_SERVER.name)
             customDohServer.onPreferenceChangeListener = listener
             networkProxy.onPreferenceChangeListener = listener
+        }
+
+        @UiThread
+        private fun showBriefMessage(message: Int) {
+            Snackbar.make(requireView(), message, Snackbar.LENGTH_LONG).show()
         }
 
         override fun onPause() {

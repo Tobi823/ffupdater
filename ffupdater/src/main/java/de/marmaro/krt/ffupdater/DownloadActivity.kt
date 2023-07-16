@@ -13,16 +13,16 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
-import android.widget.Toast.LENGTH_LONG
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R.string.application_installation_was_not_successful
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_fetching_url
@@ -178,18 +178,23 @@ class DownloadActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, "resource/folder")
         val chooser = Intent.createChooser(intent, getString(download_activity__open_folder))
-
+        showBriefMessage(download_activity__file_uri_exposed_toast)
         if (DeviceSdkTester.supportsAndroidNougat()) {
             StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
             try {
                 startActivity(chooser)
             } catch (e: FileUriExposedException) {
-                Toast.makeText(this, download_activity__file_uri_exposed_toast, LENGTH_LONG)
-                    .show()
+                showBriefMessage(download_activity__file_uri_exposed_toast)
             }
         } else {
             startActivity(chooser)
         }
+    }
+
+    @UiThread
+    private fun showBriefMessage(message: Int) {
+        val layout = findViewById<View>(R.id.download_activity__root_view)
+        Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
     }
 
     private fun show(viewId: Int) {

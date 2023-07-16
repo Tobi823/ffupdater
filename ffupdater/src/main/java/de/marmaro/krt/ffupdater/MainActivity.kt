@@ -163,7 +163,7 @@ class MainActivity : AppCompatActivity() {
             apps.forEach {
                 recycleViewAdapter.notifyErrorForApp(it, R.string.main_activity__no_unmetered_network, null)
             }
-            showToast(R.string.main_activity__no_unmetered_network)
+            showBriefMessage(R.string.main_activity__no_unmetered_network)
             return
         }
 
@@ -182,15 +182,15 @@ class MainActivity : AppCompatActivity() {
             recycleViewAdapter.notifyAppChange(app, updateStatus)
             recycleViewAdapter.notifyClearedErrorForApp(app)
             return updateStatus
-        } catch (e: ApiRateLimitExceededException) {
-            recycleViewAdapter.notifyErrorForApp(app, R.string.main_activity__github_api_limit_exceeded, e)
-            showToast(getString(R.string.main_activity__github_api_limit_exceeded))
-        } catch (e: NetworkException) {
-            recycleViewAdapter.notifyErrorForApp(app, R.string.main_activity__temporary_network_issue, e)
-            showToast(getString(R.string.main_activity__temporary_network_issue))
-        } catch (e: DisplayableException) {
-            recycleViewAdapter.notifyErrorForApp(app, R.string.main_activity__an_error_occurred, e)
-            showToast(getString(R.string.main_activity__an_error_occurred))
+        } catch (e: java.lang.Exception) {
+            val textId = when (e) {
+                is ApiRateLimitExceededException -> R.string.main_activity__github_api_limit_exceeded
+                is NetworkException -> R.string.main_activity__temporary_network_issue
+                is DisplayableException -> R.string.main_activity__an_error_occurred
+                else -> throw e
+            }
+            recycleViewAdapter.notifyErrorForApp(app, textId, e)
+            showBriefMessage(getString(textId))
         }
         return null
     }
@@ -198,7 +198,7 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private suspend fun installOrDownloadApp(app: App) {
         if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-            showToast(R.string.main_activity__no_unmetered_network)
+            showBriefMessage(R.string.main_activity__no_unmetered_network)
             return
         }
         if (DeviceSdkTester.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
@@ -222,13 +222,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun showToast(message: Int) {
+    private fun showBriefMessage(message: Int) {
         val layout = findViewById<View>(R.id.coordinatorLayout)
         Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
     }
 
     @UiThread
-    private fun showToast(message: String) {
+    private fun showBriefMessage(message: String) {
         val layout = findViewById<View>(R.id.coordinatorLayout)
         Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
     }

@@ -3,7 +3,10 @@ package de.marmaro.krt.ffupdater.crash
 import androidx.annotation.Keep
 
 @Keep
-data class ThrowableAndLogs(val stacktrace: String, val logs: String) {
+class ThrowableAndLogs(throwable: Throwable, val logs: String) {
+    val stacktrace: String
 
-    constructor(throwable: Throwable, logs: String) : this(throwable.stackTraceToString(), logs)
+    init {
+        stacktrace = throwable.stackTraceToString()
+    }
 }
