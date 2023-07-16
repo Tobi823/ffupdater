@@ -182,7 +182,7 @@ class MainActivity : AppCompatActivity() {
             recycleViewAdapter.notifyAppChange(app, updateStatus)
             recycleViewAdapter.notifyClearedErrorForApp(app)
             return updateStatus
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             val textId = when (e) {
                 is ApiRateLimitExceededException -> R.string.main_activity__github_api_limit_exceeded
                 is NetworkException -> R.string.main_activity__temporary_network_issue

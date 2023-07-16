@@ -278,11 +278,13 @@ class DownloadActivity : AppCompatActivity() {
 
         try {
             installedAppStatus = appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
-        } catch (e: ApiRateLimitExceededException) {
-            displayFetchFailure(getString(download_activity__github_rate_limit_exceeded), e)
-            return MethodResult.failure()
-        } catch (e: DisplayableException) {
-            displayFetchFailure(getString(download_activity__temporary_network_issue), e)
+        } catch (e: Exception) {
+            val text = when (e) {
+                is ApiRateLimitExceededException -> getString(download_activity__github_rate_limit_exceeded)
+                is DisplayableException -> getString(download_activity__temporary_network_issue)
+                else -> throw e
+            }
+            displayFetchFailure(text, e)
             return MethodResult.failure()
         }
 
@@ -314,10 +316,13 @@ class DownloadActivity : AppCompatActivity() {
                 }
             }
             return MethodResult.success()
-        } catch (e: NetworkException) {
-            displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
-        } catch (e: DisplayableException) {
-            displayDownloadFailure(e.message ?: e.javaClass.name, e)
+        } catch (e: Exception) {
+            val text = when (e) {
+                is NetworkException -> getString(install_activity__download_file_failed__crash_text)
+                is DisplayableException -> e.message ?: e.javaClass.name
+                else -> throw e
+            }
+            displayDownloadFailure(text, e)
         } finally {
             hide(R.id.downloadingFile)
             show(R.id.downloadedFile)
@@ -355,10 +360,13 @@ class DownloadActivity : AppCompatActivity() {
             // NPE was thrown in #359 - it should be safe to ignore null values
             viewModel.downloadDeferred?.await()
             return MethodResult.success()
-        } catch (e: NetworkException) {
-            displayDownloadFailure(getString(install_activity__download_file_failed__crash_text), e)
-        } catch (e: DisplayableException) {
-            displayDownloadFailure(e.message ?: e.javaClass.name, e)
+        } catch (e: Exception) {
+            val text = when (e) {
+                is NetworkException -> getString(install_activity__download_file_failed__crash_text)
+                is DisplayableException -> e.message ?: e.javaClass.name
+                else -> throw e
+            }
+            displayDownloadFailure(text, e)
         } finally {
             hide(R.id.downloadingFile)
         }

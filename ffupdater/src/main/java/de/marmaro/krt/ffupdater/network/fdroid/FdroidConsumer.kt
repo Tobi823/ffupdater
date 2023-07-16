@@ -85,21 +85,13 @@ object FdroidConsumer {
 
     private suspend fun getLastCommitId(packageName: String, cacheBehaviour: CacheBehaviour): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2F${packageName}.yml?ref=master"
-        val rootJson = try {
-            FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to get the latest commit id of $packageName.", e)
-        }
+        val rootJson = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
         return rootJson["last_commit_id"].asString
     }
 
     private suspend fun getCreateDate(commitId: String, cacheBehaviour: CacheBehaviour): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/commits/$commitId"
-        val rootJson = try {
-            FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to get the creation date of commit $commitId.", e)
-        }
+        val rootJson = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
         return rootJson["created_at"].asString
     }
 

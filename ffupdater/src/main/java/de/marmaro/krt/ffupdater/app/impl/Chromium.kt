@@ -66,17 +66,10 @@ object Chromium : AppBase() {
         return platform
     }
 
-    private suspend fun findLatestRevision(
-        platform: String,
-        cacheBehaviour: CacheBehaviour,
-    ): String {
-        return try {
-            val slash = "%2F"
-            val url = "$BASE_DOWNLOAD_URL/${platform}${slash}LAST_CHANGE?alt=media"
-            FileDownloader.downloadStringWithCache(url, cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest Vivaldi version.", e)
-        }
+    private suspend fun findLatestRevision(platform: String, cacheBehaviour: CacheBehaviour): String {
+        val slash = "%2F"
+        val url = "$BASE_DOWNLOAD_URL/${platform}${slash}LAST_CHANGE?alt=media"
+        return FileDownloader.downloadStringWithCache(url, cacheBehaviour)
     }
 
     private suspend fun findStorageObject(

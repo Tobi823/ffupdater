@@ -57,11 +57,7 @@ object TorBrowserAlpha : AppBase() {
     }
 
     private suspend fun findVersionAndDownloadUrl(cacheBehaviour: CacheBehaviour): Pair<String, String> {
-        val content = try {
-            FileDownloader.downloadStringWithCache(MAIN_URL, cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest Vivaldi version.", e)
-        }
+        val content = FileDownloader.downloadStringWithCache(MAIN_URL, cacheBehaviour)
         val pattern = Regex.escape("https://dist.torproject.org/torbrowser/") +
                 "([0-9a-z.]{4,})" +
                 Regex.escape("/tor-browser-") +
@@ -81,14 +77,8 @@ object TorBrowserAlpha : AppBase() {
     }
 
     private suspend fun findDateTime(version: String, cacheBehaviour: CacheBehaviour): String {
-        val abi = getAbiString()
-        val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-$abi-multi.apk"
-        val content = try {
-            FileDownloader.downloadStringWithCache(url, cacheBehaviour)
-        } catch (e: NetworkException) {
-            throw NetworkException("Fail to request the latest Vivaldi version.", e)
-        }
-
+        val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-${getAbiString()}-multi.apk"
+        val content = FileDownloader.downloadStringWithCache(url, cacheBehaviour)
         val spaces = """\s+"""
         val pattern = Regex.escape("</a>") +
                 spaces +

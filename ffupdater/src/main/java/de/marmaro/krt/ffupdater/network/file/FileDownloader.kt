@@ -82,39 +82,6 @@ object FileDownloader {
         return Pair(deferred, processChannel)
     }
 
-    @WorkerThread
-    private suspend fun downloadFile(url: String, file: File, processChannel: Channel<DownloadStatus>) {
-        callUrl(url, "GET", null, processChannel).use { response ->
-            val body = validateAndReturnResponseBody(url, response)
-            if (file.exists()) {
-                file.delete()
-            }
-            file.outputStream().buffered().use { fileWriter ->
-                body.byteStream().buffered().use { responseReader ->
-                    // this method blocks until download is finished
-                    responseReader.copyTo(fileWriter)
-                    fileWriter.flush()
-                }
-            }
-        }
-    }
-
-    private suspend fun callUrl(
-        url: String,
-        method: String,
-        requestBody: RequestBody?,
-        processChannel: Channel<DownloadStatus>?,
-    ): Response {
-        require(url.startsWith("https://"))
-        val request = Request.Builder()
-            .url(url)
-            .method(method, requestBody)
-            .tag(processChannel) // use tag to transfer a Channel to the Interceptor
-        return client
-            .newCall(request.build())
-            .await()
-    }
-
     /**
      *
      */
@@ -184,6 +151,23 @@ object FileDownloader {
         }
     }
 
+    @WorkerThread
+    private suspend fun downloadFile(url: String, file: File, processChannel: Channel<DownloadStatus>) {
+        callUrl(url, "GET", null, processChannel).use { response ->
+            val body = validateAndReturnResponseBody(url, response)
+            if (file.exists()) {
+                file.delete()
+            }
+            file.outputStream().buffered().use { fileWriter ->
+                body.byteStream().buffered().use { responseReader ->
+                    // this method blocks until download is finished
+                    responseReader.copyTo(fileWriter)
+                    fileWriter.flush()
+                }
+            }
+        }
+    }
+
     private fun validateAndReturnResponseBody(url: String, response: Response): ResponseBody {
         if (url.startsWith(GITHUB_URL) && response.code == 403) {
             throw ApiRateLimitExceededException(
@@ -195,6 +179,22 @@ object FileDownloader {
             throw NetworkException("Response is unsuccessful. HTTP code: '${response.code}'.")
         }
         return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
+    }
+
+    private suspend fun callUrl(
+        url: String,
+        method: String,
+        requestBody: RequestBody?,
+        processChannel: Channel<DownloadStatus>?,
+    ): Response {
+        require(url.startsWith("https://"))
+        val request = Request.Builder()
+            .url(url)
+            .method(method, requestBody)
+            .tag(processChannel) // use tag to transfer a Channel to the Interceptor
+        return client
+            .newCall(request.build())
+            .await()
     }
 
     private val mutexForUrls = mutableMapOf<String, Mutex>()
