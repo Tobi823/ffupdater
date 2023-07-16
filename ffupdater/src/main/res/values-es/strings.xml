@@ -320,4 +320,8 @@
     <string name="eol_reason__browser_no_longer_maintained">El navegador ya no se actualiza.</string>
     <string name="background__installation__when_screen_off__summary">Intenta instalar las actualizaciones solo cuando la pantalla del dispositivo esté apagada.</string>
     <string name="background__installation__when_screen_off__title">Instalar solo cuando la pantalla está apagada</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">La comprobación de las actualizaciones en segundo plano no se ejecutó</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">La comprobación de actualizaciones en segundo plano no se ejecuta de forma fiable</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Advertencia sobre la ejecución no fiable de la comprobación de las actualizaciones en segundo plano</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Tal vez se debe a la configuración de la batería o del rendimiento de tu dispositivo. Haz clic en esta notificación para desactivar la optimización de la batería para esta aplicación.</string>
 </resources>
