@@ -222,6 +222,21 @@ object NotificationBuilder {
         showNotification(context, channel, notification, intent)
     }
 
+    fun showErrorNotification(context: Context, throwableAndLogs: ThrowableAndLogs, description: String) {
+        val channel = ChannelData(
+            id = "uncaught_exception_notification",
+            name = "Crash notifications",
+            description = "Unexpected errors which crash FFUpdater."
+        )
+        val notification = NotificationData(
+            id = EOL_APPS_CODE,
+            title = "FFUpdater crashed",
+            text = "Click to view the error report.",
+        )
+        val intent = CrashReportActivity.createIntent(context.applicationContext, throwableAndLogs, description)
+        showNotification(context, channel, notification, intent)
+    }
+
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun showNotification(
         context: Context,

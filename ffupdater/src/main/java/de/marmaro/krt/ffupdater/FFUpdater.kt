@@ -5,6 +5,7 @@ import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
+import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.device.StorageCleaner
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -26,6 +27,8 @@ import kotlinx.coroutines.launch
 class FFUpdater : Application() {
     override fun onCreate() {
         super.onCreate()
+        CrashListener.showNotificationForUncaughtException(applicationContext)
+
         StrictModeSetup.enableStrictMode()
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)

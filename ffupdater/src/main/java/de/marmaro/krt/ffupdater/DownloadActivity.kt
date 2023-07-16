@@ -40,7 +40,6 @@ import de.marmaro.krt.ffupdater.R.string.main_activity__no_unmetered_network
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
-import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
@@ -113,10 +112,6 @@ class DownloadActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download)
-        if (CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)) {
-            finish()
-            return
-        }
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

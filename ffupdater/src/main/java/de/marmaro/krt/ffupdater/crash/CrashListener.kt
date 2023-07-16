@@ -1,54 +1,32 @@
 package de.marmaro.krt.ffupdater.crash
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.Keep
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R
-import java.io.File
-import kotlin.system.exitProcess
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder
 
 @Keep
-class CrashListener private constructor(private val file: File) : Thread.UncaughtExceptionHandler {
+class CrashListener private constructor(
+    private val applicationContext: Context,
+    private val defaultHandler: Thread.UncaughtExceptionHandler?,
+) :
+    Thread.UncaughtExceptionHandler {
 
     override fun uncaughtException(t: Thread, e: Throwable) {
-        if (!file.exists()) {
-            file.createNewFile()
-        }
-        file.bufferedWriter().use { fileWriter ->
-            val stacktrace = e.stackTraceToString().trim()
-            fileWriter.write(stacktrace)
-            fileWriter.write("\n\n")
-            fileWriter.write(LogReader.readLogs())
-            fileWriter.flush()
-        }
-        e.printStackTrace()
-        exitProcess(1)
+        Log.e(LOG_TAG, "CrashListener: Uncaught exception: ${e.message}")
+        val crashData = ThrowableAndLogs(e, LogReader.readLogs())
+        val description = applicationContext.getString(R.string.crash_report__explain_text__uncaught_throwable)
+        NotificationBuilder.showErrorNotification(applicationContext, crashData, description)
+        defaultHandler?.uncaughtException(t, e)
     }
 
     companion object {
-        fun openCrashReporterForUncaughtExceptions(context: Context): Boolean {
-            val errorFile = getCrashReportFile(context.applicationContext)
-            val crashListener = CrashListener(errorFile)
+        fun showNotificationForUncaughtException(context: Context) {
+            val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
+            val crashListener = CrashListener(context.applicationContext, defaultHandler)
             Thread.setDefaultUncaughtExceptionHandler(crashListener)
-            if (hasCrashOccurred(errorFile)) {
-                startCrashReport(context.applicationContext, errorFile)
-                errorFile.delete()
-                return true
-            }
-            return false
-        }
-
-        private fun getCrashReportFile(context: Context) = File(context.externalCacheDir, "crashlog.txt")
-
-        private fun hasCrashOccurred(errorFile: File): Boolean {
-            return errorFile.exists()
-        }
-
-        private fun startCrashReport(context: Context, errorFile: File) {
-            val error = errorFile.bufferedReader().use { it.readText() }
-            val description = context.getString(R.string.crash_report__explain_text__uncaught_throwable)
-            val intent = CrashReportActivity.createIntent(context.applicationContext, error, description)
-            context.applicationContext.startActivity(intent)
-
         }
     }
 }

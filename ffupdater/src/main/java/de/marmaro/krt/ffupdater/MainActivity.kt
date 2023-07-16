@@ -33,7 +33,6 @@ import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
-import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
@@ -64,11 +63,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)) {
-            finish()
-            return
-        }
-
         setSupportActionBar(findViewById(R.id.toolbar))
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         requestForNotificationPermissionIfNecessary()

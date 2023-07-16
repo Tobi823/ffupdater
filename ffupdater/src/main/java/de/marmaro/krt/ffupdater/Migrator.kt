@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
 import androidx.work.ExistingPeriodicWorkPolicy.*
+import java.io.File
 
 @Keep
 object Migrator {
@@ -19,6 +20,8 @@ object Migrator {
                 .edit()
                 .remove("lastBackgroundCheckTimestamp")
                 .commit()
+
+            File(context.externalCacheDir, "crashlog.txt").delete()
         }
 
         preferences.edit()

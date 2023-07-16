@@ -16,10 +16,10 @@ import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
-import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
+import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.NetworkSettings.DnsProvider.CUSTOM_SERVER
 import rikka.shizuku.Shizuku
@@ -32,10 +32,6 @@ import rikka.shizuku.Shizuku
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)) {
-            finish()
-            return
-        }
         setContentView(R.layout.activity_settings)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385

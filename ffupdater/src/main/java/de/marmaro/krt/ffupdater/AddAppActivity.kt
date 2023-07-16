@@ -26,7 +26,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.FROM_MOZILLA
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
-import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
@@ -44,10 +43,6 @@ class AddAppActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_app)
-        if (CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)) {
-            finish()
-            return
-        }
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

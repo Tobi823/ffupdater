@@ -32,13 +32,22 @@ import de.marmaro.krt.ffupdater.R
 @Keep
 class CrashReportActivity : AppCompatActivity() {
 
+    private lateinit var explanation: String
+    private lateinit var stackTrace: String
+    private lateinit var logs: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crash_report)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        findViewById<TextView>(R.id.crash_report__explanation_textview).text =
-            intent.extras?.getString(EXTRA_EXCEPTION_EXPLANATION, "/")
+        explanation = intent.extras?.getString(EXTRA_EXCEPTION_EXPLANATION, "") ?: ""
+        stackTrace = intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE, "") ?: ""
+        logs = intent.extras?.getString(EXTRA_EXCEPTION_LOGS) ?: ""
+
+        findViewById<TextView>(R.id.crash_report__explanation_textview).text = explanation
+        findViewById<TextView>(R.id.crash_report__exception_stack_trace).text = "$explanation\n\n$logs"
+
         findViewById<Button>(R.id.crash_report__copy_error_message_to_clipboard_button).setOnClickListener {
             copyErrorMessageToClipboard()
         }
@@ -51,9 +60,6 @@ class CrashReportActivity : AppCompatActivity() {
         findViewById<Button>(R.id.crash_report__got_to_gitlab_button).setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, GITLAB_URI))
         }
-
-        findViewById<TextView>(R.id.crash_report__exception_stack_trace).text =
-            intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE) ?: "/"
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -74,6 +80,10 @@ class CrashReportActivity : AppCompatActivity() {
             |```
             |${intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE)}
             |```
+            |Logs:
+            |```
+            |${intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE)}
+            |```
             |Device information:
             || Key | Value |
             || --- | --- |
@@ -88,19 +98,18 @@ class CrashReportActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_EXCEPTION_STACK_TRACE = "exception_stack_trace"
+        const val EXTRA_EXCEPTION_LOGS = "exception_logs"
         const val EXTRA_EXCEPTION_EXPLANATION = "exception_explanation"
         val NOTABUG_URI: Uri = Uri.parse("https://notabug.org/Tobiwan/ffupdater/issues")
         val GITHUB_URI: Uri = Uri.parse("https://github.com/Tobi823/ffupdater/issues")
         val GITLAB_URI: Uri = Uri.parse("https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues")
 
-        fun createIntent(context: Context, throwableAndLogs: ThrowableAndLogs, description: String): Intent {
-            return createIntent(context, throwableAndLogs.toSingleString(), description)
-        }
 
-        fun createIntent(context: Context, error: String, description: String): Intent {
+        fun createIntent(context: Context, throwableAndLogs: ThrowableAndLogs, description: String): Intent {
             val intent = Intent(context.applicationContext, CrashReportActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            intent.putExtra(EXTRA_EXCEPTION_STACK_TRACE, error)
+            intent.putExtra(EXTRA_EXCEPTION_STACK_TRACE, throwableAndLogs.stacktrace)
+            intent.putExtra(EXTRA_EXCEPTION_LOGS, throwableAndLogs.logs)
             intent.putExtra(EXTRA_EXCEPTION_EXPLANATION, description)
             return intent
         }
