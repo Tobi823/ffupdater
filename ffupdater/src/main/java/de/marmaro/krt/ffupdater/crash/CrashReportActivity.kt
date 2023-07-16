@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.crash
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -19,11 +20,13 @@ import android.os.Build.USER
 import android.os.Build.VERSION.RELEASE
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.Keep
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.BuildConfig.BUILD_TYPE
 import de.marmaro.krt.ffupdater.BuildConfig.VERSION_CODE
 import de.marmaro.krt.ffupdater.BuildConfig.VERSION_NAME
@@ -36,6 +39,7 @@ class CrashReportActivity : AppCompatActivity() {
     private lateinit var stackTrace: String
     private lateinit var logs: String
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crash_report)
@@ -46,7 +50,8 @@ class CrashReportActivity : AppCompatActivity() {
         logs = intent.extras?.getString(EXTRA_EXCEPTION_LOGS) ?: ""
 
         findViewById<TextView>(R.id.crash_report__explanation_textview).text = explanation
-        findViewById<TextView>(R.id.crash_report__exception_stack_trace).text = "$explanation\n\n$logs"
+        findViewById<TextView>(R.id.crash_report__exception_stack_trace).text = stackTrace
+        findViewById<TextView>(R.id.crash_report__exception_logs).text = logs
 
         findViewById<Button>(R.id.crash_report__copy_error_message_to_clipboard_button).setOnClickListener {
             copyErrorMessageToClipboard()
@@ -68,10 +73,10 @@ class CrashReportActivity : AppCompatActivity() {
     }
 
     private fun copyErrorMessageToClipboard() {
+        val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("FFUpdater crash report", getCrashReport())
-        (getSystemService(CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(clip)
-        Toast.makeText(this, "Crash report is copied to your clipboard", Toast.LENGTH_LONG)
-            .show()
+        clipboardManager.setPrimaryClip(clip)
+        showBriefMessage(R.string.crash_report__report_is_copied_to_clipboard)
     }
 
     private fun getCrashReport(): String {
@@ -96,6 +101,12 @@ class CrashReportActivity : AppCompatActivity() {
         """.trimMargin()
     }
 
+    @UiThread
+    private fun showBriefMessage(message: Int) {
+        val layout = findViewById<View>(R.id.crash_report__root_view)
+        Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
+    }
+
     companion object {
         const val EXTRA_EXCEPTION_STACK_TRACE = "exception_stack_trace"
         const val EXTRA_EXCEPTION_LOGS = "exception_logs"
@@ -103,7 +114,6 @@ class CrashReportActivity : AppCompatActivity() {
         val NOTABUG_URI: Uri = Uri.parse("https://notabug.org/Tobiwan/ffupdater/issues")
         val GITHUB_URI: Uri = Uri.parse("https://github.com/Tobi823/ffupdater/issues")
         val GITLAB_URI: Uri = Uri.parse("https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues")
-
 
         fun createIntent(context: Context, throwableAndLogs: ThrowableAndLogs, description: String): Intent {
             val intent = Intent(context.applicationContext, CrashReportActivity::class.java)
