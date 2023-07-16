@@ -320,4 +320,8 @@
     <string name="eol_reason__browser_no_longer_maintained">Tarayıcı artık geliştirilmiyor.</string>
     <string name="background__installation__when_screen_off__summary">Güncellemeleri yalnızca aygıt ekranı kapalıyken kurmayı dene.</string>
     <string name="background__installation__when_screen_off__title">Yalnızca ekran kapalıyken kur</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Arka plan güncelleme denetimi güvenilir bir şekilde gerçekleştirilmiyor</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Arka plan güncelleme denetiminin güvenilir olmayan şekilde çalıştırılması hakkında uyarı</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Arka plan güncelleme denetimi çalıştırılmadı</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Belki de aygıtınız için pil veya performans ayarlarından kaynaklanmaktadır. Bu uygulama için pil iyileştirmesini devre dışı bırakmak için bu bildirime tıklayın.</string>
 </resources>
