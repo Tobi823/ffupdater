@@ -89,11 +89,12 @@ class SettingsActivity : AppCompatActivity() {
         private fun listenForBackgroundJobRestarts() {
             val listener = Preference.OnPreferenceChangeListener { _, _ ->
                 restartBackgroundJobAfterClosingActivity = true
+                // reset to prevent false warning of non executed background update check
+                DataStoreHelper.lastBackgroundCheck2 = 0
                 true
             }
             findSwitchPref("background__update_check__enabled").onPreferenceChangeListener = listener
             findListPref("background__update_check__interval").onPreferenceChangeListener = listener
-            findSwitchPref("background__update_check__when_device_idle").onPreferenceChangeListener = listener
         }
 
         private fun listenForThemeChanges() {
